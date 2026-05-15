@@ -41,6 +41,8 @@ const TrustSection = () => {
                                 backgroundImage: 'url(https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200&fm=webp)',
                                 backgroundSize: 'cover'
                             }}
+                            role="img"
+                            aria-label="Futuristic technical server room representing secure enterprise architecture"
                         >
                             <div className="absolute inset-0 bg-black/60"></div>
                             <div className="relative h-full p-8 flex flex-col">

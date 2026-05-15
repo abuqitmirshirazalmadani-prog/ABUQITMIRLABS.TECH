@@ -58,8 +58,8 @@ const PortfolioSection = () => {
                         >
                             <div className="aspect-[16/10] overflow-hidden">
                                 <img 
-                                    src={`${project.img}&w=1200&fm=webp`} 
-                                    alt={`futuristic ${project.title} UI dashboard showcase`} 
+                                    src={`${project.img}&w=1600&fm=webp`} 
+                                    alt={`Premium ${project.category} - ${project.title} project by AbuQitmirLabs displaying advanced UI design and AI integration`} 
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60"
                                     loading="lazy"
                                     decoding="async"

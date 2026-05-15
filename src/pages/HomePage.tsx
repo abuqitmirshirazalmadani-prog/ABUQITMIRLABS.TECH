@@ -44,9 +44,9 @@ export default function HomePage() {
             "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
             "name": "ABUQITMIRLABS.TECH",
             "url": "https://abuqitmirlabs.tech",
-            "logo": "https://abuqitmirlabs.tech/logo.svg",
+            "logo": "https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png",
             "alternateName": "Abu Qitmir Labs",
-            "image": "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png",
+            "image": "https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png",
             "description": "ABUQITMIRLABS .TECH builds futuristic AI-powered mobile apps, SaaS platforms, Flutter applications, and no-code startup solutions with premium UI/UX and scalable architecture.",
             "address": {
               "@type": "PostalAddress",
