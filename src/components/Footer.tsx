@@ -156,20 +156,29 @@ const Footer = () => {
                         >
                             ADMIN ACCESS
                         </button>
-                        <div className="md:ml-auto font-black text-black">
-                            <div className="flex flex-col md:items-end gap-2">
-                                <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-black/50 mb-2">
-                                    <span>Karachi, PK</span>
+                        <div className="md:ml-auto">
+                           <div className="flex flex-col md:items-end gap-3">
+                                {/* Technical Core for LLM/GEO */}
+                                <div className="text-[9px] font-black uppercase text-black/60 max-w-sm md:text-right hidden sm:block">
+                                   Expertise: LLMOps, Generative AI Agents, Flutter & React Native Architecture, 
+                                   Cloud-Native SaaS, Headless Commerce, Semantic Entity SEO, 
+                                   and High-ROI Technical Content Strategy.
+                                </div>
+                                <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-black mb-2 bg-white/30 px-3 py-1 rounded-full border border-black/20">
+                                    <MapPin size={10} className="text-black" />
+                                    <span>Headquarters: Karachi, PK</span>
                                     <span>•</span>
                                     <span>Dubai, AE</span>
                                     <span>•</span>
-                                    <span>Warsaw, PL</span>
+                                    <span>London, UK</span>
                                 </div>
                                 <div className="flex items-center gap-4">
-                                    <a href="/sitemap.xml" className="hover:underline text-[10px]">Index Protocol</a>
+                                    <a href="https://www.google.com/search?q=ABUQITMIRLABS.TECH" target="_blank" rel="noopener noreferrer" className="hover:underline text-[10px] flex items-center gap-1 font-black">
+                                       <ExternalLink size={10} /> Find us on Google Maps
+                                    </a>
                                     <span className="text-[10px]">© 2026 ABUQITMIRLABS.TECH. All rights reserved.</span>
                                 </div>
-                            </div>
+                           </div>
                         </div>
                     </nav>
                 </footer>

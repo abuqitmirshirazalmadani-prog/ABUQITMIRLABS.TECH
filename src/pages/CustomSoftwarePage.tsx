@@ -147,6 +147,26 @@ const CustomSoftwarePage = () => {
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://abuqitmirlabs.tech"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Custom Software Development",
+                "item": "https://abuqitmirlabs.tech/custom-software"
+              }
+            ]
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
             "@type": "Service",
             "name": "Custom Software Development",
             "description": "We engineer tailor-made software solutions that streamline operations and give your business a decisive competitive edge.",

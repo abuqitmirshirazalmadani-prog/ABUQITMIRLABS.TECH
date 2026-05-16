@@ -48,15 +48,41 @@ export default function HomePage() {
             "image": "https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png",
             "description": "Expert custom software development and AI engineering firm. We build scalable SaaS platforms and high-performance applications for global enterprises.",
             "priceRange": "$$",
+            "email": "shiraz@abuqitmirlabs.tech",
+            "telephone": "+923233260859",
             "address": {
               "@type": "PostalAddress",
-              "addressLocality": "Islamabad",
+              "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony",
+              "addressLocality": "Landhi Town, Karachi",
+              "addressRegion": "Sindh",
+              "postalCode": "75160",
               "addressCountry": "PK"
             },
+            "hasMap": "https://www.google.com/search?q=ABUQITMIRLABS.TECH",
+            "openingHours": "Mo,Tu,We,Th,Fr,Sa 09:00-21:00",
             "sameAs": [
-              "https://twitter.com/abuqitmirlabs",
-              "https://www.linkedin.com/company/abuqitmir-labs"
+              "https://x.com/AbuQitmir",
+              "https://www.linkedin.com/in/abu-qitmir-697423390/",
+              "https://www.facebook.com/profile.php?id=61583768706452",
+              "https://www.instagram.com/abuqitmirshirazalmadani/",
+              "https://www.youtube.com/@AbuQitmir",
+              "https://www.tiktok.com/@abuqitmirmohammadshiraz"
             ],
+            "knowsAbout": [
+              "Custom Software Development",
+              "AI Agent Development",
+              "Mobile App Development",
+              "LLM Integration",
+              "Flutter Development",
+              "React Engineering",
+              "Cloud Architecture",
+              "Semantic SEO"
+            ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "54"
+            },
             "serviceType": [
                "Custom Software Development",
                "Mobile App Development",
@@ -71,8 +97,10 @@ export default function HomePage() {
               "availableLanguage": ["en", "pl", "ur"]
             },
             "founder": {
-                "@type": "Person",
-                "name": "Shiraz Almadani"
+              "@type": "Person",
+              "name": "Shiraz Almadani",
+              "jobTitle": "CEO & Lead Engineer",
+              "sameAs": "https://www.linkedin.com/in/abu-qitmir-697423390/"
             }
           })}
         </script>

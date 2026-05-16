@@ -168,6 +168,26 @@ const AIAgentDevelopmentPage = () => {
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://abuqitmirlabs.tech"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "AI Agent Development",
+                "item": "https://abuqitmirlabs.tech/ai-agent-development"
+              }
+            ]
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
             "@type": "Service",
             "name": "AI Agent Development",
             "description": "We build custom Large Language Model (LLM) agents that understand your proprietary data, execute complex tasks, and automate workflows 24/7.",

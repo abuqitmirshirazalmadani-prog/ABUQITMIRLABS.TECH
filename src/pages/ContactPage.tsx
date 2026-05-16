@@ -78,6 +78,47 @@ const ContactPage = () => {
         <meta name="twitter:title" content="Contact App Developer | Get Free Project Quote" />
         <meta name="twitter:description" content="Connect with the lead architects at ABUQITMIRLABS .TECH for custom software development and AI automation." />
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+        
+        {/* Schema Markup */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://abuqitmirlabs.tech"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Contact",
+                "item": "https://abuqitmirlabs.tech/contact"
+              }
+            ]
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contact AbuQitmirLabs",
+            "description": "Get in touch for custom software development, AI agent consultation, and mobile app inquiries.",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "AbuQitmirLabs .TECH",
+              "telephone": "+923233260859",
+              "email": "abuqitmirshirazalmadani@gmail.com",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+923233260859",
+                "contactType": "customer service"
+              }
+            }
+          })}
+        </script>
       </Helmet>
 
       {/* Scanline Overlay */}

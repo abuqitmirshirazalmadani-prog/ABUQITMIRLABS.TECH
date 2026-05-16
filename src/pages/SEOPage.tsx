@@ -106,9 +106,29 @@ const SEOPage = () => {
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://abuqitmirlabs.tech"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "SEO Mastery",
+                "item": "https://abuqitmirlabs.tech/seo-mastery"
+              }
+            ]
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
             "@type": "Service",
-            "name": "SEO Mastery",
-            "description": "We specialize in data-driven Semantic Entity SEO and hyper-local map strategies to establish your brand's topical authority.",
+            "name": "SEO Mastery & Semantic Optimization",
+            "description": "Expert Semantic Entity SEO, Local Map Pack optimization, and E-E-A-T focused content strategies for global businesses.",
             "provider": {
               "@type": "Organization",
               "name": "ABUQITMIRLABS .TECH",
@@ -116,6 +136,20 @@ const SEOPage = () => {
             },
             "serviceType": "Search Engine Optimization",
             "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqData.map(item => ({
+              "@type": "Question",
+              "name": item.q,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": item.a
+              }
+            }))
           })}
         </script>
       </Helmet>
