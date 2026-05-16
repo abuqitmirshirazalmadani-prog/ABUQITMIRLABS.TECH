@@ -13,6 +13,7 @@ import {
     Instagram, 
     Youtube,
     MapPin,
+    Star,
     ArrowRight,
     ExternalLink,
     MessageCircle
@@ -108,12 +109,12 @@ const Footer = () => {
                         <div className="flex items-center gap-4">
                             {[
                                 { icon: <Facebook className="w-6 h-6 outline-none" />, href: "https://www.facebook.com/profile.php?id=61583768706452" },
-                                { icon: <MapPin className="w-6 h-6" />, href: "https://www.google.com/search?q=ABUQITMIRLABS.TECH&stick=H4sIAAAAAAAA_-NgU1I1qEg0SUwyMkw2MzIySUkyTba0MqhITUtOMUgztzRLTTM2TjI3XMTK5ZhUqhCYWZKbWQQAgvyVVDYAAAA&hl=en&mat=CZLYxD3dn4-XElcBTVDHnmXSKVhVcvJTl5LdX-OEaaOViC2V8fJZjkseklE5xuWjtkBxO-4XBgP9s87BonPt73AGlgF_gCfDR0OBlJ87IyZC-1OVUDGmHgKOo0SrOjnijr4&authuser=0" },
+                                { icon: <Star className="w-6 h-6 fill-[#ccff00]" />, href: "https://www.google.com/search?q=ABUQITMIRLABS.TECH&hl=en#lrd=0x3eb33ba408e04b4d:0xc40a6b7e6b772099,1,,,," },
+                                { icon: <MapPin className="w-6 h-6" />, href: "https://www.google.com/search?q=ABUQITMIRLABS.TECH" },
                                 { icon: <Instagram className="w-6 h-6" />, href: "https://www.instagram.com/abuqitmirshirazalmadani/" },
                                 { icon: <Youtube className="w-6 h-6" />, href: "https://www.youtube.com/@AbuQitmir" },
                                 { icon: <Linkedin className="w-6 h-6" />, href: "https://www.linkedin.com/in/abu-qitmir-697423390/" },
-                                { icon: <Twitter className="w-6 h-6" />, href: "https://x.com/AbuQitmir" },
-                                { icon: <MessageCircle className="w-6 h-6" />, href: "https://www.tiktok.com/@abuqitmirmohammadshiraz" }
+                                { icon: <Twitter className="w-6 h-6" />, href: "https://x.com/AbuQitmir" }
                             ].map((social, i) => (
                                 <a 
                                     key={i} 
