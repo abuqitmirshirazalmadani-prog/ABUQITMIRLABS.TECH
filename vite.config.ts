@@ -24,7 +24,7 @@ export default defineConfig(({mode}) => {
         closeBundle: async () => {
           const hostname = 'https://abuqitmirlabs.tech';
           const routes = [
-            { url: '/',                        changefreq: 'weekly',  priority: 1.0, title: 'AI Mobile App Development Company | AbuQitmirLabs', description: "Pakistan's leading AI mobile app development company. We build SaaS, Flutter, and custom apps for businesses worldwide." },
+            { url: '/',                        changefreq: 'weekly',  priority: 1.0, title: 'Custom Software Development & AI Mobile Apps | AbuQitmirLabs', description: "AbuQitmirLabs .TECH is a leading custom software development company. We build SaaS, Flutter apps, and AI solutions for global businesses." },
             { url: '/about',                   changefreq: 'monthly', priority: 0.8, title: 'About Us | AbuQitmirLabs', description: 'Learn about our mission to build cutting-edge AI and mobile solutions.' },
             { url: '/contact',                 changefreq: 'monthly', priority: 0.9, title: 'Contact Us | Start Your Project', description: 'Contact AbuQitmirLabs for your next mobile app or AI software project.' },
             { url: '/custom-software',         changefreq: 'weekly',  priority: 0.9, title: 'Custom Software Development', description: 'Tailor-made software solutions for your unique business needs.' },
@@ -34,9 +34,9 @@ export default defineConfig(({mode}) => {
             { url: '/seo-mastery',             changefreq: 'weekly',  priority: 0.8, title: 'SEO Mastery Services', description: 'Boost your digital presence with our expert SEO and ranking services.' },
             { url: '/graphics-design',         changefreq: 'weekly',  priority: 0.8, title: 'Creative Graphics & UI/UX', description: 'Stunning visual designs and user experiences that capture attention.' },
             { url: '/content-writing',         changefreq: 'weekly',  priority: 0.8, title: 'Professional Content Writing', description: 'Engaging content that drives conversions and builds brand authority.' },
-            { url: '/us-market',               changefreq: 'monthly', priority: 0.7, title: 'AI Software Solutions for US Businesses', description: 'Custom AI and mobile app development services tailored for the United States market.' },
-            { url: '/uk-market',               changefreq: 'monthly', priority: 0.7, title: 'AI Software Solutions for UK Businesses', description: 'Custom AI and mobile app development services tailored for the United Kingdom market.' },
-            { url: '/pakistan-market',         changefreq: 'monthly', priority: 0.7, title: 'AI Software Solutions in Pakistan', description: 'Leading AI and mobile app development services for businesses in Pakistan.' },
+            { url: '/us-market',               changefreq: 'monthly', priority: 0.7, title: 'App Development Company for US Startups | Offshore', description: 'Custom AI and mobile app development services tailored for the United States market.' },
+            { url: '/uk-market',               changefreq: 'monthly', priority: 0.7, title: 'App Development Agency for UK Businesses | Offshore', description: 'Custom AI and mobile app development services tailored for the United Kingdom market.' },
+            { url: '/pakistan-market',         changefreq: 'monthly', priority: 0.7, title: 'Mobile App Development Company in Pakistan | Best', description: 'Leading AI and mobile app development services for businesses in Pakistan.' },
             { url: '/canada-market',           changefreq: 'monthly', priority: 0.7, title: 'AI Software Solutions for Canada', description: 'Custom AI and mobile app development services tailored for the Canadian market.' },
             { url: '/poland-market',           changefreq: 'monthly', priority: 0.7, title: 'AI Software Solutions for Poland', description: 'Custom AI and mobile app development services tailored for the Polish market.' },
             { url: '/australia-market',        changefreq: 'monthly', priority: 0.7, title: 'AI Software Solutions for Australia', description: 'Custom AI and mobile app development services tailored for the Australian market.' },
@@ -75,16 +75,16 @@ Disallow: /google87984536fe5662da
 Sitemap: ${hostname}/sitemap.xml`;
           fs.writeFileSync(path.resolve(outDir, 'robots.txt'), robotsContent);
 
-          // 3. Generate Static HTML for each route (Soft SSG)
+          // 3. Generate Static HTML for each route (Soft SSG/Prerendering)
           for (const route of routes) {
-            if (route.url === '/') continue; // root already handled by index.html
+            const isRoot = route.url === '/';
+            const routeDir = isRoot ? outDir : path.join(outDir, route.url);
             
-            const routeDir = path.join(outDir, route.url);
-            if (!fs.existsSync(routeDir)) {
+            if (!isRoot && !fs.existsSync(routeDir)) {
               fs.mkdirSync(routeDir, { recursive: true });
             }
             
-            // Inject route specific meta tags into index.html copy
+            // Inject route specific meta tags into index.html
             let routeHtml = baseHtml;
             
             // Replace Title
@@ -107,7 +107,47 @@ Sitemap: ${hostname}/sitemap.xml`;
             routeHtml = routeHtml.replace(/<meta property="og:url" content="(.*?)"/g, `<meta property="og:url" content="${hostname}${route.url}"`);
             routeHtml = routeHtml.replace(/<meta name="twitter:url" content="(.*?)"/g, `<meta name="twitter:url" content="${hostname}${route.url}"`);
             
-            fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
+            // FIX: Inject meaningful body content to avoid "0 character body" and "No H1" SEO issues
+            // This content provides immediate value to crawlers and is replaced by React upon hydration.
+            const meaningfulContent = `
+              <div id="root">
+                <header>
+                  <h1>${route.title} - Custom Software Development</h1>
+                </header>
+                <main>
+                  <article>
+                    <h2>Expert ${route.title} Solutions</h2>
+                    <p>At AbuQitmirLabs .TECH, we specialize in <strong>custom software development</strong> and high-performance digital engineering.</p>
+                    <img src="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" style="max-width:300px" />
+                    <p>${route.description}</p>
+                    <section>
+                      <h3>Our Technical Expertise</h3>
+                      <p>We deliver cutting-edge software solutions including:</p>
+                      <ul>
+                        <li>Custom Mobile & Web App Engineering</li>
+                        <li>Autonomous AI Agents & RAG Integration</li>
+                        <li>Scalable Cloud-Native Microservices</li>
+                        <li>High-ROI Semantic SEO Strategies</li>
+                      </ul>
+                      <p>Learn more about <a href="https://en.wikipedia.org/wiki/Custom_software">custom software</a> industry standards.</p>
+                    </section>
+                  </article>
+                </main>
+                <footer>
+                  <p>&copy; ${new Date().getFullYear()} AbuQitmirLabs .TECH. Empowering businesses through advanced digital engineering.</p>
+                  <nav>
+                    <a href="/custom-software">Custom Software</a> | 
+                    <a href="/mobile-app-development">Mobile Apps</a> | 
+                    <a href="/ai-agent-development">AI Agents</a>
+                  </nav>
+                </footer>
+              </div>
+            `;
+            
+            routeHtml = routeHtml.replace('<div id="root"></div>', meaningfulContent);
+            
+            const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
+            fs.writeFileSync(targetPath, routeHtml);
           }
           
           console.log('✅ SEO Assets and Static Routes generated successfully!');

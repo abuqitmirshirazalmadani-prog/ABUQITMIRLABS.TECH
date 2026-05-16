@@ -57,12 +57,12 @@ const AboutPage = () => {
   return (
     <div className="bg-[#050505] text-zinc-400 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-white/10 selection:text-white">
       <Helmet>
-        <title>About Shiraz Almadani | AI Mobile App & SaaS Expert ABUQITMIRLABS</title>
+        <title>App Development Agency Pakistan | About Us</title>
         <meta name="description" content="Discover the vision behind ABUQITMIRLABS .TECH. We are a global software engineering lab dedicated to building high-performance digital ecosystems, AI-driven architectures, and scalable business solutions." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/about" />
         
         {/* OG Tags */}
-        <meta property="og:title" content="About Shiraz Almadani | ABUQITMIRLABS" />
+        <meta property="og:title" content="App Development Agency Pakistan | About Us" />
         <meta property="og:description" content="Discover the vision behind ABUQITMIRLABS .TECH. Specialized in high-performance digital ecosystems and AI-driven architectures." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/about" />
         <meta property="og:type" content="profile" />
@@ -70,7 +70,7 @@ const AboutPage = () => {
 
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Shiraz Almadani | ABUQITMIRLABS" />
+        <meta name="twitter:title" content="App Development Agency Pakistan | About Us" />
         <meta name="twitter:description" content="Discover the vision behind ABUQITMIRLABS .TECH. Specialized in high-performance digital ecosystems and AI-driven architectures." />
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
       </Helmet>
@@ -99,9 +99,9 @@ const AboutPage = () => {
                 transition={{ duration: 0.8 }}
                 className="text-5xl md:text-7xl lg:text-[8rem] font-bold text-white tracking-tighter uppercase leading-[0.85] mb-8"
              >
-                Full Stack <br />
-                <span className="text-zinc-600">Developer</span> & <br />
-                Custom Software Specialist.
+                App Development Agency <br />
+                <span className="text-zinc-600">Pakistan</span> | <br />
+                About Us
              </motion.h1>
              <motion.p 
                 initial={{ opacity: 0 }}

@@ -210,7 +210,7 @@ const NexusHero = () => {
  
                     <div className="max-w-4xl mx-auto mb-10 px-4">
                         <MagicText 
-                            text="“We build futuristic AI-powered mobile apps, SaaS platforms, Flutter applications, and no-code startup solutions.”"
+                            text="“As a leader in custom software development, we build futuristic AI-powered mobile apps, SaaS platforms, and enterprise solutions for global startups.”"
                             className="justify-center text-center leading-[1.6] font-medium"
                             wordClassName="text-xs sm:text-sm md:text-base text-gray-400"
                         />

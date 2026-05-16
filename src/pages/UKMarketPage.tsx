@@ -61,15 +61,17 @@ const UKMarketPage = () => {
   return (
     <div className="bg-[#090909] text-[#d3c8b8] min-h-screen font-sans selection:bg-[#ff5b36] selection:text-white">
       <Helmet>
-        <title>Tech Solutions & Software Development UK | ABUQITMIRLABS</title>
+        <title>App Development Agency for UK Businesses | Offshore</title>
         <meta name="description" content="World-class digital transformation for UK businesses by ABUQITMIRLABS .TECH. GDPR-compliant software development, high-performance web apps, and London-centric local SEO." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/uk-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="UK Digital Transformation | ABUQITMIRLABS" />
+        <meta property="og:title" content="App Development Agency for UK Businesses | Offshore" />
         <meta property="og:description" content="World-class digital transformation for UK businesses by ABUQITMIRLABS .TECH. GDPR-compliant software development and high-performance web apps." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/uk-market" />
         <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="App Development Agency for UK Businesses | Offshore" />
       </Helmet>
 
       <Header />
@@ -95,9 +97,15 @@ const UKMarketPage = () => {
               British Digital Transformation — UK Market
             </motion.div>
 
-            <div className="mb-8">
-              <HeroText text="ELITE" />
-            </div>
+            <motion.h1 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase mb-12"
+            >
+              App Development Agency <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5b36] to-[#ff9d85]">for UK Businesses | Offshore</span>
+            </motion.h1>
 
             <MagicText 
               text="Propel your UK business forward with ABUQITMIRLABS .TECH. We provide bespoke custom software, high-performance web development, and UK-targeted local SEO designed to help British enterprises and London-based startups thrive."

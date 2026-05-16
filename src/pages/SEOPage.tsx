@@ -92,12 +92,12 @@ const SEOPage = () => {
   return (
     <div className="bg-[#f4f4f5] text-black font-display antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]">
       <Helmet>
-        <title>SEO Services | Semantic Entity SEO & Local Search Mastery ABUQITMIRLABS</title>
+        <title>Affordable SEO Services for Small Business | Expert</title>
         <meta name="description" content="Dominate search results with ABUQITMIRLABS .TECH. Advanced Semantic Entity SEO, Local Map Mastery, and E-E-A-T focused content strategies designed to drive organic ROI." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/seo-mastery" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="SEO Mastery | ABUQITMIRLABS" />
+        <meta property="og:title" content="Affordable SEO Services for Small Business | Expert" />
         <meta property="og:description" content="Dominate search results with ABUQITMIRLABS .TECH. Advanced Semantic Entity SEO, Local Map Mastery, and E-E-A-T focused content strategies." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/seo-mastery" />
         <meta property="og:type" content="website" />
@@ -143,9 +143,9 @@ const SEOPage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-4xl md:text-6xl font-black tracking-tighter text-black text-center mb-10 leading-[0.95] max-w-6xl uppercase"
         >
-          SEO Services <br />
-          <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>& Local Search</span> <br />
-          <span className="text-[#ccff00]">Mastery.</span>
+          Affordable SEO Services <br />
+          <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>for Small Business</span> <br />
+          <span className="text-[#ccff00]">| Expert</span>
         </motion.h1>
 
         <motion.p 

@@ -69,15 +69,21 @@ const PakistanMarketPage = () => {
   return (
     <div className="bg-[#090909] text-[#d3c8b8] min-h-screen font-sans selection:bg-[#ff5b36] selection:text-white overflow-x-hidden">
       <Helmet>
-        <title>Software Development Services in Pakistan | ABUQITMIRLABS</title>
+        <title>Mobile App Development Company in Pakistan | Best</title>
         <meta name="description" content="Driving digital innovation in Pakistan. ABUQITMIRLABS .TECH provides top-tier custom software, AI agent integration, and hyper-local SEO for businesses in Karachi, Lahore, and Islamabad." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/pakistan-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Transforming Pakistan's Digital Landscape | ABUQITMIRLABS" />
+        <meta property="og:title" content="Mobile App Development Company in Pakistan | Best" />
         <meta property="og:description" content="Driving digital innovation in Pakistan. ABUQITMIRLABS .TECH provides top-tier custom software, AI agent integration, and hyper-local SEO." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/pakistan-market" />
         <meta property="og:type" content="website" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Mobile App Development Company in Pakistan | Best" />
+        <meta name="twitter:description" content="Driving digital innovation in Pakistan. ABUQITMIRLABS .TECH provides top-tier custom software, AI agent integration, and hyper-local SEO." />
+        <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
       </Helmet>
 
       <Header />
@@ -100,9 +106,15 @@ const PakistanMarketPage = () => {
               Karachi to Islamabad — Pakistan's Premier Tech Agency
             </motion.div>
 
-            <div className="mb-8 md:mb-12">
-              <HeroText text="PAKISTAN" />
-            </div>
+            <motion.h1 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase mb-12"
+            >
+              Mobile App Development Company <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5b36] to-[#ff9d85]">in Pakistan | Best</span>
+            </motion.h1>
 
             <MagicText 
               text="Empowering Pakistani startups, SMEs, and large-scale industries with world-class technology. ABUQITMIRLABS .TECH delivers cutting-edge custom software, intelligent AI agents, and hyper-local SEO."

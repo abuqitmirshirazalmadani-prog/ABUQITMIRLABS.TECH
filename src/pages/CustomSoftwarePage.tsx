@@ -126,21 +126,21 @@ const CustomSoftwarePage = () => {
   return (
     <div className="bg-[#000000] text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-blue-500/30 selection:text-white">
       <Helmet>
-        <title>Custom Software Engineering | SaaS & Enterprise Solutions ABUQITMIRLABS</title>
-        <meta name="description" content="Professional custom software engineering by ABUQITMIRLABS .TECH. We build tailor-made enterprise ERPs, specialized SaaS platforms, and secure backend architectures for startups." />
+        <title>Custom Software Development Services | AbuQitmirLabs</title>
+        <meta name="description" content="Expert custom software development and scalable engineering for startups. We build robust ERP systems, SaaS platforms, and secure high-performance architectures." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/custom-software" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Custom Software Development | ABUQITMIRLABS" />
-        <meta property="og:description" content="Professional custom software engineering by ABUQITMIRLABS .TECH. Tailor-made enterprise ERPs and secure backend architectures." />
+        <meta property="og:title" content="Custom Software Development Services | AbuQitmirLabs" />
+        <meta property="og:description" content="Expert custom software development and scalable engineering for startups." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/custom-software" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Custom Software Development | ABUQITMIRLABS" />
-        <meta name="twitter:description" content="Professional custom software engineering by ABUQITMIRLABS .TECH. Tailor-made enterprise ERPs and secure backend architectures." />
+        <meta name="twitter:title" content="Custom Software Development Services | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Expert custom software development and scalable engineering for startups." />
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
         
         {/* Schema Markup */}
@@ -297,8 +297,8 @@ const CustomSoftwarePage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 className="mx-auto max-w-5xl text-3xl font-medium tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl uppercase font-black"
               >
-                Custom Software <br />
-                <span className="text-[#3b82f6]">Development Services.</span>
+                Custom Software Development <br />
+                <span className="text-[#3b82f6]">for Global Business.</span>
               </motion.h1>
               
               <motion.p 
@@ -307,7 +307,7 @@ const CustomSoftwarePage = () => {
                 transition={{ delay: 0.1 }}
                 className="mx-auto mt-10 max-w-2xl text-xl leading-relaxed text-slate-300 font-light"
               >
-                We don't just write code; we build digital assets. We engineer tailor-made software solutions that streamline operations and give your business a decisive competitive edge.
+                Expert <strong>custom software development</strong> is the foundation of modern digital assets. We engineer tailor-made software solutions that streamline operations, eliminate technical debt, and give your business a decisive competitive edge in the global market.
               </motion.p>
 
               {/* CTAs */}
@@ -354,8 +354,13 @@ const CustomSoftwarePage = () => {
               transition={{ delay: 0.3 }}
               className="relative mt-24 w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl backdrop-blur-xl bg-black/40"
             >
+                <img 
+                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop" 
+                  alt="Custom software development team working on enterprise architecture" 
+                  className="absolute inset-0 w-full h-full object-cover opacity-20"
+                />
                 {/* Window Controls */}
-                <div className="flex items-center justify-between border-b border-white/10 bg-black/60 px-4 py-3">
+                <div className="flex items-center justify-between border-b border-white/10 bg-black/60 px-4 py-3 relative z-10">
                     <div className="flex items-center gap-2">
                         <span className="h-3 w-3 rounded-full bg-red-500/80 shadow-[0_0_10px_rgba(239,68,68,0.5)]"></span>
                         <span className="h-3 w-3 rounded-full bg-yellow-400/80 shadow-[0_0_10px_rgba(250,204,21,0.5)]"></span>
@@ -1014,7 +1019,15 @@ const CustomSoftwarePage = () => {
       {/* Internal Linking / Related Services */}
       <section className="py-24 bg-black border-t border-white/5 relative z-10 px-6">
         <div className="max-w-7xl mx-auto">
-          <h3 className="text-xs font-mono text-slate-500 mb-12 uppercase tracking-[0.4em] font-bold">[ RELATED_SYSTEMS ]</h3>
+          <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
+            <h3 className="text-xs font-mono text-slate-500 uppercase tracking-[0.4em] font-bold">[ RELATED_SYSTEMS ]</h3>
+            <div className="flex items-center gap-2 text-sm text-slate-500">
+               <span>Learn more about</span>
+               <a href="https://en.wikipedia.org/wiki/Custom_software" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline flex items-center gap-1">
+                 Custom Software <ArrowUpRight size={14} />
+               </a>
+            </div>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { title: "Web Development", path: "/web-development", icon: <Globe className="w-5 h-5" /> },

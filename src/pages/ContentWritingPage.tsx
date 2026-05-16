@@ -102,12 +102,12 @@ const ContentWritingPage = () => {
   return (
     <div className="bg-[#FFFFFF] text-slate-900 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-slate-900 selection:text-white">
       <Helmet>
-        <title>Content Writing Services | SEO Blogs & Technical Copy ABUQITMIRLABS</title>
+        <title>Content Writing Service for Websites & SEO Blogs</title>
         <meta name="description" content="ABUQITMIRLABS .TECH provides high-authority content writing. From technical whitepapers and SEO-optimized blogs to persuasive SaaS copywriting that builds trust and ranks." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/content-writing" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Content Writing & Strategy | ABUQITMIRLABS" />
+        <meta property="og:title" content="Content Writing Service for Websites & SEO Blogs" />
         <meta property="og:description" content="ABUQITMIRLABS .TECH provides high-authority content writing. From technical whitepapers and SEO blogs to persuasive SaaS copywriting." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/content-writing" />
         <meta property="og:type" content="website" />
@@ -115,7 +115,7 @@ const ContentWritingPage = () => {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Content Writing & Strategy | ABUQITMIRLABS" />
+        <meta name="twitter:title" content="Content Writing Service for Websites & SEO Blogs" />
         <meta name="twitter:description" content="ABUQITMIRLABS .TECH provides high-authority content writing. From technical whitepapers and SEO blogs to persuasive SaaS copywriting." />
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
 
@@ -161,10 +161,10 @@ const ContentWritingPage = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="text-6xl md:text-8xl lg:text-9xl font-serif leading-[0.9] tracking-tight text-slate-900 mb-12"
+                className="text-4xl md:text-6xl lg:text-7xl font-serif leading-[0.9] tracking-tight text-slate-900 mb-12"
             >
-                Words That <br />
-                <span className="text-slate-400 italic">Persuade and Rank.</span>
+                Content Writing Service <br />
+                <span className="text-slate-400 italic">for Websites & SEO Blogs</span>
             </motion.h1>
 
             <motion.p 

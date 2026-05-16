@@ -147,12 +147,12 @@ const AIAgentDevelopmentPage = () => {
   return (
     <div className="bg-black text-[#E8E8ED] font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#00E5FF]/20 selection:text-white">
       <Helmet>
-        <title>AI Agent Development | Autonomous Workflow Automation ABUQITMIRLABS</title>
+        <title>AI Agent Development Service | Chatbots & Automation</title>
         <meta name="description" content="ABUQITMIRLABS .TECH engineers autonomous AI agents and LLM-powered workflow automations. Specialized in RAG implementation, intelligent chatbots, and custom AI personas for enterprise efficiency." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/ai-agent-development" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="AI Agent Development | ABUQITMIRLABS" />
+        <meta property="og:title" content="AI Agent Development Service | Chatbots & Automation" />
         <meta property="og:description" content="ABUQITMIRLABS .TECH engineers autonomous AI agents and LLM-powered workflow automations. Specialized in RAG implementation, chatbots, and custom AI personas." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/ai-agent-development" />
         <meta property="og:type" content="website" />
@@ -160,7 +160,7 @@ const AIAgentDevelopmentPage = () => {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI Agent Development | ABUQITMIRLABS" />
+        <meta name="twitter:title" content="AI Agent Development Service | Chatbots & Automation" />
         <meta name="twitter:description" content="ABUQITMIRLABS .TECH engineers autonomous AI agents and LLM-powered workflow automations. Specialized in RAG implementation, chatbots, and custom AI personas." />
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
 
@@ -290,8 +290,8 @@ const AIAgentDevelopmentPage = () => {
           </div>
           
           <h1 className="text-4xl md:text-[4rem] lg:text-[5rem] font-bold tracking-tighter leading-[0.95] text-white uppercase mb-10">
-             AI Agent Development <br />
-             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#80F2FF] via-[#00E5FF] to-[#0099AA]">for Workflow Automation.</span>
+             AI Agent Development Service <br />
+             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#80F2FF] via-[#00E5FF] to-[#0099AA]">| Chatbots & Automation</span>
           </h1>
           
           <p className="text-lg md:text-xl font-mono text-zinc-500 max-w-4xl mx-auto mb-12 leading-relaxed">

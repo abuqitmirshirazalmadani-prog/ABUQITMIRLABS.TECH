@@ -62,12 +62,12 @@ const ContactPage = () => {
   return (
     <div className="bg-black text-[#E8E8ED] font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#00E5FF]/20 selection:text-white">
       <Helmet>
-        <title>Contact ABUQITMIRLABS | Hire a Custom Software Specialist</title>
+        <title>Contact App Developer | Get Free Project Quote</title>
         <meta name="description" content="Connect with the lead architects at ABUQITMIRLABS .TECH. Hire us for custom software development, AI agent automation, and world-class digital engineering projects. Secure communication relay active." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/contact" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Contact ABUQITMIRLABS | Let's Build Your Vision" />
+        <meta property="og:title" content="Contact App Developer | Get Free Project Quote" />
         <meta property="og:description" content="Connect with the lead architects at ABUQITMIRLABS .TECH for custom software development and AI automation." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/contact" />
         <meta property="og:type" content="website" />
@@ -75,7 +75,7 @@ const ContactPage = () => {
 
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact ABUQITMIRLABS | Hire a Custom Software Specialist" />
+        <meta name="twitter:title" content="Contact App Developer | Get Free Project Quote" />
         <meta name="twitter:description" content="Connect with the lead architects at ABUQITMIRLABS .TECH for custom software development and AI automation." />
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
       </Helmet>
@@ -106,10 +106,10 @@ const ContactPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase mb-8"
+                className="text-4xl md:text-6xl lg:text-[5.5rem] font-black tracking-tighter leading-[0.9] text-white uppercase mb-8"
              >
-                Get In <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#80F2FF] to-[#0099AA]">Touch.</span>
+                Contact App Developer <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#80F2FF] to-[#0099AA]">| Get Free Project Quote</span>
              </motion.h1>
              <div className="w-32 h-2 bg-[#00E5FF] mx-auto mb-12"></div>
           </section>

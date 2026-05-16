@@ -100,12 +100,12 @@ const GraphicsDesignPage = () => {
   return (
     <div className="bg-[#050505] text-neutral-300 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00] selection:text-black">
       <Helmet>
-        <title>Premium Graphics Design & Brand Identity ABUQITMIRLABS</title>
+        <title>Logo & Graphics Design Service | UI/UX Design</title>
         <meta name="description" content="Elevate your digital identity with ABUQITMIRLABS .TECH. Premium brand identity design, conversion-focused UI/UX layouts, and high-fidelity social media creatives." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/graphics-design" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Premium Graphics Design | ABUQITMIRLABS" />
+        <meta property="og:title" content="Logo & Graphics Design Service | UI/UX Design" />
         <meta property="og:description" content="Elevate your digital identity with ABUQITMIRLABS .TECH. Premium brand identity design and conversion-focused UI/UX layouts." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/graphics-design" />
         <meta property="og:type" content="website" />
@@ -166,9 +166,9 @@ const GraphicsDesignPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-5xl sm:text-7xl md:text-[6.5rem] lg:text-[7.5rem] leading-[0.95] font-bold tracking-tighter text-white uppercase mb-10">
-                Premium Graphics<br />
-                <span className="text-[#ccff00]">Designing.</span>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl leading-[0.95] font-bold tracking-tighter text-white uppercase mb-10">
+                Logo & Graphics Design Service <br />
+                <span className="text-[#ccff00]">| UI/UX Design</span>
               </h1>
             </motion.div>
 

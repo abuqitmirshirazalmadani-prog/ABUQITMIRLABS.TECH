@@ -64,12 +64,12 @@ const MobileAppDevelopmentPage = () => {
   return (
     <div className="bg-white text-black font-sans selection:bg-[#ff0099] selection:text-white overflow-x-hidden min-h-screen">
       <Helmet>
-        <title>Mobile App Development Company | Flutter & React Native ABUQITMIRLABS</title>
+        <title>Flutter App Development Service | iOS & Android</title>
         <meta name="description" content="ABUQITMIRLABS .TECH specializes in Flutter and React Native mobile development. We build futuristic, high-performance cross-platform apps with premium UI/UX and scalable backends." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/mobile-app-development" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Mobile App Development Company | ABUQITMIRLABS" />
+        <meta property="og:title" content="Flutter App Development Service | iOS & Android" />
         <meta property="og:description" content="ABUQITMIRLABS .TECH specializes in Flutter and React Native mobile development. High-performance cross-platform apps with premium UI/UX." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/mobile-app-development" />
         <meta property="og:type" content="website" />
@@ -77,7 +77,7 @@ const MobileAppDevelopmentPage = () => {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Mobile App Development Company | ABUQITMIRLABS" />
+        <meta name="twitter:title" content="Flutter App Development Service | iOS & Android" />
         <meta name="twitter:description" content="ABUQITMIRLABS .TECH specializes in Flutter and React Native mobile development. High-performance cross-platform apps with premium UI/UX." />
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
 
@@ -181,9 +181,9 @@ const MobileAppDevelopmentPage = () => {
       <section className="relative pt-24 md:pt-32 pb-20 px-6 md:px-10 overflow-hidden bg-[#ccff00]">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1 text-center lg:text-left">
-            <h1 className="text-6xl md:text-8xl font-black tracking-tight leading-[0.95] lowercase font-display text-black pt-4">
-              Mobile App <br />
-              <span className="text-[#7000ff]">Development.</span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.95] lowercase font-display text-black pt-4">
+              Flutter App <br />
+              <span className="text-[#7000ff]">Development Service | iOS & Android</span>
             </h1>
             
             <p className="text-xl md:text-2xl font-medium text-black/70 max-w-xl leading-relaxed mx-auto">

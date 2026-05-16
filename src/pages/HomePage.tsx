@@ -21,20 +21,20 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <Helmet>
-        <title>AI Mobile App Development Company | SaaS & Flutter Apps ABUQITMIRLABS</title>
-        <meta name="description" content="ABUQITMIRLABS .TECH builds futuristic AI-powered mobile apps, SaaS platforms, Flutter applications, and no-code startup solutions with premium UI/UX and scalable architecture." />
+        <title>Custom Software Development & App Development | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs .TECH provides premium custom software development and AI-powered mobile app solutions. We build scalable SaaS platforms and high-performance digital assets for global enterprises." />
         <link rel="canonical" href="https://abuqitmirlabs.tech" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="AI Mobile App Development Company | SaaS & Flutter Apps ABUQITMIRLABS" />
-        <meta property="og:description" content="ABUQITMIRLABS .TECH builds futuristic AI-powered mobile apps, SaaS platforms, Flutter applications, and no-code startup solutions with premium UI/UX and scalable architecture." />
+        <meta property="og:title" content="Custom Software Development & App Development | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs .TECH provides premium custom software development and AI-powered mobile app solutions." />
         <meta property="og:url" content="https://abuqitmirlabs.tech" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI Mobile App Development Company | SaaS & Flutter Apps ABUQITMIRLABS" />
-        <meta name="twitter:description" content="ABUQITMIRLABS .TECH builds futuristic AI-powered mobile apps, SaaS platforms, Flutter applications, and no-code startup solutions with premium UI/UX and scalable architecture." />
+        <meta name="twitter:title" content="Custom Software Development & App Development | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs .TECH provides premium custom software development and AI-powered mobile app solutions." />
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
 
         {/* Schema Markup */}
@@ -42,29 +42,26 @@ export default function HomePage() {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
-            "name": "ABUQITMIRLABS.TECH",
+            "name": "AbuQitmirLabs .TECH",
             "url": "https://abuqitmirlabs.tech",
             "logo": "https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png",
-            "alternateName": "Abu Qitmir Labs",
             "image": "https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png",
-            "description": "ABUQITMIRLABS .TECH builds futuristic AI-powered mobile apps, SaaS platforms, Flutter applications, and no-code startup solutions with premium UI/UX and scalable architecture.",
+            "description": "Expert custom software development and AI engineering firm. We build scalable SaaS platforms and high-performance applications for global enterprises.",
+            "priceRange": "$$",
             "address": {
               "@type": "PostalAddress",
-              "addressLocality": "London",
-              "addressCountry": "UK"
+              "addressLocality": "Islamabad",
+              "addressCountry": "PK"
             },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": 51.5074,
-              "longitude": -0.1278
-            },
-            "priceRange": "$$$",
             "sameAs": [
               "https://twitter.com/abuqitmirlabs",
-              "https://www.linkedin.com/company/abuqitmirlabs",
-              "https://www.facebook.com/profile.php?id=61583768706452",
-              "https://www.instagram.com/abuqitmirshirazalmadani/",
-              "https://www.youtube.com/@AbuQitmir"
+              "https://www.linkedin.com/company/abuqitmir-labs"
+            ],
+            "serviceType": [
+               "Custom Software Development",
+               "Mobile App Development",
+               "AI Agent Development",
+               "Web Engineering"
             ],
             "contactPoint": {
               "@type": "ContactPoint",

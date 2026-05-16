@@ -101,12 +101,12 @@ const WebDevelopmentPage = () => {
   return (
     <div className="bg-[#050505] text-axiom-sub font-body antialiased overflow-x-hidden min-h-screen relative selection:bg-blue-500/30 selection:text-white">
       <Helmet>
-        <title>Web Development Company | High-Performance Ecosystems ABUQITMIRLABS</title>
+        <title>Custom Web Development Service | React & Next.js</title>
         <meta name="description" content="ABUQITMIRLABS .TECH delivers high-speed, secure web ecosystems. Specialized in Jamstack, Headless CMS, and conversion-optimized web applications with scalable architecture." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/web-development" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Web Development Company | ABUQITMIRLABS" />
+        <meta property="og:title" content="Custom Web Development Service | React & Next.js" />
         <meta property="og:description" content="ABUQITMIRLABS .TECH delivers high-speed, secure web ecosystems. Specialized in Jamstack, Headless CMS, and conversion-optimized web applications." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/web-development" />
         <meta property="og:type" content="website" />
@@ -114,7 +114,7 @@ const WebDevelopmentPage = () => {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Web Development Company | ABUQITMIRLABS" />
+        <meta name="twitter:title" content="Custom Web Development Service | React & Next.js" />
         <meta name="twitter:description" content="ABUQITMIRLABS .TECH delivers high-speed, secure web ecosystems. Specialized in Jamstack, Headless CMS, and conversion-optimized web applications." />
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
 
@@ -250,8 +250,8 @@ const WebDevelopmentPage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-5xl md:text-7xl lg:text-[6.5rem] font-medium tracking-tight text-white text-center mb-8 leading-[1.1] max-w-5xl"
         >
-          Web Development <br />
-          <span className="text-neutral-500">Services for Modern Business.</span>
+          Custom Web Development <br />
+          <span className="text-neutral-500">Service | React & Next.js</span>
         </motion.h1>
 
         <motion.p 

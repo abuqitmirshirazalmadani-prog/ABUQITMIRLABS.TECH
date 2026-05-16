@@ -69,15 +69,17 @@ const USMarketPage = () => {
   return (
     <div className="bg-[#090909] text-[#d3c8b8] min-h-screen font-sans selection:bg-[#ff5b36] selection:text-white">
       <Helmet>
-        <title>Software & Web Development Services USA | ABUQITMIRLABS</title>
+        <title>App Development Company for US Startups | Offshore</title>
         <meta name="description" content="Premium software and web engineering for the US market by ABUQITMIRLABS .TECH. Specialized AI solutions and aggressive SEO for American startups, from Silicon Valley to NYC." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/us-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Elite Software Engineering for the US Market | ABUQITMIRLABS" />
+        <meta property="og:title" content="App Development Company for US Startups | Offshore" />
         <meta property="og:description" content="Premium software and web engineering for the US market by ABUQITMIRLABS .TECH. Specialized AI solutions and aggressive SEO for American startups." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/us-market" />
         <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="App Development Company for US Startups | Offshore" />
       </Helmet>
 
       <Header />
@@ -103,9 +105,15 @@ const USMarketPage = () => {
               Coast-to-Coast Digital Excellence — USA Market
             </motion.div>
 
-            <div className="mb-12">
-              <HeroText text="U.S.A" />
-            </div>
+            <motion.h1 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase mb-12"
+            >
+              App Development Company <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5b36] to-[#ff9d85]">for US Startups | Offshore</span>
+            </motion.h1>
 
             <MagicText 
               text="From Silicon Valley tech startups to established East Coast enterprises, ABUQITMIRLABS .TECH delivers world-class custom software, autonomous AI agents, and aggressive semantic SEO strategies tailored to dominate the highly competitive US digital landscape."
