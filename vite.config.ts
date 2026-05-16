@@ -24,7 +24,7 @@ export default defineConfig(({mode}) => {
         closeBundle: async () => {
           const hostname = 'https://abuqitmirlabs.tech';
           const routes = [
-            { url: '/',                        changefreq: 'weekly',  priority: 1.0, title: 'Custom Software Development & AI Mobile Apps | AbuQitmirLabs', description: "AbuQitmirLabs .TECH is a leading custom software development company. We build SaaS, Flutter apps, and AI solutions for global businesses." },
+            { url: '/',                        changefreq: 'weekly',  priority: 1.0, title: 'Affordable App Development Company | AbuQitmirLabs', description: "AbuQitmirLabs .TECH is a leading app development company. We build SaaS, Flutter apps, and AI solutions for global businesses." },
             { url: '/about',                   changefreq: 'monthly', priority: 0.8, title: 'About Us | AbuQitmirLabs', description: 'Learn about our mission to build cutting-edge AI and mobile solutions.' },
             { url: '/contact',                 changefreq: 'monthly', priority: 0.9, title: 'Contact Us | Start Your Project', description: 'Contact AbuQitmirLabs for your next mobile app or AI software project.' },
             { url: '/custom-software',         changefreq: 'weekly',  priority: 0.9, title: 'Custom Software Development', description: 'Tailor-made software solutions for your unique business needs.' },
@@ -112,12 +112,12 @@ Sitemap: ${hostname}/sitemap.xml`;
             const meaningfulContent = `
               <div id="root">
                 <header>
-                  <h1>${route.title} - Custom Software Development</h1>
+                  <h1>${route.title}</h1>
                 </header>
                 <main>
                   <article>
-                    <h2>Expert ${route.title} Solutions</h2>
-                    <p>At AbuQitmirLabs .TECH, we specialize in <strong>custom software development</strong> and high-performance digital engineering.</p>
+                    <h2>Expert ${route.title}</h2>
+                    <p>At AbuQitmirLabs .TECH, we specialize in <strong>affordable app development</strong> and high-performance digital engineering.</p>
                     <img src="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" style="max-width:300px" />
                     <p>${route.description}</p>
                     <section>

@@ -21,19 +21,19 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <Helmet>
-        <title>Custom Software Development & App Development | AbuQitmirLabs</title>
+        <title>Affordable App Development Company | AbuQitmirLabs</title>
         <meta name="description" content="AbuQitmirLabs .TECH provides premium custom software development and AI-powered mobile app solutions. We build scalable SaaS platforms and high-performance digital assets for global enterprises." />
         <link rel="canonical" href="https://abuqitmirlabs.tech" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Custom Software Development & App Development | AbuQitmirLabs" />
+        <meta property="og:title" content="Affordable App Development Company | AbuQitmirLabs" />
         <meta property="og:description" content="AbuQitmirLabs .TECH provides premium custom software development and AI-powered mobile app solutions." />
         <meta property="og:url" content="https://abuqitmirlabs.tech" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Custom Software Development & App Development | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Affordable App Development Company | AbuQitmirLabs" />
         <meta name="twitter:description" content="AbuQitmirLabs .TECH provides premium custom software development and AI-powered mobile app solutions." />
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
 
