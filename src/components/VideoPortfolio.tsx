@@ -23,7 +23,7 @@ const videos = [
         id: "v3",
         title: "AI-Driven Business Growth",
         desc: "How we implement autonomous LLM agents to automate business workflows.",
-        videoId: "HgPP7c9fftw"
+        videoId: "KAhcBqKN_ks"
     },
     {
         id: "v4",
@@ -41,7 +41,7 @@ const videos = [
         id: "v6",
         title: "Future of Digital Assets",
         desc: "A vision for secure, fast, and highly intelligent digital transformations.",
-        videoId: "X9xyYiT79Cc"
+        videoId: "FgtXLw-GNKk"
     }
 ];
 

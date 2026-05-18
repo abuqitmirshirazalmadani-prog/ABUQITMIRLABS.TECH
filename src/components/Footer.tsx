@@ -178,6 +178,9 @@ const Footer = () => {
                                        <ExternalLink size={10} /> Find us on Google Maps
                                     </a>
                                     <span className="text-[10px]">© 2026 ABUQITMIRLABS.TECH. All rights reserved.</span>
+                                    <a href="https://abuqitmirlabs.tech" target="_blank" rel="noopener noreferrer" className="text-[10px] font-black hover:text-white transition-colors border-l border-black/20 pl-4">
+                                        Developed by AbuQitmirLabs.tech
+                                    </a>
                                 </div>
                            </div>
                         </div>
