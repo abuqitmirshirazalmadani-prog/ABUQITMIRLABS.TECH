@@ -203,7 +203,7 @@ const ServiceItem: React.FC<{ service: Service }> = ({ service }) => {
                     {isInView && (
                         <AnimatedShinyText 
                             text={service.title} 
-                            textClassName="text-4xl sm:text-5xl md:text-6xl lg:text-6xl"
+                            textClassName="text-2xl sm:text-5xl md:text-6xl"
                         />
                     )}
                 </div>
@@ -268,7 +268,7 @@ const ServicesSection = () => {
                 </motion.div>
                 <AnimatedShinyText 
                     text="Our Premium Digital Services (Engineered for Growth)" 
-                    textClassName="text-4xl md:text-6xl"
+                    textClassName="text-2xl sm:text-4xl md:text-6xl"
                     className="mb-8"
                 />
                 <MagicText 

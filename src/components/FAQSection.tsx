@@ -98,7 +98,7 @@ const FAQSection = () => {
                     >
                         <AnimatedShinyText 
                             text="Frequently Asked Questions (Answering Your Biggest Queries)" 
-                            textClassName="text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+                            textClassName="text-2xl sm:text-4xl md:text-5xl lg:text-6xl"
                             className="px-2 mb-8"
                         />
                         <MagicText 

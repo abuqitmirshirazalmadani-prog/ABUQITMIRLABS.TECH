@@ -17,12 +17,12 @@ const HeroHeading = ({ className }: HeroHeadingProps) => {
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className="font-black uppercase tracking-tighter leading-[0.95] flex flex-col items-center"
             >
-                <span className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-white">
+                <span className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl text-white">
                     Affordable App Development Company
                 </span>
                 <div className="flex items-center gap-4 mt-4">
                     <span className="hidden md:block text-5xl lg:text-7xl text-white/20">|</span>
-                    <span className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-[#ccff00]">
+                    <span className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl text-[#ccff00]">
                         AbuQitmirLabs
                     </span>
                 </div>

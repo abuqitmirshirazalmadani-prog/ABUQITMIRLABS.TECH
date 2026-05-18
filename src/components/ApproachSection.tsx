@@ -23,7 +23,7 @@ const ApproachSection = () => {
 
                 <AnimatedShinyText 
                     text="Our Unique Approach: Why We Are Different" 
-                    textClassName="text-4xl md:text-5xl lg:text-3xl"
+                    textClassName="text-3xl sm:text-4xl md:text-5xl"
                     className="mb-8"
                 />
 

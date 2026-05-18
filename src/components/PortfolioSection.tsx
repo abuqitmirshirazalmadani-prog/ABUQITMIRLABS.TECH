@@ -22,7 +22,7 @@ const PortfolioSection = () => {
 
                     <AnimatedShinyText 
                         text="See Our Work in Action: Real Projects, Real Results" 
-                        textClassName="text-4xl md:text-6xl lg:text-7xl"
+                        textClassName="text-2xl sm:text-4xl md:text-6xl lg:text-7xl"
                         className="mb-8"
                     />
 

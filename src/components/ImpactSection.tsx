@@ -113,7 +113,7 @@ const ImpactSection = () => {
 
                     <AnimatedShinyText 
                         text="Real Business Impact: What You Will Achieve" 
-                        textClassName="text-3xl md:text-5xl lg:text-7xl"
+                        textClassName="text-2xl sm:text-4xl md:text-5xl lg:text-7xl"
                         className="mb-8"
                     />
 

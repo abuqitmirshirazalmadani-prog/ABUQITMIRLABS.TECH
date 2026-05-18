@@ -50,7 +50,7 @@ const TechStackSection = () => {
                         </span>
                         <AnimatedShinyText 
                             text="Modern Technologies We Use" 
-                            textClassName="leading-tight md:text-8xl text-6xl text-white mb-2 font-bold tracking-tighter"
+                            textClassName="leading-tight md:text-8xl sm:text-5xl text-3xl text-white mb-2 font-bold tracking-tighter"
                             className="mb-8"
                         />
                     </motion.div>

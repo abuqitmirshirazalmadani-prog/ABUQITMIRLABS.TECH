@@ -145,7 +145,7 @@ const ProcessSection = () => {
                         </span>
                         <AnimatedShinyText 
                             text="Our Proven 5-Step Development Process" 
-                            textClassName="text-4xl md:text-6xl"
+                            textClassName="text-2xl sm:text-4xl md:text-6xl"
                             className="mb-8"
                         />
                         <MagicText 

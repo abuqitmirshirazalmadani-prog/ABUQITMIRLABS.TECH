@@ -101,7 +101,25 @@ export default function HomePage() {
               "name": "Shiraz Almadani",
               "jobTitle": "CEO & Lead Engineer",
               "sameAs": "https://www.linkedin.com/in/abu-qitmir-697423390/"
-            }
+            },
+            "video": [
+              {
+                "@type": "VideoObject",
+                "name": "Enterprise Digital Architecture",
+                "description": "Watch our lead architect ABUQITMIRLABS.TECH breakdown complex digital ecosystems.",
+                "thumbnailUrl": "https://img.youtube.com/vi/v25Fo6O3iy4/maxresdefault.jpg",
+                "uploadDate": "2024-05-18",
+                "embedUrl": "https://www.youtube.com/embed/v25Fo6O3iy4"
+              },
+              {
+                "@type": "VideoObject",
+                "name": "Advanced Engineering Solutions",
+                "description": "Deep dive into High-Performance Web Tech and scalable backend systems.",
+                "thumbnailUrl": "https://img.youtube.com/vi/110zeH-eEEk/maxresdefault.jpg",
+                "uploadDate": "2024-05-18",
+                "embedUrl": "https://www.youtube.com/embed/110zeH-eEEk"
+              }
+            ]
           })}
         </script>
 

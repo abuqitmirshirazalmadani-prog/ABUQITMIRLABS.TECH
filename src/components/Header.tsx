@@ -45,6 +45,7 @@ const Header = () => {
                 { name: 'Pakistan Market', href: '/pakistan-market' },
                 { name: 'Canada Market', href: '/canada-market' },
                 { name: 'Poland Market', href: '/poland-market' },
+                { name: 'Australia Market', href: '/australia-market' },
             ]
         },
         { name: 'About Us', href: '/about' },
@@ -146,7 +147,7 @@ const Header = () => {
                             animate={{ x: 0 }}
                             exit={{ x: '100%' }}
                             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                            className="fixed top-0 right-0 h-screen w-[85%] max-w-[340px] bg-black z-[120] md:hidden shadow-2xl flex flex-col border-l border-white/10"
+                            className="fixed top-0 right-0 h-screen w-[85%] max-w-[340px] bg-[#050505] z-[120] md:hidden shadow-2xl flex flex-col border-l border-white/10"
                         >
                             {/* Mobile Menu Header */}
                             <div className="flex items-center justify-between px-6 h-20 border-b border-white/5">
