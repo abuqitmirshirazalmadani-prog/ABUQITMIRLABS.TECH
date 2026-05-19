@@ -64,13 +64,13 @@ const MobileAppDevelopmentPage = () => {
   return (
     <div className="bg-white text-black font-sans selection:bg-[#ff0099] selection:text-white overflow-x-hidden min-h-screen">
       <Helmet>
-        <title>Flutter App Development Service | iOS & Android</title>
-        <meta name="description" content="ABUQITMIRLABS .TECH specializes in Flutter and React Native mobile development. We build futuristic, high-performance cross-platform apps with premium UI/UX and scalable backends." />
+        <title>Flutter & React Native App Development | iOS & Android | AbuQitmirLabs</title>
+        <meta name="description" content="Premium Flutter and React Native mobile development. We engineer futuristic, high-performance cross-platform apps with elite UI/UX and scalable cloud backends." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/mobile-app-development" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Flutter App Development Service | iOS & Android" />
-        <meta property="og:description" content="ABUQITMIRLABS .TECH specializes in Flutter and React Native mobile development. High-performance cross-platform apps with premium UI/UX." />
+        <meta property="og:title" content="Flutter & React Native App Development | AbuQitmirLabs" />
+        <meta property="og:description" content="Premium Flutter and React Native mobile development. High-performance cross-platform apps with elite UI/UX." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/mobile-app-development" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
@@ -182,7 +182,7 @@ const MobileAppDevelopmentPage = () => {
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1 text-center lg:text-left">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.95] lowercase font-display text-black pt-4">
-              Flutter App <br />
+              Premium App <br />
               <span className="text-[#7000ff]">Development Service | iOS & Android</span>
             </h1>
             

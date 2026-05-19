@@ -126,13 +126,13 @@ const CustomSoftwarePage = () => {
   return (
     <div className="bg-[#000000] text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-blue-500/30 selection:text-white">
       <Helmet>
-        <title>Custom Software Development Services | AbuQitmirLabs</title>
-        <meta name="description" content="Expert custom software development and scalable engineering for startups. We build robust ERP systems, SaaS platforms, and secure high-performance architectures." />
+        <title>Bespoke Software Engineering & Enterprise Solutions | AbuQitmirLabs</title>
+        <meta name="description" content="Expert bespoke software engineering firm. We build robust ERP systems, scalable SaaS platforms, and secure high-performance architectures for global enterprises." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/custom-software" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Custom Software Development Services | AbuQitmirLabs" />
-        <meta property="og:description" content="Expert custom software development and scalable engineering for startups." />
+        <meta property="og:title" content="Bespoke Software Engineering & Enterprise Solutions | AbuQitmirLabs" />
+        <meta property="og:description" content="Expert bespoke software engineering and scalable enterprise solutions." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/custom-software" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
@@ -145,24 +145,40 @@ const CustomSoftwarePage = () => {
         
         {/* Schema Markup */}
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://abuqitmirlabs.tech"
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://abuqitmirlabs.tech"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Custom Software Development",
+                  "item": "https://abuqitmirlabs.tech/custom-software"
+                }
+              ]
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "Bespoke Software Engineering",
+              "serviceType": "Custom Software Development",
+              "provider": {
+                "@type": "Organization",
+                "name": "AbuQitmirLabs",
+                "url": "https://abuqitmirlabs.tech",
+                "logo": "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png"
               },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Custom Software Development",
-                "item": "https://abuqitmirlabs.tech/custom-software"
-              }
-            ]
-          })}
+              "description": "Expert bespoke software engineering firm delivering robust ERP systems, scalable SaaS platforms, and secure high-performance architectures.",
+              "areaServed": "Global"
+            }
+          ])}
         </script>
         <script type="application/ld+json">
           {JSON.stringify({
@@ -317,8 +333,8 @@ const CustomSoftwarePage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 className="mx-auto max-w-5xl text-3xl font-medium tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl uppercase font-black"
               >
-                Custom Software Development <br />
-                <span className="text-[#3b82f6]">for Global Business.</span>
+                Bespoke Software Engineering <br />
+                <span className="text-[#3b82f6]">for Enterprise Scale.</span>
               </motion.h1>
               
               <motion.p 

@@ -69,17 +69,53 @@ const USMarketPage = () => {
   return (
     <div className="bg-[#090909] text-[#d3c8b8] min-h-screen font-sans selection:bg-[#ff5b36] selection:text-white">
       <Helmet>
-        <title>App Development Company for US Startups | Offshore</title>
-        <meta name="description" content="Premium software and web engineering for the US market by ABUQITMIRLABS .TECH. Specialized AI solutions and aggressive SEO for American startups, from Silicon Valley to NYC." />
+        <title>Software Development for US Startups & NY Businesses | AbuQitmirLabs</title>
+        <meta name="description" content="Custom software engineering and AI solutions for the US market. CCPA compliant development and strategic SEO for startups in Silicon Valley, Austin, and NYC." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/us-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="App Development Company for US Startups | Offshore" />
-        <meta property="og:description" content="Premium software and web engineering for the US market by ABUQITMIRLABS .TECH. Specialized AI solutions and aggressive SEO for American startups." />
+        <meta property="og:title" content="Software Development for US Startups & NY Businesses | AbuQitmirLabs" />
+        <meta property="og:description" content="Custom software engineering and AI solutions for the US market. CCPA compliant development for American startups." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/us-market" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="App Development Company for US Startups | Offshore" />
+        <meta name="twitter:title" content="Software Development for US Startups | AbuQitmirLabs" />
+        
+        {/* Schema Markup */}
+        <script type="application/ld+json">
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://abuqitmirlabs.tech"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "US Market",
+                  "item": "https://abuqitmirlabs.tech/us-market"
+                }
+              ]
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "Software Development for US Startups",
+              "description": "Custom software engineering and AI solutions specifically for the American market, ensuring CCPA and HIPAA compliance.",
+              "provider": {
+                "@type": "Organization",
+                "name": "AbuQitmirLabs",
+                "url": "https://abuqitmirlabs.tech"
+              },
+              "areaServed": "US"
+            }
+          ])}
+        </script>
       </Helmet>
 
       <Header />
@@ -111,8 +147,8 @@ const USMarketPage = () => {
               transition={{ delay: 0.2 }}
               className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase mb-12"
             >
-              App Development Company <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5b36] to-[#ff9d85]">for US Startups | Offshore</span>
+              Software Development <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5b36] to-[#ff9d85]">for US Startups | OffShore</span>
             </motion.h1>
 
             <MagicText 
@@ -192,6 +228,27 @@ const USMarketPage = () => {
       {/* The Solution Section */}
       <section className="py-32 px-6 md:px-10 bg-[#0b0b0b]">
         <div className="max-w-7xl mx-auto">
+          {/* US Specific Compliance Section */}
+          <div className="mb-24 p-12 border border-[#ff5b36]/20 bg-[#ff5b36]/5 rounded-3xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-8 opacity-10">
+              <ShieldCheck size={120} className="text-[#ff5b36]" />
+            </div>
+            <div className="relative z-10 max-w-3xl">
+              <h2 className="text-sm font-mono text-[#ff5b36] mb-6 uppercase tracking-[0.4em] font-bold">[ US_REGULATORY_PROTOCOL ]</h2>
+              <h3 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tighter mb-8 leading-tight">CCPA & HIPAA Compliant <br />Engineering Standards</h3>
+              <p className="text-xl text-[#8d8579] leading-relaxed mb-8">
+                We understand that US businesses face unique data privacy challenges. Our development cycle for the American market includes mandatory security audits to ensure compliance with the <span className="text-white font-bold italic">California Consumer Privacy Act (CCPA)</span> and <span className="text-white font-bold italic">HIPAA standards</span> for health-related digital assets.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                {["Secure US Data Hosting", "Encrypted LLM Integrations", "SOC2 Readiness", "ADA Accessibility Compliance"].map(tag => (
+                  <span key={tag} className="px-4 py-2 bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-widest text-[#bfb4a3] rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
           <div className="mb-20">
             <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#bfb4a3] mb-8 block">The ABUQITMIRLABS .TECH Edge</span>
             <AnimatedShinyText 

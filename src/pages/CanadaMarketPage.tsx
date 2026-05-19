@@ -62,15 +62,51 @@ const CanadaMarketPage = () => {
   return (
     <div className="bg-[#090909] text-[#d3c8b8] min-h-screen font-sans selection:bg-[#ff5b36] selection:text-white">
       <Helmet>
-        <title>Software Engineering & Web Apps Canada | ABUQITMIRLABS</title>
-        <meta name="description" content="Empowering Canadian enterprises with futuristic tech. ABUQITMIRLABS .TECH delivers PIPEDA-compliant software, specialized web apps, and AI automation for Vancouver, Toronto, and beyond." />
+        <title>Software Development Services Canada | PIPEDA Compliant | AbuQitmirLabs</title>
+        <meta name="description" content="Empowering Canadian enterprises with futuristic tech. PIPEDA-compliant software engineering, specialized web apps, and bilingual SEO automation for Vancouver, Toronto, and Montreal." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/canada-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Canadian Enterprise Tech Solutions | ABUQITMIRLABS" />
-        <meta property="og:description" content="Empowering Canadian enterprises with futuristic tech. ABUQITMIRLABS .TECH delivers PIPEDA-compliant software and specialized web apps." />
+        <meta property="og:title" content="Software Development Services Canada | AbuQitmirLabs" />
+        <meta property="og:description" content="Empowering Canadian enterprises with futuristic tech. PIPEDA-compliant software engineering and bilingual digital solutions." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/canada-market" />
         <meta property="og:type" content="website" />
+
+        {/* Schema Markup */}
+        <script type="application/ld+json">
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://abuqitmirlabs.tech"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Canada Market",
+                  "item": "https://abuqitmirlabs.tech/canada-market"
+                }
+              ]
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "Software Development Services Canada",
+              "description": "PIPEDA-compliant software engineering and specialized web apps for the Canadian enterprise market.",
+              "provider": {
+                "@type": "Organization",
+                "name": "AbuQitmirLabs",
+                "url": "https://abuqitmirlabs.tech"
+              },
+              "areaServed": "CA"
+            }
+          ])}
+         </script>
       </Helmet>
 
       <Header />
@@ -98,8 +134,17 @@ const CanadaMarketPage = () => {
               </motion.div>
 
               <div className="mb-12">
-                <HeroText text="CANADA" />
+                <HeroText text="CANADA TECH" />
               </div>
+
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-4xl md:text-6xl font-black tracking-tighter text-white uppercase mb-8"
+              >
+                Software Engineering <br />
+                <span className="text-[#ff5b36]">for Canadian Growth</span>
+              </motion.h1>
 
               <MagicText 
                 text="Accelerate your growth in the Canadian tech landscape. ABUQITMIRLABS .TECH provides scalable custom software engineering and entity-based SEO strategies for businesses nationwide."
@@ -189,6 +234,27 @@ const CanadaMarketPage = () => {
       <section className="py-32 px-6 md:px-10 bg-[#0d0d0d] relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(circle_at_center,rgba(255,91,54,0.03),transparent_70%)]"></div>
         <div className="max-w-7xl mx-auto relative z-10">
+          {/* Canada Specific PIPEDA Section */}
+          <div className="mb-24 p-12 border border-red-600/20 bg-red-600/5 rounded-3xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-8 opacity-10">
+              <ShieldCheck size={120} className="text-red-600" />
+            </div>
+            <div className="relative z-10 max-w-3xl text-left">
+              <h2 className="text-sm font-mono text-red-600 mb-6 uppercase tracking-[0.4em] font-bold">[ CAN_SECURITY_PROTOCOL ]</h2>
+              <h3 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tighter mb-8 leading-tight">PIPEDA Compliant <br />North American Infrastructure</h3>
+              <p className="text-xl text-[#8d8579] leading-relaxed mb-8">
+                Operating in Canada means adhering to <span className="text-white font-bold italic">PIPEDA</span>. We engineer all Canadian applications with comprehensive data privacy safeguards and offer hosting solutions on Canadian soil to ensure your business remains legally sound and your users' data stays protected.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                {["Canadian Data Residency", "PIPEDA Audited", "Bilingual UI/UX", "Secure Public Sector Integration"].map(tag => (
+                  <span key={tag} className="px-4 py-2 bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-widest text-[#bfb4a3] rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
           <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12">
             <AnimatedShinyText 
               text="Cross-Border Excellence." 

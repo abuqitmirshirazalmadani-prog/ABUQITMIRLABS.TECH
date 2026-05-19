@@ -101,13 +101,13 @@ const WebDevelopmentPage = () => {
   return (
     <div className="bg-[#050505] text-axiom-sub font-body antialiased overflow-x-hidden min-h-screen relative selection:bg-blue-500/30 selection:text-white">
       <Helmet>
-        <title>Custom Web Development Service | React & Next.js</title>
-        <meta name="description" content="ABUQITMIRLABS .TECH delivers high-speed, secure web ecosystems. Specialized in Jamstack, Headless CMS, and conversion-optimized web applications with scalable architecture." />
+        <title>Custom Web Engineering & Jamstack Solutions | AbuQitmirLabs</title>
+        <meta name="description" content="Expert web engineering firm delivering high-speed, secure Jamstack ecosystems. Specialized in Next.js, Headless CMS, and conversion-optimized enterprise web applications." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/web-development" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Custom Web Development Service | React & Next.js" />
-        <meta property="og:description" content="ABUQITMIRLABS .TECH delivers high-speed, secure web ecosystems. Specialized in Jamstack, Headless CMS, and conversion-optimized web applications." />
+        <meta property="og:title" content="Custom Web Engineering & Jamstack Solutions | AbuQitmirLabs" />
+        <meta property="og:description" content="Expert web engineering firm delivering high-speed, secure Jamstack ecosystems and scalable enterprise applications." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/web-development" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />

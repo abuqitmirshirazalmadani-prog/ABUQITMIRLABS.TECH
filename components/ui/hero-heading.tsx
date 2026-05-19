@@ -18,7 +18,7 @@ const HeroHeading = ({ className }: HeroHeadingProps) => {
                 className="font-black uppercase tracking-tighter leading-[0.95] flex flex-col items-center"
             >
                 <span className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl text-white">
-                    Affordable App Development Company
+                    Full-Service Digital Agency
                 </span>
                 <div className="flex items-center gap-4 mt-4">
                     <span className="hidden md:block text-5xl lg:text-7xl text-white/20">|</span>

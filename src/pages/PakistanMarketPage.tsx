@@ -69,13 +69,13 @@ const PakistanMarketPage = () => {
   return (
     <div className="bg-[#090909] text-[#d3c8b8] min-h-screen font-sans selection:bg-[#ff5b36] selection:text-white overflow-x-hidden">
       <Helmet>
-        <title>Mobile App Development Company in Pakistan | Best</title>
-        <meta name="description" content="Driving digital innovation in Pakistan. ABUQITMIRLABS .TECH provides top-tier custom software, AI agent integration, and hyper-local SEO for businesses in Karachi, Lahore, and Islamabad." />
+        <title>Custom Software & Local SEO in Pakistan | AbuQitmirLabs</title>
+        <meta name="description" content="Driving digital innovation in Pakistan. AbuQitmirLabs .TECH provides top-tier custom software engineering, AI agent implementation, and hyper-local SEO for Karachi, Lahore, and Islamabad." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/pakistan-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Mobile App Development Company in Pakistan | Best" />
-        <meta property="og:description" content="Driving digital innovation in Pakistan. ABUQITMIRLABS .TECH provides top-tier custom software, AI agent integration, and hyper-local SEO." />
+        <meta property="og:title" content="Custom Software & Local SEO in Pakistan | AbuQitmirLabs" />
+        <meta property="og:description" content="Expert custom software engineering and hyper-local SEO optimization for the Pakistani market." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/pakistan-market" />
         <meta property="og:type" content="website" />
 
@@ -84,6 +84,42 @@ const PakistanMarketPage = () => {
         <meta name="twitter:title" content="Mobile App Development Company in Pakistan | Best" />
         <meta name="twitter:description" content="Driving digital innovation in Pakistan. ABUQITMIRLABS .TECH provides top-tier custom software, AI agent integration, and hyper-local SEO." />
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+        
+        {/* Schema Markup */}
+        <script type="application/ld+json">
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://abuqitmirlabs.tech"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Pakistan Market",
+                  "item": "https://abuqitmirlabs.tech/pakistan-market"
+                }
+              ]
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "Digital Transformation in Pakistan",
+              "description": "Hyper-local SEO and custom software engineering for Karachi, Lahore, and Islamabad.",
+              "provider": {
+                "@type": "Organization",
+                "name": "AbuQitmirLabs",
+                "url": "https://abuqitmirlabs.tech"
+              },
+              "areaServed": "PK"
+            }
+          ])}
+         </script>
       </Helmet>
 
       <Header />
@@ -112,8 +148,8 @@ const PakistanMarketPage = () => {
               transition={{ delay: 0.2 }}
               className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase mb-12"
             >
-              Mobile App Development Company <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5b36] to-[#ff9d85]">in Pakistan | Best</span>
+              Digital Transformation <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5b36] to-[#ff9d85]">for Pakistan's Boom</span>
             </motion.h1>
 
             <MagicText 

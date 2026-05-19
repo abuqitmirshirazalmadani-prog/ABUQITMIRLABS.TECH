@@ -56,13 +56,13 @@ const AustraliaMarketPage = () => {
   return (
     <div className="bg-[#0b0c10] text-[#c5c6c7] min-h-screen font-sans selection:bg-[#66fcf1] selection:text-black">
       <Helmet>
-        <title>Tech Solutions & Software Development Australia | ABUQITMIRLABS</title>
-        <meta name="description" content="Future-proofing Australian businesses with elite software engineering. ABUQITMIRLABS .TECH provides APP-compliant tech, localized SEO, and AI solutions for Sydney, Melbourne, and Perth." />
+        <title>Tech Solutions for Australian Growth | APP Compliant | AbuQitmirLabs</title>
+        <meta name="description" content="Future-proofing Australian businesses with elite software engineering. APP-compliant tech, localized AU SEO, and AI solutions for Sydney, Melbourne, and Brisbane." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/australia-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Australia Digital Transformation | ABUQITMIRLABS" />
-        <meta property="og:description" content="Future-proofing Australian businesses with elite software engineering. ABUQITMIRLABS .TECH provides APP-compliant tech and localized SEO." />
+        <meta property="og:title" content="Tech Solutions for Australian Growth | AbuQitmirLabs" />
+        <meta property="og:description" content="Future-proofing Australian businesses with elite software engineering. APP-compliant tech and localized AU SEO." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/australia-market" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
@@ -72,6 +72,42 @@ const AustraliaMarketPage = () => {
         <meta name="twitter:title" content="Tech Solutions Australia | ABUQITMIRLABS" />
         <meta name="twitter:description" content="Future-proofing Australian businesses with elite software engineering. ABUQITMIRLABS .TECH provides APP-compliant tech and localized SEO." />
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+        
+        {/* Schema Markup */}
+        <script type="application/ld+json">
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://abuqitmirlabs.tech"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Australia Market",
+                  "item": "https://abuqitmirlabs.tech/australia-market"
+                }
+              ]
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "Tech Solutions for Australian Growth",
+              "description": "APP-compliant technology solutions and software engineering for the Australian market.",
+              "provider": {
+                "@type": "Organization",
+                "name": "AbuQitmirLabs",
+                "url": "https://abuqitmirlabs.tech"
+              },
+              "areaServed": "AU"
+            }
+          ])}
+         </script>
       </Helmet>
 
       <Header />
@@ -93,8 +129,17 @@ const AustraliaMarketPage = () => {
             </motion.div>
 
             <div className="mb-8">
-              <HeroText text="AUSTRALIA" />
+              <HeroText text="AUSTRALIA TECH" />
             </div>
+
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter text-white uppercase mb-8"
+            >
+              Tech Solutions <br />
+              <span className="text-[#66fcf1]">for Australian Growth</span>
+            </motion.h1>
 
             <MagicText 
               text="Empower your Australian enterprise with futuristic tech from ABUQITMIRLABS .TECH. We deliver high-performance custom software, secure web ecosystems, and localized SEO strategies crafted for the unique AU economic landscape."
@@ -131,8 +176,30 @@ const AustraliaMarketPage = () => {
       </section>
 
       {/* Australia Specific Highlights */}
-      <section className="py-32 px-6 md:px-10 bg-[#1f2833] border-y border-white/5">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+      <section className="py-32 px-6 md:px-10 bg-[#1f2833] border-y border-white/5 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          {/* Australia Specific APP Compliance Section */}
+          <div className="mb-24 p-12 border border-[#66fcf1]/20 bg-[#66fcf1]/5 rounded-3xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-8 opacity-10">
+              <ShieldCheck size={120} className="text-[#66fcf1]" />
+            </div>
+            <div className="relative z-10 max-w-3xl text-left">
+              <h2 className="text-sm font-mono text-[#66fcf1] mb-6 uppercase tracking-[0.4em] font-bold">[ AU_PRIVACY_PROTOCOL ]</h2>
+              <h3 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tighter mb-8 leading-tight">APP Compliant <br />Australian Data Standards</h3>
+              <p className="text-xl text-[#c5c6c7] leading-relaxed mb-8">
+                Operating in the Australian market requires strict adherence to the <span className="text-white font-bold italic">Australian Privacy Principles (APP)</span>. We architect our AU solutions with robust data protection protocols and offer local data residency options to ensure your business remains fully compliant with the <span className="text-[#66fcf1] font-bold italic">Privacy Act 1988</span>.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                {["Local AU Data Hosting", "APP Audited Cycles", "GST Compliant Logic", "Secure AU Gov Gateway Integration"].map(tag => (
+                  <span key={tag} className="px-4 py-2 bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-widest text-[#66fcf1] rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -173,7 +240,8 @@ const AustraliaMarketPage = () => {
             ))}
           </motion.div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* Services Section */}
       <section className="py-32 px-6 md:px-10">

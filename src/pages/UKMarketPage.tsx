@@ -61,17 +61,53 @@ const UKMarketPage = () => {
   return (
     <div className="bg-[#090909] text-[#d3c8b8] min-h-screen font-sans selection:bg-[#ff5b36] selection:text-white">
       <Helmet>
-        <title>App Development Agency for UK Businesses | Offshore</title>
-        <meta name="description" content="World-class digital transformation for UK businesses by ABUQITMIRLABS .TECH. GDPR-compliant software development, high-performance web apps, and London-centric local SEO." />
+        <title>Digital Transformation for UK Businesses | GDPR Compliant | AbuQitmirLabs</title>
+        <meta name="description" content="Premium digital transformation for the UK market. GDPR-compliant software development, next-gen web apps, and London-centric local SEO strategies for British enterprises." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/uk-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="App Development Agency for UK Businesses | Offshore" />
-        <meta property="og:description" content="World-class digital transformation for UK businesses by ABUQITMIRLABS .TECH. GDPR-compliant software development and high-performance web apps." />
+        <meta property="og:title" content="Digital Transformation for UK Businesses | GDPR Compliant | AbuQitmirLabs" />
+        <meta property="og:description" content="Premium digital transformation for the UK market. GDPR-compliant software development and British market-centric local SEO." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/uk-market" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="App Development Agency for UK Businesses | Offshore" />
+        <meta name="twitter:title" content="UK Digital Transformation | AbuQitmirLabs" />
+        
+        {/* Schema Markup */}
+        <script type="application/ld+json">
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://abuqitmirlabs.tech"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "UK Market",
+                  "item": "https://abuqitmirlabs.tech/uk-market"
+                }
+              ]
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "Digital Transformation for UK Businesses",
+              "description": "Premium digital transformation and software development for the UK market, ensuring GDPR compliance and privacy-by-design standards.",
+              "provider": {
+                "@type": "Organization",
+                "name": "AbuQitmirLabs",
+                "url": "https://abuqitmirlabs.tech"
+              },
+              "areaServed": "GB"
+            }
+          ])}
+         </script>
       </Helmet>
 
       <Header />
@@ -103,8 +139,8 @@ const UKMarketPage = () => {
               transition={{ delay: 0.2 }}
               className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase mb-12"
             >
-              App Development Agency <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5b36] to-[#ff9d85]">for UK Businesses | Offshore</span>
+              Digital Transformation <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5b36] to-[#ff9d85]">for UK Businesses | GDPR Ready</span>
             </motion.h1>
 
             <MagicText 
@@ -168,6 +204,27 @@ const UKMarketPage = () => {
       <section className="py-32 px-6 md:px-10 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_bottom_left,rgba(255,91,54,0.03),transparent_40%)]"></div>
         <div className="max-w-7xl mx-auto relative z-10">
+          {/* UK Specific GDPR Section */}
+          <div className="mb-24 p-12 border border-blue-500/20 bg-blue-500/5 rounded-3xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-8 opacity-10">
+              <Lock size={120} className="text-blue-500" />
+            </div>
+            <div className="relative z-10 max-w-3xl">
+              <h2 className="text-sm font-mono text-blue-500 mb-6 uppercase tracking-[0.4em] font-bold">[ UK_GDPR_PROTOCOL ]</h2>
+              <h3 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tighter mb-8 leading-tight">Privacy-By-Design <br />British Market Standards</h3>
+              <p className="text-xl text-[#8d8579] leading-relaxed mb-8">
+                Navigating the UK's strict data landscape requires more than just a privacy policy. We architect all British projects with <span className="text-white font-bold italic">UK GDPR compliance</span> at the core. From secure data residency options to granular consent management, we ensure your digital assets are legally resilient.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                {["UK Data Residency", "DPA 2018 Compliant", "Granular Cookie Control", "Secure British Banking APIs"].map(tag => (
+                  <span key={tag} className="px-4 py-2 bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-widest text-[#bfb4a3] rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
           <div className="mb-24">
             <AnimatedShinyText 
               text="Secure & Compliant Yield." 

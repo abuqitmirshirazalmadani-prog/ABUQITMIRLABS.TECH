@@ -14,7 +14,8 @@ import {
   Code,
   Layout,
   MessageSquare,
-  Globe2
+  Globe2,
+  Lock
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -62,16 +63,52 @@ const PolandMarketPage = () => {
   return (
     <div className="bg-[#090909] text-[#d3c8b8] min-h-screen font-sans selection:bg-[#ff5b36] selection:text-white">
       <Helmet>
-        <title>Software Development Services Poland | ABUQITMIRLABS</title>
-        <meta name="description" content="ABUQITMIRLABS .TECH bridges the gap between Polish tech excellence and global standards. Specialized software engineering and EU-targeted SEO for the growing Polish market." />
-        <meta property="og:title" content="Software Development Services Poland | ABUQITMIRLABS" />
-        <meta property="og:description" content="Polish tech excellence meets global standards by ABUQITMIRLABS .TECH. Specialized software engineering and EU-targeted SEO." />
+        <title>Software Engineering for Polish Tech Hub | EU GDPR | AbuQitmirLabs</title>
+        <meta name="description" content="Bridging the gap between Polish tech excellence and global standards. Specialized software engineering and EU-targeted growth strategies for the Polish market." />
+        <meta property="og:title" content="Software Engineering for Polish Tech Hub | AbuQitmirLabs" />
+        <meta property="og:description" content="Polish tech excellence meets global standards. Specialized software engineering and EU-targeted growth strategies." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/poland-market" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Software Development Services Poland | ABUQITMIRLABS" />
         <meta name="twitter:description" content="Polish tech excellence meets global standards by ABUQITMIRLABS .TECH. Specialized software engineering and EU-targeted SEO." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/poland-market" />
+        
+        {/* Schema Markup */}
+        <script type="application/ld+json">
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://abuqitmirlabs.tech"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Poland Market",
+                  "item": "https://abuqitmirlabs.tech/poland-market"
+                }
+              ]
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "Software Engineering for Polish Tech Hub",
+              "description": "Bespoke software architecture and EU-targeted Semantic SEO for innovative Polish startups, ensuring full EU GDPR compliance.",
+              "provider": {
+                "@type": "Organization",
+                "name": "AbuQitmirLabs",
+                "url": "https://abuqitmirlabs.tech"
+              },
+              "areaServed": "PL"
+            }
+          ])}
+         </script>
       </Helmet>
 
       <Header />
@@ -93,8 +130,17 @@ const PolandMarketPage = () => {
             </motion.div>
 
             <div className="mb-8">
-              <HeroText text="NEXT-GEN" />
+              <HeroText text="POLAND TECH" />
             </div>
+
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter text-white uppercase mb-8"
+            >
+              Software Engineering <br />
+              <span className="text-[#ff5b36]">for The Polish Hub</span>
+            </motion.h1>
 
             <MagicText 
               text="Capitalize on Europe’s fastest-growing digital economy. ABUQITMIRLABS .TECH delivers high-end custom software architecture, AI agent integration, and EU-targeted Semantic SEO for innovative Polish startups."
@@ -131,8 +177,29 @@ const PolandMarketPage = () => {
       </section>
 
       {/* Market Challenge Section */}
-      <section className="py-32 px-6 md:px-10 border-y border-white/5 bg-[#0b0b0b]">
+      <section className="py-32 px-6 md:px-10 border-y border-white/5 bg-[#0b0b0b] relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
+          {/* Poland Specific GDPR & EU Standards Section */}
+          <div className="mb-24 p-12 border border-blue-500/20 bg-blue-500/5 rounded-3xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-8 opacity-10">
+              <Lock size={120} className="text-blue-500" />
+            </div>
+            <div className="relative z-10 max-w-3xl text-left">
+              <h2 className="text-sm font-mono text-blue-500 mb-6 uppercase tracking-[0.4em] font-bold">[ EU_DIGITAL_PROTOCOL ]</h2>
+              <h3 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tighter mb-8 leading-tight">GDPR Compliant <br />European Tech Standards</h3>
+              <p className="text-xl text-[#d3c8b8] leading-relaxed mb-8">
+                Operating in the heart of Europe means zero compromise on security. We engineer all Polish projects with <span className="text-white font-bold italic">Privacy-By-Design</span> as per <span className="text-white font-bold italic">EU GDPR standards</span>. From secure data encryption to right-to-be-forgotten protocols, we protect your brand’s legal integrity and user trust.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                {["EU Data Residency", "GDPR Audited Code", "Multi-Currency Ready", "ISO 27001 Methodology"].map(tag => (
+                  <span key={tag} className="px-4 py-2 bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-widest text-[#bfb4a3] rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
           <div className="grid lg:grid-cols-2 gap-24 items-center">
             <div>
               <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#ff5b36] mb-8 block">The IT Frontier</span>
