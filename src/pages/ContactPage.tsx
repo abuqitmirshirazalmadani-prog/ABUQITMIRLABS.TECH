@@ -307,7 +307,7 @@ const ContactPage = () => {
                            </div>
                         </a>
                         <a 
-                           href="https://www.google.com/search?q=Abu+Qitmir&stick=H4sIAAAAAAAA_-NgU1I1qEg0SUwyMkw2MzIySUkyTba0MqhITUtOMUgztzRLTTM2TjI3XMTK5ZhUqhCYWZKbWQQAgvyVVDYAAAA&hl=en&mat=CZLYxD3dn4-XElcBTVDHnmXSKVhVcvJTl5LdX-OEaaOViC2V8fJZjkseklE5xuWjtkBxO-4XBgP9s87BonPt73AGlgF_gCfDR0OBlJ87IyZC-1OVUDGmHgKOo0SrOjnijr4&authuser=0" 
+                           href="https://www.google.com/search?q=AbuQitmirLabs.Tech&stick=H4sIAAAAAAAA_-NgU1I1qEg0SUwyMkw2MzIySUkyTba0MqhITUtOMUgztzRLTTM2TjI3XMQq5JhUGphZkptZ5JOYVKwXkpqcAQAWzgp1PgAAAA&hl=en&mat=CZLYxD3dn4-XElYBTVDHnmXmYtE_z1-ukd4W15_4xSOvjTxlQ1o8WZE3DhyScxz25ZkTwHN99aYAJPksPmWrBMFOl-sP_YDLnxLlKt51TeOkcb_wt2bWebGPkDFcieVKmA&authuser=0" 
                            target="_blank"
                            rel="noopener noreferrer"
                            className="flex items-center gap-6 group/item"
@@ -328,7 +328,7 @@ const ContactPage = () => {
                      <div className="grid grid-cols-3 sm:grid-cols-6 gap-4">
                         {[
                            { icon: <Facebook />, color: 'hover:bg-[#1877F2]', href: "https://www.facebook.com/profile.php?id=61583768706452" },
-                           { icon: <MapPin />, color: 'hover:bg-[#4285F4]', href: "https://www.google.com/search?q=Abu+Qitmir&stick=H4sIAAAAAAAA_-NgU1I1qEg0SUwyMkw2MzIySUkyTba0MqhITUtOMUgztzRLTTM2TjI3XMTK5ZhUqhCYWZKbWQQAgvyVVDYAAAA&hl=en&mat=CZLYxD3dn4-XElcBTVDHnmXSKVhVcvJTl5LdX-OEaaOViC2V8fJZjkseklE5xuWjtkBxO-4XBgP9s87BonPt73AGlgF_gCfDR0OBlJ87IyZC-1OVUDGmHgKOo0SrOjnijr4&authuser=0" },
+                           { icon: <MapPin />, color: 'hover:bg-[#4285F4]', href: "https://www.google.com/search?q=AbuQitmirLabs.Tech&stick=H4sIAAAAAAAA_-NgU1I1qEg0SUwyMkw2MzIySUkyTba0MqhITUtOMUgztzRLTTM2TjI3XMQq5JhUGphZkptZ5JOYVKwXkpqcAQAWzgp1PgAAAA&hl=en&mat=CZLYxD3dn4-XElYBTVDHnmXmYtE_z1-ukd4W15_4xSOvjTxlQ1o8WZE3DhyScxz25ZkTwHN99aYAJPksPmWrBMFOl-sP_YDLnxLlKt51TeOkcb_wt2bWebGPkDFcieVKmA&authuser=0" },
                            { icon: <Instagram />, color: 'hover:bg-[#E4405F]', href: "https://www.instagram.com/abuqitmirshirazalmadani/" },
                            { icon: <Youtube />, color: 'hover:bg-[#FF0000]', href: "https://www.youtube.com/@AbuQitmir" },
                            { icon: <Linkedin />, color: 'hover:bg-[#0A66C2]', href: "https://www.linkedin.com/in/abu-qitmir-697423390/" },

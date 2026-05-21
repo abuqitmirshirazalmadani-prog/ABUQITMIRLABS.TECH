@@ -110,7 +110,7 @@ const Footer = () => {
                             {[
                                 { icon: <Facebook className="w-6 h-6 outline-none" />, href: "https://www.facebook.com/profile.php?id=61583768706452" },
                                 { icon: <Star className="w-6 h-6 fill-[#ccff00]" />, href: "https://www.google.com/search?q=ABUQITMIRLABS.TECH&hl=en#lrd=0x3eb33ba408e04b4d:0xc40a6b7e6b772099,1,,,," },
-                                { icon: <MapPin className="w-6 h-6" />, href: "https://www.google.com/search?q=ABUQITMIRLABS.TECH" },
+                                { icon: <MapPin className="w-6 h-6" />, href: "https://www.google.com/search?q=AbuQitmirLabs.Tech&stick=H4sIAAAAAAAA_-NgU1I1qEg0SUwyMkw2MzIySUkyTba0MqhITUtOMUgztzRLTTM2TjI3XMQq5JhUGphZkptZ5JOYVKwXkpqcAQAWzgp1PgAAAA&hl=en&mat=CZLYxD3dn4-XElYBTVDHnmXmYtE_z1-ukd4W15_4xSOvjTxlQ1o8WZE3DhyScxz25ZkTwHN99aYAJPksPmWrBMFOl-sP_YDLnxLlKt51TeOkcb_wt2bWebGPkDFcieVKmA&authuser=0" },
                                 { icon: <Instagram className="w-6 h-6" />, href: "https://www.instagram.com/abuqitmirshirazalmadani/" },
                                 { icon: <Youtube className="w-6 h-6" />, href: "https://www.youtube.com/@AbuQitmir" },
                                 { icon: <Linkedin className="w-6 h-6" />, href: "https://www.linkedin.com/in/abu-qitmir-697423390/" },
@@ -174,7 +174,7 @@ const Footer = () => {
                                     <span>London, UK</span>
                                 </div>
                                 <div className="flex items-center gap-4">
-                                    <a href="https://www.google.com/search?q=ABUQITMIRLABS.TECH" target="_blank" rel="noopener noreferrer" className="hover:underline text-[10px] flex items-center gap-1 font-black">
+                                    <a href="https://www.google.com/search?q=AbuQitmirLabs.Tech&stick=H4sIAAAAAAAA_-NgU1I1qEg0SUwyMkw2MzIySUkyTba0MqhITUtOMUgztzRLTTM2TjI3XMQq5JhUGphZkptZ5JOYVKwXkpqcAQAWzgp1PgAAAA&hl=en&mat=CZLYxD3dn4-XElYBTVDHnmXmYtE_z1-ukd4W15_4xSOvjTxlQ1o8WZE3DhyScxz25ZkTwHN99aYAJPksPmWrBMFOl-sP_YDLnxLlKt51TeOkcb_wt2bWebGPkDFcieVKmA&authuser=0" target="_blank" rel="noopener noreferrer" className="hover:underline text-[10px] flex items-center gap-1 font-black">
                                        <ExternalLink size={10} /> Find us on Google Maps
                                     </a>
                                     <span className="text-[10px]">© 2026 ABUQITMIRLABS.TECH. All rights reserved.</span>
