@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://abuqitmirlabs.tech/</loc>
+    <video:video>
+      <video:thumbnail_loc>https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png</video:thumbnail_loc>
+      <video:title>AbuQitmirLabs .TECH - Custom Enterprise Software &amp; AI Agents</video:title>
+      <video:description>An dynamic introductory highlight summarizing high performance application development, secure database structures, and workflow automation solutions at AbuQitmirLabs .TECH</video:description>
+      <video:content_loc>https://abuqitmirlabs.tech/videos/presentation.mp4</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/abuqitmirlabs</video:player_loc>
+      <video:duration>180</video:duration>
+      <video:publication_date>2026-05-28T00:00:00Z</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+</urlset>

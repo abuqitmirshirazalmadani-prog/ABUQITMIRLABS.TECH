@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://abuqitmirlabs.tech/</loc>
+    <image:image>
+      <image:loc>https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png</image:loc>
+      <image:title>AbuQitmirLabs Brand Logo</image:title>
+      <image:caption>AbuQitmirLabs .TECH full-service custom digital engineering studio brand signature asset</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://abuqitmirlabs.tech/about</loc>
+    <image:image>
+      <image:loc>https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png</image:loc>
+      <image:title>CEO Mohammad Shiraz Almadani Profile Profile Picture</image:title>
+      <image:caption>Shiraz Almadani, Founder and Principal Lead Architect at AbuQitmirLabs .TECH</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://abuqitmirlabs.tech/web-development</loc>
+    <image:image>
+      <image:loc>https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png</image:loc>
+      <image:title>Bespoke Enterprise Web Applications Architecture</image:title>
+      <image:caption>High performance client-centric web architecture powered by modern web technologies</image:caption>
+    </image:image>
+  </url>
+</urlset>
