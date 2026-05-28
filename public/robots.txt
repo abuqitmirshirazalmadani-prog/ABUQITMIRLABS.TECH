@@ -3,4 +3,32 @@ Allow: /
 Disallow: /admin
 Disallow: /google87984536fe5662da
 
+# Explicitly ensure OpenAI ChatGPT and Search crawlers can access and cite the website
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin
+
+# Explicitly enable Google Gemini models to read key pages for citations
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin
+
+# Explicitly enable Anthropic Claude Crawler for indexing
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin
+
+# Explicitly enable Perplexity Finder for AI Search indexing
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+
 Sitemap: https://abuqitmirlabs.tech/sitemap.xml

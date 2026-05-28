@@ -22,20 +22,31 @@ export default function HomePage() {
     <main className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <Helmet>
         <title>Full-Service Digital Agency & Custom Software Solutions | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs .TECH is a global digital agency specializing in custom software engineering, AI automation, and strategic digital growth for modern enterprises." />
+        <meta name="description" content="Discover innovative solutions and services at AbuQit Mir Labs, specializing in technology and development." />
         <link rel="canonical" href="https://abuqitmirlabs.tech" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Full-Service Digital Agency & Custom Software Solutions | AbuQitmirLabs" />
-        <meta property="og:description" content="Premium custom software engineering and strategic digital growth for global enterprises." />
+        <meta property="og:description" content="Discover innovative solutions and services at AbuQit Mir Labs, specializing in technology and development." />
         <meta property="og:url" content="https://abuqitmirlabs.tech" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Affordable App Development Company | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs .TECH provides premium custom software development and AI-powered mobile app solutions." />
+        <meta name="twitter:description" content="Discover innovative solutions and services at AbuQit Mir Labs, specializing in technology and development." />
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+
+        {/* Standard WebSite Schema suggested by AI crawler checker */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "url": "https://abuqitmirlabs.tech/",
+            "name": "Abuqit Mir Labs",
+            "description": "Innovative solutions in AI and technology."
+          })}
+        </script>
 
         {/* Schema Markup */}
         <script type="application/ld+json">
