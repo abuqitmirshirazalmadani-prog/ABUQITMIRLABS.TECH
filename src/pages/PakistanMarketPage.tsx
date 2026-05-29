@@ -86,40 +86,43 @@ const PakistanMarketPage = () => {
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
         
         {/* Schema Markup */}
-        <script type="application/ld+json">
-          {JSON.stringify([
-            {
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://abuqitmirlabs.tech"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Pakistan Market",
-                  "item": "https://abuqitmirlabs.tech/pakistan-market"
-                }
-              ]
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "Service",
-              "name": "Digital Transformation in Pakistan",
-              "description": "Hyper-local SEO and custom software engineering for Karachi, Lahore, and Islamabad.",
-              "provider": {
-                "@type": "Organization",
-                "name": "AbuQitmirLabs",
-                "url": "https://abuqitmirlabs.tech"
+        <script 
+          type="application/ld+json" 
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://abuqitmirlabs.tech"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Pakistan Market",
+                    "item": "https://abuqitmirlabs.tech/pakistan-market"
+                  }
+                ]
               },
-              "areaServed": "PK"
-            }
-          ])}
-         </script>
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                "name": "Digital Transformation in Pakistan",
+                "description": "Hyper-local SEO and custom software engineering for Karachi, Lahore, and Islamabad.",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "AbuQitmirLabs",
+                  "url": "https://abuqitmirlabs.tech"
+                },
+                "areaServed": "PK"
+              }
+            ])
+          }}
+        />
       </Helmet>
 
       <Header />

@@ -74,40 +74,43 @@ const AustraliaMarketPage = () => {
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
         
         {/* Schema Markup */}
-        <script type="application/ld+json">
-          {JSON.stringify([
-            {
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://abuqitmirlabs.tech"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Australia Market",
-                  "item": "https://abuqitmirlabs.tech/australia-market"
-                }
-              ]
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "Service",
-              "name": "Tech Solutions for Australian Growth",
-              "description": "APP-compliant technology solutions and software engineering for the Australian market.",
-              "provider": {
-                "@type": "Organization",
-                "name": "AbuQitmirLabs",
-                "url": "https://abuqitmirlabs.tech"
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://abuqitmirlabs.tech"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Australia Market",
+                    "item": "https://abuqitmirlabs.tech/australia-market"
+                  }
+                ]
               },
-              "areaServed": "AU"
-            }
-          ])}
-         </script>
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                "name": "Tech Solutions for Australian Growth",
+                "description": "APP-compliant technology solutions and software engineering for the Australian market.",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "AbuQitmirLabs",
+                  "url": "https://abuqitmirlabs.tech"
+                },
+                "areaServed": "AU"
+              }
+            ])
+          }}
+        />
       </Helmet>
 
       <Header />

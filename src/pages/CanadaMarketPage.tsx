@@ -73,40 +73,43 @@ const CanadaMarketPage = () => {
         <meta property="og:type" content="website" />
 
         {/* Schema Markup */}
-        <script type="application/ld+json">
-          {JSON.stringify([
-            {
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://abuqitmirlabs.tech"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Canada Market",
-                  "item": "https://abuqitmirlabs.tech/canada-market"
-                }
-              ]
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "Service",
-              "name": "Software Development Services Canada",
-              "description": "PIPEDA-compliant software engineering and specialized web apps for the Canadian enterprise market.",
-              "provider": {
-                "@type": "Organization",
-                "name": "AbuQitmirLabs",
-                "url": "https://abuqitmirlabs.tech"
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://abuqitmirlabs.tech"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Canada Market",
+                    "item": "https://abuqitmirlabs.tech/canada-market"
+                  }
+                ]
               },
-              "areaServed": "CA"
-            }
-          ])}
-         </script>
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                "name": "Software Development Services Canada",
+                "description": "PIPEDA-compliant software engineering and specialized web apps for the Canadian enterprise market.",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "AbuQitmirLabs",
+                  "url": "https://abuqitmirlabs.tech"
+                },
+                "areaServed": "CA"
+              }
+            ])
+          }}
+        />
       </Helmet>
 
       <Header />

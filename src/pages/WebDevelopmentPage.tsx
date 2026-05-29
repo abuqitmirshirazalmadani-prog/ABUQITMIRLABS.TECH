@@ -119,107 +119,119 @@ const WebDevelopmentPage = () => {
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
 
         {/* Schema Markup */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Web Development",
-            "description": "Stop losing customers to slow loading screens. We engineer high-performance, secure, and infinitely scalable websites.",
-            "provider": {
-              "@type": "Organization",
-              "name": "ABUQITMIRLABS .TECH",
-              "url": "https://abuqitmirlabs.tech"
-            },
-            "serviceType": "Web Engineering",
-            "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"],
-            "hasOfferCatalog": {
-                "@type": "OfferCatalog",
-                "name": "Web Engineering Services",
-                "itemListElement": capabilities.map(c => ({
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": c.title
-                    }
-                }))
-            }
-          })}
-        </script>
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "Web Development",
+              "description": "Stop losing customers to slow loading screens. We engineer high-performance, secure, and infinitely scalable websites.",
+              "provider": {
+                "@type": "Organization",
+                "name": "ABUQITMIRLABS .TECH",
+                "url": "https://abuqitmirlabs.tech"
+              },
+              "serviceType": "Web Engineering",
+              "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"],
+              "hasOfferCatalog": {
+                  "@type": "OfferCatalog",
+                  "name": "Web Engineering Services",
+                  "itemListElement": capabilities.map(c => ({
+                      "@type": "Offer",
+                      "itemOffered": {
+                          "@type": "Service",
+                          "name": c.title
+                      }
+                  }))
+              }
+            })
+          }}
+        />
 
         {/* FAQ Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqData.map(item => ({
-              "@type": "Question",
-              "name": item.q,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": item.a
-              }
-            }))
-          })}
-        </script>
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": faqData.map(item => ({
+                "@type": "Question",
+                "name": item.q,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": item.a
+                }
+              }))
+            })
+          }}
+        />
 
         {/* HowTo Schema (Web Process) */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "HowTo",
-            "name": "Our Web Development Process",
-            "description": "A 5-step engineering pipeline optimized for speed and SEO to build high-performance web platforms.",
-            "step": [
-              {
-                "@type": "HowToStep",
-                "name": "Audit & Specs",
-                "text": "Technical analysis of current assets and goal setting."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "UX Architecture",
-                "text": "Mapping user flows for sub-second navigation."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Jamstack Build",
-                "text": "Engineering the frontend with Next.js and Tailwind."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "CMS Sync",
-                "text": "Connecting secure headless content management."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Edge Deploy",
-                "text": "Global distribution via Vercel Edge networks."
-              }
-            ]
-          })}
-        </script>
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "HowTo",
+              "name": "Our Web Development Process",
+              "description": "A 5-step engineering pipeline optimized for speed and SEO to build high-performance web platforms.",
+              "step": [
+                {
+                  "@type": "HowToStep",
+                  "name": "Audit & Specs",
+                  "text": "Technical analysis of current assets and goal setting."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "UX Architecture",
+                  "text": "Mapping user flows for sub-second navigation."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Jamstack Build",
+                  "text": "Engineering the frontend with Next.js and Tailwind."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "CMS Sync",
+                  "text": "Connecting secure headless content management."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Edge Deploy",
+                  "text": "Global distribution via Vercel Edge networks."
+                }
+              ]
+            })
+          }}
+        />
 
         {/* Breadcrumb Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://abuqitmirlabs.tech"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Web Development",
-                "item": "https://abuqitmirlabs.tech/web-development"
-              }
-            ]
-          })}
-        </script>
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://abuqitmirlabs.tech"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Web Development",
+                  "item": "https://abuqitmirlabs.tech/web-development"
+                }
+              ]
+            })
+          }}
+        />
       </Helmet>
 
       <Header />

@@ -82,96 +82,108 @@ const MobileAppDevelopmentPage = () => {
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
 
         {/* Schema Markup */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Mobile App Development",
-            "description": "We design and develop high-performance, native-feeling mobile applications using advanced cross-platform frameworks.",
-            "provider": {
-              "@type": "Organization",
-              "name": "ABUQITMIRLABS .TECH",
-              "url": "https://abuqitmirlabs.tech"
-            },
-            "serviceType": "Mobile Engineering",
-            "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
-          })}
-        </script>
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "Mobile App Development",
+              "description": "We design and develop high-performance, native-feeling mobile applications using advanced cross-platform frameworks.",
+              "provider": {
+                "@type": "Organization",
+                "name": "ABUQITMIRLABS .TECH",
+                "url": "https://abuqitmirlabs.tech"
+              },
+              "serviceType": "Mobile Engineering",
+              "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
+            })
+          }}
+        />
 
         {/* FAQ Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqData.map(item => ({
-              "@type": "Question",
-              "name": item.q,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": item.a
-              }
-            }))
-          })}
-        </script>
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": faqData.map(item => ({
+                "@type": "Question",
+                "name": item.q,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": item.a
+                }
+              }))
+            })
+          }}
+        />
 
         {/* HowTo Schema (Mobile App Process) */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "HowTo",
-            "name": "Our Mobile App Development Process",
-            "description": "A high-octane 5-step development process that transforms cross-platform app ideas into high-performance digital solutions.",
-            "step": [
-              {
-                "@type": "HowToStep",
-                "name": "Explosive Discovery",
-                "text": "Deep dive into app ideas, mapping out user journeys and technical requirements."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Brutal UI/UX Prototyping",
-                "text": "Design bold, thumb-friendly interfaces that stand out in the app store."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "High-Octane Development",
-                "text": "Build using React Native or Flutter with a single codebase that runs like native."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Intense Testing & QA",
-                "text": "Crash-test on dozens of devices to ensure zero bugs and smooth performance."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Launch & Support",
-                "text": "Handle store submissions and assets, then scale the app to the moon."
-              }
-            ]
-          })}
-        </script>
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "HowTo",
+              "name": "Our Mobile App Development Process",
+              "description": "A high-octane 5-step development process that transforms cross-platform app ideas into high-performance digital solutions.",
+              "step": [
+                {
+                  "@type": "HowToStep",
+                  "name": "Explosive Discovery",
+                  "text": "Deep dive into app ideas, mapping out user journeys and technical requirements."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Brutal UI/UX Prototyping",
+                  "text": "Design bold, thumb-friendly interfaces that stand out in the app store."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "High-Octane Development",
+                  "text": "Build using React Native or Flutter with a single codebase that runs like native."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Intense Testing & QA",
+                  "text": "Crash-test on dozens of devices to ensure zero bugs and smooth performance."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Launch & Support",
+                  "text": "Handle store submissions and assets, then scale the app to the moon."
+                }
+              ]
+            })
+          }}
+        />
 
         {/* Breadcrumb Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://abuqitmirlabs.tech"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Mobile App Development",
-                "item": "https://abuqitmirlabs.tech/mobile-app-development"
-              }
-            ]
-          })}
-        </script>
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://abuqitmirlabs.tech"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Mobile App Development",
+                  "item": "https://abuqitmirlabs.tech/mobile-app-development"
+                }
+              ]
+            })
+          }}
+        />
       </Helmet>
 
       <Header />

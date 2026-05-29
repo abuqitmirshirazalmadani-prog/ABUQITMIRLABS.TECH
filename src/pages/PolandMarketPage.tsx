@@ -75,40 +75,43 @@ const PolandMarketPage = () => {
         <link rel="canonical" href="https://abuqitmirlabs.tech/poland-market" />
         
         {/* Schema Markup */}
-        <script type="application/ld+json">
-          {JSON.stringify([
-            {
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://abuqitmirlabs.tech"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Poland Market",
-                  "item": "https://abuqitmirlabs.tech/poland-market"
-                }
-              ]
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "Service",
-              "name": "Software Engineering for Polish Tech Hub",
-              "description": "Bespoke software architecture and EU-targeted Semantic SEO for innovative Polish startups, ensuring full EU GDPR compliance.",
-              "provider": {
-                "@type": "Organization",
-                "name": "AbuQitmirLabs",
-                "url": "https://abuqitmirlabs.tech"
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://abuqitmirlabs.tech"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Poland Market",
+                    "item": "https://abuqitmirlabs.tech/poland-market"
+                  }
+                ]
               },
-              "areaServed": "PL"
-            }
-          ])}
-         </script>
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                "name": "Software Engineering for Polish Tech Hub",
+                "description": "Bespoke software architecture and EU-targeted Semantic SEO for innovative Polish startups, ensuring full EU GDPR compliance.",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "AbuQitmirLabs",
+                  "url": "https://abuqitmirlabs.tech"
+                },
+                "areaServed": "PL"
+              }
+            ])
+          }}
+        />
       </Helmet>
 
       <Header />

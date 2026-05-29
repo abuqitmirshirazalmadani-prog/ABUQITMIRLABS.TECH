@@ -111,21 +111,24 @@ const GraphicsDesignPage = () => {
         <meta property="og:type" content="website" />
 
         {/* Schema Markup */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Graphics Design & Branding",
-            "description": "We craft conversion-focused brand identities, intuitive UI/UX layouts, and compelling social media creatives.",
-            "provider": {
-              "@type": "Organization",
-              "name": "ABUQITMIRLABS .TECH",
-              "url": "https://abuqitmirlabs.tech"
-            },
-            "serviceType": "Design Services",
-            "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
-          })}
-        </script>
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "Graphics Design & Branding",
+              "description": "We craft conversion-focused brand identities, intuitive UI/UX layouts, and compelling social media creatives.",
+              "provider": {
+                "@type": "Organization",
+                "name": "ABUQITMIRLABS .TECH",
+                "url": "https://abuqitmirlabs.tech"
+              },
+              "serviceType": "Design Services",
+              "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
+            })
+          }}
+        />
       </Helmet>
       <Header />
       <Breadcrumbs />

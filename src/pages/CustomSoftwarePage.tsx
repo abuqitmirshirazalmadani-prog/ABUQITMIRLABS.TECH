@@ -144,9 +144,139 @@ const CustomSoftwarePage = () => {
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
         
         {/* Schema Markup */}
-        <script type="application/ld+json">
-          {JSON.stringify([
-            {
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://abuqitmirlabs.tech"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Custom Software Development",
+                    "item": "https://abuqitmirlabs.tech/custom-software"
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                "name": "Bespoke Software Engineering",
+                "serviceType": "Custom Software Development",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "AbuQitmirLabs",
+                  "url": "https://abuqitmirlabs.tech",
+                  "logo": "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png"
+                },
+                "description": "Expert bespoke software engineering firm delivering robust ERP systems, scalable SaaS platforms, and secure high-performance architectures.",
+                "areaServed": "Global"
+              }
+            ])
+          }}
+        />
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "Custom Software Development",
+              "description": "We engineer tailor-made software solutions that streamline operations and give your business a decisive competitive edge.",
+              "provider": {
+                "@type": "Organization",
+                "name": "ABUQITMIRLABS .TECH",
+                "url": "https://abuqitmirlabs.tech"
+              },
+              "serviceType": "Software Development",
+              "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"],
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Software Engineering Services",
+                "itemListElement": services.map((s, i) => ({
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": s.title
+                  }
+                }))
+              }
+            })
+          }}
+        />
+
+        {/* FAQ Schema */}
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": faqData.map(item => ({
+                "@type": "Question",
+                "name": item.q,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": item.a
+                }
+              }))
+            })
+          }}
+        />
+
+        {/* HowTo Schema (Development Process) */}
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "HowTo",
+              "name": "Our Custom Software Development Process",
+              "description": "A 5-step rigorous technical methodology to engineer robust, secure, and scalable software assets.",
+              "step": [
+                {
+                  "@type": "HowToStep",
+                  "name": "Strategic Discovery",
+                  "text": "Analyze business operations to identify where custom software can drive the most ROI."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Architecture & UI",
+                  "text": "Blueprint a scalable multi-tenant architecture and high-fidelity interface design."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Clean Engineering",
+                  "text": "Produce modular, typed code adhering to clean architecture principles for performance."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Security Audits & QA",
+                  "text": "Perform stress tests and end-to-end security audits to ensure zero vulnerabilities."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Launch & Optimization",
+                  "text": "Manage seamless deployment and provide continuous optimization based on usage data."
+                }
+              ]
+            })
+          }}
+        />
+
+        {/* Breadcrumb Schema */}
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               "itemListElement": [
@@ -163,124 +293,9 @@ const CustomSoftwarePage = () => {
                   "item": "https://abuqitmirlabs.tech/custom-software"
                 }
               ]
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "Service",
-              "name": "Bespoke Software Engineering",
-              "serviceType": "Custom Software Development",
-              "provider": {
-                "@type": "Organization",
-                "name": "AbuQitmirLabs",
-                "url": "https://abuqitmirlabs.tech",
-                "logo": "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png"
-              },
-              "description": "Expert bespoke software engineering firm delivering robust ERP systems, scalable SaaS platforms, and secure high-performance architectures.",
-              "areaServed": "Global"
-            }
-          ])}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Custom Software Development",
-            "description": "We engineer tailor-made software solutions that streamline operations and give your business a decisive competitive edge.",
-            "provider": {
-              "@type": "Organization",
-              "name": "ABUQITMIRLABS .TECH",
-              "url": "https://abuqitmirlabs.tech"
-            },
-            "serviceType": "Software Development",
-            "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"],
-            "hasOfferCatalog": {
-              "@type": "OfferCatalog",
-              "name": "Software Engineering Services",
-              "itemListElement": services.map((s, i) => ({
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": s.title
-                }
-              }))
-            }
-          })}
-        </script>
-
-        {/* FAQ Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqData.map(item => ({
-              "@type": "Question",
-              "name": item.q,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": item.a
-              }
-            }))
-          })}
-        </script>
-
-        {/* HowTo Schema (Development Process) */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "HowTo",
-            "name": "Our Custom Software Development Process",
-            "description": "A 5-step rigorous technical methodology to engineer robust, secure, and scalable software assets.",
-            "step": [
-              {
-                "@type": "HowToStep",
-                "name": "Strategic Discovery",
-                "text": "Analyze business operations to identify where custom software can drive the most ROI."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Architecture & UI",
-                "text": "Blueprint a scalable multi-tenant architecture and high-fidelity interface design."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Clean Engineering",
-                "text": "Produce modular, typed code adhering to clean architecture principles for performance."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Security Audits & QA",
-                "text": "Perform stress tests and end-to-end security audits to ensure zero vulnerabilities."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Launch & Optimization",
-                "text": "Manage seamless deployment and provide continuous optimization based on usage data."
-              }
-            ]
-          })}
-        </script>
-
-        {/* Breadcrumb Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://abuqitmirlabs.tech"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Custom Software Development",
-                "item": "https://abuqitmirlabs.tech/custom-software"
-              }
-            ]
-          })}
-        </script>
+            })
+          }}
+        />
       </Helmet>
 
       {/* Unicorn Mask Background */}

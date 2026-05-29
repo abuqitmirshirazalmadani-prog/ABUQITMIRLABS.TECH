@@ -120,21 +120,24 @@ const ContentWritingPage = () => {
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
 
         {/* Schema Markup */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Content Writing",
-            "description": "We provide E-E-A-T focused, meticulously researched content writing that satisfies complex search engine algorithms and builds genuine trust.",
-            "provider": {
-              "@type": "Organization",
-              "name": "ABUQITMIRLABS .TECH",
-              "url": "https://abuqitmirlabs.tech"
-            },
-            "serviceType": "Content Strategy",
-            "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
-          })}
-        </script>
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "Content Writing",
+              "description": "We provide E-E-A-T focused, meticulously researched content writing that satisfies complex search engine algorithms and builds genuine trust.",
+              "provider": {
+                "@type": "Organization",
+                "name": "ABUQITMIRLABS .TECH",
+                "url": "https://abuqitmirlabs.tech"
+              },
+              "serviceType": "Content Strategy",
+              "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
+            })
+          }}
+        />
       </Helmet>
 
       <Header />

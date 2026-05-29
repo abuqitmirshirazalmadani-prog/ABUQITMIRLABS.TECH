@@ -103,55 +103,64 @@ const SEOPage = () => {
         <meta property="og:type" content="website" />
 
         {/* Schema Markup */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://abuqitmirlabs.tech"
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://abuqitmirlabs.tech"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "SEO Mastery",
+                  "item": "https://abuqitmirlabs.tech/seo-mastery"
+                }
+              ]
+            })
+          }}
+        />
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "SEO Mastery & Semantic Optimization",
+              "description": "Expert Semantic Entity SEO, Local Map Pack optimization, and E-E-A-T focused content strategies for global businesses.",
+              "provider": {
+                "@type": "Organization",
+                "name": "ABUQITMIRLABS .TECH",
+                "url": "https://abuqitmirlabs.tech"
               },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "SEO Mastery",
-                "item": "https://abuqitmirlabs.tech/seo-mastery"
-              }
-            ]
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "SEO Mastery & Semantic Optimization",
-            "description": "Expert Semantic Entity SEO, Local Map Pack optimization, and E-E-A-T focused content strategies for global businesses.",
-            "provider": {
-              "@type": "Organization",
-              "name": "ABUQITMIRLABS .TECH",
-              "url": "https://abuqitmirlabs.tech"
-            },
-            "serviceType": "Search Engine Optimization",
-            "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqData.map(item => ({
-              "@type": "Question",
-              "name": item.q,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": item.a
-              }
-            }))
-          })}
-        </script>
+              "serviceType": "Search Engine Optimization",
+              "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
+            })
+          }}
+        />
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": faqData.map(item => ({
+                "@type": "Question",
+                "name": item.q,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": item.a
+                }
+              }))
+            })
+          }}
+        />
       </Helmet>
 
       <Header />

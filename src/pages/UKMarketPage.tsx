@@ -74,40 +74,43 @@ const UKMarketPage = () => {
         <meta name="twitter:title" content="UK Digital Transformation | AbuQitmirLabs" />
         
         {/* Schema Markup */}
-        <script type="application/ld+json">
-          {JSON.stringify([
-            {
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://abuqitmirlabs.tech"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "UK Market",
-                  "item": "https://abuqitmirlabs.tech/uk-market"
-                }
-              ]
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "Service",
-              "name": "Digital Transformation for UK Businesses",
-              "description": "Premium digital transformation and software development for the UK market, ensuring GDPR compliance and privacy-by-design standards.",
-              "provider": {
-                "@type": "Organization",
-                "name": "AbuQitmirLabs",
-                "url": "https://abuqitmirlabs.tech"
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://abuqitmirlabs.tech"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "UK Market",
+                    "item": "https://abuqitmirlabs.tech/uk-market"
+                  }
+                ]
               },
-              "areaServed": "GB"
-            }
-          ])}
-         </script>
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                "name": "Digital Transformation for UK Businesses",
+                "description": "Premium digital transformation and software development for the UK market, ensuring GDPR compliance and privacy-by-design standards.",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "AbuQitmirLabs",
+                  "url": "https://abuqitmirlabs.tech"
+                },
+                "areaServed": "GB"
+              }
+            ])
+          }}
+        />
       </Helmet>
 
       <Header />

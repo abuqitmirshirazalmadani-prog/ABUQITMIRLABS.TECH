@@ -82,40 +82,43 @@ const USMarketPage = () => {
         <meta name="twitter:title" content="Software Development for US Startups | AbuQitmirLabs" />
         
         {/* Schema Markup */}
-        <script type="application/ld+json">
-          {JSON.stringify([
-            {
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://abuqitmirlabs.tech"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "US Market",
-                  "item": "https://abuqitmirlabs.tech/us-market"
-                }
-              ]
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "Service",
-              "name": "Software Development for US Startups",
-              "description": "Custom software engineering and AI solutions specifically for the American market, ensuring CCPA and HIPAA compliance.",
-              "provider": {
-                "@type": "Organization",
-                "name": "AbuQitmirLabs",
-                "url": "https://abuqitmirlabs.tech"
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://abuqitmirlabs.tech"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "US Market",
+                    "item": "https://abuqitmirlabs.tech/us-market"
+                  }
+                ]
               },
-              "areaServed": "US"
-            }
-          ])}
-        </script>
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                "name": "Software Development for US Startups",
+                "description": "Custom software engineering and AI solutions specifically for the American market, ensuring CCPA and HIPAA compliance.",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "AbuQitmirLabs",
+                  "url": "https://abuqitmirlabs.tech"
+                },
+                "areaServed": "US"
+              }
+            ])
+          }}
+        />
       </Helmet>
 
       <Header />

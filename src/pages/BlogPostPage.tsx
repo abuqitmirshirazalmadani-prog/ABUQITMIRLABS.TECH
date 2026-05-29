@@ -111,57 +111,63 @@ const BlogPostPage = () => {
                 <meta name="twitter:image" content={post.coverImage || "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png"} />
                 
                 {/* Article Schema */}
-                <script type="application/ld+json">
-                    {JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "BlogPosting",
-                        "headline": post.title,
-                        "image": post.coverImage || "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png",
-                        "author": {
-                            "@type": "Person",
-                            "name": post.author,
-                            "url": "https://abuqitmirlabs.tech/about"
-                        },
-                        "publisher": {
-                            "@type": "Organization",
-                            "name": "ABUQITMIRLABS .TECH",
-                            "logo": {
-                                "@type": "ImageObject",
-                                "url": "https://abuqitmirlabs.tech/logo.svg"
-                            }
-                        },
-                        "datePublished": post.createdAt?.toDate ? post.createdAt.toDate().toISOString() : new Date(post.createdAt).toISOString(),
-                        "description": post.content.substring(0, 160).replace(/[#*`]/g, '')
-                    })}
-                </script>
+                <script 
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "BlogPosting",
+                            "headline": post.title,
+                            "image": post.coverImage || "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png",
+                            "author": {
+                                "@type": "Person",
+                                "name": post.author,
+                                "url": "https://abuqitmirlabs.tech/about"
+                            },
+                            "publisher": {
+                                "@type": "Organization",
+                                "name": "ABUQITMIRLABS .TECH",
+                                "logo": {
+                                    "@type": "ImageObject",
+                                    "url": "https://abuqitmirlabs.tech/logo.svg"
+                                }
+                            },
+                            "datePublished": post.createdAt?.toDate ? post.createdAt.toDate().toISOString() : new Date(post.createdAt).toISOString(),
+                            "description": post.content.substring(0, 160).replace(/[#*`]/g, '')
+                        })
+                    }}
+                />
 
                 {/* Breadcrumb Schema */}
-                <script type="application/ld+json">
-                    {JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "BreadcrumbList",
-                        "itemListElement": [
-                            {
-                                "@type": "ListItem",
-                                "position": 1,
-                                "name": "Home",
-                                "item": "https://abuqitmirlabs.tech"
-                            },
-                            {
-                                "@type": "ListItem",
-                                "position": 2,
-                                "name": "Blog",
-                                "item": "https://abuqitmirlabs.tech/blog"
-                            },
-                            {
-                                "@type": "ListItem",
-                                "position": 3,
-                                "name": post.title,
-                                "item": `https://abuqitmirlabs.tech/blog/${slug}`
-                            }
-                        ]
-                    })}
-                </script>
+                <script 
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "BreadcrumbList",
+                            "itemListElement": [
+                                {
+                                    "@type": "ListItem",
+                                    "position": 1,
+                                    "name": "Home",
+                                    "item": "https://abuqitmirlabs.tech"
+                                },
+                                {
+                                    "@type": "ListItem",
+                                    "position": 2,
+                                    "name": "Blog",
+                                    "item": "https://abuqitmirlabs.tech/blog"
+                                },
+                                {
+                                    "@type": "ListItem",
+                                    "position": 3,
+                                    "name": post.title,
+                                    "item": `https://abuqitmirlabs.tech/blog/${slug}`
+                                }
+                            ]
+                        })
+                    }}
+                />
             </Helmet>
             
             <Header />
