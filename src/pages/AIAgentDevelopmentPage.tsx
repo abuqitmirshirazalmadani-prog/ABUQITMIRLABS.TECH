@@ -199,7 +199,7 @@ const AIAgentDevelopmentPage = () => {
               }
             ])
           }}
-        />
+        ></script>
         <script 
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -217,7 +217,7 @@ const AIAgentDevelopmentPage = () => {
               "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
             })
           }}
-        />
+        ></script>
 
         <script 
           type="application/ld+json"
@@ -235,7 +235,7 @@ const AIAgentDevelopmentPage = () => {
               }))
             })
           }}
-        />
+        ></script>
 
         <script 
           type="application/ld+json"
@@ -274,7 +274,7 @@ const AIAgentDevelopmentPage = () => {
               ]
             })
           }}
-        />
+        ></script>
 
         <script 
           type="application/ld+json"
@@ -298,7 +298,7 @@ const AIAgentDevelopmentPage = () => {
               ]
             })
           }}
-        />
+        ></script>
       </Helmet>
 
       {/* Noise overlay */}

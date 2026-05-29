@@ -99,7 +99,7 @@ const MobileAppDevelopmentPage = () => {
               "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
             })
           }}
-        />
+        ></script>
 
         {/* FAQ Schema */}
         <script 
@@ -118,7 +118,7 @@ const MobileAppDevelopmentPage = () => {
               }))
             })
           }}
-        />
+        ></script>
 
         {/* HowTo Schema (Mobile App Process) */}
         <script 
@@ -158,7 +158,7 @@ const MobileAppDevelopmentPage = () => {
               ]
             })
           }}
-        />
+        ></script>
 
         {/* Breadcrumb Schema */}
         <script 
@@ -183,7 +183,7 @@ const MobileAppDevelopmentPage = () => {
               ]
             })
           }}
-        />
+        ></script>
       </Helmet>
 
       <Header />

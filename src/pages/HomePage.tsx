@@ -46,7 +46,7 @@ export default function HomePage() {
               "description": "Innovative solutions in AI and technology."
             })
           }}
-        />
+        ></script>
 
         <script 
           type="application/ld+json"
@@ -134,7 +134,7 @@ export default function HomePage() {
               ]
             })
           }}
-        />
+        ></script>
 
         <script 
           type="application/ld+json"
@@ -152,7 +152,7 @@ export default function HomePage() {
               ]
             })
           }}
-        />
+        ></script>
       </Helmet>
 
       <Header />

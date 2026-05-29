@@ -109,7 +109,7 @@ const CanadaMarketPage = () => {
               }
             ])
           }}
-        />
+        ></script>
       </Helmet>
 
       <Header />

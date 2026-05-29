@@ -182,7 +182,7 @@ const CustomSoftwarePage = () => {
               }
             ])
           }}
-        />
+        ></script>
         <script 
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -211,7 +211,7 @@ const CustomSoftwarePage = () => {
               }
             })
           }}
-        />
+        ></script>
 
         {/* FAQ Schema */}
         <script 
@@ -230,7 +230,7 @@ const CustomSoftwarePage = () => {
               }))
             })
           }}
-        />
+        ></script>
 
         {/* HowTo Schema (Development Process) */}
         <script 
@@ -270,7 +270,7 @@ const CustomSoftwarePage = () => {
               ]
             })
           }}
-        />
+        ></script>
 
         {/* Breadcrumb Schema */}
         <script 
@@ -295,7 +295,7 @@ const CustomSoftwarePage = () => {
               ]
             })
           }}
-        />
+        ></script>
       </Helmet>
 
       {/* Unicorn Mask Background */}

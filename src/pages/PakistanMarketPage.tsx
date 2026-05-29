@@ -122,7 +122,7 @@ const PakistanMarketPage = () => {
               }
             ])
           }}
-        />
+        ></script>
       </Helmet>
 
       <Header />

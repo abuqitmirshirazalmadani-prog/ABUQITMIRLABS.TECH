@@ -118,7 +118,7 @@ const USMarketPage = () => {
               }
             ])
           }}
-        />
+        ></script>
       </Helmet>
 
       <Header />

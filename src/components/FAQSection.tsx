@@ -148,7 +148,7 @@ const FAQSection = () => {
                             }))
                         })
                     }}
-                />
+                ></script>
             </Helmet>
         </section>
     );

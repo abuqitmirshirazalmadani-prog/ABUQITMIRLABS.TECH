@@ -125,7 +125,7 @@ const SEOPage = () => {
               ]
             })
           }}
-        />
+        ></script>
         <script 
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -143,7 +143,7 @@ const SEOPage = () => {
               "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
             })
           }}
-        />
+        ></script>
         <script 
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -160,7 +160,7 @@ const SEOPage = () => {
               }))
             })
           }}
-        />
+        ></script>
       </Helmet>
 
       <Header />

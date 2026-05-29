@@ -110,7 +110,7 @@ const UKMarketPage = () => {
               }
             ])
           }}
-        />
+        ></script>
       </Helmet>
 
       <Header />

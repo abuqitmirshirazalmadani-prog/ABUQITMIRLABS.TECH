@@ -136,7 +136,7 @@ const BlogPostPage = () => {
                             "description": post.content.substring(0, 160).replace(/[#*`]/g, '')
                         })
                     }}
-                />
+                ></script>
 
                 {/* Breadcrumb Schema */}
                 <script 
@@ -167,7 +167,7 @@ const BlogPostPage = () => {
                             ]
                         })
                     }}
-                />
+                ></script>
             </Helmet>
             
             <Header />

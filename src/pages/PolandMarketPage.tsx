@@ -111,7 +111,7 @@ const PolandMarketPage = () => {
               }
             ])
           }}
-        />
+        ></script>
       </Helmet>
 
       <Header />

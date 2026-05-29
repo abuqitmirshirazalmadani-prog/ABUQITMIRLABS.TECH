@@ -147,7 +147,7 @@ const WebDevelopmentPage = () => {
               }
             })
           }}
-        />
+        ></script>
 
         {/* FAQ Schema */}
         <script 
@@ -166,7 +166,7 @@ const WebDevelopmentPage = () => {
               }))
             })
           }}
-        />
+        ></script>
 
         {/* HowTo Schema (Web Process) */}
         <script 
@@ -185,7 +185,7 @@ const WebDevelopmentPage = () => {
                 },
                 {
                   "@type": "HowToStep",
-                  "name": "UX Architecture",
+                  "name": "Page UX Architecture",
                   "text": "Mapping user flows for sub-second navigation."
                 },
                 {
@@ -206,7 +206,7 @@ const WebDevelopmentPage = () => {
               ]
             })
           }}
-        />
+        ></script>
 
         {/* Breadcrumb Schema */}
         <script 
@@ -231,7 +231,7 @@ const WebDevelopmentPage = () => {
               ]
             })
           }}
-        />
+        ></script>
       </Helmet>
 
       <Header />

@@ -102,7 +102,7 @@ const ContactPage = () => {
               ]
             })
           }}
-        />
+        ></script>
         <script 
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -124,7 +124,7 @@ const ContactPage = () => {
               }
             })
           }}
-        />
+        ></script>
       </Helmet>
 
       {/* Scanline Overlay */}

@@ -110,7 +110,7 @@ const AustraliaMarketPage = () => {
               }
             ])
           }}
-        />
+        ></script>
       </Helmet>
 
       <Header />

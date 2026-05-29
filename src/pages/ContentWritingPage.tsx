@@ -137,7 +137,7 @@ const ContentWritingPage = () => {
               "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
             })
           }}
-        />
+        ></script>
       </Helmet>
 
       <Header />
