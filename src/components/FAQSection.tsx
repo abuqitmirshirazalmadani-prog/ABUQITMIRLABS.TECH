@@ -131,20 +131,24 @@ const FAQSection = () => {
 
             {/* Structured Data (JSON-LD) for SEO advantage */}
             <Helmet>
-                <script type="application/ld+json" id="faq-schema">
-                    {JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "FAQPage",
-                        "mainEntity": faqItems.map(item => ({
-                            "@type": "Question",
-                            "name": item.question,
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": item.answer
-                            }
-                        }))
-                    })}
-                </script>
+                <script 
+                    type="application/ld+json" 
+                    id="faq-schema"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "FAQPage",
+                            "mainEntity": faqItems.map(item => ({
+                                "@type": "Question",
+                                "name": item.question,
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": item.answer
+                                }
+                            }))
+                        })
+                    }}
+                />
             </Helmet>
         </section>
     );

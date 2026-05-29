@@ -25,130 +25,134 @@ export default function HomePage() {
         <meta name="description" content="Discover innovative solutions and services at AbuQit Mir Labs, specializing in technology and development." />
         <link rel="canonical" href="https://abuqitmirlabs.tech" />
         
-        {/* Open Graph */}
         <meta property="og:title" content="Full-Service Digital Agency & Custom Software Solutions | AbuQitmirLabs" />
         <meta property="og:description" content="Discover innovative solutions and services at AbuQit Mir Labs, specializing in technology and development." />
         <meta property="og:url" content="https://abuqitmirlabs.tech" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
-        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Affordable App Development Company | AbuQitmirLabs" />
         <meta name="twitter:description" content="Discover innovative solutions and services at AbuQit Mir Labs, specializing in technology and development." />
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
 
-        {/* Standard WebSite Schema suggested by AI crawler checker */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "url": "https://abuqitmirlabs.tech/",
-            "name": "Abuqit Mir Labs",
-            "description": "Innovative solutions in AI and technology."
-          })}
-        </script>
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "url": "https://abuqitmirlabs.tech/",
+              "name": "Abuqit Mir Labs",
+              "description": "Innovative solutions in AI and technology."
+            })
+          }}
+        />
 
-        {/* Schema Markup */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
-            "name": "AbuQitmirLabs .TECH",
-            "url": "https://abuqitmirlabs.tech",
-            "logo": "https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png",
-            "image": "https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png",
-            "description": "Expert custom software development and AI engineering firm. We build scalable SaaS platforms and high-performance applications for global enterprises.",
-            "priceRange": "$$",
-            "email": "shiraz@abuqitmirlabs.tech",
-            "telephone": "+923233260859",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony",
-              "addressLocality": "Landhi Town, Karachi",
-              "addressRegion": "Sindh",
-              "postalCode": "75160",
-              "addressCountry": "PK"
-            },
-            "hasMap": "https://www.google.com/search?q=AbuQitmirLabs.Tech&stick=H4sIAAAAAAAA_-NgU1I1qEg0SUwyMkw2MzIySUkyTba0MqhITUtOMUgztzRLTTM2TjI3XMQq5JhUGphZkptZ5JOYVKwXkpqcAQAWzgp1PgAAAA&hl=en&mat=CZLYxD3dn4-XElYBTVDHnmXmYtE_z1-ukd4W15_4xSOvjTxlQ1o8WZE3DhyScxz25ZkTwHN99aYAJPksPmWrBMFOl-sP_YDLnxLlKt51TeOkcb_wt2bWebGPkDFcieVKmA&authuser=0",
-            "openingHours": "Mo,Tu,We,Th,Fr,Sa 09:00-21:00",
-            "sameAs": [
-              "https://x.com/AbuQitmir",
-              "https://www.linkedin.com/in/abu-qitmir-697423390/",
-              "https://www.facebook.com/profile.php?id=61583768706452",
-              "https://www.instagram.com/abuqitmirshirazalmadani/",
-              "https://www.youtube.com/@AbuQitmir",
-              "https://www.tiktok.com/@abuqitmirmohammadshiraz"
-            ],
-            "knowsAbout": [
-              "Custom Software Development",
-              "AI Agent Development",
-              "Mobile App Development",
-              "LLM Integration",
-              "Flutter Development",
-              "React Engineering",
-              "Cloud Architecture",
-              "Semantic SEO"
-            ],
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "reviewCount": "54"
-            },
-            "serviceType": [
-               "Custom Software Development",
-               "Mobile App Development",
-               "AI Agent Development",
-               "Web Engineering"
-            ],
-            "contactPoint": {
-              "@type": "ContactPoint",
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
+              "name": "AbuQitmirLabs .TECH",
+              "url": "https://abuqitmirlabs.tech",
+              "logo": "https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png",
+              "image": "https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png",
+              "description": "Expert custom software development and AI engineering firm. We build scalable SaaS platforms and high-performance applications for global enterprises.",
+              "priceRange": "$$",
+              "email": "shiraz@abuqitmirlabs.tech",
               "telephone": "+923233260859",
-              "contactType": "customer service",
-              "areaServed": ["US", "UK", "CA", "PK", "PL"],
-              "availableLanguage": ["en", "pl", "ur"]
-            },
-            "founder": {
-              "@type": "Person",
-              "name": "Shiraz Almadani",
-              "jobTitle": "CEO & Lead Engineer",
-              "sameAs": "https://www.linkedin.com/in/abu-qitmir-697423390/"
-            },
-            "video": [
-              {
-                "@type": "VideoObject",
-                "name": "Enterprise Digital Architecture",
-                "description": "Watch our lead architect ABUQITMIRLABS.TECH breakdown complex digital ecosystems.",
-                "thumbnailUrl": "https://img.youtube.com/vi/v25Fo6O3iy4/maxresdefault.jpg",
-                "uploadDate": "2024-05-18",
-                "embedUrl": "https://www.youtube.com/embed/v25Fo6O3iy4"
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony",
+                "addressLocality": "Landhi Town, Karachi",
+                "addressRegion": "Sindh",
+                "postalCode": "75160",
+                "addressCountry": "PK"
               },
-              {
-                "@type": "VideoObject",
-                "name": "Advanced Engineering Solutions",
-                "description": "Deep dive into High-Performance Web Tech and scalable backend systems.",
-                "thumbnailUrl": "https://img.youtube.com/vi/110zeH-eEEk/maxresdefault.jpg",
-                "uploadDate": "2024-05-18",
-                "embedUrl": "https://www.youtube.com/embed/110zeH-eEEk"
-              }
-            ]
-          })}
-        </script>
+              "hasMap": "https://www.google.com/search?q=AbuQitmirLabs.Tech&stick=H4sIAAAAAAAA_-NgU1I1qEg0SUwyMkw2MzIySUkyTba0MqhITUtOMUgztzRLTTM2TjI3XMQq5JhUGphZkptZ5JOYVKwXkpqcAQAWzgp1PgAAAA&hl=en&mat=CZLYxD3dn4-XElYBTVDHnmXmYtE_z1-ukd4W15_4xSOvjTxlQ1o8WZE3DhyScxz25ZkTwHN99aYAJPksPmWrBMFOl-sP_YDLnxLlKt51TeOkcb_wt2bWebGPkDFcieVKmA&authuser=0",
+              "openingHours": "Mo,Tu,We,Th,Fr,Sa 09:00-21:00",
+              "sameAs": [
+                "https://x.com/AbuQitmir",
+                "https://www.linkedin.com/in/abu-qitmir-697423390/",
+                "https://www.facebook.com/profile.php?id=61583768706452",
+                "https://www.instagram.com/abuqitmirshirazalmadani/",
+                "https://www.youtube.com/@AbuQitmir",
+                "https://www.tiktok.com/@abuqitmirmohammadshiraz"
+              ],
+              "knowsAbout": [
+                "Custom Software Development",
+                "AI Agent Development",
+                "Mobile App Development",
+                "LLM Integration",
+                "Flutter Development",
+                "React Engineering",
+                "Cloud Architecture",
+                "Semantic SEO"
+              ],
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "reviewCount": "54"
+              },
+              "serviceType": [
+                 "Custom Software Development",
+                 "Mobile App Development",
+                 "AI Agent Development",
+                 "Web Engineering"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+923233260859",
+                "contactType": "customer service",
+                "areaServed": ["US", "UK", "CA", "PK", "PL"],
+                "availableLanguage": ["en", "pl", "ur"]
+              },
+              "founder": {
+                "@type": "Person",
+                "name": "Shiraz Almadani",
+                "jobTitle": "CEO & Lead Engineer",
+                "sameAs": "https://www.linkedin.com/in/abu-qitmir-697423390/"
+              },
+              "video": [
+                {
+                  "@type": "VideoObject",
+                  "name": "Enterprise Digital Architecture",
+                  "description": "Watch our lead architect ABUQITMIRLABS.TECH breakdown complex digital ecosystems.",
+                  "thumbnailUrl": "https://img.youtube.com/vi/v25Fo6O3iy4/maxresdefault.jpg",
+                  "uploadDate": "2024-05-18",
+                  "embedUrl": "https://www.youtube.com/embed/v25Fo6O3iy4"
+                },
+                {
+                  "@type": "VideoObject",
+                  "name": "Advanced Engineering Solutions",
+                  "description": "Deep dive into High-Performance Web Tech and scalable backend systems.",
+                  "thumbnailUrl": "https://img.youtube.com/vi/110zeH-eEEk/maxresdefault.jpg",
+                  "uploadDate": "2024-05-18",
+                  "embedUrl": "https://www.youtube.com/embed/110zeH-eEEk"
+                }
+              ]
+            })
+          }}
+        />
 
-        {/* Breadcrumb Schema (Home) */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://abuqitmirlabs.tech"
-              }
-            ]
-          })}
-        </script>
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://abuqitmirlabs.tech"
+                }
+              ]
+            })
+          }}
+        />
       </Helmet>
 
       <Header />

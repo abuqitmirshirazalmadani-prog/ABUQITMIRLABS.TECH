@@ -151,23 +151,135 @@ const AIAgentDevelopmentPage = () => {
         <meta name="description" content="AbuQitmirLabs .TECH engineers autonomous AI agents and LLM-powered workflow automations. Specialized in RAG implementation, intelligent chatbots, and custom AI personas for enterprise efficiency." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/ai-agent-development" />
         
-        {/* Open Graph */}
         <meta property="og:title" content="Autonomous AI Agents & LLM Automation | AbuQitmirLabs" />
         <meta property="og:description" content="AbuQitmirLabs .TECH engineers autonomous AI agents and LLM-powered workflow automations. Specialized in RAG implementation, chatbots, and custom AI personas." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/ai-agent-development" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
 
-        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="AI Agent Development Service | Chatbots & Automation" />
         <meta name="twitter:description" content="ABUQITMIRLABS .TECH engineers autonomous AI agents and LLM-powered workflow automations. Specialized in RAG implementation, chatbots, and custom AI personas." />
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
 
-        {/* Schema Markup */}
-        <script type="application/ld+json">
-          {JSON.stringify([
-            {
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://abuqitmirlabs.tech"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "AI Agent Development",
+                    "item": "https://abuqitmirlabs.tech/ai-agent-development"
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                "name": "AI Agent Development",
+                "serviceType": "Artificial Intelligence & Automation",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "AbuQitmirLabs",
+                  "url": "https://abuqitmirlabs.tech"
+                },
+                "description": "Engineering autonomous AI agents and LLM-powered workflow automations. Specialized in RAG implementation and intelligent enterprise chatbots.",
+                "areaServed": "Global"
+              }
+            ])
+          }}
+        />
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "AI Agent Development",
+              "description": "We build custom Large Language Model (LLM) agents that understand your proprietary data, execute complex tasks, and automate workflows 24/7.",
+              "provider": {
+                "@type": "Organization",
+                "name": "ABUQITMIRLABS .TECH",
+                "url": "https://abuqitmirlabs.tech"
+              },
+              "serviceType": "AI Engineering",
+              "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
+            })
+          }}
+        />
+
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": faqData.map(item => ({
+                "@type": "Question",
+                "name": item.q,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": item.a
+                }
+              }))
+            })
+          }}
+        />
+
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "HowTo",
+              "name": "Our AI Agent Development Process",
+              "description": "Our rigorous 5-step methodology ensures every AI agent we build is smart, safe, and perfectly aligned with your business logic.",
+              "step": [
+                {
+                  "@type": "HowToStep",
+                  "name": "Knowledge Audit",
+                  "text": "Analyze your documentation and databases to build a high-fidelity Knowledge Base."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Model Selection & RAG",
+                  "text": "Select the optimal LLM and implement RAG to ensure zero hallucinations."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Agent Logic Design",
+                  "text": "Define precise persona constraints and Tool-Calling capabilities."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Adversarial Stress Testing",
+                  "text": "Attempt to break the agent with injection attacks to ensure safe operational bounds."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Seamless Integration",
+                  "text": "Deploy the agent to your primary channels like Slack, Web, and CRM."
+                }
+              ]
+            })
+          }}
+        />
+
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               "itemListElement": [
@@ -184,112 +296,9 @@ const AIAgentDevelopmentPage = () => {
                   "item": "https://abuqitmirlabs.tech/ai-agent-development"
                 }
               ]
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "Service",
-              "name": "AI Agent Development",
-              "serviceType": "Artificial Intelligence & Automation",
-              "provider": {
-                "@type": "Organization",
-                "name": "AbuQitmirLabs",
-                "url": "https://abuqitmirlabs.tech"
-              },
-              "description": "Engineering autonomous AI agents and LLM-powered workflow automations. Specialized in RAG implementation and intelligent enterprise chatbots.",
-              "areaServed": "Global"
-            }
-          ])}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "AI Agent Development",
-            "description": "We build custom Large Language Model (LLM) agents that understand your proprietary data, execute complex tasks, and automate workflows 24/7.",
-            "provider": {
-              "@type": "Organization",
-              "name": "ABUQITMIRLABS .TECH",
-              "url": "https://abuqitmirlabs.tech"
-            },
-            "serviceType": "AI Engineering",
-            "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
-          })}
-        </script>
-
-        {/* FAQ Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqData.map(item => ({
-              "@type": "Question",
-              "name": item.q,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": item.a
-              }
-            }))
-          })}
-        </script>
-
-        {/* HowTo Schema (AI Development Process) */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "HowTo",
-            "name": "Our AI Agent Development Process",
-            "description": "Our rigorous 5-step methodology ensures every AI agent we build is smart, safe, and perfectly aligned with your business logic.",
-            "step": [
-              {
-                "@type": "HowToStep",
-                "name": "Knowledge Audit",
-                "text": "Analyze your documentation and databases to build a high-fidelity Knowledge Base."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Model Selection & RAG",
-                "text": "Select the optimal LLM and implement RAG to ensure zero hallucinations."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Agent Logic Design",
-                "text": "Define precise persona constraints and Tool-Calling capabilities."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Adversarial Stress Testing",
-                "text": "Attempt to break the agent with injection attacks to ensure safe operational bounds."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Seamless Integration",
-                "text": "Deploy the agent to your primary channels like Slack, Web, and CRM."
-              }
-            ]
-          })}
-        </script>
-
-        {/* Breadcrumb Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://abuqitmirlabs.tech"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "AI Agent Development",
-                "item": "https://abuqitmirlabs.tech/ai-agent-development"
-              }
-            ]
-          })}
-        </script>
+            })
+          }}
+        />
       </Helmet>
 
       {/* Noise overlay */}
