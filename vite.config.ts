@@ -91,21 +91,17 @@ Sitemap: ${hostname}/sitemap.xml`;
             routeHtml = routeHtml.replace(/<title>(.*?)<\/title>/g, `<title>${route.title}</title>`);
             
             // Replace OG/Twitter titles
-            routeHtml = routeHtml.replace(/<meta property="og:title" content="(.*?)"/g, `<meta property="og:title" content="${route.title}"`);
-            routeHtml = routeHtml.replace(/<meta name="twitter:title" content="(.*?)"/g, `<meta name="twitter:title" content="${route.title}"`);
+            routeHtml = routeHtml.replace(/<meta property="og:title" content="(.*?)"\s*\/?>/g, `<meta property="og:title" content="${route.title}" />`);
+            routeHtml = routeHtml.replace(/<meta name="twitter:title" content="(.*?)"\s*\/?>/g, `<meta name="twitter:title" content="${route.title}" />`);
 
             // Replace Descriptions
-            const descTag = `<meta name="description" content="${route.description}">`;
-            const ogDescTag = `<meta property="og:description" content="${route.description}">`;
-            const twDescTag = `<meta name="twitter:description" content="${route.description}">`;
-
-            routeHtml = routeHtml.replace(/<meta name="description" content="(.*?)"/g, descTag);
-            routeHtml = routeHtml.replace(/<meta property="og:description" content="(.*?)"/g, ogDescTag);
-            routeHtml = routeHtml.replace(/<meta name="twitter:description" content="(.*?)"/g, twDescTag);
+            routeHtml = routeHtml.replace(/<meta name="description" content="(.*?)"\s*\/?>/g, `<meta name="description" content="${route.description}" />`);
+            routeHtml = routeHtml.replace(/<meta property="og:description" content="(.*?)"\s*\/?>/g, `<meta property="og:description" content="${route.description}" />`);
+            routeHtml = routeHtml.replace(/<meta name="twitter:description" content="(.*?)"\s*\/?>/g, `<meta name="twitter:description" content="${route.description}" />`);
 
             // Update URL
-            routeHtml = routeHtml.replace(/<meta property="og:url" content="(.*?)"/g, `<meta property="og:url" content="${hostname}${route.url}"`);
-            routeHtml = routeHtml.replace(/<meta name="twitter:url" content="(.*?)"/g, `<meta name="twitter:url" content="${hostname}${route.url}"`);
+            routeHtml = routeHtml.replace(/<meta property="og:url" content="(.*?)"\s*\/?>/g, `<meta property="og:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />`);
+            routeHtml = routeHtml.replace(/<meta name="twitter:url" content="(.*?)"\s*\/?>/g, `<meta name="twitter:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />`);
             
             // FIX: Inject meaningful body content to avoid "0 character body" and "No H1" SEO issues
             // This content provides immediate value to crawlers and is replaced by React upon hydration.
