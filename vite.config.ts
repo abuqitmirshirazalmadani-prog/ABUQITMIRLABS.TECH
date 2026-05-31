@@ -165,11 +165,16 @@ Sitemap: ${hostname}/sitemap.xml`;
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
-              if (id.includes('react') || id.includes('react-router-dom') || id.includes('react-dom') || id.includes('react-helmet-async')) {
-                return 'vendor-react';
-              }
-              if (id.includes('framer-motion') || id.includes('motion')) {
-                return 'vendor-motion';
+              // Group critical React and animation core packages together so there is no import resolution race
+              if (
+                id.includes('react') || 
+                id.includes('react-router-dom') || 
+                id.includes('react-dom') || 
+                id.includes('react-helmet-async') ||
+                id.includes('framer-motion') ||
+                id.includes('motion')
+              ) {
+                return 'vendor-core';
               }
               if (id.includes('three')) {
                 return 'vendor-three';

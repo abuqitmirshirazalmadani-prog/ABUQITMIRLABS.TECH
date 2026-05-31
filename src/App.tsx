@@ -7,6 +7,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect, lazy, Suspense } from 'react';
 import FacebookPixel from './components/FacebookPixel';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // Lazy load all pages
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -106,31 +107,33 @@ export default function App() {
         <ScrollToTop />
         <FacebookPixel />
         <FloatingWhatsApp />
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/custom-software" element={<CustomSoftwarePage />} />
-            <Route path="/mobile-app-development" element={<MobileAppDevelopmentPage />} />
-            <Route path="/web-development" element={<WebDevelopmentPage />} />
-            <Route path="/ai-agent-development" element={<AIAgentDevelopmentPage />} />
-            <Route path="/seo-mastery" element={<SEOPage />} />
-            <Route path="/graphics-design" element={<GraphicsDesignPage />} />
-            <Route path="/content-writing" element={<ContentWritingPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/us-market" element={<USMarketPage />} />
-            <Route path="/uk-market" element={<UKMarketPage />} />
-            <Route path="/pakistan-market" element={<PakistanMarketPage />} />
-            <Route path="/canada-market" element={<CanadaMarketPage />} />
-            <Route path="/poland-market" element={<PolandMarketPage />} />
-            <Route path="/australia-market" element={<AustraliaMarketPage />} />
-            <Route path="/terms" element={<TermsPage />} />
-            <Route path="/privacy" element={<PrivacyPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:slug" element={<BlogPostPage />} />
-            <Route path="/admin" element={<AdminDashboard />} />
-          </Routes>
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/custom-software" element={<CustomSoftwarePage />} />
+              <Route path="/mobile-app-development" element={<MobileAppDevelopmentPage />} />
+              <Route path="/web-development" element={<WebDevelopmentPage />} />
+              <Route path="/ai-agent-development" element={<AIAgentDevelopmentPage />} />
+              <Route path="/seo-mastery" element={<SEOPage />} />
+              <Route path="/graphics-design" element={<GraphicsDesignPage />} />
+              <Route path="/content-writing" element={<ContentWritingPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/us-market" element={<USMarketPage />} />
+              <Route path="/uk-market" element={<UKMarketPage />} />
+              <Route path="/pakistan-market" element={<PakistanMarketPage />} />
+              <Route path="/canada-market" element={<CanadaMarketPage />} />
+              <Route path="/poland-market" element={<PolandMarketPage />} />
+              <Route path="/australia-market" element={<AustraliaMarketPage />} />
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<BlogPostPage />} />
+              <Route path="/admin" element={<AdminDashboard />} />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
       </Router>
     </HelmetProvider>
   );
