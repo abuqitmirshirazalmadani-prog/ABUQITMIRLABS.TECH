@@ -158,6 +158,31 @@ Sitemap: ${hostname}/sitemap.xml`;
         '@': path.resolve(__dirname, '.'),
       },
     },
+    build: {
+      cssCodeSplit: true,
+      chunkSizeWarningLimit: 1200,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (id.includes('react') || id.includes('react-router-dom') || id.includes('react-dom') || id.includes('react-helmet-async')) {
+                return 'vendor-react';
+              }
+              if (id.includes('framer-motion') || id.includes('motion')) {
+                return 'vendor-motion';
+              }
+              if (id.includes('three')) {
+                return 'vendor-three';
+              }
+              if (id.includes('lucide-react')) {
+                return 'vendor-icons';
+              }
+              return 'vendor-libs';
+            }
+          }
+        }
+      }
+    },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
       // Do not modifyâfile watching is disabled to prevent flickering during agent edits.

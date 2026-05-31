@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'motion/react';
-import * as THREE from 'three';
 import { 
     Code2, 
     Smartphone, 
@@ -107,70 +106,99 @@ const TorusKnotAnimation = () => {
         if (!containerRef.current) return;
 
         const container = containerRef.current;
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-        camera.position.z = 25;
+        let active = true;
+        let renderer: any = null;
+        let geometry: any = null;
+        let particleMaterial: any = null;
+        let frameId: number | null = null;
+        let resizeHandler: (() => void) | null = null;
+        let mouseMoveHandler: ((event: MouseEvent) => void) | null = null;
 
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        renderer.setSize(container.clientWidth, container.clientHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        container.appendChild(renderer.domElement);
+        import('three').then((THREE) => {
+            if (!active || !containerRef.current) return;
 
-        const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
-        const particleMaterial = new THREE.PointsMaterial({
-            color: 0x8b5cf6, // Violet
-            size: 0.1,
-            transparent: true,
-            opacity: 0.4,
-            blending: THREE.AdditiveBlending
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.z = 25;
+
+            renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
+
+            geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+            particleMaterial = new THREE.PointsMaterial({
+                color: 0x8b5cf6, // Violet
+                size: 0.1,
+                transparent: true,
+                opacity: 0.4,
+                blending: THREE.AdditiveBlending
+            });
+
+            const particles = new THREE.Points(geometry, particleMaterial);
+            scene.add(particles);
+
+            let mouseX = 0;
+            let mouseY = 0;
+            let targetX = 0;
+            let targetY = 0;
+
+            mouseMoveHandler = (event: MouseEvent) => {
+                mouseX = (event.clientX - window.innerWidth / 2) * 0.0005;
+                mouseY = (event.clientY - window.innerHeight / 2) * 0.0005;
+            };
+
+            window.addEventListener('mousemove', mouseMoveHandler);
+
+            const animate = () => {
+                if (!active) return;
+                frameId = requestAnimationFrame(animate);
+                
+                targetX += (mouseX - targetX) * 0.05;
+                targetY += (mouseY - targetY) * 0.05;
+
+                particles.rotation.y += 0.001;
+                particles.rotation.x += 0.0005;
+                particles.rotation.y += targetX;
+                particles.rotation.x += targetY;
+
+                renderer.render(scene, camera);
+            };
+
+            animate();
+
+            resizeHandler = () => {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            };
+
+            window.addEventListener('resize', resizeHandler);
+        }).catch((err) => {
+            console.error('Failed to load Three.js dynamically:', err);
         });
 
-        const particles = new THREE.Points(geometry, particleMaterial);
-        scene.add(particles);
-
-        let mouseX = 0;
-        let mouseY = 0;
-        let targetX = 0;
-        let targetY = 0;
-
-        const handleMouseMove = (event: MouseEvent) => {
-            mouseX = (event.clientX - window.innerWidth / 2) * 0.0005;
-            mouseY = (event.clientY - window.innerHeight / 2) * 0.0005;
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-
-        const animate = () => {
-            const frame = requestAnimationFrame(animate);
-            
-            targetX += (mouseX - targetX) * 0.05;
-            targetY += (mouseY - targetY) * 0.05;
-
-            particles.rotation.y += 0.001;
-            particles.rotation.x += 0.0005;
-            particles.rotation.y += targetX;
-            particles.rotation.x += targetY;
-
-            renderer.render(scene, camera);
-        };
-
-        animate();
-
-        const handleResize = () => {
-            camera.aspect = container.clientWidth / container.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(container.clientWidth, container.clientHeight);
-        };
-
-        window.addEventListener('resize', handleResize);
-
         return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
-            window.removeEventListener('resize', handleResize);
-            renderer.dispose();
-            geometry.dispose();
-            particleMaterial.dispose();
-            container.removeChild(renderer.domElement);
+            active = false;
+            if (mouseMoveHandler) {
+                window.removeEventListener('mousemove', mouseMoveHandler);
+            }
+            if (resizeHandler) {
+                window.removeEventListener('resize', resizeHandler);
+            }
+            if (frameId !== null) {
+                cancelAnimationFrame(frameId);
+            }
+            if (renderer) renderer.dispose();
+            if (geometry) geometry.dispose();
+            if (particleMaterial) particleMaterial.dispose();
+            if (container && renderer && renderer.domElement && container.contains(renderer.domElement)) {
+                try {
+                    container.removeChild(renderer.domElement);
+                } catch (e) {
+                    // Ignore container checkout races
+                }
+            }
         };
     }, []);
 
