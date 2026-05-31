@@ -6,6 +6,7 @@
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect, lazy, Suspense } from 'react';
+import FacebookPixel from './components/FacebookPixel';
 
 // Lazy load all pages
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -103,6 +104,7 @@ export default function App() {
     <HelmetProvider>
       <Router>
         <ScrollToTop />
+        <FacebookPixel />
         <FloatingWhatsApp />
         <Suspense fallback={<PageLoader />}>
           <Routes>
