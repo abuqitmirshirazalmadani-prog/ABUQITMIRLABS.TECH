@@ -39,13 +39,13 @@ const PortfolioSection = () => {
                             title: "AI Commerce Engine",
                             category: "AI Integration",
                             desc: "Autonomous workflow system reduced manual processing by 85%.",
-                            img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2232&auto=format&fit=crop"
+                            img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&auto=format&fit=crop"
                         },
                         {
                             title: "Zenith Cloud Dashboard",
                             category: "SaaS Development",
                             desc: "High-performance interface for distributed edge node management.",
-                            img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+                            img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&auto=format&fit=crop"
                         }
                     ].map((project, idx) => (
                         <motion.div
@@ -58,7 +58,7 @@ const PortfolioSection = () => {
                         >
                             <div className="aspect-[16/10] overflow-hidden">
                                 <img 
-                                    src={`${project.img}&w=1600&fm=webp`} 
+                                    src={`${project.img}&w=800&fm=webp`} 
                                     alt={`Premium ${project.category} - ${project.title} project by AbuQitmirLabs displaying advanced UI design and AI integration`} 
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60"
                                     loading="lazy"

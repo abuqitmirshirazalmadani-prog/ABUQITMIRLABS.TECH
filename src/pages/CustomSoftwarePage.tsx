@@ -406,9 +406,11 @@ const CustomSoftwarePage = () => {
               className="relative mt-24 w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl backdrop-blur-xl bg-black/40"
             >
                 <img 
-                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop" 
+                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200&auto=format&fit=crop&fm=webp" 
                   alt="Custom software development team working on enterprise architecture" 
                   className="absolute inset-0 w-full h-full object-cover opacity-20"
+                  loading="lazy"
+                  decoding="async"
                 />
                 {/* Window Controls */}
                 <div className="flex items-center justify-between border-b border-white/10 bg-black/60 px-4 py-3 relative z-10">

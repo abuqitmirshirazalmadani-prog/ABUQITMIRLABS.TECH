@@ -25,31 +25,43 @@ export default function FacebookPixel() {
       );
     }
 
-    // Initialize Facebook Pixel if not already initialized
-    if (!window.fbq) {
-      /* eslint-disable */
-      (function (f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = '2.0';
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-      /* eslint-enable */
-    }
+    const initPixel = () => {
+      // Initialize Facebook Pixel if not already initialized
+      if (!window.fbq) {
+        /* eslint-disable */
+        (function (f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
+          if (f.fbq) return;
+          n = f.fbq = function () {
+            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+          };
+          if (!f._fbq) f._fbq = n;
+          n.push = n;
+          n.loaded = !0;
+          n.version = '2.0';
+          n.queue = [];
+          t = b.createElement(e);
+          t.async = !0;
+          t.src = v;
+          s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s);
+        })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        /* eslint-enable */
+      }
 
-    // Connect pixel ID to instance
-    if (window.fbq) {
-      window.fbq('init', pixelId);
+      // Connect pixel ID to instance
+      if (window.fbq) {
+        window.fbq('init', pixelId);
+        window.fbq('track', 'PageView');
+      }
+    };
+
+    // Defer script loading so it does not block first Paint or Speed Index
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(() => {
+        setTimeout(initPixel, 1200);
+      }, { timeout: 3000 });
+    } else {
+      setTimeout(initPixel, 1800);
     }
   }, []);
 
