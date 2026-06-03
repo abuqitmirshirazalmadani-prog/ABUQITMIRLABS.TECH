@@ -22,17 +22,17 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <Helmet>
-        <title>Bespoke Custom Software & AI App Development Studio | AbuQitmirLabs</title>
+        <title>Expert Custom Software & AI App Development Studio | AbuQitmirLabs</title>
         <meta name="description" content="AbuQitmirLabs .TECH is an elite software engineering studio. We build bespoke custom enterprise software, scalable SaaS platforms, and intelligent AI agent models." />
         <link rel="canonical" href="https://abuqitmirlabs.tech" />
         
-        <meta property="og:title" content="Bespoke Custom Software & AI App Development Studio | AbuQitmirLabs" />
+        <meta property="og:title" content="Expert Custom Software & AI App Development Studio | AbuQitmirLabs" />
         <meta property="og:description" content="Elite custom software development and AI engineering studio. We build robust ERP systems, native mobile applications, and custom AI chatbots." />
         <meta property="og:url" content="https://abuqitmirlabs.tech" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Bespoke Custom Software & AI App Development Studio | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Expert Custom Software & AI App Development Studio | AbuQitmirLabs" />
         <meta name="twitter:description" content="Elite custom software development and AI engineering studio. We build robust ERP systems, native mobile applications, and custom AI chatbots." />
         <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
 
