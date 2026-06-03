@@ -16,6 +16,7 @@ import PortfolioSection from '../components/PortfolioSection';
 import VideoPortfolio from '../components/VideoPortfolio';
 import TestimonialsSection from '../components/TestimonialsSection';
 import FAQSection from '../components/FAQSection';
+import ContactSection from '../components/ContactSection';
 
 export default function HomePage() {
   return (
@@ -31,7 +32,7 @@ export default function HomePage() {
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Affordable App Development Company | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Expert App Development Company | AbuQitmirLabs" />
         <meta name="twitter:description" content="Discover innovative solutions and services at AbuQit Mir Labs, specializing in technology and development." />
         <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
 
@@ -196,6 +197,8 @@ export default function HomePage() {
       <TestimonialsSection />
 
       <FAQSection />
+
+      <ContactSection />
 
       <Footer />
     </main>

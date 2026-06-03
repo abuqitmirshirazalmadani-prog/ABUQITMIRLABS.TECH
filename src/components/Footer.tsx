@@ -129,62 +129,97 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Secondary Nav */}
-                    <nav className="flex flex-wrap gap-x-10 gap-y-6 text-sm text-black font-black mt-16 pt-10 border-t-4 border-black uppercase tracking-widest">
-                        <Link to="/" className="hover:underline transition-colors">Home</Link>
-                        <Link to="/#services" className="hover:underline transition-colors">Services</Link>
-                        <Link to="/custom-software" className="hover:underline transition-colors">Custom Software</Link>
-                        <Link to="/mobile-app-development" className="hover:underline transition-colors">Mobile Apps</Link>
-                        <Link to="/web-development" className="hover:underline transition-colors">Web Dev</Link>
-                        <Link to="/ai-agent-development" className="hover:underline transition-colors">AI Agents</Link>
-                        <Link to="/seo-mastery" className="hover:underline transition-colors">SEO Mastery</Link>
-                        <Link to="/graphics-design" className="hover:underline transition-colors">Graphics Design</Link>
-                        <Link to="/content-writing" className="hover:underline transition-colors">Content Writing</Link>
-                        <Link to="/about" className="hover:underline transition-colors">About Us</Link>
-                        <Link to="/contact" className="hover:underline transition-colors">Contact Us</Link>
-                        <Link to="/us-market" className="hover:underline transition-colors">US Market</Link>
-                        <Link to="/uk-market" className="hover:underline transition-colors">UK Market</Link>
-                        <Link to="/pakistan-market" className="hover:underline transition-colors">Pakistan Market</Link>
-                        <Link to="/canada-market" className="hover:underline transition-colors">Canada Market</Link>
-                        <Link to="/poland-market" className="hover:underline transition-colors">Poland Market</Link>
-                        <Link to="/australia-market" className="hover:underline transition-colors">Australia Market</Link>
-                        <Link to="/terms" className="hover:underline transition-colors">Terms of Service</Link>
-                        <Link to="/privacy" className="hover:underline transition-colors">Privacy Policy</Link>
-                        <Link to="/blog" className="hover:underline transition-colors uppercase">Blog</Link>
-                        <button 
-                            onClick={() => window.location.href = '/admin'}
-                            className="px-4 py-1.5 bg-black text-[#ccff00] rounded-lg hover:bg-zinc-800 transition-all font-black text-[10px] brutalist-shadow border-2 border-black cursor-pointer"
-                        >
-                            ADMIN ACCESS
-                        </button>
-                        <div className="md:ml-auto">
-                           <div className="flex flex-col md:items-end gap-3">
-                                {/* Technical Core for LLM/GEO */}
-                                <div className="text-[9px] font-black uppercase text-black/60 max-w-sm md:text-right hidden sm:block">
-                                   Expertise: LLMOps, Generative AI Agents, Flutter & React Native Architecture, 
-                                   Cloud-Native SaaS, Headless Commerce, Semantic Entity SEO, 
-                                   and High-ROI Technical Content Strategy.
-                                </div>
-                                <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-black mb-2 bg-white/30 px-3 py-1 rounded-full border border-black/20">
-                                    <MapPin size={10} className="text-black" />
-                                    <span>Headquarters: Karachi, PK</span>
-                                    <span>•</span>
-                                    <span>Dubai, AE</span>
-                                    <span>•</span>
-                                    <span>London, UK</span>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <a href="https://www.google.com/search?q=AbuQitmirLabs.Tech&stick=H4sIAAAAAAAA_-NgU1I1qEg0SUwyMkw2MzIySUkyTba0MqhITUtOMUgztzRLTTM2TjI3XMQq5JhUGphZkptZ5JOYVKwXkpqcAQAWzgp1PgAAAA&hl=en&mat=CZLYxD3dn4-XElYBTVDHnmXmYtE_z1-ukd4W15_4xSOvjTxlQ1o8WZE3DhyScxz25ZkTwHN99aYAJPksPmWrBMFOl-sP_YDLnxLlKt51TeOkcb_wt2bWebGPkDFcieVKmA&authuser=0" target="_blank" rel="noopener noreferrer" className="hover:underline text-[10px] flex items-center gap-1 font-black">
-                                       <ExternalLink size={10} /> Find us on Google Maps
-                                    </a>
-                                    <span className="text-[10px]">© 2026 ABUQITMIRLABS.TECH. All rights reserved.</span>
-                                    <a href="https://abuqitmirlabs.tech" target="_blank" rel="noopener noreferrer" className="text-[10px] font-black hover:text-white transition-colors border-l border-black/20 pl-4">
-                                        Developed by AbuQitmirLabs.tech
-                                    </a>
-                                </div>
-                           </div>
+                    {/* Secondary Nav Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mt-16 pt-12 border-t-4 border-black uppercase text-xs font-black tracking-widest leading-relaxed">
+                        
+                        {/* Column 1: Core Services */}
+                        <div className="space-y-4">
+                            <h4 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Core Services</h4>
+                            <ul className="space-y-3">
+                                <li><Link to="/custom-software" className="hover:underline hover:text-white transition-colors">Custom Software Dev</Link></li>
+                                <li><Link to="/mobile-app-development" className="hover:underline hover:text-white transition-colors">Mobile App Dev</Link></li>
+                                <li><Link to="/web-development" className="hover:underline hover:text-white transition-colors">High-Performance Web</Link></li>
+                                <li><Link to="/ai-agent-development" className="hover:underline hover:text-white transition-colors">AI Agent Automations</Link></li>
+                                <li><Link to="/seo-mastery" className="hover:underline hover:text-white transition-colors">SEO Mastery</Link></li>
+                                <li><Link to="/graphics-design" className="hover:underline hover:text-white transition-colors">Branding & Graphics</Link></li>
+                                <li><Link to="/content-writing" className="hover:underline hover:text-white transition-colors">Technical Content</Link></li>
+                            </ul>
                         </div>
-                    </nav>
+
+                        {/* Column 2: Global Markets */}
+                        <div className="space-y-4">
+                            <h4 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Target Markets</h4>
+                            <ul className="space-y-3">
+                                <li><Link to="/us-market" className="hover:underline hover:text-white transition-colors">United States (US)</Link></li>
+                                <li><Link to="/uk-market" className="hover:underline hover:text-white transition-colors">United Kingdom (UK)</Link></li>
+                                <li><Link to="/canada-market" className="hover:underline hover:text-white transition-colors">Canada (CA)</Link></li>
+                                <li><Link to="/poland-market" className="hover:underline hover:text-white transition-colors">Poland (PL)</Link></li>
+                                <li><Link to="/australia-market" className="hover:underline hover:text-white transition-colors">Australia (AU)</Link></li>
+                                <li><Link to="/pakistan-market" className="hover:underline hover:text-white transition-colors">Pakistan (PK)</Link></li>
+                            </ul>
+                        </div>
+
+                        {/* Column 3: Legal & Sitemaps */}
+                        <div className="space-y-4">
+                            <h4 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Legal & Sitemaps</h4>
+                            <ul className="space-y-3">
+                                <li><Link to="/privacy" className="hover:underline hover:text-white transition-colors">Privacy Policy</Link></li>
+                                <li><Link to="/terms" className="hover:underline hover:text-white transition-colors">Terms of Service</Link></li>
+                                <li><Link to="/blog" className="hover:underline hover:text-white transition-colors">Tech Blog</Link></li>
+                                <li><a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-white transition-colors flex items-center gap-1">Dynamic Sitemap <ExternalLink size={10} /></a></li>
+                                <li><a href="/pages-sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-white transition-colors flex items-center gap-1">Pages Index <ExternalLink size={10} /></a></li>
+                                <li><a href="/image-sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-white transition-colors flex items-center gap-1">Image Asset Index <ExternalLink size={10} /></a></li>
+                                <li><a href="/video-sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-white transition-colors flex items-center gap-1">Video Index <ExternalLink size={10} /></a></li>
+                            </ul>
+                        </div>
+
+                        {/* Column 4: Contact & Access */}
+                        <div className="space-y-4">
+                            <h4 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Headquarters Info</h4>
+                            <ul className="space-y-3 not-italic normal-case font-bold tracking-tight text-black flex flex-col gap-1.5 list-none">
+                                <li className="flex items-start gap-2 text-xs">
+                                    <MapPin size={14} className="min-w-[14px] mt-0.5 text-zinc-900" />
+                                    <span>8/15, shah khalid colony, landhi town, karachi, pk</span>
+                                </li>
+                                <li className="flex items-start gap-2 text-xs">
+                                    <Phone size={14} className="min-w-[14px] mt-0.5 text-zinc-900" />
+                                    <span>+92 323 3260859</span>
+                                </li>
+                                <li className="flex items-start gap-2 text-xs">
+                                    <Mail size={14} className="min-w-[14px] mt-0.5 text-zinc-900" />
+                                    <span className="break-all font-mono font-black text-[10px] uppercase">shiraz@abuqitmirlabs.tech</span>
+                                </li>
+                            </ul>
+                            <div className="pt-4 flex flex-col gap-3">
+                                <button 
+                                    onClick={() => window.location.href = '/admin'}
+                                    className="px-4 py-3 bg-black text-[#ccff00] rounded-xl hover:bg-zinc-800 transition-all font-black text-[10px] brutalist-shadow border-2 border-black cursor-pointer uppercase tracking-widest self-start w-full"
+                                >
+                                    ADMIN ACCESS SYSTEM
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    {/* Technical Core & Copyright footer bottom info */}
+                    <div className="mt-16 pt-8 border-t-2 border-black/10 flex flex-col lg:flex-row items-center justify-between gap-6 uppercase text-[10px] font-black tracking-widest text-black/60">
+                        <div className="max-w-xl text-center lg:text-left leading-relaxed">
+                            Expertise Core: LLMOps, Generative AI Agents, Flutter & React Native Architecture, Cloud-Native SaaS, Headless Commerce, Semantic Entity SEO, and High-ROI Technical Content Strategy.
+                        </div>
+                        <div className="flex flex-col lg:items-end gap-2 text-center lg:text-right text-black font-black">
+                            <div className="flex items-center justify-center lg:justify-end gap-3">
+                                <a href="https://www.google.com/search?q=AbuQitmirLabs.Tech" target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-1">
+                                    <ExternalLink size={10} /> Find us on Google Maps
+                                </a>
+                                <span>•</span>
+                                <span>Headquarters: Karachi, PK • Dubai, AE • London, UK</span>
+                            </div>
+                            <div className="mt-1">
+                                © 2026 ABUQITMIRLABS.TECH. All rights reserved. Developed by AbuQitmirLabs.tech
+                            </div>
+                        </div>
+                    </div>
                 </footer>
             </div>
         </section>
