@@ -22,7 +22,8 @@ import {
   Crosshair,
   Sparkles,
   Zap,
-  Check
+  Check,
+  Search
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -346,6 +347,72 @@ const GraphicsDesignPage = () => {
                   whileInView={{ width: "100%" }}
                   className="absolute bottom-0 left-0 h-1 bg-[#ccff00] opacity-0 group-hover:opacity-100 transition-opacity"
                 />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our 5-Step Premium Design Process */}
+      <section className="py-32 md:py-64 bg-[#0a0a0a] border-b border-white/5 relative">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#ccff00]/5 blur-[120px] pointer-events-none" />
+        <div className="max-w-screen-2xl mx-auto px-6 md:px-12 relative z-10">
+          <div className="flex items-center gap-3 mb-24">
+            <Sparkles className="text-[#ccff00]" size={24} />
+            <span className="text-xs font-bold text-zinc-500 uppercase tracking-[0.4em]">Section 02.2: Process Roadmap</span>
+          </div>
+
+          <div className="mb-24">
+            <span className="text-xs font-bold text-[#ccff00] uppercase tracking-[0.4em] block mb-6">[ OUR_DESIGN_FLOW ]</span>
+            <h2 className="text-5xl md:text-8xl font-bold text-white uppercase tracking-tighter leading-[0.8] mb-12">
+              Our 5-Step Premium <br />
+              <span className="text-zinc-600">Design Experience.</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-px bg-white/5 border border-white/5">
+            {[
+              {
+                step: "01",
+                title: "Deep Discovery",
+                desc: "We analyze competitor aesthetics, study target audience visual behaviors, and curate interactive digital moodboards.",
+                icon: <Search className="w-8 h-8 text-[#ccff00]" />
+              },
+              {
+                step: "02",
+                title: "Layout Blueprint",
+                desc: "We translate high-level strategies into detailed, low-fidelity skeletons and interactive user-experience wireframes.",
+                icon: <Layout className="w-8 h-8 text-[#ccff00]" />
+              },
+              {
+                step: "03",
+                title: "Aesthetic Identity",
+                desc: "We curate precise color hierarchies, customized typographic scale systems, and bespoke icon suites.",
+                icon: <Palette className="w-8 h-8 text-[#ccff00]" />
+              },
+              {
+                step: "04",
+                title: "High Fidelity Polish",
+                desc: "We implement pixel-perfect visual components, responsive layout breakpoints, and beautiful motion-design mockups.",
+                icon: <Layers className="w-8 h-8 text-[#ccff00]" />
+              },
+              {
+                step: "05",
+                title: "Vector Delivery",
+                desc: "We provide complete access to organized Figma directories, high-res web exports, and fully scalable vector assets.",
+                icon: <Check className="w-8 h-8 text-[#ccff00]" />
+              }
+            ].map((p, idx) => (
+              <div key={idx} className="group p-10 bg-[#0a0a0a] hover:bg-white/[0.02] transition-colors duration-500 relative flex flex-col justify-between overflow-hidden min-h-[350px]">
+                <div className="absolute top-0 right-0 p-8 text-3xl font-mono text-zinc-900 group-hover:text-[#ccff00]/10 transition-colors">{p.step}</div>
+                <div>
+                  <div className="mb-10 text-zinc-600 group-hover:text-[#ccff00] transition-colors group-hover:scale-115 duration-500 flex origin-left items-center">
+                    {p.icon}
+                  </div>
+                  <h4 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-tighter mb-6">{p.title}</h4>
+                  <p className="text-sm text-zinc-500 font-light leading-relaxed group-hover:text-zinc-400 transition-colors">{p.desc}</p>
+                </div>
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-[#ccff00] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               </div>
             ))}
           </div>

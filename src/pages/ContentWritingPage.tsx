@@ -328,6 +328,64 @@ const ContentWritingPage = () => {
           </div>
        </section>
 
+       {/* Our 5-Step Editorial & Semantic Process */}
+       <section className="py-24 md:py-48 px-6 bg-slate-50 relative border-b border-slate-200">
+         <div className="max-w-7xl mx-auto">
+           <div className="mb-24">
+             <span className="text-xs font-bold text-slate-400 uppercase tracking-[0.5em] block mb-4">[ DEVELOPMENT_ROADMAP ]</span>
+             <h3 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase leading-[0.8] text-slate-900">
+               Our 5-Step <span className="text-slate-300">Editorial Flow.</span>
+             </h3>
+           </div>
+
+           <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+             {[
+               {
+                 step: "01",
+                 title: "Topical Analysis",
+                 desc: "We scan competitive search engine results, finding unaddressed coverage gaps and topical opportunity nodes.",
+                 icon: <Search className="w-6 h-6 text-slate-800" />
+               },
+               {
+                 step: "02",
+                 title: "Intent Mapping",
+                 desc: "We build user intent models and semantic keyword portfolios, mapping out critical reader queries.",
+                 icon: <Target className="w-6 h-6 text-slate-800" />
+               },
+               {
+                 step: "03",
+                 title: "Human drafting",
+                 desc: "Our native writers craft clear, E-E-A-T aligned drafts to engage human readers and solve real issues.",
+                 icon: <PenTool className="w-6 h-6 text-slate-800" />
+               },
+               {
+                 step: "04",
+                 title: "On-Page Tuning",
+                 desc: "We adjust subheadings, lists, and metadata blocks to optimize reader retention and indexing clarity.",
+                 icon: <BarChart3 className="w-6 h-6 text-slate-800" />
+               },
+               {
+                 step: "05",
+                 title: "Quality Sign-Off",
+                 desc: "We perform full grammar diagnostics, citation checks, and AI-detection screens before clean handover.",
+                 icon: <CheckCircle2 className="w-6 h-6 text-slate-800" />
+               }
+             ].map((p, idx) => (
+               <div key={idx} className="bg-white border border-slate-200 p-8 rounded-3xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow relative">
+                 <span className="text-emerald-500 font-mono text-xs font-bold absolute top-6 right-6">PHASE {p.step}</span>
+                 <div>
+                   <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center mb-6">
+                     {p.icon}
+                   </div>
+                   <h4 className="text-xl font-bold uppercase tracking-tight text-slate-900 mb-4">{p.title}</h4>
+                   <p className="text-sm text-slate-500 font-light leading-relaxed">{p.desc}</p>
+                 </div>
+               </div>
+             ))}
+           </div>
+         </div>
+       </section>
+
        {/* Tools Section */}
        <section className="py-24 md:py-48 px-6 bg-white relative overflow-hidden">
           <div className="max-w-7xl mx-auto">

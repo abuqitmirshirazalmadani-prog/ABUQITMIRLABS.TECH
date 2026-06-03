@@ -337,6 +337,70 @@ const SEOPage = () => {
         </div>
       </section>
 
+      {/* Our 5-Step SEO Authority Process */}
+      <section className="py-32 bg-[#f4f4f5] relative z-10 px-6 border-b-[8px] border-black">
+        <div className="max-w-7xl mx-auto">
+          <div className="inline-block bg-[#a855f7] text-white font-black px-6 py-2 border-4 border-black rounded-lg mb-8 transform rotate-1 brutalist-shadow uppercase text-xl">
+            The Flow
+          </div>
+          <h2 className="text-6xl md:text-8xl font-black text-black tracking-tighter mb-20 lowercase">
+            Our 5-Step Organic <br />
+            <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>Authority Process.</span>
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+            {[
+              {
+                step: "01",
+                title: "Audit & Recon",
+                desc: "We perform a deep technical competitor crawl, exposing hidden crawl blockages and search intent gaps.",
+                icon: <Search className="w-8 h-8 text-black" />,
+                bg: "bg-[#ccff00]"
+              },
+              {
+                step: "02",
+                title: "Semantic Mapping",
+                desc: "We build topical coverage clusters and link silos, proving deep subject knowledge to search engines.",
+                icon: <Workflow className="w-8 h-8 text-black" />,
+                bg: "bg-[#ff0099]"
+              },
+              {
+                step: "03",
+                title: "On-Page Tuning",
+                desc: "We inject rich schema markup and adjust internal structures to match Google's latest natural language guidelines.",
+                icon: <Code2 className="w-8 h-8 text-black" />,
+                bg: "bg-[#a855f7]"
+              },
+              {
+                step: "04",
+                title: "Local Citations",
+                desc: "We aggressively optimize Google Business Profiles and establish consistent local NAP directories.",
+                icon: <MapPin className="w-8 h-8 text-black" />,
+                bg: "bg-[#00e1ff]"
+              },
+              {
+                step: "05",
+                title: "Backlink Authority",
+                desc: "We secure high-quality editorial mentions and maintain strict daily E-E-A-T audit verification.",
+                icon: <TrendingUp className="w-8 h-8 text-black" />,
+                bg: "bg-white"
+              }
+            ].map((p, i) => (
+              <div key={i} className="bg-white border-4 border-black p-8 rounded-3xl brutalist-shadow relative flex flex-col justify-between group">
+                <div>
+                  <div className={`w-14 h-14 ${p.bg} border-4 border-black rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                    {p.icon}
+                  </div>
+                  <span className="text-sm font-mono text-zinc-400 font-bold block mb-4">PHASE {p.step}</span>
+                  <h4 className="text-2xl font-black text-black uppercase tracking-tight mb-4 leading-none">{p.title}</h4>
+                  <p className="text-base font-bold leading-relaxed">{p.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Tech Tools Section */}
       <section className="py-32 bg-black text-white relative z-10 px-6 overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#ccff00]/20 blur-[150px] -translate-y-1/2 translate-x-1/2" />
