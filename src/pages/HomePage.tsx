@@ -216,16 +216,16 @@ export default function HomePage() {
               href="https://wa.me/923233260859"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#25d366]/10 text-[#25d366] hover:bg-[#25d366]/20 font-sans text-xs tracking-[0.15em] uppercase border border-[#25d366]/20 px-8 py-4 rounded-full transition-all duration-300"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#25d366]/10 text-[#25d366] hover:bg-[#25d366]/20 font-sans text-xs tracking-[0.14em] uppercase border border-[#25d366]/20 px-8 py-4 rounded-full transition-all duration-300"
             >
-              💬 Message me on WhatsApp.
+              💬 <span className="normal-case">Message me on WhatsApp</span>
             </a>
             <a
               id="cta-email-link"
               href="mailto:abuqitmirshirazalmadani@gmail.com"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 text-zinc-300 hover:bg-white/10 font-sans text-xs tracking-[0.15em] uppercase border border-white/10 px-8 py-4 rounded-full transition-all duration-300"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 text-zinc-300 hover:bg-white/10 font-sans text-xs tracking-[0.14em] uppercase border border-white/10 px-8 py-4 rounded-full transition-all duration-300"
             >
-              📧 abuqitmirshirazalmadani@gmail.com
+              📧 <span className="normal-case font-mono font-medium tracking-tight">abuqitmirshirazalmadani@gmail.com</span>
             </a>
           </div>
         </div>

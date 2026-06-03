@@ -81,7 +81,7 @@ const Footer = () => {
                                 href="https://mail.google.com/mail/?view=cm&fs=1&to=abuqitmirshirazalmadani@gmail.com" 
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="hover:underline transition items-center gap-2 flex"
+                                className="hover:underline transition items-center gap-2 flex normal-case font-mono font-medium tracking-tight text-base"
                             >
                                 <Mail className="h-6 w-6" />
                                 abuqitmirshirazalmadani@gmail.com
@@ -91,7 +91,7 @@ const Footer = () => {
                         <span className="hidden md:block h-6 w-1 bg-black"></span>
                         <a href="https://wa.me/923233260859" target="_blank" rel="noreferrer" className="group hover:underline transition flex items-center gap-2">
                             <MessageCircle className="h-6 w-6" />
-                            +92-323-3260859 (Tap to Chat)
+                            <span className="normal-case font-mono font-medium tracking-tight text-base">+92-323-3260859</span> <span className="text-xs tracking-wider normal-case">(Tap to Chat)</span>
                         </a>
                     </div>
                 </div>
@@ -187,7 +187,7 @@ const Footer = () => {
                                 </li>
                                 <li className="flex items-start gap-2 text-xs">
                                     <Mail size={14} className="min-w-[14px] mt-0.5 text-zinc-900" />
-                                    <span className="break-all font-mono font-black text-[10px] uppercase">shiraz@abuqitmirlabs.tech</span>
+                                    <span className="break-all font-mono font-black text-[10px] normal-case">shiraz@abuqitmirlabs.tech</span>
                                 </li>
                             </ul>
                             <div className="pt-4 flex flex-col gap-3">
