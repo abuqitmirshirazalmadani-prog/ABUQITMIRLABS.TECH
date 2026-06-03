@@ -201,24 +201,33 @@ export default function HomePage() {
       <ContactSection />
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 py-16 px-6 text-white text-center">
-        <h2 className="text-3xl font-bold mb-4">Start your project.</h2>
-        <p className="text-blue-100 mb-8 text-lg">Free consultation available — Contact today.</p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="https://wa.me/923233260859"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-green-400 hover:bg-green-500 text-white font-bold px-10 py-4 rounded-2xl text-lg transition"
-          >
-            💬 Message me on WhatsApp.
-          </a>
-          <a
-            href="mailto:abuqitmirshirazalmadani@gmail.com"
-            className="bg-white text-blue-600 hover:bg-blue-50 font-bold px-10 py-4 rounded-2xl text-lg transition"
-          >
-            📧 abuqitmirshirazalmadani@gmail.com
-          </a>
+      <section id="cta-section" className="bg-[#090908] border-t border-zinc-900 py-24 px-6 text-white text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(204,255,0,0.03)_0%,_transparent_65%)] pointer-events-none"></div>
+        <div className="max-w-4xl mx-auto relative z-10">
+          <h2 className="text-3xl md:text-5xl font-serif text-white mb-4 italic tracking-tight">
+            Start your project.
+          </h2>
+          <p className="text-zinc-400 mb-12 text-sm md:text-base font-sans tracking-wide">
+            Free consultation available — Contact today.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a
+              id="cta-whatsapp-link"
+              href="https://wa.me/923233260859"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#25d366]/10 text-[#25d366] hover:bg-[#25d366]/20 font-sans text-xs tracking-[0.15em] uppercase border border-[#25d366]/20 px-8 py-4 rounded-full transition-all duration-300"
+            >
+              💬 Message me on WhatsApp.
+            </a>
+            <a
+              id="cta-email-link"
+              href="mailto:abuqitmirshirazalmadani@gmail.com"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 text-zinc-300 hover:bg-white/10 font-sans text-xs tracking-[0.15em] uppercase border border-white/10 px-8 py-4 rounded-full transition-all duration-300"
+            >
+              📧 abuqitmirshirazalmadani@gmail.com
+            </a>
+          </div>
         </div>
       </section>
 
