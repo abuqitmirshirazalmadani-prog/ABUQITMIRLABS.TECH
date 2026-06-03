@@ -14,6 +14,7 @@ interface Post {
   title: string;
   content: string;
   coverImage?: string;
+  category?: string;
   createdAt: any;
   author: string;
   tags?: string[];
@@ -43,6 +44,78 @@ const BlogPostPage = () => {
         fetchPost();
         window.scrollTo(0, 0);
     }, [slug]);
+
+    const getCategoryDetails = (categoryVal?: string) => {
+        let name = 'Web Development';
+        let to = '/web-development';
+
+        if (!categoryVal) {
+            const postTitle = post?.title?.toLowerCase() || '';
+            const allTagsLower = post?.tags?.map(t => String(t).toLowerCase()) || [];
+            
+            if (
+                postTitle.includes('next.js') || 
+                postTitle.includes('speed') || 
+                postTitle.includes('performance') || 
+                postTitle.includes('seo') || 
+                postTitle.includes('web') || 
+                postTitle.includes('google') ||
+                allTagsLower.includes('web') || 
+                allTagsLower.includes('seo') || 
+                allTagsLower.includes('development')
+            ) {
+                return { name: 'Web Development', to: '/web-development' };
+            }
+            if (postTitle.includes('ai') || postTitle.includes('agent') || allTagsLower.includes('ai') || allTagsLower.includes('agents')) {
+                return { name: 'AI Agent Development', to: '/ai-agent-development' };
+            }
+            if (postTitle.includes('software') || postTitle.includes('enterprise') || allTagsLower.includes('software')) {
+                return { name: 'Custom Software', to: '/custom-software' };
+            }
+            if (postTitle.includes('app') || postTitle.includes('mobile') || allTagsLower.includes('app') || allTagsLower.includes('mobile')) {
+                return { name: 'Mobile App Development', to: '/mobile-app-development' };
+            }
+            if (postTitle.includes('marketing') || allTagsLower.includes('marketing') || allTagsLower.includes('optimization')) {
+                return { name: 'SEO Mastery', to: '/seo-mastery' };
+            }
+            if (postTitle.includes('graphics') || postTitle.includes('design') || allTagsLower.includes('design') || allTagsLower.includes('graphics')) {
+                return { name: 'Graphics Design', to: '/graphics-design' };
+            }
+            if (postTitle.includes('content') || postTitle.includes('copywriting') || allTagsLower.includes('content') || allTagsLower.includes('writing')) {
+                return { name: 'Content Writing', to: '/content-writing' };
+            }
+            return { name: 'Web Development', to: '/web-development' };
+        }
+
+        const catLower = categoryVal.toLowerCase();
+        if (catLower.includes('web') || catLower.includes('dev')) {
+            name = 'Web Development';
+            to = '/web-development';
+        } else if (catLower.includes('software')) {
+            name = 'Custom Software';
+            to = '/custom-software';
+        } else if (catLower.includes('app') || catLower.includes('mobile')) {
+            name = 'Mobile App Development';
+            to = '/mobile-app-development';
+        } else if (catLower.includes('ai') || catLower.includes('agent')) {
+            name = 'AI Agent Development';
+            to = '/ai-agent-development';
+        } else if (catLower.includes('seo') || catLower.includes('mastery') || catLower.includes('search')) {
+            name = 'SEO Mastery';
+            to = '/seo-mastery';
+        } else if (catLower.includes('graphics') || catLower.includes('design')) {
+            name = 'Graphics Design';
+            to = '/graphics-design';
+        } else if (catLower.includes('content') || catLower.includes('writing')) {
+            name = 'Content Writing';
+            to = '/content-writing';
+        } else {
+            name = categoryVal;
+            to = '/blog';
+        }
+
+        return { name, to };
+    };
 
     if (loading) return (
         <div className="min-h-screen bg-[#f8f9fa] flex items-center justify-center">
@@ -89,6 +162,14 @@ const BlogPostPage = () => {
             window.open(shareLinks[platform], '_blank', 'width=600,height=400');
         }
     };
+
+    const categoryDetails = getCategoryDetails(post?.category);
+    const breadcrumbItems = [
+        { name: 'Home', to: '/' },
+        { name: 'Blog', to: '/blog' },
+        { name: categoryDetails.name, to: categoryDetails.to },
+        { name: post?.title || 'Journal' }
+    ];
 
     return (
         <div className="min-h-screen bg-[#f3f4f7]">
@@ -161,6 +242,12 @@ const BlogPostPage = () => {
                                 {
                                     "@type": "ListItem",
                                     "position": 3,
+                                    "name": categoryDetails.name,
+                                    "item": `https://abuqitmirlabs.tech${categoryDetails.to}`
+                                },
+                                {
+                                    "@type": "ListItem",
+                                    "position": 4,
                                     "name": post.title,
                                     "item": `https://abuqitmirlabs.tech/blog/${slug}`
                                 }
@@ -171,7 +258,7 @@ const BlogPostPage = () => {
             </Helmet>
             
             <Header />
-            <Breadcrumbs />
+            <Breadcrumbs customItems={breadcrumbItems} />
             
             <main className="pt-32 pb-20 px-6">
                 <div className="max-w-4xl mx-auto">
