@@ -83,7 +83,7 @@ const PakistanMarketPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Mobile App Development Company in Pakistan | Best" />
         <meta name="twitter:description" content="Driving digital innovation in Pakistan. ABUQITMIRLABS .TECH provides top-tier custom software, AI agent integration, and hyper-local SEO." />
-        <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+        <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
         <script 

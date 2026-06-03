@@ -66,13 +66,13 @@ const AboutPage = () => {
         <meta property="og:description" content="Discover the vision behind ABUQITMIRLABS .TECH. Specialized in high-performance digital ecosystems and AI-driven architectures." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/about" />
         <meta property="og:type" content="profile" />
-        <meta property="og:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+        <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="App Development Agency Pakistan | About Us" />
         <meta name="twitter:description" content="Discover the vision behind ABUQITMIRLABS .TECH. Specialized in high-performance digital ecosystems and AI-driven architectures." />
-        <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+        <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
       </Helmet>
       <Header />
       <Breadcrumbs />
@@ -141,7 +141,7 @@ const AboutPage = () => {
             >
                 <div className="relative w-full max-w-sm aspect-[4/5] rounded-[3rem] overflow-hidden border border-white/10 bg-zinc-900 mx-auto lg:mx-0 p-2">
                     <img 
-                        src="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" 
+                        src="/logo.png" 
                         alt="futuristic professional portrait of Shiraz Almadani - Lead Architect at ABUQITMIRLABS.TECH" 
                         className="w-full h-full object-cover rounded-[2.8rem] transition-all duration-1000 group-hover:scale-105"
                         loading="lazy"

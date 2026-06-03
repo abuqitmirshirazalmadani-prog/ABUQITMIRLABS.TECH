@@ -22,19 +22,19 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <Helmet>
-        <title>Full-Service Digital Agency & Custom Software Solutions | AbuQitmirLabs</title>
-        <meta name="description" content="Discover innovative solutions and services at AbuQit Mir Labs, specializing in technology and development." />
+        <title>Bespoke Custom Software & AI App Development Studio | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs .TECH is an elite software engineering studio. We build bespoke custom enterprise software, scalable SaaS platforms, and intelligent AI agent models." />
         <link rel="canonical" href="https://abuqitmirlabs.tech" />
         
-        <meta property="og:title" content="Full-Service Digital Agency & Custom Software Solutions | AbuQitmirLabs" />
-        <meta property="og:description" content="Discover innovative solutions and services at AbuQit Mir Labs, specializing in technology and development." />
+        <meta property="og:title" content="Bespoke Custom Software & AI App Development Studio | AbuQitmirLabs" />
+        <meta property="og:description" content="Elite custom software development and AI engineering studio. We build robust ERP systems, native mobile applications, and custom AI chatbots." />
         <meta property="og:url" content="https://abuqitmirlabs.tech" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+        <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Expert App Development Company | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Discover innovative solutions and services at AbuQit Mir Labs, specializing in technology and development." />
-        <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+        <meta name="twitter:title" content="Bespoke Custom Software & AI App Development Studio | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Elite custom software development and AI engineering studio. We build robust ERP systems, native mobile applications, and custom AI chatbots." />
+        <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
 
         <script 
           type="application/ld+json"
@@ -43,8 +43,8 @@ export default function HomePage() {
               "@context": "https://schema.org",
               "@type": "WebSite",
               "url": "https://abuqitmirlabs.tech/",
-              "name": "Abuqit Mir Labs",
-              "description": "Innovative solutions in AI and technology."
+              "name": "AbuQitmirLabs",
+              "description": "Bespoke custom software and intelligent AI agent solutions."
             })
           }}
         ></script>
@@ -57,8 +57,8 @@ export default function HomePage() {
               "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
               "name": "AbuQitmirLabs .TECH",
               "url": "https://abuqitmirlabs.tech",
-              "logo": "https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png",
-              "image": "https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png",
+              "logo": "https://abuqitmirlabs.tech/logo.png",
+              "image": "https://abuqitmirlabs.tech/logo.png",
               "description": "Expert custom software development and AI engineering firm. We build scalable SaaS platforms and high-performance applications for global enterprises.",
               "priceRange": "$$",
               "email": "shiraz@abuqitmirlabs.tech",

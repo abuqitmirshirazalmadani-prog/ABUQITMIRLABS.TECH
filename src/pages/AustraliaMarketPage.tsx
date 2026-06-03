@@ -65,13 +65,13 @@ const AustraliaMarketPage = () => {
         <meta property="og:description" content="Future-proofing Australian businesses with elite software engineering. APP-compliant tech and localized AU SEO." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/australia-market" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+        <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Tech Solutions Australia | ABUQITMIRLABS" />
         <meta name="twitter:description" content="Future-proofing Australian businesses with elite software engineering. ABUQITMIRLABS .TECH provides APP-compliant tech and localized SEO." />
-        <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+        <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
         <script 

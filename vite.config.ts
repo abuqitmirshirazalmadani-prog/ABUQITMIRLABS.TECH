@@ -24,7 +24,7 @@ export default defineConfig(({mode}) => {
         closeBundle: async () => {
           const hostname = 'https://abuqitmirlabs.tech';
           const routes = [
-            { url: '/',                        changefreq: 'weekly',  priority: 1.0, title: 'Affordable App Development Company | AbuQitmirLabs', description: "AbuQitmirLabs .TECH is a leading app development company. We build SaaS, Flutter apps, and AI solutions for global businesses." },
+            { url: '/',                        changefreq: 'weekly',  priority: 1.0, title: 'Bespoke Custom Software & AI App Development Studio | AbuQitmirLabs', description: "AbuQitmirLabs .TECH is an elite custom software development studio. We build bespoke SaaS, industrial-grade enterprise systems, and intelligent AI models for global businesses." },
             { url: '/about',                   changefreq: 'monthly', priority: 0.8, title: 'About Us | AbuQitmirLabs', description: 'Learn about our mission to build cutting-edge AI and mobile solutions.' },
             { url: '/contact',                 changefreq: 'monthly', priority: 0.9, title: 'Contact Us | Start Your Project', description: 'Contact AbuQitmirLabs for your next mobile app or AI software project.' },
             { url: '/custom-software',         changefreq: 'weekly',  priority: 0.9, title: 'Custom Software Development', description: 'Tailor-made software solutions for your unique business needs.' },
@@ -49,7 +49,29 @@ export default defineConfig(({mode}) => {
           const path = await import('path');
           const outDir = path.resolve(process.cwd(), 'dist');
           const indexHtmlPath = path.resolve(outDir, 'index.html');
-          
+
+          // Download image logo to serve from our own site
+          try {
+            const publicDir = path.resolve(process.cwd(), 'public');
+            if (!fs.existsSync(publicDir)) {
+              fs.mkdirSync(publicDir, { recursive: true });
+            }
+            const logoPathSource = 'https://i.postimg.cc/hjLzDQHK/abuqitmir222.png';
+            const response = await fetch(logoPathSource);
+            if (response.ok) {
+              const buffer = await response.arrayBuffer();
+              const nodeBuffer = Buffer.from(buffer);
+              fs.writeFileSync(path.resolve(publicDir, 'logo.png'), nodeBuffer);
+              if (!fs.existsSync(outDir)) {
+                fs.mkdirSync(outDir, { recursive: true });
+              }
+              fs.writeFileSync(path.resolve(outDir, 'logo.png'), nodeBuffer);
+              console.log('✅ Downloaded logo successfully to public/logo.png and dist/logo.png!');
+            }
+          } catch (err) {
+            console.error('⚠️ Failed to download logo:', err);
+          }
+
           if (!fs.existsSync(indexHtmlPath)) return;
           
           const baseHtml = fs.readFileSync(indexHtmlPath, 'utf8');
@@ -113,8 +135,8 @@ Sitemap: ${hostname}/sitemap.xml`;
                 <main>
                   <article>
                     <h2>Expert ${route.title}</h2>
-                    <p>At AbuQitmirLabs .TECH, we specialize in <strong>affordable app development</strong> and high-performance digital engineering.</p>
-                    <img src="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" style="max-width:300px" />
+                    <p>At AbuQitmirLabs .TECH, we specialize in <strong>custom software engineering</strong> and high-performance digital solutions.</p>
+                    <img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" style="max-width:300px" />
                     <p>${route.description}</p>
                     <section>
                       <h3>Our Technical Expertise</h3>

@@ -181,7 +181,7 @@ const BlogPostPage = () => {
                 {/* OG Tags */}
                 <meta property="og:title" content={`${post.title} | ABUQITMIRLABS Journal`} />
                 <meta property="og:description" content={`${post.content.substring(0, 160).replace(/[#*`]/g, '')} | Technical Blog by ABUQITMIRLABS .TECH`} />
-                <meta property="og:image" content={post.coverImage || "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png"} />
+                <meta property="og:image" content={post.coverImage || "https://abuqitmirlabs.tech/logo.png"} />
                 <meta property="og:type" content="article" />
                 <meta property="og:url" content={`https://abuqitmirlabs.tech/blog/${slug}`} />
 
@@ -189,7 +189,7 @@ const BlogPostPage = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={`${post.title} | ABUQITMIRLABS Journal`} />
                 <meta name="twitter:description" content={`${post.content.substring(0, 160).replace(/[#*`]/g, '')} | Technical Insights by ABUQITMIRLABS .TECH`} />
-                <meta name="twitter:image" content={post.coverImage || "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png"} />
+                <meta name="twitter:image" content={post.coverImage || "https://abuqitmirlabs.tech/logo.png"} />
                 
                 {/* Article Schema */}
                 <script 
@@ -199,7 +199,7 @@ const BlogPostPage = () => {
                             "@context": "https://schema.org",
                             "@type": "BlogPosting",
                             "headline": post.title,
-                            "image": post.coverImage || "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png",
+                            "image": post.coverImage || "https://abuqitmirlabs.tech/logo.png",
                             "author": {
                                 "@type": "Person",
                                 "name": post.author,
@@ -362,7 +362,7 @@ const BlogPostPage = () => {
                     <div className="mt-20 pt-10 border-t border-black/5">
                         <div className="bg-white border border-black/5 rounded-[2.5rem] p-10 flex flex-col md:flex-row items-center gap-10 shadow-sm">
                             <div className="h-24 w-24 bg-zinc-950 rounded-3xl overflow-hidden shrink-0 shadow-lg border-2 border-white">
-                                <img src="https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png" alt="Shiraz Almadani - Lead Architect at ABUQITMIRLABS.TECH" className="w-full h-full object-cover object-top" />
+                                <img src="/logo.png" alt="Shiraz Almadani - Lead Architect at ABUQITMIRLABS.TECH" className="w-full h-full object-cover object-top" />
                             </div>
                             <div>
                                 <h3 className="text-2xl font-black text-black mb-3 uppercase tracking-tight">ABUQITMIRLABS .TECH Shiraz Almadani</h3>

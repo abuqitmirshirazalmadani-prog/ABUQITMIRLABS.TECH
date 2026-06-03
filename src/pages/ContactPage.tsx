@@ -71,13 +71,13 @@ const ContactPage = () => {
         <meta property="og:description" content="Connect with the lead architects at ABUQITMIRLABS .TECH for custom software development and AI automation." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/contact" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+        <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contact App Developer | Get Free Project Quote" />
         <meta name="twitter:description" content="Connect with the lead architects at ABUQITMIRLABS .TECH for custom software development and AI automation." />
-        <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+        <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
         <script 

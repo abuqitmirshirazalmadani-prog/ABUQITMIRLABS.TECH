@@ -135,13 +135,13 @@ const CustomSoftwarePage = () => {
         <meta property="og:description" content="Expert bespoke software engineering and scalable enterprise solutions." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/custom-software" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+        <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Custom Software Development Services | AbuQitmirLabs" />
         <meta name="twitter:description" content="Expert custom software development and scalable engineering for startups." />
-        <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+        <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
         <script 
@@ -175,7 +175,7 @@ const CustomSoftwarePage = () => {
                   "@type": "Organization",
                   "name": "AbuQitmirLabs",
                   "url": "https://abuqitmirlabs.tech",
-                  "logo": "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png"
+                  "logo": "https://abuqitmirlabs.tech/logo.png"
                 },
                 "description": "Expert bespoke software engineering firm delivering robust ERP systems, scalable SaaS platforms, and secure high-performance architectures.",
                 "areaServed": "Global"

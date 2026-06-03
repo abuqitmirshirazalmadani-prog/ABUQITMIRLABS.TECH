@@ -111,13 +111,13 @@ const ContentWritingPage = () => {
         <meta property="og:description" content="ABUQITMIRLABS .TECH provides high-authority content writing. From technical whitepapers and SEO blogs to persuasive SaaS copywriting." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/content-writing" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+        <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Content Writing Service for Websites & SEO Blogs" />
         <meta name="twitter:description" content="ABUQITMIRLABS .TECH provides high-authority content writing. From technical whitepapers and SEO blogs to persuasive SaaS copywriting." />
-        <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+        <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
 
         {/* Schema Markup */}
         <script 

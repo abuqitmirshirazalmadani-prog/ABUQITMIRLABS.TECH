@@ -110,13 +110,13 @@ const WebDevelopmentPage = () => {
         <meta property="og:description" content="Expert web engineering firm delivering high-speed, secure Jamstack ecosystems and scalable enterprise applications." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/web-development" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+        <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Custom Web Development Service | React & Next.js" />
         <meta name="twitter:description" content="ABUQITMIRLABS .TECH delivers high-speed, secure web ecosystems. Specialized in Jamstack, Headless CMS, and conversion-optimized web applications." />
-        <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+        <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
 
         {/* Schema Markup */}
         <script 
