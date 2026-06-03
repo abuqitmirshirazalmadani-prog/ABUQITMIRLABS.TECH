@@ -241,7 +241,7 @@ const GraphicsDesignPage = () => {
               <Sparkles className="text-[#ccff00] opacity-40" size={40} />
               <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-20">visual storytelling</span>
               <Sparkles className="text-[#ccff00] opacity-40" size={40} />
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)' }}>affordable logo design</span>
+              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)' }}>bespoke logo design</span>
               <Sparkles className="text-[#ccff00] opacity-40" size={40} />
               <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-20">social media ad creatives</span>
               <Sparkles className="text-[#ccff00] opacity-40" size={40} />

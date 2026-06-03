@@ -49,8 +49,8 @@ const PakistanMarketPage = () => {
       a: "Local SEO ensures your business appears at the top of Google Maps and local search results. When someone in your city searches for your service, your verified business, phone number, and directions appear first."
     },
     {
-      q: "Is custom software affordable for a Pakistani SME?",
-      a: "Yes. We offer scalable solutions. We can start by building a core MVP (Minimum Viable Product) to digitize your most critical workflow, and then scale the software as your business grows."
+      q: "Is custom software a viable investment for a Pakistani SME?",
+      a: "Yes. We offer strategically scalable solutions. We can start by building a core MVP (Minimum Viable Product) to digitize your most critical workflow, and then expand the system as your operations grow."
     },
     {
       q: "Can your AI agents understand Roman Urdu or local context?",

@@ -548,7 +548,7 @@ const CustomSoftwarePage = () => {
             <div key={i} className="flex items-center gap-20 px-10">
               <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-20">custom software for startups</span>
               <Star className="text-blue-500 opacity-60" fill="currentColor" size={40} />
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase outline-text" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)' }}>affordable build for small business</span>
+              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase outline-text" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)' }}>strategic systems for growth</span>
               <Star className="text-blue-500 opacity-60" fill="currentColor" size={40} />
               <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-20">process automation software</span>
               <Star className="text-blue-500 opacity-60" fill="currentColor" size={40} />
@@ -1074,11 +1074,8 @@ const CustomSoftwarePage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
             <h3 className="text-xs font-mono text-slate-500 uppercase tracking-[0.4em] font-bold">[ RELATED_SYSTEMS ]</h3>
-            <div className="flex items-center gap-2 text-sm text-slate-500">
-               <span>Learn more about</span>
-               <a href="https://en.wikipedia.org/wiki/Custom_software" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline flex items-center gap-1">
-                 Custom Software <ArrowUpRight size={14} />
-               </a>
+            <div className="flex items-center gap-2 text-sm text-slate-400">
+               <span>Need expert consultation? Initiate lead briefing below.</span>
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

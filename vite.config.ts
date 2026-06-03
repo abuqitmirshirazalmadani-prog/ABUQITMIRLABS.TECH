@@ -125,7 +125,7 @@ Sitemap: ${hostname}/sitemap.xml`;
                         <li>Scalable Cloud-Native Microservices</li>
                         <li>High-ROI Semantic SEO Strategies</li>
                       </ul>
-                      <p>Learn more about <a href="https://en.wikipedia.org/wiki/Custom_software">custom software</a> industry standards.</p>
+
                     </section>
                   </article>
                 </main>

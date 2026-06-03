@@ -200,6 +200,28 @@ export default function HomePage() {
 
       <ContactSection />
 
+      {/* CTA Section */}
+      <section className="bg-gradient-to-r from-blue-600 to-purple-600 py-16 px-6 text-white text-center">
+        <h2 className="text-3xl font-bold mb-4">Start your project.</h2>
+        <p className="text-blue-100 mb-8 text-lg">Free consultation available — Contact today.</p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="https://wa.me/923233260859"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-green-400 hover:bg-green-500 text-white font-bold px-10 py-4 rounded-2xl text-lg transition"
+          >
+            💬 Message me on WhatsApp.
+          </a>
+          <a
+            href="mailto:abuqitmirshirazalmadani@gmail.com"
+            className="bg-white text-blue-600 hover:bg-blue-50 font-bold px-10 py-4 rounded-2xl text-lg transition"
+          >
+            📧 abuqitmirshirazalmadani@gmail.com
+          </a>
+        </div>
+      </section>
+
       <Footer />
     </main>
   );

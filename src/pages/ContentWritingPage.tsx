@@ -237,7 +237,7 @@ const ContentWritingPage = () => {
               <div className="w-2 h-2 rounded-full bg-white/40" />
               <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase italic" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.4)' }}>email marketing newsletters</span>
               <div className="w-2 h-2 rounded-full bg-white/40" />
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-20 italic">affordable blog writing</span>
+              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-20 italic">expert blog writing</span>
               <div className="w-2 h-2 rounded-full bg-white/40" />
               <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase italic" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.4)' }}>high-quality ghostwriting</span>
               <div className="w-2 h-2 rounded-full bg-white/40" />
