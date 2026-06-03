@@ -56,7 +56,7 @@ export default defineConfig(({mode}) => {
             if (!fs.existsSync(publicDir)) {
               fs.mkdirSync(publicDir, { recursive: true });
             }
-            const logoPathSource = 'https://i.postimg.cc/hjLzDQHK/abuqitmir222.png';
+            const logoPathSource = 'https://abuqitmirlabs.tech/logo.png';
             const response = await fetch(logoPathSource);
             if (response.ok) {
               const buffer = await response.arrayBuffer();
@@ -134,7 +134,7 @@ Sitemap: ${hostname}/sitemap.xml`;
                 </header>
                 <main>
                   <article>
-                    <h2>Expert ${route.title}</h2>
+                    <h2>Elite Digital Architecture &amp; Technical Solutions</h2>
                     <p>At AbuQitmirLabs .TECH, we specialize in <strong>custom software engineering</strong> and high-performance digital solutions.</p>
                     <img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" style="max-width:300px" />
                     <p>${route.description}</p>
