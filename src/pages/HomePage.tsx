@@ -120,17 +120,17 @@ export default function HomePage() {
                   "@type": "VideoObject",
                   "name": "Enterprise Digital Architecture",
                   "description": "Watch our lead architect ABUQITMIRLABS.TECH breakdown complex digital ecosystems.",
-                  "thumbnailUrl": "https://img.youtube.com/vi/v25Fo6O3iy4/maxresdefault.jpg",
+                  "thumbnailUrl": "https://img.youtube.com/vi/Sh9SqMCx9I4/maxresdefault.jpg",
                   "uploadDate": "2024-05-18",
-                  "embedUrl": "https://www.youtube.com/embed/v25Fo6O3iy4"
+                  "embedUrl": "https://www.youtube.com/embed/Sh9SqMCx9I4"
                 },
                 {
                   "@type": "VideoObject",
                   "name": "Advanced Engineering Solutions",
                   "description": "Deep dive into High-Performance Web Tech and scalable backend systems.",
-                  "thumbnailUrl": "https://img.youtube.com/vi/110zeH-eEEk/maxresdefault.jpg",
+                  "thumbnailUrl": "https://img.youtube.com/vi/B31EXmt5LrQ/maxresdefault.jpg",
                   "uploadDate": "2024-05-18",
-                  "embedUrl": "https://www.youtube.com/embed/110zeH-eEEk"
+                  "embedUrl": "https://www.youtube.com/embed/B31EXmt5LrQ"
                 }
               ]
             })

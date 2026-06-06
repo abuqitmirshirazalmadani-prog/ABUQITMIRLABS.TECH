@@ -57,12 +57,12 @@ export default defineConfig(({mode}) => {
           args: ['--no-sandbox', '--disable-setuid-sandbox']
         })
       }),
-      // Custom sitemap, robots.txt AND static route generation for SEO
+      // Custom sitemap, robots.txt, RSS Feed AND static route generation for SEO
       {
         name: 'custom-seo-generator',
         closeBundle: async () => {
           const hostname = 'https://abuqitmirlabs.tech';
-          const routes = [
+          const baseRoutes = [
             { url: '/',                        changefreq: 'weekly',  priority: 1.0, title: 'Bespoke Custom Software & AI App Development Studio | AbuQitmirLabs', description: "AbuQitmirLabs .TECH is an elite custom software development studio. We build bespoke SaaS, industrial-grade enterprise systems, and intelligent AI models for global businesses." },
             { url: '/about',                   changefreq: 'monthly', priority: 0.8, title: 'About Us | AbuQitmirLabs', description: 'Learn about our mission to build cutting-edge AI and mobile solutions.' },
             { url: '/contact',                 changefreq: 'monthly', priority: 0.9, title: 'Contact Us | Start Your Project', description: 'Contact AbuQitmirLabs for your next mobile app or AI software project.' },
@@ -73,6 +73,7 @@ export default defineConfig(({mode}) => {
             { url: '/seo-mastery',             changefreq: 'weekly',  priority: 0.8, title: 'SEO Mastery Services', description: 'Boost your digital presence with our expert SEO and ranking services.' },
             { url: '/graphics-design',         changefreq: 'weekly',  priority: 0.8, title: 'Creative Graphics & UI/UX', description: 'Stunning visual designs and user experiences that capture attention.' },
             { url: '/content-writing',         changefreq: 'weekly',  priority: 0.8, title: 'Professional Content Writing', description: 'Engaging content that drives conversions and builds brand authority.' },
+            { url: '/case-studies',            changefreq: 'weekly',  priority: 0.9, title: 'Cinematic Case Studies & Technical Reference Projects | AbuQitmirLabs', description: 'Discover our premium, high-impact case studies in AI integration, custom software engineering, and programmatic SEO.' },
             { url: '/us-market',               changefreq: 'monthly', priority: 0.7, title: 'App Development Company for US Startups | Offshore', description: 'Custom AI and mobile app development services tailored for the United States market.' },
             { url: '/uk-market',               changefreq: 'monthly', priority: 0.7, title: 'App Development Agency for UK Businesses | Offshore', description: 'Custom AI and mobile app development services tailored for the United Kingdom market.' },
             { url: '/pakistan-market',         changefreq: 'monthly', priority: 0.7, title: 'Mobile App Development Company in Pakistan | Best', description: 'Leading AI and mobile app development services for businesses in Pakistan.' },
@@ -83,11 +84,65 @@ export default defineConfig(({mode}) => {
             { url: '/terms',                   changefreq: 'yearly',  priority: 0.3, title: 'Terms of Service', description: 'Legal terms and conditions for using AbuQitmirLabs services.' },
             { url: '/privacy',                 changefreq: 'yearly',  priority: 0.3, title: 'Privacy Policy', description: 'Our commitment to protecting your data and privacy.' },
           ];
-          
+
           const fs = await import('fs');
           const path = await import('path');
           const outDir = path.resolve(process.cwd(), 'dist');
           const indexHtmlPath = path.resolve(outDir, 'index.html');
+
+          // Helper to escape special XML characters
+          function escapeXml(unsafe: string) {
+            return unsafe.replace(/[<>&'"]/g, (c) => {
+              switch (c) {
+                case '<': return '&lt;';
+                case '>': return '&gt;';
+                case '&': return '&amp;';
+                case '\'': return '&apos;';
+                case '"': return '&quot;';
+                default: return c;
+              }
+            });
+          }
+
+          // Fetch dynamic posts from Firestore REST API at build time
+          let fetchedPosts: { slug: string; title: string; excerpt: string; createdAt: string; category: string; author: string }[] = [];
+          try {
+            const firestoreUrl = `https://firestore.googleapis.com/v1/projects/angular-oxide-tcf5x/databases/ai-studio-675d15b3-f001-4d2e-a88b-bbcb33443014/documents/posts`;
+            const response = await fetch(firestoreUrl);
+            if (response.ok) {
+              const data = await response.json();
+              if (data && data.documents) {
+                fetchedPosts = data.documents.map((doc: any) => {
+                  const fields = doc.fields || {};
+                  return {
+                    slug: fields.slug?.stringValue || '',
+                    title: fields.title?.stringValue || '',
+                    excerpt: fields.excerpt?.stringValue || '',
+                    published: fields.published?.booleanValue ?? false,
+                    createdAt: fields.createdAt?.timestampValue || new Date().toISOString(),
+                    category: fields.category?.stringValue || 'Software',
+                    author: fields.author?.stringValue || 'Shiraz Almadani',
+                  };
+                }).filter((p: any) => p.published && p.slug);
+                console.log(`✨ [SEO Generator] Successfully loaded ${fetchedPosts.length} dynamic posts from Firestore!`);
+              }
+            } else {
+              console.warn(`⚠️ [SEO Generator] Firestore fetched failed with status ${response.status}. Using empty fallback.`);
+            }
+          } catch (err: any) {
+            console.error('⚠️ [SEO Generator] Error querying Firestore during compilation:', err.message || err);
+          }
+
+          // Append dynamic blog routes to Sitemap & SSG lists
+          const dynamicRoutes = fetchedPosts.map(post => ({
+            url: `/blog/${post.slug}`,
+            changefreq: 'weekly' as const,
+            priority: 0.8,
+            title: `${post.title} | AbuQitmirLabs Journal`,
+            description: post.excerpt || 'Technical Insights from Shiraz Almadani.'
+          }));
+
+          const routes = [...baseRoutes, ...dynamicRoutes];
 
           // Download image logo to serve from our own site
           try {
@@ -115,7 +170,7 @@ export default defineConfig(({mode}) => {
           
           const baseHtml = fs.readFileSync(indexHtmlPath, 'utf8');
 
-          // 1. Generate Sitemap
+          // 1. Generate Sitemap (sitemap.xml)
           const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes.map(route => `  <url>
@@ -126,8 +181,35 @@ ${routes.map(route => `  <url>
   </url>`).join('\n')}
 </urlset>`;
           fs.writeFileSync(path.resolve(outDir, 'sitemap.xml'), sitemapContent);
+          console.log(`✅ [Sitemap] Prepared dynamic sitemap with ${routes.length} total links!`);
 
-          // 2. Generate Robots.txt
+          // 2. Generate RSS Feed (rss.xml)
+          const rssItemsContent = fetchedPosts.map(post => `    <item>
+      <title>${escapeXml(post.title)}</title>
+      <link>${hostname}/blog/${post.slug}</link>
+      <guid isPermaLink="true">${hostname}/blog/${post.slug}</guid>
+      <pubDate>${new Date(post.createdAt).toUTCString()}</pubDate>
+      <description>${escapeXml(post.excerpt)}</description>
+      <author>shiraz@abuqitmirlabs.tech (${escapeXml(post.author)})</author>
+      <category>${escapeXml(post.category)}</category>
+    </item>`).join('\n');
+
+          const rssContent = `<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AbuQitmirLabs .TECH - Custom Software &amp; AI Engineering Journal</title>
+    <link>https://abuqitmirlabs.tech</link>
+    <description>Discover leading insights in AI Agent automations, ERP configurations, customizable web systems, and semantic local SEO solutions from Shiraz Almadani.</description>
+    <language>en-us</language>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+    <atom:link href="https://abuqitmirlabs.tech/rss.xml" rel="self" type="application/rss+xml" />
+${rssItemsContent}
+  </channel>
+</rss>`;
+          fs.writeFileSync(path.resolve(outDir, 'rss.xml'), rssContent);
+          console.log('✅ [RSS Feed] Generated RSS Feed with dynamic news articles successfully!');
+
+          // 3. Generate Robots.txt
           const robotsContent = `User-agent: *
 Allow: /
 Disallow: /admin
@@ -136,7 +218,7 @@ Disallow: /google87984536fe5662da
 Sitemap: ${hostname}/sitemap.xml`;
           fs.writeFileSync(path.resolve(outDir, 'robots.txt'), robotsContent);
 
-          // 3. Generate Static HTML for each route (Soft SSG/Prerendering)
+          // 4. Generate Static HTML for each route (Soft SSG/Prerendering)
           for (const route of routes) {
             const isRoot = route.url === '/';
             const routeDir = isRoot ? outDir : path.join(outDir, route.url);
@@ -188,6 +270,7 @@ Sitemap: ${hostname}/sitemap.xml`;
                         <li>Autonomous AI Agents & RAG Integration</li>
                         <li>Scalable Cloud-Native Microservices</li>
                         <li>High-ROI Semantic SEO Strategies</li>
+                        <li>Cinematic UX Frameworks</li>
                       </ul>
 
                     </section>
@@ -198,7 +281,8 @@ Sitemap: ${hostname}/sitemap.xml`;
                   <nav>
                     <a href="/custom-software">Custom Software</a> | 
                     <a href="/mobile-app-development">Mobile Apps</a> | 
-                    <a href="/ai-agent-development">AI Agents</a>
+                    <a href="/ai-agent-development">AI Agents</a> |
+                    <a href="/case-studies">Case Studies</a>
                   </nav>
                 </footer>
               </div>
@@ -210,7 +294,7 @@ Sitemap: ${hostname}/sitemap.xml`;
             fs.writeFileSync(targetPath, routeHtml);
           }
           
-          console.log('✅ SEO Assets and Static Routes generated successfully!');
+          console.log('✅ SEO Assets, RSS dynamic feed, and Static Routes generated successfully!');
         }
       }
     ],

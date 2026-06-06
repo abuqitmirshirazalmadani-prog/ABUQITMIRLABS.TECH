@@ -166,6 +166,8 @@ const Footer = () => {
                                 <li><Link to="/privacy" className="hover:underline hover:text-white transition-colors">Privacy Policy</Link></li>
                                 <li><Link to="/terms" className="hover:underline hover:text-white transition-colors">Terms of Service</Link></li>
                                 <li><Link to="/blog" className="hover:underline hover:text-white transition-colors">Tech Blog</Link></li>
+                                <li><Link to="/case-studies" className="hover:underline hover:text-white transition-colors">Case Studies</Link></li>
+                                <li><a href="/rss.xml" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-white transition-colors flex items-center gap-1">RSS News Feed <ExternalLink size={10} /></a></li>
                                 <li><a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-white transition-colors flex items-center gap-1">Dynamic Sitemap <ExternalLink size={10} /></a></li>
                                 <li><a href="/pages-sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-white transition-colors flex items-center gap-1">Pages Index <ExternalLink size={10} /></a></li>
                                 <li><a href="/image-sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-white transition-colors flex items-center gap-1">Image Asset Index <ExternalLink size={10} /></a></li>

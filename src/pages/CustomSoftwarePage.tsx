@@ -875,12 +875,12 @@ const CustomSoftwarePage = () => {
               {
                 title: "Enterprise Digital Architecture",
                 desc: "Watch our lead architect at ABUQITMIRLABS .TECH breakdown complex digital ecosystems.",
-                videoId: "v25Fo6O3iy4"
+                videoId: "Sh9SqMCx9I4"
               },
               {
                 title: "Advanced Engineering Solutions",
                 desc: "Deep dive into High-Performance Web Tech and scalable backend systems.",
-                videoId: "110zeH-eEEk"
+                videoId: "B31EXmt5LrQ"
               },
               {
                 title: "AI-Driven Business Growth",

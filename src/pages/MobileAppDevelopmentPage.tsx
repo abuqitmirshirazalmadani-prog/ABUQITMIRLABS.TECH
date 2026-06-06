@@ -517,12 +517,12 @@ const MobileAppDevelopmentPage = () => {
               {
                 title: "High-Performance Mobile & Web Engineering Solutions",
                 desc: "Watch our lead developer discuss memory mapping, Flutter bridges, and caching.",
-                videoId: "110zeH-eEEk"
+                videoId: "B31EXmt5LrQ"
               },
               {
                 title: "Enterprise Digital Architecture Setup Breakdown",
                 desc: "An in-depth guide on constructing reliable APIs and offline database sync rules.",
-                videoId: "v25Fo6O3iy4"
+                videoId: "Sh9SqMCx9I4"
               },
               {
                 title: "AI-Powered Business Workflow Automation Setup",

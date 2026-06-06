@@ -11,13 +11,13 @@ const videos = [
         id: "v1",
         title: "Enterprise Digital Architecture",
         desc: "Watch our lead architect ABUQITMIRLABS.TECH breakdown complex digital ecosystems.",
-        videoId: "v25Fo6O3iy4"
+        videoId: "Sh9SqMCx9I4"
     },
     {
         id: "v2",
         title: "Advanced Engineering Solutions",
         desc: "Deep dive into High-Performance Web Tech and scalable backend systems.",
-        videoId: "110zeH-eEEk"
+        videoId: "B31EXmt5LrQ"
     },
     {
         id: "v3",

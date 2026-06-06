@@ -24,6 +24,7 @@ const BlogPostPage = () => {
     const { slug } = useParams<{ slug: string }>();
     const [post, setPost] = useState<Post | null>(null);
     const [loading, setLoading] = useState(true);
+    const [copied, setCopied] = useState(false);
 
     useEffect(() => {
         const fetchPost = async () => {
@@ -154,7 +155,8 @@ const BlogPostPage = () => {
 
         if (platform === 'copy') {
             navigator.clipboard.writeText(url);
-            alert('Link copied to clipboard!');
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2500);
             return;
         }
 
@@ -372,6 +374,14 @@ const BlogPostPage = () => {
                     </div>
                 </div>
             </main>
+
+            {/* Elegant Copy Notification Toast */}
+            {copied && (
+                <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-zinc-950 text-white border border-white/15 px-6 py-4 rounded-full flex items-center justify-center gap-3 shadow-2xl animate-enter">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#ccff00]"></span>
+                    <span className="text-xs uppercase tracking-widest font-mono">Link Copied to Clipboard</span>
+                </div>
+            )}
 
             <Footer />
         </div>
