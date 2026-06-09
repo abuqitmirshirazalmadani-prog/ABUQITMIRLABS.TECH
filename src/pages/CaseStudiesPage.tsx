@@ -23,9 +23,32 @@ interface CaseStudy {
     colorAccent: string; // Tailwind glow classes
     image: string;
     citeText: string;
+    hasDetailedPage?: boolean;
+    link?: string;
 }
 
 const CASE_STUDIES: CaseStudy[] = [
+    {
+        id: "tajweedpage-seo",
+        title: "The World's First AI-Powered Quran Learning Platform",
+        client: "TajweedPage Online Academy",
+        year: "2026",
+        industry: "AI EdTech & Semantic SEO",
+        metrics: [
+            { label: "Deployment Duration", value: "10 Days" },
+            { label: "Course Modules Live", value: "7+" },
+            { label: "Target English Markets", value: "20+" }
+        ],
+        challenge: "Competing with heavily funded global players, TajweedPage Online Academy had elite scholarship but zero online placement. They required instant authority and a first-of-its-kind interactive Tajweed RAG helper.",
+        solution: "We engineered a robust Next.js SSR architecture localized for 20+ markets, paired with structured schema graph markups and a strict, verified retrieval-augmented training (RAG) assistant responding with zero hallucinations.",
+        impact: "Expanded and converted premium global registrations, launching the first fully compliant scholarly Islamic AI workspace inside a record 10-day sprint.",
+        technologies: ["Next.js 14", "RAG AI Agent", "Google Schema Markup", "Firebase Systems", "Vercel Edge Rendering", "Tailwind CSS"],
+        colorAccent: "from-emerald-500/10 via-transparent to-black",
+        image: "https://images.unsplash.com/photo-1543191878-b677a28e85dc?q=80&w=1600&auto=format&fit=crop",
+        citeText: "AbuQitmirLabs. (2026). RAG-augmented architectural design inside global Islamic education pipelines. AbuQitmirLabs EdTech Deployments.",
+        hasDetailedPage: true,
+        link: "/case-studies/tajweedpage"
+    },
     {
         id: "apex-commerce",
         title: "Apex Autonomous AI Commerce System",
@@ -191,6 +214,17 @@ const CinematicSection = ({ study, index }: { study: CaseStudy, index: number })
                             </span>
                         ))}
                     </div>
+
+                    {study.hasDetailedPage && study.link && (
+                        <div className="pt-2">
+                            <Link 
+                                to={study.link}
+                                className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#ccff00] text-black font-extrabold uppercase text-xs tracking-widest rounded-full hover:bg-white hover:text-black transition-all transform active:scale-95 shadow-md"
+                            >
+                                View Full Interactive Case Study <ChevronRight size={14} />
+                            </Link>
+                        </div>
+                    )}
 
                     {/* Citation & Backlink Block (For Reference Building) */}
                     <div className="p-5 rounded-2xl bg-zinc-950/80 border border-white/10 space-y-3 relative overflow-hidden backdrop-blur-md">

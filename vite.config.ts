@@ -51,7 +51,8 @@ export default defineConfig(({mode}) => {
           '/custom-software',
           '/about',
           '/contact',
-          '/blog'
+          '/blog',
+          '/case-studies/tajweedpage'
         ],
         renderer: new prerender.PuppeteerRenderer({
           args: ['--no-sandbox', '--disable-setuid-sandbox']
@@ -74,6 +75,7 @@ export default defineConfig(({mode}) => {
             { url: '/graphics-design',         changefreq: 'weekly',  priority: 0.8, title: 'Creative Graphics & UI/UX', description: 'Stunning visual designs and user experiences that capture attention.' },
             { url: '/content-writing',         changefreq: 'weekly',  priority: 0.8, title: 'Professional Content Writing', description: 'Engaging content that drives conversions and builds brand authority.' },
             { url: '/case-studies',            changefreq: 'weekly',  priority: 0.9, title: 'Cinematic Case Studies & Technical Reference Projects | AbuQitmirLabs', description: 'Discover our premium, high-impact case studies in AI integration, custom software engineering, and programmatic SEO.' },
+            { url: '/case-studies/tajweedpage',changefreq: 'weekly',  priority: 0.9, title: 'TajweedPage.com AI Case Study | AbuQitmirLabs', description: 'Deep dive into the engineering of the world\'s first RAG-based AI Tajweed teacher &amp; programmatically accelerated Islamic EdTech platform.' },
             { url: '/us-market',               changefreq: 'monthly', priority: 0.7, title: 'App Development Company for US Startups | Offshore', description: 'Custom AI and mobile app development services tailored for the United States market.' },
             { url: '/uk-market',               changefreq: 'monthly', priority: 0.7, title: 'App Development Agency for UK Businesses | Offshore', description: 'Custom AI and mobile app development services tailored for the United Kingdom market.' },
             { url: '/pakistan-market',         changefreq: 'monthly', priority: 0.7, title: 'Mobile App Development Company in Pakistan | Best', description: 'Leading AI and mobile app development services for businesses in Pakistan.' },
@@ -107,7 +109,24 @@ export default defineConfig(({mode}) => {
           // Fetch dynamic posts from Firestore REST API at build time
           let fetchedPosts: { slug: string; title: string; excerpt: string; createdAt: string; category: string; author: string }[] = [];
           try {
-            const firestoreUrl = `https://firestore.googleapis.com/v1/projects/angular-oxide-tcf5x/databases/ai-studio-675d15b3-f001-4d2e-a88b-bbcb33443014/documents/posts`;
+            let projectId = "angular-oxide-tcf5x";
+            let databaseId = "ai-studio-675d15b3-f001-4d2e-a88b-bbcb33443014";
+            let apiKey = "";
+
+            try {
+              const configFilePath = path.resolve(process.cwd(), 'firebase-applet-config.json');
+              if (fs.existsSync(configFilePath)) {
+                const configRaw = fs.readFileSync(configFilePath, 'utf-8');
+                const configJSON = JSON.parse(configRaw);
+                if (configJSON.projectId) projectId = configJSON.projectId;
+                if (configJSON.firestoreDatabaseId) databaseId = configJSON.firestoreDatabaseId;
+                if (configJSON.apiKey) apiKey = configJSON.apiKey;
+              }
+            } catch (cfgErr) {
+              console.warn('⚠️ [SEO Generator] Non-fatal, could not parse firebase-applet-config.json:', cfgErr);
+            }
+
+            const firestoreUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/${databaseId}/documents/posts${apiKey ? `?key=${apiKey}` : ''}`;
             const response = await fetch(firestoreUrl);
             if (response.ok) {
               const data = await response.json();

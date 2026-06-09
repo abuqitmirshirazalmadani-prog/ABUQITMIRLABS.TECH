@@ -32,6 +32,7 @@ const BlogPage = lazy(() => import('./pages/BlogPage'));
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const CaseStudiesPage = lazy(() => import('./pages/CaseStudiesPage'));
+const CaseStudyTajweedPage = lazy(() => import('./pages/CaseStudyTajweedPage'));
 
 // Loading fallback
 const PageLoader = () => (
@@ -132,6 +133,7 @@ export default function App() {
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
+              <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />
               <Route path="/admin" element={<AdminDashboard />} />
             </Routes>
           </Suspense>
