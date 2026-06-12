@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
     auth, googleProvider, signInWithPopup, signOut, 
@@ -31,6 +31,27 @@ const AdminDashboard = () => {
     const [activeTab, setActiveTab] = useState<'create' | 'list'>('create');
 
     const CATEGORIES = ["AI", "Software", "Business", "App", "Development"];
+
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
+    const [isConverting, setIsConverting] = useState<boolean[]>([false, false, false, false, false, false]);
+    const [helperImages, setHelperImages] = useState<Array<{url: string, caption: string}>>([
+        { url: '', caption: '' },
+        { url: '', caption: '' },
+        { url: '', caption: '' },
+        { url: '', caption: '' },
+        { url: '', caption: '' },
+        { url: '', caption: '' }
+    ]);
+
+    const getEstimatedSizeKB = (url: string) => {
+        if (!url) return 0;
+        if (url.startsWith('data:')) {
+            return Math.round(url.length * 0.75 / 1024);
+        }
+        return 0; // External images take 0 bytes of Firestore document space
+    };
+
+    const totalPayloadSizeKB = helperImages.reduce((sum, img) => sum + getEstimatedSizeKB(img.url), 0);
 
     // Form State
     const [formData, setFormData] = useState({
@@ -77,6 +98,41 @@ const AdminDashboard = () => {
             coverImage: post.coverImage || '',
             tags: Array.isArray(post.tags) ? post.tags.join(', ') : (post.tags || '')
         });
+
+        // Auto-extract or load from saved helperImages field
+        if (post.helperImages && Array.isArray(post.helperImages) && post.helperImages.length > 0) {
+            setHelperImages(prev => {
+                const updated = [...prev].map(() => ({ url: '', caption: '' }));
+                for (let i = 0; i < 6; i++) {
+                    if (post.helperImages[i]) {
+                        updated[i] = post.helperImages[i];
+                    }
+                }
+                return updated;
+            });
+        } else {
+            try {
+                const extracted: Array<{url: string, caption: string}> = [];
+                const regex = /!\[([^\]]*)\]\(([^)]+)\)/g;
+                let match;
+                while ((match = regex.exec(post.content || '')) !== null) {
+                    extracted.push({ caption: match[1] || '', url: match[2] || '' });
+                }
+                
+                setHelperImages(prev => {
+                    const updated = [...prev].map(() => ({ url: '', caption: '' }));
+                    for (let i = 0; i < 6; i++) {
+                        if (extracted[i]) {
+                            updated[i] = extracted[i];
+                        }
+                    }
+                    return updated;
+                });
+            } catch (e) {
+                console.error("Error extracting help images:", e);
+            }
+        }
+
         setActiveTab('create');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
@@ -99,6 +155,112 @@ const AdminDashboard = () => {
             .replace(/[^\w\s-]/g, '')
             .replace(/[\s_-]+/g, '-')
             .replace(/^-+|-+$/g, '');
+    };
+
+    const insertImageAtCursor = (imageUrl: string, caption: string) => {
+        const textarea = textareaRef.current;
+        if (!textarea) {
+            setFormData(prev => ({
+                ...prev,
+                content: prev.content + `\n\n![${caption}](${imageUrl})\n\n`
+            }));
+            return;
+        }
+        
+        const startPos = textarea.selectionStart;
+        const endPos = textarea.selectionEnd;
+        const beforeText = formData.content.substring(0, startPos);
+        const afterText = formData.content.substring(endPos);
+        
+        const imageMarkdown = `\n\n![${caption || 'Blog Illustration'}](${imageUrl})\n\n`;
+        const newContent = beforeText + imageMarkdown + afterText;
+        
+        setFormData(prev => ({
+            ...prev,
+            content: newContent
+        }));
+        
+        setTimeout(() => {
+            textarea.focus();
+            const newCursorPos = startPos + imageMarkdown.length;
+            textarea.setSelectionRange(newCursorPos, newCursorPos);
+        }, 50);
+    };
+
+    const handleImageUpload = (file: File, idx: number) => {
+        if (!file) return;
+        
+        // Mark slot as converting
+        setIsConverting(prev => {
+            const next = [...prev];
+            next[idx] = true;
+            return next;
+        });
+
+        // Human-friendly title conversion from file name for SEO Alt Tag
+        const cleanName = file.name
+            .split('.')[0]
+            .replace(/[-_]+/g, ' ')
+            .replace(/\b\w/g, c => c.toUpperCase());
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const dataUrl = e.target?.result as string;
+            const img = new Image();
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                // Highly-optimized blog-friendly max presentation width
+                const targetWidth = 750;
+                let width = img.width;
+                let height = img.height;
+
+                if (width > targetWidth) {
+                    height = Math.round((height * targetWidth) / width);
+                    width = targetWidth;
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+
+                const ctx = canvas.getContext('2d');
+                if (ctx) {
+                    ctx.drawImage(img, 0, 0, width, height);
+                    // Compress to highly optimized WebP format to prevent Firestore 1MB limits
+                    const webpDataUrl = canvas.toDataURL('image/webp', 0.45);
+
+                    setHelperImages(prev => {
+                        const copy = [...prev];
+                        copy[idx] = {
+                            url: webpDataUrl,
+                            caption: copy[idx].caption || cleanName || 'Optimized WebP Illustration'
+                        };
+                        return copy;
+                    });
+                }
+
+                setIsConverting(prev => {
+                    const next = [...prev];
+                    next[idx] = false;
+                    return next;
+                });
+            };
+            img.onerror = () => {
+                setIsConverting(prev => {
+                    const next = [...prev];
+                    next[idx] = false;
+                    return next;
+                });
+            };
+            img.src = dataUrl;
+        };
+        reader.onerror = () => {
+            setIsConverting(prev => {
+                const next = [...prev];
+                next[idx] = false;
+                return next;
+            });
+        };
+        reader.readAsDataURL(file);
     };
 
     const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -183,12 +345,31 @@ const AdminDashboard = () => {
         setIsSubmitting(true);
         setStatus(null);
 
+        // Calculate and validate image storage payload before writing to Firestore
+        const cleanHelperImages = helperImages.filter(img => img.url && img.url.trim() !== '');
+        let payloadSizeKB = 0;
+        cleanHelperImages.forEach(img => {
+            if (img.url && img.url.startsWith('data:')) {
+                payloadSizeKB += Math.round(img.url.length * 0.75 / 1024);
+            }
+        });
+
+        if (payloadSizeKB > 800) {
+            setStatus({
+                type: 'error',
+                message: `Publish blocked: Total upload size (${payloadSizeKB} KB) exceeds the 800 KB safe limit. Please clean your slots, use direct image links rather than raw files, or compress images further!`
+            });
+            setIsSubmitting(false);
+            return;
+        }
+
         try {
             const tagsArray = formData.tags.split(',').map(tag => tag.trim().replace(/^#/, '')).filter(tag => tag !== '');
             
             if (editingId) {
                 await updateDoc(doc(db, 'posts', editingId), {
                     ...formData,
+                    helperImages: cleanHelperImages,
                     tags: tagsArray,
                     updatedAt: serverTimestamp()
                 });
@@ -196,6 +377,7 @@ const AdminDashboard = () => {
             } else {
                 const docRef = await addDoc(collection(db, 'posts'), {
                     ...formData,
+                    helperImages: cleanHelperImages,
                     tags: tagsArray,
                     authorId: user.uid,
                     createdAt: serverTimestamp(),
@@ -215,6 +397,14 @@ const AdminDashboard = () => {
                     coverImage: '',
                     tags: ''
                 });
+                setHelperImages([
+                    { url: '', caption: '' },
+                    { url: '', caption: '' },
+                    { url: '', caption: '' },
+                    { url: '', caption: '' },
+                    { url: '', caption: '' },
+                    { url: '', caption: '' }
+                ]);
             setEditingId(null);
             fetchPosts();
         } catch (error) {
@@ -348,6 +538,14 @@ const AdminDashboard = () => {
                                     author: 'ABUQITMIRLABS .TECH Shiraz Almadani', category: 'AI', 
                                     published: true, coverImage: '', tags: ''
                                 });
+                                setHelperImages([
+                                    { url: '', caption: '' },
+                                    { url: '', caption: '' },
+                                    { url: '', caption: '' },
+                                    { url: '', caption: '' },
+                                    { url: '', caption: '' },
+                                    { url: '', caption: '' }
+                                ]);
                             }}
                             className={`w-full font-bold py-4 px-6 rounded-xl flex items-center gap-3 transition-all active:scale-95 shadow-lg ${activeTab === 'create' ? 'bg-blue-600 text-white shadow-blue-900/20' : 'bg-zinc-900 text-gray-400 border border-white/5'}`}
                         >
@@ -400,6 +598,14 @@ const AdminDashboard = () => {
                                                 author: 'ABUQITMIRLABS .TECH Shiraz Almadani', category: 'AI', 
                                                 published: true, coverImage: '', tags: ''
                                             });
+                                            setHelperImages([
+                                                { url: '', caption: '' },
+                                                { url: '', caption: '' },
+                                                { url: '', caption: '' },
+                                                { url: '', caption: '' },
+                                                { url: '', caption: '' },
+                                                { url: '', caption: '' }
+                                            ]);
                                         }}
                                         className="text-[10px] font-black text-red-500 uppercase tracking-widest bg-red-500/10 px-4 py-2 rounded-lg"
                                     >
@@ -536,12 +742,222 @@ const AdminDashboard = () => {
                                                     <span className="text-zinc-600 lowercase cursor-help hover:text-blue-500 transition-colors">Supports H1 (#), H2 (##), etc.</span>
                                                 </label>
                                                 <textarea 
+                                                    ref={textareaRef}
                                                     className="w-full bg-[#1a1a1a] border border-white/5 rounded-[2rem] px-8 py-8 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all placeholder:text-gray-700 text-white min-h-[400px] font-mono text-base leading-relaxed" 
                                                     placeholder="Write your article content here..." 
                                                     required
                                                     value={formData.content}
                                                     onChange={e => setFormData({...formData, content: e.target.value})}
                                                 ></textarea>
+                                            </div>
+
+                                            {/* Premium In-Article 4-6 Photos Asset Manager */}
+                                            <div className="bg-[#111111] border border-white/5 rounded-[2.5rem] p-6 md:p-8 space-y-6">
+                                                <div className="space-y-4">
+                                                    <div className="flex items-center gap-3">
+                                                        <span className="text-green-400 font-bold text-lg">⚡</span>
+                                                        <h3 className="text-sm font-black text-white uppercase tracking-widest"><span className="text-[#ccff00]">Auto-Flow</span> Photo Assistant (4 to 6 Photos)</h3>
+                                                    </div>
+                                                    <p className="text-[10px] text-gray-300 uppercase tracking-wider leading-relaxed">
+                                                        <strong>Automatic Distribution Active:</strong> Simply upload your photos or enter URLs below and they will automatically & beautifully distribute evenly throughout the blog paragraphs when published! None of that messy, long Base64 code inside your editor. 
+                                                        <span className="text-blue-400 font-bold block mt-1">If you want exact manual placement, you can still click Insert 📍 to copy it.</span>
+                                                    </p>
+
+                                                    {/* Firestore Payload Meter */}
+                                                    <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-black/40 border border-white/5 text-[10px] font-black tracking-wider uppercase">
+                                                        <span className="text-zinc-400 flex items-center gap-1.5">
+                                                            🗄️ Firestore Payload Meter:
+                                                            {totalPayloadSizeKB > 700 && <span className="text-red-500 animate-pulse text-[8px]">(CRITICAL - REDUCE IMAGE SIZE)</span>}
+                                                        </span>
+                                                        <div className="flex items-center gap-3">
+                                                            <span className={totalPayloadSizeKB > 700 ? "text-red-500 font-black animate-pulse" : totalPayloadSizeKB > 400 ? "text-yellow-400 font-black" : "text-[#ccff00] font-black"}>
+                                                                {totalPayloadSizeKB} KB / 800 KB Limit
+                                                            </span>
+                                                            <div className="w-24 bg-zinc-900 h-2.5 rounded-full overflow-hidden border border-white/5">
+                                                                <div 
+                                                                    className={`h-full transition-all duration-500 ${totalPayloadSizeKB > 700 ? 'bg-red-500' : totalPayloadSizeKB > 400 ? 'bg-yellow-400' : 'bg-[#ccff00]'}`}
+                                                                    style={{ width: `${Math.min(100, (totalPayloadSizeKB / 800) * 100)}%` }}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                {/* Photo Cards Grid */}
+                                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                                    {helperImages.map((img, idx) => {
+                                                        const isFilled = img.url.trim() !== '';
+                                                        return (
+                                                            <div key={idx} className="bg-black/40 border border-white/5 rounded-2xl p-4 flex flex-col justify-between space-y-4 hover:border-white/10 transition-colors">
+                                                                <div className="flex items-center justify-between">
+                                                                    <span className="text-[9px] font-black tracking-widest text-zinc-500 uppercase">
+                                                                        Photo Slot #{idx + 1}
+                                                                    </span>
+                                                                    {isFilled && (
+                                                                        <div className="flex gap-1.5">
+                                                                            {img.url.startsWith('data:') ? (
+                                                                                <span className="text-[8px] font-black tracking-widest text-[#ccff00] bg-[#ccff00]/10 px-2 py-0.5 rounded">
+                                                                                    {getEstimatedSizeKB(img.url)} KB
+                                                                                </span>
+                                                                            ) : (
+                                                                                <span className="text-[8px] font-black tracking-widest text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded">
+                                                                                    0 KB (LINK)
+                                                                                </span>
+                                                                            )}
+                                                                            <span className="text-[8px] font-black tracking-widest text-[#ccff00] bg-[#ccff00]/15 px-2 py-0.5 rounded">
+                                                                                ACTIVE
+                                                                            </span>
+                                                                        </div>
+                                                                    )}
+                                                                </div>
+
+                                                                {/* Thumbnail Preview Area & Drag Area */}
+                                                                <div className="aspect-video w-full rounded-xl overflow-hidden bg-white/5 border border-white/5 flex items-center justify-center relative group">
+                                                                    {isConverting[idx] ? (
+                                                                        <div className="text-center p-4 animate-pulse">
+                                                                            <Loader2 className="w-6 h-6 animate-spin text-[#ccff00] mx-auto mb-2" />
+                                                                            <div className="text-[8px] font-black text-[#ccff00] uppercase tracking-widest">
+                                                                                Converting to WebP...
+                                                                            </div>
+                                                                        </div>
+                                                                    ) : isFilled ? (
+                                                                        <>
+                                                                            <img 
+                                                                                src={img.url} 
+                                                                                alt={img.caption || `In-article visual #${idx+1}`}
+                                                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                                                                onError={(e) => {
+                                                                                    (e.target as HTMLImageElement).src = 'https://placehold.co/400x250/1a1a1a/333?text=Broken+Image+Link';
+                                                                                }}
+                                                                            />
+                                                                            {img.url.startsWith('data:image/webp') && (
+                                                                                <div className="absolute top-2 right-2 bg-blue-600 text-white text-[7px] font-black tracking-widest uppercase px-2 py-0.5 rounded border border-white/10 shadow-lg">
+                                                                                    ⚡ WEBP OPTIMIZED
+                                                                                </div>
+                                                                            )}
+                                                                        </>
+                                                                    ) : (
+                                                                        <div className="text-center p-4">
+                                                                            <div className="text-zinc-600 text-lg mb-1">📷</div>
+                                                                            <div className="text-[8px] font-black text-zinc-600 uppercase tracking-widest">Empty Slot</div>
+                                                                        </div>
+                                                                    )}
+                                                                </div>
+
+                                                                {/* WebP Direct File Converter Action */}
+                                                                <div>
+                                                                    <label className="flex items-center justify-center gap-2 border border-dashed border-white/10 hover:border-[#ccff00]/50 bg-white/5 hover:bg-white/10 rounded-xl px-3 py-2.5 cursor-pointer text-center group transition-all">
+                                                                        <span className="text-sm">⚡</span>
+                                                                        <span className="text-[9px] font-black tracking-wider uppercase text-gray-300 group-hover:text-white">
+                                                                            {isConverting[idx] ? 'Processing...' : 'Upload & Auto-Convert WebP'}
+                                                                        </span>
+                                                                        <input 
+                                                                            type="file" 
+                                                                            accept="image/*" 
+                                                                            className="hidden" 
+                                                                            onChange={(e) => {
+                                                                                const file = e.target.files?.[0];
+                                                                                if (file) handleImageUpload(file, idx);
+                                                                            }} 
+                                                                        />
+                                                                    </label>
+                                                                </div>
+
+                                                                {/* Inputs */}
+                                                                <div className="space-y-3">
+                                                                    <div className="space-y-1">
+                                                                        <span className="text-[8px] font-black text-zinc-500 uppercase tracking-wider">Image / Data URL Source:</span>
+                                                                        <input 
+                                                                            type="text"
+                                                                            placeholder="Image URL or Base64 data..."
+                                                                            className="w-full bg-[#161616] border border-white/5 rounded-lg px-3 py-2 text-[10px] text-white font-mono placeholder:text-zinc-700 truncate"
+                                                                            value={img.url}
+                                                                            onChange={(e) => {
+                                                                                const newImages = [...helperImages];
+                                                                                newImages[idx].url = e.target.value;
+                                                                                setHelperImages(newImages);
+                                                                            }}
+                                                                        />
+                                                                    </div>
+                                                                    <div className="space-y-1">
+                                                                        <span className="text-[8px] font-black text-zinc-500 uppercase tracking-wider">Alt Tag (SEO & Accessibility):</span>
+                                                                        <input 
+                                                                            type="text"
+                                                                            placeholder="Brief descriptive Alt label..."
+                                                                            className="w-full bg-[#161616] border border-white/5 rounded-lg px-3 py-2 text-[10px] text-white font-bold placeholder:text-zinc-700"
+                                                                            value={img.caption}
+                                                                            onChange={(e) => {
+                                                                                const newImages = [...helperImages];
+                                                                                newImages[idx].caption = e.target.value;
+                                                                                setHelperImages(newImages);
+                                                                            }}
+                                                                        />
+                                                                    </div>
+                                                                </div>
+
+                                                                {/* Action Buttons */}
+                                                                <div className="grid grid-cols-2 gap-2">
+                                                                    <button
+                                                                        type="button"
+                                                                        disabled={!isFilled}
+                                                                        onClick={() => insertImageAtCursor(img.url, img.caption)}
+                                                                        className="py-2.5 rounded-xl text-[9px] font-black uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 bg-zinc-900 border border-white/5 hover:bg-blue-600 hover:text-white hover:border-transparent disabled:opacity-30 disabled:hover:bg-zinc-900 disabled:hover:text-zinc-500 disabled:pointer-events-none text-zinc-400"
+                                                                    >
+                                                                        Insert 📍
+                                                                    </button>
+                                                                    <button
+                                                                        type="button"
+                                                                        disabled={!isFilled && !isConverting[idx]}
+                                                                        onClick={() => {
+                                                                            const newImages = [...helperImages];
+                                                                            newImages[idx] = { url: '', caption: '' };
+                                                                            setHelperImages(newImages);
+                                                                        }}
+                                                                        className="py-2.5 rounded-xl text-[9px] font-black uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 bg-zinc-900 border border-white/5 hover:bg-red-600/90 hover:text-white hover:border-transparent disabled:opacity-30 disabled:hover:bg-zinc-900 disabled:hover:text-zinc-500 disabled:pointer-events-none text-zinc-400"
+                                                                    >
+                                                                        Remove 🗑️
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        );
+                                                    })}
+                                                </div>
+
+                                                {/* Presets Grid */}
+                                                <div className="pt-4 border-t border-white/5 space-y-3">
+                                                    <div className="text-[9px] font-black text-zinc-500 uppercase tracking-widest">
+                                                        ✨ ABUQITMIRLABS Premium Curated Editorial Presets
+                                                     </div>
+                                                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                                                        {[
+                                                            { name: "Cybernetics", url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80", caption: "High-End Cybernetic Abstract Visual" },
+                                                            { name: "Architect", url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80", caption: "Timeless Minimalist Brutalist Concrete Structure" },
+                                                            { name: "Timepiece", url: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80", caption: "Precision Engineered High-End Chronometer Detail" },
+                                                            { name: "Molten Gold", url: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80", caption: "Premium Abstract Molten Golden Liquid Canvas" },
+                                                            { name: "Workspace", url: "https://images.unsplash.com/photo-1555538995-7ccc83f60f40?auto=format&fit=crop&w=1200&q=80", caption: "Vaporwave Developer Console and Ergonomic Tech Station" },
+                                                            { name: "Studio", url: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80", caption: "Modern Open-Plan High-Contrast Architectural Studio" }
+                                                        ].map((pre, pIdx) => (
+                                                            <button
+                                                                key={pIdx}
+                                                                type="button"
+                                                                onClick={() => {
+                                                                    const newImages = [...helperImages];
+                                                                    const emptyIndex = newImages.findIndex(i => i.url.trim() === '');
+                                                                    const targetIdx = emptyIndex !== -1 ? emptyIndex : 0;
+                                                                    
+                                                                    newImages[targetIdx] = { url: pre.url, caption: pre.caption };
+                                                                    setHelperImages(newImages);
+                                                                }}
+                                                                className="p-2 rounded-xl bg-white/5 border border-white/5 hover:border-blue-500/50 hover:bg-white/10 text-left transition-all group"
+                                                            >
+                                                                <div className="aspect-video rounded-lg overflow-hidden mb-1">
+                                                                    <img src={pre.url} alt={pre.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                                                                </div>
+                                                                <div className="text-[8px] font-black text-gray-400 uppercase truncate tracking-wider">{pre.name}</div>
+                                                            </button>
+                                                        ))}
+                                                    </div>
+                                                </div>
                                             </div>
 
                                             {/* Hashtags - Bottom of Form */}

@@ -23,7 +23,7 @@ export default function CaseStudyTajweedPage() {
       <Helmet>
         <title>Case Study: TajweedPage.com — AI EdTech Platform | AbuQitmirLabs</title>
         <meta name="description" content="How AbuQitmirLabs built the world's first AI-powered Quran learning platform with RAG technology, Next.js, and semantic SEO — delivered in 10 days." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/case-studies/tajweedpage" />
+        <link rel="canonical" href="https://www.tajweedpage.com/" />
         
         <meta property="og:title" content="Case Study: TajweedPage.com — AI EdTech Platform | AbuQitmirLabs" />
         <meta property="og:description" content="How AbuQitmirLabs built the world's first AI-powered Quran learning platform with RAG technology, Next.js, and semantic SEO — delivered in 10 days." />

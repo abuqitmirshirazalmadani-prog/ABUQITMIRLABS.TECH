@@ -18,6 +18,7 @@ interface Post {
   createdAt: any;
   author: string;
   tags?: string[];
+  helperImages?: Array<{ url: string; caption: string }>;
 }
 
 const BlogPostPage = () => {
@@ -45,6 +46,57 @@ const BlogPostPage = () => {
         fetchPost();
         window.scrollTo(0, 0);
     }, [slug]);
+
+    const getInjectedContent = () => {
+        if (!post || !post.content) return '';
+        
+        // Find images that are not already present in the content
+        const imagesToInject = (post.helperImages || []).filter(
+            (img: any) => img && img.url && img.url.trim() !== '' && !post.content.includes(img.url)
+        );
+
+        if (imagesToInject.length === 0) {
+            return post.content;
+        }
+
+        const paragraphs = post.content.split(/\n\n+/);
+        const P = paragraphs.length;
+        const N = imagesToInject.length;
+
+        if (P <= 1) {
+            // If it's just one paragraph block, append all images at the very end
+            const imagesMarkdown = imagesToInject
+                .map((img: any) => `\n\n![${img.caption || 'Article photo'}](${img.url})`)
+                .join('');
+            return post.content + imagesMarkdown;
+        }
+
+        // Distribute them
+        const step = Math.max(1, Math.floor(P / (N + 1)));
+        const result: string[] = [];
+        
+        // Map of paragraph index -> images to append after it
+        const insertions: { [key: number]: any[] } = {};
+        
+        imagesToInject.forEach((img: any, i: number) => {
+            const insertAfterIdx = Math.min(P - 1, (i + 1) * step);
+            if (!insertions[insertAfterIdx]) {
+                insertions[insertAfterIdx] = [];
+            }
+            insertions[insertAfterIdx].push(img);
+        });
+
+        paragraphs.forEach((p, idx) => {
+            result.push(p);
+            if (insertions[idx]) {
+                insertions[idx].forEach((img: any) => {
+                    result.push(`![${img.caption || 'Article photo'}](${img.url})`);
+                });
+            }
+        });
+
+        return result.join('\n\n');
+    };
 
     const getCategoryDetails = (categoryVal?: string) => {
         let name = 'Web Development';
@@ -332,7 +384,29 @@ const BlogPostPage = () => {
                         transition={{ delay: 0.2 }}
                         className="bg-white rounded-[3rem] p-8 md:p-20 shadow-xl shadow-black/5 border border-black/5 prose prose-blue max-w-none prose-headings:text-black prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tighter prose-p:text-zinc-600 prose-p:leading-relaxed prose-lg prose-img:rounded-3xl prose-img:shadow-lg prose-pre:bg-zinc-950 prose-pre:rounded-2xl prose-strong:text-black prose-strong:font-black prose-a:text-blue-600 prose-a:font-bold hover:prose-a:text-blue-700"
                     >
-                        <Markdown remarkPlugins={[remarkGfm]}>{post.content}</Markdown>
+                        <Markdown 
+                            remarkPlugins={[remarkGfm]}
+                            components={{
+                                img: ({node, ...props}) => {
+                                    return (
+                                        <span className="block my-12 text-center overflow-hidden">
+                                            <img 
+                                                {...props} 
+                                                referrerPolicy="no-referrer"
+                                                className="mx-auto rounded-[2rem] shadow-2xl border border-black/5 max-h-[600px] w-full object-cover select-none hover:scale-[1.01] transition-transform duration-700" 
+                                            />
+                                            {props.alt && (
+                                                <span className="block mt-4 text-center text-[10px] text-zinc-400 uppercase tracking-[0.25em] font-black">
+                                                    {props.alt}
+                                                </span>
+                                            )}
+                                        </span>
+                                    );
+                                }
+                            }}
+                        >
+                            {getInjectedContent()}
+                        </Markdown>
                     </motion.div>
 
                     {/* Hashtags at the Bottom */}
