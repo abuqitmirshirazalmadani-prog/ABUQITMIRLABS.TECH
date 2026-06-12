@@ -225,24 +225,95 @@ const AdminDashboard = () => {
                 const ctx = canvas.getContext('2d');
                 if (ctx) {
                     ctx.drawImage(img, 0, 0, width, height);
-                    // Compress to highly optimized WebP format to prevent Firestore 1MB limits
+                    // Compress to highly optimized WebP format
                     const webpDataUrl = canvas.toDataURL('image/webp', 0.45);
 
-                    setHelperImages(prev => {
-                        const copy = [...prev];
-                        copy[idx] = {
-                            url: webpDataUrl,
-                            caption: copy[idx].caption || cleanName || 'Optimized WebP Illustration'
-                        };
-                        return copy;
+                    // Convert to binary Blob and upload to Anonymous Permanent Cloud Hosting (takes 0KB in Firestore database!)
+                    canvas.toBlob(async (blob) => {
+                        if (!blob) {
+                            // Fallback to local Base64 webp url if blob generation failed
+                            setHelperImages(prev => {
+                                const copy = [...prev];
+                                copy[idx] = {
+                                    url: webpDataUrl,
+                                    caption: copy[idx].caption || cleanName || 'Optimized WebP Illustration'
+                                };
+                                return copy;
+                            });
+                            setIsConverting(prev => {
+                                const next = [...prev];
+                                next[idx] = false;
+                                return next;
+                            });
+                            return;
+                        }
+
+                        const webpFile = new File([blob], `${cleanName.toLowerCase().replace(/\s+/g, '_') || 'image'}.webp`, { type: 'image/webp' });
+                        let uploadedUrl = '';
+
+                        // Attempt 1: Pixeldrain.com (High-speed, Developer-friendly, Permanent CORS-supporting direct storage)
+                        try {
+                            const pData = new FormData();
+                            pData.append('file', webpFile);
+                            const pRes = await fetch('https://pixeldrain.com/api/file', {
+                                method: 'POST',
+                                body: pData
+                            });
+                            if (pRes.ok) {
+                                const json = await pRes.ok ? await pRes.json() : null;
+                                if (json && json.success && json.id) {
+                                    uploadedUrl = `https://pixeldrain.com/api/file/${json.id}`;
+                                }
+                            }
+                        } catch (err) {
+                            console.warn("Pixeldrain upload failed, trying TmpFiles as fallback...", err);
+                        }
+
+                        // Attempt 2: TmpFiles.org (Alternative hosting fallback if Pixeldrain is down/blocked)
+                        if (!uploadedUrl) {
+                            try {
+                                const tData = new FormData();
+                                tData.append('file', webpFile);
+                                const tRes = await fetch('https://tmpfiles.org/api/v1/upload', {
+                                    method: 'POST',
+                                    body: tData
+                                });
+                                if (tRes.ok) {
+                                    const json = await tRes.json();
+                                    if (json.status === 'success' && json.data?.url) {
+                                        uploadedUrl = json.data.url.replace('https://tmpfiles.org/', 'https://tmpfiles.org/dl/');
+                                    }
+                                }
+                            } catch (err) {
+                                console.warn("TmpFiles upload failed, using local Base64 fallback.", err);
+                            }
+                        }
+
+                        // Use cloud-hosted URL if successful, otherwise utilize local optimized base64
+                        const finalUrl = uploadedUrl || webpDataUrl;
+
+                        setHelperImages(prev => {
+                            const copy = [...prev];
+                            copy[idx] = {
+                                url: finalUrl,
+                                caption: copy[idx].caption || cleanName || 'Optimized WebP Illustration'
+                            };
+                            return copy;
+                        });
+
+                        setIsConverting(prev => {
+                            const next = [...prev];
+                            next[idx] = false;
+                            return next;
+                        });
+                    }, 'image/webp', 0.45);
+                } else {
+                    setIsConverting(prev => {
+                        const next = [...prev];
+                        next[idx] = false;
+                        return next;
                     });
                 }
-
-                setIsConverting(prev => {
-                    const next = [...prev];
-                    next[idx] = false;
-                    return next;
-                });
             };
             img.onerror = () => {
                 setIsConverting(prev => {
@@ -817,7 +888,7 @@ const AdminDashboard = () => {
                                                                         <div className="text-center p-4 animate-pulse">
                                                                             <Loader2 className="w-6 h-6 animate-spin text-[#ccff00] mx-auto mb-2" />
                                                                             <div className="text-[8px] font-black text-[#ccff00] uppercase tracking-widest">
-                                                                                Converting to WebP...
+                                                                                Optimizing & Uploading to CDN...
                                                                             </div>
                                                                         </div>
                                                                     ) : isFilled ? (
