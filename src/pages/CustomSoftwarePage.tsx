@@ -40,6 +40,7 @@ import HeroText from '../components/ui/hero-shutter-text';
 const CustomSoftwarePage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [activePlaybook, setActivePlaybook] = useState<'collab' | 'templates' | 'safety'>('collab');
+  const [pricingPeriod, setPricingPeriod] = useState<'project' | 'hourly'>('project');
 
   const services = [
     {
@@ -927,6 +928,366 @@ const CustomSoftwarePage = () => {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-32 px-6 border-b border-white/10 relative overflow-hidden bg-black/40">
+        {/* Background stars overlay */}
+        <div className="absolute inset-0 opacity-15 pointer-events-none" style={{ backgroundImage: 'radial-gradient(white 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
+        
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-col gap-y-16 rounded-[3rem] border border-[#ffffff]/10 bg-[#0A0A0C] mt-24 mb-24 px-8 md:px-14 pt-14 pb-16 relative">
+            
+            {/* Ambient Background Glow */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 blur-[120px] pointer-events-none rounded-full" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/5 blur-[120px] pointer-events-none rounded-full" />
+
+            {/* Header Section */}
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 w-full z-10 relative">
+              <div className="flex flex-col gap-6 max-w-3xl">
+                <div className="flex gap-3 items-center">
+                  <span className="flex items-center justify-center text-[11px] font-medium text-blue-400 font-mono bg-blue-500/10 w-7 h-7 border-blue-500/20 border rounded-lg shadow-[0_0_10px_rgba(59,130,246,0.2)]">
+                    04
+                  </span>
+                  <span className="uppercase text-sm font-medium text-gray-500 tracking-widest font-sans">
+                    PRICING
+                  </span>
+                </div>
+                <h2 className="md:text-5xl lg:text-6xl leading-[1.1] text-4xl text-white font-serif font-light tracking-tight">
+                  Simple pricing for <span className="text-gray-600 font-serif font-light tracking-tight">everyone.</span>
+                </h2>
+                <p className="text-lg text-gray-400 font-light max-w-xl leading-relaxed font-sans">
+                  Development team, agencies typically charge a blended hourly rate of $120 to $200+ per hour.
+                </p>
+              </div>
+
+              {/* Toggle Switch */}
+              <div className="z-10 flex flex-col items-center md:items-end relative shrink-0">
+                <div className="flex bg-[#111111] border-white/10 border rounded-full p-1.5 backdrop-blur-sm items-center">
+                  <button 
+                    onClick={() => setPricingPeriod('project')}
+                    className={`transition-all hover:scale-[1.02] text-xs font-bold uppercase tracking-widest rounded-full px-6 py-3 cursor-pointer duration-300 ${pricingPeriod === 'project' ? 'text-black bg-[#ffffff] shadow-[0_0_15px_rgba(59,130,246,0.3)] font-black' : 'text-gray-400 hover:text-white font-medium'}`}
+                  >
+                    Project Scope Tiers
+                  </button>
+                  <button 
+                    onClick={() => setPricingPeriod('hourly')}
+                    className={`transition-all hover:scale-[1.02] text-xs font-bold uppercase tracking-widest rounded-full px-6 py-3 cursor-pointer duration-300 ${pricingPeriod === 'hourly' ? 'text-black bg-[#ffffff] shadow-[0_0_15px_rgba(59,130,246,0.3)] font-black' : 'text-gray-400 hover:text-white font-medium'}`}
+                  >
+                    Hourly Rate Cards
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Features Grid & Interactive Views */}
+            <div className="relative w-full min-h-[500px] flex items-center justify-center">
+              <AnimatePresence mode="wait">
+                {pricingPeriod === 'project' ? (
+                  <motion.div 
+                    key="project-view"
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.3 }}
+                    className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full z-10 relative"
+                  >
+                    {/* Card 1: Small Scale / MVP */}
+                    <div className="overflow-hidden z-10 group bg-[#0A0A0C] border-white/10 border rounded-[3rem] relative shadow-2xl flex flex-col justify-between p-8 md:p-10 min-h-[550px]" id="small-scale-mvp">
+                      <div className="pointer-events-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1a1c35] via-[#0A0A0C] to-[#0A0A0C] absolute inset-0 transition-opacity duration-500 group-hover:opacity-90"></div>
+                      <div className="absolute inset-0 opacity-15" style={{ backgroundImage: 'radial-gradient(white 1px, transparent 1px)', backgroundSize: '40px 40px', maskImage: 'radial-gradient(circle, black 40%, transparent 100%)' }}></div>
+                      
+                      <div className="relative flex flex-col gap-6 h-full justify-between">
+                        <div>
+                          {/* Title & Icon */}
+                          <div className="flex items-center gap-4 mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400">
+                              <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+                              <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+                              <path d="M9 12H4s.55-3.03 2-4c1.62-1.1 4-1 4-1s.25 2.25 0 4z"></path>
+                              <path d="M15 13v5s3.03-.55 4-2c1.1-1.62 1-4 1-4s-2.25-.25-4 0z"></path>
+                            </svg>
+                            <span className="text-2xl font-light text-white tracking-tight font-serif uppercase">
+                              Small Scale / MVP
+                            </span>
+                          </div>
+                          
+                          {/* Core Description list */}
+                          <p className="text-slate-400 text-sm font-light mb-8 italic leading-relaxed">
+                            Best for single-purpose workflows, basic mobile applications, or early-stage prototypes with limited user roles.
+                          </p>
+
+                          <ul className="space-y-4 text-left">
+                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
+                              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0"></span>
+                              Single-Purpose Workflows
+                            </li>
+                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
+                              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0"></span>
+                              Basic Mobile Applications
+                            </li>
+                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
+                              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0"></span>
+                              Prototypes with Limited Roles
+                            </li>
+                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
+                              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0"></span>
+                              Agile Verification Cycle
+                            </li>
+                          </ul>
+                        </div>
+
+                        <div className="mt-8">
+                          <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-400 mb-4 bg-white/5 py-1.5 px-3.5 rounded-full inline-block">
+                            ESTIMATED HOURLY RATE
+                          </div>
+                          <div className="text-3xl font-light text-white tracking-tight font-serif mb-6">
+                            $100 – $150+ <span className="text-sm font-sans text-slate-400 font-light lowercase">per hour</span>
+                          </div>
+                          <a 
+                            href="https://wa.me/923233260859"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:bg-blue-500/10 hover:border-blue-400 hover:shadow-[0_0_35px_rgba(59,130,246,0.6),inset_0_0_20px_rgba(59,130,246,0.4)] hover:scale-[1.02] transition-all duration-300 flex text-xs font-semibold uppercase tracking-widest text-white bg-black/60 border-blue-500/50 border rounded-full py-4 px-6 items-center justify-center gap-2"
+                          >
+                            Consult MVP
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Card 2: Mid-Range Applications */}
+                    <div className="overflow-hidden z-10 group bg-[#0A0A0C] border-blue-500/20 border rounded-[3rem] relative shadow-2xl flex flex-col justify-between p-8 md:p-10 min-h-[550px]" id="mid-range-apps">
+                      <div className="pointer-events-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1d143c] via-[#0A0A0C] to-[#0A0A0C] absolute inset-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+                      <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(white 1px, transparent 1px)', backgroundSize: '40px 40px', maskImage: 'radial-gradient(circle, black 40%, transparent 100%)' }}></div>
+                      <div className="absolute top-0 right-10 bg-blue-500/10 text-blue-400 border border-blue-500/20 text-[8px] font-bold tracking-widest uppercase px-3 py-1 rounded-b-xl z-20">MOST POPULAR</div>
+
+                      <div className="relative flex flex-col gap-6 h-full justify-between">
+                        <div>
+                          {/* Title & Icon */}
+                          <div className="flex items-center gap-4 mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400">
+                              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                              <polyline points="2 17 12 22 22 17"></polyline>
+                              <polyline points="2 12 12 17 22 12"></polyline>
+                            </svg>
+                            <span className="text-2xl font-light text-white tracking-tight font-serif uppercase">
+                              Mid-Range Apps
+                            </span>
+                          </div>
+                          
+                          {/* Core Description list */}
+                          <p className="text-slate-400 text-sm font-light mb-8 italic leading-relaxed">
+                            Includes multi-platform software, basic CRM tools, advanced e-commerce websites, or SaaS products requiring standard API integrations.
+                          </p>
+
+                          <ul className="space-y-4 text-left">
+                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
+                              <span className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0"></span>
+                              Multi-Platform Software
+                            </li>
+                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
+                              <span className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0"></span>
+                              Basic CRM System Assets
+                            </li>
+                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
+                              <span className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0"></span>
+                              Advanced E-Commerce Webs
+                            </li>
+                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
+                              <span className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0"></span>
+                              Standard External APIs
+                            </li>
+                          </ul>
+                        </div>
+
+                        <div className="mt-8">
+                          <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-400 mb-4 bg-white/5 py-1.5 px-3.5 rounded-full inline-block">
+                            ESTIMATED HOURLY RATE
+                          </div>
+                          <div className="text-3xl font-light text-white tracking-tight font-serif mb-6">
+                            $100 – $150+ <span className="text-sm font-sans text-slate-400 font-light lowercase">per hour</span>
+                          </div>
+                          <a 
+                            href="https://wa.me/923233260859"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:bg-blue-500/10 hover:border-blue-400 hover:shadow-[0_0_35px_rgba(59,130,246,0.6),inset_0_0_20px_rgba(59,130,246,0.4)] hover:scale-[1.02] transition-all duration-300 flex text-xs font-semibold uppercase tracking-widest text-white bg-white/10 border-blue-400/50 border rounded-full py-4 px-6 items-center justify-center gap-2 shadow-[0_0_15px_rgba(59,130,246,0.2)]"
+                          >
+                            Initiate Discovery
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Card 3: Enterprise Platforms */}
+                    <div className="overflow-hidden z-10 group bg-[#0A0A0C] border-white/10 border rounded-[3rem] relative shadow-2xl flex flex-col justify-between p-8 md:p-10 min-h-[550px]" id="enterprise-platforms">
+                      <div className="pointer-events-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#132220] via-[#0A0A0C] to-[#0A0A0C] absolute inset-0 transition-opacity duration-500 group-hover:opacity-90"></div>
+                      <div className="absolute inset-0 opacity-15" style={{ backgroundImage: 'radial-gradient(white 1px, transparent 1px)', backgroundSize: '40px 40px', maskImage: 'radial-gradient(circle, black 40%, transparent 100%)' }}></div>
+
+                      <div className="relative flex flex-col gap-6 h-full justify-between">
+                        <div>
+                          {/* Title & Icon */}
+                          <div className="flex items-center gap-4 mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#ccff00]">
+                              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                              <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                              <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                            </svg>
+                            <span className="text-2xl font-light text-white tracking-tight font-serif uppercase">
+                              Enterprise Platforms
+                            </span>
+                          </div>
+                          
+                          {/* Core Description list */}
+                          <p className="text-slate-400 text-sm font-light mb-8 italic leading-relaxed">
+                            Tailored for complex logic platforms, intensive data solutions with AI capabilities, and scalable ERP systems requiring strict security compliance.
+                          </p>
+
+                          <ul className="space-y-4 text-left">
+                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00] shrink-0"></span>
+                              Complex Business Logic
+                            </li>
+                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00] shrink-0"></span>
+                              Intensive Data & AI Systems
+                            </li>
+                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00] shrink-0"></span>
+                              Scalable ERP Architectures
+                            </li>
+                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00] shrink-0"></span>
+                              Strict Security Compliance
+                            </li>
+                          </ul>
+                        </div>
+
+                        <div className="mt-8">
+                          <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-400 mb-4 bg-white/5 py-1.5 px-3.5 rounded-full inline-block">
+                            ESTIMATED HOURLY RATE
+                          </div>
+                          <div className="text-3xl font-light text-white tracking-tight font-serif mb-6">
+                            $150 to $250+ <span className="text-sm font-sans text-slate-400 font-light lowercase">per hour</span>
+                          </div>
+                          <a 
+                            href="https://wa.me/923233260859"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:bg-[#ccff00]/10 hover:border-[#ccff00] hover:shadow-[0_0_35px_rgba(204,255,0,0.6),inset_0_0_20px_rgba(204,255,0,0.4)] hover:scale-[1.02] transition-all duration-300 flex text-xs font-semibold uppercase tracking-widest text-[#ccff00] bg-black/60 border-[#ccff00]/50 border rounded-full py-4 px-6 items-center justify-center gap-2"
+                          >
+                            Consult Enterprise
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ) : (
+                  <motion.div 
+                    key="hourly-view"
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.3 }}
+                    className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full z-10 relative"
+                  >
+                    {/* Large Detailed Rate Card Column */}
+                    <div className="overflow-hidden z-10 group bg-[#0A0A0C] border-white/10 border rounded-[3rem] p-8 md:p-12 lg:col-span-7 relative shadow-2xl flex flex-col justify-between">
+                      <div className="pointer-events-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#131d27] via-[#0A0A0C] to-[#0A0A0C] absolute inset-0"></div>
+                      
+                      <div className="relative space-y-8">
+                        <div>
+                          <h4 className="text-xs font-mono text-blue-400 mb-2 uppercase tracking-[0.3em] font-bold">[ LOCAL_US_ENGINEER_RATES ]</h4>
+                          <h3 className="text-3xl font-light text-white tracking-tight font-serif uppercase">
+                            Development Hourly Rates
+                          </h3>
+                          <p className="text-slate-400 text-sm font-light mt-4 leading-relaxed font-sans">
+                            If you pay by the hour rather than a fixed project price, data from Clutch and industry reports show that local US developer costs vary heavily by experience:
+                          </p>
+                        </div>
+
+                        <div className="space-y-4 border-t border-white/5 pt-6">
+                          {[
+                            { role: "Junior Engineer", rate: "$70 – $100", xp: "Basic workflows, testing scripts, template integrations" },
+                            { role: "UI/UX Designer", rate: "$80 – $140", xp: "Interactive prototypes, branding assets, custom interface layouts" },
+                            { role: "Mid-Level Engineer", rate: "$100 – $150", xp: "Full-stack capabilities, API optimization, custom modules" },
+                            { role: "Senior Consultant / Architect", rate: "$150 – $250+", xp: "System architecture, high-security databases, AI integration" }
+                          ].map((rateItem, idx) => (
+                            <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-colors">
+                              <div>
+                                <div className="text-base font-medium text-white font-sans">{rateItem.role}</div>
+                                <div className="text-xs text-slate-500 font-light font-sans mt-1">{rateItem.xp}</div>
+                              </div>
+                              <div className="text-2xl font-light text-[#ccff00] font-serif tracking-tight shrink-0">
+                                {rateItem.rate}<span className="text-xs text-slate-500"> / hr</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right Column: Maintenance & Discovery Prompt */}
+                    <div className="lg:col-span-5 flex flex-col gap-8 h-full">
+                      {/* Long-Term Hidden Costs */}
+                      <div className="overflow-hidden z-10 group bg-[#0A0A0C] border-white/10 border rounded-[3rem] p-8 md:p-10 relative shadow-2xl flex-1 flex flex-col justify-between">
+                        <div className="pointer-events-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1c1c1a] via-[#0A0A0C] to-[#0A0A0C] absolute inset-0"></div>
+                        
+                        <div className="relative space-y-4">
+                          <h4 className="text-xs font-mono text-[#ccff00] mb-2 uppercase tracking-[0.3em] font-bold">[ POST_LAUNCH_METRICS ]</h4>
+                          <h3 className="text-2xl font-light text-white tracking-tight font-serif uppercase">
+                            Long-Term Hidden Costs
+                          </h3>
+                          <p className="text-sm font-bold text-slate-200 mt-2">
+                            Maintenance:
+                          </p>
+                          <p className="text-slate-400 text-sm font-light leading-relaxed font-sans">
+                            Expect to spend <span className="text-white font-semibold">15% to 20%</span> of the original build cost every year for server hosting, bug fixes, and mandatory security patches.
+                          </p>
+                        </div>
+
+                        <div className="relative mt-8 bg-zinc-950/40 p-4 border border-white/5 rounded-2xl">
+                          <div className="text-xs text-slate-500 font-mono flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#ccff00] animate-pulse"></div>
+                            ESTIMATION PROTOCOL ACTIVE
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Discovery Help Block */}
+                      <div className="overflow-hidden z-10 group bg-[#0A0A0C] border-blue-500/10 rounded-[3rem] p-8 md:p-10 relative shadow-2xl flex-1 flex flex-col justify-between">
+                        <div className="pointer-events-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#121626] via-[#0A0A0C] to-[#0A0A0C] absolute inset-0"></div>
+                        
+                        <div className="relative space-y-4">
+                          <h3 className="text-xl font-light text-white tracking-tight font-serif uppercase">
+                            Narrow Down Your Estimate
+                          </h3>
+                          <p className="text-slate-300 text-sm font-light leading-relaxed font-sans">
+                            To help me narrow down this massive range, what kind of features or workflows does your software need to handle? If you can share your target timeline or if you are considering offshore options, I can give you a much tighter estimate.
+                          </p>
+                        </div>
+
+                        <div className="relative mt-6">
+                          <a 
+                            href="https://wa.me/923233260859"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:bg-blue-500/10 hover:border-blue-400 hover:shadow-[0_0_35px_rgba(59,130,246,0.6),inset_0_0_20px_rgba(59,130,246,0.4)] hover:scale-[1.02] transition-all duration-300 flex text-xs font-semibold uppercase tracking-widest text-white bg-black/60 border-blue-500 border rounded-full py-4 px-6 items-center justify-center gap-2"
+                          >
+                            Request Tighter Quote
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
           </div>
         </div>
       </section>

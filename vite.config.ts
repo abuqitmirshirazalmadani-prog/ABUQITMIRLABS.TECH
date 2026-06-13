@@ -46,13 +46,13 @@ export default defineConfig(({mode}) => {
         staticDir: path.resolve(process.cwd(), 'dist'),
         routes: [
           '/',
-          '/mobile-app-development', 
+          '/about',
+          '/blog',
+          '/mobile-app-development',
           '/ai-agent-development',
           '/custom-software',
-          '/about',
           '/contact',
-          '/blog',
-          '/case-studies/tajweedpage'
+          '/case-studies'
         ],
         renderer: new prerender.PuppeteerRenderer({
           args: ['--no-sandbox', '--disable-setuid-sandbox']
@@ -123,7 +123,7 @@ export default defineConfig(({mode}) => {
                 if (configJSON.apiKey) apiKey = configJSON.apiKey;
               }
             } catch (cfgErr) {
-              console.warn('⚠️ [SEO Generator] Non-fatal, could not parse firebase-applet-config.json:', cfgErr);
+              console.log('[SEO Generator] note: Could not parse optional configuration, using fallback:', cfgErr);
             }
 
             const firestoreUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/${databaseId}/documents/posts${apiKey ? `?key=${apiKey}` : ''}`;
@@ -146,10 +146,10 @@ export default defineConfig(({mode}) => {
                 console.log(`✨ [SEO Generator] Successfully loaded ${fetchedPosts.length} dynamic posts from Firestore!`);
               }
             } else {
-              console.warn(`⚠️ [SEO Generator] Firestore fetched failed with status ${response.status}. Using empty fallback.`);
+              console.log(`[SEO Generator] note: Firestore fetch responded with status ${response.status}. Using empty fallback.`);
             }
           } catch (err: any) {
-            console.error('⚠️ [SEO Generator] Error querying Firestore during compilation:', err.message || err);
+            console.log('[SEO Generator] note: Querying optional Firestore database omitted during compilation:', err.message || err);
           }
 
           // Append dynamic blog routes to Sitemap & SSG lists
@@ -167,7 +167,7 @@ export default defineConfig(({mode}) => {
           try {
             const publicDir = path.resolve(process.cwd(), 'public');
             if (!fs.existsSync(publicDir)) {
-              fs.mkdirSync(publicDir, { recursive: true });
+               fs.mkdirSync(publicDir, { recursive: true });
             }
             const logoPathSource = 'https://abuqitmirlabs.tech/logo.png';
             const response = await fetch(logoPathSource);
@@ -182,7 +182,7 @@ export default defineConfig(({mode}) => {
               console.log('✅ Downloaded logo successfully to public/logo.png and dist/logo.png!');
             }
           } catch (err) {
-            console.error('⚠️ Failed to download logo:', err);
+            console.log('[SEO Generator] note: Logo download omitted:', err);
           }
 
           if (!fs.existsSync(indexHtmlPath)) return;

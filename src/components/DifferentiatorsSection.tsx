@@ -14,7 +14,7 @@ const DifferentiatorsSection = () => {
                     <Calendar className="h-4 w-4" />
                     <span className="tracking-wide">View Technical Roadmap</span>
                 </Link>
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=abuqitmirshirazalmadani@gmail.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white/80 hover:bg-white/10 transition backdrop-blur-sm">
+                <a href="mailto:hello@abuqitmirlabs.tech" className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white/80 hover:bg-white/10 transition backdrop-blur-sm">
                     <Mail className="h-4 w-4" />
                     <span className="tracking-wide">Subscribe to AI Insights</span>
                 </a>

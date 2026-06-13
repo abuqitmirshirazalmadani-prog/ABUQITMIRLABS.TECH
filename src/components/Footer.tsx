@@ -76,17 +76,25 @@ const Footer = () => {
 
                     {/* Contact info Bar */}
                     <div className="mt-20 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 text-lg text-black border-y-4 border-black py-10 font-black uppercase tracking-tighter">
-                        <div className="flex flex-col items-center gap-2 group">
-                            <a 
-                                href="https://mail.google.com/mail/?view=cm&fs=1&to=abuqitmirshirazalmadani@gmail.com" 
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="hover:underline transition items-center gap-2 flex normal-case font-mono font-medium tracking-tight text-base"
-                            >
-                                <Mail className="h-6 w-6" />
-                                abuqitmirshirazalmadani@gmail.com
-                            </a>
-                            <p className="text-[10px] text-zinc-600 uppercase tracking-widest">Connect via Gmail</p>
+                        <div className="flex flex-col items-center gap-1 group">
+                            <div className="flex flex-col items-center gap-1">
+                                <a 
+                                    href="mailto:hello@abuqitmirlabs.tech" 
+                                    className="hover:underline transition items-center gap-2 flex normal-case font-mono font-medium tracking-tight text-base"
+                                >
+                                    <Mail className="h-5 w-5 shrink-0" />
+                                    hello@abuqitmirlabs.tech
+                                </a>
+                                <a 
+                                    href="https://mail.google.com/mail/?view=cm&fs=1&to=abuqitmirshirazalmadani@gmail.com" 
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:underline transition items-center gap-2 flex normal-case font-mono font-medium tracking-tight text-sm text-zinc-700"
+                                >
+                                    abuqitmirshirazalmadani@gmail.com
+                                </a>
+                            </div>
+                            <p className="text-[10px] text-zinc-600 uppercase tracking-widest mt-1">Connect via Email</p>
                         </div>
                         <span className="hidden md:block h-6 w-1 bg-black"></span>
                         <a href="https://wa.me/923233260859" target="_blank" rel="noreferrer" className="group hover:underline transition flex items-center gap-2">

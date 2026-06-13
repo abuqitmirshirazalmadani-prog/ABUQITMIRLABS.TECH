@@ -102,20 +102,28 @@ const ContactSection = () => {
                 <h4 className="font-mono text-xs font-black uppercase tracking-[0.3em] text-zinc-600">[ CONTACT DIRECTORY ]</h4>
                 
                 {/* Mail Link */}
-                <a 
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=abuqitmirshirazalmadani@gmail.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex items-center gap-4 p-5 bg-zinc-950/40 border-2 border-zinc-800 rounded-xl hover:border-white transition-all group"
-                >
-                  <div className="w-12 h-12 rounded-lg bg-zinc-900 flex items-center justify-center text-zinc-400 group-hover:bg-[#ccff00]/10 group-hover:text-[#ccff00] transition-colors">
+                <div className="flex items-start gap-4 p-5 bg-zinc-950/40 border-2 border-zinc-800 rounded-xl transition-all">
+                  <div className="w-12 h-12 rounded-lg bg-zinc-900 flex items-center justify-center text-zinc-400 shrink-0">
                     <Mail size={20} />
                   </div>
-                  <div>
+                  <div className="flex flex-col gap-1.5">
                     <span className="text-xs uppercase font-mono tracking-widest text-zinc-500 block">SEND INTEL EMAIL</span>
-                    <span className="font-bold text-white tracking-tight group-hover:underline">shiraz@abuqitmirlabs.tech</span>
+                    <a 
+                      href="mailto:hello@abuqitmirlabs.tech" 
+                      className="font-bold text-white tracking-tight hover:text-[#ccff00] hover:underline"
+                    >
+                      hello@abuqitmirlabs.tech
+                    </a>
+                    <a 
+                      href="https://mail.google.com/mail/?view=cm&fs=1&to=abuqitmirshirazalmadani@gmail.com" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-xs font-mono text-zinc-400 hover:text-[#ccff00] hover:underline block"
+                    >
+                      abuqitmirshirazalmadani@gmail.com
+                    </a>
                   </div>
-                </a>
+                </div>
 
                 {/* WhatsApp Link */}
                 <a 

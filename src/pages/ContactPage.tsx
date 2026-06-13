@@ -285,13 +285,19 @@ const ContactPage = () => {
                                <Mail className="text-[#00E5FF]" size={28} />
                            </a>
                            <div>
-                              <p className="text-white font-bold uppercase tracking-widest text-sm mb-1">Email Protocol [GMAIL]</p>
-                              <div className="flex flex-col gap-1">
+                              <p className="text-white font-bold uppercase tracking-widest text-sm mb-1">Email Protocol</p>
+                              <div className="flex flex-col gap-1.5 mt-1">
+                                 <a 
+                                    href="mailto:hello@abuqitmirlabs.tech" 
+                                    className="text-white font-mono text-sm hover:text-[#00E5FF] transition-colors hover:underline font-bold block"
+                                 >
+                                    hello@abuqitmirlabs.tech
+                                 </a>
                                  <a 
                                     href="https://mail.google.com/mail/?view=cm&fs=1&to=abuqitmirshirazalmadani@gmail.com" 
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-zinc-500 font-mono text-[10px] group-hover/item:text-[#00E5FF] transition-colors hover:underline"
+                                    className="text-zinc-500 font-mono text-xs hover:text-[#00E5FF] transition-colors hover:underline block"
                                  >
                                     abuqitmirshirazalmadani@gmail.com
                                  </a>

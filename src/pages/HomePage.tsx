@@ -213,23 +213,32 @@ export default function HomePage() {
           <p className="text-zinc-400 mb-12 text-sm md:text-base font-sans tracking-wide">
             Free consultation available — Contact today.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
             <a
               id="cta-whatsapp-link"
               href="https://wa.me/923233260859"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#25d366]/10 text-[#25d366] hover:bg-[#25d366]/20 font-sans text-xs tracking-[0.14em] uppercase border border-[#25d366]/20 px-8 py-4 rounded-full transition-all duration-300"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#25d366]/10 text-[#25d366] hover:bg-[#25d366]/20 font-sans text-xs tracking-[0.14em] uppercase border border-[#25d366]/20 px-8 py-4 rounded-full transition-all duration-300 h-14"
             >
               💬 <span className="normal-case">Message me on WhatsApp</span>
             </a>
-            <a
-              id="cta-email-link"
-              href="mailto:abuqitmirshirazalmadani@gmail.com"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 text-zinc-300 hover:bg-white/10 font-sans text-xs tracking-[0.14em] uppercase border border-white/10 px-8 py-4 rounded-full transition-all duration-300"
-            >
-              📧 <span className="normal-case font-mono font-medium tracking-tight">abuqitmirshirazalmadani@gmail.com</span>
-            </a>
+            <div className="flex flex-col gap-2">
+              <a
+                id="cta-email-link-corporate"
+                href="mailto:hello@abuqitmirlabs.tech"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 text-zinc-200 hover:bg-white/10 font-sans text-xs tracking-[0.14em] uppercase border border-white/20 px-8 py-3.5 rounded-full transition-all duration-300"
+              >
+                📧 <span className="normal-case font-mono font-medium tracking-tight">hello@abuqitmirlabs.tech</span>
+              </a>
+              <a
+                id="cta-email-link-personal"
+                href="mailto:abuqitmirshirazalmadani@gmail.com"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 text-zinc-400 hover:bg-white/10 font-sans text-[10px] tracking-[0.14em] uppercase border border-white/10 px-8 py-2 rounded-full transition-all duration-300"
+              >
+                📧 <span className="normal-case font-mono font-medium tracking-tight">abuqitmirshirazalmadani@gmail.com</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>

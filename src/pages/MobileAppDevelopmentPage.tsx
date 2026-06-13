@@ -29,6 +29,9 @@ import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CountryMarquee from '../components/CountryMarquee';
 import HeroText from '../components/ui/hero-shutter-text';
+import MobileAppCategoriesShowcase from '../components/MobileAppCategoriesShowcase';
+import AppDevelopmentTeamRoles from '../components/AppDevelopmentTeamRoles';
+import AppDevelopmentPricing from '../components/AppDevelopmentPricing';
 
 const MobileAppDevelopmentPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -362,6 +365,15 @@ const MobileAppDevelopmentPage = () => {
            </div>
         </div>
       </section>
+
+      {/* Mobile Application Categories Hierarchy Showcase */}
+      <MobileAppCategoriesShowcase />
+
+      {/* Mobile Application Roles Matrix Breakdown */}
+      <AppDevelopmentTeamRoles />
+
+      {/* Mobile Application Financial Framework Pricing */}
+      <AppDevelopmentPricing />
 
       {/* Solutions Grid */}
       <section className="py-32 border-t border-white/5" id="services">

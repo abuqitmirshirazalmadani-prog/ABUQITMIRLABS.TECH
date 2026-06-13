@@ -32,6 +32,12 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CountryMarquee from '../components/CountryMarquee';
+import WebDevelopmentPricing from '../components/WebDevelopmentPricing';
+import WebUpsellsPricing from '../components/WebUpsellsPricing';
+import WebHostingPricing from '../components/WebHostingPricing';
+import WebMaintenancePricing from '../components/WebMaintenancePricing';
+import CustomWebAppsPricing from '../components/CustomWebAppsPricing';
+import WebCustomCTA from '../components/WebCustomCTA';
 
 const WebDevelopmentPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -545,6 +551,24 @@ const WebDevelopmentPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Brand Web Development Packages Pricing Framework */}
+      <WebDevelopmentPricing />
+
+      {/* Brand Web Development Upsells & Add-ons Pricing */}
+      <WebUpsellsPricing />
+
+      {/* High-Availability Hosting Plans Pricing Section */}
+      <WebHostingPricing />
+
+      {/* Ongoing Developer Maintenance Plans Section */}
+      <WebMaintenancePricing />
+
+      {/* Scalable Custom Web Applications Pricing Section */}
+      <CustomWebAppsPricing />
+
+      {/* Need something custom CTA session */}
+      <WebCustomCTA />
 
       {/* See Our Work in Action */}
       <section id="work-action" className="py-32 px-6 border-t border-white/5 relative overflow-hidden">
