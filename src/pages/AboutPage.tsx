@@ -101,6 +101,54 @@ const AboutPage = () => {
         <meta property="og:url" content="https://abuqitmirlabs.tech/about" />
         <meta property="og:type" content="profile" />
         <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
+
+        {/* Dynamic JSON-LD Schema for 100% Technical SEO compliance */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "AboutPage",
+                "@id": "https://abuqitmirlabs.tech/about#webpage",
+                "url": "https://abuqitmirlabs.tech/about",
+                "name": "About AbuQitmirLabs and Founder Mohammad Shiraz Almadani",
+                "description": "Meet Abu Qitmir Mohammad Shiraz Al- Madani, founder of AbuQitmirLabs .TECH based in Karachi. We are a premier high-performance web, mobile app, and AI development agency.",
+                "isPartOf": {
+                  "@type": "WebSite",
+                  "@id": "https://abuqitmirlabs.tech/#website",
+                  "url": "https://abuqitmirlabs.tech/",
+                  "name": "AbuQitmirLabs .TECH"
+                }
+              },
+              {
+                "@type": "ProfessionalService",
+                "@id": "https://abuqitmirlabs.tech/#organization",
+                "name": "AbuQitmirLabs .TECH",
+                "url": "https://abuqitmirlabs.tech",
+                "logo": "https://abuqitmirlabs.tech/logo.png",
+                "image": "https://abuqitmirlabs.tech/logo.png",
+                "priceRange": "$$$",
+                "telephone": "+923233260859",
+                "email": "hello@abuqitmirlabs.tech",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony",
+                  "addressLocality": "Landhi Town, Karachi",
+                  "addressRegion": "Sindh",
+                  "postalCode": "75160",
+                  "addressCountry": "PK"
+                },
+                "sameAs": [
+                  "https://www.facebook.com/profile.php?id=61583768706452",
+                  "https://twitter.com/YourProfile",
+                  "https://www.linkedin.com/in/abu-qitmir-697423390/",
+                  "https://www.instagram.com/abuqitmirshirazalmadani/",
+                  "https://www.youtube.com/@AbuQitmir"
+                ]
+              }
+            ]
+          })}
+        </script>
       </Helmet>
       
       <Header />

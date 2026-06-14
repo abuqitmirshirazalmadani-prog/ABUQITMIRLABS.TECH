@@ -119,6 +119,18 @@ const PakistanMarketPage = () => {
                   "url": "https://abuqitmirlabs.tech"
                 },
                 "areaServed": "PK"
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": faqData.map(item => ({
+                  "@type": "Question",
+                  "name": item.q,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": item.a
+                  }
+                }))
               }
             ])
           }}

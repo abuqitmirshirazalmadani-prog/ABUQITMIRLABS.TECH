@@ -124,19 +124,33 @@ const ContentWritingPage = () => {
         <script 
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Service",
-              "name": "Content Writing",
-              "description": "We provide E-E-A-T focused, meticulously researched content writing that satisfies complex search engine algorithms and builds genuine trust.",
-              "provider": {
-                "@type": "Organization",
-                "name": "ABUQITMIRLABS .TECH",
-                "url": "https://abuqitmirlabs.tech"
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                "name": "Content Writing",
+                "description": "We provide E-E-A-T focused, meticulously researched content writing that satisfies complex search engine algorithms and builds genuine trust.",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "ABUQITMIRLABS .TECH",
+                  "url": "https://abuqitmirlabs.tech"
+                },
+                "serviceType": "Content Strategy",
+                "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
               },
-              "serviceType": "Content Strategy",
-              "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
-            })
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": faqData.map(item => ({
+                  "@type": "Question",
+                  "name": item.q,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": item.a
+                  }
+                }))
+              }
+            ])
           }}
         ></script>
       </Helmet>

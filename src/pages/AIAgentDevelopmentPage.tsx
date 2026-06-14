@@ -181,6 +181,18 @@ await trainer.train();`
                 },
                 "description": "Custom autonomous AI agent engineering, private RAG pipelines, fine-tuning, and semantic intelligence for global enterprises.",
                 "areaServed": "Global"
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": faqData.map(item => ({
+                  "@type": "Question",
+                  "name": item.q,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": item.a
+                  }
+                }))
               }
             ])
           }}

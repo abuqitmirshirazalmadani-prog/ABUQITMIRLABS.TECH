@@ -116,19 +116,33 @@ const GraphicsDesignPage = () => {
         <script 
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Service",
-              "name": "Graphics Design & Branding",
-              "description": "We craft conversion-focused brand identities, intuitive UI/UX layouts, and compelling social media creatives.",
-              "provider": {
-                "@type": "Organization",
-                "name": "ABUQITMIRLABS .TECH",
-                "url": "https://abuqitmirlabs.tech"
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                "name": "Graphics Design & Branding",
+                "description": "We craft conversion-focused brand identities, intuitive UI/UX layouts, and compelling social media creatives.",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "ABUQITMIRLABS .TECH",
+                  "url": "https://abuqitmirlabs.tech"
+                },
+                "serviceType": "Design Services",
+                "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
               },
-              "serviceType": "Design Services",
-              "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
-            })
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": faqData.map(item => ({
+                  "@type": "Question",
+                  "name": item.q,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": item.a
+                  }
+                }))
+              }
+            ])
           }}
         ></script>
       </Helmet>

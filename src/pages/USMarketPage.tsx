@@ -115,6 +115,18 @@ const USMarketPage = () => {
                   "url": "https://abuqitmirlabs.tech"
                 },
                 "areaServed": "US"
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": faqData.map(item => ({
+                  "@type": "Question",
+                  "name": item.q,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": item.a
+                  }
+                }))
               }
             ])
           }}
