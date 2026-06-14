@@ -31,6 +31,7 @@ import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CountryMarquee from '../components/CountryMarquee';
 import HeroText from '../components/ui/hero-shutter-text';
+import SEOPricing from '../components/SEOPricing';
 
 const SEOPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -400,6 +401,9 @@ const SEOPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Strategic USA Standard Pricing Blueprint */}
+      <SEOPricing />
 
       {/* Tech Tools Section */}
       <section className="py-32 bg-black text-white relative z-10 px-6 overflow-hidden">

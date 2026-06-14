@@ -62,7 +62,7 @@ export default function HomePage() {
               "image": "https://abuqitmirlabs.tech/logo.png",
               "description": "Expert custom software development and AI engineering firm. We build scalable SaaS platforms and high-performance applications for global enterprises.",
               "priceRange": "$$",
-              "email": "shiraz@abuqitmirlabs.tech",
+              "email": "hello@abuqitmirlabs.tech",
               "telephone": "+923233260859",
               "address": {
                 "@type": "PostalAddress",

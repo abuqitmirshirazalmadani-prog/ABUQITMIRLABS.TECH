@@ -29,6 +29,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CountryMarquee from '../components/CountryMarquee';
+import GraphicsDesignPricing from '../components/GraphicsDesignPricing';
 
 const GraphicsDesignPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -453,6 +454,9 @@ const GraphicsDesignPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Strategic Graphics Design Pricing and USA Investment Blueprint */}
+      <GraphicsDesignPricing />
 
       <CountryMarquee />
 

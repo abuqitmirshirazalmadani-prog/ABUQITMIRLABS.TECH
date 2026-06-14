@@ -36,7 +36,7 @@ const ContactSection = () => {
     );
     
     // Direct Gmail Compose URL
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=abuqitmirshirazalmadani@gmail.com&su=${subject}&body=${bodyText}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=hello@abuqitmirlabs.tech&su=${subject}&body=${bodyText}`;
 
     setTimeout(() => {
       setIsSubmitting(false);
@@ -115,8 +115,7 @@ const ContactSection = () => {
                       hello@abuqitmirlabs.tech
                     </a>
                     <a 
-                      href="https://mail.google.com/mail/?view=cm&fs=1&to=abuqitmirshirazalmadani@gmail.com" 
-                      target="_blank" 
+                      href="mailto:abuqitmirshirazalmadani@gmail.com" target="_blank" 
                       rel="noopener noreferrer" 
                       className="text-xs font-mono text-zinc-400 hover:text-[#ccff00] hover:underline block"
                     >

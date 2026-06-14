@@ -23,6 +23,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CountryMarquee from '../components/CountryMarquee';
+import AIAgentPricing from '../components/AIAgentPricing';
 
 export default function AIAgentDevelopmentPage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -511,6 +512,9 @@ await trainer.train();`
         </div>
       </section>
 
+      {/* Strategic AI Agent Pricing Framework */}
+      <AIAgentPricing />
+
       {/* FAQ Accordion Section */}
       <section className="py-32 px-6 bg-black z-10 relative">
         <div className="max-w-4xl mx-auto">
@@ -568,21 +572,38 @@ await trainer.train();`
             Partner with AbuQitmirLabs to deploy custom artificial intelligence assets designed to transform manual bottlenecks into automated growth loops.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center max-w-md mx-auto">
-            <a
-              href="https://wa.me/923233260859"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 inline-flex items-center justify-center gap-3 h-16 bg-[#25D366] hover:bg-[#20ba56] text-black font-black uppercase rounded-2xl tracking-wider text-xs transition active:scale-95"
-            >
-              💬 LAUNCH ON WHATSAPP
-            </a>
-            <a
-              href="mailto:shiraz@abuqitmirlabs.tech"
-              className="flex-1 inline-flex items-center justify-center gap-3 h-16 bg-white hover:bg-slate-200 text-black font-black uppercase rounded-2xl tracking-wider text-xs transition active:scale-95"
-            >
-              📧 DEPLOY VIA EMAIL
-            </a>
+          <div className="flex flex-col gap-6 items-center max-w-lg mx-auto">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center w-full">
+              <a
+                href="https://wa.me/923233260859"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 inline-flex items-center justify-center gap-3 h-16 bg-[#25D366] hover:bg-[#20ba56] text-black font-black uppercase rounded-2xl tracking-wider text-xs transition active:scale-95"
+              >
+                💬 LAUNCH ON WHATSAPP
+              </a>
+              <a
+                href="mailto:hello@abuqitmirlabs.tech"
+                className="flex-1 inline-flex items-center justify-center gap-3 h-16 bg-white hover:bg-slate-200 text-black font-black uppercase rounded-2xl tracking-wider text-xs transition active:scale-95"
+              >
+                📧 DEPLOY VIA EMAIL
+              </a>
+            </div>
+            <div className="flex flex-col items-center gap-1 mt-2">
+              <span className="font-mono text-xs text-[#ccff00] uppercase tracking-widest font-bold">Contact Email Channels:</span>
+              <a 
+                href="mailto:hello@abuqitmirlabs.tech" 
+                className="hover:underline transition font-mono text-sm font-semibold text-white/90 normal-case"
+              >
+                hello@abuqitmirlabs.tech
+              </a>
+              <a 
+                href="mailto:abuqitmirshirazalmadani@gmail.com" 
+                className="hover:underline transition font-mono text-xs text-slate-400 normal-case"
+              >
+                abuqitmirshirazalmadani@gmail.com
+              </a>
+            </div>
           </div>
         </div>
       </section>

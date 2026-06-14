@@ -439,21 +439,28 @@ export default function CaseStudyTajweedPage() {
               Whether you need a full EdTech platform, AI integration, or SEO architecture — AbuQitmirLabs delivers world-class results, fast.
             </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-              <a
-                href="https://wa.me/923233260859"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#ccff00] text-black font-extrabold uppercase text-xs tracking-widest px-8 py-4.5 rounded-full hover:bg-white hover:text-black transition-all transform active:scale-95 shadow-md animate-pulse"
-              >
-                <MessageCircle size={14} /> Start on WhatsApp
-              </a>
-              <a
-                href="mailto:shiraz@abuqitmirlabs.tech"
-                className="inline-flex items-center gap-2 bg-white text-black font-extrabold uppercase text-xs tracking-widest px-8 py-4.5 rounded-full hover:bg-zinc-200 transition-all transform active:scale-95 shadow-md"
-              >
-                <Mail size={14} /> Email Us
-              </a>
+            <div className="flex flex-col items-center gap-6 pt-4">
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <a
+                  href="https://wa.me/923233260859"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-[#ccff00] text-black font-extrabold uppercase text-xs tracking-widest px-8 py-4.5 rounded-full hover:bg-white hover:text-black transition-all transform active:scale-95 shadow-md animate-pulse"
+                >
+                  <MessageCircle size={14} /> Start on WhatsApp
+                </a>
+                <a
+                  href="mailto:hello@abuqitmirlabs.tech"
+                  className="inline-flex items-center gap-2 bg-white text-black font-extrabold uppercase text-xs tracking-widest px-8 py-4.5 rounded-full hover:bg-zinc-200 transition-all transform active:scale-95 shadow-md"
+                >
+                  <Mail size={14} /> Email Corporate
+                </a>
+              </div>
+              <div className="flex flex-col items-center gap-1 font-mono text-xs">
+                <span className="text-[#ccff00] uppercase tracking-widest font-bold">// EMAIL INQUIRY NODES:</span>
+                <a href="mailto:hello@abuqitmirlabs.tech" className="hover:underline text-white font-medium">hello@abuqitmirlabs.tech</a>
+                <a href="mailto:abuqitmirshirazalmadani@gmail.com" className="hover:underline text-slate-400">abuqitmirshirazalmadani@gmail.com</a>
+              </div>
             </div>
 
             <p className="text-zinc-500 text-xs tracking-wide">

@@ -352,6 +352,12 @@ export default function WebDevelopmentPricing() {
                   📧 Email Technical Specs
                 </a>
               </div>
+
+              <div className="flex flex-col items-center gap-1 font-mono text-xs pt-4">
+                <span className="text-zinc-500 uppercase tracking-widest font-black">// DIRECT CHANNEL INQUIRIES:</span>
+                <a href="mailto:hello@abuqitmirlabs.tech" className="hover:underline text-white font-medium">hello@abuqitmirlabs.tech</a>
+                <a href="mailto:abuqitmirshirazalmadani@gmail.com" className="hover:underline text-slate-400">abuqitmirshirazalmadani@gmail.com</a>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

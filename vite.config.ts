@@ -209,7 +209,7 @@ ${routes.map(route => `  <url>
       <guid isPermaLink="true">${hostname}/blog/${post.slug}</guid>
       <pubDate>${new Date(post.createdAt).toUTCString()}</pubDate>
       <description>${escapeXml(post.excerpt)}</description>
-      <author>shiraz@abuqitmirlabs.tech (${escapeXml(post.author)})</author>
+      <author>hello@abuqitmirlabs.tech (${escapeXml(post.author)})</author>
       <category>${escapeXml(post.category)}</category>
     </item>`).join('\n');
 

@@ -86,8 +86,7 @@ const Footer = () => {
                                     hello@abuqitmirlabs.tech
                                 </a>
                                 <a 
-                                    href="https://mail.google.com/mail/?view=cm&fs=1&to=abuqitmirshirazalmadani@gmail.com" 
-                                    target="_blank"
+                                    href="mailto:abuqitmirshirazalmadani@gmail.com" target="_blank"
                                     rel="noopener noreferrer"
                                     className="hover:underline transition items-center gap-2 flex normal-case font-mono font-medium tracking-tight text-sm text-zinc-700"
                                 >
@@ -195,9 +194,15 @@ const Footer = () => {
                                     <Phone size={14} className="min-w-[14px] mt-0.5 text-zinc-900" />
                                     <span>+92 323 3260859</span>
                                 </li>
-                                <li className="flex items-start gap-2 text-xs">
-                                    <Mail size={14} className="min-w-[14px] mt-0.5 text-zinc-900" />
-                                    <span className="break-all font-mono font-black text-[10px] normal-case">shiraz@abuqitmirlabs.tech</span>
+                                <li className="flex flex-col gap-1 text-xs">
+                                    <div className="flex items-start gap-2">
+                                        <Mail size={14} className="min-w-[14px] mt-0.5 text-zinc-900" />
+                                        <a href="mailto:hello@abuqitmirlabs.tech" className="break-all font-mono font-black text-[10px] normal-case hover:underline">hello@abuqitmirlabs.tech</a>
+                                    </div>
+                                    <div className="flex items-start gap-2">
+                                        <span className="min-w-[14px]" />
+                                        <a href="mailto:abuqitmirshirazalmadani@gmail.com" className="break-all font-mono font-medium text-[9px] text-zinc-700 normal-case hover:underline">abuqitmirshirazalmadani@gmail.com</a>
+                                    </div>
                                 </li>
                             </ul>
                             <div className="pt-4 flex flex-col gap-3">

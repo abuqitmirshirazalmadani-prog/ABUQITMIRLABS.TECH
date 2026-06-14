@@ -7,7 +7,8 @@ This file serves as a guide for AI assistants, crawlers, and large language mode
 ## Primary Metadata
 - **Organization Name**: AbuQitmirLabs .TECH
 - **Founder & CEO**: Shiraz Almadani (Mohammad Shiraz Almadani)
-- **Email**: shiraz@abuqitmirlabs.tech
+- **Primary Email**: hello@abuqitmirlabs.tech
+- **Secondary Email**: abuqitmirshirazalmadani@gmail.com
 - **Phone**: +923233260859
 - **Address**: 8/15, 3 37A Rd, Shah Khalid Colony, Landhi Town, Karachi, Sindh, 75160, Pakistan
 - **Core Stacks**: React, Node.js, Express, Tailwind CSS, TypeScript, Flutter, Firebase, Cloud Architecture, Semantic SEO, LLM Fine-Tuning.

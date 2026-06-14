@@ -30,6 +30,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CountryMarquee from '../components/CountryMarquee';
 import Breadcrumbs from '../components/Breadcrumbs';
+import ContentWritingPricing from '../components/ContentWritingPricing';
 
 const ContentWritingPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -414,6 +415,9 @@ const ContentWritingPage = () => {
               </div>
           </div>
        </section>
+
+       {/* Premium Content Writing pricing and USA Editorial Blueprint */}
+       <ContentWritingPricing />
 
        <CountryMarquee />
 

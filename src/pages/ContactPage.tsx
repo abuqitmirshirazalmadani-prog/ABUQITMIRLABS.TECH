@@ -44,7 +44,7 @@ const ContactPage = () => {
     const bodyText = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
     
     // Direct Gmail Compose URL
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=abuqitmirshirazalmadani@gmail.com&su=${subject}&body=${bodyText}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=hello@abuqitmirlabs.tech&su=${subject}&body=${bodyText}`;
 
     // Simulate terminal processing
     setTimeout(() => {
@@ -277,10 +277,7 @@ const ContactPage = () => {
                      <div className="space-y-6">
                         <div className="flex items-center gap-6 group/item">
                            <a 
-                              href="https://mail.google.com/mail/?view=cm&fs=1&to=abuqitmirshirazalmadani@gmail.com"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="w-16 h-16 bg-[#00E5FF]/5 border-2 border-[#00E5FF]/20 flex items-center justify-center group-hover/item:border-[#00E5FF] group-hover/item:bg-[#00E5FF]/10 transition-all shadow-[0_0_15px_rgba(0,229,255,0.1)]"
+                              href="mailto:hello@abuqitmirlabs.tech" className="w-16 h-16 bg-[#00E5FF]/5 border-2 border-[#00E5FF]/20 flex items-center justify-center group-hover/item:border-[#00E5FF] group-hover/item:bg-[#00E5FF]/10 transition-all shadow-[0_0_15px_rgba(0,229,255,0.1)]"
                            >
                                <Mail className="text-[#00E5FF]" size={28} />
                            </a>
@@ -294,9 +291,7 @@ const ContactPage = () => {
                                     hello@abuqitmirlabs.tech
                                  </a>
                                  <a 
-                                    href="https://mail.google.com/mail/?view=cm&fs=1&to=abuqitmirshirazalmadani@gmail.com" 
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                    href="mailto:abuqitmirshirazalmadani@gmail.com"
                                     className="text-zinc-500 font-mono text-xs hover:text-[#00E5FF] transition-colors hover:underline block"
                                  >
                                     abuqitmirshirazalmadani@gmail.com
