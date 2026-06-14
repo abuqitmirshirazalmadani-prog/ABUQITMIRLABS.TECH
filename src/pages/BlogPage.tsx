@@ -147,7 +147,7 @@ const BlogPage = () => {
                                         <div className="flex flex-wrap items-center justify-center gap-10 mb-10 w-full pt-8 border-t border-white/5">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-12 h-12 rounded-full bg-white/5 p-0.5 border border-white/10 ring-4 ring-blue-500/10">
-                                                    <img src="/logo.png" alt="ABUQITMIRLABS.TECH Shiraz Almadani" className="w-full h-full rounded-full object-cover object-top" />
+                                                    <img src="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" alt="ABUQITMIRLABS.TECH Shiraz Almadani" className="w-full h-full rounded-full object-cover object-top" />
                                                 </div>
                                                 <div className="text-left">
                                                     <div className="text-white text-xs font-black uppercase tracking-tight">ABUQITMIRLABS .TECH Shiraz Almadani</div>
