@@ -14,6 +14,7 @@ interface Post {
   title: string;
   content: string;
   coverImage?: string;
+  coverImageAlt?: string;
   category?: string;
   createdAt: any;
   author: string;
@@ -59,35 +60,171 @@ const BlogPostPage = () => {
             return post.content;
         }
 
-        const paragraphs = post.content.split(/\n\n+/);
-        const P = paragraphs.length;
-        const N = imagesToInject.length;
+        // Parse markdown content into logical blocks (e.g. paragraphs, lists, code blocks)
+        const rawLines = post.content.split(/\r?\n/);
+        
+        interface Block {
+            text: string;
+            isSafeForImage: boolean;
+            isHeader?: boolean;
+        }
+        
+        const blocks: Block[] = [];
+        let currentParagraph: string[] = [];
+        let inCodeBlock = false;
 
-        if (P <= 1) {
-            // If it's just one paragraph block, append all images at the very end
+        const flushParagraph = () => {
+            if (currentParagraph.length > 0) {
+                const combinedText = currentParagraph.join('\n');
+                const trimmed = combinedText.trim();
+                
+                if (trimmed) {
+                    const isHeader = trimmed.startsWith('#');
+                    const isList = trimmed.startsWith('- ') || trimmed.startsWith('* ') || trimmed.startsWith('+ ') || /^\d+\.\s/.test(trimmed);
+                    const isQuote = trimmed.startsWith('>');
+                    const isCode = trimmed.startsWith('```');
+
+                    blocks.push({
+                        text: combinedText,
+                        isSafeForImage: !inCodeBlock && !isHeader && !isList && !isQuote && !isCode,
+                        isHeader: isHeader
+                    });
+                }
+                currentParagraph = [];
+            }
+        };
+
+        for (let i = 0; i < rawLines.length; i++) {
+            const line = rawLines[i];
+            const trimmedLine = line.trim();
+
+            if (trimmedLine.startsWith('```')) {
+                // Entering/exiting code block
+                flushParagraph();
+                inCodeBlock = !inCodeBlock;
+                blocks.push({
+                    text: line,
+                    isSafeForImage: false
+                });
+                continue;
+            }
+
+            if (inCodeBlock) {
+                blocks.push({
+                    text: line,
+                    isSafeForImage: false
+                });
+                continue;
+            }
+
+            if (trimmedLine === '') {
+                flushParagraph();
+            } else {
+                const isSpecial = trimmedLine.startsWith('#') || 
+                                  trimmedLine.startsWith('- ') || 
+                                  trimmedLine.startsWith('* ') || 
+                                  trimmedLine.startsWith('+ ') || 
+                                  trimmedLine.startsWith('>') || 
+                                  /^\d+\.\s/.test(trimmedLine);
+                
+                if (isSpecial) {
+                    flushParagraph();
+                    currentParagraph.push(line);
+                    flushParagraph();
+                } else {
+                    currentParagraph.push(line);
+                }
+            }
+        }
+        flushParagraph();
+
+        const N = imagesToInject.length;
+        let targetIndices = blocks
+            .map((b, idx) => b.isSafeForImage ? idx : -1)
+            .filter(idx => idx !== -1);
+
+        // If we have more images than safe paragraphs, split long safe paragraphs into sentence blocks to create natural placements
+        if (targetIndices.length < N && targetIndices.length > 0) {
+            const expandedBlocks: Block[] = [];
+            
+            blocks.forEach((b) => {
+                if (b.isSafeForImage && b.text.length > 100) {
+                    const sentenceRegex = /([^.!?]+[.!?]+(?:\s+|$))/g;
+                    const matches = b.text.match(sentenceRegex);
+                    
+                    if (matches && matches.length > 1) {
+                        matches.forEach((sentence) => {
+                            if (sentence.trim()) {
+                                expandedBlocks.push({
+                                    text: sentence.trim(),
+                                    isSafeForImage: true
+                                });
+                            }
+                        });
+                        return;
+                    }
+                }
+                expandedBlocks.push(b);
+            });
+            
+            const newTargetIndices = expandedBlocks
+                .map((b, idx) => b.isSafeForImage ? idx : -1)
+                .filter(idx => idx !== -1);
+                
+            if (newTargetIndices.length > targetIndices.length) {
+                blocks.length = 0;
+                blocks.push(...expandedBlocks);
+                targetIndices = newTargetIndices;
+            }
+        }
+
+        let M = targetIndices.length;
+
+        if (M === 0) {
+            // Target all non-empty blocks as safe fallback
+            targetIndices = blocks
+                .map((b, idx) => b.text.trim() !== '' ? idx : -1)
+                .filter(idx => idx !== -1);
+            M = targetIndices.length;
+        }
+
+        if (M === 0) {
+            // Absolute fallback: append images to the end of raw content
             const imagesMarkdown = imagesToInject
                 .map((img: any) => `\n\n![${img.caption || 'Article photo'}](${img.url})`)
                 .join('');
             return post.content + imagesMarkdown;
         }
 
-        // Distribute them
-        const step = Math.max(1, Math.floor(P / (N + 1)));
-        const result: string[] = [];
-        
-        // Map of paragraph index -> images to append after it
+        // Map of block index -> images to append after it
         const insertions: { [key: number]: any[] } = {};
-        
-        imagesToInject.forEach((img: any, i: number) => {
-            const insertAfterIdx = Math.min(P - 1, (i + 1) * step);
-            if (!insertions[insertAfterIdx]) {
-                insertions[insertAfterIdx] = [];
-            }
-            insertions[insertAfterIdx].push(img);
-        });
 
-        paragraphs.forEach((p, idx) => {
-            result.push(p);
+        if (N >= M) {
+            // More images than safe blocks: distribute them as evenly as possible
+            imagesToInject.forEach((img: any, i: number) => {
+                const targetIdx = i % M;
+                const blockIdx = targetIndices[targetIdx];
+                if (!insertions[blockIdx]) {
+                    insertions[blockIdx] = [];
+                }
+                insertions[blockIdx].push(img);
+            });
+        } else {
+            // Better spacing: space them out across available blocks
+            const step = M / (N + 1);
+            imagesToInject.forEach((img: any, i: number) => {
+                const targetIdx = Math.min(M - 1, Math.floor((i + 1) * step));
+                const blockIdx = targetIndices[targetIdx];
+                if (!insertions[blockIdx]) {
+                    insertions[blockIdx] = [];
+                }
+                insertions[blockIdx].push(img);
+            });
+        }
+
+        const result: string[] = [];
+        blocks.forEach((b, idx) => {
+            result.push(b.text);
             if (insertions[idx]) {
                 insertions[idx].forEach((img: any) => {
                     result.push(`![${img.caption || 'Article photo'}](${img.url})`);
@@ -374,7 +511,7 @@ const BlogPostPage = () => {
                             animate={{ opacity: 1, scale: 1 }}
                             className="aspect-video w-full rounded-[3rem] overflow-hidden mb-16 shadow-2xl shadow-blue-500/5 group"
                         >
-                            <img src={post.coverImage} alt={`futuristic ${post.title} feature illustration`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+                            <img src={post.coverImage} alt={post.coverImageAlt || `futuristic ${post.title} feature illustration`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
                         </motion.div>
                     )}
 

@@ -63,6 +63,7 @@ const AdminDashboard = () => {
         category: 'AI',
         published: true,
         coverImage: '',
+        coverImageAlt: '',
         tags: '' 
     });
 
@@ -96,6 +97,7 @@ const AdminDashboard = () => {
             category: post.category || 'AI',
             published: post.published ?? true,
             coverImage: post.coverImage || '',
+            coverImageAlt: post.coverImageAlt || '',
             tags: Array.isArray(post.tags) ? post.tags.join(', ') : (post.tags || '')
         });
 
@@ -466,6 +468,7 @@ const AdminDashboard = () => {
                     category: 'AI',
                     published: true,
                     coverImage: '',
+                    coverImageAlt: '',
                     tags: ''
                 });
                 setHelperImages([
@@ -604,10 +607,10 @@ const AdminDashboard = () => {
                             onClick={() => {
                                 setActiveTab('create');
                                 setEditingId(null);
-                                setFormData({
+                                 setFormData({
                                     title: '', slug: '', excerpt: '', content: '', 
                                     author: 'ABUQITMIRLABS .TECH Shiraz Almadani', category: 'AI', 
-                                    published: true, coverImage: '', tags: ''
+                                    published: true, coverImage: '', coverImageAlt: '', tags: ''
                                 });
                                 setHelperImages([
                                     { url: '', caption: '' },
@@ -664,10 +667,10 @@ const AdminDashboard = () => {
                                     <button 
                                         onClick={() => {
                                             setEditingId(null);
-                                            setFormData({
+                                             setFormData({
                                                 title: '', slug: '', excerpt: '', content: '', 
                                                 author: 'ABUQITMIRLABS .TECH Shiraz Almadani', category: 'AI', 
-                                                published: true, coverImage: '', tags: ''
+                                                published: true, coverImage: '', coverImageAlt: '', tags: ''
                                             });
                                             setHelperImages([
                                                 { url: '', caption: '' },
@@ -767,6 +770,16 @@ const AdminDashboard = () => {
                                                     value={formData.coverImage}
                                                     onChange={e => setFormData({...formData, coverImage: e.target.value})}
                                                 />
+                                                <div className="pt-2 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
+                                                    Cover Image Alt Tag (SEO & Accessibility)
+                                                </div>
+                                                <input 
+                                                    className="w-full bg-[#1a1a1a] border border-white/5 rounded-2xl px-6 py-5 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all placeholder:text-gray-650 text-white" 
+                                                    placeholder="e.g. business owner analyzing slow website performance and customer drop-offs" 
+                                                    type="text"
+                                                    value={formData.coverImageAlt || ''}
+                                                    onChange={e => setFormData({...formData, coverImageAlt: e.target.value})}
+                                                />
                                                 
                                                 {/* Dynamic Image Preview */}
                                                 <AnimatePresence>
@@ -779,7 +792,7 @@ const AdminDashboard = () => {
                                                         >
                                                             <img 
                                                                 src={formData.coverImage} 
-                                                                alt="futuristic blog post cover preview" 
+                                                                alt={formData.coverImageAlt || "futuristic blog post cover preview"} 
                                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                                                 onError={(e) => {
                                                                     (e.target as HTMLImageElement).src = 'https://placehold.co/600x400/1a1a1a/3b82f6?text=Invalid+Image+URL';

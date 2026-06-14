@@ -34,6 +34,27 @@ const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const CaseStudiesPage = lazy(() => import('./pages/CaseStudiesPage'));
 const CaseStudyTajweedPage = lazy(() => import('./pages/CaseStudyTajweedPage'));
 
+// High-performance background preloading to ensure page clicks load instantly
+const pageImports = [
+  () => import('./pages/CustomSoftwarePage'),
+  () => import('./pages/MobileAppDevelopmentPage'),
+  () => import('./pages/WebDevelopmentPage'),
+  () => import('./pages/AIAgentDevelopmentPage'),
+  () => import('./pages/SEOPage'),
+  () => import('./pages/GraphicsDesignPage'),
+  () => import('./pages/ContentWritingPage'),
+  () => import('./pages/AboutPage'),
+  () => import('./pages/ContactPage'),
+  () => import('./pages/USMarketPage'),
+  () => import('./pages/UKMarketPage'),
+  () => import('./pages/PakistanMarketPage'),
+  () => import('./pages/CanadaMarketPage'),
+  () => import('./pages/PolandMarketPage'),
+  () => import('./pages/AustraliaMarketPage'),
+  () => import('./pages/BlogPage'),
+  () => import('./pages/CaseStudiesPage'),
+];
+
 // Loading fallback
 const PageLoader = () => (
     <div className="min-h-screen bg-[#080808] flex items-center justify-center">
@@ -101,6 +122,27 @@ export default function App() {
     };
     
     trigger();
+
+    // Staggered background preloading of other pages once the landing page has mounted and settled
+    const startPreloading = () => {
+      const isIdleSupported = 'requestIdleCallback' in window;
+      const queueImport = () => {
+        pageImports.forEach((imp, index) => {
+          setTimeout(() => {
+            imp().catch(() => {});
+          }, index * 200); // Stagger files to ensure CPU stays completely smooth during navigation
+        });
+      };
+
+      if (isIdleSupported) {
+        window.requestIdleCallback(() => queueImport(), { timeout: 3000 });
+      } else {
+        setTimeout(queueImport, 1000);
+      }
+    };
+
+    const preloadTimeout = setTimeout(startPreloading, 1500);
+    return () => clearTimeout(preloadTimeout);
   }, []);
 
   return (

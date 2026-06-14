@@ -13,6 +13,7 @@ interface Post {
   title: string;
   excerpt: string;
   coverImage?: string;
+  coverImageAlt?: string;
   category?: string;
   createdAt: any;
   slug: string;
@@ -121,7 +122,7 @@ const BlogPage = () => {
                                             <img 
                                                 src={`${featuredPost.coverImage || 'https://images.unsplash.com/photo-1485125639709-a60c3a500bf1?auto=format&fit=crop&q=80'}&w=1200&fm=webp`} 
                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                                alt={`futuristic ${featuredPost.title} featured article cover image`}
+                                                alt={featuredPost.coverImageAlt || `futuristic ${featuredPost.title} featured article cover image`}
                                                 decoding="async"
                                                 fetchPriority="high"
                                             />
@@ -219,7 +220,7 @@ const BlogPage = () => {
                                                         <img 
                                                             src={`${post.coverImage || 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80'}&w=800&fm=webp`} 
                                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                                                            alt={`futuristic ${post.title} blog post thumbnail`}
+                                                            alt={post.coverImageAlt || `futuristic ${post.title} blog post thumbnail`}
                                                             loading="lazy"
                                                             decoding="async"
                                                         />
