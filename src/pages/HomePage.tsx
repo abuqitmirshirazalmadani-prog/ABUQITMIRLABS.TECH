@@ -14,6 +14,8 @@ import CountryMarquee from '../components/CountryMarquee';
 import TechStackSection from '../components/TechStackSection';
 import PortfolioSection from '../components/PortfolioSection';
 import VideoPortfolio from '../components/VideoPortfolio';
+import InteractivePortfolio from '../components/InteractivePortfolio';
+import WebDevelopmentPricing from '../components/WebDevelopmentPricing';
 import HomeCaseStudiesSection from '../components/HomeCaseStudiesSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import FAQSection from '../components/FAQSection';
@@ -194,6 +196,8 @@ export default function HomePage() {
       
       <PortfolioSection />
       <VideoPortfolio />
+      <InteractivePortfolio />
+      <WebDevelopmentPricing />
       
       <HomeCaseStudiesSection />
 
