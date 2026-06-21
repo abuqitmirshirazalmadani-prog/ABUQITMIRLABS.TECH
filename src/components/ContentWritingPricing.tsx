@@ -546,7 +546,7 @@ export default function ContentWritingPricing() {
               
               {/* Content Type dropdown */}
               <div className="space-y-2">
-                <label className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block font-bold">
+                <label htmlFor="content-estimator-dropdown" className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block font-bold">
                   What type of content do you need?
                 </label>
                 <div className="relative">
@@ -568,7 +568,7 @@ export default function ContentWritingPricing() {
 
               {/* Word count slider/input */}
               <div className="space-y-2">
-                <label className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block font-bold">
+                <label htmlFor="content-estimator-slider" className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block font-bold">
                   What is your target word count per piece?
                 </label>
                 <div className="flex gap-4 items-center">

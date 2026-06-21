@@ -253,7 +253,16 @@ Do not sign a website contract without these protective legal terms.
             <div className="lg:col-span-6 relative">
               <div 
                 onClick={handleInstantDownload}
-                className="relative bg-[#0d0d0d] border border-white/10 hover:border-[#ccff00]/40 rounded-2xl overflow-hidden shadow-2xl p-8 aspect-[4/5] flex flex-col justify-between cursor-pointer group transition-all duration-300"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleInstantDownload();
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-label="Instant contract download template preview"
+                className="relative bg-[#0d0d0d] border border-white/10 hover:border-[#ccff00]/40 focus:border-[#ccff00]/100 focus:outline-none rounded-2xl overflow-hidden shadow-2xl p-8 aspect-[4/5] flex flex-col justify-between cursor-pointer group transition-all duration-300"
               >
                 
                 {/* Decorative Elements */}
@@ -383,8 +392,9 @@ Do not sign a website contract without these protective legal terms.
                   exit={{ opacity: 0, y: -20 }}
                 >
                   <div className="space-y-2">
-                    <label className="block text-xs font-mono uppercase tracking-wider text-gray-400 font-bold">Your Name <span className="text-[#ccff00]">*</span></label>
+                    <label htmlFor="contract-form-name" className="block text-xs font-mono uppercase tracking-wider text-gray-400 font-bold">Your Name <span className="text-[#ccff00]">*</span></label>
                     <input 
+                      id="contract-form-name"
                       type="text" 
                       name="name"
                       required
@@ -396,8 +406,9 @@ Do not sign a website contract without these protective legal terms.
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-xs font-mono uppercase tracking-wider text-gray-400 font-bold">Email Address <span className="text-[#ccff00]">*</span></label>
+                    <label htmlFor="contract-form-email" className="block text-xs font-mono uppercase tracking-wider text-gray-400 font-bold">Email Address <span className="text-[#ccff00]">*</span></label>
                     <input 
+                      id="contract-form-email"
                       type="email" 
                       name="email"
                       required
@@ -409,8 +420,9 @@ Do not sign a website contract without these protective legal terms.
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-xs font-mono uppercase tracking-wider text-gray-400 font-bold">Phone Number <span className="text-gray-600">(Optional)</span></label>
+                    <label htmlFor="contract-form-phone" className="block text-xs font-mono uppercase tracking-wider text-gray-400 font-bold">Phone Number <span className="text-gray-600">(Optional)</span></label>
                     <input 
+                      id="contract-form-phone"
                       type="tel" 
                       name="phone"
                       value={formData.phone}

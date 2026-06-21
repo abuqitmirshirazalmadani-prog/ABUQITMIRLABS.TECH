@@ -196,8 +196,9 @@ const ContactSection = () => {
                 </div>
 
                 <div>
-                  <label className="font-mono text-xs text-[#ccff00] mb-3 block tracking-wider">YOUR NAME / ORGANIZATION_</label>
+                  <label htmlFor="contact-section-name" className="font-mono text-xs text-[#ccff00] mb-3 block tracking-wider">YOUR NAME / ORGANIZATION_</label>
                   <input 
+                    id="contact-section-name"
                     required
                     type="text" 
                     value={formData.name}
@@ -208,8 +209,9 @@ const ContactSection = () => {
                 </div>
 
                 <div>
-                  <label className="font-mono text-xs text-[#ccff00] mb-3 block tracking-wider">YOUR EMAIL ADDRESS_</label>
+                  <label htmlFor="contact-section-email" className="font-mono text-xs text-[#ccff00] mb-3 block tracking-wider">YOUR EMAIL ADDRESS_</label>
                   <input 
+                    id="contact-section-email"
                     required
                     type="email" 
                     value={formData.email}
@@ -220,8 +222,9 @@ const ContactSection = () => {
                 </div>
 
                 <div>
-                  <label className="font-mono text-xs text-[#ccff00] mb-3 block tracking-wider">PROJECT BRIEF / LOGISTICS DETAILS_</label>
+                  <label htmlFor="contact-section-message" className="font-mono text-xs text-[#ccff00] mb-3 block tracking-wider">PROJECT BRIEF / LOGISTICS DETAILS_</label>
                   <textarea 
+                    id="contact-section-message"
                     required
                     rows={5} 
                     value={formData.message}

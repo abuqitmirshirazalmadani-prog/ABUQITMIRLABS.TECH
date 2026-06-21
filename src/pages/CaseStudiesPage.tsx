@@ -257,9 +257,9 @@ const CinematicSection = ({ study, index }: { study: CaseStudy, index: number })
                         {/* Share Actions inside Study */}
                         <div className="flex items-center gap-3 pt-2">
                             <span className="text-[9px] font-bold text-zinc-500 uppercase tracking-widest">Share reference:</span>
-                            <button onClick={() => handleShare('twitter')} className="text-zinc-500 hover:text-white transition-colors"><Twitter size={11} /></button>
-                            <button onClick={() => handleShare('linkedin')} className="text-zinc-500 hover:text-[#ccff00] transition-colors"><Linkedin size={11} /></button>
-                            <button onClick={() => handleShare('facebook')} className="text-zinc-500 hover:text-white transition-colors"><Facebook size={11} /></button>
+                            <button onClick={() => handleShare('twitter')} className="text-zinc-500 hover:text-white transition-colors" aria-label="Share case study on Twitter"><Twitter size={11}/></button>
+                            <button onClick={() => handleShare('linkedin')} className="text-zinc-500 hover:text-[#ccff00] transition-colors" aria-label="Share case study on LinkedIn"><Linkedin size={11}/></button>
+                            <button onClick={() => handleShare('facebook')} className="text-zinc-500 hover:text-white transition-colors" aria-label="Share case study on Facebook"><Facebook size={11}/></button>
                         </div>
                     </div>
                 </motion.div>

@@ -180,8 +180,9 @@ const ContactPage = () => {
 
                <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
                   <div>
-                     <label className="font-mono text-xs text-[#00E5FF] mb-3 block tracking-widest">USER_ID / NAME_</label>
+                     <label htmlFor="contact-page-name" className="font-mono text-xs text-[#00E5FF] mb-3 block tracking-widest">USER_ID / NAME_</label>
                      <input 
+                        id="contact-page-name"
                         required
                         type="text" 
                         value={formData.name}
@@ -191,8 +192,9 @@ const ContactPage = () => {
                      />
                   </div>
                   <div>
-                     <label className="font-mono text-xs text-[#00E5FF] mb-3 block tracking-widest">COMMUNICATION_RELAY / EMAIL_</label>
+                     <label htmlFor="contact-page-email" className="font-mono text-xs text-[#00E5FF] mb-3 block tracking-widest">COMMUNICATION_RELAY / EMAIL_</label>
                      <input 
+                        id="contact-page-email"
                         required
                         type="email" 
                         value={formData.email}
@@ -202,8 +204,9 @@ const ContactPage = () => {
                      />
                   </div>
                   <div>
-                     <label className="font-mono text-xs text-[#00E5FF] mb-3 block tracking-widest">TRANSMISSION_PAYLOAD / MESSAGE_</label>
+                     <label htmlFor="contact-page-message" className="font-mono text-xs text-[#00E5FF] mb-3 block tracking-widest">TRANSMISSION_PAYLOAD / MESSAGE_</label>
                      <textarea 
+                        id="contact-page-message"
                         required
                         rows={6} 
                         value={formData.message}

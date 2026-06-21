@@ -476,6 +476,7 @@ const BlogPostPage = () => {
                                         onClick={() => handleShare('twitter')}
                                         className="w-10 h-10 rounded-full bg-white border border-black/5 flex items-center justify-center hover:bg-zinc-950 hover:text-white transition-all shadow-sm"
                                         title="Share on Twitter"
+                                        aria-label="Share this blog post on Twitter"
                                     >
                                         <Twitter size={14} />
                                     </button>
@@ -483,6 +484,7 @@ const BlogPostPage = () => {
                                         onClick={() => handleShare('linkedin')}
                                         className="w-10 h-10 rounded-full bg-white border border-black/5 flex items-center justify-center hover:bg-zinc-950 hover:text-white transition-all shadow-sm"
                                         title="Share on LinkedIn"
+                                        aria-label="Share this blog post on LinkedIn"
                                     >
                                         <Linkedin size={14} />
                                     </button>
@@ -490,6 +492,7 @@ const BlogPostPage = () => {
                                         onClick={() => handleShare('facebook')}
                                         className="w-10 h-10 rounded-full bg-white border border-black/5 flex items-center justify-center hover:bg-zinc-950 hover:text-white transition-all shadow-sm"
                                         title="Share on Facebook"
+                                        aria-label="Share this blog post on Facebook"
                                     >
                                         <Facebook size={14} />
                                     </button>
@@ -497,6 +500,7 @@ const BlogPostPage = () => {
                                         onClick={() => handleShare('copy')}
                                         className="w-10 h-10 rounded-full bg-white border border-black/5 flex items-center justify-center hover:bg-zinc-950 hover:text-white transition-all shadow-sm"
                                         title="Copy Link"
+                                        aria-label="Copy blog post link to clipboard"
                                     >
                                         <LinkIcon size={14} />
                                     </button>
