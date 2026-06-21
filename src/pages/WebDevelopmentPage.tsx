@@ -26,7 +26,10 @@ import {
   Code2,
   Lock,
   Layout,
-  MessageSquare
+  MessageSquare,
+  FileText,
+  Check,
+  Download
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -38,9 +41,88 @@ import WebHostingPricing from '../components/WebHostingPricing';
 import WebMaintenancePricing from '../components/WebMaintenancePricing';
 import CustomWebAppsPricing from '../components/CustomWebAppsPricing';
 import WebCustomCTA from '../components/WebCustomCTA';
+import { AnimatedDownload } from '../components/AnimatedDownload';
 
 const WebDevelopmentPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  
+  // Website Contract State variables
+  const [contractFormData, setContractFormData] = useState({ name: '', email: '', phone: '' });
+  const [contractSubmitted, setContractSubmitted] = useState(false);
+  const [contractDownloading, setContractDownloading] = useState(false);
+  const [contractCompleted, setContractCompleted] = useState(false);
+
+  const handleContractInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setContractFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const triggerContractDownload = () => {
+    const contractContent = `===========================================================
+ABUQITMIR LABS — PROFESSIONAL WEB DEVELOPMENT AGREEMENT
+===========================================================
+[FREE TEMPLATE COPY — OWNERSHIP PROTECTED BLUEPRINT]
+
+This agreement is entered into as of today, between the CLIENT and the DEVELOPER.
+
+1. INTELLECTUAL PROPERTY & OWNERSHIP
+-----------------------------------
+Upon full payment of the project fees, all intellectual property, source files, asset keys, code modules, databases, search optimization indices, and systems developed for this project transfer 100% and completely to the CLIENT. 
+The DEVELOPER retains NO passive claim, licensing barriers, or structural restrictions.
+
+2. HOSTING & DOMAIN ROOT OWNERSHIP
+----------------------------------
+All registration accounts, including domains (DNS controls) and cloud runtime ecosystems (e.g. AWS, Vercel, Supabase, Cloudflare, GitHub repositories, or GCP), shall be registered strictly under the CLIENT'S legal name and credentials. 
+The DEVELOPER shall act solely as authorized technical support, never as absolute proprietary gatekeepers.
+
+3. POST-LAUNCH TECHNICAL WARRANTY
+--------------------------------
+The DEVELOPER warrants a structured 30-day "Intense Support Block" beginning immediately upon site launch, covering:
+- Absolute package dependency stabilization
+- Server runtime anomaly fixes
+- Critical broken-link checks
+- Content management interface adjustments
+
+4. SPECIFIED PRODUCT STACK DISCLOSURE
+-------------------------------------
+The technology stack used to execute this digital platform consists of:
+- Full-Stack React Engine [Vite / Next.js Framework]
+- Styling Layout System: Tailwind CSS
+- State-Engine & Interactive Animation: Framer Motion / GSAP
+- Serverless Cloud Persistence Engine: Google Cloud Platform / Firebase
+
+5. PROGRESS TERMINATION & EXIT TERMS
+-----------------------------------
+If for any reason the CLIENT wishes to cancel development progress, they may issue an unconditional exit order. All work-in-progress materials developed up to that milestone shall be compiled and delivered instantly, billed on a prorated basis matching the tier output.
+
+===========================================================
+AbuQitmirLabs.tech — We build platforms that command authority. 
+Do not sign a website contract without these protective legal terms.
+===========================================================`;
+
+    const blob = new Blob([contractContent], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'AbuQitmirLabs_Ownership_Protected_Contract_Template.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
+  const handleContractSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!contractFormData.name || !contractFormData.email) return;
+    setContractDownloading(true);
+    setContractSubmitted(true);
+  };
+
+  const onContractDownloadFinished = () => {
+    setContractDownloading(false);
+    setContractCompleted(true);
+    triggerContractDownload();
+  };
 
   const capabilities = [
     {
@@ -291,7 +373,7 @@ const WebDevelopmentPage = () => {
             href="https://wa.me/923233260859"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-10 py-8 rounded-3xl text-sm font-bold transition-all transform hover:scale-105 flex flex-col items-center justify-center gap-2 group bg-white text-black hover:bg-neutral-200"
+            className="px-8 py-8 rounded-3xl text-sm font-bold transition-all transform hover:scale-105 flex flex-col items-center justify-center gap-2 group bg-white text-black hover:bg-neutral-200"
           >
             <ArrowUpRight className="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             Get a Free Website Audit
@@ -301,10 +383,20 @@ const WebDevelopmentPage = () => {
               const el = document.getElementById('work-action');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="px-10 py-8 rounded-3xl border-2 border-white/10 text-sm font-bold transition-all transform hover:scale-105 flex flex-col items-center justify-center gap-2 bg-white/5 text-white hover:bg-white/10 group"
+            className="px-8 py-8 rounded-3xl border-2 border-white/10 text-sm font-bold transition-all transform hover:scale-105 flex flex-col items-center justify-center gap-2 bg-white/5 text-white hover:bg-white/10 group"
           >
             <Layout className="w-6 h-6 group-hover:scale-110 transition-transform text-[#00E5FF]" />
             View Our Web Portfolio
+          </button>
+          <button 
+            onClick={() => {
+              const el = document.getElementById('contract-section');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="px-8 py-8 rounded-3xl border-2 border-[#ccff00]/20 text-sm font-bold transition-all transform hover:scale-105 flex flex-col items-center justify-center gap-2 bg-[#ccff00]/5 text-white hover:bg-[#ccff00]/10 group"
+          >
+            <FileText className="w-6 h-6 group-hover:scale-110 transition-transform text-[#ccff00]" />
+            Free Contract Blueprint
           </button>
         </motion.div>
 
@@ -641,6 +733,184 @@ const WebDevelopmentPage = () => {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Website Contract Form Section - The Sovereignty Blueprint */}
+      <section className="py-32 relative border-t border-white/5 bg-black" id="contract-section">
+        <div className="absolute inset-0 bg-[#ccff00]/[0.02] filter blur-[120px] pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            
+            {/* Left Column: Cinematic Text Reveal & Core Clauses */}
+            <div className="lg:col-span-6 space-y-8">
+              <div className="space-y-4">
+                <span className="text-[10px] bg-[#ccff00]/10 text-[#ccff00] px-3 py-1 rounded-full uppercase font-mono tracking-[0.2em] font-bold">
+                  Exclusive System Blueprint
+                </span>
+                <h3 className="text-4xl sm:text-5xl lg:text-6xl font-serif italic font-light tracking-tight text-white leading-tight">
+                  Protect Your <br className="hidden md:inline" />
+                  <span className="text-[#ccff00]">Digital Sovereignty</span>
+                </h3>
+              </div>
+              
+              <p className="text-neutral-400 text-lg leading-relaxed font-light">
+                Do not sign a website agreement without these strict protection clauses. Access the complete, unredacted legal contract template we use at AbuQitmirLabs. Authenticate with your contact information below to secure your copy.
+              </p>
+
+              {/* Protective Clauses Cards with Old Money aesthetics */}
+              <div className="space-y-6 pt-4">
+                {[
+                  {
+                    title: "100% IP & Code Sovereignty",
+                    desc: "Absolute source-code transfer with NO gatekeeping, passive claims, or recurring developer IP blocks."
+                  },
+                  {
+                    title: "Direct Domain & Cloud Custody",
+                    desc: "AWS, Vercel, and DNS properties are registered strictly in your name, never held hostage under developer accounts."
+                  },
+                  {
+                    title: "30-Day Intense Hyper-Care",
+                    desc: "An fully-guaranteed, pre-packaged support block covering critical package optimizations and launch surveillance."
+                  }
+                ].map((clause, idx) => (
+                  <div key={idx} className="flex gap-4 items-start border-l-2 border-white/10 pl-6 hover:border-[#ccff00]/50 transition-colors">
+                    <div className="text-xs font-mono text-[#ccff00]/60 mt-1 font-bold">0{idx + 1}_</div>
+                    <div>
+                      <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-1">{clause.title}</h4>
+                      <p className="text-xs text-neutral-400 font-light leading-relaxed">{clause.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column: Interactive Contract Request Card */}
+            <div className="lg:col-span-6">
+              <div className="bg-[#0b0b0b] border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-2xl">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#ccff00]/[0.02] rounded-full blur-3xl pointer-events-none" />
+                
+                <div className="flex items-center gap-3 mb-8 pb-6 border-b border-white/5">
+                  <div className="p-3 bg-white/5 rounded-xl text-[#ccff00]">
+                    <FileText size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-white uppercase tracking-tight">Contract Blueprint Form</h3>
+                    <p className="text-xs text-neutral-500 font-light font-mono">AUTHORIZED SECURE DOWNLOAD</p>
+                  </div>
+                </div>
+
+                <AnimatePresence mode="wait">
+                  {!contractSubmitted ? (
+                    <motion.form 
+                      key="contract-form"
+                      onSubmit={handleContractSubmit}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="space-y-6"
+                    >
+                      <div className="space-y-2">
+                        <label htmlFor="dev-contract-name" className="block text-xs font-mono uppercase tracking-widest text-[#ccff00] font-bold">
+                          Client Legal Name_ *
+                        </label>
+                        <input 
+                          id="dev-contract-name"
+                          type="text"
+                          name="name"
+                          required
+                          placeholder="e.g. John Doe / Organization"
+                          value={contractFormData.name}
+                          onChange={handleContractInputChange}
+                          className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-5 py-4 text-white text-sm focus:border-[#ccff00] focus:outline-none transition-colors placeholder:text-neutral-600"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label htmlFor="dev-contract-email" className="block text-xs font-mono uppercase tracking-widest text-[#ccff00] font-bold">
+                          Communication Relay / Email_ *
+                        </label>
+                        <input 
+                          id="dev-contract-email"
+                          type="email"
+                          name="email"
+                          required
+                          placeholder="primary@organization.com"
+                          value={contractFormData.email}
+                          onChange={handleContractInputChange}
+                          className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-5 py-4 text-white text-sm focus:border-[#ccff00] focus:outline-none transition-colors placeholder:text-neutral-600"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label htmlFor="dev-contract-phone" className="block text-xs font-mono uppercase tracking-widest text-neutral-500 font-bold">
+                          Phone Contact / (Optional)_
+                        </label>
+                        <input 
+                          id="dev-contract-phone"
+                          type="tel"
+                          name="phone"
+                          placeholder="+1 (555) 0192"
+                          value={contractFormData.phone}
+                          onChange={handleContractInputChange}
+                          className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-5 py-4 text-white text-sm focus:border-white/30 focus:outline-none transition-colors placeholder:text-neutral-600"
+                        />
+                      </div>
+
+                      <button
+                        type="submit"
+                        className="w-full bg-[#ccff00] text-black font-black uppercase text-xs tracking-widest hover:bg-[#b0d600] active:scale-[0.98] transition-all py-5 px-6 rounded-xl inline-flex items-center justify-center gap-3 cursor-pointer shadow-lg"
+                      >
+                        Generate & Download Template
+                        <Download size={15} />
+                      </button>
+                    </motion.form>
+                  ) : (
+                    <motion.div 
+                      key="contract-progress"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="space-y-8 py-6 text-center"
+                    >
+                      {contractDownloading ? (
+                        <div className="flex flex-col items-center space-y-6">
+                          <AnimatedDownload 
+                            isAnimating={contractDownloading}
+                            onAnimationComplete={onContractDownloadFinished}
+                          />
+                          <p className="text-xs text-neutral-400 font-mono tracking-widest animate-pulse">
+                            PREPARING SYSTEM SPECIFICATION DOCUMENTS...
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="space-y-6">
+                          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/20 text-[#ccff00] mx-auto animate-bounce">
+                            <Check size={36} />
+                          </div>
+                          <div>
+                            <h4 className="text-xl font-bold text-white uppercase tracking-tight">Transmission Complete!</h4>
+                            <p className="text-xs font-mono text-neutral-500 mt-2">
+                              Your legal protective blueprint has been compiled. Check your standard downloads folder.
+                            </p>
+                          </div>
+                          <button
+                            onClick={() => {
+                              setContractSubmitted(false);
+                              setContractCompleted(false);
+                            }}
+                            className="text-xs font-mono text-[#ccff00]/60 underline hover:text-[#ccff00] transition-colors"
+                          >
+                            Download another template copy
+                          </button>
+                        </div>
+                      )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
