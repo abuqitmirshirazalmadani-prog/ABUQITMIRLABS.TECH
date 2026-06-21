@@ -132,7 +132,7 @@ export default function App() {
         pageImports.forEach((imp, index) => {
           setTimeout(() => {
             imp().catch(() => {});
-          }, index * 200); // Stagger files to ensure CPU stays completely smooth during navigation
+          }, index * 300); // Stagger files to ensure CPU stays completely smooth during navigation
         });
       };
 
@@ -143,7 +143,7 @@ export default function App() {
       }
     };
 
-    const preloadTimeout = setTimeout(startPreloading, 1500);
+    const preloadTimeout = setTimeout(startPreloading, 3500);
     return () => clearTimeout(preloadTimeout);
   }, []);
 

@@ -83,7 +83,7 @@ const NexusHero = () => {
         for (let i = 0; i < numPanels; i++) {
             const el = document.createElement('div');
             const type = panelTypes[Math.floor(Math.random() * panelTypes.length)];
-            el.className = 'absolute top-1/2 left-1/2 w-64 p-5 rounded-xl border border-white/5 bg-zinc-900/60 backdrop-blur-md flex flex-col will-change-transform';
+            el.className = 'absolute top-1/2 left-1/2 w-64 p-5 rounded-xl border border-white/5 bg-zinc-900/60 backdrop-blur-md flex flex-col [will-change:transform,opacity]';
             if(type === 'alert') el.classList.add('border-red-500/20');
             el.innerHTML = generators[type]();
             tunnelRef.current.appendChild(el);
@@ -100,38 +100,51 @@ const NexusHero = () => {
         let speed = 2.5;
         const cameraZ = 300;
         let animationFrameId: number;
+        let isIntersecting = true;
+
+        const observer = new IntersectionObserver(([entry]) => {
+            isIntersecting = entry.isIntersecting;
+        }, { threshold: 0.05 });
+
+        if (sceneRef.current) {
+            observer.observe(sceneRef.current);
+        }
 
         const animate = () => {
-            panels.forEach(p => {
-                p.z += speed;
-                if (p.z > cameraZ) p.z -= maxDepth + cameraZ;
-                
-                let blur = p.z < -1200 ? Math.min(6, (-p.z - 1200) / 400) : 0;
-                let opacity = p.z < -3200 
-                    ? Math.max(0, 1 - ((-p.z - 3200) / 800)) 
-                    : (p.z > 0 ? Math.max(0, 1 - (p.z / cameraZ)) : 1);
-                
-                p.el.style.transform = `translate(-50%, -50%) translate3d(${p.x}px, ${p.y}px, ${p.z}px)`;
-                p.el.style.filter = blur > 0.5 ? `blur(${blur.toFixed(1)}px)` : 'none';
-                p.el.style.opacity = opacity.toFixed(2);
-                p.el.style.zIndex = Math.round(p.z + maxDepth).toString(); 
-            });
+            if (isIntersecting) {
+                panels.forEach(p => {
+                    p.z += speed;
+                    if (p.z > cameraZ) p.z -= maxDepth + cameraZ;
+                    
+                    let blur = p.z < -1200 ? Math.min(6, (-p.z - 1200) / 400) : 0;
+                    let opacity = p.z < -3200 
+                        ? Math.max(0, 1 - ((-p.z - 3200) / 800)) 
+                        : (p.z > 0 ? Math.max(0, 1 - (p.z / cameraZ)) : 1);
+                    
+                    p.el.style.transform = `translate(-50%, -50%) translate3d(${p.x}px, ${p.y}px, ${p.z}px)`;
+                    p.el.style.filter = blur > 0.5 ? `blur(${blur.toFixed(1)}px)` : 'none';
+                    p.el.style.opacity = opacity.toFixed(2);
+                    p.el.style.zIndex = Math.round(p.z + maxDepth).toString(); 
+                });
+            }
             animationFrameId = requestAnimationFrame(animate);
         };
 
         const handleMouseMove = (e: MouseEvent) => {
+            if (!isIntersecting) return;
             setMousePos({
                 x: 50 + ((e.clientX / window.innerWidth - 0.5) * 20),
                 y: 50 + ((e.clientY / window.innerHeight - 0.5) * 20)
             });
         };
 
-        window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('mousemove', handleMouseMove, { passive: true });
         animate();
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
             cancelAnimationFrame(animationFrameId);
+            observer.disconnect();
             if (tunnelRef.current) {
                 while (tunnelRef.current.firstChild) {
                     tunnelRef.current.removeChild(tunnelRef.current.firstChild);

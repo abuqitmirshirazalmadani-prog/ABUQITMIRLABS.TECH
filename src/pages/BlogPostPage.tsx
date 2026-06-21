@@ -575,7 +575,14 @@ const BlogPostPage = () => {
                     <div className="mt-20 pt-10 border-t border-black/5">
                         <div className="bg-white border border-black/5 rounded-[2.5rem] p-10 flex flex-col md:flex-row items-center gap-10 shadow-sm">
                             <div className="h-24 w-24 bg-zinc-950 rounded-3xl overflow-hidden shrink-0 shadow-lg border-2 border-white">
-                                <img src="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" alt="Shiraz Almadani - Lead Architect at ABUQITMIRLABS.TECH" className="w-full h-full object-cover object-top" />
+                                <img 
+                                    src="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" 
+                                    alt="Shiraz Almadani - Lead Architect at ABUQITMIRLABS.TECH" 
+                                    className="w-full h-full object-cover object-top" 
+                                    loading="lazy"
+                                    decoding="async"
+                                    referrerPolicy="no-referrer"
+                                />
                             </div>
                             <div>
                                 <h3 className="text-2xl font-black text-black mb-3 uppercase tracking-tight">ABUQITMIRLABS .TECH Shiraz Almadani</h3>
