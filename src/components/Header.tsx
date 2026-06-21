@@ -49,7 +49,14 @@ const Header = () => {
             ]
         },
         { name: 'About Us', href: '/about' },
-        { name: 'Case Studies', href: '/case-studies' },
+        { 
+            name: 'Case Studies', 
+            href: '/case-studies',
+            dropdown: [
+                { name: 'All Case Studies', href: '/case-studies' },
+                { name: 'Website Contract Form', href: '/website-contract' },
+            ]
+        },
         { name: 'Blog', href: '/blog' },
     ];
 

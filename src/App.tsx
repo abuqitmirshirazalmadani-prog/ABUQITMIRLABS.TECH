@@ -33,6 +33,7 @@ const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const CaseStudiesPage = lazy(() => import('./pages/CaseStudiesPage'));
 const CaseStudyTajweedPage = lazy(() => import('./pages/CaseStudyTajweedPage'));
+const WebsiteContractPage = lazy(() => import('./pages/WebsiteContractPage'));
 
 // High-performance background preloading to ensure page clicks load instantly
 const pageImports = [
@@ -53,6 +54,7 @@ const pageImports = [
   () => import('./pages/AustraliaMarketPage'),
   () => import('./pages/BlogPage'),
   () => import('./pages/CaseStudiesPage'),
+  () => import('./pages/WebsiteContractPage'),
 ];
 
 // Loading fallback
@@ -176,6 +178,7 @@ export default function App() {
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />
+              <Route path="/website-contract" element={<WebsiteContractPage />} />
               <Route path="/admin" element={<AdminDashboard />} />
             </Routes>
           </Suspense>
