@@ -286,7 +286,7 @@ export default function CaseStudyTajweedPage() {
             ].map((item, i) => (
               <div key={i} className="p-8 rounded-3xl border border-zinc-850 bg-zinc-900/20 space-y-3">
                 <span className="block font-mono text-zinc-500 text-xs">0{i+1} // SPEC</span>
-                <h3 className="font-sans font-bold text-lg text-white">{item.title}</h3>
+                <h4 className="font-sans font-bold text-lg text-white">{item.title}</h4>
                 <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed font-light">{item.desc}</p>
               </div>
             ))}
@@ -348,10 +348,10 @@ export default function CaseStudyTajweedPage() {
                 detail: "RAG architecture ensures every answer is grounded in verified Islamic sources"
               }
             ].map((res, i) => (
-              <div key={i} className="p-8 rounded-3xl border border-[#ccff00]/10 bg-zinc-950 flex flex-col justify-between group hover:border-[#ccff00]/25 transition-all duration-300">
+              <div key={i} className="p-8 rounded-3xl border border-zinc-800 bg-zinc-950 flex flex-col justify-between group hover:border-[#ccff00]/20 transition-all duration-300">
                 <div className="space-y-4">
                   <span className="block font-mono text-3xl sm:text-4xl text-[#ccff00] font-bold">{res.head}</span>
-                  <h3 className="font-sans font-bold text-lg text-white">{res.title}</h3>
+                  <h4 className="font-sans font-bold text-lg text-white">{res.title}</h4>
                 </div>
                 <p className="text-zinc-400 text-xs sm:text-sm mt-4 font-light leading-relaxed">{res.detail}</p>
               </div>
