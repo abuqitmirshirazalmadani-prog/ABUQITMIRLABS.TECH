@@ -168,7 +168,7 @@ const CinematicSection = ({ study, index }: { study: CaseStudy, index: number })
                     <div className="flex items-center gap-4">
                         <span className="font-mono text-xs tracking-widest text-[#ccff00] font-bold">0{index + 1} // CASE STUDY</span>
                         <div className="h-px bg-zinc-800 flex-1"></div>
-                        <span className="font-serif italic text-sm text-zinc-500 font-light">{study.year}</span>
+                        <span className="font-serif italic text-sm text-zinc-400 font-light">{study.year}</span>
                     </div>
 
                     {/* Luxurious Cormorant Headings */}
@@ -185,7 +185,7 @@ const CinematicSection = ({ study, index }: { study: CaseStudy, index: number })
                         {study.metrics.map((metric, mIdx) => (
                             <div key={mIdx} className="space-y-2">
                                 <span className="block font-mono text-[#ccff00] text-lg sm:text-2xl font-black tracking-tight" dangerouslySetInnerHTML={{ __html: metric.value }}></span>
-                                <span className="block text-[8px] sm:text-[9px] uppercase tracking-wider text-zinc-500 font-extrabold max-w-[90px] leading-tight">{metric.label}</span>
+                                <span className="block text-[8px] sm:text-[9px] uppercase tracking-wider text-zinc-400 font-extrabold max-w-[90px] leading-tight">{metric.label}</span>
                             </div>
                         ))}
                     </div>
@@ -229,7 +229,7 @@ const CinematicSection = ({ study, index }: { study: CaseStudy, index: number })
                     {/* Citation & Backlink Block (For Reference Building) */}
                     <div className="p-5 rounded-2xl bg-zinc-950/80 border border-white/10 space-y-3 relative overflow-hidden backdrop-blur-md">
                         <div className="flex items-center justify-between">
-                            <span className="text-[9px] font-black uppercase tracking-[0.15em] text-zinc-500 flex items-center gap-1.5">
+                            <span className="text-[9px] font-black uppercase tracking-[0.15em] text-zinc-400 flex items-center gap-1.5">
                                 <Anchor size={10} className="text-[#ccff00]" /> Reference Citation Academic Standard
                             </span>
                             <button 
@@ -365,7 +365,7 @@ export default function CaseStudiesPage() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="text-zinc-500 text-lg md:text-xl font-medium tracking-wide max-w-2xl mx-auto leading-relaxed"
+                            className="text-zinc-300 text-lg md:text-xl font-medium tracking-wide max-w-2xl mx-auto leading-relaxed"
                         >
                             Explore three core technical breakthroughs. True software craftsmanship doesn’t require loud shouting — we let complete transparent architectures and radical white space prove our elite tier.
                         </motion.p>
@@ -374,9 +374,9 @@ export default function CaseStudiesPage() {
                     {/* Scroll suggestion */}
                     <motion.div 
                         initial={{ opacity: 0 }}
-                        animate={{ opacity: 0.7 }}
+                        animate={{ opacity: 0.85 }}
                         transition={{ delay: 0.4, repeat: Infinity, repeatType: 'reverse', duration: 1.5 }}
-                        className="flex flex-col items-center justify-center gap-2 text-zinc-600 text-[10px] uppercase font-black tracking-[0.25em]"
+                        className="flex flex-col items-center justify-center gap-2 text-zinc-400 text-[10px] uppercase font-black tracking-[0.25em]"
                     >
                         <span>Scroll to inspect credentials</span>
                         <ArrowDown size={14} className="text-[#ccff00]" />
@@ -395,7 +395,7 @@ export default function CaseStudiesPage() {
             <section className="bg-black py-40 border-b border-white/10 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 to-black pointer-events-none" />
                 <div className="max-w-4xl mx-auto px-6 text-center space-y-12 relative z-10">
-                    <span className="font-serif italic text-zinc-500 text-2xl font-light">Collaborate with AbuQitmirLabs</span>
+                    <span className="font-serif italic text-zinc-350 text-2xl font-light">Collaborate with AbuQitmirLabs</span>
                     <h3 className="font-serif italic text-white text-4xl sm:text-6xl md:text-7xl tracking-tight leading-none">
                         Let’s Engineer Your <br />
                         <span className="text-[#ccff00]">Absolute Reference Masterpiece</span>

@@ -129,9 +129,11 @@ export default function HomeCaseStudiesSection() {
               
               {/* Photo representation of Islamic Quran edtech design */}
               <img
-                src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1000"
+                src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=800&fm=webp"
                 alt="TajweedPage EdTech Quran Platform Display Illustration"
                 className="absolute inset-0 w-full h-full object-cover opacity-50 filter grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-1000 ease-out scale-100 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
                 referrerPolicy="no-referrer"
               />
 
