@@ -223,7 +223,7 @@ const NexusHero = () => {
  
                     <div className="max-w-4xl mx-auto mb-10 px-4">
                         <MagicText 
-                            text="“Engineering the future of enterprise technology. We build high-performance web systems, AI-powered automation, and strategic digital assets for global growth.”"
+                            text="“AbuQitmirLabs is a premier custom software development company delivering AI app development services, custom website development services and enterprise software solutions to clients across the United States, United Kingdom, and Europe.”"
                             className="justify-center text-center leading-[1.6] font-medium"
                             wordClassName="text-xs sm:text-sm md:text-base text-gray-400"
                         />

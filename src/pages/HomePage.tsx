@@ -27,17 +27,17 @@ export default function HomePage() {
     <main className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <Helmet>
         <title>Custom Software Development & AI App Development Company | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs .TECH is an elite software engineering studio. We build bespoke custom enterprise software, scalable SaaS platforms, and intelligent AI agent models." />
+        <meta name="description" content="AbuQitmirLabs is a premier custom software development company delivering AI app development services, custom website development services and enterprise software solutions to clients across the United States, United Kingdom, and Europe." />
         <link rel="canonical" href="https://abuqitmirlabs.tech" />
         
         <meta property="og:title" content="Custom Software Development & AI App Development Company | AbuQitmirLabs" />
-        <meta property="og:description" content="Elite custom software development and AI engineering studio. We build robust ERP systems, native mobile applications, and custom AI chatbots." />
+        <meta property="og:description" content="AbuQitmirLabs is a premier custom software development company delivering AI app development services, custom website development services and enterprise software solutions to clients across the United States, United Kingdom, and Europe." />
         <meta property="og:url" content="https://abuqitmirlabs.tech" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Custom Software Development & AI App Development Company | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Elite custom software development and AI engineering studio. We build robust ERP systems, native mobile applications, and custom AI chatbots." />
+        <meta name="twitter:description" content="AbuQitmirLabs is a premier custom software development company delivering AI app development services, custom website development services and enterprise software solutions to clients across the United States, United Kingdom, and Europe." />
         <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
 
         <script 
@@ -48,7 +48,7 @@ export default function HomePage() {
               "@type": "WebSite",
               "url": "https://abuqitmirlabs.tech/",
               "name": "AbuQitmirLabs",
-              "description": "Bespoke custom software and intelligent AI agent solutions."
+              "description": "AbuQitmirLabs is a premier custom software development company delivering AI app development services, custom website development services and enterprise software solutions to clients across the United States, United Kingdom, and Europe."
             })
           }}
         ></script>
@@ -63,7 +63,7 @@ export default function HomePage() {
               "url": "https://abuqitmirlabs.tech",
               "logo": "https://abuqitmirlabs.tech/logo.png",
               "image": "https://abuqitmirlabs.tech/logo.png",
-              "description": "AbuQitmirLabs is a leading custom software development company, custom website development company, and Flutter mobile app development company in Karachi Pakistan. We provide enterprise software solutions, AI app development services, and Native Mobile development company applications to accelerate digital transformation globally.",
+              "description": "AbuQitmirLabs is a premier custom software development company delivering AI app development services, custom website development services and enterprise software solutions to clients across the United States, United Kingdom, and Europe. Headquartered in Karachi Pakistan, serving clients globally.",
               "priceRange": "$$",
               "email": "hello@abuqitmirlabs.tech",
               "telephone": "+923233260859",
@@ -206,8 +206,11 @@ export default function HomePage() {
               <div className="border-b border-white/5 pb-4">
                 <span className="text-xs font-mono text-[#ccff00]/60 font-bold">I_ CORE SYSTEMS ARCHITECTURE</span>
               </div>
+              <p className="text-neutral-200 font-sans leading-relaxed text-sm md:text-base font-normal text-justify">
+                <strong>AbuQitmirLabs</strong> is a premier custom software development company delivering AI app development services, custom website development services and enterprise software solutions to clients across the United States, United Kingdom, and Europe.
+              </p>
               <p className="text-neutral-400 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
-                When you collaborate with a premier <strong className="text-white font-medium">custom software development company</strong>, you bypass the severe architectural limitations of standard off-the-shelf software. At AbuQitmirLabs, we are a master-grade <strong className="text-white font-medium">custom software development company</strong> focused on engineering secure, fault-tolerant, and high-performance <strong className="text-[#ccff00] font-medium">scalable applications</strong> that serve as proprietary business assets. Our focus as a specialized <strong className="text-white font-medium">custom software development company</strong> is to build sustainable infrastructures that guarantee absolute intellectual property ownership, crafting robust <strong className="text-white font-medium">scalable applications</strong> that adapt beautifully as your traffic metrics increase.
+                When you collaborate with our specialized studio, you bypass the severe architectural limitations of standard off-the-shelf software. At AbuQitmirLabs, we are a master-grade <strong className="text-white font-medium">custom software development company</strong> focused on engineering secure, fault-tolerant, and high-performance <strong className="text-[#ccff00] font-medium">scalable applications</strong> that serve as proprietary business assets. Our focus as a specialized <strong className="text-white font-medium">custom software development company</strong> is to build sustainable infrastructures that guarantee absolute intellectual property ownership, crafting robust <strong className="text-white font-medium">scalable applications</strong> that adapt beautifully as your traffic metrics increase.
               </p>
               <p className="text-neutral-400 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
                 As a leading <strong className="text-white font-medium">custom website development company</strong>, we construct tailored, speed-oriented frontends that captivate visitors from the first millisecond. Our technical standard as a luxury <strong className="text-white font-medium">custom website development company</strong> forces us to prioritize rich typography, fluid layouts, and deep search visibility. Partnering with our specialized <strong className="text-white font-medium">custom website development company</strong> guarantees that your web presence has zero passive license fees, zero locked proprietary modules, and infinite freedom to scale.
