@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { motion } from 'motion/react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Star } from 'lucide-react';
@@ -25,17 +26,17 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <Helmet>
-        <title>Expert Custom Software & AI App Development Studio | AbuQitmirLabs</title>
+        <title>Custom Software Development & AI App Development Company | AbuQitmirLabs</title>
         <meta name="description" content="AbuQitmirLabs .TECH is an elite software engineering studio. We build bespoke custom enterprise software, scalable SaaS platforms, and intelligent AI agent models." />
         <link rel="canonical" href="https://abuqitmirlabs.tech" />
         
-        <meta property="og:title" content="Expert Custom Software & AI App Development Studio | AbuQitmirLabs" />
+        <meta property="og:title" content="Custom Software Development & AI App Development Company | AbuQitmirLabs" />
         <meta property="og:description" content="Elite custom software development and AI engineering studio. We build robust ERP systems, native mobile applications, and custom AI chatbots." />
         <meta property="og:url" content="https://abuqitmirlabs.tech" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Expert Custom Software & AI App Development Studio | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Custom Software Development & AI App Development Company | AbuQitmirLabs" />
         <meta name="twitter:description" content="Elite custom software development and AI engineering studio. We build robust ERP systems, native mobile applications, and custom AI chatbots." />
         <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
 
@@ -62,7 +63,7 @@ export default function HomePage() {
               "url": "https://abuqitmirlabs.tech",
               "logo": "https://abuqitmirlabs.tech/logo.png",
               "image": "https://abuqitmirlabs.tech/logo.png",
-              "description": "Expert custom software development and AI engineering firm. We build scalable SaaS platforms and high-performance applications for global enterprises.",
+              "description": "AbuQitmirLabs is a leading custom software development company, custom website development company, and Flutter mobile app development company in Karachi Pakistan. We provide enterprise software solutions, AI app development services, and Native Mobile development company applications to accelerate digital transformation globally.",
               "priceRange": "$$",
               "email": "hello@abuqitmirlabs.tech",
               "telephone": "+923233260859",
@@ -85,14 +86,15 @@ export default function HomePage() {
                 "https://www.tiktok.com/@abuqitmirmohammadshiraz"
               ],
               "knowsAbout": [
-                "Custom Software Development",
-                "AI Agent Development",
-                "Mobile App Development",
-                "LLM Integration",
-                "Flutter Development",
-                "React Engineering",
-                "Cloud Architecture",
-                "Semantic SEO"
+                "Custom Software Development Company",
+                "AI App Development Services",
+                "Software Development Company Karachi Pakistan",
+                "Hire Software Developers",
+                "Enterprise Software Solutions",
+                "Digital Transformation",
+                "Custom Website Development Company",
+                "Native Mobile Development Company",
+                "Flutter Mobile App Development Company"
               ],
               "aggregateRating": {
                 "@type": "AggregateRating",
@@ -100,10 +102,12 @@ export default function HomePage() {
                 "reviewCount": "54"
               },
               "serviceType": [
-                 "Custom Software Development",
-                 "Mobile App Development",
-                 "AI Agent Development",
-                 "Web Engineering"
+                 "Custom Software Development Company",
+                 "AI App Development Services",
+                 "Custom Website Development Company",
+                 "Native Mobile Development Company",
+                 "Flutter Mobile App Development Company",
+                 "Enterprise Software Solutions"
               ],
               "contactPoint": {
                 "@type": "ContactPoint",
@@ -179,6 +183,86 @@ export default function HomePage() {
       </div>
 
       <TrustSection />
+      
+      {/* Strategic SEO Editorial Narrative Block - Modern E-E-A-T Criteria */}
+      <section className="py-24 md:py-32 bg-[#060606] border-y border-white/5 relative overflow-hidden" id="authority-narrative">
+        <div className="absolute inset-0 bg-[#ccff00]/[0.01] blur-3xl pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          
+          <div className="text-center md:text-left mb-20 max-w-4xl">
+            <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.25em] text-[#ccff00] font-bold block mb-4">
+              Scientific Engineering & Technical Authority
+            </span>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif italic text-white font-light tracking-tight leading-tight">
+              Bespoke Systems, <br />
+              <span className="text-neutral-400 font-sans not-italic font-extralight tracking-tighter">Absolute Digital Sovereignty.</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
+            
+            {/* Column 1: Core Custom Software & Web Engineering */}
+            <div className="space-y-8">
+              <div className="border-b border-white/5 pb-4">
+                <span className="text-xs font-mono text-[#ccff00]/60 font-bold">I_ CORE SYSTEMS ARCHITECTURE</span>
+              </div>
+              <p className="text-neutral-400 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
+                When you collaborate with a premier <strong className="text-white font-medium">custom software development company</strong>, you bypass the severe architectural limitations of standard off-the-shelf software. At AbuQitmirLabs, we are a master-grade <strong className="text-white font-medium">custom software development company</strong> focused on engineering secure, fault-tolerant, and high-performance <strong className="text-[#ccff00] font-medium">scalable applications</strong> that serve as proprietary business assets. Our focus as a specialized <strong className="text-white font-medium">custom software development company</strong> is to build sustainable infrastructures that guarantee absolute intellectual property ownership, crafting robust <strong className="text-white font-medium">scalable applications</strong> that adapt beautifully as your traffic metrics increase.
+              </p>
+              <p className="text-neutral-400 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
+                As a leading <strong className="text-white font-medium">custom website development company</strong>, we construct tailored, speed-oriented frontends that captivate visitors from the first millisecond. Our technical standard as a luxury <strong className="text-white font-medium">custom website development company</strong> forces us to prioritize rich typography, fluid layouts, and deep search visibility. Partnering with our specialized <strong className="text-white font-medium">custom website development company</strong> guarantees that your web presence has zero passive license fees, zero locked proprietary modules, and infinite freedom to scale.
+              </p>
+            </div>
+
+            {/* Column 2: High-Fidelity Native & Flutter Mobile Ecosystems */}
+            <div className="space-y-8">
+              <div className="border-b border-white/5 pb-4">
+                <span className="text-xs font-mono text-[#ccff00]/60 font-bold">II_ IMMERSIVE MOBILE ENVIRONMENTS</span>
+              </div>
+              <p className="text-neutral-400 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
+                Establishing a dynamic multi-device ecosystem requires an expert and disciplined <strong className="text-white font-medium">custom mobile app development company</strong>. AbuQitmirLabs is configured as an elite <strong className="text-white font-medium">custom mobile app development company</strong> that bridges complex server infrastructure with fluid handheld views. Our primary approach as a tactical <strong className="text-white font-medium">custom mobile app development company</strong> utilizes rigorous native architectures. By implementing custom <strong className="text-[#ccff00] font-medium">Native Mobile app development</strong> pipelines, we craft bespoke Swift and Kotlin experiences that access on-chip GPU power for lightning-fast responsiveness.
+              </p>
+              <p className="text-neutral-400 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
+                For rapid worldwide delivery, partnering with a premier <strong className="text-white font-medium">Flutter mobile app development company</strong> yields absolute cross-device parity. As a highly capable <strong className="text-white font-medium">Flutter mobile app development company</strong>, we deliver identical animations, security parameters, and layouts across iOS and Android with single-codebase velocity. Utilizing our expertise as an authorized <strong className="text-white font-medium">Flutter mobile app development company</strong> enables you to capture dual marketplaces instantly without sacrificing operational efficiency. We consistently pair clean, robust <strong className="text-white font-medium">Native Mobile app development</strong> frameworks with hybrid tools to render gorgeous custom layouts and fluid multi-touch interactions.
+              </p>
+            </div>
+
+            {/* Column 3: Intelligent AI Systems & Digital Transformation */}
+            <div className="space-y-8">
+              <div className="border-b border-white/5 pb-4">
+                <span className="text-xs font-mono text-[#ccff00]/60 font-bold">III_ ENTERPRISE INTELLIGENCE & EVOLUTION</span>
+              </div>
+              <p className="text-neutral-400 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
+                Our advanced artificial intelligence division leads the industry in deployment-ready <strong className="text-white font-medium">AI app development</strong> solutions. We integrate custom-trained Large Language Models, cognitive agent workflows, and highly advanced mathematical models into everyday enterprise pipelines. Standard <strong className="text-white font-medium">AI app development</strong> services often rely on simple third-party wrappers, but our complete <strong className="text-white font-medium">AI app development</strong> packages deliver standalone, self-hosted networks. These solutions seamlessly drive massive, fundamental <strong className="text-[#ccff00] font-medium">digital transformation</strong>, restructuring legacy databases, fragmented manual pipelines, and outdated systems into automated, highly responsive intellectual assets.
+              </p>
+              <p className="text-neutral-400 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
+                We orchestrate robust <strong className="text-white font-medium">digital transformation</strong> strategies and construct resilient <strong className="text-white font-medium">enterprise software solutions</strong> that act as immediate force-multipliers. If you need to manage immense multi-market systems, our powerful <strong className="text-white font-medium">enterprise software solutions</strong> streamline real-time transactions with complete safety. These secure and <strong className="text-white font-medium">scalable applications</strong> ensure your organization remains resilient, enabling you to confidently proceed with necessary <strong className="text-white font-medium">digital transformation</strong> processes across all administrative divisions.
+              </p>
+            </div>
+
+          </div>
+
+          {/* Local Geographic Authority & Trust Banner */}
+          <div className="mt-20 pt-12 border-t border-white/5 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-8">
+              <p className="text-neutral-400 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
+                Operating proudly as a premium <strong className="text-white font-medium">software development company Karachi Pakistan</strong>, we cater to a sophisticated global clientele. As a <strong className="text-white font-semibold">leading software development company in Karachi, Pakistan</strong>, we bring old-school engineering ethics to modern computing problems. This unique geopolitical advantage enables organizations to <strong className="text-white font-medium">hire software developers</strong> of global caliber while maintaining reasonable, highly optimized capital allocation. If you are seeking a reliable, authoritative, and battle-tested <strong className="text-white font-medium">software development company Karachi Pakistan</strong> to spearhead your firm’s next major initiatives and deploy robust <strong className="text-white font-medium">enterprise software solutions</strong>, AbuQitmirLabs stands ready to design, deploy, and preserve your complete computational assets.
+              </p>
+              <p className="text-neutral-400 font-sans leading-relaxed text-sm md:text-base font-light text-justify mt-4">
+                We are recognized as the <strong className="text-[#ccff00] font-bold">leading software development company in Karachi, Pakistan</strong> because we provide high-grade <strong className="text-white font-medium">Native Mobile app development</strong> frameworks alongside web applications. When leadership teams want to <strong className="text-white font-medium">hire software developers</strong> from a proven, expert <strong className="text-white font-medium">software development company Karachi Pakistan</strong>, they work with AbuQitmirLabs to ensure their enterprise apps remain secure, optimized, and fast. To <strong className="text-white font-medium">hire software developers</strong> who truly understand digital systems, partner with our specialized labs.
+              </p>
+            </div>
+            <div className="lg:col-span-4 bg-[#0a0a09] border border-white/5 rounded-2xl p-6 text-center lg:text-left">
+              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#ccff00] font-bold block mb-2">LOCAL HUB METRICS</span>
+              <h4 className="text-lg font-serif italic text-white mb-2">Karachi, Pakistan</h4>
+              <p className="text-xs text-neutral-500 font-mono leading-relaxed uppercase">
+                ACTIVE ENGINEERING LAB • SECURE CLOUD NODES • CUSTOM LLM REPO CONTROL
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
       
       <ApproachSection />
       
