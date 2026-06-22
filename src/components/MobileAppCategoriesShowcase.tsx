@@ -43,7 +43,7 @@ const categories: CategoryItem[] = [
     num: "01",
     title: "Native Mobile App Development",
     tagline: "Uncompromised performance. Elite capabilities.",
-    description: "Built for one system at a time to leverage full processor capabilities, precise background cycles, and direct device hardware access.",
+    description: "Built exclusively for one system at a time to leverage full processor capabilities, precise background cycles, and direct device hardware access. This approach is ideal for enterprise software solutions requiring maximum security and performance.",
     icon: <Cpu className="w-5 h-5 text-blue-500" />,
     badge: { text: "Highest Performance", color: "indigo" },
     metrics: [
@@ -61,7 +61,7 @@ const categories: CategoryItem[] = [
       }
     ],
     bestFor: [
-      "High-security banking & fin-tech systems",
+      "High-security banking & fintech systems",
       "FDA-compliant healthcare diagnostics & tracking",
       "Rich media, low-latency applications",
       "Dense enterprise hardware integrations"
@@ -71,9 +71,9 @@ const categories: CategoryItem[] = [
   {
     id: "cross-platform",
     num: "02",
-    title: "Cross-Platform App Development",
-    tagline: "Unify dual ecosystems under a single clean build.",
-    description: "Write one clean high-fidelity codebase that compile natively across Apple iOS and Google Android. Drastically reduces turnaround time and engineering overhead.",
+    title: "Flutter Cross-Platform Development",
+    tagline: "Maximum reach. Single codebase. Native feel.",
+    description: "Our cross-platform Flutter app development expertise allows you to penetrate both iOS and Android markets with a single, powerful codebase. We achieve native-level performance while significantly reducing development time and costs.",
     icon: <Smartphone className="w-5 h-5 text-[#ccff00]" />,
     badge: { text: "Best Market Value", color: "lime" },
     metrics: [
@@ -83,11 +83,10 @@ const categories: CategoryItem[] = [
     ],
     breakdown: [
       {
-        title: "Framework Technologies",
+        title: "Platform Technologies",
         items: [
-          { label: "Flutter", details: "Google's high-speed Skia/Impeller renderer. Ideal for sub-second visual renders." },
-          { label: "React Native", details: "Meta's framework. Direct bridge to platform native widgets." },
-          { label: "Other Toolsets", details: ".NET MAUI, custom shared C++ binaries." }
+          { label: "Framework", details: "Flutter SDK with Dart — Delivering 120 FPS rendering and smooth animations." },
+          { label: "State Management", details: "Riverpod / Bloc / Redux — Ensuring predictable, scalable application state." }
         ]
       }
     ],
@@ -100,12 +99,12 @@ const categories: CategoryItem[] = [
       "Can require deep custom bridges for highly complex, non-standard lowlevel hardware registers."
     ],
     bestFor: [
-      "Hyper-active tech startups aiming to capture cross ecosystems",
-      "Slick Minimum Viable Products (MVPs)",
-      "High-engagement e-commerce applications",
-      "Standard client-server business apps"
+      "MVP validation & rapid market testing",
+      "Consumer apps requiring broad market reach",
+      "Startups with budget-conscious development cycles",
+      "E-commerce and lifestyle applications"
     ],
-    examples: ["Google Ads Dashboard Mobile", "Alibaba Global Purchasing Portal", "Refined custom MVP apps"]
+    examples: ["Google Pay", "eBay Motors", "BMW Connected Drive"]
   },
   {
     id: "hybrid",
@@ -378,11 +377,11 @@ export default function MobileAppCategoriesShowcase() {
               [ SYSTEMS ARCHETYPE: 10 TOPOLOGIES ]
             </span>
             <h2 className="text-5xl md:text-7xl font-semibold text-white tracking-tight">
-              Classification <span className="font-serif italic text-neutral-400">of App Architectures</span>
+              Systems Archetype: <span className="font-serif italic text-neutral-400">10 Topologies</span>
             </h2>
           </div>
           <p className="max-w-md text-neutral-400 text-base md:text-lg leading-relaxed font-light font-sans">
-            Luxury brands trust us to select the appropriate platform structure. Explore our classifications mapping performance boundaries, operational expenses, and exact deployment use cases.
+            Luxury brands and enterprises trust us to select the optimal platform structure. Below are our classifications mapping performance boundaries, operational expenses, and exact deployment use cases.
           </p>
         </div>
 

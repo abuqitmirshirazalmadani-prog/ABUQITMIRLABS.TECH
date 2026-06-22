@@ -101,12 +101,12 @@ const MobileAppDevelopmentPage = () => {
   return (
     <div className="bg-[#050505] text-neutral-300 font-body antialiased overflow-x-hidden min-h-screen relative selection:bg-blue-500/30 selection:text-white">
       <Helmet>
-        <title>Flutter & Native Mobile App Development | AbuQitmirLabs</title>
+        <title>Custom Mobile App Development Company | Flutter & Native iOS/Android | AbuQitmirLabs</title>
         <meta name="description" content="Launch high-performance apps with AbuQitmirLabs. Premium custom Flutter for dual ecosystems, Swift (iOS), Kotlin (Android), and secure offline-first storage pipelines." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/mobile-app-development" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Flutter & Native Mobile App Development | AbuQitmirLabs" />
+        <meta property="og:title" content="Custom Mobile App Development Company | Flutter & Native iOS/Android | AbuQitmirLabs" />
         <meta property="og:description" content="Launch high-performance apps with AbuQitmirLabs. Premium custom Flutter cross-platform, Swift (iOS), and Kotlin (Android) architectures." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/mobile-app-development" />
         <meta property="og:type" content="website" />
@@ -114,7 +114,7 @@ const MobileAppDevelopmentPage = () => {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Expert Flutter & Native Mobile App Development | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Custom Mobile App Development Company | Flutter & Native iOS/Android | AbuQitmirLabs" />
         <meta name="twitter:description" content="We build stunning cross-platform and native mobile software designed to drive customer conversion and zero lag." />
         <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
 
@@ -222,21 +222,26 @@ const MobileAppDevelopmentPage = () => {
         </div>
 
         <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-4xl md:text-6xl lg:text-[6.5rem] font-medium tracking-tight text-white text-center mb-8 leading-[1.1] max-w-5xl uppercase font-black"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-light tracking-tight text-white text-center mb-8 leading-[1.1] max-w-6xl"
         >
-          Flutter & Native <br />
-          <span className="text-zinc-600">Mobile Development</span>
+          Elite Mobile <span className="font-serif italic text-blue-400 font-normal">Engineering:</span> <br />
+          <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl block mt-4 font-sans font-bold tracking-tight text-zinc-300 uppercase">
+            Flutter & Native App Development
+          </span>
         </motion.h1>
 
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-lg md:text-xl text-neutral-400 text-center max-w-2xl mb-12 leading-relaxed font-light"
+          className="text-base md:text-lg text-neutral-400 text-center max-w-4xl mb-12 leading-relaxed font-light font-sans"
         >
-          We engineer high-fidelity, sub-second latency mobile software that keeps users highly engaged. Zero friction, fully scalable, and built by AbuQitmirLabs.
+          <strong className="text-white block text-lg md:text-xl font-normal mb-6">We engineer high-fidelity, sub-second latency mobile software that keeps users highly engaged.</strong>
+          At AbuQitmirLabs, we don't just build apps—we architect digital experiences that drive business growth. As a premier custom mobile app development company, we specialize in crafting native iOS and Android applications alongside high-performance cross-platform Flutter solutions. Our focus is on pixel-perfect interfaces, zero-friction user journeys, and scalable architectures that transform your vision into a market-leading product.
+          <br /><br />
+          Businesses across the globe trust us as their go-to software development company for enterprise-grade mobility solutions that deliver measurable ROI.
         </motion.p>
 
         <motion.div 
@@ -356,12 +361,19 @@ const MobileAppDevelopmentPage = () => {
       {/* Problem Section (Satisfying 300+ word guidelines overall with high density) */}
       <section className="py-32 relative">
         <div className="max-w-7xl mx-auto px-6">
-           <div className="glass-panel p-12 md:p-20 rounded-2xl relative z-10 max-w-4xl mx-auto text-center border-l-4 border-l-blue-600 bg-white/[0.02] border-white/10">
-              <h2 className="text-xs font-mono text-blue-500 mb-8 uppercase tracking-[0.3em]">[ SYSTEM_HEALTH: UNOPTIMIZED_BINARY ]</h2>
-              <p className="text-2xl md:text-4xl text-neutral-200 font-light leading-relaxed tracking-tight">
-                Laggy, generic mobile apps are <span className="text-white font-bold border-b border-blue-500">killing your brand authority</span>. 
-                Web-to-app wrappers and bloated code result in frame drops and extreme battery consumption. Your users demand sub-second loading speeds and responsive design. We build high-performance, native-compliant architectures that run flawlessly under 15ms response times.
+           <div className="glass-panel p-12 md:p-20 rounded-2xl relative z-10 max-w-4xl mx-auto text-center border-l-4 border-l-blue-600 bg-white/[0.02]/30 backdrop-blur-xl border-white/10">
+              <h2 className="text-xs font-mono text-blue-500 mb-8 uppercase tracking-[0.3em] font-bold">[ SYSTEM HEALTH: UNOPTIMIZED_BINARY ]</h2>
+              <p className="text-2xl md:text-4xl text-neutral-200 font-serif font-light leading-relaxed tracking-tight mb-8">
+                Laggy, generic mobile apps are <span className="text-white font-semibold italic border-b border-blue-500">silently killing your brand authority</span>. Web-to-app wrappers and bloated code result in frame drops, excessive battery consumption, and user abandonment. Your audience demands sub-second loading speeds and responsive, intuitive design.
               </p>
+              <div className="space-y-6 text-base md:text-lg text-neutral-400 font-sans font-light leading-relaxed max-w-3xl mx-auto">
+                <p>
+                  We build high-performance mobile applications using native-compliant architectures that run flawlessly under 15ms response times. Our Flutter app development services deliver 120 FPS rendering across both iOS and Android platforms, ensuring your users never experience friction.
+                </p>
+                <p>
+                  Whether you need a native iOS app (Swift/SwiftUI) or a native Android app (Kotlin/Jetpack Compose), our engineering team ensures optimal performance, security, and scalability.
+                </p>
+              </div>
            </div>
         </div>
       </section>
@@ -527,19 +539,34 @@ const MobileAppDevelopmentPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "High-Performance Mobile & Web Engineering Solutions",
-                desc: "Watch our lead developer discuss memory mapping, Flutter bridges, and caching.",
-                videoId: "B31EXmt5LrQ"
+                title: "Sub-Second Rendering Execution",
+                desc: "Live rendering benchmarks of our highly optimized Flutter and native UI viewport layouts.",
+                videoId: "X9xyYiT79Cc"
               },
               {
-                title: "Enterprise Digital Architecture Setup Breakdown",
-                desc: "An in-depth guide on constructing reliable APIs and offline database sync rules.",
+                title: "High-Fidelity Haptic Feedback Engineering",
+                desc: "Designing extremely detailed response loops and native mobile micro-interactions.",
+                videoId: "KowPMteJA-E"
+              },
+              {
+                title: "Enterprise Cloud Database Sync",
+                desc: "Architecting zero-data-loss offline storage engines with automated server replication.",
                 videoId: "Sh9SqMCx9I4"
               },
               {
-                title: "AI-Powered Business Workflow Automation Setup",
-                desc: "How we integrate autonomous services and custom mobile features securely.",
-                videoId: "HgPP7c9fftw"
+                title: "120 FPS Fluid Graphics & Animation Layouts",
+                desc: "Continuous performance audits showcasing zero-lag interface transitions.",
+                videoId: "cN8lzhA0m_Q"
+              },
+              {
+                title: "Cross-Platform Thread Optimization Deep Dive",
+                desc: "Leveraging platform-specific parallel background tasks for absolute client performance.",
+                videoId: "qMoX-e4Qm0c"
+              },
+              {
+                title: "High-Performance Mobile & Web Engineering Architecture",
+                desc: "Detailed discussion on native compilation, memory maps, and API caching structures.",
+                videoId: "B31EXmt5LrQ"
               }
             ].map((video, idx) => (
               <motion.div

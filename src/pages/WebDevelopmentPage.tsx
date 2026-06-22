@@ -680,33 +680,33 @@ Do not sign a website contract without these protective legal terms.
             {[
               {
                 title: "Enterprise Digital Architecture",
-                desc: "Watch our lead architect at ABUQITMIRLABS .TECH breakdown complex digital ecosystems.",
-                videoId: "Sh9SqMCx9I4"
+                desc: "Watch our lead architect at ABUQITMIRLABS.TECH breakdown complex digital ecosystems.",
+                videoId: "5Rq97Igd_uU"
               },
               {
                 title: "Advanced Engineering Solutions",
                 desc: "Deep dive into High-Performance Web Tech and scalable backend systems.",
-                videoId: "B31EXmt5LrQ"
+                videoId: "Sh9SqMCx9I4"
               },
               {
                 title: "AI-Driven Business Growth",
                 desc: "How we implement autonomous LLM agents to automate business workflows.",
-                videoId: "HgPP7c9fftw"
+                videoId: "110zeH-eEEk"
               },
               {
-                title: "Strategic Consulting Session",
-                desc: "A look at our detailed technical roadmap building for enterprise clients.",
-                videoId: "M4m1rplTxDk"
+                title: "Sub-Second Rendering & Performance Audits",
+                desc: "Continuous performance showcasing zero-lag interface transitions.",
+                videoId: "P0m__m_kOGs"
               },
               {
                 title: "Modern Tech Explained",
                 desc: "Quick insights into modern tech stacks and semantic search optimization.",
-                videoId: "KowPMteJA-E"
+                videoId: "FgtXLw-GNKk"
               },
               {
                 title: "Future of Digital Assets",
                 desc: "A vision for secure, fast, and highly intelligent digital transformations.",
-                videoId: "X9xyYiT79Cc"
+                videoId: "B31EXmt5LrQ"
               }
             ].map((video, idx) => (
               <motion.div

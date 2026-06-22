@@ -41,8 +41,7 @@ const pricingTiers: PricingTier[] = [
       "Single platform deployment (Android or iOS)",
       "Standard refined UI templates & clean animations",
       "Core CRUD operations and state memory",
-      "Standard email, Google, or social media login",
-      "Ideal for hyper-fast initial validation"
+      "Standard email, Google, or social media login"
     ],
     ctaText: "Initiate Simple MVP"
   },
@@ -57,10 +56,9 @@ const pricingTiers: PricingTier[] = [
     accentColor: "lime",
     characteristics: [
       "Custom prestige UI/UX architectures & guidelines",
-      "Native fluid cross-platform code (iOS & Android)",
-      "Bespoke RESTful/TSRPC API cloud integrations",
-      "Fully secure digital payment gateways (Stripe/PayPal)",
-      "Robust relational database persistence layers"
+      "Native fluid cross-platform mobile app development (iOS & Android)",
+      "Bespoke RESTful/GraphQL API cloud integrations",
+      "Fully secure digital payment gateways (Stripe/PayPal)"
     ],
     ctaText: "Deploy Dedicated Build"
   },
@@ -69,15 +67,14 @@ const pricingTiers: PricingTier[] = [
     name: "Complex App",
     hourlyRange: "$150 - $250 / hr",
     timeline: "40 Days Est.",
-    description: "Enterprise grade engineering designed for severe scales. Implements advanced security layers, and offline-first reactive mechanisms.",
+    description: "Enterprise-grade engineering designed for severe scales. Implements advanced security layers and offline-first reactive mechanisms.",
     icon: <Server className="w-5 h-5" />,
     accentColor: "fuchsia",
     characteristics: [
-      "Multi-tier token authentication & military encryptions",
+      "Multi-tier token authentication & military-grade encryption",
       "Sub-10ms real-time data sync queues & caching",
       "Deep customized AI integration & Fine-Tuned LLMs",
-      "Highly scalable containerized microservices",
-      "Optimized for high concurrency and massive reads"
+      "Highly scalable containerized microservices"
     ],
     ctaText: "Launch Enterprise Engine"
   }
@@ -105,7 +102,7 @@ export default function AppDevelopmentPricing() {
               [ TRANSPARENT CAPEX FORECASTS ]
             </span>
             <h2 className="text-5xl md:text-7xl font-semibold text-white tracking-tight leading-none">
-              Investment <span className="font-serif italic text-neutral-400">Frameworks</span>
+              Transparent Capex Forecasts: <span className="font-serif italic text-neutral-400">Investment Frameworks</span>
             </h2>
             <p className="mt-6 text-neutral-400 text-lg font-light max-w-2xl font-sans">
               No hidden numbers. Just precise engineering coupled with clear hour logs. We design software architectures to match both fast market validation and high-concurrency enterprise demands.

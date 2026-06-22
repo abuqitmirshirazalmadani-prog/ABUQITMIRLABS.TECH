@@ -29,7 +29,7 @@ const teamRoles: RoleCard[] = [
     num: "01",
     title: "Project / Product Manager",
     subtitle: "Tactical Orchestration & Strategy",
-    description: "Sets the strategy, budget and timeline of the app. He coordinates between the team members.",
+    description: "Sets the strategy, budget, and timeline. Coordinates between team members and stakeholders.",
     bullets: ["Milestone & Velocity Mapping", "Budgetary Custodianship", "Unified Inter-team Liaison"],
     icon: <Map className="w-5 h-5 text-[#ccff00]" />,
     technicalLabel: "STRATEGIC_CMD_CENTER"
@@ -39,7 +39,7 @@ const teamRoles: RoleCard[] = [
     num: "02",
     title: "UI / UX Designer",
     subtitle: "Elite Sensory Architecture",
-    description: "He creates the visual design of the app (screens, color schemes). He ensures that the app is easy to use for the user (User Experience).",
+    description: "Creates the visual design of the app — screens, color schemes, and intuitive user journeys. Essential for any custom mobile application development project.",
     bullets: ["Atomic Interface Layouts", "Deliberate Typography Pairings", "Frictionless User Journeys"],
     icon: <Paintbrush className="w-5 h-5 text-fuchsia-400" />,
     technicalLabel: "VISUAL_DESIGN_ENGINE"
@@ -49,7 +49,7 @@ const teamRoles: RoleCard[] = [
     num: "03",
     title: "Mobile App Developers (Front-end)",
     subtitle: "Ecosystem Client Codebases",
-    description: "If it is a simple app: A full-stack developer can write code for both platforms (Android and iOS). If it is a complex app: Different developers are needed (e.g. Kotlin/Java for Android and Swift for iOS). Using cross-platform frameworks (like Flutter or React Native) can make the team smaller.",
+    description: "Our Flutter app developers and native platform specialists write clean, maintainable code. For complex projects, we assign dedicated Kotlin/Java (Android) and Swift (iOS) experts.",
     bullets: ["Native Android/iOS Renders", "Cross-Platform Framework Code", "Sub-16ms Scroll Latency"],
     icon: <Cpu className="w-5 h-5 text-blue-400" />,
     technicalLabel: "CLIENT_RUN_COMPILER"
@@ -59,7 +59,7 @@ const teamRoles: RoleCard[] = [
     num: "04",
     title: "Backend Developer",
     subtitle: "Information Infrastructure & Servers",
-    description: "If data is saved in the app, user accounts are created, or online transactions take place, then this is a required party. It manages the servers and databases of the app.",
+    description: "Manages servers, databases, and API integrations. Crucial for enterprise mobile app solutions requiring secure data handling.",
     bullets: ["PCI-DSS Payment Gateways", "Encrypted Session Pools", "Relational Database Indexing"],
     icon: <Database className="w-5 h-5 text-teal-400" />,
     technicalLabel: "DATA_VAULT_CONTROLLER"
@@ -69,7 +69,7 @@ const teamRoles: RoleCard[] = [
     num: "05",
     title: "Quality Assurance (QA) Tester",
     subtitle: "Systems Integrity & Stress Testing",
-    description: "The app thoroughly tests it before it is released. It finds bugs and crashes and gets them fixed by the developer.",
+    description: "Thoroughly tests the app before release. Identifies and resolves bugs, crashes, and performance bottlenecks.",
     bullets: ["Boundary Condition Trials", "Automated Playback Tests", "Crashlog Resolution Audits"],
     icon: <ShieldCheck className="w-5 h-5 text-emerald-400" />,
     technicalLabel: "STRESS_TEST_VAL_ENG"
@@ -101,10 +101,10 @@ export default function AppDevelopmentTeamRoles() {
             [ TACTICAL RESOURCE HEURISTICS ]
           </span>
           <h2 className="text-5xl md:text-7xl font-semibold text-white tracking-tight leading-none">
-            App Development <span className="font-serif italic text-neutral-400">Team Structure</span>
+            Tactical Resource Heuristics: <span className="font-serif italic text-neutral-400">App Development Team Structure</span>
           </h2>
           <p className="mt-6 text-neutral-400 text-lg md:text-xl font-light leading-relaxed max-w-2xl font-sans">
-            Building software at an outstanding echelon requires highly coordinated specialists. Discover the standard organizational matrix that powers our flagship mobile applications.
+            Building software at an outstanding echelon requires highly coordinated specialists. As a full-service mobile app development company, we deploy a multidisciplinary team to ensure your project's success.
           </p>
         </div>
 
