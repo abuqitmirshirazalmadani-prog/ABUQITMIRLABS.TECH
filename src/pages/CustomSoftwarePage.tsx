@@ -45,26 +45,26 @@ const CustomSoftwarePage = () => {
   const services = [
     {
       id: "01",
-      title: "Scalable MVP Development for Startups",
-      content: "Got a disruptive idea? We help tech startups launch faster with robust Minimum Viable Products (MVPs). We focus on core functionalities that attract early adopters and investors, built on a scalable architecture that allows for rapid feature expansion once market fit is proven.",
+      title: "Custom Software Development for Fintech, Healthcare & Logistics",
+      content: "We provide specialized custom software development for fintech, healthcare, logistics, and high-load web systems. Whether you are looking to hire a custom software development company to launch a disruptive SaaS or build a HIPAA-compliant portal as a custom healthcare software development company, our team guarantees robust execution.",
       icon: <Rocket className="w-8 h-8" />,
     },
     {
       id: "02",
-      title: "Enterprise ERP & CRM Systems",
-      content: "Unify your data and streamline your operations. We build custom Enterprise Resource Planning (ERP) and Customer Relationship Management (CRM) tools that provide real-time analytics, automate data entry, and give your leadership team a crystal-clear, 360-degree view of your entire business.",
+      title: "Enterprise Software Development & ERP Systems",
+      content: "Streamline operations with enterprise software development that replaces subscription-bloated SaaS. We build secure internal tools, custom application development company integrations, and unified data warehousing so your organization maintains absolute digital sovereignty.",
       icon: <Database className="w-8 h-8" />,
     },
     {
       id: "03",
-      title: "Legacy System Modernization",
-      content: "Outdated software is a security risk and an operational anchor. We seamlessly migrate your legacy systems to modern, cloud-native architectures with zero downtime. We ensure your historical data is perfectly preserved while your interface and processing speeds are dramatically upgraded.",
+      title: "Custom Web Application Development Services",
+      content: "Migrate or build web platforms from the ground up with our custom web application development services. We function as expert software engineering consultants to replace slow, insecure, legacy systems with modern, cloud-native architectures that load instantly and serve millions.",
       icon: <Cpu className="w-8 h-8" />,
     },
     {
       id: "04",
-      title: "SaaS Product Development",
-      content: "Looking to build the next big Software-as-a-Service? We design multi-tenant SaaS architectures that handle high traffic securely. Our team manages everything from the user subscription flows to the backend database structuring, ensuring a flawless experience for your subscribers.",
+      title: "Software Development Outsourcing Company Partners",
+      content: "As a trusted software development outsourcing company, we act as extended team members for startups and large enterprises. We configure high-fidelity multi-tenant SaaS structures, solid data encryption protocols, and automate your release cycles.",
       icon: <Cloud className="w-8 h-8" />,
     }
   ];
@@ -127,12 +127,12 @@ const CustomSoftwarePage = () => {
   return (
     <div className="bg-[#000000] text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-blue-500/30 selection:text-white">
       <Helmet>
-        <title>Custom Enterprise Software Development Services | AbuQitmirLabs</title>
-        <meta name="description" content="Premium custom software development company. We build robust enterprise systems, scalable SaaS platforms, and secure high-performance architectures compliant with global regulations." />
+        <title>Custom Software Development Services | Abu Qitmir Labs</title>
+        <meta name="description" content="Abu Qitmir Labs is a premier custom software development company offering bespoke enterprise software development and custom web application development services worldwide." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/custom-software" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Custom Enterprise Software Development Agency | AbuQitmirLabs" />
+        <meta property="og:title" content="Custom Software Development Services | Abu Qitmir Labs" />
         <meta property="og:description" content="Premium custom software development company building scalable enterprise architectures, SaaS platforms, and bespoke internal systems." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/custom-software" />
         <meta property="og:type" content="website" />
@@ -140,8 +140,8 @@ const CustomSoftwarePage = () => {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Custom Enterprise Software Development Services | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Elite bespoke custom software development and scalable engineering." />
+        <meta name="twitter:title" content="Custom Software Development Services | Abu Qitmir Labs" />
+        <meta name="twitter:description" content="Abu Qitmir Labs is a premier custom software development company offering bespoke enterprise software development and custom web application development services." />
         <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
@@ -342,24 +342,27 @@ const CustomSoftwarePage = () => {
             {/* Headline */}
             <div className="text-center relative z-10">
               <div className="mb-4">
+                <span className="text-xs font-mono text-blue-500 uppercase tracking-[0.4em] font-bold block mb-4">[ Custom Software Development Mission Briefing ]</span>
                 <HeroText text="ENGINEERING" />
               </div>
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mx-auto max-w-5xl text-3xl font-medium tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl uppercase font-black"
+                className="mx-auto max-w-6xl text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-light tracking-tight text-white leading-tight"
               >
-                Custom Enterprise <br />
-                <span className="text-[#3b82f6]">Software Development Services.</span>
+                Tailored <span className="font-serif italic text-blue-400 font-normal">Software Solutions</span> <br />
+                <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl block mt-4 font-serif font-light tracking-tight text-zinc-300">
+                  Custom Software Development Company.
+                </span>
               </motion.h1>
               
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="mx-auto mt-10 max-w-2xl text-xl leading-relaxed text-slate-300 font-light"
+                className="mx-auto mt-10 max-w-3xl text-xl leading-relaxed text-slate-300 font-light font-sans"
               >
-                Expert <strong>custom software development</strong> is the foundation of modern digital assets. We engineer tailor-made software solutions that streamline operations, eliminate technical debt, and give your business a decisive competitive edge in the global market.
+                <strong>Abu Qitmir Labs</strong> is a premier <strong>custom software development company</strong> offering bespoke <strong>enterprise software development</strong> and <strong>custom web application development services</strong>. As leading <strong>software engineering consultants</strong> and a distinguished <strong>custom software development company in Karachi</strong>, Pakistan serving clients globally, we engineer robust digital architectures built for absolute performative scale.
               </motion.p>
 
               {/* CTAs */}
@@ -408,7 +411,7 @@ const CustomSoftwarePage = () => {
             >
                 <img 
                   src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200&auto=format&fit=crop&fm=webp" 
-                  alt="Custom software development team working on enterprise architecture" 
+                  alt="Custom software development team at Abu Qitmir Labs working on enterprise solutions." 
                   className="absolute inset-0 w-full h-full object-cover opacity-20"
                   loading="lazy"
                   decoding="async"
@@ -623,11 +626,14 @@ const CustomSoftwarePage = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-24">
             <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ SYSTEM_CAPABILITIES ]</span>
-            <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter uppercase leading-[0.8] mb-8">
-              Services We <span className="text-zinc-600">Specialize In.</span>
+            <h2 className="text-5xl md:text-7xl font-serif font-light text-white tracking-tight leading-[1] mb-8">
+              Our Custom <span className="font-serif italic text-zinc-500">Web Application Development Services.</span>
             </h2>
-            <p className="text-xl md:text-2xl text-slate-400 max-w-4xl font-light leading-relaxed">
-              As a premier custom software development company, we build high-performance business applications tailored to your exact operational parameters. No rigid templates, no unneeded features—just pristine, custom-engineered computational assets.
+            <span className="text-sm font-mono text-blue-400 font-bold uppercase tracking-widest mb-6 block">
+              [ Expert Software Engineering Consultants for Your Project ]
+            </span>
+            <p className="text-xl md:text-2xl text-slate-400 max-w-4xl font-light leading-relaxed font-sans">
+              As a premier <strong>custom software development company</strong> and dedicated <strong>custom application development company</strong>, we construct bespoke architectures that align with your workflows. Partner with elite <strong>software engineering consultants</strong> to deploy robust enterprise platforms worldwide.
             </p>
           </div>
 
@@ -659,11 +665,11 @@ const CustomSoftwarePage = () => {
           {/* Header */}
           <div className="mb-24 text-center max-w-4xl mx-auto">
             <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ PROVEN_IMPACT ]</span>
-            <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter uppercase leading-[0.9] mb-8">
-              Proven Success. <span className="text-zinc-600">Elevated Quality.</span>
+            <h2 className="text-5xl md:text-7xl font-serif font-light text-white tracking-tight leading-[1] mb-8">
+              Proven Success. <span className="font-serif italic text-zinc-500">Elevated Quality.</span>
             </h2>
-            <p className="text-xl text-slate-400 font-light leading-relaxed">
-              We validate our expertise through concrete outcomes. Rather than larping with unproven metrics, we subject every custom software development architecture to rigorous, measurable audits.
+            <p className="text-xl text-slate-400 font-light leading-relaxed font-sans">
+              We validate our expertise through concrete operational outcomes. As established software consultants, we subject every custom software development architecture to rigorous, measurable audits.
             </p>
           </div>
 
@@ -710,9 +716,9 @@ const CustomSoftwarePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Enterprise Digital Architecture",
-                desc: "Project walkthrough of our custom secure cloud-systems and scalable data pipelines.",
-                videoId: "Sh9SqMCx9I4"
+                title: "Enterprise Software Architecture",
+                desc: "High-performance systems blueprint and secure database integrations.",
+                videoId: "KAhcBqKN_ks"
               },
               {
                 title: "Advanced Engineering Solutions",
@@ -720,9 +726,24 @@ const CustomSoftwarePage = () => {
                 videoId: "B31EXmt5LrQ"
               },
               {
-                title: "AI-Driven Business Growth",
-                desc: "How we deploy autonomous agents to accelerate operations and automate workflows.",
-                videoId: "HgPP7c9fftw"
+                title: "Scalable Data Pipeline Sync",
+                desc: "Streamlined database modeling and sub-second multi-region server execution.",
+                videoId: "gCmt4TEBzQ8"
+              },
+              {
+                title: "HIPAA & GDPR Computational Compliance",
+                desc: "Architecting high-security health tech and fintech compliance layers.",
+                videoId: "v25Fo6O3iy4"
+              },
+              {
+                title: "Automated Release Pipeline Orchestration",
+                desc: "Continuous integration pipelines and ultra-reliable software deployment systems.",
+                videoId: "L3P57XVX9E0"
+              },
+              {
+                title: "Legacy Modernization Strategy Session",
+                desc: "A look at our detailed technical roadmap building for enterprise clients.",
+                videoId: "M4m1rplTxDk"
               }
             ].map((video, idx) => (
               <motion.div
