@@ -138,8 +138,11 @@ export default function WebDevelopmentPricing() {
             <h2 className="text-5xl md:text-7xl font-semibold text-white tracking-tight leading-none">
               Strategic Website <span className="font-serif italic text-neutral-400">Packages</span>
             </h2>
-            <h3 className="mt-6 text-[#ccff00] text-sm md:text-lg font-medium tracking-wide max-w-3xl leading-relaxed border-l-2 border-[#ccff00] pl-4">
+            <h3 className="mt-6 text-[#ccff00] text-xl md:text-2xl lg:text-3xl font-bold tracking-wide max-w-3xl leading-relaxed border-l-4 border-[#ccff00] pl-5">
               People from Pakistan, India, Bangladesh should contact us on WhatsApp, rates are different for them. I love these people, I love everyone.
+            </h3>
+            <h3 className="mt-4 text-[#ccff00] text-xl md:text-2xl lg:text-3xl font-medium tracking-wide max-w-3xl leading-relaxed border-l-4 border-[#ccff00] pl-5" style={{ fontFamily: 'Noto Nastaliq Urdu, sans-serif' }}>
+              پاکستان، انڈیا، بنگلہ دیش کے لوگ ہم سے واٹس ایپ پر رابطہ کریں، ان کے لیے ریٹس مختلف ہیں۔ میں ان لوگوں سے پیار کرتا ہوں، میں سب سے پیار کرتا ہوں۔
             </h3>
             <p className="mt-4 text-neutral-400 text-lg md:text-xl font-light max-w-3xl leading-relaxed">
               Custom-built React & Next.js websites designed strictly to transform traffic and maximize daily sales funnels. Select the appropriate blueprint.
