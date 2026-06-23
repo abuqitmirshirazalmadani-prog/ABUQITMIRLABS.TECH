@@ -105,6 +105,12 @@ export default function WebUpsellsPricing() {
           <h2 className="text-5xl md:text-7xl font-semibold text-white tracking-tight leading-none">
             Upsells <span className="font-serif italic text-neutral-400">&amp; Add-ons</span>
           </h2>
+          <h3 className="mt-6 text-[#ccff00] text-xl md:text-2xl lg:text-3xl font-bold tracking-wide max-w-3xl leading-relaxed border-l-4 border-[#ccff00] pl-5 text-left">
+            People from Pakistan, India, Bangladesh should contact us on WhatsApp, rates are different for them. I love these people, I love everyone.
+          </h3>
+          <h3 className="mt-4 text-[#ccff00] text-xl md:text-2xl lg:text-3xl font-medium tracking-wide max-w-3xl leading-relaxed border-l-4 border-[#ccff00] pl-5 text-left" style={{ fontFamily: 'Noto Nastaliq Urdu, sans-serif' }}>
+            پاکستان، انڈیا، بنگلہ دیش کے لوگ ہم سے واٹس ایپ پر رابطہ کریں، ان کے لیے ریٹس مختلف ہیں۔ میں ان لوگوں سے پیار کرتا ہوں، میں سب سے پیار کرتا ہو۔
+          </h3>
           <p className="mt-6 text-neutral-400 text-lg md:text-xl font-light leading-relaxed font-sans">
             Enhance your project with premium extras. Select from specialized visual guidelines, high-conversion copy schemes, or advanced computational setups.
           </p>

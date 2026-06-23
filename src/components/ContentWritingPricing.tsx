@@ -57,6 +57,12 @@ export default function ContentWritingPricing() {
               Premium Content <br />
               <span className="text-transparent font-serif italic font-light" style={{ WebkitTextStroke: '1px #ffffff' }}>Pricing Metrics</span>
             </h2>
+            <h3 className="mt-6 text-[#ccff00] text-xl md:text-2xl lg:text-3xl font-bold tracking-wide max-w-3xl leading-relaxed border-l-4 border-[#ccff00] pl-5">
+              People from Pakistan, India, Bangladesh should contact us on WhatsApp, rates are different for them. I love these people, I love everyone.
+            </h3>
+            <h3 className="mt-4 text-[#ccff00] text-xl md:text-2xl lg:text-3xl font-medium tracking-wide max-w-3xl leading-relaxed border-l-4 border-[#ccff00] pl-5" style={{ fontFamily: 'Noto Nastaliq Urdu, sans-serif' }}>
+              پاکستان، انڈیا، بنگلہ دیش کے لوگ ہم سے واٹس ایپ پر رابطہ کریں، ان کے لیے ریٹس مختلف ہیں۔ میں ان لوگوں سے پیار کرتا ہوں، میں سب سے پیار کرتا ہوں۔
+            </h3>
             <p className="mt-8 text-neutral-400 text-lg md:text-xl font-light leading-relaxed">
               Price for logo, graphics, or premium content services in the USA typically starts at <strong className="text-white">$0.03 to $0.05 per word</strong> (roughly <strong className="text-white">$30 to $50 for a 1,000-word article</strong>) or <strong className="text-white">$15 per hour</strong> for absolute entry-level freelancers. Legit US-based agency thresholds begin as a premium standard.
             </p>

@@ -1005,6 +1005,12 @@ const CustomSoftwarePage = () => {
                 <h2 className="md:text-5xl lg:text-6xl leading-[1.1] text-4xl text-white font-serif font-light tracking-tight">
                   Simple pricing for <span className="text-gray-600 font-serif font-light tracking-tight">everyone.</span>
                 </h2>
+                <h3 className="mt-6 text-[#ccff00] text-xl md:text-2xl lg:text-3xl font-bold tracking-wide max-w-3xl leading-relaxed border-l-4 border-[#ccff00] pl-5">
+                  People from Pakistan, India, Bangladesh should contact us on WhatsApp, rates are different for them. I love these people, I love everyone.
+                </h3>
+                <h3 className="mt-4 text-[#ccff00] text-xl md:text-2xl lg:text-3xl font-medium tracking-wide max-w-3xl leading-relaxed border-l-4 border-[#ccff00] pl-5" style={{ fontFamily: 'Noto Nastaliq Urdu, sans-serif' }}>
+                  پاکستان، انڈیا، بنگلہ دیش کے لوگ ہم سے واٹس ایپ پر رابطہ کریں، ان کے لیے ریٹس مختلف ہیں۔ میں ان لوگوں سے پیار کرتا ہوں، میں سب سے پیار کرتا ہو۔
+                </h3>
                 <p className="text-lg text-gray-400 font-light max-w-xl leading-relaxed font-sans">
                   Development team, agencies typically charge a blended hourly rate of $120 to $200+ per hour.
                 </p>

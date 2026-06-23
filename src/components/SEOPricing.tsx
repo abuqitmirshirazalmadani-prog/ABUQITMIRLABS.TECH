@@ -44,6 +44,12 @@ export default function SEOPricing() {
               SEO &amp; Map <br />
               <span className="text-transparent font-serif italic font-light" style={{ WebkitTextStroke: '1px #ffffff' }}>Mastery Pricing</span>
             </h2>
+            <h3 className="mt-6 text-[#ccff00] text-xl md:text-2xl lg:text-3xl font-bold tracking-wide max-w-3xl leading-relaxed border-l-4 border-[#ccff00] pl-5">
+              People from Pakistan, India, Bangladesh should contact us on WhatsApp, rates are different for them. I love these people, I love everyone.
+            </h3>
+            <h3 className="mt-4 text-[#ccff00] text-xl md:text-2xl lg:text-3xl font-medium tracking-wide max-w-3xl leading-relaxed border-l-4 border-[#ccff00] pl-5" style={{ fontFamily: 'Noto Nastaliq Urdu, sans-serif' }}>
+              پاکستان، انڈیا، بنگلہ دیش کے لوگ ہم سے واٹس ایپ پر رابطہ کریں، ان کے لیے ریٹس مختلف ہیں۔ میں ان لوگوں سے پیار کرتا ہوں، میں سب سے پیار کرتا ہو۔
+            </h3>
             <p className="mt-6 text-neutral-400 text-lg md:text-xl font-light max-w-3xl leading-relaxed">
               The absolute minimum price for professional SEO services in the USA typically starts at <strong className="text-white">$250 to $500 per month</strong> for entry-level freelancers or basic local software packages, while the minimum entry point for a legitimate US-based agency starts at <strong className="text-white">$1,000 to $1,500 per month</strong>.
             </p>
