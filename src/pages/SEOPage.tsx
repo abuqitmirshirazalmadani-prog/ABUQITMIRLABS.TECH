@@ -23,7 +23,12 @@ import {
   Code2,
   Smartphone,
   Cpu,
-  Settings
+  Settings,
+  HelpCircle,
+  Clock,
+  CheckCircle2,
+  Sliders,
+  Database
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -36,70 +41,54 @@ import SEOPricing from '../components/SEOPricing';
 const SEOPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
-  const strategies = [
+  const faqData = [
     {
-      title: "1. Technical & Architecture SEO Audits",
-      content: "We fix what is broken under the hood. We conduct exhaustive technical audits to resolve crawl errors, fix indexing bloat, optimize your site architecture, and implement dynamic XML sitemaps to ensure Google bots can effortlessly read and rank your pages.",
-      icon: <FileSearch className="w-10 h-10 text-black" />
+      q: "What is search engine optimization (SEO), and why is it important?",
+      a: "Search engine optimization is the practice of improving your website's visibility in organic (non-paid) search results. When users search for products or services you offer, you want your website to appear at the top. Professional SEO services ensure your website is optimized to rank for relevant search terms, driving targeted traffic and generating leads."
     },
     {
-      title: "2. Semantic Content Siloing",
-      content: "We organize your website into topical clusters. By interlinking related service pages and deeply researched blog posts, we prove to search engines that you have exhaustive knowledge on your subject, dramatically boosting your ranking power across hundreds of long-tail variations.",
-      icon: <Workflow className="w-10 h-10 text-black" />
+      q: "How long does SEO take to show results?",
+      a: "SEO is a long-term strategy. While you may see some improvements within 1–3 months, meaningful results typically take 4–6 months. Sustainable rankings and authority often develop over 6–12 months of consistent effort. We provide regular progress updates and manage expectations throughout the process."
     },
     {
-      title: "3. Advanced Schema Markup Implementation",
-      content: "We speak directly to search robots. We write custom JSON-LD schema markup (such as LocalBusiness, FAQPage, and Service) to feed Google exact, structured data about your prices, reviews, and services, helping you secure high-visibility \"Rich Snippets\" at the top of the search results.",
-      icon: <SearchCode className="w-10 h-10 text-black" />
+      q: "How much do professional SEO services cost?",
+      a: "Our professional SEO services start at $250/month for local SEO and $1,000+/month for comprehensive organic growth. We provide transparent pricing with clear deliverables and no hidden fees."
     },
     {
-      title: "4. Hyper-Local SEO & Google Business Profile (GBP)",
-      content: "Capture the customers in your immediate vicinity. We optimize your Google Business Profile with geotagged images, localized semantic descriptions, and consistent NAP (Name, Address, Phone) citations across high-tier directories, ensuring you show up first when locals search for your services.",
-      icon: <MapPin className="w-10 h-10 text-black" />
+      q: "Do you guarantee #1 rankings?",
+      a: "No legitimate SEO company can guarantee #1 rankings. Search engines use complex algorithms that are constantly evolving. We guarantee transparent work, data-driven strategies, and continuous improvement—but we cannot guarantee specific rankings due to external market factors."
+    },
+    {
+      q: "How do you measure SEO success?",
+      a: "We measure success through a combination of: organic traffic growth, keyword ranking improvements, lead and conversion increases, revenue attribution from organic search, and competitive positioning improvements."
+    },
+    {
+      q: "Can you help a small business with SEO?",
+      a: "Yes! We have specific strategies and packages designed for small businesses and startups. Our SEO services scale to meet any budget and business size, with a focus on delivering maximum ROI from your investment."
     }
   ];
 
-  const faqData = [
-    {
-      q: "How long does it take to see SEO results?",
-      a: "True semantic authority takes 3 to 6 months to mature. While technical fixes yield quick bumps, compounding organic ROI requires consistent effort."
-    },
-    {
-      q: "What is Semantic Entity SEO?",
-      a: "It is optimizing for concepts, not just single keywords. We structure content to help Google understand your brand as an \"Entity,\" allowing you to rank for thousands of related search queries."
-    },
-    {
-      q: "Why is my Google Business Profile not showing on the map?",
-      a: "Map visibility relies on distance, relevance, and prominence. We fix inconsistent citations, generate localized content, and manage reviews to build local trust."
-    },
-    {
-      q: "Do you guarantee the #1 spot on Google?",
-      a: "No reputable agency can guarantee a #1 spot due to Google's dynamic algorithm. However, we guarantee data-driven strategies, ethical white-hat tactics, and transparent traffic growth."
-    },
-    {
-      q: "What is the difference between On-Page and Off-Page SEO?",
-      a: "On-page refers to optimizations on your site (content, speed, structure). Off-page refers to external signals like high-quality backlinks and directory citations. We handle both."
-    },
-    {
-      q: "How do you measure the success of an SEO campaign?",
-      a: "We track transparent KPIs: organic traffic growth, keyword ranking improvements, click-through rates (CTR), and most importantly, qualified lead conversions."
-    },
-    {
-      q: "Will SEO work if my industry is highly competitive?",
-      a: "Yes. In highly competitive niches, we pivot away from generic terms and focus on high-intent, long-tail semantic keywords that your competitors are ignoring."
-    }
+  const techStack = [
+    { category: "Keyword Research", tools: "SEMrush, Ahrefs, Google Keyword Planner, AnswerThePublic", purpose: "Discover and analyze target keywords" },
+    { category: "Technical SEO", tools: "Screaming Frog, Google Search Console, Sitebulb", purpose: "Crawl and audit website infrastructure" },
+    { category: "Rank Tracking", tools: "SEMrush Position Tracking, AccuRanker, Ahrefs Rank Tracker", purpose: "Monitor keyword rankings" },
+    { category: "Backlink Analysis", tools: "Ahrefs, Majestic, Moz Link Explorer", purpose: "Analyze and build link authority" },
+    { category: "Content Optimization", tools: "Surfer SEO, Clearscope, Frase", purpose: "Optimize content for relevance and SEO" },
+    { category: "Analytics", tools: "Google Analytics 4, Google Tag Manager, Hotjar", purpose: "Track user behavior and conversions" },
+    { category: "Schema Markup", tools: "Google Structured Data Testing Tool, Schema Markup Generator", purpose: "Implement and validate schema" },
+    { category: "Monitoring", tools: "Google Search Console, Bing Webmaster Tools", purpose: "Track crawling, indexing, and performance" }
   ];
 
   return (
-    <div className="bg-[#f4f4f5] text-black font-display antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]">
+    <div className="bg-[#f4f4f5] text-black font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]">
       <Helmet>
-        <title>Semantic Entity SEO & Local Map Mastery | AbuQitmirLabs</title>
-        <meta name="description" content="Dominate search results with AbuQitmirLabs .TECH. Advanced Semantic Entity SEO, Local Map Mastery, and E-E-A-T focused content strategies designed to drive organic growth." />
+        <title>SEO Services | Professional Search Engine Optimization Company | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs is a premier search engine optimization company delivering pro SEO services, organic growth, technical SEO audits, and map dominance globally." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/seo-mastery" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Semantic Entity SEO & Local Map Mastery | AbuQitmirLabs" />
-        <meta property="og:description" content="Dominate search results with AbuQitmirLabs .TECH. Advanced Semantic Entity SEO, Local Map Mastery, and E-E-A-T focused content strategies." />
+        <meta property="og:title" content="SEO Services | Professional Search Engine Optimization Company | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs is a premier search engine optimization company delivering pro SEO services, organic growth, technical SEO audits, and map dominance globally." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/seo-mastery" />
         <meta property="og:type" content="website" />
 
@@ -133,15 +122,15 @@ const SEOPage = () => {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Service",
-              "name": "SEO Mastery & Semantic Optimization",
-              "description": "Expert Semantic Entity SEO, Local Map Pack optimization, and E-E-A-T focused content strategies for global businesses.",
+              "name": "Professional SEO Services",
+              "description": "Expert data-driven Search Engine Optimization, Technical Audits, and Organic Authority building with transparent reporting.",
               "provider": {
                 "@type": "Organization",
-                "name": "ABUQITMIRLABS .TECH",
+                "name": "AbuQitmirLabs",
                 "url": "https://abuqitmirlabs.tech"
               },
               "serviceType": "Search Engine Optimization",
-              "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"]
+              "areaServed": ["US", "GB", "Europe", "Global"]
             })
           }}
         ></script>
@@ -169,7 +158,6 @@ const SEOPage = () => {
 
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex flex-col justify-center items-center pt-24 md:pt-32 pb-20 px-6 z-10">
-
         <motion.div 
           initial={{ opacity: 0, rotate: -2 }}
           animate={{ opacity: 1, rotate: -2 }}
@@ -179,26 +167,35 @@ const SEOPage = () => {
         </motion.div>
 
         <div className="mb-4">
-          <HeroText text="RANKING" />
+          <HeroText text="MASTERY" />
         </div>
 
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-4xl md:text-6xl font-black tracking-tighter text-black text-center mb-10 leading-[0.95] max-w-6xl uppercase"
+          className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-black text-center mb-10 leading-[0.95] max-w-6xl uppercase"
         >
-          Semantic Entity SEO <br />
-          <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>& Local Map Mastery</span> <br />
-          <span className="text-[#ccff00]">| Growth Oriented</span>
+          SEO Mastery: <br />
+          <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>Data-Driven Search</span> <br />
+          <span className="text-[#ccff00]">| Engine Optimization</span>
         </motion.h1>
 
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-2xl md:text-3xl text-zinc-800 text-center max-w-3xl mb-12 leading-tight font-bold lowercase"
+          className="text-xl md:text-2xl text-zinc-800 text-center max-w-4xl mb-12 leading-relaxed font-bold lowercase"
         >
-          Ranking on Google requires more than just keyword stuffing. We utilize data-driven Semantic Entity SEO and hyper-local map strategies to establish your brand's topical authority. We do not just drive traffic; we capture high-intent buyers ready to convert.
+          In today's digital economy, visibility is everything. At AbuQitmirLabs, we deliver SEO services that drive sustainable organic growth—transforming your website into a powerful lead generation engine. As a premier search engine optimization company, we combine technical expertise, content strategy, and data-driven analytics to elevate your search rankings and build lasting digital authority.
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+          className="text-lg md:text-xl text-zinc-600 text-center max-w-3xl mb-12 leading-relaxed"
+        >
+          Our professional SEO services are designed for businesses that demand measurable results—whether you're a startup seeking market entry or an enterprise defending your competitive edge. We don't just optimize for algorithms; we optimize for your customers, ensuring your brand appears at the precise moment they need you.
         </motion.p>
 
         <motion.div 
@@ -214,18 +211,17 @@ const SEOPage = () => {
             className="px-12 py-8 bg-black text-[#ccff00] text-xl font-black border-4 border-black rounded-3xl brutalist-shadow hover:scale-105 transition-transform flex flex-col items-center justify-center gap-2 uppercase"
           >
             <Zap size={24} />
-            Request an SEO Strategy Plan
+            Request a Free SEO Audit
           </a>
           <button 
             onClick={() => {
-              const el = document.getElementById('video-portfolio');
+              const el = document.getElementById('seo-pricing');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
-              else window.location.href = '/#video-portfolio';
             }}
             className="px-12 py-8 bg-white text-black text-xl font-black border-4 border-black rounded-3xl brutalist-shadow hover:scale-105 transition-transform flex flex-col items-center justify-center gap-2 uppercase"
           >
             <Star size={24} />
-            See Our Ranking Case Studies
+            See SEO Pricing &amp; Packages
           </button>
         </motion.div>
       </section>
@@ -234,167 +230,186 @@ const SEOPage = () => {
       <div className="overflow-hidden transform z-20 bg-[#ccff00] w-full border-y-[6px] border-black py-6 relative shadow-[0_12px_0_0_rgba(0,0,0,1)] -rotate-1">
         <div className="flex whitespace-nowrap w-max animate-marquee">
           {[...Array(2)].map((_, i) => (
-            <div key={i} className="flex gap-12 text-4xl md:text-6xl font-black tracking-tighter uppercase items-center text-black px-12">
-              <span>semantic entity seo services</span> <Star className="fill-current" size={48} />
-              <span>topical authority building help</span> <Star className="fill-current" size={48} />
-              <span>local map pack optimization</span> <Star className="fill-current" size={48} />
-              <span>eeat content strategy experts</span> <Star className="fill-current" size={48} />
-              <span>advanced schema implementation</span> <Star className="fill-current" size={48} />
-              <span>technical seo performance audit</span> <Star className="fill-current" size={48} />
-              <span>high-roi organic search growth</span> <Star className="fill-current" size={48} />
-              <span>local seo for dentists</span> <Star className="fill-current" size={48} />
-              <span>lawyer seo experts</span> <Star className="fill-current" size={48} />
-              <span>ecommerce organic growth</span> <Star className="fill-current" size={48} />
-              <span>google search console audit</span> <Star className="fill-current" size={48} />
-              <span>semantic keyword mapping</span> <Star className="fill-current" size={48} />
-              <span>backlink profile cleanup</span> <Star className="fill-current" size={48} />
-              <span>content silo architecture</span> <Star className="fill-current" size={48} />
+            <div key={i} className="flex gap-12 text-3xl md:text-5xl font-black tracking-tighter uppercase items-center text-black px-12 font-sans font-black">
+              <span>professional seo services</span> <Star className="fill-current" size={36} />
+              <span>search engine optimization company</span> <Star className="fill-current" size={36} />
+              <span>organic traffic growth specialists</span> <Star className="fill-current" size={36} />
+              <span>technical seo audits</span> <Star className="fill-current" size={36} />
+              <span>hyper-localized google maps ranking</span> <Star className="fill-current" size={36} />
+              <span>json-ld structured schema schema</span> <Star className="fill-current" size={36} />
             </div>
           ))}
         </div>
       </div>
 
-      {/* Problem Section */}
+      {/* Section 2: The Problem / Opportunity */}
       <section className="py-32 border-b-[8px] border-black bg-white relative z-10 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <div>
-            <div className="inline-block bg-[#ff0099] text-white font-black px-6 py-2 border-4 border-black rounded-lg mb-8 transform -rotate-3 brutalist-shadow uppercase text-xl">
-              The Warning
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-16">
+            <div>
+              <div className="inline-block bg-[#ff0099] text-white font-black px-6 py-2 border-4 border-black rounded-lg mb-8 transform -rotate-3 brutalist-shadow uppercase text-xl">
+                The Dilemma
+              </div>
+              <h2 className="text-4xl md:text-6xl font-black text-black tracking-tighter leading-[0.9] uppercase mb-4">
+                Is your website invisible to your ideal customers?
+              </h2>
             </div>
-            <h2 className="text-5xl md:text-7xl font-black text-black tracking-tighter mb-8 leading-[0.9] lowercase">
-              the death of <br />
-              <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>traditional</span> <br />
-              keyword seo.
-            </h2>
+            
+            <div className="bg-[#ccff00]/10 border-4 border-black p-10 rounded-[40px] brutalist-shadow">
+              <p className="text-lg md:text-xl font-bold leading-relaxed text-black font-sans">
+                Many businesses invest heavily in web development but neglect the critical optimization needed to be found. Without a strategic approach to search engine optimization, even the most beautifully designed website remains undiscovered—buried beneath competitors who understand the importance of visibility.
+              </p>
+            </div>
           </div>
-          <div className="bg-[#ccff00]/10 border-4 border-black p-12 rounded-[40px] brutalist-shadow">
-            <p className="text-2xl font-bold leading-relaxed text-black">
-              If you are paying an agency to simply paste exact-match keywords into your content and buy spammy backlinks, you are burning your budget. Google's AI-driven Search Generative Experience (SGE) now understands context, not just text. Standard SEO tactics lead to algorithmic penalties, invisible search rankings, and a complete lack of verified trust in the eyes of the consumer.
+
+          <div className="border-t-4 border-black pt-16">
+            <h3 className="text-2xl md:text-3xl font-black text-black uppercase mb-10 tracking-tight">
+              The AbuQitmirLabs Difference:
+            </h3>
+            <p className="text-lg text-zinc-700 font-medium mb-10 max-w-4xl">
+              Our <strong className="text-black font-extrabold">technical SEO services</strong> start with a comprehensive audit that uncovers every opportunity for improvement. We analyze:
             </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                { title: "On-page factors", desc: "Content quality, keyword targeting, and meta-optimization strategies" },
+                { title: "Technical infrastructure", desc: "Site speed optimization, mobile responsiveness, and crawlability diagnostics" },
+                { title: "Backlink profile", desc: "Authority evaluation, topical relevance, and premium brand growth opportunities" },
+                { title: "User experience", desc: "Engagement metrics, bounce rates, and high-converting pathway optimization" }
+              ].map((factor, i) => (
+                <div key={i} className="bg-[#f4f4f5] border-4 border-black p-8 rounded-2xl brutalist-shadow">
+                  <span className="text-xs font-mono text-[#ff0099] font-bold block mb-2">// 0{i+1}</span>
+                  <h4 className="text-lg font-black text-black uppercase tracking-tight mb-2">{factor.title}</h4>
+                  <p className="text-sm font-bold leading-relaxed text-zinc-700">{factor.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 bg-black text-[#ccff00] p-8 border-4 border-black rounded-3xl brutalist-shadow text-center max-w-3xl mx-auto">
+              <p className="text-lg font-bold">
+                Our <strong className="text-white font-extrabold">SEO audit services</strong> provide a clear roadmap for improvement, prioritizing actions that deliver the highest ROI.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Solution Section */}
+      {/* Section 3: Our SEO Framework */}
       <section className="py-32 bg-[#ccff00] relative z-10 px-6 border-b-[8px] border-black shadow-[inset_0_20px_40px_rgba(0,0,0,0.1)]">
         <div className="max-w-7xl mx-auto">
           <div className="inline-block bg-black text-[#ccff00] font-black px-6 py-2 border-4 border-black rounded-lg mb-8 transform rotate-2 brutalist-shadow uppercase text-xl">
-            Our Solution
+            Our SEO Framework
           </div>
-          <h2 className="text-6xl md:text-[8rem] font-black text-black tracking-tighter mb-10 leading-[0.8] lowercase">
-            E-E-A-T and <br />
-            <span className="text-white">Entity Optimization.</span>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-1 gap-10 mb-16">
-             <div className="p-12 border-4 border-black bg-white rounded-3xl brutalist-shadow">
-                <p className="text-2xl font-bold leading-relaxed">
-                  We treat your business as a digital entity. Our strategy is built entirely around Google's E-E-A-T guidelines (Experience, Expertise, Authoritativeness, and Trustworthiness). We structure your website's architecture, schema markup, and content silos so search engines mathematically recognize you as the ultimate authority in your niche. For local businesses, we aggressively optimize your digital footprint to dominate the local Map Pack.
-                </p>
-             </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-             <div className="p-10 border-4 border-black bg-white rounded-3xl brutalist-shadow transition-transform hover:-translate-y-2 flex flex-col items-center text-center">
-                <Target className="w-16 h-16 text-black mb-6" />
-                <h3 className="text-2xl font-black text-black mb-4 uppercase tracking-tighter">Topical Authority</h3>
-                <p className="text-lg font-bold">We structure your website so engines mathematically recognize you as the ultimate authority in your niche.</p>
-             </div>
-             <div className="p-10 border-4 border-black bg-white rounded-3xl brutalist-shadow transition-transform hover:-translate-y-2 flex flex-col items-center text-center">
-                <MapPin className="w-16 h-16 text-black mb-6" />
-                <h3 className="text-2xl font-black text-black mb-4 uppercase tracking-tighter">Map Pack Dominance</h3>
-                <p className="text-lg font-bold">For local businesses, we aggressively optimize your digital footprint to dominate the local Map Pack results.</p>
-             </div>
-             <div className="p-10 border-4 border-black bg-white rounded-3xl brutalist-shadow transition-transform hover:-translate-y-2 flex flex-col items-center text-center">
-                <ShieldCheck className="w-16 h-16 text-black mb-6" />
-                <h3 className="text-2xl font-black text-black mb-4 uppercase tracking-tighter">EEAT Compliance</h3>
-                <p className="text-lg font-bold">Aligning every signal with Experience, Expertise, Authoritativeness, and Trustworthiness metrics.</p>
-             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Strategies Section */}
-      <section className="py-32 bg-white relative z-10 px-6 border-b-[8px] border-black">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-6xl md:text-8xl font-black text-black tracking-tighter mb-20 lowercase">
-            Our Core Search <br />
-            <span className="text-[#a855f7]">Visibility Strategies.</span>
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {strategies.map((item, idx) => (
-              <div key={idx} className="bg-[#f4f4f5] p-12 border-4 border-black rounded-[40px] brutalist-shadow hover:bg-[#ccff00]/20 transition-colors group flex flex-col items-center text-center">
-                <div className="mb-8 w-20 h-20 bg-white border-4 border-black rounded-2xl flex items-center justify-center group-hover:rotate-12 transition-transform">
-                  {item.icon}
-                </div>
-                <h3 className="text-3xl font-black text-black mb-6 uppercase tracking-tighter">
-                  {item.title}
-                </h3>
-                <p className="text-xl font-bold leading-relaxed">
-                  {item.content}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our 5-Step SEO Authority Process */}
-      <section className="py-32 bg-[#f4f4f5] relative z-10 px-6 border-b-[8px] border-black">
-        <div className="max-w-7xl mx-auto">
-          <div className="inline-block bg-[#a855f7] text-white font-black px-6 py-2 border-4 border-black rounded-lg mb-8 transform rotate-1 brutalist-shadow uppercase text-xl">
-            The Flow
-          </div>
-          <h2 className="text-6xl md:text-8xl font-black text-black tracking-tighter mb-20 lowercase">
-            Our 5-Step Organic <br />
-            <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>Authority Process.</span>
+          <h2 className="text-5xl md:text-7xl font-black text-black tracking-tighter mb-8 uppercase leading-[0.95]">
+            We follow a proven methodology <br />
+            <span className="text-white">combining technical rigor with strategy.</span>
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+          <div className="grid grid-cols-1 gap-8 mt-16 text-black">
             {[
               {
                 step: "01",
-                title: "Audit & Recon",
-                desc: "We perform a deep technical competitor crawl, exposing hidden crawl blockages and search intent gaps.",
-                icon: <Search className="w-8 h-8 text-black" />,
-                bg: "bg-[#ccff00]"
+                icon: <Search className="w-10 h-10" />,
+                title: "🔍 Discovery & Audit",
+                quote: "Understand before you act.",
+                desc: "We begin with a comprehensive analysis of your website, competitors, and market landscape. This phase includes:",
+                items: [
+                  "Technical SEO audit: Crawlability, indexing, site speed, mobile usability, and Core Web Vitals",
+                  "Content analysis: Assessing quality, relevance, keyword coverage, and gap identification",
+                  "Competitor benchmarking: Analyzing your competition's SEO strengths and weaknesses",
+                  "Backlink analysis: Evaluating your current authority and link building opportunities",
+                  "Conversion pathway analysis: Understanding how users interact with your site"
+                ],
+                deliverable: "Detailed SEO audit report with prioritized recommendations."
               },
               {
                 step: "02",
-                title: "Semantic Mapping",
-                desc: "We build topical coverage clusters and link silos, proving deep subject knowledge to search engines.",
-                icon: <Workflow className="w-8 h-8 text-black" />,
-                bg: "bg-[#ff0099]"
+                icon: <Target className="w-10 h-10" />,
+                title: "🎯 Keyword Strategy & Content Optimization",
+                quote: "The right words for the right audience.",
+                desc: "We develop a comprehensive keyword strategy that aligns with your business goals and audience intent:",
+                items: [
+                  "Keyword mapping: Assigning target keywords to specific pages",
+                  "Content optimization: Enhancing existing content for relevance and rankings",
+                  "Content gap analysis: Identifying opportunities for new content creation",
+                  "On-page optimization: Title tags, meta descriptions, headers, alt text, and internal linking",
+                  "Schema markup: Implementing structured data for enhanced search results"
+                ],
+                deliverable: "Keyword strategy document and optimized content briefs."
               },
               {
                 step: "03",
-                title: "On-Page Tuning",
-                desc: "We inject rich schema markup and adjust internal structures to match Google's latest natural language guidelines.",
-                icon: <Code2 className="w-8 h-8 text-black" />,
-                bg: "bg-[#a855f7]"
+                icon: <Code2 className="w-10 h-10" />,
+                title: "⚙️ Technical SEO Implementation",
+                quote: "The foundation of visibility.",
+                desc: "We optimize the technical architecture of your website to ensure search engines can crawl, index, and rank your content effectively:",
+                items: [
+                  "Core Web Vitals optimization: Improving loading speed, interactivity, and visual stability",
+                  "Mobile optimization: Ensuring seamless mobile experience",
+                  "Site architecture: Improving structure and navigation for better crawling",
+                  "XML sitemaps & robots.txt: Ensuring proper indexing",
+                  "Security enhancements: HTTPS migration and security best practices"
+                ],
+                deliverable: "Fully optimized technical infrastructure."
               },
               {
                 step: "04",
-                title: "Local Citations",
-                desc: "We aggressively optimize Google Business Profiles and establish consistent local NAP directories.",
-                icon: <MapPin className="w-8 h-8 text-black" />,
-                bg: "bg-[#00e1ff]"
+                icon: <Workflow className="w-10 h-10" />,
+                title: "🧠 Off-Page SEO & Authority Building",
+                quote: "Building trust through quality connections.",
+                desc: "We build your authority through strategic link acquisition and brand visibility:",
+                items: [
+                  "Link acquisition strategy: Earning high-quality backlinks from authoritative sources",
+                  "Digital PR: Securing media coverage and mentions",
+                  "Content distribution: Syndicating content across relevant platforms",
+                  "Directory submissions: Building citations and local signals",
+                  "Social signals: Leveraging social media for brand visibility"
+                ],
+                deliverable: "Monthly link acquisition reports and authority growth tracking."
               },
               {
                 step: "05",
-                title: "Backlink Authority",
-                desc: "We secure high-quality editorial mentions and maintain strict daily E-E-A-T audit verification.",
-                icon: <TrendingUp className="w-8 h-8 text-black" />,
-                bg: "bg-white"
+                icon: <BarChart3 className="w-10 h-10" />,
+                title: "📊 Performance Monitoring & Optimization",
+                quote: "Measure, refine, repeat.",
+                desc: "We continuously monitor performance and refine our approach to maximize results:",
+                items: [
+                  "Rank tracking: Monitoring keyword positions across search engines",
+                  "Traffic analytics: Analyzing user behavior and engagement",
+                  "Conversion tracking: Measuring leads, sales, and revenue impact",
+                  "Competitor monitoring: Tracking competitive landscape and market share",
+                  "Algorithm updates: Staying ahead of search engine changes"
+                ],
+                deliverable: "Monthly performance reports with actionable insights."
               }
-            ].map((p, i) => (
-              <div key={i} className="bg-white border-4 border-black p-8 rounded-3xl brutalist-shadow relative flex flex-col justify-between group">
-                <div>
-                  <div className={`w-14 h-14 ${p.bg} border-4 border-black rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                    {p.icon}
+            ].map((p, idx) => (
+              <div key={idx} className="bg-white border-4 border-black p-10 rounded-3xl brutalist-shadow">
+                <div className="flex flex-wrap items-center justify-between gap-4 border-b-2 border-black pb-4 mb-6">
+                  <div className="flex items-center gap-4">
+                    <span className="font-mono text-[10px] tracking-widest bg-black text-white px-3 py-1.5 rounded uppercase font-bold">PHASE {p.step}</span>
+                    <h3 className="text-xl md:text-2xl font-black">{p.title}</h3>
                   </div>
-                  <span className="text-sm font-mono text-zinc-400 font-bold block mb-4">PHASE {p.step}</span>
-                  <h4 className="text-2xl font-black text-black uppercase tracking-tight mb-4 leading-none">{p.title}</h4>
-                  <p className="text-base font-bold leading-relaxed">{p.desc}</p>
+                  <em className="text-zinc-500 font-serif font-black">"{p.quote}"</em>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                  <div className="lg:col-span-5">
+                    <p className="text-base font-bold text-zinc-800 font-sans mb-4 leading-relaxed">{p.desc}</p>
+                    <div className="p-4 bg-zinc-100 border-2 border-black rounded-xl">
+                      <span className="text-[10px] font-mono font-black uppercase tracking-wider text-[#ff0099] block mb-1">Deliverable Output //</span>
+                      <p className="text-xs font-mono font-extrabold text-black uppercase">{p.deliverable}</p>
+                    </div>
+                  </div>
+                  <div className="lg:col-span-7">
+                    <ul className="space-y-2">
+                      {p.items.map((item, i) => (
+                        <li key={i} className="flex gap-3 text-xs md:text-sm font-bold text-black font-sans leading-relaxed">
+                          <CheckCircle2 className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             ))}
@@ -402,34 +417,150 @@ const SEOPage = () => {
         </div>
       </section>
 
-      {/* Strategic USA Standard Pricing Blueprint */}
-      <SEOPricing />
+      {/* Section 4: Technology & Tools */}
+      <section className="py-32 bg-white relative z-10 px-6 border-b-[8px] border-black">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16">
+            <span className="text-xs font-mono text-zinc-500 block mb-2 font-black">// SECTION 4: SEO TOOLING</span>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tight text-black uppercase mb-4">
+              Technology &amp; Tools We Command
+            </h2>
+            <p className="text-base md:text-lg text-zinc-700 max-w-2xl font-bold font-sans lead-relaxed">
+              We leverage the most sophisticated tools in the industry to optimize, analyze, and measure your SEO performance.
+            </p>
+          </div>
 
-      {/* Tech Tools Section */}
-      <section className="py-32 bg-black text-white relative z-10 px-6 overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#ccff00]/20 blur-[150px] -translate-y-1/2 translate-x-1/2" />
-        <div className="max-w-7xl mx-auto relative z-10">
-          <h2 className="text-6xl md:text-8xl font-black text-white tracking-tighter mb-20 lowercase">
-            The SEO Tools <br />
-            <span className="text-[#ccff00]">We Command.</span>
-          </h2>
+          <div className="border-4 border-black rounded-3xl overflow-hidden brutalist-shadow">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="bg-black text-white font-mono text-xs uppercase tracking-widest border-b-4 border-black">
+                    <th className="p-6">Category</th>
+                    <th className="p-6">Tools</th>
+                    <th className="p-6">Purpose</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y-2 divide-black text-xs md:text-sm font-bold text-zinc-800">
+                  {techStack.map((row, idx) => (
+                    <tr key={idx} className="hover:bg-[#ccff00]/10 transition-colors bg-white">
+                      <td className="p-6 bg-zinc-100/50 font-mono text-xs uppercase tracking-wider text-black font-black border-r-2 border-black">{row.category}</td>
+                      <td className="p-6 border-r-2 border-black font-sans font-black text-black">{row.tools}</td>
+                      <td className="p-6 font-sans font-medium text-zinc-600">{row.purpose}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-12">
+      {/* Section 5: Why AbuQitmirLabs */}
+      <section className="py-32 bg-[#f4f4f5] relative z-10 px-6 border-b-[8px] border-black">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-20 text-center">
+            <span className="text-xs font-mono text-[#ff0099] mb-4 uppercase tracking-[0.4em] font-bold block">[ SECTION 5: INSTITUTIONAL REASON ]</span>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-black uppercase tracking-tight">
+              Why Choose AbuQitmirLabs
+            </h2>
+            <p className="mt-4 max-w-4xl mx-auto text-base md:text-lg text-zinc-700 font-bold leading-relaxed font-sans">
+              As a premier software development company headquartered in Karachi, Pakistan, AbuQitmirLabs brings a unique perspective to search engine optimization—one that combines technical development expertise with strategic SEO knowledge.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {[
-              { category: "Analytics & Tracking", items: ["Google Analytics 4 (GA4)", "Google Tag Manager", "Search Console"], icon: <BarChart3 /> },
-              { category: "Data & Auditing", items: ["Ahrefs", "SEMrush", "Screaming Frog"], icon: <Search /> },
-              { category: "Semantic Mapping", items: ["SurferSEO", "In-house NLP Entity tools"], icon: <TrendingUp /> }
-            ].map((stack, idx) => (
-              <div key={idx} className="bg-zinc-900 border-4 border-zinc-800 p-10 rounded-3xl brutalist-shadow shadow-zinc-800 flex flex-col items-center text-center">
-                <div className="text-[#ccff00] mb-8">
-                   {React.cloneElement(stack.icon as React.ReactElement<any>, { size: 64, strokeWidth: 2.5 })}
-                </div>
-                <h4 className="font-black text-2xl uppercase tracking-tighter mb-6 text-white">{stack.category}</h4>
-                <ul className="space-y-4">
-                  {stack.items.map(item => (
-                    <li key={item} className="flex items-center gap-4 text-xl font-bold text-zinc-400">
-                       <div className="w-3 h-3 bg-[#ccff00] border-2 border-black"></div>
-                       {item}
+              {
+                title: "Developer-Led SEO",
+                desc: "Unlike pure-play SEO agencies, our approach is built on a foundation of technical development. We understand the code behind your website, enabling us to implement technical optimizations that many agencies cannot."
+              },
+              {
+                title: "Holistic Digital Strategy",
+                desc: "We don't optimize your website in isolation. Our SEO services integrate with your entire digital strategy—aligning with web development, content creation, and marketing initiatives."
+              },
+              {
+                title: "Proven Results Across Industries",
+                desc: "From SaaS startups to established brands, we have delivered measurable results for clients across fintech, healthcare, retail, and logistics."
+              },
+              {
+                title: "Transparent Reporting",
+                desc: "Weekly progress updates, monthly performance reports, and clear communication—you always know exactly what we're doing and what results we're achieving."
+              }
+            ].map((strength, idx) => (
+              <div key={idx} className="bg-white border-4 border-black p-10 rounded-2xl brutalist-shadow relative overflow-hidden transition-transform hover:-translate-y-1">
+                <span className="text-[#ff0099] font-mono text-xs block mb-4 font-black">[ 0{idx + 1} // STRENGTH ]</span>
+                <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-white bg-black px-4 py-2 rounded mb-6 inline-block leading-none">
+                  {strength.title}
+                </h3>
+                <p className="text-zinc-800 text-sm font-bold leading-relaxed font-sans">{strength.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6: Pricing & Packages */}
+      <div id="seo-pricing">
+        <SEOPricing />
+      </div>
+
+      {/* Which Package Is Right For You - requested content in Section 6 */}
+      <section className="py-24 bg-black text-white relative z-10 px-6 border-b-[8px] border-black">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-xs font-mono text-[#ccff00] uppercase tracking-[0.3em] font-black block mb-4">// SELECT YOUR BLUEPRINT</span>
+            <h2 className="text-3xl md:text-5xl font-sans font-black tracking-tight uppercase">Which Package Is Right for You?</h2>
+          </div>
+
+          <div className="space-y-6">
+            {[
+              {
+                title: "Choose Local SEO Starter if:",
+                items: [
+                  "You're a small business or startup",
+                  "You need to establish local visibility",
+                  "You want to verify and optimize your Google Business Profile",
+                  "Your budget is under $500/month"
+                ],
+                customStyle: "border-l-4 border-cyan-400 pl-6"
+              },
+              {
+                title: "Choose Healthy Small Biz if:",
+                items: [
+                  "You're a growing business with existing local presence",
+                  "You want to dominate local search results",
+                  "You need ongoing review management and citation building",
+                  "Your budget is $1,000–$2,000/month"
+                ],
+                customStyle: "border-l-4 border-purple-400 pl-6"
+              },
+              {
+                title: "Choose Enterprise Agency if:",
+                items: [
+                  "You're an established brand in a competitive market",
+                  "You need full-scale technical SEO and authority building",
+                  "You require advanced schema markup and PR backlinks",
+                  "Your budget is $1,500+/month"
+                ],
+                customStyle: "border-l-4 border-fuchsia-400 pl-6"
+              },
+              {
+                title: "Choose DIY if:",
+                items: [
+                  "You have internal SEO resources",
+                  "You prefer to manage tools and platforms yourself",
+                  "You have a limited budget but technical capability"
+                ],
+                customStyle: "border-l-4 border-zinc-500 pl-6"
+              }
+            ].map((choice, i) => (
+              <div key={i} className={`bg-zinc-900 border border-white/5 p-8 rounded-2xl ${choice.customStyle}`}>
+                <h4 className="text-lg font-black text-white mb-4 uppercase tracking-tight">{choice.title}</h4>
+                <ul className="space-y-2">
+                  {choice.items.map((it, idx) => (
+                    <li key={idx} className="flex gap-2.5 text-xs md:text-sm text-neutral-350 font-sans font-medium">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00] shrink-0 mt-2" />
+                      <span>{it}</span>
                     </li>
                   ))}
                 </ul>
@@ -439,50 +570,28 @@ const SEOPage = () => {
         </div>
       </section>
 
+      {/* Country Marquee Component */}
       <CountryMarquee />
 
-      {/* CTA Section */}
-      <section className="bg-[#ccff00] py-48 relative z-10 px-6 text-center border-t-[8px] border-black">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-7xl md:text-9xl font-black text-black tracking-tighter mb-12 lowercase leading-[0.8]">
-            Dominate Every <br />
-            <span className="text-transparent" style={{ WebkitTextStroke: '3px black' }}>Search Intent.</span>
-          </h2>
-          
-          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
-            <a 
-              href="https://wa.me/923233260859"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative inline-flex items-center justify-center bg-black text-[#ccff00] text-2xl md:text-3xl font-black px-12 py-8 border-4 border-black rounded-full brutalist-shadow hover:scale-105 transition-transform duration-300 uppercase"
-            >
-               Request an SEO Strategy Plan
-            </a>
-            <div className="text-black font-black text-sm uppercase tracking-widest max-w-[250px] text-left border-l-4 border-black pl-6">
-               NEXT AUDIT SLOT: OCT 2026 / AVG. RESULTS TIME: 90-120 DAYS
-            </div>
+      {/* Section 7: Frequently Asked Questions */}
+      <section className="py-32 bg-[#f4f4f5] border-b-[8px] border-black relative z-10 px-6">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-16">
+            <span className="text-xs font-mono text-[#ff0099] mb-4 uppercase tracking-[0.5em] font-bold block">// SECTION 7: FAQ</span>
+            <h2 className="text-4xl md:text-6xl font-black text-black tracking-tighter uppercase leading-none">Frequently Asked Questions</h2>
           </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-32 bg-[#f4f4f5] border-t-[8px] border-black relative z-10">
-        <div className="container mx-auto px-6 max-w-3xl">
-          <h1 className="text-6xl font-black font-display mb-12 text-center uppercase tracking-tight">
-            FAQ
-          </h1>
 
           <div className="space-y-6">
             {faqData.map((faq, idx) => (
               <details key={idx} className="group bg-white border-4 border-black rounded-2xl brutalist-shadow open:bg-white transition-all duration-300">
-                <summary className="flex justify-between items-center p-6 cursor-pointer select-none group-open:bg-gray-100 rounded-t-xl transition-colors">
-                  <span className="text-xl font-bold font-display uppercase tracking-tighter">{faq.q}</span>
+                <summary className="flex justify-between items-center p-6 md:p-8 cursor-pointer select-none group-open:bg-gray-100 rounded-t-xl transition-colors">
+                  <span className="text-base md:text-xl font-bold font-display uppercase tracking-tighter">{faq.q}</span>
                   <div className="w-10 h-10 border-4 border-black rounded-full flex items-center justify-center transition-transform duration-300 group-open:rotate-45 bg-[#ccff00]">
                     <Plus className="w-6 h-6" />
                   </div>
                 </summary>
-                <div className="p-6 pt-0 border-t-4 border-black mt-4">
-                  <p className="text-xl font-bold leading-relaxed pt-6">
+                <div className="p-6 md:p-8 pt-0 border-t-4 border-black mt-4 font-sans font-bold">
+                  <p className="text-sm md:text-base leading-relaxed pt-6 text-zinc-700">
                     {faq.a}
                   </p>
                 </div>
@@ -491,8 +600,53 @@ const SEOPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Section 8: Call to Action */}
+      <section className="bg-[#ccff00] py-40 relative z-10 px-6 text-center">
+        <div className="max-w-4xl mx-auto">
+          <span className="text-xs font-mono text-black block mb-4 font-black uppercase tracking-[0.3em]">// SECTION 8: LAUNCH PROJECT</span>
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-black tracking-tighter mb-8 lowercase leading-[0.85] uppercase">
+            Ready to Master <span className="text-transparent" style={{ WebkitTextStroke: '3px black' }}>Search Engine Rankings?</span>
+          </h2>
+          
+          <p className="text-lg md:text-xl text-zinc-900 font-bold max-w-2xl mx-auto mb-16 leading-relaxed">
+            Stop competing in the shadows. Partner with AbuQitmirLabs to implement strategic SEO services that drive sustainable organic growth and establish your digital authority.
+          </p>
+
+          <div className="bg-white border-4 border-black p-8 md:p-10 rounded-3xl brutalist-shadow max-w-2xl mx-auto mb-16 text-left">
+            <h3 className="text-xl md:text-2xl font-black uppercase text-black mb-2">Request a Free SEO Audit</h3>
+            <p className="text-sm text-zinc-700 font-bold mb-6 font-sans">
+              Our team will analyze your website's current performance and provide a comprehensive assessment of opportunities for improvement—at no cost.
+            </p>
+            <div className="flex border-t-2 border-black pt-4 justify-between items-center text-xs font-mono text-black font-extrabold tracking-widest uppercase">
+              <span>Avg. Discovery Phase: 2 Weeks</span>
+              <span>·</span>
+              <span>Current Lead Time: 4 Weeks</span>
+            </div>
+          </div>
+
+          <p className="text-base text-zinc-800 font-bold max-w-xl mx-auto mb-10 leading-relaxed">
+            Let's discuss your SEO strategy. Our initial technical consultation and SEO audit are completely free.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-xl mx-auto">
+            <a 
+              href="https://wa.me/923233260859"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-black text-[#ccff00] text-xl font-black px-12 py-6 border-4 border-black rounded-full brutalist-shadow hover:scale-105 transition-transform duration-300 uppercase shrink-0"
+            >
+              Request an SEO Strategy Plan
+            </a>
+            
+            <div className="text-black font-black text-xs uppercase tracking-widest max-w-[200px] text-left border-l-4 border-black pl-6 pt-2 pb-2">
+               ESTABLISHED COGNITIVE SYSTEMS CO.
+            </div>
+          </div>
+        </div>
+      </section>
       
-      {/* Internal Linking / Related Services */}
+      {/* Related Services / Internal Siloing */}
       <section className="py-24 bg-[#f4f4f5] border-t-8 border-black relative z-10 px-6">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-xs font-mono text-black/40 mb-12 uppercase tracking-[0.4em] font-bold">[ RELATED_SYSTEMS ]</h3>
