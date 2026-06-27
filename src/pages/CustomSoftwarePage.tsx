@@ -241,32 +241,22 @@ const CustomSoftwarePage = () => {
               "@context": "https://schema.org",
               "@type": "HowTo",
               "name": "Our Custom Software Development Process",
-              "description": "A 5-step rigorous technical methodology to engineer robust, secure, and scalable software assets.",
+              "description": "Our 3-step rigorous technical methodology to engineer robust, secure, and scalable software assets.",
               "step": [
                 {
                   "@type": "HowToStep",
-                  "name": "Strategic Discovery",
-                  "text": "Analyze business operations to identify where custom software can drive the most ROI."
+                  "name": "Discovery & Architecture (Week 1-2)",
+                  "text": "We map your existing workflows, identify bottlenecks, and design a system architecture before writing a single line of code."
                 },
                 {
                   "@type": "HowToStep",
-                  "name": "Architecture & UI",
-                  "text": "Blueprint a scalable multi-tenant architecture and high-fidelity interface design."
+                  "name": "Iterative Build (Week 3-8)",
+                  "text": "Development happens in 2-week sprints. You see working features every two weeks, not a black box for three months."
                 },
                 {
                   "@type": "HowToStep",
-                  "name": "Clean Engineering",
-                  "text": "Produce modular, typed code adhering to clean architecture principles for performance."
-                },
-                {
-                  "@type": "HowToStep",
-                  "name": "Security Audits & QA",
-                  "text": "Perform stress tests and end-to-end security audits to ensure zero vulnerabilities."
-                },
-                {
-                  "@type": "HowToStep",
-                  "name": "Launch & Optimization",
-                  "text": "Manage seamless deployment and provide continuous optimization based on usage data."
+                  "name": "Testing & Deployment (Week 9-10)",
+                  "text": "Full QA cycle, load testing, and staged rollout to production with zero-downtime deployment practices."
                 }
               ]
             })
@@ -350,10 +340,8 @@ const CustomSoftwarePage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 className="mx-auto max-w-6xl text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-light tracking-tight text-white leading-tight"
               >
-                Tailored <span className="font-serif italic text-blue-400 font-normal">Software Solutions</span> <br />
-                <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl block mt-4 font-serif font-light tracking-tight text-zinc-300">
-                  Custom Software Development Company.
-                </span>
+                Enterprise-Grade Solutions <br />
+                <span className="font-serif italic text-blue-400 font-normal">Built Around Your Business Logic</span>
               </motion.h1>
               
               <motion.p 
@@ -362,8 +350,31 @@ const CustomSoftwarePage = () => {
                 transition={{ delay: 0.1 }}
                 className="mx-auto mt-10 max-w-3xl text-xl leading-relaxed text-slate-300 font-light font-sans"
               >
-                <strong>Abu Qitmir Labs</strong> is a premier <strong>custom software development company</strong> offering bespoke <strong>enterprise software development</strong> and <strong>custom web application development services</strong>. As leading <strong>software engineering consultants</strong> and a distinguished <strong>custom software development company in Karachi</strong>, Pakistan serving clients globally, we engineer robust digital architectures built for absolute performative scale.
+                Custom software isn't a template with your logo on it. At <strong>AbuQitmirLabs</strong>, we design systems around how your business actually operates, mapping your workflows before writing a single line of code. Our builds run in 2-week sprints — you see working features regularly, not a black box for months.
               </motion.p>
+
+              {/* Core Capabilities Specifications */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15 }}
+                className="mx-auto mt-12 max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
+                  {[
+                    "Enterprise ERP & Internal Tools Engineering",
+                    "Scalable SaaS Platform Architecture",
+                    "API Design & Third-Party Integrations",
+                    "Database Architecture (PostgreSQL, MongoDB)",
+                    "Fixed-Price & Dedicated Team Engagement Models"
+                  ].map((bullet, idx) => (
+                    <div key={idx} className="flex items-start gap-3 group">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0 group-hover:bg-[#ccff00] transition-colors duration-300" />
+                      <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
 
               {/* CTAs */}
               <div className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row">
@@ -583,7 +594,7 @@ const CustomSoftwarePage = () => {
         </div>
       </div>
 
-      {/* Problem Section (Bottleneck) */}
+      {/* Why Custom Over Off-the-Shelf? */}
       <section className="py-32 lg:py-48 px-6 relative z-10 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -592,17 +603,16 @@ const CustomSoftwarePage = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="inline-block bg-blue-600/10 text-blue-400 font-bold px-4 py-1 rounded-full border border-blue-500/20 mb-10 text-sm uppercase tracking-widest">
-                The Bottleneck
+              <div className="inline-block bg-[#ccff00]/10 text-[#ccff00] font-bold px-4 py-1 rounded-full border border-[#ccff00]/20 mb-10 text-sm uppercase tracking-widest font-mono">
+                [ STRATEGIC_CHOICE ]
               </div>
-              <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter mb-10 leading-[0.9] lowercase">
-                off-the-shelf <br />
-                <span className="text-transparent" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.4)' }}>software is</span> <br />
-                holding you back.
+              <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-10 leading-tight font-serif uppercase">
+                Why Custom Over <br />
+                <span className="font-serif italic text-blue-400">Off-the-Shelf?</span>
               </h2>
               <div className="flex items-center gap-4 text-xs font-mono text-slate-500 uppercase tracking-[0.4em] mb-12">
-                <Activity className="animate-pulse text-red-500" size={16} />
-                [ PERFORMANCE_LIMIT_DETECTED ]
+                <Activity className="animate-pulse text-[#ccff00]" size={16} />
+                [ SYSTEMS_ALIGNMENT_ACTIVE ]
               </div>
             </motion.div>
             
@@ -613,8 +623,11 @@ const CustomSoftwarePage = () => {
                className="bg-white/[0.03] border border-white/10 p-10 md:p-14 rounded-[2.5rem] backdrop-blur-xl relative"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-[60px] pointer-events-none" />
-              <p className="text-xl md:text-2xl font-light leading-relaxed text-slate-300">
-                Stop overpaying for rigid SaaS. We build custom, scalable software architectures that integrate with your existing workflow, reducing operational overhead by 40%. As your business grows, generic off-the-shelf solutions transform into expensive bottlenecks, forcing you to adapt your proprietary workflows to match restricted software templates.
+              <p className="text-xl md:text-2xl font-light leading-relaxed text-slate-300 mb-6 font-sans">
+                Off-the-shelf software forces your team to adapt to the tool. Custom software adapts to your team.
+              </p>
+              <p className="text-lg leading-relaxed text-slate-400 font-light font-sans">
+                If you're paying for features you don't use, or building workarounds for features you don't have — that's the signal it's time for a custom build.
               </p>
             </motion.div>
           </div>
@@ -708,7 +721,143 @@ const CustomSoftwarePage = () => {
             ))}
           </div>
 
-          <div className="mb-12">
+          {/* What We've Built Showcase */}
+          <div className="mb-32 mt-12 border-t border-white/10 pt-24">
+            <h3 className="text-xs font-mono text-[#ccff00] mb-12 uppercase tracking-[0.4em] font-bold text-center">[ FEATURED_BUILDS ]</h3>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24 bg-white/[0.02] border border-white/10 rounded-[3rem] p-8 md:p-16 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 blur-[120px] pointer-events-none rounded-full" />
+              <div className="lg:col-span-7 space-y-6">
+                <span className="text-xs font-mono text-blue-400 uppercase tracking-widest font-bold block">// SYSTEM_REVOLUTION</span>
+                <h3 className="text-3xl md:text-5xl font-serif font-light text-white leading-tight uppercase">
+                  What We've Built: <span className="font-serif italic text-blue-400">Custom Dispatch Engine</span>
+                </h3>
+                <p className="text-lg text-slate-300 leading-relaxed font-light">
+                  A regional logistics company came to us with a manual dispatch system run on spreadsheets — dispatchers were losing 3-4 hours daily on manual route assignment.
+                </p>
+                <p className="text-lg text-slate-300 leading-relaxed font-light">
+                  We built a custom dispatch engine with real-time tracking, cutting assignment time by 70% and eliminating double-bookings entirely.
+                </p>
+              </div>
+              <div className="lg:col-span-5 bg-black/40 border border-white/5 rounded-2xl p-8 flex flex-col justify-center h-full text-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-50" />
+                <span className="text-6xl md:text-7xl font-bold font-mono text-blue-400 mb-2 select-none">-70%</span>
+                <span className="text-sm font-mono text-gray-500 uppercase tracking-widest mb-4">Assignment Time</span>
+                <div className="h-px bg-white/10 my-4" />
+                <span className="text-2xl font-light text-white tracking-tight font-serif uppercase">Spreadsheets Eliminated</span>
+                <span className="text-xs font-mono text-slate-500 mt-2">// Automated Route Matrix</span>
+              </div>
+            </div>
+
+            {/* Cinematic TajweedPage Case Study */}
+            <div className="border-t border-white/10 pt-24 mt-24">
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <span className="text-xs font-mono text-[#ccff00] mb-4 uppercase tracking-[0.4em] font-bold block">[ CASE_STUDY ]</span>
+                <h3 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight uppercase">
+                  TajweedPage
+                </h3>
+                <p className="text-xl italic text-slate-400 font-serif font-light mt-4">
+                  AI-Powered Quran Recitation Platform
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                <div className="lg:col-span-5 space-y-12">
+                  <div className="space-y-4">
+                    <span className="text-xs font-mono text-slate-500 uppercase tracking-widest block">// THE_CLIENT</span>
+                    <h4 className="text-xl font-bold text-white uppercase tracking-tight">Perfecting Quranic Recitation</h4>
+                    <p className="text-slate-400 font-light leading-relaxed">
+                      TajweedPage is an online Quran academy offering professional, certified Tajweed and Quran teaching matched to global timezones, connecting students with native scholars to perfect recitation.
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <span className="text-xs font-mono text-red-400 uppercase tracking-widest block">// THE_CHALLENGE</span>
+                    <h4 className="text-xl font-bold text-white uppercase tracking-tight">The Scaling Bottleneck</h4>
+                    <p className="text-slate-400 font-light leading-relaxed">
+                      Traditional online Quran teaching platforms rely entirely on live teachers — students get no feedback between sessions, and scaling personalized correction to hundreds of students is nearly impossible.
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <span className="text-xs font-mono text-blue-400 uppercase tracking-widest block">// THE_SOLUTION</span>
+                    <h4 className="text-xl font-bold text-white uppercase tracking-tight">Intelligent Speech Diagnosis</h4>
+                    <p className="text-slate-400 font-light leading-relaxed">
+                      AbuQitmirLabs built TajweedPage AI — an Islamic AI Education Center combining real-time speech diagnosis, customized visual learning roadmaps, and instant RAG-powered knowledge support.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-7 bg-white/[0.01] border border-white/10 rounded-[3rem] p-8 md:p-12 space-y-8 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 blur-[80px] pointer-events-none rounded-full" />
+                  
+                  <h4 className="text-xs font-mono text-[#ccff00] uppercase tracking-widest font-bold">// KEY_FEATURES_ENGINEERED</h4>
+                  
+                  <div className="space-y-6">
+                    {[
+                      {
+                        title: "AI Tajweed Teacher Chat",
+                        desc: "A RAG-grounded chatbot answering Tajweed rule questions (Qalqalah, Noon Sakinah, Madd elongation) using authentic course content and FAQs."
+                      },
+                      {
+                        title: "Voice Recitation Analyzer",
+                        desc: "Automatic detection of pronunciation errors across Makharij (articulation points), Madd (elongation), and Ghunnah (nasalization)."
+                      },
+                      {
+                        title: "Personalized Learning Path",
+                        desc: "Adaptive roadmap tracking student progress level-by-level (e.g., Noorani Qaida stage)."
+                      },
+                      {
+                        title: "Homework Evaluator",
+                        desc: "Automated review layer supporting live Sheikh feedback sessions."
+                      },
+                      {
+                        title: "Hybrid AI + Human Model",
+                        desc: "AI reinforces patterns while certified scholars with authentic Ijazah chains provide final authorization on recitation."
+                      }
+                    ].map((feat, idx) => (
+                      <div key={idx} className="flex gap-4 items-start border-b border-white/5 pb-6 last:border-b-0 last:pb-0">
+                        <span className="text-xs font-mono text-blue-400 pt-1 font-bold">0{idx+1}</span>
+                        <div>
+                          <h5 className="font-bold text-white uppercase text-sm mb-1">{feat.title}</h5>
+                          <p className="text-slate-400 text-sm font-light leading-relaxed">{feat.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="pt-6 border-t border-white/5">
+                    <h4 className="text-xs font-mono text-slate-500 uppercase tracking-widest mb-4 font-bold">// TECH_HIGHLIGHTS</h4>
+                    <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono text-slate-400">
+                      <li className="bg-black/40 border border-white/5 p-3 rounded-xl flex items-center justify-center text-center">RAG-grounded AI</li>
+                      <li className="bg-black/40 border border-white/5 p-3 rounded-xl flex items-center justify-center text-center">Speech Analytics</li>
+                      <li className="bg-black/40 border border-white/5 p-3 rounded-xl flex items-center justify-center text-center">Session Continuity</li>
+                    </ul>
+                  </div>
+
+                  <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div className="space-y-1">
+                      <span className="text-xs font-mono text-emerald-400 uppercase tracking-widest font-bold block">// COGNITIVE_IMPACT</span>
+                      <p className="text-slate-300 text-sm font-light leading-relaxed">
+                        A scalable AI layer extending personalized Tajweed correction beyond live class hours — self-practice with instant feedback.
+                      </p>
+                    </div>
+                    <a 
+                      href="https://www.tajweedpage.com/ai" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex h-14 items-center gap-3 rounded-2xl bg-white px-8 text-sm font-bold text-black shadow-2xl transition hover:bg-slate-200 hover:scale-105 active:scale-95 uppercase tracking-tight shrink-0"
+                    >
+                      Visit Live Site
+                      <ArrowUpRight className="h-5 w-5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mb-12 border-t border-white/10 pt-24">
             <h3 className="text-xs font-mono text-slate-500 mb-8 uppercase tracking-[0.4em] font-bold text-center">[ WORK_IN_ACTION_AUDITS ]</h3>
           </div>
 
@@ -849,12 +998,11 @@ const CustomSoftwarePage = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                   >
-                      <span className="text-xs font-bold uppercase tracking-[0.3em] text-blue-500 mb-6 block">
+                      <span className="text-xs font-bold uppercase tracking-[0.3em] text-blue-500 mb-6 block font-mono">
                           The Development Lifecycle
                       </span>
-                      <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight">
-                          Our Proven 5-Step <br /> 
-                          <span className="text-zinc-600">Custom Software Process</span>
+                      <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight font-serif uppercase">
+                          Our Process
                       </h2>
                       <p className="mt-8 text-lg text-slate-400 leading-relaxed font-light">
                           Precision engineering requires a rigorous methodology. We follow an evidence-based development cycle to ensure your software is robust, secure, and ready to scale.
@@ -878,43 +1026,27 @@ const CustomSoftwarePage = () => {
                   <div className="relative z-10 pt-12 md:pt-0">
                     {[
                       {
-                          title: "Strategic Discovery",
-                          desc: "We analyze your business operations to find where custom software can drive the most ROI, identifying technical requirements and performance targets.",
+                          title: "1. Discovery & Architecture (Week 1-2)",
+                          desc: "We map your existing workflows, identify bottlenecks, and design a system architecture before writing a single line of code.",
                           icon: <Rocket className="w-5 h-5" />,
-                          progress: 92,
-                          label: "ROI_PROJECTION: 4.2x",
+                          progress: 100,
+                          label: "WORKFLOW_MAPPING: ACTIVE",
                           color: "blue"
                       },
                       {
-                          title: "Architecture & UI",
-                          desc: "We blueprint a scalable multi-tenant architecture and design a high-fidelity interface optimized for your specific operational workflows.",
-                          icon: <Layers className="w-5 h-5" />,
-                          progress: 88,
-                          label: "ARCH_STABILITY: MAX",
-                          color: "blue"
-                      },
-                      {
-                          title: "Clean Engineering",
-                          desc: "Our senior developers write modular, typed code adhering to clean architecture principles, ensuring high performance and ease of maintenance.",
+                          title: "2. Iterative Build (Week 3-8)",
+                          desc: "Development happens in 2-week sprints. You see working features every two weeks, not a black box for three months.",
                           icon: <Code2 className="w-5 h-5" />,
-                          progress: 95,
-                          label: "CODE_COVERAGE: 100%",
+                          progress: 100,
+                          label: "SPRINT_FREQUENCY: 2-WEEKS",
                           color: "blue"
                       },
                       {
-                          title: "Security Audits & QA",
-                          desc: "We subject the software to rigorous stress tests and end-to-end security audits to ensure zero vulnerabilities before deployment.",
+                          title: "3. Testing & Deployment (Week 9-10)",
+                          desc: "Full QA cycle, load testing, and staged rollout to production with zero-downtime deployment practices.",
                           icon: <ShieldCheck className="w-5 h-5" />,
                           progress: 100,
-                          label: "SECURITY_SCORE: A+",
-                          color: "blue"
-                      },
-                      {
-                          title: "Launch & Optimization",
-                          desc: "We manage the seamless deployment to your servers and provide continuous optimization based on real-world usage data and growing traffic.",
-                          icon: <Zap className="w-5 h-5" />,
-                          progress: 99,
-                          label: "UPTIME: 99.99%",
+                          label: "ZERO_DOWNTIME: GUARANTEED",
                           color: "blue"
                       }
                     ].map((step, idx) => {
@@ -1341,6 +1473,75 @@ const CustomSoftwarePage = () => {
               </AnimatePresence>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* Engagement Models */}
+      <section className="py-32 lg:py-48 px-6 bg-white/[0.01] border-t border-white/10 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-24 text-center max-w-3xl mx-auto">
+            <span className="text-xs font-mono text-[#ccff00] mb-6 uppercase tracking-[0.5em] font-bold block">[ WORK_PROTOCOLS ]</span>
+            <h2 className="text-5xl md:text-7xl font-serif font-light text-white tracking-tight leading-[1] mb-8 uppercase">
+              Engagement Models
+            </h2>
+            <p className="text-xl text-slate-400 font-light leading-relaxed font-sans">
+              We align our operational integration with your commercial and project delivery preferences. Choose the protocol that fits your engineering scope.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Fixed-Price Projects",
+                desc: "For clearly scoped builds with defined deliverables. Ideal for structured enterprise applications, initial platform iterations, or standalone technical modules.",
+                meta: "Best for clearly scoped builds",
+                icon: <Server className="w-5 h-5 text-blue-400" />
+              },
+              {
+                title: "Dedicated Team",
+                desc: "Monthly retainer for ongoing product development. Embed elite software engineers directly into your workflows to accelerate feature releases and maintain momentum.",
+                meta: "Ongoing product development",
+                icon: <Code2 className="w-5 h-5 text-[#ccff00]" />
+              },
+              {
+                title: "MVP Sprint",
+                desc: "6-8 week build for startups validating a new product. Rapid, hyper-focused development cycles to get your core value proposition into user hands at speed.",
+                meta: "6-8 week validation builds",
+                icon: <Zap className="w-5 h-5 text-purple-400" />
+              }
+            ].map((model, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="bg-white/[0.02] border border-white/10 p-10 rounded-[2.5rem] relative overflow-hidden group hover:bg-white/[0.04] hover:border-blue-500/20 transition-all flex flex-col justify-between"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] pointer-events-none rounded-full" />
+                
+                <div>
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-black border border-white/10 mb-8 shadow-inner">
+                    {model.icon}
+                  </div>
+                  <h3 className="text-2xl font-bold font-serif text-white tracking-tight uppercase mb-2">{model.title}</h3>
+                  <span className="text-xs font-mono text-slate-500 uppercase tracking-widest block mb-6">{model.meta}</span>
+                  <p className="text-slate-400 text-sm font-light leading-relaxed mb-8">{model.desc}</p>
+                </div>
+
+                <div className="pt-6 border-t border-white/5 flex justify-between items-center mt-auto">
+                  <a 
+                    href="https://wa.me/923233260859" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-xs font-bold uppercase tracking-widest text-blue-400 hover:text-white transition-colors inline-flex items-center gap-2"
+                  >
+                    Initiate Protocol <ArrowRight size={12} />
+                  </a>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

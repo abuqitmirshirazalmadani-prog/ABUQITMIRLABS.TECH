@@ -83,7 +83,11 @@ export default function HomePage() {
                 "https://www.facebook.com/profile.php?id=61583768706452",
                 "https://www.instagram.com/abuqitmirshirazalmadani/",
                 "https://www.youtube.com/@AbuQitmir",
-                "https://www.tiktok.com/@abuqitmirmohammadshiraz"
+                "https://www.tiktok.com/@abuqitmirmohammadshiraz",
+                "https://www.pinterest.com/abuqitmir",
+                "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani",
+                "https://www.goodfirms.co/company/abuqitmirlabs-tech",
+                "https://clutch.co/profile/abuqitmirlabstech"
               ],
               "knowsAbout": [
                 "Custom Software Development Company",

@@ -21,7 +21,11 @@ import {
   ShieldCheck,
   ExternalLink,
   MessageCircle,
-  Smartphone
+  Smartphone,
+  Pin,
+  HelpCircle,
+  Briefcase,
+  Award
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -335,7 +339,7 @@ const ContactPage = () => {
 
                   <div className="pt-10 border-t border-white/5">
                      <p className="font-mono text-xs text-[#00E5FF] mb-8 tracking-[0.4em] uppercase">Social_Matrix</p>
-                     <div className="grid grid-cols-3 sm:grid-cols-6 gap-4">
+                     <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-6 gap-3">
                         {[
                            { icon: <Facebook />, color: 'hover:bg-[#1877F2]', href: "https://www.facebook.com/profile.php?id=61583768706452" },
                            { icon: <MapPin />, color: 'hover:bg-[#4285F4]', href: "https://www.google.com/search?q=AbuQitmirLabs.Tech&stick=H4sIAAAAAAAA_-NgU1I1qEg0SUwyMkw2MzIySUkyTba0MqhITUtOMUgztzRLTTM2TjI3XMQq5JhUGphZkptZ5JOYVKwXkpqcAQAWzgp1PgAAAA&hl=en&mat=CZLYxD3dn4-XElYBTVDHnmXmYtE_z1-ukd4W15_4xSOvjTxlQ1o8WZE3DhyScxz25ZkTwHN99aYAJPksPmWrBMFOl-sP_YDLnxLlKt51TeOkcb_wt2bWebGPkDFcieVKmA&authuser=0" },
@@ -343,7 +347,11 @@ const ContactPage = () => {
                            { icon: <Youtube />, color: 'hover:bg-[#FF0000]', href: "https://www.youtube.com/@AbuQitmir" },
                            { icon: <Linkedin />, color: 'hover:bg-[#0A66C2]', href: "https://www.linkedin.com/in/abu-qitmir-697423390/" },
                            { icon: <Twitter />, color: 'hover:bg-[#1DA1F2]', href: "https://x.com/AbuQitmir" },
-                           { icon: <Smartphone />, color: 'hover:bg-[#FF0050]', href: "https://www.tiktok.com/@abuqitmirmohammadshiraz" }
+                           { icon: <Smartphone />, color: 'hover:bg-[#FF0050]', href: "https://www.tiktok.com/@abuqitmirmohammadshiraz" },
+                           { icon: <Pin />, color: 'hover:bg-[#E60023]', href: "https://www.pinterest.com/abuqitmir" },
+                           { icon: <HelpCircle />, color: 'hover:bg-[#B92B27]', href: "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani" },
+                           { icon: <Briefcase />, color: 'hover:bg-[#0F82C4]', href: "https://www.goodfirms.co/company/abuqitmirlabs-tech" },
+                           { icon: <Award />, color: 'hover:bg-[#D41058]', href: "https://clutch.co/profile/abuqitmirlabstech?_gl=1*1notqlc*_gcl_au*Nzg0MzYyMjI0LjE3Nzg1MzM3NjkuMjA3OTQ5MjcxNC4xNzc4NTMzODc1LjE3Nzg1MzQzNTA.*FPAU*Nzg0MzYyMjI0LjE3Nzg1MzM3Njk.*_ga*NzczMDM5MTg3LjE3Nzg1MzM3Njk.*_ga_D0WFGX8X3V*czE3ODIzMzYxNTAkbzUkZzEkdDE3ODIzMzYxNTAkbzUkZzEkdDE3ODIzMzYxODEkajI5JGwwJGgxMDQ0NTQyMjU.*_fplc*TnJmYjRHNWsxYTk2R1olMkZZOVVyd2VMU21OUjZiQ1RkRyUyRk1uVjMlMkJSb2JDMkh4RjVFNFBnbmFHeWNDWmZjTWY1YzhMJTJGdXpoZ0VYQWo0bDlHbHRUQzFHcHc3d3JSUndXck5VWEtBRGhWTHN1c2VuOGg4dkgzN1Vha2EzM2xNTlElM0QlM0Q." }
                         ].map((social, i) => (
                            <a 
                               key={i} 

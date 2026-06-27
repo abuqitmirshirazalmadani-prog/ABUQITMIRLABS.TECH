@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
     Menu, X, ChevronDown, ChevronRight, Phone, Mail, Search, 
-    Facebook, Twitter, Linkedin, Youtube 
+    Facebook, Twitter, Linkedin, Youtube, Pin, HelpCircle, Briefcase, Award 
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from './Logo';
@@ -245,11 +245,15 @@ const Header = () => {
 
                             {/* Mobile Menu Footer */}
                             <div className="p-8 border-t border-white/5 bg-zinc-950/50 mt-auto">
-                                <div className="flex justify-center gap-6 text-gray-500 mb-6">
-                                    <a href="#" className="hover:text-white transition-colors"><Facebook className="w-5 h-5" /></a>
-                                    <a href="#" className="hover:text-white transition-colors"><Twitter className="w-5 h-5" /></a>
-                                    <a href="#" className="hover:text-white transition-colors"><Linkedin className="w-5 h-5" /></a>
-                                    <a href="#" className="hover:text-white transition-colors"><Youtube className="w-5 h-5" /></a>
+                                <div className="flex flex-wrap justify-center gap-4 text-gray-500 mb-6">
+                                    <a href="https://www.facebook.com/profile.php?id=61583768706452" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Facebook className="w-5 h-5" /></a>
+                                    <a href="https://x.com/AbuQitmir" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Twitter className="w-5 h-5" /></a>
+                                    <a href="https://www.linkedin.com/in/abu-qitmir-697423390/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Linkedin className="w-5 h-5" /></a>
+                                    <a href="https://www.youtube.com/@AbuQitmir" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Youtube className="w-5 h-5" /></a>
+                                    <a href="https://www.pinterest.com/abuqitmir" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Pin className="w-5 h-5" /></a>
+                                    <a href="https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><HelpCircle className="w-5 h-5" /></a>
+                                    <a href="https://www.goodfirms.co/company/abuqitmirlabs-tech" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Briefcase className="w-5 h-5" /></a>
+                                    <a href="https://clutch.co/profile/abuqitmirlabstech?_gl=1*1notqlc*_gcl_au*Nzg0MzYyMjI0LjE3Nzg1MzM3NjkuMjA3OTQ5MjcxNC4xNzc4NTMzODc1LjE3Nzg1MzQzNTA.*FPAU*Nzg0MzYyMjI0LjE3Nzg1MzM3Njk.*_ga*NzczMDM5MTg3LjE3Nzg1MzM3Njk.*_ga_D0WFGX8X3V*czE3ODIzMzYxNTAkbzUkZzEkdDE3ODIzMzYxNTAkbzUkZzEkdDE3ODIzMzYxODEkajI5JGwwJGgxMDQ0NTQyMjU.*_fplc*TnJmYjRHNWsxYTk2R1olMkZZOVVyd2VMU21OUjZiQ1RkRyUyRk1uVjMlMkJSb2JDMkh4RjVFNFBnbmFHeWNDWmZjTWY1YzhMJTJGdXpoZ0VYQWo0bDlHbHRUQzFHcHc3d3JSUndXck5VWEtBRGhWTHN1c2VuOGg4dkgzN1Vha2EzM2xNTlElM0QlM0Q." target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Award className="w-5 h-5" /></a>
                                 </div>
                                 <p className="text-gray-600 text-[10px] text-center uppercase tracking-widest">
                                     © 2026 AbuQitmir Labs

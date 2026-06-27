@@ -192,7 +192,17 @@ export default function AIAgentDevelopmentPage() {
                 "name": "AbuQitmirLabs",
                 "url": "https://abuqitmirlabs.tech",
                 "logo": "https://abuqitmirlabs.tech/logo.png",
-                "sameAs": []
+                "sameAs": [
+                  "https://www.facebook.com/profile.php?id=61583768706452",
+                  "https://x.com/AbuQitmir",
+                  "https://www.linkedin.com/in/abu-qitmir-697423390/",
+                  "https://www.instagram.com/abuqitmirshirazalmadani/",
+                  "https://www.youtube.com/@AbuQitmir",
+                  "https://www.pinterest.com/abuqitmir",
+                  "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani",
+                  "https://www.goodfirms.co/company/abuqitmirlabs-tech",
+                  "https://clutch.co/profile/abuqitmirlabstech"
+                ]
               },
               {
                 "@context": "https://schema.org",

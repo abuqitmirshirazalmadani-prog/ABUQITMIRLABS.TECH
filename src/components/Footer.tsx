@@ -16,7 +16,11 @@ import {
     Star,
     ArrowRight,
     ExternalLink,
-    MessageCircle
+    MessageCircle,
+    Pin,
+    HelpCircle,
+    Briefcase,
+    Award
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
@@ -113,7 +117,7 @@ const Footer = () => {
                         </div>
 
                         {/* Socials */}
-                        <div className="flex items-center gap-4">
+                        <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 max-w-full md:max-w-3xl">
                             {[
                                 { icon: <Facebook className="w-6 h-6 outline-none" />, href: "https://www.facebook.com/profile.php?id=61583768706452" },
                                 { icon: <Star className="w-6 h-6 fill-[#ccff00]" />, href: "https://www.google.com/search?q=ABUQITMIRLABS.TECH&hl=en#lrd=0x3eb33ba408e04b4d:0xc40a6b7e6b772099,1,,,," },
@@ -121,14 +125,18 @@ const Footer = () => {
                                 { icon: <Instagram className="w-6 h-6" />, href: "https://www.instagram.com/abuqitmirshirazalmadani/" },
                                 { icon: <Youtube className="w-6 h-6" />, href: "https://www.youtube.com/@AbuQitmir" },
                                 { icon: <Linkedin className="w-6 h-6" />, href: "https://www.linkedin.com/in/abu-qitmir-697423390/" },
-                                { icon: <Twitter className="w-6 h-6" />, href: "https://x.com/AbuQitmir" }
+                                { icon: <Twitter className="w-6 h-6" />, href: "https://x.com/AbuQitmir" },
+                                { icon: <Pin className="w-6 h-6" />, href: "https://www.pinterest.com/abuqitmir" },
+                                { icon: <HelpCircle className="w-6 h-6" />, href: "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani" },
+                                { icon: <Briefcase className="w-6 h-6" />, href: "https://www.goodfirms.co/company/abuqitmirlabs-tech" },
+                                { icon: <Award className="w-6 h-6" />, href: "https://clutch.co/profile/abuqitmirlabstech?_gl=1*1notqlc*_gcl_au*Nzg0MzYyMjI0LjE3Nzg1MzM3NjkuMjA3OTQ5MjcxNC4xNzc4NTMzODc1LjE3Nzg1MzQzNTA.*FPAU*Nzg0MzYyMjI0LjE3Nzg1MzM3Njk.*_ga*NzczMDM5MTg3LjE3Nzg1MzM3Njk.*_ga_D0WFGX8X3V*czE3ODIzMzYxNTAkbzUkZzEkdDE3ODIzMzYxNTAkbzUkZzEkdDE3ODIzMzYxODEkajI5JGwwJGgxMDQ0NTQyMjU.*_fplc*TnJmYjRHNWsxYTk2R1olMkZZOVVyd2VMU21OUjZiQ1RkRyUyRk1uVjMlMkJSb2JDMkh4RjVFNFBnbmFHeWNDWmZjTWY1YzhMJTJGdXpoZ0VYQWo0bDlHbHRUQzFHcHc3d3JSUndXck5VWEtBRGhWTHN1c2VuOGg4dkgzN1Vha2EzM2xNTlElM0QlM0Q." }
                             ].map((social, i) => (
                                 <a 
                                     key={i} 
                                     href={social.href} 
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-14 h-14 rounded-2xl border-4 border-black bg-white flex items-center justify-center text-black hover:bg-black hover:text-[#ccff00] transition-all brutalist-shadow"
+                                    className="w-12 h-12 rounded-2xl border-4 border-black bg-white flex items-center justify-center text-black hover:bg-black hover:text-[#ccff00] transition-all brutalist-shadow"
                                 >
                                     {social.icon}
                                 </a>
