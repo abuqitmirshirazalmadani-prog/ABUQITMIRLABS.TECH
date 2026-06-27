@@ -184,19 +184,33 @@ const SEOPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-xl md:text-2xl text-zinc-800 text-center max-w-4xl mb-12 leading-relaxed font-bold lowercase"
+          className="text-xl md:text-2xl text-zinc-800 text-center max-w-4xl mb-12 leading-relaxed font-bold"
         >
-          In today's digital economy, visibility is everything. At AbuQitmirLabs, we deliver SEO services that drive sustainable organic growth—transforming your website into a powerful lead generation engine. As a premier search engine optimization company, we combine technical expertise, content strategy, and data-driven analytics to elevate your search rankings and build lasting digital authority.
+          Ranking isn't about stuffing keywords — it's about technical health plus content that actually answers search intent. We run full technical audits, fix crawl/indexing issues, and build content structures that Google can understand and trust.
         </motion.p>
 
-        <motion.p
+        {/* Core Capabilities Specifications */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15 }}
-          className="text-lg md:text-xl text-zinc-600 text-center max-w-3xl mb-12 leading-relaxed"
+          className="mx-auto mb-12 max-w-4xl border-y border-black/10 py-8 px-6 bg-white/50 backdrop-blur-sm rounded-lg"
         >
-          Our professional SEO services are designed for businesses that demand measurable results—whether you're a startup seeking market entry or an enterprise defending your competitive edge. We don't just optimize for algorithms; we optimize for your customers, ensuring your brand appears at the precise moment they need you.
-        </motion.p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
+            {[
+              "Technical SEO Audits & Crawl Error Fixes",
+              "On-Page & Semantic Entity Optimization",
+              "XML Sitemap & Schema Markup Implementation",
+              "Local SEO & Google Business Profile Optimization",
+              "Content Strategy Aligned with Search Intent"
+            ].map((bullet, idx) => (
+              <div key={idx} className="flex items-start gap-3 group">
+                <span className="w-1.5 h-1.5 rounded-full bg-black mt-2 shrink-0 group-hover:bg-[#ff0099] transition-colors duration-300" />
+                <span className="text-sm font-sans font-bold text-zinc-800 tracking-tight leading-relaxed group-hover:text-black transition-colors duration-300">{bullet}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
 
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
