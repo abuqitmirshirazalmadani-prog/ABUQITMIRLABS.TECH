@@ -289,8 +289,31 @@ export default function AIAgentDevelopmentPage() {
               transition={{ delay: 0.2, duration: 0.6 }}
               className="mx-auto mt-10 max-w-4xl text-lg md:text-xl leading-relaxed text-slate-300 font-light font-sans text-center"
             >
-              At AbuQitmirLabs, we architect AI agent development solutions that transform your operations—automating complex workflows, enhancing customer engagement, and unlocking new revenue streams.
+              We build AI agents that handle real tasks, not just chatbots that answer FAQs. Using Retrieval-Augmented Generation (RAG), our agents stay grounded in your actual business data, reducing hallucinations and giving accurate, context-aware responses.
             </motion.p>
+
+            {/* Core Capabilities Specifications */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 }}
+              className="mx-auto mt-12 max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
+                {[
+                  "Custom RAG-Based AI Agents & Chatbots",
+                  "Voice & Speech Recognition Integration",
+                  "Workflow Automation Agents (Internal Ops)",
+                  "LLM Integration (OpenAI, Anthropic, Open-Source Models)",
+                  "Domain-Specific Knowledge Base Training"
+                ].map((bullet, idx) => (
+                  <div key={idx} className="flex items-start gap-3 group">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0 group-hover:bg-[#ccff00] transition-colors duration-300" />
+                    <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
 
             {/* CTAs */}
             <div className="mt-14 flex flex-col items-center justify-center gap-6 sm:flex-row">
