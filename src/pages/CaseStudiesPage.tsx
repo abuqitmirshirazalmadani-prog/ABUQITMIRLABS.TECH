@@ -52,7 +52,7 @@ const CASE_STUDIES: CaseStudy[] = [
         impact: "Students now get instant feedback between live sessions instead of waiting a full week — extending the academy's teaching capacity without diluting quality.",
         technologies: ["RAG Pipeline", "Speech & Voice Analysis", "Session-state Persistence", "Next.js", "Firebase", "Tailwind CSS"],
         colorAccent: "from-emerald-500/10 via-transparent to-black",
-        image: "https://i.postimg.cc/DZzM6Rn2/Screenshot-2026-06-28-035322.png",
+        image: "https://i.postimg.cc/VkCrrNtc/Gemini-Generated-Image-t1ptnbt1ptnbt1pt.png",
         citeText: "AbuQitmirLabs. (2026). RAG-augmented speech diagnostics & hybrid AI tutor ecosystems for Quranic recitation. AbuQitmirLabs AI EdTech Deployments.",
         hasDetailedPage: true,
         link: "/case-studies/tajweedpage"
