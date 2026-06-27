@@ -25,27 +25,35 @@ interface CaseStudy {
     citeText: string;
     hasDetailedPage?: boolean;
     link?: string;
+    bullets?: string[];
 }
 
 const CASE_STUDIES: CaseStudy[] = [
     {
         id: "tajweedpage-seo",
-        title: "The World's First AI-Powered Quran Learning Platform",
-        client: "TajweedPage Online Academy",
+        title: "TajweedPage — AI-Powered Quran Recitation Platform",
+        client: "TajweedPage",
         year: "2026",
-        industry: "AI EdTech & Semantic SEO",
+        industry: "AI Islamic EdTech",
         metrics: [
-            { label: "Deployment Duration", value: "10 Days" },
-            { label: "Course Modules Live", value: "7+" },
-            { label: "Target English Markets", value: "20+" }
+            { label: "Feedback Delay", value: "Instant" },
+            { label: "Teaching Capacity", value: "Extended" },
+            { label: "Accuracy", value: "Verified" }
         ],
-        challenge: "Competing with heavily funded global players, TajweedPage Online Academy had elite scholarship but zero online placement. They required instant authority and a first-of-its-kind interactive Tajweed RAG helper.",
-        solution: "We engineered a robust Next.js SSR architecture localized for 20+ markets, paired with structured schema graph markups and a strict, verified retrieval-augmented training (RAG) assistant responding with zero hallucinations.",
-        impact: "Expanded and converted premium global registrations, launching the first fully compliant scholarly Islamic AI workspace inside a record 10-day sprint.",
-        technologies: ["Next.js 14", "RAG AI Agent", "Google Schema Markup", "Firebase Systems", "Vercel Edge Rendering", "Tailwind CSS"],
+        challenge: "Live-only teaching models can't give students feedback between sessions. Scaling personalized pronunciation correction to hundreds of students isn't possible with human teachers alone.",
+        solution: "We engineered TajweedPage AI, combining real-time speech diagnostics with structured learning paths:",
+        bullets: [
+            "AI Tajweed Teacher Chat — a RAG-grounded chatbot trained on the platform's own course content, answering Tajweed rule questions (Qalqalah, Noon Sakinah, Madd) with source-grounded accuracy",
+            "Voice Recitation Analyzer — automatic detection of pronunciation errors across Makharij (articulation), Madd (elongation), and Ghunnah (nasalization)",
+            "Personalized Learning Path — adaptive progress tracking by skill level",
+            "Homework Evaluator — automated review layer supporting live Sheikh feedback sessions",
+            "Hybrid AI + Human Model — AI reinforces daily practice while certified scholars with Ijazah chains give final recitation authorization"
+        ],
+        impact: "Students now get instant feedback between live sessions instead of waiting a full week — extending the academy's teaching capacity without diluting quality.",
+        technologies: ["RAG Pipeline", "Speech & Voice Analysis", "Session-state Persistence", "Next.js", "Firebase", "Tailwind CSS"],
         colorAccent: "from-emerald-500/10 via-transparent to-black",
-        image: "https://images.unsplash.com/photo-1543191878-b677a28e85dc?q=80&w=1600&auto=format&fit=crop",
-        citeText: "AbuQitmirLabs. (2026). RAG-augmented architectural design inside global Islamic education pipelines. AbuQitmirLabs EdTech Deployments.",
+        image: "https://i.postimg.cc/DZzM6Rn2/Screenshot-2026-06-28-035322.png",
+        citeText: "AbuQitmirLabs. (2026). RAG-augmented speech diagnostics & hybrid AI tutor ecosystems for Quranic recitation. AbuQitmirLabs AI EdTech Deployments.",
         hasDetailedPage: true,
         link: "/case-studies/tajweedpage"
     },
@@ -198,7 +206,27 @@ const CinematicSection = ({ study, index }: { study: CaseStudy, index: number })
                         </div>
                         <div>
                             <span className="text-white font-bold font-sans text-[11px] tracking-wider block uppercase mb-1">Architecture &amp; Solution</span>
-                            <p>{study.solution}</p>
+                            <p className="mb-4">{study.solution}</p>
+                            {study.bullets && study.bullets.length > 0 && (
+                                <ul className="space-y-3.5 pl-2 border-l border-zinc-850 mt-4">
+                                    {study.bullets.map((bullet, bIdx) => {
+                                        const parts = bullet.split(" — ");
+                                        if (parts.length > 1) {
+                                            return (
+                                                <li key={bIdx} className="text-xs text-zinc-400 leading-relaxed group">
+                                                    <span className="text-[#ccff00] font-sans font-semibold tracking-wide block sm:inline mr-1">{parts[0]}</span>
+                                                    <span className="text-zinc-400 group-hover:text-zinc-300 transition-colors duration-200">— {parts[1]}</span>
+                                                </li>
+                                            );
+                                        }
+                                        return (
+                                            <li key={bIdx} className="text-xs text-zinc-400 leading-relaxed">
+                                                {bullet}
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            )}
                         </div>
                         <div>
                             <span className="text-[#ccff00] font-bold font-sans text-[11px] tracking-wider block uppercase mb-1">Bespoke Strategic Impact</span>
@@ -365,11 +393,34 @@ export default function CaseStudiesPage() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="text-zinc-500 text-lg md:text-xl font-medium tracking-wide max-w-2xl mx-auto leading-relaxed"
+                            className="text-zinc-400 text-lg md:text-xl font-light tracking-wide max-w-3xl mx-auto leading-relaxed font-sans"
                         >
-                            Explore three core technical breakthroughs. True software craftsmanship doesn’t require loud shouting — we let complete transparent architectures and radical white space prove our elite tier.
+                            We don't publish polished portfolio pieces with the hard parts edited out. Each case study here covers a real project we built the problem, our actual technical approach, and what shipped. Our work spans AI products, custom platforms, and growth-focused engineering.
                         </motion.p>
                     </div>
+
+                    {/* Core Case Study Criteria Specifications */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.25 }}
+                        className="mx-auto max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg"
+                    >
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
+                            {[
+                                "Real Client Projects, Not Mockups",
+                                "AI & RAG-Powered Product Builds",
+                                "Custom Platform Engineering Case Studies",
+                                "Technical Breakdown of Our Approach",
+                                "Measurable Outcomes Where Available"
+                            ].map((bullet, idx) => (
+                                <div key={idx} className="flex items-start gap-3 group">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0 group-hover:bg-[#ccff00] transition-colors duration-300" />
+                                    <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </motion.div>
 
                     {/* Scroll suggestion */}
                     <motion.div 
