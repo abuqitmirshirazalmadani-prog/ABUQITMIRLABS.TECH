@@ -238,11 +238,31 @@ const MobileAppDevelopmentPage = () => {
           transition={{ delay: 0.1 }}
           className="text-base md:text-lg text-neutral-400 text-center max-w-4xl mb-12 leading-relaxed font-light font-sans"
         >
-          <strong className="text-white block text-lg md:text-xl font-normal mb-6">We engineer high-fidelity, sub-second latency mobile software that keeps users highly engaged.</strong>
-          At AbuQitmirLabs, we don't just build apps—we architect digital experiences that drive business growth. As a premier custom mobile app development company, we specialize in crafting native iOS and Android applications alongside high-performance cross-platform Flutter solutions. Our focus is on pixel-perfect interfaces, zero-friction user journeys, and scalable architectures that transform your vision into a market-leading product.
-          <br /><br />
-          Businesses across the globe trust us as their go-to software development company for enterprise-grade mobility solutions that deliver measurable ROI.
+          We build native and cross-platform mobile apps that survive real-world usage, not just demo conditions. From idea to App Store/Play Store approval, our team handles design, development, and post-launch support so your app actually reaches users.
         </motion.p>
+
+        {/* Core Capabilities Specifications */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+          className="mx-auto mb-12 max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
+            {[
+              "Native iOS (Swift) & Android (Kotlin) Development",
+              "Cross-Platform Builds with React Native & Flutter",
+              "App Store & Google Play Submission Support",
+              "Push Notifications, Payments & Offline-Mode Integration",
+              "Post-Launch Maintenance & Version Updates"
+            ].map((bullet, idx) => (
+              <div key={idx} className="flex items-start gap-3 group">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0 group-hover:bg-[#ccff00] transition-colors duration-300" />
+                <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
 
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
