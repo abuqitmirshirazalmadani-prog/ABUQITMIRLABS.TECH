@@ -358,10 +358,33 @@ Do not sign a website contract without these protective legal terms.
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-lg md:text-xl text-neutral-400 text-center max-w-2xl mb-12 leading-relaxed font-light"
+          className="text-lg md:text-xl text-neutral-400 text-center max-w-3xl mb-12 leading-relaxed font-light font-sans"
         >
-          Stop losing customers to slow loading screens. We engineer high-performance, secure, and infinitely scalable websites using modern Jamstack and headless CMS architectures.
+          Your website is often the first interaction a customer has with your brand. We build fast, responsive, SEO-ready websites and web apps — from marketing sites to complex dashboards — using modern frameworks that won't slow down or break as you scale.
         </motion.p>
+
+        {/* Core Capabilities Specifications */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+          className="mx-auto mb-12 max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
+            {[
+              "Responsive Website Design & Development",
+              "React, Next.js & Vue-Based Web Apps",
+              "E-Commerce Builds (Shopify, Custom Storefronts)",
+              "Headless CMS Integration",
+              "Core Web Vitals & Performance Optimization"
+            ].map((bullet, idx) => (
+              <div key={idx} className="flex items-start gap-3 group">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0 group-hover:bg-[#ccff00] transition-colors duration-300" />
+                <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
 
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
