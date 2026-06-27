@@ -292,19 +292,33 @@ const GraphicsDesignPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-lg md:text-xl font-light text-zinc-300 max-w-3xl leading-relaxed mb-8"
+              className="text-lg md:text-xl font-light text-zinc-300 max-w-3xl leading-relaxed mb-8 font-sans"
             >
-              In today's digital landscape, your brand's visual identity is its most powerful asset—a silent ambassador that communicates your values, builds trust, and captivates your audience before a single word is spoken. At AbuQitmirLabs, we deliver graphics design services that transform your vision into compelling visual narratives. As a professional graphic design studio, we combine artistic creativity with strategic thinking to create designs that captivate, communicate, and convert.
+              Good design communicates before a single word is read. We create visual identities and assets that match your brand's actual positioning not generic stock-template aesthetics across digital and print formats.
             </motion.p>
 
-            <motion.p 
+            {/* Core Capabilities Specifications */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25, duration: 0.8 }}
-              className="text-base md:text-lg font-light text-zinc-400 max-w-2xl leading-relaxed mb-12"
+              transition={{ delay: 0.25 }}
+              className="mb-12 max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg"
             >
-              Our custom graphics design solutions are tailored to your brand's unique personality—whether you need a complete visual identity overhaul, a user-centric web interface, or marketing collateral that stands out in a crowded market. We don't just create designs; we build visual experiences that resonate with your audience and elevate your brand.
-            </motion.p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
+                {[
+                  "Brand Identity & Logo Design",
+                  "Social Media & Marketing Creative Assets",
+                  "UI/UX Visual Design for Web & Apps",
+                  "Pitch Deck & Presentation Design",
+                  "Packaging & Print Design"
+                ].map((bullet, idx) => (
+                  <div key={idx} className="flex items-start gap-3 group">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0 group-hover:bg-[#ccff00] transition-colors duration-300" />
+                    <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
 
             {/* Buttons */}
             <motion.div 
