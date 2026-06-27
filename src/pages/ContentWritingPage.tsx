@@ -401,17 +401,34 @@ const ContentWritingPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
-                className="max-w-4xl mx-auto space-y-6 text-neutral-300 font-light leading-relaxed mb-16"
+                className="max-w-4xl mx-auto text-neutral-300 font-light leading-relaxed mb-12"
             >
-              <p className="text-xl md:text-2xl font-serif italic text-white/95 leading-normal">
-                "In the digital economy, content is the currency of connection."
+              <p className="text-base md:text-lg text-neutral-400 max-w-3xl mx-auto font-sans">
+                Content that ranks and content that converts aren't always the same thing — we write for both. Our writers research your industry deeply enough to write specifics, not filler, whether it's technical documentation or marketing copy.
               </p>
-              <p className="text-base md:text-lg text-neutral-400 max-w-3xl mx-auto">
-                At AbuQitmirLabs, we deliver <strong className="text-white font-medium">content writing services</strong> that transform your ideas into compelling narratives—captivating your audience, building brand authority, and driving measurable results. As a <strong className="text-white font-medium">professional content writing</strong> agency, we combine strategic thinking with creative excellence to craft content that resonates, converts, and endures.
-              </p>
-              <p className="text-sm md:text-base text-neutral-500 max-w-2xl mx-auto border-t border-white/5 pt-6">
-                Our <strong className="text-[#ccff00] font-medium">SEO content writing</strong> solutions are tailored to your brand's unique voice and business objectives—whether you need blog posts that rank, website copy that converts, or whitepapers that establish thought leadership. We don't just write; we create content ecosystems that engage your audience and elevate your brand.
-              </p>
+            </motion.div>
+
+            {/* Core Capabilities Specifications */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 }}
+              className="mx-auto mb-16 max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
+                {[
+                  "SEO-Optimized Blog & Article Writing",
+                  "Website & Landing Page Copywriting",
+                  "Technical Documentation & Case Studies",
+                  "Email & Marketing Sequence Writing",
+                  "Social Media Content Calendars"
+                ].map((bullet, idx) => (
+                  <div key={idx} className="flex items-start gap-3 group">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0 group-hover:bg-[#ccff00] transition-colors duration-300" />
+                    <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
+                  </div>
+                ))}
+              </div>
             </motion.div>
 
             <motion.div 
