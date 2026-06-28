@@ -88,6 +88,43 @@ const BlogPage = () => {
                 <meta name="twitter:title" content="Blog & Tech Journal | ABUQITMIRLABS" />
                 <meta name="twitter:description" content="Explore technical insights, AI trends, and software engineering strategy at the ABUQITMIRLABS .TECH Journal." />
                 <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
+
+                {/* Schema Markup */}
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "CollectionPage",
+                        "name": "Tech Blog & AI Insights",
+                        "url": "https://abuqitmirlabs.tech/blog",
+                        "description": "Explore technical insights, AI trends, and software engineering strategy at the ABUQITMIRLABS .TECH Journal.",
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "ABUQITMIRLABS .TECH",
+                            "url": "https://abuqitmirlabs.tech",
+                            "logo": "https://abuqitmirlabs.tech/logo.png"
+                        }
+                    })}
+                </script>
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "BreadcrumbList",
+                        "itemListElement": [
+                            {
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "Home",
+                                "item": "https://abuqitmirlabs.tech"
+                            },
+                            {
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Blog",
+                                "item": "https://abuqitmirlabs.tech/blog"
+                            }
+                        ]
+                    })}
+                </script>
             </Helmet>
             <Header />
             <Breadcrumbs />
