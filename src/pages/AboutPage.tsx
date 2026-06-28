@@ -92,12 +92,12 @@ const AboutPage = () => {
     <div className="bg-[#050505] text-zinc-400 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]/10 selection:text-white">
       <Helmet>
         <title>About Us | Professional Software Studio — Karachi, Pakistan</title>
-        <meta name="description" content="Meet Abu Qitmir Mohammad Shiraz Al- Madani, founder of ABUQITMIRLABS.TECH based in Karachi. We are a premier software engineering studio specialized in high-performance web systems, custom mobile apps, and robust AI implementations." />
+        <meta name="description" content="Meet Abu Qitmir Mohammad Shiraz Al- Madani, founder of AbuQitmirLabs based in Karachi. We are a premier software engineering studio specialized in high-performance web systems, custom mobile apps, and robust AI implementations." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/about" />
         
         {/* OG Tags */}
         <meta property="og:title" content="About Us | Professional Software Studio — Karachi, Pakistan" />
-        <meta property="og:description" content="Meet Abu Qitmir Mohammad Shiraz Al- Madani, founder of ABUQITMIRLABS.TECH. Based in Karachi, we engineer premium digital solutions worldwide." />
+        <meta property="og:description" content="Meet Abu Qitmir Mohammad Shiraz Al- Madani, founder of AbuQitmirLabs. Based in Karachi, we engineer premium digital solutions worldwide." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/about" />
         <meta property="og:type" content="profile" />
         <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
@@ -112,18 +112,18 @@ const AboutPage = () => {
                 "@id": "https://abuqitmirlabs.tech/about#webpage",
                 "url": "https://abuqitmirlabs.tech/about",
                 "name": "About AbuQitmirLabs and Founder Mohammad Shiraz Almadani",
-                "description": "Meet Abu Qitmir Mohammad Shiraz Al- Madani, founder of AbuQitmirLabs .TECH based in Karachi. We are a premier high-performance web, mobile app, and AI development agency.",
+                "description": "Meet Abu Qitmir Mohammad Shiraz Al- Madani, founder of AbuQitmirLabs based in Karachi. We are a premier high-performance web, mobile app, and AI development agency.",
                 "isPartOf": {
                   "@type": "WebSite",
                   "@id": "https://abuqitmirlabs.tech/#website",
                   "url": "https://abuqitmirlabs.tech/",
-                  "name": "AbuQitmirLabs .TECH"
+                  "name": "AbuQitmirLabs"
                 }
               },
               {
                 "@type": "ProfessionalService",
                 "@id": "https://abuqitmirlabs.tech/#organization",
-                "name": "AbuQitmirLabs .TECH",
+                "name": "AbuQitmirLabs",
                 "url": "https://abuqitmirlabs.tech",
                 "logo": "https://abuqitmirlabs.tech/logo.png",
                 "image": "https://abuqitmirlabs.tech/logo.png",
@@ -191,7 +191,7 @@ const AboutPage = () => {
                 transition={{ delay: 0.4 }}
                 className="text-lg md:text-xl font-light text-zinc-400 max-w-3xl leading-relaxed"
               >
-                ABUQITMIRLABS.TECH is a premium software boutique founded by <span className="text-white font-medium">Abu Qitmir Mohammad Shiraz Al- Madani</span> in Karachi, Pakistan. Since our founding in <span className="text-white font-semibold">2021</span>, we've dedicated ourselves to engineering lightning-fast digital solutions with unparalleled visual depth.
+                AbuQitmirLabs is a premium software boutique founded by <span className="text-white font-medium">Abu Qitmir Mohammad Shiraz Al- Madani</span> in Karachi, Pakistan. Since our founding in <span className="text-white font-semibold">2021</span>, we've dedicated ourselves to engineering lightning-fast digital solutions with unparalleled visual depth.
               </motion.p>
           </div>
 
@@ -227,7 +227,7 @@ const AboutPage = () => {
                 >
                     <img 
                         src="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" 
-                        alt="Abu Qitmir Mohammad Shiraz Al- Madani - Founder & Architect at ABUQITMIRLABS" 
+                        alt="Abu Qitmir Mohammad Shiraz Al- Madani - Founder & Architect at AbuQitmirLabs" 
                         className="w-full h-full object-cover rounded-[2.8rem] transition-transform duration-1000 hover:scale-105"
                         loading="lazy"
                         decoding="async"
@@ -260,7 +260,7 @@ const AboutPage = () => {
  
                 <div className="space-y-6 text-zinc-400 text-lg font-light leading-relaxed">
                     <p className="border-l border-[#ccff00]/40 pl-6 italic text-zinc-300">
-                       "At ABUQITMIRLABS.TECH, generic templates are forbidden. We design bespoke, lightning-fast digital pipelines configured to convert international leads into permanent digital loyalty."
+                       "At AbuQitmirLabs, generic templates are forbidden. We design bespoke, lightning-fast digital pipelines configured to convert international leads into permanent digital loyalty."
                     </p>
                     <p>
                         Under Abu Qitmir Mohammad Shiraz Al- Madani’s precise technical direction, our Karachi studio has scaled to accommodate the digital demands of complex global platforms. Combining a comprehensive <span className="text-white font-medium">M.B.A. in Commerce from Karachi University (Graduated 2010)</span> with extensive hands-on expertise, Abu Qitmir Mohammad Shiraz Al- Madani blends deep business strategy with cutting-edge engineering.
@@ -323,7 +323,8 @@ const AboutPage = () => {
               
               <div className="space-y-6 text-zinc-400 font-light leading-relaxed">
                 <p>
-                  ABUQITMIRLABS.TECH isn’t a solo developer workshop. Under the direct architect oversight of Abu Qitmir Mohammad Shiraz Al- Madani, we have built a collaborative studio consisting of elite specialized professionals. 
+                  AbuQitmirLabs isn’t a solo developer workshop. Under the direct architect oversight of Abu Qitmir Mohammad Shiraz Al- Madani, we have built a collaborative studio consisting of elite specialized professionals. 
+                  Hamari <a href="/custom-software" className="text-blue-400 hover:underline">Custom Software</a> services can also be bundled with custom <a href="/ai-agent-development" className="text-blue-400 hover:underline">AI Agents</a> to optimize your workflows beautifully. Our entire collective works together from our central hub in Karachi, Pakistan.
                 </p>
                 <p>
                   Our internal collective houses senior full-stack software architects, certified systems engineers, dedicated UI/UX designers, experienced SEO specialists, content curators, and QA protocols.
@@ -371,7 +372,7 @@ const AboutPage = () => {
                     <div>
                       <h4 className="text-xs font-mono uppercase text-zinc-500">OFFICE ADDRESS</h4>
                       <p className="text-sm text-zinc-300 font-sans mt-0.5 font-light leading-relaxed">
-                        8/15, 3 37A Rd, Shah Khalid Colony Sector 37 A Landhi Town, Karachi, 75160
+                        8/15, abuqitmirlabs.tech, 3 37A Rd, Shah Khalid Colony Sector 37 A Landhi Town, Karachi, 75160
                       </p>
                     </div>
                   </div>

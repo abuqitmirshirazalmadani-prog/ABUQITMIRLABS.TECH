@@ -129,7 +129,7 @@ const MobileAppDevelopmentPage = () => {
               "description": "We engineer stellar mobile software for iOS and Android using Flutter cross-platform and Kotlin/Swift native technologies with offline database synchronicity.",
               "provider": {
                 "@type": "Organization",
-                "name": "ABUQITMIRLABS .TECH",
+                "name": "AbuQitmirLabs",
                 "url": "https://abuqitmirlabs.tech"
               },
               "serviceType": "Mobile Application Engineering",
@@ -238,7 +238,7 @@ const MobileAppDevelopmentPage = () => {
           transition={{ delay: 0.1 }}
           className="text-base md:text-lg text-neutral-400 text-center max-w-4xl mb-12 leading-relaxed font-light font-sans"
         >
-          We build native and cross-platform mobile apps that survive real-world usage, not just demo conditions. From idea to App Store/Play Store approval, our team handles design, development, and post-launch support so your app actually reaches users.
+          We build native and cross-platform mobile apps that survive real-world usage, not just demo conditions. From idea to App Store/Play Store approval, our team handles design, development, and post-launch support so your app actually reaches users. Hamari custom mobile solutions ko aap automated <a href="/ai-agent-development" className="text-blue-400 hover:underline">AI Agents</a> ke sath integrate kar sakte hain, ya unhe modular <a href="/custom-software" className="text-blue-400 hover:underline">Custom Software</a> engines se power kar sakte hain. Headquartered in Karachi, Pakistan, we craft premium experiences.
         </motion.p>
 
         {/* Core Capabilities Specifications */}

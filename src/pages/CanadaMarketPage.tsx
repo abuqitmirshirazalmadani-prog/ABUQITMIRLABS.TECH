@@ -54,8 +54,8 @@ const CanadaMarketPage = () => {
       a: "Custom AI agents can automate bilingual customer support, intelligently manage inventory queries, and provide personalized product recommendations 24/7, vastly improving the customer experience."
     },
     {
-      q: "Why partner with ABUQITMIRLABS .TECH for the Canadian market?",
-      a: "We offer a rare combination of elite technical engineering and deep semantic SEO expertise by ABUQITMIRLABS .TECH. We deliver North American-level quality and innovation with a highly optimized investment ROI."
+      q: "Why partner with AbuQitmirLabs for the Canadian market?",
+      a: "We offer a rare combination of elite technical engineering and deep semantic SEO expertise by AbuQitmirLabs. We deliver North American-level quality and innovation with a highly optimized investment ROI."
     }
   ];
 
@@ -272,7 +272,7 @@ const CanadaMarketPage = () => {
         </div>
       </section>
 
-      {/* The ABUQITMIRLABS .TECH Edge */}
+      {/* The AbuQitmirLabs Edge */}
       <section className="py-32 px-6 md:px-10 bg-[#0d0d0d] relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(circle_at_center,rgba(255,91,54,0.03),transparent_70%)]"></div>
         <div className="max-w-7xl mx-auto relative z-10">

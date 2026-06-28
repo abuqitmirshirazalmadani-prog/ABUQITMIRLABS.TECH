@@ -271,7 +271,7 @@ const SEOPage = () => {
             
             <div className="bg-[#ccff00]/10 border-4 border-black p-10 rounded-[40px] brutalist-shadow">
               <p className="text-lg md:text-xl font-bold leading-relaxed text-black font-sans">
-                Many businesses invest heavily in web development but neglect the critical optimization needed to be found. Without a strategic approach to search engine optimization, even the most beautifully designed website remains undiscovered—buried beneath competitors who understand the importance of visibility.
+                Many businesses invest heavily in <a href="/web-development" className="text-blue-600 hover:underline">Web Development</a> or <a href="/custom-software" className="text-blue-600 hover:underline">Custom Software Solutions</a> but neglect the critical optimization needed to be found. Without a strategic approach to search engine optimization, even the most beautifully designed website remains undiscovered—buried beneath competitors who understand the importance of visibility. Our team is based in Karachi, Pakistan, offering global-grade SEO audits with high-ROI execution.
               </p>
             </div>
           </div>

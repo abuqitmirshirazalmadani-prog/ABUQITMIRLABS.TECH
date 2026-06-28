@@ -5,7 +5,7 @@ import { TestimonialsColumn } from "./ui/testimonials-columns-1";
 
 const testimonials = [
   {
-    text: "ABUQITMIRLABS.TECH tumhara shokria mere Liye itni achi mobile app banane ke Liye . I love ABUQITMIRLABS.TECH work. Thanks.",
+    text: "AbuQitmirLabs tumhara shokria mere Liye itni achi mobile app banane ke Liye . I love AbuQitmirLabs work. Thanks.",
     name: "Fareed Khan",
     role: "Mobile App Client",
   },
@@ -15,7 +15,7 @@ const testimonials = [
     role: "Website Client",
   },
   {
-    text: "ABUQITMIRLABS.TECH delivered a stunning, high-performance website that perfectly captures our brand. The site loads lightning-fast, is fully responsive, and has already boosted our online inquiries significantly. Highly recommend for any website project.",
+    text: "AbuQitmirLabs delivered a stunning, high-performance website that perfectly captures our brand. The site loads lightning-fast, is fully responsive, and has already boosted our online inquiries significantly. Highly recommend for any website project.",
     name: "Rafay Badar",
     role: "Brand Director",
   },
@@ -25,12 +25,12 @@ const testimonials = [
     role: "E-commerce Owner",
   },
   {
-    text: "ABUQITMIRLABS.TECH's team nailed our brand storytelling with compelling copy that resonates with our audience. The website they built is fast, mobile-optimized, and conversion-focused. Our bounce rate dropped by 35%, and leads have skyrocketed. True professionals!",
+    text: "AbuQitmirLabs's team nailed our brand storytelling with compelling copy that resonates with our audience. The website they built is fast, mobile-optimized, and conversion-focused. Our bounce rate dropped by 35%, and leads have skyrocketed. True professionals!",
     name: "David Ruiz",
     role: "CEO, Innovatech Solutions",
   },
   {
-    text: "Working with ABUQITMIRLABS.TECH transformed our outdated website into a sleek, user-friendly platform. Their UI/UX design expertise made navigation intuitive, and the SEO optimizations boosted our search rankings overnight. We've seen a 50% increase in organic traffic!",
+    text: "Working with AbuQitmirLabs transformed our outdated website into a sleek, user-friendly platform. Their UI/UX design expertise made navigation intuitive, and the SEO optimizations boosted our search rankings overnight. We've seen a 50% increase in organic traffic!",
     name: "Sarah Jenkins",
     role: "Owner, GreenLeaf Organics",
   },
@@ -40,7 +40,7 @@ const testimonials = [
     role: "Business Partner",
   },
   {
-    text: "Exceptional service and deep technical expertise. ABUQITMIRLABS.TECH transformed our operational efficiency with custom AI agents.",
+    text: "Exceptional service and deep technical expertise. AbuQitmirLabs transformed our operational efficiency with custom AI agents.",
     name: "Fawad Ahmed",
     role: "Tech Entrepreneur",
   },

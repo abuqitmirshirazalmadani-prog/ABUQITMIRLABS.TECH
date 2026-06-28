@@ -111,7 +111,7 @@ const TrustSection = () => {
                                         {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
                                     </div>
                                     <MagicText 
-                                        text='"ABUQITMIRLABS.TECH doesn&apos;t just build websites—they architect growth engines. Their strategic thinking transformed our digital presence."'
+                                        text='"AbuQitmirLabs doesn&apos;t just build websites—they architect growth engines. Their strategic thinking transformed our digital presence."'
                                         className="text-sm text-neutral-300 italic"
                                     />
                                     <div className="mt-4 flex items-center gap-3">

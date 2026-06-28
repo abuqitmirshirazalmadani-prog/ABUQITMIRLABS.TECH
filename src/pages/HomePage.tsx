@@ -59,7 +59,7 @@ export default function HomePage() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
-              "name": "AbuQitmirLabs .TECH",
+              "name": "AbuQitmirLabs",
               "url": "https://abuqitmirlabs.tech",
               "logo": "https://abuqitmirlabs.tech/logo.png",
               "image": "https://abuqitmirlabs.tech/logo.png",
@@ -130,7 +130,7 @@ export default function HomePage() {
                 {
                   "@type": "VideoObject",
                   "name": "Enterprise Digital Architecture",
-                  "description": "Watch our lead architect ABUQITMIRLABS.TECH breakdown complex digital ecosystems.",
+                  "description": "Watch our lead architect AbuQitmirLabs breakdown complex digital ecosystems.",
                   "thumbnailUrl": "https://img.youtube.com/vi/Sh9SqMCx9I4/maxresdefault.jpg",
                   "uploadDate": "2024-05-18",
                   "embedUrl": "https://www.youtube.com/embed/Sh9SqMCx9I4"

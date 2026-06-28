@@ -67,12 +67,12 @@ const ContactPage = () => {
     <div className="bg-black text-[#E8E8ED] font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#00E5FF]/20 selection:text-white">
       <Helmet>
         <title>Contact App Developer | Get Free Project Quote</title>
-        <meta name="description" content="Connect with the lead architects at ABUQITMIRLABS .TECH. Hire us for custom software development, AI agent automation, and world-class digital engineering projects. Secure communication relay active." />
+        <meta name="description" content="Connect with the lead architects at AbuQitmirLabs. Hire us for custom software development, AI agent automation, and world-class digital engineering projects. Secure communication relay active." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/contact" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Contact App Developer | Get Free Project Quote" />
-        <meta property="og:description" content="Connect with the lead architects at ABUQITMIRLABS .TECH for custom software development and AI automation." />
+        <meta property="og:description" content="Connect with the lead architects at AbuQitmirLabs for custom software development and AI automation." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/contact" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
@@ -80,7 +80,7 @@ const ContactPage = () => {
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contact App Developer | Get Free Project Quote" />
-        <meta name="twitter:description" content="Connect with the lead architects at ABUQITMIRLABS .TECH for custom software development and AI automation." />
+        <meta name="twitter:description" content="Connect with the lead architects at AbuQitmirLabs for custom software development and AI automation." />
         <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
@@ -117,7 +117,7 @@ const ContactPage = () => {
               "description": "Get in touch for custom software development, AI agent consultation, and mobile app inquiries.",
               "mainEntity": {
                 "@type": "Organization",
-                "name": "AbuQitmirLabs .TECH",
+                "name": "AbuQitmirLabs",
                 "telephone": "+923233260859",
                 "email": "abuqitmirshirazalmadani@gmail.com",
                 "contactPoint": {
@@ -331,7 +331,7 @@ const ContactPage = () => {
                            </div>
                            <div>
                               <p className="text-white font-bold uppercase tracking-widest text-sm mb-1">Base Coordinates</p>
-                              <p className="text-zinc-500 font-mono text-xs">Global Services // Remote OPS Available</p>
+                              <p className="text-zinc-400 font-sans text-xs leading-relaxed max-w-sm">8/15, abuqitmirlabs.tech, 3 37A Rd, Shah Khalid Colony Sector 37 A Landhi Town, Karachi, 75160</p>
                            </div>
                         </a>
                      </div>

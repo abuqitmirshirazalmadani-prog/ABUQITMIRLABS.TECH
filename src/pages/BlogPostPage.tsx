@@ -339,7 +339,7 @@ const BlogPostPage = () => {
 
     const handleShare = (platform: string) => {
         const url = window.location.href;
-        const title = post?.title || 'Check out this post from ABUQITMIRLABS.TECH Collective';
+        const title = post?.title || 'Check out this post from AbuQitmirLabs Collective';
         
         const shareLinks: Record<string, string> = {
             twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
@@ -370,21 +370,21 @@ const BlogPostPage = () => {
     return (
         <div className="min-h-screen bg-[#f3f4f7]">
             <Helmet>
-                <title>{post.title} | ABUQITMIRLABS Journal</title>
-                <meta name="description" content={post.content.substring(0, 160).replace(/[#*`]/g, '') + " | ABUQITMIRLABS .TECH"} />
+                <title>{post.title} | AbuQitmirLabs Journal</title>
+                <meta name="description" content={post.content.substring(0, 160).replace(/[#*`]/g, '') + " | AbuQitmirLabs"} />
                 <link rel="canonical" href={`https://abuqitmirlabs.tech/blog/${slug}`} />
                 
                 {/* OG Tags */}
-                <meta property="og:title" content={`${post.title} | ABUQITMIRLABS Journal`} />
-                <meta property="og:description" content={`${post.content.substring(0, 160).replace(/[#*`]/g, '')} | Technical Blog by ABUQITMIRLABS .TECH`} />
+                <meta property="og:title" content={`${post.title} | AbuQitmirLabs Journal`} />
+                <meta property="og:description" content={`${post.content.substring(0, 160).replace(/[#*`]/g, '')} | Technical Blog by AbuQitmirLabs`} />
                 <meta property="og:image" content={post.coverImage || "https://abuqitmirlabs.tech/logo.png"} />
                 <meta property="og:type" content="article" />
                 <meta property="og:url" content={`https://abuqitmirlabs.tech/blog/${slug}`} />
 
                 {/* Twitter Tags */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${post.title} | ABUQITMIRLABS Journal`} />
-                <meta name="twitter:description" content={`${post.content.substring(0, 160).replace(/[#*`]/g, '')} | Technical Insights by ABUQITMIRLABS .TECH`} />
+                <meta name="twitter:title" content={`${post.title} | AbuQitmirLabs Journal`} />
+                <meta name="twitter:description" content={`${post.content.substring(0, 160).replace(/[#*`]/g, '')} | Technical Insights by AbuQitmirLabs`} />
                 <meta name="twitter:image" content={post.coverImage || "https://abuqitmirlabs.tech/logo.png"} />
                 
                 {/* Article Schema */}
@@ -403,7 +403,7 @@ const BlogPostPage = () => {
                             },
                             "publisher": {
                                 "@type": "Organization",
-                                "name": "ABUQITMIRLABS .TECH",
+                                "name": "AbuQitmirLabs",
                                 "logo": {
                                     "@type": "ImageObject",
                                     "url": "https://abuqitmirlabs.tech/logo.svg"
@@ -601,7 +601,7 @@ const BlogPostPage = () => {
                             <div className="h-24 w-24 bg-zinc-950 rounded-3xl overflow-hidden shrink-0 shadow-lg border-2 border-white">
                                 <img 
                                     src="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" 
-                                    alt="Shiraz Almadani - Lead Architect at ABUQITMIRLABS.TECH" 
+                                    alt="Shiraz Almadani - Lead Architect at AbuQitmirLabs" 
                                     className="w-full h-full object-cover object-top" 
                                     loading="lazy"
                                     decoding="async"
@@ -609,7 +609,7 @@ const BlogPostPage = () => {
                                 />
                             </div>
                             <div>
-                                <h3 className="text-2xl font-black text-black mb-3 uppercase tracking-tight">ABUQITMIRLABS .TECH Shiraz Almadani</h3>
+                                <h3 className="text-2xl font-black text-black mb-3 uppercase tracking-tight">AbuQitmirLabs | Shiraz Almadani</h3>
                                 <p className="text-zinc-500 leading-relaxed max-w-xl">Lead Architect & Engineering Consultant. Specializing in high-performance digital ecosystems, AI-driven architectures, and building the future of software development.</p>
                             </div>
                         </div>

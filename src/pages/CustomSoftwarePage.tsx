@@ -205,7 +205,7 @@ const CustomSoftwarePage = () => {
               "description": "We engineer tailor-made software solutions that streamline operations and give your business a decisive competitive edge.",
               "provider": {
                 "@type": "Organization",
-                "name": "ABUQITMIRLABS .TECH",
+                "name": "AbuQitmirLabs",
                 "url": "https://abuqitmirlabs.tech"
               },
               "serviceType": "Software Development",
@@ -361,7 +361,7 @@ const CustomSoftwarePage = () => {
                 transition={{ delay: 0.1 }}
                 className="mx-auto mt-10 max-w-3xl text-xl leading-relaxed text-slate-300 font-light font-sans"
               >
-                Custom software isn't a template with your logo slapped on it. At AbuQitmirLabs, we design systems around how your business actually operates — mapping your workflows before writing a single line of code. Our custom software development process runs in 2-week sprints, so you see working features regularly, not a black box for months.
+                Custom software isn't a template with your logo slapped on it. At AbuQitmirLabs, we design systems around how your business actually operates — mapping your workflows before writing a single line of code. Our custom software development process runs in 2-week sprints, so you see working features regularly, not a black box for months. Hamari custom software solutions ko aap <a href="/ai-agent-development" className="text-blue-400 hover:underline">AI Agents</a> ke sath integrate kar ke operational automation bhi add kar sakte hain, ya phir <a href="/mobile-app-development" className="text-blue-400 hover:underline">Mobile App Development</a> ke zariye apne customers tak directly pohanch sakte hain. Our team is based out of Karachi, Pakistan, offering global-grade products with high-ROI execution.
               </motion.p>
 
               {/* Core Capabilities Specifications */}

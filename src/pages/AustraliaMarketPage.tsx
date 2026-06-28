@@ -69,8 +69,8 @@ const AustraliaMarketPage = () => {
 
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Tech Solutions Australia | ABUQITMIRLABS" />
-        <meta name="twitter:description" content="Future-proofing Australian businesses with elite software engineering. ABUQITMIRLABS .TECH provides APP-compliant tech and localized SEO." />
+        <meta name="twitter:title" content="Tech Solutions Australia | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Future-proofing Australian businesses with elite software engineering. AbuQitmirLabs provides APP-compliant tech and localized SEO." />
         <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}

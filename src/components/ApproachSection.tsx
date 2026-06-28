@@ -28,7 +28,7 @@ const ApproachSection = () => {
                 />
 
                 <MagicText 
-                    text='Most digital agencies operate like factories—they just "build software" and hand it over. At ABUQITMIRLABS.TECH, we operate as your strategic technical partners. We build comprehensive solutions designed to solve real, complex business problems. We do not just deliver lines of code; we deliver measurable results.'
+                    text='Most digital agencies operate like factories—they just "build software" and hand it over. At AbuQitmirLabs, we operate as your strategic technical partners. We build comprehensive solutions designed to solve real, complex business problems. We do not just deliver lines of code; we deliver measurable results.'
                     className="text-lg md:text-xl text-gray-400 mt-10 leading-relaxed max-w-3xl mx-auto"
                 />
             </div>

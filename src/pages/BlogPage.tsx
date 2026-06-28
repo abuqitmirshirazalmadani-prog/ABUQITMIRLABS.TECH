@@ -72,21 +72,21 @@ const BlogPage = () => {
     return (
         <div className="min-h-screen bg-[#050505]">
             <Helmet>
-                <title>Blog & Tech Journal | Insights ABUQITMIRLABS</title>
-                <meta name="description" content="Explore technical insights, AI trends, and software engineering strategy at the ABUQITMIRLABS .TECH Journal. Stay ahead of the curve with our expert analysis." />
+                <title>Blog & Tech Journal | Insights AbuQitmirLabs</title>
+                <meta name="description" content="Explore technical insights, AI trends, and software engineering strategy at the AbuQitmirLabs Journal. Stay ahead of the curve with our expert analysis." />
                 <link rel="canonical" href="https://abuqitmirlabs.tech/blog" />
                 
                 {/* OG Tags */}
-                <meta property="og:title" content="Blog & Tech Journal | ABUQITMIRLABS" />
-                <meta property="og:description" content="Explore technical insights, AI trends, and software engineering strategy at the ABUQITMIRLABS .TECH Journal." />
+                <meta property="og:title" content="Blog & Tech Journal | AbuQitmirLabs" />
+                <meta property="og:description" content="Explore technical insights, AI trends, and software engineering strategy at the AbuQitmirLabs Journal." />
                 <meta property="og:url" content="https://abuqitmirlabs.tech/blog" />
                 <meta property="og:type" content="website" />
                 <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
 
                 {/* Twitter Tags */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Blog & Tech Journal | ABUQITMIRLABS" />
-                <meta name="twitter:description" content="Explore technical insights, AI trends, and software engineering strategy at the ABUQITMIRLABS .TECH Journal." />
+                <meta name="twitter:title" content="Blog & Tech Journal | AbuQitmirLabs" />
+                <meta name="twitter:description" content="Explore technical insights, AI trends, and software engineering strategy at the AbuQitmirLabs Journal." />
                 <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
 
                 {/* Schema Markup */}
@@ -96,10 +96,10 @@ const BlogPage = () => {
                         "@type": "CollectionPage",
                         "name": "Tech Blog & AI Insights",
                         "url": "https://abuqitmirlabs.tech/blog",
-                        "description": "Explore technical insights, AI trends, and software engineering strategy at the ABUQITMIRLABS .TECH Journal.",
+                        "description": "Explore technical insights, AI trends, and software engineering strategy at the AbuQitmirLabs Journal.",
                         "publisher": {
                             "@type": "Organization",
-                            "name": "ABUQITMIRLABS .TECH",
+                            "name": "AbuQitmirLabs",
                             "url": "https://abuqitmirlabs.tech",
                             "logo": "https://abuqitmirlabs.tech/logo.png"
                         }
@@ -186,7 +186,7 @@ const BlogPage = () => {
                                                 <div className="w-12 h-12 rounded-full bg-white/5 p-0.5 border border-white/10 ring-4 ring-blue-500/10">
                                                     <img 
                                                         src="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" 
-                                                        alt="ABUQITMIRLABS.TECH Shiraz Almadani" 
+                                                        alt="AbuQitmirLabs Shiraz Almadani" 
                                                         className="w-full h-full rounded-full object-cover object-top" 
                                                         loading="lazy"
                                                         decoding="async"
@@ -194,7 +194,7 @@ const BlogPage = () => {
                                                     />
                                                 </div>
                                                 <div className="text-left">
-                                                    <div className="text-white text-xs font-black uppercase tracking-tight">ABUQITMIRLABS .TECH Shiraz Almadani</div>
+                                                    <div className="text-white text-xs font-black uppercase tracking-tight">AbuQitmirLabs | Shiraz Almadani</div>
                                                     <div className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest">{formatDateShort(featuredPost.createdAt)}</div>
                                                 </div>
                                             </div>

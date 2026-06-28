@@ -10,7 +10,7 @@ const videos = [
     {
         id: "v1",
         title: "Enterprise Digital Architecture",
-        desc: "Watch our lead architect ABUQITMIRLABS.TECH breakdown complex digital ecosystems.",
+        desc: "Watch our lead architect AbuQitmirLabs breakdown complex digital ecosystems.",
         videoId: "Sh9SqMCx9I4"
     },
     {

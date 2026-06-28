@@ -9,8 +9,8 @@ const PrivacyPage = () => {
   return (
     <div className="bg-[#050505] text-zinc-400 min-h-screen font-sans selection:bg-white/10 selection:text-white">
       <Helmet>
-        <title>Privacy Policy | ABUQITMIRLABS .TECH</title>
-        <meta name="description" content="Read the ABUQITMIRLABS .TECH Privacy Policy. We are committed to protecting your data and maintaining the highest standards of digital privacy during our software development process." />
+        <title>Privacy Policy | AbuQitmirLabs</title>
+        <meta name="description" content="Read the AbuQitmirLabs Privacy Policy. We are committed to protecting your data and maintaining the highest standards of digital privacy during our software development process." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/privacy" />
       </Helmet>
 
@@ -80,7 +80,7 @@ const PrivacyPage = () => {
             <section>
               <h2 className="text-2xl font-bold text-white uppercase tracking-tight mb-6">7. Changes to Policy</h2>
               <p>
-                ABUQITMIRLABS .TECH reserves the right to update this Privacy Policy at any time. Significant changes will be noted on this page with an updated "Last Modified" date.
+                AbuQitmirLabs reserves the right to update this Privacy Policy at any time. Significant changes will be noted on this page with an updated "Last Modified" date.
               </p>
             </section>
 

@@ -45,7 +45,7 @@ const USMarketPage = () => {
       a: "Yes. We architect software with compliance in mind, ensuring your databases and AI integrations align with state-specific regulations like the CCPA (California) and federal standards like HIPAA for healthcare."
     },
     {
-      q: "Why should a US company hire ABUQITMIRLABS.TECH over a local agency?",
+      q: "Why should a US company hire AbuQitmirLabs over a local agency?",
       a: "We provide Silicon Valley-caliber engineering and elite semantic SEO strategies at a highly optimized ROI, combining global tech talent with a deep understanding of the American consumer market."
     },
     {
@@ -292,7 +292,7 @@ const USMarketPage = () => {
           </div>
 
           <div className="mb-20">
-            <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#bfb4a3] mb-8 block">The ABUQITMIRLABS .TECH Edge</span>
+            <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#bfb4a3] mb-8 block">The AbuQitmirLabs Edge</span>
             <AnimatedShinyText 
               text="Silicon Valley Standards, Global Scalability." 
               textClassName="text-4xl md:text-7xl"

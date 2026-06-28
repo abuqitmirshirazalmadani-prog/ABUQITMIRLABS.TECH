@@ -70,7 +70,7 @@ const PakistanMarketPage = () => {
     <div className="bg-[#090909] text-[#d3c8b8] min-h-screen font-sans selection:bg-[#ff5b36] selection:text-white overflow-x-hidden">
       <Helmet>
         <title>Custom Software & Local SEO in Pakistan | AbuQitmirLabs</title>
-        <meta name="description" content="Driving digital innovation in Pakistan. AbuQitmirLabs .TECH provides top-tier custom software engineering, AI agent implementation, and hyper-local SEO for Karachi, Lahore, and Islamabad." />
+        <meta name="description" content="Driving digital innovation in Pakistan. AbuQitmirLabs provides top-tier custom software engineering, AI agent implementation, and hyper-local SEO for Karachi, Lahore, and Islamabad." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/pakistan-market" />
         
         {/* Open Graph */}
@@ -82,7 +82,7 @@ const PakistanMarketPage = () => {
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Mobile App Development Company in Pakistan | Best" />
-        <meta name="twitter:description" content="Driving digital innovation in Pakistan. ABUQITMIRLABS .TECH provides top-tier custom software, AI agent integration, and hyper-local SEO." />
+        <meta name="twitter:description" content="Driving digital innovation in Pakistan. AbuQitmirLabs provides top-tier custom software, AI agent integration, and hyper-local SEO." />
         <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
@@ -275,7 +275,7 @@ const PakistanMarketPage = () => {
         <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_bottom_right,rgba(255,91,54,0.03),transparent_40%)]"></div>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="mb-24">
-            <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#ff5b36] mb-8 block">ABUQITMIRLABS .TECH Solution</span>
+            <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#ff5b36] mb-8 block">AbuQitmirLabs Solution</span>
             <AnimatedShinyText 
               text="Driving Digital Pakistan Forward." 
               textClassName="text-5xl md:text-9xl"

@@ -70,8 +70,8 @@ const PolandMarketPage = () => {
         <meta property="og:url" content="https://abuqitmirlabs.tech/poland-market" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Software Development Services Poland | ABUQITMIRLABS" />
-        <meta name="twitter:description" content="Polish tech excellence meets global standards by ABUQITMIRLABS .TECH. Specialized software engineering and EU-targeted SEO." />
+        <meta name="twitter:title" content="Software Development Services Poland | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Polish tech excellence meets global standards by AbuQitmirLabs. Specialized software engineering and EU-targeted SEO." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/poland-market" />
         
         {/* Schema Markup */}
@@ -262,7 +262,7 @@ const PolandMarketPage = () => {
         </div>
       </section>
 
-      {/* The ABUQITMIRLABS.TECH Edge */}
+      {/* The AbuQitmirLabs Edge */}
       <section className="py-32 px-6 md:px-10 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(circle_at_center,rgba(255,91,54,0.03),transparent_70%)]"></div>
         <div className="max-w-7xl mx-auto relative z-10">

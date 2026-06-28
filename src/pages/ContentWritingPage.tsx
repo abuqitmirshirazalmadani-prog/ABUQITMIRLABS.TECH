@@ -694,7 +694,7 @@ const ContentWritingPage = () => {
       <section className="py-24 md:py-40 px-6 bg-[#030303] relative">
          <div className="max-w-7xl mx-auto">
            <div className="mb-20 text-center">
-             <span className="text-xs font-mono text-neutral-500 mb-4 uppercase tracking-[0.4em] font-bold block">[ SECTION 5: WHY ABUQITMIRLABS ]</span>
+             <span className="text-xs font-mono text-neutral-500 mb-4 uppercase tracking-[0.4em] font-bold block">[ SECTION 5: WHY AbuQitmirLabs ]</span>
              <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white font-light tracking-tight uppercase">
                Our Institutional Strengths
              </h2>

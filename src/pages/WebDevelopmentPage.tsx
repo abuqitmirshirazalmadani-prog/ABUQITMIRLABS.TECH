@@ -203,7 +203,7 @@ Do not sign a website contract without these protective legal terms.
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Custom Web Development Service | React & Next.js" />
-        <meta name="twitter:description" content="ABUQITMIRLABS .TECH delivers high-speed, secure web ecosystems. Specialized in Jamstack, Headless CMS, and conversion-optimized web applications." />
+        <meta name="twitter:description" content="AbuQitmirLabs delivers high-speed, secure web ecosystems. Specialized in Jamstack, Headless CMS, and conversion-optimized web applications." />
         <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
 
         {/* Schema Markup */}
@@ -217,7 +217,7 @@ Do not sign a website contract without these protective legal terms.
               "description": "Stop losing customers to slow loading screens. We engineer high-performance, secure, and infinitely scalable websites.",
               "provider": {
                 "@type": "Organization",
-                "name": "ABUQITMIRLABS .TECH",
+                "name": "AbuQitmirLabs",
                 "url": "https://abuqitmirlabs.tech"
               },
               "serviceType": "Web Engineering",
@@ -360,7 +360,7 @@ Do not sign a website contract without these protective legal terms.
           transition={{ delay: 0.1 }}
           className="text-lg md:text-xl text-neutral-400 text-center max-w-3xl mb-12 leading-relaxed font-light font-sans"
         >
-          Your website is often the first interaction a customer has with your brand. We build fast, responsive, SEO-ready websites and web apps — from marketing sites to complex dashboards — using modern frameworks that won't slow down or break as you scale.
+          Your website is often the first interaction a customer has with your brand. We build fast, responsive, SEO-ready websites and web apps — from marketing sites to complex dashboards — using modern frameworks that won't slow down or break as you scale. Hamari custom web development services ko aap <a href="/custom-software" className="text-blue-400 hover:underline">Custom Software</a> structures ke sath connect kar sakte hain, aur use automated <a href="/ai-agent-development" className="text-blue-400 hover:underline">AI Agents</a> se equip kar ke high-grade performance achieve kar sakte hain. Our operations are fully headquartered in Karachi, Pakistan, assisting organizations worldwide.
         </motion.p>
 
         {/* Core Capabilities Specifications */}
@@ -703,7 +703,7 @@ Do not sign a website contract without these protective legal terms.
             {[
               {
                 title: "Enterprise Digital Architecture",
-                desc: "Watch our lead architect at ABUQITMIRLABS.TECH breakdown complex digital ecosystems.",
+                desc: "Watch our lead architect at AbuQitmirLabs breakdown complex digital ecosystems.",
                 videoId: "5Rq97Igd_uU"
               },
               {

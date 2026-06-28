@@ -158,11 +158,7 @@ const ContactSection = () => {
 
             {/* Geographical details */}
             <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-500">
-              <span className="flex items-center gap-1.5"><MapPin size={12} /> Karachi, PK</span>
-              <span>•</span>
-              <span>Dubai, AE</span>
-              <span>•</span>
-              <span>London, UK</span>
+              <span className="flex items-center gap-1.5"><MapPin size={12} /> Karachi, Pakistan</span>
             </div>
           </div>
 

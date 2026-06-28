@@ -31,6 +31,29 @@ import { AnimatedBreathingText } from './ui/animated-breathing-text';
 const Footer = () => {
     return (
         <section id="contact" className="bg-[#ccff00] border-t-[8px] border-black w-full py-24 relative overflow-hidden text-black font-display">
+            {/* Schema Markup LocalBusiness */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "LocalBusiness",
+                        "name": "AbuQitmirLabs",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "8/15, 37A Rd, Shah Khalid Colony, Sector 37A",
+                            "addressLocality": "Landhi Town, Karachi",
+                            "postalCode": "75160",
+                            "addressCountry": "PK"
+                        },
+                        "geo": {
+                            "@type": "GeoCoordinates",
+                            "latitude": 24.842681712798612,
+                            "longitude": 67.1862014846566
+                        }
+                    })
+                }}
+            />
             <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
                 {/* Top Label */}
                 <div className="flex items-center justify-center">
@@ -53,7 +76,7 @@ const Footer = () => {
                     />
                     
                     <MagicText 
-                        text="The digital landscape waits for no one. Stop settling for mediocre solutions that drain your budget without delivering ROI. Partner with ABUQITMIRLABS.TECH to build secure, fast, and highly intelligent digital assets that propel your business forward."
+                        text="The digital landscape waits for no one. Stop settling for mediocre solutions that drain your budget without delivering ROI. Partner with AbuQitmirLabs to build secure, fast, and highly intelligent digital assets that propel your business forward."
                         className="mt-10 text-xl md:text-2xl text-black max-w-3xl mx-auto leading-tight font-bold lowercase"
                     />
                     
@@ -196,7 +219,7 @@ const Footer = () => {
                             <ul className="space-y-3 not-italic normal-case font-bold tracking-tight text-black flex flex-col gap-1.5 list-none">
                                 <li className="flex items-start gap-2 text-xs">
                                     <MapPin size={14} className="min-w-[14px] mt-0.5 text-zinc-900" />
-                                    <span>8/15, shah khalid colony, landhi town, karachi, pk</span>
+                                    <span>8/15, abuqitmirlabs.tech, 3 37A Rd, Shah Khalid Colony Sector 37 A Landhi Town, Karachi, 75160</span>
                                 </li>
                                 <li className="flex items-start gap-2 text-xs">
                                     <Phone size={14} className="min-w-[14px] mt-0.5 text-zinc-900" />
@@ -236,10 +259,10 @@ const Footer = () => {
                                     <ExternalLink size={10} /> Find us on Google Maps
                                 </a>
                                 <span>•</span>
-                                <span>Headquarters: Karachi, PK • Dubai, AE • London, UK</span>
+                                <span>Headquarters: 8/15, abuqitmirlabs.tech, 3 37A Rd, Shah Khalid Colony Sector 37 A Landhi Town, Karachi, 75160</span>
                             </div>
                             <div className="mt-1">
-                                © 2026 ABUQITMIRLABS.TECH. All rights reserved. Developed by AbuQitmirLabs.tech
+                                © 2026 AbuQitmirLabs. All rights reserved.
                             </div>
                         </div>
                     </div>

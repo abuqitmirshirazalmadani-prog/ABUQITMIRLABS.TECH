@@ -10,7 +10,7 @@ import { AnimatedBreathingText } from './ui/animated-breathing-text';
 
 const faqItems = [
     {
-        question: "What industries does ABUQITMIRLABS.TECH specialize in?",
+        question: "What industries does AbuQitmirLabs specialize in?",
         answer: "We specialize in Fintech, E-commerce, Healthcare, logistics, and SaaS platforms. Our engineering team provides high-performance, secure, and scalable digital solutions tailor-made for these high-stakes industries where data integrity and user trust are paramount."
     },
     {
