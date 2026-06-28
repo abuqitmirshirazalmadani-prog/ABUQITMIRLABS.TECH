@@ -13,12 +13,21 @@ const __dirname = path.dirname(__filename);
 // Import Firebase config - Handle case where file might not exist in dev
 let firebaseConfig: any = {};
 try {
-  const configPath = path.join(__dirname, 'firebase-applet-config.json');
+  let configPath = path.join(process.cwd(), 'firebase-applet-config.json');
+  if (!fs.existsSync(configPath)) {
+    configPath = path.join(__dirname, 'firebase-applet-config.json');
+  }
+  if (!fs.existsSync(configPath)) {
+    configPath = path.join(__dirname, '..', 'firebase-applet-config.json');
+  }
   if (fs.existsSync(configPath)) {
     firebaseConfig = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+    console.log('Successfully loaded Firebase configuration in server.ts');
+  } else {
+    console.warn('Firebase config file not found in potential locations');
   }
 } catch (e) {
-  console.warn('Firebase config not found, sitemap will be limited');
+  console.warn('Firebase config not found, sitemap will be limited:', e);
 }
 
 // Initialize Firebase once for server-side use
@@ -56,8 +65,13 @@ async function startServer() {
     });
   });
 
+  // 301 Redirect for duplicate article
+  app.get('/blog/custom-software-development-company-karachi-pakistan-abuqitmirlabs', (req, res) => {
+    res.redirect(301, '/blog/custom-software-development-company-karachi-pakistan');
+  });
+
   // Dynamic Sitemap Route
-  app.get('/sitemap.xml', async (req, res) => {
+  const sitemapHandler = async (req: express.Request, res: express.Response) => {
     try {
       const staticRoutes = [
         '',
@@ -75,6 +89,7 @@ async function startServer() {
         '/pakistan-market',
         '/canada-market',
         '/poland-market',
+        '/australia-market',
         '/blog'
       ];
 
@@ -114,7 +129,10 @@ async function startServer() {
         res.status(500).send('Error generating sitemap');
       }
     }
-  });
+  };
+
+  app.get('/sitemap.xml', sitemapHandler);
+  app.get('/pages-sitemap.xml', sitemapHandler);
 
   const distPath = path.resolve(__dirname, 'dist');
   let vite: any = null;

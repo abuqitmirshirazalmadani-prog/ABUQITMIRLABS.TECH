@@ -161,10 +161,37 @@ const CanadaMarketPage = () => {
                 <span className="text-[#ff5b36]">for Canadian Growth</span>
               </motion.h1>
 
-              <MagicText 
-                text="Accelerate your growth in the Canadian tech landscape. ABUQITMIRLABS .TECH provides scalable custom software engineering and entity-based SEO strategies for businesses nationwide."
-                className="max-w-2xl text-xl md:text-2xl text-[#9f978a] mb-12"
-              />
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.25 }}
+                className="max-w-4xl text-lg md:text-xl text-[#9f978a] leading-relaxed font-sans font-light text-left"
+              >
+                Canadian businesses get a development partner that understands both US-adjacent business standards and Canadian data residency considerations. We align with EST/PST overlap and build scalable systems ready for cross-border growth.
+              </motion.p>
+
+              {/* Core Capabilities Specifications */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.28 }}
+                className="max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg my-10"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
+                  {[
+                    "EST/PST Time Zone Overlap for Canadian Teams",
+                    "Data Residency & PIPEDA-Aware Development",
+                    "Bilingual-Ready Web & App Builds (EN/FR)",
+                    "Scalable Architecture for Cross-Border Expansion",
+                    "Transparent CAD Pricing"
+                  ].map((bullet, idx) => (
+                    <div key={idx} className="flex items-start gap-3 group">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#ff5b36] mt-2 shrink-0 group-hover:bg-[#ccff00] transition-colors duration-300" />
+                      <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
 
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}

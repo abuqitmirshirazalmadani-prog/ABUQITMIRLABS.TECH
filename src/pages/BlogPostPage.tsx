@@ -324,12 +324,17 @@ const BlogPostPage = () => {
 
     const formatDate = (timestamp: any) => {
         if (!timestamp) return '';
-        const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
-        return date.toLocaleDateString('en-US', {
-            month: 'long',
-            day: 'numeric',
-            year: 'numeric'
-        });
+        try {
+            const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
+            if (isNaN(date.getTime())) return '';
+            return date.toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric'
+            });
+        } catch (e) {
+            return '';
+        }
     };
 
     const handleShare = (platform: string) => {
@@ -404,7 +409,22 @@ const BlogPostPage = () => {
                                     "url": "https://abuqitmirlabs.tech/logo.svg"
                                 }
                             },
-                            "datePublished": post.createdAt?.toDate ? post.createdAt.toDate().toISOString() : new Date(post.createdAt).toISOString(),
+                            "datePublished": (() => {
+                                try {
+                                    if (post.createdAt?.toDate) {
+                                        return post.createdAt.toDate().toISOString();
+                                    }
+                                    if (post.createdAt) {
+                                        const d = new Date(post.createdAt);
+                                        if (!isNaN(d.getTime())) {
+                                            return d.toISOString();
+                                        }
+                                    }
+                                } catch (err) {
+                                    console.error('Error parsing datePublished:', err);
+                                }
+                                return new Date().toISOString();
+                            })(),
                             "description": post.content.substring(0, 160).replace(/[#*`]/g, '')
                         })
                     }}

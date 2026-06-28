@@ -158,10 +158,37 @@ const UKMarketPage = () => {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5b36] to-[#ff9d85]">for UK Businesses | GDPR Ready</span>
             </motion.h1>
 
-            <MagicText 
-              text="Propel your UK business forward with ABUQITMIRLABS .TECH. We provide bespoke custom software, high-performance web development, and UK-targeted local SEO designed to help British enterprises and London-based startups thrive."
-              className="max-w-3xl text-xl md:text-2xl text-[#9f978a] mx-auto"
-            />
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 }}
+              className="max-w-4xl text-lg md:text-xl text-[#9f978a] leading-relaxed font-sans font-light mx-auto"
+            >
+              UK businesses get the benefit of full working-day overlap with our team — real-time collaboration, not next-morning replies. We build with GDPR compliance in mind from day one and align with UK business hours for live calls and demos.
+            </motion.p>
+
+            {/* Core Capabilities Specifications */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.28 }}
+              className="max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg mx-auto"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
+                {[
+                  "Full GMT Working-Day Overlap",
+                  "GDPR-Compliant Data Handling by Design",
+                  "Live Demo Calls During UK Business Hours",
+                  "Transparent Pricing in GBP",
+                  "Experience with UK SME & Startup Engagement Models"
+                ].map((bullet, idx) => (
+                  <div key={idx} className="flex items-start gap-3 group">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#ff5b36] mt-2 shrink-0 group-hover:bg-[#ccff00] transition-colors duration-300" />
+                    <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
 
             <motion.div 
               initial={{ opacity: 0, y: 20 }}

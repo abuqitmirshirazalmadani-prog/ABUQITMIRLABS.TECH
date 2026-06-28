@@ -157,10 +157,37 @@ const PolandMarketPage = () => {
               <span className="text-[#ff5b36]">for The Polish Hub</span>
             </motion.h1>
 
-            <MagicText 
-              text="Capitalize on Europe’s fastest-growing digital economy. ABUQITMIRLABS .TECH delivers high-end custom software architecture, AI agent integration, and EU-targeted Semantic SEO for innovative Polish startups."
-              className="max-w-2xl text-xl md:text-2xl text-[#9f978a]"
-            />
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 }}
+              className="max-w-4xl text-lg md:text-xl text-[#9f978a] leading-relaxed font-sans font-light"
+            >
+              Poland's growing tech ecosystem needs development partners who match EU compliance standards while keeping costs competitive. We build with GDPR alignment and CET-overlap scheduling, supporting Polish startups scaling into broader EU markets.
+            </motion.p>
+
+            {/* Core Capabilities Specifications */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.28 }}
+              className="max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
+                {[
+                  "CET Time Zone Overlap",
+                  "GDPR-Compliant Architecture for EU Market",
+                  "Cost-Competitive Pricing vs Local EU Agencies",
+                  "Support for EU-Wide Market Expansion",
+                  "English-Fluent Direct Communication"
+                ].map((bullet, idx) => (
+                  <div key={idx} className="flex items-start gap-3 group">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#ff5b36] mt-2 shrink-0 group-hover:bg-[#ccff00] transition-colors duration-300" />
+                    <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
 
             <motion.div 
               initial={{ opacity: 0, y: 20 }}

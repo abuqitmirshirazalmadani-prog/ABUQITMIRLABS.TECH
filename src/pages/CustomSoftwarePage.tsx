@@ -45,26 +45,37 @@ const CustomSoftwarePage = () => {
   const services = [
     {
       id: "01",
-      title: "Custom Software Development for Fintech, Healthcare & Logistics",
-      content: "We provide specialized custom software development for fintech, healthcare, logistics, and high-load web systems. Whether you are looking to hire a custom software development company to launch a disruptive SaaS or build a HIPAA-compliant portal as a custom healthcare software development company, our team guarantees robust execution.",
-      icon: <Rocket className="w-8 h-8" />,
-    },
-    {
-      id: "02",
-      title: "Enterprise Software Development & ERP Systems",
-      content: "Streamline operations with enterprise software development that replaces subscription-bloated SaaS. We build secure internal tools, custom application development company integrations, and unified data warehousing so your organization maintains absolute digital sovereignty.",
+      title: "Enterprise ERP & Internal Tools Engineering for Growing Businesses",
+      keyword: "enterprise ERP development company",
+      content: "As an experienced enterprise ERP development company, we build custom internal operations tools, ERP systems, and secure data warehouses tailored to how your business scales, avoiding subscription-bloated SaaS loops.",
       icon: <Database className="w-8 h-8" />,
     },
     {
+      id: "02",
+      title: "Scalable SaaS Platform Architecture & Development",
+      keyword: "SaaS platform architecture development services",
+      content: "Our elite SaaS platform architecture development services deliver high-fidelity multi-tenant structures, custom subscription logic, and highly reliable server backends optimized for millions of requests.",
+      icon: <Rocket className="w-8 h-8" />,
+    },
+    {
       id: "03",
-      title: "Custom Web Application Development Services",
-      content: "Migrate or build web platforms from the ground up with our custom web application development services. We function as expert software engineering consultants to replace slow, insecure, legacy systems with modern, cloud-native architectures that load instantly and serve millions.",
+      title: "Custom API Design & Third-Party Integration Services",
+      keyword: "API integration development company",
+      content: "As a premier API integration development company, we engineer custom API endpoints, bridge legacy internal databases, and connect complex third-party tools to automate your critical operational workflows.",
       icon: <Cpu className="w-8 h-8" />,
     },
     {
       id: "04",
-      title: "Software Development Outsourcing Company Partners",
-      content: "As a trusted software development outsourcing company, we act as extended team members for startups and large enterprises. We configure high-fidelity multi-tenant SaaS structures, solid data encryption protocols, and automate your release cycles.",
+      title: "Database Architecture Development (PostgreSQL & MongoDB)",
+      keyword: "PostgreSQL MongoDB database architecture services",
+      content: "Deploy ultra-resilient database structures with our PostgreSQL MongoDB database architecture services. We model schemas, configure performance indices, and implement secure data encryption protocols for maximum speed.",
+      icon: <Settings className="w-8 h-8" />,
+    },
+    {
+      id: "05",
+      title: "Fixed-Price & Dedicated Team Software Engagement Models",
+      keyword: "dedicated development team for startups",
+      content: "Hire a dedicated development team for startups and scale-ups with clear pricing and rapid delivery. We offer flexible, milestone-driven fixed-price and dedicated team models with complete transparency.",
       icon: <Cloud className="w-8 h-8" />,
     }
   ];
@@ -338,10 +349,10 @@ const CustomSoftwarePage = () => {
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mx-auto max-w-6xl text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-light tracking-tight text-white leading-tight"
+                className="mx-auto max-w-6xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-light tracking-tight text-white leading-tight"
               >
-                Enterprise-Grade Solutions <br />
-                <span className="font-serif italic text-blue-400 font-normal">Built Around Your Business Logic</span>
+                Custom Software Development Company <br />
+                <span className="font-serif italic text-blue-400 font-normal">for Startups & Small Businesses</span>
               </motion.h1>
               
               <motion.p 
@@ -350,7 +361,7 @@ const CustomSoftwarePage = () => {
                 transition={{ delay: 0.1 }}
                 className="mx-auto mt-10 max-w-3xl text-xl leading-relaxed text-slate-300 font-light font-sans"
               >
-                Custom software isn't a template with your logo on it. At <strong>AbuQitmirLabs</strong>, we design systems around how your business actually operates, mapping your workflows before writing a single line of code. Our builds run in 2-week sprints — you see working features regularly, not a black box for months.
+                Custom software isn't a template with your logo slapped on it. At AbuQitmirLabs, we design systems around how your business actually operates — mapping your workflows before writing a single line of code. Our custom software development process runs in 2-week sprints, so you see working features regularly, not a black box for months.
               </motion.p>
 
               {/* Core Capabilities Specifications */}
@@ -362,9 +373,9 @@ const CustomSoftwarePage = () => {
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
                   {[
-                    "Enterprise ERP & Internal Tools Engineering",
-                    "Scalable SaaS Platform Architecture",
-                    "API Design & Third-Party Integrations",
+                    "Enterprise ERP & Internal Tools Engineering for Growing Businesses",
+                    "Scalable SaaS Platform Architecture & Development",
+                    "Custom API Design & Third-Party Integrations",
                     "Database Architecture (PostgreSQL, MongoDB)",
                     "Fixed-Price & Dedicated Team Engagement Models"
                   ].map((bullet, idx) => (
@@ -640,7 +651,7 @@ const CustomSoftwarePage = () => {
           <div className="mb-24">
             <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ SYSTEM_CAPABILITIES ]</span>
             <h2 className="text-5xl md:text-7xl font-serif font-light text-white tracking-tight leading-[1] mb-8">
-              Our Custom <span className="font-serif italic text-zinc-500">Web Application Development Services.</span>
+              AI-Powered Custom <span className="font-serif italic text-zinc-500">Software Solutions Built for Your Business Needs.</span>
             </h2>
             <span className="text-sm font-mono text-blue-400 font-bold uppercase tracking-widest mb-6 block">
               [ Expert Software Engineering Consultants for Your Project ]
@@ -650,7 +661,7 @@ const CustomSoftwarePage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service) => (
               <motion.div 
                 key={service.id} 
@@ -661,8 +672,11 @@ const CustomSoftwarePage = () => {
                 <div className="mb-10 w-20 h-20 bg-black/40 border border-white/10 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:border-blue-500/40 transition-all">
                   {React.cloneElement(service.icon as React.ReactElement<any>, { className: "w-8 h-8 text-blue-400" })}
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-tighter mb-6 text-white leading-none">{service.title}</h3>
-                <p className="text-lg text-slate-400 leading-relaxed font-light">{service.content}</p>
+                <span className="text-xs font-mono text-[#ccff00]/60 mb-4 uppercase tracking-widest block">
+                  [ {service.keyword} ]
+                </span>
+                <h3 className="text-2xl font-bold uppercase tracking-tighter mb-6 text-white leading-tight min-h-[3.5rem]">{service.title}</h3>
+                <p className="text-base text-slate-400 leading-relaxed font-light">{service.content}</p>
                 <div className="mt-10 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-blue-500 group-hover:gap-4 transition-all">
                     Initiate Protocol <ArrowRight size={14} />
                 </div>

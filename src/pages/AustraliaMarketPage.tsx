@@ -156,10 +156,37 @@ const AustraliaMarketPage = () => {
               <span className="text-[#66fcf1]">for Australian Growth</span>
             </motion.h1>
 
-            <MagicText 
-              text="Empower your Australian enterprise with futuristic tech from ABUQITMIRLABS .TECH. We deliver high-performance custom software, secure web ecosystems, and localized SEO strategies crafted for the unique AU economic landscape."
-              className="max-w-3xl text-xl md:text-2xl text-[#c5c6c7] mx-auto leading-relaxed"
-            />
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 }}
+              className="max-w-4xl text-lg md:text-xl text-[#c5c6c7] leading-relaxed font-sans font-light mx-auto"
+            >
+              Australian businesses often face a trade-off between cost and quality with offshore partners — we remove that trade-off. With structured async workflows bridging the AEST time gap, we deliver on schedule without requiring late-night calls on either side.
+            </motion.p>
+
+            {/* Core Capabilities Specifications */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.28 }}
+              className="max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg mx-auto"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
+                {[
+                  "Structured Async Workflow Bridging AEST Gap",
+                  "Scheduled Overlap Windows for Live Reviews",
+                  "AUD-Transparent Project Pricing",
+                  "Experience with AU Small Business & Startup Builds",
+                  "Quality Assurance Matching AU Market Standards"
+                ].map((bullet, idx) => (
+                  <div key={idx} className="flex items-start gap-3 group">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#66fcf1] mt-2 shrink-0 group-hover:bg-[#ccff00] transition-colors duration-300" />
+                    <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
 
             <motion.div 
               initial={{ opacity: 0, y: 20 }}

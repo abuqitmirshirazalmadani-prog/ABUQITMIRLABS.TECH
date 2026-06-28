@@ -166,10 +166,37 @@ const USMarketPage = () => {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5b36] to-[#ff9d85]">for US Startups | OffShore</span>
             </motion.h1>
 
-            <MagicText 
-              text="From Silicon Valley tech startups to established East Coast enterprises, ABUQITMIRLABS .TECH delivers world-class custom software, autonomous AI agents, and aggressive semantic SEO strategies tailored to dominate the highly competitive US digital landscape."
-              className="max-w-2xl text-lg md:text-xl text-[#9f978a]"
-            />
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 }}
+              className="max-w-4xl text-lg md:text-xl text-[#9f978a] leading-relaxed font-sans font-light"
+            >
+              US startups need offshore development partners who move at startup speed, not agency speed. We work across EST/PST overlap hours, communicate in clear async updates, and build with the compliance and scalability standards US investors expect — at a fraction of Silicon Valley dev costs.
+            </motion.p>
+
+            {/* Core Capabilities Specifications */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.28 }}
+              className="max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
+                {[
+                  "Overlap Hours with EST/PST Time Zones",
+                  "Startup-Speed Sprints (2-Week Delivery Cycles)",
+                  "SOC 2 & Data Privacy-Aware Development Practices",
+                  "Fixed-Price MVP Builds for Funded Startups",
+                  "Direct Slack/Async Communication, No Agency Layers"
+                ].map((bullet, idx) => (
+                  <div key={idx} className="flex items-start gap-3 group">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#ff5b36] mt-2 shrink-0 group-hover:bg-[#ccff00] transition-colors duration-300" />
+                    <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
 
             <motion.div 
               initial={{ opacity: 0, y: 20 }}

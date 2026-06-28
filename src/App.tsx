@@ -4,7 +4,7 @@
  */
 
 import { HelmetProvider } from 'react-helmet-async';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { useEffect, lazy, Suspense } from 'react';
 import FacebookPixel from './components/FacebookPixel';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -175,6 +175,7 @@ export default function App() {
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/custom-software-development-company-karachi-pakistan-abuqitmirlabs" element={<Navigate to="/blog/custom-software-development-company-karachi-pakistan" replace />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />

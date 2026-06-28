@@ -167,10 +167,37 @@ const PakistanMarketPage = () => {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5b36] to-[#ff9d85]">for Pakistan's Boom</span>
             </motion.h1>
 
-            <MagicText 
-              text="Empowering Pakistani startups, SMEs, and large-scale industries with world-class technology. ABUQITMIRLABS .TECH delivers cutting-edge custom software, intelligent AI agents, and hyper-local SEO."
-              className="max-w-3xl text-xl md:text-2xl text-[#9f978a]"
-            />
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 }}
+              className="max-w-4xl text-lg md:text-xl text-[#9f978a] leading-relaxed font-sans font-light"
+            >
+              As a Karachi-based team, we understand the local market directly — no translation layer, no cultural gap. We work with Pakistani SMEs and startups on practical budgets, with in-person meetings available and payments in PKR.
+            </motion.p>
+
+            {/* Core Capabilities Specifications */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.28 }}
+              className="max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
+                {[
+                  "In-Person Meetings Available (Karachi-Based)",
+                  "PKR Pricing, No Currency Conversion Hassle",
+                  "Local Market & Consumer Behavior Understanding",
+                  "Budget-Friendly Packages for SMEs & Startups",
+                  "Same Time-Zone, Zero Communication Delay"
+                ].map((bullet, idx) => (
+                  <div key={idx} className="flex items-start gap-3 group">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#ff5b36] mt-2 shrink-0 group-hover:bg-[#ccff00] transition-colors duration-300" />
+                    <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
 
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
