@@ -70,8 +70,35 @@ async function startServer() {
     res.redirect(301, '/blog/custom-software-development-company-karachi-pakistan');
   });
 
-  // Dynamic Sitemap Route
-  const sitemapHandler = async (req: express.Request, res: express.Response) => {
+  // Dynamic Sitemap Index Route (/sitemap.xml)
+  app.get('/sitemap.xml', (req, res) => {
+    try {
+      const today = new Date().toISOString().split('T')[0];
+      const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://abuqitmirlabs.tech/pages-sitemap.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://abuqitmirlabs.tech/image-sitemap.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://abuqitmirlabs.tech/video-sitemap.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+</sitemapindex>`;
+      res.header('Content-Type', 'application/xml');
+      res.send(sitemapIndex);
+    } catch (error) {
+      console.error('Error generating sitemap index:', error);
+      res.status(500).send('Error generating sitemap index');
+    }
+  });
+
+  // Dynamic Pages & Blog Sitemap Route (/pages-sitemap.xml)
+  app.get('/pages-sitemap.xml', async (req, res) => {
     try {
       const staticRoutes = [
         '',
@@ -83,6 +110,9 @@ async function startServer() {
         '/seo-mastery',
         '/graphics-design',
         '/content-writing',
+        '/case-studies',
+        '/case-studies/tajweedpage',
+        '/website-contract',
         '/contact',
         '/us-market',
         '/uk-market',
@@ -90,13 +120,15 @@ async function startServer() {
         '/canada-market',
         '/poland-market',
         '/australia-market',
-        '/blog'
+        '/blog',
+        '/terms',
+        '/privacy'
       ];
 
       let blogRoutes: string[] = [];
 
       if (db) {
-        // Fetch blog posts from Firestore using already initialized db
+        // Fetch blog posts from Firestore dynamically
         const postsQuery = query(collection(db, 'posts'), where('published', '==', true));
         const snapshot = await getDocs(postsQuery);
         blogRoutes = snapshot.docs.map(doc => `/blog/${doc.data().slug}`);
@@ -104,35 +136,65 @@ async function startServer() {
 
       const allRoutes = [...staticRoutes, ...blogRoutes];
       const baseUrl = 'https://abuqitmirlabs.tech';
+      const today = new Date().toISOString().split('T')[0];
+
+      const getRouteMetadata = (route: string) => {
+        if (route === '') {
+          return { priority: '1.0', changefreq: 'daily' };
+        }
+        if (route === '/blog') {
+          return { priority: '0.9', changefreq: 'daily' };
+        }
+        if ([
+          '/custom-software',
+          '/mobile-app-development',
+          '/web-development',
+          '/ai-agent-development',
+          '/seo-mastery',
+          '/graphics-design',
+          '/content-writing'
+        ].includes(route)) {
+          return { priority: '0.9', changefreq: 'weekly' };
+        }
+        if (route.endsWith('-market')) {
+          return { priority: '0.8', changefreq: 'weekly' };
+        }
+        if (route === '/case-studies' || route === '/case-studies/tajweedpage') {
+          return { priority: '0.8', changefreq: 'weekly' };
+        }
+        if (['/about', '/contact', '/website-contract'].includes(route)) {
+          return { priority: '0.8', changefreq: 'monthly' };
+        }
+        if (route.startsWith('/blog/')) {
+          return { priority: '0.7', changefreq: 'weekly' };
+        }
+        if (['/terms', '/privacy'].includes(route)) {
+          return { priority: '0.3', changefreq: 'monthly' };
+        }
+        return { priority: '0.5', changefreq: 'weekly' };
+      };
       
       const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${allRoutes.map(route => `
+  ${allRoutes.map(route => {
+    const meta = getRouteMetadata(route);
+    return `
   <url>
     <loc>${baseUrl}${route}</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-    <changefreq>${route === '' ? 'daily' : 'weekly'}</changefreq>
-    <priority>${route === '' ? '1.0' : route.startsWith('/blog/') ? '0.7' : '0.8'}</priority>
-  </url>`).join('')}
+    <lastmod>${today}</lastmod>
+    <changefreq>${meta.changefreq}</changefreq>
+    <priority>${meta.priority}</priority>
+  </url>`;
+  }).join('')}
 </urlset>`;
 
       res.header('Content-Type', 'application/xml');
       res.send(sitemap);
     } catch (error) {
-      console.error('Error generating sitemap:', error);
-      // Fallback to static sitemap if dynamic fails
-      const distPath = path.resolve(__dirname, 'dist');
-      const staticSitemap = path.join(distPath, 'sitemap.xml');
-      if (fs.existsSync(staticSitemap)) {
-        res.sendFile(staticSitemap);
-      } else {
-        res.status(500).send('Error generating sitemap');
-      }
+      console.error('Error generating pages sitemap:', error);
+      res.status(500).send('Error generating pages sitemap');
     }
-  };
-
-  app.get('/sitemap.xml', sitemapHandler);
-  app.get('/pages-sitemap.xml', sitemapHandler);
+  });
 
   const distPath = path.resolve(__dirname, 'dist');
   let vite: any = null;
