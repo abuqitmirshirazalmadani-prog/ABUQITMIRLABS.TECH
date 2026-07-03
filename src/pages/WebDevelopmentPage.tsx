@@ -189,21 +189,21 @@ Do not sign a website contract without these protective legal terms.
   return (
     <div className="bg-[#050505] text-axiom-sub font-body antialiased overflow-x-hidden min-h-screen relative selection:bg-blue-500/30 selection:text-white">
       <Helmet>
-        <title>Custom Web Engineering & Jamstack Solutions | AbuQitmirLabs</title>
-        <meta name="description" content="Expert web engineering firm delivering high-speed, secure Jamstack ecosystems. Specialized in Next.js, Headless CMS, and conversion-optimized enterprise web applications." />
+        <title>Custom Web Development Services | React, Next.js & Jamstack | AbuQitmirLabs</title>
+        <meta name="description" content="Custom web development with React, Next.js, and Jamstack. Sub-second load times, perfect Core Web Vitals, and SEO-optimized architecture. Serving clients in the US, UK, Canada, Australia, and Poland." />
         <link rel="canonical" href="https://abuqitmirlabs.tech/web-development" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Custom Web Engineering & Jamstack Solutions | AbuQitmirLabs" />
-        <meta property="og:description" content="Expert web engineering firm delivering high-speed, secure Jamstack ecosystems and scalable enterprise applications." />
+        <meta property="og:title" content="Custom Web Development Services | React, Next.js & Jamstack | AbuQitmirLabs" />
+        <meta property="og:description" content="Custom web development with React, Next.js, and Jamstack. Sub-second load times, perfect Core Web Vitals, and SEO-optimized architecture. Serving clients in the US, UK, Canada, Australia, and Poland." />
         <meta property="og:url" content="https://abuqitmirlabs.tech/web-development" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Custom Web Development Service | React & Next.js" />
-        <meta name="twitter:description" content="AbuQitmirLabs delivers high-speed, secure web ecosystems. Specialized in Jamstack, Headless CMS, and conversion-optimized web applications." />
+        <meta name="twitter:title" content="Custom Web Development Services | React, Next.js & Jamstack | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Custom web development with React, Next.js, and Jamstack. Sub-second load times, perfect Core Web Vitals, and SEO-optimized architecture. Serving clients in the US, UK, Canada, Australia, and Poland." />
         <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
 
         {/* Schema Markup */}
@@ -360,7 +360,7 @@ Do not sign a website contract without these protective legal terms.
           transition={{ delay: 0.1 }}
           className="text-lg md:text-xl text-neutral-400 text-center max-w-3xl mb-12 leading-relaxed font-light font-sans"
         >
-          Your website is often the first interaction a customer has with your brand. We build fast, responsive, SEO-ready websites and web apps — from marketing sites to complex dashboards — using modern frameworks that won't slow down or break as you scale. Hamari custom web development services ko aap <a href="/custom-software" className="text-blue-400 hover:underline">Custom Software</a> structures ke sath connect kar sakte hain, aur use automated <a href="/ai-agent-development" className="text-blue-400 hover:underline">AI Agents</a> se equip kar ke high-grade performance achieve kar sakte hain. Our operations are fully headquartered in Karachi, Pakistan, assisting organizations worldwide.
+          Your website is often the first interaction a customer has with your brand. We build fast, responsive, SEO-ready websites and web apps — from marketing sites to complex dashboards — using modern frameworks that won't slow down or break as you scale. Hamari custom web development services ko aap <Link to="/custom-software" className="text-blue-400 hover:underline">Custom Software</Link> structures ke sath connect kar sakte hain, <Link to="/mobile-app-development" className="text-blue-400 hover:underline">Mobile App Development</Link> solutions se expand kar sakte hain, aur use automated <Link to="/ai-agent-development" className="text-blue-400 hover:underline">AI Agent Development</Link> se equip kar ke high-grade performance achieve kar sakte hain. Perfect Core Web Vitals also pair beautifully with our <Link to="/seo-mastery" className="text-blue-400 hover:underline">SEO Mastery</Link> solutions to ensure maximum search engine visibility. Our operations are fully headquartered in Karachi, Pakistan, assisting organizations worldwide.
         </motion.p>
 
         {/* Core Capabilities Specifications */}
@@ -708,7 +708,7 @@ Do not sign a website contract without these protective legal terms.
                   Educational Institutions
                 </h3>
                 <p className="text-sm text-neutral-400 font-light leading-relaxed font-sans">
-                  Educational institutions need more than a brochure. They require platforms that manage admissions, deliver online learning, and communicate with students, parents, and faculty across multiple touchpoints. Our custom website development for educational institutions focuses on creating scalable, secure, and user-friendly portals that integrate with learning management systems and handle high traffic during enrollment periods. From curriculum pages to student dashboards, we build digital campuses that support your academic mission.
+                  Schools, colleges, and universities need websites that do more than inform—they need to enroll, engage, and educate. Our custom website development for educational institutions builds platforms that streamline admissions, host virtual classrooms, and connect administrators, teachers, students, and parents in one unified digital environment. From curriculum pages to student dashboards, we create digital campuses that support your academic mission.
                 </p>
               </div>
             </motion.div>
@@ -808,7 +808,7 @@ Do not sign a website contract without these protective legal terms.
                   Corporate Events
                 </h3>
                 <p className="text-sm text-neutral-400 font-light leading-relaxed font-sans">
-                  Corporate events demand sophisticated, high-impact digital experiences that manage multiple registrations, agendas, and real-time updates. Our custom website development for corporate events creates dynamic, responsive platforms that streamline event management, enhance attendee engagement, and deliver critical information at a glance. From registration to post-event analytics, we build your digital event ecosystem.
+                  Corporate events require more than just a registration page—they need a complete digital ecosystem. Our custom website development for corporate events creates dynamic platforms that handle everything from speaker management and agenda scheduling to real-time attendee engagement and post-event feedback. Whether you're organizing a conference, trade show, or private gala, we build the digital infrastructure that makes event logistics effortless and attendee experiences unforgettable.
                 </p>
               </div>
             </motion.div>
