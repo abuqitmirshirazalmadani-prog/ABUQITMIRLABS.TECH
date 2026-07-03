@@ -29,7 +29,22 @@ import {
   Smartphone,
   Globe,
   Settings,
-  ArrowUpRight
+  ArrowUpRight,
+  Heart,
+  Truck,
+  Home,
+  HeartPulse,
+  Scale,
+  Calendar,
+  GraduationCap,
+  Coins,
+  Wrench,
+  Factory,
+  Bot,
+  Users,
+  Clock,
+  Package,
+  Building2
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -181,121 +196,153 @@ const CustomSoftwarePage = () => {
               {
                 "@context": "https://schema.org",
                 "@type": "Service",
-                "name": "Bespoke Software Engineering",
+                "name": "Custom Software Development Services",
                 "serviceType": "Custom Software Development",
                 "provider": {
-                  "@type": "Organization",
+                  "@type": "LocalBusiness",
                   "name": "AbuQitmirLabs",
                   "url": "https://abuqitmirlabs.tech",
-                  "logo": "https://abuqitmirlabs.tech/logo.png"
+                  "logo": "https://abuqitmirlabs.tech/logo.png",
+                  "image": "https://abuqitmirlabs.tech/logo.png",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Karachi",
+                    "addressCountry": "PK"
+                  }
                 },
-                "description": "Expert bespoke software engineering firm delivering robust ERP systems, scalable SaaS platforms, and secure high-performance architectures.",
-                "areaServed": "Global"
-              }
-            ])
-          }}
-        ></script>
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Service",
-              "name": "Custom Software Development",
-              "description": "We engineer tailor-made software solutions that streamline operations and give your business a decisive competitive edge.",
-              "provider": {
-                "@type": "Organization",
-                "name": "AbuQitmirLabs",
-                "url": "https://abuqitmirlabs.tech"
+                "description": "At AbuQitmirLabs, we build bespoke custom software, enterprise platforms (ERP), scalable SaaS architectures, and specialized features tailored to sectors like Non-Profit, Logistics, Real Estate, Healthcare, Law, Events, and Education.",
+                "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
+                "hasOfferCatalog": {
+                  "@type": "OfferCatalog",
+                  "name": "Custom Software Development Solutions",
+                  "itemListElement": [
+                    ...services.map((s) => ({
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": s.title,
+                        "description": s.content
+                      }
+                    })),
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom Software Development for Non-Profit Organizations",
+                        "description": "Purpose-built non-profit solutions managing donor relationships, tracking impact metrics, and coordinating volunteers securely."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom Software Development for Logistics",
+                        "description": "Supply chain integration, real-time tracking, route optimization, fleet management, and inventory visibility."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom Software Development for Real Estate Agencies",
+                        "description": "Property management systems, CRM integrations, interactive search tools, and automated valuation models."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom Software Development for Healthcare Providers",
+                        "description": "HIPAA-compliant portals, intuitive patient management systems, scheduling, and secure telehealth integrations."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom Software Development for Small Law Firms",
+                        "description": "Secure client portals, case management systems, document automation, and billing solutions that reduce administrative overhead."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom Software Development for Corporate Events",
+                        "description": "Automated ticketing, speaker agenda schedules, real-time attendee analytics, and logistics management tools."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom Software Development for Educational Institutions",
+                        "description": "Adaptive learning portals, centralized student databases, assessments, and secure unified campuses."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom Software Development for Fintech Startups",
+                        "description": "Secure, scalable platforms for payment processing, wealth management, lending, and compliance."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom Software Development for the Construction Industry",
+                        "description": "Project management platforms that track progress, manage resources, and streamline communication across job sites."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom Software Development for Manufacturing Companies",
+                        "description": "ERP systems that integrate seamlessly with existing operations, providing real-time visibility and control over production lifecycles."
+                      }
+                    }
+                  ]
+                }
               },
-              "serviceType": "Software Development",
-              "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"],
-              "hasOfferCatalog": {
-                "@type": "OfferCatalog",
-                "name": "Software Engineering Services",
-                "itemListElement": services.map((s, i) => ({
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": s.title
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": faqData.map(item => ({
+                  "@type": "Question",
+                  "name": item.q,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": item.a
                   }
                 }))
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "HowTo",
+                "name": "Our Custom Software Development Process",
+                "description": "Our 3-step rigorous technical methodology to engineer robust, secure, and scalable software assets.",
+                "step": [
+                  {
+                    "@type": "HowToStep",
+                    "name": "Discovery & Architecture (Week 1-2)",
+                    "text": "We map your existing workflows, identify bottlenecks, and design a system architecture before writing a single line of code."
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Iterative Build (Week 3-8)",
+                    "text": "Development happens in 2-week sprints. You see working features every two weeks, not a black box for three months."
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Testing & Deployment (Week 9-10)",
+                    "text": "Full QA cycle, load testing, and staged rollout to production with zero-downtime deployment practices."
+                  }
+                ]
               }
-            })
-          }}
-        ></script>
-
-        {/* FAQ Schema */}
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": faqData.map(item => ({
-                "@type": "Question",
-                "name": item.q,
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": item.a
-                }
-              }))
-            })
-          }}
-        ></script>
-
-        {/* HowTo Schema (Development Process) */}
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "HowTo",
-              "name": "Our Custom Software Development Process",
-              "description": "Our 3-step rigorous technical methodology to engineer robust, secure, and scalable software assets.",
-              "step": [
-                {
-                  "@type": "HowToStep",
-                  "name": "Discovery & Architecture (Week 1-2)",
-                  "text": "We map your existing workflows, identify bottlenecks, and design a system architecture before writing a single line of code."
-                },
-                {
-                  "@type": "HowToStep",
-                  "name": "Iterative Build (Week 3-8)",
-                  "text": "Development happens in 2-week sprints. You see working features every two weeks, not a black box for three months."
-                },
-                {
-                  "@type": "HowToStep",
-                  "name": "Testing & Deployment (Week 9-10)",
-                  "text": "Full QA cycle, load testing, and staged rollout to production with zero-downtime deployment practices."
-                }
-              ]
-            })
-          }}
-        ></script>
-
-        {/* Breadcrumb Schema */}
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://abuqitmirlabs.tech"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Custom Software Development",
-                  "item": "https://abuqitmirlabs.tech/custom-software"
-                }
-              ]
-            })
+            ])
           }}
         ></script>
       </Helmet>
@@ -682,6 +729,239 @@ const CustomSoftwarePage = () => {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industry-Focused Solutions for Every Sector */}
+      <section className="py-32 lg:py-48 bg-black relative z-10 px-6 border-b border-white/10" id="industry-solutions">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-24 text-center max-w-4xl mx-auto">
+            <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ SECTOR_VERTICALS ]</span>
+            <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight mb-8">
+              Custom Software Development — <br />
+              <span className="font-serif italic text-blue-400">Industry-Focused Solutions for Every Sector</span>
+            </h2>
+            <p className="text-lg md:text-xl text-slate-300 font-light leading-relaxed font-sans">
+              At AbuQitmirLabs, we build custom software that solves real operational problems—not just generic platforms. Our approach begins with understanding your industry's unique workflows, compliance requirements, and growth trajectory before we write a single line of code. Whether you're a non-profit managing donor relationships or a logistics company optimizing supply chains, we design systems that fit your business, not the other way around.
+            </p>
+          </div>
+
+          {/* Grid of 10 Sectors */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Non-Profit Organizations",
+                icon: <Heart className="w-8 h-8 text-rose-400" />,
+                tagline: "Custom Software Development for Non-Profit Organizations",
+                description: "Non-profits require more than standard software. They need platforms that manage donor relationships, track impact metrics, process donations securely, and streamline volunteer coordination—all while operating within tight budgets. Our custom software development for non-profit organizations delivers purpose-built solutions that maximize your mission's reach without unnecessary overhead. From grant management to impact reporting, we build tools that help you focus on what matters most: your cause."
+              },
+              {
+                title: "Logistics",
+                icon: <Truck className="w-8 h-8 text-amber-400" />,
+                tagline: "Custom Software Development for Logistics",
+                description: "In logistics, efficiency is everything. Real-time tracking, route optimization, fleet management, and inventory visibility are not luxuries—they're necessities. Our custom software development for logistics creates integrated platforms that connect your entire supply chain, eliminating data silos and reducing operational friction. Whether you manage local deliveries or international freight, our solutions scale with your business and adapt to changing market demands."
+              },
+              {
+                title: "Real Estate Agencies",
+                icon: <Home className="w-8 h-8 text-sky-400" />,
+                tagline: "Custom Software Development for Real Estate Agencies",
+                description: "Real estate agencies need more than property listings—they need intelligent platforms that manage leads, automate follow-ups, and provide seamless client experiences. Our custom software development for real estate agencies builds property management systems, CRM integrations, and interactive search tools that help you close deals faster. From virtual tour integrations to automated valuation models, we create digital ecosystems that give you a competitive edge."
+              },
+              {
+                title: "Healthcare Providers",
+                icon: <HeartPulse className="w-8 h-8 text-emerald-400" />,
+                tagline: "Custom Software Development for Healthcare Providers",
+                description: "Healthcare demands the highest standards of security, compliance, and reliability. Our custom software development for healthcare providers ensures full HIPAA compliance while delivering intuitive patient management systems, appointment scheduling, telehealth platforms, and secure data exchange. We understand that patient trust is built on both clinical excellence and digital reliability—we build solutions that honor both."
+              },
+              {
+                title: "Small Law Firms",
+                icon: <Scale className="w-8 h-8 text-indigo-400" />,
+                tagline: "Custom Software Development for Small Law Firms",
+                description: "For small law firms, credibility and efficiency are critical. Our custom software development for small law firms creates secure client portals, case management systems, document automation, and billing solutions that reduce administrative overhead. We help you focus on practicing law, not managing software."
+              },
+              {
+                title: "Corporate Events",
+                icon: <Calendar className="w-8 h-8 text-purple-400" />,
+                tagline: "Custom Software Development for Corporate Events",
+                description: "Event organizers face immense pressure to deliver seamless experiences—from registration to post-event engagement. Our custom software development for corporate events provides comprehensive platforms that automate ticketing, manage speaker schedules, and deliver real-time attendee analytics—all in one integrated system. Whether you're planning a conference, trade show, or private gala, we build the digital infrastructure that makes event logistics effortless."
+              },
+              {
+                title: "Educational Institutions",
+                icon: <GraduationCap className="w-8 h-8 text-blue-400" />,
+                tagline: "Custom Software Development for Educational Institutions",
+                description: "The modern educational ecosystem spans in-person, hybrid, and fully remote learning environments. Our custom software development for educational institutions builds adaptive platforms that centralize student records, facilitate online assessments, and enable seamless communication between teachers, students, and parents—all while maintaining strict data security. From K-12 to higher education, we create digital foundations that support academic excellence."
+              },
+              {
+                title: "Fintech Startups",
+                icon: <Coins className="w-8 h-8 text-yellow-400" />,
+                tagline: "Custom Software Development for Fintech Startups",
+                description: "Fintech startups operate at the intersection of innovation and regulation. Our custom software development for fintech startups delivers secure, scalable platforms for payment processing, wealth management, lending, and compliance. We build solutions that can handle high transaction volumes while maintaining strict security protocols."
+              },
+              {
+                title: "Construction Industry",
+                icon: <Wrench className="w-8 h-8 text-orange-400" />,
+                tagline: "Custom Software Development for the Construction Industry",
+                description: "Construction projects involve complex coordination across multiple stakeholders, budgets, and timelines. Our custom software development for the construction industry creates project management platforms that track progress, manage resources, and streamline communication across job sites. From bid management to project closeout, we build solutions that keep construction projects on track."
+              },
+              {
+                title: "Manufacturing Companies",
+                icon: <Factory className="w-8 h-8 text-teal-400" />,
+                tagline: "Custom Software Development for Manufacturing Companies",
+                description: "Manufacturing requires precision in inventory management, production scheduling, quality control, and supply chain coordination. Our custom software development for manufacturing companies delivers ERP systems that integrate seamlessly with your existing operations, providing real-time visibility and control over your entire production lifecycle."
+              }
+            ].map((sector, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white/[0.02] border border-white/10 p-8 rounded-[2rem] hover:bg-white/[0.05] transition-all relative overflow-hidden flex flex-col justify-between"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] pointer-events-none" />
+                <div>
+                  <div className="mb-6 w-14 h-14 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center">
+                    {sector.icon}
+                  </div>
+                  <h3 className="text-xl font-bold uppercase tracking-tight text-white mb-2">{sector.title}</h3>
+                  <span className="text-xs font-mono text-blue-400 uppercase tracking-widest block mb-4">
+                    {sector.tagline}
+                  </span>
+                  <p className="text-sm leading-relaxed text-slate-400 font-light font-sans">{sector.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Custom Software Development with Specialized Features */}
+      <section className="py-32 lg:py-48 bg-white/[0.01] border-b border-white/10 relative z-10 px-6" id="specialized-features">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-24 text-center max-w-4xl mx-auto">
+            <span className="text-xs font-mono text-[#ccff00] mb-6 uppercase tracking-[0.5em] font-bold block">[ ADVANCED_INTEGRATIONS ]</span>
+            <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight mb-8">
+              Custom Software Development with <br />
+              <span className="font-serif italic text-blue-400">Specialized Features</span>
+            </h2>
+            <p className="text-lg md:text-xl text-slate-300 font-light leading-relaxed font-sans">
+              Modern businesses require modern features. We build solutions with specific, high-value functionalities that solve real problems:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                title: "AI Chatbot Integration",
+                icon: <Bot className="w-8 h-8 text-blue-400" />,
+                description: "Custom software development with AI chatbot integration delivers intelligent conversational agents that qualify leads, provide customer support, and automate routine interactions. These AI-powered assistants reduce response times and scale your customer engagement without adding headcount."
+              },
+              {
+                title: "Membership Portals",
+                icon: <Users className="w-8 h-8 text-[#ccff00]" />,
+                description: "Custom software development with membership portal creates secure, user-centric platforms that manage user accounts, subscriptions, content access, and community engagement—perfect for membership organizations, subscription services, and professional associations."
+              },
+              {
+                title: "Booking Systems",
+                icon: <Clock className="w-8 h-8 text-indigo-400" />,
+                description: "Custom software development with booking system provides intuitive scheduling tools that integrate with calendars, manage availability, and automate confirmations—essential for service-based businesses looking to reduce administrative overhead."
+              },
+              {
+                title: "Inventory Management",
+                icon: <Package className="w-8 h-8 text-amber-400" />,
+                description: "Custom software development for inventory management provides real-time visibility into stock levels, automated reordering, and predictive analytics to optimize your supply chain operations."
+              },
+              {
+                title: "Property Management",
+                icon: <Building2 className="w-8 h-8 text-sky-400" />,
+                description: "Custom software development for property management creates comprehensive platforms for managing rental properties, tenant relationships, maintenance requests, and financial reporting—tailored for the real estate sector."
+              }
+            ].map((feature, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ scale: 1.02 }}
+                className="bg-white/[0.03] border border-white/10 p-8 rounded-[2rem] hover:bg-white/[0.06] transition-all relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#ccff00]/5 blur-[60px] pointer-events-none" />
+                <div className="flex gap-4 items-start">
+                  <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center shrink-0">
+                    {feature.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold uppercase tracking-tight text-white mb-2">{feature.title}</h3>
+                    <p className="text-sm leading-relaxed text-slate-400 font-light font-sans">{feature.description}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Global Markets and Why Partner with AbuQitmirLabs */}
+      <section className="py-32 lg:py-48 bg-black border-b border-white/10 relative z-10 px-6" id="global-markets">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ GLOBAL_FOOTPRINT ]</span>
+              <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight mb-8">
+                Custom Software Development <br />
+                <span className="font-serif italic text-blue-400">Across Global Markets</span>
+              </h2>
+              <p className="text-base text-slate-300 font-light leading-relaxed mb-10 font-sans">
+                While our engineering headquarters is in Karachi, Pakistan, our digital solutions are built for a global stage. We understand the unique demands of different markets and adapt our approach accordingly:
+              </p>
+
+              <div className="space-y-6">
+                {[
+                  {
+                    market: "United States",
+                    text: "Custom software development in the United States for businesses that require high-performance, high-security, and premium design to compete in one of the world's most competitive digital landscapes."
+                  },
+                  {
+                    market: "United Kingdom",
+                    text: "Custom software development in the United Kingdom aligned with UK data protection standards and user expectations, ensuring your brand resonates with British audiences."
+                  },
+                  {
+                    market: "Canada",
+                    text: "Custom software development in Canada that reflects the country's bilingual and multicultural landscape, with compliance to Canadian accessibility standards."
+                  },
+                  {
+                    market: "Australia",
+                    text: "Custom software development in Australia for businesses ready to dominate the Australian market with fast, scalable, and user-friendly platforms."
+                  },
+                  {
+                    market: "Poland",
+                    text: "Custom software development in Poland that bridges the gap between global standards and local market needs, helping Polish businesses expand their digital footprint."
+                  }
+                ].map((item, idx) => (
+                  <div key={idx} className="border-l border-white/10 pl-6 py-2">
+                    <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-2">{item.market}</h3>
+                    <p className="text-xs text-slate-400 leading-relaxed font-light">{item.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-[3rem] relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 blur-[80px] pointer-events-none" />
+              <span className="text-xs font-mono text-[#ccff00] mb-6 uppercase tracking-[0.5em] font-bold block">[ WHY_ABUQITMIRLABS ]</span>
+              <h3 className="text-3xl font-serif font-light text-white leading-tight mb-6">
+                Why Partner with <span className="font-serif italic text-blue-400">AbuQitmirLabs?</span>
+              </h3>
+              <p className="text-base text-slate-300 leading-relaxed font-light mb-8 font-sans">
+                Our team in Karachi, Pakistan, combines global-grade technical expertise with cost-effective delivery. We serve clients across the United States, United Kingdom, Canada, Poland, and Australia—building custom software that is secure, scalable, and fully owned by you. Whether you're modernizing legacy systems, automating workflows, or building a new digital product, our engineering discipline ensures you get a solution that performs, integrates, and grows with your business.
+              </p>
+              
+              <div className="flex gap-4 items-center">
+                <div className="w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
+                  <Activity className="w-6 h-6 text-blue-400" />
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-white uppercase font-sans">Let's build your digital advantage.</h4>
+                  <p className="text-xs text-slate-400 font-sans">Engineering bespoke systems from Karachi, Pakistan to the world.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
