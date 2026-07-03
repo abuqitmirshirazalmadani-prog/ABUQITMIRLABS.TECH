@@ -667,6 +667,281 @@ Do not sign a website contract without these protective legal terms.
         </div>
       </section>
 
+      {/* Industry-Focused Solutions Section */}
+      <section className="py-32 px-6 relative overflow-hidden bg-black/60 border-t border-white/5">
+        <div className="absolute inset-0 bg-blue-600/[0.01] filter blur-[150px] pointer-events-none" />
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-20 max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="space-y-4"
+            >
+              <span className="text-[10px] bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full uppercase font-mono tracking-[0.2em] font-bold">
+                Industry-Focused Solutions
+              </span>
+              <h2 className="text-4xl md:text-5xl font-bold text-white uppercase tracking-tight">
+                Custom Website Development for Every Business
+              </h2>
+              <p className="text-lg md:text-xl text-neutral-400 font-light leading-relaxed font-sans pt-2">
+                At AbuQitmirLabs, we design websites that serve a clear purpose—not just for design's sake, but to solve real business problems. Our approach is rooted in understanding your industry, your audience, and your operational goals before a single line of code is written.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Industry Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+            {/* 1. Educational Institutions */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#0A0A0A] border border-white/5 hover:border-blue-500/20 rounded-3xl p-8 transition-all hover:bg-white/[0.01] flex flex-col justify-between group"
+            >
+              <div className="space-y-6">
+                <div className="w-12 h-12 rounded-2xl bg-blue-500/5 border border-blue-500/10 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform">
+                  <Layers size={24} />
+                </div>
+                <h3 className="text-xl font-bold text-white uppercase tracking-tight group-hover:text-blue-400 transition-colors">
+                  Educational Institutions
+                </h3>
+                <p className="text-sm text-neutral-400 font-light leading-relaxed font-sans">
+                  Educational institutions need more than a brochure. They require platforms that manage admissions, deliver online learning, and communicate with students, parents, and faculty across multiple touchpoints. Our custom website development for educational institutions focuses on creating scalable, secure, and user-friendly portals that integrate with learning management systems and handle high traffic during enrollment periods. From curriculum pages to student dashboards, we build digital campuses that support your academic mission.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* 2. Non-Profit Organizations */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#0A0A0A] border border-white/5 hover:border-blue-500/20 rounded-3xl p-8 transition-all hover:bg-white/[0.01] flex flex-col justify-between group"
+            >
+              <div className="space-y-6">
+                <div className="w-12 h-12 rounded-2xl bg-indigo-500/5 border border-indigo-500/10 flex items-center justify-center text-indigo-400 group-hover:scale-110 transition-transform">
+                  <Star size={24} />
+                </div>
+                <h3 className="text-xl font-bold text-white uppercase tracking-tight group-hover:text-indigo-400 transition-colors">
+                  Non-Profit Organizations
+                </h3>
+                <p className="text-sm text-neutral-400 font-light leading-relaxed font-sans">
+                  For non-profits, trust is everything. Every donor and volunteer must feel your mission before they read your mission statement. Our custom website development for non-profit organizations prioritizes storytelling, donation processing, and volunteer management—all presented with clarity and warmth. We understand the budget sensitivity of non-profits and deliver high-impact, cost-effective digital experiences that amplify your cause and build a community around your work.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* 3. Real Estate Agencies */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#0A0A0A] border border-white/5 hover:border-blue-500/20 rounded-3xl p-8 transition-all hover:bg-white/[0.01] flex flex-col justify-between group"
+            >
+              <div className="space-y-6">
+                <div className="w-12 h-12 rounded-2xl bg-sky-500/5 border border-sky-500/10 flex items-center justify-center text-sky-400 group-hover:scale-110 transition-transform">
+                  <Globe size={24} />
+                </div>
+                <h3 className="text-xl font-bold text-white uppercase tracking-tight group-hover:text-sky-400 transition-colors">
+                  Real Estate Agencies
+                </h3>
+                <p className="text-sm text-neutral-400 font-light leading-relaxed font-sans">
+                  A real estate website must handle complex property listings, high-quality imagery, and seamless user interaction. Our custom website development for real estate agencies creates dynamic platforms with advanced search filters, interactive maps, and instant property alerts—all optimized for conversion. Whether you're a boutique firm or a large brokerage, we build a digital storefront that helps you close deals faster.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* 4. Healthcare Providers */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#0A0A0A] border border-white/5 hover:border-blue-500/20 rounded-3xl p-8 transition-all hover:bg-white/[0.01] flex flex-col justify-between group"
+            >
+              <div className="space-y-6">
+                <div className="w-12 h-12 rounded-2xl bg-violet-500/5 border border-violet-500/10 flex items-center justify-center text-violet-400 group-hover:scale-110 transition-transform">
+                  <ShieldCheck size={24} />
+                </div>
+                <h3 className="text-xl font-bold text-white uppercase tracking-tight group-hover:text-violet-400 transition-colors">
+                  Healthcare Providers
+                </h3>
+                <p className="text-sm text-neutral-400 font-light leading-relaxed font-sans">
+                  Healthcare websites must be both accessible and secure. Our custom website development for healthcare providers ensures full HIPAA compliance, seamless appointment booking, patient portal integration, and clear communication of medical services. We understand the balance between maintaining a professional, trustworthy presence and handling sensitive patient data with the highest security standards.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* 5. Small Law Firms */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#0A0A0A] border border-white/5 hover:border-blue-500/20 rounded-3xl p-8 transition-all hover:bg-white/[0.01] flex flex-col justify-between group"
+            >
+              <div className="space-y-6">
+                <div className="w-12 h-12 rounded-2xl bg-blue-500/5 border border-blue-500/10 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform">
+                  <Briefcase size={24} />
+                </div>
+                <h3 className="text-xl font-bold text-white uppercase tracking-tight group-hover:text-blue-400 transition-colors">
+                  Small Law Firms
+                </h3>
+                <p className="text-sm text-neutral-400 font-light leading-relaxed font-sans">
+                  For small law firms, credibility and first impressions are everything. Our custom website development for small law firms focuses on clean, authoritative design, intuitive navigation, and clear calls to action. We create websites that position you as the trusted expert in your practice area—whether you're a sole practitioner or a boutique firm—helping you convert website visitors into reliable clients.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* 6. Corporate Events */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#0A0A0A] border border-white/5 hover:border-blue-500/20 rounded-3xl p-8 transition-all hover:bg-white/[0.01] flex flex-col justify-between group"
+            >
+              <div className="space-y-6">
+                <div className="w-12 h-12 rounded-2xl bg-indigo-500/5 border border-indigo-500/10 flex items-center justify-center text-indigo-400 group-hover:scale-110 transition-transform">
+                  <Rocket size={24} />
+                </div>
+                <h3 className="text-xl font-bold text-white uppercase tracking-tight group-hover:text-indigo-400 transition-colors">
+                  Corporate Events
+                </h3>
+                <p className="text-sm text-neutral-400 font-light leading-relaxed font-sans">
+                  Corporate events demand sophisticated, high-impact digital experiences that manage multiple registrations, agendas, and real-time updates. Our custom website development for corporate events creates dynamic, responsive platforms that streamline event management, enhance attendee engagement, and deliver critical information at a glance. From registration to post-event analytics, we build your digital event ecosystem.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* 7. Membership Portal */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#0A0A0A] border border-white/5 hover:border-blue-500/20 rounded-3xl p-8 transition-all hover:bg-white/[0.01] flex flex-col justify-between group"
+            >
+              <div className="space-y-6">
+                <div className="w-12 h-12 rounded-2xl bg-[#ccff00]/5 border border-[#ccff00]/10 flex items-center justify-center text-[#ccff00] group-hover:scale-110 transition-transform">
+                  <Lock size={24} />
+                </div>
+                <h3 className="text-xl font-bold text-white uppercase tracking-tight group-hover:text-[#ccff00] transition-colors">
+                  Membership Portal Integration
+                </h3>
+                <p className="text-sm text-neutral-400 font-light leading-relaxed font-sans">
+                  To build a thriving online community or subscription-based business, a simple website is not enough. Our custom website development with membership portal solutions deliver secure, user-centric platforms that manage user accounts, subscriptions, content access, and community engagement—all while providing a seamless user experience. We ensure your members stay engaged and your content remains protected.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* 8. Booking System */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#0A0A0A] border border-white/5 hover:border-blue-500/20 rounded-3xl p-8 transition-all hover:bg-white/[0.01] flex flex-col justify-between group"
+            >
+              <div className="space-y-6">
+                <div className="w-12 h-12 rounded-2xl bg-sky-500/5 border border-sky-500/10 flex items-center justify-center text-sky-400 group-hover:scale-110 transition-transform">
+                  <RefreshCw size={24} />
+                </div>
+                <h3 className="text-xl font-bold text-white uppercase tracking-tight group-hover:text-sky-400 transition-colors">
+                  Custom Booking Systems
+                </h3>
+                <p className="text-sm text-neutral-400 font-light leading-relaxed font-sans">
+                  For service-based businesses, a seamless booking experience is critical to capturing and retaining clients. Our custom website development with booking system creates intuitive scheduling tools that integrate with calendars, manage availability, and automate confirmations—reducing administrative overhead and improving customer satisfaction.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* 9. AI Chatbot Integration */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#0A0A0A] border border-white/5 hover:border-blue-500/20 rounded-3xl p-8 transition-all hover:bg-white/[0.01] flex flex-col justify-between group"
+            >
+              <div className="space-y-6">
+                <div className="w-12 h-12 rounded-2xl bg-[#00E5FF]/5 border border-[#00E5FF]/10 flex items-center justify-center text-[#00E5FF] group-hover:scale-110 transition-transform">
+                  <Cpu size={24} />
+                </div>
+                <h3 className="text-xl font-bold text-white uppercase tracking-tight group-hover:text-[#00E5FF] transition-colors">
+                  AI Chatbot Integration
+                </h3>
+                <p className="text-sm text-neutral-400 font-light leading-relaxed font-sans">
+                  Modern users expect instant, personalized responses. Our custom website development with AI chatbot integration combines dynamic front-end design with intelligent, automated conversational agents. Whether for lead qualification, customer support, or product recommendations, our AI chatbots enhance user engagement, reduce response times, and help you scale your customer interaction without adding to your team's workload.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Global Markets Focus Section */}
+          <div className="relative rounded-3xl border border-white/5 bg-[#070707] p-8 md:p-12 overflow-hidden">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-blue-600/[0.02] rounded-full blur-3xl pointer-events-none" />
+            <div className="max-w-4xl space-y-6">
+              <span className="text-[10px] bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full uppercase font-mono tracking-[0.2em] font-bold">
+                Global Operations
+              </span>
+              <h3 className="text-3xl font-bold text-white uppercase tracking-tight">
+                Custom Website Development Across Global Markets
+              </h3>
+              <p className="text-neutral-400 text-lg leading-relaxed font-light font-sans">
+                While our engineering headquarters is in Karachi, Pakistan, our digital solutions are built for a global stage. We understand the unique demands of different markets and adapt our approach accordingly:
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-6">
+                {/* USA */}
+                <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-blue-500/10 transition-colors">
+                  <div className="text-xs font-mono text-blue-400 font-bold mb-3 uppercase tracking-wider">United States</div>
+                  <p className="text-xs text-neutral-400 leading-relaxed font-sans font-light">
+                    Custom website development in the United States for businesses that require high-performance, high-security, and premium design to compete in one of the world's most competitive digital landscapes.
+                  </p>
+                </div>
+
+                {/* UK */}
+                <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-blue-500/10 transition-colors">
+                  <div className="text-xs font-mono text-blue-400 font-bold mb-3 uppercase tracking-wider">United Kingdom</div>
+                  <p className="text-xs text-neutral-400 leading-relaxed font-sans font-light">
+                    Custom website development in the United Kingdom aligned with UK data protection standards and user expectations, ensuring your brand resonates with British audiences.
+                  </p>
+                </div>
+
+                {/* Canada */}
+                <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-blue-500/10 transition-colors">
+                  <div className="text-xs font-mono text-blue-400 font-bold mb-3 uppercase tracking-wider">Canada</div>
+                  <p className="text-xs text-neutral-400 leading-relaxed font-sans font-light">
+                    Custom website development in Canada that reflects the country's bilingual and multicultural landscape, with compliance to Canadian accessibility standards.
+                  </p>
+                </div>
+
+                {/* Australia */}
+                <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-blue-500/10 transition-colors">
+                  <div className="text-xs font-mono text-blue-400 font-bold mb-3 uppercase tracking-wider">Australia</div>
+                  <p className="text-xs text-neutral-400 leading-relaxed font-sans font-light">
+                    Custom website development in Australia for businesses ready to dominate the Australian market with fast, scalable, and user-friendly platforms.
+                  </p>
+                </div>
+
+                {/* Poland */}
+                <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-blue-500/10 transition-colors">
+                  <div className="text-xs font-mono text-blue-400 font-bold mb-3 uppercase tracking-wider">Poland</div>
+                  <p className="text-xs text-neutral-400 leading-relaxed font-sans font-light">
+                    Custom website development in Poland that bridges the gap between global standards and local market needs, helping Polish businesses expand their digital footprint.
+                  </p>
+                </div>
+
+                {/* Karachi Global Pitch */}
+                <div className="p-6 rounded-2xl border border-blue-500/10 bg-blue-500/[0.02] flex flex-col justify-center">
+                  <div className="text-xs font-mono text-blue-400 font-bold mb-2 uppercase tracking-wider">Universal Reach</div>
+                  <p className="text-xs text-neutral-300 leading-relaxed font-sans font-medium">
+                    Wherever your audience is, we build websites that adapt, perform, and grow with your business.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Brand Web Development Packages Pricing Framework */}
       <WebDevelopmentPricing />
 
