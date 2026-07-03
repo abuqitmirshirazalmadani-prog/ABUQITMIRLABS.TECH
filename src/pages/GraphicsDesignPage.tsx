@@ -31,7 +31,14 @@ import {
   Globe,
   Settings,
   HelpCircle,
-  Clock
+  Clock,
+  Heart,
+  Scale,
+  Home,
+  HeartPulse,
+  BookOpen,
+  Calendar,
+  MapPin
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -214,16 +221,115 @@ const GraphicsDesignPage = () => {
             __html: JSON.stringify([
               {
                 "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://abuqitmirlabs.tech"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Graphics Design",
+                    "item": "https://abuqitmirlabs.tech/graphics-design"
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "ProfessionalService",
+                "name": "AbuQitmirLabs",
+                "url": "https://abuqitmirlabs.tech",
+                "logo": "https://abuqitmirlabs.tech/logo.png",
+                "image": "https://abuqitmirlabs.tech/logo.png",
+                "telephone": "+923233260859",
+                "priceRange": "$$$",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony",
+                  "addressLocality": "Landhi Town, Karachi",
+                  "addressRegion": "Sindh",
+                  "postalCode": "75160",
+                  "addressCountry": "PK"
+                },
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": "24.842691448838718",
+                  "longitude": "67.1862014846566"
+                },
+                "sameAs": [
+                  "https://wa.me/923233260859",
+                  "https://github.com/abuqitmir"
+                ]
+              },
+              {
+                "@context": "https://schema.org",
                 "@type": "Service",
                 "name": "Professional Graphics Design Services",
-                "description": "We craft conversion-focused brand identities, intuitive UI/UX layouts, and compelling marketing graphics.",
+                "description": "At AbuQitmirLabs, we craft conversion-focused brand identities, intuitive UI/UX layouts, and compelling marketing graphics that communicate value and build authority.",
                 "provider": {
-                  "@type": "Organization",
+                  "@type": "LocalBusiness",
                   "name": "AbuQitmirLabs",
                   "url": "https://abuqitmirlabs.tech"
                 },
                 "serviceType": "Graphics Design Services",
-                "areaServed": ["US", "UK", "Europe", "Global"]
+                "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
+                "hasOfferCatalog": {
+                  "@type": "OfferCatalog",
+                  "name": "Graphics Design Sector Solutions",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Graphics Design for Non-Profit Organizations",
+                        "description": "Non-profits need visual communication that tells their story and inspires action. We create compelling donation campaigns, impact reports, and volunteer recruitment materials."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Graphics Design for Real Estate",
+                        "description": "Stunning property brochures, virtual tour interfaces, and social media campaigns that help real estate agents showcase properties in their best light and close deals faster."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Graphics Design for Healthcare",
+                        "description": "Patient-friendly educational materials, wayfinding signage, clinic branding, and digital assets that convey trust, professionalism, and care."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Graphics Design for Small Law Firms",
+                        "description": "Authoritative websites, persuasive pitch decks, firm branding, and polished legal documents that build credibility and attract clients for small law firms."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Graphics Design for Corporate Events",
+                        "description": "Cohesive branding systems, high-impact signage, and engaging presentation materials that enhance the corporate event attendee experience."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Graphics Design for Educational Institutions",
+                        "description": "Compelling recruitment materials, interactive campus maps, and cohesive digital identities that reflect academic excellence and build community."
+                      }
+                    }
+                  ]
+                }
               },
               {
                 "@context": "https://schema.org",
@@ -236,6 +342,34 @@ const GraphicsDesignPage = () => {
                     "text": item.a
                   }
                 }))
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "HowTo",
+                "name": "Our Creative Design Process",
+                "description": "A proven design methodology combining deep research, concept development, pixel-perfect refinement, and developer-friendly asset delivery.",
+                "step": [
+                  {
+                    "@type": "HowToStep",
+                    "name": "Discovery & Research",
+                    "text": "Analyze business goals, competitive visuals, and target audiences to formulate a solid brand audit and design brief."
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Concept Development",
+                    "text": "Develop 2-3 strategic design directions, mood boards, and aesthetic concepts backed by detailed rationale."
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Design & Refinement",
+                    "text": "Refining the selected concept through detailed high-fidelity crafting, usability testing, and developing unified design systems."
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Delivery & Implementation",
+                    "text": "Organizing print-ready and digital assets, developer specifications, style guides, and training for in-house team handoff."
+                  }
+                ]
               }
             ])
           }}
@@ -478,6 +612,79 @@ const GraphicsDesignPage = () => {
         </div>
       </section>
 
+      {/* SECTION: INDUSTRY-FOCUSED SOLUTIONS */}
+      <section className="py-32 md:py-48 bg-black border-b border-white/5 relative">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#ccff00]/5 blur-[120px] pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="mb-20">
+            <span className="text-xs font-bold text-[#ccff00] uppercase tracking-[0.4em] block mb-4">// SECTOR SOLUTIONS</span>
+            <h2 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-tighter leading-none mb-8">
+              Graphics Design — <br />
+              <span className="text-transparent" style={{ WebkitTextStroke: '1px white' }}>Industry-Focused Solutions for Every Sector</span>
+            </h2>
+            <p className="text-zinc-400 text-base md:text-lg max-w-3xl leading-relaxed font-light">
+              At AbuQitmirLabs, we create visual identities that communicate before a single word is read. Our approach begins with understanding your industry's unique audience, competitive landscape, and brand positioning before we design a single pixel. Whether you need a complete brand identity, marketing collateral, or digital assets, we build designs that fit your business, not generic templates.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-white">
+            {[
+              {
+                title: "Graphics Design for Non-Profit Organizations",
+                desc: "Non-profits need visual communication that tells their story and inspires action. Our graphics design solutions for non-profit organizations create compelling donation campaigns, impact reports, and volunteer recruitment materials that connect emotionally with supporters. From social media graphics to annual reports, our graphics design for non-profit solutions help you communicate your mission with clarity and heart.",
+                icon: <Heart className="w-8 h-8 text-[#ccff00]" />
+              },
+              {
+                title: "Graphics Design for Real Estate",
+                desc: "Real estate marketing demands visuals that showcase properties in their best light and attract qualified buyers. Our graphics design for real estate creates stunning property brochures, virtual tour interfaces, and social media campaigns that help agents stand out in competitive markets. From luxury listings to commercial properties, our graphics design for real estate solutions help you close deals faster.",
+                icon: <Home className="w-8 h-8 text-[#ccff00]" />
+              },
+              {
+                title: "Graphics Design for Healthcare",
+                desc: "Healthcare organizations need designs that convey trust, professionalism, and care. Our graphics design for healthcare creates patient-friendly materials, wayfinding signage, and digital assets that make complex medical information accessible and reassuring. From clinic branding to patient education materials, our graphics design for healthcare solutions build confidence in your practice.",
+                icon: <HeartPulse className="w-8 h-8 text-[#ccff00]" />
+              },
+              {
+                title: "Graphics Design for Small Law Firms",
+                desc: "Small law firms need professional visual communication that builds credibility and attracts clients. Our graphics design for small law firms creates authoritative websites, persuasive pitch decks, and polished legal documents that reflect your expertise. From firm branding to case presentation materials, our graphics design for small law firms helps you compete with larger practices.",
+                icon: <Scale className="w-8 h-8 text-[#ccff00]" />
+              },
+              {
+                title: "Graphics Design for Corporate Events",
+                desc: "Corporate events demand sophisticated visual identities that set the tone and create memorable experiences. Our graphics design for corporate events creates cohesive branding systems, impactful signage, and engaging presentation materials that enhance attendee experience. From conference identities to gala branding, our graphics design for corporate events solutions make your event unforgettable.",
+                icon: <Calendar className="w-8 h-8 text-[#ccff00]" />
+              },
+              {
+                title: "Graphics Design for Educational Institutions",
+                desc: "Educational institutions need visual communication that attracts students, engages parents, and builds community. Our graphics design for educational institutions creates compelling recruitment materials, interactive campus maps, and cohesive digital identities that reflect your academic excellence. From K-12 to higher education, our graphics design for educational institutions solutions help you tell your story.",
+                icon: <BookOpen className="w-8 h-8 text-[#ccff00]" />
+              }
+            ].map((sector, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.05 }}
+                className="bg-zinc-950 border border-white/5 p-8 rounded-3xl hover:border-[#ccff00]/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="mb-6 w-14 h-14 bg-zinc-900 border border-white/10 rounded-2xl flex items-center justify-center">
+                    {sector.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4 tracking-tight uppercase leading-snug">{sector.title}</h3>
+                  <p className="text-sm font-light text-zinc-400 leading-relaxed mb-6">{sector.desc}</p>
+                </div>
+                <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-[#ccff00]">
+                  <span>Sector Solutions</span>
+                  <ArrowRight className="w-4 h-4" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SECTION 4: OUR DESIGN PROCESS */}
       <section className="py-32 md:py-48 bg-[#0a0a0a] border-b border-white/5 relative">
         <div className="absolute top-0 left-0 w-96 h-96 bg-[#ccff00]/5 blur-[120px] pointer-events-none" />
@@ -531,46 +738,116 @@ const GraphicsDesignPage = () => {
         </div>
       </section>
 
-      {/* SECTION 5: WHY ABUQITMIRLABS */}
+      {/* SECTION 5: GLOBAL MARKETS & WHY PARTNER WITH US */}
       <section className="py-32 md:py-48 bg-[#050505] border-b border-white/5 relative">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-20 text-center">
-            <span className="text-xs font-mono text-[#ccff00] mb-4 uppercase tracking-[0.4em] font-bold block">[ SECTION 5: WHY AbuQitmirLabs ]</span>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white uppercase tracking-tight">
-              Our Institutional Strengths
-            </h2>
-            <p className="mt-4 max-w-4xl mx-auto text-base md:text-lg text-zinc-400 font-light leading-relaxed">
-              As a premier software development company headquartered in Karachi, Pakistan, AbuQitmirLabs brings a unique perspective to graphics design—one that combines technical development expertise with creative excellence.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                title: "Developer-Designer Synergy",
-                desc: "Unlike pure-play design agencies, our designers work alongside developers. This ensures that designs are not just beautiful but also technically feasible and optimized for performance."
-              },
-              {
-                title: "Full-Service Capability",
-                desc: "From custom graphics design to complete software development, we offer end-to-end solutions. Your brand's visual identity and digital infrastructure are built to work together seamlessly."
-              },
-              {
-                title: "Global Perspective, Local Understanding",
-                desc: "We serve clients across the United States, United Kingdom, and Europe while maintaining a deep understanding of local market nuances."
-              },
-              {
-                title: "Client-Centric Approach",
-                desc: "We value transparency, collaboration, and measurable results. Our design process is iterative, ensuring that the final output aligns perfectly with your vision and business goals."
-              }
-            ].map((strength, idx) => (
-              <div key={idx} className="bg-zinc-950 border border-white/10 p-10 rounded-2xl hover:border-[#ccff00]/40 transition-transform duration-300 relative overflow-hidden group">
-                <span className="text-[#ccff00] font-mono text-xs block mb-4 font-black">[ STRENGTH 0{idx + 1} ]</span>
-                <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight text-black bg-[#ccff00] px-4 py-2 rounded mb-6 inline-block leading-none">
-                  {strength.title}
-                </h3>
-                <p className="text-zinc-400 text-sm font-light leading-relaxed">{strength.desc}</p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+            
+            {/* Left Column: Global Markets */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="space-y-12"
+            >
+              <div>
+                <span className="text-xs font-mono text-[#ccff00] mb-4 uppercase tracking-[0.4em] font-bold block">[ GLOBAL REACH ]</span>
+                <h2 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tighter leading-none mb-6">
+                  Graphics Design Across Global Markets
+                </h2>
+                <p className="text-zinc-400 text-sm md:text-base font-light leading-relaxed">
+                  While our creative studio is headquartered in Karachi, Pakistan, our design solutions are built for a global stage. We understand the unique visual expectations of different markets and adapt our approach accordingly:
+                </p>
               </div>
-            ))}
+
+              <div className="space-y-6">
+                {[
+                  {
+                    country: "United States",
+                    code: "US",
+                    text: "Graphics design in the United States for businesses that require premium, high-impact visual identities to compete in one of the world's most competitive markets."
+                  },
+                  {
+                    country: "United Kingdom",
+                    code: "UK",
+                    text: "Graphics design in the United Kingdom aligned with British design sensibilities and professional expectations, ensuring your brand resonates with UK audiences."
+                  },
+                  {
+                    country: "Canada",
+                    code: "CA",
+                    text: "Graphics design in Canada that reflects the country's bilingual and multicultural visual landscape, with compliance to Canadian accessibility standards."
+                  },
+                  {
+                    country: "Australia",
+                    code: "AU",
+                    text: "Graphics design in Australia for businesses ready to dominate the Australian market with fresh, modern, and culturally relevant design."
+                  },
+                  {
+                    country: "Poland",
+                    code: "PL",
+                    text: "Graphics design in Poland that bridges the gap between global design standards and local market aesthetics, helping Polish businesses stand out."
+                  }
+                ].map((m, idx) => (
+                  <div key={idx} className="p-6 bg-zinc-950 border border-white/5 rounded-2xl hover:border-zinc-800 transition-colors group flex gap-5 items-start">
+                    <span className="text-xs font-mono text-zinc-600 group-hover:text-[#ccff00] border border-zinc-800 group-hover:border-[#ccff00]/40 px-2.5 py-1 rounded shrink-0 font-bold">{m.code}</span>
+                    <div>
+                      <h4 className="text-base font-bold text-white uppercase tracking-tight mb-2">{m.country}</h4>
+                      <p className="text-xs text-zinc-400 leading-relaxed font-light">{m.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right Column: Why Partner with AbuQitmirLabs */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="flex flex-col justify-between space-y-12"
+            >
+              <div className="space-y-8">
+                <span className="text-xs font-mono text-[#ccff00] mb-4 uppercase tracking-[0.4em] font-bold block">[ WHY PARTNER WITH US ]</span>
+                <h2 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tighter leading-none mb-6">
+                  Why Partner with AbuQitmirLabs?
+                </h2>
+                <p className="text-zinc-300 text-base md:text-lg font-light leading-relaxed border-l-2 border-[#ccff00] pl-6 italic">
+                  Our team in Karachi, Pakistan, combines global-grade design expertise with cost-effective delivery. We serve clients across the United States, United Kingdom, Canada, Poland, and Australia—building visual identities that are memorable, professional, and fully owned by you. Whether you need a complete brand overhaul, marketing collateral, or digital assets, we deliver designs that communicate your value.
+                </p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
+                  <div className="p-6 bg-zinc-950 border border-white/5 rounded-2xl">
+                    <span className="text-xs font-mono text-[#ccff00] font-bold block mb-2">// 100% OWNERSHIP</span>
+                    <p className="text-xs text-zinc-400 leading-relaxed font-light">Every single custom graphic design and asset is fully transferred and legally owned by your business.</p>
+                  </div>
+                  <div className="p-6 bg-zinc-950 border border-white/5 rounded-2xl">
+                    <span className="text-xs font-mono text-[#ccff00] font-bold block mb-2">// BRAND STRATEGY</span>
+                    <p className="text-xs text-zinc-400 leading-relaxed font-light">We formulate deep brand guidelines ensuring your visual aesthetic scales correctly across all current and future channels.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Big Creative Callout */}
+              <div className="bg-zinc-900 border border-[#ccff00]/30 p-10 rounded-[2.5rem] relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#ccff00]/5 blur-3xl rounded-full" />
+                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-4">// BRAND IDENTITY LAUNCHPAD //</span>
+                <p className="text-3xl md:text-4xl font-extrabold tracking-tight text-white uppercase leading-none mb-6">
+                  Let's build your <span className="text-[#ccff00]">visual advantage.</span>
+                </p>
+                <a 
+                  href="https://wa.me/923233260859"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-black bg-[#ccff00] hover:bg-white px-6 py-4 rounded-xl transition-colors"
+                >
+                  Get Started <ArrowUpRight className="w-4 h-4" />
+                </a>
+              </div>
+
+            </motion.div>
+
           </div>
         </div>
       </section>

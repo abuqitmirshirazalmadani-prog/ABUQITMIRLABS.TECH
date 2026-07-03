@@ -27,7 +27,13 @@ import {
   FileSpreadsheet,
   ShieldCheck,
   Award,
-  Sparkle
+  Sparkle,
+  Heart,
+  Home,
+  HeartPulse,
+  Scale,
+  Calendar,
+  ArrowUpRight
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -322,23 +328,122 @@ const ContentWritingPage = () => {
         <meta name="twitter:description" content="AbuQitmirLabs offers professional content writing services, including SEO content writing, blog writing services, and copywriting services." />
         <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
 
-        {/* Schema Markup */}
+        {/* Schema Markup with Breadcrumbs, ProfessionalService, Service with OfferCatalog, FAQPage, and HowTo */}
         <script 
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify([
               {
                 "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://abuqitmirlabs.tech"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Content Writing",
+                    "item": "https://abuqitmirlabs.tech/content-writing"
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "ProfessionalService",
+                "name": "AbuQitmirLabs",
+                "url": "https://abuqitmirlabs.tech",
+                "logo": "https://abuqitmirlabs.tech/logo.png",
+                "image": "https://abuqitmirlabs.tech/logo.png",
+                "telephone": "+923233260859",
+                "priceRange": "$$$",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony",
+                  "addressLocality": "Landhi Town, Karachi",
+                  "addressRegion": "Sindh",
+                  "postalCode": "75160",
+                  "addressCountry": "PK"
+                },
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": "24.842691448838718",
+                  "longitude": "67.1862014846566"
+                },
+                "sameAs": [
+                  "https://wa.me/923233260859",
+                  "https://github.com/abuqitmir"
+                ]
+              },
+              {
+                "@context": "https://schema.org",
                 "@type": "Service",
                 "name": "Professional Content Writing Services",
-                "description": "We craft E-E-A-T focused, meticulously researched content writing that satisfies complex search engine algorithms and builds genuine trust.",
+                "description": "At AbuQitmirLabs, we create content that ranks, engages, and converts. We build customized content strategies that fit your business, not generic templates.",
                 "provider": {
-                  "@type": "Organization",
+                  "@type": "LocalBusiness",
                   "name": "AbuQitmirLabs",
                   "url": "https://abuqitmirlabs.tech"
                 },
                 "serviceType": "Content Strategy",
-                "areaServed": ["US", "UK", "Europe", "Global"]
+                "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
+                "hasOfferCatalog": {
+                  "@type": "OfferCatalog",
+                  "name": "Content Writing Sector Solutions",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Content Writing for Non-Profit Organizations",
+                        "description": "Create compelling donation campaigns, grant proposals, impact reports, and volunteer recruitment materials."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Content Writing for Real Estate",
+                        "description": "Craft stunning property descriptions, neighborhood guides, market reports, and blog posts for real estate."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Content Writing for Healthcare",
+                        "description": "Provide patient education materials, clear blog posts, and reassurance-driven medical service descriptions."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Content Writing for Small Law Firms",
+                        "description": "Write authoritative blog posts, detailed practice area pages, and helpful legal guides for small law firms."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Content Writing for Corporate Events",
+                        "description": "Develop high-conversion event copy, engaging speaker bios, and session promotional materials."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Content Writing for Educational Institutions",
+                        "description": "Design professional course descriptions, student recruitment packages, and engaging academic blogs."
+                      }
+                    }
+                  ]
+                }
               },
               {
                 "@context": "https://schema.org",
@@ -351,6 +456,34 @@ const ContentWritingPage = () => {
                     "text": item.a
                   }
                 }))
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "HowTo",
+                "name": "Our Strategic Content Writing Process",
+                "description": "A meticulous, high-E-E-A-T writing process combining technical keyword alignment, brand audits, creative drafting, and continuous performance loops.",
+                "step": [
+                  {
+                    "@type": "HowToStep",
+                    "name": "Discovery & Research",
+                    "text": "Deep research into the brand tone, audience profiles, keyword opportunity analysis, and competitor audits."
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Content Creation",
+                    "text": "Writing the initial high-value copy with natural keyword integration, readability optimization, and visual planning."
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Review & Refinement",
+                    "text": "Rigorous grammatical checks, accurate fact-checking, absolute plagiarism screening, and SEO validation."
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Delivery & Implementation",
+                    "text": "Formatting, strategic CMS uploads, analytics integration, and scheduling for optimal distribution."
+                  }
+                ]
               }
             ])
           }}
@@ -633,6 +766,79 @@ const ContentWritingPage = () => {
         </div>
       </section>
 
+      {/* SECTION: INDUSTRY-FOCUSED SOLUTIONS */}
+      <section className="py-32 md:py-48 bg-black border-b border-white/5 relative z-10">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#ccff00]/5 blur-[120px] pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="mb-20">
+            <span className="text-xs font-bold text-[#ccff00] uppercase tracking-[0.4em] block mb-4">// SECTOR SOLUTIONS</span>
+            <h2 className="text-4xl md:text-6xl font-serif text-white uppercase tracking-tighter leading-none mb-8">
+              Content Writing — <br />
+              <span className="text-transparent" style={{ WebkitTextStroke: '1px white' }}>Industry-Focused Solutions for Every Sector</span>
+            </h2>
+            <p className="text-zinc-400 text-base md:text-lg max-w-3xl leading-relaxed font-light">
+              At AbuQitmirLabs, we create content that ranks, engages, and converts. Our approach begins with understanding your industry's unique audience, competitive landscape, and business goals before we write a single word. Whether you need SEO-optimized blogs, compelling website copy, or technical documentation, we build content strategies that fit your business, not generic templates.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-white">
+            {[
+              {
+                title: "Content Writing for Non-Profit Organizations",
+                desc: "Non-profits need content that tells their story, inspires action, and builds donor trust. Our content writing for non-profit organizations creates compelling donation campaigns, grant proposals, impact reports, and volunteer recruitment materials that connect emotionally with supporters.",
+                icon: <Heart className="w-8 h-8 text-[#ccff00]" />
+              },
+              {
+                title: "Content Writing for Real Estate",
+                desc: "Real estate marketing demands content that showcases properties and attracts qualified buyers. Our content writing for real estate creates property descriptions, neighborhood guides, market reports, and blog posts that help agents stand out in competitive markets.",
+                icon: <Home className="w-8 h-8 text-[#ccff00]" />
+              },
+              {
+                title: "Content Writing for Healthcare",
+                desc: "Healthcare organizations need accurate, accessible content that builds patient trust. Our content writing for healthcare creates patient education materials, blog posts, and service descriptions that make complex medical information clear and reassuring.",
+                icon: <HeartPulse className="w-8 h-8 text-[#ccff00]" />
+              },
+              {
+                title: "Content Writing for Small Law Firms",
+                desc: "Small law firms need content that builds credibility and attracts clients. Our content writing for small law firms creates authoritative blog posts, practice area pages, and client guides that position you as the trusted expert in your field.",
+                icon: <Scale className="w-8 h-8 text-[#ccff00]" />
+              },
+              {
+                title: "Content Writing for Corporate Events",
+                desc: "Corporate events demand content that drives attendance and engagement. Our content writing for corporate events creates event copy, speaker bios, session descriptions, and promotional materials that make your event unforgettable.",
+                icon: <Calendar className="w-8 h-8 text-[#ccff00]" />
+              },
+              {
+                title: "Content Writing for Educational Institutions",
+                desc: "Educational institutions need content that attracts students and engages parents. Our content writing for educational institutions creates course descriptions, recruitment materials, and blog content that reflects your academic excellence.",
+                icon: <BookOpen className="w-8 h-8 text-[#ccff00]" />
+              }
+            ].map((sector, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.05 }}
+                className="bg-zinc-950 border border-white/5 p-8 rounded-[2rem] hover:border-[#ccff00]/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between animate-none"
+              >
+                <div>
+                  <div className="mb-6 w-14 h-14 bg-zinc-900 border border-white/10 rounded-2xl flex items-center justify-center">
+                    {sector.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4 tracking-tight uppercase leading-snug">{sector.title}</h3>
+                  <p className="text-sm font-light text-zinc-400 leading-relaxed mb-6">{sector.desc}</p>
+                </div>
+                <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-[#ccff00]">
+                  <span>Sector Solutions</span>
+                  <ArrowRight className="w-4 h-4" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SECTION 4: OUR CONTENT PROCESS */}
       <section className="py-24 md:py-40 px-6 bg-[#060606] border-y border-white/5 relative z-10">
          <div className="max-w-7xl mx-auto">
@@ -690,48 +896,118 @@ const ContentWritingPage = () => {
          </div>
       </section>
 
-      {/* SECTION 5: WHY ABUQITMIRLABS */}
-      <section className="py-24 md:py-40 px-6 bg-[#030303] relative">
-         <div className="max-w-7xl mx-auto">
-           <div className="mb-20 text-center">
-             <span className="text-xs font-mono text-neutral-500 mb-4 uppercase tracking-[0.4em] font-bold block">[ SECTION 5: WHY AbuQitmirLabs ]</span>
-             <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white font-light tracking-tight uppercase">
-               Our Institutional Strengths
-             </h2>
-             <p className="max-w-3xl mx-auto text-sm md:text-base text-neutral-400 font-light leading-relaxed mt-4">
-               As a premier software development company headquartered in Karachi, Pakistan, AbuQitmirLabs brings a unique perspective to content writing—one that combines technical expertise with creative excellence.
-             </p>
-           </div>
+      {/* SECTION 5: GLOBAL MARKETS & WHY PARTNER WITH US */}
+      <section className="py-32 md:py-48 bg-[#050505] border-b border-white/5 relative z-10">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+            
+            {/* Left Column: Global Markets */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="space-y-12"
+            >
+              <div>
+                <span className="text-xs font-mono text-[#ccff00] mb-4 uppercase tracking-[0.4em] font-bold block">[ GLOBAL REACH ]</span>
+                <h2 className="text-3xl md:text-5xl font-serif text-white uppercase tracking-tighter leading-none mb-6">
+                  Content Writing Across Global Markets
+                </h2>
+                <p className="text-zinc-400 text-sm md:text-base font-light leading-relaxed">
+                  While our headquarters is in Karachi, Pakistan, our content solutions are built for a global stage. We understand the unique demands of different markets and adapt our approach accordingly:
+                </p>
+              </div>
 
-           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-             {[
-               {
-                 title: "Developer-Writer Synergy",
-                 desc: "Unlike pure-play content agencies, our writers work alongside developers and SEO specialists. This ensures that content is not just well-written but also technically optimized for search engines."
-               },
-               {
-                 title: "Full-Service Capability",
-                 desc: "From SEO content writing to complete software development, we offer end-to-end solutions. Your content and digital infrastructure are built to work together seamlessly."
-               },
-               {
-                 title: "Industry-Specific Expertise",
-                 desc: "We have written content for fintech, healthcare, retail, logistics, and software development companies, understanding the nuances of each industry."
-               },
-               {
-                 title: "Global Perspective, Local Understanding",
-                 desc: "We serve clients across the United States, United Kingdom, and Europe while maintaining a deep understanding of local market nuances."
-               }
-             ].map((strength, idx) => (
-               <div key={idx} className="bg-neutral-950 border border-white/5 p-10 rounded-[2rem] hover:border-[#ccff00]/30 transition-all duration-300 relative overflow-hidden">
-                 <span className="text-[#ccff00] font-mono text-[9px] block mb-4 font-bold tracking-widest">// STRENGTH 0{idx + 1}</span>
-                 <h3 className="text-lg font-bold uppercase tracking-wider text-white mb-3">
-                   {strength.title}
-                 </h3>
-                 <p className="text-neutral-400 text-xs md:text-sm font-light leading-relaxed">{strength.desc}</p>
-               </div>
-             ))}
-           </div>
-         </div>
+              <div className="space-y-6">
+                {[
+                  {
+                    country: "United States",
+                    code: "US",
+                    text: "Content writing in the United States for businesses that need high-impact, SEO-optimized content to compete in one of the world's most competitive digital landscapes."
+                  },
+                  {
+                    country: "United Kingdom",
+                    code: "UK",
+                    text: "Content writing in the United Kingdom aligned with UK search behavior and professional standards, ensuring your brand resonates with British audiences."
+                  },
+                  {
+                    country: "Canada",
+                    code: "CA",
+                    text: "Content writing in Canada that reflects the country's bilingual and multicultural landscape."
+                  },
+                  {
+                    country: "Australia",
+                    code: "AU",
+                    text: "Content writing in Australia for businesses ready to dominate the Australian market with fresh, engaging content."
+                  },
+                  {
+                    country: "Poland",
+                    code: "PL",
+                    text: "Content writing in Poland that bridges the gap between global standards and local market needs."
+                  }
+                ].map((m, idx) => (
+                  <div key={idx} className="p-6 bg-zinc-950 border border-white/5 rounded-2xl hover:border-zinc-800 transition-colors group flex gap-5 items-start">
+                    <span className="text-xs font-mono text-zinc-600 group-hover:text-[#ccff00] border border-zinc-800 group-hover:border-[#ccff00]/40 px-2.5 py-1 rounded shrink-0 font-bold">{m.code}</span>
+                    <div>
+                      <h4 className="text-base font-bold text-white uppercase tracking-tight mb-2">{m.country}</h4>
+                      <p className="text-xs text-zinc-400 leading-relaxed font-light">{m.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right Column: Why Partner with AbuQitmirLabs */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="flex flex-col justify-between space-y-12"
+            >
+              <div className="space-y-8">
+                <span className="text-xs font-mono text-[#ccff00] mb-4 uppercase tracking-[0.4em] font-bold block">[ WHY PARTNER WITH US ]</span>
+                <h2 className="text-3xl md:text-5xl font-serif text-white uppercase tracking-tighter leading-none mb-6">
+                  Why Partner with AbuQitmirLabs?
+                </h2>
+                <p className="text-zinc-300 text-base md:text-lg font-light leading-relaxed border-l-2 border-[#ccff00] pl-6 italic">
+                  Our team in Karachi, Pakistan, combines global-grade content expertise with cost-effective delivery. We serve clients across the United States, United Kingdom, Canada, Poland, and Australia—building content strategies that deliver measurable ROI. Whether you need blog posts, website copy, or technical documentation, we deliver content that drives real business results.
+                </p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
+                  <div className="p-6 bg-zinc-950 border border-white/5 rounded-2xl">
+                    <span className="text-xs font-mono text-[#ccff00] font-bold block mb-2">// 100% MANUAL CRAFT</span>
+                    <p className="text-xs text-zinc-400 leading-relaxed font-light">Every piece of content is researched, drafted, and refined manually with E-E-A-T and real human insight.</p>
+                  </div>
+                  <div className="p-6 bg-zinc-950 border border-white/5 rounded-2xl">
+                    <span className="text-xs font-mono text-[#ccff00] font-bold block mb-2">// DATA-DRIVEN STRATEGY</span>
+                    <p className="text-xs text-zinc-400 leading-relaxed font-light">We align every keyword and page structure with search intent to capture real buyer demand.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Big Creative Callout */}
+              <div className="bg-zinc-900 border border-[#ccff00]/30 p-10 rounded-[2.5rem] relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#ccff00]/5 blur-3xl rounded-full" />
+                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-4">// EDITORIAL ADVANTAGE LAUNCHPAD //</span>
+                <p className="text-3xl md:text-4xl font-extrabold tracking-tight text-white uppercase leading-none mb-6">
+                  Let's build your <span className="text-[#ccff00]">content advantage.</span>
+                </p>
+                <a 
+                  href="https://wa.me/923233260859"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-black bg-[#ccff00] hover:bg-white px-6 py-4 rounded-xl transition-colors"
+                >
+                  Get Started <ArrowUpRight className="w-4 h-4" />
+                </a>
+              </div>
+
+            </motion.div>
+
+          </div>
+        </div>
       </section>
 
       {/* Editorial Research Tools Section */}

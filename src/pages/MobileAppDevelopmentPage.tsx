@@ -22,7 +22,15 @@ import {
   Globe, 
   Eye,
   Terminal,
-  Server
+  Server,
+  Heart,
+  Truck,
+  Home,
+  HeartPulse,
+  Scale,
+  Calendar,
+  GraduationCap,
+  Activity
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -125,25 +133,91 @@ const MobileAppDevelopmentPage = () => {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Service",
-              "name": "Flutter & Native Mobile App Development",
-              "description": "We engineer stellar mobile software for iOS and Android using Flutter cross-platform and Kotlin/Swift native technologies with offline database synchronicity.",
+              "name": "Flutter & Native Mobile App Development Services",
+              "description": "At AbuQitmirLabs, we engineer high-performance native and cross-platform mobile applications for iOS (Swift/SwiftUI) and Android (Kotlin) alongside Flutter solutions tailored to key sectors like Non-Profit, Logistics, Real Estate, Healthcare, Law, Events, and Education.",
               "provider": {
-                "@type": "Organization",
+                "@type": "LocalBusiness",
                 "name": "AbuQitmirLabs",
-                "url": "https://abuqitmirlabs.tech"
+                "url": "https://abuqitmirlabs.tech",
+                "logo": "https://abuqitmirlabs.tech/logo.png",
+                "image": "https://abuqitmirlabs.tech/logo.png",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": "Karachi",
+                  "addressCountry": "PK"
+                }
               },
               "serviceType": "Mobile Application Engineering",
-              "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"],
+              "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
               "hasOfferCatalog": {
                 "@type": "OfferCatalog",
-                "name": "Mobile Development Services",
-                "itemListElement": capabilities.map(c => ({
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": c.title
+                "name": "Mobile Development Solutions Catalog",
+                "itemListElement": [
+                  ...capabilities.map(c => ({
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": c.title,
+                      "description": c.content
+                    }
+                  })),
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Mobile App Development for Non-Profit Organizations",
+                      "description": "Streamlining donation processing, volunteer coordination, and impact tracking securely."
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Mobile App Development for Logistics",
+                      "description": "Offline-capable, GPS-integrated platforms for real-time shipment tracking, driver communication, and route optimization."
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Mobile App Development for Real Estate",
+                      "description": "Immersive property browsing, advanced search filters, interactive maps, and CRM notifications."
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Mobile App Development for Healthcare",
+                      "description": "HIPAA-compliant portals, telemedicine options, scheduling, and secure patient data vaults."
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Mobile App Development for Small Law Firms",
+                      "description": "Secure client portals, document case management, time trackers, and mobile billing tools."
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Mobile App Development for Corporate Events",
+                      "description": "Interactive agendas, networking features, live polling, and real-time push notification updates."
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Mobile App Development for Educational Institutions",
+                      "description": "Learning systems, attendance tracking, assignment modules, and unified school portals."
+                    }
                   }
-                }))
+                ]
               }
             })
           }}
@@ -446,6 +520,158 @@ const MobileAppDevelopmentPage = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Mobile App Development Industry-Focused Solutions for Every Sector */}
+      <section className="py-32 lg:py-48 bg-black relative z-10 px-6 border-t border-b border-white/5" id="mobile-industry-solutions">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-24 text-center max-w-4xl mx-auto animate-enter">
+            <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ MOBILE_VERTICALS ]</span>
+            <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight mb-8">
+              Mobile App Development — <br />
+              <span className="font-serif italic text-blue-400">Industry-Focused Solutions for Every Sector</span>
+            </h2>
+            <p className="text-lg md:text-xl text-slate-300 font-light leading-relaxed font-sans">
+              At AbuQitmirLabs, we build mobile applications that solve real business problems—not generic apps that look good in a demo but fail in production. Our process begins with understanding your industry's unique workflows, user expectations, and operational challenges before we write a single line of code. Whether you need a cross-platform Flutter solution or a native iOS/Android application, we design systems that fit your business, not the other way around.
+            </p>
+          </div>
+
+          {/* Grid of Sectors */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Non-Profit Organizations",
+                icon: <Heart className="w-8 h-8 text-rose-400" />,
+                tagline: "Mobile App Development for Non-Profit Organizations",
+                description: "Non-profits need mobile solutions that amplify their mission without draining their limited resources. We build apps that streamline donation processing, volunteer coordination, and impact tracking—all while maintaining the highest standards of security and accessibility. From one-touch giving to real-time program updates, our mobile app development for non-profit solutions help you connect with supporters wherever they are."
+              },
+              {
+                title: "Logistics",
+                icon: <Truck className="w-8 h-8 text-amber-400" />,
+                tagline: "Mobile App Development for Logistics",
+                description: "In logistics, mobile apps are the backbone of operations. From real-time shipment tracking to driver communication and route optimization, your mobile app needs to perform flawlessly in the field. Our mobile app development for logistics solutions provide offline-capable, GPS-integrated platforms that keep your supply chain moving. Whether you manage last-mile deliveries or international freight, we build mobile tools that keep your team connected and your customers informed."
+              },
+              {
+                title: "Real Estate",
+                icon: <Home className="w-8 h-8 text-sky-400" />,
+                tagline: "Mobile App Development for Real Estate",
+                description: "Real estate professionals need mobile apps that handle complex property searches, schedule viewings, and manage client relationships on the go. Our mobile app development for real estate solutions deliver immersive property browsing experiences with advanced search filters, interactive maps, and instant notifications—helping agents close deals from anywhere."
+              },
+              {
+                title: "Healthcare",
+                icon: <HeartPulse className="w-8 h-8 text-emerald-400" />,
+                tagline: "Mobile App Development for Healthcare",
+                description: "Healthcare mobile apps must balance accessibility with the highest security standards. Our mobile app development for healthcare solutions provide HIPAA-compliant patient portals, secure telemedicine platforms, appointment scheduling, and medication management tools. We build apps that put patients in control of their health data while keeping healthcare providers connected and informed."
+              },
+              {
+                title: "Small Law Firms",
+                icon: <Scale className="w-8 h-8 text-indigo-400" />,
+                tagline: "Mobile App Development for Small Law Firms",
+                description: "Small law firms need mobile tools that help them manage cases, communicate with clients, and access documents securely from anywhere. Our mobile app development for small law firms solutions deliver secure client portals, document management, time tracking, and billing features that keep your practice running smoothly—wherever you are."
+              },
+              {
+                title: "Corporate Events",
+                icon: <Calendar className="w-8 h-8 text-purple-400" />,
+                tagline: "Mobile App Development for Corporate Events",
+                description: "Corporate events demand mobile apps that engage attendees, streamline logistics, and deliver real-time information. Our mobile app development for corporate events solutions provide interactive agendas, networking features, live polling, and push notifications that keep participants informed and connected throughout the event experience."
+              },
+              {
+                title: "Educational Institutions",
+                icon: <GraduationCap className="w-8 h-8 text-blue-400" />,
+                tagline: "Mobile App Development for Educational Institutions",
+                description: "Educational institutions need mobile platforms that connect students, teachers, and parents across multiple touchpoints. Our mobile app development for educational institutions solutions deliver learning management systems, attendance tracking, assignment submission, and communication tools that support both in-person and remote learning environments."
+              }
+            ].map((sector, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white/[0.01] border border-white/10 p-8 rounded-[2rem] hover:bg-white/[0.04] transition-all relative overflow-hidden flex flex-col justify-between"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] pointer-events-none" />
+                <div>
+                  <div className="mb-6 w-14 h-14 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center">
+                    {sector.icon}
+                  </div>
+                  <h3 className="text-xl font-bold uppercase tracking-tight text-white mb-2">{sector.title}</h3>
+                  <span className="text-xs font-mono text-blue-400 uppercase tracking-widest block mb-4">
+                    {sector.tagline}
+                  </span>
+                  <p className="text-sm leading-relaxed text-slate-400 font-light font-sans">{sector.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Mobile App Development Across Global Markets */}
+      <section className="py-32 lg:py-48 bg-white/[0.01] border-b border-white/5 relative z-10 px-6" id="mobile-global-markets">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ GLOBAL_MOBILE_REACH ]</span>
+              <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight mb-8">
+                Mobile App Development <br />
+                <span className="font-serif italic text-blue-400">Across Global Markets</span>
+              </h2>
+              <p className="text-base text-slate-300 font-light leading-relaxed mb-10 font-sans">
+                While our engineering headquarters is in Karachi, Pakistan, our mobile solutions are built for a global stage. We understand the unique demands of different markets and adapt our approach accordingly:
+              </p>
+
+              <div className="space-y-6">
+                {[
+                  {
+                    market: "United States",
+                    text: "Mobile app development in the United States for businesses that require high-performance, high-security, and premium design to compete in one of the world's most competitive digital landscapes."
+                  },
+                  {
+                    market: "United Kingdom",
+                    text: "Mobile app development in the United Kingdom aligned with UK data protection standards and user expectations, ensuring your brand resonates with British audiences."
+                  },
+                  {
+                    market: "Canada",
+                    text: "Mobile app development in Canada that reflects the country's bilingual and multicultural landscape, with compliance to Canadian accessibility standards."
+                  },
+                  {
+                    market: "Australia",
+                    text: "Mobile app development in Australia for businesses ready to dominate the Australian market with fast, scalable, and user-friendly platforms."
+                  },
+                  {
+                    market: "Poland",
+                    text: "Mobile app development in Poland that bridges the gap between global standards and local market needs, helping Polish businesses expand their digital footprint."
+                  }
+                ].map((item, idx) => (
+                  <div key={idx} className="border-l border-white/10 pl-6 py-2">
+                    <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-2">{item.market}</h3>
+                    <p className="text-xs text-slate-400 leading-relaxed font-light">{item.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-[3rem] relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 blur-[80px] pointer-events-none" />
+              <span className="text-xs font-mono text-[#ccff00] mb-6 uppercase tracking-[0.5em] font-bold block">[ WHY_ABUQITMIRLABS ]</span>
+              <h3 className="text-3xl font-serif font-light text-white leading-tight mb-6">
+                Why Partner with <span className="font-serif italic text-blue-400">AbuQitmirLabs?</span>
+              </h3>
+              <p className="text-base text-slate-300 leading-relaxed font-light mb-8 font-sans">
+                Our team in Karachi, Pakistan, combines global-grade technical expertise with cost-effective delivery. We serve clients across the United States, United Kingdom, Canada, Poland, and Australia—building mobile applications that are secure, scalable, and fully owned by you. Whether you need a cross-platform Flutter solution, a native iOS app in Swift, or a native Android app in Kotlin, we deliver high-performance mobile experiences that users love.
+              </p>
+              
+              <div className="flex gap-4 items-center">
+                <div className="w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
+                  <Activity className="w-6 h-6 text-blue-400" />
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-white uppercase font-sans">Let's build your mobile advantage.</h4>
+                  <p className="text-xs text-slate-400 font-sans">Bespoke engineering from Karachi, Pakistan to the global stores.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

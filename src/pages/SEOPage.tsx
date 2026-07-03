@@ -28,7 +28,14 @@ import {
   Clock,
   CheckCircle2,
   Sliders,
-  Database
+  Database,
+  Heart,
+  Scale,
+  Home,
+  HeartPulse,
+  Activity,
+  Wrench,
+  Shield
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -92,63 +99,192 @@ const SEOPage = () => {
         <meta property="og:url" content="https://abuqitmirlabs.tech/seo-mastery" />
         <meta property="og:type" content="website" />
 
-        {/* Schema Markup */}
+        {/* Schema Markup with BreadcrumbList, Service, FAQPage, and HowTo */}
         <script 
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://abuqitmirlabs.tech"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "SEO Mastery",
-                  "item": "https://abuqitmirlabs.tech/seo-mastery"
-                }
-              ]
-            })
-          }}
-        ></script>
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Service",
-              "name": "Professional SEO Services",
-              "description": "Expert data-driven Search Engine Optimization, Technical Audits, and Organic Authority building with transparent reporting.",
-              "provider": {
-                "@type": "Organization",
-                "name": "AbuQitmirLabs",
-                "url": "https://abuqitmirlabs.tech"
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://abuqitmirlabs.tech"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "SEO Mastery",
+                    "item": "https://abuqitmirlabs.tech/seo-mastery"
+                  }
+                ]
               },
-              "serviceType": "Search Engine Optimization",
-              "areaServed": ["US", "GB", "Europe", "Global"]
-            })
-          }}
-        ></script>
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": faqData.map(item => ({
-                "@type": "Question",
-                "name": item.q,
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": item.a
+              {
+                "@context": "https://schema.org",
+                "@type": "ProfessionalService",
+                "name": "AbuQitmirLabs",
+                "url": "https://abuqitmirlabs.tech",
+                "logo": "https://abuqitmirlabs.tech/logo.png",
+                "image": "https://abuqitmirlabs.tech/logo.png",
+                "telephone": "+923233260859",
+                "priceRange": "$$$",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony",
+                  "addressLocality": "Landhi Town, Karachi",
+                  "addressRegion": "Sindh",
+                  "postalCode": "75160",
+                  "addressCountry": "PK"
+                },
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": "24.842691448838718",
+                  "longitude": "67.1862014846566"
+                },
+                "sameAs": [
+                  "https://wa.me/923233260859",
+                  "https://github.com/abuqitmir"
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                "name": "Professional SEO Services",
+                "serviceType": "Search Engine Optimization",
+                "provider": {
+                  "@type": "LocalBusiness",
+                  "name": "AbuQitmirLabs",
+                  "url": "https://abuqitmirlabs.tech",
+                  "logo": "https://abuqitmirlabs.tech/logo.png",
+                  "image": "https://abuqitmirlabs.tech/logo.png",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Karachi",
+                    "addressCountry": "PK"
+                  }
+                },
+                "description": "At AbuQitmirLabs, we build SEO strategies that deliver sustainable organic growth—not quick fixes that vanish with the next algorithm update. We run full technical audits, fix crawl/indexing issues, and build content structures that search engines understand.",
+                "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
+                "hasOfferCatalog": {
+                  "@type": "OfferCatalog",
+                  "name": "Professional SEO Solutions",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "SEO Services for Non-Profit Organizations",
+                        "description": "Non-profits need search visibility that amplifies their mission without draining limited resources. Our SEO solutions optimize donation pages, volunteer recruitment, and impact stories to attract supporters."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "SEO Services for Small Law Firms",
+                        "description": "Small law firms need to appear when potential clients search for legal help in their area. Our SEO strategies target practice-area-specific keywords, build local citations, and optimize Google Business Profiles."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Local SEO for Real Estate",
+                        "description": "Real estate is inherently local. Our local SEO optimizes listings for neighborhood-specific terms, manages Google Business Profile map pack rankings, and builds local citations to capture high-intent buyers and sellers."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Local SEO for Non-Profit Organizations",
+                        "description": "Local visibility helps non-profits connect with local community members, volunteers, and donors who care about their cause. We build geographic local signals and optimize listings to foster community presence."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Local SEO for Small Law Firms",
+                        "description": "For small law firms, local search visibility is essential to attract clients in your service area. We optimize maps, coordinate geo-targeted citations, and build local trust indicators."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "GMB Optimization for Healthcare",
+                        "description": "Healthcare providers need to appear when patients search for medical services nearby. Our Google Business Profile optimization ensures your practice appears with accurate listings and robust patient trust signals."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "GMB Optimization for Dentists",
+                        "description": "Dentists rely heavily on local search to attract new patients. Our Google Business Profile optimization ensures your practice appears prominently in dentist near me queries with review management."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "GMB Optimization for Contractors",
+                        "description": "Home service contractors depend on local visibility to generate leads. We optimize profiles for contractors like roofers, plumbers, and electricians to rank high in their specific service areas."
+                      }
+                    }
+                  ]
                 }
-              }))
-            })
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": faqData.map(item => ({
+                  "@type": "Question",
+                  "name": item.q,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": item.a
+                  }
+                }))
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "HowTo",
+                "name": "Our Search Engine Optimization Framework",
+                "description": "A proven, highly rigorous 5-step methodology combining technical SEO audits, semantic content maps, and sustainable off-page authority builds.",
+                "step": [
+                  {
+                    "@type": "HowToStep",
+                    "name": "Discovery & Audit",
+                    "text": "Comprehensive analysis of website technical architecture, mobile usability, speed diagnostics, and deep competitor search footprint benchmarking."
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Keyword Strategy & Content Optimization",
+                    "text": "Developing geographic semantic entity maps, keyword alignment sheets, on-page schema tag integrations, and strategic internal link hierarchies."
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Technical SEO Implementation",
+                    "text": "Remediating indexing faults, fixing rendering obstacles, improving crawl efficiency, and optimizing Core Web Vitals to solid green values."
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Off-Page SEO & Authority Building",
+                    "text": "Securing sustainable, high-relevance editorial backlink connections and building localized digital citations across authoritative registries."
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Performance Monitoring & Continuous Optimization",
+                    "text": "Configuring rigorous tracking for search entity rankings, organic click-through trends, and mapping traffic patterns directly to business conversions."
+                  }
+                ]
+              }
+            ])
           }}
         ></script>
       </Helmet>
@@ -304,6 +440,101 @@ const SEOPage = () => {
                 Our <strong className="text-white font-extrabold">SEO audit services</strong> provide a clear roadmap for improvement, prioritizing actions that deliver the highest ROI.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SEO & Local SEO — Industry-Focused Solutions for Every Sector */}
+      <section className="py-32 border-b-[8px] border-black bg-[#f4f4f5] relative z-10 px-6" id="seo-industry-solutions">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-20 text-center max-w-4xl mx-auto">
+            <span className="text-xs font-mono text-[#ff0099] mb-4 uppercase tracking-[0.4em] font-bold block">[ ORGANIC_DOMINANCE_BY_SECTOR ]</span>
+            <h2 className="text-4xl md:text-6xl font-black text-black tracking-tighter leading-none mb-6 uppercase">
+              SEO &amp; Local SEO — <br />
+              <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>Industry-Focused Solutions</span>
+            </h2>
+            <p className="text-lg md:text-xl text-zinc-800 font-bold leading-relaxed font-sans">
+              At AbuQitmirLabs, we build SEO strategies that deliver sustainable organic growth—not quick fixes that vanish with the next algorithm update. Our approach begins with understanding your industry's unique competitive landscape, customer behavior, and local market dynamics before we optimize a single page. Whether you need national visibility, local dominance, or Google Business Profile mastery, we build strategies that fit your business, not the other way around.
+            </p>
+          </div>
+
+          {/* Grid of 8 Sectors */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                id: "ind-solution-nonprofit-seo",
+                title: "SEO Services for Non-Profits",
+                icon: <Heart className="w-8 h-8 text-[#ff0099]" />,
+                tagline: "SEO Services for Non-Profit Organizations",
+                description: "Non-profits need search visibility that amplifies their mission without draining limited resources. Our SEO solutions for non-profit organizations optimize donation pages, volunteer recruitment content, and impact stories to attract supporters who share your cause. From grant-funded initiatives to community outreach, our SEO services for non-profit help you reach the right people at the right time."
+              },
+              {
+                id: "ind-solution-law-seo",
+                title: "SEO Services for Law Firms",
+                icon: <Scale className="w-8 h-8 text-black" />,
+                tagline: "SEO Services for Small Law Firms",
+                description: "Small law firms need to appear when potential clients search for legal help in their area. Our SEO strategies for small law firms target practice-area-specific keywords, build local citations, and optimize your Google Business Profile to attract high-intent clients. Our SEO services for small law firms help you compete with larger practices by focusing on what matters most: converting local search traffic into cases."
+              },
+              {
+                id: "ind-solution-realestate-seo",
+                title: "Local SEO for Real Estate",
+                icon: <Home className="w-8 h-8 text-[#ff0099]" />,
+                tagline: "Local SEO for Real Estate",
+                description: "Real estate is inherently local. Buyers and sellers search for agents in their specific neighborhoods, making local SEO critical for success. Our local SEO for real estate optimizes your website for neighborhood-specific keywords, manages your Google Business Profile, and builds local citations that improve your visibility in map packs. Our local SEO for real estate solutions help you dominate your local market."
+              },
+              {
+                id: "ind-solution-nonprofit-local",
+                title: "Local SEO for Non-Profits",
+                icon: <MapPin className="w-8 h-8 text-black" />,
+                tagline: "Local SEO for Non-Profit Organizations",
+                description: "Local visibility helps non-profits connect with community members, volunteers, and donors who care about their cause. Our local SEO for non-profit organizations optimizes your Google Business Profile, builds local citations, and improves your visibility in local search results. Our local SEO for non-profit solutions help you build a strong community presence."
+              },
+              {
+                id: "ind-solution-law-local",
+                title: "Local SEO for Law Firms",
+                icon: <Shield className="w-8 h-8 text-[#ff0099]" />,
+                tagline: "Local SEO for Small Law Firms",
+                description: "For small law firms, local search visibility is essential. Potential clients search for lawyers near them, and if you're not appearing in local results, you're losing business. Our local SEO for small law firms optimizes your Google Business Profile, builds local citations, and targets geographically relevant keywords. Our local SEO for small law firms helps you attract clients in your service area."
+              },
+              {
+                id: "ind-solution-healthcare-gmb",
+                title: "GMB for Healthcare",
+                icon: <HeartPulse className="w-8 h-8 text-black" />,
+                tagline: "GMB Optimization for Healthcare",
+                description: "Healthcare providers need to appear when patients search for medical services in their area. Our Google Business Profile optimization for healthcare ensures your practice appears in local searches with accurate information, positive reviews, and compelling visuals. Our GMB optimization for healthcare helps you build trust with patients before they even walk through your door."
+              },
+              {
+                id: "ind-solution-dentists-gmb",
+                title: "GMB for Dentists",
+                icon: <Activity className="w-8 h-8 text-[#ff0099]" />,
+                tagline: "GMB Optimization for Dentists",
+                description: "Dentists rely heavily on local search to attract new patients. Our Google Business Profile optimization for dentists ensures your practice appears prominently in 'dentist near me' searches with optimized profiles, review management, and consistent NAP information. Our GMB optimization for dentists helps you fill your appointment book with local patients."
+              },
+              {
+                id: "ind-solution-contractors-gmb",
+                title: "GMB for Contractors",
+                icon: <Wrench className="w-8 h-8 text-black" />,
+                tagline: "GMB Optimization for Contractors",
+                description: "Home service contractors depend on local visibility to generate leads. Our Google Business Profile optimization for contractors ensures your business appears in local searches for services like roofing, plumbing, and electrical work. From review management to service area optimization, our GMB optimization for contractors helps you stand out in your local market."
+              }
+            ].map((sector, idx) => (
+              <div
+                key={idx}
+                id={sector.id}
+                className="bg-white border-4 border-black p-8 rounded-2xl brutalist-shadow hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="mb-6 w-14 h-14 bg-[#ccff00]/20 border-4 border-black rounded-xl flex items-center justify-center">
+                    {sector.icon}
+                  </div>
+                  <h3 className="text-lg font-black uppercase tracking-tight text-black mb-1">{sector.title}</h3>
+                  <span className="text-[10px] font-mono text-[#ff0099] uppercase tracking-wider block mb-4 font-bold">
+                    {sector.tagline}
+                  </span>
+                  <p className="text-xs leading-relaxed text-zinc-700 font-bold font-sans">{sector.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -469,46 +700,70 @@ const SEOPage = () => {
         </div>
       </section>
 
-      {/* Section 5: Why AbuQitmirLabs */}
-      <section className="py-32 bg-[#f4f4f5] relative z-10 px-6 border-b-[8px] border-black">
+      {/* Section 5: SEO Across Global Markets */}
+      <section className="py-32 bg-white relative z-10 px-6 border-b-[8px] border-black" id="seo-global-markets">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-20 text-center">
-            <span className="text-xs font-mono text-[#ff0099] mb-4 uppercase tracking-[0.4em] font-bold block">[ SECTION 5: INSTITUTIONAL REASON ]</span>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-black uppercase tracking-tight">
-              Why Choose AbuQitmirLabs
-            </h2>
-            <p className="mt-4 max-w-4xl mx-auto text-base md:text-lg text-zinc-700 font-bold leading-relaxed font-sans">
-              As a premier software development company headquartered in Karachi, Pakistan, AbuQitmirLabs brings a unique perspective to search engine optimization—one that combines technical development expertise with strategic SEO knowledge.
-            </p>
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            <div className="lg:col-span-6">
+              <span className="text-xs font-mono text-[#ff0099] mb-4 uppercase tracking-[0.4em] font-bold block">[ GLOBAL_ORGANIC_FOOTPRINT ]</span>
+              <h2 className="text-4xl md:text-6xl font-black text-black tracking-tighter leading-none mb-6 uppercase">
+                SEO Across <br />
+                <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>Global Markets</span>
+              </h2>
+              <p className="text-base text-zinc-800 font-bold leading-relaxed mb-10 font-sans">
+                While our headquarters is in Karachi, Pakistan, our SEO solutions are built for a global stage. We understand the unique demands of different markets and adapt our approach accordingly:
+              </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                title: "Developer-Led SEO",
-                desc: "Unlike pure-play SEO agencies, our approach is built on a foundation of technical development. We understand the code behind your website, enabling us to implement technical optimizations that many agencies cannot."
-              },
-              {
-                title: "Holistic Digital Strategy",
-                desc: "We don't optimize your website in isolation. Our SEO services integrate with your entire digital strategy—aligning with web development, content creation, and marketing initiatives."
-              },
-              {
-                title: "Proven Results Across Industries",
-                desc: "From SaaS startups to established brands, we have delivered measurable results for clients across fintech, healthcare, retail, and logistics."
-              },
-              {
-                title: "Transparent Reporting",
-                desc: "Weekly progress updates, monthly performance reports, and clear communication—you always know exactly what we're doing and what results we're achieving."
-              }
-            ].map((strength, idx) => (
-              <div key={idx} className="bg-white border-4 border-black p-10 rounded-2xl brutalist-shadow relative overflow-hidden transition-transform hover:-translate-y-1">
-                <span className="text-[#ff0099] font-mono text-xs block mb-4 font-black">[ 0{idx + 1} // STRENGTH ]</span>
-                <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-white bg-black px-4 py-2 rounded mb-6 inline-block leading-none">
-                  {strength.title}
-                </h3>
-                <p className="text-zinc-800 text-sm font-bold leading-relaxed font-sans">{strength.desc}</p>
+              <div className="space-y-6">
+                {[
+                  {
+                    market: "United States",
+                    text: "SEO services in the United States for businesses that need to compete in one of the world's most competitive digital landscapes. From local SEO for small businesses to enterprise-level organic strategies, we help US clients achieve sustainable visibility."
+                  },
+                  {
+                    market: "United Kingdom",
+                    text: "SEO services in the United Kingdom aligned with UK search behavior and local ranking factors, ensuring your brand resonates with British audiences."
+                  },
+                  {
+                    market: "Canada",
+                    text: "Local SEO in Canada that reflects the country's bilingual and multicultural landscape, with compliance to Canadian accessibility and data protection standards."
+                  },
+                  {
+                    market: "Australia",
+                    text: "GMB optimization in Australia for businesses ready to dominate the Australian market with accurate listings, positive reviews, and optimized local profiles."
+                  },
+                  {
+                    market: "Poland",
+                    text: "SEO services in Poland that bridge the gap between global standards and local market needs, helping Polish businesses expand their digital footprint."
+                  }
+                ].map((item, idx) => (
+                  <div key={idx} className="border-l-4 border-black pl-6 py-2 bg-[#f4f4f5]/30 rounded-r-xl border-y border-r border-black/5 pr-4">
+                    <h3 className="text-sm font-black text-black uppercase tracking-wider mb-2">{item.market}</h3>
+                    <p className="text-xs text-zinc-700 leading-relaxed font-bold font-sans">{item.text}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            <div className="lg:col-span-6 bg-[#ccff00] border-4 border-black p-8 md:p-12 rounded-[30px] brutalist-shadow relative overflow-hidden">
+              <span className="text-xs font-mono text-black mb-4 uppercase tracking-[0.3em] font-bold block">// WHY_PARTNER_WITH_US</span>
+              <h3 className="text-2xl md:text-4xl font-black text-black uppercase tracking-tight mb-6">
+                Why Partner with <br />AbuQitmirLabs?
+              </h3>
+              <p className="text-sm md:text-base text-zinc-900 leading-relaxed font-bold mb-8 font-sans">
+                Our team in Karachi, Pakistan, combines global-grade SEO expertise with cost-effective delivery. We serve clients across the United States, United Kingdom, Canada, Poland, and Australia—building SEO strategies that deliver measurable ROI. Whether you need national organic growth, local map pack dominance, or comprehensive GMB optimization, we deliver solutions that drive real business results.
+              </p>
+              
+              <div className="flex gap-4 items-center bg-white border-4 border-black p-6 rounded-2xl brutalist-shadow">
+                <div className="w-12 h-12 rounded-full bg-black flex items-center justify-center shrink-0">
+                  <TrendingUp className="w-6 h-6 text-[#ccff00]" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-black text-black uppercase font-sans">Let's build your visibility advantage.</h4>
+                  <p className="text-xs text-zinc-700 font-bold font-sans">Sovereign organic authority engineered from Karachi to the globe.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

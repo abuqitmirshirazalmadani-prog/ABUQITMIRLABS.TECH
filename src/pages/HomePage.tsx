@@ -75,6 +75,11 @@ export default function HomePage() {
                 "postalCode": "75160",
                 "addressCountry": "PK"
               },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "24.842691448838718",
+                "longitude": "67.1862014846566"
+              },
               "hasMap": "https://www.google.com/search?q=AbuQitmirLabs.Tech&stick=H4sIAAAAAAAA_-NgU1I1qEg0SUwyMkw2MzIySUkyTba0MqhITUtOMUgztzRLTTM2TjI3XMQq5JhUGphZkptZ5JOYVKwXkpqcAQAWzgp1PgAAAA&hl=en&mat=CZLYxD3dn4-XElYBTVDHnmXmYtE_z1-ukd4W15_4xSOvjTxlQ1o8WZE3DhyScxz25ZkTwHN99aYAJPksPmWrBMFOl-sP_YDLnxLlKt51TeOkcb_wt2bWebGPkDFcieVKmA&authuser=0",
               "openingHours": "Mo,Tu,We,Th,Fr,Sa 09:00-21:00",
               "sameAs": [

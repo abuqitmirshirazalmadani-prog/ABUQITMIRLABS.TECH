@@ -138,6 +138,11 @@ const AboutPage = () => {
                   "postalCode": "75160",
                   "addressCountry": "PK"
                 },
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": "24.842691448838718",
+                  "longitude": "67.1862014846566"
+                },
                 "sameAs": [
                   "https://www.facebook.com/profile.php?id=61583768706452",
                   "https://x.com/AbuQitmir",

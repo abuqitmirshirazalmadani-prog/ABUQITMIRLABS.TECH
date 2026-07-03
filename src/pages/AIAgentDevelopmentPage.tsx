@@ -24,7 +24,15 @@ import {
   Award,
   Lock,
   Globe,
-  DollarSign
+  DollarSign,
+  Heart,
+  Truck,
+  Home,
+  HeartPulse,
+  Scale,
+  Calendar,
+  GraduationCap,
+  Activity
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -163,7 +171,7 @@ export default function AIAgentDevelopmentPage() {
         <meta name="twitter:description" content="At AbuQitmirLabs, we architect custom AI agent development solutions that transform operations, automate workflows, and enhance customer journeys globally." />
         <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
         
-        {/* Schema Markup with Organization, LocalBusiness, and Service */}
+        {/* Schema Markup with BreadcrumbList, Service, FAQPage, and HowTo */}
         <script 
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -188,35 +196,30 @@ export default function AIAgentDevelopmentPage() {
               },
               {
                 "@context": "https://schema.org",
-                "@type": "Organization",
+                "@type": "ProfessionalService",
                 "name": "AbuQitmirLabs",
                 "url": "https://abuqitmirlabs.tech",
                 "logo": "https://abuqitmirlabs.tech/logo.png",
-                "sameAs": [
-                  "https://www.facebook.com/profile.php?id=61583768706452",
-                  "https://x.com/AbuQitmir",
-                  "https://www.linkedin.com/in/abu-qitmir-697423390/",
-                  "https://www.instagram.com/abuqitmirshirazalmadani/",
-                  "https://www.youtube.com/@AbuQitmir",
-                  "https://www.pinterest.com/abuqitmir",
-                  "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani",
-                  "https://www.goodfirms.co/company/abuqitmirlabs-tech",
-                  "https://clutch.co/profile/abuqitmirlabstech"
-                ]
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "LocalBusiness",
-                "name": "AbuQitmirLabs",
                 "image": "https://abuqitmirlabs.tech/logo.png",
-                "telePhone": "+923233260859",
-                "email": "hello@abuqitmirlabs.tech",
+                "telephone": "+923233260859",
+                "priceRange": "$$$",
                 "address": {
                   "@type": "PostalAddress",
-                  "addressLocality": "Karachi",
+                  "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony",
+                  "addressLocality": "Landhi Town, Karachi",
+                  "addressRegion": "Sindh",
+                  "postalCode": "75160",
                   "addressCountry": "PK"
                 },
-                "priceRange": "$$"
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": "24.842691448838718",
+                  "longitude": "67.1862014846566"
+                },
+                "sameAs": [
+                  "https://wa.me/923233260859",
+                  "https://github.com/abuqitmir"
+                ]
               },
               {
                 "@context": "https://schema.org",
@@ -224,12 +227,81 @@ export default function AIAgentDevelopmentPage() {
                 "name": "AI Agent Development Services",
                 "serviceType": "AI Automation and Agent Engineering",
                 "provider": {
-                  "@type": "Organization",
+                  "@type": "LocalBusiness",
                   "name": "AbuQitmirLabs",
-                  "url": "https://abuqitmirlabs.tech"
+                  "url": "https://abuqitmirlabs.tech",
+                  "logo": "https://abuqitmirlabs.tech/logo.png",
+                  "image": "https://abuqitmirlabs.tech/logo.png",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Karachi",
+                    "addressCountry": "PK"
+                  }
                 },
-                "description": "Bespoke custom autonomous AI agent solutions, private vector databases, and custom API-driven cognitive orchestrations globally.",
-                "areaServed": ["US", "GB", "Europe", "Global"]
+                "description": "At AbuQitmirLabs, we build AI agents that do more than answer questions—they automate workflows, enhance decision-making, and transform how businesses operate globally across Non-Profit, Logistics, Real Estate, Healthcare, Law, Events, and Education sectors.",
+                "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
+                "hasOfferCatalog": {
+                  "@type": "OfferCatalog",
+                  "name": "AI Agent Development Solutions",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "AI Agent Development for Non-Profit Organizations",
+                        "description": "Non-profits need intelligent systems that maximize their impact without draining limited resources. Our AI agents for non-profit organizations automate donor engagement, track program outcomes, and streamline volunteer coordination—all while maintaining the highest standards of data privacy."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "AI Agent Development for Logistics",
+                        "description": "In logistics, every second counts. Our AI agents for logistics optimize routes in real-time, predict delivery delays before they happen, and automate exception handling—reducing operational friction and improving customer satisfaction."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "AI Agent Development for Real Estate",
+                        "description": "Real estate professionals need intelligent tools that qualify leads, schedule viewings, and provide market insights at a glance. Our AI agents for real estate automate lead scoring, personalize property recommendations, and handle initial client interactions—freeing your agents to focus on closing deals."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "AI Agent Development for Healthcare",
+                        "description": "Healthcare demands the highest standards of security, accuracy, and compliance. Our AI agents for healthcare assist with patient triage, appointment scheduling, and clinical documentation—all while maintaining full HIPAA compliance."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "AI Agent Development for Small Law Firms",
+                        "description": "Small law firms need AI tools that help them practice law, not manage technology. Our AI agents for small law firms automate document review, legal research, and client intake—allowing you to focus on your cases."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "AI Agent Development for Corporate Events",
+                        "description": "Corporate events demand intelligent systems that manage registrations, schedule speakers, and engage attendees. Our AI agents for corporate events automate ticketing, provide real-time agenda updates, and answer attendee questions instantly."
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "AI Agent Development for Educational Institutions",
+                        "description": "Educational institutions need AI tools that support both teachers and students. Our AI agents for educational institutions provide personalized tutoring, automate administrative tasks, and deliver real-time feedback to learners."
+                      }
+                    }
+                  ]
+                }
               },
               {
                 "@context": "https://schema.org",
@@ -242,6 +314,29 @@ export default function AIAgentDevelopmentPage() {
                     "text": item.a
                   }
                 }))
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "HowTo",
+                "name": "Our AI Agent Development Process",
+                "description": "Our 3-step rigorous technical methodology to engineer intelligent, secure, and autonomous cognitive assets.",
+                "step": [
+                  {
+                    "@type": "HowToStep",
+                    "name": "Symptom & Workflow Audit",
+                    "text": "We map your existing administrative pipelines, trace workflow blockages, and draft model orchestration designs."
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Cognitive Prototyping & Sprint Builds",
+                    "text": "Development of cognitive loops in agile 2-week milestones, integrating custom RAG datasets and testing performance values."
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "name": "Guardrail Security & Live Deployment",
+                    "text": "Establishing prompt injection defenses, validating GDPR/HIPAA standards, and launching clean production deployments."
+                  }
+                ]
               }
             ])
           }}
@@ -399,6 +494,158 @@ export default function AIAgentDevelopmentPage() {
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none group-hover:scale-110 transition-transform duration-300">
               <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity">
                 <Play className="w-6 h-6 text-white fill-white ml-1" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AI Agent Development — Industry-Focused Solutions for Every Sector */}
+      <section className="py-32 lg:py-48 bg-black relative z-10 px-6 border-t border-b border-white/5" id="agent-industry-solutions">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-24 text-center max-w-4xl mx-auto">
+            <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ COGNITIVE_VERTICALS ]</span>
+            <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight mb-8">
+              AI Agent Development — <br />
+              <span className="font-serif italic text-blue-400">Industry-Focused Solutions for Every Sector</span>
+            </h2>
+            <p className="text-lg md:text-xl text-slate-300 font-light leading-relaxed font-sans">
+              At AbuQitmirLabs, we build AI agents that do more than answer questions—they automate workflows, enhance decision-making, and transform how businesses operate. Our approach begins with understanding your industry's unique challenges, data structures, and compliance requirements before we design a single agent. Whether you need a customer support assistant, a logistics optimizer, or an educational tutor, we build AI systems that fit your business, not the other way around.
+            </p>
+          </div>
+
+          {/* Grid of 7 Sectors */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Non-Profit Organizations",
+                icon: <Heart className="w-8 h-8 text-rose-400" />,
+                tagline: "AI Agent Development for Non-Profit Organizations",
+                description: "Non-profits need intelligent systems that maximize their impact without draining limited resources. Our AI agents for non-profit organizations automate donor engagement, track program outcomes, and streamline volunteer coordination—all while maintaining the highest standards of data privacy. From personalized donation appeals to real-time impact reporting, our AI agent development for non-profit solutions help you focus on your mission, not your admin."
+              },
+              {
+                title: "Logistics",
+                icon: <Truck className="w-8 h-8 text-amber-400" />,
+                tagline: "AI Agent Development for Logistics",
+                description: "In logistics, every second counts. Our AI agents for logistics optimize routes in real-time, predict delivery delays before they happen, and automate exception handling—reducing operational friction and improving customer satisfaction. Whether you manage local fleets or international supply chains, our AI agent development for logistics solutions keep your operations running smoothly."
+              },
+              {
+                title: "Real Estate",
+                icon: <Home className="w-8 h-8 text-sky-400" />,
+                tagline: "AI Agent Development for Real Estate",
+                description: "Real estate professionals need intelligent tools that qualify leads, schedule viewings, and provide market insights at a glance. Our AI agents for real estate automate lead scoring, personalize property recommendations, and handle initial client interactions—freeing your agents to focus on closing deals. Our AI agent development for real estate solutions turn your website into a 24/7 lead generation engine."
+              },
+              {
+                title: "Healthcare",
+                icon: <HeartPulse className="w-8 h-8 text-emerald-400" />,
+                tagline: "AI Agent Development for Healthcare",
+                description: "Healthcare demands the highest standards of security, accuracy, and compliance. Our AI agents for healthcare assist with patient triage, appointment scheduling, and clinical documentation—all while maintaining full HIPAA compliance. We build AI agent development for healthcare solutions that support clinical staff, reduce administrative burden, and improve patient outcomes."
+              },
+              {
+                title: "Small Law Firms",
+                icon: <Scale className="w-8 h-8 text-indigo-400" />,
+                tagline: "AI Agent Development for Small Law Firms",
+                description: "Small law firms need AI tools that help them practice law, not manage technology. Our AI agents for small law firms automate document review, legal research, and client intake—allowing you to focus on your cases. Our AI agent development for small law firms solutions are secure, confidential, and tailored to your practice area."
+              },
+              {
+                title: "Corporate Events",
+                icon: <Calendar className="w-8 h-8 text-purple-400" />,
+                tagline: "AI Agent Development for Corporate Events",
+                description: "Corporate events demand intelligent systems that manage registrations, schedule speakers, and engage attendees. Our AI agents for corporate events automate ticketing, provide real-time agenda updates, and answer attendee questions instantly. Our AI agent development for corporate events solutions create seamless experiences for organizers and participants alike."
+              },
+              {
+                title: "Educational Institutions",
+                icon: <GraduationCap className="w-8 h-8 text-blue-400" />,
+                tagline: "AI Agent Development for Educational Institutions",
+                description: "Educational institutions need AI tools that support both teachers and students. Our AI agents for educational institutions provide personalized tutoring, automate administrative tasks, and deliver real-time feedback to learners. From K-12 to higher education, our AI agent development for educational institutions solutions enhance learning outcomes and reduce teacher workload."
+              }
+            ].map((sector, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white/[0.01] border border-white/10 p-8 rounded-[2rem] hover:bg-white/[0.04] transition-all relative overflow-hidden flex flex-col justify-between"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] pointer-events-none" />
+                <div>
+                  <div className="mb-6 w-14 h-14 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center">
+                    {sector.icon}
+                  </div>
+                  <h3 className="text-xl font-bold uppercase tracking-tight text-white mb-2">{sector.title}</h3>
+                  <span className="text-xs font-mono text-blue-400 uppercase tracking-widest block mb-4">
+                    {sector.tagline}
+                  </span>
+                  <p className="text-sm leading-relaxed text-slate-400 font-light font-sans">{sector.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* AI Agent Development Across Global Markets */}
+      <section className="py-32 lg:py-48 bg-white/[0.01] border-b border-white/10 relative z-10 px-6" id="agent-global-markets">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ GLOBAL_COGNITIVE_REACH ]</span>
+              <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight mb-8">
+                AI Agent Development <br />
+                <span className="font-serif italic text-blue-400">Across Global Markets</span>
+              </h2>
+              <p className="text-base text-slate-300 font-light leading-relaxed mb-10 font-sans">
+                While our engineering headquarters is in Karachi, Pakistan, our AI solutions are built for a global stage. We understand the unique demands of different markets and adapt our approach accordingly:
+              </p>
+
+              <div className="space-y-6">
+                {[
+                  {
+                    market: "United States",
+                    text: "AI agent development in the United States for businesses that require high-performance, high-security, and premium AI solutions to compete in one of the world's most competitive digital landscapes."
+                  },
+                  {
+                    market: "United Kingdom",
+                    text: "AI agent development in the United Kingdom aligned with UK data protection standards and user expectations, ensuring your brand resonates with British audiences."
+                  },
+                  {
+                    market: "Canada",
+                    text: "AI agent development in Canada that reflects the country's bilingual and multicultural landscape, with compliance to Canadian accessibility standards."
+                  },
+                  {
+                    market: "Australia",
+                    text: "AI agent development in Australia for businesses ready to dominate the Australian market with fast, scalable, and user-friendly AI platforms."
+                  },
+                  {
+                    market: "Poland",
+                    text: "AI agent development in Poland that bridges the gap between global standards and local market needs, helping Polish businesses expand their digital footprint."
+                  }
+                ].map((item, idx) => (
+                  <div key={idx} className="border-l border-white/10 pl-6 py-2">
+                    <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-2">{item.market}</h3>
+                    <p className="text-xs text-slate-400 leading-relaxed font-light">{item.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-[3rem] relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 blur-[80px] pointer-events-none" />
+              <span className="text-xs font-mono text-[#ccff00] mb-6 uppercase tracking-[0.5em] font-bold block">[ WHY_ABUQITMIRLABS ]</span>
+              <h3 className="text-3xl font-serif font-light text-white leading-tight mb-6">
+                Why Partner with <span className="font-serif italic text-blue-400">AbuQitmirLabs?</span>
+              </h3>
+              <p className="text-base text-slate-300 leading-relaxed font-light mb-8 font-sans">
+                Our team in Karachi, Pakistan, combines global-grade AI expertise with cost-effective delivery. We serve clients across the United States, United Kingdom, Canada, Poland, and Australia—building AI agents that are secure, scalable, and fully owned by you. Whether you need a RAG-based chatbot, a workflow automation agent, or a custom LLM integration, we deliver AI solutions that solve real problems.
+              </p>
+              
+              <div className="flex gap-4 items-center">
+                <div className="w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
+                  <Activity className="w-6 h-6 text-blue-400" />
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-white uppercase font-sans">Let's build your AI advantage.</h4>
+                  <p className="text-xs text-slate-400 font-sans">Bespoke engineering from Karachi, Pakistan to international production.</p>
+                </div>
               </div>
             </div>
           </div>
