@@ -35,7 +35,9 @@ import {
   HeartPulse,
   Activity,
   Wrench,
-  Shield
+  Shield,
+  Palette,
+  PenTool
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -919,12 +921,14 @@ const SEOPage = () => {
       <section className="py-24 bg-[#f4f4f5] border-t-8 border-black relative z-10 px-6">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-xs font-mono text-black/40 mb-12 uppercase tracking-[0.4em] font-bold">[ RELATED_SYSTEMS ]</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { title: "Custom Software", path: "/custom-software", icon: <Code2 className="w-5 h-5" /> },
               { title: "Web Development", path: "/web-development", icon: <Globe className="w-5 h-5" /> },
               { title: "Mobile Apps", path: "/mobile-app-development", icon: <Smartphone className="w-5 h-5" /> },
-              { title: "AI Agents", path: "/ai-agent-development", icon: <Cpu className="w-5 h-5" /> }
+              { title: "AI Agents", path: "/ai-agent-development", icon: <Cpu className="w-5 h-5" /> },
+              { title: "Creative Graphics", path: "/graphics-design", icon: <Palette className="w-5 h-5" /> },
+              { title: "Content Writing", path: "/content-writing", icon: <PenTool className="w-5 h-5" /> }
             ].map((link, i) => (
               <Link 
                 key={i} 

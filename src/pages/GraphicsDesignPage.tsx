@@ -38,8 +38,12 @@ import {
   HeartPulse,
   BookOpen,
   Calendar,
-  MapPin
+  MapPin,
+  Cpu,
+  Code2,
+  Smartphone
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -1045,6 +1049,37 @@ const GraphicsDesignPage = () => {
             <div className="text-zinc-500 font-mono text-[10px] uppercase tracking-[0.3em] max-w-[280px] text-left border-l-2 border-white/10 pl-8 leading-relaxed h-16 flex items-center">
                Est. PROJECT LOAD: 3-4 Weeks // CAPACITY: 88%
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Related Services / Internal Siloing */}
+      <section className="py-24 bg-black border-t border-white/10 relative z-10 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h3 className="text-xs font-mono text-slate-500 mb-12 uppercase tracking-[0.4em] font-bold block">[ RELATED_SYSTEMS ]</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { title: "Custom Software", path: "/custom-software", icon: <Code2 className="w-5 h-5" /> },
+              { title: "Web Development", path: "/web-development", icon: <Globe className="w-5 h-5" /> },
+              { title: "Mobile Apps", path: "/mobile-app-development", icon: <Smartphone className="w-5 h-5" /> },
+              { title: "AI Agents", path: "/ai-agent-development", icon: <Cpu className="w-5 h-5" /> },
+              { title: "SEO Mastery", path: "/seo-mastery", icon: <TrendingUp className="w-5 h-5" /> },
+              { title: "Content Writing", path: "/content-writing", icon: <PenTool className="w-5 h-5" /> }
+            ].map((link, i) => (
+              <Link 
+                key={i} 
+                to={link.path} 
+                className="group flex items-center justify-between p-8 bg-white/[0.01] border border-white/5 rounded-2xl transition-all hover:-translate-y-1 hover:bg-white/[0.04] hover:border-[#ccff00]/40"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="text-[#ccff00] bg-white/5 border border-white/10 p-3 rounded-lg group-hover:bg-[#ccff00] group-hover:text-black transition-all">
+                    {link.icon}
+                  </div>
+                  <span className="font-bold uppercase tracking-tight text-white">{link.title}</span>
+                </div>
+                <ArrowUpRight className="text-slate-500 group-hover:text-[#ccff00] transition-colors" size={20} />
+              </Link>
+            ))}
           </div>
         </div>
       </section>
