@@ -173,6 +173,13 @@ export default function HomePage() {
       </Helmet>
 
       <Header />
+      
+      {/* Visually hidden H1/H2 for SEO search visibility */}
+      <div className="sr-only">
+        <h1>Affordable App Development Company | AbuQitmirLabs</h1>
+        <h2>Custom Software · Web Development · AI Agents · Mobile Apps · SEO</h2>
+      </div>
+
       <NexusHero />
       
       <div className="overflow-hidden transform z-20 bg-[#B9FF66] w-full border-y-4 pt-4 pb-4 relative shadow-[0_8px_0_0_rgba(0,0,0,1)] -rotate-1">

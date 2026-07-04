@@ -46,13 +46,26 @@ export default defineConfig(({mode}) => {
         staticDir: path.resolve(process.cwd(), 'dist'),
         routes: [
           '/',
-          '/about',
-          '/blog',
-          '/mobile-app-development',
-          '/ai-agent-development',
           '/custom-software',
-          '/contact',
-          '/case-studies'
+          '/mobile-app-development',
+          '/web-development',
+          '/ai-agent-development',
+          '/seo-mastery',
+          '/graphics-design',
+          '/content-writing',
+          '/case-studies',
+          '/case-studies/tajweedpage',
+          '/about',
+          '/us-market',
+          '/uk-market',
+          '/pakistan-market',
+          '/canada-market',
+          '/poland-market',
+          '/australia-market',
+          '/privacy',
+          '/terms',
+          '/blog',
+          '/contact'
         ],
         renderer: new prerender.PuppeteerRenderer({
           args: ['--no-sandbox', '--disable-setuid-sandbox']
@@ -64,7 +77,7 @@ export default defineConfig(({mode}) => {
         closeBundle: async () => {
           const hostname = 'https://abuqitmirlabs.tech';
           const baseRoutes = [
-            { url: '/',                        changefreq: 'weekly',  priority: 1.0, title: 'Bespoke Custom Software & AI App Development Studio | AbuQitmirLabs', description: "AbuQitmirLabs .TECH is an elite custom software development studio. We build bespoke SaaS, industrial-grade enterprise systems, and intelligent AI models for global businesses." },
+            { url: '/',                        changefreq: 'weekly',  priority: 1.0, title: 'Affordable App Development Company | AbuQitmirLabs', description: "AbuQitmirLabs .TECH is an elite custom software development studio. We build bespoke SaaS, industrial-grade enterprise systems, and intelligent AI models for global businesses." },
             { url: '/about',                   changefreq: 'monthly', priority: 0.8, title: 'About Us | AbuQitmirLabs', description: 'Learn about our mission to build cutting-edge AI and mobile solutions.' },
             { url: '/contact',                 changefreq: 'monthly', priority: 0.9, title: 'Contact Us | Start Your Project', description: 'Contact AbuQitmirLabs for your next mobile app or AI software project.' },
             { url: '/custom-software',         changefreq: 'weekly',  priority: 0.9, title: 'Custom Software Development', description: 'Tailor-made software solutions for your unique business needs.' },
@@ -270,6 +283,10 @@ Sitemap: ${hostname}/sitemap.xml`;
             
             // FIX: Inject meaningful body content to avoid "0 character body" and "No H1" SEO issues
             // This content provides immediate value to crawlers and is replaced by React upon hydration.
+            const routeH2 = route.url === '/' 
+              ? 'Custom Software · Web Development · AI Agents · Mobile Apps · SEO' 
+              : 'Elite Digital Architecture &amp; Technical Solutions';
+              
             const meaningfulContent = `
               <div id="root">
                 <header>
@@ -277,7 +294,7 @@ Sitemap: ${hostname}/sitemap.xml`;
                 </header>
                 <main>
                   <article>
-                    <h2>Elite Digital Architecture &amp; Technical Solutions</h2>
+                    <h2>${routeH2}</h2>
                     <p>At AbuQitmirLabs .TECH, we specialize in <strong>custom software engineering</strong> and high-performance digital solutions.</p>
                     <img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" style="max-width:300px" />
                     <p>${route.description}</p>
