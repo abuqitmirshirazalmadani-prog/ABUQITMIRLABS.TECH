@@ -279,7 +279,7 @@ Sitemap: ${hostname}/sitemap.xml`;
             routeHtml = routeHtml.replace(/<meta name="twitter:url" content="(.*?)"\s*\/?>/g, `<meta name="twitter:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />`);
             
             // Replace canonical link
-            routeHtml = routeHtml.replace(/<link rel="canonical" href="(.*?)"\s*\/?>/g, `<link rel="canonical" href="${hostname}${route.url === '/' ? '/' : route.url}" />`);
+            routeHtml = routeHtml.replace(/<link rel="canonical"[^>]*\/?>/g, `<link rel="canonical" data-rh="true" href="${hostname}${route.url === '/' ? '/' : route.url}" />`);
             
             // FIX: Inject meaningful body content to avoid "0 character body" and "No H1" SEO issues
             // This content provides immediate value to crawlers and is replaced by React upon hydration.

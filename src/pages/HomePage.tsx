@@ -26,18 +26,18 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <Helmet>
-        <title>Custom Software Development & AI App Development Company | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs is a premier custom software development company delivering AI app development services, custom website development services and enterprise software solutions to clients across the United States, United Kingdom, and Europe." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech" />
+        <title>Custom Software & AI App Development | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs is an expert custom software and AI app development company building premium websites and enterprise solutions globally." />
+        <link rel="canonical" href="https://abuqitmirlabs.tech/" />
         
-        <meta property="og:title" content="Custom Software Development & AI App Development Company | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs is a premier custom software development company delivering AI app development services, custom website development services and enterprise software solutions to clients across the United States, United Kingdom, and Europe." />
+        <meta property="og:title" content="Custom Software & AI App Development | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs is an expert custom software and AI app development company building premium websites and enterprise solutions globally." />
         <meta property="og:url" content="https://abuqitmirlabs.tech" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Custom Software Development & AI App Development Company | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs is a premier custom software development company delivering AI app development services, custom website development services and enterprise software solutions to clients across the United States, United Kingdom, and Europe." />
+        <meta name="twitter:title" content="Custom Software & AI App Development | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs is an expert custom software and AI app development company building premium websites and enterprise solutions globally." />
         <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
 
         <script 
@@ -174,10 +174,10 @@ export default function HomePage() {
 
       <Header />
       
-      {/* Visually hidden H1/H2 for SEO search visibility */}
+      {/* Visually hidden H2/H3 for SEO search visibility */}
       <div className="sr-only">
-        <h1>Affordable App Development Company | AbuQitmirLabs</h1>
-        <h2>Custom Software · Web Development · AI Agents · Mobile Apps · SEO</h2>
+        <h2>Affordable App Development Company | AbuQitmirLabs</h2>
+        <h3>Custom Software · Web Development · AI Agents · Mobile Apps · SEO</h3>
       </div>
 
       <NexusHero />

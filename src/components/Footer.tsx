@@ -214,16 +214,21 @@ const Footer = () => {
                         </div>
 
                         {/* Column 4: Contact & Access */}
-                        <div className="space-y-4">
+                        <div className="space-y-4" itemScope itemType="https://schema.org/LocalBusiness">
+                            <meta itemProp="name" content="AbuQitmirLabs" />
                             <h4 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Headquarters Info</h4>
                             <ul className="space-y-3 not-italic normal-case font-bold tracking-tight text-black flex flex-col gap-1.5 list-none">
-                                <li className="flex items-start gap-2 text-xs">
+                                <li className="flex items-start gap-2 text-xs" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
                                     <MapPin size={14} className="min-w-[14px] mt-0.5 text-zinc-900" />
-                                    <span>8/15, abuqitmirlabs.tech, 3 37A Rd, Shah Khalid Colony Sector 37 A Landhi Town, Karachi, 75160</span>
+                                    <span>
+                                        <span itemProp="streetAddress">8/15, 3 37A Rd, Shah Khalid Colony, Sector 37A</span>, <br />
+                                        <span itemProp="addressLocality">Landhi Town, Karachi</span>, <br />
+                                        <span itemProp="postalCode">75160</span>, <span itemProp="addressCountry">Pakistan</span>
+                                    </span>
                                 </li>
                                 <li className="flex items-start gap-2 text-xs">
                                     <Phone size={14} className="min-w-[14px] mt-0.5 text-zinc-900" />
-                                    <span>+92 323 3260859</span>
+                                    <span itemProp="telephone">+92 323 3260859</span>
                                 </li>
                                 <li className="flex flex-col gap-1 text-xs">
                                     <div className="flex items-start gap-2">
