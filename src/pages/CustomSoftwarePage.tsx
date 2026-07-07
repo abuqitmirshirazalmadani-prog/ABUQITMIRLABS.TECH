@@ -678,14 +678,15 @@ const CustomSoftwarePage = () => {
                initial={{ opacity: 0, x: 40 }}
                whileInView={{ opacity: 1, x: 0 }}
                viewport={{ once: true }}
-               className="bg-white/[0.03] border border-white/10 p-10 md:p-14 rounded-[2.5rem] backdrop-blur-xl relative"
+               className="bg-white/[0.03] border border-white/10 p-10 md:p-14 rounded-[2.5rem] backdrop-blur-xl relative space-y-6"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-[60px] pointer-events-none" />
-              <p className="text-xl md:text-2xl font-light leading-relaxed text-slate-300 mb-6 font-sans">
-                Off-the-shelf software forces your team to adapt to the tool. Custom software adapts to your team.
+              <h3 className="text-2xl font-bold uppercase tracking-tight text-white mb-4">Software Built Around Your Business, Not the Other Way Around</h3>
+              <p className="text-lg leading-relaxed text-slate-300 font-light font-sans">
+                Most businesses eventually hit the same wall: off-the-shelf tools get you started, but they were never built for the specific way you operate. At AbuQitmirLabs, <strong>custom software development</strong> means designing systems around your actual workflows, data, and growth plans — not asking your business to bend around someone else's product roadmap.
               </p>
-              <p className="text-lg leading-relaxed text-slate-400 font-light font-sans">
-                If you're paying for features you don't use, or building workarounds for features you don't have — that's the signal it's time for a custom build.
+              <p className="text-base leading-relaxed text-slate-400 font-light font-sans">
+                As a <strong>custom software development company</strong>, we work across the full spectrum of build types: internal tools, customer-facing platforms, integrations between systems that were never designed to talk to each other, and the kind of long-term technical foundation that lets a business keep scaling without starting over every few years.
               </p>
             </motion.div>
           </div>
@@ -733,21 +734,100 @@ const CustomSoftwarePage = () => {
         </div>
       </section>
 
+      {/* What We Build Section */}
+      <section className="py-32 lg:py-48 bg-white/[0.01] relative z-10 px-6 border-b border-white/10" id="what-we-build">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-24 text-center max-w-4xl mx-auto">
+            <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ BUILD_CATEGORIES ]</span>
+            <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight mb-8">
+              What We <span className="font-serif italic text-blue-400">Build</span>
+            </h2>
+            <p className="text-lg md:text-xl text-slate-300 font-light leading-relaxed font-sans">
+              Our engineering work spans several core categories, each handled by teams who specialize in that domain rather than generalists spread thin across everything:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "Web Application Development",
+                tagline: "Full-stack platforms, customer portals, and dashboards",
+                description: "Full-stack platforms, customer portals, and internal dashboards built with the same care as our dedicated web development practice, but scoped specifically to complex business logic rather than content-driven sites.",
+                path: "/web-development",
+                icon: <Globe className="w-8 h-8 text-sky-400" />
+              },
+              {
+                title: "Custom Web Development Applications",
+                tagline: "Application layers engineered from the ground up",
+                description: "When a project needs functionality no plugin or template can offer, we build the application layer from the ground up: authentication, workflows, data models, and integrations designed around your exact requirements.",
+                path: "",
+                icon: <Code2 className="w-8 h-8 text-[#ccff00]" />
+              },
+              {
+                title: "AI-Powered Systems",
+                tagline: "Intelligent automation embedded directly in software",
+                description: "For businesses looking to embed intelligent automation directly into their software, our AI agent development team builds agents that plug into these same custom platforms.",
+                path: "/ai-agent-development",
+                icon: <Bot className="w-8 h-8 text-purple-400" />
+              },
+              {
+                title: "Mobile Applications",
+                tagline: "Native and cross-platform mobile companions",
+                description: "Native and cross-platform builds handled by our dedicated mobile app development team, often shipped as a companion to a broader custom software engagement.",
+                path: "/mobile-app-development",
+                icon: <Smartphone className="w-8 h-8 text-amber-400" />
+              }
+            ].map((build, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white/[0.02] border border-white/10 p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all relative overflow-hidden flex flex-col justify-between group"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] pointer-events-none" />
+                <div>
+                  <div className="mb-8 w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center">
+                    {build.icon}
+                  </div>
+                  <h3 className="text-2xl font-bold uppercase tracking-tight text-white mb-2">{build.title}</h3>
+                  <span className="text-xs font-mono text-slate-500 uppercase tracking-widest block mb-4">
+                    {build.tagline}
+                  </span>
+                  <p className="text-base leading-relaxed text-slate-400 font-light font-sans mb-8">{build.description}</p>
+                </div>
+                {build.path ? (
+                  <Link 
+                    to={build.path}
+                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-blue-400 group-hover:text-white transition-colors"
+                  >
+                    Explore Practice <ArrowRight size={12} />
+                  </Link>
+                ) : (
+                  <span className="text-xs font-mono text-slate-600 uppercase tracking-widest">
+                    Custom Proprietary Layer
+                  </span>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Industry-Focused Solutions for Every Sector */}
       <section className="py-32 lg:py-48 bg-black relative z-10 px-6 border-b border-white/10" id="industry-solutions">
         <div className="max-w-7xl mx-auto">
           <div className="mb-24 text-center max-w-4xl mx-auto">
             <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ SECTOR_VERTICALS ]</span>
             <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight mb-8">
-              Custom Software Development — <br />
-              <span className="font-serif italic text-blue-400">Industry-Focused Solutions for Every Sector</span>
+              Industry-Specific <br />
+              <span className="font-serif italic text-blue-400">Software Development</span>
             </h2>
             <p className="text-lg md:text-xl text-slate-300 font-light leading-relaxed font-sans">
-              At AbuQitmirLabs, we build custom software that solves real operational problems—not just generic platforms. Our approach begins with understanding your industry's unique workflows, compliance requirements, and growth trajectory before we write a single line of code. Whether you're a non-profit managing donor relationships or a logistics company optimizing supply chains, we design systems that fit your business, not the other way around.
+              Generic software works until it doesn't. Every industry carries its own compliance requirements, data sensitivities, and operational patterns — which is why we build with <strong>custom enterprise software development</strong> practices tailored to the sector, rather than applying a single template everywhere.
             </p>
           </div>
 
-          {/* Grid of 10 Sectors */}
+          {/* Grid of 12 Sectors */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
@@ -757,10 +837,10 @@ const CustomSoftwarePage = () => {
                 description: "Non-profits require more than standard software. They need platforms that manage donor relationships, track impact metrics, process donations securely, and streamline volunteer coordination—all while operating within tight budgets. Our custom software development for non-profit organizations delivers purpose-built solutions that maximize your mission's reach without unnecessary overhead. From grant management to impact reporting, we build tools that help you focus on what matters most: your cause."
               },
               {
-                title: "Logistics",
+                title: "Logistics & Supply Chain",
                 icon: <Truck className="w-8 h-8 text-amber-400" />,
-                tagline: "Custom Software Development for Logistics",
-                description: "In logistics, efficiency is everything. Real-time tracking, route optimization, fleet management, and inventory visibility are not luxuries—they're necessities. Our custom software development for logistics creates integrated platforms that connect your entire supply chain, eliminating data silos and reducing operational friction. Whether you manage local deliveries or international freight, our solutions scale with your business and adapt to changing market demands."
+                tagline: "custom logistics software development",
+                description: "Custom logistics software development — including custom software development for logistics — covers route optimization systems, warehouse management platforms, and real-time tracking tools built around your specific supply chain, not a generic fleet-management template."
               },
               {
                 title: "Real Estate Agencies",
@@ -769,10 +849,10 @@ const CustomSoftwarePage = () => {
                 description: "Real estate agencies need more than property listings—they need intelligent platforms that manage leads, automate follow-ups, and provide seamless client experiences. Our custom software development for real estate agencies builds property management systems, CRM integrations, and interactive search tools that help you close deals faster. From virtual tour integrations to automated valuation models, we create digital ecosystems that give you a competitive edge."
               },
               {
-                title: "Healthcare Providers",
+                title: "Healthcare & Medical",
                 icon: <HeartPulse className="w-8 h-8 text-emerald-400" />,
-                tagline: "Custom Software Development for Healthcare Providers",
-                description: "Healthcare demands the highest standards of security, compliance, and reliability. Our custom software development for healthcare providers ensures full HIPAA compliance while delivering intuitive patient management systems, appointment scheduling, telehealth platforms, and secure data exchange. We understand that patient trust is built on both clinical excellence and digital reliability—we build solutions that honor both."
+                tagline: "custom healthcare software development company",
+                description: "As a custom healthcare software development company, we build patient management systems, scheduling platforms, and compliance-conscious records systems designed around HIPAA-equivalent data handling requirements. Our healthcare software development services extend into custom medical software development — diagnostic support tools, clinical workflow systems, and integrations with existing hospital or clinic infrastructure. For providers evaluating a healthcare software development company, the deciding factor is almost always whether the team understands clinical workflows, not just code."
               },
               {
                 title: "Small Law Firms",
@@ -793,10 +873,10 @@ const CustomSoftwarePage = () => {
                 description: "The modern educational ecosystem spans in-person, hybrid, and fully remote learning environments. Our custom software development for educational institutions builds adaptive platforms that centralize student records, facilitate online assessments, and enable seamless communication between teachers, students, and parents—all while maintaining strict data security. From K-12 to higher education, we create digital foundations that support academic excellence."
               },
               {
-                title: "Fintech Startups",
+                title: "Finance & Fintech",
                 icon: <Coins className="w-8 h-8 text-yellow-400" />,
-                tagline: "Custom Software Development for Fintech Startups",
-                description: "Fintech startups operate at the intersection of innovation and regulation. Our custom software development for fintech startups delivers secure, scalable platforms for payment processing, wealth management, lending, and compliance. We build solutions that can handle high transaction volumes while maintaining strict security protocols."
+                tagline: "custom fintech software development",
+                description: "Custom financial software development covers everything from internal risk and reporting tools to full custom fintech software development builds — payment processing platforms, lending systems, and compliance-heavy financial applications where accuracy and auditability aren't optional."
               },
               {
                 title: "Construction Industry",
@@ -805,10 +885,22 @@ const CustomSoftwarePage = () => {
                 description: "Construction projects involve complex coordination across multiple stakeholders, budgets, and timelines. Our custom software development for the construction industry creates project management platforms that track progress, manage resources, and streamline communication across job sites. From bid management to project closeout, we build solutions that keep construction projects on track."
               },
               {
-                title: "Manufacturing Companies",
+                title: "Manufacturing & Retail",
                 icon: <Factory className="w-8 h-8 text-teal-400" />,
-                tagline: "Custom Software Development for Manufacturing Companies",
-                description: "Manufacturing requires precision in inventory management, production scheduling, quality control, and supply chain coordination. Our custom software development for manufacturing companies delivers ERP systems that integrate seamlessly with your existing operations, providing real-time visibility and control over your entire production lifecycle."
+                tagline: "custom manufacturing software development",
+                description: "Custom manufacturing software development spans production tracking, inventory systems, and quality control platforms. On the commercial side, custom retail software development covers everything from point-of-sale systems to inventory and customer data platforms built for how your stores or online channels actually operate."
+              },
+              {
+                title: "Energy & Enterprise",
+                icon: <Cpu className="w-8 h-8 text-[#ccff00]" />,
+                tagline: "custom enterprise software development",
+                description: "For utilities and industrial operators, custom energy software development covers monitoring dashboards, grid management tools, and compliance reporting systems. At the broader organizational level, our custom enterprise software development work focuses on the internal systems — ERP-adjacent tools, cross-department data platforms — that large organizations depend on daily but rarely see reflected in off-the-shelf software."
+              },
+              {
+                title: "Startups",
+                icon: <Rocket className="w-8 h-8 text-purple-400" />,
+                tagline: "custom software development for startups",
+                description: "Custom software development for startups looks different from enterprise work by design: leaner scope, faster iteration, and architecture built to support growth rather than every conceivable future feature on day one. Our approach to software development for startups prioritizes shipping a working product quickly without accumulating technical debt that becomes expensive to unwind later."
               }
             ].map((sector, idx) => (
               <motion.div
@@ -1286,22 +1378,36 @@ const CustomSoftwarePage = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/5 blur-[150px] rounded-full pointer-events-none"></div>
 
           <div className="max-w-7xl mx-auto px-4">
-              <div className="text-center max-w-3xl mx-auto mb-24">
-                  <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                  >
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mb-24">
+                  <div className="lg:col-span-5">
                       <span className="text-xs font-bold uppercase tracking-[0.3em] text-blue-500 mb-6 block font-mono">
                           The Development Lifecycle
                       </span>
                       <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight font-serif uppercase">
-                          Our Process
+                          Our Process & <br />
+                          <span className="font-serif italic text-blue-400">Approach</span>
                       </h2>
-                      <p className="mt-8 text-lg text-slate-400 leading-relaxed font-light">
-                          Precision engineering requires a rigorous methodology. We follow an evidence-based development cycle to ensure your software is robust, secure, and ready to scale.
+                      <div className="mt-8 flex items-center gap-4 text-xs font-mono text-slate-500 uppercase tracking-[0.4em]">
+                          <Activity className="animate-pulse text-[#ccff00]" size={16} />
+                          [ ADAPTIVE_DEVELOPMENT_PROTOCOL ]
+                      </div>
+                  </div>
+                  
+                  <div className="lg:col-span-7 bg-white/[0.02] border border-white/10 p-10 rounded-[2.5rem] relative space-y-6 backdrop-blur-xl">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] pointer-events-none" />
+                      <p className="text-lg text-slate-300 leading-relaxed font-light">
+                        Every engagement follows a disciplined <strong>custom software development best practice</strong>: requirements discovery before architecture, architecture before code, and continuous testing rather than a single QA pass at the end. This isn't a formality — it's the difference between software that survives real-world usage and software that breaks the first time a client's workflow doesn't match the original assumptions.
                       </p>
-                  </motion.div>
+                      <p className="text-base text-slate-400 leading-relaxed font-light">
+                        Much of our process draws on principles of <strong>adaptive software development</strong> — an approach built around continuous learning and adjustment rather than rigid, front-loaded planning. In practice, this means we build in short cycles, gather feedback from actual usage early, and adjust the system as your business requirements evolve, rather than locking in a fixed spec eighteen months before launch and hoping nothing changes.
+                      </p>
+                      <div className="pt-6 border-t border-white/5">
+                        <h4 className="text-xs font-mono text-[#ccff00] uppercase tracking-widest font-bold mb-2">// EMBEDDED_SYSTEMS</h4>
+                        <p className="text-sm text-slate-400 leading-relaxed font-light">
+                          For businesses with hardware-dependent or resource-constrained systems, we also offer <strong>embedded software development services</strong> — firmware and low-level application logic for devices and industrial systems where standard web or mobile architectures don't apply.
+                        </p>
+                      </div>
+                  </div>
               </div>
 
               <div className="relative max-w-5xl mx-auto">
@@ -1774,14 +1880,28 @@ const CustomSoftwarePage = () => {
       {/* Engagement Models */}
       <section className="py-32 lg:py-48 px-6 bg-white/[0.01] border-t border-white/10 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-24 text-center max-w-3xl mx-auto">
-            <span className="text-xs font-mono text-[#ccff00] mb-6 uppercase tracking-[0.5em] font-bold block">[ WORK_PROTOCOLS ]</span>
-            <h2 className="text-5xl md:text-7xl font-serif font-light text-white tracking-tight leading-[1] mb-8 uppercase">
-              Engagement Models
-            </h2>
-            <p className="text-xl text-slate-400 font-light leading-relaxed font-sans">
-              We align our operational integration with your commercial and project delivery preferences. Choose the protocol that fits your engineering scope.
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mb-24">
+            <div className="lg:col-span-5">
+              <span className="text-xs font-mono text-[#ccff00] mb-6 uppercase tracking-[0.5em] font-bold block">[ WORK_PROTOCOLS ]</span>
+              <h2 className="text-5xl md:text-7xl font-serif font-light text-white tracking-tight leading-[1] uppercase">
+                Engagement <br />
+                <span className="font-serif italic text-blue-400">Models</span>
+              </h2>
+              <div className="mt-8 flex items-center gap-4 text-xs font-mono text-slate-500 uppercase tracking-[0.4em]">
+                  <Activity className="animate-pulse text-[#ccff00]" size={16} />
+                  [ CLIENT_INTEGRATION_PROTOCOLS ]
+              </div>
+            </div>
+            
+            <div className="lg:col-span-7 bg-white/[0.02] border border-white/10 p-10 rounded-[2.5rem] relative space-y-6 backdrop-blur-xl">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] pointer-events-none" />
+              <p className="text-lg text-slate-300 leading-relaxed font-light">
+                Businesses come to us through different arrangements depending on their needs. Some engage us as a <strong>custom software development agency</strong> for a defined project with a clear start and end. Others work with us as an ongoing <strong>custom software development firm</strong>, embedding our team into their product roadmap over years rather than months. We also support <strong>co-development software</strong> arrangements — partnering with a client's in-house engineering team rather than replacing it, contributing specialized expertise where it's needed most.
+              </p>
+              <p className="text-base text-slate-400 leading-relaxed font-light">
+                Among <strong>custom software development companies</strong>, what tends to matter most to clients isn't the pitch — it's whether the delivered system is documented, maintainable, and actually owned by the client once the engagement ends. Every <strong>custom software developer</strong> on our team builds with that handoff in mind from day one, not as an afterthought once the contract is closing out.
+              </p>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -1893,6 +2013,65 @@ const CustomSoftwarePage = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Solutions, Not Just Code Section */}
+      <section className="py-32 lg:py-48 bg-[#000000] border-t border-white/10 relative z-10 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div className="lg:col-span-5">
+              <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ BEYOND_THE_CODE ]</span>
+              <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
+                Solutions, <br />
+                <span className="font-serif italic text-blue-400">Not Just Code</span>
+              </h2>
+              <div className="mt-8 flex items-center gap-4 text-xs font-mono text-slate-500 uppercase tracking-[0.4em]">
+                  <Activity className="animate-pulse text-[#ccff00]" size={16} />
+                  [ HOLISTIC_ECOSYSTEM_ACTIVE ]
+              </div>
+            </div>
+            
+            <div className="lg:col-span-7 bg-white/[0.02] border border-white/10 p-10 md:p-14 rounded-[3rem] relative space-y-6 backdrop-blur-xl">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 blur-[80px] pointer-events-none" />
+              <p className="text-xl font-light leading-relaxed text-slate-300 font-sans">
+                A finished application is only half the value. Our <strong>custom software development solutions</strong> include the surrounding decisions that determine whether software holds up over time — infrastructure choices, security architecture, documentation, and a maintenance plan that doesn't leave you dependent on a single developer's memory of how the system works.
+              </p>
+              <p className="text-base text-slate-400 leading-relaxed font-light font-sans">
+                As one of the <strong>AbuQitmirLabs.tech software development services</strong>, this page reflects our broader philosophy across every discipline we practice: <Link to="/seo-mastery" className="text-blue-400 hover:underline">SEO</Link>, <Link to="/content-writing" className="text-blue-400 hover:underline">content strategy</Link>, <Link to="/graphics-design" className="text-blue-400 hover:underline">graphics and design</Link>, and engineering all built to reinforce each other rather than operate in silos.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Ready to Build Something That Fits Section */}
+      <section className="py-32 lg:py-48 bg-black relative border-t border-white/10 overflow-hidden text-center">
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/20 via-transparent to-transparent pointer-events-none" />
+        <div className="max-w-4xl mx-auto relative z-10 px-6">
+          <span className="text-xs font-mono text-[#ccff00] mb-6 uppercase tracking-[0.4em] font-bold block">[ THE_NEXT_STEP ]</span>
+          <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight mb-8">
+            Ready to Build <br />
+            <span className="font-serif italic text-blue-400">Something That Fits?</span>
+          </h2>
+          <p className="text-xl text-slate-300 font-light leading-relaxed mb-12 font-sans max-w-2xl mx-auto">
+            Whether you need a <strong>software development firm</strong> for a single high-stakes project or an ongoing <strong>custom software development services</strong> partnership across your product lifecycle, the right starting point is understanding your actual constraints — timeline, budget, compliance requirements, and existing systems — before any technology decisions get made.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-4 text-xs font-mono text-slate-500 uppercase tracking-widest mb-16 border-y border-white/5 py-6">
+            <span>Explore our related services:</span>
+            <Link to="/web-development" className="text-blue-400 hover:text-white transition-colors">Web Development</Link>
+            <span className="text-white/20">•</span>
+            <Link to="/ai-agent-development" className="text-blue-400 hover:text-white transition-colors">AI Agent Development</Link>
+            <span className="text-white/20">•</span>
+            <Link to="/mobile-app-development" className="text-blue-400 hover:text-white transition-colors">Mobile App Development</Link>
+            <span className="text-white/20">•</span>
+            <Link to="/seo-mastery" className="text-blue-400 hover:text-white transition-colors">SEO Mastery</Link>
+            <span className="text-white/20">•</span>
+            <Link to="/graphics-design" className="text-blue-400 hover:text-white transition-colors">Graphics Design</Link>
+            <span className="text-white/20">•</span>
+            <Link to="/content-writing" className="text-blue-400 hover:text-white transition-colors">Content Writing</Link>
           </div>
         </div>
       </section>

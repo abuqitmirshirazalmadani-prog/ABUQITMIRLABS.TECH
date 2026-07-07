@@ -588,6 +588,308 @@ export default function AIAgentDevelopmentPage() {
         </div>
       </section>
 
+      {/* Premium AI Agent Development Services Narrative Section */}
+      <section id="autonomous-agent-services" className="py-32 px-6 relative overflow-hidden bg-black border-t border-white/5">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/[0.02] rounded-full blur-[150px] pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="mb-20 max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6"
+            >
+              <span className="text-[10px] bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full uppercase font-mono tracking-[0.25em] font-bold">
+                Premium Narrative
+              </span>
+              <h2 className="text-4xl md:text-6xl font-serif italic text-white tracking-tight leading-tight font-serif">
+                AI Agent Development Services
+              </h2>
+              <p className="text-xl md:text-2xl font-sans font-light text-neutral-400 tracking-wide uppercase max-w-2xl">
+                Autonomous AI Agents Built for Real Business Workflows
+              </p>
+              
+              <div className="h-[1px] w-20 bg-[#ccff00] my-8" />
+              
+              <div className="space-y-6 text-neutral-300 font-light leading-relaxed font-sans text-lg max-w-3xl">
+                <p>
+                  AI agents have moved well beyond chatbots that answer FAQs. Modern AI agents can take actions, make decisions, retrieve information from your business systems, and complete multi-step tasks with minimal human oversight. As an <strong className="text-white font-medium">AI agent development company</strong>, AbuQitmirLabs designs and builds custom agents that plug directly into your operations — not generic wrappers around a public API.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* What Our AI Agents Actually Do Grid */}
+          <div className="mb-32">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-12"
+            >
+              <h3 className="text-xs font-mono text-neutral-500 uppercase tracking-[0.3em] font-bold mb-3">[ FUNCTIONAL_BOUNDARIES ]</h3>
+              <h4 className="text-3xl font-bold text-white uppercase tracking-tight">What Our AI Agents Actually Do</h4>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "Task Automation Agents",
+                  desc: "Agents that handle repetitive, multi-step workflows — processing orders, updating records, generating reports, or managing routine customer requests — without constant human intervention.",
+                  icon: <Cpu className="text-blue-400" size={24} />
+                },
+                {
+                  title: "Customer-Facing Support Agents",
+                  desc: "Intelligent agents trained on your product, policies, and documentation that can resolve customer questions accurately, escalate appropriately, and reduce support ticket volume.",
+                  icon: <MessageSquare className="text-[#ccff00]" size={24} />
+                },
+                {
+                  title: "Internal Knowledge Agents (RAG-Based)",
+                  desc: "Agents built with Retrieval-Augmented Generation (RAG) that search your internal documents, wikis, and databases to give employees accurate, sourced answers instantly — instead of digging through folders and outdated documentation.",
+                  icon: <Database className="text-violet-400" size={24} />
+                },
+                {
+                  title: "Workflow Orchestration Agents",
+                  desc: "Agents that coordinate across multiple tools and systems — CRM, email, calendars, project management platforms — to complete tasks that would otherwise require manual work across several apps.",
+                  icon: <Layers className="text-indigo-400" size={24} />
+                },
+                {
+                  title: "Industry-Specific Agents",
+                  desc: "Custom-built agents tailored to your sector's specific terminology, compliance needs, and operational patterns — whether that's fintech, healthcare, retail, or logistics.",
+                  icon: <Brain className="text-emerald-400" size={24} />
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-[#0A0A0A] border border-white/5 hover:border-blue-500/10 rounded-3xl p-8 transition-all hover:bg-white/[0.01] flex flex-col justify-between group"
+                >
+                  <div className="space-y-6">
+                    <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      {item.icon}
+                    </div>
+                    <h5 className="text-xl font-bold text-white uppercase tracking-tight group-hover:text-blue-400 transition-colors">
+                      {item.title}
+                    </h5>
+                    <p className="text-sm text-neutral-400 font-light leading-relaxed font-sans">
+                      {item.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Development Process */}
+          <div className="mb-32">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-12"
+            >
+              <h3 className="text-xs font-mono text-neutral-500 uppercase tracking-[0.3em] font-bold mb-3">[ TECHNICAL_METHODOLOGY ]</h3>
+              <h4 className="text-3xl font-bold text-white uppercase tracking-tight">Our AI Agent Development Process</h4>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  step: "01",
+                  title: "Use Case Discovery",
+                  desc: "We identify where an agent creates real operational value, rather than deploying AI for its own sake."
+                },
+                {
+                  step: "02",
+                  title: "Data & Systems Mapping",
+                  desc: "We determine what internal data, documents, and systems the agent needs access to, and how it should securely connect to them."
+                },
+                {
+                  step: "03",
+                  title: "Agent Architecture & Prompt Engineering",
+                  desc: "We design the agent's reasoning process, tool access, and guardrails to ensure reliable, predictable behavior."
+                },
+                {
+                  step: "04",
+                  title: "Integration",
+                  desc: "The agent is connected to your actual business systems — CRMs, databases, internal APIs — so it can take real action, not just generate text."
+                },
+                {
+                  step: "05",
+                  title: "Testing & Guardrails",
+                  desc: "Rigorous testing ensures the agent handles edge cases safely and escalates to humans when it should."
+                },
+                {
+                  step: "06",
+                  title: "Deployment & Monitoring",
+                  desc: "Ongoing monitoring and refinement based on real usage patterns and feedback."
+                }
+              ].map((step, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="bg-zinc-950/40 border border-white/5 p-8 rounded-3xl relative overflow-hidden group hover:border-blue-500/20 transition-all"
+                >
+                  <span className="absolute right-6 top-6 text-5xl font-mono font-black text-white/5 group-hover:text-blue-500/10 transition-colors">
+                    {step.step}
+                  </span>
+                  <div className="space-y-4">
+                    <h5 className="text-lg font-bold text-white uppercase tracking-tight">
+                      {step.title}
+                    </h5>
+                    <p className="text-sm text-neutral-400 font-light leading-relaxed font-sans">
+                      {step.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Infrastructure & Privacy Bento Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-32">
+            {/* Infrastructure Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#080808] border border-white/5 rounded-3xl p-8 md:p-12 flex flex-col justify-between hover:border-blue-500/15 transition-all relative overflow-hidden group"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/[0.01] rounded-full blur-3xl pointer-events-none" />
+              <div className="space-y-6">
+                <span className="text-[10px] font-mono text-blue-400 tracking-wider uppercase font-bold">[ SYSTEM_INFRASTRUCTURE ]</span>
+                <h4 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight">
+                  Built on Modern AI Infrastructure
+                </h4>
+                <p className="text-neutral-400 font-light leading-relaxed font-sans">
+                  We build agents using leading large language model providers and modern agentic frameworks, combined with retrieval systems, vector databases, and secure API integrations — chosen based on your specific accuracy, cost, and data privacy requirements, not a fixed template.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Privacy Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#080808] border border-[#ccff00]/5 rounded-3xl p-8 md:p-12 flex flex-col justify-between hover:border-[#ccff00]/15 transition-all relative overflow-hidden group"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#ccff00]/[0.01] rounded-full blur-3xl pointer-events-none" />
+              <div className="space-y-6">
+                <span className="text-[10px] font-mono text-[#ccff00] tracking-wider uppercase font-bold">[ SECURITY_BOUNDARIES ]</span>
+                <h4 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight">
+                  Security & Data Privacy Come First
+                </h4>
+                <p className="text-neutral-400 font-light leading-relaxed font-sans">
+                  AI agents that touch your business data need to be built with the same security discipline as any enterprise software. We design agent architectures with proper access controls, data handling policies, and human-in-the-loop checkpoints for sensitive actions — so automation never comes at the cost of control.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Value Pitch & Who This Is For Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-32">
+            {/* Why Choose Us */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#0A0A0A] border border-white/5 rounded-3xl p-8 md:p-12 flex flex-col justify-between hover:border-blue-500/10 transition-colors"
+            >
+              <div className="space-y-6">
+                <span className="text-[10px] font-mono text-blue-400 tracking-wider uppercase font-bold">[ BESPOKE_DIFFERENTIATOR ]</span>
+                <h4 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight">
+                  Why Businesses Choose Our AI Agent Development Services
+                </h4>
+                <p className="text-neutral-400 font-light leading-relaxed font-sans">
+                  Among agencies offering <strong className="text-white font-medium">AI agent development services</strong>, the difference usually comes down to depth: whether an agent is stitched together from a template in an afternoon, or actually designed around your workflows, your data, and your risk tolerance. We build the latter — agents that survive contact with real usage rather than getting quietly abandoned after week one.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Who This Is For */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#0A0A0A] border border-white/5 rounded-3xl p-8 md:p-12 flex flex-col justify-between hover:border-blue-500/10 transition-colors"
+            >
+              <div className="space-y-6">
+                <span className="text-[10px] font-mono text-blue-400 tracking-wider uppercase font-bold">[ TARGET_SEGMENTS ]</span>
+                <h4 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight">
+                  Who This Is For
+                </h4>
+                <ul className="space-y-4 not-italic font-sans text-neutral-400 font-light list-none pl-0">
+                  {[
+                    "Businesses drowning in repetitive manual workflows that follow predictable patterns",
+                    "Support teams looking to reduce ticket volume without sacrificing accuracy",
+                    "Enterprises with large internal knowledge bases that employees struggle to search effectively",
+                    "Companies looking to integrate AI meaningfully into existing software rather than bolting on a chatbot widget"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* From Idea to Deployed Agent Narrative CTA */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="rounded-3xl border border-white/10 bg-gradient-to-br from-neutral-900 to-[#0A0A0A] p-8 md:p-16 relative overflow-hidden shadow-2xl"
+          >
+            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-blue-600/[0.03] rounded-full blur-3xl pointer-events-none" />
+            
+            <div className="max-w-3xl space-y-8">
+              <span className="text-[10px] bg-[#ccff00]/10 text-[#ccff00] px-3 py-1 rounded-full uppercase font-mono tracking-[0.2em] font-bold">
+                Operational Alignment
+              </span>
+              <h4 className="text-3xl md:text-5xl font-serif italic text-white tracking-tight leading-tight">
+                From Idea to Deployed Agent
+              </h4>
+              <p className="text-neutral-400 text-lg leading-relaxed font-light font-sans">
+                Building a genuinely useful AI agent takes more than plugging into an API — it requires understanding your workflows deeply enough to know where automation actually helps versus where it introduces risk. That's the difference between an agent that gets used and one that gets abandoned after week one.
+              </p>
+              <p className="text-neutral-400 text-lg leading-relaxed font-light font-sans">
+                If AI agents are part of a broader software modernization effort, our <Link to="/custom-software" className="text-blue-400 hover:underline font-normal">custom software development</Link> team can help you map out where agents fit alongside the rest of your systems. And if your agent needs a customer-facing interface, our <Link to="/web-development" className="text-blue-400 hover:underline font-normal">web development</Link> team can build the front-end experience around it.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-6 pt-4">
+                <Link
+                  to="/custom-software"
+                  className="px-8 py-4 rounded-xl text-xs font-bold uppercase tracking-widest bg-white text-black hover:bg-neutral-200 transition-all text-center inline-flex items-center justify-center gap-2 group"
+                >
+                  Consult Custom Software
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link
+                  to="/web-development"
+                  className="px-8 py-4 rounded-xl text-xs font-bold uppercase tracking-widest border border-white/10 text-white hover:bg-white/5 transition-all text-center inline-flex items-center justify-center gap-2 group"
+                >
+                  Explore Web Development
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
+      </section>
+
       {/* AI Agent Development Across Global Markets */}
       <section className="py-32 lg:py-48 bg-white/[0.01] border-b border-white/10 relative z-10 px-6" id="agent-global-markets">
         <div className="max-w-7xl mx-auto">

@@ -330,47 +330,177 @@ const USMarketPage = () => {
       <CountryMarquee />
 
       {/* Core Services Section */}
-      <section className="py-32 px-6 md:px-10 border-y border-white/5">
+      <section className="py-32 px-6 md:px-10 border-y border-white/5 bg-[#070707] relative overflow-hidden">
+        {/* Background grids and shapes */}
+        <div className="absolute inset-0 bg-grid opacity-[0.02] pointer-events-none" />
+        <div className="absolute -top-40 right-10 w-[600px] h-[600px] bg-blue-500/[0.01] blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute -bottom-40 left-10 w-[600px] h-[600px] bg-[#ff5b36]/[0.01] blur-[150px] rounded-full pointer-events-none" />
+
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <AnimatedShinyText 
-              text="Core Services Tailored for the US." 
-              textClassName="text-4xl md:text-7xl"
-            />
+          <div className="mb-32 text-center">
+            <span className="text-xs font-mono text-[#ff5b36] uppercase tracking-[0.4em] block mb-6">// PREMIUM US EXPANSION SERVICES</span>
+            <h2 className="text-4xl md:text-7xl font-serif font-light text-white uppercase tracking-tight leading-none">
+              Core Services <br />
+              <span className="italic text-[#9f978a] font-light">Tailored for the US Market</span>
+            </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="p-12 border border-white/5 bg-[#0d0d0d] flex flex-col items-center text-center group hover:border-blue-500/30 transition-all">
-              <div className="flex flex-col items-center">
-                <div className="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center mb-8 group-hover:bg-blue-500/20 transition-colors">
-                  <Globe className="text-blue-500" />
+          <div className="space-y-40">
+            {/* Cinematic Section 1: Local SEO */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start"
+            >
+              <div className="lg:col-span-7 space-y-8">
+                <div className="flex items-center gap-4 text-xs font-mono text-[#ff5b36] uppercase tracking-widest">
+                  <span className="h-px w-8 bg-[#ff5b36]" />
+                  LOCAL SEO PROTOCOL
                 </div>
-                <AnimatedBreathingText text="Coast-to-Coast Local SEO & Map Dominance" className="text-3xl font-bold uppercase tracking-tight mb-6 italic" />
-                <MagicText 
-                  text="Whether you are a law firm in Chicago or a real estate agency in Miami, we optimize your Google Business Profile (GBP) and build hyper-local semantic authority to ensure you capture the 'near me' searches that drive immediate US revenue."
-                  className="text-lg text-[#8d8579]"
-                />
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
+                  Coast-to-Coast <br />
+                  <span className="italic text-[#9f978a]">Local SEO & Map Dominance</span>
+                </h3>
+                <div className="font-sans font-light text-[#9f978a] leading-relaxed text-base md:text-lg space-y-6">
+                  <p>
+                    Whether you're a law firm in Chicago or a real estate agency in Miami, ranking in the map pack matters more than ranking on page one of organic results — most &quot;near me&quot; searches never scroll past the top three pins. Our approach to <strong className="text-white font-medium">GMB SEO</strong> starts with a full <strong className="text-white font-medium">GMB audit for local SEO</strong>: categories, service areas, photos, and review velocity, all checked against what's actually working for competitors currently occupying those top three spots.
+                  </p>
+                  <p>
+                    From there, <strong className="text-white font-medium">local SEO GMB optimization</strong> becomes an ongoing discipline rather than a one-time setup. We handle everything <strong className="text-white font-medium">seo and gmb</strong> touches — post scheduling, Q&A management, review response strategy, and the citation consistency that Google quietly uses to verify a business is real and active. For businesses asking <strong className="text-white font-medium">what is GMB in SEO</strong> and why it seems to matter more every year: Google increasingly treats a well-maintained Business Profile as a trust signal that traditional on-page SEO alone can't replace, especially for location-based searches.
+                  </p>
+                  <p>
+                    Our <strong className="text-white font-medium">GMB SEO services</strong> are built around the specific business type, not a generic template. A <strong className="text-white font-medium">GMB local SEO for dentists</strong> strategy — built around appointment urgency and &quot;near me&quot; intent — looks nothing like the map strategy for a multi-location retail chain, which is why category-specific playbooks outperform one-size-fits-all local SEO packages. For agencies managing multiple client accounts across the US, we also offer <strong className="text-white font-medium">white label GMB SEO</strong> support — full GMB audits, optimization, and monthly reporting delivered under your brand.
+                  </p>
+                  <p>
+                    <strong className="text-white font-medium">GMB SEO United States</strong> work carries its own regional nuance: competitive density in map results varies enormously between a mid-sized Midwest city and a saturated metro like Los Angeles or New York, and our strategy adjusts accordingly rather than applying the same intensity of link-building and citation work everywhere. The goal in every case is the same — capture the 'near me' searches that drive immediate US revenue, not just impressions that never convert.
+                  </p>
+                </div>
               </div>
-              <div className="mt-12 flex items-center gap-4 text-[#ff5b36] font-bold uppercase tracking-widest text-sm">
-                Explore Strategy <div className="h-px w-10 bg-[#ff5b36]"></div>
-              </div>
-            </div>
 
-            <div className="p-12 border border-white/5 bg-[#0d0d0d] flex flex-col items-center text-center group hover:border-[#ff5b36]/30 transition-all">
-              <div className="flex flex-col items-center">
-                <div className="w-16 h-16 rounded-full bg-[#ff5b36]/10 flex items-center justify-center mb-8 group-hover:bg-[#ff5b36]/20 transition-colors">
-                  <Smartphone className="text-[#ff5b36]" />
+              {/* Parallax / Visual Card for Local SEO */}
+              <div className="lg:col-span-5 lg:sticky lg:top-24 mt-8 lg:mt-0">
+                <div className="relative group p-8 rounded-3xl bg-zinc-950/40 border border-white/5 backdrop-blur-md overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.8)]">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-3xl rounded-full" />
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#ff5b36]/5 blur-3xl rounded-full" />
+                  
+                  {/* Decorative Map Grid Mockup */}
+                  <div className="mb-8 border border-white/10 rounded-2xl p-6 bg-black/40 relative">
+                    <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-4 text-xs font-mono text-[#7d766c]">
+                      <span>MAP_PACK_SIMULATOR</span>
+                      <span className="text-[#ff5b36] flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-[#ff5b36] animate-pulse" />
+                        LIVE METRICS
+                      </span>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      {[
+                        { name: "AbuQitmirLabs US Client", rating: "5.0 ★★★★★", status: "Position #1" },
+                        { name: "Competitor A", rating: "4.5 ★★★★☆", status: "Position #2" },
+                        { name: "Competitor B", rating: "4.2 ★★★★☆", status: "Position #3" },
+                      ].map((loc, i) => (
+                        <div key={i} className={`p-4 border rounded-xl flex justify-between items-center ${i === 0 ? 'border-[#ff5b36]/30 bg-[#ff5b36]/5' : 'border-white/5 bg-white/[0.01]'}`}>
+                          <div>
+                            <span className="text-sm font-bold text-white block uppercase tracking-tight">{loc.name}</span>
+                            <span className="text-xs text-[#9f978a]">{loc.rating}</span>
+                          </div>
+                          <span className={`text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded ${i === 0 ? 'bg-[#ff5b36]/20 text-white font-bold' : 'bg-zinc-900 text-[#7d766c]'}`}>{loc.status}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 border-t border-white/5 pt-6 text-xs font-mono text-[#7d766c]">
+                    <div className="flex justify-between">
+                      <span>AUDIT ROADMAPS:</span>
+                      <span className="text-white">COMPLETED</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>GEO-TARGET DEPTH:</span>
+                      <span className="text-white">50 STATES</span>
+                    </div>
+                  </div>
                 </div>
-                <AnimatedBreathingText text="Scalable Enterprise SaaS & App Development" className="text-3xl font-bold uppercase tracking-tight mb-6 italic" />
-                <MagicText 
-                  text="We build cross-platform mobile apps (React Native/Flutter) and scalable cloud-native software (AWS) designed to handle the massive traffic spikes and stringent data security requirements of the American consumer market."
-                  className="text-lg text-[#8d8579]"
-                />
               </div>
-              <div className="mt-12 flex items-center gap-4 text-[#ff5b36] font-bold uppercase tracking-widest text-sm">
-                View Tech Stack <div className="h-px w-10 bg-[#ff5b36]"></div>
+            </motion.div>
+
+            {/* Cinematic Section 2: Mobile App Dev */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start border-t border-white/5 pt-40"
+            >
+              <div className="lg:col-span-7 lg:order-2 space-y-8">
+                <div className="flex items-center gap-4 text-xs font-mono text-[#ff5b36] uppercase tracking-widest">
+                  <span className="h-px w-8 bg-[#ff5b36]" />
+                  ENTERPRISE ARCHITECTURE
+                </div>
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
+                  Scalable Enterprise SaaS &amp; <br />
+                  <span className="italic text-[#9f978a]">Mobile App Development</span>
+                </h3>
+                <div className="font-sans font-light text-[#9f978a] leading-relaxed text-base md:text-lg space-y-6">
+                  <p>
+                    We build cross-platform mobile apps — React Native and Flutter — alongside scalable cloud-native software (AWS) designed to handle the traffic spikes and data security requirements of the American consumer market. As a <strong className="text-white font-medium">mobile app development company</strong> serving US clients, our engineering decisions are shaped by what US-based investors and enterprise buyers expect: documented architecture, security audits, and a codebase a future in-house team could actually take over.
+                  </p>
+                  <p>
+                    <strong className="text-white font-medium">Cross-platform mobile app development</strong> — built primarily on Flutter, with React Native available where a team's existing web stack makes it the better fit — lets startups ship to both iOS and Android from a single, well-architected codebase, avoiding the cost of maintaining two entirely separate native teams. For companies asking about <strong className="text-white font-medium">mobile app development cost</strong> before committing to a build: cross-platform architecture typically brings that number down substantially compared to fully native iOS and Android builds, without meaningfully compromising performance for most product categories.
+                  </p>
+                  <p>
+                    We work as both a <strong className="text-white font-medium">mobile app development firm</strong> for one-off product builds and as an ongoing <strong className="text-white font-medium">enterprise mobile app development company</strong> for larger organizations that need continuous iteration rather than a single ship-and-done engagement. <strong className="text-white font-medium">Healthcare mobile app development</strong> for the US market carries its own weight here too — HIPAA-aware data handling isn't optional when patient information touches a mobile app, and it shapes architecture decisions from day one rather than getting bolted on before launch.
+                  </p>
+                  <p>
+                    For teams comparing us against other <strong className="text-white font-medium">top mobile app development companies</strong> serving the US, the honest differentiator isn't a longer feature list — it's whether the team building your app understands US compliance expectations (CCPA, HIPAA, SOC 2 readiness) natively, rather than treating them as an unfamiliar afterthought for an offshore team more used to building for other markets.
+                  </p>
+                </div>
               </div>
-            </div>
+
+              {/* Parallax / Visual Card for App Dev */}
+              <div className="lg:col-span-5 lg:order-1 lg:sticky lg:top-24 mt-8 lg:mt-0">
+                <div className="relative group p-8 rounded-3xl bg-zinc-950/40 border border-white/5 backdrop-blur-md overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.8)]">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#ff5b36]/5 blur-3xl rounded-full" />
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-blue-500/5 blur-3xl rounded-full" />
+                  
+                  {/* Decorative App Frame Mockup */}
+                  <div className="mb-8 border border-white/10 rounded-2xl p-6 bg-black/40 relative">
+                    <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-4 text-xs font-mono text-[#7d766c]">
+                      <span>BUILD_MANIFEST_INFO</span>
+                      <span className="text-[#ccff00] flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-[#ccff00] animate-pulse" />
+                        STABLE DEPLOY
+                      </span>
+                    </div>
+                    
+                    <div className="space-y-3 font-mono text-[11px] text-zinc-400">
+                      <div><span className="text-zinc-600">const</span> SDK_ENGINE = <span className="text-[#ff5b36]">&quot;Flutter/React Native&quot;</span>;</div>
+                      <div><span className="text-zinc-600">const</span> DATA_REGISTRY = <span className="text-[#ff5b36]">&quot;HIPAA_COMPLIANT&quot;</span>;</div>
+                      <div><span className="text-zinc-600">const</span> SEC_STANDARDS = <span className="text-[#ff5b36]">&quot;SOC2_READY&quot;</span>;</div>
+                      <div className="border-t border-white/5 pt-3 mt-3 flex items-center gap-2">
+                        <span className="w-2.5 h-2.5 rounded-full bg-blue-500" />
+                        <span>iOS: Active</span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#ccff00] ml-4" />
+                        <span>Android: Active</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 border-t border-white/5 pt-6 text-xs font-mono text-[#7d766c]">
+                    <div className="flex justify-between">
+                      <span>COMPLIANCE RATING:</span>
+                      <span className="text-[#ccff00] font-bold">100% SECURE</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>AVERAGE SPRINT TACT:</span>
+                      <span className="text-white">2 WEEKS</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

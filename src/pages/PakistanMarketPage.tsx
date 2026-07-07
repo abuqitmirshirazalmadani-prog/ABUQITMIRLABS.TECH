@@ -282,30 +282,72 @@ const PakistanMarketPage = () => {
             />
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Karachi Pulse",
-                desc: "We understand the local market pulse better than anyone, bringing global tech standards to your doorstep.",
-                icon: <MapPin size={32} />
-              },
-              {
-                title: "Process Automation",
-                desc: "Replace manual, paper-based workflows with scalable custom software and mobile apps built for efficiency.",
-                icon: <Zap size={32} />
-              },
-              {
-                title: "24/7 AI Support",
-                desc: "Deploy AI agents trained in Roman Urdu and local contexts to handle customer inquiries round the clock.",
-                icon: <MessagesSquare size={32} />
-              }
-            ].map((item, i) => (
-              <div key={i} className="p-12 border border-white/5 bg-[#0d0d0d] hover:border-[#ff5b36]/30 transition-all flex flex-col items-center text-center">
-                <div className="text-[#ff5b36] mb-8">{item.icon}</div>
-                <AnimatedBreathingText text={item.title} className="text-2xl font-bold uppercase mb-6 tracking-tight" />
-                <MagicText text={item.desc} className="text-[#7d766c]" />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Card 1: Karachi Pulse */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="group p-10 border border-white/5 hover:border-[#ff5b36]/30 transition-all bg-[#0d0d0d] flex flex-col items-start text-left rounded-3xl"
+            >
+              <div className="bg-white/5 w-16 h-16 rounded-full flex items-center justify-center mb-8 text-[#ff5b36] group-hover:bg-[#ff5b36]/10 transition-colors">
+                <MapPin size={32} />
               </div>
-            ))}
+              <h3 className="text-2xl font-serif font-light text-white uppercase mb-6 tracking-tight">
+                Karachi Pulse
+              </h3>
+              <div className="text-sm font-sans font-light text-[#9f978a] leading-relaxed">
+                <p>
+                  We understand the local market pulse better than anyone, bringing global tech standards to your doorstep.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Card 2: Process Automation */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="group p-10 border border-white/5 hover:border-[#ff5b36]/30 transition-all bg-[#0d0d0d] flex flex-col items-start text-left rounded-3xl"
+            >
+              <div className="bg-white/5 w-16 h-16 rounded-full flex items-center justify-center mb-8 text-[#ff5b36] group-hover:bg-[#ff5b36]/10 transition-colors">
+                <Zap size={32} />
+              </div>
+              <h3 className="text-2xl font-serif font-light text-white uppercase mb-6 tracking-tight">
+                Process Automation
+              </h3>
+              <div className="text-sm font-sans font-light text-[#9f978a] leading-relaxed space-y-4">
+                <p>
+                  Replace manual, paper-based workflows with scalable custom software and mobile apps built for how Pakistani businesses actually operate day to day.
+                </p>
+                <p>
+                  This is where our <strong className="text-white font-medium">custom mobile app development services</strong> and broader <strong className="text-white font-medium">custom software development</strong> practice meet directly — automating the WhatsApp-and-spreadsheet workflows most SMEs have outgrown, without forcing a rebuild of the entire business around imported enterprise software never designed for the local context.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Card 3: 24/7 AI Support */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="group p-10 border border-white/5 hover:border-[#ff5b36]/30 transition-all bg-[#0d0d0d] flex flex-col items-start text-left rounded-3xl"
+            >
+              <div className="bg-white/5 w-16 h-16 rounded-full flex items-center justify-center mb-8 text-[#ff5b36] group-hover:bg-[#ff5b36]/10 transition-colors">
+                <MessagesSquare size={32} />
+              </div>
+              <h3 className="text-2xl font-serif font-light text-white uppercase mb-6 tracking-tight">
+                24/7 AI Support
+              </h3>
+              <div className="text-sm font-sans font-light text-[#9f978a] leading-relaxed">
+                <p>
+                  Deploy AI agents trained in Roman Urdu and local contexts to handle customer inquiries round the clock — built as part of our broader AI agent development practice, adapted specifically for how Pakistani customers actually communicate rather than a generic English-only chatbot template.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -313,45 +355,165 @@ const PakistanMarketPage = () => {
       <CountryMarquee />
 
       {/* Core Services Section */}
-      <section className="py-32 px-6 md:px-10 bg-[#090909]">
+      <section className="py-32 px-6 md:px-10 bg-[#090909] relative overflow-hidden">
+        {/* Background grids and shapes */}
+        <div className="absolute inset-0 bg-grid opacity-[0.02] pointer-events-none" />
+        <div className="absolute -top-40 right-10 w-[600px] h-[600px] bg-blue-500/[0.01] blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute -bottom-40 left-10 w-[600px] h-[600px] bg-[#ff5b36]/[0.01] blur-[150px] rounded-full pointer-events-none" />
+
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-24">
-            <AnimatedShinyText 
-              text="Services Engineered for Pakistan." 
-              textClassName="text-4xl md:text-7xl"
-            />
+          <div className="mb-32 text-center">
+            <span className="text-xs font-mono text-[#ff5b36] uppercase tracking-[0.4em] block mb-6">// PAKISTAN MARKET SPECIFIC CRITERIA</span>
+            <h2 className="text-4xl md:text-7xl font-serif font-light text-white uppercase tracking-tight leading-none">
+              Core Services <br />
+              <span className="italic text-[#9f978a] font-light">Engineered for Pakistan</span>
+            </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="p-12 border border-white/10 bg-[#111111] group hover:border-[#ff5b36]/40 transition-all flex flex-col items-center text-center">
-              <div className="flex flex-col items-center">
-                <Search className="text-[#ff5b36] mb-10" size={48} strokeWidth={1} />
-                <AnimatedBreathingText text="Local SEO & Google Maps Dominance" className="text-3xl md:text-4xl font-bold uppercase tracking-tighter mb-8 italic" />
-                <MagicText 
-                  text="From Karachi tech startups to Lahore retail brands—we help you capture maximum local traffic. We optimize your GBP, secure local citations, and build semantic relevance to outrank your competitors."
-                  className="text-xl text-[#8d8579] mb-10"
-                />
+          <div className="space-y-40">
+            {/* Cinematic Section 1: Local SEO & Google Maps Dominance */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start"
+            >
+              <div className="lg:col-span-7 space-y-8">
+                <div className="flex items-center gap-4 text-xs font-mono text-[#ff5b36] uppercase tracking-widest">
+                  <span className="h-px w-8 bg-[#ff5b36]" />
+                  LOCAL SEARCH DISCOVERY
+                </div>
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
+                  Local SEO & <br />
+                  <span className="italic text-[#9f978a]">Google Maps Dominance</span>
+                </h3>
+                <div className="font-sans font-light text-[#9f978a] leading-relaxed text-base md:text-lg space-y-6">
+                  <p>
+                    From Karachi tech startups to Lahore retail brands, we help you capture maximum local traffic. We optimize your GBP, secure local citations, and build semantic relevance to outrank your competitors.
+                  </p>
+                  <p>
+                    This work sits under our broader <strong className="text-white font-medium">GMB SEO services</strong> practice — starting with a full <strong className="text-white font-medium">GMB audit for local SEO</strong> that identifies exactly where a Karachi or Lahore business is losing map-pack visibility to competitors. From there, ongoing <strong className="text-white font-medium">local SEO GMB optimization</strong> covers review management, post scheduling, and the citation consistency Google uses to judge whether a business listing is trustworthy. For businesses asking <strong className="text-white font-medium">what is GMB in SEO</strong> and why it keeps mattering more: in a market where mobile search dominates discovery, a well-managed Google Business Profile is often the single highest-leverage local SEO investment a Pakistani SME can make.
+                  </p>
+                  <p>
+                    Our <strong className="text-white font-medium">GMB &amp; local SEO services</strong> for Karachi city specifically account for the density of the local market — competition in DHA or Clifton looks nothing like a suburban commercial area, and our strategy adjusts accordingly. For appointment-driven businesses, we also run category-specific playbooks — the same discipline behind <strong className="text-white font-medium">GMB local SEO for dentists</strong> internationally applies just as directly to clinics, salons, and service businesses across Karachi and Lahore. Agencies managing multiple local clients can also engage us for <strong className="text-white font-medium">white label GMB SEO</strong> support, handling audits and reporting under their own brand.
+                  </p>
+                </div>
               </div>
-              <div className="flex items-center gap-4 text-xs font-mono tracking-widest text-[#7d766c] uppercase w-full">
-                <div className="h-px flex-1 bg-white/5"></div>
-                Rank #1 Nationally <div className="h-px flex-1 bg-white/5"></div>
-              </div>
-            </div>
 
-            <div className="p-12 border border-white/10 bg-[#111111] group hover:border-blue-500/40 transition-all flex flex-col items-center text-center">
-              <div className="flex flex-col items-center">
-                <Smartphone className="text-blue-500 mb-10" size={48} strokeWidth={1} />
-                <AnimatedBreathingText text="Digital Transformation for SMEs" className="text-3xl md:text-4xl font-bold uppercase tracking-tighter mb-8 italic" />
-                <MagicText 
-                  text="High-performance Web & Mobile Apps tailored to the budgets and operational needs of Pakistani SMEs, ensuring maximum ROI and operational efficiency in 3G/4G environments."
-                  className="text-xl text-[#8d8579] mb-10"
-                />
+              {/* Visual Card for SEO */}
+              <div className="lg:col-span-5 lg:sticky lg:top-24 mt-8 lg:mt-0">
+                <div className="relative group p-8 rounded-3xl bg-zinc-950/40 border border-white/5 backdrop-blur-md overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.8)]">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#ff5b36]/5 blur-3xl rounded-full" />
+                  
+                  <div className="mb-8 border border-white/10 rounded-2xl p-6 bg-black/40 relative">
+                    <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-4 text-xs font-mono text-[#7d766c]">
+                      <span>GBP_RANK_STATUS</span>
+                      <span className="text-[#ccff00] flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-[#ccff00] animate-pulse" />
+                        LIVE TRACKING
+                      </span>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      {[
+                        { title: "DHA Karachi Cluster", value: "#1 Position" },
+                        { title: "Gulberg Lahore Cluster", value: "#1 Position" },
+                        { title: "Blue Area Islamabad", value: "#1 Position" },
+                      ].map((item, idx) => (
+                        <div key={idx} className="p-3 border border-white/5 rounded-xl bg-white/[0.01] flex justify-between items-center">
+                          <span className="text-xs text-[#9f978a] font-sans font-light">{item.title}</span>
+                          <span className="text-[10px] font-mono bg-[#ccff00]/10 text-[#ccff00] px-2 py-0.5 rounded font-bold uppercase">{item.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 border-t border-white/5 pt-6 text-xs font-mono text-[#7d766c]">
+                    <div className="flex justify-between">
+                      <span>AUDIT REVENUE GAIN:</span>
+                      <span className="text-white">+182% MAP Discovery</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>NATIONAL STANDARDS:</span>
+                      <span className="text-[#ff5b36] font-bold">RANK #1 NATIONALLY</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center gap-4 text-xs font-mono tracking-widest text-[#7d766c] uppercase w-full">
-                <div className="h-px flex-1 bg-white/5"></div>
-                Optimized for Local Speeds <div className="h-px flex-1 bg-white/5"></div>
+            </motion.div>
+
+            {/* Cinematic Section 2: Digital Transformation for SMEs */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start border-t border-white/5 pt-40"
+            >
+              <div className="lg:col-span-7 lg:order-2 space-y-8">
+                <div className="flex items-center gap-4 text-xs font-mono text-blue-500 uppercase tracking-widest">
+                  <span className="h-px w-8 bg-blue-500" />
+                  RESPONSIVE CUSTOM APPS
+                </div>
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
+                  Digital Transformation <br />
+                  <span className="italic text-[#9f978a]">for SMEs</span>
+                </h3>
+                <div className="font-sans font-light text-[#9f978a] leading-relaxed text-base md:text-lg space-y-6">
+                  <p>
+                    High-performance Web &amp; Mobile Apps tailored to the budgets and operational needs of Pakistani SMEs, ensuring maximum ROI and operational efficiency in 3G/4G environments.
+                  </p>
+                  <p>
+                    On the web side, this means building with genuine <strong className="text-white font-medium">web development best practices</strong> from the start — not just visually polished sites, but ones engineered for Pakistan's variable connectivity realities. Every <strong className="text-white font-medium">custom web development</strong> engagement follows the same discipline: lightweight, fast-loading architecture using the right <strong className="text-white font-medium">web development framework</strong> for the job, whether that's a lean marketing site or a full <strong className="text-white font-medium">web application development</strong> build with custom business logic behind it. As <strong className="text-white font-medium">web development companies</strong> go, the ones that actually deliver for the Pakistani SME market are the ones who design for 3G/4G from day one, not as an afterthought once a beautifully heavy site fails to load on a mid-range Android phone.
+                  </p>
+                  <p>
+                    On the mobile side, we work as a <strong className="text-white font-medium">custom mobile app development company</strong> building for exactly this constraint — apps that stay fast and functional on the mobile networks Pakistani users actually have, not the fibre connections a demo environment assumes. <strong className="text-white font-medium">Cross-platform mobile app development</strong>, primarily through Flutter, lets an SME reach both iOS and Android users from a single codebase without doubling the development cost — a meaningful difference for a business watching <strong className="text-white font-medium">mobile app development cost</strong> closely. We're proud to be recognized among the <strong className="text-white font-medium">best mobile app development companies in Pakistan</strong>, and for SMEs comparing us against other <strong className="text-white font-medium">mobile app development firms</strong>, the practical difference usually comes down to whether the team has actually shipped apps that perform well on the connectivity most Pakistani users have, rather than just the connectivity a portfolio demo was tested on.
+                  </p>
+                </div>
               </div>
-            </div>
+
+              {/* Visual Card for SME Apps */}
+              <div className="lg:col-span-5 lg:order-1 lg:sticky lg:top-24 mt-8 lg:mt-0">
+                <div className="relative group p-8 rounded-3xl bg-zinc-950/40 border border-white/5 backdrop-blur-md overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.8)]">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-3xl rounded-full" />
+                  
+                  <div className="mb-8 border border-white/10 rounded-2xl p-6 bg-black/40 relative">
+                    <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-4 text-xs font-mono text-[#7d766c]">
+                      <span>APP_OPTIMIZER_v3</span>
+                      <span className="text-blue-500 flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
+                        OPTIMIZED FOR 3G/4G
+                      </span>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      {[
+                        { title: "Initial Asset Footprint", value: "< 1.8MB" },
+                        { title: "Average Load on 3G Speed", value: "1.2s" },
+                        { title: "Offline Capabilities", value: "ENABLED" },
+                      ].map((item, idx) => (
+                        <div key={idx} className="p-3 border border-white/5 rounded-xl bg-white/[0.01] flex justify-between items-center">
+                          <span className="text-xs text-[#9f978a] font-sans font-light">{item.title}</span>
+                          <span className="text-[10px] font-mono bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded font-bold uppercase">{item.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 border-t border-white/5 pt-6 text-xs font-mono text-[#7d766c]">
+                    <div className="flex justify-between">
+                      <span>NETWORK EFFICIENCY:</span>
+                      <span className="text-white">EXTREME</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>PERFORMANCE CLASS:</span>
+                      <span className="text-blue-400 font-bold">OPTIMIZED FOR LOCAL SPEEDS</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

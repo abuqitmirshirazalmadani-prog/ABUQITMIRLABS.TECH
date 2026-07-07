@@ -642,11 +642,11 @@ Do not sign a website contract without these protective legal terms.
              <div className="absolute top-12 left-0 right-0 h-[1px] bg-white/10 hidden md:block" />
              
              {[
-               { title: "Audit & Specs", desc: "Technical analysis of current assets and goal setting.", icon: <Terminal /> },
-               { title: "UX Architecture", desc: "Mapping user flows for sub-second navigation.", icon: <Layers /> },
-               { title: "Jamstack Build", desc: "Engineering the frontend with Next.js and Tailwind.", icon: <Code2 /> },
-               { title: "CMS Sync", desc: "Connecting secure headless content management.", icon: <Database /> },
-               { title: "Edge Deploy", desc: "Global distribution via Vercel Edge networks.", icon: <Rocket /> }
+               { title: "Discovery & Planning", desc: "We start by understanding your business goals, target audience, and technical requirements before writing a single line of code.", icon: <Terminal /> },
+               { title: "Architecture & Design", desc: "We choose the right technology stack for your specific needs, whether that's a lightweight static site, a CMS-based platform, or a fully custom web application development build.", icon: <Layers /> },
+               { title: "Development", desc: "Clean, well-documented code built with performance, security, and maintainability as core priorities — not afterthoughts.", icon: <Code2 /> },
+               { title: "Testing & QA", desc: "Every build goes through cross-browser, cross-device, and performance testing before launch.", icon: <Database /> },
+               { title: "Launch & Support", desc: "We don't disappear after deployment. Ongoing maintenance, updates, and performance monitoring keep your site running smoothly.", icon: <Rocket /> }
              ].map((step, idx) => (
                 <motion.div 
                   key={idx}
@@ -664,6 +664,239 @@ Do not sign a website contract without these protective legal terms.
                 </motion.div>
              ))}
           </div>
+        </div>
+      </section>
+
+      {/* Modern Web Development Services Narrative Block */}
+      <section id="modern-web-services" className="py-32 px-6 relative overflow-hidden bg-black border-t border-white/5">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/[0.02] rounded-full blur-[150px] pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="mb-20 max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6"
+            >
+              <span className="text-[10px] bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full uppercase font-mono tracking-[0.25em] font-bold">
+                Premium Narrative
+              </span>
+              <h2 className="text-4xl md:text-6xl font-serif italic text-white tracking-tight leading-tight">
+                Modern Web Development Services
+              </h2>
+              <p className="text-xl md:text-2xl font-sans font-light text-neutral-400 tracking-wide uppercase max-w-2xl">
+                Custom Web Applications Built for Speed, Scale, and Growth
+              </p>
+              
+              <div className="h-[1px] w-20 bg-blue-500 my-8" />
+              
+              <div className="space-y-6 text-neutral-300 font-light leading-relaxed font-sans text-lg max-w-3xl">
+                <p>
+                  Your website is often the first interaction a potential customer has with your business — and in 2026, that first impression happens in milliseconds. At <strong className="text-white font-medium">AbuQitmirLabs</strong>, we follow <strong className="text-white font-medium">web development best practices</strong> to build modern, high-performance websites and applications engineered around your actual business goals, not generic templates.
+                </p>
+                <p>
+                  Whether you need a corporate website, a customer-facing web application, or a complex internal platform, our approach to <strong className="text-white font-medium">custom web development</strong> combines clean architecture, the right web development framework for the job, and a relentless focus on speed and usability.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* What We Build Grid */}
+          <div className="mb-32">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-12"
+            >
+              <h3 className="text-xs font-mono text-neutral-500 uppercase tracking-[0.3em] font-bold mb-3">[ CAPABILITY_SPECTRUM ]</h3>
+              <h4 className="text-3xl font-bold text-white uppercase tracking-tight">What We Build</h4>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "Business & Corporate Websites",
+                  desc: "Fast, professional, conversion-focused websites that represent your brand accurately and load instantly on any device.",
+                  icon: <Briefcase className="text-blue-400" size={24} />
+                },
+                {
+                  title: "Custom Web Development Applications",
+                  desc: "Full-stack web application development built to your exact business logic — customer portals, booking systems, internal dashboards, and SaaS products designed around how your operations actually work, not around a pre-built template.",
+                  icon: <Code2 className="text-[#00E5FF]" size={24} />
+                },
+                {
+                  title: "E-Commerce Platforms",
+                  desc: "Scalable online stores with secure payment integration, inventory management, and optimized checkout flows built to convert.",
+                  icon: <ShoppingCart className="text-[#ccff00]" size={24} />
+                },
+                {
+                  title: "API & Third-Party Integrations",
+                  desc: "Seamless connections between your website and the tools you already use — CRMs, payment gateways, analytics platforms, and internal systems.",
+                  icon: <Layers className="text-indigo-400" size={24} />
+                },
+                {
+                  title: "Website Modernization & Migration",
+                  desc: "Rebuilding legacy websites on a modern, maintainable web development framework without losing your existing SEO equity or content.",
+                  icon: <RefreshCw className="text-violet-400" size={24} />
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-[#0A0A0A] border border-white/5 hover:border-blue-500/10 rounded-3xl p-8 transition-all hover:bg-white/[0.01] flex flex-col justify-between group"
+                >
+                  <div className="space-y-6">
+                    <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      {item.icon}
+                    </div>
+                    <h5 className="text-xl font-bold text-white uppercase tracking-tight group-hover:text-blue-400 transition-colors">
+                      {item.title}
+                    </h5>
+                    <p className="text-sm text-neutral-400 font-light leading-relaxed font-sans">
+                      {item.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Philosophy Bento Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-32">
+            {/* Frameworks Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#080808] border border-white/5 rounded-3xl p-8 md:p-12 flex flex-col justify-between hover:border-blue-500/15 transition-all relative overflow-hidden group"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/[0.01] rounded-full blur-3xl pointer-events-none" />
+              <div className="space-y-6">
+                <span className="text-[10px] font-mono text-blue-400 tracking-wider uppercase font-bold">[ FRAMEWORK_INTEGRITY ]</span>
+                <h4 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight">
+                  Frameworks & Technologies We Work With
+                </h4>
+                <p className="text-neutral-400 font-light leading-relaxed font-sans">
+                  We choose our web development framework based on what your project actually needs — not what's trendy. As a team that works across modern JavaScript frameworks (React, Next.js), robust back-end systems (Node.js, .NET, PHP), and both custom-built and CMS-based solutions, we're able to give you an honest recommendation rather than a one-size-fits-all pitch. It's this range that sets a genuine web development company apart from a template shop.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* SEO Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#080808] border border-[#ccff00]/5 rounded-3xl p-8 md:p-12 flex flex-col justify-between hover:border-[#ccff00]/15 transition-all relative overflow-hidden group"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#ccff00]/[0.01] rounded-full blur-3xl pointer-events-none" />
+              <div className="space-y-6">
+                <span className="text-[10px] font-mono text-[#ccff00] tracking-wider uppercase font-bold">[ ORGANIC_DOMINANCE ]</span>
+                <h4 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight">
+                  Built by an SEO Web Developer, Not Just a Coder
+                </h4>
+                <p className="text-neutral-400 font-light leading-relaxed font-sans">
+                  A site that looks polished but can't be found is a wasted investment. Every project we deliver is handled by a team that thinks like an <strong className="text-white font-medium">SEO web developer</strong> first — clean semantic HTML, optimized asset loading, and proper technical foundations baked in from day one, so page speed, mobile responsiveness, and crawlability are never an afterthought bolted on after launch.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Value Pitch & Who This Is For Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-32">
+            {/* Why Choose Us */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#0A0A0A] border border-white/5 rounded-3xl p-8 md:p-12 flex flex-col justify-between hover:border-blue-500/10 transition-colors"
+            >
+              <div className="space-y-6">
+                <span className="text-[10px] font-mono text-blue-400 tracking-wider uppercase font-bold">[ CLIENT_CENTERED_METRICS ]</span>
+                <h4 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight">
+                  Why Businesses Choose Our Web Development Services
+                </h4>
+                <p className="text-neutral-400 font-light leading-relaxed font-sans">
+                  Among <strong className="text-white font-medium">web development companies</strong>, what tends to separate the ones clients stay with from the ones they leave is simple: whether the work is built around the client's business or around the agency's convenience. Our <strong className="text-white font-medium">custom web development services</strong> are built the former way — scoped to your goals, documented clearly, and handed over in a state your team can actually maintain.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Who This Is For */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#0A0A0A] border border-white/5 rounded-3xl p-8 md:p-12 flex flex-col justify-between hover:border-blue-500/10 transition-colors"
+            >
+              <div className="space-y-6">
+                <span className="text-[10px] font-mono text-blue-400 tracking-wider uppercase font-bold">[ TARGET_AUDIENCE_SPEC ]</span>
+                <h4 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight">
+                  Who This Is For
+                </h4>
+                <ul className="space-y-4 not-italic font-sans text-neutral-400 font-light list-none pl-0">
+                  {[
+                    "Businesses replacing an outdated or underperforming website",
+                    "Companies that need a custom web application beyond what off-the-shelf tools can offer",
+                    "Enterprises modernizing legacy platforms without disrupting operations",
+                    "Startups building their first product-facing web presence"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Ready to Build Narrative CTA */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="rounded-3xl border border-white/10 bg-gradient-to-br from-neutral-900 to-[#0A0A0A] p-8 md:p-16 relative overflow-hidden shadow-2xl"
+          >
+            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-blue-600/[0.03] rounded-full blur-3xl pointer-events-none" />
+            
+            <div className="max-w-3xl space-y-8">
+              <span className="text-[10px] bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full uppercase font-mono tracking-[0.2em] font-bold">
+                Direct Consultation
+              </span>
+              <h4 className="text-3xl md:text-5xl font-serif italic text-white tracking-tight leading-tight">
+                Ready to Build Something That Actually Performs?
+              </h4>
+              <p className="text-neutral-400 text-lg leading-relaxed font-light font-sans">
+                A modern web presence is more than a design refresh — it's infrastructure that supports how customers find you, trust you, and do business with you. If you're evaluating whether a custom build, a CMS platform, or a hybrid approach fits your goals, our <Link to="/custom-software" className="text-blue-400 hover:underline font-normal">custom software development</Link> team can help you think it through before committing to a direction.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-6 pt-4">
+                <Link
+                  to="/custom-software"
+                  className="px-8 py-4 rounded-xl text-xs font-bold uppercase tracking-widest bg-white text-black hover:bg-neutral-200 transition-all text-center inline-flex items-center justify-center gap-2 group"
+                >
+                  Consult Custom Software
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link
+                  to="/ai-agent-development"
+                  className="px-8 py-4 rounded-xl text-xs font-bold uppercase tracking-widest border border-white/10 text-white hover:bg-white/5 transition-all text-center inline-flex items-center justify-center gap-2 group"
+                >
+                  Explore AI Agent Development
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+
         </div>
       </section>
 

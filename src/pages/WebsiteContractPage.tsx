@@ -11,6 +11,7 @@ import {
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { AnimatedDownload } from '../components/AnimatedDownload';
+import { db, collection, addDoc, serverTimestamp, handleFirestoreError, OperationType } from '../lib/firebase';
 
 export default function WebsiteContractPage() {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
@@ -34,9 +35,27 @@ export default function WebsiteContractPage() {
     setFormSubmitted(true);
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email) return;
+
+    try {
+      // Record contract request in Firestore
+      await addDoc(collection(db, 'contractRequests'), {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || '',
+        downloadedAt: serverTimestamp(),
+        createdAt: serverTimestamp()
+      });
+    } catch (error) {
+      console.error("Firestore persistence failed for contract request: ", error);
+      try {
+        handleFirestoreError(error, OperationType.CREATE, 'contractRequests');
+      } catch (err) {
+        // Safe fallback
+      }
+    }
 
     // Start animated download state
     setIsDownloading(true);

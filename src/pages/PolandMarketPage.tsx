@@ -309,37 +309,234 @@ const PolandMarketPage = () => {
 
       <CountryMarquee />
 
-      {/* Core Services Section */}
-      <section className="py-32 px-6 md:px-10 border-t border-white/5 bg-[#090909]">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16">
-            <div className="p-12 bg-white/5 rounded-3xl border border-white/10 hover:border-blue-500/30 transition-all flex flex-col items-center text-center">
-              <div className="flex flex-col items-center">
-                <div className="mb-10 text-blue-500">
-                  <Cpu size={48} strokeWidth={1} />
-                </div>
-                <AnimatedBreathingText text="Custom AI Agents & SaaS Development" className="text-3xl md:text-4xl font-bold uppercase tracking-tighter mb-8 italic text-white" />
-                <MagicText 
-                  text="We help Polish startups build intelligent, scalable SaaS products. By integrating custom LLMs and RAG architectures, we elevate your software offerings, making them highly competitive in the broader European market."
-                  className="text-xl text-[#8d8579] mb-10"
-                />
-              </div>
-              <div className="font-mono text-xs text-blue-500 tracking-[0.4em] uppercase">Enterprise Scaling Protocol</div>
-            </div>
+      {/* Core Services Section & Cinematic Reveals */}
+      <section className="py-32 px-6 md:px-10 border-t border-white/5 bg-[#090909] relative overflow-hidden">
+        {/* Ambient background grids and glowing elements */}
+        <div className="absolute inset-0 bg-grid opacity-[0.02] pointer-events-none" />
+        <div className="absolute top-20 right-10 w-[600px] h-[600px] bg-blue-500/[0.01] blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-20 left-10 w-[600px] h-[600px] bg-[#ff5b36]/[0.01] blur-[150px] rounded-full pointer-events-none" />
 
-            <div className="p-12 bg-white/5 rounded-3xl border border-white/10 hover:border-[#ff5b36]/30 transition-all flex flex-col items-center text-center">
-              <div className="flex flex-col items-center">
-                <div className="mb-10 text-[#ff5b36]">
-                  <Globe size={48} strokeWidth={1} />
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-32 text-center">
+            <span className="text-xs font-mono text-[#ff5b36] uppercase tracking-[0.4em] block mb-6">// POLAND & EU CRITERIA</span>
+            <h2 className="text-4xl md:text-7xl font-serif font-light text-white uppercase tracking-tight leading-none">
+              Services Built For <br />
+              <span className="italic text-[#9f978a] font-light">The European Horizon</span>
+            </h2>
+          </div>
+
+          <div className="space-y-40">
+            {/* Cinematic Section 1: Custom AI Agents & SaaS Development */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start"
+            >
+              <div className="lg:col-span-7 space-y-8">
+                <div className="flex items-center gap-4 text-xs font-mono text-blue-500 uppercase tracking-widest">
+                  <span className="h-px w-8 bg-blue-500" />
+                  AI &amp; SAAS CO-DEVELOPMENT
                 </div>
-                <AnimatedBreathingText text="Global & Local SEO for Polish Enterprises" className="text-3xl md:text-4xl font-bold uppercase tracking-tighter mb-8 italic text-white" />
-                <MagicText 
-                  text="Whether you are targeting local B2B clients in Krakow or launching globally, our Entity-Based SEO and technical content writing establish your brand's international authority."
-                  className="text-xl text-[#8d8579] mb-10"
-                />
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
+                  Custom AI Agents &amp; <br />
+                  <span className="italic text-[#9f978a]">SaaS Development</span>
+                </h3>
+                <div className="font-sans font-light text-[#9f978a] leading-relaxed text-base md:text-lg space-y-6">
+                  <p>
+                    We help Polish startups build intelligent, scalable SaaS products. By integrating custom LLMs and RAG architectures, we elevate your software offerings, making them highly competitive in the broader European market.
+                  </p>
+                  <p>
+                    This work runs through our dedicated <strong className="text-white font-medium">AI agent development company</strong> practice — the same team behind agents deployed across our other markets, adapted here to EU data-handling expectations rather than a generic global template. For Polish SaaS founders comparing providers, our <strong className="text-white font-medium">AI agent development services</strong> cover the full build: use-case discovery, RAG-based knowledge retrieval, and integration into the SaaS product itself, not a bolted-on chatbot widget sitting outside the core application.
+                  </p>
+                </div>
               </div>
-              <div className="font-mono text-xs text-[#ff5b36] tracking-[0.4em] uppercase">EU Visibility Dominance</div>
-            </div>
+
+              {/* Visual Panel for AI SaaS */}
+              <div className="lg:col-span-5 lg:sticky lg:top-24 mt-8 lg:mt-0">
+                <div className="relative group p-8 rounded-3xl bg-zinc-950/40 border border-white/5 backdrop-blur-md overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.8)]">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-3xl rounded-full" />
+                  
+                  <div className="mb-8 border border-white/10 rounded-2xl p-6 bg-black/40 relative">
+                    <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-4 text-xs font-mono text-[#7d766c]">
+                      <span>EU_RAG_COMPLIANCE</span>
+                      <span className="text-blue-500 flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
+                        GDPR ENFORCED
+                      </span>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      {[
+                        { title: "Vector Embeddings Secure", value: "ENCRYPTED" },
+                        { title: "Context Isolation (RAG)", value: "COMPLIANT" },
+                        { title: "Polish / English Multi-LLM", value: "ACTIVE" },
+                      ].map((item, idx) => (
+                        <div key={idx} className="p-3 border border-white/5 rounded-xl bg-white/[0.01] flex justify-between items-center">
+                          <span className="text-xs text-[#9f978a] font-sans font-light">{item.title}</span>
+                          <span className="text-[10px] font-mono bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded font-bold uppercase">{item.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 border-t border-white/5 pt-6 text-xs font-mono text-[#7d766c]">
+                    <div className="flex justify-between">
+                      <span>DEPLOYED PROTOCOL:</span>
+                      <span className="text-white">CO-DEVELOPED SAAS</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>INTEGRATION TYPE:</span>
+                      <span className="text-blue-400 font-bold">ENTERPRISE SCALING PROTOCOL</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Cinematic Section 2: Global & Local SEO for Polish Enterprises */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start border-t border-white/5 pt-40"
+            >
+              <div className="lg:col-span-7 lg:order-2 space-y-8">
+                <div className="flex items-center gap-4 text-xs font-mono text-[#ff5b36] uppercase tracking-widest">
+                  <span className="h-px w-8 bg-[#ff5b36]" />
+                  SEMANTIC ENTITY DOMINANCE
+                </div>
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
+                  Global &amp; Local SEO <br />
+                  <span className="italic text-[#9f978a]">for Polish Enterprises</span>
+                </h3>
+                <div className="font-sans font-light text-[#9f978a] leading-relaxed text-base md:text-lg space-y-6">
+                  <p>
+                    Whether you are targeting local B2B clients in Krakow or launching globally, our Entity-Based SEO and technical content writing establish your brand's international authority.
+                  </p>
+                  <p>
+                    <strong className="text-white font-medium">The Art of SEO: Mastering Search Engine Optimization</strong> in the Polish and broader EU context means something specific — a Krakow-based B2B company competing for domestic attention needs a different strategy than one launching <strong className="text-white font-medium">search engine optimization SEO services</strong> across the wider European Union. Our approach as an <strong className="text-white font-medium">organic SEO company</strong> treats these as related but distinct problems: local semantic relevance for Polish search behavior, layered with <strong className="text-white font-medium">search engine optimization SEO services in the European Union</strong> more broadly for companies expanding cross-border.
+                  </p>
+                  <p>
+                    Among <strong className="text-white font-medium">SEO companies</strong> and <strong className="text-white font-medium">SEO agencies</strong> operating in this region, <strong className="text-white font-medium">effective SEO techniques for 2026</strong> increasingly hinge on search intent and E-E-A-T signals rather than keyword density — a shift that matters especially for Polish tech companies whose content is often written by excellent engineers with limited SEO background. On-page technique still carries some weight here too: sensible <strong className="text-white font-medium">bolding of keywords</strong> for readability and crawler clarity, used sparingly rather than as a density trick.
+                  </p>
+                  <p>
+                    For Polish businesses with a physical presence — offices, showrooms, service locations — <strong className="text-white font-medium">local SEO GMB</strong> work rounds out the picture. A proper <strong className="text-white font-medium">GMB audit for local SEO</strong> identifies where a Krakow or Warsaw business is losing visibility in Google Maps results, and ongoing <strong className="text-white font-medium">GMB SEO services</strong> — reviews, posts, citation consistency — tend to matter more for local B2B lead generation than most Polish companies currently invest in. For businesses asking <strong className="text-white font-medium">what is GMB in SEO</strong>: it's often the fastest win available for a company that has technical SEO handled but has never touched its Google Business Profile.
+                  </p>
+                </div>
+              </div>
+
+              {/* Visual Panel for SEO */}
+              <div className="lg:col-span-5 lg:order-1 lg:sticky lg:top-24 mt-8 lg:mt-0">
+                <div className="relative group p-8 rounded-3xl bg-zinc-950/40 border border-white/5 backdrop-blur-md overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.8)]">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#ff5b36]/5 blur-3xl rounded-full" />
+                  
+                  <div className="mb-8 border border-white/10 rounded-2xl p-6 bg-black/40 relative">
+                    <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-4 text-xs font-mono text-[#7d766c]">
+                      <span>GEO_ENTITY_MATRIX</span>
+                      <span className="text-[#ccff00] flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-[#ccff00] animate-pulse" />
+                        EU MAPS REACH
+                      </span>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      {[
+                        { title: "Krakow Core Lead Gen", value: "TOP 3 PACK" },
+                        { title: "Warsaw B2B Local Semantic", value: "RANK #1" },
+                        { title: "Cross-EU Organic Footprint", value: "SCALED" },
+                      ].map((item, idx) => (
+                        <div key={idx} className="p-3 border border-white/5 rounded-xl bg-white/[0.01] flex justify-between items-center">
+                          <span className="text-xs text-[#9f978a] font-sans font-light">{item.title}</span>
+                          <span className="text-[10px] font-mono bg-[#ccff00]/10 text-[#ccff00] px-2 py-0.5 rounded font-bold uppercase">{item.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 border-t border-white/5 pt-6 text-xs font-mono text-[#7d766c]">
+                    <div className="flex justify-between">
+                      <span>ORGANIC E-E-A-T INDEX:</span>
+                      <span className="text-white">OPTIMIZED (2026)</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>CRAWLER STANDARDS:</span>
+                      <span className="text-[#ff5b36] font-bold">EU VISIBILITY DOMINANCE</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Cinematic Section 3: Sector Depth Note (Software Development) */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start border-t border-white/5 pt-40"
+            >
+              <div className="lg:col-span-12 space-y-8">
+                <div className="flex items-center gap-4 text-xs font-mono text-white/50 uppercase tracking-widest">
+                  <span className="h-px w-8 bg-white/20" />
+                  BESPOKE COMPLIANT SOFTWARE ARCHITECTURE
+                </div>
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
+                  Bespoke Sector Solutions <br />
+                  <span className="italic text-[#9f978a]">&amp; Co-Development models</span>
+                </h3>
+                <div className="font-sans font-light text-[#9f978a] leading-relaxed text-base md:text-lg max-w-5xl space-y-6">
+                  <p>
+                    Beyond AI-powered SaaS, our broader <strong className="text-white font-medium">custom software development</strong> practice for Polish and EU clients spans the same sector range we support internationally, each built around <strong className="text-white font-medium">custom software development best practices</strong> and GDPR-first architecture:
+                  </p>
+                  
+                  <ul className="space-y-4 my-8 pl-4 border-l border-white/10">
+                    <li className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#ff5b36] mt-2.5 shrink-0" />
+                      <p>
+                        <strong className="text-white font-medium">Custom healthcare software development services</strong> — delivered as a genuine <strong className="text-white font-medium">healthcare software development company</strong>, not a generalist shop layering health features onto standard CRUD architecture.
+                      </p>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#ff5b36] mt-2.5 shrink-0" />
+                      <p>
+                        <strong className="text-white font-medium">Custom financial software development</strong> and <strong className="text-white font-medium">custom fintech software development</strong> for Poland's active fintech sector, built around both GDPR and EU financial services compliance.
+                      </p>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#ff5b36] mt-2.5 shrink-0" />
+                      <p>
+                        <strong className="text-white font-medium">Custom logistics software development</strong> for companies managing supply chains across EU borders.
+                      </p>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#ff5b36] mt-2.5 shrink-0" />
+                      <p>
+                        <strong className="text-white font-medium">Custom manufacturing software development</strong> and <strong className="text-white font-medium">custom retail software development</strong> for Poland's strong industrial and e-commerce base.
+                      </p>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#ff5b36] mt-2.5 shrink-0" />
+                      <p>
+                        <strong className="text-white font-medium">Custom enterprise software development</strong> for larger Polish organizations managing data across multiple EU jurisdictions.
+                      </p>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#ff5b36] mt-2.5 shrink-0" />
+                      <p>
+                        <strong className="text-white font-medium">Software development for startups</strong> — leaner scope and EU-transparent pricing for early-stage Polish companies, distinct from our enterprise engagement model.
+                      </p>
+                    </li>
+                  </ul>
+
+                  <p>
+                    Whichever sector, engagements run through the same model: a <strong className="text-white font-medium">custom software development agency</strong> relationship for defined projects, or an ongoing <strong className="text-white font-medium">custom software development firm</strong> partnership for companies that need continuous iteration. We also support <strong className="text-white font-medium">co-development software</strong> arrangements, embedding into an existing Polish in-house team rather than replacing it — a common preference among the country's strong backend engineering talent pool, where the gap is usually on the frontend, marketing, and SEO side rather than core software development itself.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

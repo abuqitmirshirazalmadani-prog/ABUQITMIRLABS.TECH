@@ -1,12 +1,12 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Default deny
+    // 1. Global Safety Net (Default deny)
     match /{document=**} {
       allow read, write: if false;
     }
 
-    // Helper functions
+    // Standalone Security Helpers
     function isSignedIn() {
       return request.auth != null;
     }
@@ -14,33 +14,112 @@ service cloud.firestore {
     function isAdmin() {
       return isSignedIn() && (
              (request.auth.token.email == "abuqitmirshirazalmadani@gmail.com" && request.auth.token.email_verified == true) ||
-             (request.auth.uid == "cRAf1wZFRRXMVadj7RDaC8WM4152")
+             (request.auth.uid == "cRAf1wZFRRXMVadj7RDaC8WM4152") ||
+             exists(/databases/$(database)/documents/admins/$(request.auth.uid))
       );
     }
 
-    function isValidPost(data) {
-      return data.title is string && data.title.size() <= 200 &&
-             data.content is string && data.content.size() <= 50000 &&
-             data.slug is string && data.slug.matches('^[a-z0-9-]+$') &&
-             data.authorId == request.auth.uid &&
-             (data.category in ["AI", "Software", "Business", "App", "Development"] || !data.keys().contains('category')) &&
-             (data.tags is list || !data.keys().contains('tags'));
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
     }
 
-    match /posts/{postId} {
-      // Anyone can read published posts
-      allow get: if true;
-      allow list: if true; // In production, you might want to filter by 'published'
+    function incoming() {
+      return request.resource.data;
+    }
 
-      // Only admin can write
-      allow create: if isAdmin() && isValidPost(request.resource.data) &&
-                    request.resource.data.createdAt == request.time;
-      
-      allow update: if isAdmin() && isValidPost(request.resource.data) &&
-                    request.resource.data.updatedAt == request.time &&
-                    request.resource.data.authorId == resource.data.authorId;
-      
-      allow delete: if isAdmin();
+    function existing() {
+      return resource.data;
+    }
+
+    // Validation Blueprints
+    function isValidPost(data) {
+      return data.title is string && data.title.size() > 0 && data.title.size() <= 200 &&
+             data.content is string && data.content.size() > 0 && data.content.size() <= 50000 &&
+             data.slug is string && data.slug.size() > 0 && data.slug.size() <= 100 && data.slug.matches('^[a-z0-9-]+$') &&
+             data.authorId == request.auth.uid &&
+             data.author is string && data.author.size() <= 100 &&
+             (data.category in ["AI", "Software", "Business", "App", "Development"] || !data.keys().contains('category')) &&
+             (data.excerpt is string && data.excerpt.size() <= 1000 || !data.keys().contains('excerpt')) &&
+             (data.coverImage is string && data.coverImage.size() <= 1000 || !data.keys().contains('coverImage')) &&
+             (data.coverImageAlt is string && data.coverImageAlt.size() <= 1000 || !data.keys().contains('coverImageAlt')) &&
+             (data.tags is list || !data.keys().contains('tags')) &&
+             (data.helperImages is list || !data.keys().contains('helperImages'));
+    }
+
+    function isValidInquiry(data) {
+      return data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             data.email is string && data.email.size() > 0 && data.email.size() <= 150 &&
+             data.message is string && data.message.size() > 0 && data.message.size() <= 3000 &&
+             data.status in ["pending", "contacted", "closed"];
+    }
+
+    function isValidContractRequest(data) {
+      return data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             data.email is string && data.email.size() > 0 && data.email.size() <= 150 &&
+             (data.phone is string && data.phone.size() <= 50 || !data.keys().contains('phone'));
+    }
+
+    function isValidFaq(data) {
+      return data.question is string && data.question.size() > 0 && data.question.size() <= 3000 &&
+             data.answer is string && data.answer.size() > 0 && data.answer.size() <= 5000 &&
+             data.market in ["US", "UK", "CA", "PK", "PL", "AU", "global"] &&
+             data.order is number;
+    }
+
+    // --- COLLECTION RULES ---
+
+    // Blog Posts
+    match /posts/{postId} {
+      allow get: if true;
+      allow list: if true;
+      allow create: if isAdmin() && isValidId(postId) && isValidPost(incoming()) &&
+                    incoming().createdAt == request.time;
+      allow update: if isAdmin() && isValidId(postId) && isValidPost(incoming()) &&
+                    incoming().updatedAt == request.time &&
+                    incoming().createdAt == existing().createdAt &&
+                    incoming().authorId == existing().authorId;
+      allow delete: if isAdmin() && isValidId(postId);
+    }
+
+    // Contact Inquiries (Lead Submissions)
+    match /inquiries/{inquiryId} {
+      // PII isolation: Only admin can fetch lists or single records
+      allow get, list: if isAdmin();
+      // Standard visitor client can submit/create
+      allow create: if isValidId(inquiryId) && isValidInquiry(incoming()) &&
+                    incoming().status == "pending" &&
+                    incoming().createdAt == request.time;
+      // Only admin can process status updates or delete
+      allow update: if isAdmin() && isValidId(inquiryId) && isValidInquiry(incoming()) &&
+                    incoming().updatedAt == request.time &&
+                    incoming().createdAt == existing().createdAt;
+      allow delete: if isAdmin() && isValidId(inquiryId);
+    }
+
+    // Contract Template Requests (Leads pipeline)
+    match /contractRequests/{requestId} {
+      // PII isolation: Only admin can fetch lists or single records
+      allow get, list: if isAdmin();
+      // Standard visitor client can create request record
+      allow create: if isValidId(requestId) && isValidContractRequest(incoming()) &&
+                    incoming().createdAt == request.time &&
+                    incoming().downloadedAt == request.time;
+      // Standard client cannot edit; only admin can edit or clear
+      allow update: if isAdmin() && isValidId(requestId) && isValidContractRequest(incoming()) &&
+                    incoming().createdAt == existing().createdAt;
+      allow delete: if isAdmin() && isValidId(requestId);
+    }
+
+    // FAQs (Market Dynamic Content)
+    match /faqs/{faqId} {
+      // FAQs are public for presentation rendering
+      allow get, list: if true;
+      // Writes are administrative only
+      allow create: if isAdmin() && isValidId(faqId) && isValidFaq(incoming()) &&
+                    incoming().createdAt == request.time;
+      allow update: if isAdmin() && isValidId(faqId) && isValidFaq(incoming()) &&
+                    incoming().createdAt == existing().createdAt;
+      allow delete: if isAdmin() && isValidId(faqId);
     }
   }
 }

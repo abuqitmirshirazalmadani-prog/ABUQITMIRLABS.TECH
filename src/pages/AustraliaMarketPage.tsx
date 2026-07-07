@@ -283,40 +283,241 @@ const AustraliaMarketPage = () => {
           </motion.div>
         </div>
       </div>
-    </section>
+    </section>      {/* Services Section & Cinematic Reveals */}
+      <section className="py-32 px-6 md:px-10 bg-[#0e1117] relative overflow-hidden border-b border-white/5">
+        {/* Background grid */}
+        <div className="absolute inset-0 bg-grid opacity-[0.02] pointer-events-none" />
+        <div className="absolute top-20 left-10 w-[600px] h-[600px] bg-[#66fcf1]/[0.01] blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-20 right-10 w-[600px] h-[600px] bg-[#45a29e]/[0.01] blur-[150px] rounded-full pointer-events-none" />
 
-      {/* Services Section */}
-      <section className="py-32 px-6 md:px-10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-24">
-            <AnimatedShinyText text="AU Domain Dominance." textClassName="text-5xl md:text-9xl text-white" />
-            <p className="text-xl text-[#45a29e] max-w-2xl mx-auto font-light">Custom digital architecture designed to capture the Australian market share.</p>
+          <div className="mb-32 text-center">
+            <span className="text-xs font-mono text-[#66fcf1] uppercase tracking-[0.4em] block mb-6">// AU DOMAIN DOMINANCE</span>
+            <h2 className="text-4xl md:text-7xl font-serif font-light text-white uppercase tracking-tight leading-none">
+              Strategic Architecture <br />
+              <span className="italic text-[#c5c6c7] font-light">Engineered for the AU Market</span>
+            </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Bespoke AU Web Dev",
-                desc: "High-speed, conversion-optimized websites built for Australian network speeds and user expectations.",
-                icon: <Globe className="w-10 h-10" />
-              },
-              {
-                title: "Mobile App Prowess",
-                desc: "Native iOS and Android apps designed for the thumb-friendly AU lifestyle, from health-tech to fintech.",
-                icon: <Smartphone className="w-10 h-10" />
-              },
-              {
-                title: "AI Integration AU",
-                desc: "Deploying intelligent AI agents that understand local business nuances and customer service standards.",
-                icon: <Zap className="w-10 h-10" />
-              }
-            ].map((service, i) => (
-              <div key={i} className="p-12 border border-white/5 bg-[#1f2833]/30 rounded-[3rem] hover:border-[#66fcf1]/20 transition-all group">
-                <div className="text-[#66fcf1] mb-10 group-hover:scale-110 transition-transform origin-left">{service.icon}</div>
-                <h3 className="text-2xl font-bold text-white uppercase tracking-tight mb-6">{service.title}</h3>
-                <p className="text-[#8d8d8d] leading-relaxed font-light">{service.desc}</p>
+          <div className="space-y-40">
+            {/* Section 1: Bespoke AU Web Dev */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start"
+            >
+              <div className="lg:col-span-7 space-y-8">
+                <div className="flex items-center gap-4 text-xs font-mono text-[#66fcf1] uppercase tracking-widest">
+                  <span className="h-px w-8 bg-[#66fcf1]" />
+                  HIGH-SPEED WEB INFRASTRUCTURE
+                </div>
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
+                  Bespoke AU <br />
+                  <span className="italic text-[#c5c6c7]">Web Development</span>
+                </h3>
+                <div className="font-sans font-light text-[#c5c6c7] leading-relaxed text-base md:text-lg space-y-6">
+                  <p>
+                    High-speed, conversion-optimized websites built for Australian network speeds and user expectations.
+                  </p>
+                  <p>
+                    Every build follows genuine <strong className="text-white font-medium">web development best practices</strong> — not just visual polish, but architecture tested against Australia's actual connectivity patterns across metro and regional areas alike. Our <strong className="text-white font-medium">custom web development</strong> work extends into full <strong className="text-white font-medium">custom web development applications</strong> where a business needs more than a content site — customer portals, booking platforms, and internal tools built on the right <strong className="text-white font-medium">web development framework</strong> for the job, not a default template.
+                  </p>
+                  <p>
+                    As <strong className="text-white font-medium">web development companies</strong> go, the ones that consistently deliver for the Australian market are the ones testing against real AU network conditions rather than a fibre-connection demo environment. Our <strong className="text-white font-medium">web development services</strong> and <strong className="text-white font-medium">custom web development services</strong> both start from the same discipline: fast, accessible, and built to convert on the connections Australian users actually have.
+                  </p>
+                </div>
               </div>
-            ))}
+
+              {/* Visual Panel for Web Dev */}
+              <div className="lg:col-span-5 lg:sticky lg:top-24 mt-8 lg:mt-0">
+                <div className="relative group p-8 rounded-3xl bg-zinc-950/40 border border-white/5 backdrop-blur-md overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.8)]">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#66fcf1]/5 blur-3xl rounded-full" />
+                  
+                  <div className="mb-8 border border-white/10 rounded-2xl p-6 bg-black/40 relative">
+                    <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-4 text-xs font-mono text-[#c5c6c7]">
+                      <span>AU_NET_OPTIMIZER</span>
+                      <span className="text-[#66fcf1] flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-[#66fcf1] animate-pulse" />
+                        ACTIVE DEPLOYMENT
+                      </span>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      {[
+                        { title: "Sydney Core Metro Speed", value: "99+ PageSpeed" },
+                        { title: "Regional AU Performance", value: "OPTIMIZED" },
+                        { title: "GST & Tax Logic Engine", value: "COMPLIANT" },
+                      ].map((item, idx) => (
+                        <div key={idx} className="p-3 border border-white/5 rounded-xl bg-white/[0.01] flex justify-between items-center">
+                          <span className="text-xs text-[#c5c6c7] font-sans font-light">{item.title}</span>
+                          <span className="text-[10px] font-mono bg-[#66fcf1]/10 text-[#66fcf1] px-2 py-0.5 rounded font-bold uppercase">{item.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 border-t border-white/5 pt-6 text-xs font-mono text-[#c5c6c7]">
+                    <div className="flex justify-between">
+                      <span>AUDIT LOAD RESPONSE:</span>
+                      <span className="text-white">EXTREMELY FAST</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>DEPLOYMENT TYPE:</span>
+                      <span className="text-[#66fcf1] font-bold">BESPOKE SYSTEM</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Section 2: Mobile App Prowess */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start border-t border-white/5 pt-40"
+            >
+              <div className="lg:col-span-7 lg:order-2 space-y-8">
+                <div className="flex items-center gap-4 text-xs font-mono text-[#45a29e] uppercase tracking-widest">
+                  <span className="h-px w-8 bg-[#45a29e]" />
+                  CROSS-PLATFORM &amp; NATIVE APPS
+                </div>
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
+                  Mobile App <br />
+                  <span className="italic text-[#c5c6c7]">Prowess</span>
+                </h3>
+                <div className="font-sans font-light text-[#c5c6c7] leading-relaxed text-base md:text-lg space-y-6">
+                  <p>
+                    Native iOS and Android apps designed for the thumb-friendly AU lifestyle, from health-tech to fintech.
+                  </p>
+                  <p>
+                    We work as a <strong className="text-white font-medium">mobile app development company</strong> covering both <strong className="text-white font-medium">cross-platform mobile app development</strong> — primarily Flutter, letting a single codebase reach both platforms without doubling engineering cost — and fully native builds where platform-specific performance matters more than shared code. For Australian businesses tracking <strong className="text-white font-medium">mobile app development cost</strong> closely, cross-platform architecture is usually the more efficient starting point, with native reserved for apps that genuinely need it.
+                  </p>
+                  <p>
+                    As a <strong className="text-white font-medium">custom mobile app development company</strong>, our <strong className="text-white font-medium">custom mobile app development services</strong> span everything from lean MVPs to full <strong className="text-white font-medium">enterprise mobile app development</strong> for larger AU organizations needing ongoing iteration rather than a single ship-and-done build.
+                  </p>
+                  <p>
+                    Sector depth matters here too — our <strong className="text-white font-medium">healthcare mobile app development</strong> work for Australian health-tech clients is built around the same privacy discipline as the APP-compliant architecture already covering this page, and our fintech builds carry equivalent rigor. Businesses comparing us against other <strong className="text-white font-medium">mobile app development firms</strong> or <strong className="text-white font-medium">top mobile app development companies</strong> in the region usually find the real difference isn't a longer feature list, but whether the team understands AU-specific compliance and user behavior natively. Founders and product leads looking to <strong className="text-white font-medium">hire mobile app developers</strong> for a defined Sydney or Melbourne-based product, or an ongoing partnership, get the same process either way: platform strategy first, architecture second, build third.
+                  </p>
+                </div>
+              </div>
+
+              {/* Visual Panel for Mobile Apps */}
+              <div className="lg:col-span-5 lg:order-1 lg:sticky lg:top-24 mt-8 lg:mt-0">
+                <div className="relative group p-8 rounded-3xl bg-zinc-950/40 border border-white/5 backdrop-blur-md overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.8)]">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#45a29e]/5 blur-3xl rounded-full" />
+                  
+                  <div className="mb-8 border border-white/10 rounded-2xl p-6 bg-black/40 relative">
+                    <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-4 text-xs font-mono text-[#c5c6c7]">
+                      <span>AU_MOBILE_ENGIN</span>
+                      <span className="text-[#45a29e] flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-[#45a29e] animate-pulse" />
+                        APP STORE READY
+                      </span>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      {[
+                        { title: "App Store Sandbox", value: "SUCCESSFUL" },
+                        { title: "Google Play Store Link", value: "SUCCESSFUL" },
+                        { title: "AEST Overlap Testing", value: "SYNCHRONIZED" },
+                      ].map((item, idx) => (
+                        <div key={idx} className="p-3 border border-white/5 rounded-xl bg-white/[0.01] flex justify-between items-center">
+                          <span className="text-xs text-[#c5c6c7] font-sans font-light">{item.title}</span>
+                          <span className="text-[10px] font-mono bg-[#45a29e]/10 text-emerald-400 px-2 py-0.5 rounded font-bold uppercase">{item.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 border-t border-white/5 pt-6 text-xs font-mono text-[#c5c6c7]">
+                    <div className="flex justify-between">
+                      <span>COMPLIANCE RATING:</span>
+                      <span className="text-white">APP COMPLIANT</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>DEVELOPER RATING:</span>
+                      <span className="text-[#66fcf1] font-bold">TOP APP EXPERTS</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Section 3: AI Integration AU */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start border-t border-white/5 pt-40"
+            >
+              <div className="lg:col-span-7 space-y-8">
+                <div className="flex items-center gap-4 text-xs font-mono text-[#66fcf1] uppercase tracking-widest">
+                  <span className="h-px w-8 bg-[#66fcf1]" />
+                  INTELLIGENT LOCAL AGENTS
+                </div>
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
+                  AI Integration <br />
+                  <span className="italic text-[#c5c6c7]">AU</span>
+                </h3>
+                <div className="font-sans font-light text-[#c5c6c7] leading-relaxed text-base md:text-lg space-y-6">
+                  <p>
+                    Deploying intelligent AI agents that understand local business nuances and customer service standards.
+                  </p>
+                  <p>
+                    This is our dedicated <strong className="text-white font-medium">AI agent development company</strong> practice applied specifically to the Australian market — agents trained on local business context and customer communication norms rather than a generic global template.
+                  </p>
+                  <p>
+                    Our <strong className="text-white font-medium">AI agent development services</strong> cover the same range we offer elsewhere: task automation, RAG-based knowledge agents pulling from a business's own documentation, and customer-facing support agents tuned to how Australian customers actually phrase requests, reducing ticket volume without the customer service feeling handed off to a script.
+                  </p>
+                </div>
+              </div>
+
+              {/* Visual Panel for AI Integration */}
+              <div className="lg:col-span-5 lg:sticky lg:top-24 mt-8 lg:mt-0">
+                <div className="relative group p-8 rounded-3xl bg-zinc-950/40 border border-white/5 backdrop-blur-md overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.8)]">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#66fcf1]/5 blur-3xl rounded-full" />
+                  
+                  <div className="mb-8 border border-white/10 rounded-2xl p-6 bg-black/40 relative">
+                    <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-4 text-xs font-mono text-[#c5c6c7]">
+                      <span>AU_AI_AGENT_AGENTIC</span>
+                      <span className="text-[#66fcf1] flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-[#66fcf1] animate-pulse" />
+                        LOCALIZED AGENTS
+                      </span>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      {[
+                        { title: "Local Tone Adaptation", value: "AU INFORMAL" },
+                        { title: "RAG Docs Retrieval Index", value: "98.7% ACCURACY" },
+                        { title: "Support Ticket Cost", value: "REDUCED BY 74%" },
+                      ].map((item, idx) => (
+                        <div key={idx} className="p-3 border border-white/5 rounded-xl bg-white/[0.01] flex justify-between items-center">
+                          <span className="text-xs text-[#c5c6c7] font-sans font-light">{item.title}</span>
+                          <span className="text-[10px] font-mono bg-[#66fcf1]/10 text-[#66fcf1] px-2 py-0.5 rounded font-bold uppercase">{item.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 border-t border-white/5 pt-6 text-xs font-mono text-[#c5c6c7]">
+                    <div className="flex justify-between">
+                      <span>SERVICE RESOLUTION:</span>
+                      <span className="text-white">CONTINUOUS (24/7)</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>INTEGRATED SYSTEM:</span>
+                      <span className="text-[#66fcf1] font-bold">INTELLIGENT AUTOMATION</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

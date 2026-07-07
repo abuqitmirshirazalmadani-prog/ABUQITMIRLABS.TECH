@@ -455,17 +455,21 @@ const MobileAppDevelopmentPage = () => {
       {/* Problem Section (Satisfying 300+ word guidelines overall with high density) */}
       <section className="py-32 relative">
         <div className="max-w-7xl mx-auto px-6">
-           <div className="glass-panel p-12 md:p-20 rounded-2xl relative z-10 max-w-4xl mx-auto text-center border-l-4 border-l-blue-600 bg-white/[0.02]/30 backdrop-blur-xl border-white/10">
-              <h2 className="text-xs font-mono text-blue-500 mb-8 uppercase tracking-[0.3em] font-bold">[ SYSTEM HEALTH: UNOPTIMIZED_BINARY ]</h2>
-              <p className="text-2xl md:text-4xl text-neutral-200 font-serif font-light leading-relaxed tracking-tight mb-8">
-                Laggy, generic mobile apps are <span className="text-white font-semibold italic border-b border-blue-500">silently killing your brand authority</span>. Web-to-app wrappers and bloated code result in frame drops, excessive battery consumption, and user abandonment. Your audience demands sub-second loading speeds and responsive, intuitive design.
+           <div className="glass-panel p-12 md:p-20 rounded-[2.5rem] relative z-10 max-w-4xl mx-auto text-center border-l-4 border-l-blue-600 bg-white/[0.02]/30 backdrop-blur-xl border-white/10">
+              <h2 className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.3em] font-bold">[ SYSTEM HEALTH: USER_FIRST_METRICS ]</h2>
+              <h3 className="text-3xl md:text-5xl font-serif font-light text-white tracking-tight leading-tight mb-8">
+                Mobile App Development Built for <br />
+                <span className="font-serif italic text-blue-400 font-normal">Real Users, Not Just App Store Screenshots</span>
+              </h3>
+              <p className="text-xl md:text-2xl text-neutral-200 font-sans font-light leading-relaxed tracking-tight mb-8 max-w-3xl mx-auto">
+                A mobile app is often the most demanding product a business ever ships — users abandon a slow or clunky app within seconds, and there's no second first impression once a bad review is public.
               </p>
               <div className="space-y-6 text-base md:text-lg text-neutral-400 font-sans font-light leading-relaxed max-w-3xl mx-auto">
                 <p>
-                  We build high-performance mobile applications using native-compliant architectures that run flawlessly under 15ms response times. Our Flutter app development services deliver 120 FPS rendering across both iOS and Android platforms, ensuring your users never experience friction.
+                  As a <strong>mobile app development company</strong>, AbuQitmirLabs builds apps engineered around actual usage patterns: fast, stable, and designed to survive contact with real users on real devices.
                 </p>
                 <p>
-                  Whether you need a native iOS app (Swift/SwiftUI) or a native Android app (Kotlin/Jetpack Compose), our engineering team ensures optimal performance, security, and scalability.
+                  We build high-performance mobile applications using native-compliant architectures that run flawlessly under 15ms response times. Our Flutter app development services deliver 120 FPS rendering across both iOS and Android platforms, ensuring your users never experience friction.
                 </p>
               </div>
            </div>
@@ -480,6 +484,54 @@ const MobileAppDevelopmentPage = () => {
 
       {/* Mobile Application Financial Framework Pricing */}
       <AppDevelopmentPricing />
+
+      {/* Our Mobile App Development Services */}
+      <section className="py-32 border-t border-white/5 bg-black/40" id="mobile-development-services">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-20 text-center max-w-4xl mx-auto">
+            <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ SERVICE_MATRIX ]</span>
+            <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight mb-8">
+              Our Mobile App <br />
+              <span className="font-serif italic text-blue-400">Development Services</span>
+            </h2>
+            <p className="text-lg text-slate-300 font-light leading-relaxed font-sans">
+              We offer specialized deployment mechanisms configured for different business stages and ecosystem environments.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "Cross-Platform Development",
+                tagline: "cross-platform mobile app development",
+                desc: "Most of our builds use cross-platform mobile app development — primarily Flutter — allowing a single, well-architected codebase to ship natively to both iOS and Android without the compromises older hybrid frameworks used to require. For teams that want the reach of both platforms without doubling the engineering cost, cross-platform mobile app development services built on Flutter typically offer the best balance of performance and budget."
+              },
+              {
+                title: "Native Development",
+                tagline: "native engineering protocols",
+                desc: "When an app's requirements demand it — deep hardware integration, platform-specific performance, or design language unique to iOS or Android — we build natively rather than forcing a cross-platform framework where it doesn't fit."
+              },
+              {
+                title: "Mobile App Development with React",
+                tagline: "mobile app development with react native",
+                desc: "For teams with existing web expertise or a React-based product ecosystem, mobile app development with React (via React Native) offers a practical path to mobile, sharing logic and component patterns with an existing web codebase where appropriate."
+              },
+              {
+                title: "Custom Mobile App Development",
+                tagline: "custom mobile app development company",
+                desc: "Every build starts from your actual requirements, not a template. Our custom mobile app development process covers everything from early-stage MVPs to full-featured products — and as a custom mobile app development company, we scope each engagement around your specific user base and business logic rather than a fixed feature checklist."
+              }
+            ].map((srv, idx) => (
+              <div key={idx} className="bg-white/[0.01] border border-white/10 p-10 rounded-[2.5rem] hover:bg-white/[0.03] hover:border-blue-500/20 transition-all duration-300 relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] pointer-events-none" />
+                <div className="text-xs font-mono text-blue-500 uppercase tracking-widest mb-4">// 0{idx+1} {srv.tagline}</div>
+                <h3 className="text-2xl font-bold text-white uppercase tracking-tight mb-6">{srv.title}</h3>
+                <p className="text-sm md:text-base leading-relaxed text-slate-400 font-light font-sans">{srv.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Solutions Grid */}
       <section className="py-32 border-t border-white/5" id="services">
@@ -562,8 +614,8 @@ const MobileAppDevelopmentPage = () => {
               {
                 title: "Healthcare",
                 icon: <HeartPulse className="w-8 h-8 text-emerald-400" />,
-                tagline: "Mobile App Development for Healthcare",
-                description: "Healthcare mobile apps must balance accessibility with the highest security standards. Our mobile app development for healthcare solutions provide HIPAA-compliant patient portals, secure telemedicine platforms, appointment scheduling, and medication management tools. We build apps that put patients in control of their health data while keeping healthcare providers connected and informed."
+                tagline: "Healthcare Mobile App Development",
+                description: "Patient-facing apps, appointment scheduling, and clinical support tools built with the data handling discipline that healthcare mobile app development demands — designed alongside our broader custom software development practice for healthcare clients."
               },
               {
                 title: "Small Law Firms",
@@ -582,6 +634,18 @@ const MobileAppDevelopmentPage = () => {
                 icon: <GraduationCap className="w-8 h-8 text-blue-400" />,
                 tagline: "Mobile App Development for Educational Institutions",
                 description: "Educational institutions need mobile platforms that connect students, teachers, and parents across multiple touchpoints. Our mobile app development for educational institutions solutions deliver learning management systems, attendance tracking, assignment submission, and communication tools that support both in-person and remote learning environments."
+              },
+              {
+                title: "Enterprise Systems",
+                icon: <ShieldCheck className="w-8 h-8 text-blue-400" />,
+                tagline: "Enterprise Mobile App Development",
+                description: "Internal tools, field service apps, and workforce management platforms built for organizations where reliability and security matter as much as user experience. As an enterprise mobile app development company, we design with device management, offline functionality, and integration into existing enterprise systems as core requirements, not add-ons."
+              },
+              {
+                title: "Android Ecosystems",
+                icon: <Smartphone className="w-8 h-8 text-amber-500" />,
+                tagline: "Android-Specific Development",
+                description: "For products where Android is the primary or exclusive target platform, our team also works as a dedicated Android mobile app development company, optimizing specifically for the fragmentation and hardware diversity of the Android ecosystem."
               }
             ].map((sector, idx) => (
               <motion.div
@@ -617,9 +681,12 @@ const MobileAppDevelopmentPage = () => {
                 Mobile App Development <br />
                 <span className="font-serif italic text-blue-400">Across Global Markets</span>
               </h2>
-              <p className="text-base text-slate-300 font-light leading-relaxed mb-10 font-sans">
-                While our engineering headquarters is in Karachi, Pakistan, our mobile solutions are built for a global stage. We understand the unique demands of different markets and adapt our approach accordingly:
-              </p>
+              <div className="mb-10">
+                <h3 className="text-xl font-bold text-[#ccff00] uppercase mb-4 tracking-wider">Where We Work</h3>
+                <p className="text-base text-slate-300 font-light leading-relaxed font-sans">
+                  AbuQitmirLabs is proud to be recognized among the <strong>best mobile app development companies in Pakistan</strong>, with deep, first-hand experience building for the Pakistani market. Alongside this, we support <strong>mobile app development for international clients</strong>, including businesses across the United States, the United Kingdom, and Europe — adapting our approach to each market's specific user expectations and app store requirements.
+                </p>
+              </div>
 
               <div className="space-y-6">
                 {[
@@ -743,11 +810,11 @@ const MobileAppDevelopmentPage = () => {
              <div className="absolute top-12 left-0 right-0 h-[1px] bg-white/10 hidden md:block" />
              
              {[
-               { title: "UX Prototyping", desc: "Construct fully clickable, thumb-friendly wireframes and layouts in Figma.", icon: <Terminal /> },
-               { title: "Architecture Blueprint", desc: "Map local SQLite models & setup state systems via Riverpod / Bloc.", icon: <Layers /> },
-               { title: "Sprit Build", desc: "Develop the frontend rendering views synchronously at 120 FPS.", icon: <Code2 /> },
-               { title: "Database Syncing", desc: "Link backend APIs and configure offline storage retry flows.", icon: <Database /> },
-               { title: "App Store Launch", desc: "Execute guidelines-compliant submission & optimize ASO metadata.", icon: <ShieldCheck /> }
+               { title: "Discovery", desc: "Understanding your users, core use cases, and platform priorities before any design or development begins.", icon: <SearchCode /> },
+               { title: "Architecture", desc: "Choosing between cross-platform and native based on your actual requirements, not a default preference.", icon: <Layers /> },
+               { title: "Design & Prototyping", desc: "Interfaces built around how users actually behave on mobile, not desktop patterns adapted after the fact.", icon: <Terminal /> },
+               { title: "Development & Testing", desc: "Iterative builds tested across real device configurations, not just simulators.", icon: <Code2 /> },
+               { title: "Launch & Post-Support", desc: "App store submission, monitoring, and the ongoing updates every mobile app needs to stay compatible with new OS releases.", icon: <ShieldCheck /> }
              ].map((step, idx) => (
                 <motion.div 
                   key={idx}
@@ -868,6 +935,56 @@ const MobileAppDevelopmentPage = () => {
         </div>
       </section>
 
+      {/* Tips & Hiring Consultation */}
+      <section className="py-32 border-t border-white/5 bg-black/40 relative overflow-hidden" id="mobile-tips-hiring">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch">
+            
+            {/* Tips we actually follow */}
+            <div className="bg-white/[0.01] border border-white/10 p-10 md:p-12 rounded-[2.5rem] brutalist-shadow relative overflow-hidden flex flex-col justify-between">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-3xl pointer-events-none" />
+              <div>
+                <span className="text-xs font-mono text-blue-500 uppercase tracking-widest block mb-4 font-black">// ENGINEERING INSIGHTS</span>
+                <h3 className="text-2xl md:text-3xl font-serif font-light text-white uppercase mb-6 leading-tight">
+                  Mobile App Development <br />Tips We Actually Follow
+                </h3>
+                <p className="text-sm md:text-base leading-relaxed text-slate-300 font-light font-sans mb-6">
+                  A few <strong>mobile app development tips</strong> that consistently separate apps that succeed from apps that get abandoned: design for offline states from day one rather than assuming constant connectivity; keep onboarding under 30 seconds; and test on the oldest supported devices in your target market, not just the newest flagship phones.
+                </p>
+                <p className="text-sm md:text-base leading-relaxed text-slate-400 font-light font-sans">
+                  The right <strong>mobile app development tools</strong> — proper CI/CD pipelines, crash reporting, and analytics — matter just as much as the code itself for catching problems before users do.
+                </p>
+              </div>
+            </div>
+
+            {/* Looking to hire developers */}
+            <div className="bg-white/[0.01] border border-white/10 p-10 md:p-12 rounded-[2.5rem] brutalist-shadow flex flex-col justify-between">
+              <div>
+                <span className="text-xs font-mono text-[#ccff00] uppercase tracking-widest block mb-4 font-black">// PARTNERSHIP INQUIRY</span>
+                <h3 className="text-2xl md:text-3xl font-serif font-light text-white uppercase mb-6 leading-tight">
+                  Looking to Hire <br />Mobile App Developers?
+                </h3>
+                <p className="text-sm md:text-base leading-relaxed text-slate-300 font-light font-sans mb-8">
+                  Whether you need to <strong>hire mobile app developers</strong> for a single project or an ongoing product partnership, the right starting point is a clear conversation about your platform priorities, timeline, and budget — before any technology decisions get locked in.
+                </p>
+              </div>
+              <div className="flex gap-4 items-center border-t border-white/10 pt-6">
+                <a 
+                  href="https://wa.me/923233260859?text=Hello,%20I'm%20looking%20to%20hire%20mobile%20app%20developers."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-xs uppercase tracking-wider font-bold transition-colors"
+                >
+                  Hire Developers
+                </a>
+                <span className="text-xs font-mono text-zinc-500 uppercase">Consultation is 100% free of charge.</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section className="py-32 border-t border-white/5">
         <div className="max-w-4xl mx-auto px-6">
@@ -914,7 +1031,12 @@ const MobileAppDevelopmentPage = () => {
       {/* Related Systems linking */}
       <section className="py-24 bg-[#050505] border-t border-white/5 relative z-10 px-6">
         <div className="max-w-7xl mx-auto">
-          <h3 className="text-xs font-mono text-neutral-500 mb-12 uppercase tracking-[0.4em] font-bold">[ RELATED_SYSTEMS ]</h3>
+          <div className="mb-12">
+            <h3 className="text-xs font-mono text-neutral-500 mb-2 uppercase tracking-[0.4em] font-bold">[ RELATED_SYSTEMS ]</h3>
+            <p className="text-sm font-sans font-light text-slate-400">
+              Explore our related services: <Link to="/custom-software" className="text-white underline hover:text-blue-400">Custom Software Development</Link> · <Link to="/ai-agent-development" className="text-white underline hover:text-blue-400">AI Agent Development</Link> · <Link to="/web-development" className="text-white underline hover:text-blue-400">Web Development</Link>
+            </p>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { title: "Custom Software", path: "/custom-software", icon: <Code2 className="w-5 h-5" /> },

@@ -2,37 +2,109 @@
   "entities": {
     "BlogPost": {
       "title": "Blog Post",
-      "description": "A blog post article.",
+      "description": "A blog post article written by administrators.",
       "type": "object",
       "properties": {
         "title": { "type": "string", "description": "The title of the post" },
-        "content": { "type": "string", "description": "Markdown or HTML content" },
-        "excerpt": { "type": "string", "description": "Short summary for cards" },
-        "author": { "type": "string", "description": "Author name" },
-        "authorId": { "type": "string", "description": "UID of the author" },
-        "published": { "type": "boolean", "description": "Publish status" },
+        "content": { "type": "string", "description": "Markdown or HTML content of the post" },
+        "excerpt": { "type": "string", "description": "Short summary for index list cards" },
+        "author": { "type": "string", "description": "Author display name" },
+        "authorId": { "type": "string", "description": "UID of the administrator author" },
+        "published": { "type": "boolean", "description": "Publish visibility status" },
         "createdAt": { "type": "string", "format": "date-time" },
         "updatedAt": { "type": "string", "format": "date-time" },
-        "slug": { "type": "string", "description": "URL slug" },
-        "coverImage": { "type": "string", "description": "URL to header image" },
+        "slug": { "type": "string", "description": "Unique URL slug for the article" },
+        "coverImage": { "type": "string", "description": "URL to header cover illustration" },
+        "coverImageAlt": { "type": "string", "description": "SEO descriptive alt text for cover illustration" },
         "category": { 
           "type": "string", 
           "enum": ["AI", "Software", "Business", "App", "Development"],
-          "description": "Primary category of the post" 
+          "description": "Primary classification category" 
         },
         "tags": { 
           "type": "array", 
-          "description": "List of hashtags",
+          "description": "List of associated indexing tags",
           "items": { "type": "string" }
+        },
+        "helperImages": {
+          "type": "array",
+          "description": "List of secondary images embedded inside the markdown body",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": { "type": "string" },
+              "caption": { "type": "string" }
+            }
+          }
         }
       },
       "required": ["title", "content", "slug", "authorId"]
+    },
+    "Inquiry": {
+      "title": "Contact Inquiry",
+      "description": "A lead submission from the contact inquiry form.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "User identifier / contact name" },
+        "email": { "type": "string", "description": "Communication relay email address" },
+        "message": { "type": "string", "description": "Transmission payload text content" },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "contacted", "closed"],
+          "description": "Processing workflow status"
+        },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email", "message", "status"]
+    },
+    "ContractRequest": {
+      "title": "Contract Template Download Request",
+      "description": "A lead generated when downloading the website agreement template.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Full name of the requestor" },
+        "email": { "type": "string", "description": "Email address of the requestor" },
+        "phone": { "type": "string", "description": "Optional phone number of the requestor" },
+        "downloadedAt": { "type": "string", "format": "date-time", "description": "Time the download triggered" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email", "downloadedAt"]
+    },
+    "Faq": {
+      "title": "Frequently Asked Question",
+      "description": "Dynamic market-specific help questions and answers.",
+      "type": "object",
+      "properties": {
+        "question": { "type": "string", "description": "The FAQ question text" },
+        "answer": { "type": "string", "description": "The FAQ response answer text" },
+        "market": {
+          "type": "string",
+          "enum": ["US", "UK", "CA", "PK", "PL", "AU", "global"],
+          "description": "The market category filter"
+        },
+        "order": { "type": "number", "description": "A numerical sequence order" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["question", "answer", "market", "order"]
     }
   },
   "firestore": {
     "posts": {
       "schema": "BlogPost",
-      "description": "Collection of blog articles"
+      "description": "Collection of company blog and news articles"
+    },
+    "inquiries": {
+      "schema": "Inquiry",
+      "description": "Collection of customer contact requests and leads"
+    },
+    "contractRequests": {
+      "schema": "ContractRequest",
+      "description": "Collection of client website contract download request entries"
+    },
+    "faqs": {
+      "schema": "Faq",
+      "description": "Collection of market-specific dynamic Frequently Asked Questions"
     }
   }
 }

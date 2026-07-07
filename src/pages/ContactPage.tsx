@@ -30,6 +30,7 @@ import {
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
+import { db, collection, addDoc, serverTimestamp, handleFirestoreError, OperationType } from '../lib/firebase';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -40,9 +41,27 @@ const ContactPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    try {
+      // Persist inquiry to Firestore
+      await addDoc(collection(db, 'inquiries'), {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        status: 'pending',
+        createdAt: serverTimestamp()
+      });
+    } catch (error) {
+      console.error("Firestore persistence failed, logging diagnostic context:", error);
+      try {
+        handleFirestoreError(error, OperationType.CREATE, 'inquiries');
+      } catch (err) {
+        // Fallback catch to ensure user is not blocked
+      }
+    }
 
     const subject = encodeURIComponent(`New Inquiry from ${formData.name}`);
     const bodyText = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
@@ -50,13 +69,11 @@ const ContactPage = () => {
     // Direct Gmail Compose URL
     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=hello@abuqitmirlabs.tech&su=${subject}&body=${bodyText}`;
 
-    // Simulate terminal processing
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-      // Open Gmail directly
-      window.open(gmailUrl, '_blank');
-    }, 1500);
+    // Complete processing
+    setIsSubmitting(false);
+    setSubmitted(true);
+    // Open Gmail directly
+    window.open(gmailUrl, '_blank');
   };
 
   const scrollToTop = () => {

@@ -58,8 +58,8 @@ const GraphicsDesignPage = () => {
       num: "01",
       icon: <Palette className="w-10 h-10 text-[#ccff00]" />,
       title: "🎨 Brand Identity Design",
-      quote: "Your brand's first impression.",
-      desc: "We create visual identities that define your brand's personality and values. This includes:",
+      quote: "Coherent foundation for all design decisions.",
+      desc: "Logos, color systems, typography, and the broader visual language that makes a brand instantly recognizable. Graphic design for brand identity is where most of our engagements start, since every other design decision — from a website to a pitch deck — flows from a coherent identity foundation.",
       items: [
         "Logo Design: Distinctive, memorable logos that represent your brand's essence",
         "Color Palette: Strategic color schemes that evoke the right emotions",
@@ -71,9 +71,9 @@ const GraphicsDesignPage = () => {
     {
       num: "02",
       icon: <Layout className="w-10 h-10 text-[#ccff00]" />,
-      title: "🖥️ UI/UX Design for Digital Products",
-      quote: "Design that works.",
-      desc: "We design intuitive, engaging interfaces for websites, mobile apps, and software applications:",
+      title: "🖥️ UI/UX Design",
+      quote: "Built around how users actually navigate and decide.",
+      desc: "Interface design for websites and applications, built around how users actually navigate and make decisions, not just how a screen looks in isolation. This work sits closely alongside our web development and mobile app development teams, since design that isn't grounded in technical feasibility rarely survives contact with real development.",
       items: [
         "User Research: Understanding your audience's needs, behaviors, and pain points",
         "Wireframing: Structural layouts that define functionality and user flow",
@@ -85,9 +85,9 @@ const GraphicsDesignPage = () => {
     {
       num: "03",
       icon: <FileText className="w-10 h-10 text-[#ccff00]" />,
-      title: "📊 Marketing & Collateral Design",
-      quote: "Design that drives results.",
-      desc: "We create compelling marketing materials that capture attention and communicate value:",
+      title: "📊 Marketing & Digital Assets",
+      quote: "Keeping your brand consistent across every channel.",
+      desc: "Social media graphics, ad creative, presentation design, and the ongoing visual content that keeps a brand consistent across every channel it shows up in.",
       items: [
         "Brochures & Flyers: Professional print and digital collateral",
         "Social Media Graphics: Engaging visuals for all platforms",
@@ -99,16 +99,16 @@ const GraphicsDesignPage = () => {
     {
       num: "04",
       icon: <Globe className="w-10 h-10 text-[#ccff00]" />,
-      title: "🌐 Web Design & Graphics",
-      quote: "Design for the digital world.",
-      desc: "We design visually stunning, conversion-optimized websites that align with your brand:",
+      title: "🏢 Environmental Graphic Design",
+      quote: "Extending brand identity into the built environment.",
+      desc: "For businesses with physical spaces — offices, retail locations, event spaces — environmental graphic design extends brand identity into the built environment: signage, wayfinding, and spatial branding that reinforces the same visual language customers see online.",
       items: [
-        "Website Mockups: High-fidelity designs for desktop, tablet, and mobile",
-        "Banner Design: Visual assets for advertising and promotions",
-        "Iconography: Custom icons that enhance usability and brand recognition",
-        "Illustrations: Custom illustrations that add personality and differentiation"
+        "Signage & Wayfinding: Intuitive directional navigation and branding",
+        "Spatial Branding: Transforming physical rooms to tell your brand story",
+        "Event Spaces: Branded exhibition booths and interactive installations",
+        "Office Graphics: Inspiring interior murals and custom corporate decals"
       ],
-      deliverable: "Figma design files and assets."
+      deliverable: "Production-ready vector blueprints and environmental design mockups."
     }
   ];
 
@@ -542,6 +542,58 @@ const GraphicsDesignPage = () => {
           </motion.div>
         </div>
 
+        {/* Double Column Editorial Block */}
+        <div className="max-w-7xl mx-auto px-6 mt-24 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-stretch border-t border-white/10 pt-24">
+            {/* Design That Does More Than Look Good */}
+            <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="bg-zinc-900/30 border border-white/5 p-10 md:p-14 rounded-[2.5rem] relative backdrop-blur-md flex flex-col justify-between"
+            >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#ccff00]/2 blur-3xl rounded-full" />
+                <div>
+                  <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.4em] mb-6">// THE CREATIVE PHILOSOPHY</div>
+                  <h2 className="text-3xl md:text-4xl font-serif font-light text-white tracking-tight uppercase leading-[1.2] mb-8">
+                     Design That Does More <span className="italic text-neutral-400">Than Look Good</span>
+                  </h2>
+                  <p className="text-base md:text-lg font-light text-zinc-300 leading-relaxed font-sans mb-6">
+                     Good design is often invisible — it just makes a brand feel trustworthy, a product feel intuitive, and a customer feel like they're in the right place. At AbuQitmirLabs, our approach to <strong>graphic design</strong> starts from that principle: every visual decision should serve a purpose, not just fill space.
+                  </p>
+                  <p className="text-sm md:text-base font-light text-[#ccff00] leading-relaxed font-sans">
+                     We'll admit it — <strong>graphic design is our passion</strong>, in the least clichéd sense we can manage: the kind of passion that shows up as obsessive attention to spacing, color theory, and typographic hierarchy rather than just a slogan on a homepage.
+                  </p>
+                </div>
+            </motion.div>
+            
+            {/* SEO and Graphic Design: An Underrated Connection */}
+            <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="bg-zinc-900/30 border border-white/5 p-10 md:p-14 rounded-[2.5rem] relative backdrop-blur-md flex flex-col justify-between"
+            >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#ccff00]/2 blur-3xl rounded-full" />
+                <div>
+                  <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.4em] mb-6">// SEO &amp; GRAPHIC DESIGN</div>
+                  <h2 className="text-3xl md:text-4xl font-serif font-light text-white tracking-tight uppercase leading-[1.2] mb-8">
+                     SEO and Graphic Design: <span className="italic text-neutral-400">An Underrated Connection</span>
+                  </h2>
+                  <p className="text-sm md:text-base font-light text-neutral-300 leading-relaxed font-sans mb-6">
+                     Most businesses don't think about <strong>SEO keywords for graphic design</strong>, but the discipline intersects with search visibility more than it seems. Descriptive, keyword-aware image alt text, properly compressed and named image files, and design that supports fast page load times all directly affect how well a page ranks.
+                  </p>
+                  <div className="p-5 bg-white/[0.01] border border-white/5 rounded-2xl">
+                    <span className="text-[9px] font-mono uppercase tracking-widest text-[#ccff00] block mb-2">Meaning for search performance:</span>
+                    <p className="text-xs text-neutral-400 font-light leading-relaxed font-sans">
+                      A graphic designer who understands basic technical SEO produces measurably better results than one who treats visuals as separate from search performance entirely.
+                    </p>
+                  </div>
+                </div>
+            </motion.div>
+        </div>
+
         <div className="max-w-7xl mx-auto px-6 mt-20 border-t border-white/10 pt-20">
           <h3 className="text-2xl md:text-3xl font-bold text-white uppercase mb-12 tracking-tight">
             The AbuQitmirLabs Difference:
@@ -852,6 +904,89 @@ const GraphicsDesignPage = () => {
 
             </motion.div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION: STRATEGIC DESIGN & DECISIONS */}
+      <section className="py-32 md:py-48 bg-[#030303] border-b border-white/5 relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-24 text-center">
+            <span className="text-xs font-bold text-[#ccff00] uppercase tracking-[0.4em] block mb-4">// DESIGN STRATEGY</span>
+            <h2 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-tighter leading-none">
+              Strategic Design Decisions
+            </h2>
+            <p className="mt-4 text-zinc-400 max-w-2xl mx-auto text-base md:text-lg font-light leading-relaxed">
+              Behind every line, color, and grid is a deliberate rationale built around your business goals.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 text-white">
+            {/* Box 1: Agencies vs Firms */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-zinc-950 border border-white/5 p-10 rounded-3xl hover:border-[#ccff00]/30 transition-all duration-300 relative group"
+            >
+              <div className="mb-8 w-12 h-12 rounded-xl bg-zinc-900 border border-white/10 flex items-center justify-center text-[#ccff00]">
+                <Settings className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold uppercase tracking-tight mb-4 text-white">
+                Agencies vs. Firms: The Real Difference
+              </h3>
+              <p className="text-sm font-light text-zinc-400 leading-relaxed mb-6">
+                Among <strong>graphic design companies</strong>, the difference between a strong partner and a weak one usually isn't raw creative talent — most <strong>graphic design firms</strong> can produce visually appealing work.
+              </p>
+              <p className="text-sm font-light text-zinc-400 leading-relaxed">
+                The real difference is whether design decisions are grounded in a documented rationale (brand strategy, user research, business goals) or made on aesthetic instinct alone. As an <strong>agency for graphic design</strong> that works closely with our software and content teams, our design output is built to function inside a broader digital strategy, not as a standalone deliverable disconnected from everything else a brand does.
+              </p>
+            </motion.div>
+
+            {/* Box 2: Books That Shaped Us */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="bg-zinc-950 border border-white/5 p-10 rounded-3xl hover:border-[#ccff00]/30 transition-all duration-300 relative group"
+            >
+              <div className="mb-8 w-12 h-12 rounded-xl bg-zinc-900 border border-white/10 flex items-center justify-center text-[#ccff00]">
+                <BookOpen className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold uppercase tracking-tight mb-4 text-white">
+                Books That Shaped Our Craft
+              </h3>
+              <p className="text-sm font-light text-zinc-400 leading-relaxed mb-6">
+                Our approach draws on established principles from the field's foundational thinking — grid systems, visual hierarchy, and the psychology of color and contrast — applied to modern digital contexts rather than treated as static rules from another era.
+              </p>
+              <p className="text-sm font-light text-zinc-400 leading-relaxed">
+                Good design theory doesn't expire; it just needs translating to the platforms people actually use today. By studying the classic books and masterworks that defined visual order, we bring a level of spatial rigor and balance that temporary trends can never replicate.
+              </p>
+            </motion.div>
+
+            {/* Box 3: Finding the Right Designer */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-zinc-950 border border-white/5 p-10 rounded-3xl hover:border-[#ccff00]/30 transition-all duration-300 relative group"
+            >
+              <div className="mb-8 w-12 h-12 rounded-xl bg-zinc-900 border border-white/10 flex items-center justify-center text-[#ccff00]">
+                <Search className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold uppercase tracking-tight mb-4 text-white">
+                Finding the Right Graphic Designer
+              </h3>
+              <p className="text-sm font-light text-zinc-400 leading-relaxed mb-6">
+                If you've searched for a <strong>graphic designer near me</strong> or a broader team of <strong>graphic designers</strong>, the deciding factor usually isn't proximity — most design work today happens remotely and asynchronously.
+              </p>
+              <p className="text-sm font-light text-zinc-400 leading-relaxed">
+                What matters more is whether the designer or team understands your industry, your brand goals, and how design connects to the rest of your digital presence. We bridge geography through transparent Figma workflows, structured async reviews, and tight engineering collaboration.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>

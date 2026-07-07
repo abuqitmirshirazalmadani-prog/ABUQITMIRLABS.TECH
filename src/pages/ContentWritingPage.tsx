@@ -161,67 +161,99 @@ const ContentWritingPage = () => {
   const services = [
     {
       id: "01",
-      formula: "FORMULA B-100",
-      tag: "Organic Growth Catalyst",
+      formula: "FORMULA W-100",
+      tag: "Conversion-Oriented Core",
       color: "emerald" as const,
-      title: "📝 Blog & Article Writing",
-      quote: "Content that ranks and engages.",
-      desc: "We create compelling, SEO-optimized blog posts and articles that drive organic traffic and establish your authority. This includes:",
+      title: "🖥️ Website Content Writing Services",
+      quote: "Words that establish trust and convert visitors into buyers.",
+      desc: "Core site pages — homepages, service pages, about pages — written to convert visitors while giving each page the on-page SEO foundation it needs to be found in the first place.",
       items: [
-        "SEO Blog Posts: Keyword-rich, value-driven articles that rank on search engines",
-        "Thought Leadership Articles: In-depth pieces that position you as an industry expert",
-        "Guest Posts: High-quality content for external publications",
-        "Listicles & How-To Guides: Engaging, actionable content that resonates with readers"
+        "Homepage Copy: Captivating intros and clear value propositions",
+        "Service Pages: Benefits-driven layout communicating direct solutions",
+        "About Us Pages: Compelling, trust-building brand narrative storytelling",
+        "Landing Pages: High-conversion layouts for your paid or organic campaigns"
       ],
-      deliverable: "SEO-optimized, publish-ready articles."
+      deliverable: "On-page optimized, publish-ready website copy."
     },
     {
       id: "02",
-      formula: "FORMULA C-200",
-      tag: "Psychological Copy Craft",
+      formula: "FORMULA S-200",
+      tag: "Topical Authority Blueprint",
       color: "amber" as const,
-      title: "🖥️ Website Copywriting",
-      quote: "Words that convert.",
-      desc: "We craft persuasive, user-focused copy for your website that communicates your value proposition and drives conversions:",
+      title: "🔍 SEO Content Writing Services",
+      quote: "Long-form content engineered to rank and survive algorithm updates.",
+      desc: "Long-form articles, guides, and pillar content built around genuine keyword research and search intent analysis, designed to rank and to hold that ranking through algorithm updates rather than chasing short-term spikes.",
       items: [
-        "Homepage Copy: Compelling introductions that capture attention",
-        "Service Page Copy: Clear, benefit-focused descriptions",
-        "About Us Page: Brand storytelling that builds connection",
-        "Landing Page Copy: Conversion-optimized content for specific campaigns"
+        "Pillar Content: In-depth cornerstone guides establishing complete authority",
+        "Topic Clusters: Connected articles that build topical context for crawlers",
+        "Search Intent Mapping: Writing optimized for specific user search behavior",
+        "On-Page Schema: Structured signals (headings, links) ready for indexing"
       ],
-      deliverable: "Strategically written, conversion-focused website copy."
+      deliverable: "High-ranking, schema-ready long-form articles."
     },
     {
       id: "03",
-      formula: "FORMULA M-300",
-      tag: "Attention Architecture",
+      formula: "FORMULA B-300",
+      tag: "Strategic Organic Catalyst",
       color: "purple" as const,
-      title: "📊 Marketing & Collateral Content",
-      quote: "Content that tells your story.",
-      desc: "We create compelling marketing materials that communicate your brand's value across multiple channels:",
+      title: "📝 Blog Content Writing Services",
+      quote: "Consistent, topically connected blogs that power your sales funnel.",
+      desc: "Consistent, topically connected blog content that builds toward a clear content strategy — supporting cluster and pillar structures rather than a random assortment of disconnected posts.",
       items: [
-        "Email Newsletters: Engaging content that builds relationships",
-        "Social Media Posts: Bite-sized, shareable content for all platforms",
-        "Brochures & Flyers: Print and digital collateral",
-        "Case Studies: Success stories that build trust and credibility"
+        "Cluster Blogs: Supporting articles with internal siloing protocols",
+        "Informational Posts: Answering high-intent questions clearly",
+        "Industry Updates: Timely, authoritative articles keeping your site fresh",
+        "Funnel Content: Middle-of-funnel posts nudging readers toward action"
       ],
-      deliverable: "Ready-to-use marketing content assets."
+      deliverable: "Publish-ready, strategized monthly blog packages."
     },
     {
       id: "04",
-      formula: "FORMULA T-400",
-      tag: "Scientific System Logic",
+      formula: "FORMULA SA-400",
+      tag: "Product-Led Growth Architecture",
       color: "platinum" as const,
-      title: "🧠 Technical & Industry Content",
-      quote: "Content for the experts.",
-      desc: "We specialize in creating high-quality, technically accurate content for complex industries:",
+      title: "💡 SaaS Content Writing",
+      quote: "Explainers, comparisons, and feature stories that sell software.",
+      desc: "Product-led content for software companies — feature explainers, comparison guides, and technical content written by people who understand how SaaS products are actually evaluated and purchased.",
       items: [
-        "Whitepapers: In-depth research and analysis",
-        "Technical Articles: Detailed explanations of complex topics",
-        "Industry Reports: Data-driven insights and trends",
-        "Product Documentation: Clear, user-friendly guides"
+        "Product-Led Content: Blog posts that naturally weave in your software features",
+        "Comparison Guides: Detailed, objective versus-posts that win decision-makers",
+        "Feature Explainers: High-clarity breakdowns of complex platform capabilities",
+        "Interactive Use-Cases: Concrete stories showing how your SaaS solves issues"
       ],
-      deliverable: "Research-backed, technically accurate content."
+      deliverable: "Technically precise, product-led SaaS articles."
+    },
+    {
+      id: "05",
+      formula: "FORMULA B2B-500",
+      tag: "High-Value Decision Pipeline",
+      color: "emerald" as const,
+      title: "📊 B2B Content Writing Services",
+      quote: "Content engineered for longer, more considered buying cycles.",
+      desc: "Content built for longer, more considered buying cycles — case studies, whitepapers, and decision-stage content that speaks to procurement teams and stakeholders, not just a single impulse buyer.",
+      items: [
+        "Case Studies: Performance data and real-world success narratives",
+        "In-depth Whitepapers: Original research, insights, and industry analysis",
+        "Procurement Assets: Decision-stage resources for corporate stakeholders",
+        "Executive Briefs: High-level summaries speaking directly to decision-makers"
+      ],
+      deliverable: "Authority-building whitepapers and case studies."
+    },
+    {
+      id: "06",
+      formula: "FORMULA L-600",
+      tag: "Authoritative Compliance Protocol",
+      color: "amber" as const,
+      title: "⚖️ Law Firm Website Content Writing",
+      quote: "Precise, compliant legal writing paired with local SEO.",
+      desc: "Content for legal practices requires a particular balance: authoritative and precise, without straying into content that could be read as specific legal advice. We write for law firms with that balance in mind, alongside proper local SEO structure for practice-area pages.",
+      items: [
+        "Practice-Area Pages: Authoritative overviews showcasing expertise",
+        "Legal Blog Writing: Informative posts addressing common legal concerns",
+        "Client Guides: Helpful resources walking readers through processes",
+        "Local SEO Silos: Geo-targeted content capturing localized legal searches"
+      ],
+      deliverable: "Compliant, authoritative legal service content."
     }
   ];
 
@@ -626,33 +658,54 @@ const ContentWritingPage = () => {
         {/* Neon accent grid element */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#ccff00]/3 blur-[100px] pointer-events-none" />
         
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
+            {/* What is Content Writing, Really? */}
             <motion.div 
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="lg:col-span-6 space-y-6"
+                className="bg-neutral-900/30 border border-white/5 p-10 md:p-14 rounded-[2.5rem] relative backdrop-blur-md flex flex-col justify-between"
             >
-                <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.4em] mb-4">// EDITORIAL DISSONANCE</div>
-                <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-[1.1] uppercase">
-                   Is your content invisible, <br />
-                   <span className="text-neutral-500 italic font-light">or worse, ineffective?</span>
-                </h2>
-                <div className="w-20 h-[1px] bg-[#ccff00]/40" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#ccff00]/2 blur-3xl rounded-full" />
+                <div>
+                  <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.4em] mb-6">// THE DEFINITIVE LAYER</div>
+                  <h2 className="text-3xl md:text-4xl font-serif font-light text-white tracking-tight uppercase leading-[1.2] mb-8">
+                     What Is Content Writing, <span className="italic text-neutral-400">Really?</span>
+                  </h2>
+                  <p className="text-base md:text-lg font-light text-neutral-300 leading-relaxed font-sans mb-6">
+                     Content writing is often reduced to "words on a page," but done properly, it's closer to infrastructure — the layer that determines whether a website earns trust, ranks in search, and actually converts a visitor into a customer.
+                  </p>
+                  <p className="text-sm md:text-base font-light text-[#ccff00] leading-relaxed font-sans">
+                     At AbuQitmirLabs, we treat content writing as a discipline that sits at the intersection of clear communication, search visibility, and business strategy.
+                  </p>
+                </div>
             </motion.div>
             
+            {/* SEO Content Writing: Where Writing Meets Search */}
             <motion.div 
-               initial={{ opacity: 0, x: 30 }}
-               whileInView={{ opacity: 1, x: 0 }}
-               viewport={{ once: true }}
-               transition={{ duration: 0.8 }}
-               className="lg:col-span-6 bg-neutral-900/40 border border-white/5 p-8 md:p-12 rounded-[2.5rem] relative backdrop-blur-md"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="bg-neutral-900/30 border border-white/5 p-10 md:p-14 rounded-[2.5rem] relative backdrop-blur-md flex flex-col justify-between"
             >
-                <Quote className="absolute -top-4 -left-4 text-white/5 w-12 h-12" />
-                <p className="text-base md:text-lg font-light text-neutral-300 leading-relaxed italic">
-                   Many businesses struggle with content that fails to engage, rank, or convert. Generic, poorly researched articles and sales-heavy copy do more harm than good—they waste your budget, dilute your brand authority, and fail to connect with your audience.
-                </p>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#ccff00]/2 blur-3xl rounded-full" />
+                <div>
+                  <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.4em] mb-6">// SEARCH METRICS & INTENT</div>
+                  <h2 className="text-3xl md:text-4xl font-serif font-light text-white tracking-tight uppercase leading-[1.2] mb-8">
+                     SEO Content Writing: <span className="italic text-neutral-400">Where Writing Meets Search</span>
+                  </h2>
+                  <p className="text-sm md:text-base font-light text-neutral-300 leading-relaxed font-sans mb-6">
+                     <strong>SEO content writing</strong> is the practice of creating content that genuinely serves the reader while also being structured in a way search engines can understand and reward. This isn't the same as <strong>writing SEO content</strong> through outdated keyword-density formulas — modern <strong>search engine optimization content writing</strong> is built around search intent first, with technical SEO structure applied around genuinely useful writing, not the other way around.
+                  </p>
+                  <div className="p-5 bg-white/[0.01] border border-white/5 rounded-2xl">
+                    <span className="text-[9px] font-mono uppercase tracking-widest text-neutral-500 block mb-2">A useful way to think about what is SEO content writing:</span>
+                    <p className="text-xs text-neutral-400 font-light leading-relaxed font-sans">
+                      It's the practice of answering the exact question a searcher typed, as clearly and completely as competing pages, while giving Google's crawlers the structural signals (headings, semantic HTML, internal links) needed to recognize that relevance.
+                    </p>
+                  </div>
+                </div>
             </motion.div>
         </div>
 
@@ -1016,6 +1069,91 @@ const ContentWritingPage = () => {
         </div>
       </section>
 
+      {/* SECTION: STRATEGIC PERSPECTIVES & SYSTEM PROTOCOLS */}
+      <section className="py-24 md:py-40 bg-[#030303] border-b border-white/5 relative z-10 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-20">
+            <span className="text-xs font-bold text-[#ccff00] uppercase tracking-[0.4em] block mb-4">// DEEP PERSPECTIVES</span>
+            <h2 className="text-4xl md:text-6xl font-serif text-white uppercase tracking-tighter leading-none mb-6">
+              Strategic Perspectives <br />
+              <span className="text-transparent" style={{ WebkitTextStroke: '1px white' }}>&amp; Editorial Decisions</span>
+            </h2>
+            <p className="text-zinc-400 text-sm md:text-base max-w-2xl font-light leading-relaxed">
+              Before embarking on a content initiative, successful brands align their technical, operational, and semantic choices with clear strategic priorities.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            {/* Copywriting vs. Content Writing Card */}
+            <div className="lg:col-span-7 bg-zinc-950 border border-white/5 p-10 rounded-[2.5rem] flex flex-col justify-between hover:border-zinc-800 transition-all">
+              <div className="space-y-6">
+                <span className="text-[10px] font-mono text-[#ccff00] uppercase tracking-widest">// COGNITIVE DIVISION</span>
+                <h3 className="text-2xl font-serif text-white uppercase tracking-tight">Copywriting vs. Content Writing</h3>
+                <p className="text-sm font-light text-zinc-400 leading-relaxed font-sans">
+                  These two terms get used interchangeably, but they serve different goals. Most businesses need both: copywriting for landing pages and ads, content writing for the blog, resource pages, and long-form material that builds search visibility over time.
+                </p>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-white/5">
+                  <div className="p-5 bg-white/[0.01] border border-white/5 rounded-2xl">
+                    <h4 className="text-xs font-mono text-white uppercase tracking-wider mb-2 font-black">Copywriting</h4>
+                    <p className="text-[11px] text-zinc-400 font-sans leading-relaxed">
+                      Built to prompt an immediate action — a click, a purchase, a signup — and is typically short, punchy, and persuasion-first.
+                    </p>
+                  </div>
+                  <div className="p-5 bg-white/[0.01] border border-white/5 rounded-2xl">
+                    <h4 className="text-xs font-mono text-[#ccff00] uppercase tracking-wider mb-2 font-black">Content Writing</h4>
+                    <p className="text-[11px] text-zinc-400 font-sans leading-relaxed">
+                      Built to inform, educate, or build authority over a longer arc, and tends to prioritize depth and usefulness over a hard sell.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-white/5 text-xs font-serif italic text-zinc-300">
+                "Understanding copywriting vs content writing as complementary rather than interchangeable tends to produce better results from both."
+              </div>
+            </div>
+
+            {/* Content Writing Agency vs. Freelance Card */}
+            <div className="lg:col-span-5 bg-zinc-950 border border-white/5 p-10 rounded-[2.5rem] flex flex-col justify-between hover:border-zinc-800 transition-all">
+              <div className="space-y-6">
+                <span className="text-[10px] font-mono text-purple-400 uppercase tracking-widest">// OPERATIONAL CONSISTENCY</span>
+                <h3 className="text-2xl font-serif text-white uppercase tracking-tight">Agency vs. Freelance</h3>
+                <p className="text-xs sm:text-sm font-light text-zinc-400 leading-relaxed font-sans">
+                  Businesses evaluating a <strong>content writing agency</strong> versus individual freelancers are really deciding between consistency and flexibility.
+                </p>
+                <p className="text-xs sm:text-sm font-light text-zinc-400 leading-relaxed font-sans">
+                  As a <strong>content writing company</strong>, we offer what a single freelancer typically can't: a documented content strategy, SEO research built into every brief, and a team structure that doesn't disappear if one writer becomes unavailable.
+                </p>
+              </div>
+
+              <div className="mt-6 pt-6 border-t border-white/5 text-xs text-purple-400 font-mono uppercase tracking-wider">
+                For ongoing content needs — especially SEO-driven programs — a proper <strong>SEO content writing agency</strong> tends to outperform ad hoc freelance work simply through consistency of process.
+              </div>
+            </div>
+
+            {/* Keywords for Content Writing Card */}
+            <div className="lg:col-span-12 bg-gradient-to-r from-zinc-950 to-neutral-900 border border-white/5 p-10 md:p-12 rounded-[2.5rem] flex flex-col justify-between hover:border-zinc-800 transition-all relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#ccff00]/2 blur-3xl rounded-full" />
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div className="lg:col-span-5 space-y-4">
+                  <span className="text-[10px] font-mono text-[#ccff00] uppercase tracking-widest block">// STRATEGIC TAXONOMY</span>
+                  <h3 className="text-2xl md:text-3xl font-serif text-white uppercase tracking-tight">Keywords for Content Writing: <br /><span className="italic text-zinc-400 font-light">Getting the Foundation Right</span></h3>
+                </div>
+                <div className="lg:col-span-7 space-y-4">
+                  <p className="text-sm font-light text-zinc-300 leading-relaxed font-sans">
+                    Choosing the right <strong>keywords for content writing</strong> starts with matching actual search intent rather than simply targeting high-volume terms. A page written around the wrong intent — informational content targeting a transactional keyword, for example — tends to underperform regardless of how well it's written.
+                  </p>
+                  <p className="text-sm font-light text-zinc-400 leading-relaxed font-sans border-l border-[#ccff00]/40 pl-4 italic">
+                    Every content piece we produce starts with intent-mapped keyword research, not a list of terms handed to a writer with no context.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Editorial Research Tools Section */}
       <section className="py-24 px-6 bg-[#060606] border-t border-white/5 relative overflow-hidden z-10">
           <div className="max-w-7xl mx-auto">
@@ -1043,6 +1181,62 @@ const ContentWritingPage = () => {
                 ))}
               </div>
           </div>
+      </section>
+
+      {/* SECTION: CONTENT WRITING TIPS WE ACTUALLY FOLLOW */}
+      <section className="py-24 md:py-32 bg-black px-6 relative z-10 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-5 space-y-6">
+              <span className="text-xs font-bold text-[#ccff00] uppercase tracking-[0.4em] block mb-4">// THE EDITORIAL CODE</span>
+              <h2 className="text-3xl md:text-5xl font-serif text-white uppercase tracking-tight leading-[1.1]">
+                Content Writing <br />
+                Tips We <br />
+                <span className="text-transparent italic" style={{ WebkitTextStroke: '1px white' }}>Actually Follow.</span>
+              </h2>
+              <div className="w-20 h-[1px] bg-[#ccff00]/40" />
+              <p className="text-zinc-400 text-sm font-light leading-relaxed">
+                Consistency doesn't happen by accident. We adhere to clear, non-negotiable editorial protocols that separate content that dominates search results from content that gets ignored.
+              </p>
+            </div>
+
+            <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-8 bg-zinc-950 border border-white/5 rounded-[2rem] hover:border-zinc-800 transition-all">
+                <span className="text-[10px] font-mono text-[#ccff00] uppercase tracking-widest block mb-4">// PROTOCOL 01</span>
+                <h4 className="text-base font-bold text-white uppercase tracking-wider mb-3">Hyper-Targeted Intent</h4>
+                <p className="text-xs text-zinc-400 font-light leading-relaxed font-sans">
+                  Write for the specific person searching, not a generic audience. By defining the exact user profile behind a query, we eliminate useless preamble and deliver immediate value.
+                </p>
+              </div>
+
+              <div className="p-8 bg-zinc-950 border border-white/5 rounded-[2rem] hover:border-zinc-800 transition-all">
+                <span className="text-[10px] font-mono text-[#ccff00] uppercase tracking-widest block mb-4">// PROTOCOL 02</span>
+                <h4 className="text-base font-bold text-white uppercase tracking-wider mb-3">Front-Loaded Answers</h4>
+                <p className="text-xs text-zinc-400 font-light leading-relaxed font-sans">
+                  Structure content so the answer to the core question appears early, not buried after three paragraphs of preamble. Capture attention instantly and keep the bounce rate low.
+                </p>
+              </div>
+
+              <div className="p-8 bg-zinc-950 border border-white/5 rounded-[2rem] hover:border-zinc-800 transition-all">
+                <span className="text-[10px] font-mono text-[#ccff00] uppercase tracking-widest block mb-4">// PROTOCOL 03</span>
+                <h4 className="text-base font-bold text-white uppercase tracking-wider mb-3">Holistic Strategy</h4>
+                <p className="text-xs text-zinc-400 font-light leading-relaxed font-sans">
+                  Treat every piece as part of a broader content strategy rather than a standalone asset. Internal link equity and clear semantic paths build sustainable domain power.
+                </p>
+              </div>
+
+              <div className="p-8 bg-zinc-900/60 border border-[#ccff00]/20 rounded-[2rem] flex flex-col justify-between">
+                <div>
+                  <span className="text-[10px] font-mono text-[#ccff00] uppercase tracking-widest block mb-4">// THE INTEGRITY STANDARD</span>
+                  <h4 className="text-xs font-mono text-white uppercase tracking-wider mb-3 font-bold">Human Editorial Judgment</h4>
+                  <p className="text-[11px] text-zinc-400 font-sans leading-relaxed">
+                    Even where AI-assisted drafting tools are used in the process, human editorial judgment — around accuracy, tone, and genuine usefulness — remains the deciding factor in whether content actually performs.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* SECTION 6: PRICING & PACKAGES (Includes existing Custom Pricing Component) */}
@@ -1159,22 +1353,22 @@ const ContentWritingPage = () => {
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#ccff00]/3 rounded-full blur-[120px] pointer-events-none" />
             
             <div className="max-w-[1000px] mx-auto px-6 relative z-10">
-                <span className="text-xs font-mono text-[#ccff00] uppercase tracking-[0.3em] block mb-6">// READY TO LAUNCH //</span>
+                <span className="text-xs font-mono text-[#ccff00] uppercase tracking-[0.3em] block mb-6">// READY TO INTENTIONALIZE //</span>
                 <h2 className="text-4xl md:text-7xl lg:text-8xl font-serif font-light text-white tracking-tight mb-8 uppercase leading-[1.05]">
-                    Ready to Elevate Your <br />
-                    <span className="italic text-neutral-400 font-light">Content Strategy?</span>
+                    Ready to Fix <br />
+                    <span className="italic text-neutral-400 font-light">Your Content?</span>
                 </h2>
 
                 <p className="text-base md:text-lg text-neutral-400 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-                  Stop settling for generic content that fails to engage, rank, or convert. Partner with AbuQitmirLabs to create professional content writing that captivates, communicates, and converts.
+                  If your site has pages that are indexed but not ranking, thin or duplicate content is one of the most common — and most fixable — causes. Our team can audit your existing pages and rebuild them around genuine search intent and topical authority.
                 </p>
 
                 {/* Glassmorphic Consultation Card */}
                 <div className="bg-neutral-950 border border-white/5 p-8 md:p-12 rounded-[2.5rem] max-w-2xl mx-auto mb-16 text-left relative overflow-hidden shadow-2xl">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-[#ccff00]/5 blur-3xl rounded-full" />
-                  <h3 className="text-lg md:text-xl font-bold uppercase text-white tracking-wide mb-3">Request a Free Content Consultation</h3>
+                  <h3 className="text-lg md:text-xl font-bold uppercase text-white tracking-wide mb-3">Request a Free Content Consultation &amp; Audit</h3>
                   <p className="text-xs md:text-sm text-neutral-400 font-light mb-8 leading-relaxed">
-                    Our team will analyze your current content strategy and provide a comprehensive assessment of opportunities for improvement—at no cost.
+                    Stop settling for generic copy that fails to engage, rank, or convert. Our team will analyze your current pages, find duplicate index items, and provide a comprehensive roadmap completely free.
                   </p>
                   <div className="flex flex-col sm:flex-row border-t border-white/5 pt-6 justify-between items-start sm:items-center text-[9px] font-mono text-neutral-500 tracking-widest uppercase gap-4 font-bold">
                     <span>Avg. Discovery Phase: 1–2 Weeks</span>
@@ -1203,10 +1397,13 @@ const ContentWritingPage = () => {
             </div>
        </section>
 
-      {/* Related Services / Internal Siloing */}
-      <section className="py-24 bg-black border-t border-white/10 relative z-10 px-6">
-        <div className="max-w-7xl mx-auto">
-          <h3 className="text-xs font-mono text-slate-500 mb-12 uppercase tracking-[0.4em] font-bold block">[ RELATED_SYSTEMS ]</h3>
+       {/* Related Services / Internal Siloing */}
+       <section className="py-24 bg-black border-t border-white/10 relative z-10 px-6">
+         <div className="max-w-7xl mx-auto">
+           <h3 className="text-xs font-mono text-slate-500 mb-4 uppercase tracking-[0.4em] font-bold block">[ RELATED_SYSTEMS ]</h3>
+           <p className="text-zinc-400 text-sm font-light mb-12 max-w-2xl leading-relaxed">
+             Explore our related services: <Link to="/custom-software" className="text-[#ccff00] hover:underline font-medium">Custom Software Development</Link> · <Link to="/seo-mastery" className="text-[#ccff00] hover:underline font-medium">SEO Mastery</Link> · <Link to="/web-development" className="text-[#ccff00] hover:underline font-medium">Web Development</Link>.
+           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { title: "Custom Software", path: "/custom-software", icon: <Code2 className="w-5 h-5" /> },

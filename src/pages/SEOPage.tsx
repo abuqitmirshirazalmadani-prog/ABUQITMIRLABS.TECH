@@ -408,8 +408,12 @@ const SEOPage = () => {
             </div>
             
             <div className="bg-[#ccff00]/10 border-4 border-black p-10 rounded-[40px] brutalist-shadow">
-              <p className="text-lg md:text-xl font-bold leading-relaxed text-black font-sans">
-                Many businesses invest heavily in <a href="/web-development" className="text-blue-600 hover:underline">Web Development</a> or <a href="/custom-software" className="text-blue-600 hover:underline">Custom Software Solutions</a> but neglect the critical optimization needed to be found. Without a strategic approach to search engine optimization, even the most beautifully designed website remains undiscovered—buried beneath competitors who understand the importance of visibility. Our team is based in Karachi, Pakistan, offering global-grade SEO audits with high-ROI execution.
+              <h3 className="text-2xl font-black text-black uppercase mb-4">The Art of SEO: Mastering Search Engine Optimization</h3>
+              <p className="text-lg md:text-xl font-bold leading-relaxed text-black font-sans mb-4">
+                Ranking on the first page of Google isn't luck, and it isn't a single trick — it's the compounding result of technical precision, genuine content authority, and consistent execution over time.
+              </p>
+              <p className="text-base leading-relaxed text-zinc-800 font-bold font-sans">
+                At AbuQitmirLabs, our approach to <strong>search engine optimization (SEO)</strong> treats ranking as an engineering discipline as much as a marketing one, because in 2026, that's exactly what it has become.
               </p>
             </div>
           </div>
@@ -441,6 +445,144 @@ const SEOPage = () => {
               <p className="text-lg font-bold">
                 Our <strong className="text-white font-extrabold">SEO audit services</strong> provide a clear roadmap for improvement, prioritizing actions that deliver the highest ROI.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What Our SEO Services Cover */}
+      <section className="py-32 border-b-[8px] border-black bg-[#f4f4f5] relative z-10 px-6" id="seo-services-cover">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-20 text-center max-w-4xl mx-auto">
+            <span className="text-xs font-mono text-[#ff0099] mb-4 uppercase tracking-[0.4em] font-bold block">[ SERVICE_SCOPE ]</span>
+            <h2 className="text-4xl md:text-6xl font-black text-black tracking-tighter leading-none mb-6 uppercase">
+              What Our SEO <br />
+              <span className="text-[#ccff00] bg-black px-4 inline-block transform rotate-1 border-4 border-black">Services Cover</span>
+            </h2>
+            <p className="text-lg md:text-xl text-zinc-800 font-bold leading-relaxed font-sans">
+              As a full-service <strong>SEO agency</strong>, we work across every layer that determines whether a website actually ranks — not just the parts that are easy to sell:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "Technical SEO",
+                icon: <SearchCode className="w-8 h-8 text-black" />,
+                desc: "Site architecture, crawlability, page speed, structured data, and the underlying infrastructure that determines whether Google can even properly index and understand your site in the first place."
+              },
+              {
+                title: "On-Page & Content SEO",
+                icon: <Target className="w-8 h-8 text-[#ff0099]" />,
+                desc: "Keyword research grounded in real search intent, content structured for both readability and search relevance, and internal linking strategies that distribute authority across a site rather than concentrating it on a single page."
+              },
+              {
+                title: "Local SEO & Google Business Profile (GMB) Optimization",
+                icon: <MapPin className="w-8 h-8 text-black" />,
+                desc: "For businesses that depend on local discovery, we handle GMB SEO — from a full GMB audit identifying gaps in your listing, to ongoing local SEO GMB optimization covering categories, reviews, posts, and location data. A properly optimized Google Business Profile often has more direct impact on local visibility than any other single ranking factor, which is why we treat it as a dedicated discipline rather than an afterthought bolted onto a broader SEO package."
+              },
+              {
+                title: "Off-Page SEO & Authority Building",
+                icon: <BarChart3 className="w-8 h-8 text-[#ff0099]" />,
+                desc: "Earning legitimate backlinks and citations that build real domain authority — not shortcuts that put a site at risk of penalties down the line."
+              }
+            ].map((srv, idx) => (
+              <div key={idx} className="bg-white border-4 border-black p-10 rounded-3xl brutalist-shadow hover:bg-[#ccff00]/10 transition-colors duration-300">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-14 h-14 bg-[#ccff00] border-4 border-black rounded-xl flex items-center justify-center text-black shrink-0">
+                    {srv.icon}
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight">{srv.title}</h3>
+                </div>
+                <p className="text-sm md:text-base leading-relaxed text-zinc-700 font-bold font-sans">{srv.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Effective SEO Techniques for 2026 */}
+      <section className="py-32 border-b-[8px] border-black bg-white relative z-10 px-6" id="seo-techniques-2026">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            <div className="lg:col-span-5">
+              <div className="inline-block bg-[#ccff00] text-black font-black px-6 py-2 border-4 border-black rounded-lg mb-8 transform -rotate-2 brutalist-shadow uppercase text-xl">
+                The 2026 Playbook
+              </div>
+              <h2 className="text-4xl md:text-6xl font-black text-black tracking-tighter leading-[0.95] uppercase mb-6">
+                Effective SEO <br />
+                Techniques <br />
+                <span className="text-[#ff0099]">for 2026</span>
+              </h2>
+              <p className="text-lg text-zinc-800 font-bold leading-relaxed font-sans">
+                Search engine optimization strategies that worked five years ago don't necessarily hold up today. The algorithm is evolving rapidly, and our techniques have evolved alongside it to protect and grow your traffic.
+              </p>
+            </div>
+
+            <div className="lg:col-span-7 space-y-6">
+              {[
+                {
+                  title: "Search intent has overtaken keyword density.",
+                  desc: "Google's Helpful Content System reads for whether content genuinely answers the searcher's question, not whether a phrase appears a fixed number of times."
+                },
+                {
+                  title: "E-E-A-T signals matter more with every update.",
+                  desc: "Demonstrated experience, expertise, authoritativeness, and trustworthiness increasingly separate ranking pages from unranked ones, especially in competitive niches."
+                },
+                {
+                  title: "AI-driven search reads for context, not keyword matching.",
+                  desc: "Engines like Gemini, ChatGPT Search, and Perplexity trace a page's actual topical depth through semantic understanding rather than counting exact-match phrases — which means thin, keyword-stuffed pages tend to get passed over entirely rather than ranked lower."
+                },
+                {
+                  title: "On-page formatting still carries weight.",
+                  desc: "This includes sensible use of bolding for key terms and clear heading structure — but as a readability aid for both users and crawlers, not as a way to inflate keyword density."
+                }
+              ].map((tech, i) => (
+                <div key={i} className="bg-[#f4f4f5] border-4 border-black p-8 rounded-2xl brutalist-shadow flex gap-6">
+                  <div className="text-xl font-mono text-[#ff0099] font-black shrink-0">// 0{i+1}</div>
+                  <div>
+                    <h3 className="text-lg md:text-xl font-black uppercase mb-2 text-black leading-tight">{tech.title}</h3>
+                    <p className="text-sm md:text-base text-zinc-700 font-bold leading-relaxed font-sans">{tech.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Local SEO for Every Kind of Business */}
+      <section className="py-32 border-b-[8px] border-black bg-[#f4f4f5] relative z-10 px-6" id="local-seo-businesses">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="bg-[#ccff00]/10 border-4 border-black p-10 md:p-14 rounded-[40px] brutalist-shadow relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-pink-500/10 blur-3xl pointer-events-none" />
+              <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest block mb-4 font-black">// LOCALIZATION PROTOCOLS</span>
+              <h3 className="text-2xl md:text-4xl font-black text-black uppercase mb-6 leading-tight">
+                Local SEO for <br />Every Kind of Business
+              </h3>
+              <p className="text-base md:text-lg leading-relaxed text-zinc-800 font-bold font-sans mb-6">
+                <strong>GMB and local SEO</strong> work differently depending on the business type. A dentist's practice, for example, needs <strong>GMB local SEO</strong> built around appointment-driven local search — patients searching "near me" with immediate intent — while a B2B service company needs a different local strategy entirely.
+              </p>
+              <p className="text-sm md:text-base leading-relaxed text-zinc-700 font-bold font-sans">
+                We build <strong>GMB SEO services</strong> tailored to how your specific customers actually search, rather than applying one generic local SEO template across every client.
+              </p>
+            </div>
+
+            <div className="bg-white border-4 border-black p-10 md:p-14 rounded-[40px] brutalist-shadow space-y-8">
+              <div className="inline-block bg-[#ff0099] text-white font-mono text-xs uppercase tracking-widest px-4 py-2 border-2 border-black rounded-lg">
+                Agency &amp; Enterprise Support
+              </div>
+              <h3 className="text-xl md:text-3xl font-black text-black uppercase leading-tight">
+                White-Label GMB SEO <br />for Agencies &amp; Partners
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed text-zinc-700 font-bold font-sans">
+                For agencies and larger organizations managing SEO across multiple client accounts, we also offer <strong>white-label GMB SEO</strong> support — handling audits, optimization, and reporting under your brand.
+              </p>
+              <div className="flex gap-4 items-center border-t-2 border-black pt-6">
+                <ShieldCheck className="w-8 h-8 text-[#ff0099] shrink-0" />
+                <span className="text-xs font-mono font-black text-black uppercase">Strict confidentiality &amp; elite service delivery guaranteed.</span>
+              </div>
             </div>
           </div>
         </div>
@@ -712,9 +854,12 @@ const SEOPage = () => {
                 SEO Across <br />
                 <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>Global Markets</span>
               </h2>
-              <p className="text-base text-zinc-800 font-bold leading-relaxed mb-10 font-sans">
-                While our headquarters is in Karachi, Pakistan, our SEO solutions are built for a global stage. We understand the unique demands of different markets and adapt our approach accordingly:
-              </p>
+              <div className="mb-8">
+                <h3 className="text-xl font-black text-black uppercase tracking-tight mb-3">Where We Work</h3>
+                <p className="text-sm md:text-base text-zinc-800 font-bold leading-relaxed font-sans">
+                  AbuQitmirLabs is based in <strong>Karachi, Pakistan</strong>, and much of our local SEO and GMB expertise is grounded in the Pakistani market — an area where we maintain deep, first-hand experience with how local search behaves. Alongside this, we support <strong>SEO services for international clients</strong>, including businesses across the United States, the United Kingdom, and Europe, adapting our approach to the specific search behavior and competitive landscape of each market we work in:
+                </p>
+              </div>
 
               <div className="space-y-6">
                 {[
@@ -748,12 +893,12 @@ const SEOPage = () => {
             </div>
 
             <div className="lg:col-span-6 bg-[#ccff00] border-4 border-black p-8 md:p-12 rounded-[30px] brutalist-shadow relative overflow-hidden">
-              <span className="text-xs font-mono text-black mb-4 uppercase tracking-[0.3em] font-bold block">// WHY_PARTNER_WITH_US</span>
+              <span className="text-xs font-mono text-black mb-4 uppercase tracking-[0.3em] font-bold block">// WHY_CHOOSE_US</span>
               <h3 className="text-2xl md:text-4xl font-black text-black uppercase tracking-tight mb-6">
-                Why Partner with <br />AbuQitmirLabs?
+                Why Choose Us <br />Over Other SEO Companies?
               </h3>
               <p className="text-sm md:text-base text-zinc-900 leading-relaxed font-bold mb-8 font-sans">
-                Our team in Karachi, Pakistan, combines global-grade SEO expertise with cost-effective delivery. We serve clients across the United States, United Kingdom, Canada, Poland, and Australia—building SEO strategies that deliver measurable ROI. Whether you need national organic growth, local map pack dominance, or comprehensive GMB optimization, we deliver solutions that drive real business results.
+                Among <strong>SEO companies</strong>, the ones that deliver lasting results tend to share one trait: they treat SEO as an ongoing discipline, not a one-time setup. Rankings built on genuine technical foundations and real content authority hold up through algorithm updates. Rankings built on shortcuts don't. As an <strong>organic SEO company</strong>, our work is built entirely on the former — sustainable visibility that doesn't disappear with the next Google update.
               </p>
               
               <div className="flex gap-4 items-center bg-white border-4 border-black p-6 rounded-2xl brutalist-shadow">
@@ -877,11 +1022,11 @@ const SEOPage = () => {
         <div className="max-w-4xl mx-auto">
           <span className="text-xs font-mono text-black block mb-4 font-black uppercase tracking-[0.3em]">// SECTION 8: LAUNCH PROJECT</span>
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-black tracking-tighter mb-8 lowercase leading-[0.85] uppercase">
-            Ready to Master <span className="text-transparent" style={{ WebkitTextStroke: '3px black' }}>Search Engine Rankings?</span>
+            Ready to <span className="text-transparent" style={{ WebkitTextStroke: '3px black' }}>Actually Rank?</span>
           </h2>
           
           <p className="text-lg md:text-xl text-zinc-900 font-bold max-w-2xl mx-auto mb-16 leading-relaxed">
-            Stop competing in the shadows. Partner with AbuQitmirLabs to implement strategic SEO services that drive sustainable organic growth and establish your digital authority.
+            If your site is indexed but invisible in search results, the underlying cause is almost always fixable — usually a combination of thin content, weak internal linking, or a Google Business Profile that isn't being actively managed. Our team can audit exactly where the gaps are before recommending a strategy.
           </p>
 
           <div className="bg-white border-4 border-black p-8 md:p-10 rounded-3xl brutalist-shadow max-w-2xl mx-auto mb-16 text-left">
@@ -920,7 +1065,12 @@ const SEOPage = () => {
       {/* Related Services / Internal Siloing */}
       <section className="py-24 bg-[#f4f4f5] border-t-8 border-black relative z-10 px-6">
         <div className="max-w-7xl mx-auto">
-          <h3 className="text-xs font-mono text-black/40 mb-12 uppercase tracking-[0.4em] font-bold">[ RELATED_SYSTEMS ]</h3>
+          <div className="mb-12">
+            <h3 className="text-xs font-mono text-black/40 mb-2 uppercase tracking-[0.4em] font-bold">[ RELATED_SYSTEMS ]</h3>
+            <p className="text-sm font-bold text-zinc-700 font-sans">
+              Explore our related services: <Link to="/custom-software" className="text-black underline hover:text-[#ff0099]">Custom Software Development</Link> · <Link to="/web-development" className="text-black underline hover:text-[#ff0099]">Web Development</Link> · <Link to="/content-writing" className="text-black underline hover:text-[#ff0099]">Content Writing</Link>
+            </p>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { title: "Custom Software", path: "/custom-software", icon: <Code2 className="w-5 h-5" /> },

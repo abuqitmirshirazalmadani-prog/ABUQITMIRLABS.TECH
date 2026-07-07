@@ -165,9 +165,14 @@ const CanadaMarketPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25 }}
-                className="max-w-4xl text-lg md:text-xl text-[#9f978a] leading-relaxed font-sans font-light text-left"
+                className="max-w-4xl text-lg md:text-xl text-[#9f978a] leading-relaxed font-sans font-light text-left space-y-4"
               >
-                Canadian businesses get a development partner that understands both US-adjacent business standards and Canadian data residency considerations. We align with EST/PST overlap and build scalable systems ready for cross-border growth.
+                <span>
+                  Canadian businesses get a development partner that understands both US-adjacent business standards and Canadian data residency considerations. We align with EST/PST overlap and build scalable systems ready for cross-border growth.
+                </span>
+                <span className="block text-base md:text-lg mt-4 text-[#7d766c]">
+                  This work sits under our broader <strong className="text-white font-medium">custom software development</strong> practice, built around a consistent <strong className="text-white font-medium">custom software development best practice</strong>: architecture reviewed against PIPEDA and Canadian data residency requirements before a single feature ships. Whether the engagement runs through a fixed-scope project or an ongoing <strong className="text-white font-medium">custom software development agency</strong> relationship, Canadian clients get the same disciplined process — requirements first, architecture second, code third.
+                </span>
               </motion.p>
 
               {/* Core Capabilities Specifications */}
@@ -175,7 +180,7 @@ const CanadaMarketPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.28 }}
-                className="max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg my-10"
+                className="max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg my-10 space-y-6"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
                   {[
@@ -190,6 +195,11 @@ const CanadaMarketPage = () => {
                       <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
                     </div>
                   ))}
+                </div>
+                <div className="border-t border-white/5 pt-6 text-left">
+                  <p className="text-sm font-sans font-light text-[#9f978a] leading-relaxed">
+                    As <strong className="text-white font-medium">AbuQitmirLabs.tech software development services</strong>, this working model extends across every sector we build for in Canada — a <strong className="text-white font-medium">custom software development firm</strong> relationship for an ongoing SaaS product looks different in cadence from a single <strong className="text-white font-medium">custom software development services</strong> engagement, but both run on the same GMT-adjacent overlap and CAD-transparent pricing.
+                  </p>
                 </div>
               </motion.div>
 
@@ -281,12 +291,17 @@ const CanadaMarketPage = () => {
             <div className="absolute top-0 right-0 p-8 opacity-10">
               <ShieldCheck size={120} className="text-red-600" />
             </div>
-            <div className="relative z-10 max-w-3xl text-left">
+            <div className="relative z-10 max-w-4xl text-left">
               <h2 className="text-sm font-mono text-red-600 mb-6 uppercase tracking-[0.4em] font-bold">[ CAN_SECURITY_PROTOCOL ]</h2>
               <h3 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tighter mb-8 leading-tight">PIPEDA Compliant <br />North American Infrastructure</h3>
-              <p className="text-xl text-[#8d8579] leading-relaxed mb-8">
-                Operating in Canada means adhering to <span className="text-white font-bold italic">PIPEDA</span>. We engineer all Canadian applications with comprehensive data privacy safeguards and offer hosting solutions on Canadian soil to ensure your business remains legally sound and your users' data stays protected.
-              </p>
+              <div className="text-lg text-[#9f978a] leading-relaxed mb-10 space-y-6 font-sans font-light">
+                <p>
+                  Operating in Canada means adhering to <span className="text-white font-medium italic">PIPEDA</span>. We engineer all Canadian applications with comprehensive data privacy safeguards and offer hosting solutions on Canadian soil to ensure your business remains legally sound and your users' data stays protected.
+                </p>
+                <p>
+                  This compliance discipline runs through our sector-specific work for Canadian clients. Our <strong className="text-white font-medium">custom healthcare software development services</strong> — delivered as a genuine <strong className="text-white font-medium">healthcare software development company</strong> rather than a generalist shop — build patient systems around PIPEDA's health-information provisions rather than treating them as a generic afterthought. The same rigor carries into <strong className="text-white font-medium">custom financial software development</strong> and <strong className="text-white font-medium">custom fintech software development</strong> for Canadian financial services firms navigating both PIPEDA and provincial financial regulation, and into <strong className="text-white font-medium">custom enterprise software development</strong> for larger Canadian organizations managing data residency across multiple provinces.
+                </p>
+              </div>
               <div className="flex flex-wrap gap-4">
                 {["Canadian Data Residency", "PIPEDA Audited", "Bilingual UI/UX", "Secure Public Sector Integration"].map(tag => (
                   <span key={tag} className="px-4 py-2 bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-widest text-[#bfb4a3] rounded-full">
@@ -308,77 +323,266 @@ const CanadaMarketPage = () => {
             />
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Cloud-Native Build",
-                desc: "We build cloud-native custom software that delivers flawless performance from coast to coast with zero latency.",
-                icon: <Zap size={32} />
-              },
-              {
-                title: "AI Cost Reduction",
-                desc: "By integrating custom LLM agents, we help you reduce high domestic overhead costs through intelligent automation.",
-                icon: <Cpu size={32} />
-              },
-              {
-                title: "Entity-Based SEO",
-                desc: "Our strategies map out your digital entity, ensuring you capture high-value organic traffic in specific cities.",
-                icon: <Search size={32} />
-              }
-            ].map((item, i) => (
-              <div key={i} className="p-12 border border-white/5 bg-[#090909] group hover:border-[#ff5b36]/30 transition-all flex flex-col items-center text-center">
-                <div className="mb-8 text-[#ff5b36] bg-white/5 w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                  {item.icon}
-                </div>
-                <AnimatedBreathingText text={item.title} className="text-2xl font-bold uppercase mb-6 tracking-tight" />
-                <MagicText text={item.desc} className="text-[#7d766c]" />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Card 1: Cloud-Native Build */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="group p-10 border border-white/5 hover:border-[#ff5b36]/30 transition-all bg-[#0d0d0d] flex flex-col items-start text-left rounded-3xl"
+            >
+              <div className="bg-white/5 w-16 h-16 rounded-full flex items-center justify-center mb-8 text-[#ff5b36] group-hover:bg-[#ff5b36]/10 transition-colors">
+                <Zap size={32} />
               </div>
-            ))}
+              <h3 className="text-2xl font-serif font-light text-white uppercase mb-6 tracking-tight">
+                Cloud-Native Build
+              </h3>
+              <div className="text-sm font-sans font-light text-[#9f978a] leading-relaxed space-y-4">
+                <p>
+                  We build cloud-native custom software that delivers flawless performance from coast to coast with zero latency.
+                </p>
+                <p>
+                  This is our broader <strong className="text-white font-medium">custom software development solutions</strong> practice applied to Canada's geography specifically — architecture that performs the same in Vancouver as it does in Halifax, rather than optimized for a single region and degraded everywhere else.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Card 2: AI Cost Reduction */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="group p-10 border border-white/5 hover:border-[#ff5b36]/30 transition-all bg-[#0d0d0d] flex flex-col items-start text-left rounded-3xl"
+            >
+              <div className="bg-white/5 w-16 h-16 rounded-full flex items-center justify-center mb-8 text-[#ff5b36] group-hover:bg-[#ff5b36]/10 transition-colors">
+                <Cpu size={32} />
+              </div>
+              <h3 className="text-2xl font-serif font-light text-white uppercase mb-6 tracking-tight">
+                AI Cost Reduction
+              </h3>
+              <div className="text-sm font-sans font-light text-[#9f978a] leading-relaxed">
+                <p>
+                  By integrating custom LLM agents, we help you reduce high domestic overhead costs through intelligent automation — extending our AI agent development practice into the operational cost pressures Canadian businesses face against a strong domestic labor market.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Card 3: Entity-Based SEO */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="group p-10 border border-white/5 hover:border-[#ff5b36]/30 transition-all bg-[#0d0d0d] flex flex-col items-start text-left rounded-3xl"
+            >
+              <div className="bg-white/5 w-16 h-16 rounded-full flex items-center justify-center mb-8 text-[#ff5b36] group-hover:bg-[#ff5b36]/10 transition-colors">
+                <Search size={32} />
+              </div>
+              <h3 className="text-2xl font-serif font-light text-white uppercase mb-6 tracking-tight">
+                Entity-Based SEO
+              </h3>
+              <div className="text-sm font-sans font-light text-[#9f978a] leading-relaxed space-y-4">
+                <p>
+                  Our strategies map out your digital entity, ensuring you capture high-value organic traffic in specific cities. This is where our <strong className="text-white font-medium">local SEO GMB optimization</strong> work becomes central — a full <strong className="text-white font-medium">GMB audit for local SEO</strong> identifying gaps city by city, followed by ongoing <strong className="text-white font-medium">GMB SEO services</strong> tailored to how competitive a given Canadian market actually is.
+                </p>
+                <p>
+                  For businesses asking <strong className="text-white font-medium">what is GMB in SEO</strong>: in a country this geographically spread out, a well-managed Google Business Profile is often what separates a business that dominates its own city from one invisible outside a five-block radius.
+                </p>
+                <p>
+                  Our <strong className="text-white font-medium">GMB SEO tools</strong> and reporting process cover everything <strong className="text-white font-medium">SEO and GMB</strong> touches — categories, citations, review velocity — and for agencies managing several Canadian client accounts, we also offer <strong className="text-white font-medium">white label GMB SEO</strong> support delivered under your own brand.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       <CountryMarquee />
 
-      {/* Services Grid */}
-      <section className="py-32 px-6 md:px-10 bg-[#090909]">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16">
-            <div className="p-16 border border-white/5 bg-[#111111] flex flex-col items-center text-center hover:border-blue-500/30 transition-all">
-               <div className="flex flex-col items-center">
-                  <div className="mb-10 text-blue-500">
-                    <Smartphone size={48} strokeWidth={1} />
-                  </div>
-                  <AnimatedBreathingText text="Scalable Architectures for Startups" className="text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-8 italic" />
-                  <MagicText 
-                    text="Empowering tech hubs in Toronto, Waterloo, and Vancouver with robust MVP development and cross-platform apps that help you secure funding and scale rapidly."
-                    className="text-xl text-[#8d8579] mb-12"
-                  />
-               </div>
-               <div className="flex items-center gap-6 w-full">
-                  <div className="h-px flex-1 bg-white/10"></div>
-                  <span className="text-[10px] font-mono text-[#ff5b36] uppercase tracking-[0.4em]">Investor Ready</span>
-                  <div className="h-px flex-1 bg-white/10"></div>
-               </div>
-            </div>
+      {/* Services Grid & Cinematic Reveals */}
+      <section className="py-32 px-6 md:px-10 bg-[#090909] relative overflow-hidden border-b border-white/5">
+        {/* Background grid */}
+        <div className="absolute inset-0 bg-grid opacity-[0.02] pointer-events-none" />
+        <div className="absolute top-20 left-10 w-[600px] h-[600px] bg-blue-500/[0.01] blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-20 right-10 w-[600px] h-[600px] bg-[#ff5b36]/[0.01] blur-[150px] rounded-full pointer-events-none" />
 
-            <div className="p-16 border border-white/5 bg-[#111111] flex flex-col items-center text-center hover:border-[#ff5b36]/30 transition-all">
-               <div className="flex flex-col items-center">
-                  <div className="mb-10 text-[#ff5b36]">
-                    <Globe size={48} strokeWidth={1} />
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-32 text-center">
+            <span className="text-xs font-mono text-[#ff5b36] uppercase tracking-[0.4em] block mb-6">// CANADIAN DOMESTIC DOMINANCE</span>
+            <h2 className="text-4xl md:text-7xl font-serif font-light text-white uppercase tracking-tight leading-none">
+              Strategic Growth <br />
+              <span className="italic text-[#9f978a] font-light">From Coast to Coast</span>
+            </h2>
+          </div>
+
+          <div className="space-y-40">
+            {/* Cinematic Section 1: Scalable Architectures for Startups */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start"
+            >
+              <div className="lg:col-span-7 space-y-8">
+                <div className="flex items-center gap-4 text-xs font-mono text-blue-500 uppercase tracking-widest">
+                  <span className="h-px w-8 bg-blue-500" />
+                  STARTUP DEVELOPMENT HUB
+                </div>
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
+                  Scalable Architectures <br />
+                  <span className="italic text-[#9f978a]">for Startups</span>
+                </h3>
+                <div className="font-sans font-light text-[#9f978a] leading-relaxed text-base md:text-lg space-y-6">
+                  <p>
+                    Empowering tech hubs in Toronto, Waterloo, and Vancouver with robust MVP development and cross-platform apps that help you secure funding and scale rapidly.
+                  </p>
+                  <p>
+                    This is <strong className="text-white font-medium">software development for startups</strong> built around Canadian fundraising realities specifically — investor-ready architecture without the enterprise overhead a pre-seed company doesn't yet need. For founders comparing options, the difference between us and a generic <strong className="text-white font-medium">software development firm</strong> is usually whether the team has actually shipped MVPs that survived a real due-diligence process, not just a portfolio demo.
+                  </p>
+                </div>
+              </div>
+
+              {/* Visual Panel for Startups */}
+              <div className="lg:col-span-5 lg:sticky lg:top-24 mt-8 lg:mt-0">
+                <div className="relative group p-8 rounded-3xl bg-zinc-950/40 border border-white/5 backdrop-blur-md overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.8)]">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-3xl rounded-full" />
+                  
+                  <div className="mb-8 border border-white/10 rounded-2xl p-6 bg-black/40 relative">
+                    <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-4 text-xs font-mono text-[#7d766c]">
+                      <span>MVP_AUDIT_LOGS</span>
+                      <span className="text-blue-500 flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
+                        INVESTOR READY
+                      </span>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      {[
+                        { title: "Toronto Tech Sandbox", value: "SCALE READY" },
+                        { title: "Waterloo Incubation Check", value: "COMPLETED" },
+                        { title: "Vancouver VC Alignment", value: "COMPLIANT" },
+                      ].map((item, idx) => (
+                        <div key={idx} className="p-3 border border-white/5 rounded-xl bg-white/[0.01] flex justify-between items-center">
+                          <span className="text-xs text-[#9f978a] font-sans font-light">{item.title}</span>
+                          <span className="text-[10px] font-mono bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded font-bold uppercase">{item.value}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <AnimatedBreathingText text="Province-Specific Semantic SEO" className="text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-8 italic" />
-                  <MagicText 
-                    text="Canada is vast. We implement hyper-localized Semantic SEO and E-E-A-T strategies to ensure your business dominates Google in your specific target provinces."
-                    className="text-xl text-[#8d8579] mb-12"
-                  />
-               </div>
-               <div className="flex items-center gap-6 w-full">
-                  <div className="h-px flex-1 bg-white/10"></div>
-                  <span className="text-[10px] font-mono text-blue-500 uppercase tracking-[0.4em]">Hyper-Local Power</span>
-                  <div className="h-px flex-1 bg-white/10"></div>
-               </div>
-            </div>
+
+                  <div className="space-y-4 border-t border-white/5 pt-6 text-xs font-mono text-[#7d766c]">
+                    <div className="flex justify-between">
+                      <span>DUE DILIGENCE TEST:</span>
+                      <span className="text-white">PASSED (100%)</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>MVP STATUS:</span>
+                      <span className="text-blue-400 font-bold">READY FOR SERIES A</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Cinematic Section 2: Province-Specific Semantic SEO */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start border-t border-white/5 pt-40"
+            >
+              <div className="lg:col-span-7 lg:order-2 space-y-8">
+                <div className="flex items-center gap-4 text-xs font-mono text-[#ff5b36] uppercase tracking-widest">
+                  <span className="h-px w-8 bg-[#ff5b36]" />
+                  PROVINCIAL MARKET SEEDING
+                </div>
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
+                  Province-Specific <br />
+                  <span className="italic text-[#9f978a]">Semantic SEO</span>
+                </h3>
+                <div className="font-sans font-light text-[#9f978a] leading-relaxed text-base md:text-lg space-y-6">
+                  <p>
+                    Canada is vast. We implement hyper-localized Semantic SEO and E-E-A-T strategies to ensure your business dominates Google in your specific target provinces.
+                  </p>
+                  <p>
+                    Underneath this sits the same <strong className="text-white font-medium">GMB local SEO</strong> discipline that powers our broader local search work — <strong className="text-white font-medium">GMB SEO service</strong> delivery adjusted per province rather than a single national strategy stretched thin across a country five time zones wide.
+                  </p>
+                </div>
+              </div>
+
+              {/* Visual Panel for SEO */}
+              <div className="lg:col-span-5 lg:order-1 lg:sticky lg:top-24 mt-8 lg:mt-0">
+                <div className="relative group p-8 rounded-3xl bg-zinc-950/40 border border-white/5 backdrop-blur-md overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.8)]">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#ff5b36]/5 blur-3xl rounded-full" />
+                  
+                  <div className="mb-8 border border-white/10 rounded-2xl p-6 bg-black/40 relative">
+                    <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-4 text-xs font-mono text-[#7d766c]">
+                      <span>GEO_AUDIT_MAPS</span>
+                      <span className="text-[#ccff00] flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-[#ccff00] animate-pulse" />
+                        PROVINCE-LEVEL PINS
+                      </span>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      {[
+                        { title: "Ontario Regional Reach", value: "TOP 3 PACK" },
+                        { title: "British Columbia Pack", value: "RANK #1" },
+                        { title: "Quebec Bilingual Maps", value: "TOP 3 PACK" },
+                      ].map((item, idx) => (
+                        <div key={idx} className="p-3 border border-white/5 rounded-xl bg-white/[0.01] flex justify-between items-center">
+                          <span className="text-xs text-[#9f978a] font-sans font-light">{item.title}</span>
+                          <span className="text-[10px] font-mono bg-[#ccff00]/10 text-[#ccff00] px-2 py-0.5 rounded font-bold uppercase">{item.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 border-t border-white/5 pt-6 text-xs font-mono text-[#7d766c]">
+                    <div className="flex justify-between">
+                      <span>AUDIT TARGET RANGE:</span>
+                      <span className="text-white">COAST TO COAST</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>SEARCH CLASS:</span>
+                      <span className="text-[#ff5b36] font-bold">HYPER-LOCAL POWER</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Cinematic Section 3: Sector Depth & Co-Development */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start border-t border-white/5 pt-40"
+            >
+              <div className="lg:col-span-12 space-y-8">
+                <div className="flex items-center gap-4 text-xs font-mono text-white/50 uppercase tracking-widest">
+                  <span className="h-px w-8 bg-white/20" />
+                  SECTOR SPECIFIC &amp; EMBEDDED CO-DEVELOPMENT
+                </div>
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
+                  Bespoke Sector Solutions <br />
+                  <span className="italic text-[#9f978a]">&amp; Co-Development models</span>
+                </h3>
+                <div className="font-sans font-light text-[#9f978a] leading-relaxed text-base md:text-lg max-w-5xl space-y-6">
+                  <p>
+                    Beyond startups, our Canadian engagements span the same sector range we support internationally: <strong className="text-white font-medium">custom logistics software development</strong> for cross-provincial supply chain operators, <strong className="text-white font-medium">custom retail software development</strong> for Canadian e-commerce and multi-location retail brands, <strong className="text-white font-medium">custom manufacturing software development</strong> for the country's industrial base, and <strong className="text-white font-medium">custom medical software development</strong> for clinics and health-tech companies building around PIPEDA rather than a foreign compliance framework.
+                  </p>
+                  <p>
+                    Whichever sector, the model stays the same — a <strong className="text-white font-medium">custom software developer</strong> team that treats compliance and geography as inputs to the architecture, not constraints bolted on after launch. We also support <strong className="text-white font-medium">co-development software</strong> arrangements for Canadian companies with existing in-house teams, embedding specialized expertise rather than replacing what already works.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
