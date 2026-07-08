@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig, loadEnv} from 'vite';
 import compression from 'vite-plugin-compression';
-import { getRouteContent } from './seo-static-content.js';
 
 // Safe container-compatible prerender implementation to bypass Chromium/Puppeteer driver limitations
 interface PrerenderPlugin {
@@ -282,11 +281,77 @@ Sitemap: ${hostname}/sitemap.xml`;
             // Replace canonical link
             routeHtml = routeHtml.replace(/<link rel="canonical"[^>]*\/?>/g, `<link rel="canonical" data-rh="true" href="${hostname}${route.url === '/' ? '/' : route.url}" />`);
             
-            // FIX: Inject meaningful, UNIQUE per-route body content to avoid
-            // "duplicate content" and "thin content" SEO issues. Each route
-            // gets its own real content (kept in seo-static-content.js) instead
-            // of a generic fallback shared across every page.
-            const articleContent = getRouteContent(route.url, route.title, route.description);
+            // FIX: Inject meaningful body content to avoid "0 character body" and "No H1" SEO issues
+            // This content provides immediate value to crawlers and is replaced by React upon hydration.
+            let articleContent = '';
+            
+            if (route.url === '/seo-mastery') {
+              articleContent = `
+                <h2>SEO Mastery: Data-Driven Search Engine Optimization</h2>
+                <p>
+                  Ranking isn't about stuffing keywords — it's about technical health plus 
+                  content that actually answers search intent. We run full technical audits, 
+                  fix crawl and indexing issues, and build content structures that Google can 
+                  understand and trust. Hamari SEO services ko aap <a href="/web-development">Web Development</a> aur <a href="/content-writing">Content Writing</a> ke sath combine kar ke maximum search visibility hasil kar sakte hain.
+                </p>
+                <img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" style="max-width:300px" />
+                <p>${route.description}</p>
+                <section>
+                  <h3>Our Technical Expertise</h3>
+                  <ul>
+                    <li>Technical SEO Audits & Crawl Error Fixes</li>
+                    <li>On-Page & Semantic Entity Optimization</li>
+                    <li>XML Sitemap & Schema Markup Implementation</li>
+                    <li>Local SEO & Google Business Profile Optimization</li>
+                    <li>Content Strategy Aligned with Search Intent</li>
+                  </ul>
+                </section>
+              `;
+            } else if (route.url === '/case-studies') {
+              articleContent = `
+                <h2>Real Projects. Real Results.</h2>
+                <p>
+                  We don't publish polished portfolio pieces with the hard parts edited out. 
+                  Each case study here covers a real project we built — the problem, our actual 
+                  technical approach, and what shipped. Our work spans AI products, custom 
+                  platforms, and growth-focused engineering.
+                </p>
+                <img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" style="max-width:300px" />
+                <p>${route.description}</p>
+                <section>
+                  <h3>Our Technical Expertise</h3>
+                  <ul>
+                    <li>Real Client Projects, Not Mockups</li>
+                    <li>AI & RAG-Powered Product Builds</li>
+                    <li>Custom Platform Engineering Case Studies</li>
+                    <li>Technical Breakdown of Our Approach</li>
+                    <li>Measurable Outcomes Where Available</li>
+                  </ul>
+                </section>
+              `;
+            } else {
+              const routeH2 = route.url === '/' 
+                ? 'Custom Software · Web Development · AI Agents · Mobile Apps · SEO' 
+                : 'Elite Digital Architecture &amp; Technical Solutions';
+                
+              articleContent = `
+                <h2>${routeH2}</h2>
+                <p>At AbuQitmirLabs .TECH, we specialize in <strong>custom software engineering</strong> and high-performance digital solutions.</p>
+                <img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" style="max-width:300px" />
+                <p>${route.description}</p>
+                <section>
+                  <h3>Our Technical Expertise</h3>
+                  <p>We deliver cutting-edge software solutions including:</p>
+                  <ul>
+                    <li>Custom Mobile & Web App Engineering</li>
+                    <li>Autonomous AI Agents & RAG Integration</li>
+                    <li>Scalable Cloud-Native Microservices</li>
+                    <li>High-ROI Semantic SEO Strategies</li>
+                    <li>Cinematic UX Frameworks</li>
+                  </ul>
+                </section>
+              `;
+            }
 
             const meaningfulContent = `
               <div id="root">
@@ -301,16 +366,10 @@ Sitemap: ${hostname}/sitemap.xml`;
                 <footer>
                   <p>&copy; ${new Date().getFullYear()} AbuQitmirLabs .TECH. Empowering businesses through advanced digital engineering.</p>
                   <nav>
-                    <a href="/custom-software">Custom Software</a> |
-                    <a href="/web-development">Web Development</a> |
-                    <a href="/mobile-app-development">Mobile Apps</a> |
+                    <a href="/custom-software">Custom Software</a> | 
+                    <a href="/mobile-app-development">Mobile Apps</a> | 
                     <a href="/ai-agent-development">AI Agents</a> |
-                    <a href="/seo-mastery">SEO Mastery</a> |
-                    <a href="/graphics-design">Graphics Design</a> |
-                    <a href="/content-writing">Content Writing</a> |
-                    <a href="/case-studies">Case Studies</a> |
-                    <a href="/about">About</a> |
-                    <a href="/contact">Contact</a>
+                    <a href="/case-studies">Case Studies</a>
                   </nav>
                 </footer>
               </div>
