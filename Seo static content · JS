@@ -1,0 +1,227 @@
+// Unique, per-route HTML content injected into the prerendered <div id="root">
+// for crawlers/bots that don't execute JavaScript. This is replaced by the
+// live React app once hydration completes for real users.
+//
+// IMPORTANT: Keep this content in sync (topically) with each page's actual
+// React component content — it should summarize, not contradict, what users see.
+
+const NAV = `
+  <nav>
+    <a href="/custom-software">Custom Software</a> |
+    <a href="/web-development">Web Development</a> |
+    <a href="/ai-agent-development">AI Agent Development</a> |
+    <a href="/mobile-app-development">Mobile App Development</a> |
+    <a href="/seo-mastery">SEO Mastery</a> |
+    <a href="/graphics-design">Graphics Design</a> |
+    <a href="/content-writing">Content Writing</a> |
+    <a href="/case-studies">Case Studies</a> |
+    <a href="/about">About</a> |
+    <a href="/contact">Contact</a>
+  </nav>
+`;
+
+export const routeContent = {
+  '/custom-software': `
+    <h2>Software Built Around Your Business, Not the Other Way Around</h2>
+    <p>At AbuQitmirLabs, <strong>custom software development</strong> means designing systems around your actual workflows, data, and growth plans. As a <strong>custom software development company</strong>, we work across web application development, custom web development applications, AI-powered systems, and mobile applications.</p>
+    <h3>Industries We Serve</h3>
+    <ul>
+      <li>Custom healthcare software development services</li>
+      <li>Custom financial &amp; fintech software development</li>
+      <li>Custom logistics software development</li>
+      <li>Custom manufacturing &amp; retail software development</li>
+      <li>Custom enterprise software development</li>
+      <li>Software development for startups</li>
+    </ul>
+    <p>Every engagement follows a disciplined custom software development best practice: requirements discovery before architecture, architecture before code, and continuous testing throughout.</p>
+  `,
+
+  '/web-development': `
+    <h2>Custom Web Applications Built for Speed, Scale, and Growth</h2>
+    <p>We build modern, high-performance websites and web applications following genuine <strong>web development best practices</strong> — not generic templates. Our <strong>custom web development</strong> work spans business websites, custom web development applications, e-commerce platforms, and API integrations.</p>
+    <h3>What We Build</h3>
+    <ul>
+      <li>Business &amp; corporate websites</li>
+      <li>Custom web application development</li>
+      <li>E-commerce platforms</li>
+      <li>API &amp; third-party integrations</li>
+      <li>Website modernization &amp; migration</li>
+    </ul>
+    <p>Every project is handled by a team that thinks like an SEO web developer first — fast, accessible, and built on the right web development framework for the job.</p>
+  `,
+
+  '/ai-agent-development': `
+    <h2>Autonomous AI Agents Built for Real Business Workflows</h2>
+    <p>As an <strong>AI agent development company</strong>, AbuQitmirLabs designs and builds custom agents that plug directly into your operations. Our <strong>AI agent development services</strong> cover task automation, RAG-based knowledge agents, and customer-facing support agents.</p>
+    <h3>What Our AI Agents Do</h3>
+    <ul>
+      <li>Task automation agents</li>
+      <li>Customer-facing support agents</li>
+      <li>Internal knowledge agents (RAG-based)</li>
+      <li>Workflow orchestration agents</li>
+      <li>Industry-specific agents</li>
+    </ul>
+    <p>Every agent is built with proper access controls, data handling policies, and human-in-the-loop checkpoints for sensitive actions.</p>
+  `,
+
+  '/mobile-app-development': `
+    <h2>Flutter &amp; Native Mobile Apps Built for Real Users</h2>
+    <p>As a <strong>mobile app development company</strong>, we build apps engineered around actual usage patterns. Our <strong>custom mobile app development services</strong> span cross-platform mobile app development (Flutter), native iOS/Android, and mobile app development with React Native.</p>
+    <h3>Our Focus Areas</h3>
+    <ul>
+      <li>Cross-platform mobile app development</li>
+      <li>Enterprise mobile app development</li>
+      <li>Healthcare mobile app development</li>
+      <li>Android mobile app development</li>
+    </ul>
+    <p>We're recognized among the best mobile app development companies in Pakistan, with services extending to international clients across the US, UK, and Europe. Mobile app development cost is scoped to your actual requirements, not a flat one-size-fits-all number.</p>
+  `,
+
+  '/seo-mastery': `
+    <h2>SEO Mastery: Data-Driven Search Engine Optimization</h2>
+    <p>Ranking isn't about stuffing keywords — it's about technical health plus content that actually answers search intent. Our <strong>search engine optimization SEO services</strong> include technical audits, on-page content SEO, and local SEO GMB optimization.</p>
+    <h3>Our Technical Expertise</h3>
+    <ul>
+      <li>Technical SEO audits &amp; crawl error fixes</li>
+      <li>GMB SEO services &amp; Google Business Profile optimization</li>
+      <li>On-page &amp; semantic entity optimization</li>
+      <li>XML sitemap &amp; schema markup implementation</li>
+      <li>Content strategy aligned with search intent</li>
+    </ul>
+    <p>Hamari SEO services ko aap <a href="/web-development">Web Development</a> aur <a href="/content-writing">Content Writing</a> ke sath combine kar ke maximum search visibility hasil kar sakte hain.</p>
+  `,
+
+  '/graphics-design': `
+    <h2>Creative Graphics &amp; UI/UX Design That Does More Than Look Good</h2>
+    <p>Our <strong>graphic design</strong> work starts with brand identity — logos, color systems, and typography — and extends into UI/UX design, marketing assets, and environmental graphic design.</p>
+    <h3>Our Services</h3>
+    <ul>
+      <li>Graphic design for brand identity</li>
+      <li>UI/UX design</li>
+      <li>Marketing &amp; digital assets</li>
+      <li>Environmental graphic design</li>
+    </ul>
+    <p>As an agency for graphic design that works closely with our software and content teams, our design output is built to function inside a broader digital strategy.</p>
+  `,
+
+  '/content-writing': `
+    <h2>Professional Content Writing: SEO Meets Strategy</h2>
+    <p>Our <strong>SEO content writing services</strong> cover website content, blog content, SaaS content writing, and B2B content writing — all grounded in genuine keyword research and search intent analysis.</p>
+    <h3>Our Content Writing Services</h3>
+    <ul>
+      <li>Website content writing services</li>
+      <li>SEO content writing services</li>
+      <li>Blog content writing services</li>
+      <li>SaaS &amp; B2B content writing services</li>
+    </ul>
+    <p>As a content writing company (not just a freelancer), we offer documented content strategy and SEO research built into every brief.</p>
+  `,
+
+  '/us-market': `
+    <h2>Software Development for US Startups | Offshore</h2>
+    <p>US startups need offshore development partners who move at startup speed. We work across EST/PST overlap hours, communicate in clear async updates, and build with CCPA &amp; HIPAA-aware compliance standards.</p>
+    <h3>Core Services for the US</h3>
+    <ul>
+      <li>Coast-to-coast local SEO &amp; Google Maps dominance (GMB SEO services)</li>
+      <li>Scalable enterprise SaaS &amp; mobile app development</li>
+      <li>Cross-platform mobile apps (React Native/Flutter)</li>
+      <li>JAMstack engineering &amp; custom LLM agents</li>
+    </ul>
+  `,
+
+  '/uk-market': `
+    <h2>Digital Transformation for UK Businesses | GDPR Ready</h2>
+    <p>UK businesses get full working-day overlap with our team, GDPR-compliant data handling by design, and transparent pricing in GBP.</p>
+    <h3>UK-Specific Services</h3>
+    <ul>
+      <li>UK GDPR-compliant web &amp; software development</li>
+      <li>Hyper-local SEO (GMB SEO) for British high streets</li>
+      <li>Legacy modernization &amp; custom AI agents</li>
+      <li>Localized SEO across England, Scotland, Wales, and Northern Ireland</li>
+    </ul>
+  `,
+
+  '/pakistan-market': `
+    <h2>Digital Transformation for Pakistan's Boom</h2>
+    <p>As a Karachi-based team, we understand the local market directly — PKR pricing, in-person meetings available, no cultural gap.</p>
+    <h3>Pakistan-Specific Services</h3>
+    <ul>
+      <li>Local SEO &amp; Google Maps dominance (Karachi, Lahore)</li>
+      <li>Digital transformation for SMEs, optimized for 3G/4G speeds</li>
+      <li>Process automation &amp; 24/7 AI support (Roman Urdu trained agents)</li>
+      <li>Best mobile app development company in Pakistan</li>
+    </ul>
+  `,
+
+  '/canada-market': `
+    <h2>Software Engineering for Canadian Growth</h2>
+    <p>Canadian businesses get a development partner that understands both US-adjacent business standards and Canadian data residency (PIPEDA) considerations.</p>
+    <h3>Canada-Specific Services</h3>
+    <ul>
+      <li>PIPEDA-compliant North American infrastructure</li>
+      <li>Bilingual-ready web &amp; app builds (EN/FR)</li>
+      <li>Province-specific semantic SEO (GMB &amp; local SEO)</li>
+      <li>Scalable architectures for startups (Toronto, Waterloo, Vancouver)</li>
+    </ul>
+  `,
+
+  '/poland-market': `
+    <h2>Software Engineering for the Polish Hub | EU Digital Hub</h2>
+    <p>Poland's growing tech ecosystem needs development partners who match EU compliance standards (GDPR) while keeping costs competitive.</p>
+    <h3>Poland/EU-Specific Services</h3>
+    <ul>
+      <li>GDPR-compliant European tech standards (ISO 27001)</li>
+      <li>Custom AI agents &amp; SaaS development</li>
+      <li>Global &amp; local SEO for Polish enterprises (GMB SEO, Krakow B2B)</li>
+      <li>Jamstack platforms &amp; cross-platform apps</li>
+    </ul>
+  `,
+
+  '/australia-market': `
+    <h2>Dominating the Southern Cross Digital Frontier</h2>
+    <p>Australian businesses often face a trade-off between cost and quality with offshore partners — we remove that trade-off with structured async workflows bridging the AEST time gap.</p>
+    <h3>Australia-Specific Services</h3>
+    <ul>
+      <li>APP-compliant Australian data standards (Privacy Act 1988)</li>
+      <li>Bespoke AU web development, tested for Australian network speeds</li>
+      <li>AU local SEO &amp; Google Maps dominance (Sydney, Melbourne, Brisbane, Perth, Adelaide, Canberra)</li>
+      <li>Mobile app development company serving health-tech to fintech</li>
+    </ul>
+  `,
+
+  '/case-studies': `
+    <h2>Real Projects. Real Results.</h2>
+    <p>We don't publish polished portfolio pieces with the hard parts edited out. Each case study here covers a real project we built — the problem, our actual technical approach, and what shipped.</p>
+    <ul>
+      <li>Real client projects, not mockups</li>
+      <li>AI &amp; RAG-powered product builds</li>
+      <li>Custom platform engineering case studies</li>
+      <li>Measurable outcomes where available</li>
+    </ul>
+  `,
+
+  '/case-studies/tajweedpage': `
+    <h2>TajweedPage — AI-Powered Quran Recitation Platform</h2>
+    <p>How we built the world's first AI-powered Quran learning platform: a full-stack EdTech website, RAG-based AI Tajweed Teacher, and international SEO architecture — delivered in 10 days.</p>
+    <h3>What We Built</h3>
+    <ul>
+      <li>High-performance educational website (Next.js + React)</li>
+      <li>World's first AI Tajweed Teacher (RAG architecture, zero hallucinations)</li>
+      <li>International SEO architecture for 20+ countries</li>
+      <li>Voice recitation analyzer &amp; personalized learning paths</li>
+    </ul>
+  `,
+};
+
+export function getRouteContent(url, fallbackTitle, fallbackDescription) {
+  if (routeContent[url]) {
+    return routeContent[url] + NAV;
+  }
+  // Generic fallback for any route not yet given custom content
+  return `
+    <h2>Custom Software &amp; Digital Engineering</h2>
+    <p>At AbuQitmirLabs .TECH, we specialize in <strong>custom software engineering</strong> and high-performance digital solutions.</p>
+    <p>${fallbackDescription || ''}</p>
+    ${NAV}
+  `;
+}
