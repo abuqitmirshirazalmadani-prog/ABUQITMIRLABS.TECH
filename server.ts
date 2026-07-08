@@ -228,7 +228,23 @@ async function startServer() {
         const html = await vite.transformIndexHtml(url, template);
         return res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
       } else {
-        // Prod fallback - ALWAYS serve index.html for unknown routes to support SPA
+        // Prod fallback: try the route-specific prerendered file FIRST
+        // (e.g. dist/mobile-app-development/index.html), since the build
+        // step generates a unique, correctly-canonicalized HTML file per route.
+        // Only fall back to the root index.html for truly unknown routes
+        // (client-side-only paths not covered by the prerender step).
+        let routePath = url.split('?')[0].split('#')[0];
+        if (routePath !== '/' && routePath.endsWith('/')) {
+          routePath = routePath.slice(0, -1);
+        }
+        const routeIndexPath = routePath === '/' || routePath === ''
+          ? path.join(distPath, 'index.html')
+          : path.join(distPath, routePath, 'index.html');
+
+        if (fs.existsSync(routeIndexPath)) {
+          return res.status(200).sendFile(routeIndexPath);
+        }
+
         const indexPath = path.join(distPath, 'index.html');
         if (fs.existsSync(indexPath)) {
           return res.status(200).sendFile(indexPath);
