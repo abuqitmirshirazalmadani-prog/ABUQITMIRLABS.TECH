@@ -11,7 +11,7 @@ const TermsPage = () => {
       <Helmet>
         <title>Terms of Service | AbuQitmirLabs</title>
         <meta name="description" content="Review the Terms of Service for AbuQitmirLabs. Understand our engineering protocols, service agreements, and commitment to delivering high-performance tech solutions." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/terms" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/terms" />
       </Helmet>
 
       <Header />

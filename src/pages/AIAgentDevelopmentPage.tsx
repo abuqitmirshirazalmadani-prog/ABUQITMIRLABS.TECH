@@ -161,20 +161,20 @@ export default function AIAgentDevelopmentPage() {
       <Helmet>
         <title>AI Agent Development Company | Custom AI Automation Solutions | AbuQitmirLabs</title>
         <meta name="description" content="At AbuQitmirLabs, we architect custom AI agent development solutions that transform operations, automate workflows, and enhance customer journeys globally." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/ai-agent-development" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/ai-agent-development" />
         
         {/* Open Graph */}
         <meta property="og:title" content="AI Agent Development Company | Custom AI Automation Solutions | AbuQitmirLabs" />
         <meta property="og:description" content="At AbuQitmirLabs, we architect custom AI agent development solutions that transform operations, automate workflows, and enhance customer journeys globally." />
-        <meta property="og:url" content="https://abuqitmirlabs.tech/ai-agent-development" />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/ai-agent-development" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="AI Agent Development Company | Custom AI Automation Solutions | AbuQitmirLabs" />
         <meta name="twitter:description" content="At AbuQitmirLabs, we architect custom AI agent development solutions that transform operations, automate workflows, and enhance customer journeys globally." />
-        <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup with BreadcrumbList, Service, FAQPage, and HowTo */}
         <script 
@@ -189,13 +189,13 @@ export default function AIAgentDevelopmentPage() {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Home",
-                    "item": "https://abuqitmirlabs.tech"
+                    "item": "https://www.abuqitmirlabs.tech"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "AI Agent & App Development",
-                    "item": "https://abuqitmirlabs.tech/ai-agent-development"
+                    "item": "https://www.abuqitmirlabs.tech/ai-agent-development"
                   }
                 ]
               },
@@ -203,9 +203,9 @@ export default function AIAgentDevelopmentPage() {
                 "@context": "https://schema.org",
                 "@type": "ProfessionalService",
                 "name": "AbuQitmirLabs",
-                "url": "https://abuqitmirlabs.tech",
-                "logo": "https://abuqitmirlabs.tech/logo.png",
-                "image": "https://abuqitmirlabs.tech/logo.png",
+                "url": "https://www.abuqitmirlabs.tech",
+                "logo": "https://www.abuqitmirlabs.tech/logo.png",
+                "image": "https://www.abuqitmirlabs.tech/logo.png",
                 "telephone": "+923233260859",
                 "priceRange": "$$$",
                 "address": {
@@ -234,9 +234,9 @@ export default function AIAgentDevelopmentPage() {
                 "provider": {
                   "@type": "LocalBusiness",
                   "name": "AbuQitmirLabs",
-                  "url": "https://abuqitmirlabs.tech",
-                  "logo": "https://abuqitmirlabs.tech/logo.png",
-                  "image": "https://abuqitmirlabs.tech/logo.png",
+                  "url": "https://www.abuqitmirlabs.tech",
+                  "logo": "https://www.abuqitmirlabs.tech/logo.png",
+                  "image": "https://www.abuqitmirlabs.tech/logo.png",
                   "address": {
                     "@type": "PostalAddress",
                     "addressLocality": "Karachi",

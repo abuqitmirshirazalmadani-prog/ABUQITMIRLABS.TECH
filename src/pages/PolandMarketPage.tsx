@@ -67,12 +67,12 @@ const PolandMarketPage = () => {
         <meta name="description" content="Bridging the gap between Polish tech excellence and global standards. Specialized software engineering and EU-targeted growth strategies for the Polish market." />
         <meta property="og:title" content="Software Engineering for Polish Tech Hub | AbuQitmirLabs" />
         <meta property="og:description" content="Polish tech excellence meets global standards. Specialized software engineering and EU-targeted growth strategies." />
-        <meta property="og:url" content="https://abuqitmirlabs.tech/poland-market" />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/poland-market" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Software Development Services Poland | AbuQitmirLabs" />
         <meta name="twitter:description" content="Polish tech excellence meets global standards by AbuQitmirLabs. Specialized software engineering and EU-targeted SEO." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/poland-market" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/poland-market" />
         
         {/* Schema Markup */}
         <script 
@@ -87,13 +87,13 @@ const PolandMarketPage = () => {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Home",
-                    "item": "https://abuqitmirlabs.tech"
+                    "item": "https://www.abuqitmirlabs.tech"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "Poland Market",
-                    "item": "https://abuqitmirlabs.tech/poland-market"
+                    "item": "https://www.abuqitmirlabs.tech/poland-market"
                   }
                 ]
               },
@@ -105,7 +105,7 @@ const PolandMarketPage = () => {
                 "provider": {
                   "@type": "Organization",
                   "name": "AbuQitmirLabs",
-                  "url": "https://abuqitmirlabs.tech"
+                  "url": "https://www.abuqitmirlabs.tech"
                 },
                 "areaServed": "PL"
               },

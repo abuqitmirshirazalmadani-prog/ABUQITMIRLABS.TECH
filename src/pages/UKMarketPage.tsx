@@ -63,12 +63,12 @@ const UKMarketPage = () => {
       <Helmet>
         <title>Digital Transformation for UK Businesses | GDPR Compliant | AbuQitmirLabs</title>
         <meta name="description" content="Premium digital transformation for the UK market. GDPR-compliant software development, next-gen web apps, and London-centric local SEO strategies for British enterprises." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/uk-market" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/uk-market" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Digital Transformation for UK Businesses | GDPR Compliant | AbuQitmirLabs" />
         <meta property="og:description" content="Premium digital transformation for the UK market. GDPR-compliant software development and British market-centric local SEO." />
-        <meta property="og:url" content="https://abuqitmirlabs.tech/uk-market" />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/uk-market" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="UK Digital Transformation | AbuQitmirLabs" />
@@ -86,13 +86,13 @@ const UKMarketPage = () => {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Home",
-                    "item": "https://abuqitmirlabs.tech"
+                    "item": "https://www.abuqitmirlabs.tech"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "UK Market",
-                    "item": "https://abuqitmirlabs.tech/uk-market"
+                    "item": "https://www.abuqitmirlabs.tech/uk-market"
                   }
                 ]
               },
@@ -104,7 +104,7 @@ const UKMarketPage = () => {
                 "provider": {
                   "@type": "Organization",
                   "name": "AbuQitmirLabs",
-                  "url": "https://abuqitmirlabs.tech"
+                  "url": "https://www.abuqitmirlabs.tech"
                 },
                 "areaServed": "GB"
               },

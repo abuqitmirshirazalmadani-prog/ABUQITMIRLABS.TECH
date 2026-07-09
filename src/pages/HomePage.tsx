@@ -28,17 +28,17 @@ export default function HomePage() {
       <Helmet>
         <title>Custom Software & AI App Development | AbuQitmirLabs</title>
         <meta name="description" content="AbuQitmirLabs is an expert custom software and AI app development company building premium websites and enterprise solutions globally." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/" />
         
         <meta property="og:title" content="Custom Software & AI App Development | AbuQitmirLabs" />
         <meta property="og:description" content="AbuQitmirLabs is an expert custom software and AI app development company building premium websites and enterprise solutions globally." />
-        <meta property="og:url" content="https://abuqitmirlabs.tech" />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Custom Software & AI App Development | AbuQitmirLabs" />
         <meta name="twitter:description" content="AbuQitmirLabs is an expert custom software and AI app development company building premium websites and enterprise solutions globally." />
-        <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         <script 
           type="application/ld+json"
@@ -46,7 +46,7 @@ export default function HomePage() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "url": "https://abuqitmirlabs.tech/",
+              "url": "https://www.abuqitmirlabs.tech/",
               "name": "AbuQitmirLabs",
               "description": "AbuQitmirLabs is a premier custom software development company delivering AI app development services, custom website development services and enterprise software solutions to clients across the United States, United Kingdom, and Europe."
             })
@@ -60,9 +60,9 @@ export default function HomePage() {
               "@context": "https://schema.org",
               "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
               "name": "AbuQitmirLabs",
-              "url": "https://abuqitmirlabs.tech",
-              "logo": "https://abuqitmirlabs.tech/logo.png",
-              "image": "https://abuqitmirlabs.tech/logo.png",
+              "url": "https://www.abuqitmirlabs.tech",
+              "logo": "https://www.abuqitmirlabs.tech/logo.png",
+              "image": "https://www.abuqitmirlabs.tech/logo.png",
               "description": "AbuQitmirLabs is a premier custom software development company delivering AI app development services, custom website development services and enterprise software solutions to clients across the United States, United Kingdom, and Europe. Headquartered in Karachi Pakistan, serving clients globally.",
               "priceRange": "$$",
               "email": "hello@abuqitmirlabs.tech",
@@ -164,7 +164,7 @@ export default function HomePage() {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://abuqitmirlabs.tech"
+                  "item": "https://www.abuqitmirlabs.tech"
                 }
               ]
             })

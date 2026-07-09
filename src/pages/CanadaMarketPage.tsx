@@ -64,12 +64,12 @@ const CanadaMarketPage = () => {
       <Helmet>
         <title>Software Development Services Canada | PIPEDA Compliant | AbuQitmirLabs</title>
         <meta name="description" content="Empowering Canadian enterprises with futuristic tech. PIPEDA-compliant software engineering, specialized web apps, and bilingual SEO automation for Vancouver, Toronto, and Montreal." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/canada-market" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/canada-market" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Software Development Services Canada | AbuQitmirLabs" />
         <meta property="og:description" content="Empowering Canadian enterprises with futuristic tech. PIPEDA-compliant software engineering and bilingual digital solutions." />
-        <meta property="og:url" content="https://abuqitmirlabs.tech/canada-market" />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/canada-market" />
         <meta property="og:type" content="website" />
 
         {/* Schema Markup */}
@@ -85,13 +85,13 @@ const CanadaMarketPage = () => {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Home",
-                    "item": "https://abuqitmirlabs.tech"
+                    "item": "https://www.abuqitmirlabs.tech"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "Canada Market",
-                    "item": "https://abuqitmirlabs.tech/canada-market"
+                    "item": "https://www.abuqitmirlabs.tech/canada-market"
                   }
                 ]
               },
@@ -103,7 +103,7 @@ const CanadaMarketPage = () => {
                 "provider": {
                   "@type": "Organization",
                   "name": "AbuQitmirLabs",
-                  "url": "https://abuqitmirlabs.tech"
+                  "url": "https://www.abuqitmirlabs.tech"
                 },
                 "areaServed": "CA"
               },

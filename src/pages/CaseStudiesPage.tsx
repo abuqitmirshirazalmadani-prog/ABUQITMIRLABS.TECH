@@ -131,14 +131,14 @@ const CinematicSection = ({ study, index }: { study: CaseStudy, index: number })
     const scaleImage = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.95, 1, 1, 0.95]);
 
     const handleCopyCitation = () => {
-        const text = `${study.citeText} Link: https://abuqitmirlabs.tech/case-studies#${study.id}`;
+        const text = `${study.citeText} Link: https://www.abuqitmirlabs.tech/case-studies#${study.id}`;
         navigator.clipboard.writeText(text);
         setCopied(true);
         setTimeout(() => setCopied(false), 2500);
     };
 
     const handleShare = (platform: string) => {
-        const shareUrl = `https://abuqitmirlabs.tech/case-studies#${study.id}`;
+        const shareUrl = `https://www.abuqitmirlabs.tech/case-studies#${study.id}`;
         const shareTitle = `${study.title} | AbuQitmirLabs Case Study`;
         
         let link = '';
@@ -346,18 +346,18 @@ export default function CaseStudiesPage() {
             <Helmet>
                 <title>Cinematic Case Studies &amp; Architectural Reference Projects | AbuQitmirLabs</title>
                 <meta name="description" content="Discover our elite portfolio of reference custom software, intelligent AI agent ecosystems, and low-latency SaaS dashboards. Copy educational citations and reference backlinks." />
-                <link rel="canonical" href="https://abuqitmirlabs.tech/case-studies" />
+                <link rel="canonical" href="https://www.abuqitmirlabs.tech/case-studies" />
                 
                 <meta property="og:title" content="Cinematic Case Studies &amp; Reference Projects | AbuQitmirLabs" />
                 <meta property="og:description" content="Explore multi-million transaction workflows, low-latency React streaming engines, and dynamic programmatic SEO case studies from AbuQitmirLabs." />
-                <meta property="og:url" content="https://abuqitmirlabs.tech/case-studies" />
+                <meta property="og:url" content="https://www.abuqitmirlabs.tech/case-studies" />
                 <meta property="og:type" content="website" />
-                <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
+                <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Cinematic Case Studies &amp; Reference Projects | AbuQitmirLabs" />
                 <meta name="twitter:description" content="Explore leading software architecture studies with Academic citation structures." />
-                <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
+                <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
             </Helmet>
 
             <Header />

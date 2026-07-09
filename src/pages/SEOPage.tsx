@@ -93,12 +93,12 @@ const SEOPage = () => {
       <Helmet>
         <title>SEO Services | Professional Search Engine Optimization Company | AbuQitmirLabs</title>
         <meta name="description" content="AbuQitmirLabs is a premier search engine optimization company delivering pro SEO services, organic growth, technical SEO audits, and map dominance globally." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/seo-mastery" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/seo-mastery" />
         
         {/* Open Graph */}
         <meta property="og:title" content="SEO Services | Professional Search Engine Optimization Company | AbuQitmirLabs" />
         <meta property="og:description" content="AbuQitmirLabs is a premier search engine optimization company delivering pro SEO services, organic growth, technical SEO audits, and map dominance globally." />
-        <meta property="og:url" content="https://abuqitmirlabs.tech/seo-mastery" />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/seo-mastery" />
         <meta property="og:type" content="website" />
 
         {/* Schema Markup with BreadcrumbList, Service, FAQPage, and HowTo */}
@@ -114,13 +114,13 @@ const SEOPage = () => {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Home",
-                    "item": "https://abuqitmirlabs.tech"
+                    "item": "https://www.abuqitmirlabs.tech"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "SEO Mastery",
-                    "item": "https://abuqitmirlabs.tech/seo-mastery"
+                    "item": "https://www.abuqitmirlabs.tech/seo-mastery"
                   }
                 ]
               },
@@ -128,9 +128,9 @@ const SEOPage = () => {
                 "@context": "https://schema.org",
                 "@type": "ProfessionalService",
                 "name": "AbuQitmirLabs",
-                "url": "https://abuqitmirlabs.tech",
-                "logo": "https://abuqitmirlabs.tech/logo.png",
-                "image": "https://abuqitmirlabs.tech/logo.png",
+                "url": "https://www.abuqitmirlabs.tech",
+                "logo": "https://www.abuqitmirlabs.tech/logo.png",
+                "image": "https://www.abuqitmirlabs.tech/logo.png",
                 "telephone": "+923233260859",
                 "priceRange": "$$$",
                 "address": {
@@ -159,9 +159,9 @@ const SEOPage = () => {
                 "provider": {
                   "@type": "LocalBusiness",
                   "name": "AbuQitmirLabs",
-                  "url": "https://abuqitmirlabs.tech",
-                  "logo": "https://abuqitmirlabs.tech/logo.png",
-                  "image": "https://abuqitmirlabs.tech/logo.png",
+                  "url": "https://www.abuqitmirlabs.tech",
+                  "logo": "https://www.abuqitmirlabs.tech/logo.png",
+                  "image": "https://www.abuqitmirlabs.tech/logo.png",
                   "address": {
                     "@type": "PostalAddress",
                     "addressLocality": "Karachi",

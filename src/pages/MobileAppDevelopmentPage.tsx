@@ -111,20 +111,20 @@ const MobileAppDevelopmentPage = () => {
       <Helmet>
         <title>Custom Mobile App Development Company | Flutter & Native iOS/Android | AbuQitmirLabs</title>
         <meta name="description" content="Launch high-performance apps with AbuQitmirLabs. Premium custom Flutter for dual ecosystems, Swift (iOS), Kotlin (Android), and secure offline-first storage pipelines." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/mobile-app-development" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/mobile-app-development" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Custom Mobile App Development Company | Flutter & Native iOS/Android | AbuQitmirLabs" />
         <meta property="og:description" content="Launch high-performance apps with AbuQitmirLabs. Premium custom Flutter cross-platform, Swift (iOS), and Kotlin (Android) architectures." />
-        <meta property="og:url" content="https://abuqitmirlabs.tech/mobile-app-development" />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/mobile-app-development" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Custom Mobile App Development Company | Flutter & Native iOS/Android | AbuQitmirLabs" />
         <meta name="twitter:description" content="We build stunning cross-platform and native mobile software designed to drive customer conversion and zero lag." />
-        <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Schema Markup */}
         <script 
@@ -138,9 +138,9 @@ const MobileAppDevelopmentPage = () => {
               "provider": {
                 "@type": "LocalBusiness",
                 "name": "AbuQitmirLabs",
-                "url": "https://abuqitmirlabs.tech",
-                "logo": "https://abuqitmirlabs.tech/logo.png",
-                "image": "https://abuqitmirlabs.tech/logo.png",
+                "url": "https://www.abuqitmirlabs.tech",
+                "logo": "https://www.abuqitmirlabs.tech/logo.png",
+                "image": "https://www.abuqitmirlabs.tech/logo.png",
                 "address": {
                   "@type": "PostalAddress",
                   "addressLocality": "Karachi",
@@ -254,13 +254,13 @@ const MobileAppDevelopmentPage = () => {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://abuqitmirlabs.tech"
+                  "item": "https://www.abuqitmirlabs.tech"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Mobile App Development",
-                  "item": "https://abuqitmirlabs.tech/mobile-app-development"
+                  "item": "https://www.abuqitmirlabs.tech/mobile-app-development"
                 }
               ]
             })

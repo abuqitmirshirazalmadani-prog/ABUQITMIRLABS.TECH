@@ -31,4 +31,4 @@ User-agent: PerplexityBot
 Allow: /
 Disallow: /admin
 
-Sitemap: https://abuqitmirlabs.tech/sitemap.xml
+Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml

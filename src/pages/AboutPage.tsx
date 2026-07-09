@@ -93,14 +93,14 @@ const AboutPage = () => {
       <Helmet>
         <title>About Us | Professional Software Studio — Karachi, Pakistan</title>
         <meta name="description" content="Meet Abu Qitmir Mohammad Shiraz Al- Madani, founder of AbuQitmirLabs based in Karachi. We are a premier software engineering studio specialized in high-performance web systems, custom mobile apps, and robust AI implementations." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/about" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/about" />
         
         {/* OG Tags */}
         <meta property="og:title" content="About Us | Professional Software Studio — Karachi, Pakistan" />
         <meta property="og:description" content="Meet Abu Qitmir Mohammad Shiraz Al- Madani, founder of AbuQitmirLabs. Based in Karachi, we engineer premium digital solutions worldwide." />
-        <meta property="og:url" content="https://abuqitmirlabs.tech/about" />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/about" />
         <meta property="og:type" content="profile" />
-        <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Dynamic JSON-LD Schema for 100% Technical SEO compliance */}
         <script type="application/ld+json">
@@ -109,24 +109,24 @@ const AboutPage = () => {
             "@graph": [
               {
                 "@type": "AboutPage",
-                "@id": "https://abuqitmirlabs.tech/about#webpage",
-                "url": "https://abuqitmirlabs.tech/about",
+                "@id": "https://www.abuqitmirlabs.tech/about#webpage",
+                "url": "https://www.abuqitmirlabs.tech/about",
                 "name": "About AbuQitmirLabs and Founder Mohammad Shiraz Almadani",
                 "description": "Meet Abu Qitmir Mohammad Shiraz Al- Madani, founder of AbuQitmirLabs based in Karachi. We are a premier high-performance web, mobile app, and AI development agency.",
                 "isPartOf": {
                   "@type": "WebSite",
-                  "@id": "https://abuqitmirlabs.tech/#website",
-                  "url": "https://abuqitmirlabs.tech/",
+                  "@id": "https://www.abuqitmirlabs.tech/#website",
+                  "url": "https://www.abuqitmirlabs.tech/",
                   "name": "AbuQitmirLabs"
                 }
               },
               {
                 "@type": "ProfessionalService",
-                "@id": "https://abuqitmirlabs.tech/#organization",
+                "@id": "https://www.abuqitmirlabs.tech/#organization",
                 "name": "AbuQitmirLabs",
-                "url": "https://abuqitmirlabs.tech",
-                "logo": "https://abuqitmirlabs.tech/logo.png",
-                "image": "https://abuqitmirlabs.tech/logo.png",
+                "url": "https://www.abuqitmirlabs.tech",
+                "logo": "https://www.abuqitmirlabs.tech/logo.png",
+                "image": "https://www.abuqitmirlabs.tech/logo.png",
                 "priceRange": "$$$",
                 "telephone": "+923233260859",
                 "email": "hello@abuqitmirlabs.tech",

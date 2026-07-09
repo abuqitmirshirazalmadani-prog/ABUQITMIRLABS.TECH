@@ -74,20 +74,20 @@ const BlogPage = () => {
             <Helmet>
                 <title>Blog & Tech Journal | Insights AbuQitmirLabs</title>
                 <meta name="description" content="Explore technical insights, AI trends, and software engineering strategy at the AbuQitmirLabs Journal. Stay ahead of the curve with our expert analysis." />
-                <link rel="canonical" href="https://abuqitmirlabs.tech/blog" />
+                <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog" />
                 
                 {/* OG Tags */}
                 <meta property="og:title" content="Blog & Tech Journal | AbuQitmirLabs" />
                 <meta property="og:description" content="Explore technical insights, AI trends, and software engineering strategy at the AbuQitmirLabs Journal." />
-                <meta property="og:url" content="https://abuqitmirlabs.tech/blog" />
+                <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog" />
                 <meta property="og:type" content="website" />
-                <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
+                <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
                 {/* Twitter Tags */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Blog & Tech Journal | AbuQitmirLabs" />
                 <meta name="twitter:description" content="Explore technical insights, AI trends, and software engineering strategy at the AbuQitmirLabs Journal." />
-                <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
+                <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
                 {/* Schema Markup */}
                 <script type="application/ld+json">
@@ -95,13 +95,13 @@ const BlogPage = () => {
                         "@context": "https://schema.org",
                         "@type": "CollectionPage",
                         "name": "Tech Blog & AI Insights",
-                        "url": "https://abuqitmirlabs.tech/blog",
+                        "url": "https://www.abuqitmirlabs.tech/blog",
                         "description": "Explore technical insights, AI trends, and software engineering strategy at the AbuQitmirLabs Journal.",
                         "publisher": {
                             "@type": "Organization",
                             "name": "AbuQitmirLabs",
-                            "url": "https://abuqitmirlabs.tech",
-                            "logo": "https://abuqitmirlabs.tech/logo.png"
+                            "url": "https://www.abuqitmirlabs.tech",
+                            "logo": "https://www.abuqitmirlabs.tech/logo.png"
                         }
                     })}
                 </script>
@@ -114,13 +114,13 @@ const BlogPage = () => {
                                 "@type": "ListItem",
                                 "position": 1,
                                 "name": "Home",
-                                "item": "https://abuqitmirlabs.tech"
+                                "item": "https://www.abuqitmirlabs.tech"
                             },
                             {
                                 "@type": "ListItem",
                                 "position": 2,
                                 "name": "Blog",
-                                "item": "https://abuqitmirlabs.tech/blog"
+                                "item": "https://www.abuqitmirlabs.tech/blog"
                             }
                         ]
                     })}

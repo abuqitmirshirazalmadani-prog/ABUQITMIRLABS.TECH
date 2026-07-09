@@ -191,20 +191,20 @@ Do not sign a website contract without these protective legal terms.
       <Helmet>
         <title>Custom Web Development Services | React, Next.js & Jamstack | AbuQitmirLabs</title>
         <meta name="description" content="Custom web development with React, Next.js, and Jamstack. Sub-second load times, perfect Core Web Vitals, and SEO-optimized architecture. Serving clients in the US, UK, Canada, Australia, and Poland." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/web-development" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/web-development" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Custom Web Development Services | React, Next.js & Jamstack | AbuQitmirLabs" />
         <meta property="og:description" content="Custom web development with React, Next.js, and Jamstack. Sub-second load times, perfect Core Web Vitals, and SEO-optimized architecture. Serving clients in the US, UK, Canada, Australia, and Poland." />
-        <meta property="og:url" content="https://abuqitmirlabs.tech/web-development" />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/web-development" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Custom Web Development Services | React, Next.js & Jamstack | AbuQitmirLabs" />
         <meta name="twitter:description" content="Custom web development with React, Next.js, and Jamstack. Sub-second load times, perfect Core Web Vitals, and SEO-optimized architecture. Serving clients in the US, UK, Canada, Australia, and Poland." />
-        <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Schema Markup */}
         <script 
@@ -218,7 +218,7 @@ Do not sign a website contract without these protective legal terms.
               "provider": {
                 "@type": "Organization",
                 "name": "AbuQitmirLabs",
-                "url": "https://abuqitmirlabs.tech"
+                "url": "https://www.abuqitmirlabs.tech"
               },
               "serviceType": "Web Engineering",
               "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"],
@@ -308,13 +308,13 @@ Do not sign a website contract without these protective legal terms.
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://abuqitmirlabs.tech"
+                  "item": "https://www.abuqitmirlabs.tech"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Web Development",
-                  "item": "https://abuqitmirlabs.tech/web-development"
+                  "item": "https://www.abuqitmirlabs.tech/web-development"
                 }
               ]
             })

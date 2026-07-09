@@ -75,7 +75,7 @@ export default defineConfig(({mode}) => {
       {
         name: 'custom-seo-generator',
         closeBundle: async () => {
-          const hostname = 'https://abuqitmirlabs.tech';
+          const hostname = 'https://www.abuqitmirlabs.tech';
           const baseRoutes = [
             { url: '/',                        changefreq: 'weekly',  priority: 1.0, title: 'Affordable App Development Company | AbuQitmirLabs', description: "AbuQitmirLabs .TECH is an elite custom software development studio. We build bespoke SaaS, industrial-grade enterprise systems, and intelligent AI models for global businesses." },
             { url: '/about',                   changefreq: 'monthly', priority: 0.8, title: 'About Us | AbuQitmirLabs', description: 'Learn about our mission to build cutting-edge AI and mobile solutions.' },
@@ -182,7 +182,7 @@ export default defineConfig(({mode}) => {
             if (!fs.existsSync(publicDir)) {
                fs.mkdirSync(publicDir, { recursive: true });
             }
-            const logoPathSource = 'https://abuqitmirlabs.tech/logo.png';
+            const logoPathSource = 'https://www.abuqitmirlabs.tech/logo.png';
             const response = await fetch(logoPathSource);
             if (response.ok) {
               const buffer = await response.arrayBuffer();
@@ -230,11 +230,11 @@ ${routes.map(route => `  <url>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AbuQitmirLabs .TECH - Custom Software &amp; AI Engineering Journal</title>
-    <link>https://abuqitmirlabs.tech</link>
+    <link>https://www.abuqitmirlabs.tech</link>
     <description>Discover leading insights in AI Agent automations, ERP configurations, customizable web systems, and semantic local SEO solutions from Shiraz Almadani.</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    <atom:link href="https://abuqitmirlabs.tech/rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.abuqitmirlabs.tech/rss.xml" rel="self" type="application/rss+xml" />
 ${rssItemsContent}
   </channel>
 </rss>`;

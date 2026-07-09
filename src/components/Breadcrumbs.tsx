@@ -36,7 +36,7 @@ const Breadcrumbs = ({ customItems }: BreadcrumbsProps) => {
                     "@type": "BreadcrumbList",
                     "itemListElement": items.map((item, index) => {
                         const path = item.to || location.pathname;
-                        const absoluteUrl = path.startsWith('http') ? path : `https://abuqitmirlabs.tech${path === '/' ? '' : path}`;
+                        const absoluteUrl = path.startsWith('http') ? path : `https://www.abuqitmirlabs.tech${path === '/' ? '' : path}`;
                         return {
                             "@type": "ListItem",
                             "position": index + 1,

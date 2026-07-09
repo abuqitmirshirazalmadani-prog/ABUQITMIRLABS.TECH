@@ -47,6 +47,23 @@ async function startServer() {
   const app = express();
   const PORT = 3000;
 
+  // Redirect non-www to www and force HTTPS for abuqitmirlabs.tech
+  app.use((req, res, next) => {
+    const host = req.headers.host || '';
+    const cleanHost = host.split(':')[0].toLowerCase();
+    const isHttp = req.headers['x-forwarded-proto'] === 'http';
+
+    if (cleanHost === 'abuqitmirlabs.tech') {
+      return res.redirect(301, `https://www.abuqitmirlabs.tech${req.originalUrl}`);
+    }
+
+    if (cleanHost === 'www.abuqitmirlabs.tech' && isHttp) {
+      return res.redirect(301, `https://www.abuqitmirlabs.tech${req.originalUrl}`);
+    }
+
+    next();
+  });
+
   // Use compression middleware
   app.use(compression());
 
@@ -77,15 +94,15 @@ async function startServer() {
       const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>https://abuqitmirlabs.tech/pages-sitemap.xml</loc>
+    <loc>https://www.abuqitmirlabs.tech/pages-sitemap.xml</loc>
     <lastmod>${today}</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://abuqitmirlabs.tech/image-sitemap.xml</loc>
+    <loc>https://www.abuqitmirlabs.tech/image-sitemap.xml</loc>
     <lastmod>${today}</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://abuqitmirlabs.tech/video-sitemap.xml</loc>
+    <loc>https://www.abuqitmirlabs.tech/video-sitemap.xml</loc>
     <lastmod>${today}</lastmod>
   </sitemap>
 </sitemapindex>`;
@@ -135,7 +152,7 @@ async function startServer() {
       }
 
       const allRoutes = [...staticRoutes, ...blogRoutes];
-      const baseUrl = 'https://abuqitmirlabs.tech';
+      const baseUrl = 'https://www.abuqitmirlabs.tech';
       const today = new Date().toISOString().split('T')[0];
 
       const getRouteMetadata = (route: string) => {

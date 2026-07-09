@@ -155,20 +155,20 @@ const CustomSoftwarePage = () => {
       <Helmet>
         <title>Custom Software Development Services | Abu Qitmir Labs</title>
         <meta name="description" content="Abu Qitmir Labs is a premier custom software development company offering bespoke enterprise software development and custom web application development services worldwide." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/custom-software" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/custom-software" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Custom Software Development Services | Abu Qitmir Labs" />
         <meta property="og:description" content="Premium custom software development company building scalable enterprise architectures, SaaS platforms, and bespoke internal systems." />
-        <meta property="og:url" content="https://abuqitmirlabs.tech/custom-software" />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/custom-software" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Custom Software Development Services | Abu Qitmir Labs" />
         <meta name="twitter:description" content="Abu Qitmir Labs is a premier custom software development company offering bespoke enterprise software development and custom web application development services." />
-        <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
         <script 
@@ -183,13 +183,13 @@ const CustomSoftwarePage = () => {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Home",
-                    "item": "https://abuqitmirlabs.tech"
+                    "item": "https://www.abuqitmirlabs.tech"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "Custom Software Development",
-                    "item": "https://abuqitmirlabs.tech/custom-software"
+                    "item": "https://www.abuqitmirlabs.tech/custom-software"
                   }
                 ]
               },
@@ -201,9 +201,9 @@ const CustomSoftwarePage = () => {
                 "provider": {
                   "@type": "LocalBusiness",
                   "name": "AbuQitmirLabs",
-                  "url": "https://abuqitmirlabs.tech",
-                  "logo": "https://abuqitmirlabs.tech/logo.png",
-                  "image": "https://abuqitmirlabs.tech/logo.png",
+                  "url": "https://www.abuqitmirlabs.tech",
+                  "logo": "https://www.abuqitmirlabs.tech/logo.png",
+                  "image": "https://www.abuqitmirlabs.tech/logo.png",
                   "address": {
                     "@type": "PostalAddress",
                     "addressLocality": "Karachi",

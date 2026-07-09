@@ -142,7 +142,7 @@ Do not sign a website contract without these protective legal terms.
       <Helmet>
         <title>Free Ownership-Protected Website Contract Template | AbuQitmirLabs</title>
         <meta name="description" content="Download the free ownership-protected web contract template to secure your domain, code ownership, and post-launch support before signing package budgets." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/website-contract" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/website-contract" />
         
         {/* OG Tags */}
         <meta property="og:title" content="Free Ownership-Protected Website Contract Template" />

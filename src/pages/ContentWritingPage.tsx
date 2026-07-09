@@ -351,20 +351,20 @@ const ContentWritingPage = () => {
       <Helmet>
         <title>Content Writing Services | Professional Content Writing Company | AbuQitmirLabs</title>
         <meta name="description" content="AbuQitmirLabs offers professional content writing services, including SEO content writing, blog writing services, and copywriting services in the USA, UK, and Europe." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/content-writing" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/content-writing" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Content Writing Services | Professional Content Writing Company | AbuQitmirLabs" />
         <meta property="og:description" content="AbuQitmirLabs offers professional content writing services, including SEO content writing, blog writing services, and copywriting services." />
-        <meta property="og:url" content="https://abuqitmirlabs.tech/content-writing" />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/content-writing" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Content Writing Services | Professional Content Writing Company | AbuQitmirLabs" />
         <meta name="twitter:description" content="AbuQitmirLabs offers professional content writing services, including SEO content writing, blog writing services, and copywriting services." />
-        <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Schema Markup with Breadcrumbs, ProfessionalService, Service with OfferCatalog, FAQPage, and HowTo */}
         <script 
@@ -379,13 +379,13 @@ const ContentWritingPage = () => {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Home",
-                    "item": "https://abuqitmirlabs.tech"
+                    "item": "https://www.abuqitmirlabs.tech"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "Content Writing",
-                    "item": "https://abuqitmirlabs.tech/content-writing"
+                    "item": "https://www.abuqitmirlabs.tech/content-writing"
                   }
                 ]
               },
@@ -393,9 +393,9 @@ const ContentWritingPage = () => {
                 "@context": "https://schema.org",
                 "@type": "ProfessionalService",
                 "name": "AbuQitmirLabs",
-                "url": "https://abuqitmirlabs.tech",
-                "logo": "https://abuqitmirlabs.tech/logo.png",
-                "image": "https://abuqitmirlabs.tech/logo.png",
+                "url": "https://www.abuqitmirlabs.tech",
+                "logo": "https://www.abuqitmirlabs.tech/logo.png",
+                "image": "https://www.abuqitmirlabs.tech/logo.png",
                 "telephone": "+923233260859",
                 "priceRange": "$$$",
                 "address": {
@@ -424,7 +424,7 @@ const ContentWritingPage = () => {
                 "provider": {
                   "@type": "LocalBusiness",
                   "name": "AbuQitmirLabs",
-                  "url": "https://abuqitmirlabs.tech"
+                  "url": "https://www.abuqitmirlabs.tech"
                 },
                 "serviceType": "Content Strategy",
                 "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],

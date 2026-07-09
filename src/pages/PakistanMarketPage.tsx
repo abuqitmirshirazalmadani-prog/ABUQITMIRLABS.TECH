@@ -71,19 +71,19 @@ const PakistanMarketPage = () => {
       <Helmet>
         <title>Custom Software & Local SEO in Pakistan | AbuQitmirLabs</title>
         <meta name="description" content="Driving digital innovation in Pakistan. AbuQitmirLabs provides top-tier custom software engineering, AI agent implementation, and hyper-local SEO for Karachi, Lahore, and Islamabad." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/pakistan-market" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/pakistan-market" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Custom Software & Local SEO in Pakistan | AbuQitmirLabs" />
         <meta property="og:description" content="Expert custom software engineering and hyper-local SEO optimization for the Pakistani market." />
-        <meta property="og:url" content="https://abuqitmirlabs.tech/pakistan-market" />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/pakistan-market" />
         <meta property="og:type" content="website" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Mobile App Development Company in Pakistan | Best" />
         <meta name="twitter:description" content="Driving digital innovation in Pakistan. AbuQitmirLabs provides top-tier custom software, AI agent integration, and hyper-local SEO." />
-        <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
         <script 
@@ -98,13 +98,13 @@ const PakistanMarketPage = () => {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Home",
-                    "item": "https://abuqitmirlabs.tech"
+                    "item": "https://www.abuqitmirlabs.tech"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "Pakistan Market",
-                    "item": "https://abuqitmirlabs.tech/pakistan-market"
+                    "item": "https://www.abuqitmirlabs.tech/pakistan-market"
                   }
                 ]
               },
@@ -116,7 +116,7 @@ const PakistanMarketPage = () => {
                 "provider": {
                   "@type": "Organization",
                   "name": "AbuQitmirLabs",
-                  "url": "https://abuqitmirlabs.tech"
+                  "url": "https://www.abuqitmirlabs.tech"
                 },
                 "areaServed": "PK"
               },

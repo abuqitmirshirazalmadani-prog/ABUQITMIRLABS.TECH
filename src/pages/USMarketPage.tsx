@@ -71,12 +71,12 @@ const USMarketPage = () => {
       <Helmet>
         <title>Software Development for US Startups & NY Businesses | AbuQitmirLabs</title>
         <meta name="description" content="Custom software engineering and AI solutions for the US market. CCPA compliant development and strategic SEO for startups in Silicon Valley, Austin, and NYC." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/us-market" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/us-market" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Software Development for US Startups & NY Businesses | AbuQitmirLabs" />
         <meta property="og:description" content="Custom software engineering and AI solutions for the US market. CCPA compliant development for American startups." />
-        <meta property="og:url" content="https://abuqitmirlabs.tech/us-market" />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/us-market" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Software Development for US Startups | AbuQitmirLabs" />
@@ -94,13 +94,13 @@ const USMarketPage = () => {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Home",
-                    "item": "https://abuqitmirlabs.tech"
+                    "item": "https://www.abuqitmirlabs.tech"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "US Market",
-                    "item": "https://abuqitmirlabs.tech/us-market"
+                    "item": "https://www.abuqitmirlabs.tech/us-market"
                   }
                 ]
               },
@@ -112,7 +112,7 @@ const USMarketPage = () => {
                 "provider": {
                   "@type": "Organization",
                   "name": "AbuQitmirLabs",
-                  "url": "https://abuqitmirlabs.tech"
+                  "url": "https://www.abuqitmirlabs.tech"
                 },
                 "areaServed": "US"
               },

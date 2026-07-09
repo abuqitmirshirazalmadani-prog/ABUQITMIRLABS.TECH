@@ -372,20 +372,20 @@ const BlogPostPage = () => {
             <Helmet>
                 <title>{post.title} | AbuQitmirLabs Journal</title>
                 <meta name="description" content={post.content.substring(0, 160).replace(/[#*`]/g, '') + " | AbuQitmirLabs"} />
-                <link rel="canonical" href={`https://abuqitmirlabs.tech/blog/${slug}`} />
+                <link rel="canonical" href={`https://www.abuqitmirlabs.tech/blog/${slug}`} />
                 
                 {/* OG Tags */}
                 <meta property="og:title" content={`${post.title} | AbuQitmirLabs Journal`} />
                 <meta property="og:description" content={`${post.content.substring(0, 160).replace(/[#*`]/g, '')} | Technical Blog by AbuQitmirLabs`} />
-                <meta property="og:image" content={post.coverImage || "https://abuqitmirlabs.tech/logo.png"} />
+                <meta property="og:image" content={post.coverImage || "https://www.abuqitmirlabs.tech/logo.png"} />
                 <meta property="og:type" content="article" />
-                <meta property="og:url" content={`https://abuqitmirlabs.tech/blog/${slug}`} />
+                <meta property="og:url" content={`https://www.abuqitmirlabs.tech/blog/${slug}`} />
 
                 {/* Twitter Tags */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={`${post.title} | AbuQitmirLabs Journal`} />
                 <meta name="twitter:description" content={`${post.content.substring(0, 160).replace(/[#*`]/g, '')} | Technical Insights by AbuQitmirLabs`} />
-                <meta name="twitter:image" content={post.coverImage || "https://abuqitmirlabs.tech/logo.png"} />
+                <meta name="twitter:image" content={post.coverImage || "https://www.abuqitmirlabs.tech/logo.png"} />
                 
                 {/* Article Schema */}
                 <script 
@@ -395,18 +395,18 @@ const BlogPostPage = () => {
                             "@context": "https://schema.org",
                             "@type": "BlogPosting",
                             "headline": post.title,
-                            "image": post.coverImage || "https://abuqitmirlabs.tech/logo.png",
+                            "image": post.coverImage || "https://www.abuqitmirlabs.tech/logo.png",
                             "author": {
                                 "@type": "Person",
                                 "name": post.author,
-                                "url": "https://abuqitmirlabs.tech/about"
+                                "url": "https://www.abuqitmirlabs.tech/about"
                             },
                             "publisher": {
                                 "@type": "Organization",
                                 "name": "AbuQitmirLabs",
                                 "logo": {
                                     "@type": "ImageObject",
-                                    "url": "https://abuqitmirlabs.tech/logo.svg"
+                                    "url": "https://www.abuqitmirlabs.tech/logo.svg"
                                 }
                             },
                             "datePublished": (() => {
@@ -442,25 +442,25 @@ const BlogPostPage = () => {
                                     "@type": "ListItem",
                                     "position": 1,
                                     "name": "Home",
-                                    "item": "https://abuqitmirlabs.tech"
+                                    "item": "https://www.abuqitmirlabs.tech"
                                 },
                                 {
                                     "@type": "ListItem",
                                     "position": 2,
                                     "name": "Blog",
-                                    "item": "https://abuqitmirlabs.tech/blog"
+                                    "item": "https://www.abuqitmirlabs.tech/blog"
                                 },
                                 {
                                     "@type": "ListItem",
                                     "position": 3,
                                     "name": categoryDetails.name,
-                                    "item": `https://abuqitmirlabs.tech${categoryDetails.to}`
+                                    "item": `https://www.abuqitmirlabs.tech${categoryDetails.to}`
                                 },
                                 {
                                     "@type": "ListItem",
                                     "position": 4,
                                     "name": post.title,
-                                    "item": `https://abuqitmirlabs.tech/blog/${slug}`
+                                    "item": `https://www.abuqitmirlabs.tech/blog/${slug}`
                                 }
                             ]
                         })
@@ -1205,6 +1205,127 @@ const BlogPostPage = () => {
                             }}
                         />
                     </>
+                )}
+
+                {/* Custom Schema for The ROI of Digital Transformation */}
+                {slug && slug.includes('roi-of-digital-transformation') && (
+                    <script 
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{
+                            __html: JSON.stringify({
+                              "@context": "https://schema.org",
+                              "@graph": [
+                                {
+                                  "@type": "Article",
+                                  "@id": "https://www.abuqitmirlabs.tech/blog/roi-of-digital-transformation#article",
+                                  "headline": "The ROI of Digital Transformation: Why the Best Business Case Is Rarely the One in the Slide Deck",
+                                  "description": "Learn how to measure the real ROI of digital transformation — beyond vanity metrics — and why AbuQitmirLabs builds transformation initiatives around measurable business outcomes, not technology for its own sake.",
+                                  "image": [
+                                    "https://www.abuqitmirlabs.tech/images/roi-digital-transformation-chart.jpg",
+                                    "https://www.abuqitmirlabs.tech/images/roi-digital-transformation-layers.jpg"
+                                  ],
+                                  "author": {
+                                    "@type": "Organization",
+                                    "name": "AbuQitmirLabs",
+                                    "url": "https://www.abuqitmirlabs.tech/"
+                                  },
+                                  "publisher": {
+                                    "@type": "Organization",
+                                    "name": "AbuQitmirLabs",
+                                    "logo": {
+                                      "@type": "ImageObject",
+                                      "url": "https://www.abuqitmirlabs.tech/logo.png"
+                                    }
+                                  },
+                                  "mainEntityOfPage": {
+                                    "@type": "WebPage",
+                                    "@id": "https://www.abuqitmirlabs.tech/blog/roi-of-digital-transformation"
+                                  },
+                                  "datePublished": "2026-07-10",
+                                  "dateModified": "2026-07-10",
+                                  "articleSection": "Digital Transformation",
+                                  "keywords": "ROI of digital transformation, digital transformation ROI, measuring digital transformation success, digital transformation strategy, custom software development company, enterprise digital transformation, digital transformation consulting",
+                                  "inLanguage": "en",
+                                  "isPartOf": {
+                                    "@type": "Blog",
+                                    "@id": "https://www.abuqitmirlabs.tech/blog#blog",
+                                    "name": "AbuQitmirLabs Blog"
+                                  }
+                                },
+                                {
+                                  "@type": "FAQPage",
+                                  "@id": "https://www.abuqitmirlabs.tech/blog/roi-of-digital-transformation#faq",
+                                  "mainEntity": [
+                                    {
+                                      "@type": "Question",
+                                      "name": "How long does it take to see ROI from a digital transformation initiative?",
+                                      "acceptedAnswer": {
+                                        "@type": "Answer",
+                                        "text": "Operational efficiency gains often show up within the first two to three months of a properly scoped initiative. Revenue and customer-impact returns typically take two to four quarters, since they depend on external market response, not just internal deployment."
+                                      }
+                                    },
+                                    {
+                                      "@type": "Question",
+                                      "name": "What's the most common reason digital transformation ROI is hard to prove?",
+                                      "acceptedAnswer": {
+                                        "@type": "Answer",
+                                        "text": "Missing baseline data. Without a documented 'before' state, any 'after' comparison is closer to a narrative than a measurement."
+                                      }
+                                    },
+                                    {
+                                      "@type": "Question",
+                                      "name": "Should digital transformation ROI be measured differently than a typical IT project?",
+                                      "acceptedAnswer": {
+                                        "@type": "Answer",
+                                        "text": "Yes. A typical IT project is often measured on delivery (on time, on budget). Digital transformation should additionally be measured on business outcome — revenue, retention, efficiency — which requires instrumentation most standard IT project plans don't include by default."
+                                      }
+                                    },
+                                    {
+                                      "@type": "Question",
+                                      "name": "Does working with a Karachi-based custom software development company change the ROI calculation?",
+                                      "acceptedAnswer": {
+                                        "@type": "Answer",
+                                        "text": "Often significantly, on the cost side of the equation specifically. A mature, internationally-trained engineering talent pool operating from Pakistan can shift the breakeven point of a transformation initiative meaningfully, independent of the quality of the engineering work itself."
+                                      }
+                                    },
+                                    {
+                                      "@type": "Question",
+                                      "name": "What industries see the clearest digital transformation ROI?",
+                                      "acceptedAnswer": {
+                                        "@type": "Answer",
+                                        "text": "Logistics, retail, and financial services tend to produce the clearest numbers, since operational efficiency and transaction-level data are usually already tracked in some form — making baseline reconstruction more feasible than in industries with less structured historical data."
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "@type": "BreadcrumbList",
+                                  "@id": "https://www.abuqitmirlabs.tech/blog/roi-of-digital-transformation#breadcrumb",
+                                  "itemListElement": [
+                                    {
+                                      "@type": "ListItem",
+                                      "position": 1,
+                                      "name": "Home",
+                                      "item": "https://www.abuqitmirlabs.tech/"
+                                    },
+                                    {
+                                      "@type": "ListItem",
+                                      "position": 2,
+                                      "name": "Blog",
+                                      "item": "https://www.abuqitmirlabs.tech/blog"
+                                    },
+                                    {
+                                      "@type": "ListItem",
+                                      "position": 3,
+                                      "name": "The ROI of Digital Transformation",
+                                      "item": "https://www.abuqitmirlabs.tech/blog/roi-of-digital-transformation"
+                                    }
+                                  ]
+                                }
+                              ]
+                            })
+                        }}
+                    />
                 )}
             </Helmet>
             

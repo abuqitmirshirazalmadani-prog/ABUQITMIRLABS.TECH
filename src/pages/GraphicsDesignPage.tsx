@@ -210,12 +210,12 @@ const GraphicsDesignPage = () => {
       <Helmet>
         <title>Graphics Design Services | Professional Graphic Design Company | AbuQitmirLabs</title>
         <meta name="description" content="AbuQitmirLabs is a professional graphic design studio providing brand identity design, custom logo design services, and UI/UX design." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/graphics-design" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/graphics-design" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Graphics Design Services | Professional Graphic Design Company | AbuQitmirLabs" />
         <meta property="og:description" content="AbuQitmirLabs is a professional graphic design studio providing brand identity design, custom logo design services, and UI/UX design." />
-        <meta property="og:url" content="https://abuqitmirlabs.tech/graphics-design" />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/graphics-design" />
         <meta property="og:type" content="website" />
 
         {/* Schema Markup */}
@@ -231,13 +231,13 @@ const GraphicsDesignPage = () => {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Home",
-                    "item": "https://abuqitmirlabs.tech"
+                    "item": "https://www.abuqitmirlabs.tech"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "Graphics Design",
-                    "item": "https://abuqitmirlabs.tech/graphics-design"
+                    "item": "https://www.abuqitmirlabs.tech/graphics-design"
                   }
                 ]
               },
@@ -245,9 +245,9 @@ const GraphicsDesignPage = () => {
                 "@context": "https://schema.org",
                 "@type": "ProfessionalService",
                 "name": "AbuQitmirLabs",
-                "url": "https://abuqitmirlabs.tech",
-                "logo": "https://abuqitmirlabs.tech/logo.png",
-                "image": "https://abuqitmirlabs.tech/logo.png",
+                "url": "https://www.abuqitmirlabs.tech",
+                "logo": "https://www.abuqitmirlabs.tech/logo.png",
+                "image": "https://www.abuqitmirlabs.tech/logo.png",
                 "telephone": "+923233260859",
                 "priceRange": "$$$",
                 "address": {
@@ -276,7 +276,7 @@ const GraphicsDesignPage = () => {
                 "provider": {
                   "@type": "LocalBusiness",
                   "name": "AbuQitmirLabs",
-                  "url": "https://abuqitmirlabs.tech"
+                  "url": "https://www.abuqitmirlabs.tech"
                 },
                 "serviceType": "Graphics Design Services",
                 "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],

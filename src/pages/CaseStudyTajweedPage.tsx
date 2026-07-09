@@ -27,9 +27,9 @@ export default function CaseStudyTajweedPage() {
         
         <meta property="og:title" content="Case Study: TajweedPage.com — AI EdTech Platform | AbuQitmirLabs" />
         <meta property="og:description" content="How AbuQitmirLabs built the world's first AI-powered Quran learning platform with RAG technology, Next.js, and semantic SEO — delivered in 10 days." />
-        <meta property="og:url" content="https://abuqitmirlabs.tech/case-studies/tajweedpage" />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/case-studies/tajweedpage" />
         <meta property="og:type" content="article" />
-        <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
       </Helmet>
 
       <Header />

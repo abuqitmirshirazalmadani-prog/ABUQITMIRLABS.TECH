@@ -85,20 +85,20 @@ const ContactPage = () => {
       <Helmet>
         <title>Contact App Developer | Get Free Project Quote</title>
         <meta name="description" content="Connect with the lead architects at AbuQitmirLabs. Hire us for custom software development, AI agent automation, and world-class digital engineering projects. Secure communication relay active." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/contact" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/contact" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Contact App Developer | Get Free Project Quote" />
         <meta property="og:description" content="Connect with the lead architects at AbuQitmirLabs for custom software development and AI automation." />
-        <meta property="og:url" content="https://abuqitmirlabs.tech/contact" />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/contact" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contact App Developer | Get Free Project Quote" />
         <meta name="twitter:description" content="Connect with the lead architects at AbuQitmirLabs for custom software development and AI automation." />
-        <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
         <script 
@@ -112,13 +112,13 @@ const ContactPage = () => {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://abuqitmirlabs.tech"
+                  "item": "https://www.abuqitmirlabs.tech"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Contact",
-                  "item": "https://abuqitmirlabs.tech/contact"
+                  "item": "https://www.abuqitmirlabs.tech/contact"
                 }
               ]
             })

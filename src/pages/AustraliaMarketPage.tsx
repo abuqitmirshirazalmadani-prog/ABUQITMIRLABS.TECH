@@ -58,20 +58,20 @@ const AustraliaMarketPage = () => {
       <Helmet>
         <title>Tech Solutions for Australian Growth | APP Compliant | AbuQitmirLabs</title>
         <meta name="description" content="Future-proofing Australian businesses with elite software engineering. APP-compliant tech, localized AU SEO, and AI solutions for Sydney, Melbourne, and Brisbane." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/australia-market" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/australia-market" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Tech Solutions for Australian Growth | AbuQitmirLabs" />
         <meta property="og:description" content="Future-proofing Australian businesses with elite software engineering. APP-compliant tech and localized AU SEO." />
-        <meta property="og:url" content="https://abuqitmirlabs.tech/australia-market" />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/australia-market" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://abuqitmirlabs.tech/logo.png" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Tech Solutions Australia | AbuQitmirLabs" />
         <meta name="twitter:description" content="Future-proofing Australian businesses with elite software engineering. AbuQitmirLabs provides APP-compliant tech and localized SEO." />
-        <meta name="twitter:image" content="https://abuqitmirlabs.tech/logo.png" />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
         <script 
@@ -86,13 +86,13 @@ const AustraliaMarketPage = () => {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Home",
-                    "item": "https://abuqitmirlabs.tech"
+                    "item": "https://www.abuqitmirlabs.tech"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "Australia Market",
-                    "item": "https://abuqitmirlabs.tech/australia-market"
+                    "item": "https://www.abuqitmirlabs.tech/australia-market"
                   }
                 ]
               },
@@ -104,7 +104,7 @@ const AustraliaMarketPage = () => {
                 "provider": {
                   "@type": "Organization",
                   "name": "AbuQitmirLabs",
-                  "url": "https://abuqitmirlabs.tech"
+                  "url": "https://www.abuqitmirlabs.tech"
                 },
                 "areaServed": "AU"
               },

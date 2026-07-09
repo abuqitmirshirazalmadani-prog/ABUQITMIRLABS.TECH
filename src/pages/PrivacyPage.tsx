@@ -11,7 +11,7 @@ const PrivacyPage = () => {
       <Helmet>
         <title>Privacy Policy | AbuQitmirLabs</title>
         <meta name="description" content="Read the AbuQitmirLabs Privacy Policy. We are committed to protecting your data and maintaining the highest standards of digital privacy during our software development process." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/privacy" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/privacy" />
       </Helmet>
 
       <Header />
