@@ -370,102 +370,143 @@ const BlogPostPage = () => {
     return (
         <div className="min-h-screen bg-[#f3f4f7]">
             <Helmet>
-                <title>{post.title} | AbuQitmirLabs Journal</title>
-                <meta name="description" content={post.content.substring(0, 160).replace(/[#*`]/g, '') + " | AbuQitmirLabs"} />
-                <link rel="canonical" href={`https://www.abuqitmirlabs.tech/blog/${slug}`} />
-                
-                {/* OG Tags */}
-                <meta property="og:title" content={`${post.title} | AbuQitmirLabs Journal`} />
-                <meta property="og:description" content={`${post.content.substring(0, 160).replace(/[#*`]/g, '')} | Technical Blog by AbuQitmirLabs`} />
-                <meta property="og:image" content={post.coverImage || "https://www.abuqitmirlabs.tech/logo.png"} />
-                <meta property="og:type" content="article" />
-                <meta property="og:url" content={`https://www.abuqitmirlabs.tech/blog/${slug}`} />
+                {slug === 'rlhf-and-model-bias' ? (
+                    <>
+                        {/* Primary Meta Tags */}
+                        <title>RLHF and Model Bias: Why New Models Are Arrogant | AbuQitmirlabs</title>
+                        <meta name="title" content="RLHF and Model Bias: Why New Models Are Arrogant" />
+                        <meta name="description" content="Discover why newer AI models override proven solutions with false confidence. A deep dive into RLHF training, model arrogance, and practical solutions for protecting your work." />
+                        <meta name="keywords" content="RLHF, AI model bias, model arrogance, LLM training, AI limitations, reinforcement learning human feedback" />
+                        <meta name="author" content="AbuQitmirlabs" />
+                        <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog/rlhf-and-model-bias" />
 
-                {/* Twitter Tags */}
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${post.title} | AbuQitmirLabs Journal`} />
-                <meta name="twitter:description" content={`${post.content.substring(0, 160).replace(/[#*`]/g, '')} | Technical Insights by AbuQitmirLabs`} />
-                <meta name="twitter:image" content={post.coverImage || "https://www.abuqitmirlabs.tech/logo.png"} />
+                        {/* Open Graph / Facebook / LinkedIn */}
+                        <meta property="og:type" content="article" />
+                        <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/rlhf-and-model-bias" />
+                        <meta property="og:title" content="RLHF and Model Bias: Why New Models Are Arrogant" />
+                        <meta property="og:description" content="Discover why newer AI models override proven solutions with false confidence. A deep dive into RLHF training and model arrogance." />
+                        <meta property="og:image" content="https://www.abuqitmirlabs.tech/images/blog/rlhf-model-bias-hero.jpg" />
+                        <meta property="og:image:width" content="1200" />
+                        <meta property="og:image:height" content="630" />
+                        <meta property="og:site_name" content="AbuQitmirlabs" />
+                        <meta property="article:published_time" content="2026-07-14T00:00:00+00:00" />
+                        <meta property="article:author" content="AbuQitmirlabs" />
+                        <meta property="article:section" content="AI Development" />
+                        <meta property="article:tag" content="RLHF" />
+                        <meta property="article:tag" content="AI" />
+                        <meta property="article:tag" content="Model Bias" />
+
+                        {/* Twitter */}
+                        <meta name="twitter:card" content="summary_large_image" />
+                        <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/rlhf-and-model-bias" />
+                        <meta name="twitter:title" content="RLHF and Model Bias: Why New Models Are Arrogant" />
+                        <meta name="twitter:description" content="Discover why newer AI models override proven solutions with false confidence." />
+                        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/blog/rlhf-model-bias-hero.jpg" />
+                    </>
+                ) : (
+                    <>
+                        <title>{post.title} | AbuQitmirLabs Journal</title>
+                        <meta name="description" content={post.content.substring(0, 160).replace(/[#*`]/g, '') + " | AbuQitmirLabs"} />
+                        <link rel="canonical" href={`https://www.abuqitmirlabs.tech/blog/${slug}`} />
+                        
+                        {/* OG Tags */}
+                        <meta property="og:title" content={`${post.title} | AbuQitmirLabs Journal`} />
+                        <meta property="og:description" content={`${post.content.substring(0, 160).replace(/[#*`]/g, '')} | Technical Blog by AbuQitmirLabs`} />
+                        <meta property="og:image" content={post.coverImage || "https://www.abuqitmirlabs.tech/logo.png"} />
+                        <meta property="og:type" content="article" />
+                        <meta property="og:url" content={`https://www.abuqitmirlabs.tech/blog/${slug}`} />
+
+                        {/* Twitter Tags */}
+                        <meta name="twitter:card" content="summary_large_image" />
+                        <meta name="twitter:title" content={`${post.title} | AbuQitmirLabs Journal`} />
+                        <meta name="twitter:description" content={`${post.content.substring(0, 160).replace(/[#*`]/g, '')} | Technical Insights by AbuQitmirLabs`} />
+                        <meta name="twitter:image" content={post.coverImage || "https://www.abuqitmirlabs.tech/logo.png"} />
+                    </>
+                )}
                 
                 {/* Article Schema */}
-                <script 
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify({
-                            "@context": "https://schema.org",
-                            "@type": "BlogPosting",
-                            "headline": post.title,
-                            "image": post.coverImage || "https://www.abuqitmirlabs.tech/logo.png",
-                            "author": {
-                                "@type": "Person",
-                                "name": post.author,
-                                "url": "https://www.abuqitmirlabs.tech/about"
-                            },
-                            "publisher": {
-                                "@type": "Organization",
-                                "name": "AbuQitmirLabs",
-                                "logo": {
-                                    "@type": "ImageObject",
-                                    "url": "https://www.abuqitmirlabs.tech/logo.svg"
-                                }
-                            },
-                            "datePublished": (() => {
-                                try {
-                                    if (post.createdAt?.toDate) {
-                                        return post.createdAt.toDate().toISOString();
-                                    }
-                                    if (post.createdAt) {
-                                        const d = new Date(post.createdAt);
-                                        if (!isNaN(d.getTime())) {
-                                            return d.toISOString();
+                {slug !== 'rlhf-and-model-bias' && (
+                    <>
+                        <script 
+                            type="application/ld+json"
+                            dangerouslySetInnerHTML={{
+                                __html: JSON.stringify({
+                                    "@context": "https://schema.org",
+                                    "@type": "BlogPosting",
+                                    "headline": post.title,
+                                    "image": post.coverImage || "https://www.abuqitmirlabs.tech/logo.png",
+                                    "author": {
+                                        "@type": "Person",
+                                        "name": post.author,
+                                        "url": "https://www.abuqitmirlabs.tech/about"
+                                    },
+                                    "publisher": {
+                                        "@type": "Organization",
+                                        "name": "AbuQitmirLabs",
+                                        "logo": {
+                                            "@type": "ImageObject",
+                                            "url": "https://www.abuqitmirlabs.tech/logo.svg"
                                         }
-                                    }
-                                } catch (err) {
-                                    console.error('Error parsing datePublished:', err);
-                                }
-                                return new Date().toISOString();
-                            })(),
-                            "description": post.content.substring(0, 160).replace(/[#*`]/g, '')
-                        })
-                    }}
-                ></script>
+                                    },
+                                    "datePublished": (() => {
+                                        try {
+                                            if (post.createdAt?.toDate) {
+                                                return post.createdAt.toDate().toISOString();
+                                            }
+                                            if (post.createdAt) {
+                                                const d = new Date(post.createdAt);
+                                                if (!isNaN(d.getTime())) {
+                                                    return d.toISOString();
+                                                }
+                                            }
+                                        } catch (err) {
+                                            console.error('Error parsing datePublished:', err);
+                                        }
+                                        return new Date().toISOString();
+                                    })(),
+                                    "description": post.content.substring(0, 160).replace(/[#*`]/g, '')
+                                })
+                            }}
+                        ></script>
 
-                {/* Breadcrumb Schema */}
-                <script 
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify({
-                            "@context": "https://schema.org",
-                            "@type": "BreadcrumbList",
-                            "itemListElement": [
-                                {
-                                    "@type": "ListItem",
-                                    "position": 1,
-                                    "name": "Home",
-                                    "item": "https://www.abuqitmirlabs.tech"
-                                },
-                                {
-                                    "@type": "ListItem",
-                                    "position": 2,
-                                    "name": "Blog",
-                                    "item": "https://www.abuqitmirlabs.tech/blog"
-                                },
-                                {
-                                    "@type": "ListItem",
-                                    "position": 3,
-                                    "name": categoryDetails.name,
-                                    "item": `https://www.abuqitmirlabs.tech${categoryDetails.to}`
-                                },
-                                {
-                                    "@type": "ListItem",
-                                    "position": 4,
-                                    "name": post.title,
-                                    "item": `https://www.abuqitmirlabs.tech/blog/${slug}`
-                                }
-                            ]
-                        })
-                    }}
-                ></script>
+                        {/* Breadcrumb Schema */}
+                        <script 
+                            type="application/ld+json"
+                            dangerouslySetInnerHTML={{
+                                __html: JSON.stringify({
+                                    "@context": "https://schema.org",
+                                    "@type": "BreadcrumbList",
+                                    "itemListElement": [
+                                        {
+                                            "@type": "ListItem",
+                                            "position": 1,
+                                            "name": "Home",
+                                            "item": "https://www.abuqitmirlabs.tech"
+                                        },
+                                        {
+                                            "@type": "ListItem",
+                                            "position": 2,
+                                            "name": "Blog",
+                                            "item": "https://www.abuqitmirlabs.tech/blog"
+                                        },
+                                        {
+                                            "@type": "ListItem",
+                                            "position": 3,
+                                            "name": categoryDetails.name,
+                                            "item": `https://www.abuqitmirlabs.tech${categoryDetails.to}`
+                                        },
+                                        {
+                                            "@type": "ListItem",
+                                            "position": 4,
+                                            "name": post.title,
+                                            "item": `https://www.abuqitmirlabs.tech/blog/${slug}`
+                                        }
+                                    ]
+                                })
+                            }}
+                        ></script>
+                    </>
+                )}
 
                 {/* Custom Article, FAQ, and Breadcrumb Schema for Legacy Systems Integration Guide */}
                 {slug && slug.includes('ai-integration-with-legacy-systems') && (
@@ -1467,6 +1508,128 @@ const BlogPostPage = () => {
                                       "position": 3,
                                       "name": "The ROI of Digital Transformation",
                                       "item": "https://www.abuqitmirlabs.tech/blog/roi-of-digital-transformation"
+                                    }
+                                  ]
+                                }
+                              ]
+                            })
+                        }}
+                    />
+                )}
+
+                {/* Custom Schema for RLHF and Model Bias */}
+                {slug === 'rlhf-and-model-bias' && (
+                    <script 
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{
+                            __html: JSON.stringify({
+                              "@context": "https://schema.org",
+                              "@graph": [
+                                {
+                                  "@type": "Article",
+                                  "@id": "https://www.abuqitmirlabs.tech/blog/rlhf-and-model-bias#article",
+                                  "headline": "RLHF and Model Bias: Why New Models Are Arrogant",
+                                  "description": "Discover why newer AI models override proven solutions with false confidence. A deep dive into RLHF training, model arrogance, and practical solutions for protecting your work.",
+                                  "image": {
+                                    "@type": "ImageObject",
+                                    "url": "https://www.abuqitmirlabs.tech/images/blog/rlhf-model-bias-hero.jpg",
+                                    "width": 1200,
+                                    "height": 630
+                                  },
+                                  "datePublished": "2026-07-14",
+                                  "dateModified": "2026-07-14",
+                                  "author": {
+                                    "@type": "Person",
+                                    "@id": "https://www.abuqitmirlabs.tech/#author",
+                                    "name": "AbuQitmirlabs",
+                                    "url": "https://www.abuqitmirlabs.tech"
+                                  },
+                                  "publisher": {
+                                    "@type": "Organization",
+                                    "name": "AbuQitmirlabs",
+                                    "url": "https://www.abuqitmirlabs.tech",
+                                    "logo": {
+                                      "@type": "ImageObject",
+                                      "url": "https://www.abuqitmirlabs.tech/images/logo.png",
+                                      "width": 250,
+                                      "height": 60
+                                    }
+                                  },
+                                  "mainEntityOfPage": {
+                                    "@type": "WebPage",
+                                    "@id": "https://www.abuqitmirlabs.tech/blog/rlhf-and-model-bias"
+                                  },
+                                  "wordCount": "2200",
+                                  "keywords": [
+                                    "RLHF",
+                                    "Reinforcement Learning from Human Feedback",
+                                    "AI model bias",
+                                    "model arrogance",
+                                    "LLM training",
+                                    "AI limitations",
+                                    "model overconfidence",
+                                    "AI agent development"
+                                  ],
+                                  "articleSection": "AI Development"
+                                },
+                                {
+                                  "@type": "BreadcrumbList",
+                                  "@id": "https://www.abuqitmirlabs.tech/blog/rlhf-and-model-bias#breadcrumb",
+                                  "itemListElement": [
+                                    {
+                                      "@type": "ListItem",
+                                      "position": 1,
+                                      "name": "Home",
+                                      "item": "https://www.abuqitmirlabs.tech"
+                                    },
+                                    {
+                                      "@type": "ListItem",
+                                      "position": 2,
+                                      "name": "Blog",
+                                      "item": "https://www.abuqitmirlabs.tech/blog"
+                                    },
+                                    {
+                                      "@type": "ListItem",
+                                      "position": 3,
+                                      "name": "RLHF and Model Bias",
+                                      "item": "https://www.abuqitmirlabs.tech/blog/rlhf-and-model-bias"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "@type": "FAQPage",
+                                  "mainEntity": [
+                                    {
+                                      "@type": "Question",
+                                      "name": "What is RLHF in AI models?",
+                                      "acceptedAnswer": {
+                                        "@type": "Answer",
+                                        "text": "RLHF stands for Reinforcement Learning from Human Feedback. It's a training method where humans rate AI model outputs, and the model learns to generate responses that match human preferences. While this improves helpfulness, it also trains models to prioritize confident-sounding answers over cautious, accurate ones."
+                                      }
+                                    },
+                                    {
+                                      "@type": "Question",
+                                      "name": "Why do newer AI models override proven solutions?",
+                                      "acceptedAnswer": {
+                                        "@type": "Answer",
+                                        "text": "Newer AI models are trained via RLHF to be more confident and decisive, since humans tend to rate confident answers higher. This causes models to treat existing, proven solutions as 'outdated' and replace them with statistically common patterns from their training data, even when the original solution was better suited to a specific use case."
+                                      }
+                                    },
+                                    {
+                                      "@type": "Question",
+                                      "name": "How can I protect my work from AI models overriding it?",
+                                      "acceptedAnswer": {
+                                        "@type": "Answer",
+                                        "text": "Three practical approaches: use version control (like Git) to preserve approved versions, freeze specific model versions for production use, or build a RAG (Retrieval Augmented Generation) system that feeds the model your specific business knowledge so it respects your choices instead of defaulting to generic patterns."
+                                      }
+                                    },
+                                    {
+                                      "@type": "Question",
+                                      "name": "Is RLHF bad for AI development?",
+                                      "acceptedAnswer": {
+                                        "@type": "Answer",
+                                        "text": "No, RLHF genuinely improves AI models in many ways, including reasoning, coding, and safety. The issue isn't RLHF itself but rather that it doesn't distinguish between confidence that is earned and confidence that overrides legitimate, proven human choices."
+                                      }
                                     }
                                   ]
                                 }
