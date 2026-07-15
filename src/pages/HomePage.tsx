@@ -45,10 +45,35 @@ export default function HomePage() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "WebSite",
-              "url": "https://www.abuqitmirlabs.tech/",
+              "@type": "Organization",
               "name": "AbuQitmirLabs",
-              "description": "AbuQitmirLabs is a premier custom software development company delivering AI app development services, custom website development services and enterprise software solutions to clients across the United States, United Kingdom, and Europe."
+              "alternateName": "AbuQitmirLabs.tech",
+              "url": "https://www.abuqitmirlabs.tech",
+              "logo": "https://www.abuqitmirlabs.tech/logo.png",
+              "description": "AbuQitmirLabs is a Karachi-based custom software development and AI engineering studio, delivering bespoke SaaS platforms, mobile & web app development, AI agent development, and SEO services to clients across the US, UK, Europe, and Pakistan.",
+              "foundingDate": "2020",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Karachi",
+                "addressCountry": "PK"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+92-323-3260859",
+                "contactType": "customer service",
+                "areaServed": ["US", "GB", "PK", "AU", "EU"],
+                "availableLanguage": ["English", "Urdu"]
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/abuqitmirlabs-tech-697423390",
+                "https://www.facebook.com/abuqitmirlabs",
+                "https://www.instagram.com/abuqitmirlabs",
+                "https://x.com/AbuQitmir",
+                "https://www.clutch.co/profile/abuqitmirlabs",
+                "https://themanifest.com/company/abuqitmirlabstech",
+                "https://www.goodfirms.co/company/abuqitmirlabs-tech",
+                "https://www.youtube.com/@AbuQitmirMohammadShirazAlMadani"
+              ]
             })
           }}
         ></script>
@@ -58,97 +83,9 @@ export default function HomePage() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
+              "@type": "WebSite",
               "name": "AbuQitmirLabs",
-              "url": "https://www.abuqitmirlabs.tech",
-              "logo": "https://www.abuqitmirlabs.tech/logo.png",
-              "image": "https://www.abuqitmirlabs.tech/logo.png",
-              "description": "AbuQitmirLabs is a premier custom software development company delivering AI app development services, custom website development services and enterprise software solutions to clients across the United States, United Kingdom, and Europe. Headquartered in Karachi Pakistan, serving clients globally.",
-              "priceRange": "$$",
-              "email": "hello@abuqitmirlabs.tech",
-              "telephone": "+923233260859",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony",
-                "addressLocality": "Landhi Town, Karachi",
-                "addressRegion": "Sindh",
-                "postalCode": "75160",
-                "addressCountry": "PK"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": "24.842691448838718",
-                "longitude": "67.1862014846566"
-              },
-              "hasMap": "https://www.google.com/search?q=AbuQitmirLabs.Tech&stick=H4sIAAAAAAAA_-NgU1I1qEg0SUwyMkw2MzIySUkyTba0MqhITUtOMUgztzRLTTM2TjI3XMQq5JhUGphZkptZ5JOYVKwXkpqcAQAWzgp1PgAAAA&hl=en&mat=CZLYxD3dn4-XElYBTVDHnmXmYtE_z1-ukd4W15_4xSOvjTxlQ1o8WZE3DhyScxz25ZkTwHN99aYAJPksPmWrBMFOl-sP_YDLnxLlKt51TeOkcb_wt2bWebGPkDFcieVKmA&authuser=0",
-              "openingHours": "Mo,Tu,We,Th,Fr,Sa 09:00-21:00",
-              "sameAs": [
-                "https://x.com/AbuQitmir",
-                "https://www.linkedin.com/in/abu-qitmir-697423390/",
-                "https://www.facebook.com/profile.php?id=61583768706452",
-                "https://www.instagram.com/abuqitmirshirazalmadani/",
-                "https://www.youtube.com/@AbuQitmir",
-                "https://www.tiktok.com/@abuqitmirmohammadshiraz",
-                "https://www.pinterest.com/abuqitmir",
-                "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani",
-                "https://www.goodfirms.co/company/abuqitmirlabs-tech",
-                "https://clutch.co/profile/abuqitmirlabstech"
-              ],
-              "knowsAbout": [
-                "Custom Software Development Company",
-                "AI App Development Services",
-                "Software Development Company Karachi Pakistan",
-                "Hire Software Developers",
-                "Enterprise Software Solutions",
-                "Digital Transformation",
-                "Custom Website Development Company",
-                "Native Mobile Development Company",
-                "Flutter Mobile App Development Company"
-              ],
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.9",
-                "reviewCount": "54"
-              },
-              "serviceType": [
-                 "Custom Software Development Company",
-                 "AI App Development Services",
-                 "Custom Website Development Company",
-                 "Native Mobile Development Company",
-                 "Flutter Mobile App Development Company",
-                 "Enterprise Software Solutions"
-              ],
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+923233260859",
-                "contactType": "customer service",
-                "areaServed": ["US", "UK", "CA", "PK", "PL"],
-                "availableLanguage": ["en", "pl", "ur"]
-              },
-              "founder": {
-                "@type": "Person",
-                "name": "Shiraz Almadani",
-                "jobTitle": "CEO & Lead Engineer",
-                "sameAs": "https://www.linkedin.com/in/abu-qitmir-697423390/"
-              },
-              "video": [
-                {
-                  "@type": "VideoObject",
-                  "name": "Enterprise Digital Architecture",
-                  "description": "Watch our lead architect AbuQitmirLabs breakdown complex digital ecosystems.",
-                  "thumbnailUrl": "https://img.youtube.com/vi/Sh9SqMCx9I4/maxresdefault.jpg",
-                  "uploadDate": "2024-05-18",
-                  "embedUrl": "https://www.youtube.com/embed/Sh9SqMCx9I4"
-                },
-                {
-                  "@type": "VideoObject",
-                  "name": "Advanced Engineering Solutions",
-                  "description": "Deep dive into High-Performance Web Tech and scalable backend systems.",
-                  "thumbnailUrl": "https://img.youtube.com/vi/B31EXmt5LrQ/maxresdefault.jpg",
-                  "uploadDate": "2024-05-18",
-                  "embedUrl": "https://www.youtube.com/embed/B31EXmt5LrQ"
-                }
-              ]
+              "url": "https://www.abuqitmirlabs.tech"
             })
           }}
         ></script>
