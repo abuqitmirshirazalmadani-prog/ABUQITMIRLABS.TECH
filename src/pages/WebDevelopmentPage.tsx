@@ -213,25 +213,23 @@ Do not sign a website contract without these protective legal terms.
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Service",
-              "name": "Web Development",
-              "description": "Stop losing customers to slow loading screens. We engineer high-performance, secure, and infinitely scalable websites.",
+              "serviceType": "Web Development",
+              "name": "Custom Web Development Company in Karachi",
               "provider": {
                 "@type": "Organization",
                 "name": "AbuQitmirLabs",
-                "url": "https://www.abuqitmirlabs.tech"
+                "url": "https://www.abuqitmirlabs.tech/",
+                "areaServed": {
+                  "@type": "City",
+                  "name": "Karachi"
+                }
               },
-              "serviceType": "Web Engineering",
-              "areaServed": ["US", "UK", "CA", "PK", "PL", "AE", "SA"],
-              "hasOfferCatalog": {
-                  "@type": "OfferCatalog",
-                  "name": "Web Engineering Services",
-                  "itemListElement": capabilities.map(c => ({
-                      "@type": "Offer",
-                      "itemOffered": {
-                          "@type": "Service",
-                          "name": c.title
-                      }
-                  }))
+              "description": "Custom web development company in Karachi building React and Next.js websites and web applications for startups and SMEs, with transparent pricing and no template dependency.",
+              "url": "https://www.abuqitmirlabs.tech/web-development",
+              "offers": {
+                "@type": "Offer",
+                "priceCurrency": "PKR",
+                "priceRange": "PKR 30,000 - PKR 1,500,000+"
               }
             })
           }}
@@ -244,14 +242,40 @@ Do not sign a website contract without these protective legal terms.
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              "mainEntity": faqData.map(item => ({
-                "@type": "Question",
-                "name": item.q,
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": item.a
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "How much does a website cost in Pakistan?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Website costs in Pakistan typically range from PKR 30,000 for a basic informational site to PKR 1,500,000 or more for a custom web application, depending on design complexity and functionality."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is a React or Next.js website better than WordPress?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For sites where load speed, SEO performance, and custom functionality matter most, React and Next.js generally outperform template-based WordPress builds because they avoid the unused code and plugin overhead that slows WordPress sites down. WordPress remains a reasonable choice for simple content-driven sites with modest performance requirements."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How long does custom web development take?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A simple custom business website typically takes 3 to 5 weeks from finalized scope to launch. A custom e-commerce site or web application typically takes 6 to 12 weeks, depending on functionality and integration requirements."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do you build e-commerce websites?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. AbuQitmirLabs builds custom e-commerce websites with payment gateway integration, inventory management, and checkout flows scoped around each client's specific product catalog rather than a generic store template."
+                  }
                 }
-              }))
+              ]
             })
           }}
         ></script>
@@ -308,7 +332,7 @@ Do not sign a website contract without these protective legal terms.
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://www.abuqitmirlabs.tech"
+                  "item": "https://www.abuqitmirlabs.tech/"
                 },
                 {
                   "@type": "ListItem",
