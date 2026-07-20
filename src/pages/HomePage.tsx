@@ -13,7 +13,6 @@ import ServicesSection from '../components/ServicesSection';
 import ProcessSection from '../components/ProcessSection';
 import CountryMarquee from '../components/CountryMarquee';
 import TechStackSection from '../components/TechStackSection';
-import PortfolioSection from '../components/PortfolioSection';
 import VideoPortfolio from '../components/VideoPortfolio';
 import InteractivePortfolio from '../components/InteractivePortfolio';
 import WebDevelopmentPricing from '../components/WebDevelopmentPricing';
@@ -234,7 +233,6 @@ export default function HomePage() {
 
       <TechStackSection />
       
-      <PortfolioSection />
       <VideoPortfolio />
       <InteractivePortfolio />
       <WebDevelopmentPricing />

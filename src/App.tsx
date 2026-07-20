@@ -9,17 +9,21 @@ import { useEffect, lazy, Suspense } from 'react';
 import FacebookPixel from './components/FacebookPixel';
 import ErrorBoundary from './components/ErrorBoundary';
 
-// Lazy load all pages
-const HomePage = lazy(() => import('./pages/HomePage'));
-const CustomSoftwarePage = lazy(() => import('./pages/CustomSoftwarePage'));
-const MobileAppDevelopmentPage = lazy(() => import('./pages/MobileAppDevelopmentPage'));
-const WebDevelopmentPage = lazy(() => import('./pages/WebDevelopmentPage'));
-const AIAgentDevelopmentPage = lazy(() => import('./pages/AIAgentDevelopmentPage'));
-const SEOPage = lazy(() => import('./pages/SEOPage'));
-const GraphicsDesignPage = lazy(() => import('./pages/GraphicsDesignPage'));
-const ContentWritingPage = lazy(() => import('./pages/ContentWritingPage'));
-const AboutPage = lazy(() => import('./pages/AboutPage'));
-const ContactPage = lazy(() => import('./pages/ContactPage'));
+// Eager import core pages for instant, lag-free navigation
+import HomePage from './pages/HomePage';
+import CustomSoftwarePage from './pages/CustomSoftwarePage';
+import MobileAppDevelopmentPage from './pages/MobileAppDevelopmentPage';
+import WebDevelopmentPage from './pages/WebDevelopmentPage';
+import AIAgentDevelopmentPage from './pages/AIAgentDevelopmentPage';
+import SEOPage from './pages/SEOPage';
+import GraphicsDesignPage from './pages/GraphicsDesignPage';
+import ContentWritingPage from './pages/ContentWritingPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import BlogPage from './pages/BlogPage';
+import CaseStudiesPage from './pages/CaseStudiesPage';
+
+// Lazy load secondary/administrative pages
 const USMarketPage = lazy(() => import('./pages/USMarketPage'));
 const UKMarketPage = lazy(() => import('./pages/UKMarketPage'));
 const PakistanMarketPage = lazy(() => import('./pages/PakistanMarketPage'));
@@ -28,32 +32,19 @@ const PolandMarketPage = lazy(() => import('./pages/PolandMarketPage'));
 const AustraliaMarketPage = lazy(() => import('./pages/AustraliaMarketPage'));
 const TermsPage = lazy(() => import('./pages/TermsPage'));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
-const BlogPage = lazy(() => import('./pages/BlogPage'));
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
-const CaseStudiesPage = lazy(() => import('./pages/CaseStudiesPage'));
 const CaseStudyTajweedPage = lazy(() => import('./pages/CaseStudyTajweedPage'));
 const WebsiteContractPage = lazy(() => import('./pages/WebsiteContractPage'));
 
-// High-performance background preloading to ensure page clicks load instantly
+// High-performance background preloading to ensure remaining secondary pages load instantly
 const pageImports = [
-  () => import('./pages/CustomSoftwarePage'),
-  () => import('./pages/MobileAppDevelopmentPage'),
-  () => import('./pages/WebDevelopmentPage'),
-  () => import('./pages/AIAgentDevelopmentPage'),
-  () => import('./pages/SEOPage'),
-  () => import('./pages/GraphicsDesignPage'),
-  () => import('./pages/ContentWritingPage'),
-  () => import('./pages/AboutPage'),
-  () => import('./pages/ContactPage'),
   () => import('./pages/USMarketPage'),
   () => import('./pages/UKMarketPage'),
   () => import('./pages/PakistanMarketPage'),
   () => import('./pages/CanadaMarketPage'),
   () => import('./pages/PolandMarketPage'),
   () => import('./pages/AustraliaMarketPage'),
-  () => import('./pages/BlogPage'),
-  () => import('./pages/CaseStudiesPage'),
   () => import('./pages/WebsiteContractPage'),
 ];
 

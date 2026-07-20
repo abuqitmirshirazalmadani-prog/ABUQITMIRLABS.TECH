@@ -76,14 +76,16 @@ const NexusHero = () => {
         };
 
         const panelTypes = Object.keys(generators) as (keyof typeof generators)[];
-        const numPanels = window.innerWidth < 768 ? 15 : 30;
+        // Optimized panel count to prevent CPU/GPU frame drops and ensure super-smooth navigation transitions
+        const numPanels = window.innerWidth < 768 ? 8 : 18;
         const maxDepth = 4000;
         const panels: { el: HTMLDivElement, x: number, y: number, z: number }[] = [];
 
         for (let i = 0; i < numPanels; i++) {
             const el = document.createElement('div');
             const type = panelTypes[Math.floor(Math.random() * panelTypes.length)];
-            el.className = 'absolute top-1/2 left-1/2 w-64 p-5 rounded-xl border border-white/5 bg-zinc-900/60 backdrop-blur-md flex flex-col [will-change:transform,opacity]';
+            // Replaced the heavy backdrop-blur-md with highly opaque solid background to eliminate expensive compositing and prevent overlapping pixel redraws.
+            el.className = 'absolute top-1/2 left-1/2 w-64 p-5 rounded-xl border border-white/5 bg-[#121212]/95 flex flex-col [will-change:transform,opacity]';
             if(type === 'alert') el.classList.add('border-red-500/20');
             el.innerHTML = generators[type]();
             tunnelRef.current.appendChild(el);

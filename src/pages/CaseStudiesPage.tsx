@@ -79,7 +79,7 @@ const CASE_STUDIES: CaseStudy[] = [
         impact: "Delivered a breathtaking, cinematic web application with excellent performance, enabling readers to engage with immersive stories without any media loading latency.",
         technologies: ["GSAP Animation", "ScrollTrigger", "Vite 7", "React 19", "Audio Object API", "Tailwind CSS"],
         colorAccent: "from-red-950/20 via-transparent to-black",
-        image: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1600&auto=format&fit=crop",
+        image: "https://i.postimg.cc/YCcWrnqM/Screenshot-2026-07-20-145734.png",
         citeText: "AbuQitmirLabs. (2026). High-fidelity cinematic storytelling engines and optimized frame-sequence media loading. AbuQitmirLabs Creative Deployments."
     },
     {
@@ -105,46 +105,88 @@ const CASE_STUDIES: CaseStudy[] = [
         impact: "Empowered a non-technical editorial team to safely publish stories, blogs, and audio narrations with built-in search dominance and instant monetization readiness.",
         technologies: ["Supabase Database", "Row-Level Security", "TanStack Start v1", "Google Search Console API", "JSON-LD Schemas", "Edge Workers"],
         colorAccent: "from-zinc-850/20 via-transparent to-black",
-        image: "https://images.unsplash.com/photo-1618401471353-b98aedd07871?q=80&w=1600&auto=format&fit=crop",
+        image: "https://i.postimg.cc/6pLy9Bmf/Screenshot-2026-07-20-150051.png",
         citeText: "AbuQitmirLabs. (2026). Programmatic SEO architectures and secure distributed content management engines. AbuQitmirLabs Technical Publications."
     },
     {
-        id: "zenith-dashboard",
-        title: "Zenith Real-Time Edge Cloud Orchestrator",
-        client: "Zenith Networks LLC",
-        year: "2025",
-        industry: "SaaS Infrastructure & DevSecOps",
+        id: "cloudhealth-portal",
+        title: "CloudHealth Portal — A Modern Multi-Platform Healthcare Ecosystem",
+        client: "Confidential HealthTech Startup",
+        year: "2026",
+        industry: "Healthcare, Telemedicine, AI-Powered Health Monitoring",
         metrics: [
-            { label: "Live Telemetry Ingestion", value: "3.2M req/sec" },
-            { label: "Real-Time Render Loop", value: "&lt; 40ms" },
-            { label: "High-Availability Uptime", value: "99.999%" }
+            { label: "Zoneless Engine", value: "Angular 21" },
+            { label: "Base64 Size Limit", value: "&lt; 500KB" },
+            { label: "Cross-Platform Ecosystem", value: "Web/Desk/Mob" }
         ],
-        challenge: "Managing thousands of microservice edge nodes globally left DevOps engineers with stale, decoupled tracking screens, hindering immediate threat and load intervention.",
-        solution: "We architecture-built a lightning-fast WebSockets data ingestion pipeline with custom 3D state monitoring. The front-end renders telemetry streams natively with massive data aggregation grids, providing total centralized command over active server grids.",
-        impact: "Eliminated server downtime, decreasing system failover resolution latency from 15 minutes to under 5 seconds. Widely cited as a gold standard in next-generation SaaS UI design.",
-        technologies: ["React 19", "WebSockets Engine", "Node.js Cluster", "Three.js Canvas", "Tailwind Grid", "Redis State"],
-        colorAccent: "from-blue-500/10 via-transparent to-black",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600&auto=format&fit=crop",
-        citeText: "AbuQitmirLabs. (2025). Low-latency reactive interfaces for global distributed networks. AbuQitmirLabs SaaS Architectural Blueprints."
+        challenge: "Building a cross-platform healthcare application presents unique challenges: working flawlessly across web browsers, desktop (Windows/macOS), and mobile (iOS/Android); keeping patient data highly secure and isolated; protecting Gemini API keys from client-side exposure; and optimizing medical document uploads to prevent database size violations.",
+        solution: "We engineered a high-performance zoneless Angular portal powered securely by the @google/genai SDK on the backend, storing structured patient vitals and documents in a securely isolated Cloud Firestore database:",
+        bullets: [
+            "Smart AI Health Assistant — Powered by the modern @google/genai SDK, protected server-side to prevent client-side key exposure and connection breakdowns",
+            "Live Vitals & Metrics Engine — Tracks heart rate, steps, blood pressure, and sleep cycle metrics with responsive warning alerts",
+            "Doctor Appointment Planner — Interactive scheduler supporting consultation details, scheduling times, and active telemedicine layouts",
+            "Prescription & Medication Ledger — Comprehensive medication inventory tracking name, precise dosage, frequency, and active status toggles",
+            "Optimized Base64 Document Vault — Seamlessly converts file uploads into Base64 strings with a strict 500KB safety guard to keep Firestore storage fast and optimized",
+            "Offline Path Resolution — Configured hash-based routing (withHashLocation) inside app.config.ts to ensure Electron local file:// protocol works flawlessly"
+        ],
+        impact: "Delivered a production-ready, highly secure healthcare ecosystem with zero strict compiler errors, absolute user data isolation, and a premium Emerald aesthetic.",
+        technologies: ["Angular 21", "Vite 7", "Tailwind CSS", "Firebase Auth", "Cloud Firestore", "Google Gemini AI SDK", "Electron", "Capacitor"],
+        colorAccent: "from-emerald-950/20 via-transparent to-black",
+        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1600&auto=format&fit=crop",
+        citeText: "AbuQitmirLabs. (2026). Cross-platform server-isolated AI healthcare ecosystems and performance-optimized state management. AbuQitmirLabs Technical Publications."
     },
     {
-        id: "rankmaster-seo",
-        title: "Omni-Channel Programmatic Semantic Indexing",
-        client: "Horizon Venture Group",
+        id: "clinicos-pro",
+        title: "ClinicOS Pro — Premium Clinical ERP & EHR System",
+        client: "Confidential Healthcare Practice",
         year: "2026",
-        industry: "Enterprise Semantic SEO & Market Dominance",
+        industry: "Clinical ERP, EHR, Practice Management",
         metrics: [
-            { label: "Organic Search Boost", value: "+412%" },
-            { label: "High-Authority Backlinks", value: "3,800+" },
-            { label: "First-Page Target Keywords", value: "84.3%" }
+            { label: "Unified ERP Console", value: "11 Screens" },
+            { label: "Patient Check-in Time", value: "&lt; 5 mins" },
+            { label: "Complete Digitization", value: "Zero Paper" }
         ],
-        challenge: "Struggling to make a dent in extremely competitive fintech spaces, standard keyword-stuffed blogging content was generating virtually zero organic inquiries.",
-        solution: "We designed a custom semantic entity-generation architecture. Utilizing static web generation (SSG), automated robots indexing, and structured schema graphs for immediate AI LLM indexing, we turned their business blog into an academic reference hub.",
-        impact: "Outranked legacy banks in weeks. Created a systematic link magnet mechanism where financial journals and journals systematically backlink to Horizon’s studies.",
-        technologies: ["Programmatic Routing", "Structure Schemas (JSON-LD)", "Vite Static Site Generators", "AI Content Indexing", "Google Crawl APIs"],
-        colorAccent: "from-purple-500/10 via-transparent to-black",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop",
-        citeText: "AbuQitmirLabs. (2026). Elevating domain authority through academic entity SEO frameworks. AbuQitmirLabs Growth Case Studies."
+        challenge: "Modern healthcare clinics face immense operational friction: paper patient charts are slow and difficult to search, billing records are scattered, pharmacy stocks are tracked reactively, and no single source of truth exists.",
+        solution: "We built ClinicOS Pro, a high-density, offline-resilient Clinical ERP consolidating 11 distinct operational screens into a single high-performance dashboard:",
+        bullets: [
+            "Biometric Smart Gateway — Fingerprint and NFC check-in simulator reduces patient check-in times to under 5 minutes",
+            "OPD Physician Workstation — consulting screen featuring clinical notes, digital vitals entries, and a Live Canvas-based ECG Waveform Monitor",
+            "Claims & Copay Billing — automated copay trackers, insurance receivables, and multi-line custom invoice templates",
+            "Pharmacy Inventory Manager — Monitors drug batches, expiration cycles, and unit pricing with automatic low-stock alerts",
+            "Inpatient Ward Map (IPD) — A visual interactive grid of clinic beds (ICU, Cardiac, Wards) for instant patient bookings and stay logs",
+            "Patient Companion App (Consumer HUD) — Simulates a patient mobile screen with medication QR codes and assigned bed locations"
+        ],
+        impact: "Eliminated paper trails, digitized practice operations, automated drug stock notifications, and established a trusted high-end corporate image.",
+        technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "Cormorant Garamond", "Urbanist Font", "HTML5 Canvas", "RequestAnimationFrame"],
+        colorAccent: "from-indigo-950/20 via-transparent to-black",
+        image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1600&auto=format&fit=crop",
+        citeText: "AbuQitmirLabs. (2026). ClinicOS Pro: Unified workflow automation and offline-resilient high-density medical ERP systems. AbuQitmirLabs Clinical Operations."
+    },
+    {
+        id: "profit-command-center",
+        title: "ProFit Command Center — Elite Trainer CRM & Scheduling Hub",
+        client: "Confidential Fitness Startup",
+        year: "2025",
+        industry: "CRM, Scheduling, Fitness Tech",
+        metrics: [
+            { label: "Weekly Admin Saved", value: "76%" },
+            { label: "Package Billing Leakage", value: "0%" },
+            { label: "Client Churn Reduction", value: "20%" }
+        ],
+        challenge: "Independent trainers act as micro-businesses, suffering from severe administrative burnout. Juggling WhatsApp messages, Google Calendars, and spreadsheets leads to package tracking leaks and client churn.",
+        solution: "We engineered ProFit Command Center, a premium CRM and scheduling hub designed with proactive retention alerts and media syncing under a gorgeous glassmorphic dark theme:",
+        bullets: [
+            "Command Center Alerts — A reactive notification panel for expiring client packages (3 or fewer remaining) with direct 'Upsell' actions",
+            "Interactive Client CRM — Profiles with editable session balances to easily increment or decrement pre-paid classes on the fly",
+            "Dynamic Media Integration — Base64 trainer uploads instantly propagate custom client photos across all calendar and dashboard components",
+            "Zoneless Signals Architecture — Leverages Angular 21 with Signals for zero-latency change detection and memory-efficient updates",
+            "Glassmorphic Visuals — High-contrast dark palette with white-opacity borders and deep glass filters for a luxury fitness brand"
+        ],
+        impact: "Transformed fitness administration, reduced trainer business overhead, and unlocked massive lifetime value (LTV) gains by preventing package disengagement.",
+        technologies: ["Angular 21", "Vite 7", "Tailwind CSS", "Angular Signals", "FileReader API", "Base64 Serialization"],
+        colorAccent: "from-emerald-950/10 via-transparent to-black",
+        image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1600&auto=format&fit=crop",
+        citeText: "AbuQitmirLabs. (2025). Low-latency client relationship management and proactive package monitoring for fitness platforms. AbuQitmirLabs Growth Case Studies."
     }
 ];
 
