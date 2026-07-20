@@ -79,7 +79,7 @@ const CASE_STUDIES: CaseStudy[] = [
         impact: "Delivered a breathtaking, cinematic web application with excellent performance, enabling readers to engage with immersive stories without any media loading latency.",
         technologies: ["GSAP Animation", "ScrollTrigger", "Vite 7", "React 19", "Audio Object API", "Tailwind CSS"],
         colorAccent: "from-red-950/20 via-transparent to-black",
-        image: "https://images.unsplash.com/photo-1514894780887-121968d00567?q=80&w=1600&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1600&auto=format&fit=crop",
         citeText: "AbuQitmirLabs. (2026). High-fidelity cinematic storytelling engines and optimized frame-sequence media loading. AbuQitmirLabs Creative Deployments."
     },
     {
@@ -105,7 +105,7 @@ const CASE_STUDIES: CaseStudy[] = [
         impact: "Empowered a non-technical editorial team to safely publish stories, blogs, and audio narrations with built-in search dominance and instant monetization readiness.",
         technologies: ["Supabase Database", "Row-Level Security", "TanStack Start v1", "Google Search Console API", "JSON-LD Schemas", "Edge Workers"],
         colorAccent: "from-zinc-850/20 via-transparent to-black",
-        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1600&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1618401471353-b98aedd07871?q=80&w=1600&auto=format&fit=crop",
         citeText: "AbuQitmirLabs. (2026). Programmatic SEO architectures and secure distributed content management engines. AbuQitmirLabs Technical Publications."
     },
     {
