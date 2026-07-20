@@ -58,23 +58,55 @@ const CASE_STUDIES: CaseStudy[] = [
         link: "/case-studies/tajweedpage"
     },
     {
-        id: "apex-commerce",
-        title: "Apex Autonomous AI Commerce System",
-        client: "ApexRetail Global Group",
+        id: "ghastlypages-cinema",
+        title: "GhastlyPages — Cinematic Horror Fiction & Audio Storytelling Platform",
+        client: "GhastlyPages",
         year: "2026",
-        industry: "AI-Powered E-Commerce & Logistics",
+        industry: "Cinematic Horror & Audio Storytelling",
         metrics: [
-            { label: "Manual Processing Reduction", value: "85%" },
-            { label: "Checkout Conversions Surge", value: "+38%" },
-            { label: "Order Fulfilment Velocity", value: "6.2x faster" }
+            { label: "Story Pages", value: "Hundreds" },
+            { label: "Hero Loading Speed", value: "Instant" },
+            { label: "Media Load Penalty", value: "0%" }
         ],
-        challenge: "ApexRetail was drowning in manual order orchestration, custom catalog synchronization delays across 12 countries, and high cart abandonment caused by rigid traditional payment flows.",
-        solution: "We engineered an autonomous, real-time commerce engine powered by containerized fine-tuned Llama models and state-persisted Firestore databases. The system handles automated catalogs, translates localized product details, and routes inventory securely on the fly.",
-        impact: "Saved $1.4M in operational staffing in the first 90 days. Boosted multi-national checkout rates, establishing a permanent architectural reference for agentic logistics.",
-        technologies: ["Node.js Microservices", "Firestore db", "Fine-tuned LLMs", "React Server Components", "Docker", "Tailwind CSS"],
-        colorAccent: "from-[#ccff00]/10 via-transparent to-black",
-        image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=1600&auto=format&fit=crop",
-        citeText: "AbuQitmirLabs. (2026). Autonomous AI agent commerce deployment at scale. AbuQitmirLabs Technical Case Studies."
+        challenge: "The horror-fiction space is dominated by legacy forums with dated UX and generic blog templates. GhastlyPages needed an immersive, atmospheric platform that felt genuinely cinematic rather than a standard dark layout.",
+        solution: "We designed a dark visual experience with scroll-driven frame transitions, parallax showcases, and background-loaded media streams:",
+        bullets: [
+            "Scroll-Driven Storyteller — GSAP and ScrollTrigger-powered immersive frame transitions and character reveals that turn stories into dynamic experiences",
+            "Ambient Audio Layer — An optional, atmospheric horror soundtrack using on-demand loading policies to keep page interactive times ultra-fast",
+            "Original Character Dossiers — Interactive, parallax-shifted survival pages for unique creepypasta entities (The Smiling Man, Whisper Man, Morpheus)",
+            "Optimized Frame-Sequence Hero — Eliminated over 50 parallel image requests on page load by eagerly serving the first frame while caching the rest in the background"
+        ],
+        impact: "Delivered a breathtaking, cinematic web application with excellent performance, enabling readers to engage with immersive stories without any media loading latency.",
+        technologies: ["GSAP Animation", "ScrollTrigger", "Vite 7", "React 19", "Audio Object API", "Tailwind CSS"],
+        colorAccent: "from-red-950/20 via-transparent to-black",
+        image: "https://images.unsplash.com/photo-1514894780887-121968d00567?q=80&w=1600&auto=format&fit=crop",
+        citeText: "AbuQitmirLabs. (2026). High-fidelity cinematic storytelling engines and optimized frame-sequence media loading. AbuQitmirLabs Creative Deployments."
+    },
+    {
+        id: "ghastlypages-seo",
+        title: "GhastlyPages — Programmatic SEO & Secure Publishing Backend",
+        client: "GhastlyPages",
+        year: "2026",
+        industry: "Enterprise SEO & Custom CMS",
+        metrics: [
+            { label: "Core Pages Group", value: "24 Pages" },
+            { label: "SEO Indexing Ready", value: "100%" },
+            { label: "Access Control Layer", value: "RLS Secured" }
+        ],
+        challenge: "Niche publishing sites struggle to rank under generic models, suffering from indexing penalties caused by teaser duplications, complex manual workflows, and high administrative risks.",
+        solution: "We engineered a robust Supabase-backed database paired with a programmatic semantic SEO pipeline and automated indexing infrastructure:",
+        bullets: [
+            "Supabase Publishing Backend — Custom role table architecture with row-level security policies (RLS) preventing privilege escalation during story creation",
+            "Structured Schema Engine — Automated, site-wide schema generation (Article, FAQPage, BreadcrumbList, AudioObject) enabling rich snippets in Search Engines",
+            "Programmatic Canonical Routing — Automated canonical-link mapper resolved duplication warnings between teaser blog cards and full stories",
+            "Edge-Cached Sitemap — Dynamic sitemap.xml generated at the edge and cached (s-maxage=3600) to keep crawl speeds consistently fast",
+            "Roman-Urdu AdSense Compliance — Implemented a systemic localization mapping layer to align with strict AdSense language requirements before submission"
+        ],
+        impact: "Empowered a non-technical editorial team to safely publish stories, blogs, and audio narrations with built-in search dominance and instant monetization readiness.",
+        technologies: ["Supabase Database", "Row-Level Security", "TanStack Start v1", "Google Search Console API", "JSON-LD Schemas", "Edge Workers"],
+        colorAccent: "from-zinc-850/20 via-transparent to-black",
+        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1600&auto=format&fit=crop",
+        citeText: "AbuQitmirLabs. (2026). Programmatic SEO architectures and secure distributed content management engines. AbuQitmirLabs Technical Publications."
     },
     {
         id: "zenith-dashboard",
