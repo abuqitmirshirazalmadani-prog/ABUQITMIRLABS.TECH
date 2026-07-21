@@ -9,22 +9,24 @@ import { useEffect, lazy, Suspense } from 'react';
 import FacebookPixel from './components/FacebookPixel';
 import ErrorBoundary from './components/ErrorBoundary';
 
-// Eager import core pages for instant, lag-free navigation
+// Eager import landing page for immediate initial render
 import HomePage from './pages/HomePage';
-import CustomSoftwarePage from './pages/CustomSoftwarePage';
-import MobileAppDevelopmentPage from './pages/MobileAppDevelopmentPage';
-import WebDevelopmentPage from './pages/WebDevelopmentPage';
-import AIAgentDevelopmentPage from './pages/AIAgentDevelopmentPage';
-import SEOPage from './pages/SEOPage';
-import LocalSEOSmallBusinessPage from './pages/LocalSEOSmallBusinessPage';
-import GraphicsDesignPage from './pages/GraphicsDesignPage';
-import ContentWritingPage from './pages/ContentWritingPage';
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
-import BlogPage from './pages/BlogPage';
-import CaseStudiesPage from './pages/CaseStudiesPage';
 
-// Lazy load secondary/administrative pages
+// Lazy load all secondary and service pages for fast initial bundle size
+const CustomSoftwarePage = lazy(() => import('./pages/CustomSoftwarePage'));
+const MobileAppDevelopmentPage = lazy(() => import('./pages/MobileAppDevelopmentPage'));
+const WebDevelopmentPage = lazy(() => import('./pages/WebDevelopmentPage'));
+const AIAgentDevelopmentPage = lazy(() => import('./pages/AIAgentDevelopmentPage'));
+const SEOPage = lazy(() => import('./pages/SEOPage'));
+const LocalSEOSmallBusinessPage = lazy(() => import('./pages/LocalSEOSmallBusinessPage'));
+const GraphicsDesignPage = lazy(() => import('./pages/GraphicsDesignPage'));
+const ContentWritingPage = lazy(() => import('./pages/ContentWritingPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const CaseStudiesPage = lazy(() => import('./pages/CaseStudiesPage'));
+
+// Secondary & administrative pages
 const USMarketPage = lazy(() => import('./pages/USMarketPage'));
 const UKMarketPage = lazy(() => import('./pages/UKMarketPage'));
 const PakistanMarketPage = lazy(() => import('./pages/PakistanMarketPage'));
@@ -38,8 +40,20 @@ const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const CaseStudyTajweedPage = lazy(() => import('./pages/CaseStudyTajweedPage'));
 const WebsiteContractPage = lazy(() => import('./pages/WebsiteContractPage'));
 
-// High-performance background preloading to ensure remaining secondary pages load instantly
+// High-performance background preloading to ensure all routes load instantly when clicked
 const pageImports = [
+  () => import('./pages/CustomSoftwarePage'),
+  () => import('./pages/MobileAppDevelopmentPage'),
+  () => import('./pages/WebDevelopmentPage'),
+  () => import('./pages/AIAgentDevelopmentPage'),
+  () => import('./pages/SEOPage'),
+  () => import('./pages/LocalSEOSmallBusinessPage'),
+  () => import('./pages/GraphicsDesignPage'),
+  () => import('./pages/ContentWritingPage'),
+  () => import('./pages/AboutPage'),
+  () => import('./pages/ContactPage'),
+  () => import('./pages/BlogPage'),
+  () => import('./pages/CaseStudiesPage'),
   () => import('./pages/USMarketPage'),
   () => import('./pages/UKMarketPage'),
   () => import('./pages/PakistanMarketPage'),
