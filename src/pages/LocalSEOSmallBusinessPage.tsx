@@ -72,12 +72,13 @@ export default function LocalSEOSmallBusinessPage() {
                     content="Local SEO for small business owners who need real results on a real budget. Affordable local SEO packages, a step-by-step action plan, and honest DIY-vs-hire guidance." 
                 />
                 <link rel="canonical" href="https://www.abuqitmirlabs.tech/local-seo-for-small-business" />
+                <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
 
                 {/* Open Graph */}
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://www.abuqitmirlabs.tech/local-seo-for-small-business" />
                 <meta property="og:title" content="Local SEO for Small Business | AbuQitmirLabs" />
-                <meta property="og:description" content="A practical, budget-aware local SEO guide and service for small business owners — no jargon, no bloated retainers." />
+                <meta property="og:description" content="Local SEO for small business owners who need real results on a real budget. Affordable local SEO packages, a step-by-step action plan, and honest DIY-vs-hire guidance." />
                 <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
                 <meta property="og:site_name" content="AbuQitmirLabs" />
 
@@ -85,7 +86,7 @@ export default function LocalSEOSmallBusinessPage() {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@AbuQitmir" />
                 <meta name="twitter:title" content="Local SEO for Small Business | AbuQitmirLabs" />
-                <meta name="twitter:description" content="Affordable, honest local SEO built for small business budgets — not enterprise retainers." />
+                <meta name="twitter:description" content="Local SEO for small business owners who need real results on a real budget. Affordable local SEO packages, a step-by-step action plan, and honest DIY-vs-hire guidance." />
                 <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
                 {/* JSON-LD Schema */}
@@ -94,21 +95,66 @@ export default function LocalSEOSmallBusinessPage() {
                         "@context": "https://schema.org",
                         "@graph": [
                             {
+                                "@type": "Organization",
+                                "@id": "https://www.abuqitmirlabs.tech/#organization",
+                                "name": "AbuQitmirLabs .TECH",
+                                "description": "Empowering businesses through advanced digital engineering — custom software, AI agents, web development, and local SEO services.",
+                                "url": "https://www.abuqitmirlabs.tech",
+                                "logo": "https://www.abuqitmirlabs.tech/logo.png",
+                                "foundingDate": "2020",
+                                "address": {
+                                    "@type": "PostalAddress",
+                                    "addressLocality": "Karachi",
+                                    "addressCountry": "PK"
+                                },
+                                "contactPoint": {
+                                    "@type": "ContactPoint",
+                                    "telephone": "+92-323-3260859",
+                                    "contactType": "sales",
+                                    "availableLanguage": ["English", "Urdu"]
+                                },
+                                "sameAs": [
+                                    "https://twitter.com/AbuQitmir",
+                                    "https://www.linkedin.com/company/abuqitmirlabs",
+                                    "https://www.facebook.com/abuqitmirlabs"
+                                ]
+                            },
+                            {
+                                "@type": "WebPage",
+                                "@id": "https://www.abuqitmirlabs.tech/local-seo-for-small-business#webpage",
+                                "url": "https://www.abuqitmirlabs.tech/local-seo-for-small-business",
+                                "name": "Local SEO for Small Business | Affordable Plans | AbuQitmirLabs",
+                                "description": "Local SEO for small business owners who need real results on a real budget. Affordable local SEO packages, a step-by-step action plan, and honest DIY-vs-hire guidance.",
+                                "inLanguage": "en-US",
+                                "isPartOf": {
+                                    "@id": "https://www.abuqitmirlabs.tech/#website"
+                                },
+                                "about": {
+                                    "@id": "https://www.abuqitmirlabs.tech/local-seo-for-small-business#service"
+                                },
+                                "primaryImageOfPage": {
+                                    "@type": "ImageObject",
+                                    "url": "https://www.abuqitmirlabs.tech/logo.png",
+                                    "width": "1200",
+                                    "height": "630"
+                                },
+                                "breadcrumb": {
+                                    "@id": "https://www.abuqitmirlabs.tech/local-seo-for-small-business#breadcrumb"
+                                },
+                                "potentialAction": [
+                                    {
+                                        "@type": "ReadAction",
+                                        "target": "https://www.abuqitmirlabs.tech/local-seo-for-small-business"
+                                    }
+                                ]
+                            },
+                            {
                                 "@type": "Service",
                                 "@id": "https://www.abuqitmirlabs.tech/local-seo-for-small-business#service",
                                 "name": "Local SEO for Small Business",
                                 "description": "Affordable local SEO services built specifically for small business budgets — Google Business Profile setup, foundational citations, and starter keyword targeting without enterprise-level retainers.",
                                 "provider": {
-                                    "@type": "Organization",
-                                    "name": "AbuQitmirLabs .TECH",
-                                    "url": "https://www.abuqitmirlabs.tech",
-                                    "logo": "https://www.abuqitmirlabs.tech/logo.png",
-                                    "address": {
-                                        "@type": "PostalAddress",
-                                        "addressLocality": "Karachi",
-                                        "addressCountry": "PK"
-                                    },
-                                    "sameAs": ["https://twitter.com/AbuQitmir"]
+                                    "@id": "https://www.abuqitmirlabs.tech/#organization"
                                 },
                                 "areaServed": ["US", "GB", "PK", "CA", "PL", "AU"],
                                 "serviceType": "Local Search Engine Optimisation for Small Business",
@@ -123,26 +169,93 @@ export default function LocalSEOSmallBusinessPage() {
                                         "priceCurrency": "USD",
                                         "unitText": "MONTH"
                                     }
+                                },
+                                "audience": {
+                                    "@type": "BusinessAudience",
+                                    "name": "Small Business Owners"
+                                },
+                                "serviceAudience": {
+                                    "@type": "Audience",
+                                    "name": "Single-location small businesses"
                                 }
                             },
                             {
                                 "@type": "FAQPage",
-                                "mainEntity": faqs.map(faq => ({
-                                    "@type": "Question",
-                                    "name": faq.q,
-                                    "acceptedAnswer": {
-                                        "@type": "Answer",
-                                        "text": faq.a
+                                "@id": "https://www.abuqitmirlabs.tech/local-seo-for-small-business#faq",
+                                "mainEntity": [
+                                    {
+                                        "@type": "Question",
+                                        "name": "Is local SEO worth it for a small business?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Yes. Local SEO is typically the highest-ROI marketing channel available to a small business because it captures customers at the exact moment they're searching for a nearby solution. Unlike paid ads, the visibility you build compounds over time instead of disappearing when the budget runs out."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "Can a small business do local SEO themselves?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Small business owners can handle the basics themselves — claiming and completing a Google Business Profile, requesting reviews, and keeping name, address, and phone number consistent across directories. However, technical on-page work, structured citation building at scale, and schema markup implementation usually require professional support to execute correctly and consistently."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "How much does affordable local SEO cost for a small business?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Affordable local SEO for a single-location small business typically runs $500 to $1,000 per month, covering Google Business Profile optimisation, foundational citation building, and basic on-page localisation. This is the entry tier of the broader local SEO pricing spectrum, which can reach $3,000 to $5,000+ per month for multi-location enterprise campaigns."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "What's the difference between cheap local SEO and affordable local SEO?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Cheap local SEO usually means low-effort, templated work — spun citations, no measurement, no real strategy — sold at a rock-bottom price and prone to producing spammy citations that can actively harm rankings. Affordable local SEO means the same rigorous fundamentals used in larger campaigns, scoped down to fit a smaller budget and a single location, without cutting corners on quality."
+                                        }
                                     }
-                                }))
+                                ]
                             },
                             {
                                 "@type": "BreadcrumbList",
+                                "@id": "https://www.abuqitmirlabs.tech/local-seo-for-small-business#breadcrumb",
                                 "itemListElement": [
-                                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abuqitmirlabs.tech/" },
-                                    { "@type": "ListItem", "position": 2, "name": "Local SEO Services", "item": "https://www.abuqitmirlabs.tech/seo-mastery" },
-                                    { "@type": "ListItem", "position": 3, "name": "Local SEO for Small Business", "item": "https://www.abuqitmirlabs.tech/local-seo-for-small-business" }
+                                    {
+                                        "@type": "ListItem",
+                                        "position": 1,
+                                        "name": "Home",
+                                        "item": "https://www.abuqitmirlabs.tech/"
+                                    },
+                                    {
+                                        "@type": "ListItem",
+                                        "position": 2,
+                                        "name": "Local SEO Services",
+                                        "item": "https://www.abuqitmirlabs.tech/local-seo-services"
+                                    },
+                                    {
+                                        "@type": "ListItem",
+                                        "position": 3,
+                                        "name": "Local SEO for Small Business",
+                                        "item": "https://www.abuqitmirlabs.tech/local-seo-for-small-business"
+                                    }
                                 ]
+                            },
+                            {
+                                "@type": "WebSite",
+                                "@id": "https://www.abuqitmirlabs.tech/#website",
+                                "url": "https://www.abuqitmirlabs.tech",
+                                "name": "AbuQitmirLabs .TECH",
+                                "description": "Custom software, AI agents, web development, and local SEO services. 410+ projects completed. 350+ clients. 3x faster ROI.",
+                                "inLanguage": "en-US",
+                                "publisher": {
+                                    "@id": "https://www.abuqitmirlabs.tech/#organization"
+                                },
+                                "potentialAction": {
+                                    "@type": "SearchAction",
+                                    "target": "https://www.abuqitmirlabs.tech/search?q={search_term_string}",
+                                    "query-input": "required name=search_term_string"
+                                }
                             }
                         ]
                     })}
@@ -237,6 +350,30 @@ export default function LocalSEOSmallBusinessPage() {
                     </motion.div>
                 </div>
             </section>
+
+            {/* NEO-BRUTALIST LOCAL SEO MARQUEE */}
+            <div className="overflow-hidden transform z-20 bg-[#B9FF66] w-full border-y-4 border-black py-4 relative shadow-[0_8px_0_0_rgba(0,0,0,1)] -rotate-1 my-10">
+                <div className="flex whitespace-nowrap w-max animate-marquee">
+                    {[...Array(2)].map((_, i) => (
+                        <div key={i} className="flex gap-10 text-2xl md:text-4xl font-black tracking-tighter uppercase items-center text-black px-10">
+                            {[
+                                "Google Maps Pack Optimization",
+                                "Local Search Visibility & Rankings",
+                                "GBP Profile Audit & Setup",
+                                "Strict NAP Citation Uniformity",
+                                "Localized On-Page Keywords",
+                                "Systematized Customer Reviews",
+                                "High-Intent Local Customer Calls"
+                            ].map((item, idx) => (
+                                <React.Fragment key={idx}>
+                                    <span>{item}</span>
+                                    <Star className="fill-current text-black shrink-0" size={28} />
+                                </React.Fragment>
+                            ))}
+                        </div>
+                    ))}
+                </div>
+            </div>
 
             {/* SECTION 1: THE SMALL BUSINESS REALITY */}
             <section className="py-20 px-6 md:px-12 max-w-[1400px] mx-auto border-t border-white/10">
