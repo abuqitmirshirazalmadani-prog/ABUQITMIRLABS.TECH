@@ -32,6 +32,7 @@ const Header = () => {
                 { name: 'High-Performance Web Development', href: '/web-development' },
                 { name: 'Intelligent AI Agent Development', href: '/ai-agent-development' },
                 { name: 'SEO & Local SEO Mastery', href: '/seo-mastery' },
+                { name: 'Local SEO for Small Business', href: '/local-seo-for-small-business' },
                 { name: 'Premium Graphics Designing', href: '/graphics-design' },
                 { name: 'Professional Content Writing', href: '/content-writing' },
             ]

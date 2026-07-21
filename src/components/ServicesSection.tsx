@@ -100,109 +100,135 @@ const services: Service[] = [
 ];
 
 const TorusKnotAnimation = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
+    const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
-        if (!containerRef.current) return;
+        const canvas = canvasRef.current;
+        if (!canvas) return;
 
-        const container = containerRef.current;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
         let active = true;
-        let renderer: any = null;
-        let geometry: any = null;
-        let particleMaterial: any = null;
-        let frameId: number | null = null;
-        let resizeHandler: (() => void) | null = null;
-        let mouseMoveHandler: ((event: MouseEvent) => void) | null = null;
+        let frameId: number;
 
-        import('three').then((THREE) => {
-            if (!active || !containerRef.current) return;
+        const numPoints = 700;
+        const mainRadius = 7;
+        const tubeRadius = 2.5;
+        const p = 2;
+        const q = 3;
 
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-            camera.position.z = 25;
+        const points: { x: number; y: number; z: number; size: number }[] = [];
 
-            renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            renderer.setSize(container.clientWidth, container.clientHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            container.appendChild(renderer.domElement);
+        for (let i = 0; i < numPoints; i++) {
+            const u = (i / numPoints) * Math.PI * 2 * p;
 
-            geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
-            particleMaterial = new THREE.PointsMaterial({
-                color: 0x8b5cf6, // Violet
-                size: 0.1,
-                transparent: true,
-                opacity: 0.4,
-                blending: THREE.AdditiveBlending
+            const r = mainRadius + tubeRadius * Math.cos((q * u) / p);
+            const cx = r * Math.cos(u);
+            const cy = r * Math.sin(u);
+            const cz = tubeRadius * Math.sin((q * u) / p);
+
+            const dx = (Math.random() - 0.5) * 1.2;
+            const dy = (Math.random() - 0.5) * 1.2;
+            const dz = (Math.random() - 0.5) * 1.2;
+
+            points.push({
+                x: cx + dx,
+                y: cy + dy,
+                z: cz + dz,
+                size: Math.random() * 1.2 + 0.8
+            });
+        }
+
+        let rotX = 0;
+        let rotY = 0;
+        let targetRotX = 0;
+        let targetRotY = 0;
+
+        const handleMouseMove = (e: MouseEvent) => {
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            targetRotY = (e.clientX - centerX) * 0.0003;
+            targetRotX = (e.clientY - centerY) * 0.0003;
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+
+        const resize = () => {
+            if (!canvas || !canvas.parentElement) return;
+            const rect = canvas.parentElement.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+        };
+
+        resize();
+        window.addEventListener('resize', resize);
+
+        const render = () => {
+            if (!active || !ctx) return;
+
+            const width = canvas.width;
+            const height = canvas.height;
+            const dpr = window.devicePixelRatio || 1;
+
+            ctx.clearRect(0, 0, width, height);
+
+            rotY += 0.004 + (targetRotY - rotY) * 0.05;
+            rotX += 0.002 + (targetRotX - rotX) * 0.05;
+
+            const cosX = Math.cos(rotX);
+            const sinX = Math.sin(rotX);
+            const cosY = Math.cos(rotY);
+            const sinY = Math.sin(rotY);
+
+            const fov = 350 * dpr;
+            const centerX = width / 2;
+            const centerY = height / 2;
+
+            const projected = points.map((pt) => {
+                const x1 = pt.x * cosY - pt.z * sinY;
+                const z1 = pt.x * sinY + pt.z * cosY;
+
+                const y2 = pt.y * cosX - z1 * sinX;
+                const z2 = pt.y * sinX + z1 * cosX;
+
+                const distance = 22;
+                const perspective = fov / (fov + (z2 + distance) * 10);
+
+                return {
+                    px: centerX + x1 * 14 * perspective,
+                    py: centerY + y2 * 14 * perspective,
+                    pz: z2,
+                    size: pt.size * perspective * dpr,
+                    alpha: Math.max(0.1, Math.min(0.85, (z2 + 15) / 30))
+                };
             });
 
-            const particles = new THREE.Points(geometry, particleMaterial);
-            scene.add(particles);
+            projected.sort((a, b) => a.pz - b.pz);
 
-            let mouseX = 0;
-            let mouseY = 0;
-            let targetX = 0;
-            let targetY = 0;
+            for (let i = 0; i < projected.length; i++) {
+                const pt = projected[i];
+                ctx.fillStyle = `rgba(139, 92, 246, ${pt.alpha * 0.65})`;
+                ctx.beginPath();
+                ctx.arc(pt.px, pt.py, Math.max(0.5, pt.size), 0, Math.PI * 2);
+                ctx.fill();
+            }
 
-            mouseMoveHandler = (event: MouseEvent) => {
-                mouseX = (event.clientX - window.innerWidth / 2) * 0.0005;
-                mouseY = (event.clientY - window.innerHeight / 2) * 0.0005;
-            };
+            frameId = requestAnimationFrame(render);
+        };
 
-            window.addEventListener('mousemove', mouseMoveHandler);
-
-            const animate = () => {
-                if (!active) return;
-                frameId = requestAnimationFrame(animate);
-                
-                targetX += (mouseX - targetX) * 0.05;
-                targetY += (mouseY - targetY) * 0.05;
-
-                particles.rotation.y += 0.001;
-                particles.rotation.x += 0.0005;
-                particles.rotation.y += targetX;
-                particles.rotation.x += targetY;
-
-                renderer.render(scene, camera);
-            };
-
-            animate();
-
-            resizeHandler = () => {
-                camera.aspect = container.clientWidth / container.clientHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(container.clientWidth, container.clientHeight);
-            };
-
-            window.addEventListener('resize', resizeHandler);
-        }).catch((err) => {
-            console.error('Failed to load Three.js dynamically:', err);
-        });
+        render();
 
         return () => {
             active = false;
-            if (mouseMoveHandler) {
-                window.removeEventListener('mousemove', mouseMoveHandler);
-            }
-            if (resizeHandler) {
-                window.removeEventListener('resize', resizeHandler);
-            }
-            if (frameId !== null) {
-                cancelAnimationFrame(frameId);
-            }
-            if (renderer) renderer.dispose();
-            if (geometry) geometry.dispose();
-            if (particleMaterial) particleMaterial.dispose();
-            if (container && renderer && renderer.domElement && container.contains(renderer.domElement)) {
-                try {
-                    container.removeChild(renderer.domElement);
-                } catch (e) {
-                    // Ignore container checkout races
-                }
-            }
+            cancelAnimationFrame(frameId);
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('resize', resize);
         };
     }, []);
 
-    return <div ref={containerRef} className="absolute inset-0 pointer-events-none opacity-40 mix-blend-screen" />;
+    return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none opacity-60 mix-blend-screen" />;
 };
 
 const ServiceItem: React.FC<{ service: Service }> = ({ service }) => {

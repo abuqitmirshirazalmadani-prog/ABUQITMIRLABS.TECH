@@ -16,6 +16,7 @@ import MobileAppDevelopmentPage from './pages/MobileAppDevelopmentPage';
 import WebDevelopmentPage from './pages/WebDevelopmentPage';
 import AIAgentDevelopmentPage from './pages/AIAgentDevelopmentPage';
 import SEOPage from './pages/SEOPage';
+import LocalSEOSmallBusinessPage from './pages/LocalSEOSmallBusinessPage';
 import GraphicsDesignPage from './pages/GraphicsDesignPage';
 import ContentWritingPage from './pages/ContentWritingPage';
 import AboutPage from './pages/AboutPage';
@@ -154,6 +155,9 @@ export default function App() {
               <Route path="/web-development" element={<WebDevelopmentPage />} />
               <Route path="/ai-agent-development" element={<AIAgentDevelopmentPage />} />
               <Route path="/seo-mastery" element={<SEOPage />} />
+              <Route path="/local-seo-services" element={<Navigate to="/seo-mastery" replace />} />
+              <Route path="/local-seo-for-small-business" element={<LocalSEOSmallBusinessPage />} />
+              <Route path="/local-seo-small-business" element={<Navigate to="/local-seo-for-small-business" replace />} />
               <Route path="/graphics-design" element={<GraphicsDesignPage />} />
               <Route path="/content-writing" element={<ContentWritingPage />} />
               <Route path="/contact" element={<ContactPage />} />
