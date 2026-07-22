@@ -351,6 +351,64 @@ export default function LocalSEOSmallBusinessPage() {
                 </div>
             </section>
 
+            {/* Specialized Sub-Services Cards */}
+            <section className="px-6 md:px-12 max-w-7xl mx-auto py-12">
+                <div className="text-center max-w-3xl mx-auto mb-10">
+                    <span className="text-[#ccff00] text-xs font-mono font-bold tracking-widest uppercase block mb-2">
+                        Specialized Local SEO Solutions
+                    </span>
+                    <h2 className="text-2xl md:text-4xl font-serif font-medium text-white">
+                        Explore Dedicated Local SEO Programs
+                    </h2>
+                </div>
+                <div className="grid md:grid-cols-3 gap-6">
+                    <Link to="/local-seo-citation-building" className="bg-zinc-950 border border-white/10 p-6 rounded-2xl hover:border-[#ccff00] transition-all group flex flex-col justify-between">
+                        <div>
+                            <div className="w-10 h-10 rounded-xl bg-[#ccff00]/10 border border-[#ccff00]/30 flex items-center justify-center text-[#ccff00] font-bold mb-4">
+                                <Layers size={20} />
+                            </div>
+                            <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#ccff00] transition-colors">Citation Building</h3>
+                            <p className="text-zinc-400 text-sm leading-relaxed mb-4">
+                                Structured NAP-consistent directory submissions across tier-1, authority, and niche listings to establish rock-solid local authority.
+                            </p>
+                        </div>
+                        <span className="text-[#ccff00] text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-1">
+                            View Citation Services <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        </span>
+                    </Link>
+
+                    <Link to="/white-label-local-seo" className="bg-zinc-950 border border-white/10 p-6 rounded-2xl hover:border-[#ccff00] transition-all group flex flex-col justify-between">
+                        <div>
+                            <div className="w-10 h-10 rounded-xl bg-[#ccff00]/10 border border-[#ccff00]/30 flex items-center justify-center text-[#ccff00] font-bold mb-4">
+                                <Globe size={20} />
+                            </div>
+                            <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#ccff00] transition-colors">White Label Local SEO</h3>
+                            <p className="text-zinc-400 text-sm leading-relaxed mb-4">
+                                Fully branded local SEO fulfilment for digital agencies — wholesale rates, brandable PDF audits, and zero visibility conflict.
+                            </p>
+                        </div>
+                        <span className="text-[#ccff00] text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-1">
+                            Explore Agency Reselling <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        </span>
+                    </Link>
+
+                    <Link to="/local-seo-audit" className="bg-zinc-950 border border-white/10 p-6 rounded-2xl hover:border-[#ccff00] transition-all group flex flex-col justify-between">
+                        <div>
+                            <div className="w-10 h-10 rounded-xl bg-[#ccff00]/10 border border-[#ccff00]/30 flex items-center justify-center text-[#ccff00] font-bold mb-4">
+                                <Search size={20} />
+                            </div>
+                            <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#ccff00] transition-colors">Free Local SEO Audit</h3>
+                            <p className="text-zinc-400 text-sm leading-relaxed mb-4">
+                                Forensic analysis of your Google Business Profile, citation consistency, on-page signals, and map-pack competitor gap.
+                            </p>
+                        </div>
+                        <span className="text-[#ccff00] text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-1">
+                            Request Free Audit <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        </span>
+                    </Link>
+                </div>
+            </section>
+
             {/* NEO-BRUTALIST LOCAL SEO MARQUEE */}
             <div className="overflow-hidden transform z-20 bg-[#B9FF66] w-full border-y-4 border-black py-4 relative shadow-[0_8px_0_0_rgba(0,0,0,1)] -rotate-1 my-10">
                 <div className="flex whitespace-nowrap w-max animate-marquee">

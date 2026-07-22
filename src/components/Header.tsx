@@ -33,6 +33,9 @@ const Header = () => {
                 { name: 'Intelligent AI Agent Development', href: '/ai-agent-development' },
                 { name: 'SEO & Local SEO Mastery', href: '/seo-mastery' },
                 { name: 'Local SEO for Small Business', href: '/local-seo-for-small-business' },
+                { name: '  ↳ Citation Building', href: '/local-seo-citation-building' },
+                { name: '  ↳ White Label Local SEO', href: '/white-label-local-seo' },
+                { name: '  ↳ Free Local SEO Audit', href: '/local-seo-audit' },
                 { name: 'Premium Graphics Designing', href: '/graphics-design' },
                 { name: 'Professional Content Writing', href: '/content-writing' },
             ]

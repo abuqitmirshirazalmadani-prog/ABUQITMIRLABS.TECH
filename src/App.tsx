@@ -19,6 +19,9 @@ const WebDevelopmentPage = lazy(() => import('./pages/WebDevelopmentPage'));
 const AIAgentDevelopmentPage = lazy(() => import('./pages/AIAgentDevelopmentPage'));
 const SEOPage = lazy(() => import('./pages/SEOPage'));
 const LocalSEOSmallBusinessPage = lazy(() => import('./pages/LocalSEOSmallBusinessPage'));
+const LocalSEOCitationBuildingPage = lazy(() => import('./pages/LocalSEOCitationBuildingPage'));
+const WhiteLabelLocalSEOPage = lazy(() => import('./pages/WhiteLabelLocalSEOPage'));
+const LocalSEOAuditPage = lazy(() => import('./pages/LocalSEOAuditPage'));
 const GraphicsDesignPage = lazy(() => import('./pages/GraphicsDesignPage'));
 const ContentWritingPage = lazy(() => import('./pages/ContentWritingPage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
@@ -48,6 +51,9 @@ const pageImports = [
   () => import('./pages/AIAgentDevelopmentPage'),
   () => import('./pages/SEOPage'),
   () => import('./pages/LocalSEOSmallBusinessPage'),
+  () => import('./pages/LocalSEOCitationBuildingPage'),
+  () => import('./pages/WhiteLabelLocalSEOPage'),
+  () => import('./pages/LocalSEOAuditPage'),
   () => import('./pages/GraphicsDesignPage'),
   () => import('./pages/ContentWritingPage'),
   () => import('./pages/AboutPage'),
@@ -172,6 +178,9 @@ export default function App() {
               <Route path="/local-seo-services" element={<Navigate to="/seo-mastery" replace />} />
               <Route path="/local-seo-for-small-business" element={<LocalSEOSmallBusinessPage />} />
               <Route path="/local-seo-small-business" element={<Navigate to="/local-seo-for-small-business" replace />} />
+              <Route path="/local-seo-citation-building" element={<LocalSEOCitationBuildingPage />} />
+              <Route path="/white-label-local-seo" element={<WhiteLabelLocalSEOPage />} />
+              <Route path="/local-seo-audit" element={<LocalSEOAuditPage />} />
               <Route path="/graphics-design" element={<GraphicsDesignPage />} />
               <Route path="/content-writing" element={<ContentWritingPage />} />
               <Route path="/contact" element={<ContactPage />} />
