@@ -214,22 +214,21 @@ async function startServer() {
   });
 
   const distPath = path.resolve(__dirname, 'dist');
-  let vite: any = null;
+  
+  // Create Vite server instance for middleware and SSR module rendering
+  const vite = await createViteServer({
+    server: { middlewareMode: true },
+    appType: 'custom',
+  });
 
-  // Vite middleware for development
   if (process.env.NODE_ENV !== 'production') {
-    vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: 'spa',
-    });
     app.use(vite.middlewares);
   } else {
-    // In production, serve the built files from dist
-    // Ensure we serve files followed by index.html as fallback
+    // In production, serve built static assets from dist
     app.use(express.static(distPath));
   }
 
-  // GLOBAL SPA Fallback
+  // GLOBAL SPA & SSR Fallback
   app.get('*', async (req, res, next) => {
     const url = req.originalUrl;
     
@@ -239,25 +238,41 @@ async function startServer() {
     }
 
     try {
-      if (process.env.NODE_ENV !== 'production' && vite) {
-        // Dev fallback
-        const template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
-        const html = await vite.transformIndexHtml(url, template);
-        return res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
+      let template = '';
+      if (process.env.NODE_ENV !== 'production') {
+        const rawTemplate = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
+        template = await vite.transformIndexHtml(url, rawTemplate);
       } else {
-        // Prod fallback - ALWAYS serve index.html for unknown routes to support SPA
         const indexPath = path.join(distPath, 'index.html');
         if (fs.existsSync(indexPath)) {
-          return res.status(200).sendFile(indexPath);
+          template = fs.readFileSync(indexPath, 'utf-8');
         } else {
-          // Absolute fallback to root index if dist/index.html is missing for some reason
-          const rootIndex = path.resolve(__dirname, 'index.html');
-          if (fs.existsSync(rootIndex)) {
-            return res.status(200).sendFile(rootIndex);
-          }
-          return res.status(404).send('Not Found');
+          template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
         }
       }
+
+      // Execute Server-Side Rendering (SSR) via Vite SSR module loader
+      let appHtml = '';
+      try {
+        const { render } = await vite.ssrLoadModule('/src/entry-server.tsx');
+        if (render) {
+          const rendered = render(url);
+          appHtml = rendered.html || '';
+        }
+      } catch (renderErr) {
+        console.error('SSR Render error for URL:', url, renderErr);
+      }
+
+      // Inject rendered SSR HTML inside <div id="root">
+      let fullHtml = template;
+      if (appHtml) {
+        fullHtml = template.replace(
+          '<div id="root"></div>',
+          `<div id="root">${appHtml}</div>`
+        );
+      }
+
+      return res.status(200).set({ 'Content-Type': 'text/html' }).end(fullHtml);
     } catch (e) {
       if (vite) vite.ssrFixStacktrace(e as Error);
       next(e);
