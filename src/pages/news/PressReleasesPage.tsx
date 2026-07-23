@@ -34,7 +34,7 @@ const PressReleasesPage = () => {
       date: "April 02, 2026",
       location: "Karachi, Pakistan",
       summary: "AbuQitmirLabs .TECH confirms successful independent security auditing across its medical software and cloud infrastructure pipelines, establishing full compliance with US HIPAA regulations and ISO 27001 standard data encryption protocols.",
-      contact: "info@abuqitmirlabs.tech"
+      contact: "hello@abuqitmirlabs.tech"
     },
     {
       id: "ai-rag-framework-launch",
@@ -42,7 +42,7 @@ const PressReleasesPage = () => {
       date: "July 18, 2026",
       location: "Karachi, Pakistan",
       summary: "Founder & Lead Architect Abu Qitmir announces the release of a proprietary multi-agent RAG pipeline designed to automate document parsing, fraud detection, and customer support with sub-200ms API response latency.",
-      contact: "info@abuqitmirlabs.tech"
+      contact: "hello@abuqitmirlabs.tech"
     },
     {
       id: "milestone-410-projects-350-clients",
@@ -50,7 +50,7 @@ const PressReleasesPage = () => {
       date: "January 10, 2026",
       location: "Karachi, Pakistan",
       summary: "Marking 5 years of operation since founding in 2021, AbuQitmirLabs celebrates over 410 successful software engineering deployments across the United States, United Kingdom, Australia, and European Union.",
-      contact: "info@abuqitmirlabs.tech"
+      contact: "hello@abuqitmirlabs.tech"
     }
   ];
 

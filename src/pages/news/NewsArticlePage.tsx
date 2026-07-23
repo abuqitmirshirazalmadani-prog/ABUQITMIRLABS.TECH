@@ -52,7 +52,7 @@ export const staticNewsArticles: NewsArticle[] = [
     author: "Abu Qitmir Mohammad Shiraz Al-Madani",
     readTime: "6 min read",
     location: "Karachi, Pakistan",
-    contact: "info@abuqitmirlabs.tech",
+    contact: "hello@abuqitmirlabs.tech",
     excerpt: "Our engineering studio in Karachi has announced a new open-spec RAG framework that cuts LLM vector search latency to under 180ms while guaranteeing zero data hallucination.",
     content: `# AbuQitmirLabs Releases Autonomous Multi-Agent RAG Framework for Enterprise Clients
 
@@ -75,21 +75,21 @@ Across 50+ enterprise benchmarks conducted in Q2 2026, the framework achieved:
 - **Relevance Score**: 98.6% precision at Top-3 retrieved documents.
 - **Memory Efficiency**: 40% reduction in token consumption via compressed context windows.
 
-For deployment inquiries or custom integration with your private infrastructure, contact our engineering team at info@abuqitmirlabs.tech.`
-  },
-  {
-    id: "us-uk-expansion-q3",
-    slug: "us-uk-expansion-q3",
-    title: "AbuQitmirLabs Expands Dedicated Engineering Squads for US & UK Fintech Markets",
-    type: "latest",
-    category: "Company News",
-    date: "June 28, 2026",
-    author: "Engineering Studio Team",
-    readTime: "5 min read",
-    location: "Karachi, Pakistan",
-    contact: "info@abuqitmirlabs.tech",
-    excerpt: "Following a 45% growth in international client contracts, AbuQitmirLabs expands its in-house developer squads in Karachi to support round-the-clock US EST and UK GMT shift deployments.",
-    content: `# AbuQitmirLabs Expands Dedicated Engineering Squads for US & UK Fintech Markets
+For deployment inquiries or custom integration with your private infrastructure, contact our engineering team at hello@abuqitmirlabs.tech.`
+    },
+    {
+      id: "us-uk-expansion-q3",
+      slug: "us-uk-expansion-q3",
+      title: "AbuQitmirLabs Expands Dedicated Engineering Squads for US & UK Fintech Markets",
+      type: "latest",
+      category: "Company News",
+      date: "June 28, 2026",
+      author: "Engineering Studio Team",
+      readTime: "5 min read",
+      location: "Karachi, Pakistan",
+      contact: "hello@abuqitmirlabs.tech",
+      excerpt: "Following a 45% growth in international client contracts, AbuQitmirLabs expands its in-house developer squads in Karachi to support round-the-clock US EST and UK GMT shift deployments.",
+      content: `# AbuQitmirLabs Expands Dedicated Engineering Squads for US & UK Fintech Markets
 
 Following a 45% growth in international client contracts, AbuQitmirLabs expands its in-house developer squads in Karachi to support round-the-clock US EST and UK GMT shift deployments.
 
@@ -104,20 +104,20 @@ As European and American financial institutions modernize legacy core systems, d
 ## Geopolitical Engineering Advantage
 
 By leveraging high-caliber engineering talent in Pakistan, international clients achieve 60% higher capital efficiency while retaining direct IP ownership and senior architectural oversight.`
-  },
-  {
-    id: "generative-engine-optimization-geo-strategy",
-    slug: "generative-engine-optimization-geo-strategy",
-    title: "Generative Engine Optimization (GEO): The Complete 2026 Strategy for Technical Leaders",
-    type: "industry-insights",
-    category: "SEO & GEO",
-    date: "May 14, 2026",
-    author: "Abu Qitmir Mohammad Shiraz Al-Madani",
-    readTime: "9 min read",
-    location: "Karachi, Pakistan",
-    contact: "info@abuqitmirlabs.tech",
-    excerpt: "Why traditional keyword stuffing fails in ChatGPT and Google AI Overviews. How to structure JSON-LD Schema entity graphs and direct answer blocks for maximum AI citation rates.",
-    content: `# Generative Engine Optimization (GEO): The Complete 2026 Strategy for Technical Leaders
+    },
+    {
+      id: "generative-engine-optimization-geo-strategy",
+      slug: "generative-engine-optimization-geo-strategy",
+      title: "Generative Engine Optimization (GEO): The Complete 2026 Strategy for Technical Leaders",
+      type: "industry-insights",
+      category: "SEO & GEO",
+      date: "May 14, 2026",
+      author: "Abu Qitmir Mohammad Shiraz Al-Madani",
+      readTime: "9 min read",
+      location: "Karachi, Pakistan",
+      contact: "hello@abuqitmirlabs.tech",
+      excerpt: "Why traditional keyword stuffing fails in ChatGPT and Google AI Overviews. How to structure JSON-LD Schema entity graphs and direct answer blocks for maximum AI citation rates.",
+      content: `# Generative Engine Optimization (GEO): The Complete 2026 Strategy for Technical Leaders
 
 Why traditional keyword stuffing fails in ChatGPT and Google AI Overviews. How to structure JSON-LD Schema entity graphs and direct answer blocks for maximum AI citation rates.
 
@@ -135,20 +135,20 @@ In 2026, search engine result pages (SERPs) are dominated by AI Overviews and co
 ## Empirical Benchmarks & Citation Lift
 
 In a study of 120 client web properties engineered by AbuQitmirLabs, implementing structured GEO graph architectures yielded a **3.4x increase in Google AI Overview citation frequency** within 45 days.`
-  },
-  {
-    id: "hipaa-cloud-certification",
-    slug: "hipaa-cloud-certification",
-    title: "AbuQitmirLabs Achieves Full HIPAA & ISO 27001 Cloud Security Validation",
-    type: "press-releases",
-    category: "Press Release",
-    date: "April 02, 2026",
-    author: "Media Relations Team",
-    readTime: "4 min read",
-    location: "Karachi, Pakistan",
-    contact: "info@abuqitmirlabs.tech",
-    excerpt: "Official security audit confirms that all custom medical software platforms engineered by AbuQitmirLabs meet strict HIPAA, HITECH, and ISO 27001 data protection protocols.",
-    content: `# AbuQitmirLabs Achieves Full HIPAA & ISO 27001 Cloud Security Validation
+    },
+    {
+      id: "hipaa-cloud-certification",
+      slug: "hipaa-cloud-certification",
+      title: "AbuQitmirLabs Achieves Full HIPAA & ISO 27001 Cloud Security Validation",
+      type: "press-releases",
+      category: "Press Release",
+      date: "April 02, 2026",
+      author: "Media Relations Team",
+      readTime: "4 min read",
+      location: "Karachi, Pakistan",
+      contact: "hello@abuqitmirlabs.tech",
+      excerpt: "Official security audit confirms that all custom medical software platforms engineered by AbuQitmirLabs meet strict HIPAA, HITECH, and ISO 27001 data protection protocols.",
+      content: `# AbuQitmirLabs Achieves Full HIPAA & ISO 27001 Cloud Security Validation
 
 Official security audit confirms that all custom medical software platforms engineered by AbuQitmirLabs meet strict HIPAA, HITECH, and ISO 27001 data protection protocols.
 
@@ -162,21 +162,21 @@ Following an exhaustive 6-month independent security audit, AbuQitmirLabs .TECH 
 - **Zero PHI Exposure Architecture**: Automated data masking and isolated cloud tenancy for protected health information.
 - **Immutable Audit Logging**: Real-time security event tracking and automated anomaly detection.
 
-Healthcare organizations seeking custom EHR, telehealth, or diagnostic software can contact our compliance engineers at info@abuqitmirlabs.tech.`
-  },
-  {
-    id: "sub-200ms-rag-pipelines",
-    slug: "sub-200ms-rag-pipelines",
-    title: "Engineering Sub-200ms RAG Pipelines with Pinecone Vector Indexing and LlamaIndex",
-    type: "industry-insights",
-    category: "AI Architecture",
-    date: "June 08, 2026",
-    author: "Abu Huraira",
-    readTime: "11 min read",
-    location: "Karachi, Pakistan",
-    contact: "info@abuqitmirlabs.tech",
-    excerpt: "A deep dive into chunking strategies, hybrid keyword-semantic search, and LLM prompt caching that cut enterprise AI query latency in half.",
-    content: `# Engineering Sub-200ms RAG Pipelines with Pinecone Vector Indexing and LlamaIndex
+Healthcare organizations seeking custom EHR, telehealth, or diagnostic software can contact our compliance engineers at hello@abuqitmirlabs.tech.`
+    },
+    {
+      id: "sub-200ms-rag-pipelines",
+      slug: "sub-200ms-rag-pipelines",
+      title: "Engineering Sub-200ms RAG Pipelines with Pinecone Vector Indexing and LlamaIndex",
+      type: "industry-insights",
+      category: "AI Architecture",
+      date: "June 08, 2026",
+      author: "Abu Huraira",
+      readTime: "11 min read",
+      location: "Karachi, Pakistan",
+      contact: "hello@abuqitmirlabs.tech",
+      excerpt: "A deep dive into chunking strategies, hybrid keyword-semantic search, and LLM prompt caching that cut enterprise AI query latency in half.",
+      content: `# Engineering Sub-200ms RAG Pipelines with Pinecone Vector Indexing and LlamaIndex
 
 A deep dive into chunking strategies, hybrid keyword-semantic search, and LLM prompt caching that cut enterprise AI query latency in half.
 
@@ -194,20 +194,20 @@ Building production-ready Retrieval-Augmented Generation (RAG) systems requires 
 
 ### 3. Prompt Compression
 - Strip redundant stop words and structural filler before forwarding context to LLM endpoints.`
-  },
-  {
-    id: "hipaa-compliant-telehealth-platforms",
-    slug: "hipaa-compliant-telehealth-platforms",
-    title: "Building HIPAA-Compliant Telehealth Platforms: Encryption, Audit Logs, and WebRTC Safety",
-    type: "industry-insights",
-    category: "Healthcare Tech",
-    date: "March 22, 2026",
-    author: "Engineering Studio Team",
-    readTime: "8 min read",
-    location: "Karachi, Pakistan",
-    contact: "info@abuqitmirlabs.tech",
-    excerpt: "Architectural guidelines for medical software engineers ensuring zero PHI leaks, AES-256 data at rest, and secure real-time WebRTC video consultation streams.",
-    content: `# Building HIPAA-Compliant Telehealth Platforms: Encryption, Audit Logs, and WebRTC Safety
+    },
+    {
+      id: "hipaa-compliant-telehealth-platforms",
+      slug: "hipaa-compliant-telehealth-platforms",
+      title: "Building HIPAA-Compliant Telehealth Platforms: Encryption, Audit Logs, and WebRTC Safety",
+      type: "industry-insights",
+      category: "Healthcare Tech",
+      date: "March 22, 2026",
+      author: "Engineering Studio Team",
+      readTime: "8 min read",
+      location: "Karachi, Pakistan",
+      contact: "hello@abuqitmirlabs.tech",
+      excerpt: "Architectural guidelines for medical software engineers ensuring zero PHI leaks, AES-256 data at rest, and secure real-time WebRTC video consultation streams.",
+      content: `# Building HIPAA-Compliant Telehealth Platforms: Encryption, Audit Logs, and WebRTC Safety
 
 Architectural guidelines for medical software engineers ensuring zero PHI leaks, AES-256 data at rest, and secure real-time WebRTC video consultation streams.
 
@@ -218,20 +218,20 @@ When engineering medical consultation platforms for US healthcare providers, sec
 - **End-to-End Encrypted WebRTC**: Peer-to-peer media streams encrypted with SRTP and DTLS.
 - **PHI Separation**: Storing patient identification metadata separate from clinical notes and video recordings.
 - **Strict Access Control**: Role-based access control (RBAC) enforced via JWT tokens and multi-factor authentication.`
-  },
-  {
-    id: "microservices-vs-monoliths-fintech",
-    slug: "microservices-vs-monoliths-fintech",
-    title: "Microservices vs. Monoliths for Modern Fintech Platforms: Lessons from 50+ Financial Builds",
-    type: "industry-insights",
-    category: "Fintech Engineering",
-    date: "February 17, 2026",
-    author: "Abu Qitmir Mohammad Shiraz Al-Madani",
-    readTime: "10 min read",
-    location: "Karachi, Pakistan",
-    contact: "info@abuqitmirlabs.tech",
-    excerpt: "When to decompose monolithic code into Go microservices to handle high transaction throughput, automated ledger reconciliation, and PCI-DSS compliance.",
-    content: `# Microservices vs. Monoliths for Modern Fintech Platforms: Lessons from 50+ Financial Builds
+    },
+    {
+      id: "microservices-vs-monoliths-fintech",
+      slug: "microservices-vs-monoliths-fintech",
+      title: "Microservices vs. Monoliths for Modern Fintech Platforms: Lessons from 50+ Financial Builds",
+      type: "industry-insights",
+      category: "Fintech Engineering",
+      date: "February 17, 2026",
+      author: "Abu Qitmir Mohammad Shiraz Al-Madani",
+      readTime: "10 min read",
+      location: "Karachi, Pakistan",
+      contact: "hello@abuqitmirlabs.tech",
+      excerpt: "When to decompose monolithic code into Go microservices to handle high transaction throughput, automated ledger reconciliation, and PCI-DSS compliance.",
+      content: `# Microservices vs. Monoliths for Modern Fintech Platforms: Lessons from 50+ Financial Builds
 
 When to decompose monolithic code into Go microservices to handle high transaction throughput, automated ledger reconciliation, and PCI-DSS compliance.
 
@@ -242,18 +242,18 @@ Many startups prematurely split applications into complex microservice architect
 1. **Phase 1: Modular Monolith**: Build with strict domain boundary isolation inside a single repository.
 2. **Phase 2: Targeted Microservice Extraction**: Extract only bottleneck services (e.g., payment gateway adapters, ledger settlement workers) into independent Go services.
 3. **Phase 3: Event-Driven Bus**: Use Apache Kafka or NATS for asynchronous transaction processing.`
-  },
-  {
-    id: "milestone-410-projects-350-clients",
-    slug: "milestone-410-projects-350-clients",
-    title: "AbuQitmirLabs Crosses Milestone 410+ Projects and 350+ Global Enterprise Clients",
-    type: "press-releases",
-    category: "Press Release",
-    date: "January 10, 2026",
-    author: "Media Relations Team",
-    readTime: "3 min read",
-    location: "Karachi, Pakistan",
-    contact: "info@abuqitmirlabs.tech",
+    },
+    {
+      id: "milestone-410-projects-350-clients",
+      slug: "milestone-410-projects-350-clients",
+      title: "AbuQitmirLabs Crosses Milestone 410+ Projects and 350+ Global Enterprise Clients",
+      type: "press-releases",
+      category: "Press Release",
+      date: "January 10, 2026",
+      author: "Media Relations Team",
+      readTime: "3 min read",
+      location: "Karachi, Pakistan",
+      contact: "hello@abuqitmirlabs.tech",
     excerpt: "Marking 5 years of operation since founding in 2021, AbuQitmirLabs celebrates over 410 successful software engineering deployments across the United States, United Kingdom, Australia, and European Union.",
     content: `# AbuQitmirLabs Crosses Milestone 410+ Projects and 350+ Global Enterprise Clients
 
