@@ -48,6 +48,7 @@ const LatestNewsPage = lazy(() => import('./pages/news/LatestNewsPage'));
 const PressReleasesPage = lazy(() => import('./pages/news/PressReleasesPage'));
 const IndustryInsightsPage = lazy(() => import('./pages/news/IndustryInsightsPage'));
 const AllNewsPage = lazy(() => import('./pages/news/AllNewsPage'));
+const NewsArticlePage = lazy(() => import('./pages/news/NewsArticlePage'));
 
 // Secondary & administrative pages
 const USMarketPage = lazy(() => import('./pages/USMarketPage'));
@@ -167,6 +168,11 @@ export default function App() {
               <Route path="/news/press-releases" element={<PressReleasesPage />} />
               <Route path="/news/industry-insights" element={<IndustryInsightsPage />} />
               <Route path="/news/all" element={<AllNewsPage />} />
+              <Route path="/news/article/:id" element={<NewsArticlePage />} />
+              <Route path="/news/read/:id" element={<NewsArticlePage />} />
+              <Route path="/news/latest/:id" element={<NewsArticlePage />} />
+              <Route path="/news/industry-insights/:id" element={<NewsArticlePage />} />
+              <Route path="/news/press-releases/:id" element={<NewsArticlePage />} />
 
               <Route path="/custom-software" element={<CustomSoftwarePage />} />
               <Route path="/mobile-app-development" element={<MobileAppDevelopmentPage />} />

@@ -21,12 +21,15 @@ import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import CountryMarquee from '../../components/CountryMarquee';
 
+import { generateSlug } from './NewsArticlePage';
+
 const PressReleasesPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [dynamicReleases, setDynamicReleases] = useState<any[]>([]);
 
   const defaultPressReleases = [
     {
+      id: "hipaa-cloud-certification",
       title: "AbuQitmirLabs Achieves Full HIPAA & ISO 27001 Security Audit Validation for HealthTech Software",
       date: "April 02, 2026",
       location: "Karachi, Pakistan",
@@ -34,6 +37,7 @@ const PressReleasesPage = () => {
       contact: "info@abuqitmirlabs.tech"
     },
     {
+      id: "ai-rag-framework-launch",
       title: "AbuQitmirLabs Unveils Autonomous Multi-Agent AI Framework for Enterprise Automation",
       date: "July 18, 2026",
       location: "Karachi, Pakistan",
@@ -41,6 +45,7 @@ const PressReleasesPage = () => {
       contact: "info@abuqitmirlabs.tech"
     },
     {
+      id: "milestone-410-projects-350-clients",
       title: "AbuQitmirLabs Crosses Milestone 410+ Projects and 350+ Global Enterprise Clients",
       date: "January 10, 2026",
       location: "Karachi, Pakistan",
@@ -57,6 +62,8 @@ const PressReleasesPage = () => {
           .map(doc => ({ id: doc.id, ...doc.data() }))
           .filter((item: any) => item.type === 'press-releases' || item.type === 'all')
           .map((item: any) => ({
+            id: item.id,
+            slug: item.slug,
             title: item.title,
             date: item.date,
             location: item.location || 'Karachi, Pakistan',
@@ -186,11 +193,16 @@ const PressReleasesPage = () => {
                   {pr.summary}
                 </p>
 
-                <div className="flex items-center justify-between pt-6 border-t border-white/10">
+                <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/10">
                   <span className="text-xs font-mono text-gray-500">Media Contact: {pr.contact}</span>
-                  <a href={`mailto:${pr.contact}?subject=Press Inquiry: ${encodeURIComponent(pr.title)}`} className="text-xs font-mono uppercase text-[#ccff00] font-bold hover:underline flex items-center gap-1">
-                    Contact Media Team <ChevronRight className="w-4 h-4" />
-                  </a>
+                  <div className="flex items-center gap-4">
+                    <Link to={`/news/article/${pr.id || pr.slug || generateSlug(pr.title)}`} className="text-xs font-mono uppercase text-[#ccff00] font-bold hover:underline flex items-center gap-1">
+                      Read Full Release <ChevronRight className="w-4 h-4" />
+                    </Link>
+                    <a href={`mailto:${pr.contact}?subject=Press Inquiry: ${encodeURIComponent(pr.title)}`} className="text-xs font-mono uppercase text-gray-400 hover:text-white flex items-center gap-1">
+                      Contact Media
+                    </a>
+                  </div>
                 </div>
               </article>
             ))}

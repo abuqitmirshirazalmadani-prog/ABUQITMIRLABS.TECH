@@ -17,6 +17,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import CountryMarquee from '../../components/CountryMarquee';
+import { generateSlug } from './NewsArticlePage';
 
 const AllNewsPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -26,46 +27,52 @@ const AllNewsPage = () => {
 
   const defaultArticles = [
     {
+      id: "ai-rag-framework-launch",
       title: "AbuQitmirLabs Releases Autonomous Multi-Agent RAG Framework for Enterprise Clients",
       date: "July 18, 2026",
       category: "Product Launch",
       excerpt: "Our engineering studio in Karachi has announced a new open-spec RAG framework that cuts LLM vector search latency to under 180ms.",
-      link: "/news/latest"
+      link: "/news/article/ai-rag-framework-launch"
     },
     {
+      id: "us-uk-expansion-q3",
       title: "AbuQitmirLabs Expands Dedicated Engineering Squads for US & UK Fintech Markets",
       date: "June 28, 2026",
       category: "Company News",
       excerpt: "Expanding our in-house developer squads in Karachi to support round-the-clock US EST and UK GMT shift deployments.",
-      link: "/news/latest"
+      link: "/news/article/us-uk-expansion-q3"
     },
     {
+      id: "generative-engine-optimization-geo-strategy",
       title: "Generative Engine Optimization (GEO): The Complete 2026 Strategy for Technical Leaders",
       date: "May 14, 2026",
       category: "Industry Insights",
       excerpt: "How to structure JSON-LD Schema entity graphs and direct answer blocks for maximum AI citation rates in ChatGPT and Gemini.",
-      link: "/news/industry-insights"
+      link: "/news/article/generative-engine-optimization-geo-strategy"
     },
     {
+      id: "hipaa-cloud-certification",
       title: "AbuQitmirLabs Achieves Full HIPAA & ISO 27001 Cloud Security Validation",
       date: "April 02, 2026",
       category: "Press Release",
       excerpt: "Official security audit confirms that all custom medical software platforms engineered by AbuQitmirLabs meet strict HIPAA data protection protocols.",
-      link: "/news/press-releases"
+      link: "/news/article/hipaa-cloud-certification"
     },
     {
+      id: "sub-200ms-rag-pipelines",
       title: "Engineering Sub-200ms RAG Pipelines with Pinecone Vector Indexing and LlamaIndex",
       date: "June 08, 2026",
       category: "Industry Insights",
       excerpt: "A deep dive into chunking strategies and LLM prompt caching that cut enterprise AI query latency in half.",
-      link: "/news/industry-insights"
+      link: "/news/article/sub-200ms-rag-pipelines"
     },
     {
+      id: "milestone-410-projects-350-clients",
       title: "AbuQitmirLabs Crosses Milestone 410+ Projects and 350+ Global Enterprise Clients",
       date: "January 10, 2026",
       category: "Press Release",
       excerpt: "Celebrating 5 years of operation since founding in 2021 with over 410 successful software engineering deployments worldwide.",
-      link: "/news/press-releases"
+      link: "/news/article/milestone-410-projects-350-clients"
     }
   ];
 
@@ -76,11 +83,13 @@ const AllNewsPage = () => {
         const items = snapshot.docs
           .map(doc => ({ id: doc.id, ...doc.data() }))
           .map((item: any) => ({
+            id: item.id,
+            slug: item.slug,
             title: item.title,
             date: item.date,
             category: item.category || "General News",
             excerpt: item.excerpt || item.content,
-            link: item.slug || (item.type === 'press-releases' ? '/news/press-releases' : item.type === 'industry-insights' ? '/news/industry-insights' : '/news/latest')
+            link: `/news/article/${item.id || item.slug || generateSlug(item.title)}`
           }));
         if (items.length > 0) {
           setDynamicArticles(items);

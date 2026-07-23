@@ -22,6 +22,8 @@ import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import CountryMarquee from '../../components/CountryMarquee';
 
+import { generateSlug } from './NewsArticlePage';
+
 const LatestNewsPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [dynamicNews, setDynamicNews] = useState<any[]>([]);
@@ -34,7 +36,7 @@ const LatestNewsPage = () => {
       category: "Product Launch",
       excerpt: "Our engineering studio in Karachi has announced a new open-spec RAG framework that cuts LLM vector search latency to under 180ms while guaranteeing zero data hallucination.",
       readTime: "4 min read",
-      slug: "/news/latest/ai-rag-framework-launch"
+      slug: "/news/article/ai-rag-framework-launch"
     },
     {
       id: "us-uk-expansion-q3",
@@ -43,16 +45,16 @@ const LatestNewsPage = () => {
       category: "Company News",
       excerpt: "Following a 45% growth in international client contracts, AbuQitmirLabs expands its in-house developer squads in Karachi to support round-the-clock US EST and UK GMT shift deployments.",
       readTime: "5 min read",
-      slug: "/news/latest/us-uk-expansion-q3"
+      slug: "/news/article/us-uk-expansion-q3"
     },
     {
-      id: "geo-aio-search-benchmark",
+      id: "generative-engine-optimization-geo-strategy",
       title: "Technical Benchmark: How Generative Engine Optimization (GEO) Outperforms Traditional SEO in 2026",
       date: "May 14, 2026",
       category: "Industry Insights",
       excerpt: "An empirical study by Lead Architect Abu Qitmir revealing how structured entity graphs and direct answer blocks gain 3.4x higher citation rates in Google AI Overviews.",
       readTime: "8 min read",
-      slug: "/news/industry-insights"
+      slug: "/news/article/generative-engine-optimization-geo-strategy"
     },
     {
       id: "hipaa-cloud-certification",
@@ -61,7 +63,7 @@ const LatestNewsPage = () => {
       category: "Press Release",
       excerpt: "Official security audit confirms that all custom medical software platforms engineered by AbuQitmirLabs meet strict HIPAA, HITECH, and ISO 27001 data protection protocols.",
       readTime: "3 min read",
-      slug: "/news/press-releases"
+      slug: "/news/article/hipaa-cloud-certification"
     }
   ];
 
@@ -202,7 +204,7 @@ const LatestNewsPage = () => {
 
                 <div className="flex items-center justify-between pt-6 border-t border-white/10">
                   <span className="text-xs font-mono text-gray-500">{item.readTime}</span>
-                  <Link to={item.slug} className="text-xs font-mono uppercase text-[#ccff00] font-bold hover:underline flex items-center gap-1">
+                  <Link to={`/news/article/${item.id || item.slug?.replace('/news/latest/', '') || generateSlug(item.title)}`} className="text-xs font-mono uppercase text-[#ccff00] font-bold hover:underline flex items-center gap-1">
                     Read Story <ChevronRight className="w-4 h-4" />
                   </Link>
                 </div>

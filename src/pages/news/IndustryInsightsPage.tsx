@@ -21,12 +21,15 @@ import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import CountryMarquee from '../../components/CountryMarquee';
 
+import { generateSlug } from './NewsArticlePage';
+
 const IndustryInsightsPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [dynamicInsights, setDynamicInsights] = useState<any[]>([]);
 
   const defaultInsights = [
     {
+      id: "generative-engine-optimization-geo-strategy",
       title: "Generative Engine Optimization (GEO): The Complete 2026 Strategy for Technical Leaders",
       author: "Abu Qitmir Mohammad Shiraz Al-Madani",
       date: "May 14, 2026",
@@ -35,6 +38,7 @@ const IndustryInsightsPage = () => {
       readTime: "9 min read"
     },
     {
+      id: "sub-200ms-rag-pipelines",
       title: "Engineering Sub-200ms RAG Pipelines with Pinecone Vector Indexing and LlamaIndex",
       author: "Abu Huraira",
       date: "June 08, 2026",
@@ -43,6 +47,7 @@ const IndustryInsightsPage = () => {
       readTime: "11 min read"
     },
     {
+      id: "hipaa-compliant-telehealth-platforms",
       title: "Building HIPAA-Compliant Telehealth Platforms: Encryption, Audit Logs, and WebRTC Safety",
       author: "Engineering Studio Team",
       date: "March 22, 2026",
@@ -51,6 +56,7 @@ const IndustryInsightsPage = () => {
       readTime: "8 min read"
     },
     {
+      id: "microservices-vs-monoliths-fintech",
       title: "Microservices vs. Monoliths for Modern Fintech Platforms: Lessons from 50+ Financial Builds",
       author: "Abu Qitmir Mohammad Shiraz Al-Madani",
       date: "February 17, 2026",
@@ -68,6 +74,8 @@ const IndustryInsightsPage = () => {
           .map(doc => ({ id: doc.id, ...doc.data() }))
           .filter((item: any) => item.type === 'industry-insights' || item.type === 'all')
           .map((item: any) => ({
+            id: item.id,
+            slug: item.slug,
             title: item.title,
             author: item.author || "Abu Qitmir Mohammad Shiraz Al-Madani",
             date: item.date,
@@ -201,7 +209,7 @@ const IndustryInsightsPage = () => {
 
                 <div className="pt-6 border-t border-white/10 flex items-center justify-between">
                   <span className="text-xs font-mono text-gray-500">By {item.author} ({item.readTime})</span>
-                  <Link to="/contact" className="text-xs font-mono uppercase text-[#ccff00] font-bold hover:underline flex items-center gap-1">
+                  <Link to={`/news/article/${item.id || item.slug || generateSlug(item.title)}`} className="text-xs font-mono uppercase text-[#ccff00] font-bold hover:underline flex items-center gap-1">
                     Read Article <ChevronRight className="w-4 h-4" />
                   </Link>
                 </div>
