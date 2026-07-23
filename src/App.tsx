@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'r
 import { useEffect, lazy, Suspense } from 'react';
 import FacebookPixel from './components/FacebookPixel';
 import ErrorBoundary from './components/ErrorBoundary';
+import { preloadAllRoutes } from './utils/preloader';
 
 // Eager import landing page for immediate initial render
 import HomePage from './pages/HomePage';
@@ -42,32 +43,6 @@ const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const CaseStudyTajweedPage = lazy(() => import('./pages/CaseStudyTajweedPage'));
 const WebsiteContractPage = lazy(() => import('./pages/WebsiteContractPage'));
-
-// High-performance background preloading to ensure all routes load instantly when clicked
-const pageImports = [
-  () => import('./pages/CustomSoftwarePage'),
-  () => import('./pages/MobileAppDevelopmentPage'),
-  () => import('./pages/WebDevelopmentPage'),
-  () => import('./pages/AIAgentDevelopmentPage'),
-  () => import('./pages/SEOPage'),
-  () => import('./pages/LocalSEOSmallBusinessPage'),
-  () => import('./pages/LocalSEOCitationBuildingPage'),
-  () => import('./pages/WhiteLabelLocalSEOPage'),
-  () => import('./pages/LocalSEOAuditPage'),
-  () => import('./pages/GraphicsDesignPage'),
-  () => import('./pages/ContentWritingPage'),
-  () => import('./pages/AboutPage'),
-  () => import('./pages/ContactPage'),
-  () => import('./pages/BlogPage'),
-  () => import('./pages/CaseStudiesPage'),
-  () => import('./pages/USMarketPage'),
-  () => import('./pages/UKMarketPage'),
-  () => import('./pages/PakistanMarketPage'),
-  () => import('./pages/CanadaMarketPage'),
-  () => import('./pages/PolandMarketPage'),
-  () => import('./pages/AustraliaMarketPage'),
-  () => import('./pages/WebsiteContractPage'),
-];
 
 // Loading fallback
 const PageLoader = () => (
@@ -129,34 +104,15 @@ export default function App() {
   useEffect(() => {
     // Only dispatch in production/build time for pre-rendering
     const trigger = () => {
-      // Small delay to ensure animations or lazy content settled
       setTimeout(() => {
         document.dispatchEvent(new Event('x-render-trigger'));
-      }, 500);
+      }, 300);
     };
     
     trigger();
 
-    // Staggered background preloading of other pages once the landing page has mounted and settled
-    const startPreloading = () => {
-      const isIdleSupported = 'requestIdleCallback' in window;
-      const queueImport = () => {
-        pageImports.forEach((imp, index) => {
-          setTimeout(() => {
-            imp().catch(() => {});
-          }, index * 300); // Stagger files to ensure CPU stays completely smooth during navigation
-        });
-      };
-
-      if (isIdleSupported) {
-        window.requestIdleCallback(() => queueImport(), { timeout: 3000 });
-      } else {
-        setTimeout(queueImport, 1000);
-      }
-    };
-
-    const preloadTimeout = setTimeout(startPreloading, 3500);
-    return () => clearTimeout(preloadTimeout);
+    // Trigger instant background route preloading for smooth zero-wait page navigation
+    preloadAllRoutes();
   }, []);
 
   return (

@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from './Logo';
+import { preloadRoute } from '../utils/preloader';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -102,6 +103,8 @@ const Header = () => {
                                                             key={sub.name}
                                                             to={sub.href}
                                                             className="block px-4 py-3 text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+                                                            onMouseEnter={() => preloadRoute(sub.href)}
+                                                            onTouchStart={() => preloadRoute(sub.href)}
                                                             onClick={() => setActiveDropdown(null)}
                                                         >
                                                             {sub.name}
@@ -114,6 +117,8 @@ const Header = () => {
                                 ) : (
                                     <Link 
                                         to={link.href} 
+                                        onMouseEnter={() => preloadRoute(link.href)}
+                                        onTouchStart={() => preloadRoute(link.href)}
                                         className={`text-sm font-medium transition-colors ${
                                             location.pathname === link.href 
                                             ? 'text-white' 
@@ -127,6 +132,8 @@ const Header = () => {
                         ))}
                         <Link 
                             to="/contact"
+                            onMouseEnter={() => preloadRoute('/contact')}
+                            onTouchStart={() => preloadRoute('/contact')}
                             className="px-5 py-2.5 bg-white text-black text-sm font-semibold rounded-full hover:bg-purple-100 transition-colors"
                         >
                             Contact Now
@@ -202,6 +209,8 @@ const Header = () => {
                                                                     key={sub.name} 
                                                                     to={sub.href} 
                                                                     className="py-2 text-sm text-gray-400 hover:text-[#ccff00] transition-colors flex items-center justify-between pr-4"
+                                                                    onTouchStart={() => preloadRoute(sub.href)}
+                                                                    onMouseEnter={() => preloadRoute(sub.href)}
                                                                     onClick={() => setIsOpen(false)}
                                                                 >
                                                                     {sub.name}
@@ -215,6 +224,8 @@ const Header = () => {
                                         ) : (
                                             <Link 
                                                 to={link.href} 
+                                                onTouchStart={() => preloadRoute(link.href)}
+                                                onMouseEnter={() => preloadRoute(link.href)}
                                                 className={`py-4 text-lg font-bold transition-colors flex items-center justify-between ${
                                                     location.pathname === link.href 
                                                     ? 'text-[#ccff00]' 
@@ -232,6 +243,8 @@ const Header = () => {
                                 <div className="mt-8 flex flex-col gap-4">
                                     <Link 
                                         to="/contact"
+                                        onTouchStart={() => preloadRoute('/contact')}
+                                        onMouseEnter={() => preloadRoute('/contact')}
                                         className="w-full py-4 bg-[#ccff00] text-black font-black text-center rounded-xl text-lg hover:scale-[1.02] active:scale-[0.98] transition-all"
                                         onClick={() => setIsOpen(false)}
                                     >

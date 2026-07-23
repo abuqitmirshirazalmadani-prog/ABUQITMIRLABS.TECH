@@ -16,9 +16,9 @@ const NexusHero = () => {
     const tunnelY = useTransform(scrollY, [0, 800], [0, -120]);
     const ambientY = useTransform(scrollY, [0, 800], [0, 50]);
     
-    // Mouse Parallax state
-    const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
-    const [targetPos, setTargetPos] = useState({ x: 50, y: 50 });
+    // Mouse Parallax refs (DOM-direct for maximum performance & 0 React re-renders)
+    const mousePosRef = useRef({ x: 50, y: 50 });
+    const targetPosRef = useRef({ x: 50, y: 50 });
 
     useEffect(() => {
         if (!tunnelRef.current) return;
@@ -134,10 +134,10 @@ const NexusHero = () => {
 
         const handleMouseMove = (e: MouseEvent) => {
             if (!isIntersecting) return;
-            setMousePos({
+            mousePosRef.current = {
                 x: 50 + ((e.clientX / window.innerWidth - 0.5) * 20),
                 y: 50 + ((e.clientY / window.innerHeight - 0.5) * 20)
-            });
+            };
         };
 
         window.addEventListener('mousemove', handleMouseMove, { passive: true });
@@ -155,19 +155,22 @@ const NexusHero = () => {
         };
     }, []);
 
-    // Smooth parallax effect
+    // Ultra-smooth DOM-direct parallax effect (Zero React state updates)
     useEffect(() => {
         let rafId: number;
         const updateParallax = () => {
-            setTargetPos(prev => ({
-                x: prev.x + (mousePos.x - prev.x) * 0.05,
-                y: prev.y + (mousePos.y - prev.y) * 0.05
-            }));
+            targetPosRef.current = {
+                x: targetPosRef.current.x + (mousePosRef.current.x - targetPosRef.current.x) * 0.05,
+                y: targetPosRef.current.y + (mousePosRef.current.y - targetPosRef.current.y) * 0.05
+            };
+            if (sceneRef.current) {
+                sceneRef.current.style.perspectiveOrigin = `${targetPosRef.current.x}% ${targetPosRef.current.y}%`;
+            }
             rafId = requestAnimationFrame(updateParallax);
         };
         rafId = requestAnimationFrame(updateParallax);
         return () => cancelAnimationFrame(rafId);
-    }, [mousePos]);
+    }, []);
 
     return (
         <section id="nexus-engine-hero" className="bg-[#0a0a0a] text-[#ededed] overflow-hidden w-full min-h-screen relative font-sans selection:bg-white/20 selection:text-white flex flex-col">
@@ -186,7 +189,7 @@ const NexusHero = () => {
                 className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden"
                 style={{ 
                     perspective: '800px', 
-                    perspectiveOrigin: `${targetPos.x}% ${targetPos.y}%` 
+                    perspectiveOrigin: '50% 50%' 
                 }}
             >
                 <motion.div 

@@ -27,6 +27,7 @@ import Logo from './Logo';
 import { AnimatedShinyText } from './ui/animated-shiny-text';
 import { MagicText } from './ui/magic-text';
 import { AnimatedBreathingText } from './ui/animated-breathing-text';
+import { preloadRoute } from '../utils/preloader';
 
 const Footer = () => {
     return (
@@ -174,13 +175,13 @@ const Footer = () => {
                         <div className="space-y-4">
                             <h4 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Core Services</h4>
                             <ul className="space-y-3">
-                                <li><Link to="/custom-software" className="hover:underline hover:text-white transition-colors">Custom Software Dev</Link></li>
-                                <li><Link to="/mobile-app-development" className="hover:underline hover:text-white transition-colors">Mobile App Dev</Link></li>
-                                <li><Link to="/web-development" className="hover:underline hover:text-white transition-colors">High-Performance Web</Link></li>
-                                <li><Link to="/ai-agent-development" className="hover:underline hover:text-white transition-colors">AI Agent Automations</Link></li>
-                                <li><Link to="/seo-mastery" className="hover:underline hover:text-white transition-colors">SEO Mastery</Link></li>
-                                <li><Link to="/graphics-design" className="hover:underline hover:text-white transition-colors">Branding & Graphics</Link></li>
-                                <li><Link to="/content-writing" className="hover:underline hover:text-white transition-colors">Technical Content</Link></li>
+                                <li><Link to="/custom-software" onMouseEnter={() => preloadRoute('/custom-software')} onTouchStart={() => preloadRoute('/custom-software')} className="hover:underline hover:text-white transition-colors">Custom Software Dev</Link></li>
+                                <li><Link to="/mobile-app-development" onMouseEnter={() => preloadRoute('/mobile-app-development')} onTouchStart={() => preloadRoute('/mobile-app-development')} className="hover:underline hover:text-white transition-colors">Mobile App Dev</Link></li>
+                                <li><Link to="/web-development" onMouseEnter={() => preloadRoute('/web-development')} onTouchStart={() => preloadRoute('/web-development')} className="hover:underline hover:text-white transition-colors">High-Performance Web</Link></li>
+                                <li><Link to="/ai-agent-development" onMouseEnter={() => preloadRoute('/ai-agent-development')} onTouchStart={() => preloadRoute('/ai-agent-development')} className="hover:underline hover:text-white transition-colors">AI Agent Automations</Link></li>
+                                <li><Link to="/seo-mastery" onMouseEnter={() => preloadRoute('/seo-mastery')} onTouchStart={() => preloadRoute('/seo-mastery')} className="hover:underline hover:text-white transition-colors">SEO Mastery</Link></li>
+                                <li><Link to="/graphics-design" onMouseEnter={() => preloadRoute('/graphics-design')} onTouchStart={() => preloadRoute('/graphics-design')} className="hover:underline hover:text-white transition-colors">Branding & Graphics</Link></li>
+                                <li><Link to="/content-writing" onMouseEnter={() => preloadRoute('/content-writing')} onTouchStart={() => preloadRoute('/content-writing')} className="hover:underline hover:text-white transition-colors">Technical Content</Link></li>
                             </ul>
                         </div>
 
@@ -188,12 +189,12 @@ const Footer = () => {
                         <div className="space-y-4">
                             <h4 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Target Markets</h4>
                             <ul className="space-y-3">
-                                <li><Link to="/us-market" className="hover:underline hover:text-white transition-colors">United States (US)</Link></li>
-                                <li><Link to="/uk-market" className="hover:underline hover:text-white transition-colors">United Kingdom (UK)</Link></li>
-                                <li><Link to="/canada-market" className="hover:underline hover:text-white transition-colors">Canada (CA)</Link></li>
-                                <li><Link to="/poland-market" className="hover:underline hover:text-white transition-colors">Poland (PL)</Link></li>
-                                <li><Link to="/australia-market" className="hover:underline hover:text-white transition-colors">Australia (AU)</Link></li>
-                                <li><Link to="/pakistan-market" className="hover:underline hover:text-white transition-colors">Pakistan (PK)</Link></li>
+                                <li><Link to="/us-market" onMouseEnter={() => preloadRoute('/us-market')} onTouchStart={() => preloadRoute('/us-market')} className="hover:underline hover:text-white transition-colors">United States (US)</Link></li>
+                                <li><Link to="/uk-market" onMouseEnter={() => preloadRoute('/uk-market')} onTouchStart={() => preloadRoute('/uk-market')} className="hover:underline hover:text-white transition-colors">United Kingdom (UK)</Link></li>
+                                <li><Link to="/canada-market" onMouseEnter={() => preloadRoute('/canada-market')} onTouchStart={() => preloadRoute('/canada-market')} className="hover:underline hover:text-white transition-colors">Canada (CA)</Link></li>
+                                <li><Link to="/poland-market" onMouseEnter={() => preloadRoute('/poland-market')} onTouchStart={() => preloadRoute('/poland-market')} className="hover:underline hover:text-white transition-colors">Poland (PL)</Link></li>
+                                <li><Link to="/australia-market" onMouseEnter={() => preloadRoute('/australia-market')} onTouchStart={() => preloadRoute('/australia-market')} className="hover:underline hover:text-white transition-colors">Australia (AU)</Link></li>
+                                <li><Link to="/pakistan-market" onMouseEnter={() => preloadRoute('/pakistan-market')} onTouchStart={() => preloadRoute('/pakistan-market')} className="hover:underline hover:text-white transition-colors">Pakistan (PK)</Link></li>
                             </ul>
                         </div>
 
@@ -201,10 +202,10 @@ const Footer = () => {
                         <div className="space-y-4">
                             <h4 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Legal & Sitemaps</h4>
                             <ul className="space-y-3">
-                                <li><Link to="/privacy" className="hover:underline hover:text-white transition-colors">Privacy Policy</Link></li>
-                                <li><Link to="/terms" className="hover:underline hover:text-white transition-colors">Terms of Service</Link></li>
-                                <li><Link to="/blog" className="hover:underline hover:text-white transition-colors">Tech Blog</Link></li>
-                                <li><Link to="/case-studies" className="hover:underline hover:text-white transition-colors">Case Studies</Link></li>
+                                <li><Link to="/privacy" onMouseEnter={() => preloadRoute('/privacy')} onTouchStart={() => preloadRoute('/privacy')} className="hover:underline hover:text-white transition-colors">Privacy Policy</Link></li>
+                                <li><Link to="/terms" onMouseEnter={() => preloadRoute('/terms')} onTouchStart={() => preloadRoute('/terms')} className="hover:underline hover:text-white transition-colors">Terms of Service</Link></li>
+                                <li><Link to="/blog" onMouseEnter={() => preloadRoute('/blog')} onTouchStart={() => preloadRoute('/blog')} className="hover:underline hover:text-white transition-colors">Tech Blog</Link></li>
+                                <li><Link to="/case-studies" onMouseEnter={() => preloadRoute('/case-studies')} onTouchStart={() => preloadRoute('/case-studies')} className="hover:underline hover:text-white transition-colors">Case Studies</Link></li>
                                 <li><a href="/rss.xml" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-white transition-colors flex items-center gap-1">RSS News Feed <ExternalLink size={10} /></a></li>
                                 <li><a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-white transition-colors flex items-center gap-1">Dynamic Sitemap <ExternalLink size={10} /></a></li>
                                 <li><a href="/pages-sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-white transition-colors flex items-center gap-1">Pages Index <ExternalLink size={10} /></a></li>
