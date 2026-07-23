@@ -5,6 +5,19 @@
 
 export const routeLoaders: Record<string, () => Promise<any>> = {
   '/about': () => import('../pages/AboutPage'),
+  '/about/our-company': () => import('../pages/about/OurCompanyPage'),
+  '/about/our-team': () => import('../pages/about/OurTeamPage'),
+  '/about/our-process': () => import('../pages/about/OurProcessPage'),
+  '/about/careers': () => import('../pages/about/CareersPage'),
+  '/solutions/fintech': () => import('../pages/solutions/FintechSolutionsPage'),
+  '/solutions/healthcare': () => import('../pages/solutions/HealthcarePlatformsPage'),
+  '/solutions/ai-automation': () => import('../pages/solutions/AIAutomationPage'),
+  '/solutions/e-commerce': () => import('../pages/solutions/ECommerceDevelopmentPage'),
+  '/solutions/edtech': () => import('../pages/solutions/EdTechPlatformsPage'),
+  '/news/latest': () => import('../pages/news/LatestNewsPage'),
+  '/news/press-releases': () => import('../pages/news/PressReleasesPage'),
+  '/news/industry-insights': () => import('../pages/news/IndustryInsightsPage'),
+  '/news/all': () => import('../pages/news/AllNewsPage'),
   '/custom-software': () => import('../pages/CustomSoftwarePage'),
   '/mobile-app-development': () => import('../pages/MobileAppDevelopmentPage'),
   '/web-development': () => import('../pages/WebDevelopmentPage'),
@@ -53,24 +66,11 @@ export function preloadRoute(path: string) {
  * Non-blocking, staggered background preloader for primary routes
  */
 export function preloadAllRoutes() {
-  const primaryRoutes = [
-    '/custom-software',
-    '/mobile-app-development',
-    '/web-development',
-    '/ai-agent-development',
-    '/seo-mastery',
-    '/about',
-    '/contact',
-    '/blog',
-    '/case-studies',
-    '/graphics-design',
-    '/content-writing',
-    '/us-market',
-  ];
+  const primaryRoutes = Object.keys(routeLoaders);
 
   if (typeof window === 'undefined') return;
 
-  // Stagger imports sequentially (400ms gap) so main thread and network remain completely free
+  // Stagger imports sequentially so main thread and network remain free while prewarming bundles
   let index = 0;
   const staggerPreload = () => {
     if (index >= primaryRoutes.length) return;
@@ -80,13 +80,13 @@ export function preloadAllRoutes() {
 
     if ('requestIdleCallback' in window) {
       (window as any).requestIdleCallback(() => {
-        setTimeout(staggerPreload, 400);
-      }, { timeout: 1000 });
+        setTimeout(staggerPreload, 200);
+      }, { timeout: 800 });
     } else {
-      setTimeout(staggerPreload, 500);
+      setTimeout(staggerPreload, 250);
     }
   };
 
-  // Start staggered preloading 1.2s after initial mount
-  setTimeout(staggerPreload, 1200);
+  // Start background route prewarming 500ms after initial page load
+  setTimeout(staggerPreload, 500);
 }

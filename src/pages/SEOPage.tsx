@@ -89,7 +89,7 @@ const SEOPage = () => {
   ];
 
   return (
-    <div className="bg-[#f4f4f5] text-black font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]">
+    <div className="bg-[#000000] text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]/30 selection:text-white">
       <Helmet>
         <title>SEO Services | Professional Search Engine Optimization Company | AbuQitmirLabs</title>
         <meta name="description" content="AbuQitmirLabs is a premier search engine optimization company delivering pro SEO services, organic growth, technical SEO audits, and map dominance globally." />

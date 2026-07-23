@@ -4,28 +4,38 @@ import { motion } from 'motion/react';
 import { ChevronRight, Home } from 'lucide-react';
 
 export interface BreadcrumbItem {
-    name: string;
+    name?: string;
+    label?: string;
     to?: string;
+    path?: string;
 }
 
 interface BreadcrumbsProps {
     customItems?: BreadcrumbItem[];
+    items?: BreadcrumbItem[];
 }
 
-const Breadcrumbs = ({ customItems }: BreadcrumbsProps) => {
+const Breadcrumbs = ({ customItems, items: propItems }: BreadcrumbsProps) => {
     const location = useLocation();
     const pathnames = location.pathname.split('/').filter((x) => x);
 
-    if (location.pathname === '/' && !customItems) return null;
+    const provided = customItems || propItems;
 
-    const items: BreadcrumbItem[] = customItems || [
-        { name: 'HQ', to: '/' },
-        ...pathnames.map((value, index) => {
-            const to = `/${pathnames.slice(0, index + 1).join('/')}`;
-            const name = value.replace(/-/g, ' ');
-            return { name, to };
-        })
-    ];
+    if (location.pathname === '/' && !provided) return null;
+
+    const items: Array<{ name: string; to: string }> = provided 
+        ? provided.map(i => ({
+            name: i.name || i.label || '',
+            to: i.to || i.path || ''
+          }))
+        : [
+            { name: 'HQ', to: '/' },
+            ...pathnames.map((value, index) => {
+                const to = `/${pathnames.slice(0, index + 1).join('/')}`;
+                const name = value.replace(/-/g, ' ');
+                return { name, to };
+            })
+        ];
 
     return (
         <nav className="absolute top-24 left-0 right-0 z-40 px-6 md:px-10 py-4 pointer-events-none" aria-label="Breadcrumb">

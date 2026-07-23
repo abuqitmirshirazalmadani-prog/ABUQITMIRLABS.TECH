@@ -524,63 +524,66 @@ export default function AIAgentDevelopmentPage() {
             {[
               {
                 title: "Non-Profit Organizations",
-                icon: <Heart className="w-8 h-8 text-rose-400" />,
+                icon: <Heart className="w-7 h-7 text-rose-400 group-hover:scale-110 transition-transform" />,
                 tagline: "AI Agent Development for Non-Profit Organizations",
                 description: "Non-profits need intelligent systems that maximize their impact without draining limited resources. Our AI agents for non-profit organizations automate donor engagement, track program outcomes, and streamline volunteer coordination—all while maintaining the highest standards of data privacy. From personalized donation appeals to real-time impact reporting, our AI agent development for non-profit solutions help you focus on your mission, not your admin."
               },
               {
                 title: "Logistics",
-                icon: <Truck className="w-8 h-8 text-amber-400" />,
+                icon: <Truck className="w-7 h-7 text-amber-400 group-hover:scale-110 transition-transform" />,
                 tagline: "AI Agent Development for Logistics",
                 description: "In logistics, every second counts. Our AI agents for logistics optimize routes in real-time, predict delivery delays before they happen, and automate exception handling—reducing operational friction and improving customer satisfaction. Whether you manage local fleets or international supply chains, our AI agent development for logistics solutions keep your operations running smoothly."
               },
               {
                 title: "Real Estate",
-                icon: <Home className="w-8 h-8 text-sky-400" />,
+                icon: <Home className="w-7 h-7 text-sky-400 group-hover:scale-110 transition-transform" />,
                 tagline: "AI Agent Development for Real Estate",
                 description: "Real estate professionals need intelligent tools that qualify leads, schedule viewings, and provide market insights at a glance. Our AI agents for real estate automate lead scoring, personalize property recommendations, and handle initial client interactions—freeing your agents to focus on closing deals. Our AI agent development for real estate solutions turn your website into a 24/7 lead generation engine."
               },
               {
                 title: "Healthcare",
-                icon: <HeartPulse className="w-8 h-8 text-emerald-400" />,
+                icon: <HeartPulse className="w-7 h-7 text-emerald-400 group-hover:scale-110 transition-transform" />,
                 tagline: "AI Agent Development for Healthcare",
                 description: "Healthcare demands the highest standards of security, accuracy, and compliance. Our AI agents for healthcare assist with patient triage, appointment scheduling, and clinical documentation—all while maintaining full HIPAA compliance. We build AI agent development for healthcare solutions that support clinical staff, reduce administrative burden, and improve patient outcomes."
               },
               {
                 title: "Small Law Firms",
-                icon: <Scale className="w-8 h-8 text-indigo-400" />,
+                icon: <Scale className="w-7 h-7 text-indigo-400 group-hover:scale-110 transition-transform" />,
                 tagline: "AI Agent Development for Small Law Firms",
                 description: "Small law firms need AI tools that help them practice law, not manage technology. Our AI agents for small law firms automate document review, legal research, and client intake—allowing you to focus on your cases. Our AI agent development for small law firms solutions are secure, confidential, and tailored to your practice area."
               },
               {
                 title: "Corporate Events",
-                icon: <Calendar className="w-8 h-8 text-purple-400" />,
+                icon: <Calendar className="w-7 h-7 text-purple-400 group-hover:scale-110 transition-transform" />,
                 tagline: "AI Agent Development for Corporate Events",
                 description: "Corporate events demand intelligent systems that manage registrations, schedule speakers, and engage attendees. Our AI agents for corporate events automate ticketing, provide real-time agenda updates, and answer attendee questions instantly. Our AI agent development for corporate events solutions create seamless experiences for organizers and participants alike."
               },
               {
                 title: "Educational Institutions",
-                icon: <GraduationCap className="w-8 h-8 text-blue-400" />,
+                icon: <GraduationCap className="w-7 h-7 text-blue-400 group-hover:scale-110 transition-transform" />,
                 tagline: "AI Agent Development for Educational Institutions",
                 description: "Educational institutions need AI tools that support both teachers and students. Our AI agents for educational institutions provide personalized tutoring, automate administrative tasks, and deliver real-time feedback to learners. From K-12 to higher education, our AI agent development for educational institutions solutions enhance learning outcomes and reduce teacher workload."
               }
             ].map((sector, idx) => (
               <motion.div
                 key={idx}
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.3 }}
-                className="bg-white/[0.01] border border-white/10 p-8 rounded-[2rem] hover:bg-white/[0.04] transition-all relative overflow-hidden flex flex-col justify-between"
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                className="group relative overflow-hidden bg-zinc-900/60 backdrop-blur-xl border border-white/10 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(37,99,235,0.25)] p-8 rounded-[2rem] transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between"
               >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
                 <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] pointer-events-none" />
                 <div>
-                  <div className="mb-6 w-14 h-14 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center">
+                  <div className="mb-6 w-14 h-14 bg-blue-500/10 border border-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
                     {sector.icon}
                   </div>
-                  <h3 className="text-xl font-bold uppercase tracking-tight text-white mb-2">{sector.title}</h3>
+                  <h3 className="text-xl font-bold uppercase tracking-tight text-white mb-2 group-hover:text-blue-300 transition-colors">{sector.title}</h3>
                   <span className="text-xs font-mono text-blue-400 uppercase tracking-widest block mb-4">
                     {sector.tagline}
                   </span>
-                  <p className="text-sm leading-relaxed text-slate-400 font-light font-sans">{sector.description}</p>
+                  <p className="text-sm leading-relaxed text-slate-300 font-light font-sans">{sector.description}</p>
                 </div>
               </motion.div>
             ))}

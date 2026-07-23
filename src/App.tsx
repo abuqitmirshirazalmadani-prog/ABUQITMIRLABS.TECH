@@ -30,6 +30,25 @@ const ContactPage = lazy(() => import('./pages/ContactPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const CaseStudiesPage = lazy(() => import('./pages/CaseStudiesPage'));
 
+// Solutions Pages
+const FintechSolutionsPage = lazy(() => import('./pages/solutions/FintechSolutionsPage'));
+const HealthcarePlatformsPage = lazy(() => import('./pages/solutions/HealthcarePlatformsPage'));
+const AIAutomationPage = lazy(() => import('./pages/solutions/AIAutomationPage'));
+const ECommerceDevelopmentPage = lazy(() => import('./pages/solutions/ECommerceDevelopmentPage'));
+const EdTechPlatformsPage = lazy(() => import('./pages/solutions/EdTechPlatformsPage'));
+
+// About Dropdown Pages
+const OurCompanyPage = lazy(() => import('./pages/about/OurCompanyPage'));
+const OurTeamPage = lazy(() => import('./pages/about/OurTeamPage'));
+const OurProcessPage = lazy(() => import('./pages/about/OurProcessPage'));
+const CareersPage = lazy(() => import('./pages/about/CareersPage'));
+
+// News Dropdown Pages
+const LatestNewsPage = lazy(() => import('./pages/news/LatestNewsPage'));
+const PressReleasesPage = lazy(() => import('./pages/news/PressReleasesPage'));
+const IndustryInsightsPage = lazy(() => import('./pages/news/IndustryInsightsPage'));
+const AllNewsPage = lazy(() => import('./pages/news/AllNewsPage'));
+
 // Secondary & administrative pages
 const USMarketPage = lazy(() => import('./pages/USMarketPage'));
 const UKMarketPage = lazy(() => import('./pages/UKMarketPage'));
@@ -126,6 +145,29 @@ export default function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
+              <Route path="/about/our-company" element={<OurCompanyPage />} />
+              <Route path="/about/our-team" element={<OurTeamPage />} />
+              <Route path="/about/our-process" element={<OurProcessPage />} />
+              <Route path="/about/careers" element={<CareersPage />} />
+              <Route path="/our-company" element={<Navigate to="/about/our-company" replace />} />
+              <Route path="/our-team" element={<Navigate to="/about/our-team" replace />} />
+              <Route path="/our-process" element={<Navigate to="/about/our-process" replace />} />
+              <Route path="/careers" element={<Navigate to="/about/careers" replace />} />
+
+              {/* Solutions Routes */}
+              <Route path="/solutions/fintech" element={<FintechSolutionsPage />} />
+              <Route path="/solutions/healthcare" element={<HealthcarePlatformsPage />} />
+              <Route path="/solutions/ai-automation" element={<AIAutomationPage />} />
+              <Route path="/solutions/e-commerce" element={<ECommerceDevelopmentPage />} />
+              <Route path="/solutions/edtech" element={<EdTechPlatformsPage />} />
+
+              {/* News Routes */}
+              <Route path="/news" element={<Navigate to="/news/latest" replace />} />
+              <Route path="/news/latest" element={<LatestNewsPage />} />
+              <Route path="/news/press-releases" element={<PressReleasesPage />} />
+              <Route path="/news/industry-insights" element={<IndustryInsightsPage />} />
+              <Route path="/news/all" element={<AllNewsPage />} />
+
               <Route path="/custom-software" element={<CustomSoftwarePage />} />
               <Route path="/mobile-app-development" element={<MobileAppDevelopmentPage />} />
               <Route path="/web-development" element={<WebDevelopmentPage />} />

@@ -8,7 +8,8 @@ import { signInWithRedirect, getRedirectResult } from 'firebase/auth';
 import { 
     LayoutDashboard, FileText, Plus, LogOut, Shield, 
     CheckCircle, AlertCircle, Loader2, ArrowLeft, 
-    Globe, Clock, Edit, Trash2, ExternalLink 
+    Globe, Clock, Edit, Trash2, ExternalLink,
+    Newspaper, Rss, Megaphone, Lightbulb, Sparkles, Filter 
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -16,6 +17,93 @@ import { Link } from 'react-router-dom';
 
 const ADMIN_EMAIL = "abuqitmirshirazalmadani@gmail.com";
 const ADMIN_UID = "cRAf1wZFRRXMVadj7RDaC8WM4152";
+
+const DEFAULT_NEWS_SEED = [
+    {
+      title: "AbuQitmirLabs Releases Autonomous Multi-Agent RAG Framework for Enterprise Clients",
+      type: "latest",
+      date: "July 18, 2026",
+      category: "Product Launch",
+      excerpt: "Our engineering studio in Karachi has announced a new open-spec RAG framework that cuts LLM vector search latency to under 180ms while guaranteeing zero data hallucination.",
+      content: "Full announcement detailing the autonomous multi-agent RAG framework deployed across enterprise environments.",
+      location: "Karachi, Pakistan",
+      contact: "info@abuqitmirlabs.tech",
+      author: "Abu Qitmir Mohammad Shiraz Al-Madani",
+      readTime: "4 min read",
+      slug: "/news/latest/ai-rag-framework-launch",
+      published: true
+    },
+    {
+      title: "AbuQitmirLabs Expands Dedicated Engineering Squads for US & UK Fintech Markets",
+      type: "latest",
+      date: "June 28, 2026",
+      category: "Company News",
+      excerpt: "Following a 45% growth in international client contracts, AbuQitmirLabs expands its in-house developer squads in Karachi to support round-the-clock US EST and UK GMT shift deployments.",
+      content: "Full story on expansion of dedicated developer squads for US & UK clients.",
+      location: "Karachi, Pakistan",
+      contact: "info@abuqitmirlabs.tech",
+      author: "Abu Qitmir Mohammad Shiraz Al-Madani",
+      readTime: "5 min read",
+      slug: "/news/latest/us-uk-expansion-q3",
+      published: true
+    },
+    {
+      title: "Technical Benchmark: How Generative Engine Optimization (GEO) Outperforms Traditional SEO in 2026",
+      type: "industry-insights",
+      date: "May 14, 2026",
+      category: "Industry Insights",
+      excerpt: "An empirical study by Lead Architect Abu Qitmir revealing how structured entity graphs and direct answer blocks gain 3.4x higher citation rates in Google AI Overviews.",
+      content: "Deep technical breakdown of Generative Engine Optimization strategies.",
+      location: "Karachi, Pakistan",
+      contact: "info@abuqitmirlabs.tech",
+      author: "Abu Qitmir Mohammad Shiraz Al-Madani",
+      readTime: "8 min read",
+      slug: "/news/industry-insights",
+      published: true
+    },
+    {
+      title: "AbuQitmirLabs Achieves Full HIPAA & ISO 27001 Cloud Security Validation",
+      type: "press-releases",
+      date: "April 02, 2026",
+      category: "Press Release",
+      excerpt: "Official security audit confirms that all custom medical software platforms engineered by AbuQitmirLabs meet strict HIPAA, HITECH, and ISO 27001 data protection protocols.",
+      content: "Official press release regarding HIPAA and ISO 27001 cloud security audit validation.",
+      location: "Karachi, Pakistan",
+      contact: "info@abuqitmirlabs.tech",
+      author: "AbuQitmirLabs Press Office",
+      readTime: "3 min read",
+      slug: "/news/press-releases",
+      published: true
+    },
+    {
+      title: "Engineering Sub-200ms RAG Pipelines with Pinecone Vector Indexing and LlamaIndex",
+      type: "industry-insights",
+      date: "June 08, 2026",
+      category: "AI Architecture",
+      excerpt: "A deep dive into chunking strategies, hybrid keyword-semantic search, and LLM prompt caching that cut enterprise AI query latency in half.",
+      content: "Comprehensive guide to building sub-200ms RAG pipelines.",
+      location: "Karachi, Pakistan",
+      contact: "info@abuqitmirlabs.tech",
+      author: "Abu Huraira",
+      readTime: "11 min read",
+      slug: "/news/industry-insights",
+      published: true
+    },
+    {
+      title: "AbuQitmirLabs Crosses Milestone 410+ Projects and 350+ Global Enterprise Clients",
+      type: "press-releases",
+      date: "January 10, 2026",
+      category: "Press Release",
+      excerpt: "Celebrating 5 years of operation since founding in 2021 with over 410 successful software engineering deployments across US, UK, Australia, and EU.",
+      content: "Official milestone announcement for 410+ projects completed.",
+      location: "Karachi, Pakistan",
+      contact: "info@abuqitmirlabs.tech",
+      author: "AbuQitmirLabs Press Office",
+      readTime: "4 min read",
+      slug: "/news/press-releases",
+      published: true
+    }
+];
 
 const AdminDashboard = () => {
     const [user, setUser] = useState<any>(null);
@@ -25,10 +113,37 @@ const AdminDashboard = () => {
     const [status, setStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null);
     const [loginError, setLoginError] = useState<string | null>(null);
     const [isInIframe, setIsInIframe] = useState(false);
+    
+    // Blog State
     const [posts, setPosts] = useState<any[]>([]);
     const [fetchingPosts, setFetchingPosts] = useState(false);
     const [editingId, setEditingId] = useState<string | null>(null);
     const [activeTab, setActiveTab] = useState<'create' | 'list'>('create');
+
+    // Section Switcher: 'blog' | 'news'
+    const [activeSection, setActiveSection] = useState<'blog' | 'news'>('blog');
+
+    // News Section State
+    const [newsSubTab, setNewsSubTab] = useState<'all' | 'latest' | 'press-releases' | 'industry-insights'>('all');
+    const [newsActiveTab, setNewsActiveTab] = useState<'list' | 'create'>('list');
+    const [newsItems, setNewsItems] = useState<any[]>([]);
+    const [fetchingNews, setFetchingNews] = useState(false);
+    const [editingNewsId, setEditingNewsId] = useState<string | null>(null);
+
+    const [newsFormData, setNewsFormData] = useState({
+        title: '',
+        type: 'latest', // 'latest' | 'press-releases' | 'industry-insights' | 'all'
+        category: 'Product Launch',
+        date: new Date().toLocaleDateString('en-US', { month: 'long', day: '2-digit', year: 'numeric' }),
+        excerpt: '',
+        content: '',
+        location: 'Karachi, Pakistan',
+        contact: 'info@abuqitmirlabs.tech',
+        author: 'Abu Qitmir Mohammad Shiraz Al-Madani',
+        readTime: '4 min read',
+        slug: '/news/latest',
+        published: true
+    });
 
     const CATEGORIES = ["AI", "Software", "Business", "App", "Development"];
 
@@ -74,15 +189,29 @@ const AdminDashboard = () => {
             const p = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
             setPosts(p);
         } catch (error) {
-            console.error("Fetch Error:", error);
+            console.error("Fetch Posts Error:", error);
         } finally {
             setFetchingPosts(false);
+        }
+    };
+
+    const fetchNewsItems = async () => {
+        setFetchingNews(true);
+        try {
+            const querySnapshot = await getDocs(collection(db, 'news_items'));
+            const n = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            setNewsItems(n);
+        } catch (error) {
+            console.error("Fetch News Error:", error);
+        } finally {
+            setFetchingNews(false);
         }
     };
 
     useEffect(() => {
         if (user && (user.email === ADMIN_EMAIL || user.uid === ADMIN_UID)) {
             fetchPosts();
+            fetchNewsItems();
         }
     }, [user]);
 
@@ -147,6 +276,109 @@ const AdminDashboard = () => {
             setStatus({ type: 'success', message: 'Post deleted' });
         } catch (err) {
             setStatus({ type: 'error', message: 'Delete failed' });
+        }
+    };
+
+    // News Handlers
+    const handleNewsEdit = (item: any) => {
+        setEditingNewsId(item.id);
+        setNewsFormData({
+            title: item.title || '',
+            type: item.type || 'latest',
+            category: item.category || 'Product Launch',
+            date: item.date || new Date().toLocaleDateString('en-US', { month: 'long', day: '2-digit', year: 'numeric' }),
+            excerpt: item.excerpt || '',
+            content: item.content || '',
+            location: item.location || 'Karachi, Pakistan',
+            contact: item.contact || 'info@abuqitmirlabs.tech',
+            author: item.author || 'Abu Qitmir Mohammad Shiraz Al-Madani',
+            readTime: item.readTime || '4 min read',
+            slug: item.slug || '/news/latest',
+            published: item.published ?? true
+        });
+        setActiveSection('news');
+        setNewsActiveTab('create');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const handleNewsDelete = async (id: string) => {
+        if (!window.confirm("Are you sure you want to delete this news item?")) return;
+        try {
+            await deleteDoc(doc(db, 'news_items', id));
+            setNewsItems(prev => prev.filter(item => item.id !== id));
+            setStatus({ type: 'success', message: 'News item deleted successfully.' });
+        } catch (err: any) {
+            setStatus({ type: 'error', message: 'Delete failed: ' + err.message });
+        }
+    };
+
+    const handleNewsSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        const isAuthorized = user && (user.email === ADMIN_EMAIL || user.uid === ADMIN_UID);
+        if (!isAuthorized || !user.emailVerified) {
+            setStatus({ type: 'error', message: 'Unauthorized action' });
+            return;
+        }
+        setIsSubmitting(true);
+        setStatus(null);
+        try {
+            if (editingNewsId) {
+                await updateDoc(doc(db, 'news_items', editingNewsId), {
+                    ...newsFormData,
+                    updatedAt: serverTimestamp()
+                });
+                setStatus({ type: 'success', message: 'News item updated successfully!' });
+            } else {
+                const docRef = await addDoc(collection(db, 'news_items'), {
+                    ...newsFormData,
+                    createdAt: serverTimestamp(),
+                    updatedAt: serverTimestamp()
+                });
+                setStatus({ type: 'success', message: `News item published! ID: ${docRef.id}` });
+            }
+            setEditingNewsId(null);
+            setNewsFormData({
+                title: '',
+                type: 'latest',
+                category: 'Product Launch',
+                date: new Date().toLocaleDateString('en-US', { month: 'long', day: '2-digit', year: 'numeric' }),
+                excerpt: '',
+                content: '',
+                location: 'Karachi, Pakistan',
+                contact: 'info@abuqitmirlabs.tech',
+                author: 'Abu Qitmir Mohammad Shiraz Al-Madani',
+                readTime: '4 min read',
+                slug: '/news/latest',
+                published: true
+            });
+            fetchNewsItems();
+            setNewsActiveTab('list');
+        } catch (err: any) {
+            console.error(err);
+            setStatus({ type: 'error', message: err.message || 'Failed to save news item' });
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    const handleSeedNews = async () => {
+        if (!window.confirm("Import initial default news items into database?")) return;
+        setIsSubmitting(true);
+        setStatus(null);
+        try {
+            for (const item of DEFAULT_NEWS_SEED) {
+                await addDoc(collection(db, 'news_items'), {
+                    ...item,
+                    createdAt: serverTimestamp(),
+                    updatedAt: serverTimestamp()
+                });
+            }
+            setStatus({ type: 'success', message: 'Default news items imported to database!' });
+            fetchNewsItems();
+        } catch (err: any) {
+            setStatus({ type: 'error', message: 'Import failed: ' + err.message });
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -598,41 +830,137 @@ const AdminDashboard = () => {
             );
         }
 
+        const filteredNewsItems = newsItems.filter(item => {
+            if (newsSubTab === 'all') return true;
+            return item.type === newsSubTab || item.type === 'all';
+        });
+
         return (
             <div className="max-w-7xl mx-auto w-full">
                 <div className="flex flex-col md:flex-row gap-8">
                     {/* Sidebar: Desktop Only */}
                     <aside className="hidden md:flex flex-col gap-4 w-64 shrink-0">
-                        <button 
-                            onClick={() => {
-                                setActiveTab('create');
-                                setEditingId(null);
-                                 setFormData({
-                                    title: '', slug: '', excerpt: '', content: '', 
-                                    author: 'ABUQITMIRLABS .TECH Shiraz Almadani', category: 'AI', 
-                                    published: true, coverImage: '', coverImageAlt: '', tags: ''
-                                });
-                                setHelperImages([
-                                    { url: '', caption: '' },
-                                    { url: '', caption: '' },
-                                    { url: '', caption: '' },
-                                    { url: '', caption: '' },
-                                    { url: '', caption: '' },
-                                    { url: '', caption: '' }
-                                ]);
-                            }}
-                            className={`w-full font-bold py-4 px-6 rounded-xl flex items-center gap-3 transition-all active:scale-95 shadow-lg ${activeTab === 'create' ? 'bg-blue-600 text-white shadow-blue-900/20' : 'bg-zinc-900 text-gray-400 border border-white/5'}`}
-                        >
-                            <Plus size={24} />
-                            <span className="uppercase tracking-widest text-xs font-black">{editingId ? 'EDITING POST' : 'NEW POST'}</span>
-                        </button>
-                        <button 
-                            onClick={() => setActiveTab('list')}
-                            className={`w-full font-bold py-4 px-6 rounded-xl flex items-center gap-3 transition-all ${activeTab === 'list' ? 'bg-zinc-800 text-white border-blue-500/50 border' : 'bg-zinc-950 text-gray-400 border border-white/5'}`}
-                        >
-                            <FileText size={20} />
-                            <span className="uppercase tracking-widest text-xs font-black">ALL POSTS ({posts.length})</span>
-                        </button>
+                        {/* Section Selector */}
+                        <div className="bg-zinc-950 border border-white/10 rounded-2xl p-2 flex flex-col gap-1.5 shadow-xl">
+                            <button
+                                onClick={() => setActiveSection('blog')}
+                                className={`w-full font-bold py-3 px-4 rounded-xl flex items-center justify-between text-xs tracking-wider transition-all uppercase ${activeSection === 'blog' ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/30 font-black' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
+                            >
+                                <span className="flex items-center gap-2">
+                                    <FileText size={16} /> Blog Posts
+                                </span>
+                                <span className="bg-black/40 text-[9px] px-2 py-0.5 rounded-full">{posts.length}</span>
+                            </button>
+                            <button
+                                onClick={() => setActiveSection('news')}
+                                className={`w-full font-bold py-3 px-4 rounded-xl flex items-center justify-between text-xs tracking-wider transition-all uppercase ${activeSection === 'news' ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/30 font-black' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
+                            >
+                                <span className="flex items-center gap-2">
+                                    <Newspaper size={16} /> News Section ▼
+                                </span>
+                                <span className="bg-black/40 text-[9px] px-2 py-0.5 rounded-full">{newsItems.length}</span>
+                            </button>
+                        </div>
+
+                        {activeSection === 'blog' ? (
+                            <>
+                                <button 
+                                    onClick={() => {
+                                        setActiveTab('create');
+                                        setEditingId(null);
+                                        setFormData({
+                                            title: '', slug: '', excerpt: '', content: '', 
+                                            author: 'ABUQITMIRLABS .TECH Shiraz Almadani', category: 'AI', 
+                                            published: true, coverImage: '', coverImageAlt: '', tags: ''
+                                        });
+                                        setHelperImages([
+                                            { url: '', caption: '' },
+                                            { url: '', caption: '' },
+                                            { url: '', caption: '' },
+                                            { url: '', caption: '' },
+                                            { url: '', caption: '' },
+                                            { url: '', caption: '' }
+                                        ]);
+                                    }}
+                                    className={`w-full font-bold py-4 px-6 rounded-xl flex items-center gap-3 transition-all active:scale-95 shadow-lg ${activeTab === 'create' ? 'bg-blue-600 text-white shadow-blue-900/20' : 'bg-zinc-900 text-gray-400 border border-white/5'}`}
+                                >
+                                    <Plus size={20} />
+                                    <span className="uppercase tracking-widest text-xs font-black">{editingId ? 'EDITING POST' : 'NEW BLOG POST'}</span>
+                                </button>
+                                <button 
+                                    onClick={() => setActiveTab('list')}
+                                    className={`w-full font-bold py-4 px-6 rounded-xl flex items-center gap-3 transition-all ${activeTab === 'list' ? 'bg-zinc-800 text-white border-blue-500/50 border' : 'bg-zinc-950 text-gray-400 border border-white/5'}`}
+                                >
+                                    <FileText size={20} />
+                                    <span className="uppercase tracking-widest text-xs font-black">ALL POSTS ({posts.length})</span>
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <button 
+                                    onClick={() => {
+                                        setNewsActiveTab('create');
+                                        setEditingNewsId(null);
+                                        setNewsFormData({
+                                            title: '',
+                                            type: 'latest',
+                                            category: 'Product Launch',
+                                            date: new Date().toLocaleDateString('en-US', { month: 'long', day: '2-digit', year: 'numeric' }),
+                                            excerpt: '',
+                                            content: '',
+                                            location: 'Karachi, Pakistan',
+                                            contact: 'info@abuqitmirlabs.tech',
+                                            author: 'Abu Qitmir Mohammad Shiraz Al-Madani',
+                                            readTime: '4 min read',
+                                            slug: '/news/latest',
+                                            published: true
+                                        });
+                                    }}
+                                    className={`w-full font-bold py-4 px-6 rounded-xl flex items-center gap-3 transition-all active:scale-95 shadow-lg ${newsActiveTab === 'create' ? 'bg-blue-600 text-white shadow-blue-900/20' : 'bg-zinc-900 text-gray-400 border border-white/5'}`}
+                                >
+                                    <Plus size={20} />
+                                    <span className="uppercase tracking-widest text-xs font-black">{editingNewsId ? 'EDITING NEWS' : 'NEW NEWS ARTICLE'}</span>
+                                </button>
+                                <button 
+                                    onClick={() => setNewsActiveTab('list')}
+                                    className={`w-full font-bold py-4 px-6 rounded-xl flex items-center gap-3 transition-all ${newsActiveTab === 'list' ? 'bg-zinc-800 text-white border-blue-500/50 border' : 'bg-zinc-950 text-gray-400 border border-white/5'}`}
+                                >
+                                    <Newspaper size={20} />
+                                    <span className="uppercase tracking-widest text-xs font-black">ALL NEWS ({newsItems.length})</span>
+                                </button>
+
+                                {/* News Pages Quick Sub-Filters */}
+                                <div className="p-3 bg-zinc-950 border border-white/5 rounded-2xl space-y-1.5 mt-2">
+                                    <div className="text-[9px] font-black uppercase text-gray-500 tracking-widest px-2 pb-1">Filter by Page</div>
+                                    {[
+                                        { id: 'all', label: 'All News', icon: Sparkles },
+                                        { id: 'latest', label: 'Latest News', icon: Rss },
+                                        { id: 'press-releases', label: 'Press Releases', icon: Megaphone },
+                                        { id: 'industry-insights', label: 'Industry Insights', icon: Lightbulb }
+                                    ].map(sub => {
+                                        const Icon = sub.icon;
+                                        const count = sub.id === 'all' 
+                                            ? newsItems.length 
+                                            : newsItems.filter(i => i.type === sub.id || i.type === 'all').length;
+                                        return (
+                                            <button
+                                                key={sub.id}
+                                                onClick={() => {
+                                                    setNewsSubTab(sub.id as any);
+                                                    setNewsActiveTab('list');
+                                                }}
+                                                className={`w-full py-2 px-3 rounded-lg flex items-center justify-between text-[11px] font-bold transition-all ${newsSubTab === sub.id ? 'bg-white/10 text-white border border-white/10' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
+                                            >
+                                                <span className="flex items-center gap-2">
+                                                    <Icon size={13} className="text-blue-400" /> {sub.label}
+                                                </span>
+                                                <span className="text-[9px] bg-black/40 px-1.5 py-0.5 rounded-md text-gray-400">{count}</span>
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            </>
+                        )}
 
                         <div className="mt-auto pt-10">
                              <button 
@@ -658,12 +986,17 @@ const AdminDashboard = () => {
                             {/* Section Title */}
                             <div className="flex items-center justify-between mb-10">
                                 <div className="flex items-center gap-4">
-                                    <div className="text-blue-500 font-light text-4xl leading-none">{editingId ? '✎' : '+'}</div>
+                                    <div className="text-blue-500 font-light text-4xl leading-none">
+                                        {activeSection === 'blog' ? (editingId ? '✎' : '+') : (editingNewsId ? '✎' : '+')}
+                                    </div>
                                     <h2 className="text-2xl md:text-4xl font-black tracking-tight uppercase">
-                                        {activeTab === 'create' ? (editingId ? 'Update Blog Post' : 'Create New Blog Post') : 'Manage Contents'}
+                                        {activeSection === 'blog' 
+                                          ? (activeTab === 'create' ? (editingId ? 'Update Blog Post' : 'Create New Blog Post') : 'Manage Contents')
+                                          : (newsActiveTab === 'create' ? (editingNewsId ? 'Update News Article' : 'Create News Article') : `Manage News (${newsSubTab.toUpperCase()})`)
+                                        }
                                     </h2>
                                 </div>
-                                {editingId && (
+                                {activeSection === 'blog' && editingId && (
                                     <button 
                                         onClick={() => {
                                             setEditingId(null);
@@ -686,31 +1019,43 @@ const AdminDashboard = () => {
                                         Cancel Edit
                                     </button>
                                 )}
+                                {activeSection === 'news' && editingNewsId && (
+                                    <button 
+                                        onClick={() => {
+                                            setEditingNewsId(null);
+                                            setNewsActiveTab('list');
+                                        }}
+                                        className="text-[10px] font-black text-red-500 uppercase tracking-widest bg-red-500/10 px-4 py-2 rounded-lg"
+                                    >
+                                        Cancel Edit
+                                    </button>
+                                )}
                             </div>
 
-                            <AnimatePresence mode="wait">
-                                {activeTab === 'create' ? (
-                                    <motion.div
-                                        key="form"
-                                        initial={{ opacity: 0, x: -20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        exit={{ opacity: 0, x: 20 }}
-                                    >
-                                        <AnimatePresence>
-                                            {status && (
-                                                <motion.div 
-                                                    initial={{ opacity: 0, x: 20 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    exit={{ opacity: 0, x: -20 }}
-                                                    className={`p-5 rounded-2xl mb-8 flex items-center gap-3 font-bold uppercase tracking-widest text-[10px] ${
-                                                        status.type === 'success' ? 'bg-green-500/10 text-green-400 border border-green-500/20 shadow-[0_0_20px_rgba(34,197,94,0.1)]' : 'bg-red-500/10 text-red-400 border border-red-500/20 shadow-[0_0_20px_rgba(239,44,44,0.1)]'
-                                                    }`}
-                                                >
-                                                    {status.type === 'success' ? <CheckCircle size={18} /> : <AlertCircle size={18} />}
-                                                    {status.message}
-                                                </motion.div>
-                                            )}
-                                        </AnimatePresence>
+                            {activeSection === 'blog' ? (
+                                <AnimatePresence mode="wait">
+                                    {activeTab === 'create' ? (
+                                        <motion.div
+                                            key="form"
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            exit={{ opacity: 0, x: 20 }}
+                                        >
+                                            <AnimatePresence>
+                                                {status && (
+                                                    <motion.div 
+                                                        initial={{ opacity: 0, x: 20 }}
+                                                        animate={{ opacity: 1, x: 0 }}
+                                                        exit={{ opacity: 0, x: -20 }}
+                                                        className={`p-5 rounded-2xl mb-8 flex items-center gap-3 font-bold uppercase tracking-widest text-[10px] ${
+                                                            status.type === 'success' ? 'bg-green-500/10 text-green-400 border border-green-500/20 shadow-[0_0_20px_rgba(34,197,94,0.1)]' : 'bg-red-500/10 text-red-400 border border-red-500/20 shadow-[0_0_20px_rgba(239,44,44,0.1)]'
+                                                        }`}
+                                                    >
+                                                        {status.type === 'success' ? <CheckCircle size={18} /> : <AlertCircle size={18} />}
+                                                        {status.message}
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
 
                                         {/* Create Form */}
                                         <form onSubmit={handleSubmit} className="space-y-8">
@@ -1140,7 +1485,283 @@ const AdminDashboard = () => {
                             )}
                         </motion.div>
                     )}
-                            </AnimatePresence>
+                </AnimatePresence>
+            ) : (
+                    <AnimatePresence mode="wait">
+                        {newsActiveTab === 'create' ? (
+                                <motion.div
+                                    key="news-form"
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: 20 }}
+                                >
+                                    <AnimatePresence>
+                                        {status && (
+                                            <motion.div 
+                                                initial={{ opacity: 0, x: 20 }}
+                                                animate={{ opacity: 1, x: 0 }}
+                                                exit={{ opacity: 0, x: -20 }}
+                                                className={`p-5 rounded-2xl mb-8 flex items-center gap-3 font-bold uppercase tracking-widest text-[10px] ${
+                                                    status.type === 'success' ? 'bg-green-500/10 text-green-400 border border-green-500/20 shadow-[0_0_20px_rgba(34,197,94,0.1)]' : 'bg-red-500/10 text-red-400 border border-red-500/20 shadow-[0_0_20px_rgba(239,44,44,0.1)]'
+                                                }`}
+                                            >
+                                                {status.type === 'success' ? <CheckCircle size={18} /> : <AlertCircle size={18} />}
+                                                {status.message}
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+
+                                    <form onSubmit={handleNewsSubmit} className="space-y-8">
+                                        {/* News Type & Category */}
+                                        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+                                            <div className="md:col-span-6 space-y-3">
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">News Type / Page Target</label>
+                                                <select 
+                                                    className="w-full bg-[#1a1a1a] border border-white/5 rounded-2xl px-6 py-5 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-white font-bold appearance-none cursor-pointer"
+                                                    value={newsFormData.type}
+                                                    onChange={e => {
+                                                        const val = e.target.value;
+                                                        setNewsFormData({
+                                                            ...newsFormData, 
+                                                            type: val,
+                                                            slug: val === 'latest' ? '/news/latest' : val === 'press-releases' ? '/news/press-releases' : val === 'industry-insights' ? '/news/industry-insights' : '/news/all'
+                                                        });
+                                                    }}
+                                                >
+                                                    <option value="latest">Latest News (├── Latest News)</option>
+                                                    <option value="press-releases">Press Releases (├── Press Releases)</option>
+                                                    <option value="industry-insights">Industry Insights (├── Industry Insights)</option>
+                                                    <option value="all">All News (├── All News)</option>
+                                                </select>
+                                            </div>
+                                            <div className="md:col-span-6 space-y-3">
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Category Tag</label>
+                                                <input 
+                                                    className="w-full bg-[#1a1a1a] border border-white/5 rounded-2xl px-6 py-5 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all placeholder:text-gray-700 text-white font-bold"
+                                                    placeholder="Product Launch, AI Benchmark, Company News, etc."
+                                                    type="text"
+                                                    required
+                                                    value={newsFormData.category}
+                                                    onChange={e => setNewsFormData({...newsFormData, category: e.target.value})}
+                                                />
+                                            </div>
+                                        </div>
+
+                                        {/* Article Title */}
+                                        <div className="space-y-3">
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 flex justify-between">
+                                                News Headline / Title
+                                                <span className="text-blue-500/50">Required</span>
+                                            </label>
+                                            <input 
+                                                className="w-full bg-[#1a1a1a] border border-white/5 rounded-2xl px-6 py-5 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all placeholder:text-gray-700 text-white font-bold" 
+                                                placeholder="AbuQitmirLabs Announces New AI Framework..." 
+                                                type="text"
+                                                required
+                                                value={newsFormData.title}
+                                                onChange={e => {
+                                                    const newTitle = e.target.value;
+                                                    setNewsFormData(prev => ({
+                                                        ...prev,
+                                                        title: newTitle,
+                                                        slug: prev.slug.split('#')[0] + (newTitle ? `#${generateSlug(newTitle)}` : '')
+                                                    }));
+                                                }}
+                                            />
+                                        </div>
+
+                                        {/* Meta Fields: Date, Location, Read Time, Author */}
+                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                            <div className="space-y-2">
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Date</label>
+                                                <input 
+                                                    className="w-full bg-[#1a1a1a] border border-white/5 rounded-2xl px-5 py-4 text-xs font-mono text-white" 
+                                                    type="text"
+                                                    value={newsFormData.date}
+                                                    onChange={e => setNewsFormData({...newsFormData, date: e.target.value})}
+                                                />
+                                            </div>
+                                            <div className="space-y-2">
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Location</label>
+                                                <input 
+                                                    className="w-full bg-[#1a1a1a] border border-white/5 rounded-2xl px-5 py-4 text-xs font-mono text-white" 
+                                                    type="text"
+                                                    value={newsFormData.location}
+                                                    onChange={e => setNewsFormData({...newsFormData, location: e.target.value})}
+                                                />
+                                            </div>
+                                            <div className="space-y-2">
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Read Time</label>
+                                                <input 
+                                                    className="w-full bg-[#1a1a1a] border border-white/5 rounded-2xl px-5 py-4 text-xs font-mono text-white" 
+                                                    type="text"
+                                                    value={newsFormData.readTime}
+                                                    onChange={e => setNewsFormData({...newsFormData, readTime: e.target.value})}
+                                                />
+                                            </div>
+                                            <div className="space-y-2">
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Author</label>
+                                                <input 
+                                                    className="w-full bg-[#1a1a1a] border border-white/5 rounded-2xl px-5 py-4 text-xs font-mono text-white" 
+                                                    type="text"
+                                                    value={newsFormData.author}
+                                                    onChange={e => setNewsFormData({...newsFormData, author: e.target.value})}
+                                                />
+                                            </div>
+                                        </div>
+
+                                        {/* Excerpt */}
+                                        <div className="space-y-3">
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Excerpt / Brief Summary</label>
+                                            <textarea 
+                                                className="w-full bg-[#1a1a1a] border border-white/5 rounded-2xl px-6 py-5 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all placeholder:text-gray-700 resize-none text-white leading-relaxed" 
+                                                placeholder="Enter a concise summary of this news release or insight..." 
+                                                rows={3}
+                                                required
+                                                value={newsFormData.excerpt}
+                                                onChange={e => setNewsFormData({...newsFormData, excerpt: e.target.value})}
+                                            ></textarea>
+                                        </div>
+
+                                        {/* Full Article Content */}
+                                        <div className="space-y-3">
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 flex justify-between">
+                                                Full Article Content
+                                                <span className="text-gray-600 font-mono">Supports Markdown & HTML</span>
+                                            </label>
+                                            <textarea 
+                                                className="w-full bg-[#1a1a1a] border border-white/5 rounded-2xl px-6 py-5 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all placeholder:text-gray-700 font-mono text-sm resize-y min-h-[220px] text-white leading-relaxed" 
+                                                placeholder="Full detailed story, press statements, technical metrics, and analysis..." 
+                                                rows={10}
+                                                required
+                                                value={newsFormData.content}
+                                                onChange={e => setNewsFormData({...newsFormData, content: e.target.value})}
+                                            ></textarea>
+                                        </div>
+
+                                        {/* Form Actions */}
+                                        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row gap-6 items-center justify-between">
+                                            <button 
+                                                type="button"
+                                                onClick={() => {
+                                                    setEditingNewsId(null);
+                                                    setNewsActiveTab('list');
+                                                }}
+                                                className="px-8 py-4 rounded-2xl border border-white/10 hover:bg-white/5 font-black uppercase tracking-widest text-[10px] transition-all text-gray-400"
+                                            >
+                                                Cancel
+                                            </button>
+                                            <button 
+                                                type="submit" 
+                                                disabled={isSubmitting}
+                                                className="w-full md:w-auto px-16 py-5 rounded-2xl bg-blue-600 hover:bg-blue-700 disabled:bg-blue-900/50 text-white font-black uppercase tracking-widest text-xs transition-all shadow-[0_10px_30px_rgba(37,99,235,0.3)] active:scale-95 flex items-center justify-center gap-3"
+                                            >
+                                                {isSubmitting ? <Loader2 className="animate-spin" size={18} /> : null}
+                                                {isSubmitting ? 'Saving...' : (editingNewsId ? 'Update News Article' : 'Publish News Article')}
+                                            </button>
+                                        </div>
+                                    </form>
+                                </motion.div>
+                            ) : (
+                                /* News Listing */
+                                <motion.div 
+                                    key="news-list"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    className="space-y-6"
+                                >
+                                    {/* Header Filter Bar */}
+                                    <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-zinc-950/80 border border-white/5 rounded-2xl mb-6">
+                                        <div className="flex items-center gap-2">
+                                            <Filter className="w-4 h-4 text-blue-400" />
+                                            <span className="text-xs font-mono uppercase text-gray-400">Filtering:</span>
+                                            <span className="text-xs font-mono font-bold text-white uppercase bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full border border-blue-500/30">
+                                                {newsSubTab.replace('-', ' ')} ({filteredNewsItems.length})
+                                            </span>
+                                        </div>
+
+                                        <button
+                                            onClick={handleSeedNews}
+                                            disabled={isSubmitting}
+                                            className="px-4 py-2 rounded-xl bg-blue-600/20 border border-blue-500/30 hover:bg-blue-600 hover:text-white text-blue-300 text-xs font-mono font-bold uppercase transition-all flex items-center gap-2"
+                                        >
+                                            <Sparkles className="w-3.5 h-3.5" />
+                                            {isSubmitting ? 'Importing...' : 'Seed / Import Default News'}
+                                        </button>
+                                    </div>
+
+                                    {fetchingNews ? (
+                                        <div className="text-center py-20 bg-white/5 rounded-3xl">
+                                            <Loader2 className="animate-spin mx-auto text-blue-500 mb-4" size={32} />
+                                            <p className="text-[10px] font-black uppercase text-gray-500 tracking-[0.2em]">Synchronizing News Database...</p>
+                                        </div>
+                                    ) : filteredNewsItems.length === 0 ? (
+                                        <div className="text-center py-20 bg-white/5 rounded-3xl border border-white/5 space-y-4">
+                                            <p className="text-xs font-mono uppercase text-gray-400 tracking-widest">No News Articles Found in "{newsSubTab}"</p>
+                                            <p className="text-xs text-gray-500 max-w-md mx-auto">
+                                                Click "New News Article" above or seed the database with default press releases and industry insights.
+                                            </p>
+                                            <button
+                                                onClick={handleSeedNews}
+                                                disabled={isSubmitting}
+                                                className="px-6 py-3 rounded-xl bg-blue-600 text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-blue-500 transition-all shadow-lg inline-flex items-center gap-2"
+                                            >
+                                                <Sparkles size={14} /> Import Default News Articles
+                                            </button>
+                                        </div>
+                                    ) : (
+                                        <div className="grid grid-cols-1 gap-4">
+                                            {filteredNewsItems.map(item => (
+                                                <div key={item.id} className="bg-zinc-950/50 border border-white/5 hover:border-blue-500/30 rounded-3xl p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                                                    <div className="flex-1 space-y-2">
+                                                        <div className="flex flex-wrap items-center gap-2">
+                                                            <span className={`text-[9px] font-mono uppercase tracking-widest px-2.5 py-0.5 rounded-full border ${
+                                                                item.type === 'latest' ? 'bg-blue-500/10 text-blue-400 border-blue-500/30' :
+                                                                item.type === 'press-releases' ? 'bg-purple-500/10 text-purple-400 border-purple-500/30' :
+                                                                item.type === 'industry-insights' ? 'bg-amber-500/10 text-amber-400 border-amber-500/30' :
+                                                                'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
+                                                            }`}>
+                                                                {item.type || 'latest'}
+                                                            </span>
+                                                            <span className="text-[9px] font-mono text-gray-400">{item.category}</span>
+                                                            <span className="text-[9px] font-mono text-gray-500">• {item.date}</span>
+                                                        </div>
+                                                        <h3 className="text-lg font-bold text-white group-hover:text-blue-300 transition-colors line-clamp-1">{item.title}</h3>
+                                                        <p className="text-gray-400 text-xs line-clamp-2 font-light">{item.excerpt}</p>
+                                                    </div>
+                                                    <div className="flex items-center gap-3 self-end md:self-center shrink-0">
+                                                        <Link 
+                                                            to={item.type === 'latest' ? '/news/latest' : item.type === 'press-releases' ? '/news/press-releases' : item.type === 'industry-insights' ? '/news/industry-insights' : '/news/all'} 
+                                                            target="_blank"
+                                                            className="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white flex items-center justify-center transition-all"
+                                                            title="View Live Page"
+                                                        >
+                                                            <ExternalLink size={16} />
+                                                        </Link>
+                                                        <button 
+                                                            onClick={() => handleNewsEdit(item)}
+                                                            className="w-10 h-10 rounded-xl bg-blue-600/10 hover:bg-blue-600 text-blue-400 hover:text-white flex items-center justify-center transition-all"
+                                                            title="Edit Article"
+                                                        >
+                                                            <Edit size={16} />
+                                                        </button>
+                                                        <button 
+                                                            onClick={() => handleNewsDelete(item.id)}
+                                                            className="w-10 h-10 rounded-xl bg-red-600/10 hover:bg-red-600 text-red-400 hover:text-white flex items-center justify-center transition-all"
+                                                            title="Delete Article"
+                                                        >
+                                                            <Trash2 size={16} />
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    )}
                         </motion.div>
                     </section>
                 </div>

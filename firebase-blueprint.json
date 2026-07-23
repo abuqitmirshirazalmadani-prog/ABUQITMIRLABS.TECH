@@ -87,6 +87,32 @@
         "createdAt": { "type": "string", "format": "date-time" }
       },
       "required": ["question", "answer", "market", "order"]
+    },
+    "NewsItem": {
+      "title": "News Item",
+      "description": "Articles, press releases, product launches, and industry insights published under the News section.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "News headline title" },
+        "type": {
+          "type": "string",
+          "enum": ["latest", "press-releases", "industry-insights", "all"],
+          "description": "News section subcategory"
+        },
+        "category": { "type": "string", "description": "Category badge e.g. Product Launch, Company News, Press Release, SEO & GEO" },
+        "date": { "type": "string", "description": "Publication date display text" },
+        "excerpt": { "type": "string", "description": "Short summary" },
+        "content": { "type": "string", "description": "Full article content or press release details" },
+        "location": { "type": "string", "description": "Location e.g. Karachi, Pakistan (for press releases)" },
+        "contact": { "type": "string", "description": "Media contact email or phone" },
+        "author": { "type": "string", "description": "Author name" },
+        "readTime": { "type": "string", "description": "Estimated read time" },
+        "slug": { "type": "string", "description": "URL slug or link target" },
+        "published": { "type": "boolean", "description": "Visibility flag" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "type"]
     }
   },
   "firestore": {
@@ -105,6 +131,10 @@
     "faqs": {
       "schema": "Faq",
       "description": "Collection of market-specific dynamic Frequently Asked Questions"
+    },
+    "news_items": {
+      "schema": "NewsItem",
+      "description": "Collection of News section items (Latest News, Press Releases, Industry Insights, All News)"
     }
   }
 }

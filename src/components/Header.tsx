@@ -42,6 +42,17 @@ const Header = () => {
             ]
         },
         {
+            name: 'Solutions',
+            href: '/solutions/fintech',
+            dropdown: [
+                { name: 'Fintech Solutions', href: '/solutions/fintech' },
+                { name: 'Healthcare Platforms', href: '/solutions/healthcare' },
+                { name: 'AI-Powered Automation', href: '/solutions/ai-automation' },
+                { name: 'E-Commerce Development', href: '/solutions/e-commerce' },
+                { name: 'EdTech & Learning Platforms', href: '/solutions/edtech' },
+            ]
+        },
+        {
             name: 'World',
             href: '#',
             dropdown: [
@@ -53,7 +64,26 @@ const Header = () => {
                 { name: 'Australia Market', href: '/australia-market' },
             ]
         },
-        { name: 'About Us', href: '/about' },
+        { 
+            name: 'News', 
+            href: '/news/all',
+            dropdown: [
+                { name: 'Latest News', href: '/news/latest' },
+                { name: 'Press Releases', href: '/news/press-releases' },
+                { name: 'Industry Insights', href: '/news/industry-insights' },
+                { name: 'All News Archive', href: '/news/all' },
+            ]
+        },
+        {
+            name: 'About',
+            href: '/about/our-company',
+            dropdown: [
+                { name: 'Our Company', href: '/about/our-company' },
+                { name: 'Our Team', href: '/about/our-team' },
+                { name: 'Our Process', href: '/about/our-process' },
+                { name: 'Careers', href: '/about/careers' },
+            ]
+        },
         { 
             name: 'Case Studies', 
             href: '/case-studies',

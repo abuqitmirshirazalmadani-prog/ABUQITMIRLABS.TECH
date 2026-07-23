@@ -66,6 +66,21 @@ service cloud.firestore {
              data.order is number;
     }
 
+    function isValidNewsItem(data) {
+      return data.title is string && data.title.size() > 0 && data.title.size() <= 300 &&
+             (data.type in ["latest", "press-releases", "industry-insights", "all"]) &&
+             (data.category is string && data.category.size() <= 100 || !data.keys().contains('category')) &&
+             (data.date is string && data.date.size() <= 100 || !data.keys().contains('date')) &&
+             (data.excerpt is string && data.excerpt.size() <= 2000 || !data.keys().contains('excerpt')) &&
+             (data.content is string && data.content.size() <= 50000 || !data.keys().contains('content')) &&
+             (data.location is string && data.location.size() <= 100 || !data.keys().contains('location')) &&
+             (data.contact is string && data.contact.size() <= 200 || !data.keys().contains('contact')) &&
+             (data.author is string && data.author.size() <= 100 || !data.keys().contains('author')) &&
+             (data.readTime is string && data.readTime.size() <= 50 || !data.keys().contains('readTime')) &&
+             (data.slug is string && data.slug.size() <= 300 || !data.keys().contains('slug')) &&
+             (data.published is bool || !data.keys().contains('published'));
+    }
+
     // --- COLLECTION RULES ---
 
     // Blog Posts
@@ -120,6 +135,18 @@ service cloud.firestore {
       allow update: if isAdmin() && isValidId(faqId) && isValidFaq(incoming()) &&
                     incoming().createdAt == existing().createdAt;
       allow delete: if isAdmin() && isValidId(faqId);
+    }
+
+    // News Items (Latest News, Press Releases, Industry Insights, All News)
+    match /news_items/{newsId} {
+      allow get: if true;
+      allow list: if true;
+      allow create: if isAdmin() && isValidId(newsId) && isValidNewsItem(incoming()) &&
+                    incoming().createdAt == request.time;
+      allow update: if isAdmin() && isValidId(newsId) && isValidNewsItem(incoming()) &&
+                    incoming().updatedAt == request.time &&
+                    incoming().createdAt == existing().createdAt;
+      allow delete: if isAdmin() && isValidId(newsId);
     }
   }
 }
