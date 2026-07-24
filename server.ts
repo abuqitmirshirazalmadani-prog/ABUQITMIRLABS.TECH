@@ -142,6 +142,7 @@ async function startServer() {
         '/news/all',
         '/news/press-releases',
         '/news/industry-insights',
+        '/news/industry-insights/google-ai-dogfooding-enterprise-results',
         '/local-seo-for-small-business',
         '/local-seo-citation-building',
         '/white-label-local-seo',

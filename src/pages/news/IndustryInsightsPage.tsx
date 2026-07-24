@@ -29,6 +29,15 @@ const IndustryInsightsPage = () => {
 
   const defaultInsights = [
     {
+      id: "google-ai-dogfooding-enterprise-results",
+      title: "Google's AI 'Dogfooding' Playbook: What 83% Sales Adoption and 20% Higher Win Rates Mean for Enterprise AI",
+      author: "Abu Qitmir Mohammad Shiraz Al-Madani",
+      date: "July 25, 2026",
+      topic: "Industry Insights",
+      excerpt: "Google's internal AI metrics reveal 83% sales adoption, 20% higher win rates, and 75% autonomous support resolution. What enterprise leaders can learn from a decade of AI dogfooding.",
+      readTime: "7 min read"
+    },
+    {
       id: "generative-engine-optimization-geo-strategy",
       title: "Generative Engine Optimization (GEO): The Complete 2026 Strategy for Technical Leaders",
       author: "Abu Qitmir Mohammad Shiraz Al-Madani",
