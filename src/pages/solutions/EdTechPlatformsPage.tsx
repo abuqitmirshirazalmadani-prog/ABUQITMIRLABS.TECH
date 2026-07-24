@@ -81,7 +81,7 @@ const EdTechPlatformsPage = () => {
       <Helmet>
         <title>EdTech Development — Custom Learning Platforms & LMS | AbuQitmirLabs</title>
         <meta name="description" content="Custom EdTech development services by AbuQitmirLabs. We build custom Learning Management Systems (LMS), AI tutoring engines, virtual classrooms, and course portals." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/solutions/edtech" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/solutions/edtech" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
       </Helmet>

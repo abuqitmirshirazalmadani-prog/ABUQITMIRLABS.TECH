@@ -81,7 +81,7 @@ const ECommerceDevelopmentPage = () => {
       <Helmet>
         <title>E-Commerce Development — Custom Online Stores & Headless Commerce | AbuQitmirLabs</title>
         <meta name="description" content="Custom e-commerce development services by AbuQitmirLabs. We build high-conversion online stores, headless commerce platforms, multi-vendor marketplaces, and mobile shopping apps." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/solutions/e-commerce" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/solutions/e-commerce" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
       </Helmet>

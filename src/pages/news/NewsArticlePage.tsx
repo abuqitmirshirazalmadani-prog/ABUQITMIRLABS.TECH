@@ -369,7 +369,8 @@ const NewsArticlePage = () => {
     );
   }
 
-  const currentUrl = window.location.href;
+  const articleSlug = id || article.id || article.slug || '';
+  const currentUrl = `https://www.abuqitmirlabs.tech/news/article/${articleSlug}`;
   const related = allArticles.filter(a => a.title !== article.title).slice(0, 3);
 
   const articleSchema = {
@@ -385,7 +386,7 @@ const NewsArticlePage = () => {
     "publisher": {
       "@type": "Organization",
       "name": "AbuQitmirLabs .TECH",
-      "logo": "https://abuqitmirlabs.tech/logo.png"
+      "logo": "https://www.abuqitmirlabs.tech/logo.png"
     },
     "mainEntityOfPage": currentUrl
   };

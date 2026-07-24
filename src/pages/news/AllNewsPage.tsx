@@ -138,7 +138,7 @@ const AllNewsPage = () => {
       <Helmet>
         <title>All News — Comprehensive News & Article Archive | AbuQitmirLabs</title>
         <meta name="description" content="Explore the full archive of news articles, press releases, technical insights, and company milestones from AbuQitmirLabs .TECH." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/news/all" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/news/all" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 

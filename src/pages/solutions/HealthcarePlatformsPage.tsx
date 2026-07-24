@@ -82,7 +82,7 @@ const HealthcarePlatformsPage = () => {
       <Helmet>
         <title>Healthcare Software Development — HIPAA-Compliant Platforms | AbuQitmirLabs</title>
         <meta name="description" content="Custom healthcare software development services. We build HIPAA & GDPR compliant telemedicine platforms, EHR/EMR systems, patient management portals, and FHIR integrations." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/solutions/healthcare" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/solutions/healthcare" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
       </Helmet>

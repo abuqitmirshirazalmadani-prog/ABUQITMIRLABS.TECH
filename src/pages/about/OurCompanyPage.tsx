@@ -94,7 +94,7 @@ const OurCompanyPage = () => {
       <Helmet>
         <title>Our Company — AbuQitmirLabs .TECH | Custom Software Boutique</title>
         <meta name="description" content="Discover AbuQitmirLabs .TECH. Founded in Karachi in 2021 by Abu Qitmir Mohammad Shiraz Al-Madani. 410+ projects, 350+ clients, bespoke software & AI engineering." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/about/our-company" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/about/our-company" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(aboutSchema)}</script>
       </Helmet>

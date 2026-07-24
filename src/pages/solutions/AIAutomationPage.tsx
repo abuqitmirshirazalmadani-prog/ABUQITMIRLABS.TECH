@@ -82,7 +82,7 @@ const AIAutomationPage = () => {
       <Helmet>
         <title>AI-Powered Automation — Custom AI Agents & RAG Systems | AbuQitmirLabs</title>
         <meta name="description" content="Custom AI-powered automation solutions by AbuQitmirLabs. We engineer autonomous AI agents, Retrieval-Augmented Generation (RAG) platforms, and intelligent workflow automation." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/solutions/ai-automation" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/solutions/ai-automation" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
       </Helmet>

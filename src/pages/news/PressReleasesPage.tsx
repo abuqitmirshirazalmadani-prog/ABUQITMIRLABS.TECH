@@ -115,7 +115,7 @@ const PressReleasesPage = () => {
       <Helmet>
         <title>Press Releases — Official Media Announcements | AbuQitmirLabs</title>
         <meta name="description" content="Official press releases, media announcements, corporate milestones, and press kit resources from AbuQitmirLabs .TECH." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/news/press-releases" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/news/press-releases" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 

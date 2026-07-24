@@ -119,7 +119,7 @@ const OurProcessPage = () => {
       <Helmet>
         <title>Our Process — Agile Software Engineering & Delivery | AbuQitmirLabs</title>
         <meta name="description" content="Discover our 6-step agile software engineering process at AbuQitmirLabs .TECH. From technical discovery to architecture, 1-week sprints, QA testing, and launch." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/about/our-process" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/about/our-process" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(processSchema)}</script>
       </Helmet>

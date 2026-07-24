@@ -128,7 +128,7 @@ const IndustryInsightsPage = () => {
       <Helmet>
         <title>Industry Insights — Technical Thought Leadership | AbuQitmirLabs</title>
         <meta name="description" content="In-depth technical insights, AI architecture research, GEO search strategies, and software engineering benchmarks from AbuQitmirLabs .TECH." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/news/industry-insights" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/news/industry-insights" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 

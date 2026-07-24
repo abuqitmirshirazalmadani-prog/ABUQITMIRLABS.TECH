@@ -106,7 +106,7 @@ const OurTeamPage = () => {
       <Helmet>
         <title>Our Team — Elite Software Engineers & Architects | AbuQitmirLabs</title>
         <meta name="description" content="Meet the elite collective behind AbuQitmirLabs .TECH. Led by Founder & Lead Architect Abu Qitmir Mohammad Shiraz Al-Madani, senior systems engineers, and UI/UX creators." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/about/our-team" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/about/our-team" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(teamSchema)}</script>
       </Helmet>

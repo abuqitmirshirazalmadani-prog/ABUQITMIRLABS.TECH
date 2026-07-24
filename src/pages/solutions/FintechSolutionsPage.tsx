@@ -83,7 +83,7 @@ const FintechSolutionsPage = () => {
       <Helmet>
         <title>Fintech Software Development — Custom Banking & Payment Solutions | AbuQitmirLabs</title>
         <meta name="description" content="Custom fintech software development solutions by AbuQitmirLabs. Build PCI-DSS compliant payment gateways, neobanks, lending portals, and AI fraud detection systems." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/solutions/fintech" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/solutions/fintech" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
       </Helmet>

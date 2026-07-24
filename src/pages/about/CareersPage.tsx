@@ -99,7 +99,7 @@ const CareersPage = () => {
       <Helmet>
         <title>Careers at AbuQitmirLabs — Join Our Elite Engineering Collective</title>
         <meta name="description" content="Explore career opportunities at AbuQitmirLabs .TECH in Karachi. Hiring Full-Stack Architects, AI RAG Engineers, UI/UX Designers, and Technical SEO Strategists." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/about/careers" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/about/careers" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 

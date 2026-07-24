@@ -119,7 +119,7 @@ const LatestNewsPage = () => {
       <Helmet>
         <title>Latest News — AbuQitmirLabs .TECH | Company & Tech Announcements</title>
         <meta name="description" content="Stay updated with the latest news, product launches, AI research, and industry insights from AbuQitmirLabs .TECH." />
-        <link rel="canonical" href="https://abuqitmirlabs.tech/news/latest" />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/news/latest" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 
