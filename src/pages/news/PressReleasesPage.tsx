@@ -23,6 +23,23 @@ import CountryMarquee from '../../components/CountryMarquee';
 
 import { generateSlug } from './NewsArticlePage';
 
+const getArticleSlug = (item: any) => {
+  if (item.slug && typeof item.slug === 'string' && item.slug.trim()) {
+    let s = item.slug.trim();
+    if (s.includes('/')) {
+      const parts = s.split('/');
+      s = parts[parts.length - 1];
+    }
+    if (s && s !== 'latest' && s !== 'press-releases' && s !== 'industry-insights' && s !== 'all') {
+      return s;
+    }
+  }
+  if (item.title && typeof item.title === 'string' && item.title.trim()) {
+    return generateSlug(item.title);
+  }
+  return item.id || 'article';
+};
+
 const PressReleasesPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [dynamicReleases, setDynamicReleases] = useState<any[]>([]);
@@ -196,7 +213,7 @@ const PressReleasesPage = () => {
                 <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/10">
                   <span className="text-xs font-mono text-gray-500">Media Contact: {pr.contact}</span>
                   <div className="flex items-center gap-4">
-                    <Link to={`/news/article/${pr.id || pr.slug || generateSlug(pr.title)}`} className="text-xs font-mono uppercase text-[#ccff00] font-bold hover:underline flex items-center gap-1">
+                    <Link to={`/news/article/${getArticleSlug(pr)}`} className="text-xs font-mono uppercase text-[#ccff00] font-bold hover:underline flex items-center gap-1">
                       Read Full Release <ChevronRight className="w-4 h-4" />
                     </Link>
                     <a href={`mailto:${pr.contact}?subject=Press Inquiry: ${encodeURIComponent(pr.title)}`} className="text-xs font-mono uppercase text-gray-400 hover:text-white flex items-center gap-1">

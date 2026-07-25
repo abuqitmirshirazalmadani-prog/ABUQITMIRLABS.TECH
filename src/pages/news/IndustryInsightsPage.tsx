@@ -23,6 +23,23 @@ import CountryMarquee from '../../components/CountryMarquee';
 
 import { generateSlug } from './NewsArticlePage';
 
+const getArticleSlug = (item: any) => {
+  if (item.slug && typeof item.slug === 'string' && item.slug.trim()) {
+    let s = item.slug.trim();
+    if (s.includes('/')) {
+      const parts = s.split('/');
+      s = parts[parts.length - 1];
+    }
+    if (s && s !== 'latest' && s !== 'press-releases' && s !== 'industry-insights' && s !== 'all') {
+      return s;
+    }
+  }
+  if (item.title && typeof item.title === 'string' && item.title.trim()) {
+    return generateSlug(item.title);
+  }
+  return item.id || 'article';
+};
+
 const IndustryInsightsPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [dynamicInsights, setDynamicInsights] = useState<any[]>([]);
@@ -218,7 +235,7 @@ const IndustryInsightsPage = () => {
 
                 <div className="pt-6 border-t border-white/10 flex items-center justify-between">
                   <span className="text-xs font-mono text-gray-500">By {item.author} ({item.readTime})</span>
-                  <Link to={`/news/article/${item.id || item.slug || generateSlug(item.title)}`} className="text-xs font-mono uppercase text-[#ccff00] font-bold hover:underline flex items-center gap-1">
+                  <Link to={`/news/article/${getArticleSlug(item)}`} className="text-xs font-mono uppercase text-[#ccff00] font-bold hover:underline flex items-center gap-1">
                     Read Article <ChevronRight className="w-4 h-4" />
                   </Link>
                 </div>

@@ -408,11 +408,26 @@ const NewsArticlePage = () => {
     );
   }
 
-  const articleSlug = id || article.id || article.slug || '';
-  const isGoogleDogfooding = (article.id === 'google-ai-dogfooding-enterprise-results' || id === 'google-ai-dogfooding-enterprise-results');
+  const getSlugFromArticle = (art: NewsArticle) => {
+    if (art.slug && typeof art.slug === 'string' && art.slug.trim()) {
+      let s = art.slug.trim();
+      if (s.includes('/')) {
+        const parts = s.split('/');
+        s = parts[parts.length - 1];
+      }
+      if (s && s !== 'latest' && s !== 'press-releases' && s !== 'industry-insights' && s !== 'all') {
+        return s;
+      }
+    }
+    if (art.title) return generateSlug(art.title);
+    return art.id || 'article';
+  };
+
+  const articleSlug = getSlugFromArticle(article);
+  const isGoogleDogfooding = (article.id === 'google-ai-dogfooding-enterprise-results' || id === 'google-ai-dogfooding-enterprise-results' || articleSlug === 'google-ai-dogfooding-enterprise-results');
   const currentUrl = isGoogleDogfooding 
     ? 'https://www.abuqitmirlabs.tech/news/industry-insights/google-ai-dogfooding-enterprise-results'
-    : `https://www.abuqitmirlabs.tech/news/${article.type || 'article'}/${articleSlug}`;
+    : `https://www.abuqitmirlabs.tech/news/article/${articleSlug}`;
   const related = allArticles.filter(a => a.title !== article.title).slice(0, 3);
 
   const articleSchema = isGoogleDogfooding ? {
@@ -617,7 +632,7 @@ const NewsArticlePage = () => {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {related.map((rel, idx) => {
-                  const relSlug = rel.id || generateSlug(rel.title);
+                  const relSlug = getSlugFromArticle(rel);
                   return (
                     <Link 
                       key={idx} 

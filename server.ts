@@ -156,6 +156,8 @@ async function startServer() {
         '/poland-market',
         '/australia-market',
         '/blog',
+        '/agentic-ai-production-failures',
+        '/blog/agentic-ai-production-failures',
         '/terms',
         '/privacy'
       ];

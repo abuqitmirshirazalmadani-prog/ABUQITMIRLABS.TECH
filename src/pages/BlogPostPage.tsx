@@ -22,8 +22,13 @@ interface Post {
   helperImages?: Array<{ url: string; caption: string }>;
 }
 
-const BlogPostPage = () => {
-    const { slug } = useParams<{ slug: string }>();
+interface BlogPostPageProps {
+  overrideSlug?: string;
+}
+
+const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
+    const { slug: paramSlug } = useParams<{ slug: string }>();
+    const slug = overrideSlug || paramSlug;
     const [post, setPost] = useState<Post | null>(null);
     const [loading, setLoading] = useState(true);
     const [copied, setCopied] = useState(false);
@@ -31,6 +36,55 @@ const BlogPostPage = () => {
     useEffect(() => {
         const fetchPost = async () => {
             if (!slug) return;
+            if (slug === 'agentic-ai-production-failures' || slug.includes('agentic-ai-production-failures')) {
+                setPost({
+                    title: "Agentic AI Systems: A Deep-Dive into Production Failures and Architectural Remedies",
+                    content: `# Agentic AI Systems: A Deep-Dive into Production Failures and Architectural Remedies
+
+Agentic AI systems fail in production due to architecture, not models. Learn 7 failure modes (infinite loops, memory fragmentation, compound errors, confident wrongness, over-scoped permissions, and more) with real case studies, code examples, and the 5-pillar AbuQitmirlabs framework for production-ready AI.
+
+## Executive Summary
+90% of production agentic AI failures stem from architecture—not model capabilities.
+
+## The 7 Critical Failure Modes
+
+### 1. Infinite Tool-Call Loops
+Agents receiving errors (e.g. 429 rate limits or invalid parameters) re-plan and re-invoke the exact same failing tool repeatedly.
+
+### 2. Memory & Context Fragmentation
+Without a unified shared memory layer, context is lost across multi-agent workflows resulting in 40-80% workflow failures.
+
+### 3. Over-Scoped Standing Privileges
+AI agents operating with static, high-privilege credentials can perform destructive actions without confirmation (as seen in the PocketOS incident).
+
+### 4. Confident Wrongness
+Plausible, well-formatted operational outputs that are fundamentally incorrect.
+
+### 5. Cascading Compound Errors
+Minor upstream hallucinations amplifying down multi-step pipelines.
+
+### 6. Non-Deterministic State Loss
+Server restarts or node preemption wiping in-memory agent execution state.
+
+### 7. Uncontrolled Model Drift & Hidden API Updates
+Silent backend model changes breaking prompt assumptions and output schemas.
+
+## The AbuQitmirlabs 5-Pillar Framework
+1. **Version-Locked Model Deployment**
+2. **Checkpointed Execution with Recovery**
+3. **Shared Memory with Consistency**
+4. **Zero Standing Privileges (ZSP)**
+5. **Runtime Enforcement Outside the Agent**
+`,
+                    coverImage: "https://www.abuqitmirlabs.tech/assets/images/agentic-ai-og-image.jpg",
+                    category: "AI Engineering",
+                    createdAt: "2026-07-26",
+                    author: "AbuQitmirlabs",
+                    tags: ["Agentic AI", "AI Architecture", "Production AI"]
+                });
+                setLoading(false);
+                return;
+            }
             try {
                 const q = query(collection(db, 'posts'), where('slug', '==', slug), where('published', '==', true));
                 const snapshot = await getDocs(q);
@@ -613,6 +667,80 @@ const BlogPostPage = () => {
                         <meta name="twitter:description" content="A complete 2026 guide to healthcare software development — EHR systems, telemedicine platforms, clinical workflow tools, and compliance requirements." />
                         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/healthcare-software-development-hero.jpg" />
                     </>
+                ) : (slug === 'agentic-ai-production-failures' || slug?.includes('agentic-ai-production-failures')) ? (
+                    <>
+                        {/* ---------- PRIMARY META TAGS ---------- */}
+                        <html lang="en" />
+                        <title>
+                          Agentic AI: 7 Production Failures &amp; Architectural Fixes | AbuQitmirlabs
+                        </title>
+                        <meta
+                          name="description"
+                          content="Agentic AI systems fail in production due to architecture, not models. Learn 7 failure modes: infinite loops ($4,200 cost), memory fragmentation (40-80% failure), over-scoped permissions (9-second deletion), and how to fix them with code examples."
+                        />
+                        <meta
+                          name="keywords"
+                          content="Agentic AI, production AI failures, AI architecture, AI engineering, LLM version freezing, infinite loop AI, memory fragmentation AI, shared memory layer, zero standing privileges, PocketOS incident, runtime enforcement, AI security, AbuQitmirlabs"
+                        />
+                        <meta name="robots" content="index, follow" />
+                        <link
+                          rel="canonical"
+                          href="https://www.abuqitmirlabs.tech/agentic-ai-production-failures"
+                        />
+
+                        {/* ---------- GOOGLE SITE VERIFICATION ---------- */}
+                        <meta
+                          name="google-site-verification"
+                          content="YOUR_VERIFICATION_CODE"
+                        />
+
+                        {/* ---------- OPEN GRAPH (Facebook / LinkedIn) ---------- */}
+                        <meta property="og:type" content="article" />
+                        <meta
+                          property="og:url"
+                          content="https://www.abuqitmirlabs.tech/agentic-ai-production-failures"
+                        />
+                        <meta
+                          property="og:title"
+                          content="Agentic AI: 7 Production Failures &amp; Architectural Fixes | AbuQitmirlabs"
+                        />
+                        <meta
+                          property="og:description"
+                          content="Agentic AI systems fail in production due to architecture, not models. Learn 7 failure modes (infinite loops, memory fragmentation, over-scoped permissions) and how to fix them with real case studies and code examples."
+                        />
+                        <meta
+                          property="og:image"
+                          content="https://www.abuqitmirlabs.tech/assets/images/agentic-ai-og-image.jpg"
+                        />
+                        <meta property="og:image:width" content="1200" />
+                        <meta property="og:image:height" content="630" />
+                        <meta property="og:site_name" content="AbuQitmirlabs" />
+                        <meta property="og:locale" content="en_US" />
+                        <meta property="article:published_time" content="2026-07-26T10:00:00+00:00" />
+                        <meta property="article:modified_time" content="2026-07-26T10:00:00+00:00" />
+                        <meta property="article:author" content="AbuQitmirlabs" />
+                        <meta property="article:section" content="AI Engineering" />
+                        <meta property="article:tag" content="Agentic AI" />
+                        <meta property="article:tag" content="AI Architecture" />
+                        <meta property="article:tag" content="Production AI" />
+
+                        {/* ---------- TWITTER CARDS ---------- */}
+                        <meta name="twitter:card" content="summary_large_image" />
+                        <meta
+                          name="twitter:title"
+                          content="Agentic AI: 7 Production Failures &amp; Architectural Fixes"
+                        />
+                        <meta
+                          name="twitter:description"
+                          content="Agentic AI systems fail in production due to architecture, not models. Learn 7 failure modes (infinite loops, memory fragmentation, over-scoped permissions) and how to fix them."
+                        />
+                        <meta
+                          name="twitter:image"
+                          content="https://www.abuqitmirlabs.tech/assets/images/agentic-ai-og-image.jpg"
+                        />
+                        <meta name="twitter:site" content="@AbuQitmirlabs" />
+                        <meta name="twitter:creator" content="@AbuQitmirlabs" />
+                    </>
                 ) : (
                     <>
                         <title>{post.title} | AbuQitmirLabs Journal</title>
@@ -635,7 +763,7 @@ const BlogPostPage = () => {
                 )}
                 
                 {/* Article Schema */}
-                {slug !== 'rlhf-and-model-bias' && slug !== 'model-collapse-in-ai-what-happens-when-artificial-intelligence-learns-from-itself' && slug !== 'dead-internet-theory' && slug !== 'rag-architecture-for-enterprise-ai' && slug !== 'mobile-app-development-cost-2026-complete-pricing-guide' && slug !== 'version-control-brand-identity' && slug !== 'local-seo-services-how-to-rank-in-your-city' && slug !== 'enterprise-ai-accountability-era' && slug !== 'healthcare-software-development-solutions-2026' && !slug?.includes('healthcare-software-development-solutions') && (
+                {slug !== 'rlhf-and-model-bias' && slug !== 'model-collapse-in-ai-what-happens-when-artificial-intelligence-learns-from-itself' && slug !== 'dead-internet-theory' && slug !== 'rag-architecture-for-enterprise-ai' && slug !== 'mobile-app-development-cost-2026-complete-pricing-guide' && slug !== 'version-control-brand-identity' && slug !== 'local-seo-services-how-to-rank-in-your-city' && slug !== 'enterprise-ai-accountability-era' && slug !== 'healthcare-software-development-solutions-2026' && !slug?.includes('healthcare-software-development-solutions') && slug !== 'agentic-ai-production-failures' && !slug?.includes('agentic-ai-production-failures') && (
                     <>
                         <script 
                             type="application/ld+json"
@@ -3038,6 +3166,186 @@ const BlogPostPage = () => {
                                 }
                               ]
                             })
+                        }}
+                    />
+                )}
+
+                {/* Custom JSON-LD Schema (@graph) for Agentic AI Production Failures */}
+                {(slug === 'agentic-ai-production-failures' || slug?.includes('agentic-ai-production-failures')) && (
+                    <script 
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{
+                            __html: JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.abuqitmirlabs.tech/#organization",
+      "name": "AbuQitmirlabs",
+      "url": "https://www.abuqitmirlabs.tech/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.abuqitmirlabs.tech/assets/images/logo.png",
+        "width": 512,
+        "height": 512
+      },
+      "description": "AbuQitmirlabs provides custom software development, AI agent development, web development, and digital transformation solutions for enterprises. We build systems that survive production.",
+      "sameAs": [
+        "https://www.linkedin.com/company/abuqitmirlabs",
+        "https://twitter.com/AbuQitmirlabs"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+92-323-3260859",
+        "contactType": "Sales",
+        "availableLanguage": ["English", "Urdu"]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.abuqitmirlabs.tech/#website",
+      "url": "https://www.abuqitmirlabs.tech/",
+      "name": "AbuQitmirlabs",
+      "description": "AbuQitmirlabs provides custom software development, AI agent development, and digital transformation solutions for enterprises.",
+      "publisher": {
+        "@id": "https://www.abuqitmirlabs.tech/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.abuqitmirlabs.tech/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.abuqitmirlabs.tech/agentic-ai-production-failures#webpage",
+      "url": "https://www.abuqitmirlabs.tech/agentic-ai-production-failures",
+      "name": "Agentic AI: 7 Production Failures & Architectural Fixes | AbuQitmirlabs",
+      "description": "Agentic AI systems fail in production due to architecture, not models. Learn 7 failure modes (infinite loops, memory fragmentation, over-scoped permissions) and how to fix them with real case studies and code examples.",
+      "isPartOf": {
+        "@id": "https://www.abuqitmirlabs.tech/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://www.abuqitmirlabs.tech/agentic-ai-production-failures#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.abuqitmirlabs.tech/agentic-ai-production-failures#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.abuqitmirlabs.tech/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://www.abuqitmirlabs.tech/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Agentic AI Production Failures",
+          "item": "https://www.abuqitmirlabs.tech/agentic-ai-production-failures"
+        }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://www.abuqitmirlabs.tech/agentic-ai-production-failures#blogposting",
+      "headline": "Agentic AI Systems: A Deep-Dive into Production Failures and Architectural Remedies",
+      "alternativeHeadline": "7 Critical Failure Modes of Agentic AI Systems and How to Fix Them",
+      "description": "Agentic AI systems fail in production due to architecture, not models. Learn 7 failure modes (infinite loops, memory fragmentation, compound errors, confident wrongness, over-scoped permissions, and more) with real case studies, code examples, and the 5-pillar AbuQitmirlabs framework for production-ready AI.",
+      "keywords": "Agentic AI, production AI failures, AI architecture, AI engineering, LLM version freezing, infinite loop AI, memory fragmentation, shared memory layer, zero standing privileges, PocketOS incident, runtime enforcement, AI security, AbuQitmirlabs",
+      "datePublished": "2026-07-26T10:00:00+00:00",
+      "dateModified": "2026-07-26T10:00:00+00:00",
+      "author": {
+        "@type": "Organization",
+        "name": "AbuQitmirlabs",
+        "url": "https://www.abuqitmirlabs.tech/"
+      },
+      "publisher": {
+        "@id": "https://www.abuqitmirlabs.tech/#organization"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://www.abuqitmirlabs.tech/assets/images/agentic-ai-og-image.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.abuqitmirlabs.tech/agentic-ai-production-failures#webpage"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Artificial Intelligence Engineering"
+      },
+      "wordCount": "3850",
+      "inLanguage": "en-US",
+      "isAccessibleForFree": true,
+      "articleSection": "AI Engineering",
+      "articleBody": "The AI industry has a dirty little secret: most agentic AI systems that work beautifully in demos fail catastrophically in production. Not because the models aren't smart enough... [full content]"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.abuqitmirlabs.tech/agentic-ai-production-failures#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why do Agentic AI systems fail in production?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Agentic AI systems fail in production not because the models are inadequate, but because the architecture around the model is not designed for production realities—network failures, state loss, concurrent users, cost overruns, and security boundaries that don't distinguish between human callers and AI agents. 90% of failures are architectural, not model-related."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the 'Infinite Loop' failure mode in Agentic AI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Infinite Loop failure mode occurs when an agent receives a goal, calls a tool, receives an error (e.g., 429), re-plans, and calls the exact same tool again, repeating forever. In one documented case, this loop ran for 63 hours straight, costing $4,200 in API fees—enough tokens to write Shakespeare's complete works 46 times."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Memory & Context Fragmentation in multi-agent systems?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Memory & Context Fragmentation occurs when multi-agent systems operate without shared memory. Agents lose context mid-workflow, one agent's output never reaches another, and state is lost when nodes fail. This results in 40-80% failure rates. The fix is implementing a unified shared memory layer that every agent reads from and writes to."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What was the PocketOS incident and what does it teach us?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In April 2026, an AI coding agent at SaaS company PocketOS deleted its production database and volume-level backups in just 9 seconds. The agent found an over-scoped API token in an unrelated file and used it to call the Railway API delete endpoint. The API honored the request without a confirmation check. The lesson: organizations must implement Zero Standing Privileges (ZSP), treat AI agents as their own identity, and enforce runtime access control."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the 5 pillars of the AbuQitmirlabs production-ready Agentic AI framework?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The AbuQitmirlabs 5-Pillar Framework is: 1) Version-Locked Model Deployment — freeze LLM versions like Node.js; 2) Checkpointed Execution with Recovery — resume from failures, not restart; 3) Shared Memory with Consistency — unified memory layer for all agents; 4) Zero Standing Privileges — no persistent access; 5) Runtime Enforcement Outside the Agent — constraints enforced at infrastructure level, not prompt level."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is 'Confident Wrongness' in AI systems?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Confident Wrongness is a silent failure mode where the agent produces well-formatted, plausible output that is operationally wrong. No error is thrown and no alert is triggered. LLMs are optimized for fluency, not correctness. The fix involves building a negative knowledge base of failure modes, enforcing constraints outside the agent via a runtime enforcement layer, and implementing strict schema validation between every LLM call and the next tool."
+          }
+        }
+      ]
+    }
+  ]
+})
                         }}
                     />
                 )}

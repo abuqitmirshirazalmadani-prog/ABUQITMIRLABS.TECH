@@ -19,6 +19,23 @@ import Breadcrumbs from '../../components/Breadcrumbs';
 import CountryMarquee from '../../components/CountryMarquee';
 import { generateSlug } from './NewsArticlePage';
 
+const getArticleSlug = (item: any) => {
+  if (item.slug && typeof item.slug === 'string' && item.slug.trim()) {
+    let s = item.slug.trim();
+    if (s.includes('/')) {
+      const parts = s.split('/');
+      s = parts[parts.length - 1];
+    }
+    if (s && s !== 'latest' && s !== 'press-releases' && s !== 'industry-insights' && s !== 'all') {
+      return s;
+    }
+  }
+  if (item.title && typeof item.title === 'string' && item.title.trim()) {
+    return generateSlug(item.title);
+  }
+  return item.id || 'article';
+};
+
 const AllNewsPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -89,7 +106,7 @@ const AllNewsPage = () => {
             date: item.date,
             category: item.category || "General News",
             excerpt: item.excerpt || item.content,
-            link: `/news/article/${item.id || item.slug || generateSlug(item.title)}`
+            link: `/news/article/${getArticleSlug(item)}`
           }));
         if (items.length > 0) {
           setDynamicArticles(items);
