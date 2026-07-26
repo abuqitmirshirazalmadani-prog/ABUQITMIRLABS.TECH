@@ -158,6 +158,8 @@ async function startServer() {
         '/blog',
         '/agentic-ai-production-failures',
         '/blog/agentic-ai-production-failures',
+        '/what-does-a-custom-web-development-company-do',
+        '/blog/what-does-a-custom-web-development-company-do',
         '/terms',
         '/privacy'
       ];

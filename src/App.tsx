@@ -199,6 +199,8 @@ export default function App() {
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/agentic-ai-production-failures" element={<BlogPostPage overrideSlug="agentic-ai-production-failures" />} />
               <Route path="/blog/agentic-ai-production-failures" element={<BlogPostPage overrideSlug="agentic-ai-production-failures" />} />
+              <Route path="/what-does-a-custom-web-development-company-do" element={<BlogPostPage overrideSlug="what-does-a-custom-web-development-company-do" />} />
+              <Route path="/blog/what-does-a-custom-web-development-company-do" element={<BlogPostPage overrideSlug="what-does-a-custom-web-development-company-do" />} />
               <Route path="/blog/custom-software-development-company-karachi-pakistan-abuqitmirlabs" element={<Navigate to="/blog/custom-software-development-company-karachi-pakistan" replace />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
