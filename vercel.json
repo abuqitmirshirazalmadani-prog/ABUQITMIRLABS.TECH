@@ -14,8 +14,36 @@
   ],
   "rewrites": [
     {
+      "source": "/robots.txt",
+      "destination": "/robots.txt"
+    },
+    {
       "source": "/sitemap.xml",
       "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/pages-sitemap.xml",
+      "destination": "/pages-sitemap.xml"
+    },
+    {
+      "source": "/image-sitemap.xml",
+      "destination": "/image-sitemap.xml"
+    },
+    {
+      "source": "/video-sitemap.xml",
+      "destination": "/video-sitemap.xml"
+    },
+    {
+      "source": "/llms.txt",
+      "destination": "/llms.txt"
+    },
+    {
+      "source": "/manifest.json",
+      "destination": "/manifest.json"
+    },
+    {
+      "source": "/google87984536fe5662da.html",
+      "destination": "/google87984536fe5662da.html"
     },
     {
       "source": "/api/(.*)",

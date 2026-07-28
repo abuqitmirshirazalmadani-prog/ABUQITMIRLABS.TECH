@@ -82,6 +82,31 @@ async function startServer() {
     });
   });
 
+  // Explicit Robots.txt Handler
+  app.get('/robots.txt', (req, res) => {
+    try {
+      const robotsPath = path.join(process.cwd(), 'public', 'robots.txt');
+      if (fs.existsSync(robotsPath)) {
+        res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+        res.setHeader('Cache-Control', 'public, max-age=3600');
+        return res.sendFile(robotsPath);
+      }
+      
+      const defaultRobots = `User-agent: *
+Allow: /
+Disallow: /admin
+
+Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
+      res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+      res.setHeader('Cache-Control', 'public, max-age=3600');
+      return res.status(200).send(defaultRobots);
+    } catch (err) {
+      console.error('Error serving robots.txt:', err);
+      res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+      return res.status(200).send("User-agent: *\nAllow: /\nSitemap: https://www.abuqitmirlabs.tech/sitemap.xml");
+    }
+  });
+
   // 301 Redirect for duplicate article
   app.get('/blog/custom-software-development-company-karachi-pakistan-abuqitmirlabs', (req, res) => {
     res.redirect(301, '/blog/custom-software-development-company-karachi-pakistan');
