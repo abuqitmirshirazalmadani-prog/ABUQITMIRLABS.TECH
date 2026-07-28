@@ -237,69 +237,41 @@ async function startServer() {
 
   const distPath = path.resolve(__dirname, 'dist');
   
-  // Create Vite server instance for middleware and SSR module rendering
-  const vite = await createViteServer({
-    server: { middlewareMode: true },
-    appType: 'custom',
-  });
-
   if (process.env.NODE_ENV !== 'production') {
+    // Development mode: Use Vite middleware in SPA mode for fast asset serving and HMR handling
+    const vite = await createViteServer({
+      server: { middlewareMode: true },
+      appType: 'spa',
+    });
     app.use(vite.middlewares);
   } else {
     // In production, serve built static assets from dist
     app.use(express.static(distPath));
-  }
 
-  // GLOBAL SPA & SSR Fallback
-  app.get('*', async (req, res, next) => {
-    const url = req.originalUrl;
-    
-    // Skip API routes
-    if (url.startsWith('/api/')) {
-      return next();
-    }
+    // GLOBAL SPA & SSR Fallback in production
+    app.get('*', async (req, res, next) => {
+      const url = req.originalUrl;
+      
+      // Skip API routes
+      if (url.startsWith('/api/')) {
+        return next();
+      }
 
-    try {
-      let template = '';
-      if (process.env.NODE_ENV !== 'production') {
-        const rawTemplate = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
-        template = await vite.transformIndexHtml(url, rawTemplate);
-      } else {
+      try {
         const indexPath = path.join(distPath, 'index.html');
+        let template = '';
         if (fs.existsSync(indexPath)) {
           template = fs.readFileSync(indexPath, 'utf-8');
         } else {
           template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
         }
-      }
 
-      // Execute Server-Side Rendering (SSR) via Vite SSR module loader
-      let appHtml = '';
-      try {
-        const { render } = await vite.ssrLoadModule('/src/entry-server.tsx');
-        if (render) {
-          const rendered = render(url);
-          appHtml = rendered.html || '';
-        }
-      } catch (renderErr) {
-        console.error('SSR Render error for URL:', url, renderErr);
+        return res.status(200).set({ 'Content-Type': 'text/html' }).end(template);
+      } catch (e) {
+        next(e);
       }
-
-      // Inject rendered SSR HTML inside <div id="root">
-      let fullHtml = template;
-      if (appHtml) {
-        fullHtml = template.replace(
-          '<div id="root"></div>',
-          `<div id="root">${appHtml}</div>`
-        );
-      }
-
-      return res.status(200).set({ 'Content-Type': 'text/html' }).end(fullHtml);
-    } catch (e) {
-      if (vite) vite.ssrFixStacktrace(e as Error);
-      next(e);
-    }
-  });
+    });
+  }
 
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on http://localhost:${PORT}`);
