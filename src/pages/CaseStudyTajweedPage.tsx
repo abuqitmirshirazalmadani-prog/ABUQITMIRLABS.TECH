@@ -21,15 +21,43 @@ export default function CaseStudyTajweedPage() {
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-[#ccff00] selection:text-black">
       <Helmet>
-        <title>Case Study: TajweedPage.com — AI EdTech Platform | AbuQitmirLabs</title>
-        <meta name="description" content="How AbuQitmirLabs built the world's first AI-powered Quran learning platform with RAG technology, Next.js, and semantic SEO — delivered in 10 days." />
+        <title>AI Quran Learning Platform Case Study | AbuQitmirLabs</title>
+        <meta name="description" content="How we built the world's first AI-powered Quran learning platform with RAG Tajweed teacher, SEO for 20+ countries, and full Next.js stack — in just 10 days." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/case-studies/tajweedpage" />
         
-        <meta property="og:title" content="Case Study: TajweedPage.com — AI EdTech Platform | AbuQitmirLabs" />
-        <meta property="og:description" content="How AbuQitmirLabs built the world's first AI-powered Quran learning platform with RAG technology, Next.js, and semantic SEO — delivered in 10 days." />
+        {/* Open Graph */}
+        <meta property="og:title" content="AI Quran Learning Platform Case Study | AbuQitmirLabs" />
+        <meta property="og:description" content="How we built the world's first AI-powered Quran learning platform with RAG Tajweed teacher, SEO for 20+ countries, and full Next.js stack — in just 10 days." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/case-studies/tajweedpage" />
         <meta property="og:type" content="article" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AI Quran Learning Platform Case Study | AbuQitmirLabs" />
+        <meta name="twitter:description" content="How we built the world's first AI-powered Quran learning platform with RAG Tajweed teacher, SEO for 20+ countries, and full Next.js stack — in just 10 days." />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
+        {/* JSON-LD Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "headline": "How We Built the World's First AI-Powered Quran Learning Platform in 10 Days",
+            "description": "How we built the world's first AI-powered Quran learning platform with RAG Tajweed teacher, SEO for 20+ countries, and full Next.js stack — in just 10 days.",
+            "url": "https://www.abuqitmirlabs.tech/case-studies/tajweedpage",
+            "author": {
+              "@type": "Organization",
+              "name": "AbuQitmirLabs .TECH",
+              "url": "https://www.abuqitmirlabs.tech"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "AbuQitmirLabs",
+              "logo": "https://www.abuqitmirlabs.tech/logo.png"
+            }
+          })}
+        </script>
       </Helmet>
 
       <Header />
@@ -48,10 +76,15 @@ export default function CaseStudyTajweedPage() {
           
           {/* Badges row */}
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/60 text-xs text-[#ccff00] uppercase tracking-widest font-mono">
+            <a 
+              href="https://tajweedpage.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/60 hover:bg-zinc-800 text-xs text-[#ccff00] uppercase tracking-widest font-mono transition-colors"
+            >
               <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00] animate-pulse"></span>
-              Live at tajweedpage.com
-            </span>
+              Live at tajweedpage.com <ExternalLink size={12} />
+            </a>
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-950/40 bg-emerald-950/20 text-xs text-emerald-400 uppercase tracking-widest font-mono">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
               AI Center Active
@@ -426,6 +459,71 @@ export default function CaseStudyTajweedPage() {
               </div>
             </div>
 
+          </div>
+
+          <hr className="border-zinc-850" />
+
+          {/* Contextual Internal Links Grid & External Technology References */}
+          <div className="space-y-8 text-left">
+            <div>
+              <h4 className="text-xs font-mono text-zinc-400 uppercase tracking-widest font-bold mb-4">// RELATED CAPABILITIES & CASE STUDIES</h4>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
+                <Link to="/case-studies" className="p-3 bg-zinc-900/80 hover:bg-zinc-800 rounded-lg text-zinc-300 hover:text-[#ccff00] transition-colors border border-zinc-800 flex items-center justify-between">
+                  <span>All Case Studies</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/solutions/edtech" className="p-3 bg-zinc-900/80 hover:bg-zinc-800 rounded-lg text-zinc-300 hover:text-[#ccff00] transition-colors border border-zinc-800 flex items-center justify-between">
+                  <span>EdTech Solutions</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/solutions/ai-automation" className="p-3 bg-zinc-900/80 hover:bg-zinc-800 rounded-lg text-zinc-300 hover:text-[#ccff00] transition-colors border border-zinc-800 flex items-center justify-between">
+                  <span>AI & RAG Systems</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/ai-agent-development" className="p-3 bg-zinc-900/80 hover:bg-zinc-800 rounded-lg text-zinc-300 hover:text-[#ccff00] transition-colors border border-zinc-800 flex items-center justify-between">
+                  <span>AI Agents</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/custom-software" className="p-3 bg-zinc-900/80 hover:bg-zinc-800 rounded-lg text-zinc-300 hover:text-[#ccff00] transition-colors border border-zinc-800 flex items-center justify-between">
+                  <span>Custom Software</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/web-development" className="p-3 bg-zinc-900/80 hover:bg-zinc-800 rounded-lg text-zinc-300 hover:text-[#ccff00] transition-colors border border-zinc-800 flex items-center justify-between">
+                  <span>Web Development</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/seo-mastery" className="p-3 bg-zinc-900/80 hover:bg-zinc-800 rounded-lg text-zinc-300 hover:text-[#ccff00] transition-colors border border-zinc-800 flex items-center justify-between">
+                  <span>SEO Mastery</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/contact" className="p-3 bg-zinc-900/80 hover:bg-zinc-800 rounded-lg text-zinc-300 hover:text-[#ccff00] transition-colors border border-zinc-800 flex items-center justify-between">
+                  <span>Book Consultation</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Authoritative Outbound Links */}
+            <div className="pt-4 border-t border-zinc-900 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-zinc-500">
+              <span className="uppercase tracking-widest text-[11px] font-bold text-zinc-400">Technology Standards & Documentation:</span>
+              <div className="flex flex-wrap items-center gap-4">
+                <a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors inline-flex items-center gap-1">
+                  Next.js Docs <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors inline-flex items-center gap-1">
+                  Vercel Infrastructure <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://tajweedpage.com" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors inline-flex items-center gap-1">
+                  TajweedPage.com <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors inline-flex items-center gap-1">
+                  Google SEO Guide <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
           </div>
 
           <hr className="border-zinc-850" />
