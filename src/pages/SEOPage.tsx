@@ -37,7 +37,8 @@ import {
   Wrench,
   Shield,
   Palette,
-  PenTool
+  PenTool,
+  ExternalLink
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -91,15 +92,22 @@ const SEOPage = () => {
   return (
     <div className="bg-[#000000] text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]/30 selection:text-white">
       <Helmet>
-        <title>SEO Services | Professional Search Engine Optimization Company | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs is a premier search engine optimization company delivering pro SEO services, organic growth, technical SEO audits, and map dominance globally." />
+        <title>SEO Services | Professional Search Engine Optimization | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs delivers data-driven SEO services — technical audits, on-page optimization, local SEO, and authority building. Rank higher, attract quality traffic, and grow your business." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/seo-mastery" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="SEO Services | Professional Search Engine Optimization Company | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs is a premier search engine optimization company delivering pro SEO services, organic growth, technical SEO audits, and map dominance globally." />
+        <meta property="og:title" content="SEO Services | Professional Search Engine Optimization | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs delivers data-driven SEO services — technical audits, on-page optimization, local SEO, and authority building. Rank higher, attract quality traffic, and grow your business." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/seo-mastery" />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="SEO Services | Professional Search Engine Optimization | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs delivers data-driven SEO services — technical audits, on-page optimization, local SEO, and authority building. Rank higher, attract quality traffic, and grow your business." />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Schema Markup with BreadcrumbList, Service, FAQPage, and HowTo */}
         <script 
@@ -322,9 +330,9 @@ const SEOPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-xl md:text-2xl text-zinc-800 text-center max-w-4xl mb-12 leading-relaxed font-bold"
+          className="text-lg md:text-xl text-zinc-800 text-center max-w-4xl mb-12 leading-relaxed font-bold font-sans"
         >
-          Ranking isn't about stuffing keywords — it's about technical health plus content that actually answers search intent. We run full technical audits, fix crawl/indexing issues, and build content structures that Google can understand and trust.
+          Ranking isn't about stuffing keywords — it's about technical health plus content that answers search intent. Starting from our <Link to="/" className="text-black underline font-extrabold hover:text-[#ff0099]">home page</Link>, we build scalable search architectures. Explore our specialized <Link to="/local-seo-for-small-business" className="text-black underline font-extrabold hover:text-[#ff0099]">Local SEO for Small Businesses</Link>, <Link to="/local-seo-citation-building" className="text-black underline font-extrabold hover:text-[#ff0099]">Citation Building</Link>, <Link to="/white-label-local-seo" className="text-black underline font-extrabold hover:text-[#ff0099]">White Label Local SEO</Link>, and <Link to="/local-seo-audit" className="text-black underline font-extrabold hover:text-[#ff0099]">Local SEO Audits</Link>. Pair SEO with <Link to="/custom-software" className="text-black underline font-extrabold hover:text-[#ff0099]">Custom Software</Link>, <Link to="/web-development" className="text-black underline font-extrabold hover:text-[#ff0099]">Web Development</Link>, <Link to="/mobile-app-development" className="text-black underline font-extrabold hover:text-[#ff0099]">Mobile Apps</Link>, <Link to="/ai-agent-development" className="text-black underline font-extrabold hover:text-[#ff0099]">AI Agents</Link>, or <Link to="/content-writing" className="text-black underline font-extrabold hover:text-[#ff0099]">Content Writing</Link>. Review our <Link to="/case-studies" className="text-black underline font-extrabold hover:text-[#ff0099]">Case Studies</Link> &amp; <Link to="/blog" className="text-black underline font-extrabold hover:text-[#ff0099]">Blog</Link>, learn more <Link to="/about" className="text-black underline font-extrabold hover:text-[#ff0099]">about us</Link>, or <Link to="/contact" className="text-black underline font-extrabold hover:text-[#ff0099]">get in touch</Link>.
         </motion.p>
 
         {/* Core Capabilities Specifications */}
@@ -840,6 +848,26 @@ const SEOPage = () => {
                 </tbody>
               </table>
             </div>
+          </div>
+
+          {/* Authoritative External Links */}
+          <div className="mt-8 pt-6 border-t-4 border-black flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-zinc-800">
+            <span className="text-black uppercase tracking-widest font-black">Authoritative SEO Resources:</span>
+            <a href="https://developers.google.com/search" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-bold text-black hover:text-[#ff0099] transition-colors">
+              Google Search Central <ExternalLink className="w-3 h-3" />
+            </a>
+            <span className="text-black font-black">•</span>
+            <a href="https://ahrefs.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-bold text-black hover:text-[#ff0099] transition-colors">
+              Ahrefs Index <ExternalLink className="w-3 h-3" />
+            </a>
+            <span className="text-black font-black">•</span>
+            <a href="https://moz.com/blog" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-bold text-black hover:text-[#ff0099] transition-colors">
+              Moz SEO Blog <ExternalLink className="w-3 h-3" />
+            </a>
+            <span className="text-black font-black">•</span>
+            <a href="https://www.searchenginejournal.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-bold text-black hover:text-[#ff0099] transition-colors">
+              Search Engine Journal <ExternalLink className="w-3 h-3" />
+            </a>
           </div>
         </div>
       </section>
