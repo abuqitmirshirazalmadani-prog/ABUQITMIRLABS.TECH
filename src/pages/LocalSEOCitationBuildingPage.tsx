@@ -26,7 +26,8 @@ import {
     Globe,
     Layers3,
     Database,
-    ShieldCheck
+    ShieldCheck,
+    ExternalLink
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -63,17 +64,16 @@ export default function LocalSEOCitationBuildingPage() {
         <div className="min-h-screen bg-[#080808] text-white selection:bg-[#ccff00] selection:text-black font-sans antialiased">
             <Helmet>
                 {/* ═══ Primary Meta Tags ═══ */}
-                <title>Local SEO Citation Building Service | NAP Consistency | AbuQitmirLabs</title>
-                <meta name="description" content="Professional local SEO citation building — NAP-consistent listings across tier-1 and niche directories, citation audits, duplicate removal, and ongoing citation management." />
+                <title>Local SEO Citation Building | NAP Consistency Services | AbuQitmirLabs</title>
+                <meta name="description" content="Manual NAP citation building, audit & cleanup across top-tier directories. Boost local search rankings with consistent citations on Google, Yelp, Apple Maps & more. Start with a $150 audit." />
                 <link rel="canonical" href="https://www.abuqitmirlabs.tech/local-seo-citation-building" />
                 <meta name="keywords" content="local SEO citation building, NAP consistency, citation management, local citations, citation cleanup, local directory listings, small business citations" />
-                <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
                 
                 {/* ═══ Open Graph (Facebook / LinkedIn) ═══ */}
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://www.abuqitmirlabs.tech/local-seo-citation-building" />
-                <meta property="og:title" content="Local SEO Citation Building | AbuQitmirLabs" />
-                <meta property="og:description" content="Structured local citation building and NAP management — the foundational off-page signal that powers local map-pack rankings." />
+                <meta property="og:title" content="Local SEO Citation Building | NAP Consistency Services | AbuQitmirLabs" />
+                <meta property="og:description" content="Manual NAP citation building, audit & cleanup across top-tier directories. Boost local search rankings with consistent citations on Google, Yelp, Apple Maps & more. Start with a $150 audit." />
                 <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
@@ -82,8 +82,8 @@ export default function LocalSEOCitationBuildingPage() {
                 {/* ═══ Twitter Card ═══ */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@AbuQitmir" />
-                <meta name="twitter:title" content="Local SEO Citation Building | AbuQitmirLabs" />
-                <meta name="twitter:description" content="Structured local citation building and NAP management — the foundation of local map-pack rankings." />
+                <meta name="twitter:title" content="Local SEO Citation Building | NAP Consistency Services | AbuQitmirLabs" />
+                <meta name="twitter:description" content="Manual NAP citation building, audit & cleanup across top-tier directories. Boost local search rankings with consistent citations on Google, Yelp, Apple Maps & more. Start with a $150 audit." />
                 <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
                 {/* ═══ Structured Data / JSON-LD ═══ */}
@@ -102,8 +102,8 @@ export default function LocalSEOCitationBuildingPage() {
                                 "@type": "WebPage",
                                 "@id": "https://www.abuqitmirlabs.tech/local-seo-citation-building#webpage",
                                 "url": "https://www.abuqitmirlabs.tech/local-seo-citation-building",
-                                "name": "Local SEO Citation Building Service | NAP Consistency | AbuQitmirLabs",
-                                "description": "Professional local SEO citation building — NAP-consistent listings across tier-1 and niche directories, citation audits, duplicate removal, and ongoing citation management.",
+                                "name": "Local SEO Citation Building | NAP Consistency Services | AbuQitmirLabs",
+                                "description": "Manual NAP citation building, audit & cleanup across top-tier directories. Boost local search rankings with consistent citations on Google, Yelp, Apple Maps & more. Start with a $150 audit.",
                                 "inLanguage": "en-US",
                                 "isPartOf": {
                                     "@id": "https://www.abuqitmirlabs.tech/#website"
@@ -208,8 +208,8 @@ export default function LocalSEOCitationBuildingPage() {
                             Citations Are the Foundation. <br />
                             <em className="text-[#ccff00] italic font-normal">Bad Ones Are the Problem.</em>
                         </h1>
-                        <p className="text-lg md:text-xl text-zinc-300 font-sans leading-relaxed mb-10 max-w-3xl">
-                            NAP-consistent local citations across the directories that actually matter — no bulk spam, no duplicate chaos, no inconsistencies that quietly destroy map-pack rankings.
+                        <p className="text-lg md:text-xl text-zinc-300 font-sans leading-relaxed mb-10 max-w-4xl">
+                            NAP-consistent local citations across tier-1 directories — no bulk spam, no duplicate chaos, no split signals. From our <Link to="/" className="text-[#ccff00] hover:underline font-medium">home page</Link> to dedicated off-page signals, we build citation profiles that power map-pack dominance.
                         </p>
                         <div className="flex flex-wrap gap-4 items-center">
                             <Link 
@@ -323,10 +323,10 @@ export default function LocalSEOCitationBuildingPage() {
                                 A <strong className="text-white font-semibold">local SEO citation</strong> is any online mention of your business's name, address, and phone number — collectively known as NAP. Every time a directory, mapping service, industry database, or local website lists your business's details, that's a citation. Google and other search engines treat a wide pattern of consistent NAP mentions as a trust signal that your business genuinely operates where it claims to.
                             </p>
                             <p>
-                                The critical word is <em className="text-[#ccff00] not-italic font-medium">consistent</em>. A business listed as "AbuQitmirLabs Ltd" on one platform and "AbuQitmirLabs" on another, with a different phone number on a third, creates conflicting signals. Search engines resolve conflicting signals by reducing confidence in all of them — which often means the business drops in local ranking or fails to appear in the map pack at all.
+                                The critical word is <em className="text-[#ccff00] not-italic font-medium">consistent</em>. Search engines resolve conflicting signals by reducing confidence in all of them — which often means the business drops in local ranking or fails to appear in the map pack at all.
                             </p>
                             <p>
-                                Our <strong className="text-white font-semibold">local SEO citation building</strong> service starts from the premise that forty clean, verified, consistent citations outperform two hundred messy, duplicated, or partially incorrect ones. We don't use bulk submission tools that generate noise. Every listing is manually verified against a master NAP record before submission.
+                                Our <strong className="text-white font-semibold">local SEO citation building</strong> service is designed to complement our broader <Link to="/local-seo-for-small-business" className="text-[#ccff00] hover:underline font-medium">Local SEO for Small Businesses</Link>, agency-grade <Link to="/white-label-local-seo" className="text-[#ccff00] hover:underline font-medium">White Label Local SEO</Link>, forensic <Link to="/local-seo-audit" className="text-[#ccff00] hover:underline font-medium">Local SEO Audits</Link>, and holistic <Link to="/seo-mastery" className="text-[#ccff00] hover:underline font-medium">SEO Mastery</Link> solutions. You can also pair citation consistency with bespoke <Link to="/custom-software" className="text-[#ccff00] hover:underline font-medium">Custom Software</Link>, high-performance <Link to="/web-development" className="text-[#ccff00] hover:underline font-medium">Web Development</Link>, native <Link to="/mobile-app-development" className="text-[#ccff00] hover:underline font-medium">Mobile App Development</Link>, autonomous <Link to="/ai-agent-development" className="text-[#ccff00] hover:underline font-medium">AI Agents</Link>, and localized <Link to="/content-writing" className="text-[#ccff00] hover:underline font-medium">Content Writing</Link>. Discover client outcomes in our <Link to="/case-studies" className="text-[#ccff00] hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-[#ccff00] hover:underline font-medium">Blog</Link>, read more <Link to="/about" className="text-[#ccff00] hover:underline font-medium">about us</Link>, or <Link to="/contact" className="text-[#ccff00] hover:underline font-medium">contact us</Link> today.
                             </p>
                         </div>
                     </div>
@@ -380,6 +380,26 @@ export default function LocalSEOCitationBuildingPage() {
                                     Category and geographic relevance signals; often the differentiator in competitive markets
                                 </div>
                             </div>
+                        </div>
+
+                        {/* External Authoritative Citation Directories & Tools */}
+                        <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-zinc-400">
+                            <span className="text-zinc-500 uppercase tracking-widest font-bold">Authoritative Listing Standards:</span>
+                            <a href="https://support.google.com/business/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                                Google Business Profile <ExternalLink className="w-3 h-3" />
+                            </a>
+                            <span className="text-zinc-700">•</span>
+                            <a href="https://mapsconnect.apple.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                                Apple Maps Connect <ExternalLink className="w-3 h-3" />
+                            </a>
+                            <span className="text-zinc-700">•</span>
+                            <a href="https://biz.yelp.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                                Yelp for Business <ExternalLink className="w-3 h-3" />
+                            </a>
+                            <span className="text-zinc-700">•</span>
+                            <a href="https://www.brightlocal.com/research/citation-tracker-benchmark/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                                BrightLocal Research <ExternalLink className="w-3 h-3" />
+                            </a>
                         </div>
                     </div>
                 </section>
