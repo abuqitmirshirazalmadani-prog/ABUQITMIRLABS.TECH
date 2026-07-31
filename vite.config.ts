@@ -77,10 +77,10 @@ export default defineConfig(({mode}) => {
         closeBundle: async () => {
           const hostname = 'https://www.abuqitmirlabs.tech';
           const baseRoutes = [
-            { url: '/',                        changefreq: 'weekly',  priority: 1.0, title: 'Custom Software & AI Development | AbuQitmirLabs', description: "AbuQitmirLabs .TECH is an elite custom software development studio. We build bespoke SaaS, enterprise systems, and AI models for global businesses. Let's build your solution." },
+            { url: '/',                        changefreq: 'weekly',  priority: 1.0, title: 'Custom Software & AI App Development | AbuQitmirLabs', description: "AbuQitmirLabs .TECH is an elite software studio. We build bespoke SaaS, enterprise systems, and custom AI models. Let's build your solution." },
             { url: '/about',                   changefreq: 'monthly', priority: 0.8, title: 'About Us | AbuQitmirLabs', description: 'Learn about our mission to build cutting-edge AI and mobile solutions.' },
             { url: '/contact',                 changefreq: 'monthly', priority: 0.9, title: 'Contact Us | Start Your Project', description: 'Contact AbuQitmirLabs for your next mobile app or AI software project.' },
-            { url: '/custom-software',         changefreq: 'weekly',  priority: 0.9, title: 'Custom Software Development', description: 'Tailor-made software solutions for your unique business needs.' },
+            { url: '/custom-software',         changefreq: 'weekly',  priority: 0.9, title: 'Custom Software Development Services | Abu Qitmir Labs', description: "AbuQitmirLabs builds custom software, ERP systems, and AI-powered solutions tailored to your workflows. We deliver working features every 2 weeks. Let's build your system." },
             { url: '/mobile-app-development',  changefreq: 'weekly',  priority: 0.9, title: 'Flutter & Native Mobile Apps', description: 'Expert mobile app development for iOS and Android using Flutter and Native technologies.' },
             { url: '/web-development',         changefreq: 'weekly',  priority: 0.9, title: 'Modern Web Development', description: 'High-performance web applications built with the latest technologies.' },
             { url: '/ai-agent-development',    changefreq: 'weekly',  priority: 0.9, title: 'AI Agent & AI App Development', description: 'Leading AI development solutions including agents, chatbots, and generative AI.' },

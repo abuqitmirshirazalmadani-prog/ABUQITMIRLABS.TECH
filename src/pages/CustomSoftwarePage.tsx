@@ -44,7 +44,8 @@ import {
   Users,
   Clock,
   Package,
-  Building2
+  Building2,
+  ExternalLink
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -154,12 +155,12 @@ const CustomSoftwarePage = () => {
     <div className="bg-[#000000] text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-blue-500/30 selection:text-white">
       <Helmet>
         <title>Custom Software Development Services | Abu Qitmir Labs</title>
-        <meta name="description" content="Abu Qitmir Labs is a premier custom software development company offering bespoke enterprise software development and custom web application development services worldwide." />
+        <meta name="description" content="AbuQitmirLabs builds custom software, ERP systems, and AI-powered solutions tailored to your workflows. We deliver working features every 2 weeks. Let's build your system." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/custom-software" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Custom Software Development Services | Abu Qitmir Labs" />
-        <meta property="og:description" content="Premium custom software development company building scalable enterprise architectures, SaaS platforms, and bespoke internal systems." />
+        <meta property="og:description" content="AbuQitmirLabs builds custom software, ERP systems, and AI-powered solutions tailored to your workflows. We deliver working features every 2 weeks. Let's build your system." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/custom-software" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
@@ -167,7 +168,7 @@ const CustomSoftwarePage = () => {
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Custom Software Development Services | Abu Qitmir Labs" />
-        <meta name="twitter:description" content="Abu Qitmir Labs is a premier custom software development company offering bespoke enterprise software development and custom web application development services." />
+        <meta name="twitter:description" content="AbuQitmirLabs builds custom software, ERP systems, and AI-powered solutions tailored to your workflows. We deliver working features every 2 weeks. Let's build your system." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
@@ -1981,10 +1982,42 @@ const CustomSoftwarePage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { category: "Backend Mastery", items: ["Node.js", "Python (FastAPI)", "Java"], icon: <Server /> },
-              { category: "Frontend Core", items: ["React.js", "Next.js", "TypeScript"], icon: <Layout /> },
-              { category: "Data Storage", items: ["PostgreSQL", "MongoDB", "Redis"], icon: <Database /> },
-              { category: "Cloud & DevOps", items: ["AWS", "Google Cloud", "Kubernetes"], icon: <Layers /> }
+              { 
+                category: "Backend Mastery", 
+                items: [
+                  { name: "Node.js", url: "https://nodejs.org" },
+                  { name: "Python (FastAPI)", url: "https://fastapi.tiangolo.com" },
+                  { name: "Java", url: "https://dev.java" }
+                ], 
+                icon: <Server /> 
+              },
+              { 
+                category: "Frontend Core", 
+                items: [
+                  { name: "React.js", url: "https://react.dev" },
+                  { name: "Next.js", url: "https://nextjs.org" },
+                  { name: "TypeScript", url: "https://www.typescriptlang.org" }
+                ], 
+                icon: <Layout /> 
+              },
+              { 
+                category: "Data Storage", 
+                items: [
+                  { name: "PostgreSQL", url: "https://www.postgresql.org" },
+                  { name: "MongoDB", url: "https://www.mongodb.com" },
+                  { name: "Redis", url: "https://redis.io" }
+                ], 
+                icon: <Database /> 
+              },
+              { 
+                category: "Cloud & DevOps", 
+                items: [
+                  { name: "AWS", url: "https://aws.amazon.com" },
+                  { name: "Google Cloud", url: "https://cloud.google.com" },
+                  { name: "Kubernetes", url: "https://kubernetes.io" }
+                ], 
+                icon: <Layers /> 
+              }
             ].map((stack, idx) => (
               <div key={idx} className="group relative h-[400px] perspective-1000 cursor-pointer">
                 <div className="relative h-full w-full transition-all duration-700 transform-style-3d group-hover:rotate-y-180">
@@ -2000,12 +2033,23 @@ const CustomSoftwarePage = () => {
                   </div>
                   {/* Back */}
                   <div className="absolute inset-0 bg-blue-600 border border-blue-400/30 rounded-[2.5rem] p-10 flex flex-col justify-center rotate-y-180 backface-hidden shadow-2xl">
-                    <h4 className="text-sm font-black uppercase tracking-widest mb-8 border-b border-white/20 pb-4 text-white uppercase">Capability Set</h4>
-                    <ul className="space-y-4">
+                    <h4 className="text-sm font-black uppercase tracking-widest mb-6 border-b border-white/20 pb-3 text-white uppercase">Capability Set</h4>
+                    <ul className="space-y-3">
                       {stack.items.map(item => (
-                        <li key={item} className="flex items-center gap-4 text-white font-bold uppercase tracking-tight text-lg">
-                           <div className="w-2 h-2 bg-white rounded-full"></div>
-                           <span>{item}</span>
+                        <li key={item.name} className="flex items-center justify-between text-white font-bold uppercase tracking-tight text-base">
+                          <div className="flex items-center gap-2">
+                            <div className="w-2 h-2 bg-white rounded-full"></div>
+                            <span>{item.name}</span>
+                          </div>
+                          <a
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-1 text-white/70 hover:text-white hover:bg-white/10 rounded transition-colors"
+                            title={`Official Docs: ${item.name}`}
+                          >
+                            <ExternalLink size={14} />
+                          </a>
                         </li>
                       ))}
                     </ul>
