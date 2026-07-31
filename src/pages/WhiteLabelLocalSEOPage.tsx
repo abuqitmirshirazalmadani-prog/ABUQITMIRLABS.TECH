@@ -29,7 +29,8 @@ import {
     FileSpreadsheet,
     PieChart,
     PenTool,
-    Link2
+    Link2,
+    ExternalLink
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -100,16 +101,15 @@ export default function WhiteLabelLocalSEOPage() {
             <Helmet>
                 {/* ═══ Primary Meta Tags ═══ */}
                 <title>White Label Local SEO for Agencies | Reseller Plans | AbuQitmirLabs</title>
-                <meta name="description" content="White label local SEO for digital agencies — fully brandable audits, citation campaigns, GBP optimisation, and monthly reports. Your clients, your brand, our execution." />
+                <meta name="description" content="White label local SEO fulfillment for agencies — citations, GBP optimization, and branded PDF reports. Reseller plans with 35–50% margins. Expand your services without expanding your team." />
                 <link rel="canonical" href="https://www.abuqitmirlabs.tech/white-label-local-seo" />
                 <meta name="keywords" content="white label local SEO, local SEO reseller, agency white label, white label SEO services, white label citation building, local SEO for agencies, SEO fulfilment partner" />
-                <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
                 
                 {/* ═══ Open Graph (Facebook / LinkedIn) ═══ */}
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://www.abuqitmirlabs.tech/white-label-local-seo" />
-                <meta property="og:title" content="White Label Local SEO for Agencies | AbuQitmirLabs" />
-                <meta property="og:description" content="Scalable white label local SEO and reseller programmes for digital agencies — brandable, reliable, and priced for agency margins." />
+                <meta property="og:title" content="White Label Local SEO for Agencies | Reseller Plans | AbuQitmirLabs" />
+                <meta property="og:description" content="White label local SEO fulfillment for agencies — citations, GBP optimization, and branded PDF reports. Reseller plans with 35–50% margins. Expand your services without expanding your team." />
                 <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
@@ -118,8 +118,8 @@ export default function WhiteLabelLocalSEOPage() {
                 {/* ═══ Twitter Card ═══ */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@AbuQitmir" />
-                <meta name="twitter:title" content="White Label Local SEO | AbuQitmirLabs" />
-                <meta name="twitter:description" content="Scalable white label local SEO for digital agencies — brandable, reliable, and priced for agency margins." />
+                <meta name="twitter:title" content="White Label Local SEO for Agencies | Reseller Plans | AbuQitmirLabs" />
+                <meta name="twitter:description" content="White label local SEO fulfillment for agencies — citations, GBP optimization, and branded PDF reports. Reseller plans with 35–50% margins. Expand your services without expanding your team." />
                 <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
                 {/* ═══ Structured Data / JSON-LD ═══ */}
@@ -139,7 +139,7 @@ export default function WhiteLabelLocalSEOPage() {
                                 "@id": "https://www.abuqitmirlabs.tech/white-label-local-seo#webpage",
                                 "url": "https://www.abuqitmirlabs.tech/white-label-local-seo",
                                 "name": "White Label Local SEO for Agencies | Reseller Plans | AbuQitmirLabs",
-                                "description": "White label local SEO for digital agencies — fully brandable audits, citation campaigns, GBP optimisation, and monthly reports. Your clients, your brand, our execution.",
+                                "description": "White label local SEO fulfillment for agencies — citations, GBP optimization, and branded PDF reports. Reseller plans with 35–50% margins. Expand your services without expanding your team.",
                                 "inLanguage": "en-US",
                                 "isPartOf": {
                                     "@id": "https://www.abuqitmirlabs.tech/#website"
@@ -244,8 +244,8 @@ export default function WhiteLabelLocalSEOPage() {
                             White Label Local SEO Your Clients <br />
                             <em className="text-[#ccff00] italic font-normal">Never See Coming</em>
                         </h1>
-                        <p className="text-lg md:text-xl text-zinc-300 font-sans leading-relaxed mb-10 max-w-3xl">
-                            Fully brandable local SEO delivery — citations, GBP optimisation, and polished PDF reports — all under your agency name. Expand your service offering without expanding your team.
+                        <p className="text-lg md:text-xl text-zinc-300 font-sans leading-relaxed mb-10 max-w-4xl">
+                            Fully brandable local SEO delivery — citations, GBP optimization, and polished PDF reports — all under your agency name. Starting from our <Link to="/" className="text-[#ccff00] hover:underline font-medium">home page</Link>, we empower digital agencies to scale fulfillment without overhead.
                         </p>
                         <div className="flex flex-wrap gap-4 items-center">
                             <Link 
@@ -358,7 +358,7 @@ export default function WhiteLabelLocalSEOPage() {
                                 <strong className="text-white font-semibold">White label local SEO</strong> is a fulfilment arrangement where AbuQitmirLabs delivers the actual campaign work — keyword research, citation building, Google Business Profile management, on-page localisation — while every client-facing document carries your agency's name, logo, and colours. The end client sees a professional, coherent service from you. They have no reason to know who builds it.
                             </p>
                             <p>
-                                This matters because the alternative — hiring in-house local SEO specialists — means payroll, training, management overhead, and significant fixed costs even in slow months. A <strong className="text-white font-semibold">local SEO reseller</strong> arrangement with a reliable fulfilment partner converts that fixed cost into a variable one: you pay per campaign, scale when you win new clients, and stop when they churn, without a team sitting idle.
+                                Our white label local SEO solutions seamlessly complement our direct <Link to="/local-seo-for-small-business" className="text-[#ccff00] hover:underline font-medium">Local SEO for Small Businesses</Link>, manual <Link to="/local-seo-citation-building" className="text-[#ccff00] hover:underline font-medium">Citation Building</Link>, forensic <Link to="/local-seo-audit" className="text-[#ccff00] hover:underline font-medium">Local SEO Audits</Link>, and holistic <Link to="/seo-mastery" className="text-[#ccff00] hover:underline font-medium">SEO Mastery</Link> services. Agencies can also white-label our <Link to="/custom-software" className="text-[#ccff00] hover:underline font-medium">Custom Software</Link>, high-performance <Link to="/web-development" className="text-[#ccff00] hover:underline font-medium">Web Development</Link>, native <Link to="/mobile-app-development" className="text-[#ccff00] hover:underline font-medium">Mobile Apps</Link>, autonomous <Link to="/ai-agent-development" className="text-[#ccff00] hover:underline font-medium">AI Agents</Link>, and localized <Link to="/content-writing" className="text-[#ccff00] hover:underline font-medium">Content Writing</Link>. Review client success stories in our <Link to="/case-studies" className="text-[#ccff00] hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-[#ccff00] hover:underline font-medium">Blog</Link>, read more <Link to="/about" className="text-[#ccff00] hover:underline font-medium">about us</Link>, or <Link to="/contact" className="text-[#ccff00] hover:underline font-medium">contact us</Link> to start your reseller agreement.
                             </p>
                             <p>
                                 AbuQitmirLabs runs active local SEO campaigns across the US, UK, Pakistan, Canada, Poland, and Australia — meaning your agency can accept clients in multiple markets without needing geographic expertise in every territory. Our team handles the citation ecosystem, directory hierarchy, and ranking factors specific to each country natively.
@@ -368,6 +368,26 @@ export default function WhiteLabelLocalSEOPage() {
                                 <p className="text-zinc-400 text-sm md:text-base leading-relaxed">
                                     When we say <strong className="text-white">white label local SEO services</strong>, we mean every client-facing output: the onboarding audit document, the citation build summary, the monthly ranking report, the GBP optimisation checklist. All of it arrives as an unbranded file your team drops your logo onto — or, if you supply brand assets upfront, pre-branded and ready to send. No AbuQitmirLabs mentions, footers, watermarks, or metadata.
                                 </p>
+                            </div>
+
+                            {/* Authoritative External Agency & SEO Standards */}
+                            <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-400">
+                                <span className="text-zinc-500 uppercase tracking-widest font-bold">Authoritative Agency Resources:</span>
+                                <a href="https://support.google.com/business/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                                    Google Business Profile Guidelines <ExternalLink className="w-3 h-3" />
+                                </a>
+                                <span className="text-zinc-700">•</span>
+                                <a href="https://www.searchenginejournal.com/category/local-seo/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                                    Search Engine Journal Local SEO <ExternalLink className="w-3 h-3" />
+                                </a>
+                                <span className="text-zinc-700">•</span>
+                                <a href="https://moz.com/blog/category/local-seo" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                                    Moz Local Research <ExternalLink className="w-3 h-3" />
+                                </a>
+                                <span className="text-zinc-700">•</span>
+                                <a href="https://www.brightlocal.com/research/local-search-ranking-factors/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                                    BrightLocal Ranking Factors <ExternalLink className="w-3 h-3" />
+                                </a>
                             </div>
                         </div>
                     </div>
