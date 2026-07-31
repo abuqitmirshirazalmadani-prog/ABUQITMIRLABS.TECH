@@ -81,9 +81,23 @@ const FintechSolutionsPage = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
-        <title>Fintech Software Development — Custom Banking & Payment Solutions | AbuQitmirLabs</title>
-        <meta name="description" content="Custom fintech software development solutions by AbuQitmirLabs. Build PCI-DSS compliant payment gateways, neobanks, lending portals, and AI fraud detection systems." />
+        <title>Fintech Software Development | Custom Banking & Payment Solutions | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs builds PCI-DSS compliant fintech software — payment gateways, neobanks, lending portals, and AI fraud detection. 350+ global clients. Book a free technical audit." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/solutions/fintech" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Fintech Software Development | Custom Banking & Payment Solutions | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs builds PCI-DSS compliant fintech software — payment gateways, neobanks, lending portals, and AI fraud detection. 350+ global clients. Book a free technical audit." />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/solutions/fintech" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Fintech Software Development | Custom Banking & Payment Solutions | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs builds PCI-DSS compliant fintech software — payment gateways, neobanks, lending portals, and AI fraud detection. 350+ global clients. Book a free technical audit." />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
       </Helmet>
