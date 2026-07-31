@@ -80,9 +80,23 @@ const HealthcarePlatformsPage = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
-        <title>Healthcare Software Development — HIPAA-Compliant Platforms | AbuQitmirLabs</title>
-        <meta name="description" content="Custom healthcare software development services. We build HIPAA & GDPR compliant telemedicine platforms, EHR/EMR systems, patient management portals, and FHIR integrations." />
+        <title>Healthcare Software Development | HIPAA-Ready EHR & Telemedicine | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs builds HIPAA-compliant healthcare software — EHR/EMR systems, telemedicine platforms, AI diagnostics, and patient portals. Secure, scalable, and FHIR-ready." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/solutions/healthcare" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Healthcare Software Development | HIPAA-Ready EHR & Telemedicine | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs builds HIPAA-compliant healthcare software — EHR/EMR systems, telemedicine platforms, AI diagnostics, and patient portals. Secure, scalable, and FHIR-ready." />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/solutions/healthcare" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Healthcare Software Development | HIPAA-Ready EHR & Telemedicine | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs builds HIPAA-compliant healthcare software — EHR/EMR systems, telemedicine platforms, AI diagnostics, and patient portals. Secure, scalable, and FHIR-ready." />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
       </Helmet>
