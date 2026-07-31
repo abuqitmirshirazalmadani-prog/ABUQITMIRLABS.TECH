@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { db, collection, getDocs, query, orderBy, where, handleFirestoreError, OperationType } from '../lib/firebase';
-import { Calendar, User, Clock, ArrowRight } from 'lucide-react';
+import { Calendar, User, Clock, ArrowRight, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Header from '../components/Header';
@@ -72,21 +72,21 @@ const BlogPage = () => {
     return (
         <div className="min-h-screen bg-[#050505]">
             <Helmet>
-                <title>Blog & Tech Journal | Insights AbuQitmirLabs</title>
-                <meta name="description" content="Explore technical insights, AI trends, and software engineering strategy at the AbuQitmirLabs Journal. Stay ahead of the curve with our expert analysis." />
+                <title>Tech Blog & AI Insights | AbuQitmirLabs</title>
+                <meta name="description" content="AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies." />
                 <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog" />
                 
                 {/* OG Tags */}
-                <meta property="og:title" content="Blog & Tech Journal | AbuQitmirLabs" />
-                <meta property="og:description" content="Explore technical insights, AI trends, and software engineering strategy at the AbuQitmirLabs Journal." />
+                <meta property="og:title" content="Tech Blog & AI Insights | AbuQitmirLabs" />
+                <meta property="og:description" content="AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies." />
                 <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog" />
                 <meta property="og:type" content="website" />
                 <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
                 {/* Twitter Tags */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Blog & Tech Journal | AbuQitmirLabs" />
-                <meta name="twitter:description" content="Explore technical insights, AI trends, and software engineering strategy at the AbuQitmirLabs Journal." />
+                <meta name="twitter:title" content="Tech Blog & AI Insights | AbuQitmirLabs" />
+                <meta name="twitter:description" content="AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies." />
                 <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
                 {/* Schema Markup */}
@@ -96,7 +96,7 @@ const BlogPage = () => {
                         "@type": "CollectionPage",
                         "name": "Tech Blog & AI Insights",
                         "url": "https://www.abuqitmirlabs.tech/blog",
-                        "description": "Explore technical insights, AI trends, and software engineering strategy at the AbuQitmirLabs Journal.",
+                        "description": "AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies.",
                         "publisher": {
                             "@type": "Organization",
                             "name": "AbuQitmirLabs",
@@ -136,7 +136,29 @@ const BlogPage = () => {
                         Latest
                     </div>
                     <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter uppercase mb-6">Discover our Insights</h1>
-                    <p className="text-zinc-500 text-lg md:text-xl font-medium">Stay up-to-date with our latest blog posts.</p>
+                    <p className="text-zinc-400 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-8">
+                        Stay up-to-date with engineering deep-dives, AI automation strategies, SEO mastery guides, and software architecture trends.
+                    </p>
+
+                    {/* Authoritative External Industry References */}
+                    <div className="inline-flex flex-wrap items-center justify-center gap-4 py-3 px-6 rounded-2xl bg-white/5 border border-white/10 text-xs font-mono text-zinc-400 max-w-4xl mx-auto">
+                        <span className="text-zinc-500 uppercase tracking-widest font-bold text-[11px]">Recommended Tech Standards:</span>
+                        <a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-blue-400 transition-colors">
+                            Google Search Central <ExternalLink className="w-3 h-3" />
+                        </a>
+                        <span className="text-zinc-700">•</span>
+                        <a href="https://techcrunch.com/category/artificial-intelligence/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-blue-400 transition-colors">
+                            TechCrunch AI <ExternalLink className="w-3 h-3" />
+                        </a>
+                        <span className="text-zinc-700">•</span>
+                        <a href="https://www.technologyreview.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-blue-400 transition-colors">
+                            MIT Tech Review <ExternalLink className="w-3 h-3" />
+                        </a>
+                        <span className="text-zinc-700">•</span>
+                        <a href="https://www.searchenginejournal.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-blue-400 transition-colors">
+                            Search Engine Journal <ExternalLink className="w-3 h-3" />
+                        </a>
+                    </div>
                 </div>
 
                 {loading ? (
