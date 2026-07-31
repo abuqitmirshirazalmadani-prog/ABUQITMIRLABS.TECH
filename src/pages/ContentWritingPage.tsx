@@ -38,7 +38,8 @@ import {
   Code2,
   Smartphone,
   Palette,
-  TrendingUp
+  TrendingUp,
+  ExternalLink
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -349,21 +350,21 @@ const ContentWritingPage = () => {
   return (
     <div className="bg-[#030303] text-neutral-200 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00] selection:text-black">
       <Helmet>
-        <title>Content Writing Services | Professional Content Writing Company | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs offers professional content writing services, including SEO content writing, blog writing services, and copywriting services in the USA, UK, and Europe." />
+        <title>Content Writing Services | SEO Copywriting & Blogging | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs provides professional content writing services — SEO blogs, website copy, landing pages, and long-form articles. Data-driven content that ranks and converts." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/content-writing" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Content Writing Services | Professional Content Writing Company | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs offers professional content writing services, including SEO content writing, blog writing services, and copywriting services." />
+        <meta property="og:title" content="Content Writing Services | SEO Copywriting & Blogging | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs provides professional content writing services — SEO blogs, website copy, landing pages, and long-form articles. Data-driven content that ranks and converts." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/content-writing" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Content Writing Services | Professional Content Writing Company | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs offers professional content writing services, including SEO content writing, blog writing services, and copywriting services." />
+        <meta name="twitter:title" content="Content Writing Services | SEO Copywriting & Blogging | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs provides professional content writing services — SEO blogs, website copy, landing pages, and long-form articles. Data-driven content that ranks and converts." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Schema Markup with Breadcrumbs, ProfessionalService, Service with OfferCatalog, FAQPage, and HowTo */}
@@ -419,8 +420,8 @@ const ContentWritingPage = () => {
               {
                 "@context": "https://schema.org",
                 "@type": "Service",
-                "name": "Professional Content Writing Services",
-                "description": "At AbuQitmirLabs, we create content that ranks, engages, and converts. We build customized content strategies that fit your business, not generic templates.",
+                "name": "Content Writing Services | SEO Copywriting & Blogging | AbuQitmirLabs",
+                "description": "AbuQitmirLabs provides professional content writing services — SEO blogs, website copy, landing pages, and long-form articles. Data-driven content that ranks and converts.",
                 "provider": {
                   "@type": "LocalBusiness",
                   "name": "AbuQitmirLabs",
@@ -835,9 +836,25 @@ const ContentWritingPage = () => {
               Content Writing — <br />
               <span className="text-transparent" style={{ WebkitTextStroke: '1px white' }}>Industry-Focused Solutions for Every Sector</span>
             </h2>
-            <p className="text-zinc-400 text-base md:text-lg max-w-3xl leading-relaxed font-light">
-              At AbuQitmirLabs, we create content that ranks, engages, and converts. Our approach begins with understanding your industry's unique audience, competitive landscape, and business goals before we write a single word. Whether you need SEO-optimized blogs, compelling website copy, or technical documentation, we build content strategies that fit your business, not generic templates.
+            <p className="text-zinc-400 text-base md:text-lg max-w-4xl leading-relaxed font-light mb-6">
+              At AbuQitmirLabs, we create content that ranks, engages, and converts. From our <Link to="/" className="text-[#ccff00] hover:underline font-medium">home page</Link> to deep technical documentation, we build customized strategies that seamlessly integrate with our holistic <Link to="/seo-mastery" className="text-[#ccff00] hover:underline font-medium">SEO Mastery</Link>, localized <Link to="/local-seo-for-small-business" className="text-[#ccff00] hover:underline font-medium">Local SEO for Small Businesses</Link>, forensic <Link to="/local-seo-audit" className="text-[#ccff00] hover:underline font-medium">Local SEO Audits</Link>, and bespoke <Link to="/graphics-design" className="text-[#ccff00] hover:underline font-medium">Graphics &amp; UI/UX Design</Link>. Explore client results in our <Link to="/case-studies" className="text-white hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-white hover:underline font-medium">Blog</Link>, read more <Link to="/about" className="text-white hover:underline font-medium">about us</Link>, or <Link to="/contact" className="text-white hover:underline font-medium">contact us</Link> today.
             </p>
+
+            {/* Authoritative Content External Resources */}
+            <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-3 text-xs font-mono text-zinc-400">
+              <span className="text-zinc-500 uppercase tracking-widest font-bold">Authoritative Content Standards:</span>
+              <a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                Google Helpful Content Guidelines <ExternalLink className="w-3 h-3" />
+              </a>
+              <span className="text-zinc-700">•</span>
+              <a href="https://blog.hubspot.com/marketing/content-marketing" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                HubSpot Content Marketing <ExternalLink className="w-3 h-3" />
+              </a>
+              <span className="text-zinc-700">•</span>
+              <a href="https://www.searchenginejournal.com/category/content-marketing/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                Search Engine Journal <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-white">
