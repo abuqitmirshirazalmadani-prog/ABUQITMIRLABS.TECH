@@ -418,19 +418,19 @@ export default function CaseStudiesPage() {
     return (
         <div className="min-h-screen bg-[#000000] text-white selection:bg-[#ccff00] selection:text-black font-sans">
             <Helmet>
-                <title>Cinematic Case Studies &amp; Architectural Reference Projects | AbuQitmirLabs</title>
-                <meta name="description" content="Discover our elite portfolio of reference custom software, intelligent AI agent ecosystems, and low-latency SaaS dashboards. Copy educational citations and reference backlinks." />
+                <title>Case Studies | Real-World Success Stories | AbuQitmirLabs</title>
+                <meta name="description" content="Explore real-world success stories from AbuQitmirLabs — custom software, AI automation, mobile apps, and web solutions that delivered measurable ROI for 350+ global clients." />
                 <link rel="canonical" href="https://www.abuqitmirlabs.tech/case-studies" />
                 
-                <meta property="og:title" content="Cinematic Case Studies &amp; Reference Projects | AbuQitmirLabs" />
-                <meta property="og:description" content="Explore multi-million transaction workflows, low-latency React streaming engines, and dynamic programmatic SEO case studies from AbuQitmirLabs." />
+                <meta property="og:title" content="Case Studies | Real-World Success Stories | AbuQitmirLabs" />
+                <meta property="og:description" content="Explore real-world success stories from AbuQitmirLabs — custom software, AI automation, mobile apps, and web solutions that delivered measurable ROI for 350+ global clients." />
                 <meta property="og:url" content="https://www.abuqitmirlabs.tech/case-studies" />
                 <meta property="og:type" content="website" />
                 <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Cinematic Case Studies &amp; Reference Projects | AbuQitmirLabs" />
-                <meta name="twitter:description" content="Explore leading software architecture studies with Academic citation structures." />
+                <meta name="twitter:title" content="Case Studies | Real-World Success Stories | AbuQitmirLabs" />
+                <meta name="twitter:description" content="Explore real-world success stories from AbuQitmirLabs — custom software, AI automation, mobile apps, and web solutions that delivered measurable ROI for 350+ global clients." />
                 <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
             </Helmet>
 
