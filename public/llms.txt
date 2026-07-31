@@ -20,6 +20,7 @@ These links direct to the core segments of our digital agency:
 - [About Us](https://www.abuqitmirlabs.tech/about) - Profile of our leadership team, company mission, values, and technological edge.
 - [Contact Page](https://www.abuqitmirlabs.tech/contact) - Contact form and details (email, phone, maps, social networks) for starting a high-end application development project.
 - [Technology Blog](https://www.abuqitmirlabs.tech/blog) - Deep technical articles, expert digital engineering insights, local SEO guides, and regular technology updates.
+- [Custom AI Solutions for Corporate Events — Complete 2026 Guide](https://www.abuqitmirlabs.tech/blog/custom-ai-solutions-for-corporate-events-2026-guide) - Complete 2026 guide on building custom AI event management platforms (EventFlow), attendee check-in, AI speaker coordination, venue management, and AI invoice chasing.
 
 ## Specialized Technical Services
 Detailed explanations of our core solutions and services:

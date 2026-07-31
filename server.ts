@@ -185,6 +185,8 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
         '/blog/agentic-ai-production-failures',
         '/what-does-a-custom-web-development-company-do',
         '/blog/what-does-a-custom-web-development-company-do',
+        '/custom-ai-solutions-for-corporate-events-2026-guide',
+        '/blog/custom-ai-solutions-for-corporate-events-2026-guide',
         '/terms',
         '/privacy'
       ];

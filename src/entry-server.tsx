@@ -123,6 +123,9 @@ export function render(url: string) {
           <Route path="/blog/agentic-ai-production-failures" element={<BlogPostPage overrideSlug="agentic-ai-production-failures" />} />
           <Route path="/what-does-a-custom-web-development-company-do" element={<BlogPostPage overrideSlug="what-does-a-custom-web-development-company-do" />} />
           <Route path="/blog/what-does-a-custom-web-development-company-do" element={<BlogPostPage overrideSlug="what-does-a-custom-web-development-company-do" />} />
+          <Route path="/custom-ai-solutions-for-corporate-events-2026-guide" element={<BlogPostPage overrideSlug="custom-ai-solutions-for-corporate-events-2026-guide" />} />
+          <Route path="/blog/custom-ai-solutions-for-corporate-events-2026-guide" element={<BlogPostPage overrideSlug="custom-ai-solutions-for-corporate-events-2026-guide" />} />
+          <Route path="/blog/custom-ai-solutions-for-corporate-events" element={<Navigate to="/blog/custom-ai-solutions-for-corporate-events-2026-guide" replace />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />
