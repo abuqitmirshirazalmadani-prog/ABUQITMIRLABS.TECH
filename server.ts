@@ -264,6 +264,26 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
 
   const distPath = path.resolve(__dirname, 'dist');
   
+  // Security Middleware: Prevent Directory Browsing & Index Listing
+  app.use((req, res, next) => {
+    // Check if request is attempting to browse a physical directory (e.g., /assets/, /src/, /public/)
+    if (req.path !== '/' && (req.path.endsWith('/') || !path.extname(req.path))) {
+      const possibleDirPath = path.join(distPath, req.path);
+      try {
+        if (fs.existsSync(possibleDirPath) && fs.statSync(possibleDirPath).isDirectory()) {
+          const hasIndexHtml = fs.existsSync(path.join(possibleDirPath, 'index.html'));
+          if (!hasIndexHtml) {
+            // Block raw directory listing with 403 Forbidden
+            return res.status(403).send('403 Forbidden: Directory browsing is disabled on this server.');
+          }
+        }
+      } catch (err) {
+        // Continue if stat fails
+      }
+    }
+    next();
+  });
+
   if (process.env.NODE_ENV !== 'production') {
     // Development mode: Use Vite middleware in SPA mode for fast asset serving and HMR handling
     const vite = await createViteServer({
@@ -272,8 +292,8 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
     });
     app.use(vite.middlewares);
   } else {
-    // In production, serve built static assets from dist
-    app.use(express.static(distPath));
+    // In production, serve built static assets from dist without auto-indexing directories
+    app.use(express.static(distPath, { index: false, dotfiles: 'ignore', redirect: false }));
 
     // GLOBAL SPA & SSR Fallback in production
     app.get('*', async (req, res, next) => {

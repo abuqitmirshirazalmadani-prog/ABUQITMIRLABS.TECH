@@ -25,18 +25,18 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <Helmet>
-        <title>Custom Software & AI App Development | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs is an expert custom software and AI app development company building premium websites and enterprise solutions globally." />
+        <title>Custom Software &amp; AI Development | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs .TECH is an elite custom software development studio. We build bespoke SaaS, enterprise systems, and AI models for global businesses. Let's build your solution." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/" />
         
-        <meta property="og:title" content="Custom Software & AI App Development | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs is an expert custom software and AI app development company building premium websites and enterprise solutions globally." />
+        <meta property="og:title" content="Custom Software &amp; AI Development | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs .TECH is an elite custom software development studio. We build bespoke SaaS, enterprise systems, and AI models for global businesses. Let's build your solution." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Custom Software & AI App Development | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs is an expert custom software and AI app development company building premium websites and enterprise solutions globally." />
+        <meta name="twitter:title" content="Custom Software &amp; AI Development | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs .TECH is an elite custom software development studio. We build bespoke SaaS, enterprise systems, and AI models for global businesses. Let's build your solution." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         <script 
@@ -112,7 +112,7 @@ export default function HomePage() {
       
       {/* Visually hidden H2/H3 for SEO search visibility */}
       <div className="sr-only">
-        <h2>Affordable App Development Company | AbuQitmirLabs</h2>
+        <h2>Custom Software &amp; AI Development | AbuQitmirLabs</h2>
         <h3>Custom Software · Web Development · AI Agents · Mobile Apps · SEO</h3>
       </div>
 

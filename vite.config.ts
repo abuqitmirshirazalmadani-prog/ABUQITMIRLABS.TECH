@@ -77,7 +77,7 @@ export default defineConfig(({mode}) => {
         closeBundle: async () => {
           const hostname = 'https://www.abuqitmirlabs.tech';
           const baseRoutes = [
-            { url: '/',                        changefreq: 'weekly',  priority: 1.0, title: 'Affordable App Development Company | AbuQitmirLabs', description: "AbuQitmirLabs .TECH is an elite custom software development studio. We build bespoke SaaS, industrial-grade enterprise systems, and intelligent AI models for global businesses." },
+            { url: '/',                        changefreq: 'weekly',  priority: 1.0, title: 'Custom Software & AI Development | AbuQitmirLabs', description: "AbuQitmirLabs .TECH is an elite custom software development studio. We build bespoke SaaS, enterprise systems, and AI models for global businesses. Let's build your solution." },
             { url: '/about',                   changefreq: 'monthly', priority: 0.8, title: 'About Us | AbuQitmirLabs', description: 'Learn about our mission to build cutting-edge AI and mobile solutions.' },
             { url: '/contact',                 changefreq: 'monthly', priority: 0.9, title: 'Contact Us | Start Your Project', description: 'Contact AbuQitmirLabs for your next mobile app or AI software project.' },
             { url: '/custom-software',         changefreq: 'weekly',  priority: 0.9, title: 'Custom Software Development', description: 'Tailor-made software solutions for your unique business needs.' },
@@ -357,20 +357,68 @@ Sitemap: ${hostname}/sitemap.xml`;
               <div id="root">
                 <header>
                   <h1>${route.title}</h1>
+                  <nav aria-label="Main Navigation">
+                    <a href="/">Home</a> | 
+                    <a href="/custom-software">Custom Software</a> | 
+                    <a href="/mobile-app-development">Mobile Apps</a> | 
+                    <a href="/web-development">Web Development</a> | 
+                    <a href="/ai-agent-development">AI Agents</a> | 
+                    <a href="/seo-mastery">SEO Mastery</a> | 
+                    <a href="/graphics-design">Graphics & Branding</a> | 
+                    <a href="/content-writing">Content Writing</a> | 
+                    <a href="/case-studies">Case Studies</a> | 
+                    <a href="/about">About Us</a> | 
+                    <a href="/contact">Contact</a> | 
+                    <a href="/blog">Blog</a>
+                  </nav>
                 </header>
                 <main>
                   <article>
                     ${articleContent}
                   </article>
+                  <section aria-label="Industry Solutions & Resources">
+                    <h3>Specialized Industry Solutions</h3>
+                    <ul>
+                      <li><a href="/solutions/ai-automation">Custom AI Automation & Autonomous Agents</a></li>
+                      <li><a href="/solutions/fintech">Fintech Software & Secure Payment Platforms</a></li>
+                      <li><a href="/solutions/edtech">EdTech Development & Learning Management Systems</a></li>
+                      <li><a href="/solutions/ecommerce">E-Commerce Development & Headless Platforms</a></li>
+                      <li><a href="/solutions/healthcare">HIPAA-Compliant Healthcare Platforms</a></li>
+                    </ul>
+                    <h3>Global Market Solutions</h3>
+                    <ul>
+                      <li><a href="/us-market">United States Software Engineering Services</a></li>
+                      <li><a href="/uk-market">United Kingdom Digital Transformation Solutions</a></li>
+                      <li><a href="/canada-market">Canada Enterprise App Development Services</a></li>
+                      <li><a href="/pakistan-market">Pakistan Custom Software & Mobile App Services</a></li>
+                      <li><a href="/australia-market">Australia Custom AI & Web App Engineering</a></li>
+                      <li><a href="/poland-market">Poland Tech Hub Software Development</a></li>
+                    </ul>
+                  </section>
                 </main>
                 <footer>
                   <p>&copy; ${new Date().getFullYear()} AbuQitmirLabs .TECH. Empowering businesses through advanced digital engineering.</p>
-                  <nav>
+                  <nav aria-label="Footer Navigation">
                     <a href="/custom-software">Custom Software</a> | 
                     <a href="/mobile-app-development">Mobile Apps</a> | 
-                    <a href="/ai-agent-development">AI Agents</a> |
-                    <a href="/case-studies">Case Studies</a>
+                    <a href="/web-development">Web Development</a> | 
+                    <a href="/ai-agent-development">AI Agents</a> | 
+                    <a href="/seo-mastery">SEO Mastery</a> | 
+                    <a href="/case-studies">Case Studies</a> | 
+                    <a href="/about">About Us</a> | 
+                    <a href="/contact">Contact</a> | 
+                    <a href="/blog">Blog</a> | 
+                    <a href="/privacy">Privacy Policy</a> | 
+                    <a href="/terms">Terms of Service</a>
                   </nav>
+                  <div style="margin-top:12px; font-size:12px;">
+                    <strong>Trusted Technology Ecosystem & Industry Authorities:</strong>
+                    <a href="https://react.dev" target="_blank" rel="noopener noreferrer">React Framework Docs</a> | 
+                    <a href="https://platform.openai.com/docs" target="_blank" rel="noopener noreferrer">OpenAI Platform Guides</a> | 
+                    <a href="https://aws.amazon.com/architecture" target="_blank" rel="noopener noreferrer">AWS Architecture Center</a> | 
+                    <a href="https://developers.google.com/search" target="_blank" rel="noopener noreferrer">Google Search Central</a> | 
+                    <a href="https://www.w3.org" target="_blank" rel="noopener noreferrer">W3C Web Standards</a>
+                  </div>
                 </footer>
               </div>
             `;
@@ -394,6 +442,8 @@ Sitemap: ${hostname}/sitemap.xml`;
       },
     },
     build: {
+      minify: 'esbuild',
+      cssMinify: true,
       cssCodeSplit: true,
       chunkSizeWarningLimit: 1200,
       rollupOptions: {

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
+import { ExternalLink } from 'lucide-react';
 import { AnimatedShinyText } from './ui/animated-shiny-text';
 import { MagicText } from './ui/magic-text';
 import { AnimatedBreathingText } from './ui/animated-breathing-text';
@@ -9,27 +10,45 @@ import { AnimatedBreathingText } from './ui/animated-breathing-text';
 const techGroups = [
     {
         category: "Frontend & Web",
-        items: ["React.js", "Next.js", "Tailwind CSS"],
+        items: [
+            { name: "React.js", url: "https://react.dev" },
+            { name: "Next.js", url: "https://nextjs.org" },
+            { name: "Tailwind CSS", url: "https://tailwindcss.com" }
+        ],
         icon: "⚛️"
     },
     {
         category: "Mobile App Development",
-        items: ["Flutter", "React Native"],
+        items: [
+            { name: "Flutter", url: "https://flutter.dev" },
+            { name: "React Native", url: "https://reactnative.dev" }
+        ],
         icon: "📱"
     },
     {
         category: "Backend & APIs",
-        items: ["Node.js", "Express"],
+        items: [
+            { name: "Node.js", url: "https://nodejs.org" },
+            { name: "Express", url: "https://expressjs.com" }
+        ],
         icon: "🟢"
     },
     {
         category: "AI & Data Integration",
-        items: ["Python", "LangChain", "Semantic Kernel"],
+        items: [
+            { name: "Python", url: "https://www.python.org" },
+            { name: "LangChain", url: "https://www.langchain.com" },
+            { name: "OpenAI Platform", url: "https://platform.openai.com/docs" }
+        ],
         icon: "🐍"
     },
     {
         category: "Cloud & Database",
-        items: ["Firebase", "AWS", "MongoDB", "PostgreSQL"],
+        items: [
+            { name: "AWS Cloud", url: "https://aws.amazon.com/architecture" },
+            { name: "Firebase", url: "https://firebase.google.com" },
+            { name: "PostgreSQL", url: "https://www.postgresql.org" }
+        ],
         icon: "☁️"
     }
 ];
@@ -78,12 +97,16 @@ const TechStackSection = () => {
                             <AnimatedBreathingText text={group.category} className="text-xl font-bold text-white mb-4 uppercase tracking-wider block" />
                             <div className="flex flex-wrap gap-2">
                                 {group.items.map((item, i) => (
-                                    <span 
+                                    <a 
                                         key={i} 
-                                        className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+                                        href={item.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300 hover:text-white hover:border-cyan-400 hover:bg-cyan-500/10 transition-all"
                                     >
-                                        {item}
-                                    </span>
+                                        <span>{item.name}</span>
+                                        <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100" />
+                                    </a>
                                 ))}
                             </div>
                         </motion.div>
