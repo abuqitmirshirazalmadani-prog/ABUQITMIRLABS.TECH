@@ -29,7 +29,8 @@ import {
   MessageSquare,
   FileText,
   Check,
-  Download
+  Download,
+  ExternalLink
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -189,21 +190,21 @@ Do not sign a website contract without these protective legal terms.
   return (
     <div className="bg-[#050505] text-axiom-sub font-body antialiased overflow-x-hidden min-h-screen relative selection:bg-blue-500/30 selection:text-white">
       <Helmet>
-        <title>Custom Web Development Services | React, Next.js & Jamstack | AbuQitmirLabs</title>
-        <meta name="description" content="Custom web development with React, Next.js, and Jamstack. Sub-second load times, perfect Core Web Vitals, and SEO-optimized architecture. Serving clients in the US, UK, Canada, Australia, and Poland." />
+        <title>Web Development Services | React, Next.js & Jamstack | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs builds high-performance web apps using React, Next.js, and Jamstack. From corporate sites to e-commerce and PWAs — we deliver speed, scalability, and SEO-ready code." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/web-development" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Custom Web Development Services | React, Next.js & Jamstack | AbuQitmirLabs" />
-        <meta property="og:description" content="Custom web development with React, Next.js, and Jamstack. Sub-second load times, perfect Core Web Vitals, and SEO-optimized architecture. Serving clients in the US, UK, Canada, Australia, and Poland." />
+        <meta property="og:title" content="Web Development Services | React, Next.js & Jamstack | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs builds high-performance web apps using React, Next.js, and Jamstack. From corporate sites to e-commerce and PWAs — we deliver speed, scalability, and SEO-ready code." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/web-development" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Custom Web Development Services | React, Next.js & Jamstack | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Custom web development with React, Next.js, and Jamstack. Sub-second load times, perfect Core Web Vitals, and SEO-optimized architecture. Serving clients in the US, UK, Canada, Australia, and Poland." />
+        <meta name="twitter:title" content="Web Development Services | React, Next.js & Jamstack | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs builds high-performance web apps using React, Next.js, and Jamstack. From corporate sites to e-commerce and PWAs — we deliver speed, scalability, and SEO-ready code." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Schema Markup */}
@@ -382,9 +383,9 @@ Do not sign a website contract without these protective legal terms.
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-lg md:text-xl text-neutral-400 text-center max-w-3xl mb-12 leading-relaxed font-light font-sans"
+          className="text-lg md:text-xl text-neutral-400 text-center max-w-4xl mb-12 leading-relaxed font-light font-sans"
         >
-          Your website is often the first interaction a customer has with your brand. We build fast, responsive, SEO-ready websites and web apps — from marketing sites to complex dashboards — using modern frameworks that won't slow down or break as you scale. Hamari custom web development services ko aap <Link to="/custom-software" className="text-blue-400 hover:underline">Custom Software</Link> structures ke sath connect kar sakte hain, <Link to="/mobile-app-development" className="text-blue-400 hover:underline">Mobile App Development</Link> solutions se expand kar sakte hain, aur use automated <Link to="/ai-agent-development" className="text-blue-400 hover:underline">AI Agent Development</Link> se equip kar ke high-grade performance achieve kar sakte hain. Perfect Core Web Vitals also pair beautifully with our <Link to="/seo-mastery" className="text-blue-400 hover:underline">SEO Mastery</Link> solutions to ensure maximum search engine visibility. Our operations are fully headquartered in Karachi, Pakistan, assisting organizations worldwide.
+          Your website is often the first interaction a customer has with your brand. From our <Link to="/" className="text-blue-400 hover:underline font-medium">homepage</Link> to specialized web systems, we build fast, responsive, SEO-ready platforms — from corporate sites to e-commerce and web apps. You can pair our web builds with modular <Link to="/custom-software" className="text-blue-400 hover:underline font-medium">Custom Software</Link>, expand into native <Link to="/mobile-app-development" className="text-blue-400 hover:underline font-medium">Mobile App Development</Link>, integrate autonomous <Link to="/ai-agent-development" className="text-blue-400 hover:underline font-medium">AI Agents</Link>, or maximize visibility with our <Link to="/seo-mastery" className="text-blue-400 hover:underline font-medium">SEO Mastery</Link> and <Link to="/local-seo-for-small-business" className="text-blue-400 hover:underline font-medium">Local SEO</Link> strategies. Elevate messaging with targeted <Link to="/content-writing" className="text-blue-400 hover:underline font-medium">Content Writing</Link>, read our client <Link to="/case-studies" className="text-blue-400 hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-blue-400 hover:underline font-medium">Blog</Link>, learn more <Link to="/about" className="text-blue-400 hover:underline font-medium">about us</Link>, or <Link to="/contact" className="text-blue-400 hover:underline font-medium">contact us</Link> today.
         </motion.p>
 
         {/* Core Capabilities Specifications */}
@@ -407,6 +408,26 @@ Do not sign a website contract without these protective legal terms.
                 <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
               </div>
             ))}
+          </div>
+
+          {/* Official Web Technology Ecosystems - High Quality External Links */}
+          <div className="mt-6 pt-6 border-t border-white/5 flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-slate-400">
+            <span className="text-zinc-500 uppercase tracking-widest font-bold">Authoritative Ecosystems:</span>
+            <a href="https://react.dev" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-blue-400 transition-colors">
+              React Docs <ExternalLink className="w-3 h-3" />
+            </a>
+            <span className="text-zinc-700">•</span>
+            <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-blue-400 transition-colors">
+              Next.js Framework <ExternalLink className="w-3 h-3" />
+            </a>
+            <span className="text-zinc-700">•</span>
+            <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-blue-400 transition-colors">
+              Tailwind CSS <ExternalLink className="w-3 h-3" />
+            </a>
+            <span className="text-zinc-700">•</span>
+            <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-blue-400 transition-colors">
+              Vercel Edge Platform <ExternalLink className="w-3 h-3" />
+            </a>
           </div>
         </motion.div>
 

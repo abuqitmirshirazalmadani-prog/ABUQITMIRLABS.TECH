@@ -30,7 +30,8 @@ import {
   Scale,
   Calendar,
   GraduationCap,
-  Activity
+  Activity,
+  ExternalLink
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -109,21 +110,21 @@ const MobileAppDevelopmentPage = () => {
   return (
     <div className="bg-[#050505] text-neutral-300 font-body antialiased overflow-x-hidden min-h-screen relative selection:bg-blue-500/30 selection:text-white">
       <Helmet>
-        <title>Custom Mobile App Development Company | Flutter & Native iOS/Android | AbuQitmirLabs</title>
-        <meta name="description" content="Launch high-performance apps with AbuQitmirLabs. Premium custom Flutter for dual ecosystems, Swift (iOS), Kotlin (Android), and secure offline-first storage pipelines." />
+        <title>Mobile App Development | Flutter & Native iOS/Android | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs builds high-performance mobile apps using Flutter, React Native, and iOS/Android. We handle design, development, and App Store submission." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/mobile-app-development" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Custom Mobile App Development Company | Flutter & Native iOS/Android | AbuQitmirLabs" />
-        <meta property="og:description" content="Launch high-performance apps with AbuQitmirLabs. Premium custom Flutter cross-platform, Swift (iOS), and Kotlin (Android) architectures." />
+        <meta property="og:title" content="Mobile App Development | Flutter & Native iOS/Android | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs builds high-performance mobile apps using Flutter, React Native, and iOS/Android. We handle design, development, and App Store submission." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/mobile-app-development" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Custom Mobile App Development Company | Flutter & Native iOS/Android | AbuQitmirLabs" />
-        <meta name="twitter:description" content="We build stunning cross-platform and native mobile software designed to drive customer conversion and zero lag." />
+        <meta name="twitter:title" content="Mobile App Development | Flutter & Native iOS/Android | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs builds high-performance mobile apps using Flutter, React Native, and iOS/Android. We handle design, development, and App Store submission." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Schema Markup */}
@@ -312,7 +313,7 @@ const MobileAppDevelopmentPage = () => {
           transition={{ delay: 0.1 }}
           className="text-base md:text-lg text-neutral-400 text-center max-w-4xl mb-12 leading-relaxed font-light font-sans"
         >
-          We build native and cross-platform mobile apps that survive real-world usage, not just demo conditions. From idea to App Store/Play Store approval, our team handles design, development, and post-launch support so your app actually reaches users. Hamari custom mobile solutions ko aap automated <a href="/ai-agent-development" className="text-blue-400 hover:underline">AI Agents</a> ke sath integrate kar sakte hain, ya unhe modular <a href="/custom-software" className="text-blue-400 hover:underline">Custom Software</a> engines se power kar sakte hain. Headquartered in Karachi, Pakistan, we craft premium experiences.
+          We build native and cross-platform mobile apps that survive real-world usage, not just demo conditions. From idea to App Store/Play Store approval, our engineering team handles design, development, and post-launch support so your app performs seamlessly. You can pair our mobile builds with automated <Link to="/ai-agent-development" className="text-blue-400 hover:underline font-medium">AI Agent Development</Link>, integrate modular <Link to="/custom-software" className="text-blue-400 hover:underline font-medium">Custom Software</Link> backends, power web interfaces with <Link to="/web-development" className="text-blue-400 hover:underline font-medium">Web Development</Link>, or explore our proven <Link to="/case-studies" className="text-blue-400 hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-blue-400 hover:underline font-medium">Technical Blog</Link>. Learn more <Link to="/about" className="text-blue-400 hover:underline font-medium">about us</Link> or <Link to="/contact" className="text-blue-400 hover:underline font-medium">get in touch</Link> to start your build.
         </motion.p>
 
         {/* Core Capabilities Specifications */}
@@ -335,6 +336,26 @@ const MobileAppDevelopmentPage = () => {
                 <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
               </div>
             ))}
+          </div>
+
+          {/* Official Technology Frameworks - Authoritative External Links */}
+          <div className="mt-6 pt-6 border-t border-white/5 flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-slate-400">
+            <span className="text-zinc-500 uppercase tracking-widest font-bold">Trusted Ecosystems:</span>
+            <a href="https://flutter.dev" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-blue-400 transition-colors">
+              Flutter Docs <ExternalLink className="w-3 h-3" />
+            </a>
+            <span className="text-zinc-700">•</span>
+            <a href="https://reactnative.dev" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-blue-400 transition-colors">
+              React Native <ExternalLink className="w-3 h-3" />
+            </a>
+            <span className="text-zinc-700">•</span>
+            <a href="https://developer.apple.com/swift/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-blue-400 transition-colors">
+              Swift (iOS) <ExternalLink className="w-3 h-3" />
+            </a>
+            <span className="text-zinc-700">•</span>
+            <a href="https://developer.android.com/kotlin" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-blue-400 transition-colors">
+              Kotlin (Android) <ExternalLink className="w-3 h-3" />
+            </a>
           </div>
         </motion.div>
 
