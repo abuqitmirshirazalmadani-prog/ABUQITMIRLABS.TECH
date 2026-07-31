@@ -27,7 +27,8 @@ import {
     FileSearch,
     BarChart3,
     CheckSquare,
-    HelpCircle
+    HelpCircle,
+    ExternalLink
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -115,17 +116,16 @@ export default function LocalSEOAuditPage() {
         <div className="min-h-screen bg-[#080808] text-white selection:bg-[#ccff00] selection:text-black font-sans antialiased">
             <Helmet>
                 {/* ═══ Primary Meta Tags ═══ */}
-                <title>Free Local SEO Audit | Find Why You're Not Ranking | AbuQitmirLabs</title>
-                <meta name="description" content="Free local SEO audit from AbuQitmirLabs — we analyse your Google Business Profile, citation profile, on-page signals, and map-pack competitors, then tell you exactly what's holding back your rankings." />
+                <title>Free Local SEO Audit | Forensic Map Pack Analysis | AbuQitmirLabs</title>
+                <meta name="description" content="Free local SEO audit covering Google Business Profile, NAP citations, schema markup, and map-pack competitors. Get a prioritized action plan — not a jargon-filled deck." />
                 <link rel="canonical" href="https://www.abuqitmirlabs.tech/local-seo-audit" />
                 <meta name="keywords" content="local SEO audit, free local SEO audit, local SEO analysis, Google Business Profile audit, citation audit, map pack analysis, local SEO consultant" />
-                <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
                 
                 {/* ═══ Open Graph (Facebook / LinkedIn) ═══ */}
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://www.abuqitmirlabs.tech/local-seo-audit" />
-                <meta property="og:title" content="Free Local SEO Audit | AbuQitmirLabs" />
-                <meta property="og:description" content="Find out exactly why your business isn't ranking in local search — and what to fix first. Free local SEO audit from AbuQitmirLabs." />
+                <meta property="og:title" content="Free Local SEO Audit | Forensic Map Pack Analysis | AbuQitmirLabs" />
+                <meta property="og:description" content="Free local SEO audit covering Google Business Profile, NAP citations, schema markup, and map-pack competitors. Get a prioritized action plan — not a jargon-filled deck." />
                 <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
@@ -134,8 +134,8 @@ export default function LocalSEOAuditPage() {
                 {/* ═══ Twitter Card ═══ */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@AbuQitmir" />
-                <meta name="twitter:title" content="Free Local SEO Audit | AbuQitmirLabs" />
-                <meta name="twitter:description" content="Find out exactly why your business isn't ranking in local search — free audit from AbuQitmirLabs." />
+                <meta name="twitter:title" content="Free Local SEO Audit | Forensic Map Pack Analysis | AbuQitmirLabs" />
+                <meta name="twitter:description" content="Free local SEO audit covering Google Business Profile, NAP citations, schema markup, and map-pack competitors. Get a prioritized action plan — not a jargon-filled deck." />
                 <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
                 {/* ═══ Structured Data / JSON-LD ═══ */}
@@ -172,8 +172,8 @@ export default function LocalSEOAuditPage() {
                                 "@type": "WebPage",
                                 "@id": "https://www.abuqitmirlabs.tech/local-seo-audit#webpage",
                                 "url": "https://www.abuqitmirlabs.tech/local-seo-audit",
-                                "name": "Free Local SEO Audit | Find Why You're Not Ranking | AbuQitmirLabs",
-                                "description": "Free local SEO audit from AbuQitmirLabs — we analyse your Google Business Profile, citation profile, on-page signals, and map-pack competitors, then tell you exactly what's holding back your rankings.",
+                                "name": "Free Local SEO Audit | Forensic Map Pack Analysis | AbuQitmirLabs",
+                                "description": "Free local SEO audit covering Google Business Profile, NAP citations, schema markup, and map-pack competitors. Get a prioritized action plan — not a jargon-filled deck.",
                                 "inLanguage": "en-US",
                                 "isPartOf": {
                                     "@id": "https://www.abuqitmirlabs.tech/#website"
@@ -277,8 +277,8 @@ export default function LocalSEOAuditPage() {
                         <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-medium tracking-tight text-white leading-[1.1] mb-8">
                             Find Out <em className="text-[#ccff00] italic font-normal">Exactly</em> Why You're Not in the Map Pack
                         </h1>
-                        <p className="text-lg md:text-xl text-zinc-300 font-sans leading-relaxed mb-10 max-w-3xl">
-                            A forensic local SEO analysis across your Google Business Profile, citation profile, on-page signals, and top competitors — delivered as a prioritised action report, not a jargon-filled slide deck.
+                        <p className="text-lg md:text-xl text-zinc-300 font-sans leading-relaxed mb-10 max-w-4xl">
+                            A forensic local SEO analysis across your Google Business Profile, citation profile, on-page signals, and top competitors. Starting from our <Link to="/" className="text-[#ccff00] hover:underline font-medium">home page</Link>, we diagnose search bottlenecks and deliver a prioritized action report.
                         </p>
                         <div className="flex flex-wrap gap-4 items-center">
                             <Link 
@@ -385,7 +385,7 @@ export default function LocalSEOAuditPage() {
                             Five Areas That Determine Whether You Rank Locally
                         </h2>
                         <p className="text-zinc-400 text-base md:text-lg leading-relaxed">
-                            A <strong className="text-white">local SEO audit</strong> is a diagnostic, not a sales pitch. Its job is to surface the specific, fixable reasons your business isn't appearing where it should — whether that's a misconfigured Google Business Profile, a pattern of inconsistent citations, missing schema markup, or a competitor advantage you haven't identified yet. Our audit report tells you what's wrong, why it matters, and which fixes to prioritise first based on the effort-to-impact ratio.
+                            A <strong className="text-white">local SEO audit</strong> is a diagnostic, not a sales pitch. Its job is to surface the specific, fixable reasons your business isn't appearing where it should — whether that's a misconfigured Google Business Profile, a pattern of inconsistent citations, or missing schema markup. Our findings seamlessly connect with our <Link to="/local-seo-for-small-business" className="text-[#ccff00] hover:underline font-medium">Local SEO for Small Businesses</Link>, manual <Link to="/local-seo-citation-building" className="text-[#ccff00] hover:underline font-medium">Citation Building</Link>, agency <Link to="/white-label-local-seo" className="text-[#ccff00] hover:underline font-medium">White Label Local SEO</Link>, and holistic <Link to="/seo-mastery" className="text-[#ccff00] hover:underline font-medium">SEO Mastery</Link> packages. Pair your search strategy with custom <Link to="/custom-software" className="text-[#ccff00] hover:underline font-medium">Custom Software</Link>, high-performance <Link to="/web-development" className="text-[#ccff00] hover:underline font-medium">Web Development</Link>, native <Link to="/mobile-app-development" className="text-[#ccff00] hover:underline font-medium">Mobile Apps</Link>, autonomous <Link to="/ai-agent-development" className="text-[#ccff00] hover:underline font-medium">AI Agents</Link>, and localized <Link to="/content-writing" className="text-[#ccff00] hover:underline font-medium">Content Writing</Link>. Review client results in our <Link to="/case-studies" className="text-[#ccff00] hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-[#ccff00] hover:underline font-medium">Blog</Link>, read more <Link to="/about" className="text-[#ccff00] hover:underline font-medium">about us</Link>, or <Link to="/contact" className="text-[#ccff00] hover:underline font-medium">contact us</Link> today.
                         </p>
                     </div>
 
@@ -426,6 +426,26 @@ export default function LocalSEOAuditPage() {
                                 </div>
                             </div>
                         ))}
+                    </div>
+
+                    {/* Authoritative External Local SEO Audit Resources */}
+                    <div className="mt-12 pt-6 border-t border-white/10 flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-zinc-400">
+                        <span className="text-zinc-500 uppercase tracking-widest font-bold">Authoritative Local SEO Audit Standards:</span>
+                        <a href="https://support.google.com/business/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                            Google Business Profile Help <ExternalLink className="w-3 h-3" />
+                        </a>
+                        <span className="text-zinc-700">•</span>
+                        <a href="https://developers.google.com/search/docs/appearance/structured-data/local-business" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                            Google Local Business Structured Data <ExternalLink className="w-3 h-3" />
+                        </a>
+                        <span className="text-zinc-700">•</span>
+                        <a href="https://www.brightlocal.com/research/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                            BrightLocal Industry Research <ExternalLink className="w-3 h-3" />
+                        </a>
+                        <span className="text-zinc-700">•</span>
+                        <a href="https://moz.com/learn/seo/local" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                            Moz Local Learning Hub <ExternalLink className="w-3 h-3" />
+                        </a>
                     </div>
                 </section>
 
