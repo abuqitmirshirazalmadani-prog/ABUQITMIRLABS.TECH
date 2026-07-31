@@ -41,7 +41,8 @@ import {
   MapPin,
   Cpu,
   Code2,
-  Smartphone
+  Smartphone,
+  ExternalLink
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -208,15 +209,23 @@ const GraphicsDesignPage = () => {
   return (
     <div className="bg-[#050505] text-neutral-300 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00] selection:text-black">
       <Helmet>
-        <title>Graphics Design Services | Professional Graphic Design Company | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs is a professional graphic design studio providing brand identity design, custom logo design services, and UI/UX design." />
+        <title>Graphics Design Services | Brand Identity & UI/UX | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs provides professional graphic design services — brand identity, logo design, UI/UX, pitch decks, and print assets. Build a cohesive visual identity that stands out." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/graphics-design" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Graphics Design Services | Professional Graphic Design Company | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs is a professional graphic design studio providing brand identity design, custom logo design services, and UI/UX design." />
+        <meta property="og:title" content="Graphics Design Services | Brand Identity & UI/UX | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs provides professional graphic design services — brand identity, logo design, UI/UX, pitch decks, and print assets. Build a cohesive visual identity that stands out." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/graphics-design" />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@AbuQitmir" />
+        <meta name="twitter:title" content="Graphics Design Services | Brand Identity & UI/UX | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs provides professional graphic design services — brand identity, logo design, UI/UX, pitch decks, and print assets. Build a cohesive visual identity that stands out." />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Schema Markup */}
         <script 
@@ -559,10 +568,10 @@ const GraphicsDesignPage = () => {
                      Design That Does More <span className="italic text-neutral-400">Than Look Good</span>
                   </h2>
                   <p className="text-base md:text-lg font-light text-zinc-300 leading-relaxed font-sans mb-6">
-                     Good design is often invisible — it just makes a brand feel trustworthy, a product feel intuitive, and a customer feel like they're in the right place. At AbuQitmirLabs, our approach to <strong>graphic design</strong> starts from that principle: every visual decision should serve a purpose, not just fill space.
+                     Good design is often invisible — it just makes a brand feel trustworthy, a product feel intuitive, and a customer feel like they're in the right place. From our <Link to="/" className="text-[#ccff00] hover:underline font-medium">home page</Link> to bespoke engineering, our <strong>graphic design</strong> solutions complement custom <Link to="/custom-software" className="text-[#ccff00] hover:underline font-medium">Custom Software</Link>, high-performance <Link to="/web-development" className="text-[#ccff00] hover:underline font-medium">Web Development</Link>, native <Link to="/mobile-app-development" className="text-[#ccff00] hover:underline font-medium">Mobile Apps</Link>, autonomous <Link to="/ai-agent-development" className="text-[#ccff00] hover:underline font-medium">AI Agents</Link>, and localized <Link to="/content-writing" className="text-[#ccff00] hover:underline font-medium">Content Writing</Link>.
                   </p>
-                  <p className="text-sm md:text-base font-light text-[#ccff00] leading-relaxed font-sans">
-                     We'll admit it — <strong>graphic design is our passion</strong>, in the least clichéd sense we can manage: the kind of passion that shows up as obsessive attention to spacing, color theory, and typographic hierarchy rather than just a slogan on a homepage.
+                  <p className="text-sm md:text-base font-light text-[#ccff00] leading-relaxed font-sans mb-4">
+                     We'll admit it — <strong>graphic design is our passion</strong>: the kind of passion that shows up as obsessive attention to spacing, color theory, and typographic hierarchy. Explore our design outcomes in <Link to="/case-studies" className="text-white hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-white hover:underline font-medium">Blog</Link>, read more <Link to="/about" className="text-white hover:underline font-medium">about us</Link>, or <Link to="/contact" className="text-white hover:underline font-medium">contact us</Link> today.
                   </p>
                 </div>
             </motion.div>
@@ -582,13 +591,29 @@ const GraphicsDesignPage = () => {
                      SEO and Graphic Design: <span className="italic text-neutral-400">An Underrated Connection</span>
                   </h2>
                   <p className="text-sm md:text-base font-light text-neutral-300 leading-relaxed font-sans mb-6">
-                     Most businesses don't think about <strong>SEO keywords for graphic design</strong>, but the discipline intersects with search visibility more than it seems. Descriptive, keyword-aware image alt text, properly compressed and named image files, and design that supports fast page load times all directly affect how well a page ranks.
+                     Most businesses don't think about <strong>SEO keywords for graphic design</strong>, but the discipline intersects with search visibility more than it seems. Pairing design with holistic <Link to="/seo-mastery" className="text-[#ccff00] hover:underline font-medium">SEO Mastery</Link> and localized <Link to="/local-seo-for-small-business" className="text-[#ccff00] hover:underline font-medium">Local SEO for Small Businesses</Link> ensures image alt text, compressed vector assets, and responsive typography boost search rankings.
                   </p>
-                  <div className="p-5 bg-white/[0.01] border border-white/5 rounded-2xl">
+                  <div className="p-5 bg-white/[0.01] border border-white/5 rounded-2xl mb-6">
                     <span className="text-[9px] font-mono uppercase tracking-widest text-[#ccff00] block mb-2">Meaning for search performance:</span>
                     <p className="text-xs text-neutral-400 font-light leading-relaxed font-sans">
                       A graphic designer who understands basic technical SEO produces measurably better results than one who treats visuals as separate from search performance entirely.
                     </p>
+                  </div>
+
+                  {/* Authoritative Design External Resources */}
+                  <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-3 text-xs font-mono text-zinc-400">
+                    <span className="text-zinc-500 uppercase tracking-widest font-bold">Authoritative Design Resources:</span>
+                    <a href="https://www.figma.com/best-practices/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                      Figma Design Systems <ExternalLink className="w-3 h-3" />
+                    </a>
+                    <span className="text-zinc-700">•</span>
+                    <a href="https://behance.net" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                      Behance Creative Showcase <ExternalLink className="w-3 h-3" />
+                    </a>
+                    <span className="text-zinc-700">•</span>
+                    <a href="https://www.awwwards.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                      Awwwards Web Design <ExternalLink className="w-3 h-3" />
+                    </a>
                   </div>
                 </div>
             </motion.div>
