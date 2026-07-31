@@ -36,7 +36,8 @@ import {
   Code2,
   Smartphone,
   Palette,
-  PenTool
+  PenTool,
+  ExternalLink
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -159,21 +160,21 @@ export default function AIAgentDevelopmentPage() {
   return (
     <div id="ai-agent-development-root" className="bg-[#000000] text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]/30 selection:text-white">
       <Helmet>
-        <title>AI Agent Development Company | Custom AI Automation Solutions | AbuQitmirLabs</title>
-        <meta name="description" content="At AbuQitmirLabs, we architect custom AI agent development solutions that transform operations, automate workflows, and enhance customer journeys globally." />
+        <title>AI Agent Development | Custom AI Automation Solutions | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs builds custom AI agents with RAG, voice recognition, and workflow automation. From customer support to logistics optimization — deploy autonomous AI that drives real ROI." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/ai-agent-development" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="AI Agent Development Company | Custom AI Automation Solutions | AbuQitmirLabs" />
-        <meta property="og:description" content="At AbuQitmirLabs, we architect custom AI agent development solutions that transform operations, automate workflows, and enhance customer journeys globally." />
+        <meta property="og:title" content="AI Agent Development | Custom AI Automation Solutions | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs builds custom AI agents with RAG, voice recognition, and workflow automation. From customer support to logistics optimization — deploy autonomous AI that drives real ROI." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/ai-agent-development" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI Agent Development Company | Custom AI Automation Solutions | AbuQitmirLabs" />
-        <meta name="twitter:description" content="At AbuQitmirLabs, we architect custom AI agent development solutions that transform operations, automate workflows, and enhance customer journeys globally." />
+        <meta name="twitter:title" content="AI Agent Development | Custom AI Automation Solutions | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs builds custom AI agents with RAG, voice recognition, and workflow automation. From customer support to logistics optimization — deploy autonomous AI that drives real ROI." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup with BreadcrumbList, Service, FAQPage, and HowTo */}
@@ -462,11 +463,31 @@ export default function AIAgentDevelopmentPage() {
           </h2>
           <div className="space-y-6 text-zinc-350 text-base md:text-lg font-light leading-relaxed font-sans text-justify">
             <p>
-              At AbuQitmirLabs, we architect <strong className="text-white font-bold">AI agent development solutions</strong> that transform your operations—automating complex workflows, enhancing customer engagement, and unlocking new revenue streams. As a leading <strong className="text-white font-bold">AI agent development company</strong>, we design and deploy custom AI agents that think, learn, and act on your behalf. Our AI automation solutions are tailored to your specific industry—whether you're in fintech, healthcare, retail, or logistics—ensuring seamless integration and measurable ROI.
+              At AbuQitmirLabs (explore our <Link to="/" className="text-blue-400 hover:underline font-medium">home page</Link> or learn more <Link to="/about" className="text-blue-400 hover:underline font-medium">about us</Link>), we architect <strong className="text-white font-bold">AI agent development solutions</strong> that transform your operations—automating complex workflows, enhancing customer engagement, and unlocking new revenue streams. As a leading <strong className="text-white font-bold">AI agent development company</strong>, we design and deploy custom AI agents that think, learn, and act on your behalf across global markets.
             </p>
             <p>
-              Our AI agents are not chatbots—they are autonomous systems capable of task execution, contextual understanding, continuous learning, and seamless integration with your existing CRM, ERP, and communication tools. Whether you need a customer support agent, an AI sales representative, or an intelligent data analyst, we build custom AI agents that deliver results. Aap hamare AI Agent systems ko apne <a href="/custom-software" className="text-blue-400 hover:underline">Custom Software</a> ya <a href="/web-development" className="text-blue-400 hover:underline">Web Development</a> products ke sath connect kar ke business operations ko complete automate kar sakte hain. Headquartered in Karachi, Pakistan, we serve a global clientele.
+              Our AI agents are autonomous systems capable of task execution, contextual understanding, continuous learning, and seamless integration with your CRM, ERP, and communication stacks. You can connect our AI Agent systems directly with your <Link to="/custom-software" className="text-blue-400 hover:underline font-medium">Custom Software</Link> engines, power front-ends with <Link to="/web-development" className="text-blue-400 hover:underline font-medium">Web Development</Link>, launch companion apps with <Link to="/mobile-app-development" className="text-blue-400 hover:underline font-medium">Mobile App Development</Link>, or maximize local search dominance using <Link to="/local-seo-for-small-business" className="text-blue-400 hover:underline font-medium font-medium">Local SEO</Link>, <Link to="/local-seo-citation-building" className="text-blue-400 hover:underline font-medium">Citation Building</Link>, <Link to="/white-label-local-seo" className="text-blue-400 hover:underline font-medium">White Label Local SEO</Link>, and <Link to="/local-seo-audit" className="text-blue-400 hover:underline font-medium">SEO Audits</Link>. Discover our real-world execution in our <Link to="/case-studies" className="text-blue-400 hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-blue-400 hover:underline font-medium">Blog</Link>, or <Link to="/contact" className="text-blue-400 hover:underline font-medium">contact us</Link> to start building.
             </p>
+          </div>
+
+          {/* Authoritative External AI Framework Links */}
+          <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-zinc-400">
+            <span className="text-zinc-500 uppercase tracking-widest font-bold">AI Ecosystems & Frameworks:</span>
+            <a href="https://www.langchain.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+              LangChain <ExternalLink className="w-3 h-3" />
+            </a>
+            <span className="text-zinc-700">•</span>
+            <a href="https://www.llamaindex.ai" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+              LlamaIndex <ExternalLink className="w-3 h-3" />
+            </a>
+            <span className="text-zinc-700">•</span>
+            <a href="https://openai.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+              OpenAI Platform <ExternalLink className="w-3 h-3" />
+            </a>
+            <span className="text-zinc-700">•</span>
+            <a href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+              Anthropic Claude <ExternalLink className="w-3 h-3" />
+            </a>
           </div>
         </div>
       </section>
