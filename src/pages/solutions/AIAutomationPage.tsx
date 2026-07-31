@@ -67,22 +67,36 @@ const AIAutomationPage = () => {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "AI-Powered Automation & RAG Development",
+    "name": "AI Automation Solutions | Custom AI Agents & RAG Systems | AbuQitmirLabs",
     "provider": {
       "@type": "Organization",
       "name": "AbuQitmirLabs .TECH",
       "url": "https://abuqitmirlabs.tech"
     },
-    "description": "Enterprise AI-powered automation solutions including custom AI agents, RAG enterprise search, LLM fine-tuning, and intelligent process automation.",
+    "description": "AbuQitmirLabs builds custom AI agents and RAG systems for workflow automation, NLP, and predictive analytics. Reduce manual work and improve decision-making with measurable ROI.",
     "serviceType": "AI Automation Engineering"
   };
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
-        <title>AI-Powered Automation — Custom AI Agents & RAG Systems | AbuQitmirLabs</title>
-        <meta name="description" content="Custom AI-powered automation solutions by AbuQitmirLabs. We engineer autonomous AI agents, Retrieval-Augmented Generation (RAG) platforms, and intelligent workflow automation." />
+        <title>AI Automation Solutions | Custom AI Agents & RAG Systems | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs builds custom AI agents and RAG systems for workflow automation, NLP, and predictive analytics. Reduce manual work and improve decision-making with measurable ROI." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/solutions/ai-automation" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="AI Automation Solutions | Custom AI Agents & RAG Systems | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs builds custom AI agents and RAG systems for workflow automation, NLP, and predictive analytics. Reduce manual work and improve decision-making with measurable ROI." />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/solutions/ai-automation" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AI Automation Solutions | Custom AI Agents & RAG Systems | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs builds custom AI agents and RAG systems for workflow automation, NLP, and predictive analytics. Reduce manual work and improve decision-making with measurable ROI." />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
       </Helmet>
