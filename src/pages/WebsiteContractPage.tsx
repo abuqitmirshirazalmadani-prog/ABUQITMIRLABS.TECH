@@ -6,8 +6,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FileText, ShieldCheck, HelpCircle, 
   ChevronRight, ArrowRight, Download, Check, 
-  X, AlertTriangle, Sparkles, Send, Phone, Lock, Eye
+  X, AlertTriangle, Sparkles, Send, Phone, Lock, Eye, ExternalLink
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { AnimatedDownload } from '../components/AnimatedDownload';
@@ -140,14 +141,38 @@ Do not sign a website contract without these protective legal terms.
   return (
     <div className="bg-[#050505] text-zinc-400 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]/10 selection:text-white">
       <Helmet>
-        <title>Free Ownership-Protected Website Contract Template | AbuQitmirLabs</title>
-        <meta name="description" content="Download the free ownership-protected web contract template to secure your domain, code ownership, and post-launch support before signing package budgets." />
+        <title>Free Website Contract Template | Ownership Protection | AbuQitmirLabs</title>
+        <meta name="description" content="Download a free, ownership-protected website contract template. Includes domain ownership, support SLAs, tech stack disclosure, and exit terms. No strings attached." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/website-contract" />
         
         {/* OG Tags */}
-        <meta property="og:title" content="Free Ownership-Protected Website Contract Template" />
-        <meta property="og:description" content="Secure your code ownership and domain control. Use the exact contract template AbuQitmirLabs relies on." />
+        <meta property="og:title" content="Free Website Contract Template | Ownership Protection | AbuQitmirLabs" />
+        <meta property="og:description" content="Download a free, ownership-protected website contract template. Includes domain ownership, support SLAs, tech stack disclosure, and exit terms. No strings attached." />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/website-contract" />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
+        {/* Twitter Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Free Website Contract Template | Ownership Protection | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Download a free, ownership-protected website contract template. Includes domain ownership, support SLAs, tech stack disclosure, and exit terms. No strings attached." />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
+        {/* JSON-LD Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "DigitalDocument",
+            "name": "Free Ownership-Protected Website Contract Template",
+            "description": "A comprehensive, client-first website development contract template guaranteeing 100% intellectual property transfer, hosting root control, clear SLAs, and exit terms.",
+            "url": "https://www.abuqitmirlabs.tech/website-contract",
+            "publisher": {
+              "@type": "Organization",
+              "name": "AbuQitmirLabs .TECH",
+              "url": "https://www.abuqitmirlabs.tech"
+            }
+          })}
+        </script>
       </Helmet>
 
       {/* Navigation Header */}
@@ -531,7 +556,7 @@ Do not sign a website contract without these protective legal terms.
           <div className="relative rounded-3xl overflow-hidden p-8 sm:p-16 border border-white/5 bg-gradient-to-br from-[#0c0c0c] to-[#050505]">
             <div className="absolute top-0 right-0 w-80 h-80 bg-[#ccff00]/5 rounded-full blur-3xl pointer-events-none" />
             
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
               <div className="lg:col-span-8 space-y-6">
                 <span className="text-[#ccff00]/60 text-xs font-mono uppercase tracking-[0.2em] font-bold block">// STUDIO CORE INTENT</span>
                 <h3 className="text-3xl sm:text-5xl font-extrabold text-white leading-tight tracking-tight">
@@ -552,6 +577,63 @@ Do not sign a website contract without these protective legal terms.
                   Contact Senior Partner
                   <Send className="w-4 h-4 text-[#ccff00]" />
                 </a>
+              </div>
+            </div>
+
+            {/* Contextual Internal Links Grid */}
+            <div className="border-t border-white/10 pt-8 mt-8">
+              <h4 className="text-xs font-mono text-gray-400 uppercase tracking-widest font-bold mb-4">Explore Our Full-Stack Engineering Services:</h4>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
+                <Link to="/custom-software" className="p-3 bg-white/5 hover:bg-white/10 rounded-lg text-gray-300 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Custom Software</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/web-development" className="p-3 bg-white/5 hover:bg-white/10 rounded-lg text-gray-300 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Web Development</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/mobile-app-development" className="p-3 bg-white/5 hover:bg-white/10 rounded-lg text-gray-300 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Mobile Apps</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/ai-agent-development" className="p-3 bg-white/5 hover:bg-white/10 rounded-lg text-gray-300 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>AI Agent Systems</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/seo-mastery" className="p-3 bg-white/5 hover:bg-white/10 rounded-lg text-gray-300 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>SEO Mastery</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/case-studies" className="p-3 bg-white/5 hover:bg-white/10 rounded-lg text-gray-300 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Case Studies</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/blog" className="p-3 bg-white/5 hover:bg-white/10 rounded-lg text-gray-300 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Tech Journal</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/contact" className="p-3 bg-white/5 hover:bg-white/10 rounded-lg text-gray-300 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Book Audit</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+              </div>
+
+              {/* External Authoritative Legal & Standards Links */}
+              <div className="mt-8 pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-zinc-500">
+                <span className="uppercase tracking-widest text-[11px] font-bold text-zinc-400">Industry Legal & Licensing References:</span>
+                <div className="flex flex-wrap items-center gap-4">
+                  <a href="https://creativecommons.org/licenses/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors inline-flex items-center gap-1">
+                    Creative Commons Licenses <ExternalLink className="w-3 h-3" />
+                  </a>
+                  <span>•</span>
+                  <a href="https://www.w3.org/Consortium/Legal/2002/copyright-software-20021231" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors inline-flex items-center gap-1">
+                    W3C Software Notice <ExternalLink className="w-3 h-3" />
+                  </a>
+                  <span>•</span>
+                  <a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors inline-flex items-center gap-1">
+                    Google Technical Guidelines <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

@@ -70,6 +70,7 @@ export default defineConfig(({mode}) => {
           '/privacy',
           '/terms',
           '/blog',
+          '/website-contract',
           '/contact'
         ],
         renderer: new prerender.PuppeteerRenderer({
@@ -110,6 +111,7 @@ export default defineConfig(({mode}) => {
             { url: '/poland-market',           changefreq: 'monthly', priority: 0.7, title: 'AI Software Solutions for Poland', description: 'Custom AI and mobile app development services tailored for the Polish market.' },
             { url: '/australia-market',        changefreq: 'monthly', priority: 0.7, title: 'AI Software Solutions for Australia', description: 'Custom AI and mobile app development services tailored for the Australian market.' },
             { url: '/blog',                    changefreq: 'daily',   priority: 0.8, title: 'Tech Blog & AI Insights | AbuQitmirLabs', description: 'AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies.' },
+            { url: '/website-contract',        changefreq: 'weekly',  priority: 0.8, title: 'Free Website Contract Template | Ownership Protection | AbuQitmirLabs', description: 'Download a free, ownership-protected website contract template. Includes domain ownership, support SLAs, tech stack disclosure, and exit terms. No strings attached.' },
             { url: '/terms',                   changefreq: 'yearly',  priority: 0.3, title: 'Terms of Service', description: 'Legal terms and conditions for using AbuQitmirLabs services.' },
             { url: '/privacy',                 changefreq: 'yearly',  priority: 0.3, title: 'Privacy Policy', description: 'Our commitment to protecting your data and privacy.' },
           ];
