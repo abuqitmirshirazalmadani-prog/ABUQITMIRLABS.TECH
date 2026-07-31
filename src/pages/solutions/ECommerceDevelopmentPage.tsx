@@ -66,22 +66,36 @@ const ECommerceDevelopmentPage = () => {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Custom E-Commerce & Headless Store Development",
+    "name": "E-Commerce Development | Custom Online Stores & Headless Commerce | AbuQitmirLabs",
     "provider": {
       "@type": "Organization",
       "name": "AbuQitmirLabs .TECH",
       "url": "https://abuqitmirlabs.tech"
     },
-    "description": "High-performance custom e-commerce platform development, headless commerce architectures, multi-vendor marketplaces, and mobile shopping apps.",
+    "description": "AbuQitmirLabs builds custom e-commerce stores, headless commerce platforms, multi-vendor marketplaces, and subscription systems. Fast, scalable, and conversion-optimized.",
     "serviceType": "E-Commerce Software Engineering"
   };
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
-        <title>E-Commerce Development — Custom Online Stores & Headless Commerce | AbuQitmirLabs</title>
-        <meta name="description" content="Custom e-commerce development services by AbuQitmirLabs. We build high-conversion online stores, headless commerce platforms, multi-vendor marketplaces, and mobile shopping apps." />
+        <title>E-Commerce Development | Custom Online Stores & Headless Commerce | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs builds custom e-commerce stores, headless commerce platforms, multi-vendor marketplaces, and subscription systems. Fast, scalable, and conversion-optimized." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/solutions/e-commerce" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="E-Commerce Development | Custom Online Stores & Headless Commerce | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs builds custom e-commerce stores, headless commerce platforms, multi-vendor marketplaces, and subscription systems. Fast, scalable, and conversion-optimized." />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/solutions/e-commerce" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="E-Commerce Development | Custom Online Stores & Headless Commerce | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs builds custom e-commerce stores, headless commerce platforms, multi-vendor marketplaces, and subscription systems. Fast, scalable, and conversion-optimized." />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
       </Helmet>
