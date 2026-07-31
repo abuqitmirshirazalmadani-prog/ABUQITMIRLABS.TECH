@@ -66,22 +66,36 @@ const EdTechPlatformsPage = () => {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Custom EdTech & LMS Software Development",
+    "name": "EdTech Development | Custom LMS & Virtual Classrooms | AbuQitmirLabs",
     "provider": {
       "@type": "Organization",
       "name": "AbuQitmirLabs .TECH",
       "url": "https://abuqitmirlabs.tech"
     },
-    "description": "Custom educational technology development including Learning Management Systems (LMS), AI tutoring engines, virtual classrooms, and certification portals.",
+    "description": "AbuQitmirLabs builds custom EdTech platforms — LMS, AI tutoring engines, WebRTC virtual classrooms, and certification portals. Scalable, gamified, and WCAG-compliant.",
     "serviceType": "EdTech Software Engineering"
   };
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
-        <title>EdTech Development — Custom Learning Platforms & LMS | AbuQitmirLabs</title>
-        <meta name="description" content="Custom EdTech development services by AbuQitmirLabs. We build custom Learning Management Systems (LMS), AI tutoring engines, virtual classrooms, and course portals." />
+        <title>EdTech Development | Custom LMS & Virtual Classrooms | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs builds custom EdTech platforms — LMS, AI tutoring engines, WebRTC virtual classrooms, and certification portals. Scalable, gamified, and WCAG-compliant." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/solutions/edtech" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="EdTech Development | Custom LMS & Virtual Classrooms | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs builds custom EdTech platforms — LMS, AI tutoring engines, WebRTC virtual classrooms, and certification portals. Scalable, gamified, and WCAG-compliant." />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/solutions/edtech" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="EdTech Development | Custom LMS & Virtual Classrooms | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs builds custom EdTech platforms — LMS, AI tutoring engines, WebRTC virtual classrooms, and certification portals. Scalable, gamified, and WCAG-compliant." />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
       </Helmet>
