@@ -125,7 +125,7 @@ export default defineConfig(({mode}) => {
             { url: '/news/all',                changefreq: 'weekly',  priority: 0.8, title: 'All News & Media Archive | AbuQitmirLabs', description: 'All news and media archive from AbuQitmirLabs — company announcements, press releases, product launches, and technical engineering insights. Browse our complete catalog.' },
             { url: '/website-contract',        changefreq: 'weekly',  priority: 0.8, title: 'Free Website Contract Template | Ownership Protection | AbuQitmirLabs', description: 'Download a free, ownership-protected website contract template. Includes domain ownership, support SLAs, tech stack disclosure, and exit terms. No strings attached.' },
             { url: '/terms',                   changefreq: 'yearly',  priority: 0.3, title: 'Terms of Service', description: 'Legal terms and conditions for using AbuQitmirLabs services.' },
-            { url: '/privacy',                 changefreq: 'yearly',  priority: 0.3, title: 'Privacy Policy', description: 'Our commitment to protecting your data and privacy.' },
+            { url: '/privacy',                 changefreq: 'yearly',  priority: 0.3, title: 'Privacy Policy | Data Protection & Compliance | AbuQitmirLabs', description: 'AbuQitmirLabs privacy policy: how we collect, use, and protect your data. Learn about our security measures, cookie use, and GDPR/APP compliance.' },
           ];
 
           const fs = await import('fs');
