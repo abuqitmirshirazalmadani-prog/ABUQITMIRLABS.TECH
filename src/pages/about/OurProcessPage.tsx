@@ -15,7 +15,8 @@ import {
   ChevronRight, 
   Cpu,
   RefreshCw,
-  Workflow
+  Workflow,
+  ExternalLink
 } from 'lucide-react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -117,9 +118,23 @@ const OurProcessPage = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
-        <title>Our Process — Agile Software Engineering & Delivery | AbuQitmirLabs</title>
-        <meta name="description" content="Discover our 6-step agile software engineering process at AbuQitmirLabs .TECH. From technical discovery to architecture, 1-week sprints, QA testing, and launch." />
+        <title>Our Process | 6-Step Software Engineering Method | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs' 6-step engineering process: Discovery, Architecture, Development, QA, Zero-Downtime Launch, and Support. Structured discipline delivering 3x faster ROI." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/about/our-process" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Our Process | 6-Step Software Engineering Method | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs' 6-step engineering process: Discovery, Architecture, Development, QA, Zero-Downtime Launch, and Support. Structured discipline delivering 3x faster ROI." />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/about/our-process" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Our Process | 6-Step Software Engineering Method | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs' 6-step engineering process: Discovery, Architecture, Development, QA, Zero-Downtime Launch, and Support. Structured discipline delivering 3x faster ROI." />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(processSchema)}</script>
       </Helmet>
@@ -291,6 +306,85 @@ const OurProcessPage = () => {
                   </AnimatePresence>
                 </div>
               ))}
+            </div>
+
+            {/* Related Services & Process Hub Internal Links */}
+            <div className="mt-20 pt-12 border-t border-white/10 space-y-8 text-left">
+              <div>
+                <h4 className="text-xs font-mono text-[#ccff00] uppercase tracking-[0.3em] font-bold mb-4">// EXPLORE STUDIO SERVICES & COMPANY HUB</h4>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
+                  <Link to="/about/our-company" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Our Company</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/about/our-team" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Our Team</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/custom-software" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Custom Software</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/web-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Web Development</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/mobile-app-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Mobile Apps</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/ai-agent-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>AI Agent Systems</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/seo-mastery" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>SEO Mastery</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/case-studies" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Case Studies</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/blog" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Tech Journal</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/about/careers" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Careers & Roles</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/website-contract" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Contract Template</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/contact" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Initiate Review</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* External Quality & Engineering Standard Links */}
+              <div className="pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-gray-400">
+                <span className="uppercase tracking-widest text-[11px] font-bold text-zinc-400">Engineering Standards & QA References:</span>
+                <div className="flex flex-wrap items-center gap-4">
+                  <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
+                    W3C WCAG Standards <ExternalLink className="w-3 h-3" />
+                  </a>
+                  <span>•</span>
+                  <a href="https://web.dev/vitals/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
+                    Google Core Web Vitals <ExternalLink className="w-3 h-3" />
+                  </a>
+                  <span>•</span>
+                  <a href="https://www.cypress.io/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
+                    Cypress E2E Testing <ExternalLink className="w-3 h-3" />
+                  </a>
+                  <span>•</span>
+                  <a href="https://nodejs.org/en/docs/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
+                    Node.js Documentation <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </section>
