@@ -15,7 +15,9 @@ import {
   Layout,
   MessageSquare,
   Globe2,
-  Lock
+  Lock,
+  ChevronRight,
+  ExternalLink
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -63,16 +65,22 @@ const PolandMarketPage = () => {
   return (
     <div className="bg-[#090909] text-[#d3c8b8] min-h-screen font-sans selection:bg-[#ff5b36] selection:text-white">
       <Helmet>
-        <title>Software Engineering for Polish Tech Hub | EU GDPR | AbuQitmirLabs</title>
-        <meta name="description" content="Bridging the gap between Polish tech excellence and global standards. Specialized software engineering and EU-targeted growth strategies for the Polish market." />
-        <meta property="og:title" content="Software Engineering for Polish Tech Hub | AbuQitmirLabs" />
-        <meta property="og:description" content="Polish tech excellence meets global standards. Specialized software engineering and EU-targeted growth strategies." />
+        <title>Software Development for Poland | GDPR & EU Expansion | AbuQitmirLabs</title>
+        <meta name="description" content="Poland-focused software development — GDPR-compliant apps, AI agents, SaaS, and local SEO for Krakow/Warsaw. Built for Polish startups and EU expansion, with CET overlap." />
+        <link rel="canonical" href="https://www.abuqitmirlabs.tech/poland-market" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Software Development for Poland | GDPR & EU Expansion | AbuQitmirLabs" />
+        <meta property="og:description" content="Poland-focused software development — GDPR-compliant apps, AI agents, SaaS, and local SEO for Krakow/Warsaw. Built for Polish startups and EU expansion, with CET overlap." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/poland-market" />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Software Development Services Poland | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Polish tech excellence meets global standards by AbuQitmirLabs. Specialized software engineering and EU-targeted SEO." />
-        <link rel="canonical" href="https://www.abuqitmirlabs.tech/poland-market" />
+        <meta name="twitter:title" content="Software Development for Poland | GDPR & EU Expansion | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Poland-focused software development — GDPR-compliant apps, AI agents, SaaS, and local SEO for Krakow/Warsaw. Built for Polish startups and EU expansion, with CET overlap." />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
         <script 
@@ -581,6 +589,65 @@ const PolandMarketPage = () => {
                 </AnimatePresence>
               </div>
             ))}
+          </div>
+
+          {/* Related Polish Digital Engineering Capabilities & Case Studies */}
+          <div className="mt-20 pt-12 border-t border-white/5 space-y-8 text-left">
+            <div>
+              <h4 className="text-xs font-mono text-[#ff5b36] uppercase tracking-[0.3em] font-bold mb-4">// POLAND DIGITAL SERVICES & CASE STUDIES</h4>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
+                <Link to="/custom-software" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Custom Software</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/web-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Web Development</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/mobile-app-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Mobile Apps</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/ai-agent-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>AI Agent Systems</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/seo-mastery" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>SEO Mastery</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/local-seo-for-small-business" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>EU Local SEO</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/case-studies" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Case Studies</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/contact" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Book CET Audit</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+              </div>
+            </div>
+
+            {/* External Regulatory & Tech Standards Links */}
+            <div className="pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#7d766c]">
+              <span className="uppercase tracking-widest text-[11px] font-bold text-zinc-400">EU & Polish Industry References:</span>
+              <div className="flex flex-wrap items-center gap-4">
+                <a href="https://edpb.europa.eu/edpb_en" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff5b36] transition-colors inline-flex items-center gap-1">
+                  European Data Protection Board (EDPB) <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://uodo.gov.pl/en" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff5b36] transition-colors inline-flex items-center gap-1">
+                  UODO Polish Personal Data Protection <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff5b36] transition-colors inline-flex items-center gap-1">
+                  Google SEO Guide <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
