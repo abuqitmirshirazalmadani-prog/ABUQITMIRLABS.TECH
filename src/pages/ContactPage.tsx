@@ -25,7 +25,8 @@ import {
   Pin,
   HelpCircle,
   Briefcase,
-  Award
+  Award,
+  ChevronRight
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -83,21 +84,21 @@ const ContactPage = () => {
   return (
     <div className="bg-black text-[#E8E8ED] font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#00E5FF]/20 selection:text-white">
       <Helmet>
-        <title>Contact App Developer | Get Free Project Quote</title>
-        <meta name="description" content="Connect with the lead architects at AbuQitmirLabs. Hire us for custom software development, AI agent automation, and world-class digital engineering projects. Secure communication relay active." />
+        <title>Contact Us | Free Project Quote & Consultation | AbuQitmirLabs</title>
+        <meta name="description" content="Contact AbuQitmirLabs for a free project quote. Get a free technical consultation and digital audit. Build custom software, mobile apps, AI agents, and web solutions." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/contact" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Contact App Developer | Get Free Project Quote" />
-        <meta property="og:description" content="Connect with the lead architects at AbuQitmirLabs for custom software development and AI automation." />
+        <meta property="og:title" content="Contact Us | Free Project Quote & Consultation | AbuQitmirLabs" />
+        <meta property="og:description" content="Contact AbuQitmirLabs for a free project quote. Get a free technical consultation and digital audit. Build custom software, mobile apps, AI agents, and web solutions." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/contact" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact App Developer | Get Free Project Quote" />
-        <meta name="twitter:description" content="Connect with the lead architects at AbuQitmirLabs for custom software development and AI automation." />
+        <meta name="twitter:title" content="Contact Us | Free Project Quote & Consultation | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Contact AbuQitmirLabs for a free project quote. Get a free technical consultation and digital audit. Build custom software, mobile apps, AI agents, and web solutions." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
@@ -382,7 +383,86 @@ const ContactPage = () => {
                         ))}
                      </div>
                   </div>
-               </motion.div>
+
+                   {/* Related Studio Services & Navigation Hub */}
+                   <div className="pt-10 border-t border-white/5 space-y-8 text-left">
+                      <div>
+                         <p className="font-mono text-xs text-[#00E5FF] mb-4 tracking-[0.4em] uppercase">// EXPLORE STUDIO CAPABILITIES & HUB</p>
+                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
+                            <Link to="/" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                               <span>Studio Home</span>
+                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                            </Link>
+                            <Link to="/about/our-company" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                               <span>Our Company</span>
+                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                            </Link>
+                            <Link to="/about/our-team" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                               <span>Our Team</span>
+                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                            </Link>
+                            <Link to="/about/our-process" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                               <span>Engineering Process</span>
+                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                            </Link>
+                            <Link to="/about/careers" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                               <span>Careers & Roles</span>
+                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                            </Link>
+                            <Link to="/custom-software" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                               <span>Custom Software</span>
+                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                            </Link>
+                            <Link to="/web-development" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                               <span>Web Development</span>
+                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                            </Link>
+                            <Link to="/mobile-app-development" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                               <span>Mobile Apps</span>
+                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                            </Link>
+                            <Link to="/ai-agent-development" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                               <span>AI Agent Systems</span>
+                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                            </Link>
+                            <Link to="/seo-mastery" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                               <span>SEO Mastery</span>
+                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                            </Link>
+                            <Link to="/case-studies" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                               <span>Case Studies</span>
+                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                            </Link>
+                            <Link to="/blog" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                               <span>Tech Journal</span>
+                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                            </Link>
+                         </div>
+                      </div>
+
+                      {/* External Tech & Verification References */}
+                      <div className="pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-zinc-500">
+                         <span className="uppercase tracking-widest text-[11px] font-bold text-zinc-400">External Technical & Studio References:</span>
+                         <div className="flex flex-wrap items-center gap-4">
+                            <a href="https://clutch.co/profile/abuqitmirlabstech" target="_blank" rel="noopener noreferrer" className="hover:text-[#00E5FF] transition-colors inline-flex items-center gap-1">
+                               Clutch Directory <ExternalLink className="w-3 h-3" />
+                            </a>
+                            <span>•</span>
+                            <a href="https://www.goodfirms.co/company/abuqitmirlabs-tech" target="_blank" rel="noopener noreferrer" className="hover:text-[#00E5FF] transition-colors inline-flex items-center gap-1">
+                               GoodFirms Profile <ExternalLink className="w-3 h-3" />
+                            </a>
+                            <span>•</span>
+                            <a href="https://react.dev/" target="_blank" rel="noopener noreferrer" className="hover:text-[#00E5FF] transition-colors inline-flex items-center gap-1">
+                               React Framework <ExternalLink className="w-3 h-3" />
+                            </a>
+                            <span>•</span>
+                            <a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[#00E5FF] transition-colors inline-flex items-center gap-1">
+                               Tailwind CSS <ExternalLink className="w-3 h-3" />
+                            </a>
+                         </div>
+                      </div>
+                   </div>
+                </motion.div>
 
 
                {/* Back to Top / Interactive Element */}
