@@ -20,7 +20,9 @@ import {
   CheckCircle2,
   Lock,
   MessagesSquare,
-  Globe2
+  Globe2,
+  ChevronRight,
+  ExternalLink
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -69,20 +71,21 @@ const PakistanMarketPage = () => {
   return (
     <div className="bg-[#090909] text-[#d3c8b8] min-h-screen font-sans selection:bg-[#ff5b36] selection:text-white overflow-x-hidden">
       <Helmet>
-        <title>Custom Software & Local SEO in Pakistan | AbuQitmirLabs</title>
-        <meta name="description" content="Driving digital innovation in Pakistan. AbuQitmirLabs provides top-tier custom software engineering, AI agent implementation, and hyper-local SEO for Karachi, Lahore, and Islamabad." />
+        <title>Digital Transformation for Pakistan | Local SEO & Custom Software | AbuQitmirLabs</title>
+        <meta name="description" content="Karachi-based digital transformation for Pakistani businesses — local SEO, custom software, mobile apps, and Roman Urdu AI agents. PKR pricing, in-person meetings, same time zone." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/pakistan-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Custom Software & Local SEO in Pakistan | AbuQitmirLabs" />
-        <meta property="og:description" content="Expert custom software engineering and hyper-local SEO optimization for the Pakistani market." />
+        <meta property="og:title" content="Digital Transformation for Pakistan | Local SEO & Custom Software | AbuQitmirLabs" />
+        <meta property="og:description" content="Karachi-based digital transformation for Pakistani businesses — local SEO, custom software, mobile apps, and Roman Urdu AI agents. PKR pricing, in-person meetings, same time zone." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/pakistan-market" />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Mobile App Development Company in Pakistan | Best" />
-        <meta name="twitter:description" content="Driving digital innovation in Pakistan. AbuQitmirLabs provides top-tier custom software, AI agent integration, and hyper-local SEO." />
+        <meta name="twitter:title" content="Digital Transformation for Pakistan | Local SEO & Custom Software | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Karachi-based digital transformation for Pakistani businesses — local SEO, custom software, mobile apps, and Roman Urdu AI agents. PKR pricing, in-person meetings, same time zone." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
@@ -112,7 +115,7 @@ const PakistanMarketPage = () => {
                 "@context": "https://schema.org",
                 "@type": "Service",
                 "name": "Digital Transformation in Pakistan",
-                "description": "Hyper-local SEO and custom software engineering for Karachi, Lahore, and Islamabad.",
+                "description": "Karachi-based digital transformation for Pakistani businesses — local SEO, custom software, mobile apps, and Roman Urdu AI agents.",
                 "provider": {
                   "@type": "Organization",
                   "name": "AbuQitmirLabs",
@@ -558,6 +561,65 @@ const PakistanMarketPage = () => {
                 </AnimatePresence>
               </div>
             ))}
+          </div>
+
+          {/* Related Pakistan Market Capabilities & Case Studies */}
+          <div className="mt-20 pt-12 border-t border-white/5 space-y-8 text-left">
+            <div>
+              <h4 className="text-xs font-mono text-[#ff5b36] uppercase tracking-[0.3em] font-bold mb-4">// PAKISTAN DIGITAL SERVICES & CASE STUDIES</h4>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
+                <Link to="/custom-software" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Custom Software</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/web-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Web Development</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/mobile-app-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Mobile Apps</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/ai-agent-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Roman Urdu AI Agents</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/seo-mastery" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>SEO Mastery</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/local-seo-for-small-business" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Pakistani Local SEO</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/case-studies" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Case Studies</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/contact" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Book Local Audit</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+              </div>
+            </div>
+
+            {/* External Regulatory & Tech Standards Links */}
+            <div className="pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#7d766c]">
+              <span className="uppercase tracking-widest text-[11px] font-bold text-zinc-400">Pakistan Regulatory & Tech Standards:</span>
+              <div className="flex flex-wrap items-center gap-4">
+                <a href="https://www.pta.gov.pk/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff5b36] transition-colors inline-flex items-center gap-1">
+                  Pakistan Telecom Authority (PTA) <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://www.secp.gov.pk/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff5b36] transition-colors inline-flex items-center gap-1">
+                  SECP Corporate Compliance <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff5b36] transition-colors inline-flex items-center gap-1">
+                  Google SEO Guide <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
