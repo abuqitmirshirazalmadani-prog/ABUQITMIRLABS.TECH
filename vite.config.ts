@@ -61,6 +61,7 @@ export default defineConfig(({mode}) => {
           '/case-studies',
           '/case-studies/tajweedpage',
           '/about',
+          '/about/our-company',
           '/us-market',
           '/uk-market',
           '/pakistan-market',
@@ -85,6 +86,7 @@ export default defineConfig(({mode}) => {
           const baseRoutes = [
             { url: '/',                        changefreq: 'weekly',  priority: 1.0, title: 'Custom Software & AI App Development | AbuQitmirLabs', description: "AbuQitmirLabs .TECH is an elite software studio. We build bespoke SaaS, enterprise systems, and custom AI models. Let's build your solution." },
             { url: '/about',                   changefreq: 'monthly', priority: 0.8, title: 'About Us | AbuQitmirLabs', description: 'Learn about our mission to build cutting-edge AI and mobile solutions.' },
+            { url: '/about/our-company',       changefreq: 'monthly', priority: 0.8, title: 'About Our Company | Global Software Studio | AbuQitmirLabs', description: 'AbuQitmirLabs is a Karachi-based software boutique. 410+ custom projects for 350+ global clients. Zero lock-in, 100% in-house talent. Learn about our mission and values.' },
             { url: '/contact',                 changefreq: 'monthly', priority: 0.9, title: 'Contact Us | Start Your Project', description: 'Contact AbuQitmirLabs for your next mobile app or AI software project.' },
             { url: '/custom-software',         changefreq: 'weekly',  priority: 0.9, title: 'Custom Software Development Services | Abu Qitmir Labs', description: "AbuQitmirLabs builds custom software, ERP systems, and AI-powered solutions tailored to your workflows. We deliver working features every 2 weeks. Let's build your system." },
             { url: '/mobile-app-development',  changefreq: 'weekly',  priority: 0.9, title: 'Mobile App Development | Flutter & Native iOS/Android | AbuQitmirLabs', description: 'AbuQitmirLabs builds high-performance mobile apps using Flutter, React Native, and iOS/Android. We handle design, development, and App Store submission.' },
