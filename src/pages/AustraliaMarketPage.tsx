@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   ArrowUpRight, 
@@ -12,7 +13,9 @@ import {
   ShieldCheck,
   BarChart3,
   MapPin,
-  Anchor
+  Anchor,
+  ChevronRight,
+  ExternalLink
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -56,21 +59,21 @@ const AustraliaMarketPage = () => {
   return (
     <div className="bg-[#0b0c10] text-[#c5c6c7] min-h-screen font-sans selection:bg-[#66fcf1] selection:text-black">
       <Helmet>
-        <title>Tech Solutions for Australian Growth | APP Compliant | AbuQitmirLabs</title>
-        <meta name="description" content="Future-proofing Australian businesses with elite software engineering. APP-compliant tech, localized AU SEO, and AI solutions for Sydney, Melbourne, and Brisbane." />
+        <title>Software Development for Australia | APP Compliant | AbuQitmirLabs</title>
+        <meta name="description" content="Australia-focused software development — APP-compliant apps, high-speed web, mobile apps, and AI agents. Built for Australian businesses with AEST-aligned delivery. Start your audit today." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/australia-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Tech Solutions for Australian Growth | AbuQitmirLabs" />
-        <meta property="og:description" content="Future-proofing Australian businesses with elite software engineering. APP-compliant tech and localized AU SEO." />
+        <meta property="og:title" content="Software Development for Australia | APP Compliant | AbuQitmirLabs" />
+        <meta property="og:description" content="Australia-focused software development — APP-compliant apps, high-speed web, mobile apps, and AI agents. Built for Australian businesses with AEST-aligned delivery. Start your audit today." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/australia-market" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Tech Solutions Australia | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Future-proofing Australian businesses with elite software engineering. AbuQitmirLabs provides APP-compliant tech and localized SEO." />
+        <meta name="twitter:title" content="Software Development for Australia | APP Compliant | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Australia-focused software development — APP-compliant apps, high-speed web, mobile apps, and AI agents. Built for Australian businesses with AEST-aligned delivery. Start your audit today." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
@@ -561,6 +564,65 @@ const AustraliaMarketPage = () => {
                 </AnimatePresence>
               </div>
             ))}
+          </div>
+
+          {/* Related Australian Services & Internal Links */}
+          <div className="mt-20 pt-12 border-t border-white/5 space-y-8 text-left">
+            <div>
+              <h4 className="text-xs font-mono text-[#66fcf1] uppercase tracking-[0.3em] font-bold mb-4">// AUSTRALIAN DIGITAL SERVICES & CASE STUDIES</h4>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
+                <Link to="/custom-software" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#66fcf1] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Custom Software</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#66fcf1]" />
+                </Link>
+                <Link to="/web-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#66fcf1] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Web Development</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#66fcf1]" />
+                </Link>
+                <Link to="/mobile-app-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#66fcf1] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Mobile Apps</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#66fcf1]" />
+                </Link>
+                <Link to="/ai-agent-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#66fcf1] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>AI Agent Systems</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#66fcf1]" />
+                </Link>
+                <Link to="/seo-mastery" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#66fcf1] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>SEO Mastery</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#66fcf1]" />
+                </Link>
+                <Link to="/local-seo-for-small-business" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#66fcf1] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>AU Local SEO</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#66fcf1]" />
+                </Link>
+                <Link to="/case-studies" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#66fcf1] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Case Studies</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#66fcf1]" />
+                </Link>
+                <Link to="/contact" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#66fcf1] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Book AEST Audit</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#66fcf1]" />
+                </Link>
+              </div>
+            </div>
+
+            {/* External Regulatory & Tech Standards Links */}
+            <div className="pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#7d766c]">
+              <span className="uppercase tracking-widest text-[11px] font-bold text-zinc-400">Australian Regulatory & Tech References:</span>
+              <div className="flex flex-wrap items-center gap-4">
+                <a href="https://www.oaic.gov.au/privacy/australian-privacy-principles" target="_blank" rel="noopener noreferrer" className="hover:text-[#66fcf1] transition-colors inline-flex items-center gap-1">
+                  OAIC Australian Privacy Principles (APPs) <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://techcouncil.com.au/" target="_blank" rel="noopener noreferrer" className="hover:text-[#66fcf1] transition-colors inline-flex items-center gap-1">
+                  Tech Council of Australia <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" target="_blank" rel="noopener noreferrer" className="hover:text-[#66fcf1] transition-colors inline-flex items-center gap-1">
+                  Google SEO Guide <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
