@@ -844,7 +844,7 @@ const ContentWritingPage = () => {
             <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-3 text-xs font-mono text-zinc-400">
               <span className="text-zinc-500 uppercase tracking-widest font-bold">Authoritative Content Standards:</span>
               <a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
-                Google Helpful Content Guidelines <ExternalLink className="w-3 h-3" />
+                Google Search Central <ExternalLink className="w-3 h-3" />
               </a>
               <span className="text-zinc-700">•</span>
               <a href="https://blog.hubspot.com/marketing/content-marketing" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
@@ -853,6 +853,14 @@ const ContentWritingPage = () => {
               <span className="text-zinc-700">•</span>
               <a href="https://www.searchenginejournal.com/category/content-marketing/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
                 Search Engine Journal <ExternalLink className="w-3 h-3" />
+              </a>
+              <span className="text-zinc-700">•</span>
+              <a href="https://www.grammarly.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                Grammarly Editorial <ExternalLink className="w-3 h-3" />
+              </a>
+              <span className="text-zinc-700">•</span>
+              <a href="https://ahrefs.com/blog/content-marketing-strategy/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
+                Ahrefs Strategy <ExternalLink className="w-3 h-3" />
               </a>
             </div>
           </div>
@@ -1417,11 +1425,11 @@ const ContentWritingPage = () => {
        {/* Related Services / Internal Siloing */}
        <section className="py-24 bg-black border-t border-white/10 relative z-10 px-6">
          <div className="max-w-7xl mx-auto">
-           <h3 className="text-xs font-mono text-slate-500 mb-4 uppercase tracking-[0.4em] font-bold block">[ RELATED_SYSTEMS ]</h3>
+           <h3 className="text-xs font-mono text-slate-500 mb-4 uppercase tracking-[0.4em] font-bold block">[ RELATED_SYSTEMS &amp; INTERNAL NAVIGATION ]</h3>
            <p className="text-zinc-400 text-sm font-light mb-12 max-w-2xl leading-relaxed">
-             Explore our related services: <Link to="/custom-software" className="text-[#ccff00] hover:underline font-medium">Custom Software Development</Link> · <Link to="/seo-mastery" className="text-[#ccff00] hover:underline font-medium">SEO Mastery</Link> · <Link to="/web-development" className="text-[#ccff00] hover:underline font-medium">Web Development</Link>.
+             Explore our core engineering verticals, localized search solutions, and industry blueprints:
            </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {[
               { title: "Custom Software", path: "/custom-software", icon: <Code2 className="w-5 h-5" /> },
               { title: "Web Development", path: "/web-development", icon: <Globe className="w-5 h-5" /> },
@@ -1444,6 +1452,40 @@ const ContentWritingPage = () => {
                 <ArrowUpRight className="text-slate-500 group-hover:text-[#ccff00] transition-colors" size={20} />
               </Link>
             ))}
+          </div>
+
+          {/* Granular Silo Matrix */}
+          <div className="pt-12 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 gap-8 text-xs font-mono text-zinc-400">
+            <div>
+              <span className="text-white font-bold uppercase tracking-wider block mb-4">Local SEO Solutions</span>
+              <ul className="space-y-2">
+                <li><Link to="/local-seo-for-small-business" className="hover:text-[#ccff00] transition-colors">Small Business Local SEO</Link></li>
+                <li><Link to="/local-seo-citation-building" className="hover:text-[#ccff00] transition-colors">NAP Citation Building</Link></li>
+                <li><Link to="/white-label-local-seo" className="hover:text-[#ccff00] transition-colors">White Label Local SEO</Link></li>
+                <li><Link to="/local-seo-audit" className="hover:text-[#ccff00] transition-colors">Free Local SEO Audit</Link></li>
+              </ul>
+            </div>
+            <div>
+              <span className="text-white font-bold uppercase tracking-wider block mb-4">Industry Solutions</span>
+              <ul className="space-y-2">
+                <li><Link to="/solutions/fintech" className="hover:text-[#ccff00] transition-colors">Fintech Platforms</Link></li>
+                <li><Link to="/solutions/healthcare" className="hover:text-[#ccff00] transition-colors">Healthcare &amp; EHR</Link></li>
+                <li><Link to="/solutions/ai-automation" className="hover:text-[#ccff00] transition-colors">AI &amp; RAG Automation</Link></li>
+                <li><Link to="/solutions/e-commerce" className="hover:text-[#ccff00] transition-colors">E-Commerce Architecture</Link></li>
+                <li><Link to="/solutions/edtech" className="hover:text-[#ccff00] transition-colors">EdTech &amp; LMS</Link></li>
+              </ul>
+            </div>
+            <div>
+              <span className="text-white font-bold uppercase tracking-wider block mb-4">Studio Media &amp; Trust</span>
+              <ul className="space-y-2">
+                <li><Link to="/blog" className="hover:text-[#ccff00] transition-colors">Engineering Journal</Link></li>
+                <li><Link to="/case-studies" className="hover:text-[#ccff00] transition-colors">Case Studies</Link></li>
+                <li><Link to="/news/all" className="hover:text-[#ccff00] transition-colors">All News &amp; Media</Link></li>
+                <li><Link to="/website-contract" className="hover:text-[#ccff00] transition-colors">Website Contract Template</Link></li>
+                <li><Link to="/privacy" className="hover:text-[#ccff00] transition-colors">Privacy Policy</Link></li>
+                <li><Link to="/terms" className="hover:text-[#ccff00] transition-colors">Terms of Service</Link></li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
