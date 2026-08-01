@@ -20,7 +20,9 @@ import {
   Database,
   BarChart,
   Smartphone,
-  Globe2
+  Globe2,
+  ChevronRight,
+  ExternalLink
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -69,17 +71,22 @@ const USMarketPage = () => {
   return (
     <div className="bg-[#090909] text-[#d3c8b8] min-h-screen font-sans selection:bg-[#ff5b36] selection:text-white">
       <Helmet>
-        <title>Software Development for US Startups & NY Businesses | AbuQitmirLabs</title>
-        <meta name="description" content="Custom software engineering and AI solutions for the US market. CCPA compliant development and strategic SEO for startups in Silicon Valley, Austin, and NYC." />
+        <title>Software Development for US Startups | CCPA & HIPAA Ready | AbuQitmirLabs</title>
+        <meta name="description" content="US-focused software development for startups — mobile apps, AI agents, and local SEO. CCPA & HIPAA compliant, built at startup speed. Scale your US presence with offshore expertise." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/us-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Software Development for US Startups & NY Businesses | AbuQitmirLabs" />
-        <meta property="og:description" content="Custom software engineering and AI solutions for the US market. CCPA compliant development for American startups." />
+        <meta property="og:title" content="Software Development for US Startups | CCPA & HIPAA Ready | AbuQitmirLabs" />
+        <meta property="og:description" content="US-focused software development for startups — mobile apps, AI agents, and local SEO. CCPA & HIPAA compliant, built at startup speed. Scale your US presence with offshore expertise." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/us-market" />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Software Development for US Startups | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Software Development for US Startups | CCPA & HIPAA Ready | AbuQitmirLabs" />
+        <meta name="twitter:description" content="US-focused software development for startups — mobile apps, AI agents, and local SEO. CCPA & HIPAA compliant, built at startup speed. Scale your US presence with offshore expertise." />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
         <script 
@@ -108,7 +115,7 @@ const USMarketPage = () => {
                 "@context": "https://schema.org",
                 "@type": "Service",
                 "name": "Software Development for US Startups",
-                "description": "Custom software engineering and AI solutions specifically for the American market, ensuring CCPA and HIPAA compliance.",
+                "description": "US-focused software development for startups — mobile apps, AI agents, and local SEO. CCPA & HIPAA compliant, built at startup speed.",
                 "provider": {
                   "@type": "Organization",
                   "name": "AbuQitmirLabs",
@@ -545,6 +552,65 @@ const USMarketPage = () => {
                 </AnimatePresence>
               </div>
             ))}
+          </div>
+
+          {/* Related US Engineering Capabilities & Case Studies */}
+          <div className="mt-20 pt-12 border-t border-white/5 space-y-8">
+            <div>
+              <h4 className="text-xs font-mono text-[#ff5b36] uppercase tracking-[0.3em] font-bold mb-4">// RELATED US MARKET CAPABILITIES</h4>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
+                <Link to="/custom-software" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Custom Software</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/web-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Web Development</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/mobile-app-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Mobile Apps</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/ai-agent-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>AI Agent Systems</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/seo-mastery" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>SEO Mastery</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/local-seo-for-small-business" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>US Local SEO</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/case-studies" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Case Studies</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/contact" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Book US Audit</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+              </div>
+            </div>
+
+            {/* External Regulatory & Tech Standards Links */}
+            <div className="pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#7d766c]">
+              <span className="uppercase tracking-widest text-[11px] font-bold text-zinc-400">US Regulatory & Industry References:</span>
+              <div className="flex flex-wrap items-center gap-4">
+                <a href="https://oag.ca.gov/privacy/ccpa" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff5b36] transition-colors inline-flex items-center gap-1">
+                  California CCPA Guidelines <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://www.hhs.gov/hipaa/index.html" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff5b36] transition-colors inline-flex items-center gap-1">
+                  US HIPAA Standards <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff5b36] transition-colors inline-flex items-center gap-1">
+                  Google SEO Guide <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
