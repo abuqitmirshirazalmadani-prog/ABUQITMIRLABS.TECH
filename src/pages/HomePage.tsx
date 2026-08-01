@@ -23,7 +23,7 @@ import ContactSection from '../components/ContactSection';
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
+    <main id="main-content" className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <Helmet>
         <title>Custom Software &amp; AI Development | AbuQitmirLabs</title>
         <meta name="description" content="AbuQitmirLabs .TECH is an elite custom software development studio. We build bespoke SaaS, enterprise systems, and AI models for global businesses. Let's build your solution." />

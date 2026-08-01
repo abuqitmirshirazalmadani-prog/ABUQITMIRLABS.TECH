@@ -97,6 +97,13 @@ const Header = () => {
 
     return (
         <>
+            <a 
+                href="#main-content" 
+                className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:bg-[#ccff00] focus:text-black focus:font-bold focus:rounded-md focus:shadow-2xl focus:outline-none"
+            >
+                Skip to main content
+            </a>
+
             <header 
                 className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 h-20 md:h-24 flex items-center ${
                     scrolled || isOpen ? 'bg-black/95 backdrop-blur-md border-b border-white/5' : 'bg-transparent'
@@ -106,7 +113,7 @@ const Header = () => {
                     <Logo />
 
                     {/* Desktop Nav */}
-                    <nav className="hidden md:flex items-center gap-8">
+                    <nav role="navigation" aria-label="Main Navigation" className="hidden md:flex items-center gap-8">
                         {navLinks.map((link) => (
                             <div key={link.name} className="relative group">
                                 {link.dropdown ? (
@@ -114,6 +121,11 @@ const Header = () => {
                                         className="flex items-center gap-1 cursor-pointer py-4"
                                         onMouseEnter={() => setActiveDropdown(link.name)}
                                         onMouseLeave={() => setActiveDropdown(null)}
+                                        role="button"
+                                        tabIndex={0}
+                                        aria-haspopup="true"
+                                        aria-expanded={activeDropdown === link.name}
+                                        aria-label={`${link.name} Submenu`}
                                     >
                                         <span className="text-sm font-medium text-gray-400 hover:text-white transition-colors">
                                             {link.name}
@@ -164,6 +176,7 @@ const Header = () => {
                             to="/contact"
                             onMouseEnter={() => preloadRoute('/contact')}
                             onTouchStart={() => preloadRoute('/contact')}
+                            aria-label="Book a Consultation"
                             className="px-5 py-2.5 bg-white text-black text-sm font-semibold rounded-full hover:bg-purple-100 transition-colors"
                         >
                             Contact Now
@@ -174,6 +187,8 @@ const Header = () => {
                     <button 
                         className="md:hidden p-2 text-white focus:outline-none"
                         onClick={() => setIsOpen(!isOpen)}
+                        aria-label={isOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
+                        aria-expanded={isOpen}
                     >
                         {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                     </button>
@@ -190,6 +205,7 @@ const Header = () => {
                             exit={{ opacity: 0 }}
                             className="fixed inset-0 bg-black/60 z-[110] md:hidden"
                             onClick={() => setIsOpen(false)}
+                            aria-hidden="true"
                         />
                         <motion.div
                             initial={{ x: '100%' }}
@@ -204,12 +220,13 @@ const Header = () => {
                                 <button 
                                     className="p-2 text-white focus:outline-none"
                                     onClick={() => setIsOpen(false)}
+                                    aria-label="Close Navigation Menu"
                                 >
                                     <X className="h-7 w-7" />
                                 </button>
                             </div>
 
-                            <div className="flex-1 overflow-y-auto hide-scrollbar px-6 py-8 flex flex-col gap-2">
+                            <nav role="navigation" aria-label="Mobile Navigation" className="flex-1 overflow-y-auto hide-scrollbar px-6 py-8 flex flex-col gap-2">
                                 {navLinks.map((link) => (
                                     <div key={link.name} className="flex flex-col border-b border-white/5 last:border-0">
                                         {link.dropdown ? (
@@ -217,6 +234,8 @@ const Header = () => {
                                                 <button 
                                                     className="flex items-center justify-between w-full py-4 text-lg font-bold text-white text-left group"
                                                     onClick={() => activeDropdown === link.name ? setActiveDropdown(null) : setActiveDropdown(link.name)}
+                                                    aria-expanded={activeDropdown === link.name}
+                                                    aria-label={`Toggle ${link.name} Submenu`}
                                                 >
                                                     {link.name}
                                                     <ChevronDown 
@@ -288,7 +307,7 @@ const Header = () => {
                                         Admin Access
                                     </Link>
                                 </div>
-                            </div>
+                            </nav>
 
                             {/* Mobile Menu Footer */}
                             <div className="p-8 border-t border-white/5 bg-zinc-950/50 mt-auto">

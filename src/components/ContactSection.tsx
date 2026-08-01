@@ -176,7 +176,7 @@ const ContactSection = () => {
                 <span className="font-mono text-xs text-zinc-500 ml-4 tracking-widest">TRANSMISSION_PROTOCOL.EXE</span>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-8">
+              <form onSubmit={handleSubmit} aria-label="Tactical Contact Form" className="space-y-8">
                 {/* Form Checkbox for Free Audit Hook */}
                 <div className="flex items-start gap-3 p-4 bg-[#ccff00]/5 border border-[#ccff00]/20 rounded-xl relative overflow-hidden group">
                   <input 
@@ -196,6 +196,7 @@ const ContactSection = () => {
                   <input 
                     id="contact-section-name"
                     required
+                    aria-required="true"
                     type="text" 
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
@@ -209,6 +210,7 @@ const ContactSection = () => {
                   <input 
                     id="contact-section-email"
                     required
+                    aria-required="true"
                     type="email" 
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
@@ -222,6 +224,7 @@ const ContactSection = () => {
                   <textarea 
                     id="contact-section-message"
                     required
+                    aria-required="true"
                     rows={5} 
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
@@ -233,6 +236,7 @@ const ContactSection = () => {
                 <button 
                   type="submit" 
                   disabled={isSubmitting || submitted}
+                  aria-label="Deploy Tactical Briefing"
                   className={`w-full px-10 py-6 border-4 font-black uppercase text-lg transition-all duration-300 flex items-center justify-center gap-4 rounded-xl cursor-pointer
                     ${submitted ? 'bg-green-500 border-green-500 text-black' : 'bg-[#ccff00] border-black text-black hover:bg-white hover:text-black hover:border-white'}`}
                 >

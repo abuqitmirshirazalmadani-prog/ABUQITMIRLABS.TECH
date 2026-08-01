@@ -132,7 +132,7 @@ const Footer = () => {
                 </div>
 
                 {/* Footer Bottom */}
-                <footer className="pt-20">
+                <footer role="contentinfo" aria-label="Site Footer" className="pt-20">
                     <div className="flex flex-col md:flex-row gap-10 items-center justify-between">
                         {/* Brand */}
                         <div className="flex flex-col gap-2 origin-left">
