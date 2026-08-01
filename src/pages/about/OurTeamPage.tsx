@@ -16,7 +16,8 @@ import {
   ChevronRight, 
   Briefcase,
   Terminal,
-  Palette
+  Palette,
+  ExternalLink
 } from 'lucide-react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -30,7 +31,11 @@ const OurTeamPage = () => {
     {
       name: "Abu Qitmir Mohammad Shiraz Al-Madani",
       title: "Founder & Lead Systems Architect",
-      credentials: "M.B.A. Commerce (University of Karachi, 2010)",
+      credentials: (
+        <span>
+          M.B.A. Commerce (<a href="https://uok.edu.pk/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] underline transition-colors inline-flex items-center gap-0.5">University of Karachi <ExternalLink className="w-3 h-3" /></a>, 2010), <a href="https://digiskills.pk/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] underline transition-colors inline-flex items-center gap-0.5">DigiSkills Certified <ExternalLink className="w-3 h-3" /></a>
+        </span>
+      ),
       bio: "Over 15 years of digital commerce and systems engineering expertise. Abu Qitmir oversees all technical architecture, AI agent pipelines, low-latency web platforms, and international technical SEO strategies across our 410+ client deployments.",
       icon: Terminal,
       skills: ["Systems Architecture", "AI Agent Pipelines", "Technical SEO", "Low-Latency Web"]
@@ -104,9 +109,23 @@ const OurTeamPage = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
-        <title>Our Team — Elite Software Engineers & Architects | AbuQitmirLabs</title>
-        <meta name="description" content="Meet the elite collective behind AbuQitmirLabs .TECH. Led by Founder & Lead Architect Abu Qitmir Mohammad Shiraz Al-Madani, senior systems engineers, and UI/UX creators." />
+        <title>Our Team | Elite Software Architects | AbuQitmirLabs</title>
+        <meta name="description" content="Meet the AbuQitmirLabs team — 12+ in-house software architects, engineers, and UI/UX experts in Karachi. 410+ projects delivered globally. Led by founder Abu Qitmir." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/about/our-team" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Our Team | Elite Software Architects | AbuQitmirLabs" />
+        <meta property="og:description" content="Meet the AbuQitmirLabs team — 12+ in-house software architects, engineers, and UI/UX experts in Karachi. 410+ projects delivered globally. Led by founder Abu Qitmir." />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/about/our-team" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Our Team | Elite Software Architects | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Meet the AbuQitmirLabs team — 12+ in-house software architects, engineers, and UI/UX experts in Karachi. 410+ projects delivered globally. Led by founder Abu Qitmir." />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(teamSchema)}</script>
       </Helmet>
@@ -249,6 +268,85 @@ const OurTeamPage = () => {
                   <p className="text-gray-400 text-sm leading-relaxed">{p.desc}</p>
                 </div>
               ))}
+            </div>
+
+            {/* Related Services & Studio Internal Links */}
+            <div className="mt-20 pt-12 border-t border-white/10 space-y-8 text-left">
+              <div>
+                <h4 className="text-xs font-mono text-[#ccff00] uppercase tracking-[0.3em] font-bold mb-4">// EXPLORE STUDIO SERVICES & COMPANY HUB</h4>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
+                  <Link to="/about/our-company" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Our Company</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/custom-software" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Custom Software</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/web-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Web Development</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/mobile-app-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Mobile Apps</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/ai-agent-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>AI Agent Systems</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/seo-mastery" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>SEO Mastery</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/case-studies" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Case Studies</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/blog" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Tech Journal</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/about/our-process" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Engineering Process</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/about/careers" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Careers & Roles</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/website-contract" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Contract Template</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                  <Link to="/contact" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/5 flex items-center justify-between">
+                    <span>Book Intro Call</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* External Credentials & Tech Standards Links */}
+              <div className="pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-gray-400">
+                <span className="uppercase tracking-widest text-[11px] font-bold text-zinc-400">Industry Credentials & Verifications:</span>
+                <div className="flex flex-wrap items-center gap-4">
+                  <a href="https://digiskills.pk/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
+                    DigiSkills Pakistan <ExternalLink className="w-3 h-3" />
+                  </a>
+                  <span>•</span>
+                  <a href="https://uok.edu.pk/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
+                    University of Karachi <ExternalLink className="w-3 h-3" />
+                  </a>
+                  <span>•</span>
+                  <a href="https://clutch.co/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
+                    Clutch Studio Directory <ExternalLink className="w-3 h-3" />
+                  </a>
+                  <span>•</span>
+                  <a href="https://goodfirms.co/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
+                    GoodFirms Directory <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </section>
