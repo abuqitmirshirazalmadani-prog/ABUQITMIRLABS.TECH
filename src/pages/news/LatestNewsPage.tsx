@@ -15,7 +15,8 @@ import {
   Globe, 
   Building2, 
   Search,
-  Rss
+  Rss,
+  ExternalLink
 } from 'lucide-react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -134,9 +135,23 @@ const LatestNewsPage = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
-        <title>Latest News — AbuQitmirLabs .TECH | Company & Tech Announcements</title>
-        <meta name="description" content="Stay updated with the latest news, product launches, AI research, and industry insights from AbuQitmirLabs .TECH." />
+        <title>Latest News | Company Updates & Press Releases | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs newsroom — latest company updates, software launches, AI agent releases, and press announcements. Subscribe for monthly engineering and tech insights." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/news/latest" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Latest News | Company Updates & Press Releases | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs newsroom — latest company updates, software launches, AI agent releases, and press announcements. Subscribe for monthly engineering and tech insights." />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/news/latest" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+        
+        {/* Twitter Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Latest News | Company Updates & Press Releases | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs newsroom — latest company updates, software launches, AI agent releases, and press announcements. Subscribe for monthly engineering and tech insights." />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 
@@ -287,6 +302,91 @@ const LatestNewsPage = () => {
                   </AnimatePresence>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Related Studio Services, Internal Navigation Hub & External Verification */}
+        <section className="py-16 bg-zinc-950 border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-6 space-y-12">
+            <div>
+              <p className="font-mono text-xs text-[#ccff00] mb-4 tracking-[0.4em] uppercase">// EXPLORE STUDIO CAPABILITIES & HUB</p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 text-xs font-mono">
+                <Link to="/" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Studio Home</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/about/our-company" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Our Company</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/about/our-team" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Our Team</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/about/our-process" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Engineering Process</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/about/careers" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Careers & Roles</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/custom-software" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Custom Software</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/web-development" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Web Development</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/mobile-app-development" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Mobile Apps</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/ai-agent-development" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>AI Agent Systems</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/seo-mastery" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>SEO Mastery</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/case-studies" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Case Studies</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/blog" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Tech Journal</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/contact" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between col-span-2 sm:col-span-1">
+                  <span>Get Free Quote</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+              </div>
+            </div>
+
+            {/* External Media & Industry References */}
+            <div className="pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-gray-400">
+              <span className="uppercase tracking-widest text-[11px] font-bold text-gray-300">Industry & Media References:</span>
+              <div className="flex flex-wrap items-center gap-4">
+                <a href="https://techcrunch.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
+                  TechCrunch News <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://clutch.co/profile/abuqitmirlabstech" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
+                  Clutch Directory <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://www.goodfirms.co/company/abuqitmirlabs-tech" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
+                  GoodFirms Profile <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://react.dev/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
+                  React Framework <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
             </div>
           </div>
         </section>
