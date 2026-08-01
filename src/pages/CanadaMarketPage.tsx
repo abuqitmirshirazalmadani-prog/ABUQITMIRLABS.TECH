@@ -14,7 +14,9 @@ import {
   BarChart3,
   Languages,
   Database,
-  Globe2
+  Globe2,
+  ChevronRight,
+  ExternalLink
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -62,16 +64,23 @@ const CanadaMarketPage = () => {
   return (
     <div className="bg-[#090909] text-[#d3c8b8] min-h-screen font-sans selection:bg-[#ff5b36] selection:text-white">
       <Helmet>
-        <title>Software Development Services Canada | PIPEDA Compliant | AbuQitmirLabs</title>
-        <meta name="description" content="Empowering Canadian enterprises with futuristic tech. PIPEDA-compliant software engineering, specialized web apps, and bilingual SEO automation for Vancouver, Toronto, and Montreal." />
+        <title>Software Development for Canada | PIPEDA Compliant | AbuQitmirLabs</title>
+        <meta name="description" content="Canada-focused software development — PIPEDA-compliant apps, local SEO, and bilingual-ready platforms (EN/FR). Built for Canadian startups and enterprises, with EST/PST overlap." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/canada-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Software Development Services Canada | AbuQitmirLabs" />
-        <meta property="og:description" content="Empowering Canadian enterprises with futuristic tech. PIPEDA-compliant software engineering and bilingual digital solutions." />
+        <meta property="og:title" content="Software Development for Canada | PIPEDA Compliant | AbuQitmirLabs" />
+        <meta property="og:description" content="Canada-focused software development — PIPEDA-compliant apps, local SEO, and bilingual-ready platforms (EN/FR). Built for Canadian startups and enterprises, with EST/PST overlap." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/canada-market" />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Software Development for Canada | PIPEDA Compliant | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Canada-focused software development — PIPEDA-compliant apps, local SEO, and bilingual-ready platforms (EN/FR). Built for Canadian startups and enterprises, with EST/PST overlap." />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+        
         {/* Schema Markup */}
         <script 
           type="application/ld+json"
@@ -99,7 +108,7 @@ const CanadaMarketPage = () => {
                 "@context": "https://schema.org",
                 "@type": "Service",
                 "name": "Software Development Services Canada",
-                "description": "PIPEDA-compliant software engineering and specialized web apps for the Canadian enterprise market.",
+                "description": "Canada-focused software development — PIPEDA-compliant apps, local SEO, and bilingual-ready platforms (EN/FR).",
                 "provider": {
                   "@type": "Organization",
                   "name": "AbuQitmirLabs",
@@ -629,6 +638,65 @@ const CanadaMarketPage = () => {
                 </AnimatePresence>
               </div>
             ))}
+          </div>
+
+          {/* Related Canadian Services & Internal Links */}
+          <div className="mt-20 pt-12 border-t border-white/5 space-y-8 text-left">
+            <div>
+              <h4 className="text-xs font-mono text-[#ff5b36] uppercase tracking-[0.3em] font-bold mb-4">// CANADIAN DIGITAL SERVICES & CASE STUDIES</h4>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
+                <Link to="/custom-software" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Custom Software</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/web-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Web Development</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/mobile-app-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Mobile Apps</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/ai-agent-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>AI Agent Systems</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/seo-mastery" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>SEO Mastery</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/local-seo-for-small-business" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Canadian Local SEO</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/case-studies" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Case Studies</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+                <Link to="/contact" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Book Audit</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
+                </Link>
+              </div>
+            </div>
+
+            {/* External Regulatory & Tech Standards Links */}
+            <div className="pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#7d766c]">
+              <span className="uppercase tracking-widest text-[11px] font-bold text-zinc-400">Canadian Regulatory & Tech References:</span>
+              <div className="flex flex-wrap items-center gap-4">
+                <a href="https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff5b36] transition-colors inline-flex items-center gap-1">
+                  OPC Canada PIPEDA Guidelines <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff5b36] transition-colors inline-flex items-center gap-1">
+                  WCAG Accessibility Standard <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff5b36] transition-colors inline-flex items-center gap-1">
+                  Google SEO Guide <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
