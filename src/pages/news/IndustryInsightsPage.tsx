@@ -14,7 +14,8 @@ import {
   BrainCircuit, 
   ShieldCheck, 
   Code2,
-  TrendingUp
+  TrendingUp,
+  ExternalLink
 } from 'lucide-react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -152,9 +153,23 @@ const IndustryInsightsPage = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
-        <title>Industry Insights — Technical Thought Leadership | AbuQitmirLabs</title>
-        <meta name="description" content="In-depth technical insights, AI architecture research, GEO search strategies, and software engineering benchmarks from AbuQitmirLabs .TECH." />
+        <title>Industry Insights | Technical Benchmarks & AI Architecture | AbuQitmirLabs</title>
+        <meta name="description" content="Industry insights from AbuQitmirLabs — technical breakdowns on AI RAG, GEO, HIPAA compliance, and low-latency full-stack design. Written by senior software architects." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/news/industry-insights" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Industry Insights | Technical Benchmarks & AI Architecture | AbuQitmirLabs" />
+        <meta property="og:description" content="Industry insights from AbuQitmirLabs — technical breakdowns on AI RAG, GEO, HIPAA compliance, and low-latency full-stack design. Written by senior software architects." />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/news/industry-insights" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+        
+        {/* Twitter Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Industry Insights | Technical Benchmarks & AI Architecture | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Industry insights from AbuQitmirLabs — technical breakdowns on AI RAG, GEO, HIPAA compliance, and low-latency full-stack design. Written by senior software architects." />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 
@@ -276,6 +291,99 @@ const IndustryInsightsPage = () => {
                   </AnimatePresence>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Related Studio Services, Internal Navigation Hub & External Verification */}
+        <section className="py-16 bg-zinc-950 border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-6 space-y-12">
+            <div>
+              <p className="font-mono text-xs text-[#ccff00] mb-4 tracking-[0.4em] uppercase">// EXPLORE STUDIO CAPABILITIES & HUB</p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 text-xs font-mono">
+                <Link to="/" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Studio Home</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/about/our-company" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Our Company</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/about/our-team" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Our Team</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/about/our-process" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Engineering Process</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/about/careers" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Careers & Roles</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/custom-software" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Custom Software</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/web-development" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Web Development</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/mobile-app-development" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Mobile Apps</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/ai-agent-development" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>AI Agent Systems</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/seo-mastery" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>SEO Mastery</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/case-studies" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Case Studies</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/blog" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Tech Journal</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/news/latest" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                  <span>Latest News</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/news/press-releases" className="p-3 bg-zinc-[#ccff00]/5 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-[#ccff00]/20 flex items-center justify-between">
+                  <span>Press Releases</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+                <Link to="/contact" className="p-3 bg-zinc-900 hover:bg-[#ccff00]/10 rounded-lg text-gray-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between col-span-2 sm:col-span-1">
+                  <span>Get Free Quote</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
+                </Link>
+              </div>
+            </div>
+
+            {/* External Technical & Industry References */}
+            <div className="pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-gray-400">
+              <span className="uppercase tracking-widest text-[11px] font-bold text-gray-300">Technical Research & External References:</span>
+              <div className="flex flex-wrap items-center gap-4">
+                <a href="https://openai.com/research/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
+                  OpenAI Research <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://blog.google/technology/ai/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
+                  Google AI Blog <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://python.langchain.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
+                  LangChain Docs <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://clutch.co/profile/abuqitmirlabstech" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
+                  Clutch Directory <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
             </div>
           </div>
         </section>
