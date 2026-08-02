@@ -266,7 +266,19 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
   
   // Security Middleware: Prevent Directory Browsing & Index Listing
   app.use((req, res, next) => {
-    // Check if request is attempting to browse a physical directory (e.g., /assets/, /src/, /public/)
+    const rawPath = req.path.toLowerCase();
+    
+    // Explicitly block common static directory listing attempts
+    if (
+      rawPath === '/assets' || rawPath === '/assets/' ||
+      rawPath === '/src' || rawPath === '/src/' ||
+      rawPath === '/public' || rawPath === '/public/'
+    ) {
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      return res.status(403).send('<!DOCTYPE html><html><head><title>403 Forbidden</title></head><body style="background:#080808;color:#e8e8e8;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;"><div style="text-align:center;border:1px solid #333;padding:2rem 3rem;border-radius:8px;background:#0f0f0f;"><h1 style="color:#ccff00;margin:0 0 1rem 0;">403 Forbidden</h1><p style="color:#9ca3af;margin:0;">Directory browsing is disabled on this server.</p></div></body></html>');
+    }
+
+    // Check if request is attempting to browse any physical directory
     if (req.path !== '/' && (req.path.endsWith('/') || !path.extname(req.path))) {
       const possibleDirPath = path.join(distPath, req.path);
       try {
@@ -274,7 +286,8 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
           const hasIndexHtml = fs.existsSync(path.join(possibleDirPath, 'index.html'));
           if (!hasIndexHtml) {
             // Block raw directory listing with 403 Forbidden
-            return res.status(403).send('403 Forbidden: Directory browsing is disabled on this server.');
+            res.setHeader('Content-Type', 'text/html; charset=utf-8');
+            return res.status(403).send('<!DOCTYPE html><html><head><title>403 Forbidden</title></head><body style="background:#080808;color:#e8e8e8;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;"><div style="text-align:center;border:1px solid #333;padding:2rem 3rem;border-radius:8px;background:#0f0f0f;"><h1 style="color:#ccff00;margin:0 0 1rem 0;">403 Forbidden</h1><p style="color:#9ca3af;margin:0;">Directory browsing is disabled on this server.</p></div></body></html>');
           }
         }
       } catch (err) {
@@ -292,8 +305,25 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
     });
     app.use(vite.middlewares);
   } else {
-    // In production, serve built static assets from dist without auto-indexing directories
-    app.use(express.static(distPath, { index: false, dotfiles: 'ignore', redirect: false }));
+    // In production, serve built static assets from dist with max-age headers & no directory index listing
+    app.use(express.static(distPath, {
+      index: false,
+      dotfiles: 'ignore',
+      redirect: false,
+      maxAge: '1y',
+      immutable: true,
+      setHeaders: (res, filePath) => {
+        if (filePath.endsWith('.css')) {
+          res.setHeader('Content-Type', 'text/css; charset=utf-8');
+          res.setHeader('X-Content-Type-Options', 'nosniff');
+          res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        } else if (filePath.endsWith('.js')) {
+          res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
+          res.setHeader('X-Content-Type-Options', 'nosniff');
+          res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        }
+      }
+    }));
 
     // GLOBAL SPA & SSR Fallback in production
     app.get('*', async (req, res, next) => {
