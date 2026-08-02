@@ -23,6 +23,19 @@ These links direct to the core segments of our digital agency:
 - [Why Your Local Business Is Invisible in 2026 — And the 5-Layer Fix Nobody's Talking About](https://www.abuqitmirlabs.tech/blog/local-business-visibility-seo-geo-aio-aeo-sxo-2026) - Comprehensive guide on the 5-Layer Local Visibility System (SEO, GEO, AIO, AEO, SXO) for local businesses competing in AI search in 2026.
 - [Custom AI Solutions for Corporate Events — Complete 2026 Guide](https://www.abuqitmirlabs.tech/blog/custom-ai-solutions-for-corporate-events-2026-guide) - Complete 2026 guide on building custom AI event management platforms (EventFlow), attendee check-in, AI speaker coordination, venue management, and AI invoice chasing.
 
+## SEO & Visibility Services
+- [SEO Mastery (SEO + GEO + AEO + AIO + SXO)](https://www.abuqitmirlabs.tech/seo-mastery) - Technical search engine optimization, programmatic crawl structures, semantic SEO, GEO, AIO, and SXO.
+- [Local SEO for Small Business](https://www.abuqitmirlabs.tech/local-seo-for-small-business) - Hyper-targeted local search ranking, Google Business Profile optimization, citation building, and local GEO visibility.
+- [Local SEO Audit](https://www.abuqitmirlabs.tech/local-seo-audit) - Comprehensive diagnostic audit for local search visibility, citations, and GBP performance.
+- [Local Citation Building](https://www.abuqitmirlabs.tech/local-seo-citation-building) - High-authority NAP consistency and local directory submission services.
+- [White-Label Local SEO](https://www.abuqitmirlabs.tech/white-label-local-seo) - Agency white-label local SEO fulfillment and client reporting solutions.
+- [SEO Content Writing](https://www.abuqitmirlabs.tech/content-writing) - In-depth technical articles, search-friendly sales copy, and authoritative brand content.
+
+## Blog — SEO Series
+- [What SEO Services Actually Mean in 2026](https://www.abuqitmirlabs.tech/blog/what-seo-services-actually-means-2026) - Comprehensive guide on GEO, AEO, AIO, SXO, agency pricing, and essential questions to ask before hiring an SEO company.
+- [Local Business Visibility (SEO+GEO+AIO+AEO+SXO)](https://www.abuqitmirlabs.tech/blog/local-business-visibility-seo-geo-aio-aeo-sxo-2026) - The 5-Layer Local Visibility System for local businesses competing in AI search.
+- [Local SEO Checklist 2026](https://www.abuqitmirlabs.tech/blog/local-seo-checklist-2026-audit-citations-pricing-industry-guide) - Step-by-step local SEO audit, citation building, and pricing industry guide.
+
 ## Specialized Technical Services
 Detailed explanations of our core solutions and services:
 

@@ -205,6 +205,8 @@ export default function App() {
               <Route path="/blog/custom-ai-solutions-for-corporate-events-2026-guide" element={<BlogPostPage overrideSlug="custom-ai-solutions-for-corporate-events-2026-guide" />} />
               <Route path="/local-business-visibility-seo-geo-aio-aeo-sxo-2026" element={<BlogPostPage overrideSlug="local-business-visibility-seo-geo-aio-aeo-sxo-2026" />} />
               <Route path="/blog/local-business-visibility-seo-geo-aio-aeo-sxo-2026" element={<BlogPostPage overrideSlug="local-business-visibility-seo-geo-aio-aeo-sxo-2026" />} />
+              <Route path="/what-seo-services-actually-means-2026" element={<BlogPostPage overrideSlug="what-seo-services-actually-means-2026" />} />
+              <Route path="/blog/what-seo-services-actually-means-2026" element={<BlogPostPage overrideSlug="what-seo-services-actually-means-2026" />} />
               <Route path="/blog/custom-ai-solutions-for-corporate-events" element={<Navigate to="/blog/custom-ai-solutions-for-corporate-events-2026-guide" replace />} />
               <Route path="/blog/custom-software-development-company-karachi-pakistan-abuqitmirlabs" element={<Navigate to="/blog/custom-software-development-company-karachi-pakistan" replace />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
