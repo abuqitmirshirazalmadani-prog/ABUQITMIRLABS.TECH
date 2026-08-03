@@ -23,6 +23,18 @@ These links direct to the core segments of our digital agency:
 - [Why Your Local Business Is Invisible in 2026 — And the 5-Layer Fix Nobody's Talking About](https://www.abuqitmirlabs.tech/blog/local-business-visibility-seo-geo-aio-aeo-sxo-2026) - Comprehensive guide on the 5-Layer Local Visibility System (SEO, GEO, AIO, AEO, SXO) for local businesses competing in AI search in 2026.
 - [Custom AI Solutions for Corporate Events — Complete 2026 Guide](https://www.abuqitmirlabs.tech/blog/custom-ai-solutions-for-corporate-events-2026-guide) - Complete 2026 guide on building custom AI event management platforms (EventFlow), attendee check-in, AI speaker coordination, venue management, and AI invoice chasing.
 
+## Mobile App Development
+- Mobile App Development (Flutter & Native): /mobile-app-development
+- Healthcare Mobile Apps: /solutions/healthcare
+- Fintech Mobile Apps: /solutions/fintech
+- E-Commerce Mobile Apps: /solutions/e-commerce
+- EdTech Mobile Apps: /solutions/edtech
+
+## Blog — Search & App Discoverability Series
+- How to Choose a Mobile App Development Company 2026: /blog/how-to-choose-mobile-app-development-company-2026
+- What SEO Services Actually Mean in 2026: /blog/what-seo-services-actually-means-2026
+- Local Business Visibility (SEO+GEO+AIO+AEO+SXO): /blog/local-business-visibility-seo-geo-aio-aeo-sxo-2026
+
 ## SEO & Visibility Services
 - [SEO Mastery (SEO + GEO + AEO + AIO + SXO)](https://www.abuqitmirlabs.tech/seo-mastery) - Technical search engine optimization, programmatic crawl structures, semantic SEO, GEO, AIO, and SXO.
 - [Local SEO for Small Business](https://www.abuqitmirlabs.tech/local-seo-for-small-business) - Hyper-targeted local search ranking, Google Business Profile optimization, citation building, and local GEO visibility.
