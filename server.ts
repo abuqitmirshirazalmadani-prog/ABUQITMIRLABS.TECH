@@ -343,6 +343,14 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
           template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
         }
 
+        const cleanPath = url.split('?')[0];
+        const fullUrl = `https://www.abuqitmirlabs.tech${cleanPath === '/' ? '/' : cleanPath}`;
+        if (template.includes('<link rel="canonical"')) {
+          template = template.replace(/<link rel="canonical"[^>]*\/?>/g, `<link rel="canonical" data-rh="true" href="${fullUrl}" />`);
+        } else {
+          template = template.replace('</head>', `  <link rel="canonical" data-rh="true" href="${fullUrl}" />\n</head>`);
+        }
+
         return res.status(200).set({ 'Content-Type': 'text/html' }).end(template);
       } catch (e) {
         next(e);
