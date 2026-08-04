@@ -190,21 +190,21 @@ Do not sign a website contract without these protective legal terms.
   return (
     <div className="bg-[#050505] text-axiom-sub font-body antialiased overflow-x-hidden min-h-screen relative selection:bg-blue-500/30 selection:text-white">
       <Helmet>
-        <title>Web Development Services | React, Next.js & Jamstack | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs builds high-performance web apps using React, Next.js, and Jamstack. From corporate sites to e-commerce and PWAs — we deliver speed, scalability, and SEO-ready code." />
+        <title>Custom Web Development Services | AbuQitmirLabs</title>
+        <meta name="description" content="Custom web development services by AbuQitmirLabs. We build high-performance web applications, enterprise SaaS, and PWAs with speed, scale, and SEO." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/web-development" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Web Development Services | React, Next.js & Jamstack | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs builds high-performance web apps using React, Next.js, and Jamstack. From corporate sites to e-commerce and PWAs — we deliver speed, scalability, and SEO-ready code." />
+        <meta property="og:title" content="Custom Web Development Services | AbuQitmirLabs" />
+        <meta property="og:description" content="Custom web development services by AbuQitmirLabs. We build high-performance web applications, enterprise SaaS, and PWAs with speed, scale, and SEO." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/web-development" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Web Development Services | React, Next.js & Jamstack | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs builds high-performance web apps using React, Next.js, and Jamstack. From corporate sites to e-commerce and PWAs — we deliver speed, scalability, and SEO-ready code." />
+        <meta name="twitter:title" content="Custom Web Development Services | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Custom web development services by AbuQitmirLabs. We build high-performance web applications, enterprise SaaS, and PWAs with speed, scale, and SEO." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Schema Markup */}
@@ -385,7 +385,7 @@ Do not sign a website contract without these protective legal terms.
           transition={{ delay: 0.1 }}
           className="text-lg md:text-xl text-neutral-400 text-center max-w-4xl mb-12 leading-relaxed font-light font-sans"
         >
-          Your website is often the first interaction a customer has with your brand. From our <Link to="/" className="text-blue-400 hover:underline font-medium">homepage</Link> to specialized web systems, we build fast, responsive, SEO-ready platforms — from corporate sites to e-commerce and web apps. You can pair our web builds with modular <Link to="/custom-software" className="text-blue-400 hover:underline font-medium">Custom Software</Link>, expand into native <Link to="/mobile-app-development" className="text-blue-400 hover:underline font-medium">Mobile App Development</Link>, integrate autonomous <Link to="/ai-agent-development" className="text-blue-400 hover:underline font-medium">AI Agents</Link>, or maximize visibility with our <Link to="/seo-mastery" className="text-blue-400 hover:underline font-medium">SEO Mastery</Link> and <Link to="/local-seo-for-small-business" className="text-blue-400 hover:underline font-medium">Local SEO</Link> strategies. Elevate messaging with targeted <Link to="/content-writing" className="text-blue-400 hover:underline font-medium">Content Writing</Link>, read our client <Link to="/case-studies" className="text-blue-400 hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-blue-400 hover:underline font-medium">Blog</Link>, learn more <Link to="/about" className="text-blue-400 hover:underline font-medium">about us</Link>, or <Link to="/contact" className="text-blue-400 hover:underline font-medium">contact us</Link> today.
+          At AbuQitmirLabs, our <strong>custom web development</strong> services focus on speed, scalability, and security. Your website is often the first interaction a customer has with your brand. From our <Link to="/" className="text-blue-400 hover:underline font-medium">homepage</Link> to specialized web systems, we build fast, responsive, SEO-ready platforms using modern <strong>web development</strong> architecture — from corporate sites to e-commerce and web apps. You can pair our web builds with modular <Link to="/custom-software" className="text-blue-400 hover:underline font-medium">Custom Software</Link>, expand into native <Link to="/mobile-app-development" className="text-blue-400 hover:underline font-medium">Mobile App Development</Link>, integrate autonomous <Link to="/ai-agent-development" className="text-blue-400 hover:underline font-medium">AI Agents</Link>, or maximize visibility with our <Link to="/seo-mastery" className="text-blue-400 hover:underline font-medium">SEO Mastery</Link> and <Link to="/local-seo-for-small-business" className="text-blue-400 hover:underline font-medium">Local SEO</Link> strategies. Elevate messaging with targeted <Link to="/content-writing" className="text-blue-400 hover:underline font-medium">Content Writing</Link>, read our client <Link to="/case-studies" className="text-blue-400 hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-blue-400 hover:underline font-medium">Blog</Link>, learn more <Link to="/about" className="text-blue-400 hover:underline font-medium">about us</Link>, or <Link to="/contact" className="text-blue-400 hover:underline font-medium">contact us</Link> today.
         </motion.p>
 
         {/* Core Capabilities Specifications */}
@@ -1521,7 +1521,7 @@ Do not sign a website contract without these protective legal terms.
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-xs font-mono text-neutral-500 mb-4 uppercase tracking-[0.3em]">[ OPERATIONAL_INQUIRIES ]</h2>
-            <h3 className="text-4xl font-bold text-white uppercase tracking-tight">Frequently Asked Questions</h3>
+            <h3 className="text-4xl font-bold text-white uppercase tracking-tight">Custom Web Development FAQs</h3>
           </div>
 
           <div className="space-y-4">
