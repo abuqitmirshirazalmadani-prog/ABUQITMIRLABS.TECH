@@ -30,6 +30,15 @@ These links direct to the core segments of our digital agency:
 - E-Commerce Mobile Apps: /solutions/e-commerce
 - EdTech Mobile Apps: /solutions/edtech
 
+## Web Development
+- Custom Web Development: /web-development
+- Web Development Blog 2026: /blog/custom-web-development-company-2026
+- Built-In Visibility Architecture (SEO+GEO+AIO+AEO+SXO in build): /blog/custom-web-development-company-2026
+
+## Active Projects
+- GhastlyPages.com (horror fiction platform, ongoing build + content): https://www.ghastlypages.com
+- TajweedPage.com (RAG-based AI Tajweed teacher, engineered by AbuQitmirLabs): https://www.tajweedpage.com/ai
+
 ## Blog — Search & App Discoverability Series
 - How to Choose a Mobile App Development Company 2026: /blog/how-to-choose-mobile-app-development-company-2026
 - What SEO Services Actually Mean in 2026: /blog/what-seo-services-actually-means-2026
