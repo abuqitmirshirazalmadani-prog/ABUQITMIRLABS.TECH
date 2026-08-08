@@ -35,6 +35,12 @@ These links direct to the core segments of our digital agency:
 - Web Development Blog 2026: /blog/custom-web-development-company-2026
 - Built-In Visibility Architecture (SEO+GEO+AIO+AEO+SXO in build): /blog/custom-web-development-company-2026
 
+## AI Solutions by Industry
+- AI Agent Development: /ai-agent-development
+- Custom AI Solutions for Fintech: /blog/custom-ai-solutions-for-fintech-2026
+- Fintech Solutions: /solutions/fintech
+- TajweedPage.com (RAG-based AI, EdTech proof point): https://www.tajweedpage.com/ai
+
 ## Active Projects
 - GhastlyPages.com (horror fiction platform, ongoing build + content): https://www.ghastlypages.com
 - TajweedPage.com (RAG-based AI Tajweed teacher, engineered by AbuQitmirLabs): https://www.tajweedpage.com/ai
