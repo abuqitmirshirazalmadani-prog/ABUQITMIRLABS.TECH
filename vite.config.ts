@@ -1,6 +1,8 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import fs from 'fs';
+import esbuild from 'esbuild';
 import {defineConfig, loadEnv} from 'vite';
 import compression from 'vite-plugin-compression';
 
@@ -462,7 +464,86 @@ Sitemap: ${hostname}/sitemap.xml`;
             fs.writeFileSync(targetPath, routeHtml);
           }
           
-          console.log('✅ SEO Assets, RSS dynamic feed, and Static Routes generated successfully!');
+          // Post-process all CSS files in dist/assets for 100% minification with esbuild
+          const assetsDir = path.resolve(outDir, 'assets');
+          if (fs.existsSync(assetsDir)) {
+            const files = fs.readdirSync(assetsDir);
+            for (const file of files) {
+              if (file.endsWith('.css')) {
+                const cssPath = path.join(assetsDir, file);
+                const rawCss = fs.readFileSync(cssPath, 'utf-8');
+                try {
+                  const minifiedResult = esbuild.transformSync(rawCss, {
+                    loader: 'css',
+                    minify: true,
+                    minifyWhitespace: true,
+                    minifySyntax: true,
+                    legalComments: 'none',
+                  });
+                  fs.writeFileSync(cssPath, minifiedResult.code, 'utf-8');
+                  console.log(`⚡ Minified CSS asset: ${file} (${rawCss.length} -> ${minifiedResult.code.length} bytes)`);
+                } catch (err) {
+                  console.warn(`Warning: Could not post-minify CSS file ${file}:`, err);
+                }
+              }
+            }
+          }
+
+          // Recursively generate index.php and 403 index.html in every directory in dist to strictly prevent directory listing
+          const html403Content = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <title>403 Forbidden</title>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; background: #080808; color: #e8e8e8; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .box { text-align: center; border: 1px solid #333; padding: 2rem 3rem; border-radius: 8px; background: #0f0f0f; }
+        h1 { color: #ccff00; margin: 0 0 1rem 0; font-size: 2rem; }
+        p { color: #9ca3af; margin: 0; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>403 Forbidden</h1>
+        <p>Directory browsing is disabled on this server.</p>
+    </div>
+</body>
+</html>`;
+
+          const php403Content = `<?php
+http_response_code(403);
+header("HTTP/1.1 403 Forbidden");
+header("Content-Type: text/html; charset=utf-8");
+?>
+${html403Content}`;
+
+          function protectDirectoriesRecursively(targetDirectory: string) {
+            if (!fs.existsSync(targetDirectory)) return;
+            const entries = fs.readdirSync(targetDirectory, { withFileTypes: true });
+
+            // Always place index.php in every directory if not present
+            const phpPath = path.join(targetDirectory, 'index.php');
+            if (!fs.existsSync(phpPath)) {
+              fs.writeFileSync(phpPath, php403Content, 'utf-8');
+            }
+
+            // Always place index.html in asset / non-page subdirectories if no index.html exists
+            const htmlPath = path.join(targetDirectory, 'index.html');
+            if (!fs.existsSync(htmlPath)) {
+              fs.writeFileSync(htmlPath, html403Content, 'utf-8');
+            }
+
+            for (const entry of entries) {
+              if (entry.isDirectory()) {
+                protectDirectoriesRecursively(path.join(targetDirectory, entry.name));
+              }
+            }
+          }
+
+          protectDirectoriesRecursively(outDir);
+
+          console.log('✅ SEO Assets, RSS dynamic feed, Minified CSS assets, and 403 Directory Protection generated successfully!');
         }
       }
     ],
