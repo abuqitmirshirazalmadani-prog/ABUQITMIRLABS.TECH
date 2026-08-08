@@ -99,7 +99,7 @@ const NexusHero = () => {
             panels.push({ el, x, y, z });
         }
 
-        let speed = 2.5;
+        let speed = 2.0;
         const cameraZ = 300;
         let animationFrameId: number;
         let isIntersecting = true;
@@ -113,21 +113,28 @@ const NexusHero = () => {
         }
 
         const animate = () => {
-            if (isIntersecting) {
+            if (isIntersecting && !document.hidden) {
+                // Update tunnel panels
                 panels.forEach(p => {
                     p.z += speed;
                     if (p.z > cameraZ) p.z -= maxDepth + cameraZ;
                     
-                    let blur = p.z < -1200 ? Math.min(6, (-p.z - 1200) / 400) : 0;
                     let opacity = p.z < -3200 
                         ? Math.max(0, 1 - ((-p.z - 3200) / 800)) 
                         : (p.z > 0 ? Math.max(0, 1 - (p.z / cameraZ)) : 1);
                     
-                    p.el.style.transform = `translate(-50%, -50%) translate3d(${p.x}px, ${p.y}px, ${p.z}px)`;
-                    p.el.style.filter = blur > 0.5 ? `blur(${blur.toFixed(1)}px)` : 'none';
+                    p.el.style.transform = `translate3d(-50%, -50%, 0) translate3d(${p.x}px, ${p.y}px, ${p.z}px)`;
                     p.el.style.opacity = opacity.toFixed(2);
-                    p.el.style.zIndex = Math.round(p.z + maxDepth).toString(); 
                 });
+
+                // Update perspective parallax in same animation frame
+                targetPosRef.current = {
+                    x: targetPosRef.current.x + (mousePosRef.current.x - targetPosRef.current.x) * 0.05,
+                    y: targetPosRef.current.y + (mousePosRef.current.y - targetPosRef.current.y) * 0.05
+                };
+                if (sceneRef.current) {
+                    sceneRef.current.style.perspectiveOrigin = `${targetPosRef.current.x.toFixed(2)}% ${targetPosRef.current.y.toFixed(2)}%`;
+                }
             }
             animationFrameId = requestAnimationFrame(animate);
         };
@@ -135,8 +142,8 @@ const NexusHero = () => {
         const handleMouseMove = (e: MouseEvent) => {
             if (!isIntersecting) return;
             mousePosRef.current = {
-                x: 50 + ((e.clientX / window.innerWidth - 0.5) * 20),
-                y: 50 + ((e.clientY / window.innerHeight - 0.5) * 20)
+                x: 50 + ((e.clientX / window.innerWidth - 0.5) * 15),
+                y: 50 + ((e.clientY / window.innerHeight - 0.5) * 15)
             };
         };
 
@@ -155,23 +162,6 @@ const NexusHero = () => {
         };
     }, []);
 
-    // Ultra-smooth DOM-direct parallax effect (Zero React state updates)
-    useEffect(() => {
-        let rafId: number;
-        const updateParallax = () => {
-            targetPosRef.current = {
-                x: targetPosRef.current.x + (mousePosRef.current.x - targetPosRef.current.x) * 0.05,
-                y: targetPosRef.current.y + (mousePosRef.current.y - targetPosRef.current.y) * 0.05
-            };
-            if (sceneRef.current) {
-                sceneRef.current.style.perspectiveOrigin = `${targetPosRef.current.x}% ${targetPosRef.current.y}%`;
-            }
-            rafId = requestAnimationFrame(updateParallax);
-        };
-        rafId = requestAnimationFrame(updateParallax);
-        return () => cancelAnimationFrame(rafId);
-    }, []);
-
     return (
         <section id="nexus-engine-hero" className="bg-[#0a0a0a] text-[#ededed] overflow-hidden w-full min-h-screen relative font-sans selection:bg-white/20 selection:text-white flex flex-col">
             {/* Ambient Background */}
@@ -186,6 +176,7 @@ const NexusHero = () => {
             {/* 3D Tunnel Scene */}
             <div 
                 ref={sceneRef} 
+                aria-hidden="true"
                 className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden"
                 style={{ 
                     perspective: '800px', 
@@ -194,6 +185,7 @@ const NexusHero = () => {
             >
                 <motion.div 
                     ref={tunnelRef} 
+                    aria-hidden="true"
                     className="relative w-full h-full" 
                     style={{ 
                         transformStyle: 'preserve-3d',

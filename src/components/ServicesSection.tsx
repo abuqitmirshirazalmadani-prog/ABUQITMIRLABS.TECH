@@ -145,14 +145,24 @@ const TorusKnotAnimation = () => {
         let targetRotX = 0;
         let targetRotY = 0;
 
+        let isVisible = true;
+        const observer = new IntersectionObserver(([entry]) => {
+            isVisible = entry.isIntersecting;
+        }, { threshold: 0.05 });
+
+        if (canvas) {
+            observer.observe(canvas);
+        }
+
         const handleMouseMove = (e: MouseEvent) => {
+            if (!isVisible) return;
             const centerX = window.innerWidth / 2;
             const centerY = window.innerHeight / 2;
             targetRotY = (e.clientX - centerX) * 0.0003;
             targetRotX = (e.clientY - centerY) * 0.0003;
         };
 
-        window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
         const resize = () => {
             if (!canvas || !canvas.parentElement) return;
@@ -168,51 +178,53 @@ const TorusKnotAnimation = () => {
         const render = () => {
             if (!active || !ctx) return;
 
-            const width = canvas.width;
-            const height = canvas.height;
-            const dpr = window.devicePixelRatio || 1;
+            if (isVisible) {
+                const width = canvas.width;
+                const height = canvas.height;
+                const dpr = window.devicePixelRatio || 1;
 
-            ctx.clearRect(0, 0, width, height);
+                ctx.clearRect(0, 0, width, height);
 
-            rotY += 0.004 + (targetRotY - rotY) * 0.05;
-            rotX += 0.002 + (targetRotX - rotX) * 0.05;
+                rotY += 0.004 + (targetRotY - rotY) * 0.05;
+                rotX += 0.002 + (targetRotX - rotX) * 0.05;
 
-            const cosX = Math.cos(rotX);
-            const sinX = Math.sin(rotX);
-            const cosY = Math.cos(rotY);
-            const sinY = Math.sin(rotY);
+                const cosX = Math.cos(rotX);
+                const sinX = Math.sin(rotX);
+                const cosY = Math.cos(rotY);
+                const sinY = Math.sin(rotY);
 
-            const fov = 350 * dpr;
-            const centerX = width / 2;
-            const centerY = height / 2;
+                const fov = 350 * dpr;
+                const centerX = width / 2;
+                const centerY = height / 2;
 
-            const projected = points.map((pt) => {
-                const x1 = pt.x * cosY - pt.z * sinY;
-                const z1 = pt.x * sinY + pt.z * cosY;
+                const projected = points.map((pt) => {
+                    const x1 = pt.x * cosY - pt.z * sinY;
+                    const z1 = pt.x * sinY + pt.z * cosY;
 
-                const y2 = pt.y * cosX - z1 * sinX;
-                const z2 = pt.y * sinX + z1 * cosX;
+                    const y2 = pt.y * cosX - z1 * sinX;
+                    const z2 = pt.y * sinX + z1 * cosX;
 
-                const distance = 22;
-                const perspective = fov / (fov + (z2 + distance) * 10);
+                    const distance = 22;
+                    const perspective = fov / (fov + (z2 + distance) * 10);
 
-                return {
-                    px: centerX + x1 * 14 * perspective,
-                    py: centerY + y2 * 14 * perspective,
-                    pz: z2,
-                    size: pt.size * perspective * dpr,
-                    alpha: Math.max(0.1, Math.min(0.85, (z2 + 15) / 30))
-                };
-            });
+                    return {
+                        px: centerX + x1 * 14 * perspective,
+                        py: centerY + y2 * 14 * perspective,
+                        pz: z2,
+                        size: pt.size * perspective * dpr,
+                        alpha: Math.max(0.1, Math.min(0.85, (z2 + 15) / 30))
+                    };
+                });
 
-            projected.sort((a, b) => a.pz - b.pz);
+                projected.sort((a, b) => a.pz - b.pz);
 
-            for (let i = 0; i < projected.length; i++) {
-                const pt = projected[i];
-                ctx.fillStyle = `rgba(139, 92, 246, ${pt.alpha * 0.65})`;
-                ctx.beginPath();
-                ctx.arc(pt.px, pt.py, Math.max(0.5, pt.size), 0, Math.PI * 2);
-                ctx.fill();
+                for (let i = 0; i < projected.length; i++) {
+                    const pt = projected[i];
+                    ctx.fillStyle = `rgba(139, 92, 246, ${pt.alpha * 0.65})`;
+                    ctx.beginPath();
+                    ctx.arc(pt.px, pt.py, Math.max(0.5, pt.size), 0, Math.PI * 2);
+                    ctx.fill();
+                }
             }
 
             frameId = requestAnimationFrame(render);
@@ -223,6 +235,7 @@ const TorusKnotAnimation = () => {
         return () => {
             active = false;
             cancelAnimationFrame(frameId);
+            observer.disconnect();
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('resize', resize);
         };

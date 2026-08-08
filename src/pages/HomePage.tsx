@@ -26,17 +26,17 @@ export default function HomePage() {
     <main id="main-content" className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <Helmet>
         <title>Custom Software &amp; AI Development | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs .TECH is an elite custom software development studio. We build bespoke SaaS, enterprise systems, and AI models for global businesses. Let's build your solution." />
+        <meta name="description" content="AbuQitmirLabs is a full-service digital agency and custom software development company offering AI app development, web development, mobile app development, SEO services, and digital transformation solutions for startups, SMEs, and enterprises worldwide." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/" />
         
         <meta property="og:title" content="Custom Software &amp; AI Development | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs .TECH is an elite custom software development studio. We build bespoke SaaS, enterprise systems, and AI models for global businesses. Let's build your solution." />
-        <meta property="og:url" content="https://www.abuqitmirlabs.tech" />
+        <meta property="og:description" content="AbuQitmirLabs is a full-service digital agency and custom software development company offering AI app development, web development, mobile app development, SEO services, and digital transformation solutions." />
+        <meta property="og:url" content="https://www.abuqitmirlabs.tech/" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Custom Software &amp; AI Development | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs .TECH is an elite custom software development studio. We build bespoke SaaS, enterprise systems, and AI models for global businesses. Let's build your solution." />
+        <meta name="twitter:description" content="AbuQitmirLabs is a full-service digital agency and custom software development company offering AI app development, web development, mobile app development, SEO services, and digital transformation solutions." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         <script 
@@ -44,63 +44,59 @@ export default function HomePage() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "AbuQitmirLabs",
-              "alternateName": "AbuQitmirLabs.tech",
-              "url": "https://www.abuqitmirlabs.tech",
-              "logo": "https://www.abuqitmirlabs.tech/logo.png",
-              "description": "AbuQitmirLabs is a Karachi-based custom software development and AI engineering studio, delivering bespoke SaaS platforms, mobile & web app development, AI agent development, and SEO services to clients across the US, UK, Europe, and Pakistan.",
-              "foundingDate": "2020",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Karachi",
-                "addressCountry": "PK"
-              },
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+92-323-3260859",
-                "contactType": "customer service",
-                "areaServed": ["US", "GB", "PK", "AU", "EU"],
-                "availableLanguage": ["English", "Urdu"]
-              },
-              "sameAs": [
-                "https://www.linkedin.com/company/abuqitmirlabs-tech-697423390",
-                "https://www.facebook.com/abuqitmirlabs",
-                "https://www.instagram.com/abuqitmirlabs",
-                "https://x.com/AbuQitmir",
-                "https://www.clutch.co/profile/abuqitmirlabs",
-                "https://themanifest.com/company/abuqitmirlabstech",
-                "https://www.goodfirms.co/company/abuqitmirlabs-tech",
-                "https://www.youtube.com/@AbuQitmirMohammadShirazAlMadani"
-              ]
-            })
-          }}
-        ></script>
-
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": "AbuQitmirLabs",
-              "url": "https://www.abuqitmirlabs.tech"
-            })
-          }}
-        ></script>
-
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
+              "@graph": [
                 {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://www.abuqitmirlabs.tech"
+                  "@type": "Organization",
+                  "@id": "https://www.abuqitmirlabs.tech/#organization",
+                  "name": "AbuQitmirLabs",
+                  "alternateName": "AbuQitmirLabs.tech",
+                  "url": "https://www.abuqitmirlabs.tech/",
+                  "logo": "https://www.abuqitmirlabs.tech/logo.png",
+                  "description": "AbuQitmirLabs is a full-service digital agency and custom software development company offering AI app development, web development, mobile app development, SEO services, and digital transformation solutions.",
+                  "foundingDate": "2020",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Karachi",
+                    "addressCountry": "PK"
+                  },
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+92-323-3260859",
+                    "contactType": "customer service",
+                    "areaServed": ["US", "GB", "PK", "AU", "EU", "CA"],
+                    "availableLanguage": ["English", "Urdu"]
+                  },
+                  "sameAs": [
+                    "https://www.linkedin.com/company/abuqitmirlabs-tech-697423390",
+                    "https://www.facebook.com/abuqitmirlabs",
+                    "https://www.instagram.com/abuqitmirlabs",
+                    "https://x.com/AbuQitmir",
+                    "https://www.clutch.co/profile/abuqitmirlabs",
+                    "https://themanifest.com/company/abuqitmirlabstech",
+                    "https://www.goodfirms.co/company/abuqitmirlabs-tech",
+                    "https://www.youtube.com/@AbuQitmirMohammadShirazAlMadani"
+                  ]
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://www.abuqitmirlabs.tech/#website",
+                  "name": "AbuQitmirLabs",
+                  "url": "https://www.abuqitmirlabs.tech/",
+                  "publisher": {
+                    "@id": "https://www.abuqitmirlabs.tech/#organization"
+                  }
+                },
+                {
+                  "@type": "BreadcrumbList",
+                  "@id": "https://www.abuqitmirlabs.tech/#breadcrumb",
+                  "itemListElement": [
+                    {
+                      "@type": "ListItem",
+                      "position": 1,
+                      "name": "Home",
+                      "item": "https://www.abuqitmirlabs.tech/"
+                    }
+                  ]
                 }
               ]
             })
@@ -121,7 +117,7 @@ export default function HomePage() {
       <div className="overflow-hidden transform z-20 bg-[#B9FF66] w-full border-y-4 pt-4 pb-4 relative shadow-[0_8px_0_0_rgba(0,0,0,1)] -rotate-1">
         <div className="flex whitespace-nowrap w-max animate-marquee">
           {[...Array(2)].map((_, i) => (
-            <div key={i} className="flex gap-10 text-3xl md:text-5xl font-black tracking-tighter uppercase items-center text-black px-10">
+            <div key={i} aria-hidden={i > 0 ? "true" : undefined} className="flex gap-10 text-3xl md:text-5xl font-black tracking-tighter uppercase items-center text-black px-10">
               <span>Comprehensive digital strategy</span> <Star className="fill-current" size={32} />
               <span>End-to-end software engineering</span> <Star className="fill-current" size={32} />
               <span>Performance-focused web development</span> <Star className="fill-current" size={32} />

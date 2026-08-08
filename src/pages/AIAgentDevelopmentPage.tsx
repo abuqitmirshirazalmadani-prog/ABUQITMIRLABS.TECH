@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
+import { YouTubeFacade } from '../components/ui/youtube-facade';
 import { 
   Brain, 
   Cpu, 
@@ -508,20 +509,7 @@ export default function AIAgentDevelopmentPage() {
           </div>
           
           <div className="aspect-video w-full rounded-[2.5rem] overflow-hidden bg-black border border-white/10 shadow-[0_0_50px_rgba(204,255,0,0.05)] relative group">
-            <iframe 
-              className="w-full h-full opacity-85 group-hover:opacity-100 transition-opacity duration-500"
-              src="https://www.youtube.com/embed/B31EXmt5LrQ"
-              title="AbuQitmirLabs AI Agent Case Study"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-            {/* Visual Hover Indicator Component */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none group-hover:scale-110 transition-transform duration-300">
-              <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity">
-                <Play className="w-6 h-6 text-white fill-white ml-1" />
-              </div>
-            </div>
+            <YouTubeFacade videoId="B31EXmt5LrQ" title="AbuQitmirLabs AI Agent Case Study" />
           </div>
         </div>
       </section>

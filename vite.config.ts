@@ -293,22 +293,24 @@ Sitemap: ${hostname}/sitemap.xml`;
             
             // Inject route specific meta tags into index.html
             let routeHtml = baseHtml;
+            const safeTitle = route.title.replace(/&/g, '&amp;');
+            const safeDesc = route.description.replace(/"/g, '&quot;').replace(/&/g, '&amp;');
             
             // Replace Title
-            routeHtml = routeHtml.replace(/<title>(.*?)<\/title>/g, `<title>${route.title}</title>`);
+            routeHtml = routeHtml.replace(/<title>[\s\S]*?<\/title>/gi, `<title>${safeTitle}</title>`);
             
             // Replace OG/Twitter titles
-            routeHtml = routeHtml.replace(/<meta property="og:title" content="(.*?)"\s*\/?>/g, `<meta property="og:title" content="${route.title}" />`);
-            routeHtml = routeHtml.replace(/<meta name="twitter:title" content="(.*?)"\s*\/?>/g, `<meta name="twitter:title" content="${route.title}" />`);
+            routeHtml = routeHtml.replace(/<meta\s+property="og:title"\s+content="[\s\S]*?"\s*\/?>/gi, `<meta property="og:title" content="${safeTitle}" />`);
+            routeHtml = routeHtml.replace(/<meta\s+name="twitter:title"\s+content="[\s\S]*?"\s*\/?>/gi, `<meta name="twitter:title" content="${safeTitle}" />`);
 
             // Replace Descriptions
-            routeHtml = routeHtml.replace(/<meta name="description" content="(.*?)"\s*\/?>/g, `<meta name="description" content="${route.description}" />`);
-            routeHtml = routeHtml.replace(/<meta property="og:description" content="(.*?)"\s*\/?>/g, `<meta property="og:description" content="${route.description}" />`);
-            routeHtml = routeHtml.replace(/<meta name="twitter:description" content="(.*?)"\s*\/?>/g, `<meta name="twitter:description" content="${route.description}" />`);
+            routeHtml = routeHtml.replace(/<meta\s+name="description"\s+content="[\s\S]*?"\s*\/?>/gi, `<meta name="description" content="${safeDesc}" />`);
+            routeHtml = routeHtml.replace(/<meta\s+property="og:description"\s+content="[\s\S]*?"\s*\/?>/gi, `<meta property="og:description" content="${safeDesc}" />`);
+            routeHtml = routeHtml.replace(/<meta\s+name="twitter:description"\s+content="[\s\S]*?"\s*\/?>/gi, `<meta name="twitter:description" content="${safeDesc}" />`);
 
             // Update URL
-            routeHtml = routeHtml.replace(/<meta property="og:url" content="(.*?)"\s*\/?>/g, `<meta property="og:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />`);
-            routeHtml = routeHtml.replace(/<meta name="twitter:url" content="(.*?)"\s*\/?>/g, `<meta name="twitter:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />`);
+            routeHtml = routeHtml.replace(/<meta\s+property="og:url"\s+content="[\s\S]*?"\s*\/?>/gi, `<meta property="og:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />`);
+            routeHtml = routeHtml.replace(/<meta\s+name="twitter:url"\s+content="[\s\S]*?"\s*\/?>/gi, `<meta name="twitter:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />`);
             
             // Replace canonical link
             if (routeHtml.includes('<link rel="canonical"')) {

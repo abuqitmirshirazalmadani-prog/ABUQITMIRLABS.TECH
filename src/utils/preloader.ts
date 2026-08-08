@@ -63,30 +63,25 @@ export function preloadRoute(path: string) {
 }
 
 /**
- * Non-blocking, staggered background preloader for primary routes
+ * Non-blocking, idle preloader for top primary routes only
  */
 export function preloadAllRoutes() {
-  const primaryRoutes = Object.keys(routeLoaders);
-
   if (typeof window === 'undefined') return;
 
-  // Stagger imports sequentially so main thread and network remain free while prewarming bundles
-  let index = 0;
-  const staggerPreload = () => {
-    if (index >= primaryRoutes.length) return;
-    const route = primaryRoutes[index];
-    index++;
-    preloadRoute(route);
+  // Only prewarm top 3 most visited primary routes when the browser is completely idle
+  const highPriorityRoutes = ['/custom-software', '/ai-agent-development', '/contact'];
 
-    if ('requestIdleCallback' in window) {
-      (window as any).requestIdleCallback(() => {
-        setTimeout(staggerPreload, 200);
-      }, { timeout: 800 });
-    } else {
-      setTimeout(staggerPreload, 250);
-    }
+  const prewarm = () => {
+    highPriorityRoutes.forEach((route, idx) => {
+      setTimeout(() => {
+        preloadRoute(route);
+      }, idx * 600);
+    });
   };
 
-  // Start background route prewarming 500ms after initial page load
-  setTimeout(staggerPreload, 500);
+  if ('requestIdleCallback' in window) {
+    (window as any).requestIdleCallback(prewarm, { timeout: 3000 });
+  } else {
+    setTimeout(prewarm, 2000);
+  }
 }

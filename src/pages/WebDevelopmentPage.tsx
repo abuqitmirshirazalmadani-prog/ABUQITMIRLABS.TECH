@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { YouTubeFacade } from '../components/ui/youtube-facade';
 import { 
   Globe, 
   Zap, 
@@ -1294,14 +1295,7 @@ Do not sign a website contract without these protective legal terms.
                 className="group flex flex-col items-center text-center bg-white/[0.02] border border-white/5 rounded-3xl overflow-hidden hover:border-blue-500/30 transition-all p-4 shadow-2xl"
               >
                 <div className="aspect-video relative w-full rounded-2xl overflow-hidden bg-black mb-6 border border-white/10">
-                  <iframe 
-                    className="w-full h-full opacity-60 group-hover:opacity-100 transition-opacity"
-                    src={`https://www.youtube.com/embed/${video.videoId}`}
-                    title={video.title}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
+                  <YouTubeFacade videoId={video.videoId} title={video.title} />
                 </div>
                 <div className="px-4 pb-2">
                   <h4 className="text-xl font-bold text-white mb-2 uppercase tracking-tight">{video.title}</h4>

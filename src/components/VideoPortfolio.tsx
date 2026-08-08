@@ -2,9 +2,10 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { Play, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { MagicText } from './ui/magic-text';
 import { AnimatedBreathingText } from './ui/animated-breathing-text';
+import { YouTubeFacade } from './ui/youtube-facade';
 
 const videos = [
     {
@@ -59,22 +60,9 @@ const VideoPortfolio = () => {
                             transition={{ delay: idx * 0.1 }}
                             className="group flex flex-col bg-zinc-900/40 border border-white/5 rounded-3xl overflow-hidden hover:border-white/20 transition-all shadow-xl backdrop-blur-sm"
                         >
-                            {/* Video Container */}
+                            {/* Video Container with Facade */}
                             <div className="aspect-video relative overflow-hidden bg-black/60">
-                                <iframe 
-                                    className="w-full h-full opacity-80 group-hover:opacity-100 transition-opacity"
-                                    src={`https://www.youtube.com/embed/${item.videoId}`}
-                                    title={item.title}
-                                    frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen
-                                ></iframe>
-                                {/* Overlay Play Indicator (Visual Only) */}
-                                <div className="absolute inset-0 flex items-center justify-center pointer-events-none group-hover:scale-110 transition-transform">
-                                    <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <Play className="w-5 h-5 text-white fill-white" />
-                                    </div>
-                                </div>
+                                <YouTubeFacade videoId={item.videoId} title={item.title} />
                             </div>
 
                             {/* Content */}

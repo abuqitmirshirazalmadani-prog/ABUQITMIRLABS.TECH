@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ExternalLink, MessageCircle, Sparkles } from 'lucide-react';
+import { YouTubeFacade } from './ui/youtube-facade';
 
 const InteractivePortfolio = () => {
     return (
@@ -280,14 +281,7 @@ const InteractivePortfolio = () => {
                             <div>
                                 {/* Video Showcase */}
                                 <div className="aspect-video w-full rounded-2xl overflow-hidden bg-black/60 border border-red-950/50 hover:border-red-500/30 transition-all mb-8 group/video relative">
-                                    <iframe 
-                                        className="w-full h-full opacity-90 group-hover/video:opacity-100 transition-opacity"
-                                        src="https://www.youtube.com/embed/eAhSoYYEwnI"
-                                        title="GhastlyPages Video Showcase"
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                    ></iframe>
+                                    <YouTubeFacade videoId="eAhSoYYEwnI" title="GhastlyPages Video Showcase" />
                                 </div>
 
                                 {/* Tech Tags */}
@@ -359,14 +353,7 @@ const InteractivePortfolio = () => {
                             <div>
                                 {/* Video Showcase */}
                                 <div className="aspect-video w-full rounded-2xl overflow-hidden bg-black/60 border border-emerald-950/50 hover:border-emerald-500/30 transition-all mb-8 group/video relative">
-                                    <iframe 
-                                        className="w-full h-full opacity-90 group-hover/video:opacity-100 transition-opacity"
-                                        src="https://www.youtube.com/embed/fdvaOWt32EQ"
-                                        title="CloudHealth Portal Video Showcase"
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                    ></iframe>
+                                    <YouTubeFacade videoId="fdvaOWt32EQ" title="CloudHealth Portal Video Showcase" />
                                 </div>
 
                                 {/* Tech Tags */}
@@ -438,14 +425,7 @@ const InteractivePortfolio = () => {
                             <div>
                                 {/* Video Showcase */}
                                 <div className="aspect-video w-full rounded-2xl overflow-hidden bg-black/60 border border-indigo-950/50 hover:border-indigo-500/30 transition-all mb-8 group/video relative">
-                                    <iframe 
-                                        className="w-full h-full opacity-90 group-hover/video:opacity-100 transition-opacity"
-                                        src="https://www.youtube.com/embed/DqspV6DCo3I"
-                                        title="ClinicOS Pro Video Showcase"
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                    ></iframe>
+                                    <YouTubeFacade videoId="DqspV6DCo3I" title="ClinicOS Pro Video Showcase" />
                                 </div>
 
                                 {/* Tech Tags */}
@@ -517,14 +497,7 @@ const InteractivePortfolio = () => {
                             <div>
                                 {/* Video Showcase */}
                                 <div className="aspect-video w-full rounded-2xl overflow-hidden bg-black/60 border border-lime-950/50 hover:border-lime-500/30 transition-all mb-8 group/video relative">
-                                    <iframe 
-                                        className="w-full h-full opacity-90 group-hover/video:opacity-100 transition-opacity"
-                                        src="https://www.youtube.com/embed/KAhcBqKN_ks"
-                                        title="ProFit Command Center Video Showcase"
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                    ></iframe>
+                                    <YouTubeFacade videoId="KAhcBqKN_ks" title="ProFit Command Center Video Showcase" />
                                 </div>
 
                                 {/* Tech Tags */}

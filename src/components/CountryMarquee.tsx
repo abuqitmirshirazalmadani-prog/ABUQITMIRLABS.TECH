@@ -23,7 +23,7 @@ const CountryMarquee: React.FC = () => {
 
         <div className="flex whitespace-nowrap w-max animate-marquee">
             {[...Array(2)].map((_, i) => (
-                <div key={i} className="flex items-center gap-12 lg:gap-20 px-10 text-gray-400 text-lg font-medium">
+                <div key={i} aria-hidden={i > 0 ? "true" : undefined} className="flex items-center gap-12 lg:gap-20 px-10 text-gray-400 text-lg font-medium">
                     {countries.map((country, idx) => (
                         <div key={idx} className="flex gap-3 items-center group transition-colors hover:text-white">
                             <span className="text-2xl">{country.flag}</span>
