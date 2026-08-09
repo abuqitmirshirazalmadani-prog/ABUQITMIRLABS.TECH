@@ -14,7 +14,14 @@ DirectoryIndex index.html
     Header set X-XSS-Protection "1; mode=block"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
     
-    # Enable Immutable long-term caching for minified CSS & JS assets
+    # Never cache HTML files so clients always receive current JS/CSS hashes
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+
+    # Immutable long-term caching for hashed CSS & JS static assets
     <FilesMatch "\.(css|js|woff2|jpg|png|webp|svg)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
