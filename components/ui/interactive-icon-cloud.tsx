@@ -68,12 +68,20 @@ export function IconCloud({ iconSlugs }: DynamicCloudProps) {
   }, [iconSlugs]);
 
   const renderedIcons = useMemo(() => {
-    if (!data) return null;
+    if (!data || !data.simpleIcons) return null;
 
     return Object.values(data.simpleIcons).map((icon) =>
       renderCustomIcon(icon)
     );
   }, [data]);
+
+  if (!data || !renderedIcons || renderedIcons.length === 0) {
+    return (
+      <div className="flex items-center justify-center w-full min-h-[300px] text-zinc-500 font-mono text-xs">
+        <div className="w-8 h-8 border-2 border-[#ccff00]/20 border-t-[#ccff00] rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   return (
     // @ts-ignore

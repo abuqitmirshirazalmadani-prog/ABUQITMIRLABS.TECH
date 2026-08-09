@@ -43,7 +43,11 @@ export default function FacebookPixel() {
           t.async = !0;
           t.src = v;
           s = b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t, s);
+          if (s && s.parentNode) {
+            s.parentNode.insertBefore(t, s);
+          } else if (b.head) {
+            b.head.appendChild(t);
+          }
         })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
         /* eslint-enable */
       }
