@@ -33,6 +33,7 @@
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
     "react-helmet-async": "^3.0.0",
+    "react-icon-cloud": "^4.1.7",
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.15.0",
     "remark-gfm": "^4.0.1",

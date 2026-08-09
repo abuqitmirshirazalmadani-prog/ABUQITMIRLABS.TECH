@@ -1,258 +1,261 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform } from 'motion/react';
-import { ArrowRight, Terminal, ChevronRight, BarChart3, Server, Code2, ShieldCheck, AlertTriangle } from 'lucide-react';
-import HeroHeading from './hero-heading';
+import { motion } from 'motion/react';
+import { 
+  ArrowRight, 
+  Mail, 
+  SendHorizonal, 
+  CheckCircle2, 
+  Zap, 
+  ShieldCheck, 
+  Server,
+  Code2,
+  Sparkles
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { IconCloud } from './interactive-icon-cloud';
 import { MagicText } from './magic-text';
 
+const techSlugs = [
+  "typescript",
+  "javascript",
+  "dart",
+  "java",
+  "react",
+  "flutter",
+  "android",
+  "html5",
+  "css3",
+  "nodedotjs",
+  "express",
+  "nextdotjs",
+  "prisma",
+  "amazonaws",
+  "postgresql",
+  "firebase",
+  "nginx",
+  "vercel",
+  "testinglibrary",
+  "jest",
+  "cypress",
+  "docker",
+  "git",
+  "jira",
+  "github",
+  "gitlab",
+  "visualstudiocode",
+  "androidstudio",
+  "sonarqube",
+  "figma",
+];
+
 const NexusHero = () => {
-    const tunnelRef = useRef<HTMLDivElement>(null);
-    const sceneRef = useRef<HTMLDivElement>(null);
-    
-    // Scroll Parallax
-    const { scrollY } = useScroll();
-    const tunnelY = useTransform(scrollY, [0, 800], [0, -120]);
-    const ambientY = useTransform(scrollY, [0, 800], [0, 50]);
-    
-    // Mouse Parallax refs (DOM-direct for maximum performance & 0 React re-renders)
-    const mousePosRef = useRef({ x: 50, y: 50 });
-    const targetPosRef = useRef({ x: 50, y: 50 });
+    const [email, setEmail] = useState('');
+    const [submitted, setSubmitted] = useState(false);
 
-    useEffect(() => {
-        if (!tunnelRef.current) return;
-
-        const generators = {
-            chart: () => `
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-xs font-medium text-gray-200">Latency</span>
-                    <div class="text-blue-400"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 16V8"/><path d="M12 16V12"/><path d="M17 16V10"/></svg></div>
-                </div>
-                <div class="flex items-end gap-1.5 h-16 w-full">
-                    ${Array.from({length: 8}).map(() => `<div class="w-full bg-gray-700 hover:bg-blue-500/50 transition-colors rounded-t-sm" style="height: ${Math.random() * 60 + 20}%"></div>`).join('')}
-                </div>`,
-            stats: () => `
-                <div class="flex flex-col gap-1">
-                    <div class="flex items-center justify-between w-full">
-                        <span class="text-xs text-gray-400 font-medium">Nodes</span>
-                        <div class="text-gray-400"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg></div>
-                    </div>
-                    <span class="text-3xl font-medium text-white tracking-tight mt-1">1,024</span>
-                    <div class="flex items-center gap-1 text-[10px] text-emerald-400 mt-2">
-                        <span>+12.5% scaling</span>
-                    </div>
-                </div>`,
-            code: () => `
-                <div class="flex items-center gap-2 mb-3 border-b border-white/5 pb-2">
-                    <div class="text-gray-400"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-                    <span class="text-[10px] font-medium text-gray-200">router.ts</span>
-                </div>
-                <div class="font-mono text-[10px] text-gray-400 flex flex-col gap-1.5 leading-tight">
-                    <div class="flex gap-2"><span class="text-blue-400">export</span> <span class="text-yellow-200">handler</span> <span class="text-gray-200">=</span> <span>(req)</span></div>
-                    <div class="pl-3 text-gray-200">await process(req.body);</div>
-                </div>`,
-            status: () => `
-                <div class="flex items-start justify-between">
-                    <div class="flex flex-col gap-1">
-                        <span class="text-xs font-medium text-gray-200">DB Sync</span>
-                        <span class="text-[10px] text-gray-400">eu-central-1</span>
-                    </div>
-                    <div class="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></div>
-                </div>
-                <div class="w-full bg-gray-800 h-1 rounded-full mt-4">
-                    <div class="w-[85%] h-full bg-emerald-500 rounded-full"></div>
-                </div>`,
-            alert: () => `
-                <div class="flex items-start gap-3">
-                    <div class="p-1.5 rounded bg-red-500/10 text-red-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
-                    </div>
-                    <div class="flex flex-col gap-0.5">
-                        <span class="text-xs font-medium text-white">Memory Spike</span>
-                        <span class="text-[10px] text-gray-400 leading-tight">Pod worker-03 exceeding limits.</span>
-                    </div>
-                </div>`
-        };
-
-        const panelTypes = Object.keys(generators) as (keyof typeof generators)[];
-        // Optimized panel count to prevent CPU/GPU frame drops and ensure super-smooth navigation transitions
-        const numPanels = window.innerWidth < 768 ? 8 : 18;
-        const maxDepth = 4000;
-        const panels: { el: HTMLDivElement, x: number, y: number, z: number }[] = [];
-
-        for (let i = 0; i < numPanels; i++) {
-            const el = document.createElement('div');
-            const type = panelTypes[Math.floor(Math.random() * panelTypes.length)];
-            // Replaced the heavy backdrop-blur-md with highly opaque solid background to eliminate expensive compositing and prevent overlapping pixel redraws.
-            el.className = 'absolute top-1/2 left-1/2 w-64 p-5 rounded-xl border border-white/5 bg-[#121212]/95 flex flex-col [will-change:transform,opacity]';
-            if(type === 'alert') el.classList.add('border-red-500/20');
-            el.innerHTML = generators[type]();
-            tunnelRef.current.appendChild(el);
-            
-            const angle = Math.random() * Math.PI * 2;
-            const radiusX = (window.innerWidth < 768 ? 180 : 350) + Math.random() * 400;
-            const radiusY = (window.innerWidth < 768 ? 130 : 250) + Math.random() * 300;
-            const x = Math.cos(angle) * radiusX;
-            const y = Math.sin(angle) * radiusY;
-            const z = -Math.random() * maxDepth;
-            panels.push({ el, x, y, z });
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (email.trim()) {
+            setSubmitted(true);
+            setTimeout(() => {
+                window.open(`https://wa.me/923233260859?text=${encodeURIComponent(`Hello AbuQitmirLabs team, I would like a consultation for my project. My email/details: ${email}`)}`, '_blank');
+            }, 300);
         }
-
-        let speed = 2.0;
-        const cameraZ = 300;
-        let animationFrameId: number;
-        let isIntersecting = true;
-
-        const observer = new IntersectionObserver(([entry]) => {
-            isIntersecting = entry.isIntersecting;
-        }, { threshold: 0.05 });
-
-        if (sceneRef.current) {
-            observer.observe(sceneRef.current);
-        }
-
-        const animate = () => {
-            if (isIntersecting && !document.hidden) {
-                // Update tunnel panels
-                panels.forEach(p => {
-                    p.z += speed;
-                    if (p.z > cameraZ) p.z -= maxDepth + cameraZ;
-                    
-                    let opacity = p.z < -3200 
-                        ? Math.max(0, 1 - ((-p.z - 3200) / 800)) 
-                        : (p.z > 0 ? Math.max(0, 1 - (p.z / cameraZ)) : 1);
-                    
-                    p.el.style.transform = `translate3d(-50%, -50%, 0) translate3d(${p.x}px, ${p.y}px, ${p.z}px)`;
-                    p.el.style.opacity = opacity.toFixed(2);
-                });
-
-                // Update perspective parallax in same animation frame
-                targetPosRef.current = {
-                    x: targetPosRef.current.x + (mousePosRef.current.x - targetPosRef.current.x) * 0.05,
-                    y: targetPosRef.current.y + (mousePosRef.current.y - targetPosRef.current.y) * 0.05
-                };
-                if (sceneRef.current) {
-                    sceneRef.current.style.perspectiveOrigin = `${targetPosRef.current.x.toFixed(2)}% ${targetPosRef.current.y.toFixed(2)}%`;
-                }
-            }
-            animationFrameId = requestAnimationFrame(animate);
-        };
-
-        const handleMouseMove = (e: MouseEvent) => {
-            if (!isIntersecting) return;
-            mousePosRef.current = {
-                x: 50 + ((e.clientX / window.innerWidth - 0.5) * 15),
-                y: 50 + ((e.clientY / window.innerHeight - 0.5) * 15)
-            };
-        };
-
-        window.addEventListener('mousemove', handleMouseMove, { passive: true });
-        animate();
-
-        return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
-            cancelAnimationFrame(animationFrameId);
-            observer.disconnect();
-            if (tunnelRef.current) {
-                while (tunnelRef.current.firstChild) {
-                    tunnelRef.current.removeChild(tunnelRef.current.firstChild);
-                }
-            }
-        };
-    }, []);
+    };
 
     return (
-        <section id="nexus-engine-hero" className="bg-[#0a0a0a] text-[#ededed] overflow-hidden w-full min-h-screen relative font-sans selection:bg-white/20 selection:text-white flex flex-col">
-            {/* Ambient Background */}
-            <motion.div 
-                className="absolute inset-0 z-0 pointer-events-none"
-                style={{ 
-                    background: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 60%)',
-                    y: ambientY
-                }}
-            />
+        <section id="nexus-hero" className="relative overflow-hidden bg-[#09090b] text-white py-20 lg:py-28 border-b border-dashed border-white/10 selection:bg-[#ccff00]/30 selection:text-white">
+            {/* Background Ambient Glows & Grid */}
+            <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+            <div aria-hidden className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-gradient-to-b from-[#ccff00]/[0.05] via-blue-500/[0.02] to-transparent blur-3xl pointer-events-none" />
+            <div aria-hidden className="absolute -top-40 -right-40 w-96 h-96 bg-[#ccff00]/10 rounded-full blur-[120px] pointer-events-none" />
+            <div aria-hidden className="absolute top-1/2 -left-40 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
 
-            {/* 3D Tunnel Scene */}
-            <div 
-                ref={sceneRef} 
-                aria-hidden="true"
-                className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden"
-                style={{ 
-                    perspective: '800px', 
-                    perspectiveOrigin: '50% 50%' 
-                }}
-            >
-                <motion.div 
-                    ref={tunnelRef} 
-                    aria-hidden="true"
-                    className="relative w-full h-full" 
-                    style={{ 
-                        transformStyle: 'preserve-3d',
-                        y: tunnelY
-                    }}
-                >
-                    {/* Panels injected via Effect */}
-                </motion.div>
-            </div>
+            <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
+                <div className="lg:flex lg:items-center lg:gap-12">
+                    
+                    {/* Left Side: Content Block */}
+                    <div className="relative z-10 mx-auto max-w-2xl text-center lg:ml-0 lg:w-1/2 lg:text-left">
+                        
+                        {/* New Pill Badge */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <Link
+                                to="/contact"
+                                className="rounded-xl mx-auto flex w-fit items-center gap-2 border border-white/10 bg-white/[0.03] backdrop-blur-md p-1 pr-3 hover:border-[#ccff00]/40 transition-all group mb-8 shadow-lg shadow-black/50 lg:ml-0"
+                            >
+                                <span className="bg-[#ccff00] text-black font-extrabold rounded-lg px-2.5 py-1 text-xs uppercase tracking-wider">
+                                    New
+                                </span>
+                                <span className="text-xs md:text-sm font-medium text-gray-300 group-hover:text-white transition-colors">
+                                    AbuQitmirLabs.tech Digital Excellence v2.0
+                                </span>
+                                <span className="bg-white/15 block h-4 w-px"></span>
+                                <ArrowRight className="size-4 text-[#ccff00] group-hover:translate-x-1 transition-transform" />
+                            </Link>
+                        </motion.div>
 
-            {/* Content Overlay */}
-            <main className="relative z-40 flex-1 flex flex-col items-center justify-center text-center px-6 pointer-events-none pt-24 pb-20 md:pt-32 md:pb-32">
-                <div className="pointer-events-auto flex flex-col items-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                    >
-                        <a href="#" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[10px] sm:text-xs font-medium text-gray-400 mb-6 sm:mb-8 hover:bg-white/10 hover:text-white transition-all backdrop-blur-md max-w-full">
-                            <span className="flex h-2 w-2 relative shrink-0">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                        {/* Heading */}
+                        <motion.h1 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.1 }}
+                            className="mt-4 text-balance text-4xl font-bold tracking-tight md:text-5xl xl:text-6xl leading-[1.12]"
+                        >
+                            Full-Service Digital Agency &amp; <br className="hidden sm:inline" />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#ccff00] to-emerald-400">
+                                Custom Software Studio
                             </span>
-                            <span className="truncate whitespace-nowrap">ABUQITMIRLABS.TECH Digital Excellence v2.0</span>
-                            <ChevronRight className="w-3 h-3 shrink-0" />
-                        </a>
-                    </motion.div>
+                        </motion.h1>
 
-                    <div className="mb-6 w-full">
-                        <HeroHeading />
-                    </div>
- 
-                    <div className="max-w-4xl mx-auto mb-10 px-4">
-                        <MagicText 
-                            text="“AbuQitmirLabs is a premier custom software development company delivering AI app development services, custom website development services and enterprise software solutions to clients across the United States, United Kingdom, and Europe.”"
-                            className="justify-center text-center leading-[1.6] font-medium"
-                            wordClassName="text-xs sm:text-sm md:text-base text-gray-400"
-                        />
+                        {/* Description Quote */}
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="mt-6 text-gray-300 text-base md:text-lg leading-relaxed font-normal"
+                        >
+                            <MagicText 
+                                text="AbuQitmirLabs is a premier custom software development company delivering AI app development services, custom website development services and enterprise software solutions to clients across the United States, United Kingdom, and Europe."
+                                className="leading-relaxed"
+                                wordClassName="text-sm sm:text-base md:text-lg text-gray-300 font-normal"
+                            />
+                        </motion.div>
+
+                        {/* Email / Consultation Input Form */}
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
+                            className="mt-8"
+                        >
+                            <form onSubmit={handleSubmit} className="mx-auto max-w-md lg:ml-0 lg:mr-auto">
+                                <div className="bg-zinc-950/90 has-[input:focus]:ring-[#ccff00]/40 relative grid grid-cols-[1fr_auto] items-center rounded-2xl border border-white/15 pr-1.5 shadow-2xl shadow-black/80 has-[input:focus]:ring-2 transition-all">
+                                    <div className="relative flex items-center">
+                                        <Mail className="text-gray-400 pointer-events-none absolute left-4 size-5" />
+                                        <input
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            placeholder="Enter mail or project idea..."
+                                            className="h-14 w-full bg-transparent pl-12 pr-3 text-sm text-white placeholder:text-gray-500 focus:outline-none"
+                                            type="text"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div className="md:pr-1 lg:pr-0">
+                                        <Button
+                                            type="submit"
+                                            aria-label="submit"
+                                            className="bg-[#ccff00] hover:bg-[#b8e600] text-black font-extrabold h-11 px-5 rounded-xl transition-all cursor-pointer shadow-md flex items-center gap-2"
+                                        >
+                                            <span className="hidden md:block text-xs uppercase tracking-wider font-extrabold">
+                                                {submitted ? "Redirecting..." : "Get Started"}
+                                            </span>
+                                            <SendHorizonal
+                                                className="relative size-4 md:hidden"
+                                                strokeWidth={2.5}
+                                            />
+                                        </Button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            {/* Bullet Highlights matching Tailark list style */}
+                            <ul className="mt-8 space-y-2.5 text-left text-sm font-medium text-gray-300 list-inside list-disc marker:text-[#ccff00]">
+                                <li className="hover:text-white transition-colors">
+                                    <strong className="text-white">Faster AI Deployment</strong> &mdash; Production-grade AI agent architectures
+                                </li>
+                                <li className="hover:text-white transition-colors">
+                                    <strong className="text-white">Modern &amp; Bespoke Engineering</strong> &mdash; Tailored to your exact business workflow
+                                </li>
+                                <li className="hover:text-white transition-colors">
+                                    <strong className="text-white">100% Scalable &amp; Secure</strong> &mdash; Cloud-native infrastructure built for enterprise growth
+                                </li>
+                            </ul>
+                        </motion.div>
+
+                        {/* CTA Buttons */}
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.4 }}
+                            className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+                        >
+                            <a 
+                                href="https://wa.me/923233260859" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="group w-full sm:w-auto px-7 py-3.5 rounded-xl bg-white text-gray-950 font-bold text-sm hover:bg-[#ccff00] transition-all shadow-[0_0_25px_rgba(204,255,0,0.25)] active:scale-95 flex items-center justify-center gap-2"
+                            >
+                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                Build Your AI App
+                            </a>
+                            <Link 
+                                to="/contact" 
+                                className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-zinc-900/80 border border-white/10 text-white font-bold text-sm hover:bg-zinc-800 transition-all backdrop-blur-md flex items-center justify-center gap-2 active:scale-95"
+                            >
+                                Get Free Consultation
+                            </Link>
+                        </motion.div>
+
                     </div>
 
-                    <motion.div 
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-                        className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
-                    >
-                        <a 
-                            href="https://wa.me/923233260859" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="group w-full sm:w-auto px-8 py-4 rounded-xl bg-white text-gray-950 font-bold text-sm hover:bg-[#ccff00] transition-all shadow-[0_0_20px_rgba(204,255,0,0.2)] active:scale-95 flex items-center justify-center gap-2"
+                    {/* Right Side: Interactive 3D Tech Icon Cloud Display */}
+                    <div className="mt-12 lg:mt-0 lg:w-1/2 relative flex items-center justify-center">
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.92 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            className="relative w-full max-w-lg rounded-3xl border border-white/10 bg-zinc-950/80 p-6 shadow-2xl backdrop-blur-2xl overflow-hidden group hover:border-[#ccff00]/40 transition-all duration-500"
                         >
-                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                            Build Your AI App
-                        </a>
-                        <Link 
-                            to="/contact" 
-                            className="w-full sm:w-auto px-8 py-4 rounded-xl bg-zinc-900/50 border border-white/10 text-white font-bold text-sm hover:bg-zinc-800/50 transition-all backdrop-blur-md flex items-center justify-center gap-2 active:scale-95"
-                        >
-                            Get Free Consultation
-                        </Link>
-                    </motion.div>
+                            {/* Glowing Background Radial */}
+                            <div aria-hidden className="absolute -top-24 -right-24 w-60 h-60 bg-[#ccff00]/15 rounded-full blur-[80px] pointer-events-none" />
+                            <div aria-hidden className="absolute -bottom-24 -left-24 w-60 h-60 bg-blue-600/15 rounded-full blur-[80px] pointer-events-none" />
+
+                            {/* Top System Header */}
+                            <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-4 mb-2">
+                                <div className="flex items-center gap-2">
+                                    <div className="size-3 rounded-full bg-red-500/80" />
+                                    <div className="size-3 rounded-full bg-yellow-500/80" />
+                                    <div className="size-3 rounded-full bg-green-500/80" />
+                                    <span className="ml-2 font-mono text-xs text-gray-400">tech_stack_ecosystem.3d</span>
+                                </div>
+                                <span className="flex items-center gap-1.5 text-[10px] font-mono font-bold text-[#ccff00] bg-[#ccff00]/10 px-2.5 py-1 rounded-full border border-[#ccff00]/20">
+                                    <span className="size-1.5 rounded-full bg-[#ccff00] animate-pulse" />
+                                    INTERACTIVE 3D
+                                </span>
+                            </div>
+
+                            {/* 3D Icon Cloud Core */}
+                            <div className="relative z-10 py-2 flex items-center justify-center min-h-[320px]">
+                                <IconCloud iconSlugs={techSlugs} />
+                            </div>
+
+                            {/* Bottom Tech Status Footnote */}
+                            <div className="relative z-10 mt-2 bg-zinc-900/90 border border-white/10 rounded-2xl p-3.5 flex items-center justify-between gap-3">
+                                <div className="flex items-center gap-2.5">
+                                    <Sparkles className="size-5 text-[#ccff00] shrink-0" />
+                                    <div>
+                                        <p className="text-xs font-bold text-white leading-none">Modern Tech Stack Mastery</p>
+                                        <p className="text-[11px] text-gray-400 mt-0.5">30+ Languages, Frameworks &amp; Cloud Platforms</p>
+                                    </div>
+                                </div>
+                                <span className="text-[10px] font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/20 shrink-0">
+                                    FULL STACK
+                                </span>
+                            </div>
+
+                        </motion.div>
+                    </div>
+
                 </div>
-            </main>
-
-            {/* Bottom Fade */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0a0a] to-transparent z-10 pointer-events-none"></div>
+            </div>
         </section>
     );
 };
