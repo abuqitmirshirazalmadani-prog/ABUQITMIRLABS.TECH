@@ -392,70 +392,77 @@ Sitemap: ${hostname}/sitemap.xml`;
             }
 
             const meaningfulContent = `
-              <div id="root">
-                <header>
-                  <h1>${route.title}</h1>
-                  <nav aria-label="Main Navigation">
-                    <a href="/">Home</a> | 
-                    <a href="/custom-software">Custom Software</a> | 
-                    <a href="/mobile-app-development">Mobile Apps</a> | 
-                    <a href="/web-development">Web Development</a> | 
-                    <a href="/ai-agent-development">AI Agents</a> | 
-                    <a href="/seo-mastery">SEO Mastery</a> | 
-                    <a href="/graphics-design">Graphics & Branding</a> | 
-                    <a href="/content-writing">Content Writing</a> | 
-                    <a href="/case-studies">Case Studies</a> | 
-                    <a href="/about">About Us</a> | 
-                    <a href="/contact">Contact</a> | 
-                    <a href="/blog">Blog</a>
+              <div id="root" style="background-color:#09090b; color:#f4f4f5; font-family:system-ui,-apple-system,sans-serif; min-height:100vh; padding:32px 20px; max-width:1100px; margin:0 auto; box-sizing:border-box;">
+                <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 18px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:14px; margin-bottom:28px; font-size:12px; font-family:monospace; color:#ccff00;">
+                  <span style="display:flex; align-items:center; gap:8px;">
+                    <span style="width:8px; height:8px; border-radius:50%; background-color:#ccff00; display:inline-block; box-shadow:0 0 10px #ccff00;"></span>
+                    <span>AbuQitmirLabs .TECH &mdash; Digital Excellence System Engine</span>
+                  </span>
+                  <span style="color:#a1a1aa;">INITIALIZING APP...</span>
+                </div>
+                <header style="border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:20px; margin-bottom:28px;">
+                  <h1 style="font-size:28px; font-weight:800; color:#ffffff; margin:0 0 16px 0; tracking:tight;">${route.title}</h1>
+                  <nav aria-label="Main Navigation" style="display:flex; flex-wrap:wrap; gap:10px 14px; font-size:13px; color:#a1a1aa;">
+                    <a href="/" style="color:#ccff00; text-decoration:none;">Home</a> | 
+                    <a href="/custom-software" style="color:#ccff00; text-decoration:none;">Custom Software</a> | 
+                    <a href="/mobile-app-development" style="color:#ccff00; text-decoration:none;">Mobile Apps</a> | 
+                    <a href="/web-development" style="color:#ccff00; text-decoration:none;">Web Development</a> | 
+                    <a href="/ai-agent-development" style="color:#ccff00; text-decoration:none;">AI Agents</a> | 
+                    <a href="/seo-mastery" style="color:#ccff00; text-decoration:none;">SEO Mastery</a> | 
+                    <a href="/graphics-design" style="color:#ccff00; text-decoration:none;">Graphics &amp; Branding</a> | 
+                    <a href="/content-writing" style="color:#ccff00; text-decoration:none;">Content Writing</a> | 
+                    <a href="/case-studies" style="color:#ccff00; text-decoration:none;">Case Studies</a> | 
+                    <a href="/about" style="color:#ccff00; text-decoration:none;">About Us</a> | 
+                    <a href="/contact" style="color:#ccff00; text-decoration:none;">Contact</a> | 
+                    <a href="/blog" style="color:#ccff00; text-decoration:none;">Blog</a>
                   </nav>
                 </header>
-                <main>
-                  <article>
+                <main style="line-height:1.7; font-size:15px; color:#d4d4d8;">
+                  <article style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:24px; margin-bottom:28px;">
                     ${articleContent}
                   </article>
-                  <section aria-label="Industry Solutions & Resources">
-                    <h3>Specialized Industry Solutions</h3>
-                    <ul>
-                      <li><a href="/solutions/ai-automation">Custom AI Automation & Autonomous Agents</a></li>
-                      <li><a href="/solutions/fintech">Fintech Software & Secure Payment Platforms</a></li>
-                      <li><a href="/solutions/edtech">EdTech Development & Learning Management Systems</a></li>
-                      <li><a href="/solutions/ecommerce">E-Commerce Development & Headless Platforms</a></li>
-                      <li><a href="/solutions/healthcare">HIPAA-Compliant Healthcare Platforms</a></li>
+                  <section aria-label="Industry Solutions &amp; Resources" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:24px; margin-bottom:28px;">
+                    <h3 style="color:#ffffff; font-size:18px; margin-top:0;">Specialized Industry Solutions</h3>
+                    <ul style="padding-left:20px; margin-bottom:20px;">
+                      <li><a href="/solutions/ai-automation" style="color:#ccff00; text-decoration:none;">Custom AI Automation &amp; Autonomous Agents</a></li>
+                      <li><a href="/solutions/fintech" style="color:#ccff00; text-decoration:none;">Fintech Software &amp; Secure Payment Platforms</a></li>
+                      <li><a href="/solutions/edtech" style="color:#ccff00; text-decoration:none;">EdTech Development &amp; Learning Management Systems</a></li>
+                      <li><a href="/solutions/ecommerce" style="color:#ccff00; text-decoration:none;">E-Commerce Development &amp; Headless Platforms</a></li>
+                      <li><a href="/solutions/healthcare" style="color:#ccff00; text-decoration:none;">HIPAA-Compliant Healthcare Platforms</a></li>
                     </ul>
-                    <h3>Global Market Solutions</h3>
-                    <ul>
-                      <li><a href="/us-market">United States Software Engineering Services</a></li>
-                      <li><a href="/uk-market">United Kingdom Digital Transformation Solutions</a></li>
-                      <li><a href="/canada-market">Canada Enterprise App Development Services</a></li>
-                      <li><a href="/pakistan-market">Pakistan Custom Software & Mobile App Services</a></li>
-                      <li><a href="/australia-market">Australia Custom AI & Web App Engineering</a></li>
-                      <li><a href="/poland-market">Poland Tech Hub Software Development</a></li>
+                    <h3 style="color:#ffffff; font-size:18px;">Global Market Solutions</h3>
+                    <ul style="padding-left:20px;">
+                      <li><a href="/us-market" style="color:#ccff00; text-decoration:none;">United States Software Engineering Services</a></li>
+                      <li><a href="/uk-market" style="color:#ccff00; text-decoration:none;">United Kingdom Digital Transformation Solutions</a></li>
+                      <li><a href="/canada-market" style="color:#ccff00; text-decoration:none;">Canada Enterprise App Development Services</a></li>
+                      <li><a href="/pakistan-market" style="color:#ccff00; text-decoration:none;">Pakistan Custom Software &amp; Mobile App Services</a></li>
+                      <li><a href="/australia-market" style="color:#ccff00; text-decoration:none;">Australia Custom AI &amp; Web App Engineering</a></li>
+                      <li><a href="/poland-market" style="color:#ccff00; text-decoration:none;">Poland Tech Hub Software Development</a></li>
                     </ul>
                   </section>
                 </main>
-                <footer>
+                <footer style="border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; font-size:13px; color:#71717a;">
                   <p>&copy; ${new Date().getFullYear()} AbuQitmirLabs .TECH. Empowering businesses through advanced digital engineering.</p>
-                  <nav aria-label="Footer Navigation">
-                    <a href="/custom-software">Custom Software</a> | 
-                    <a href="/mobile-app-development">Mobile Apps</a> | 
-                    <a href="/web-development">Web Development</a> | 
-                    <a href="/ai-agent-development">AI Agents</a> | 
-                    <a href="/seo-mastery">SEO Mastery</a> | 
-                    <a href="/case-studies">Case Studies</a> | 
-                    <a href="/about">About Us</a> | 
-                    <a href="/contact">Contact</a> | 
-                    <a href="/blog">Blog</a> | 
-                    <a href="/privacy">Privacy Policy</a> | 
-                    <a href="/terms">Terms of Service</a>
+                  <nav aria-label="Footer Navigation" style="display:flex; flex-wrap:wrap; gap:8px 12px; margin-bottom:12px;">
+                    <a href="/custom-software" style="color:#ccff00; text-decoration:none;">Custom Software</a> | 
+                    <a href="/mobile-app-development" style="color:#ccff00; text-decoration:none;">Mobile Apps</a> | 
+                    <a href="/web-development" style="color:#ccff00; text-decoration:none;">Web Development</a> | 
+                    <a href="/ai-agent-development" style="color:#ccff00; text-decoration:none;">AI Agents</a> | 
+                    <a href="/seo-mastery" style="color:#ccff00; text-decoration:none;">SEO Mastery</a> | 
+                    <a href="/case-studies" style="color:#ccff00; text-decoration:none;">Case Studies</a> | 
+                    <a href="/about" style="color:#ccff00; text-decoration:none;">About Us</a> | 
+                    <a href="/contact" style="color:#ccff00; text-decoration:none;">Contact</a> | 
+                    <a href="/blog" style="color:#ccff00; text-decoration:none;">Blog</a> | 
+                    <a href="/privacy" style="color:#ccff00; text-decoration:none;">Privacy Policy</a> | 
+                    <a href="/terms" style="color:#ccff00; text-decoration:none;">Terms of Service</a>
                   </nav>
-                  <div style="margin-top:12px; font-size:12px;">
-                    <strong>Trusted Technology Ecosystem & Industry Authorities:</strong>
-                    <a href="https://react.dev" target="_blank" rel="noopener noreferrer">React Framework Docs</a> | 
-                    <a href="https://platform.openai.com/docs" target="_blank" rel="noopener noreferrer">OpenAI Platform Guides</a> | 
-                    <a href="https://aws.amazon.com/architecture" target="_blank" rel="noopener noreferrer">AWS Architecture Center</a> | 
-                    <a href="https://developers.google.com/search" target="_blank" rel="noopener noreferrer">Google Search Central</a> | 
-                    <a href="https://www.w3.org" target="_blank" rel="noopener noreferrer">W3C Web Standards</a>
+                  <div style="margin-top:12px; font-size:12px; color:#52525b;">
+                    <strong>Trusted Technology Ecosystem &amp; Industry Authorities:</strong>
+                    <a href="https://react.dev" target="_blank" rel="noopener noreferrer" style="color:#ccff00;">React Framework Docs</a> | 
+                    <a href="https://platform.openai.com/docs" target="_blank" rel="noopener noreferrer" style="color:#ccff00;">OpenAI Platform Guides</a> | 
+                    <a href="https://aws.amazon.com/architecture" target="_blank" rel="noopener noreferrer" style="color:#ccff00;">AWS Architecture Center</a> | 
+                    <a href="https://developers.google.com/search" target="_blank" rel="noopener noreferrer" style="color:#ccff00;">Google Search Central</a> | 
+                    <a href="https://www.w3.org" target="_blank" rel="noopener noreferrer" style="color:#ccff00;">W3C Web Standards</a>
                   </div>
                 </footer>
               </div>
