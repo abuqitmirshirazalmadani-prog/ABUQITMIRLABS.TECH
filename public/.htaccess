@@ -1,8 +1,8 @@
 # Disable Directory Listing for Security & SEO
 Options -Indexes
-DirectoryIndex index.html index.php
+DirectoryIndex index.html
 
-# Block access to directory listings and show 403
+# Block access to directory listings
 <IfModule mod_autoindex.c>
     IndexIgnore *
 </IfModule>
@@ -20,10 +20,20 @@ DirectoryIndex index.html index.php
     </FilesMatch>
 </IfModule>
 
-# Block access to hidden dotfiles and sensitive files
+# SPA Fallback & Routing (Redirects all non-file/folder requests to index.html for React Router)
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    RewriteBase /
+    
+    # Block access to hidden dotfiles
     RewriteCond %{REQUEST_URI} "!(^|/)\.well-known/"
     RewriteRule "(^|/)\." - [F]
+
+    # Handle React Single Page Application Routing
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
 </IfModule>
+
 
