@@ -94,9 +94,9 @@ const PortfolioSection = () => {
                 >
                     <Link 
                         to="/case-studies"
-                        className="inline-flex items-center gap-4 px-8 py-4 rounded-full border border-white/10 bg-white/5 text-xs text-[#ccff00] font-black uppercase tracking-widest hover:bg-white hover:text-black hover:border-white transition-all transform active:scale-95"
+                        className="inline-flex items-center gap-4 px-8 py-4 rounded-full border border-[#ccff00]/30 bg-[#ccff00]/10 text-xs text-[#ccff00] font-black uppercase tracking-widest hover:bg-[#ccff00] hover:text-black hover:border-[#ccff00] transition-all transform active:scale-95 group"
                     >
-                        Explore Full Cinematic Case Studies <ChevronRight size={14} />
+                        <span>Explore Full Cinematic Case Studies</span> <ChevronRight size={14} />
                     </Link>
                 </motion.div>
             </div>

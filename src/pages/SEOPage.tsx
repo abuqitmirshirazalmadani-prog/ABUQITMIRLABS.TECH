@@ -379,9 +379,10 @@ const SEOPage = () => {
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}
             className="px-12 py-8 bg-white text-black text-xl font-black border-4 border-black rounded-3xl brutalist-shadow hover:scale-105 transition-transform flex flex-col items-center justify-center gap-2 uppercase"
+            style={{ color: '#000000' }}
           >
-            <Star size={24} />
-            See SEO Pricing &amp; Packages
+            <Star size={24} className="text-black" style={{ color: '#000000' }} />
+            <span className="text-black font-black" style={{ color: '#000000' }}>See SEO Pricing &amp; Packages</span>
           </button>
         </motion.div>
       </section>

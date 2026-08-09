@@ -1235,9 +1235,10 @@ const CustomSoftwarePage = () => {
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="inline-flex h-14 items-center gap-3 rounded-2xl bg-white px-8 text-sm font-bold text-black shadow-2xl transition hover:bg-slate-200 hover:scale-105 active:scale-95 uppercase tracking-tight shrink-0"
+                      style={{ color: '#000000' }}
                     >
-                      Visit Live Site
-                      <ArrowUpRight className="h-5 w-5" />
+                      <span className="text-black font-black" style={{ color: '#000000' }}>Visit Live Site</span>
+                      <ArrowUpRight className="h-5 w-5 text-black" style={{ color: '#000000' }} />
                     </a>
                   </div>
                 </div>
@@ -1337,9 +1338,10 @@ const CustomSoftwarePage = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex h-14 items-center gap-3 rounded-2xl bg-white px-8 text-sm font-bold text-black shadow-2xl transition hover:bg-slate-200 hover:scale-105 active:scale-95 uppercase tracking-tight"
+                          style={{ color: '#000000' }}
                         >
-                            Learn more
-                            <ArrowRight className="h-5 w-5" />
+                            <span className="text-black font-black" style={{ color: '#000000' }}>Learn more</span>
+                            <ArrowRight className="h-5 w-5 text-black" style={{ color: '#000000' }} />
                         </a>
                     </div>
                 </div>

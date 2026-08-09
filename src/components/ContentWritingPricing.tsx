@@ -204,9 +204,10 @@ export default function ContentWritingPricing() {
                     <button
                       id="content-card-cta-popular"
                       onClick={() => handleWhatsappRedirect('Mid-Range Strategy', 'Standard 1,000-word SEO articles or Long newsletter structures')}
-                      className="w-full py-4 bg-[#ccff00] text-black hover:bg-white text-[10px] font-black uppercase tracking-widest rounded-xl transition duration-300 shadow-md text-center"
+                      className="w-full py-4 bg-[#ccff00] text-black hover:bg-[#b0d600] hover:text-black text-[10px] font-black uppercase tracking-widest rounded-xl transition duration-300 shadow-md text-center"
+                      style={{ color: '#000000' }}
                     >
-                      Initiate Discovery
+                      <span className="text-black font-black" style={{ color: '#000000' }}>Initiate Discovery</span>
                     </button>
                   </div>
                 </div>
@@ -614,10 +615,11 @@ export default function ContentWritingPricing() {
                 <button
                   id="content-estimator-submit"
                   onClick={handleEstimatorSubmit}
-                  className="bg-[#ccff00] hover:bg-white text-black font-sans font-black text-xs uppercase tracking-widest px-8 py-4 sm:py-0 rounded-xl flex items-center justify-center gap-2 transition duration-300 shrink-0"
+                  className="bg-[#ccff00] hover:bg-[#b0d600] text-black font-sans font-black text-xs uppercase tracking-widest px-8 py-4 sm:py-0 rounded-xl flex items-center justify-center gap-2 transition duration-300 shrink-0"
+                  style={{ color: '#000000' }}
                 >
-                  <span>Build Pricing Matrix</span>
-                  <ChevronRight size={14} />
+                  <span className="text-black font-black" style={{ color: '#000000' }}>Build Pricing Matrix</span>
+                  <ChevronRight size={14} className="text-black" style={{ color: '#000000' }} />
                 </button>
               </div>
             </div>

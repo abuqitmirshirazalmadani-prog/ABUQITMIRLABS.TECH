@@ -325,10 +325,11 @@ export default function AIAgentPricing() {
                 <button
                   id="agent-estimator-submit"
                   onClick={handleConsultationRedirect}
-                  className="bg-[#ccff00] hover:bg-white text-black font-sans font-black text-xs uppercase tracking-widest px-8 py-4 sm:py-0 rounded-xl flex items-center justify-center gap-2 transition duration-300 shrink-0"
+                  className="bg-[#ccff00] hover:bg-[#b0d600] hover:text-black text-black font-sans font-black text-xs uppercase tracking-widest px-8 py-4 sm:py-0 rounded-xl flex items-center justify-center gap-2 transition duration-300 shrink-0"
+                  style={{ color: '#000000' }}
                 >
-                  <span>Build Pricing Matrix</span>
-                  <ArrowRight size={14} />
+                  <span className="text-black font-black" style={{ color: '#000000' }}>Build Pricing Matrix</span>
+                  <ArrowRight size={14} className="text-black" style={{ color: '#000000' }} />
                 </button>
               </div>
             </div>

@@ -95,10 +95,11 @@ const Footer = () => {
                     <div className="relative inline-block group mt-12">
                         <Link 
                             to="/contact"
-                            className="relative z-10 px-10 py-6 bg-black text-[#ccff00] font-black text-2xl rounded-2xl brutalist-shadow border-4 border-black flex items-center gap-4 transition-transform uppercase tracking-tighter hover:bg-[#ccff00] hover:text-black"
+                            className="relative z-10 px-10 py-6 bg-black text-[#ccff00] font-black text-2xl rounded-2xl brutalist-shadow border-4 border-black flex items-center gap-4 transition-all duration-300 uppercase tracking-tighter hover:bg-white hover:text-black hover:scale-105 active:scale-95"
+                            style={{ color: '#ccff00' }}
                         >
-                            Start Your Project
-                            <ArrowRight className="w-8 h-8" />
+                            <span className="text-[#ccff00] font-black group-hover:text-black transition-colors" style={{ color: 'inherit' }}>Start Your Project</span>
+                            <ArrowRight className="w-8 h-8 text-[#ccff00] group-hover:text-black transition-colors" style={{ color: 'inherit' }} />
                         </Link>
                     </div>
 

@@ -614,9 +614,10 @@ const ContentWritingPage = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-10 py-5 bg-[#ccff00] text-black font-mono font-bold uppercase tracking-widest text-[11px] rounded-full hover:bg-white hover:scale-105 transition-all duration-300 flex items-center gap-3 shadow-[0_15px_30px_rgba(204,255,0,0.15)] cursor-pointer"
+                  style={{ color: '#000000' }}
                 >
-                    Order High-Quality Content
-                    <ArrowRight size={14} />
+                    <span className="text-black font-black" style={{ color: '#000000' }}>Order High-Quality Content</span>
+                    <ArrowRight size={14} className="text-black" style={{ color: '#000000' }} />
                 </a>
                 <button 
                   onClick={() => {
@@ -1083,8 +1084,9 @@ const ContentWritingPage = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-black bg-[#ccff00] hover:bg-white px-6 py-4 rounded-xl transition-colors"
+                  style={{ color: '#000000' }}
                 >
-                  Get Started <ArrowUpRight className="w-4 h-4" />
+                  <span className="text-black font-black" style={{ color: '#000000' }}>Get Started</span> <ArrowUpRight className="w-4 h-4 text-black" style={{ color: '#000000' }} />
                 </a>
               </div>
 
@@ -1412,8 +1414,9 @@ const ContentWritingPage = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center px-10 py-5 bg-[#ccff00] text-black font-mono font-bold text-xs uppercase tracking-widest rounded-full hover:bg-white hover:scale-105 active:scale-95 transition-all shadow-[0_15px_30px_rgba(204,255,0,0.15)] cursor-pointer"
+                      style={{ color: '#000000' }}
                     >
-                        Request a Free Content Consultation
+                        <span className="text-black font-black" style={{ color: '#000000' }}>Request a Free Content Consultation</span>
                     </a>
                     <div className="text-neutral-500 font-mono text-[9px] uppercase tracking-[0.25em] max-w-[280px] text-left border-l border-white/10 pl-8 leading-relaxed flex items-center h-16 font-bold">
                         AVG turnaround: 5-7 days // current capacity: 92%

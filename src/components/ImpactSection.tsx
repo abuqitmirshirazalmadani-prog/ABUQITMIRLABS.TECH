@@ -145,8 +145,13 @@ const ImpactSection = () => {
                     </div>
 
                     <div className="flex flex-col sm:flex-row items-center gap-4">
-                        <Link to="/contact" className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-zinc-100 text-zinc-950 font-bold text-sm hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-                            Initialize Growth <ArrowRight size={18} />
+                        <Link 
+                            to="/contact" 
+                            className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#ccff00] text-black hover:bg-[#b0d600] hover:text-black font-black text-xs uppercase tracking-wider shadow-[0_0_25px_rgba(204,255,0,0.35)] hover:shadow-[0_0_30px_rgba(204,255,0,0.5)] transition-all duration-300 flex items-center justify-center gap-2 active:scale-95 group shrink-0 whitespace-nowrap"
+                            style={{ color: '#000000' }}
+                        >
+                            <span className="text-black font-black text-xs uppercase tracking-wider whitespace-nowrap" style={{ color: '#000000' }}>Initialize Growth</span>
+                            <ArrowRight size={18} className="text-black group-hover:translate-x-1 transition-transform shrink-0" style={{ color: '#000000' }} />
                         </Link>
                     </div>
                 </div>

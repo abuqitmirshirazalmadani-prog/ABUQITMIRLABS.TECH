@@ -1293,8 +1293,9 @@ export default function AIAgentDevelopmentPage() {
               <a
                 href="mailto:hello@abuqitmirlabs.tech"
                 className="flex-1 inline-flex items-center justify-center gap-3 h-16 bg-white hover:bg-slate-200 text-black font-black uppercase rounded-2xl tracking-wider text-xs transition active:scale-95"
+                style={{ color: '#000000' }}
               >
-                📧 DEPLOY VIA EMAIL
+                <span className="text-black font-black" style={{ color: '#000000' }}>📧 DEPLOY VIA EMAIL</span>
               </a>
             </div>
             

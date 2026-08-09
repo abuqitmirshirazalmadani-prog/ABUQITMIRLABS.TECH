@@ -238,7 +238,8 @@ const ContactSection = () => {
                   disabled={isSubmitting || submitted}
                   aria-label="Deploy Tactical Briefing"
                   className={`w-full px-10 py-6 border-4 font-black uppercase text-lg transition-all duration-300 flex items-center justify-center gap-4 rounded-xl cursor-pointer
-                    ${submitted ? 'bg-green-500 border-green-500 text-black' : 'bg-[#ccff00] border-black text-black hover:bg-white hover:text-black hover:border-white'}`}
+                    ${submitted ? 'bg-green-500 border-green-500 text-black' : 'bg-[#ccff00] border-black text-black hover:bg-[#b0d600] hover:text-black hover:border-black'}`}
+                  style={{ color: '#000000' }}
                 >
                   <AnimatePresence mode="wait">
                     {isSubmitting ? (
@@ -247,28 +248,31 @@ const ContactSection = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="flex items-center gap-3"
+                        className="flex items-center gap-3 text-black font-black"
+                        style={{ color: '#000000' }}
                       >
-                        <Cpu className="animate-spin" />
-                        TRANSMITTING BATTLE PLAN...
+                        <Cpu className="animate-spin text-black" style={{ color: '#000000' }} />
+                        <span className="text-black font-black" style={{ color: '#000000' }}>TRANSMITTING BATTLE PLAN...</span>
                       </motion.div>
                     ) : submitted ? (
                       <motion.div
                         key="submitted"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="flex items-center gap-3"
+                        className="flex items-center gap-3 text-black font-black"
+                        style={{ color: '#000000' }}
                       >
-                        <ShieldCheck />
-                        TRANSMISSION SECURED IN GMAIL
+                        <ShieldCheck className="text-black" style={{ color: '#000000' }} />
+                        <span className="text-black font-black" style={{ color: '#000000' }}>TRANSMISSION SECURED IN GMAIL</span>
                       </motion.div>
                     ) : (
                       <motion.div
                         key="ready"
-                        className="flex items-center gap-3"
+                        className="flex items-center gap-3 text-black font-black"
+                        style={{ color: '#000000' }}
                       >
-                        <Send size={20} />
-                        DEPLOY TACTICAL BRIEFING
+                        <Send size={20} className="text-black" style={{ color: '#000000' }} />
+                        <span className="text-black font-black" style={{ color: '#000000' }}>DEPLOY TACTICAL BRIEFING</span>
                       </motion.div>
                     )}
                   </AnimatePresence>

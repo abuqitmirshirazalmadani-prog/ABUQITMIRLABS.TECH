@@ -127,10 +127,10 @@ const InteractivePortfolio = () => {
                                         href="https://www.tajweedpage.com" 
                                         target="_blank" 
                                         rel="noopener noreferrer" 
-                                        className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest border border-[#ccff00] text-[#ccff00] bg-transparent py-4 px-8 rounded-full transition-all duration-300 hover:bg-[#ccff00] hover:text-[#080808]"
+                                        className="group inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest border border-[#ccff00] text-[#ccff00] bg-transparent py-4 px-8 rounded-full transition-all duration-300 hover:bg-[#ccff00] hover:text-black"
                                         id="visit-live-tajweed"
                                     >
-                                        Visit Live Site <ExternalLink size={12} />
+                                        <span className="text-[#ccff00] group-hover:text-black font-black transition-colors">Visit Live Site</span> <ExternalLink size={12} className="text-[#ccff00] group-hover:text-black transition-colors" />
                                     </a>
                                 </div>
                             </div>
@@ -541,10 +541,12 @@ const InteractivePortfolio = () => {
                             href="https://wa.me/923233260859" 
                             target="_blank" 
                             rel="noopener noreferrer" 
-                            className="bg-[#ccff00] text-black font-black uppercase text-xs tracking-wider py-4 px-8 rounded-full flex items-center gap-2 hover:bg-white transition-all"
+                            className="bg-[#ccff00] text-black font-black uppercase text-xs tracking-wider py-4 px-8 rounded-full flex items-center gap-2 hover:bg-[#b0d600] hover:text-black transition-all"
+                            style={{ color: '#000000' }}
                             id="portfolio-whatsapp-cta"
                         >
-                            <MessageCircle size={14} className="fill-current" /> Start on WhatsApp
+                            <MessageCircle size={14} className="fill-current text-black" style={{ color: '#000000' }} />
+                            <span className="text-black font-black" style={{ color: '#000000' }}>Start on WhatsApp</span>
                         </a>
                     </div>
                 </motion.div>

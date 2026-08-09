@@ -235,9 +235,10 @@ Do not sign a website contract without these protective legal terms.
               <button 
                 onClick={handleInstantDownload}
                 className="px-8 py-5 bg-[#ccff00] hover:bg-[#b5e000] text-black font-black text-base uppercase tracking-wider rounded-xl transition-all inline-flex items-center gap-3 shadow-[6px_6px_0px_0px_rgba(255,255,255,0.15)] active:translate-x-1 active:translate-y-1 active:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.1)] cursor-pointer"
+                style={{ color: '#000000' }}
               >
-                Get the Free Contract Template
-                <ArrowRight className="w-5 h-5 font-black" />
+                <span className="text-black font-black" style={{ color: '#000000' }}>Get the Free Contract Template</span>
+                <ArrowRight className="w-5 h-5 font-black text-black" style={{ color: '#000000' }} />
               </button>
             </motion.div>
           </div>
@@ -479,9 +480,10 @@ Do not sign a website contract without these protective legal terms.
                   <button 
                     type="submit"
                     className="w-full py-5 bg-[#ccff00] hover:bg-[#b5e000] text-black text-sm uppercase tracking-widest font-black rounded-xl transition-all cursor-pointer flex items-center justify-center gap-3 mt-4 shadow-[4px_4px_0px_0px_rgba(255,255,255,0.1)] active:translate-y-0.5 active:shadow-[1px_1px_0px_0px_rgba(255,255,255,0.05)]"
+                    style={{ color: '#000000' }}
                   >
-                    Send Me the Free Contract
-                    <Send className="w-4 h-4" />
+                    <span className="text-black font-black" style={{ color: '#000000' }}>Send Me the Free Contract</span>
+                    <Send className="w-4 h-4 text-black" style={{ color: '#000000' }} />
                   </button>
                 </motion.form>
               ) : isDownloading ? (
@@ -700,9 +702,10 @@ Do not sign a website contract without these protective legal terms.
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-5 bg-white hover:bg-gray-100 text-black font-black text-sm uppercase tracking-wider rounded-xl transition-all inline-flex items-center gap-3 shadow-[6px_6px_0px_0px_rgba(204,255,0,0.3)] active:translate-y-0.5"
+                style={{ color: '#000000' }}
               >
-                Book Free Consultation
-                <ArrowRight className="w-5 h-5 font-black text-black" />
+                <span className="text-black font-black" style={{ color: '#000000' }}>Book Free Consultation</span>
+                <ArrowRight className="w-5 h-5 font-black text-black" style={{ color: '#000000' }} />
               </a>
             </div>
           </div>

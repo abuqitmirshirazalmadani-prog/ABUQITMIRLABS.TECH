@@ -250,10 +250,11 @@ export default function WhiteLabelLocalSEOPage() {
                         <div className="flex flex-wrap gap-4 items-center">
                             <Link 
                                 to="/contact" 
-                                className="px-8 py-4 bg-[#ccff00] text-black font-bold text-sm rounded-xl hover:bg-white transition-all brutalist-shadow flex items-center gap-2 uppercase tracking-wider"
+                                className="px-8 py-4 bg-[#ccff00] text-black font-extrabold text-sm rounded-xl hover:bg-[#b0d600] hover:text-black transition-all brutalist-shadow flex items-center gap-2 uppercase tracking-wider"
+                                style={{ color: '#000000' }}
                             >
-                                Enquire About Reseller Pricing
-                                <ArrowRight className="w-4 h-4" />
+                                <span className="text-black font-black" style={{ color: '#000000' }}>Enquire About Reseller Pricing</span>
+                                <ArrowRight className="w-4 h-4 text-black" style={{ color: '#000000' }} />
                             </Link>
                             <Link 
                                 to="/local-seo-for-small-business" 
@@ -496,8 +497,12 @@ export default function WhiteLabelLocalSEOPage() {
                                     <li className="flex items-center gap-2.5"><Check className="w-4 h-4 text-[#ccff00]" /> Monthly strategy notes for account managers</li>
                                 </ul>
                             </div>
-                            <Link to="/contact" className="w-full py-3 bg-[#ccff00] text-black font-bold text-xs uppercase text-center rounded-xl hover:bg-white transition-all">
-                                Select Most Popular
+                            <Link 
+                                to="/contact" 
+                                className="w-full py-3 bg-[#ccff00] text-black font-extrabold text-xs uppercase text-center rounded-xl hover:bg-[#b0d600] transition-all flex items-center justify-center gap-2"
+                                style={{ color: '#000000' }}
+                            >
+                                <span className="text-black font-black" style={{ color: '#000000' }}>Select Most Popular</span>
                             </Link>
                         </div>
 
@@ -574,10 +579,11 @@ export default function WhiteLabelLocalSEOPage() {
                         </p>
                         <Link 
                             to="/contact" 
-                            className="inline-flex items-center gap-3 px-8 py-4 bg-[#ccff00] text-black font-bold text-sm uppercase tracking-wider rounded-xl hover:bg-white transition-all brutalist-shadow"
+                            className="inline-flex items-center gap-3 px-8 py-4 bg-[#ccff00] text-black font-extrabold text-sm uppercase tracking-wider rounded-xl hover:bg-[#b0d600] transition-all brutalist-shadow"
+                            style={{ color: '#000000' }}
                         >
-                            Start the Partnership Conversation
-                            <ArrowRight className="w-5 h-5" />
+                            <span className="text-black font-black" style={{ color: '#000000' }}>Start the Partnership Conversation</span>
+                            <ArrowRight className="w-5 h-5 text-black" style={{ color: '#000000' }} />
                         </Link>
                     </div>
                 </section>

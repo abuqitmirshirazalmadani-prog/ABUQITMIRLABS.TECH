@@ -322,8 +322,9 @@ const CinematicSection = ({ study, index }: { study: CaseStudy, index: number })
                             <Link 
                                 to={study.link}
                                 className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#ccff00] text-black font-extrabold uppercase text-xs tracking-widest rounded-full hover:bg-white hover:text-black transition-all transform active:scale-95 shadow-md"
+                                style={{ color: '#000000' }}
                             >
-                                View Full Interactive Case Study <ChevronRight size={14} />
+                                <span className="text-black font-extrabold" style={{ color: '#000000' }}>View Full Interactive Case Study</span> <ChevronRight size={14} className="text-black" style={{ color: '#000000' }} />
                             </Link>
                         </div>
                     )}
@@ -532,8 +533,9 @@ export default function CaseStudiesPage() {
                         <Link 
                             to="/contact"
                             className="inline-flex items-center gap-3 px-10 py-5 bg-[#ccff00] text-black font-extrabold uppercase text-xs tracking-widest rounded-full hover:bg-white transition-all transform active:scale-95"
+                            style={{ color: '#000000' }}
                         >
-                            Initiate Briefing <ChevronRight size={16} />
+                            <span className="text-black font-extrabold" style={{ color: '#000000' }}>Initiate Briefing</span> <ChevronRight size={16} className="text-black" style={{ color: '#000000' }} />
                         </Link>
                     </div>
                 </div>

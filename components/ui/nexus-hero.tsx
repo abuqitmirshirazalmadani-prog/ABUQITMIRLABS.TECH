@@ -149,19 +149,21 @@ const NexusHero = () => {
                                     </div>
 
                                     <div className="md:pr-1 lg:pr-0">
-                                        <Button
+                                        <button
                                             type="submit"
-                                            aria-label="submit"
-                                            className="bg-[#ccff00] hover:bg-[#b8e600] text-black font-extrabold h-11 px-5 rounded-xl transition-all cursor-pointer shadow-md flex items-center gap-2"
+                                            aria-label="Submit project idea"
+                                            className="bg-[#ccff00] hover:bg-[#b0d600] text-black font-black h-11 px-5 rounded-xl transition-all cursor-pointer shadow-[0_0_20px_rgba(204,255,0,0.3)] hover:shadow-[0_0_25px_rgba(204,255,0,0.5)] flex items-center gap-2 shrink-0 active:scale-95 whitespace-nowrap border-0 outline-none"
+                                            style={{ color: '#000000' }}
                                         >
-                                            <span className="hidden md:block text-xs uppercase tracking-wider font-extrabold">
+                                            <span className="text-xs uppercase tracking-wider font-extrabold text-black whitespace-nowrap" style={{ color: '#000000' }}>
                                                 {submitted ? "Redirecting..." : "Get Started"}
                                             </span>
                                             <SendHorizonal
-                                                className="relative size-4 md:hidden"
+                                                className="size-4 text-black shrink-0"
                                                 strokeWidth={2.5}
+                                                style={{ color: '#000000' }}
                                             />
-                                        </Button>
+                                        </button>
                                     </div>
                                 </div>
                             </form>
@@ -191,16 +193,17 @@ const NexusHero = () => {
                                 href="https://wa.me/923233260859" 
                                 target="_blank" 
                                 rel="noopener noreferrer" 
-                                className="group w-full sm:w-auto px-7 py-3.5 rounded-xl bg-white text-gray-950 font-bold text-sm hover:bg-[#ccff00] transition-all shadow-[0_0_25px_rgba(204,255,0,0.25)] active:scale-95 flex items-center justify-center gap-2"
+                                className="group w-full sm:w-auto px-7 py-3.5 rounded-xl bg-[#ccff00] hover:bg-[#b0d600] text-black font-black text-xs uppercase tracking-wider transition-all duration-300 shadow-[0_0_25px_rgba(204,255,0,0.35)] hover:shadow-[0_0_30px_rgba(204,255,0,0.5)] active:scale-95 flex items-center justify-center gap-2.5 shrink-0 whitespace-nowrap"
+                                style={{ color: '#000000' }}
                             >
-                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                Build Your AI App
+                                <ArrowRight className="w-4 h-4 text-black group-hover:translate-x-1 transition-transform shrink-0" style={{ color: '#000000' }} />
+                                <span className="text-black font-black text-xs uppercase tracking-wider whitespace-nowrap" style={{ color: '#000000' }}>Build Your AI App</span>
                             </a>
                             <Link 
                                 to="/contact" 
-                                className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-zinc-900/80 border border-white/10 text-white font-bold text-sm hover:bg-zinc-800 transition-all backdrop-blur-md flex items-center justify-center gap-2 active:scale-95"
+                                className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-zinc-900/90 border border-white/15 text-white hover:border-[#ccff00] hover:bg-[#ccff00]/10 hover:text-[#ccff00] font-black text-xs uppercase tracking-wider transition-all duration-300 backdrop-blur-md flex items-center justify-center gap-2 active:scale-95 shrink-0 whitespace-nowrap"
                             >
-                                Get Free Consultation
+                                <span className="font-black text-xs uppercase tracking-wider whitespace-nowrap">Get Free Consultation</span>
                             </Link>
                         </motion.div>
 

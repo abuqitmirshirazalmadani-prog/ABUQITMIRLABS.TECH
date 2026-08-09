@@ -113,7 +113,7 @@ const Header = () => {
                     <Logo />
 
                     {/* Desktop Nav */}
-                    <nav role="navigation" aria-label="Main Navigation" className="hidden md:flex items-center gap-8">
+                    <nav role="navigation" aria-label="Main Navigation" className="hidden xl:flex items-center gap-4 2xl:gap-7">
                         {navLinks.map((link) => (
                             <div key={link.name} className="relative group">
                                 {link.dropdown ? (
@@ -127,10 +127,10 @@ const Header = () => {
                                         aria-expanded={activeDropdown === link.name}
                                         aria-label={`${link.name} Submenu`}
                                     >
-                                        <span className="text-sm font-medium text-gray-400 hover:text-white transition-colors">
+                                        <span className="text-xs xl:text-sm font-semibold text-gray-300 hover:text-white transition-colors whitespace-nowrap">
                                             {link.name}
                                         </span>
-                                        <ChevronDown className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
+                                        <ChevronDown className="w-3.5 h-3.5 text-gray-400 group-hover:text-white transition-colors" />
                                         
                                         <AnimatePresence>
                                             {activeDropdown === link.name && (
@@ -138,13 +138,13 @@ const Header = () => {
                                                     initial={{ opacity: 0, y: 10 }}
                                                     animate={{ opacity: 1, y: 0 }}
                                                     exit={{ opacity: 0, y: 10 }}
-                                                    className="absolute top-full left-0 w-72 bg-black border border-white/10 rounded-xl overflow-hidden shadow-2xl py-2 mt-[-5px]"
+                                                    className="absolute top-full left-0 w-72 bg-black/95 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden shadow-2xl py-2 mt-[-5px] z-50"
                                                 >
                                                     {link.dropdown.map((sub) => (
                                                         <Link
                                                             key={sub.name}
                                                             to={sub.href}
-                                                            className="block px-4 py-3 text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+                                                            className="block px-4 py-2.5 text-xs xl:text-sm text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
                                                             onMouseEnter={() => preloadRoute(sub.href)}
                                                             onTouchStart={() => preloadRoute(sub.href)}
                                                             onClick={() => setActiveDropdown(null)}
@@ -161,10 +161,10 @@ const Header = () => {
                                         to={link.href} 
                                         onMouseEnter={() => preloadRoute(link.href)}
                                         onTouchStart={() => preloadRoute(link.href)}
-                                        className={`text-sm font-medium transition-colors ${
+                                        className={`text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap ${
                                             location.pathname === link.href 
-                                            ? 'text-white' 
-                                            : 'text-gray-400 hover:text-white'
+                                            ? 'text-[#ccff00]' 
+                                            : 'text-gray-300 hover:text-white'
                                         }`}
                                     >
                                         {link.name}
@@ -172,26 +172,33 @@ const Header = () => {
                                 )}
                             </div>
                         ))}
+                    </nav>
+
+                    {/* Right Header Actions */}
+                    <div className="flex items-center gap-3 shrink-0">
                         <Link 
                             to="/contact"
                             onMouseEnter={() => preloadRoute('/contact')}
                             onTouchStart={() => preloadRoute('/contact')}
                             aria-label="Book a Consultation"
-                            className="px-5 py-2.5 bg-white text-black text-sm font-semibold rounded-full hover:bg-purple-100 transition-colors"
+                            className="inline-flex items-center justify-center px-5 py-2.5 bg-[#ccff00] hover:bg-[#b0d600] text-black font-black text-xs uppercase tracking-wider rounded-full shadow-[0_0_15px_rgba(204,255,0,0.35)] hover:shadow-[0_0_20px_rgba(204,255,0,0.5)] transition-all duration-300 active:scale-95 shrink-0 whitespace-nowrap"
+                            style={{ color: '#000000' }}
                         >
-                            Contact Now
+                            <span style={{ color: '#000000' }} className="text-black font-black text-xs uppercase tracking-wider whitespace-nowrap">
+                                Contact Now
+                            </span>
                         </Link>
-                    </nav>
 
-                    {/* Mobile Toggle */}
-                    <button 
-                        className="md:hidden p-2 text-white focus:outline-none"
-                        onClick={() => setIsOpen(!isOpen)}
-                        aria-label={isOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
-                        aria-expanded={isOpen}
-                    >
-                        {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-                    </button>
+                        {/* Mobile / Tablet Menu Toggle */}
+                        <button 
+                            className="xl:hidden p-2.5 text-white hover:text-[#ccff00] focus:outline-none transition-colors"
+                            onClick={() => setIsOpen(!isOpen)}
+                            aria-label={isOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
+                            aria-expanded={isOpen}
+                        >
+                            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                        </button>
+                    </div>
                 </div>
             </header>
 
@@ -203,7 +210,7 @@ const Header = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="fixed inset-0 bg-black/60 z-[110] md:hidden"
+                            className="fixed inset-0 bg-black/60 z-[110] xl:hidden"
                             onClick={() => setIsOpen(false)}
                             aria-hidden="true"
                         />
@@ -212,7 +219,7 @@ const Header = () => {
                             animate={{ x: 0 }}
                             exit={{ x: '100%' }}
                             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                            className="fixed top-0 right-0 h-screen w-[85%] max-w-[340px] bg-[#050505] z-[120] md:hidden shadow-2xl flex flex-col border-l border-white/10"
+                            className="fixed top-0 right-0 h-screen w-[85%] max-w-[340px] bg-[#050505] z-[120] xl:hidden shadow-2xl flex flex-col border-l border-white/10"
                         >
                             {/* Mobile Menu Header */}
                             <div className="flex items-center justify-between px-6 h-20 border-b border-white/5">
@@ -294,17 +301,23 @@ const Header = () => {
                                         to="/contact"
                                         onTouchStart={() => preloadRoute('/contact')}
                                         onMouseEnter={() => preloadRoute('/contact')}
-                                        className="w-full py-4 bg-[#ccff00] text-black font-black text-center rounded-xl text-lg hover:scale-[1.02] active:scale-[0.98] transition-all"
+                                        className="w-full py-4 bg-[#ccff00] hover:bg-[#b0d600] text-black font-black text-center rounded-xl text-base uppercase tracking-wider shadow-[0_0_20px_rgba(204,255,0,0.35)] transition-all duration-300 active:scale-[0.98] flex items-center justify-center shrink-0"
+                                        style={{ color: '#000000' }}
                                         onClick={() => setIsOpen(false)}
                                     >
-                                        Contact Now
+                                        <span className="text-black font-black text-base uppercase tracking-wider text-center" style={{ color: '#000000' }}>
+                                            Contact Now
+                                        </span>
                                     </Link>
                                     <Link 
                                         to="/admin"
-                                        className="w-full py-4 border border-white/10 text-gray-400 font-bold text-center rounded-xl text-xs uppercase tracking-[0.2em]"
+                                        className="w-full py-4 border border-white/15 bg-white/5 hover:bg-white/10 text-white font-extrabold text-center rounded-xl text-xs uppercase tracking-[0.2em] transition-all flex items-center justify-center"
+                                        style={{ color: '#ffffff' }}
                                         onClick={() => setIsOpen(false)}
                                     >
-                                        Admin Access
+                                        <span className="text-white font-extrabold text-xs uppercase tracking-[0.2em]" style={{ color: '#ffffff' }}>
+                                            Admin Access
+                                        </span>
                                     </Link>
                                 </div>
                             </nav>

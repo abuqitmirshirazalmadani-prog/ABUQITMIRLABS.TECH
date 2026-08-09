@@ -346,9 +346,10 @@ export default function WebDevelopmentPricing() {
                   href="https://wa.me/923233260859?text=Hello,%20I'd%20like%20to%20discuss%20a%20fixed-price%20quote%20for%20my%20website%20project."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 bg-[#ccff00] hover:bg-white text-black font-sans text-xs tracking-[0.14em] uppercase font-black px-8 py-4 rounded-full transition-all duration-300 shadow-xl hover:scale-[1.02]"
+                  className="inline-flex items-center justify-center gap-2 bg-[#ccff00] hover:bg-[#b0d600] hover:text-black text-black font-sans text-xs tracking-[0.14em] uppercase font-black px-8 py-4 rounded-full transition-all duration-300 shadow-xl hover:scale-[1.02]"
+                  style={{ color: '#000000' }}
                 >
-                  💬 Chat App Blueprint
+                  <span className="text-black font-black" style={{ color: '#000000' }}>💬 Chat App Blueprint</span>
                 </a>
                 <a
                   id="web-cta-fixed-email"

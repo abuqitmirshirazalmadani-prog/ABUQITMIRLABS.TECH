@@ -928,9 +928,10 @@ Do not sign a website contract without these protective legal terms.
                 <Link
                   to="/custom-software"
                   className="px-8 py-4 rounded-xl text-xs font-bold uppercase tracking-widest bg-white text-black hover:bg-neutral-200 transition-all text-center inline-flex items-center justify-center gap-2 group"
+                  style={{ color: '#000000' }}
                 >
-                  Consult Custom Software
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <span className="text-black font-extrabold" style={{ color: '#000000' }}>Consult Custom Software</span>
+                  <ArrowRight className="w-4 h-4 text-black group-hover:translate-x-1 transition-transform" style={{ color: '#000000' }} />
                 </Link>
                 <Link
                   to="/ai-agent-development"
@@ -1430,10 +1431,11 @@ Do not sign a website contract without these protective legal terms.
 
                       <button
                         type="submit"
-                        className="w-full bg-[#ccff00] text-black font-black uppercase text-xs tracking-widest hover:bg-[#b0d600] active:scale-[0.98] transition-all py-5 px-6 rounded-xl inline-flex items-center justify-center gap-3 cursor-pointer shadow-lg"
+                        className="w-full bg-[#ccff00] text-black font-black uppercase text-xs tracking-widest hover:bg-[#b0d600] hover:text-black active:scale-[0.98] transition-all py-5 px-6 rounded-xl inline-flex items-center justify-center gap-3 cursor-pointer shadow-lg"
+                        style={{ color: '#000000' }}
                       >
-                        Generate & Download Template
-                        <Download size={15} />
+                        <span className="text-black font-black" style={{ color: '#000000' }}>Generate & Download Template</span>
+                        <Download size={15} className="text-black" style={{ color: '#000000' }} />
                       </button>
                     </motion.form>
                   ) : (
@@ -1499,8 +1501,9 @@ Do not sign a website contract without these protective legal terms.
               target="_blank"
               rel="noopener noreferrer"
               className="h-16 px-12 rounded-full text-base font-bold bg-white text-black hover:bg-neutral-200 transition-transform hover:scale-105 flex items-center justify-center uppercase tracking-tight"
+              style={{ color: '#000000' }}
             >
-               Request a Technical Audit
+               <span className="text-black font-black" style={{ color: '#000000' }}>Request a Technical Audit</span>
             </a>
             <div className="text-neutral-500 font-mono text-[11px] uppercase tracking-[0.2em] text-left border-l border-white/10 pl-6 h-12 flex items-center">
                Avg. Discovery Time: 14 Days <br />

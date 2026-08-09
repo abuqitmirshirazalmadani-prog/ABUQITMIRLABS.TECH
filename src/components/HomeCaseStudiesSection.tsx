@@ -107,9 +107,11 @@ export default function HomeCaseStudiesSection() {
               <div className="flex flex-wrap gap-4 pt-2">
                 <Link
                   to="/case-studies/tajweedpage"
-                  className="inline-flex items-center gap-2 bg-[#ccff00] text-black font-black uppercase text-xs tracking-widest px-8 py-4 rounded-full hover:bg-white hover:text-black transition-all transform active:scale-95"
+                  className="inline-flex items-center gap-2 bg-[#ccff00] text-black font-black uppercase text-xs tracking-widest px-8 py-4 rounded-full hover:bg-[#b0d600] hover:text-black transition-all transform active:scale-95"
+                  style={{ color: '#000000' }}
                 >
-                  View Case Study <ChevronRight size={14} />
+                  <span className="text-black font-black" style={{ color: '#000000' }}>View Case Study</span>
+                  <ChevronRight size={14} className="text-black" style={{ color: '#000000' }} />
                 </Link>
                 <a
                   href="https://www.tajweedpage.com"
@@ -184,9 +186,10 @@ export default function HomeCaseStudiesSection() {
           >
             <Link
               to="/contact"
-              className="inline-flex items-center gap-3 px-8 py-4 border border-white/10 bg-white/5 text-xs text-[#ccff00] font-black uppercase tracking-widest rounded-full hover:bg-white hover:text-black hover:border-white transition-all transform active:scale-95"
+              className="inline-flex items-center gap-3 px-8 py-4 border border-[#ccff00]/30 bg-[#ccff00]/10 text-xs text-[#ccff00] font-black uppercase tracking-widest rounded-full hover:bg-[#ccff00] hover:text-black hover:border-[#ccff00] transition-all transform active:scale-95 group"
             >
-              Start Your Project <ChevronRight size={14} />
+              <span className="text-[#ccff00] group-hover:text-black transition-colors">Start Your Project</span>
+              <ChevronRight size={14} className="text-[#ccff00] group-hover:text-black transition-colors" />
             </Link>
           </motion.div>
         </div>

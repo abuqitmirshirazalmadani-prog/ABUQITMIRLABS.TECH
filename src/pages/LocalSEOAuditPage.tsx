@@ -500,8 +500,12 @@ export default function LocalSEOAuditPage() {
                                     <li className="flex items-center gap-2.5"><Check className="w-4 h-4 text-[#ccff00]" /> Delivered within 5–7 business days</li>
                                 </ul>
                             </div>
-                            <Link to="/contact" className="w-full py-3.5 bg-[#ccff00] text-black font-bold text-xs uppercase text-center rounded-xl hover:bg-white transition-all">
-                                Order Full Technical Audit
+                            <Link 
+                                to="/contact" 
+                                className="w-full py-3.5 bg-[#ccff00] text-black font-extrabold text-xs uppercase text-center rounded-xl hover:bg-[#b0d600] transition-all flex items-center justify-center gap-2"
+                                style={{ color: '#000000' }}
+                            >
+                                <span className="text-black font-black" style={{ color: '#000000' }}>Order Full Technical Audit</span>
                             </Link>
                         </div>
                     </div>

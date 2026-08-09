@@ -247,12 +247,13 @@ export default function WebHostingPricing() {
                     rel="noopener noreferrer"
                     className={`w-full py-4 px-6 rounded-xl flex items-center justify-center gap-2 text-[11px] font-bold uppercase tracking-widest transition-all duration-300 ${
                       isPopular 
-                        ? 'bg-[#ccff00] text-black hover:bg-white hover:scale-[1.02]' 
+                        ? 'bg-[#ccff00] text-black hover:bg-[#b0d600] hover:text-black hover:scale-[1.02]' 
                         : 'bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20'
                     }`}
+                    style={isPopular ? { color: '#000000' } : undefined}
                   >
-                    <PhoneCall className="w-3.5 h-3.5" />
-                    <span>{pkg.ctaText}</span>
+                    <PhoneCall className={`w-3.5 h-3.5 ${isPopular ? 'text-black' : ''}`} style={isPopular ? { color: '#000000' } : undefined} />
+                    <span style={isPopular ? { color: '#000000' } : undefined} className={isPopular ? 'text-black font-black' : ''}>{pkg.ctaText}</span>
                   </a>
                 </div>
 

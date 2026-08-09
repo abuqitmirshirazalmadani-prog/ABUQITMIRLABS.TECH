@@ -497,8 +497,12 @@ export default function LocalSEOCitationBuildingPage() {
                                     Audit + cleanup + 50–70 listings across all three tiers including niche and country-specific directories.
                                 </p>
                             </div>
-                            <Link to="/contact" className="w-full py-3 bg-[#ccff00] text-black font-bold text-xs uppercase text-center rounded-xl hover:bg-white transition-all">
-                                Select Full Build
+                            <Link 
+                                to="/contact" 
+                                className="w-full py-3 bg-[#ccff00] text-black font-extrabold text-xs uppercase text-center rounded-xl hover:bg-[#b0d600] transition-all flex items-center justify-center gap-2"
+                                style={{ color: '#000000' }}
+                            >
+                                <span className="text-black font-black" style={{ color: '#000000' }}>Select Full Build</span>
                             </Link>
                         </div>
 
