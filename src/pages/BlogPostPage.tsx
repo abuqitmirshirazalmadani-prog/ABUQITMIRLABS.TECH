@@ -1061,15 +1061,15 @@ Ready to engineer custom AI solutions for fraud detection, credit underwriting, 
     };
 
     if (loading) return (
-        <div className="min-h-screen bg-[#f8f9fa] flex items-center justify-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+        <div className="min-h-screen bg-[#050505] flex items-center justify-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#ccff00]"></div>
         </div>
     );
 
     if (!post) return (
-        <div className="min-h-screen bg-[#f8f9fa] text-black flex flex-col items-center justify-center p-6">
-            <h1 className="text-4xl font-black uppercase mb-4">Post Not Found</h1>
-            <Link to="/blog" className="text-blue-500 font-bold uppercase tracking-widest flex items-center gap-2">
+        <div className="min-h-screen bg-[#050505] text-white flex flex-col items-center justify-center p-6">
+            <h1 className="text-4xl font-black uppercase mb-4 tracking-tight">Post Not Found</h1>
+            <Link to="/blog" className="text-[#ccff00] font-bold uppercase tracking-widest flex items-center gap-2 hover:underline">
                 <ArrowLeft size={18} /> Back to Blog
             </Link>
         </div>
@@ -1121,7 +1121,7 @@ Ready to engineer custom AI solutions for fraud detection, credit underwriting, 
     ];
 
     return (
-        <div className="min-h-screen bg-[#f3f4f7]">
+        <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00]/30 selection:text-white">
             <Helmet>
                 {slug === 'rlhf-and-model-bias' ? (
                     <>
@@ -5066,23 +5066,23 @@ Ready to engineer custom AI solutions for fraud detection, credit underwriting, 
                         animate={{ opacity: 1, y: 0 }}
                         className="mb-12"
                     >
-                        <Link to="/blog" className="inline-flex items-center gap-2 text-zinc-400 hover:text-black transition-colors uppercase tracking-widest text-xs font-black mb-12 group">
+                        <Link to="/blog" className="inline-flex items-center gap-2 text-zinc-400 hover:text-[#ccff00] transition-colors uppercase tracking-widest text-xs font-bold mb-10 group">
                             <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to The Journal
                         </Link>
                         
-                        <h1 className="text-5xl md:text-7xl font-black text-black uppercase tracking-tighter leading-[0.9] mb-12">
+                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight leading-[1.1] mb-8 font-serif">
                             {post.title}
                         </h1>
 
-                        <div className="flex flex-wrap items-center gap-8 text-[10px] text-zinc-500 uppercase tracking-widest font-black border-y border-black/5 py-8">
-                            <span className="flex items-center gap-2"><Calendar size={14} className="text-blue-500" /> {formatDate(post.createdAt)}</span>
-                            <span className="flex items-center gap-2 text-black">{post.author}</span>
+                        <div className="flex flex-wrap items-center gap-6 md:gap-8 text-xs text-zinc-400 uppercase tracking-widest font-mono border-y border-zinc-800/80 py-6 mb-12">
+                            <span className="flex items-center gap-2 text-zinc-300"><Calendar size={14} className="text-[#ccff00]" /> {formatDate(post.createdAt)}</span>
+                            <span className="flex items-center gap-2 text-white font-bold">{post.author}</span>
                             <div className="flex items-center gap-4 ml-auto">
-                                <span className="hidden md:inline-block">Share:</span>
+                                <span className="hidden md:inline-block text-zinc-400">Share:</span>
                                 <div className="flex items-center gap-2">
                                     <button 
                                         onClick={() => handleShare('twitter')}
-                                        className="w-10 h-10 rounded-full bg-white border border-black/5 flex items-center justify-center hover:bg-zinc-950 hover:text-white transition-all shadow-sm"
+                                        className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 flex items-center justify-center hover:bg-[#ccff00] hover:text-black transition-all shadow-md"
                                         title="Share on Twitter"
                                         aria-label="Share this blog post on Twitter"
                                     >
@@ -5090,7 +5090,7 @@ Ready to engineer custom AI solutions for fraud detection, credit underwriting, 
                                     </button>
                                     <button 
                                         onClick={() => handleShare('linkedin')}
-                                        className="w-10 h-10 rounded-full bg-white border border-black/5 flex items-center justify-center hover:bg-zinc-950 hover:text-white transition-all shadow-sm"
+                                        className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 flex items-center justify-center hover:bg-[#ccff00] hover:text-black transition-all shadow-md"
                                         title="Share on LinkedIn"
                                         aria-label="Share this blog post on LinkedIn"
                                     >
@@ -5098,7 +5098,7 @@ Ready to engineer custom AI solutions for fraud detection, credit underwriting, 
                                     </button>
                                     <button 
                                         onClick={() => handleShare('facebook')}
-                                        className="w-10 h-10 rounded-full bg-white border border-black/5 flex items-center justify-center hover:bg-zinc-950 hover:text-white transition-all shadow-sm"
+                                        className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 flex items-center justify-center hover:bg-[#ccff00] hover:text-black transition-all shadow-md"
                                         title="Share on Facebook"
                                         aria-label="Share this blog post on Facebook"
                                     >
@@ -5106,7 +5106,7 @@ Ready to engineer custom AI solutions for fraud detection, credit underwriting, 
                                     </button>
                                     <button 
                                         onClick={() => handleShare('copy')}
-                                        className="w-10 h-10 rounded-full bg-white border border-black/5 flex items-center justify-center hover:bg-zinc-950 hover:text-white transition-all shadow-sm"
+                                        className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 flex items-center justify-center hover:bg-[#ccff00] hover:text-black transition-all shadow-md"
                                         title="Copy Link"
                                         aria-label="Copy blog post link to clipboard"
                                     >
@@ -5121,7 +5121,7 @@ Ready to engineer custom AI solutions for fraud detection, credit underwriting, 
                         <motion.div 
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="aspect-video w-full rounded-[3rem] overflow-hidden mb-16 shadow-2xl shadow-blue-500/5 group"
+                            className="aspect-video w-full rounded-[2.5rem] overflow-hidden mb-16 border border-zinc-800/80 shadow-2xl group"
                         >
                             <img src={post.coverImage} alt={post.coverImageAlt || `futuristic ${post.title} feature illustration`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
                         </motion.div>
@@ -5131,21 +5131,46 @@ Ready to engineer custom AI solutions for fraud detection, credit underwriting, 
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2 }}
-                        className="bg-white rounded-[3rem] p-8 md:p-20 shadow-xl shadow-black/5 border border-black/5 prose prose-blue max-w-none prose-headings:text-black prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tighter prose-p:text-zinc-600 prose-p:leading-relaxed prose-lg prose-img:rounded-3xl prose-img:shadow-lg prose-pre:bg-zinc-950 prose-pre:rounded-2xl prose-strong:text-black prose-strong:font-black prose-a:text-blue-600 prose-a:font-bold hover:prose-a:text-blue-700"
+                        className="bg-[#0b0b0e] rounded-[2.5rem] p-8 md:p-16 border border-zinc-800/80 shadow-2xl text-zinc-200 leading-relaxed font-sans space-y-6"
                     >
                         <Markdown 
                             remarkPlugins={[remarkGfm]}
                             components={{
+                                p: ({node, ...props}) => <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans" {...props} />,
+                                h1: ({node, ...props}) => <h1 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mt-12 mb-6 font-serif border-b border-zinc-800/80 pb-4" {...props} />,
+                                h2: ({node, ...props}) => <h2 className="text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3" {...props} />,
+                                h3: ({node, ...props}) => <h3 className="text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif" {...props} />,
+                                h4: ({node, ...props}) => <h4 className="text-lg font-bold text-zinc-200 mt-6 mb-2 font-serif" {...props} />,
+                                a: ({node, href, children, ...props}) => (
+                                    <a 
+                                        href={href} 
+                                        className="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer" 
+                                        {...props}
+                                    >
+                                        {children}
+                                    </a>
+                                ),
+                                strong: ({node, ...props}) => <strong className="text-white font-black" {...props} />,
+                                code: ({node, ...props}) => <code className="bg-[#161619] text-[#ccff00] px-2 py-0.5 rounded-md font-mono text-sm border border-zinc-800" {...props} />,
+                                pre: ({node, ...props}) => <pre className="bg-[#050507] border border-zinc-800 rounded-2xl p-6 overflow-x-auto text-zinc-200 font-mono text-sm my-8 shadow-inner" {...props} />,
+                                blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-[#ccff00] pl-6 py-3 my-6 text-zinc-300 italic bg-[#141418] rounded-r-2xl border-y border-r border-zinc-800/50" {...props} />,
+                                ul: ({node, ...props}) => <ul className="list-disc list-inside space-y-2 text-zinc-300 my-6 pl-2" {...props} />,
+                                ol: ({node, ...props}) => <ol className="list-decimal list-inside space-y-2 text-zinc-300 my-6 pl-2" {...props} />,
+                                li: ({node, ...props}) => <li className="text-zinc-300 leading-relaxed mb-1" {...props} />,
+                                hr: ({node, ...props}) => <hr className="border-zinc-800 my-10" {...props} />,
+                                table: ({node, ...props}) => <div className="overflow-x-auto my-8"><table className="w-full text-left border-collapse border border-zinc-800 rounded-xl overflow-hidden" {...props} /></div>,
+                                th: ({node, ...props}) => <th className="bg-zinc-900 text-white font-bold uppercase text-xs p-4 border border-zinc-800" {...props} />,
+                                td: ({node, ...props}) => <td className="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50" {...props} />,
                                 img: ({node, ...props}) => {
                                     return (
                                         <span className="block my-12 text-center overflow-hidden">
                                             <img 
                                                 {...props} 
                                                 referrerPolicy="no-referrer"
-                                                className="mx-auto rounded-[2rem] shadow-2xl border border-black/5 max-h-[600px] w-full object-cover select-none hover:scale-[1.01] transition-transform duration-700" 
+                                                className="mx-auto rounded-[2rem] shadow-2xl border border-zinc-800 max-h-[600px] w-full object-cover select-none hover:scale-[1.01] transition-transform duration-700" 
                                             />
                                             {props.alt && (
-                                                <span className="block mt-4 text-center text-[10px] text-zinc-400 uppercase tracking-[0.25em] font-black">
+                                                <span className="block mt-4 text-center text-[10px] text-zinc-400 uppercase tracking-[0.25em] font-mono">
                                                     {props.alt}
                                                 </span>
                                             )}
@@ -5160,8 +5185,8 @@ Ready to engineer custom AI solutions for fraud detection, credit underwriting, 
 
                     {/* Hashtags at the Bottom */}
                     {post.tags && (
-                        <div className="mt-20">
-                            <div className="bg-[#eff6ff]/60 border border-blue-400/10 rounded-[2.5rem] p-8 md:p-10 flex flex-wrap gap-x-6 gap-y-4 overflow-hidden">
+                        <div className="mt-16">
+                            <div className="bg-[#0b0b0e] border border-zinc-800/80 rounded-[2.5rem] p-8 md:p-10 flex flex-wrap gap-x-4 gap-y-3 overflow-hidden shadow-xl">
                                 {(() => {
                                     const allTags = Array.isArray(post.tags) 
                                         ? post.tags.flatMap(t => String(t).split(/[\s,#]+/).filter(Boolean))
@@ -5173,7 +5198,7 @@ Ready to engineer custom AI solutions for fraud detection, credit underwriting, 
                                         return (
                                             <span 
                                                 key={`${tag}-${idx}`} 
-                                                className="inline-block text-[11px] md:text-xs font-black text-blue-600 uppercase tracking-[0.2em] break-all whitespace-normal hover:text-blue-700 transition-colors"
+                                                className="inline-block text-xs font-mono font-bold text-[#ccff00] bg-[#16161a] px-4 py-2 rounded-full border border-zinc-800 uppercase tracking-wider hover:bg-[#ccff00] hover:text-black transition-all cursor-pointer"
                                             >
                                                 #{cleanTag}
                                             </span>
@@ -5184,9 +5209,9 @@ Ready to engineer custom AI solutions for fraud detection, credit underwriting, 
                         </div>
                     )}
 
-                    <div className="mt-20 pt-10 border-t border-black/5">
-                        <div className="bg-white border border-black/5 rounded-[2.5rem] p-10 flex flex-col md:flex-row items-center gap-10 shadow-sm">
-                            <div className="h-24 w-24 bg-zinc-950 rounded-3xl overflow-hidden shrink-0 shadow-lg border-2 border-white">
+                    <div className="mt-16 pt-10 border-t border-zinc-800/80">
+                        <div className="bg-[#0b0b0e] border border-zinc-800/80 rounded-[2.5rem] p-10 flex flex-col md:flex-row items-center gap-10 shadow-xl">
+                            <div className="h-24 w-24 bg-zinc-900 rounded-3xl overflow-hidden shrink-0 shadow-lg border-2 border-[#ccff00]/40">
                                 <img 
                                     src="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" 
                                     alt="Shiraz Almadani - Lead Architect at AbuQitmirLabs" 
@@ -5197,8 +5222,8 @@ Ready to engineer custom AI solutions for fraud detection, credit underwriting, 
                                 />
                             </div>
                             <div>
-                                <h3 className="text-2xl font-black text-black mb-3 uppercase tracking-tight">AbuQitmirLabs | Shiraz Almadani</h3>
-                                <p className="text-zinc-500 leading-relaxed max-w-xl">Lead Architect & Engineering Consultant. Specializing in high-performance digital ecosystems, AI-driven architectures, and building the future of software development.</p>
+                                <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tight font-serif">AbuQitmirLabs | Shiraz Almadani</h3>
+                                <p className="text-zinc-400 text-sm leading-relaxed max-w-xl">Lead Architect & Engineering Consultant. Specializing in high-performance digital ecosystems, AI-driven architectures, and building the future of software development.</p>
                             </div>
                         </div>
                     </div>
