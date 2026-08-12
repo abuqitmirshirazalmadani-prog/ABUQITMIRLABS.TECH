@@ -160,31 +160,35 @@ Do not sign a website contract without these protective legal terms.
   const faqData = [
     {
       q: "What does a web development company do?",
-      a: "A web development company designs, builds, and maintains custom websites and web applications tailored to your business needs. This includes frontend user interfaces, backend API engineering, database design, e-commerce integrations, CMS setup, performance optimization, and ongoing maintenance."
+      a: "A web development company designs, builds, tests, and maintains custom websites and web applications tailored to specific business goals. This encompasses frontend user interface engineering, backend API and database architecture, e-commerce systems, headless CMS integrations, security hardening, Core Web Vitals performance optimization, and ongoing technical maintenance."
     },
     {
       q: "How much does custom web development cost?",
-      a: "The cost of custom web development depends on project scope, custom design requirements, and functionality. At AbuQitmirLabs, we provide transparent milestone-based pricing with options ranging from essential custom business websites to full-scale web applications."
+      a: "The cost of custom web development depends on project scope, functional requirements, integrations, and performance standards. At AbuQitmirLabs, we provide transparent milestone-based pricing ranging from foundational custom business websites up to complex full-stack web applications and enterprise platforms."
     },
     {
       q: "How long does it take to build a website?",
-      a: "A standard custom business website typically takes 3 to 5 weeks from scope discovery to launch. Complex full-stack web applications, custom portals, or headless e-commerce builds generally require 6 to 12 weeks depending on technical integration needs."
+      a: "A standard custom business website typically takes 3 to 5 weeks from discovery to launch. Complex full-stack web applications, headless e-commerce builds, custom portals, or platforms requiring deep third-party API integrations generally take 6 to 12 weeks depending on technical scope."
+    },
+    {
+      q: "What is custom web development?",
+      a: "Custom web development is the engineering of bespoke websites and web applications built specifically around your business logic, workflow requirements, and brand identity without relying on pre-built templates or bloated page builders. It delivers sub-second page loads, clean semantic HTML, custom security controls, and full source code ownership."
     },
     {
       q: "What is the difference between web design and web development?",
-      a: "Web design focuses on visual aesthetics, UI layout, typography, branding, and user experience (UX) flows. Web development converts those design concepts into functional, interactive, secure code using modern frameworks like React, Next.js, and backend databases."
+      a: "Web design focuses on visual aesthetics, UI layout, typography, branding, and user experience (UX) wireframes. Web development converts those visual concepts into functional, interactive, and secure software using modern frameworks like React, Next.js, TypeScript, backend APIs, and databases."
     },
     {
       q: "Is Next.js good for business websites?",
-      a: "Yes, Next.js is one of the best frameworks for modern business websites. It delivers sub-second page loads through static site generation (SSG) and server-side rendering (SSR), superior Google SEO indexing, enhanced security, and seamless scalability."
+      a: "Yes, Next.js is one of the premier React frameworks for modern business websites and web applications. It delivers sub-second page loads through static site generation (SSG) and server-side rendering (SSR), superior Google SEO indexability, enhanced security, and seamless edge scalability."
     },
     {
       q: "Can you build custom web applications?",
-      a: "Yes, AbuQitmirLabs specializes in building custom full-stack web applications, SaaS products, interactive client portals, and e-commerce platforms engineered specifically around your business workflows."
+      a: "Yes, AbuQitmirLabs specializes in custom web application development, including full-stack SaaS products, interactive client portals, custom booking engines, e-commerce platforms, and internal enterprise dashboards engineered specifically around your business operations."
     },
     {
       q: "Will my website be responsive on mobile devices?",
-      a: "Yes, all web development projects at AbuQitmirLabs follow a mobile-first responsive design strategy, ensuring flawless visual layout, fast loading, and intuitive navigation across smartphones, tablets, and desktop displays."
+      a: "Yes, all web development projects at AbuQitmirLabs follow a mobile-first responsive design strategy, ensuring flawless visual layout, fast touch interactions, and optimal readability across smartphones, tablets, laptops, and desktop displays."
     }
   ];
 
@@ -193,6 +197,7 @@ Do not sign a website contract without these protective legal terms.
       <Helmet>
         <title>Web Development Company | Custom Web Solutions | AbuQitmirLabs</title>
         <meta name="description" content="AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications." />
+        <meta name="keywords" content="web development, web development company, web development services, custom web development, custom web development company, web application development, full-stack web development, React web development, Next.js development, custom website development, professional web development services" />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/web-development" />
         <meta name="robots" content="index, follow" />
         
@@ -209,112 +214,166 @@ Do not sign a website contract without these protective legal terms.
         <meta name="twitter:description" content="AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
-        {/* Schema Markup */}
+        {/* Unified JSON-LD Structured Data Schema (@graph) */}
         <script 
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Service",
-              "serviceType": "Web Development",
-              "name": "Web Development Services",
-              "provider": {
-                "@type": "Organization",
-                "name": "AbuQitmirLabs",
-                "url": "https://www.abuqitmirlabs.tech",
-                "logo": "https://www.abuqitmirlabs.tech/logo.png",
-                "image": "https://www.abuqitmirlabs.tech/logo.png",
-                "address": {
-                  "@type": "PostalAddress",
-                  "addressLocality": "Karachi",
-                  "addressCountry": "PK"
-                }
-              },
-              "description": "AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications.",
-              "url": "https://www.abuqitmirlabs.tech/web-development",
-              "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"]
-            })
-          }}
-        ></script>
-
-        {/* FAQ Schema */}
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": faqData.map(item => ({
-                "@type": "Question",
-                "name": item.q,
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": item.a
-                }
-              }))
-            })
-          }}
-        ></script>
-
-        {/* HowTo Schema (Web Process) */}
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "HowTo",
-              "name": "Our Web Development Process",
-              "description": "A 5-step engineering pipeline optimized for speed and SEO to build high-performance web platforms.",
-              "step": [
+              "@graph": [
                 {
-                  "@type": "HowToStep",
-                  "name": "Audit & Specs",
-                  "text": "Technical analysis of current assets and goal setting."
+                  "@type": "Organization",
+                  "@id": "https://www.abuqitmirlabs.tech/#organization",
+                  "name": "AbuQitmirLabs",
+                  "url": "https://www.abuqitmirlabs.tech",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://www.abuqitmirlabs.tech/logo.png"
+                  },
+                  "image": "https://www.abuqitmirlabs.tech/logo.png",
+                  "email": "hello@abuqitmirlabs.tech",
+                  "telephone": "+923233260859",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Karachi",
+                    "addressRegion": "Sindh",
+                    "addressCountry": "PK"
+                  }
                 },
                 {
-                  "@type": "HowToStep",
-                  "name": "Page UX Architecture",
-                  "text": "Mapping user flows for sub-second navigation."
+                  "@type": "WebSite",
+                  "@id": "https://www.abuqitmirlabs.tech/#website",
+                  "url": "https://www.abuqitmirlabs.tech",
+                  "name": "AbuQitmirLabs",
+                  "publisher": {
+                    "@id": "https://www.abuqitmirlabs.tech/#organization"
+                  }
                 },
                 {
-                  "@type": "HowToStep",
-                  "name": "Jamstack Build",
-                  "text": "Engineering the frontend with Next.js and Tailwind."
+                  "@type": "WebPage",
+                  "@id": "https://www.abuqitmirlabs.tech/web-development/#webpage",
+                  "url": "https://www.abuqitmirlabs.tech/web-development",
+                  "name": "Web Development Company | Custom Web Solutions | AbuQitmirLabs",
+                  "description": "AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications.",
+                  "isPartOf": {
+                    "@id": "https://www.abuqitmirlabs.tech/#website"
+                  },
+                  "breadcrumb": {
+                    "@id": "https://www.abuqitmirlabs.tech/web-development/#breadcrumb"
+                  },
+                  "inLanguage": "en-US"
                 },
                 {
-                  "@type": "HowToStep",
-                  "name": "CMS Sync",
-                  "text": "Connecting secure headless content management."
+                  "@type": "Service",
+                  "@id": "https://www.abuqitmirlabs.tech/web-development/#service",
+                  "serviceType": "Web Development",
+                  "name": "Custom Web Development Services",
+                  "provider": {
+                    "@id": "https://www.abuqitmirlabs.tech/#organization"
+                  },
+                  "description": "AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications.",
+                  "url": "https://www.abuqitmirlabs.tech/web-development",
+                  "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
+                  "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Web Development Capabilities",
+                    "itemListElement": [
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "Custom Website Development"
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "Web Application Development"
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "React & Next.js Development"
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "Headless CMS & E-commerce"
+                        }
+                      }
+                    ]
+                  }
                 },
                 {
-                  "@type": "HowToStep",
-                  "name": "Edge Deploy",
-                  "text": "Global distribution via Vercel Edge networks."
-                }
-              ]
-            })
-          }}
-        ></script>
-
-        {/* Breadcrumb Schema */}
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://www.abuqitmirlabs.tech/"
+                  "@type": "FAQPage",
+                  "@id": "https://www.abuqitmirlabs.tech/web-development/#faq",
+                  "isPartOf": {
+                    "@id": "https://www.abuqitmirlabs.tech/web-development/#webpage"
+                  },
+                  "mainEntity": faqData.map(item => ({
+                    "@type": "Question",
+                    "name": item.q,
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": item.a
+                    }
+                  }))
                 },
                 {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Web Development",
-                  "item": "https://www.abuqitmirlabs.tech/web-development"
+                  "@type": "HowTo",
+                  "@id": "https://www.abuqitmirlabs.tech/web-development/#howto",
+                  "name": "Our Web Development Process",
+                  "description": "A 5-step engineering pipeline optimized for speed and SEO to build high-performance web platforms.",
+                  "step": [
+                    {
+                      "@type": "HowToStep",
+                      "name": "Audit & Specs",
+                      "text": "Technical analysis of current assets and goal setting."
+                    },
+                    {
+                      "@type": "HowToStep",
+                      "name": "Page UX Architecture",
+                      "text": "Mapping user flows for sub-second navigation."
+                    },
+                    {
+                      "@type": "HowToStep",
+                      "name": "Jamstack Build",
+                      "text": "Engineering the frontend with Next.js and Tailwind."
+                    },
+                    {
+                      "@type": "HowToStep",
+                      "name": "CMS Sync",
+                      "text": "Connecting secure headless content management."
+                    },
+                    {
+                      "@type": "HowToStep",
+                      "name": "Edge Deploy",
+                      "text": "Global distribution via Vercel Edge networks."
+                    }
+                  ]
+                },
+                {
+                  "@type": "BreadcrumbList",
+                  "@id": "https://www.abuqitmirlabs.tech/web-development/#breadcrumb",
+                  "itemListElement": [
+                    {
+                      "@type": "ListItem",
+                      "position": 1,
+                      "name": "Home",
+                      "item": "https://www.abuqitmirlabs.tech/"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 2,
+                      "name": "Web Development",
+                      "item": "https://www.abuqitmirlabs.tech/web-development"
+                    }
+                  ]
                 }
               ]
             })
@@ -360,7 +419,7 @@ Do not sign a website contract without these protective legal terms.
           transition={{ delay: 0.1 }}
           className="text-lg md:text-xl text-neutral-400 text-center max-w-4xl mb-12 leading-relaxed font-light font-sans"
         >
-          At AbuQitmirLabs, our <strong>custom web development</strong> services focus on speed, scalability, and security. Your website is often the first interaction a customer has with your brand. From our <Link to="/" className="text-blue-400 hover:underline font-medium">homepage</Link> to specialized web systems, we build fast, responsive, SEO-ready platforms using modern <strong>web development</strong> architecture — from corporate sites to e-commerce and web apps. You can pair our web builds with modular <Link to="/custom-software" className="text-blue-400 hover:underline font-medium">Custom Software</Link>, expand into native <Link to="/mobile-app-development" className="text-blue-400 hover:underline font-medium">Mobile App Development</Link>, integrate autonomous <Link to="/ai-agent-development" className="text-blue-400 hover:underline font-medium">AI Agents</Link>, or maximize visibility with our <Link to="/seo-mastery" className="text-blue-400 hover:underline font-medium">SEO Mastery</Link> and <Link to="/local-seo-for-small-business" className="text-blue-400 hover:underline font-medium">Local SEO</Link> strategies. Elevate messaging with targeted <Link to="/content-writing" className="text-blue-400 hover:underline font-medium">Content Writing</Link>, read our client <Link to="/case-studies" className="text-blue-400 hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-blue-400 hover:underline font-medium">Blog</Link>, learn more <Link to="/about" className="text-blue-400 hover:underline font-medium">about us</Link>, or <Link to="/contact" className="text-blue-400 hover:underline font-medium">contact us</Link> today.
+          AbuQitmirLabs is a <strong>web development company</strong> providing <strong>custom web development</strong> and <strong>web development services</strong> for startups and growing businesses. From high-converting corporate sites to complex <strong>web application development</strong>, we build fast, responsive, and SEO-ready platforms using modern frontend and backend architectures (React, Next.js, TypeScript, APIs, and headless CMS). You can pair our web builds with modular <Link to="/custom-software" className="text-blue-400 hover:underline font-medium">Custom Software</Link> engines, expand into native <Link to="/mobile-app-development" className="text-blue-400 hover:underline font-medium">Mobile App Development</Link>, integrate autonomous <Link to="/ai-agent-development" className="text-blue-400 hover:underline font-medium">AI Agents</Link>, or maximize organic growth with our <Link to="/seo-mastery" className="text-blue-400 hover:underline font-medium">SEO Mastery</Link> and <Link to="/local-seo-for-small-business" className="text-blue-400 hover:underline font-medium">Local SEO</Link> strategies. Elevate messaging with targeted <Link to="/content-writing" className="text-blue-400 hover:underline font-medium">Content Writing</Link>, explore client <Link to="/case-studies" className="text-blue-400 hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-blue-400 hover:underline font-medium">Blog</Link>, learn more <Link to="/about" className="text-blue-400 hover:underline font-medium">about us</Link>, or <Link to="/contact" className="text-blue-400 hover:underline font-medium">contact us</Link> today.
         </motion.p>
 
         {/* Core Capabilities Specifications */}
@@ -541,7 +600,10 @@ Do not sign a website contract without these protective legal terms.
       <section className="py-32 relative">
         <div className="max-w-7xl mx-auto px-6">
            <div className="glass-panel p-12 md:p-20 rounded-2xl relative z-10 max-w-4xl mx-auto text-center border-l-4 border-l-blue-600 bg-white/[0.02] border-white/10">
-              <h2 className="text-xs font-mono text-blue-500 mb-8 uppercase tracking-[0.3em]">[ SYSTEM_PROFILE: LEGACY_MONOLITH ]</h2>
+              <span className="text-xs font-mono text-blue-500 mb-8 uppercase tracking-[0.3em] block">[ SYSTEM_PROFILE: PERFORMANCE_DIAGNOSTICS ]</span>
+              <h2 className="text-2xl md:text-4xl text-neutral-200 font-light leading-relaxed tracking-tight">
+                Fast, Secure & Scalable Web Solutions
+              </h2>
               <p className="text-2xl md:text-4xl text-neutral-200 font-light leading-relaxed tracking-tight">
                 Traditional websites are <span className="text-white font-bold border-b border-blue-500">slowly killing your business</span>. 
                 Bloated code and plugin-heavy builds results in sluggish mobile performance that causes Google to penalize your rankings.
@@ -555,7 +617,7 @@ Do not sign a website contract without these protective legal terms.
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-3 mb-16">
             <Layers className="text-blue-500" width={24} />
-            <h2 className="text-xs font-bold tracking-[0.3em] text-neutral-500 uppercase">Core Protocols // Digital Solutions</h2>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white uppercase">Custom Web Development Services</h2>
           </div>
 
           <div className="flex flex-col lg:flex-row h-auto lg:h-[650px] gap-2">
@@ -597,8 +659,8 @@ Do not sign a website contract without these protective legal terms.
       <section className="py-32 border-t border-white/5 bg-black/20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-20">
-             <h2 className="text-xs font-mono text-neutral-500 mb-4 uppercase tracking-[0.3em] font-bold">[ WEB_ENGINEERING_STACK ]</h2>
-             <p className="text-3xl font-bold text-white uppercase tracking-tight">Our Mastered Toolset</p>
+             <span className="text-xs font-mono text-neutral-500 mb-4 uppercase tracking-[0.3em] font-bold block">[ WEB_ENGINEERING_STACK ]</span>
+             <h2 className="text-3xl font-bold text-white uppercase tracking-tight">Web Development Technologies</h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -649,8 +711,8 @@ Do not sign a website contract without these protective legal terms.
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-xs font-mono text-blue-500 mb-4 uppercase tracking-[0.3em] font-bold">[ ENGINEERING_LIFECYCLE ]</h2>
-              <h3 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-tight mb-8">Our Proven Web Process</h3>
+              <span className="text-xs font-mono text-blue-500 mb-4 uppercase tracking-[0.3em] font-bold block">[ ENGINEERING_LIFECYCLE ]</span>
+              <h2 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-tight mb-8">Our Web Development Process</h2>
               <p className="max-w-2xl mx-auto text-lg text-neutral-400 font-light leading-relaxed">
                 We bridge the gap between design and high-performance code through a meticulous development pipeline optimized for speed and SEO.
               </p>
@@ -732,8 +794,8 @@ Do not sign a website contract without these protective legal terms.
               viewport={{ once: true }}
               className="mb-12"
             >
-              <h3 className="text-xs font-mono text-neutral-500 uppercase tracking-[0.3em] font-bold mb-3">[ CAPABILITY_SPECTRUM ]</h3>
-              <h4 className="text-3xl font-bold text-white uppercase tracking-tight">What We Build</h4>
+              <span className="text-xs font-mono text-neutral-500 uppercase tracking-[0.3em] font-bold mb-3 block">[ CAPABILITY_SPECTRUM ]</span>
+              <h2 className="text-3xl font-bold text-white uppercase tracking-tight">Web Application Development</h2>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -1135,9 +1197,9 @@ Do not sign a website contract without these protective legal terms.
               <span className="text-[10px] bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full uppercase font-mono tracking-[0.2em] font-bold">
                 Global Operations
               </span>
-              <h3 className="text-3xl font-bold text-white uppercase tracking-tight">
+              <h2 className="text-3xl font-bold text-white uppercase tracking-tight">
                 Custom Website Development Across Global Markets
-              </h3>
+              </h2>
               <p className="text-neutral-400 text-lg leading-relaxed font-light font-sans">
                 While our engineering headquarters is in Karachi, Pakistan, our digital solutions are built for a global stage. We understand the unique demands of different markets and adapt our approach accordingly:
               </p>
@@ -1218,11 +1280,11 @@ Do not sign a website contract without these protective legal terms.
       <section id="work-action" className="py-32 px-6 border-t border-white/5 relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
-            <h2 className="text-xs font-mono text-neutral-500 mb-4 uppercase tracking-[0.3em] font-bold">[ PROJECT_SHOWCASE ]</h2>
-            <h3 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-tight mb-8">
-              See Our Work in Action: <br />
+            <span className="text-xs font-mono text-neutral-500 mb-4 uppercase tracking-[0.3em] font-bold block">[ PROJECT_SHOWCASE ]</span>
+            <h2 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-tight mb-8">
+              See Our Web Projects in Action: <br />
               <span className="text-neutral-500">Real Projects, Real Results</span>
-            </h3>
+            </h2>
             <p className="max-w-3xl text-xl text-neutral-400 font-light leading-relaxed">
               We believe that exceptional work speaks for itself. Explore our recent case studies and project breakdowns below.
             </p>
@@ -1491,8 +1553,8 @@ Do not sign a website contract without these protective legal terms.
       <section className="py-32 border-t border-white/5">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-xs font-mono text-neutral-500 mb-4 uppercase tracking-[0.3em]">[ OPERATIONAL_INQUIRIES ]</h2>
-            <h3 className="text-4xl font-bold text-white uppercase tracking-tight">Custom Web Development FAQs</h3>
+            <span className="text-xs font-mono text-neutral-500 mb-4 uppercase tracking-[0.3em] block">[ OPERATIONAL_INQUIRIES ]</span>
+            <h2 className="text-4xl font-bold text-white uppercase tracking-tight">Frequently Asked Questions</h2>
           </div>
 
           <div className="space-y-4">

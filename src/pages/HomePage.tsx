@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
 import Header from '../components/Header';
@@ -172,7 +173,7 @@ export default function HomePage() {
                 When you collaborate with our specialized studio, you bypass the severe architectural limitations of standard off-the-shelf software. At AbuQitmirLabs, we are a master-grade <strong className="text-white font-medium">custom software development company</strong> focused on engineering secure, fault-tolerant, and high-performance <strong className="text-[#ccff00] font-medium">scalable applications</strong> that serve as proprietary business assets. Our focus as a specialized <strong className="text-white font-medium">custom software development company</strong> is to build sustainable infrastructures that guarantee absolute intellectual property ownership, crafting robust <strong className="text-white font-medium">scalable applications</strong> that adapt beautifully as your traffic metrics increase.
               </p>
               <p className="text-neutral-400 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
-                As a leading <strong className="text-white font-medium">custom website development company</strong>, we construct tailored, speed-oriented frontends that captivate visitors from the first millisecond. Our technical standard as a luxury <strong className="text-white font-medium">custom website development company</strong> forces us to prioritize rich typography, fluid layouts, and deep search visibility. Partnering with our specialized <strong className="text-white font-medium">custom website development company</strong> guarantees that your web presence has zero passive license fees, zero locked proprietary modules, and infinite freedom to scale.
+                As a leading <Link to="/web-development" className="text-white font-medium hover:underline">custom website development company</Link>, we construct tailored, speed-oriented frontends that captivate visitors from the first millisecond. Our technical standard as a luxury <strong className="text-white font-medium">custom website development company</strong> forces us to prioritize rich typography, fluid layouts, and deep search visibility. Partnering with our specialized <strong className="text-white font-medium">custom website development company</strong> guarantees that your web presence has zero passive license fees, zero locked proprietary modules, and infinite freedom to scale.
               </p>
             </div>
 

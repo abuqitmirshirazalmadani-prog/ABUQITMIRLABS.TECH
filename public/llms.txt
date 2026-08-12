@@ -31,9 +31,8 @@ These links direct to the core segments of our digital agency:
 - EdTech Mobile Apps: /solutions/edtech
 
 ## Web Development
-- Custom Web Development: /web-development
-- Web Development Blog 2026: /blog/custom-web-development-company-2026
-- Built-In Visibility Architecture (SEO+GEO+AIO+AEO+SXO in build): /blog/custom-web-development-company-2026
+- [Web Development Company & Services](https://www.abuqitmirlabs.tech/web-development) - Custom web development for startups and businesses, building fast, secure, responsive websites and scalable React/Next.js web applications.
+- [What a Custom Web Development Company Builds in 2026](https://www.abuqitmirlabs.tech/blog/custom-web-development-company-2026) - In-depth guide on built-in search visibility, modern web stack decisions, and enterprise web architecture.
 
 ## AI Solutions by Industry
 - AI Agent Development: /ai-agent-development
