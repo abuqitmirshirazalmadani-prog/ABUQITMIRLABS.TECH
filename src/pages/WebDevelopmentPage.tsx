@@ -159,53 +159,54 @@ Do not sign a website contract without these protective legal terms.
 
   const faqData = [
     {
-      q: "What is Jamstack and why do I need it?",
-      a: "Jamstack pre-builds your website pages and serves them via a CDN. It guarantees sub-second load times, unbreakable security, and cheaper scaling compared to standard WordPress sites."
+      q: "What does a web development company do?",
+      a: "A web development company designs, builds, and maintains custom websites and web applications tailored to your business needs. This includes frontend user interfaces, backend API engineering, database design, e-commerce integrations, CMS setup, performance optimization, and ongoing maintenance."
     },
     {
-      q: "What are Google's Core Web Vitals?",
-      a: "They are metrics Google uses to measure load speed, visual stability, and interactivity. Passing these is mandatory for good SEO, and our custom websites easily ace these tests."
+      q: "How much does custom web development cost?",
+      a: "The cost of custom web development depends on project scope, custom design requirements, and functionality. At AbuQitmirLabs, we provide transparent milestone-based pricing with options ranging from essential custom business websites to full-scale web applications."
     },
     {
-      q: "Can my marketing team still edit the website easily?",
-      a: "Yes. We integrate user-friendly Headless CMS platforms (like Sanity or Contentful) so your team can publish content without touching any code."
+      q: "How long does it take to build a website?",
+      a: "A standard custom business website typically takes 3 to 5 weeks from scope discovery to launch. Complex full-stack web applications, custom portals, or headless e-commerce builds generally require 6 to 12 weeks depending on technical integration needs."
     },
     {
-      q: "Will my website be fully responsive on mobile devices?",
-      a: "We use a mobile-first design approach. Your website will look and function perfectly across all smartphones, tablets, and desktop monitors."
+      q: "What is the difference between web design and web development?",
+      a: "Web design focuses on visual aesthetics, UI layout, typography, branding, and user experience (UX) flows. Web development converts those design concepts into functional, interactive, secure code using modern frameworks like React, Next.js, and backend databases."
     },
     {
-      q: "How do you ensure the website is secure from hackers?",
-      a: "Because we decouple the frontend from the backend, there is no direct database connection exposed to the internet, eliminating 99% of common hacking vulnerabilities like SQL injections."
+      q: "Is Next.js good for business websites?",
+      a: "Yes, Next.js is one of the best frameworks for modern business websites. It delivers sub-second page loads through static site generation (SSG) and server-side rendering (SSR), superior Google SEO indexing, enhanced security, and seamless scalability."
     },
     {
-      q: "Can you integrate third-party payment gateways?",
-      a: "Absolutely. We integrate secure, PCI-compliant payment gateways like Stripe, PayPal, and regional providers directly into your checkout flow."
+      q: "Can you build custom web applications?",
+      a: "Yes, AbuQitmirLabs specializes in building custom full-stack web applications, SaaS products, interactive client portals, and e-commerce platforms engineered specifically around your business workflows."
     },
     {
-      q: "What is the difference between a website and a web app?",
-      a: "A website is primarily informational (like a blog or portfolio), whereas a web application is highly interactive, allowing users to log in, manipulate data, and perform complex tasks."
+      q: "Will my website be responsive on mobile devices?",
+      a: "Yes, all web development projects at AbuQitmirLabs follow a mobile-first responsive design strategy, ensuring flawless visual layout, fast loading, and intuitive navigation across smartphones, tablets, and desktop displays."
     }
   ];
 
   return (
     <div className="bg-[#050505] text-axiom-sub font-body antialiased overflow-x-hidden min-h-screen relative selection:bg-blue-500/30 selection:text-white">
       <Helmet>
-        <title>Custom Web Development Services | AbuQitmirLabs</title>
-        <meta name="description" content="Custom web development services by AbuQitmirLabs. We build high-performance web applications, enterprise SaaS, and PWAs with speed, scale, and SEO." />
+        <title>Web Development Company | Custom Web Solutions | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/web-development" />
+        <meta name="robots" content="index, follow" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Custom Web Development Services | AbuQitmirLabs" />
-        <meta property="og:description" content="Custom web development services by AbuQitmirLabs. We build high-performance web applications, enterprise SaaS, and PWAs with speed, scale, and SEO." />
+        <meta property="og:title" content="Web Development Company | Custom Web Solutions | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/web-development" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Custom Web Development Services | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Custom web development services by AbuQitmirLabs. We build high-performance web applications, enterprise SaaS, and PWAs with speed, scale, and SEO." />
+        <meta name="twitter:title" content="Web Development Company | Custom Web Solutions | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Schema Markup */}
@@ -216,23 +217,22 @@ Do not sign a website contract without these protective legal terms.
               "@context": "https://schema.org",
               "@type": "Service",
               "serviceType": "Web Development",
-              "name": "Custom Web Development Company in Karachi",
+              "name": "Web Development Services",
               "provider": {
                 "@type": "Organization",
                 "name": "AbuQitmirLabs",
-                "url": "https://www.abuqitmirlabs.tech/",
-                "areaServed": {
-                  "@type": "City",
-                  "name": "Karachi"
+                "url": "https://www.abuqitmirlabs.tech",
+                "logo": "https://www.abuqitmirlabs.tech/logo.png",
+                "image": "https://www.abuqitmirlabs.tech/logo.png",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": "Karachi",
+                  "addressCountry": "PK"
                 }
               },
-              "description": "Custom web development company in Karachi building React and Next.js websites and web applications for startups and SMEs, with transparent pricing and no template dependency.",
+              "description": "AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications.",
               "url": "https://www.abuqitmirlabs.tech/web-development",
-              "offers": {
-                "@type": "Offer",
-                "priceCurrency": "PKR",
-                "priceRange": "PKR 30,000 - PKR 1,500,000+"
-              }
+              "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"]
             })
           }}
         ></script>
@@ -244,40 +244,14 @@ Do not sign a website contract without these protective legal terms.
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "How much does a website cost in Pakistan?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Website costs in Pakistan typically range from PKR 30,000 for a basic informational site to PKR 1,500,000 or more for a custom web application, depending on design complexity and functionality."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Is a React or Next.js website better than WordPress?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "For sites where load speed, SEO performance, and custom functionality matter most, React and Next.js generally outperform template-based WordPress builds because they avoid the unused code and plugin overhead that slows WordPress sites down. WordPress remains a reasonable choice for simple content-driven sites with modest performance requirements."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "How long does custom web development take?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "A simple custom business website typically takes 3 to 5 weeks from finalized scope to launch. A custom e-commerce site or web application typically takes 6 to 12 weeks, depending on functionality and integration requirements."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Do you build e-commerce websites?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. AbuQitmirLabs builds custom e-commerce websites with payment gateway integration, inventory management, and checkout flows scoped around each client's specific product catalog rather than a generic store template."
-                  }
+              "mainEntity": faqData.map(item => ({
+                "@type": "Question",
+                "name": item.q,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": item.a
                 }
-              ]
+              }))
             })
           }}
         ></script>
@@ -349,7 +323,7 @@ Do not sign a website contract without these protective legal terms.
       </Helmet>
 
       <Header />
-      <Breadcrumbs />
+      <Breadcrumbs customItems={[{ name: 'Home', to: '/' }, { name: 'Web Development', to: '/web-development' }]} />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col justify-center items-center pt-24 md:pt-32 pb-20 px-6 z-10 overflow-hidden">
@@ -376,8 +350,8 @@ Do not sign a website contract without these protective legal terms.
           animate={{ opacity: 1, y: 0 }}
           className="text-5xl md:text-7xl lg:text-[6.5rem] font-medium tracking-tight text-white text-center mb-8 leading-[1.1] max-w-5xl"
         >
-          Custom Web Development <br />
-          <span className="text-neutral-500">Service | React & Next.js</span>
+          Web Development Company <br />
+          <span className="text-neutral-500">for Growing Businesses</span>
         </motion.h1>
 
         <motion.p 
