@@ -177,13 +177,13 @@ const Footer = () => {
                         <div className="space-y-4">
                             <h3 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Core Services</h3>
                             <ul className="space-y-3">
-                                <li><Link to="/custom-software" onMouseEnter={() => preloadRoute('/custom-software')} onTouchStart={() => preloadRoute('/custom-software')} className="hover:underline hover:text-white transition-colors">Custom Software Dev</Link></li>
-                                <li><Link to="/mobile-app-development" onMouseEnter={() => preloadRoute('/mobile-app-development')} onTouchStart={() => preloadRoute('/mobile-app-development')} className="hover:underline hover:text-white transition-colors">Mobile App Development</Link></li>
-                                <li><Link to="/web-development" onMouseEnter={() => preloadRoute('/web-development')} onTouchStart={() => preloadRoute('/web-development')} className="hover:underline hover:text-white transition-colors">High-Performance Web</Link></li>
-                                <li><Link to="/ai-agent-development" onMouseEnter={() => preloadRoute('/ai-agent-development')} onTouchStart={() => preloadRoute('/ai-agent-development')} className="hover:underline hover:text-white transition-colors">AI Agent Automations</Link></li>
-                                <li><Link to="/seo-mastery" onMouseEnter={() => preloadRoute('/seo-mastery')} onTouchStart={() => preloadRoute('/seo-mastery')} className="hover:underline hover:text-white transition-colors">SEO Mastery</Link></li>
-                                <li><Link to="/graphics-design" onMouseEnter={() => preloadRoute('/graphics-design')} onTouchStart={() => preloadRoute('/graphics-design')} className="hover:underline hover:text-white transition-colors">Branding &amp; Graphics</Link></li>
-                                <li><Link to="/content-writing" onMouseEnter={() => preloadRoute('/content-writing')} onTouchStart={() => preloadRoute('/content-writing')} className="hover:underline hover:text-white transition-colors">Technical Content</Link></li>
+                                <li><Link to="/custom-software" onMouseEnter={() => preloadRoute('/custom-software')} onTouchStart={() => preloadRoute('/custom-software')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Custom Software Dev</Link></li>
+                                <li><Link to="/mobile-app-development" onMouseEnter={() => preloadRoute('/mobile-app-development')} onTouchStart={() => preloadRoute('/mobile-app-development')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Mobile App Development</Link></li>
+                                <li><Link to="/web-development" onMouseEnter={() => preloadRoute('/web-development')} onTouchStart={() => preloadRoute('/web-development')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">High-Performance Web</Link></li>
+                                <li><Link to="/ai-agent-development" onMouseEnter={() => preloadRoute('/ai-agent-development')} onTouchStart={() => preloadRoute('/ai-agent-development')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">AI Agent Automations</Link></li>
+                                <li><Link to="/seo-mastery" onMouseEnter={() => preloadRoute('/seo-mastery')} onTouchStart={() => preloadRoute('/seo-mastery')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">SEO Mastery</Link></li>
+                                <li><Link to="/graphics-design" onMouseEnter={() => preloadRoute('/graphics-design')} onTouchStart={() => preloadRoute('/graphics-design')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Branding &amp; Graphics</Link></li>
+                                <li><Link to="/content-writing" onMouseEnter={() => preloadRoute('/content-writing')} onTouchStart={() => preloadRoute('/content-writing')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Technical Content</Link></li>
                             </ul>
                         </div>
 
@@ -191,12 +191,12 @@ const Footer = () => {
                         <div className="space-y-4">
                             <h3 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Target Markets</h3>
                             <ul className="space-y-3">
-                                <li><Link to="/us-market" onMouseEnter={() => preloadRoute('/us-market')} onTouchStart={() => preloadRoute('/us-market')} className="hover:underline hover:text-white transition-colors">United States (US)</Link></li>
-                                <li><Link to="/uk-market" onMouseEnter={() => preloadRoute('/uk-market')} onTouchStart={() => preloadRoute('/uk-market')} className="hover:underline hover:text-white transition-colors">United Kingdom (UK)</Link></li>
-                                <li><Link to="/canada-market" onMouseEnter={() => preloadRoute('/canada-market')} onTouchStart={() => preloadRoute('/canada-market')} className="hover:underline hover:text-white transition-colors">Canada (CA)</Link></li>
-                                <li><Link to="/poland-market" onMouseEnter={() => preloadRoute('/poland-market')} onTouchStart={() => preloadRoute('/poland-market')} className="hover:underline hover:text-white transition-colors">Poland (PL)</Link></li>
-                                <li><Link to="/australia-market" onMouseEnter={() => preloadRoute('/australia-market')} onTouchStart={() => preloadRoute('/australia-market')} className="hover:underline hover:text-white transition-colors">Australia (AU)</Link></li>
-                                <li><Link to="/pakistan-market" onMouseEnter={() => preloadRoute('/pakistan-market')} onTouchStart={() => preloadRoute('/pakistan-market')} className="hover:underline hover:text-white transition-colors">Pakistan (PK)</Link></li>
+                                <li><Link to="/us-market" onMouseEnter={() => preloadRoute('/us-market')} onTouchStart={() => preloadRoute('/us-market')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">United States (US)</Link></li>
+                                <li><Link to="/uk-market" onMouseEnter={() => preloadRoute('/uk-market')} onTouchStart={() => preloadRoute('/uk-market')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">United Kingdom (UK)</Link></li>
+                                <li><Link to="/canada-market" onMouseEnter={() => preloadRoute('/canada-market')} onTouchStart={() => preloadRoute('/canada-market')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Canada (CA)</Link></li>
+                                <li><Link to="/poland-market" onMouseEnter={() => preloadRoute('/poland-market')} onTouchStart={() => preloadRoute('/poland-market')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Poland (PL)</Link></li>
+                                <li><Link to="/australia-market" onMouseEnter={() => preloadRoute('/australia-market')} onTouchStart={() => preloadRoute('/australia-market')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Australia (AU)</Link></li>
+                                <li><Link to="/pakistan-market" onMouseEnter={() => preloadRoute('/pakistan-market')} onTouchStart={() => preloadRoute('/pakistan-market')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Pakistan (PK)</Link></li>
                             </ul>
                         </div>
 
@@ -204,15 +204,15 @@ const Footer = () => {
                         <div className="space-y-4">
                             <h3 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Legal &amp; Sitemaps</h3>
                             <ul className="space-y-3">
-                                <li><Link to="/privacy" onMouseEnter={() => preloadRoute('/privacy')} onTouchStart={() => preloadRoute('/privacy')} className="hover:underline hover:text-white transition-colors">Privacy Policy</Link></li>
-                                <li><Link to="/terms" onMouseEnter={() => preloadRoute('/terms')} onTouchStart={() => preloadRoute('/terms')} className="hover:underline hover:text-white transition-colors">Terms of Service</Link></li>
-                                <li><Link to="/blog" onMouseEnter={() => preloadRoute('/blog')} onTouchStart={() => preloadRoute('/blog')} className="hover:underline hover:text-white transition-colors">Tech Blog</Link></li>
-                                <li><Link to="/case-studies" onMouseEnter={() => preloadRoute('/case-studies')} onTouchStart={() => preloadRoute('/case-studies')} className="hover:underline hover:text-white transition-colors">Case Studies</Link></li>
-                                <li><a href="/rss.xml" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-white transition-colors flex items-center gap-1">RSS News Feed <ExternalLink size={10} /></a></li>
-                                <li><a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-white transition-colors flex items-center gap-1">Dynamic Sitemap <ExternalLink size={10} /></a></li>
-                                <li><a href="/pages-sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-white transition-colors flex items-center gap-1">Pages Index <ExternalLink size={10} /></a></li>
-                                <li><a href="/image-sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-white transition-colors flex items-center gap-1">Image Asset Index <ExternalLink size={10} /></a></li>
-                                <li><a href="/video-sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-white transition-colors flex items-center gap-1">Video Index <ExternalLink size={10} /></a></li>
+                                <li><Link to="/privacy" onMouseEnter={() => preloadRoute('/privacy')} onTouchStart={() => preloadRoute('/privacy')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Privacy Policy</Link></li>
+                                <li><Link to="/terms" onMouseEnter={() => preloadRoute('/terms')} onTouchStart={() => preloadRoute('/terms')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Terms of Service</Link></li>
+                                <li><Link to="/blog" onMouseEnter={() => preloadRoute('/blog')} onTouchStart={() => preloadRoute('/blog')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Tech Blog</Link></li>
+                                <li><Link to="/case-studies" onMouseEnter={() => preloadRoute('/case-studies')} onTouchStart={() => preloadRoute('/case-studies')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Case Studies</Link></li>
+                                <li><a href="/rss.xml" target="_blank" rel="noopener noreferrer" className="text-black font-extrabold hover:underline hover:opacity-80 transition-all flex items-center gap-1">RSS News Feed <ExternalLink size={10} className="text-black" /></a></li>
+                                <li><a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="text-black font-extrabold hover:underline hover:opacity-80 transition-all flex items-center gap-1">Dynamic Sitemap <ExternalLink size={10} className="text-black" /></a></li>
+                                <li><a href="/pages-sitemap.xml" target="_blank" rel="noopener noreferrer" className="text-black font-extrabold hover:underline hover:opacity-80 transition-all flex items-center gap-1">Pages Index <ExternalLink size={10} className="text-black" /></a></li>
+                                <li><a href="/image-sitemap.xml" target="_blank" rel="noopener noreferrer" className="text-black font-extrabold hover:underline hover:opacity-80 transition-all flex items-center gap-1">Image Asset Index <ExternalLink size={10} className="text-black" /></a></li>
+                                <li><a href="/video-sitemap.xml" target="_blank" rel="noopener noreferrer" className="text-black font-extrabold hover:underline hover:opacity-80 transition-all flex items-center gap-1">Video Index <ExternalLink size={10} className="text-black" /></a></li>
                             </ul>
                         </div>
 
@@ -222,25 +222,25 @@ const Footer = () => {
                             <h3 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Headquarters Info</h3>
                             <ul className="space-y-3 not-italic normal-case font-bold tracking-tight text-black flex flex-col gap-1.5 list-none">
                                 <li className="flex items-start gap-2 text-xs" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
-                                    <MapPin size={14} className="min-w-[14px] mt-0.5 text-zinc-900" />
-                                    <span>
+                                    <MapPin size={14} className="min-w-[14px] mt-0.5 text-black" />
+                                    <span className="text-black font-bold">
                                         <span itemProp="streetAddress">8/15, 3 37A Rd, Shah Khalid Colony, Sector 37A</span>, <br />
                                         <span itemProp="addressLocality">Landhi Town, Karachi</span>, <br />
                                         <span itemProp="postalCode">75160</span>, <span itemProp="addressCountry">Pakistan</span>
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-2 text-xs">
-                                    <Phone size={14} className="min-w-[14px] mt-0.5 text-zinc-900" />
-                                    <span itemProp="telephone">+92 323 3260859</span>
+                                    <Phone size={14} className="min-w-[14px] mt-0.5 text-black" />
+                                    <span itemProp="telephone" className="text-black font-black">+92 323 3260859</span>
                                 </li>
                                 <li className="flex flex-col gap-1 text-xs">
                                     <div className="flex items-start gap-2">
-                                        <Mail size={14} className="min-w-[14px] mt-0.5 text-zinc-900" />
-                                        <a href="mailto:hello@abuqitmirlabs.tech" className="break-all font-mono font-black text-[10px] normal-case hover:underline">hello@abuqitmirlabs.tech</a>
+                                        <Mail size={14} className="min-w-[14px] mt-0.5 text-black" />
+                                        <a href="mailto:hello@abuqitmirlabs.tech" className="break-all font-mono font-black text-xs text-black normal-case hover:underline">hello@abuqitmirlabs.tech</a>
                                     </div>
                                     <div className="flex items-start gap-2">
                                         <span className="min-w-[14px]" />
-                                        <a href="mailto:abuqitmirshirazalmadani@gmail.com" className="break-all font-mono font-medium text-[9px] text-zinc-700 normal-case hover:underline">abuqitmirshirazalmadani@gmail.com</a>
+                                        <a href="mailto:abuqitmirshirazalmadani@gmail.com" className="break-all font-mono font-bold text-[10px] text-black/90 normal-case hover:underline">abuqitmirshirazalmadani@gmail.com</a>
                                     </div>
                                 </li>
                             </ul>

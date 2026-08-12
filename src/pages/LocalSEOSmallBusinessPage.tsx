@@ -326,10 +326,10 @@ export default function LocalSEOSmallBusinessPage() {
                     >
                         <Link
                             to="/contact"
-                            className="w-full sm:w-auto px-8 py-4 bg-[#ccff00] text-black font-semibold rounded-xl hover:bg-[#b8e600] transition-all flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(204,255,0,0.2)] group"
+                            className="w-full sm:w-auto px-8 py-4 bg-[#ccff00] !text-black font-extrabold rounded-xl hover:bg-[#b8e600] transition-all flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(204,255,0,0.2)] group"
                         >
-                            Get Your Starter Plan
-                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            <span className="!text-black">Get Your Starter Plan</span>
+                            <ArrowRight className="w-5 h-5 !text-black group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <Link
                             to="/seo-mastery"
@@ -1081,9 +1081,9 @@ export default function LocalSEOSmallBusinessPage() {
 
                         <Link
                             to="/contact"
-                            className="block w-full text-center py-4 bg-[#ccff00] text-black font-black uppercase tracking-wider rounded-xl border-4 border-black shadow-[4px_4px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
+                            className="block w-full text-center py-4 bg-[#ccff00] !text-black font-black uppercase tracking-wider rounded-xl border-4 border-black shadow-[4px_4px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
                         >
-                            Get a Tailored Quote
+                            <span className="!text-black font-black">Get a Tailored Quote</span>
                         </Link>
                     </div>
 
@@ -1176,10 +1176,10 @@ export default function LocalSEOSmallBusinessPage() {
                     </p>
                     <Link
                         to="/contact"
-                        className="inline-flex items-center gap-3 px-10 py-5 bg-[#ccff00] text-black font-bold text-lg rounded-xl hover:bg-[#b8e600] transition-all shadow-[0_0_40px_rgba(204,255,0,0.25)] group"
+                        className="inline-flex items-center gap-3 px-10 py-5 bg-[#ccff00] !text-black font-extrabold text-lg rounded-xl hover:bg-[#b8e600] transition-all shadow-[0_0_40px_rgba(204,255,0,0.25)] group"
                     >
-                        Start the Conversation
-                        <ArrowRight className="w-6 h-6 group-hover:translate-x-1.5 transition-transform" />
+                        <span className="!text-black font-extrabold">Start the Conversation</span>
+                        <ArrowRight className="w-6 h-6 !text-black group-hover:translate-x-1.5 transition-transform" />
                     </Link>
                 </div>
             </section>
