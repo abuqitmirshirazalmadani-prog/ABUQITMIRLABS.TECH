@@ -155,21 +155,22 @@ const CustomSoftwarePage = () => {
   return (
     <div className="bg-[#000000] text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-blue-500/30 selection:text-white">
       <Helmet>
-        <title>Custom Software Development Services | Abu Qitmir Labs</title>
-        <meta name="description" content="AbuQitmirLabs builds custom software, ERP systems, and AI-powered solutions tailored to your workflows. We deliver working features every 2 weeks. Let's build your system." />
+        <title>Custom Software Development Company | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs provides high-impact custom software development, enterprise ERPs, and AI solutions tailored for startups and growing businesses. Build with us." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/custom-software" />
+        <meta name="robots" content="index, follow" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Custom Software Development Services | Abu Qitmir Labs" />
-        <meta property="og:description" content="AbuQitmirLabs builds custom software, ERP systems, and AI-powered solutions tailored to your workflows. We deliver working features every 2 weeks. Let's build your system." />
+        <meta property="og:title" content="Custom Software Development Company | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs provides high-impact custom software development, enterprise ERPs, and AI solutions tailored for startups and growing businesses. Build with us." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/custom-software" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Custom Software Development Services | Abu Qitmir Labs" />
-        <meta name="twitter:description" content="AbuQitmirLabs builds custom software, ERP systems, and AI-powered solutions tailored to your workflows. We deliver working features every 2 weeks. Let's build your system." />
+        <meta name="twitter:title" content="Custom Software Development Company | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs provides high-impact custom software development, enterprise ERPs, and AI solutions tailored for startups and growing businesses. Build with us." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
@@ -179,29 +180,11 @@ const CustomSoftwarePage = () => {
             __html: JSON.stringify([
               {
                 "@context": "https://schema.org",
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                  {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Home",
-                    "item": "https://www.abuqitmirlabs.tech"
-                  },
-                  {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "Custom Software Development",
-                    "item": "https://www.abuqitmirlabs.tech/custom-software"
-                  }
-                ]
-              },
-              {
-                "@context": "https://schema.org",
                 "@type": "Service",
-                "name": "Custom Software Development Services",
+                "name": "Custom Software Development",
                 "serviceType": "Custom Software Development",
                 "provider": {
-                  "@type": "LocalBusiness",
+                  "@type": "Organization",
                   "name": "AbuQitmirLabs",
                   "url": "https://www.abuqitmirlabs.tech",
                   "logo": "https://www.abuqitmirlabs.tech/logo.png",
@@ -212,7 +195,8 @@ const CustomSoftwarePage = () => {
                     "addressCountry": "PK"
                   }
                 },
-                "description": "At AbuQitmirLabs, we build bespoke custom software, enterprise platforms (ERP), scalable SaaS architectures, and specialized features tailored to sectors like Non-Profit, Logistics, Real Estate, Healthcare, Law, Events, and Education.",
+                "url": "https://www.abuqitmirlabs.tech/custom-software",
+                "description": "AbuQitmirLabs provides high-impact custom software development, enterprise ERPs, and AI solutions tailored for startups and growing businesses. Build with us.",
                 "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
                 "hasOfferCatalog": {
                   "@type": "OfferCatalog",
@@ -355,7 +339,7 @@ const CustomSoftwarePage = () => {
       </div>
 
       <Header />
-      <Breadcrumbs />
+      <Breadcrumbs customItems={[{ name: 'Home', to: '/' }, { name: 'Custom Software Development', to: '/custom-software' }]} />
 
       {/* Hero Section */}
       <section className="animate-enter-delay-2 relative pt-24 md:pt-32 pb-20 z-10">
@@ -401,8 +385,16 @@ const CustomSoftwarePage = () => {
                 className="mx-auto max-w-6xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-light tracking-tight text-white leading-tight"
               >
                 Custom Software Development Company <br />
-                <span className="font-serif italic text-blue-400 font-normal">for Startups & Small Businesses</span>
+                <span className="font-serif italic text-blue-400 font-normal">for Startups</span>
               </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.05 }}
+                className="mx-auto max-w-6xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif italic text-blue-400 font-normal tracking-tight leading-tight mt-1"
+              >
+                &amp; Small Businesses
+              </motion.p>
               
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -410,7 +402,7 @@ const CustomSoftwarePage = () => {
                 transition={{ delay: 0.1 }}
                 className="mx-auto mt-10 max-w-3xl text-xl leading-relaxed text-slate-300 font-light font-sans"
               >
-                Custom software isn't a template with your logo slapped on it. At AbuQitmirLabs, we design systems around how your business actually operates — mapping your workflows before writing a single line of code. Our custom software development process runs in 2-week sprints, so you see working features regularly, not a black box for months. Hamari custom software solutions ko aap <a href="/ai-agent-development" className="text-blue-400 hover:underline">AI Agents</a> ke sath integrate kar ke operational automation bhi add kar sakte hain, ya phir <a href="/mobile-app-development" className="text-blue-400 hover:underline">Mobile App Development</a> ke zariye apne customers tak directly pohanch sakte hain. Our team is based out of Karachi, Pakistan, offering global-grade products with high-ROI execution.
+                Custom software isn't a template with your logo slapped on it. At AbuQitmirLabs, we design systems around how your business actually operates — mapping your workflows before writing a single line of code. Our custom software development process runs in 2-week sprints, so you see working features regularly, not a black box for months. Our custom software solutions integrate seamlessly with <Link to="/ai-agent-development" className="text-blue-400 hover:underline">AI Agents</Link> for operational automation, or extend via <Link to="/mobile-app-development" className="text-blue-400 hover:underline">Mobile App Development</Link> to connect directly with your customers. Our team is based out of Karachi, Pakistan, offering global-grade products with high-ROI execution.
               </motion.p>
 
               {/* Core Capabilities Specifications */}
