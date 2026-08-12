@@ -526,8 +526,8 @@ export default function CaseStudiesPage() {
                         Let’s Engineer Your <br />
                         <span className="text-[#ccff00]">Absolute Reference Masterpiece</span>
                     </h3>
-                    <p className="text-zinc-400 text-sm md:text-base leading-relaxed max-w-xl mx-auto font-light">
-                        We accept a maximum of three premium engineering partners each quarter. If you seek uncompromised digital architecture designed to command your industry, contact us today.
+                    <p className="text-zinc-400 text-sm md:text-base leading-relaxed max-w-2xl mx-auto font-light">
+                        We accept a maximum of three premium engineering partners each quarter. Explore our core services: <Link to="/custom-software" className="text-[#ccff00] hover:underline font-medium">Custom Software</Link> · <Link to="/mobile-app-development" className="text-[#ccff00] hover:underline font-medium">Mobile App Development</Link> · <Link to="/web-development" className="text-[#ccff00] hover:underline font-medium">Web Development</Link> · <Link to="/ai-agent-development" className="text-[#ccff00] hover:underline font-medium">AI Agent Development</Link>. Contact us today to discuss your project.
                     </p>
                     <div className="pt-6">
                         <Link 

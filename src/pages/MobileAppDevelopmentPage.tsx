@@ -50,28 +50,28 @@ const MobileAppDevelopmentPage = () => {
     {
       id: "01",
       title: "Flutter Cross-Platform Apps",
-      content: "Maximize market reach while minimizing budget constraints. We develop beautifully tailored cross-platform mobile apps using Flutter. By maintaining a single, clean codebase for iOS and Android, we speed up deployment times by 50% without sacrificing 120 FPS rendering speed or sleek native interactions.",
+      content: "Maximize market reach while keeping engineering budgets focused. We engineer high-performance cross-platform mobile apps using Flutter and Dart. By compiling a single, clean codebase directly to native ARM machine code for iOS and Android, we accelerate release timelines by up to 40% while maintaining 120 FPS UI rendering, custom Skia/Impeller graphics, and flawless native device interactions.",
       icon: <Smartphone />,
       accent: "blue"
     },
     {
       id: "02",
       title: "Native iOS Apps (Swift & SwiftUI)",
-      content: "Deliver an ultra-luxurious, tailored interface directly inside the Apple ecosystem. We engineer premium native iOS applications utilizing Swift, SwiftUI, and advanced Apple Frameworks. We ensure smooth performance, optimized battery lifecycle, and native key integrations with Apple Pay and local device hardware.",
+      content: "Deliver an ultra-refined, fluid experience built exclusively for the Apple ecosystem. We engineer custom native iOS applications using Swift 6, SwiftUI, and Combine reactive pipelines. Our iOS builds strictly adhere to Apple Human Interface Guidelines, optimizing battery lifecycle, Metal graphics rendering, and seamless integrations with Apple Pay, Face ID, and Apple HealthKit.",
       icon: <Layers />,
       accent: "indigo"
     },
     {
       id: "03",
       title: "Native Android Apps (Kotlin)",
-      content: "Unleash robust Android power. We build expert native Android apps backed by Kotlin and Modern Jetpack Compose architectures. Our software is designed to operate seamlessly across the massive Android device ecosystem, utilizing intensive local multi-threading, background services, and native Bluetooth/NFC integrations.",
+      content: "Unleash robust Android processing power across the world's most diverse device landscape. We build native Android applications leveraging Kotlin, Jetpack Compose, and modern Android Architecture Components (MVI/MVVM). Our software is built to handle multi-threaded background processing, Room database caching, and hardware integrations like Bluetooth LE, NFC, and camera APIs.",
       icon: <Cpu />,
       accent: "sky"
     },
     {
       id: "04",
       title: "Offline-First Database Cache",
-      content: "Ensure continuous connectivity for your clients. We build mobile-optimized local storage engines using SQLite, Hive, or Realm databases. This allows your app to load assets instantly, save drafts offline, and automatically synchronize back to your servers as soon as a network connection is detected.",
+      content: "Ensure continuous mobile usability regardless of network reliability. We design offline-first local data architectures using SQLite, Realm, and Hive database caching layers. Your application loads instantly from local encrypted stores, queuing offline user actions, and executing background delta synchronization as soon as a cellular or Wi-Fi connection is restored.",
       icon: <Database />,
       accent: "violet"
     }
@@ -79,190 +79,224 @@ const MobileAppDevelopmentPage = () => {
 
   const faqData = [
     {
-      q: "What is the difference between Flutter and Native development?",
-      a: "Flutter allows us to write one compiled codebase that renders natively on both iOS and Android, which reduces development cost and timeline dramatically. Native development (Swift for iOS, Kotlin for Android) is written separately for each OS, giving you maximum integration with exclusive system features and hardware."
+      q: "What does a mobile app development company do?",
+      a: "A mobile app development company designs, engineers, tests, and deploys applications for smartphones, tablets, and wearable devices. At AbuQitmirLabs, we manage the complete product lifecycle: technical discovery, UI/UX design, native (iOS/Android) or cross-platform (Flutter/React Native) development, secure backend API integration, automated QA testing, App Store and Google Play Store submission, and continuous post-launch maintenance."
     },
     {
-      q: "Will you submit our custom app to the App Store and Google Play?",
-      a: "Yes. Our team handles the entire technical submission pipeline. From structuring guidelines-compliant metadata, assets, and privacy terms, to managing review responses, we ensure a smooth launch on Apple App Store & Google Play Store."
+      q: "How much does custom mobile app development cost?",
+      a: "The cost of custom mobile app development depends on project scope, platform requirements, backend complexity, and feature sets. A streamlined cross-platform Minimum Viable Product (MVP) typically ranges from $8,000 to $15,000, while a feature-rich enterprise mobile app with custom APIs, real-time WebSockets, offline sync, and multi-role admin portals ranges from $20,000 to $50,000+. We provide itemized, fixed-scope proposals after technical discovery rather than rough estimates."
     },
     {
-      q: "Do you provide source code ownership?",
-      a: "Absolutely. Once the project details are finalized and payments are cleared, you own 100% of the Intellectual Property (IP) and all original source codes of the mobile app."
+      q: "How long does it take to build a mobile app?",
+      a: "Initial discovery, wireframing, and interactive UI/UX prototyping usually require 2 to 3 weeks. Full development for a Minimum Viable Product (MVP) using Flutter or React Native typically requires 6 to 10 weeks. Enterprise-grade mobile software involving complex backend integrations, custom security encryption, and multi-device QA testing generally takes 12 to 20 weeks from project kick-off to official store publication."
     },
     {
-      q: "How do you handle backend API syncing?",
-      a: "We construct secure, JSON/gRPC based lightweight API pipelines. We utilize caching layers, token-based authentication (JWT/OAuth), and auto-retry logic to guarantee data is transmitted securely and efficiently with minimal data usage."
+      q: "Should I build native or cross-platform?",
+      a: "Choose cross-platform development (using Flutter or React Native) if you want to target both iOS and Android simultaneously with a single codebase, compressing initial development time and reducing long-term maintenance costs by up to 40%. Choose native development (Swift for iOS, Kotlin for Android) if your application requires heavy hardware integration, platform-exclusive APIs (like Apple HealthKit or ARKit), complex 3D graphics, or maximum CPU/GPU rendering efficiency."
     },
     {
-      q: "How long does it take to build a premium mobile app?",
-      a: "A high-fidelity cross-platform Flutter MVP (Minimum Viable Product) requires 8 to 12 weeks. Detailed, enterprise systems with complex roles, continuous payment sync, and advanced AI utilities take 12 to 18 weeks."
+      q: "Is Flutter good for mobile app development?",
+      a: "Yes. Flutter is one of the most powerful cross-platform frameworks available today. Developed by Google, Flutter compiles directly to native ARM machine code for both iOS and Android, bypassing JavaScript bridges and delivering consistent 120 FPS UI performance. It enables near 100% code sharing between platforms, making it an ideal choice for startups and enterprises seeking rapid time-to-market without sacrificing visual polish or responsiveness."
     },
     {
-      q: "Will the app support tablet and folding screens?",
-      a: "Yes. We design fluid responsive layouts that optimize density and margins across all screens, including standard smartphones, tablets, iPads, and folding Android devices."
+      q: "Can you build both iOS and Android apps simultaneously?",
+      a: "Yes. Using cross-platform technologies like Flutter or React Native, we build unified mobile applications that deploy simultaneously to both the Apple App Store and Google Play Store from a shared codebase. If your product demands separate native builds, our team develops dedicated iOS apps in Swift 6 and Android apps in Kotlin in parallel, ensuring full platform compliance for both ecosystems."
     },
     {
-      q: "Do you offer post-launch maintenance packages?",
-      a: "Yes. Operating systems update their SDKs annually. We provide active support SLAs (Service Level Agreements) covering bug-fixes, visual updates for new device sizes, and major OS version compatibility checks."
+      q: "Can you integrate APIs and third-party services into mobile apps?",
+      a: "Yes. We architect lightweight API abstraction layers connecting your mobile frontend to existing databases, ERPs, CRM systems, payment gateways (Stripe, PayPal, Apple Pay, Google Pay), OAuth2/JWT authentication providers, push notification hubs (Firebase FCM), analytics tools, and automated custom software backends or AI agent pipelines."
+    },
+    {
+      q: "Will you help publish the app to the App Store and Google Play Store?",
+      a: "Yes. We handle 100% of the submission and approval process for both Apple App Store and Google Play Store. This includes preparing store graphics and metadata, configuring developer accounts, setting up privacy labels and data safety declarations, managing TestFlight and Google Beta testing groups, and addressing any store reviewer feedback until your application is officially published."
+    },
+    {
+      q: "Do you provide app maintenance and updates after launch?",
+      a: "Yes. Apple and Google release major OS updates and updated SDK guidelines annually. We offer structured post-launch Service Level Agreements (SLAs) covering 24/7 crash monitoring via Firebase Crashlytics and Sentry, routine bug fixes, performance optimization, database maintenance, and feature enhancements to ensure your mobile application remains secure and fully functional across new device models."
     }
   ];
 
   return (
     <div className="bg-[#050505] text-neutral-300 font-body antialiased overflow-x-hidden min-h-screen relative selection:bg-blue-500/30 selection:text-white">
       <Helmet>
-        <title>Mobile App Development | Flutter & Native iOS/Android | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs builds high-performance mobile apps using Flutter, React Native, and iOS/Android. We handle design, development, and App Store submission." />
+        <title>Mobile App Development Services | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs provides custom mobile app development for startups and businesses, building fast, scalable iOS, Android, Flutter, and cross-platform apps." />
+        <meta name="keywords" content="mobile app development, mobile app development company, mobile app development services, custom mobile app development, iOS app development, Android app development, Flutter app development, React Native app development, mobile app developers" />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/mobile-app-development" />
+        <meta name="robots" content="index, follow" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Mobile App Development | Flutter & Native iOS/Android | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs builds high-performance mobile apps using Flutter, React Native, and iOS/Android. We handle design, development, and App Store submission." />
+        <meta property="og:title" content="Mobile App Development Services | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs provides custom mobile app development for startups and businesses, building fast, scalable iOS, Android, Flutter, and cross-platform apps." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/mobile-app-development" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Mobile App Development | Flutter & Native iOS/Android | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs builds high-performance mobile apps using Flutter, React Native, and iOS/Android. We handle design, development, and App Store submission." />
+        <meta name="twitter:title" content="Mobile App Development Services | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs provides custom mobile app development for startups and businesses, building fast, scalable iOS, Android, Flutter, and cross-platform apps." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
-        {/* Schema Markup */}
+        {/* Unified @graph Schema Markup */}
         <script 
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Service",
-              "name": "Flutter & Native Mobile App Development Services",
-              "description": "At AbuQitmirLabs, we engineer high-performance native and cross-platform mobile applications for iOS (Swift/SwiftUI) and Android (Kotlin) alongside Flutter solutions tailored to key sectors like Non-Profit, Logistics, Real Estate, Healthcare, Law, Events, and Education.",
-              "provider": {
-                "@type": "LocalBusiness",
-                "name": "AbuQitmirLabs",
-                "url": "https://www.abuqitmirlabs.tech",
-                "logo": "https://www.abuqitmirlabs.tech/logo.png",
-                "image": "https://www.abuqitmirlabs.tech/logo.png",
-                "address": {
-                  "@type": "PostalAddress",
-                  "addressLocality": "Karachi",
-                  "addressCountry": "PK"
-                }
-              },
-              "serviceType": "Mobile Application Engineering",
-              "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
-              "hasOfferCatalog": {
-                "@type": "OfferCatalog",
-                "name": "Mobile Development Solutions Catalog",
-                "itemListElement": [
-                  ...capabilities.map(c => ({
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": c.title,
-                      "description": c.content
-                    }
-                  })),
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Mobile App Development for Non-Profit Organizations",
-                      "description": "Streamlining donation processing, volunteer coordination, and impact tracking securely."
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Mobile App Development for Logistics",
-                      "description": "Offline-capable, GPS-integrated platforms for real-time shipment tracking, driver communication, and route optimization."
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Mobile App Development for Real Estate",
-                      "description": "Immersive property browsing, advanced search filters, interactive maps, and CRM notifications."
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Mobile App Development for Healthcare",
-                      "description": "HIPAA-compliant portals, telemedicine options, scheduling, and secure patient data vaults."
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Mobile App Development for Small Law Firms",
-                      "description": "Secure client portals, document case management, time trackers, and mobile billing tools."
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Mobile App Development for Corporate Events",
-                      "description": "Interactive agendas, networking features, live polling, and real-time push notification updates."
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Mobile App Development for Educational Institutions",
-                      "description": "Learning systems, attendance tracking, assignment modules, and unified school portals."
-                    }
-                  }
-                ]
-              }
-            })
-          }}
-        ></script>
-
-        {/* FAQ Schema */}
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": faqData.map(item => ({
-                "@type": "Question",
-                "name": item.q,
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": item.a
-                }
-              }))
-            })
-          }}
-        ></script>
-
-        {/* Breadcrumb Schema */}
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
+              "@graph": [
                 {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://www.abuqitmirlabs.tech"
+                  "@type": "Organization",
+                  "@id": "https://www.abuqitmirlabs.tech/#organization",
+                  "name": "AbuQitmirLabs",
+                  "url": "https://www.abuqitmirlabs.tech",
+                  "logo": "https://www.abuqitmirlabs.tech/logo.png",
+                  "image": "https://www.abuqitmirlabs.tech/logo.png",
+                  "email": "hello@abuqitmirlabs.tech",
+                  "telephone": "+923233260859",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony",
+                    "addressLocality": "Karachi",
+                    "addressRegion": "Sindh",
+                    "postalCode": "75160",
+                    "addressCountry": "PK"
+                  },
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+92-323-3260859",
+                    "contactType": "customer service",
+                    "areaServed": ["US", "GB", "PK", "AU", "EU", "CA"],
+                    "availableLanguage": ["English", "Urdu"]
+                  },
+                  "sameAs": [
+                    "https://www.linkedin.com/company/abuqitmirlabs-tech-697423390",
+                    "https://www.facebook.com/abuqitmirlabs",
+                    "https://www.instagram.com/abuqitmirlabs",
+                    "https://x.com/AbuQitmir",
+                    "https://www.clutch.co/profile/abuqitmirlabs",
+                    "https://themanifest.com/company/abuqitmirlabstech",
+                    "https://www.goodfirms.co/company/abuqitmirlabs-tech",
+                    "https://www.youtube.com/@AbuQitmirMohammadShirazAlMadani",
+                    "https://github.com/AbuQitmirLabs"
+                  ]
                 },
                 {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Mobile App Development",
-                  "item": "https://www.abuqitmirlabs.tech/mobile-app-development"
+                  "@type": "WebSite",
+                  "@id": "https://www.abuqitmirlabs.tech/#website",
+                  "url": "https://www.abuqitmirlabs.tech",
+                  "name": "AbuQitmirLabs",
+                  "publisher": {
+                    "@id": "https://www.abuqitmirlabs.tech/#organization"
+                  }
+                },
+                {
+                  "@type": "WebPage",
+                  "@id": "https://www.abuqitmirlabs.tech/mobile-app-development#webpage",
+                  "url": "https://www.abuqitmirlabs.tech/mobile-app-development",
+                  "name": "Mobile App Development Services | AbuQitmirLabs",
+                  "description": "AbuQitmirLabs provides custom mobile app development for startups and businesses, building fast, scalable iOS, Android, Flutter, and cross-platform apps.",
+                  "isPartOf": {
+                    "@id": "https://www.abuqitmirlabs.tech/#website"
+                  },
+                  "about": {
+                    "@id": "https://www.abuqitmirlabs.tech/mobile-app-development#service"
+                  },
+                  "breadcrumb": {
+                    "@id": "https://www.abuqitmirlabs.tech/mobile-app-development#breadcrumb"
+                  },
+                  "inLanguage": "en-US"
+                },
+                {
+                  "@type": "BreadcrumbList",
+                  "@id": "https://www.abuqitmirlabs.tech/mobile-app-development#breadcrumb",
+                  "itemListElement": [
+                    {
+                      "@type": "ListItem",
+                      "position": 1,
+                      "name": "Home",
+                      "item": "https://www.abuqitmirlabs.tech"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 2,
+                      "name": "Mobile App Development",
+                      "item": "https://www.abuqitmirlabs.tech/mobile-app-development"
+                    }
+                  ]
+                },
+                {
+                  "@type": "Service",
+                  "@id": "https://www.abuqitmirlabs.tech/mobile-app-development#service",
+                  "name": "Mobile App Development Services",
+                  "serviceType": "Mobile Application Engineering",
+                  "url": "https://www.abuqitmirlabs.tech/mobile-app-development",
+                  "provider": {
+                    "@id": "https://www.abuqitmirlabs.tech/#organization"
+                  },
+                  "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
+                  "description": "Custom mobile app development services covering cross-platform Flutter solutions, native iOS (Swift), native Android (Kotlin), offline-first data caching, and enterprise backend integrations.",
+                  "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Mobile App Development Catalog",
+                    "itemListElement": capabilities.map(c => ({
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": c.title,
+                        "description": c.content
+                      }
+                    }))
+                  }
+                },
+                {
+                  "@type": "FAQPage",
+                  "@id": "https://www.abuqitmirlabs.tech/mobile-app-development#faq",
+                  "mainEntity": faqData.map(item => ({
+                    "@type": "Question",
+                    "name": item.q,
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": item.a
+                    }
+                  }))
+                },
+                {
+                  "@type": "HowTo",
+                  "@id": "https://www.abuqitmirlabs.tech/mobile-app-development#process",
+                  "name": "Our Mobile App Development Lifecycle",
+                  "step": [
+                    {
+                      "@type": "HowToStep",
+                      "position": 1,
+                      "name": "Product Discovery & Architecture",
+                      "text": "Defining user requirements, performance benchmarks, and framework choices."
+                    },
+                    {
+                      "@type": "HowToStep",
+                      "position": 2,
+                      "name": "Ergonomic Wireframing & Prototyping",
+                      "text": "Designing touch-first mobile interfaces adhering to iOS and Material Design standards."
+                    },
+                    {
+                      "@type": "HowToStep",
+                      "position": 3,
+                      "name": "Agile Development & Sprint Releases",
+                      "text": "Building feature sets in 2-week iterations with continuous integration."
+                    },
+                    {
+                      "@type": "HowToStep",
+                      "position": 4,
+                      "name": "Automated Testing & Device Lab Profiling",
+                      "text": "Executing automated UI unit tests, battery/memory profiling, and security audits."
+                    },
+                    {
+                      "@type": "HowToStep",
+                      "position": 5,
+                      "name": "App Store Publishing & IP Transfer",
+                      "text": "Managing Apple App Store and Google Play deployments and delivering 100% source code."
+                    }
+                  ]
                 }
               ]
             })
@@ -273,7 +307,8 @@ const MobileAppDevelopmentPage = () => {
       <Header />
       <Breadcrumbs />
 
-      {/* Hero Section */}
+      <main id="main-content">
+        {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col justify-center items-center pt-24 md:pt-32 pb-20 px-6 z-10 overflow-hidden">
         {/* Background Gradients */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[550px] bg-blue-600/10 rounded-[100%] blur-[130px] pointer-events-none" />
@@ -300,13 +335,13 @@ const MobileAppDevelopmentPage = () => {
         <motion.h1 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-light tracking-tight text-white text-center mb-8 leading-[1.1] max-w-6xl"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-light tracking-tight text-white text-center mb-4 leading-[1.1] max-w-6xl"
         >
-          Elite Mobile <span className="font-serif italic text-blue-400 font-normal">Engineering:</span> <br />
-          <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl block mt-4 font-sans font-bold tracking-tight text-zinc-300 uppercase">
-            Flutter & Native App Development
-          </span>
+          Mobile App Development <span className="font-serif italic text-blue-400 font-normal">Services</span>
         </motion.h1>
+        <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl block mb-8 font-sans font-bold tracking-tight text-zinc-300 uppercase text-center max-w-6xl">
+          For Growing Businesses
+        </p>
 
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
@@ -314,7 +349,7 @@ const MobileAppDevelopmentPage = () => {
           transition={{ delay: 0.1 }}
           className="text-base md:text-lg text-neutral-400 text-center max-w-4xl mb-12 leading-relaxed font-light font-sans"
         >
-          We build native and cross-platform mobile apps that survive real-world usage, not just demo conditions. From idea to App Store/Play Store approval, our engineering team handles design, development, and post-launch support so your app performs seamlessly. You can pair our mobile builds with automated <Link to="/ai-agent-development" className="text-blue-400 hover:underline font-medium">AI Agent Development</Link>, integrate modular <Link to="/custom-software" className="text-blue-400 hover:underline font-medium">Custom Software</Link> backends, power web interfaces with <Link to="/web-development" className="text-blue-400 hover:underline font-medium">Web Development</Link>, or explore our proven <Link to="/case-studies" className="text-blue-400 hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-blue-400 hover:underline font-medium">Technical Blog</Link>. Learn more <Link to="/about" className="text-blue-400 hover:underline font-medium">about us</Link> or <Link to="/contact" className="text-blue-400 hover:underline font-medium">get in touch</Link> to start your build.
+          We build native and cross-platform mobile apps that survive real-world usage, not just demo conditions. From idea to App Store/Play Store approval, our engineering team handles design, development, and post-launch support so your app performs seamlessly. You can pair our mobile builds with automated <Link to="/ai-agent-development" className="text-blue-400 hover:underline font-medium">AI agent development</Link>, integrate scalable <Link to="/custom-software" className="text-blue-400 hover:underline font-medium">custom software development</Link> backends, expand cross-platform presence with <Link to="/web-development" className="text-blue-400 hover:underline font-medium">web development services</Link>, or <Link to="/case-studies/tajweedpage" className="text-blue-400 hover:underline font-medium">view our mobile app case study</Link>. <Link to="/contact" className="text-blue-400 hover:underline font-medium">Discuss your mobile app project</Link> with our senior engineering team today.
         </motion.p>
 
         {/* Core Capabilities Specifications */}
@@ -370,9 +405,10 @@ const MobileAppDevelopmentPage = () => {
             href="https://wa.me/923233260859"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-10 py-8 rounded-3xl text-sm font-bold transition-all transform hover:scale-105 flex flex-col items-center justify-center gap-2 group bg-white text-black hover:bg-neutral-200"
+            aria-label="Consult with us on WhatsApp"
+            className="px-10 py-8 rounded-3xl text-sm font-bold transition-all transform hover:scale-105 flex flex-col items-center justify-center gap-2 group bg-white text-black hover:bg-neutral-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
           >
-            <ArrowUpRight className="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            <ArrowUpRight className="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" aria-hidden="true" />
             💬 Whatsapp us to Consult
           </a>
           <button 
@@ -380,9 +416,10 @@ const MobileAppDevelopmentPage = () => {
               const el = document.getElementById('work-action');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="px-10 py-8 rounded-3xl border-2 border-white/10 text-sm font-bold transition-all transform hover:scale-105 flex flex-col items-center justify-center gap-2 bg-white/5 text-white hover:bg-white/10 group"
+            aria-label="Scroll to see Mobile Portfolio"
+            className="px-10 py-8 rounded-3xl border-2 border-white/10 text-sm font-bold transition-all transform hover:scale-105 flex flex-col items-center justify-center gap-2 bg-white/5 text-white hover:bg-white/10 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
           >
-            <Eye className="w-6 h-6 group-hover:scale-110 transition-transform text-[#ccff00]" />
+            <Eye className="w-6 h-6 group-hover:scale-110 transition-transform text-[#ccff00]" aria-hidden="true" />
             See Mobile Portfolio
           </button>
         </motion.div>
@@ -474,24 +511,43 @@ const MobileAppDevelopmentPage = () => {
         </div>
       </div>
 
-      {/* Problem Section (Satisfying 300+ word guidelines overall with high density) */}
+      {/* Problem Section */}
       <section className="py-32 relative">
         <div className="max-w-7xl mx-auto px-6">
            <div className="glass-panel p-12 md:p-20 rounded-[2.5rem] relative z-10 max-w-4xl mx-auto text-center border-l-4 border-l-blue-600 bg-white/[0.02]/30 backdrop-blur-xl border-white/10">
-              <h2 className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.3em] font-bold">[ SYSTEM HEALTH: USER_FIRST_METRICS ]</h2>
-              <h3 className="text-3xl md:text-5xl font-serif font-light text-white tracking-tight leading-tight mb-8">
+              <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.3em] font-bold block">[ SYSTEM HEALTH: USER_FIRST_METRICS ]</span>
+              <h2 className="text-3xl md:text-5xl font-serif font-light text-white tracking-tight leading-tight mb-8">
                 Mobile App Development Built for <br />
                 <span className="font-serif italic text-blue-400 font-normal">Real Users, Not Just App Store Screenshots</span>
-              </h3>
+              </h2>
               <p className="text-xl md:text-2xl text-neutral-200 font-sans font-light leading-relaxed tracking-tight mb-8 max-w-3xl mx-auto">
-                A mobile app is often the most demanding product a business ever ships — users abandon a slow or clunky app within seconds, and there's no second first impression once a bad review is public.
+                A mobile app is often the most demanding digital product a business ever ships — users abandon slow, battery-draining, or clunky applications within seconds, and bad store reviews ruin acquisition loops permanently.
               </p>
-              <div className="space-y-6 text-base md:text-lg text-neutral-400 font-sans font-light leading-relaxed max-w-3xl mx-auto">
+              <div className="space-y-6 text-base md:text-lg text-neutral-400 font-sans font-light leading-relaxed max-w-3xl mx-auto text-left">
                 <p>
-                  As a <strong>mobile app development company</strong>, AbuQitmirLabs builds apps engineered around actual usage patterns: fast, stable, and designed to survive contact with real users on real devices.
+                  As a specialized <strong>mobile app development company</strong>, AbuQitmirLabs builds mobile products engineered around actual real-world usage patterns: lightning-fast startup times, sub-15ms UI frame budgets, hardware-level encryption, and fault-tolerant offline storage.
                 </p>
                 <p>
-                  We build high-performance mobile applications using native-compliant architectures that run flawlessly under 15ms response times. Our Flutter app development services deliver 120 FPS rendering across both iOS and Android platforms, ensuring your users never experience friction.
+                  Many off-the-shelf mobile builds suffer from hidden memory leaks, unhandled offline states, heavy battery consumption, and fragile API bindings that fail under poor cellular conditions. We solve these systemic flaws at the architectural level. Whether implementing cross-platform <strong>Flutter development</strong> or native <strong>iOS app development</strong> (Swift) and <strong>Android app development</strong> (Kotlin), our engineering team enforces strict reactive state management (Riverpod, Bloc, MVI), automated device profiling, and secure token-based backend communications.
+                </p>
+                <div className="pt-4 border-t border-white/10">
+                  <h3 className="text-lg font-bold text-white uppercase tracking-wider mb-4 font-sans">Types of Applications We Architect & Build</h3>
+                  <p className="mb-4 text-sm md:text-base">
+                    Every custom application is designed around your specific workflows, users, and business requirements. Our engineering team regularly builds:
+                  </p>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-300 font-light">
+                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>Customer-facing business & brand applications</li>
+                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>E-commerce & mobile store platforms</li>
+                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>SaaS companion mobile applications</li>
+                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>Booking, scheduling & appointment tools</li>
+                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>Two-sided marketplace platforms</li>
+                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>Educational & e-learning applications</li>
+                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>Healthcare & wellness platforms</li>
+                    <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>Field-service & internal workforce dashboards</li>
+                  </ul>
+                </div>
+                <p className="pt-2">
+                  By treating every build as a long-term digital asset, we ensure your mobile app delivers exceptional 120 FPS visual fluidity, bulletproof security for authentication and payments, and smooth compatibility across all device form factors.
                 </p>
               </div>
            </div>
@@ -517,38 +573,50 @@ const MobileAppDevelopmentPage = () => {
               <span className="font-serif italic text-blue-400">Development Services</span>
             </h2>
             <p className="text-lg text-slate-300 font-light leading-relaxed font-sans">
-              We offer specialized deployment mechanisms configured for different business stages and ecosystem environments.
+              We provide end-to-end mobile engineering services configured for early-stage startups and expanding enterprises.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Cross-Platform Development",
+                title: "Cross-Platform Flutter Development",
                 tagline: "cross-platform mobile app development",
-                desc: "Most of our builds use cross-platform mobile app development — primarily Flutter — allowing a single, well-architected codebase to ship natively to both iOS and Android without the compromises older hybrid frameworks used to require. For teams that want the reach of both platforms without doubling the engineering cost, cross-platform mobile app development services built on Flutter typically offer the best balance of performance and budget."
+                desc: "Our primary choice for multi-platform delivery is cross-platform mobile app development powered by Flutter. Flutter compiles directly to native ARM machine code, bypassing JavaScript bridges or web view wrappers. This delivers authentic 120 FPS UI performance, uniform pixel rendering across iOS and Android, and a single maintainable Dart codebase that reduces development and maintenance overhead by up to 40%."
               },
               {
-                title: "Native Development",
+                title: "Native iOS & Android Engineering",
                 tagline: "native engineering protocols",
-                desc: "When an app's requirements demand it — deep hardware integration, platform-specific performance, or design language unique to iOS or Android — we build natively rather than forcing a cross-platform framework where it doesn't fit."
+                desc: "When your product requires platform-exclusive features — such as Apple Swift 6 concurrency, SwiftUI custom animations, Android Jetpack Compose MVI architectures, or deep hardware access (Bluetooth LE, ARKit, Core ML, background push workers) — we build dedicated native applications that utilize 100% of the platform's native CPU and GPU capabilities."
               },
               {
-                title: "Mobile App Development with React",
+                title: "React Native Mobile Solutions",
                 tagline: "mobile app development with react native",
-                desc: "For teams with existing web expertise or a React-based product ecosystem, mobile app development with React (via React Native) offers a practical path to mobile, sharing logic and component patterns with an existing web codebase where appropriate."
+                desc: "For organizations with established React web engineering teams or shared JavaScript/TypeScript infrastructure, mobile app development with React Native provides seamless code reuse across web and mobile viewports. We build React Native apps with native C++ modules, Hermes engine optimizations, and strict static typing via TypeScript."
               },
               {
-                title: "Custom Mobile App Development",
-                tagline: "custom mobile app development company",
-                desc: "Every build starts from your actual requirements, not a template. Our custom mobile app development process covers everything from early-stage MVPs to full-featured products — and as a custom mobile app development company, we scope each engagement around your specific user base and business logic rather than a fixed feature checklist."
+                title: "Product Discovery & Mobile UI/UX",
+                tagline: "user-first mobile product strategy",
+                desc: "Great mobile apps begin with thorough product planning. We conduct user research, create interactive Figma wireframes, map out touch ergonomics, and establish gesture-driven interface layouts adhering to Apple Human Interface Guidelines and Google Material Design 3."
+              },
+              {
+                title: "Backend, API & Database Sync",
+                tagline: "scalable serverless & cloud backends",
+                desc: "We build secure RESTful JSON, GraphQL, and gRPC endpoints to power your mobile frontend. We implement OAuth2/JWT token authentication, SSL certificate pinning, push notification hubs (Firebase FCM), multi-currency payment gateways (Stripe/Apple Pay/Google Pay), and offline-first database synchronization."
+              },
+              {
+                title: "App Store Publishing & Maintenance SLAs",
+                tagline: "continuous app store lifecycle support",
+                desc: "We handle 100% of the submission process for the Apple App Store and Google Play Store, managing metadata, TestFlight distribution, and privacy safety disclosures. Following launch, we provide ongoing SLAs for 24/7 crash monitoring, OS compatibility updates, and feature enhancements."
               }
             ].map((srv, idx) => (
-              <div key={idx} className="bg-white/[0.01] border border-white/10 p-10 rounded-[2.5rem] hover:bg-white/[0.03] hover:border-blue-500/20 transition-all duration-300 relative overflow-hidden group">
+              <div key={idx} className="bg-white/[0.01] border border-white/10 p-10 rounded-[2.5rem] hover:bg-white/[0.03] hover:border-blue-500/20 transition-all duration-300 relative overflow-hidden group flex flex-col justify-between">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] pointer-events-none" />
-                <div className="text-xs font-mono text-blue-500 uppercase tracking-widest mb-4">// 0{idx+1} {srv.tagline}</div>
-                <h3 className="text-2xl font-bold text-white uppercase tracking-tight mb-6">{srv.title}</h3>
-                <p className="text-sm md:text-base leading-relaxed text-slate-400 font-light font-sans">{srv.desc}</p>
+                <div>
+                  <div className="text-xs font-mono text-blue-500 uppercase tracking-widest mb-4">// 0{idx+1} {srv.tagline}</div>
+                  <h3 className="text-xl font-bold text-white uppercase tracking-tight mb-4">{srv.title}</h3>
+                  <p className="text-sm leading-relaxed text-slate-400 font-light font-sans">{srv.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -560,7 +628,7 @@ const MobileAppDevelopmentPage = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-3 mb-16">
             <Layers className="text-blue-500" width={24} />
-            <h2 className="text-xs font-bold tracking-[0.3em] text-neutral-500 uppercase">Core Mobile Protocols // Custom Solutions</h2>
+            <span className="text-xs font-bold tracking-[0.3em] text-neutral-500 uppercase">Core Mobile Protocols // Custom Solutions</span>
           </div>
 
           <div className="flex flex-col lg:flex-row h-auto lg:h-[650px] gap-2">
@@ -766,11 +834,14 @@ const MobileAppDevelopmentPage = () => {
       </section>
 
       {/* Tech Stack */}
-      <section className="py-32 border-t border-white/5 bg-black/20">
+      <section className="py-32 border-t border-white/5 bg-black/20" id="tech-stack">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-20">
-             <h2 className="text-xs font-mono text-neutral-500 mb-4 uppercase tracking-[0.3em] font-bold">[ MOBILE_ENGINEERING_STACK ]</h2>
-             <p className="text-3xl font-bold text-white uppercase tracking-tight">Our Mastered Toolset</p>
+          <div className="mb-12">
+             <span className="text-xs font-mono text-neutral-500 mb-4 uppercase tracking-[0.3em] font-bold block">[ MOBILE_ENGINEERING_STACK ]</span>
+             <h2 className="text-3xl font-bold text-white uppercase tracking-tight mb-4">Mobile Application Engineering Stack & Toolset</h2>
+             <p className="text-base text-slate-300 font-light leading-relaxed max-w-4xl font-sans">
+               We select technologies based on your specific platform priorities and long-term scalability. Flutter provides an ideal single codebase solution for rapid multi-platform delivery, while React Native integrates seamlessly with existing React web ecosystems. Native Swift 6 and Kotlin deliver uncompromised hardware access for GPU-heavy or device-specific applications, backed by secure Node.js APIs and local SQLite/Realm cache layers.
+             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -789,7 +860,7 @@ const MobileAppDevelopmentPage = () => {
                     </div>
                     <div>
                       <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-2">Protocol 0{idx + 1}</div>
-                      <h4 className="text-2xl font-bold text-white uppercase leading-tight">{stack.category}</h4>
+                      <h3 className="text-2xl font-bold text-white uppercase leading-tight">{stack.category}</h3>
                     </div>
                   </div>
                   {/* Back */}
@@ -810,7 +881,7 @@ const MobileAppDevelopmentPage = () => {
         </div>
       </section>
 
-      {/* Mobile Process / Lifecycle (Satisfies 'process steps' requirement beautifully) */}
+      {/* Mobile Process / Lifecycle */}
       <section id="development-process" className="py-32 px-6 relative overflow-hidden bg-black/40 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-24">
@@ -819,10 +890,10 @@ const MobileAppDevelopmentPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-xs font-mono text-blue-500 mb-4 uppercase tracking-[0.3em] font-bold">[ ENGINEERING_LIFECYCLE: MOBILE ]</h2>
-              <h3 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-tight mb-8">Our Proven Web & App Process</h3>
-              <p className="max-w-2xl mx-auto text-lg text-neutral-400 font-light leading-relaxed">
-                We bridge the gap between Figma designs and high-performance native code through a strict 5-step lifecycle pipeline.
+              <span className="text-xs font-mono text-blue-500 mb-4 uppercase tracking-[0.3em] font-bold block">[ ENGINEERING_LIFECYCLE: MOBILE ]</span>
+              <h2 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-tight mb-8">Our Mobile App Development Lifecycle</h2>
+              <p className="max-w-3xl mx-auto text-lg text-neutral-400 font-light leading-relaxed">
+                We bridge the gap between Figma designs and high-performance native code through a structured 5-step lifecycle pipeline designed for velocity and reliability.
               </p>
             </motion.div>
           </div>
@@ -832,11 +903,11 @@ const MobileAppDevelopmentPage = () => {
              <div className="absolute top-12 left-0 right-0 h-[1px] bg-white/10 hidden md:block" />
              
              {[
-               { title: "Discovery", desc: "Understanding your users, core use cases, and platform priorities before any design or development begins.", icon: <SearchCode /> },
-               { title: "Architecture", desc: "Choosing between cross-platform and native based on your actual requirements, not a default preference.", icon: <Layers /> },
-               { title: "Design & Prototyping", desc: "Interfaces built around how users actually behave on mobile, not desktop patterns adapted after the fact.", icon: <Terminal /> },
-               { title: "Development & Testing", desc: "Iterative builds tested across real device configurations, not just simulators.", icon: <Code2 /> },
-               { title: "Launch & Post-Support", desc: "App store submission, monitoring, and the ongoing updates every mobile app needs to stay compatible with new OS releases.", icon: <ShieldCheck /> }
+               { title: "Discovery", desc: "Defining user personas, feature priorities, API dependencies, native vs cross-platform choices, and security compliance parameters.", icon: <SearchCode /> },
+               { title: "Architecture", desc: "Selecting state management patterns, designing offline database sync layers, and establishing secure API communication protocols.", icon: <Layers /> },
+               { title: "Design & Prototyping", desc: "Designing touch-first mobile interfaces, ergonomic gestures, and interactive prototypes following Apple and Material guidelines.", icon: <Terminal /> },
+               { title: "Development & Testing", desc: "Building feature sets in 2-week sprints with CI/CD pipelines, unit testing, and memory leak profiling across real hardware.", icon: <Code2 /> },
+               { title: "Launch & Post-Support", desc: "Managing Apple App Store and Google Play deployments, TestFlight distribution, live publication, and continuous SLA maintenance.", icon: <ShieldCheck /> }
              ].map((step, idx) => (
                 <motion.div 
                   key={idx}
@@ -849,8 +920,8 @@ const MobileAppDevelopmentPage = () => {
                   <div className="w-12 h-12 rounded-full bg-black border border-white/10 flex items-center justify-center mb-6 text-blue-500 group-hover:scale-110 transition-transform">
                     {React.cloneElement(step.icon as React.ReactElement<any>, { size: 20 })}
                   </div>
-                  <h4 className="text-white font-bold uppercase tracking-tight mb-3 italic">Step 0{idx + 1}: {step.title}</h4>
-                  <p className="text-xs text-neutral-500 font-light leading-relaxed">{step.desc}</p>
+                  <h3 className="text-white font-bold uppercase tracking-tight mb-3 italic">Step 0{idx + 1}: {step.title}</h3>
+                  <p className="text-xs text-neutral-400 font-light leading-relaxed">{step.desc}</p>
                 </motion.div>
              ))}
           </div>
@@ -861,13 +932,13 @@ const MobileAppDevelopmentPage = () => {
       <section id="work-action" className="py-32 px-6 border-t border-white/5 relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
-            <h2 className="text-xs font-mono text-neutral-500 mb-4 uppercase tracking-[0.3em] font-bold">[ PROJECT_SHOWCASE: SYSTEM_DEMOS ]</h2>
-            <h3 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-tight mb-8">
+            <span className="text-xs font-mono text-neutral-500 mb-4 uppercase tracking-[0.3em] font-bold block">[ PROJECT_SHOWCASE: SYSTEM_DEMOS ]</span>
+            <h2 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-tight mb-8">
               See Our Technology in Action: <br />
               <span className="text-neutral-500">Real Work, Real Performance Metrics</span>
-            </h3>
+            </h2>
             <p className="max-w-3xl text-xl text-neutral-400 font-light leading-relaxed">
-              We design and construct top-tier digital ecosystems. Watch our architectural sessions to understand our technical capabilities.
+              We design and construct top-tier digital ecosystems. Watch our architectural sessions to understand our technical capabilities, or <Link to="/case-studies/tajweedpage" className="text-blue-400 hover:underline font-medium">view our mobile app case study</Link> to see how we engineered a zero-lag mobile rendering experience, or browse all <Link to="/case-studies" className="text-blue-400 hover:underline font-medium">Case Studies</Link>.
             </p>
           </div>
 
@@ -916,7 +987,7 @@ const MobileAppDevelopmentPage = () => {
                   <YouTubeFacade videoId={video.videoId} title={video.title} />
                 </div>
                 <div className="px-4 pb-2">
-                  <h4 className="text-xl font-bold text-white mb-2 uppercase tracking-tight">{video.title}</h4>
+                  <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tight">{video.title}</h3>
                   <p className="text-sm text-neutral-500 font-light leading-relaxed mb-4">{video.desc}</p>
                 </div>
               </motion.div>
@@ -964,10 +1035,10 @@ const MobileAppDevelopmentPage = () => {
                   Mobile App Development <br />Tips We Actually Follow
                 </h3>
                 <p className="text-sm md:text-base leading-relaxed text-slate-300 font-light font-sans mb-6">
-                  A few <strong>mobile app development tips</strong> that consistently separate apps that succeed from apps that get abandoned: design for offline states from day one rather than assuming constant connectivity; keep onboarding under 30 seconds; and test on the oldest supported devices in your target market, not just the newest flagship phones.
+                  A few <strong>mobile app development tips</strong> that consistently separate apps that succeed from apps that get abandoned: design for offline states from day one rather than assuming constant connectivity; keep onboarding under 30 seconds; and test on the oldest supported devices in your target market. Read our guide on <Link to="/blog/how-to-choose-mobile-app-development-company-2026" className="text-blue-400 hover:underline font-medium">how to choose a mobile app development company in 2026</Link> or browse our <Link to="/blog" className="text-blue-400 hover:underline font-medium">technical blog</Link> for deeper insights.
                 </p>
                 <p className="text-sm md:text-base leading-relaxed text-slate-400 font-light font-sans">
-                  The right <strong>mobile app development tools</strong> — proper CI/CD pipelines, crash reporting, and analytics — matter just as much as the code itself for catching problems before users do.
+                  The right <strong>mobile app development tools</strong> — proper CI/CD pipelines, crash reporting, and analytics — matter just as much as the code itself for catching problems before users do. Ready to scope your app? <Link to="/contact" className="text-blue-400 hover:underline font-medium">Contact our engineering team</Link> today.
                 </p>
               </div>
             </div>
@@ -1004,8 +1075,8 @@ const MobileAppDevelopmentPage = () => {
       <section className="py-32 border-t border-white/5">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-xs font-mono text-neutral-500 mb-4 uppercase tracking-[0.3em]">[ OPERATIONAL_INQUIRIES: MOBILE_LIFECYCLE ]</h2>
-            <h3 className="text-4xl font-bold text-white uppercase tracking-tight">Frequently Asked Questions</h3>
+            <span className="text-xs font-mono text-neutral-500 mb-4 uppercase tracking-[0.3em] block">[ OPERATIONAL_INQUIRIES: MOBILE_LIFECYCLE ]</span>
+            <h2 className="text-4xl font-bold text-white uppercase tracking-tight">Frequently Asked Questions About Mobile App Development</h2>
           </div>
 
           <div className="space-y-4">
@@ -1015,17 +1086,23 @@ const MobileAppDevelopmentPage = () => {
                 className="bg-white/5 border border-white/5 rounded-xl hover:border-blue-500/30 transition-colors"
               >
                 <button 
-                  className="flex items-center justify-between w-full p-6 text-left"
+                  id={`faq-btn-${idx}`}
+                  className="flex items-center justify-between w-full p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-xl"
                   onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
+                  aria-expanded={activeFaq === idx}
+                  aria-controls={`faq-panel-${idx}`}
                 >
-                  <span className="text-lg font-bold text-neutral-200 uppercase tracking-tight">{faq.q}</span>
-                  <div className={`transition-transform duration-500 ${activeFaq === idx ? 'rotate-45 text-blue-400' : 'text-neutral-500'}`}>
+                  <h3 className="text-lg font-bold text-neutral-200 uppercase tracking-tight">{faq.q}</h3>
+                  <div className={`transition-transform duration-500 ${activeFaq === idx ? 'rotate-45 text-blue-400' : 'text-neutral-500'}`} aria-hidden="true">
                     <Plus width={24} />
                   </div>
                 </button>
                 <AnimatePresence>
                   {activeFaq === idx && (
                     <motion.div
+                      id={`faq-panel-${idx}`}
+                      role="region"
+                      aria-labelledby={`faq-btn-${idx}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
@@ -1047,7 +1124,7 @@ const MobileAppDevelopmentPage = () => {
       <section className="py-24 bg-[#050505] border-t border-white/5 relative z-10 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
-            <h3 className="text-xs font-mono text-neutral-500 mb-2 uppercase tracking-[0.4em] font-bold">[ RELATED_SYSTEMS ]</h3>
+            <span className="text-xs font-mono text-neutral-500 mb-2 uppercase tracking-[0.4em] font-bold block">[ RELATED_SYSTEMS ]</span>
             <p className="text-sm font-sans font-light text-slate-400">
               Explore our related services: <Link to="/custom-software" className="text-white underline hover:text-blue-400">Custom Software Development</Link> · <Link to="/ai-agent-development" className="text-white underline hover:text-blue-400">AI Agent Development</Link> · <Link to="/web-development" className="text-white underline hover:text-blue-400">Web Development</Link>
             </p>
@@ -1076,6 +1153,7 @@ const MobileAppDevelopmentPage = () => {
           </div>
         </div>
       </section>
+      </main>
 
       <Footer />
     </div>

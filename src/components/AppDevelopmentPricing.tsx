@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Rocket, 
@@ -114,7 +115,7 @@ export default function AppDevelopmentPricing() {
               </p>
             </div>
             <p className="mt-6 text-neutral-400 text-lg font-light max-w-3xl font-sans">
-              <strong>Mobile app development cost</strong> varies significantly based on platform choice, feature complexity, and whether the build is cross-platform or native. A simple MVP with core functionality costs meaningfully less than an enterprise application with complex integrations and offline-first architecture — which is why we scope and quote based on your actual requirements rather than offering a flat, one-size-fits-all number.
+              <strong>Mobile app development cost</strong> varies significantly based on platform choice, feature complexity, and whether the build is cross-platform or native. Read our complete guide on <Link to="/blog/mobile-app-development-cost-2026-complete-pricing-guide" className="text-[#ccff00] hover:underline font-medium">mobile app development costs in 2026</Link> or <Link to="/contact" className="text-[#ccff00] hover:underline font-medium">contact our engineering team</Link> to receive a tailored scope and Capex estimate for your application.
             </p>
           </div>
 
@@ -123,11 +124,18 @@ export default function AppDevelopmentPricing() {
             <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest font-black">
               // PREFERRED ENGAGEMENT MODEL
             </span>
-            <div className="inline-flex p-1 bg-white/[0.02] border border-white/10 rounded-full">
+            <div 
+              className="inline-flex p-1 bg-white/[0.02] border border-white/10 rounded-full"
+              role="tablist"
+              aria-label="Preferred Engagement Model"
+            >
               <button
                 id="billing-mode-hourly"
+                role="tab"
+                aria-selected={billingMode === 'hourly'}
+                aria-controls="pricing-tab-panel"
                 onClick={() => setBillingMode('hourly')}
-                className={`px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 ${
+                className={`px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ccff00] ${
                   billingMode === 'hourly' 
                     ? 'bg-white text-black shadow-lg font-extrabold' 
                     : 'text-neutral-400 hover:text-white bg-transparent'
@@ -137,8 +145,11 @@ export default function AppDevelopmentPricing() {
               </button>
               <button
                 id="billing-mode-fixed"
+                role="tab"
+                aria-selected={billingMode === 'fixed'}
+                aria-controls="pricing-tab-panel"
                 onClick={() => setBillingMode('fixed')}
-                className={`px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 ${
+                className={`px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ccff00] ${
                   billingMode === 'fixed' 
                     ? 'bg-white text-black shadow-lg font-extrabold' 
                     : 'text-neutral-400 hover:text-white bg-transparent'
@@ -155,6 +166,9 @@ export default function AppDevelopmentPricing() {
           {billingMode === 'hourly' ? (
             <motion.div
               key="hourly-panel"
+              id="pricing-tab-panel"
+              role="tabpanel"
+              aria-labelledby="billing-mode-hourly"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
@@ -389,6 +403,9 @@ export default function AppDevelopmentPricing() {
           ) : (
             <motion.div
               key="fixed-panel"
+              id="pricing-tab-panel"
+              role="tabpanel"
+              aria-labelledby="billing-mode-fixed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}

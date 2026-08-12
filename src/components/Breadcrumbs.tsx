@@ -57,28 +57,28 @@ const Breadcrumbs = ({ customItems, items: propItems }: BreadcrumbsProps) => {
                 })}
             </script>
 
-            <div className="max-w-7xl mx-auto flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] pointer-events-auto">
+            <ol className="max-w-7xl mx-auto flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] pointer-events-auto list-none m-0 p-0">
                 {items.map((item, index) => {
                     const isLast = index === items.length - 1;
                     const isHome = index === 0 && item.to === '/';
 
                     return (
-                        <div key={index} className="flex items-center gap-2">
-                            {index > 0 && <ChevronRight size={10} strokeWidth={3} className="text-zinc-800" />}
+                        <li key={index} className="flex items-center gap-2">
+                            {index > 0 && <ChevronRight size={10} strokeWidth={3} className="text-zinc-800" aria-hidden="true" />}
                             {isLast ? (
-                                <span className="text-[#ff5b36] truncate max-w-[200px] md:max-w-none text-wrap" title={item.name}>
+                                <span className="text-[#ff5b36] truncate max-w-[200px] md:max-w-none text-wrap" title={item.name} aria-current="page">
                                     {item.name}
                                 </span>
                             ) : (
-                                <Link to={item.to || '#'} className="text-zinc-600 hover:text-[#ff5b36] transition-colors flex items-center gap-1.5 shrink-0">
-                                    {isHome && <Home size={12} strokeWidth={3} />}
+                                <Link to={item.to || '#'} className="text-zinc-600 hover:text-[#ff5b36] transition-colors flex items-center gap-1.5 shrink-0 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff5b36]">
+                                    {isHome && <Home size={12} strokeWidth={3} aria-hidden="true" />}
                                     <span>{item.name}</span>
                                 </Link>
                             )}
-                        </div>
+                        </li>
                     );
                 })}
-            </div>
+            </ol>
         </nav>
     );
 };

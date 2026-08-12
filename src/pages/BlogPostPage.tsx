@@ -5141,15 +5141,27 @@ Ready to engineer custom AI solutions for fraud detection, credit underwriting, 
                                 h2: ({node, ...props}) => <h2 className="text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3" {...props} />,
                                 h3: ({node, ...props}) => <h3 className="text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif" {...props} />,
                                 h4: ({node, ...props}) => <h4 className="text-lg font-bold text-zinc-200 mt-6 mb-2 font-serif" {...props} />,
-                                a: ({node, href, children, ...props}) => (
-                                    <a 
-                                        href={href} 
-                                        className="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer" 
-                                        {...props}
-                                    >
-                                        {children}
-                                    </a>
-                                ),
+                                a: ({node, href, children, ...props}) => {
+                                    if (href && href.startsWith('/')) {
+                                        return (
+                                            <Link 
+                                                to={href} 
+                                                className="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer"
+                                            >
+                                                {children}
+                                            </Link>
+                                        );
+                                    }
+                                    return (
+                                        <a 
+                                            href={href} 
+                                            className="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer" 
+                                            {...props}
+                                        >
+                                            {children}
+                                        </a>
+                                    );
+                                },
                                 strong: ({node, ...props}) => <strong className="text-white font-black" {...props} />,
                                 code: ({node, ...props}) => <code className="bg-[#161619] text-[#ccff00] px-2 py-0.5 rounded-md font-mono text-sm border border-zinc-800" {...props} />,
                                 pre: ({node, ...props}) => <pre className="bg-[#050507] border border-zinc-800 rounded-2xl p-6 overflow-x-auto text-zinc-200 font-mono text-sm my-8 shadow-inner" {...props} />,

@@ -64,8 +64,11 @@ async function startServer() {
     next();
   });
 
-  // Use compression middleware
-  app.use(compression());
+  // Use compression middleware for all compressible responses
+  app.use(compression({
+    threshold: 1024,
+    level: 6
+  }));
 
   // Use JSON and URL encoded bodies
   app.use(express.json());
@@ -326,6 +329,8 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
           res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
           res.setHeader('X-Content-Type-Options', 'nosniff');
           res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        } else if (/\.(webp|png|jpg|jpeg|svg|ico|woff2|woff|ttf)$/i.test(filePath)) {
+          res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
         }
       }
     }));
@@ -348,8 +353,11 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
           template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
         }
 
-        const cleanPath = url.split('?')[0];
-        const fullUrl = `https://www.abuqitmirlabs.tech${cleanPath === '/' ? '/' : cleanPath}`;
+        let cleanPath = url.split('?')[0];
+        if (cleanPath.length > 1 && cleanPath.endsWith('/')) {
+          cleanPath = cleanPath.slice(0, -1);
+        }
+        const fullUrl = `https://www.abuqitmirlabs.tech${cleanPath === '' ? '/' : cleanPath}`;
         if (template.includes('<link rel="canonical"')) {
           template = template.replace(/<link rel="canonical"[^>]*\/?>/g, `<link rel="canonical" data-rh="true" href="${fullUrl}" />`);
         } else {

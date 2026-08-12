@@ -144,24 +144,25 @@ const Footer = () => {
                         {/* Socials */}
                         <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 max-w-full md:max-w-3xl">
                             {[
-                                { icon: <Facebook className="w-6 h-6 outline-none" />, href: "https://www.facebook.com/profile.php?id=61583768706452" },
-                                { icon: <Star className="w-6 h-6 fill-[#ccff00]" />, href: "https://www.google.com/search?q=ABUQITMIRLABS.TECH&hl=en#lrd=0x3eb33ba408e04b4d:0xc40a6b7e6b772099,1,,,," },
-                                { icon: <MapPin className="w-6 h-6" />, href: "https://www.google.com/search?q=AbuQitmirLabs.Tech&stick=H4sIAAAAAAAA_-NgU1I1qEg0SUwyMkw2MzIySUkyTba0MqhITUtOMUgztzRLTTM2TjI3XMQq5JhUGphZkptZ5JOYVKwXkpqcAQAWzgp1PgAAAA&hl=en&mat=CZLYxD3dn4-XElYBTVDHnmXmYtE_z1-ukd4W15_4xSOvjTxlQ1o8WZE3DhyScxz25ZkTwHN99aYAJPksPmWrBMFOl-sP_YDLnxLlKt51TeOkcb_wt2bWebGPkDFcieVKmA&authuser=0" },
-                                { icon: <Instagram className="w-6 h-6" />, href: "https://www.instagram.com/abuqitmirshirazalmadani/" },
-                                { icon: <Youtube className="w-6 h-6" />, href: "https://www.youtube.com/@AbuQitmir" },
-                                { icon: <Linkedin className="w-6 h-6" />, href: "https://www.linkedin.com/in/abu-qitmir-697423390/" },
-                                { icon: <Twitter className="w-6 h-6" />, href: "https://x.com/AbuQitmir" },
-                                { icon: <Pin className="w-6 h-6" />, href: "https://www.pinterest.com/abuqitmir" },
-                                { icon: <HelpCircle className="w-6 h-6" />, href: "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani" },
-                                { icon: <Briefcase className="w-6 h-6" />, href: "https://www.goodfirms.co/company/abuqitmirlabs-tech" },
-                                { icon: <Award className="w-6 h-6" />, href: "https://clutch.co/profile/abuqitmirlabstech?_gl=1*1notqlc*_gcl_au*Nzg0MzYyMjI0LjE3Nzg1MzM3NjkuMjA3OTQ5MjcxNC4xNzc4NTMzODc1LjE3Nzg1MzQzNTA.*FPAU*Nzg0MzYyMjI0LjE3Nzg1MzM3Njk.*_ga*NzczMDM5MTg3LjE3Nzg1MzM3Njk.*_ga_D0WFGX8X3V*czE3ODIzMzYxNTAkbzUkZzEkdDE3ODIzMzYxNTAkbzUkZzEkdDE3ODIzMzYxODEkajI5JGwwJGgxMDQ0NTQyMjU.*_fplc*TnJmYjRHNWsxYTk2R1olMkZZOVVyd2VMU21OUjZiQ1RkRyUyRk1uVjMlMkJSb2JDMkh4RjVFNFBnbmFHeWNDWmZjTWY1YzhMJTJGdXpoZ0VYQWo0bDlHbHRUQzFHcHc3d3JSUndXck5VWEtBRGhWTHN1c2VuOGg4dkgzN1Vha2EzM2xNTlElM0QlM0Q." }
+                                { name: "Facebook", label: "Visit AbuQitmirLabs on Facebook", icon: <Facebook className="w-6 h-6 outline-none" />, href: "https://www.facebook.com/profile.php?id=61583768706452" },
+                                { name: "Google Reviews", label: "View AbuQitmirLabs Google Reviews", icon: <Star className="w-6 h-6 fill-[#ccff00]" />, href: "https://www.google.com/search?q=ABUQITMIRLABS.TECH&hl=en#lrd=0x3eb33ba408e04b4d:0xc40a6b7e6b772099,1,,,," },
+                                { name: "Google Maps", label: "Find AbuQitmirLabs on Google Maps", icon: <MapPin className="w-6 h-6" />, href: "https://www.google.com/search?q=AbuQitmirLabs.Tech&stick=H4sIAAAAAAAA_-NgU1I1qEg0SUwyMkw2MzIySUkyTba0MqhITUtOMUgztzRLTTM2TjI3XMQq5JhUGphZkptZ5JOYVKwXkpqcAQAWzgp1PgAAAA&hl=en&mat=CZLYxD3dn4-XElYBTVDHnmXmYtE_z1-ukd4W15_4xSOvjTxlQ1o8WZE3DhyScxz25ZkTwHN99aYAJPksPmWrBMFOl-sP_YDLnxLlKt51TeOkcb_wt2bWebGPkDFcieVKmA&authuser=0" },
+                                { name: "Instagram", label: "Visit AbuQitmirLabs on Instagram", icon: <Instagram className="w-6 h-6" />, href: "https://www.instagram.com/abuqitmirshirazalmadani/" },
+                                { name: "YouTube", label: "Watch AbuQitmirLabs on YouTube", icon: <Youtube className="w-6 h-6" />, href: "https://www.youtube.com/@AbuQitmir" },
+                                { name: "LinkedIn", label: "Connect with AbuQitmirLabs on LinkedIn", icon: <Linkedin className="w-6 h-6" />, href: "https://www.linkedin.com/in/abu-qitmir-697423390/" },
+                                { name: "Twitter", label: "Follow AbuQitmirLabs on Twitter", icon: <Twitter className="w-6 h-6" />, href: "https://x.com/AbuQitmir" },
+                                { name: "Pinterest", label: "View AbuQitmirLabs on Pinterest", icon: <Pin className="w-6 h-6" />, href: "https://www.pinterest.com/abuqitmir" },
+                                { name: "Quora", label: "Visit AbuQitmirLabs on Quora", icon: <HelpCircle className="w-6 h-6" />, href: "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani" },
+                                { name: "GoodFirms", label: "View AbuQitmirLabs profile on GoodFirms", icon: <Briefcase className="w-6 h-6" />, href: "https://www.goodfirms.co/company/abuqitmirlabs-tech" },
+                                { name: "Clutch", label: "View AbuQitmirLabs profile on Clutch", icon: <Award className="w-6 h-6" />, href: "https://clutch.co/profile/abuqitmirlabstech?_gl=1*1notqlc*_gcl_au*Nzg0MzYyMjI0LjE3Nzg1MzM3NjkuMjA3OTQ5MjcxNC4xNzc4NTMzODc1LjE3Nzg1MzQzNTA.*FPAU*Nzg0MzYyMjI0LjE3Nzg1MzM3Njk.*_ga*NzczMDM5MTg3LjE3Nzg1MzM3Njk.*_ga_D0WFGX8X3V*czE3ODIzMzYxNTAkbzUkZzEkdDE3ODIzMzYxNTAkbzUkZzEkdDE3ODIzMzYxODEkajI5JGwwJGgxMDQ0NTQyMjU.*_fplc*TnJmYjRHNWsxYTk2R1olMkZZOVVyd2VMU21OUjZiQ1RkRyUyRk1uVjMlMkJSb2JDMkh4RjVFNFBnbmFHeWNDWmZjTWY1YzhMJTJGdXpoZ0VYQWo0bDlHbHRUQzFHcHc3d3JSUndXck5VWEtBRGhWTHN1c2VuOGg4dkgzN1Vha2EzM2xNTlElM0QlM0Q." }
                             ].map((social, i) => (
                                 <a 
                                     key={i} 
                                     href={social.href} 
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-12 h-12 rounded-2xl border-4 border-black bg-white flex items-center justify-center text-black hover:bg-black hover:text-[#ccff00] transition-all brutalist-shadow"
+                                    aria-label={social.label}
+                                    className="w-12 h-12 rounded-2xl border-4 border-black bg-white flex items-center justify-center text-black hover:bg-black hover:text-[#ccff00] transition-all brutalist-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
                                 >
                                     {social.icon}
                                 </a>
@@ -177,7 +178,7 @@ const Footer = () => {
                             <h3 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Core Services</h3>
                             <ul className="space-y-3">
                                 <li><Link to="/custom-software" onMouseEnter={() => preloadRoute('/custom-software')} onTouchStart={() => preloadRoute('/custom-software')} className="hover:underline hover:text-white transition-colors">Custom Software Dev</Link></li>
-                                <li><Link to="/mobile-app-development" onMouseEnter={() => preloadRoute('/mobile-app-development')} onTouchStart={() => preloadRoute('/mobile-app-development')} className="hover:underline hover:text-white transition-colors">Mobile App Dev</Link></li>
+                                <li><Link to="/mobile-app-development" onMouseEnter={() => preloadRoute('/mobile-app-development')} onTouchStart={() => preloadRoute('/mobile-app-development')} className="hover:underline hover:text-white transition-colors">Mobile App Development</Link></li>
                                 <li><Link to="/web-development" onMouseEnter={() => preloadRoute('/web-development')} onTouchStart={() => preloadRoute('/web-development')} className="hover:underline hover:text-white transition-colors">High-Performance Web</Link></li>
                                 <li><Link to="/ai-agent-development" onMouseEnter={() => preloadRoute('/ai-agent-development')} onTouchStart={() => preloadRoute('/ai-agent-development')} className="hover:underline hover:text-white transition-colors">AI Agent Automations</Link></li>
                                 <li><Link to="/seo-mastery" onMouseEnter={() => preloadRoute('/seo-mastery')} onTouchStart={() => preloadRoute('/seo-mastery')} className="hover:underline hover:text-white transition-colors">SEO Mastery</Link></li>

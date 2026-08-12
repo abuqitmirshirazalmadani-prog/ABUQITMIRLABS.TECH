@@ -51,6 +51,8 @@ export const YouTubeFacade: React.FC<YouTubeFacadeProps> = ({
         alt={title}
         loading="lazy"
         decoding="async"
+        width={480}
+        height={360}
         className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
       />
       

@@ -388,15 +388,22 @@ export default function MobileAppCategoriesShowcase() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Navigation Sidebar List (Left Side - Occupies 5 columns) */}
-          <div className="lg:col-span-5 space-y-2 max-h-[700px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-zinc-800">
+          <div 
+            className="lg:col-span-5 space-y-2 max-h-[700px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-zinc-800"
+            role="tablist"
+            aria-label="Mobile App Development Categories"
+          >
             {categories.map((cat) => {
               const isActive = cat.id === selectedId;
               return (
                 <button
                   key={cat.id}
                   id={`tab-btn-${cat.id}`}
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-controls={`tab-panel-${cat.id}`}
                   onClick={() => setSelectedId(cat.id)}
-                  className={`w-full text-left p-5 rounded-2xl transition-all flex items-center justify-between border ${
+                  className={`w-full text-left p-5 rounded-2xl transition-all flex items-center justify-between border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ccff00] ${
                     isActive 
                       ? 'bg-white/[0.04] border-white/20 text-white shadow-xl' 
                       : 'bg-transparent border-transparent text-neutral-500 hover:text-neutral-300 hover:bg-white/[0.01]'
@@ -434,6 +441,9 @@ export default function MobileAppCategoriesShowcase() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentCategory.id}
+                id={`tab-panel-${currentCategory.id}`}
+                role="tabpanel"
+                aria-labelledby={`tab-btn-${currentCategory.id}`}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}

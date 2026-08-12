@@ -957,23 +957,30 @@ Do not sign a website contract without these protective legal terms.
                 Ready to Build Something That Actually Performs?
               </h4>
               <p className="text-neutral-400 text-lg leading-relaxed font-light font-sans">
-                A modern web presence is more than a design refresh — it's infrastructure that supports how customers find you, trust you, and do business with you. If you're evaluating whether a custom build, a CMS platform, or a hybrid approach fits your goals, our <Link to="/custom-software" className="text-blue-400 hover:underline font-normal">custom software development</Link> team can help you think it through before committing to a direction.
+                A modern web presence is more than a design refresh — it's infrastructure that supports how customers find you, trust you, and do business with you. If you're evaluating whether a custom build, a CMS platform, or a hybrid approach fits your goals, our <Link to="/custom-software" className="text-blue-400 hover:underline font-normal">custom software development</Link> team can help you think it through, expand into native <Link to="/mobile-app-development" className="text-blue-400 hover:underline font-normal">mobile app development</Link>, or deploy autonomous <Link to="/ai-agent-development" className="text-blue-400 hover:underline font-normal">AI agent development</Link> workflows.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-6 pt-4">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4 pt-4">
                 <Link
                   to="/custom-software"
-                  className="px-8 py-4 rounded-xl text-xs font-bold uppercase tracking-widest bg-white text-black hover:bg-neutral-200 transition-all text-center inline-flex items-center justify-center gap-2 group"
+                  className="px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-widest bg-white text-black hover:bg-neutral-200 transition-all text-center inline-flex items-center justify-center gap-2 group"
                   style={{ color: '#000000' }}
                 >
-                  <span className="text-black font-extrabold" style={{ color: '#000000' }}>Consult Custom Software</span>
+                  <span className="text-black font-extrabold" style={{ color: '#000000' }}>Custom Software</span>
                   <ArrowRight className="w-4 h-4 text-black group-hover:translate-x-1 transition-transform" style={{ color: '#000000' }} />
                 </Link>
                 <Link
-                  to="/ai-agent-development"
-                  className="px-8 py-4 rounded-xl text-xs font-bold uppercase tracking-widest border border-white/10 text-white hover:bg-white/5 transition-all text-center inline-flex items-center justify-center gap-2 group"
+                  to="/mobile-app-development"
+                  className="px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-widest border border-white/10 text-white hover:bg-white/5 transition-all text-center inline-flex items-center justify-center gap-2 group"
                 >
-                  Explore AI Agent Development
+                  Mobile App Development
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link
+                  to="/ai-agent-development"
+                  className="px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-widest border border-white/10 text-white hover:bg-white/5 transition-all text-center inline-flex items-center justify-center gap-2 group"
+                >
+                  AI Agent Development
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>

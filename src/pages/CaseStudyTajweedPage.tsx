@@ -533,8 +533,8 @@ export default function CaseStudyTajweedPage() {
             <h3 className="font-serif italic font-light text-4xl sm:text-5xl text-white">
               Ready to Build Something Like This?
             </h3>
-            <p className="text-zinc-400 text-sm sm:text-base max-w-xl mx-auto font-light">
-              Whether you need a full EdTech platform, AI integration, or SEO architecture — AbuQitmirLabs delivers world-class results, fast.
+            <p className="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto font-light">
+              Whether you need a full EdTech platform, AI integration, or SEO architecture — AbuQitmirLabs delivers world-class results. Explore our <Link to="/mobile-app-development" className="text-[#ccff00] hover:underline font-medium">mobile app development services</Link>, <Link to="/ai-agent-development" className="text-[#ccff00] hover:underline font-medium">AI agent development</Link>, or <Link to="/custom-software" className="text-[#ccff00] hover:underline font-medium">custom software engineering</Link>.
             </p>
 
             <div className="flex flex-col items-center gap-6 pt-4">
