@@ -112,6 +112,11 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
     res.redirect(301, '/blog/custom-software-development-company-karachi-pakistan');
   });
 
+  // 301 Redirect for old custom software development URL
+  app.get(['/custom-software-development', '/custom-software-development/'], (req, res) => {
+    res.redirect(301, '/custom-software');
+  });
+
   // Dynamic Sitemap Index Route (/sitemap.xml)
   app.get('/sitemap.xml', (req, res) => {
     try {

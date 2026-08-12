@@ -1,46 +1,5 @@
-# Disable Directory Listing for Security & SEO
+# Prevent directory browsing / directory listing
 Options -Indexes
-DirectoryIndex index.html
 
-# Block access to directory listings
-<IfModule mod_autoindex.c>
-    IndexIgnore *
-</IfModule>
-
-# Security Headers & Cache Controls
-<IfModule mod_headers.c>
-    Header set X-Content-Type-Options "nosniff"
-    Header set X-Frame-Options "SAMEORIGIN"
-    Header set X-XSS-Protection "1; mode=block"
-    Header set Referrer-Policy "strict-origin-when-cross-origin"
-    
-    # Never cache HTML files so clients always receive current JS/CSS hashes
-    <FilesMatch "\.(html|htm)$">
-        Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
-        Header set Pragma "no-cache"
-        Header set Expires "0"
-    </FilesMatch>
-
-    # Immutable long-term caching for hashed CSS & JS static assets
-    <FilesMatch "\.(css|js|woff2|jpg|png|webp|svg)$">
-        Header set Cache-Control "public, max-age=31536000, immutable"
-    </FilesMatch>
-</IfModule>
-
-# SPA Fallback & Routing (Redirects all non-file/folder requests to index.html for React Router)
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteBase /
-    
-    # Block access to hidden dotfiles
-    RewriteCond %{REQUEST_URI} "!(^|/)\.well-known/"
-    RewriteRule "(^|/)\." - [F]
-
-    # Handle React Single Page Application Routing
-    RewriteRule ^index\.html$ - [L]
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule . /index.html [L]
-</IfModule>
-
-
+# Fallback index files
+DirectoryIndex index.html index.php

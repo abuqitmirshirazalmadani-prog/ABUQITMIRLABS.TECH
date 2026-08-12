@@ -125,7 +125,7 @@ const Footer = () => {
                             <p className="text-[10px] text-zinc-600 uppercase tracking-widest mt-1">Connect via Email</p>
                         </div>
                         <span className="hidden md:block h-6 w-1 bg-black"></span>
-                        <a href="https://wa.me/923233260859" target="_blank" rel="noreferrer" className="group hover:underline transition flex items-center gap-2">
+                        <a href="https://wa.me/923233260859" target="_blank" rel="noopener noreferrer" className="group hover:underline transition flex items-center gap-2">
                             <MessageCircle className="h-6 w-6" />
                             <span className="normal-case font-mono font-medium tracking-tight text-base">+92-323-3260859</span> <span className="text-xs tracking-wider normal-case">(Tap to Chat)</span>
                         </a>
@@ -174,21 +174,21 @@ const Footer = () => {
                         
                         {/* Column 1: Core Services */}
                         <div className="space-y-4">
-                            <h4 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Core Services</h4>
+                            <h3 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Core Services</h3>
                             <ul className="space-y-3">
                                 <li><Link to="/custom-software" onMouseEnter={() => preloadRoute('/custom-software')} onTouchStart={() => preloadRoute('/custom-software')} className="hover:underline hover:text-white transition-colors">Custom Software Dev</Link></li>
                                 <li><Link to="/mobile-app-development" onMouseEnter={() => preloadRoute('/mobile-app-development')} onTouchStart={() => preloadRoute('/mobile-app-development')} className="hover:underline hover:text-white transition-colors">Mobile App Dev</Link></li>
                                 <li><Link to="/web-development" onMouseEnter={() => preloadRoute('/web-development')} onTouchStart={() => preloadRoute('/web-development')} className="hover:underline hover:text-white transition-colors">High-Performance Web</Link></li>
                                 <li><Link to="/ai-agent-development" onMouseEnter={() => preloadRoute('/ai-agent-development')} onTouchStart={() => preloadRoute('/ai-agent-development')} className="hover:underline hover:text-white transition-colors">AI Agent Automations</Link></li>
                                 <li><Link to="/seo-mastery" onMouseEnter={() => preloadRoute('/seo-mastery')} onTouchStart={() => preloadRoute('/seo-mastery')} className="hover:underline hover:text-white transition-colors">SEO Mastery</Link></li>
-                                <li><Link to="/graphics-design" onMouseEnter={() => preloadRoute('/graphics-design')} onTouchStart={() => preloadRoute('/graphics-design')} className="hover:underline hover:text-white transition-colors">Branding & Graphics</Link></li>
+                                <li><Link to="/graphics-design" onMouseEnter={() => preloadRoute('/graphics-design')} onTouchStart={() => preloadRoute('/graphics-design')} className="hover:underline hover:text-white transition-colors">Branding &amp; Graphics</Link></li>
                                 <li><Link to="/content-writing" onMouseEnter={() => preloadRoute('/content-writing')} onTouchStart={() => preloadRoute('/content-writing')} className="hover:underline hover:text-white transition-colors">Technical Content</Link></li>
                             </ul>
                         </div>
 
                         {/* Column 2: Global Markets */}
                         <div className="space-y-4">
-                            <h4 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Target Markets</h4>
+                            <h3 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Target Markets</h3>
                             <ul className="space-y-3">
                                 <li><Link to="/us-market" onMouseEnter={() => preloadRoute('/us-market')} onTouchStart={() => preloadRoute('/us-market')} className="hover:underline hover:text-white transition-colors">United States (US)</Link></li>
                                 <li><Link to="/uk-market" onMouseEnter={() => preloadRoute('/uk-market')} onTouchStart={() => preloadRoute('/uk-market')} className="hover:underline hover:text-white transition-colors">United Kingdom (UK)</Link></li>
@@ -201,7 +201,7 @@ const Footer = () => {
 
                         {/* Column 3: Legal & Sitemaps */}
                         <div className="space-y-4">
-                            <h4 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Legal & Sitemaps</h4>
+                            <h3 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Legal &amp; Sitemaps</h3>
                             <ul className="space-y-3">
                                 <li><Link to="/privacy" onMouseEnter={() => preloadRoute('/privacy')} onTouchStart={() => preloadRoute('/privacy')} className="hover:underline hover:text-white transition-colors">Privacy Policy</Link></li>
                                 <li><Link to="/terms" onMouseEnter={() => preloadRoute('/terms')} onTouchStart={() => preloadRoute('/terms')} className="hover:underline hover:text-white transition-colors">Terms of Service</Link></li>
@@ -217,8 +217,8 @@ const Footer = () => {
 
                         {/* Column 4: Contact & Access */}
                         <div className="space-y-4" itemScope itemType="https://schema.org/LocalBusiness">
-                            <meta itemProp="name" content="AbuQitmirLabs" />
-                            <h4 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Headquarters Info</h4>
+                            <span itemProp="name" className="hidden">AbuQitmirLabs</span>
+                            <h3 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Headquarters Info</h3>
                             <ul className="space-y-3 not-italic normal-case font-bold tracking-tight text-black flex flex-col gap-1.5 list-none">
                                 <li className="flex items-start gap-2 text-xs" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
                                     <MapPin size={14} className="min-w-[14px] mt-0.5 text-zinc-900" />

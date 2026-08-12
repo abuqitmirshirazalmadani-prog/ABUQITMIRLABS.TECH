@@ -181,10 +181,9 @@ const Header = () => {
                             onMouseEnter={() => preloadRoute('/contact')}
                             onTouchStart={() => preloadRoute('/contact')}
                             aria-label="Book a Consultation"
-                            className="inline-flex items-center justify-center px-5 py-2.5 bg-[#ccff00] hover:bg-[#b0d600] text-black font-black text-xs uppercase tracking-wider rounded-full shadow-[0_0_15px_rgba(204,255,0,0.35)] hover:shadow-[0_0_20px_rgba(204,255,0,0.5)] transition-all duration-300 active:scale-95 shrink-0 whitespace-nowrap"
-                            style={{ color: '#000000' }}
+                            className="inline-flex items-center justify-center px-5 py-2.5 bg-[#ccff00] hover:bg-[#b0d600] !text-black font-black text-xs uppercase tracking-wider rounded-full shadow-[0_0_15px_rgba(204,255,0,0.35)] hover:shadow-[0_0_20px_rgba(204,255,0,0.5)] transition-all duration-300 active:scale-95 shrink-0 whitespace-nowrap"
                         >
-                            <span style={{ color: '#000000' }} className="text-black font-black text-xs uppercase tracking-wider whitespace-nowrap">
+                            <span className="!text-black font-black text-xs uppercase tracking-wider whitespace-nowrap">
                                 Contact Now
                             </span>
                         </Link>
@@ -301,21 +300,19 @@ const Header = () => {
                                         to="/contact"
                                         onTouchStart={() => preloadRoute('/contact')}
                                         onMouseEnter={() => preloadRoute('/contact')}
-                                        className="w-full py-4 bg-[#ccff00] hover:bg-[#b0d600] text-black font-black text-center rounded-xl text-base uppercase tracking-wider shadow-[0_0_20px_rgba(204,255,0,0.35)] transition-all duration-300 active:scale-[0.98] flex items-center justify-center shrink-0"
-                                        style={{ color: '#000000' }}
+                                        className="w-full py-4 bg-[#ccff00] hover:bg-[#b0d600] !text-black font-black text-center rounded-xl text-base uppercase tracking-wider shadow-[0_0_20px_rgba(204,255,0,0.35)] transition-all duration-300 active:scale-[0.98] flex items-center justify-center shrink-0"
                                         onClick={() => setIsOpen(false)}
                                     >
-                                        <span className="text-black font-black text-base uppercase tracking-wider text-center" style={{ color: '#000000' }}>
+                                        <span className="!text-black font-black text-base uppercase tracking-wider text-center">
                                             Contact Now
                                         </span>
                                     </Link>
                                     <Link 
                                         to="/admin"
-                                        className="w-full py-4 border border-white/15 bg-white/5 hover:bg-white/10 text-white font-extrabold text-center rounded-xl text-xs uppercase tracking-[0.2em] transition-all flex items-center justify-center"
-                                        style={{ color: '#ffffff' }}
+                                        className="w-full py-4 border border-white/15 bg-white/5 hover:bg-white/10 !text-white font-extrabold text-center rounded-xl text-xs uppercase tracking-[0.2em] transition-all flex items-center justify-center"
                                         onClick={() => setIsOpen(false)}
                                     >
-                                        <span className="text-white font-extrabold text-xs uppercase tracking-[0.2em]" style={{ color: '#ffffff' }}>
+                                        <span className="!text-white font-extrabold text-xs uppercase tracking-[0.2em]">
                                             Admin Access
                                         </span>
                                     </Link>

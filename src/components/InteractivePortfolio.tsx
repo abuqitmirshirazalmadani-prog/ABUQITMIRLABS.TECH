@@ -294,10 +294,12 @@ const InteractivePortfolio = () => {
                                 </div>
 
                                 <a 
-                                    href="#" 
+                                    href="/case-studies" 
+                                    title="Explore TajweedPage Case Study Details"
+                                    aria-label="Explore TajweedPage Case Study Details"
                                     className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-red-500 hover:text-white transition-colors duration-300"
                                 >
-                                    🔗 VISIT LIVE SITE →
+                                    🔗 VISIT LIVE CASE STUDY →
                                 </a>
                             </div>
                         </motion.div>

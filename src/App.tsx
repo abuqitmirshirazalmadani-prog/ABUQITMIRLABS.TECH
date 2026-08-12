@@ -175,6 +175,7 @@ export default function App() {
               <Route path="/news/press-releases/:id" element={<NewsArticlePage />} />
 
               <Route path="/custom-software" element={<CustomSoftwarePage />} />
+              <Route path="/custom-software-development" element={<Navigate to="/custom-software" replace />} />
               <Route path="/mobile-app-development" element={<MobileAppDevelopmentPage />} />
               <Route path="/web-development" element={<WebDevelopmentPage />} />
               <Route path="/ai-agent-development" element={<AIAgentDevelopmentPage />} />

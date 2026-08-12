@@ -5137,7 +5137,7 @@ Ready to engineer custom AI solutions for fraud detection, credit underwriting, 
                             remarkPlugins={[remarkGfm]}
                             components={{
                                 p: ({node, ...props}) => <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans" {...props} />,
-                                h1: ({node, ...props}) => <h1 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mt-12 mb-6 font-serif border-b border-zinc-800/80 pb-4" {...props} />,
+                                h1: ({node, ...props}) => <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mt-12 mb-6 font-serif border-b border-zinc-800/80 pb-4" {...props} />,
                                 h2: ({node, ...props}) => <h2 className="text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3" {...props} />,
                                 h3: ({node, ...props}) => <h3 className="text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif" {...props} />,
                                 h4: ({node, ...props}) => <h4 className="text-lg font-bold text-zinc-200 mt-6 mb-2 font-serif" {...props} />,

@@ -45,12 +45,15 @@ export default function GraphicsDesignPricing() {
               graphics design <br />
               <span className="text-transparent font-serif italic font-light" style={{ WebkitTextStroke: '1px #ffffff' }}>Pricing framework</span>
             </h2>
-            <h3 className="mt-6 text-[#ccff00] text-xl md:text-2xl lg:text-3xl font-bold tracking-wide max-w-3xl leading-relaxed border-l-4 border-[#ccff00] pl-5">
-              People from Pakistan, India, Bangladesh should contact us on WhatsApp, rates are different for them. I love these people, I love everyone.
-            </h3>
-            <h3 className="mt-4 text-[#ccff00] text-xl md:text-2xl lg:text-3xl font-medium tracking-wide max-w-3xl leading-relaxed border-l-4 border-[#ccff00] pl-5" style={{ fontFamily: 'Noto Nastaliq Urdu, sans-serif' }}>
-              پاکستان، انڈیا، بنگلہ دیش کے لوگ ہم سے واٹس ایپ پر رابطہ کریں، ان کے لیے ریٹس مختلف ہیں۔ میں ان لوگوں سے پیار کرتا ہوں، میں سب سے پیار کرتا ہو۔
-            </h3>
+            <div className="mt-6 border-l-4 border-[#ccff00] pl-5 space-y-3">
+              <h3 className="text-[#ccff00] text-lg font-bold uppercase tracking-wider">Regional Pricing Offer</h3>
+              <p className="text-[#ccff00] text-base font-medium max-w-3xl leading-relaxed">
+                People from Pakistan, India, Bangladesh should contact us on WhatsApp, rates are different for them. I love these people, I love everyone.
+              </p>
+              <p className="text-[#ccff00] text-base font-medium max-w-3xl leading-relaxed" style={{ fontFamily: 'Noto Nastaliq Urdu, sans-serif' }}>
+                پاکستان، انڈیا، بنگلہ دیش کے لوگ ہم سے واٹس ایپ پر رابطہ کریں، ان کے لیے ریٹس مختلف ہیں۔ میں ان لوگوں سے پیار کرتا ہوں، میں سب سے پیار کرتا ہوں۔
+              </p>
+            </div>
             <p className="mt-8 text-neutral-400 text-lg md:text-xl font-light max-w-4xl leading-relaxed">
               Price for logo and graphics design services in the USA typically starts between <strong className="text-white">$5 to $50</strong> if you utilize freelance marketplaces, while standard entry-level pricing for an independent local graphic designer generally starts around <strong className="text-white">$150 to $300</strong>. The total cost fluctuates drastically based on the designer's experience level, project complexity, and the platform or provider you choose.
             </p>

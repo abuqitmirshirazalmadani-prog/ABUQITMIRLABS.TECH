@@ -599,7 +599,12 @@ const NewsArticlePage = () => {
             prose-strong:text-white prose-strong:font-bold 
             prose-code:text-[#ccff00] prose-code:bg-zinc-900 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:font-mono prose-code:text-xs"
           >
-            <Markdown remarkPlugins={[remarkGfm]}>
+            <Markdown 
+              remarkPlugins={[remarkGfm]}
+              components={{
+                h1: ({node, ...props}) => <h2 className="text-2xl font-extrabold text-[#ccff00] mt-10 mb-4" {...props} />
+              }}
+            >
               {article.content || article.excerpt}
             </Markdown>
           </div>

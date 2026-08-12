@@ -104,12 +104,15 @@ export default function AppDevelopmentPricing() {
             <h2 className="text-5xl md:text-7xl font-semibold text-white tracking-tight leading-none">
               Transparent Capex Forecasts: <span className="font-serif italic text-neutral-400">Investment Frameworks</span>
             </h2>
-            <h3 className="mt-6 text-[#ccff00] text-xl md:text-2xl lg:text-3xl font-bold tracking-wide max-w-3xl leading-relaxed border-l-4 border-[#ccff00] pl-5">
-              People from Pakistan, India, Bangladesh should contact us on WhatsApp, rates are different for them. I love these people, I love everyone.
-            </h3>
-            <h3 className="mt-4 text-[#ccff00] text-xl md:text-2xl lg:text-3xl font-medium tracking-wide max-w-3xl leading-relaxed border-l-4 border-[#ccff00] pl-5" style={{ fontFamily: 'Noto Nastaliq Urdu, sans-serif' }}>
-              پاکستان، انڈیا، بنگلہ دیش کے لوگ ہم سے واٹس ایپ پر رابطہ کریں، ان کے لیے ریٹس مختلف ہیں۔ میں ان لوگوں سے پیار کرتا ہوں، میں سب سے پیار کرتا ہو۔
-            </h3>
+            <div className="mt-6 border-l-4 border-[#ccff00] pl-5 space-y-3">
+              <h3 className="text-[#ccff00] text-lg font-bold uppercase tracking-wider">Regional Pricing Offer</h3>
+              <p className="text-[#ccff00] text-base font-medium max-w-3xl leading-relaxed">
+                People from Pakistan, India, Bangladesh should contact us on WhatsApp, rates are different for them. I love these people, I love everyone.
+              </p>
+              <p className="text-[#ccff00] text-base font-medium max-w-3xl leading-relaxed" style={{ fontFamily: 'Noto Nastaliq Urdu, sans-serif' }}>
+                پاکستان، انڈیا، بنگلہ دیش کے لوگ ہم سے واٹس ایپ پر رابطہ کریں، ان کے لیے ریٹس مختلف ہیں۔ میں ان لوگوں سے پیار کرتا ہوں، میں سب سے پیار کرتا ہوں۔
+              </p>
+            </div>
             <p className="mt-6 text-neutral-400 text-lg font-light max-w-3xl font-sans">
               <strong>Mobile app development cost</strong> varies significantly based on platform choice, feature complexity, and whether the build is cross-platform or native. A simple MVP with core functionality costs meaningfully less than an enterprise application with complex integrations and offline-first architecture — which is why we scope and quote based on your actual requirements rather than offering a flat, one-size-fits-all number.
             </p>

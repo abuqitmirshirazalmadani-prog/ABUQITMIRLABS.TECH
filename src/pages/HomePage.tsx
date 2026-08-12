@@ -25,18 +25,18 @@ export default function HomePage() {
   return (
     <main id="main-content" className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <Helmet>
-        <title>Custom Software &amp; AI Development | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs is a full-service digital agency and custom software development company offering AI app development, web development, mobile app development, SEO services, and digital transformation solutions for startups, SMEs, and enterprises worldwide." />
+        <title>Custom Software, Web &amp; AI Development | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs is a custom software &amp; AI development company delivering web platforms, mobile apps, and SEO engineering for global businesses." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/" />
         
-        <meta property="og:title" content="Custom Software &amp; AI Development | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs is a full-service digital agency and custom software development company offering AI app development, web development, mobile app development, SEO services, and digital transformation solutions." />
+        <meta property="og:title" content="Custom Software, Web &amp; AI Development | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs is a custom software &amp; AI development company delivering web platforms, mobile apps, and SEO engineering for global businesses." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Custom Software &amp; AI Development | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs is a full-service digital agency and custom software development company offering AI app development, web development, mobile app development, SEO services, and digital transformation solutions." />
+        <meta name="twitter:title" content="Custom Software, Web &amp; AI Development | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs is a custom software &amp; AI development company delivering web platforms, mobile apps, and SEO engineering for global businesses." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         <script 
@@ -46,18 +46,29 @@ export default function HomePage() {
               "@context": "https://schema.org",
               "@graph": [
                 {
-                  "@type": "Organization",
+                  "@type": ["LocalBusiness", "ProfessionalService", "Organization"],
                   "@id": "https://www.abuqitmirlabs.tech/#organization",
                   "name": "AbuQitmirLabs",
                   "alternateName": "AbuQitmirLabs.tech",
                   "url": "https://www.abuqitmirlabs.tech/",
                   "logo": "https://www.abuqitmirlabs.tech/logo.png",
-                  "description": "AbuQitmirLabs is a full-service digital agency and custom software development company offering AI app development, web development, mobile app development, SEO services, and digital transformation solutions.",
+                  "description": "AbuQitmirLabs is a custom software & AI development company delivering web platforms, mobile apps, and SEO engineering for global businesses.",
                   "foundingDate": "2020",
+                  "telephone": "+923233260859",
+                  "priceRange": "$$",
+                  "openingHours": "Mo-Fr 09:00-18:00",
                   "address": {
                     "@type": "PostalAddress",
+                    "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony",
                     "addressLocality": "Karachi",
+                    "addressRegion": "Sindh",
+                    "postalCode": "75160",
                     "addressCountry": "PK"
+                  },
+                  "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": "24.8934",
+                    "longitude": "67.1554"
                   },
                   "contactPoint": {
                     "@type": "ContactPoint",

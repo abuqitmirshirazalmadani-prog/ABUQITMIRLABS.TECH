@@ -297,27 +297,29 @@ Sitemap: ${hostname}/sitemap.xml`;
             const safeDesc = route.description.replace(/"/g, '&quot;').replace(/&/g, '&amp;');
             
             // Replace Title
-            routeHtml = routeHtml.replace(/<title>[\s\S]*?<\/title>/gi, `<title>${safeTitle}</title>`);
+            // Deduplicate and replace title
+            routeHtml = routeHtml.replace(/<title>[\s\S]*?<\/title>/gi, '');
+            routeHtml = routeHtml.replace('</head>', `  <title>${safeTitle}</title>\n</head>`);
             
-            // Replace OG/Twitter titles
-            routeHtml = routeHtml.replace(/<meta\s+property="og:title"\s+content="[\s\S]*?"\s*\/?>/gi, `<meta property="og:title" content="${safeTitle}" />`);
-            routeHtml = routeHtml.replace(/<meta\s+name="twitter:title"\s+content="[\s\S]*?"\s*\/?>/gi, `<meta name="twitter:title" content="${safeTitle}" />`);
+            // Deduplicate and replace OG/Twitter titles
+            routeHtml = routeHtml.replace(/<meta\s+property="og:title"\s+content="[\s\S]*?"\s*\/?>/gi, '');
+            routeHtml = routeHtml.replace(/<meta\s+name="twitter:title"\s+content="[\s\S]*?"\s*\/?>/gi, '');
+            routeHtml = routeHtml.replace('</head>', `  <meta property="og:title" content="${safeTitle}" />\n  <meta name="twitter:title" content="${safeTitle}" />\n</head>`);
 
-            // Replace Descriptions
-            routeHtml = routeHtml.replace(/<meta\s+name="description"\s+content="[\s\S]*?"\s*\/?>/gi, `<meta name="description" content="${safeDesc}" />`);
-            routeHtml = routeHtml.replace(/<meta\s+property="og:description"\s+content="[\s\S]*?"\s*\/?>/gi, `<meta property="og:description" content="${safeDesc}" />`);
-            routeHtml = routeHtml.replace(/<meta\s+name="twitter:description"\s+content="[\s\S]*?"\s*\/?>/gi, `<meta name="twitter:description" content="${safeDesc}" />`);
+            // Deduplicate and replace Descriptions
+            routeHtml = routeHtml.replace(/<meta\s+name="description"\s+content="[\s\S]*?"\s*\/?>/gi, '');
+            routeHtml = routeHtml.replace(/<meta\s+property="og:description"\s+content="[\s\S]*?"\s*\/?>/gi, '');
+            routeHtml = routeHtml.replace(/<meta\s+name="twitter:description"\s+content="[\s\S]*?"\s*\/?>/gi, '');
+            routeHtml = routeHtml.replace('</head>', `  <meta name="description" content="${safeDesc}" />\n  <meta property="og:description" content="${safeDesc}" />\n  <meta name="twitter:description" content="${safeDesc}" />\n</head>`);
 
             // Update URL
-            routeHtml = routeHtml.replace(/<meta\s+property="og:url"\s+content="[\s\S]*?"\s*\/?>/gi, `<meta property="og:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />`);
-            routeHtml = routeHtml.replace(/<meta\s+name="twitter:url"\s+content="[\s\S]*?"\s*\/?>/gi, `<meta name="twitter:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />`);
+            routeHtml = routeHtml.replace(/<meta\s+property="og:url"\s+content="[\s\S]*?"\s*\/?>/gi, '');
+            routeHtml = routeHtml.replace(/<meta\s+name="twitter:url"\s+content="[\s\S]*?"\s*\/?>/gi, '');
+            routeHtml = routeHtml.replace('</head>', `  <meta property="og:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n  <meta name="twitter:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
             
-            // Replace canonical link
-            if (routeHtml.includes('<link rel="canonical"')) {
-              routeHtml = routeHtml.replace(/<link rel="canonical"[^>]*\/?>/g, `<link rel="canonical" data-rh="true" href="${hostname}${route.url === '/' ? '/' : route.url}" />`);
-            } else {
-              routeHtml = routeHtml.replace('</head>', `  <link rel="canonical" data-rh="true" href="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
-            }
+            // Deduplicate and replace canonical link cleanly
+            routeHtml = routeHtml.replace(/<link\s+rel="canonical"[^>]*\/?>/gi, '');
+            routeHtml = routeHtml.replace('</head>', `  <link rel="canonical" data-rh="true" href="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
             
             // FIX: Inject meaningful body content to avoid "0 character body" and "No H1" SEO issues
             // This content provides immediate value to crawlers and is replaced by React upon hydration.
@@ -332,7 +334,7 @@ Sitemap: ${hostname}/sitemap.xml`;
                   fix crawl and indexing issues, and build content structures that Google can 
                   understand and trust. Hamari SEO services ko aap <a href="/web-development">Web Development</a> aur <a href="/content-writing">Content Writing</a> ke sath combine kar ke maximum search visibility hasil kar sakte hain.
                 </p>
-                <img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" style="max-width:300px" />
+                <img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" />
                 <p>${route.description}</p>
                 <section>
                   <h3>Our Technical Expertise</h3>
@@ -354,7 +356,7 @@ Sitemap: ${hostname}/sitemap.xml`;
                   technical approach, and what shipped. Our work spans AI products, custom 
                   platforms, and growth-focused engineering.
                 </p>
-                <img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" style="max-width:300px" />
+                <img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" />
                 <p>${route.description}</p>
                 <section>
                   <h3>Our Technical Expertise</h3>
@@ -375,7 +377,7 @@ Sitemap: ${hostname}/sitemap.xml`;
               articleContent = `
                 <h2>${routeH2}</h2>
                 <p>At AbuQitmirLabs .TECH, we specialize in <strong>custom software engineering</strong> and high-performance digital solutions.</p>
-                <img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" style="max-width:300px" />
+                <img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" />
                 <p>${route.description}</p>
                 <section>
                   <h3>Our Technical Expertise</h3>
@@ -393,7 +395,7 @@ Sitemap: ${hostname}/sitemap.xml`;
 
             const seoCrawlerBlock = `
               <div id="seo-crawler-content" style="display:none;" aria-hidden="true">
-                <h1>${route.title}</h1>
+                <h2>${route.title}</h2>
                 <article>
                   ${articleContent}
                 </article>
@@ -407,7 +409,7 @@ Sitemap: ${hostname}/sitemap.xml`;
             fs.writeFileSync(targetPath, routeHtml);
           }
           
-          // Post-process all CSS files in dist/assets for 100% minification with esbuild
+          // Post-process all CSS & JS files in dist/assets for 100% minification with esbuild
           const assetsDir = path.resolve(outDir, 'assets');
           if (fs.existsSync(assetsDir)) {
             const files = fs.readdirSync(assetsDir);
@@ -428,11 +430,28 @@ Sitemap: ${hostname}/sitemap.xml`;
                 } catch (err) {
                   console.warn(`Warning: Could not post-minify CSS file ${file}:`, err);
                 }
+              } else if (file.endsWith('.js')) {
+                const jsPath = path.join(assetsDir, file);
+                const rawJs = fs.readFileSync(jsPath, 'utf-8');
+                try {
+                  const minifiedResult = esbuild.transformSync(rawJs, {
+                    loader: 'js',
+                    minify: true,
+                    minifyWhitespace: true,
+                    minifySyntax: true,
+                    minifyIdentifiers: true,
+                    legalComments: 'none',
+                  });
+                  fs.writeFileSync(jsPath, minifiedResult.code, 'utf-8');
+                  console.log(`⚡ Minified JS asset: ${file} (${rawJs.length} -> ${minifiedResult.code.length} bytes)`);
+                } catch (err) {
+                  console.warn(`Warning: Could not post-minify JS file ${file}:`, err);
+                }
               }
             }
           }
 
-          console.log('✅ SEO Assets, RSS dynamic feed, and Minified CSS assets generated successfully!');
+          console.log('✅ SEO Assets, RSS dynamic feed, and Minified CSS/JS assets generated successfully!');
         }
       }
     ],
