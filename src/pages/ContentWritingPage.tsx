@@ -322,209 +322,277 @@ const ContentWritingPage = () => {
 
   const faqData = [
     {
-      q: "What is content writing, and why is it important for my business?",
-      a: "Content writing is the art of creating valuable, relevant content that attracts, engages, and converts your target audience. It helps your brand build authority, improve SEO, and communicate effectively with potential customers. Our content writing services ensure your brand's message is heard loud and clear."
+      q: "What are content writing services, and why are they critical for business growth?",
+      a: "Content writing services involve the professional planning, researching, drafting, and optimizing of written digital assets such as website copy, blog posts, pillar articles, case studies, and whitepapers. Quality content establishes domain authority, educates buyers, drives organic search traffic, and converts visitors into paying customers."
     },
     {
-      q: "What content writing services do you offer?",
-      a: "We offer a comprehensive range of professional content writing services including: Blog and article writing, Website copywriting, Marketing and collateral content, Technical and industry content, Whitepapers and case studies."
+      q: "What is the difference between content writing and copywriting?",
+      a: "Copywriting is short-form, high-persuasion writing designed to prompt an immediate direct action (such as landing page CTAs, ad copy, and sales emails). Content writing is long-form, educational, and informational writing designed to build organic search visibility, establish topical authority, and nurture prospective buyers over time."
     },
     {
-      q: "How much does professional content writing cost?",
-      a: "Costs vary based on scope and complexity. For example, a 500-word blog post starts at $50–$150, while a 1,000-word article with research ranges from $100–$250. Our SEO content writing pricing is transparent with clear deliverables at every tier."
+      q: "What is SEO content writing, and how is it different from general writing?",
+      a: "SEO content writing combines human readability with algorithmic search optimization. Unlike generic writing, SEO content begins with search intent analysis, competitor gap audits, and keyword mapping. It incorporates structured headings (H2/H3), semantic entities, schema markup, and internal linking to help search engines easily parse and index relevance."
     },
     {
-      q: "How do you ensure content is SEO-optimized?",
-      a: "We conduct thorough keyword research and strategically incorporate target keywords naturally throughout the content. Our SEO content writing approach includes meta-optimization, internal linking, and readability enhancements."
+      q: "What types of content writing services does AbuQitmirLabs offer?",
+      a: "AbuQitmirLabs provides a full spectrum of editorial solutions including website copywriting, SEO pillar blogs, SaaS product-led content, B2B whitepapers, case studies, service pages, technical documentation, email sequences, and sector-specific content for healthcare, real estate, legal, and non-profit organizations."
     },
     {
-      q: "How long does a typical project take?",
-      a: "Timelines vary based on scope. A blog post typically takes 1–2 weeks, while a comprehensive whitepaper may take 3–4 weeks. Our discovery phase helps determine accurate timelines."
+      q: "How much do professional content writing services cost?",
+      a: "Content writing costs vary based on research depth and project scope. Standard industry rates range from $0.05 to $0.20 per word. At AbuQitmirLabs, entry-level articles start around $30–$50 (1,000 words), mid-range strategic SEO packages start at $100–$150, and comprehensive enterprise whitepapers range from $150–$250+ with complete keyword and schema integration."
     },
     {
-      q: "Do you work with international clients?",
-      a: "Absolutely. We serve clients across the United States, United Kingdom, and Europe. Our content team is experienced in working with international brands and understanding diverse market preferences."
+      q: "How does content writing help improve search engine rankings?",
+      a: "Search engines reward websites that demonstrate topical completeness and satisfy user intent. By publishing comprehensive, research-backed content organized in semantic clusters with proper internal links, your domain earns topical authority, captures long-tail keywords, and ranks higher in both traditional Google Search and AI Overviews."
+    },
+    {
+      q: "Do you write technical, B2B, and SaaS content?",
+      a: "Yes. Our editorial team specializes in deep technical writing for software engineers, SaaS platforms, fintech startups, and B2B enterprises. We translate complex code architectures, APIs, and product workflows into accessible, authoritative articles that resonate with technical decision-makers."
+    },
+    {
+      q: "How do you ensure content accuracy, original research, and E-E-A-T compliance?",
+      a: "Every piece passes through a 4-phase quality control workflow: primary source fact-checking, authoritative citation inclusion, Grammarly Premium editorial review, and 100% plagiarism verification via Copyscape. Content is structured to demonstrate genuine First-Hand Experience, Expertise, Authoritativeness, and Trustworthiness (E-E-A-T)."
+    },
+    {
+      q: "Does AbuQitmirLabs use AI in content writing, and what is your editorial policy?",
+      a: "We believe in human-led craftsmanship. While modern research and data analysis tools may assist in outline organization and ideation, 100% of drafting, fact-checking, tone calibration, and final refinement is performed manually by human writers to ensure authentic voice, nuance, and factual integrity."
+    },
+    {
+      q: "What is the typical turnaround time for a content writing project?",
+      a: "Turnaround depends on project scope. A standard 1,000 to 2,000-word SEO blog post takes 3–5 business days, website copy suites take 1–2 weeks, and in-depth technical whitepapers or multi-cluster programs take 2–3 weeks, including revisions and SEO checks."
+    },
+    {
+      q: "How do you map content writing to the customer journey and sales funnel?",
+      a: "We produce content tailored for all three funnel stages: Top-of-Funnel (TOFU) educational guides to capture search interest, Middle-of-Funnel (MOFU) comparison pages and product breakdowns to build trust, and Bottom-of-Funnel (BOFU) case studies and service pages that drive conversions."
+    },
+    {
+      q: "Can you write for international markets in the US, UK, Canada, Australia, and Europe?",
+      a: "Yes. We serve global clients with localized spelling, cultural nuance, search intent patterns, and industry regulations tailored specifically for the United States (US), United Kingdom (UK), Canada (CA), Australia (AU), Poland (PL), and Pakistan (PK)."
     }
   ];
 
   return (
     <div className="bg-[#030303] text-neutral-200 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00] selection:text-black">
       <Helmet>
-        <title>Content Writing Services | SEO Copywriting & Blogging | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs provides professional content writing services — SEO blogs, website copy, landing pages, and long-form articles. Data-driven content that ranks and converts." />
+        <title>Content Writing Services | SEO &amp; Website Content | AbuQitmirLabs</title>
+        <meta name="description" content="Professional content writing services for websites, blogs, landing pages and businesses. SEO-focused, research-driven content built to attract traffic and convert readers." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/content-writing" />
+        <meta name="robots" content="index, follow" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Content Writing Services | SEO Copywriting & Blogging | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs provides professional content writing services — SEO blogs, website copy, landing pages, and long-form articles. Data-driven content that ranks and converts." />
+        <meta property="og:title" content="Content Writing Services | SEO &amp; Website Content | AbuQitmirLabs" />
+        <meta property="og:description" content="Professional content writing services for websites, blogs, landing pages and businesses. SEO-focused, research-driven content built to attract traffic and convert readers." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/content-writing" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Content Writing Services | SEO Copywriting & Blogging | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs provides professional content writing services — SEO blogs, website copy, landing pages, and long-form articles. Data-driven content that ranks and converts." />
+        <meta name="twitter:title" content="Content Writing Services | SEO &amp; Website Content | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Professional content writing services for websites, blogs, landing pages and businesses. SEO-focused, research-driven content built to attract traffic and convert readers." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
-        {/* Schema Markup with Breadcrumbs, ProfessionalService, Service with OfferCatalog, FAQPage, and HowTo */}
+        {/* Unified Schema Markup @graph */}
         <script 
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([
-              {
-                "@context": "https://schema.org",
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                  {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Home",
-                    "item": "https://www.abuqitmirlabs.tech"
-                  },
-                  {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "Content Writing",
-                    "item": "https://www.abuqitmirlabs.tech/content-writing"
-                  }
-                ]
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "ProfessionalService",
-                "name": "AbuQitmirLabs",
-                "url": "https://www.abuqitmirlabs.tech",
-                "logo": "https://www.abuqitmirlabs.tech/logo.png",
-                "image": "https://www.abuqitmirlabs.tech/logo.png",
-                "telephone": "+923233260859",
-                "priceRange": "$$$",
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony",
-                  "addressLocality": "Landhi Town, Karachi",
-                  "addressRegion": "Sindh",
-                  "postalCode": "75160",
-                  "addressCountry": "PK"
-                },
-                "geo": {
-                  "@type": "GeoCoordinates",
-                  "latitude": "24.842691448838718",
-                  "longitude": "67.1862014846566"
-                },
-                "sameAs": [
-                  "https://wa.me/923233260859",
-                  "https://github.com/abuqitmir"
-                ]
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "Service",
-                "name": "Content Writing Services | SEO Copywriting & Blogging | AbuQitmirLabs",
-                "description": "AbuQitmirLabs provides professional content writing services — SEO blogs, website copy, landing pages, and long-form articles. Data-driven content that ranks and converts.",
-                "provider": {
-                  "@type": "LocalBusiness",
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://www.abuqitmirlabs.tech/#organization",
                   "name": "AbuQitmirLabs",
-                  "url": "https://www.abuqitmirlabs.tech"
+                  "url": "https://www.abuqitmirlabs.tech",
+                  "logo": "https://www.abuqitmirlabs.tech/logo.png",
+                  "image": "https://www.abuqitmirlabs.tech/logo.png",
+                  "telephone": "+923233260859",
+                  "email": "abuqitmirshirazalmadani@gmail.com",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "8/15, 37A Rd, Shah Khalid Colony, Sector 37A",
+                    "addressLocality": "Landhi Town, Karachi",
+                    "addressRegion": "Sindh",
+                    "postalCode": "75160",
+                    "addressCountry": "PK"
+                  },
+                  "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 24.842681712798612,
+                    "longitude": 67.1862014846566
+                  },
+                  "sameAs": [
+                    "https://wa.me/923233260859",
+                    "https://github.com/abuqitmir",
+                    "https://www.facebook.com/profile.php?id=61583768706452",
+                    "https://www.instagram.com/abuqitmirshirazalmadani/",
+                    "https://www.youtube.com/@AbuQitmir",
+                    "https://www.linkedin.com/in/abu-qitmir-697423390/",
+                    "https://x.com/AbuQitmir"
+                  ]
                 },
-                "serviceType": "Content Strategy",
-                "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
-                "hasOfferCatalog": {
-                  "@type": "OfferCatalog",
-                  "name": "Content Writing Sector Solutions",
+                {
+                  "@type": "WebSite",
+                  "@id": "https://www.abuqitmirlabs.tech/#website",
+                  "url": "https://www.abuqitmirlabs.tech",
+                  "name": "AbuQitmirLabs",
+                  "publisher": {
+                    "@id": "https://www.abuqitmirlabs.tech/#organization"
+                  }
+                },
+                {
+                  "@type": "WebPage",
+                  "@id": "https://www.abuqitmirlabs.tech/content-writing#webpage",
+                  "url": "https://www.abuqitmirlabs.tech/content-writing",
+                  "name": "Content Writing Services | SEO & Website Content | AbuQitmirLabs",
+                  "description": "Professional content writing services for websites, blogs, landing pages and businesses. SEO-focused, research-driven content built to attract traffic and convert readers.",
+                  "isPartOf": {
+                    "@id": "https://www.abuqitmirlabs.tech/#website"
+                  },
+                  "breadcrumb": {
+                    "@id": "https://www.abuqitmirlabs.tech/content-writing#breadcrumb"
+                  },
+                  "about": {
+                    "@id": "https://www.abuqitmirlabs.tech/content-writing#service"
+                  }
+                },
+                {
+                  "@type": "BreadcrumbList",
+                  "@id": "https://www.abuqitmirlabs.tech/content-writing#breadcrumb",
                   "itemListElement": [
                     {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Content Writing for Non-Profit Organizations",
-                        "description": "Create compelling donation campaigns, grant proposals, impact reports, and volunteer recruitment materials."
-                      }
+                      "@type": "ListItem",
+                      "position": 1,
+                      "name": "Home",
+                      "item": "https://www.abuqitmirlabs.tech"
                     },
                     {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Content Writing for Real Estate",
-                        "description": "Craft stunning property descriptions, neighborhood guides, market reports, and blog posts for real estate."
+                      "@type": "ListItem",
+                      "position": 2,
+                      "name": "Content Writing",
+                      "item": "https://www.abuqitmirlabs.tech/content-writing"
+                    }
+                  ]
+                },
+                {
+                  "@type": "Service",
+                  "@id": "https://www.abuqitmirlabs.tech/content-writing#service",
+                  "name": "Content Writing Services",
+                  "serviceType": "Content Writing & SEO Copywriting",
+                  "description": "Professional research-backed content writing services — SEO blogs, website copywriting, technical articles, SaaS documentation, and B2B whitepapers engineered for search authority and customer conversion.",
+                  "provider": {
+                    "@id": "https://www.abuqitmirlabs.tech/#organization"
+                  },
+                  "areaServed": [
+                    { "@type": "Country", "name": "United States" },
+                    { "@type": "Country", "name": "United Kingdom" },
+                    { "@type": "Country", "name": "Canada" },
+                    { "@type": "Country", "name": "Australia" },
+                    { "@type": "Country", "name": "Poland" },
+                    { "@type": "Country", "name": "Pakistan" }
+                  ],
+                  "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Content Writing Solutions & Packages",
+                    "itemListElement": [
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "Website Content Writing Services",
+                          "description": "Conversion-focused homepage, service page, landing page, and about page copywriting."
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "SEO Content Writing Services",
+                          "description": "Topical cluster articles, pillar guides, and search intent mapped long-form content."
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "Blog Content Writing Services",
+                          "description": "Consistent, topically connected monthly blog writing packages for domain authority."
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "SaaS & Technical Content Writing",
+                          "description": "Product-led software articles, technical comparison guides, and developer documentation."
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "B2B Content Writing & Whitepapers",
+                          "description": "Authoritative B2B whitepapers, industry reports, and enterprise case studies."
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "Sector-Specific Content Writing",
+                          "description": "Specialized copywriting for non-profits, real estate, healthcare, law firms, and educational institutions."
+                        }
                       }
+                    ]
+                  }
+                },
+                {
+                  "@type": "FAQPage",
+                  "@id": "https://www.abuqitmirlabs.tech/content-writing#faq",
+                  "mainEntity": faqData.map(item => ({
+                    "@type": "Question",
+                    "name": item.q,
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": item.a
+                    }
+                  }))
+                },
+                {
+                  "@type": "HowTo",
+                  "@id": "https://www.abuqitmirlabs.tech/content-writing#howto",
+                  "name": "Our Strategic Content Writing Process",
+                  "description": "A 5-phase editorial workflow combining search intent discovery, keyword mapping, strategic drafting, rigorous quality checks, and performance tracking.",
+                  "step": [
+                    {
+                      "@type": "HowToStep",
+                      "name": "Discovery & Search Intent Research",
+                      "text": "Auditing brand tone, buyer personas, competitor rankings, and mapping exact search intent."
                     },
                     {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Content Writing for Healthcare",
-                        "description": "Provide patient education materials, clear blog posts, and reassurance-driven medical service descriptions."
-                      }
+                      "@type": "HowToStep",
+                      "name": "Keyword & Topic Cluster Mapping",
+                      "text": "Selecting primary and secondary semantic keywords to build topical depth and internal linking pathways."
                     },
                     {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Content Writing for Small Law Firms",
-                        "description": "Write authoritative blog posts, detailed practice area pages, and helpful legal guides for small law firms."
-                      }
+                      "@type": "HowToStep",
+                      "name": "Strategic Content Creation",
+                      "text": "Drafting authoritative, high-readability content structured for both human engagement and algorithmic indexing."
                     },
                     {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Content Writing for Corporate Events",
-                        "description": "Develop high-conversion event copy, engaging speaker bios, and session promotional materials."
-                      }
+                      "@type": "HowToStep",
+                      "name": "Review, Fact-Checking & SEO Optimization",
+                      "text": "Rigorous editorial review, fact-checking, plagiarism screening via Copyscape, and on-page schema verification."
                     },
                     {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Content Writing for Educational Institutions",
-                        "description": "Design professional course descriptions, student recruitment packages, and engaging academic blogs."
-                      }
+                      "@type": "HowToStep",
+                      "name": "Delivery, CMS Publishing & Tracking",
+                      "text": "Final formatting, CMS staging, metadata integration, and search performance monitoring."
                     }
                   ]
                 }
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                "mainEntity": faqData.map(item => ({
-                  "@type": "Question",
-                  "name": item.q,
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": item.a
-                  }
-                }))
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "HowTo",
-                "name": "Our Strategic Content Writing Process",
-                "description": "A meticulous, high-E-E-A-T writing process combining technical keyword alignment, brand audits, creative drafting, and continuous performance loops.",
-                "step": [
-                  {
-                    "@type": "HowToStep",
-                    "name": "Discovery & Research",
-                    "text": "Deep research into the brand tone, audience profiles, keyword opportunity analysis, and competitor audits."
-                  },
-                  {
-                    "@type": "HowToStep",
-                    "name": "Content Creation",
-                    "text": "Writing the initial high-value copy with natural keyword integration, readability optimization, and visual planning."
-                  },
-                  {
-                    "@type": "HowToStep",
-                    "name": "Review & Refinement",
-                    "text": "Rigorous grammatical checks, accurate fact-checking, absolute plagiarism screening, and SEO validation."
-                  },
-                  {
-                    "@type": "HowToStep",
-                    "name": "Delivery & Implementation",
-                    "text": "Formatting, strategic CMS uploads, analytics integration, and scheduling for optimal distribution."
-                  }
-                ]
-              }
-            ])
+              ]
+            })
           }}
         ></script>
       </Helmet>
@@ -565,8 +633,8 @@ const ContentWritingPage = () => {
                 transition={{ delay: 0.1, duration: 0.9 }}
                 className="text-4xl md:text-6xl lg:text-8xl font-serif leading-[1.05] tracking-tight text-white mb-10"
             >
-                Content Writing: <br />
-                <span className="text-neutral-400 italic font-light">Words That Drive Engagement &amp; Authority</span>
+                Content Writing Services: <br />
+                <span className="text-neutral-400 italic font-light">Words That Drive Authority, Search Visibility &amp; Conversions</span>
             </motion.h1>
 
             <motion.div
@@ -1335,7 +1403,7 @@ const ContentWritingPage = () => {
           <div className="max-w-4xl mx-auto text-left">
               <div className="text-center mb-20">
                   <span className="text-xs font-mono text-neutral-500 uppercase tracking-[0.5em] block mb-4">FAQ</span>
-                  <h3 className="text-4xl md:text-6xl font-serif font-light text-white uppercase tracking-tight">Frequently Asked Questions</h3>
+                  <h2 className="text-4xl md:text-6xl font-serif font-light text-white uppercase tracking-tight">Frequently Asked Questions</h2>
               </div>
 
               <div className="space-y-4">
@@ -1428,7 +1496,7 @@ const ContentWritingPage = () => {
        {/* Related Services / Internal Siloing */}
        <section className="py-24 bg-black border-t border-white/10 relative z-10 px-6">
          <div className="max-w-7xl mx-auto">
-           <h3 className="text-xs font-mono text-slate-500 mb-4 uppercase tracking-[0.4em] font-bold block">[ RELATED_SYSTEMS &amp; INTERNAL NAVIGATION ]</h3>
+           <h2 className="text-xs font-mono text-slate-500 mb-4 uppercase tracking-[0.4em] font-bold block">[ RELATED_SYSTEMS &amp; INTERNAL NAVIGATION ]</h2>
            <p className="text-zinc-400 text-sm font-light mb-12 max-w-2xl leading-relaxed">
              Explore our core engineering verticals, localized search solutions, and industry blueprints:
            </p>

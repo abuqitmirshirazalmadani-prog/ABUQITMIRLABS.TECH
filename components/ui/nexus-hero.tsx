@@ -47,7 +47,7 @@ const techSlugs = [
   "gitlab",
   "visualstudiocode",
   "androidstudio",
-  "sonarqube",
+  "python",
   "figma",
 ];
 

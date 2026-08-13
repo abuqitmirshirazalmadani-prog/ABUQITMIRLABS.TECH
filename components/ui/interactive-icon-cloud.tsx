@@ -120,7 +120,7 @@ const defaultSlugs = [
   "gitlab",
   "visualstudiocode",
   "androidstudio",
-  "sonarqube",
+  "python",
   "figma",
 ];
 
