@@ -48,114 +48,6 @@ import CountryMarquee from '../components/CountryMarquee';
 import Breadcrumbs from '../components/Breadcrumbs';
 import ContentWritingPricing from '../components/ContentWritingPricing';
 
-// Custom interactive 3D Editorial Tin component representing high-value physical-like creative formulas
-const EditorialTin = ({ 
-  formula, 
-  title, 
-  tag, 
-  color, 
-  volume = "NET WT. 1000 WD", 
-  purity = "99.8% EEAT" 
-}: { 
-  formula: string, 
-  title: string, 
-  tag: string, 
-  color: 'emerald' | 'amber' | 'purple' | 'platinum',
-  volume?: string,
-  purity?: string
-}) => {
-  const colorMap = {
-    emerald: {
-      bg: "from-emerald-500/10 via-emerald-950/20 to-neutral-950",
-      glow: "bg-emerald-500/10",
-      border: "border-emerald-500/20",
-      accent: "text-emerald-400",
-      solidAccent: "#10b981",
-    },
-    amber: {
-      bg: "from-amber-500/10 via-amber-950/20 to-neutral-950",
-      glow: "bg-amber-500/10",
-      border: "border-amber-500/20",
-      accent: "text-amber-400",
-      solidAccent: "#f59e0b",
-    },
-    purple: {
-      bg: "from-purple-500/10 via-purple-950/20 to-neutral-950",
-      glow: "bg-purple-500/10",
-      border: "border-purple-500/20",
-      accent: "text-purple-400",
-      solidAccent: "#a855f7",
-    },
-    platinum: {
-      bg: "from-zinc-400/10 via-zinc-900/20 to-neutral-950",
-      glow: "bg-zinc-400/5",
-      border: "border-zinc-500/20",
-      accent: "text-zinc-300",
-      solidAccent: "#d4d4d8",
-    }
-  };
-
-  const selected = colorMap[color];
-
-  return (
-    <motion.div 
-      whileHover={{ y: -8, scale: 1.02 }}
-      animate={{
-        y: [-8, 8, -8],
-      }}
-      transition={{
-        y: {
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }
-      }}
-      className="relative w-64 h-[22rem] mx-auto flex items-center justify-center pointer-events-auto z-10"
-    >
-      {/* Glow Backing */}
-      <div className={`absolute -inset-6 rounded-[3rem] ${selected.glow} filter blur-[60px] opacity-60 animate-pulse`} />
-      
-      {/* Outer physical container */}
-      <div className={`relative w-60 h-80 rounded-[3rem] bg-gradient-to-b ${selected.bg} border ${selected.border} backdrop-blur-xl flex flex-col justify-between p-6 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8)] overflow-hidden`}>
-        {/* Shiny Refractive Sheen line */}
-        <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-transparent via-white/5 to-transparent skew-x-12 translate-x-[-100%] animate-[marquee_15s_linear_infinite]" />
-        
-        {/* Metal Top Lid */}
-        <div className="w-full h-5 rounded-full bg-neutral-900 border border-white/10 flex items-center justify-center shadow-inner relative">
-          <div className="w-11/12 h-3 rounded-full bg-zinc-950/80 border-b border-white/5 flex items-center justify-center">
-            <div className="w-8 h-1 bg-zinc-800 rounded-full" />
-          </div>
-        </div>
-
-        {/* High-End Apothecary Minimal Label */}
-        <div className="flex-1 my-3 border border-white/5 rounded-2xl bg-black/50 p-4 flex flex-col justify-between items-center text-center relative">
-          <div className="flex items-center gap-1">
-            <Sparkle size={6} className={selected.accent} />
-            <span className="text-[8px] font-mono tracking-[0.3em] text-neutral-500 uppercase font-black">ABUQITMIR LABS</span>
-          </div>
-
-          <div className="my-auto space-y-1">
-            <span className={`text-[10px] font-mono font-black tracking-widest uppercase ${selected.accent}`}>{formula}</span>
-            <h4 className="font-serif italic text-2xl text-white font-light leading-none tracking-wide">{title}</h4>
-            <div className="h-[1px] w-8 bg-white/10 mx-auto my-2" />
-            <span className="text-[9px] font-mono text-neutral-400 uppercase tracking-widest block">{tag}</span>
-          </div>
-
-          <div className="w-full border-t border-white/15 pt-2.5 flex justify-between text-[7.5px] font-mono text-neutral-500 font-bold uppercase">
-            <span>{volume}</span>
-            <span>{purity}</span>
-          </div>
-        </div>
-
-        {/* Metal Base Lid */}
-        <div className="w-full h-5 rounded-full bg-neutral-900 border border-white/10 shadow-md flex items-center justify-center">
-          <div className="w-11/12 h-2 bg-zinc-950 border-t border-white/5 rounded-full" />
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
 const ContentWritingPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
@@ -165,14 +57,16 @@ const ContentWritingPage = () => {
       formula: "FORMULA W-100",
       tag: "Conversion-Oriented Core",
       color: "emerald" as const,
-      title: "🖥️ Website Content Writing Services",
+      icon: <Globe size={22} />,
+      cleanTitle: "Website Content Writing Services",
+      title: "Website Content Writing Services",
       quote: "Words that establish trust and convert visitors into buyers.",
       desc: "Core site pages — homepages, service pages, about pages — written to convert visitors while giving each page the on-page SEO foundation it needs to be found in the first place.",
       items: [
         "Homepage Copy: Captivating intros and clear value propositions",
         "Service Pages: Benefits-driven layout communicating direct solutions",
         "About Us Pages: Compelling, trust-building brand narrative storytelling",
-        "Landing Pages: High-conversion layouts for your paid or organic campaigns"
+        "Landing Pages: High-conversion layouts for paid and organic campaigns"
       ],
       deliverable: "On-page optimized, publish-ready website copy."
     },
@@ -181,9 +75,11 @@ const ContentWritingPage = () => {
       formula: "FORMULA S-200",
       tag: "Topical Authority Blueprint",
       color: "amber" as const,
-      title: "🔍 SEO Content Writing Services",
+      icon: <Search size={22} />,
+      cleanTitle: "SEO Content Writing Services",
+      title: "SEO Content Writing Services",
       quote: "Long-form content engineered to rank and survive algorithm updates.",
-      desc: "Long-form articles, guides, and pillar content built around genuine keyword research and search intent analysis, designed to rank and to hold that ranking through algorithm updates rather than chasing short-term spikes.",
+      desc: "Long-form articles, guides, and pillar content built around genuine keyword research and search intent analysis, designed to rank and hold visibility through algorithm shifts.",
       items: [
         "Pillar Content: In-depth cornerstone guides establishing complete authority",
         "Topic Clusters: Connected articles that build topical context for crawlers",
@@ -197,7 +93,9 @@ const ContentWritingPage = () => {
       formula: "FORMULA B-300",
       tag: "Strategic Organic Catalyst",
       color: "purple" as const,
-      title: "📝 Blog Content Writing Services",
+      icon: <FileText size={22} />,
+      cleanTitle: "Blog Content Writing Services",
+      title: "Blog Content Writing Services",
       quote: "Consistent, topically connected blogs that power your sales funnel.",
       desc: "Consistent, topically connected blog content that builds toward a clear content strategy — supporting cluster and pillar structures rather than a random assortment of disconnected posts.",
       items: [
@@ -213,9 +111,11 @@ const ContentWritingPage = () => {
       formula: "FORMULA SA-400",
       tag: "Product-Led Growth Architecture",
       color: "platinum" as const,
-      title: "💡 SaaS Content Writing",
+      icon: <Cpu size={22} />,
+      cleanTitle: "SaaS Content Writing",
+      title: "SaaS Content Writing",
       quote: "Explainers, comparisons, and feature stories that sell software.",
-      desc: "Product-led content for software companies — feature explainers, comparison guides, and technical content written by people who understand how SaaS products are actually evaluated and purchased.",
+      desc: "Product-led content for software companies — feature explainers, comparison guides, and technical content written by specialists who understand how SaaS products are evaluated.",
       items: [
         "Product-Led Content: Blog posts that naturally weave in your software features",
         "Comparison Guides: Detailed, objective versus-posts that win decision-makers",
@@ -229,9 +129,11 @@ const ContentWritingPage = () => {
       formula: "FORMULA B2B-500",
       tag: "High-Value Decision Pipeline",
       color: "emerald" as const,
-      title: "📊 B2B Content Writing Services",
+      icon: <BarChart3 size={22} />,
+      cleanTitle: "B2B Content Writing Services",
+      title: "B2B Content Writing Services",
       quote: "Content engineered for longer, more considered buying cycles.",
-      desc: "Content built for longer, more considered buying cycles — case studies, whitepapers, and decision-stage content that speaks to procurement teams and stakeholders, not just a single impulse buyer.",
+      desc: "Content built for considered B2B buying journeys — case studies, whitepapers, and decision-stage content that speaks directly to procurement teams and executive stakeholders.",
       items: [
         "Case Studies: Performance data and real-world success narratives",
         "In-depth Whitepapers: Original research, insights, and industry analysis",
@@ -245,9 +147,11 @@ const ContentWritingPage = () => {
       formula: "FORMULA L-600",
       tag: "Authoritative Compliance Protocol",
       color: "amber" as const,
-      title: "⚖️ Law Firm Website Content Writing",
+      icon: <Scale size={22} />,
+      cleanTitle: "Law Firm Website Content Writing",
+      title: "Law Firm Website Content Writing",
       quote: "Precise, compliant legal writing paired with local SEO.",
-      desc: "Content for legal practices requires a particular balance: authoritative and precise, without straying into content that could be read as specific legal advice. We write for law firms with that balance in mind, alongside proper local SEO structure for practice-area pages.",
+      desc: "Authoritative, compliant legal copy tailored for law firms. We balance legal precision with local SEO structure to rank practice-area pages without overstepping into formal legal counsel.",
       items: [
         "Practice-Area Pages: Authoritative overviews showcasing expertise",
         "Legal Blog Writing: Informative posts addressing common legal concerns",
@@ -810,88 +714,78 @@ const ContentWritingPage = () => {
         </div>
       </section>
 
-      {/* SECTION 3: OUR CONTENT SERVICES (Reimagined as One Product Per Scroll Section) */}
+      {/* SECTION 3: OUR CONTENT SERVICES */}
       <section className="py-24 bg-[#030303] text-white relative z-10">
-        <div className="max-w-7xl mx-auto px-6 mb-20">
-          <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.5em] block mb-4">[ SECTION 3: EDITORIAL PORTFOLIO ]</span>
-          <h2 className="text-4xl md:text-7xl font-serif font-light text-white tracking-tight uppercase leading-[0.9] mb-6">
+        <div className="max-w-7xl mx-auto px-6 mb-16">
+          <span className="text-xs font-bold text-[#ccff00] uppercase tracking-[0.4em] block mb-4">// SPECIALIZED CONTENT WRITING SOLUTIONS</span>
+          <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight uppercase leading-[0.9] mb-6">
             OUR CONTENT SERVICES
           </h2>
-          <p className="text-neutral-400 max-w-2xl text-base md:text-lg font-light">
-            We offer a comprehensive range of content writing services that cover every aspect of your content marketing strategy. Each formula is crafted as an independent masterpiece.
+          <p className="text-neutral-400 max-w-3xl text-base md:text-lg font-light leading-relaxed">
+            We offer a comprehensive range of professional content writing services that cover every aspect of your organic search and conversion funnel. Each formula delivers publish-ready, search-optimized editorial assets.
           </p>
-          <div className="w-full h-[1px] bg-white/5 mt-12" />
+          <div className="w-full h-[1px] bg-white/5 mt-10" />
         </div>
 
-        {/* 1 Product / Service per Widescreen Section */}
-        <div className="space-y-40">
-          {services.map((service, idx) => (
-            <div 
-              key={idx}
-              className="relative py-20 bg-gradient-to-b from-[#030303] to-[#070707] border-y border-white/[0.02]"
-            >
-              {/* Parallax ambient backdrop */}
-              <div className="absolute inset-0 bg-[radial-gradient(#ffffff01_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
-              
-              <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-                {/* Visual Editorial Tin Model Column */}
-                <div className="lg:col-span-5 order-last lg:order-first">
-                  <EditorialTin 
-                    formula={service.formula}
-                    title={service.title.split(" ").slice(1).join(" ")}
-                    tag={service.tag}
-                    color={service.color}
-                  />
-                </div>
-
-                {/* Content Copy Column */}
-                <div className="lg:col-span-7 space-y-8">
-                  <div className="flex items-center gap-4">
-                    <span className="font-mono text-xs text-[#ccff00] bg-[#ccff00]/10 px-3 py-1 rounded-full border border-[#ccff00]/20">0{idx + 1}</span>
-                    <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">{service.formula} // ARCHIVE</span>
+        {/* High-Impact Service Cards Grid matching Screenshot 2 */}
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                className="bg-zinc-950 border border-white/10 hover:border-[#ccff00] transition-all p-7 md:p-8 rounded-3xl group flex flex-col justify-between relative overflow-hidden shadow-2xl"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-12 h-12 rounded-2xl bg-[#ccff00]/10 border border-[#ccff00]/30 flex items-center justify-center text-[#ccff00] font-bold">
+                      {service.icon}
+                    </div>
+                    <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest bg-white/[0.03] border border-white/5 px-2.5 py-1 rounded-full">
+                      {service.formula}
+                    </span>
                   </div>
 
-                  <h3 className="text-3xl md:text-5xl font-serif font-light tracking-tight text-white uppercase">
-                    {service.title}
+                  <h3 className="text-xl md:text-2xl font-bold text-[#ccff00] underline decoration-[#ccff00]/60 underline-offset-4 mb-3 group-hover:text-[#ccff00] transition-colors leading-tight">
+                    {service.cleanTitle}
                   </h3>
 
-                  <em className="text-[#ccff00] font-serif text-lg md:text-xl block italic font-light">
-                    "{service.quote}"
-                  </em>
-
-                  <p className="text-neutral-300 text-sm md:text-base font-light leading-relaxed">
+                  <p className="text-zinc-300 text-sm md:text-base leading-relaxed mb-6 font-sans">
                     {service.desc}
                   </p>
 
-                  <ul className="space-y-4 pt-2">
+                  <ul className="space-y-2.5 mb-6 pt-4 border-t border-white/5">
                     {service.items.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3.5 text-xs md:text-sm text-neutral-400 font-light leading-relaxed">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00] shrink-0 mt-2 shadow-[0_0_8px_#ccff00]" />
+                      <li key={i} className="flex items-start gap-2.5 text-xs text-zinc-400 leading-relaxed">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00] shrink-0 mt-1.5 shadow-[0_0_6px_#ccff00]" />
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
-
-                  <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                    <div className="py-2.5 px-4 bg-white/[0.02] border border-white/5 rounded-xl">
-                      <span className="text-[9px] font-mono uppercase tracking-widest text-neutral-500 block mb-1">Guaranteed Deliverable</span>
-                      <p className="text-xs font-mono text-[#ccff00] font-bold uppercase">{service.deliverable}</p>
-                    </div>
-
-                    <a 
-                      href={`https://wa.me/923233260859?text=Hello,%20I'm%20interested%20in%20your%20${encodeURIComponent(service.title)}%20(${service.formula}).%20Let's%20discuss%20further.`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-xs font-mono text-white hover:text-[#ccff00] transition-colors uppercase tracking-wider group"
-                    >
-                      <span>Acquire Service</span>
-                      <ArrowRight size={14} className="group-hover:translate-x-1.5 transition-transform" />
-                    </a>
-                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+
+                <div className="pt-4 border-t border-white/5">
+                  <div className="p-3 bg-white/[0.02] border border-white/5 rounded-xl mb-5">
+                    <span className="text-[9px] font-mono uppercase tracking-widest text-zinc-500 block mb-0.5">Guaranteed Deliverable</span>
+                    <span className="text-xs font-mono text-white font-semibold">{service.deliverable}</span>
+                  </div>
+
+                  <a 
+                    href={`https://wa.me/923233260859?text=Hello,%20I'm%20interested%20in%20your%20${encodeURIComponent(service.cleanTitle)}%20(${service.formula}).%20Let's%20discuss%20further.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#ccff00] text-xs md:text-sm font-mono font-bold uppercase tracking-wider flex items-center gap-2 group-hover:translate-x-1 transition-transform"
+                  >
+                    <span>ACQUIRE SERVICE</span>
+                    <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
