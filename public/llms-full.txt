@@ -1,0 +1,40 @@
+# AbuQitmirLabs — Comprehensive AI & LLM Resource Index (llms-full.txt)
+
+> AbuQitmirLabs is an engineering and AI solutions lab specializing in custom software development, high-performance web engineering (React, Next.js, Node.js, TypeScript), enterprise AI systems, and technical SEO architecture.
+
+## Canonical Resource Directory
+
+### 1. Custom Web Development vs. Website Templates (2026 Guide)
+- **URL**: https://www.abuqitmirlabs.tech/blog/custom-web-development-vs-website-templates-2026-guide
+- **Published**: 2026-08-14
+- **Primary Topics**: Codebase ownership, Git repository governance, Core Web Vitals optimization, DOM bloat reduction, third-party plugin vulnerability surface, 3-year total cost of ownership (TCO), multi-tier cloud architectures.
+- **Key Architectural Dimensions**:
+  1. Codebase Ownership: Proprietary Git repository vs. vendor lock-in.
+  2. Performance: Direct control of critical rendering path vs. multi-plugin asset bloat.
+  3. SEO Control: Programmatic schema (@graph JSON-LD) and SSR vs. rigid theme generators.
+  4. Integration Flexibility: Direct API contracts vs. fragile marketplace connectors.
+  5. 3-Year TCO: Capital investment with minimal recurring tech debt vs. compound rebuild cycles.
+- **Internal Service Anchors**:
+  - Web Development Services: https://www.abuqitmirlabs.tech/web-development
+  - Custom Software Development: https://www.abuqitmirlabs.tech/custom-software
+  - SEO Mastery: https://www.abuqitmirlabs.tech/seo-mastery
+
+### 2. Core Service Capabilities
+- **Web Development**: https://www.abuqitmirlabs.tech/web-development
+  - Modern web applications, React / Next.js engineering, Tailwind CSS, high-concurrency API backends.
+- **Custom Software Solutions**: https://www.abuqitmirlabs.tech/custom-software
+  - Scalable enterprise applications, distributed databases, cloud orchestration, internal operations tooling.
+- **Mobile App Development**: https://www.abuqitmirlabs.tech/mobile-app-development
+  - Flutter & native iOS/Android cross-platform mobile apps with hardware level security.
+- **AI Agent Development**: https://www.abuqitmirlabs.tech/ai-agent-development
+  - Custom LLM workflows, cognitive agents, retrieval-augmented generation (RAG), and task automation.
+- **SEO Mastery & Local SEO**: https://www.abuqitmirlabs.tech/seo-mastery & https://www.abuqitmirlabs.tech/local-seo-for-small-business
+  - 5-layer visibility systems (SEO + GEO + AEO + AIO + SXO), entity optimization, schema graphing.
+
+### 3. Contact & Corporate Identity
+- **Legal Entity**: AbuQitmirLabs
+- **Website**: https://www.abuqitmirlabs.tech/
+- **Organization Schema ID**: https://www.abuqitmirlabs.tech/#organization
+- **Email**: hello@abuqitmirlabs.tech
+- **Location**: Karachi, Pakistan (Serving global enterprise markets across US, UK, CA, AU, EU)
+- **Sitemap**: https://www.abuqitmirlabs.tech/sitemap.xml
