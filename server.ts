@@ -359,18 +359,23 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
       }
 
       try {
-        const indexPath = path.join(distPath, 'index.html');
-        let template = '';
-        if (fs.existsSync(indexPath)) {
-          template = fs.readFileSync(indexPath, 'utf-8');
-        } else {
-          template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
-        }
-
         let cleanPath = url.split('?')[0];
         if (cleanPath.length > 1 && cleanPath.endsWith('/')) {
           cleanPath = cleanPath.slice(0, -1);
         }
+
+        const routeIndexPath = path.join(distPath, cleanPath, 'index.html');
+        const rootIndexPath = path.join(distPath, 'index.html');
+
+        let template = '';
+        if (cleanPath !== '/' && cleanPath !== '' && fs.existsSync(routeIndexPath)) {
+          template = fs.readFileSync(routeIndexPath, 'utf-8');
+        } else if (fs.existsSync(rootIndexPath)) {
+          template = fs.readFileSync(rootIndexPath, 'utf-8');
+        } else {
+          template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
+        }
+
         const fullUrl = `https://www.abuqitmirlabs.tech${cleanPath === '' ? '/' : cleanPath}`;
         if (template.includes('<link rel="canonical"')) {
           template = template.replace(/<link rel="canonical"[^>]*\/?>/g, `<link rel="canonical" data-rh="true" href="${fullUrl}" />`);

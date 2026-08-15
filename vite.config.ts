@@ -5,6 +5,7 @@ import fs from 'fs';
 import esbuild from 'esbuild';
 import {defineConfig, loadEnv} from 'vite';
 import compression from 'vite-plugin-compression';
+import { aiAgentSchema, aiAgentInitialHtml } from './src/utils/aiAgentStaticHtml';
 
 // Safe container-compatible prerender implementation to bypass Chromium/Puppeteer driver limitations
 interface PrerenderPlugin {
@@ -99,7 +100,7 @@ export default defineConfig(({mode}) => {
             { url: '/custom-software',         changefreq: 'weekly',  priority: 0.9, title: 'Custom Software Development Company | AbuQitmirLabs', description: 'AbuQitmirLabs provides high-impact custom software development, enterprise ERPs, and AI solutions tailored for startups and growing businesses. Build with us.' },
             { url: '/mobile-app-development',  changefreq: 'weekly',  priority: 0.9, title: 'Mobile App Development | Flutter & Native iOS/Android | AbuQitmirLabs', description: 'AbuQitmirLabs builds high-performance mobile apps using Flutter, React Native, and iOS/Android. We handle design, development, and App Store submission.' },
             { url: '/web-development',         changefreq: 'weekly',  priority: 0.9, title: 'Web Development Company | Custom Web Solutions | AbuQitmirLabs', description: 'AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications.' },
-            { url: '/ai-agent-development',    changefreq: 'weekly',  priority: 0.9, title: 'AI Agent Development | Custom AI Automation Solutions | AbuQitmirLabs', description: 'AbuQitmirLabs builds custom AI agents with RAG, voice recognition, and workflow automation. From customer support to logistics optimization — deploy autonomous AI that drives real ROI.' },
+            { url: '/ai-agent-development',    changefreq: 'weekly',  priority: 0.9, title: 'AI Agent Development Company | AbuQitmirLabs', description: 'AbuQitmirLabs builds bespoke autonomous AI agents, multi-agent workflows, and secure LLM integrations for intelligent, end-to-end business automation.' },
             { url: '/seo-mastery',             changefreq: 'weekly',  priority: 0.8, title: 'SEO Services | Professional Search Engine Optimization | AbuQitmirLabs', description: 'AbuQitmirLabs delivers data-driven SEO services — technical audits, on-page optimization, local SEO, and authority building. Rank higher, attract quality traffic, and grow your business.' },
             { url: '/local-seo-for-small-business', changefreq: 'weekly', priority: 0.9, title: 'Local SEO for Small Business | Affordable Plans | AbuQitmirLabs', description: 'Affordable local SEO for small businesses. Get found in Google Maps with GBP optimization, NAP citations, and on-page local keywords. Start with a $500/month plan.' },
             { url: '/local-seo-citation-building', changefreq: 'weekly', priority: 0.8, title: 'Local SEO Citation Building | NAP Consistency Services | AbuQitmirLabs', description: 'Manual NAP citation building, audit & cleanup across top-tier directories. Boost local search rankings with consistent citations on Google, Yelp, Apple Maps & more. Start with a $150 audit.' },
@@ -321,6 +322,21 @@ Sitemap: ${hostname}/sitemap.xml`;
             routeHtml = routeHtml.replace(/<link\s+rel="canonical"[^>]*\/?>/gi, '');
             routeHtml = routeHtml.replace('</head>', `  <link rel="canonical" data-rh="true" href="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
             
+            // Special authoritative injection for /ai-agent-development
+            if (route.url === '/ai-agent-development') {
+              // 1. Inject authoritative 7-entity JSON-LD schema
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
+              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(aiAgentSchema, null, 2)}\n  </script>\n</head>`);
+
+              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>\s*<script/i, `<div id="root">${aiAgentInitialHtml}</div>\n    <script`);
+
+              // 3. Write directly without #seo-crawler-content fallback
+              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
+              fs.writeFileSync(targetPath, routeHtml);
+              continue;
+            }
+
             // FIX: Inject meaningful body content to avoid "0 character body" and "No H1" SEO issues
             // This content provides immediate value to crawlers and is replaced by React upon hydration.
             let articleContent = '';

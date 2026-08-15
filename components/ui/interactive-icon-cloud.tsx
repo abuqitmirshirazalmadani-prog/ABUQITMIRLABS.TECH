@@ -44,6 +44,8 @@ import {
   siVite,
   siSupabase,
   siLinux,
+  siGooglecloud,
+  siVscodium,
 } from "simple-icons";
 
 // Map slugs & common aliases to local bundled SimpleIcon objects
@@ -65,8 +67,9 @@ const iconMap: Record<string, SimpleIcon> = {
   nextdotjs: siNextdotjs,
   nextjs: siNextdotjs,
   prisma: siPrisma,
-  amazonaws: siVercel,
-  aws: siVercel,
+  amazonaws: siGooglecloud,
+  aws: siGooglecloud,
+  googlecloud: siGooglecloud,
   postgresql: siPostgresql,
   postgres: siPostgresql,
   firebase: siFirebase,
@@ -80,8 +83,8 @@ const iconMap: Record<string, SimpleIcon> = {
   jira: siJira,
   github: siGithub,
   gitlab: siGitlab,
-  visualstudiocode: siVite,
-  vscode: siVite,
+  visualstudiocode: siVscodium,
+  vscode: siVscodium,
   androidstudio: siAndroidstudio,
   python: siPython,
   figma: siFigma,
@@ -121,7 +124,7 @@ export const cloudProps: Omit<ICloud, "children"> = {
   },
 };
 
-export const renderCustomIcon = (icon: SimpleIcon) => {
+export const renderCustomIcon = (icon: SimpleIcon, uniqueKey?: string) => {
   return renderSimpleIcon({
     icon,
     bgHex: "#080510",
@@ -129,7 +132,7 @@ export const renderCustomIcon = (icon: SimpleIcon) => {
     minContrastRatio: 1.2,
     size: 42,
     aProps: {
-      key: icon.slug,
+      key: uniqueKey || icon.slug,
       href: undefined,
       target: undefined,
       rel: undefined,
@@ -144,11 +147,14 @@ export type DynamicCloudProps = {
 
 export function IconCloud({ iconSlugs }: DynamicCloudProps) {
   const renderedIcons = useMemo(() => {
-    const iconsToRender = (iconSlugs && iconSlugs.length > 0 ? iconSlugs : defaultSlugs)
-      .map((slug) => iconMap[slug.toLowerCase()])
-      .filter((icon): icon is SimpleIcon => Boolean(icon));
-
-    return iconsToRender.map((icon) => renderCustomIcon(icon));
+    const rawSlugs = iconSlugs && iconSlugs.length > 0 ? iconSlugs : defaultSlugs;
+    return rawSlugs
+      .map((slug, index) => {
+        const icon = iconMap[slug.toLowerCase()];
+        if (!icon) return null;
+        return renderCustomIcon(icon, `cloud-icon-${slug.toLowerCase()}-${index}`);
+      })
+      .filter((el): el is React.ReactElement => Boolean(el));
   }, [iconSlugs]);
 
   if (!renderedIcons || renderedIcons.length === 0) {
@@ -162,7 +168,7 @@ export function IconCloud({ iconSlugs }: DynamicCloudProps) {
   return (
     // @ts-ignore
     <Cloud {...cloudProps}>
-      <>{renderedIcons}</>
+      {renderedIcons}
     </Cloud>
   );
 }
