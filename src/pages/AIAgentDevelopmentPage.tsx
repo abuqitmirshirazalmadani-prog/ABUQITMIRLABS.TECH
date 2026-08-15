@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
+import { Link } from 'react-router-dom';
 import { YouTubeFacade } from '../components/ui/youtube-facade';
 import { 
   Brain, 
@@ -9,42 +10,51 @@ import {
   Search, 
   Zap, 
   CheckCircle2, 
-  Play, 
   ArrowRight, 
   Sparkles, 
   MessageSquare, 
   Terminal, 
-  ShieldCheck,
-  ChevronRight,
-  Database,
-  ArrowUpRight,
-  Plus,
+  ShieldCheck, 
+  Database, 
+  ArrowUpRight, 
+  Plus, 
+  Layers, 
+  Lock, 
+  Globe, 
+  DollarSign, 
+  Heart, 
+  Truck, 
+  Home, 
+  HeartPulse, 
+  Scale, 
+  Calendar, 
+  GraduationCap, 
+  Activity, 
+  Code2, 
+  Smartphone, 
+  Palette, 
+  PenTool, 
+  ExternalLink,
+  Workflow,
+  TrendingUp,
+  FileSearch,
+  Users,
+  Building2,
+  Rocket,
+  ShieldAlert,
+  Server,
+  Network,
+  Check,
   HelpCircle,
-  Clock,
-  Layers,
-  Award,
-  Lock,
-  Globe,
-  DollarSign,
-  Heart,
-  Truck,
-  Home,
-  HeartPulse,
-  Scale,
-  Calendar,
-  GraduationCap,
-  Activity,
-  Code2,
-  Smartphone,
-  Palette,
-  PenTool,
-  ExternalLink
+  X,
+  FileText,
+  Sliders
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CountryMarquee from '../components/CountryMarquee';
+import AIAgentPricing from '../components/AIAgentPricing';
 
 export default function AIAgentDevelopmentPage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -52,1302 +62,1366 @@ export default function AIAgentDevelopmentPage() {
 
   const faqData = [
     {
-      q: "What is an AI agent, and how is it different from a chatbot?",
-      a: "An AI agent is an autonomous system that can understand context, make decisions, and execute tasks—not just answer predefined questions. It's like a junior employee who can reason, learn, and take action, whereas a chatbot simply follows scripts."
-    },
-    {
-      q: "Which industries can benefit from AI agents?",
-      a: "AI agents are versatile and can benefit almost any industry. We have developed AI automation solutions for fintech (fraud detection, customer support), healthcare (patient triage, medical record analysis), retail (recommendation engines, virtual assistants), and logistics (route optimization, inventory management)."
+      q: "What is AI agent development?",
+      a: "AI agent development is the software engineering practice of designing, programming, and deploying autonomous systems powered by large language models (LLMs). Unlike scripted chatbots that match predefined keywords, an AI agent perceives high-level goals, formulates sequential action plans, queries databases, calls external software APIs, and executes multi-step workflows with human oversight."
     },
     {
       q: "How much does AI agent development cost?",
-      a: "Starter AI agents typically cost $5,000+, advanced solutions $15,000+, and enterprise platforms $40,000+. We provide fixed-price quotes after a detailed discovery phase."
+      a: "The cost of developing an AI agent typically ranges from $5,000 to $15,000 for focused, single-purpose workflow automation agents, and $15,000 to $40,000+ for enterprise multi-agent networks with proprietary RAG architectures, custom API middleware, and zero-trust security integrations. Final investment depends on system complexity, tool calling depth, and compliance standards."
     },
     {
-      q: "Can I integrate an AI agent with my existing CRM and tools?",
-      a: "Yes! We build agents that integrate seamlessly with Salesforce, HubSpot, Slack, Microsoft Teams, and other major platforms via APIs and webhooks."
+      q: "What is the difference between an AI agent and a chatbot?",
+      a: "A traditional chatbot is primarily conversational and text-bound—it matches user prompts to static scripts or basic language models. An AI agent is operational and goal-oriented: it maintains context across multi-turn interactions, reasons through sub-tasks, interacts directly with external tools (such as updating CRMs or querying databases), and coordinates complex business workflows."
     },
     {
-      q: "Will my AI agent adhere to data privacy and compliance standards?",
-      a: "Absolutely. We adhere to strict data privacy standards and can architect agents that are GDPR and HIPAA compliant. We never train models on your business data without explicit permission and robust anonymization."
+      q: "Can AI agents connect to CRM and business APIs?",
+      a: "Yes. Our AI agents are engineered to connect directly with existing enterprise software via REST APIs, GraphQL, webhooks, SQL/NoSQL databases, and enterprise OAuth protocols. We routinely build integrations for Salesforce, HubSpot, Zendesk, Slack, Microsoft Teams, PostgreSQL, ERP systems, and custom internal software."
+    },
+    {
+      q: "Can you build RAG-powered AI agents?",
+      a: "Yes. We engineer enterprise-grade Retrieval-Augmented Generation (RAG) systems that connect agents to your proprietary documents, knowledge bases, SOPs, and vector stores (such as Pinecone, Qdrant, or pgvector). This grounds the agent's reasoning in verified company facts to eliminate hallucinations and provide verifiable source citations."
+    },
+    {
+      q: "Are AI agents suitable for small businesses?",
+      a: "Yes. Small businesses often achieve the fastest return on investment by deploying focused agents for repetitive tasks such as 24/7 inbound lead qualification, customer support ticket triage, appointment scheduling, and automated invoice processing. This allows lean teams to handle the operational capacity of much larger organizations without increasing overhead."
+    },
+    {
+      q: "How secure are AI agents?",
+      a: "We implement defense-in-depth security principles including least-privilege tool execution, encrypted credential vaults, strict role-based access control (RBAC), prompt injection filtering, and human-in-the-loop approval gates for destructive or financial actions. Your proprietary data is never used to train public foundation models."
+    },
+    {
+      q: "How long does it take to build an AI agent?",
+      a: "A focused workflow agent or prototype typically takes 4 to 6 weeks to architect, build, and test. Comprehensive enterprise deployments with deep legacy software integrations, multi-agent coordination swarms, and custom compliance audits generally take 8 to 12 weeks."
     }
   ];
 
+  // 10 Distinct Services matching exact specifications
+  const agentServices = [
+    {
+      id: "custom-agents",
+      title: "1. Custom AI Agents",
+      icon: <Cpu className="w-6 h-6 text-[#ccff00]" />,
+      desc: "Tailored autonomous software agents engineered around your proprietary business logic, operational policies, and custom system rules.",
+      outcome: "Eliminates repetitive manual workflows while ensuring 100% adherence to company guidelines."
+    },
+    {
+      id: "workflow-automation",
+      title: "2. AI Workflow Automation",
+      icon: <Workflow className="w-6 h-6 text-blue-400" />,
+      desc: "End-to-end multi-step task execution that connects CRMs, internal databases, ERPs, and cloud SaaS platforms without human bottlenecks.",
+      outcome: "Accelerates operational cycle times from days to seconds with zero manual data re-entry."
+    },
+    {
+      id: "llm-powered-agents",
+      title: "3. LLM-Powered Agents",
+      icon: <Brain className="w-6 h-6 text-purple-400" />,
+      desc: "Cognitive reasoning engines built on frontier foundation models (Gemini, Claude, GPT-4, Llama) with structured prompt scaffolding.",
+      outcome: "Enables dynamic decision-making, contextual text analysis, and self-evaluating execution logic."
+    },
+    {
+      id: "customer-support-agents",
+      title: "4. AI Customer Support Agents",
+      icon: <MessageSquare className="w-6 h-6 text-emerald-400" />,
+      desc: "24/7 resolution-oriented support agents that verify customer accounts, diagnose issues, query order databases, and process ticket resolutions.",
+      outcome: "Resolves 60–80% of common customer inquiries instantly while cleanly escalating edge cases."
+    },
+    {
+      id: "sales-agents",
+      title: "5. AI Sales Agents",
+      icon: <TrendingUp className="w-6 h-6 text-amber-400" />,
+      desc: "Automated inbound lead qualification, prospect background research, personalized follow-ups, and calendar booking integrated with your CRM.",
+      outcome: "Shortens lead response times to under two minutes and increases discovery call booking rates."
+    },
+    {
+      id: "research-agents",
+      title: "6. AI Research Agents",
+      icon: <FileSearch className="w-6 h-6 text-cyan-400" />,
+      desc: "Autonomous multi-source intelligence gathering, web data extraction, competitive analysis, and structured report synthesis.",
+      outcome: "Compiles deep market and competitive intelligence dossiers in minutes rather than days of manual browsing."
+    },
+    {
+      id: "internal-copilots",
+      title: "7. Internal AI Copilots",
+      icon: <Users className="w-6 h-6 text-rose-400" />,
+      desc: "Employee productivity assistants embedded into Slack or Microsoft Teams to search company wikis, draft briefs, and trigger internal tasks.",
+      outcome: "Empowers team members to instantly find operational knowledge and automate routine internal requests."
+    },
+    {
+      id: "rag-knowledge-agents",
+      title: "8. RAG-Powered Knowledge Agents",
+      icon: <Database className="w-6 h-6 text-teal-400" />,
+      desc: "Retrieval-Augmented Generation architectures indexing unstructured PDFs, contracts, and technical manuals into high-speed vector stores.",
+      outcome: "Delivers factual, hallucination-free answers backed by verifiable source citations."
+    },
+    {
+      id: "api-crm-integrations",
+      title: "9. API & CRM Integrations",
+      icon: <Layers className="w-6 h-6 text-indigo-400" />,
+      desc: "Secure middleware and webhook connectors linking autonomous agents directly to Salesforce, HubSpot, Stripe, PostgreSQL, and custom databases.",
+      outcome: "Creates real-time bidirectional synchronization between cognitive agents and core business records."
+    },
+    {
+      id: "multi-agent-systems",
+      title: "10. Multi-Agent Systems",
+      icon: <Network className="w-6 h-6 text-[#ccff00]" />,
+      desc: "Collaborative networks of specialized agents communicating via supervisor-worker protocols to execute complex, multi-department enterprise workflows.",
+      outcome: "Enables distributed problem-solving where specialized agents review, validate, and execute complex workflows."
+    }
+  ];
+
+  // Practical Automation Workflows
+  const automationWorkflows = [
+    {
+      title: "Customer Support Resolution",
+      desc: "Verifying user identity, querying order status in PostgreSQL, issuing refund authorizations within predefined limits, and updating helpdesk tickets in Zendesk.",
+      example: "Inbound ticket received → User authenticated via API → Order status retrieved → Refund processed → Confirmation email sent."
+    },
+    {
+      title: "Inbound Lead Qualification",
+      desc: "Evaluating incoming form submissions against ideal customer profile (ICP) criteria, querying LinkedIn/Clearbit for firmographic data, and booking discovery meetings.",
+      example: "Website inquiry → Company revenue verified → Match score calculated → Personalized email drafted → Calendar invite booked."
+    },
+    {
+      title: "Automated Sales Follow-Up",
+      desc: "Monitoring prospect interaction signals, drafting contextually tailored follow-up sequences based on previous call notes, and updating CRM deal stages in HubSpot.",
+      example: "No response after 48h → Call transcript analyzed → Tailored case study linked → CRM activity logged."
+    },
+    {
+      title: "Document Processing & Extraction",
+      desc: "Parsing unstructured PDFs, invoices, shipping manifests, and legal agreements to extract key metadata, validate line-item totals, and populate ERP systems.",
+      example: "Vendor invoice uploaded → Line items extracted via OCR/LLM → PO match validated → ERP ledger updated."
+    },
+    {
+      title: "Internal Knowledge Retrieval (RAG)",
+      desc: "Empowering employees to query complex engineering documentation, HR policies, and standard operating procedures with direct page-level citations.",
+      example: "Employee asks compliance question → Vector database queried → Top 3 policy excerpts retrieved → Cited answer generated."
+    },
+    {
+      title: "CRM Updates & Data Sync",
+      desc: "Extracting action items, key milestones, and sentiment from sales call recordings or client email threads, and synchronizing records across Salesforce and Slack.",
+      example: "Client email thread received → Action items extracted → Deal stage updated in CRM → Slack notification sent to team."
+    },
+    {
+      title: "Database Synchronization",
+      desc: "Comparing records across fragmented legacy systems, detecting formatting discrepancies, standardizing data formats, and reconciling discrepancies automatically.",
+      example: "Inventory updated in warehouse database → Discrepancy flagged → Reconciled against Shopify store → Ledger synced."
+    },
+    {
+      title: "Autonomous Market Research",
+      desc: "Crawling public industry filings, competitor pricing pages, and product changelogs, synthesizing trends into structured markdown executive summaries.",
+      example: "Weekly competitor crawl initiated → Pricing changes detected → Comparative matrix compiled → Brief sent to leadership."
+    },
+    {
+      title: "Automated Business Analytics & Reporting",
+      desc: "Aggregating metrics across Google Analytics, Stripe billing data, and SQL data warehouses to generate automated weekly executive KPI performance reports.",
+      example: "End of week trigger → SQL metrics queried → Anomalies identified → Executive report rendered in PDF."
+    },
+    {
+      title: "Administrative Email Triage",
+      desc: "Categorizing high-volume inbox communications, identifying urgent client escalations, auto-drafting responses for team review, and assigning tasks in Asana.",
+      example: "Inbound email received → Intent classified → Urgent task created in Asana → Draft response queued for approval."
+    }
+  ];
+
+  // 8-Step Lifecycle
+  const processSteps = [
+    {
+      step: "01",
+      title: "Discovery & Scope",
+      desc: "We analyze your existing business operations to identify high-ROI bottlenecks where autonomous agents deliver measurable efficiency gains."
+    },
+    {
+      step: "02",
+      title: "Workflow Analysis",
+      desc: "We map system inputs, decision branching logic, required data schemas, API endpoints, and human-in-the-loop approval thresholds."
+    },
+    {
+      step: "03",
+      title: "Architecture Design",
+      desc: "We select the optimal foundation LLMs, design short/long-term memory layers, structure tool calling schemas, and establish strict security guardrails."
+    },
+    {
+      step: "04",
+      title: "Agent Development",
+      desc: "Our engineers program cognitive execution loops, structured output validators, reasoning planners, and custom context retrieval pipelines."
+    },
+    {
+      step: "05",
+      title: "API & System Integration",
+      desc: "We connect the agent directly to your existing tech stack—CRMs, SQL databases, cloud storage, webhooks, and communication tools."
+    },
+    {
+      step: "06",
+      title: "Testing & Evaluation",
+      desc: "We perform automated benchmark testing for reasoning accuracy, latency optimization, prompt injection resilience, and edge-case recovery."
+    },
+    {
+      step: "07",
+      title: "Secure Deployment",
+      desc: "We deploy the agent to secure cloud infrastructure (AWS, Azure, GCP, or private VPCs) with enterprise role-based access control."
+    },
+    {
+      step: "08",
+      title: "Monitoring & Optimization",
+      desc: "We track execution telemetry, audit multi-step reasoning traces, and continually optimize prompt schemas to lower token costs and latency."
+    }
+  ];
+
+  // Comparison Matrix Data
+  const comparisonMatrix = [
+    {
+      feature: "Goal Orientation",
+      chatbot: "Follows rigid, pre-scripted conversational decision trees.",
+      agent: "Breaks complex, high-level objectives into sequential execution sub-tasks."
+    },
+    {
+      feature: "Tool & API Execution",
+      chatbot: "Limited to returning pre-written text answers or static links.",
+      agent: "Actively calls external REST APIs, executes database queries, and triggers workflows."
+    },
+    {
+      feature: "Workflow Execution",
+      chatbot: "Single-turn conversational question-and-answer exchanges.",
+      agent: "Coordinates multi-step actions across disparate third-party enterprise platforms."
+    },
+    {
+      feature: "Context & Memory",
+      chatbot: "Short-term conversational buffer; forgets context after session.",
+      agent: "Maintains working state plus persistent semantic memory via vector databases."
+    },
+    {
+      feature: "Multi-Step Coordination",
+      chatbot: "Fails when customer requests cross-department actions.",
+      agent: "Can delegate sub-tasks across specialized agent swarms with supervisor oversight."
+    },
+    {
+      feature: "Human Escalation & Approval",
+      chatbot: "Abrupt fallback: 'I didn't understand that, let me connect you.'",
+      agent: "Gathers full operational context, performs initial work, and requests approval only for sensitive actions."
+    },
+    {
+      feature: "Error Handling & Recovery",
+      chatbot: "Stops completely or repeats default error response.",
+      agent: "Evaluates intermediate tool outputs, self-corrects invalid parameters, and tries alternative paths."
+    }
+  ];
+
+  // Business Tiers
+  const businessTiers = [
+    {
+      segment: "Startups",
+      headline: "Lean Automation & Rapid Scaling",
+      desc: "Deploy focused AI agents to handle 24/7 customer onboarding, initial lead qualification, and user support without expanding operational headcount.",
+      points: ["Rapid time-to-market (3–4 weeks)", "API-first modular architecture", "Affordable expansion as revenue scales"]
+    },
+    {
+      segment: "Small Businesses",
+      headline: "Operational Efficiency & Time Recovery",
+      desc: "Automate repetitive customer inquiries, appointment bookings, quote generation, and routine invoice reconciliation to recover hundreds of employee hours monthly.",
+      points: ["24/7 instant customer responsiveness", "Reduced administrative burden", "Direct CRM & QuickBooks synchronization"]
+    },
+    {
+      segment: "Growing Companies",
+      headline: "Cross-Department System Orchestration",
+      desc: "Unify fragmented software silos with multi-step workflow agents coordinating tasks between sales, customer success, finance, and engineering.",
+      points: ["Eliminates manual data re-entry", "Custom RAG knowledge search across company wikis", "Multi-tool autonomous execution"]
+    },
+    {
+      segment: "Enterprise Teams",
+      headline: "Secure Multi-Agent Infrastructure",
+      desc: "Architect enterprise-grade collaborative agent networks with zero-trust security, strict data isolation, role-based access control, and full audit logging.",
+      points: ["Private VPC & on-prem deployment options", "Zero-data retention for model training", "SOC2 / GDPR compliance-ready architecture"]
+    }
+  ];
+
+  // Core Technical Components
   const coreComponents = [
     {
       id: 'brain',
       icon: <Brain className="w-8 h-8 text-[#ccff00]" />,
-      title: "Foundation Model (The Brain)",
-      subtitle: "🧠 COGNITIVE FOUNDATION ENGINE",
-      desc: "The large language model (LLM) provides natural language understanding, reasoning, and generation capabilities. We work with leading providers including OpenAI, Anthropic, Google Gemini, and Azure OpenAI, as well as open-source models like Llama.",
+      title: "Foundation Model & Reasoning Engine",
+      subtitle: "COGNITIVE FOUNDATION LAYER",
+      desc: "The large language model (LLM) provides natural language comprehension, logical reasoning, and task decomposition. We select and tune models from Google Gemini, Anthropic Claude, OpenAI, and open-source models like Llama.",
       included: [
-        "Model Selection: Choosing the optimal LLM based on cost, speed, and capability requirements",
-        "API Integration: Configuring endpoints, managing rate limits, and handling authentication",
-        "Fine-Tuning: Optional but recommended for domain-specific accuracy and performance",
-        "Parameter Management: Adjusting temperature, top_p, max_tokens, and other model settings"
+        "Model Selection: Choosing optimal LLMs based on latency, token costs, and reasoning requirements",
+        "API Integration: Configuring resilient endpoints, managing rate limits, and handling retries",
+        "System Prompt Scaffolding: Structuring deterministic instructions, role definitions, and output schemas",
+        "Fine-Tuning & Quantization: Custom domain tuning for high accuracy in specialized industries"
       ],
-      required: "Model API access, API keys, model configurations, and cost management."
+      required: "Model API keys, parameter optimization (temperature, top_p), and cost control monitoring."
     },
     {
       id: 'orchestrator',
       icon: <Cpu className="w-8 h-8 text-[#ccff00]" />,
-      title: "Core-Agent (The Orchestrator)",
-      subtitle: "🎯 BEHAVIOR & FLOW COORDINATOR",
-      desc: "The central coordinator manages the agent's behavior, decides when to retrieve knowledge, invoke skills, or escalate to a human. This is the 'brains' behind the operation.",
+      title: "Planning & Execution Orchestrator",
+      subtitle: "BEHAVIOR & FLOW COORDINATOR",
+      desc: "The central orchestration engine manages agent behavior, formulates multi-step execution plans, determines when to invoke tools, and verifies task completion.",
       included: [
-        "Planning Module: Breaks down complex tasks into sub-steps and sequences",
-        "Memory Module: Retains context across interactions (short-term and long-term)",
-        "Action Module: Executes decisions and calls external tools",
-        "Security Module: Validates actions, manages access control, and ensures compliance"
+        "Task Planning Module: Breaks high-level objectives into ordered execution sequences",
+        "State Management: Tracks execution progress, intermediate variables, and tool responses",
+        "Self-Reflection & Evaluation: Audits tool outputs before finalizing actions",
+        "Supervisor Delegation: Routes sub-tasks to specialized domain agents in multi-agent swarms"
       ],
-      required: "Orchestration framework (LangChain, LlamaIndex, CrewAI, AutoGen), workflow logic, state management, decision-making algorithms, and error handling."
+      required: "Orchestration frameworks (LangChain, LlamaIndex, CrewAI, AutoGen) and stateful execution engines."
     },
     {
       id: 'actions',
       icon: <Zap className="w-8 h-8 text-[#ccff00]" />,
-      title: "Skills & Tools (The Actions)",
-      subtitle: "🔧 PLUGINS AND FUNCTION CALLS",
-      desc: "These are the actions, capabilities, and workflows the agent can take—like sending messages, querying databases, or triggering automated workflows. This is what makes the agent useful.",
+      title: "Tools, Plugins & API Connectors",
+      subtitle: "SYSTEM EXECUTION LAYER",
+      desc: "Tools enable the agent to interact with the real world—querying databases, updating CRMs, triggering webhooks, sending transactional emails, and calling external APIs.",
       included: [
-        "Tool Definitions: APIs, plugins, and services the agent can invoke",
-        "Integration Code: Middleware to connect to external systems",
-        "Authentication: API keys, OAuth 2.0 tokens, or other credentials for each service"
+        "Structured Tool Schemas: JSON-schema definitions for deterministic function calling",
+        "Middleware Connectors: Secure interfaces to Salesforce, HubSpot, Stripe, Slack, and PostgreSQL",
+        "Webhook Listeners: Real-time event triggers for incoming web events and asynchronous updates"
       ],
-      required: "API integrations (CRM, ERP, email, Slack, databases), webhooks, event-driven triggers, structured tool schemas, and credential management."
+      required: "REST APIs, GraphQL endpoints, SQL connectors, OAuth 2.0 authentication, and token vaults."
     },
     {
       id: 'memory',
       icon: <Database className="w-8 h-8 text-[#ccff00]" />,
-      title: "Knowledge & Data Infrastructure (The Memory)",
-      subtitle: "📚 REAL-TIME GROUNDING COMPONENT",
-      desc: "The information an agent uses to understand its environment and make decisions. This is the 'source of truth' for the agent.",
+      title: "Retrieval & Memory Infrastructure (RAG)",
+      subtitle: "REAL-TIME GROUNDING LAYER",
+      desc: "The memory layer supplies the agent with short-term working context and long-term historical knowledge. This provides the single source of truth for all decisions.",
       included: [
-        "Knowledge Bases: Structured data, unstructured content, documents, databases, and real-time inputs",
-        "RAG (Retrieval-Augmented Generation): System to fetch relevant information from knowledge sources",
-        "Data Pipeline: ETL processes to prepare and update data"
+        "Vector Databases: High-speed semantic search using Pinecone, Qdrant, Milvus, or pgvector",
+        "Retrieval-Augmented Generation (RAG): Semantic chunking and retrieval of internal documents",
+        "Session State: Short-term conversation history and working memory cache"
       ],
-      required: "Vector database (for semantic search), document processing, indexing, data cleaning, preparation, and schema definition."
+      required: "Document parsing pipelines, embedding models, vector indexing, and data freshness pipelines."
     },
     {
       id: 'security',
       icon: <ShieldCheck className="w-8 h-8 text-[#ccff00]" />,
-      title: "Security & Compliance (The Guardrails)",
-      subtitle: "🔐 ENTERPRISE DEFENSE LAYER",
-      desc: "Essential components to protect your agent and its users. This is non-negotiable for enterprise deployments.",
+      title: "Security, Guardrails & Governance",
+      subtitle: "ENTERPRISE DEFENSE LAYER",
+      desc: "Critical safety controls to protect sensitive business data, prevent prompt injection attacks, enforce role-based access, and maintain regulatory compliance.",
       included: [
-        "Identity & Access Management (IAM): Unique identities for each agent",
-        "Token Vault: Secure storage for API keys, OAuth tokens, and credentials",
-        "Audit Logging: Track every action for compliance and debugging",
-        "Guardrails: Prevent harmful actions, prompt injection, and data leaks"
+        "Least-Privilege Tool Access: Restricts agent capabilities to strictly authorized actions",
+        "Prompt Injection Defense: Sanitizes user inputs and verifies instructions before execution",
+        "Human-in-the-Loop Gates: Requires manual approval for destructive or financial operations",
+        "Audit Logging: Comprehensive logging of every prompt, tool call, and decision trace"
       ],
-      required: "OAuth 2.0 flow support, encryption (at rest and in transit), role-based access control, and compliance frameworks (GDPR, HIPAA, SOC2)."
+      required: "IAM roles, encrypted credential vaults, PII masking middleware, and compliance monitoring."
     },
     {
-      id: 'foundation',
-      icon: <Bot className="w-8 h-8 text-[#ccff00]" />,
-      title: "Infrastructure & Deployment (The Foundation)",
-      subtitle: "☁️ HIGH-SCALE INFRASTRUCTURE",
-      desc: "The hosting and scaling layer that ensures your agent performs reliably under any load.",
+      id: 'observability',
+      icon: <Server className="w-8 h-8 text-[#ccff00]" />,
+      title: "Observability & Scalable Cloud Hosting",
+      subtitle: "PRODUCTION INFRASTRUCTURE",
+      desc: "The deployment environment and monitoring stack that ensures low latency, 99.9% uptime, and complete visibility into agent operations under enterprise workloads.",
       included: [
-        "Cloud Services: AWS, Azure, or GCP for compute and storage",
-        "Containerization: Docker and Kubernetes for deployment and scaling",
-        "Monitoring: Prometheus, Grafana, or similar for performance tracking",
-        "CI/CD: Automated testing and deployment pipelines"
+        "Cloud Hosting: Containerized microservices on AWS, Azure, GCP, or private VPCs",
+        "Distributed Tracing: Real-time monitoring of LLM latency, token consumption, and errors",
+        "Automated CI/CD: Testing pipelines for prompt regression and system resilience"
       ],
-      required: "Cloud account, compute resources, storage, networking, and monitoring setup."
+      required: "Docker containerization, Prometheus/OpenTelemetry tracking, and scalable serverless compute."
     }
   ];
 
   return (
     <div id="ai-agent-development-root" className="bg-[#000000] text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]/30 selection:text-white">
+      {/* Skip to Content Accessible Link */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#ccff00] focus:text-black focus:font-bold focus:rounded-md focus:shadow-lg"
+      >
+        Skip to content
+      </a>
+
       <Helmet>
-        <title>AI Agent Development | Custom AI Automation Solutions | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs builds custom AI agents with RAG, voice recognition, and workflow automation. From customer support to logistics optimization — deploy autonomous AI that drives real ROI." />
+        <title>AI Agent Development Company | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs builds bespoke autonomous AI agents, multi-agent workflows, and secure LLM integrations for intelligent, end-to-end business automation." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/ai-agent-development" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="AI Agent Development | Custom AI Automation Solutions | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs builds custom AI agents with RAG, voice recognition, and workflow automation. From customer support to logistics optimization — deploy autonomous AI that drives real ROI." />
+        <meta property="og:title" content="AI Agent Development Company | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs builds bespoke autonomous AI agents, multi-agent workflows, and secure LLM integrations for intelligent, end-to-end business automation." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/ai-agent-development" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
-        {/* Twitter */}
+        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI Agent Development | Custom AI Automation Solutions | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs builds custom AI agents with RAG, voice recognition, and workflow automation. From customer support to logistics optimization — deploy autonomous AI that drives real ROI." />
+        <meta name="twitter:title" content="AI Agent Development Company | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs builds bespoke autonomous AI agents, multi-agent workflows, and secure LLM integrations for intelligent, end-to-end business automation." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         
-        {/* Schema Markup with BreadcrumbList, Service, FAQPage, and HowTo */}
+        {/* JSON-LD Schema @graph */}
         <script 
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([
-              {
-                "@context": "https://schema.org",
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                  {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Home",
-                    "item": "https://www.abuqitmirlabs.tech"
-                  },
-                  {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "AI Agent & App Development",
-                    "item": "https://www.abuqitmirlabs.tech/ai-agent-development"
-                  }
-                ]
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "ProfessionalService",
-                "name": "AbuQitmirLabs",
-                "url": "https://www.abuqitmirlabs.tech",
-                "logo": "https://www.abuqitmirlabs.tech/logo.png",
-                "image": "https://www.abuqitmirlabs.tech/logo.png",
-                "telephone": "+923233260859",
-                "priceRange": "$$$",
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony",
-                  "addressLocality": "Landhi Town, Karachi",
-                  "addressRegion": "Sindh",
-                  "postalCode": "75160",
-                  "addressCountry": "PK"
-                },
-                "geo": {
-                  "@type": "GeoCoordinates",
-                  "latitude": "24.842691448838718",
-                  "longitude": "67.1862014846566"
-                },
-                "sameAs": [
-                  "https://wa.me/923233260859",
-                  "https://github.com/abuqitmir"
-                ]
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "Service",
-                "name": "AI Agent Development Services",
-                "serviceType": "AI Automation and Agent Engineering",
-                "provider": {
-                  "@type": "LocalBusiness",
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://www.abuqitmirlabs.tech/#organization",
                   "name": "AbuQitmirLabs",
                   "url": "https://www.abuqitmirlabs.tech",
-                  "logo": "https://www.abuqitmirlabs.tech/logo.png",
-                  "image": "https://www.abuqitmirlabs.tech/logo.png",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "@id": "https://www.abuqitmirlabs.tech/#logo",
+                    "url": "https://www.abuqitmirlabs.tech/logo.png",
+                    "caption": "AbuQitmirLabs Logo"
+                  },
+                  "telephone": "+923233260859",
+                  "email": "hello@abuqitmirlabs.tech",
                   "address": {
                     "@type": "PostalAddress",
-                    "addressLocality": "Karachi",
+                    "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony, Sector 37A",
+                    "addressLocality": "Landhi Town, Karachi",
+                    "postalCode": "75160",
                     "addressCountry": "PK"
+                  },
+                  "sameAs": [
+                    "https://www.facebook.com/profile.php?id=61583768706452",
+                    "https://www.instagram.com/abuqitmirshirazalmadani/",
+                    "https://www.youtube.com/@AbuQitmir",
+                    "https://www.linkedin.com/in/abu-qitmir-697423390/",
+                    "https://x.com/AbuQitmir",
+                    "https://www.pinterest.com/abuqitmir",
+                    "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani",
+                    "https://www.goodfirms.co/company/abuqitmirlabs-tech",
+                    "https://clutch.co/profile/abuqitmirlabstech"
+                  ],
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+923233260859",
+                    "contactType": "customer service",
+                    "email": "hello@abuqitmirlabs.tech",
+                    "availableLanguage": ["English", "Urdu"]
                   }
                 },
-                "description": "At AbuQitmirLabs, we build AI agents that do more than answer questions—they automate workflows, enhance decision-making, and transform how businesses operate globally across Non-Profit, Logistics, Real Estate, Healthcare, Law, Events, and Education sectors.",
-                "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
-                "hasOfferCatalog": {
-                  "@type": "OfferCatalog",
-                  "name": "AI Agent Development Solutions",
+                {
+                  "@type": "WebSite",
+                  "@id": "https://www.abuqitmirlabs.tech/#website",
+                  "url": "https://www.abuqitmirlabs.tech",
+                  "name": "AbuQitmirLabs",
+                  "publisher": {
+                    "@id": "https://www.abuqitmirlabs.tech/#organization"
+                  }
+                },
+                {
+                  "@type": "WebPage",
+                  "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#webpage",
+                  "url": "https://www.abuqitmirlabs.tech/ai-agent-development",
+                  "name": "AI Agent Development Company | AbuQitmirLabs",
+                  "description": "AbuQitmirLabs builds bespoke autonomous AI agents, multi-agent workflows, and secure LLM integrations for intelligent, end-to-end business automation.",
+                  "isPartOf": {
+                    "@id": "https://www.abuqitmirlabs.tech/#website"
+                  },
+                  "about": {
+                    "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#service"
+                  },
+                  "breadcrumb": {
+                    "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#breadcrumb"
+                  }
+                },
+                {
+                  "@type": "BreadcrumbList",
+                  "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#breadcrumb",
                   "itemListElement": [
                     {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "AI Agent Development for Non-Profit Organizations",
-                        "description": "Non-profits need intelligent systems that maximize their impact without draining limited resources. Our AI agents for non-profit organizations automate donor engagement, track program outcomes, and streamline volunteer coordination—all while maintaining the highest standards of data privacy."
-                      }
+                      "@type": "ListItem",
+                      "position": 1,
+                      "name": "Home",
+                      "item": "https://www.abuqitmirlabs.tech"
                     },
                     {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "AI Agent Development for Logistics",
-                        "description": "In logistics, every second counts. Our AI agents for logistics optimize routes in real-time, predict delivery delays before they happen, and automate exception handling—reducing operational friction and improving customer satisfaction."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "AI Agent Development for Real Estate",
-                        "description": "Real estate professionals need intelligent tools that qualify leads, schedule viewings, and provide market insights at a glance. Our AI agents for real estate automate lead scoring, personalize property recommendations, and handle initial client interactions—freeing your agents to focus on closing deals."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "AI Agent Development for Healthcare",
-                        "description": "Healthcare demands the highest standards of security, accuracy, and compliance. Our AI agents for healthcare assist with patient triage, appointment scheduling, and clinical documentation—all while maintaining full HIPAA compliance."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "AI Agent Development for Small Law Firms",
-                        "description": "Small law firms need AI tools that help them practice law, not manage technology. Our AI agents for small law firms automate document review, legal research, and client intake—allowing you to focus on your cases."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "AI Agent Development for Corporate Events",
-                        "description": "Corporate events demand intelligent systems that manage registrations, schedule speakers, and engage attendees. Our AI agents for corporate events automate ticketing, provide real-time agenda updates, and answer attendee questions instantly."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "AI Agent Development for Educational Institutions",
-                        "description": "Educational institutions need AI tools that support both teachers and students. Our AI agents for educational institutions provide personalized tutoring, automate administrative tasks, and deliver real-time feedback to learners."
-                      }
+                      "@type": "ListItem",
+                      "position": 2,
+                      "name": "AI Agent Development",
+                      "item": "https://www.abuqitmirlabs.tech/ai-agent-development"
                     }
                   ]
+                },
+                {
+                  "@type": "Service",
+                  "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#service",
+                  "name": "AI Agent Development Services",
+                  "serviceType": "AI Agent Development and Workflow Automation",
+                  "provider": {
+                    "@id": "https://www.abuqitmirlabs.tech/#organization"
+                  },
+                  "description": "Custom AI agent engineering services covering autonomous workflow automation, multi-agent systems, RAG implementation, and enterprise LLM integrations.",
+                  "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
+                  "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "AI Agent Engineering Offerings",
+                    "itemListElement": [
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "Custom AI Agents",
+                          "description": "Tailored autonomous systems engineered around proprietary operational logic and business policies."
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "AI Workflow Automation",
+                          "description": "End-to-end multi-step task execution connecting CRMs, databases, and third-party SaaS platforms."
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "Multi-Agent Systems",
+                          "description": "Collaborative networks of specialized agents communicating and delegating tasks to execute complex enterprise workflows."
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "@type": "HowTo",
+                  "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#process",
+                  "name": "How We Build AI Agents",
+                  "description": "An 8-step engineering lifecycle for designing, building, integrating, and optimizing autonomous AI agents.",
+                  "step": processSteps.map((step, index) => ({
+                    "@type": "HowToStep",
+                    "position": index + 1,
+                    "name": step.title,
+                    "text": step.desc
+                  }))
+                },
+                {
+                  "@type": "FAQPage",
+                  "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#faq",
+                  "mainEntity": faqData.map(item => ({
+                    "@type": "Question",
+                    "name": item.q,
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": item.a
+                    }
+                  }))
                 }
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                "mainEntity": faqData.map(item => ({
-                  "@type": "Question",
-                  "name": item.q,
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": item.a
-                  }
-                }))
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "HowTo",
-                "name": "Our AI Agent Development Process",
-                "description": "Our 3-step rigorous technical methodology to engineer intelligent, secure, and autonomous cognitive assets.",
-                "step": [
-                  {
-                    "@type": "HowToStep",
-                    "name": "Symptom & Workflow Audit",
-                    "text": "We map your existing administrative pipelines, trace workflow blockages, and draft model orchestration designs."
-                  },
-                  {
-                    "@type": "HowToStep",
-                    "name": "Cognitive Prototyping & Sprint Builds",
-                    "text": "Development of cognitive loops in agile 2-week milestones, integrating custom RAG datasets and testing performance values."
-                  },
-                  {
-                    "@type": "HowToStep",
-                    "name": "Guardrail Security & Live Deployment",
-                    "text": "Establishing prompt injection defenses, validating GDPR/HIPAA standards, and launching clean production deployments."
-                  }
-                ]
-              }
-            ])
+              ]
+            })
           }}
-        ></script>
+        />
       </Helmet>
 
-      {/* Decorative Blur Backgrounds */}
-      <div className="fixed inset-0 pointer-events-none z-0 opacity-40">
-        <div className="absolute top-[20%] left-[-10%] w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[160px]" />
-        <div className="absolute bottom-[20%] right-[-10%] w-[600px] h-[600px] bg-[#ccff00]/5 rounded-full blur-[160px]" />
+      {/* Decorative Ambient Backgrounds */}
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-30">
+        <div className="absolute top-[15%] left-[-5%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[180px]" />
+        <div className="absolute bottom-[20%] right-[-5%] w-[600px] h-[600px] bg-[#ccff00]/5 rounded-full blur-[180px]" />
       </div>
 
       <Header />
       <Breadcrumbs />
 
-      {/* Hero Section */}
-      <section id="ai-agent-hero" className="relative pt-24 md:pt-32 pb-20 z-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center relative z-10 max-w-5xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs text-[#ccff00] font-mono tracking-widest uppercase mb-10"
-            >
-              <Sparkles className="w-4 h-4 text-[#ccff00] animate-pulse" /> 
-              COGNITIVE ENGINEERING LABS
-            </motion.div>
+      {/* Main Landmark */}
+      <main id="main-content" className="relative z-10">
 
-            <motion.h1 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-light tracking-tight text-white text-center mb-8 leading-[1.1]"
-            >
-              AI Agents: <br />
-              <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl block mt-4 font-sans font-bold tracking-tight text-zinc-300 uppercase italic">
-                Intelligent Automation for Modern Enterprises
-              </span>
-            </motion.h1>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="mx-auto mt-10 max-w-4xl text-lg md:text-xl leading-relaxed text-slate-300 font-light font-sans text-center"
-            >
-              We build AI agents that handle real tasks, not just chatbots that answer FAQs. Using Retrieval-Augmented Generation (RAG), our agents stay grounded in your actual business data, reducing hallucinations and giving accurate, context-aware responses.
-            </motion.p>
-
-            {/* Core Capabilities Specifications */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25 }}
-              className="mx-auto mt-12 max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
-                {[
-                  "Custom RAG-Based AI Agents & Chatbots",
-                  "Voice & Speech Recognition Integration",
-                  "Workflow Automation Agents (Internal Ops)",
-                  "LLM Integration (OpenAI, Anthropic, Open-Source Models)",
-                  "Domain-Specific Knowledge Base Training"
-                ].map((bullet, idx) => (
-                  <div key={idx} className="flex items-start gap-3 group">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0 group-hover:bg-[#ccff00] transition-colors duration-300" />
-                    <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* CTAs */}
-            <div className="mt-14 flex flex-col items-center justify-center gap-6 sm:flex-row">
-              <a 
-                href="https://wa.me/923233260859"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-wrapper" 
-                style={{ '--dot-size': '8px', '--line-weight': '1px', '--animation-speed': '0.35s', '--dot-color': '#fff', '--line-color': '#fff', '--grid-color': '#fff3' } as any}
-              >
-                <div className="line horizontal top"></div>
-                <div className="line vertical right"></div>
-                <div className="line horizontal bottom"></div>
-                <div className="line vertical left"></div>
-                <div className="dot top left"></div>
-                <div className="dot top right"></div>
-                <div className="dot bottom right"></div>
-                <div className="dot bottom left"></div>
-                <div className="btn flex flex-col items-center justify-center p-6 min-w-[260px] gap-2">
-                  <ArrowRight className="btn-svg text-white w-6 h-6" />
-                  <span className="btn-text text-white font-bold uppercase tracking-widest text-sm">Deploy AI Agent</span>
-                </div>
-              </a>
-              
-              <button 
-                onClick={() => {
-                  const el = document.getElementById('core-architecture-section');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="relative inline-flex items-center gap-2 rounded-md bg-white/5 hover:bg-white/10 px-8 py-4 text-base font-bold text-white/90 shadow-[0_0_15px_rgba(204,255,0,0.1)] ring-1 ring-white/10 transition-all duration-300 hover:scale-105 uppercase tracking-widest text-xs"
-              >
-                EXPLORE ARCHITECTURE
-                <Terminal className="h-4 w-4 ml-2 text-[#ccff00]" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 1: Introduction */}
-      <section id="ai-agent-intro" className="py-24 border-t border-b border-white/10 bg-white/[0.01] relative z-10">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <span className="text-xs font-mono text-[#ccff00] uppercase tracking-[0.3em] font-bold block mb-4">[ COGNITIVE OVERVIEW ]</span>
-          <h2 className="text-3xl md:text-5xl font-serif font-light text-white mb-10 leading-tight">
-            Next-Gen Autonomous systems vs. <span className="font-serif italic text-neutral-400">Static Chatbots</span>
-          </h2>
-          <div className="space-y-6 text-zinc-350 text-base md:text-lg font-light leading-relaxed font-sans text-justify">
-            <p>
-              At AbuQitmirLabs (explore our <Link to="/" className="text-blue-400 hover:underline font-medium">home page</Link> or learn more <Link to="/about" className="text-blue-400 hover:underline font-medium">about us</Link>), we architect <strong className="text-white font-bold">AI agent development solutions</strong> that transform your operations—automating complex workflows, enhancing customer engagement, and unlocking new revenue streams. As a leading <strong className="text-white font-bold">AI agent development company</strong>, we design and deploy custom AI agents that think, learn, and act on your behalf across global markets.
-            </p>
-            <p>
-              Our AI agents are autonomous systems capable of task execution, contextual understanding, continuous learning, and seamless integration with your CRM, ERP, and communication stacks. You can connect our AI Agent systems directly with your <Link to="/custom-software" className="text-blue-400 hover:underline font-medium">Custom Software</Link> engines, power front-ends with <Link to="/web-development" className="text-blue-400 hover:underline font-medium">Web Development</Link>, launch companion apps with <Link to="/mobile-app-development" className="text-blue-400 hover:underline font-medium">Mobile App Development</Link>, or maximize local search dominance using <Link to="/local-seo-for-small-business" className="text-blue-400 hover:underline font-medium font-medium">Local SEO</Link>, <Link to="/local-seo-citation-building" className="text-blue-400 hover:underline font-medium">Citation Building</Link>, <Link to="/white-label-local-seo" className="text-blue-400 hover:underline font-medium">White Label Local SEO</Link>, and <Link to="/local-seo-audit" className="text-blue-400 hover:underline font-medium">SEO Audits</Link>. Discover our real-world execution in our <Link to="/case-studies" className="text-blue-400 hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-blue-400 hover:underline font-medium">Blog</Link>, or <Link to="/contact" className="text-blue-400 hover:underline font-medium">contact us</Link> to start building.
-            </p>
-          </div>
-
-          {/* Authoritative External AI Framework Links */}
-          <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-zinc-400">
-            <span className="text-zinc-500 uppercase tracking-widest font-bold">AI Ecosystems & Frameworks:</span>
-            <a href="https://www.langchain.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
-              LangChain <ExternalLink className="w-3 h-3" />
-            </a>
-            <span className="text-zinc-700">•</span>
-            <a href="https://www.llamaindex.ai" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
-              LlamaIndex <ExternalLink className="w-3 h-3" />
-            </a>
-            <span className="text-zinc-700">•</span>
-            <a href="https://openai.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
-              OpenAI Platform <ExternalLink className="w-3 h-3" />
-            </a>
-            <span className="text-zinc-700">•</span>
-            <a href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[#ccff00] transition-colors">
-              Anthropic Claude <ExternalLink className="w-3 h-3" />
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Cinematic Case Study Video Section (requested 16:9 aspect ratio widescreen layout) */}
-      <section id="ai-agent-case-study" className="py-24 bg-zinc-950/40 border-b border-white/10 relative z-10">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-xs font-mono text-[#ccff00] uppercase tracking-[0.3em] font-bold block mb-4">
-              [ CASE STUDY ]
-            </span>
-            <h2 className="text-3xl md:text-5xl font-serif font-light text-white tracking-tight leading-zero">
-              AI Agent Architecture: <span className="italic text-[#ccff00] font-serif font-normal">Technical Demonstration</span>
-            </h2>
-            <p className="mt-4 text-zinc-400 font-light font-sans max-w-2xl mx-auto text-sm md:text-base">
-              Watch a deep dive session of complex workflows in action, highlighting native execution speeds and self-learning loops.
-            </p>
-          </div>
-          
-          <div className="aspect-video w-full rounded-[2.5rem] overflow-hidden bg-black border border-white/10 shadow-[0_0_50px_rgba(204,255,0,0.05)] relative group">
-            <YouTubeFacade videoId="B31EXmt5LrQ" title="AbuQitmirLabs AI Agent Case Study" />
-          </div>
-        </div>
-      </section>
-
-      {/* AI Agent Development — Industry-Focused Solutions for Every Sector */}
-      <section className="py-32 lg:py-48 bg-black relative z-10 px-6 border-t border-b border-white/5" id="agent-industry-solutions">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-24 text-center max-w-4xl mx-auto">
-            <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ COGNITIVE_VERTICALS ]</span>
-            <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight mb-8">
-              AI Agent Development — <br />
-              <span className="font-serif italic text-blue-400">Industry-Focused Solutions for Every Sector</span>
-            </h2>
-            <p className="text-lg md:text-xl text-slate-300 font-light leading-relaxed font-sans">
-              At AbuQitmirLabs, we build AI agents that do more than answer questions—they automate workflows, enhance decision-making, and transform how businesses operate. Our approach begins with understanding your industry's unique challenges, data structures, and compliance requirements before we design a single agent. Whether you need a customer support assistant, a logistics optimizer, or an educational tutor, we build AI systems that fit your business, not the other way around.
-            </p>
-          </div>
-
-          {/* Grid of 7 Sectors */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Non-Profit Organizations",
-                icon: <Heart className="w-7 h-7 text-rose-400 group-hover:scale-110 transition-transform" />,
-                tagline: "AI Agent Development for Non-Profit Organizations",
-                description: "Non-profits need intelligent systems that maximize their impact without draining limited resources. Our AI agents for non-profit organizations automate donor engagement, track program outcomes, and streamline volunteer coordination—all while maintaining the highest standards of data privacy. From personalized donation appeals to real-time impact reporting, our AI agent development for non-profit solutions help you focus on your mission, not your admin."
-              },
-              {
-                title: "Logistics",
-                icon: <Truck className="w-7 h-7 text-amber-400 group-hover:scale-110 transition-transform" />,
-                tagline: "AI Agent Development for Logistics",
-                description: "In logistics, every second counts. Our AI agents for logistics optimize routes in real-time, predict delivery delays before they happen, and automate exception handling—reducing operational friction and improving customer satisfaction. Whether you manage local fleets or international supply chains, our AI agent development for logistics solutions keep your operations running smoothly."
-              },
-              {
-                title: "Real Estate",
-                icon: <Home className="w-7 h-7 text-sky-400 group-hover:scale-110 transition-transform" />,
-                tagline: "AI Agent Development for Real Estate",
-                description: "Real estate professionals need intelligent tools that qualify leads, schedule viewings, and provide market insights at a glance. Our AI agents for real estate automate lead scoring, personalize property recommendations, and handle initial client interactions—freeing your agents to focus on closing deals. Our AI agent development for real estate solutions turn your website into a 24/7 lead generation engine."
-              },
-              {
-                title: "Healthcare",
-                icon: <HeartPulse className="w-7 h-7 text-emerald-400 group-hover:scale-110 transition-transform" />,
-                tagline: "AI Agent Development for Healthcare",
-                description: "Healthcare demands the highest standards of security, accuracy, and compliance. Our AI agents for healthcare assist with patient triage, appointment scheduling, and clinical documentation—all while maintaining full HIPAA compliance. We build AI agent development for healthcare solutions that support clinical staff, reduce administrative burden, and improve patient outcomes."
-              },
-              {
-                title: "Small Law Firms",
-                icon: <Scale className="w-7 h-7 text-indigo-400 group-hover:scale-110 transition-transform" />,
-                tagline: "AI Agent Development for Small Law Firms",
-                description: "Small law firms need AI tools that help them practice law, not manage technology. Our AI agents for small law firms automate document review, legal research, and client intake—allowing you to focus on your cases. Our AI agent development for small law firms solutions are secure, confidential, and tailored to your practice area."
-              },
-              {
-                title: "Corporate Events",
-                icon: <Calendar className="w-7 h-7 text-purple-400 group-hover:scale-110 transition-transform" />,
-                tagline: "AI Agent Development for Corporate Events",
-                description: "Corporate events demand intelligent systems that manage registrations, schedule speakers, and engage attendees. Our AI agents for corporate events automate ticketing, provide real-time agenda updates, and answer attendee questions instantly. Our AI agent development for corporate events solutions create seamless experiences for organizers and participants alike."
-              },
-              {
-                title: "Educational Institutions",
-                icon: <GraduationCap className="w-7 h-7 text-blue-400 group-hover:scale-110 transition-transform" />,
-                tagline: "AI Agent Development for Educational Institutions",
-                description: "Educational institutions need AI tools that support both teachers and students. Our AI agents for educational institutions provide personalized tutoring, automate administrative tasks, and deliver real-time feedback to learners. From K-12 to higher education, our AI agent development for educational institutions solutions enhance learning outcomes and reduce teacher workload."
-              }
-            ].map((sector, idx) => (
+        {/* Hero Section */}
+        <section id="ai-agent-hero" className="relative pt-20 md:pt-28 pb-20 px-6">
+          <div className="mx-auto max-w-6xl">
+            <div className="text-center relative z-10 max-w-4xl mx-auto">
               <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="group relative overflow-hidden bg-zinc-900/60 backdrop-blur-xl border border-white/10 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(37,99,235,0.25)] p-8 rounded-[2rem] transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-[#ccff00] font-mono tracking-widest uppercase mb-8"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
-                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] pointer-events-none" />
-                <div>
-                  <div className="mb-6 w-14 h-14 bg-blue-500/10 border border-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
-                    {sector.icon}
-                  </div>
-                  <h3 className="text-xl font-bold uppercase tracking-tight text-white mb-2 group-hover:text-blue-300 transition-colors">{sector.title}</h3>
-                  <span className="text-xs font-mono text-blue-400 uppercase tracking-widest block mb-4">
-                    {sector.tagline}
-                  </span>
-                  <p className="text-sm leading-relaxed text-slate-300 font-light font-sans">{sector.description}</p>
+                <Sparkles className="w-3.5 h-3.5 text-[#ccff00]" /> 
+                Autonomous Systems & Cognitive Engineering
+              </motion.div>
+
+              {/* Exact H1 required */}
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                className="text-4xl sm:text-6xl md:text-7xl font-serif font-light tracking-tight text-white mb-8 leading-[1.1]"
+              >
+                AI Agent Development Company <br className="hidden sm:inline" />
+                <span className="italic font-serif text-[#ccff00] font-normal">for Smarter Automation</span>
+              </motion.h1>
+              
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15, duration: 0.6 }}
+                className="mx-auto mt-6 max-w-3xl text-base md:text-xl leading-relaxed text-slate-300 font-light font-sans"
+              >
+                AbuQitmirLabs engineers custom autonomous AI agents, multi-agent swarms, and intelligent workflows that execute real business operations. We build goal-oriented software that connects directly to your databases, APIs, and business systems to eliminate operational friction.
+              </motion.p>
+
+              {/* Core Deliverables Quick-Bar */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.25 }}
+                className="mx-auto mt-10 max-w-3xl border-y border-white/10 py-6 px-4 bg-white/[0.01]"
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-left">
+                  {[
+                    "Custom RAG & Memory Architectures",
+                    "Multi-Step Tool & API Orchestration",
+                    "Direct CRM & Database Connectors",
+                    "Deterministic Security & Guardrails",
+                    "Private VPC & Cloud Deployments",
+                    "100% Client Code & Data Ownership"
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-center gap-2.5">
+                      <Check className="w-4 h-4 text-[#ccff00] shrink-0" />
+                      <span className="text-xs font-sans text-slate-300 font-light">{item}</span>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Premium AI Agent Development Services Narrative Section */}
-      <section id="autonomous-agent-services" className="py-32 px-6 relative overflow-hidden bg-black border-t border-white/5">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/[0.02] rounded-full blur-[150px] pointer-events-none" />
-        
-        <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="mb-20 max-w-4xl">
-            <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="space-y-6"
-            >
-              <span className="text-[10px] bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full uppercase font-mono tracking-[0.25em] font-bold">
-                Premium Narrative
+              {/* Hero Call-to-Actions */}
+              <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-5">
+                <Link
+                  to="/contact"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-white hover:bg-slate-200 text-black font-bold uppercase rounded-xl tracking-wider text-xs transition duration-200 shadow-[0_0_25px_rgba(255,255,255,0.15)]"
+                >
+                  <span>Discuss Your AI Agent</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                
+                <a 
+                  href="#what-is-ai-agent-development"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-bold uppercase rounded-xl tracking-wider text-xs border border-white/10 transition duration-200"
+                >
+                  <span>Explore Capabilities</span>
+                  <ArrowUpRight className="w-4 h-4 text-[#ccff00]" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Global Markets Marquee */}
+        <CountryMarquee />
+
+        {/* Section 1: What Is AI Agent Development? */}
+        <section 
+          id="what-is-ai-agent-development" 
+          aria-labelledby="heading-what-is-ai-agent-development"
+          className="py-28 md:py-36 bg-black px-6 border-t border-white/10"
+        >
+          <div className="max-w-6xl mx-auto">
+            <div className="max-w-3xl mb-16">
+              <span className="text-xs font-mono text-[#ccff00] uppercase tracking-[0.3em] font-bold block mb-4">
+                [ CORE DEFINITION & CONCEPTS ]
               </span>
-              <h2 className="text-4xl md:text-6xl font-serif italic text-white tracking-tight leading-tight font-serif">
-                AI Agent Development Services
+              <h2 
+                id="heading-what-is-ai-agent-development"
+                className="text-3xl md:text-5xl font-serif font-light text-white tracking-tight leading-tight mb-8"
+              >
+                What Is AI Agent Development?
               </h2>
-              <p className="text-xl md:text-2xl font-sans font-light text-neutral-400 tracking-wide uppercase max-w-2xl">
-                Autonomous AI Agents Built for Real Business Workflows
-              </p>
-              
-              <div className="h-[1px] w-20 bg-[#ccff00] my-8" />
-              
-              <div className="space-y-6 text-neutral-300 font-light leading-relaxed font-sans text-lg max-w-3xl">
-                <p>
-                  AI agents have moved well beyond chatbots that answer FAQs. Modern AI agents can take actions, make decisions, retrieve information from your business systems, and complete multi-step tasks with minimal human oversight. As an <strong className="text-white font-medium">AI agent development company</strong>, AbuQitmirLabs designs and builds custom agents that plug directly into your operations — not generic wrappers around a public API.
+
+              {/* Answer-First Box for AEO / GEO / Google Featured Snippets */}
+              <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-[#ccff00]/40 shadow-[0_0_30px_rgba(204,255,0,0.04)] mb-8">
+                <p className="text-lg md:text-xl text-white font-sans font-normal leading-relaxed">
+                  <strong>AI agent development</strong> is the engineering process of building software systems that understand goals, make decisions, execute tools, and complete multi-step business workflows autonomously with human oversight where necessary.
                 </p>
               </div>
-            </motion.div>
-          </div>
 
-          {/* What Our AI Agents Actually Do Grid */}
-          <div className="mb-32">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mb-12"
-            >
-              <h3 className="text-xs font-mono text-neutral-500 uppercase tracking-[0.3em] font-bold mb-3">[ FUNCTIONAL_BOUNDARIES ]</h3>
-              <h4 className="text-3xl font-bold text-white uppercase tracking-tight">What Our AI Agents Actually Do</h4>
-            </motion.div>
+              <p className="text-slate-300 font-light text-base md:text-lg leading-relaxed font-sans mb-6">
+                An AI agent breaks a high-level goal into logical steps, uses connected tools (such as software APIs, SQL queries, and webhooks), and executes a complete workflow while maintaining operational context. Unlike a traditional chatbot that simply matches pre-written conversational scripts or generates basic textual replies, an autonomous AI agent acts on real-world systems to perform work.
+              </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <p className="text-slate-400 font-light text-base leading-relaxed font-sans mb-6">
+                AI agents integrate large language models (LLMs) with custom tool definitions, memory layers, and deterministic security guardrails. When connected with <Link to="/custom-software" className="text-[#ccff00] hover:underline font-medium">custom software development</Link> or scalable <Link to="/web-development" className="text-[#ccff00] hover:underline font-medium">web development services</Link>, agents transform manual operational bottlenecks into continuous, automated pipelines.
+              </p>
+            </div>
+
+            {/* 4 Pillars Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
-                  title: "Task Automation Agents",
-                  desc: "Agents that handle repetitive, multi-step workflows — processing orders, updating records, generating reports, or managing routine customer requests — without constant human intervention.",
-                  icon: <Cpu className="text-blue-400" size={24} />
+                  title: "1. Goal-Oriented Reasoning",
+                  desc: "Decomposes complex objectives into structured execution plans, evaluating intermediate outcomes to achieve the final goal.",
+                  icon: <Brain className="w-6 h-6 text-[#ccff00]" />
                 },
                 {
-                  title: "Customer-Facing Support Agents",
-                  desc: "Intelligent agents trained on your product, policies, and documentation that can resolve customer questions accurately, escalate appropriately, and reduce support ticket volume.",
-                  icon: <MessageSquare className="text-[#ccff00]" size={24} />
+                  title: "2. Tool & API Execution",
+                  desc: "Calls REST APIs, runs database queries, reads files, and updates CRMs autonomously without manual intervention.",
+                  icon: <Zap className="w-6 h-6 text-blue-400" />
                 },
                 {
-                  title: "Internal Knowledge Agents (RAG-Based)",
-                  desc: "Agents built with Retrieval-Augmented Generation (RAG) that search your internal documents, wikis, and databases to give employees accurate, sourced answers instantly — instead of digging through folders and outdated documentation.",
-                  icon: <Database className="text-violet-400" size={24} />
+                  title: "3. Context & Persistent Memory",
+                  desc: "Maintains working state across multi-turn interactions and retrieves factual records using vector knowledge stores (RAG).",
+                  icon: <Database className="w-6 h-6 text-purple-400" />
                 },
                 {
-                  title: "Workflow Orchestration Agents",
-                  desc: "Agents that coordinate across multiple tools and systems — CRM, email, calendars, project management platforms — to complete tasks that would otherwise require manual work across several apps.",
-                  icon: <Layers className="text-indigo-400" size={24} />
-                },
-                {
-                  title: "Industry-Specific Agents",
-                  desc: "Custom-built agents tailored to your sector's specific terminology, compliance needs, and operational patterns — whether that's fintech, healthcare, retail, or logistics.",
-                  icon: <Brain className="text-emerald-400" size={24} />
+                  title: "4. Human-in-the-Loop Gates",
+                  desc: "Enforces deterministic boundaries, role permissions, and requires explicit human sign-off for financial or destructive actions.",
+                  icon: <ShieldCheck className="w-6 h-6 text-emerald-400" />
                 }
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-[#0A0A0A] border border-white/5 hover:border-blue-500/10 rounded-3xl p-8 transition-all hover:bg-white/[0.01] flex flex-col justify-between group"
-                >
-                  <div className="space-y-6">
-                    <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      {item.icon}
+              ].map((pillar, idx) => (
+                <div key={idx} className="bg-white/[0.02] border border-white/10 rounded-2xl p-6 flex flex-col justify-between hover:border-white/20 transition-colors">
+                  <div>
+                    <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6">
+                      {pillar.icon}
                     </div>
-                    <h5 className="text-xl font-bold text-white uppercase tracking-tight group-hover:text-blue-400 transition-colors">
-                      {item.title}
-                    </h5>
-                    <p className="text-sm text-neutral-400 font-light leading-relaxed font-sans">
-                      {item.desc}
-                    </p>
+                    <h3 className="text-base font-bold text-white uppercase tracking-tight mb-3 font-sans">{pillar.title}</h3>
+                    <p className="text-xs md:text-sm text-slate-400 font-light leading-relaxed font-sans">{pillar.desc}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
+        </section>
 
-          {/* Development Process */}
-          <div className="mb-32">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mb-12"
-            >
-              <h3 className="text-xs font-mono text-neutral-500 uppercase tracking-[0.3em] font-bold mb-3">[ TECHNICAL_METHODOLOGY ]</h3>
-              <h4 className="text-3xl font-bold text-white uppercase tracking-tight">Our AI Agent Development Process</h4>
-            </motion.div>
+        {/* Section 2: AI Agent Development Services (10 Services) */}
+        <section 
+          id="ai-agent-development-services" 
+          aria-labelledby="heading-agent-services"
+          className="py-28 md:py-36 bg-[#050505] px-6 border-t border-white/10"
+        >
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center max-w-3xl mx-auto mb-20">
+              <span className="text-xs font-mono text-blue-400 uppercase tracking-[0.3em] font-bold block mb-4">
+                [ FULL-SPECTRUM CAPABILITIES ]
+              </span>
+              <h2 
+                id="heading-agent-services"
+                className="text-3xl md:text-5xl font-serif font-light text-white tracking-tight leading-tight mb-6"
+              >
+                AI Agent Development Services
+              </h2>
+              <p className="text-slate-400 font-light text-base md:text-lg leading-relaxed font-sans">
+                We engineer intelligent software agents tailored to your business operations. Every agent is developed as production-grade custom software with clean code and complete client ownership.
+              </p>
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  step: "01",
-                  title: "Use Case Discovery",
-                  desc: "We identify where an agent creates real operational value, rather than deploying AI for its own sake."
-                },
-                {
-                  step: "02",
-                  title: "Data & Systems Mapping",
-                  desc: "We determine what internal data, documents, and systems the agent needs access to, and how it should securely connect to them."
-                },
-                {
-                  step: "03",
-                  title: "Agent Architecture & Prompt Engineering",
-                  desc: "We design the agent's reasoning process, tool access, and guardrails to ensure reliable, predictable behavior."
-                },
-                {
-                  step: "04",
-                  title: "Integration",
-                  desc: "The agent is connected to your actual business systems — CRMs, databases, internal APIs — so it can take real action, not just generate text."
-                },
-                {
-                  step: "05",
-                  title: "Testing & Guardrails",
-                  desc: "Rigorous testing ensures the agent handles edge cases safely and escalates to humans when it should."
-                },
-                {
-                  step: "06",
-                  title: "Deployment & Monitoring",
-                  desc: "Ongoing monitoring and refinement based on real usage patterns and feedback."
-                }
-              ].map((step, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="bg-zinc-950/40 border border-white/5 p-8 rounded-3xl relative overflow-hidden group hover:border-blue-500/20 transition-all"
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {agentServices.map((service, index) => (
+                <div 
+                  key={index}
+                  className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 hover:border-[#ccff00]/40 transition-colors duration-300 flex flex-col justify-between group"
                 >
-                  <span className="absolute right-6 top-6 text-5xl font-mono font-black text-white/5 group-hover:text-blue-500/10 transition-colors">
-                    {step.step}
-                  </span>
-                  <div className="space-y-4">
-                    <h5 className="text-lg font-bold text-white uppercase tracking-tight">
+                  <div>
+                    <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                      {service.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-white uppercase tracking-tight mb-3 font-sans group-hover:text-[#ccff00] transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm text-slate-300 font-light leading-relaxed font-sans mb-6">
+                      {service.desc}
+                    </p>
+                  </div>
+                  <div className="border-t border-white/10 pt-4">
+                    <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider block mb-1">Business Outcome //</span>
+                    <p className="text-xs text-[#ccff00] font-sans font-light leading-relaxed">{service.outcome}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3: What Can AI Agents Automate? */}
+        <section 
+          id="what-ai-agents-automate" 
+          aria-labelledby="heading-automation-workflows"
+          className="py-28 md:py-36 bg-black px-6 border-t border-white/10"
+        >
+          <div className="max-w-6xl mx-auto">
+            <div className="max-w-3xl mb-16">
+              <span className="text-xs font-mono text-[#ccff00] uppercase tracking-[0.3em] font-bold block mb-4">
+                [ PRACTICAL BUSINESS APPLICATIONS ]
+              </span>
+              <h2 
+                id="heading-automation-workflows"
+                className="text-3xl md:text-5xl font-serif font-light text-white tracking-tight leading-tight mb-6"
+              >
+                What Can AI Agents Automate?
+              </h2>
+              <p className="text-slate-400 font-light text-base md:text-lg leading-relaxed font-sans">
+                Modern AI agents deliver tangible commercial value by automating multi-step operational tasks that typically consume substantial employee time. Here are real-world workflows we engineer:
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {automationWorkflows.map((workflow, idx) => (
+                <div 
+                  key={idx}
+                  className="bg-white/[0.015] border border-white/10 rounded-2xl p-8 flex flex-col justify-between hover:border-white/20 transition-colors"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-xs font-mono text-[#ccff00] font-bold">WORKFLOW // 0{idx + 1}</span>
+                    </div>
+                    <h3 className="text-lg font-bold text-white uppercase tracking-tight mb-3 font-sans">
+                      {workflow.title}
+                    </h3>
+                    <p className="text-sm text-slate-300 font-light leading-relaxed font-sans mb-6">
+                      {workflow.desc}
+                    </p>
+                  </div>
+                  <div className="bg-white/[0.02] border border-white/5 rounded-xl p-4">
+                    <span className="text-[10px] font-mono text-blue-400 uppercase tracking-wider block mb-1">Execution Trace //</span>
+                    <p className="text-xs text-slate-300 font-mono font-light leading-relaxed">{workflow.example}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section: AI Agents vs Traditional Chatbots (Comparison Table) */}
+        <section 
+          id="ai-agents-vs-chatbots" 
+          aria-labelledby="heading-comparison"
+          className="py-28 md:py-36 bg-[#040404] px-6 border-t border-white/10"
+        >
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <span className="text-xs font-mono text-blue-400 uppercase tracking-[0.3em] font-bold block mb-4">
+                [ ARCHITECTURAL COMPARISON ]
+              </span>
+              <h2 
+                id="heading-comparison"
+                className="text-3xl md:text-5xl font-serif font-light text-white tracking-tight leading-tight mb-6"
+              >
+                AI Agents vs Traditional Chatbots
+              </h2>
+              <p className="text-slate-400 font-light text-base md:text-lg leading-relaxed font-sans">
+                Understanding the architectural distinction between passive conversational chatbots and goal-oriented autonomous software agents.
+              </p>
+            </div>
+
+            {/* Responsive Comparison Table */}
+            <div className="border border-white/10 rounded-3xl overflow-hidden bg-white/[0.015]">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse min-w-[640px]">
+                  <thead>
+                    <tr className="border-b border-white/10 bg-white/[0.03]">
+                      <th className="py-5 px-6 text-xs font-mono uppercase tracking-wider text-slate-400 font-bold w-1/4">
+                        Capability
+                      </th>
+                      <th className="py-5 px-6 text-xs font-mono uppercase tracking-wider text-rose-400 font-bold w-3/8">
+                        Traditional Chatbot
+                      </th>
+                      <th className="py-5 px-6 text-xs font-mono uppercase tracking-wider text-[#ccff00] font-bold w-3/8">
+                        Autonomous AI Agent
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-white/5 text-sm font-sans">
+                    {comparisonMatrix.map((row, index) => (
+                      <tr key={index} className="hover:bg-white/[0.02] transition-colors">
+                        <td className="py-5 px-6 font-bold text-white font-sans text-sm">
+                          {row.feature}
+                        </td>
+                        <td className="py-5 px-6 text-slate-400 font-light leading-relaxed">
+                          <div className="flex items-start gap-2">
+                            <X className="w-4 h-4 text-rose-500/80 shrink-0 mt-0.5" />
+                            <span>{row.chatbot}</span>
+                          </div>
+                        </td>
+                        <td className="py-5 px-6 text-slate-200 font-light leading-relaxed bg-[#ccff00]/[0.01]">
+                          <div className="flex items-start gap-2">
+                            <Check className="w-4 h-4 text-[#ccff00] shrink-0 mt-0.5" />
+                            <span>{row.agent}</span>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="mt-8 p-6 rounded-2xl bg-white/[0.02] border border-white/10 text-center max-w-3xl mx-auto">
+              <p className="text-xs md:text-sm text-slate-400 font-light font-sans leading-relaxed">
+                <strong className="text-white">Engineering Note:</strong> Autonomous AI agents are not magic or infallible; they are disciplined software architectures. By implementing deterministic tool schemas, parameter validation, and human approval checkpoints, we ensure agents operate safely and reliably in production environments.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Technical Demonstration / Video Section */}
+        <section className="py-24 bg-zinc-950 px-6 border-t border-white/10" id="case-study-demo">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <span className="text-xs font-mono text-[#ccff00] uppercase tracking-[0.3em] font-bold block mb-3">
+                [ PRODUCTION ARCHITECTURE DEMO ]
+              </span>
+              <h2 className="text-3xl md:text-4xl font-serif font-light text-white tracking-tight leading-tight">
+                AI Agent Architecture in Action
+              </h2>
+              <p className="mt-3 text-slate-400 font-light text-sm max-w-xl mx-auto font-sans">
+                A video walkthrough showcasing multi-step task decomposition, external tool invocation, and deterministic guardrails.
+              </p>
+            </div>
+            
+            <div className="aspect-video w-full rounded-2xl overflow-hidden bg-black border border-white/10 shadow-[0_0_40px_rgba(204,255,0,0.03)]">
+              <YouTubeFacade videoId="B31EXmt5LrQ" title="AbuQitmirLabs AI Agent Engineering Walkthrough" />
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4: How We Build AI Agents (8-Step Engineering Lifecycle) */}
+        <section 
+          id="how-we-build-ai-agents" 
+          aria-labelledby="heading-agent-process"
+          className="py-28 md:py-36 bg-black px-6 border-t border-white/10"
+        >
+          <div className="max-w-6xl mx-auto">
+            <div className="max-w-3xl mb-16">
+              <span className="text-xs font-mono text-[#ccff00] uppercase tracking-[0.3em] font-bold block mb-4">
+                [ 8-STEP LIFECYCLE ]
+              </span>
+              <h2 
+                id="heading-agent-process"
+                className="text-3xl md:text-5xl font-serif font-light text-white tracking-tight leading-tight mb-6"
+              >
+                How We Build AI Agents
+              </h2>
+              <p className="text-slate-400 font-light text-base md:text-lg leading-relaxed font-sans">
+                We follow a rigorous, eight-step software engineering process to ensure every AI agent delivers measurable ROI, adheres to enterprise security standards, and integrates cleanly with your existing software stack.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {processSteps.map((step, idx) => (
+                <div 
+                  key={idx}
+                  className="bg-white/[0.02] border border-white/10 rounded-2xl p-6 relative flex flex-col justify-between hover:border-[#ccff00]/40 transition-colors"
+                >
+                  <div>
+                    <span className="text-3xl font-mono font-bold text-white/10 block mb-4">
+                      {step.step}
+                    </span>
+                    <h3 className="text-lg font-bold text-white uppercase tracking-tight mb-3 font-sans">
                       {step.title}
-                    </h5>
-                    <p className="text-sm text-neutral-400 font-light leading-relaxed font-sans">
+                    </h3>
+                    <p className="text-xs md:text-sm text-slate-400 font-light leading-relaxed font-sans">
                       {step.desc}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
+        </section>
 
-          {/* Infrastructure & Privacy Bento Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-32">
-            {/* Infrastructure Card */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="bg-[#080808] border border-white/5 rounded-3xl p-8 md:p-12 flex flex-col justify-between hover:border-blue-500/15 transition-all relative overflow-hidden group"
-            >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/[0.01] rounded-full blur-3xl pointer-events-none" />
-              <div className="space-y-6">
-                <span className="text-[10px] font-mono text-blue-400 tracking-wider uppercase font-bold">[ SYSTEM_INFRASTRUCTURE ]</span>
-                <h4 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight">
-                  Built on Modern AI Infrastructure
-                </h4>
-                <p className="text-neutral-400 font-light leading-relaxed font-sans">
-                  We build agents using leading large language model providers and modern agentic frameworks, combined with retrieval systems, vector databases, and secure API integrations — chosen based on your specific accuracy, cost, and data privacy requirements, not a fixed template.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Privacy Card */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="bg-[#080808] border border-[#ccff00]/5 rounded-3xl p-8 md:p-12 flex flex-col justify-between hover:border-[#ccff00]/15 transition-all relative overflow-hidden group"
-            >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#ccff00]/[0.01] rounded-full blur-3xl pointer-events-none" />
-              <div className="space-y-6">
-                <span className="text-[10px] font-mono text-[#ccff00] tracking-wider uppercase font-bold">[ SECURITY_BOUNDARIES ]</span>
-                <h4 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight">
-                  Security & Data Privacy Come First
-                </h4>
-                <p className="text-neutral-400 font-light leading-relaxed font-sans">
-                  AI agents that touch your business data need to be built with the same security discipline as any enterprise software. We design agent architectures with proper access controls, data handling policies, and human-in-the-loop checkpoints for sensitive actions — so automation never comes at the cost of control.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Value Pitch & Who This Is For Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-32">
-            {/* Why Choose Us */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-[#0A0A0A] border border-white/5 rounded-3xl p-8 md:p-12 flex flex-col justify-between hover:border-blue-500/10 transition-colors"
-            >
-              <div className="space-y-6">
-                <span className="text-[10px] font-mono text-blue-400 tracking-wider uppercase font-bold">[ BESPOKE_DIFFERENTIATOR ]</span>
-                <h4 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight">
-                  Why Businesses Choose Our AI Agent Development Services
-                </h4>
-                <p className="text-neutral-400 font-light leading-relaxed font-sans">
-                  Among agencies offering <strong className="text-white font-medium">AI agent development services</strong>, the difference usually comes down to depth: whether an agent is stitched together from a template in an afternoon, or actually designed around your workflows, your data, and your risk tolerance. We build the latter — agents that survive contact with real usage rather than getting quietly abandoned after week one.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Who This Is For */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-[#0A0A0A] border border-white/5 rounded-3xl p-8 md:p-12 flex flex-col justify-between hover:border-blue-500/10 transition-colors"
-            >
-              <div className="space-y-6">
-                <span className="text-[10px] font-mono text-blue-400 tracking-wider uppercase font-bold">[ TARGET_SEGMENTS ]</span>
-                <h4 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight">
-                  Who This Is For
-                </h4>
-                <ul className="space-y-4 not-italic font-sans text-neutral-400 font-light list-none pl-0">
-                  {[
-                    "Businesses drowning in repetitive manual workflows that follow predictable patterns",
-                    "Support teams looking to reduce ticket volume without sacrificing accuracy",
-                    "Enterprises with large internal knowledge bases that employees struggle to search effectively",
-                    "Companies looking to integrate AI meaningfully into existing software rather than bolting on a chatbot widget"
-                  ].map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* From Idea to Deployed Agent Narrative CTA */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="rounded-3xl border border-white/10 bg-gradient-to-br from-neutral-900 to-[#0A0A0A] p-8 md:p-16 relative overflow-hidden shadow-2xl"
-          >
-            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-blue-600/[0.03] rounded-full blur-3xl pointer-events-none" />
-            
-            <div className="max-w-3xl space-y-8">
-              <span className="text-[10px] bg-[#ccff00]/10 text-[#ccff00] px-3 py-1 rounded-full uppercase font-mono tracking-[0.2em] font-bold">
-                Operational Alignment
+        {/* Section: AI Agent Architecture Deep Dive */}
+        <section id="ai-agent-architecture" className="py-28 md:py-36 bg-[#040404] relative z-10 px-6 border-t border-white/10">
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-20 text-center">
+              <span className="text-xs font-mono text-blue-400 mb-4 uppercase tracking-[0.3em] font-bold block">
+                [ MODULAR SYSTEM ARCHITECTURE ]
               </span>
-              <h4 className="text-3xl md:text-5xl font-serif italic text-white tracking-tight leading-tight">
-                From Idea to Deployed Agent
-              </h4>
-              <p className="text-neutral-400 text-lg leading-relaxed font-light font-sans">
-                Building a genuinely useful AI agent takes more than plugging into an API — it requires understanding your workflows deeply enough to know where automation actually helps versus where it introduces risk. That's the difference between an agent that gets used and one that gets abandoned after week one.
-              </p>
-              <p className="text-neutral-400 text-lg leading-relaxed font-light font-sans">
-                If AI agents are part of a broader software modernization effort, our <Link to="/custom-software" className="text-blue-400 hover:underline font-normal">custom software development</Link> team can help you map out where agents fit alongside the rest of your systems. And if your agent needs a customer-facing interface, our <Link to="/web-development" className="text-blue-400 hover:underline font-normal">web development</Link> team can build the front-end experience around it.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-6 pt-4">
-                <Link
-                  to="/custom-software"
-                  className="px-8 py-4 rounded-xl text-xs font-bold uppercase tracking-widest bg-white text-black hover:bg-neutral-200 transition-all text-center inline-flex items-center justify-center gap-2 group"
-                >
-                  Consult Custom Software
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link
-                  to="/web-development"
-                  className="px-8 py-4 rounded-xl text-xs font-bold uppercase tracking-widest border border-white/10 text-white hover:bg-white/5 transition-all text-center inline-flex items-center justify-center gap-2 group"
-                >
-                  Explore Web Development
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-
-        </div>
-      </section>
-
-      {/* AI Agent Development Across Global Markets */}
-      <section className="py-32 lg:py-48 bg-white/[0.01] border-b border-white/10 relative z-10 px-6" id="agent-global-markets">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ GLOBAL_COGNITIVE_REACH ]</span>
-              <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight mb-8">
-                AI Agent Development <br />
-                <span className="font-serif italic text-blue-400">Across Global Markets</span>
+              <h2 className="text-3xl md:text-5xl font-serif font-light text-white tracking-tight uppercase leading-tight mb-6">
+                AI Agent <span className="font-serif italic text-[#ccff00]">Architecture</span>
               </h2>
-              <p className="text-base text-slate-300 font-light leading-relaxed mb-10 font-sans">
-                While our engineering headquarters is in Karachi, Pakistan, our AI solutions are built for a global stage. We understand the unique demands of different markets and adapt our approach accordingly:
+              <p className="text-base text-slate-400 max-w-2xl mx-auto font-light leading-relaxed font-sans">
+                Every AI agent we deploy is composed of modular layers designed for high reliability, low latency, and enterprise data security.
               </p>
+            </div>
 
-              <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {coreComponents.map((comp) => (
+                <div 
+                  key={comp.id}
+                  onClick={() => setActiveComponentId(comp.id)}
+                  className={`border rounded-3xl p-8 transition-all duration-300 cursor-pointer flex flex-col justify-between ${
+                    activeComponentId === comp.id 
+                      ? 'bg-white/[0.04] border-[#ccff00]/50 shadow-[0_0_30px_rgba(204,255,0,0.05)]' 
+                      : 'bg-white/[0.02] border-white/10 hover:border-white/20'
+                  }`}
+                >
+                  <div>
+                    <div className="mb-6 w-14 h-14 bg-black border border-white/10 rounded-xl flex items-center justify-center">
+                      {comp.icon}
+                    </div>
+                    
+                    <span className="text-[10px] font-mono text-[#ccff00] mb-2 uppercase tracking-widest font-bold block">
+                      {comp.subtitle}
+                    </span>
+                    <h3 className="text-lg font-bold uppercase tracking-tight text-white mb-3 font-sans">
+                      {comp.title}
+                    </h3>
+                    <p className="text-slate-400 text-xs md:text-sm font-light font-sans leading-relaxed mb-6">
+                      {comp.desc}
+                    </p>
+
+                    <div className="border-t border-white/10 pt-4 mb-4">
+                      <span className="text-[10px] font-mono text-zinc-500 block uppercase tracking-wider mb-2 font-bold">Capabilities //</span>
+                      <ul className="space-y-2">
+                        {comp.included.map((inc, i) => (
+                          <li key={i} className="text-xs text-slate-300 font-sans font-light flex items-start gap-2">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#ccff00] shrink-0 mt-0.5" />
+                            <span>{inc}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="border-t border-white/5 pt-4 mt-4">
+                    <span className="text-[10px] font-mono text-zinc-500 block uppercase tracking-wider mb-1 font-bold">Technical Requirements //</span>
+                    <p className="text-[11px] font-mono text-slate-400 leading-relaxed">
+                      {comp.required}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 5: AI Agents for Different Business Sizes */}
+        <section 
+          id="ai-agents-for-business-sizes" 
+          aria-labelledby="heading-business-sizes"
+          className="py-28 md:py-36 bg-black px-6 border-t border-white/10"
+        >
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center max-w-3xl mx-auto mb-20">
+              <span className="text-xs font-mono text-[#ccff00] uppercase tracking-[0.3em] font-bold block mb-4">
+                [ BUSINESS FIT & SCALING ]
+              </span>
+              <h2 
+                id="heading-business-sizes"
+                className="text-3xl md:text-5xl font-serif font-light text-white tracking-tight leading-tight mb-6"
+              >
+                AI Agents for Different Business Sizes
+              </h2>
+              <p className="text-slate-400 font-light text-base md:text-lg leading-relaxed font-sans">
+                From high-growth startups to distributed enterprises, our agent architectures match the specific operational complexity of your organization.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {businessTiers.map((tier, idx) => (
+                <div 
+                  key={idx}
+                  className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 md:p-10 flex flex-col justify-between hover:border-white/20 transition-colors"
+                >
+                  <div>
+                    <div className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#ccff00] uppercase tracking-widest mb-4">
+                      {tier.segment}
+                    </div>
+                    <h3 className="text-2xl font-serif font-light text-white mb-4">
+                      {tier.headline}
+                    </h3>
+                    <p className="text-slate-300 font-light text-sm leading-relaxed font-sans mb-6">
+                      {tier.desc}
+                    </p>
+                    <div className="space-y-2.5 border-t border-white/10 pt-4">
+                      {tier.points.map((pt, pi) => (
+                        <div key={pi} className="flex items-center gap-2.5">
+                          <Check className="w-3.5 h-3.5 text-[#ccff00] shrink-0" />
+                          <span className="text-xs text-slate-400 font-sans">{pt}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section: Security & Reliability in AI Agent Engineering */}
+        <section 
+          id="security-and-reliability" 
+          aria-labelledby="heading-security"
+          className="py-28 md:py-36 bg-[#050505] px-6 border-t border-white/10"
+        >
+          <div className="max-w-6xl mx-auto">
+            <div className="max-w-3xl mb-16">
+              <span className="text-xs font-mono text-emerald-400 uppercase tracking-[0.3em] font-bold block mb-4">
+                [ DEFENSE-IN-DEPTH GOVERNANCE ]
+              </span>
+              <h2 
+                id="heading-security"
+                className="text-3xl md:text-5xl font-serif font-light text-white tracking-tight leading-tight mb-6"
+              >
+                Security & Reliability in AI Agent Engineering
+              </h2>
+              <p className="text-slate-400 font-light text-base md:text-lg leading-relaxed font-sans">
+                Deploying autonomous software into production requires strict security engineering. We implement pragmatic, zero-trust controls across every layer of the stack:
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Least-Privilege Tool Access",
+                  desc: "Agents are provisioned with granular, scoped permissions. An agent reading support tickets cannot modify underlying customer billing records.",
+                  icon: <Lock className="w-5 h-5 text-emerald-400" />
+                },
+                {
+                  title: "Prompt Injection Mitigation",
+                  desc: "Rigorous input sanitization, delimiter isolation, and multi-stage evaluation loops protect against malicious prompt overrides.",
+                  icon: <ShieldAlert className="w-5 h-5 text-amber-400" />
+                },
+                {
+                  title: "Data Isolation & Privacy",
+                  desc: "Zero-data retention agreements with model providers ensure your proprietary company records are never used to train public LLMs.",
+                  icon: <Database className="w-5 h-5 text-blue-400" />
+                },
+                {
+                  title: "Human-in-the-Loop Validation",
+                  desc: "Configurable approval checkpoints require human sign-off before the agent executes destructive actions or financial transactions.",
+                  icon: <Users className="w-5 h-5 text-purple-400" />
+                },
+                {
+                  title: "Comprehensive Audit Logging",
+                  desc: "Full execution traces, prompt snapshots, API payloads, and reasoning chains are immutably logged for compliance and debugging.",
+                  icon: <FileText className="w-5 h-5 text-cyan-400" />
+                },
+                {
+                  title: "Rate Limiting & Cost Ceilings",
+                  desc: "Deterministic rate limiters, token budget caps, and recursion timeouts prevent infinite loops and runaway compute expenses.",
+                  icon: <Sliders className="w-5 h-5 text-rose-400" />
+                }
+              ].map((sec, idx) => (
+                <div key={idx} className="p-6 rounded-2xl bg-white/[0.02] border border-white/10 flex flex-col justify-between">
+                  <div>
+                    <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mb-4">
+                      {sec.icon}
+                    </div>
+                    <h3 className="text-base font-bold text-white uppercase tracking-tight mb-2 font-sans">{sec.title}</h3>
+                    <p className="text-xs text-slate-400 font-light leading-relaxed font-sans">{sec.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 6: Why Build AI Agents with AbuQitmirLabs? */}
+        <section 
+          id="why-build-with-abuqitmirlabs" 
+          aria-labelledby="heading-why-choose"
+          className="py-28 md:py-36 bg-black px-6 border-t border-white/10"
+        >
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+              <div>
+                <span className="text-xs font-mono text-[#ccff00] uppercase tracking-[0.3em] font-bold block mb-4">
+                  [ ENGINEERING EXPERTISE ]
+                </span>
+                <h2 
+                  id="heading-why-choose"
+                  className="text-3xl md:text-5xl font-serif font-light text-white tracking-tight leading-tight mb-8"
+                >
+                  Why Build AI Agents with <span className="font-serif italic text-[#ccff00]">AbuQitmirLabs</span>?
+                </h2>
+                <p className="text-base text-slate-300 font-light leading-relaxed mb-6 font-sans">
+                  The difference between an AI prototype and an enterprise agent that delivers continuous ROI comes down to software engineering discipline. We build resilient, maintainable architectures that solve real operational bottlenecks.
+                </p>
+                <p className="text-sm text-slate-400 font-light leading-relaxed font-sans mb-8">
+                  From our technical team in Karachi, Pakistan, we serve international clients across the United States, United Kingdom, Canada, Australia, and Europe. Our engineering capabilities span <Link to="/custom-software" className="text-[#ccff00] hover:underline">custom software development</Link>, <Link to="/mobile-app-development" className="text-[#ccff00] hover:underline">mobile app development</Link>, and <Link to="/seo-mastery" className="text-[#ccff00] hover:underline">technical SEO services</Link>, as well as specialized <Link to="/solutions/fintech" className="text-[#ccff00] hover:underline">fintech solutions</Link> and <Link to="/solutions/healthcare" className="text-[#ccff00] hover:underline">healthcare platforms</Link>.
+                </p>
+                
+                <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/10">
+                  <h3 className="text-base font-bold text-white uppercase tracking-tight mb-2 font-sans">
+                    100% Source Code & Data Ownership
+                  </h3>
+                  <p className="text-xs text-slate-400 font-light font-sans leading-relaxed">
+                    Upon project delivery, all source code, API middleware, prompt schemas, database connectors, and intellectual property transfer completely to you. No recurring platform lock-in or proprietary licensing barriers.
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
                 {[
                   {
-                    market: "United States",
-                    text: "AI agent development in the United States for businesses that require high-performance, high-security, and premium AI solutions to compete in one of the world's most competitive digital landscapes."
+                    title: "Bespoke Codebase Architecture",
+                    desc: "Every agent is custom-engineered in TypeScript/Python using modern frameworks (LangChain, LlamaIndex, CrewAI) and deployed to your own cloud infrastructure."
                   },
                   {
-                    market: "United Kingdom",
-                    text: "AI agent development in the United Kingdom aligned with UK data protection standards and user expectations, ensuring your brand resonates with British audiences."
+                    title: "Direct API & CRM Integrations",
+                    desc: "Native bidirectional connectors to Salesforce, HubSpot, Zendesk, PostgreSQL, Stripe, Slack, and custom enterprise databases."
                   },
                   {
-                    market: "Canada",
-                    text: "AI agent development in Canada that reflects the country's bilingual and multicultural landscape, with compliance to Canadian accessibility standards."
+                    title: "Domain-Specific RAG Pipelines",
+                    desc: "Tailored vector indexing and embedding pipelines that eliminate hallucinations and provide verifiable document citations."
                   },
                   {
-                    market: "Australia",
-                    text: "AI agent development in Australia for businesses ready to dominate the Australian market with fast, scalable, and user-friendly AI platforms."
+                    title: "Enterprise Security & Governance",
+                    desc: "Role-based access control, zero-trust token vaults, and prompt injection defense ensuring your proprietary data remains private."
                   },
                   {
-                    market: "Poland",
-                    text: "AI agent development in Poland that bridges the gap between global standards and local market needs, helping Polish businesses expand their digital footprint."
+                    title: "Transparent & Cost-Effective Delivery",
+                    desc: "High-caliber engineering talent delivering complex autonomous systems at competitive, predictable milestone pricing."
                   }
                 ].map((item, idx) => (
-                  <div key={idx} className="border-l border-white/10 pl-6 py-2">
-                    <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-2">{item.market}</h3>
-                    <p className="text-xs text-slate-400 leading-relaxed font-light">{item.text}</p>
+                  <div key={idx} className="p-6 rounded-2xl bg-white/[0.015] border border-white/5 hover:border-white/10 transition-colors">
+                    <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-2 font-sans flex items-center gap-2">
+                      <span className="text-[#ccff00] font-mono">[ 0{idx + 1} ]</span>
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-slate-400 font-light leading-relaxed font-sans">
+                      {item.desc}
+                    </p>
                   </div>
                 ))}
               </div>
             </div>
+          </div>
+        </section>
 
-            <div className="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-[3rem] relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 blur-[80px] pointer-events-none" />
-              <span className="text-xs font-mono text-[#ccff00] mb-6 uppercase tracking-[0.5em] font-bold block">[ WHY_ABUQITMIRLABS ]</span>
-              <h3 className="text-3xl font-serif font-light text-white leading-tight mb-6">
-                Why Partner with <span className="font-serif italic text-blue-400">AbuQitmirLabs?</span>
-              </h3>
-              <p className="text-base text-slate-300 leading-relaxed font-light mb-8 font-sans">
-                Our team in Karachi, Pakistan, combines global-grade AI expertise with cost-effective delivery. We serve clients across the United States, United Kingdom, Canada, Poland, and Australia—building AI agents that are secure, scalable, and fully owned by you. Whether you need a RAG-based chatbot, a workflow automation agent, or a custom LLM integration, we deliver AI solutions that solve real problems.
+        {/* Investment & Pricing Component */}
+        <AIAgentPricing />
+
+        {/* Section 7: Frequently Asked Questions (8 Useful FAQs) */}
+        <section 
+          id="ai-agent-development-faqs" 
+          aria-labelledby="heading-agent-faqs"
+          className="py-28 md:py-36 px-6 bg-black relative border-t border-white/10"
+        >
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <span className="text-xs font-mono text-[#ccff00] mb-4 uppercase tracking-[0.3em] font-bold block">
+                [ FREQUENTLY ASKED QUESTIONS ]
+              </span>
+              <h2 
+                id="heading-agent-faqs"
+                className="text-3xl md:text-5xl font-serif font-light text-white tracking-tight uppercase"
+              >
+                Frequently Asked <span className="font-serif italic text-blue-400">Questions</span>
+              </h2>
+              <p className="mt-4 text-slate-400 font-light text-sm md:text-base font-sans">
+                Clear, factual answers to common technical and business questions about AI agent development.
               </p>
-              
-              <div className="flex gap-4 items-center">
-                <div className="w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
-                  <Activity className="w-6 h-6 text-blue-400" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold text-white uppercase font-sans">Let's build your AI advantage.</h4>
-                  <p className="text-xs text-slate-400 font-sans">Bespoke engineering from Karachi, Pakistan to international production.</p>
-                </div>
-              </div>
+            </div>
+
+            <div className="space-y-4">
+              {faqData.map((faq, index) => {
+                const isOpen = activeFaq === index;
+                return (
+                  <div 
+                    key={index} 
+                    className="border border-white/10 rounded-2xl bg-white/[0.01] overflow-hidden transition-colors hover:border-white/20"
+                  >
+                    <button
+                      type="button"
+                      aria-expanded={isOpen}
+                      aria-controls={`faq-answer-${index}`}
+                      id={`faq-question-${index}`}
+                      onClick={() => setActiveFaq(isOpen ? null : index)}
+                      className="w-full flex items-center justify-between p-6 text-left transition-colors focus:outline-none focus:ring-1 focus:ring-[#ccff00]"
+                    >
+                      <span className="text-base md:text-lg font-bold text-white tracking-tight font-sans pr-4">{faq.q}</span>
+                      <span className={`text-[#ccff00] transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-45' : ''}`}>
+                        <Plus className="w-5 h-5 pointer-events-none" />
+                      </span>
+                    </button>
+                    
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          id={`faq-answer-${index}`}
+                          role="region"
+                          aria-labelledby={`faq-question-${index}`}
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25, ease: "easeInOut" }}
+                        >
+                          <div className="px-6 pb-6 border-t border-white/5 pt-4 text-slate-300 text-sm md:text-base leading-relaxed font-light font-sans">
+                            {faq.a}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Section 2: Core Components & Infrastructure */}
-      <section id="core-architecture-section" className="py-32 bg-[#000000] relative z-10 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-24 text-center">
-            <span className="text-xs font-mono text-[#ccff00] mb-4 uppercase tracking-[0.5em] font-bold block">[ SECTION 2: TECHNICAL ARCHITECTURE ]</span>
-            <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight uppercase leading-[0.9] mb-8">
-              Core Components & <span className="font-serif italic text-zinc-400 font-normal">Infrastructure</span>
+        {/* Section 8: Final Conversion Call to Action */}
+        <section id="cta-agent-consultation" className="bg-[#020202] py-32 border-t border-white/10 relative overflow-hidden text-center">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#ccff00]/5 blur-[140px] rounded-full pointer-events-none" />
+          <div className="max-w-4xl mx-auto px-6 relative z-10">
+            <span className="text-xs font-mono tracking-[0.3em] uppercase text-[#ccff00] font-bold block mb-6">
+              [ AUTOMATE WITH CONFIDENCE ]
+            </span>
+            
+            <h2 className="text-3xl md:text-5xl font-serif font-light text-white leading-tight mb-6">
+              Have a workflow that should run <br />
+              <span className="font-serif italic text-[#ccff00]">without constant manual work?</span>
             </h2>
-            <p className="text-base md:text-lg text-slate-400 max-w-3xl mx-auto font-light leading-relaxed font-sans">
-              Building a robust AI agent requires careful orchestration of multiple interconnected systems. Here is the technical architecture that powers every enterprise AI agent we deploy.
+            
+            <p className="text-base md:text-lg text-slate-300 font-light max-w-2xl mx-auto mb-12 leading-relaxed font-sans">
+              Schedule a technical discovery session with AbuQitmirLabs. We will review your current business processes, identify high-impact automation opportunities, and architect a custom AI agent roadmap.
             </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {coreComponents.map((comp) => (
-              <div 
-                key={comp.id}
-                onClick={() => setActiveComponentId(comp.id)}
-                className={`border rounded-[2.5rem] p-8 md:p-10 transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between group ${
-                  activeComponentId === comp.id 
-                    ? 'bg-white/[0.04] border-[#ccff00]/40 shadow-[0_0_30px_rgba(204,255,0,0.05)]' 
-                    : 'bg-white/[0.02] border-white/5 hover:border-white/20'
-                }`}
+            <div className="flex flex-col sm:flex-row gap-5 justify-center max-w-lg mx-auto mb-10">
+              <Link
+                to="/contact"
+                className="flex-1 inline-flex items-center justify-center gap-2 h-14 bg-white hover:bg-slate-200 text-black font-bold uppercase rounded-xl tracking-wider text-xs transition duration-200 shadow-[0_0_25px_rgba(255,255,255,0.15)]"
               >
-                <div>
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#ccff00]/5 blur-[60px] pointer-events-none" />
-                  <div className="mb-8 w-16 h-16 bg-black border border-white/10 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform">
-                    {comp.icon}
-                  </div>
-                  
-                  <h3 className="text-xs font-mono text-[#ccff00] mb-2 uppercase tracking-widest font-bold">
-                    {comp.subtitle}
-                  </h3>
-                  <h4 className="text-xl font-bold uppercase tracking-tight text-white mb-4">
-                    {comp.title}
-                  </h4>
-                  <p className="text-slate-400 text-xs md:text-sm font-light font-sans leading-relaxed mb-6">
-                    {comp.desc}
-                  </p>
-
-                  <div className="border-t border-white/10 pt-4 mb-4">
-                    <span className="text-[10px] font-mono text-zinc-500 block uppercase tracking-wider mb-2 font-bold">What's Included //</span>
-                    <ul className="space-y-2">
-                      {comp.included.map((inc, i) => (
-                        <li key={i} className="text-xs text-slate-300 font-sans font-light flex gap-2">
-                          <CheckCircle2 className="w-3 h-3 text-[#ccff00] shrink-0 mt-0.5" />
-                          <span>{inc}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="border-t border-white/5 pt-4 mt-4">
-                  <span className="text-[10px] font-mono text-zinc-500 block uppercase tracking-wider mb-1 font-bold">Required Elements //</span>
-                  <p className="text-[11px] font-mono text-[#ccff00]/90 leading-relaxed">
-                    {comp.required}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 3: Platform Technologies & Tools */}
-      <section id="tech-stack-platforms" className="py-32 bg-white/[0.01] border-y border-white/10 relative z-10 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-20 text-center">
-            <span className="text-xs font-mono text-[#ccff00] mb-4 uppercase tracking-[0.5em] font-bold block">[ SECTION 3: PLATFORM STACK ]</span>
-            <h2 className="text-3xl md:text-5xl font-serif font-light text-white mb-6 uppercase">
-              Platform Technologies & <span className="font-serif italic text-zinc-400">Tools</span>
-            </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-base text-white/50 font-light leading-relaxed font-sans">
-              Our AI agent development services leverage a modern technology stack.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                category: "LLM Integration & Orchestration",
-                techs: ["LangChain", "LlamaIndex", "CrewAI", "AutoGen"],
-                customStyle: "border-l-2 border-[#ccff00]/40"
-              },
-              {
-                category: "Models & Frameworks",
-                techs: ["OpenAI", "Anthropic Claude", "Google Gemini", "Azure OpenAI", "Llama"],
-                customStyle: "border-l-2 border-slate-500"
-              },
-              {
-                category: "Knowledge Management",
-                techs: ["Vector Databases", "RAG", "ETL Pipelines"],
-                customStyle: "border-l-2 border-blue-500"
-              },
-              {
-                category: "Security & Compliance",
-                techs: ["OAuth 2.0", "Zero-trust security", "Prompt injection protection", "Token vaults"],
-                customStyle: "border-l-2 border-emerald-500"
-              }
-            ].map((techGroup, index) => (
-              <div 
-                key={index} 
-                className={`bg-white/[0.02] border border-white/5 p-8 rounded-3xl relative overflow-hidden backdrop-blur-xl ${techGroup.customStyle}`}
+                <span>Discuss Your AI Agent</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              
+              <Link
+                to="/custom-software"
+                className="flex-1 inline-flex items-center justify-center gap-2 h-14 bg-white/5 hover:bg-white/10 text-white font-bold uppercase rounded-xl tracking-wider text-xs border border-white/10 transition duration-200"
               >
-                <h3 className="text-sm font-bold uppercase tracking-widest text-[#ccff00] mb-6 font-mono font-black border-b border-white/5 pb-2">
-                  {techGroup.category}
-                </h3>
-                <ul className="space-y-3">
-                  {techGroup.techs.map((tech, idx) => (
-                    <li key={idx} className="flex items-center gap-3 text-sm font-medium text-slate-300 font-sans">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
-                      {tech}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+                <span>Explore Custom Software</span>
+              </Link>
+            </div>
 
-      {/* Section 4: Why Choose AbuQitmirLabs */}
-      <section id="why-choose-us" className="py-32 bg-[#000000] relative z-10 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-24 text-center">
-            <span className="text-xs font-mono text-[#ccff00] mb-4 uppercase tracking-[0.4em] font-bold block">[ SECTION 4: GLOBAL EXCELLENCE ]</span>
-            <h2 className="text-3xl md:text-5xl font-serif font-light text-white uppercase">
-              Why Choose <span className="font-serif italic text-blue-400">AbuQitmirLabs</span>
-            </h2>
-            <p className="mt-4 max-w-3xl mx-auto text-base text-slate-400 font-light leading-relaxed font-sans">
-              As a premier software development company headquartered in Karachi, Pakistan, with a global footprint, AbuQitmirLabs combines technical excellence with deep domain expertise.
-            </p>
+            <div className="flex flex-wrap justify-center items-center gap-6 text-xs font-mono text-slate-400">
+              <span>Direct: <a href="mailto:hello@abuqitmirlabs.tech" className="text-white hover:underline">hello@abuqitmirlabs.tech</a></span>
+              <span>·</span>
+              <span><Link to="/about" className="hover:underline text-slate-300">About Our Company</Link></span>
+              <span>·</span>
+              <span>Karachi, Pakistan · Serving Global Clients</span>
+            </div>
           </div>
+        </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Elite Engineering Talent",
-                desc: "Our team includes PhD-level AI researchers, ML engineers, and software architects with experience at leading AI labs and Fortune 500 companies."
-              },
-              {
-                title: "Industry-Specific Expertise",
-                desc: "We have built custom AI agents for fintech, healthcare, retail, and logistics—each with unique compliance and performance requirements."
-              },
-              {
-                title: "Security-First Mentality",
-                desc: "ISO 27001-aligned security practices, OWASP-compliant AI development, and regular vulnerability assessments protect your data and your users."
-              }
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white/[0.02] border border-white/5 p-10 rounded-[2.5rem] relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#ccff00]/5 blur-[60px] pointer-events-none" />
-                <span className="text-[#ccff00]/60 font-mono text-xs block mb-4 font-bold">[ 0{idx + 1} ]</span>
-                <h3 className="text-xl font-bold uppercase tracking-tight text-white mb-4">{item.title}</h3>
-                <p className="text-slate-400 text-sm font-light leading-relaxed font-sans">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 5: Investment Framework */}
-      <section id="investment-framework" className="py-32 bg-[#000000] border-t border-white/10 relative z-10 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-20 text-center">
-            <span className="text-xs font-mono text-[#ccff00] mb-4 uppercase tracking-[0.4em] font-bold block">[ SECTION 5: CAPEX CRITERIA ]</span>
-            <h2 className="text-3xl md:text-5xl font-serif font-light text-white uppercase mb-4">
-              Investment <span className="font-serif italic text-neutral-400">Framework</span>
-            </h2>
-            <p className="max-w-2xl mx-auto text-base text-slate-400 font-light leading-relaxed font-sans">
-              Sovereign intellectual property and customized agent intelligence pricing models.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
-            {[
-              {
-                tier: "Starter AI Agent",
-                cost: "$5,000+",
-                timeline: "4–6 Weeks",
-                features: ["Single-purpose agent", "1–2 platform integrations", "Basic analytics"]
-              },
-              {
-                tier: "Advanced AI Agent",
-                cost: "$15,000+",
-                timeline: "8–12 Weeks",
-                features: ["Multi-purpose agent", "RAG implementation", "3+ integrations", "Fine-tuning"]
-              },
-              {
-                tier: "Enterprise Platform",
-                cost: "$40,000+",
-                timeline: "3–6 Months",
-                features: ["Multi-agent system", "Proprietary LLM fine-tuning", "Full data pipeline", "Dedicated team"]
-              }
-            ].map((p, idx) => (
-              <div key={idx} className="bg-white/[0.02] border border-white/10 rounded-[2.5rem] p-10 relative flex flex-col justify-between group hover:border-[#ccff00]/40 transition-colors">
-                <div>
-                  <div className="text-xs font-mono text-[#ccff00] font-bold mb-4 uppercase tracking-widest">[ {p.tier.toUpperCase()} ]</div>
-                  <div className="text-4xl font-extrabold tracking-tight text-white mb-2">{p.cost}</div>
-                  <div className="text-xs text-slate-400 font-mono mb-8 uppercase">TIMELINE: {p.timeline}</div>
-                  <ul className="space-y-3 mb-8">
-                    {p.features.map((f, fi) => (
-                      <li key={fi} className="text-sm text-slate-300 font-sans flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-[#ccff00] shrink-0" />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="max-w-4xl mx-auto bg-white/[0.01] border border-white/5 rounded-3xl p-8 md:p-12">
-            <h3 className="text-lg font-bold uppercase text-white mb-6 font-mono tracking-wider">[ HOURLY RATES BY ROLE ]</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Related Systems / Internal Links Siloing */}
+        <section className="py-20 bg-black border-t border-white/10 px-6">
+          <div className="max-w-6xl mx-auto">
+            <h3 className="text-xs font-mono text-slate-500 mb-8 uppercase tracking-[0.3em] font-bold">
+              [ RELATED ENGINEERING DISCIPLINES ]
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {[
-                { role: "Junior AI Engineer", rate: "$80 – $120/hr" },
-                { role: "Mid-Level AI Engineer", rate: "$120 – $180/hr" },
-                { role: "Senior AI Architect/Researcher", rate: "$180 – $250+/hr" }
-              ].map((roleGroup, ri) => (
-                <div key={ri} className="flex justify-between items-center border-b border-white/5 pb-4 md:border-b-0 md:pb-0 font-mono text-sm">
-                  <span className="text-slate-400">{roleGroup.role}</span>
-                  <span className="text-white font-bold">{roleGroup.rate}</span>
-                </div>
+                { title: "Custom Software Development", desc: "Private enterprise software, backend services & APIs", path: "/custom-software", icon: <Code2 className="w-5 h-5" /> },
+                { title: "Web Development Services", desc: "High-performance React/Next.js web applications", path: "/web-development", icon: <Globe className="w-5 h-5" /> },
+                { title: "Mobile App Development", desc: "Cross-platform iOS & Android mobile software", path: "/mobile-app-development", icon: <Smartphone className="w-5 h-5" /> },
+                { title: "Fintech Solutions", desc: "Secure financial workflows & payment engines", path: "/solutions/fintech", icon: <TrendingUp className="w-5 h-5" /> },
+                { title: "Healthcare Platforms", desc: "HIPAA-aligned clinical & patient systems", path: "/solutions/healthcare", icon: <HeartPulse className="w-5 h-5" /> },
+                { title: "SEO Services & Mastery", desc: "Technical search, AEO & semantic optimization", path: "/seo-mastery", icon: <Cpu className="w-5 h-5" /> }
+              ].map((link, i) => (
+                <Link 
+                  key={i} 
+                  to={link.path} 
+                  className="group flex items-center justify-between p-6 bg-white/[0.015] border border-white/5 rounded-2xl transition-all hover:bg-white/[0.04] hover:border-[#ccff00]/40"
+                >
+                  <div className="flex items-center gap-3.5">
+                    <div className="text-[#ccff00] bg-white/5 border border-white/10 p-2.5 rounded-lg group-hover:bg-[#ccff00] group-hover:text-black transition-colors">
+                      {link.icon}
+                    </div>
+                    <div>
+                      <span className="font-bold uppercase tracking-tight text-white text-sm block">{link.title}</span>
+                      <span className="text-xs text-slate-400 font-light">{link.desc}</span>
+                    </div>
+                  </div>
+                  <ArrowUpRight className="text-slate-500 group-hover:text-[#ccff00] transition-colors" size={18} />
+                </Link>
               ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Section 6: Frequently Asked Questions */}
-      <section id="operational-faqs" className="py-32 px-6 bg-[#000000] z-10 relative border-t border-white/10">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-20">
-            <span className="text-xs font-mono text-[#ccff00] mb-4 uppercase tracking-[0.5em] font-bold block">[ SECTION 6: FAQ ]</span>
-            <h2 className="text-3xl md:text-5xl font-serif font-light text-white uppercase">
-              Frequently Asked <span className="font-serif italic text-blue-400">Questions</span>
-            </h2>
-          </div>
-
-          <div className="space-y-4">
-            {faqData.map((faq, index) => (
-              <div 
-                key={index} 
-                className="border border-white/10 rounded-2xl bg-white/[0.01] overflow-hidden transition-all duration-300"
-              >
-                <button
-                  onClick={() => setActiveFaq(activeFaq === index ? null : index)}
-                  className="w-full flex items-center justify-between p-6 md:p-8 text-left transition-colors hover:bg-white/[0.02]"
-                >
-                  <span className="text-base md:text-lg font-bold text-white tracking-tight font-sans">{faq.q}</span>
-                  <span className={`ml-4 text-[#ccff00] transition-transform duration-300 ${activeFaq === index ? 'rotate-45' : ''}`}>
-                    <Plus className="w-5 h-5 pointer-events-none" />
-                  </span>
-                </button>
-                
-                <AnimatePresence initial={false}>
-                  {activeFaq === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                    >
-                      <div className="px-6 md:px-8 pb-6 md:pb-8 border-t border-white/5 pt-4 text-slate-400 text-sm md:text-base leading-relaxed font-light font-sans">
-                        {faq.a}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 7: Call to Action */}
-      <section id="cta-collaboration" className="bg-black py-40 border-t border-white/10 relative overflow-hidden text-center z-10">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#ccff00]/5 blur-[120px] rounded-full pointer-events-none" />
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <span className="text-xs font-mono tracking-[0.4em] uppercase text-[#ccff00] font-black block mb-6">[ SECTION 7: COLLABORATION ]</span>
-          
-          <h2 className="text-4xl md:text-6xl font-serif font-light uppercase text-white leading-tight mb-8">
-            Ready to Build Your <span className="font-serif italic text-blue-400 font-normal">Intelligent AI Agent?</span>
-          </h2>
-          
-          <p className="text-lg md:text-xl text-slate-400 font-light max-w-2xl mx-auto mb-16 leading-relaxed font-sans">
-            Stop settling for generic automation that fails to deliver ROI. Partner with AbuQitmirLabs to architect custom AI agents that drive efficiency, growth, and competitive advantage.
-          </p>
-
-          <div className="bg-white/[0.01] border border-white/5 rounded-3xl p-8 mb-16 max-w-2xl mx-auto text-left">
-            <h3 className="text-xl font-bold uppercase text-white mb-2 font-mono tracking-wide">
-              Request a Free AI Strategy Session
-            </h3>
-            <p className="text-slate-400 text-sm font-sans font-light leading-relaxed mb-6">
-              Our team will analyze your business processes and identify the most high-impact opportunities for AI automation—at no cost.
-            </p>
-            <div className="flex flex-wrap gap-4 text-xs font-mono text-[#ccff00] tracking-widest uppercase font-bold">
-              <span>Avg. Discovery Phase: 2 Weeks</span>
-              <span>·</span>
-              <span>Current Lead Time: 6 Weeks</span>
-            </div>
-          </div>
-
-          <p className="text-sm md:text-base text-slate-350 font-light font-sans max-w-lg mx-auto mb-10 leading-relaxed">
-            Let's discuss your next intelligent project. Our initial technical consultation and AI audit are completely free.
-          </p>
-
-          <div className="flex flex-col gap-6 items-center max-w-lg mx-auto">
-            <div className="flex flex-col sm:flex-row gap-6 justify-center w-full">
-              <a
-                href="https://wa.me/923233260859"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-3 h-16 bg-[#25D366] hover:bg-[#20ba56] text-black font-black uppercase rounded-2xl tracking-wider text-xs transition active:scale-95"
-              >
-                💬 LAUNCH ON WHATSAPP
-              </a>
-              <a
-                href="mailto:hello@abuqitmirlabs.tech"
-                className="flex-1 inline-flex items-center justify-center gap-3 h-16 bg-white hover:bg-slate-200 text-black font-black uppercase rounded-2xl tracking-wider text-xs transition active:scale-95"
-                style={{ color: '#000000' }}
-              >
-                <span className="text-black font-black" style={{ color: '#000000' }}>📧 DEPLOY VIA EMAIL</span>
-              </a>
-            </div>
-            
-            <div className="flex flex-col items-center gap-1 mt-2">
-              <span className="font-mono text-xs text-[#ccff00] uppercase tracking-widest font-bold">Contact Email Channels:</span>
-              <a 
-                href="mailto:hello@abuqitmirlabs.tech" 
-                className="hover:underline transition font-mono text-sm font-semibold text-white/90 normal-case"
-              >
-                hello@abuqitmirlabs.tech
-              </a>
-              <a 
-                href="mailto:abuqitmirshirazalmadani@gmail.com" 
-                className="hover:underline transition font-mono text-xs text-slate-400 normal-case"
-              >
-                abuqitmirshirazalmadani@gmail.com
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Related Services / Internal Siloing */}
-      <section className="py-24 bg-black border-t border-white/10 relative z-10 px-6">
-        <div className="max-w-7xl mx-auto">
-          <h3 className="text-xs font-mono text-slate-500 mb-12 uppercase tracking-[0.4em] font-bold">[ RELATED_SYSTEMS ]</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { title: "Custom Software", path: "/custom-software", icon: <Code2 className="w-5 h-5" /> },
-              { title: "Web Development", path: "/web-development", icon: <Globe className="w-5 h-5" /> },
-              { title: "Mobile Apps", path: "/mobile-app-development", icon: <Smartphone className="w-5 h-5" /> },
-              { title: "SEO Mastery", path: "/seo-mastery", icon: <Cpu className="w-5 h-5" /> },
-              { title: "Creative Graphics", path: "/graphics-design", icon: <Palette className="w-5 h-5" /> },
-              { title: "Content Writing", path: "/content-writing", icon: <PenTool className="w-5 h-5" /> }
-            ].map((link, i) => (
-              <Link 
-                key={i} 
-                to={link.path} 
-                className="group flex items-center justify-between p-8 bg-white/[0.01] border border-white/5 rounded-2xl transition-all hover:-translate-y-1 hover:bg-white/[0.04] hover:border-[#ccff00]/40"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="text-[#ccff00] bg-white/5 border border-white/10 p-3 rounded-lg group-hover:bg-[#ccff00] group-hover:text-black transition-all">
-                    {link.icon}
-                  </div>
-                  <span className="font-bold uppercase tracking-tight text-white">{link.title}</span>
-                </div>
-                <ArrowUpRight className="text-slate-500 group-hover:text-[#ccff00] transition-colors" size={20} />
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
       <Footer />
     </div>

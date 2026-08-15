@@ -70,6 +70,19 @@ async function startServer() {
     level: 6
   }));
 
+  // Security Headers Middleware
+  app.use((req, res, next) => {
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+    res.setHeader(
+      'Content-Security-Policy',
+      "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://www.youtube.com https://s.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://images.unsplash.com https://i.postimg.cc https://i.ytimg.com https://img.youtube.com https://pixeldrain.com https://tmpfiles.org https://www.googletagmanager.com https://www.google-analytics.com https://www.facebook.com https://www.abuqitmirlabs.tech; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' https://*.youtube.com; connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://*.firebase.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://connect.facebook.net https://www.facebook.com https://pixeldrain.com https://tmpfiles.org; object-src 'none'; base-uri 'self'; form-action 'self' https://mail.google.com;"
+    );
+    next();
+  });
+
   // Use JSON and URL encoded bodies
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));

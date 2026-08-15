@@ -73,6 +73,19 @@ Yes. Migration can preserve content and search visibility when URL structures, r
 
 ---
 
+## AI Agent Development Services
+Canonical URL: https://www.abuqitmirlabs.tech/ai-agent-development
+
+AbuQitmirLabs engineers custom autonomous AI agents, multi-agent systems, and automated workflows:
+
+- Custom AI Agents & LLM Reasoning Loops
+- Retrieval-Augmented Generation (RAG) & Vector Database Integration
+- Enterprise CRM, Database & Third-Party API Connectors
+- Tier-1/Tier-2 Customer Support & Sales Lead Qualification Agents
+- Autonomous Document Extraction & Analysis
+- Deterministic Guardrails, Prompt Injection Defense & SOC2/GDPR Compliance
+- 100% Client Codebase & Data Ownership
+
 ## Core Services & Capabilities
 
 - [Web Development Company & Services](https://www.abuqitmirlabs.tech/web-development) - Scalable enterprise web application development, React/Next.js frontends, custom CMSs, and cloud deployment.

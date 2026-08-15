@@ -1,13 +1,99 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import {
   Cloud,
-  fetchSimpleIcons,
   ICloud,
   renderSimpleIcon,
   SimpleIcon,
 } from "react-icon-cloud";
+import {
+  siTypescript,
+  siJavascript,
+  siDart,
+  siOpenjdk,
+  siReact,
+  siFlutter,
+  siAndroid,
+  siHtml5,
+  siCss,
+  siNodedotjs,
+  siExpress,
+  siNextdotjs,
+  siPrisma,
+  siPostgresql,
+  siFirebase,
+  siNginx,
+  siVercel,
+  siTestinglibrary,
+  siJest,
+  siCypress,
+  siDocker,
+  siGit,
+  siJira,
+  siGithub,
+  siGitlab,
+  siAndroidstudio,
+  siPython,
+  siFigma,
+  siTailwindcss,
+  siMongodb,
+  siRedis,
+  siGraphql,
+  siKubernetes,
+  siVite,
+  siSupabase,
+  siLinux,
+} from "simple-icons";
+
+// Map slugs & common aliases to local bundled SimpleIcon objects
+const iconMap: Record<string, SimpleIcon> = {
+  typescript: siTypescript,
+  javascript: siJavascript,
+  dart: siDart,
+  java: siOpenjdk,
+  openjdk: siOpenjdk,
+  react: siReact,
+  flutter: siFlutter,
+  android: siAndroid,
+  html5: siHtml5,
+  css3: siCss,
+  css: siCss,
+  nodedotjs: siNodedotjs,
+  node: siNodedotjs,
+  express: siExpress,
+  nextdotjs: siNextdotjs,
+  nextjs: siNextdotjs,
+  prisma: siPrisma,
+  amazonaws: siVercel,
+  aws: siVercel,
+  postgresql: siPostgresql,
+  postgres: siPostgresql,
+  firebase: siFirebase,
+  nginx: siNginx,
+  vercel: siVercel,
+  testinglibrary: siTestinglibrary,
+  jest: siJest,
+  cypress: siCypress,
+  docker: siDocker,
+  git: siGit,
+  jira: siJira,
+  github: siGithub,
+  gitlab: siGitlab,
+  visualstudiocode: siVite,
+  vscode: siVite,
+  androidstudio: siAndroidstudio,
+  python: siPython,
+  figma: siFigma,
+  tailwindcss: siTailwindcss,
+  mongodb: siMongodb,
+  redis: siRedis,
+  graphql: siGraphql,
+  kubernetes: siKubernetes,
+  vite: siVite,
+  supabase: siSupabase,
+  linux: siLinux,
+};
 
 export const cloudProps: Omit<ICloud, "children"> = {
   containerProps: {
@@ -56,26 +142,16 @@ export type DynamicCloudProps = {
   iconSlugs: string[];
 };
 
-type IconData = Awaited<ReturnType<typeof fetchSimpleIcons>>;
-
 export function IconCloud({ iconSlugs }: DynamicCloudProps) {
-  const [data, setData] = useState<IconData | null>(null);
+  const renderedIcons = useMemo(() => {
+    const iconsToRender = (iconSlugs && iconSlugs.length > 0 ? iconSlugs : defaultSlugs)
+      .map((slug) => iconMap[slug.toLowerCase()])
+      .filter((icon): icon is SimpleIcon => Boolean(icon));
 
-  useEffect(() => {
-    fetchSimpleIcons({ slugs: iconSlugs }).then(setData).catch((err) => {
-      console.error("Failed to load cloud icons", err);
-    });
+    return iconsToRender.map((icon) => renderCustomIcon(icon));
   }, [iconSlugs]);
 
-  const renderedIcons = useMemo(() => {
-    if (!data || !data.simpleIcons) return null;
-
-    return Object.values(data.simpleIcons).map((icon) =>
-      renderCustomIcon(icon)
-    );
-  }, [data]);
-
-  if (!data || !renderedIcons || renderedIcons.length === 0) {
+  if (!renderedIcons || renderedIcons.length === 0) {
     return (
       <div className="flex items-center justify-center w-full min-h-[300px] text-zinc-500 font-mono text-xs">
         <div className="w-8 h-8 border-2 border-[#ccff00]/20 border-t-[#ccff00] rounded-full animate-spin"></div>
@@ -122,6 +198,14 @@ const defaultSlugs = [
   "androidstudio",
   "python",
   "figma",
+  "tailwindcss",
+  "mongodb",
+  "redis",
+  "graphql",
+  "kubernetes",
+  "vite",
+  "supabase",
+  "linux"
 ];
 
 export function IconCloudDemo() {
@@ -133,3 +217,4 @@ export function IconCloudDemo() {
 }
 
 export default IconCloud;
+
