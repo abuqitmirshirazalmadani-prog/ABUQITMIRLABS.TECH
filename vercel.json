@@ -73,6 +73,14 @@
       "destination": "/google87984536fe5662da.html"
     },
     {
+      "source": "/ai-agent-development",
+      "destination": "/ai-agent-development/index.html"
+    },
+    {
+      "source": "/ai-agent-development/",
+      "destination": "/ai-agent-development/index.html"
+    },
+    {
       "source": "/api/(.*)",
       "destination": "/api/$1"
     },

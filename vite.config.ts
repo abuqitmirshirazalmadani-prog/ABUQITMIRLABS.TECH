@@ -329,7 +329,7 @@ Sitemap: ${hostname}/sitemap.xml`;
               routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(aiAgentSchema, null, 2)}\n  </script>\n</head>`);
 
               // 2. Inject full authentic crawlable HTML inside #root
-              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>\s*<script/i, `<div id="root">${aiAgentInitialHtml}</div>\n    <script`);
+              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${aiAgentInitialHtml}</div>`);
 
               // 3. Write directly without #seo-crawler-content fallback
               const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
