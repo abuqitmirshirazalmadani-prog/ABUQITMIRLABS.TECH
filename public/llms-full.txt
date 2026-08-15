@@ -20,6 +20,8 @@
   - SEO Mastery: https://www.abuqitmirlabs.tech/seo-mastery
 
 ### 2. Core Service Capabilities
+- **Graphic Design & Brand Identity**: https://www.abuqitmirlabs.tech/graphics-design
+  - Professional graphic design services, brand identity systems, custom logos, investor pitch decks, Figma UI/UX systems, environmental graphic design (EGD), and packaging dielines.
 - **Web Development**: https://www.abuqitmirlabs.tech/web-development
   - Modern web applications, React / Next.js engineering, Tailwind CSS, high-concurrency API backends.
 - **Custom Software Solutions**: https://www.abuqitmirlabs.tech/custom-software

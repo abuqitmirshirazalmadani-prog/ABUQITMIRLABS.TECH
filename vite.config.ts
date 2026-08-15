@@ -6,6 +6,7 @@ import esbuild from 'esbuild';
 import {defineConfig, loadEnv} from 'vite';
 import compression from 'vite-plugin-compression';
 import { aiAgentSchema, aiAgentInitialHtml } from './src/utils/aiAgentStaticHtml';
+import { graphicsDesignSchema, graphicsDesignInitialHtml } from './src/utils/graphicsDesignStaticHtml';
 
 // Safe container-compatible prerender implementation to bypass Chromium/Puppeteer driver limitations
 interface PrerenderPlugin {
@@ -106,7 +107,7 @@ export default defineConfig(({mode}) => {
             { url: '/local-seo-citation-building', changefreq: 'weekly', priority: 0.8, title: 'Local SEO Citation Building | NAP Consistency Services | AbuQitmirLabs', description: 'Manual NAP citation building, audit & cleanup across top-tier directories. Boost local search rankings with consistent citations on Google, Yelp, Apple Maps & more. Start with a $150 audit.' },
             { url: '/white-label-local-seo',   changefreq: 'weekly',  priority: 0.8, title: 'White Label Local SEO for Agencies | Reseller Plans | AbuQitmirLabs', description: 'White label local SEO fulfillment for agencies — citations, GBP optimization, and branded PDF reports. Reseller plans with 35–50% margins. Expand your services without expanding your team.' },
             { url: '/local-seo-audit',          changefreq: 'weekly',  priority: 0.8, title: 'Free Local SEO Audit | Forensic Map Pack Analysis | AbuQitmirLabs', description: 'Free local SEO audit covering Google Business Profile, NAP citations, schema markup, and map-pack competitors. Get a prioritized action plan — not a jargon-filled deck.' },
-            { url: '/graphics-design',         changefreq: 'weekly',  priority: 0.8, title: 'Graphics Design Services | Brand Identity & UI/UX | AbuQitmirLabs', description: 'AbuQitmirLabs provides professional graphic design services — brand identity, logo design, UI/UX, pitch decks, and print assets. Build a cohesive visual identity that stands out.' },
+            { url: '/graphics-design',         changefreq: 'weekly',  priority: 0.8, title: 'Graphic Design Services for Brands & Businesses | AbuQitmirLabs', description: 'Professional graphic design services for brands and businesses: custom logos, brand identity, pitch decks, UI/UX, and marketing collateral with AbuQitmirLabs.' },
             { url: '/content-writing',         changefreq: 'weekly',  priority: 0.8, title: 'Content Writing Services | SEO Copywriting & Blogging | AbuQitmirLabs', description: 'AbuQitmirLabs provides professional content writing services — SEO blogs, website copy, landing pages, and long-form articles. Data-driven content that ranks and converts.' },
             { url: '/solutions/fintech',        changefreq: 'weekly',  priority: 0.8, title: 'Fintech Software Development | Custom Banking & Payment Solutions | AbuQitmirLabs', description: 'AbuQitmirLabs builds PCI-DSS compliant fintech software — payment gateways, neobanks, lending portals, and AI fraud detection. 350+ global clients. Book a free technical audit.' },
             { url: '/solutions/healthcare',     changefreq: 'weekly',  priority: 0.8, title: 'Healthcare Software Development | HIPAA-Ready EHR & Telemedicine | AbuQitmirLabs', description: 'AbuQitmirLabs builds HIPAA-compliant healthcare software — EHR/EMR systems, telemedicine platforms, AI diagnostics, and patient portals. Secure, scalable, and FHIR-ready.' },
@@ -330,6 +331,21 @@ Sitemap: ${hostname}/sitemap.xml`;
 
               // 2. Inject full authentic crawlable HTML inside #root
               routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${aiAgentInitialHtml}</div>`);
+
+              // 3. Write directly without #seo-crawler-content fallback
+              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
+              fs.writeFileSync(targetPath, routeHtml);
+              continue;
+            }
+
+            // Special authoritative injection for /graphics-design
+            if (route.url === '/graphics-design') {
+              // 1. Inject authoritative 6-entity JSON-LD schema
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
+              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(graphicsDesignSchema, null, 2)}\n  </script>\n</head>`);
+
+              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${graphicsDesignInitialHtml}</div>`);
 
               // 3. Write directly without #seo-crawler-content fallback
               const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');

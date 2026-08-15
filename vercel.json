@@ -81,6 +81,14 @@
       "destination": "/ai-agent-development/index.html"
     },
     {
+      "source": "/graphics-design",
+      "destination": "/graphics-design/index.html"
+    },
+    {
+      "source": "/graphics-design/",
+      "destination": "/graphics-design/index.html"
+    },
+    {
       "source": "/api/(.*)",
       "destination": "/api/$1"
     },
