@@ -7,6 +7,7 @@ import {defineConfig, loadEnv} from 'vite';
 import compression from 'vite-plugin-compression';
 import { aiAgentSchema, aiAgentInitialHtml } from './src/utils/aiAgentStaticHtml';
 import { graphicsDesignSchema, graphicsDesignInitialHtml } from './src/utils/graphicsDesignStaticHtml';
+import { fintechSchema, fintechInitialHtml } from './src/utils/fintechStaticHtml';
 
 // Safe container-compatible prerender implementation to bypass Chromium/Puppeteer driver limitations
 interface PrerenderPlugin {
@@ -109,7 +110,7 @@ export default defineConfig(({mode}) => {
             { url: '/local-seo-audit',          changefreq: 'weekly',  priority: 0.8, title: 'Free Local SEO Audit | Forensic Map Pack Analysis | AbuQitmirLabs', description: 'Free local SEO audit covering Google Business Profile, NAP citations, schema markup, and map-pack competitors. Get a prioritized action plan — not a jargon-filled deck.' },
             { url: '/graphics-design',         changefreq: 'weekly',  priority: 0.8, title: 'Graphic Design Services for Brands & Businesses | AbuQitmirLabs', description: 'Professional graphic design services for brands and businesses: custom logos, brand identity, pitch decks, UI/UX, and marketing collateral with AbuQitmirLabs.' },
             { url: '/content-writing',         changefreq: 'weekly',  priority: 0.8, title: 'Content Writing Services | SEO Copywriting & Blogging | AbuQitmirLabs', description: 'AbuQitmirLabs provides professional content writing services — SEO blogs, website copy, landing pages, and long-form articles. Data-driven content that ranks and converts.' },
-            { url: '/solutions/fintech',        changefreq: 'weekly',  priority: 0.8, title: 'Fintech Software Development | Custom Banking & Payment Solutions | AbuQitmirLabs', description: 'AbuQitmirLabs builds PCI-DSS compliant fintech software — payment gateways, neobanks, lending portals, and AI fraud detection. 350+ global clients. Book a free technical audit.' },
+            { url: '/solutions/fintech',        changefreq: 'weekly',  priority: 0.8, title: 'FinTech Solutions for Digital Finance | AbuQitmirLabs', description: 'Build secure FinTech platforms, payment systems and digital finance experiences with AbuQitmirLabs for startups and growing businesses.' },
             { url: '/solutions/healthcare',     changefreq: 'weekly',  priority: 0.8, title: 'Healthcare Software Development | HIPAA-Ready EHR & Telemedicine | AbuQitmirLabs', description: 'AbuQitmirLabs builds HIPAA-compliant healthcare software — EHR/EMR systems, telemedicine platforms, AI diagnostics, and patient portals. Secure, scalable, and FHIR-ready.' },
             { url: '/solutions/ai-automation',  changefreq: 'weekly',  priority: 0.8, title: 'AI Automation Solutions | Custom AI Agents & RAG Systems | AbuQitmirLabs', description: 'AbuQitmirLabs builds custom AI agents and RAG systems for workflow automation, NLP, and predictive analytics. Reduce manual work and improve decision-making with measurable ROI.' },
             { url: '/solutions/e-commerce',     changefreq: 'weekly',  priority: 0.8, title: 'E-Commerce Development | Custom Online Stores & Headless Commerce | AbuQitmirLabs', description: 'AbuQitmirLabs builds custom e-commerce stores, headless commerce platforms, multi-vendor marketplaces, and subscription systems. Fast, scalable, and conversion-optimized.' },
@@ -346,6 +347,21 @@ Sitemap: ${hostname}/sitemap.xml`;
 
               // 2. Inject full authentic crawlable HTML inside #root
               routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${graphicsDesignInitialHtml}</div>`);
+
+              // 3. Write directly without #seo-crawler-content fallback
+              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
+              fs.writeFileSync(targetPath, routeHtml);
+              continue;
+            }
+
+            // Special authoritative injection for /solutions/fintech
+            if (route.url === '/solutions/fintech') {
+              // 1. Inject authoritative 7-entity JSON-LD schema
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
+              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(fintechSchema, null, 2)}\n  </script>\n</head>`);
+
+              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${fintechInitialHtml}</div>`);
 
               // 3. Write directly without #seo-crawler-content fallback
               const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
