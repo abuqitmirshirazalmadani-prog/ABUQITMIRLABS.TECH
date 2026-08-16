@@ -135,8 +135,26 @@ AbuQitmirLabs engineers secure, compliant healthcare software platforms and clin
 - Multi-Layered Security (AES-256 at Rest, TLS 1.3 in Transit, RBAC & Immutable Audit Logs)
 - 100% Client Source Code & Intellectual Property Ownership
 
+## AI Automation Solutions & Intelligent Workflows
+Canonical URL: https://www.abuqitmirlabs.tech/solutions/ai-automation
+
+AbuQitmirLabs engineers production AI automation systems, autonomous AI agents, and RAG workflows:
+
+- AI Workflow Automation & Multi-Step Orchestration
+- Autonomous AI Agent Systems with Tool Execution Loops
+- RAG (Retrieval-Augmented Generation) Knowledge Systems with Citations
+- Customer Support Automation & 24/7 Intelligent Ticket Routing
+- Inbound Sales Qualification & Real-Time CRM Data Enrichment
+- Finance & Operations Automation (Invoice Matching, Ledger Reconciliation)
+- Intelligent Document Processing (IDP) for Unstructured PDFs & Contracts
+- Internal AI Copilots Embedded in Slack & Microsoft Teams
+- Defense-in-Depth Security: TLS 1.3, AES-256, RBAC & Prompt-Injection Defense
+- Human-in-the-Loop (HITL) Governance for High-Impact Financial & Legal Actions
+- 100% Client Source Code & Intellectual Property Ownership
+
 ## Core Services & Capabilities
 
+- [AI Automation Solutions](https://www.abuqitmirlabs.tech/solutions/ai-automation) - Custom AI automation systems, autonomous AI agents, RAG knowledge systems, and multi-system API workflows.
 - [Healthcare AI Agent Development](https://www.abuqitmirlabs.tech/ai-agent-development) - Secure healthcare AI agents, patient support automation, clinical RAG systems, and EHR workflow automations.
 - [Healthcare Software Solutions](https://www.abuqitmirlabs.tech/solutions/healthcare) - Custom EHR/EMR platforms, clinic management software, telemedicine systems, patient portals, and FHIR/HL7 healthcare integrations.
 - [FinTech Solutions for Digital Finance](https://www.abuqitmirlabs.tech/solutions/fintech) - Secure digital banking platforms, payment gateways, financial analytics, and custom financial software engineering.

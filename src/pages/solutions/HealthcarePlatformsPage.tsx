@@ -1209,6 +1209,78 @@ const HealthcarePlatformsPage = () => {
           </div>
         </section>
 
+        {/* SECTION 18: Healthcare Technical Architecture Guides & Publications */}
+        <section className="py-20 md:py-28 max-w-7xl mx-auto px-6 border-b border-white/10" aria-labelledby="resources-heading">
+          <div className="max-w-3xl mb-16">
+            <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest">Engineering Insights</span>
+            <h2 id="resources-heading" className="text-3xl md:text-5xl font-extrabold mt-3 mb-6">
+              Healthcare Engineering &amp; Architecture Guides
+            </h2>
+            <p className="text-gray-400 text-base md:text-lg leading-relaxed">
+              Explore in-depth technical blueprints, compliance protocols, and system designs written by our principal software architects:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-8 rounded-2xl bg-zinc-900/60 border border-white/10 flex flex-col justify-between hover:border-[#ccff00]/40 transition-colors group">
+              <div>
+                <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3 font-bold">2026 Complete Guide</span>
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#ccff00] transition-colors">
+                  What Are Healthcare AI Agents? Complete 2026 Guide
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                  Autonomous cognitive architectures, EHR integration via FHIR APIs, RAG clinical triage, HIPAA-aligned security, and engineering workflows.
+                </p>
+              </div>
+              <Link 
+                to="/blog/what-are-healthcare-ai-agents-complete-guide-2026"
+                className="text-xs font-mono text-[#ccff00] hover:underline inline-flex items-center gap-2 uppercase tracking-wider font-bold"
+              >
+                <span>Read Full Guide</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-zinc-900/60 border border-white/10 flex flex-col justify-between hover:border-[#ccff00]/40 transition-colors group">
+              <div>
+                <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3 font-bold">Industry Solutions</span>
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#ccff00] transition-colors">
+                  Healthcare Software Development Solutions (2026 Guide)
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                  EHR platforms, telemedicine systems, clinical workflow software, and compliance &amp; interoperability requirements.
+                </p>
+              </div>
+              <Link 
+                to="/blog/healthcare-software-development-solutions-2026"
+                className="text-xs font-mono text-[#ccff00] hover:underline inline-flex items-center gap-2 uppercase tracking-wider font-bold"
+              >
+                <span>Read Full Guide</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-zinc-900/60 border border-white/10 flex flex-col justify-between hover:border-[#ccff00]/40 transition-colors group">
+              <div>
+                <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3 font-bold">AI Engineering</span>
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#ccff00] transition-colors">
+                  Healthcare AI Agent Development Services
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                  Autonomous agents for clinical triage, EHR FHIR integrations, patient support, and human-in-the-loop medical workflows.
+                </p>
+              </div>
+              <Link 
+                to="/ai-agent-development"
+                className="text-xs font-mono text-[#ccff00] hover:underline inline-flex items-center gap-2 uppercase tracking-wider font-bold"
+              >
+                <span>Explore AI Agent Services</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Final CTA */}
         <section className="py-20 md:py-28 text-center bg-gradient-to-b from-zinc-900 to-black" aria-labelledby="cta-heading">
           <div className="max-w-4xl mx-auto px-6">

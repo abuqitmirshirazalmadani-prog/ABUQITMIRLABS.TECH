@@ -28,6 +28,53 @@ const BlogPage = () => {
 
     const CATEGORIES = ["All", "AI", "Software", "Business", "App", "Development"];
 
+    const FALLBACK_POSTS: Post[] = [
+        {
+            id: 'what-are-healthcare-ai-agents-complete-guide-2026',
+            title: 'What Are Healthcare AI Agents? Complete 2026 Guide',
+            excerpt: 'Healthcare AI agents in 2026: autonomous architectures, EHR integration, RAG, clinical triage, HIPAA-aligned security, and engineering workflows.',
+            slug: 'what-are-healthcare-ai-agents-complete-guide-2026',
+            coverImage: 'https://www.abuqitmirlabs.tech/logo.png',
+            category: 'AI',
+            createdAt: '2026-08-16',
+            author: 'AbuQitmir Mohammad Shiraz Al-Madani',
+            tags: ['healthcare AI agents', 'AI agents in healthcare', 'healthcare AI agent development', 'EHR AI integration', 'clinical AI agents', 'HIPAA compliant AI agents']
+        },
+        {
+            id: 'healthcare-software-development-solutions-2026',
+            title: 'Healthcare Software Development Solutions: The Complete 2026 Guide',
+            excerpt: 'A complete 2026 guide to healthcare software development — EHR systems, telemedicine platforms, clinical workflow tools, and compliance requirements.',
+            slug: 'healthcare-software-development-solutions-2026',
+            coverImage: 'https://www.abuqitmirlabs.tech/images/healthcare-software-development-hero.jpg',
+            category: 'Software',
+            createdAt: '2026-07-12',
+            author: 'AbuQitmir Mohammad Shiraz Al-Madani',
+            tags: ['healthcare software development', 'custom EHR', 'telemedicine', 'medical software']
+        },
+        {
+            id: 'agentic-ai-production-failures',
+            title: 'Agentic AI: 7 Production Failures & Architectural Fixes',
+            excerpt: 'Agentic AI systems fail in production due to architecture, not models. Learn 7 failure modes: infinite loops, memory fragmentation, over-scoped permissions, and how to fix them.',
+            slug: 'agentic-ai-production-failures',
+            coverImage: 'https://www.abuqitmirlabs.tech/logo.png',
+            category: 'AI',
+            createdAt: '2026-08-02',
+            author: 'AbuQitmir Mohammad Shiraz Al-Madani',
+            tags: ['agentic AI', 'production AI', 'AI architecture', 'LLM engineering']
+        },
+        {
+            id: 'custom-ai-solutions-for-fintech-2026',
+            title: 'Custom AI Solutions for Fintech: Fraud Detection, Underwriting & RAG',
+            excerpt: 'Custom AI solutions for fintech in 2026 — real-time fraud detection, AI-assisted underwriting, and RAG-based support.',
+            slug: 'custom-ai-solutions-for-fintech-2026',
+            coverImage: 'https://www.abuqitmirlabs.tech/logo.png',
+            category: 'AI',
+            createdAt: '2026-08-09',
+            author: 'AbuQitmirLabs .TECH',
+            tags: ['fintech software development', 'AI fraud detection', 'AI underwriting']
+        }
+    ];
+
     useEffect(() => {
         const fetchPosts = async () => {
             try {
@@ -41,9 +88,14 @@ const BlogPage = () => {
                     id: doc.id,
                     ...doc.data()
                 })) as Post[];
-                setPosts(fetchedPosts);
+                if (fetchedPosts.length > 0) {
+                    setPosts(fetchedPosts);
+                } else {
+                    setPosts(FALLBACK_POSTS);
+                }
             } catch (error) {
                 handleFirestoreError(error, OperationType.LIST, 'posts');
+                setPosts(FALLBACK_POSTS);
             } finally {
                 setLoading(false);
             }

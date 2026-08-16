@@ -20,6 +20,8 @@
   - SEO Mastery: https://www.abuqitmirlabs.tech/seo-mastery
 
 ### 2. Core Service Capabilities
+- **AI Automation Solutions & Intelligent Workflows**: https://www.abuqitmirlabs.tech/solutions/ai-automation
+  - Custom AI automation solutions, intelligent workflow orchestration, autonomous AI agents with reasoning loops, RAG knowledge systems with source citations, customer support triage, sales lead enrichment, invoice matching, and enterprise software API integrations (Salesforce, HubSpot, SAP, NetSuite).
 - **Healthcare AI Agent Development & Autonomous Systems**: https://www.abuqitmirlabs.tech/ai-agent-development
   - Custom healthcare AI agents, patient intake triage, 24/7 patient support chatbots, clinical RAG systems with verifiable citations, AI administrative assistants, diagnostic research tools (CDS), EHR/FHIR integrations, and zero-trust security infrastructure.
 - **Healthcare Software Solutions & Medical Platform Engineering**: https://www.abuqitmirlabs.tech/solutions/healthcare

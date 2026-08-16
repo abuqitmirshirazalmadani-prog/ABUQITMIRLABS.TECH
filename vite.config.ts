@@ -9,6 +9,7 @@ import { aiAgentSchema, aiAgentInitialHtml } from './src/utils/aiAgentStaticHtml
 import { graphicsDesignSchema, graphicsDesignInitialHtml } from './src/utils/graphicsDesignStaticHtml';
 import { fintechSchema, fintechInitialHtml } from './src/utils/fintechStaticHtml';
 import { healthcareSchema, healthcareInitialHtml } from './src/utils/healthcareStaticHtml';
+import { aiAutomationSchema, aiAutomationInitialHtml } from './src/utils/aiAutomationStaticHtml';
 
 // Safe container-compatible prerender implementation to bypass Chromium/Puppeteer driver limitations
 interface PrerenderPlugin {
@@ -113,7 +114,7 @@ export default defineConfig(({mode}) => {
             { url: '/content-writing',         changefreq: 'weekly',  priority: 0.8, title: 'Content Writing Services | SEO Copywriting & Blogging | AbuQitmirLabs', description: 'AbuQitmirLabs provides professional content writing services — SEO blogs, website copy, landing pages, and long-form articles. Data-driven content that ranks and converts.' },
             { url: '/solutions/fintech',        changefreq: 'weekly',  priority: 0.8, title: 'FinTech Solutions for Digital Finance | AbuQitmirLabs', description: 'Build secure FinTech platforms, payment systems and digital finance experiences with AbuQitmirLabs for startups and growing businesses.' },
             { url: '/solutions/healthcare',     changefreq: 'weekly',  priority: 0.8, title: 'Healthcare Software Solutions | AbuQitmirLabs', description: 'Build secure healthcare software, patient portals, telemedicine platforms and clinical systems with AbuQitmirLabs for modern healthcare businesses.' },
-            { url: '/solutions/ai-automation',  changefreq: 'weekly',  priority: 0.8, title: 'AI Automation Solutions | Custom AI Agents & RAG Systems | AbuQitmirLabs', description: 'AbuQitmirLabs builds custom AI agents and RAG systems for workflow automation, NLP, and predictive analytics. Reduce manual work and improve decision-making with measurable ROI.' },
+            { url: '/solutions/ai-automation',  changefreq: 'weekly',  priority: 0.9, title: 'AI Automation Solutions for Smarter Business | AbuQitmirLabs', description: 'Build AI automation systems for workflows, customer support, sales, operations and knowledge management with AbuQitmirLabs.' },
             { url: '/solutions/e-commerce',     changefreq: 'weekly',  priority: 0.8, title: 'E-Commerce Development | Custom Online Stores & Headless Commerce | AbuQitmirLabs', description: 'AbuQitmirLabs builds custom e-commerce stores, headless commerce platforms, multi-vendor marketplaces, and subscription systems. Fast, scalable, and conversion-optimized.' },
             { url: '/solutions/edtech',         changefreq: 'weekly',  priority: 0.8, title: 'EdTech Development | Custom LMS & Virtual Classrooms | AbuQitmirLabs', description: 'AbuQitmirLabs builds custom EdTech platforms — LMS, AI tutoring engines, WebRTC virtual classrooms, and certification portals. Scalable, gamified, and WCAG-compliant.' },
             { url: '/case-studies',            changefreq: 'weekly',  priority: 0.9, title: 'Case Studies | Real-World Success Stories | AbuQitmirLabs', description: 'Explore real-world success stories from AbuQitmirLabs — custom software, AI automation, mobile apps, and web solutions that delivered measurable ROI for 350+ global clients.' },
@@ -125,6 +126,8 @@ export default defineConfig(({mode}) => {
             { url: '/poland-market',           changefreq: 'monthly', priority: 0.7, title: 'Software Development for Poland | GDPR & EU Expansion | AbuQitmirLabs', description: 'Poland-focused software development — GDPR-compliant apps, AI agents, SaaS, and local SEO for Krakow/Warsaw. Built for Polish startups and EU expansion, with CET overlap.' },
             { url: '/australia-market',        changefreq: 'monthly', priority: 0.7, title: 'Software Development for Australia | APP Compliant | AbuQitmirLabs', description: 'Australia-focused software development — APP-compliant apps, high-speed web, mobile apps, and AI agents. Built for Australian businesses with AEST-aligned delivery. Start your audit today.' },
             { url: '/blog',                    changefreq: 'daily',   priority: 0.8, title: 'Tech Blog & AI Insights | AbuQitmirLabs', description: 'AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies.' },
+            { url: '/blog/what-are-healthcare-ai-agents-complete-guide-2026', changefreq: 'weekly', priority: 0.9, title: 'What Are Healthcare AI Agents? Complete 2026 Guide | AbuQitmirLabs', description: 'Explore healthcare AI agents in 2026: autonomous architectures, EHR integration, RAG, clinical triage, HIPAA-aligned security, and engineering workflows.' },
+            { url: '/blog/healthcare-software-development-solutions-2026', changefreq: 'weekly', priority: 0.8, title: 'Healthcare Software Development Solutions: The Complete 2026 Guide | AbuQitmirLabs', description: 'A complete 2026 guide to healthcare software development — EHR systems, telemedicine platforms, clinical workflow tools, and compliance requirements.' },
             { url: '/blog/custom-web-development-company-2026', changefreq: 'weekly', priority: 0.8, title: 'Custom Web Development Company 2026 | Built-In Visibility | AbuQitmirLabs', description: "The best custom web development companies don't add SEO, GEO, and AI visibility after launch. They build it into every decision from day one. Here's what that looks like — and why it matters." },
             { url: '/blog/custom-ai-solutions-for-fintech-2026', changefreq: 'weekly', priority: 0.8, title: 'Custom AI Solutions for Fintech 2026 | Fraud Detection & Underwriting | AbuQitmirLabs', description: 'Custom AI solutions for fintech in 2026 — real-time fraud detection, AI-assisted underwriting, and RAG-based support. See what a fintech software development company actually builds.' },
             { url: '/news/latest',             changefreq: 'weekly',  priority: 0.8, title: 'Latest News | Company Updates & Press Releases | AbuQitmirLabs', description: 'AbuQitmirLabs newsroom — latest company updates, software launches, AI agent releases, and press announcements. Subscribe for monthly engineering and tech insights.' },
@@ -378,6 +381,21 @@ Sitemap: ${hostname}/sitemap.xml`;
 
               // 2. Inject full authentic crawlable HTML inside #root
               routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${healthcareInitialHtml}</div>`);
+
+              // 3. Write directly without #seo-crawler-content fallback
+              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
+              fs.writeFileSync(targetPath, routeHtml);
+              continue;
+            }
+
+            // Special authoritative injection for /solutions/ai-automation
+            if (route.url === '/solutions/ai-automation') {
+              // 1. Inject authoritative JSON-LD schema
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
+              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(aiAutomationSchema, null, 2)}\n  </script>\n</head>`);
+
+              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${aiAutomationInitialHtml}</div>`);
 
               // 3. Write directly without #seo-crawler-content fallback
               const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
