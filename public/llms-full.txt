@@ -20,6 +20,8 @@
   - SEO Mastery: https://www.abuqitmirlabs.tech/seo-mastery
 
 ### 2. Core Service Capabilities
+- **FinTech Solutions & Digital Finance Engineering**: https://www.abuqitmirlabs.tech/solutions/fintech
+  - Digital banking & neobanking platforms, custom multi-rail payment gateways, financial analytics dashboards, algorithmic lending systems, double-entry ledger architecture, and secure API integrations (Plaid, Stripe, KYC/AML).
 - **Graphic Design & Brand Identity**: https://www.abuqitmirlabs.tech/graphics-design
   - Professional graphic design services, brand identity systems, custom logos, investor pitch decks, Figma UI/UX systems, environmental graphic design (EGD), and packaging dielines.
 - **Web Development**: https://www.abuqitmirlabs.tech/web-development
