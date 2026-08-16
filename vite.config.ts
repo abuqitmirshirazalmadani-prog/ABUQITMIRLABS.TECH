@@ -8,6 +8,7 @@ import compression from 'vite-plugin-compression';
 import { aiAgentSchema, aiAgentInitialHtml } from './src/utils/aiAgentStaticHtml';
 import { graphicsDesignSchema, graphicsDesignInitialHtml } from './src/utils/graphicsDesignStaticHtml';
 import { fintechSchema, fintechInitialHtml } from './src/utils/fintechStaticHtml';
+import { healthcareSchema, healthcareInitialHtml } from './src/utils/healthcareStaticHtml';
 
 // Safe container-compatible prerender implementation to bypass Chromium/Puppeteer driver limitations
 interface PrerenderPlugin {
@@ -102,7 +103,7 @@ export default defineConfig(({mode}) => {
             { url: '/custom-software',         changefreq: 'weekly',  priority: 0.9, title: 'Custom Software Development Company | AbuQitmirLabs', description: 'AbuQitmirLabs provides high-impact custom software development, enterprise ERPs, and AI solutions tailored for startups and growing businesses. Build with us.' },
             { url: '/mobile-app-development',  changefreq: 'weekly',  priority: 0.9, title: 'Mobile App Development | Flutter & Native iOS/Android | AbuQitmirLabs', description: 'AbuQitmirLabs builds high-performance mobile apps using Flutter, React Native, and iOS/Android. We handle design, development, and App Store submission.' },
             { url: '/web-development',         changefreq: 'weekly',  priority: 0.9, title: 'Web Development Company | Custom Web Solutions | AbuQitmirLabs', description: 'AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications.' },
-            { url: '/ai-agent-development',    changefreq: 'weekly',  priority: 0.9, title: 'AI Agent Development Company | AbuQitmirLabs', description: 'AbuQitmirLabs builds bespoke autonomous AI agents, multi-agent workflows, and secure LLM integrations for intelligent, end-to-end business automation.' },
+            { url: '/ai-agent-development',    changefreq: 'weekly',  priority: 0.9, title: 'Healthcare AI Agent Development | AbuQitmirLabs', description: 'Build secure healthcare AI agents for patient support, RAG workflows, automation and EHR integrations with AbuQitmirLabs.' },
             { url: '/seo-mastery',             changefreq: 'weekly',  priority: 0.8, title: 'SEO Services | Professional Search Engine Optimization | AbuQitmirLabs', description: 'AbuQitmirLabs delivers data-driven SEO services — technical audits, on-page optimization, local SEO, and authority building. Rank higher, attract quality traffic, and grow your business.' },
             { url: '/local-seo-for-small-business', changefreq: 'weekly', priority: 0.9, title: 'Local SEO for Small Business | Affordable Plans | AbuQitmirLabs', description: 'Affordable local SEO for small businesses. Get found in Google Maps with GBP optimization, NAP citations, and on-page local keywords. Start with a $500/month plan.' },
             { url: '/local-seo-citation-building', changefreq: 'weekly', priority: 0.8, title: 'Local SEO Citation Building | NAP Consistency Services | AbuQitmirLabs', description: 'Manual NAP citation building, audit & cleanup across top-tier directories. Boost local search rankings with consistent citations on Google, Yelp, Apple Maps & more. Start with a $150 audit.' },
@@ -111,7 +112,7 @@ export default defineConfig(({mode}) => {
             { url: '/graphics-design',         changefreq: 'weekly',  priority: 0.8, title: 'Graphic Design Services for Brands & Businesses | AbuQitmirLabs', description: 'Professional graphic design services for brands and businesses: custom logos, brand identity, pitch decks, UI/UX, and marketing collateral with AbuQitmirLabs.' },
             { url: '/content-writing',         changefreq: 'weekly',  priority: 0.8, title: 'Content Writing Services | SEO Copywriting & Blogging | AbuQitmirLabs', description: 'AbuQitmirLabs provides professional content writing services — SEO blogs, website copy, landing pages, and long-form articles. Data-driven content that ranks and converts.' },
             { url: '/solutions/fintech',        changefreq: 'weekly',  priority: 0.8, title: 'FinTech Solutions for Digital Finance | AbuQitmirLabs', description: 'Build secure FinTech platforms, payment systems and digital finance experiences with AbuQitmirLabs for startups and growing businesses.' },
-            { url: '/solutions/healthcare',     changefreq: 'weekly',  priority: 0.8, title: 'Healthcare Software Development | HIPAA-Ready EHR & Telemedicine | AbuQitmirLabs', description: 'AbuQitmirLabs builds HIPAA-compliant healthcare software — EHR/EMR systems, telemedicine platforms, AI diagnostics, and patient portals. Secure, scalable, and FHIR-ready.' },
+            { url: '/solutions/healthcare',     changefreq: 'weekly',  priority: 0.8, title: 'Healthcare Software Solutions | AbuQitmirLabs', description: 'Build secure healthcare software, patient portals, telemedicine platforms and clinical systems with AbuQitmirLabs for modern healthcare businesses.' },
             { url: '/solutions/ai-automation',  changefreq: 'weekly',  priority: 0.8, title: 'AI Automation Solutions | Custom AI Agents & RAG Systems | AbuQitmirLabs', description: 'AbuQitmirLabs builds custom AI agents and RAG systems for workflow automation, NLP, and predictive analytics. Reduce manual work and improve decision-making with measurable ROI.' },
             { url: '/solutions/e-commerce',     changefreq: 'weekly',  priority: 0.8, title: 'E-Commerce Development | Custom Online Stores & Headless Commerce | AbuQitmirLabs', description: 'AbuQitmirLabs builds custom e-commerce stores, headless commerce platforms, multi-vendor marketplaces, and subscription systems. Fast, scalable, and conversion-optimized.' },
             { url: '/solutions/edtech',         changefreq: 'weekly',  priority: 0.8, title: 'EdTech Development | Custom LMS & Virtual Classrooms | AbuQitmirLabs', description: 'AbuQitmirLabs builds custom EdTech platforms — LMS, AI tutoring engines, WebRTC virtual classrooms, and certification portals. Scalable, gamified, and WCAG-compliant.' },
@@ -362,6 +363,21 @@ Sitemap: ${hostname}/sitemap.xml`;
 
               // 2. Inject full authentic crawlable HTML inside #root
               routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${fintechInitialHtml}</div>`);
+
+              // 3. Write directly without #seo-crawler-content fallback
+              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
+              fs.writeFileSync(targetPath, routeHtml);
+              continue;
+            }
+
+            // Special authoritative injection for /solutions/healthcare
+            if (route.url === '/solutions/healthcare') {
+              // 1. Inject authoritative JSON-LD schema
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
+              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(healthcareSchema, null, 2)}\n  </script>\n</head>`);
+
+              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${healthcareInitialHtml}</div>`);
 
               // 3. Write directly without #seo-crawler-content fallback
               const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');

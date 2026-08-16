@@ -2096,6 +2096,10 @@ const CustomSoftwarePage = () => {
           
           <div className="flex flex-wrap justify-center gap-4 text-xs font-mono text-slate-500 uppercase tracking-widest mb-16 border-y border-white/5 py-6">
             <span>Explore our related services:</span>
+            <Link to="/solutions/healthcare" className="text-blue-400 hover:text-white transition-colors">Healthcare Software</Link>
+            <span className="text-white/20">•</span>
+            <Link to="/solutions/fintech" className="text-blue-400 hover:text-white transition-colors">FinTech Solutions</Link>
+            <span className="text-white/20">•</span>
             <Link to="/web-development" className="text-blue-400 hover:text-white transition-colors">Web Development</Link>
             <span className="text-white/20">•</span>
             <Link to="/ai-agent-development" className="text-blue-400 hover:text-white transition-colors">AI Agent Development</Link>

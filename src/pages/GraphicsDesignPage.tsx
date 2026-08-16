@@ -1003,11 +1003,11 @@ const GraphicsDesignPage: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { title: "Custom Software", path: "/custom-software", icon: <Code2 className="w-5 h-5" /> },
+              { title: "Healthcare Software", path: "/solutions/healthcare", icon: <Globe className="w-5 h-5" /> },
               { title: "Web Development", path: "/web-development", icon: <Globe className="w-5 h-5" /> },
               { title: "Mobile Apps", path: "/mobile-app-development", icon: <Smartphone className="w-5 h-5" /> },
               { title: "AI Agents", path: "/ai-agent-development", icon: <Cpu className="w-5 h-5" /> },
-              { title: "SEO Mastery", path: "/seo-mastery", icon: <TrendingUp className="w-5 h-5" /> },
-              { title: "Content Writing", path: "/content-writing", icon: <PenTool className="w-5 h-5" /> }
+              { title: "SEO Mastery", path: "/seo-mastery", icon: <TrendingUp className="w-5 h-5" /> }
             ].map((link, i) => (
               <Link 
                 key={i} 

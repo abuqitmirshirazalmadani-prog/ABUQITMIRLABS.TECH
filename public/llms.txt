@@ -73,18 +73,21 @@ Yes. Migration can preserve content and search visibility when URL structures, r
 
 ---
 
-## AI Agent Development Services
+## Healthcare AI Agent Development & Autonomous Systems
 Canonical URL: https://www.abuqitmirlabs.tech/ai-agent-development
 
-AbuQitmirLabs engineers custom autonomous AI agents, multi-agent systems, and automated workflows:
+AbuQitmirLabs engineers custom healthcare AI agents, clinical RAG systems, and autonomous workflow solutions:
 
-- Custom AI Agents & LLM Reasoning Loops
-- Retrieval-Augmented Generation (RAG) & Vector Database Integration
-- Enterprise CRM, Database & Third-Party API Connectors
-- Tier-1/Tier-2 Customer Support & Sales Lead Qualification Agents
-- Autonomous Document Extraction & Analysis
-- Deterministic Guardrails, Prompt Injection Defense & SOC2/GDPR Compliance
-- 100% Client Codebase & Data Ownership
+- Healthcare AI Chatbots & 24/7 Patient Inquiries
+- AI Patient Support Agents (Intake Triage, Symptom Gathering & Scheduling)
+- Clinical RAG (Retrieval-Augmented Generation) with Verifiable Citations
+- AI Workflow Automation for Back-Office Administration & Insurance Pre-Authorization
+- AI Diagnostic Assistants & Clinical Decision Support (CDS) Research Tools
+- Healthcare Voice AI Agents for Inbound Phone Scheduling & Patient Check-Ins
+- EHR & EMR System Integrations via HL7 FHIR APIs & SMART on FHIR Protocols
+- Zero-Trust Security, TLS 1.3/AES-256 Encryption, RBAC & Immutable Audit Logs
+- Responsible AI Governance with Human-in-the-Loop Clinical Verification Gates
+- 100% Client Source Code & Intellectual Property Ownership
 
 ## Graphic Design Services & Brand Identity
 Canonical URL: https://www.abuqitmirlabs.tech/graphics-design
@@ -116,14 +119,31 @@ AbuQitmirLabs engineers secure, scalable financial technology platforms and digi
 - Zero-Trust Authentication, RBAC, End-to-End Encryption & Audit Logging
 - 100% Client Source Code & Intellectual Property Ownership
 
+## Healthcare Software Solutions & Medical Platform Engineering
+Canonical URL: https://www.abuqitmirlabs.tech/solutions/healthcare
+
+AbuQitmirLabs engineers secure, compliant healthcare software platforms and clinical applications:
+
+- Clinic Management Software & Outpatient Portals
+- Hospital Information Systems (HIS) & Department Throughput Telemetry
+- Custom Electronic Health Records (EHR & EMR) Software Development
+- Standardized FHIR v4 & HL7 Interoperability Middleware
+- Encrypted WebRTC Telemedicine & Telehealth Platforms
+- Patient Portals & Cross-Platform Healthcare Mobile Applications (iOS/Android)
+- Remote Patient Monitoring (RPM) Device Telemetry & Automated Clinical Alerts
+- Healthcare Analytics, Bed Occupancy & Executive Reporting Dashboards
+- Multi-Layered Security (AES-256 at Rest, TLS 1.3 in Transit, RBAC & Immutable Audit Logs)
+- 100% Client Source Code & Intellectual Property Ownership
+
 ## Core Services & Capabilities
 
+- [Healthcare AI Agent Development](https://www.abuqitmirlabs.tech/ai-agent-development) - Secure healthcare AI agents, patient support automation, clinical RAG systems, and EHR workflow automations.
+- [Healthcare Software Solutions](https://www.abuqitmirlabs.tech/solutions/healthcare) - Custom EHR/EMR platforms, clinic management software, telemedicine systems, patient portals, and FHIR/HL7 healthcare integrations.
 - [FinTech Solutions for Digital Finance](https://www.abuqitmirlabs.tech/solutions/fintech) - Secure digital banking platforms, payment gateways, financial analytics, and custom financial software engineering.
 - [Graphic Design Services & Brand Identity](https://www.abuqitmirlabs.tech/graphics-design) - Professional logo design, brand identity systems, pitch decks, Figma UI/UX, social media creative, and print packaging collateral.
 - [Web Development Company & Services](https://www.abuqitmirlabs.tech/web-development) - Scalable enterprise web application development, React/Next.js frontends, custom CMSs, and cloud deployment.
 - [Custom Software Solutions](https://www.abuqitmirlabs.tech/custom-software) - Private enterprise software setups, high-concurrency database designs, robust secure systems, and internal tool design.
 - [Mobile App Development](https://www.abuqitmirlabs.tech/mobile-app-development) - Cross-platform Android & iOS development with Flutter and native integrations.
-- [AI Agent Development & Automations](https://www.abuqitmirlabs.tech/ai-agent-development) - Fine-tuned LLMs, cognitive agents, automated workflows, and conversational AI systems.
 - [SEO Command & Technical Optimization](https://www.abuqitmirlabs.tech/seo-mastery) - Technical search engine optimization, programmatic crawl structures, semantic SEO, GEO, and AEO.
 - [Local SEO Services for Small Business](https://www.abuqitmirlabs.tech/local-seo-for-small-business) - Hyper-targeted local search ranking, Google Business Profile optimization, citation building, and GEO visibility.
 

@@ -1126,15 +1126,15 @@ const MobileAppDevelopmentPage = () => {
           <div className="mb-12">
             <span className="text-xs font-mono text-neutral-500 mb-2 uppercase tracking-[0.4em] font-bold block">[ RELATED_SYSTEMS ]</span>
             <p className="text-sm font-sans font-light text-slate-400">
-              Explore our related services: <Link to="/custom-software" className="text-white underline hover:text-blue-400">Custom Software Development</Link> · <Link to="/ai-agent-development" className="text-white underline hover:text-blue-400">AI Agent Development</Link> · <Link to="/web-development" className="text-white underline hover:text-blue-400">Web Development</Link>
+              Explore our related services: <Link to="/solutions/healthcare" className="text-white underline hover:text-blue-400">Healthcare Software Development</Link> · <Link to="/custom-software" className="text-white underline hover:text-blue-400">Custom Software Development</Link> · <Link to="/ai-agent-development" className="text-white underline hover:text-blue-400">AI Agent Development</Link> · <Link to="/web-development" className="text-white underline hover:text-blue-400">Web Development</Link>
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: "Custom Software", path: "/custom-software", icon: <Code2 className="w-5 h-5" /> },
+              { title: "Healthcare Apps", path: "/solutions/healthcare", icon: <Code2 className="w-5 h-5" /> },
+              { title: "Custom Software", path: "/custom-software", icon: <Cpu className="w-5 h-5" /> },
               { title: "Web Engineering", path: "/web-development", icon: <Globe className="w-5 h-5" /> },
-              { title: "AI Agents", path: "/ai-agent-development", icon: <Cpu className="w-5 h-5" /> },
-              { title: "SEO Strategy", path: "/seo-mastery", icon: <Star className="w-5 h-5" /> }
+              { title: "AI Agents", path: "/ai-agent-development", icon: <Star className="w-5 h-5" /> }
             ].map((link, i) => (
               <Link 
                 key={i} 

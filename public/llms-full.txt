@@ -20,6 +20,10 @@
   - SEO Mastery: https://www.abuqitmirlabs.tech/seo-mastery
 
 ### 2. Core Service Capabilities
+- **Healthcare AI Agent Development & Autonomous Systems**: https://www.abuqitmirlabs.tech/ai-agent-development
+  - Custom healthcare AI agents, patient intake triage, 24/7 patient support chatbots, clinical RAG systems with verifiable citations, AI administrative assistants, diagnostic research tools (CDS), EHR/FHIR integrations, and zero-trust security infrastructure.
+- **Healthcare Software Solutions & Medical Platform Engineering**: https://www.abuqitmirlabs.tech/solutions/healthcare
+  - Custom EHR/EMR platforms, clinic management systems, hospital information systems (HIS), WebRTC telemedicine platforms, patient portals, remote patient monitoring (RPM), and FHIR/HL7 interoperability bridges.
 - **FinTech Solutions & Digital Finance Engineering**: https://www.abuqitmirlabs.tech/solutions/fintech
   - Digital banking & neobanking platforms, custom multi-rail payment gateways, financial analytics dashboards, algorithmic lending systems, double-entry ledger architecture, and secure API integrations (Plaid, Stripe, KYC/AML).
 - **Graphic Design & Brand Identity**: https://www.abuqitmirlabs.tech/graphics-design
@@ -30,8 +34,6 @@
   - Scalable enterprise applications, distributed databases, cloud orchestration, internal operations tooling.
 - **Mobile App Development**: https://www.abuqitmirlabs.tech/mobile-app-development
   - Flutter & native iOS/Android cross-platform mobile apps with hardware level security.
-- **AI Agent Development**: https://www.abuqitmirlabs.tech/ai-agent-development
-  - Custom LLM workflows, cognitive agents, retrieval-augmented generation (RAG), and task automation.
 - **SEO Mastery & Local SEO**: https://www.abuqitmirlabs.tech/seo-mastery & https://www.abuqitmirlabs.tech/local-seo-for-small-business
   - 5-layer visibility systems (SEO + GEO + AEO + AIO + SXO), entity optimization, schema graphing.
 
