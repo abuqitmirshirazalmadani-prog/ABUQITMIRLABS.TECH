@@ -9,6 +9,7 @@ interface AnimatedTextProps extends React.HTMLAttributes<HTMLDivElement> {
   hoverEffect?: boolean;
   className?: string;
   textClassName?: string;
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span' | 'div';
 }
 
 const AnimatedShinyText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
@@ -20,6 +21,7 @@ const AnimatedShinyText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
       hoverEffect = true,
       className,
       textClassName,
+      as = 'h2',
       ...props
     },
     ref
@@ -40,13 +42,15 @@ const AnimatedShinyText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
       },
     };
 
+    const MotionComponent = (motion as any)[as] || motion.h2;
+
     return (
       <div
         ref={ref}
         className={cn("flex justify-start items-center", className)}
         {...props}
       >
-        <motion.h2
+        <MotionComponent
           className={cn(
             "leading-tight font-bold uppercase",
             !textClassName && "text-[2.5rem] sm:text-[3.5rem] md:text-[4rem] lg:text-[5rem] xl:text-[6rem]",
@@ -66,7 +70,7 @@ const AnimatedShinyText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
           onHoverEnd={() => hoverEffect && setIsHovered(false)}
         >
           {text}
-        </motion.h2>
+        </MotionComponent>
       </div>
     );
   }

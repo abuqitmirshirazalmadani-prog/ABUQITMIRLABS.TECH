@@ -32,29 +32,6 @@ import { preloadRoute } from '../utils/preloader';
 const Footer = () => {
     return (
         <section id="contact" className="bg-[#ccff00] border-t-[8px] border-black w-full py-24 relative overflow-hidden text-black font-display">
-            {/* Schema Markup LocalBusiness */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "LocalBusiness",
-                        "name": "AbuQitmirLabs",
-                        "address": {
-                            "@type": "PostalAddress",
-                            "streetAddress": "8/15, 37A Rd, Shah Khalid Colony, Sector 37A",
-                            "addressLocality": "Landhi Town, Karachi",
-                            "postalCode": "75160",
-                            "addressCountry": "PK"
-                        },
-                        "geo": {
-                            "@type": "GeoCoordinates",
-                            "latitude": 24.842681712798612,
-                            "longitude": 67.1862014846566
-                        }
-                    })
-                }}
-            />
             <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
                 {/* Top Label */}
                 <div className="flex items-center justify-center">
@@ -247,6 +224,7 @@ const Footer = () => {
                             <div className="pt-4 flex flex-col gap-3">
                                 <button 
                                     onClick={() => window.location.href = '/admin'}
+                                    aria-label="Open Admin Dashboard"
                                     className="px-4 py-3 bg-black text-[#ccff00] rounded-xl hover:bg-zinc-800 transition-all font-black text-[10px] brutalist-shadow border-2 border-black cursor-pointer uppercase tracking-widest self-start w-full"
                                 >
                                     ADMIN ACCESS SYSTEM
@@ -256,8 +234,15 @@ const Footer = () => {
 
                     </div>
 
+                    {/* YMYL & Engineering Disclaimer */}
+                    <div className="mt-12 pt-6 border-t-2 border-black/10 text-center text-xs text-black/80 font-medium leading-relaxed max-w-4xl mx-auto">
+                        <p>
+                            <strong>Engineering &amp; Services Advisory:</strong> AbuQitmirLabs provides bespoke enterprise software engineering, AI agent integrations, cloud architectures, and digital consultancy. Quantitative metrics and outcomes referenced across case studies reflect specific client scenarios and are governed by technical project scopes.
+                        </p>
+                    </div>
+
                     {/* Technical Core & Copyright footer bottom info */}
-                    <div className="mt-16 pt-8 border-t-2 border-black/10 flex flex-col lg:flex-row items-center justify-between gap-6 uppercase text-[10px] font-black tracking-widest text-black/60">
+                    <div className="mt-8 pt-8 border-t-2 border-black/10 flex flex-col lg:flex-row items-center justify-between gap-6 uppercase text-[10px] font-black tracking-widest text-black/60">
                         <div className="max-w-xl text-center lg:text-left leading-relaxed">
                             Expertise Core: LLMOps, Generative AI Agents, Flutter & React Native Architecture, Cloud-Native SaaS, Headless Commerce, Semantic Entity SEO, and High-ROI Technical Content Strategy.
                         </div>

@@ -360,7 +360,7 @@ export default function HomePage() {
             </div>
             <div className="lg:col-span-4 bg-[#0a0a09] border border-white/5 rounded-2xl p-6 text-center lg:text-left">
               <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#ccff00] font-bold block mb-2">LOCAL HUB METRICS</span>
-              <h4 className="text-lg font-serif italic text-white mb-2">Karachi, Pakistan</h4>
+              <h3 className="text-lg font-serif italic text-white mb-2">Karachi, Pakistan</h3>
               <p className="text-xs text-neutral-500 font-mono leading-relaxed uppercase">
                 ACTIVE ENGINEERING LAB • SECURE CLOUD NODES • CUSTOM LLM REPO CONTROL
               </p>

@@ -11,27 +11,27 @@ const teamAvatars = [
   {
     initials: "SD",
     src: "https://i.postimg.cc/gktVScfQ/software-development.jpg",
-    alt: "Custom software development and full-stack engineering team delivering bespoke enterprise web applications and scalable cloud systems at AbuQitmirLabs.",
+    alt: "Custom software development and scalable cloud systems engineered by AbuQitmirLabs.",
   },
   {
     initials: "MD",
     src: "https://i.postimg.cc/nzxBjXDf/mobile-app-develpment-abuqitmirlabs.jpg",
-    alt: "Cross-platform mobile app development for iOS and Android platforms built using Flutter, React Native, and native architectures at AbuQitmirLabs studio.",
+    alt: "Cross-platform mobile app development for iOS and Android built by AbuQitmirLabs studio.",
   },
   {
     initials: "WD",
     src: "https://i.postimg.cc/hPYm8yd5/web-development-abuqitmirlabs.jpg",
-    alt: "Modern full-stack web development services utilizing Next.js, React, Node.js, and cloud infrastructure for fast, SEO-optimized apps at AbuQitmirLabs.",
+    alt: "Modern full-stack web development with Next.js and cloud infrastructure by AbuQitmirLabs.",
   },
   {
     initials: "AI",
     src: "https://i.postimg.cc/85wJ7tGm/ai-agent-development-abuqitmirlabs.jpg",
-    alt: "Autonomous AI agent development, custom LLM integration, workflow automation, and intelligent RAG systems engineered for enterprises by AbuQitmirLabs.",
+    alt: "Autonomous AI agent development and intelligent RAG systems engineered by AbuQitmirLabs.",
   },
   {
     initials: "SEO",
     src: "https://i.postimg.cc/NGJ2YJp9/seo-local-seo.jpg",
-    alt: "Technical SEO, semantic optimization, AEO AI search visibility, and organic growth marketing strategies engineered for brands by AbuQitmirLabs agency.",
+    alt: "Technical SEO and organic growth marketing strategies engineered by AbuQitmirLabs agency.",
   },
 ];
 
@@ -92,7 +92,7 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
       <div className="absolute inset-0 z-0">
         <img
           src="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg"
-          alt="AbuQitmirLabs custom software studio delivering AI apps, enterprise web systems, and high-performance digital solutions across US, UK, and Europe."
+          alt="AbuQitmirLabs custom software studio delivering AI apps and enterprise web solutions."
           className="w-full h-full object-cover object-center opacity-40 scale-105 filter contrast-125"
           loading="eager"
           fetchPriority="high"
@@ -173,9 +173,9 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
           {/* Left Title & Buttons */}
           <div className="lg:col-span-8 space-y-6">
-            <h2 className="text-[#C8EB5F] text-[11px] sm:text-xs font-mono font-bold tracking-[0.3em] uppercase block">
+            <span className="text-[#C8EB5F] text-[11px] sm:text-xs font-mono font-bold tracking-[0.3em] uppercase block">
               ✦ Full-Service Digital Agency &amp; Custom Software Studio ✦
-            </h2>
+            </span>
 
             <h1 className="font-serif text-white font-light text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight uppercase">
               Full-Service Digital Agency &amp; <br />
@@ -188,14 +188,19 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
             <form onSubmit={handleConsultationSubmit} className="max-w-md pt-2">
               <div className="bg-zinc-950/90 has-[input:focus]:ring-[#C8EB5F]/50 relative grid grid-cols-[1fr_auto] items-center rounded-none border border-white/15 pr-1.5 shadow-2xl has-[input:focus]:ring-2 transition-all">
                 <div className="relative flex items-center">
+                  <label htmlFor="hero-email-input" className="sr-only">
+                    Enter email or project idea
+                  </label>
                   <Mail className="text-gray-400 pointer-events-none absolute left-4 size-5" />
                   <input
+                    id="hero-email-input"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter email or project idea..."
                     className="h-12 w-full bg-transparent pl-12 pr-3 text-xs sm:text-sm text-white placeholder:text-gray-500 focus:outline-none font-mono"
-                    type="text"
+                    type="email"
                     required
+                    aria-label="Enter email or project idea"
                   />
                 </div>
                 <div>

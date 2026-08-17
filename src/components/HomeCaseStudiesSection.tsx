@@ -69,9 +69,9 @@ export default function HomeCaseStudiesSection() {
                   </h3>
                   <span className="text-zinc-600 text-xs">| Pakistan to Worldwide</span>
                 </div>
-                <h4 className="text-2xl font-bold tracking-tight text-[#ccff00]">
+                <p className="text-2xl font-bold tracking-tight text-[#ccff00]">
                   "World's First AI-Powered Quran Learning Platform"
-                </h4>
+                </p>
               </div>
 
               {/* Description Body */}

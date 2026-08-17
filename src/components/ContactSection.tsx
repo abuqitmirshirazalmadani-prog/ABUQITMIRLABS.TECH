@@ -99,7 +99,7 @@ const ContactSection = () => {
 
               {/* Direct Connect Elements */}
               <div className="space-y-6">
-                <h4 className="font-mono text-xs font-black uppercase tracking-[0.3em] text-zinc-600">[ CONTACT DIRECTORY ]</h4>
+                <h3 className="font-mono text-xs font-black uppercase tracking-[0.3em] text-zinc-600">[ CONTACT DIRECTORY ]</h3>
                 
                 {/* Mail Link */}
                 <div className="flex items-start gap-4 p-5 bg-zinc-950/40 border-2 border-zinc-800 rounded-xl transition-all">

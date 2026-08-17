@@ -232,7 +232,7 @@ export const edTechSchema = {
           "name": "What is EdTech software development?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "EdTech software development is the process of engineering digital educational systems, including custom learning management systems (LMS), WebRTC virtual classrooms, AI adaptive tutoring engines, student and teacher portals, examination platforms, and learning analytics software designed to streamline teaching and improve learning outcomes."
+            "text": "EdTech software development means building digital education tools. This includes custom learning management systems (LMS), live video classrooms, AI tutoring engines, student portals, and grading software. These tools help schools and academies teach better online."
           }
         },
         {
@@ -240,7 +240,7 @@ export const edTechSchema = {
           "name": "What is custom LMS development?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Custom LMS development involves building a tailored learning management system designed around your specific curriculum, user roles, branding, and workflows. Unlike rigid off-the-shelf software, a bespoke LMS offers full source code ownership, zero per-seat licensing fees, custom testing modules, and seamless integration with your existing administrative tools."
+            "text": "Custom LMS development builds a learning platform tailored to your curriculum and brand. You get 100% source code ownership, zero monthly user fees, custom tests, and seamless data integrations."
           }
         },
         {
@@ -248,7 +248,7 @@ export const edTechSchema = {
           "name": "How much does it cost to build an EdTech platform?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The cost to build an EdTech platform depends on platform complexity, user concurrency, custom workflows, integrations, and AI capabilities. A streamlined course portal or MVP LMS typically ranges from $10,000 to $20,000, while a comprehensive enterprise LMS with live WebRTC video, adaptive AI tutoring, and multi-tenant school management ranges from $25,000 to $50,000+."
+            "text": "A course portal MVP typically costs $10,000 to $20,000. A full enterprise platform with WebRTC live video, AI tutors, and school portals ranges from $25,000 to $50,000+ depending on features."
           }
         },
         {
@@ -256,7 +256,7 @@ export const edTechSchema = {
           "name": "How long does it take to build an LMS?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A standard custom LMS or online course MVP typically takes 6 to 10 weeks to develop and launch. Large-scale educational platforms with live WebRTC streaming, multi-tier school hierarchies, automated proctoring, and mobile applications generally require 10 to 16 weeks depending on the technical scope."
+            "text": "A standard online course MVP takes 6 to 10 weeks to build. Large-scale platforms with live video, automated testing, and mobile apps take 10 to 16 weeks."
           }
         },
         {
@@ -264,7 +264,7 @@ export const edTechSchema = {
           "name": "Can you build virtual classroom software?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. We engineer real-time virtual classroom software utilizing low-latency WebRTC streaming, interactive multi-user whiteboards, screen sharing, in-session chat, breakout rooms, automated cloud recording, and instructor moderation controls."
+            "text": "Yes. We build low-latency virtual classrooms with WebRTC. Features include interactive whiteboards, screen sharing, live chat, breakout rooms, and automatic recording."
           }
         },
         {
@@ -272,7 +272,7 @@ export const edTechSchema = {
           "name": "Can AI be integrated into an EdTech platform?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. We integrate AI capabilities including conversational 24/7 AI tutoring assistants, adaptive difficulty adjustments based on learner performance, automated quiz generation from lesson transcripts, homework grading assistance, and predictive retention analytics."
+            "text": "Yes. We add 24/7 AI tutoring assistants, adaptive quiz difficulty, automated quiz generation from lesson transcripts, and retention analytics."
           }
         },
         {
@@ -280,7 +280,7 @@ export const edTechSchema = {
           "name": "Can EdTech platforms support schools and universities?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. We architect scalable platforms specifically designed for schools, colleges, and universities, featuring multi-campus management, role-based access control for faculty, students, and parents, gradebook synchronization, transcript generation, and student information system (SIS) integrations."
+            "text": "Yes. We build systems for schools and universities with multi-campus management, role-based logins for teachers and parents, gradebooks, and student information system (SIS) sync."
           }
         },
         {
@@ -288,7 +288,7 @@ export const edTechSchema = {
           "name": "What technologies are used for EdTech development?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Our modern EdTech stack typically utilizes React, Next.js, and TypeScript on the frontend for sub-second UI interactions; Node.js, Python, PostgreSQL, and Redis for high-concurrency backend services; WebRTC and WebSockets for real-time video and collaboration; and secure cloud hosting on AWS or Google Cloud."
+            "text": "We use React, Next.js, and TypeScript on the frontend. We use Node.js, Python, PostgreSQL, and Redis for fast backends, with WebRTC for live video on AWS and Google Cloud."
           }
         },
         {
@@ -296,7 +296,7 @@ export const edTechSchema = {
           "name": "Can an EdTech platform include mobile apps?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. We develop cross-platform mobile learning applications for iOS and Android using Flutter and React Native. These apps feature offline lesson downloads, push notifications for assignment deadlines, responsive video playback, and biometric authentication."
+            "text": "Yes. We build mobile learning apps for iOS and Android using Flutter and React Native. They include offline lesson downloads, push alerts, and video playback."
           }
         },
         {
@@ -304,7 +304,7 @@ export const edTechSchema = {
           "name": "How do you secure EdTech platforms?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We implement defense-in-depth security including TLS 1.3 encryption in transit, AES-256 encryption at rest, strict role-based access control (RBAC), multi-factor authentication (MFA), automated audit logging, secure tokenized payment processing, and rigorous adherence to WCAG 2.1 AA accessibility standards."
+            "text": "We use TLS 1.3 encryption, AES-256 database protection, multi-factor logins, audit logs, and WCAG 2.1 AA accessibility standards."
           }
         }
       ]
@@ -315,15 +315,15 @@ export const edTechSchema = {
 export const edTechInitialHtml = `
 <header class="w-full bg-[#050505] border-b border-white/10 py-4 px-6">
   <nav class="max-w-7xl mx-auto flex items-center justify-between" aria-label="Main Navigation">
-    <a href="/" class="text-xl font-bold tracking-tighter text-white">AbuQitmirLabs<span class="text-[#ccff00]">.TECH</span></a>
+    <a href="/" class="text-xl font-bold tracking-tighter text-white" aria-label="AbuQitmirLabs Homepage">AbuQitmirLabs<span class="text-[#ccff00]">.TECH</span></a>
     <div class="flex items-center space-x-6 text-sm font-medium text-gray-300">
-      <a href="/solutions/edtech" class="text-[#ccff00]">EdTech Solutions</a>
-      <a href="/custom-software" class="hover:text-white transition-colors">Custom Software</a>
-      <a href="/web-development" class="hover:text-white transition-colors">Web Development</a>
-      <a href="/mobile-app-development" class="hover:text-white transition-colors">Mobile Apps</a>
-      <a href="/ai-agent-development" class="hover:text-white transition-colors">AI Agents</a>
-      <a href="/blog" class="hover:text-white transition-colors">Blog</a>
-      <a href="/contact" class="px-4 py-2 bg-[#ccff00] text-black font-bold rounded-lg hover:bg-white transition-all">Contact Us</a>
+      <a href="/solutions/edtech" class="text-[#ccff00]" aria-label="EdTech Development Solutions">EdTech Solutions</a>
+      <a href="/custom-software" class="hover:text-white transition-colors" aria-label="Custom Software Engineering">Custom Software</a>
+      <a href="/web-development" class="hover:text-white transition-colors" aria-label="Web Development Services">Web Development</a>
+      <a href="/mobile-app-development" class="hover:text-white transition-colors" aria-label="Mobile App Development">Mobile Apps</a>
+      <a href="/ai-agent-development" class="hover:text-white transition-colors" aria-label="AI Agent Development">AI Agents</a>
+      <a href="/blog" class="hover:text-white transition-colors" aria-label="Engineering Blog">Blog</a>
+      <a href="/contact" class="px-4 py-2 bg-[#ccff00] text-black font-bold rounded-lg hover:bg-white transition-all" aria-label="Contact AbuQitmirLabs Studio">Contact Us</a>
     </div>
   </nav>
 </header>
@@ -340,22 +340,31 @@ export const edTechInitialHtml = `
     </h1>
 
     <!-- Direct Answer Block for AEO/GEO Search Engines -->
-    <div class="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl max-w-4xl mb-10 shadow-2xl">
+    <div class="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl max-w-4xl mb-8 shadow-2xl">
       <p class="text-base md:text-lg text-gray-200 leading-relaxed font-light">
-        <strong class="text-[#ccff00] font-semibold">Direct Answer:</strong> EdTech software development is the process of building digital education platforms such as learning management systems, virtual classrooms, student portals, assessment tools, AI tutoring systems, and learning analytics platforms. Custom EdTech software connects teaching, learning, administration, and engagement workflows in one scalable digital environment.
+        <strong class="text-[#ccff00] font-semibold">Direct Answer:</strong> EdTech software development builds digital learning systems. This includes learning management systems, live video classrooms, student portals, online exams, AI tutors, and learning analytics. Custom software unifies teaching, testing, and administration in one reliable digital hub.
       </p>
     </div>
 
+    <!-- E-E-A-T Inline Trust Signal Bar -->
+    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-zinc-300 py-3 px-4 bg-zinc-900/80 border border-[#ccff00]/30 rounded-xl mb-8 max-w-3xl">
+      <span class="text-[#ccff00] font-bold">🎓 TajweedPage.com — Delivered</span>
+      <span class="text-zinc-600">•</span>
+      <span>✅ WCAG 2.1 AA Compliant Builds</span>
+      <span class="text-zinc-600">•</span>
+      <span>🔒 100% IP &amp; Source Code Ownership</span>
+    </div>
+
     <p class="text-xl md:text-2xl text-gray-400 max-w-3xl leading-relaxed mb-10 font-light">
-      Off-the-shelf course plugins create rigid boundaries, slow down under peak exam traffic, and require recurring per-seat fees. We engineer bespoke, high-performance learning software with full intellectual property ownership, tailored for universities, training academies, and forward-thinking education startups.
+      Generic course plugins often crash during live exams and charge heavy monthly fees. We build custom, AI-enhanced learning software tailored for universities, academies, and fast-growing EdTech startups.
     </p>
 
     <div class="flex flex-wrap items-center gap-5">
-      <a href="/contact" class="px-8 py-4 bg-[#ccff00] text-black font-extrabold rounded-xl hover:scale-105 transition-all text-sm uppercase tracking-wider shadow-[0_0_30px_rgba(204,255,0,0.3)]">
-        Discuss Your EdTech Platform &rarr;
+      <a href="/contact" aria-label="Contact AbuQitmirLabs to start your EdTech platform project" class="px-8 py-4 bg-[#ccff00] text-black font-extrabold rounded-xl hover:scale-105 transition-all text-sm uppercase tracking-wider shadow-[0_0_30px_rgba(204,255,0,0.3)]">
+        Start your EdTech platform project
       </a>
-      <a href="/custom-software" class="px-8 py-4 border border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-all text-sm uppercase tracking-wider">
-        Explore Custom Software Engineering
+      <a href="/custom-software" aria-label="Learn more about our custom software engineering services" class="px-8 py-4 border border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-all text-sm uppercase tracking-wider">
+        View Custom Software Services
       </a>
     </div>
   </section>
@@ -368,10 +377,10 @@ export const edTechInitialHtml = `
         What Is EdTech Software Development?
       </h2>
       <p class="text-gray-300 text-lg leading-relaxed mb-6 font-light">
-        <strong class="text-white font-medium">EdTech software development</strong> encompasses the comprehensive architectural planning, user experience design, backend infrastructure, and frontend engineering of digital learning systems. Modern education technology transforms traditional classrooms into interactive, data-informed digital ecosystems where learners can acquire skills at their own pace, instructors can assess comprehension in real time, and administrators can oversee operations with complete data clarity.
+        <strong class="text-white font-medium">EdTech software development</strong> is the engineering of digital learning systems. Modern education technology turns traditional classrooms into interactive online platforms. Students learn at their own pace, teachers review progress in real time, and administrators manage multiple campuses with ease.
       </p>
       <p class="text-gray-300 text-lg leading-relaxed mb-6 font-light">
-        Unlike generic template solutions or rigid SaaS platforms that impose per-seat licensing penalties as your student body expands, custom education platforms provide total code ownership, granular data security, custom grading rules, and direct integration with your existing administrative tools. Whether connecting live video classrooms via WebRTC, implementing <a href="/ai-agent-development" class="text-[#ccff00] hover:underline font-medium">AI agent development</a> for 24/7 tutoring, or syncing student records with enterprise databases, purpose-built EdTech software establishes a dependable digital backbone for scalable education.
+        Generic plugins charge monthly user fees and struggle under high traffic. Purpose-built platforms give you full code ownership and zero licensing limits. We combine <a href="/web-development" class="text-[#ccff00] hover:underline font-medium" aria-label="Explore high-performance web development">high-performance web development</a> with <a href="/ai-agent-development" class="text-[#ccff00] hover:underline font-medium" aria-label="Explore AI agent development">custom AI agents</a> to help educational institutions grow sustainably.
       </p>
     </div>
   </section>
@@ -384,7 +393,7 @@ export const edTechInitialHtml = `
         Custom EdTech Software Solutions We Build
       </h2>
       <p class="text-gray-400 text-lg font-light leading-relaxed">
-        We engineer specialized educational software tailored to your pedagogical methodology, user scale, and operational requirements.
+        Built with AI tutoring, WebRTC video streaming, high-speed testing engines, and live student analytics.
       </p>
     </div>
 
@@ -393,113 +402,113 @@ export const edTechInitialHtml = `
         <div>
           <h3 class="text-2xl font-bold mb-4 text-white">Learning Management System Development</h3>
           <p class="text-gray-300 text-sm leading-relaxed mb-4 font-light">
-            Bespoke LMS platforms engineered for modular course authoring, multi-format media delivery (video, audio, interactive exercises), hierarchical syllabus builders, prerequisite unlocking, and automated gradebook tracking.
+            Custom LMS platforms built for modular courses, video streaming, syllabus builders, and automated gradebook tracking.
           </p>
         </div>
-        <a href="/web-development" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block">High-performance web development &rarr;</a>
+        <a href="/web-development" aria-label="Explore custom LMS web development" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block font-semibold">Explore custom LMS web development</a>
       </article>
 
       <article class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-[#ccff00]/50 transition-all flex flex-col justify-between">
         <div>
           <h3 class="text-2xl font-bold mb-4 text-white">Virtual Classroom Development</h3>
           <p class="text-gray-300 text-sm leading-relaxed mb-4 font-light">
-            Ultra-low-latency real-time video classrooms built with WebRTC. Includes collaborative interactive whiteboards, screen sharing, multi-track audio, breakout rooms, automated cloud recording, and instructor moderation.
+            Low-latency real-time video classrooms built with WebRTC. Includes interactive whiteboards, screen sharing, and breakout rooms.
           </p>
         </div>
-        <a href="/custom-software" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block">Custom software engineering &rarr;</a>
+        <a href="/custom-software" aria-label="Explore live video software engineering" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block font-semibold">Explore live video software engineering</a>
       </article>
 
       <article class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-[#ccff00]/50 transition-all flex flex-col justify-between">
         <div>
           <h3 class="text-2xl font-bold mb-4 text-white">Online Learning Platform Development</h3>
           <p class="text-gray-300 text-sm leading-relaxed mb-4 font-light">
-            Scalable course selling marketplaces and cohort-based learning hubs with integrated payment gateways, subscription tiers, affiliate referral tracking, and automated access provisioning.
+            Course selling hubs and cohort communities with payment gateways, memberships, and automated student enrollment.
           </p>
         </div>
-        <a href="/web-development" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block">Explore web architectures &rarr;</a>
+        <a href="/web-development" aria-label="Explore learning platform web architecture" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block font-semibold">Explore learning platform web architecture</a>
       </article>
 
       <article class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-[#ccff00]/50 transition-all flex flex-col justify-between">
         <div>
           <h3 class="text-2xl font-bold mb-4 text-white">Student and Teacher Portals</h3>
           <p class="text-gray-300 text-sm leading-relaxed mb-4 font-light">
-            Role-tailored dashboards providing students with homework hubs, progress charts, and peer discussions, while equipping educators with rapid assignment grading, lesson schedule managers, and attendance tools.
+            Role-based dashboards for homework tracking, gradebooks, lesson scheduling, and parent notifications.
           </p>
         </div>
-        <a href="/mobile-app-development" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block">EdTech mobile app development &rarr;</a>
+        <a href="/mobile-app-development" aria-label="Explore mobile student portal engineering" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block font-semibold">Explore mobile student portal engineering</a>
       </article>
 
       <article class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-[#ccff00]/50 transition-all flex flex-col justify-between">
         <div>
           <h3 class="text-2xl font-bold mb-4 text-white">Assessment and Examination Platforms</h3>
           <p class="text-gray-300 text-sm leading-relaxed mb-4 font-light">
-            High-concurrency testing engines engineered to process thousands of simultaneous submissions with randomized question banks, timed test locks, rich question formats (MCQs, coding sandboxes, essays), and automated scoring.
+            High-concurrency testing engines built to handle thousands of concurrent test takers with auto-scoring and timers.
           </p>
         </div>
-        <a href="/custom-software" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block">High-concurrency testing systems &rarr;</a>
+        <a href="/custom-software" aria-label="Explore online examination systems" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block font-semibold">Explore online examination systems</a>
       </article>
 
       <article class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-[#ccff00]/50 transition-all flex flex-col justify-between">
         <div>
           <h3 class="text-2xl font-bold mb-4 text-white">Certification and Credential Platforms</h3>
           <p class="text-gray-300 text-sm leading-relaxed mb-4 font-light">
-            Automated PDF certificate generation, verifiable cryptographic credential URLs, digital badge integrations for LinkedIn, and verifiable transcript repositories that prevent educational credential fraud.
+            Automated PDF certificates, digital badges for LinkedIn, and verifiable transcript links that prevent credential fraud.
           </p>
         </div>
-        <a href="/solutions/ai-automation" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block">AI workflow automation &rarr;</a>
+        <a href="/solutions/ai-automation" aria-label="Explore credential workflow automation" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block font-semibold">Explore credential workflow automation</a>
       </article>
 
       <article class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-[#ccff00]/50 transition-all flex flex-col justify-between">
         <div>
           <h3 class="text-2xl font-bold mb-4 text-white">AI-Powered Tutoring and Learning Assistants</h3>
           <p class="text-gray-300 text-sm leading-relaxed mb-4 font-light">
-            Adaptive 24/7 AI tutoring agents powered by large language models that guide students through challenging STEM and humanities concepts using step-by-step Socratic hints without directly revealing test answers.
+            24/7 AI tutoring agents that guide students through tough concepts using step-by-step Socratic hints without spoiling answers.
           </p>
         </div>
-        <a href="/ai-agent-development" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block">Custom AI tutor development &rarr;</a>
+        <a href="/ai-agent-development" aria-label="Explore custom AI tutor development" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block font-semibold">Explore custom AI tutor development</a>
       </article>
 
       <article class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-[#ccff00]/50 transition-all flex flex-col justify-between">
         <div>
           <h3 class="text-2xl font-bold mb-4 text-white">Learning Analytics and Reporting</h3>
           <p class="text-gray-300 text-sm leading-relaxed mb-4 font-light">
-            Executive learning telemetry dashboards that track student retention rates, drop-off hotspots within video modules, subject mastery distributions, and real-time intervention indicators for at-risk learners.
+            Actionable dashboards tracking course completion, video drop-off points, and early warnings for struggling learners.
           </p>
         </div>
-        <a href="/custom-software" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block">Analytics &amp; telemetry pipelines &rarr;</a>
+        <a href="/custom-software" aria-label="Explore student analytics pipelines" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block font-semibold">Explore student analytics pipelines</a>
       </article>
 
       <article class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-[#ccff00]/50 transition-all flex flex-col justify-between">
         <div>
           <h3 class="text-2xl font-bold mb-4 text-white">Gamification and Student Engagement</h3>
           <p class="text-gray-300 text-sm leading-relaxed mb-4 font-light">
-            Interactive learning loops featuring daily streak counters, achievement badges, leaderboards, interactive quiz challenges, and reward systems proven to boost course completion rates.
+            Daily streak counters, achievement badges, leaderboards, and interactive quiz challenges that boost course completion.
           </p>
         </div>
-        <a href="/mobile-app-development" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block">Engaging mobile experiences &rarr;</a>
+        <a href="/mobile-app-development" aria-label="Explore gamified learning experiences" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block font-semibold">Explore gamified learning experiences</a>
       </article>
 
       <article class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-[#ccff00]/50 transition-all flex flex-col justify-between md:col-span-2 lg:col-span-3">
         <div>
           <h3 class="text-2xl font-bold mb-4 text-white">Education Workflow Automation</h3>
           <p class="text-gray-300 text-sm leading-relaxed mb-4 font-light">
-            End-to-end automation of administrative overhead, including student onboarding emails, automated grading sync with SIS records, invoice generation, attendance alerts to parents, and course renewal reminders.
+            Automate student onboarding emails, SIS grade syncing, billing invoices, and parent attendance alerts.
           </p>
         </div>
-        <a href="/solutions/ai-automation" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block">Explore automated educational workflows &rarr;</a>
+        <a href="/solutions/ai-automation" aria-label="Explore educational workflow automation" class="text-xs font-mono uppercase text-[#ccff00] hover:underline mt-4 block font-semibold">Explore educational workflow automation</a>
       </article>
     </div>
   </section>
 
-  <!-- Section 3: EdTech Solutions by Business Need / Who Is This For? -->
+  <!-- Section 3: EdTech Solutions by Business Need -->
   <section class="py-20 md:py-28 border-b border-white/10 px-6 max-w-7xl mx-auto" aria-labelledby="business-needs-heading">
     <div class="max-w-3xl mb-16">
-      <span class="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Market Segmentation</span>
+      <span class="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Market Focus</span>
       <h2 id="business-needs-heading" class="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 text-white">
         EdTech Solutions by Business Need
       </h2>
       <p class="text-gray-400 text-lg font-light leading-relaxed">
-        Different education providers face distinct operational and technological hurdles. Here is how our purpose-built engineering solves specific sector challenges.
+        Different organizations have unique teaching needs. Here is how our custom software solves specific sector challenges.
       </p>
     </div>
 
@@ -507,42 +516,42 @@ export const edTechInitialHtml = `
       <div class="p-8 rounded-2xl bg-zinc-900/40 border border-white/10">
         <h3 class="text-xl font-bold mb-3 text-white">EdTech Startups</h3>
         <p class="text-gray-300 text-sm leading-relaxed font-light">
-          Startups require rapid MVP engineering to validate novel pedagogical ideas without accumulating technical debt. We build lightweight, highly extensible platforms featuring modular APIs and full IP ownership.
+          Startups need fast MVP builds to validate their teaching models. We build clean, extensible platforms with full code ownership.
         </p>
       </div>
 
       <div class="p-8 rounded-2xl bg-zinc-900/40 border border-white/10">
         <h3 class="text-xl font-bold mb-3 text-white">Schools and Academies</h3>
         <p class="text-gray-300 text-sm leading-relaxed font-light">
-          K-12 schools and private academies need intuitive parent-teacher communication, attendance tracking, secure student data management, and child-safe digital testing environments.
+          K-12 schools need parent-teacher messaging, attendance tracking, secure student records, and child-safe testing tools.
         </p>
       </div>
 
       <div class="p-8 rounded-2xl bg-zinc-900/40 border border-white/10">
-        <h3 class="text-xl font-bold mb-3 text-white">Universities and Higher Education</h3>
+        <h3 class="text-xl font-bold mb-3 text-white">Universities &amp; Colleges</h3>
         <p class="text-gray-300 text-sm leading-relaxed font-light">
-          Colleges and universities demand high-concurrency exam infrastructure, multi-department course catalogs, research repository access, and seamless integration with legacy ERP systems.
+          Universities need scalable exam tools, multi-department course catalogs, research libraries, and SIS database connections.
         </p>
       </div>
 
       <div class="p-8 rounded-2xl bg-zinc-900/40 border border-white/10">
-        <h3 class="text-xl font-bold mb-3 text-white">Corporate Training Platforms</h3>
+        <h3 class="text-xl font-bold mb-3 text-white">Corporate Training Teams</h3>
         <p class="text-gray-300 text-sm leading-relaxed font-light">
-          Enterprises require compliance tracking, employee onboarding paths, SCORM/xAPI compatibility, role-based skill certification, and executive HR telemetry dashboards.
+          Companies need compliance tracking, employee onboarding paths, skill certification badges, and HR progress reports.
         </p>
       </div>
 
       <div class="p-8 rounded-2xl bg-zinc-900/40 border border-white/10">
-        <h3 class="text-xl font-bold mb-3 text-white">Online Course Businesses</h3>
+        <h3 class="text-xl font-bold mb-3 text-white">Online Course Creators</h3>
         <p class="text-gray-300 text-sm leading-relaxed font-light">
-          Creators and cohort coaches outgrowing platforms like Teachable need custom checkout funnels, automated community spaces, digital upsells, and zero platform transaction cuts.
+          Coaches and course creators need custom checkout funnels, community chat rooms, digital upsells, and zero platform transaction cuts.
         </p>
       </div>
 
       <div class="p-8 rounded-2xl bg-zinc-900/40 border border-white/10">
-        <h3 class="text-xl font-bold mb-3 text-white">Enterprise Education Platforms</h3>
+        <h3 class="text-xl font-bold mb-3 text-white">Enterprise Education Providers</h3>
         <p class="text-gray-300 text-sm leading-relaxed font-light">
-          Global credentialing organizations require multi-tenant architectures, localized multi-language course content, localized tax handling, and enterprise SLA-backed reliability.
+          Global academies need multi-tenant setups, multi-language course materials, local tax compliance, and 99.9% uptime.
         </p>
       </div>
     </div>
@@ -556,42 +565,42 @@ export const edTechInitialHtml = `
         Key Features of Modern EdTech Platforms
       </h2>
       <p class="text-gray-400 text-lg font-light leading-relaxed">
-        Every platform we engineer is equipped with robust, production-grade features built for scalability, intuitive administration, and high learner retention.
+        Every platform we build comes equipped with reliable features designed for high student engagement and simple administration.
       </p>
     </div>
 
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-sm">
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
         <strong class="text-white block mb-1 text-base">Course Management</strong>
-        <p class="text-gray-400 font-light">Modular curriculum builders with video, audio, text, and rich downloadable files.</p>
+        <p class="text-gray-400 font-light">Curriculum builders with video, audio, code exercises, and rich downloads.</p>
       </div>
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
         <strong class="text-white block mb-1 text-base">Student Dashboards</strong>
-        <p class="text-gray-400 font-light">Personalized learning paths, upcoming deadlines, and progress telemetry.</p>
+        <p class="text-gray-400 font-light">Personalized lesson paths, upcoming assignment deadlines, and progress charts.</p>
       </div>
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
         <strong class="text-white block mb-1 text-base">Teacher Dashboards</strong>
-        <p class="text-gray-400 font-light">Rapid gradebook grading, assignment reviews, and class performance overviews.</p>
+        <p class="text-gray-400 font-light">Fast grading tools, student assignment reviews, and class performance overviews.</p>
       </div>
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
         <strong class="text-white block mb-1 text-base">Assignments &amp; Quizzes</strong>
-        <p class="text-gray-400 font-light">Timed submissions, rubric evaluations, automated grading, and rich file attachments.</p>
+        <p class="text-gray-400 font-light">Timed submissions, automated grading rubrics, and rich file attachments.</p>
       </div>
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
-        <strong class="text-white block mb-1 text-base">High-Capacity Exams</strong>
+        <strong class="text-white block mb-1 text-base">Exams &amp; Testing</strong>
         <p class="text-gray-400 font-light">Randomized question banks, anti-cheating browser locks, and auto-submit timers.</p>
       </div>
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
-        <strong class="text-white block mb-1 text-base">Progress &amp; Attendance</strong>
-        <p class="text-gray-400 font-light">Real-time attendance logging, completion badges, and milestone tracking.</p>
+        <strong class="text-white block mb-1 text-base">Progress Tracking</strong>
+        <p class="text-gray-400 font-light">Real-time attendance logging, completion badges, and milestone alerts.</p>
       </div>
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
-        <strong class="text-white block mb-1 text-base">Digital Certificates</strong>
-        <p class="text-gray-400 font-light">Automated PDF generation with verifiable QR codes and LinkedIn sharing.</p>
+        <strong class="text-white block mb-1 text-base">Certificates</strong>
+        <p class="text-gray-400 font-light">Automated PDF certificates with verifiable QR codes and LinkedIn sharing.</p>
       </div>
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
         <strong class="text-white block mb-1 text-base">Payment Processing</strong>
-        <p class="text-gray-400 font-light">Stripe, PayPal, Apple Pay, multi-currency pricing, and subscription billing.</p>
+        <p class="text-gray-400 font-light">Stripe, PayPal, Apple Pay, multi-currency support, and recurring subscriptions.</p>
       </div>
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
         <strong class="text-white block mb-1 text-base">Smart Notifications</strong>
@@ -599,31 +608,31 @@ export const edTechInitialHtml = `
       </div>
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
         <strong class="text-white block mb-1 text-base">Video Learning</strong>
-        <p class="text-gray-400 font-light">Adaptive bitrate video streaming with playback speed control and captions.</p>
+        <p class="text-gray-400 font-light">Adaptive bitrate video streaming with playback speed control and subtitles.</p>
       </div>
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
         <strong class="text-white block mb-1 text-base">Live WebRTC Classes</strong>
-        <p class="text-gray-400 font-light">Low-latency video streaming, whiteboards, breakout rooms, and session records.</p>
+        <p class="text-gray-400 font-light">Low-latency video classrooms, interactive whiteboards, and breakout rooms.</p>
       </div>
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
-        <strong class="text-white block mb-1 text-base">Community &amp; Forums</strong>
-        <p class="text-gray-400 font-light">Threaded discussions, peer upvoting, teacher endorsements, and chat rooms.</p>
+        <strong class="text-white block mb-1 text-base">Discussion Forums</strong>
+        <p class="text-gray-400 font-light">Threaded discussions, peer upvoting, teacher badges, and chat rooms.</p>
       </div>
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
         <strong class="text-white block mb-1 text-base">Learning Analytics</strong>
-        <p class="text-gray-400 font-light">Student drop-off identification, comprehension graphs, and cohort comparisons.</p>
+        <p class="text-gray-400 font-light">Student drop-off tracking, quiz score distributions, and progress trends.</p>
       </div>
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
-        <strong class="text-white block mb-1 text-base">Role-Based Access (RBAC)</strong>
-        <p class="text-gray-400 font-light">Granular permissions for Super Admins, Instructors, TAs, Students, and Parents.</p>
+        <strong class="text-white block mb-1 text-base">Role-Based Access</strong>
+        <p class="text-gray-400 font-light">Granular permissions for Admins, Instructors, TAs, Students, and Parents.</p>
       </div>
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
         <strong class="text-white block mb-1 text-base">Mobile Responsive</strong>
-        <p class="text-gray-400 font-light">Flawless touch experiences on iOS and Android phones, tablets, and desktops.</p>
+        <p class="text-gray-400 font-light">Fast mobile experiences on iOS and Android phones, tablets, and desktops.</p>
       </div>
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
-        <strong class="text-white block mb-1 text-base">WCAG Accessibility</strong>
-        <p class="text-gray-400 font-light">Screen reader compatibility, keyboard navigation, and high contrast styling.</p>
+        <strong class="text-white block mb-1 text-base">Accessibility (WCAG)</strong>
+        <p class="text-gray-400 font-light">Full screen reader compatibility, keyboard controls, and high contrast.</p>
       </div>
     </div>
   </section>
@@ -636,7 +645,7 @@ export const edTechInitialHtml = `
         AI in EdTech
       </h2>
       <p class="text-gray-400 text-lg font-light leading-relaxed">
-        Artificial intelligence is transforming passive education into dynamic, adaptive learning. We build safe, hallucination-resistant AI systems tailored specifically for educational contexts.
+        Artificial intelligence turns passive video watching into active, personalized learning. We build reliable, safe AI tools designed for education.
       </p>
     </div>
 
@@ -644,42 +653,42 @@ export const edTechInitialHtml = `
       <div class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10">
         <h3 class="text-xl font-bold mb-3 text-white">AI Tutors</h3>
         <p class="text-gray-300 text-sm leading-relaxed font-light">
-          Context-aware AI tutors capable of guiding learners through complex equations, writing revisions, and code debugging with personalized Socratic questioning.
+          Context-aware AI tutors that guide students through tough equations and code with step-by-step hints.
         </p>
       </div>
 
       <div class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10">
-        <h3 class="text-xl font-bold mb-3 text-white">AI Learning Assistants</h3>
+        <h3 class="text-xl font-bold mb-3 text-white">AI Study Assistants</h3>
         <p class="text-gray-300 text-sm leading-relaxed font-light">
-          In-course assistants that summarize lengthy lecture transcripts, generate practice flashcards, and answer student questions directly from validated course notes.
+          In-course assistants that summarize lecture videos, generate flashcards, and answer lesson questions.
         </p>
       </div>
 
       <div class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10">
-        <h3 class="text-xl font-bold mb-3 text-white">Personalized Learning</h3>
+        <h3 class="text-xl font-bold mb-3 text-white">Adaptive Learning</h3>
         <p class="text-gray-300 text-sm leading-relaxed font-light">
-          Adaptive learning algorithms that measure quiz performance in real time and automatically recalibrate exercise difficulty to fill specific knowledge gaps.
+          Smart algorithms that track quiz scores in real time and adjust question difficulty automatically.
         </p>
       </div>
 
       <div class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10">
-        <h3 class="text-xl font-bold mb-3 text-white">AI Assessment Support</h3>
+        <h3 class="text-xl font-bold mb-3 text-white">AI Assessment Tools</h3>
         <p class="text-gray-300 text-sm leading-relaxed font-light">
-          Automated evaluation tools that assist educators with essay feedback, rubric alignment, grammar scoring, and plagiarism detection.
+          Automated tools that help teachers grade essays, evaluate rubrics, and spot plagiarism.
         </p>
       </div>
 
       <div class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10">
-        <h3 class="text-xl font-bold mb-3 text-white">Education AI Agents</h3>
+        <h3 class="text-xl font-bold mb-3 text-white">Student Support Agents</h3>
         <p class="text-gray-300 text-sm leading-relaxed font-light">
-          Autonomous agents that conduct proactive student check-ins, send study reminders when engagement drops, and escalate difficulties to instructors.
+          Automated agents that send study reminders when activity drops and alert teachers to struggling students.
         </p>
       </div>
 
       <div class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10">
-        <h3 class="text-xl font-bold mb-3 text-white">Automated Administrative Workflows</h3>
+        <h3 class="text-xl font-bold mb-3 text-white">Admin Automation</h3>
         <p class="text-gray-300 text-sm leading-relaxed font-light">
-          Intelligent document parsers that extract enrollment records, match transcripts against graduation requirements, and auto-generate compliance reports.
+          Smart document tools that parse student applications, match transcripts, and generate school reports.
         </p>
       </div>
     </div>
@@ -693,10 +702,10 @@ export const edTechInitialHtml = `
         Virtual Classroom and Live Learning Technology
       </h2>
       <p class="text-gray-300 text-lg leading-relaxed mb-6 font-light">
-        High-quality remote learning requires resilient, sub-second video infrastructure that remains crystal clear across varying network conditions. We engineer custom virtual classroom platforms using <strong class="text-white font-medium">WebRTC</strong>, WebSocket event streaming, and Selective Forwarding Units (SFUs) to deliver low-latency interactive video broadcasts.
+        High-quality remote classes need fast, low-latency video. We build custom virtual classrooms using <strong class="text-white font-medium">WebRTC</strong> and WebSockets. Video stays clear even on slower internet connections.
       </p>
       <p class="text-gray-300 text-lg leading-relaxed mb-6 font-light">
-        Our live classrooms include collaborative vector whiteboards where instructors and students can solve problems simultaneously, selective screen sharing, moderated real-time chat with emoji reactions, automated attendance logs, instant hand-raising queues, and breakout rooms where students can collaborate in small pods before returning to the main session. Automated server-side recording archives classes directly to secure cloud storage for on-demand review.
+        Our classrooms include shared whiteboards, screen sharing, live chat, attendance logging, and small breakout rooms. Classes record automatically to secure cloud storage for instant student replay.
       </p>
     </div>
   </section>
@@ -709,33 +718,33 @@ export const edTechInitialHtml = `
         EdTech Technology Stack
       </h2>
       <p class="text-gray-400 text-lg font-light leading-relaxed">
-        We select battle-tested, modern engineering tools configured specifically for performance, sub-second rendering, and high-concurrency reliability.
+        We select fast, modern tools designed for high performance and sub-second page loads.
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
-        <span class="text-[#ccff00] text-xs font-mono uppercase block mb-2">Frontend Architecture</span>
+        <span class="text-[#ccff00] text-xs font-mono uppercase block mb-2">Frontend</span>
         <strong class="text-white block mb-2">React, Next.js &amp; TypeScript</strong>
-        <p class="text-gray-400 text-xs font-light">Fast, accessible interfaces with server-side rendering, instant search filters, and smooth mobile transitions.</p>
+        <p class="text-gray-400 text-xs font-light">Fast user interfaces with instant search filters and smooth mobile transitions.</p>
       </div>
 
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
-        <span class="text-[#ccff00] text-xs font-mono uppercase block mb-2">Backend &amp; APIs</span>
-        <strong class="text-white block mb-2">Node.js, Python &amp; REST/GraphQL</strong>
-        <p class="text-gray-400 text-xs font-light">Scalable microservices for exam processing, automated grading logic, and secure user permission gates.</p>
+        <span class="text-[#ccff00] text-xs font-mono uppercase block mb-2">Backend</span>
+        <strong class="text-white block mb-2">Node.js, Python &amp; REST APIs</strong>
+        <p class="text-gray-400 text-xs font-light">Scalable backend services for exam grading, user roles, and database queries.</p>
       </div>
 
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
-        <span class="text-[#ccff00] text-xs font-mono uppercase block mb-2">Real-Time &amp; Video</span>
+        <span class="text-[#ccff00] text-xs font-mono uppercase block mb-2">Live Video</span>
         <strong class="text-white block mb-2">WebRTC, WebSockets &amp; LiveKit</strong>
-        <p class="text-gray-400 text-xs font-light">Sub-200ms latency video classrooms, interactive whiteboards, and real-time live polling infrastructure.</p>
+        <p class="text-gray-400 text-xs font-light">Sub-second video streaming, shared whiteboards, and live classroom polling.</p>
       </div>
 
       <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
         <span class="text-[#ccff00] text-xs font-mono uppercase block mb-2">Database &amp; Cloud</span>
         <strong class="text-white block mb-2">PostgreSQL, Redis &amp; AWS/GCP</strong>
-        <p class="text-gray-400 text-xs font-light">ACID-compliant student databases, high-speed Redis caching, and automated CDN edge video delivery.</p>
+        <p class="text-gray-400 text-xs font-light">Secure databases, fast caching, and global CDN video delivery.</p>
       </div>
     </div>
   </section>
@@ -748,10 +757,10 @@ export const edTechInitialHtml = `
         EdTech Security and Accessibility
       </h2>
       <p class="text-gray-300 text-lg leading-relaxed mb-6 font-light">
-        Educational platforms store sensitive student data, academic records, and payment credentials. We implement enterprise-grade security protocols across all layers: <strong class="text-white font-medium">TLS 1.3</strong> for all data in transit, <strong class="text-white font-medium">AES-256 encryption</strong> for stored databases, strict role-based access control (RBAC), multi-factor authentication (MFA), and immutable audit logs that record all administrative grade modifications.
+        Learning platforms store student records, tests, and billing data. We implement strong security: <strong class="text-white font-medium">TLS 1.3</strong> encryption in transit, <strong class="text-white font-medium">AES-256</strong> database encryption, role-based logins, and audit logs for all grade modifications.
       </p>
       <p class="text-gray-300 text-lg leading-relaxed mb-6 font-light">
-        Inclusivity is an integral engineering requirement. All user interfaces are developed adhering to <strong class="text-white font-medium">WCAG 2.1 AA</strong> accessibility benchmarks, ensuring comprehensive screen-reader support (ARIA attributes), full keyboard navigation for motor-impaired learners, clear visual focus states, and high contrast ratios across all educational modules.
+        Inclusivity is an essential requirement. All interfaces follow <strong class="text-white font-medium">WCAG 2.1 AA</strong> standards. We test for full screen-reader support, keyboard navigation, and high color contrast.
       </p>
     </div>
   </section>
@@ -764,7 +773,7 @@ export const edTechInitialHtml = `
         How We Build EdTech Software
       </h2>
       <p class="text-gray-400 text-lg font-light leading-relaxed">
-        Our disciplined 8-stage software engineering process ensures that your education platform is delivered on time, within scope, and engineered for high learner engagement.
+        Our 8-step engineering process ensures your learning platform is delivered on schedule and built to scale.
       </p>
     </div>
 
@@ -772,49 +781,49 @@ export const edTechInitialHtml = `
       <div class="p-6 rounded-xl bg-zinc-900/40 border border-white/10">
         <span class="text-[#ccff00] font-mono text-xl font-bold block mb-2">01</span>
         <h3 class="text-lg font-bold text-white mb-2">Discovery</h3>
-        <p class="text-gray-400 text-xs font-light leading-relaxed">Evaluating pedagogical objectives, learner demographics, licensing requirements, and curriculum structures.</p>
+        <p class="text-gray-400 text-xs font-light leading-relaxed">Understanding course goals, student demographics, and curriculum requirements.</p>
       </div>
 
       <div class="p-6 rounded-xl bg-zinc-900/40 border border-white/10">
         <span class="text-[#ccff00] font-mono text-xl font-bold block mb-2">02</span>
-        <h3 class="text-lg font-bold text-white mb-2">Learning Workflow Analysis</h3>
-        <p class="text-gray-400 text-xs font-light leading-relaxed">Mapping student paths, assignment review pipelines, automated grading rubrics, and reporting protocols.</p>
+        <h3 class="text-lg font-bold text-white mb-2">Workflow Mapping</h3>
+        <p class="text-gray-400 text-xs font-light leading-relaxed">Planning student learning paths, teacher reviews, and grading rules.</p>
       </div>
 
       <div class="p-6 rounded-xl bg-zinc-900/40 border border-white/10">
         <span class="text-[#ccff00] font-mono text-xl font-bold block mb-2">03</span>
-        <h3 class="text-lg font-bold text-white mb-2">UX/UI Architecture</h3>
-        <p class="text-gray-400 text-xs font-light leading-relaxed">Designing clean, WCAG-compliant dashboards and focus-driven interfaces in Figma for rapid stakeholder validation.</p>
+        <h3 class="text-lg font-bold text-white mb-2">UX/UI Design</h3>
+        <p class="text-gray-400 text-xs font-light leading-relaxed">Creating clean, WCAG-compliant interface designs in Figma for fast review.</p>
       </div>
 
       <div class="p-6 rounded-xl bg-zinc-900/40 border border-white/10">
         <span class="text-[#ccff00] font-mono text-xl font-bold block mb-2">04</span>
-        <h3 class="text-lg font-bold text-white mb-2">Platform Architecture</h3>
-        <p class="text-gray-400 text-xs font-light leading-relaxed">Designing scalable relational schemas in PostgreSQL, caching topologies in Redis, and secure API microservices.</p>
+        <h3 class="text-lg font-bold text-white mb-2">System Architecture</h3>
+        <p class="text-gray-400 text-xs font-light leading-relaxed">Designing fast PostgreSQL databases, Redis cache layers, and secure APIs.</p>
       </div>
 
       <div class="p-6 rounded-xl bg-zinc-900/40 border border-white/10">
         <span class="text-[#ccff00] font-mono text-xl font-bold block mb-2">05</span>
-        <h3 class="text-lg font-bold text-white mb-2">Core Development</h3>
-        <p class="text-gray-400 text-xs font-light leading-relaxed">Developing course modules, live video rooms, interactive student quizzes, teacher gradebooks, and payment integrations.</p>
+        <h3 class="text-lg font-bold text-white mb-2">Core Engineering</h3>
+        <p class="text-gray-400 text-xs font-light leading-relaxed">Building course hubs, live video rooms, quizzes, gradebooks, and payments.</p>
       </div>
 
       <div class="p-6 rounded-xl bg-zinc-900/40 border border-white/10">
         <span class="text-[#ccff00] font-mono text-xl font-bold block mb-2">06</span>
-        <h3 class="text-lg font-bold text-white mb-2">Integrations and AI</h3>
-        <p class="text-gray-400 text-xs font-light leading-relaxed">Connecting LLM AI tutoring agents, automated quiz generators, third-party SIS databases, and communication APIs.</p>
+        <h3 class="text-lg font-bold text-white mb-2">AI &amp; Integrations</h3>
+        <p class="text-gray-400 text-xs font-light leading-relaxed">Connecting AI tutoring agents, quiz generators, and school databases.</p>
       </div>
 
       <div class="p-6 rounded-xl bg-zinc-900/40 border border-white/10">
         <span class="text-[#ccff00] font-mono text-xl font-bold block mb-2">07</span>
-        <h3 class="text-lg font-bold text-white mb-2">Security &amp; QA Testing</h3>
-        <p class="text-gray-400 text-xs font-light leading-relaxed">Running high-concurrency exam load tests, vulnerability scanning, WCAG accessibility reviews, and end-to-end tests.</p>
+        <h3 class="text-lg font-bold text-white mb-2">Testing &amp; QA</h3>
+        <p class="text-gray-400 text-xs font-light leading-relaxed">Running heavy exam traffic tests, security scans, and accessibility checks.</p>
       </div>
 
       <div class="p-6 rounded-xl bg-zinc-900/40 border border-white/10">
         <span class="text-[#ccff00] font-mono text-xl font-bold block mb-2">08</span>
-        <h3 class="text-lg font-bold text-white mb-2">Deployment &amp; Improvement</h3>
-        <p class="text-gray-400 text-xs font-light leading-relaxed">Executing zero-downtime cloud deployments, real-time performance telemetry monitoring, and data-driven updates.</p>
+        <h3 class="text-lg font-bold text-white mb-2">Launch &amp; Support</h3>
+        <p class="text-gray-400 text-xs font-light leading-relaxed">Deploying to cloud hosting with continuous monitoring and regular updates.</p>
       </div>
     </div>
   </section>
@@ -827,27 +836,27 @@ export const edTechInitialHtml = `
         How Much Does EdTech Software Development Cost?
       </h2>
       <p class="text-gray-300 text-lg leading-relaxed mb-6 font-light">
-        The investment required to build custom EdTech software is directly influenced by technical complexity, concurrent user scale, custom integration depth, and advanced features such as AI tutoring or live WebRTC video streaming.
+        Development costs depend on platform size, student traffic volume, integrations, and AI features.
       </p>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
         <div class="p-6 rounded-xl bg-zinc-900/60 border border-white/10">
           <span class="text-[#ccff00] text-xs font-mono uppercase block mb-1">Course Portal MVP</span>
           <strong class="text-2xl font-bold text-white block mb-2">$10,000 &ndash; $20,000</strong>
-          <p class="text-gray-400 text-xs font-light leading-relaxed">Custom LMS storefront, video course authoring, Stripe payment checkout, progress tracking, and student discussion areas.</p>
+          <p class="text-gray-400 text-xs font-light leading-relaxed">Custom LMS portal, video lesson authoring, Stripe checkout, progress tracking, and student forums.</p>
         </div>
         <div class="p-6 rounded-xl bg-zinc-900/60 border border-[#ccff00]/40">
           <span class="text-[#ccff00] text-xs font-mono uppercase block mb-1">Full-Featured Platform</span>
           <strong class="text-2xl font-bold text-white block mb-2">$20,000 &ndash; $35,000</strong>
-          <p class="text-gray-400 text-xs font-light leading-relaxed">Interactive quizzes, teacher gradebook portals, automated certificates, WebRTC live video rooms, and mobile responsive apps.</p>
+          <p class="text-gray-400 text-xs font-light leading-relaxed">Interactive quizzes, teacher gradebook dashboards, certificates, WebRTC live video rooms, and mobile apps.</p>
         </div>
         <div class="p-6 rounded-xl bg-zinc-900/60 border border-white/10">
           <span class="text-[#ccff00] text-xs font-mono uppercase block mb-1">Enterprise LMS &amp; AI</span>
           <strong class="text-2xl font-bold text-white block mb-2">$35,000 &ndash; $50,000+</strong>
-          <p class="text-gray-400 text-xs font-light leading-relaxed">Multi-tenant university hierarchy, 24/7 AI tutoring assistants, high-concurrency exam systems, SIS synchronization, and custom mobile apps.</p>
+          <p class="text-gray-400 text-xs font-light leading-relaxed">Multi-tenant university systems, 24/7 AI tutoring assistants, high-traffic testing engines, and custom mobile apps.</p>
         </div>
       </div>
       <p class="text-gray-400 text-sm font-light leading-relaxed">
-        Unlike SaaS platforms that extract monthly per-user licensing fees, our bespoke software builds provide complete source code and intellectual property ownership upon milestone completion.
+        Unlike SaaS services that charge monthly user fees, our custom builds give you 100% intellectual property ownership upon completion.
       </p>
     </div>
   </section>
@@ -860,24 +869,24 @@ export const edTechInitialHtml = `
         How Long Does It Take to Build an EdTech Platform?
       </h2>
       <p class="text-gray-300 text-lg leading-relaxed mb-6 font-light">
-        Development timelines vary depending on architectural scope:
+        Timelines depend on the technical scope of your platform:
       </p>
       <ul class="space-y-4 text-gray-300 font-light text-base mb-6">
         <li class="flex items-start gap-3">
           <span class="text-[#ccff00] font-bold">&bull;</span>
-          <span><strong class="text-white">6 to 10 Weeks:</strong> A focused online course MVP or single-organization learning management system.</span>
+          <span><strong class="text-white">6 to 10 Weeks:</strong> A focused course portal MVP or single-organization learning management system.</span>
         </li>
         <li class="flex items-start gap-3">
           <span class="text-[#ccff00] font-bold">&bull;</span>
-          <span><strong class="text-white">10 to 14 Weeks:</strong> A comprehensive platform featuring interactive quizzes, WebRTC live video classrooms, teacher grading dashboards, and payment portals.</span>
+          <span><strong class="text-white">10 to 14 Weeks:</strong> A comprehensive platform with interactive quizzes, WebRTC live video rooms, teacher gradebooks, and payments.</span>
         </li>
         <li class="flex items-start gap-3">
           <span class="text-[#ccff00] font-bold">&bull;</span>
-          <span><strong class="text-white">14 to 18+ Weeks:</strong> Multi-tenant university systems, high-concurrency examination engines, AI tutoring agents, and native iOS/Android mobile applications.</span>
+          <span><strong class="text-white">14 to 18+ Weeks:</strong> Multi-tenant university platforms, high-concurrency exam engines, AI tutoring agents, and mobile apps.</span>
         </li>
       </ul>
       <p class="text-gray-400 text-sm font-light leading-relaxed">
-        We utilize two-week agile development sprints, providing working software builds at the conclusion of each milestone for transparent progress tracking.
+        We work in two-week agile sprints and provide testable builds at the end of each milestone.
       </p>
     </div>
   </section>
@@ -893,25 +902,25 @@ export const edTechInitialHtml = `
         <div class="p-8 rounded-2xl bg-zinc-900/50 border border-white/10">
           <h3 class="text-xl font-bold mb-3 text-white">100% Code &amp; IP Ownership</h3>
           <p class="text-gray-300 text-sm leading-relaxed font-light">
-            You retain complete legal ownership of all source code, design files, database architectures, and intellectual property. No vendor lock-in or recurring per-seat penalties.
+            You own all source code, database architectures, and design files with zero vendor lock-in or recurring user fees.
           </p>
         </div>
         <div class="p-8 rounded-2xl bg-zinc-900/50 border border-white/10">
           <h3 class="text-xl font-bold mb-3 text-white">High-Concurrency Performance</h3>
           <p class="text-gray-300 text-sm leading-relaxed font-light">
-            Our systems are engineered to pass Google's Core Web Vitals with sub-second page loads and withstand sudden traffic surges during live examinations and streaming broadcasts.
+            Our systems pass Google Core Web Vitals with sub-second page loads and handle sudden traffic spikes during live exams.
           </p>
         </div>
         <div class="p-8 rounded-2xl bg-zinc-900/50 border border-white/10">
           <h3 class="text-xl font-bold mb-3 text-white">Integrated AI Capabilities</h3>
           <p class="text-gray-300 text-sm leading-relaxed font-light">
-            We natively build LLM-powered tutoring agents and adaptive assessment algorithms directly into course workflows rather than relying on brittle third-party iframe embeds.
+            We build custom AI tutors and adaptive testing algorithms directly into course workflows.
           </p>
         </div>
         <div class="p-8 rounded-2xl bg-zinc-900/50 border border-white/10">
           <h3 class="text-xl font-bold mb-3 text-white">WCAG 2.1 AA Accessibility</h3>
           <p class="text-gray-300 text-sm leading-relaxed font-light">
-            Every user interface is structured with semantic HTML, keyboard focus management, and screen-reader optimizations to guarantee an inclusive experience for all learners.
+            Every interface uses semantic HTML and keyboard navigation to guarantee accessibility for all learners.
           </p>
         </div>
       </div>
@@ -921,11 +930,11 @@ export const edTechInitialHtml = `
         <div>
           <h3 class="text-lg font-bold text-white mb-2">Built by Experienced Software Engineers</h3>
           <p class="text-gray-300 text-sm font-light">
-            AbuQitmirLabs is an elite software engineering studio based in Karachi, Pakistan, serving educational innovators across the US, UK, Canada, Australia, and the EU.
+            AbuQitmirLabs is a custom software studio based in Karachi, Pakistan, serving clients worldwide. Read our <a href="/blog" class="text-[#ccff00] hover:underline" aria-label="Read technical articles on our engineering blog">technical engineering blog</a> or learn more about our team on our <a href="/about/our-team" class="text-[#ccff00] hover:underline" aria-label="Learn more about the engineering team at AbuQitmirLabs">engineering team page</a>.
           </p>
         </div>
-        <a href="/about/our-company" class="px-6 py-3 bg-white/10 hover:bg-[#ccff00] hover:text-black transition-all rounded-xl text-xs font-mono uppercase tracking-wider text-white font-bold whitespace-nowrap">
-          About AbuQitmirLabs &rarr;
+        <a href="/about/our-company" aria-label="Learn more about AbuQitmirLabs software engineering studio" class="px-6 py-3 bg-white/10 hover:bg-[#ccff00] hover:text-black transition-all rounded-xl text-xs font-mono uppercase tracking-wider text-white font-bold whitespace-nowrap">
+          About AbuQitmirLabs Studio
         </a>
       </div>
     </div>
@@ -942,70 +951,70 @@ export const edTechInitialHtml = `
       <article class="p-6 rounded-2xl bg-zinc-900/50 border border-white/10">
         <h3 class="text-lg font-bold text-white mb-2">What is EdTech software development?</h3>
         <p class="text-gray-300 text-sm font-light leading-relaxed">
-          EdTech software development is the process of engineering digital educational systems, including custom learning management systems (LMS), WebRTC virtual classrooms, AI adaptive tutoring engines, student and teacher portals, examination platforms, and learning analytics software designed to streamline teaching and improve learning outcomes.
+          EdTech software development means building digital education tools. This includes custom learning management systems (LMS), live video classrooms, AI tutoring engines, student portals, and grading software. These tools help schools and academies teach better online.
         </p>
       </article>
 
       <article class="p-6 rounded-2xl bg-zinc-900/50 border border-white/10">
         <h3 class="text-lg font-bold text-white mb-2">What is custom LMS development?</h3>
         <p class="text-gray-300 text-sm font-light leading-relaxed">
-          Custom LMS development involves building a tailored learning management system designed around your specific curriculum, user roles, branding, and workflows. Unlike rigid off-the-shelf software, a bespoke LMS offers full source code ownership, zero per-seat licensing fees, custom testing modules, and seamless integration with your existing administrative tools.
+          Custom LMS development builds a learning platform tailored to your curriculum and brand. You get 100% source code ownership, zero monthly user fees, custom tests, and seamless data integrations.
         </p>
       </article>
 
       <article class="p-6 rounded-2xl bg-zinc-900/50 border border-white/10">
         <h3 class="text-lg font-bold text-white mb-2">How much does it cost to build an EdTech platform?</h3>
         <p class="text-gray-300 text-sm font-light leading-relaxed">
-          The cost to build an EdTech platform depends on platform complexity, user concurrency, custom workflows, integrations, and AI capabilities. A streamlined course portal or MVP LMS typically ranges from $10,000 to $20,000, while a comprehensive enterprise LMS with live WebRTC video, adaptive AI tutoring, and multi-tenant school management ranges from $25,000 to $50,000+.
+          A course portal MVP typically costs $10,000 to $20,000. A full enterprise platform with WebRTC live video, AI tutors, and school portals ranges from $25,000 to $50,000+ depending on features.
         </p>
       </article>
 
       <article class="p-6 rounded-2xl bg-zinc-900/50 border border-white/10">
         <h3 class="text-lg font-bold text-white mb-2">How long does it take to build an LMS?</h3>
         <p class="text-gray-300 text-sm font-light leading-relaxed">
-          A standard custom LMS or online course MVP typically takes 6 to 10 weeks to develop and launch. Large-scale educational platforms with live WebRTC streaming, multi-tier school hierarchies, automated proctoring, and mobile applications generally require 10 to 16 weeks depending on the technical scope.
+          A standard online course MVP takes 6 to 10 weeks to build. Large-scale platforms with live video, automated testing, and mobile apps take 10 to 16 weeks.
         </p>
       </article>
 
       <article class="p-6 rounded-2xl bg-zinc-900/50 border border-white/10">
         <h3 class="text-lg font-bold text-white mb-2">Can you build virtual classroom software?</h3>
         <p class="text-gray-300 text-sm font-light leading-relaxed">
-          Yes. We engineer real-time virtual classroom software utilizing low-latency WebRTC streaming, interactive multi-user whiteboards, screen sharing, in-session chat, breakout rooms, automated cloud recording, and instructor moderation controls.
+          Yes. We build low-latency virtual classrooms with WebRTC. Features include interactive whiteboards, screen sharing, live chat, breakout rooms, and automatic recording.
         </p>
       </article>
 
       <article class="p-6 rounded-2xl bg-zinc-900/50 border border-white/10">
         <h3 class="text-lg font-bold text-white mb-2">Can AI be integrated into an EdTech platform?</h3>
         <p class="text-gray-300 text-sm font-light leading-relaxed">
-          Yes. We integrate AI capabilities including conversational 24/7 AI tutoring assistants, adaptive difficulty adjustments based on learner performance, automated quiz generation from lesson transcripts, homework grading assistance, and predictive retention analytics.
+          Yes. We add 24/7 AI tutoring assistants, adaptive quiz difficulty, automated quiz generation from lesson transcripts, and retention analytics.
         </p>
       </article>
 
       <article class="p-6 rounded-2xl bg-zinc-900/50 border border-white/10">
         <h3 class="text-lg font-bold text-white mb-2">Can EdTech platforms support schools and universities?</h3>
         <p class="text-gray-300 text-sm font-light leading-relaxed">
-          Yes. We architect scalable platforms specifically designed for schools, colleges, and universities, featuring multi-campus management, role-based access control for faculty, students, and parents, gradebook synchronization, transcript generation, and student information system (SIS) integrations.
+          Yes. We build systems for schools and universities with multi-campus management, role-based logins for teachers and parents, gradebooks, and student information system (SIS) sync.
         </p>
       </article>
 
       <article class="p-6 rounded-2xl bg-zinc-900/50 border border-white/10">
         <h3 class="text-lg font-bold text-white mb-2">What technologies are used for EdTech development?</h3>
         <p class="text-gray-300 text-sm font-light leading-relaxed">
-          Our modern EdTech stack typically utilizes React, Next.js, and TypeScript on the frontend for sub-second UI interactions; Node.js, Python, PostgreSQL, and Redis for high-concurrency backend services; WebRTC and WebSockets for real-time video and collaboration; and secure cloud hosting on AWS or Google Cloud.
+          We use React, Next.js, and TypeScript on the frontend. We use Node.js, Python, PostgreSQL, and Redis for fast backends, with WebRTC for live video on AWS and Google Cloud.
         </p>
       </article>
 
       <article class="p-6 rounded-2xl bg-zinc-900/50 border border-white/10">
         <h3 class="text-lg font-bold text-white mb-2">Can an EdTech platform include mobile apps?</h3>
         <p class="text-gray-300 text-sm font-light leading-relaxed">
-          Yes. We develop cross-platform mobile learning applications for iOS and Android using Flutter and React Native. These apps feature offline lesson downloads, push notifications for assignment deadlines, responsive video playback, and biometric authentication.
+          Yes. We build mobile learning apps for iOS and Android using Flutter and React Native. They include offline lesson downloads, push alerts, and video playback.
         </p>
       </article>
 
       <article class="p-6 rounded-2xl bg-zinc-900/50 border border-white/10">
         <h3 class="text-lg font-bold text-white mb-2">How do you secure EdTech platforms?</h3>
         <p class="text-gray-300 text-sm font-light leading-relaxed">
-          We implement defense-in-depth security including TLS 1.3 encryption in transit, AES-256 encryption at rest, strict role-based access control (RBAC), multi-factor authentication (MFA), automated audit logging, secure tokenized payment processing, and rigorous adherence to WCAG 2.1 AA accessibility standards.
+          We use TLS 1.3 encryption, AES-256 database protection, multi-factor logins, audit logs, and WCAG 2.1 AA accessibility standards.
         </p>
       </article>
     </div>
@@ -1014,13 +1023,13 @@ export const edTechInitialHtml = `
   <!-- CTA Section -->
   <section class="py-20 md:py-28 text-center bg-gradient-to-b from-zinc-900 to-black px-6 max-w-4xl mx-auto" aria-labelledby="cta-heading">
     <h2 id="cta-heading" class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 text-white">
-      Ready to Engineer Your EdTech Platform?
+      Ready to Transform Education?
     </h2>
     <p class="text-gray-400 text-lg mb-10 max-w-2xl mx-auto font-light leading-relaxed">
-      Schedule a technical discovery briefing with our lead software architects to plan your custom learning management system or interactive educational app.
+      Schedule a technical consultation with our lead EdTech software architects to plan your custom learning platform build.
     </p>
-    <a href="/contact" class="inline-flex items-center gap-3 px-10 py-5 bg-[#ccff00] text-black font-extrabold text-sm uppercase tracking-wider rounded-xl hover:scale-105 transition-all shadow-[0_0_40px_rgba(204,255,0,0.4)]">
-      Discuss Your EdTech Platform &rarr;
+    <a href="/contact" aria-label="Contact AbuQitmirLabs to start your EdTech platform project" class="inline-flex items-center gap-3 px-10 py-5 bg-[#ccff00] text-black font-extrabold text-sm uppercase tracking-wider rounded-xl hover:scale-105 transition-all shadow-[0_0_40px_rgba(204,255,0,0.4)]">
+      Start your EdTech platform project
     </a>
   </section>
 </main>
@@ -1029,9 +1038,9 @@ export const edTechInitialHtml = `
   <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
     <p>&copy; ${new Date().getFullYear()} AbuQitmirLabs. All rights reserved. Precision Software &amp; AI Engineering.</p>
     <div class="flex items-center space-x-6">
-      <a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
-      <a href="/terms" class="hover:text-white transition-colors">Terms of Service</a>
-      <a href="/contact" class="hover:text-white transition-colors">Contact Us</a>
+      <a href="/privacy" class="hover:text-white transition-colors" aria-label="Read Privacy Policy">Privacy Policy</a>
+      <a href="/terms" class="hover:text-white transition-colors" aria-label="Read Terms of Service">Terms of Service</a>
+      <a href="/contact" class="hover:text-white transition-colors" aria-label="Contact AbuQitmirLabs">Contact Us</a>
     </div>
   </div>
 </footer>
