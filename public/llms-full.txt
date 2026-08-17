@@ -20,6 +20,9 @@
   - SEO Mastery: https://www.abuqitmirlabs.tech/seo-mastery
 
 ### 2. Core Service Capabilities
+- **E-commerce Software Solutions & Custom Digital Commerce**: https://www.abuqitmirlabs.tech/solutions/e-commerce
+  - Custom E-commerce Development, E-commerce Platform Development, E-commerce Web Development, E-commerce Mobile App Development (iOS & Android shopping apps), Multi-Vendor Marketplace Development, Headless E-commerce Development, and E-commerce AI Agent Development.
+  - Core capabilities: Headless Next.js/React storefronts (<0.8s load times), B2B wholesale portals with tiered volume pricing and Net-30 terms, multi-vendor marketplaces with split escrow, AI shopping assistants, AI product recommendation engines with vector embeddings, 24/7 e-commerce AI chatbots, enterprise ERP/CRM integrations (SAP, NetSuite, Odoo, Salesforce, QuickBooks), multi-rail payment processing (Stripe, PayPal, Adyen, Klarna), real-time inventory management, and tokenized PCI DSS-scoped security.
 - **AI Automation Solutions & Intelligent Workflows**: https://www.abuqitmirlabs.tech/solutions/ai-automation
   - Custom AI automation solutions, intelligent workflow orchestration, autonomous AI agents with reasoning loops, RAG knowledge systems with source citations, customer support triage, sales lead enrichment, invoice matching, and enterprise software API integrations (Salesforce, HubSpot, SAP, NetSuite).
 - **Healthcare AI Agent Development & Autonomous Systems**: https://www.abuqitmirlabs.tech/ai-agent-development

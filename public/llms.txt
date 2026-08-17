@@ -152,8 +152,29 @@ AbuQitmirLabs engineers production AI automation systems, autonomous AI agents, 
 - Human-in-the-Loop (HITL) Governance for High-Impact Financial & Legal Actions
 - 100% Client Source Code & Intellectual Property Ownership
 
+## E-commerce Software Solutions & Custom Digital Commerce
+Canonical URL: https://www.abuqitmirlabs.tech/solutions/e-commerce
+
+AbuQitmirLabs engineers high-performance custom e-commerce software platforms, B2B wholesale portals, multi-vendor marketplaces, and AI commerce systems:
+
+- Custom E-commerce Development & High-Speed Next.js Storefronts (<0.8s load times)
+- E-commerce Web Development & SEO-Optimized Product Catalog Architectures
+- Headless E-commerce Development with Decoupled GraphQL/REST API Backends
+- Multi-Vendor E-commerce Development & Marketplace Platforms with Automated Split Escrow
+- E-commerce Mobile App Development (Shopping Apps for iOS & Android with Biometric Checkout)
+- E-commerce AI Agent Development & Conversational AI Shopping Assistants
+- AI Product Recommendation Engines (Vector Embeddings, Semantic Search & Personalization)
+- 24/7 E-commerce AI Chatbots for Customer Support, Order Tracking & Returns
+- B2B Wholesale Commerce Portals (Tiered Pricing, Net-30 Terms & Quote Builders)
+- Enterprise ERP & CRM Integrations (SAP, NetSuite, Odoo, Salesforce, QuickBooks)
+- Multi-Rail Payment Gateway Integrations (Stripe, PayPal, Adyen, Apple Pay, Klarna)
+- Real-Time Multi-Location Inventory & Order Management Systems
+- Defense-in-Depth Security (TLS 1.3, AES-256, RBAC, Tokenized Card Vaults & PCI DSS Scope Reduction)
+- 100% Client Source Code & Intellectual Property Ownership
+
 ## Core Services & Capabilities
 
+- [E-commerce Software Solutions](https://www.abuqitmirlabs.tech/solutions/e-commerce) - Custom e-commerce platforms, B2B wholesale portals, multi-vendor marketplaces, headless commerce, and payment integrations.
 - [AI Automation Solutions](https://www.abuqitmirlabs.tech/solutions/ai-automation) - Custom AI automation systems, autonomous AI agents, RAG knowledge systems, and multi-system API workflows.
 - [Healthcare AI Agent Development](https://www.abuqitmirlabs.tech/ai-agent-development) - Secure healthcare AI agents, patient support automation, clinical RAG systems, and EHR workflow automations.
 - [Healthcare Software Solutions](https://www.abuqitmirlabs.tech/solutions/healthcare) - Custom EHR/EMR platforms, clinic management software, telemedicine systems, patient portals, and FHIR/HL7 healthcare integrations.
