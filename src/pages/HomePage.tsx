@@ -60,13 +60,6 @@ export default function HomePage() {
                   "telephone": "+923233260859",
                   "priceRange": "$$",
                   "openingHours": "Mo-Fr 09:00-18:00",
-                  "aggregateRating": {
-                    "@type": "AggregateRating",
-                    "ratingValue": "5.0",
-                    "reviewCount": "48",
-                    "bestRating": "5",
-                    "worstRating": "1"
-                  },
                   "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony",
