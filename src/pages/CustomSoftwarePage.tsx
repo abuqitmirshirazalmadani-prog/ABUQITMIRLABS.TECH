@@ -4,165 +4,127 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { YouTubeFacade } from '../components/ui/youtube-facade';
-import { 
-  Rocket, 
-  Cpu, 
-  Database, 
-  Cloud, 
-  ArrowRight, 
-  Plus,
-  Monitor,
-  Layers,
-  Star,
-  Server,
-  Zap,
-  Activity,
-  CheckCircle2,
-  RotateCcw,
-  Library,
-  ChevronRight,
-  Play,
-  Layout,
-  Boxes,
-  Code2,
-  ShieldCheck,
-  Smartphone,
-  Globe,
-  Settings,
-  ArrowUpRight,
-  Heart,
-  Truck,
-  Home,
-  HeartPulse,
-  Scale,
-  Calendar,
-  GraduationCap,
-  Coins,
-  Wrench,
-  Factory,
-  Bot,
-  Users,
-  Clock,
-  Package,
-  Building2,
-  ExternalLink
-} from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CountryMarquee from '../components/CountryMarquee';
-import HeroText from '../components/ui/hero-shutter-text';
+import { customSoftwareSchema } from '../utils/customSoftwareStaticHtml';
 
-const CustomSoftwarePage = () => {
+const CustomSoftwarePage: React.FC = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
-  const [activePlaybook, setActivePlaybook] = useState<'collab' | 'templates' | 'safety'>('collab');
-  const [pricingPeriod, setPricingPeriod] = useState<'project' | 'hourly'>('project');
 
-  const services = [
+  const whatWeBuildItems = [
     {
-      id: "01",
-      title: "Enterprise ERP & Internal Tools Engineering for Growing Businesses",
-      keyword: "enterprise ERP development company",
-      content: "As an experienced enterprise ERP development company, we build custom internal operations tools, ERP systems, and secure data warehouses tailored to how your business scales, avoiding subscription-bloated SaaS loops.",
-      icon: <Database className="w-8 h-8" />,
+      title: "Enterprise ERPs & Business Systems",
+      tag: "Enterprise",
+      desc: "We engineer enterprise resource planning systems that connect your operations — inventory, procurement, finance, HR — into a single, unified platform. Built for your processes, not the average company's.",
+      iconId: "icon-database",
+      link: "/contact",
+      linkText: "Discuss ERP architecture"
     },
     {
-      id: "02",
-      title: "Scalable SaaS Platform Architecture & Development",
-      keyword: "SaaS platform architecture development services",
-      content: "Our elite SaaS platform architecture development services deliver high-fidelity multi-tenant structures, custom subscription logic, and highly reliable server backends optimized for millions of requests.",
-      icon: <Rocket className="w-8 h-8" />,
+      title: "SaaS Platforms & Web Applications",
+      tag: "Cloud Product",
+      desc: "From multi-tenant SaaS products to client-facing web platforms, we architect and ship full-stack web applications using modern cloud-native frameworks. Your platform scales from day one.",
+      iconId: "icon-rocket",
+      link: "/web-development",
+      linkText: "Explore web platform engineering"
     },
     {
-      id: "03",
-      title: "Custom API Design & Third-Party Integration Services",
-      keyword: "API integration development company",
-      content: "As a premier API integration development company, we engineer custom API endpoints, bridge legacy internal databases, and connect complex third-party tools to automate your critical operational workflows.",
-      icon: <Cpu className="w-8 h-8" />,
+      title: "AI-Powered Custom Tools",
+      tag: "AI & RAG",
+      desc: "We integrate large language models, RAG pipelines, and autonomous AI agents directly into your custom software. If your business process involves data retrieval, classification, or decision support, we can automate it at the application layer.",
+      iconId: "icon-brain-circuit",
+      link: "/ai-agent-development",
+      linkText: "Explore AI agent development"
     },
     {
-      id: "04",
-      title: "Database Architecture Development (PostgreSQL & MongoDB)",
-      keyword: "PostgreSQL MongoDB database architecture services",
-      content: "Deploy ultra-resilient database structures with our PostgreSQL MongoDB database architecture services. We model schemas, configure performance indices, and implement secure data encryption protocols for maximum speed.",
-      icon: <Settings className="w-8 h-8" />,
+      title: "Mobile-First Custom Software",
+      tag: "Mobile",
+      desc: "When your workflow lives in the field — on a device, not a desk — we build mobile-first custom software using Flutter and native iOS/Android. Cross-platform where it makes sense, native where performance demands it.",
+      iconId: "icon-smartphone",
+      link: "/mobile-app-development",
+      linkText: "Explore mobile app engineering"
     },
     {
-      id: "05",
-      title: "Fixed-Price & Dedicated Team Software Engagement Models",
-      keyword: "dedicated development team for startups",
-      content: "Hire a dedicated development team for startups and scale-ups with clear pricing and rapid delivery. We offer flexible, milestone-driven fixed-price and dedicated team models with complete transparency.",
-      icon: <Cloud className="w-8 h-8" />,
+      title: "API Integrations & Middleware",
+      tag: "Connectivity",
+      desc: "We build the connective tissue between your systems — payment gateways, CRMs, third-party APIs, logistics providers — so your software stack operates as one cohesive system rather than a collection of disconnected tools.",
+      iconId: "icon-cpu",
+      link: "/contact",
+      linkText: "Connect your infrastructure"
+    },
+    {
+      title: "Legacy System Modernisation",
+      tag: "Refactoring",
+      desc: "We migrate aging codebases to modern architectures without disrupting live operations. The result: faster performance, reduced maintenance cost, and a system your team can actually extend.",
+      iconId: "icon-refresh-cw",
+      link: "/contact",
+      linkText: "Modernize legacy codebase"
     }
   ];
 
-  const playbookData = {
-    collab: {
-      title: 'Real-time collaboration',
-      tagline: 'EDIT SCRIPTS TOGETHER WITH LIVE CURSORS AND VERSIONED SAVES.',
-      p1: 'Edit remediation scripts together in real time with live cursors, inline comments and versioned saves.',
-      p2: 'Everyone on call sees changes immediately so your team can author and run fixes together during an incident.',
-      code: `// shared live script\nconst s = Runlyx.Script.open("recover-workers");\n\ns.apply("restartWorkers()", { user: "jordan" });\ns.comment(2, "Check CPU before restart");\ns.save("v1.2.1", "Add safety check");`
+  const processSteps = [
+    {
+      num: "01",
+      title: "Discovery & Requirements Engineering",
+      desc: "We map your business workflows, document functional requirements, and identify the integration points your system needs to connect. This stage prevents scope creep later."
     },
-    templates: {
-      title: 'Parameterized templates',
-      tagline: 'REUSABLE PLAYBOOKS WITH TYPED INPUTS AND SANE DEFAULTS.',
-      p1: 'Publish reusable playbooks with typed inputs and sane defaults so teams can standardize fixes.',
-      p2: 'Validate inputs before execution and stamp every run with immutable parameters for auditing.',
-      code: `// template inputs\ntype Params = { service: "api" | "worker", region: string }\n\nconst s = Runlyx.Template.use<Params>("scale-service");\ns.run({ service: "worker", region: "us-east-1" });`
+    {
+      num: "02",
+      title: "UX/UI Architecture",
+      desc: "We design the user experience before writing a line of backend code. Wireframes, interaction flows, and design prototypes are reviewed and approved before development begins."
     },
-    safety: {
-      title: 'Safety and approvals',
-      tagline: 'GUARDRAILS, DRY RUNS, AND MULTI-STEP APPROVALS.',
-      p1: 'Protect production with guardrails: dry runs, blast-radius checks and multi-step approvals.',
-      p2: 'Require reviewers on sensitive playbooks and log every decision for compliance.',
-      code: `// safety first\nconst p = Runlyx.Playbook("db-failover");\np.requireApproval({ teams: ["SRE"], min: 2 });\np.dryRun().assert("replicasHealthy > 2");\np.execute();`
+    {
+      num: "03",
+      title: "Core Development",
+      desc: "Our engineering team builds in structured sprints with regular demos. You see working software at each milestone — not a finished product six months later that doesn't match what you asked for."
+    },
+    {
+      num: "04",
+      title: "Integration, Security & QA",
+      desc: "Every system goes through integration testing, security review, and quality assurance before it touches a production environment. We test edge cases, not just happy paths."
+    },
+    {
+      num: "05",
+      title: "Deployment & Ongoing Support",
+      desc: "We deploy to your chosen infrastructure — cloud, on-premise, or hybrid — and provide structured post-launch support. Your team is never left holding an undocumented codebase."
     }
-  };
+  ];
 
-  const faqData = [
+  const faqs = [
     {
-      q: "How much does custom software development cost?",
-      a: "The cost varies entirely based on complexity, features, and integrations. An MVP starts at a lower tier, while an enterprise ERP requires a larger investment. We provide transparent, itemized quotes after discovery."
+      q: "What technologies do you use for custom software development?",
+      a: "We use technologies selected for the problem, not the other way around. Common choices include React, Next.js, Node.js, Python, PostgreSQL, and cloud platforms (AWS, GCP, Azure). For AI-integrated systems we work with LangChain, vector databases, and RAG pipelines. We document the full stack in your project specification before development begins."
     },
     {
-      q: "How long does it take to build custom software?",
-      a: "A scalable MVP takes 8 to 12 weeks to design and deploy. Complex enterprise solutions can take 4 to 6 months. We use Agile methodology to deliver usable features rapidly."
+      q: "Do you work with startups or only established businesses?",
+      a: "Both. We've worked with early-stage founders building their first product and with established businesses replacing legacy systems. The discovery process is the same either way — we scope to your requirements, not your company size."
     },
     {
-      q: "Do I own the source code after development?",
-      a: "Absolutely. Once the project is completed and fully paid for, 100% of the Intellectual Property (IP) and source code ownership is transferred to you."
+      q: "Can you take over a project another development team started?",
+      a: "Yes. We conduct a codebase audit first to assess what's worth preserving and what needs to be rebuilt. We don't inherit someone else's technical debt blindly — we tell you what we find before we agree to take it on."
     },
     {
-      q: "Do you provide ongoing support and maintenance?",
-      a: "Yes. We offer comprehensive Service Level Agreements (SLAs) that include bug fixes, security patches, server monitoring, and feature upgrades to keep your software running flawlessly."
+      q: "What happens after the software is launched?",
+      a: "We provide structured post-launch support covering bug resolution, minor enhancements, and monitoring. Longer-term maintenance and feature development can be scoped as a separate ongoing engagement."
     },
     {
-      q: "Will the new software integrate with my existing tools?",
-      a: "Yes. We build custom API bridges to ensure your new software communicates seamlessly with your existing CRMs, accounting tools, or third-party databases."
-    },
-    {
-      q: "How do you ensure the security of the custom software?",
-      a: "We implement enterprise-grade security, including end-to-end data encryption, role-based access control (RBAC), and regular vulnerability testing to protect against cyber threats."
-    },
-    {
-      q: "Can you take over an incomplete software project?",
-      a: "Yes. We start with a comprehensive code audit to assess the quality and security of the existing codebase, then create a roadmap to stabilize and complete your project."
+      q: "Will I be able to modify the software myself after the project?",
+      a: "If your team has developers, yes — the codebase is documented and fully yours. If not, we can provide a retainer for ongoing changes, or we can help you hire developers who can maintain it independently."
     }
   ];
 
   return (
-    <div className="bg-[#000000] text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-blue-500/30 selection:text-white">
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans antialiased">
       <Helmet>
         <title>Custom Software Development Company | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs provides high-impact custom software development, enterprise ERPs, and AI solutions tailored for startups and growing businesses. Build with us." />
+        <meta name="description" content="Bespoke software built around your workflows — ERPs, SaaS platforms, AI-powered tools, and enterprise systems. Full IP ownership." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/custom-software" />
-        <meta name="robots" content="index, follow" />
-        
+
         {/* Open Graph */}
         <meta property="og:title" content="Custom Software Development Company | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs provides high-impact custom software development, enterprise ERPs, and AI solutions tailored for startups and growing businesses. Build with us." />
+        <meta property="og:description" content="Bespoke software built around your workflows — ERPs, SaaS platforms, AI-powered tools, and enterprise systems. Full IP ownership." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/custom-software" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
@@ -170,2118 +132,409 @@ const CustomSoftwarePage = () => {
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Custom Software Development Company | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs provides high-impact custom software development, enterprise ERPs, and AI solutions tailored for startups and growing businesses. Build with us." />
+        <meta name="twitter:description" content="Bespoke software built around your workflows — ERPs, SaaS platforms, AI-powered tools, and enterprise systems. Full IP ownership." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-        
-        {/* Schema Markup */}
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify([
-              {
-                "@context": "https://schema.org",
-                "@type": "Service",
-                "name": "Custom Software Development",
-                "serviceType": "Custom Software Development",
-                "provider": {
-                  "@type": "Organization",
-                  "name": "AbuQitmirLabs",
-                  "url": "https://www.abuqitmirlabs.tech",
-                  "logo": "https://www.abuqitmirlabs.tech/logo.png",
-                  "image": "https://www.abuqitmirlabs.tech/logo.png",
-                  "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Karachi",
-                    "addressCountry": "PK"
-                  }
-                },
-                "url": "https://www.abuqitmirlabs.tech/custom-software",
-                "description": "AbuQitmirLabs provides high-impact custom software development, enterprise ERPs, and AI solutions tailored for startups and growing businesses. Build with us.",
-                "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
-                "hasOfferCatalog": {
-                  "@type": "OfferCatalog",
-                  "name": "Custom Software Development Solutions",
-                  "itemListElement": [
-                    ...services.map((s) => ({
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": s.title,
-                        "description": s.content
-                      }
-                    })),
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Custom Software Development for Non-Profit Organizations",
-                        "description": "Purpose-built non-profit solutions managing donor relationships, tracking impact metrics, and coordinating volunteers securely."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Custom Software Development for Logistics",
-                        "description": "Supply chain integration, real-time tracking, route optimization, fleet management, and inventory visibility."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Custom Software Development for Real Estate Agencies",
-                        "description": "Property management systems, CRM integrations, interactive search tools, and automated valuation models."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Custom Software Development for Healthcare Providers",
-                        "description": "HIPAA-compliant portals, intuitive patient management systems, scheduling, and secure telehealth integrations."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Custom Software Development for Small Law Firms",
-                        "description": "Secure client portals, case management systems, document automation, and billing solutions that reduce administrative overhead."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Custom Software Development for Corporate Events",
-                        "description": "Automated ticketing, speaker agenda schedules, real-time attendee analytics, and logistics management tools."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Custom Software Development for Educational Institutions",
-                        "description": "Adaptive learning portals, centralized student databases, assessments, and secure unified campuses."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Custom Software Development for Fintech Startups",
-                        "description": "Secure, scalable platforms for payment processing, wealth management, lending, and compliance."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Custom Software Development for the Construction Industry",
-                        "description": "Project management platforms that track progress, manage resources, and streamline communication across job sites."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Custom Software Development for Manufacturing Companies",
-                        "description": "ERP systems that integrate seamlessly with existing operations, providing real-time visibility and control over production lifecycles."
-                      }
-                    }
-                  ]
-                }
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                "mainEntity": faqData.map(item => ({
-                  "@type": "Question",
-                  "name": item.q,
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": item.a
-                  }
-                }))
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "HowTo",
-                "name": "Our Custom Software Development Process",
-                "description": "Our 3-step rigorous technical methodology to engineer robust, secure, and scalable software assets.",
-                "step": [
-                  {
-                    "@type": "HowToStep",
-                    "name": "Discovery & Architecture (Week 1-2)",
-                    "text": "We map your existing workflows, identify bottlenecks, and design a system architecture before writing a single line of code."
-                  },
-                  {
-                    "@type": "HowToStep",
-                    "name": "Iterative Build (Week 3-8)",
-                    "text": "Development happens in 2-week sprints. You see working features every two weeks, not a black box for three months."
-                  },
-                  {
-                    "@type": "HowToStep",
-                    "name": "Testing & Deployment (Week 9-10)",
-                    "text": "Full QA cycle, load testing, and staged rollout to production with zero-downtime deployment practices."
-                  }
-                ]
-              }
-            ])
-          }}
-        ></script>
+
+        {/* Unified JSON-LD Schema */}
+        <script type="application/ld+json">{JSON.stringify(customSoftwareSchema)}</script>
       </Helmet>
 
-      {/* Unicorn Mask Background */}
-      <div className="fixed inset-0 unicorn-mask pointer-events-none z-0 opacity-40">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-blue-500/10" />
-      </div>
+      {/* Accessible Skip Link */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#ccff00] focus:text-black focus:font-bold focus:rounded-lg"
+      >
+        Skip to main content
+      </a>
 
       <Header />
-      <Breadcrumbs customItems={[{ name: 'Home', to: '/' }, { name: 'Custom Software Development', to: '/custom-software' }]} />
 
-      {/* Hero Section */}
-      <section className="animate-enter-delay-2 relative pt-24 md:pt-32 pb-20 z-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="relative">
-            {/* Floating Labels */}
-            <div className="pointer-events-none relative select-none">
-              <motion.span 
-                animate={{ y: [0, -12, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute left-[55%] -top-12 -translate-x-1/2 hidden md:block"
-              >
-                <span className="block whitespace-nowrap rounded-lg bg-white px-3 py-1.5 text-xs font-medium text-black shadow-[0_4px_20px_rgba(255,255,255,0.4)] ring-1 ring-black/5">AI Engineered</span>
-                <span className="mx-auto -mt-1 block h-2 w-2 rotate-45 rounded-sm bg-white"></span>
-              </motion.span>
-              <motion.span 
-                animate={{ y: [0, 8, 0], x: [0, 10, 0] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute right-[2%] top-12 hidden translate-x-8 translate-y-12 md:block"
-              >
-                <span className="block whitespace-nowrap rounded-lg bg-white px-3 py-1.5 text-xs font-medium text-black shadow-[0_4px_20px_rgba(255,255,255,0.4)] ring-1 ring-black/5">Precision Code</span>
-                <span className="mx-auto -mt-1 block h-2 w-2 rotate-45 rounded-sm bg-white"></span>
-              </motion.span>
-              <motion.span 
-                animate={{ y: [0, 10, 0], x: [0, -6, 0] }}
-                transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute left-[10%] bottom-6 hidden sm:block"
-              >
-                <span className="block whitespace-nowrap rounded-lg bg-white px-3 py-1.5 text-xs font-medium text-black shadow-[0_4px_20px_rgba(255,255,255,0.4)] ring-1 ring-black/5">Enterprise Scale</span>
-                <span className="mx-auto -mt-1 block h-2 w-2 rotate-45 rounded-sm bg-white"></span>
-              </motion.span>
-            </div>
-
-            {/* Headline */}
-            <div className="text-center relative z-10">
-              <div className="mb-4">
-                <span className="text-xs font-mono text-blue-500 uppercase tracking-[0.4em] font-bold block mb-4">[ Custom Software Development Mission Briefing ]</span>
-                <HeroText text="ENGINEERING" />
-              </div>
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mx-auto max-w-6xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-light tracking-tight text-white leading-tight"
-              >
-                Custom Software Development Company <br />
-                <span className="font-serif italic text-blue-400 font-normal">for Startups</span>
-              </motion.h1>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.05 }}
-                className="mx-auto max-w-6xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif italic text-blue-400 font-normal tracking-tight leading-tight mt-1"
-              >
-                &amp; Small Businesses
-              </motion.p>
-              
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="mx-auto mt-10 max-w-3xl text-xl leading-relaxed text-slate-300 font-light font-sans"
-              >
-                Custom software isn't a template with your logo slapped on it. At AbuQitmirLabs, we design systems around how your business actually operates — mapping your workflows before writing a single line of code. Our custom software development process runs in 2-week sprints, so you see working features regularly, not a black box for months. Our custom software solutions integrate seamlessly with <Link to="/ai-agent-development" className="text-blue-400 hover:underline">AI Agents</Link> for operational automation, power high-speed web platforms via <Link to="/web-development" className="text-blue-400 hover:underline">Web Development Services</Link>, or extend through <Link to="/mobile-app-development" className="text-blue-400 hover:underline">Mobile App Development</Link> to connect directly with your customers. Our team is based out of Karachi, Pakistan, offering global-grade products with high-ROI execution.
-              </motion.p>
-
-              {/* Core Capabilities Specifications */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.15 }}
-                className="mx-auto mt-12 max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg"
-              >
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
-                  {[
-                    "Enterprise ERP & Internal Tools Engineering for Growing Businesses",
-                    "Scalable SaaS Platform Architecture & Development",
-                    "Custom API Design & Third-Party Integrations",
-                    "Database Architecture (PostgreSQL, MongoDB)",
-                    "Fixed-Price & Dedicated Team Engagement Models"
-                  ].map((bullet, idx) => (
-                    <div key={idx} className="flex items-start gap-3 group">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0 group-hover:bg-[#ccff00] transition-colors duration-300" />
-                      <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* CTAs */}
-              <div className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row">
-                <a 
-                  href="https://wa.me/923233260859"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-wrapper" 
-                  style={{ '--dot-size': '8px', '--line-weight': '1px', '--animation-speed': '0.35s', '--dot-color': '#fffa', '--line-color': '#fffa', '--grid-color': '#fff3' } as any}
-                >
-                  <div className="line horizontal top"></div>
-                  <div className="line vertical right"></div>
-                  <div className="line horizontal bottom"></div>
-                  <div className="line vertical left"></div>
-                  <div className="dot top left"></div>
-                  <div className="dot top right"></div>
-                  <div className="dot bottom right"></div>
-                  <div className="dot bottom left"></div>
-                  <div className="btn flex flex-col items-center justify-center p-6 min-w-[240px] gap-2">
-                    <ArrowRight className="btn-svg text-white w-6 h-6" />
-                    <span className="btn-text text-white font-bold uppercase tracking-widest text-sm">Start Your Project</span>
-                  </div>
-                </a>
-                
-                <button 
-                  onClick={() => {
-                    const el = document.getElementById('video-portfolio');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    else window.location.href = '/#video-portfolio';
-                  }}
-                  className="relative inline-flex items-center gap-2 rounded-md bg-gradient-to-br from-white/5 via-white/10 to-white/5 px-8 py-4 text-base font-medium text-white/90 shadow-[0_0_15px_rgba(59,130,246,0.15)] ring-1 ring-white/10 transition-all duration-300 hover:scale-105 hover:border-indigo-400/40 hover:bg-white/10 hover:shadow-[0_0_25px_rgba(59,130,246,0.35)] uppercase tracking-tight"
-                >
-                  Watch Process
-                  <Play className="h-4 w-4 fill-current ml-2" />
-                </button>
-              </div>
-            </div>
-
-            {/* Dashboard Preview */}
-            <motion.div 
-              initial={{ opacity: 0, y: 60 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="relative mt-24 w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl backdrop-blur-xl bg-black/40"
-            >
-                <img 
-                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200&auto=format&fit=crop&fm=webp" 
-                  alt="Custom software development team at Abu Qitmir Labs working on enterprise solutions." 
-                  className="absolute inset-0 w-full h-full object-cover opacity-20"
-                  loading="lazy"
-                  decoding="async"
-                />
-                {/* Window Controls */}
-                <div className="flex items-center justify-between border-b border-white/10 bg-black/60 px-4 py-3 relative z-10">
-                    <div className="flex items-center gap-2">
-                        <span className="h-3 w-3 rounded-full bg-red-500/80 shadow-[0_0_10px_rgba(239,68,68,0.5)]"></span>
-                        <span className="h-3 w-3 rounded-full bg-yellow-400/80 shadow-[0_0_10px_rgba(250,204,21,0.5)]"></span>
-                        <span className="h-3 w-3 rounded-full bg-green-500/80 shadow-[0_0_10px_rgba(34,197,94,0.5)]"></span>
-                    </div>
-                    <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Axiom_Custom_Software // build_v1.0.4</div>
-                </div>
-
-                {/* Dashboard Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-12 min-h-[600px]">
-                    {/* Left Sidebar */}
-                    <aside className="hidden md:block col-span-3 border-r border-white/10 bg-black/20 p-5 p-y-8">
-                        <div className="flex items-center gap-3 mb-10 px-2">
-                            <div className="w-8 h-8 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center">
-                                <Library className="w-4 h-4 text-blue-400" />
-                            </div>
-                            <span className="text-xs font-bold text-slate-400">PLAYBOOKS</span>
-                        </div>
-                        
-                        <div className="space-y-1">
-                            {[
-                                { name: 'DB Failover Script', status: 'Ready', icon: <CheckCircle2 className="w-4 h-4 text-green-500" /> },
-                                { name: 'Scale Workers', status: 'Active', icon: <Activity className="w-4 h-4 text-blue-500" /> },
-                                { name: 'Restart Service', status: 'Ready', icon: <RotateCcw className="w-4 h-4 text-slate-400" /> },
-                                { name: 'Deploy Rollback', status: 'Paused', icon: <ChevronRight className="w-4 h-4 text-slate-600" /> }
-                            ].map((item, i) => (
-                                <div key={i} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors cursor-pointer ${i === 1 ? 'bg-white/10 text-white border border-white/5' : 'text-slate-400 hover:bg-white/5'}`}>
-                                    {item.icon}
-                                    <span className="flex-1 text-[13px]">{item.name}</span>
-                                    <span className="text-[10px] opacity-60 font-mono">{item.status}</span>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="mt-12 bg-white/5 rounded-xl p-4 border border-white/5">
-                            <div className="flex items-center gap-2 mb-4">
-                                <Activity className="w-4 h-4 text-blue-400" />
-                                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Execution Stats</span>
-                            </div>
-                            <div className="space-y-4">
-                                <div>
-                                    <div className="flex justify-between text-[11px] mb-1.5">
-                                        <span className="text-slate-400 font-mono">Success Rate</span>
-                                        <span className="text-white font-bold">98.5%</span>
-                                    </div>
-                                    <div className="h-1 bg-white/10 rounded-full overflow-hidden">
-                                        <div className="h-full bg-blue-500" style={{ width: '98.5%' }}></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="flex justify-between text-[11px] mb-1.5">
-                                        <span className="text-slate-400 font-mono">Avg Duration</span>
-                                        <span className="text-white font-bold">2.3s</span>
-                                    </div>
-                                    <div className="h-1 bg-white/10 rounded-full overflow-hidden">
-                                        <div className="h-full bg-white/40" style={{ width: '60%' }}></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </aside>
-
-                    {/* Main Content */}
-                    <main className="col-span-9 bg-black/10">
-                        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
-                            <div className="flex items-center gap-4">
-                                <span className="text-sm font-medium text-slate-200">recover-workers.playbook</span>
-                                <div className="h-4 w-px bg-white/10" />
-                                <span className="text-xs text-slate-500">Live editing</span>
-                            </div>
-                            <div className="flex items-center gap-4">
-                                <span className="text-[10px] text-slate-600">Saved 1m ago</span>
-                                <div className="flex -space-x-2">
-                                    <div className="w-6 h-6 rounded-full bg-blue-500 border-2 border-black" />
-                                    <div className="w-6 h-6 rounded-full bg-purple-500 border-2 border-black" />
-                                    <div className="w-6 h-6 rounded-full bg-slate-800 border-2 border-black flex items-center justify-center text-[8px]">+3</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="p-8">
-                            <div className="bg-black/60 rounded-xl border border-white/5 p-8 min-h-[400px] relative overflow-hidden group">
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 blur-[80px] pointer-events-none" />
-                                <pre className="font-mono text-sm leading-relaxed text-blue-300">
-                                    <span className="text-slate-500">{"// Axion Shared Live Script Engine v1.0"}</span><br />
-                                    <span className="text-purple-400">const</span> s = <span className="text-blue-400">Runlyx</span>.Script.<span className="text-indigo-400">open</span>(<span className="text-green-400">"recover-workers"</span>);<br /><br />
-                                    s.<span className="text-indigo-400">apply</span>(<span className="text-green-400">"restartWorkers()"</span>, {"{ "} <span className="text-orange-400">user</span>: <span className="text-green-400">"axiom_admin"</span> {"}"});<br />
-                                    s.<span className="text-indigo-400">comment</span>(<span className="text-orange-400">2</span>, <span className="text-green-400">"Initialize cluster health check"</span>);<br />
-                                    s.<span className="text-indigo-400">save</span>(<span className="text-green-400">"v1.2.1"</span>, <span className="text-green-400">"Deploy critical fix"</span>);
-                                </pre>
-
-                                {/* Floating Code Comment */}
-                                <motion.div 
-                                    initial={{ x: 20, opacity: 0 }}
-                                    animate={{ x: 0, opacity: 1 }}
-                                    transition={{ delay: 1 }}
-                                    className="absolute bottom-10 right-10 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-2xl max-w-xs"
-                                >
-                                    <div className="flex items-center gap-3 mb-2">
-                                        <div className="w-6 h-6 rounded-full bg-blue-500" />
-                                        <span className="text-[10px] font-bold text-white">SYSTEM_REPORTER</span>
-                                    </div>
-                                    <p className="text-[11px] text-slate-300 leading-normal">Optimization complete. Infrastructure is now behaving according to specified protocol. Performance boost: +42% throughput.</p>
-                                </motion.div>
-                            </div>
-
-                            <div className="mt-8 grid grid-cols-4 gap-4">
-                                {[
-                                    { name: 'Run', sub: 'Execute', color: 'bg-white text-black' },
-                                    { name: 'Test', sub: 'Dry Run', color: 'bg-white/5 text-white' },
-                                    { name: 'Share', sub: 'Collaborate', color: 'bg-white/5 text-white' },
-                                    { name: 'Export', sub: 'Download', color: 'bg-white/5 text-white' }
-                                ].map((btn, i) => (
-                                    <button key={i} className={`flex flex-col items-center justify-center p-4 rounded-xl border border-white/10 transition-transform active:scale-95 ${btn.color}`}>
-                                        <span className="text-sm font-bold uppercase tracking-tight">{btn.name}</span>
-                                        <span className="text-[9px] opacity-60 uppercase">{btn.sub}</span>
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-                    </main>
-                </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Marquee Section */}
-      <div className="overflow-hidden z-20 bg-white/5 w-full border-y border-white/10 py-10 relative backdrop-blur-xl">
-        <div className="flex whitespace-nowrap w-max animate-marquee">
-          {[...Array(2)].map((_, i) => (
-            <div key={i} className="flex items-center gap-20 px-10">
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-20">custom software for startups</span>
-              <Star className="text-blue-500 opacity-60" fill="currentColor" size={40} />
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase outline-text" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)' }}>strategic systems for growth</span>
-              <Star className="text-blue-500 opacity-60" fill="currentColor" size={40} />
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-20">process automation software</span>
-              <Star className="text-blue-500 opacity-60" fill="currentColor" size={40} />
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase outline-text" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)' }}>scalable enterprise architecture</span>
-              <Star className="text-blue-500 opacity-60" size={40} fill="currentColor" />
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-20">tailored crm development</span>
-              <Star className="text-blue-500 opacity-60" size={40} fill="currentColor" />
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase outline-text" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)' }}>legacy system modernization</span>
-              <Star className="text-blue-500 opacity-60" size={40} fill="currentColor" />
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-20">secure cloud-native systems</span>
-              <Star className="text-blue-500 opacity-60" size={40} fill="currentColor" />
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase outline-text" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)' }}>bespoke internal tools</span>
-              <Star className="text-blue-500 opacity-60" size={40} fill="currentColor" />
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-20">custom inventory management</span>
-              <Star className="text-blue-500 opacity-60" size={40} fill="currentColor" />
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase outline-text" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)' }}>api integration specialists</span>
-              <Star className="text-blue-500 opacity-60" size={40} fill="currentColor" />
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-20">software maintenance services</span>
-              <Star className="text-blue-500 opacity-60" size={40} fill="currentColor" />
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase outline-text" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)' }}>expert node.js developers</span>
-              <Star className="text-blue-500 opacity-60" size={40} fill="currentColor" />
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-20">enterprise portal development</span>
-              <Star className="text-blue-500 opacity-60" size={40} fill="currentColor" />
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase outline-text" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)' }}>rapid prototype application</span>
-              <Star className="text-blue-500 opacity-60" size={40} fill="currentColor" />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Why Custom Over Off-the-Shelf? */}
-      <section className="py-32 lg:py-48 px-6 relative z-10 overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <motion.div 
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="inline-block bg-[#ccff00]/10 text-[#ccff00] font-bold px-4 py-1 rounded-full border border-[#ccff00]/20 mb-10 text-sm uppercase tracking-widest font-mono">
-                [ STRATEGIC_CHOICE ]
-              </div>
-              <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-10 leading-tight font-serif uppercase">
-                Why Custom Over <br />
-                <span className="font-serif italic text-blue-400">Off-the-Shelf?</span>
-              </h2>
-              <div className="flex items-center gap-4 text-xs font-mono text-slate-500 uppercase tracking-[0.4em] mb-12">
-                <Activity className="animate-pulse text-[#ccff00]" size={16} />
-                [ SYSTEMS_ALIGNMENT_ACTIVE ]
-              </div>
-            </motion.div>
-            
-            <motion.div 
-               initial={{ opacity: 0, x: 40 }}
-               whileInView={{ opacity: 1, x: 0 }}
-               viewport={{ once: true }}
-               className="bg-white/[0.03] border border-white/10 p-10 md:p-14 rounded-[2.5rem] backdrop-blur-xl relative space-y-6"
-            >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-[60px] pointer-events-none" />
-              <h3 className="text-2xl font-bold uppercase tracking-tight text-white mb-4">Software Built Around Your Business, Not the Other Way Around</h3>
-              <p className="text-lg leading-relaxed text-slate-300 font-light font-sans">
-                Most businesses eventually hit the same wall: off-the-shelf tools get you started, but they were never built for the specific way you operate. At AbuQitmirLabs, <strong>custom software development</strong> means designing systems around your actual workflows, data, and growth plans — not asking your business to bend around someone else's product roadmap.
-              </p>
-              <p className="text-base leading-relaxed text-slate-400 font-light font-sans">
-                As a <strong>custom software development company</strong>, we work across the full spectrum of build types: internal tools, customer-facing platforms, integrations between systems that were never designed to talk to each other, and the kind of long-term technical foundation that lets a business keep scaling without starting over every few years.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services We Specialize In */}
-      <section className="py-32 lg:py-48 bg-white/[0.02] border-y border-white/10 relative z-10 px-6" id="specialized-services">
+      <main id="main-content" className="pt-24 md:pt-32">
+        {/* Breadcrumb Section */}
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-24">
-            <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ SYSTEM_CAPABILITIES ]</span>
-            <h2 className="text-5xl md:text-7xl font-serif font-light text-white tracking-tight leading-[1] mb-8">
-              AI-Powered Custom <span className="font-serif italic text-zinc-500">Software Solutions Built for Your Business Needs.</span>
-            </h2>
-            <span className="text-sm font-mono text-blue-400 font-bold uppercase tracking-widest mb-6 block">
-              [ Expert Software Engineering Consultants for Your Project ]
-            </span>
-            <p className="text-xl md:text-2xl text-slate-400 max-w-4xl font-light leading-relaxed font-sans">
-              As a premier <strong>custom software development company</strong> and dedicated <strong>custom application development company</strong>, we construct bespoke architectures that align with your workflows. Partner with elite <strong>software engineering consultants</strong> to deploy robust enterprise platforms worldwide.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service) => (
-              <motion.div 
-                key={service.id} 
-                whileHover={{ y: -10 }}
-                className="bg-white/[0.04] border border-white/10 p-10 md:p-14 rounded-[3rem] group hover:bg-white/[0.08] transition-all duration-500 cursor-default relative overflow-hidden flex flex-col items-center text-center"
-              >
-                <div className="absolute top-0 right-0 w-48 h-48 bg-blue-500/5 blur-[80px] group-hover:bg-blue-500/10 transition-colors" />
-                <div className="mb-10 w-20 h-20 bg-black/40 border border-white/10 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:border-blue-500/40 transition-all">
-                  {React.cloneElement(service.icon as React.ReactElement<any>, { className: "w-8 h-8 text-blue-400" })}
-                </div>
-                <span className="text-xs font-mono text-[#ccff00]/60 mb-4 uppercase tracking-widest block">
-                  [ {service.keyword} ]
-                </span>
-                <h3 className="text-2xl font-bold uppercase tracking-tighter mb-6 text-white leading-tight min-h-[3.5rem]">{service.title}</h3>
-                <p className="text-base text-slate-400 leading-relaxed font-light">{service.content}</p>
-                <div className="mt-10 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-blue-500 group-hover:gap-4 transition-all">
-                    Initiate Protocol <ArrowRight size={14} />
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          <Breadcrumbs items={[
+            { label: 'Solutions', path: '/#services' },
+            { label: 'Custom Software Development', path: '/custom-software' }
+          ]} />
         </div>
-      </section>
 
-      {/* What We Build Section */}
-      <section className="py-32 lg:py-48 bg-white/[0.01] relative z-10 px-6 border-b border-white/10" id="what-we-build">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-24 text-center max-w-4xl mx-auto">
-            <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ BUILD_CATEGORIES ]</span>
-            <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight mb-8">
-              What We <span className="font-serif italic text-blue-400">Build</span>
-            </h2>
-            <p className="text-lg md:text-xl text-slate-300 font-light leading-relaxed font-sans">
-              Our engineering work spans several core categories, each handled by teams who specialize in that domain rather than generalists spread thin across everything:
+        {/* Hero Section with EXACT Single H1 */}
+        <section className="relative py-16 md:py-24 overflow-hidden border-b border-white/10" aria-labelledby="custom-software-hero-title">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(204,255,0,0.06),transparent_50%)] pointer-events-none" />
+          
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[#ccff00] text-xs font-mono uppercase tracking-widest mb-6">
+              <svg className="w-4 h-4 text-[#ccff00]" aria-hidden="true"><use href="/sprite.svg#icon-code" /></svg>
+              Bespoke Engineering Studio
+            </div>
+
+            <h1 id="custom-software-hero-title" className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 max-w-5xl text-white">
+              Custom Software Development Company
+            </h1>
+
+            {/* Direct Answer Block for AEO/GEO */}
+            <div className="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl max-w-4xl mb-8 shadow-2xl backdrop-blur-md">
+              <p className="text-sm md:text-base text-gray-200 leading-relaxed font-mono">
+                <strong className="text-[#ccff00]">Direct Answer:</strong> Custom software development is the process of building software engineered specifically for your business — designed around your exact workflows, data requirements, and integrations rather than forcing you to adapt to a generic tool. AbuQitmirLabs builds bespoke software systems that you own outright, from enterprise ERPs to AI-powered SaaS platforms.
+              </p>
+            </div>
+
+            {/* E-E-A-T Inline Trust Signal Bar */}
+            <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-zinc-300 py-3 px-4 bg-zinc-900/80 border border-[#ccff00]/30 rounded-xl mb-8 max-w-3xl">
+              <span className="text-[#ccff00] font-bold">⭐ TajweedPage.com — Delivered</span>
+              <span className="text-zinc-600">•</span>
+              <span>🔒 100% IP &amp; Source Code Ownership</span>
+              <span className="text-zinc-600">•</span>
+              <span>⚡ Zero Vendor Lock-In</span>
+            </div>
+
+            <p className="text-xl md:text-2xl text-gray-400 max-w-3xl leading-relaxed mb-10 font-light">
+              Generic tools force your team into rigid workflows and ongoing subscription fees. We engineer resilient, custom software systems that solve your exact business bottlenecks and scale with your growth.
             </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              {
-                title: "Web Application Development",
-                tagline: "Full-stack platforms, customer portals, and dashboards",
-                description: "Full-stack platforms, customer portals, and internal dashboards built with the same care as our dedicated web development practice, but scoped specifically to complex business logic rather than content-driven sites.",
-                path: "/web-development",
-                icon: <Globe className="w-8 h-8 text-sky-400" />
-              },
-              {
-                title: "Custom Web Development Applications",
-                tagline: "Application layers engineered from the ground up",
-                description: "When a project needs functionality no plugin or template can offer, we build the application layer from the ground up: authentication, workflows, data models, and integrations designed around your exact requirements.",
-                path: "",
-                icon: <Code2 className="w-8 h-8 text-[#ccff00]" />
-              },
-              {
-                title: "AI-Powered Systems",
-                tagline: "Intelligent automation embedded directly in software",
-                description: "For businesses looking to embed intelligent automation directly into their software, our AI agent development team builds agents that plug into these same custom platforms.",
-                path: "/ai-agent-development",
-                icon: <Bot className="w-8 h-8 text-purple-400" />
-              },
-              {
-                title: "Mobile Applications",
-                tagline: "Native and cross-platform mobile companions",
-                description: "Native and cross-platform builds handled by our dedicated mobile app development team, often shipped as a companion to a broader custom software engagement.",
-                path: "/mobile-app-development",
-                icon: <Smartphone className="w-8 h-8 text-amber-400" />
-              }
-            ].map((build, idx) => (
-              <motion.div
-                key={idx}
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.3 }}
-                className="bg-white/[0.02] border border-white/10 p-10 rounded-[2.5rem] hover:bg-white/[0.05] transition-all relative overflow-hidden flex flex-col justify-between group"
+            <div className="flex flex-wrap items-center gap-6">
+              <Link 
+                to="/contact" 
+                aria-label="Talk to AbuQitmirLabs about your custom software project"
+                className="px-8 py-4 bg-[#ccff00] text-black font-extrabold rounded-xl hover:scale-105 transition-all text-sm uppercase tracking-wider flex items-center gap-3 shadow-[0_0_30px_rgba(204,255,0,0.3)]"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] pointer-events-none" />
-                <div>
-                  <div className="mb-8 w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center">
-                    {build.icon}
-                  </div>
-                  <h3 className="text-2xl font-bold uppercase tracking-tight text-white mb-2">{build.title}</h3>
-                  <span className="text-xs font-mono text-slate-500 uppercase tracking-widest block mb-4">
-                    {build.tagline}
-                  </span>
-                  <p className="text-base leading-relaxed text-slate-400 font-light font-sans mb-8">{build.description}</p>
-                </div>
-                {build.path ? (
-                  <Link 
-                    to={build.path}
-                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-blue-400 group-hover:text-white transition-colors"
-                  >
-                    Explore Practice <ArrowRight size={12} />
-                  </Link>
-                ) : (
-                  <span className="text-xs font-mono text-slate-600 uppercase tracking-widest">
-                    Custom Proprietary Layer
-                  </span>
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Industry-Focused Solutions for Every Sector */}
-      <section className="py-32 lg:py-48 bg-black relative z-10 px-6 border-b border-white/10" id="industry-solutions">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-24 text-center max-w-4xl mx-auto">
-            <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ SECTOR_VERTICALS ]</span>
-            <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight mb-8">
-              Industry-Specific <br />
-              <span className="font-serif italic text-blue-400">Software Development</span>
-            </h2>
-            <p className="text-lg md:text-xl text-slate-300 font-light leading-relaxed font-sans">
-              Generic software works until it doesn't. Every industry carries its own compliance requirements, data sensitivities, and operational patterns — which is why we build with <strong>custom enterprise software development</strong> practices tailored to the sector, rather than applying a single template everywhere.
-            </p>
-          </div>
-
-          {/* Grid of 12 Sectors */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Non-Profit Organizations",
-                icon: <Heart className="w-8 h-8 text-rose-400" />,
-                tagline: "Custom Software Development for Non-Profit Organizations",
-                description: "Non-profits require more than standard software. They need platforms that manage donor relationships, track impact metrics, process donations securely, and streamline volunteer coordination—all while operating within tight budgets. Our custom software development for non-profit organizations delivers purpose-built solutions that maximize your mission's reach without unnecessary overhead. From grant management to impact reporting, we build tools that help you focus on what matters most: your cause."
-              },
-              {
-                title: "Logistics & Supply Chain",
-                icon: <Truck className="w-8 h-8 text-amber-400" />,
-                tagline: "custom logistics software development",
-                description: "Custom logistics software development — including custom software development for logistics — covers route optimization systems, warehouse management platforms, and real-time tracking tools built around your specific supply chain, not a generic fleet-management template."
-              },
-              {
-                title: "Real Estate Agencies",
-                icon: <Home className="w-8 h-8 text-sky-400" />,
-                tagline: "Custom Software Development for Real Estate Agencies",
-                description: "Real estate agencies need more than property listings—they need intelligent platforms that manage leads, automate follow-ups, and provide seamless client experiences. Our custom software development for real estate agencies builds property management systems, CRM integrations, and interactive search tools that help you close deals faster. From virtual tour integrations to automated valuation models, we create digital ecosystems that give you a competitive edge."
-              },
-              {
-                title: "Healthcare & Medical",
-                icon: <HeartPulse className="w-8 h-8 text-emerald-400" />,
-                tagline: "custom healthcare software development company",
-                description: "As a custom healthcare software development company, we build patient management systems, scheduling platforms, and compliance-conscious records systems designed around HIPAA-equivalent data handling requirements. Our healthcare software development services extend into custom medical software development — diagnostic support tools, clinical workflow systems, and integrations with existing hospital or clinic infrastructure. For providers evaluating a healthcare software development company, the deciding factor is almost always whether the team understands clinical workflows, not just code."
-              },
-              {
-                title: "Small Law Firms",
-                icon: <Scale className="w-8 h-8 text-indigo-400" />,
-                tagline: "Custom Software Development for Small Law Firms",
-                description: "For small law firms, credibility and efficiency are critical. Our custom software development for small law firms creates secure client portals, case management systems, document automation, and billing solutions that reduce administrative overhead. We help you focus on practicing law, not managing software."
-              },
-              {
-                title: "Corporate Events",
-                icon: <Calendar className="w-8 h-8 text-purple-400" />,
-                tagline: "Custom Software Development for Corporate Events",
-                description: "Event organizers face immense pressure to deliver seamless experiences—from registration to post-event engagement. Our custom software development for corporate events provides comprehensive platforms that automate ticketing, manage speaker schedules, and deliver real-time attendee analytics—all in one integrated system. Whether you're planning a conference, trade show, or private gala, we build the digital infrastructure that makes event logistics effortless."
-              },
-              {
-                title: "Educational Institutions",
-                icon: <GraduationCap className="w-8 h-8 text-blue-400" />,
-                tagline: "Custom Software Development for Educational Institutions",
-                description: "The modern educational ecosystem spans in-person, hybrid, and fully remote learning environments. Our custom software development for educational institutions builds adaptive platforms that centralize student records, facilitate online assessments, and enable seamless communication between teachers, students, and parents—all while maintaining strict data security. From K-12 to higher education, we create digital foundations that support academic excellence."
-              },
-              {
-                title: "Finance & Fintech",
-                icon: <Coins className="w-8 h-8 text-yellow-400" />,
-                tagline: "custom fintech software development",
-                description: "Custom financial software development covers everything from internal risk and reporting tools to full custom fintech software development builds — payment processing platforms, lending systems, and compliance-heavy financial applications where accuracy and auditability aren't optional."
-              },
-              {
-                title: "Construction Industry",
-                icon: <Wrench className="w-8 h-8 text-orange-400" />,
-                tagline: "Custom Software Development for the Construction Industry",
-                description: "Construction projects involve complex coordination across multiple stakeholders, budgets, and timelines. Our custom software development for the construction industry creates project management platforms that track progress, manage resources, and streamline communication across job sites. From bid management to project closeout, we build solutions that keep construction projects on track."
-              },
-              {
-                title: "Manufacturing & Retail",
-                icon: <Factory className="w-8 h-8 text-teal-400" />,
-                tagline: "custom manufacturing software development",
-                description: "Custom manufacturing software development spans production tracking, inventory systems, and quality control platforms. On the commercial side, custom retail software development covers everything from point-of-sale systems to inventory and customer data platforms built for how your stores or online channels actually operate."
-              },
-              {
-                title: "Energy & Enterprise",
-                icon: <Cpu className="w-8 h-8 text-[#ccff00]" />,
-                tagline: "custom enterprise software development",
-                description: "For utilities and industrial operators, custom energy software development covers monitoring dashboards, grid management tools, and compliance reporting systems. At the broader organizational level, our custom enterprise software development work focuses on the internal systems — ERP-adjacent tools, cross-department data platforms — that large organizations depend on daily but rarely see reflected in off-the-shelf software."
-              },
-              {
-                title: "Startups",
-                icon: <Rocket className="w-8 h-8 text-purple-400" />,
-                tagline: "custom software development for startups",
-                description: "Custom software development for startups looks different from enterprise work by design: leaner scope, faster iteration, and architecture built to support growth rather than every conceivable future feature on day one. Our approach to software development for startups prioritizes shipping a working product quickly without accumulating technical debt that becomes expensive to unwind later."
-              }
-            ].map((sector, idx) => (
-              <motion.div
-                key={idx}
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.3 }}
-                className="bg-white/[0.02] border border-white/10 p-8 rounded-[2rem] hover:bg-white/[0.05] transition-all relative overflow-hidden flex flex-col justify-between"
+                Talk to AbuQitmirLabs About Your Project
+                <svg className="w-5 h-5" aria-hidden="true"><use href="/sprite.svg#icon-arrow-right" /></svg>
+              </Link>
+              <Link 
+                to="/case-studies" 
+                aria-label="View our completed engineering case studies"
+                className="px-8 py-4 border border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-all text-sm uppercase tracking-wider"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] pointer-events-none" />
-                <div>
-                  <div className="mb-6 w-14 h-14 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center">
-                    {sector.icon}
-                  </div>
-                  <h3 className="text-xl font-bold uppercase tracking-tight text-white mb-2">{sector.title}</h3>
-                  <span className="text-xs font-mono text-blue-400 uppercase tracking-widest block mb-4">
-                    {sector.tagline}
-                  </span>
-                  <p className="text-sm leading-relaxed text-slate-400 font-light font-sans">{sector.description}</p>
-                </div>
-              </motion.div>
-            ))}
+                View Case Studies
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Custom Software Development with Specialized Features */}
-      <section className="py-32 lg:py-48 bg-white/[0.01] border-b border-white/10 relative z-10 px-6" id="specialized-features">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-24 text-center max-w-4xl mx-auto">
-            <span className="text-xs font-mono text-[#ccff00] mb-6 uppercase tracking-[0.5em] font-bold block">[ ADVANCED_INTEGRATIONS ]</span>
-            <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight mb-8">
-              Custom Software Development with <br />
-              <span className="font-serif italic text-blue-400">Specialized Features</span>
-            </h2>
-            <p className="text-lg md:text-xl text-slate-300 font-light leading-relaxed font-sans">
-              Modern businesses require modern features. We build solutions with specific, high-value functionalities that solve real problems:
-            </p>
-          </div>
+        <CountryMarquee />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: "AI Chatbot Integration",
-                icon: <Bot className="w-8 h-8 text-blue-400" />,
-                description: "Custom software development with AI chatbot integration delivers intelligent conversational agents that qualify leads, provide customer support, and automate routine interactions. These AI-powered assistants reduce response times and scale your customer engagement without adding headcount."
-              },
-              {
-                title: "Membership Portals",
-                icon: <Users className="w-8 h-8 text-[#ccff00]" />,
-                description: "Custom software development with membership portal creates secure, user-centric platforms that manage user accounts, subscriptions, content access, and community engagement—perfect for membership organizations, subscription services, and professional associations."
-              },
-              {
-                title: "Booking Systems",
-                icon: <Clock className="w-8 h-8 text-indigo-400" />,
-                description: "Custom software development with booking system provides intuitive scheduling tools that integrate with calendars, manage availability, and automate confirmations—essential for service-based businesses looking to reduce administrative overhead."
-              },
-              {
-                title: "Inventory Management",
-                icon: <Package className="w-8 h-8 text-amber-400" />,
-                description: "Custom software development for inventory management provides real-time visibility into stock levels, automated reordering, and predictive analytics to optimize your supply chain operations."
-              },
-              {
-                title: "Property Management",
-                icon: <Building2 className="w-8 h-8 text-sky-400" />,
-                description: "Custom software development for property management creates comprehensive platforms for managing rental properties, tenant relationships, maintenance requests, and financial reporting—tailored for the real estate sector."
-              }
-            ].map((feature, idx) => (
-              <motion.div
-                key={idx}
-                whileHover={{ scale: 1.02 }}
-                className="bg-white/[0.03] border border-white/10 p-8 rounded-[2rem] hover:bg-white/[0.06] transition-all relative overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#ccff00]/5 blur-[60px] pointer-events-none" />
-                <div className="flex gap-4 items-start">
-                  <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center shrink-0">
-                    {feature.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold uppercase tracking-tight text-white mb-2">{feature.title}</h3>
-                    <p className="text-sm leading-relaxed text-slate-400 font-light font-sans">{feature.description}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Global Markets and Why Partner with AbuQitmirLabs */}
-      <section className="py-32 lg:py-48 bg-black border-b border-white/10 relative z-10 px-6" id="global-markets">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ GLOBAL_FOOTPRINT ]</span>
-              <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight mb-8">
-                Custom Software Development <br />
-                <span className="font-serif italic text-blue-400">Across Global Markets</span>
+        {/* Section 1: What Is Custom Software Development? */}
+        <section className="py-20 md:py-28 bg-zinc-950/60 border-b border-white/10" aria-labelledby="what-is-custom-software-h2">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-4xl">
+              <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Strategic Foundation</span>
+              <h2 id="what-is-custom-software-h2" className="text-3xl md:text-5xl font-extrabold tracking-tight mb-8 text-white">
+                What Is Custom Software Development?
               </h2>
-              <p className="text-base text-slate-300 font-light leading-relaxed mb-10 font-sans">
-                While our engineering headquarters is in Karachi, Pakistan, our digital solutions are built for a global stage. We understand the unique demands of different markets and adapt our approach accordingly:
+              <p className="text-gray-300 text-lg leading-relaxed mb-6 font-light">
+                Custom software development means building a system from the ground up to solve a specific business problem — one that no off-the-shelf product addresses cleanly.
               </p>
-
-              <div className="space-y-6">
-                {[
-                  {
-                    market: "United States",
-                    text: "Custom software development in the United States for businesses that require high-performance, high-security, and premium design to compete in one of the world's most competitive digital landscapes."
-                  },
-                  {
-                    market: "United Kingdom",
-                    text: "Custom software development in the United Kingdom aligned with UK data protection standards and user expectations, ensuring your brand resonates with British audiences."
-                  },
-                  {
-                    market: "Canada",
-                    text: "Custom software development in Canada that reflects the country's bilingual and multicultural landscape, with compliance to Canadian accessibility standards."
-                  },
-                  {
-                    market: "Australia",
-                    text: "Custom software development in Australia for businesses ready to dominate the Australian market with fast, scalable, and user-friendly platforms."
-                  },
-                  {
-                    market: "Poland",
-                    text: "Custom software development in Poland that bridges the gap between global standards and local market needs, helping Polish businesses expand their digital footprint."
-                  }
-                ].map((item, idx) => (
-                  <div key={idx} className="border-l border-white/10 pl-6 py-2">
-                    <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-2">{item.market}</h3>
-                    <p className="text-xs text-slate-400 leading-relaxed font-light">{item.text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-[3rem] relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 blur-[80px] pointer-events-none" />
-              <span className="text-xs font-mono text-[#ccff00] mb-6 uppercase tracking-[0.5em] font-bold block">[ WHY_ABUQITMIRLABS ]</span>
-              <h3 className="text-3xl font-serif font-light text-white leading-tight mb-6">
-                Why Partner with <span className="font-serif italic text-blue-400">AbuQitmirLabs?</span>
-              </h3>
-              <p className="text-base text-slate-300 leading-relaxed font-light mb-8 font-sans">
-                Our team in Karachi, Pakistan, combines global-grade technical expertise with cost-effective delivery. We serve clients across the United States, United Kingdom, Canada, Poland, and Australia—building custom software that is secure, scalable, and fully owned by you. Whether you're modernizing legacy systems, automating workflows, or building a new digital product, our engineering discipline ensures you get a solution that performs, integrates, and grows with your business.
+              <p className="text-gray-300 text-lg leading-relaxed mb-6 font-light">
+                The global custom software development market is valued at $43.2 billion in 2024 and projected to reach $146.2 billion by 2030 — a compound annual growth rate above 22%. That growth reflects a straightforward reality: generic tools create compromises. Custom software eliminates them.
               </p>
-              
-              <div className="flex gap-4 items-center">
-                <div className="w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
-                  <Activity className="w-6 h-6 text-blue-400" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold text-white uppercase font-sans">Let's build your digital advantage.</h4>
-                  <p className="text-xs text-slate-400 font-sans">Engineering bespoke systems from Karachi, Pakistan to the world.</p>
-                </div>
-              </div>
+              <p className="text-gray-300 text-lg leading-relaxed mb-6 font-light">
+                At AbuQitmirLabs, every build starts with your workflows, not a template. You get full source code ownership, full IP ownership, and a system built to scale with your business — not against it.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Elevated Success Stories & Case Studies */}
-      <section className="py-32 lg:py-48 px-6 border-b border-white/10 relative overflow-hidden bg-white/[0.01]" id="case-studies">
-        <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="mb-24 text-center max-w-4xl mx-auto">
-            <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ PROVEN_IMPACT ]</span>
-            <h2 className="text-5xl md:text-7xl font-serif font-light text-white tracking-tight leading-[1] mb-8">
-              Proven Success. <span className="font-serif italic text-zinc-500">Elevated Quality.</span>
+        {/* Section 2: What We Build */}
+        <section className="py-20 md:py-28 max-w-7xl mx-auto px-6 border-b border-white/10" aria-labelledby="what-we-build-h2">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest">Platform Capabilities</span>
+            <h2 id="what-we-build-h2" className="text-3xl md:text-5xl font-extrabold mt-3 mb-6 text-white">
+              What We Build
             </h2>
-            <p className="text-xl text-slate-400 font-light leading-relaxed font-sans">
-              We validate our expertise through concrete operational outcomes. As established software consultants, we subject every custom software development architecture to rigorous, measurable audits.
+            <p className="text-gray-400 text-base md:text-lg font-light">
+              From enterprise operations to high-throughput SaaS platforms, we architect resilient digital assets built to your exact specifications.
             </p>
           </div>
 
-          {/* Premium E-E-A-T Statistics Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
-            {[
-              {
-                metric: "-60% Latency",
-                title: "Decreased Global Load Times",
-                desc: "Achieved ultra-fast interactive states by architecting server-side hydrated rendering and localized CDN edge-caching frameworks."
-              },
-              {
-                metric: "10k+ Concurrent",
-                title: "High-Concurrency Scalability",
-                desc: "Engineered multi-tenant database designs that scale seamlessly past 10,000 active concurrent users with zero CPU throttling."
-              },
-              {
-                metric: "40% OPEX Cut",
-                title: "Operational Overhead Reduction",
-                desc: "Freed enterprises from rigid, subscription-bloated SaaS loops by synthesizing custom workflow automation scripts."
-              }
-            ].map((stat, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="bg-white/[0.03] border border-white/10 p-10 rounded-[2.5rem] relative overflow-hidden group hover:bg-white/[0.06] transition-all"
-              >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] pointer-events-none" />
-                <h3 className="text-4xl lg:text-5xl font-bold font-mono text-blue-400 mb-4 tracking-tighter select-none">{stat.metric}</h3>
-                <h4 className="text-lg font-bold text-white uppercase mb-3">{stat.title}</h4>
-                <p className="text-sm leading-relaxed text-slate-400 font-light">{stat.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* What We've Built Showcase */}
-          <div className="mb-32 mt-12 border-t border-white/10 pt-24">
-            <h3 className="text-xs font-mono text-[#ccff00] mb-12 uppercase tracking-[0.4em] font-bold text-center">[ FEATURED_BUILDS ]</h3>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24 bg-white/[0.02] border border-white/10 rounded-[3rem] p-8 md:p-16 relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 blur-[120px] pointer-events-none rounded-full" />
-              <div className="lg:col-span-7 space-y-6">
-                <span className="text-xs font-mono text-blue-400 uppercase tracking-widest font-bold block">// SYSTEM_REVOLUTION</span>
-                <h3 className="text-3xl md:text-5xl font-serif font-light text-white leading-tight uppercase">
-                  What We've Built: <span className="font-serif italic text-blue-400">Custom Dispatch Engine</span>
-                </h3>
-                <p className="text-lg text-slate-300 leading-relaxed font-light">
-                  A regional logistics company came to us with a manual dispatch system run on spreadsheets — dispatchers were losing 3-4 hours daily on manual route assignment.
-                </p>
-                <p className="text-lg text-slate-300 leading-relaxed font-light">
-                  We built a custom dispatch engine with real-time tracking, cutting assignment time by 70% and eliminating double-bookings entirely.
-                </p>
-              </div>
-              <div className="lg:col-span-5 bg-black/40 border border-white/5 rounded-2xl p-8 flex flex-col justify-center h-full text-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-50" />
-                <span className="text-6xl md:text-7xl font-bold font-mono text-blue-400 mb-2 select-none">-70%</span>
-                <span className="text-sm font-mono text-gray-500 uppercase tracking-widest mb-4">Assignment Time</span>
-                <div className="h-px bg-white/10 my-4" />
-                <span className="text-2xl font-light text-white tracking-tight font-serif uppercase">Spreadsheets Eliminated</span>
-                <span className="text-xs font-mono text-slate-500 mt-2">// Automated Route Matrix</span>
-              </div>
-            </div>
-
-            {/* Cinematic TajweedPage Case Study */}
-            <div className="border-t border-white/10 pt-24 mt-24">
-              <div className="text-center max-w-3xl mx-auto mb-16">
-                <span className="text-xs font-mono text-[#ccff00] mb-4 uppercase tracking-[0.4em] font-bold block">[ CASE_STUDY ]</span>
-                <h3 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight uppercase">
-                  TajweedPage
-                </h3>
-                <p className="text-xl italic text-slate-400 font-serif font-light mt-4">
-                  AI-Powered Quran Recitation Platform
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-                <div className="lg:col-span-5 space-y-12">
-                  <div className="space-y-4">
-                    <span className="text-xs font-mono text-slate-500 uppercase tracking-widest block">// THE_CLIENT</span>
-                    <h4 className="text-xl font-bold text-white uppercase tracking-tight">Perfecting Quranic Recitation</h4>
-                    <p className="text-slate-400 font-light leading-relaxed">
-                      TajweedPage is an online Quran academy offering professional, certified Tajweed and Quran teaching matched to global timezones, connecting students with native scholars to perfect recitation.
-                    </p>
-                  </div>
-
-                  <div className="space-y-4">
-                    <span className="text-xs font-mono text-red-400 uppercase tracking-widest block">// THE_CHALLENGE</span>
-                    <h4 className="text-xl font-bold text-white uppercase tracking-tight">The Scaling Bottleneck</h4>
-                    <p className="text-slate-400 font-light leading-relaxed">
-                      Traditional online Quran teaching platforms rely entirely on live teachers — students get no feedback between sessions, and scaling personalized correction to hundreds of students is nearly impossible.
-                    </p>
-                  </div>
-
-                  <div className="space-y-4">
-                    <span className="text-xs font-mono text-blue-400 uppercase tracking-widest block">// THE_SOLUTION</span>
-                    <h4 className="text-xl font-bold text-white uppercase tracking-tight">Intelligent Speech Diagnosis</h4>
-                    <p className="text-slate-400 font-light leading-relaxed">
-                      AbuQitmirLabs built TajweedPage AI — an Islamic AI Education Center combining real-time speech diagnosis, customized visual learning roadmaps, and instant RAG-powered knowledge support.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="lg:col-span-7 bg-white/[0.01] border border-white/10 rounded-[3rem] p-8 md:p-12 space-y-8 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 blur-[80px] pointer-events-none rounded-full" />
-                  
-                  <h4 className="text-xs font-mono text-[#ccff00] uppercase tracking-widest font-bold">// KEY_FEATURES_ENGINEERED</h4>
-                  
-                  <div className="space-y-6">
-                    {[
-                      {
-                        title: "AI Tajweed Teacher Chat",
-                        desc: "A RAG-grounded chatbot answering Tajweed rule questions (Qalqalah, Noon Sakinah, Madd elongation) using authentic course content and FAQs."
-                      },
-                      {
-                        title: "Voice Recitation Analyzer",
-                        desc: "Automatic detection of pronunciation errors across Makharij (articulation points), Madd (elongation), and Ghunnah (nasalization)."
-                      },
-                      {
-                        title: "Personalized Learning Path",
-                        desc: "Adaptive roadmap tracking student progress level-by-level (e.g., Noorani Qaida stage)."
-                      },
-                      {
-                        title: "Homework Evaluator",
-                        desc: "Automated review layer supporting live Sheikh feedback sessions."
-                      },
-                      {
-                        title: "Hybrid AI + Human Model",
-                        desc: "AI reinforces patterns while certified scholars with authentic Ijazah chains provide final authorization on recitation."
-                      }
-                    ].map((feat, idx) => (
-                      <div key={idx} className="flex gap-4 items-start border-b border-white/5 pb-6 last:border-b-0 last:pb-0">
-                        <span className="text-xs font-mono text-blue-400 pt-1 font-bold">0{idx+1}</span>
-                        <div>
-                          <h5 className="font-bold text-white uppercase text-sm mb-1">{feat.title}</h5>
-                          <p className="text-slate-400 text-sm font-light leading-relaxed">{feat.desc}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="pt-6 border-t border-white/5">
-                    <h4 className="text-xs font-mono text-slate-500 uppercase tracking-widest mb-4 font-bold">// TECH_HIGHLIGHTS</h4>
-                    <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono text-slate-400">
-                      <li className="bg-black/40 border border-white/5 p-3 rounded-xl flex items-center justify-center text-center">RAG-grounded AI</li>
-                      <li className="bg-black/40 border border-white/5 p-3 rounded-xl flex items-center justify-center text-center">Speech Analytics</li>
-                      <li className="bg-black/40 border border-white/5 p-3 rounded-xl flex items-center justify-center text-center">Session Continuity</li>
-                    </ul>
-                  </div>
-
-                  <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div className="space-y-1">
-                      <span className="text-xs font-mono text-emerald-400 uppercase tracking-widest font-bold block">// COGNITIVE_IMPACT</span>
-                      <p className="text-slate-300 text-sm font-light leading-relaxed">
-                        A scalable AI layer extending personalized Tajweed correction beyond live class hours — self-practice with instant feedback.
-                      </p>
-                    </div>
-                    <a 
-                      href="https://www.tajweedpage.com/ai" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex h-14 items-center gap-3 rounded-2xl bg-white px-8 text-sm font-bold text-black shadow-2xl transition hover:bg-slate-200 hover:scale-105 active:scale-95 uppercase tracking-tight shrink-0"
-                      style={{ color: '#000000' }}
-                    >
-                      <span className="text-black font-black" style={{ color: '#000000' }}>Visit Live Site</span>
-                      <ArrowUpRight className="h-5 w-5 text-black" style={{ color: '#000000' }} />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mb-12 border-t border-white/10 pt-24">
-            <h3 className="text-xs font-mono text-slate-500 mb-8 uppercase tracking-[0.4em] font-bold text-center">[ WORK_IN_ACTION_AUDITS ]</h3>
-          </div>
-
-          {/* Video Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Enterprise Software Architecture",
-                desc: "High-performance systems blueprint and secure database integrations.",
-                videoId: "KAhcBqKN_ks"
-              },
-              {
-                title: "Advanced Engineering Solutions",
-                desc: "Deep dive into High-Performance Web Tech and modular node.js custom integrations.",
-                videoId: "B31EXmt5LrQ"
-              },
-              {
-                title: "Scalable Data Pipeline Sync",
-                desc: "Streamlined database modeling and sub-second multi-region server execution.",
-                videoId: "gCmt4TEBzQ8"
-              },
-              {
-                title: "HIPAA & GDPR Computational Compliance",
-                desc: "Architecting high-security health tech and fintech compliance layers.",
-                videoId: "v25Fo6O3iy4"
-              },
-              {
-                title: "Automated Release Pipeline Orchestration",
-                desc: "Continuous integration pipelines and ultra-reliable software deployment systems.",
-                videoId: "L3P57XVX9E0"
-              },
-              {
-                title: "Legacy Modernization Strategy Session",
-                desc: "A look at our detailed technical roadmap building for enterprise clients.",
-                videoId: "M4m1rplTxDk"
-              }
-            ].map((video, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
+            {whatWeBuildItems.map((item, idx) => (
+              <motion.article 
+                key={idx} 
+                initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="group flex flex-col items-center text-center bg-white/[0.02] border border-white/5 rounded-[2.5rem] overflow-hidden hover:border-blue-500/30 transition-all shadow-xl p-4"
+                transition={{ duration: 0.5, delay: idx * 0.05 }}
+                className="group relative overflow-hidden p-8 rounded-2xl bg-zinc-900/60 backdrop-blur-xl border border-white/10 hover:border-[#ccff00]/50 hover:shadow-[0_0_30px_rgba(204,255,0,0.2)] transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between"
               >
-                <div className="aspect-video relative w-full rounded-2xl overflow-hidden bg-black mb-6 border border-white/5">
-                  <YouTubeFacade videoId={video.videoId} title={video.title} />
-                </div>
-                <div className="px-4 pb-4">
-                  <h4 className="text-xl font-bold text-white mb-2 uppercase tracking-tight">{video.title}</h4>
-                  <p className="text-sm text-slate-500 font-light leading-relaxed">{video.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Playbook Tabs */}
-      <section className="py-32 lg:py-48 px-6 relative z-10 border-b border-white/10">
-        <div className="mx-auto max-w-7xl">
-            <div className="mb-20">
-                <h2 className="text-4xl md:text-7xl font-bold tracking-tight text-white mb-6 uppercase">Automation playbooks</h2>
-                <p className="mt-4 max-w-2xl text-xl text-white/50 font-light leading-relaxed">Build, test and run safe automations that turn alerts into fixes. Centralized operational intelligence for high-scale teams.</p>
-            </div>
-
-            <div className="flex flex-col lg:grid lg:grid-cols-2 items-stretch rounded-[3rem] border border-white/10 bg-white/[0.02] overflow-hidden backdrop-blur-3xl">
-                <div className="p-10 lg:p-20 border-b lg:border-b-0 lg:border-r border-white/10">
-                    <div className="flex flex-wrap gap-2 mb-16">
-                        {Object.keys(playbookData).map((key) => (
-                            <button 
-                                key={key}
-                                onClick={() => setActivePlaybook(key as any)}
-                                className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-widest transition-all ${activePlaybook === key ? 'bg-white text-black' : 'bg-white/5 text-slate-500 hover:text-white hover:bg-white/10'}`}
-                            >
-                                {playbookData[key as keyof typeof playbookData].title}
-                            </button>
-                        ))}
-                    </div>
-
-                    <div className="max-w-xl">
-                        <h3 className="mb-4 text-3xl font-bold tracking-tight text-white uppercase italic">{playbookData[activePlaybook].title}</h3>
-                        <p className="mb-8 text-[11px] uppercase tracking-[0.4em] text-blue-500 font-bold">{playbookData[activePlaybook].tagline}</p>
-                        <p className="text-lg leading-relaxed text-white/70 font-light mb-6">{playbookData[activePlaybook].p1}</p>
-                        <p className="text-lg leading-relaxed text-white/70 font-light mb-10">{playbookData[activePlaybook].p2}</p>
-                        
-                        <a 
-                          href="https://wa.me/923233260859"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex h-14 items-center gap-3 rounded-2xl bg-white px-8 text-sm font-bold text-black shadow-2xl transition hover:bg-slate-200 hover:scale-105 active:scale-95 uppercase tracking-tight"
-                          style={{ color: '#000000' }}
-                        >
-                            <span className="text-black font-black" style={{ color: '#000000' }}>Learn more</span>
-                            <ArrowRight className="h-5 w-5 text-black" style={{ color: '#000000' }} />
-                        </a>
-                    </div>
-                </div>
-                
-                <div className="p-10 lg:p-20 flex flex-col justify-center bg-black/40 relative">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 blur-[100px] pointer-events-none" />
-                    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/60 shadow-inner">
-                        <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-5 py-3">
-                            <div className="flex items-center gap-1.5">
-                                <span className="h-2 w-2 rounded-full bg-white/20"></span>
-                                <span className="h-2 w-2 rounded-full bg-white/15"></span>
-                                <span className="h-2 w-2 rounded-full bg-white/10"></span>
-                            </div>
-                            <div className="flex items-center gap-2 text-[10px] text-zinc-500 font-mono">
-                                {"// system_remediation_active"}
-                            </div>
-                        </div>
-                        <pre className="whitespace-pre-wrap p-8 font-mono text-[13px] leading-relaxed text-blue-300">
-                            {playbookData[activePlaybook].code}
-                        </pre>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </section>
-
-      <CountryMarquee />
-
-      {/* Our Proven Step Development Process */}
-      <section id="development-process" className="bg-[#000000] py-32 px-6 relative overflow-hidden border-b border-white/10">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/5 blur-[150px] rounded-full pointer-events-none"></div>
-
-          <div className="max-w-7xl mx-auto px-4">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mb-24">
-                  <div className="lg:col-span-5">
-                      <span className="text-xs font-bold uppercase tracking-[0.3em] text-blue-500 mb-6 block font-mono">
-                          The Development Lifecycle
-                      </span>
-                      <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight font-serif uppercase">
-                          Our Process & <br />
-                          <span className="font-serif italic text-blue-400">Approach</span>
-                      </h2>
-                      <div className="mt-8 flex items-center gap-4 text-xs font-mono text-slate-500 uppercase tracking-[0.4em]">
-                          <Activity className="animate-pulse text-[#ccff00]" size={16} />
-                          [ ADAPTIVE_DEVELOPMENT_PROTOCOL ]
-                      </div>
-                  </div>
-                  
-                  <div className="lg:col-span-7 bg-white/[0.02] border border-white/10 p-10 rounded-[2.5rem] relative space-y-6 backdrop-blur-xl">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] pointer-events-none" />
-                      <p className="text-lg text-slate-300 leading-relaxed font-light">
-                        Every engagement follows a disciplined <strong>custom software development best practice</strong>: requirements discovery before architecture, architecture before code, and continuous testing rather than a single QA pass at the end. This isn't a formality — it's the difference between software that survives real-world usage and software that breaks the first time a client's workflow doesn't match the original assumptions.
-                      </p>
-                      <p className="text-base text-slate-400 leading-relaxed font-light">
-                        Much of our process draws on principles of <strong>adaptive software development</strong> — an approach built around continuous learning and adjustment rather than rigid, front-loaded planning. In practice, this means we build in short cycles, gather feedback from actual usage early, and adjust the system as your business requirements evolve, rather than locking in a fixed spec eighteen months before launch and hoping nothing changes.
-                      </p>
-                      <div className="pt-6 border-t border-white/5">
-                        <h4 className="text-xs font-mono text-[#ccff00] uppercase tracking-widest font-bold mb-2">// EMBEDDED_SYSTEMS</h4>
-                        <p className="text-sm text-slate-400 leading-relaxed font-light">
-                          For businesses with hardware-dependent or resource-constrained systems, we also offer <strong>embedded software development services</strong> — firmware and low-level application logic for devices and industrial systems where standard web or mobile architectures don't apply.
-                        </p>
-                      </div>
-                  </div>
-              </div>
-
-              <div className="relative max-w-5xl mx-auto">
-                  {/* Spine Line */}
-                  <div className="absolute left-[32px] md:left-1/2 top-0 bottom-0 w-[18px] md:-translate-x-1/2 rounded-full border border-white/10 bg-white/[0.02] shadow-inner z-0">
-                      <div className="absolute inset-y-4 left-1/2 w-[2px] -translate-x-1/2 bg-white/5 overflow-hidden">
-                          <motion.div 
-                              animate={{ y: ["0%", "100%", "200%"] }}
-                              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                              className="absolute left-0 top-0 w-full h-[140px] bg-gradient-to-b from-transparent via-blue-500 to-transparent shadow-[0_0_18px_rgba(59,130,246,0.65)]"
-                          />
-                      </div>
-                  </div>
-
-                  {/* Steps */}
-                  <div className="relative z-10 pt-12 md:pt-0">
-                    {[
-                      {
-                          title: "1. Discovery & Architecture (Week 1-2)",
-                          desc: "We map your existing workflows, identify bottlenecks, and design a system architecture before writing a single line of code.",
-                          icon: <Rocket className="w-5 h-5" />,
-                          progress: 100,
-                          label: "WORKFLOW_MAPPING: ACTIVE",
-                          color: "blue"
-                      },
-                      {
-                          title: "2. Iterative Build (Week 3-8)",
-                          desc: "Development happens in 2-week sprints. You see working features every two weeks, not a black box for three months.",
-                          icon: <Code2 className="w-5 h-5" />,
-                          progress: 100,
-                          label: "SPRINT_FREQUENCY: 2-WEEKS",
-                          color: "blue"
-                      },
-                      {
-                          title: "3. Testing & Deployment (Week 9-10)",
-                          desc: "Full QA cycle, load testing, and staged rollout to production with zero-downtime deployment practices.",
-                          icon: <ShieldCheck className="w-5 h-5" />,
-                          progress: 100,
-                          label: "ZERO_DOWNTIME: GUARANTEED",
-                          color: "blue"
-                      }
-                    ].map((step, idx) => {
-                      const isEven = idx % 2 === 1;
-                      return (
-                        <div key={idx} className="relative flex flex-col md:grid md:grid-cols-2 items-center gap-8 mb-24 last:mb-0">
-                          {/* Content Side */}
-                          <div className={`${isEven ? 'md:order-2 md:pl-14' : 'md:text-right md:pr-14'}`}>
-                              <motion.h3 
-                                  initial={{ opacity: 0, x: isEven ? 20 : -20 }}
-                                  whileInView={{ opacity: 1, x: 0 }}
-                                  viewport={{ once: true }}
-                                  className="text-2xl font-bold text-white tracking-tight uppercase"
-                              >
-                                  {step.title}
-                              </motion.h3>
-                              <p className={`mt-2 text-slate-400 max-w-md font-light ${!isEven ? 'md:ml-auto' : ''}`}>
-                                  {step.desc}
-                              </p>
-                          </div>
-
-                          {/* Visual Side */}
-                          <div className={`${isEven ? 'md:order-1 md:pr-14' : 'md:pl-14'} w-full`}>
-                              <motion.div 
-                                  initial={{ opacity: 0, scale: 0.95 }}
-                                  whileInView={{ opacity: 1, scale: 1 }}
-                                  viewport={{ once: true }}
-                                  className="rounded-[2rem] border border-white/10 p-6 flex items-center gap-4 bg-white/[0.02] backdrop-blur-md shadow-2xl"
-                              >
-                                  <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-black border border-white/10 text-blue-400 shadow-inner">
-                                      {step.icon}
-                                  </div>
-                                  <div className="flex-1 overflow-hidden">
-                                      <div className="h-1.5 w-full bg-black rounded-full overflow-hidden">
-                                          <motion.div 
-                                              initial={{ width: 0 }}
-                                              whileInView={{ width: `${step.progress}%` }}
-                                              viewport={{ once: true }}
-                                              transition={{ duration: 1.5, ease: "easeOut" }}
-                                              className="h-full bg-blue-500"
-                                          />
-                                      </div>
-                                      <div className="flex justify-between items-center mt-3">
-                                          <div className="text-[10px] font-mono text-slate-500 tracking-widest uppercase">{step.label}</div>
-                                          <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-                                      </div>
-                                  </div>
-                              </motion.div>
-                          </div>
-
-                          {/* Central Node */}
-                          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-[38px] h-[38px] hidden md:block">
-                              <div className="relative w-full h-full rounded-full border border-white/10 flex items-center justify-center bg-black shadow-xl">
-                                  <div className="w-3 h-3 rounded-full border border-black bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.65)]" />
-                              </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-              </div>
-          </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section className="py-32 px-6 border-b border-white/10 relative overflow-hidden bg-black/40">
-        {/* Background stars overlay */}
-        <div className="absolute inset-0 opacity-15 pointer-events-none" style={{ backgroundImage: 'radial-gradient(white 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
-        
-        <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col gap-y-16 rounded-[3rem] border border-[#ffffff]/10 bg-[#0A0A0C] mt-24 mb-24 px-8 md:px-14 pt-14 pb-16 relative">
-            
-            {/* Ambient Background Glow */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 blur-[120px] pointer-events-none rounded-full" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/5 blur-[120px] pointer-events-none rounded-full" />
-
-            {/* Header Section */}
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 w-full z-10 relative">
-              <div className="flex flex-col gap-6 max-w-3xl">
-                <div className="flex gap-3 items-center">
-                  <span className="flex items-center justify-center text-[11px] font-medium text-blue-400 font-mono bg-blue-500/10 w-7 h-7 border-blue-500/20 border rounded-lg shadow-[0_0_10px_rgba(59,130,246,0.2)]">
-                    04
-                  </span>
-                  <span className="uppercase text-sm font-medium text-gray-500 tracking-widest font-sans">
-                    PRICING
-                  </span>
-                </div>
-                <h2 className="md:text-5xl lg:text-6xl leading-[1.1] text-4xl text-white font-serif font-light tracking-tight">
-                  Simple pricing for <span className="text-gray-600 font-serif font-light tracking-tight">everyone.</span>
-                </h2>
-                <div className="mt-6 border-l-4 border-[#ccff00] pl-5 space-y-3">
-                  <h3 className="text-[#ccff00] text-lg font-bold uppercase tracking-wider">Regional Pricing Offer</h3>
-                  <p className="text-[#ccff00] text-base font-medium max-w-3xl leading-relaxed">
-                    People from Pakistan, India, Bangladesh should contact us on WhatsApp, rates are different for them. I love these people, I love everyone.
-                  </p>
-                  <p className="text-[#ccff00] text-base font-medium max-w-3xl leading-relaxed" style={{ fontFamily: 'Noto Nastaliq Urdu, sans-serif' }}>
-                    پاکستان، انڈیا، بنگلہ دیش کے لوگ ہم سے واٹس ایپ پر رابطہ کریں، ان کے لیے ریٹس مختلف ہیں۔ میں ان لوگوں سے پیار کرتا ہوں، میں سب سے پیار کرتا ہوں۔
-                  </p>
-                </div>
-                <p className="text-lg text-gray-400 font-light max-w-xl leading-relaxed font-sans">
-                  Development team, agencies typically charge a blended hourly rate of $120 to $200+ per hour.
-                </p>
-              </div>
-
-              {/* Toggle Switch */}
-              <div className="z-10 flex flex-col items-center md:items-end relative shrink-0">
-                <div className="flex bg-[#111111] border-white/10 border rounded-full p-1.5 backdrop-blur-sm items-center">
-                  <button 
-                    onClick={() => setPricingPeriod('project')}
-                    className={`transition-all hover:scale-[1.02] text-xs font-bold uppercase tracking-widest rounded-full px-6 py-3 cursor-pointer duration-300 ${pricingPeriod === 'project' ? 'text-black bg-[#ffffff] shadow-[0_0_15px_rgba(59,130,246,0.3)] font-black' : 'text-gray-400 hover:text-white font-medium'}`}
-                  >
-                    Project Scope Tiers
-                  </button>
-                  <button 
-                    onClick={() => setPricingPeriod('hourly')}
-                    className={`transition-all hover:scale-[1.02] text-xs font-bold uppercase tracking-widest rounded-full px-6 py-3 cursor-pointer duration-300 ${pricingPeriod === 'hourly' ? 'text-black bg-[#ffffff] shadow-[0_0_15px_rgba(59,130,246,0.3)] font-black' : 'text-gray-400 hover:text-white font-medium'}`}
-                  >
-                    Hourly Rate Cards
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Features Grid & Interactive Views */}
-            <div className="relative w-full min-h-[500px] flex items-center justify-center">
-              <AnimatePresence mode="wait">
-                {pricingPeriod === 'project' ? (
-                  <motion.div 
-                    key="project-view"
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -15 }}
-                    transition={{ duration: 0.3 }}
-                    className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full z-10 relative"
-                  >
-                    {/* Card 1: Small Scale / MVP */}
-                    <div className="overflow-hidden z-10 group bg-[#0A0A0C] border-white/10 border rounded-[3rem] relative shadow-2xl flex flex-col justify-between p-8 md:p-10 min-h-[550px]" id="small-scale-mvp">
-                      <div className="pointer-events-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1a1c35] via-[#0A0A0C] to-[#0A0A0C] absolute inset-0 transition-opacity duration-500 group-hover:opacity-90"></div>
-                      <div className="absolute inset-0 opacity-15" style={{ backgroundImage: 'radial-gradient(white 1px, transparent 1px)', backgroundSize: '40px 40px', maskImage: 'radial-gradient(circle, black 40%, transparent 100%)' }}></div>
-                      
-                      <div className="relative flex flex-col gap-6 h-full justify-between">
-                        <div>
-                          {/* Title & Icon */}
-                          <div className="flex items-center gap-4 mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400">
-                              <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
-                              <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
-                              <path d="M9 12H4s.55-3.03 2-4c1.62-1.1 4-1 4-1s.25 2.25 0 4z"></path>
-                              <path d="M15 13v5s3.03-.55 4-2c1.1-1.62 1-4 1-4s-2.25-.25-4 0z"></path>
-                            </svg>
-                            <span className="text-2xl font-light text-white tracking-tight font-serif uppercase">
-                              Small Scale / MVP
-                            </span>
-                          </div>
-                          
-                          {/* Core Description list */}
-                          <p className="text-slate-400 text-sm font-light mb-8 italic leading-relaxed">
-                            Best for single-purpose workflows, basic mobile applications, or early-stage prototypes with limited user roles.
-                          </p>
-
-                          <ul className="space-y-4 text-left">
-                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
-                              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0"></span>
-                              Single-Purpose Workflows
-                            </li>
-                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
-                              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0"></span>
-                              Basic Mobile Applications
-                            </li>
-                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
-                              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0"></span>
-                              Prototypes with Limited Roles
-                            </li>
-                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
-                              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0"></span>
-                              Agile Verification Cycle
-                            </li>
-                          </ul>
-                        </div>
-
-                        <div className="mt-8">
-                          <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-400 mb-4 bg-white/5 py-1.5 px-3.5 rounded-full inline-block">
-                            ESTIMATED HOURLY RATE
-                          </div>
-                          <div className="text-3xl font-light text-white tracking-tight font-serif mb-6">
-                            $100 – $150+ <span className="text-sm font-sans text-slate-400 font-light lowercase">per hour</span>
-                          </div>
-                          <a 
-                            href="https://wa.me/923233260859"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:bg-blue-500/10 hover:border-blue-400 hover:shadow-[0_0_35px_rgba(59,130,246,0.6),inset_0_0_20px_rgba(59,130,246,0.4)] hover:scale-[1.02] transition-all duration-300 flex text-xs font-semibold uppercase tracking-widest text-white bg-black/60 border-blue-500/50 border rounded-full py-4 px-6 items-center justify-center gap-2"
-                          >
-                            Consult MVP
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Card 2: Mid-Range Applications */}
-                    <div className="overflow-hidden z-10 group bg-[#0A0A0C] border-blue-500/20 border rounded-[3rem] relative shadow-2xl flex flex-col justify-between p-8 md:p-10 min-h-[550px]" id="mid-range-apps">
-                      <div className="pointer-events-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1d143c] via-[#0A0A0C] to-[#0A0A0C] absolute inset-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-                      <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(white 1px, transparent 1px)', backgroundSize: '40px 40px', maskImage: 'radial-gradient(circle, black 40%, transparent 100%)' }}></div>
-                      <div className="absolute top-0 right-10 bg-blue-500/10 text-blue-400 border border-blue-500/20 text-[8px] font-bold tracking-widest uppercase px-3 py-1 rounded-b-xl z-20">MOST POPULAR</div>
-
-                      <div className="relative flex flex-col gap-6 h-full justify-between">
-                        <div>
-                          {/* Title & Icon */}
-                          <div className="flex items-center gap-4 mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400">
-                              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                              <polyline points="2 17 12 22 22 17"></polyline>
-                              <polyline points="2 12 12 17 22 12"></polyline>
-                            </svg>
-                            <span className="text-2xl font-light text-white tracking-tight font-serif uppercase">
-                              Mid-Range Apps
-                            </span>
-                          </div>
-                          
-                          {/* Core Description list */}
-                          <p className="text-slate-400 text-sm font-light mb-8 italic leading-relaxed">
-                            Includes multi-platform software, basic CRM tools, advanced e-commerce websites, or SaaS products requiring standard API integrations.
-                          </p>
-
-                          <ul className="space-y-4 text-left">
-                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
-                              <span className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0"></span>
-                              Multi-Platform Software
-                            </li>
-                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
-                              <span className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0"></span>
-                              Basic CRM System Assets
-                            </li>
-                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
-                              <span className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0"></span>
-                              Advanced E-Commerce Webs
-                            </li>
-                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
-                              <span className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0"></span>
-                              Standard External APIs
-                            </li>
-                          </ul>
-                        </div>
-
-                        <div className="mt-8">
-                          <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-400 mb-4 bg-white/5 py-1.5 px-3.5 rounded-full inline-block">
-                            ESTIMATED HOURLY RATE
-                          </div>
-                          <div className="text-3xl font-light text-white tracking-tight font-serif mb-6">
-                            $100 – $150+ <span className="text-sm font-sans text-slate-400 font-light lowercase">per hour</span>
-                          </div>
-                          <a 
-                            href="https://wa.me/923233260859"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:bg-blue-500/10 hover:border-blue-400 hover:shadow-[0_0_35px_rgba(59,130,246,0.6),inset_0_0_20px_rgba(59,130,246,0.4)] hover:scale-[1.02] transition-all duration-300 flex text-xs font-semibold uppercase tracking-widest text-white bg-white/10 border-blue-400/50 border rounded-full py-4 px-6 items-center justify-center gap-2 shadow-[0_0_15px_rgba(59,130,246,0.2)]"
-                          >
-                            Initiate Discovery
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Card 3: Enterprise Platforms */}
-                    <div className="overflow-hidden z-10 group bg-[#0A0A0C] border-white/10 border rounded-[3rem] relative shadow-2xl flex flex-col justify-between p-8 md:p-10 min-h-[550px]" id="enterprise-platforms">
-                      <div className="pointer-events-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#132220] via-[#0A0A0C] to-[#0A0A0C] absolute inset-0 transition-opacity duration-500 group-hover:opacity-90"></div>
-                      <div className="absolute inset-0 opacity-15" style={{ backgroundImage: 'radial-gradient(white 1px, transparent 1px)', backgroundSize: '40px 40px', maskImage: 'radial-gradient(circle, black 40%, transparent 100%)' }}></div>
-
-                      <div className="relative flex flex-col gap-6 h-full justify-between">
-                        <div>
-                          {/* Title & Icon */}
-                          <div className="flex items-center gap-4 mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#ccff00]">
-                              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                              <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                              <line x1="6" y1="18" x2="6.01" y2="18"></line>
-                            </svg>
-                            <span className="text-2xl font-light text-white tracking-tight font-serif uppercase">
-                              Enterprise Platforms
-                            </span>
-                          </div>
-                          
-                          {/* Core Description list */}
-                          <p className="text-slate-400 text-sm font-light mb-8 italic leading-relaxed">
-                            Tailored for complex logic platforms, intensive data solutions with AI capabilities, and scalable ERP systems requiring strict security compliance.
-                          </p>
-
-                          <ul className="space-y-4 text-left">
-                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00] shrink-0"></span>
-                              Complex Business Logic
-                            </li>
-                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00] shrink-0"></span>
-                              Intensive Data & AI Systems
-                            </li>
-                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00] shrink-0"></span>
-                              Scalable ERP Architectures
-                            </li>
-                            <li className="flex items-center gap-3 text-slate-300 text-sm font-light">
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00] shrink-0"></span>
-                              Strict Security Compliance
-                            </li>
-                          </ul>
-                        </div>
-
-                        <div className="mt-8">
-                          <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-400 mb-4 bg-white/5 py-1.5 px-3.5 rounded-full inline-block">
-                            ESTIMATED HOURLY RATE
-                          </div>
-                          <div className="text-3xl font-light text-white tracking-tight font-serif mb-6">
-                            $150 to $250+ <span className="text-sm font-sans text-slate-400 font-light lowercase">per hour</span>
-                          </div>
-                          <a 
-                            href="https://wa.me/923233260859"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:bg-[#ccff00]/10 hover:border-[#ccff00] hover:shadow-[0_0_35px_rgba(204,255,0,0.6),inset_0_0_20px_rgba(204,255,0,0.4)] hover:scale-[1.02] transition-all duration-300 flex text-xs font-semibold uppercase tracking-widest text-[#ccff00] bg-black/60 border-[#ccff00]/50 border rounded-full py-4 px-6 items-center justify-center gap-2"
-                          >
-                            Consult Enterprise
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ) : (
-                  <motion.div 
-                    key="hourly-view"
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -15 }}
-                    transition={{ duration: 0.3 }}
-                    className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full z-10 relative"
-                  >
-                    {/* Large Detailed Rate Card Column */}
-                    <div className="overflow-hidden z-10 group bg-[#0A0A0C] border-white/10 border rounded-[3rem] p-8 md:p-12 lg:col-span-7 relative shadow-2xl flex flex-col justify-between">
-                      <div className="pointer-events-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#131d27] via-[#0A0A0C] to-[#0A0A0C] absolute inset-0"></div>
-                      
-                      <div className="relative space-y-8">
-                        <div>
-                          <h4 className="text-xs font-mono text-blue-400 mb-2 uppercase tracking-[0.3em] font-bold">[ LOCAL_US_ENGINEER_RATES ]</h4>
-                          <h3 className="text-3xl font-light text-white tracking-tight font-serif uppercase">
-                            Development Hourly Rates
-                          </h3>
-                          <p className="text-slate-400 text-sm font-light mt-4 leading-relaxed font-sans">
-                            If you pay by the hour rather than a fixed project price, data from Clutch and industry reports show that local US developer costs vary heavily by experience:
-                          </p>
-                        </div>
-
-                        <div className="space-y-4 border-t border-white/5 pt-6">
-                          {[
-                            { role: "Junior Engineer", rate: "$70 – $100", xp: "Basic workflows, testing scripts, template integrations" },
-                            { role: "UI/UX Designer", rate: "$80 – $140", xp: "Interactive prototypes, branding assets, custom interface layouts" },
-                            { role: "Mid-Level Engineer", rate: "$100 – $150", xp: "Full-stack capabilities, API optimization, custom modules" },
-                            { role: "Senior Consultant / Architect", rate: "$150 – $250+", xp: "System architecture, high-security databases, AI integration" }
-                          ].map((rateItem, idx) => (
-                            <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-colors">
-                              <div>
-                                <div className="text-base font-medium text-white font-sans">{rateItem.role}</div>
-                                <div className="text-xs text-slate-500 font-light font-sans mt-1">{rateItem.xp}</div>
-                              </div>
-                              <div className="text-2xl font-light text-[#ccff00] font-serif tracking-tight shrink-0">
-                                {rateItem.rate}<span className="text-xs text-slate-500"> / hr</span>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Right Column: Maintenance & Discovery Prompt */}
-                    <div className="lg:col-span-5 flex flex-col gap-8 h-full">
-                      {/* Long-Term Hidden Costs */}
-                      <div className="overflow-hidden z-10 group bg-[#0A0A0C] border-white/10 border rounded-[3rem] p-8 md:p-10 relative shadow-2xl flex-1 flex flex-col justify-between">
-                        <div className="pointer-events-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1c1c1a] via-[#0A0A0C] to-[#0A0A0C] absolute inset-0"></div>
-                        
-                        <div className="relative space-y-4">
-                          <h4 className="text-xs font-mono text-[#ccff00] mb-2 uppercase tracking-[0.3em] font-bold">[ POST_LAUNCH_METRICS ]</h4>
-                          <h3 className="text-2xl font-light text-white tracking-tight font-serif uppercase">
-                            Long-Term Hidden Costs
-                          </h3>
-                          <p className="text-sm font-bold text-slate-200 mt-2">
-                            Maintenance:
-                          </p>
-                          <p className="text-slate-400 text-sm font-light leading-relaxed font-sans">
-                            Expect to spend <span className="text-white font-semibold">15% to 20%</span> of the original build cost every year for server hosting, bug fixes, and mandatory security patches.
-                          </p>
-                        </div>
-
-                        <div className="relative mt-8 bg-zinc-950/40 p-4 border border-white/5 rounded-2xl">
-                          <div className="text-xs text-slate-500 font-mono flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 rounded-full bg-[#ccff00] animate-pulse"></div>
-                            ESTIMATION PROTOCOL ACTIVE
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Discovery Help Block */}
-                      <div className="overflow-hidden z-10 group bg-[#0A0A0C] border-blue-500/10 rounded-[3rem] p-8 md:p-10 relative shadow-2xl flex-1 flex flex-col justify-between">
-                        <div className="pointer-events-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#121626] via-[#0A0A0C] to-[#0A0A0C] absolute inset-0"></div>
-                        
-                        <div className="relative space-y-4">
-                          <h3 className="text-xl font-light text-white tracking-tight font-serif uppercase">
-                            Narrow Down Your Estimate
-                          </h3>
-                          <p className="text-slate-300 text-sm font-light leading-relaxed font-sans">
-                            To help me narrow down this massive range, what kind of features or workflows does your software need to handle? If you can share your target timeline or if you are considering offshore options, I can give you a much tighter estimate.
-                          </p>
-                        </div>
-
-                        <div className="relative mt-6">
-                          <a 
-                            href="https://wa.me/923233260859"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:bg-blue-500/10 hover:border-blue-400 hover:shadow-[0_0_35px_rgba(59,130,246,0.6),inset_0_0_20px_rgba(59,130,246,0.4)] hover:scale-[1.02] transition-all duration-300 flex text-xs font-semibold uppercase tracking-widest text-white bg-black/60 border-blue-500 border rounded-full py-4 px-6 items-center justify-center gap-2"
-                          >
-                            Request Tighter Quote
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Engagement Models */}
-      <section className="py-32 lg:py-48 px-6 bg-white/[0.01] border-t border-white/10 relative z-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mb-24">
-            <div className="lg:col-span-5">
-              <span className="text-xs font-mono text-[#ccff00] mb-6 uppercase tracking-[0.5em] font-bold block">[ WORK_PROTOCOLS ]</span>
-              <h2 className="text-5xl md:text-7xl font-serif font-light text-white tracking-tight leading-[1] uppercase">
-                Engagement <br />
-                <span className="font-serif italic text-blue-400">Models</span>
-              </h2>
-              <div className="mt-8 flex items-center gap-4 text-xs font-mono text-slate-500 uppercase tracking-[0.4em]">
-                  <Activity className="animate-pulse text-[#ccff00]" size={16} />
-                  [ CLIENT_INTEGRATION_PROTOCOLS ]
-              </div>
-            </div>
-            
-            <div className="lg:col-span-7 bg-white/[0.02] border border-white/10 p-10 rounded-[2.5rem] relative space-y-6 backdrop-blur-xl">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] pointer-events-none" />
-              <p className="text-lg text-slate-300 leading-relaxed font-light">
-                Businesses come to us through different arrangements depending on their needs. Some engage us as a <strong>custom software development agency</strong> for a defined project with a clear start and end. Others work with us as an ongoing <strong>custom software development firm</strong>, embedding our team into their product roadmap over years rather than months. We also support <strong>co-development software</strong> arrangements — partnering with a client's in-house engineering team rather than replacing it, contributing specialized expertise where it's needed most.
-              </p>
-              <p className="text-base text-slate-400 leading-relaxed font-light">
-                Among <strong>custom software development companies</strong>, what tends to matter most to clients isn't the pitch — it's whether the delivered system is documented, maintainable, and actually owned by the client once the engagement ends. Every <strong>custom software developer</strong> on our team builds with that handoff in mind from day one, not as an afterthought once the contract is closing out.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Fixed-Price Projects",
-                desc: "For clearly scoped builds with defined deliverables. Ideal for structured enterprise applications, initial platform iterations, or standalone technical modules.",
-                meta: "Best for clearly scoped builds",
-                icon: <Server className="w-5 h-5 text-blue-400" />
-              },
-              {
-                title: "Dedicated Team",
-                desc: "Monthly retainer for ongoing product development. Embed elite software engineers directly into your workflows to accelerate feature releases and maintain momentum.",
-                meta: "Ongoing product development",
-                icon: <Code2 className="w-5 h-5 text-[#ccff00]" />
-              },
-              {
-                title: "MVP Sprint",
-                desc: "6-8 week build for startups validating a new product. Rapid, hyper-focused development cycles to get your core value proposition into user hands at speed.",
-                meta: "6-8 week validation builds",
-                icon: <Zap className="w-5 h-5 text-purple-400" />
-              }
-            ].map((model, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="bg-white/[0.02] border border-white/10 p-10 rounded-[2.5rem] relative overflow-hidden group hover:bg-white/[0.04] hover:border-blue-500/20 transition-all flex flex-col justify-between"
-              >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] pointer-events-none rounded-full" />
-                
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#ccff00]/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
                 <div>
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-black border border-white/10 mb-8 shadow-inner">
-                    {model.icon}
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#ccff00] px-3 py-1 bg-[#ccff00]/10 border border-[#ccff00]/20 rounded-full">
+                      {item.tag}
+                    </span>
+                    <svg className="w-7 h-7 text-gray-400 group-hover:text-[#ccff00] group-hover:scale-110 transition-all duration-300" aria-hidden="true">
+                      <use href={`/sprite.svg#${item.iconId}`} />
+                    </svg>
                   </div>
-                  <h3 className="text-2xl font-bold font-serif text-white tracking-tight uppercase mb-2">{model.title}</h3>
-                  <span className="text-xs font-mono text-slate-500 uppercase tracking-widest block mb-6">{model.meta}</span>
-                  <p className="text-slate-400 text-sm font-light leading-relaxed mb-8">{model.desc}</p>
-                </div>
-
-                <div className="pt-6 border-t border-white/5 flex justify-between items-center mt-auto">
-                  <a 
-                    href="https://wa.me/923233260859" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-xs font-bold uppercase tracking-widest text-blue-400 hover:text-white transition-colors inline-flex items-center gap-2"
-                  >
-                    Initiate Protocol <ArrowRight size={12} />
-                  </a>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Tech Stack Cards */}
-      <section className="py-32 lg:py-48 px-6 relative z-10 overflow-hidden">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-10">
-             <div>
-                <h2 className="text-xs font-mono text-slate-500 mb-6 uppercase tracking-[0.5em] font-bold">[ ENGINEERING_RESOURCES ]</h2>
-                <h3 className="text-5xl md:text-7xl font-bold text-white tracking-tighter uppercase leading-[0.8]">
-                   the stack <br />
-                   <span className="text-zinc-600">we command.</span>
-                </h3>
-             </div>
-             <div className="md:text-right">
-                <p className="text-slate-400 font-mono text-[10px] uppercase tracking-[0.3em] max-w-[300px] mb-4">Optimized for horizontal scaling and sub-second latency targets.</p>
-                <div className="flex gap-2 justify-end">
-                    {[1,2,3,4].map(i => <div key={i} className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: `${i*0.2}s` }} />)}
-                </div>
-             </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { 
-                category: "Backend Mastery", 
-                items: [
-                  { name: "Node.js", url: "https://nodejs.org" },
-                  { name: "Python (FastAPI)", url: "https://fastapi.tiangolo.com" },
-                  { name: "Java", url: "https://dev.java" }
-                ], 
-                icon: <Server /> 
-              },
-              { 
-                category: "Frontend Core", 
-                items: [
-                  { name: "React.js", url: "https://react.dev" },
-                  { name: "Next.js", url: "https://nextjs.org" },
-                  { name: "TypeScript", url: "https://www.typescriptlang.org" }
-                ], 
-                icon: <Layout /> 
-              },
-              { 
-                category: "Data Storage", 
-                items: [
-                  { name: "PostgreSQL", url: "https://www.postgresql.org" },
-                  { name: "MongoDB", url: "https://www.mongodb.com" },
-                  { name: "Redis", url: "https://redis.io" }
-                ], 
-                icon: <Database /> 
-              },
-              { 
-                category: "Cloud & DevOps", 
-                items: [
-                  { name: "AWS", url: "https://aws.amazon.com" },
-                  { name: "Google Cloud", url: "https://cloud.google.com" },
-                  { name: "Kubernetes", url: "https://kubernetes.io" }
-                ], 
-                icon: <Layers /> 
-              }
-            ].map((stack, idx) => (
-              <div key={idx} className="group relative h-[400px] perspective-1000 cursor-pointer">
-                <div className="relative h-full w-full transition-all duration-700 transform-style-3d group-hover:rotate-y-180">
-                  {/* Front */}
-                  <div className="absolute inset-0 bg-white/[0.04] border border-white/10 rounded-[2.5rem] p-10 flex flex-col justify-between backface-hidden backdrop-blur-xl">
-                    <div className="text-blue-500/60 font-medium">
-                      {React.cloneElement(stack.icon as React.ReactElement<any>, { size: 40, strokeWidth: 1.5 })}
-                    </div>
-                    <div>
-                      <div className="text-[9px] font-mono text-slate-500 uppercase tracking-widest mb-3">Resource Type // {idx + 1}</div>
-                      <h4 className="text-2xl font-bold text-white uppercase tracking-tight leading-none">{stack.category}</h4>
-                    </div>
-                  </div>
-                  {/* Back */}
-                  <div className="absolute inset-0 bg-blue-600 border border-blue-400/30 rounded-[2.5rem] p-10 flex flex-col justify-center rotate-y-180 backface-hidden shadow-2xl">
-                    <h4 className="text-sm font-black uppercase tracking-widest mb-6 border-b border-white/20 pb-3 text-white uppercase">Capability Set</h4>
-                    <ul className="space-y-3">
-                      {stack.items.map(item => (
-                        <li key={item.name} className="flex items-center justify-between text-white font-bold uppercase tracking-tight text-base">
-                          <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 bg-white rounded-full"></div>
-                            <span>{item.name}</span>
-                          </div>
-                          <a
-                            href={item.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-1 text-white/70 hover:text-white hover:bg-white/10 rounded transition-colors"
-                            title={`Official Docs: ${item.name}`}
-                          >
-                            <ExternalLink size={14} />
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Solutions, Not Just Code Section */}
-      <section className="py-32 lg:py-48 bg-[#000000] border-t border-white/10 relative z-10 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <div className="lg:col-span-5">
-              <span className="text-xs font-mono text-blue-500 mb-6 uppercase tracking-[0.5em] font-bold block">[ BEYOND_THE_CODE ]</span>
-              <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
-                Solutions, <br />
-                <span className="font-serif italic text-blue-400">Not Just Code</span>
-              </h2>
-              <div className="mt-8 flex items-center gap-4 text-xs font-mono text-slate-500 uppercase tracking-[0.4em]">
-                  <Activity className="animate-pulse text-[#ccff00]" size={16} />
-                  [ HOLISTIC_ECOSYSTEM_ACTIVE ]
-              </div>
-            </div>
-            
-            <div className="lg:col-span-7 bg-white/[0.02] border border-white/10 p-10 md:p-14 rounded-[3rem] relative space-y-6 backdrop-blur-xl">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 blur-[80px] pointer-events-none" />
-              <p className="text-xl font-light leading-relaxed text-slate-300 font-sans">
-                A finished application is only half the value. Our <strong>custom software development solutions</strong> include the surrounding decisions that determine whether software holds up over time — infrastructure choices, security architecture, documentation, and a maintenance plan that doesn't leave you dependent on a single developer's memory of how the system works.
-              </p>
-              <p className="text-base text-slate-400 leading-relaxed font-light font-sans">
-                As one of the <strong>AbuQitmirLabs.tech software development services</strong>, this page reflects our broader philosophy across every discipline we practice: <Link to="/seo-mastery" className="text-blue-400 hover:underline">SEO</Link>, <Link to="/content-writing" className="text-blue-400 hover:underline">content strategy</Link>, <Link to="/graphics-design" className="text-blue-400 hover:underline">graphics and design</Link>, and engineering all built to reinforce each other rather than operate in silos.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Ready to Build Something That Fits Section */}
-      <section className="py-32 lg:py-48 bg-black relative border-t border-white/10 overflow-hidden text-center">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/20 via-transparent to-transparent pointer-events-none" />
-        <div className="max-w-4xl mx-auto relative z-10 px-6">
-          <span className="text-xs font-mono text-[#ccff00] mb-6 uppercase tracking-[0.4em] font-bold block">[ THE_NEXT_STEP ]</span>
-          <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight leading-tight mb-8">
-            Ready to Build <br />
-            <span className="font-serif italic text-blue-400">Something That Fits?</span>
-          </h2>
-          <p className="text-xl text-slate-300 font-light leading-relaxed mb-12 font-sans max-w-2xl mx-auto">
-            Whether you need a <strong>software development firm</strong> for a single high-stakes project or an ongoing <strong>custom software development services</strong> partnership across your product lifecycle, the right starting point is understanding your actual constraints — timeline, budget, compliance requirements, and existing systems — before any technology decisions get made.
-          </p>
-          
-          <div className="flex flex-wrap justify-center gap-4 text-xs font-mono text-slate-500 uppercase tracking-widest mb-16 border-y border-white/5 py-6">
-            <span>Explore our related services:</span>
-            <Link to="/solutions/healthcare" className="text-blue-400 hover:text-white transition-colors">Healthcare Software</Link>
-            <span className="text-white/20">•</span>
-            <Link to="/solutions/fintech" className="text-blue-400 hover:text-white transition-colors">FinTech Solutions</Link>
-            <span className="text-white/20">•</span>
-            <Link to="/web-development" className="text-blue-400 hover:text-white transition-colors">Web Development</Link>
-            <span className="text-white/20">•</span>
-            <Link to="/ai-agent-development" className="text-blue-400 hover:text-white transition-colors">AI Agent Development</Link>
-            <span className="text-white/20">•</span>
-            <Link to="/mobile-app-development" className="text-blue-400 hover:text-white transition-colors">Mobile App Development</Link>
-            <span className="text-white/20">•</span>
-            <Link to="/seo-mastery" className="text-blue-400 hover:text-white transition-colors">SEO Mastery</Link>
-            <span className="text-white/20">•</span>
-            <Link to="/graphics-design" className="text-blue-400 hover:text-white transition-colors">Graphics Design</Link>
-            <span className="text-white/20">•</span>
-            <Link to="/content-writing" className="text-blue-400 hover:text-white transition-colors">Content Writing</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA Strip */}
-      <section className="py-48 relative border-t border-white/10 overflow-hidden text-center bg-black">
-        <motion.div 
-            animate={{ scale: [1, 1.1, 1], opacity: [0.05, 0.1, 0.05] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-x-0 top-0 h-full bg-blue-600 blur-[150px] pointer-events-none z-0" 
-        />
-        <div className="max-w-6xl mx-auto relative z-10 px-6">
-          <h2 className="text-6xl md:text-[8rem] font-bold text-white tracking-tighter mb-12 uppercase leading-[0.8] italic">
-            architect <br />
-            <span className="text-zinc-700">Your advantage.</span>
-          </h2>
-          
-          <div className="flex flex-col md:flex-row gap-10 justify-center items-center">
-            <a 
-              href="https://wa.me/923233260859"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-wrapper" 
-              style={{ '--dot-size': '10px', '--line-weight': '1.5px', '--animation-speed': '0.4s', '--dot-color': '#fff', '--line-color': '#fff', '--grid-color': '#fff4' } as any}
-            >
-                <div className="line horizontal top"></div>
-                <div className="line vertical right"></div>
-                <div className="line horizontal bottom"></div>
-                <div className="line vertical left"></div>
-                <div className="dot top left"></div>
-                <div className="dot top right"></div>
-                <div className="dot bottom right"></div>
-                <div className="dot bottom left"></div>
-                <div className="btn px-12 py-6 text-xl">
-                    <span className="btn-text text-white font-black uppercase tracking-tight">Initiate Audit Protocol</span>
-                </div>
-            </a>
-
-            <div className="text-slate-500 font-mono text-[10px] uppercase tracking-[0.3em] max-w-[280px] text-left border-l-2 border-white/10 pl-8 leading-relaxed h-16 flex items-center">
-               NEXT SLOT: JULY 2026 // DISCOVERY TIME: 14 DAYS
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Accordion */}
-      <section className="py-32 lg:py-48 bg-white/[0.02] border-t border-white/10 relative z-10">
-        <div className="container mx-auto px-6 max-w-4xl">
-          <div className="text-center mb-24 space-y-6">
-             <div className="inline-block px-10 py-2 bg-blue-600/10 text-blue-400 font-bold uppercase tracking-[0.4em] rounded-full border border-blue-500/20 text-[10px]">Operational Inquiries</div>
-             <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tighter uppercase leading-[0.85] italic">FAQ</h2>
-          </div>
-
-          <div className="space-y-4">
-            {faqData.map((faq, idx) => (
-              <div key={idx} className="group bg-white/[0.03] border border-white/10 rounded-3xl overflow-hidden backdrop-blur-3xl hover:border-white/20 transition-all">
-                <button 
-                    onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
-                    className="flex justify-between items-center w-full p-8 md:p-10 cursor-pointer select-none text-left"
-                >
-                  <span className="text-xl md:text-2xl font-bold uppercase tracking-tight text-white">{faq.q}</span>
-                  <div className={`w-12 h-12 rounded-full border border-white/10 flex items-center justify-center transition-transform duration-500 ${activeFaq === idx ? 'rotate-45 bg-white text-black' : 'text-white'}`}>
-                    <Plus className="w-6 h-6" />
-                  </div>
-                </button>
-                <AnimatePresence>
-                  {activeFaq === idx && (
-                    <motion.div 
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        className="p-10 pt-0 border-t border-white/5"
-                    >
-                        <p className="text-xl font-light leading-relaxed text-slate-300 pt-8 pb-4">
-                            {faq.a}
-                        </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* From Our Technical Journal */}
-      <section className="py-32 bg-[#000000] border-t border-white/10 relative z-10 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
-            <span className="text-xs font-mono text-zinc-500 mb-6 uppercase tracking-[0.4em] font-bold block">[ KNOWLEDGE_RESOURCES ]</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tighter uppercase leading-none">
-              From Our <span className="text-zinc-600">Technical Journal.</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Why Custom Software Development is Crucial for Modern Enterprise Scaling",
-                excerpt: "Stop letting rigid off-the-shelf software hold your efficiency back. Learn why choosing a tailored custom software development strategy is the single most critical asset for growing enterprises.",
-                path: "/blog",
-                anchorText: "Custom Software Development Advantages"
-              },
-              {
-                title: "Rigorous Technical Vetting: How to Hire Software Developers for High-Load Systems",
-                excerpt: "An inside look at our elite standard code tests and engineering interviews. See what it takes to hire software developers who can blueprint resilient, low-latency architectures.",
-                path: "/blog",
-                anchorText: "Hire Software Developers Blueprint"
-              },
-              {
-                title: "The Pillars of Digital Transformation in Legacy Corporate Operations",
-                excerpt: "True digital transformation is not about buying more SaaS licenses. It requires restructuring database models, securing communication channels, and prioritizing local compliance.",
-                path: "/blog",
-                anchorText: "Corporate Digital Transformation"
-              }
-            ].map((blog, i) => (
-              <div 
-                key={i}
-                className="bg-white/[0.02] border border-white/5 rounded-[2.5rem] p-10 flex flex-col justify-between hover:border-blue-500/30 transition-all group"
-              >
-                <div>
-                  <span className="text-[10px] font-mono text-blue-500 uppercase tracking-widest block mb-6">// tech_article_0{i+1}</span>
-                  <h3 className="text-2xl font-bold tracking-tight text-white mb-6 uppercase leading-tight group-hover:text-blue-400 transition-colors">{blog.title}</h3>
-                  <p className="text-sm leading-relaxed text-slate-400 font-light mb-8">{blog.excerpt}</p>
+                  <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-[#ccff00] transition-colors">{item.title}</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed mb-6 font-light">{item.desc}</p>
                 </div>
                 <Link 
-                  to={blog.path}
-                  className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-white group-hover:text-blue-500 transition-colors pt-4 border-t border-white/5 w-full justify-between"
+                  to={item.link} 
+                  aria-label={`${item.linkText} - AbuQitmirLabs`}
+                  className="text-xs font-mono uppercase text-[#ccff00] hover:text-white flex items-center gap-1 mt-4 transition-colors font-semibold"
                 >
-                  <span className="underline underline-offset-4">{blog.anchorText}</span>
-                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  {item.linkText}
+                  <svg className="w-3 h-3" aria-hidden="true"><use href="/sprite.svg#icon-chevron-right" /></svg>
                 </Link>
-              </div>
+              </motion.article>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Internal Linking / Related Services */}
-      <section className="py-24 bg-black border-t border-white/5 relative z-10 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
-            <h3 className="text-xs font-mono text-slate-500 uppercase tracking-[0.4em] font-bold">[ RELATED_SYSTEMS ]</h3>
-            <div className="flex items-center gap-2 text-sm text-slate-400">
-               <span>Need expert consultation? Initiate lead briefing below.</span>
+        {/* Section 3: Our 5-Step Development Process */}
+        <section className="py-20 md:py-28 bg-zinc-950/60 border-b border-white/10" aria-labelledby="development-process-h2">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-3xl mb-16">
+              <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Methodology</span>
+              <h2 id="development-process-h2" className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 text-white">
+                Our 5-Step Development Process
+              </h2>
+              <p className="text-gray-400 text-lg font-light leading-relaxed">
+                Structured sprints, regular demos, and continuous QA ensure your system launches on schedule without scope drift.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+              {processSteps.map((step, idx) => (
+                <div key={idx} className="p-6 rounded-2xl bg-zinc-900/50 border border-white/10 hover:border-[#ccff00]/40 transition-colors flex flex-col justify-between">
+                  <div>
+                    <span className="text-3xl font-extrabold text-[#ccff00] font-mono block mb-3">{step.num}</span>
+                    <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
+                    <p className="text-gray-300 text-xs leading-relaxed font-light">{step.desc}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: "Web Development", path: "/web-development", icon: <Globe className="w-5 h-5" /> },
-              { title: "Mobile Apps", path: "/mobile-app-development", icon: <Smartphone className="w-5 h-5" /> },
-              { title: "AI Agents", path: "/ai-agent-development", icon: <Cpu className="w-5 h-5" /> },
-              { title: "SEO Strategy", path: "/seo-mastery", icon: <Star className="w-5 h-5" /> }
-            ].map((link, i) => (
-              <Link 
-                key={i} 
-                to={link.path} 
-                className="group flex items-center justify-between p-8 bg-white/[0.02] border border-white/5 rounded-2xl hover:border-blue-500/30 transition-all hover:-translate-y-1"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="text-blue-500 bg-blue-500/10 p-3 rounded-lg group-hover:bg-blue-500 group-hover:text-white transition-all">
-                    {link.icon}
-                  </div>
-                  <span className="font-bold uppercase tracking-tight text-white">{link.title}</span>
-                </div>
-                <ArrowUpRight className="text-slate-600 group-hover:text-white transition-colors" size={20} />
-              </Link>
-            ))}
+        </section>
+
+        {/* Section 4: What You Own */}
+        <section className="py-20 md:py-28 max-w-7xl mx-auto px-6 border-b border-white/10" aria-labelledby="what-you-own-h2">
+          <div className="max-w-4xl mx-auto">
+            <div className="p-8 md:p-12 rounded-3xl bg-zinc-900/80 border border-[#ccff00]/40 shadow-2xl backdrop-blur-md">
+              <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Intellectual Property Guarantee</span>
+              <h2 id="what-you-own-h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-white">
+                What You Own
+              </h2>
+              <p className="text-gray-200 text-lg leading-relaxed mb-6 font-light">
+                Every line of code we write belongs to you. AbuQitmirLabs transfers full intellectual property and source code ownership at project completion — no licensing fees, no vendor lock-in, no ongoing dependency on us to access your own system.
+              </p>
+              <p className="text-gray-300 text-base leading-relaxed font-light">
+                This matters more than most buyers realise. Many development firms retain a license to the components they build, meaning you're renting your own software. We don't operate that way.
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Section 5: Custom Software vs Off-the-Shelf: When to Choose Custom */}
+        <section className="py-20 md:py-28 bg-zinc-950/60 border-b border-white/10" aria-labelledby="custom-vs-off-the-shelf-h2">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-4xl">
+              <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Decision Framework</span>
+              <h2 id="custom-vs-off-the-shelf-h2" className="text-3xl md:text-5xl font-extrabold tracking-tight mb-8 text-white">
+                Custom Software vs Off-the-Shelf: When to Choose Custom
+              </h2>
+              <p className="text-gray-300 text-lg leading-relaxed mb-8 font-light">
+                Off-the-shelf software makes sense when your workflow is standard and a mature product already covers it well. Custom software is the right choice when:
+              </p>
+              <ul className="space-y-4 text-gray-200 text-base leading-relaxed mb-8 list-disc pl-6 font-light">
+                <li>Your process has regulatory or compliance requirements a generic tool doesn't meet</li>
+                <li>You need to integrate multiple systems that don't natively connect</li>
+                <li>You're building a product to sell to other businesses (SaaS)</li>
+                <li>A generic tool forces your team to change how they work rather than the other way around</li>
+                <li>You've outgrown your current software and rebuilding from scratch is cheaper than patching</li>
+              </ul>
+              <p className="text-gray-300 text-base leading-relaxed font-light">
+                The decision isn't always custom vs. off-the-shelf. Sometimes the answer is a custom layer built on top of an existing platform. We'll tell you which approach makes more sense for your situation before you commit to a build.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 6: How Much Does Custom Software Development Cost? */}
+        <section className="py-20 md:py-28 max-w-7xl mx-auto px-6 border-b border-white/10" aria-labelledby="cost-analysis-h2">
+          <div className="max-w-3xl mb-16">
+            <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Investment Scoping</span>
+            <h2 id="cost-analysis-h2" className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 text-white">
+              How Much Does Custom Software Development Cost?
+            </h2>
+            <p className="text-gray-400 text-lg font-light leading-relaxed">
+              Cost depends on scope, complexity, and the number of integrations involved. As a general reference point:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div className="p-8 rounded-2xl bg-zinc-900/50 border border-white/10 flex flex-col justify-between">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-2">Simple Internal Tools</h3>
+                <p className="text-[#ccff00] font-mono text-xs uppercase tracking-wider mb-4">Single workflow, no complex integrations</p>
+                <p className="text-gray-300 text-sm leading-relaxed font-light">
+                  Lower four figures to mid-five figures. Built for focused internal operations, departmental workflows, or single-process automation.
+                </p>
+              </div>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-zinc-900/80 border border-[#ccff00]/40 flex flex-col justify-between">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-2">Mid-Complexity Platforms</h3>
+                <p className="text-[#ccff00] font-mono text-xs uppercase tracking-wider mb-4">Multi-role, several integrations, custom reporting</p>
+                <p className="text-gray-300 text-sm leading-relaxed font-light">
+                  Mid-to-upper five figures. Includes customer portals, ERP modules, multi-channel payment integrations, and centralized database logic.
+                </p>
+              </div>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-zinc-900/50 border border-white/10 flex flex-col justify-between">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-2">Enterprise Systems or SaaS</h3>
+                <p className="text-[#ccff00] font-mono text-xs uppercase tracking-wider mb-4">Multi-tenant, high concurrency, complex data architecture</p>
+                <p className="text-gray-300 text-sm leading-relaxed font-light">
+                  Six figures and above. Engineered for global scale, high-frequency transactions, enterprise security, and multi-tier subscription billing.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-zinc-900/70 p-8 rounded-2xl border border-white/10 max-w-3xl">
+            <p className="text-gray-300 text-sm leading-relaxed mb-6 font-light">
+              The most accurate way to scope cost is to start with a discovery engagement — a structured requirements session that produces a detailed specification. This gives you a fixed scope to price against, rather than an estimate that shifts as requirements become clearer.
+            </p>
+            <Link 
+              to="/contact" 
+              aria-label="Talk to AbuQitmirLabs about your custom software project"
+              className="inline-flex items-center gap-2 text-sm font-mono uppercase text-[#ccff00] font-bold hover:underline"
+            >
+              Talk to AbuQitmirLabs about your project →
+            </Link>
+          </div>
+        </section>
+
+        {/* Section 7: How Long Does It Take? */}
+        <section className="py-20 md:py-28 bg-zinc-950/60 border-b border-white/10" aria-labelledby="timeline-h2">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-4xl">
+              <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Project Timelines</span>
+              <h2 id="timeline-h2" className="text-3xl md:text-5xl font-extrabold tracking-tight mb-8 text-white">
+                How Long Does It Take?
+              </h2>
+              <p className="text-gray-300 text-lg leading-relaxed mb-6 font-light">
+                Timelines depend on scope. A focused single-workflow tool can be in production in six to ten weeks. A full SaaS platform with multiple user roles, billing integration, and custom reporting typically takes four to eight months. Enterprise systems with legacy migration components run longer.
+              </p>
+              <p className="text-gray-300 text-lg leading-relaxed font-light">
+                What we control is communication. You'll never be left wondering where the project stands.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 8: Why AbuQitmirLabs? */}
+        <section className="py-20 md:py-28 max-w-7xl mx-auto px-6 border-b border-white/10" aria-labelledby="why-abuqitmirlabs-h2">
+          <div className="max-w-4xl">
+            <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Proven Track Record</span>
+            <h2 id="why-abuqitmirlabs-h2" className="text-3xl md:text-5xl font-extrabold tracking-tight mb-8 text-white">
+              Why AbuQitmirLabs?
+            </h2>
+            <p className="text-gray-300 text-lg leading-relaxed mb-8 font-light">
+              AbuQitmirLabs engineers systems where standard tools don't reach.
+            </p>
+
+            <div className="p-8 rounded-2xl bg-zinc-900/80 border border-[#ccff00]/40 mb-8 shadow-xl">
+              <h3 className="text-2xl font-bold text-white mb-3">TajweedPage.com — Case Study In Custom Engineering</h3>
+              <p className="text-gray-300 text-base leading-relaxed mb-4 font-light">
+                Our most documented build is <Link to="/case-studies/tajweedpage" className="text-[#ccff00] hover:underline font-semibold" aria-label="Read TajweedPage custom AI case study">TajweedPage.com</Link> — the world's first RAG-based AI Tajweed teacher. We engineered the complete AI system: the retrieval-augmented generation pipeline, the programmatic content architecture, and the real-time Quranic recitation guidance layer. It's an EdTech platform that required a custom AI stack from scratch, because no off-the-shelf solution existed for what it needed to do.
+              </p>
+              <p className="text-[#ccff00] font-mono text-sm">
+                That's the kind of problem we're built for.
+              </p>
+            </div>
+
+            <p className="text-gray-300 text-base leading-relaxed font-light">
+              We also bring a full-stack discipline to every engagement: custom <Link to="/web-development" className="text-[#ccff00] hover:underline font-medium" aria-label="Explore our custom web development services">web development</Link>, mobile, AI integration, and SEO — so the software we ship isn't isolated from your broader digital infrastructure.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 9: Frequently Asked Questions (5 Q&As) */}
+        <section className="py-20 md:py-28 bg-zinc-950/90 border-b border-white/10" aria-labelledby="faq-section-h2">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest">Direct Answers</span>
+              <h2 id="faq-section-h2" className="text-3xl md:text-5xl font-extrabold mt-3 text-white">Frequently Asked Questions</h2>
+            </div>
+
+            <div className="space-y-4">
+              {faqs.map((faq, idx) => (
+                <div key={idx} className="border border-white/10 rounded-2xl bg-zinc-900/50 overflow-hidden">
+                  <button 
+                    className="w-full p-6 text-left font-bold text-lg flex items-center justify-between gap-4 hover:text-[#ccff00] transition-colors"
+                    onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
+                    aria-expanded={activeFaq === idx}
+                    aria-controls={`custom-software-faq-answer-${idx}`}
+                    id={`custom-software-faq-question-${idx}`}
+                  >
+                    <span>{faq.q}</span>
+                    <svg 
+                      className={`w-5 h-5 text-[#ccff00] shrink-0 transition-transform ${activeFaq === idx ? 'rotate-45' : ''}`}
+                      aria-hidden="true"
+                    >
+                      <use href="/sprite.svg#icon-plus" />
+                    </svg>
+                  </button>
+                  <AnimatePresence>
+                    {activeFaq === idx && (
+                      <motion.div 
+                        id={`custom-software-faq-answer-${idx}`}
+                        role="region"
+                        aria-labelledby={`custom-software-faq-question-${idx}`}
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="p-6 pt-0 text-gray-300 text-sm leading-relaxed border-t border-white/5 font-light"
+                      >
+                        {faq.a}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 10: Start Your Custom Software Project (CTA) */}
+        <section className="py-20 md:py-28 text-center bg-gradient-to-b from-zinc-900 to-black border-t border-white/10" aria-labelledby="cta-section-h2">
+          <div className="max-w-4xl mx-auto px-6">
+            <h2 id="cta-section-h2" className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 text-white">
+              Start Your Custom Software Project
+            </h2>
+            <p className="text-gray-400 text-lg mb-6 max-w-2xl mx-auto font-light leading-relaxed">
+              If you have a business process that generic software doesn't cover — or a product idea that needs a technical team to build it — start the conversation with AbuQitmirLabs.
+            </p>
+            <p className="text-gray-400 text-sm mb-10 max-w-xl mx-auto font-light">
+              We scope projects honestly, build in structured sprints, and hand over full IP ownership at the end. No lock-in. No surprises.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-6">
+              <Link 
+                to="/contact" 
+                aria-label="Start the conversation with AbuQitmirLabs about your project"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-[#ccff00] text-black font-extrabold text-sm uppercase tracking-wider rounded-xl hover:scale-105 transition-all shadow-[0_0_40px_rgba(204,255,0,0.4)]"
+              >
+                Start the Conversation with AbuQitmirLabs
+                <svg className="w-5 h-5" aria-hidden="true"><use href="/sprite.svg#icon-arrow-right" /></svg>
+              </Link>
+              <Link 
+                to="/case-studies" 
+                aria-label="View our engineering case studies"
+                className="px-8 py-5 border border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-all text-sm uppercase tracking-wider"
+              >
+                View Our Case Studies
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
 
       <Footer />
     </div>
