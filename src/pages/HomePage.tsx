@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Star } from 'lucide-react';
-import NexusHero from '@/components/ui/nexus-hero';
+import HeroSection from '../components/HeroSection';
 import TrustSection from '../components/TrustSection';
 import ApproachSection from '../components/ApproachSection';
 import DifferentiatorsSection from '../components/DifferentiatorsSection';
@@ -34,11 +34,12 @@ export default function HomePage() {
         <meta property="og:description" content="AbuQitmirLabs is a custom software &amp; AI development company delivering web platforms, mobile apps, and SEO engineering for global businesses." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+        <meta property="og:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
+        <meta property="og:image:alt" content="AbuQitmirLabs Custom Software &amp; AI Development Studio" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Custom Software, Web &amp; AI Development | AbuQitmirLabs" />
         <meta name="twitter:description" content="AbuQitmirLabs is a custom software &amp; AI development company delivering web platforms, mobile apps, and SEO engineering for global businesses." />
-        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+        <meta name="twitter:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
 
         <script 
           type="application/ld+json"
@@ -53,11 +54,19 @@ export default function HomePage() {
                   "alternateName": "AbuQitmirLabs.tech",
                   "url": "https://www.abuqitmirlabs.tech/",
                   "logo": "https://www.abuqitmirlabs.tech/logo.png",
-                  "description": "AbuQitmirLabs is a custom software & AI development company delivering web platforms, mobile apps, and SEO engineering for global businesses.",
+                  "image": "https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg",
+                  "description": "AbuQitmirLabs is a premier custom software and AI development company delivering web platforms, mobile apps, and SEO engineering for global businesses across US, UK, and Europe.",
                   "foundingDate": "2020",
                   "telephone": "+923233260859",
                   "priceRange": "$$",
                   "openingHours": "Mo-Fr 09:00-18:00",
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "5.0",
+                    "reviewCount": "48",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                  },
                   "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony",
@@ -87,7 +96,58 @@ export default function HomePage() {
                     "https://themanifest.com/company/abuqitmirlabstech",
                     "https://www.goodfirms.co/company/abuqitmirlabs-tech",
                     "https://www.youtube.com/@AbuQitmirMohammadShirazAlMadani"
-                  ]
+                  ],
+                  "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "AbuQitmirLabs Core Digital Services",
+                    "itemListElement": [
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "Custom Software Development",
+                          "url": "https://www.abuqitmirlabs.tech/custom-software",
+                          "description": "Bespoke enterprise software engineering, scalable cloud systems, and architectural solutions."
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "Mobile App Development",
+                          "url": "https://www.abuqitmirlabs.tech/mobile-app-development",
+                          "description": "Cross-platform iOS and Android mobile app development using Flutter and React Native."
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "Web Development",
+                          "url": "https://www.abuqitmirlabs.tech/web-development",
+                          "description": "High-performance full-stack web development with Next.js, React, Node.js, and headless CMS."
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "AI Agent & Automation Systems",
+                          "url": "https://www.abuqitmirlabs.tech/ai-agent-development",
+                          "description": "Autonomous AI agent architecture, LLM fine-tuning, RAG pipelines, and enterprise automation."
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "Technical SEO & Organic Growth",
+                          "url": "https://www.abuqitmirlabs.tech/seo-mastery",
+                          "description": "Enterprise technical SEO, semantic SEO, AEO optimization, and Core Web Vitals optimization."
+                        }
+                      }
+                    ]
+                  }
                 },
                 {
                   "@type": "WebSite",
@@ -97,6 +157,96 @@ export default function HomePage() {
                   "publisher": {
                     "@id": "https://www.abuqitmirlabs.tech/#organization"
                   }
+                },
+                {
+                  "@type": "WebPage",
+                  "@id": "https://www.abuqitmirlabs.tech/#webpage",
+                  "url": "https://www.abuqitmirlabs.tech/",
+                  "name": "Custom Software, Web & AI Development | AbuQitmirLabs",
+                  "isPartOf": {
+                    "@id": "https://www.abuqitmirlabs.tech/#website"
+                  },
+                  "about": {
+                    "@id": "https://www.abuqitmirlabs.tech/#organization"
+                  },
+                  "primaryImageOfPage": {
+                    "@id": "https://www.abuqitmirlabs.tech/#hero-bg-image"
+                  },
+                  "image": [
+                    {
+                      "@id": "https://www.abuqitmirlabs.tech/#hero-bg-image"
+                    },
+                    {
+                      "@id": "https://www.abuqitmirlabs.tech/#hero-img-software"
+                    },
+                    {
+                      "@id": "https://www.abuqitmirlabs.tech/#hero-img-mobile"
+                    },
+                    {
+                      "@id": "https://www.abuqitmirlabs.tech/#hero-img-web"
+                    },
+                    {
+                      "@id": "https://www.abuqitmirlabs.tech/#hero-img-ai"
+                    },
+                    {
+                      "@id": "https://www.abuqitmirlabs.tech/#hero-img-seo"
+                    }
+                  ]
+                },
+                {
+                  "@type": "ImageObject",
+                  "@id": "https://www.abuqitmirlabs.tech/#hero-bg-image",
+                  "url": "https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg",
+                  "contentUrl": "https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg",
+                  "name": "AbuQitmirLabs Custom Software Studio Showcase",
+                  "description": "AbuQitmirLabs custom software studio delivering AI apps, enterprise web systems, and high-performance digital solutions across US, UK, and Europe.",
+                  "caption": "AbuQitmirLabs custom software studio delivering AI apps, enterprise web systems, and high-performance digital solutions across US, UK, and Europe.",
+                  "representativeOfPage": true
+                },
+                {
+                  "@type": "ImageObject",
+                  "@id": "https://www.abuqitmirlabs.tech/#hero-img-software",
+                  "url": "https://i.postimg.cc/gktVScfQ/software-development.jpg",
+                  "contentUrl": "https://i.postimg.cc/gktVScfQ/software-development.jpg",
+                  "name": "Custom Software Development Expertise",
+                  "description": "Custom software development and full-stack engineering team delivering bespoke enterprise web applications and scalable cloud systems at AbuQitmirLabs.",
+                  "caption": "Custom software development and full-stack engineering team delivering bespoke enterprise web applications and scalable cloud systems at AbuQitmirLabs."
+                },
+                {
+                  "@type": "ImageObject",
+                  "@id": "https://www.abuqitmirlabs.tech/#hero-img-mobile",
+                  "url": "https://i.postimg.cc/nzxBjXDf/mobile-app-develpment-abuqitmirlabs.jpg",
+                  "contentUrl": "https://i.postimg.cc/nzxBjXDf/mobile-app-develpment-abuqitmirlabs.jpg",
+                  "name": "Mobile App Development Solutions",
+                  "description": "Cross-platform mobile app development for iOS and Android platforms built using Flutter, React Native, and native architectures at AbuQitmirLabs studio.",
+                  "caption": "Cross-platform mobile app development for iOS and Android platforms built using Flutter, React Native, and native architectures at AbuQitmirLabs studio."
+                },
+                {
+                  "@type": "ImageObject",
+                  "@id": "https://www.abuqitmirlabs.tech/#hero-img-web",
+                  "url": "https://i.postimg.cc/hPYm8yd5/web-development-abuqitmirlabs.jpg",
+                  "contentUrl": "https://i.postimg.cc/hPYm8yd5/web-development-abuqitmirlabs.jpg",
+                  "name": "Full-Stack Web Development Services",
+                  "description": "Modern full-stack web development services utilizing Next.js, React, Node.js, and cloud infrastructure for fast, SEO-optimized apps at AbuQitmirLabs.",
+                  "caption": "Modern full-stack web development services utilizing Next.js, React, Node.js, and cloud infrastructure for fast, SEO-optimized apps at AbuQitmirLabs."
+                },
+                {
+                  "@type": "ImageObject",
+                  "@id": "https://www.abuqitmirlabs.tech/#hero-img-ai",
+                  "url": "https://i.postimg.cc/85wJ7tGm/ai-agent-development-abuqitmirlabs.jpg",
+                  "contentUrl": "https://i.postimg.cc/85wJ7tGm/ai-agent-development-abuqitmirlabs.jpg",
+                  "name": "Autonomous AI Agent Development",
+                  "description": "Autonomous AI agent development, custom LLM integration, workflow automation, and intelligent RAG systems engineered for enterprises by AbuQitmirLabs.",
+                  "caption": "Autonomous AI agent development, custom LLM integration, workflow automation, and intelligent RAG systems engineered for enterprises by AbuQitmirLabs."
+                },
+                {
+                  "@type": "ImageObject",
+                  "@id": "https://www.abuqitmirlabs.tech/#hero-img-seo",
+                  "url": "https://i.postimg.cc/NGJ2YJp9/seo-local-seo.jpg",
+                  "contentUrl": "https://i.postimg.cc/NGJ2YJp9/seo-local-seo.jpg",
+                  "name": "Technical & Semantic SEO Mastery",
+                  "description": "Technical SEO, semantic optimization, AEO AI search visibility, and organic growth marketing strategies engineered for brands by AbuQitmirLabs agency.",
+                  "caption": "Technical SEO, semantic optimization, AEO AI search visibility, and organic growth marketing strategies engineered for brands by AbuQitmirLabs agency."
                 },
                 {
                   "@type": "BreadcrumbList",
@@ -124,7 +274,7 @@ export default function HomePage() {
         <h3>Custom Software · Web Development · AI Agents · Mobile Apps · SEO</h3>
       </div>
 
-      <NexusHero />
+      <HeroSection />
       
       <div className="overflow-hidden transform z-20 bg-[#B9FF66] w-full border-y-4 pt-4 pb-4 relative shadow-[0_8px_0_0_rgba(0,0,0,1)] -rotate-1">
         <div className="flex whitespace-nowrap w-max animate-marquee">

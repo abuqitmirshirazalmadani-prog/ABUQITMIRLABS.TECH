@@ -11,6 +11,7 @@ import { fintechSchema, fintechInitialHtml } from './src/utils/fintechStaticHtml
 import { healthcareSchema, healthcareInitialHtml } from './src/utils/healthcareStaticHtml';
 import { aiAutomationSchema, aiAutomationInitialHtml } from './src/utils/aiAutomationStaticHtml';
 import { eCommerceSchema, eCommerceInitialHtml } from './src/utils/eCommerceStaticHtml';
+import { edTechSchema, edTechInitialHtml } from './src/utils/edTechStaticHtml';
 
 // Safe container-compatible prerender implementation to bypass Chromium/Puppeteer driver limitations
 interface PrerenderPlugin {
@@ -117,7 +118,7 @@ export default defineConfig(({mode}) => {
             { url: '/solutions/healthcare',     changefreq: 'weekly',  priority: 0.8, title: 'Healthcare Software Solutions | AbuQitmirLabs', description: 'Build secure healthcare software, patient portals, telemedicine platforms and clinical systems with AbuQitmirLabs for modern healthcare businesses.' },
             { url: '/solutions/ai-automation',  changefreq: 'weekly',  priority: 0.9, title: 'AI Automation Solutions for Smarter Business | AbuQitmirLabs', description: 'Build AI automation systems for workflows, customer support, sales, operations and knowledge management with AbuQitmirLabs.' },
             { url: '/solutions/e-commerce',     changefreq: 'weekly',  priority: 0.9, title: 'E-commerce Software Solutions | Custom E-commerce Development', description: 'Engineer high-performance e-commerce software solutions, custom online stores, B2B wholesale portals, mobile shopping apps & multi-vendor marketplaces.' },
-            { url: '/solutions/edtech',         changefreq: 'weekly',  priority: 0.8, title: 'EdTech Development | Custom LMS & Virtual Classrooms | AbuQitmirLabs', description: 'AbuQitmirLabs builds custom EdTech platforms — LMS, AI tutoring engines, WebRTC virtual classrooms, and certification portals. Scalable, gamified, and WCAG-compliant.' },
+            { url: '/solutions/edtech',         changefreq: 'weekly',  priority: 0.9, title: 'EdTech Software Development | LMS & Learning Platforms', description: 'Build scalable EdTech software with custom LMS platforms, virtual classrooms, AI tutoring, student portals, assessments, and learning analytics.' },
             { url: '/case-studies',            changefreq: 'weekly',  priority: 0.9, title: 'Case Studies | Real-World Success Stories | AbuQitmirLabs', description: 'Explore real-world success stories from AbuQitmirLabs — custom software, AI automation, mobile apps, and web solutions that delivered measurable ROI for 350+ global clients.' },
             { url: '/case-studies/tajweedpage',changefreq: 'weekly',  priority: 0.9, title: 'AI Quran Learning Platform Case Study | AbuQitmirLabs', description: 'How we built the world\'s first AI-powered Quran learning platform with RAG Tajweed teacher, SEO for 20+ countries, and full Next.js stack — in just 10 days.' },
             { url: '/us-market',               changefreq: 'monthly', priority: 0.7, title: 'Software Development for US Startups | CCPA & HIPAA Ready | AbuQitmirLabs', description: 'US-focused software development for startups — mobile apps, AI agents, and local SEO. CCPA & HIPAA compliant, built at startup speed. Scale your US presence with offshore expertise.' },
@@ -412,6 +413,21 @@ Sitemap: ${hostname}/sitemap.xml`;
 
               // 2. Inject full authentic crawlable HTML inside #root
               routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${eCommerceInitialHtml}</div>`);
+
+              // 3. Write directly without #seo-crawler-content fallback
+              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
+              fs.writeFileSync(targetPath, routeHtml);
+              continue;
+            }
+
+            // Special authoritative injection for /solutions/edtech
+            if (route.url === '/solutions/edtech') {
+              // 1. Inject authoritative JSON-LD schema
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
+              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(edTechSchema, null, 2)}\n  </script>\n</head>`);
+
+              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${edTechInitialHtml}</div>`);
 
               // 3. Write directly without #seo-crawler-content fallback
               const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');

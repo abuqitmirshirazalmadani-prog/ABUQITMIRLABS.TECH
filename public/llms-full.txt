@@ -20,6 +20,9 @@
   - SEO Mastery: https://www.abuqitmirlabs.tech/seo-mastery
 
 ### 2. Core Service Capabilities
+- **EdTech Software Development & Learning Platforms**: https://www.abuqitmirlabs.tech/solutions/edtech
+  - Custom LMS Development, WebRTC Virtual Classroom Development, Online Learning Platform Development, Student and Teacher Portals, High-Concurrency Assessment & Examination Platforms, Certification & Credential Platforms, AI-Powered Tutoring & Learning Assistants, Learning Analytics & Reporting, Gamification & Student Engagement, and Education Workflow Automation.
+  - Core capabilities: Custom modular course authoring, low-latency WebRTC video classrooms (<200ms) with interactive multi-user whiteboards and breakout rooms, 24/7 AI tutoring agents with Socratic guidance, real-time adaptive learning algorithms, automated PDF certificates with verifiable cryptographic URLs, student information system (SIS) integrations, WCAG 2.1 AA accessibility compliance, defense-in-depth security (TLS 1.3, AES-256, RBAC), and 100% client source code ownership.
 - **E-commerce Software Solutions & Custom Digital Commerce**: https://www.abuqitmirlabs.tech/solutions/e-commerce
   - Custom E-commerce Development, E-commerce Platform Development, E-commerce Web Development, E-commerce Mobile App Development (iOS & Android shopping apps), Multi-Vendor Marketplace Development, Headless E-commerce Development, and E-commerce AI Agent Development.
   - Core capabilities: Headless Next.js/React storefronts (<0.8s load times), B2B wholesale portals with tiered volume pricing and Net-30 terms, multi-vendor marketplaces with split escrow, AI shopping assistants, AI product recommendation engines with vector embeddings, 24/7 e-commerce AI chatbots, enterprise ERP/CRM integrations (SAP, NetSuite, Odoo, Salesforce, QuickBooks), multi-rail payment processing (Stripe, PayPal, Adyen, Klarna), real-time inventory management, and tokenized PCI DSS-scoped security.

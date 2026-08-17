@@ -280,15 +280,7 @@ export const eCommerceSchema = {
           "name": "What is e-commerce web development?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "E-commerce web development is the end-to-end technical engineering of digital storefronts, transactional web applications, and backend commerce engines. It encompasses responsive user interface design, product catalog databases, dynamic shopping carts, secure multi-currency payment gateway integrations, and automated order fulfillment pipelines built for speed, search visibility, and conversion optimization."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is custom e-commerce development?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Custom e-commerce development is the creation of bespoke digital commerce platforms tailored specifically to an organization's distinct operational workflows, catalog structures, and pricing models. Unlike rigid off-the-shelf templates, custom platforms provide complete source code ownership, sub-second load times, flexible API integrations, zero recurring third-party plugin fees, and total architectural freedom."
+            "text": "E-commerce web development is the engineering of digital storefronts, transactional web applications, and backend commerce engines. It encompasses responsive UI design, product catalog databases, dynamic shopping carts, secure payment gateways, and automated order fulfillment pipelines optimized for sub-second page performance, Core Web Vitals, and maximum search engine discoverability."
           }
         },
         {
@@ -296,55 +288,63 @@ export const eCommerceSchema = {
           "name": "How much does custom e-commerce development cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Custom e-commerce development costs typically range from $5,000+ for focused direct-to-consumer storefronts, $10,000 to $25,000+ for growing multi-system commerce platforms, $25,000 to $50,000+ for advanced multi-vendor marketplaces or wholesale portals with ERP integrations, and $50,000+ for large-scale enterprise commerce ecosystems. Total investment depends on feature complexity, integrations, and mobile requirements."
+            "text": "Custom e-commerce development typically ranges from $5,000 to $15,000 for focused D2C storefronts, $15,000 to $35,000 for growing multi-channel platforms, and $35,000 to $75,000+ for enterprise multi-vendor marketplaces or B2B wholesale portals with ERP integrations. Pricing depends on custom feature requirements, third-party APIs, mobile apps, and database scalability needs."
           }
         },
         {
           "@type": "Question",
-          "name": "What technologies are used for e-commerce development?",
+          "name": "How long does it take to build an e-commerce platform?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Modern e-commerce platforms utilize Next.js, React, and TypeScript for high-performance frontends, paired with Node.js, Go, or Python for backend commerce services. Relational databases like PostgreSQL handle transactional orders and catalogs, Redis manages in-memory cart states and caching, and GraphQL or REST APIs connect payment gateways, ERP systems, and headless CMS providers."
+            "text": "Building a custom e-commerce platform generally takes 4 to 8 weeks for standard direct-to-consumer storefronts, 8 to 14 weeks for mid-market platforms with custom workflow logic, and 14 to 24 weeks for complex enterprise B2B portals or multi-vendor marketplaces. Clear technical specifications, modular architecture, and agile milestone sprints ensure rapid time-to-market."
           }
         },
         {
           "@type": "Question",
-          "name": "What is headless e-commerce?",
+          "name": "What is headless e-commerce development?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Headless e-commerce is an architectural approach that decouples the frontend presentation layer from the backend commerce database and business logic. The user interface communicates with backend systems via high-speed APIs. This separation enables sub-second page performance, complete visual design freedom, seamless omnichannel publishing across web and mobile apps, and independent system scaling."
+            "text": "Headless e-commerce development is an architectural approach that decouples the frontend presentation layer from backend commerce business logic and databases. Storefronts interact with backend services through high-speed GraphQL and REST APIs. This enables sub-second page speeds, complete design flexibility, independent microservice scaling, and seamless omnichannel publishing across web and mobile apps."
           }
         },
         {
           "@type": "Question",
-          "name": "How do you build a multi-vendor marketplace?",
+          "name": "How much does a multi-vendor marketplace cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Building a multi-vendor marketplace involves engineering self-service seller onboarding portals, automated vendor commission splits, split escrow checkout workflows, unified product search, vendor payout scheduling, merchant rating systems, and centralized administrative moderation dashboards that allow platform operators to manage compliance and resolve disputes efficiently."
+            "text": "Engineering a custom multi-vendor marketplace typically costs between $20,000 and $60,000+, depending on requirements such as automated vendor onboarding, split escrow checkout workflows, real-time commission calculations, merchant management portals, automated tax compliance, dispute mediation tools, and multi-warehouse carrier shipping integrations."
           }
         },
         {
           "@type": "Question",
-          "name": "Can an e-commerce platform have a mobile app?",
+          "name": "How do e-commerce platforms integrate with ERP systems?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Custom commerce architectures are designed API-first, allowing native iOS, native Android, or cross-platform React Native and Flutter mobile applications to connect directly to the central catalog, inventory, and order management engine. Mobile shopping apps provide personalized push notifications, biometric one-tap checkout, and seamless offline browsing capabilities."
+            "text": "E-commerce platforms integrate with ERP systems like SAP, Oracle NetSuite, Microsoft Dynamics, and Odoo through secure REST/GraphQL APIs and automated webhooks. This bi-directional synchronization unifies real-time inventory counts, customer pricing tiers, sales orders, invoice generation, and shipping status updates without manual data entry or reconciliation delays."
           }
         },
         {
           "@type": "Question",
-          "name": "What security standards are required for e-commerce?",
+          "name": "How can AI automate an e-commerce business?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "E-commerce platforms require defense-in-depth security including TLS 1.3 data encryption in transit, AES-256 encryption for sensitive stored data, tokenized payment processing to minimize PCI DSS compliance scope, granular role-based access control (RBAC), multi-factor authentication for administrators, automated API rate limiting, and regular security vulnerability audits."
+            "text": "AI automates e-commerce operations through 24/7 conversational customer support agents, semantic product search, dynamic real-time recommendation engines, automated catalog metadata tagging, predictive inventory demand forecasting, automated fraud anomaly detection, and personalized email marketing workflows that increase conversions while drastically reducing manual overhead."
           }
         },
         {
           "@type": "Question",
-          "name": "How can AI improve an e-commerce business?",
+          "name": "What is an AI shopping assistant?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Artificial intelligence improves e-commerce by powering 24/7 conversational customer support agents, semantic natural-language product search, personalized dynamic product recommendation algorithms, automated catalog metadata enrichment, predictive demand forecasting, and real-time transaction fraud anomaly detection, leading to higher average order values and reduced operational costs."
+            "text": "An AI shopping assistant is an autonomous conversational agent integrated directly into digital storefronts and mobile apps. Powered by large language models and vector database product search, it understands natural language queries, recommends tailored products, answers inventory and sizing questions, resolves checkout obstacles, and guides customers to completed purchases."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does e-commerce mobile app development cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "E-commerce mobile app development typically ranges from $10,000 to $30,000 for a cross-platform React Native or Flutter shopping application, and $25,000 to $55,000+ for dedicated native iOS and Android retail apps featuring biometric one-tap checkout, push notification campaigns, and offline catalog browsing connected to your central commerce API."
           }
         },
         {
@@ -352,7 +352,7 @@ export const eCommerceSchema = {
           "name": "How do I choose an e-commerce development company?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "When choosing an e-commerce development company, evaluate their technical experience with modern headless stacks, API-driven integrations with ERP and CRM platforms, security and payment compliance knowledge, transparent milestone pricing models, source code ownership policies, and their ability to provide long-term maintenance and cloud performance optimization."
+            "text": "When selecting an e-commerce development company, evaluate their technical experience with modern headless stacks, API-driven ERP/CRM integrations, security and PCI DSS compliance protocols, transparent milestone pricing, full source code ownership policies, and their proven track record of engineering sub-second, scalable commercial platforms."
           }
         }
       ]
@@ -1163,43 +1163,43 @@ export const eCommerceInitialHtml = `
         <div class="space-y-4">
           <div class="p-6 bg-zinc-900/40 rounded-xl border border-white/10">
             <h3 class="text-lg font-bold text-white mb-2">What is e-commerce web development?</h3>
-            <p class="text-sm text-gray-300 font-light leading-relaxed">E-commerce web development is the end-to-end technical engineering of digital storefronts, transactional web applications, and backend commerce engines. It encompasses responsive user interface design, product catalog databases, dynamic shopping carts, secure multi-currency payment gateway integrations, and automated order fulfillment pipelines built for speed, search visibility, and conversion optimization.</p>
-          </div>
-          <div class="p-6 bg-zinc-900/40 rounded-xl border border-white/10">
-            <h3 class="text-lg font-bold text-white mb-2">What is custom e-commerce development?</h3>
-            <p class="text-sm text-gray-300 font-light leading-relaxed">Custom e-commerce development is the creation of bespoke digital commerce platforms tailored specifically to an organization's distinct operational workflows, catalog structures, and pricing models. Unlike rigid off-the-shelf templates, custom platforms provide complete source code ownership, sub-second load times, flexible API integrations, zero recurring third-party plugin fees, and total architectural freedom.</p>
+            <p class="text-sm text-gray-300 font-light leading-relaxed">E-commerce web development is the engineering of digital storefronts, transactional web applications, and backend commerce engines. It encompasses responsive UI design, product catalog databases, dynamic shopping carts, secure payment gateways, and automated order fulfillment pipelines optimized for sub-second page performance, Core Web Vitals, and maximum search engine discoverability.</p>
           </div>
           <div class="p-6 bg-zinc-900/40 rounded-xl border border-white/10">
             <h3 class="text-lg font-bold text-white mb-2">How much does custom e-commerce development cost?</h3>
-            <p class="text-sm text-gray-300 font-light leading-relaxed">Custom e-commerce development costs typically range from $5,000+ for focused direct-to-consumer storefronts, $10,000 to $25,000+ for growing multi-system commerce platforms, $25,000 to $50,000+ for advanced multi-vendor marketplaces or wholesale portals with ERP integrations, and $50,000+ for large-scale enterprise commerce ecosystems. Total investment depends on feature complexity, integrations, and mobile requirements.</p>
+            <p class="text-sm text-gray-300 font-light leading-relaxed">Custom e-commerce development typically ranges from $5,000 to $15,000 for focused D2C storefronts, $15,000 to $35,000 for growing multi-channel platforms, and $35,000 to $75,000+ for enterprise multi-vendor marketplaces or B2B wholesale portals with ERP integrations. Pricing depends on custom feature requirements, third-party APIs, mobile apps, and database scalability needs.</p>
           </div>
           <div class="p-6 bg-zinc-900/40 rounded-xl border border-white/10">
-            <h3 class="text-lg font-bold text-white mb-2">What technologies are used for e-commerce development?</h3>
-            <p class="text-sm text-gray-300 font-light leading-relaxed">Modern e-commerce platforms utilize Next.js, React, and TypeScript for high-performance frontends, paired with Node.js, Go, or Python for backend commerce services. Relational databases like PostgreSQL handle transactional orders and catalogs, Redis manages in-memory cart states and caching, and GraphQL or REST APIs connect payment gateways, ERP systems, and headless CMS providers.</p>
+            <h3 class="text-lg font-bold text-white mb-2">How long does it take to build an e-commerce platform?</h3>
+            <p class="text-sm text-gray-300 font-light leading-relaxed">Building a custom e-commerce platform generally takes 4 to 8 weeks for standard direct-to-consumer storefronts, 8 to 14 weeks for mid-market platforms with custom workflow logic, and 14 to 24 weeks for complex enterprise B2B portals or multi-vendor marketplaces. Clear technical specifications, modular architecture, and agile milestone sprints ensure rapid time-to-market.</p>
           </div>
           <div class="p-6 bg-zinc-900/40 rounded-xl border border-white/10">
-            <h3 class="text-lg font-bold text-white mb-2">What is headless e-commerce?</h3>
-            <p class="text-sm text-gray-300 font-light leading-relaxed">Headless e-commerce is an architectural approach that decouples the frontend presentation layer from the backend commerce database and business logic. The user interface communicates with backend systems via high-speed APIs. This separation enables sub-second page performance, complete visual design freedom, seamless omnichannel publishing across web and mobile apps, and independent system scaling.</p>
+            <h3 class="text-lg font-bold text-white mb-2">What is headless e-commerce development?</h3>
+            <p class="text-sm text-gray-300 font-light leading-relaxed">Headless e-commerce development is an architectural approach that decouples the frontend presentation layer from backend commerce business logic and databases. Storefronts interact with backend services through high-speed GraphQL and REST APIs. This enables sub-second page speeds, complete design flexibility, independent microservice scaling, and seamless omnichannel publishing across web and mobile apps.</p>
           </div>
           <div class="p-6 bg-zinc-900/40 rounded-xl border border-white/10">
-            <h3 class="text-lg font-bold text-white mb-2">How do you build a multi-vendor marketplace?</h3>
-            <p class="text-sm text-gray-300 font-light leading-relaxed">Building a multi-vendor marketplace involves engineering self-service seller onboarding portals, automated vendor commission splits, split escrow checkout workflows, unified product search, vendor payout scheduling, merchant rating systems, and centralized administrative moderation dashboards that allow platform operators to manage compliance and resolve disputes efficiently.</p>
+            <h3 class="text-lg font-bold text-white mb-2">How much does a multi-vendor marketplace cost?</h3>
+            <p class="text-sm text-gray-300 font-light leading-relaxed">Engineering a custom multi-vendor marketplace typically costs between $20,000 and $60,000+, depending on requirements such as automated vendor onboarding, split escrow checkout workflows, real-time commission calculations, merchant management portals, automated tax compliance, dispute mediation tools, and multi-warehouse carrier shipping integrations.</p>
           </div>
           <div class="p-6 bg-zinc-900/40 rounded-xl border border-white/10">
-            <h3 class="text-lg font-bold text-white mb-2">Can an e-commerce platform have a mobile app?</h3>
-            <p class="text-sm text-gray-300 font-light leading-relaxed">Yes. Custom commerce architectures are designed API-first, allowing native iOS, native Android, or cross-platform React Native and Flutter mobile applications to connect directly to the central catalog, inventory, and order management engine. Mobile shopping apps provide personalized push notifications, biometric one-tap checkout, and seamless offline browsing capabilities.</p>
+            <h3 class="text-lg font-bold text-white mb-2">How do e-commerce platforms integrate with ERP systems?</h3>
+            <p class="text-sm text-gray-300 font-light leading-relaxed">E-commerce platforms integrate with ERP systems like SAP, Oracle NetSuite, Microsoft Dynamics, and Odoo through secure REST/GraphQL APIs and automated webhooks. This bi-directional synchronization unifies real-time inventory counts, customer pricing tiers, sales orders, invoice generation, and shipping status updates without manual data entry or reconciliation delays.</p>
           </div>
           <div class="p-6 bg-zinc-900/40 rounded-xl border border-white/10">
-            <h3 class="text-lg font-bold text-white mb-2">What security standards are required for e-commerce?</h3>
-            <p class="text-sm text-gray-300 font-light leading-relaxed">E-commerce platforms require defense-in-depth security including TLS 1.3 data encryption in transit, AES-256 encryption for sensitive stored data, tokenized payment processing to minimize PCI DSS compliance scope, granular role-based access control (RBAC), multi-factor authentication for administrators, automated API rate limiting, and regular security vulnerability audits.</p>
+            <h3 class="text-lg font-bold text-white mb-2">How can AI automate an e-commerce business?</h3>
+            <p class="text-sm text-gray-300 font-light leading-relaxed">AI automates e-commerce operations through 24/7 conversational customer support agents, semantic product search, dynamic real-time recommendation engines, automated catalog metadata tagging, predictive inventory demand forecasting, automated fraud anomaly detection, and personalized email marketing workflows that increase conversions while drastically reducing manual overhead.</p>
           </div>
           <div class="p-6 bg-zinc-900/40 rounded-xl border border-white/10">
-            <h3 class="text-lg font-bold text-white mb-2">How can AI improve an e-commerce business?</h3>
-            <p class="text-sm text-gray-300 font-light leading-relaxed">Artificial intelligence improves e-commerce by powering 24/7 conversational customer support agents, semantic natural-language product search, personalized dynamic product recommendation algorithms, automated catalog metadata enrichment, predictive demand forecasting, and real-time transaction fraud anomaly detection, leading to higher average order values and reduced operational costs.</p>
+            <h3 class="text-lg font-bold text-white mb-2">What is an AI shopping assistant?</h3>
+            <p class="text-sm text-gray-300 font-light leading-relaxed">An AI shopping assistant is an autonomous conversational agent integrated directly into digital storefronts and mobile apps. Powered by large language models and vector database product search, it understands natural language queries, recommends tailored products, answers inventory and sizing questions, resolves checkout obstacles, and guides customers to completed purchases.</p>
+          </div>
+          <div class="p-6 bg-zinc-900/40 rounded-xl border border-white/10">
+            <h3 class="text-lg font-bold text-white mb-2">How much does e-commerce mobile app development cost?</h3>
+            <p class="text-sm text-gray-300 font-light leading-relaxed">E-commerce mobile app development typically ranges from $10,000 to $30,000 for a cross-platform React Native or Flutter shopping application, and $25,000 to $55,000+ for dedicated native iOS and Android retail apps featuring biometric one-tap checkout, push notification campaigns, and offline catalog browsing connected to your central commerce API.</p>
           </div>
           <div class="p-6 bg-zinc-900/40 rounded-xl border border-white/10">
             <h3 class="text-lg font-bold text-white mb-2">How do I choose an e-commerce development company?</h3>
-            <p class="text-sm text-gray-300 font-light leading-relaxed">When choosing an e-commerce development company, evaluate their technical experience with modern headless stacks, API-driven integrations with ERP and CRM platforms, security and payment compliance knowledge, transparent milestone pricing models, source code ownership policies, and their ability to provide long-term maintenance and cloud performance optimization.</p>
+            <p class="text-sm text-gray-300 font-light leading-relaxed">When selecting an e-commerce development company, evaluate their technical experience with modern headless stacks, API-driven ERP/CRM integrations, security and PCI DSS compliance protocols, transparent milestone pricing, full source code ownership policies, and their proven track record of engineering sub-second, scalable commercial platforms.</p>
           </div>
         </div>
       </div>

@@ -172,8 +172,28 @@ AbuQitmirLabs engineers high-performance custom e-commerce software platforms, B
 - Defense-in-Depth Security (TLS 1.3, AES-256, RBAC, Tokenized Card Vaults & PCI DSS Scope Reduction)
 - 100% Client Source Code & Intellectual Property Ownership
 
+## EdTech Software Development & Learning Platforms
+Canonical URL: https://www.abuqitmirlabs.tech/solutions/edtech
+
+AbuQitmirLabs engineers scalable custom EdTech software, learning management systems (LMS), virtual classrooms, and AI education solutions:
+
+- Custom LMS Development & Modular Course Authoring
+- WebRTC Virtual Classroom Development & Live Video Classrooms (<200ms latency)
+- Interactive Multi-User Whiteboards, Breakout Rooms & Cloud Session Recording
+- High-Concurrency Assessment & Online Examination Platforms with Automated Grading
+- 24/7 AI Tutors & Conversational Learning Assistants (Socratic Guidance)
+- Adaptive Learning Engines (Real-Time Difficulty Adjustment & Knowledge-Gap Detection)
+- Student & Teacher Portals, Gradebook Sync & Parent Communication Channels
+- Automated Certificate Generation, Verifiable PDF Transcripts & Digital Badging
+- EdTech Mobile App Development for iOS & Android (Offline Learning & Push Notifications)
+- Educational Workflow Automation (SIS Integration, Enrollment Pipelines & Attendance Telemetry)
+- Defense-in-Depth Security (TLS 1.3, AES-256, RBAC & Audit Logging)
+- WCAG 2.1 AA Compliant Accessible Learning Interfaces
+- 100% Client Source Code & Intellectual Property Ownership
+
 ## Core Services & Capabilities
 
+- [EdTech Software Development](https://www.abuqitmirlabs.tech/solutions/edtech) - Custom LMS platforms, virtual classrooms, AI tutoring engines, examination systems, student portals, and learning analytics.
 - [E-commerce Software Solutions](https://www.abuqitmirlabs.tech/solutions/e-commerce) - Custom e-commerce platforms, B2B wholesale portals, multi-vendor marketplaces, headless commerce, and payment integrations.
 - [AI Automation Solutions](https://www.abuqitmirlabs.tech/solutions/ai-automation) - Custom AI automation systems, autonomous AI agents, RAG knowledge systems, and multi-system API workflows.
 - [Healthcare AI Agent Development](https://www.abuqitmirlabs.tech/ai-agent-development) - Secure healthcare AI agents, patient support automation, clinical RAG systems, and EHR workflow automations.
