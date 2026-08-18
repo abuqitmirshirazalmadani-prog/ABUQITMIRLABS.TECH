@@ -177,10 +177,13 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
               ✦ Full-Service Digital Agency &amp; Custom Software Studio ✦
             </span>
 
-            <h1 className="font-serif text-white font-light text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight uppercase">
-              Full-Service Digital Agency &amp; <br />
+            <h1 className="font-serif text-white font-light text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
+              Custom Software &amp; <br />
               <span className="italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-[#C8EB5F] to-emerald-300">
-                Custom Software Studio
+                AI App Development
+              </span>{" "}
+              <span className="font-sans font-light text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white/90 block sm:inline">
+                for Modern Businesses
               </span>
             </h1>
 

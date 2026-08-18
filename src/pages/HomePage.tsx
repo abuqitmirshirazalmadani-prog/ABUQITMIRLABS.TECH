@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { motion } from 'motion/react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Star } from 'lucide-react';
+import { Star, ShieldCheck, ArrowRight, CheckCircle2, Code2, Cpu, Globe2, Layers, Search, Sparkles, Terminal, Smartphone } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
 import TrustSection from '../components/TrustSection';
 import ApproachSection from '../components/ApproachSection';
@@ -21,254 +20,40 @@ import HomeCaseStudiesSection from '../components/HomeCaseStudiesSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import FAQSection from '../components/FAQSection';
 import ContactSection from '../components/ContactSection';
+import { homeSchema } from '../utils/homeStaticHtml';
 
 export default function HomePage() {
   return (
     <main id="main-content" className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <Helmet>
-        <title>Custom Software, Web &amp; AI Development | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs is a custom software &amp; AI development company delivering web platforms, mobile apps, and SEO engineering for global businesses." />
+        <title>Custom Software &amp; AI App Development Company | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs is a custom software &amp; AI development company delivering scalable web platforms, mobile apps, AI agents, and technical SEO for global businesses." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/" />
         
-        <meta property="og:title" content="Custom Software, Web &amp; AI Development | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs is a custom software &amp; AI development company delivering web platforms, mobile apps, and SEO engineering for global businesses." />
+        <meta property="og:title" content="Custom Software &amp; AI App Development Company | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs is a custom software &amp; AI development company delivering scalable web platforms, mobile apps, AI agents, and technical SEO for global businesses." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
         <meta property="og:image:alt" content="AbuQitmirLabs Custom Software &amp; AI Development Studio" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Custom Software, Web &amp; AI Development | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs is a custom software &amp; AI development company delivering web platforms, mobile apps, and SEO engineering for global businesses." />
+        <meta name="twitter:title" content="Custom Software &amp; AI App Development Company | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs is a custom software &amp; AI development company delivering scalable web platforms, mobile apps, AI agents, and technical SEO for global businesses." />
         <meta name="twitter:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
 
         <script 
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": ["LocalBusiness", "ProfessionalService", "Organization"],
-                  "@id": "https://www.abuqitmirlabs.tech/#organization",
-                  "name": "AbuQitmirLabs",
-                  "alternateName": "AbuQitmirLabs.tech",
-                  "url": "https://www.abuqitmirlabs.tech/",
-                  "logo": "https://www.abuqitmirlabs.tech/logo.png",
-                  "image": "https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg",
-                  "description": "AbuQitmirLabs is a premier custom software and AI development company delivering web platforms, mobile apps, and SEO engineering for global businesses across US, UK, and Europe.",
-                  "foundingDate": "2020",
-                  "telephone": "+923233260859",
-                  "priceRange": "$$",
-                  "openingHours": "Mo-Fr 09:00-18:00",
-                  "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony",
-                    "addressLocality": "Karachi",
-                    "addressRegion": "Sindh",
-                    "postalCode": "75160",
-                    "addressCountry": "PK"
-                  },
-                  "geo": {
-                    "@type": "GeoCoordinates",
-                    "latitude": "24.8934",
-                    "longitude": "67.1554"
-                  },
-                  "contactPoint": {
-                    "@type": "ContactPoint",
-                    "telephone": "+92-323-3260859",
-                    "contactType": "customer service",
-                    "areaServed": ["US", "GB", "PK", "AU", "EU", "CA"],
-                    "availableLanguage": ["English", "Urdu"]
-                  },
-                  "sameAs": [
-                    "https://www.linkedin.com/company/abuqitmirlabs-tech-697423390",
-                    "https://www.facebook.com/abuqitmirlabs",
-                    "https://www.instagram.com/abuqitmirlabs",
-                    "https://x.com/AbuQitmir",
-                    "https://www.clutch.co/profile/abuqitmirlabs",
-                    "https://themanifest.com/company/abuqitmirlabstech",
-                    "https://www.goodfirms.co/company/abuqitmirlabs-tech",
-                    "https://www.youtube.com/@AbuQitmirMohammadShirazAlMadani"
-                  ],
-                  "hasOfferCatalog": {
-                    "@type": "OfferCatalog",
-                    "name": "AbuQitmirLabs Core Digital Services",
-                    "itemListElement": [
-                      {
-                        "@type": "Offer",
-                        "itemOffered": {
-                          "@type": "Service",
-                          "name": "Custom Software Development",
-                          "url": "https://www.abuqitmirlabs.tech/custom-software",
-                          "description": "Bespoke enterprise software engineering, scalable cloud systems, and architectural solutions."
-                        }
-                      },
-                      {
-                        "@type": "Offer",
-                        "itemOffered": {
-                          "@type": "Service",
-                          "name": "Mobile App Development",
-                          "url": "https://www.abuqitmirlabs.tech/mobile-app-development",
-                          "description": "Cross-platform iOS and Android mobile app development using Flutter and React Native."
-                        }
-                      },
-                      {
-                        "@type": "Offer",
-                        "itemOffered": {
-                          "@type": "Service",
-                          "name": "Web Development",
-                          "url": "https://www.abuqitmirlabs.tech/web-development",
-                          "description": "High-performance full-stack web development with Next.js, React, Node.js, and headless CMS."
-                        }
-                      },
-                      {
-                        "@type": "Offer",
-                        "itemOffered": {
-                          "@type": "Service",
-                          "name": "AI Agent & Automation Systems",
-                          "url": "https://www.abuqitmirlabs.tech/ai-agent-development",
-                          "description": "Autonomous AI agent architecture, LLM fine-tuning, RAG pipelines, and enterprise automation."
-                        }
-                      },
-                      {
-                        "@type": "Offer",
-                        "itemOffered": {
-                          "@type": "Service",
-                          "name": "Technical SEO & Organic Growth",
-                          "url": "https://www.abuqitmirlabs.tech/seo-mastery",
-                          "description": "Enterprise technical SEO, semantic SEO, AEO optimization, and Core Web Vitals optimization."
-                        }
-                      }
-                    ]
-                  }
-                },
-                {
-                  "@type": "WebSite",
-                  "@id": "https://www.abuqitmirlabs.tech/#website",
-                  "name": "AbuQitmirLabs",
-                  "url": "https://www.abuqitmirlabs.tech/",
-                  "publisher": {
-                    "@id": "https://www.abuqitmirlabs.tech/#organization"
-                  }
-                },
-                {
-                  "@type": "WebPage",
-                  "@id": "https://www.abuqitmirlabs.tech/#webpage",
-                  "url": "https://www.abuqitmirlabs.tech/",
-                  "name": "Custom Software, Web & AI Development | AbuQitmirLabs",
-                  "isPartOf": {
-                    "@id": "https://www.abuqitmirlabs.tech/#website"
-                  },
-                  "about": {
-                    "@id": "https://www.abuqitmirlabs.tech/#organization"
-                  },
-                  "primaryImageOfPage": {
-                    "@id": "https://www.abuqitmirlabs.tech/#hero-bg-image"
-                  },
-                  "image": [
-                    {
-                      "@id": "https://www.abuqitmirlabs.tech/#hero-bg-image"
-                    },
-                    {
-                      "@id": "https://www.abuqitmirlabs.tech/#hero-img-software"
-                    },
-                    {
-                      "@id": "https://www.abuqitmirlabs.tech/#hero-img-mobile"
-                    },
-                    {
-                      "@id": "https://www.abuqitmirlabs.tech/#hero-img-web"
-                    },
-                    {
-                      "@id": "https://www.abuqitmirlabs.tech/#hero-img-ai"
-                    },
-                    {
-                      "@id": "https://www.abuqitmirlabs.tech/#hero-img-seo"
-                    }
-                  ]
-                },
-                {
-                  "@type": "ImageObject",
-                  "@id": "https://www.abuqitmirlabs.tech/#hero-bg-image",
-                  "url": "https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg",
-                  "contentUrl": "https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg",
-                  "name": "AbuQitmirLabs Custom Software Studio Showcase",
-                  "description": "AbuQitmirLabs custom software studio delivering AI apps, enterprise web systems, and high-performance digital solutions across US, UK, and Europe.",
-                  "caption": "AbuQitmirLabs custom software studio delivering AI apps, enterprise web systems, and high-performance digital solutions across US, UK, and Europe.",
-                  "representativeOfPage": true
-                },
-                {
-                  "@type": "ImageObject",
-                  "@id": "https://www.abuqitmirlabs.tech/#hero-img-software",
-                  "url": "https://i.postimg.cc/gktVScfQ/software-development.jpg",
-                  "contentUrl": "https://i.postimg.cc/gktVScfQ/software-development.jpg",
-                  "name": "Custom Software Development Expertise",
-                  "description": "Custom software development and full-stack engineering team delivering bespoke enterprise web applications and scalable cloud systems at AbuQitmirLabs.",
-                  "caption": "Custom software development and full-stack engineering team delivering bespoke enterprise web applications and scalable cloud systems at AbuQitmirLabs."
-                },
-                {
-                  "@type": "ImageObject",
-                  "@id": "https://www.abuqitmirlabs.tech/#hero-img-mobile",
-                  "url": "https://i.postimg.cc/nzxBjXDf/mobile-app-develpment-abuqitmirlabs.jpg",
-                  "contentUrl": "https://i.postimg.cc/nzxBjXDf/mobile-app-develpment-abuqitmirlabs.jpg",
-                  "name": "Mobile App Development Solutions",
-                  "description": "Cross-platform mobile app development for iOS and Android platforms built using Flutter, React Native, and native architectures at AbuQitmirLabs studio.",
-                  "caption": "Cross-platform mobile app development for iOS and Android platforms built using Flutter, React Native, and native architectures at AbuQitmirLabs studio."
-                },
-                {
-                  "@type": "ImageObject",
-                  "@id": "https://www.abuqitmirlabs.tech/#hero-img-web",
-                  "url": "https://i.postimg.cc/hPYm8yd5/web-development-abuqitmirlabs.jpg",
-                  "contentUrl": "https://i.postimg.cc/hPYm8yd5/web-development-abuqitmirlabs.jpg",
-                  "name": "Full-Stack Web Development Services",
-                  "description": "Modern full-stack web development services utilizing Next.js, React, Node.js, and cloud infrastructure for fast, SEO-optimized apps at AbuQitmirLabs.",
-                  "caption": "Modern full-stack web development services utilizing Next.js, React, Node.js, and cloud infrastructure for fast, SEO-optimized apps at AbuQitmirLabs."
-                },
-                {
-                  "@type": "ImageObject",
-                  "@id": "https://www.abuqitmirlabs.tech/#hero-img-ai",
-                  "url": "https://i.postimg.cc/85wJ7tGm/ai-agent-development-abuqitmirlabs.jpg",
-                  "contentUrl": "https://i.postimg.cc/85wJ7tGm/ai-agent-development-abuqitmirlabs.jpg",
-                  "name": "Autonomous AI Agent Development",
-                  "description": "Autonomous AI agent development, custom LLM integration, workflow automation, and intelligent RAG systems engineered for enterprises by AbuQitmirLabs.",
-                  "caption": "Autonomous AI agent development, custom LLM integration, workflow automation, and intelligent RAG systems engineered for enterprises by AbuQitmirLabs."
-                },
-                {
-                  "@type": "ImageObject",
-                  "@id": "https://www.abuqitmirlabs.tech/#hero-img-seo",
-                  "url": "https://i.postimg.cc/NGJ2YJp9/seo-local-seo.jpg",
-                  "contentUrl": "https://i.postimg.cc/NGJ2YJp9/seo-local-seo.jpg",
-                  "name": "Technical & Semantic SEO Mastery",
-                  "description": "Technical SEO, semantic optimization, AEO AI search visibility, and organic growth marketing strategies engineered for brands by AbuQitmirLabs agency.",
-                  "caption": "Technical SEO, semantic optimization, AEO AI search visibility, and organic growth marketing strategies engineered for brands by AbuQitmirLabs agency."
-                },
-                {
-                  "@type": "BreadcrumbList",
-                  "@id": "https://www.abuqitmirlabs.tech/#breadcrumb",
-                  "itemListElement": [
-                    {
-                      "@type": "ListItem",
-                      "position": 1,
-                      "name": "Home",
-                      "item": "https://www.abuqitmirlabs.tech/"
-                    }
-                  ]
-                }
-              ]
-            })
+            __html: JSON.stringify(homeSchema)
           }}
-        ></script>
+        />
       </Helmet>
 
       <Header />
       
-      {/* Visually hidden H2/H3 for SEO search visibility */}
-      <div className="sr-only">
-        <h2>Custom Software &amp; AI Development | AbuQitmirLabs</h2>
-        <h3>Custom Software · Web Development · AI Agents · Mobile Apps · SEO</h3>
-      </div>
-
       <HeroSection />
       
+      {/* Dynamic Animated Marquee Ribbon */}
       <div className="overflow-hidden transform z-20 bg-[#B9FF66] w-full border-y-4 pt-4 pb-4 relative shadow-[0_8px_0_0_rgba(0,0,0,1)] -rotate-1">
         <div className="flex whitespace-nowrap w-max animate-marquee">
           {[...Array(2)].map((_, i) => (
@@ -287,83 +72,157 @@ export default function HomePage() {
 
       <TrustSection />
       
-      {/* Strategic SEO Editorial Narrative Block - Modern E-E-A-T Criteria */}
+      {/* Comprehensive Architectural Overview & Semantic Authority Section */}
       <section className="py-24 md:py-32 bg-[#060606] border-y border-white/5 relative overflow-hidden" id="authority-narrative">
         <div className="absolute inset-0 bg-[#ccff00]/[0.01] blur-3xl pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-24">
           
-          <div className="text-center md:text-left mb-20 max-w-4xl">
+          {/* Main Section Header */}
+          <div className="max-w-4xl">
             <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.25em] text-[#ccff00] font-bold block mb-4">
-              Scientific Engineering & Technical Authority
+              Scientific Engineering &amp; Technical Authority
             </span>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif italic text-white font-light tracking-tight leading-tight">
-              Bespoke Systems, <br />
-              <span className="text-neutral-400 font-sans not-italic font-extralight tracking-tighter">Absolute Digital Sovereignty.</span>
+              Bespoke Software Engineering &amp; <br />
+              <span className="text-neutral-400 font-sans not-italic font-extralight tracking-tighter">
+                Scalable Web Architectures.
+              </span>
             </h2>
+            <p className="text-neutral-300 font-sans leading-relaxed text-base md:text-lg font-light mt-6 text-justify">
+              At <strong>AbuQitmirLabs</strong>, we build robust digital foundations for high-growth startups and established global enterprises. Rather than locking your business into rigid off-the-shelf software with mounting license fees, our engineers design modular, fault-tolerant web and cloud platforms tailored specifically to your operational logic and commercial goals.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
+          {/* Three Pillar Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             
             {/* Column 1: Core Custom Software & Web Engineering */}
-            <div className="space-y-8">
-              <div className="border-b border-white/5 pb-4">
-                <span className="text-xs font-mono text-[#ccff00]/60 font-bold">I_ CORE SYSTEMS ARCHITECTURE</span>
+            <div className="space-y-6 bg-[#0a0a09] border border-white/10 rounded-2xl p-8">
+              <div className="border-b border-white/10 pb-4">
+                <span className="text-xs font-mono text-[#ccff00] font-bold">01 / ENTERPRISE PLATFORMS</span>
               </div>
-              <p className="text-neutral-200 font-sans leading-relaxed text-sm md:text-base font-normal text-justify">
-                <strong>AbuQitmirLabs</strong> is a premier custom software development company delivering AI app development services, <Link to="/web-development" className="text-white font-medium hover:underline">custom website development services</Link>, and enterprise software solutions to clients across the United States, United Kingdom, and Europe.
+              <h3 className="text-xl font-sans font-bold text-white tracking-tight">
+                High-Performance Full-Stack Web Development
+              </h3>
+              <p className="text-neutral-300 font-sans leading-relaxed text-sm font-light text-justify">
+                We craft tailored, speed-oriented frontends and microservices that captivate users from the first millisecond. By combining <Link to="/web-development" className="text-[#ccff00] font-medium hover:underline">modern web development services</Link> with decoupled Jamstack architectures, we achieve sub-second load times and flawless Core Web Vitals.
               </p>
-              <p className="text-neutral-400 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
-                When you collaborate with our specialized studio, you bypass the severe architectural limitations of standard off-the-shelf software. At AbuQitmirLabs, we are a master-grade <strong className="text-white font-medium">custom software development company</strong> focused on engineering secure, fault-tolerant, and high-performance <strong className="text-[#ccff00] font-medium">scalable applications</strong> that serve as proprietary business assets. Our focus as a specialized <strong className="text-white font-medium">custom software development company</strong> is to build sustainable infrastructures that guarantee absolute intellectual property ownership, crafting robust <strong className="text-white font-medium">scalable applications</strong> that adapt beautifully as your traffic metrics increase.
+              <p className="text-neutral-400 font-sans leading-relaxed text-sm font-light text-justify">
+                Our team constructs bespoke architectures with Next.js, React, Node.js, and PostgreSQL. Every project is engineered for long-term maintainability, complete source code ownership, and frictionless third-party API orchestration.
               </p>
-              <p className="text-neutral-400 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
-                As a leading <Link to="/web-development" className="text-white font-medium hover:underline">custom website development company</Link>, we construct tailored, speed-oriented frontends that captivate visitors from the first millisecond. Our technical standard as a luxury <strong className="text-white font-medium">custom website development company</strong> forces us to prioritize rich typography, fluid layouts, and deep search visibility. Partnering with our specialized <strong className="text-white font-medium">custom website development company</strong> guarantees that your web presence has zero passive license fees, zero locked proprietary modules, and infinite freedom to scale.
-              </p>
+              <div className="pt-2">
+                <Link to="/custom-software" className="inline-flex items-center gap-2 text-xs font-mono text-[#ccff00] hover:underline uppercase tracking-wider font-semibold">
+                  <span>Explore Custom Software</span>
+                  <ArrowRight size={14} />
+                </Link>
+              </div>
             </div>
 
-            {/* Column 2: High-Fidelity Native & Flutter Mobile Ecosystems */}
-            <div className="space-y-8">
-              <div className="border-b border-white/5 pb-4">
-                <span className="text-xs font-mono text-[#ccff00]/60 font-bold">II_ IMMERSIVE MOBILE ENVIRONMENTS</span>
+            {/* Column 2: Autonomous AI Agents & Intelligent Automation */}
+            <div className="space-y-6 bg-[#0a0a09] border border-white/10 rounded-2xl p-8">
+              <div className="border-b border-white/10 pb-4">
+                <span className="text-xs font-mono text-[#ccff00] font-bold">02 / AI &amp; AUTOMATION</span>
               </div>
-              <p className="text-neutral-400 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
-                Establishing a dynamic multi-device ecosystem requires an expert and disciplined <strong className="text-white font-medium">custom mobile app development company</strong>. AbuQitmirLabs is configured as an elite <strong className="text-white font-medium">custom mobile app development company</strong> that bridges complex server infrastructure with fluid handheld views. Our primary approach as a tactical <strong className="text-white font-medium">custom mobile app development company</strong> utilizes rigorous native architectures. By implementing custom <strong className="text-[#ccff00] font-medium">Native Mobile app development</strong> pipelines, we craft bespoke Swift and Kotlin experiences that access on-chip GPU power for lightning-fast responsiveness.
+              <h3 className="text-xl font-sans font-bold text-white tracking-tight">
+                Autonomous AI Agents &amp; RAG Systems
+              </h3>
+              <p className="text-neutral-300 font-sans leading-relaxed text-sm font-light text-justify">
+                Moving past basic AI wrappers, our artificial intelligence division specializes in <Link to="/ai-agent-development" className="text-[#ccff00] font-medium hover:underline">autonomous AI agent development</Link> and cognitive workflow automation. We deploy multi-agent frameworks that reason across private data stores and execute complex multi-step tasks.
               </p>
-              <p className="text-neutral-400 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
-                For rapid worldwide delivery, partnering with a premier <strong className="text-white font-medium">Flutter mobile app development company</strong> yields absolute cross-device parity. As a highly capable <strong className="text-white font-medium">Flutter mobile app development company</strong>, we deliver identical animations, security parameters, and layouts across iOS and Android with single-codebase velocity. Utilizing our expertise as an authorized <strong className="text-white font-medium">Flutter mobile app development company</strong> enables you to capture dual marketplaces instantly without sacrificing operational efficiency. We consistently pair clean, robust <strong className="text-white font-medium">Native Mobile app development</strong> frameworks with hybrid tools to render gorgeous custom layouts and fluid multi-touch interactions.
+              <p className="text-neutral-400 font-sans leading-relaxed text-sm font-light text-justify">
+                We build enterprise Retrieval-Augmented Generation (RAG) vector pipelines and connect secure LLMs to your internal CRM, ERP, and customer support workflows. Transform manual administrative overhead into self-healing, automated business intelligence.
               </p>
+              <div className="pt-2">
+                <Link to="/solutions/ai-automation" className="inline-flex items-center gap-2 text-xs font-mono text-[#ccff00] hover:underline uppercase tracking-wider font-semibold">
+                  <span>AI Automation Solutions</span>
+                  <ArrowRight size={14} />
+                </Link>
+              </div>
             </div>
 
-            {/* Column 3: Intelligent AI Systems & Digital Transformation */}
-            <div className="space-y-8">
-              <div className="border-b border-white/5 pb-4">
-                <span className="text-xs font-mono text-[#ccff00]/60 font-bold">III_ ENTERPRISE INTELLIGENCE & EVOLUTION</span>
+            {/* Column 3: Native & Flutter Mobile Ecosystems */}
+            <div className="space-y-6 bg-[#0a0a09] border border-white/10 rounded-2xl p-8">
+              <div className="border-b border-white/10 pb-4">
+                <span className="text-xs font-mono text-[#ccff00] font-bold">03 / MOBILE ECOSYSTEMS</span>
               </div>
-              <p className="text-neutral-400 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
-                Our advanced artificial intelligence division leads the industry in deployment-ready <strong className="text-white font-medium">AI app development</strong> solutions. We integrate custom-trained Large Language Models, cognitive agent workflows, and highly advanced mathematical models into everyday enterprise pipelines. Standard <strong className="text-white font-medium">AI app development</strong> services often rely on simple third-party wrappers, but our complete <strong className="text-white font-medium">AI app development</strong> packages deliver standalone, self-hosted networks. These solutions seamlessly drive massive, fundamental <strong className="text-[#ccff00] font-medium">digital transformation</strong>, restructuring legacy databases, fragmented manual pipelines, and outdated systems into automated, highly responsive intellectual assets.
+              <h3 className="text-xl font-sans font-bold text-white tracking-tight">
+                Cross-Platform Mobile App Engineering
+              </h3>
+              <p className="text-neutral-300 font-sans leading-relaxed text-sm font-light text-justify">
+                Reaching mobile users across multiple operating systems requires disciplined engineering. As an experienced <Link to="/mobile-app-development" className="text-[#ccff00] font-medium hover:underline">mobile app development team</Link>, we build fluid, native-grade applications using Flutter and React Native alongside native Swift and Kotlin pipelines.
               </p>
-              <p className="text-neutral-400 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
-                We orchestrate robust <strong className="text-white font-medium">digital transformation</strong> strategies and construct resilient <strong className="text-white font-medium">enterprise software solutions</strong> that act as immediate force-multipliers. If you need to manage immense multi-market systems, our powerful <strong className="text-white font-medium">enterprise software solutions</strong> streamline real-time transactions with complete safety. These secure and <strong className="text-white font-medium">scalable applications</strong> ensure your organization remains resilient, enabling you to confidently proceed with necessary <strong className="text-white font-medium">digital transformation</strong> processes across all administrative divisions.
+              <p className="text-neutral-400 font-sans leading-relaxed text-sm font-light text-justify">
+                We ensure seamless biometric security, offline caching, hardware sensor integration, and continuous App Store CI/CD delivery pipelines to give your business rapid dual-marketplace execution.
               </p>
+              <div className="pt-2">
+                <Link to="/mobile-app-development" className="inline-flex items-center gap-2 text-xs font-mono text-[#ccff00] hover:underline uppercase tracking-wider font-semibold">
+                  <span>Discover Mobile Apps</span>
+                  <ArrowRight size={14} />
+                </Link>
+              </div>
             </div>
 
+          </div>
+
+          {/* Core Section: Technical & Semantic SEO */}
+          <div className="bg-[#0a0a09] border border-white/10 rounded-2xl p-8 md:p-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-8 space-y-4">
+                <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.25em] text-[#ccff00] font-bold block">
+                  04 / ORGANIC SEARCH AUTHORITY
+                </span>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif italic text-white">
+                  Technical &amp; Semantic SEO for Sustainable Organic Growth
+                </h2>
+                <p className="text-neutral-300 font-sans text-sm md:text-base leading-relaxed font-light text-justify">
+                  Modern search ranking demands technical excellence, structured Schema.org entity networks, and answer engine optimization (AEO/GEO). At AbuQitmirLabs, our <Link to="/seo-mastery" className="text-[#ccff00] font-medium hover:underline">technical SEO mastery</Link> ensures that search engines, Google AI Overviews, and conversational AI assistants recognize your company as the authoritative answer for high-intent queries.
+                </p>
+                <div className="flex flex-wrap gap-4 pt-2">
+                  <Link to="/seo-mastery" className="inline-flex items-center gap-2 text-xs font-mono bg-white/10 hover:bg-[#ccff00] hover:text-black text-white px-4 py-2 rounded-none transition-colors uppercase font-bold tracking-wider">
+                    Enterprise SEO Mastery
+                  </Link>
+                  <Link to="/local-seo-for-small-business" className="inline-flex items-center gap-2 text-xs font-mono border border-white/20 hover:border-[#ccff00] text-neutral-300 hover:text-[#ccff00] px-4 py-2 rounded-none transition-colors uppercase font-bold tracking-wider">
+                    Local Search Optimization
+                  </Link>
+                </div>
+              </div>
+              <div className="lg:col-span-4 bg-zinc-950 border border-white/10 rounded-xl p-6 space-y-3">
+                <div className="text-xs font-mono text-[#ccff00] font-bold uppercase tracking-wider">Topical Authority Metrics</div>
+                <div className="text-sm font-sans text-white font-semibold">Knowledge Graph Entity Integration</div>
+                <p className="text-xs text-neutral-400 leading-relaxed font-light">
+                  Nested Schema.org graphs, automated canonical management, instant indexation protocols, and verified citations across Google Business Profile and industry directories.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Local Geographic Authority & Trust Banner */}
-          <div className="mt-20 pt-12 border-t border-white/5 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-8">
-              <p className="text-neutral-400 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
-                Operating proudly as a premium <strong className="text-white font-medium">software development company Karachi Pakistan</strong>, we cater to a sophisticated global clientele. As a <strong className="text-white font-semibold">leading software development company in Karachi, Pakistan</strong>, we bring old-school engineering ethics to modern computing problems. This unique geopolitical advantage enables organizations to <strong className="text-white font-medium">hire software developers</strong> of global caliber while maintaining reasonable, highly optimized capital allocation. If you are seeking a reliable, authoritative, and battle-tested <strong className="text-white font-medium">software development company Karachi Pakistan</strong> to spearhead your firm’s next major initiatives and deploy robust <strong className="text-white font-medium">enterprise software solutions</strong>, AbuQitmirLabs stands ready to design, deploy, and preserve your complete computational assets.
+          <div className="pt-12 border-t border-white/5 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-8 space-y-4">
+              <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.25em] text-[#ccff00] font-bold block">
+                05 / GLOBAL DELIVERY FOOTPRINT
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-serif italic text-white">
+                Why Global Businesses Choose AbuQitmirLabs
+              </h2>
+              <p className="text-neutral-300 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
+                Operating proudly as an elite software engineering studio based in Karachi, Pakistan, AbuQitmirLabs combines international delivery standards with optimal capital efficiency. When international leadership teams choose to work with us, they gain direct access to senior software architects, test-driven development methodologies, and 100% intellectual property ownership without administrative bureaucracy.
               </p>
-              <p className="text-neutral-400 font-sans leading-relaxed text-sm md:text-base font-light text-justify mt-4">
-                We are recognized as the <strong className="text-[#ccff00] font-bold">leading software development company in Karachi, Pakistan</strong> because we provide high-grade <strong className="text-white font-medium">Native Mobile app development</strong> frameworks alongside web applications. When leadership teams want to <strong className="text-white font-medium">hire software developers</strong> from a proven, expert <strong className="text-white font-medium">software development company Karachi Pakistan</strong>, they work with AbuQitmirLabs to ensure their enterprise apps remain secure, optimized, and fast. To <strong className="text-white font-medium">hire software developers</strong> who truly understand digital systems, partner with our specialized labs.
+              <p className="text-neutral-400 font-sans leading-relaxed text-sm font-light text-justify">
+                Whether you are launching a new FinTech venture, scaling an e-commerce infrastructure, or automating enterprise operations with autonomous AI agents, AbuQitmirLabs stands ready to design, deploy, and support your computational assets.
               </p>
             </div>
-            <div className="lg:col-span-4 bg-[#0a0a09] border border-white/5 rounded-2xl p-6 text-center lg:text-left">
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#ccff00] font-bold block mb-2">LOCAL HUB METRICS</span>
-              <h3 className="text-lg font-serif italic text-white mb-2">Karachi, Pakistan</h3>
-              <p className="text-xs text-neutral-500 font-mono leading-relaxed uppercase">
-                ACTIVE ENGINEERING LAB • SECURE CLOUD NODES • CUSTOM LLM REPO CONTROL
+            <div className="lg:col-span-4 bg-[#0a0a09] border border-white/10 rounded-2xl p-6 text-center lg:text-left space-y-3">
+              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#ccff00] font-bold block">ENGINEERING HUB METRICS</span>
+              <h3 className="text-lg font-serif italic text-white">Karachi, Pakistan</h3>
+              <p className="text-xs text-neutral-400 font-mono leading-relaxed uppercase">
+                ACTIVE LAB • ZERO-TRUST ARCHITECTURE • 100% SOURCE REPO HANDOVER
               </p>
+              <div className="pt-2">
+                <Link to="/about/our-company" className="text-xs font-mono text-[#ccff00] hover:underline uppercase tracking-wider block">
+                  Learn About Our Studio →
+                </Link>
+              </div>
             </div>
           </div>
 
@@ -401,10 +260,10 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(204,255,0,0.03)_0%,_transparent_65%)] pointer-events-none"></div>
         <div className="max-w-4xl mx-auto relative z-10">
           <h2 className="text-3xl md:text-5xl font-serif text-white mb-4 italic tracking-tight">
-            Start your project.
+            Start your project today.
           </h2>
           <p className="text-zinc-400 mb-12 text-sm md:text-base font-sans tracking-wide">
-            Free consultation available — Contact today.
+            Complimentary technical consultation available with our senior engineering leads.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
             <a
@@ -413,14 +272,16 @@ export default function HomePage() {
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#25d366]/10 text-[#25d366] hover:bg-[#25d366]/20 font-sans text-xs tracking-[0.14em] uppercase border border-[#25d366]/20 px-8 py-4 rounded-full transition-all duration-300 h-14"
+              aria-label="Message on WhatsApp"
             >
-              💬 <span className="normal-case">Message me on WhatsApp</span>
+              💬 <span className="normal-case">Message on WhatsApp (+92 323 3260859)</span>
             </a>
             <div className="flex flex-col gap-2">
               <a
                 id="cta-email-link-corporate"
                 href="mailto:hello@abuqitmirlabs.tech"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 text-zinc-200 hover:bg-white/10 font-sans text-xs tracking-[0.14em] uppercase border border-white/20 px-8 py-3.5 rounded-full transition-all duration-300"
+                aria-label="Send Email to hello@abuqitmirlabs.tech"
               >
                 📧 <span className="normal-case font-mono font-medium tracking-tight">hello@abuqitmirlabs.tech</span>
               </a>
@@ -428,6 +289,7 @@ export default function HomePage() {
                 id="cta-email-link-personal"
                 href="mailto:abuqitmirshirazalmadani@gmail.com"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 text-zinc-400 hover:bg-white/10 font-sans text-[10px] tracking-[0.14em] uppercase border border-white/10 px-8 py-2 rounded-full transition-all duration-300"
+                aria-label="Send Email to abuqitmirshirazalmadani@gmail.com"
               >
                 📧 <span className="normal-case font-mono font-medium tracking-tight">abuqitmirshirazalmadani@gmail.com</span>
               </a>

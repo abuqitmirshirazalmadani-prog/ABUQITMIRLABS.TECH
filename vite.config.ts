@@ -15,6 +15,8 @@ import { edTechSchema, edTechInitialHtml } from './src/utils/edTechStaticHtml';
 import { customSoftwareSchema, customSoftwareInitialHtml } from './src/utils/customSoftwareStaticHtml';
 import { mobileAppSchema, mobileAppInitialHtml } from './src/utils/mobileAppStaticHtml';
 import { customWebDevBlogSchema, customWebDevBlogInitialHtml } from './src/utils/customWebDevBlogStaticHtml';
+import { localSEOSmallBusinessSchema, localSEOSmallBusinessInitialHtml } from './src/utils/localSEOSmallBusinessStaticHtml';
+import { homeSchema, homeInitialHtml } from './src/utils/homeStaticHtml';
 
 // Safe container-compatible prerender implementation to bypass Chromium/Puppeteer driver limitations
 interface PrerenderPlugin {
@@ -87,6 +89,10 @@ export default defineConfig(({mode}) => {
           '/terms',
           '/blog',
           '/blog/custom-web-development-company',
+          '/local-seo-for-small-business',
+          '/local-seo-citation-building',
+          '/white-label-local-seo',
+          '/local-seo-audit',
           '/website-contract',
           '/contact'
         ],
@@ -100,7 +106,7 @@ export default defineConfig(({mode}) => {
         closeBundle: async () => {
           const hostname = 'https://www.abuqitmirlabs.tech';
           const baseRoutes = [
-            { url: '/',                        changefreq: 'weekly',  priority: 1.0, title: 'Custom Software & AI App Development | AbuQitmirLabs', description: "AbuQitmirLabs .TECH is an elite software studio. We build bespoke SaaS, enterprise systems, and custom AI models. Let's build your solution." },
+            { url: '/',                        changefreq: 'weekly',  priority: 1.0, title: 'Custom Software & AI App Development Company | AbuQitmirLabs', description: "AbuQitmirLabs is a custom software & AI development company delivering scalable web platforms, mobile apps, AI agents, and technical SEO for global businesses." },
             { url: '/about',                   changefreq: 'monthly', priority: 0.8, title: 'About Us | AbuQitmirLabs', description: 'Learn about our mission to build cutting-edge AI and mobile solutions.' },
             { url: '/about/our-company',       changefreq: 'monthly', priority: 0.8, title: 'About Our Company | Global Software Studio | AbuQitmirLabs', description: 'AbuQitmirLabs is a Karachi-based software boutique. 410+ custom projects for 350+ global clients. Zero lock-in, 100% in-house talent. Learn about our mission and values.' },
             { url: '/about/our-team',          changefreq: 'monthly', priority: 0.8, title: 'Our Team | Elite Software Architects | AbuQitmirLabs', description: 'Meet the AbuQitmirLabs team — 12+ in-house software architects, engineers, and UI/UX experts in Karachi. 410+ projects delivered globally. Led by founder Abu Qitmir.' },
@@ -112,7 +118,7 @@ export default defineConfig(({mode}) => {
             { url: '/web-development',         changefreq: 'weekly',  priority: 0.9, title: 'Web Development Company | Custom Web Solutions | AbuQitmirLabs', description: 'AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications.' },
             { url: '/ai-agent-development',    changefreq: 'weekly',  priority: 0.9, title: 'Healthcare AI Agent Development Company | AbuQitmirLabs', description: 'Custom healthcare AI agents for patient intake, RAG, EHR integration and workflow automation. Build secure AI systems with AbuQitmirLabs.' },
             { url: '/seo-mastery',             changefreq: 'weekly',  priority: 0.8, title: 'SEO Services | Professional Search Engine Optimization | AbuQitmirLabs', description: 'AbuQitmirLabs delivers data-driven SEO services — technical audits, on-page optimization, local SEO, and authority building. Rank higher, attract quality traffic, and grow your business.' },
-            { url: '/local-seo-for-small-business', changefreq: 'weekly', priority: 0.9, title: 'Local SEO for Small Business | Affordable Plans | AbuQitmirLabs', description: 'Affordable local SEO for small businesses. Get found in Google Maps with GBP optimization, NAP citations, and on-page local keywords. Start with a $500/month plan.' },
+            { url: '/local-seo-for-small-business', changefreq: 'weekly', priority: 0.9, title: 'Local SEO Services for Small Businesses | AbuQitmirLabs', description: 'Grow local visibility with expert Local SEO for small businesses, including Google Business Profile, local rankings, citations, and on-page optimization.' },
             { url: '/local-seo-citation-building', changefreq: 'weekly', priority: 0.8, title: 'Local SEO Citation Building | NAP Consistency Services | AbuQitmirLabs', description: 'Manual NAP citation building, audit & cleanup across top-tier directories. Boost local search rankings with consistent citations on Google, Yelp, Apple Maps & more. Start with a $150 audit.' },
             { url: '/white-label-local-seo',   changefreq: 'weekly',  priority: 0.8, title: 'White Label Local SEO for Agencies | Reseller Plans | AbuQitmirLabs', description: 'White label local SEO fulfillment for agencies — citations, GBP optimization, and branded PDF reports. Reseller plans with 35–50% margins. Expand your services without expanding your team.' },
             { url: '/local-seo-audit',          changefreq: 'weekly',  priority: 0.8, title: 'Free Local SEO Audit | Forensic Map Pack Analysis | AbuQitmirLabs', description: 'Free local SEO audit covering Google Business Profile, NAP citations, schema markup, and map-pack competitors. Get a prioritized action plan — not a jargon-filled deck.' },
@@ -120,7 +126,7 @@ export default defineConfig(({mode}) => {
             { url: '/content-writing',         changefreq: 'weekly',  priority: 0.8, title: 'Content Writing Services | SEO Copywriting & Blogging | AbuQitmirLabs', description: 'AbuQitmirLabs provides professional content writing services — SEO blogs, website copy, landing pages, and long-form articles. Data-driven content that ranks and converts.' },
             { url: '/solutions/fintech',        changefreq: 'weekly',  priority: 0.8, title: 'FinTech Solutions for Digital Finance | AbuQitmirLabs', description: 'Build secure FinTech platforms, payment systems and digital finance experiences with AbuQitmirLabs for startups and growing businesses.' },
             { url: '/solutions/healthcare',     changefreq: 'weekly',  priority: 0.8, title: 'Healthcare Software Solutions | AbuQitmirLabs', description: 'Build secure healthcare software, patient portals, telemedicine platforms and clinical systems with AbuQitmirLabs for modern healthcare businesses.' },
-            { url: '/solutions/ai-automation',  changefreq: 'weekly',  priority: 0.9, title: 'AI Automation Solutions for Smarter Business | AbuQitmirLabs', description: 'Build AI automation systems for workflows, customer support, sales, operations and knowledge management with AbuQitmirLabs.' },
+            { url: '/solutions/ai-automation',  changefreq: 'weekly',  priority: 0.9, title: 'AI Automation Solutions | AbuQitmirLabs', description: 'Automate business workflows with AI agents, RAG, APIs and intelligent integrations. Build secure AI automation for startups and enterprises.' },
             { url: '/solutions/e-commerce',     changefreq: 'weekly',  priority: 0.9, title: 'E-commerce Software Solutions | Custom E-commerce Development', description: 'Engineer high-performance e-commerce software solutions, custom online stores, B2B wholesale portals, mobile shopping apps & multi-vendor marketplaces.' },
             { url: '/solutions/edtech',         changefreq: 'weekly',  priority: 0.9, title: 'EdTech Software Development | LMS & Learning Platforms', description: 'Build scalable EdTech software with custom LMS platforms, virtual classrooms, AI tutoring, student portals, assessments, and learning analytics.' },
             { url: '/case-studies',            changefreq: 'weekly',  priority: 0.9, title: 'Case Studies | Real-World Success Stories | AbuQitmirLabs', description: 'Explore real-world success stories from AbuQitmirLabs — custom software, AI automation, mobile apps, and web solutions that delivered measurable ROI for 350+ global clients.' },
@@ -136,6 +142,7 @@ export default defineConfig(({mode}) => {
             { url: '/blog/healthcare-software-development-solutions-2026', changefreq: 'weekly', priority: 0.8, title: 'Healthcare Software Development Solutions: The Complete 2026 Guide | AbuQitmirLabs', description: 'A complete 2026 guide to healthcare software development — EHR systems, telemedicine platforms, clinical workflow tools, and compliance requirements.' },
             { url: '/blog/custom-web-development-company-2026', changefreq: 'weekly', priority: 0.8, title: 'Custom Web Development Company 2026 | Built-In Visibility | AbuQitmirLabs', description: "The best custom web development companies don't add SEO, GEO, and AI visibility after launch. They build it into every decision from day one. Here's what that looks like — and why it matters." },
             { url: '/blog/custom-web-development-company', changefreq: 'weekly', priority: 0.9, title: 'Custom Web Development Company: The Complete Guide to Web Apps, SEO, Security & B2B Solutions', description: 'Full guide to custom web application development — covering SEO web development, B2B platforms, healthcare web apps, security, and full-stack services.' },
+            { url: '/blog/rag-ai-integration-for-startups', changefreq: 'weekly', priority: 0.9, title: 'RAG AI Integration for Startups | AbuQitmirLabs', description: 'How startups use RAG to ground AI in real data — architecture, cost, RAG vs fine-tuning, and build vs hire, with a real RAG case study.' },
             { url: '/blog/custom-ai-solutions-for-fintech-2026', changefreq: 'weekly', priority: 0.8, title: 'Custom AI Solutions for Fintech 2026 | Fraud Detection & Underwriting | AbuQitmirLabs', description: 'Custom AI solutions for fintech in 2026 — real-time fraud detection, AI-assisted underwriting, and RAG-based support. See what a fintech software development company actually builds.' },
             { url: '/news/latest',             changefreq: 'weekly',  priority: 0.8, title: 'Latest News | Company Updates & Press Releases | AbuQitmirLabs', description: 'AbuQitmirLabs newsroom — latest company updates, software launches, AI agent releases, and press announcements. Subscribe for monthly engineering and tech insights.' },
             { url: '/news/press-releases',     changefreq: 'monthly', priority: 0.8, title: 'Press Releases | Corporate Announcements | AbuQitmirLabs', description: 'Official press releases and corporate announcements from AbuQitmirLabs software engineering studio in Karachi.' },
@@ -335,6 +342,20 @@ Sitemap: ${hostname}/sitemap.xml`;
             routeHtml = routeHtml.replace(/<link\s+rel="canonical"[^>]*\/?>/gi, '');
             routeHtml = routeHtml.replace('</head>', `  <link rel="canonical" data-rh="true" href="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
             
+            // Special authoritative injection for / (Homepage)
+            if (route.url === '/') {
+              // 1. Inject authoritative JSON-LD schema
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
+              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(homeSchema, null, 2)}\n  </script>\n</head>`);
+
+              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${homeInitialHtml}</div>`);
+
+              // 3. Write directly to indexHtmlPath
+              fs.writeFileSync(indexHtmlPath, routeHtml);
+              continue;
+            }
+
             // Special authoritative injection for /ai-agent-development
             if (route.url === '/ai-agent-development') {
               // 1. Inject authoritative 7-entity JSON-LD schema
@@ -478,6 +499,21 @@ Sitemap: ${hostname}/sitemap.xml`;
 
               // 2. Inject full authentic crawlable HTML inside #root
               routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${customWebDevBlogInitialHtml}</div>`);
+
+              // 3. Write directly without #seo-crawler-content fallback
+              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
+              fs.writeFileSync(targetPath, routeHtml);
+              continue;
+            }
+
+            // Special authoritative injection for /local-seo-for-small-business
+            if (route.url === '/local-seo-for-small-business') {
+              // 1. Inject authoritative JSON-LD schema
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
+              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(localSEOSmallBusinessSchema, null, 2)}\n  </script>\n</head>`);
+
+              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${localSEOSmallBusinessInitialHtml}</div>`);
 
               // 3. Write directly without #seo-crawler-content fallback
               const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
