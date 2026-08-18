@@ -30,6 +30,17 @@ const BlogPage = () => {
 
     const FALLBACK_POSTS: Post[] = [
         {
+            id: 'custom-web-development-company',
+            title: 'Custom Web Development Company: The Complete Guide to Web Apps, SEO, Security & B2B Solutions',
+            excerpt: 'Full guide to custom web application development — covering SEO web development, B2B platforms, healthcare web apps, security, and full-stack services.',
+            slug: 'custom-web-development-company',
+            coverImage: 'https://www.abuqitmirlabs.tech/blog/custom-web-development-cover.jpg',
+            category: 'Development',
+            createdAt: '2026-08-18',
+            author: 'AbuQitmirLabs',
+            tags: ['custom web development company', 'custom web application development', 'web app development company', 'seo web development', 'b2b web development', 'healthcare web development', 'full stack web developer', 'web development and security']
+        },
+        {
             id: 'what-are-healthcare-ai-agents-complete-guide-2026',
             title: 'What Are Healthcare AI Agents? Complete 2026 Guide',
             excerpt: 'Healthcare AI agents in 2026: autonomous architectures, EHR integration, RAG, clinical triage, HIPAA-aligned security, and engineering workflows.',

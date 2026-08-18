@@ -13,6 +13,8 @@ import { aiAutomationSchema, aiAutomationInitialHtml } from './src/utils/aiAutom
 import { eCommerceSchema, eCommerceInitialHtml } from './src/utils/eCommerceStaticHtml';
 import { edTechSchema, edTechInitialHtml } from './src/utils/edTechStaticHtml';
 import { customSoftwareSchema, customSoftwareInitialHtml } from './src/utils/customSoftwareStaticHtml';
+import { mobileAppSchema, mobileAppInitialHtml } from './src/utils/mobileAppStaticHtml';
+import { customWebDevBlogSchema, customWebDevBlogInitialHtml } from './src/utils/customWebDevBlogStaticHtml';
 
 // Safe container-compatible prerender implementation to bypass Chromium/Puppeteer driver limitations
 interface PrerenderPlugin {
@@ -84,6 +86,7 @@ export default defineConfig(({mode}) => {
           '/privacy',
           '/terms',
           '/blog',
+          '/blog/custom-web-development-company',
           '/website-contract',
           '/contact'
         ],
@@ -105,7 +108,7 @@ export default defineConfig(({mode}) => {
             { url: '/about/careers',           changefreq: 'monthly', priority: 0.8, title: 'Careers at AbuQitmirLabs | Join Our In-House Studio | AbuQitmirLabs', description: "Join AbuQitmirLabs — we're hiring senior full-stack architects, AI/RAG engineers, UI/UX designers, and SEO strategists in Karachi. Build global software that matters." },
             { url: '/contact',                 changefreq: 'monthly', priority: 0.9, title: 'Contact Us | Free Project Quote & Consultation | AbuQitmirLabs', description: 'Contact AbuQitmirLabs for a free project quote. Get a free technical consultation and digital audit. Build custom software, mobile apps, AI agents, and web solutions.' },
             { url: '/custom-software',         changefreq: 'weekly',  priority: 0.9, title: 'Custom Software Development Company | AbuQitmirLabs', description: 'Bespoke software built around your workflows — ERPs, SaaS platforms, AI-powered tools, and enterprise systems. Full IP ownership.' },
-            { url: '/mobile-app-development',  changefreq: 'weekly',  priority: 0.9, title: 'Mobile App Development | Flutter & Native iOS/Android | AbuQitmirLabs', description: 'AbuQitmirLabs builds high-performance mobile apps using Flutter, React Native, and iOS/Android. We handle design, development, and App Store submission.' },
+            { url: '/mobile-app-development',  changefreq: 'weekly',  priority: 0.9, title: 'Mobile App Development Company | AbuQitmirLabs', description: 'Flutter, React Native, and native iOS/Android app development. Full source code ownership, App Store submission, and backend integration included.' },
             { url: '/web-development',         changefreq: 'weekly',  priority: 0.9, title: 'Web Development Company | Custom Web Solutions | AbuQitmirLabs', description: 'AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications.' },
             { url: '/ai-agent-development',    changefreq: 'weekly',  priority: 0.9, title: 'Healthcare AI Agent Development Company | AbuQitmirLabs', description: 'Custom healthcare AI agents for patient intake, RAG, EHR integration and workflow automation. Build secure AI systems with AbuQitmirLabs.' },
             { url: '/seo-mastery',             changefreq: 'weekly',  priority: 0.8, title: 'SEO Services | Professional Search Engine Optimization | AbuQitmirLabs', description: 'AbuQitmirLabs delivers data-driven SEO services — technical audits, on-page optimization, local SEO, and authority building. Rank higher, attract quality traffic, and grow your business.' },
@@ -132,6 +135,7 @@ export default defineConfig(({mode}) => {
             { url: '/blog/what-are-healthcare-ai-agents-complete-guide-2026', changefreq: 'weekly', priority: 0.9, title: 'What Are Healthcare AI Agents? Complete 2026 Guide | AbuQitmirLabs', description: 'Explore healthcare AI agents in 2026: autonomous architectures, EHR integration, RAG, clinical triage, HIPAA-aligned security, and engineering workflows.' },
             { url: '/blog/healthcare-software-development-solutions-2026', changefreq: 'weekly', priority: 0.8, title: 'Healthcare Software Development Solutions: The Complete 2026 Guide | AbuQitmirLabs', description: 'A complete 2026 guide to healthcare software development — EHR systems, telemedicine platforms, clinical workflow tools, and compliance requirements.' },
             { url: '/blog/custom-web-development-company-2026', changefreq: 'weekly', priority: 0.8, title: 'Custom Web Development Company 2026 | Built-In Visibility | AbuQitmirLabs', description: "The best custom web development companies don't add SEO, GEO, and AI visibility after launch. They build it into every decision from day one. Here's what that looks like — and why it matters." },
+            { url: '/blog/custom-web-development-company', changefreq: 'weekly', priority: 0.9, title: 'Custom Web Development Company: The Complete Guide to Web Apps, SEO, Security & B2B Solutions', description: 'Full guide to custom web application development — covering SEO web development, B2B platforms, healthcare web apps, security, and full-stack services.' },
             { url: '/blog/custom-ai-solutions-for-fintech-2026', changefreq: 'weekly', priority: 0.8, title: 'Custom AI Solutions for Fintech 2026 | Fraud Detection & Underwriting | AbuQitmirLabs', description: 'Custom AI solutions for fintech in 2026 — real-time fraud detection, AI-assisted underwriting, and RAG-based support. See what a fintech software development company actually builds.' },
             { url: '/news/latest',             changefreq: 'weekly',  priority: 0.8, title: 'Latest News | Company Updates & Press Releases | AbuQitmirLabs', description: 'AbuQitmirLabs newsroom — latest company updates, software launches, AI agent releases, and press announcements. Subscribe for monthly engineering and tech insights.' },
             { url: '/news/press-releases',     changefreq: 'monthly', priority: 0.8, title: 'Press Releases | Corporate Announcements | AbuQitmirLabs', description: 'Official press releases and corporate announcements from AbuQitmirLabs software engineering studio in Karachi.' },
@@ -444,6 +448,36 @@ Sitemap: ${hostname}/sitemap.xml`;
 
               // 2. Inject full authentic crawlable HTML inside #root
               routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${customSoftwareInitialHtml}</div>`);
+
+              // 3. Write directly without #seo-crawler-content fallback
+              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
+              fs.writeFileSync(targetPath, routeHtml);
+              continue;
+            }
+
+            // Special authoritative injection for /mobile-app-development
+            if (route.url === '/mobile-app-development') {
+              // 1. Inject authoritative JSON-LD schema
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
+              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(mobileAppSchema, null, 2)}\n  </script>\n</head>`);
+
+              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${mobileAppInitialHtml}</div>`);
+
+              // 3. Write directly without #seo-crawler-content fallback
+              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
+              fs.writeFileSync(targetPath, routeHtml);
+              continue;
+            }
+
+            // Special authoritative injection for /blog/custom-web-development-company
+            if (route.url === '/blog/custom-web-development-company') {
+              // 1. Inject authoritative JSON-LD schema
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
+              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(customWebDevBlogSchema, null, 2)}\n  </script>\n</head>`);
+
+              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${customWebDevBlogInitialHtml}</div>`);
 
               // 3. Write directly without #seo-crawler-content fallback
               const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
