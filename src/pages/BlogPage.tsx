@@ -28,13 +28,24 @@ const BlogPage = () => {
 
     const CATEGORIES = ["All", "AI", "Software", "Business", "App", "Development"];
 
+    const formatCoverImage = (url?: string, width = 800) => {
+        if (!url) return `https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=${width}&fm=webp`;
+        if (url.startsWith('/') || url.endsWith('.svg') || url.endsWith('.png') || url.includes('.tech/blog/')) {
+            return url;
+        }
+        if (url.includes('unsplash.com')) {
+            return `${url}&w=${width}&fm=webp`;
+        }
+        return url;
+    };
+
     const FALLBACK_POSTS: Post[] = [
         {
             id: 'rag-ai-integration-for-startups',
             title: 'RAG AI Integration for Startups: The Complete Guide',
             excerpt: 'How startups use RAG to ground AI in real data — architecture, cost, RAG vs fine-tuning, and build vs hire, with a real RAG case study.',
             slug: 'rag-ai-integration-for-startups',
-            coverImage: 'https://www.abuqitmirlabs.tech/blog/rag-ai-integration-cover.jpg',
+            coverImage: '/blog/rag-ai-integration-cover.svg',
             category: 'AI',
             createdAt: '2026-08-18',
             author: 'AbuQitmirLabs',
@@ -45,7 +56,7 @@ const BlogPage = () => {
             title: 'Custom Web Development Company: The Complete Guide to Web Apps, SEO, Security & B2B Solutions',
             excerpt: 'Full guide to custom web application development — covering SEO web development, B2B platforms, healthcare web apps, security, and full-stack services.',
             slug: 'custom-web-development-company',
-            coverImage: 'https://www.abuqitmirlabs.tech/blog/custom-web-development-cover.jpg',
+            coverImage: '/blog/rag-ai-integration-cover.svg',
             category: 'Development',
             createdAt: '2026-08-18',
             author: 'AbuQitmirLabs',
@@ -253,11 +264,15 @@ const BlogPage = () => {
                                     <div className="aspect-video w-full overflow-hidden p-6 md:p-10">
                                         <div className="w-full h-full rounded-[2.5rem] overflow-hidden relative border border-white/5 shadow-2xl">
                                             <img 
-                                                src={`${featuredPost.coverImage || 'https://images.unsplash.com/photo-1485125639709-a60c3a500bf1?auto=format&fit=crop&q=80'}&w=1200&fm=webp`} 
+                                                src={formatCoverImage(featuredPost.coverImage, 1200)} 
                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                                 alt={featuredPost.coverImageAlt || `futuristic ${featuredPost.title} featured article cover image`}
                                                 decoding="async"
                                                 fetchPriority="high"
+                                                onError={(e) => {
+                                                    const target = e.target as HTMLImageElement;
+                                                    target.src = '/blog/rag-ai-integration-cover.svg';
+                                                }}
                                             />
                                             <div className="absolute top-6 left-6">
                                                 <span className="px-5 py-2 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white text-[10px] font-black uppercase tracking-widest">Featured Story</span>
@@ -358,11 +373,15 @@ const BlogPage = () => {
                                                 <Link to={`/blog/${post.slug}`}>
                                                     <div className="aspect-[16/10] rounded-[2.5rem] overflow-hidden mb-8 border border-white/5 bg-zinc-900 group-hover:border-white/10 transition-colors shadow-lg">
                                                         <img 
-                                                            src={`${post.coverImage || 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80'}&w=800&fm=webp`} 
+                                                            src={formatCoverImage(post.coverImage, 800)} 
                                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
                                                             alt={post.coverImageAlt || `futuristic ${post.title} blog post thumbnail`}
                                                             loading="lazy"
                                                             decoding="async"
+                                                            onError={(e) => {
+                                                                const target = e.target as HTMLImageElement;
+                                                                target.src = '/blog/rag-ai-integration-cover.svg';
+                                                            }}
                                                         />
                                                     </div>
                                                     <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-4 px-2">

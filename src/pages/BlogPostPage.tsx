@@ -42,7 +42,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 setPost({
                     title: "RAG AI Integration for Startups: The Complete Guide",
                     content: ragAiBlogContent,
-                    coverImage: "https://www.abuqitmirlabs.tech/blog/rag-ai-integration-cover.jpg",
+                    coverImage: "/blog/rag-ai-integration-cover.svg",
                     coverImageAlt: "RAG AI Integration for Startups Guide by AbuQitmirLabs",
                     category: "AI & Automation",
                     createdAt: "2026-08-18",
@@ -5939,7 +5939,7 @@ Ready to engineer custom AI agents for patient intake, clinical summarization, o
             <Header />
             <Breadcrumbs customItems={breadcrumbItems} />
             
-            <main className="pt-32 pb-20 px-6">
+            <main className="pt-36 md:pt-44 pb-20 px-6">
                 <div className="max-w-4xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -6001,9 +6001,21 @@ Ready to engineer custom AI agents for patient intake, clinical summarization, o
                         <motion.div 
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="aspect-video w-full rounded-[2.5rem] overflow-hidden mb-16 border border-zinc-800/80 shadow-2xl group"
+                            className="aspect-video w-full rounded-[2.5rem] overflow-hidden mb-16 border border-zinc-800/80 shadow-2xl group bg-[#090a0f] flex items-center justify-center"
                         >
-                            <img src={post.coverImage} alt={post.coverImageAlt || `futuristic ${post.title} feature illustration`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+                            <img 
+                                src={post.coverImage} 
+                                alt={post.coverImageAlt || `futuristic ${post.title} feature illustration`} 
+                                onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    if (!target.src.includes('rag-ai-integration-cover.svg')) {
+                                        target.src = '/blog/rag-ai-integration-cover.svg';
+                                    } else if (!target.src.includes('logo.png')) {
+                                        target.src = '/logo.png';
+                                    }
+                                }}
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
+                            />
                         </motion.div>
                     )}
 

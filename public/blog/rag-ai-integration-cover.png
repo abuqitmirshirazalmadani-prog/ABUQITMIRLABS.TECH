@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050508"/>
+      <stop offset="40%" stop-color="#0a0b10"/>
+      <stop offset="100%" stop-color="#030305"/>
+    </linearGradient>
+    <linearGradient id="limeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ccff00"/>
+      <stop offset="100%" stop-color="#88ff00"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff"/>
+      <stop offset="100%" stop-color="#0077ff"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#12131a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#090a0f" stop-opacity="0.95"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f2430" stroke-width="0.75" stroke-opacity="0.4"/>
+      <circle cx="40" cy="40" r="1" fill="#303848" fill-opacity="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bgGrad)" />
+  <rect width="1200" height="630" fill="url(#grid)" />
+  <circle cx="1050" cy="150" r="280" fill="#00f0ff" fill-opacity="0.08"/>
+  <circle cx="200" cy="480" r="250" fill="#ccff00" fill-opacity="0.07"/>
+  <g transform="translate(80, 80)">
+    <rect x="0" y="0" width="220" height="34" rx="17" fill="#12151c" stroke="#2a3242" stroke-width="1"/>
+    <circle cx="16" cy="17" r="4" fill="#ccff00" filter="url(#glow)"/>
+    <text x="30" y="22" fill="#ccff00" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="800" letter-spacing="2">ABUQITMIRLABS // AI</text>
+    <text x="240" y="22" fill="#71717a" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" letter-spacing="1">RESEARCH &amp; ARCHITECTURE</text>
+    <g transform="translate(0, 75)">
+      <text x="0" y="0" fill="#ffffff" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="44" font-weight="900" letter-spacing="0.5">
+        RAG AI INTEGRATION
+      </text>
+      <text x="0" y="52" fill="#ffffff" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="44" font-weight="900" letter-spacing="0.5">
+        FOR STARTUPS
+      </text>
+      <text x="0" y="98" fill="#ccff00" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" letter-spacing="4">
+        THE COMPLETE ARCHITECTURAL GUIDE
+      </text>
+    </g>
+    <g transform="translate(0, 240)">
+      <text x="0" y="0" fill="#a1a1aa" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="400">
+        Grounding LLMs in proprietary data — Vector Pipelines, Cost Analysis,
+      </text>
+      <text x="0" y="24" fill="#a1a1aa" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="400">
+        RAG vs Fine-Tuning, Multi-Tenant RBAC &amp; Production Benchmarks.
+      </text>
+    </g>
+    <g transform="translate(0, 315)">
+      <g>
+        <rect width="150" height="38" rx="8" fill="#0d1117" stroke="#21262d" stroke-width="1"/>
+        <text x="75" y="24" fill="#e4e4e7" font-family="system-ui, -apple-system, monospace" font-size="11" font-weight="700" text-anchor="middle">⚡ VECTOR SEARCH</text>
+      </g>
+      <g transform="translate(162, 0)">
+        <rect width="165" height="38" rx="8" fill="#0d1117" stroke="#21262d" stroke-width="1"/>
+        <text x="82" y="24" fill="#e4e4e7" font-family="system-ui, -apple-system, monospace" font-size="11" font-weight="700" text-anchor="middle">🛡️ ZERO HALLUCINATION</text>
+      </g>
+      <g transform="translate(339, 0)">
+        <rect width="145" height="38" rx="8" fill="#0d1117" stroke="#21262d" stroke-width="1"/>
+        <text x="72" y="24" fill="#ccff00" font-family="system-ui, -apple-system, monospace" font-size="11" font-weight="700" text-anchor="middle">💰 80% ROI SAVINGS</text>
+      </g>
+    </g>
+  </g>
+  <g transform="translate(680, 110)">
+    <rect width="440" height="410" rx="24" fill="url(#cardGrad)" stroke="#27272a" stroke-width="1.5" filter="url(#glow)"/>
+    <path d="M 0 24 Q 0 0 24 0 L 416 0 Q 440 0 440 24 L 440 46 L 0 46 Z" fill="#161822"/>
+    <circle cx="24" cy="23" r="5" fill="#ef4444" opacity="0.8"/>
+    <circle cx="42" cy="23" r="5" fill="#f59e0b" opacity="0.8"/>
+    <circle cx="60" cy="23" r="5" fill="#10b981" opacity="0.8"/>
+    <text x="220" y="28" fill="#71717a" font-family="monospace" font-size="11" text-anchor="middle">pipeline_orchestrator.ts</text>
+    <g transform="translate(30, 70)">
+      <rect width="380" height="54" rx="10" fill="#0f1118" stroke="#3b82f6" stroke-width="1.5" stroke-opacity="0.6"/>
+      <circle cx="30" cy="27" r="14" fill="#1e293b"/>
+      <text x="30" y="32" fill="#38bdf8" font-family="monospace" font-size="14" text-anchor="middle">📄</text>
+      <text x="60" y="26" fill="#f1f5f9" font-family="system-ui, sans-serif" font-size="13" font-weight="700">1. Data Ingestion &amp; Chunking</text>
+      <text x="60" y="43" fill="#64748b" font-family="monospace" font-size="11">PDFs • Markdown • SQL • Notion • API</text>
+    </g>
+    <line x1="220" y1="124" x2="220" y2="148" stroke="#ccff00" stroke-width="2" stroke-dasharray="3 3"/>
+    <polygon points="220,152 216,144 224,144" fill="#ccff00"/>
+    <g transform="translate(30, 154)">
+      <rect width="380" height="54" rx="10" fill="#0f1118" stroke="#8b5cf6" stroke-width="1.5" stroke-opacity="0.6"/>
+      <circle cx="30" cy="27" r="14" fill="#2e1065"/>
+      <text x="30" y="32" fill="#a78bfa" font-family="monospace" font-size="14" text-anchor="middle">🗄️</text>
+      <text x="60" y="26" fill="#f1f5f9" font-family="system-ui, sans-serif" font-size="13" font-weight="700">2. Vector Search &amp; Rerank</text>
+      <text x="60" y="43" fill="#64748b" font-family="monospace" font-size="11">Cosine Sim + BM25 Sparse + Cohere</text>
+    </g>
+    <line x1="220" y1="208" x2="220" y2="232" stroke="#ccff00" stroke-width="2" stroke-dasharray="3 3"/>
+    <polygon points="220,236 216,228 224,228" fill="#ccff00"/>
+    <g transform="translate(30, 238)">
+      <rect width="380" height="54" rx="10" fill="#0f1118" stroke="#ccff00" stroke-width="1.5" stroke-opacity="0.7"/>
+      <circle cx="30" cy="27" r="14" fill="#142605"/>
+      <text x="30" y="32" fill="#ccff00" font-family="monospace" font-size="14" text-anchor="middle">🛡️</text>
+      <text x="60" y="26" fill="#f1f5f9" font-family="system-ui, sans-serif" font-size="13" font-weight="700">3. Context Augmentation &amp; RBAC</text>
+      <text x="60" y="43" fill="#a3e635" font-family="monospace" font-size="11">Tenant Isolation • Negative Constraints</text>
+    </g>
+    <line x1="220" y1="292" x2="220" y2="316" stroke="#00f0ff" stroke-width="2" stroke-dasharray="3 3"/>
+    <polygon points="220,320 216,312 224,312" fill="#00f0ff"/>
+    <g transform="translate(30, 322)">
+      <rect width="380" height="58" rx="10" fill="#0b171f" stroke="#00f0ff" stroke-width="1.5"/>
+      <circle cx="30" cy="29" r="14" fill="#082f49"/>
+      <text x="30" y="34" fill="#38bdf8" font-family="monospace" font-size="14" text-anchor="middle">🧠</text>
+      <text x="60" y="26" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="13" font-weight="700">4. Grounded Synthesis &amp; Citations</text>
+      <text x="60" y="44" fill="#94a3b8" font-family="monospace" font-size="11">Sub-600ms Streamed Response with Links</text>
+    </g>
+  </g>
+  <rect x="0" y="624" width="1200" height="6" fill="url(#limeGrad)" />
+</svg>
