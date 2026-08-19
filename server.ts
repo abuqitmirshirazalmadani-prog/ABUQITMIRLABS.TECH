@@ -98,6 +98,83 @@ async function startServer() {
     });
   });
 
+  // Dedicated ZIP and Brand Kit Download Endpoints
+  const sendDownloadFile = (res: express.Response, filePath: string, filename: string) => {
+    const absPath = path.resolve(filePath);
+    if (!fs.existsSync(absPath)) {
+      return res.status(404).json({ error: 'File not found' });
+    }
+    const stat = fs.statSync(absPath);
+    const ext = path.extname(filename).toLowerCase();
+    const contentType = ext === '.png' ? 'image/png' : ext === '.zip' ? 'application/zip' : 'application/octet-stream';
+
+    res.writeHead(200, {
+      'Content-Type': contentType,
+      'Content-Length': stat.size,
+      'Content-Disposition': `attachment; filename="${filename}"`,
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '0',
+      'Access-Control-Allow-Origin': '*'
+    });
+
+    const stream = fs.createReadStream(absPath);
+    stream.pipe(res);
+  };
+
+  const handleZipDownload = (req: express.Request, res: express.Response) => {
+    const candidates = [
+      path.join(process.cwd(), 'public', 'abuqitmirlabs-social-media-kit.zip'),
+      path.join(process.cwd(), 'public', 'brand-assets', 'abuqitmirlabs-social-media-kit.zip'),
+      path.join(process.cwd(), 'dist', 'abuqitmirlabs-social-media-kit.zip'),
+      path.join(process.cwd(), 'dist', 'brand-assets', 'abuqitmirlabs-social-media-kit.zip'),
+      path.join(__dirname, 'public', 'abuqitmirlabs-social-media-kit.zip')
+    ];
+
+    for (const p of candidates) {
+      if (fs.existsSync(p)) {
+        return sendDownloadFile(res, p, 'abuqitmirlabs-social-media-kit.zip');
+      }
+    }
+
+    return res.status(404).json({ error: 'Asset package not found' });
+  };
+
+  app.get('/api/download-kit', handleZipDownload);
+  app.get('/abuqitmirlabs-social-media-kit.zip', handleZipDownload);
+  app.get('/brand-assets/abuqitmirlabs-social-media-kit.zip', handleZipDownload);
+  app.get('/download/abuqitmirlabs-social-media-kit.zip', handleZipDownload);
+
+  // Dedicated single asset download endpoint
+  app.get('/api/download-asset', (req, res) => {
+    try {
+      const requestedFile = req.query.file as string;
+      if (!requestedFile || typeof requestedFile !== 'string') {
+        return res.status(400).json({ error: 'Missing file parameter' });
+      }
+
+      const safeFileName = path.basename(requestedFile);
+      const candidates = [
+        path.join(process.cwd(), 'public', requestedFile),
+        path.join(process.cwd(), 'public', requestedFile.replace(/^\/+/, '')),
+        path.join(process.cwd(), 'public', 'brand-assets', requestedFile.replace(/^\/+brand-assets\/?/, '')),
+        path.join(process.cwd(), 'public', 'brand-assets', safeFileName),
+        path.join(process.cwd(), 'dist', requestedFile.replace(/^\/+/, '')),
+        path.join(process.cwd(), 'dist', 'brand-assets', safeFileName)
+      ];
+
+      for (const p of candidates) {
+        if (fs.existsSync(p) && fs.statSync(p).isFile()) {
+          return sendDownloadFile(res, p, safeFileName);
+        }
+      }
+
+      return res.status(404).json({ error: 'Asset file not found' });
+    } catch (e) {
+      return res.status(500).json({ error: 'Server error downloading asset' });
+    }
+  });
+
   // Explicit Robots.txt Handler
   app.get('/robots.txt', (req, res) => {
     try {

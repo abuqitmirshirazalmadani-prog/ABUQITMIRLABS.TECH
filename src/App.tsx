@@ -63,6 +63,7 @@ const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const CaseStudyTajweedPage = lazy(() => import('./pages/CaseStudyTajweedPage'));
 const WebsiteContractPage = lazy(() => import('./pages/WebsiteContractPage'));
+const BrandAssetsPage = lazy(() => import('./pages/BrandAssetsPage'));
 
 // Loading fallback
 const PageLoader = () => (
@@ -224,6 +225,8 @@ export default function App() {
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />
               <Route path="/website-contract" element={<WebsiteContractPage />} />
+              <Route path="/brand-assets" element={<BrandAssetsPage />} />
+              <Route path="/brand-kit" element={<Navigate to="/brand-assets" replace />} />
               <Route path="/admin" element={<AdminDashboard />} />
             </Routes>
           </Suspense>
