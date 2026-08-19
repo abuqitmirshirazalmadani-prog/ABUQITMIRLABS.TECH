@@ -209,9 +209,12 @@ AbuQitmirLabs engineers scalable custom EdTech software, learning management sys
 ## Blog
 - [AI Agent Use Cases by Industry](https://www.abuqitmirlabs.tech/blog/ai-agent-use-cases-by-industry)
 - [Custom Web Development Company Guide](https://www.abuqitmirlabs.tech/blog/custom-web-development-company)
-- [RAG AI Integration for Startups](https://www.abuqitmirlabs.tech/blog/rag-ai-integration-for-startups)
+- [RAG AI Integration for Startups](https://www.abuqitmirlabs.tech/blog/rag-ai-integration-for-startups-abuqitmirlabs)
+- [AI Agent Development Agency vs In-House](https://www.abuqitmirlabs.tech/blog/ai-agent-development-agency-vs-in-house)
 
 ## Technical Knowledge Base & Articles
+
+- [AI Agent Development Agency vs In-House: Decision Framework](https://www.abuqitmirlabs.tech/blog/ai-agent-development-agency-vs-in-house)
 
 - [Custom Web Development Company: The Complete Guide](https://www.abuqitmirlabs.tech/blog/custom-web-development-company)
 - [Custom Web Development vs. Website Templates: 2026 Guide](https://www.abuqitmirlabs.tech/blog/custom-web-development-vs-website-templates-2026-guide)
