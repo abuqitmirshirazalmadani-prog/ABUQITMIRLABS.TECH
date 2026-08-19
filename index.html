@@ -30,7 +30,10 @@
       gtag('js', new Date());
       gtag('config', 'G-EJH1V89EP0');
     </script>
+    <!-- Favicon & Brand Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="alternate icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
@@ -64,13 +67,9 @@
     <!-- Trustpilot Domain Verification -->
     <meta name="trustpilot-one-time-domain-verification-id" content="e76444b6-ef80-47c1-a9bd-a6c33c3df4cd"/>
     
-    <!-- Google Search Console Site Verification -->
-    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
-    
     <!-- Meta descriptions and key identifiers -->
     <title>Custom Software, Web &amp; AI Development | AbuQitmirLabs</title>
     <meta name="description" content="AbuQitmirLabs is a custom software &amp; AI development company delivering web platforms, mobile apps, and SEO engineering for global businesses." />
-    <link rel="canonical" data-rh="true" href="https://www.abuqitmirlabs.tech/" />
 
     <!-- Open Graph (AI/social) -->
     <meta property="og:title" content="Custom Software, Web &amp; AI Development | AbuQitmirLabs" />
@@ -93,10 +92,10 @@
     <link rel="manifest" href="/manifest.json" />
     <link rel="llms" href="/llms.txt" />
 
-    <!-- Prerender Key Static Routes for Instant Sub-50ms Navigation -->
-    <link rel="prerender" href="https://www.abuqitmirlabs.tech/solutions/edtech" />
-    <link rel="prerender" href="https://www.abuqitmirlabs.tech/ai-agent-development" />
-    <link rel="prerender" href="https://www.abuqitmirlabs.tech/contact" />
+    <!-- Prefetch Key Static Routes -->
+    <link rel="prefetch" href="https://www.abuqitmirlabs.tech/solutions/edtech" />
+    <link rel="prefetch" href="https://www.abuqitmirlabs.tech/ai-agent-development" />
+    <link rel="prefetch" href="https://www.abuqitmirlabs.tech/contact" />
 
     <!-- Unified JSON-LD Structured Data Schema (LocalBusiness & Organization) -->
     <script type="application/ld+json">
@@ -316,15 +315,7 @@
     </script>
   </head>
   <body>
-    <div id="root">
-      <div style="min-height:100vh; background-color:#09090b; display:flex; align-items:center; justify-content:center; color:#f4f4f5; font-family:system-ui,-apple-system,sans-serif;">
-        <div style="text-align:center;">
-          <div style="width:40px; height:40px; border:3px solid rgba(204,255,0,0.2); border-top-color:#ccff00; border-radius:50%; animation:app-spin 0.8s linear infinite; margin:0 auto 16px auto;"></div>
-          <div style="font-size:13px; font-weight:600; letter-spacing:0.08em; color:#a1a1aa; text-transform:uppercase;">Loading AbuQitmirLabs...</div>
-        </div>
-      </div>
-      <style>@keyframes app-spin { to { transform: rotate(360deg); } }</style>
-    </div>
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

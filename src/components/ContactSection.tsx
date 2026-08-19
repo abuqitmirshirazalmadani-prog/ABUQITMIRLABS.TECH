@@ -15,6 +15,7 @@ import {
   Sparkles,
   Bot
 } from 'lucide-react';
+import ObfuscatedEmail from './ObfuscatedEmail';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -108,19 +109,16 @@ const ContactSection = () => {
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <span className="text-xs uppercase font-mono tracking-widest text-zinc-500 block">SEND INTEL EMAIL</span>
-                    <a 
-                      href="mailto:hello@abuqitmirlabs.tech" 
+                    <ObfuscatedEmail 
+                      user="hello" 
+                      domain="abuqitmirlabs.tech" 
                       className="font-bold text-white tracking-tight hover:text-[#ccff00] hover:underline"
-                    >
-                      hello@abuqitmirlabs.tech
-                    </a>
-                    <a 
-                      href="mailto:abuqitmirshirazalmadani@gmail.com" target="_blank" 
-                      rel="noopener noreferrer" 
+                    />
+                    <ObfuscatedEmail 
+                      user="abuqitmirshirazalmadani" 
+                      domain="gmail.com" 
                       className="text-xs font-mono text-zinc-400 hover:text-[#ccff00] hover:underline block"
-                    >
-                      abuqitmirshirazalmadani@gmail.com
-                    </a>
+                    />
                   </div>
                 </div>
 

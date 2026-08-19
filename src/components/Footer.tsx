@@ -28,6 +28,7 @@ import { AnimatedShinyText } from './ui/animated-shiny-text';
 import { MagicText } from './ui/magic-text';
 import { AnimatedBreathingText } from './ui/animated-breathing-text';
 import { preloadRoute } from '../utils/preloader';
+import ObfuscatedEmail from './ObfuscatedEmail';
 
 const Footer = () => {
     return (
@@ -84,22 +85,15 @@ const Footer = () => {
                     <div className="mt-20 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 text-lg text-black border-y-4 border-black py-10 font-black uppercase tracking-tighter">
                         <div className="flex flex-col items-center gap-1 group">
                             <div className="flex flex-col items-center gap-1">
-                                <a 
-                                    href="mailto:hello@abuqitmirlabs.tech" 
-                                    className="hover:underline transition items-center gap-2 flex normal-case font-mono font-medium tracking-tight text-base"
-                                >
+                                <div className="hover:underline transition items-center gap-2 flex normal-case font-mono font-medium tracking-tight text-base">
                                     <Mail className="h-5 w-5 shrink-0" />
-                                    hello@abuqitmirlabs.tech
-                                </a>
-                                <a 
-                                    href="mailto:abuqitmirshirazalmadani@gmail.com" target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hover:underline transition items-center gap-2 flex normal-case font-mono font-medium tracking-tight text-sm text-zinc-700"
-                                >
-                                    abuqitmirshirazalmadani@gmail.com
-                                </a>
+                                    <ObfuscatedEmail user="hello" domain="abuqitmirlabs.tech" className="hover:underline" />
+                                </div>
+                                <div className="hover:underline transition items-center gap-2 flex normal-case font-mono font-medium tracking-tight text-sm text-zinc-700">
+                                    <ObfuscatedEmail user="abuqitmirshirazalmadani" domain="gmail.com" className="hover:underline" />
+                                </div>
                             </div>
-                            <p className="text-[10px] text-zinc-600 uppercase tracking-widest mt-1">Connect via Email</p>
+                            <p className="text-[10px] text-zinc-600 uppercase tracking-widest mt-1">Connect via Email &bull; <span className="text-black font-bold">Updated: August 2026</span></p>
                         </div>
                         <span className="hidden md:block h-6 w-1 bg-black"></span>
                         <a href="https://wa.me/923233260859" target="_blank" rel="noopener noreferrer" className="group hover:underline transition flex items-center gap-2">
@@ -213,11 +207,11 @@ const Footer = () => {
                                 <li className="flex flex-col gap-1 text-xs">
                                     <div className="flex items-start gap-2">
                                         <Mail size={14} className="min-w-[14px] mt-0.5 text-black" />
-                                        <a href="mailto:hello@abuqitmirlabs.tech" className="break-all font-mono font-black text-xs text-black normal-case hover:underline">hello@abuqitmirlabs.tech</a>
+                                        <ObfuscatedEmail user="hello" domain="abuqitmirlabs.tech" className="break-all font-mono font-black text-xs text-black normal-case hover:underline" />
                                     </div>
                                     <div className="flex items-start gap-2">
                                         <span className="min-w-[14px]" />
-                                        <a href="mailto:abuqitmirshirazalmadani@gmail.com" className="break-all font-mono font-bold text-[10px] text-black/90 normal-case hover:underline">abuqitmirshirazalmadani@gmail.com</a>
+                                        <ObfuscatedEmail user="abuqitmirshirazalmadani" domain="gmail.com" className="break-all font-mono font-bold text-[10px] text-black/90 normal-case hover:underline" />
                                     </div>
                                 </li>
                             </ul>

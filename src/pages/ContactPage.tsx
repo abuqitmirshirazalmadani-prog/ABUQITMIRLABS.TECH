@@ -31,6 +31,7 @@ import {
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
+import ObfuscatedEmail from '../components/ObfuscatedEmail';
 import { db, collection, addDoc, serverTimestamp, handleFirestoreError, OperationType } from '../lib/firebase';
 
 const ContactPage = () => {
@@ -301,27 +302,23 @@ const ContactPage = () => {
                      <p className="font-mono text-xs text-[#00E5FF] mb-4 tracking-[0.4em] uppercase">Communication_Relays</p>
                      <div className="space-y-6">
                         <div className="flex items-center gap-6 group/item">
-                           <a 
-                              href="mailto:hello@abuqitmirlabs.tech" className="w-16 h-16 bg-[#00E5FF]/5 border-2 border-[#00E5FF]/20 flex items-center justify-center group-hover/item:border-[#00E5FF] group-hover/item:bg-[#00E5FF]/10 transition-all shadow-[0_0_15px_rgba(0,229,255,0.1)]"
-                           >
-                               <Mail className="text-[#00E5FF]" size={28} />
-                           </a>
+                           <div className="w-16 h-16 bg-[#00E5FF]/5 border-2 border-[#00E5FF]/20 flex items-center justify-center group-hover/item:border-[#00E5FF] group-hover/item:bg-[#00E5FF]/10 transition-all shadow-[0_0_15px_rgba(0,229,255,0.1)]">
+                              <Mail className="text-[#00E5FF]" size={28} />
+                           </div>
                            <div>
                               <p className="text-white font-bold uppercase tracking-widest text-sm mb-1">Email Protocol</p>
                               <div className="flex flex-col gap-1.5 mt-1">
-                                 <a 
-                                    href="mailto:hello@abuqitmirlabs.tech" 
+                                 <ObfuscatedEmail 
+                                    user="hello" 
+                                    domain="abuqitmirlabs.tech" 
                                     className="text-white font-mono text-sm hover:text-[#00E5FF] transition-colors hover:underline font-bold block"
-                                 >
-                                    hello@abuqitmirlabs.tech
-                                 </a>
-                                 <a 
-                                    href="mailto:abuqitmirshirazalmadani@gmail.com"
+                                 />
+                                 <ObfuscatedEmail 
+                                    user="abuqitmirshirazalmadani" 
+                                    domain="gmail.com" 
                                     className="text-zinc-500 font-mono text-xs hover:text-[#00E5FF] transition-colors hover:underline block"
-                                 >
-                                    abuqitmirshirazalmadani@gmail.com
-                                 </a>
-                                 <p className="text-[#00E5FF]/40 font-mono text-[9px] uppercase tracking-tighter">Direct Relay Enabled</p>
+                                 />
+                                 <p className="text-[#00E5FF]/40 font-mono text-[9px] uppercase tracking-tighter">Direct Relay Enabled &bull; Updated: August 2026</p>
                               </div>
                            </div>
                         </div>

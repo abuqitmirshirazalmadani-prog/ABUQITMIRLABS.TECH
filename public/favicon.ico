@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <!-- Performance Optimization: Preconnect & DNS Prefetch to Critical CDNs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://connect.facebook.net" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://i.postimg.cc" />
+    
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://connect.facebook.net" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://i.postimg.cc" />
+
+    <!-- Optimized Font Loading Pattern (Preloaded with swap display option) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:italic&family=Kaushan+Script&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EJH1V89EP0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-EJH1V89EP0');
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Meta descriptions and key identifiers -->
+    <title>Affordable App Development Company | AbuQitmirLabs</title>
+    <meta name="description" content="AbuQitmirLabs .TECH is a leading app development company. We build SaaS, Flutter apps, and AI solutions for global businesses." />
+    <link rel="canonical" href="https://abuqitmirlabs.tech/" />
+
+    <!-- Open Graph (AI/social) -->
+    <meta property="og:title" content="Affordable App Development Company | AbuQitmirLabs" />
+    <meta property="og:description" content="AbuQitmirLabs .TECH is a leading app development company. We build SaaS, Flutter apps, and AI solutions for global businesses." />
+    <meta property="og:url" content="https://abuqitmirlabs.tech/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+    <meta property="og:image:alt" content="AbuQitmirLabs .TECH Brand Logo" />
+    <meta property="og:site_name" content="AbuQitmirLabs" />
+
+    <!-- Twitter Card (AI/social) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Affordable App Development Company | AbuQitmirLabs" />
+    <meta name="twitter:description" content="AbuQitmirLabs .TECH is a leading app development company. We build SaaS, Flutter apps, and AI solutions for global businesses." />
+    <meta name="twitter:image" content="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" />
+    <meta name="twitter:site" content="@AbuQitmir" />
+    <meta name="twitter:creator" content="@AbuQitmir" />
+
+    <!-- Progressive Web Application Manifest Link -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Wikidata Association Links (AI grounding indices) -->
+    <link rel="wdt:about" href="https://www.wikidata.org/wiki/Q11661" />
+    <link rel="wdt:about" href="https://www.wikidata.org/wiki/Q11016" />
+
+    <!-- Standard WebSite JSON-LD Schema (as requested by AI SEO checker) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://abuqitmirlabs.tech/",
+        "name": "Abuqit Mir Labs",
+        "description": "Innovative solutions in AI and technology."
+      }
+    </script>
+
+    <!-- Standalone Organization sameAs Schema (as requested by SEO Audit details) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Abuqit Mir Labs",
+        "url": "https://abuqitmirlabs.tech/",
+        "logo": "https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png",
+        "sameAs": [
+          "https://www.facebook.com/profile.php?id=61583768706452",
+          "https://twitter.com/YourProfile",
+          "https://www.linkedin.com/in/abu-qitmir-697423390/",
+          "https://www.instagram.com/abuqitmirshirazalmadani/",
+          "https://www.youtube.com/@AbuQitmir"
+        ]
+      }
+    </script>
+
+    <!-- Standalone Product Schema (as requested by SEO audit guidelines) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "AbuQitmirLabs Custom Application Development",
+        "image": "https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png",
+        "description": "Bespoke custom software solutions, modern enterprise mobile apps, and autonomous AI workflow agents designed by AbuQitmirLabs.",
+        "sku": "ABQ-DEV-999",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "price": "999.00",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    </script>
+
+    <!-- Structured Data & Valid JSON-LD Schema (Organization, WebSite, & Author) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://abuqitmirlabs.tech/#organization",
+            "name": "AbuQitmirLabs .TECH",
+            "url": "https://abuqitmirlabs.tech/",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://abuqitmirlabs.tech/#logo",
+              "url": "https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png",
+              "contentUrl": "https://i.postimg.cc/FRZNKBLZ/abuqitmir222.png",
+              "caption": "AbuQitmirLabs Logo"
+            },
+            "image": {
+              "@id": "https://abuqitmirlabs.tech/#logo"
+            },
+            "description": "Expert custom software development and AI engineering firm. We build scalable SaaS platforms and high-performance applications for global enterprises.",
+            "email": "shiraz@abuqitmirlabs.tech",
+            "telephone": "+923233260859",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony",
+              "addressLocality": "Landhi Town, Karachi",
+              "addressRegion": "Sindh",
+              "postalCode": "75160",
+              "addressCountry": "PK"
+            },
+            "sameAs": [
+              "https://x.com/AbuQitmir",
+              "https://www.linkedin.com/in/abu-qitmir-697423390/",
+              "https://www.facebook.com/profile.php?id=61583768706452",
+              "https://www.instagram.com/abuqitmirshirazalmadani/",
+              "https://www.youtube.com/@AbuQitmir",
+              "https://www.tiktok.com/@abuqitmirmohammadshiraz"
+            ]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://abuqitmirlabs.tech/#author",
+            "name": "Mohammad Shiraz Almadani",
+            "url": "https://www.linkedin.com/in/abu-qitmir-697423390/",
+            "jobTitle": "CEO & Lead Engineer of AbuQitmirLabs .TECH",
+            "sameAs": [
+              "https://www.linkedin.com/in/abu-qitmir-697423390/",
+              "https://x.com/AbuQitmir"
+            ]
+          }
+        ]
+      }
+    </script>
+    <script type="module" crossorigin src="/assets/index-Dd3XACCy.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-libs-5SQjl6FO.js">
+    <link rel="modulepreload" crossorigin href="/assets/vendor-core-EV2mKeKT.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-Ct7Dju4F.css">
+  </head>
+  <body>
+    
+              <div id="root">
+                <header>
+                  <h1>Affordable App Development Company | AbuQitmirLabs</h1>
+                </header>
+                <main>
+                  <article>
+                    <h2>Expert Affordable App Development Company | AbuQitmirLabs</h2>
+                    <p>At AbuQitmirLabs .TECH, we specialize in <strong>affordable app development</strong> and high-performance digital engineering.</p>
+                    <img src="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" style="max-width:300px" />
+                    <p>AbuQitmirLabs .TECH is a leading app development company. We build SaaS, Flutter apps, and AI solutions for global businesses.</p>
+                    <section>
+                      <h3>Our Technical Expertise</h3>
+                      <p>We deliver cutting-edge software solutions including:</p>
+                      <ul>
+                        <li>Custom Mobile & Web App Engineering</li>
+                        <li>Autonomous AI Agents & RAG Integration</li>
+                        <li>Scalable Cloud-Native Microservices</li>
+                        <li>High-ROI Semantic SEO Strategies</li>
+                      </ul>
+
+                    </section>
+                  </article>
+                </main>
+                <footer>
+                  <p>&copy; 2026 AbuQitmirLabs .TECH. Empowering businesses through advanced digital engineering.</p>
+                  <nav>
+                    <a href="/custom-software">Custom Software</a> | 
+                    <a href="/mobile-app-development">Mobile Apps</a> | 
+                    <a href="/ai-agent-development">AI Agents</a>
+                  </nav>
+                </footer>
+              </div>
+            
+  </body>
+</html>
