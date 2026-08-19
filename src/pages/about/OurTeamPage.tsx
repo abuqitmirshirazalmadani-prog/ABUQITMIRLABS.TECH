@@ -204,15 +204,15 @@ const OurTeamPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group relative overflow-hidden p-8 rounded-2xl bg-zinc-900/60 backdrop-blur-xl border border-white/10 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(37,99,235,0.25)] transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between"
+                className="group relative overflow-hidden p-8 rounded-2xl bg-zinc-900/60 backdrop-blur-xl border border-white/10 hover:border-[#ccff00]/50 hover:shadow-[0_0_30px_rgba(204,255,0,0.15)] transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#ccff00]/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
                 <div>
-                  <div className="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.25)] mb-6">
+                  <div className="w-14 h-14 rounded-2xl bg-[#ccff00]/10 border border-[#ccff00]/30 flex items-center justify-center text-[#ccff00] group-hover:scale-110 group-hover:bg-[#ccff00] group-hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(204,255,0,0.2)] mb-6">
                     <member.icon className="w-7 h-7" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-1 text-white group-hover:text-blue-300 transition-colors">{member.name}</h3>
-                  <p className="text-blue-400 text-xs font-mono uppercase tracking-wider mb-2">{member.title}</p>
+                  <h3 className="text-2xl font-bold mb-1 text-white group-hover:text-[#ccff00] transition-colors">{member.name}</h3>
+                  <p className="text-[#ccff00] text-xs font-mono uppercase tracking-wider mb-2">{member.title}</p>
                   <p className="text-gray-400 text-xs font-mono mb-4">{member.credentials}</p>
                   <p className="text-gray-300 text-sm leading-relaxed mb-6 font-light">{member.bio}</p>
                 </div>

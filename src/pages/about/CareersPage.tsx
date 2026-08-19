@@ -208,13 +208,13 @@ const CareersPage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="group relative overflow-hidden p-8 rounded-2xl bg-zinc-900/60 backdrop-blur-xl border border-white/10 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(37,99,235,0.25)] transition-all duration-500 hover:-translate-y-1.5"
+                  className="group relative overflow-hidden p-8 rounded-2xl bg-zinc-900/60 backdrop-blur-xl border border-white/10 hover:border-[#ccff00]/50 hover:shadow-[0_0_30px_rgba(204,255,0,0.15)] transition-all duration-500 hover:-translate-y-1.5"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.25)] mb-6">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#ccff00]/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
+                  <div className="w-12 h-12 rounded-xl bg-[#ccff00]/10 border border-[#ccff00]/20 flex items-center justify-center text-[#ccff00] group-hover:scale-110 group-hover:bg-[#ccff00] group-hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(204,255,0,0.2)] mb-6">
                     <perk.icon className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-white group-hover:text-blue-300 transition-colors">{perk.title}</h3>
+                  <h3 className="text-xl font-bold mb-3 text-white group-hover:text-[#ccff00] transition-colors">{perk.title}</h3>
                   <p className="text-gray-400 text-sm leading-relaxed">{perk.desc}</p>
                 </motion.div>
               ))}

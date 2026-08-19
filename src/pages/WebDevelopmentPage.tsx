@@ -487,7 +487,7 @@ Do not sign a website contract without these protective legal terms.
             }}
             className="px-8 py-8 rounded-3xl border-2 border-white/10 text-sm font-bold transition-all transform hover:scale-105 flex flex-col items-center justify-center gap-2 bg-white/5 text-white hover:bg-white/10 group"
           >
-            <Layout className="w-6 h-6 group-hover:scale-110 transition-transform text-[#00E5FF]" />
+            <Layout className="w-6 h-6 group-hover:scale-110 transition-transform text-[#ccff00]" />
             View Our Web Portfolio
           </button>
           <button 
@@ -808,7 +808,7 @@ Do not sign a website contract without these protective legal terms.
                 {
                   title: "Custom Web Development Applications",
                   desc: "Full-stack web application development built to your exact business logic — customer portals, booking systems, internal dashboards, and SaaS products designed around how your operations actually work, not around a pre-built template.",
-                  icon: <Code2 className="text-[#00E5FF]" size={24} />
+                  icon: <Code2 className="text-[#ccff00]" size={24} />
                 },
                 {
                   title: "E-Commerce Platforms",
@@ -1184,10 +1184,10 @@ Do not sign a website contract without these protective legal terms.
               className="bg-[#0A0A0A] border border-white/5 hover:border-blue-500/20 rounded-3xl p-8 transition-all hover:bg-white/[0.01] flex flex-col justify-between group"
             >
               <div className="space-y-6">
-                <div className="w-12 h-12 rounded-2xl bg-[#00E5FF]/5 border border-[#00E5FF]/10 flex items-center justify-center text-[#00E5FF] group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 rounded-2xl bg-[#ccff00]/5 border border-[#ccff00]/10 flex items-center justify-center text-[#ccff00] group-hover:scale-110 transition-transform">
                   <Cpu size={24} />
                 </div>
-                <h3 className="text-xl font-bold text-white uppercase tracking-tight group-hover:text-[#00E5FF] transition-colors">
+                <h3 className="text-xl font-bold text-white uppercase tracking-tight group-hover:text-[#ccff00] transition-colors">
                   AI Chatbot Integration
                 </h3>
                 <p className="text-sm text-neutral-400 font-light leading-relaxed font-sans">

@@ -253,15 +253,19 @@ const LatestNewsPage = () => {
             <p className="text-gray-400 text-sm max-w-xl mx-auto mb-8 font-light">
               Get monthly architectural insights, AI agent engineering notes, and search optimization breakdowns straight to your inbox. Zero spam.
             </p>
-            <form onSubmit={(e) => { e.preventDefault(); alert("Thank you for subscribing to AbuQitmirLabs news!"); }} className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto">
+            <form onSubmit={(e) => { e.preventDefault(); }} className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto">
               <input 
                 type="email" 
+                name="email"
+                autoComplete="email"
                 required 
+                aria-label="Business email address"
                 placeholder="Enter your business email..." 
                 className="w-full px-5 py-3.5 bg-zinc-900 border border-white/10 rounded-xl text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-[#ccff00]"
               />
               <button 
                 type="submit" 
+                aria-label="Subscribe to technical updates"
                 className="w-full sm:w-auto px-8 py-3.5 bg-[#ccff00] text-black font-extrabold text-xs uppercase tracking-wider rounded-xl hover:scale-105 transition-all shrink-0"
               >
                 Subscribe

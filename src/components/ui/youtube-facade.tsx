@@ -21,9 +21,8 @@ export const YouTubeFacade: React.FC<YouTubeFacadeProps> = ({
       <div className={`relative overflow-hidden bg-black ${aspectRatio} ${className}`}>
         <iframe
           className="w-full h-full"
-          src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+          src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`}
           title={title}
-          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>

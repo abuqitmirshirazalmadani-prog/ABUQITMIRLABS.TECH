@@ -197,6 +197,8 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
                   <Mail className="text-gray-400 pointer-events-none absolute left-4 size-5" />
                   <input
                     id="hero-email-input"
+                    name="email"
+                    autoComplete="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter email or project idea..."

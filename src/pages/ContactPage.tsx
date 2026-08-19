@@ -83,14 +83,14 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="bg-black text-[#E8E8ED] font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#00E5FF]/20 selection:text-white">
+    <div className="bg-black text-[#E8E8ED] font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]/30 selection:text-black">
       <Helmet>
-        <title>Contact Us | Free Project Quote & Consultation | AbuQitmirLabs</title>
+        <title>Contact Us | Free Project Quote &amp; Consultation | AbuQitmirLabs</title>
         <meta name="description" content="Contact AbuQitmirLabs for a free project quote. Get a free technical consultation and digital audit. Build custom software, mobile apps, AI agents, and web solutions." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/contact" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Contact Us | Free Project Quote & Consultation | AbuQitmirLabs" />
+        <meta property="og:title" content="Contact Us | Free Project Quote &amp; Consultation | AbuQitmirLabs" />
         <meta property="og:description" content="Contact AbuQitmirLabs for a free project quote. Get a free technical consultation and digital audit. Build custom software, mobile apps, AI agents, and web solutions." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/contact" />
         <meta property="og:type" content="website" />
@@ -98,7 +98,7 @@ const ContactPage = () => {
 
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact Us | Free Project Quote & Consultation | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Contact Us | Free Project Quote &amp; Consultation | AbuQitmirLabs" />
         <meta name="twitter:description" content="Contact AbuQitmirLabs for a free project quote. Get a free technical consultation and digital audit. Build custom software, mobile apps, AI agents, and web solutions." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         
@@ -151,10 +151,10 @@ const ContactPage = () => {
       </Helmet>
 
       {/* Scanline Overlay */}
-      <div className="fixed inset-0 pointer-events-none z-[60] opacity-5" style={{ background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,229,255,0.1) 2px, rgba(0,229,255,0.1) 4px)' }}></div>
+      <div className="fixed inset-0 pointer-events-none z-[60] opacity-5" style={{ background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(204,255,0,0.05) 2px, rgba(204,255,0,0.05) 4px)' }}></div>
       
       {/* Noise overlay */}
-      <div className="fixed inset-0 pointer-events-none z-[60] opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] blend-overlay"></div>
+      <div className="fixed inset-0 pointer-events-none z-[60] opacity-[0.03] bg-[url('/noise.svg')] blend-overlay"></div>
  
       <Header />
       <Breadcrumbs />
@@ -166,7 +166,7 @@ const ContactPage = () => {
              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-2 bg-[#00E5FF]/5 border border-[#00E5FF]/20 px-4 py-2 text-[10px] uppercase font-mono tracking-[0.2em] text-[#00E5FF] mb-10"
+                className="inline-flex items-center gap-2 bg-[#ccff00]/10 border border-[#ccff00]/30 px-4 py-2 text-[10px] uppercase font-mono tracking-[0.2em] text-[#ccff00] mb-10"
              >
                 <Cpu size={14} className="animate-pulse" />
                 Connectivity Established
@@ -179,9 +179,9 @@ const ContactPage = () => {
                 className="text-4xl md:text-6xl lg:text-[5.5rem] font-black tracking-tighter leading-[0.9] text-white uppercase mb-8"
              >
                 Contact App Developer <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#80F2FF] to-[#0099AA]">| Get Free Project Quote</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-[#ccff00]">| Get Free Project Quote</span>
              </motion.h1>
-             <div className="w-32 h-2 bg-[#00E5FF] mx-auto mb-12"></div>
+             <div className="w-32 h-2 bg-[#ccff00] mx-auto mb-12 shadow-[0_0_20px_rgba(204,255,0,0.5)]"></div>
           </section>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
@@ -190,59 +190,65 @@ const ContactPage = () => {
                initial={{ opacity: 0, x: -30 }}
                animate={{ opacity: 1, x: 0 }}
                transition={{ delay: 0.2 }}
-               className="bg-black border-4 border-[#00E5FF] p-8 relative overflow-hidden group"
-               style={{ boxShadow: '12px 12px 0 rgba(0,229,255,1)' }}
+               className="bg-black border-4 border-[#ccff00] p-8 relative overflow-hidden group rounded-2xl"
+               style={{ boxShadow: '12px 12px 0 rgba(204,255,0,0.9)' }}
             >
                {/* Terminal Header */}
-               <div className="flex items-center gap-2 mb-8 pb-4 border-b-2 border-[#00E5FF]/30">
-                  <div className="w-3 h-3 rounded-full bg-[#FF0080]"></div>
-                  <div className="w-3 h-3 rounded-full bg-[#FFD700]"></div>
-                  <div className="w-3 h-3 rounded-full bg-[#00E5FF]"></div>
-                  <span className="font-mono text-xs ml-4 text-[#00E5FF] tracking-widest">CONTACT_PROTOCOL.SYS</span>
+               <div className="flex items-center gap-2 mb-8 pb-4 border-b-2 border-[#ccff00]/30">
+                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-[#ccff00]"></div>
+                  <span className="font-mono text-xs ml-4 text-[#ccff00] tracking-widest">CONTACT_PROTOCOL.SYS</span>
                </div>
 
                <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
                   <div>
-                     <label htmlFor="contact-page-name" className="font-mono text-xs text-[#00E5FF] mb-3 block tracking-widest">USER_ID / NAME_</label>
+                     <label htmlFor="contact-page-name" className="font-mono text-xs text-[#ccff00] mb-3 block tracking-widest">USER_ID / NAME_</label>
                      <input 
                         id="contact-page-name"
+                        name="name"
+                        autoComplete="name"
                         required
                         type="text" 
                         value={formData.name}
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
-                        className="w-full bg-transparent border-2 border-[#00E5FF]/30 px-6 py-4 text-white font-mono focus:outline-none focus:border-[#00E5FF] transition-all hover:bg-[#00E5FF]/5" 
+                        className="w-full bg-zinc-900/60 border-2 border-zinc-800 px-6 py-4 text-white font-mono focus:outline-none focus:border-[#ccff00] transition-all hover:bg-zinc-900 rounded-xl" 
                         placeholder="IDENTIFY YOURSELF..."
                      />
                   </div>
                   <div>
-                     <label htmlFor="contact-page-email" className="font-mono text-xs text-[#00E5FF] mb-3 block tracking-widest">COMMUNICATION_RELAY / EMAIL_</label>
+                     <label htmlFor="contact-page-email" className="font-mono text-xs text-[#ccff00] mb-3 block tracking-widest">COMMUNICATION_RELAY / EMAIL_</label>
                      <input 
                         id="contact-page-email"
+                        name="email"
+                        autoComplete="email"
                         required
                         type="email" 
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        className="w-full bg-transparent border-2 border-[#00E5FF]/30 px-6 py-4 text-white font-mono focus:outline-none focus:border-[#00E5FF] transition-all hover:bg-[#00E5FF]/5" 
+                        className="w-full bg-zinc-900/60 border-2 border-zinc-800 px-6 py-4 text-white font-mono focus:outline-none focus:border-[#ccff00] transition-all hover:bg-zinc-900 rounded-xl" 
                         placeholder="SECURE RELAY ADDRESS..."
                      />
                   </div>
                   <div>
-                     <label htmlFor="contact-page-message" className="font-mono text-xs text-[#00E5FF] mb-3 block tracking-widest">TRANSMISSION_PAYLOAD / MESSAGE_</label>
+                     <label htmlFor="contact-page-message" className="font-mono text-xs text-[#ccff00] mb-3 block tracking-widest">TRANSMISSION_PAYLOAD / MESSAGE_</label>
                      <textarea 
                         id="contact-page-message"
+                        name="message"
+                        autoComplete="off"
                         required
                         rows={6} 
                         value={formData.message}
                         onChange={(e) => setFormData({...formData, message: e.target.value})}
-                        className="w-full bg-transparent border-2 border-[#00E5FF]/30 px-6 py-4 text-white font-mono focus:outline-none focus:border-[#00E5FF] transition-all hover:bg-[#00E5FF]/5 resize-none" 
+                        className="w-full bg-zinc-900/60 border-2 border-zinc-800 px-6 py-4 text-white font-mono focus:outline-none focus:border-[#ccff00] transition-all hover:bg-zinc-900 rounded-xl resize-none" 
                         placeholder="DECODE YOUR THOUGHTS..."
                      ></textarea>
                   </div>
                   <button 
                      type="submit" 
                      disabled={isSubmitting || submitted}
-                     className={`w-full px-10 py-6 font-black text-xl border-4 transition-all duration-300 flex items-center justify-center gap-4 relative overflow-hidden group
-                        ${submitted ? 'bg-green-500 border-green-500 text-black' : 'bg-[#00E5FF] border-[#00E5FF] text-black hover:bg-black hover:text-[#00E5FF]'}`}
+                     className={`w-full px-10 py-6 font-black text-xl border-4 transition-all duration-300 flex items-center justify-center gap-4 relative overflow-hidden group rounded-xl cursor-pointer
+                        ${submitted ? 'bg-green-500 border-green-500 !text-black' : 'bg-[#ccff00] border-[#ccff00] !text-black hover:bg-[#b0d600]'}`}
                   >
                      <AnimatePresence mode="wait">
                         {isSubmitting ? (
@@ -251,9 +257,9 @@ const ContactPage = () => {
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               exit={{ opacity: 0 }}
-                              className="flex items-center gap-3"
+                              className="flex items-center gap-3 !text-black font-black"
                            >
-                               <Cpu className="animate-spin" />
+                               <Cpu className="animate-spin !text-black" />
                                PROCESSING...
                            </motion.div>
                         ) : submitted ? (
@@ -261,17 +267,17 @@ const ContactPage = () => {
                               key="success"
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
-                              className="flex items-center gap-3"
+                              className="flex items-center gap-3 !text-black font-black"
                            >
-                               <ShieldCheck />
+                               <ShieldCheck className="!text-black" />
                                TRANSMISSION SUCCESSFUL
                            </motion.div>
                         ) : (
                            <motion.div
                               key="initial"
-                              className="flex items-center gap-3"
+                              className="flex items-center gap-3 !text-black font-black"
                            >
-                               <Send size={24} />
+                               <Send size={24} className="!text-black" />
                                INITIATE TRANSMISSION
                            </motion.div>
                         )}
@@ -280,14 +286,14 @@ const ContactPage = () => {
                </form>
 
                {/* Terminal Output */}
-               <div className="mt-8 pt-6 border-t-2 border-[#00E5FF]/20 font-mono text-[10px] space-y-2">
-                  <p className="text-[#00E5FF]/60">&gt; STATUS: STANDBY</p>
-                  <p className="text-[#00E5FF]/60">&gt; ENCRYPTION: AES-256 ACTIVE</p>
-                  <p className="text-[#00E5FF]">&gt; {submitted ? 'READY FOR NEXT INPUT' : 'AWAITING USER INPUT'}<span className="animate-pulse">_</span></p>
+               <div className="mt-8 pt-6 border-t-2 border-[#ccff00]/20 font-mono text-[10px] space-y-2">
+                  <p className="text-[#ccff00]/70">&gt; STATUS: STANDBY</p>
+                  <p className="text-[#ccff00]/70">&gt; ENCRYPTION: AES-256 ACTIVE</p>
+                  <p className="text-[#ccff00]">&gt; {submitted ? 'READY FOR NEXT INPUT' : 'AWAITING USER INPUT'}<span className="animate-pulse">_</span></p>
                </div>
 
                {/* Background Pattern */}
-               <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(rgba(0,229,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,229,255,0.02)_1px,transparent_1px)] bg-[length:20px_20px] opacity-10 pointer-events-none -z-10"></div>
+               <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(rgba(204,255,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(204,255,0,0.02)_1px,transparent_1px)] bg-[length:20px_20px] opacity-10 pointer-events-none -z-10"></div>
             </motion.div>
 
             {/* Contact Details & Links */}
@@ -299,11 +305,11 @@ const ContactPage = () => {
                   className="space-y-10"
                >
                   <div className="group">
-                     <p className="font-mono text-xs text-[#00E5FF] mb-4 tracking-[0.4em] uppercase">Communication_Relays</p>
+                     <p className="font-mono text-xs text-[#ccff00] mb-4 tracking-[0.4em] uppercase">Communication_Relays</p>
                      <div className="space-y-6">
                         <div className="flex items-center gap-6 group/item">
-                           <div className="w-16 h-16 bg-[#00E5FF]/5 border-2 border-[#00E5FF]/20 flex items-center justify-center group-hover/item:border-[#00E5FF] group-hover/item:bg-[#00E5FF]/10 transition-all shadow-[0_0_15px_rgba(0,229,255,0.1)]">
-                              <Mail className="text-[#00E5FF]" size={28} />
+                           <div className="w-16 h-16 bg-[#ccff00]/5 border-2 border-[#ccff00]/20 flex items-center justify-center group-hover/item:border-[#ccff00] group-hover/item:bg-[#ccff00]/10 transition-all shadow-[0_0_15px_rgba(204,255,0,0.1)] rounded-xl">
+                              <Mail className="text-[#ccff00]" size={28} />
                            </div>
                            <div>
                               <p className="text-white font-bold uppercase tracking-widest text-sm mb-1">Email Protocol</p>
@@ -311,28 +317,29 @@ const ContactPage = () => {
                                  <ObfuscatedEmail 
                                     user="hello" 
                                     domain="abuqitmirlabs.tech" 
-                                    className="text-white font-mono text-sm hover:text-[#00E5FF] transition-colors hover:underline font-bold block"
+                                    className="text-white font-mono text-sm hover:text-[#ccff00] transition-colors hover:underline font-bold block"
                                  />
                                  <ObfuscatedEmail 
                                     user="abuqitmirshirazalmadani" 
                                     domain="gmail.com" 
-                                    className="text-zinc-500 font-mono text-xs hover:text-[#00E5FF] transition-colors hover:underline block"
+                                    className="text-zinc-500 font-mono text-xs hover:text-[#ccff00] transition-colors hover:underline block"
                                  />
-                                 <p className="text-[#00E5FF]/40 font-mono text-[9px] uppercase tracking-tighter">Direct Relay Enabled &bull; Updated: August 2026</p>
+                                 <p className="text-[#ccff00]/50 font-mono text-[9px] uppercase tracking-tighter">Direct Relay Enabled &bull; Updated: August 2026</p>
                               </div>
                            </div>
                         </div>
                         <a 
                            href="https://wa.me/923233260859" 
                            target="_blank"
+                           rel="noopener noreferrer"
                            className="flex items-center gap-6 group/item"
                         >
-                           <div className="w-16 h-16 bg-[#00E5FF]/5 border-2 border-[#00E5FF]/20 flex items-center justify-center group-hover/item:border-[#00E5FF] group-hover/item:bg-[#00E5FF]/10 transition-all">
-                               <MessageCircle className="text-[#00E5FF]" size={28} />
+                           <div className="w-16 h-16 bg-[#25D366]/10 border-2 border-[#25D366]/30 flex items-center justify-center group-hover/item:border-[#25D366] group-hover/item:bg-[#25D366]/20 transition-all rounded-xl">
+                               <MessageCircle className="text-[#25D366]" size={28} />
                            </div>
                            <div>
                               <p className="text-white font-bold uppercase tracking-widest text-sm mb-1">WhatsApp Relay</p>
-                              <p className="text-zinc-500 font-mono text-xs group-hover/item:text-[#00E5FF] transition-colors">+92-323-3260859 (Direct Chat)</p>
+                              <p className="text-zinc-400 font-mono text-xs group-hover/item:text-[#25D366] transition-colors">+92-323-3260859 (Direct Chat)</p>
                            </div>
                         </a>
                         <a 
@@ -341,8 +348,8 @@ const ContactPage = () => {
                            rel="noopener noreferrer"
                            className="flex items-center gap-6 group/item"
                         >
-                           <div className="w-16 h-16 bg-[#00E5FF]/5 border-2 border-[#00E5FF]/20 flex items-center justify-center group-hover/item:border-[#00E5FF] transition-all">
-                               <MapPin className="text-[#00E5FF]" size={28} />
+                           <div className="w-16 h-16 bg-[#ccff00]/5 border-2 border-[#ccff00]/20 flex items-center justify-center group-hover/item:border-[#ccff00] transition-all rounded-xl">
+                               <MapPin className="text-[#ccff00]" size={28} />
                            </div>
                            <div>
                               <p className="text-white font-bold uppercase tracking-widest text-sm mb-1">Base Coordinates</p>
@@ -353,7 +360,7 @@ const ContactPage = () => {
                   </div>
 
                   <div className="pt-10 border-t border-white/5">
-                     <p className="font-mono text-xs text-[#00E5FF] mb-8 tracking-[0.4em] uppercase">Social_Matrix</p>
+                     <p className="font-mono text-xs text-[#ccff00] mb-8 tracking-[0.4em] uppercase">Social_Matrix</p>
                      <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-6 gap-3">
                         {[
                            { icon: <Facebook />, color: 'hover:bg-[#1877F2]', href: "https://www.facebook.com/profile.php?id=61583768706452" },
@@ -373,7 +380,7 @@ const ContactPage = () => {
                               href={social.href}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className={`w-full aspect-square bg-[#00E5FF]/5 border-2 border-[#00E5FF]/20 flex items-center justify-center text-white transition-all duration-300 hover:border-transparent hover:scale-110 ${social.color} hover:shadow-[0_0_20px_rgba(0,229,255,0.3)]`}
+                              className={`w-full aspect-square bg-[#ccff00]/5 border-2 border-[#ccff00]/20 rounded-xl flex items-center justify-center text-white transition-all duration-300 hover:border-transparent hover:scale-110 ${social.color} hover:shadow-[0_0_20px_rgba(204,255,0,0.3)]`}
                            >
                                {React.cloneElement(social.icon as React.ReactElement<any>, { size: 24 })}
                            </a>
@@ -384,76 +391,76 @@ const ContactPage = () => {
                    {/* Related Studio Services & Navigation Hub */}
                    <div className="pt-10 border-t border-white/5 space-y-8 text-left">
                       <div>
-                         <p className="font-mono text-xs text-[#00E5FF] mb-4 tracking-[0.4em] uppercase">// EXPLORE STUDIO CAPABILITIES & HUB</p>
+                         <p className="font-mono text-xs text-[#ccff00] mb-4 tracking-[0.4em] uppercase">// EXPLORE STUDIO CAPABILITIES &amp; HUB</p>
                          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
-                            <Link to="/" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                            <Link to="/" className="p-3 bg-white/5 hover:bg-[#ccff00]/10 rounded-lg text-zinc-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
                                <span>Studio Home</span>
-                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                               <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
                             </Link>
-                            <Link to="/about/our-company" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                            <Link to="/about/our-company" className="p-3 bg-white/5 hover:bg-[#ccff00]/10 rounded-lg text-zinc-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
                                <span>Our Company</span>
-                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                               <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
                             </Link>
-                            <Link to="/about/our-team" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                            <Link to="/about/our-team" className="p-3 bg-white/5 hover:bg-[#ccff00]/10 rounded-lg text-zinc-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
                                <span>Our Team</span>
-                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                               <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
                             </Link>
-                            <Link to="/about/our-process" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                            <Link to="/about/our-process" className="p-3 bg-white/5 hover:bg-[#ccff00]/10 rounded-lg text-zinc-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
                                <span>Engineering Process</span>
-                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                               <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
                             </Link>
-                            <Link to="/about/careers" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
-                               <span>Careers & Roles</span>
-                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                            <Link to="/about/careers" className="p-3 bg-white/5 hover:bg-[#ccff00]/10 rounded-lg text-zinc-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
+                               <span>Careers &amp; Roles</span>
+                               <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
                             </Link>
-                            <Link to="/custom-software" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                            <Link to="/custom-software" className="p-3 bg-white/5 hover:bg-[#ccff00]/10 rounded-lg text-zinc-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
                                <span>Custom Software</span>
-                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                               <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
                             </Link>
-                            <Link to="/web-development" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                            <Link to="/web-development" className="p-3 bg-white/5 hover:bg-[#ccff00]/10 rounded-lg text-zinc-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
                                <span>Web Development</span>
-                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                               <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
                             </Link>
-                            <Link to="/mobile-app-development" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                            <Link to="/mobile-app-development" className="p-3 bg-white/5 hover:bg-[#ccff00]/10 rounded-lg text-zinc-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
                                <span>Mobile Apps</span>
-                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                               <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
                             </Link>
-                            <Link to="/ai-agent-development" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                            <Link to="/ai-agent-development" className="p-3 bg-white/5 hover:bg-[#ccff00]/10 rounded-lg text-zinc-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
                                <span>AI Agent Systems</span>
-                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                               <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
                             </Link>
-                            <Link to="/seo-mastery" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                            <Link to="/seo-mastery" className="p-3 bg-white/5 hover:bg-[#ccff00]/10 rounded-lg text-zinc-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
                                <span>SEO Mastery</span>
-                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                               <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
                             </Link>
-                            <Link to="/case-studies" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                            <Link to="/case-studies" className="p-3 bg-white/5 hover:bg-[#ccff00]/10 rounded-lg text-zinc-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
                                <span>Case Studies</span>
-                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                               <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
                             </Link>
-                            <Link to="/blog" className="p-3 bg-white/5 hover:bg-[#00E5FF]/10 rounded-lg text-zinc-400 hover:text-[#00E5FF] transition-colors border border-white/10 flex items-center justify-between">
+                            <Link to="/blog" className="p-3 bg-white/5 hover:bg-[#ccff00]/10 rounded-lg text-zinc-400 hover:text-[#ccff00] transition-colors border border-white/10 flex items-center justify-between">
                                <span>Tech Journal</span>
-                               <ChevronRight className="w-3.5 h-3.5 text-[#00E5FF]" />
+                               <ChevronRight className="w-3.5 h-3.5 text-[#ccff00]" />
                             </Link>
                          </div>
                       </div>
 
-                      {/* External Tech & Verification References */}
+                      {/* External Tech &amp; Verification References */}
                       <div className="pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-zinc-500">
-                         <span className="uppercase tracking-widest text-[11px] font-bold text-zinc-400">External Technical & Studio References:</span>
+                         <span className="uppercase tracking-widest text-[11px] font-bold text-zinc-400">External Technical &amp; Studio References:</span>
                          <div className="flex flex-wrap items-center gap-4">
-                            <a href="https://clutch.co/profile/abuqitmirlabstech" target="_blank" rel="noopener noreferrer" className="hover:text-[#00E5FF] transition-colors inline-flex items-center gap-1">
+                            <a href="https://clutch.co/profile/abuqitmirlabstech" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
                                Clutch Directory <ExternalLink className="w-3 h-3" />
                             </a>
                             <span>•</span>
-                            <a href="https://www.goodfirms.co/company/abuqitmirlabs-tech" target="_blank" rel="noopener noreferrer" className="hover:text-[#00E5FF] transition-colors inline-flex items-center gap-1">
+                            <a href="https://www.goodfirms.co/company/abuqitmirlabs-tech" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
                                GoodFirms Profile <ExternalLink className="w-3 h-3" />
                             </a>
                             <span>•</span>
-                            <a href="https://react.dev/" target="_blank" rel="noopener noreferrer" className="hover:text-[#00E5FF] transition-colors inline-flex items-center gap-1">
+                            <a href="https://react.dev/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
                                React Framework <ExternalLink className="w-3 h-3" />
                             </a>
                             <span>•</span>
-                            <a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[#00E5FF] transition-colors inline-flex items-center gap-1">
+                            <a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] transition-colors inline-flex items-center gap-1">
                                Tailwind CSS <ExternalLink className="w-3 h-3" />
                             </a>
                          </div>
@@ -467,15 +474,15 @@ const ContactPage = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 }}
-                  className="p-10 border-2 border-dashed border-[#00E5FF]/20 group hover:border-[#00E5FF]/40 transition-all flex flex-col items-center justify-center gap-6"
+                  className="p-10 border-2 border-dashed border-[#ccff00]/20 group hover:border-[#ccff00]/40 transition-all flex flex-col items-center justify-center gap-6 rounded-2xl"
                >
-                  <p className="font-mono text-[10px] text-zinc-600 text-center uppercase tracking-widest leading-loose">
+                  <p className="font-mono text-[10px] text-zinc-500 text-center uppercase tracking-widest leading-loose">
                      Our terminal is always active. <br />
                      Deploy your ideas to our production pipeline.
                   </p>
                   <button 
                     onClick={scrollToTop}
-                    className="group flex items-center gap-4 px-6 py-3 bg-[#00E5FF] text-black font-black uppercase text-xs tracking-tighter hover:bg-white transition-all transform hover:-translate-y-1"
+                    className="group flex items-center gap-4 px-6 py-3 bg-[#ccff00] text-black font-black uppercase text-xs tracking-tighter hover:bg-white transition-all transform hover:-translate-y-1 rounded-xl cursor-pointer"
                     style={{ boxShadow: '4px 4px 0 #000' }}
                   >
                      <ArrowUp size={16} className="group-hover:animate-bounce" />

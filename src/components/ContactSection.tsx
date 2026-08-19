@@ -193,6 +193,8 @@ const ContactSection = () => {
                   <label htmlFor="contact-section-name" className="font-mono text-xs text-[#ccff00] mb-3 block tracking-wider">YOUR NAME / ORGANIZATION_</label>
                   <input 
                     id="contact-section-name"
+                    name="name"
+                    autoComplete="name"
                     required
                     aria-required="true"
                     type="text" 
@@ -207,6 +209,8 @@ const ContactSection = () => {
                   <label htmlFor="contact-section-email" className="font-mono text-xs text-[#ccff00] mb-3 block tracking-wider">YOUR EMAIL ADDRESS_</label>
                   <input 
                     id="contact-section-email"
+                    name="email"
+                    autoComplete="email"
                     required
                     aria-required="true"
                     type="email" 
@@ -221,6 +225,8 @@ const ContactSection = () => {
                   <label htmlFor="contact-section-message" className="font-mono text-xs text-[#ccff00] mb-3 block tracking-wider">PROJECT BRIEF / LOGISTICS DETAILS_</label>
                   <textarea 
                     id="contact-section-message"
+                    name="message"
+                    autoComplete="off"
                     required
                     aria-required="true"
                     rows={5} 

@@ -213,13 +213,13 @@ const OurCompanyPage = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="group relative overflow-hidden p-8 rounded-2xl bg-zinc-900/60 backdrop-blur-xl border border-white/10 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(37,99,235,0.25)] transition-all duration-500 hover:-translate-y-1"
+                  className="group relative overflow-hidden p-8 rounded-2xl bg-zinc-900/60 backdrop-blur-xl border border-white/10 hover:border-[#ccff00]/50 hover:shadow-[0_0_30px_rgba(204,255,0,0.15)] transition-all duration-500 hover:-translate-y-1"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.25)] mb-4">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#ccff00]/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
+                  <div className="w-12 h-12 rounded-xl bg-[#ccff00]/10 border border-[#ccff00]/20 flex items-center justify-center text-[#ccff00] group-hover:scale-110 group-hover:bg-[#ccff00] group-hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(204,255,0,0.2)] mb-4">
                     <MapPin className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-blue-300 transition-colors">Central Studio Headquarters</h3>
+                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-[#ccff00] transition-colors">Central Studio Headquarters</h3>
                   <p className="text-gray-300 text-sm leading-relaxed font-light">
                     R-10, Block 16, Federal B Area, Karachi, Pakistan (Postal Code 75950). Fully equipped dev labs and high-speed cloud testing environments.
                   </p>
@@ -230,13 +230,13 @@ const OurCompanyPage = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 }}
-                  className="group relative overflow-hidden p-8 rounded-2xl bg-zinc-900/60 backdrop-blur-xl border border-white/10 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(37,99,235,0.25)] transition-all duration-500 hover:-translate-y-1"
+                  className="group relative overflow-hidden p-8 rounded-2xl bg-zinc-900/60 backdrop-blur-xl border border-white/10 hover:border-[#ccff00]/50 hover:shadow-[0_0_30px_rgba(204,255,0,0.15)] transition-all duration-500 hover:-translate-y-1"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.25)] mb-4">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#ccff00]/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
+                  <div className="w-12 h-12 rounded-xl bg-[#ccff00]/10 border border-[#ccff00]/20 flex items-center justify-center text-[#ccff00] group-hover:scale-110 group-hover:bg-[#ccff00] group-hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(204,255,0,0.2)] mb-4">
                     <Globe className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-blue-300 transition-colors">Global Market Reach</h3>
+                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-[#ccff00] transition-colors">Global Market Reach</h3>
                   <p className="text-gray-300 text-sm leading-relaxed font-light">
                     Active delivery pipelines serving enterprise and mid-market clients across the United States, United Kingdom, Canada, Australia, Poland, and Europe.
                   </p>
@@ -247,13 +247,13 @@ const OurCompanyPage = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="group relative overflow-hidden p-8 rounded-2xl bg-zinc-900/60 backdrop-blur-xl border border-white/10 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(37,99,235,0.25)] transition-all duration-500 hover:-translate-y-1"
+                  className="group relative overflow-hidden p-8 rounded-2xl bg-zinc-900/60 backdrop-blur-xl border border-white/10 hover:border-[#ccff00]/50 hover:shadow-[0_0_30px_rgba(204,255,0,0.15)] transition-all duration-500 hover:-translate-y-1"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.25)] mb-4">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#ccff00]/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
+                  <div className="w-12 h-12 rounded-xl bg-[#ccff00]/10 border border-[#ccff00]/20 flex items-center justify-center text-[#ccff00] group-hover:scale-110 group-hover:bg-[#ccff00] group-hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(204,255,0,0.2)] mb-4">
                     <GraduationCap className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-blue-300 transition-colors">Certifications & Credentials</h3>
+                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-[#ccff00] transition-colors">Certifications & Credentials</h3>
                   <p className="text-gray-300 text-sm leading-relaxed font-light">
                     <a href="https://digiskills.pk/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] underline transition-colors inline-flex items-center gap-0.5">DigiSkills Certified <ExternalLink className="w-3 h-3" /></a> (2021–2025), IDM Pakistan Certified, M.B.A. Commerce (<a href="https://uok.edu.pk/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] underline transition-colors inline-flex items-center gap-0.5">University of Karachi <ExternalLink className="w-3 h-3" /></a>, 2010), <a href="https://clutch.co/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] underline transition-colors inline-flex items-center gap-0.5">Clutch <ExternalLink className="w-3 h-3" /></a> & GoodFirms Recognized.
                   </p>
