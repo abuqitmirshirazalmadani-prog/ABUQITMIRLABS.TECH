@@ -1,3 +1,8 @@
+import sharp from 'sharp';
+import fs from 'fs';
+import path from 'path';
+
+const svgLogo = `
 <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
@@ -44,3 +49,50 @@
   <circle cx="76" cy="256" r="7" fill="#ccff00" />
   <circle cx="436" cy="256" r="7" fill="#ccff00" />
 </svg>
+`;
+
+async function generate() {
+  const publicDir = path.resolve('public');
+  if (!fs.existsSync(publicDir)) {
+    fs.mkdirSync(publicDir, { recursive: true });
+  }
+
+  const svgBuffer = Buffer.from(svgLogo);
+
+  // 1. Generate 512x512 logo.png
+  await sharp(svgBuffer)
+    .resize(512, 512)
+    .png({ compressionLevel: 9, quality: 100 })
+    .toFile(path.join(publicDir, 'logo.png'));
+  console.log('✓ Generated public/logo.png (512x512 binary PNG)');
+
+  // 2. Generate 512x512 logo-512.png
+  await sharp(svgBuffer)
+    .resize(512, 512)
+    .png({ compressionLevel: 9, quality: 100 })
+    .toFile(path.join(publicDir, 'logo-512.png'));
+  console.log('✓ Generated public/logo-512.png (512x512 binary PNG)');
+
+  // 3. Generate 192x192 logo-192.png
+  await sharp(svgBuffer)
+    .resize(192, 192)
+    .png({ compressionLevel: 9, quality: 100 })
+    .toFile(path.join(publicDir, 'logo-192.png'));
+  console.log('✓ Generated public/logo-192.png (192x192 binary PNG)');
+
+  // 4. Generate 180x180 apple-touch-icon.png
+  await sharp(svgBuffer)
+    .resize(180, 180)
+    .png({ compressionLevel: 9, quality: 100 })
+    .toFile(path.join(publicDir, 'apple-touch-icon.png'));
+  console.log('✓ Generated public/apple-touch-icon.png (180x180 binary PNG)');
+
+  // 5. Also update favicon.svg with modern styling
+  fs.writeFileSync(path.join(publicDir, 'favicon.svg'), svgLogo.trim());
+  console.log('✓ Updated public/favicon.svg');
+}
+
+generate().catch(err => {
+  console.error('Error generating logos:', err);
+  process.exit(1);
+});

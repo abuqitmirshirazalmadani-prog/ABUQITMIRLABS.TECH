@@ -229,28 +229,6 @@ export default defineConfig(({mode}) => {
 
           const routes = [...baseRoutes, ...dynamicRoutes];
 
-          // Download image logo to serve from our own site
-          try {
-            const publicDir = path.resolve(process.cwd(), 'public');
-            if (!fs.existsSync(publicDir)) {
-               fs.mkdirSync(publicDir, { recursive: true });
-            }
-            const logoPathSource = 'https://www.abuqitmirlabs.tech/logo.png';
-            const response = await fetch(logoPathSource);
-            if (response.ok) {
-              const buffer = await response.arrayBuffer();
-              const nodeBuffer = Buffer.from(buffer);
-              fs.writeFileSync(path.resolve(publicDir, 'logo.png'), nodeBuffer);
-              if (!fs.existsSync(outDir)) {
-                fs.mkdirSync(outDir, { recursive: true });
-              }
-              fs.writeFileSync(path.resolve(outDir, 'logo.png'), nodeBuffer);
-              console.log('✅ Downloaded logo successfully to public/logo.png and dist/logo.png!');
-            }
-          } catch (err) {
-            console.log('[SEO Generator] note: Logo download omitted:', err);
-          }
-
           if (!fs.existsSync(indexHtmlPath)) return;
           
           const baseHtml = fs.readFileSync(indexHtmlPath, 'utf8');
