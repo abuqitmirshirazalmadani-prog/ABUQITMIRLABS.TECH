@@ -305,27 +305,13 @@ export const fintechSchema = {
   ]
 };
 
+import { renderStaticHeader } from './sharedStaticHeader';
+
 export const fintechInitialHtml = `
 <div class="min-h-screen bg-[#050505] text-neutral-300 font-sans antialiased overflow-x-hidden selection:bg-[#ccff00] selection:text-black">
-  <header class="fixed top-0 left-0 right-0 z-50 bg-[#050505]/90 backdrop-blur-md border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3" aria-label="AbuQitmirLabs Home">
-        <img src="/logo.png" alt="AbuQitmirLabs Logo" width="40" height="40" class="w-10 h-10 object-contain" />
-        <span class="text-xl font-bold tracking-tight text-white font-mono">AbuQitmirLabs<span class="text-[#ccff00]">.TECH</span></span>
-      </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm font-mono text-neutral-400">
-        <a href="/" class="hover:text-[#ccff00] transition-colors">Home</a>
-        <a href="/custom-software" class="hover:text-[#ccff00] transition-colors">Custom Software</a>
-        <a href="/web-development" class="hover:text-[#ccff00] transition-colors">Web Development</a>
-        <a href="/mobile-app-development" class="hover:text-[#ccff00] transition-colors">Mobile Apps</a>
-        <a href="/ai-agent-development" class="hover:text-[#ccff00] transition-colors">AI Agents</a>
-        <a href="/solutions/fintech" class="text-[#ccff00] font-semibold">FinTech Solutions</a>
-        <a href="/contact" class="px-5 py-2.5 bg-[#ccff00] text-black font-extrabold rounded-lg hover:scale-105 transition-all uppercase tracking-wider text-xs">Get Proposal</a>
-      </nav>
-    </div>
-  </header>
+  ${renderStaticHeader('/solutions/fintech')}
 
-  <main class="pt-28 md:pt-36">
+  <main class="pt-24 md:pt-32">
     <!-- Breadcrumb Navigation -->
     <div class="max-w-7xl mx-auto px-6 mb-8">
       <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs font-mono text-neutral-500">

@@ -55,19 +55,21 @@ export default function HomePage() {
       <HeroSection />
       
       {/* Dynamic Animated Marquee Ribbon */}
-      <div className="overflow-hidden transform z-20 bg-[#B9FF66] w-full border-y-4 pt-4 pb-4 relative shadow-[0_8px_0_0_rgba(0,0,0,1)] -rotate-1">
-        <div className="flex whitespace-nowrap w-max animate-marquee">
-          {[...Array(2)].map((_, i) => (
-            <div key={i} aria-hidden={i > 0 ? "true" : undefined} className="flex gap-10 text-3xl md:text-5xl font-black tracking-tighter uppercase items-center text-black px-10">
-              <span>Comprehensive digital strategy</span> <Star className="fill-current" size={32} />
-              <span>End-to-end software engineering</span> <Star className="fill-current" size={32} />
-              <span>Performance-focused web development</span> <Star className="fill-current" size={32} />
-              <span>Strategic SEO and content growth</span> <Star className="fill-current" size={32} />
-              <span>Custom AI-powered automation</span> <Star className="fill-current" size={32} />
-              <span>Conversion-driven UI/UX design</span> <Star className="fill-current" size={32} />
-              <span>Scalable mobile app solutions</span> <Star className="fill-current" size={32} />
-            </div>
-          ))}
+      <div className="relative w-full overflow-hidden py-3 bg-black">
+        <div className="overflow-hidden bg-[#B9FF66] w-full border-y-2 border-black py-4 relative">
+          <div className="flex whitespace-nowrap w-max animate-marquee">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} aria-hidden={i > 0 ? "true" : undefined} className="flex gap-10 text-2xl sm:text-3xl md:text-4xl font-black tracking-tight uppercase items-center text-black px-8">
+                <span>Comprehensive digital strategy</span> <Star className="fill-current" size={24} />
+                <span>End-to-end software engineering</span> <Star className="fill-current" size={24} />
+                <span>Performance-focused web development</span> <Star className="fill-current" size={24} />
+                <span>Strategic SEO and content growth</span> <Star className="fill-current" size={24} />
+                <span>Custom AI-powered automation</span> <Star className="fill-current" size={24} />
+                <span>Conversion-driven UI/UX design</span> <Star className="fill-current" size={24} />
+                <span>Scalable mobile app solutions</span> <Star className="fill-current" size={24} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

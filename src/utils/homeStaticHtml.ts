@@ -240,29 +240,12 @@ export const homeSchema = {
   ]
 };
 
+import { renderStaticHeader } from './sharedStaticHeader';
+
 export const homeInitialHtml = `
 <main id="main-content" class="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
-  <!-- Top Navigation Header -->
-  <header class="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10 h-20 flex items-center">
-    <div class="max-w-7xl mx-auto px-6 w-full flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3" aria-label="AbuQitmirLabs Homepage">
-        <img src="/logo.png" alt="AbuQitmirLabs Logo" width="40" height="40" class="rounded-lg" />
-        <span class="font-serif text-xl font-bold tracking-tight text-white">AbuQitmir<span class="text-[#ccff00]">Labs</span></span>
-      </a>
-      <nav aria-label="Primary Navigation" class="hidden md:flex items-center gap-8">
-        <a href="/custom-software" class="text-sm text-neutral-300 hover:text-white transition-colors">Custom Software</a>
-        <a href="/web-development" class="text-sm text-neutral-300 hover:text-white transition-colors">Web Development</a>
-        <a href="/ai-agent-development" class="text-sm text-neutral-300 hover:text-white transition-colors">AI Agents</a>
-        <a href="/mobile-app-development" class="text-sm text-neutral-300 hover:text-white transition-colors">Mobile Apps</a>
-        <a href="/seo-mastery" class="text-sm text-neutral-300 hover:text-white transition-colors">SEO Mastery</a>
-        <a href="/case-studies" class="text-sm text-neutral-300 hover:text-white transition-colors">Case Studies</a>
-        <a href="/blog" class="text-sm text-neutral-300 hover:text-white transition-colors">Blog</a>
-      </nav>
-      <a href="/contact" class="bg-[#ccff00] text-black font-mono text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-none hover:bg-white transition-all">
-        Get In Touch
-      </a>
-    </div>
-  </header>
+  <!-- Top Navigation Header synchronized with Header.tsx -->
+  ${renderStaticHeader('/')}
 
   <!-- Hero Section -->
   <section id="hero-section" class="relative min-h-[90vh] flex flex-col justify-center pt-32 pb-20 px-6 overflow-hidden bg-[#020202] border-b border-white/10" aria-label="Hero Introduction">

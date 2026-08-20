@@ -253,10 +253,12 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
           </div>
 
           {/* Right Subtitle & Description */}
-          <div className="lg:col-span-4 lg:pl-6">
-            <p className="text-sm md:text-base lg:text-lg text-neutral-300 italic font-serif leading-relaxed font-light text-left lg:text-right">
-              &ldquo;AbuQitmirLabs is a premier custom software development company delivering AI app development services, custom website development services and enterprise software solutions to clients across the United States, United Kingdom, and Europe.&rdquo;
-            </p>
+          <div className="lg:col-span-4 lg:pl-6 pt-4 lg:pt-0">
+            <div className="p-4 sm:p-5 rounded-none border-l-2 border-[#C8EB5F]/40 bg-zinc-950/40 backdrop-blur-sm">
+              <p className="text-xs sm:text-sm md:text-base text-neutral-300 italic font-serif leading-relaxed font-light">
+                &ldquo;AbuQitmirLabs is a premier custom software development company delivering AI app development services, custom website development services and enterprise software solutions to clients across the United States, United Kingdom, and Europe.&rdquo;
+              </p>
+            </div>
           </div>
         </div>
       </div>

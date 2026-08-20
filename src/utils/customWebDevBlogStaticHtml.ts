@@ -118,8 +118,12 @@ export const customWebDevBlogSchema = {
   ]
 };
 
+import { renderStaticHeader } from './sharedStaticHeader';
+
 export const customWebDevBlogInitialHtml = `
 <div class="min-h-screen bg-[#080808] text-white flex flex-col font-sans selection:bg-[#ccff00] selection:text-black">
+  ${renderStaticHeader('/blog')}
+
   <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 w-full">
     
     <!-- Breadcrumbs navigation -->

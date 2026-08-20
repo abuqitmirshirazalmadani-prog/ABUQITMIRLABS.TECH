@@ -353,28 +353,13 @@ export const aiAutomationSchema = {
   ]
 };
 
+import { renderStaticHeader } from './sharedStaticHeader';
+
 export const aiAutomationInitialHtml = `
-<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#ccff00] focus:text-black focus:font-bold focus:rounded-lg">
-  Skip to main content
-</a>
-
 <main id="main-content" class="min-h-screen bg-[#050505] text-white font-sans antialiased selection:bg-[#ccff00] selection:text-black">
-  <!-- Top Navigation Placeholder -->
-  <header class="border-b border-white/10 py-6 px-6 max-w-7xl mx-auto flex items-center justify-between">
-    <a href="/" class="text-xl font-bold tracking-tighter text-white">AbuQitmir<span class="text-[#ccff00]">Labs</span></a>
-    <nav aria-label="Main Navigation" class="hidden md:flex items-center gap-6 text-sm text-gray-400">
-      <a href="/custom-software" class="hover:text-white transition-colors">Custom Software</a>
-      <a href="/web-development" class="hover:text-white transition-colors">Web Development</a>
-      <a href="/ai-agent-development" class="hover:text-white transition-colors">AI Agents</a>
-      <a href="/solutions/e-commerce" class="hover:text-white transition-colors">E-Commerce</a>
-      <a href="/solutions/healthcare" class="hover:text-white transition-colors">Healthcare</a>
-      <a href="/solutions/fintech" class="hover:text-white transition-colors">FinTech</a>
-      <a href="/solutions/edtech" class="hover:text-white transition-colors">EdTech</a>
-      <a href="/contact" class="text-[#ccff00] hover:underline font-medium">Contact</a>
-    </nav>
-  </header>
+  ${renderStaticHeader('/solutions/ai-automation')}
 
-  <div class="max-w-7xl mx-auto px-6 py-12">
+  <div class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-12">
     <!-- Breadcrumbs -->
     <nav aria-label="Breadcrumb" class="mb-8 text-xs font-mono text-gray-400 flex items-center gap-2">
       <ol class="flex items-center gap-2">

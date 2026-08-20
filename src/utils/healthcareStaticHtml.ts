@@ -305,29 +305,13 @@ export const healthcareSchema = {
   ]
 };
 
+import { renderStaticHeader } from './sharedStaticHeader';
+
 export const healthcareInitialHtml = `
 <div class="min-h-screen bg-[#050505] text-white font-sans">
-  <!-- Top Navigation Bar -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-b border-white/10">
-    <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between" aria-label="Main Navigation">
-      <a href="/" class="flex items-center gap-3 text-white text-xl font-bold tracking-wider uppercase" aria-label="AbuQitmirLabs Home">
-        <span class="text-[#ccff00]">AbuQitmirLabs</span> .TECH
-      </a>
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-        <a href="/custom-software" class="hover:text-[#ccff00] transition-colors">Custom Software</a>
-        <a href="/web-development" class="hover:text-[#ccff00] transition-colors">Web Development</a>
-        <a href="/mobile-app-development" class="hover:text-[#ccff00] transition-colors">Mobile Apps</a>
-        <a href="/ai-agent-development" class="hover:text-[#ccff00] transition-colors">AI Agents</a>
-        <a href="/solutions/fintech" class="hover:text-[#ccff00] transition-colors">FinTech</a>
-        <a href="/solutions/healthcare" class="text-[#ccff00]">Healthcare</a>
-      </div>
-      <a href="/contact" class="px-5 py-2.5 bg-[#ccff00] text-black font-extrabold text-xs uppercase tracking-wider rounded-lg hover:scale-105 transition-all">
-        Consultation
-      </a>
-    </nav>
-  </header>
+  ${renderStaticHeader('/solutions/healthcare')}
 
-  <main class="pt-28 md:pt-36">
+  <main class="pt-24 md:pt-32">
     <!-- Breadcrumb Navigation -->
     <div class="max-w-7xl mx-auto px-6 mb-8">
       <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs font-mono text-gray-400">

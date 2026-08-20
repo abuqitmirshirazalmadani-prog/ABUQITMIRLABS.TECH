@@ -312,23 +312,13 @@ export const edTechSchema = {
   ]
 };
 
-export const edTechInitialHtml = `
-<header class="w-full bg-[#050505] border-b border-white/10 py-4 px-6">
-  <nav class="max-w-7xl mx-auto flex items-center justify-between" aria-label="Main Navigation">
-    <a href="/" class="text-xl font-bold tracking-tighter text-white" aria-label="AbuQitmirLabs Homepage">AbuQitmirLabs<span class="text-[#ccff00]">.TECH</span></a>
-    <div class="flex items-center space-x-6 text-sm font-medium text-gray-300">
-      <a href="/solutions/edtech" class="text-[#ccff00]" aria-label="EdTech Development Solutions">EdTech Solutions</a>
-      <a href="/custom-software" class="hover:text-white transition-colors" aria-label="Custom Software Engineering">Custom Software</a>
-      <a href="/web-development" class="hover:text-white transition-colors" aria-label="Web Development Services">Web Development</a>
-      <a href="/mobile-app-development" class="hover:text-white transition-colors" aria-label="Mobile App Development">Mobile Apps</a>
-      <a href="/ai-agent-development" class="hover:text-white transition-colors" aria-label="AI Agent Development">AI Agents</a>
-      <a href="/blog" class="hover:text-white transition-colors" aria-label="Engineering Blog">Blog</a>
-      <a href="/contact" class="px-4 py-2 bg-[#ccff00] text-black font-bold rounded-lg hover:bg-white transition-all" aria-label="Contact AbuQitmirLabs Studio">Contact Us</a>
-    </div>
-  </nav>
-</header>
+import { renderStaticHeader } from './sharedStaticHeader';
 
-<main id="main-content" class="min-h-screen bg-[#050505] text-white">
+export const edTechInitialHtml = `
+<div class="min-h-screen bg-[#050505] text-white">
+  ${renderStaticHeader('/solutions/edtech')}
+
+  <main id="main-content" class="min-h-screen bg-[#050505] text-white pt-24 md:pt-32">
   <!-- Hero Section with EXACT Single H1 -->
   <section class="py-20 md:py-28 border-b border-white/10 px-6 max-w-7xl mx-auto" aria-labelledby="edtech-hero-heading">
     <div class="inline-block px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[#ccff00] text-xs font-mono uppercase tracking-widest mb-6">

@@ -146,26 +146,13 @@ export const customSoftwareSchema = {
   ]
 };
 
+import { renderStaticHeader } from './sharedStaticHeader';
+
 export const customSoftwareInitialHtml = `
 <div class="min-h-screen bg-[#000000] text-slate-100 font-sans antialiased">
-  <header class="border-b border-white/10 bg-black/80 backdrop-blur-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3 text-white font-bold text-xl tracking-wider" aria-label="AbuQitmirLabs Home">
-        <img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development Studio" width="40" height="40" class="rounded-lg" loading="eager" fetchpriority="high" />
-        <span>ABUQITMIRLABS</span>
-      </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm font-mono uppercase tracking-widest text-gray-300">
-        <a href="/#services" class="hover:text-[#ccff00] transition-colors">Services</a>
-        <a href="/solutions/edtech" class="hover:text-[#ccff00] transition-colors">Solutions</a>
-        <a href="/case-studies" class="hover:text-[#ccff00] transition-colors">Case Studies</a>
-        <a href="/blog" class="hover:text-[#ccff00] transition-colors">Insights</a>
-        <a href="/about/our-company" class="hover:text-[#ccff00] transition-colors">About</a>
-        <a href="/contact" class="px-5 py-2.5 rounded-lg bg-[#ccff00] text-black font-bold hover:bg-white transition-all">Start Project</a>
-      </nav>
-    </div>
-  </header>
+  ${renderStaticHeader('/custom-software')}
 
-  <main id="main-content" class="pt-12 md:pt-16 pb-24">
+  <main id="main-content" class="pt-24 md:pt-32 pb-24">
     <!-- Breadcrumbs -->
     <div class="max-w-7xl mx-auto px-6 mb-8">
       <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs font-mono text-gray-400">

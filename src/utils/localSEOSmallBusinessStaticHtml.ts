@@ -212,9 +212,13 @@ export const localSEOSmallBusinessSchema = {
   ]
 };
 
+import { renderStaticHeader } from './sharedStaticHeader';
+
 export const localSEOSmallBusinessInitialHtml = `
 <main id="main-content" class="min-h-screen bg-[#080808] text-white font-sans selection:bg-[#ccff00] selection:text-black">
-  <!-- Top Navigation Placeholder & Skip Target -->
+  ${renderStaticHeader('/local-seo-for-small-business')}
+
+  <!-- Breadcrumbs & Content -->
   <div class="pt-28 md:pt-32 max-w-[1400px] mx-auto px-6 md:px-12">
     <nav aria-label="Breadcrumb" class="text-xs font-mono text-zinc-400 mb-6">
       <ol class="flex items-center gap-2">

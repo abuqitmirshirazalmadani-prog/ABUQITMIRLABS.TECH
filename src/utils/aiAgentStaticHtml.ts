@@ -331,34 +331,12 @@ export const aiAgentSchema = {
   ]
 };
 
+import { renderStaticHeader } from './sharedStaticHeader';
+
 export const aiAgentInitialHtml = `
 <div id="ai-agent-development-root" class="bg-[#000000] text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]/30 selection:text-white">
-  <!-- Skip to Content Accessible Link -->
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#ccff00] focus:text-black focus:font-bold focus:rounded-md focus:shadow-lg">
-    Skip to content
-  </a>
-
-  <!-- Header Navigation -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3">
-        <img src="/logo.png" alt="AbuQitmirLabs Logo" class="h-10 w-auto" width="40" height="40" />
-        <span class="text-white font-bold text-lg tracking-wider">AbuQitmirLabs</span>
-      </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm uppercase tracking-wider text-slate-300 font-medium">
-        <a href="/" class="hover:text-[#ccff00] transition-colors">Home</a>
-        <a href="/custom-software" class="hover:text-[#ccff00] transition-colors">Custom Software</a>
-        <a href="/web-development" class="hover:text-[#ccff00] transition-colors">Web Development</a>
-        <a href="/mobile-app-development" class="hover:text-[#ccff00] transition-colors">Mobile Apps</a>
-        <a href="/ai-agent-development" class="text-[#ccff00] transition-colors">AI Agents</a>
-        <a href="/seo-mastery" class="hover:text-[#ccff00] transition-colors">SEO Mastery</a>
-        <a href="/solutions/fintech" class="hover:text-[#ccff00] transition-colors">Fintech</a>
-        <a href="/solutions/healthcare" class="hover:text-[#ccff00] transition-colors">Healthcare</a>
-        <a href="/about/our-company" class="hover:text-[#ccff00] transition-colors">About</a>
-        <a href="/contact" class="px-5 py-2.5 rounded-xl bg-white text-black font-bold hover:bg-slate-200 transition-colors">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <!-- Skip to Content & Header Navigation synchronized with Header.tsx -->
+  ${renderStaticHeader('/ai-agent-development')}
 
   <!-- Breadcrumbs -->
   <div class="pt-28 pb-4 max-w-7xl mx-auto px-6">

@@ -360,28 +360,11 @@ export const eCommerceSchema = {
   ]
 };
 
+import { renderStaticHeader } from './sharedStaticHeader';
+
 export const eCommerceInitialHtml = `
 <div class="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
-  <header class="fixed top-0 left-0 right-0 z-50 bg-[#050505]/80 backdrop-blur-xl border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-[#ccff00] flex items-center justify-center font-black text-black text-xl">A</div>
-        <span class="font-extrabold text-xl tracking-tight text-white">AbuQitmirLabs</span>
-      </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-        <a href="/#services" class="hover:text-[#ccff00] transition-colors">Solutions</a>
-        <a href="/custom-software" class="hover:text-[#ccff00] transition-colors">Custom Software</a>
-        <a href="/web-development" class="hover:text-[#ccff00] transition-colors">Web Development</a>
-        <a href="/mobile-app-development" class="hover:text-[#ccff00] transition-colors">Mobile Apps</a>
-        <a href="/solutions/ai-automation" class="hover:text-[#ccff00] transition-colors">AI Automation</a>
-        <a href="/case-studies" class="hover:text-[#ccff00] transition-colors">Case Studies</a>
-        <a href="/about/our-company" class="hover:text-[#ccff00] transition-colors">About</a>
-      </nav>
-      <a href="/contact" class="px-5 py-2.5 rounded-xl bg-[#ccff00] text-black font-bold text-sm uppercase tracking-wider hover:bg-[#b8e600] transition-colors">
-        Get Started
-      </a>
-    </div>
-  </header>
+  ${renderStaticHeader('/solutions/e-commerce')}
 
   <main class="pt-24 md:pt-32">
     <!-- Breadcrumb Section -->

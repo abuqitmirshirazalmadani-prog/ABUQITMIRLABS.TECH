@@ -74,7 +74,9 @@ const TrustSection = () => {
                             variants={fadeInSlide}
                             className="p-8 bg-white/5 border border-white/10 rounded-2xl relative flex flex-col"
                         >
-                            <MagicText text="Trust Signals & Authority" className="text-sm text-neutral-400 font-bold tracking-widest uppercase mb-2" />
+                            <span className="text-sm text-neutral-400 font-bold tracking-widest uppercase mb-2 block">
+                                Trust Signals &amp; Authority
+                            </span>
                             <AnimatedShinyText 
                                 text="3x Faster ROI, Verified Excellence" 
                                 textClassName="text-3xl md:text-4xl lg:text-5xl leading-tight"
@@ -86,34 +88,33 @@ const TrustSection = () => {
                                     <TrendingUp className="h-5 w-5 text-[#ccff00] shrink-0" />
                                     <div>
                                         <AnimatedBreathingText text="Data-Driven ROI Focus" className="font-bold text-white block" />
-                                        <MagicText text="We measure success by your revenue growth." className="text-neutral-400" />
+                                        <p className="text-neutral-400 text-sm mt-0.5">We measure success by your revenue growth.</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3 text-sm text-neutral-200">
                                     <Lock className="h-5 w-5 text-[#ccff00] shrink-0" />
                                     <div>
                                         <AnimatedBreathingText text="Enterprise-Grade Security" className="font-bold text-white block" />
-                                        <MagicText text="100% secure, scalable, and robust architecture." className="text-neutral-400" />
+                                        <p className="text-neutral-400 text-sm mt-0.5">100% secure, scalable, and robust architecture.</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3 text-sm text-neutral-200">
                                     <Award className="h-5 w-5 text-[#ccff00] shrink-0" />
                                     <div>
                                         <AnimatedBreathingText text="E-E-A-T Compliant" className="font-bold text-white block" />
-                                        <MagicText text="Proven experience, expertise, and authority." className="text-neutral-400" />
+                                        <p className="text-neutral-400 text-sm mt-0.5">Proven experience, expertise, and authority.</p>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="mt-auto pt-8">
-                                <div className="rounded-xl border p-5 border-white/10 bg-black/30 backdrop-blur-md">
+                                <div className="rounded-xl border p-5 border-white/10 bg-black/40 backdrop-blur-md relative overflow-hidden">
                                     <div className="flex items-center gap-1 text-[#ccff00] mb-3">
                                         {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
                                     </div>
-                                    <MagicText 
-                                        text='"AbuQitmirLabs doesn&apos;t just build websites—they architect growth engines. Their strategic thinking transformed our digital presence."'
-                                        className="text-sm text-neutral-300 italic"
-                                    />
+                                    <blockquote className="text-sm text-neutral-200 italic font-serif leading-relaxed">
+                                        &ldquo;AbuQitmirLabs doesn&apos;t just build websites—they architect growth engines. Their strategic thinking transformed our digital presence.&rdquo;
+                                    </blockquote>
                                     <div className="mt-4 flex items-center gap-3">
                                         <div className="h-8 w-8 rounded-full bg-gradient-to-br from-[#ccff00] to-emerald-500"></div>
                                         <div className="text-sm">
