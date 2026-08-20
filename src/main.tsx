@@ -12,6 +12,11 @@ if (container && container.hasChildNodes() && container.children.length > 0) {
     <StrictMode>
       <App />
     </StrictMode>,
+    {
+      onRecoverableError(error, errorInfo) {
+        console.warn('[Hydration Notice]:', error, errorInfo);
+      },
+    }
   );
 } else if (container) {
   createRoot(container).render(

@@ -41,13 +41,6 @@ export default function HomePage() {
         <meta name="twitter:title" content="Custom Software &amp; AI App Development Company | AbuQitmirLabs" />
         <meta name="twitter:description" content="AbuQitmirLabs is a custom software &amp; AI development company delivering scalable web platforms, mobile apps, AI agents, and technical SEO for global businesses." />
         <meta name="twitter:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
-
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(homeSchema)
-          }}
-        />
       </Helmet>
 
       <Header />

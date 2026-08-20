@@ -90,14 +90,19 @@ let successCount = 0;
 
 for (const routeUrl of routes) {
   try {
-    const { appHtml, helmet } = renderFullApp(routeUrl);
+    const { bodyHtml, headTags, helmet } = renderFullApp(routeUrl);
     
     let html = baseTemplate;
 
-    // Replace #root contents with exact React SSR HTML
-    html = html.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${appHtml}</div>`);
+    // 1. Inject pure, clean React SSR DOM tree inside #root with 100% hydration match
+    html = html.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${bodyHtml}</div>`);
 
-    // Update canonical link
+    // 2. Inject hoisted head tags (preloads, canonical, metadata) into <head>
+    if (headTags && headTags.trim().length > 0) {
+      html = html.replace('</head>', `  ${headTags}\n</head>`);
+    }
+
+    // 3. Update canonical link
     const canonicalUrl = `https://www.abuqitmirlabs.tech${routeUrl === '/' ? '/' : routeUrl}`;
     html = html.replace(/<link\s+rel="canonical"[^>]*\/?>/gi, '');
     html = html.replace('</head>', `  <link rel="canonical" data-rh="true" href="${canonicalUrl}" />\n</head>`);
@@ -115,7 +120,7 @@ for (const routeUrl of routes) {
     }
 
     successCount++;
-    console.log(`✓ [SSG Rendered] ${routeUrl} (${appHtml.length} bytes inside #root)`);
+    console.log(`✓ [SSG Rendered] ${routeUrl} (${bodyHtml.length} bytes inside #root)`);
   } catch (err) {
     console.error(`⚠️ [SSG Warning] Failed to render route ${routeUrl}:`, err);
   }

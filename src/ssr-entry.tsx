@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
@@ -40,6 +40,7 @@ import AustraliaMarketPage from './pages/AustraliaMarketPage';
 import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
 import BlogPostPage from './pages/BlogPostPage';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const FloatingWhatsApp = () => (
   <a 
@@ -75,54 +76,71 @@ const FloatingWhatsApp = () => (
 export function renderFullApp(url: string = '/') {
   const helmetContext: any = {};
   
-  const appHtml = renderToString(
+  const rawHtml = renderToString(
     <HelmetProvider context={helmetContext}>
       <StaticRouter location={url}>
         <FloatingWhatsApp />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/about/our-company" element={<OurCompanyPage />} />
-          <Route path="/about/our-team" element={<OurTeamPage />} />
-          <Route path="/about/our-process" element={<OurProcessPage />} />
-          <Route path="/about/careers" element={<CareersPage />} />
-          <Route path="/solutions/fintech" element={<FintechSolutionsPage />} />
-          <Route path="/solutions/healthcare" element={<HealthcarePlatformsPage />} />
-          <Route path="/solutions/ai-automation" element={<AIAutomationPage />} />
-          <Route path="/solutions/e-commerce" element={<ECommerceDevelopmentPage />} />
-          <Route path="/solutions/edtech" element={<EdTechPlatformsPage />} />
-          <Route path="/news" element={<Navigate to="/news/latest" replace />} />
-          <Route path="/news/latest" element={<LatestNewsPage />} />
-          <Route path="/news/press-releases" element={<PressReleasesPage />} />
-          <Route path="/news/industry-insights" element={<IndustryInsightsPage />} />
-          <Route path="/news/all" element={<AllNewsPage />} />
-          <Route path="/custom-software" element={<CustomSoftwarePage />} />
-          <Route path="/mobile-app-development" element={<MobileAppDevelopmentPage />} />
-          <Route path="/web-development" element={<WebDevelopmentPage />} />
-          <Route path="/ai-agent-development" element={<AIAgentDevelopmentPage />} />
-          <Route path="/seo-mastery" element={<SEOPage />} />
-          <Route path="/local-seo-for-small-business" element={<LocalSEOSmallBusinessPage />} />
-          <Route path="/graphics-design" element={<GraphicsDesignPage />} />
-          <Route path="/content-writing" element={<ContentWritingPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/us-market" element={<USMarketPage />} />
-          <Route path="/uk-market" element={<UKMarketPage />} />
-          <Route path="/pakistan-market" element={<PakistanMarketPage />} />
-          <Route path="/canada-market" element={<CanadaMarketPage />} />
-          <Route path="/poland-market" element={<PolandMarketPage />} />
-          <Route path="/australia-market" element={<AustraliaMarketPage />} />
-          <Route path="/terms" element={<TermsPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/case-studies" element={<CaseStudiesPage />} />
-          <Route path="/blog/:slug" element={<BlogPostPage />} />
-        </Routes>
+        <ErrorBoundary>
+          <Suspense fallback={null}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/about/our-company" element={<OurCompanyPage />} />
+              <Route path="/about/our-team" element={<OurTeamPage />} />
+              <Route path="/about/our-process" element={<OurProcessPage />} />
+              <Route path="/about/careers" element={<CareersPage />} />
+              <Route path="/solutions/fintech" element={<FintechSolutionsPage />} />
+              <Route path="/solutions/healthcare" element={<HealthcarePlatformsPage />} />
+              <Route path="/solutions/ai-automation" element={<AIAutomationPage />} />
+              <Route path="/solutions/e-commerce" element={<ECommerceDevelopmentPage />} />
+              <Route path="/solutions/edtech" element={<EdTechPlatformsPage />} />
+              <Route path="/news" element={<Navigate to="/news/latest" replace />} />
+              <Route path="/news/latest" element={<LatestNewsPage />} />
+              <Route path="/news/press-releases" element={<PressReleasesPage />} />
+              <Route path="/news/industry-insights" element={<IndustryInsightsPage />} />
+              <Route path="/news/all" element={<AllNewsPage />} />
+              <Route path="/custom-software" element={<CustomSoftwarePage />} />
+              <Route path="/mobile-app-development" element={<MobileAppDevelopmentPage />} />
+              <Route path="/web-development" element={<WebDevelopmentPage />} />
+              <Route path="/ai-agent-development" element={<AIAgentDevelopmentPage />} />
+              <Route path="/seo-mastery" element={<SEOPage />} />
+              <Route path="/local-seo-for-small-business" element={<LocalSEOSmallBusinessPage />} />
+              <Route path="/graphics-design" element={<GraphicsDesignPage />} />
+              <Route path="/content-writing" element={<ContentWritingPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/us-market" element={<USMarketPage />} />
+              <Route path="/uk-market" element={<UKMarketPage />} />
+              <Route path="/pakistan-market" element={<PakistanMarketPage />} />
+              <Route path="/canada-market" element={<CanadaMarketPage />} />
+              <Route path="/poland-market" element={<PolandMarketPage />} />
+              <Route path="/australia-market" element={<AustraliaMarketPage />} />
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/case-studies" element={<CaseStudiesPage />} />
+              <Route path="/blog/:slug" element={<BlogPostPage />} />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
       </StaticRouter>
     </HelmetProvider>
   );
 
+  // Extract all hoisted head tags (preloads, titles, meta tags hoisted by React / Helmet)
+  let headTags = '';
+  let bodyHtml = rawHtml;
+  
+  const headElementsRegex = /^(?:<link\b[^>]*\/?>|<meta\b[^>]*\/?>|<title\b[^>]*>[\s\S]*?<\/title>|<style\b[^>]*>[\s\S]*?<\/style>)+/i;
+  const match = rawHtml.match(headElementsRegex);
+  if (match) {
+    headTags = match[0];
+    bodyHtml = rawHtml.substring(match[0].length);
+  }
+
   return {
-    appHtml,
+    rawHtml,
+    headTags,
+    bodyHtml,
     helmet: helmetContext.helmet
   };
 }
