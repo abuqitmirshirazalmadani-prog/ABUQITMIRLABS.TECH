@@ -471,10 +471,15 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
 
         const routeIndexPath = path.join(distPath, cleanPath, 'index.html');
         const rootIndexPath = path.join(distPath, 'index.html');
+        const spaShellPath = path.join(distPath, 'spa-shell.html');
 
         let template = '';
         if (cleanPath !== '/' && cleanPath !== '' && fs.existsSync(routeIndexPath)) {
           template = fs.readFileSync(routeIndexPath, 'utf-8');
+        } else if (cleanPath === '/' || cleanPath === '') {
+          template = fs.readFileSync(rootIndexPath, 'utf-8');
+        } else if (fs.existsSync(spaShellPath)) {
+          template = fs.readFileSync(spaShellPath, 'utf-8');
         } else if (fs.existsSync(rootIndexPath)) {
           template = fs.readFileSync(rootIndexPath, 'utf-8');
         } else {

@@ -49,6 +49,10 @@ if (!fs.existsSync(indexHtmlTemplatePath)) {
 
 const baseTemplate = fs.readFileSync(indexHtmlTemplatePath, 'utf8');
 
+// Preserve a clean, unpopulated SPA shell for dynamic client-side routes (e.g. dynamic blog posts, admin dashboard)
+const spaShellPath = path.join(distDir, 'spa-shell.html');
+fs.writeFileSync(spaShellPath, baseTemplate, 'utf8');
+
 const routes = [
   '/',
   '/about',
@@ -71,6 +75,9 @@ const routes = [
   '/ai-agent-development',
   '/seo-mastery',
   '/local-seo-for-small-business',
+  '/local-seo-citation-building',
+  '/white-label-local-seo',
+  '/local-seo-audit',
   '/graphics-design',
   '/content-writing',
   '/contact',
@@ -83,7 +90,14 @@ const routes = [
   '/terms',
   '/privacy',
   '/blog',
-  '/case-studies'
+  '/case-studies',
+  '/case-studies/tajweedpage',
+  '/website-contract',
+  '/brand-assets',
+  '/blog/the-complete-guide-to-rag-ai-integration-for-startups',
+  '/blog/custom-ai-solutions-for-corporate-events-2026-guide',
+  '/blog/custom-web-development-vs-website-templates-2026-guide',
+  '/blog/ai-agent-development-agency-vs-in-house'
 ];
 
 let successCount = 0;
@@ -94,8 +108,8 @@ for (const routeUrl of routes) {
     
     let html = baseTemplate;
 
-    // 1. Inject pure, clean React SSR DOM tree inside #root with 100% hydration match
-    html = html.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${bodyHtml}</div>`);
+    // 1. Inject pure, clean React SSR DOM tree inside #root with explicit route identifier
+    html = html.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root" data-rendered-route="${routeUrl}">${bodyHtml}</div>`);
 
     // 2. Inject hoisted head tags (preloads, canonical, metadata) into <head>
     if (headTags && headTags.trim().length > 0) {
