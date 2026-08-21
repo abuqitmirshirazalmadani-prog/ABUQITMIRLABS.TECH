@@ -38,12 +38,27 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
     useEffect(() => {
         const fetchPost = async () => {
             if (!slug) return;
-            if (slug === 'rag-ai-integration-for-startups' || slug.includes('rag-ai-integration')) {
+
+            // 1. Prioritize live Firestore database post
+            try {
+                const q = query(collection(db, 'posts'), where('slug', '==', slug), where('published', '==', true));
+                const snapshot = await getDocs(q);
+                if (!snapshot.empty) {
+                    setPost(snapshot.docs[0].data() as Post);
+                    setLoading(false);
+                    return;
+                }
+            } catch (error) {
+                console.warn('Firestore fetch notice (falling back to static cache if available):', error);
+            }
+
+            // 2. Static fallbacks for core pre-rendered articles
+            if (slug === 'the-complete-guide-to-rag-ai-integration-for-startups' || slug === 'rag-ai-integration-for-startups' || slug.includes('rag-ai-integration')) {
                 setPost({
-                    title: "RAG AI Integration for Startups: The Complete Guide",
+                    title: "The Complete Guide to RAG AI Integration for Startups",
                     content: ragAiBlogContent,
-                    coverImage: "/blog/rag-ai-integration-cover.svg",
-                    coverImageAlt: "RAG AI Integration for Startups Guide by AbuQitmirLabs",
+                    coverImage: "https://i.postimg.cc/Pr2j0Kgr/The-Complete-Guide-to-RAG-AI-Integration-for-Startups.jpg",
+                    coverImageAlt: "The Complete Guide to RAG AI Integration for Startups by AbuQitmirLabs",
                     category: "AI & Automation",
                     createdAt: "2026-08-18",
                     author: "AbuQitmirLabs",
@@ -1287,17 +1302,7 @@ Ready to engineer custom AI agents for patient intake, clinical summarization, o
                 setLoading(false);
                 return;
             }
-            try {
-                const q = query(collection(db, 'posts'), where('slug', '==', slug), where('published', '==', true));
-                const snapshot = await getDocs(q);
-                if (!snapshot.empty) {
-                    setPost(snapshot.docs[0].data() as Post);
-                }
-            } catch (error) {
-                handleFirestoreError(error, OperationType.GET, `posts/${slug}`);
-            } finally {
-                setLoading(false);
-            }
+            setLoading(false);
         };
 
         fetchPost();
@@ -6006,12 +6011,11 @@ Ready to engineer custom AI agents for patient intake, clinical summarization, o
                             <img 
                                 src={post.coverImage} 
                                 alt={post.coverImageAlt || `futuristic ${post.title} feature illustration`} 
+                                referrerPolicy="no-referrer"
                                 onError={(e) => {
                                     const target = e.target as HTMLImageElement;
-                                    if (!target.src.includes('rag-ai-integration-cover.svg')) {
-                                        target.src = '/blog/rag-ai-integration-cover.svg';
-                                    } else if (!target.src.includes('logo.png')) {
-                                        target.src = '/logo.png';
+                                    if (!target.src.includes('logo.png')) {
+                                        target.src = 'https://www.abuqitmirlabs.tech/logo.png';
                                     }
                                 }}
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 

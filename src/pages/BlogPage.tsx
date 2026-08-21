@@ -42,10 +42,10 @@ const BlogPage = () => {
     const FALLBACK_POSTS: Post[] = [
         {
             id: 'rag-ai-integration-for-startups',
-            title: 'RAG AI Integration for Startups: The Complete Guide',
+            title: 'The Complete Guide to RAG AI Integration for Startups',
             excerpt: 'How startups use RAG to ground AI in real data — architecture, cost, RAG vs fine-tuning, and build vs hire, with a real RAG case study.',
             slug: 'rag-ai-integration-for-startups',
-            coverImage: '/blog/rag-ai-integration-cover.svg',
+            coverImage: 'https://i.postimg.cc/Pr2j0Kgr/The-Complete-Guide-to-RAG-AI-Integration-for-Startups.jpg',
             category: 'AI',
             createdAt: '2026-08-18',
             author: 'AbuQitmirLabs',
@@ -269,9 +269,12 @@ const BlogPage = () => {
                                                 alt={featuredPost.coverImageAlt || `futuristic ${featuredPost.title} featured article cover image`}
                                                 decoding="async"
                                                 fetchPriority="high"
+                                                referrerPolicy="no-referrer"
                                                 onError={(e) => {
                                                     const target = e.target as HTMLImageElement;
-                                                    target.src = '/blog/rag-ai-integration-cover.svg';
+                                                    if (!target.src.includes('logo.png')) {
+                                                        target.src = 'https://www.abuqitmirlabs.tech/logo.png';
+                                                    }
                                                 }}
                                             />
                                             <div className="absolute top-6 left-6">
@@ -378,9 +381,12 @@ const BlogPage = () => {
                                                             alt={post.coverImageAlt || `futuristic ${post.title} blog post thumbnail`}
                                                             loading="lazy"
                                                             decoding="async"
+                                                            referrerPolicy="no-referrer"
                                                             onError={(e) => {
                                                                 const target = e.target as HTMLImageElement;
-                                                                target.src = '/blog/rag-ai-integration-cover.svg';
+                                                                if (!target.src.includes('logo.png')) {
+                                                                    target.src = 'https://www.abuqitmirlabs.tech/logo.png';
+                                                                }
                                                             }}
                                                         />
                                                     </div>
