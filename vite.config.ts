@@ -321,6 +321,28 @@ Sitemap: ${hostname}/sitemap.xml`;
             routeHtml = routeHtml.replace(/<link\s+rel="canonical"[^>]*\/?>/gi, '');
             routeHtml = routeHtml.replace('</head>', `  <link rel="canonical" data-rh="true" href="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
             
+            // Helper to cleanly replace #root inner contents without leaving residual DOM elements
+            const replaceRootElement = (htmlSource: string, newInnerHtml: string, renderedRouteAttr?: string) => {
+              const startMatch = htmlSource.match(/<div\s+id=["']root["'][^>]*>/i);
+              if (!startMatch || startMatch.index === undefined) {
+                return htmlSource;
+              }
+              const startIdx = startMatch.index;
+              const scriptOrBodyMatch = htmlSource.slice(startIdx).match(/(<script\b|<\/body>)/i);
+              if (scriptOrBodyMatch && scriptOrBodyMatch.index !== undefined) {
+                const segment = htmlSource.slice(startIdx, startIdx + scriptOrBodyMatch.index);
+                const lastCloseDivIdx = segment.lastIndexOf('</div>');
+                if (lastCloseDivIdx !== -1) {
+                  const endIdx = startIdx + lastCloseDivIdx + '</div>'.length;
+                  const attrStr = renderedRouteAttr ? ` data-rendered-route="${renderedRouteAttr}"` : '';
+                  const newRoot = `<div id="root"${attrStr}>${newInnerHtml}</div>`;
+                  return htmlSource.slice(0, startIdx) + newRoot + htmlSource.slice(endIdx);
+                }
+              }
+              const attrStr = renderedRouteAttr ? ` data-rendered-route="${renderedRouteAttr}"` : '';
+              return htmlSource.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root"${attrStr}>${newInnerHtml}</div>`);
+            };
+
             // Special authoritative injection for / (Homepage)
             if (route.url === '/') {
               // 1. Inject authoritative JSON-LD schema
@@ -328,7 +350,7 @@ Sitemap: ${hostname}/sitemap.xml`;
               routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(homeSchema, null, 2)}\n  </script>\n</head>`);
 
               // 2. Inject full authentic crawlable HTML inside #root
-              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${homeInitialHtml}</div>`);
+              routeHtml = replaceRootElement(routeHtml, homeInitialHtml, '/');
 
               // 3. Write directly to indexHtmlPath
               fs.writeFileSync(indexHtmlPath, routeHtml);
@@ -342,7 +364,7 @@ Sitemap: ${hostname}/sitemap.xml`;
               routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(aiAgentSchema, null, 2)}\n  </script>\n</head>`);
 
               // 2. Inject full authentic crawlable HTML inside #root
-              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${aiAgentInitialHtml}</div>`);
+              routeHtml = replaceRootElement(routeHtml, aiAgentInitialHtml, '/ai-agent-development');
 
               const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
               fs.writeFileSync(targetPath, routeHtml);
@@ -356,7 +378,7 @@ Sitemap: ${hostname}/sitemap.xml`;
               routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(graphicsDesignSchema, null, 2)}\n  </script>\n</head>`);
 
               // 2. Inject full authentic crawlable HTML inside #root
-              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${graphicsDesignInitialHtml}</div>`);
+              routeHtml = replaceRootElement(routeHtml, graphicsDesignInitialHtml, '/graphics-design');
 
               const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
               fs.writeFileSync(targetPath, routeHtml);
@@ -370,7 +392,7 @@ Sitemap: ${hostname}/sitemap.xml`;
               routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(fintechSchema, null, 2)}\n  </script>\n</head>`);
 
               // 2. Inject full authentic crawlable HTML inside #root
-              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${fintechInitialHtml}</div>`);
+              routeHtml = replaceRootElement(routeHtml, fintechInitialHtml, '/solutions/fintech');
 
               const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
               fs.writeFileSync(targetPath, routeHtml);
@@ -384,7 +406,7 @@ Sitemap: ${hostname}/sitemap.xml`;
               routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(healthcareSchema, null, 2)}\n  </script>\n</head>`);
 
               // 2. Inject full authentic crawlable HTML inside #root
-              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${healthcareInitialHtml}</div>`);
+              routeHtml = replaceRootElement(routeHtml, healthcareInitialHtml, '/solutions/healthcare');
 
               const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
               fs.writeFileSync(targetPath, routeHtml);
@@ -398,7 +420,7 @@ Sitemap: ${hostname}/sitemap.xml`;
               routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(aiAutomationSchema, null, 2)}\n  </script>\n</head>`);
 
               // 2. Inject full authentic crawlable HTML inside #root
-              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${aiAutomationInitialHtml}</div>`);
+              routeHtml = replaceRootElement(routeHtml, aiAutomationInitialHtml, '/solutions/ai-automation');
 
               const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
               fs.writeFileSync(targetPath, routeHtml);
@@ -412,7 +434,7 @@ Sitemap: ${hostname}/sitemap.xml`;
               routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(eCommerceSchema, null, 2)}\n  </script>\n</head>`);
 
               // 2. Inject full authentic crawlable HTML inside #root
-              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${eCommerceInitialHtml}</div>`);
+              routeHtml = replaceRootElement(routeHtml, eCommerceInitialHtml, '/solutions/e-commerce');
 
               const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
               fs.writeFileSync(targetPath, routeHtml);
@@ -426,7 +448,7 @@ Sitemap: ${hostname}/sitemap.xml`;
               routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(edTechSchema, null, 2)}\n  </script>\n</head>`);
 
               // 2. Inject full authentic crawlable HTML inside #root
-              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${edTechInitialHtml}</div>`);
+              routeHtml = replaceRootElement(routeHtml, edTechInitialHtml, '/solutions/edtech');
 
               const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
               fs.writeFileSync(targetPath, routeHtml);
@@ -440,7 +462,7 @@ Sitemap: ${hostname}/sitemap.xml`;
               routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(customSoftwareSchema, null, 2)}\n  </script>\n</head>`);
 
               // 2. Inject full authentic crawlable HTML inside #root
-              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${customSoftwareInitialHtml}</div>`);
+              routeHtml = replaceRootElement(routeHtml, customSoftwareInitialHtml, '/custom-software');
 
               const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
               fs.writeFileSync(targetPath, routeHtml);
@@ -454,7 +476,7 @@ Sitemap: ${hostname}/sitemap.xml`;
               routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(mobileAppSchema, null, 2)}\n  </script>\n</head>`);
 
               // 2. Inject full authentic crawlable HTML inside #root
-              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${mobileAppInitialHtml}</div>`);
+              routeHtml = replaceRootElement(routeHtml, mobileAppInitialHtml, '/mobile-app-development');
 
               const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
               fs.writeFileSync(targetPath, routeHtml);
@@ -468,7 +490,7 @@ Sitemap: ${hostname}/sitemap.xml`;
               routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(customWebDevBlogSchema, null, 2)}\n  </script>\n</head>`);
 
               // 2. Inject full authentic crawlable HTML inside #root
-              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${customWebDevBlogInitialHtml}</div>`);
+              routeHtml = replaceRootElement(routeHtml, customWebDevBlogInitialHtml, '/blog/custom-web-development-company');
 
               const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
               fs.writeFileSync(targetPath, routeHtml);
@@ -482,7 +504,7 @@ Sitemap: ${hostname}/sitemap.xml`;
               routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(localSEOSmallBusinessSchema, null, 2)}\n  </script>\n</head>`);
 
               // 2. Inject full authentic crawlable HTML inside #root
-              routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${localSEOSmallBusinessInitialHtml}</div>`);
+              routeHtml = replaceRootElement(routeHtml, localSEOSmallBusinessInitialHtml, '/local-seo-for-small-business');
 
               const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
               fs.writeFileSync(targetPath, routeHtml);
@@ -573,7 +595,7 @@ Sitemap: ${hostname}/sitemap.xml`;
             `;
 
             // Inject full authentic crawlable HTML inside #root
-            routeHtml = routeHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${fallbackPrerenderHtml}</div>`);
+            routeHtml = replaceRootElement(routeHtml, fallbackPrerenderHtml, route.url);
             
             const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
             fs.writeFileSync(targetPath, routeHtml);

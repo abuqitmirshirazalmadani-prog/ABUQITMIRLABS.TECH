@@ -7,8 +7,9 @@ import { ArrowLeft, Calendar, User, Clock, Share2, Twitter, Linkedin, Facebook, 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
-import Markdown from 'react-markdown';
+import MarkdownRenderer from '../components/MarkdownRenderer';
 import remarkGfm from 'remark-gfm';
+import { ragAiBlogContent } from '../utils/ragAiBlogStaticData';
 
 interface Post {
   title: string;
@@ -24,6 +25,31 @@ interface Post {
   helperImages?: Array<{ url: string; caption: string }>;
 }
 
+const STATIC_POSTS_MAP: Record<string, Partial<Post>> = {
+  'the-complete-guide-to-rag-ai-integration-for-startups': {
+    title: 'The Complete Guide to RAG AI Integration for Startups',
+    content: ragAiBlogContent,
+    excerpt: 'How startups use RAG to ground AI in real data — architecture, cost, RAG vs fine-tuning, and build vs hire, with a real RAG case study.',
+    coverImage: 'https://i.postimg.cc/Pr2j0Kgr/The-Complete-Guide-to-RAG-AI-Integration-for-Startups.jpg',
+    coverImageAlt: 'The Complete Guide to RAG AI Integration for Startups Cover Artwork',
+    category: 'AI & Automation',
+    author: 'AbuQitmirLabs Engineering',
+    createdAt: '2026-08-18',
+    tags: ['RAG', 'AI Agents', 'Startups', 'Machine Learning', 'EdTech']
+  },
+  'rag-ai-integration-for-startups': {
+    title: 'The Complete Guide to RAG AI Integration for Startups',
+    content: ragAiBlogContent,
+    excerpt: 'How startups use RAG to ground AI in real data — architecture, cost, RAG vs fine-tuning, and build vs hire, with a real RAG case study.',
+    coverImage: 'https://i.postimg.cc/Pr2j0Kgr/The-Complete-Guide-to-RAG-AI-Integration-for-Startups.jpg',
+    coverImageAlt: 'The Complete Guide to RAG AI Integration for Startups Cover Artwork',
+    category: 'AI & Automation',
+    author: 'AbuQitmirLabs Engineering',
+    createdAt: '2026-08-18',
+    tags: ['RAG', 'AI Agents', 'Startups', 'Machine Learning', 'EdTech']
+  }
+};
+
 interface BlogPostPageProps {
   overrideSlug?: string;
 }
@@ -31,8 +57,9 @@ interface BlogPostPageProps {
 const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
     const { slug: paramSlug } = useParams<{ slug: string }>();
     const slug = overrideSlug || paramSlug;
-    const [post, setPost] = useState<Post | null>(null);
-    const [loading, setLoading] = useState(true);
+    const staticFallback = slug && STATIC_POSTS_MAP[slug] ? (STATIC_POSTS_MAP[slug] as Post) : null;
+    const [post, setPost] = useState<Post | null>(staticFallback);
+    const [loading, setLoading] = useState(!staticFallback);
     const [copied, setCopied] = useState(false);
 
     useEffect(() => {
@@ -51,19 +78,27 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 const snapshot = await getDocs(q);
                 if (!snapshot.empty) {
                     setPost(snapshot.docs[0].data() as Post);
+                } else if (STATIC_POSTS_MAP[slug]) {
+                    setPost(STATIC_POSTS_MAP[slug] as Post);
                 } else {
                     setPost(null);
                 }
             } catch (error) {
-                handleFirestoreError(error, OperationType.GET, `posts/${slug}`);
-                setPost(null);
+                if (STATIC_POSTS_MAP[slug]) {
+                    setPost(STATIC_POSTS_MAP[slug] as Post);
+                } else {
+                    handleFirestoreError(error, OperationType.GET, `posts/${slug}`);
+                    setPost(null);
+                }
             } finally {
                 setLoading(false);
             }
         };
 
         fetchPost();
-        window.scrollTo(0, 0);
+        if (typeof window !== 'undefined') {
+            window.scrollTo(0, 0);
+        }
     }, [slug]);
 
     const getInjectedContent = () => {
@@ -698,7 +733,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         transition={{ delay: 0.2 }}
                         className="bg-[#0b0b0e] rounded-[2.5rem] p-8 md:p-16 border border-zinc-800/80 shadow-2xl text-zinc-200 leading-relaxed font-sans space-y-6"
                     >
-                        <Markdown 
+                        <MarkdownRenderer 
                             remarkPlugins={[remarkGfm]}
                             components={{
                                 p: ({node, ...props}) => <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans" {...props} />,
@@ -757,7 +792,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                             }}
                         >
                             {getInjectedContent()}
-                        </Markdown>
+                        </MarkdownRenderer>
                     </motion.div>
 
                     {/* Hashtags at the Bottom */}

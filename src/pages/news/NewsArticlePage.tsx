@@ -23,7 +23,7 @@ import {
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
-import Markdown from 'react-markdown';
+import MarkdownRenderer from '../../components/MarkdownRenderer';
 import remarkGfm from 'remark-gfm';
 
 export interface NewsArticle {
@@ -599,14 +599,14 @@ const NewsArticlePage = () => {
             prose-strong:text-white prose-strong:font-bold 
             prose-code:text-[#ccff00] prose-code:bg-zinc-900 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:font-mono prose-code:text-xs"
           >
-            <Markdown 
+            <MarkdownRenderer 
               remarkPlugins={[remarkGfm]}
               components={{
                 h1: ({node, ...props}) => <h2 className="text-2xl font-extrabold text-[#ccff00] mt-10 mb-4" {...props} />
               }}
             >
               {article.content || article.excerpt}
-            </Markdown>
+            </MarkdownRenderer>
           </div>
 
           {/* Media Contact Footer Box if present */}

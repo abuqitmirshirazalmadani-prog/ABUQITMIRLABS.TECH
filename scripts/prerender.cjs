@@ -47,7 +47,39 @@ if (!fs.existsSync(indexHtmlTemplatePath)) {
   process.exit(1);
 }
 
-const baseTemplate = fs.readFileSync(indexHtmlTemplatePath, 'utf8');
+// Read clean source index.html to ensure no residual pre-rendered content from previous build steps
+const rawSourceIndex = fs.readFileSync(path.join(rootDir, 'index.html'), 'utf8');
+const distIndex = fs.readFileSync(indexHtmlTemplatePath, 'utf8');
+
+// Extract built script/css tags from dist/index.html and merge with clean template
+const scriptMatches = distIndex.match(/<script\b[^>]*>[\s\S]*?<\/script>/gi) || [];
+const linkCssMatches = distIndex.match(/<link\b[^>]*rel=["']stylesheet["'][^>]*\/?>/gi) || [];
+
+// Helper to cleanly replace #root inner contents without leaving residual DOM elements
+const replaceRootElement = (htmlSource, newInnerHtml, renderedRouteAttr) => {
+  const startMatch = htmlSource.match(/<div\s+id=["']root["'][^>]*>/i);
+  if (!startMatch || startMatch.index === undefined) {
+    return htmlSource;
+  }
+  const startIdx = startMatch.index;
+  const scriptOrBodyMatch = htmlSource.slice(startIdx).match(/(<script\b|<\/body>)/i);
+  if (scriptOrBodyMatch && scriptOrBodyMatch.index !== undefined) {
+    const segment = htmlSource.slice(startIdx, startIdx + scriptOrBodyMatch.index);
+    const lastCloseDivIdx = segment.lastIndexOf('</div>');
+    if (lastCloseDivIdx !== -1) {
+      const endIdx = startIdx + lastCloseDivIdx + '</div>'.length;
+      const attrStr = renderedRouteAttr ? ` data-rendered-route="${renderedRouteAttr}"` : '';
+      const newRoot = `<div id="root"${attrStr}>${newInnerHtml}</div>`;
+      return htmlSource.slice(0, startIdx) + newRoot + htmlSource.slice(endIdx);
+    }
+  }
+  const attrStr = renderedRouteAttr ? ` data-rendered-route="${renderedRouteAttr}"` : '';
+  return htmlSource.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root"${attrStr}>${newInnerHtml}</div>`);
+};
+
+// Base template with clean empty #root
+let baseTemplate = distIndex;
+baseTemplate = replaceRootElement(baseTemplate, '', '');
 
 // Preserve a clean, unpopulated SPA shell for dynamic client-side routes (e.g. dynamic blog posts, admin dashboard)
 const spaShellPath = path.join(distDir, 'spa-shell.html');
@@ -95,9 +127,15 @@ const routes = [
   '/website-contract',
   '/brand-assets',
   '/blog/the-complete-guide-to-rag-ai-integration-for-startups',
+  '/blog/rag-ai-integration-for-startups',
   '/blog/custom-ai-solutions-for-corporate-events-2026-guide',
   '/blog/custom-web-development-vs-website-templates-2026-guide',
-  '/blog/ai-agent-development-agency-vs-in-house'
+  '/blog/custom-web-development-company-2026',
+  '/blog/custom-web-development-company',
+  '/blog/ai-agent-development-agency-vs-in-house',
+  '/blog/what-are-healthcare-ai-agents-complete-guide-2026',
+  '/blog/healthcare-software-development-solutions-2026',
+  '/blog/custom-ai-solutions-for-fintech-2026'
 ];
 
 let successCount = 0;
@@ -109,7 +147,7 @@ for (const routeUrl of routes) {
     let html = baseTemplate;
 
     // 1. Inject pure, clean React SSR DOM tree inside #root with explicit route identifier
-    html = html.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root" data-rendered-route="${routeUrl}">${bodyHtml}</div>`);
+    html = replaceRootElement(html, bodyHtml, routeUrl);
 
     // 2. Inject hoisted head tags (preloads, canonical, metadata) into <head>
     if (headTags && headTags.trim().length > 0) {
