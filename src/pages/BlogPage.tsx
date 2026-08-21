@@ -39,75 +39,6 @@ const BlogPage = () => {
         return url;
     };
 
-    const FALLBACK_POSTS: Post[] = [
-        {
-            id: 'rag-ai-integration-for-startups',
-            title: 'The Complete Guide to RAG AI Integration for Startups',
-            excerpt: 'How startups use RAG to ground AI in real data — architecture, cost, RAG vs fine-tuning, and build vs hire, with a real RAG case study.',
-            slug: 'rag-ai-integration-for-startups',
-            coverImage: 'https://i.postimg.cc/Pr2j0Kgr/The-Complete-Guide-to-RAG-AI-Integration-for-Startups.jpg',
-            category: 'AI',
-            createdAt: '2026-08-18',
-            author: 'AbuQitmirLabs',
-            tags: ['RAG AI integration', 'RAG AI integration for startups', 'retrieval augmented generation for startups', 'RAG vs fine-tuning', 'AI agent development agency', 'generative AI chatbot development']
-        },
-        {
-            id: 'custom-web-development-company',
-            title: 'Custom Web Development Company: The Complete Guide to Web Apps, SEO, Security & B2B Solutions',
-            excerpt: 'Full guide to custom web application development — covering SEO web development, B2B platforms, healthcare web apps, security, and full-stack services.',
-            slug: 'custom-web-development-company',
-            coverImage: '/blog/rag-ai-integration-cover.svg',
-            category: 'Development',
-            createdAt: '2026-08-18',
-            author: 'AbuQitmirLabs',
-            tags: ['custom web development company', 'custom web application development', 'web app development company', 'seo web development', 'b2b web development', 'healthcare web development', 'full stack web developer', 'web development and security']
-        },
-        {
-            id: 'what-are-healthcare-ai-agents-complete-guide-2026',
-            title: 'What Are Healthcare AI Agents? Complete 2026 Guide',
-            excerpt: 'Healthcare AI agents in 2026: autonomous architectures, EHR integration, RAG, clinical triage, HIPAA-aligned security, and engineering workflows.',
-            slug: 'what-are-healthcare-ai-agents-complete-guide-2026',
-            coverImage: 'https://www.abuqitmirlabs.tech/logo.png',
-            category: 'AI',
-            createdAt: '2026-08-16',
-            author: 'AbuQitmir Mohammad Shiraz Al-Madani',
-            tags: ['healthcare AI agents', 'AI agents in healthcare', 'healthcare AI agent development', 'EHR AI integration', 'clinical AI agents', 'HIPAA compliant AI agents']
-        },
-        {
-            id: 'healthcare-software-development-solutions-2026',
-            title: 'Healthcare Software Development Solutions: The Complete 2026 Guide',
-            excerpt: 'A complete 2026 guide to healthcare software development — EHR systems, telemedicine platforms, clinical workflow tools, and compliance requirements.',
-            slug: 'healthcare-software-development-solutions-2026',
-            coverImage: 'https://www.abuqitmirlabs.tech/images/healthcare-software-development-hero.jpg',
-            category: 'Software',
-            createdAt: '2026-07-12',
-            author: 'AbuQitmir Mohammad Shiraz Al-Madani',
-            tags: ['healthcare software development', 'custom EHR', 'telemedicine', 'medical software']
-        },
-        {
-            id: 'agentic-ai-production-failures',
-            title: 'Agentic AI: 7 Production Failures & Architectural Fixes',
-            excerpt: 'Agentic AI systems fail in production due to architecture, not models. Learn 7 failure modes: infinite loops, memory fragmentation, over-scoped permissions, and how to fix them.',
-            slug: 'agentic-ai-production-failures',
-            coverImage: 'https://www.abuqitmirlabs.tech/logo.png',
-            category: 'AI',
-            createdAt: '2026-08-02',
-            author: 'AbuQitmir Mohammad Shiraz Al-Madani',
-            tags: ['agentic AI', 'production AI', 'AI architecture', 'LLM engineering']
-        },
-        {
-            id: 'custom-ai-solutions-for-fintech-2026',
-            title: 'Custom AI Solutions for Fintech: Fraud Detection, Underwriting & RAG',
-            excerpt: 'Custom AI solutions for fintech in 2026 — real-time fraud detection, AI-assisted underwriting, and RAG-based support.',
-            slug: 'custom-ai-solutions-for-fintech-2026',
-            coverImage: 'https://www.abuqitmirlabs.tech/logo.png',
-            category: 'AI',
-            createdAt: '2026-08-09',
-            author: 'AbuQitmirLabs .TECH',
-            tags: ['fintech software development', 'AI fraud detection', 'AI underwriting']
-        }
-    ];
-
     useEffect(() => {
         const fetchPosts = async () => {
             try {
@@ -121,14 +52,10 @@ const BlogPage = () => {
                     id: doc.id,
                     ...doc.data()
                 })) as Post[];
-                if (fetchedPosts.length > 0) {
-                    setPosts(fetchedPosts);
-                } else {
-                    setPosts(FALLBACK_POSTS);
-                }
+                setPosts(fetchedPosts);
             } catch (error) {
                 handleFirestoreError(error, OperationType.LIST, 'posts');
-                setPosts(FALLBACK_POSTS);
+                setPosts([]);
             } finally {
                 setLoading(false);
             }

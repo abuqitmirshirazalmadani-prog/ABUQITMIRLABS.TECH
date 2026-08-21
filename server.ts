@@ -98,6 +98,33 @@ async function startServer() {
     });
   });
 
+  // Permanent (301) Blog Slug Redirects (preserving SEO equity & matching canonical Firestore slugs)
+  const BLOG_SLUG_REDIRECTS: Record<string, string> = {
+    'rag-ai-integration-for-startups': 'the-complete-guide-to-rag-ai-integration-for-startups',
+    'rag-ai-integration-startups': 'the-complete-guide-to-rag-ai-integration-for-startups',
+    'rag-ai-integration-for-startups-abuqitmirlabs': 'the-complete-guide-to-rag-ai-integration-for-startups',
+    'custom-web-development-company': 'custom-web-development-company-2026-built-in-visibility',
+    'custom-web-development-company-2026': 'custom-web-development-company-2026-built-in-visibility',
+    'custom-web-development-vs-templates': 'custom-web-development-vs-website-templates-2026-guide',
+    'custom-ai-solutions-for-corporate-events': 'custom-ai-solutions-for-corporate-events-2026-guide',
+    'local-business-visibility-seo-geo-aio-aeo-sxo-2026': 'local-business-visibility-2026-seo-geo-aio-aeo-sxo',
+    'what-seo-services-actually-means-2026': 'what-seo-services-actually-mean-in-2026-abuqitmirlabs',
+    'how-to-choose-mobile-app-development-company-2026': 'how-to-choose-a-mobile-app-development-company-2026',
+    'custom-ai-solutions-for-fintech-2026': 'custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting',
+    'what-does-a-custom-web-development-company-do': 'what-does-a-custom-web-development-company-do-2026-guide',
+    'ai-integration-with-legacy-systems-2026': 'ai-integration-with-legacy-systems-the-complete-2026-guide',
+    '5-step-web-development-lifecycle-2026': '5-step-web-development-lifecycle-2026-custom-web-development-process-guide',
+    'why-custom-web-development-matters-2026': 'why-custom-web-development-matters-in-2026-build-vs-buy-guide'
+  };
+
+  app.get('/blog/:slug', (req, res, next) => {
+    const slug = req.params.slug;
+    if (BLOG_SLUG_REDIRECTS[slug]) {
+      return res.redirect(301, `/blog/${BLOG_SLUG_REDIRECTS[slug]}`);
+    }
+    next();
+  });
+
   // Dedicated ZIP and Brand Kit Download Endpoints
   const sendDownloadFile = (res: express.Response, filePath: string, filename: string) => {
     const absPath = path.resolve(filePath);

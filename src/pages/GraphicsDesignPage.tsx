@@ -302,6 +302,7 @@ const GraphicsDesignPage: React.FC = () => {
             className="w-full h-full object-cover opacity-25 mix-blend-luminosity grayscale contrast-150"
             loading="eager"
             fetchPriority="high"
+            referrerPolicy="no-referrer"
             width="1600"
             height="900"
             decoding="async"

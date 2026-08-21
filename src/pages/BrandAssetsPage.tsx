@@ -622,6 +622,7 @@ export default function BrandAssetsPage() {
                 <img
                   src={asset.previewUrl}
                   alt={asset.name}
+                  referrerPolicy="no-referrer"
                   className={`object-contain transition-transform duration-300 group-hover:scale-105 ${
                     asset.isBanner 
                       ? 'w-full max-h-[180px] rounded-lg shadow-xl' 

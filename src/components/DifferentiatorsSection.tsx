@@ -63,6 +63,7 @@ const DifferentiatorsSection = () => {
                         className="absolute inset-0 h-full w-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-700"
                         loading="lazy"
                         decoding="async"
+                        referrerPolicy="no-referrer"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent"></div>
                     <div className="relative px-5 py-8">

@@ -254,6 +254,7 @@ export const homeInitialHtml = `
         src="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" 
         alt="AbuQitmirLabs custom software studio delivering AI apps and enterprise web solutions." 
         class="w-full h-full object-cover object-center filter contrast-125"
+        referrerpolicy="no-referrer"
         width="1920" 
         height="1080" 
         loading="eager"

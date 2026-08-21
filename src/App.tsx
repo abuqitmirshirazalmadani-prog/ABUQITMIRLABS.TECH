@@ -200,22 +200,25 @@ export default function App() {
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/blog" element={<BlogPage />} />
-              <Route path="/agentic-ai-production-failures" element={<BlogPostPage overrideSlug="agentic-ai-production-failures" />} />
-              <Route path="/blog/agentic-ai-production-failures" element={<BlogPostPage overrideSlug="agentic-ai-production-failures" />} />
-              <Route path="/what-does-a-custom-web-development-company-do" element={<BlogPostPage overrideSlug="what-does-a-custom-web-development-company-do" />} />
-              <Route path="/blog/what-does-a-custom-web-development-company-do" element={<BlogPostPage overrideSlug="what-does-a-custom-web-development-company-do" />} />
+              <Route path="/rag-ai-integration-for-startups" element={<Navigate to="/blog/the-complete-guide-to-rag-ai-integration-for-startups" replace />} />
+              <Route path="/blog/rag-ai-integration-for-startups" element={<Navigate to="/blog/the-complete-guide-to-rag-ai-integration-for-startups" replace />} />
+              <Route path="/blog/rag-ai-integration-startups" element={<Navigate to="/blog/the-complete-guide-to-rag-ai-integration-for-startups" replace />} />
+              <Route path="/blog/rag-ai-integration-for-startups-abuqitmirlabs" element={<Navigate to="/blog/the-complete-guide-to-rag-ai-integration-for-startups" replace />} />
+              <Route path="/what-does-a-custom-web-development-company-do" element={<Navigate to="/blog/what-does-a-custom-web-development-company-do-2026-guide" replace />} />
+              <Route path="/blog/what-does-a-custom-web-development-company-do" element={<Navigate to="/blog/what-does-a-custom-web-development-company-do-2026-guide" replace />} />
               <Route path="/custom-ai-solutions-for-corporate-events-2026-guide" element={<BlogPostPage overrideSlug="custom-ai-solutions-for-corporate-events-2026-guide" />} />
               <Route path="/blog/custom-ai-solutions-for-corporate-events-2026-guide" element={<BlogPostPage overrideSlug="custom-ai-solutions-for-corporate-events-2026-guide" />} />
-              <Route path="/local-business-visibility-seo-geo-aio-aeo-sxo-2026" element={<BlogPostPage overrideSlug="local-business-visibility-seo-geo-aio-aeo-sxo-2026" />} />
-              <Route path="/blog/local-business-visibility-seo-geo-aio-aeo-sxo-2026" element={<BlogPostPage overrideSlug="local-business-visibility-seo-geo-aio-aeo-sxo-2026" />} />
-              <Route path="/what-seo-services-actually-means-2026" element={<BlogPostPage overrideSlug="what-seo-services-actually-means-2026" />} />
-              <Route path="/blog/what-seo-services-actually-means-2026" element={<BlogPostPage overrideSlug="what-seo-services-actually-means-2026" />} />
-              <Route path="/how-to-choose-mobile-app-development-company-2026" element={<BlogPostPage overrideSlug="how-to-choose-mobile-app-development-company-2026" />} />
-              <Route path="/blog/how-to-choose-mobile-app-development-company-2026" element={<BlogPostPage overrideSlug="how-to-choose-mobile-app-development-company-2026" />} />
-              <Route path="/custom-web-development-company-2026" element={<BlogPostPage overrideSlug="custom-web-development-company-2026" />} />
-              <Route path="/blog/custom-web-development-company-2026" element={<BlogPostPage overrideSlug="custom-web-development-company-2026" />} />
-              <Route path="/custom-ai-solutions-for-fintech-2026" element={<BlogPostPage overrideSlug="custom-ai-solutions-for-fintech-2026" />} />
-              <Route path="/blog/custom-ai-solutions-for-fintech-2026" element={<BlogPostPage overrideSlug="custom-ai-solutions-for-fintech-2026" />} />
+              <Route path="/local-business-visibility-seo-geo-aio-aeo-sxo-2026" element={<Navigate to="/blog/local-business-visibility-2026-seo-geo-aio-aeo-sxo" replace />} />
+              <Route path="/blog/local-business-visibility-seo-geo-aio-aeo-sxo-2026" element={<Navigate to="/blog/local-business-visibility-2026-seo-geo-aio-aeo-sxo" replace />} />
+              <Route path="/what-seo-services-actually-means-2026" element={<Navigate to="/blog/what-seo-services-actually-mean-in-2026-abuqitmirlabs" replace />} />
+              <Route path="/blog/what-seo-services-actually-means-2026" element={<Navigate to="/blog/what-seo-services-actually-mean-in-2026-abuqitmirlabs" replace />} />
+              <Route path="/how-to-choose-mobile-app-development-company-2026" element={<Navigate to="/blog/how-to-choose-a-mobile-app-development-company-2026" replace />} />
+              <Route path="/blog/how-to-choose-mobile-app-development-company-2026" element={<Navigate to="/blog/how-to-choose-a-mobile-app-development-company-2026" replace />} />
+              <Route path="/custom-web-development-company-2026" element={<Navigate to="/blog/custom-web-development-company-2026-built-in-visibility" replace />} />
+              <Route path="/blog/custom-web-development-company-2026" element={<Navigate to="/blog/custom-web-development-company-2026-built-in-visibility" replace />} />
+              <Route path="/blog/custom-web-development-company" element={<Navigate to="/blog/custom-web-development-company-2026-built-in-visibility" replace />} />
+              <Route path="/custom-ai-solutions-for-fintech-2026" element={<Navigate to="/blog/custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting" replace />} />
+              <Route path="/blog/custom-ai-solutions-for-fintech-2026" element={<Navigate to="/blog/custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting" replace />} />
               <Route path="/custom-web-development-vs-website-templates-2026-guide" element={<BlogPostPage overrideSlug="custom-web-development-vs-website-templates-2026-guide" />} />
               <Route path="/blog/custom-web-development-vs-website-templates-2026-guide" element={<BlogPostPage overrideSlug="custom-web-development-vs-website-templates-2026-guide" />} />
               <Route path="/custom-web-development-vs-templates" element={<Navigate to="/blog/custom-web-development-vs-website-templates-2026-guide" replace />} />

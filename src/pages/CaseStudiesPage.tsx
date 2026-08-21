@@ -378,6 +378,7 @@ const CinematicSection = ({ study, index }: { study: CaseStudy, index: number })
                         <img 
                             src={study.image} 
                             alt={`Cinematic illustration for ${study.title}`}
+                            referrerPolicy="no-referrer"
                             className="w-full h-full object-cover opacity-60 filter grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 ease-out"
                         />
                     </motion.div>

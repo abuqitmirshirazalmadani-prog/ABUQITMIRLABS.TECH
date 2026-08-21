@@ -334,6 +334,7 @@ export const graphicsDesignInitialHtml = `
           class="w-full h-full object-cover opacity-25 mix-blend-luminosity grayscale contrast-150"
           loading="eager"
           fetchpriority="high"
+          referrerpolicy="no-referrer"
           width="1600"
           height="900"
           decoding="async"
