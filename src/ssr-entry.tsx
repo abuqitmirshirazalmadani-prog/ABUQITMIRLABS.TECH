@@ -12,12 +12,18 @@ import WebDevelopmentPage from './pages/WebDevelopmentPage';
 import AIAgentDevelopmentPage from './pages/AIAgentDevelopmentPage';
 import SEOPage from './pages/SEOPage';
 import LocalSEOSmallBusinessPage from './pages/LocalSEOSmallBusinessPage';
+import LocalSEOCitationBuildingPage from './pages/LocalSEOCitationBuildingPage';
+import WhiteLabelLocalSEOPage from './pages/WhiteLabelLocalSEOPage';
+import LocalSEOAuditPage from './pages/LocalSEOAuditPage';
 import GraphicsDesignPage from './pages/GraphicsDesignPage';
 import ContentWritingPage from './pages/ContentWritingPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import BlogPage from './pages/BlogPage';
 import CaseStudiesPage from './pages/CaseStudiesPage';
+import CaseStudyTajweedPage from './pages/CaseStudyTajweedPage';
+import BrandAssetsPage from './pages/BrandAssetsPage';
+import WebsiteContractPage from './pages/WebsiteContractPage';
 import FintechSolutionsPage from './pages/solutions/FintechSolutionsPage';
 import HealthcarePlatformsPage from './pages/solutions/HealthcarePlatformsPage';
 import AIAutomationPage from './pages/solutions/AIAutomationPage';
@@ -31,6 +37,7 @@ import LatestNewsPage from './pages/news/LatestNewsPage';
 import PressReleasesPage from './pages/news/PressReleasesPage';
 import IndustryInsightsPage from './pages/news/IndustryInsightsPage';
 import AllNewsPage from './pages/news/AllNewsPage';
+import NewsArticlePage from './pages/news/NewsArticlePage';
 import USMarketPage from './pages/USMarketPage';
 import UKMarketPage from './pages/UKMarketPage';
 import PakistanMarketPage from './pages/PakistanMarketPage';
@@ -41,6 +48,8 @@ import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
 import BlogPostPage from './pages/BlogPostPage';
 import ErrorBoundary from './components/ErrorBoundary';
+
+export { SEO_ROUTES_METADATA } from './data/seoRoutesMetadata';
 
 const FloatingWhatsApp = () => (
   <a 
@@ -105,6 +114,9 @@ export function renderFullApp(url: string = '/') {
               <Route path="/ai-agent-development" element={<AIAgentDevelopmentPage />} />
               <Route path="/seo-mastery" element={<SEOPage />} />
               <Route path="/local-seo-for-small-business" element={<LocalSEOSmallBusinessPage />} />
+              <Route path="/local-seo-citation-building" element={<LocalSEOCitationBuildingPage />} />
+              <Route path="/white-label-local-seo" element={<WhiteLabelLocalSEOPage />} />
+              <Route path="/local-seo-audit" element={<LocalSEOAuditPage />} />
               <Route path="/graphics-design" element={<GraphicsDesignPage />} />
               <Route path="/content-writing" element={<ContentWritingPage />} />
               <Route path="/contact" element={<ContactPage />} />
@@ -114,10 +126,15 @@ export function renderFullApp(url: string = '/') {
               <Route path="/canada-market" element={<CanadaMarketPage />} />
               <Route path="/poland-market" element={<PolandMarketPage />} />
               <Route path="/australia-market" element={<AustraliaMarketPage />} />
+              <Route path="/brand-assets" element={<BrandAssetsPage />} />
+              <Route path="/website-contract" element={<WebsiteContractPage />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
+              <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />
+              <Route path="/news/article/:id" element={<NewsArticlePage />} />
+              <Route path="/news/read/:id" element={<NewsArticlePage />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
             </Routes>
           </Suspense>

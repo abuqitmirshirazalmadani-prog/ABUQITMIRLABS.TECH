@@ -61,6 +61,8 @@ const DifferentiatorsSection = () => {
                         src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop&fm=webp" 
                         alt="futuristic global network and data infrastructure visual for future-proof scaling" 
                         className="absolute inset-0 h-full w-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-700"
+                        width="1200"
+                        height="400"
                         loading="lazy"
                         decoding="async"
                         referrerPolicy="no-referrer"

@@ -29,9 +29,11 @@ try {
 
 // 2. Load bundled React SSR renderer
 let renderFullApp;
+let SEO_ROUTES_METADATA = {};
 try {
   const ssrModule = require(ssrBundlePath);
   renderFullApp = ssrModule.renderFullApp;
+  SEO_ROUTES_METADATA = ssrModule.SEO_ROUTES_METADATA || {};
   if (!renderFullApp) {
     throw new Error('renderFullApp function not found in SSR bundle');
   }
@@ -101,6 +103,12 @@ const routes = [
   '/news/latest',
   '/news/press-releases',
   '/news/industry-insights',
+  '/news/article/google-ai-dogfooding-enterprise-results',
+  '/news/article/ai-rag-framework-launch',
+  '/news/article/us-uk-expansion-q3',
+  '/news/article/generative-engine-optimization-geo-strategy',
+  '/news/article/hipaa-cloud-certification',
+  '/news/article/sub-200ms-rag-pipelines',
   '/custom-software',
   '/mobile-app-development',
   '/web-development',
@@ -128,14 +136,24 @@ const routes = [
   '/brand-assets',
   '/blog/the-complete-guide-to-rag-ai-integration-for-startups',
   '/blog/rag-ai-integration-for-startups',
-  '/blog/custom-ai-solutions-for-corporate-events-2026-guide',
-  '/blog/custom-web-development-vs-website-templates-2026-guide',
-  '/blog/custom-web-development-company-2026',
+  '/blog/agentic-ai-production-failures',
+  '/blog/what-does-a-custom-web-development-company-do',
   '/blog/custom-web-development-company',
-  '/blog/ai-agent-development-agency-vs-in-house',
+  '/blog/custom-web-development-company-2026',
+  '/blog/custom-web-development-company-2026-built-in-visibility',
+  '/blog/custom-web-development-vs-website-templates-2026-guide',
+  '/blog/custom-ai-solutions-for-corporate-events-2026-guide',
+  '/blog/local-business-visibility-2026-seo-geo-aio-aeo-sxo',
+  '/blog/local-business-visibility-seo-geo-aio-aeo-sxo-2026',
+  '/blog/what-seo-services-actually-mean-in-2026-abuqitmirlabs',
+  '/blog/what-seo-services-actually-means-2026',
+  '/blog/how-to-choose-a-mobile-app-development-company-2026',
+  '/blog/how-to-choose-mobile-app-development-company-2026',
+  '/blog/custom-ai-solutions-for-fintech-2026',
+  '/blog/custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting',
   '/blog/what-are-healthcare-ai-agents-complete-guide-2026',
   '/blog/healthcare-software-development-solutions-2026',
-  '/blog/custom-ai-solutions-for-fintech-2026'
+  '/blog/ai-agent-development-agency-vs-in-house'
 ];
 
 let successCount = 0;
@@ -154,8 +172,82 @@ for (const routeUrl of routes) {
       html = html.replace('</head>', `  ${headTags}\n</head>`);
     }
 
-    // 3. Update canonical link
-    const canonicalUrl = `https://www.abuqitmirlabs.tech${routeUrl === '/' ? '/' : routeUrl}`;
+    // 3. Inject unique Dynamic Title, Description & Open Graph tags for each route
+    const seo = (SEO_ROUTES_METADATA && SEO_ROUTES_METADATA[routeUrl]) || 
+                (SEO_ROUTES_METADATA && Object.entries(SEO_ROUTES_METADATA).find(([k]) => routeUrl === k || routeUrl.endsWith(k) || (k.length > 2 && routeUrl.includes(k)))?.[1]);
+
+    if (seo) {
+      // Unique <title>
+      if (seo.title) {
+        html = html.replace(/<title\b[^>]*>[\s\S]*?<\/title>/i, `<title>${seo.title}</title>`);
+      }
+
+      // Unique <meta name="description">
+      if (seo.description) {
+        const escapedDesc = seo.description.replace(/"/g, '&quot;');
+        if (html.includes('name="description"')) {
+          html = html.replace(/<meta\s+name=["']description["'][^>]*\/?>/i, `<meta name="description" content="${escapedDesc}" />`);
+        } else {
+          html = html.replace('</head>', `  <meta name="description" content="${escapedDesc}" />\n</head>`);
+        }
+      }
+
+      // Unique og:title
+      const ogTitle = seo.ogTitle || seo.title;
+      if (ogTitle) {
+        const escapedOgTitle = ogTitle.replace(/"/g, '&quot;');
+        if (html.includes('property="og:title"')) {
+          html = html.replace(/<meta\s+property=["']og:title["'][^>]*\/?>/i, `<meta property="og:title" content="${escapedOgTitle}" />`);
+        } else {
+          html = html.replace('</head>', `  <meta property="og:title" content="${escapedOgTitle}" />\n</head>`);
+        }
+      }
+
+      // Unique og:description
+      const ogDesc = seo.ogDescription || seo.description;
+      if (ogDesc) {
+        const escapedOgDesc = ogDesc.replace(/"/g, '&quot;');
+        if (html.includes('property="og:description"')) {
+          html = html.replace(/<meta\s+property=["']og:description["'][^>]*\/?>/i, `<meta property="og:description" content="${escapedOgDesc}" />`);
+        } else {
+          html = html.replace('</head>', `  <meta property="og:description" content="${escapedOgDesc}" />\n</head>`);
+        }
+      }
+
+      // Unique twitter:title
+      const twTitle = seo.twitterTitle || seo.title;
+      if (twTitle) {
+        const escapedTwTitle = twTitle.replace(/"/g, '&quot;');
+        if (html.includes('name="twitter:title"')) {
+          html = html.replace(/<meta\s+name=["']twitter:title["'][^>]*\/?>/i, `<meta name="twitter:title" content="${escapedTwTitle}" />`);
+        } else {
+          html = html.replace('</head>', `  <meta name="twitter:title" content="${escapedTwTitle}" />\n</head>`);
+        }
+      }
+
+      // Unique twitter:description
+      const twDesc = seo.twitterDescription || seo.description;
+      if (twDesc) {
+        const escapedTwDesc = twDesc.replace(/"/g, '&quot;');
+        if (html.includes('name="twitter:description"')) {
+          html = html.replace(/<meta\s+name=["']twitter:description["'][^>]*\/?>/i, `<meta name="twitter:description" content="${escapedTwDesc}" />`);
+        } else {
+          html = html.replace('</head>', `  <meta name="twitter:description" content="${escapedTwDesc}" />\n</head>`);
+        }
+      }
+
+      // Open Graph Image
+      if (seo.ogImage) {
+        if (html.includes('property="og:image"')) {
+          html = html.replace(/<meta\s+property=["']og:image["'][^>]*\/?>/i, `<meta property="og:image" content="${seo.ogImage}" />`);
+        } else {
+          html = html.replace('</head>', `  <meta property="og:image" content="${seo.ogImage}" />\n</head>`);
+        }
+      }
+    }
+
+    // 4. Update canonical link
+    const canonicalUrl = (seo && seo.canonical) || `https://www.abuqitmirlabs.tech${routeUrl === '/' ? '/' : routeUrl}`;
     html = html.replace(/<link\s+rel="canonical"[^>]*\/?>/gi, '');
     html = html.replace('</head>', `  <link rel="canonical" data-rh="true" href="${canonicalUrl}" />\n</head>`);
 
@@ -172,7 +264,7 @@ for (const routeUrl of routes) {
     }
 
     successCount++;
-    console.log(`✓ [SSG Rendered] ${routeUrl} (${bodyHtml.length} bytes inside #root)`);
+    console.log(`✓ [SSG Rendered] ${routeUrl} (${bodyHtml.length} bytes inside #root | Title: ${seo ? seo.title.substring(0, 40) + '...' : 'Default'})`);
   } catch (err) {
     console.error(`⚠️ [SSG Warning] Failed to render route ${routeUrl}:`, err);
   }

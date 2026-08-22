@@ -65,6 +65,8 @@ const PortfolioSection = () => {
                                         src={`${project.img}&w=800&fm=webp`} 
                                         alt={`Premium ${project.category} - ${project.title} project by AbuQitmirLabs displaying advanced UI design and AI integration`} 
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60"
+                                        width="800"
+                                        height="500"
                                         loading="lazy"
                                         decoding="async"
                                         referrerPolicy="no-referrer"

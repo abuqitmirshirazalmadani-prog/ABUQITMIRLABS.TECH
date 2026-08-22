@@ -194,6 +194,8 @@ const BlogPage = () => {
                                                 src={formatCoverImage(featuredPost.coverImage, 1200)} 
                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                                 alt={featuredPost.coverImageAlt || `futuristic ${featuredPost.title} featured article cover image`}
+                                                width="1200"
+                                                height="675"
                                                 decoding="async"
                                                 fetchPriority="high"
                                                 referrerPolicy="no-referrer"
@@ -229,6 +231,8 @@ const BlogPage = () => {
                                                         src="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" 
                                                         alt="AbuQitmirLabs Shiraz Almadani" 
                                                         className="w-full h-full rounded-full object-cover object-top" 
+                                                        width="48"
+                                                        height="48"
                                                         loading="lazy"
                                                         decoding="async"
                                                         referrerPolicy="no-referrer"
@@ -306,6 +310,8 @@ const BlogPage = () => {
                                                             src={formatCoverImage(post.coverImage, 800)} 
                                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
                                                             alt={post.coverImageAlt || `futuristic ${post.title} blog post thumbnail`}
+                                                            width="800"
+                                                            height="500"
                                                             loading="lazy"
                                                             decoding="async"
                                                             referrerPolicy="no-referrer"

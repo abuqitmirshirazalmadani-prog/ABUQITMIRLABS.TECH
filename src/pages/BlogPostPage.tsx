@@ -9,7 +9,7 @@ import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import MarkdownRenderer from '../components/MarkdownRenderer';
 import remarkGfm from 'remark-gfm';
-import { ragAiBlogContent } from '../utils/ragAiBlogStaticData';
+import { STATIC_BLOG_POSTS } from '../data/staticBlogPosts';
 
 interface Post {
   title: string;
@@ -25,30 +25,7 @@ interface Post {
   helperImages?: Array<{ url: string; caption: string }>;
 }
 
-const STATIC_POSTS_MAP: Record<string, Partial<Post>> = {
-  'the-complete-guide-to-rag-ai-integration-for-startups': {
-    title: 'The Complete Guide to RAG AI Integration for Startups',
-    content: ragAiBlogContent,
-    excerpt: 'How startups use RAG to ground AI in real data — architecture, cost, RAG vs fine-tuning, and build vs hire, with a real RAG case study.',
-    coverImage: 'https://i.postimg.cc/Pr2j0Kgr/The-Complete-Guide-to-RAG-AI-Integration-for-Startups.jpg',
-    coverImageAlt: 'The Complete Guide to RAG AI Integration for Startups Cover Artwork',
-    category: 'AI & Automation',
-    author: 'AbuQitmirLabs Engineering',
-    createdAt: '2026-08-18',
-    tags: ['RAG', 'AI Agents', 'Startups', 'Machine Learning', 'EdTech']
-  },
-  'rag-ai-integration-for-startups': {
-    title: 'The Complete Guide to RAG AI Integration for Startups',
-    content: ragAiBlogContent,
-    excerpt: 'How startups use RAG to ground AI in real data — architecture, cost, RAG vs fine-tuning, and build vs hire, with a real RAG case study.',
-    coverImage: 'https://i.postimg.cc/Pr2j0Kgr/The-Complete-Guide-to-RAG-AI-Integration-for-Startups.jpg',
-    coverImageAlt: 'The Complete Guide to RAG AI Integration for Startups Cover Artwork',
-    category: 'AI & Automation',
-    author: 'AbuQitmirLabs Engineering',
-    createdAt: '2026-08-18',
-    tags: ['RAG', 'AI Agents', 'Startups', 'Machine Learning', 'EdTech']
-  }
-};
+const STATIC_POSTS_MAP = STATIC_BLOG_POSTS;
 
 interface BlogPostPageProps {
   overrideSlug?: string;
@@ -57,7 +34,10 @@ interface BlogPostPageProps {
 const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
     const { slug: paramSlug } = useParams<{ slug: string }>();
     const slug = overrideSlug || paramSlug;
-    const staticFallback = slug && STATIC_POSTS_MAP[slug] ? (STATIC_POSTS_MAP[slug] as Post) : null;
+    const staticFallback = (slug && STATIC_POSTS_MAP[slug]) 
+      ? (STATIC_POSTS_MAP[slug] as Post) 
+      : (slug ? (Object.entries(STATIC_POSTS_MAP).find(([k]) => slug.includes(k) || k.includes(slug))?.[1] as Post) : null);
+    
     const [post, setPost] = useState<Post | null>(staticFallback);
     const [loading, setLoading] = useState(!staticFallback);
     const [copied, setCopied] = useState(false);
@@ -78,14 +58,14 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 const snapshot = await getDocs(q);
                 if (!snapshot.empty) {
                     setPost(snapshot.docs[0].data() as Post);
-                } else if (STATIC_POSTS_MAP[slug]) {
-                    setPost(STATIC_POSTS_MAP[slug] as Post);
+                } else if (staticFallback) {
+                    setPost(staticFallback);
                 } else {
                     setPost(null);
                 }
             } catch (error) {
-                if (STATIC_POSTS_MAP[slug]) {
-                    setPost(STATIC_POSTS_MAP[slug] as Post);
+                if (staticFallback) {
+                    setPost(staticFallback);
                 } else {
                     handleFirestoreError(error, OperationType.GET, `posts/${slug}`);
                     setPost(null);
@@ -716,6 +696,8 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                 src={post.coverImage} 
                                 alt={post.coverImageAlt || `futuristic ${post.title} feature illustration`} 
                                 referrerPolicy="no-referrer"
+                                width="1200"
+                                height="675"
                                 onError={(e) => {
                                     const target = e.target as HTMLImageElement;
                                     if (!target.src.includes('logo.png')) {
@@ -828,6 +810,8 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                     src="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" 
                                     alt="Shiraz Almadani - Lead Architect at AbuQitmirLabs" 
                                     className="w-full h-full object-cover object-top" 
+                                    width="96"
+                                    height="96"
                                     loading="lazy"
                                     decoding="async"
                                     referrerPolicy="no-referrer"

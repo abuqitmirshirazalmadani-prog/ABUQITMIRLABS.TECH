@@ -234,6 +234,8 @@ const AboutPage = () => {
                         src="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" 
                         alt="Abu Qitmir Mohammad Shiraz Al- Madani - Founder & Architect at AbuQitmirLabs" 
                         className="w-full h-full object-cover rounded-[2.8rem] transition-transform duration-1000 hover:scale-105"
+                        width="400"
+                        height="500"
                         loading="lazy"
                         decoding="async"
                         referrerPolicy="no-referrer"
