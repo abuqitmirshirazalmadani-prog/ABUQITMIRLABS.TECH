@@ -133,6 +133,10 @@ export default function HomeCaseStudiesSection() {
               <img
                 src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1000"
                 alt="TajweedPage EdTech Quran Platform Display Illustration"
+                width={1000}
+                height={667}
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover opacity-50 filter grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-1000 ease-out scale-100 group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />

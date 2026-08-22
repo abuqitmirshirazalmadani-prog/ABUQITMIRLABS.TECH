@@ -759,6 +759,10 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                     return (
                                         <span className="block my-12 text-center overflow-hidden">
                                             <img 
+                                                width={props.width || 1200}
+                                                height={props.height || 675}
+                                                loading="lazy"
+                                                decoding="async"
                                                 {...props} 
                                                 referrerPolicy="no-referrer"
                                                 className="mx-auto rounded-[2rem] shadow-2xl border border-zinc-800 max-h-[600px] w-full object-cover select-none hover:scale-[1.01] transition-transform duration-700" 

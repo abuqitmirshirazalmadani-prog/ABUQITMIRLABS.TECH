@@ -623,6 +623,9 @@ export default function BrandAssetsPage() {
                   src={asset.previewUrl}
                   alt={asset.name}
                   referrerPolicy="no-referrer"
+                  width={asset.isBanner ? 1200 : 400}
+                  height={asset.isBanner ? 400 : 400}
+                  decoding="async"
                   className={`object-contain transition-transform duration-300 group-hover:scale-105 ${
                     asset.isBanner 
                       ? 'w-full max-h-[180px] rounded-lg shadow-xl' 

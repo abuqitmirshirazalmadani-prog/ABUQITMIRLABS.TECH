@@ -1138,6 +1138,9 @@ const AdminDashboard = () => {
                                                             <img 
                                                                 src={formData.coverImage} 
                                                                 alt={formData.coverImageAlt || "futuristic blog post cover preview"} 
+                                                                width={600}
+                                                                height={338}
+                                                                loading="lazy"
                                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                                                 referrerPolicy="no-referrer"
                                                                 onError={(e) => {
@@ -1255,6 +1258,9 @@ const AdminDashboard = () => {
                                                                             <img 
                                                                                 src={img.url} 
                                                                                 alt={img.caption || `In-article visual #${idx+1}`}
+                                                                                width={400}
+                                                                                height={225}
+                                                                                loading="lazy"
                                                                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                                                                 referrerPolicy="no-referrer"
                                                                                 onError={(e) => {
@@ -1382,7 +1388,7 @@ const AdminDashboard = () => {
                                                                 className="p-2 rounded-xl bg-white/5 border border-white/5 hover:border-blue-500/50 hover:bg-white/10 text-left transition-all group"
                                                             >
                                                                 <div className="aspect-video rounded-lg overflow-hidden mb-1">
-                                                                    <img src={pre.url} alt={pre.name} referrerPolicy="no-referrer" className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                                                                    <img src={pre.url} alt={pre.name} width={200} height={112} loading="lazy" referrerPolicy="no-referrer" className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
                                                                 </div>
                                                                 <div className="text-[8px] font-black text-gray-400 uppercase truncate tracking-wider">{pre.name}</div>
                                                             </button>
@@ -1451,7 +1457,7 @@ const AdminDashboard = () => {
                                     {posts.map(post => (
                                         <div key={post.id} className="bg-zinc-950/50 border border-white/5 hover:border-white/10 rounded-3xl p-6 transition-all group flex flex-col md:flex-row items-center gap-6">
                                             <div className="w-24 h-16 rounded-xl overflow-hidden shrink-0 bg-zinc-900 border border-white/5">
-                                                <img src={post.coverImage} referrerPolicy="no-referrer" className="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-opacity" alt={`thumbnail for ${post.title}`} />
+                                                <img src={post.coverImage} width={96} height={64} loading="lazy" referrerPolicy="no-referrer" className="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-opacity" alt={`thumbnail for ${post.title}`} />
                                             </div>
                                             <div className="flex-1 text-center md:text-left">
                                                 <div className="flex items-center justify-center md:justify-start gap-2 mb-1">
