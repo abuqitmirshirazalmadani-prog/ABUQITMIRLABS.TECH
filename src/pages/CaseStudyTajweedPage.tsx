@@ -123,6 +123,23 @@ export default function CaseStudyTajweedPage() {
             ))}
           </div>
 
+          {/* Author Byline & Published Meta Card */}
+          <div className="mt-12 pt-8 border-t border-zinc-850 max-w-4xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-zinc-400">
+            <div className="flex items-center gap-3">
+              <span className="text-[#ccff00] font-bold">CASE STUDY ARCHITECT:</span>
+              <Link to="/about/our-team" className="text-white hover:text-[#ccff00] underline font-bold">
+                Abu Qitmir Mohammad Shiraz Al-Madani
+              </Link>
+            </div>
+            <div className="flex items-center gap-3">
+              <span>Published: February 2026</span>
+              <span>•</span>
+              <Link to="/editorial-policy" className="text-zinc-400 hover:text-[#ccff00] underline">
+                Editorial Review Standards
+              </Link>
+            </div>
+          </div>
+
         </div>
       </section>
 

@@ -10,13 +10,13 @@ export interface MagicTextProps {
   className?: string;
 }
  
-interface WordProps {
+interface ChunkProps {
   children: string;
   progress: any;
   range: number[];
 }
  
-const Word: React.FC<WordProps> = ({ children, progress, range }) => {
+const Chunk: React.FC<ChunkProps> = ({ children, progress, range }) => {
   const opacity = useTransform(progress, range, [0.35, 1]);
  
   return (
@@ -38,19 +38,41 @@ export const MagicText: React.FC<MagicTextProps> = ({ text, className }) => {
   });
 
   const words = text.split(/\s+/).filter(Boolean);
+
+  // For very short texts (<= 4 words), animate as a single unit to save DOM nodes
+  if (words.length <= 4) {
+    return (
+      <p ref={container} className={cn("leading-relaxed", className)}>
+        <Chunk progress={scrollYProgress} range={[0, 1]}>
+          {text}
+        </Chunk>
+      </p>
+    );
+  }
+
+  // Group into 2-word micro-phrases for seamless reading flow with 50% fewer DOM elements
+  const chunks: string[] = [];
+  for (let i = 0; i < words.length; i += 2) {
+    if (i + 1 < words.length) {
+      chunks.push(`${words[i]} ${words[i + 1]}`);
+    } else {
+      chunks.push(words[i]);
+    }
+  }
  
   return (
     <p ref={container} className={cn("leading-relaxed", className)}>
-      {words.map((word, i) => {
-        const start = i / words.length;
-        const end = Math.min(1, start + 1 / words.length);
+      {chunks.map((chunk, i) => {
+        const start = i / chunks.length;
+        const end = Math.min(1, start + 1 / chunks.length);
  
         return (
-          <Word key={`${word}-${i}`} progress={scrollYProgress} range={[start, end]}>
-            {word}
-          </Word>
+          <Chunk key={`${chunk}-${i}`} progress={scrollYProgress} range={[start, end]}>
+            {chunk}
+          </Chunk>
         );
       })}
     </p>
   );
 };
+

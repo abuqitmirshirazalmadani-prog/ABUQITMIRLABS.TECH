@@ -27,19 +27,19 @@ export default function HomePage() {
     <main id="main-content" className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <Helmet>
         <title>Custom Software &amp; AI App Development Company | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs is a custom software &amp; AI development company delivering scalable web platforms, mobile apps, AI agents, and technical SEO for global businesses." />
+        <meta name="description" content="AbuQitmirLabs engineers custom software, AI agents, mobile apps, and web solutions. Top-rated development company in Karachi serving global clients." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/" />
         <link rel="preload" as="image" href="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" type="image/jpeg" fetchPriority="high" />
         
         <meta property="og:title" content="Custom Software &amp; AI App Development Company | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs is a custom software &amp; AI development company delivering scalable web platforms, mobile apps, AI agents, and technical SEO for global businesses." />
+        <meta property="og:description" content="AbuQitmirLabs engineers custom software, AI agents, mobile apps, and web solutions. Top-rated development company in Karachi serving global clients." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
         <meta property="og:image:alt" content="AbuQitmirLabs Custom Software &amp; AI Development Studio" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Custom Software &amp; AI App Development Company | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs is a custom software &amp; AI development company delivering scalable web platforms, mobile apps, AI agents, and technical SEO for global businesses." />
+        <meta name="twitter:description" content="AbuQitmirLabs engineers custom software, AI agents, mobile apps, and web solutions. Top-rated development company in Karachi serving global clients." />
         <meta name="twitter:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
       </Helmet>
 

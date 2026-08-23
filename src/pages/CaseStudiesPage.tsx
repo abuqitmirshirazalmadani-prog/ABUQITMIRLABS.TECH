@@ -15,6 +15,8 @@ interface CaseStudy {
     client: string;
     year: string;
     industry: string;
+    badge?: string;
+    footnote?: string;
     metrics: { label: string; value: string }[];
     challenge: string;
     solution: string;
@@ -35,6 +37,8 @@ const CASE_STUDIES: CaseStudy[] = [
         client: "TajweedPage",
         year: "2026",
         industry: "AI Islamic EdTech",
+        badge: "Verified Client Production System",
+        footnote: "*Live client deployment with active international student enrollment.",
         metrics: [
             { label: "Feedback Delay", value: "Instant" },
             { label: "Teaching Capacity", value: "Extended" },
@@ -63,6 +67,8 @@ const CASE_STUDIES: CaseStudy[] = [
         client: "GhastlyPages",
         year: "2026",
         industry: "Cinematic Horror & Audio Storytelling",
+        badge: "In-House Portfolio Build",
+        footnote: "*Technical benchmark and architecture demo developed in-house by AbuQitmirLabs.",
         metrics: [
             { label: "Story Pages", value: "Hundreds" },
             { label: "Hero Loading Speed", value: "Instant" },
@@ -88,6 +94,8 @@ const CASE_STUDIES: CaseStudy[] = [
         client: "GhastlyPages",
         year: "2026",
         industry: "Enterprise SEO & Custom CMS",
+        badge: "In-House Portfolio Build",
+        footnote: "*Technical benchmark and architecture demo developed in-house by AbuQitmirLabs.",
         metrics: [
             { label: "Core Pages Group", value: "24 Pages" },
             { label: "SEO Indexing Ready", value: "100%" },
@@ -111,9 +119,11 @@ const CASE_STUDIES: CaseStudy[] = [
     {
         id: "cloudhealth-portal",
         title: "CloudHealth Portal — A Modern Multi-Platform Healthcare Ecosystem",
-        client: "Confidential HealthTech Startup",
+        client: "Concept & Architecture Demo",
         year: "2026",
         industry: "Healthcare, Telemedicine, AI-Powered Health Monitoring",
+        badge: "Concept & Architecture Demo",
+        footnote: "*Capacity benchmark and architecture modeling demo, not a client-measured result.",
         metrics: [
             { label: "Zoneless Engine", value: "Angular 21" },
             { label: "Base64 Size Limit", value: "&lt; 500KB" },
@@ -138,9 +148,11 @@ const CASE_STUDIES: CaseStudy[] = [
     {
         id: "clinicos-pro",
         title: "ClinicOS Pro — Premium Clinical ERP & EHR System",
-        client: "Confidential Healthcare Practice",
+        client: "Concept & Architecture Demo",
         year: "2026",
         industry: "Clinical ERP, EHR, Practice Management",
+        badge: "Concept & Architecture Demo",
+        footnote: "*Capacity benchmark and architecture modeling demo, not a client-measured result.",
         metrics: [
             { label: "Unified ERP Console", value: "11 Screens" },
             { label: "Patient Check-in Time", value: "&lt; 5 mins" },
@@ -165,13 +177,15 @@ const CASE_STUDIES: CaseStudy[] = [
     {
         id: "profit-command-center",
         title: "ProFit Command Center — Elite Trainer CRM & Scheduling Hub",
-        client: "Confidential Fitness Startup",
+        client: "Concept & Architecture Demo",
         year: "2025",
         industry: "CRM, Scheduling, Fitness Tech",
+        badge: "Concept & Architecture Demo",
+        footnote: "*Projected efficiency metrics based on architecture modeling, not client-measured results.",
         metrics: [
-            { label: "Weekly Admin Saved", value: "76%" },
-            { label: "Package Billing Leakage", value: "0%" },
-            { label: "Client Churn Reduction", value: "20%" }
+            { label: "Weekly Admin Saved", value: "76% (projected)" },
+            { label: "Package Billing Leakage", value: "0% (projected)" },
+            { label: "Client Churn Reduction", value: "20% (projected)" }
         ],
         challenge: "Independent trainers act as micro-businesses, suffering from severe administrative burnout. Juggling WhatsApp messages, Google Calendars, and spreadsheets leads to package tracking leaks and client churn.",
         solution: "We engineered ProFit Command Center, a premium CRM and scheduling hub designed with proactive retention alerts and media syncing under a gorgeous glassmorphic dark theme:",
@@ -255,7 +269,14 @@ const CinematicSection = ({ study, index }: { study: CaseStudy, index: number })
 
                     {/* Luxurious Cormorant Headings */}
                     <div className="space-y-4">
-                        <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-extrabold font-sans pr-4">{study.industry}</span>
+                        <div className="flex flex-wrap items-center gap-3">
+                            <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-extrabold font-sans">{study.industry}</span>
+                            {study.badge && (
+                                <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider border border-[#ccff00]/30 bg-[#ccff00]/10 text-[#ccff00]">
+                                    {study.badge}
+                                </span>
+                            )}
+                        </div>
                         <h2 className="font-serif italic font-light text-white text-4xl sm:text-5xl md:text-6xl tracking-tight leading-tight">
                             {study.title}
                         </h2>
@@ -263,13 +284,20 @@ const CinematicSection = ({ study, index }: { study: CaseStudy, index: number })
                     </div>
 
                     {/* Highly-Spaced Metrics Row */}
-                    <div className="grid grid-cols-3 gap-6 pt-6 border-t border-white/10">
-                        {study.metrics.map((metric, mIdx) => (
-                            <div key={mIdx} className="space-y-2">
-                                <span className="block font-mono text-[#ccff00] text-lg sm:text-2xl font-black tracking-tight" dangerouslySetInnerHTML={{ __html: metric.value }}></span>
-                                <span className="block text-[8px] sm:text-[9px] uppercase tracking-wider text-zinc-500 font-extrabold max-w-[90px] leading-tight">{metric.label}</span>
-                            </div>
-                        ))}
+                    <div className="pt-6 border-t border-white/10 space-y-3">
+                        <div className="grid grid-cols-3 gap-6">
+                            {study.metrics.map((metric, mIdx) => (
+                                <div key={mIdx} className="space-y-2">
+                                    <span className="block font-mono text-[#ccff00] text-lg sm:text-2xl font-black tracking-tight" dangerouslySetInnerHTML={{ __html: metric.value }}></span>
+                                    <span className="block text-[8px] sm:text-[9px] uppercase tracking-wider text-zinc-500 font-extrabold max-w-[90px] leading-tight">{metric.label}</span>
+                                </div>
+                            ))}
+                        </div>
+                        {study.footnote && (
+                            <p className="text-sm text-zinc-300 leading-relaxed font-sans pt-2 border-t border-white/5">
+                                {study.footnote}
+                            </p>
+                        )}
                     </div>
 
                     {/* Detailed Case Content */}

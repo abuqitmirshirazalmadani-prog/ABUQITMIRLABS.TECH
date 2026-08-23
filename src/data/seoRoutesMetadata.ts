@@ -15,10 +15,10 @@ export interface RouteSeoMetadata {
 export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   '/': {
     title: 'Custom Software & AI App Development Company | AbuQitmirLabs',
-    description: 'AbuQitmirLabs builds custom software, AI agents, mobile apps, and scalable web solutions. Top-rated software development company in Karachi, Pakistan serving global clients.',
+    description: 'AbuQitmirLabs engineers custom software, AI agents, mobile apps, and web solutions. Top-rated development company in Karachi serving global clients.',
     canonical: 'https://www.abuqitmirlabs.tech/',
     ogTitle: 'Custom Software & AI App Development Company | AbuQitmirLabs',
-    ogDescription: 'AbuQitmirLabs builds custom software, AI agents, mobile apps, and scalable web solutions. Top-rated software development company in Karachi, Pakistan.',
+    ogDescription: 'AbuQitmirLabs engineers custom software, AI agents, mobile apps, and web solutions. Top-rated development company in Karachi serving global clients.',
     ogImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg',
     ogType: 'website',
     twitterTitle: 'Custom Software & AI App Development Company | AbuQitmirLabs',
@@ -280,6 +280,14 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/privacy',
     ogTitle: 'Privacy Policy | Data Protection & Compliance | AbuQitmirLabs',
     ogDescription: 'Learn how AbuQitmirLabs safeguards client confidential data and adheres to global data privacy laws.',
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
+  },
+  '/editorial-policy': {
+    title: 'Editorial Policy & Content Standards | AbuQitmirLabs',
+    description: 'Learn about AbuQitmirLabs editorial guidelines, engineering review process, AI assistance disclosure, and technical accuracy standards.',
+    canonical: 'https://www.abuqitmirlabs.tech/editorial-policy',
+    ogTitle: 'Editorial Policy & Content Standards | AbuQitmirLabs',
+    ogDescription: 'Learn about AbuQitmirLabs editorial guidelines, engineering review process, and technical accuracy standards.',
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
   },
   '/case-studies': {
@@ -592,5 +600,14 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogDescription: 'Financial and architectural comparison between hiring an AI agent agency vs building in-house.',
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
     ogType: 'article'
+  },
+  '/editorial-policy': {
+    title: 'Editorial Standards & Technical Fact-Checking Policy | AbuQitmirLabs',
+    description: 'Our editorial principles, AI disclosure standards, technical peer-review protocols, and content verification methodology.',
+    canonical: 'https://www.abuqitmirlabs.tech/editorial-policy',
+    ogTitle: 'Editorial Standards & Technical Fact-Checking Policy | AbuQitmirLabs',
+    ogDescription: 'Our editorial principles, AI disclosure standards, and peer-review verification methodology.',
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogType: 'website'
   }
 };

@@ -822,8 +822,20 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                 />
                             </div>
                             <div>
-                                <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tight font-serif">AbuQitmirLabs | Shiraz Almadani</h3>
-                                <p className="text-zinc-400 text-sm leading-relaxed max-w-xl">Lead Architect & Engineering Consultant. Specializing in high-performance digital ecosystems, AI-driven architectures, and building the future of software development.</p>
+                                <div className="flex items-center gap-2 mb-1">
+                                    <span className="text-[10px] font-mono text-[#ccff00] uppercase tracking-widest font-bold">[ VERIFIED AUTHOR &amp; ARCHITECT ]</span>
+                                </div>
+                                <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tight font-serif">
+                                    Abu Qitmir Mohammad Shiraz Al-Madani
+                                </h3>
+                                <p className="text-zinc-400 text-sm leading-relaxed max-w-xl mb-4">
+                                    Founder &amp; Lead Systems Architect at AbuQitmirLabs. Specializing in high-performance digital ecosystems, AI-driven architectures, and building scalable full-stack software systems.
+                                </p>
+                                <div className="flex flex-wrap gap-4 text-xs font-mono">
+                                    <Link to="/about" className="text-[#ccff00] hover:underline font-bold">About Founder →</Link>
+                                    <Link to="/about/our-team" className="text-zinc-400 hover:text-white underline">Engineering Team</Link>
+                                    <Link to="/editorial-policy" className="text-zinc-400 hover:text-white underline">Editorial Standards</Link>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -59,6 +59,7 @@ const PolandMarketPage = lazy(() => import('./pages/PolandMarketPage'));
 const AustraliaMarketPage = lazy(() => import('./pages/AustraliaMarketPage'));
 const TermsPage = lazy(() => import('./pages/TermsPage'));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
+const EditorialPolicyPage = lazy(() => import('./pages/EditorialPolicyPage'));
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const AiAgentAgencyVsInHouseBlog = lazy(() => import('./pages/blog/AiAgentAgencyVsInHouseBlog'));
@@ -199,6 +200,7 @@ export default function App() {
               <Route path="/australia-market" element={<AustraliaMarketPage />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/editorial-policy" element={<EditorialPolicyPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/rag-ai-integration-for-startups" element={<Navigate to="/blog/the-complete-guide-to-rag-ai-integration-for-startups" replace />} />
               <Route path="/blog/rag-ai-integration-for-startups" element={<Navigate to="/blog/the-complete-guide-to-rag-ai-integration-for-startups" replace />} />

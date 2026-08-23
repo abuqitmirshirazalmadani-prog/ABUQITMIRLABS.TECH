@@ -175,6 +175,7 @@ const Footer = () => {
                         <div className="space-y-4">
                             <h3 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Legal &amp; Sitemaps</h3>
                             <ul className="space-y-3">
+                                <li><Link to="/editorial-policy" onMouseEnter={() => preloadRoute('/editorial-policy')} onTouchStart={() => preloadRoute('/editorial-policy')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Editorial Policy &amp; Standards</Link></li>
                                 <li><Link to="/privacy" onMouseEnter={() => preloadRoute('/privacy')} onTouchStart={() => preloadRoute('/privacy')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Privacy Policy</Link></li>
                                 <li><Link to="/terms" onMouseEnter={() => preloadRoute('/terms')} onTouchStart={() => preloadRoute('/terms')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Terms of Service</Link></li>
                                 <li><Link to="/blog" onMouseEnter={() => preloadRoute('/blog')} onTouchStart={() => preloadRoute('/blog')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Tech Blog</Link></li>

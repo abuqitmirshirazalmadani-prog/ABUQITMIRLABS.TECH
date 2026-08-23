@@ -811,7 +811,7 @@ const FintechSolutionsPage = () => {
             <p className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
               Schedule a technical consultation with our software architects to discuss system requirements, security matrices, and delivery roadmaps.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-5">
+            <div className="flex flex-wrap items-center justify-center gap-5 mb-16">
               <Link 
                 to="/contact" 
                 className="inline-flex items-center gap-3 px-10 py-5 bg-[#ccff00] text-black font-extrabold text-sm uppercase tracking-wider rounded-xl hover:scale-105 transition-all shadow-[0_0_40px_rgba(204,255,0,0.4)]"
@@ -824,6 +824,16 @@ const FintechSolutionsPage = () => {
               >
                 Explore Software Capabilities
               </Link>
+            </div>
+
+            {/* Financial & FinTech Software YMYL Advisory Disclaimer */}
+            <div className="border-t border-zinc-800 pt-8 text-left bg-zinc-950/60 p-6 rounded-2xl border">
+              <span className="text-[11px] font-mono text-[#ccff00] uppercase tracking-widest font-bold block mb-2">
+                [ FINANCIAL ENGINEERING &amp; REGULATORY NOTICE ]
+              </span>
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                <strong>Non-Financial Advisory Notice:</strong> AbuQitmirLabs is a custom software engineering and digital systems development studio. We build payment gateways, ledger infrastructure, and automated algorithmic architectures based on technical client specifications. AbuQitmirLabs does not offer banking services, investment advice, brokerage operations, or fiduciary asset management. FinTech enterprise clients are responsible for obtaining appropriate financial licenses (e.g. MSB, EMI, FCA, SEC) and ensuring jurisdictional regulatory compliance for their software deployments.
+              </p>
             </div>
           </div>
         </section>

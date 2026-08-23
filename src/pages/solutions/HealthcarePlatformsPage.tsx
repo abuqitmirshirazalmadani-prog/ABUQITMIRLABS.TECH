@@ -1290,7 +1290,7 @@ const HealthcarePlatformsPage = () => {
             <p className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
               Schedule a confidential technical discovery session with our senior software engineering team to discuss your clinical requirements, architecture, and timeline.
             </p>
-            <div className="flex flex-wrap justify-center items-center gap-5">
+            <div className="flex flex-wrap justify-center items-center gap-5 mb-16">
               <Link 
                 to="/contact" 
                 className="inline-flex items-center gap-3 px-10 py-5 bg-[#ccff00] text-black font-extrabold text-sm uppercase tracking-wider rounded-xl hover:scale-105 transition-all shadow-[0_0_40px_rgba(204,255,0,0.4)]"
@@ -1303,6 +1303,16 @@ const HealthcarePlatformsPage = () => {
               >
                 About AbuQitmirLabs
               </Link>
+            </div>
+
+            {/* Regulatory & Healthcare YMYL Advisory Disclaimer */}
+            <div className="border-t border-zinc-800 pt-8 text-left bg-zinc-950/60 p-6 rounded-2xl border">
+              <span className="text-[11px] font-mono text-[#ccff00] uppercase tracking-widest font-bold block mb-2">
+                [ CLINICAL &amp; HEALTHCARE SOFTWARE ADVISORY ]
+              </span>
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                <strong>Non-Diagnostic &amp; Engineering Notice:</strong> AbuQitmirLabs designs and architects custom software platforms, Electronic Health Record (EHR) bridges, and workflow automation infrastructure for healthcare organizations. Our software solutions do not provide medical diagnosis, treatment protocols, or direct clinical advice. Healthcare provider clients remain solely responsible for validating clinical decision support rules, medical device classifications, patient privacy safeguards, and regional healthcare regulatory compliance for their deployments.
+              </p>
             </div>
           </div>
         </section>

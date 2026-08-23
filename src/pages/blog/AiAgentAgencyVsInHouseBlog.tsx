@@ -442,6 +442,37 @@ export default function AiAgentAgencyVsInHouseBlog() {
               <ArrowRight className="w-4 h-4" />
             </Link>
           </section>
+
+          {/* Author Byline & Credentials Card */}
+          <div className="mt-12 bg-zinc-950 border border-zinc-800 rounded-2xl p-8 flex flex-col sm:flex-row items-center gap-6">
+            <div className="w-20 h-20 rounded-2xl overflow-hidden shrink-0 border-2 border-[#ccff00]/40">
+              <img 
+                src="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" 
+                alt="Abu Qitmir Mohammad Shiraz Al-Madani"
+                className="w-full h-full object-cover object-top"
+                width="80"
+                height="80"
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            <div className="space-y-2 text-center sm:text-left">
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                <span className="text-[10px] font-mono text-[#ccff00] uppercase tracking-widest font-bold">[ LEAD AUTHOR ]</span>
+                <span className="text-xs font-mono text-zinc-400">• Published: August 18, 2026</span>
+              </div>
+              <h4 className="text-lg font-bold text-white font-serif">Abu Qitmir Mohammad Shiraz Al-Madani</h4>
+              <p className="text-xs text-zinc-400 leading-relaxed max-w-xl">
+                Lead Technical Architect &amp; Founder at AbuQitmirLabs. Directs LLMOps, multi-agent frameworks, and enterprise software engineering systems.
+              </p>
+              <div className="flex flex-wrap justify-center sm:justify-start gap-4 text-xs font-mono pt-1">
+                <Link to="/about" className="text-[#ccff00] hover:underline">About Author →</Link>
+                <Link to="/about/our-team" className="text-zinc-400 hover:text-white underline">Leadership Team</Link>
+                <Link to="/editorial-policy" className="text-zinc-400 hover:text-white underline">Editorial Standards</Link>
+              </div>
+            </div>
+          </div>
         </article>
       </main>
 
