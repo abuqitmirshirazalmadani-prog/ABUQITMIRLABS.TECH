@@ -48,10 +48,10 @@ export default function GraphicsDesignPricing() {
             <div className="mt-6 border-l-4 border-[#ccff00] pl-5 space-y-3">
               <h3 className="text-[#ccff00] text-lg font-bold uppercase tracking-wider">Regional Pricing Offer</h3>
               <p className="text-[#ccff00] text-base font-medium max-w-3xl leading-relaxed">
-                People from Pakistan, India, Bangladesh should contact us on WhatsApp, rates are different for them. I love these people, I love everyone.
+                Clients and businesses based in South Asia (Pakistan, India, Bangladesh) are eligible for localized regional pricing and dedicated currency support. Please connect with our team directly on WhatsApp for tailored commercial quotes.
               </p>
               <p className="text-[#ccff00] text-base font-medium max-w-3xl leading-relaxed" style={{ fontFamily: 'Noto Nastaliq Urdu, sans-serif' }}>
-                پاکستان، انڈیا، بنگلہ دیش کے لوگ ہم سے واٹس ایپ پر رابطہ کریں، ان کے لیے ریٹس مختلف ہیں۔ میں ان لوگوں سے پیار کرتا ہوں، میں سب سے پیار کرتا ہوں۔
+                پاکستان، بھارت اور بنگلہ دیش میں مقیم کلائنٹس اور کاروباری اداروں کے لیے خصوصی علاقائی قیمتیں اور کرنسی سپورٹ دستیاب ہے۔ براہِ کرم واٹس ایپ پر ہماری ٹیم سے براہِ راست رابطہ فرمائیں۔
               </p>
             </div>
             <p className="mt-8 text-neutral-400 text-lg md:text-xl font-light max-w-4xl leading-relaxed">

@@ -17,38 +17,40 @@ interface WordProps {
 }
  
 const Word: React.FC<WordProps> = ({ children, progress, range }) => {
-  const opacity = useTransform(progress, range, [0.1, 1]);
+  const opacity = useTransform(progress, range, [0.35, 1]);
  
   return (
-    <span className="relative mr-1.5 mb-1 text-inherit inline-block">
-      <span className="absolute opacity-10" aria-hidden="true">{children}</span>
-      <motion.span style={{ opacity: opacity }}>{children}</motion.span>
-    </span>
+    <motion.span 
+      style={{ opacity }} 
+      className="inline-block mr-[0.28em] transition-opacity duration-150"
+    >
+      {children}
+    </motion.span>
   );
 };
  
 export const MagicText: React.FC<MagicTextProps> = ({ text, className }) => {
-  const container = useRef(null);
+  const container = useRef<HTMLParagraphElement>(null);
  
   const { scrollYProgress } = useScroll({
     target: container,
-    offset: ["start 0.9", "start 0.25"],
+    offset: ["start 0.95", "start 0.35"],
   });
 
-  const words = text.split(" ");
+  const words = text.split(/\s+/).filter(Boolean);
  
   return (
-    <div ref={container} className={cn("flex flex-wrap leading-relaxed", className)}>
+    <p ref={container} className={cn("leading-relaxed", className)}>
       {words.map((word, i) => {
         const start = i / words.length;
-        const end = start + 1 / words.length;
+        const end = Math.min(1, start + 1 / words.length);
  
         return (
-          <Word key={i} progress={scrollYProgress} range={[start, end]}>
+          <Word key={`${word}-${i}`} progress={scrollYProgress} range={[start, end]}>
             {word}
           </Word>
         );
       })}
-    </div>
+    </p>
   );
 };

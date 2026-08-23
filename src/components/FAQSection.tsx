@@ -39,7 +39,19 @@ const faqItems = [
     }
 ];
 
-const FAQItem = ({ question, answer, isOpen, onClick }: { question: string, answer: string, isOpen: boolean, onClick: () => void }) => {
+const FAQItem = ({ 
+    question, 
+    answer, 
+    isOpen, 
+    onClick,
+    id
+}: { 
+    question: string, 
+    answer: string, 
+    isOpen: boolean, 
+    onClick: () => void,
+    id: string
+}) => {
     return (
         <div 
             className={`rounded-3xl border transition-all duration-500 overflow-hidden ${
@@ -49,7 +61,10 @@ const FAQItem = ({ question, answer, isOpen, onClick }: { question: string, answ
             }`}
         >
             <button 
+                id={`faq-btn-${id}`}
                 onClick={onClick}
+                aria-expanded={isOpen}
+                aria-controls={`faq-content-${id}`}
                 className="w-full text-left px-6 sm:px-8 py-5 sm:py-6 flex items-start justify-between gap-6 transition-colors"
             >
                 <span className={`text-lg sm:text-xl font-bold tracking-tight ${isOpen ? 'text-white' : 'text-neutral-300'}`}>
@@ -65,20 +80,22 @@ const FAQItem = ({ question, answer, isOpen, onClick }: { question: string, answ
                     </motion.div>
                 </span>
             </button>
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                    >
-                        <div className="px-6 sm:px-8 pb-6 sm:pb-8 pt-0">
-                            <MagicText text={answer} className="text-sm sm:text-base text-neutral-400 leading-relaxed max-w-3xl" />
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            <div 
+                id={`faq-content-${id}`}
+                role="region"
+                aria-labelledby={`faq-btn-${id}`}
+                className={`grid transition-all duration-300 ease-in-out ${
+                    isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                }`}
+            >
+                <div className="overflow-hidden">
+                    <div className="px-6 sm:px-8 pb-6 sm:pb-8 pt-0">
+                        <p className="text-sm sm:text-base text-neutral-400 leading-relaxed max-w-3xl font-light">
+                            {answer}
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
@@ -119,6 +136,7 @@ const FAQSection = () => {
                             transition={{ delay: idx * 0.1 }}
                         >
                             <FAQItem 
+                                id={`item-${idx}`}
                                 question={item.question}
                                 answer={item.answer}
                                 isOpen={openIndex === idx}

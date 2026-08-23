@@ -11,7 +11,7 @@ const testimonials = [
   },
   {
     text: "Aap ka bht shokria aap mujhe atni achi website bana kr di.",
-    name: "Hammad Sheikh33",
+    name: "Hammad Sheikh",
     role: "Website Client",
   },
   {

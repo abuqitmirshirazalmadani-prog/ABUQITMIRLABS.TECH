@@ -59,8 +59,8 @@ const FloatingWhatsApp = () => (
     className="fixed bottom-8 right-8 z-[9999] group"
     aria-label="Contact on WhatsApp"
   >
-    <div className="absolute right-full mr-4 bottom-2 bg-black text-white px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0 pointer-events-none border border-white/20">
-      Mission Briefing
+    <div className="absolute right-full mr-4 bottom-2 bg-black text-white px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0 pointer-events-none border border-white/20 shadow-lg">
+      Chat with us
     </div>
     <div className="relative w-16 h-16 flex items-center justify-center transform transition-all group-hover:scale-105 active:scale-95 group-hover:-rotate-3">
       <div className="absolute inset-0 bg-[#25D366] border-2 border-black rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover:translate-x-1 group-hover:translate-y-1 transition-all"></div>

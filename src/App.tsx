@@ -90,8 +90,8 @@ const FloatingWhatsApp = () => (
     aria-label="Contact on WhatsApp"
   >
     {/* Floating label */}
-    <div className="absolute right-full mr-4 bottom-2 bg-black text-white px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0 pointer-events-none border border-white/20">
-      Mission Briefing
+    <div className="absolute right-full mr-4 bottom-2 bg-black text-white px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0 pointer-events-none border border-white/20 shadow-lg">
+      Chat with us
     </div>
 
     {/* Brutalist Button Container */}

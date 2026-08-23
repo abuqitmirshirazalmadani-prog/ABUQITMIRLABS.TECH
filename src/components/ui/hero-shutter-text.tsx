@@ -54,6 +54,7 @@ export default function HeroText({
 
                 {/* Top Slice Layer */}
                 <motion.span
+                  aria-hidden="true"
                   initial={{ x: "-100%", opacity: 0 }}
                   animate={{ x: "100%", opacity: [0, 1, 0] }}
                   transition={{
@@ -69,6 +70,7 @@ export default function HeroText({
 
                 {/* Middle Slice Layer */}
                 <motion.span
+                  aria-hidden="true"
                   initial={{ x: "100%", opacity: 0 }}
                   animate={{ x: "-100%", opacity: [0, 1, 0] }}
                   transition={{
@@ -86,6 +88,7 @@ export default function HeroText({
 
                 {/* Bottom Slice Layer */}
                 <motion.span
+                  aria-hidden="true"
                   initial={{ x: "-100%", opacity: 0 }}
                   animate={{ x: "100%", opacity: [0, 1, 0] }}
                   transition={{

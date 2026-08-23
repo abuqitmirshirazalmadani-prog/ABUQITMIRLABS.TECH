@@ -41,7 +41,7 @@ const stats = [
   { emoji: "🌍", label: "Clients Across US, UK & Europe", value: "Global Delivery" },
   { emoji: "🛡️", label: "Zero-Trust Architecture", value: "99.9% Uptime" },
   { emoji: "🚀", label: "Core Web Vitals Optimized", value: "<0.8s Load Times" },
-  { emoji: "⭐", label: "Clutch & GoodFirms Verified", value: "5.0 Rating" },
+  { emoji: "⭐", label: "Clutch & GoodFirms", value: "Verified Profile" },
 ];
 
 export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {

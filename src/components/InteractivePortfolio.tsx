@@ -242,7 +242,10 @@ const InteractivePortfolio = () => {
                             <div className="absolute -top-24 -right-24 w-48 h-48 bg-red-600/5 rounded-full blur-3xl group-hover:bg-red-600/10 transition-all duration-500 pointer-events-none"></div>
 
                             <div>
-                                <span className="text-[9px] font-bold tracking-[0.2em] text-red-500/80 uppercase block mb-2 font-mono">Case Study 1</span>
+                                <div className="flex items-center gap-2 mb-2">
+                                    <span className="text-[9px] font-bold tracking-[0.2em] text-red-500/80 uppercase font-mono">Case Study 1</span>
+                                    <span className="text-[8px] font-mono tracking-widest text-red-400 bg-red-950/60 border border-red-800/40 px-2 py-0.5 uppercase">In-House Product Build</span>
+                                </div>
                                 <h4 className="text-2xl md:text-3xl font-black text-white tracking-tight mb-1">GhastlyPages</h4>
                                 <p className="text-zinc-400 text-xs font-semibold tracking-wide uppercase mb-6 font-serif italic">Horror Fiction Platform — Stories That Haunt You</p>
                                 <p className="text-zinc-500 text-sm font-light leading-relaxed mb-8">
@@ -250,7 +253,7 @@ const InteractivePortfolio = () => {
                                 </p>
 
                                 {/* Metrics Grid */}
-                                <div className="grid grid-cols-2 gap-4 py-5 border-y border-white/5 mb-8">
+                                <div className="grid grid-cols-2 gap-4 py-5 border-y border-white/5 mb-4">
                                     <div className="flex items-center gap-2">
                                         <span className="text-lg">🚀</span>
                                         <div>
@@ -272,10 +275,13 @@ const InteractivePortfolio = () => {
                                     <div className="flex items-center gap-2">
                                         <span className="text-lg">📊</span>
                                         <div>
-                                            <span className="text-[10px] font-black text-[#ccff00] block leading-none tracking-wider">100+ STORIES SCALABLE</span>
+                                            <span className="text-[10px] font-black text-[#ccff00] block leading-none tracking-wider">100+ STORIES CAPACITY*</span>
                                         </div>
                                     </div>
                                 </div>
+                                <p className="text-sm text-zinc-300 leading-relaxed font-sans mb-8 italic">
+                                    *Capacity benchmark based on database schema and storage backend modeling.
+                                </p>
                             </div>
 
                             <div>
@@ -294,9 +300,9 @@ const InteractivePortfolio = () => {
                                 </div>
 
                                 <a 
-                                    href="/case-studies" 
-                                    title="Explore TajweedPage Case Study Details"
-                                    aria-label="Explore TajweedPage Case Study Details"
+                                    href="/case-studies#ghastlypages-cinema" 
+                                    title="Explore GhastlyPages Case Study Details"
+                                    aria-label="Explore GhastlyPages Case Study Details"
                                     className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-red-500 hover:text-white transition-colors duration-300"
                                 >
                                     🔗 VISIT LIVE CASE STUDY →
@@ -316,7 +322,10 @@ const InteractivePortfolio = () => {
                             <div className="absolute -top-24 -right-24 w-48 h-48 bg-emerald-600/5 rounded-full blur-3xl group-hover:bg-emerald-600/10 transition-all duration-500 pointer-events-none"></div>
 
                             <div>
-                                <span className="text-[9px] font-bold tracking-[0.2em] text-emerald-500/80 uppercase block mb-2 font-mono">Case Study 2</span>
+                                <div className="flex items-center gap-2 mb-2">
+                                    <span className="text-[9px] font-bold tracking-[0.2em] text-emerald-500/80 uppercase font-mono">Case Study 2</span>
+                                    <span className="text-[8px] font-mono tracking-widest text-emerald-400 bg-emerald-950/60 border border-emerald-800/40 px-2 py-0.5 uppercase">Concept & Architecture Demo</span>
+                                </div>
                                 <h4 className="text-2xl md:text-3xl font-black text-white tracking-tight mb-1">CloudHealth Portal</h4>
                                 <p className="text-zinc-400 text-xs font-semibold tracking-wide uppercase mb-6 font-serif italic">Multi-Platform Healthcare Ecosystem</p>
                                 <p className="text-zinc-500 text-sm font-light leading-relaxed mb-8">
@@ -324,7 +333,7 @@ const InteractivePortfolio = () => {
                                 </p>
 
                                 {/* Metrics Grid */}
-                                <div className="grid grid-cols-2 gap-4 py-5 border-y border-white/5 mb-8">
+                                <div className="grid grid-cols-2 gap-4 py-5 border-y border-white/5 mb-4">
                                     <div className="flex items-center gap-2">
                                         <span className="text-lg">🚀</span>
                                         <div>
@@ -346,10 +355,13 @@ const InteractivePortfolio = () => {
                                     <div className="flex items-center gap-2">
                                         <span className="text-lg">🔒</span>
                                         <div>
-                                            <span className="text-[10px] font-black text-[#ccff00] block leading-none tracking-wider">ZERO-COMPROMISE SECURITY</span>
+                                            <span className="text-[10px] font-black text-[#ccff00] block leading-none tracking-wider">ZERO-COMPROMISE SECURITY*</span>
                                         </div>
                                     </div>
                                 </div>
+                                <p className="text-sm text-zinc-300 leading-relaxed font-sans mb-8 italic">
+                                    *Security and compression standards based on architecture modeling and client-side encryption protocols.
+                                </p>
                             </div>
 
                             <div>
@@ -388,7 +400,10 @@ const InteractivePortfolio = () => {
                             <div className="absolute -top-24 -right-24 w-48 h-48 bg-indigo-600/5 rounded-full blur-3xl group-hover:bg-indigo-600/10 transition-all duration-500 pointer-events-none"></div>
 
                             <div>
-                                <span className="text-[9px] font-bold tracking-[0.2em] text-indigo-500/80 uppercase block mb-2 font-mono">Case Study 3</span>
+                                <div className="flex items-center gap-2 mb-2">
+                                    <span className="text-[9px] font-bold tracking-[0.2em] text-indigo-500/80 uppercase font-mono">Case Study 3</span>
+                                    <span className="text-[8px] font-mono tracking-widest text-indigo-400 bg-indigo-950/60 border border-indigo-800/40 px-2 py-0.5 uppercase">Concept & Architecture Demo</span>
+                                </div>
                                 <h4 className="text-2xl md:text-3xl font-black text-white tracking-tight mb-1">ClinicOS Pro</h4>
                                 <p className="text-zinc-400 text-xs font-semibold tracking-wide uppercase mb-6 font-serif italic">Clinical ERP & Electronic Health Record System</p>
                                 <p className="text-zinc-500 text-sm font-light leading-relaxed mb-8">
@@ -396,7 +411,7 @@ const InteractivePortfolio = () => {
                                 </p>
 
                                 {/* Metrics Grid */}
-                                <div className="grid grid-cols-2 gap-4 py-5 border-y border-white/5 mb-8">
+                                <div className="grid grid-cols-2 gap-4 py-5 border-y border-white/5 mb-4">
                                     <div className="flex items-center gap-2">
                                         <span className="text-lg">🚀</span>
                                         <div>
@@ -412,7 +427,7 @@ const InteractivePortfolio = () => {
                                     <div className="flex items-center gap-2">
                                         <span className="text-lg">📊</span>
                                         <div>
-                                            <span className="text-[10px] font-black text-[#ccff00] block leading-none tracking-wider">0 PAPER TRAILS</span>
+                                            <span className="text-[10px] font-black text-[#ccff00] block leading-none tracking-wider">0 PAPER TRAILS*</span>
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-2">
@@ -422,6 +437,9 @@ const InteractivePortfolio = () => {
                                         </div>
                                     </div>
                                 </div>
+                                <p className="text-sm text-zinc-300 leading-relaxed font-sans mb-8 italic">
+                                    *Workflow outcome reflecting full digitization of clinical paper records in the ERP architecture.
+                                </p>
                             </div>
 
                             <div>
@@ -460,7 +478,10 @@ const InteractivePortfolio = () => {
                             <div className="absolute -top-24 -right-24 w-48 h-48 bg-lime-600/5 rounded-full blur-3xl group-hover:bg-lime-600/10 transition-all duration-500 pointer-events-none"></div>
 
                             <div>
-                                <span className="text-[9px] font-bold tracking-[0.2em] text-lime-500/80 uppercase block mb-2 font-mono">Case Study 4</span>
+                                <div className="flex items-center gap-2 mb-2">
+                                    <span className="text-[9px] font-bold tracking-[0.2em] text-lime-500/80 uppercase font-mono">Case Study 4</span>
+                                    <span className="text-[8px] font-mono tracking-widest text-lime-400 bg-lime-950/60 border border-lime-800/40 px-2 py-0.5 uppercase">Concept & Architecture Demo</span>
+                                </div>
                                 <h4 className="text-2xl md:text-3xl font-black text-white tracking-tight mb-1">ProFit Command Center</h4>
                                 <p className="text-zinc-400 text-xs font-semibold tracking-wide uppercase mb-6 font-serif italic">High-End CRM for Personal Trainers</p>
                                 <p className="text-zinc-500 text-sm font-light leading-relaxed mb-8">
@@ -468,23 +489,23 @@ const InteractivePortfolio = () => {
                                 </p>
 
                                 {/* Metrics Grid */}
-                                <div className="grid grid-cols-2 gap-4 py-5 border-y border-white/5 mb-8">
+                                <div className="grid grid-cols-2 gap-4 py-5 border-y border-white/5 mb-4">
                                     <div className="flex items-center gap-2">
                                         <span className="text-lg">🚀</span>
                                         <div>
-                                            <span className="text-[10px] font-black text-[#ccff00] block leading-none tracking-wider">76% TIME SAVED</span>
+                                            <span className="text-[10px] font-black text-[#ccff00] block leading-none tracking-wider">76% TIME SAVED*</span>
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-2">
                                         <span className="text-lg">🏆</span>
                                         <div>
-                                            <span className="text-[10px] font-black text-[#ccff00] block leading-none tracking-wider">0% BILLING LEAKAGE</span>
+                                            <span className="text-[10px] font-black text-[#ccff00] block leading-none tracking-wider">0% BILLING LEAKAGE*</span>
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-2">
                                         <span className="text-lg">📊</span>
                                         <div>
-                                            <span className="text-[10px] font-black text-[#ccff00] block leading-none tracking-wider">20% CHURN REDUCTION</span>
+                                            <span className="text-[10px] font-black text-[#ccff00] block leading-none tracking-wider">20% CHURN REDUCTION*</span>
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-2">
@@ -494,6 +515,9 @@ const InteractivePortfolio = () => {
                                         </div>
                                     </div>
                                 </div>
+                                <p className="text-sm text-zinc-300 leading-relaxed font-sans mb-8 italic">
+                                    *Projected efficiency and retention metrics are calculated from workflow automation modeling vs. manual spreadsheets, not a multi-year client cohort.
+                                </p>
                             </div>
 
                             <div>
