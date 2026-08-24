@@ -102,6 +102,7 @@ const TechStackSection = () => {
                                         href={item.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
+                                        aria-label={`Official website for ${item.name}`}
                                         className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300 hover:text-white hover:border-cyan-400 hover:bg-cyan-500/10 transition-all"
                                     >
                                         <span>{item.name}</span>

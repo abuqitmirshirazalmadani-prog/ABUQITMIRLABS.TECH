@@ -172,11 +172,15 @@ for (const routeUrl of routes) {
       html = html.replace('</head>', `  ${headTags}\n</head>`);
     }
 
-    // 3. Inject unique Dynamic Title, Description & Open Graph tags for each route
+    // 3. Inject unique Dynamic Title, Description & Open Graph tags for each route from SEO_ROUTES_METADATA
     const seo = (SEO_ROUTES_METADATA && SEO_ROUTES_METADATA[routeUrl]) || 
                 (SEO_ROUTES_METADATA && Object.entries(SEO_ROUTES_METADATA).find(([k]) => routeUrl === k || routeUrl.endsWith(k) || (k.length > 2 && routeUrl.includes(k)))?.[1]);
 
     if (seo) {
+      // Clean any pre-existing duplicates of OpenGraph / Twitter tags from template or Helmet hoisting
+      html = html.replace(/<meta\s+property=["']og:[^"']+["'][^>]*\/?>/gi, '');
+      html = html.replace(/<meta\s+name=["']twitter:[^"']+["'][^>]*\/?>/gi, '');
+
       // Unique <title>
       if (seo.title) {
         html = html.replace(/<title\b[^>]*>[\s\S]*?<\/title>/i, `<title>${seo.title}</title>`);
@@ -185,65 +189,38 @@ for (const routeUrl of routes) {
       // Unique <meta name="description">
       if (seo.description) {
         const escapedDesc = seo.description.replace(/"/g, '&quot;');
-        if (html.includes('name="description"')) {
-          html = html.replace(/<meta\s+name=["']description["'][^>]*\/?>/i, `<meta name="description" content="${escapedDesc}" />`);
-        } else {
-          html = html.replace('</head>', `  <meta name="description" content="${escapedDesc}" />\n</head>`);
-        }
+        html = html.replace(/<meta\s+name=["']description["'][^>]*\/?>/gi, '');
+        html = html.replace('</head>', `  <meta name="description" content="${escapedDesc}" />\n</head>`);
       }
 
       // Unique og:title
       const ogTitle = seo.ogTitle || seo.title;
       if (ogTitle) {
         const escapedOgTitle = ogTitle.replace(/"/g, '&quot;');
-        if (html.includes('property="og:title"')) {
-          html = html.replace(/<meta\s+property=["']og:title["'][^>]*\/?>/i, `<meta property="og:title" content="${escapedOgTitle}" />`);
-        } else {
-          html = html.replace('</head>', `  <meta property="og:title" content="${escapedOgTitle}" />\n</head>`);
-        }
+        html = html.replace('</head>', `  <meta property="og:title" content="${escapedOgTitle}" />\n</head>`);
       }
 
       // Unique og:description
       const ogDesc = seo.ogDescription || seo.description;
       if (ogDesc) {
         const escapedOgDesc = ogDesc.replace(/"/g, '&quot;');
-        if (html.includes('property="og:description"')) {
-          html = html.replace(/<meta\s+property=["']og:description["'][^>]*\/?>/i, `<meta property="og:description" content="${escapedOgDesc}" />`);
-        } else {
-          html = html.replace('</head>', `  <meta property="og:description" content="${escapedOgDesc}" />\n</head>`);
-        }
+        html = html.replace('</head>', `  <meta property="og:description" content="${escapedOgDesc}" />\n</head>`);
       }
 
-      // Unique twitter:title
-      const twTitle = seo.twitterTitle || seo.title;
-      if (twTitle) {
-        const escapedTwTitle = twTitle.replace(/"/g, '&quot;');
-        if (html.includes('name="twitter:title"')) {
-          html = html.replace(/<meta\s+name=["']twitter:title["'][^>]*\/?>/i, `<meta name="twitter:title" content="${escapedTwTitle}" />`);
-        } else {
-          html = html.replace('</head>', `  <meta name="twitter:title" content="${escapedTwTitle}" />\n</head>`);
-        }
-      }
+      // Unique og:url & og:type
+      const ogUrl = (seo && seo.canonical) || `https://www.abuqitmirlabs.tech${routeUrl === '/' ? '/' : routeUrl}`;
+      html = html.replace('</head>', `  <meta property="og:url" content="${ogUrl}" />\n  <meta property="og:type" content="${seo.ogType || 'website'}" />\n</head>`);
 
-      // Unique twitter:description
-      const twDesc = seo.twitterDescription || seo.description;
-      if (twDesc) {
-        const escapedTwDesc = twDesc.replace(/"/g, '&quot;');
-        if (html.includes('name="twitter:description"')) {
-          html = html.replace(/<meta\s+name=["']twitter:description["'][^>]*\/?>/i, `<meta name="twitter:description" content="${escapedTwDesc}" />`);
-        } else {
-          html = html.replace('</head>', `  <meta name="twitter:description" content="${escapedTwDesc}" />\n</head>`);
-        }
-      }
-
-      // Open Graph Image
+      // Unique og:image
       if (seo.ogImage) {
-        if (html.includes('property="og:image"')) {
-          html = html.replace(/<meta\s+property=["']og:image["'][^>]*\/?>/i, `<meta property="og:image" content="${seo.ogImage}" />`);
-        } else {
-          html = html.replace('</head>', `  <meta property="og:image" content="${seo.ogImage}" />\n</head>`);
-        }
+        html = html.replace('</head>', `  <meta property="og:image" content="${seo.ogImage}" />\n  <meta property="og:image:alt" content="AbuQitmirLabs Custom Software &amp; AI Development Studio" />\n</head>`);
       }
+
+      // Unique twitter:card, twitter:title, twitter:description, twitter:image
+      const twTitle = seo.twitterTitle || seo.title;
+      const twDesc = seo.twitterDescription || seo.description;
+      const twImage = seo.ogImage || 'https://www.abuqitmirlabs.tech/logo.png';
+      html = html.replace('</head>', `  <meta name="twitter:card" content="summary_large_image" />\n  <meta name="twitter:title" content="${(twTitle || '').replace(/"/g, '&quot;')}" />\n  <meta name="twitter:description" content="${(twDesc || '').replace(/"/g, '&quot;')}" />\n  <meta name="twitter:image" content="${twImage}" />\n</head>`);
     }
 
     // 4. Update canonical link
