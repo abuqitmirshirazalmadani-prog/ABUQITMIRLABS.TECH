@@ -601,13 +601,81 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
     ogType: 'article'
   },
-  '/editorial-policy': {
-    title: 'Editorial Standards & Technical Fact-Checking Policy | AbuQitmirLabs',
-    description: 'Our editorial principles, AI disclosure standards, technical peer-review protocols, and content verification methodology.',
-    canonical: 'https://www.abuqitmirlabs.tech/editorial-policy',
-    ogTitle: 'Editorial Standards & Technical Fact-Checking Policy | AbuQitmirLabs',
-    ogDescription: 'Our editorial principles, AI disclosure standards, and peer-review verification methodology.',
+  '/our-company': {
+    title: 'Our Company | Engineering Culture & Mission | AbuQitmirLabs',
+    description: 'Discover the vision, engineering principles, and international standards driving AbuQitmirLabs. Based in Karachi, serving US, UK, and global innovators.',
+    canonical: 'https://www.abuqitmirlabs.tech/about/our-company',
+    ogTitle: 'Our Company | Engineering Culture & Mission | AbuQitmirLabs',
+    ogDescription: 'Discover the vision, engineering principles, and international standards driving AbuQitmirLabs.',
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
+  },
+  '/our-team': {
+    title: 'Our Team | Senior Software Engineers & AI Architects | AbuQitmirLabs',
+    description: 'Meet the senior engineers, AI architects, and UI/UX designers behind AbuQitmirLabs. High-velocity squads delivering bank-grade digital software.',
+    canonical: 'https://www.abuqitmirlabs.tech/about/our-team',
+    ogTitle: 'Our Team | Senior Software Engineers & AI Architects | AbuQitmirLabs',
+    ogDescription: 'Meet the senior engineers, AI architects, and UI/UX designers behind AbuQitmirLabs.',
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
+  },
+  '/our-process': {
+    title: 'Our Process | 5-Stage Engineering Lifecycle | AbuQitmirLabs',
+    description: 'Explore our battle-tested agile development methodology — Discovery, System Architecture, Sprint Engineering, Automated QA, and Zero-Downtime Deployment.',
+    canonical: 'https://www.abuqitmirlabs.tech/about/our-process',
+    ogTitle: 'Our Process | 5-Stage Engineering Lifecycle | AbuQitmirLabs',
+    ogDescription: 'Explore our battle-tested agile development methodology from discovery to zero-downtime deployment.',
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
+  },
+  '/careers': {
+    title: 'Careers | Join AbuQitmirLabs Engineering Squads | Karachi & Remote',
+    description: 'Join AbuQitmirLabs. We are hiring senior full-stack developers, AI prompt architects, and systems engineers to build international digital platforms.',
+    canonical: 'https://www.abuqitmirlabs.tech/about/careers',
+    ogTitle: 'Careers | Join AbuQitmirLabs Engineering Squads | Karachi & Remote',
+    ogDescription: 'Join AbuQitmirLabs. Hiring senior full-stack developers, AI architects, and systems engineers.',
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
+  },
+  '/custom-software-development': {
+    title: 'Custom Software Development Company | AbuQitmirLabs',
+    description: 'Enterprise custom software development services: microservices, cloud migrations, database engineering, and secure API architectures.',
+    canonical: 'https://www.abuqitmirlabs.tech/custom-software',
+    ogTitle: 'Custom Software Development Company | AbuQitmirLabs',
+    ogDescription: 'Enterprise custom software development services: microservices, cloud migrations, and secure API architectures.',
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
     ogType: 'website'
+  },
+  '/local-seo-services': {
+    title: 'Local SEO Services for Small Business | AbuQitmirLabs',
+    description: 'Dominant local search optimization, Google Maps ranking, citation building, and multi-location local SEO packages.',
+    canonical: 'https://www.abuqitmirlabs.tech/local-seo/small-business',
+    ogTitle: 'Local SEO Services for Small Business | AbuQitmirLabs',
+    ogDescription: 'Dominant local search optimization, Google Maps ranking, citation building, and local SEO packages.',
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogType: 'website'
+  },
+  '/local-seo-small-business': {
+    title: 'Local SEO for Small Businesses | AbuQitmirLabs',
+    description: 'Local business SEO that drives foot traffic and qualified phone leads. Google Business Profile setup, local pack ranking, and citation audits.',
+    canonical: 'https://www.abuqitmirlabs.tech/local-seo/small-business',
+    ogTitle: 'Local SEO for Small Businesses | AbuQitmirLabs',
+    ogDescription: 'Local business SEO that drives foot traffic and qualified phone leads.',
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogType: 'website'
+  },
+  '/brand-kit': {
+    title: 'Brand Assets & Media Kit | AbuQitmirLabs Official Graphics & Logos',
+    description: 'Download official AbuQitmirLabs vector logos, color palettes, typography specs, and social media banners.',
+    canonical: 'https://www.abuqitmirlabs.tech/brand-assets',
+    ogTitle: 'Brand Assets & Media Kit | AbuQitmirLabs Official Graphics & Logos',
+    ogDescription: 'Download official AbuQitmirLabs vector logos, color palettes, and brand guidelines.',
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogType: 'website'
+  },
+  '/ai-agent-development-agency-vs-in-house': {
+    title: 'AI Agent Development Agency vs In-House | AbuQitmirLabs',
+    description: 'Detailed financial and architectural comparison: should your enterprise hire an AI agent development agency or build an internal AI squad from scratch?',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/ai-agent-development-agency-vs-in-house',
+    ogTitle: 'AI Agent Development Agency vs In-House | AbuQitmirLabs',
+    ogDescription: 'Financial and architectural comparison between hiring an AI agent agency vs building in-house.',
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogType: 'article'
   }
 };

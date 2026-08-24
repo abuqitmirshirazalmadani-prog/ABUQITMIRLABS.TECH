@@ -763,6 +763,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                                 height={props.height || 675}
                                                 loading="lazy"
                                                 decoding="async"
+                                                alt={props.alt || "AbuQitmirLabs engineering and technology diagram"}
                                                 {...props} 
                                                 referrerPolicy="no-referrer"
                                                 className="mx-auto rounded-[2rem] shadow-2xl border border-zinc-800 max-h-[600px] w-full object-cover select-none hover:scale-[1.01] transition-transform duration-700" 

@@ -138,7 +138,7 @@ As European and American financial institutions modernize legacy core systems, d
 
 - **24/7 Dedicated Squad Coverage**: Real-time overlapping hours for US Eastern and UK GMT development cycles.
 - **Bank-Grade Compliance**: Full adherence to PCI-DSS Level 1, GDPR, and ISO 27001 information security standards.
-- **Bespoke Full-Stack Stack**: Low-latency Go microservices, React/Vite frontends, and hardened PostgreSQL databases.
+- **Bespoke Full-Stack Architecture**: Low-latency Go microservices, React/Vite frontends, and hardened PostgreSQL databases.
 
 ## Geopolitical Engineering Advantage
 
