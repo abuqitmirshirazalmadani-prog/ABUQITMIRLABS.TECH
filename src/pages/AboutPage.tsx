@@ -132,8 +132,8 @@ const AboutPage = () => {
                 "email": "hello@abuqitmirlabs.tech",
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony",
-                  "addressLocality": "Landhi Town, Karachi",
+                  "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
+                  "addressLocality": "Karachi",
                   "addressRegion": "Sindh",
                   "postalCode": "75160",
                   "addressCountry": "PK"
@@ -379,7 +379,7 @@ const AboutPage = () => {
                     <div>
                       <h4 className="text-xs font-mono uppercase text-zinc-500">OFFICE ADDRESS</h4>
                       <p className="text-sm text-zinc-300 font-sans mt-0.5 font-light leading-relaxed">
-                        8/15, abuqitmirlabs.tech, 3 37A Rd, Shah Khalid Colony Sector 37 A Landhi Town, Karachi, 75160
+                        8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town, 75160, Karachi, Pakistan
                       </p>
                     </div>
                   </div>

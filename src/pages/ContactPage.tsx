@@ -353,7 +353,7 @@ const ContactPage = () => {
                            </div>
                            <div>
                               <p className="text-white font-bold uppercase tracking-widest text-sm mb-1">Base Coordinates</p>
-                              <p className="text-zinc-400 font-sans text-xs leading-relaxed max-w-sm">8/15, abuqitmirlabs.tech, 3 37A Rd, Shah Khalid Colony Sector 37 A Landhi Town, Karachi, 75160</p>
+                              <p className="text-zinc-400 font-sans text-xs leading-relaxed max-w-sm">8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town, 75160, Karachi, Pakistan</p>
                            </div>
                         </a>
                      </div>

@@ -431,7 +431,7 @@ const InteractivePortfolio = () => {
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        <span className="text-lg">𫫓</span>
+                                        <span className="text-lg">🫀</span>
                                         <div>
                                             <span className="text-[10px] font-black text-[#ccff00] block leading-none tracking-wider">LIVE ECG VISUALIZATION</span>
                                         </div>

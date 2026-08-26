@@ -31,7 +31,7 @@ export const homeSchema = {
       "openingHours": "Mo-Fr 09:00-18:00",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony, Sector 37A",
+        "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
         "addressLocality": "Karachi",
         "addressRegion": "Sindh",
         "postalCode": "75160",
@@ -129,7 +129,7 @@ export const homeSchema = {
       "@id": "https://www.abuqitmirlabs.tech/#webpage",
       "url": "https://www.abuqitmirlabs.tech/",
       "name": "Custom Software & AI App Development Company | AbuQitmirLabs",
-      "description": "AbuQitmirLabs is a custom software & AI development company delivering scalable web platforms, mobile apps, AI agents, and technical SEO for global businesses.",
+      "description": "AbuQitmirLabs engineers custom software, AI agents, mobile apps, and web solutions. Top-rated development company in Karachi serving global clients.",
       "inLanguage": "en-US",
       "isPartOf": {
         "@id": "https://www.abuqitmirlabs.tech/#website"

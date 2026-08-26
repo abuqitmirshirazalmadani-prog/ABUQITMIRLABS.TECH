@@ -197,8 +197,8 @@ const Footer = () => {
                                 <li className="flex items-start gap-2 text-xs" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
                                     <MapPin size={14} className="min-w-[14px] mt-0.5 text-black" />
                                     <span className="text-black font-bold">
-                                        <span itemProp="streetAddress">8/15, 3 37A Rd, Shah Khalid Colony, Sector 37A</span>, <br />
-                                        <span itemProp="addressLocality">Landhi Town, Karachi</span>, <br />
+                                        <span itemProp="streetAddress">8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town</span>, <br />
+                                        <span itemProp="addressLocality">Karachi</span>, <br />
                                         <span itemProp="postalCode">75160</span>, <span itemProp="addressCountry">Pakistan</span>
                                     </span>
                                 </li>
@@ -248,7 +248,7 @@ const Footer = () => {
                                     <ExternalLink size={10} /> Find us on Google Maps
                                 </a>
                                 <span>•</span>
-                                <span>Headquarters: 8/15, abuqitmirlabs.tech, 3 37A Rd, Shah Khalid Colony Sector 37 A Landhi Town, Karachi, 75160</span>
+                                <span>Headquarters: 8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town, 75160, Karachi, Pakistan</span>
                             </div>
                             <div className="mt-1">
                                 © 2026 AbuQitmirLabs. All rights reserved.

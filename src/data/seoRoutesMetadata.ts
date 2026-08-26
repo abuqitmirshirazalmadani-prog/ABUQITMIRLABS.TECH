@@ -22,7 +22,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg',
     ogType: 'website',
     twitterTitle: 'Custom Software & AI App Development Company | AbuQitmirLabs',
-    twitterDescription: 'AbuQitmirLabs builds custom software, AI agents, mobile apps, and scalable web solutions.',
+    twitterDescription: 'AbuQitmirLabs engineers custom software, AI agents, mobile apps, and web solutions. Top-rated development company in Karachi serving global clients.',
     twitterImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg'
   },
   '/about': {

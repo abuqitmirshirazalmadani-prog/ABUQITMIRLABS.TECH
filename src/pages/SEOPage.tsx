@@ -143,8 +143,8 @@ const SEOPage = () => {
                 "priceRange": "$$$",
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "8/15, 3 37A Rd, Shah Khalid Colony",
-                  "addressLocality": "Landhi Town, Karachi",
+                  "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
+                  "addressLocality": "Karachi",
                   "addressRegion": "Sindh",
                   "postalCode": "75160",
                   "addressCountry": "PK"
