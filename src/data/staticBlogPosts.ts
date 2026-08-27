@@ -224,4 +224,76 @@ export const STATIC_BLOG_POSTS: Record<string, StaticBlogPost> = {
     author: "AbuQitmirLabs",
     tags: ["Engineering", 'Software Engineering', 'AI Architecture']
   },
+  'ai-agent-development-agency-vs-in-house': {
+    title: "The Go-To Guide to AI Agent Development: Agency vs. Building In-House",
+    content: "# The Go-To Guide to AI Agent Development: Agency vs. Building In-House\n\nCompare AI agent development agency vs in-house costs, timelines, and risks — with real startup-scale numbers, not enterprise ones.\n\n## Executive Summary\nBuilding an AI agent in-house vs hiring an AI development agency is the defining tech decision for startups in 2026. Explore real costs ($5k-$25k small business, $25k-$80k medium), hidden overhead, tooling, and governance.\n",
+    excerpt: "Compare AI agent development agency vs in-house costs, timelines, and risks — with real startup-scale numbers, not enterprise ones.",
+    coverImage: "https://www.abuqitmirlabs.tech/blog/ai-agent-agency-vs-inhouse-cover.jpg",
+    coverImageAlt: "The Go-To Guide to AI Agent Development: Agency vs. Building In-House | AbuQitmirLabs",
+    category: "AI",
+    createdAt: "2026-08-18",
+    author: "AbuQitmirLabs .TECH",
+    tags: ["AI", "AI Agents", "Software Engineering"]
+  }
 };
+
+export interface BlogPostSummary {
+  id: string;
+  title: string;
+  excerpt: string;
+  coverImage?: string;
+  coverImageAlt?: string;
+  category?: string;
+  createdAt: string;
+  slug: string;
+  author: string;
+  tags?: string[];
+}
+
+export function getStaticBlogList(): BlogPostSummary[] {
+  // Canonical unique primary slugs to list on /blog
+  const canonicalSlugs = [
+    'ai-agent-development-agency-vs-in-house',
+    'the-complete-guide-to-rag-ai-integration-for-startups',
+    'custom-ai-solutions-for-corporate-events-2026-guide',
+    'custom-web-development-vs-website-templates-2026-guide',
+    'custom-ai-solutions-for-fintech-2026',
+    'local-business-visibility-seo-geo-aio-aeo-sxo-2026',
+    'what-seo-services-actually-means-2026',
+    'how-to-choose-mobile-app-development-company-2026',
+    'custom-web-development-company-2026',
+    'custom-web-development-company',
+    'agentic-ai-production-failures',
+    'what-are-healthcare-ai-agents-complete-guide-2026'
+  ];
+
+  return canonicalSlugs.map((slug) => {
+    const post = STATIC_BLOG_POSTS[slug];
+    if (!post) return null;
+
+    let excerpt = post.excerpt || '';
+    if (!excerpt && post.content) {
+      const cleanContent = post.content
+        .replace(/^#+ .*/gm, '')
+        .replace(/> .*/gm, '')
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+        .replace(/[*_~`]/g, '')
+        .trim();
+      excerpt = cleanContent.slice(0, 180).trim() + '...';
+    }
+
+    return {
+      id: slug,
+      slug,
+      title: post.title,
+      excerpt,
+      coverImage: post.coverImage,
+      coverImageAlt: post.coverImageAlt,
+      category: post.category || 'Engineering',
+      createdAt: post.createdAt,
+      author: post.author || 'AbuQitmirLabs',
+      tags: post.tags || []
+    };
+  }).filter(Boolean) as BlogPostSummary[];
+}
+

@@ -479,7 +479,7 @@ const NewsArticlePage = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
-        <title>{article.title} — AbuQitmirLabs .TECH Newsroom</title>
+        <title>{`${article.title} — AbuQitmirLabs .TECH Newsroom`}</title>
         <meta name="description" content={article.excerpt} />
         <link rel="canonical" href={currentUrl} />
         <meta property="og:title" content={`${article.title} | AbuQitmirLabs`} />

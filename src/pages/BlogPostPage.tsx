@@ -462,7 +462,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00]/30 selection:text-white">
             <Helmet>
                 <html lang="en" />
-                <title>{post.title} | AbuQitmirLabs</title>
+                <title>{`${post.title} | AbuQitmirLabs`}</title>
                 <meta name="description" content={postExcerpt} />
                 {post.tags && post.tags.length > 0 && (
                     <meta name="keywords" content={post.tags.join(', ')} />

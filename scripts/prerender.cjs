@@ -167,9 +167,12 @@ for (const routeUrl of routes) {
     // 1. Inject pure, clean React SSR DOM tree inside #root with explicit route identifier
     html = replaceRootElement(html, bodyHtml, routeUrl);
 
-    // 2. Inject hoisted head tags (preloads, canonical, metadata) into <head>
+    // 2. Inject hoisted head tags (preloads, canonical, metadata) into <head> (excluding title tags to avoid duplicates)
     if (headTags && headTags.trim().length > 0) {
-      html = html.replace('</head>', `  ${headTags}\n</head>`);
+      const cleanHeadTags = headTags.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '');
+      if (cleanHeadTags.trim().length > 0) {
+        html = html.replace('</head>', `  ${cleanHeadTags}\n</head>`);
+      }
     }
 
     // 3. Inject unique Dynamic Title, Description & Open Graph tags for each route from SEO_ROUTES_METADATA
@@ -183,14 +186,15 @@ for (const routeUrl of routes) {
 
       // Unique <title>
       if (seo.title) {
-        html = html.replace(/<title\b[^>]*>[\s\S]*?<\/title>/i, `<title>${seo.title}</title>`);
+        html = html.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '');
+        html = html.replace('</head>', `  <title data-rh="true">${seo.title}</title>\n</head>`);
       }
 
       // Unique <meta name="description">
       if (seo.description) {
         const escapedDesc = seo.description.replace(/"/g, '&quot;');
         html = html.replace(/<meta\s+name=["']description["'][^>]*\/?>/gi, '');
-        html = html.replace('</head>', `  <meta name="description" content="${escapedDesc}" />\n</head>`);
+        html = html.replace('</head>', `  <meta data-rh="true" name="description" content="${escapedDesc}" />\n</head>`);
       }
 
       // Unique og:title
