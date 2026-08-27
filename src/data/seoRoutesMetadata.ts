@@ -593,12 +593,12 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogType: 'article'
   },
   '/blog/ai-agent-development-agency-vs-in-house': {
-    title: 'AI Agent Development Agency vs In-House | AbuQitmirLabs',
-    description: 'Detailed financial and architectural comparison: should your enterprise hire an AI agent development agency or build an internal AI squad from scratch?',
+    title: 'The Go-To Guide to AI Agent Development: Agency vs. Building In-House | AbuQitmirLabs',
+    description: 'Compare AI agent development agency vs in-house costs, timelines, and risks — with real startup-scale numbers, not enterprise ones.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/ai-agent-development-agency-vs-in-house',
-    ogTitle: 'AI Agent Development Agency vs In-House | AbuQitmirLabs',
-    ogDescription: 'Financial and architectural comparison between hiring an AI agent agency vs building in-house.',
-    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogTitle: 'The Go-To Guide to AI Agent Development: Agency vs. Building In-House | AbuQitmirLabs',
+    ogDescription: 'Compare AI agent development agency vs in-house costs, timelines, and risks — with real startup-scale numbers, not enterprise ones.',
+    ogImage: 'https://www.abuqitmirlabs.tech/blog/ai-agent-agency-vs-inhouse-cover.jpg',
     ogType: 'article'
   },
   '/our-company': {
@@ -670,12 +670,12 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogType: 'website'
   },
   '/ai-agent-development-agency-vs-in-house': {
-    title: 'AI Agent Development Agency vs In-House | AbuQitmirLabs',
-    description: 'Detailed financial and architectural comparison: should your enterprise hire an AI agent development agency or build an internal AI squad from scratch?',
+    title: 'The Go-To Guide to AI Agent Development: Agency vs. Building In-House | AbuQitmirLabs',
+    description: 'Compare AI agent development agency vs in-house costs, timelines, and risks — with real startup-scale numbers, not enterprise ones.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/ai-agent-development-agency-vs-in-house',
-    ogTitle: 'AI Agent Development Agency vs In-House | AbuQitmirLabs',
-    ogDescription: 'Financial and architectural comparison between hiring an AI agent agency vs building in-house.',
-    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogTitle: 'The Go-To Guide to AI Agent Development: Agency vs. Building In-House | AbuQitmirLabs',
+    ogDescription: 'Compare AI agent development agency vs in-house costs, timelines, and risks — with real startup-scale numbers, not enterprise ones.',
+    ogImage: 'https://www.abuqitmirlabs.tech/blog/ai-agent-agency-vs-inhouse-cover.jpg',
     ogType: 'article'
   }
 };
