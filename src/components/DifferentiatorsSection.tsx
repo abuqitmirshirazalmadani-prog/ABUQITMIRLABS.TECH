@@ -43,7 +43,7 @@ const DifferentiatorsSection = () => {
                             <MagicText text="Before we write a single line of code, we analyze your operational bottlenecks, target audience, and long-term objectives." className="mt-2 text-sm text-white/60" />
                         </div>
                         <div className="justify-self-end mt-4 md:mt-0">
-                            <button className="h-10 w-10 grid place-items-center rounded-xl border border-white/10 bg-white/5 text-white/80 group-hover:bg-purple-500 group-hover:text-white transition-all">
+                            <button aria-label="Explore deep business workflow analysis" className="h-10 w-10 grid place-items-center rounded-xl border border-white/10 bg-white/5 text-white/80 group-hover:bg-purple-500 group-hover:text-white transition-all">
                                 <ChevronRight className="h-4 w-4" />
                             </button>
                         </div>
@@ -78,7 +78,7 @@ const DifferentiatorsSection = () => {
                                 <MagicText text="We build systems that grow with you. Our legacy system modernization services ensure you are never held back by outdated tech." className="mt-2 text-sm text-white/80 max-w-xl" />
                             </div>
                             <div className="justify-self-end mt-4 md:mt-0">
-                                <button className="h-12 w-12 grid place-items-center rounded-xl bg-purple-500 text-white hover:bg-purple-400 transition shadow-lg shadow-purple-500/30">
+                                <button aria-label="Learn more about clean scalable architecture" className="h-12 w-12 grid place-items-center rounded-xl bg-purple-500 text-white hover:bg-purple-400 transition shadow-lg shadow-purple-500/30">
                                     <Play className="h-5 w-5" />
                                 </button>
                             </div>
@@ -102,7 +102,7 @@ const DifferentiatorsSection = () => {
                             <MagicText text="Speed is a massive ranking and conversion factor. Our engineering prioritizes sub-second load times and seamless interactions." className="mt-2 text-sm text-white/60" />
                         </div>
                         <div className="justify-self-end mt-4 md:mt-0">
-                            <button className="h-10 w-10 grid place-items-center rounded-xl border border-white/10 bg-white/5 text-white/80 group-hover:bg-purple-500 group-hover:text-white transition-all">
+                            <button aria-label="Explore performance-focused development details" className="h-10 w-10 grid place-items-center rounded-xl border border-white/10 bg-white/5 text-white/80 group-hover:bg-purple-500 group-hover:text-white transition-all">
                                 <ChevronRight className="h-4 w-4" />
                             </button>
                         </div>
@@ -125,7 +125,7 @@ const DifferentiatorsSection = () => {
                             <MagicText text="The digital world evolves daily. We provide ongoing optimization to ensure your digital assets remain cutting-edge." className="mt-2 text-sm text-white/60" />
                         </div>
                         <div className="justify-self-end mt-4 md:mt-0">
-                            <button className="h-10 w-10 grid place-items-center rounded-xl border border-white/10 bg-white/5 text-white/80 group-hover:bg-purple-500 group-hover:text-white transition-all">
+                            <button aria-label="Explore continuous optimization and support details" className="h-10 w-10 grid place-items-center rounded-xl border border-white/10 bg-white/5 text-white/80 group-hover:bg-purple-500 group-hover:text-white transition-all">
                                 <ChevronRight className="h-4 w-4" />
                             </button>
                         </div>

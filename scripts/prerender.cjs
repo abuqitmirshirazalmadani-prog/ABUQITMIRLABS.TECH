@@ -186,15 +186,15 @@ for (const routeUrl of routes) {
     const titleToUse = (seo && seo.title) || 'AbuQitmirLabs | Custom Software, AI Agents & Mobile Development';
     html = html.replace('</head>', `  <title data-rh="true">${titleToUse}</title>\n</head>`);
 
-    if (seo) {
-      // Clean any pre-existing duplicates of OpenGraph / Twitter tags from template or Helmet hoisting
-      html = html.replace(/<meta\s+property=["']og:[^"']+["'][^>]*\/?>/gi, '');
-      html = html.replace(/<meta\s+name=["']twitter:[^"']+["'][^>]*\/?>/gi, '');
+    // Clean any pre-existing description, OpenGraph, and Twitter tags before injecting unique route tags
+    html = html.replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gi, '');
+    html = html.replace(/<meta\b[^>]*property=["']og:[^"']+["'][^>]*\/?>/gi, '');
+    html = html.replace(/<meta\b[^>]*name=["']twitter:[^"']+["'][^>]*\/?>/gi, '');
 
+    if (seo) {
       // Unique <meta name="description">
       if (seo.description) {
         const escapedDesc = seo.description.replace(/"/g, '&quot;');
-        html = html.replace(/<meta\s+name=["']description["'][^>]*\/?>/gi, '');
         html = html.replace('</head>', `  <meta data-rh="true" name="description" content="${escapedDesc}" />\n</head>`);
       }
 
@@ -228,9 +228,9 @@ for (const routeUrl of routes) {
       html = html.replace('</head>', `  <meta name="twitter:card" content="summary_large_image" />\n  <meta name="twitter:title" content="${(twTitle || '').replace(/"/g, '&quot;')}" />\n  <meta name="twitter:description" content="${(twDesc || '').replace(/"/g, '&quot;')}" />\n  <meta name="twitter:image" content="${twImage}" />\n</head>`);
     }
 
-    // 4. Update canonical link
+    // 5. Update canonical link
     const canonicalUrl = (seo && seo.canonical) || `https://www.abuqitmirlabs.tech${routeUrl === '/' ? '/' : routeUrl}`;
-    html = html.replace(/<link\s+rel="canonical"[^>]*\/?>/gi, '');
+    html = html.replace(/<link\b[^>]*rel=["']canonical["'][^>]*\/?>/gi, '');
     html = html.replace('</head>', `  <link rel="canonical" data-rh="true" href="${canonicalUrl}" />\n</head>`);
 
     // Write to target destination

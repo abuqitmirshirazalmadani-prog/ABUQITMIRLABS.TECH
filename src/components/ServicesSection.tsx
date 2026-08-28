@@ -305,11 +305,11 @@ const ServiceItem: React.FC<{ service: Service }> = ({ service }) => {
                 {/* Action Arrow */}
                 <div className="lg:ml-auto">
                     {service.href ? (
-                        <Link to={service.href} className="w-16 h-16 rounded-full flex items-center justify-center text-white bg-white/5 border border-white/10 backdrop-blur-md hover:bg-violet-500 hover:text-white hover:border-violet-400 transition-all group-hover:-rotate-45">
+                        <Link to={service.href} aria-label={`Explore ${service.title} services`} className="w-16 h-16 rounded-full flex items-center justify-center text-white bg-white/5 border border-white/10 backdrop-blur-md hover:bg-violet-500 hover:text-white hover:border-violet-400 transition-all group-hover:-rotate-45">
                             <ArrowRight className="w-6 h-6" />
                         </Link>
                     ) : (
-                        <button className="w-16 h-16 rounded-full flex items-center justify-center text-white bg-white/5 border border-white/10 backdrop-blur-md hover:bg-violet-500 hover:text-white hover:border-violet-400 transition-all group-hover:-rotate-45">
+                        <button aria-label={`Explore ${service.title} services`} className="w-16 h-16 rounded-full flex items-center justify-center text-white bg-white/5 border border-white/10 backdrop-blur-md hover:bg-violet-500 hover:text-white hover:border-violet-400 transition-all group-hover:-rotate-45">
                             <ArrowRight className="w-6 h-6" />
                         </button>
                     )}

@@ -127,6 +127,7 @@ const InteractivePortfolio = () => {
                                         href="https://www.tajweedpage.com" 
                                         target="_blank" 
                                         rel="noopener noreferrer" 
+                                        aria-label="Visit TajweedPage live website"
                                         className="group inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest border border-[#ccff00] text-[#ccff00] bg-transparent py-4 px-8 rounded-full transition-all duration-300 hover:bg-[#ccff00] hover:text-black"
                                         id="visit-live-tajweed"
                                     >
@@ -459,6 +460,7 @@ const InteractivePortfolio = () => {
 
                                 <a 
                                     href="/case-studies#clinicos-pro" 
+                                    aria-label="View ClinicOS Pro case study details"
                                     className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-indigo-500 hover:text-white transition-colors duration-300"
                                 >
                                     🔗 VIEW PROJECT →
@@ -529,7 +531,7 @@ const InteractivePortfolio = () => {
                                 {/* Tech Tags */}
                                 <div className="flex flex-wrap gap-1.5 mb-8">
                                     {['Angular 21', 'Signals', 'TypeScript', 'Vite', 'Tailwind CSS', 'FileReader API', 'Lucide React', 'Custom Luxury Theme'].map((tech) => (
-                                        <span key={tech} className="text-[9px] font-semibold bg-white/5 text-zinc-400 border border-white/10 px-2.5 py-0.5 rounded">
+                                         <span key={tech} className="text-[9px] font-semibold bg-white/5 text-zinc-400 border border-white/10 px-2.5 py-0.5 rounded">
                                             {tech}
                                         </span>
                                     ))}
@@ -537,6 +539,7 @@ const InteractivePortfolio = () => {
 
                                 <a 
                                     href="/case-studies#profit-command-center" 
+                                    aria-label="View ProFit Command Center case study details"
                                     className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-lime-500 hover:text-white transition-colors duration-300"
                                 >
                                     🔗 VIEW PROJECT →
@@ -567,6 +570,7 @@ const InteractivePortfolio = () => {
                             href="https://wa.me/923233260859" 
                             target="_blank" 
                             rel="noopener noreferrer" 
+                            aria-label="Start project consultation on WhatsApp"
                             className="bg-[#ccff00] text-black font-black uppercase text-xs tracking-wider py-4 px-8 rounded-full flex items-center gap-2 hover:bg-[#b0d600] hover:text-black transition-all"
                             style={{ color: '#000000' }}
                             id="portfolio-whatsapp-cta"

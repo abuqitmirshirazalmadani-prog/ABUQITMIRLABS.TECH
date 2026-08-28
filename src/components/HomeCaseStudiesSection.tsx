@@ -125,6 +125,7 @@ export default function HomeCaseStudiesSection() {
                   href="https://www.tajweedpage.com"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Visit TajweedPage live website"
                   className="inline-flex items-center gap-2 bg-white/5 text-white border border-white/15 px-8 py-4 rounded-full hover:bg-white/10 transition-all font-bold text-xs tracking-widest uppercase"
                 >
                   <Globe size={14} /> Visit Live Site <ArrowUpRight size={14} />

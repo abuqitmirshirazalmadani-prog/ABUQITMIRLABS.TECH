@@ -116,6 +116,7 @@ export const homeSchema = {
       "name": "AbuQitmirLabs",
       "description": "Custom Software, Web Platforms & Autonomous AI Development Agency — AbuQitmirLabs",
       "publisher": {
+        "@type": "Organization",
         "@id": "https://www.abuqitmirlabs.tech/#organization"
       },
       "potentialAction": {
@@ -132,15 +133,19 @@ export const homeSchema = {
       "description": "AbuQitmirLabs engineers custom software, AI agents, mobile apps, and web solutions. Top-rated development company in Karachi serving global clients.",
       "inLanguage": "en-US",
       "isPartOf": {
+        "@type": "WebSite",
         "@id": "https://www.abuqitmirlabs.tech/#website"
       },
       "about": {
+        "@type": "Organization",
         "@id": "https://www.abuqitmirlabs.tech/#organization"
       },
       "primaryImageOfPage": {
+        "@type": "ImageObject",
         "@id": "https://www.abuqitmirlabs.tech/#hero-bg-image"
       },
       "breadcrumb": {
+        "@type": "BreadcrumbList",
         "@id": "https://www.abuqitmirlabs.tech/#breadcrumb"
       }
     },

@@ -81,10 +81,16 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-24">
           
           {/* Main Section Header */}
-          <div className="max-w-4xl">
-            <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.25em] text-[#ccff00] font-bold block mb-4">
-              Scientific Engineering &amp; Technical Authority
-            </span>
+          <div className="max-w-4xl space-y-4">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.25em] text-[#ccff00] font-bold block">
+                Scientific Engineering &amp; Technical Authority
+              </span>
+              <span className="text-zinc-600 text-xs font-mono">|</span>
+              <span className="text-zinc-400 text-xs font-mono">
+                Lead Architect: <span className="text-white font-semibold">Abu Qitmir</span> • Updated: <time dateTime="2026-08-28" className="text-[#ccff00]">August 2026</time>
+              </span>
+            </div>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif italic text-white font-light tracking-tight leading-tight">
               Bespoke Software Engineering &amp; <br />
               <span className="text-neutral-400 font-sans not-italic font-extralight tracking-tighter">
