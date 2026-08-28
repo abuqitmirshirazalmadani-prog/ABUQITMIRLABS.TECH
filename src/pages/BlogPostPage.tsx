@@ -34,9 +34,11 @@ interface BlogPostPageProps {
 const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
     const { slug: paramSlug } = useParams<{ slug: string }>();
     const slug = overrideSlug || paramSlug;
+    
+    // Strictly use exact matching to prevent flashing wrong or outdated post data/images
     const staticFallback = (slug && STATIC_POSTS_MAP[slug]) 
       ? (STATIC_POSTS_MAP[slug] as Post) 
-      : (slug ? (Object.entries(STATIC_POSTS_MAP).find(([k]) => slug.includes(k) || k.includes(slug))?.[1] as Post) : null);
+      : null;
     
     const [post, setPost] = useState<Post | null>(staticFallback);
     const [loading, setLoading] = useState(!staticFallback);
@@ -46,7 +48,12 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         const fetchPost = async () => {
             if (!slug) {
                 setLoading(false);
+                setPost(null);
                 return;
+            }
+
+            if (!staticFallback) {
+                setLoading(true);
             }
 
             try {
