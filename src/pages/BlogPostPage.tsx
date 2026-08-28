@@ -10,6 +10,7 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import MarkdownRenderer from '../components/MarkdownRenderer';
 import remarkGfm from 'remark-gfm';
 import { STATIC_BLOG_POSTS } from '../data/staticBlogPosts';
+import { generateBlogPostMeta } from '../utils/seoUtils';
 
 interface Post {
   title: string;
@@ -459,139 +460,50 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         { name: post.title || 'Journal' }
     ];
 
-    const currentUrl = `https://www.abuqitmirlabs.tech/blog/${slug}`;
-    const coverImageUrl = post.coverImage || 'https://www.abuqitmirlabs.tech/logo.png';
-    const postExcerpt = post.excerpt || post.content?.slice(0, 160).replace(/[#*`_]/g, '') || post.title;
-    const publishedIsoDate = formatISODate(post.createdAt);
-    const modifiedIsoDate = formatISODate(post.updatedAt || post.createdAt);
+    const seoData = generateBlogPostMeta(post, slug || '', {
+        siteUrl: 'https://www.abuqitmirlabs.tech',
+        siteName: 'AbuQitmirLabs',
+        defaultAuthor: 'AbuQitmirLabs .TECH'
+    });
 
     return (
         <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00]/30 selection:text-white">
             <Helmet>
                 <html lang="en" />
-                <title>{`${post.title} | AbuQitmirLabs`}</title>
-                <meta name="description" content={postExcerpt} />
-                {post.tags && post.tags.length > 0 && (
-                    <meta name="keywords" content={post.tags.join(', ')} />
+                <title>{seoData.title}</title>
+                <meta name="description" content={seoData.description} />
+                {seoData.keywordsString && (
+                    <meta name="keywords" content={seoData.keywordsString} />
                 )}
-                <link rel="canonical" href={currentUrl} />
+                <link rel="canonical" href={seoData.canonicalUrl} />
 
                 {/* Open Graph */}
-                <meta property="og:type" content="article" />
-                <meta property="og:url" content={currentUrl} />
-                <meta property="og:title" content={`${post.title} | AbuQitmirLabs`} />
-                <meta property="og:description" content={postExcerpt} />
-                <meta property="og:image" content={coverImageUrl} />
-                <meta property="og:site_name" content="AbuQitmirLabs" />
-                <meta property="article:published_time" content={publishedIsoDate} />
-                <meta property="article:modified_time" content={modifiedIsoDate} />
-                <meta property="article:author" content={post.author || 'AbuQitmirLabs'} />
-                {post.category && <meta property="article:section" content={post.category} />}
+                <meta property="og:type" content={seoData.ogType} />
+                <meta property="og:url" content={seoData.ogUrl} />
+                <meta property="og:title" content={seoData.ogTitle} />
+                <meta property="og:description" content={seoData.ogDescription} />
+                <meta property="og:image" content={seoData.ogImage} />
+                <meta property="og:site_name" content={seoData.ogSiteName} />
+                <meta property="article:published_time" content={seoData.articlePublishedTime} />
+                <meta property="article:modified_time" content={seoData.articleModifiedTime} />
+                <meta property="article:author" content={seoData.articleAuthor} />
+                {seoData.articleSection && <meta property="article:section" content={seoData.articleSection} />}
 
                 {/* Twitter */}
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${post.title} | AbuQitmirLabs`} />
-                <meta name="twitter:description" content={postExcerpt} />
-                <meta name="twitter:image" content={coverImageUrl} />
+                <meta name="twitter:card" content={seoData.twitterCard} />
+                <meta name="twitter:title" content={seoData.twitterTitle} />
+                <meta name="twitter:description" content={seoData.twitterDescription} />
+                <meta name="twitter:image" content={seoData.twitterImage} />
 
                 {/* Dynamic Schema.org Graph */}
                 <script type="application/ld+json">
                     {JSON.stringify({
-                        "@context": "https://schema.org",
+                        ...seoData.schemaJsonLd,
                         "@graph": [
-                            {
-                                "@type": "Organization",
-                                "@id": "https://www.abuqitmirlabs.tech/#organization",
-                                "name": "AbuQitmirLabs .TECH",
-                                "alternateName": "AbuQitmirLabs",
-                                "url": "https://www.abuqitmirlabs.tech/",
-                                "logo": "https://www.abuqitmirlabs.tech/logo.png",
-                                "description": "AbuQitmirLabs .TECH is a custom software, mobile app, AI agent, web development, SEO, graphics, and content writing studio serving startups, SMEs, and enterprises in the US, UK, Pakistan, Canada, Poland, and Australia.",
-                                "sameAs": [
-                                    "https://www.linkedin.com/in/abu-qitmir-697423390/",
-                                    "https://x.com/AbuQitmir",
-                                    "https://www.facebook.com/profile.php?id=61583768706452",
-                                    "https://www.instagram.com/abuqitmirshirazalmadani/",
-                                    "https://www.youtube.com/@AbuQitmir"
-                                ],
-                                "contactPoint": {
-                                    "@type": "ContactPoint",
-                                    "contactType": "sales",
-                                    "url": "https://www.abuqitmirlabs.tech/contact"
-                                }
-                            },
-                            {
-                                "@type": "WebSite",
-                                "@id": "https://www.abuqitmirlabs.tech/#website",
-                                "url": "https://www.abuqitmirlabs.tech/",
-                                "name": "AbuQitmirLabs .TECH",
-                                "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
-                                "inLanguage": "en-US"
-                            },
-                            {
-                                "@type": "WebPage",
-                                "@id": `${currentUrl}#webpage`,
-                                "url": currentUrl,
-                                "name": post.title,
-                                "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" },
-                                "primaryImageOfPage": coverImageUrl,
-                                "datePublished": publishedIsoDate,
-                                "dateModified": modifiedIsoDate,
-                                "description": postExcerpt,
-                                "breadcrumb": { "@id": `${currentUrl}#breadcrumb` },
-                                "inLanguage": "en-US"
-                            },
-                            {
-                                "@type": "BreadcrumbList",
-                                "@id": `${currentUrl}#breadcrumb`,
-                                "itemListElement": [
-                                    {
-                                        "@type": "ListItem",
-                                        "position": 1,
-                                        "name": "Home",
-                                        "item": "https://www.abuqitmirlabs.tech/"
-                                    },
-                                    {
-                                        "@type": "ListItem",
-                                        "position": 2,
-                                        "name": "Blog",
-                                        "item": "https://www.abuqitmirlabs.tech/blog"
-                                    },
-                                    {
-                                        "@type": "ListItem",
-                                        "position": 3,
-                                        "name": post.title,
-                                        "item": currentUrl
-                                    }
-                                ]
-                            },
-                            {
-                                "@type": "Article",
-                                "@id": `${currentUrl}#article`,
-                                "headline": post.title,
-                                "description": postExcerpt,
-                                "image": coverImageUrl,
-                                "author": {
-                                    "@type": "Organization",
-                                    "name": "AbuQitmirLabs .TECH",
-                                    "url": "https://www.abuqitmirlabs.tech/"
-                                },
-                                "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
-                                "datePublished": publishedIsoDate,
-                                "dateModified": modifiedIsoDate,
-                                "mainEntityOfPage": { "@id": `${currentUrl}#webpage` },
-                                "articleSection": categoryDetails.name,
-                                "keywords": post.tags && post.tags.length > 0 ? post.tags : [
-                                    "custom software development",
-                                    "AI agent development",
-                                    "web development",
-                                    "mobile app development"
-                                ],
-                                "inLanguage": "en-US"
-                            },
-                            ...(slug.includes('rag-ai-integration') ? [{
+                            ...seoData.schemaJsonLd["@graph"],
+                            ...(slug && slug.includes('rag-ai-integration') ? [{
                                 "@type": "FAQPage",
-                                "@id": `${currentUrl}#faq`,
+                                "@id": `${seoData.canonicalUrl}#faq`,
                                 "mainEntity": [
                                     {
                                         "@type": "Question",
@@ -705,6 +617,8 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                 referrerPolicy="no-referrer"
                                 width="1200"
                                 height="675"
+                                loading="lazy"
+                                decoding="async"
                                 onError={(e) => {
                                     const target = e.target as HTMLImageElement;
                                     if (!target.src.includes('logo.png')) {

@@ -409,6 +409,8 @@ const CinematicSection = ({ study, index }: { study: CaseStudy, index: number })
                             referrerPolicy="no-referrer"
                             width="1200"
                             height="800"
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover opacity-60 filter grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 ease-out"
                         />
                     </motion.div>

@@ -2,6 +2,10 @@ import {StrictMode} from 'react';
 import {createRoot, hydrateRoot} from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
+import {initPerformanceMonitoring} from './utils/performanceMonitor.ts';
+
+// Initialize Core Web Vitals performance tracking & local storage audit logger
+initPerformanceMonitoring();
 
 const container = document.getElementById('root')!;
 

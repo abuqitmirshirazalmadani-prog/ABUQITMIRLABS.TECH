@@ -2,6 +2,7 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import fs from 'fs';
+import crypto from 'crypto';
 import esbuild from 'esbuild';
 import {defineConfig, loadEnv} from 'vite';
 import compression from 'vite-plugin-compression';
@@ -234,8 +235,67 @@ export default defineConfig(({mode}) => {
           
           const baseHtml = fs.readFileSync(indexHtmlPath, 'utf8');
 
-          // 1. Generate Sitemap (sitemap.xml)
-          const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+          // File modification and content cache for sitemap.xml and rss.xml
+          const cacheDir = path.resolve(process.cwd(), 'node_modules/.cache/seo-generator');
+          const cacheFilePath = path.resolve(cacheDir, 'cache.json');
+          
+          const trackedBlogFiles = [
+            'src/data/staticBlogPosts.ts',
+            'src/data/seoRoutesMetadata.ts',
+            'src/utils/ragAiBlogStaticData.ts',
+            'src/utils/customWebDevBlogStaticHtml.ts'
+          ];
+
+          // Compute signatures of tracked files (mtime & size)
+          const fileSignatures: Record<string, { mtimeMs: number; size: number }> = {};
+          for (const relFile of trackedBlogFiles) {
+            const absFile = path.resolve(process.cwd(), relFile);
+            if (fs.existsSync(absFile)) {
+              const stat = fs.statSync(absFile);
+              fileSignatures[relFile] = { mtimeMs: stat.mtimeMs, size: stat.size };
+            }
+          }
+
+          // Compute composite data hash of tracked blog files, dynamic Firestore posts, and route metadata
+          const dataHash = crypto.createHash('sha256')
+            .update(JSON.stringify({ fileSignatures, fetchedPosts, baseRoutesCount: baseRoutes.length }))
+            .digest('hex');
+
+          let cachedData: {
+            dataHash?: string;
+            sitemapContent?: string;
+            rssContent?: string;
+            timestamp?: string;
+          } | null = null;
+
+          try {
+            if (fs.existsSync(cacheFilePath)) {
+              cachedData = JSON.parse(fs.readFileSync(cacheFilePath, 'utf-8'));
+            }
+          } catch {
+            cachedData = null;
+          }
+
+          const sitemapPath = path.resolve(outDir, 'sitemap.xml');
+          const rssPath = path.resolve(outDir, 'rss.xml');
+
+          const isCacheValid = 
+            Boolean(cachedData &&
+            cachedData.dataHash === dataHash &&
+            cachedData.sitemapContent &&
+            cachedData.rssContent);
+
+          if (isCacheValid && fs.existsSync(sitemapPath) && fs.existsSync(rssPath)) {
+            console.log('⚡ [SEO Generator] Blog data has not changed (cache hit). Skipping sitemap.xml and rss.xml regeneration.');
+          } else if (isCacheValid && cachedData?.sitemapContent && cachedData?.rssContent) {
+            // Target files missing in dist output but blog data unchanged: restore from cached content
+            fs.writeFileSync(sitemapPath, cachedData.sitemapContent, 'utf-8');
+            fs.writeFileSync(rssPath, cachedData.rssContent, 'utf-8');
+            console.log('⚡ [SEO Generator] Blog data unchanged (cache hit). Restored sitemap.xml and rss.xml from file cache.');
+          } else {
+            // Blog data changed or cache missing: regenerate sitemap.xml & rss.xml
+            // 1. Generate Sitemap (sitemap.xml)
+            const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes.map(route => `  <url>
     <loc>${hostname}${route.url === '/' ? '' : route.url}</loc>
@@ -244,11 +304,11 @@ ${routes.map(route => `  <url>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
   </url>`).join('\n')}
 </urlset>`;
-          fs.writeFileSync(path.resolve(outDir, 'sitemap.xml'), sitemapContent);
-          console.log(`✅ [Sitemap] Prepared dynamic sitemap with ${routes.length} total links!`);
+            fs.writeFileSync(sitemapPath, sitemapContent, 'utf-8');
+            console.log(`✅ [Sitemap] Regenerated dynamic sitemap with ${routes.length} total links!`);
 
-          // 2. Generate RSS Feed (rss.xml)
-          const rssItemsContent = fetchedPosts.map(post => `    <item>
+            // 2. Generate RSS Feed (rss.xml)
+            const rssItemsContent = fetchedPosts.map(post => `    <item>
       <title>${escapeXml(post.title)}</title>
       <link>${hostname}/blog/${post.slug}</link>
       <guid isPermaLink="true">${hostname}/blog/${post.slug}</guid>
@@ -258,7 +318,7 @@ ${routes.map(route => `  <url>
       <category>${escapeXml(post.category)}</category>
     </item>`).join('\n');
 
-          const rssContent = `<?xml version="1.0" encoding="UTF-8" ?>
+            const rssContent = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AbuQitmirLabs .TECH - Custom Software &amp; AI Engineering Journal</title>
@@ -270,8 +330,25 @@ ${routes.map(route => `  <url>
 ${rssItemsContent}
   </channel>
 </rss>`;
-          fs.writeFileSync(path.resolve(outDir, 'rss.xml'), rssContent);
-          console.log('✅ [RSS Feed] Generated RSS Feed with dynamic news articles successfully!');
+            fs.writeFileSync(rssPath, rssContent, 'utf-8');
+            console.log(`✅ [RSS Feed] Regenerated RSS Feed with ${fetchedPosts.length} dynamic articles!`);
+
+            // Persist new cache state
+            try {
+              if (!fs.existsSync(cacheDir)) {
+                fs.mkdirSync(cacheDir, { recursive: true });
+              }
+              fs.writeFileSync(cacheFilePath, JSON.stringify({
+                dataHash,
+                sitemapContent,
+                rssContent,
+                timestamp: new Date().toISOString(),
+                fileSignatures
+              }, null, 2), 'utf-8');
+            } catch (err: any) {
+              console.log('[SEO Generator] Note: Could not write cache file:', err?.message || err);
+            }
+          }
 
           // 3. Generate Robots.txt
           const robotsContent = `User-agent: *

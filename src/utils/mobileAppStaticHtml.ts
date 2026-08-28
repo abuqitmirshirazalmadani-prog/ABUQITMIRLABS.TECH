@@ -621,7 +621,7 @@ export const mobileAppInitialHtml = `
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
       <div>
         <div class="flex items-center gap-3 text-white font-bold tracking-wider mb-4">
-          <img src="/logo.png" alt="AbuQitmirLabs Logo" width="32" height="32" class="rounded-lg" loading="lazy" />
+          <img src="/logo.png" alt="AbuQitmirLabs Logo" width="32" height="32" class="rounded-lg" loading="lazy" decoding="async" />
           <span>ABUQITMIRLABS</span>
         </div>
         <p class="text-xs text-gray-500 leading-relaxed">

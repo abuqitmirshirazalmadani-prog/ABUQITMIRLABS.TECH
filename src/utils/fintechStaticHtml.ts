@@ -1161,7 +1161,7 @@ export const fintechInitialHtml = `
   <footer class="border-t border-white/10 py-12 bg-black text-xs font-mono text-neutral-500">
     <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
       <div class="flex items-center gap-3">
-        <img src="/logo.png" alt="AbuQitmirLabs Logo" width="24" height="24" class="w-6 h-6 object-contain" />
+        <img src="/logo.png" alt="AbuQitmirLabs Logo" width="24" height="24" class="w-6 h-6 object-contain" loading="lazy" decoding="async" />
         <span>&copy; 2026 AbuQitmirLabs. All rights reserved.</span>
       </div>
       <div class="flex items-center gap-6">

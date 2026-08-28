@@ -1210,7 +1210,7 @@ export const graphicsDesignInitialHtml = `
   <footer class="bg-black border-t border-white/10 py-16 text-xs text-neutral-400 font-light">
     <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
       <div class="flex items-center gap-3">
-        <img src="/logo.png" alt="AbuQitmirLabs Logo" class="h-8 w-auto" width="32" height="32" />
+        <img src="/logo.png" alt="AbuQitmirLabs Logo" class="h-8 w-auto" width="32" height="32" loading="lazy" decoding="async" />
         <span class="text-white font-bold tracking-wider">AbuQitmirLabs</span>
       </div>
       <p>&copy; 2026 AbuQitmirLabs. All rights reserved. Professional Graphic Design &amp; Brand Identity Studio.</p>

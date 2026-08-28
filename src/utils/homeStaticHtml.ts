@@ -259,6 +259,7 @@ export const homeInitialHtml = `
         height="1080" 
         loading="eager"
         fetchpriority="high"
+        decoding="async"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/80"></div>
     </div>
