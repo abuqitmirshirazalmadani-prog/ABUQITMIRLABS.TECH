@@ -57,12 +57,17 @@ function getRating(name: MetricName, value: number): MetricRating {
   return 'poor';
 }
 
-function getElementDescriptor(element: Element | null | undefined): string | undefined {
-  if (!element) return undefined;
-  const tag = element.tagName.toLowerCase();
-  const id = element.id ? `#${element.id}` : '';
-  const classes = typeof element.className === 'string' && element.className
-    ? `.${element.className.trim().split(/\s+/).slice(0, 2).join('.')}`
+function getElementDescriptor(element: Element | Node | EventTarget | null | undefined): string | undefined {
+  if (!element || typeof element !== 'object') return undefined;
+  
+  const el = element as any;
+  const rawTag = typeof el.tagName === 'string' ? el.tagName : (typeof el.nodeName === 'string' ? el.nodeName : '');
+  if (!rawTag) return undefined;
+  
+  const tag = rawTag.toLowerCase().replace(/^[#]/, '');
+  const id = typeof el.id === 'string' && el.id ? `#${el.id}` : '';
+  const classes = typeof el.className === 'string' && el.className
+    ? `.${el.className.trim().split(/\s+/).slice(0, 2).join('.')}`
     : '';
   return `${tag}${id}${classes}`;
 }

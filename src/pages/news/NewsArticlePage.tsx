@@ -334,20 +334,24 @@ const NewsArticlePage = () => {
         setAllArticles(merged);
 
         // Match requested article by id, slug, or title slug
-        const targetId = id ? id.toLowerCase().trim() : '';
-        let found = merged.find(a => 
-          (a.id && a.id.toLowerCase() === targetId) ||
-          (a.slug && (a.slug.toLowerCase() === targetId || a.slug.toLowerCase().endsWith('/' + targetId))) ||
-          generateSlug(a.title) === targetId
-        );
+        const targetId = typeof id === 'string' ? id.toLowerCase().trim() : '';
+        let found = merged.find(a => {
+          const aId = typeof a.id === 'string' ? a.id.toLowerCase() : '';
+          const aSlug = typeof a.slug === 'string' ? a.slug.toLowerCase() : '';
+          return (aId && aId === targetId) ||
+            (aSlug && (aSlug === targetId || aSlug.endsWith('/' + targetId))) ||
+            (a.title && generateSlug(a.title) === targetId);
+        });
 
         // Fallback search in static list if not found in dbItems
         if (!found && dbItems.length > 0) {
-          found = staticNewsArticles.find(a => 
-            (a.id && a.id.toLowerCase() === targetId) ||
-            (a.slug && (a.slug.toLowerCase() === targetId || a.slug.toLowerCase().endsWith('/' + targetId))) ||
-            generateSlug(a.title) === targetId
-          );
+          found = staticNewsArticles.find(a => {
+            const aId = typeof a.id === 'string' ? a.id.toLowerCase() : '';
+            const aSlug = typeof a.slug === 'string' ? a.slug.toLowerCase() : '';
+            return (aId && aId === targetId) ||
+              (aSlug && (aSlug === targetId || aSlug.endsWith('/' + targetId))) ||
+              (a.title && generateSlug(a.title) === targetId);
+          });
         }
 
         if (found) {
@@ -359,12 +363,14 @@ const NewsArticlePage = () => {
       } catch (e) {
         console.error("Error fetching news article:", e);
         // Fallback to static
-        const targetId = id ? id.toLowerCase().trim() : '';
-        const found = staticNewsArticles.find(a => 
-          (a.id && a.id.toLowerCase() === targetId) ||
-          (a.slug && (a.slug.toLowerCase() === targetId || a.slug.toLowerCase().endsWith('/' + targetId))) ||
-          generateSlug(a.title) === targetId
-        );
+        const targetId = typeof id === 'string' ? id.toLowerCase().trim() : '';
+        const found = staticNewsArticles.find(a => {
+          const aId = typeof a.id === 'string' ? a.id.toLowerCase() : '';
+          const aSlug = typeof a.slug === 'string' ? a.slug.toLowerCase() : '';
+          return (aId && aId === targetId) ||
+            (aSlug && (aSlug === targetId || aSlug.endsWith('/' + targetId))) ||
+            (a.title && generateSlug(a.title) === targetId);
+        });
         setArticle(found || staticNewsArticles[0]);
       } finally {
         setLoading(false);

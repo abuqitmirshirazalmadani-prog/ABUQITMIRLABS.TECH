@@ -280,9 +280,11 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         let name = 'Web Development';
         let to = '/web-development';
 
-        if (!categoryVal) {
-            const postTitle = post?.title?.toLowerCase() || '';
-            const allTagsLower = post?.tags?.map(t => String(t).toLowerCase()) || [];
+        const safeCategory = typeof categoryVal === 'string' ? categoryVal.trim() : '';
+
+        if (!safeCategory) {
+            const postTitle = (typeof post?.title === 'string' ? post.title : '').toLowerCase();
+            const allTagsLower = Array.isArray(post?.tags) ? post.tags.map(t => String(t || '').toLowerCase()) : [];
             
             if (
                 postTitle.includes('next.js') || 
@@ -318,7 +320,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             return { name: 'Web Development', to: '/web-development' };
         }
 
-        const catLower = categoryVal.toLowerCase();
+        const catLower = safeCategory.toLowerCase();
         if (catLower.includes('web') || catLower.includes('dev')) {
             name = 'Web Development';
             to = '/web-development';
@@ -341,7 +343,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             name = 'Content Writing';
             to = '/content-writing';
         } else {
-            name = categoryVal;
+            name = safeCategory;
             to = '/blog';
         }
 

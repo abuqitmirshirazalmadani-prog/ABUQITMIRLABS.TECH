@@ -122,7 +122,8 @@ const AllNewsPage = () => {
   const allArticles = dynamicArticles.length > 0 ? dynamicArticles : defaultArticles;
 
   const filteredArticles = allArticles.filter(item => {
-    const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase()) || item.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+    const q = (searchQuery || '').toLowerCase();
+    const matchesSearch = (item.title || '').toLowerCase().includes(q) || (item.excerpt || '').toLowerCase().includes(q);
     const matchesCat = selectedCategory === 'All' || item.category === selectedCategory;
     return matchesSearch && matchesCat;
   });

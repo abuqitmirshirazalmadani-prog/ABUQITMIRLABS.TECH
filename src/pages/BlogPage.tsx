@@ -198,11 +198,11 @@ const BlogPage = () => {
     const filteredPosts = selectedCategory === 'All' 
         ? posts 
         : posts.filter(p => {
-            const cat = (p.category || '').toLowerCase();
-            const filter = selectedCategory.toLowerCase();
-            const tags = (p.tags || []).map((t: string) => String(t).toLowerCase());
-            const title = (p.title || '').toLowerCase();
-            return cat.includes(filter) || tags.some((t: string) => t.includes(filter)) || title.includes(filter);
+            const cat = typeof p.category === 'string' ? p.category.toLowerCase() : '';
+            const filter = typeof selectedCategory === 'string' ? selectedCategory.toLowerCase() : '';
+            const tags = Array.isArray(p.tags) ? p.tags.map((t: any) => String(t || '').toLowerCase()) : [];
+            const title = typeof p.title === 'string' ? p.title.toLowerCase() : '';
+            return (filter && cat.includes(filter)) || tags.some((t: string) => filter && t.includes(filter)) || (filter && title.includes(filter));
         });
 
     const featuredPost = filteredPosts[0] || posts[0];
