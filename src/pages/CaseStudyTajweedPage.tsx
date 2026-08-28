@@ -54,7 +54,10 @@ export default function CaseStudyTajweedPage() {
             "publisher": {
               "@type": "Organization",
               "name": "AbuQitmirLabs",
-              "logo": "https://www.abuqitmirlabs.tech/logo.png"
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.abuqitmirlabs.tech/logo.png"
+              }
             }
           })}
         </script>

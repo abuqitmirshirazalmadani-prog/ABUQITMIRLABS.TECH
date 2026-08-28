@@ -22,17 +22,24 @@ const CountryMarquee: React.FC = () => {
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10"></div>
 
         <div className="flex whitespace-nowrap w-max animate-marquee">
-            {[...Array(2)].map((_, i) => (
-                <div key={i} aria-hidden={i > 0 ? "true" : undefined} className="flex items-center gap-12 lg:gap-20 px-10 text-gray-400 text-lg font-medium">
-                    {countries.map((country, idx) => (
-                        <div key={idx} className="flex gap-3 items-center group transition-colors hover:text-white">
-                            <span className="text-2xl">{country.flag}</span>
-                            <span className="tracking-tight text-white/80 group-hover:text-white">{country.name}</span>
-                            <div className="w-1.5 h-1.5 rounded-full bg-blue-500/20 group-hover:bg-blue-500 transition-colors" />
-                        </div>
-                    ))}
-                </div>
-            ))}
+            <div className="flex items-center gap-12 lg:gap-20 px-10 text-gray-400 text-lg font-medium">
+                {countries.map((country, idx) => (
+                    <div key={idx} className="flex gap-3 items-center group transition-colors hover:text-white">
+                        <span className="text-2xl">{country.flag}</span>
+                        <span className="tracking-tight text-white/80 group-hover:text-white">{country.name}</span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-blue-500/20 group-hover:bg-blue-500 transition-colors" />
+                    </div>
+                ))}
+            </div>
+            <div aria-hidden="true" className="flex items-center gap-12 lg:gap-20 px-10 text-gray-400 text-lg font-medium">
+                {countries.map((country, idx) => (
+                    <div key={`dup-${idx}`} className="flex gap-3 items-center group transition-colors hover:text-white">
+                        <span className="text-2xl">{country.flag}</span>
+                        <span className="tracking-tight text-white/80 group-hover:text-white">{country.name}</span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-blue-500/20 group-hover:bg-blue-500 transition-colors" />
+                    </div>
+                ))}
+            </div>
         </div>
     </section>
   );

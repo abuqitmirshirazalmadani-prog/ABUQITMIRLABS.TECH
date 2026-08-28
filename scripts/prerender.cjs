@@ -153,7 +153,8 @@ const routes = [
   '/blog/custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting',
   '/blog/what-are-healthcare-ai-agents-complete-guide-2026',
   '/blog/healthcare-software-development-solutions-2026',
-  '/blog/ai-agent-development-agency-vs-in-house'
+  '/blog/ai-agent-development-agency-vs-in-house',
+  '/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house'
 ];
 
 let successCount = 0;
@@ -167,7 +168,10 @@ for (const routeUrl of routes) {
     // 1. Inject pure, clean React SSR DOM tree inside #root with explicit route identifier
     html = replaceRootElement(html, bodyHtml, routeUrl);
 
-    // 2. Inject hoisted head tags (preloads, canonical, metadata) into <head> (excluding title tags to avoid duplicates)
+    // 2. Unconditionally strip ANY existing <title> tags from baseTemplate and headTags
+    html = html.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '');
+
+    // 3. Inject hoisted head tags (preloads, metadata) into <head> (excluding title tags to avoid duplicates)
     if (headTags && headTags.trim().length > 0) {
       const cleanHeadTags = headTags.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '');
       if (cleanHeadTags.trim().length > 0) {
@@ -175,20 +179,17 @@ for (const routeUrl of routes) {
       }
     }
 
-    // 3. Inject unique Dynamic Title, Description & Open Graph tags for each route from SEO_ROUTES_METADATA
+    // 4. Inject unique Dynamic Title, Description & Open Graph tags for each route from SEO_ROUTES_METADATA
     const seo = (SEO_ROUTES_METADATA && SEO_ROUTES_METADATA[routeUrl]) || 
                 (SEO_ROUTES_METADATA && Object.entries(SEO_ROUTES_METADATA).find(([k]) => routeUrl === k || routeUrl.endsWith(k) || (k.length > 2 && routeUrl.includes(k)))?.[1]);
+
+    const titleToUse = (seo && seo.title) || 'AbuQitmirLabs | Custom Software, AI Agents & Mobile Development';
+    html = html.replace('</head>', `  <title data-rh="true">${titleToUse}</title>\n</head>`);
 
     if (seo) {
       // Clean any pre-existing duplicates of OpenGraph / Twitter tags from template or Helmet hoisting
       html = html.replace(/<meta\s+property=["']og:[^"']+["'][^>]*\/?>/gi, '');
       html = html.replace(/<meta\s+name=["']twitter:[^"']+["'][^>]*\/?>/gi, '');
-
-      // Unique <title>
-      if (seo.title) {
-        html = html.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '');
-        html = html.replace('</head>', `  <title data-rh="true">${seo.title}</title>\n</head>`);
-      }
 
       // Unique <meta name="description">
       if (seo.description) {

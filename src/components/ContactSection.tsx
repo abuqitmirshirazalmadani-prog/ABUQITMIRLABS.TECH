@@ -185,7 +185,7 @@ const ContactSection = () => {
                     className="w-5 h-5 accent-[#ccff00] rounded border-2 border-[#ccff00]/50 bg-transparent mt-0.5 cursor-pointer"
                   />
                   <label htmlFor="requestAudit" className="text-sm font-bold text-white cursor-pointer select-none">
-                    Yes! Send me a Compeltely Free Technical, SEO & Performance Audit report of my website.
+                    Yes! Send me a Completely Free Technical, SEO & Performance Audit report of my website.
                   </label>
                 </div>
 

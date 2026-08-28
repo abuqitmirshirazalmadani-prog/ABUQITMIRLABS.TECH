@@ -72,16 +72,51 @@
     transform: translateX(0);
   }
   to {
-    transform: translateX(calc(-50% - (var(--gap, 2.5rem) / 2)));
+    transform: translateX(-50%);
   }
 }
 
 .animate-marquee {
   animation: marquee var(--duration, 25s) linear infinite;
   will-change: transform;
+  transform: translateZ(0);
 }
 
 .animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration, 30s) linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.animate-marquee-vertical:hover {
+  animation-play-state: paused;
+}
+
+@keyframes ticker-slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-ticker {
+  animation: ticker-slide var(--duration, 35s) linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.animate-ticker:hover {
   animation-play-state: paused;
 }
 

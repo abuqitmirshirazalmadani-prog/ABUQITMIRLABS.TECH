@@ -94,6 +94,14 @@ export default function HomeCaseStudiesSection() {
                 ))}
               </div>
 
+              {/* E-E-A-T Verification & Disclaimer Notice */}
+              <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 text-left">
+                <p className="text-[11px] text-zinc-400 font-sans leading-relaxed">
+                  <strong className="text-[#ccff00] font-mono uppercase text-[9px] tracking-wider block sm:inline mr-1.5 font-bold">Verified Production Deployment:</strong>
+                  *Live client production software system actively serving international student cohorts across 20+ countries. Engineered and maintained by AbuQitmirLabs.
+                </p>
+              </div>
+
               {/* Small Tech Pills */}
               <div className="flex flex-wrap gap-2">
                 {["Next.js", "RAG AI", "TypeScript", "Tailwind", "Vercel", "SEO", "Firebase"].map((tech, tIdx) => (

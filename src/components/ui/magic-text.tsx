@@ -14,18 +14,22 @@ interface ChunkProps {
   children: string;
   progress: any;
   range: number[];
+  isLast?: boolean;
 }
  
-const Chunk: React.FC<ChunkProps> = ({ children, progress, range }) => {
+const Chunk: React.FC<ChunkProps> = ({ children, progress, range, isLast = true }) => {
   const opacity = useTransform(progress, range, [0.35, 1]);
  
   return (
-    <motion.span 
-      style={{ opacity }} 
-      className="inline-block mr-[0.28em] transition-opacity duration-150"
-    >
-      {children}
-    </motion.span>
+    <React.Fragment>
+      <motion.span 
+        style={{ opacity }} 
+        className="inline-block transition-opacity duration-150"
+      >
+        {children}
+      </motion.span>
+      {!isLast && ' '}
+    </React.Fragment>
   );
 };
  
@@ -67,7 +71,7 @@ export const MagicText: React.FC<MagicTextProps> = ({ text, className }) => {
         const end = Math.min(1, start + 1 / chunks.length);
  
         return (
-          <Chunk key={`${chunk}-${i}`} progress={scrollYProgress} range={[start, end]}>
+          <Chunk key={`${chunk}-${i}`} progress={scrollYProgress} range={[start, end]} isLast={i === chunks.length - 1}>
             {chunk}
           </Chunk>
         );

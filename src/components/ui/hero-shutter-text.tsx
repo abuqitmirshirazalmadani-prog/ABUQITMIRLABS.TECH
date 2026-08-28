@@ -31,7 +31,10 @@ export default function HeroText({
       />
 
       {/* Main Text Container */}
-      <div className="relative z-10 w-full px-4 flex flex-col items-center">
+      <div 
+        className="relative z-10 w-full px-4 flex flex-col items-center"
+        aria-label={text}
+      >
         <AnimatePresence mode="wait">
           <motion.div
             key={count}

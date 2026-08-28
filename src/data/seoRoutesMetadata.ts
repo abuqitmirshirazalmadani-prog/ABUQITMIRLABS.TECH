@@ -601,6 +601,15 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogImage: 'https://www.abuqitmirlabs.tech/blog/ai-agent-agency-vs-inhouse-cover.jpg',
     ogType: 'article'
   },
+  '/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house': {
+    title: 'The Go-To Guide to AI Agent Development: Agency vs. Building In-House | AbuQitmirLabs',
+    description: 'Compare AI agent development agency vs in-house costs, timelines, and risks — with real startup-scale numbers, not enterprise ones.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house',
+    ogTitle: 'The Go-To Guide to AI Agent Development: Agency vs. Building In-House | AbuQitmirLabs',
+    ogDescription: 'Compare AI agent development agency vs in-house costs, timelines, and risks — with real startup-scale numbers, not enterprise ones.',
+    ogImage: 'https://www.abuqitmirlabs.tech/blog/ai-agent-agency-vs-inhouse-cover.jpg',
+    ogType: 'article'
+  },
   '/our-company': {
     title: 'Our Company | Engineering Culture & Mission | AbuQitmirLabs',
     description: 'Discover the vision, engineering principles, and international standards driving AbuQitmirLabs. Based in Karachi, serving US, UK, and global innovators.',
