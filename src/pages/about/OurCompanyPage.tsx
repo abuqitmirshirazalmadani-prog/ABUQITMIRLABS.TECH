@@ -71,7 +71,7 @@ const OurCompanyPage = () => {
     "mainEntity": {
       "@type": "Organization",
       "name": "AbuQitmirLabs .TECH",
-      "url": "https://abuqitmirlabs.tech",
+      "url": "https://www.abuqitmirlabs.tech",
       "founder": {
         "@type": "Person",
         "name": "Abu Qitmir Mohammad Shiraz Al-Madani",

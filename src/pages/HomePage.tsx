@@ -92,80 +92,79 @@ export default function HomePage() {
               </span>
             </div>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif italic text-white font-light tracking-tight leading-tight">
-              Bespoke Software Engineering &amp; <br />
+              Engineering Digital Resilience &amp; <br />
               <span className="text-neutral-400 font-sans not-italic font-extralight tracking-tighter">
-                Scalable Web Architectures.
+                Institutional Software Craftsmanship.
               </span>
             </h2>
             <p className="text-neutral-300 font-sans leading-relaxed text-base md:text-lg font-light mt-6 text-justify">
-              At <strong>AbuQitmirLabs</strong>, we build robust digital foundations for high-growth startups and established global enterprises. Rather than locking your business into rigid off-the-shelf software with mounting license fees, our engineers design modular, fault-tolerant web and cloud platforms tailored specifically to your operational logic and commercial goals.
+              <strong>AbuQitmirLabs</strong> is an independent software studio and technical consulting practice. We architect modular, secure digital products for ambitious startups and global enterprises — moving beyond fragile off-the-shelf software to build owned digital assets that scale seamlessly across markets.
             </p>
           </div>
 
           {/* Three Pillar Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             
-            {/* Column 1: Core Custom Software & Web Engineering */}
+            {/* Column 1: Core Web & Enterprise Platforms */}
             <div className="space-y-6 bg-[#0a0a09] border border-white/10 rounded-2xl p-8">
               <div className="border-b border-white/10 pb-4">
-                <span className="text-xs font-mono text-[#ccff00] font-bold">01 / ENTERPRISE PLATFORMS</span>
+                <span className="text-xs font-mono text-[#ccff00] font-bold">01 / WEB &amp; ENTERPRISE SYSTEMS</span>
               </div>
               <h3 className="text-xl font-sans font-bold text-white tracking-tight">
-                High-Performance Full-Stack Web Development
+                Modern Web Platforms &amp; Core Systems
               </h3>
               <p className="text-neutral-300 font-sans leading-relaxed text-sm font-light text-justify">
-                We craft tailored, speed-oriented frontends and microservices that captivate users from the first millisecond. By combining <Link to="/web-development" className="text-[#ccff00] font-medium hover:underline">modern web development services</Link> with decoupled Jamstack architectures, we achieve sub-second load times and flawless Core Web Vitals.
+                We design resilient digital interfaces and decoupled cloud platforms with sub-second performance. For comprehensive architectural specifications, technical frameworks, and delivery roadmaps, explore our dedicated engineering practices:
               </p>
-              <p className="text-neutral-400 font-sans leading-relaxed text-sm font-light text-justify">
-                Our team constructs bespoke architectures with Next.js, React, Node.js, and PostgreSQL. Every project is engineered for long-term maintainability, complete source code ownership, and frictionless third-party API orchestration.
-              </p>
-              <div className="pt-2">
-                <Link to="/custom-software" className="inline-flex items-center gap-2 text-xs font-mono text-[#ccff00] hover:underline uppercase tracking-wider font-semibold">
-                  <span>Explore Custom Software</span>
-                  <ArrowRight size={14} />
+              <div className="pt-2 space-y-3">
+                <Link to="/web-development" className="inline-flex items-center gap-2 text-xs font-mono text-[#ccff00] hover:underline uppercase tracking-wider font-semibold block">
+                  <span>View Web Development Hub</span>
+                  <ArrowRight size={14} className="inline" />
+                </Link>
+                <Link to="/custom-software" className="inline-flex items-center gap-2 text-xs font-mono text-zinc-400 hover:text-[#ccff00] hover:underline uppercase tracking-wider font-semibold block">
+                  <span>View Custom Software Architecture</span>
+                  <ArrowRight size={14} className="inline" />
                 </Link>
               </div>
             </div>
 
-            {/* Column 2: Autonomous AI Agents & Intelligent Automation */}
+            {/* Column 2: Autonomous AI & Cognitive Automation */}
             <div className="space-y-6 bg-[#0a0a09] border border-white/10 rounded-2xl p-8">
               <div className="border-b border-white/10 pb-4">
-                <span className="text-xs font-mono text-[#ccff00] font-bold">02 / AI &amp; AUTOMATION</span>
+                <span className="text-xs font-mono text-[#ccff00] font-bold">02 / AI &amp; COGNITIVE AUTOMATION</span>
               </div>
               <h3 className="text-xl font-sans font-bold text-white tracking-tight">
-                Autonomous AI Agents &amp; RAG Systems
+                Autonomous Agents &amp; RAG Pipelines
               </h3>
               <p className="text-neutral-300 font-sans leading-relaxed text-sm font-light text-justify">
-                Moving past basic AI wrappers, our artificial intelligence division specializes in <Link to="/ai-agent-development" className="text-[#ccff00] font-medium hover:underline">autonomous AI agent development</Link> and cognitive workflow automation. We deploy multi-agent frameworks that reason across private data stores and execute complex multi-step tasks.
+                We develop multi-agent intelligence systems, semantic retrieval engines, and localized LLM integrations to automate operational bottlenecks. For detailed case studies and deployment methodologies, visit our specialized division:
               </p>
-              <p className="text-neutral-400 font-sans leading-relaxed text-sm font-light text-justify">
-                We build enterprise Retrieval-Augmented Generation (RAG) vector pipelines and connect secure LLMs to your internal CRM, ERP, and customer support workflows. Transform manual administrative overhead into self-healing, automated business intelligence.
-              </p>
-              <div className="pt-2">
-                <Link to="/solutions/ai-automation" className="inline-flex items-center gap-2 text-xs font-mono text-[#ccff00] hover:underline uppercase tracking-wider font-semibold">
-                  <span>AI Automation Solutions</span>
-                  <ArrowRight size={14} />
+              <div className="pt-2 space-y-3">
+                <Link to="/ai-agent-development" className="inline-flex items-center gap-2 text-xs font-mono text-[#ccff00] hover:underline uppercase tracking-wider font-semibold block">
+                  <span>View AI Agent Development</span>
+                  <ArrowRight size={14} className="inline" />
+                </Link>
+                <Link to="/solutions/ai-automation" className="inline-flex items-center gap-2 text-xs font-mono text-zinc-400 hover:text-[#ccff00] hover:underline uppercase tracking-wider font-semibold block">
+                  <span>View Enterprise Automation</span>
+                  <ArrowRight size={14} className="inline" />
                 </Link>
               </div>
             </div>
 
-            {/* Column 3: Native & Flutter Mobile Ecosystems */}
+            {/* Column 3: Cross-Platform Mobile Engineering */}
             <div className="space-y-6 bg-[#0a0a09] border border-white/10 rounded-2xl p-8">
               <div className="border-b border-white/10 pb-4">
-                <span className="text-xs font-mono text-[#ccff00] font-bold">03 / MOBILE ECOSYSTEMS</span>
+                <span className="text-xs font-mono text-[#ccff00] font-bold">03 / MOBILE APPLICATIONS</span>
               </div>
               <h3 className="text-xl font-sans font-bold text-white tracking-tight">
-                Cross-Platform Mobile App Engineering
+                High-Performance Mobile Applications
               </h3>
               <p className="text-neutral-300 font-sans leading-relaxed text-sm font-light text-justify">
-                Reaching mobile users across multiple operating systems requires disciplined engineering. As an experienced <Link to="/mobile-app-development" className="text-[#ccff00] font-medium hover:underline">mobile app development team</Link>, we build fluid, native-grade applications using Flutter and React Native alongside native Swift and Kotlin pipelines.
-              </p>
-              <p className="text-neutral-400 font-sans leading-relaxed text-sm font-light text-justify">
-                We ensure seamless biometric security, offline caching, hardware sensor integration, and continuous App Store CI/CD delivery pipelines to give your business rapid dual-marketplace execution.
+                We build native-grade mobile products on Flutter and React Native with unified codebases, biometric hardware authentication, and offline synchronization. Explore our full mobile capability matrix and store launch process:
               </p>
               <div className="pt-2">
                 <Link to="/mobile-app-development" className="inline-flex items-center gap-2 text-xs font-mono text-[#ccff00] hover:underline uppercase tracking-wider font-semibold">
-                  <span>Discover Mobile Apps</span>
+                  <span>View Mobile App Practice</span>
                   <ArrowRight size={14} />
                 </Link>
               </div>
@@ -173,33 +172,33 @@ export default function HomePage() {
 
           </div>
 
-          {/* Core Section: Technical & Semantic SEO */}
+          {/* Core Section: Technical & Semantic SEO Navigation */}
           <div className="bg-[#0a0a09] border border-white/10 rounded-2xl p-8 md:p-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-8 space-y-4">
                 <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.25em] text-[#ccff00] font-bold block">
-                  04 / ORGANIC SEARCH AUTHORITY
+                  04 / SEARCH ARCHITECTURE &amp; DISCOVERY
                 </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif italic text-white">
-                  Technical &amp; Semantic SEO for Sustainable Organic Growth
+                  Technical Search Optimization &amp; Digital Footprint
                 </h2>
                 <p className="text-neutral-300 font-sans text-sm md:text-base leading-relaxed font-light text-justify">
-                  Modern search ranking demands technical excellence, structured Schema.org entity networks, and answer engine optimization (AEO/GEO). At AbuQitmirLabs, our <Link to="/seo-mastery" className="text-[#ccff00] font-medium hover:underline">technical SEO mastery</Link> ensures that search engines, Google AI Overviews, and conversational AI assistants recognize your company as the authoritative answer for high-intent queries.
+                  Search discoverability is an engineering discipline requiring semantic Schema.org entity networks, Core Web Vitals optimization, and generative answer engine indexing (GEO/AEO). To review our specific organic search frameworks and localized map strategies:
                 </p>
                 <div className="flex flex-wrap gap-4 pt-2">
                   <Link to="/seo-mastery" className="inline-flex items-center gap-2 text-xs font-mono bg-white/10 hover:bg-[#ccff00] hover:text-black text-white px-4 py-2 rounded-none transition-colors uppercase font-bold tracking-wider">
-                    Enterprise SEO Mastery
+                    Enterprise Technical SEO Hub →
                   </Link>
                   <Link to="/local-seo-for-small-business" className="inline-flex items-center gap-2 text-xs font-mono border border-white/20 hover:border-[#ccff00] text-neutral-300 hover:text-[#ccff00] px-4 py-2 rounded-none transition-colors uppercase font-bold tracking-wider">
-                    Local Search Optimization
+                    Local Maps &amp; Citation Strategy →
                   </Link>
                 </div>
               </div>
               <div className="lg:col-span-4 bg-zinc-950 border border-white/10 rounded-xl p-6 space-y-3">
-                <div className="text-xs font-mono text-[#ccff00] font-bold uppercase tracking-wider">Topical Authority Metrics</div>
-                <div className="text-sm font-sans text-white font-semibold">Knowledge Graph Entity Integration</div>
+                <div className="text-xs font-mono text-[#ccff00] font-bold uppercase tracking-wider">Knowledge Graph Entity Integration</div>
+                <div className="text-sm font-sans text-white font-semibold">Specialized Practice Linking</div>
                 <p className="text-xs text-neutral-400 leading-relaxed font-light">
-                  Nested Schema.org graphs, automated canonical management, instant indexation protocols, and verified citations across Google Business Profile and industry directories.
+                  Our homepage acts as an institutional knowledge hub, distributing contextual authority to dedicated technical practices across software, mobile engineering, AI agents, and search optimization.
                 </p>
               </div>
             </div>

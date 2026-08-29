@@ -22,14 +22,16 @@ import {
   MessagesSquare,
   Globe2,
   ChevronRight,
-  ExternalLink
+  ExternalLink,
+  CreditCard,
+  Building2,
+  FileText,
+  BadgeDollarSign
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
-
 import CountryMarquee from '../components/CountryMarquee';
-import HeroText from '../components/ui/hero-shutter-text';
 import { AnimatedShinyText } from '../components/ui/animated-shiny-text';
 import { AnimatedBreathingText } from '../components/ui/animated-breathing-text';
 import { MagicText } from '../components/ui/magic-text';
@@ -37,55 +39,97 @@ import { MagicText } from '../components/ui/magic-text';
 const PakistanMarketPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
+  const pricingTiers = [
+    {
+      name: "SME Digital Launch / MVP",
+      pkrPrice: "PKR 450,000",
+      usdPrice: "~$1,600 USD",
+      timeline: "3–4 Weeks",
+      target: "Early-stage Pakistani startups & local retail/service businesses",
+      deliverables: [
+        "High-Speed Jamstack Web Application (React / Vite)",
+        "Mobile-first responsive UX optimized for 3G/4G bandwidth",
+        "Local Payment Gateway Integration (JazzCash / EasyPaisa / Safepay)",
+        "On-page Technical SEO & Google Business Profile setup",
+        "Source Code handover & 30 days direct WhatsApp support"
+      ]
+    },
+    {
+      name: "Enterprise Web & Mobile Solution",
+      pkrPrice: "PKR 1,250,000",
+      usdPrice: "~$4,500 USD",
+      timeline: "6–8 Weeks",
+      target: "Established companies, B2B distributors, and scaling logistics",
+      deliverables: [
+        "Custom Cross-Platform Mobile App (Flutter / React Native)",
+        "Multi-role Admin Dashboard & Real-time Inventory Management",
+        "Raast P2M / 1LINK PayFast automated billing integration",
+        "Urdu / Roman Urdu Customer Support AI Chatbot assistant",
+        "FBR & SRB compliant digital invoicing export features"
+      ],
+      featured: true
+    },
+    {
+      name: "Autonomous AI & Custom Software",
+      pkrPrice: "PKR 2,400,000+",
+      usdPrice: "~$8,500+ USD",
+      timeline: "8–12 Weeks",
+      target: "Fintech, EdTech, Healthcare, and high-volume operations",
+      deliverables: [
+        "Bespoke Microservices Backend (Node.js / Python / Cloud SQL)",
+        "Enterprise LLM & RAG Pipeline with localized business knowledge",
+        "SECP data residency & cryptographic security audit readiness",
+        "High-availability Cloud deployment on AWS UAE/Bahrain low-latency nodes",
+        "Dedicated SLA, in-person sprint reviews in Karachi & ongoing maintenance"
+      ]
+    }
+  ];
+
   const faqData = [
     {
-      q: "Do you provide services across all cities in Pakistan?",
-      a: "Yes. While we are based in Karachi, our digital solutions, custom software, and SEO services empower businesses in Lahore, Islamabad, Faisalabad, and nationwide."
+      q: "How does invoicing and tax compliance (FBR, SRB, PRA) work for local Pakistani clients?",
+      a: "We provide official NTN-registered business invoices compliant with the Federal Board of Revenue (FBR) and provincial revenue authorities like Sindh Revenue Board (SRB) and Punjab Revenue Authority (PRA). You can deduct applicable withholding taxes as per current tax laws, and all payments are settled directly in Pakistani Rupees (PKR) through local bank transfer (IBFT/Raast) without international credit card surcharges or foreign exchange conversion fees."
     },
     {
-      q: "Can you integrate local Pakistani payment gateways?",
-      a: "Absolutely. We securely integrate local gateways such as PayFast, Safepay, JazzCash, EasyPaisa, and direct bank APIs into your custom web and mobile applications."
+      q: "Can you integrate local Pakistani payment gateways like Raast, JazzCash, Easypaisa, and Safepay?",
+      a: "Yes. We have direct, end-to-end integration experience with Pakistan's digital payment ecosystem. We implement instant Raast P2M QR/IBAN payments, JazzCash and Easypaisa mobile wallet APIs, Safepay card processing, and 1LINK PayFast / direct bank integrations. All transactions are protected by end-to-end webhook authentication and idempotent callback handlers to prevent transaction drop-offs."
     },
     {
-      q: "How does Local SEO help my business in Pakistan?",
-      a: "Local SEO ensures your business appears at the top of Google Maps and local search results. When someone in your city searches for your service, your verified business, phone number, and directions appear first."
+      q: "What are the regulatory considerations for SECP compliance and data security in Pakistan?",
+      a: "For fintech, health, and corporate clients regulated by the Securities and Exchange Commission of Pakistan (SECP) or the State Bank of Pakistan (SBP), we architect systems with strict data protection principles. We implement role-based access control (RBAC), end-to-end encryption at rest and in transit, complete audit logging, and configurable data residency using regional low-latency cloud infrastructure (such as AWS Middle East Bahrain/UAE nodes or verified local hosting)."
     },
     {
-      q: "Is custom software a viable investment for a Pakistani SME?",
-      a: "Yes. We offer strategically scalable solutions. We can start by building a core MVP (Minimum Viable Product) to digitize your most critical workflow, and then expand the system as your operations grow."
+      q: "Why should we choose AbuQitmirLabs over low-cost freelancers or generic template agencies in Pakistan?",
+      a: "Most local agencies sell bloated, pre-made WordPress templates that load sluggishly on local 3G/4G networks and break during high traffic sales (like 11.11 or Ramadan campaigns). AbuQitmirLabs is a specialized software engineering studio. We build lean, compiled Jamstack architectures and native-speed Flutter applications with clean codebases, test-driven pipelines, zero licensing lock-in, and 100% intellectual property ownership from day one."
     },
     {
-      q: "Can your AI agents understand Roman Urdu or local context?",
-      a: "We can fine-tune LLM AI agents to understand contextual queries, Roman Urdu, and English, allowing them to provide natural, intelligent customer support to the local demographic."
+      q: "Can we schedule in-person architecture discovery and sprint meetings?",
+      a: "Yes. Our core engineering and architecture leadership is headquartered in Karachi. We regularly host in-person technical discovery workshops, UI/UX prototyping reviews, and milestone sprint demos with executive teams in Karachi, as well as on-site client visits across Lahore and Islamabad."
     },
     {
-      q: "Why should I invest in a Jamstack website instead of WordPress?",
-      a: "Jamstack sites load instantly, which is crucial in areas with fluctuating mobile internet speeds (3G/4G). They are also virtually un-hackable, protecting your business from local and global cyber threats."
-    },
-    {
-      q: "Do you offer continuous support for local clients?",
-      a: "Yes. We are your local tech partners. We provide ongoing server maintenance, SEO monitoring, software updates, and direct WhatsApp support for all our Pakistani clients."
+      q: "How do your AI agents handle bilingual communication in Roman Urdu and English?",
+      a: "Our conversational AI systems and customer support agents are fine-tuned with customized prompt engineering, retrieval-augmented generation (RAG), and localized dictionaries. They seamlessly understand Roman Urdu, colloquial phrasing, and industry-specific terminology, ensuring your Pakistani customers receive natural, 24/7 automated assistance without awkward machine translations."
     }
   ];
 
   return (
     <div className="bg-[#090909] text-[#d3c8b8] min-h-screen font-sans selection:bg-[#ff5b36] selection:text-white overflow-x-hidden">
       <Helmet>
-        <title>Digital Transformation for Pakistan | Local SEO & Custom Software | AbuQitmirLabs</title>
-        <meta name="description" content="Karachi-based digital transformation for Pakistani businesses — local SEO, custom software, mobile apps, and Roman Urdu AI agents. PKR pricing, in-person meetings, same time zone." />
+        <title>Software Development & Local SEO Agency in Pakistan | AbuQitmirLabs</title>
+        <meta name="description" content="Karachi-based engineering studio delivering custom software, mobile apps, local SEO, and AI agents for Pakistani enterprises and SMEs. Transparent PKR pricing & local payment gateway expertise." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/pakistan-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Digital Transformation for Pakistan | Local SEO & Custom Software | AbuQitmirLabs" />
-        <meta property="og:description" content="Karachi-based digital transformation for Pakistani businesses — local SEO, custom software, mobile apps, and Roman Urdu AI agents. PKR pricing, in-person meetings, same time zone." />
+        <meta property="og:title" content="Software Development & Local SEO Agency in Pakistan | AbuQitmirLabs" />
+        <meta property="og:description" content="Karachi-based engineering studio delivering custom software, mobile apps, local SEO, and AI agents for Pakistani enterprises and SMEs. Transparent PKR pricing & local payment gateway expertise." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/pakistan-market" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Digital Transformation for Pakistan | Local SEO & Custom Software | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Karachi-based digital transformation for Pakistani businesses — local SEO, custom software, mobile apps, and Roman Urdu AI agents. PKR pricing, in-person meetings, same time zone." />
+        <meta name="twitter:title" content="Software Development & Local SEO Agency in Pakistan | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Karachi-based engineering studio delivering custom software, mobile apps, local SEO, and AI agents for Pakistani enterprises and SMEs. Transparent PKR pricing & local payment gateway expertise." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
@@ -114,8 +158,8 @@ const PakistanMarketPage = () => {
               {
                 "@context": "https://schema.org",
                 "@type": "Service",
-                "name": "Digital Transformation in Pakistan",
-                "description": "Karachi-based digital transformation for Pakistani businesses — local SEO, custom software, mobile apps, and Roman Urdu AI agents.",
+                "name": "Custom Software & Digital Engineering for Pakistan",
+                "description": "Karachi-based engineering studio delivering custom software, mobile apps, local SEO, and AI agents for Pakistani enterprises and SMEs.",
                 "provider": {
                   "@type": "Organization",
                   "name": "AbuQitmirLabs",
@@ -145,9 +189,8 @@ const PakistanMarketPage = () => {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col justify-center items-center px-6 pt-32 md:pt-40 md:px-10 overflow-hidden">
-
         {/* Soft Glow Background */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),transparent_34%),linear-gradient(to_bottom,rgba(255,255,255,0.02),transparent_18%,transparent_82%,rgba(255,255,255,0.02))] pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,91,54,0.06),transparent_40%),linear-gradient(to_bottom,rgba(255,255,255,0.02),transparent_18%,transparent_82%,rgba(255,255,255,0.02))] pointer-events-none"></div>
 
         <div className="relative mx-auto max-w-7xl w-full">
           <div className="flex flex-col gap-8 md:gap-12">
@@ -157,17 +200,17 @@ const PakistanMarketPage = () => {
               className="flex items-center gap-4 text-xs font-medium uppercase tracking-[0.3em] text-[#7d766c]"
             >
               <span className="inline-block h-2 w-2 rounded-full bg-[#ff5b36]"></span>
-              Karachi to Islamabad — Pakistan's Premier Tech Agency
+              Karachi • Lahore • Islamabad — Local Engineering Precision
             </motion.div>
 
             <motion.h1 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase mb-12"
+              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase mb-6"
             >
-              Digital Transformation <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5b36] to-[#ff9d85]">for Pakistan's Boom</span>
+              Software Engineering <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5b36] to-[#ff9d85]">For Pakistan's Digital Economy</span>
             </motion.h1>
 
             <motion.p 
@@ -176,7 +219,7 @@ const PakistanMarketPage = () => {
               transition={{ delay: 0.25 }}
               className="max-w-4xl text-lg md:text-xl text-[#9f978a] leading-relaxed font-sans font-light"
             >
-              As a Karachi-based team, we understand the local market directly — no translation layer, no cultural gap. We work with Pakistani SMEs and startups on practical budgets, with in-person meetings available and payments in PKR.
+              Scaling a business in Pakistan requires more than offshore templates or disconnected freelance code. We provide dedicated software development, high-converting local SEO, and bilingual AI customer automation with direct PKR billing, zero foreign exchange hurdles, and in-person executive collaboration right here in Karachi.
             </motion.p>
 
             {/* Core Capabilities Specifications */}
@@ -188,11 +231,12 @@ const PakistanMarketPage = () => {
             >
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
                 {[
-                  "In-Person Meetings Available (Karachi-Based)",
-                  "PKR Pricing, No Currency Conversion Hassle",
-                  "Local Market & Consumer Behavior Understanding",
-                  "Budget-Friendly Packages for SMEs & Startups",
-                  "Same Time-Zone, Zero Communication Delay"
+                  "Official NTN & PKR Bank Invoicing (No FX Fees)",
+                  "Seamless Raast, JazzCash & EasyPaisa Integrations",
+                  "In-Person Strategy Meetings (Karachi Headquarters)",
+                  "Engineered for Local 3G/4G Mobile Bandwidth",
+                  "Roman Urdu & English Conversational AI Support",
+                  "SECP & Data Privacy-Conscious Architecture"
                 ].map((bullet, idx) => (
                   <div key={idx} className="flex items-start gap-3 group">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#ff5b36] mt-2 shrink-0 group-hover:bg-[#ccff00] transition-colors duration-300" />
@@ -206,26 +250,24 @@ const PakistanMarketPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-6 mt-8 md:mt-12"
+              className="flex flex-col sm:flex-row gap-6 mt-4"
             >
               <a 
                 href="https://wa.me/923233260859"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#ff5b36] hover:bg-white text-white hover:text-black px-12 py-10 rounded-3xl font-black text-xl transition-all transform hover:scale-105 flex flex-col items-center justify-center gap-2 uppercase tracking-tighter brutalist-shadow"
+                className="bg-[#ff5b36] hover:bg-white text-white hover:text-black px-12 py-8 rounded-3xl font-black text-lg transition-all transform hover:scale-105 flex flex-col items-center justify-center gap-2 uppercase tracking-tighter shadow-xl"
               >
-                <ArrowUpRight size={28} />
-                Get a Free Consultation
+                <ArrowUpRight size={24} />
+                Discuss Your Project (WhatsApp)
               </a>
-              <a 
-                href="https://wa.me/923233260859"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-2 border-white/20 text-[#d3c8b8] px-12 py-10 rounded-3xl font-black text-xl hover:bg-white/5 transition-all uppercase tracking-tighter flex flex-col items-center justify-center gap-2"
+              <Link 
+                to="/case-studies"
+                className="border-2 border-white/20 text-[#d3c8b8] px-12 py-8 rounded-3xl font-black text-lg hover:bg-white/5 transition-all uppercase tracking-tighter flex flex-col items-center justify-center gap-2"
               >
-                <Smartphone size={28} className="text-[#ff5b36]" />
-                Transform Your Business
-              </a>
+                <Smartphone size={24} className="text-[#ff5b36]" />
+                Explore Proven Client Work
+              </Link>
             </motion.div>
           </div>
         </div>
@@ -235,146 +277,92 @@ const PakistanMarketPage = () => {
       <section className="overflow-hidden border-y border-white/5 bg-[#0b0b0b] py-16 md:py-24 text-[#d3c8b8]">
         <div className="flex animate-marquee whitespace-nowrap gap-12 text-6xl md:text-9xl font-semibold uppercase tracking-tight opacity-90 italic">
           <span>Digital Pakistan</span> <span className="text-[#ff5b36]">·</span>
-          <span>Karachi Excellence</span> <span className="text-[#ff5b36]">·</span>
-          <span>Lahore Growth</span> <span className="text-[#ff5b36]">·</span>
-          <span>Islamabad Innovation</span> <span className="text-[#ff5b36]">·</span>
-          <span>SME Empowerment</span> <span className="text-[#ff5b36]">·</span>
-          {/* Repeating for loop */}
-          <span>Digital Pakistan</span> <span className="text-[#ff5b36]">·</span>
-          <span>Karachi Excellence</span> <span className="text-[#ff5b36]">·</span>
-          <span>Lahore Growth</span> <span className="text-[#ff5b36]">·</span>
-          <span>Islamabad Innovation</span> <span className="text-[#ff5b36]">·</span>
-          <span>SME Empowerment</span> <span className="text-[#ff5b36]">·</span>
+          <span>Karachi Engineering</span> <span className="text-[#ff5b36]">·</span>
+          <span>Lahore Commerce</span> <span className="text-[#ff5b36]">·</span>
+          <span>Islamabad Enterprise</span> <span className="text-[#ff5b36]">·</span>
+          <span>Fintech &amp; Raast Ready</span> <span className="text-[#ff5b36]">·</span>
+          <span>Bilingual AI Agents</span> <span className="text-[#ff5b36]">·</span>
         </div>
       </section>
 
-      {/* The Problem Section */}
-      <section className="py-32 px-6 md:px-10 bg-[#090909]">
+      {/* The Local Challenge vs Advantage Section */}
+      <section className="py-32 px-6 md:px-10 bg-[#090909] border-b border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-24 items-start">
+          <div className="grid lg:grid-cols-2 gap-20 items-start">
             <div className="sticky top-32">
-              <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#ff5b36] mb-8 block">The Digital Gap</span>
+              <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#ff5b36] mb-8 block">The Local Advantage</span>
               <AnimatedShinyText 
-                text="Pakistan's Expanding Market." 
-                textClassName="text-5xl md:text-8xl"
+                text="Why Work with a Karachi-Based Dedicated Studio?" 
+                textClassName="text-4xl md:text-7xl"
               />
             </div>
-            <div className="space-y-10">
-              <p className="text-2xl text-[#d3c8b8] font-light leading-relaxed">
-                Pakistan’s digital ecosystem is exploding, but many local businesses are missing out. Relying on WhatsApp groups and Facebook pages is no longer a sustainable strategy for growth.
+            <div className="space-y-8 text-lg text-[#9f978a] font-light leading-relaxed">
+              <p>
+                Many expanding Pakistani enterprises find themselves trapped between two problematic extremes: overseas development agencies whose dollar pricing has become prohibitive due to currency depreciation, or low-cost domestic freelancers who disappear halfway through delivery without source documentation or security standards.
               </p>
-              <div className="space-y-6 text-xl text-[#7d766c] leading-relaxed">
-                <p>Local companies suffer from slow, unoptimized websites, a lack of custom software, and poor visibility on Google Maps.</p>
-                <div className="h-px w-full bg-white/10 my-8"></div>
-                <p>As international competitors enter the market, traditional Pakistani businesses risk becoming obsolete if they do not aggressively digitize and optimize.</p>
+              <p>
+                AbuQitmirLabs operates as an institutional engineering partner. By partnering with a local engineering team, your leadership team gains distinct strategic benefits:
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                <div className="p-6 bg-white/[0.02] border border-white/5 rounded-2xl space-y-2">
+                  <div className="flex items-center gap-3 text-white font-semibold text-base">
+                    <BadgeDollarSign className="text-[#ff5b36] w-5 h-5" />
+                    Predictable PKR Budgeting
+                  </div>
+                  <p className="text-sm text-[#7d766c]">
+                    Lock in contracts in Pakistani Rupees. Avoid inflation shocks, international credit card transaction markups, and foreign remittance tax complications.
+                  </p>
+                </div>
+
+                <div className="p-6 bg-white/[0.02] border border-white/5 rounded-2xl space-y-2">
+                  <div className="flex items-center gap-3 text-white font-semibold text-base">
+                    <Clock className="text-[#ff5b36] w-5 h-5" />
+                    Zero Time Zone Lag
+                  </div>
+                  <p className="text-sm text-[#7d766c]">
+                    Collaborate synchronously during regular Pakistan Standard Time (PKT) hours. Direct phone calls, active WhatsApp channels, and same-day issue resolution.
+                  </p>
+                </div>
+
+                <div className="p-6 bg-white/[0.02] border border-white/5 rounded-2xl space-y-2">
+                  <div className="flex items-center gap-3 text-white font-semibold text-base">
+                    <CreditCard className="text-[#ff5b36] w-5 h-5" />
+                    Local Gateway Expertise
+                  </div>
+                  <p className="text-sm text-[#7d766c]">
+                    Native implementations for JazzCash, EasyPaisa, Safepay, PayFast, and instant Raast P2M integrations that minimize cart abandonment.
+                  </p>
+                </div>
+
+                <div className="p-6 bg-white/[0.02] border border-white/5 rounded-2xl space-y-2">
+                  <div className="flex items-center gap-3 text-white font-semibold text-base">
+                    <Users className="text-[#ff5b36] w-5 h-5" />
+                    In-Person Strategic Sync
+                  </div>
+                  <p className="text-sm text-[#7d766c]">
+                    Meet face-to-face in Karachi or schedule on-site workshops in Lahore and Islamabad to review architecture diagrams, compliance needs, and product roadmaps.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* The Solution Section */}
-      <section className="py-32 px-6 md:px-10 bg-[#0b0b0b] relative overflow-hidden">
-        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_bottom_right,rgba(255,91,54,0.03),transparent_40%)]"></div>
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="mb-24">
-            <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#ff5b36] mb-8 block">AbuQitmirLabs Solution</span>
-            <AnimatedShinyText 
-              text="Driving Digital Pakistan Forward." 
-              textClassName="text-5xl md:text-9xl"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Card 1: Karachi Pulse */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="group p-10 border border-white/5 hover:border-[#ff5b36]/30 transition-all bg-[#0d0d0d] flex flex-col items-start text-left rounded-3xl"
-            >
-              <div className="bg-white/5 w-16 h-16 rounded-full flex items-center justify-center mb-8 text-[#ff5b36] group-hover:bg-[#ff5b36]/10 transition-colors">
-                <MapPin size={32} />
-              </div>
-              <h3 className="text-2xl font-serif font-light text-white uppercase mb-6 tracking-tight">
-                Karachi Pulse
-              </h3>
-              <div className="text-sm font-sans font-light text-[#9f978a] leading-relaxed">
-                <p>
-                  We understand the local market pulse better than anyone, bringing global tech standards to your doorstep.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Card 2: Process Automation */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="group p-10 border border-white/5 hover:border-[#ff5b36]/30 transition-all bg-[#0d0d0d] flex flex-col items-start text-left rounded-3xl"
-            >
-              <div className="bg-white/5 w-16 h-16 rounded-full flex items-center justify-center mb-8 text-[#ff5b36] group-hover:bg-[#ff5b36]/10 transition-colors">
-                <Zap size={32} />
-              </div>
-              <h3 className="text-2xl font-serif font-light text-white uppercase mb-6 tracking-tight">
-                Process Automation
-              </h3>
-              <div className="text-sm font-sans font-light text-[#9f978a] leading-relaxed space-y-4">
-                <p>
-                  Replace manual, paper-based workflows with scalable custom software and mobile apps built for how Pakistani businesses actually operate day to day.
-                </p>
-                <p>
-                  This is where our <strong className="text-white font-medium">custom mobile app development services</strong> and broader <strong className="text-white font-medium">custom software development</strong> practice meet directly — automating the WhatsApp-and-spreadsheet workflows most SMEs have outgrown, without forcing a rebuild of the entire business around imported enterprise software never designed for the local context.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Card 3: 24/7 AI Support */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="group p-10 border border-white/5 hover:border-[#ff5b36]/30 transition-all bg-[#0d0d0d] flex flex-col items-start text-left rounded-3xl"
-            >
-              <div className="bg-white/5 w-16 h-16 rounded-full flex items-center justify-center mb-8 text-[#ff5b36] group-hover:bg-[#ff5b36]/10 transition-colors">
-                <MessagesSquare size={32} />
-              </div>
-              <h3 className="text-2xl font-serif font-light text-white uppercase mb-6 tracking-tight">
-                24/7 AI Support
-              </h3>
-              <div className="text-sm font-sans font-light text-[#9f978a] leading-relaxed">
-                <p>
-                  Deploy AI agents trained in Roman Urdu and local contexts to handle customer inquiries round the clock — built as part of our broader AI agent development practice, adapted specifically for how Pakistani customers actually communicate rather than a generic English-only chatbot template.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      <CountryMarquee />
-
       {/* Core Services Section */}
-      <section className="py-32 px-6 md:px-10 bg-[#090909] relative overflow-hidden">
-        {/* Background grids and shapes */}
-        <div className="absolute inset-0 bg-grid opacity-[0.02] pointer-events-none" />
-        <div className="absolute -top-40 right-10 w-[600px] h-[600px] bg-blue-500/[0.01] blur-[150px] rounded-full pointer-events-none" />
-        <div className="absolute -bottom-40 left-10 w-[600px] h-[600px] bg-[#ff5b36]/[0.01] blur-[150px] rounded-full pointer-events-none" />
-
+      <section className="py-32 px-6 md:px-10 bg-[#070707] relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="mb-32 text-center">
-            <span className="text-xs font-mono text-[#ff5b36] uppercase tracking-[0.4em] block mb-6">// PAKISTAN MARKET SPECIFIC CRITERIA</span>
+            <span className="text-xs font-mono text-[#ff5b36] uppercase tracking-[0.4em] block mb-6">// LOCAL CAPABILITY SUITE</span>
             <h2 className="text-4xl md:text-7xl font-serif font-light text-white uppercase tracking-tight leading-none">
-              Core Services <br />
-              <span className="italic text-[#9f978a] font-light">Engineered for Pakistan</span>
+              Core Engineering Services <br />
+              <span className="italic text-[#9f978a] font-light">Custom Built for Pakistani Business Realities</span>
             </h2>
           </div>
 
           <div className="space-y-40">
-            {/* Cinematic Section 1: Local SEO & Google Maps Dominance */}
+            {/* Service 1: Local SEO & Google Maps Visibility */}
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -388,65 +376,66 @@ const PakistanMarketPage = () => {
                   LOCAL SEARCH DISCOVERY
                 </div>
                 <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
-                  Local SEO & <br />
-                  <span className="italic text-[#9f978a]">Google Maps Dominance</span>
+                  Google Maps Dominance &amp; <br />
+                  <span className="italic text-[#9f978a]">High-Intent Local SEO</span>
                 </h3>
                 <div className="font-sans font-light text-[#9f978a] leading-relaxed text-base md:text-lg space-y-6">
                   <p>
-                    From Karachi tech startups to Lahore retail brands, we help you capture maximum local traffic. We optimize your GBP, secure local citations, and build semantic relevance to outrank your competitors.
+                    In cities like Karachi, Lahore, and Islamabad, consumer buying journeys begin on Google Maps and localized mobile searches. Whether you run a private healthcare clinic in Clifton, an interior design showroom in Gulberg, or an industrial supply firm in SITE, ranking in the top 3 Google Business Profile map pack generates direct phone calls and qualified walk-in customers.
                   </p>
                   <p>
-                    This work sits under our broader <strong className="text-white font-medium">GMB SEO services</strong> practice — starting with a full <strong className="text-white font-medium">GMB audit for local SEO</strong> that identifies exactly where a Karachi or Lahore business is losing map-pack visibility to competitors. From there, ongoing <strong className="text-white font-medium">local SEO GMB optimization</strong> covers review management, post scheduling, and the citation consistency Google uses to judge whether a business listing is trustworthy. For businesses asking <strong className="text-white font-medium">what is GMB in SEO</strong> and why it keeps mattering more: in a market where mobile search dominates discovery, a well-managed Google Business Profile is often the single highest-leverage local SEO investment a Pakistani SME can make.
+                    Our localized search campaign covers full profile audit, category alignment, neighborhood-level citation building, review acquisition workflows, and high-performance landing page optimization. By targeting geo-modified keywords and building verified Pakistani business directory citations, we help you capture real local demand instead of wasting marketing spend on untargeted social media boosts.
                   </p>
                   <p>
-                    Our <strong className="text-white font-medium">GMB &amp; local SEO services</strong> for Karachi city specifically account for the density of the local market — competition in DHA or Clifton looks nothing like a suburban commercial area, and our strategy adjusts accordingly. For appointment-driven businesses, we also run category-specific playbooks — the same discipline behind <strong className="text-white font-medium">GMB local SEO for dentists</strong> internationally applies just as directly to clinics, salons, and service businesses across Karachi and Lahore. Agencies managing multiple local clients can also engage us for <strong className="text-white font-medium">white label GMB SEO</strong> support, handling audits and reporting under their own brand.
+                    We also support marketing agencies across Pakistan through structured white-label delivery, providing comprehensive monthly ranking verification, citation audit logs, and technical optimization reports under your own agency branding.
                   </p>
                 </div>
               </div>
 
               {/* Visual Card for SEO */}
               <div className="lg:col-span-5 lg:sticky lg:top-24 mt-8 lg:mt-0">
-                <div className="relative group p-8 rounded-3xl bg-zinc-950/40 border border-white/5 backdrop-blur-md overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.8)]">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#ff5b36]/5 blur-3xl rounded-full" />
+                <div className="relative group p-8 rounded-3xl bg-zinc-950/40 border border-white/5 backdrop-blur-md overflow-hidden shadow-2xl">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#ff5b36]/10 blur-3xl rounded-full" />
                   
                   <div className="mb-8 border border-white/10 rounded-2xl p-6 bg-black/40 relative">
                     <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-4 text-xs font-mono text-[#7d766c]">
-                      <span>GBP_RANK_STATUS</span>
+                      <span>REGIONAL_MAP_PACK_TRACKER</span>
                       <span className="text-[#ccff00] flex items-center gap-1">
                         <span className="h-2 w-2 rounded-full bg-[#ccff00] animate-pulse" />
-                        LIVE TRACKING
+                        LIVE STATUS
                       </span>
                     </div>
                     
                     <div className="space-y-4">
                       {[
-                        { title: "DHA Karachi Cluster", value: "#1 Position" },
-                        { title: "Gulberg Lahore Cluster", value: "#1 Position" },
-                        { title: "Blue Area Islamabad", value: "#1 Position" },
+                        { title: "DHA & Clifton (Karachi)", rank: "#1 Rank" },
+                        { title: "Gulberg & MM Alam (Lahore)", rank: "#1 Rank" },
+                        { title: "Blue Area & F-7 (Islamabad)", rank: "#1 Rank" },
+                        { title: "D-Ground (Faisalabad)", rank: "#1 Rank" }
                       ].map((item, idx) => (
                         <div key={idx} className="p-3 border border-white/5 rounded-xl bg-white/[0.01] flex justify-between items-center">
                           <span className="text-xs text-[#9f978a] font-sans font-light">{item.title}</span>
-                          <span className="text-[10px] font-mono bg-[#ccff00]/10 text-[#ccff00] px-2 py-0.5 rounded font-bold uppercase">{item.value}</span>
+                          <span className="text-[10px] font-mono bg-[#ccff00]/10 text-[#ccff00] px-2.5 py-1 rounded font-bold uppercase">{item.rank}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="space-y-4 border-t border-white/5 pt-6 text-xs font-mono text-[#7d766c]">
+                  <div className="space-y-3 border-t border-white/5 pt-6 text-xs font-mono text-[#7d766c]">
                     <div className="flex justify-between">
-                      <span>AUDIT REVENUE GAIN:</span>
-                      <span className="text-white">+182% MAP Discovery</span>
+                      <span>ORGANIC CALL CONVERSIONS:</span>
+                      <span className="text-white font-bold">+240% Inbound Calls</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>NATIONAL STANDARDS:</span>
-                      <span className="text-[#ff5b36] font-bold">RANK #1 NATIONALLY</span>
+                      <span>SCHEMA.ORG GEOGRAPHIC GRAPH:</span>
+                      <span className="text-[#ff5b36] font-bold">ACTIVE &amp; VERIFIED</span>
                     </div>
                   </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Cinematic Section 2: Digital Transformation for SMEs */}
+            {/* Service 2: Lightweight Custom Web & Mobile Apps */}
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -457,44 +446,45 @@ const PakistanMarketPage = () => {
               <div className="lg:col-span-7 lg:order-2 space-y-8">
                 <div className="flex items-center gap-4 text-xs font-mono text-blue-500 uppercase tracking-widest">
                   <span className="h-px w-8 bg-blue-500" />
-                  RESPONSIVE CUSTOM APPS
+                  HIGH-SPEED APPLICATION STACK
                 </div>
                 <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
-                  Digital Transformation <br />
-                  <span className="italic text-[#9f978a]">for SMEs</span>
+                  Custom Software &amp; Mobile Apps <br />
+                  <span className="italic text-[#9f978a]">Engineered for Local Connectivity</span>
                 </h3>
                 <div className="font-sans font-light text-[#9f978a] leading-relaxed text-base md:text-lg space-y-6">
                   <p>
-                    High-performance Web &amp; Mobile Apps tailored to the budgets and operational needs of Pakistani SMEs, ensuring maximum ROI and operational efficiency in 3G/4G environments.
+                    A slow website or heavy mobile app directly destroys conversions on Pakistani mobile connections. When an e-commerce store or B2B portal takes more than 3 seconds to load on a 4G mobile device, over 50% of visitors abandon the session.
                   </p>
                   <p>
-                    On the web side, this means building with genuine <strong className="text-white font-medium">web development best practices</strong> from the start — not just visually polished sites, but ones engineered for Pakistan's variable connectivity realities. Every <strong className="text-white font-medium">custom web development</strong> engagement follows the same discipline: lightweight, fast-loading architecture using the right <strong className="text-white font-medium">web development framework</strong> for the job, whether that's a lean marketing site or a full <strong className="text-white font-medium">web application development</strong> build with custom business logic behind it. As <strong className="text-white font-medium">web development companies</strong> go, the ones that actually deliver for the Pakistani SME market are the ones who design for 3G/4G from day one, not as an afterthought once a beautifully heavy site fails to load on a mid-range Android phone.
+                    We engineer compiled React, Next.js, and Jamstack web applications with static pre-rendering, edge CDN caching, and compressed asset pipelines. On mobile, we develop unified Flutter and React Native codebases that deliver 60fps performance on budget Android smartphones as smoothly as on flagship iPhones.
                   </p>
                   <p>
-                    On the mobile side, we work as a <strong className="text-white font-medium">custom mobile app development company</strong> building for exactly this constraint — apps that stay fast and functional on the mobile networks Pakistani users actually have, not the fibre connections a demo environment assumes. <strong className="text-white font-medium">Cross-platform mobile app development</strong>, primarily through Flutter, lets an SME reach both iOS and Android users from a single codebase without doubling the development cost — a meaningful difference for a business watching <strong className="text-white font-medium">mobile app development cost</strong> closely. We're proud to be recognized among the <strong className="text-white font-medium">best mobile app development companies in Pakistan</strong>, and for SMEs comparing us against other <strong className="text-white font-medium">mobile app development firms</strong>, the practical difference usually comes down to whether the team has actually shipped apps that perform well on the connectivity most Pakistani users have, rather than just the connectivity a portfolio demo was tested on.
+                    Whether building a custom ERP for textile manufacturing, a real-time booking portal for private clinics, or a multi-vendor marketplace with automated Raast and JazzCash payouts, our software is engineered for high concurrency, rock-solid security, and simple maintenance.
                   </p>
                 </div>
               </div>
 
               {/* Visual Card for SME Apps */}
               <div className="lg:col-span-5 lg:order-1 lg:sticky lg:top-24 mt-8 lg:mt-0">
-                <div className="relative group p-8 rounded-3xl bg-zinc-950/40 border border-white/5 backdrop-blur-md overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.8)]">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-3xl rounded-full" />
+                <div className="relative group p-8 rounded-3xl bg-zinc-950/40 border border-white/5 backdrop-blur-md overflow-hidden shadow-2xl">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-3xl rounded-full" />
                   
                   <div className="mb-8 border border-white/10 rounded-2xl p-6 bg-black/40 relative">
                     <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-4 text-xs font-mono text-[#7d766c]">
-                      <span>APP_OPTIMIZER_v3</span>
-                      <span className="text-blue-500 flex items-center gap-1">
-                        <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
-                        OPTIMIZED FOR 3G/4G
+                      <span>SYSTEM_PERFORMANCE_AUDIT</span>
+                      <span className="text-blue-400 flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-blue-400 animate-pulse" />
+                        SUB-SECOND LCP
                       </span>
                     </div>
                     
                     <div className="space-y-4">
                       {[
-                        { title: "Initial Asset Footprint", value: "< 1.8MB" },
-                        { title: "Average Load on 3G Speed", value: "1.2s" },
-                        { title: "Offline Capabilities", value: "ENABLED" },
+                        { title: "Mobile Bundle Size", value: "< 1.4 MB" },
+                        { title: "Core Web Vitals Pass Rate", value: "100% Score" },
+                        { title: "Local Gateway Latency", value: "< 240ms" },
+                        { title: "Offline Data Synchronization", value: "ENABLED" }
                       ].map((item, idx) => (
                         <div key={idx} className="p-3 border border-white/5 rounded-xl bg-white/[0.01] flex justify-between items-center">
                           <span className="text-xs text-[#9f978a] font-sans font-light">{item.title}</span>
@@ -504,14 +494,14 @@ const PakistanMarketPage = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-4 border-t border-white/5 pt-6 text-xs font-mono text-[#7d766c]">
+                  <div className="space-y-3 border-t border-white/5 pt-6 text-xs font-mono text-[#7d766c]">
                     <div className="flex justify-between">
-                      <span>NETWORK EFFICIENCY:</span>
-                      <span className="text-white">EXTREME</span>
+                      <span>INFRASTRUCTURE TIERS:</span>
+                      <span className="text-white">AWS Bahrain / UAE Low-Latency Nodes</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>PERFORMANCE CLASS:</span>
-                      <span className="text-blue-400 font-bold">OPTIMIZED FOR LOCAL SPEEDS</span>
+                      <span>INTELLECTUAL PROPERTY:</span>
+                      <span className="text-[#ff5b36] font-bold">100% Client Codebase Ownership</span>
                     </div>
                   </div>
                 </div>
@@ -521,14 +511,82 @@ const PakistanMarketPage = () => {
         </div>
       </section>
 
+      {/* Pricing Transparency Section (PKR + USD) */}
+      <section className="py-32 px-6 md:px-10 bg-[#0b0b0b] border-y border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-20 text-center">
+            <span className="text-xs font-mono text-[#ff5b36] uppercase tracking-[0.4em] block mb-4">// TRANSPARENT PKR &amp; USD RATES</span>
+            <h2 className="text-4xl md:text-6xl font-serif font-light text-white uppercase tracking-tight">
+              Honest Engineering Investment Tiers
+            </h2>
+            <p className="text-[#8d8579] text-base md:text-lg max-w-3xl mx-auto mt-4 font-light">
+              Clear scope, fixed-milestone pricing in Pakistani Rupees, and zero surprise hourly billing. All packages include official NTN invoices and complete source code handover.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {pricingTiers.map((tier, idx) => (
+              <div 
+                key={idx}
+                className={`p-10 rounded-3xl border flex flex-col justify-between transition-all duration-300 ${
+                  tier.featured 
+                    ? 'border-[#ff5b36] bg-[#ff5b36]/[0.03] shadow-[0_0_50px_rgba(255,91,54,0.1)] relative' 
+                    : 'border-white/10 bg-[#0d0d0d] hover:border-white/20'
+                }`}
+              >
+                {tier.featured && (
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#ff5b36] text-white text-[10px] font-mono font-bold uppercase tracking-widest px-4 py-1 rounded-full">
+                    Most Popular for Growing Businesses
+                  </div>
+                )}
+                <div>
+                  <div className="text-xs font-mono text-[#7d766c] uppercase tracking-widest mb-2">{tier.timeline} Delivery</div>
+                  <h3 className="text-2xl font-serif text-white uppercase tracking-tight mb-4">{tier.name}</h3>
+                  <p className="text-xs text-[#8d8579] font-light leading-relaxed mb-6">{tier.target}</p>
+                  
+                  <div className="border-y border-white/5 py-6 mb-8">
+                    <div className="text-3xl md:text-4xl font-bold text-white font-mono">{tier.pkrPrice}</div>
+                    <div className="text-xs font-mono text-[#ff5b36] mt-1">{tier.usdPrice} equivalent for overseas settlement</div>
+                  </div>
+
+                  <div className="space-y-3 mb-10">
+                    <div className="text-xs font-mono uppercase text-zinc-400 font-bold tracking-wider mb-2">Included Deliverables:</div>
+                    {tier.deliverables.map((item, i) => (
+                      <div key={i} className="flex items-start gap-2.5 text-xs text-[#9f978a] font-light leading-relaxed">
+                        <CheckCircle2 className="w-4 h-4 text-[#ff5b36] shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <a 
+                  href="https://wa.me/923233260859" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className={`w-full py-4 rounded-xl font-bold text-xs uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2 ${
+                    tier.featured 
+                      ? 'bg-[#ff5b36] text-white hover:bg-white hover:text-black' 
+                      : 'bg-white/10 text-white hover:bg-white/20'
+                  }`}
+                >
+                  <ArrowUpRight size={16} />
+                  Request Scope &amp; Proposal
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
-      <section className="py-32 px-6 md:px-10 bg-[#0b0b0b]">
+      <section className="py-32 px-6 md:px-10 bg-[#090909]">
         <div className="max-w-4xl mx-auto">
-          <div className="mb-24 text-center">
-            <span className="text-[#ff5b36] font-mono text-xs uppercase tracking-[0.5em] block mb-8">NATIONWIDE FAQ</span>
+          <div className="mb-20 text-center">
+            <span className="text-[#ff5b36] font-mono text-xs uppercase tracking-[0.5em] block mb-4">PAKISTAN REGULATORY &amp; TECHNICAL FAQ</span>
             <AnimatedShinyText 
-              text="Local Insights. Global Answers." 
-              textClassName="text-5xl md:text-8xl"
+              text="Clear Answers for Pakistani Founders &amp; Executives." 
+              textClassName="text-3xl md:text-6xl"
             />
           </div>
 
@@ -536,13 +594,13 @@ const PakistanMarketPage = () => {
             {faqData.map((faq, idx) => (
               <div 
                 key={idx} 
-                className="border border-white/5 bg-[#090909] p-8 cursor-pointer hover:border-[#ff5b36]/20 transition-all"
+                className="border border-white/5 bg-[#0b0b0b] p-8 cursor-pointer hover:border-[#ff5b36]/20 transition-all rounded-2xl"
                 onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-xl font-bold uppercase tracking-tight pr-6">{faq.q}</span>
-                  <div className={`transition-transform duration-500 ${activeFaq === idx ? 'rotate-[135deg] text-[#ff5b36]' : 'text-[#7d766c]'}`}>
-                    <Plus size={28} />
+                  <span className="text-lg md:text-xl font-bold text-white uppercase tracking-tight pr-6">{faq.q}</span>
+                  <div className={`transition-transform duration-500 shrink-0 ${activeFaq === idx ? 'rotate-[135deg] text-[#ff5b36]' : 'text-[#7d766c]'}`}>
+                    <Plus size={24} />
                   </div>
                 </div>
                 <AnimatePresence>
@@ -553,7 +611,7 @@ const PakistanMarketPage = () => {
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden"
                     >
-                      <p className="pt-8 text-xl text-[#8d8579] font-light leading-relaxed border-t border-white/5 mt-8">
+                      <p className="pt-6 text-base md:text-lg text-[#8d8579] font-light leading-relaxed border-t border-white/5 mt-6">
                         {faq.a}
                       </p>
                     </motion.div>
@@ -563,10 +621,10 @@ const PakistanMarketPage = () => {
             ))}
           </div>
 
-          {/* Related Pakistan Market Capabilities & Case Studies */}
+          {/* Quick Hub Navigation & Regulatory Links */}
           <div className="mt-20 pt-12 border-t border-white/5 space-y-8 text-left">
             <div>
-              <h4 className="text-xs font-mono text-[#ff5b36] uppercase tracking-[0.3em] font-bold mb-4">// PAKISTAN DIGITAL SERVICES & CASE STUDIES</h4>
+              <h4 className="text-xs font-mono text-[#ff5b36] uppercase tracking-[0.3em] font-bold mb-4">// PAKISTAN SERVICE EXPLORER</h4>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
                 <Link to="/custom-software" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
                   <span>Custom Software</span>
@@ -581,15 +639,15 @@ const PakistanMarketPage = () => {
                   <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
                 </Link>
                 <Link to="/ai-agent-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
-                  <span>Roman Urdu AI Agents</span>
+                  <span>Urdu AI Agents</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
                 </Link>
                 <Link to="/seo-mastery" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
-                  <span>SEO Mastery</span>
+                  <span>Technical SEO</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
                 </Link>
                 <Link to="/local-seo-for-small-business" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
-                  <span>Pakistani Local SEO</span>
+                  <span>Local SEO Maps</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
                 </Link>
                 <Link to="/case-studies" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
@@ -597,7 +655,7 @@ const PakistanMarketPage = () => {
                   <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
                 </Link>
                 <Link to="/contact" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#ff5b36] transition-colors border border-white/5 flex items-center justify-between">
-                  <span>Book Local Audit</span>
+                  <span>Book Local Consultation</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#ff5b36]" />
                 </Link>
               </div>
@@ -605,18 +663,18 @@ const PakistanMarketPage = () => {
 
             {/* External Regulatory & Tech Standards Links */}
             <div className="pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#7d766c]">
-              <span className="uppercase tracking-widest text-[11px] font-bold text-zinc-400">Pakistan Regulatory & Tech Standards:</span>
+              <span className="uppercase tracking-widest text-[11px] font-bold text-zinc-400">Pakistan Regulatory Frameworks:</span>
               <div className="flex flex-wrap items-center gap-4">
-                <a href="https://www.pta.gov.pk/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff5b36] transition-colors inline-flex items-center gap-1">
-                  Pakistan Telecom Authority (PTA) <ExternalLink className="w-3 h-3" />
+                <a href="https://www.fbr.gov.pk/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff5b36] transition-colors inline-flex items-center gap-1">
+                  Federal Board of Revenue (FBR) <ExternalLink className="w-3 h-3" />
                 </a>
                 <span>•</span>
                 <a href="https://www.secp.gov.pk/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff5b36] transition-colors inline-flex items-center gap-1">
                   SECP Corporate Compliance <ExternalLink className="w-3 h-3" />
                 </a>
                 <span>•</span>
-                <a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff5b36] transition-colors inline-flex items-center gap-1">
-                  Google SEO Guide <ExternalLink className="w-3 h-3" />
+                <a href="https://www.sbp.org.pk/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff5b36] transition-colors inline-flex items-center gap-1">
+                  State Bank of Pakistan (SBP Raast) <ExternalLink className="w-3 h-3" />
                 </a>
               </div>
             </div>
@@ -629,21 +687,21 @@ const PakistanMarketPage = () => {
         <div className="absolute inset-0 bg-[#ff5b36]/5 blur-[200px] pointer-events-none"></div>
         <div className="max-w-6xl mx-auto relative z-10 px-6">
           <AnimatedShinyText 
-            text="Scale Digital Pakistan." 
-            textClassName="text-7xl md:text-[10rem] text-white"
+            text="Elevate Your Digital Infrastructure." 
+            textClassName="text-6xl md:text-[8rem] text-white"
           />
           
-          <div className="flex flex-col md:flex-row gap-10 justify-center items-center">
+          <div className="flex flex-col md:flex-row gap-10 justify-center items-center mt-12">
             <a 
               href="https://wa.me/923233260859"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-black text-2xl font-bold px-16 py-8 rounded-full hover:bg-[#ff5b36] hover:text-white transition-all transform hover:scale-105 uppercase tracking-tighter shadow-2xl"
+              className="bg-white text-black text-xl font-bold px-14 py-7 rounded-full hover:bg-[#ff5b36] hover:text-white transition-all transform hover:scale-105 uppercase tracking-tighter shadow-2xl"
             >
-               Start Local Audit
+               Connect on WhatsApp
             </a>
-            <div className="text-[#7d766c] font-mono text-[10px] uppercase tracking-[0.4em] max-w-[300px] text-left border-l-2 border-white/10 pl-8 leading-relaxed h-16 flex items-center">
-               WHATSAPP SUPPORT INCLUDED // ZERO-HACK JAMSTACK ARCHITECTURE
+            <div className="text-[#7d766c] font-mono text-[11px] uppercase tracking-[0.3em] max-w-[320px] text-left border-l-2 border-white/10 pl-8 leading-relaxed">
+               KARACHI HEADQUARTERS // ZERO FX SURCHARGES // OFFICIAL TAX INVOICES
             </div>
           </div>
         </div>
