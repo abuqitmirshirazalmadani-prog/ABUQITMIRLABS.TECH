@@ -177,10 +177,10 @@ const CanadaMarketPage = () => {
                 className="max-w-4xl text-lg md:text-xl text-[#9f978a] leading-relaxed font-sans font-light text-left space-y-4"
               >
                 <span>
-                  Canadian businesses get a development partner that understands both US-adjacent business standards and Canadian data residency considerations. We align with EST/PST overlap and build scalable systems ready for cross-border growth.
+                  Canadian enterprises and growing tech ventures need engineering partners that understand North American market dynamics alongside domestic compliance. We align our delivery workflows with EST and PST business hours while building resilient, bilingual-ready platforms designed for long-term scalability.
                 </span>
                 <span className="block text-base md:text-lg mt-4 text-[#7d766c]">
-                  This work sits under our broader <strong className="text-white font-medium">custom software development</strong> practice, built around a consistent <strong className="text-white font-medium">custom software development best practice</strong>: architecture reviewed against PIPEDA and Canadian data residency requirements before a single feature ships. Whether the engagement runs through a fixed-scope project or an ongoing <strong className="text-white font-medium">custom software development agency</strong> relationship, Canadian clients get the same disciplined process — requirements first, architecture second, code third.
+                  Our Canadian engagements follow a rigorous architecture-first standard: privacy safeguards reviewed against PIPEDA and provincial data residency mandates before any build phase begins. Whether partnering on a fixed-scope product build or providing continuous engineering support, our clients receive predictable execution, clear milestones, and complete codebase transparency.
                 </span>
               </motion.p>
 
@@ -207,7 +207,7 @@ const CanadaMarketPage = () => {
                 </div>
                 <div className="border-t border-white/5 pt-6 text-left">
                   <p className="text-sm font-sans font-light text-[#9f978a] leading-relaxed">
-                    As <strong className="text-white font-medium">AbuQitmirLabs.tech software development services</strong>, this working model extends across every sector we build for in Canada — a <strong className="text-white font-medium">custom software development firm</strong> relationship for an ongoing SaaS product looks different in cadence from a single <strong className="text-white font-medium">custom software development services</strong> engagement, but both run on the same GMT-adjacent overlap and CAD-transparent pricing.
+                    We adapt our engagement structures to match Canadian operational requirements — from dedicated engineering squads supporting venture-backed SaaS startups in Toronto and Vancouver to focused modernization projects for established Canadian enterprises.
                   </p>
                 </div>
               </motion.div>
@@ -308,7 +308,7 @@ const CanadaMarketPage = () => {
                   Operating in Canada means adhering to <span className="text-white font-medium italic">PIPEDA</span>. We engineer all Canadian applications with comprehensive data privacy safeguards and offer hosting solutions on Canadian soil to ensure your business remains legally sound and your users' data stays protected.
                 </p>
                 <p>
-                  This compliance discipline runs through our sector-specific work for Canadian clients. Our <strong className="text-white font-medium">custom healthcare software development services</strong> — delivered as a genuine <strong className="text-white font-medium">healthcare software development company</strong> rather than a generalist shop — build patient systems around PIPEDA's health-information provisions rather than treating them as a generic afterthought. The same rigor carries into <strong className="text-white font-medium">custom financial software development</strong> and <strong className="text-white font-medium">custom fintech software development</strong> for Canadian financial services firms navigating both PIPEDA and provincial financial regulation, and into <strong className="text-white font-medium">custom enterprise software development</strong> for larger Canadian organizations managing data residency across multiple provinces.
+                  This compliance discipline runs through our sector-specific engineering work for Canadian clients. From clinical workflows and health-tech platforms architected around PIPEDA's health data provisions to secure fintech systems handling Canadian banking integrations and inter-provincial compliance, our solutions are built for security, auditability, and operational resilience.
                 </p>
               </div>
               <div className="flex flex-wrap gap-4">
@@ -349,10 +349,10 @@ const CanadaMarketPage = () => {
               </h3>
               <div className="text-sm font-sans font-light text-[#9f978a] leading-relaxed space-y-4">
                 <p>
-                  We build cloud-native custom software that delivers flawless performance from coast to coast with zero latency.
+                  We engineer distributed cloud platforms optimized for low-latency performance across Canada's geographical expanse.
                 </p>
                 <p>
-                  This is our broader <strong className="text-white font-medium">custom software development solutions</strong> practice applied to Canada's geography specifically — architecture that performs the same in Vancouver as it does in Halifax, rather than optimized for a single region and degraded everywhere else.
+                  From multi-region failover between Central and Western Canadian data centers to optimized edge caching, our cloud architecture ensures consistent responsiveness whether accessed in Toronto, Calgary, or Montreal.
                 </p>
               </div>
             </motion.div>
@@ -394,13 +394,10 @@ const CanadaMarketPage = () => {
               </h3>
               <div className="text-sm font-sans font-light text-[#9f978a] leading-relaxed space-y-4">
                 <p>
-                  Our strategies map out your digital entity, ensuring you capture high-value organic traffic in specific cities. This is where our <strong className="text-white font-medium">local SEO GMB optimization</strong> work becomes central — a full <strong className="text-white font-medium">GMB audit for local SEO</strong> identifying gaps city by city, followed by ongoing <strong className="text-white font-medium">GMB SEO services</strong> tailored to how competitive a given Canadian market actually is.
+                  Our semantic search strategies map out your brand's digital entity, capturing high-intent organic traffic across key metropolitan markets. We structure structured schema, local entity signals, and citation profiles to establish verifiable search authority across targeted Canadian provinces.
                 </p>
                 <p>
-                  For businesses asking <strong className="text-white font-medium">what is GMB in SEO</strong>: in a country this geographically spread out, a well-managed Google Business Profile is often what separates a business that dominates its own city from one invisible outside a five-block radius.
-                </p>
-                <p>
-                  Our <strong className="text-white font-medium">GMB SEO tools</strong> and reporting process cover everything <strong className="text-white font-medium">SEO and GMB</strong> touches — categories, citations, review velocity — and for agencies managing several Canadian client accounts, we also offer <strong className="text-white font-medium">white label GMB SEO</strong> support delivered under your own brand.
+                  For businesses with physical presence or regional client bases, we optimize Google Business profiles and local search assets to build verified visibility, ensuring your operations outrank competitors in city-level search packs and map discovery.
                 </p>
               </div>
             </motion.div>
@@ -515,10 +512,10 @@ const CanadaMarketPage = () => {
                 </h3>
                 <div className="font-sans font-light text-[#9f978a] leading-relaxed text-base md:text-lg space-y-6">
                   <p>
-                    Canada is vast. We implement hyper-localized Semantic SEO and E-E-A-T strategies to ensure your business dominates Google in your specific target provinces.
+                    Canada spans six time zones and distinct regional economic hubs. We implement location-specific technical SEO and topical authority architecture to ensure your business dominates Google search results across your target provinces.
                   </p>
                   <p>
-                    Underneath this sits the same <strong className="text-white font-medium">GMB local SEO</strong> discipline that powers our broader local search work — <strong className="text-white font-medium">GMB SEO service</strong> delivery adjusted per province rather than a single national strategy stretched thin across a country five time zones wide.
+                    From bilingual English and French indexation for Quebec and Ottawa markets to regional schema structured for Ontario, British Columbia, and Alberta audiences, we align technical site performance with search intent signals that drive genuine qualified inquiries.
                   </p>
                 </div>
               </div>
@@ -584,10 +581,10 @@ const CanadaMarketPage = () => {
                 </h3>
                 <div className="font-sans font-light text-[#9f978a] leading-relaxed text-base md:text-lg max-w-5xl space-y-6">
                   <p>
-                    Beyond startups, our Canadian engagements span the same sector range we support internationally: <strong className="text-white font-medium">custom logistics software development</strong> for cross-provincial supply chain operators, <strong className="text-white font-medium">custom retail software development</strong> for Canadian e-commerce and multi-location retail brands, <strong className="text-white font-medium">custom manufacturing software development</strong> for the country's industrial base, and <strong className="text-white font-medium">custom medical software development</strong> for clinics and health-tech companies building around PIPEDA rather than a foreign compliance framework.
+                    Beyond startup MVP builds, our Canadian engineering practice delivers tailored solutions for key national industries: supply chain logistics platforms for cross-provincial freight, scalable e-commerce infrastructure with multi-currency checkout, industrial workflow systems, and secure health-tech applications compliant with PIPEDA guidelines.
                   </p>
                   <p>
-                    Whichever sector, the model stays the same — a <strong className="text-white font-medium">custom software developer</strong> team that treats compliance and geography as inputs to the architecture, not constraints bolted on after launch. We also support <strong className="text-white font-medium">co-development software</strong> arrangements for Canadian companies with existing in-house teams, embedding specialized expertise rather than replacing what already works.
+                    We offer flexible delivery engagements, including co-development partnerships where our specialized senior engineers embed directly into existing Canadian product teams to accelerate release cycles, modernize technical debt, and ensure robust architectural governance.
                   </p>
                 </div>
               </div>

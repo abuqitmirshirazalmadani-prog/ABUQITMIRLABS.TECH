@@ -322,13 +322,13 @@ const AustraliaMarketPage = () => {
                 </h3>
                 <div className="font-sans font-light text-[#c5c6c7] leading-relaxed text-base md:text-lg space-y-6">
                   <p>
-                    High-speed, conversion-optimized websites built for Australian network speeds and user expectations.
+                    High-speed, conversion-optimized websites and web portals engineered for Australian network infrastructure and user expectations.
                   </p>
                   <p>
-                    Every build follows genuine <strong className="text-white font-medium">web development best practices</strong> — not just visual polish, but architecture tested against Australia's actual connectivity patterns across metro and regional areas alike. Our <strong className="text-white font-medium">custom web development</strong> work extends into full <strong className="text-white font-medium">custom web development applications</strong> where a business needs more than a content site — customer portals, booking platforms, and internal tools built on the right <strong className="text-white font-medium">web development framework</strong> for the job, not a default template.
+                    Every build follows modern engineering standards — architecture load-tested against Australian connectivity conditions across major metro areas and regional centers alike. From interactive customer booking engines to full enterprise portals, our platforms are designed for sub-second page loads, accessible UI, and seamless transaction flows.
                   </p>
                   <p>
-                    As <strong className="text-white font-medium">web development companies</strong> go, the ones that consistently deliver for the Australian market are the ones testing against real AU network conditions rather than a fibre-connection demo environment. Our <strong className="text-white font-medium">web development services</strong> and <strong className="text-white font-medium">custom web development services</strong> both start from the same discipline: fast, accessible, and built to convert on the connections Australian users actually have.
+                    We integrate native GST calculations, ABN verification logic, and direct checkout connections to local payment providers including Westpac, CommBank, eWAY, and Stripe AUD.
                   </p>
                 </div>
               </div>
@@ -394,16 +394,13 @@ const AustraliaMarketPage = () => {
                 </h3>
                 <div className="font-sans font-light text-[#c5c6c7] leading-relaxed text-base md:text-lg space-y-6">
                   <p>
-                    Native iOS and Android apps designed for the thumb-friendly AU lifestyle, from health-tech to fintech.
+                    Native iOS and Android mobile applications designed for high user engagement, offline resilience, and seamless payment integration.
                   </p>
                   <p>
-                    We work as a <strong className="text-white font-medium">mobile app development company</strong> covering both <strong className="text-white font-medium">cross-platform mobile app development</strong> — primarily Flutter, letting a single codebase reach both platforms without doubling engineering cost — and fully native builds where platform-specific performance matters more than shared code. For Australian businesses tracking <strong className="text-white font-medium">mobile app development cost</strong> closely, cross-platform architecture is usually the more efficient starting point, with native reserved for apps that genuinely need it.
+                    We build cross-platform solutions in Flutter and React Native that deliver native performance on both iOS and Android from a single unified codebase — reducing time-to-market and lowering long-term maintenance overhead for Australian founders and enterprises.
                   </p>
                   <p>
-                    As a <strong className="text-white font-medium">custom mobile app development company</strong>, our <strong className="text-white font-medium">custom mobile app development services</strong> span everything from lean MVPs to full <strong className="text-white font-medium">enterprise mobile app development</strong> for larger AU organizations needing ongoing iteration rather than a single ship-and-done build.
-                  </p>
-                  <p>
-                    Sector depth matters here too — our <strong className="text-white font-medium">healthcare mobile app development</strong> work for Australian health-tech clients is built around the same privacy discipline as the APP-compliant architecture already covering this page, and our fintech builds carry equivalent rigor. Businesses comparing us against other <strong className="text-white font-medium">mobile app development firms</strong> or <strong className="text-white font-medium">top mobile app development companies</strong> in the region usually find the real difference isn't a longer feature list, but whether the team understands AU-specific compliance and user behavior natively. Founders and product leads looking to <strong className="text-white font-medium">hire mobile app developers</strong> for a defined Sydney or Melbourne-based product, or an ongoing partnership, get the same process either way: platform strategy first, architecture second, build third.
+                    From health-tech patient portals requiring strict APP privacy protocols to field-service apps operating in remote Australian connectivity zones, our mobile team delivers end-to-end architecture, App Store approval management, and automated release pipelines.
                   </p>
                 </div>
               </div>

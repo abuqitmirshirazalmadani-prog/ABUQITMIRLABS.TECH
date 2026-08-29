@@ -422,16 +422,13 @@ const PolandMarketPage = () => {
                 </h3>
                 <div className="font-sans font-light text-[#9f978a] leading-relaxed text-base md:text-lg space-y-6">
                   <p>
-                    Whether you are targeting local B2B clients in Krakow or launching globally, our Entity-Based SEO and technical content writing establish your brand's international authority.
+                    Whether targeting domestic enterprise clients in Warsaw and Krakow or scaling across the wider European single market, our technical SEO and content architecture establish your international digital presence.
                   </p>
                   <p>
-                    <strong className="text-white font-medium">The Art of SEO: Mastering Search Engine Optimization</strong> in the Polish and broader EU context means something specific — a Krakow-based B2B company competing for domestic attention needs a different strategy than one launching <strong className="text-white font-medium">search engine optimization SEO services</strong> across the wider European Union. Our approach as an <strong className="text-white font-medium">organic SEO company</strong> treats these as related but distinct problems: local semantic relevance for Polish search behavior, layered with <strong className="text-white font-medium">search engine optimization SEO services in the European Union</strong> more broadly for companies expanding cross-border.
+                    We structure multi-language indexation (Polish and English), internationalized URL hierarchies, and strict E-E-A-T topical authority signals to ensure your platforms rank for competitive commercial queries across both Polish search engines and broader EU search indexes.
                   </p>
                   <p>
-                    Among <strong className="text-white font-medium">SEO companies</strong> and <strong className="text-white font-medium">SEO agencies</strong> operating in this region, <strong className="text-white font-medium">effective SEO techniques for 2026</strong> increasingly hinge on search intent and E-E-A-T signals rather than keyword density — a shift that matters especially for Polish tech companies whose content is often written by excellent engineers with limited SEO background. On-page technique still carries some weight here too: sensible <strong className="text-white font-medium">bolding of keywords</strong> for readability and crawler clarity, used sparingly rather than as a density trick.
-                  </p>
-                  <p>
-                    For Polish businesses with a physical presence — offices, showrooms, service locations — <strong className="text-white font-medium">local SEO GMB</strong> work rounds out the picture. A proper <strong className="text-white font-medium">GMB audit for local SEO</strong> identifies where a Krakow or Warsaw business is losing visibility in Google Maps results, and ongoing <strong className="text-white font-medium">GMB SEO services</strong> — reviews, posts, citation consistency — tend to matter more for local B2B lead generation than most Polish companies currently invest in. For businesses asking <strong className="text-white font-medium">what is GMB in SEO</strong>: it's often the fastest win available for a company that has technical SEO handled but has never touched its Google Business Profile.
+                    For regional headquarters and commercial offices across Poland, we manage Google Business profile authority and local entity citations, driving verified B2B leads and localized map visibility in key metropolitan commercial centers.
                   </p>
                 </div>
               </div>
@@ -497,50 +494,38 @@ const PolandMarketPage = () => {
                 </h3>
                 <div className="font-sans font-light text-[#9f978a] leading-relaxed text-base md:text-lg max-w-5xl space-y-6">
                   <p>
-                    Beyond AI-powered SaaS, our broader <strong className="text-white font-medium">custom software development</strong> practice for Polish and EU clients spans the same sector range we support internationally, each built around <strong className="text-white font-medium">custom software development best practices</strong> and GDPR-first architecture:
+                    Our European engineering practice delivers purpose-built digital architectures across Poland's primary economic sectors, fully adhering to EU GDPR data protection mandates:
                   </p>
                   
                   <ul className="space-y-4 my-8 pl-4 border-l border-white/10">
                     <li className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#ff5b36] mt-2.5 shrink-0" />
                       <p>
-                        <strong className="text-white font-medium">Custom healthcare software development services</strong> — delivered as a genuine <strong className="text-white font-medium">healthcare software development company</strong>, not a generalist shop layering health features onto standard CRUD architecture.
+                        <span className="text-white font-medium">Healthcare and MedTech platforms</span> engineered with strict European health data handling protocols and clinical privacy workflows.
                       </p>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#ff5b36] mt-2.5 shrink-0" />
                       <p>
-                        <strong className="text-white font-medium">Custom financial software development</strong> and <strong className="text-white font-medium">custom fintech software development</strong> for Poland's active fintech sector, built around both GDPR and EU financial services compliance.
+                        <span className="text-white font-medium">Fintech and Banking systems</span> built with PSD2-compliant API integrations, robust fraud prevention, and transparent audit logging.
                       </p>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#ff5b36] mt-2.5 shrink-0" />
                       <p>
-                        <strong className="text-white font-medium">Custom logistics software development</strong> for companies managing supply chains across EU borders.
+                        <span className="text-white font-medium">Cross-border logistics &amp; supply chain software</span> for freight handlers operating between Central Europe and Western EU transport corridors.
                       </p>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#ff5b36] mt-2.5 shrink-0" />
                       <p>
-                        <strong className="text-white font-medium">Custom manufacturing software development</strong> and <strong className="text-white font-medium">custom retail software development</strong> for Poland's strong industrial and e-commerce base.
-                      </p>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#ff5b36] mt-2.5 shrink-0" />
-                      <p>
-                        <strong className="text-white font-medium">Custom enterprise software development</strong> for larger Polish organizations managing data across multiple EU jurisdictions.
-                      </p>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#ff5b36] mt-2.5 shrink-0" />
-                      <p>
-                        <strong className="text-white font-medium">Software development for startups</strong> — leaner scope and EU-transparent pricing for early-stage Polish companies, distinct from our enterprise engagement model.
+                        <span className="text-white font-medium">Industrial automation and e-commerce platforms</span> supporting multi-currency pricing, EU VAT automation, and high-volume warehouse management.
                       </p>
                     </li>
                   </ul>
 
                   <p>
-                    Whichever sector, engagements run through the same model: a <strong className="text-white font-medium">custom software development agency</strong> relationship for defined projects, or an ongoing <strong className="text-white font-medium">custom software development firm</strong> partnership for companies that need continuous iteration. We also support <strong className="text-white font-medium">co-development software</strong> arrangements, embedding into an existing Polish in-house team rather than replacing it — a common preference among the country's strong backend engineering talent pool, where the gap is usually on the frontend, marketing, and SEO side rather than core software development itself.
+                    We also support flexible co-development arrangements, pairing our senior full-stack and DevOps engineers with existing Polish tech departments to accelerate product velocity, implement automated CI/CD pipelines, and reduce technical debt without disrupting day-to-day operations.
                   </p>
                 </div>
               </div>
