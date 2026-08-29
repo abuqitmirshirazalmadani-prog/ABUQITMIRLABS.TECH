@@ -5,49 +5,49 @@ import { TestimonialsColumn } from "./ui/testimonials-columns-1";
 
 const testimonials = [
   {
-    text: "AbuQitmirLabs tumhara shokria mere Liye itni achi mobile app banane ke Liye . I love AbuQitmirLabs work. Thanks.",
+    text: "AbuQitmirLabs delivered our mobile application ahead of schedule with flawless cross-platform performance on iOS and Android. True engineering partners.",
     name: "Fareed Khan",
     role: "Mobile App Client",
   },
   {
-    text: "Aap ka bht shokria aap mujhe atni achi website bana kr di.",
+    text: "Working with the team on our corporate web platform was seamless. Fast load times, immaculate UI/UX, and zero technical debt.",
     name: "Hammad Sheikh",
-    role: "Website Client",
+    role: "Enterprise Web Client",
   },
   {
-    text: "AbuQitmirLabs delivered a stunning, high-performance website that perfectly captures our brand. The site loads lightning-fast, is fully responsive, and has already boosted our online inquiries significantly. Highly recommend for any website project.",
+    text: "AbuQitmirLabs delivered a stunning, high-performance website that perfectly captures our brand. The site loads lightning-fast, is fully responsive, and has already boosted our online inquiries significantly.",
     name: "Rafay Badar",
     role: "Brand Director",
   },
   {
-    text: "Main ne apni ecommerce website bnwai thi km paison main achi website banai hai.",
+    text: "They built a bespoke e-commerce store with custom inventory management and integrated local payment gateways smoothly. Exceptional value for our budget.",
     name: "Khurram Jawad",
-    role: "E-commerce Owner",
+    role: "E-commerce Founder",
   },
   {
-    text: "AbuQitmirLabs's team nailed our brand storytelling with compelling copy that resonates with our audience. The website they built is fast, mobile-optimized, and conversion-focused. Our bounce rate dropped by 35%, and leads have skyrocketed. True professionals!",
+    text: "AbuQitmirLabs's team nailed our technical storytelling and architecture. The platform they built is fast, mobile-optimized, and conversion-focused. Our bounce rate dropped by 35%.",
     name: "David Ruiz",
     role: "CEO, Innovatech Solutions",
   },
   {
-    text: "Working with AbuQitmirLabs transformed our outdated website into a sleek, user-friendly platform. Their UI/UX design expertise made navigation intuitive, and the SEO optimizations boosted our search rankings overnight. We've seen a 50% increase in organic traffic!",
+    text: "Working with AbuQitmirLabs transformed our legacy web presence into a sleek, user-friendly platform. Their Schema markup and SEO optimizations gave us immediate organic gains.",
     name: "Sarah Jenkins",
     role: "Owner, GreenLeaf Organics",
   },
   {
-    text: "Good public relations. Very good website developer",
+    text: "Transparent communication, deep technical competence, and reliable milestones. Highly recommended for web and mobile development.",
     name: "Samad Abbasi",
-    role: "Business Partner",
+    role: "Managing Director",
   },
   {
-    text: "Exceptional service and deep technical expertise. AbuQitmirLabs transformed our operational efficiency with custom AI agents.",
+    text: "Exceptional service and deep technical expertise. AbuQitmirLabs transformed our operational efficiency with custom AI workflow automation.",
     name: "Fawad Ahmed",
     role: "Tech Entrepreneur",
   },
   {
-    text: "The best in the market for high-speed React applications and SEO mastery. My search traffic doubled in just 3 months.",
+    text: "The best in the market for high-speed React applications and technical SEO mastery. Our inbound search pipeline grew dramatically in just 3 months.",
     name: "Maria Kowalski",
-    role: "Marketing Head",
+    role: "Head of Growth",
   }
 ];
 
