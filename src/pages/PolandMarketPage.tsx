@@ -475,7 +475,7 @@ const PolandMarketPage = () => {
               </div>
             </motion.div>
 
-            {/* Cinematic Section 3: Sector Depth Note (Software Development) */}
+            {/* Cinematic Section 3: Bespoke Sector Solutions */}
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
