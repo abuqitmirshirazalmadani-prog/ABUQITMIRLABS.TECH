@@ -577,20 +577,14 @@ Do not sign a website contract without these protective legal terms.
         <div className="flex whitespace-nowrap w-max animate-marquee">
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex gap-16 items-center px-8">
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-40">high-performance jamstack</span>
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase" style={{ WebkitTextStroke: '1px rgba(59, 130, 246, 0.4)' }}>custom next.js development</span>
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-40">headless cms integration</span>
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase" style={{ WebkitTextStroke: '1px rgba(59, 130, 246, 0.4)' }}>pwa development</span>
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-40">seo-friendly structure</span>
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase" style={{ WebkitTextStroke: '1px rgba(59, 130, 246, 0.4)' }}>scalable full-stack</span>
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-40">modern responsive agency</span>
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase" style={{ WebkitTextStroke: '1px rgba(59, 130, 246, 0.4)' }}>progressive web apps</span>
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-40">react web development</span>
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase" style={{ WebkitTextStroke: '1px rgba(59, 130, 246, 0.4)' }}>custom wordpress themes</span>
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-40">web accessibility compliance</span>
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase" style={{ WebkitTextStroke: '1px rgba(59, 130, 246, 0.4)' }}>responsive web design help</span>
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-40">speed optimized websites</span>
-              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase" style={{ WebkitTextStroke: '1px rgba(59, 130, 246, 0.4)' }}>corporate website design</span>
+              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-40">Next.js &amp; React Engineering</span>
+              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase" style={{ WebkitTextStroke: '1px rgba(59, 130, 246, 0.4)' }}>Headless CMS Architecture</span>
+              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-40">Edge-Cached Jamstack</span>
+              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase" style={{ WebkitTextStroke: '1px rgba(59, 130, 246, 0.4)' }}>Progressive Web Apps</span>
+              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-40">Core Web Vitals Precision</span>
+              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase" style={{ WebkitTextStroke: '1px rgba(59, 130, 246, 0.4)' }}>Scalable Full-Stack Cloud</span>
+              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase opacity-40">WCAG 2.1 AA Accessibility</span>
+              <span className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent uppercase" style={{ WebkitTextStroke: '1px rgba(59, 130, 246, 0.4)' }}>Sub-Second LCP Performance</span>
             </div>
           ))}
         </div>

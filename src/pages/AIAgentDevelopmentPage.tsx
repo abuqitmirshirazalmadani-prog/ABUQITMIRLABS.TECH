@@ -735,7 +735,7 @@ export default function AIAgentDevelopmentPage() {
               </p>
 
               <p className="text-slate-400 font-light text-base leading-relaxed font-sans mb-6">
-                When combined with comprehensive <Link to="/solutions/healthcare" className="text-[#ccff00] hover:underline font-medium">healthcare software solutions</Link> or custom <Link to="/custom-software" className="text-[#ccff00] hover:underline font-medium">custom software development</Link>, AI agents streamline high-friction medical processes including patient intake triage, appointment scheduling, clinical documentation preparation, and internal guideline retrieval.
+                When combined with comprehensive <Link to="/solutions/healthcare" className="text-[#ccff00] hover:underline font-medium">healthcare software solutions</Link> or dedicated <Link to="/custom-software" className="text-[#ccff00] hover:underline font-medium">custom software development</Link>, AI agents streamline high-friction medical processes including patient intake triage, appointment scheduling, clinical documentation preparation, and internal guideline retrieval.
               </p>
             </div>
 

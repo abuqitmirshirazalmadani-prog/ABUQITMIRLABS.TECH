@@ -319,10 +319,10 @@ const SEOPage = () => {
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-black text-center mb-10 leading-[0.95] max-w-6xl uppercase"
+          className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white text-center mb-10 leading-[0.95] max-w-6xl uppercase"
         >
           SEO Mastery: <br />
-          <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>Data-Driven Search</span> <br />
+          <span className="text-transparent" style={{ WebkitTextStroke: '2px white' }}>Data-Driven Search</span> <br />
           <span className="text-[#ccff00]">| Engine Optimization</span>
         </motion.h1>
 
@@ -330,9 +330,9 @@ const SEOPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-lg md:text-xl text-zinc-800 text-center max-w-4xl mb-12 leading-relaxed font-bold font-sans"
+          className="text-lg md:text-xl text-[#d3c8b8] text-center max-w-4xl mb-12 leading-relaxed font-sans font-light"
         >
-          Ranking isn't about stuffing keywords — it's about technical health plus content that answers search intent. Starting from our <Link to="/" className="text-black underline font-extrabold hover:text-[#ff0099]">home page</Link>, we build scalable search architectures. Explore our specialized <Link to="/local-seo-for-small-business" className="text-black underline font-extrabold hover:text-[#ff0099]">Local SEO for Small Businesses</Link>, <Link to="/local-seo-citation-building" className="text-black underline font-extrabold hover:text-[#ff0099]">Citation Building</Link>, <Link to="/white-label-local-seo" className="text-black underline font-extrabold hover:text-[#ff0099]">White Label Local SEO</Link>, and <Link to="/local-seo-audit" className="text-black underline font-extrabold hover:text-[#ff0099]">Local SEO Audits</Link>. Pair SEO with <Link to="/custom-software" className="text-black underline font-extrabold hover:text-[#ff0099]">Custom Software</Link>, <Link to="/web-development" className="text-black underline font-extrabold hover:text-[#ff0099]">Web Development</Link>, <Link to="/mobile-app-development" className="text-black underline font-extrabold hover:text-[#ff0099]">Mobile Apps</Link>, <Link to="/ai-agent-development" className="text-black underline font-extrabold hover:text-[#ff0099]">AI Agents</Link>, or <Link to="/content-writing" className="text-black underline font-extrabold hover:text-[#ff0099]">Content Writing</Link>. Review our <Link to="/case-studies" className="text-black underline font-extrabold hover:text-[#ff0099]">Case Studies</Link> &amp; <Link to="/blog" className="text-black underline font-extrabold hover:text-[#ff0099]">Blog</Link>, learn more <Link to="/about" className="text-black underline font-extrabold hover:text-[#ff0099]">about us</Link>, or <Link to="/contact" className="text-black underline font-extrabold hover:text-[#ff0099]">get in touch</Link>.
+          Ranking isn't about stuffing keywords — it's about technical health plus content that answers search intent. Starting from our <Link to="/" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">home page</Link>, we build scalable search architectures. Explore our specialized <Link to="/local-seo-for-small-business" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Local SEO for Small Businesses</Link>, <Link to="/local-seo-citation-building" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Citation Building</Link>, <Link to="/white-label-local-seo" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">White Label Local SEO</Link>, and <Link to="/local-seo-audit" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Local SEO Audits</Link>. Pair SEO with <Link to="/custom-software" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Custom Software</Link>, <Link to="/web-development" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Web Development</Link>, <Link to="/mobile-app-development" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Mobile Apps</Link>, <Link to="/ai-agent-development" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">AI Agents</Link>, or <Link to="/content-writing" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Content Writing</Link>. Review our <Link to="/case-studies" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Case Studies</Link> &amp; <Link to="/blog" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Blog</Link>, learn more <Link to="/about" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">about us</Link>, or <Link to="/contact" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">get in touch</Link>.
         </motion.p>
 
         {/* Core Capabilities Specifications */}
@@ -340,7 +340,7 @@ const SEOPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15 }}
-          className="mx-auto mb-12 max-w-4xl border-y border-black/10 py-8 px-6 bg-white/50 backdrop-blur-sm rounded-lg"
+          className="mx-auto mb-12 max-w-4xl border-y border-white/10 py-8 px-6 bg-white/[0.02] backdrop-blur-sm rounded-lg"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
             {[
@@ -351,8 +351,8 @@ const SEOPage = () => {
               "Content Strategy Aligned with Search Intent"
             ].map((bullet, idx) => (
               <div key={idx} className="flex items-start gap-3 group">
-                <span className="w-1.5 h-1.5 rounded-full bg-black mt-2 shrink-0 group-hover:bg-[#ff0099] transition-colors duration-300" />
-                <span className="text-sm font-sans font-bold text-zinc-800 tracking-tight leading-relaxed group-hover:text-black transition-colors duration-300">{bullet}</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00] mt-2 shrink-0 group-hover:bg-white transition-colors duration-300" />
+                <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
               </div>
             ))}
           </div>
