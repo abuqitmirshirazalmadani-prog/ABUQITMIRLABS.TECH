@@ -303,13 +303,18 @@ const SEOPage = () => {
       <Breadcrumbs />
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex flex-col justify-center items-center pt-24 md:pt-32 pb-20 px-6 z-10">
+      <section className="relative min-h-[90vh] flex flex-col justify-center items-center pt-24 md:pt-32 pb-20 px-6 z-10 bg-black overflow-hidden">
+        {/* Subtle Ambient Glow */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-[#ccff00]/5 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-purple-950/20 rounded-full blur-[120px] pointer-events-none" />
+
         <motion.div 
-          initial={{ opacity: 0, rotate: -2 }}
-          animate={{ opacity: 1, rotate: -2 }}
-          className="inline-block bg-white border-4 border-black px-6 py-2 rounded-full font-black mb-8 brutalist-shadow lowercase text-xl"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="inline-flex items-center gap-2 bg-zinc-900/90 border border-white/10 px-6 py-2 rounded-full font-mono text-xs uppercase tracking-widest text-[#ccff00] mb-8 backdrop-blur-md"
         >
-          We build digital empires
+          <span className="w-2 h-2 rounded-full bg-[#ccff00] animate-pulse" />
+          We Build Organic Search Dominance
         </motion.div>
 
         <div className="mb-4">
@@ -322,8 +327,8 @@ const SEOPage = () => {
           className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white text-center mb-10 leading-[0.95] max-w-6xl uppercase"
         >
           SEO Mastery: <br />
-          <span className="text-transparent" style={{ WebkitTextStroke: '2px white' }}>Data-Driven Search</span> <br />
-          <span className="text-[#ccff00]">| Engine Optimization</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-zinc-400">Data-Driven Search</span> <br />
+          <span className="text-[#ccff00]">Engine Optimization</span>
         </motion.h1>
 
         <motion.p 
@@ -340,7 +345,7 @@ const SEOPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15 }}
-          className="mx-auto mb-12 max-w-4xl border-y border-white/10 py-8 px-6 bg-white/[0.02] backdrop-blur-sm rounded-lg"
+          className="mx-auto mb-12 max-w-4xl border border-white/10 py-8 px-6 bg-zinc-900/60 backdrop-blur-md rounded-2xl w-full"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
             {[
@@ -352,7 +357,7 @@ const SEOPage = () => {
             ].map((bullet, idx) => (
               <div key={idx} className="flex items-start gap-3 group">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00] mt-2 shrink-0 group-hover:bg-white transition-colors duration-300" />
-                <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
+                <span className="text-sm font-sans font-light text-zinc-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
               </div>
             ))}
           </div>
@@ -362,15 +367,15 @@ const SEOPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="flex flex-col sm:flex-row gap-6"
+          className="flex flex-col sm:flex-row gap-6 w-full max-w-xl justify-center"
         >
           <a 
             href="https://wa.me/923233260859"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-12 py-8 bg-black text-[#ccff00] text-xl font-black border-4 border-black rounded-3xl brutalist-shadow hover:scale-105 transition-transform flex flex-col items-center justify-center gap-2 uppercase"
+            className="px-10 py-6 bg-[#ccff00] text-black text-lg font-black rounded-2xl hover:scale-105 transition-all flex flex-col items-center justify-center gap-2 uppercase tracking-wider shadow-[0_0_30px_rgba(204,255,0,0.15)]"
           >
-            <Zap size={24} />
+            <Zap size={22} className="text-black" />
             Request a Free SEO Audit
           </a>
           <button 
@@ -378,65 +383,65 @@ const SEOPage = () => {
               const el = document.getElementById('seo-pricing');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="px-12 py-8 bg-white text-black text-xl font-black border-4 border-black rounded-3xl brutalist-shadow hover:scale-105 transition-transform flex flex-col items-center justify-center gap-2 uppercase"
-            style={{ color: '#000000' }}
+            className="px-10 py-6 bg-zinc-900/90 border border-white/15 text-white hover:border-[#ccff00] text-lg font-black rounded-2xl hover:scale-105 transition-all flex flex-col items-center justify-center gap-2 uppercase tracking-wider backdrop-blur-sm"
           >
-            <Star size={24} className="text-black" style={{ color: '#000000' }} />
-            <span className="text-black font-black" style={{ color: '#000000' }}>See SEO Pricing &amp; Packages</span>
+            <Star size={22} className="text-[#ccff00]" />
+            <span>See SEO Pricing &amp; Packages</span>
           </button>
         </motion.div>
       </section>
 
       {/* Section 2: The Problem / Opportunity */}
-      <section className="py-32 border-b-[8px] border-black bg-white relative z-10 px-6">
+      <section className="py-32 border-t border-white/10 bg-[#090909] relative z-10 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
             <div>
-              <div className="inline-block bg-[#ff0099] text-white font-black px-6 py-2 border-4 border-black rounded-lg mb-8 transform -rotate-3 brutalist-shadow uppercase text-xl">
+              <div className="inline-block bg-[#ff0099]/10 border border-[#ff0099]/30 text-[#ff0099] font-mono font-bold px-5 py-2 rounded-full mb-6 uppercase text-xs tracking-widest">
                 The Dilemma
               </div>
-              <h2 className="text-4xl md:text-6xl font-black text-black tracking-tighter leading-[0.9] uppercase mb-4">
+              <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-[0.95] uppercase mb-4">
                 Is your website invisible to your ideal customers?
               </h2>
             </div>
             
-            <div className="bg-[#ccff00]/10 border-4 border-black p-10 rounded-[40px] brutalist-shadow">
-              <h3 className="text-2xl font-black text-black uppercase mb-4">The Art of SEO: Mastering Search Engine Optimization</h3>
-              <p className="text-lg md:text-xl font-bold leading-relaxed text-black font-sans mb-4">
+            <div className="bg-zinc-900/80 border border-white/10 p-10 rounded-3xl backdrop-blur-sm relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-[#ccff00]/5 blur-3xl pointer-events-none" />
+              <h3 className="text-xl md:text-2xl font-black text-white uppercase mb-4">The Art of SEO: Mastering Search Engine Optimization</h3>
+              <p className="text-base md:text-lg font-medium leading-relaxed text-zinc-300 font-sans mb-4">
                 Ranking on the first page of Google isn't luck, and it isn't a single trick — it's the compounding result of technical precision, genuine content authority, and consistent execution over time.
               </p>
-              <p className="text-base leading-relaxed text-zinc-800 font-bold font-sans">
-                At AbuQitmirLabs, our approach to <strong>search engine optimization (SEO)</strong> treats ranking as an engineering discipline as much as a marketing one, because in 2026, that's exactly what it has become.
+              <p className="text-sm md:text-base leading-relaxed text-zinc-400 font-sans">
+                At AbuQitmirLabs, our approach to <strong className="text-white">search engine optimization (SEO)</strong> treats ranking as an engineering discipline as much as a marketing one, because in 2026, that's exactly what it has become.
               </p>
             </div>
           </div>
 
-          <div className="border-t-4 border-black pt-16">
-            <h3 className="text-2xl md:text-3xl font-black text-black uppercase mb-10 tracking-tight">
+          <div className="border-t border-white/10 pt-16">
+            <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-6 tracking-tight">
               The AbuQitmirLabs Difference:
             </h3>
-            <p className="text-lg text-zinc-700 font-medium mb-10 max-w-4xl">
-              Our <strong className="text-black font-extrabold">technical SEO services</strong> start with a comprehensive audit that uncovers every opportunity for improvement. We analyze:
+            <p className="text-base md:text-lg text-zinc-400 font-sans mb-10 max-w-4xl leading-relaxed">
+              Our <strong className="text-white font-semibold">technical SEO services</strong> start with a comprehensive audit that uncovers every opportunity for improvement. We analyze:
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 { title: "On-page factors", desc: "Content quality, keyword targeting, and meta-optimization strategies" },
                 { title: "Technical infrastructure", desc: "Site speed optimization, mobile responsiveness, and crawlability diagnostics" },
                 { title: "Backlink profile", desc: "Authority evaluation, topical relevance, and premium brand growth opportunities" },
                 { title: "User experience", desc: "Engagement metrics, bounce rates, and high-converting pathway optimization" }
               ].map((factor, i) => (
-                <div key={i} className="bg-[#f4f4f5] border-4 border-black p-8 rounded-2xl brutalist-shadow">
-                  <span className="text-xs font-mono text-[#ff0099] font-bold block mb-2">// 0{i+1}</span>
-                  <h4 className="text-lg font-black text-black uppercase tracking-tight mb-2">{factor.title}</h4>
-                  <p className="text-sm font-bold leading-relaxed text-zinc-700">{factor.desc}</p>
+                <div key={i} className="bg-zinc-900/60 border border-white/10 p-8 rounded-2xl hover:border-[#ccff00]/40 transition-colors group">
+                  <span className="text-xs font-mono text-[#ccff00] font-bold block mb-3">// 0{i+1}</span>
+                  <h4 className="text-lg font-black text-white uppercase tracking-tight mb-2 group-hover:text-[#ccff00] transition-colors">{factor.title}</h4>
+                  <p className="text-sm font-sans leading-relaxed text-zinc-400">{factor.desc}</p>
                 </div>
               ))}
             </div>
 
-            <div className="mt-12 bg-black text-[#ccff00] p-8 border-4 border-black rounded-3xl brutalist-shadow text-center max-w-3xl mx-auto">
-              <p className="text-lg font-bold">
-                Our <strong className="text-white font-extrabold">SEO audit services</strong> provide a clear roadmap for improvement, prioritizing actions that deliver the highest ROI.
+            <div className="mt-12 bg-zinc-900 border border-[#ccff00]/30 text-white p-8 rounded-2xl text-center max-w-3xl mx-auto shadow-[0_0_30px_rgba(204,255,0,0.05)]">
+              <p className="text-base md:text-lg font-medium text-zinc-300 font-sans">
+                Our <strong className="text-[#ccff00] font-bold">SEO audit services</strong> provide a clear roadmap for improvement, prioritizing actions that deliver the highest ROI.
               </p>
             </div>
           </div>
@@ -444,16 +449,16 @@ const SEOPage = () => {
       </section>
 
       {/* What Our SEO Services Cover */}
-      <section className="py-32 border-b-[8px] border-black bg-[#f4f4f5] relative z-10 px-6" id="seo-services-cover">
+      <section className="py-32 border-t border-white/10 bg-[#0c0c0e] relative z-10 px-6" id="seo-services-cover">
         <div className="max-w-7xl mx-auto">
           <div className="mb-20 text-center max-w-4xl mx-auto">
-            <span className="text-xs font-mono text-[#ff0099] mb-4 uppercase tracking-[0.4em] font-bold block">[ SERVICE_SCOPE ]</span>
-            <h2 className="text-4xl md:text-6xl font-black text-black tracking-tighter leading-none mb-6 uppercase">
+            <span className="text-xs font-mono text-[#ccff00] mb-4 uppercase tracking-[0.4em] font-bold block">[ SERVICE_SCOPE ]</span>
+            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-6 uppercase">
               What Our SEO <br />
-              <span className="text-[#ccff00] bg-black px-4 inline-block transform rotate-1 border-4 border-black">Services Cover</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] to-emerald-400">Services Cover</span>
             </h2>
-            <p className="text-lg md:text-xl text-zinc-800 font-bold leading-relaxed font-sans">
-              As a full-service <strong>SEO agency</strong>, we work across every layer that determines whether a website actually ranks — not just the parts that are easy to sell:
+            <p className="text-base md:text-lg text-zinc-300 font-sans leading-relaxed">
+              As a full-service <strong className="text-white">SEO agency</strong>, we work across every layer that determines whether a website actually ranks — not just the parts that are easy to sell:
             </p>
           </div>
 
@@ -461,33 +466,33 @@ const SEOPage = () => {
             {[
               {
                 title: "Technical SEO",
-                icon: <SearchCode className="w-8 h-8 text-black" />,
+                icon: <SearchCode className="w-7 h-7 text-[#ccff00]" />,
                 desc: "Site architecture, crawlability, page speed, structured data, and the underlying infrastructure that determines whether Google can even properly index and understand your site in the first place."
               },
               {
                 title: "On-Page & Content SEO",
-                icon: <Target className="w-8 h-8 text-[#ff0099]" />,
+                icon: <Target className="w-7 h-7 text-[#ff0099]" />,
                 desc: "Keyword research grounded in real search intent, content structured for both readability and search relevance, and internal linking strategies that distribute authority across a site rather than concentrating it on a single page."
               },
               {
                 title: "Local SEO & Google Business Profile Optimization",
-                icon: <MapPin className="w-8 h-8 text-black" />,
+                icon: <MapPin className="w-7 h-7 text-[#ccff00]" />,
                 desc: "For businesses that depend on regional foot traffic and local discovery, we manage complete Google Business Profile optimization — from forensic listing audits and category calibration to structured review acquisition and local citation consistency. A well-optimized profile often drives more direct customer inquiries than any other local channel, which is why we treat it as a foundational organic discipline."
               },
               {
                 title: "Off-Page SEO & Authority Building",
-                icon: <BarChart3 className="w-8 h-8 text-[#ff0099]" />,
+                icon: <BarChart3 className="w-7 h-7 text-[#ff0099]" />,
                 desc: "Earning legitimate backlinks and citations that build real domain authority — not shortcuts that put a site at risk of penalties down the line."
               }
             ].map((srv, idx) => (
-              <div key={idx} className="bg-white border-4 border-black p-10 rounded-3xl brutalist-shadow hover:bg-[#ccff00]/10 transition-colors duration-300">
+              <div key={idx} className="bg-zinc-900/70 border border-white/10 p-8 md:p-10 rounded-3xl hover:border-white/20 transition-all duration-300">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 bg-[#ccff00] border-4 border-black rounded-xl flex items-center justify-center text-black shrink-0">
+                  <div className="w-14 h-14 bg-zinc-800 border border-white/10 rounded-2xl flex items-center justify-center shrink-0">
                     {srv.icon}
                   </div>
-                  <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight">{srv.title}</h3>
+                  <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight">{srv.title}</h3>
                 </div>
-                <p className="text-sm md:text-base leading-relaxed text-zinc-700 font-bold font-sans">{srv.desc}</p>
+                <p className="text-sm md:text-base leading-relaxed text-zinc-400 font-sans">{srv.desc}</p>
               </div>
             ))}
           </div>
@@ -495,19 +500,19 @@ const SEOPage = () => {
       </section>
 
       {/* Effective SEO Techniques for 2026 */}
-      <section className="py-32 border-b-[8px] border-black bg-white relative z-10 px-6" id="seo-techniques-2026">
+      <section className="py-32 border-t border-white/10 bg-[#090909] relative z-10 px-6" id="seo-techniques-2026">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
             <div className="lg:col-span-5">
-              <div className="inline-block bg-[#ccff00] text-black font-black px-6 py-2 border-4 border-black rounded-lg mb-8 transform -rotate-2 brutalist-shadow uppercase text-xl">
+              <div className="inline-block bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] font-mono font-bold px-4 py-2 rounded-full mb-8 uppercase text-xs tracking-widest">
                 The 2026 Playbook
               </div>
-              <h2 className="text-4xl md:text-6xl font-black text-black tracking-tighter leading-[0.95] uppercase mb-6">
+              <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-[0.95] uppercase mb-6">
                 Effective SEO <br />
                 Techniques <br />
                 <span className="text-[#ff0099]">for 2026</span>
               </h2>
-              <p className="text-lg text-zinc-800 font-bold leading-relaxed font-sans">
+              <p className="text-base md:text-lg text-zinc-300 font-sans leading-relaxed">
                 Search engine optimization strategies that worked five years ago don't necessarily hold up today. The algorithm is evolving rapidly, and our techniques have evolved alongside it to protect and grow your traffic.
               </p>
             </div>
@@ -531,11 +536,11 @@ const SEOPage = () => {
                   desc: "This includes sensible use of bolding for key terms and clear heading structure — but as a readability aid for both users and crawlers, not as a way to inflate keyword density."
                 }
               ].map((tech, i) => (
-                <div key={i} className="bg-[#f4f4f5] border-4 border-black p-8 rounded-2xl brutalist-shadow flex gap-6">
-                  <div className="text-xl font-mono text-[#ff0099] font-black shrink-0">// 0{i+1}</div>
+                <div key={i} className="bg-zinc-900/60 border border-white/10 p-8 rounded-2xl flex gap-6 hover:border-white/20 transition-all">
+                  <div className="text-lg font-mono text-[#ff0099] font-bold shrink-0">// 0{i+1}</div>
                   <div>
-                    <h3 className="text-lg md:text-xl font-black uppercase mb-2 text-black leading-tight">{tech.title}</h3>
-                    <p className="text-sm md:text-base text-zinc-700 font-bold leading-relaxed font-sans">{tech.desc}</p>
+                    <h3 className="text-lg md:text-xl font-black uppercase mb-2 text-white leading-tight">{tech.title}</h3>
+                    <p className="text-sm md:text-base text-zinc-400 font-sans leading-relaxed">{tech.desc}</p>
                   </div>
                 </div>
               ))}
@@ -545,36 +550,36 @@ const SEOPage = () => {
       </section>
 
       {/* Local SEO for Every Kind of Business */}
-      <section className="py-32 border-b-[8px] border-black bg-[#f4f4f5] relative z-10 px-6" id="local-seo-businesses">
+      <section className="py-32 border-t border-white/10 bg-[#0c0c0e] relative z-10 px-6" id="local-seo-businesses">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="bg-[#ccff00]/10 border-4 border-black p-10 md:p-14 rounded-[40px] brutalist-shadow relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-pink-500/10 blur-3xl pointer-events-none" />
-              <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest block mb-4 font-black">// LOCALIZATION PROTOCOLS</span>
-              <h3 className="text-2xl md:text-4xl font-black text-black uppercase mb-6 leading-tight">
+            <div className="bg-zinc-900/80 border border-[#ccff00]/20 p-10 md:p-14 rounded-3xl relative overflow-hidden backdrop-blur-sm">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#ccff00]/10 blur-3xl pointer-events-none" />
+              <span className="text-xs font-mono text-[#ccff00] uppercase tracking-widest block mb-4 font-bold">// LOCALIZATION PROTOCOLS</span>
+              <h3 className="text-2xl md:text-4xl font-black text-white uppercase mb-6 leading-tight">
                 Local SEO for <br />Every Kind of Business
               </h3>
-              <p className="text-base md:text-lg leading-relaxed text-zinc-800 font-bold font-sans mb-6">
+              <p className="text-base md:text-lg leading-relaxed text-zinc-300 font-sans mb-6">
                 Local search strategies vary significantly depending on customer intent. A dental clinic or emergency contractor requires immediate map visibility built around local proximity and urgent booking needs, while a B2B consultancy requires multi-regional entity authority and specialized service citations.
               </p>
-              <p className="text-sm md:text-base leading-relaxed text-zinc-700 font-bold font-sans">
+              <p className="text-sm md:text-base leading-relaxed text-zinc-400 font-sans">
                 We develop customized local search roadmaps tailored to your commercial market dynamics, customer search intent, and geographic coverage area.
               </p>
             </div>
 
-            <div className="bg-white border-4 border-black p-10 md:p-14 rounded-[40px] brutalist-shadow space-y-8">
-              <div className="inline-block bg-[#ff0099] text-white font-mono text-xs uppercase tracking-widest px-4 py-2 border-2 border-black rounded-lg">
+            <div className="bg-zinc-900/80 border border-white/10 p-10 md:p-14 rounded-3xl space-y-8 backdrop-blur-sm">
+              <div className="inline-block bg-[#ff0099]/10 border border-[#ff0099]/30 text-[#ff0099] font-mono text-xs uppercase tracking-widest px-4 py-2 rounded-full font-bold">
                 Agency &amp; Enterprise Support
               </div>
-              <h3 className="text-xl md:text-3xl font-black text-black uppercase leading-tight">
+              <h3 className="text-xl md:text-3xl font-black text-white uppercase leading-tight">
                 White-Label Local SEO <br />for Agencies &amp; Partners
               </h3>
-              <p className="text-sm md:text-base leading-relaxed text-zinc-700 font-bold font-sans">
+              <p className="text-sm md:text-base leading-relaxed text-zinc-300 font-sans">
                 For digital agencies and enterprise marketing departments managing multi-location accounts, we deliver white-label local SEO fulfilment — providing brandable technical audits, citation management, and performance reporting under your agency banner.
               </p>
-              <div className="flex gap-4 items-center border-t-2 border-black pt-6">
-                <ShieldCheck className="w-8 h-8 text-[#ff0099] shrink-0" />
-                <span className="text-xs font-mono font-black text-black uppercase">Strict confidentiality &amp; elite service delivery guaranteed.</span>
+              <div className="flex gap-4 items-center border-t border-white/10 pt-6">
+                <ShieldCheck className="w-8 h-8 text-[#ccff00] shrink-0" />
+                <span className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-wider">Strict confidentiality &amp; elite service delivery guaranteed.</span>
               </div>
             </div>
           </div>
@@ -582,75 +587,75 @@ const SEOPage = () => {
       </section>
 
       {/* SEO & Local SEO — Industry-Focused Solutions for Every Sector */}
-      <section className="py-32 border-b-[8px] border-black bg-[#f4f4f5] relative z-10 px-6" id="seo-industry-solutions">
+      <section className="py-32 border-t border-white/10 bg-[#090909] relative z-10 px-6" id="seo-industry-solutions">
         <div className="max-w-7xl mx-auto">
           <div className="mb-20 text-center max-w-4xl mx-auto">
             <span className="text-xs font-mono text-[#ff0099] mb-4 uppercase tracking-[0.4em] font-bold block">[ ORGANIC_DOMINANCE_BY_SECTOR ]</span>
-            <h2 className="text-4xl md:text-6xl font-black text-black tracking-tighter leading-none mb-6 uppercase">
+            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-6 uppercase">
               SEO &amp; Local SEO — <br />
-              <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>Industry-Focused Solutions</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-zinc-400">Industry-Focused Solutions</span>
             </h2>
-            <p className="text-lg md:text-xl text-zinc-800 font-bold leading-relaxed font-sans">
+            <p className="text-base md:text-lg text-zinc-300 font-sans leading-relaxed">
               At AbuQitmirLabs, we build SEO strategies that deliver sustainable organic growth—not quick fixes that vanish with the next algorithm update. Our approach begins with understanding your industry's unique competitive landscape, customer behavior, and local market dynamics before we optimize a single page. Whether you need national visibility, local dominance, or Google Business Profile mastery, we build strategies that fit your business, not the other way around.
             </p>
           </div>
 
           {/* Grid of 8 Sectors */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 id: "ind-solution-nonprofit-seo",
                 title: "SEO for Non-Profits",
-                icon: <Heart className="w-8 h-8 text-[#ff0099]" />,
+                icon: <Heart className="w-7 h-7 text-[#ff0099]" />,
                 tagline: "Donor & Volunteer Discovery",
                 description: "Charitable foundations and advocacy groups require search visibility that turns passive cause-awareness into verified donations and volunteer sign-ups. We structure grant-friendly content hierarchies, optimize donor landing funnels, and target high-intent non-profit keywords to maximize community reach on sustainable budgets."
               },
               {
                 id: "ind-solution-law-seo",
                 title: "SEO for Law Firms",
-                icon: <Scale className="w-8 h-8 text-black" />,
+                icon: <Scale className="w-7 h-7 text-[#ccff00]" />,
                 tagline: "High-Value Case Acquisition",
                 description: "Litigation practices and boutique firms face fierce competition in organic search. We focus on granular practice-area content hubs—such as commercial dispute, personal injury, and corporate compliance pages—engineered with authoritative E-E-A-T credentials that turn informational searches into qualified consultations."
               },
               {
                 id: "ind-solution-realestate-seo",
                 title: "Local SEO for Real Estate",
-                icon: <Home className="w-8 h-8 text-[#ff0099]" />,
+                icon: <Home className="w-7 h-7 text-[#ff0099]" />,
                 tagline: "Hyper-Local Property Search",
                 description: "Property transactions hinge on micro-location search intent. We optimize agency listings around specific school districts, transit corridors, and neighborhood developments, pairing structured real estate schema with verified map positioning to capture motivated buyers and sellers in active regional markets."
               },
               {
                 id: "ind-solution-nonprofit-local",
                 title: "Local Outreach for Non-Profits",
-                icon: <MapPin className="w-8 h-8 text-black" />,
+                icon: <MapPin className="w-7 h-7 text-[#ccff00]" />,
                 tagline: "Civic & Regional Engagement",
                 description: "Regional charities and community centers thrive on local civic engagement. We optimize local directory citations, manage regional event schema, and calibrate map visibility so nearby residents, local municipal partners, and community volunteers find your regional headquarters without friction."
               },
               {
                 id: "ind-solution-law-local",
                 title: "Local Search for Legal Practices",
-                icon: <Shield className="w-8 h-8 text-[#ff0099]" />,
+                icon: <Shield className="w-7 h-7 text-[#ff0099]" />,
                 tagline: "Regional Map Pack Authority",
                 description: "When individuals face urgent legal matters, proximity and immediate credibility dictate their choice of counsel. We engineer localized citation networks and optimize geographical service boundaries to ensure your partners rank in competitive local map packs when clients search for nearby legal representation."
               },
               {
                 id: "ind-solution-healthcare-gmb",
                 title: "Healthcare & Clinic Optimization",
-                icon: <HeartPulse className="w-8 h-8 text-black" />,
+                icon: <HeartPulse className="w-7 h-7 text-[#ccff00]" />,
                 tagline: "Patient Trust & Discovery",
                 description: "Medical practices and specialized clinics must project clinical competence before a patient schedules their first consultation. We implement secure medical schema, optimize provider credential profiles, and establish verified local entity signals that build patient confidence and streamline appointment requests."
               },
               {
                 id: "ind-solution-dentists-gmb",
                 title: "SEO for Dental Practices",
-                icon: <Activity className="w-8 h-8 text-[#ff0099]" />,
+                icon: <Activity className="w-7 h-7 text-[#ff0099]" />,
                 tagline: "Appointment-Driven Search",
                 description: "Dental clinics need consistent visibility for high-intent emergency and cosmetic search terms like 'emergency dentist near me' or 'Invisalign provider'. We optimize localized procedure pages, curate authentic patient review signals, and ensure real-time office hours and booking links remain accurate across search engines."
               },
               {
                 id: "ind-solution-contractors-gmb",
                 title: "Contractor & Trade Search",
-                icon: <Wrench className="w-8 h-8 text-black" />,
+                icon: <Wrench className="w-7 h-7 text-[#ccff00]" />,
                 tagline: "Emergency & Service Calls",
                 description: "Roofers, electricians, and HVAC contractors win jobs through rapid emergency discovery and verified local credibility. We configure precise service-radius parameters, optimize high-demand trade service pages, and build photo-rich project verification signals that keep your dispatch lines busy year-round."
               }
@@ -658,17 +663,17 @@ const SEOPage = () => {
               <div
                 key={idx}
                 id={sector.id}
-                className="bg-white border-4 border-black p-8 rounded-2xl brutalist-shadow hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between"
+                className="bg-zinc-900/60 border border-white/10 p-8 rounded-2xl hover:border-[#ccff00]/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
-                  <div className="mb-6 w-14 h-14 bg-[#ccff00]/20 border-4 border-black rounded-xl flex items-center justify-center">
+                  <div className="mb-6 w-14 h-14 bg-zinc-800 border border-white/10 rounded-2xl flex items-center justify-center">
                     {sector.icon}
                   </div>
-                  <h3 className="text-lg font-black uppercase tracking-tight text-black mb-1">{sector.title}</h3>
-                  <span className="text-[10px] font-mono text-[#ff0099] uppercase tracking-wider block mb-4 font-bold">
+                  <h3 className="text-lg font-black uppercase tracking-tight text-white mb-1">{sector.title}</h3>
+                  <span className="text-[10px] font-mono text-[#ccff00] uppercase tracking-wider block mb-4 font-bold">
                     {sector.tagline}
                   </span>
-                  <p className="text-xs leading-relaxed text-zinc-700 font-bold font-sans">{sector.description}</p>
+                  <p className="text-xs leading-relaxed text-zinc-400 font-sans">{sector.description}</p>
                 </div>
               </div>
             ))}
@@ -677,22 +682,22 @@ const SEOPage = () => {
       </section>
 
       {/* Section 3: Our SEO Framework */}
-      <section className="py-32 bg-[#ccff00] relative z-10 px-6 border-b-[8px] border-black shadow-[inset_0_20px_40px_rgba(0,0,0,0.1)]">
+      <section className="py-32 bg-[#0c0c0e] relative z-10 px-6 border-t border-white/10">
         <div className="max-w-7xl mx-auto">
-          <div className="inline-block bg-black text-[#ccff00] font-black px-6 py-2 border-4 border-black rounded-lg mb-8 transform rotate-2 brutalist-shadow uppercase text-xl">
+          <div className="inline-block bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] font-mono font-bold px-4 py-2 rounded-full mb-8 uppercase text-xs tracking-widest">
             Our SEO Framework
           </div>
-          <h2 className="text-5xl md:text-7xl font-black text-black tracking-tighter mb-8 uppercase leading-[0.95]">
+          <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-8 uppercase leading-[0.95]">
             We follow a proven methodology <br />
-            <span className="text-white">combining technical rigor with strategy.</span>
+            <span className="text-[#ccff00]">combining technical rigor with strategy.</span>
           </h2>
 
-          <div className="grid grid-cols-1 gap-8 mt-16 text-black">
+          <div className="grid grid-cols-1 gap-8 mt-16">
             {[
               {
                 step: "01",
-                icon: <Search className="w-10 h-10" />,
-                title: "🔍 Discovery & Audit",
+                icon: <Search className="w-8 h-8 text-[#ccff00]" />,
+                title: "Discovery & Audit",
                 quote: "Understand before you act.",
                 desc: "We begin with a comprehensive analysis of your website, competitors, and market landscape. This phase includes:",
                 items: [
@@ -706,8 +711,8 @@ const SEOPage = () => {
               },
               {
                 step: "02",
-                icon: <Target className="w-10 h-10" />,
-                title: "🎯 Keyword Strategy & Content Optimization",
+                icon: <Target className="w-8 h-8 text-[#ff0099]" />,
+                title: "Keyword Strategy & Content Optimization",
                 quote: "The right words for the right audience.",
                 desc: "We develop a comprehensive keyword strategy that aligns with your business goals and audience intent:",
                 items: [
@@ -721,8 +726,8 @@ const SEOPage = () => {
               },
               {
                 step: "03",
-                icon: <Code2 className="w-10 h-10" />,
-                title: "⚙️ Technical SEO Implementation",
+                icon: <Code2 className="w-8 h-8 text-[#ccff00]" />,
+                title: "Technical SEO Implementation",
                 quote: "The foundation of visibility.",
                 desc: "We optimize the technical architecture of your website to ensure search engines can crawl, index, and rank your content effectively:",
                 items: [
@@ -736,8 +741,8 @@ const SEOPage = () => {
               },
               {
                 step: "04",
-                icon: <Workflow className="w-10 h-10" />,
-                title: "🧠 Off-Page SEO & Authority Building",
+                icon: <Workflow className="w-8 h-8 text-[#ff0099]" />,
+                title: "Off-Page SEO & Authority Building",
                 quote: "Building trust through quality connections.",
                 desc: "We build your authority through strategic link acquisition and brand visibility:",
                 items: [
@@ -751,8 +756,8 @@ const SEOPage = () => {
               },
               {
                 step: "05",
-                icon: <BarChart3 className="w-10 h-10" />,
-                title: "📊 Performance Monitoring & Optimization",
+                icon: <BarChart3 className="w-8 h-8 text-[#ccff00]" />,
+                title: "Performance Monitoring & Optimization",
                 quote: "Measure, refine, repeat.",
                 desc: "We continuously monitor performance and refine our approach to maximize results:",
                 items: [
@@ -765,28 +770,28 @@ const SEOPage = () => {
                 deliverable: "Monthly performance reports with actionable insights."
               }
             ].map((p, idx) => (
-              <div key={idx} className="bg-white border-4 border-black p-10 rounded-3xl brutalist-shadow">
-                <div className="flex flex-wrap items-center justify-between gap-4 border-b-2 border-black pb-4 mb-6">
+              <div key={idx} className="bg-zinc-900/70 border border-white/10 p-8 md:p-10 rounded-3xl hover:border-white/20 transition-all">
+                <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4 mb-6">
                   <div className="flex items-center gap-4">
-                    <span className="font-mono text-[10px] tracking-widest bg-black text-white px-3 py-1.5 rounded uppercase font-bold">PHASE {p.step}</span>
-                    <h3 className="text-xl md:text-2xl font-black">{p.title}</h3>
+                    <span className="font-mono text-[10px] tracking-widest bg-[#ccff00] text-black px-3 py-1.5 rounded uppercase font-bold">PHASE {p.step}</span>
+                    <h3 className="text-xl md:text-2xl font-black text-white">{p.title}</h3>
                   </div>
-                  <em className="text-zinc-500 font-serif font-black">"{p.quote}"</em>
+                  <em className="text-zinc-400 font-serif">"{p.quote}"</em>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                   <div className="lg:col-span-5">
-                    <p className="text-base font-bold text-zinc-800 font-sans mb-4 leading-relaxed">{p.desc}</p>
-                    <div className="p-4 bg-zinc-100 border-2 border-black rounded-xl">
-                      <span className="text-[10px] font-mono font-black uppercase tracking-wider text-[#ff0099] block mb-1">Deliverable Output //</span>
-                      <p className="text-xs font-mono font-extrabold text-black uppercase">{p.deliverable}</p>
+                    <p className="text-base font-sans text-zinc-300 mb-4 leading-relaxed">{p.desc}</p>
+                    <div className="p-4 bg-zinc-950/80 border border-white/10 rounded-xl">
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#ccff00] block mb-1">Deliverable Output //</span>
+                      <p className="text-xs font-mono font-semibold text-zinc-200 uppercase">{p.deliverable}</p>
                     </div>
                   </div>
                   <div className="lg:col-span-7">
-                    <ul className="space-y-2">
+                    <ul className="space-y-3">
                       {p.items.map((item, i) => (
-                        <li key={i} className="flex gap-3 text-xs md:text-sm font-bold text-black font-sans leading-relaxed">
-                          <CheckCircle2 className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                        <li key={i} className="flex gap-3 text-xs md:text-sm text-zinc-300 font-sans leading-relaxed">
+                          <CheckCircle2 className="w-4 h-4 text-[#ccff00] shrink-0 mt-0.5" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -800,34 +805,34 @@ const SEOPage = () => {
       </section>
 
       {/* Section 4: Technology & Tools */}
-      <section className="py-32 bg-white relative z-10 px-6 border-b-[8px] border-black">
+      <section className="py-32 bg-[#090909] relative z-10 px-6 border-t border-white/10">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16">
-            <span className="text-xs font-mono text-zinc-500 block mb-2 font-black">// SECTION 4: SEO TOOLING</span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight text-black uppercase mb-4">
+            <span className="text-xs font-mono text-[#ccff00] block mb-2 font-bold uppercase tracking-widest">// SECTION 4: SEO TOOLING</span>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tight text-white uppercase mb-4">
               Technology &amp; Tools We Command
             </h2>
-            <p className="text-base md:text-lg text-zinc-700 max-w-2xl font-bold font-sans lead-relaxed">
+            <p className="text-base md:text-lg text-zinc-400 max-w-2xl font-sans leading-relaxed">
               We leverage the most sophisticated tools in the industry to optimize, analyze, and measure your SEO performance.
             </p>
           </div>
 
-          <div className="border-4 border-black rounded-3xl overflow-hidden brutalist-shadow">
+          <div className="border border-white/10 rounded-2xl overflow-hidden bg-zinc-900/50 backdrop-blur-sm">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-black text-white font-mono text-xs uppercase tracking-widest border-b-4 border-black">
+                  <tr className="bg-zinc-950 text-zinc-300 font-mono text-xs uppercase tracking-widest border-b border-white/10">
                     <th className="p-6">Category</th>
                     <th className="p-6">Tools</th>
                     <th className="p-6">Purpose</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y-2 divide-black text-xs md:text-sm font-bold text-zinc-800">
+                <tbody className="divide-y divide-white/5 text-xs md:text-sm text-zinc-300">
                   {techStack.map((row, idx) => (
-                    <tr key={idx} className="hover:bg-[#ccff00]/10 transition-colors bg-white">
-                      <td className="p-6 bg-zinc-100/50 font-mono text-xs uppercase tracking-wider text-black font-black border-r-2 border-black">{row.category}</td>
-                      <td className="p-6 border-r-2 border-black font-sans font-black text-black">{row.tools}</td>
-                      <td className="p-6 font-sans font-medium text-zinc-600">{row.purpose}</td>
+                    <tr key={idx} className="hover:bg-white/[0.02] transition-colors">
+                      <td className="p-6 bg-zinc-950/40 font-mono text-xs uppercase tracking-wider text-[#ccff00] font-bold border-r border-white/5">{row.category}</td>
+                      <td className="p-6 border-r border-white/5 font-sans font-semibold text-white">{row.tools}</td>
+                      <td className="p-6 font-sans text-zinc-400">{row.purpose}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -836,21 +841,21 @@ const SEOPage = () => {
           </div>
 
           {/* Authoritative External Links */}
-          <div className="mt-8 pt-6 border-t-4 border-black flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-zinc-800">
-            <span className="text-black uppercase tracking-widest font-black">Authoritative SEO Resources:</span>
-            <a href="https://developers.google.com/search" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-bold text-black hover:text-[#ff0099] transition-colors">
+          <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-zinc-400">
+            <span className="text-zinc-300 uppercase tracking-widest font-bold">Authoritative SEO Resources:</span>
+            <a href="https://developers.google.com/search" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-semibold text-zinc-300 hover:text-[#ccff00] transition-colors">
               Google Search Central <ExternalLink className="w-3 h-3" />
             </a>
-            <span className="text-black font-black">•</span>
-            <a href="https://ahrefs.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-bold text-black hover:text-[#ff0099] transition-colors">
+            <span className="text-zinc-600 font-black">•</span>
+            <a href="https://ahrefs.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-semibold text-zinc-300 hover:text-[#ccff00] transition-colors">
               Ahrefs Index <ExternalLink className="w-3 h-3" />
             </a>
-            <span className="text-black font-black">•</span>
-            <a href="https://moz.com/blog" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-bold text-black hover:text-[#ff0099] transition-colors">
+            <span className="text-zinc-600 font-black">•</span>
+            <a href="https://moz.com/blog" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-semibold text-zinc-300 hover:text-[#ccff00] transition-colors">
               Moz SEO Blog <ExternalLink className="w-3 h-3" />
             </a>
-            <span className="text-black font-black">•</span>
-            <a href="https://www.searchenginejournal.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-bold text-black hover:text-[#ff0099] transition-colors">
+            <span className="text-zinc-600 font-black">•</span>
+            <a href="https://www.searchenginejournal.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-semibold text-zinc-300 hover:text-[#ccff00] transition-colors">
               Search Engine Journal <ExternalLink className="w-3 h-3" />
             </a>
           </div>
@@ -858,23 +863,23 @@ const SEOPage = () => {
       </section>
 
       {/* Section 5: SEO Across Global Markets */}
-      <section className="py-32 bg-white relative z-10 px-6 border-b-[8px] border-black" id="seo-global-markets">
+      <section className="py-32 bg-[#0c0c0e] relative z-10 px-6 border-t border-white/10" id="seo-global-markets">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
             <div className="lg:col-span-6">
-              <span className="text-xs font-mono text-[#ff0099] mb-4 uppercase tracking-[0.4em] font-bold block">[ GLOBAL_ORGANIC_FOOTPRINT ]</span>
-              <h2 className="text-4xl md:text-6xl font-black text-black tracking-tighter leading-none mb-6 uppercase">
+              <span className="text-xs font-mono text-[#ccff00] mb-4 uppercase tracking-[0.4em] font-bold block">[ GLOBAL_ORGANIC_FOOTPRINT ]</span>
+              <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-6 uppercase">
                 SEO Across <br />
-                <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>Global Markets</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-400">Global Markets</span>
               </h2>
               <div className="mb-8">
-                <h3 className="text-xl font-black text-black uppercase tracking-tight mb-3">Where We Work</h3>
-                <p className="text-sm md:text-base text-zinc-800 font-bold leading-relaxed font-sans">
-                  AbuQitmirLabs is based in <strong>Karachi, Pakistan</strong>, and our local search optimization practice is grounded in hands-on experience navigating regional and international ranking factors. Alongside our domestic work, we support <strong>SEO engagements for international clients</strong>, including businesses across the United States, the United Kingdom, Canada, Australia, and Europe, adapting our approach to the specific search behavior and competitive landscape of each target market:
+                <h3 className="text-xl font-black text-white uppercase tracking-tight mb-3">Where We Work</h3>
+                <p className="text-sm md:text-base text-zinc-300 font-sans leading-relaxed">
+                  AbuQitmirLabs is based in <strong className="text-white">Karachi, Pakistan</strong>, and our local search optimization practice is grounded in hands-on experience navigating regional and international ranking factors. Alongside our domestic work, we support <strong className="text-white">SEO engagements for international clients</strong>, including businesses across the United States, the United Kingdom, Canada, Australia, and Europe, adapting our approach to the specific search behavior and competitive landscape of each target market:
                 </p>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {[
                   {
                     market: "United States",
@@ -897,30 +902,31 @@ const SEOPage = () => {
                     text: "SEO services in Poland that bridge the gap between global standards and local market needs, helping Polish businesses expand their digital footprint."
                   }
                 ].map((item, idx) => (
-                  <div key={idx} className="border-l-4 border-black pl-6 py-2 bg-[#f4f4f5]/30 rounded-r-xl border-y border-r border-black/5 pr-4">
-                    <h3 className="text-sm font-black text-black uppercase tracking-wider mb-2">{item.market}</h3>
-                    <p className="text-xs text-zinc-700 leading-relaxed font-bold font-sans">{item.text}</p>
+                  <div key={idx} className="border-l-2 border-[#ccff00] pl-6 py-3 bg-zinc-900/50 rounded-r-xl border-y border-r border-white/5 pr-4">
+                    <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-1">{item.market}</h3>
+                    <p className="text-xs text-zinc-400 leading-relaxed font-sans">{item.text}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="lg:col-span-6 bg-[#ccff00] border-4 border-black p-8 md:p-12 rounded-[30px] brutalist-shadow relative overflow-hidden">
-              <span className="text-xs font-mono text-black mb-4 uppercase tracking-[0.3em] font-bold block">// WHY_CHOOSE_US</span>
-              <h3 className="text-2xl md:text-4xl font-black text-black uppercase tracking-tight mb-6">
+            <div className="lg:col-span-6 bg-gradient-to-br from-zinc-900 to-zinc-950 border border-white/10 p-8 md:p-12 rounded-3xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-[#ccff00]/5 blur-3xl pointer-events-none" />
+              <span className="text-xs font-mono text-[#ccff00] mb-4 uppercase tracking-[0.3em] font-bold block">// WHY_CHOOSE_US</span>
+              <h3 className="text-2xl md:text-4xl font-black text-white uppercase tracking-tight mb-6">
                 Why Choose Us <br />Over Other SEO Companies?
               </h3>
-              <p className="text-sm md:text-base text-zinc-900 leading-relaxed font-bold mb-8 font-sans">
-                Among <strong>SEO companies</strong>, the ones that deliver lasting results tend to share one trait: they treat SEO as an ongoing discipline, not a one-time setup. Rankings built on genuine technical foundations and real content authority hold up through algorithm updates. Rankings built on shortcuts don't. As an <strong>organic SEO company</strong>, our work is built entirely on the former — sustainable visibility that doesn't disappear with the next Google update.
+              <p className="text-sm md:text-base text-zinc-300 leading-relaxed font-sans mb-8">
+                Among <strong className="text-white">SEO companies</strong>, the ones that deliver lasting results tend to share one trait: they treat SEO as an ongoing discipline, not a one-time setup. Rankings built on genuine technical foundations and real content authority hold up through algorithm updates. Rankings built on shortcuts don't. As an <strong className="text-white">organic SEO company</strong>, our work is built entirely on the former — sustainable visibility that doesn't disappear with the next Google update.
               </p>
               
-              <div className="flex gap-4 items-center bg-white border-4 border-black p-6 rounded-2xl brutalist-shadow">
-                <div className="w-12 h-12 rounded-full bg-black flex items-center justify-center shrink-0">
+              <div className="flex gap-4 items-center bg-zinc-950/80 border border-white/10 p-6 rounded-2xl">
+                <div className="w-12 h-12 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 flex items-center justify-center shrink-0">
                   <TrendingUp className="w-6 h-6 text-[#ccff00]" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-black text-black uppercase font-sans">Let's build your visibility advantage.</h4>
-                  <p className="text-xs text-zinc-700 font-bold font-sans">Sovereign organic authority engineered from Karachi to the globe.</p>
+                  <h4 className="text-sm font-bold text-white uppercase font-sans">Let's build your visibility advantage.</h4>
+                  <p className="text-xs text-zinc-400 font-sans">Sovereign organic authority engineered from Karachi to the globe.</p>
                 </div>
               </div>
             </div>
@@ -934,7 +940,7 @@ const SEOPage = () => {
       </div>
 
       {/* Which Package Is Right For You - requested content in Section 6 */}
-      <section className="py-24 bg-black text-white relative z-10 px-6 border-b-[8px] border-black">
+      <section className="py-24 bg-black text-white relative z-10 px-6 border-t border-white/10">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-xs font-mono text-[#ccff00] uppercase tracking-[0.3em] font-black block mb-4">// SELECT YOUR BLUEPRINT</span>
@@ -983,11 +989,11 @@ const SEOPage = () => {
                 customStyle: "border-l-4 border-zinc-500 pl-6"
               }
             ].map((choice, i) => (
-              <div key={i} className={`bg-zinc-900 border border-white/5 p-8 rounded-2xl ${choice.customStyle}`}>
+              <div key={i} className={`bg-zinc-900/80 border border-white/10 p-8 rounded-2xl ${choice.customStyle}`}>
                 <h4 className="text-lg font-black text-white mb-4 uppercase tracking-tight">{choice.title}</h4>
                 <ul className="space-y-2">
                   {choice.items.map((it, idx) => (
-                    <li key={idx} className="flex gap-2.5 text-xs md:text-sm text-neutral-350 font-sans font-medium">
+                    <li key={idx} className="flex gap-2.5 text-xs md:text-sm text-zinc-300 font-sans font-medium">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00] shrink-0 mt-2" />
                       <span>{it}</span>
                     </li>
@@ -1003,24 +1009,24 @@ const SEOPage = () => {
       <CountryMarquee />
 
       {/* Section 7: Frequently Asked Questions */}
-      <section className="py-32 bg-[#f4f4f5] border-b-[8px] border-black relative z-10 px-6">
+      <section className="py-32 bg-[#090909] border-t border-white/10 relative z-10 px-6">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-16">
-            <span className="text-xs font-mono text-[#ff0099] mb-4 uppercase tracking-[0.5em] font-bold block">// SECTION 7: FAQ</span>
-            <h2 className="text-4xl md:text-6xl font-black text-black tracking-tighter uppercase leading-none">Frequently Asked Questions</h2>
+            <span className="text-xs font-mono text-[#ccff00] mb-4 uppercase tracking-[0.5em] font-bold block">// SECTION 7: FAQ</span>
+            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase leading-none">Frequently Asked Questions</h2>
           </div>
 
           <div className="space-y-6">
             {faqData.map((faq, idx) => (
-              <details key={idx} className="group bg-white border-4 border-black rounded-2xl brutalist-shadow open:bg-white transition-all duration-300">
-                <summary className="flex justify-between items-center p-6 md:p-8 cursor-pointer select-none group-open:bg-gray-100 rounded-t-xl transition-colors">
-                  <span className="text-base md:text-xl font-bold font-display uppercase tracking-tighter">{faq.q}</span>
-                  <div className="w-10 h-10 border-4 border-black rounded-full flex items-center justify-center transition-transform duration-300 group-open:rotate-45 bg-[#ccff00]">
-                    <Plus className="w-6 h-6" />
+              <details key={idx} className="group bg-zinc-900/70 border border-white/10 rounded-2xl open:bg-zinc-900/90 transition-all duration-300">
+                <summary className="flex justify-between items-center p-6 md:p-8 cursor-pointer select-none group-open:border-b group-open:border-white/10 rounded-t-xl transition-colors">
+                  <span className="text-base md:text-xl font-bold font-sans text-white uppercase tracking-tight">{faq.q}</span>
+                  <div className="w-10 h-10 border border-white/15 rounded-full flex items-center justify-center transition-transform duration-300 group-open:rotate-45 bg-[#ccff00]/10 text-[#ccff00]">
+                    <Plus className="w-5 h-5" />
                   </div>
                 </summary>
-                <div className="p-6 md:p-8 pt-0 border-t-4 border-black mt-4 font-sans font-bold">
-                  <p className="text-sm md:text-base leading-relaxed pt-6 text-zinc-700">
+                <div className="p-6 md:p-8 font-sans">
+                  <p className="text-sm md:text-base leading-relaxed text-zinc-300 font-normal">
                     {faq.a}
                   </p>
                 </div>
@@ -1031,30 +1037,32 @@ const SEOPage = () => {
       </section>
 
       {/* Section 8: Call to Action */}
-      <section className="bg-[#ccff00] py-40 relative z-10 px-6 text-center">
-        <div className="max-w-4xl mx-auto">
-          <span className="text-xs font-mono text-black block mb-4 font-black uppercase tracking-[0.3em]">// SECTION 8: LAUNCH PROJECT</span>
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-black tracking-tighter mb-8 lowercase leading-[0.85] uppercase">
-            Ready to <span className="text-transparent" style={{ WebkitTextStroke: '3px black' }}>Actually Rank?</span>
+      <section className="bg-gradient-to-b from-[#090909] to-black py-40 relative z-10 px-6 text-center border-t border-white/10 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#ccff00]/5 rounded-full blur-[160px] pointer-events-none" />
+
+        <div className="max-w-4xl mx-auto relative z-10">
+          <span className="text-xs font-mono text-[#ccff00] block mb-4 font-bold uppercase tracking-[0.3em]">// SECTION 8: LAUNCH PROJECT</span>
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-8 leading-[0.85] uppercase">
+            Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] to-emerald-400">Actually Rank?</span>
           </h2>
           
-          <p className="text-lg md:text-xl text-zinc-900 font-bold max-w-2xl mx-auto mb-16 leading-relaxed">
+          <p className="text-lg md:text-xl text-zinc-300 font-sans max-w-2xl mx-auto mb-16 leading-relaxed">
             If your site is indexed but invisible in search results, the underlying cause is almost always fixable — usually a combination of thin content, weak internal linking, or a Google Business Profile that isn't being actively managed. Our team can audit exactly where the gaps are before recommending a strategy.
           </p>
 
-          <div className="bg-white border-4 border-black p-8 md:p-10 rounded-3xl brutalist-shadow max-w-2xl mx-auto mb-16 text-left">
-            <h3 className="text-xl md:text-2xl font-black uppercase text-black mb-2">Request a Free SEO Audit</h3>
-            <p className="text-sm text-zinc-700 font-bold mb-6 font-sans">
+          <div className="bg-zinc-900/80 border border-white/10 p-8 md:p-10 rounded-3xl max-w-2xl mx-auto mb-16 text-left backdrop-blur-sm">
+            <h3 className="text-xl md:text-2xl font-black uppercase text-white mb-2">Request a Free SEO Audit</h3>
+            <p className="text-sm text-zinc-400 font-sans mb-6">
               Our team will analyze your website's current performance and provide a comprehensive assessment of opportunities for improvement—at no cost.
             </p>
-            <div className="flex border-t-2 border-black pt-4 justify-between items-center text-xs font-mono text-black font-extrabold tracking-widest uppercase">
+            <div className="flex border-t border-white/10 pt-4 justify-between items-center text-xs font-mono text-zinc-400 tracking-widest uppercase">
               <span>Avg. Discovery Phase: 2 Weeks</span>
               <span>·</span>
               <span>Current Lead Time: 4 Weeks</span>
             </div>
           </div>
 
-          <p className="text-base text-zinc-800 font-bold max-w-xl mx-auto mb-10 leading-relaxed">
+          <p className="text-base text-zinc-400 font-sans max-w-xl mx-auto mb-10 leading-relaxed">
             Let's discuss your SEO strategy. Our initial technical consultation and SEO audit are completely free.
           </p>
           
@@ -1063,12 +1071,12 @@ const SEOPage = () => {
               href="https://wa.me/923233260859"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-black text-[#ccff00] text-xl font-black px-12 py-6 border-4 border-black rounded-full brutalist-shadow hover:scale-105 transition-transform duration-300 uppercase shrink-0"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#ccff00] text-black text-xl font-black px-12 py-6 rounded-2xl hover:scale-105 transition-all uppercase shrink-0 shadow-[0_0_30px_rgba(204,255,0,0.2)]"
             >
               Request an SEO Strategy Plan
             </a>
             
-            <div className="text-black font-black text-xs uppercase tracking-widest max-w-[200px] text-left border-l-4 border-black pl-6 pt-2 pb-2">
+            <div className="text-zinc-400 font-mono text-xs uppercase tracking-widest max-w-[200px] text-left border-l border-white/20 pl-6 py-2">
                ESTABLISHED COGNITIVE SYSTEMS CO.
             </div>
           </div>
@@ -1076,12 +1084,12 @@ const SEOPage = () => {
       </section>
       
       {/* Related Services / Internal Siloing */}
-      <section className="py-24 bg-[#f4f4f5] border-t-8 border-black relative z-10 px-6">
+      <section className="py-24 bg-[#0c0c0e] border-t border-white/10 relative z-10 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
-            <h3 className="text-xs font-mono text-black/40 mb-2 uppercase tracking-[0.4em] font-bold">[ RELATED_SYSTEMS ]</h3>
-            <p className="text-sm font-bold text-zinc-700 font-sans">
-              Explore our related services: <Link to="/custom-software" className="text-black underline hover:text-[#ff0099]">Custom Software Development</Link> · <Link to="/web-development" className="text-black underline hover:text-[#ff0099]">Web Development</Link> · <Link to="/content-writing" className="text-black underline hover:text-[#ff0099]">Content Writing</Link>
+            <h3 className="text-xs font-mono text-[#ccff00] mb-2 uppercase tracking-[0.4em] font-bold">[ RELATED_SYSTEMS ]</h3>
+            <p className="text-sm text-zinc-400 font-sans">
+              Explore our related services: <Link to="/custom-software" className="text-white underline hover:text-[#ccff00]">Custom Software Development</Link> · <Link to="/web-development" className="text-white underline hover:text-[#ccff00]">Web Development</Link> · <Link to="/content-writing" className="text-white underline hover:text-[#ccff00]">Content Writing</Link>
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -1096,15 +1104,15 @@ const SEOPage = () => {
               <Link 
                 key={i} 
                 to={link.path} 
-                className="group flex items-center justify-between p-8 bg-white border-4 border-black rounded-2xl brutalist-shadow transition-all hover:-translate-y-1 hover:bg-[#ccff00]"
+                className="group flex items-center justify-between p-6 md:p-8 bg-zinc-900/60 border border-white/10 rounded-2xl transition-all hover:border-[#ccff00]/40 hover:bg-zinc-900"
               >
                 <div className="flex items-center gap-4">
-                  <div className="text-black bg-[#f4f4f5] border-2 border-black p-3 rounded-lg group-hover:bg-black group-hover:text-white transition-all">
+                  <div className="text-[#ccff00] bg-zinc-800/80 border border-white/10 p-3 rounded-xl group-hover:bg-[#ccff00] group-hover:text-black transition-all">
                     {link.icon}
                   </div>
-                  <span className="font-bold uppercase tracking-tight text-black">{link.title}</span>
+                  <span className="font-bold uppercase tracking-tight text-white">{link.title}</span>
                 </div>
-                <ArrowUpRight className="text-black/30 group-hover:text-black transition-colors" size={20} />
+                <ArrowUpRight className="text-zinc-500 group-hover:text-[#ccff00] transition-colors" size={20} />
               </Link>
             ))}
           </div>
