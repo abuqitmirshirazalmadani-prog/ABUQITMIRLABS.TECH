@@ -427,10 +427,10 @@ const CanadaMarketPage = () => {
                 <h3 className="text-3xl font-bold uppercase tracking-tight text-white mb-6">Provincial Semantic SEO</h3>
                 <div className="text-sm font-sans font-light text-[#9f978a] leading-relaxed space-y-4">
                   <p>
-                    Our semantic search strategies map out your brand's digital entity, capturing high-intent organic traffic across key metropolitan markets. We structure structured schema, local entity signals, and citation profiles to establish verifiable search authority across targeted Canadian provinces.
+                    Our semantic search strategies map out your brand's digital entity, capturing high-intent organic traffic across key metropolitan markets. We integrate JSON-LD schema, local entity signals, and citation profiles to establish verifiable search authority across targeted Canadian provinces.
                   </p>
                   <p>
-                    For businesses with physical presence or regional client bases, we optimize Google Business profiles and local search assets to build verified visibility, ensuring your operations outrank competitors in city-level search packs and map discovery.
+                    For businesses with physical locations or regional client bases, we optimize Google Business profiles and local search assets to build verified visibility, ensuring your operations stand out in city-level map packs and provincial discovery.
                   </p>
                 </div>
               </div>

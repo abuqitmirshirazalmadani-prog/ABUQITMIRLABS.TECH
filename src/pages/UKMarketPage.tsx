@@ -407,19 +407,19 @@ const UKMarketPage = () => {
               className="p-12 border border-white/5 bg-[#0d0d0d] rounded-2xl flex flex-col justify-between md:col-span-2"
             >
               <div>
-                <span className="text-xs font-mono text-[#ff5b36] mb-4 block">03 / SEARCH DOMINANCE</span>
-                <h3 className="text-3xl font-bold uppercase tracking-tight text-white mb-6">UK Semantic SEO &amp; GMB Domination</h3>
+                <span className="text-xs font-mono text-[#ff5b36] mb-4 block">03 / SEARCH VISIBILITY</span>
+                <h3 className="text-3xl font-bold uppercase tracking-tight text-white mb-6">UK Semantic Search &amp; Regional Authority</h3>
                 <div className="text-sm font-sans font-light text-[#9f978a] leading-relaxed space-y-4">
                   <p>
-                    Semantic search strategies ensure your brand captures high-intent traffic across England, Scotland, Wales, and Northern Ireland. We pair technical web engineering with clean semantic structure so that Core Web Vitals, site crawlability, and schema markup directly strengthen your search rankings.
+                    Organic visibility across the British market requires structured technical clarity rather than outdated keyword tactics. We align semantic entity architecture with Core Web Vitals performance so that Google indexes your service authority across England, Scotland, Wales, and Northern Ireland.
                   </p>
                   <p>
-                    Whether delivering a national organic campaign or a multi-region rollout, our search specialists build for sustainable visibility and measurable commercial inquiries.
+                    From high-street discovery on Google Maps to comprehensive knowledge graph positioning, our search campaigns build sustainable domain credibility that converts into qualified inbound inquiries.
                   </p>
                 </div>
               </div>
               <div className="flex items-center gap-2 text-xs font-mono text-[#ff5b36] mt-8">
-                <span>ENTITY SEO // MAP PACK RANKING // CITATION BUILDING</span>
+                <span>ENTITY GRAPH // MAP PACK VISIBILITY // CITATION ACCURACY</span>
               </div>
             </motion.div>
           </div>
