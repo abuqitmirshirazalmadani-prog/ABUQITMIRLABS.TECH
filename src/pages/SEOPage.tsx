@@ -226,7 +226,7 @@ const SEOPage = () => {
                       "@type": "Offer",
                       "itemOffered": {
                         "@type": "Service",
-                        "name": "GMB Optimization for Healthcare",
+                        "name": "Healthcare & Clinic Local Search Optimization",
                         "description": "Healthcare providers need to appear when patients search for medical services nearby. Our Google Business Profile optimization ensures your practice appears with accurate listings and robust patient trust signals."
                       }
                     },
@@ -234,15 +234,15 @@ const SEOPage = () => {
                       "@type": "Offer",
                       "itemOffered": {
                         "@type": "Service",
-                        "name": "GMB Optimization for Dentists",
-                        "description": "Dentists rely heavily on local search to attract new patients. Our Google Business Profile optimization ensures your practice appears prominently in dentist near me queries with review management."
+                        "name": "Dental Practice Local Optimization",
+                        "description": "Dentists rely heavily on local search to attract new patients. Our Google Business Profile optimization ensures your practice appears prominently in local queries with review management."
                       }
                     },
                     {
                       "@type": "Offer",
                       "itemOffered": {
                         "@type": "Service",
-                        "name": "GMB Optimization for Contractors",
+                        "name": "Contractor & Trade Local SEO",
                         "description": "Home service contractors depend on local visibility to generate leads. We optimize profiles for contractors like roofers, plumbers, and electricians to rank high in their specific service areas."
                       }
                     }
@@ -387,22 +387,6 @@ const SEOPage = () => {
         </motion.div>
       </section>
 
-      {/* Marquee */}
-      <div className="overflow-hidden transform z-20 bg-[#ccff00] w-full border-y-[6px] border-black py-6 relative shadow-[0_12px_0_0_rgba(0,0,0,1)] -rotate-1">
-        <div className="flex whitespace-nowrap w-max animate-marquee">
-          {[...Array(2)].map((_, i) => (
-            <div key={i} className="flex gap-12 text-3xl md:text-5xl font-black tracking-tighter uppercase items-center text-black px-12 font-sans font-black">
-              <span>professional seo services</span> <Star className="fill-current" size={36} />
-              <span>search engine optimization company</span> <Star className="fill-current" size={36} />
-              <span>organic traffic growth specialists</span> <Star className="fill-current" size={36} />
-              <span>technical seo audits</span> <Star className="fill-current" size={36} />
-              <span>hyper-localized google maps ranking</span> <Star className="fill-current" size={36} />
-              <span>json-ld structured schema schema</span> <Star className="fill-current" size={36} />
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Section 2: The Problem / Opportunity */}
       <section className="py-32 border-b-[8px] border-black bg-white relative z-10 px-6">
         <div className="max-w-7xl mx-auto">
@@ -486,9 +470,9 @@ const SEOPage = () => {
                 desc: "Keyword research grounded in real search intent, content structured for both readability and search relevance, and internal linking strategies that distribute authority across a site rather than concentrating it on a single page."
               },
               {
-                title: "Local SEO & Google Business Profile (GMB) Optimization",
+                title: "Local SEO & Google Business Profile Optimization",
                 icon: <MapPin className="w-8 h-8 text-black" />,
-                desc: "For businesses that depend on local discovery, we handle GMB SEO — from a full GMB audit identifying gaps in your listing, to ongoing local SEO GMB optimization covering categories, reviews, posts, and location data. A properly optimized Google Business Profile often has more direct impact on local visibility than any other single ranking factor, which is why we treat it as a dedicated discipline rather than an afterthought bolted onto a broader SEO package."
+                desc: "For businesses that depend on regional foot traffic and local discovery, we manage complete Google Business Profile optimization — from forensic listing audits and category calibration to structured review acquisition and local citation consistency. A well-optimized profile often drives more direct customer inquiries than any other local channel, which is why we treat it as a foundational organic discipline."
               },
               {
                 title: "Off-Page SEO & Authority Building",
@@ -571,10 +555,10 @@ const SEOPage = () => {
                 Local SEO for <br />Every Kind of Business
               </h3>
               <p className="text-base md:text-lg leading-relaxed text-zinc-800 font-bold font-sans mb-6">
-                <strong>GMB and local SEO</strong> work differently depending on the business type. A dentist's practice, for example, needs <strong>GMB local SEO</strong> built around appointment-driven local search — patients searching "near me" with immediate intent — while a B2B service company needs a different local strategy entirely.
+                Local search strategies vary significantly depending on customer intent. A dental clinic or emergency contractor requires immediate map visibility built around local proximity and urgent booking needs, while a B2B consultancy requires multi-regional entity authority and specialized service citations.
               </p>
               <p className="text-sm md:text-base leading-relaxed text-zinc-700 font-bold font-sans">
-                We build <strong>GMB SEO services</strong> tailored to how your specific customers actually search, rather than applying one generic local SEO template across every client.
+                We develop customized local search roadmaps tailored to your commercial market dynamics, customer search intent, and geographic coverage area.
               </p>
             </div>
 
@@ -583,10 +567,10 @@ const SEOPage = () => {
                 Agency &amp; Enterprise Support
               </div>
               <h3 className="text-xl md:text-3xl font-black text-black uppercase leading-tight">
-                White-Label GMB SEO <br />for Agencies &amp; Partners
+                White-Label Local SEO <br />for Agencies &amp; Partners
               </h3>
               <p className="text-sm md:text-base leading-relaxed text-zinc-700 font-bold font-sans">
-                For agencies and larger organizations managing SEO across multiple client accounts, we also offer <strong>white-label GMB SEO</strong> support — handling audits, optimization, and reporting under your brand.
+                For digital agencies and enterprise marketing departments managing multi-location accounts, we deliver white-label local SEO fulfilment — providing brandable technical audits, citation management, and performance reporting under your agency banner.
               </p>
               <div className="flex gap-4 items-center border-t-2 border-black pt-6">
                 <ShieldCheck className="w-8 h-8 text-[#ff0099] shrink-0" />
@@ -616,59 +600,59 @@ const SEOPage = () => {
             {[
               {
                 id: "ind-solution-nonprofit-seo",
-                title: "SEO Services for Non-Profits",
+                title: "SEO for Non-Profits",
                 icon: <Heart className="w-8 h-8 text-[#ff0099]" />,
-                tagline: "SEO Services for Non-Profit Organizations",
-                description: "Non-profits need search visibility that amplifies their mission without draining limited resources. Our SEO solutions for non-profit organizations optimize donation pages, volunteer recruitment content, and impact stories to attract supporters who share your cause. From grant-funded initiatives to community outreach, our SEO services for non-profit help you reach the right people at the right time."
+                tagline: "Donor & Volunteer Discovery",
+                description: "Charitable foundations and advocacy groups require search visibility that turns passive cause-awareness into verified donations and volunteer sign-ups. We structure grant-friendly content hierarchies, optimize donor landing funnels, and target high-intent non-profit keywords to maximize community reach on sustainable budgets."
               },
               {
                 id: "ind-solution-law-seo",
-                title: "SEO Services for Law Firms",
+                title: "SEO for Law Firms",
                 icon: <Scale className="w-8 h-8 text-black" />,
-                tagline: "SEO Services for Small Law Firms",
-                description: "Small law firms need to appear when potential clients search for legal help in their area. Our SEO strategies for small law firms target practice-area-specific keywords, build local citations, and optimize your Google Business Profile to attract high-intent clients. Our SEO services for small law firms help you compete with larger practices by focusing on what matters most: converting local search traffic into cases."
+                tagline: "High-Value Case Acquisition",
+                description: "Litigation practices and boutique firms face fierce competition in organic search. We focus on granular practice-area content hubs—such as commercial dispute, personal injury, and corporate compliance pages—engineered with authoritative E-E-A-T credentials that turn informational searches into qualified consultations."
               },
               {
                 id: "ind-solution-realestate-seo",
                 title: "Local SEO for Real Estate",
                 icon: <Home className="w-8 h-8 text-[#ff0099]" />,
-                tagline: "Local SEO for Real Estate",
-                description: "Real estate is inherently local. Buyers and sellers search for agents in their specific neighborhoods, making local SEO critical for success. Our local SEO for real estate optimizes your website for neighborhood-specific keywords, manages your Google Business Profile, and builds local citations that improve your visibility in map packs. Our local SEO for real estate solutions help you dominate your local market."
+                tagline: "Hyper-Local Property Search",
+                description: "Property transactions hinge on micro-location search intent. We optimize agency listings around specific school districts, transit corridors, and neighborhood developments, pairing structured real estate schema with verified map positioning to capture motivated buyers and sellers in active regional markets."
               },
               {
                 id: "ind-solution-nonprofit-local",
-                title: "Local SEO for Non-Profits",
+                title: "Local Outreach for Non-Profits",
                 icon: <MapPin className="w-8 h-8 text-black" />,
-                tagline: "Local SEO for Non-Profit Organizations",
-                description: "Local visibility helps non-profits connect with community members, volunteers, and donors who care about their cause. Our local SEO for non-profit organizations optimizes your Google Business Profile, builds local citations, and improves your visibility in local search results. Our local SEO for non-profit solutions help you build a strong community presence."
+                tagline: "Civic & Regional Engagement",
+                description: "Regional charities and community centers thrive on local civic engagement. We optimize local directory citations, manage regional event schema, and calibrate map visibility so nearby residents, local municipal partners, and community volunteers find your regional headquarters without friction."
               },
               {
                 id: "ind-solution-law-local",
-                title: "Local SEO for Law Firms",
+                title: "Local Search for Legal Practices",
                 icon: <Shield className="w-8 h-8 text-[#ff0099]" />,
-                tagline: "Local SEO for Small Law Firms",
-                description: "For small law firms, local search visibility is essential. Potential clients search for lawyers near them, and if you're not appearing in local results, you're losing business. Our local SEO for small law firms optimizes your Google Business Profile, builds local citations, and targets geographically relevant keywords. Our local SEO for small law firms helps you attract clients in your service area."
+                tagline: "Regional Map Pack Authority",
+                description: "When individuals face urgent legal matters, proximity and immediate credibility dictate their choice of counsel. We engineer localized citation networks and optimize geographical service boundaries to ensure your partners rank in competitive local map packs when clients search for nearby legal representation."
               },
               {
                 id: "ind-solution-healthcare-gmb",
-                title: "GMB for Healthcare",
+                title: "Healthcare & Clinic Optimization",
                 icon: <HeartPulse className="w-8 h-8 text-black" />,
-                tagline: "GMB Optimization for Healthcare",
-                description: "Healthcare providers need to appear when patients search for medical services in their area. Our Google Business Profile optimization for healthcare ensures your practice appears in local searches with accurate information, positive reviews, and compelling visuals. Our GMB optimization for healthcare helps you build trust with patients before they even walk through your door."
+                tagline: "Patient Trust & Discovery",
+                description: "Medical practices and specialized clinics must project clinical competence before a patient schedules their first consultation. We implement secure medical schema, optimize provider credential profiles, and establish verified local entity signals that build patient confidence and streamline appointment requests."
               },
               {
                 id: "ind-solution-dentists-gmb",
-                title: "GMB for Dentists",
+                title: "SEO for Dental Practices",
                 icon: <Activity className="w-8 h-8 text-[#ff0099]" />,
-                tagline: "GMB Optimization for Dentists",
-                description: "Dentists rely heavily on local search to attract new patients. Our Google Business Profile optimization for dentists ensures your practice appears prominently in 'dentist near me' searches with optimized profiles, review management, and consistent NAP information. Our GMB optimization for dentists helps you fill your appointment book with local patients."
+                tagline: "Appointment-Driven Search",
+                description: "Dental clinics need consistent visibility for high-intent emergency and cosmetic search terms like 'emergency dentist near me' or 'Invisalign provider'. We optimize localized procedure pages, curate authentic patient review signals, and ensure real-time office hours and booking links remain accurate across search engines."
               },
               {
                 id: "ind-solution-contractors-gmb",
-                title: "GMB for Contractors",
+                title: "Contractor & Trade Search",
                 icon: <Wrench className="w-8 h-8 text-black" />,
-                tagline: "GMB Optimization for Contractors",
-                description: "Home service contractors depend on local visibility to generate leads. Our Google Business Profile optimization for contractors ensures your business appears in local searches for services like roofing, plumbing, and electrical work. From review management to service area optimization, our GMB optimization for contractors helps you stand out in your local market."
+                tagline: "Emergency & Service Calls",
+                description: "Roofers, electricians, and HVAC contractors win jobs through rapid emergency discovery and verified local credibility. We configure precise service-radius parameters, optimize high-demand trade service pages, and build photo-rich project verification signals that keep your dispatch lines busy year-round."
               }
             ].map((sector, idx) => (
               <div
@@ -886,7 +870,7 @@ const SEOPage = () => {
               <div className="mb-8">
                 <h3 className="text-xl font-black text-black uppercase tracking-tight mb-3">Where We Work</h3>
                 <p className="text-sm md:text-base text-zinc-800 font-bold leading-relaxed font-sans">
-                  AbuQitmirLabs is based in <strong>Karachi, Pakistan</strong>, and much of our local SEO and GMB expertise is grounded in the Pakistani market — an area where we maintain deep, first-hand experience with how local search behaves. Alongside this, we support <strong>SEO services for international clients</strong>, including businesses across the United States, the United Kingdom, and Europe, adapting our approach to the specific search behavior and competitive landscape of each market we work in:
+                  AbuQitmirLabs is based in <strong>Karachi, Pakistan</strong>, and our local search optimization practice is grounded in hands-on experience navigating regional and international ranking factors. Alongside our domestic work, we support <strong>SEO engagements for international clients</strong>, including businesses across the United States, the United Kingdom, Canada, Australia, and Europe, adapting our approach to the specific search behavior and competitive landscape of each target market:
                 </p>
               </div>
 
@@ -906,7 +890,7 @@ const SEOPage = () => {
                   },
                   {
                     market: "Australia",
-                    text: "GMB optimization in Australia for businesses ready to dominate the Australian market with accurate listings, positive reviews, and optimized local profiles."
+                    text: "Local search and Google Business Profile optimization for Australian businesses, ensuring accurate directory citations, positive review momentum, and top local map rankings across major metropolitan centers."
                   },
                   {
                     market: "Poland",
