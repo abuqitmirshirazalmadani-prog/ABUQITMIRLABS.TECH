@@ -154,7 +154,8 @@ const routes = [
   '/blog/what-are-healthcare-ai-agents-complete-guide-2026',
   '/blog/healthcare-software-development-solutions-2026',
   '/blog/ai-agent-development-agency-vs-in-house',
-  '/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house'
+  '/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house',
+  '/blog/semantic-seo-strategy-the-complete-2026-framework-abuqitmirlabs'
 ];
 
 let successCount = 0;

@@ -73,6 +73,9 @@ function getElementDescriptor(element: Element | Node | EventTarget | null | und
 }
 
 export const performanceLogger = {
+  _buffer: [] as MetricLogEntry[],
+  _flushTimeout: null as any,
+
   getLogs(): MetricLogEntry[] {
     if (typeof window === 'undefined') return [];
     try {
@@ -80,6 +83,30 @@ export const performanceLogger = {
       return raw ? JSON.parse(raw) : [];
     } catch {
       return [];
+    }
+  },
+
+  _scheduleFlush() {
+    if (this._flushTimeout) return;
+    if (typeof window === 'undefined') return;
+
+    const flush = () => {
+      this._flushTimeout = null;
+      if (this._buffer.length === 0) return;
+      try {
+        const currentLogs = this.getLogs();
+        const updatedLogs = [...this._buffer, ...currentLogs].slice(0, MAX_LOG_ENTRIES);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedLogs));
+        this._buffer = [];
+      } catch {
+        // Storage quota or sandboxing fallback
+      }
+    };
+
+    if ('requestIdleCallback' in window) {
+      this._flushTimeout = (window as any).requestIdleCallback(flush, { timeout: 3000 });
+    } else {
+      this._flushTimeout = setTimeout(flush, 2000);
     }
   },
 
@@ -103,15 +130,18 @@ export const performanceLogger = {
       navigationType: extra.navigationType,
     };
 
-    try {
-      const currentLogs = this.getLogs();
-      const updatedLogs = [entry, ...currentLogs].slice(0, MAX_LOG_ENTRIES);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedLogs));
+    this._buffer.unshift(entry);
+    if (this._buffer.length > MAX_LOG_ENTRIES) {
+      this._buffer = this._buffer.slice(0, MAX_LOG_ENTRIES);
+    }
 
-      // Dispatched custom event for live dashboard listeners if active
-      window.dispatchEvent(new CustomEvent('aql:perf-metric', { detail: entry }));
-    } catch {
-      // Storage quota or sandboxing fallback
+    this._scheduleFlush();
+
+    // Notify listeners asynchronously without blocking interaction loop
+    if (typeof window.requestAnimationFrame === 'function') {
+      window.requestAnimationFrame(() => {
+        window.dispatchEvent(new CustomEvent('aql:perf-metric', { detail: entry }));
+      });
     }
   },
 
@@ -349,7 +379,7 @@ export function initPerformanceMonitoring() {
     });
     inpObserver.observe({
       type: 'event',
-      durationThreshold: 16,
+      durationThreshold: 40,
       buffered: true,
     } as any);
 
