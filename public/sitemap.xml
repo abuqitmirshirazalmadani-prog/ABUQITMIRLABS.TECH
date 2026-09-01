@@ -345,4 +345,16 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://www.abuqitmirlabs.tech/blog/semantic-seo-strategy-the-complete-2026-framework-abuqitmirlabs</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.abuqitmirlabs.tech/blog/fintech-software-development-compliance-first-architecture</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>

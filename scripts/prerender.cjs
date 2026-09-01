@@ -155,7 +155,8 @@ const routes = [
   '/blog/healthcare-software-development-solutions-2026',
   '/blog/ai-agent-development-agency-vs-in-house',
   '/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house',
-  '/blog/semantic-seo-strategy-the-complete-2026-framework-abuqitmirlabs'
+  '/blog/semantic-seo-strategy-the-complete-2026-framework-abuqitmirlabs',
+  '/blog/fintech-software-development-compliance-first-architecture'
 ];
 
 let successCount = 0;
