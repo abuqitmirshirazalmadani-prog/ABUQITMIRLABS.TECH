@@ -578,6 +578,44 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                         }
                                     }
                                 ]
+                            }] : []),
+                            ...(slug && slug.includes('offshore-software-development-usa-due-diligence-checklist') ? [{
+                                "@type": "FAQPage",
+                                "@id": `${seoData.canonicalUrl}#faq`,
+                                "mainEntity": [
+                                    {
+                                        "@type": "Question",
+                                        "name": "What's the biggest mistake founders make when hiring offshore development teams?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Signing based on a sales pitch instead of verified specifics. The most reliable engagements start with a named developer, a paid trial sprint, and references from clients of 2+ years."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "How much does offshore software development cost in 2026?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Pakistan and South Asia typically run $15–30/hour, India $20–50/hour, Eastern Europe $30–70/hour, and US/UK-based development $100–150/hour."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "Is a paid trial sprint really necessary before signing a longer contract?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "It's one of the most reliable ways to evaluate real delivery quality before a longer commitment. A vendor confident in their work generally welcomes this."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "Does time zone difference matter for offshore development?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Less than most founders assume, as long as the vendor has a deliberate overlap structure and can confirm specific reachable hours for your assigned developer."
+                                        }
+                                    }
+                                ]
                             }] : [])
                         ]
                     })}
