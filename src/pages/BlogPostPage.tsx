@@ -616,6 +616,44 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                         }
                                     }
                                 ]
+                            }] : []),
+                            ...(slug && slug.includes('healthcare-software-development-hipaa-ready-from-day-one') ? [{
+                                "@type": "FAQPage",
+                                "@id": `${seoData.canonicalUrl}#faq`,
+                                "mainEntity": [
+                                    {
+                                        "@type": "Question",
+                                        "name": "Is there an official HIPAA certification for software?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "No. HIPAA does not certify software products, and there's no official government certification program. Compliance depends on how an organization designs, deploys, and operates the systems that handle PHI."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "How much does HIPAA-compliant healthcare software cost in 2026?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Roughly $25,000–$80,000 for a lean MVP, $80,000–$150,000 for a mid-complexity product, and $150,000–$500,000+ for a full enterprise build. HIPAA compliance typically adds 20–30% to the base build cost."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "Do AI features in healthcare apps need a BAA?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Yes, if the AI service touches PHI in any way. Teams commonly integrate an AI chatbot or LLM API without confirming the vendor has signed a BAA."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "Is it cheaper to add HIPAA compliance after launch instead of building it in from the start?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "No — it's typically 2 to 3 times more expensive to retrofit compliance into a system that's already live and storing real patient data."
+                                        }
+                                    }
+                                ]
                             }] : [])
                         ]
                     })}

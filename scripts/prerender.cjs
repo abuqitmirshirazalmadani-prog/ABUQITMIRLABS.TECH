@@ -157,7 +157,8 @@ const routes = [
   '/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house',
   '/blog/semantic-seo-strategy-the-complete-2026-framework-abuqitmirlabs',
   '/blog/fintech-software-development-compliance-first-architecture',
-  '/blog/offshore-software-development-usa-due-diligence-checklist'
+  '/blog/offshore-software-development-usa-due-diligence-checklist',
+  '/blog/healthcare-software-development-hipaa-ready-from-day-one'
 ];
 
 let successCount = 0;
