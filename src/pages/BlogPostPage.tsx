@@ -654,6 +654,60 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                         }
                                     }
                                 ]
+                            }] : []),
+                            ...(slug && slug.includes('bespoke-saas-development-build-vs-buy-decision-guide') ? [{
+                                "@type": "FAQPage",
+                                "@id": `${seoData.canonicalUrl}#faq`,
+                                "mainEntity": [
+                                    {
+                                        "@type": "Question",
+                                        "name": "How do I know if I should build or buy software?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "The core filter: does the software handle a commodity process or does it run a workflow that actually differentiates your business? Commodity functions are almost always better bought; differentiating workflows or systems housing proprietary IP are usually worth building."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "How much does bespoke SaaS development cost in 2026?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "It ranges widely by scope — roughly $5,000 for a narrow tool up to $150,000–$400,000 for an enterprise-grade platform, with complex systems running $1M or more. Annual maintenance typically adds 10–20% of the build cost every year."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "Is SaaS actually cheaper than building custom software?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Not necessarily over time. SaaS's real total cost of ownership often runs 2.5x–4x the headline subscription price once per-seat scaling, integrations, and workaround labor are included. The upfront price is the least reliable number in this comparison."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "Has AI made building custom software cheaper than buying?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "It's made certain kinds of building faster and cheaper, but SaaS products have also gotten more capable with built-in AI features, closing much of the gap that used to justify custom builds. AI hasn't decisively tilted the overall decision toward either build or buy."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "What is the hybrid 'buy-to-build' approach?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "The most common pattern in 2026 isn't pure build or pure buy — it's buying a robust SaaS or infrastructure backend for standard operations while building custom, high-touch layers on top via APIs. Headless architecture is the standard way to execute this, keeping technical ownership of the user experience while offloading commodity infrastructure to a specialized vendor."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "How do I evaluate a software development partner for a bespoke build?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Ask three key questions: Do they propose an ongoing maintenance plan or only build-and-hand-off? Can they explain technical choices in plain language? Do they insist on open-source frameworks and full code ownership from day one, or does their proposal recreate vendor lock-in?"
+                                        }
+                                    }
+                                ]
                             }] : [])
                         ]
                     })}

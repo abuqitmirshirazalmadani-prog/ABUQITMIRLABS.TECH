@@ -158,7 +158,8 @@ const routes = [
   '/blog/semantic-seo-strategy-the-complete-2026-framework-abuqitmirlabs',
   '/blog/fintech-software-development-compliance-first-architecture',
   '/blog/offshore-software-development-usa-due-diligence-checklist',
-  '/blog/healthcare-software-development-hipaa-ready-from-day-one'
+  '/blog/healthcare-software-development-hipaa-ready-from-day-one',
+  '/blog/bespoke-saas-development-build-vs-buy-decision-guide'
 ];
 
 let successCount = 0;
