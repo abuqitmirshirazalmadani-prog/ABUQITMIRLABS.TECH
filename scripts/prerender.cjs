@@ -159,7 +159,8 @@ const routes = [
   '/blog/fintech-software-development-compliance-first-architecture',
   '/blog/offshore-software-development-usa-due-diligence-checklist',
   '/blog/healthcare-software-development-hipaa-ready-from-day-one',
-  '/blog/bespoke-saas-development-build-vs-buy-decision-guide'
+  '/blog/bespoke-saas-development-build-vs-buy-decision-guide',
+  '/blog/local-seo-citation-building-15-directory-checklist'
 ];
 
 let successCount = 0;

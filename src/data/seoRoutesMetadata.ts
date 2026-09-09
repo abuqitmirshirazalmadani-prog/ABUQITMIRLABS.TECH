@@ -686,5 +686,17 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogDescription: 'Compare AI agent development agency vs in-house costs, timelines, and risks — with real startup-scale numbers, not enterprise ones.',
     ogImage: 'https://www.abuqitmirlabs.tech/blog/ai-agent-agency-vs-inhouse-cover.jpg',
     ogType: 'article'
+  },
+  '/blog/local-seo-citation-building-15-directory-checklist': {
+    title: 'Local SEO Citation Building: The 15-Directory Checklist | AbuQitmirLabs',
+    description: 'A tiered checklist of 15 directories for building consistent NAP citations, plus why AI search engines now check citation consistency too.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/local-seo-citation-building-15-directory-checklist',
+    ogTitle: 'Local SEO Citation Building: The 15-Directory Checklist',
+    ogDescription: 'A tiered checklist of 15 directories for building consistent NAP citations, plus why AI search engines now check citation consistency too.',
+    ogImage: 'https://www.abuqitmirlabs.tech/blog/local-seo-citation-building-15-directory-checklist/cover.jpg',
+    ogType: 'article',
+    twitterTitle: 'Local SEO Citation Building: The 15-Directory Checklist',
+    twitterDescription: 'A tiered checklist of 15 directories for building consistent NAP citations, plus why AI search engines now check citation consistency too.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/blog/local-seo-citation-building-15-directory-checklist/cover.jpg'
   }
 };

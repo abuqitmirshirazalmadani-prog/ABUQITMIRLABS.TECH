@@ -109,7 +109,7 @@ const Footer = () => {
                         {/* Brand */}
                         <div className="flex flex-col gap-2 origin-left">
                             <Logo />
-                            <p className="text-[10px] text-black font-black mt-2 uppercase tracking-[0.2em]">POWERED BY ADVANCED AI TECHNOLOGY</p>
+                            <p className="text-[10px] text-black font-black mt-2 uppercase tracking-[0.2em]">Engineered and reviewed by AbuQitmirLabs — not just AI-generated.</p>
                         </div>
 
                         {/* Socials */}

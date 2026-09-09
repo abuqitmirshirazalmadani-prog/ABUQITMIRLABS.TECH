@@ -285,7 +285,7 @@ export const homeInitialHtml = `
       </h1>
 
       <p class="text-neutral-300 text-lg md:text-xl max-w-3xl leading-relaxed font-light">
-        AbuQitmirLabs engineers high-performance web platforms, cross-platform mobile apps, autonomous AI agents, and enterprise-grade software solutions for ambitious startups and global enterprises across North America, the UK, Europe, and Asia.
+        We use AI to move fast. We don't hide behind it. Every line of code, every architecture decision, every claim on this site is reviewed and signed off by a person — not generated and shipped unchecked.
       </p>
 
       <div class="flex flex-wrap gap-4 pt-4">

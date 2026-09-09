@@ -187,6 +187,10 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
               </span>
             </h1>
 
+            <p className="text-neutral-300 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-light">
+              We use AI to move fast. We don't hide behind it. Every line of code, every architecture decision, every claim on this site is reviewed and signed off by a person — not generated and shipped unchecked.
+            </p>
+
             {/* Quick Email / Project Input Form */}
             <form onSubmit={handleConsultationSubmit} className="max-w-md pt-2">
               <div className="bg-zinc-950/90 has-[input:focus]:ring-[#C8EB5F]/50 relative grid grid-cols-[1fr_auto] items-center rounded-none border border-white/15 pr-1.5 shadow-2xl has-[input:focus]:ring-2 transition-all">

@@ -280,6 +280,28 @@ const AboutPage = () => {
         </div>
       </section>
 
+      {/* AI & Architectural Judgment */}
+      <section className="py-24 md:py-36 bg-[#080808] border-b border-white/5 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="space-y-8">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light text-white tracking-tight leading-tight">
+              AI builds fast. Judgment builds trust.
+            </h2>
+            <div className="space-y-6 text-zinc-400 text-base md:text-lg font-light leading-relaxed">
+              <p>
+                Anyone can wire up an AI tool today. That's not a differentiator anymore — it's the baseline. What still can't be automated is the part that actually matters: knowing when the AI is wrong, when a shortcut will break in production, and when 'technically correct' isn't the same as 'actually right for this client.'
+              </p>
+              <p>
+                That's the work we do. AI drafts, searches, and accelerates — but every architecture decision, every line of code, and every claim we make about our own work is reviewed by a person before it ships. Not because we distrust AI, but because a client's product is not the place to find out where it fails.
+              </p>
+              <p>
+                We'd rather be known for what we caught and fixed than for how fast we generated something. That's the standard behind every project with our name on it — led by Abu Qitmir Mohammad Shiraz Al-Madani, and held to the same bar whether it's a line of code or a line of marketing copy.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Services Grid (What we build) */}
       <section className="py-24 md:py-40 bg-[#050505] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">

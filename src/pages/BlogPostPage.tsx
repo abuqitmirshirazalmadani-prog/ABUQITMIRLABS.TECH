@@ -708,6 +708,44 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                         }
                                     }
                                 ]
+                            }] : []),
+                            ...(slug && slug.includes('local-seo-citation-building-15-directory-checklist') ? [{
+                                "@type": "FAQPage",
+                                "@id": `${seoData.canonicalUrl}#faq`,
+                                "mainEntity": [
+                                    {
+                                        "@type": "Question",
+                                        "name": "What is a local SEO citation?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "A citation is any online mention of your business's Name, Address, and Phone number (NAP), typically on directories, review sites, or social platforms."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "How many citations does a business actually need?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Quality and consistency matter more than volume. The top 20-25 relevant directories typically account for roughly 80% of total citation signal weight."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "Why do data aggregators matter more than individual directories?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Aggregators like Data Axle and Neustar Localeze feed business data to many downstream directories automatically, so fixing an error there corrects it everywhere downstream."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "Do AI search tools like ChatGPT check citation consistency?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Yes. AI answer engines pull structured business data from directories and treat conflicting information across sources as a reason to trust a business less."
+                                        }
+                                    }
+                                ]
                             }] : [])
                         ]
                     })}
