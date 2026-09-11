@@ -63,6 +63,7 @@ const EditorialPolicyPage = lazy(() => import('./pages/EditorialPolicyPage'));
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const AiAgentAgencyVsInHouseBlog = lazy(() => import('./pages/blog/AiAgentAgencyVsInHouseBlog'));
+const GenerativeAiChatbotCostBlog = lazy(() => import('./pages/blog/GenerativeAiChatbotCostBlog'));
 const CaseStudyTajweedPage = lazy(() => import('./pages/CaseStudyTajweedPage'));
 const WebsiteContractPage = lazy(() => import('./pages/WebsiteContractPage'));
 const BrandAssetsPage = lazy(() => import('./pages/BrandAssetsPage'));
@@ -229,6 +230,8 @@ export default function App() {
               <Route path="/blog/custom-software-development-company-karachi-pakistan-abuqitmirlabs" element={<Navigate to="/blog/custom-software-development-company-karachi-pakistan" replace />} />
               <Route path="/ai-agent-development-agency-vs-in-house" element={<AiAgentAgencyVsInHouseBlog />} />
               <Route path="/blog/ai-agent-development-agency-vs-in-house" element={<AiAgentAgencyVsInHouseBlog />} />
+              <Route path="/blog/generative-ai-chatbot-development-cost-2026" element={<GenerativeAiChatbotCostBlog />} />
+              <Route path="/generative-ai-chatbot-development-cost-2026" element={<Navigate to="/blog/generative-ai-chatbot-development-cost-2026" replace />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />

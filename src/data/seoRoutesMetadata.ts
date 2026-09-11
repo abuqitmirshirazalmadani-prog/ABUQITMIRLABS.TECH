@@ -592,6 +592,19 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
     ogType: 'article'
   },
+  '/blog/generative-ai-chatbot-development-cost-2026': {
+    title: 'Generative AI Chatbot Development Cost 2026: Real Numbers',
+    description: 'Real 2026 cost breakdowns for generative AI chatbot development — rule-based vs RAG vs agentic builds, plus what GPT-6 Astra changes for enterprise teams.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/generative-ai-chatbot-development-cost-2026',
+    ogTitle: 'Generative AI Chatbot Development Cost 2026: Real Numbers',
+    ogDescription: 'Real 2026 cost breakdowns for generative AI chatbot development — rule-based vs RAG vs agentic builds, plus what GPT-6 Astra changes for enterprise teams.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/blog/generative-ai-chatbot-cost-2026-og.jpg',
+    ogType: 'article',
+    twitterTitle: 'Generative AI Chatbot Development Cost 2026: Real Numbers',
+    twitterDescription: 'Real 2026 cost breakdowns for generative AI chatbot development — rule-based vs RAG vs agentic builds, plus what GPT-6 Astra changes for enterprise teams.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/generative-ai-chatbot-cost-2026-twitter.jpg',
+    h1: 'Generative AI Chatbot Development: What It Actually Costs in 2026'
+  },
   '/blog/ai-agent-development-agency-vs-in-house': {
     title: 'The Go-To Guide to AI Agent Development: Agency vs. Building In-House | AbuQitmirLabs',
     description: 'Compare AI agent development agency vs in-house costs, timelines, and risks — with real startup-scale numbers, not enterprise ones.',

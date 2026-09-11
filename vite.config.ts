@@ -635,6 +635,25 @@ Sitemap: ${hostname}/sitemap.xml`;
                   </ul>
                 </section>
               `;
+            } else if (route.url === '/about' || route.url === '/about/our-company' || route.url === '/about/our-team') {
+              articleContent = `
+                <h2>AI builds fast. Judgment builds trust.</h2>
+                <p>
+                  Anyone can wire up an AI tool today. That's not a differentiator anymore — it's the baseline. What still can't be automated is the part that actually matters: knowing when the AI is wrong, when a shortcut will break in production, and when 'technically correct' isn't the same as 'actually right for this client.'
+                </p>
+                <p>
+                  That's the work we do. AI drafts, searches, and accelerates — but every architecture decision, every line of code, and every claim we make about our own work is reviewed by a person before it ships. Not because we distrust AI, but because a client's product is not the place to find out where it fails.
+                </p>
+                <p>
+                  We'd rather be known for what we caught and fixed than for how fast we generated something. That's the standard behind every project with our name on it — led by Abu Qitmir Mohammad Shiraz Al-Madani, and held to the same bar whether it's a line of code or a line of marketing copy.
+                </p>
+                <img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" />
+                <p>${route.description}</p>
+                <section>
+                  <h3>AbuQitmirLabs Engineering Leadership</h3>
+                  <p>Founded by Abu Qitmir Mohammad Shiraz Al-Madani in Karachi, Pakistan, AbuQitmirLabs delivers custom software, AI agents, mobile apps, and technical SEO with 100% human-verified architecture.</p>
+                </section>
+              `;
             } else {
               const routeH2 = route.url === '/' 
                 ? 'Custom Software · Web Development · AI Agents · Mobile Apps · SEO' 

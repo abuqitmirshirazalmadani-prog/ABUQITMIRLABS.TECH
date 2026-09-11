@@ -51,6 +51,7 @@ import AustraliaMarketPage from './pages/AustraliaMarketPage';
 import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
 import BlogPostPage from './pages/BlogPostPage';
+import GenerativeAiChatbotCostBlog from './pages/blog/GenerativeAiChatbotCostBlog';
 import CaseStudyTajweedPage from './pages/CaseStudyTajweedPage';
 import WebsiteContractPage from './pages/WebsiteContractPage';
 
@@ -131,6 +132,8 @@ export function render(url: string) {
           <Route path="/custom-web-development-vs-templates" element={<Navigate to="/blog/custom-web-development-vs-website-templates-2026-guide" replace />} />
           <Route path="/blog/custom-web-development-vs-templates" element={<Navigate to="/blog/custom-web-development-vs-website-templates-2026-guide" replace />} />
           <Route path="/blog/custom-ai-solutions-for-corporate-events" element={<Navigate to="/blog/custom-ai-solutions-for-corporate-events-2026-guide" replace />} />
+          <Route path="/blog/generative-ai-chatbot-development-cost-2026" element={<GenerativeAiChatbotCostBlog />} />
+          <Route path="/generative-ai-chatbot-development-cost-2026" element={<Navigate to="/blog/generative-ai-chatbot-development-cost-2026" replace />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />
