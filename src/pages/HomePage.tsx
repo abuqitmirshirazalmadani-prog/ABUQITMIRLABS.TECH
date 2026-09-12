@@ -41,6 +41,7 @@ export default function HomePage() {
         <meta name="twitter:title" content="Custom Software &amp; AI App Development Company | AbuQitmirLabs" />
         <meta name="twitter:description" content="AbuQitmirLabs engineers custom software, AI agents, mobile apps, and web solutions. Top-rated development company in Karachi serving global clients." />
         <meta name="twitter:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
+        <script type="application/ld+json">{JSON.stringify(homeSchema)}</script>
       </Helmet>
 
       <Header />
