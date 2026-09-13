@@ -64,6 +64,7 @@ const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const AiAgentAgencyVsInHouseBlog = lazy(() => import('./pages/blog/AiAgentAgencyVsInHouseBlog'));
 const GenerativeAiChatbotCostBlog = lazy(() => import('./pages/blog/GenerativeAiChatbotCostBlog'));
+const EcommercePlatformDevVsShopifyPlusBlog = lazy(() => import('./pages/blog/EcommercePlatformDevVsShopifyPlusBlog'));
 const CaseStudyTajweedPage = lazy(() => import('./pages/CaseStudyTajweedPage'));
 const WebsiteContractPage = lazy(() => import('./pages/WebsiteContractPage'));
 const BrandAssetsPage = lazy(() => import('./pages/BrandAssetsPage'));
@@ -230,6 +231,8 @@ export default function App() {
               <Route path="/blog/custom-software-development-company-karachi-pakistan-abuqitmirlabs" element={<Navigate to="/blog/custom-software-development-company-karachi-pakistan" replace />} />
               <Route path="/ai-agent-development-agency-vs-in-house" element={<AiAgentAgencyVsInHouseBlog />} />
               <Route path="/blog/ai-agent-development-agency-vs-in-house" element={<AiAgentAgencyVsInHouseBlog />} />
+              <Route path="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<EcommercePlatformDevVsShopifyPlusBlog />} />
+              <Route path="/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
               <Route path="/blog/generative-ai-chatbot-development-cost-2026" element={<GenerativeAiChatbotCostBlog />} />
               <Route path="/generative-ai-chatbot-development-cost-2026" element={<Navigate to="/blog/generative-ai-chatbot-development-cost-2026" replace />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />

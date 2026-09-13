@@ -10,6 +10,7 @@ AbuQitmirLabs positions itself as a technically credible, premium engineering st
 - [Mobile App Development](https://www.abuqitmirlabs.tech/mobile-app-development): iOS and Android apps via Flutter and native development.
 - [Web Development](https://www.abuqitmirlabs.tech/web-development): High-performance web applications.
 - [AI Agent Development](https://www.abuqitmirlabs.tech/ai-agent-development): AI agents, chatbots, generative AI, and RAG integration.
+- [E-Commerce Platform Development](https://www.abuqitmirlabs.tech/solutions/e-commerce): Custom e-commerce and marketplace platforms with AI-driven personalization.
 - [SEO Mastery](https://www.abuqitmirlabs.tech/seo-mastery): Semantic and programmatic SEO services.
 - [Graphics Design](https://www.abuqitmirlabs.tech/graphics-design): UI/UX and visual design.
 - [Content Writing](https://www.abuqitmirlabs.tech/content-writing): SEO and conversion-focused content writing.
@@ -35,6 +36,7 @@ AbuQitmirLabs positions itself as a technically credible, premium engineering st
 
 ## Blog
 
+- [E-Commerce Platform Development: Custom Build vs Shopify Plus 2026](https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026): Financial comparison of Shopify Plus costs ($2,300/month, $40K–$80K/year all-in) vs custom ecommerce build. Break-even at $2M–$4M GMV. Headless commerce as a middle path.
 - [Generative AI Chatbot Development Cost 2026: Real Numbers](https://www.abuqitmirlabs.tech/blog/generative-ai-chatbot-development-cost-2026): Real 2026 cost breakdowns for generative AI chatbot development — rule-based vs RAG vs agentic builds, plus what GPT-6 Astra changes for enterprise teams.
 - [RAG AI Integration for Startups](https://www.abuqitmirlabs.tech/blog/rag-ai-integration-startups): A complete guide to what RAG AI integration is, how it works, what it costs at startup scale, common implementation mistakes, and how it differs from fine-tuning.
 - [AI Agent Development: Agency vs. Building In-House](https://www.abuqitmirlabs.tech/blog/ai-agent-development-agency-vs-in-house): A go-to guide comparing AI agent development agency vs in-house builds for startups — real startup-scale costs ($5,000–$60,000, not enterprise six-figure numbers), the hidden hiring-timeline cost, and a 5-question framework for choosing between building in-house, a no-code platform, or hiring a partner.

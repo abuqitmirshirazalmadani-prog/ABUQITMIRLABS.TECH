@@ -592,6 +592,19 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
     ogType: 'article'
   },
+  '/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026': {
+    title: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
+    description: "Shopify Plus costs $2,300/month before transaction fees. A custom ecommerce build breaks even at $2M–$4M GMV. Here's the 2026 decision framework.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026',
+    ogTitle: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
+    ogDescription: 'Shopify Plus costs $2,300/month before fees. A custom build breaks even at $2M–$4M GMV. Full 2026 decision framework.',
+    ogImage: 'https://www.abuqitmirlabs.tech/og-ecommerce-platform-development.jpg',
+    ogType: 'article',
+    twitterTitle: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
+    twitterDescription: 'Shopify Plus costs $2,300/month before fees. Custom build breaks even at $2M–$4M GMV. Full 2026 decision framework.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/twitter-ecommerce-platform-development.jpg',
+    h1: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026'
+  },
   '/blog/generative-ai-chatbot-development-cost-2026': {
     title: 'Generative AI Chatbot Development Cost 2026: Real Numbers',
     description: 'Real 2026 cost breakdowns for generative AI chatbot development — rule-based vs RAG vs agentic builds, plus what GPT-6 Astra changes for enterprise teams.',
