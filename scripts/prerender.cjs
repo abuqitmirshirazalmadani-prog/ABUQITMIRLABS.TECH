@@ -79,9 +79,19 @@ const replaceRootElement = (htmlSource, newInnerHtml, renderedRouteAttr) => {
   return htmlSource.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root"${attrStr}>${newInnerHtml}</div>`);
 };
 
-// Base template with clean empty #root
+// Helper to strip any existing canonical tags to prevent hardcoded homepage leakage
+const stripCanonicalTags = (htmlSource) => {
+  if (!htmlSource) return htmlSource;
+  return htmlSource
+    .replace(/<link\b[^>]*\brel=["']?canonical["']?[^>]*\/?>/gis, '')
+    .replace(/<link\b[^>]*\bhref=[^>]*\brel=["']?canonical["']?[^>]*\/?>/gis, '')
+    .replace(/<link\b[^>]*\brel=["']?canonical["']?[^>]*>[\s\S]*?<\/link>/gis, '');
+};
+
+// Base template with clean empty #root and stripped default canonical
 let baseTemplate = distIndex;
 baseTemplate = replaceRootElement(baseTemplate, '', '');
+baseTemplate = stripCanonicalTags(baseTemplate);
 
 // Preserve a clean, unpopulated SPA shell for dynamic client-side routes (e.g. dynamic blog posts, admin dashboard)
 const spaShellPath = path.join(distDir, 'spa-shell.html');
@@ -167,9 +177,15 @@ const routes = [
   '/blog/local-seo-citation-building-15-directory-checklist'
 ];
 
+// Merge explicitly defined routes with any routes declared in SEO_ROUTES_METADATA
+const allRoutes = Array.from(new Set([
+  ...routes,
+  ...Object.keys(SEO_ROUTES_METADATA || {}).filter(k => typeof k === 'string' && k.startsWith('/'))
+]));
+
 let successCount = 0;
 
-for (const routeUrl of routes) {
+for (const routeUrl of allRoutes) {
   try {
     const { bodyHtml, headTags, helmet } = renderFullApp(routeUrl);
     
@@ -181,17 +197,40 @@ for (const routeUrl of routes) {
     // 2. Unconditionally strip ANY existing <title> tags from baseTemplate and headTags
     html = html.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '');
 
-    // 3. Inject hoisted head tags (preloads, metadata) into <head> (excluding title tags to avoid duplicates)
+    // 3. Inject hoisted head tags (preloads, metadata) into <head> (excluding title tags and canonicals)
     if (headTags && headTags.trim().length > 0) {
-      const cleanHeadTags = headTags.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '');
+      const cleanHeadTags = stripCanonicalTags(headTags.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, ''));
       if (cleanHeadTags.trim().length > 0) {
         html = html.replace('</head>', `  ${cleanHeadTags}\n</head>`);
       }
     }
 
     // 4. Inject unique Dynamic Title, Description & Open Graph tags for each route from SEO_ROUTES_METADATA
-    const seo = (SEO_ROUTES_METADATA && SEO_ROUTES_METADATA[routeUrl]) || 
-                (SEO_ROUTES_METADATA && Object.entries(SEO_ROUTES_METADATA).find(([k]) => routeUrl === k || routeUrl.endsWith(k) || (k.length > 2 && routeUrl.includes(k)))?.[1]);
+    const normalizedRoute = routeUrl.endsWith('/') && routeUrl !== '/' ? routeUrl.slice(0, -1) : routeUrl;
+    const seo = (SEO_ROUTES_METADATA && (
+      SEO_ROUTES_METADATA[routeUrl] ||
+      SEO_ROUTES_METADATA[normalizedRoute] ||
+      SEO_ROUTES_METADATA[`${normalizedRoute}/`]
+    )) || (
+      SEO_ROUTES_METADATA && Object.entries(SEO_ROUTES_METADATA).find(([k]) => {
+        const normK = k.endsWith('/') && k !== '/' ? k.slice(0, -1) : k;
+        return normK === normalizedRoute;
+      })?.[1]
+    );
+
+    // Compute canonical URL: Every route MUST have its own URL as canonical, NEVER homepage (unless route is literally '/')
+    const cleanPath = routeUrl === '/' ? '/' : (routeUrl.startsWith('/') ? routeUrl : `/${routeUrl}`);
+    let canonicalUrl;
+    if (cleanPath === '/') {
+      canonicalUrl = 'https://www.abuqitmirlabs.tech/';
+    } else {
+      // If explicitly declared in SEO metadata and NOT pointing to homepage, use it; otherwise use exact route URL
+      if (seo && seo.canonical && seo.canonical !== 'https://www.abuqitmirlabs.tech/' && seo.canonical !== 'https://www.abuqitmirlabs.tech') {
+        canonicalUrl = seo.canonical;
+      } else {
+        canonicalUrl = `https://www.abuqitmirlabs.tech${cleanPath}`;
+      }
+    }
 
     const titleToUse = (seo && seo.title) || 'AbuQitmirLabs | Custom Software, AI Agents & Mobile Development';
     html = html.replace('</head>', `  <title data-rh="true">${titleToUse}</title>\n</head>`);
@@ -223,8 +262,7 @@ for (const routeUrl of routes) {
       }
 
       // Unique og:url & og:type
-      const ogUrl = (seo && seo.canonical) || `https://www.abuqitmirlabs.tech${routeUrl === '/' ? '/' : routeUrl}`;
-      html = html.replace('</head>', `  <meta property="og:url" content="${ogUrl}" />\n  <meta property="og:type" content="${seo.ogType || 'website'}" />\n</head>`);
+      html = html.replace('</head>', `  <meta property="og:url" content="${canonicalUrl}" />\n  <meta property="og:type" content="${seo.ogType || 'website'}" />\n</head>`);
 
       // Unique og:image
       if (seo.ogImage) {
@@ -236,11 +274,13 @@ for (const routeUrl of routes) {
       const twDesc = seo.twitterDescription || seo.description;
       const twImage = seo.ogImage || 'https://www.abuqitmirlabs.tech/logo.png';
       html = html.replace('</head>', `  <meta name="twitter:card" content="summary_large_image" />\n  <meta name="twitter:title" content="${(twTitle || '').replace(/"/g, '&quot;')}" />\n  <meta name="twitter:description" content="${(twDesc || '').replace(/"/g, '&quot;')}" />\n  <meta name="twitter:image" content="${twImage}" />\n</head>`);
+    } else {
+      // Fallback og:url for routes without explicit SEO metadata
+      html = html.replace('</head>', `  <meta property="og:url" content="${canonicalUrl}" />\n  <meta property="og:type" content="website" />\n</head>`);
     }
 
-    // 5. Update canonical link
-    const canonicalUrl = (seo && seo.canonical) || `https://www.abuqitmirlabs.tech${routeUrl === '/' ? '/' : routeUrl}`;
-    html = html.replace(/<link\b[^>]*rel=["']canonical["'][^>]*\/?>/gi, '');
+    // 5. Update canonical link (strip any remaining canonical tags, then inject the route-specific canonical)
+    html = stripCanonicalTags(html);
     html = html.replace('</head>', `  <link rel="canonical" data-rh="true" href="${canonicalUrl}" />\n</head>`);
 
     // Write to target destination
@@ -256,7 +296,7 @@ for (const routeUrl of routes) {
     }
 
     successCount++;
-    console.log(`✓ [SSG Rendered] ${routeUrl} (${bodyHtml.length} bytes inside #root | Title: ${seo ? seo.title.substring(0, 40) + '...' : 'Default'})`);
+    console.log(`✓ [SSG Rendered] ${routeUrl} -> Canonical: ${canonicalUrl}`);
   } catch (err) {
     console.error(`⚠️ [SSG Warning] Failed to render route ${routeUrl}:`, err);
   }
