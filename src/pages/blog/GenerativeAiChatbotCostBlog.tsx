@@ -51,7 +51,7 @@ const FAQ_ITEMS = [
 ];
 
 export const BlogPostMeta = () => (
-  <Helmet>
+  <Helmet prioritizeSeoTags>
     {/* Primary Meta Tags */}
     <title>Generative AI Chatbot Development Cost 2026: Real Numbers</title>
     <meta name="title" content="Generative AI Chatbot Development Cost 2026: Real Numbers" />

@@ -186,7 +186,7 @@ export default function AiAgentAgencyVsInHouseBlog() {
 
   return (
     <div className="min-h-screen bg-[#080808] text-white flex flex-col selection:bg-[#ccff00] selection:text-black">
-      <Helmet>
+      <Helmet prioritizeSeoTags>
         <title>The Go-To Guide to AI Agent Development: Agency vs. Building In-House | AbuQitmirLabs</title>
         <meta 
           name="description" 
@@ -201,6 +201,11 @@ export default function AiAgentAgencyVsInHouseBlog() {
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/ai-agent-development-agency-vs-in-house" />
         <meta property="og:type" content="article" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/blog/ai-agent-agency-vs-inhouse-cover.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/ai-agent-development-agency-vs-in-house" />
+        <meta name="twitter:title" content="The Go-To Guide to AI Agent Development: Agency vs. Building In-House | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Compare AI agent development agency vs in-house costs, timelines, and risks — with real startup-scale numbers, not enterprise ones." />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/blog/ai-agent-agency-vs-inhouse-cover.jpg" />
         <script type="application/ld+json">
           {JSON.stringify(schemaJson)}
         </script>

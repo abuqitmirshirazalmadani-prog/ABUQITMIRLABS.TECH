@@ -470,7 +470,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
 
     return (
         <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00]/30 selection:text-white">
-            <Helmet>
+            <Helmet prioritizeSeoTags>
                 <html lang="en" />
                 <title>{seoData.title}</title>
                 <meta name="description" content={seoData.description} />

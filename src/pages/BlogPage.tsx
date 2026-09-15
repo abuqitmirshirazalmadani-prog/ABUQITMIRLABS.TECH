@@ -209,7 +209,7 @@ const BlogPage = () => {
 
     return (
         <div className="min-h-screen bg-[#050505]">
-            <Helmet>
+            <Helmet prioritizeSeoTags>
                 <title>Tech Blog & AI Insights | AbuQitmirLabs</title>
                 <meta name="description" content="AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies." />
                 <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog" />

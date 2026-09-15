@@ -61,11 +61,11 @@ export const BlogPostMeta = () => (
     <meta name="author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="language" content="English" />
-    <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" />
+    <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" />
 
     {/* Open Graph / Facebook */}
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" />
+    <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" />
     <meta property="og:title" content="E-Commerce Platform Development: Custom Build vs Shopify Plus 2026" />
     <meta property="og:description" content="Shopify Plus costs $2,300/month before fees. A custom build breaks even at $2M–$4M GMV. Full 2026 decision framework." />
     <meta property="og:image" content="https://www.abuqitmirlabs.tech/og-ecommerce-platform-development.jpg" />
@@ -84,7 +84,7 @@ export const BlogPostMeta = () => (
 
     {/* Twitter Card */}
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" />
+    <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" />
     <meta name="twitter:title" content="E-Commerce Platform Development: Custom Build vs Shopify Plus 2026" />
     <meta name="twitter:description" content="Shopify Plus costs $2,300/month before fees. Custom build breaks even at $2M–$4M GMV. Full 2026 decision framework." />
     <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/twitter-ecommerce-platform-development.jpg" />
@@ -108,7 +108,7 @@ export default function EcommercePlatformDevVsShopifyPlusBlog() {
 
   const handleCopyLink = () => {
     if (typeof navigator !== 'undefined') {
-      navigator.clipboard.writeText('https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026');
+      navigator.clipboard.writeText('https://www.abuqitmirlabs.tech/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026');
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
@@ -191,8 +191,8 @@ export default function EcommercePlatformDevVsShopifyPlusBlog() {
       },
       {
         "@type": "WebPage",
-        "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#webpage",
-        "url": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026",
+        "@id": "https://www.abuqitmirlabs.tech/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026#webpage",
+        "url": "https://www.abuqitmirlabs.tech/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026",
         "name": "E-Commerce Platform Development: Custom Build vs Shopify Plus 2026",
         "description": "Shopify Plus costs $2,300/month before transaction fees. A custom ecommerce build breaks even at $2M–$4M GMV. Here's the 2026 decision framework.",
         "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" },
@@ -200,11 +200,11 @@ export default function EcommercePlatformDevVsShopifyPlusBlog() {
         "primaryImageOfPage": { "@id": "https://www.abuqitmirlabs.tech/#logo" },
         "datePublished": "2026-09-13",
         "dateModified": "2026-09-13",
-        "breadcrumb": { "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#breadcrumb" }
+        "breadcrumb": { "@id": "https://www.abuqitmirlabs.tech/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026#breadcrumb" }
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#breadcrumb",
+        "@id": "https://www.abuqitmirlabs.tech/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026#breadcrumb",
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -222,20 +222,20 @@ export default function EcommercePlatformDevVsShopifyPlusBlog() {
             "@type": "ListItem",
             "position": 3,
             "name": "E-Commerce Platform Development",
-            "item": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026"
+            "item": "https://www.abuqitmirlabs.tech/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026"
           }
         ]
       },
       {
         "@type": "Article",
-        "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#article",
+        "@id": "https://www.abuqitmirlabs.tech/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026#article",
         "headline": "E-Commerce Platform Development: Custom Build vs Shopify Plus in 2026",
         "description": "Shopify Plus costs $2,300/month before transaction fees. A custom ecommerce build breaks even at $2M–$4M GMV. Here's the 2026 decision framework.",
         "author": { "@id": "https://www.abuqitmirlabs.tech/#person-abuqitmir" },
         "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
         "datePublished": "2026-09-13",
         "dateModified": "2026-09-13",
-        "mainEntityOfPage": { "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#webpage" },
+        "mainEntityOfPage": { "@id": "https://www.abuqitmirlabs.tech/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026#webpage" },
         "keywords": "ecommerce platform development, custom ecommerce build, Shopify Plus cost 2026, headless commerce, B2B ecommerce development, marketplace platform development",
         "articleSection": "E-Commerce",
         "wordCount": 2200,
@@ -243,7 +243,7 @@ export default function EcommercePlatformDevVsShopifyPlusBlog() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#faq",
+        "@id": "https://www.abuqitmirlabs.tech/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026#faq",
         "mainEntity": [
           {
             "@type": "Question",

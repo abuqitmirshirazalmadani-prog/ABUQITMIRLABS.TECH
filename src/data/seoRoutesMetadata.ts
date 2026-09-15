@@ -614,10 +614,10 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogImage: 'https://www.abuqitmirlabs.tech/og-offshore-web-development-checklist.jpg',
     ogType: 'article'
   },
-  '/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026': {
+  '/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026': {
     title: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
     description: "Shopify Plus costs $2,300/month before transaction fees. A custom ecommerce build breaks even at $2M–$4M GMV. Here's the 2026 decision framework.",
-    canonical: 'https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026',
     ogTitle: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
     ogDescription: 'Shopify Plus costs $2,300/month before fees. A custom build breaks even at $2M–$4M GMV. Full 2026 decision framework.',
     ogImage: 'https://www.abuqitmirlabs.tech/og-ecommerce-platform-development.jpg',
@@ -626,6 +626,37 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     twitterDescription: 'Shopify Plus costs $2,300/month before fees. Custom build breaks even at $2M–$4M GMV. Full 2026 decision framework.',
     twitterImage: 'https://www.abuqitmirlabs.tech/twitter-ecommerce-platform-development.jpg',
     h1: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026'
+  },
+  '/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026': {
+    title: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
+    description: "Shopify Plus costs $2,300/month before transaction fees. A custom ecommerce build breaks even at $2M–$4M GMV. Here's the 2026 decision framework.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026',
+    ogTitle: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
+    ogDescription: 'Shopify Plus costs $2,300/month before fees. A custom build breaks even at $2M–$4M GMV. Full 2026 decision framework.',
+    ogImage: 'https://www.abuqitmirlabs.tech/og-ecommerce-platform-development.jpg',
+    ogType: 'article',
+    twitterTitle: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
+    twitterDescription: 'Shopify Plus costs $2,300/month before fees. Custom build breaks even at $2M–$4M GMV. Full 2026 decision framework.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/twitter-ecommerce-platform-development.jpg',
+    h1: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026'
+  },
+  '/e-commerce-platform-development-custom-build-vs-shopify-plus-2026': {
+    title: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
+    description: "Shopify Plus costs $2,300/month before transaction fees. A custom ecommerce build breaks even at $2M–$4M GMV. Here's the 2026 decision framework.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026',
+    ogTitle: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
+    ogDescription: 'Shopify Plus costs $2,300/month before fees. A custom build breaks even at $2M–$4M GMV. Full 2026 decision framework.',
+    ogImage: 'https://www.abuqitmirlabs.tech/og-ecommerce-platform-development.jpg',
+    ogType: 'article'
+  },
+  '/ecommerce-platform-development-custom-build-vs-shopify-plus-2026': {
+    title: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
+    description: "Shopify Plus costs $2,300/month before transaction fees. A custom ecommerce build breaks even at $2M–$4M GMV. Here's the 2026 decision framework.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026',
+    ogTitle: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
+    ogDescription: 'Shopify Plus costs $2,300/month before fees. A custom build breaks even at $2M–$4M GMV. Full 2026 decision framework.',
+    ogImage: 'https://www.abuqitmirlabs.tech/og-ecommerce-platform-development.jpg',
+    ogType: 'article'
   },
   '/blog/generative-ai-chatbot-development-cost-2026': {
     title: 'Generative AI Chatbot Development Cost 2026: Real Numbers',
@@ -652,7 +683,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   '/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house': {
     title: 'The Go-To Guide to AI Agent Development: Agency vs. Building In-House | AbuQitmirLabs',
     description: 'Compare AI agent development agency vs in-house costs, timelines, and risks — with real startup-scale numbers, not enterprise ones.',
-    canonical: 'https://www.abuqitmirlabs.tech/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/ai-agent-development-agency-vs-in-house',
     ogTitle: 'The Go-To Guide to AI Agent Development: Agency vs. Building In-House | AbuQitmirLabs',
     ogDescription: 'Compare AI agent development agency vs in-house costs, timelines, and risks — with real startup-scale numbers, not enterprise ones.',
     ogImage: 'https://www.abuqitmirlabs.tech/blog/ai-agent-agency-vs-inhouse-cover.jpg',
