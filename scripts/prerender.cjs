@@ -157,6 +157,7 @@ const routes = [
   '/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house',
   '/blog/generative-ai-chatbot-development-cost-2026',
   '/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026',
+  '/blog/offshore-web-development-checklist-uk-us-2026',
   '/blog/semantic-seo-strategy-the-complete-2026-framework-abuqitmirlabs',
   '/blog/fintech-software-development-compliance-first-architecture',
   '/blog/offshore-software-development-usa-due-diligence-checklist',

@@ -41,6 +41,7 @@ export const routeLoaders: Record<string, () => Promise<any>> = {
   '/terms': () => import('../pages/TermsPage'),
   '/privacy': () => import('../pages/PrivacyPage'),
   '/website-contract': () => import('../pages/WebsiteContractPage'),
+  '/blog/offshore-web-development-checklist-uk-us-2026': () => import('../pages/blog/OffshoreWebDevChecklistBlog'),
   '/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026': () => import('../pages/blog/EcommercePlatformDevVsShopifyPlusBlog'),
 };
 

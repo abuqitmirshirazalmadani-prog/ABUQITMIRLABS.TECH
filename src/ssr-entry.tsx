@@ -49,6 +49,7 @@ import PrivacyPage from './pages/PrivacyPage';
 import BlogPostPage from './pages/BlogPostPage';
 import GenerativeAiChatbotCostBlog from './pages/blog/GenerativeAiChatbotCostBlog';
 import EcommercePlatformDevVsShopifyPlusBlog from './pages/blog/EcommercePlatformDevVsShopifyPlusBlog';
+import OffshoreWebDevChecklistBlog from './pages/blog/OffshoreWebDevChecklistBlog';
 import ErrorBoundary from './components/ErrorBoundary';
 
 export { SEO_ROUTES_METADATA } from './data/seoRoutesMetadata';
@@ -137,6 +138,8 @@ export function renderFullApp(url: string = '/') {
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />
               <Route path="/news/article/:id" element={<NewsArticlePage />} />
               <Route path="/news/read/:id" element={<NewsArticlePage />} />
+              <Route path="/blog/offshore-web-development-checklist-uk-us-2026" element={<OffshoreWebDevChecklistBlog />} />
+              <Route path="/offshore-web-development-checklist-uk-us-2026" element={<Navigate to="/blog/offshore-web-development-checklist-uk-us-2026" replace />} />
               <Route path="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<EcommercePlatformDevVsShopifyPlusBlog />} />
               <Route path="/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
               <Route path="/blog/generative-ai-chatbot-development-cost-2026" element={<GenerativeAiChatbotCostBlog />} />

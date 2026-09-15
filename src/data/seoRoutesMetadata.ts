@@ -592,6 +592,28 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
     ogType: 'article'
   },
+  '/blog/offshore-web-development-checklist-uk-us-2026': {
+    title: 'Offshore Web Development Checklist for UK & US: 2026',
+    description: 'A 21-point offshore web development checklist for UK & US businesses. Covers cost, compliance, contracts, and delivery — with 2026 pricing data.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/offshore-web-development-checklist-uk-us-2026',
+    ogTitle: 'Offshore Web Development Checklist for UK & US: 2026',
+    ogDescription: '21-point checklist for hiring offshore developers. Cost, compliance, contracts, and delivery — with 2026 pricing data.',
+    ogImage: 'https://www.abuqitmirlabs.tech/og-offshore-web-development-checklist.jpg',
+    ogType: 'article',
+    twitterTitle: 'Offshore Web Development Checklist for UK & US: 2026',
+    twitterDescription: '21-point checklist. Cost, compliance, contracts, and delivery — with 2026 pricing data.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/twitter-offshore-web-development-checklist.jpg',
+    h1: 'Offshore Web Development Checklist for UK & US: 2026'
+  },
+  '/offshore-web-development-checklist-uk-us-2026': {
+    title: 'Offshore Web Development Checklist for UK & US: 2026',
+    description: 'A 21-point offshore web development checklist for UK & US businesses. Covers cost, compliance, contracts, and delivery — with 2026 pricing data.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/offshore-web-development-checklist-uk-us-2026',
+    ogTitle: 'Offshore Web Development Checklist for UK & US: 2026',
+    ogDescription: '21-point checklist for hiring offshore developers. Cost, compliance, contracts, and delivery — with 2026 pricing data.',
+    ogImage: 'https://www.abuqitmirlabs.tech/og-offshore-web-development-checklist.jpg',
+    ogType: 'article'
+  },
   '/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026': {
     title: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
     description: "Shopify Plus costs $2,300/month before transaction fees. A custom ecommerce build breaks even at $2M–$4M GMV. Here's the 2026 decision framework.",
