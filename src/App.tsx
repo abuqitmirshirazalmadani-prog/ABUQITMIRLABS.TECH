@@ -64,8 +64,6 @@ const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const AiAgentAgencyVsInHouseBlog = lazy(() => import('./pages/blog/AiAgentAgencyVsInHouseBlog'));
 const GenerativeAiChatbotCostBlog = lazy(() => import('./pages/blog/GenerativeAiChatbotCostBlog'));
-const EcommercePlatformDevVsShopifyPlusBlog = lazy(() => import('./pages/blog/EcommercePlatformDevVsShopifyPlusBlog'));
-const OffshoreWebDevChecklistBlog = lazy(() => import('./pages/blog/OffshoreWebDevChecklistBlog'));
 const CaseStudyTajweedPage = lazy(() => import('./pages/CaseStudyTajweedPage'));
 const WebsiteContractPage = lazy(() => import('./pages/WebsiteContractPage'));
 const BrandAssetsPage = lazy(() => import('./pages/BrandAssetsPage'));
@@ -233,12 +231,6 @@ export default function App() {
               <Route path="/blog/ai-agent-development-agency-vs-in-house" element={<AiAgentAgencyVsInHouseBlog />} />
               <Route path="/ai-agent-development-agency-vs-in-house" element={<Navigate to="/blog/ai-agent-development-agency-vs-in-house" replace />} />
               <Route path="/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house" element={<Navigate to="/blog/ai-agent-development-agency-vs-in-house" replace />} />
-              <Route path="/blog/offshore-web-development-checklist-uk-us-2026" element={<OffshoreWebDevChecklistBlog />} />
-              <Route path="/offshore-web-development-checklist-uk-us-2026" element={<Navigate to="/blog/offshore-web-development-checklist-uk-us-2026" replace />} />
-              <Route path="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<EcommercePlatformDevVsShopifyPlusBlog />} />
-              <Route path="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" element={<EcommercePlatformDevVsShopifyPlusBlog />} />
-              <Route path="/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
-              <Route path="/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
               <Route path="/blog/generative-ai-chatbot-development-cost-2026" element={<GenerativeAiChatbotCostBlog />} />
               <Route path="/generative-ai-chatbot-development-cost-2026" element={<Navigate to="/blog/generative-ai-chatbot-development-cost-2026" replace />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />

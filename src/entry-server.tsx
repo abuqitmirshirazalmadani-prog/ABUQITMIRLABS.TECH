@@ -52,8 +52,6 @@ import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
 import BlogPostPage from './pages/BlogPostPage';
 import GenerativeAiChatbotCostBlog from './pages/blog/GenerativeAiChatbotCostBlog';
-import EcommercePlatformDevVsShopifyPlusBlog from './pages/blog/EcommercePlatformDevVsShopifyPlusBlog';
-import OffshoreWebDevChecklistBlog from './pages/blog/OffshoreWebDevChecklistBlog';
 import CaseStudyTajweedPage from './pages/CaseStudyTajweedPage';
 import WebsiteContractPage from './pages/WebsiteContractPage';
 
@@ -134,10 +132,6 @@ export function render(url: string) {
           <Route path="/custom-web-development-vs-templates" element={<Navigate to="/blog/custom-web-development-vs-website-templates-2026-guide" replace />} />
           <Route path="/blog/custom-web-development-vs-templates" element={<Navigate to="/blog/custom-web-development-vs-website-templates-2026-guide" replace />} />
           <Route path="/blog/custom-ai-solutions-for-corporate-events" element={<Navigate to="/blog/custom-ai-solutions-for-corporate-events-2026-guide" replace />} />
-          <Route path="/blog/offshore-web-development-checklist-uk-us-2026" element={<OffshoreWebDevChecklistBlog />} />
-          <Route path="/offshore-web-development-checklist-uk-us-2026" element={<Navigate to="/blog/offshore-web-development-checklist-uk-us-2026" replace />} />
-          <Route path="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<EcommercePlatformDevVsShopifyPlusBlog />} />
-          <Route path="/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
           <Route path="/blog/generative-ai-chatbot-development-cost-2026" element={<GenerativeAiChatbotCostBlog />} />
           <Route path="/generative-ai-chatbot-development-cost-2026" element={<Navigate to="/blog/generative-ai-chatbot-development-cost-2026" replace />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
