@@ -12,6 +12,8 @@ AbuQitmirLabs positions itself as a technically credible, premium engineering st
 - [AI Agent Development](https://www.abuqitmirlabs.tech/ai-agent-development): AI agents, chatbots, generative AI, and RAG integration.
 - [E-Commerce Platform Development](https://www.abuqitmirlabs.tech/solutions/e-commerce): Custom e-commerce and marketplace platforms with AI-driven personalization.
 - [SEO Mastery](https://www.abuqitmirlabs.tech/seo-mastery): Semantic and programmatic SEO services.
+- [SEO Services](https://www.abuqitmirlabs.tech/seo-mastery): Technical SEO, semantic SEO, local SEO, and white-label SEO for agencies.
+- [White Label Local SEO](https://www.abuqitmirlabs.tech/white-label-local-seo): White label local SEO services for agencies — GBP optimization, citation building, and reporting under your brand.
 - [Graphics Design](https://www.abuqitmirlabs.tech/graphics-design): UI/UX and visual design.
 - [Content Writing](https://www.abuqitmirlabs.tech/content-writing): SEO and conversion-focused content writing.
 
@@ -36,6 +38,7 @@ AbuQitmirLabs positions itself as a technically credible, premium engineering st
 
 ## Blog
 
+- [White Label Local SEO: How Agencies Evaluate Partners 2026](https://www.abuqitmirlabs.tech/blog/white-label-local-seo-how-agencies-evaluate-partners-2026): 12-point evaluation framework for agencies vetting white label local SEO partners. Covers SLAs, reporting access, margin protection, and red flags.
 - [Offshore Web Development Checklist for UK & US Businesses 2026](https://www.abuqitmirlabs.tech/blog/offshore-web-development-checklist-uk-us-2026): 21-point checklist for hiring offshore developers. Covers scope, vetting, contracts, UK GDPR and US state privacy compliance, and delivery. Cost breakdowns and pricing tiers included.
 - [E-Commerce Platform Development: Custom Build vs Shopify Plus 2026](https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026): Financial comparison of Shopify Plus costs ($2,300/month, $40K–$80K/year all-in) vs custom ecommerce build. Break-even at $2M–$4M GMV. Headless commerce as a middle path.
 - [Generative AI Chatbot Development Cost 2026: Real Numbers](https://www.abuqitmirlabs.tech/blog/generative-ai-chatbot-development-cost-2026): Real 2026 cost breakdowns for generative AI chatbot development — rule-based vs RAG vs agentic builds, plus what GPT-6 Astra changes for enterprise teams.

@@ -238,7 +238,11 @@ export default function App() {
               <Route path="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" element={<BlogPostPage overrideSlug="ecommerce-platform-development-custom-build-vs-shopify-plus-2026" />} />
               <Route path="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<BlogPostPage overrideSlug="ecommerce-platform-development-custom-build-vs-shopify-plus-2026" />} />
               <Route path="/offshore-web-development-checklist-uk-us-2026" element={<Navigate to="/blog/offshore-web-development-checklist-uk-us-2026" replace />} />
+              <Route path="/offshore-web-development-checklist-for-uk-us-2026" element={<Navigate to="/blog/offshore-web-development-checklist-uk-us-2026" replace />} />
+              <Route path="/blog/offshore-web-development-checklist-for-uk-us-2026" element={<Navigate to="/blog/offshore-web-development-checklist-uk-us-2026" replace />} />
               <Route path="/blog/offshore-web-development-checklist-uk-us-2026" element={<BlogPostPage overrideSlug="offshore-web-development-checklist-uk-us-2026" />} />
+              <Route path="/white-label-local-seo-how-agencies-evaluate-partners-2026" element={<Navigate to="/blog/white-label-local-seo-how-agencies-evaluate-partners-2026" replace />} />
+              <Route path="/blog/white-label-local-seo-how-agencies-evaluate-partners-2026" element={<BlogPostPage overrideSlug="white-label-local-seo-how-agencies-evaluate-partners-2026" />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />

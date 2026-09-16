@@ -63,7 +63,21 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                     where('slug', '==', slug), 
                     where('published', '==', true)
                 );
-                const snapshot = await getDocs(q);
+                let snapshot = await getDocs(q);
+                if (snapshot.empty && slug.includes('offshore-web-development-checklist')) {
+                    const altSlug = slug.includes('for-uk-us')
+                        ? 'offshore-web-development-checklist-uk-us-2026'
+                        : 'offshore-web-development-checklist-for-uk-us-2026';
+                    const altQ = query(
+                        collection(db, 'posts'),
+                        where('slug', '==', altSlug),
+                        where('published', '==', true)
+                    );
+                    const altSnap = await getDocs(altQ);
+                    if (!altSnap.empty) {
+                        snapshot = altSnap;
+                    }
+                }
                 if (!snapshot.empty) {
                     setPost(snapshot.docs[0].data() as Post);
                 } else if (staticFallback) {
@@ -912,9 +926,17 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                             className="aspect-video w-full rounded-[2.5rem] overflow-hidden mb-16 border border-zinc-800/80 shadow-2xl group bg-[#090a0f] flex items-center justify-center"
                         >
                             <img 
-                                src={post.coverImage.startsWith('https://www.abuqitmirlabs.tech/') 
-                                    ? post.coverImage.replace('https://www.abuqitmirlabs.tech', '') 
-                                    : post.coverImage} 
+                                src={
+                                    post.coverImage && (post.coverImage.includes('white-label-local-seo') || post.coverImage.includes('og-white-label-local-seo'))
+                                        ? '/og-white-label-local-seo-evaluation.jpg'
+                                        : post.coverImage && (post.coverImage.includes('web-development-checklist') || post.coverImage.includes('og-offshore-web-development-checklist'))
+                                        ? '/og-offshore-web-development-checklist.jpg'
+                                        : post.coverImage && (post.coverImage.includes('og-ecommerce-platform-development') || post.coverImage.includes('Custom-Build-vs-Shopify'))
+                                        ? '/og-ecommerce-platform-development.jpg'
+                                        : post.coverImage.startsWith('https://www.abuqitmirlabs.tech/') 
+                                        ? post.coverImage.replace('https://www.abuqitmirlabs.tech', '') 
+                                        : post.coverImage
+                                } 
                                 alt={post.coverImageAlt || `futuristic ${post.title} feature illustration`} 
                                 referrerPolicy="no-referrer"
                                 width="1200"
@@ -923,6 +945,24 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                 decoding="async"
                                 onError={(e) => {
                                     const target = e.target as HTMLImageElement;
+                                    if (target.src.includes('white-label') || target.src.includes('local-seo-evaluation')) {
+                                        if (!target.src.endsWith('/og-white-label-local-seo-evaluation.jpg')) {
+                                            target.src = '/og-white-label-local-seo-evaluation.jpg';
+                                            return;
+                                        }
+                                    }
+                                    if (target.src.includes('offshore') || target.src.includes('checklist')) {
+                                        if (!target.src.endsWith('/og-offshore-web-development-checklist.jpg')) {
+                                            target.src = '/og-offshore-web-development-checklist.jpg';
+                                            return;
+                                        }
+                                    }
+                                    if (target.src.includes('ecommerce') || target.src.includes('shopify')) {
+                                        if (!target.src.endsWith('/og-ecommerce-platform-development.jpg')) {
+                                            target.src = '/og-ecommerce-platform-development.jpg';
+                                            return;
+                                        }
+                                    }
                                     if (!target.src.includes('logo.png')) {
                                         target.src = 'https://www.abuqitmirlabs.tech/logo.png';
                                     }

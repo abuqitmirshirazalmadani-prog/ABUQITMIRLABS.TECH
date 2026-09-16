@@ -1220,5 +1220,193 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         }
       ]
     }
+  },
+  '/blog/white-label-local-seo-how-agencies-evaluate-partners-2026': {
+    title: 'White Label Local SEO: How Agencies Evaluate Partners',
+    description: 'A 12-point evaluation framework for agencies vetting white label local SEO partners. Covers SLAs, reporting, margin protection, and red flags.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/white-label-local-seo-how-agencies-evaluate-partners-2026',
+    ogTitle: 'White Label Local SEO: How Agencies Evaluate Partners',
+    ogDescription: '12-point framework for vetting white label local SEO partners. SLAs, reporting access, margin protection, and red flags.',
+    ogImage: 'https://www.abuqitmirlabs.tech/og-white-label-local-seo-evaluation.jpg',
+    ogType: 'article',
+    twitterTitle: 'White Label Local SEO: How Agencies Evaluate Partners',
+    twitterDescription: '12-point framework for vetting white label local SEO partners. SLAs, reporting, margin protection, red flags.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/twitter-white-label-local-seo-evaluation.jpg',
+    h1: 'White Label Local SEO: How Agencies Should Evaluate Partners (2026 Guide)',
+    schemaJsonLd: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.abuqitmirlabs.tech/#organization",
+          "name": "AbuQitmirLabs .TECH",
+          "url": "https://www.abuqitmirlabs.tech/",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://www.abuqitmirlabs.tech/#logo",
+            "url": "https://www.abuqitmirlabs.tech/logo.png",
+            "width": 600,
+            "height": 60
+          },
+          "description": "AI and custom software development studio based in Karachi, Pakistan, serving US, UK, and EU startups. White label local SEO services for agencies.",
+          "foundingDate": "2021",
+          "founder": { "@id": "https://www.abuqitmirlabs.tech/#person-abuqitmir" },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Karachi",
+            "addressCountry": "PK"
+          },
+          "sameAs": [
+            "https://twitter.com/AbuQitmirLabs",
+            "https://linkedin.com/company/abuqitmirlabs",
+            "https://github.com/abuqitmirlabs",
+            "https://clutch.co/profile/abuqitmirlabs"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "url": "https://www.abuqitmirlabs.tech/contact"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://www.abuqitmirlabs.tech/#person-abuqitmir",
+          "name": "Abu Qitmir Mohammad Shiraz Al-Madani",
+          "jobTitle": "Founder & Lead Systems Architect",
+          "worksFor": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+          "url": "https://www.abuqitmirlabs.tech/about",
+          "sameAs": [
+            "https://twitter.com/AbuQitmir",
+            "https://linkedin.com/in/abuqitmir"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.abuqitmirlabs.tech/#website",
+          "url": "https://www.abuqitmirlabs.tech/",
+          "name": "AbuQitmirLabs .TECH",
+          "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.abuqitmirlabs.tech/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.abuqitmirlabs.tech/blog/white-label-local-seo-how-agencies-evaluate-partners-2026#webpage",
+          "url": "https://www.abuqitmirlabs.tech/blog/white-label-local-seo-how-agencies-evaluate-partners-2026",
+          "name": "White Label Local SEO: How Agencies Should Evaluate Partners (2026 Guide)",
+          "description": "A 12-point evaluation framework for agencies vetting white label local SEO partners. Covers SLAs, reporting, margin protection, and red flags.",
+          "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" },
+          "about": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+          "primaryImageOfPage": { "@id": "https://www.abuqitmirlabs.tech/#logo" },
+          "datePublished": "2026-09-17",
+          "dateModified": "2026-09-17",
+          "breadcrumb": { "@id": "https://www.abuqitmirlabs.tech/blog/white-label-local-seo-how-agencies-evaluate-partners-2026#breadcrumb" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.abuqitmirlabs.tech/blog/white-label-local-seo-how-agencies-evaluate-partners-2026#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.abuqitmirlabs.tech/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://www.abuqitmirlabs.tech/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "White Label Local SEO: How Agencies Should Evaluate Partners (2026)",
+              "item": "https://www.abuqitmirlabs.tech/blog/white-label-local-seo-how-agencies-evaluate-partners-2026"
+            }
+          ]
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.abuqitmirlabs.tech/blog/white-label-local-seo-how-agencies-evaluate-partners-2026#article",
+          "headline": "White Label Local SEO: How Agencies Should Evaluate Partners (2026 Guide)",
+          "description": "A 12-point evaluation framework for agencies vetting white label local SEO partners. Covers SLAs, reporting, margin protection, and red flags.",
+          "author": { "@id": "https://www.abuqitmirlabs.tech/#person-abuqitmir" },
+          "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+          "datePublished": "2026-09-17",
+          "dateModified": "2026-09-17",
+          "mainEntityOfPage": { "@id": "https://www.abuqitmirlabs.tech/blog/white-label-local-seo-how-agencies-evaluate-partners-2026#webpage" },
+          "keywords": "white label local SEO, white label SEO partner, white label SEO services, agency SEO services, white label SEO pricing, white label SEO evaluation, white label SEO red flags, reseller SEO margin, local SEO for agencies, white label SEO checklist",
+          "articleSection": "SEO Services",
+          "wordCount": 2200,
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.abuqitmirlabs.tech/blog/white-label-local-seo-how-agencies-evaluate-partners-2026#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is white label local SEO?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "White label local SEO is a service model where an agency resells local SEO services delivered by a third-party partner. The partner executes the work — GBP optimization, citation building, content, reporting — and the agency presents it under their own brand."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How much should an agency pay for white label local SEO?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "White label local SEO costs $150–$700 per client per month depending on scope. Basic packages cover GBP optimization and citations. Standard packages add content and GBP posts. Advanced packages include full local SEO stacks and custom reporting."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What margin should an agency keep on white label SEO?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The typical reseller margin runs 35–55% depending on the service tier. At 20 clients on a Standard package, an agency can expect $4,000/month in gross profit from white label local SEO."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I vet a white label local SEO partner?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Use the 12-point framework: live client examples, dedicated account manager, reporting data access, contractual no-client-contact clause, specific SLAs, QA process clarity, pricing transparency, contract terms, margin analysis, English communication quality, reporting customization, and clean exit process."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Will the white label partner contact my clients directly?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No — and this must be explicit in the contract. All communication should flow through you. If a partner contacts your clients directly, they can poach them or confuse them. Verify this in writing before signing."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What red flags should I look for in a white label partner?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Red flags include: no dedicated account manager, no live client examples, unclear reporting access, vague SLAs, junior execution on senior-priced contracts, no trial availability, hidden pricing, unclear contract terms, and no clean exit process."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can AbuQitmirLabs provide white label local SEO for agencies?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. AbuQitmirLabs, a Karachi-based studio, provides white label local SEO services for agencies across the US, UK, and EU. The team provides dedicated account management, full reporting data access, and 100% white-labeled deliverables — with no direct client contact."
+              }
+            }
+          ]
+        }
+      ]
+    }
   }
 };

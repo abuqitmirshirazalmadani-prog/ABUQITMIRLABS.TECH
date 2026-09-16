@@ -1,4 +1,5 @@
 import { ragAiBlogContent } from '../utils/ragAiBlogStaticData';
+import { whiteLabelLocalSeoBlogContent } from './whiteLabelLocalSeoBlogContent';
 
 export interface StaticBlogPost {
   title: string;
@@ -1599,8 +1600,23 @@ In modern search, local prominence is an engineering discipline. At **AbuQitmirL
     createdAt: "2026-09-08",
     author: "AbuQitmirLabs .TECH",
     tags: ["Local SEO", "Citation Building", "NAP Consistency", "Local Search", "Google Business Profile", "AEO & AI Search"]
+  },
+  'white-label-local-seo-how-agencies-evaluate-partners-2026': {
+    title: "White Label Local SEO: How Agencies Evaluate Partners",
+    content: whiteLabelLocalSeoBlogContent,
+    excerpt: "A 12-point evaluation framework for agencies vetting white label local SEO partners. Covers SLAs, reporting, margin protection, and red flags.",
+    coverImage: "/og-white-label-local-seo-evaluation.jpg",
+    coverImageAlt: "White label local SEO evaluation framework for agencies — 12-point checklist",
+    category: "SEO Services",
+    createdAt: "2026-09-17T09:00:00+05:00",
+    author: "Abu Qitmir Mohammad Shiraz Al-Madani",
+    tags: ["white label local SEO", "white label SEO partner", "white label SEO services", "agency SEO services", "white label SEO pricing", "white label SEO evaluation", "white label SEO red flags", "reseller SEO margin", "local SEO for agencies", "white label SEO checklist"]
   }
 };
+
+// Map legacy and alternate slugs to canonical posts
+STATIC_BLOG_POSTS['offshore-web-development-checklist-for-uk-us-2026'] = STATIC_BLOG_POSTS['offshore-web-development-checklist-uk-us-2026'];
+STATIC_BLOG_POSTS['e-commerce-platform-development-custom-build-vs-shopify-plus-2026'] = STATIC_BLOG_POSTS['ecommerce-platform-development-custom-build-vs-shopify-plus-2026'];
 
 export interface BlogPostSummary {
   id: string;
@@ -1618,6 +1634,7 @@ export interface BlogPostSummary {
 export function getStaticBlogList(): BlogPostSummary[] {
   // Canonical unique primary slugs to list on /blog
   const canonicalSlugs = [
+    'white-label-local-seo-how-agencies-evaluate-partners-2026',
     'offshore-web-development-checklist-uk-us-2026',
     'ecommerce-platform-development-custom-build-vs-shopify-plus-2026',
     'generative-ai-chatbot-development-cost-2026',

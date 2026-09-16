@@ -36,7 +36,38 @@ async function generateBanner() {
     }
 
     console.log('Banner generation complete using original image!');
-    return;
+  }
+
+  // Generate Offshore Web Development Checklist banner assets if original exists
+  const checklistPng = path.join(process.cwd(), 'public/web-development-checklist.png');
+  if (fs.existsSync(checklistPng)) {
+    console.log('Using original web-development-checklist.png to build high-res assets...');
+    const ogChecklistBuf = await sharp(checklistPng)
+      .resize(1200, 675, { fit: 'cover' })
+      .jpeg({ quality: 96, mozjpeg: true })
+      .toBuffer();
+
+    const twitterChecklistBuf = await sharp(checklistPng)
+      .resize(1200, 630, { fit: 'cover' })
+      .jpeg({ quality: 96, mozjpeg: true })
+      .toBuffer();
+
+    const checklistTargets = [
+      { file: 'public/og-offshore-web-development-checklist.jpg', buf: ogChecklistBuf },
+      { file: 'public/twitter-offshore-web-development-checklist.jpg', buf: twitterChecklistBuf },
+      { file: 'dist/og-offshore-web-development-checklist.jpg', buf: ogChecklistBuf },
+      { file: 'dist/twitter-offshore-web-development-checklist.jpg', buf: twitterChecklistBuf }
+    ];
+
+    for (const t of checklistTargets) {
+      fs.mkdirSync(path.dirname(t.file), { recursive: true });
+      fs.writeFileSync(t.file, t.buf);
+      console.log(`Saved ${t.file} (${t.buf.length} bytes)`);
+    }
+
+    if (fs.existsSync(path.join(process.cwd(), 'public/Custom-Build-vs-Shopify.png'))) {
+      return;
+    }
   }
 
   const width = 1920;
