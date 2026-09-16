@@ -160,13 +160,58 @@ const BlogPage = () => {
                         };
                     }) as Post[];
 
-                    // Merge Firestore posts with static fallback posts (Firestore takes precedence on slug matches)
+                    // Helper to normalize strings for robust deduplication (slugs and titles)
+                    const normalizeKey = (str?: string): string => {
+                        if (!str) return '';
+                        return str
+                            .toLowerCase()
+                            .replace(/[^a-z0-9]/g, '')
+                            .replace(/(2026|guide|complete|abuqitmirlabs|the)/g, '');
+                    };
+
+                    // Collect normalized keys from Firestore posts (primary source of truth)
                     const firestoreSlugs = new Set(fetchedPosts.map(p => p.slug));
+                    const firestoreNormSlugs = new Set(fetchedPosts.map(p => normalizeKey(p.slug)).filter(Boolean));
+                    const firestoreNormTitles = new Set(fetchedPosts.map(p => normalizeKey(p.title)).filter(Boolean));
+
                     const staticPosts = getStaticBlogList() as unknown as Post[];
-                    const combined = [
-                        ...fetchedPosts,
-                        ...staticPosts.filter(p => !firestoreSlugs.has(p.slug))
-                    ];
+
+                    // Strictly filter out any static post that duplicates a Firestore post
+                    const uniqueStatic = staticPosts.filter(sp => {
+                        if (firestoreSlugs.has(sp.slug)) return false;
+                        const normSlug = normalizeKey(sp.slug);
+                        if (normSlug && firestoreNormSlugs.has(normSlug)) return false;
+                        const normTitle = normalizeKey(sp.title);
+                        if (normTitle && firestoreNormTitles.has(normTitle)) return false;
+                        
+                        // Check partial overlap with any Firestore post
+                        for (const fp of fetchedPosts) {
+                            const fpNormTitle = normalizeKey(fp.title);
+                            if (normTitle && fpNormTitle && (normTitle.includes(fpNormTitle) || fpNormTitle.includes(normTitle))) {
+                                return false;
+                            }
+                            const fpNormSlug = normalizeKey(fp.slug);
+                            if (normSlug && fpNormSlug && (normSlug.includes(fpNormSlug) || fpNormSlug.includes(normSlug))) {
+                                return false;
+                            }
+                        }
+                        return true;
+                    });
+
+                    // Final deduplication pass guaranteeing no duplicate titles or slugs appear
+                    const seenSlugs = new Set<string>();
+                    const seenTitles = new Set<string>();
+                    const combined: Post[] = [];
+
+                    for (const p of [...fetchedPosts, ...uniqueStatic]) {
+                        const normSlug = normalizeKey(p.slug) || p.slug.toLowerCase();
+                        const normTitle = normalizeKey(p.title) || p.title.toLowerCase();
+                        if (!seenSlugs.has(normSlug) && !seenTitles.has(normTitle)) {
+                            seenSlugs.add(normSlug);
+                            seenTitles.add(normTitle);
+                            combined.push(p);
+                        }
+                    }
 
                     combined.sort((a, b) => parseDateToMillis(b.createdAt) - parseDateToMillis(a.createdAt));
                     setPosts(combined);

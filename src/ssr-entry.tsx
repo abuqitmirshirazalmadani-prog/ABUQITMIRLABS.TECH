@@ -47,8 +47,6 @@ import AustraliaMarketPage from './pages/AustraliaMarketPage';
 import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
 import BlogPostPage from './pages/BlogPostPage';
-import GenerativeAiChatbotCostBlog from './pages/blog/GenerativeAiChatbotCostBlog';
-import AiAgentAgencyVsInHouseBlog from './pages/blog/AiAgentAgencyVsInHouseBlog';
 import ErrorBoundary from './components/ErrorBoundary';
 
 export { SEO_ROUTES_METADATA } from './data/seoRoutesMetadata';
@@ -137,17 +135,16 @@ export function renderFullApp(url: string = '/') {
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />
               <Route path="/news/article/:id" element={<NewsArticlePage />} />
               <Route path="/news/read/:id" element={<NewsArticlePage />} />
-              <Route path="/blog/ai-agent-development-agency-vs-in-house" element={<AiAgentAgencyVsInHouseBlog />} />
-              <Route path="/ai-agent-development-agency-vs-in-house" element={<Navigate to="/blog/ai-agent-development-agency-vs-in-house" replace />} />
-              <Route path="/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house" element={<Navigate to="/blog/ai-agent-development-agency-vs-in-house" replace />} />
-              <Route path="/blog/generative-ai-chatbot-development-cost-2026" element={<GenerativeAiChatbotCostBlog />} />
-              <Route path="/generative-ai-chatbot-development-cost-2026" element={<Navigate to="/blog/generative-ai-chatbot-development-cost-2026" replace />} />
-              <Route path="/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
-              <Route path="/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
-              <Route path="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" element={<BlogPostPage overrideSlug="ecommerce-platform-development-custom-build-vs-shopify-plus-2026" />} />
-              <Route path="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<BlogPostPage overrideSlug="ecommerce-platform-development-custom-build-vs-shopify-plus-2026" />} />
-              <Route path="/blog/offshore-web-development-checklist-for-uk-us-2026" element={<BlogPostPage overrideSlug="offshore-web-development-checklist-uk-us-2026" />} />
-              <Route path="/blog/offshore-web-development-checklist-uk-us-2026" element={<BlogPostPage overrideSlug="offshore-web-development-checklist-uk-us-2026" />} />
+              <Route path="/blog/healthcare-software-development-solutions-2026" element={<Navigate to="/blog/healthcare-software-development-solutions-2026-custom-ehr-clinical-software" replace />} />
+              <Route path="/local-seo-citation-building-15-directory-checklist" element={<Navigate to="/blog/local-seo-citation-building-the-15-directory-checklist" replace />} />
+              <Route path="/blog/local-seo-citation-building-15-directory-checklist" element={<Navigate to="/blog/local-seo-citation-building-the-15-directory-checklist" replace />} />
+              <Route path="/blog/ai-agent-development-agency-vs-in-house" element={<Navigate to="/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house" replace />} />
+              <Route path="/ai-agent-development-agency-vs-in-house" element={<Navigate to="/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house" replace />} />
+              <Route path="/blog/generative-ai-chatbot-development-cost-2026" element={<Navigate to="/blog/generative-ai-chatbot-development-what-it-actually-costs-in-2026" replace />} />
+              <Route path="/generative-ai-chatbot-development-cost-2026" element={<Navigate to="/blog/generative-ai-chatbot-development-what-it-actually-costs-in-2026" replace />} />
+              <Route path="/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
+              <Route path="/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
+              <Route path="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
             </Routes>
           </Suspense>

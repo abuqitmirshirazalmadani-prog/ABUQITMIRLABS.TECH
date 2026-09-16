@@ -51,7 +51,6 @@ import AustraliaMarketPage from './pages/AustraliaMarketPage';
 import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
 import BlogPostPage from './pages/BlogPostPage';
-import GenerativeAiChatbotCostBlog from './pages/blog/GenerativeAiChatbotCostBlog';
 import CaseStudyTajweedPage from './pages/CaseStudyTajweedPage';
 import WebsiteContractPage from './pages/WebsiteContractPage';
 
@@ -121,19 +120,29 @@ export function render(url: string) {
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/blog" element={<BlogPage />} />
-          <Route path="/agentic-ai-production-failures" element={<BlogPostPage overrideSlug="agentic-ai-production-failures" />} />
+          <Route path="/agentic-ai-production-failures" element={<Navigate to="/blog/agentic-ai-production-failures" replace />} />
           <Route path="/blog/agentic-ai-production-failures" element={<BlogPostPage overrideSlug="agentic-ai-production-failures" />} />
-          <Route path="/what-does-a-custom-web-development-company-do" element={<BlogPostPage overrideSlug="what-does-a-custom-web-development-company-do" />} />
-          <Route path="/blog/what-does-a-custom-web-development-company-do" element={<BlogPostPage overrideSlug="what-does-a-custom-web-development-company-do" />} />
-          <Route path="/custom-ai-solutions-for-corporate-events-2026-guide" element={<BlogPostPage overrideSlug="custom-ai-solutions-for-corporate-events-2026-guide" />} />
-          <Route path="/blog/custom-ai-solutions-for-corporate-events-2026-guide" element={<BlogPostPage overrideSlug="custom-ai-solutions-for-corporate-events-2026-guide" />} />
-          <Route path="/custom-web-development-vs-website-templates-2026-guide" element={<BlogPostPage overrideSlug="custom-web-development-vs-website-templates-2026-guide" />} />
-          <Route path="/blog/custom-web-development-vs-website-templates-2026-guide" element={<BlogPostPage overrideSlug="custom-web-development-vs-website-templates-2026-guide" />} />
+          <Route path="/what-does-a-custom-web-development-company-do" element={<Navigate to="/blog/what-does-a-custom-web-development-company-do" replace />} />
+          <Route path="/custom-ai-solutions-for-corporate-events-2026-guide" element={<Navigate to="/blog/custom-ai-solutions-for-corporate-events-2026-guide" replace />} />
+          <Route path="/custom-web-development-vs-website-templates-2026-guide" element={<Navigate to="/blog/custom-web-development-vs-website-templates-2026-guide" replace />} />
           <Route path="/custom-web-development-vs-templates" element={<Navigate to="/blog/custom-web-development-vs-website-templates-2026-guide" replace />} />
           <Route path="/blog/custom-web-development-vs-templates" element={<Navigate to="/blog/custom-web-development-vs-website-templates-2026-guide" replace />} />
           <Route path="/blog/custom-ai-solutions-for-corporate-events" element={<Navigate to="/blog/custom-ai-solutions-for-corporate-events-2026-guide" replace />} />
-          <Route path="/blog/generative-ai-chatbot-development-cost-2026" element={<GenerativeAiChatbotCostBlog />} />
-          <Route path="/generative-ai-chatbot-development-cost-2026" element={<Navigate to="/blog/generative-ai-chatbot-development-cost-2026" replace />} />
+          <Route path="/blog/white-label-local-seo-how-agencies-evaluate-partners-2026" element={<Navigate to="/blog/white-label-local-seo-how-agencies-evaluate-partners" replace />} />
+          <Route path="/blog/offshore-web-development-checklist-uk-us-2026" element={<Navigate to="/blog/offshore-web-development-checklist-uk-us-guide" replace />} />
+          <Route path="/blog/the-complete-guide-to-rag-ai-integration-for-startups" element={<Navigate to="/blog/rag-ai-integration-for-startups" replace />} />
+          <Route path="/blog/custom-web-development-company-2026-built-in-visibility" element={<Navigate to="/blog/custom-web-development-company" replace />} />
+          <Route path="/blog/custom-web-development-company-2026" element={<Navigate to="/blog/custom-web-development-company" replace />} />
+          <Route path="/blog/healthcare-software-development-solutions-2026" element={<Navigate to="/blog/healthcare-software-development-solutions-2026-custom-ehr-clinical-software" replace />} />
+          <Route path="/local-seo-citation-building-15-directory-checklist" element={<Navigate to="/blog/local-seo-citation-building-the-15-directory-checklist" replace />} />
+          <Route path="/blog/local-seo-citation-building-15-directory-checklist" element={<Navigate to="/blog/local-seo-citation-building-the-15-directory-checklist" replace />} />
+          <Route path="/blog/ai-agent-development-agency-vs-in-house" element={<Navigate to="/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house" replace />} />
+          <Route path="/ai-agent-development-agency-vs-in-house" element={<Navigate to="/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house" replace />} />
+          <Route path="/blog/generative-ai-chatbot-development-cost-2026" element={<Navigate to="/blog/generative-ai-chatbot-development-what-it-actually-costs-in-2026" replace />} />
+          <Route path="/generative-ai-chatbot-development-cost-2026" element={<Navigate to="/blog/generative-ai-chatbot-development-what-it-actually-costs-in-2026" replace />} />
+          <Route path="/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
+          <Route path="/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
+          <Route path="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />

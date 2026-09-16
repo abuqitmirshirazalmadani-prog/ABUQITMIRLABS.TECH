@@ -64,20 +64,6 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                     where('published', '==', true)
                 );
                 let snapshot = await getDocs(q);
-                if (snapshot.empty && slug.includes('offshore-web-development-checklist')) {
-                    const altSlug = slug.includes('for-uk-us')
-                        ? 'offshore-web-development-checklist-uk-us-2026'
-                        : 'offshore-web-development-checklist-for-uk-us-2026';
-                    const altQ = query(
-                        collection(db, 'posts'),
-                        where('slug', '==', altSlug),
-                        where('published', '==', true)
-                    );
-                    const altSnap = await getDocs(altQ);
-                    if (!altSnap.empty) {
-                        snapshot = altSnap;
-                    }
-                }
                 if (!snapshot.empty) {
                     setPost(snapshot.docs[0].data() as Post);
                 } else if (staticFallback) {
@@ -795,60 +781,6 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                         "acceptedAnswer": {
                                             "@type": "Answer",
                                             "text": "Headless commerce uses Shopify as a backend data layer while replacing its frontend with a custom-built storefront (typically Next.js). It solves Shopify's frontend and performance limitations without requiring a full rebuild of the backend operations layer."
-                                        }
-                                    }
-                                ]
-                            }] : []),
-                            ...(slug && slug.includes('offshore-web-development-checklist-uk-us-2026') ? [{
-                                "@type": "FAQPage",
-                                "@id": "https://www.abuqitmirlabs.tech/blog/offshore-web-development-checklist-uk-us-2026#faq",
-                                "mainEntity": [
-                                    {
-                                        "@type": "Question",
-                                        "name": "Is offshore web development from Pakistan safe for UK and US businesses?",
-                                        "acceptedAnswer": {
-                                            "@type": "Answer",
-                                            "text": "Yes — with the right contracts. Pakistan has WIPO-aligned copyright and patent law. NDA and IP-assignment agreements are enforceable under standard international arbitration clauses (typically Singapore, London, or New York)."
-                                        }
-                                    },
-                                    {
-                                        "@type": "Question",
-                                        "name": "How much does offshore web development cost in 2026?",
-                                        "acceptedAnswer": {
-                                            "@type": "Answer",
-                                            "text": "Offshore web development from Pakistan typically costs $25–$55 per hour for senior engineers, compared to $90–$200 in the US and UK. A typical platform that costs $180,000 onshore often lands at $70,000–$90,000 offshore."
-                                        }
-                                    },
-                                    {
-                                        "@type": "Question",
-                                        "name": "What time zone overlap does Pakistan offer UK and US clients?",
-                                        "acceptedAnswer": {
-                                            "@type": "Answer",
-                                            "text": "Pakistan operates at GMT+5, giving UK businesses 5+ hours of daily overlap and US East Coast clients 4 hours of morning overlap."
-                                        }
-                                    },
-                                    {
-                                        "@type": "Question",
-                                        "name": "How do I ensure UK GDPR compliance with an offshore web developer?",
-                                        "acceptedAnswer": {
-                                            "@type": "Answer",
-                                            "text": "Require consent management that blocks third-party scripts until opt-in, stores timestamped consent records, and implements Google Consent Mode v2 signals."
-                                        }
-                                    },
-                                    {
-                                        "@type": "Question",
-                                        "name": "How do I vet an offshore web development partner?",
-                                        "acceptedAnswer": {
-                                            "@type": "Answer",
-                                            "text": "Request three live project URLs (not screenshots), verify Clutch and GoodFirms reviews, speak with the actual engineers assigned to your project, ask for a compliance audit example, and require an IP-assignment clause before signing."
-                                        }
-                                    },
-                                    {
-                                        "@type": "Question",
-                                        "name": "What US privacy laws affect my website in 2026?",
-                                        "acceptedAnswer": {
-                                            "@type": "Answer",
-                                            "text": "As of January 2026, 12 states require recognition of browser-based opt-out signals (Global Privacy Control). Over 20 states have comprehensive consumer privacy laws. California's CIPA allows plaintiffs to seek $5,000 per violation for tags firing before consent."
                                         }
                                     }
                                 ]
