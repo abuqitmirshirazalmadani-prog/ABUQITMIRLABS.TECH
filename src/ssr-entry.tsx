@@ -142,6 +142,10 @@ export function renderFullApp(url: string = '/') {
               <Route path="/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house" element={<Navigate to="/blog/ai-agent-development-agency-vs-in-house" replace />} />
               <Route path="/blog/generative-ai-chatbot-development-cost-2026" element={<GenerativeAiChatbotCostBlog />} />
               <Route path="/generative-ai-chatbot-development-cost-2026" element={<Navigate to="/blog/generative-ai-chatbot-development-cost-2026" replace />} />
+              <Route path="/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
+              <Route path="/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
+              <Route path="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" element={<BlogPostPage overrideSlug="ecommerce-platform-development-custom-build-vs-shopify-plus-2026" />} />
+              <Route path="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<BlogPostPage overrideSlug="ecommerce-platform-development-custom-build-vs-shopify-plus-2026" />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
             </Routes>
           </Suspense>

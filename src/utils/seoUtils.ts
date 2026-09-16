@@ -19,6 +19,7 @@ export interface BlogPostMetaInput {
   createdAt?: any;
   updatedAt?: any;
   published?: boolean;
+  canonical?: string;
 }
 
 export interface BlogPostSeoData {
@@ -109,7 +110,12 @@ export function generateBlogPostMeta(
   const defaultImage = options.defaultCoverImage || DEFAULT_COVER_IMAGE;
   const authorName = post.author?.trim() || options.defaultAuthor || DEFAULT_AUTHOR;
 
-  const currentUrl = `${siteUrl}/blog/${encodeURIComponent(slug)}`;
+  let currentUrl = `${siteUrl}/blog/${encodeURIComponent(slug)}`;
+  if (post.canonical) {
+    currentUrl = post.canonical;
+  } else if (slug === 'e-commerce-platform-development-custom-build-vs-shopify-plus-2026' || slug === 'ecommerce-platform-development-custom-build-vs-shopify-plus-2026') {
+    currentUrl = `${siteUrl}/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026`;
+  }
   
   // 1. Unique Dynamic Title: "<Post Title> | AbuQitmirLabs"
   const rawTitle = post.title?.trim() || 'Journal Article';

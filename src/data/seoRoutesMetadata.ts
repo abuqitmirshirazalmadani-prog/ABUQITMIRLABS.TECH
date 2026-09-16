@@ -10,6 +10,7 @@ export interface RouteSeoMetadata {
   twitterDescription?: string;
   twitterImage?: string;
   h1?: string;
+  schemaJsonLd?: any;
 }
 
 export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
@@ -711,5 +712,333 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     twitterTitle: 'Local SEO Citation Building: The 15-Directory Checklist',
     twitterDescription: 'A tiered checklist of 15 directories for building consistent NAP citations, plus why AI search engines now check citation consistency too.',
     twitterImage: 'https://www.abuqitmirlabs.tech/blog/local-seo-citation-building-15-directory-checklist/cover.jpg'
+  },
+  '/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026': {
+    title: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
+    description: "Shopify Plus costs $2,300/month before transaction fees. A custom ecommerce build breaks even at $2M–$4M GMV. Here's the 2026 decision framework.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026',
+    ogTitle: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
+    ogDescription: 'Shopify Plus costs $2,300/month before fees. A custom build breaks even at $2M–$4M GMV. Full 2026 decision framework.',
+    ogImage: 'https://www.abuqitmirlabs.tech/og-ecommerce-platform-development.jpg',
+    ogType: 'article',
+    twitterTitle: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
+    twitterDescription: 'Shopify Plus costs $2,300/month before fees. Custom build breaks even at $2M–$4M GMV. Full 2026 decision framework.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/twitter-ecommerce-platform-development.jpg',
+    h1: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
+    schemaJsonLd: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.abuqitmirlabs.tech/#organization",
+          "name": "AbuQitmirLabs .TECH",
+          "url": "https://www.abuqitmirlabs.tech/",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://www.abuqitmirlabs.tech/#logo",
+            "url": "https://www.abuqitmirlabs.tech/logo.png",
+            "width": 600,
+            "height": 60
+          },
+          "description": "AI and custom software development studio based in Karachi, Pakistan, serving US, UK, and EU startups.",
+          "foundingDate": "2021",
+          "founder": { "@id": "https://www.abuqitmirlabs.tech/#person-abuqitmir" },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Karachi",
+            "addressCountry": "PK"
+          },
+          "sameAs": [
+            "https://twitter.com/AbuQitmirLabs",
+            "https://linkedin.com/company/abuqitmirlabs",
+            "https://github.com/abuqitmirlabs",
+            "https://clutch.co/profile/abuqitmirlabs"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "url": "https://www.abuqitmirlabs.tech/contact"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://www.abuqitmirlabs.tech/#person-abuqitmir",
+          "name": "Abu Qitmir Mohammad Shiraz Al-Madani",
+          "jobTitle": "Founder & Lead Systems Architect",
+          "worksFor": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+          "url": "https://www.abuqitmirlabs.tech/about",
+          "sameAs": [
+            "https://twitter.com/AbuQitmir",
+            "https://linkedin.com/in/abuqitmir"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.abuqitmirlabs.tech/#website",
+          "url": "https://www.abuqitmirlabs.tech/",
+          "name": "AbuQitmirLabs .TECH",
+          "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.abuqitmirlabs.tech/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#webpage",
+          "url": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026",
+          "name": "E-Commerce Platform Development: Custom Build vs Shopify Plus 2026",
+          "description": "Shopify Plus costs $2,300/month before transaction fees. A custom ecommerce build breaks even at $2M–$4M GMV. Here's the 2026 decision framework.",
+          "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" },
+          "about": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+          "primaryImageOfPage": { "@id": "https://www.abuqitmirlabs.tech/#logo" },
+          "datePublished": "2026-09-13",
+          "dateModified": "2026-09-13",
+          "breadcrumb": { "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#breadcrumb" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.abuqitmirlabs.tech/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://www.abuqitmirlabs.tech/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "E-Commerce Platform Development",
+              "item": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026"
+            }
+          ]
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#article",
+          "headline": "E-Commerce Platform Development: Custom Build vs Shopify Plus in 2026",
+          "description": "Shopify Plus costs $2,300/month before transaction fees. A custom ecommerce build breaks even at $2M–$4M GMV. Here's the 2026 decision framework.",
+          "author": { "@id": "https://www.abuqitmirlabs.tech/#person-abuqitmir" },
+          "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+          "datePublished": "2026-09-13",
+          "dateModified": "2026-09-13",
+          "mainEntityOfPage": { "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#webpage" },
+          "keywords": "ecommerce platform development, custom ecommerce build, Shopify Plus cost 2026, headless commerce, B2B ecommerce development, marketplace platform development",
+          "articleSection": "E-Commerce",
+          "wordCount": 2200,
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "When should I build a custom ecommerce platform instead of using Shopify Plus?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "When your catalog, pricing logic, or checkout requirements fall outside Shopify's assumptions — specifically B2B pricing, multi-vendor operations, or marketplace models — or when your GMV has reached the point where transaction fees and app costs over 3 years exceed the cost of a custom build (typically $2M–$4M GMV)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How much does custom ecommerce platform development cost in 2026?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The range is wide: $3,000–$30,000 for a template-based or semi-custom build, $80,000–$250,000 for a mid-market custom platform, and $500,000+ for a complex enterprise marketplace. Annual maintenance typically adds $30,000–$80,000/year."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is Shopify Plus worth it for a large store?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It depends entirely on GMV and pricing complexity. At $30M GMV, a Shopify Plus store typically costs $120,000–$250,000/year in direct platform costs — over 3 years, that's $360,000–$750,000, often exceeding the full cost of a custom build."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is headless commerce and is it better than Shopify?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Headless commerce uses Shopify as a backend data layer while replacing its frontend with a custom-built storefront (typically Next.js). It solves Shopify's frontend and performance limitations without requiring a full rebuild of the backend operations layer."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  '/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026': {
+    title: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
+    description: "Shopify Plus costs $2,300/month before transaction fees. A custom ecommerce build breaks even at $2M–$4M GMV. Here's the 2026 decision framework.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026',
+    ogTitle: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
+    ogDescription: 'Shopify Plus costs $2,300/month before fees. A custom build breaks even at $2M–$4M GMV. Full 2026 decision framework.',
+    ogImage: 'https://www.abuqitmirlabs.tech/og-ecommerce-platform-development.jpg',
+    ogType: 'article',
+    twitterTitle: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
+    twitterDescription: 'Shopify Plus costs $2,300/month before fees. Custom build breaks even at $2M–$4M GMV. Full 2026 decision framework.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/twitter-ecommerce-platform-development.jpg',
+    h1: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
+    schemaJsonLd: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.abuqitmirlabs.tech/#organization",
+          "name": "AbuQitmirLabs .TECH",
+          "url": "https://www.abuqitmirlabs.tech/",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://www.abuqitmirlabs.tech/#logo",
+            "url": "https://www.abuqitmirlabs.tech/logo.png",
+            "width": 600,
+            "height": 60
+          },
+          "description": "AI and custom software development studio based in Karachi, Pakistan, serving US, UK, and EU startups.",
+          "foundingDate": "2021",
+          "founder": { "@id": "https://www.abuqitmirlabs.tech/#person-abuqitmir" },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Karachi",
+            "addressCountry": "PK"
+          },
+          "sameAs": [
+            "https://twitter.com/AbuQitmirLabs",
+            "https://linkedin.com/company/abuqitmirlabs",
+            "https://github.com/abuqitmirlabs",
+            "https://clutch.co/profile/abuqitmirlabs"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "url": "https://www.abuqitmirlabs.tech/contact"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://www.abuqitmirlabs.tech/#person-abuqitmir",
+          "name": "Abu Qitmir Mohammad Shiraz Al-Madani",
+          "jobTitle": "Founder & Lead Systems Architect",
+          "worksFor": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+          "url": "https://www.abuqitmirlabs.tech/about",
+          "sameAs": [
+            "https://twitter.com/AbuQitmir",
+            "https://linkedin.com/in/abuqitmir"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.abuqitmirlabs.tech/#website",
+          "url": "https://www.abuqitmirlabs.tech/",
+          "name": "AbuQitmirLabs .TECH",
+          "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.abuqitmirlabs.tech/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#webpage",
+          "url": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026",
+          "name": "E-Commerce Platform Development: Custom Build vs Shopify Plus 2026",
+          "description": "Shopify Plus costs $2,300/month before transaction fees. A custom ecommerce build breaks even at $2M–$4M GMV. Here's the 2026 decision framework.",
+          "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" },
+          "about": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+          "primaryImageOfPage": { "@id": "https://www.abuqitmirlabs.tech/#logo" },
+          "datePublished": "2026-09-13",
+          "dateModified": "2026-09-13",
+          "breadcrumb": { "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#breadcrumb" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.abuqitmirlabs.tech/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://www.abuqitmirlabs.tech/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "E-Commerce Platform Development",
+              "item": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026"
+            }
+          ]
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#article",
+          "headline": "E-Commerce Platform Development: Custom Build vs Shopify Plus in 2026",
+          "description": "Shopify Plus costs $2,300/month before transaction fees. A custom ecommerce build breaks even at $2M–$4M GMV. Here's the 2026 decision framework.",
+          "author": { "@id": "https://www.abuqitmirlabs.tech/#person-abuqitmir" },
+          "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+          "datePublished": "2026-09-13",
+          "dateModified": "2026-09-13",
+          "mainEntityOfPage": { "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#webpage" },
+          "keywords": "ecommerce platform development, custom ecommerce build, Shopify Plus cost 2026, headless commerce, B2B ecommerce development, marketplace platform development",
+          "articleSection": "E-Commerce",
+          "wordCount": 2200,
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "When should I build a custom ecommerce platform instead of using Shopify Plus?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "When your catalog, pricing logic, or checkout requirements fall outside Shopify's assumptions — specifically B2B pricing, multi-vendor operations, or marketplace models — or when your GMV has reached the point where transaction fees and app costs over 3 years exceed the cost of a custom build (typically $2M–$4M GMV)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How much does custom ecommerce platform development cost in 2026?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The range is wide: $3,000–$30,000 for a template-based or semi-custom build, $80,000–$250,000 for a mid-market custom platform, and $500,000+ for a complex enterprise marketplace. Annual maintenance typically adds $30,000–$80,000/year."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is Shopify Plus worth it for a large store?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It depends entirely on GMV and pricing complexity. At $30M GMV, a Shopify Plus store typically costs $120,000–$250,000/year in direct platform costs — over 3 years, that's $360,000–$750,000, often exceeding the full cost of a custom build."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is headless commerce and is it better than Shopify?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Headless commerce uses Shopify as a backend data layer while replacing its frontend with a custom-built storefront (typically Next.js). It solves Shopify's frontend and performance limitations without requiring a full rebuild of the backend operations layer."
+              }
+            }
+          ]
+        }
+      ]
+    }
   }
 };

@@ -746,6 +746,44 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                         }
                                     }
                                 ]
+                            }] : []),
+                            ...(slug && (slug.includes('ecommerce-platform-development') || slug.includes('e-commerce-platform-development')) ? [{
+                                "@type": "FAQPage",
+                                "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#faq",
+                                "mainEntity": [
+                                    {
+                                        "@type": "Question",
+                                        "name": "When should I build a custom ecommerce platform instead of using Shopify Plus?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "When your catalog, pricing logic, or checkout requirements fall outside Shopify's assumptions — specifically B2B pricing, multi-vendor operations, or marketplace models — or when your GMV has reached the point where transaction fees and app costs over 3 years exceed the cost of a custom build (typically $2M–$4M GMV)."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "How much does custom ecommerce platform development cost in 2026?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "The range is wide: $3,000–$30,000 for a template-based or semi-custom build, $80,000–$250,000 for a mid-market custom platform, and $500,000+ for a complex enterprise marketplace. Annual maintenance typically adds $30,000–$80,000/year."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "Is Shopify Plus worth it for a large store?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "It depends entirely on GMV and pricing complexity. At $30M GMV, a Shopify Plus store typically costs $120,000–$250,000/year in direct platform costs — over 3 years, that's $360,000–$750,000, often exceeding the full cost of a custom build."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "What is headless commerce and is it better than Shopify?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Headless commerce uses Shopify as a backend data layer while replacing its frontend with a custom-built storefront (typically Next.js). It solves Shopify's frontend and performance limitations without requiring a full rebuild of the backend operations layer."
+                                        }
+                                    }
+                                ]
                             }] : [])
                         ]
                     })}
