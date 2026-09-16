@@ -912,7 +912,9 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                             className="aspect-video w-full rounded-[2.5rem] overflow-hidden mb-16 border border-zinc-800/80 shadow-2xl group bg-[#090a0f] flex items-center justify-center"
                         >
                             <img 
-                                src={post.coverImage} 
+                                src={post.coverImage.startsWith('https://www.abuqitmirlabs.tech/') 
+                                    ? post.coverImage.replace('https://www.abuqitmirlabs.tech', '') 
+                                    : post.coverImage} 
                                 alt={post.coverImageAlt || `futuristic ${post.title} feature illustration`} 
                                 referrerPolicy="no-referrer"
                                 width="1200"

@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "tsx server.ts",
     "prerender": "node scripts/prerender.cjs",
-    "generate:logos": "node scripts/generate-logos.js && node scripts/generate-social-assets.js",
-    "build": "node scripts/generate-logos.js && node scripts/generate-social-assets.js && vite build && node scripts/prerender.cjs && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "generate:logos": "node scripts/generate-logos.js && node scripts/generate-social-assets.js && node scripts/generate-ecommerce-banner.cjs",
+    "build": "node scripts/generate-logos.js && node scripts/generate-social-assets.js && node scripts/generate-ecommerce-banner.cjs && vite build && node scripts/prerender.cjs && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "preview": "vite preview",
     "clean": "rm -rf dist",
