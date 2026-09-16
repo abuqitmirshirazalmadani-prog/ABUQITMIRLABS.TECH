@@ -173,7 +173,8 @@ const routes = [
   '/blog/bespoke-saas-development-build-vs-buy-decision-guide',
   '/blog/local-seo-citation-building-15-directory-checklist',
   '/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026',
-  '/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026'
+  '/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026',
+  '/blog/offshore-web-development-checklist-uk-us-2026'
 ];
 
 // Merge explicitly defined routes with any routes declared in SEO_ROUTES_METADATA
@@ -284,7 +285,8 @@ for (const routeUrl of allRoutes) {
 
     // 6. Inject Schema.org JSON-LD if explicitly declared in SEO metadata
     if (seo && seo.schemaJsonLd) {
-      if (!html.includes('https://schema.org') || !html.includes('ecommerce-platform-development')) {
+      const routeId = (seo.schemaJsonLd['@graph'] && seo.schemaJsonLd['@graph'][3] && seo.schemaJsonLd['@graph'][3]['@id']) || canonicalUrl;
+      if (!html.includes(routeId)) {
         const schemaSnippet = `<script type="application/ld+json" data-rh="true">\n${JSON.stringify(seo.schemaJsonLd, null, 2)}\n  </script>`;
         html = html.replace('</head>', `  ${schemaSnippet}\n</head>`);
       }
