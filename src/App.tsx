@@ -241,8 +241,6 @@ export default function App() {
               <Route path="/offshore-web-development-checklist-for-uk-us-2026" element={<Navigate to="/blog/offshore-web-development-checklist-uk-us-2026" replace />} />
               <Route path="/blog/offshore-web-development-checklist-for-uk-us-2026" element={<Navigate to="/blog/offshore-web-development-checklist-uk-us-2026" replace />} />
               <Route path="/blog/offshore-web-development-checklist-uk-us-2026" element={<BlogPostPage overrideSlug="offshore-web-development-checklist-uk-us-2026" />} />
-              <Route path="/white-label-local-seo-how-agencies-evaluate-partners-2026" element={<Navigate to="/blog/white-label-local-seo-how-agencies-evaluate-partners-2026" replace />} />
-              <Route path="/blog/white-label-local-seo-how-agencies-evaluate-partners-2026" element={<BlogPostPage overrideSlug="white-label-local-seo-how-agencies-evaluate-partners-2026" />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />

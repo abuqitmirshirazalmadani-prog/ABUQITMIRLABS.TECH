@@ -175,8 +175,7 @@ const routes = [
   '/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026',
   '/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026',
   '/blog/offshore-web-development-checklist-uk-us-2026',
-  '/blog/offshore-web-development-checklist-for-uk-us-2026',
-  '/blog/white-label-local-seo-how-agencies-evaluate-partners-2026'
+  '/blog/offshore-web-development-checklist-for-uk-us-2026'
 ];
 
 // Merge explicitly defined routes with any routes declared in SEO_ROUTES_METADATA

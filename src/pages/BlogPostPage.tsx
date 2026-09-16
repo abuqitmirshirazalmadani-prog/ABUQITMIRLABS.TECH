@@ -927,9 +927,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         >
                             <img 
                                 src={
-                                    post.coverImage && (post.coverImage.includes('white-label-local-seo') || post.coverImage.includes('og-white-label-local-seo'))
-                                        ? '/og-white-label-local-seo-evaluation.jpg'
-                                        : post.coverImage && (post.coverImage.includes('web-development-checklist') || post.coverImage.includes('og-offshore-web-development-checklist'))
+                                    post.coverImage && (post.coverImage.includes('web-development-checklist') || post.coverImage.includes('og-offshore-web-development-checklist'))
                                         ? '/og-offshore-web-development-checklist.jpg'
                                         : post.coverImage && (post.coverImage.includes('og-ecommerce-platform-development') || post.coverImage.includes('Custom-Build-vs-Shopify'))
                                         ? '/og-ecommerce-platform-development.jpg'
@@ -945,12 +943,6 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                 decoding="async"
                                 onError={(e) => {
                                     const target = e.target as HTMLImageElement;
-                                    if (target.src.includes('white-label') || target.src.includes('local-seo-evaluation')) {
-                                        if (!target.src.endsWith('/og-white-label-local-seo-evaluation.jpg')) {
-                                            target.src = '/og-white-label-local-seo-evaluation.jpg';
-                                            return;
-                                        }
-                                    }
                                     if (target.src.includes('offshore') || target.src.includes('checklist')) {
                                         if (!target.src.endsWith('/og-offshore-web-development-checklist.jpg')) {
                                             target.src = '/og-offshore-web-development-checklist.jpg';
