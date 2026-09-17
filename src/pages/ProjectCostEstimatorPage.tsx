@@ -19,6 +19,8 @@ import {
   detectProjectType 
 } from '../utils/estimatorLogic';
 import { generateEstimatePdf } from '../utils/generateEstimatePdf';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function ProjectCostEstimatorPage() {
   const [idea, setIdea] = useState('');
@@ -224,7 +226,7 @@ export default function ProjectCostEstimatorPage() {
   };
 
   return (
-    <>
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black">
       <Helmet>
         <title>AI Project Cost Estimator 2026 | Free Software & Website Pricing Calculator | AbuQitmirLabs</title>
         <meta 
@@ -244,7 +246,9 @@ export default function ProjectCostEstimatorPage() {
         <script type="application/ld+json">{JSON.stringify(schemaBreadcrumbs)}</script>
       </Helmet>
 
-      <main id="main-content" className="bg-[#050505] text-white min-h-screen pt-28 md:pt-36 pb-24 selection:bg-[#ccff00] selection:text-black font-sans">
+      <Header />
+
+      <main id="main-content" className="pt-28 md:pt-36 pb-24 font-sans">
         
         {/* HERO SECTION */}
         <section className="max-w-[1240px] mx-auto px-6 md:px-12 text-center">
@@ -1198,6 +1202,8 @@ export default function ProjectCostEstimatorPage() {
         </section>
 
       </main>
-    </>
+
+      <Footer />
+    </div>
   );
 }

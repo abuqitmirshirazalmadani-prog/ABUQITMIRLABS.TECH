@@ -211,7 +211,7 @@ export function generateEstimatePdf(estimate: EstimateResult, customIdeaText?: s
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
   doc.setTextColor(100, 100, 100);
-  doc.text('Contact AbuQitmirLabs Engineering: info@abuqitmirlabs.tech | Website: https://www.abuqitmirlabs.tech', margin, footerY + 5);
+  doc.text('Contact AbuQitmirLabs Engineering: hello@abuqitmirlabs.tech | Website: https://www.abuqitmirlabs.tech', margin, footerY + 5);
   doc.text('Note: This automated preliminary estimate is based on market averages and does not constitute a legally binding quote.', margin, footerY + 9);
 
   // Save the PDF
