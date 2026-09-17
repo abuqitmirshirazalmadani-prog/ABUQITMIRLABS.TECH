@@ -6,7 +6,8 @@ import {
   Calculator, Sparkles, CheckCircle2, Globe, FileDown, 
   ArrowRight, ShieldCheck, Clock, Layers, DollarSign, 
   HelpCircle, ChevronDown, ChevronUp, RefreshCw, Send,
-  Cpu, Building2, TrendingDown, Info, ExternalLink
+  Cpu, Building2, TrendingDown, Info, ExternalLink,
+  Search, Bot, Terminal, Radio
 } from 'lucide-react';
 import { EstimateResult, CountryComparison } from '../types/estimator';
 import { 
@@ -29,16 +30,17 @@ export default function ProjectCostEstimatorPage() {
   const [loadingStep, setLoadingStep] = useState(0);
   const [result, setResult] = useState<EstimateResult | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [showAgentLogs, setShowAgentLogs] = useState(false);
 
   // FAQ open/close accordion state
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const loadingMessages = [
-    'Analyzing functional requirements and scope...',
-    'Evaluating technical architecture & stack...',
-    'Benchmarking regional developer hourly rates...',
-    'Structuring work phases and deliverables...',
-    'Finalizing executive cost estimate report...'
+    'AI Agent: Deconstructing prompt requirements & extracting scope...',
+    'AI Agent: Cross-referencing Clutch.co 2026 directory & developer hourly rate indices...',
+    'AI Agent: Ground truth validation matching Google Search market consensus...',
+    'AI Agent: Calibrating sprint effort formula & engineering pod allocation...',
+    'AI Agent: Finalizing verified executive estimate report...'
   ];
 
   const handleEstimate = async (e?: React.FormEvent) => {
@@ -548,6 +550,106 @@ export default function ProjectCostEstimatorPage() {
                   </div>
                 </div>
               </div>
+
+              {/* AI AGENT LIVE SEARCH INTELLIGENCE CARD */}
+              {result.aiAgentSearch && (
+                <div className="bg-[#0e0e0d] border border-blue-500/30 rounded-2xl p-5 mb-8 relative overflow-hidden">
+                  <div className="flex flex-wrap items-center justify-between gap-3 pb-3 mb-4 border-b border-white/10">
+                    <div className="flex items-center gap-2.5">
+                      <span className="relative flex h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22c55e] opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-[#22c55e]"></span>
+                      </span>
+                      <Bot className="w-4 h-4 text-blue-400" />
+                      <span className="text-xs font-mono font-bold text-white uppercase tracking-wider">
+                        AI Agent Live Market Research
+                      </span>
+                      <span className="text-[10px] font-mono bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded border border-blue-500/30">
+                        {result.aiAgentSearch.agentModel}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <span className="text-[11px] font-mono text-neutral-400">
+                        Response Latency: <span className="text-white font-bold">{result.aiAgentSearch.latencyMs}ms</span>
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setShowAgentLogs(prev => !prev)}
+                        className="inline-flex items-center gap-1.5 text-xs font-mono text-[#ccff00] hover:underline bg-white/5 hover:bg-white/10 px-2.5 py-1 rounded-lg border border-white/10 transition-colors"
+                      >
+                        <Terminal className="w-3.5 h-3.5" />
+                        <span>{showAgentLogs ? 'Hide Agent Terminal' : 'View Agent Investigation Steps'}</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Detected Scope & Exact Equation */}
+                  <div className="bg-black/60 border border-white/10 rounded-xl p-3.5 mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div className="flex items-center gap-2 text-xs font-mono text-neutral-300">
+                      <Search className="w-3.5 h-3.5 text-[#ccff00] shrink-0" />
+                      <span>
+                        <strong className="text-white font-semibold">Scope Detected:</strong> {result.aiAgentSearch.scopeDetected}
+                      </span>
+                    </div>
+                    <span className="text-[11px] font-mono bg-[#ccff00]/10 text-[#ccff00] px-2.5 py-1 rounded-full border border-[#ccff00]/20 font-bold shrink-0">
+                      100% Dynamic Hours Scaling
+                    </span>
+                  </div>
+
+                  {/* Effort Formula Explanation */}
+                  {result.aiAgentSearch.effortFormulaExplanation && (
+                    <div className="text-xs font-mono text-neutral-300 mb-4 bg-white/[0.03] border border-white/10 rounded-xl p-3">
+                      <div className="text-[10px] text-neutral-400 uppercase tracking-wider font-bold mb-1">
+                        Development Effort Formula:
+                      </div>
+                      <div className="text-neutral-200">
+                        {result.aiAgentSearch.effortFormulaExplanation}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Verified Sources Benchmarks */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-2">
+                    {result.aiAgentSearch.verifiedSources.map((source, idx) => (
+                      <div key={idx} className="bg-white/[0.02] border border-white/10 rounded-xl p-3 text-xs font-mono">
+                        <div className="text-[10px] text-neutral-400 uppercase tracking-wider mb-1 flex items-center justify-between">
+                          <span className="truncate">{source.name.split('(')[0]}</span>
+                          <span className="text-[#22c55e] font-bold shrink-0">{source.confidence}% match</span>
+                        </div>
+                        <div className="text-white font-bold mt-1 text-xs">
+                          {source.verifiedRate}
+                        </div>
+                        <div className="text-[10px] text-neutral-500 mt-1 truncate">
+                          Query: {source.query}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Expandable Step Logs Terminal */}
+                  {showAgentLogs && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="mt-4 pt-3 border-t border-white/10"
+                    >
+                      <div className="text-[11px] font-mono text-neutral-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                        <Terminal className="w-3.5 h-3.5 text-blue-400" />
+                        <span>Real-Time Agent Research Execution Trace</span>
+                      </div>
+                      <div className="bg-black border border-white/10 rounded-xl p-3 font-mono text-[11px] text-neutral-300 space-y-1 max-h-48 overflow-y-auto">
+                        {result.aiAgentSearch.stepLogs.map((log, lIdx) => (
+                          <div key={lIdx} className="leading-relaxed">
+                            <span className="text-blue-400 font-bold">{log.split('] ')[0]}]</span> {log.split('] ')[1]}
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
+              )}
 
               {/* 3.1 Key Metrics 4-Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">

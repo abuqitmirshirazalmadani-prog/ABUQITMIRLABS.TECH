@@ -90,6 +90,24 @@ export interface EstimateResult {
   recommendedTechStack: string[];
   teamComposition: { role: string; count: number; hours: number }[];
   source?: 'ai' | 'algorithmic';
+  aiAgentSearch?: AiAgentSearchReport;
+}
+
+export interface AiAgentSearchReport {
+  agentStatus: string;
+  agentModel: string;
+  latencyMs: number;
+  timestamp: string;
+  scopeDetected: string;
+  pageCount?: number;
+  verifiedSources: {
+    name: string;
+    query: string;
+    verifiedRate: string;
+    confidence: number;
+  }[];
+  stepLogs: string[];
+  effortFormulaExplanation: string;
 }
 
 export interface EstimateRequestPayload {
