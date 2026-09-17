@@ -83,6 +83,7 @@ const Header = () => {
                 { name: 'Case Studies', href: '/case-studies' },
                 { name: 'divider-tools', href: '#', isDivider: true, heading: '🛠️ Free Tools' },
                 { name: 'AI Project Cost Estimator', href: '/tools/project-cost-estimator', isTool: true },
+                { name: 'Website Audit Tool', href: '/tools/website-audit', isTool: true },
             ]
         },
     ];

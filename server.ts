@@ -8,6 +8,7 @@ import { getFirestore, collection, getDocs, query, where } from 'firebase/firest
 import fs from 'fs';
 import { GoogleGenAI } from '@google/genai';
 import { generateAlgorithmicEstimate, COUNTRY_DATA, USD_TO_PKR } from './src/utils/estimatorLogic.js';
+import { performWebsiteAudit } from './src/utils/serverAudit.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -243,6 +244,30 @@ Return ONLY a valid JSON object matching this structure:
     }
   });
 
+  // Website Audit Tool Endpoint (/api/audit)
+  app.post('/api/audit', async (req, res) => {
+    try {
+      const { url, device = 'mobile', categories = ['performance', 'seo', 'accessibility', 'bestPractices', 'security'] } = req.body;
+
+      if (!url || typeof url !== 'string' || !url.trim()) {
+        return res.status(400).json({ error: 'Please provide a valid website URL (e.g., https://example.com).' });
+      }
+
+      const ai = getGeminiClient();
+      const auditResult = await performWebsiteAudit(url, device, categories, ai);
+
+      return res.json({
+        success: true,
+        result: auditResult
+      });
+    } catch (err: any) {
+      console.error('Error in /api/audit:', err);
+      return res.status(500).json({
+        error: err.message || 'Failed to analyze website. Please check the URL and try again.'
+      });
+    }
+  });
+
   // Permanent (301) Blog Slug Redirects (preserving SEO equity & matching canonical Firestore slugs)
   const BLOG_SLUG_REDIRECTS: Record<string, string> = {
     'rag-ai-integration-for-startups': 'the-complete-guide-to-rag-ai-integration-for-startups',
@@ -443,6 +468,7 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
         '/white-label-local-seo',
         '/local-seo-audit',
         '/tools/project-cost-estimator',
+        '/tools/website-audit',
         '/website-contract',
         '/brand-assets',
         '/editorial-policy',

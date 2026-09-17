@@ -66,6 +66,7 @@ const CaseStudyTajweedPage = lazy(() => import('./pages/CaseStudyTajweedPage'));
 const WebsiteContractPage = lazy(() => import('./pages/WebsiteContractPage'));
 const BrandAssetsPage = lazy(() => import('./pages/BrandAssetsPage'));
 const ProjectCostEstimatorPage = lazy(() => import('./pages/ProjectCostEstimatorPage'));
+const WebsiteAuditPage = lazy(() => import('./pages/WebsiteAuditPage'));
 
 // Loading fallback
 const PageLoader = () => (
@@ -245,6 +246,8 @@ export default function App() {
               <Route path="/brand-kit" element={<Navigate to="/brand-assets" replace />} />
               <Route path="/tools/project-cost-estimator" element={<ProjectCostEstimatorPage />} />
               <Route path="/project-cost-estimator" element={<Navigate to="/tools/project-cost-estimator" replace />} />
+              <Route path="/tools/website-audit" element={<WebsiteAuditPage />} />
+              <Route path="/website-audit" element={<Navigate to="/tools/website-audit" replace />} />
               <Route path="/admin" element={<AdminDashboard />} />
             </Routes>
           </Suspense>
