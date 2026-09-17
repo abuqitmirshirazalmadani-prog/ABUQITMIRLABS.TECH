@@ -5,7 +5,8 @@ export async function performWebsiteAudit(
   rawUrl: string,
   device: DeviceStrategy = 'mobile',
   categories: string[] = ['performance', 'seo', 'accessibility', 'bestPractices', 'security'],
-  geminiClient: any = null
+  geminiClient: any = null,
+  onAiFailure?: (err: any) => void
 ): Promise<AuditResult> {
   // Normalize URL
   let targetUrl = rawUrl.trim();
@@ -583,7 +584,7 @@ Do not wrap in markdown quotes if possible, or return pure JSON. Provide exactly
 `;
 
       const response = await geminiClient.models.generateContent({
-        model: 'gemini-2.5-flash',
+        model: 'gemini-3.8-flash',
         contents: aiPrompt
       });
 
@@ -595,8 +596,16 @@ Do not wrap in markdown quotes if possible, or return pure JSON. Provide exactly
           recommendations = parsed.recommendations.slice(0, 5);
         }
       }
-    } catch (aiErr) {
-      console.warn('Gemini recommendation generation error in audit:', aiErr);
+    } catch (aiErr: any) {
+      if (onAiFailure) {
+        onAiFailure(aiErr);
+      }
+      const errStr = String(aiErr?.message || aiErr || '');
+      if (errStr.includes('API_KEY_INVALID') || errStr.includes('API key not valid') || aiErr?.status === 400 || aiErr?.code === 400) {
+        console.log('[Audit Engine] Gemini API key not configured or invalid; seamlessly serving high-precision algorithmic recommendations.');
+      } else {
+        console.log('[Audit Engine] Gemini recommendation deferred; serving algorithmic recommendations.');
+      }
     }
   }
 

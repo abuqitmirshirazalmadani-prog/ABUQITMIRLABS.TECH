@@ -106,6 +106,32 @@ async function startServer() {
   let isGeminiConfigured = true;
   let lastGeminiFailure = 0;
 
+  const handleGeminiError = (err: any) => {
+    const errStr = String(err?.message || err || '');
+    if (errStr.includes('API_KEY_INVALID') || errStr.includes('API key not valid') || err?.status === 400 || err?.code === 400) {
+      isGeminiConfigured = false;
+      lastGeminiFailure = Date.now();
+      console.log('[Gemini SDK] API key is currently unconfigured or invalid; seamlessly falling back to high-precision algorithmic engines.');
+    }
+  };
+
+  // Proactive background verification so invalid container keys don't cause runtime errors
+  if (process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY !== 'MY_GEMINI_API_KEY' && process.env.GEMINI_API_KEY.trim() !== '') {
+    try {
+      const probe = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+      probe.models.generateContent({
+        model: 'gemini-3.8-flash',
+        contents: 'ping'
+      }).then(() => {
+        isGeminiConfigured = true;
+      }).catch((probeErr: any) => {
+        handleGeminiError(probeErr);
+      });
+    } catch {
+      isGeminiConfigured = false;
+    }
+  }
+
   const getGeminiClient = () => {
     const key = process.env.GEMINI_API_KEY;
     if (!key || key === 'MY_GEMINI_API_KEY' || key.trim() === '') {
@@ -221,14 +247,8 @@ Return ONLY a valid JSON object matching this structure:
             return res.json({ success: true, estimate: finalEstimate });
           }
         } catch (geminiError: any) {
-          const errStr = String(geminiError?.message || geminiError || '');
-          if (errStr.includes('API_KEY_INVALID') || errStr.includes('API key not valid') || geminiError?.status === 400 || geminiError?.code === 400) {
-            isGeminiConfigured = false;
-            lastGeminiFailure = Date.now();
-            console.log('[AI Estimator] Gemini API key is currently unconfigured or invalid; seamlessly serving high-precision algorithmic estimate.');
-          } else {
-            console.log('[AI Estimator] Gemini API request deferred; serving high-precision algorithmic estimate.');
-          }
+          handleGeminiError(geminiError);
+          console.log('[AI Estimator] Gemini API request deferred; serving high-precision algorithmic estimate.');
         }
       }
 
@@ -254,7 +274,7 @@ Return ONLY a valid JSON object matching this structure:
       }
 
       const ai = getGeminiClient();
-      const auditResult = await performWebsiteAudit(url, device, categories, ai);
+      const auditResult = await performWebsiteAudit(url, device, categories, ai, handleGeminiError);
 
       return res.json({
         success: true,
