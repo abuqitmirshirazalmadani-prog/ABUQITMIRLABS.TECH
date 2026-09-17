@@ -24,6 +24,7 @@ import CaseStudiesPage from './pages/CaseStudiesPage';
 import CaseStudyTajweedPage from './pages/CaseStudyTajweedPage';
 import BrandAssetsPage from './pages/BrandAssetsPage';
 import WebsiteContractPage from './pages/WebsiteContractPage';
+import ProjectCostEstimatorPage from './pages/ProjectCostEstimatorPage';
 import FintechSolutionsPage from './pages/solutions/FintechSolutionsPage';
 import HealthcarePlatformsPage from './pages/solutions/HealthcarePlatformsPage';
 import AIAutomationPage from './pages/solutions/AIAutomationPage';
@@ -128,6 +129,8 @@ export function renderFullApp(url: string = '/') {
               <Route path="/australia-market" element={<AustraliaMarketPage />} />
               <Route path="/brand-assets" element={<BrandAssetsPage />} />
               <Route path="/website-contract" element={<WebsiteContractPage />} />
+              <Route path="/tools/project-cost-estimator" element={<ProjectCostEstimatorPage />} />
+              <Route path="/project-cost-estimator" element={<Navigate to="/tools/project-cost-estimator" replace />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/blog" element={<BlogPage />} />

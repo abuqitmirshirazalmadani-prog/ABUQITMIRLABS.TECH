@@ -6,6 +6,8 @@ import { createServer as createViteServer } from 'vite';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
 import fs from 'fs';
+import { GoogleGenAI } from '@google/genai';
+import { generateAlgorithmicEstimate, COUNTRY_DATA, USD_TO_PKR } from './src/utils/estimatorLogic.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -96,6 +98,143 @@ async function startServer() {
       port: PORT,
       firebaseEnabled: !!db
     });
+  });
+
+  // AI Project Cost Estimator Endpoint (Gemini 3.8 Flash with Resilient Algorithmic Fallback)
+  let geminiClient: GoogleGenAI | null = null;
+  let isGeminiConfigured = true;
+  let lastGeminiFailure = 0;
+
+  const getGeminiClient = () => {
+    const key = process.env.GEMINI_API_KEY;
+    if (!key || key === 'MY_GEMINI_API_KEY' || key.trim() === '') {
+      return null;
+    }
+    // Circuit breaker: if previous attempt encountered an invalid API key, pause before retrying
+    if (!isGeminiConfigured && Date.now() - lastGeminiFailure < 300000) {
+      return null;
+    }
+    if (!geminiClient) {
+      try {
+        geminiClient = new GoogleGenAI({
+          apiKey: key,
+          httpOptions: {
+            headers: {
+              'User-Agent': 'aistudio-build'
+            }
+          }
+        });
+      } catch {
+        return null;
+      }
+    }
+    return geminiClient;
+  };
+
+  app.post('/api/estimate', async (req, res) => {
+    try {
+      const { idea, country = 'PK', projectType = 'auto', budget = 'not specified' } = req.body;
+
+      if (!idea || typeof idea !== 'string' || !idea.trim()) {
+        return res.status(400).json({ error: 'Please provide a valid project idea to generate an estimate.' });
+      }
+
+      const countryMeta = COUNTRY_DATA[country] || COUNTRY_DATA['PK'];
+      const algorithmicBaseline = generateAlgorithmicEstimate(idea, country, projectType, budget);
+
+      const ai = getGeminiClient();
+      if (ai) {
+        try {
+      const prompt = `
+You are a senior software engineering architect and commercial cost estimator at AbuQitmirLabs (https://www.abuqitmirlabs.tech).
+
+USER REQUEST:
+- Project Idea: "${idea}"
+- Target Country: ${countryMeta.name} (Code: ${countryMeta.code}, Currency: ${countryMeta.currency})
+- Verified Regional Developer Rate: ${countryMeta.hourlyRateLabel}
+- Base Engineering Hours Estimate: ${algorithmicBaseline.totalEngineeringHours.min} – ${algorithmicBaseline.totalEngineeringHours.max} Hours
+
+GROUND TRUTH STANDARDS (Google Search, Clutch.co & GoodFirms 2026 Consensus):
+1. Formula: Total Cost = Total Engineering Hours × Developer Hourly Rate in selected country.
+2. Hourly Rate Card:
+   - USA: $85 – $150 / hr (Average $100/hr)
+   - UK: $75 – $140 / hr (£60 – £110/hr)
+   - UAE: $45 – $85 / hr (AED 165 – 310/hr)
+   - Pakistan (Offshore): $18 – $35 / hr (PKR 5,000 – 9,800/hr)
+3. Complexity Differentiation:
+   - Simple single-user utilities (daily/monthly/yearly schedule app, todo, simple notes): 110 – 220 hours. Cost in US: ~$10k – $30k | Offshore PK: ~$2k – $7.5k (PKR 600k – 2.1M).
+   - Real-time safety/tracking (child tracker, background GPS daemons, dual-device pairing, geofencing, COPPA encryption): 480 – 850 hours. Cost in US: ~$42k – $125k | Offshore PK: ~$8.5k – $29k (PKR 2.4M – 8.2M).
+   - FinTech / On-Demand Logistics: 650 – 1,300 hours.
+Every prompt MUST have its own differentiated hours and cost reflecting its exact features. There must be zero discrepancy between your numbers and Google/Clutch market research.
+
+Return ONLY a valid JSON object matching this structure:
+{
+  "projectType": "${algorithmicBaseline.projectType}",
+  "detectedSummary": "${algorithmicBaseline.detectedSummary.replace(/"/g, '\\"')}",
+  "complexity": "${algorithmicBaseline.complexity}",
+  "confidence": ${algorithmicBaseline.confidence},
+  "totalEngineeringHours": { "min": ${algorithmicBaseline.totalEngineeringHours.min}, "max": ${algorithmicBaseline.totalEngineeringHours.max} },
+  "timelineWeeks": { "min": ${algorithmicBaseline.timelineWeeks.min}, "max": ${algorithmicBaseline.timelineWeeks.max} },
+  "totalCostPKR": { "min": ${algorithmicBaseline.totalCostPKR.min}, "max": ${algorithmicBaseline.totalCostPKR.max} },
+  "totalCostUSD": { "min": ${algorithmicBaseline.totalCostUSD.min}, "max": ${algorithmicBaseline.totalCostUSD.max} },
+  "phases": ${JSON.stringify(algorithmicBaseline.phases)},
+  "features": ${JSON.stringify(algorithmicBaseline.features)},
+  "suggestions": ${JSON.stringify(algorithmicBaseline.suggestions)},
+  "recommendedTechStack": ${JSON.stringify(algorithmicBaseline.recommendedTechStack)}
+}
+`;
+
+          const aiResponse = await ai.models.generateContent({
+            model: 'gemini-3.8-flash',
+            contents: prompt,
+            config: {
+              responseMimeType: 'application/json',
+              temperature: 0.2
+            }
+          });
+
+          const rawText = aiResponse.text || '';
+          const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+          if (jsonMatch) {
+            const aiData = JSON.parse(jsonMatch[0]);
+            
+            // Merge with country comparison and safe fallbacks
+            const finalEstimate = {
+              ...algorithmicBaseline,
+              ...aiData,
+              countryComparison: algorithmicBaseline.countryComparison,
+              targetCountry: {
+                ...countryMeta,
+                localCostMin: aiData.totalCostPKR?.min || algorithmicBaseline.totalCostPKR.min,
+                localCostMax: aiData.totalCostPKR?.max || algorithmicBaseline.totalCostPKR.max
+              },
+              source: 'ai'
+            };
+            isGeminiConfigured = true;
+            return res.json({ success: true, estimate: finalEstimate });
+          }
+        } catch (geminiError: any) {
+          const errStr = String(geminiError?.message || geminiError || '');
+          if (errStr.includes('API_KEY_INVALID') || errStr.includes('API key not valid') || geminiError?.status === 400 || geminiError?.code === 400) {
+            isGeminiConfigured = false;
+            lastGeminiFailure = Date.now();
+            console.log('[AI Estimator] Gemini API key is currently unconfigured or invalid; seamlessly serving high-precision algorithmic estimate.');
+          } else {
+            console.log('[AI Estimator] Gemini API request deferred; serving high-precision algorithmic estimate.');
+          }
+        }
+      }
+
+      // If AI is unavailable or failed, return the high-precision algorithmic estimate
+      return res.json({
+        success: true,
+        estimate: algorithmicBaseline,
+        source: 'algorithmic'
+      });
+    } catch (err: any) {
+      console.error('Error in /api/estimate:', err);
+      return res.status(500).json({ error: 'Failed to process cost estimate.' });
+    }
   });
 
   // Permanent (301) Blog Slug Redirects (preserving SEO equity & matching canonical Firestore slugs)
@@ -297,7 +436,10 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
         '/local-seo-citation-building',
         '/white-label-local-seo',
         '/local-seo-audit',
+        '/tools/project-cost-estimator',
         '/website-contract',
+        '/brand-assets',
+        '/editorial-policy',
         '/contact',
         '/us-market',
         '/uk-market',
@@ -337,6 +479,9 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
         }
         if (route === '/blog') {
           return { priority: '0.9', changefreq: 'daily' };
+        }
+        if (route === '/tools/project-cost-estimator') {
+          return { priority: '0.95', changefreq: 'daily' };
         }
         if ([
           '/custom-software',

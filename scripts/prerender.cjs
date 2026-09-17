@@ -144,6 +144,7 @@ const routes = [
   '/case-studies/tajweedpage',
   '/website-contract',
   '/brand-assets',
+  '/tools/project-cost-estimator',
   '/blog/rag-ai-integration-for-startups',
   '/blog/agentic-ai-production-failures',
   '/blog/custom-web-development-company',

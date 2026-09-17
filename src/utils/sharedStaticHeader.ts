@@ -57,14 +57,6 @@ export function renderStaticHeader(activePath: string = '/'): string {
         </a>
       </div>
 
-      <!-- News Dropdown -->
-      <div class="relative group">
-        <a href="/news/all" class="flex items-center gap-1 cursor-pointer py-4 text-xs xl:text-sm font-semibold text-gray-300 hover:text-white transition-colors whitespace-nowrap" aria-label="News Submenu">
-          <span>News</span>
-          <svg class="w-3.5 h-3.5 text-gray-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </a>
-      </div>
-
       <!-- About Dropdown -->
       <div class="relative group">
         <a href="/about/our-company" class="flex items-center gap-1 cursor-pointer py-4 text-xs xl:text-sm font-semibold text-gray-300 hover:text-white transition-colors whitespace-nowrap" aria-label="About Submenu">
@@ -73,18 +65,11 @@ export function renderStaticHeader(activePath: string = '/'): string {
         </a>
       </div>
 
-      <!-- Case Studies Dropdown -->
+      <!-- Resources Dropdown -->
       <div class="relative group">
-        <a href="/case-studies" class="flex items-center gap-1 cursor-pointer py-4 text-xs xl:text-sm font-semibold ${activePath === '/case-studies' ? 'text-[#ccff00]' : 'text-gray-300 hover:text-white'} transition-colors whitespace-nowrap" aria-label="Case Studies Submenu">
-          <span>Case Studies</span>
+        <a href="/blog" class="flex items-center gap-1 cursor-pointer py-4 text-xs xl:text-sm font-semibold ${activePath.startsWith('/blog') || activePath.startsWith('/tools') || activePath.startsWith('/case-studies') || activePath.startsWith('/news') ? 'text-[#ccff00]' : 'text-gray-300 hover:text-white'} transition-colors whitespace-nowrap" aria-label="Resources Submenu">
+          <span>Resources</span>
           <svg class="w-3.5 h-3.5 text-gray-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </a>
-      </div>
-
-      <!-- Blog -->
-      <div class="relative group">
-        <a href="/blog" class="text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap ${activePath.startsWith('/blog') ? 'text-[#ccff00]' : 'text-gray-300 hover:text-white'}">
-          Blog
         </a>
       </div>
     </nav>

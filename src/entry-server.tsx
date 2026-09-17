@@ -53,6 +53,7 @@ import PrivacyPage from './pages/PrivacyPage';
 import BlogPostPage from './pages/BlogPostPage';
 import CaseStudyTajweedPage from './pages/CaseStudyTajweedPage';
 import WebsiteContractPage from './pages/WebsiteContractPage';
+import ProjectCostEstimatorPage from './pages/ProjectCostEstimatorPage';
 
 export function render(url: string) {
   const helmetContext: any = {};
@@ -147,6 +148,8 @@ export function render(url: string) {
           <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />
           <Route path="/website-contract" element={<WebsiteContractPage />} />
+          <Route path="/tools/project-cost-estimator" element={<ProjectCostEstimatorPage />} />
+          <Route path="/project-cost-estimator" element={<Navigate to="/tools/project-cost-estimator" replace />} />
         </Routes>
       </MemoryRouter>
     </HelmetProvider>

@@ -786,5 +786,17 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         }
       ]
     }
+  },
+  '/tools/project-cost-estimator': {
+    title: 'AI Project Cost Estimator 2026 | Free Software & Website Pricing Calculator | AbuQitmirLabs',
+    description: 'Calculate instant, accurate project costs for websites, custom software, mobile apps, and AI agents. Compare 8 country rates with 100% free PDF report download.',
+    canonical: 'https://www.abuqitmirlabs.tech/tools/project-cost-estimator',
+    ogTitle: 'AI Project Cost Estimator 2026 | AbuQitmirLabs',
+    ogDescription: 'Instant cost estimates for websites, mobile apps, and AI agents with country-wise breakdown and free PDF report.',
+    ogImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg',
+    ogType: 'website',
+    twitterTitle: 'AI Project Cost Estimator 2026 | AbuQitmirLabs',
+    twitterDescription: 'Get instant cost estimates for software projects with regional comparisons and PDF export.',
+    twitterImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg'
   }
 };
