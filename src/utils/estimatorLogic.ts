@@ -183,7 +183,10 @@ export const HOURLY_RATE_BENCHMARKS: HourlyRateBenchmark[] = [
 ];
 
 export const PROJECT_TYPES_REFERENCE = [
-  { type: 'Simple Website (5 pages)', baseHours: '40–80 hrs', costPKR: '200,000–400,000', costUSD: '$720–$1,450 (PK) | $3,400–$12,000 (US)' },
+  { type: 'Landing Page (1 Page)', baseHours: '28–45 hrs', costPKR: '140,000–440,000', costUSD: '$500–$1,550 (PK) | $2,400–$6,750 (US)' },
+  { type: 'Starter Business Website (5 Pages)', baseHours: '65–105 hrs', costPKR: '325,000–1,030,000', costUSD: '$1,170–$3,675 (PK) | $5,500–$15,750 (US)' },
+  { type: 'Professional Business Website (10 Pages)', baseHours: '110–180 hrs', costPKR: '550,000–1,765,000', costUSD: '$1,980–$6,300 (PK) | $9,350–$27,000 (US)' },
+  { type: 'Corporate Enterprise Website (20 Pages)', baseHours: '200–330 hrs', costPKR: '1,000,000–3,234,000', costUSD: '$3,600–$11,550 (PK) | $17,000–$49,500 (US)' },
   { type: 'Productivity / Schedule App', baseHours: '120–220 hrs', costPKR: '600,000–2,150,000', costUSD: '$2,160–$7,700 (PK) | $10,200–$33,000 (US)' },
   { type: 'E-commerce Store (Catalog & Cart)', baseHours: '240–460 hrs', costPKR: '1,200,000–4,500,000', costUSD: '$4,320–$16,100 (PK) | $20,400–$69,000 (US)' },
   { type: 'Child / GPS Tracking System', baseHours: '480–820 hrs', costPKR: '2,400,000–8,000,000', costUSD: '$8,640–$28,700 (PK) | $40,800–$123,000 (US)' },
@@ -335,6 +338,47 @@ export interface DomainAnalysis {
   techStack: string[];
   features: EstimateFeature[];
   suggestions: string[];
+}
+
+/**
+ * Robust quantity and page count extractor from prompt text.
+ * Accurately parses: "10-page", "20 page", "5 pages", "1-page", "twenty pages", "ten page", etc.
+ */
+export function extractPageCount(text: string): number | null {
+  const numWords: Record<string, number> = {
+    one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10,
+    eleven: 11, twelve: 12, thirteen: 13, fourteen: 14, fifteen: 15, sixteen: 16, seventeen: 17,
+    eighteen: 18, nineteen: 19, twenty: 20, twentyfive: 25, thirty: 30, forty: 40, fifty: 50,
+    sixty: 60, seventy: 70, eighty: 80, ninety: 90, hundred: 100
+  };
+  
+  // 1. Digits with -page, page, pages (e.g. "10-page", "20 page", "5 pages", "1page")
+  const digitMatch = text.match(/\b(\d{1,3})\s*[-]?\s*pages?\b/i);
+  if (digitMatch) {
+    const p = parseInt(digitMatch[1], 10);
+    if (!isNaN(p) && p > 0 && p <= 500) return p;
+  }
+
+  // 2. Word with -page, page, pages (e.g. "ten-page", "twenty page", "twenty-pages")
+  const wordMatch = text.match(/\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|twentyfive|thirty|forty|fifty|hundred)\s*[-]?\s*pages?\b/i);
+  if (wordMatch) {
+    const w = wordMatch[1].toLowerCase().replace('-', '');
+    if (numWords[w]) return numWords[w];
+  }
+
+  return null;
+}
+
+/**
+ * Mobile app screen count extractor (e.g. "10 screens", "15-screen mobile app")
+ */
+export function extractScreenCount(text: string): number | null {
+  const digitMatch = text.match(/\b(\d{1,3})\s*[-]?\s*screens?\b/i);
+  if (digitMatch) {
+    const s = parseInt(digitMatch[1], 10);
+    if (!isNaN(s) && s > 0 && s <= 200) return s;
+  }
+  return null;
 }
 
 export function analyzeProjectDomain(
@@ -748,21 +792,186 @@ export function analyzeProjectDomain(
     };
   }
 
-  // 9. GENERAL MOBILE APP
+  // 9. WEBSITE & MULTI-PAGE DEVELOPMENT (DYNAMIC PAGES ENGINE)
+  const extractedPages = extractPageCount(text);
+  const isWebsite = 
+    userType === 'website' ||
+    text.includes('website') ||
+    text.includes('web site') ||
+    text.includes('web page') ||
+    text.includes('webpage') ||
+    text.includes('landing page') ||
+    text.includes('web design') ||
+    text.includes('portfolio') ||
+    text.includes('corporate site') ||
+    text.includes('business site') ||
+    text.includes('wordpress') ||
+    (extractedPages !== null && !text.includes('mobile') && !text.includes('ios') && !text.includes('android'));
+
+  if (isWebsite) {
+    const pageCount = extractedPages || (
+      (text.includes('landing page') || text.includes('one page') || text.includes('1 page')) ? 1 : 
+      (isEnterprise ? 20 : (isSimple ? 3 : 5))
+    );
+
+    let hoursMin: number;
+    let hoursMax: number;
+    let complexity: 'Low' | 'Medium' | 'High' | 'Enterprise';
+    let tMin: number;
+    let tMax: number;
+    let projectTitle: string;
+    let summary: string;
+
+    if (pageCount === 1) {
+      hoursMin = 28;
+      hoursMax = 45;
+      complexity = 'Low';
+      tMin = 1;
+      tMax = 2;
+      projectTitle = 'Single-Page High-Converting Landing Page';
+      summary = 'High-converting single-page landing page featuring an interactive hero showcase, value proposition cards, customer proof testimonials, lead capture form, and sub-1.2s Core Web Vitals speed.';
+    } else if (pageCount <= 6) {
+      hoursMin = Math.round(30 + pageCount * 9);
+      hoursMax = Math.round(45 + pageCount * 14);
+      complexity = 'Low';
+      tMin = 2;
+      tMax = 4;
+      projectTitle = `Starter Business Website (${pageCount} Pages)`;
+      summary = `Custom responsive ${pageCount}-page business website including high-impact interactive homepage, ${pageCount - 1} content & service inner pages, mobile responsive drawer navigation, contact forms with SMTP alerts, and on-page technical SEO.`;
+    } else if (pageCount <= 14) {
+      hoursMin = Math.round(25 + pageCount * 9);
+      hoursMax = Math.round(40 + pageCount * 14);
+      complexity = 'Medium';
+      tMin = 3;
+      tMax = 5;
+      projectTitle = `Professional Business Website (${pageCount} Pages)`;
+      summary = `Custom responsive ${pageCount}-page business website featuring high-impact interactive homepage, ${pageCount - 1} custom content/service inner pages, responsive design token system, lead capture forms with anti-spam defense, and comprehensive Google Core Web Vitals optimization.`;
+    } else if (pageCount <= 28) {
+      hoursMin = Math.round(20 + pageCount * 9.5);
+      hoursMax = Math.round(30 + pageCount * 15);
+      complexity = 'Medium';
+      tMin = 5;
+      tMax = 8;
+      projectTitle = `Corporate Enterprise Website (${pageCount} Pages)`;
+      summary = `Full-scale corporate website spanning ${pageCount} custom responsive pages and department sub-directories, advanced multi-level mega-menu, site search, multi-department lead routing webhooks, and enterprise SEO schema hierarchy.`;
+    } else {
+      hoursMin = Math.round(pageCount * 9);
+      hoursMax = Math.round(pageCount * 14.5);
+      complexity = pageCount > 40 ? 'Enterprise' : 'High';
+      tMin = Math.max(7, Math.round(pageCount / 4));
+      tMax = Math.max(tMin + 3, Math.round(pageCount / 2.5));
+      projectTitle = `Large-Scale Enterprise Web Portal (${pageCount} Pages)`;
+      summary = `Extensive corporate web portal comprising ${pageCount} responsive pages, modular component library, faceted search directory, role-based contact routing, automated XML sitemaps, and multi-region CDN edge caching.`;
+    }
+
+    const innerPagesCount = Math.max(0, pageCount - 1);
+    const innerPageHoursMin = innerPagesCount * 6;
+    const innerPageHoursMax = innerPagesCount * 10;
+
+    const features: EstimateFeature[] = [
+      {
+        name: 'Custom Interactive Homepage & Hero Value Proposition',
+        hoursMin: pageCount === 1 ? 14 : (pageCount <= 10 ? 20 : 26),
+        hoursMax: pageCount === 1 ? 22 : (pageCount <= 10 ? 30 : 38),
+        costMin: 0,
+        costMax: 0,
+        complexity: 'Medium'
+      }
+    ];
+
+    if (innerPagesCount > 0) {
+      features.push({
+        name: `${innerPagesCount} Tailored Responsive Inner Pages (About, Services, Case Studies, FAQ, etc.)`,
+        hoursMin: innerPageHoursMin,
+        hoursMax: innerPageHoursMax,
+        costMin: 0,
+        costMax: 0,
+        complexity: pageCount > 15 ? 'High' : 'Medium'
+      });
+    }
+
+    features.push({
+      name: pageCount > 15 ? 'Multi-Level Mega-Menu, Breadcrumb Navigation & Site Search' : 'Mobile Responsive Navigation, Drawer Menu & Design System Tokens',
+      hoursMin: pageCount > 15 ? 18 : 12,
+      hoursMax: pageCount > 15 ? 28 : 18,
+      costMin: 0,
+      costMax: 0,
+      complexity: pageCount > 15 ? 'Medium' : 'Low'
+    });
+
+    features.push({
+      name: pageCount > 12 ? 'Multiple Department Lead Inquiries & Automated Routing Webhooks' : 'Lead Generation Forms with SMTP Email Delivery & Spam Honeypot',
+      hoursMin: pageCount > 12 ? 14 : 10,
+      hoursMax: pageCount > 12 ? 24 : 16,
+      costMin: 0,
+      costMax: 0,
+      complexity: pageCount > 12 ? 'Medium' : 'Low'
+    });
+
+    features.push({
+      name: pageCount > 12 ? 'Full Technical SEO Architecture, Schema.org Hierarchy & XML Sitemaps' : 'Technical On-Page SEO, OpenGraph Meta Tags & XML Sitemap',
+      hoursMin: pageCount > 12 ? 12 : 8,
+      hoursMax: pageCount > 12 ? 20 : 14,
+      costMin: 0,
+      costMax: 0,
+      complexity: 'Low'
+    });
+
+    features.push({
+      name: pageCount > 15 ? 'Enterprise Asset CDN Caching, Image Optimization & 95+ PageSpeed Audit' : 'Sub-1.2s Core Web Vitals Speed Tuning & SSL HTTPS Setup',
+      hoursMin: pageCount > 15 ? 12 : 8,
+      hoursMax: pageCount > 15 ? 22 : 14,
+      costMin: 0,
+      costMax: 0,
+      complexity: 'Low'
+    });
+
+    return {
+      projectType: projectTitle,
+      subType: 'website',
+      complexity,
+      confidence: 94,
+      baseHoursMin: hoursMin,
+      baseHoursMax: hoursMax,
+      timelineMin: tMin,
+      timelineMax: tMax,
+      summary,
+      techStack: [
+        'React / Next.js 14 / Vite',
+        'TypeScript & Tailwind CSS',
+        'Headless CMS (Sanity / Strapi / Decap) or Static Engine',
+        'Node.js SMTP Email API & Cloudflare Workers',
+        'Google Analytics 4 & Search Console Setup',
+        'Vercel / Cloudflare Edge CDN Hosting'
+      ],
+      features,
+      suggestions: [
+        `Ensure all ${pageCount} pages use semantic HTML5 elements and structured JSON-LD Schema to maximize Google Search indexing.`,
+        'Implement automated image optimization with AVIF/WebP formats and responsive srcsets to guarantee sub-1.2s Largest Contentful Paint (LCP).',
+        'Include conversion-focused call-to-action (CTA) buttons sticky on mobile viewports to maximize inquiry conversion rates.',
+        'Use headless deployment architecture on Vercel or Cloudflare Pages to maintain near-zero monthly hosting infrastructure costs.'
+      ]
+    };
+  }
+
+  // 10. GENERAL MOBILE APP
+  const extractedScreens = extractScreenCount(text);
   if (
     text.includes('app') ||
     text.includes('mobile') ||
     text.includes('ios') ||
     text.includes('android') ||
+    extractedScreens !== null ||
     userType === 'mobile'
   ) {
-    const hoursMin = isSimple ? 180 : 270;
-    const hoursMax = isSimple ? 360 : 540;
+    const screenCount = extractedScreens || (isSimple ? 5 : (isEnterprise ? 25 : 12));
+    const hoursMin = extractedScreens ? Math.round(90 + screenCount * 11) : (isSimple ? 180 : 270);
+    const hoursMax = extractedScreens ? Math.round(150 + screenCount * 18) : (isSimple ? 360 : 540);
     const tMin = isSimple ? 5 : 8;
     const tMax = isSimple ? 9 : 13;
 
     return {
-      projectType: 'Mobile App (Cross-Platform iOS & Android)',
+      projectType: extractedScreens ? `Mobile App (${screenCount} Custom Screens)` : 'Mobile App (Cross-Platform iOS & Android)',
       subType: 'mobile-general',
       complexity: isSimple ? 'Low' : 'Medium',
       confidence: 89,
@@ -770,7 +979,7 @@ export function analyzeProjectDomain(
       baseHoursMax: hoursMax,
       timelineMin: tMin,
       timelineMax: tMax,
-      summary: 'Native-feel cross-platform mobile application for iOS and Android with intuitive user onboarding, real-time database synchronization, push notification alerts, and responsive UI screens.',
+      summary: `Native-feel cross-platform mobile application for iOS and Android with intuitive user onboarding, ${screenCount} responsive application screens, real-time database synchronization, push notifications, and App Store readiness.`,
       techStack: [
         'Flutter / React Native',
         'Firebase / Supabase Backend',
@@ -780,7 +989,7 @@ export function analyzeProjectDomain(
       ],
       features: [
         { name: 'User Authentication & Social Login (Google / Apple / Phone OTP)', hoursMin: 45, hoursMax: 85, costMin: 0, costMax: 0, complexity: 'Medium' },
-        { name: 'Core Application Workflow & Business Logic Screens', hoursMin: 70, hoursMax: 140, costMin: 0, costMax: 0, complexity: 'Medium' },
+        { name: `Core Workflow Screens & Business Logic (${screenCount} Screens)`, hoursMin: Math.round(screenCount * 7), hoursMax: Math.round(screenCount * 14), costMin: 0, costMax: 0, complexity: 'Medium' },
         { name: 'Cloud Database Synchronization & Offline Storage Caching', hoursMin: 50, hoursMax: 100, costMin: 0, costMax: 0, complexity: 'Medium' },
         { name: 'Push Notifications (FCM / APNS) & Deep-Link Navigation', hoursMin: 35, hoursMax: 70, costMin: 0, costMax: 0, complexity: 'Low' },
         { name: 'Admin Management Web Portal & Content Management', hoursMin: 30, hoursMax: 65, costMin: 0, costMax: 0, complexity: 'Medium' },

@@ -161,11 +161,17 @@ GROUND TRUTH STANDARDS (Google Search, Clutch.co & GoodFirms 2026 Consensus):
    - UK: $75 – $140 / hr (£60 – £110/hr)
    - UAE: $45 – $85 / hr (AED 165 – 310/hr)
    - Pakistan (Offshore): $18 – $35 / hr (PKR 5,000 – 9,800/hr)
-3. Complexity Differentiation:
+3. Complexity & Scale Differentiation:
+   - Website Page Counts:
+     * 1-page landing page: 28 – 45 hours ($500 – $1,550 PK | $2,400 – $6,750 US).
+     * 5-page business site: 65 – 105 hours ($1,170 – $3,675 PK | $5,500 – $15,750 US).
+     * 10-page professional website: 110 – 180 hours ($1,980 – $6,300 PK | $9,350 – $27,000 US).
+     * 20-page corporate enterprise site: 200 – 330 hours ($3,600 – $11,550 PK | $17,000 – $49,500 US).
+     * Rule: A 20-page website takes roughly 1.8x the engineering hours and budget of a 10-page website due to design, responsive layouts, content integration, and SEO across 19 custom inner pages. Never provide the same hours for different page counts!
    - Simple single-user utilities (daily/monthly/yearly schedule app, todo, simple notes): 110 – 220 hours. Cost in US: ~$10k – $30k | Offshore PK: ~$2k – $7.5k (PKR 600k – 2.1M).
    - Real-time safety/tracking (child tracker, background GPS daemons, dual-device pairing, geofencing, COPPA encryption): 480 – 850 hours. Cost in US: ~$42k – $125k | Offshore PK: ~$8.5k – $29k (PKR 2.4M – 8.2M).
    - FinTech / On-Demand Logistics: 650 – 1,300 hours.
-Every prompt MUST have its own differentiated hours and cost reflecting its exact features. There must be zero discrepancy between your numbers and Google/Clutch market research.
+Every prompt MUST have its own differentiated hours and cost reflecting its exact features and quantity (pages/screens). There must be zero discrepancy between your numbers and Google/Clutch market research.
 
 Return ONLY a valid JSON object matching this structure:
 {
