@@ -69,6 +69,7 @@ const ProjectCostEstimatorPage = lazy(() => import('./pages/ProjectCostEstimator
 const WebsiteAuditPage = lazy(() => import('./pages/WebsiteAuditPage'));
 const SeoChecklistPage = lazy(() => import('./pages/SeoChecklistPage'));
 const AiReadinessScorePage = lazy(() => import('./pages/AiReadinessScorePage'));
+const TechStackRecommenderPage = lazy(() => import('./pages/TechStackRecommenderPage'));
 
 // Loading fallback
 const PageLoader = () => (
@@ -254,6 +255,8 @@ export default function App() {
               <Route path="/seo-checklist" element={<Navigate to="/tools/seo-checklist" replace />} />
               <Route path="/tools/ai-readiness-score" element={<AiReadinessScorePage />} />
               <Route path="/ai-readiness-score" element={<Navigate to="/tools/ai-readiness-score" replace />} />
+              <Route path="/tools/tech-stack-recommender" element={<TechStackRecommenderPage />} />
+              <Route path="/tech-stack-recommender" element={<Navigate to="/tools/tech-stack-recommender" replace />} />
               <Route path="/admin" element={<AdminDashboard />} />
             </Routes>
           </Suspense>

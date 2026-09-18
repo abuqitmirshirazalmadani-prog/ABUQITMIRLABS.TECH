@@ -41,6 +41,11 @@ export const routeLoaders: Record<string, () => Promise<any>> = {
   '/terms': () => import('../pages/TermsPage'),
   '/privacy': () => import('../pages/PrivacyPage'),
   '/website-contract': () => import('../pages/WebsiteContractPage'),
+  '/tools/project-cost-estimator': () => import('../pages/ProjectCostEstimatorPage'),
+  '/tools/website-audit': () => import('../pages/WebsiteAuditPage'),
+  '/tools/seo-checklist': () => import('../pages/SeoChecklistPage'),
+  '/tools/ai-readiness-score': () => import('../pages/AiReadinessScorePage'),
+  '/tools/tech-stack-recommender': () => import('../pages/TechStackRecommenderPage'),
 };
 
 const preloadedSet = new Set<string>();

@@ -11,6 +11,7 @@ import { generateAlgorithmicEstimate, COUNTRY_DATA, USD_TO_PKR } from './src/uti
 import { performWebsiteAudit } from './src/utils/serverAudit.js';
 import { generateAlgorithmicChecklist } from './src/utils/seoChecklistGenerator.js';
 import { calculateScores, getReadinessLevel, getFallbackResult } from './src/utils/aiReadinessEngine.js';
+import { getFallbackRecommendation } from './src/utils/techStackEngine.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -524,6 +525,135 @@ Return ONLY valid JSON matching this schema:
     }
   });
 
+  // Tech Stack Recommender Endpoint (/api/tech-stack-recommender)
+  app.post('/api/tech-stack-recommender', async (req, res) => {
+    try {
+      const body = req.body || {};
+      const {
+        projectType,
+        teamSize,
+        experience,
+        timeline,
+        budget,
+        scale,
+        features = [],
+        preferences = [],
+      } = body;
+
+      if (!projectType || !teamSize || !experience || !timeline) {
+        return res.status(400).json({ error: 'Required fields missing: projectType, teamSize, experience, timeline' });
+      }
+
+      const fallbackResult = getFallbackRecommendation(body);
+      const ai = getGeminiClient();
+
+      if (ai) {
+        try {
+          const prompt = `You are a principal solutions architect at AbuQitmirLabs. Recommend the optimal tech stack for this project.
+
+PROJECT PROFILE:
+- Project Type: ${projectType}
+- Team Size: ${teamSize}
+- Experience Level: ${experience}
+- Timeline: ${timeline}
+- Budget: ${budget || 'Not specified'}
+- Expected Scale: ${scale || 'Startup'}
+- Required Features: ${Array.isArray(features) ? features.join(', ') : 'none'}
+- Priorities: ${Array.isArray(preferences) ? preferences.join(', ') : 'none'}
+
+TASK:
+Generate a comprehensive tech stack recommendation tailored to this exact profile.
+Return ONLY valid JSON matching this schema:
+{
+  "stackName": "string",
+  "summary": "2-3 sentence personalized summary of why this stack fits their project",
+  "estimatedSetupTime": "1-2 weeks",
+  "difficultyLevel": "Beginner-friendly",
+  "monthlyCostEstimate": "$0-$50",
+  "totalMonthlyCost": "$0-$50",
+  "components": [
+    {
+      "icon": "⚛️",
+      "category": "Frontend",
+      "name": "string",
+      "reason": "Detailed reason specific to their project",
+      "learningCurve": "low",
+      "community": "Massive",
+      "costTier": "Free",
+      "alternatives": [
+        { "name": "Alternative 1", "reason": "Why choose this" }
+      ]
+    }
+  ],
+  "whyThisStack": [
+    { "icon": "⚡", "title": "string", "description": "string" }
+  ],
+  "pros": ["string", "string", "string"],
+  "cons": ["string", "string", "string"],
+  "setupSteps": [
+    { "title": "string", "description": "string", "resources": ["string"] }
+  ],
+  "learningResources": [
+    { "icon": "📺", "category": "string", "resources": ["string"] }
+  ],
+  "costBreakdown": [
+    { "icon": "🌐", "category": "string", "range": "string", "note": "string" }
+  ],
+  "nextSteps": [
+    { "title": "string", "description": "string" }
+  ]
+}`;
+
+          const aiResponse = await ai.models.generateContent({
+            model: 'gemini-3.8-flash',
+            contents: prompt,
+            config: {
+              responseMimeType: 'application/json',
+              temperature: 0.3
+            }
+          });
+
+          const rawText = aiResponse.text || '';
+          const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+          if (jsonMatch) {
+            const parsed = JSON.parse(jsonMatch[0]);
+            const finalResult = {
+              stackName: parsed.stackName || fallbackResult.stackName,
+              summary: parsed.summary || fallbackResult.summary,
+              estimatedSetupTime: parsed.estimatedSetupTime || fallbackResult.estimatedSetupTime,
+              difficultyLevel: parsed.difficultyLevel || fallbackResult.difficultyLevel,
+              monthlyCostEstimate: parsed.monthlyCostEstimate || fallbackResult.monthlyCostEstimate,
+              totalMonthlyCost: parsed.totalMonthlyCost || parsed.monthlyCostEstimate || fallbackResult.totalMonthlyCost,
+              components: parsed.components?.length ? parsed.components : fallbackResult.components,
+              whyThisStack: parsed.whyThisStack?.length ? parsed.whyThisStack : fallbackResult.whyThisStack,
+              pros: parsed.pros?.length ? parsed.pros : fallbackResult.pros,
+              cons: parsed.cons?.length ? parsed.cons : fallbackResult.cons,
+              setupSteps: parsed.setupSteps?.length ? parsed.setupSteps : fallbackResult.setupSteps,
+              learningResources: parsed.learningResources?.length ? parsed.learningResources : fallbackResult.learningResources,
+              costBreakdown: parsed.costBreakdown?.length ? parsed.costBreakdown : fallbackResult.costBreakdown,
+              nextSteps: parsed.nextSteps?.length ? parsed.nextSteps : fallbackResult.nextSteps,
+              generatedAt: new Date().toISOString(),
+              source: 'ai'
+            };
+            return res.json({ success: true, result: finalResult });
+          }
+        } catch (geminiError: any) {
+          handleGeminiError(geminiError);
+          console.warn('[Tech Stack Recommender] Gemini request deferred; serving algorithmic fallback.');
+        }
+      }
+
+      return res.json({
+        success: true,
+        result: fallbackResult,
+        source: 'algorithmic'
+      });
+    } catch (err: any) {
+      console.error('Error in /api/tech-stack-recommender:', err);
+      return res.status(500).json({ error: 'Failed to generate tech stack recommendation.' });
+    }
+  });
+
   // Permanent (301) Blog Slug Redirects (preserving SEO equity & matching canonical Firestore slugs)
   const BLOG_SLUG_REDIRECTS: Record<string, string> = {
     'rag-ai-integration-for-startups': 'the-complete-guide-to-rag-ai-integration-for-startups',
@@ -727,6 +857,7 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
         '/tools/website-audit',
         '/tools/seo-checklist',
         '/tools/ai-readiness-score',
+        '/tools/tech-stack-recommender',
         '/website-contract',
         '/brand-assets',
         '/editorial-policy',
