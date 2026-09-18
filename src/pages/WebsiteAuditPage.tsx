@@ -572,16 +572,16 @@ export default function WebsiteAuditPage() {
             </Link>
 
             <Link
-              to="/web-development"
+              to="/tools/seo-checklist"
               className="bg-[#0d0d0d] border border-[#222] hover:border-[#ccff00]/40 rounded-2xl p-6 transition-all group block space-y-2"
             >
-              <span className="text-xs font-mono text-[#ccff00] uppercase tracking-wider block">Service</span>
+              <span className="text-xs font-mono text-[#ccff00] uppercase tracking-wider block">Tool #3</span>
               <h4 className="text-lg font-bold text-white group-hover:text-[#ccff00] transition-colors flex items-center justify-between">
-                <span>Custom Web Engineering</span>
+                <span>SEO Checklist Generator</span>
                 <ArrowRight className="w-4 h-4 text-gray-500 group-hover:text-[#ccff00] group-hover:translate-x-1 transition-all" />
               </h4>
               <p className="text-xs text-gray-400 leading-relaxed">
-                High-performance Next.js and React enterprise applications engineered with built-in 95+ Core Web Vitals.
+                Generate a personalized, step-by-step 45+ task SEO checklist tailored to your industry, website stage, and revenue goals.
               </p>
             </Link>
 

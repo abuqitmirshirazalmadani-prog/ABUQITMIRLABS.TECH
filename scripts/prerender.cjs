@@ -145,6 +145,8 @@ const routes = [
   '/website-contract',
   '/brand-assets',
   '/tools/project-cost-estimator',
+  '/tools/website-audit',
+  '/tools/seo-checklist',
   '/blog/rag-ai-integration-for-startups',
   '/blog/agentic-ai-production-failures',
   '/blog/custom-web-development-company',

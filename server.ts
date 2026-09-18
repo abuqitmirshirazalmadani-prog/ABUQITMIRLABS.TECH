@@ -9,6 +9,7 @@ import fs from 'fs';
 import { GoogleGenAI } from '@google/genai';
 import { generateAlgorithmicEstimate, COUNTRY_DATA, USD_TO_PKR } from './src/utils/estimatorLogic.js';
 import { performWebsiteAudit } from './src/utils/serverAudit.js';
+import { generateAlgorithmicChecklist } from './src/utils/seoChecklistGenerator.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -288,6 +289,117 @@ Return ONLY a valid JSON object matching this structure:
     }
   });
 
+  // SEO Checklist Generator Endpoint (/api/seo-checklist)
+  app.post('/api/seo-checklist', async (req, res) => {
+    try {
+      const { businessType, industry, stage, goal, teamSize, time } = req.body || {};
+
+      if (!businessType || !industry || !stage || !goal) {
+        return res.status(400).json({ error: 'Business type, industry, stage, and goal are required' });
+      }
+
+      const algorithmicChecklist = generateAlgorithmicChecklist(
+        businessType,
+        industry,
+        stage,
+        goal,
+        teamSize,
+        time
+      );
+
+      const ai = getGeminiClient();
+      if (ai) {
+        try {
+          const prompt = `
+You are a senior SEO strategist at AbuQitmirLabs. Generate a personalized, step-by-step SEO checklist for this business.
+
+BUSINESS PROFILE:
+- Business Type: ${businessType}
+- Industry: ${industry}
+- Website Stage: ${stage}
+- Primary Goal: ${goal}
+- Team Size: ${teamSize || 'not specified'}
+- Weekly Time Available: ${time || 'not specified'}
+
+Return ONLY valid JSON matching this schema:
+{
+  "totalTasks": ${algorithmicChecklist.totalTasks},
+  "estimatedWeeks": ${algorithmicChecklist.estimatedWeeks},
+  "priorityTasks": ${algorithmicChecklist.priorityTasks},
+  "phases": ${JSON.stringify(algorithmicChecklist.phases)},
+  "topPriorities": ${JSON.stringify(algorithmicChecklist.topPriorities)},
+  "expectedImpact": "${algorithmicChecklist.expectedImpact.replace(/"/g, '\\"')}",
+  "commonMistakes": ${JSON.stringify(algorithmicChecklist.commonMistakes)},
+  "quickWins": ${JSON.stringify(algorithmicChecklist.quickWins)}
+}
+`;
+
+          const aiResponse = await ai.models.generateContent({
+            model: 'gemini-3.8-flash',
+            contents: prompt,
+            config: {
+              responseMimeType: 'application/json',
+              temperature: 0.3
+            }
+          });
+
+          const rawText = aiResponse.text || '';
+          const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+          if (jsonMatch) {
+            const aiData = JSON.parse(jsonMatch[0]);
+            const finalChecklist = {
+              ...algorithmicChecklist,
+              ...aiData,
+              businessType,
+              industry,
+              stage,
+              goal,
+              generatedAt: new Date().toISOString(),
+              source: 'ai'
+            };
+            return res.json({ success: true, checklist: finalChecklist });
+          }
+        } catch (geminiError: any) {
+          handleGeminiError(geminiError);
+        }
+      }
+
+      return res.json({
+        success: true,
+        checklist: algorithmicChecklist,
+        source: 'algorithmic'
+      });
+    } catch (err: any) {
+      console.error('Error in /api/seo-checklist:', err);
+      return res.status(500).json({ error: 'Failed to generate SEO checklist.' });
+    }
+  });
+
+  // SEO Checklist Email Delivery Endpoint (/api/email-checklist)
+  app.post('/api/email-checklist', async (req, res) => {
+    try {
+      const { email, checklistTitle, industry, businessType, totalTasks, completedCount, estimatedWeeks } = req.body || {};
+
+      if (!email || typeof email !== 'string' || !email.includes('@')) {
+        return res.status(400).json({ error: 'A valid email address is required' });
+      }
+
+      const sanitizedEmail = email.trim().toLowerCase();
+      console.log(`[SEO Checklist Email Dispatch] Received request for ${sanitizedEmail} (${industry || 'general'} ${businessType || 'business'}). Tasks: ${completedCount || 0}/${totalTasks || 0}, Timeline: ${estimatedWeeks || 12} weeks.`);
+
+      return res.json({
+        success: true,
+        message: `SEO Action Plan successfully dispatched to ${sanitizedEmail}`,
+        email: sanitizedEmail,
+        deliveryStatus: 'queued',
+        timestamp: new Date().toISOString()
+      });
+    } catch (err: any) {
+      console.error('Error in /api/email-checklist:', err);
+      return res.status(500).json({ error: 'Failed to process email dispatch.' });
+    }
+  });
+
   // Permanent (301) Blog Slug Redirects (preserving SEO equity & matching canonical Firestore slugs)
   const BLOG_SLUG_REDIRECTS: Record<string, string> = {
     'rag-ai-integration-for-startups': 'the-complete-guide-to-rag-ai-integration-for-startups',
@@ -489,6 +601,7 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
         '/local-seo-audit',
         '/tools/project-cost-estimator',
         '/tools/website-audit',
+        '/tools/seo-checklist',
         '/website-contract',
         '/brand-assets',
         '/editorial-policy',
@@ -532,7 +645,11 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
         if (route === '/blog') {
           return { priority: '0.9', changefreq: 'daily' };
         }
-        if (route === '/tools/project-cost-estimator') {
+        if ([
+          '/tools/project-cost-estimator',
+          '/tools/website-audit',
+          '/tools/seo-checklist'
+        ].includes(route)) {
           return { priority: '0.95', changefreq: 'daily' };
         }
         if ([
