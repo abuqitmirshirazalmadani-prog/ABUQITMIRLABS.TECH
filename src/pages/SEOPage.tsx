@@ -43,6 +43,7 @@ import {
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ServiceToolCtaBanner from '../components/ServiceToolCtaBanner';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CountryMarquee from '../components/CountryMarquee';
 import HeroText from '../components/ui/hero-shutter-text';
@@ -1083,6 +1084,13 @@ const SEOPage = () => {
         </div>
       </section>
       
+      {/* Free SEO Diagnostic & Planning Tools */}
+      <ServiceToolCtaBanner
+        toolKeys={['website-authority-analyzer', 'seo-checklist', 'website-audit']}
+        headline="Diagnose Domain Authority, Technical SEO & Speed"
+        subheadline="Run instant PageRank & backlink audits, generate custom 45-point launch checklists, and identify Core Web Vitals barriers."
+      />
+
       {/* Related Services / Internal Siloing */}
       <section className="py-24 bg-[#0c0c0e] border-t border-white/10 relative z-10 px-6">
         <div className="max-w-7xl mx-auto">

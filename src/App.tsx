@@ -65,11 +65,13 @@ const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const CaseStudyTajweedPage = lazy(() => import('./pages/CaseStudyTajweedPage'));
 const WebsiteContractPage = lazy(() => import('./pages/WebsiteContractPage'));
 const BrandAssetsPage = lazy(() => import('./pages/BrandAssetsPage'));
+const ToolsIndexPage = lazy(() => import('./pages/ToolsIndexPage'));
 const ProjectCostEstimatorPage = lazy(() => import('./pages/ProjectCostEstimatorPage'));
 const WebsiteAuditPage = lazy(() => import('./pages/WebsiteAuditPage'));
 const SeoChecklistPage = lazy(() => import('./pages/SeoChecklistPage'));
 const AiReadinessScorePage = lazy(() => import('./pages/AiReadinessScorePage'));
 const TechStackRecommenderPage = lazy(() => import('./pages/TechStackRecommenderPage'));
+const WebsiteAuthorityAnalyzerPage = lazy(() => import('./pages/WebsiteAuthorityAnalyzerPage'));
 
 // Loading fallback
 const PageLoader = () => (
@@ -247,6 +249,8 @@ export default function App() {
               <Route path="/website-contract" element={<WebsiteContractPage />} />
               <Route path="/brand-assets" element={<BrandAssetsPage />} />
               <Route path="/brand-kit" element={<Navigate to="/brand-assets" replace />} />
+              <Route path="/tools" element={<ToolsIndexPage />} />
+              <Route path="/free-tools" element={<Navigate to="/tools" replace />} />
               <Route path="/tools/project-cost-estimator" element={<ProjectCostEstimatorPage />} />
               <Route path="/project-cost-estimator" element={<Navigate to="/tools/project-cost-estimator" replace />} />
               <Route path="/tools/website-audit" element={<WebsiteAuditPage />} />
@@ -257,6 +261,8 @@ export default function App() {
               <Route path="/ai-readiness-score" element={<Navigate to="/tools/ai-readiness-score" replace />} />
               <Route path="/tools/tech-stack-recommender" element={<TechStackRecommenderPage />} />
               <Route path="/tech-stack-recommender" element={<Navigate to="/tools/tech-stack-recommender" replace />} />
+              <Route path="/tools/website-authority-analyzer" element={<WebsiteAuthorityAnalyzerPage />} />
+              <Route path="/website-authority-analyzer" element={<Navigate to="/tools/website-authority-analyzer" replace />} />
               <Route path="/admin" element={<AdminDashboard />} />
             </Routes>
           </Suspense>

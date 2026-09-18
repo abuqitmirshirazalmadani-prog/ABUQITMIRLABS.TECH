@@ -7,6 +7,7 @@ import {
 import { Link, useLocation } from 'react-router-dom';
 import Logo from './Logo';
 import { preloadRoute } from '../utils/preloader';
+import { ToolThemeIcon } from './ToolThemeIcon';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -81,12 +82,15 @@ const Header = () => {
                 { name: 'Blog', href: '/blog' },
                 { name: 'News', href: '/news/all' },
                 { name: 'Case Studies', href: '/case-studies' },
-                { name: 'divider-tools', href: '#', isDivider: true, heading: '🛠️ Free Tools' },
-                { name: 'Tech Stack Recommender', href: '/tools/tech-stack-recommender', isTool: true },
-                { name: 'AI Readiness Score', href: '/tools/ai-readiness-score', isTool: true },
+                { name: 'divider-tools', href: '#', isDivider: true, heading: 'Free AI Tools Suite' },
                 { name: 'AI Project Cost Estimator', href: '/tools/project-cost-estimator', isTool: true },
                 { name: 'Website Audit Tool', href: '/tools/website-audit', isTool: true },
                 { name: 'SEO Checklist Generator', href: '/tools/seo-checklist', isTool: true },
+                { name: 'AI Readiness Score', href: '/tools/ai-readiness-score', isTool: true },
+                { name: 'Tech Stack Recommender', href: '/tools/tech-stack-recommender', isTool: true },
+                { name: 'Website Authority Analyzer', href: '/tools/website-authority-analyzer', isTool: true },
+                { name: 'divider-view-all', href: '#', isDivider: true },
+                { name: 'View All 6 Tools →', href: '/tools', isViewAll: true },
             ]
         },
     ];
@@ -138,12 +142,29 @@ const Header = () => {
                                                 >
                                                     {link.dropdown.map((sub: any) => {
                                                         if (sub.isDivider) {
+                                                            if (!sub.heading) {
+                                                                return <div key={sub.name} className="border-t border-white/10 my-1 mx-2"></div>;
+                                                            }
                                                             return (
                                                                 <div key={sub.name} className="px-4 pt-2.5 pb-1 border-t border-white/10 mt-1 mb-0.5">
                                                                     <span className="text-[10px] font-mono font-bold tracking-wider text-[#ccff00] uppercase flex items-center gap-1.5">
-                                                                        {sub.heading || 'Free Tools'}
+                                                                        {sub.heading}
                                                                     </span>
                                                                 </div>
+                                                            );
+                                                        }
+                                                        if (sub.isViewAll) {
+                                                            return (
+                                                                <Link
+                                                                    key={sub.name}
+                                                                    to={sub.href}
+                                                                    className="block px-4 py-2 text-xs font-black text-black bg-[#ccff00] hover:bg-white transition-all rounded-lg mx-3 my-1.5 text-center shadow-md shadow-[#ccff00]/20"
+                                                                    onMouseEnter={() => preloadRoute(sub.href)}
+                                                                    onTouchStart={() => preloadRoute(sub.href)}
+                                                                    onClick={() => setActiveDropdown(null)}
+                                                                >
+                                                                    {sub.name}
+                                                                </Link>
                                                             );
                                                         }
                                                         return (
@@ -152,17 +173,20 @@ const Header = () => {
                                                                 to={sub.href}
                                                                 className={`block px-4 py-2 text-xs xl:text-sm transition-colors ${
                                                                     sub.isTool
-                                                                        ? 'text-[#ccff00] font-bold hover:bg-[#ccff00]/10 flex items-center justify-between'
+                                                                        ? 'text-white hover:text-[#ccff00] hover:bg-white/5 flex items-center justify-between'
                                                                         : 'text-gray-300 hover:text-white hover:bg-white/10'
                                                                 }`}
                                                                 onMouseEnter={() => preloadRoute(sub.href)}
                                                                 onTouchStart={() => preloadRoute(sub.href)}
                                                                 onClick={() => setActiveDropdown(null)}
                                                             >
-                                                                <span>{sub.name}</span>
+                                                                <span className="flex items-center gap-2">
+                                                                    {sub.isTool && <ToolThemeIcon tool={sub.href} size="xs" />}
+                                                                    <span className={sub.isTool ? 'font-medium' : ''}>{sub.name}</span>
+                                                                </span>
                                                                 {sub.isTool && (
-                                                                    <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-[#ccff00]/20 text-[#ccff00] uppercase tracking-wider ml-2">
-                                                                        Free AI Tool
+                                                                    <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white/5 text-[#ccff00] uppercase tracking-wider ml-2 border border-white/10">
+                                                                        Free
                                                                     </span>
                                                                 )}
                                                             </Link>
@@ -277,12 +301,29 @@ const Header = () => {
                                                         >
                                                             {link.dropdown.map((sub: any) => {
                                                                 if (sub.isDivider) {
+                                                                    if (!sub.heading) {
+                                                                        return <div key={sub.name} className="border-t border-white/10 my-1 pr-4"></div>;
+                                                                    }
                                                                     return (
                                                                         <div key={sub.name} className="pt-3 pb-1 border-t border-white/10 pr-4 mt-1">
                                                                             <span className="text-xs font-mono font-bold tracking-wider text-[#ccff00] uppercase">
-                                                                                {sub.heading || 'Free Tools'}
+                                                                                {sub.heading}
                                                                             </span>
                                                                         </div>
+                                                                    );
+                                                                }
+                                                                if (sub.isViewAll) {
+                                                                    return (
+                                                                        <Link 
+                                                                            key={sub.name} 
+                                                                            to={sub.href} 
+                                                                            className="py-2.5 px-4 text-xs font-black text-black bg-[#ccff00] hover:bg-white transition-all rounded-lg my-1 mr-4 text-center shadow-md shadow-[#ccff00]/20"
+                                                                            onTouchStart={() => preloadRoute(sub.href)}
+                                                                            onMouseEnter={() => preloadRoute(sub.href)}
+                                                                            onClick={() => setIsOpen(false)}
+                                                                        >
+                                                                            <span>{sub.name}</span>
+                                                                        </Link>
                                                                     );
                                                                 }
                                                                 return (
@@ -290,13 +331,16 @@ const Header = () => {
                                                                         key={sub.name} 
                                                                         to={sub.href} 
                                                                         className={`py-2 text-sm transition-colors flex items-center justify-between pr-4 ${
-                                                                            sub.isTool ? 'text-[#ccff00] font-bold' : 'text-gray-400 hover:text-[#ccff00]'
+                                                                            sub.isTool ? 'text-white font-medium' : 'text-gray-400 hover:text-[#ccff00]'
                                                                         }`}
                                                                         onTouchStart={() => preloadRoute(sub.href)}
                                                                         onMouseEnter={() => preloadRoute(sub.href)}
                                                                         onClick={() => setIsOpen(false)}
                                                                     >
-                                                                        <span>{sub.name}</span>
+                                                                        <span className="flex items-center gap-2.5">
+                                                                            {sub.isTool && <ToolThemeIcon tool={sub.href} size="xs" />}
+                                                                            <span>{sub.name}</span>
+                                                                        </span>
                                                                         {sub.isTool ? (
                                                                             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#ccff00]/20 text-[#ccff00] uppercase font-bold">
                                                                                 Free Tool

@@ -30,6 +30,8 @@ import {
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import RelatedToolsSection from '../components/RelatedToolsSection';
+import { trackToolUsage } from '../utils/analytics';
 import {
   PROJECT_TYPES,
   TEAM_SIZES,
@@ -168,6 +170,13 @@ export const TechStackRecommenderPage: React.FC = () => {
     setProgress(0);
     setStep(0);
 
+    trackToolUsage('tech-stack-recommender', 'get_recommendation', {
+      project_type: form.projectType,
+      team_size: form.teamSize,
+      budget: form.budget,
+      timeline: form.timeline
+    });
+
     const steps = [
       'Analyzing project architecture & requirements...',
       'Evaluating team velocity & engineering experience...',
@@ -216,26 +225,24 @@ export const TechStackRecommenderPage: React.FC = () => {
   };
 
   const resetTool = () => {
-    if (window.confirm('Reset the recommender? Your current selections will be cleared.')) {
-      setResult(null);
-      setForm({
-        projectType: '',
-        teamSize: '',
-        experience: '',
-        timeline: '',
-        budget: '',
-        scale: '',
-        features: [],
-        preferences: [],
-      });
-      setCurrentStep(0);
-      try {
-        localStorage.removeItem(STORAGE_KEY);
-      } catch (e) {
-        console.warn(e);
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    setResult(null);
+    setForm({
+      projectType: '',
+      teamSize: '',
+      experience: '',
+      timeline: '',
+      budget: '',
+      scale: '',
+      features: [],
+      preferences: [],
+    });
+    setCurrentStep(0);
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch (e) {
+      console.warn(e);
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const downloadPDF = () => {
@@ -350,7 +357,7 @@ export const TechStackRecommenderPage: React.FC = () => {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Tools',
-        'item': 'https://www.abuqitmirlabs.tech/tools/project-cost-estimator',
+        'item': 'https://www.abuqitmirlabs.tech/tools',
       },
       {
         '@type': 'ListItem',
@@ -407,7 +414,7 @@ export const TechStackRecommenderPage: React.FC = () => {
               <nav className="flex items-center justify-center space-x-2 text-xs text-neutral-400 mb-6 font-mono">
                 <Link to="/" className="hover:text-white transition-colors">Home</Link>
                 <span>›</span>
-                <span className="text-neutral-500">Tools</span>
+                <Link to="/tools" className="hover:text-white transition-colors">Tools</Link>
                 <span>›</span>
                 <span className="text-[#ccff00]">Tech Stack Recommender</span>
               </nav>
@@ -1315,6 +1322,9 @@ export const TechStackRecommenderPage: React.FC = () => {
           </div>
         </section>
       </main>
+
+      {/* Cross-Tool Linking Matrix */}
+      <RelatedToolsSection currentTool="tech-stack-recommender" />
 
       {/* Global Brand Footer */}
       <Footer />

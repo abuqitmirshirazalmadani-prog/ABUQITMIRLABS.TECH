@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ServiceToolCtaBanner from '../components/ServiceToolCtaBanner';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CountryMarquee from '../components/CountryMarquee';
 import { mobileAppSchema } from '../utils/mobileAppStaticHtml';
@@ -553,6 +554,13 @@ const MobileAppDevelopmentPage: React.FC = () => {
             </div>
           </div>
         </section>
+
+        {/* Free Mobile Planning & Cost Tools Banner */}
+        <ServiceToolCtaBanner
+          toolKeys={['project-cost-estimator', 'tech-stack-recommender']}
+          headline="Estimate App Budget & Choose Optimal Stack"
+          subheadline="Benchmark iOS, Android & Flutter development costs across 8 countries and discover whether Flutter, React Native, or Native is right for your scope."
+        />
 
         {/* Section 10: Start Your Mobile App Project (CTA) */}
         <section className="py-20 md:py-28 text-center bg-gradient-to-b from-zinc-900 to-black border-t border-white/10" aria-labelledby="mobile-cta-section-h2">

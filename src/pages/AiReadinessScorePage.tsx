@@ -26,6 +26,8 @@ import {
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import RelatedToolsSection from '../components/RelatedToolsSection';
+import { trackToolUsage } from '../utils/analytics';
 import {
   CATEGORIES,
   calculateScores,
@@ -163,6 +165,12 @@ export const AiReadinessScorePage: React.FC = () => {
     setProgress(0);
     setStep(0);
 
+    trackToolUsage('ai-readiness-score', 'start_assessment', {
+      industry: form.industry,
+      team_size: form.teamSize,
+      current_ai_usage: form.currentAiUsage
+    });
+
     const steps = [
       'Analyzing your data infrastructure & pipelines...',
       'Evaluating cloud readiness and API architecture...',
@@ -214,23 +222,21 @@ export const AiReadinessScorePage: React.FC = () => {
   };
 
   const resetAssessment = () => {
-    if (window.confirm('Are you sure you want to reset your assessment? All answers will be cleared.')) {
-      setResult(null);
-      setAnswers({});
-      setForm({
-        companyName: '',
-        industry: '',
-        teamSize: '',
-        currentAiUsage: '',
-      });
-      setCurrentCategory(0);
-      try {
-        localStorage.removeItem(STORAGE_KEY);
-      } catch (e) {
-        console.warn(e);
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    setResult(null);
+    setAnswers({});
+    setForm({
+      companyName: '',
+      industry: '',
+      teamSize: '',
+      currentAiUsage: '',
+    });
+    setCurrentCategory(0);
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch (e) {
+      console.warn(e);
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const downloadPDF = () => {
@@ -339,7 +345,7 @@ export const AiReadinessScorePage: React.FC = () => {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Tools',
-        'item': 'https://www.abuqitmirlabs.tech/tools/project-cost-estimator'
+        'item': 'https://www.abuqitmirlabs.tech/tools'
       },
       {
         '@type': 'ListItem',
@@ -396,7 +402,7 @@ export const AiReadinessScorePage: React.FC = () => {
               <nav className="flex items-center justify-center space-x-2 text-xs text-neutral-400 mb-6 font-mono">
                 <Link to="/" className="hover:text-white transition-colors">Home</Link>
                 <span>›</span>
-                <span className="text-neutral-500">Tools</span>
+                <Link to="/tools" className="hover:text-white transition-colors">Tools</Link>
                 <span>›</span>
                 <span className="text-[#ccff00]">AI Readiness Score</span>
               </nav>
@@ -1162,6 +1168,9 @@ export const AiReadinessScorePage: React.FC = () => {
           </div>
         </section>
       </main>
+
+      {/* Cross-Tool Linking Matrix */}
+      <RelatedToolsSection currentTool="ai-readiness-score" />
 
       {/* Global Brand Footer */}
       <Footer />

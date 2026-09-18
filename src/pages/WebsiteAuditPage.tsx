@@ -20,6 +20,8 @@ import {
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import RelatedToolsSection from '../components/RelatedToolsSection';
+import { trackToolUsage } from '../utils/analytics';
 import { AuditForm } from '../components/audit/AuditForm';
 import { LoadingState } from '../components/audit/LoadingState';
 import { OverallScoreCard } from '../components/audit/OverallScoreCard';
@@ -46,6 +48,11 @@ export default function WebsiteAuditPage() {
     setLoading(true);
     setError(null);
     setActiveAuditedUrl(url);
+
+    trackToolUsage('website-audit', 'run_audit', {
+      device,
+      categories_count: categories.length
+    });
 
     let auditData: AuditResult | null = null;
 
@@ -187,7 +194,7 @@ export default function WebsiteAuditPage() {
         "@type": "ListItem",
         "position": 2,
         "name": "Tools",
-        "item": "https://www.abuqitmirlabs.tech/tools/website-audit"
+        "item": "https://www.abuqitmirlabs.tech/tools"
       },
       {
         "@type": "ListItem",
@@ -239,7 +246,7 @@ export default function WebsiteAuditPage() {
           <nav className="flex items-center justify-center gap-2 text-xs font-mono text-gray-400 mb-6">
             <Link to="/" className="hover:text-[#ccff00] transition-colors">Home</Link>
             <span>›</span>
-            <span className="text-gray-500">Tools</span>
+            <Link to="/tools" className="hover:text-[#ccff00] transition-colors">Tools</Link>
             <span>›</span>
             <span className="text-[#ccff00]">Website Audit</span>
           </nav>
@@ -638,6 +645,9 @@ export default function WebsiteAuditPage() {
         </section>
 
       </main>
+
+      {/* Cross-Tool Linking Matrix */}
+      <RelatedToolsSection currentTool="website-audit" />
 
       <Footer />
     </div>

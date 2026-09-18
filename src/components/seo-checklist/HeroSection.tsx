@@ -18,7 +18,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToForm, onLoad
         <nav className="flex items-center space-x-2 text-xs text-neutral-400 mb-8">
           <Link to="/" className="hover:text-white transition-colors">Home</Link>
           <span>›</span>
-          <span className="text-neutral-300">Tools</span>
+          <Link to="/tools" className="hover:text-white transition-colors">Tools</Link>
           <span>›</span>
           <span className="text-[#ccff00]">SEO Checklist Generator</span>
         </nav>

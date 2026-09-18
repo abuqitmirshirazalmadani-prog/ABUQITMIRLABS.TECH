@@ -20,6 +20,7 @@ import HomeCaseStudiesSection from '../components/HomeCaseStudiesSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import FAQSection from '../components/FAQSection';
 import ContactSection from '../components/ContactSection';
+import FeaturedToolsSection from '../components/FeaturedToolsSection';
 import { homeSchema } from '../utils/homeStaticHtml';
 
 export default function HomePage() {
@@ -237,6 +238,9 @@ export default function HomePage() {
 
         </div>
       </section>
+      
+      {/* Featured Free Tools Section */}
+      <FeaturedToolsSection />
       
       <ApproachSection />
       

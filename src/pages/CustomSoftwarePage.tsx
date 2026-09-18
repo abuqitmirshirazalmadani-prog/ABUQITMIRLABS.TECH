@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ServiceToolCtaBanner from '../components/ServiceToolCtaBanner';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CountryMarquee from '../components/CountryMarquee';
 import { customSoftwareSchema } from '../utils/customSoftwareStaticHtml';
@@ -502,6 +503,13 @@ const CustomSoftwarePage: React.FC = () => {
             </div>
           </div>
         </section>
+
+        {/* Free Planning & Architecture Tools Banner */}
+        <ServiceToolCtaBanner
+          toolKeys={['project-cost-estimator', 'tech-stack-recommender']}
+          headline="Evaluate Scope & Architecture Before You Build"
+          subheadline="Estimate development sprint budgets or determine the optimal stack for your custom enterprise platform — 100% free with zero signup required."
+        />
 
         {/* Section 10: Start Your Custom Software Project (CTA) */}
         <section className="py-20 md:py-28 text-center bg-gradient-to-b from-zinc-900 to-black border-t border-white/10" aria-labelledby="cta-section-h2">

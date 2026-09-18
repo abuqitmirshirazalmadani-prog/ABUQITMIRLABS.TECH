@@ -63,6 +63,7 @@ import {
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ServiceToolCtaBanner from '../components/ServiceToolCtaBanner';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CountryMarquee from '../components/CountryMarquee';
 import AIAgentPricing from '../components/AIAgentPricing';
@@ -1828,6 +1829,13 @@ export default function AIAgentDevelopmentPage() {
             </div>
           </div>
         </section>
+
+        {/* Free AI & Planning Tools Banner */}
+        <ServiceToolCtaBanner
+          toolKeys={['ai-readiness-score', 'project-cost-estimator']}
+          headline="Measure AI Readiness & Deployment Investment"
+          subheadline="Evaluate your company's workflows for autonomous agents and calculate implementation costs — completely free."
+        />
 
         {/* Related Systems / Internal Links Siloing */}
         <section className="py-20 bg-black border-t border-white/10 px-6">

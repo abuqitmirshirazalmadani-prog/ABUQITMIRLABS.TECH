@@ -29,6 +29,8 @@ import { SeoResourcesSection } from '../components/seo-checklist/SeoResourcesSec
 import { ChecklistFaqSection } from '../components/seo-checklist/ChecklistFaqSection';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import RelatedToolsSection from '../components/RelatedToolsSection';
+import { trackToolUsage } from '../utils/analytics';
 import { Download, Mail, ArrowRight, RotateCcw, Share2, Sparkles, Check, ExternalLink, Loader2, CheckCircle2, AlertCircle, FileText } from 'lucide-react';
 
 const STORAGE_KEY = 'seo_checklist_progress';
@@ -107,6 +109,13 @@ export const SeoChecklistPage: React.FC = () => {
   const handleGenerate = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+
+    trackToolUsage('seo-checklist', 'generate_checklist', {
+      business_type: formData.businessType,
+      industry: formData.industry,
+      stage: formData.stage,
+      primary_goal: formData.goal
+    });
 
     try {
       // Attempt serverless / API route first
@@ -377,7 +386,7 @@ export const SeoChecklistPage: React.FC = () => {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Tools',
-        'item': 'https://www.abuqitmirlabs.tech/tools/project-cost-estimator'
+        'item': 'https://www.abuqitmirlabs.tech/tools'
       },
       {
         '@type': 'ListItem',
@@ -867,6 +876,9 @@ export const SeoChecklistPage: React.FC = () => {
       </section>
 
       </main>
+
+      {/* Cross-Tool Linking Matrix */}
+      <RelatedToolsSection currentTool="seo-checklist" />
 
       {/* Global Brand Footer */}
       <Footer />

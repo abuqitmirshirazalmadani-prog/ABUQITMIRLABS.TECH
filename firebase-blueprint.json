@@ -113,6 +113,20 @@
         "updatedAt": { "type": "string", "format": "date-time" }
       },
       "required": ["title", "type"]
+    },
+    "AuthorityLead": {
+      "title": "Authority Lead",
+      "description": "Leads submitted through the Website Authority Analyzer unlocking link-building roadmaps.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "description": "Contact email address" },
+        "url": { "type": "string", "description": "Audited website URL" },
+        "domain": { "type": "string", "description": "Audited domain name" },
+        "score": { "type": "number", "description": "Audited overall authority score" },
+        "source": { "type": "string", "description": "Tool identifier source" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email", "domain", "score"]
     }
   },
   "firestore": {
@@ -135,6 +149,10 @@
     "news_items": {
       "schema": "NewsItem",
       "description": "Collection of News section items (Latest News, Press Releases, Industry Insights, All News)"
+    },
+    "authority_leads": {
+      "schema": "AuthorityLead",
+      "description": "Collection of leads generated through the Website Authority Analyzer tool"
     }
   }
 }

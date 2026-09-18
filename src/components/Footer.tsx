@@ -20,7 +20,14 @@ import {
     Pin,
     HelpCircle,
     Briefcase,
-    Award
+    Award,
+    Calculator,
+    Gauge,
+    ListChecks,
+    Bot,
+    Cpu,
+    Globe,
+    Wrench
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
@@ -142,7 +149,7 @@ const Footer = () => {
                     </div>
 
                     {/* Secondary Nav Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mt-16 pt-12 border-t-4 border-black uppercase text-xs font-black tracking-widest leading-relaxed">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-16 pt-12 border-t-4 border-black uppercase text-xs font-black tracking-widest leading-relaxed">
                         
                         {/* Column 1: Core Services */}
                         <div className="space-y-4">
@@ -171,7 +178,24 @@ const Footer = () => {
                             </ul>
                         </div>
 
-                        {/* Column 3: Legal & Sitemaps */}
+                        {/* Column 3: Free Tools */}
+                        <div className="space-y-4">
+                            <h3 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider flex items-center justify-between">
+                                <span>Free Tools</span>
+                                <span className="px-1.5 py-0.5 bg-black text-[#ccff00] text-[8px] rounded font-mono">100% FREE</span>
+                            </h3>
+                            <ul className="space-y-3">
+                                <li><Link to="/tools" onMouseEnter={() => preloadRoute('/tools')} onTouchStart={() => preloadRoute('/tools')} className="text-black font-black hover:underline hover:opacity-80 transition-all flex items-center gap-2"><Wrench size={13} className="text-black shrink-0" /> <span>All Free Tools Hub</span></Link></li>
+                                <li><Link to="/tools/project-cost-estimator" onMouseEnter={() => preloadRoute('/tools/project-cost-estimator')} onTouchStart={() => preloadRoute('/tools/project-cost-estimator')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all flex items-center gap-2"><Calculator size={13} className="text-black shrink-0" /> <span>Cost Estimator</span></Link></li>
+                                <li><Link to="/tools/website-audit" onMouseEnter={() => preloadRoute('/tools/website-audit')} onTouchStart={() => preloadRoute('/tools/website-audit')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all flex items-center gap-2"><Gauge size={13} className="text-black shrink-0" /> <span>Website Audit</span></Link></li>
+                                <li><Link to="/tools/seo-checklist" onMouseEnter={() => preloadRoute('/tools/seo-checklist')} onTouchStart={() => preloadRoute('/tools/seo-checklist')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all flex items-center gap-2"><ListChecks size={13} className="text-black shrink-0" /> <span>SEO Checklist</span></Link></li>
+                                <li><Link to="/tools/ai-readiness-score" onMouseEnter={() => preloadRoute('/tools/ai-readiness-score')} onTouchStart={() => preloadRoute('/tools/ai-readiness-score')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all flex items-center gap-2"><Bot size={13} className="text-black shrink-0" /> <span>AI Readiness Score</span></Link></li>
+                                <li><Link to="/tools/tech-stack-recommender" onMouseEnter={() => preloadRoute('/tools/tech-stack-recommender')} onTouchStart={() => preloadRoute('/tools/tech-stack-recommender')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all flex items-center gap-2"><Cpu size={13} className="text-black shrink-0" /> <span>Tech Stack Engine</span></Link></li>
+                                <li><Link to="/tools/website-authority-analyzer" onMouseEnter={() => preloadRoute('/tools/website-authority-analyzer')} onTouchStart={() => preloadRoute('/tools/website-authority-analyzer')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all flex items-center gap-2"><Globe size={13} className="text-black shrink-0" /> <span>Authority Analyzer</span></Link></li>
+                            </ul>
+                        </div>
+
+                        {/* Column 4: Legal & Sitemaps */}
                         <div className="space-y-4">
                             <h3 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Legal &amp; Sitemaps</h3>
                             <ul className="space-y-3">
@@ -180,11 +204,6 @@ const Footer = () => {
                                 <li><Link to="/terms" onMouseEnter={() => preloadRoute('/terms')} onTouchStart={() => preloadRoute('/terms')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Terms of Service</Link></li>
                                 <li><Link to="/blog" onMouseEnter={() => preloadRoute('/blog')} onTouchStart={() => preloadRoute('/blog')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Tech Blog</Link></li>
                                 <li><Link to="/brand-assets" onMouseEnter={() => preloadRoute('/brand-assets')} onTouchStart={() => preloadRoute('/brand-assets')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all flex items-center gap-1">Brand Assets &amp; Media Kit</Link></li>
-                                <li><Link to="/tools/tech-stack-recommender" onMouseEnter={() => preloadRoute('/tools/tech-stack-recommender')} onTouchStart={() => preloadRoute('/tools/tech-stack-recommender')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all flex items-center gap-1">Tech Stack Recommender <span className="px-1.5 py-0.5 bg-black text-[#ccff00] text-[8px] rounded font-mono">FREE</span></Link></li>
-                                <li><Link to="/tools/ai-readiness-score" onMouseEnter={() => preloadRoute('/tools/ai-readiness-score')} onTouchStart={() => preloadRoute('/tools/ai-readiness-score')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all flex items-center gap-1">AI Readiness Score <span className="px-1.5 py-0.5 bg-black text-[#ccff00] text-[8px] rounded font-mono">FREE</span></Link></li>
-                                <li><Link to="/tools/seo-checklist" onMouseEnter={() => preloadRoute('/tools/seo-checklist')} onTouchStart={() => preloadRoute('/tools/seo-checklist')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all flex items-center gap-1">SEO Checklist Generator <span className="px-1.5 py-0.5 bg-black text-[#ccff00] text-[8px] rounded font-mono">FREE</span></Link></li>
-                                <li><Link to="/tools/website-audit" onMouseEnter={() => preloadRoute('/tools/website-audit')} onTouchStart={() => preloadRoute('/tools/website-audit')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all flex items-center gap-1">Website Audit Tool <span className="px-1.5 py-0.5 bg-black text-[#ccff00] text-[8px] rounded font-mono">FREE</span></Link></li>
-                                <li><Link to="/tools/project-cost-estimator" onMouseEnter={() => preloadRoute('/tools/project-cost-estimator')} onTouchStart={() => preloadRoute('/tools/project-cost-estimator')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all flex items-center gap-1">Project Cost Estimator <span className="px-1.5 py-0.5 bg-black text-[#ccff00] text-[8px] rounded font-mono">FREE</span></Link></li>
                                 <li><Link to="/case-studies" onMouseEnter={() => preloadRoute('/case-studies')} onTouchStart={() => preloadRoute('/case-studies')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Case Studies</Link></li>
                                 <li><a href="/rss.xml" target="_blank" rel="noopener noreferrer" className="text-black font-extrabold hover:underline hover:opacity-80 transition-all flex items-center gap-1">RSS News Feed <ExternalLink size={10} className="text-black" /></a></li>
                                 <li><a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="text-black font-extrabold hover:underline hover:opacity-80 transition-all flex items-center gap-1">Dynamic Sitemap <ExternalLink size={10} className="text-black" /></a></li>

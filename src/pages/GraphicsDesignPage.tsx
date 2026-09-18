@@ -43,6 +43,7 @@ import {
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ServiceToolCtaBanner from '../components/ServiceToolCtaBanner';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CountryMarquee from '../components/CountryMarquee';
 import GraphicsDesignPricing from '../components/GraphicsDesignPricing';
@@ -996,6 +997,13 @@ const GraphicsDesignPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Free UX & Speed Audit Banner */}
+      <ServiceToolCtaBanner
+        toolKeys={['website-audit']}
+        headline="Audit Your Website's UX, Visual Layout & Core Web Vitals"
+        subheadline="Poor design often stems from cluttered layouts and slow assets. Run an instant UX and performance check on your live website for free."
+      />
 
       {/* Related Services / Internal Siloing */}
       <section className="py-24 bg-[#050505] border-t border-white/10 relative z-10 px-6">

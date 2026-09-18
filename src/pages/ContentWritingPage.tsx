@@ -44,6 +44,7 @@ import {
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ServiceToolCtaBanner from '../components/ServiceToolCtaBanner';
 import CountryMarquee from '../components/CountryMarquee';
 import Breadcrumbs from '../components/Breadcrumbs';
 import ContentWritingPricing from '../components/ContentWritingPricing';
@@ -1386,6 +1387,13 @@ const ContentWritingPage = () => {
                 </div>
             </div>
        </section>
+
+       {/* Free Content & SEO Verification Tools Banner */}
+       <ServiceToolCtaBanner
+         toolKeys={['seo-checklist', 'website-authority-analyzer']}
+         headline="Verify Technical SEO & Content Authority Factors"
+         subheadline="Ensure your written content aligns with search ranking requirements and domain trust signals before indexing."
+       />
 
        {/* Related Services / Internal Siloing */}
        <section className="py-24 bg-black border-t border-white/10 relative z-10 px-6">

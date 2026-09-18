@@ -7,7 +7,7 @@ import {
   ArrowRight, ShieldCheck, Clock, Layers, DollarSign, 
   HelpCircle, ChevronDown, ChevronUp, RefreshCw, Send,
   Cpu, Building2, TrendingDown, Info, ExternalLink,
-  Search, Bot, Terminal, Radio
+  Search, Bot, Terminal, Radio, Zap, Lock, FileText
 } from 'lucide-react';
 import { EstimateResult, CountryComparison } from '../types/estimator';
 import { 
@@ -21,6 +21,8 @@ import {
 import { generateEstimatePdf } from '../utils/generateEstimatePdf';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import RelatedToolsSection from '../components/RelatedToolsSection';
+import { trackToolUsage } from '../utils/analytics';
 
 export default function ProjectCostEstimatorPage() {
   const [idea, setIdea] = useState('');
@@ -55,6 +57,13 @@ export default function ProjectCostEstimatorPage() {
     setError(null);
     setLoading(true);
     setLoadingStep(0);
+
+    // Track tool calculation event in GA4
+    trackToolUsage('project-cost-estimator', 'generate_estimate', {
+      country,
+      project_type: projectType,
+      budget_tier: budget
+    });
 
     // Progress step animation ticker
     const interval = setInterval(() => {
@@ -214,7 +223,7 @@ export default function ProjectCostEstimatorPage() {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Tools',
-        'item': 'https://www.abuqitmirlabs.tech/tools/project-cost-estimator'
+        'item': 'https://www.abuqitmirlabs.tech/tools'
       },
       {
         '@type': 'ListItem',
@@ -256,7 +265,7 @@ export default function ProjectCostEstimatorPage() {
           <nav aria-label="Breadcrumb" className="flex items-center justify-center gap-2 text-xs text-neutral-400 font-mono uppercase tracking-wider mb-6">
             <Link to="/" className="hover:text-white transition-colors">Home</Link>
             <span>/</span>
-            <span className="text-neutral-500">Tools</span>
+            <Link to="/tools" className="hover:text-white transition-colors">Tools</Link>
             <span>/</span>
             <span className="text-[#ccff00]">AI Project Cost Estimator</span>
           </nav>
@@ -295,19 +304,19 @@ export default function ProjectCostEstimatorPage() {
           {/* Trust Badges */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6 border-t border-white/10">
             <div className="flex items-center justify-center gap-2 text-xs text-neutral-300 font-mono">
-              <span className="text-[#ccff00]">⚡</span>
+              <Zap size={14} className="text-[#ccff00]" />
               <span>Instant AI Analysis</span>
             </div>
             <div className="flex items-center justify-center gap-2 text-xs text-neutral-300 font-mono">
-              <span className="text-[#ccff00]">🌍</span>
+              <Globe size={14} className="text-[#ccff00]" />
               <span>8 Country Multipliers</span>
             </div>
             <div className="flex items-center justify-center gap-2 text-xs text-neutral-300 font-mono">
-              <span className="text-[#ccff00]">📄</span>
+              <FileText size={14} className="text-[#ccff00]" />
               <span>Free PDF Report Export</span>
             </div>
             <div className="flex items-center justify-center gap-2 text-xs text-neutral-300 font-mono">
-              <span className="text-[#ccff00]">🔒</span>
+              <Lock size={14} className="text-[#ccff00]" />
               <span>Zero-Storage Privacy</span>
             </div>
           </div>
@@ -1202,6 +1211,9 @@ export default function ProjectCostEstimatorPage() {
         </section>
 
       </main>
+
+      {/* Cross-Tool Linking Matrix */}
+      <RelatedToolsSection currentTool="project-cost-estimator" />
 
       <Footer />
     </div>

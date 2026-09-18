@@ -81,6 +81,15 @@ service cloud.firestore {
              (data.published is bool || !data.keys().contains('published'));
     }
 
+    function isValidAuthorityLead(data) {
+      return data.email is string && data.email.size() > 0 && data.email.size() <= 150 &&
+             (data.domain is string && data.domain.size() <= 200 || !data.keys().contains('domain')) &&
+             (data.url is string && data.url.size() <= 500 || !data.keys().contains('url')) &&
+             (data.score is number || !data.keys().contains('score')) &&
+             (data.source is string && data.source.size() <= 100 || !data.keys().contains('source')) &&
+             (data.createdAt is string && data.createdAt.size() <= 100 || !data.keys().contains('createdAt'));
+    }
+
     // --- COLLECTION RULES ---
 
     // Blog Posts
@@ -147,6 +156,17 @@ service cloud.firestore {
                     incoming().updatedAt == request.time &&
                     incoming().createdAt == existing().createdAt;
       allow delete: if isAdmin() && isValidId(newsId);
+    }
+
+    // Website Authority Analyzer Leads
+    match /authority_leads/{leadId} {
+      // PII isolation: Only admin can fetch lists or single records
+      allow get, list: if isAdmin();
+      // Standard visitor client can create lead record
+      allow create: if isValidId(leadId) && isValidAuthorityLead(incoming());
+      // Admin can update or clear lead record
+      allow update: if isAdmin() && isValidId(leadId) && isValidAuthorityLead(incoming());
+      allow delete: if isAdmin() && isValidId(leadId);
     }
   }
 }

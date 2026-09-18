@@ -35,6 +35,7 @@ import {
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ServiceToolCtaBanner from '../components/ServiceToolCtaBanner';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CountryMarquee from '../components/CountryMarquee';
 import WebDevelopmentPricing from '../components/WebDevelopmentPricing';
@@ -1592,6 +1593,13 @@ Do not sign a website contract without these protective legal terms.
           </div>
         </div>
       </section>
+
+      {/* Free Planning & Audit Tools Banner */}
+      <ServiceToolCtaBanner
+        toolKeys={['website-audit', 'tech-stack-recommender', 'project-cost-estimator']}
+        headline="Audit, Plan & Price Your Web Architecture"
+        subheadline="Run free technical diagnostics, choose the optimal modern stack, or estimate production investment before booking our development team."
+      />
 
       {/* Internal Linking / Related Services */}
       <section className="py-24 bg-[#050505] border-t border-white/5 relative z-10 px-6">

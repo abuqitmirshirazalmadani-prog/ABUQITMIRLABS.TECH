@@ -46,6 +46,7 @@ export const routeLoaders: Record<string, () => Promise<any>> = {
   '/tools/seo-checklist': () => import('../pages/SeoChecklistPage'),
   '/tools/ai-readiness-score': () => import('../pages/AiReadinessScorePage'),
   '/tools/tech-stack-recommender': () => import('../pages/TechStackRecommenderPage'),
+  '/tools/website-authority-analyzer': () => import('../pages/WebsiteAuthorityAnalyzerPage'),
 };
 
 const preloadedSet = new Set<string>();
