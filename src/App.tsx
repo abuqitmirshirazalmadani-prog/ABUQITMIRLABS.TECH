@@ -243,6 +243,10 @@ export default function App() {
               <Route path="/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
               <Route path="/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
               <Route path="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
+              <Route path="/flutter-vs-native-mobile-app-development-2026" element={<Navigate to="/blog/flutter-vs-native-mobile-app-development-2026" replace />} />
+              <Route path="/blog/flutter-vs-native-mobile-app-development-2026" element={<BlogPostPage overrideSlug="flutter-vs-native-mobile-app-development-2026" />} />
+              <Route path="/enterprise-software-engineering-what-changes-at-scale" element={<Navigate to="/blog/enterprise-software-engineering-what-changes-at-scale" replace />} />
+              <Route path="/blog/enterprise-software-engineering-what-changes-at-scale" element={<BlogPostPage overrideSlug="enterprise-software-engineering-what-changes-at-scale" />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />

@@ -1168,6 +1168,22 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
     res.redirect(301, '/custom-software');
   });
 
+  // Explicit LLM.txt / llm.txt Handler
+  app.get(['/llm.txt', '/LLM.txt'], (req, res) => {
+    try {
+      const llmPath = path.join(process.cwd(), 'public', 'llm.txt');
+      if (fs.existsSync(llmPath)) {
+        res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+        res.setHeader('Cache-Control', 'public, max-age=3600');
+        return res.sendFile(llmPath);
+      }
+      return res.status(404).send('Not found');
+    } catch (err) {
+      console.error('Error serving llm.txt:', err);
+      return res.status(500).send('Server error');
+    }
+  });
+
   // Dynamic Sitemap Index Route (/sitemap.xml)
   app.get('/sitemap.xml', (req, res) => {
     try {
@@ -1254,6 +1270,8 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
         '/blog/custom-ai-solutions-for-corporate-events-2026-guide',
         '/blog/custom-web-development-vs-website-templates-2026-guide',
         '/blog/ai-agent-development-agency-vs-in-house',
+        '/blog/flutter-vs-native-mobile-app-development-2026',
+        '/blog/enterprise-software-engineering-what-changes-at-scale',
         '/terms',
         '/privacy'
       ];
