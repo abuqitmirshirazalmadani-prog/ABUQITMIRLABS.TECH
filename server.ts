@@ -1272,6 +1272,7 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
         '/blog/ai-agent-development-agency-vs-in-house',
         '/blog/flutter-vs-native-mobile-app-development-2026',
         '/blog/enterprise-software-engineering-what-changes-at-scale',
+        '/blog/edtech-software-development-lms-features-every-platform-needs',
         '/terms',
         '/privacy'
       ];
@@ -1462,6 +1463,16 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
           template = template.replace(/<link rel="canonical"[^>]*\/?>/g, `<link rel="canonical" data-rh="true" href="${fullUrl}" />`);
         } else {
           template = template.replace('</head>', `  <link rel="canonical" data-rh="true" href="${fullUrl}" />\n</head>`);
+        }
+
+        // Strictly guarantee only 1 meta description is served in HTML
+        const descMatches = template.match(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis) || [];
+        if (descMatches.length > 1) {
+          let c = 0;
+          template = template.replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis, (m) => {
+            c++;
+            return c === descMatches.length ? m : '';
+          });
         }
 
         return res.status(200).set({ 'Content-Type': 'text/html' }).end(template);

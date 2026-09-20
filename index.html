@@ -48,6 +48,31 @@
       gtag('js', new Date());
       gtag('config', 'G-EJH1V89EP0');
     </script>
+    
+    <!-- Immediate Meta Description Deduplicator to ensure strictly 1 meta description tag for search crawlers (Bing/Google) -->
+    <script>
+      (function() {
+        function dedupeMeta() {
+          var descs = document.querySelectorAll('meta[name="description"]');
+          if (descs.length > 1) {
+            for (var i = 0; i < descs.length - 1; i++) {
+              if (descs[i].parentNode) {
+                descs[i].parentNode.removeChild(descs[i]);
+              }
+            }
+          }
+        }
+        if (typeof MutationObserver !== 'undefined') {
+          try {
+            new MutationObserver(dedupeMeta).observe(document.head || document.documentElement, {
+              childList: true,
+              subtree: true
+            });
+          } catch(e) {}
+        }
+        window.addEventListener('DOMContentLoaded', dedupeMeta);
+      })();
+    </script>
     <!-- Favicon & Brand Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/logo.png" />

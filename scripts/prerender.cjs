@@ -88,10 +88,11 @@ const stripCanonicalTags = (htmlSource) => {
     .replace(/<link\b[^>]*\brel=["']?canonical["']?[^>]*>[\s\S]*?<\/link>/gis, '');
 };
 
-// Base template with clean empty #root and stripped default canonical
+// Base template with clean empty #root and stripped default canonical & description
 let baseTemplate = distIndex;
 baseTemplate = replaceRootElement(baseTemplate, '', '');
 baseTemplate = stripCanonicalTags(baseTemplate);
+baseTemplate = baseTemplate.replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis, '');
 
 // Preserve a clean, unpopulated SPA shell for dynamic client-side routes (e.g. dynamic blog posts, admin dashboard)
 const spaShellPath = path.join(distDir, 'spa-shell.html');
@@ -166,7 +167,9 @@ const routes = [
   '/blog/healthcare-software-development-solutions-2026-custom-ehr-clinical-software',
   '/blog/bespoke-saas-development-build-vs-buy-decision-guide',
   '/blog/local-seo-citation-building-the-15-directory-checklist',
-  '/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026'
+  '/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026',
+  '/blog/enterprise-software-engineering-what-changes-at-scale',
+  '/blog/edtech-software-development-lms-features-every-platform-needs'
 ];
 
 // Merge explicitly defined routes with any routes declared in SEO_ROUTES_METADATA
@@ -189,9 +192,13 @@ for (const routeUrl of allRoutes) {
     // 2. Unconditionally strip ANY existing <title> tags from baseTemplate and headTags
     html = html.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '');
 
-    // 3. Inject hoisted head tags (preloads, metadata) into <head> (excluding title tags and canonicals)
+    // 3. Inject hoisted head tags (preloads, metadata) into <head> (excluding title tags, canonicals, and description)
     if (headTags && headTags.trim().length > 0) {
-      const cleanHeadTags = stripCanonicalTags(headTags.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, ''));
+      const cleanHeadTags = stripCanonicalTags(
+        headTags
+          .replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '')
+          .replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis, '')
+      );
       if (cleanHeadTags.trim().length > 0) {
         html = html.replace('</head>', `  ${cleanHeadTags}\n</head>`);
       }
@@ -228,9 +235,9 @@ for (const routeUrl of allRoutes) {
     html = html.replace('</head>', `  <title data-rh="true">${titleToUse}</title>\n</head>`);
 
     // Clean any pre-existing description, OpenGraph, and Twitter tags before injecting unique route tags
-    html = html.replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gi, '');
-    html = html.replace(/<meta\b[^>]*property=["']og:[^"']+["'][^>]*\/?>/gi, '');
-    html = html.replace(/<meta\b[^>]*name=["']twitter:[^"']+["'][^>]*\/?>/gi, '');
+    html = html.replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis, '');
+    html = html.replace(/<meta\b[^>]*property=["']og:[^"']+["'][^>]*\/?>/gis, '');
+    html = html.replace(/<meta\b[^>]*name=["']twitter:[^"']+["'][^>]*\/?>/gis, '');
 
     if (seo) {
       // Unique <meta name="description">
@@ -282,6 +289,18 @@ for (const routeUrl of allRoutes) {
         const schemaSnippet = `<script type="application/ld+json" data-rh="true">\n${JSON.stringify(seo.schemaJsonLd, null, 2)}\n  </script>`;
         html = html.replace('</head>', `  ${schemaSnippet}\n</head>`);
       }
+    }
+
+    // 7. Strict deduplication verification: Guarantee strictly ONE <meta name="description"> in the generated HTML
+    const metaDescMatches = html.match(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis) || [];
+    if (metaDescMatches.length > 1) {
+      let keepIndex = metaDescMatches.length - 1;
+      let currentIndex = 0;
+      html = html.replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis, (tag) => {
+        const keep = currentIndex === keepIndex;
+        currentIndex++;
+        return keep ? tag : '';
+      });
     }
 
     // Write to target destination

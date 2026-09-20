@@ -120,12 +120,12 @@ const CustomSoftwarePage: React.FC = () => {
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans antialiased">
       <Helmet>
         <title>Custom Software Development Company | AbuQitmirLabs</title>
-        <meta name="description" content="Bespoke software built around your workflows — ERPs, SaaS platforms, AI-powered tools, and enterprise systems. Full IP ownership." />
+        <meta name="description" content="Enterprise-grade custom software development company in Karachi, Pakistan. We build scalable web apps, cloud architectures, and bespoke business systems." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/custom-software" />
 
         {/* Open Graph */}
         <meta property="og:title" content="Custom Software Development Company | AbuQitmirLabs" />
-        <meta property="og:description" content="Bespoke software built around your workflows — ERPs, SaaS platforms, AI-powered tools, and enterprise systems. Full IP ownership." />
+        <meta property="og:description" content="Enterprise-grade custom software development company in Karachi, Pakistan. We build scalable web apps, cloud architectures, and bespoke business systems." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/custom-software" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
@@ -133,7 +133,7 @@ const CustomSoftwarePage: React.FC = () => {
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Custom Software Development Company | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Bespoke software built around your workflows — ERPs, SaaS platforms, AI-powered tools, and enterprise systems. Full IP ownership." />
+        <meta name="twitter:description" content="Enterprise-grade custom software development company in Karachi, Pakistan. We build scalable web apps, cloud architectures, and bespoke business systems." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Unified JSON-LD Schema */}

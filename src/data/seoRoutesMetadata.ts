@@ -798,5 +798,17 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     twitterTitle: 'AI Project Cost Estimator 2026 | AbuQitmirLabs',
     twitterDescription: 'Get instant cost estimates for software projects with regional comparisons and PDF export.',
     twitterImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg'
+  },
+  '/blog/edtech-software-development-lms-features-every-platform-needs': {
+    title: 'EdTech Software Development: 9 Features Every LMS Needs',
+    description: "Custom LMS without these 9 features will fail at engagement and retention. Here's what separates production-ready platforms from proof-of-concept toys.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/edtech-software-development-lms-features-every-platform-needs',
+    ogTitle: 'EdTech Software Development: 9 Features Every LMS Needs',
+    ogDescription: "Custom LMS without these 9 features will fail at engagement and retention. Here's what separates production-ready platforms from proof-of-concept toys.",
+    ogImage: 'https://www.abuqitmirlabs.tech/images/blog/edtech-lms-9-features-og.jpg',
+    ogType: 'article',
+    twitterTitle: 'EdTech Software Development: 9 Features Every LMS Needs',
+    twitterDescription: "Custom LMS without these 9 features will fail at engagement and retention. Here's what separates production-ready platforms from proof-of-concept toys.",
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/edtech-lms-9-features-og.jpg'
   }
 };

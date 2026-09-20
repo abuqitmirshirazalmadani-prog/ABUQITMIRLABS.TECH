@@ -88,6 +88,45 @@ function ScrollToTop() {
   return null;
 }
 
+function MetaHeadSanitizer() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    const sanitize = () => {
+      // 1. Strictly guarantee exactly one meta[name="description"] in document.head
+      const descs = document.querySelectorAll('meta[name="description"]');
+      if (descs.length > 1) {
+        // Keep the latest rendered tag, remove older/redundant tags
+        for (let i = 0; i < descs.length - 1; i++) {
+          if (descs[i].parentNode) {
+            descs[i].parentNode.removeChild(descs[i]);
+          }
+        }
+      }
+
+      // 2. Guarantee single canonical link
+      const canonicals = document.querySelectorAll('link[rel="canonical"]');
+      if (canonicals.length > 1) {
+        for (let i = 0; i < canonicals.length - 1; i++) {
+          if (canonicals[i].parentNode) {
+            canonicals[i].parentNode.removeChild(canonicals[i]);
+          }
+        }
+      }
+    };
+
+    sanitize();
+    const timer = setTimeout(sanitize, 50);
+    const timer2 = setTimeout(sanitize, 300);
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(timer2);
+    };
+  }, [pathname]);
+
+  return null;
+}
+
 const FloatingWhatsApp = () => (
   <a 
     href="https://wa.me/923233260859"
@@ -148,6 +187,7 @@ export default function App() {
     <HelmetProvider>
       <Router>
         <ScrollToTop />
+        <MetaHeadSanitizer />
         <FacebookPixel />
         <FloatingWhatsApp />
         <ErrorBoundary>
@@ -247,6 +287,8 @@ export default function App() {
               <Route path="/blog/flutter-vs-native-mobile-app-development-2026" element={<BlogPostPage overrideSlug="flutter-vs-native-mobile-app-development-2026" />} />
               <Route path="/enterprise-software-engineering-what-changes-at-scale" element={<Navigate to="/blog/enterprise-software-engineering-what-changes-at-scale" replace />} />
               <Route path="/blog/enterprise-software-engineering-what-changes-at-scale" element={<BlogPostPage overrideSlug="enterprise-software-engineering-what-changes-at-scale" />} />
+              <Route path="/edtech-software-development-lms-features-every-platform-needs" element={<Navigate to="/blog/edtech-software-development-lms-features-every-platform-needs" replace />} />
+              <Route path="/blog/edtech-software-development-lms-features-every-platform-needs" element={<BlogPostPage overrideSlug="edtech-software-development-lms-features-every-platform-needs" />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />
