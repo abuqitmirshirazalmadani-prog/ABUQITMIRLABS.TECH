@@ -169,7 +169,8 @@ const routes = [
   '/blog/local-seo-citation-building-the-15-directory-checklist',
   '/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026',
   '/blog/enterprise-software-engineering-what-changes-at-scale',
-  '/blog/edtech-software-development-lms-features-every-platform-needs'
+  '/blog/edtech-software-development-lms-features-every-platform-needs',
+  '/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026'
 ];
 
 // Merge explicitly defined routes with any routes declared in SEO_ROUTES_METADATA

@@ -810,5 +810,17 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     twitterTitle: 'EdTech Software Development: 9 Features Every LMS Needs',
     twitterDescription: "Custom LMS without these 9 features will fail at engagement and retention. Here's what separates production-ready platforms from proof-of-concept toys.",
     twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/edtech-lms-9-features-og.jpg'
+  },
+  '/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026': {
+    title: 'Flutter vs React Native: Choosing Your Mobile App Stack in 2026',
+    description: "Flutter now has 46% market share. React Native has 4× more developers. Here's the honest decision framework for choosing between them in 2026.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026',
+    ogTitle: 'Flutter vs React Native: Choosing Your Mobile App Stack in 2026',
+    ogDescription: "Flutter now has 46% market share. React Native has 4× more developers. Here's the honest decision framework for choosing between them in 2026.",
+    ogImage: 'https://www.abuqitmirlabs.tech/images/blog/flutter-vs-react-native-2026-og.jpg',
+    ogType: 'article',
+    twitterTitle: 'Flutter vs React Native: Choosing Your Mobile App Stack in 2026',
+    twitterDescription: "Flutter now has 46% market share. React Native has 4× more developers. Here's the honest decision framework for choosing between them in 2026.",
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/flutter-vs-react-native-2026-og.jpg'
   }
 };
