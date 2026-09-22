@@ -470,6 +470,112 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
 
     const isFlutterVsReactNative = slug === 'flutter-vs-react-native-choosing-mobile-app-stack-2026';
 
+    const isAppDevAgencyUK = slug === 'app-development-agency-uk-what-to-ask-before-you-sign-2026';
+
+    const appDevAgencyUKSchema = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.abuqitmirlabs.tech/#organization",
+          "name": "AbuQitmirLabs .TECH",
+          "url": "https://www.abuqitmirlabs.tech/",
+          "logo": { "@type": "ImageObject", "@id": "https://www.abuqitmirlabs.tech/#logo", "url": "https://www.abuqitmirlabs.tech/logo.png" },
+          "description": "AI and custom software development studio based in Karachi, Pakistan, serving US, UK, and EU startups.",
+          "founder": { "@id": "https://www.abuqitmirlabs.tech/#person-abuqitmir" },
+          "address": { "@type": "PostalAddress", "addressLocality": "Karachi", "addressCountry": "PK" }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://www.abuqitmirlabs.tech/#person-abuqitmir",
+          "name": "Abu Qitmir Mohammad Shiraz Al-Madani",
+          "jobTitle": "Founder & Lead Systems Architect",
+          "worksFor": { "@id": "https://www.abuqitmirlabs.tech/#organization" }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.abuqitmirlabs.tech/#website",
+          "url": "https://www.abuqitmirlabs.tech/",
+          "name": "AbuQitmirLabs .TECH",
+          "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026#webpage",
+          "url": "https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026",
+          "name": "App Development Agency UK: What to Ask Before You Sign (2026 Guide)",
+          "description": "A 15-point evaluation framework for UK businesses vetting app development agencies. Covers costs, red flags, IP ownership, and offshore options.",
+          "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" },
+          "datePublished": "2026-09-17",
+          "dateModified": "2026-09-17",
+          "breadcrumb": { "@id": "https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026#breadcrumb" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026#breadcrumb",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abuqitmirlabs.tech/" },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.abuqitmirlabs.tech/blog" },
+            { "@type": "ListItem", "position": 3, "name": "App Development Agency UK: What to Ask Before You Sign (2026)", "item": "https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026" }
+          ]
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026#article",
+          "headline": "App Development Agency UK: What to Ask Before You Sign (2026 Guide)",
+          "description": "A 15-point evaluation framework for UK businesses vetting app development agencies.",
+          "author": { "@id": "https://www.abuqitmirlabs.tech/#person-abuqitmir" },
+          "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+          "datePublished": "2026-09-17",
+          "mainEntityOfPage": { "@id": "https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026#webpage" },
+          "keywords": "app development agency UK, mobile app development company UK, offshore app development UK, UK GDPR compliant app development, app development cost UK 2026",
+          "articleSection": "Mobile App Development",
+          "wordCount": 2800
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How much does app development cost in the UK in 2026?",
+              "acceptedAnswer": { "@type": "Answer", "text": "UK app development costs range from £15,000 to £40,000 for a basic MVP, £40,000 to £100,000 for a mid-complexity business app, and £100,000+ for enterprise builds. Offshore development from Pakistan delivers the same scope at 40% to 60% lower cost." }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I choose the right app development agency in the UK?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Use the 15-point framework: verify live portfolio apps, meet assigned engineers, confirm IP ownership from the first commit, check code repository access, require discovery, define change-request handling, verify QA budget, demand compliance specifics, get a defined support agreement, ask about failures, speak to past clients, understand AI coding usage, check GDPR credentials, test budget scenario responses, and demand itemised pricing." }
+            },
+            {
+              "@type": "Question",
+              "name": "What are the biggest red flags when hiring an app development agency?",
+              "acceptedAnswer": { "@type": "Answer", "text": "No live apps to demonstrate, quotes significantly below every competitor, refusal to sign an NDA, vague answers about who builds the app, no discovery phase, unclear IP ownership, restricted code repository access, and undefined post-launch support." }
+            },
+            {
+              "@type": "Question",
+              "name": "Is offshore app development safe for UK businesses?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes, with the right contracts and partner. Pakistan has WIPO-aligned copyright and patent law. NDA and IP-assignment agreements are enforceable under standard international arbitration clauses. Top-tier offshore studios provide dedicated account management and full IP transfer." }
+            },
+            {
+              "@type": "Question",
+              "name": "How much cheaper is offshore app development than UK agencies?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Offshore rates from Pakistan are 40% to 60% lower than UK agency rates. A mid-complexity app that costs £70,000 with a UK agency typically costs £25,000 to £35,000 offshore. The total cost of ownership gap is narrower once project management overhead and rework are factored in." }
+            },
+            {
+              "@type": "Question",
+              "name": "What should be in an app development contract?",
+              "acceptedAnswer": { "@type": "Answer", "text": "A mutual NDA, IP assignment from the first commit, code repository access in your name, GDPR data-handling agreement, defined scope with change-request process, itemised pricing, support agreement with response times, and an exit clause with data export requirements." }
+            },
+            {
+              "@type": "Question",
+              "name": "Can AbuQitmirLabs build apps for UK businesses?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. AbuQitmirLabs provides mobile app development for UK businesses with full IP transfer, no vendor lock-in, and compliance-ready architecture from day one. The studio has delivered projects for clients across the US, UK, and EU." }
+            }
+          ]
+        }
+      ]
+    };
+
     const flutterVsReactNativeSchema = {
       "@context": "https://schema.org",
       "@graph": [
@@ -1221,7 +1327,53 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
     return (
         <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00]/30 selection:text-white">
             <Helmet prioritizeSeoTags>
-                {isFlutterVsReactNative ? (
+                {isAppDevAgencyUK ? (
+                    <>
+                        <html lang="en" />
+                        {/* Primary Meta Tags */}
+                        <title>App Development Agency UK: What to Ask Before You Sign</title>
+                        <meta name="title" content="App Development Agency UK: What to Ask Before You Sign" />
+                        <meta name="description" content="A 15-point evaluation framework for UK businesses vetting app development agencies. Covers costs, red flags, IP ownership, and offshore options." />
+                        <meta name="keywords" content="app development agency UK, mobile app development company UK, offshore app development UK, UK GDPR compliant app development, app development cost UK 2026, how to choose app development agency, app development red flags, IP ownership app development" />
+                        <meta name="author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
+                        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+                        <meta name="language" content="English" />
+                        <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026" />
+
+                        {/* Open Graph / Facebook */}
+                        <meta property="og:type" content="article" />
+                        <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026" />
+                        <meta property="og:title" content="App Development Agency UK: What to Ask Before You Sign" />
+                        <meta property="og:description" content="15-point framework for vetting UK app development agencies. Costs, red flags, IP ownership, and offshore options." />
+                        <meta property="og:image" content="https://www.abuqitmirlabs.tech/og-app-development-agency-uk.jpg" />
+                        <meta property="og:image:width" content="1200" />
+                        <meta property="og:image:height" content="630" />
+                        <meta property="og:image:alt" content="App development agency UK evaluation framework — 15 questions to ask before signing" />
+                        <meta property="og:site_name" content="AbuQitmirLabs .TECH" />
+                        <meta property="og:locale" content="en_US" />
+                        <meta property="article:published_time" content="2026-09-17T09:00:00+05:00" />
+                        <meta property="article:modified_time" content="2026-09-17T09:00:00+05:00" />
+                        <meta property="article:author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
+                        <meta property="article:section" content="Mobile App Development" />
+                        <meta property="article:tag" content="app development agency UK" />
+                        <meta property="article:tag" content="mobile app development UK" />
+                        <meta property="article:tag" content="offshore app development" />
+
+                        {/* Twitter Card */}
+                        <meta name="twitter:card" content="summary_large_image" />
+                        <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026" />
+                        <meta name="twitter:title" content="App Development Agency UK: What to Ask Before You Sign" />
+                        <meta name="twitter:description" content="15-point framework for vetting UK app development agencies. Costs, red flags, IP ownership, offshore options." />
+                        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/twitter-app-development-agency-uk.jpg" />
+                        <meta name="twitter:image:alt" content="App development agency UK evaluation framework" />
+                        <meta name="twitter:site" content="@AbuQitmirLabs" />
+                        <meta name="twitter:creator" content="@AbuQitmir" />
+
+                        <script type="application/ld+json">
+                            {JSON.stringify(appDevAgencyUKSchema)}
+                        </script>
+                    </>
+                ) : isFlutterVsReactNative ? (
                     <>
                         <html lang="en" />
                         {/* Primary Meta Tags */}

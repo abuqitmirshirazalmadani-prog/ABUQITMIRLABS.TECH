@@ -822,5 +822,17 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     twitterTitle: 'Flutter vs React Native: Choosing Your Mobile App Stack in 2026',
     twitterDescription: "Flutter now has 46% market share. React Native has 4× more developers. Here's the honest decision framework for choosing between them in 2026.",
     twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/flutter-vs-react-native-2026-og.jpg'
+  },
+  '/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026': {
+    title: 'App Development Agency UK: What to Ask Before You Sign',
+    description: 'A 15-point evaluation framework for UK businesses vetting app development agencies. Covers costs, red flags, IP ownership, and offshore options.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026',
+    ogTitle: 'App Development Agency UK: What to Ask Before You Sign',
+    ogDescription: '15-point framework for vetting UK app development agencies. Costs, red flags, IP ownership, and offshore options.',
+    ogImage: 'https://www.abuqitmirlabs.tech/og-app-development-agency-uk.jpg',
+    ogType: 'article',
+    twitterTitle: 'App Development Agency UK: What to Ask Before You Sign',
+    twitterDescription: '15-point framework for vetting UK app development agencies. Costs, red flags, IP ownership, offshore options.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/twitter-app-development-agency-uk.jpg'
   }
 };

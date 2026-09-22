@@ -291,6 +291,8 @@ export default function App() {
               <Route path="/blog/edtech-software-development-lms-features-every-platform-needs" element={<BlogPostPage overrideSlug="edtech-software-development-lms-features-every-platform-needs" />} />
               <Route path="/flutter-vs-react-native-choosing-mobile-app-stack-2026" element={<Navigate to="/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026" replace />} />
               <Route path="/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026" element={<BlogPostPage overrideSlug="flutter-vs-react-native-choosing-mobile-app-stack-2026" />} />
+              <Route path="/app-development-agency-uk-what-to-ask-before-you-sign-2026" element={<Navigate to="/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026" replace />} />
+              <Route path="/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026" element={<BlogPostPage overrideSlug="app-development-agency-uk-what-to-ask-before-you-sign-2026" />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />
