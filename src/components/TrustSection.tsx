@@ -49,20 +49,20 @@ const TrustSection = () => {
                                 {/* Stats Overlay */}
                                 <div className="mt-4 grid grid-cols-2 gap-3">
                                     <div className="bg-black/40 backdrop-blur-md rounded-xl p-3 border border-white/10 hover:bg-white/10 transition-colors">
-                                        <div className="text-xl font-black text-white">410+</div>
-                                        <div className="text-[10px] text-neutral-400 uppercase tracking-widest font-black">Completed</div>
+                                        <div className="text-xl font-black text-white">Clutch</div>
+                                        <div className="text-[10px] text-neutral-400 uppercase tracking-widest font-black">Verified Profile</div>
                                     </div>
                                     <div className="bg-black/40 backdrop-blur-md rounded-xl p-3 border border-white/10 hover:bg-white/10 transition-colors">
-                                        <div className="text-xl font-black text-white">290+</div>
-                                        <div className="text-[10px] text-neutral-400 uppercase tracking-widest font-black">Reviews</div>
+                                        <div className="text-xl font-black text-white">GoodFirms</div>
+                                        <div className="text-[10px] text-neutral-400 uppercase tracking-widest font-black">Listed Agency</div>
                                     </div>
                                     <div className="bg-black/40 backdrop-blur-md rounded-xl p-3 border border-white/10 hover:bg-white/10 transition-colors">
                                         <div className="text-xl font-black text-white">5+</div>
                                         <div className="text-[10px] text-neutral-400 uppercase tracking-widest font-black">Years</div>
                                     </div>
                                     <div className="bg-black/40 backdrop-blur-md rounded-xl p-3 border border-white/10 hover:bg-white/10 transition-colors">
-                                        <div className="text-xl font-black text-white">350+</div>
-                                        <div className="text-[10px] text-neutral-400 uppercase tracking-widest font-black">Clients</div>
+                                        <div className="text-xl font-black text-white">GMB</div>
+                                        <div className="text-[10px] text-neutral-400 uppercase tracking-widest font-black">Google Verified</div>
                                     </div>
                                 </div>
                             </div>
