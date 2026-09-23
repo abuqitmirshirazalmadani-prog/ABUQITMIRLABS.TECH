@@ -834,5 +834,17 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     twitterTitle: 'App Development Agency UK: What to Ask Before You Sign',
     twitterDescription: '15-point framework for vetting UK app development agencies. Costs, red flags, IP ownership, offshore options.',
     twitterImage: 'https://www.abuqitmirlabs.tech/twitter-app-development-agency-uk.jpg'
+  },
+  '/blog/high-performance-web-applications-12-engineering-decisions': {
+    title: 'High-Performance Web Apps: 12 Engineering Decisions',
+    description: 'Learn the 12 engineering decisions that separate high-performance web applications from slow ones. Optimize Core Web Vitals and scale effectively.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/high-performance-web-applications-12-engineering-decisions',
+    ogTitle: 'High-Performance Web Apps: 12 Engineering Decisions',
+    ogDescription: 'Learn the 12 engineering decisions that separate high-performance web applications from slow ones. Optimize Core Web Vitals and scale effectively.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/high-performance-web-apps-cover.jpg',
+    ogType: 'article',
+    twitterTitle: 'High-Performance Web Apps: 12 Engineering Decisions',
+    twitterDescription: 'Learn the 12 engineering decisions that separate high-performance web applications from slow ones. Optimize Core Web Vitals and scale effectively.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/high-performance-web-apps-cover.jpg'
   }
 };

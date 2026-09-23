@@ -472,6 +472,163 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
 
     const isAppDevAgencyUK = slug === 'app-development-agency-uk-what-to-ask-before-you-sign-2026';
 
+    const isHighPerformanceWebApps = slug === 'high-performance-web-applications-12-engineering-decisions';
+
+    const highPerformanceWebAppsSchema = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.abuqitmirlabs.tech/#organization",
+          "name": "AbuQitmirLabs",
+          "url": "https://www.abuqitmirlabs.tech/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.abuqitmirlabs.tech/images/logo.png",
+            "width": 512,
+            "height": 512
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/abuqitmirlabs",
+            "https://twitter.com/abuqitmirlabs",
+            "https://github.com/abuqitmirlabs"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Karachi",
+            "addressCountry": "PK"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+92-300-0000000",
+            "contactType": "customer service",
+            "availableLanguage": ["English", "Urdu"]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.abuqitmirlabs.tech/#website",
+          "url": "https://www.abuqitmirlabs.tech/",
+          "name": "AbuQitmirLabs",
+          "publisher": {
+            "@id": "https://www.abuqitmirlabs.tech/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.abuqitmirlabs.tech/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.abuqitmirlabs.tech/blog/high-performance-web-applications-12-engineering-decisions/#webpage",
+          "url": "https://www.abuqitmirlabs.tech/blog/high-performance-web-applications-12-engineering-decisions",
+          "name": "High-Performance Web Applications: 12 Engineering Decisions",
+          "isPartOf": {
+            "@id": "https://www.abuqitmirlabs.tech/#website"
+          },
+          "about": {
+            "@id": "https://www.abuqitmirlabs.tech/#organization"
+          },
+          "description": "Learn the 12 engineering decisions that separate high-performance web applications from slow ones. Optimize Core Web Vitals and scale effectively.",
+          "breadcrumb": {
+            "@id": "https://www.abuqitmirlabs.tech/blog/high-performance-web-applications-12-engineering-decisions/#breadcrumb"
+          },
+          "inLanguage": "en-US",
+          "potentialAction": [
+            {
+              "@type": "ReadAction",
+              "target": ["https://www.abuqitmirlabs.tech/blog/high-performance-web-applications-12-engineering-decisions"]
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.abuqitmirlabs.tech/blog/high-performance-web-applications-12-engineering-decisions/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.abuqitmirlabs.tech/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://www.abuqitmirlabs.tech/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "High-Performance Web Applications: 12 Engineering Decisions",
+              "item": "https://www.abuqitmirlabs.tech/blog/high-performance-web-applications-12-engineering-decisions"
+            }
+          ]
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.abuqitmirlabs.tech/blog/high-performance-web-applications-12-engineering-decisions/#article",
+          "isPartOf": {
+            "@id": "https://www.abuqitmirlabs.tech/blog/high-performance-web-applications-12-engineering-decisions/#webpage"
+          },
+          "author": {
+            "@id": "https://www.abuqitmirlabs.tech/#organization"
+          },
+          "publisher": {
+            "@id": "https://www.abuqitmirlabs.tech/#organization"
+          },
+          "headline": "High-Performance Web Applications: 12 Engineering Decisions",
+          "datePublished": "2026-09-24T00:00:00+00:00",
+          "dateModified": "2026-09-24T00:00:00+00:00",
+          "mainEntityOfPage": {
+            "@id": "https://www.abuqitmirlabs.tech/blog/high-performance-web-applications-12-engineering-decisions/#webpage"
+          },
+          "keywords": "high-performance web applications, web performance optimization, Core Web Vitals, web engineering decisions",
+          "articleSection": "Web Development",
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.abuqitmirlabs.tech/blog/high-performance-web-applications-12-engineering-decisions/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is considered a high-performance web application?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A high-performance web application loads its largest contentful paint (LCP) in under 2.5 seconds, responds to user input (INP) in under 200 milliseconds, and maintains a cumulative layout shift (CLS) of less than 0.1. These thresholds are defined by Google's Core Web Vitals."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I measure web application performance?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Measure web application performance using two complementary approaches: lab testing and real user monitoring. Lab testing tools like Lighthouse and WebPageTest provide controlled, reproducible measurements. Real user monitoring (RUM) tools like Google Analytics, Datadog, or New Relic track performance for actual users in production."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does website speed affect SEO rankings?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Google uses Core Web Vitals as a ranking factor. Pages with good Core Web Vitals scores rank higher than pages with poor scores, all else being equal. Beyond SEO, speed affects conversion rates, bounce rates, and user satisfaction."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can a web application be too fast?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. There is no such thing as a web application that is too fast. However, there is a point of diminishing returns. Optimizing a page that already loads in 200 milliseconds to load in 100 milliseconds may not provide measurable business value. Prioritize optimizations that affect the largest number of users."
+              }
+            }
+          ]
+        }
+      ]
+    };
+
     const appDevAgencyUKSchema = {
       "@context": "https://schema.org",
       "@graph": [
@@ -1327,7 +1484,48 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
     return (
         <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00]/30 selection:text-white">
             <Helmet prioritizeSeoTags>
-                {isAppDevAgencyUK ? (
+                {isHighPerformanceWebApps ? (
+                    <>
+                        <html lang="en" />
+                        {/* Primary Meta Tags */}
+                        <title>High-Performance Web Apps: 12 Engineering Decisions</title>
+                        <meta name="title" content="High-Performance Web Apps: 12 Engineering Decisions" />
+                        <meta name="description" content="Learn the 12 engineering decisions that separate high-performance web applications from slow ones. Optimize Core Web Vitals and scale effectively." />
+                        <meta name="keywords" content="high-performance web applications, web performance optimization, Core Web Vitals, web engineering decisions, web application performance" />
+                        <meta name="author" content="AbuQitmirLabs" />
+                        <meta name="robots" content="index, follow" />
+                        <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog/high-performance-web-applications-12-engineering-decisions" />
+
+                        {/* Open Graph / Facebook */}
+                        <meta property="og:type" content="article" />
+                        <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/high-performance-web-applications-12-engineering-decisions" />
+                        <meta property="og:title" content="High-Performance Web Apps: 12 Engineering Decisions" />
+                        <meta property="og:description" content="Learn the 12 engineering decisions that separate high-performance web applications from slow ones. Optimize Core Web Vitals and scale effectively." />
+                        <meta property="og:image" content="https://www.abuqitmirlabs.tech/images/high-performance-web-apps-cover.jpg" />
+                        <meta property="og:image:alt" content="A dashboard showing Core Web Vitals metrics with green scores for LCP, INP, and CLS." />
+                        <meta property="og:site_name" content="AbuQitmirLabs" />
+                        <meta property="article:published_time" content="2026-09-24T00:00:00+00:00" />
+                        <meta property="article:author" content="AbuQitmirLabs" />
+                        <meta property="article:section" content="Web Development" />
+                        <meta property="article:tag" content="high-performance web applications" />
+                        <meta property="article:tag" content="Core Web Vitals" />
+                        <meta property="article:tag" content="web performance optimization" />
+
+                        {/* Twitter */}
+                        <meta name="twitter:card" content="summary_large_image" />
+                        <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/high-performance-web-applications-12-engineering-decisions" />
+                        <meta name="twitter:title" content="High-Performance Web Apps: 12 Engineering Decisions" />
+                        <meta name="twitter:description" content="Learn the 12 engineering decisions that separate high-performance web applications from slow ones. Optimize Core Web Vitals and scale effectively." />
+                        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/high-performance-web-apps-cover.jpg" />
+                        <meta name="twitter:image:alt" content="A dashboard showing Core Web Vitals metrics with green scores for LCP, INP, and CLS." />
+                        <meta name="twitter:site" content="@abuqitmirlabs" />
+                        <meta name="twitter:creator" content="@abuqitmirlabs" />
+
+                        <script type="application/ld+json">
+                            {JSON.stringify(highPerformanceWebAppsSchema)}
+                        </script>
+                    </>
+                ) : isAppDevAgencyUK ? (
                     <>
                         <html lang="en" />
                         {/* Primary Meta Tags */}

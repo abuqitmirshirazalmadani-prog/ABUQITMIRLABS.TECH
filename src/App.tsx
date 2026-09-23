@@ -293,6 +293,8 @@ export default function App() {
               <Route path="/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026" element={<BlogPostPage overrideSlug="flutter-vs-react-native-choosing-mobile-app-stack-2026" />} />
               <Route path="/app-development-agency-uk-what-to-ask-before-you-sign-2026" element={<Navigate to="/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026" replace />} />
               <Route path="/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026" element={<BlogPostPage overrideSlug="app-development-agency-uk-what-to-ask-before-you-sign-2026" />} />
+              <Route path="/high-performance-web-applications-12-engineering-decisions" element={<Navigate to="/blog/high-performance-web-applications-12-engineering-decisions" replace />} />
+              <Route path="/blog/high-performance-web-applications-12-engineering-decisions" element={<BlogPostPage overrideSlug="high-performance-web-applications-12-engineering-decisions" />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />
