@@ -68,7 +68,7 @@ const TechStackSection = () => {
                             Tech Stack
                         </span>
                         <AnimatedShinyText 
-                            text="Modern Technologies We Use" 
+                            text="Modern Tech Stack for Web & Mobile App Development" 
                             textClassName="leading-tight md:text-8xl sm:text-5xl text-3xl text-white mb-2 font-bold tracking-tighter"
                             className="mb-8"
                         />

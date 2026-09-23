@@ -144,7 +144,7 @@ const ProcessSection = () => {
                             The Development Process
                         </span>
                         <AnimatedShinyText 
-                            text="Our Proven 5-Step Development Process" 
+                            text="Our 5-Step Agile Software & Web Development Process" 
                             textClassName="text-2xl sm:text-4xl md:text-6xl"
                             className="mb-8"
                         />

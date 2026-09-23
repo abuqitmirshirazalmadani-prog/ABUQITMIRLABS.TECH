@@ -174,21 +174,21 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
           {/* Left Title & Buttons */}
           <div className="lg:col-span-8 space-y-6">
             <span className="text-[#C8EB5F] text-[11px] sm:text-xs font-mono font-bold tracking-[0.3em] uppercase block">
-              ✦ Full-Service Digital Agency &amp; Custom Software Studio ✦
+              ✦ Award-Winning Software Development Agency ✦
             </span>
 
             <h1 className="font-serif text-white font-light text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
-              Custom Software &amp; <br />
+              Custom Software Development Company &amp; <br />
               <span className="italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-[#C8EB5F] to-emerald-300">
-                AI App Development
+                AI Agency
               </span>{" "}
               <span className="font-sans font-light text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white/90 block sm:inline">
-                for Modern Businesses
+                | AbuQitmirLabs
               </span>
             </h1>
 
             <p className="text-neutral-300 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-light">
-              We use AI to move fast. We don't hide behind it. Every line of code, every architecture decision, every claim on this site is reviewed and signed off by a person — not generated and shipped unchecked.
+              As a dedicated custom software development company and AI agency based in Karachi, we use AI to build fast without hiding behind it. Every line of code, every architecture decision, and every deployment for our US, UK, Canadian, and Australian clients is personally engineered and reviewed—not generated and shipped unchecked.
             </p>
 
             {/* Quick Email / Project Input Form */}

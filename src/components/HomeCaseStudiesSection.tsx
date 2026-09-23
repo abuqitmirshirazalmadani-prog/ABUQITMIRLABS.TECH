@@ -31,7 +31,7 @@ export default function HomeCaseStudiesSection() {
             transition={{ delay: 0.1 }}
             className="font-serif italic font-light text-4xl sm:text-5xl md:text-6xl text-white tracking-tight"
           >
-            Our Work. <span className="text-[#ccff00]">Their Growth.</span>
+            Case Studies: <span className="text-[#ccff00]">Custom Software &amp; AI Development Results</span>
           </motion.h2>
         </div>
 

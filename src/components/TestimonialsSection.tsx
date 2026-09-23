@@ -71,7 +71,7 @@ export default function TestimonialsSection() {
           </div>
 
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-center text-white uppercase mb-6 leading-none">
-            Verified Client <span className="text-[#B9FF66]">Intel</span>
+            Verified Client <span className="text-[#B9FF66]">Reviews from US, UK &amp; Global Partners</span>
           </h2>
           <p className="text-center text-zinc-400 font-mono text-sm uppercase tracking-widest leading-relaxed">
             Direct feedback from our global network of high-performance partners.

@@ -36,6 +36,14 @@ const faqItems = [
     {
         question: "What is E-E-A-T compliant content, and why do I need it to rank?",
         answer: "E-E-A-T stands for Experience, Expertise, Authoritativeness, and Trustworthiness. In an internet flooded with generic, AI-generated text, search engines now penalize low-quality content and reward verifiable human expertise. We use detailed semantic content briefs to write E-E-A-T focused technical content. From high-converting landing pages to thought-leadership blog posts, we craft copy that satisfies complex search algorithms while building genuine trust with human readers."
+    },
+    {
+        question: "How much does custom software development cost in Pakistan?",
+        answer: "Custom software development in Pakistan typically ranges between $5,000 and $25,000 for production-ready platforms, delivering 60% to 75% cost savings compared to US ($50,000–$150,000+) and UK agency equivalents. At AbuQitmirLabs, we uphold international engineering standards, zero-debt architecture, and strict code review protocols. For a granular breakdown tailored to your scope, explore our interactive Project Cost Estimator tool to calculate instant estimates."
+    },
+    {
+        question: "Do you work with clients in the US and UK remotely?",
+        answer: "Yes. Over 80% of our clients operate across the United States, United Kingdom, Canada, and Australia. We operate with dedicated timezone overlap (4–6 hours daily with EST/PST and full afternoon overlap with GMT/BST). Our distributed delivery workflow leverages Slack, GitHub, Jira, Loom asynchronous video walkthroughs, and weekly video strategy calls to maintain 100% transparency, rapid iteration sprints, and seamless communication across borders."
     }
 ];
 
@@ -114,7 +122,7 @@ const FAQSection = () => {
                         viewport={{ once: true }}
                     >
                         <AnimatedShinyText 
-                            text="Frequently Asked Questions (Answering Your Biggest Queries)" 
+                            text="Frequently Asked Questions: Software, AI & Web Development" 
                             textClassName="text-2xl sm:text-4xl md:text-5xl lg:text-6xl"
                             className="px-2 mb-8"
                         />

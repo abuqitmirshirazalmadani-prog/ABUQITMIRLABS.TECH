@@ -39,8 +39,8 @@ interface Service {
 const services: Service[] = [
     {
         number: "01",
-        title: "Software & Mobile",
-        fullTitle: "Custom Software & Mobile App Development",
+        title: "Custom Software",
+        fullTitle: "Custom Software Development",
         description: "Turn your disruptive ideas into market-ready realities. We specialize in scalable MVP development for tech startups and comprehensive software solutions for established enterprises.",
         tags: ["React Native", "MVP", "SaaS"],
         icon: <Smartphone className="text-violet-400" />,
@@ -50,7 +50,7 @@ const services: Service[] = [
     {
         number: "02",
         title: "Web Tech",
-        fullTitle: "High-Performance Web Development",
+        fullTitle: "Web Development Services",
         description: "We engineer high-performance Jamstack web development solutions that prioritize speed, security, and scalability. Sub-second load times that convert.",
         tags: ["Jamstack", "Headless CMS", "Next.js"],
         icon: <Globe className="text-violet-400" />,
@@ -60,7 +60,7 @@ const services: Service[] = [
     {
         number: "03",
         title: "AI Agents",
-        fullTitle: "Intelligent AI Agent Development",
+        fullTitle: "AI Agent Development Services",
         description: "Transform your business with autonomous LLM agents that automate complex workflows and provide 24/7 intelligent support. Agentic AI is the future.",
         tags: ["LLM", "RAG", "Automation"],
         icon: <Bot className="text-violet-400" />,
@@ -70,7 +70,7 @@ const services: Service[] = [
     {
         number: "04",
         title: "SEO Mastery",
-        fullTitle: "SEO & Local SEO Mastery",
+        fullTitle: "SEO & Local SEO Services",
         description: "We utilize data-driven Semantic Entity SEO and hyper-local map strategies to establish topical authority and capture high-intent buyers.",
         tags: ["Semantic SEO", "GBP", "Entity SEO"],
         icon: <Search className="text-violet-400" />,
@@ -80,7 +80,7 @@ const services: Service[] = [
     {
         number: "05",
         title: "Design",
-        fullTitle: "Premium Graphics Designing",
+        fullTitle: "Graphics & Brand Design",
         description: "Conversion-focused brand identity design. Logos, UI/UX layouts, and social media creatives strategically formulated to build trust.",
         tags: ["UI/UX", "Branding", "Creative"],
         icon: <Palette className="text-violet-400" />,
@@ -90,7 +90,7 @@ const services: Service[] = [
     {
         number: "06",
         title: "Content",
-        fullTitle: "Professional Content Writing",
+        fullTitle: "Content Writing Services",
         description: "E-E-A-T focused technical content writing that satisfies algorithms and humans. Naratives that establish your brand as an authority.",
         tags: ["E-E-A-T", "Semantic", "Copywriter"],
         icon: <FileText className="text-violet-400" />,
@@ -334,7 +334,7 @@ const ServicesSection = () => {
                     </span>
                 </motion.div>
                 <AnimatedShinyText 
-                    text="Our Premium Digital Services (Engineered for Growth)" 
+                    text="Custom Software Development, Web & AI Agent Services" 
                     textClassName="text-2xl sm:text-4xl md:text-6xl"
                     className="mb-8"
                 />

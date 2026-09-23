@@ -15,15 +15,15 @@ export interface RouteSeoMetadata {
 
 export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   '/': {
-    title: 'Custom Software & AI App Development Company | AbuQitmirLabs',
-    description: 'AbuQitmirLabs engineers custom software, AI agents, mobile apps, and web solutions. Top-rated development company in Karachi serving global clients.',
+    title: 'Custom Software Development Company | AI & Web Agency | AbuQitmirLabs',
+    description: 'AbuQitmirLabs is a custom software development company in Karachi building AI agents, mobile apps & web solutions for US, UK & global clients. Get a free consultation.',
     canonical: 'https://www.abuqitmirlabs.tech/',
-    ogTitle: 'Custom Software & AI App Development Company | AbuQitmirLabs',
-    ogDescription: 'AbuQitmirLabs engineers custom software, AI agents, mobile apps, and web solutions. Top-rated development company in Karachi serving global clients.',
+    ogTitle: 'Custom Software Development Company | AI & Web Agency | AbuQitmirLabs',
+    ogDescription: 'AbuQitmirLabs is a custom software development company in Karachi building AI agents, mobile apps & web solutions for US, UK & global clients. Get a free consultation.',
     ogImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg',
     ogType: 'website',
-    twitterTitle: 'Custom Software & AI App Development Company | AbuQitmirLabs',
-    twitterDescription: 'AbuQitmirLabs engineers custom software, AI agents, mobile apps, and web solutions. Top-rated development company in Karachi serving global clients.',
+    twitterTitle: 'Custom Software Development Company | AI & Web Agency | AbuQitmirLabs',
+    twitterDescription: 'AbuQitmirLabs is a custom software development company in Karachi building AI agents, mobile apps & web solutions for US, UK & global clients. Get a free consultation.',
     twitterImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg'
   },
   '/about': {

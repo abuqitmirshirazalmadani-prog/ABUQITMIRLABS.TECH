@@ -112,7 +112,7 @@ const ImpactSection = () => {
                     </motion.div>
 
                     <AnimatedShinyText 
-                        text="Real Business Impact: What You Will Achieve" 
+                        text="Measurable Business Impact: ROI, Automation & Performance" 
                         textClassName="text-2xl sm:text-4xl md:text-5xl lg:text-7xl"
                         className="mb-8"
                     />

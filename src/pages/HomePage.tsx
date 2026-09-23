@@ -27,20 +27,20 @@ export default function HomePage() {
   return (
     <main id="main-content" className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <Helmet>
-        <title>Custom Software &amp; AI App Development Company | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs engineers custom software, AI agents, mobile apps, and web solutions. Top-rated development company in Karachi serving global clients." />
+        <title>Custom Software Development Company | AI &amp; Web Agency | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs is a custom software development company in Karachi building AI agents, mobile apps &amp; web solutions for US, UK &amp; global clients. Get a free consultation." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/" />
         <link rel="preload" as="image" href="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" type="image/jpeg" fetchPriority="high" />
         
-        <meta property="og:title" content="Custom Software &amp; AI App Development Company | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs engineers custom software, AI agents, mobile apps, and web solutions. Top-rated development company in Karachi serving global clients." />
+        <meta property="og:title" content="Custom Software Development Company | AI &amp; Web Agency | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs is a custom software development company in Karachi building AI agents, mobile apps &amp; web solutions for US, UK &amp; global clients. Get a free consultation." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
         <meta property="og:image:alt" content="AbuQitmirLabs Custom Software &amp; AI Development Studio" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Custom Software &amp; AI App Development Company | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs engineers custom software, AI agents, mobile apps, and web solutions. Top-rated development company in Karachi serving global clients." />
+        <meta name="twitter:title" content="Custom Software Development Company | AI &amp; Web Agency | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs is a custom software development company in Karachi building AI agents, mobile apps &amp; web solutions for US, UK &amp; global clients. Get a free consultation." />
         <meta name="twitter:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
         <script type="application/ld+json">{JSON.stringify(homeSchema)}</script>
       </Helmet>
@@ -113,7 +113,7 @@ export default function HomePage() {
                 <span className="text-xs font-mono text-[#ccff00] font-bold">01 / WEB &amp; ENTERPRISE SYSTEMS</span>
               </div>
               <h3 className="text-xl font-sans font-bold text-white tracking-tight">
-                Modern Web Platforms &amp; Core Systems
+                Custom Software &amp; Web Development Services
               </h3>
               <p className="text-neutral-300 font-sans leading-relaxed text-sm font-light text-justify">
                 We design resilient digital interfaces and decoupled cloud platforms with sub-second performance. For comprehensive architectural specifications, technical frameworks, and delivery roadmaps, explore our dedicated engineering practices:
@@ -136,7 +136,7 @@ export default function HomePage() {
                 <span className="text-xs font-mono text-[#ccff00] font-bold">02 / AI &amp; COGNITIVE AUTOMATION</span>
               </div>
               <h3 className="text-xl font-sans font-bold text-white tracking-tight">
-                Autonomous Agents &amp; RAG Pipelines
+                AI Agent Development &amp; Intelligent Automation
               </h3>
               <p className="text-neutral-300 font-sans leading-relaxed text-sm font-light text-justify">
                 We develop multi-agent intelligence systems, semantic retrieval engines, and localized LLM integrations to automate operational bottlenecks. For detailed case studies and deployment methodologies, visit our specialized division:
@@ -159,7 +159,7 @@ export default function HomePage() {
                 <span className="text-xs font-mono text-[#ccff00] font-bold">03 / MOBILE APPLICATIONS</span>
               </div>
               <h3 className="text-xl font-sans font-bold text-white tracking-tight">
-                High-Performance Mobile Applications
+                Cross-Platform Mobile App Development
               </h3>
               <p className="text-neutral-300 font-sans leading-relaxed text-sm font-light text-justify">
                 We build native-grade mobile products on Flutter and React Native with unified codebases, biometric hardware authentication, and offline synchronization. Explore our full mobile capability matrix and store launch process:
@@ -182,7 +182,7 @@ export default function HomePage() {
                   04 / SEARCH ARCHITECTURE &amp; DISCOVERY
                 </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif italic text-white">
-                  Technical Search Optimization &amp; Digital Footprint
+                  Technical SEO &amp; Search Architecture Services
                 </h2>
                 <p className="text-neutral-300 font-sans text-sm md:text-base leading-relaxed font-light text-justify">
                   Search discoverability is an engineering discipline requiring semantic Schema.org entity networks, Core Web Vitals optimization, and generative answer engine indexing (GEO/AEO). To review our specific organic search frameworks and localized map strategies:
@@ -213,7 +213,7 @@ export default function HomePage() {
                 05 / GLOBAL DELIVERY FOOTPRINT
               </span>
               <h2 className="text-2xl sm:text-3xl font-serif italic text-white">
-                Why Global Businesses Choose AbuQitmirLabs
+                Why US, UK &amp; Global Clients Choose Our Software Company in Karachi
               </h2>
               <p className="text-neutral-300 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
                 Operating proudly as an elite software engineering studio based in Karachi, Pakistan, AbuQitmirLabs combines international delivery standards with optimal capital efficiency. When international leadership teams choose to work with us, they gain direct access to senior software architects, test-driven development methodologies, and 100% intellectual property ownership without administrative bureaucracy.

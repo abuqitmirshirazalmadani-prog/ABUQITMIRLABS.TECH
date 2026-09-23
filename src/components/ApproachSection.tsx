@@ -22,7 +22,7 @@ const ApproachSection = () => {
                 </motion.div>
 
                 <AnimatedShinyText 
-                    text="Our Unique Approach: Why We Are Different" 
+                    text="Our Strategic Approach to Custom Software & Web Development" 
                     textClassName="text-3xl sm:text-4xl md:text-5xl"
                     className="mb-8"
                 />

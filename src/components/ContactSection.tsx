@@ -62,8 +62,8 @@ const ContactSection = () => {
           </div>
           
           <h2 className="text-4xl md:text-7xl font-display font-black tracking-tighter uppercase leading-[0.9] text-white">
-            Secure Your <br className="hidden md:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] to-[#ffff99]">Digital Superiority</span>
+            Start Your Custom Software &amp; AI Project <br className="hidden md:inline" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] to-[#ffff99]">| Contact Us</span>
           </h2>
           <div className="w-24 h-2 bg-[#ccff00] mt-8 mb-6 rounded-sm"></div>
           <p className="text-zinc-500 text-lg md:text-xl font-medium max-w-2xl leading-relaxed lowercase">

@@ -129,8 +129,8 @@ export const homeSchema = {
       "@type": "WebPage",
       "@id": "https://www.abuqitmirlabs.tech/#webpage",
       "url": "https://www.abuqitmirlabs.tech/",
-      "name": "Custom Software & AI App Development Company | AbuQitmirLabs",
-      "description": "AbuQitmirLabs engineers custom software, AI agents, mobile apps, and web solutions. Top-rated development company in Karachi serving global clients.",
+      "name": "Custom Software Development Company | AI & Web Agency | AbuQitmirLabs",
+      "description": "AbuQitmirLabs is a custom software development company in Karachi building AI agents, mobile apps & web solutions for US, UK & global clients. Get a free consultation.",
       "inLanguage": "en-US",
       "isPartOf": {
         "@type": "WebSite",
@@ -212,6 +212,22 @@ export const homeSchema = {
             "@type": "Answer",
             "text": "Yes. Every client retains 100% intellectual property ownership, complete source code repositories, architectural blueprints, and deployment credentials upon milestone completion with zero vendor lock-in."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does custom software development cost in Pakistan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Custom software development in Pakistan typically ranges between $5,000 and $25,000 for production-ready platforms, delivering 60% to 75% cost savings compared to US ($50,000–$150,000+) and UK agency equivalents. At AbuQitmirLabs, we uphold international engineering standards, zero-debt architecture, and strict code review protocols. For a granular breakdown tailored to your scope, explore our interactive Project Cost Estimator tool to calculate instant estimates."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work with clients in the US and UK remotely?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Over 80% of our clients operate across the United States, United Kingdom, Canada, and Australia. We operate with dedicated timezone overlap (4–6 hours daily with EST/PST and full afternoon overlap with GMT/BST). Our distributed delivery workflow leverages Slack, GitHub, Jira, Loom asynchronous video walkthroughs, and weekly video strategy calls to maintain 100% transparency, rapid iteration sprints, and seamless communication across borders."
+          }
         }
       ]
     },
@@ -271,21 +287,21 @@ export const homeInitialHtml = `
 
     <div class="relative z-10 max-w-7xl mx-auto w-full space-y-8">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 border border-[#ccff00]/30 bg-[#ccff00]/10 text-[#ccff00] font-mono text-xs font-semibold tracking-widest uppercase rounded-full">
-        <span>✦ Full-Service Digital Agency & Custom Software Studio ✦</span>
+        <span>✦ Award-Winning Software Development Agency ✦</span>
       </div>
 
       <h1 class="font-serif text-white font-light text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight">
-        Custom Software &amp; <br />
+        Custom Software Development Company &amp; <br />
         <span class="italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-[#ccff00] to-emerald-300">
-          AI App Development
+          AI Agency
         </span> 
         <span class="font-sans font-light text-3xl sm:text-5xl md:text-6xl text-white/90 block sm:inline">
-          for Modern Businesses
+          | AbuQitmirLabs
         </span>
       </h1>
 
       <p class="text-neutral-300 text-lg md:text-xl max-w-3xl leading-relaxed font-light">
-        We use AI to move fast. We don't hide behind it. Every line of code, every architecture decision, every claim on this site is reviewed and signed off by a person — not generated and shipped unchecked.
+        As a dedicated custom software development company and AI agency based in Karachi, we use AI to build fast without hiding behind it. Every line of code, every architecture decision, and every deployment for our US, UK, Canadian, and Australian clients is personally engineered and reviewed—not generated and shipped unchecked.
       </p>
 
       <div class="flex flex-wrap gap-4 pt-4">
@@ -648,6 +664,20 @@ export const homeInitialHtml = `
           <h3 class="text-lg font-bold text-white">Does AbuQitmirLabs provide full IP ownership and source code handover?</h3>
           <p class="text-neutral-400 text-sm leading-relaxed">
             Yes. Every client retains 100% intellectual property ownership, complete source code repositories, architectural blueprints, and deployment credentials upon milestone completion with zero vendor lock-in.
+          </p>
+        </article>
+
+        <article class="p-6 bg-zinc-950 border border-white/10 rounded-2xl space-y-2">
+          <h3 class="text-lg font-bold text-white">How much does custom software development cost in Pakistan?</h3>
+          <p class="text-neutral-400 text-sm leading-relaxed">
+            Custom software development in Pakistan typically ranges between $5,000 and $25,000 for production-ready platforms, delivering 60% to 75% cost savings compared to US ($50,000–$150,000+) and UK agency equivalents. At AbuQitmirLabs, we uphold international engineering standards, zero-debt architecture, and strict code review protocols. For a granular breakdown tailored to your scope, explore our interactive Project Cost Estimator tool to calculate instant estimates.
+          </p>
+        </article>
+
+        <article class="p-6 bg-zinc-950 border border-white/10 rounded-2xl space-y-2">
+          <h3 class="text-lg font-bold text-white">Do you work with clients in the US and UK remotely?</h3>
+          <p class="text-neutral-400 text-sm leading-relaxed">
+            Yes. Over 80% of our clients operate across the United States, United Kingdom, Canada, and Australia. We operate with dedicated timezone overlap (4–6 hours daily with EST/PST and full afternoon overlap with GMT/BST). Our distributed delivery workflow leverages Slack, GitHub, Jira, Loom asynchronous video walkthroughs, and weekly video strategy calls to maintain 100% transparency, rapid iteration sprints, and seamless communication across borders.
           </p>
         </article>
       </div>

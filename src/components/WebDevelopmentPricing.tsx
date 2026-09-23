@@ -136,7 +136,7 @@ export default function WebDevelopmentPricing() {
               [ WEBSITE PACKAGES ]
             </span>
             <h2 className="text-5xl md:text-7xl font-semibold text-white tracking-tight leading-none">
-              Strategic Website <span className="font-serif italic text-neutral-400">Packages</span>
+              Web Development Packages &amp; <span className="font-serif italic text-neutral-400">Transparent Pricing</span>
             </h2>
             <div className="mt-6 border-l-4 border-[#ccff00] pl-5 space-y-3">
               <h3 className="text-[#ccff00] text-lg font-bold uppercase tracking-wider">Regional Pricing Offer</h3>

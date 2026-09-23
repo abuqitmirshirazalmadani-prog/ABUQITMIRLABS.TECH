@@ -21,7 +21,7 @@ const DifferentiatorsSection = () => {
             </div>
 
             <AnimatedShinyText 
-                text="What Makes Us Different in the Digital Landscape" 
+                text="Why Startups & Enterprises Choose Our Karachi Software Company" 
                 textClassName="text-3xl md:text-5xl"
                 className="mb-8"
             />
