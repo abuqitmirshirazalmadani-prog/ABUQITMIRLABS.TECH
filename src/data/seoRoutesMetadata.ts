@@ -846,5 +846,17 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     twitterTitle: 'High-Performance Web Apps: 12 Engineering Decisions',
     twitterDescription: 'Learn the 12 engineering decisions that separate high-performance web applications from slow ones. Optimize Core Web Vitals and scale effectively.',
     twitterImage: 'https://www.abuqitmirlabs.tech/images/high-performance-web-apps-cover.jpg'
+  },
+  '/blog/native-mobile-app-development-ios-vs-android-cost': {
+    title: 'Native Mobile App Development: iOS vs Android Cost (2026)',
+    description: 'iOS or Android first? Get the real 2026 cost breakdown for native mobile app development, platform by platform, feature by feature. No vague estimates.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/native-mobile-app-development-ios-vs-android-cost',
+    ogTitle: 'Native Mobile App Development: iOS vs Android Cost (2026)',
+    ogDescription: 'iOS or Android first? Get the real 2026 cost breakdown for native mobile app development, platform by platform, feature by feature. No vague estimates.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/native-mobile-app-ios-vs-android-cost-cover.jpg',
+    ogType: 'article',
+    twitterTitle: 'Native Mobile App Development: iOS vs Android Cost (2026)',
+    twitterDescription: 'iOS or Android first? Get the real 2026 cost breakdown for native mobile app development, platform by platform, feature by feature. No vague estimates.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/native-mobile-app-ios-vs-android-cost-cover.jpg'
   }
 };

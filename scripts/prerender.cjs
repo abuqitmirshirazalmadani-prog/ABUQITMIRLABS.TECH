@@ -172,7 +172,8 @@ const routes = [
   '/blog/edtech-software-development-lms-features-every-platform-needs',
   '/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026',
   '/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026',
-  '/blog/high-performance-web-applications-12-engineering-decisions'
+  '/blog/high-performance-web-applications-12-engineering-decisions',
+  '/blog/native-mobile-app-development-ios-vs-android-cost'
 ];
 
 // Merge explicitly defined routes with any routes declared in SEO_ROUTES_METADATA
