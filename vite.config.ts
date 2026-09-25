@@ -295,7 +295,12 @@ export default defineConfig(({mode}) => {
           } else {
             // Blog data changed or cache missing: regenerate sitemap.xml & rss.xml
             // 1. Generate Sitemap (sitemap.xml)
-            const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+            const publicSitemap = path.resolve(process.cwd(), 'public/sitemap.xml');
+            let sitemapContent = '';
+            if (fs.existsSync(publicSitemap)) {
+              sitemapContent = fs.readFileSync(publicSitemap, 'utf-8');
+            } else {
+              sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes.map(route => `  <url>
     <loc>${hostname}${route.url === '/' ? '' : route.url}</loc>
@@ -304,8 +309,9 @@ ${routes.map(route => `  <url>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
   </url>`).join('\n')}
 </urlset>`;
+            }
             fs.writeFileSync(sitemapPath, sitemapContent, 'utf-8');
-            console.log(`✅ [Sitemap] Regenerated dynamic sitemap with ${routes.length} total links!`);
+            console.log(`✅ [Sitemap] Synchronized sitemap.xml to dist!`);
 
             // 2. Generate RSS Feed (rss.xml)
             const rssItemsContent = fetchedPosts.map(post => `    <item>

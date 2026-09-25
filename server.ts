@@ -1184,12 +1184,32 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
     }
   });
 
-  // Dynamic Sitemap Index Route (/sitemap.xml)
+  // Static/Main Sitemap Route (/sitemap.xml)
   app.get('/sitemap.xml', (req, res) => {
+    try {
+      const sitemapPath = path.join(process.cwd(), 'public', 'sitemap.xml');
+      if (fs.existsSync(sitemapPath)) {
+        res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+        res.setHeader('Cache-Control', 'public, max-age=3600');
+        return res.sendFile(sitemapPath);
+      }
+      return res.status(404).send('Sitemap not found');
+    } catch (error) {
+      console.error('Error serving sitemap.xml:', error);
+      res.status(500).send('Error serving sitemap.xml');
+    }
+  });
+
+  // Dynamic Sitemap Index Route (/sitemap_index.xml & /sitemap-index.xml)
+  app.get(['/sitemap_index.xml', '/sitemap-index.xml'], (req, res) => {
     try {
       const today = new Date().toISOString().split('T')[0];
       const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://www.abuqitmirlabs.tech/sitemap.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
   <sitemap>
     <loc>https://www.abuqitmirlabs.tech/pages-sitemap.xml</loc>
     <lastmod>${today}</lastmod>
@@ -1203,7 +1223,7 @@ Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;
     <lastmod>${today}</lastmod>
   </sitemap>
 </sitemapindex>`;
-      res.header('Content-Type', 'application/xml');
+      res.header('Content-Type', 'application/xml; charset=utf-8');
       res.send(sitemapIndex);
     } catch (error) {
       console.error('Error generating sitemap index:', error);
