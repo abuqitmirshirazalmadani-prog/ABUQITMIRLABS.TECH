@@ -3302,6 +3302,10 @@ At **AbuQitmirLabs**, we architect, build, and support high-performance tailor-m
 };
 
 // Map legacy and alternate slugs to canonical posts
+STATIC_BLOG_POSTS['custom-web-development-company-2026'] = STATIC_BLOG_POSTS['custom-web-development-company'];
+STATIC_BLOG_POSTS['custom-web-development-company-2026-built-in-visibility'] = STATIC_BLOG_POSTS['custom-web-development-company'];
+
+// Map legacy and alternate slugs to canonical posts
 STATIC_BLOG_POSTS['tailor-made-software-solutions-when-off-the-shelf-fails-2026'] = STATIC_BLOG_POSTS['tailor-made-software-solutions-when-off-the-shelf-fails'];
 STATIC_BLOG_POSTS['tailor-made-software-solutions'] = STATIC_BLOG_POSTS['tailor-made-software-solutions-when-off-the-shelf-fails'];
 STATIC_BLOG_POSTS['when-off-the-shelf-software-fails'] = STATIC_BLOG_POSTS['tailor-made-software-solutions-when-off-the-shelf-fails'];

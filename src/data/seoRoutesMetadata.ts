@@ -440,10 +440,28 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
     ogType: 'article'
   },
+  '/blog/custom-web-development-company': {
+    title: 'Custom Web Development Company: The Complete Guide to Web Apps, SEO & Security | AbuQitmirLabs',
+    description: 'Learn what a custom web development company actually builds, how SEO web development works, and why bespoke architecture drives B2B and SaaS growth.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/custom-web-development-company',
+    ogTitle: 'Custom Web Development Company: The Complete Guide to Web Apps, SEO & Security',
+    ogDescription: 'Learn what a custom web development company actually builds, how SEO web development works, and why bespoke architecture drives B2B growth.',
+    ogImage: 'https://www.abuqitmirlabs.tech/blog/custom-web-development-cover.jpg',
+    ogType: 'article'
+  },
+  '/blog/custom-web-development-company-2026': {
+    title: 'Custom Web Development Company | AbuQitmirLabs',
+    description: 'Redirecting to canonical custom web development guide.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/custom-web-development-company',
+    ogTitle: 'Custom Web Development Company | AbuQitmirLabs',
+    ogDescription: 'Redirecting to canonical custom web development guide.',
+    ogImage: 'https://www.abuqitmirlabs.tech/blog/custom-web-development-cover.jpg',
+    ogType: 'article'
+  },
   '/blog/custom-web-development-company-2026-built-in-visibility': {
     title: 'Custom Web Development Company 2026 | Built-In Visibility | AbuQitmirLabs',
     description: 'Why modern businesses choose bespoke web development over templates in 2026. Built-in GEO/SEO visibility, high performance, and full IP ownership.',
-    canonical: 'https://www.abuqitmirlabs.tech/blog/custom-web-development-company-2026-built-in-visibility',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/custom-web-development-company',
     ogTitle: 'Custom Web Development Company 2026 | Built-In Visibility | AbuQitmirLabs',
     ogDescription: 'Why modern businesses choose bespoke web development over templates in 2026.',
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png',

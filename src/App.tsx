@@ -262,9 +262,10 @@ export default function App() {
               <Route path="/blog/what-seo-services-actually-means-2026" element={<Navigate to="/blog/what-seo-services-actually-mean-in-2026-abuqitmirlabs" replace />} />
               <Route path="/how-to-choose-mobile-app-development-company-2026" element={<Navigate to="/blog/how-to-choose-a-mobile-app-development-company-2026" replace />} />
               <Route path="/blog/how-to-choose-mobile-app-development-company-2026" element={<Navigate to="/blog/how-to-choose-a-mobile-app-development-company-2026" replace />} />
-              <Route path="/custom-web-development-company-2026" element={<Navigate to="/blog/custom-web-development-company-2026-built-in-visibility" replace />} />
-              <Route path="/blog/custom-web-development-company-2026" element={<Navigate to="/blog/custom-web-development-company-2026-built-in-visibility" replace />} />
-              <Route path="/blog/custom-web-development-company" element={<Navigate to="/blog/custom-web-development-company-2026-built-in-visibility" replace />} />
+              <Route path="/custom-web-development-company-2026" element={<Navigate to="/blog/custom-web-development-company" replace />} />
+              <Route path="/blog/custom-web-development-company-2026" element={<Navigate to="/blog/custom-web-development-company" replace />} />
+              <Route path="/blog/custom-web-development-company-2026-built-in-visibility" element={<Navigate to="/blog/custom-web-development-company" replace />} />
+              <Route path="/blog/custom-web-development-company" element={<BlogPostPage overrideSlug="custom-web-development-company" />} />
               <Route path="/custom-ai-solutions-for-fintech-2026" element={<Navigate to="/blog/custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting" replace />} />
               <Route path="/blog/custom-ai-solutions-for-fintech-2026" element={<Navigate to="/blog/custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting" replace />} />
               <Route path="/custom-web-development-vs-website-templates-2026-guide" element={<BlogPostPage overrideSlug="custom-web-development-vs-website-templates-2026-guide" />} />
