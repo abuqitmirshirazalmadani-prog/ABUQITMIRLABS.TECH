@@ -1,4 +1,6 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
   "headers": [
     {
       "source": "/(.*)",
@@ -9,42 +11,41 @@
         },
         {
           "key": "X-Frame-Options",
-          "value": "SAMEORIGIN"
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
         },
         {
           "key": "Referrer-Policy",
           "value": "strict-origin-when-cross-origin"
-        },
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
         {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=()"
-        },
-        {
-          "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://www.youtube.com https://s.ytimg.com https://*.google.com https://*.google.com.pk; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://images.unsplash.com https://i.postimg.cc https://i.ytimg.com https://img.youtube.com https://pixeldrain.com https://tmpfiles.org https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.google.com https://*.google.com.pk https://*.googleadservices.com https://*.doubleclick.net https://googleads.g.doubleclick.net https://grainy-gradients.vercel.app https://www.facebook.com https://www.abuqitmirlabs.tech; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' https://*.youtube.com; connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://*.firebase.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://*.google.com https://*.google.com.pk https://*.googleadservices.com https://connect.facebook.net https://www.facebook.com https://pixeldrain.com https://tmpfiles.org; object-src 'none'; base-uri 'self'; form-action 'self' https://mail.google.com;"
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
         }
       ]
     }
   ],
   "redirects": [
     {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "abuqitmirlabs.tech"
-        }
-      ],
-      "destination": "https://www.abuqitmirlabs.tech/:path*",
+      "source": "/custom-software-development",
+      "destination": "/custom-software",
+      "permanent": true
+    },
+    {
+      "source": "/blog/custom-software-development-company-karachi-pakistan-abuqitmirlabs",
+      "destination": "/blog/custom-software-development-company-karachi-pakistan",
       "permanent": true
     },
     {
       "source": "/blog/custom-web-development-company-2026",
-      "destination": "/blog/custom-web-development-company",
-      "permanent": true
-    },
-    {
-      "source": "/custom-web-development-company-2026",
       "destination": "/blog/custom-web-development-company",
       "permanent": true
     },
@@ -121,60 +122,12 @@
   ],
   "rewrites": [
     {
-      "source": "/robots.txt",
-      "destination": "/robots.txt"
-    },
-    {
-      "source": "/sitemap.xml",
-      "destination": "/sitemap.xml"
-    },
-    {
-      "source": "/pages-sitemap.xml",
-      "destination": "/pages-sitemap.xml"
-    },
-    {
-      "source": "/image-sitemap.xml",
-      "destination": "/image-sitemap.xml"
-    },
-    {
-      "source": "/video-sitemap.xml",
-      "destination": "/video-sitemap.xml"
-    },
-    {
-      "source": "/llms.txt",
-      "destination": "/llms.txt"
-    },
-    {
-      "source": "/manifest.json",
-      "destination": "/manifest.json"
-    },
-    {
-      "source": "/google87984536fe5662da.html",
-      "destination": "/google87984536fe5662da.html"
-    },
-    {
-      "source": "/ai-agent-development",
-      "destination": "/ai-agent-development/index.html"
-    },
-    {
-      "source": "/ai-agent-development/",
-      "destination": "/ai-agent-development/index.html"
-    },
-    {
-      "source": "/graphics-design",
-      "destination": "/graphics-design/index.html"
-    },
-    {
-      "source": "/graphics-design/",
-      "destination": "/graphics-design/index.html"
-    },
-    {
       "source": "/api/(.*)",
       "destination": "/api/$1"
     },
     {
       "source": "/(.*)",
-      "destination": "/spa-shell.html"
+      "destination": "/index.html"
     }
   ]
 }
