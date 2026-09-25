@@ -52,6 +52,71 @@
       "source": "/blog/custom-web-development-company-2026-built-in-visibility",
       "destination": "/blog/custom-web-development-company",
       "permanent": true
+    },
+    {
+      "source": "/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026",
+      "destination": "/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026",
+      "permanent": true
+    },
+    {
+      "source": "/e-commerce-platform-development-custom-build-vs-shopify-plus-2026",
+      "destination": "/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/custom-web-development-vs-templates",
+      "destination": "/blog/custom-web-development-vs-website-templates-2026-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/custom-web-development-vs",
+      "destination": "/blog/custom-web-development-vs-website-templates-2026-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/custom-ai-solutions-for-corporate-events",
+      "destination": "/blog/custom-ai-solutions-for-corporate-events-2026-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/local-business-visibility",
+      "destination": "/blog/local-business-visibility-seo-geo-aio-aeo-sxo-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/what-seo-services-actually-means",
+      "destination": "/blog/what-seo-services-actually-means-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-choose-mobile-app-development-company",
+      "destination": "/blog/how-to-choose-mobile-app-development-company-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/what-are-healthcare-ai-agents",
+      "destination": "/blog/what-are-healthcare-ai-agents-complete-guide-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house",
+      "destination": "/blog/ai-agent-development-agency-vs-in-house",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-go-to-guide-to-ai-agent-development-agency-vs-building-in-house",
+      "destination": "/blog/ai-agent-development-agency-vs-in-house",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rag-ai-integration",
+      "destination": "/blog/rag-ai-integration-for-startups",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-complete-guide-to-rag-ai-integration-for-startups",
+      "destination": "/blog/rag-ai-integration-for-startups",
+      "permanent": true
     }
   ],
   "rewrites": [
