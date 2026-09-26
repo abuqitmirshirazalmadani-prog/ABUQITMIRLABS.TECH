@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Core Pages -->
   <url><loc>https://www.abuqitmirlabs.tech</loc><changefreq>weekly</changefreq><priority>1.0</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/about</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/about/our-company</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-09-26</lastmod></url>
@@ -9,8 +7,6 @@
   <url><loc>https://www.abuqitmirlabs.tech/about/our-process</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/about/careers</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/contact</loc><changefreq>monthly</changefreq><priority>0.9</priority><lastmod>2026-09-26</lastmod></url>
-
-  <!-- Service Pages -->
   <url><loc>https://www.abuqitmirlabs.tech/custom-software</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/mobile-app-development</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/web-development</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>2026-09-26</lastmod></url>
@@ -22,35 +18,25 @@
   <url><loc>https://www.abuqitmirlabs.tech/local-seo-audit</loc><changefreq>weekly</changefreq><priority>0.8</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/graphics-design</loc><changefreq>weekly</changefreq><priority>0.8</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/content-writing</loc><changefreq>weekly</changefreq><priority>0.8</priority><lastmod>2026-09-26</lastmod></url>
-
-  <!-- Solutions -->
   <url><loc>https://www.abuqitmirlabs.tech/solutions/fintech</loc><changefreq>weekly</changefreq><priority>0.8</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/solutions/healthcare</loc><changefreq>weekly</changefreq><priority>0.8</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/solutions/ai-automation</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/solutions/e-commerce</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/solutions/edtech</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>2026-09-26</lastmod></url>
-
-  <!-- Case Studies -->
   <url><loc>https://www.abuqitmirlabs.tech/case-studies</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/case-studies/tajweedpage</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>2026-09-26</lastmod></url>
-
-  <!-- Market Pages -->
   <url><loc>https://www.abuqitmirlabs.tech/us-market</loc><changefreq>monthly</changefreq><priority>0.7</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/uk-market</loc><changefreq>monthly</changefreq><priority>0.7</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/pakistan-market</loc><changefreq>monthly</changefreq><priority>0.7</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/canada-market</loc><changefreq>monthly</changefreq><priority>0.7</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/poland-market</loc><changefreq>monthly</changefreq><priority>0.7</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/australia-market</loc><changefreq>monthly</changefreq><priority>0.7</priority><lastmod>2026-09-26</lastmod></url>
-
-  <!-- Free Tools -->
   <url><loc>https://www.abuqitmirlabs.tech/tools/project-cost-estimator</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/tools/website-audit</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/tools/seo-checklist</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/tools/ai-readiness-score</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/tools/tech-stack-recommender</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/tools/website-authority-analyzer</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-09-26</lastmod></url>
-
-  <!-- Blog Posts (only canonical, indexed articles) -->
   <url><loc>https://www.abuqitmirlabs.tech/blog</loc><changefreq>daily</changefreq><priority>0.8</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/blog/what-are-healthcare-ai-agents-complete-guide-2026</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/blog/healthcare-software-development-solutions-2026</loc><changefreq>weekly</changefreq><priority>0.8</priority><lastmod>2026-09-26</lastmod></url>
@@ -59,10 +45,7 @@
   <url><loc>https://www.abuqitmirlabs.tech/blog/custom-ai-solutions-for-fintech-2026</loc><changefreq>weekly</changefreq><priority>0.8</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026-guide</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/blog/flutter-vs-react-native-choosing-your-mobile-app-stack-in-2026</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>2026-09-26</lastmod></url>
-
-  <!-- Legal -->
   <url><loc>https://www.abuqitmirlabs.tech/website-contract</loc><changefreq>weekly</changefreq><priority>0.8</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority><lastmod>2026-09-26</lastmod></url>
   <url><loc>https://www.abuqitmirlabs.tech/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority><lastmod>2026-09-26</lastmod></url>
-
 </urlset>
