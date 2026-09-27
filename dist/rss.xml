@@ -3,10 +3,39 @@
   <channel>
     <title>AbuQitmirLabs .TECH - Custom Software &amp; AI Engineering Journal</title>
     <link>https://www.abuqitmirlabs.tech</link>
-    <description>Discover leading insights in AI Agent automations, ERP configurations, customizable web systems, and semantic local SEO solutions from Shiraz Almadani.</description>
+    <description>Insights on AI Agent development, custom software, RAG systems, and technical SEO from AbuQitmirLabs.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 26 Sep 2026 10:07:07 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 27 Sep 2026 06:00:00 GMT</lastBuildDate>
     <atom:link href="https://www.abuqitmirlabs.tech/rss.xml" rel="self" type="application/rss+xml" />
-
+  <item>
+    <link>https://www.abuqitmirlabs.tech/blog/flutter-vs-react-native-choosing-your-mobile-app-stack-in-2026</link>
+    <guid isPermaLink="true">https://www.abuqitmirlabs.tech/blog/flutter-vs-react-native-choosing-your-mobile-app-stack-in-2026</guid>
+    <pubDate>Fri, 26 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <link>https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026-guide</link>
+    <guid isPermaLink="true">https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026-guide</guid>
+    <pubDate>Mon, 14 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <link>https://www.abuqitmirlabs.tech/blog/rag-ai-integration-for-startups</link>
+    <guid isPermaLink="true">https://www.abuqitmirlabs.tech/blog/rag-ai-integration-for-startups</guid>
+    <pubDate>Mon, 01 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <link>https://www.abuqitmirlabs.tech/blog/what-are-healthcare-ai-agents-complete-guide-2026</link>
+    <guid isPermaLink="true">https://www.abuqitmirlabs.tech/blog/what-are-healthcare-ai-agents-complete-guide-2026</guid>
+    <pubDate>Sat, 01 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <link>https://www.abuqitmirlabs.tech/blog/custom-web-development-company</link>
+    <guid isPermaLink="true">https://www.abuqitmirlabs.tech/blog/custom-web-development-company</guid>
+    <pubDate>Tue, 01 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <link>https://www.abuqitmirlabs.tech/blog/custom-ai-solutions-for-fintech-2026</link>
+    <guid isPermaLink="true">https://www.abuqitmirlabs.tech/blog/custom-ai-solutions-for-fintech-2026</guid>
+    <pubDate>Sun, 01 Jun 2026 00:00:00 GMT</pubDate>
+  </item>
   </channel>
 </rss>
