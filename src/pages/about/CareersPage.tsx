@@ -82,6 +82,118 @@ const CareersPage = () => {
     }
   ];
 
+
+  const jobPostingSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "JobPosting",
+        "title": "Senior Full-Stack Architect",
+        "description": "Lead backend and frontend architecture for international client applications utilizing React, Next.js, Node.js, Go, and PostgreSQL.",
+        "datePosted": "2026-09-01",
+        "validThrough": "2026-12-31",
+        "employmentType": "FULL_TIME",
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "AbuQitmirLabs",
+          "sameAs": "https://www.abuqitmirlabs.tech",
+          "logo": "https://www.abuqitmirlabs.tech/logo.png"
+        },
+        "jobLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Karachi",
+            "addressRegion": "Sindh",
+            "addressCountry": "PK"
+          }
+        },
+        "baseSalary": {
+          "@type": "MonetaryAmount",
+          "currency": "PKR",
+          "value": {
+            "@type": "QuantitativeValue",
+            "minValue": 200000,
+            "maxValue": 450000,
+            "unitText": "MONTH"
+          }
+        },
+        "qualifications": "5+ years full-stack engineering, TypeScript, Node.js, React/Next.js",
+        "industry": "Software Engineering"
+      },
+      {
+        "@type": "JobPosting",
+        "title": "AI & RAG Systems Engineer",
+        "description": "Engineer autonomous AI agents, multi-agent frameworks, vector search indexing and LLM fine-tuning pipelines.",
+        "datePosted": "2026-09-01",
+        "validThrough": "2026-12-31",
+        "employmentType": "FULL_TIME",
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "AbuQitmirLabs",
+          "sameAs": "https://www.abuqitmirlabs.tech",
+          "logo": "https://www.abuqitmirlabs.tech/logo.png"
+        },
+        "jobLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Karachi",
+            "addressRegion": "Sindh",
+            "addressCountry": "PK"
+          }
+        },
+        "baseSalary": {
+          "@type": "MonetaryAmount",
+          "currency": "PKR",
+          "value": {
+            "@type": "QuantitativeValue",
+            "minValue": 150000,
+            "maxValue": 350000,
+            "unitText": "MONTH"
+          }
+        },
+        "qualifications": "3+ years Python & ML engineering, LangChain, LlamaIndex, OpenAI APIs",
+        "industry": "Artificial Intelligence"
+      },
+      {
+        "@type": "JobPosting",
+        "title": "Technical SEO & AEO Strategist",
+        "description": "Drive Generative Engine Optimization (GEO), AI Optimization (AIO), schema JSON-LD structuring, and international search growth.",
+        "datePosted": "2026-09-01",
+        "validThrough": "2026-12-31",
+        "employmentType": "FULL_TIME",
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "AbuQitmirLabs",
+          "sameAs": "https://www.abuqitmirlabs.tech",
+          "logo": "https://www.abuqitmirlabs.tech/logo.png"
+        },
+        "jobLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Karachi",
+            "addressRegion": "Sindh",
+            "addressCountry": "PK"
+          }
+        },
+        "baseSalary": {
+          "@type": "MonetaryAmount",
+          "currency": "PKR",
+          "value": {
+            "@type": "QuantitativeValue",
+            "minValue": 100000,
+            "maxValue": 250000,
+            "unitText": "MONTH"
+          }
+        },
+        "qualifications": "3+ years technical SEO, Core Web Vitals, structured data, GEO/AEO",
+        "industry": "Digital Marketing"
+      }
+    ]
+  };
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -115,6 +227,7 @@ const CareersPage = () => {
         <meta name="twitter:description" content="Join AbuQitmirLabs — we're hiring senior full-stack architects, AI/RAG engineers, UI/UX designers, and SEO strategists in Karachi. Build global software that matters." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
+        <script type="application/ld+json">{JSON.stringify(jobPostingSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 
