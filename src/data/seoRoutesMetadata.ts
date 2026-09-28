@@ -1065,5 +1065,29 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         }
       ]
     }
+  },
+  '/blog/what-a-local-seo-audit-actually-checks-2026-complete-guide': {
+    title: 'What a Local SEO Audit Actually Checks in 2026',
+    description: 'Most local SEO audits miss AI search, voice, and geo-grid analysis. This 2026 guide covers all 7 audit dimensions including the ones your competitors skip.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/what-a-local-seo-audit-actually-checks-2026-complete-guide',
+    ogTitle: 'What a Local SEO Audit Actually Checks in 2026',
+    ogDescription: 'Most local SEO audits miss AI search, voice, and geo-grid analysis. This 2026 guide covers all 7 audit dimensions including the ones your competitors skip.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/blog/local-seo-audit-2026-og.jpg',
+    ogType: 'article',
+    twitterTitle: 'What a Local SEO Audit Actually Checks in 2026',
+    twitterDescription: 'Most local SEO audits miss AI search, voice, and geo-grid analysis. This 2026 guide covers all 7 audit dimensions including the ones your competitors skip.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/local-seo-audit-2026-og.jpg'
+  },
+  '/blog/programmatic-seo-how-we-scaled-tajweedpage': {
+    title: 'Programmatic SEO: How We Scaled TajweedPage.com (2026 Case Study)',
+    description: 'The pSEO playbook that made Zapier famous is declining 40-70%. Here is the semantic hub-and-spoke framework AbuQitmirLabs used to scale TajweedPage.com across 20+ country markets.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/programmatic-seo-how-we-scaled-tajweedpage',
+    ogTitle: 'Programmatic SEO: How We Scaled TajweedPage.com (2026 Case Study)',
+    ogDescription: 'The pSEO playbook that made Zapier famous is declining 40-70%. Here is the semantic hub-and-spoke framework AbuQitmirLabs used to scale TajweedPage.com across 20+ country markets.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/blog/programmatic-seo-tajweedpage-2026-og.jpg',
+    ogType: 'article',
+    twitterTitle: 'Programmatic SEO: How We Scaled TajweedPage.com (2026 Case Study)',
+    twitterDescription: 'The pSEO playbook that made Zapier famous is declining 40-70%. Here is the semantic hub-and-spoke framework AbuQitmirLabs used to scale TajweedPage.com across 20+ country markets.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/programmatic-seo-tajweedpage-2026-og.jpg'
   }
 };

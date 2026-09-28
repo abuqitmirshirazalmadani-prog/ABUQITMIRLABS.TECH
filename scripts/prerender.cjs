@@ -174,7 +174,9 @@ const routes = [
   '/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026',
   '/blog/high-performance-web-applications-12-engineering-decisions',
   '/blog/native-mobile-app-development-ios-vs-android-cost',
-  '/blog/tailor-made-software-solutions-when-off-the-shelf-fails'
+  '/blog/tailor-made-software-solutions-when-off-the-shelf-fails',
+  '/blog/what-a-local-seo-audit-actually-checks-2026-complete-guide',
+  '/blog/programmatic-seo-how-we-scaled-tajweedpage'
 ];
 
 // Merge explicitly defined routes with any routes declared in SEO_ROUTES_METADATA
