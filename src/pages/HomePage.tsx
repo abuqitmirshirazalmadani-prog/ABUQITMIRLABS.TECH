@@ -24,6 +24,69 @@ import FeaturedToolsSection from '../components/FeaturedToolsSection';
 import { homeSchema } from '../utils/homeStaticHtml';
 
 export default function HomePage() {
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://www.abuqitmirlabs.tech/#organization",
+    "name": "AbuQitmirLabs",
+    "alternateName": "AbuQitmirLabs .TECH",
+    "url": "https://www.abuqitmirlabs.tech",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.abuqitmirlabs.tech/logo.png",
+      "width": 512,
+      "height": 512
+    },
+    "description": "AbuQitmirLabs is a custom software development company in Karachi building AI agents, mobile apps and web solutions for US, UK and global clients.",
+    "foundingDate": "2021",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
+      "addressLocality": "Karachi",
+      "addressRegion": "Sindh",
+      "postalCode": "75160",
+      "addressCountry": "PK"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+92-323-3260859",
+      "contactType": "customer service",
+      "availableLanguage": ["English", "Urdu"]
+    },
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61583768706452",
+      "https://www.instagram.com/abuqitmirshirazalmadani/",
+      "https://www.linkedin.com/in/abu-qitmir-697423390/",
+      "https://www.youtube.com/@AbuQitmir",
+      "https://x.com/AbuQitmir",
+      "https://www.goodfirms.co/company/abuqitmirlabs-tech",
+      "https://clutch.co/profile/abuqitmirlabstech"
+    ],
+    "areaServed": ["US", "GB", "CA", "AU", "PK", "PL"],
+    "serviceType": ["Custom Software Development", "AI Agent Development", "Mobile App Development", "Web Development", "SEO Services"]
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://www.abuqitmirlabs.tech/#website",
+    "url": "https://www.abuqitmirlabs.tech",
+    "name": "AbuQitmirLabs",
+    "description": "Custom Software Development Company and AI Agency",
+    "publisher": {
+      "@id": "https://www.abuqitmirlabs.tech/#organization"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://www.abuqitmirlabs.tech/blog?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  };
+
   return (
     <main id="main-content" className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <Helmet>
@@ -43,6 +106,9 @@ export default function HomePage() {
         <meta name="twitter:description" content="AbuQitmirLabs is a custom software development company in Karachi building AI agents, mobile apps &amp; web solutions for US, UK &amp; global clients. Get a free consultation." />
         <meta name="twitter:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
         <script type="application/ld+json">{JSON.stringify(homeSchema)}</script>
+      
+        <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
       </Helmet>
 
       <Header />
@@ -90,7 +156,7 @@ export default function HomePage() {
               </span>
               <span className="text-zinc-600 text-xs font-mono">|</span>
               <span className="text-zinc-400 text-xs font-mono">
-                Lead Architect: <span className="text-white font-semibold">Abu Qitmir</span> • Updated: <time dateTime="2026-08-28" className="text-[#ccff00]">August 2026</time>
+                Lead Architect: <span className="text-white font-semibold">Abu Qitmir</span> • Updated: <time dateTime="2026-09-28" className="text-[#ccff00]">September 2026</time>
               </span>
             </div>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif italic text-white font-light tracking-tight leading-tight">

@@ -100,7 +100,7 @@ const Footer = () => {
                                     <ObfuscatedEmail user="abuqitmirshirazalmadani" domain="gmail.com" className="hover:underline" />
                                 </div>
                             </div>
-                            <p className="text-[10px] text-zinc-600 uppercase tracking-widest mt-1">Connect via Email &bull; <span className="text-black font-bold">Updated: August 2026</span></p>
+                            <p className="text-[10px] text-zinc-600 uppercase tracking-widest mt-1">Connect via Email &bull; <span className="text-black font-bold">Updated: September 2026</span></p>
                         </div>
                         <span className="hidden md:block h-6 w-1 bg-black"></span>
                         <a href="https://wa.me/923233260859" target="_blank" rel="noopener noreferrer" className="group hover:underline transition flex items-center gap-2">

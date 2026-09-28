@@ -118,8 +118,8 @@ const TrustSection = () => {
                                     <div className="mt-4 flex items-center gap-3">
                                         <div className="h-8 w-8 rounded-full bg-gradient-to-br from-[#ccff00] to-emerald-500"></div>
                                         <div className="text-sm">
-                                            <p className="text-neutral-200 font-bold">Michael Torres</p>
-                                            <p className="text-xs text-neutral-500">CEO, Tech Innovations</p>
+                                            <p className="text-neutral-200 font-bold">James R.</p>
+                                            <p className="text-xs text-neutral-500">SaaS Founder, United States</p>
                                         </div>
                                     </div>
                                 </div>

@@ -4,7 +4,6 @@ const countries = [
   { name: "United States", flag: "🇺🇸" },
   { name: "United Kingdom", flag: "🇬🇧" },
   { name: "Pakistan", flag: "🇵🇰" },
-  { name: "Ukraine", flag: "🇺🇦" },
   { name: "Poland", flag: "🇵🇱" },
   { name: "Australia", flag: "🇦🇺" },
   { name: "Canada", flag: "🇨🇦" },
