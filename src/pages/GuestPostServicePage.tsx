@@ -42,7 +42,7 @@ export default function GuestPostServicePage() {
         },
         {
             q: "Are the guest post links DoFollow and permanent?",
-            a: "Yes. All our guest post backlinks are 100% DoFollow, in-content contextual links inserted naturally within the editorial body of the article (not author bio footnotes or disclaimer sections). We provide a permanent placement guarantee and a 12-month free replacement warranty if a link is dropped or modified by a publisher."
+            a: "Yes. All our guest post backlinks are 100% DoFollow, in-content contextual links inserted naturally within the editorial body of the article (not author bio footnotes or disclaimer sections). We target permanent placements and provide a 90-day free replacement guarantee if a link is dropped or modified by a publisher."
         },
         {
             q: "Who writes the guest post content?",
@@ -411,7 +411,7 @@ export default function GuestPostServicePage() {
                                     <td className="p-5 font-semibold text-white">Link Indexation Rate</td>
                                     <td className="p-5 bg-[#ccff00]/10 text-white font-medium flex items-center gap-2">
                                         <CheckCircle2 className="w-4 h-4 text-[#ccff00] shrink-0" />
-                                        100% naturally indexed by Google Search crawlers
+                                        Placed on crawlable, indexable sites
                                     </td>
                                     <td className="p-5 text-zinc-400 flex items-center gap-2">
                                         <XCircle className="w-4 h-4 text-red-500 shrink-0" />
