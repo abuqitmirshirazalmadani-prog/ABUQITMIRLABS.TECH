@@ -8,23 +8,17 @@ import {
     ChevronDown, 
     ArrowRight, 
     Search, 
-    Target, 
     Sparkles, 
     Clock, 
     TrendingUp, 
-    FileText, 
     Award,
     Star,
     Check,
-    Zap,
     AlertTriangle,
     Layers,
     UserCheck,
     Globe,
     ExternalLink,
-    Link2,
-    ShieldCheck,
-    BarChart3,
     Send,
     Database,
     HelpCircle
@@ -268,57 +262,75 @@ export default function GuestPostServicePage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[
                             {
+                                marker: "01",
                                 title: "METRIC-VETTED DOMAINS",
                                 tagline: "REAL SEARCH ENGINE TRAFFIC ONLY",
-                                icon: <BarChart3 className="w-8 h-8 text-[#ff0099]" />,
                                 description: "We run every target domain through Ahrefs and Semrush to confirm consistent, genuine monthly search traffic (not bot clicks), stable ranking keywords, and clean historical link profiles."
                             },
                             {
+                                marker: "02",
                                 title: "100% IN-CONTENT DOFOLLOW",
                                 tagline: "NATURAL CONTEXTUAL PLACEMENT",
-                                icon: <Link2 className="w-8 h-8 text-black" />,
                                 description: "Your links are woven seamlessly into the body copy of rich, engaging articles where readers actually click. No hidden author bio links, no sponsored tags, and no nofollow attributes."
                             },
                             {
+                                marker: "03",
                                 title: "ZERO PBN GUARANTEE",
                                 tagline: "NO ARTIFICIAL NETWORKS",
-                                icon: <ShieldCheck className="w-8 h-8 text-[#ff0099]" />,
                                 description: "PBNs and link schemes are a ticking time bomb for your domain rating. We maintain zero private blog networks; every link lives on an authentic, independently owned publication."
                             },
                             {
+                                marker: "04",
                                 title: "IN-HOUSE WRITTEN CONTENT",
                                 tagline: "1,000–1,800+ WORD EDITORIALS",
-                                icon: <FileText className="w-8 h-8 text-black" />,
                                 description: "Our tech copywriters draft high-value, comprehensive articles customized to the host site's editorial standards, ensuring fast editor acceptance and natural editorial synergy."
                             },
                             {
+                                marker: "05",
                                 title: "SAFE ANCHOR DISCIPLINE",
                                 tagline: "AVOID OVER-OPTIMIZATION PENALTIES",
-                                icon: <Target className="w-8 h-8 text-[#ff0099]" />,
                                 description: "We collaborate with your SEO team to balance exact match, partial match, branded, and semantic generic anchors, creating a natural backlink distribution that Google rewards."
                             },
                             {
+                                marker: "06",
                                 title: "PERMANENT & INDEXED",
                                 tagline: "12-MONTH REPLACEMENT WARRANTY",
-                                icon: <Zap className="w-8 h-8 text-black" />,
-                            description: "Your guest post is built to stay live indefinitely. If an editor ever removes or modifies your link within 12 months, we replace it with an equivalent or higher-tier placement free of charge."
+                                description: "Your guest post is built to stay live indefinitely. If an editor ever removes or modifies your link within 12 months, we replace it with an equivalent or higher-tier placement free of charge."
                             }
                         ].map((card, idx) => (
                             <div
                                 key={idx}
-                                className="bg-white border-4 border-black p-8 rounded-2xl brutalist-shadow hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between"
+                                style={{
+                                    background: "#141414",
+                                    border: "1px solid rgba(255,255,255,0.08)"
+                                }}
+                                className="p-8 rounded-2xl flex flex-col justify-between"
                             >
                                 <div>
-                                    <div className="mb-6 w-14 h-14 bg-[#ccff00]/20 border-4 border-black rounded-xl flex items-center justify-center">
-                                        {card.icon}
+                                    <div
+                                        style={{
+                                            color: "#C8FF00",
+                                            fontFamily: "monospace",
+                                            fontSize: "32px",
+                                            fontWeight: 900,
+                                            marginBottom: "12px"
+                                        }}
+                                    >
+                                        {card.marker}
                                     </div>
-                                    <h3 className="text-lg font-black uppercase tracking-tight text-black mb-1">
+                                    <h3
+                                        style={{ color: "#ffffff" }}
+                                        className="text-lg font-black uppercase tracking-tight mb-1"
+                                    >
                                         {card.title}
                                     </h3>
                                     <span className="text-[10px] font-mono text-[#ff0099] uppercase tracking-wider block mb-4 font-bold">
                                         {card.tagline}
                                     </span>
-                                    <p className="text-xs leading-relaxed text-zinc-700 font-bold font-sans">
+                                    <p
+                                        style={{ color: "#6B7280" }}
+                                        className="text-xs leading-relaxed font-sans"
+                                    >
                                         {card.description}
                                     </p>
                                 </div>
