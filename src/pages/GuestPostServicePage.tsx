@@ -202,7 +202,7 @@ export default function GuestPostServicePage() {
                         </div>
                         <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-medium tracking-tight text-white leading-[1.1] mb-8">
                             Editorial Backlinks That Move Rankings. <br />
-                            <em className="text-[#ccff00] italic font-normal">Zero PBNs. Real Traffic. 100% Safe.</em>
+                            <em className="text-[#ccff00] italic font-normal">Zero PBNs. Real Traffic. Editorial Only.</em>
                         </h1>
                         <p className="text-lg md:text-xl text-zinc-300 font-sans leading-relaxed mb-10 max-w-4xl">
                             Stop burning your SEO budget on low-tier link directories and artificial PBN farms that invite Google penalties. We execute 100% white-hat manual editorial outreach to established industry blogs, magazines, and tech portals (DA/DR 40–80+) with genuine monthly search audiences.
@@ -237,7 +237,7 @@ export default function GuestPostServicePage() {
                                     "100% In-Content DoFollow Backlinks",
                                     "Zero PBNs & Zero Footprints",
                                     "Native Expert Content Included",
-                                    "12-Month Link Replacement Warranty"
+                                    "90-Day Link Replacement Guarantee"
                                 ].map((item, idx) => (
                                     <React.Fragment key={idx}>
                                         <span>{item}</span>
@@ -295,7 +295,7 @@ export default function GuestPostServicePage() {
                                 marker: "06",
                                 title: "PERMANENT & INDEXED",
                                 tagline: "12-MONTH REPLACEMENT WARRANTY",
-                                description: "Your guest post is built to stay live indefinitely. If an editor ever removes or modifies your link within 12 months, we replace it with an equivalent or higher-tier placement free of charge."
+                                description: "Your guest post is built to stay live indefinitely. If an editor ever removes or modifies your link within 90 days, we replace it with an equivalent or higher-tier placement free of charge."
                             }
                         ].map((card, idx) => (
                             <div
@@ -450,7 +450,7 @@ export default function GuestPostServicePage() {
                         letterSpacing: '0.1em',
                         marginBottom: '16px'
                     }}>
-                        // TRANSPARENT PRICING
+                        // CUSTOM PRICING
                     </p>
                     <h2 style={{
                         color: '#fff',
