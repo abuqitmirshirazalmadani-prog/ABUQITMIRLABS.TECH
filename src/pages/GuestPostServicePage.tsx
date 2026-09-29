@@ -68,65 +68,6 @@ export default function GuestPostServicePage() {
         }
     ];
 
-    const pricingTiers = [
-        {
-            name: "Authority Starter",
-            subtitle: "Foundation Building for Growing Brands",
-            daRange: "DA / DR 40 – 50+",
-            traffic: "5,000+ Monthly Organic Traffic",
-            price: 180,
-            popular: false,
-            features: [
-                "100% In-Content DoFollow Backlink",
-                "1,000+ Word Editorial Content Included",
-                "Ahrefs / Semrush Traffic Verified",
-                "Natural Anchor Text Optimization",
-                "Zero PBN / Zero Spammed Domains",
-                "12-Month Replacement Guarantee",
-                "Detailed Live URL Report"
-            ],
-            cta: "Order Starter Placement"
-        },
-        {
-            name: "Growth Impact",
-            subtitle: "Most Popular for Competitive SERPs",
-            daRange: "DA / DR 50 – 65+",
-            traffic: "25,000+ Monthly Organic Traffic",
-            price: 320,
-            popular: true,
-            features: [
-                "High-Trust Industry Publications",
-                "1,200–1,500 Word In-Depth Article",
-                "Strict Niche Relevance Matching",
-                "Contextual Secondary Authority Sources",
-                "High Domain Trust & Clean History",
-                "Fast Google Indexing Priority",
-                "Permanent Live Guarantee",
-                "Dedicated Campaign Specialist"
-            ],
-            cta: "Order Growth Placement"
-        },
-        {
-            name: "Elite Enterprise",
-            subtitle: "Tier-1 Industry Leading Publications",
-            daRange: "DA / DR 65 – 80+",
-            traffic: "100,000+ Monthly Organic Traffic",
-            price: 550,
-            popular: false,
-            features: [
-                "Recognized Media & Top Tech Portals",
-                "1,500–2,000+ Word Expert Analysis",
-                "Executive Brand Mention & Attribution",
-                "High Referral Traffic Potential",
-                "Pre-Approval Rights on Domains",
-                "Unmatched Search Entity Boost",
-                "Complete White-Label Agency Deck",
-                "Direct Senior SEO Outreach Lead"
-            ],
-            cta: "Order Elite Placement"
-        }
-    ];
-
     return (
         <div className="min-h-screen bg-[#080808] text-white selection:bg-[#ccff00] selection:text-black font-sans antialiased">
             <Helmet>
@@ -193,12 +134,10 @@ export default function GuestPostServicePage() {
                                 "areaServed": ["US", "GB", "PK", "CA", "PL", "AU"],
                                 "serviceType": "Guest Post Service & Link Building Outreach",
                                 "offers": {
-                                    "@type": "AggregateOffer",
-                                    "name": "Guest Post Placements",
-                                    "lowPrice": "180",
-                                    "highPrice": "550",
-                                    "priceCurrency": "USD",
-                                    "offerCount": "3"
+                                    "@type": "Offer",
+                                    "name": "Custom Guest Post Placements",
+                                    "description": "Pricing based on your niche and DR target. Contact us for a custom placement plan.",
+                                    "priceCurrency": "USD"
                                 }
                             },
                             {
@@ -279,7 +218,7 @@ export default function GuestPostServicePage() {
                                 href="#pricing" 
                                 className="px-8 py-4 bg-[#ccff00] text-black font-bold text-sm rounded-xl hover:bg-white transition-all brutalist-shadow flex items-center gap-2 uppercase tracking-wider"
                             >
-                                Explore Guest Post Packages
+                                Get Custom Pricing
                                 <ArrowRight className="w-4 h-4" />
                             </a>
                             <Link 
@@ -483,95 +422,54 @@ export default function GuestPostServicePage() {
                     </div>
                 </section>
 
-                {/* PRICING PACKAGES SECTION */}
-                <section id="pricing" className="px-6 md:px-12 max-w-7xl mx-auto py-24 border-b border-white/10">
-                    <div className="text-center max-w-3xl mx-auto mb-16">
-                        <span className="text-[#ccff00] text-xs font-mono font-bold tracking-widest uppercase block mb-3">
-                            Transparent Link Investment
-                        </span>
-                        <h2 className="text-3xl md:text-5xl font-serif font-medium text-white leading-tight">
-                            Engineered Guest Post Packages
-                        </h2>
-                        <p className="text-zinc-400 text-base mt-4">
-                            All tiers include full content drafting, editorial pitching, contextual anchor integration, Google indexation tracking, and our 12-month link safety warranty.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-                        {pricingTiers.map((tier, idx) => (
-                            <div 
-                                key={idx} 
-                                className={`rounded-3xl border-4 p-8 flex flex-col justify-between transition-all duration-300 ${
-                                    tier.popular 
-                                        ? 'bg-zinc-950 border-[#ccff00] shadow-[0_0_35px_rgba(204,255,0,0.15)] relative scale-105 z-10' 
-                                        : 'bg-zinc-950/80 border-white/10 hover:border-white/30'
-                                }`}
-                            >
-                                <div>
-                                    {tier.popular && (
-                                        <div className="inline-block bg-[#ccff00] text-black font-black text-[11px] uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border-2 border-black">
-                                            Most Popular Choice
-                                        </div>
-                                    )}
-                                    <h3 className="text-2xl font-serif font-medium text-white">{tier.name}</h3>
-                                    <p className="text-xs text-zinc-400 font-mono mt-1 mb-6">{tier.subtitle}</p>
-
-                                    <div className="border-y border-white/10 py-5 my-4 space-y-1">
-                                        <div className="text-sm font-bold text-[#ccff00]">{tier.daRange}</div>
-                                        <div className="text-xs text-zinc-300 font-mono">{tier.traffic}</div>
-                                    </div>
-
-                                    <div className="flex items-baseline gap-1 my-6">
-                                        <span className="text-5xl font-black text-white">${tier.price}</span>
-                                        <span className="text-xs font-mono text-zinc-400 uppercase tracking-widest">/ placement</span>
-                                    </div>
-
-                                    <ul className="space-y-3.5 my-8 text-sm">
-                                        {tier.features.map((feat, fIdx) => (
-                                            <li key={fIdx} className="flex items-start gap-3 text-zinc-200">
-                                                <Check className="w-4 h-4 text-[#ccff00] shrink-0 mt-0.5" />
-                                                <span>{feat}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                                <Link
-                                    to="/contact"
-                                    className={`w-full py-4 text-center font-bold text-sm rounded-xl uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
-                                        tier.popular
-                                            ? 'bg-[#ccff00] text-black hover:bg-white brutalist-shadow'
-                                            : 'bg-white/10 text-white hover:bg-white hover:text-black border border-white/10'
-                                    }`}
-                                >
-                                    {tier.cta}
-                                    <ArrowRight className="w-4 h-4" />
-                                </Link>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Agency Wholesale Banner */}
-                    <div className="mt-16 bg-white border-4 border-black p-8 rounded-2xl brutalist-shadow flex flex-col md:flex-row items-center justify-between gap-6 text-black">
-                        <div>
-                            <span className="px-3 py-1 bg-black text-[#ccff00] text-[10px] font-mono font-bold uppercase rounded-md">
-                                Agency Bulk Orders
-                            </span>
-                            <h3 className="text-2xl font-black uppercase tracking-tight mt-2">
-                                Need 10+ Placements Per Month?
-                            </h3>
-                            <p className="text-sm font-bold text-zinc-800 mt-1 max-w-2xl">
-                                We act as the silent link fulfillment partner for leading digital agencies across the US, UK, and Europe. Enjoy dedicated account handling, volume pricing discounts, and unbranded client reports.
-                            </p>
-                        </div>
-                        <Link 
-                            to="/white-label-local-seo" 
-                            className="px-8 py-4 bg-black text-[#ccff00] font-black text-sm uppercase rounded-xl hover:bg-[#ff0099] hover:text-white transition-all whitespace-nowrap shrink-0 border-2 border-black"
-                        >
-                            Explore Agency White-Label
-                        </Link>
-                    </div>
-                </section>
+                {/* PRICING CTA BLOCK */}
+                <div 
+                    id="pricing"
+                    style={{
+                        textAlign: 'center',
+                        padding: '80px 24px',
+                        background: '#111111'
+                    }}
+                >
+                    <p style={{
+                        color: '#C8FF00',
+                        fontFamily: 'monospace',
+                        fontSize: '12px',
+                        letterSpacing: '0.1em',
+                        marginBottom: '16px'
+                    }}>
+                        // TRANSPARENT PRICING
+                    </p>
+                    <h2 style={{
+                        color: '#fff',
+                        fontSize: 'clamp(32px,4vw,52px)',
+                        fontWeight: 900,
+                        marginBottom: '16px'
+                    }}>
+                        Pricing Based on Your Niche and DR Target
+                    </h2>
+                    <p style={{
+                        color: '#6B7280',
+                        maxWidth: '560px',
+                        margin: '0 auto 32px',
+                        lineHeight: 1.7
+                    }}>
+                        Every campaign is scoped to your specific domain, target URL, and niche. Contact us for a custom placement plan before committing to anything.
+                    </p>
+                    <a 
+                        href="/contact" 
+                        style={{
+                            background: '#C8FF00',
+                            color: '#000',
+                            padding: '16px 32px',
+                            fontWeight: 700,
+                            textDecoration: 'none',
+                            display: 'inline-block'
+                        }}
+                    >
+                        Get Custom Pricing
+                    </a>
+                </div>
 
                 {/* 5-STEP OUTREACH PROTOCOL */}
                 <section className="px-6 md:px-12 max-w-7xl mx-auto py-24 border-b border-white/10">
