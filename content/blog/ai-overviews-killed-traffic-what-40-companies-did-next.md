@@ -33,21 +33,11 @@
     "AbuQitmirLabs"
   ],
   "publishedAt": "2026-09-29",
-  "syncedAt": "2026-09-29T21:14:21.499Z"
+  "syncedAt": "2026-09-29T21:19:50.020Z"
 }
 ---
 
 # AI Overviews Killed Your Traffic: What 40 Companies Did Next
-
-**Meta Title:** AI Overviews Killed Traffic: What 40 Companies Did Next
-
-**Meta Description:** AI Overviews cut organic clicks by 61%. We analyzed 40 companies that recovered. Here are the 7 tactics that actually worked, with specific metrics.
-
-**URL Slug:** /blog/ai-overviews-traffic-recovery-what-40-companies-did-next
-
-**Primary Keyword:** AI Overviews traffic recovery
-
-**Secondary Keywords:** recover traffic lost to AI Overviews, AI Overviews SEO strategy, how to get cited in AI Overviews, AI search traffic recovery
 
 ## Quick Takeaways
 
