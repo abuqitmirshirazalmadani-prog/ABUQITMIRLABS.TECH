@@ -34,11 +34,11 @@
     "technical SEO services"
   ],
   "publishedAt": "2026-09-29",
-  "syncedAt": "2026-09-29T01:14:38.464Z"
+  "syncedAt": "2026-09-29T01:20:41.011Z"
 }
 ---
 
-# Programmatic SEO: How We Scaled TajweedPage.com (2026 Case Study)
+# Programmatic SEO: How We Scaled TajweedPage (2026 Case Study)
 
 ---
 
