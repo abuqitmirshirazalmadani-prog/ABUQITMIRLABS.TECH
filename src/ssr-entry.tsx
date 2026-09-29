@@ -150,6 +150,8 @@ export function renderFullApp(url: string = '/') {
               <Route path="/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
               <Route path="/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
               <Route path="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
+              <Route path="/blog/ai-overviews-killed-traffic-what-40-companies-did-next" element={<BlogPostPage overrideSlug="ai-overviews-killed-traffic-what-40-companies-did-next" />} />
+              <Route path="/blog/ai-overviews-traffic-recovery-what-40-companies-did-next" element={<BlogPostPage overrideSlug="ai-overviews-traffic-recovery-what-40-companies-did-next" />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
             </Routes>
           </Suspense>

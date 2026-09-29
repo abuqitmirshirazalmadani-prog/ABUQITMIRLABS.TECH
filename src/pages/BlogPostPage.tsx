@@ -468,6 +468,210 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         defaultAuthor: 'AbuQitmirLabs .TECH'
     });
 
+    const isAIOverviewsRecovery = slug === 'ai-overviews-killed-traffic-what-40-companies-did-next' || slug === 'ai-overviews-traffic-recovery-what-40-companies-did-next';
+
+    const aiOverviewsRecoverySchema = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.abuqitmirlabs.tech/#organization",
+          "name": "AbuQitmirLabs",
+          "url": "https://www.abuqitmirlabs.tech/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.abuqitmirlabs.tech/logo.png",
+            "width": 512,
+            "height": 512
+          },
+          "description": "Bespoke custom software, AI app development, and SEO services based in Karachi, Pakistan. Building enterprise-grade digital solutions for clients across the US, UK, and EU.",
+          "foundingDate": "2024",
+          "founder": {
+            "@type": "Person",
+            "name": "Abu Qitmir Mohammad Shiraz Al-Madani",
+            "jobTitle": "Founder & Lead Systems Architect"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Karachi",
+            "addressRegion": "Sindh",
+            "addressCountry": "PK"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Sales",
+            "url": "https://www.abuqitmirlabs.tech/contact",
+            "availableLanguage": ["English", "Urdu"]
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/abuqitmirlabs",
+            "https://twitter.com/AbuQitmirLabs",
+            "https://github.com/abuqitmirlabs",
+            "https://clutch.co/profile/abuqitmirlabs"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.abuqitmirlabs.tech/#website",
+          "url": "https://www.abuqitmirlabs.tech/",
+          "name": "AbuQitmirLabs",
+          "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+          "inLanguage": "en-US",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.abuqitmirlabs.tech/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.abuqitmirlabs.tech/blog/ai-overviews-traffic-recovery-what-40-companies-did-next/#webpage",
+          "url": "https://www.abuqitmirlabs.tech/blog/ai-overviews-traffic-recovery-what-40-companies-did-next",
+          "name": "AI Overviews Killed Your Traffic: What 40 Companies Did Next",
+          "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" },
+          "about": { "@id": "https://www.abuqitmirlabs.tech/blog/ai-overviews-traffic-recovery-what-40-companies-did-next/#article" },
+          "description": "AI Overviews cut organic clicks by 61%. We analyzed 40 companies that recovered. Here are the 7 tactics that actually worked, with specific metrics.",
+          "inLanguage": "en-US",
+          "datePublished": "2026-09-28T00:00:00+00:00",
+          "dateModified": "2026-09-28T00:00:00+00:00"
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.abuqitmirlabs.tech/blog/ai-overviews-traffic-recovery-what-40-companies-did-next/#article",
+          "headline": "AI Overviews Killed Your Traffic: What 40 Companies Did Next",
+          "description": "AI Overviews cut organic clicks by 61%. We analyzed 40 companies that recovered. Here are the 7 tactics that actually worked, with specific metrics.",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://www.abuqitmirlabs.tech/images/blog/ai-overviews-traffic-recovery-2026-og.jpg",
+            "width": 1200,
+            "height": 630
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Abu Qitmir Mohammad Shiraz Al-Madani",
+            "jobTitle": "Founder & Lead Systems Architect",
+            "url": "https://www.abuqitmirlabs.tech/about",
+            "sameAs": [
+              "https://www.linkedin.com/in/abuqitmirmohammad",
+              "https://twitter.com/AbuQitmirLabs"
+            ]
+          },
+          "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+          "datePublished": "2026-09-28T00:00:00+00:00",
+          "dateModified": "2026-09-28T00:00:00+00:00",
+          "mainEntityOfPage": { "@id": "https://www.abuqitmirlabs.tech/blog/ai-overviews-traffic-recovery-what-40-companies-did-next/#webpage" },
+          "articleSection": "SEO Services",
+          "keywords": [
+            "AI Overviews traffic recovery",
+            "recover traffic lost to AI Overviews",
+            "AI Overviews SEO strategy",
+            "how to get cited in AI Overviews",
+            "AI search traffic recovery",
+            "zero-click search recovery",
+            "bottom-funnel SEO",
+            "AI crawler access"
+          ],
+          "wordCount": 3100,
+          "inLanguage": "en-US",
+          "isAccessibleForFree": true
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.abuqitmirlabs.tech/blog/ai-overviews-traffic-recovery-what-40-companies-did-next/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is AI Overviews traffic loss permanent?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "For informational queries, largely yes. Google is not going to reverse AI Overviews. For transactional and bottom-funnel queries, most of the traffic is recoverable through content restructuring and citation optimization."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I know if AI Overviews are taking my traffic?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Check Google Search Console for a widening gap between impressions and clicks. If impressions are stable or growing while clicks decline, AI Overviews are likely the cause. You can also test by searching your target keywords in an incognito browser and checking whether an AI Overview appears."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I block AI Overviews from using my content?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You can block Google-Extended in robots.txt, but doing so prevents Google from citing your content in AI Overviews. Most companies find this counterproductive. It is better to be cited than absent."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How long does recovery take?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Across the 40 companies analyzed, the average recovery timeline was 4 to 6 months. Companies that diversified distribution channels recovered faster than those that tried to optimize their way back to the old baseline."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What metrics should I track instead of CTR?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Track citation rate (how often your brand appears in AI Overviews), AI referral traffic (users arriving from ChatGPT, Perplexity, Gemini), brand search volume, and bottom-funnel conversion rate."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do I need to stop writing informational content entirely?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. But you should reduce it. Informational content still has value for brand awareness and citation potential. Just do not expect it to generate the same click volume it did before AI Overviews."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I get cited in AI Overviews?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Lead every section with a 40 to 60 word direct answer. Add FAQPage schema. Include specific, verifiable data. Publish original research. Unblock Google-Extended in robots.txt."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What if I run a small business with limited resources?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Start with the highest-leverage steps: unblock AI crawlers, restructure your top 10 articles for direct answers, and add FAQPage schema. These are free or low-cost. Build from there."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.abuqitmirlabs.tech/blog/ai-overviews-traffic-recovery-what-40-companies-did-next/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.abuqitmirlabs.tech/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://www.abuqitmirlabs.tech/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "AI Overviews Killed Your Traffic: What 40 Companies Did Next",
+              "item": "https://www.abuqitmirlabs.tech/blog/ai-overviews-traffic-recovery-what-40-companies-did-next"
+            }
+          ]
+        }
+      ]
+    };
+
     const isFlutterVsReactNative = slug === 'flutter-vs-react-native-choosing-mobile-app-stack-2026';
 
     const isAppDevAgencyUK = slug === 'app-development-agency-uk-what-to-ask-before-you-sign-2026';
@@ -1484,7 +1688,52 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
     return (
         <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00]/30 selection:text-white">
             <Helmet prioritizeSeoTags>
-                {isHighPerformanceWebApps ? (
+                {isAIOverviewsRecovery ? (
+                    <>
+                        <html lang="en" />
+                        {/* Primary Meta Tags */}
+                        <title>AI Overviews Killed Traffic: What 40 Companies Did Next</title>
+                        <meta name="title" content="AI Overviews Killed Traffic: What 40 Companies Did Next" />
+                        <meta name="description" content="AI Overviews cut organic clicks by 61%. We analyzed 40 companies that recovered. Here are the 7 tactics that actually worked, with specific metrics." />
+                        <meta name="keywords" content="AI Overviews traffic recovery, recover traffic lost to AI Overviews, AI Overviews SEO strategy, how to get cited in AI Overviews, AI search traffic recovery, Google AI Overviews update, zero-click search recovery, AI Overviews CTR decline, bottom-funnel SEO, AI Overviews case study" />
+                        <meta name="author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
+                        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+                        <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog/ai-overviews-traffic-recovery-what-40-companies-did-next" />
+
+                        {/* Open Graph / Facebook */}
+                        <meta property="og:type" content="article" />
+                        <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/ai-overviews-traffic-recovery-what-40-companies-did-next" />
+                        <meta property="og:title" content="AI Overviews Killed Traffic: What 40 Companies Did Next" />
+                        <meta property="og:description" content="AI Overviews cut organic clicks by 61%. We analyzed 40 companies that recovered. Here are the 7 tactics that actually worked, with specific metrics." />
+                        <meta property="og:image" content="https://www.abuqitmirlabs.tech/images/blog/ai-overviews-traffic-recovery-2026-og.jpg" />
+                        <meta property="og:image:width" content="1200" />
+                        <meta property="og:image:height" content="630" />
+                        <meta property="og:image:alt" content="AI Overviews traffic recovery case study showing 40 companies and 7 recovery tactics with specific metrics" />
+                        <meta property="og:site_name" content="AbuQitmirLabs" />
+                        <meta property="og:locale" content="en_US" />
+                        <meta property="article:published_time" content="2026-09-28T00:00:00+00:00" />
+                        <meta property="article:modified_time" content="2026-09-28T00:00:00+00:00" />
+                        <meta property="article:author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
+                        <meta property="article:section" content="SEO Services" />
+                        <meta property="article:tag" content="AI Overviews" />
+                        <meta property="article:tag" content="SEO Recovery" />
+                        <meta property="article:tag" content="Traffic Recovery" />
+
+                        {/* Twitter Card */}
+                        <meta name="twitter:card" content="summary_large_image" />
+                        <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/ai-overviews-traffic-recovery-what-40-companies-did-next" />
+                        <meta name="twitter:title" content="AI Overviews Killed Traffic: What 40 Companies Did Next" />
+                        <meta name="twitter:description" content="AI Overviews cut organic clicks by 61%. We analyzed 40 companies that recovered. Here are the 7 tactics that actually worked, with specific metrics." />
+                        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/blog/ai-overviews-traffic-recovery-2026-og.jpg" />
+                        <meta name="twitter:image:alt" content="AI Overviews traffic recovery 2026 — 40 companies, 7 tactics, full case study" />
+                        <meta name="twitter:site" content="@AbuQitmirLabs" />
+                        <meta name="twitter:creator" content="@AbuQitmirLabs" />
+
+                        <script type="application/ld+json">
+                            {JSON.stringify(aiOverviewsRecoverySchema)}
+                        </script>
+                    </>
+                ) : isHighPerformanceWebApps ? (
                     <>
                         <html lang="en" />
                         {/* Primary Meta Tags */}
