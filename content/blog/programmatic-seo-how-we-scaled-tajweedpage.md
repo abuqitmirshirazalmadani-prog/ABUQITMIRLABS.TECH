@@ -1,7 +1,7 @@
 ---
 {
-  "title": "Programmatic SEO: How We Scaled TajweedPage.com",
-  "slug": "programmatic-seo-how-we-scaled-tajweedpagecom",
+  "title": "Programmatic SEO: How We Scaled TajweedPage",
+  "slug": "programmatic-seo-how-we-scaled-tajweedpage",
   "excerpt": "Every programmatic SEO guide cites the same case studies: Zapier, Wise, TripAdvisor, Canva. Almost none of them note what happened next. Zapier's organic traffic is down 70% from its February 2025 peak. Wise is down 40%. The pSEO playbook that made them famous is not the playbook keeping them visible. This article documents what actually changed in Google's March 2026 scaled content abuse enforcement, the shift from syntax-based to semantic pSEO, and the exact hub-and-spoke architecture AbuQitmirLabs used to scale TajweedPage.com across 20+ country markets. Includes indexation rate benchmarks, crawl budget economics, brand governance for AI content, and a full technical implementation guide.",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
@@ -33,8 +33,8 @@
     "AEO optimization",
     "technical SEO services"
   ],
-  "publishedAt": "2026-09-28",
-  "syncedAt": "2026-09-28T21:55:02.422Z"
+  "publishedAt": "2026-09-29",
+  "syncedAt": "2026-09-29T01:14:38.464Z"
 }
 ---
 
