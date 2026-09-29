@@ -602,6 +602,18 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
     ogType: 'website'
   },
+  '/guest-post-service': {
+    title: 'High-Authority Guest Post Service | Editorial Backlinks & Outreach | AbuQitmirLabs',
+    description: 'Manual, high-authority guest post service with DA/DR 40-80+ contextual backlinks. Real editorial outreach, zero PBNs, 100% indexed, verified organic traffic.',
+    canonical: 'https://www.abuqitmirlabs.tech/guest-post-service',
+    ogTitle: 'High-Authority Guest Post Service | Editorial Backlinks & Outreach | AbuQitmirLabs',
+    ogDescription: 'Manual, high-authority guest post service with DA/DR 40-80+ contextual backlinks. Real editorial outreach, zero PBNs, 100% indexed, verified organic traffic.',
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogType: 'website',
+    twitterTitle: 'High-Authority Guest Post Service | Editorial Backlinks & Outreach | AbuQitmirLabs',
+    twitterDescription: 'Manual, high-authority guest post service with DA/DR 40-80+ contextual backlinks. Real editorial outreach, zero PBNs, 100% indexed, verified organic traffic.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/logo.png'
+  },
   '/local-seo-services': {
     title: 'Local SEO Services for Small Business | AbuQitmirLabs',
     description: 'Dominant local search optimization, Google Maps ranking, citation building, and multi-location local SEO packages.',

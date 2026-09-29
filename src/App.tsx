@@ -23,6 +23,7 @@ const LocalSEOSmallBusinessPage = lazy(() => import('./pages/LocalSEOSmallBusine
 const LocalSEOCitationBuildingPage = lazy(() => import('./pages/LocalSEOCitationBuildingPage'));
 const WhiteLabelLocalSEOPage = lazy(() => import('./pages/WhiteLabelLocalSEOPage'));
 const LocalSEOAuditPage = lazy(() => import('./pages/LocalSEOAuditPage'));
+const GuestPostServicePage = lazy(() => import('./pages/GuestPostServicePage'));
 const GraphicsDesignPage = lazy(() => import('./pages/GraphicsDesignPage'));
 const ContentWritingPage = lazy(() => import('./pages/ContentWritingPage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
@@ -235,6 +236,10 @@ export default function App() {
               <Route path="/local-seo-citation-building" element={<LocalSEOCitationBuildingPage />} />
               <Route path="/white-label-local-seo" element={<WhiteLabelLocalSEOPage />} />
               <Route path="/local-seo-audit" element={<LocalSEOAuditPage />} />
+              <Route path="/guest-post-service" element={<GuestPostServicePage />} />
+              <Route path="/guest-posting-service" element={<Navigate to="/guest-post-service" replace />} />
+              <Route path="/guest-post-services" element={<Navigate to="/guest-post-service" replace />} />
+              <Route path="/guest-posts" element={<Navigate to="/guest-post-service" replace />} />
               <Route path="/graphics-design" element={<GraphicsDesignPage />} />
               <Route path="/content-writing" element={<ContentWritingPage />} />
               <Route path="/contact" element={<ContactPage />} />

@@ -129,6 +129,7 @@ const routes = [
   '/local-seo-citation-building',
   '/white-label-local-seo',
   '/local-seo-audit',
+  '/guest-post-service',
   '/graphics-design',
   '/content-writing',
   '/contact',

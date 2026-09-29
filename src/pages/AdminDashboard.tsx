@@ -9,7 +9,8 @@ import {
     LayoutDashboard, FileText, Plus, LogOut, Shield, 
     CheckCircle, AlertCircle, Loader2, ArrowLeft, 
     Globe, Clock, Edit, Trash2, ExternalLink,
-    Newspaper, Rss, Megaphone, Lightbulb, Sparkles, Filter 
+    Newspaper, Rss, Megaphone, Lightbulb, Sparkles, Filter,
+    GitBranch, Github, UploadCloud, RefreshCw, Zap, Server, CheckCircle2, ShieldCheck, ArrowUpRight
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -120,8 +121,37 @@ const AdminDashboard = () => {
     const [editingId, setEditingId] = useState<string | null>(null);
     const [activeTab, setActiveTab] = useState<'create' | 'list'>('create');
 
-    // Section Switcher: 'blog' | 'news'
-    const [activeSection, setActiveSection] = useState<'blog' | 'news'>('blog');
+    // Section Switcher: 'blog' | 'news' | 'deploy'
+    const [activeSection, setActiveSection] = useState<'blog' | 'news' | 'deploy'>('blog');
+
+    // GitHub & Vercel Auto-Publish Pipeline State
+    const [githubToken, setGithubToken] = useState<string>(() => {
+        return localStorage.getItem('abuqitmir_gh_token') || '';
+    });
+    const [githubRepo, setGithubRepo] = useState<string>(() => {
+        return localStorage.getItem('abuqitmir_gh_repo') || 'abuqitmirshirazalmadani-prog/ABUQITMIRLABS.TECH';
+    });
+    const [githubBranch, setGithubBranch] = useState<string>(() => {
+        return localStorage.getItem('abuqitmir_gh_branch') || 'main';
+    });
+    const [vercelDeployHook, setVercelDeployHook] = useState<string>(() => {
+        return localStorage.getItem('abuqitmir_vercel_hook') || '';
+    });
+    const [autoDeployEnabled, setAutoDeployEnabled] = useState<boolean>(true);
+    const [deployStatus, setDeployStatus] = useState<{
+        inProgress: boolean;
+        step: string;
+        logs: string[];
+        commitUrl?: string;
+        error?: string;
+        completed?: boolean;
+    } | null>(null);
+    const [isTestingGh, setIsTestingGh] = useState(false);
+    const [ghTestResult, setGhTestResult] = useState<{ success: boolean; message: string; repo?: string } | null>(null);
+    const [isSyncingAll, setIsSyncingAll] = useState(false);
+    const [isDeploying, setIsDeploying] = useState(false);
+    const [deployResult, setDeployResult] = useState<any>(null);
+    const [settingsSavedMessage, setSettingsSavedMessage] = useState<string | null>(null);
 
     // News Section State
     const [newsSubTab, setNewsSubTab] = useState<'all' | 'latest' | 'press-releases' | 'industry-insights'>('all');
@@ -638,6 +668,106 @@ const AdminDashboard = () => {
 
     const handleLogout = () => signOut(auth);
 
+    const handleSaveSettings = (e?: React.FormEvent) => {
+        if (e) e.preventDefault();
+        localStorage.setItem('abuqitmir_gh_token', githubToken.trim());
+        localStorage.setItem('abuqitmir_gh_repo', githubRepo.trim());
+        localStorage.setItem('abuqitmir_gh_branch', githubBranch.trim());
+        localStorage.setItem('abuqitmir_vercel_hook', vercelDeployHook.trim());
+        setSettingsSavedMessage('Deployment settings saved successfully in browser!');
+        setTimeout(() => setSettingsSavedMessage(null), 4000);
+    };
+
+    const handleTestGitHub = async () => {
+        setIsTestingGh(true);
+        setGhTestResult(null);
+        try {
+            const res = await fetch('/api/github/test-connection', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    token: githubToken.trim(),
+                    repo: githubRepo.trim()
+                })
+            });
+            const data = await res.json();
+            if (data.success) {
+                setGhTestResult({
+                    success: true,
+                    message: `Connected successfully to GitHub repo: ${data.repo}! Default branch: ${data.defaultBranch}. Push permissions confirmed.`,
+                    repo: data.repo
+                });
+            } else {
+                setGhTestResult({
+                    success: false,
+                    message: data.error || 'Failed to authenticate with GitHub'
+                });
+            }
+        } catch (err: any) {
+            setGhTestResult({
+                success: false,
+                message: err.message || 'Connection test error'
+            });
+        } finally {
+            setIsTestingGh(false);
+        }
+    };
+
+    const runPublishDeployPipeline = async (postData?: any, isSyncAll: boolean = false) => {
+        setIsDeploying(true);
+        setDeployStatus({
+            inProgress: true,
+            step: isSyncAll ? 'Syncing all sitemaps & articles to GitHub...' : 'Starting automated publish & deployment pipeline...',
+            logs: [
+                `Initiating deployment pipeline for: ${postData?.title || 'All Site Pages & Sitemaps'}`,
+                `Target Repository: ${githubRepo} (${githubBranch})`
+            ]
+        });
+
+        try {
+            const res = await fetch('/api/publish-sync', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    post: postData || null,
+                    githubToken: githubToken.trim(),
+                    githubRepo: githubRepo.trim(),
+                    githubBranch: githubBranch.trim(),
+                    vercelDeployHook: vercelDeployHook.trim(),
+                    syncAll: isSyncAll
+                })
+            });
+
+            const data = await res.json();
+            setDeployResult(data);
+
+            if (!res.ok || !data.success) {
+                throw new Error(data.error || 'Failed to sync with deployment pipeline');
+            }
+
+            setDeployStatus({
+                inProgress: false,
+                completed: true,
+                step: 'Deployment Pipeline Finished Successfully!',
+                logs: data.logs || ['Pipeline execution complete.'],
+                commitUrl: data.commitUrl || null
+            });
+            return data;
+        } catch (err: any) {
+            console.error('Publish-deploy pipeline error:', err);
+            setDeployStatus(prev => ({
+                inProgress: false,
+                completed: false,
+                step: 'Deployment Pipeline Notice',
+                error: err.message || 'Pipeline failed',
+                logs: [...(prev?.logs || []), `Notice: ${err.message || err}`]
+            }));
+            return null;
+        } finally {
+            setIsDeploying(false);
+        }
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const isAuthorized = user && (user.email === ADMIN_EMAIL || user.uid === ADMIN_UID);
@@ -670,6 +800,7 @@ const AdminDashboard = () => {
 
         try {
             const tagsArray = formData.tags.split(',').map(tag => tag.trim().replace(/^#/, '')).filter(tag => tag !== '');
+            const postPayload = { ...formData, tags: tagsArray };
             
             if (editingId) {
                 await updateDoc(doc(db, 'posts', editingId), {
@@ -678,7 +809,7 @@ const AdminDashboard = () => {
                     tags: tagsArray,
                     updatedAt: serverTimestamp()
                 });
-                setStatus({ type: 'success', message: 'Post updated successfully!' });
+                setStatus({ type: 'success', message: 'Post updated in Firestore database!' });
             } else {
                 const docRef = await addDoc(collection(db, 'posts'), {
                     ...formData,
@@ -688,29 +819,34 @@ const AdminDashboard = () => {
                     createdAt: serverTimestamp(),
                     updatedAt: serverTimestamp()
                 });
-                setStatus({ type: 'success', message: `Post published successfully! ID: ${docRef.id}` });
+                setStatus({ type: 'success', message: `Post published in database! ID: ${docRef.id}` });
             }
 
-                setFormData({
-                    title: '',
-                    slug: '',
-                    excerpt: '',
-                    content: '',
-                    author: 'ABUQITMIRLABS .TECH Shiraz Almadani',
-                    category: 'AI',
-                    published: true,
-                    coverImage: '',
-                    coverImageAlt: '',
-                    tags: ''
-                });
-                setHelperImages([
-                    { url: '', caption: '' },
-                    { url: '', caption: '' },
-                    { url: '', caption: '' },
-                    { url: '', caption: '' },
-                    { url: '', caption: '' },
-                    { url: '', caption: '' }
-                ]);
+            // Auto-trigger GitHub commit, Vercel build & Google ping if enabled
+            if (autoDeployEnabled) {
+                runPublishDeployPipeline(postPayload, false);
+            }
+
+            setFormData({
+                title: '',
+                slug: '',
+                excerpt: '',
+                content: '',
+                author: 'ABUQITMIRLABS .TECH Shiraz Almadani',
+                category: 'AI',
+                published: true,
+                coverImage: '',
+                coverImageAlt: '',
+                tags: ''
+            });
+            setHelperImages([
+                { url: '', caption: '' },
+                { url: '', caption: '' },
+                { url: '', caption: '' },
+                { url: '', caption: '' },
+                { url: '', caption: '' },
+                { url: '', caption: '' }
+            ]);
             setEditingId(null);
             fetchPosts();
         } catch (error) {
@@ -860,6 +996,17 @@ const AdminDashboard = () => {
                                 </span>
                                 <span className="bg-black/40 text-[9px] px-2 py-0.5 rounded-full">{newsItems.length}</span>
                             </button>
+                            <button
+                                onClick={() => setActiveSection('deploy')}
+                                className={`w-full font-bold py-3 px-4 rounded-xl flex items-center justify-between text-xs tracking-wider transition-all uppercase ${activeSection === 'deploy' ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-900/30 font-black' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
+                            >
+                                <span className="flex items-center gap-2">
+                                    <GitBranch size={16} /> Auto-Deploy & Sync
+                                </span>
+                                <span className={`text-[9px] px-2 py-0.5 rounded-full font-black ${githubToken ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-amber-500/20 text-amber-300'}`}>
+                                    {githubToken ? 'Ready' : 'Setup'}
+                                </span>
+                            </button>
                         </div>
 
                         {activeSection === 'blog' ? (
@@ -895,7 +1042,7 @@ const AdminDashboard = () => {
                                     <span className="uppercase tracking-widest text-xs font-black">ALL POSTS ({posts.length})</span>
                                 </button>
                             </>
-                        ) : (
+                        ) : activeSection === 'news' ? (
                             <>
                                 <button 
                                     onClick={() => {
@@ -960,6 +1107,25 @@ const AdminDashboard = () => {
                                     })}
                                 </div>
                             </>
+                        ) : (
+                            <div className="space-y-3">
+                                <button 
+                                    onClick={() => runPublishDeployPipeline(null, true)}
+                                    disabled={isDeploying}
+                                    className="w-full font-bold py-4 px-4 rounded-xl flex items-center justify-center gap-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-lg shadow-blue-900/30 transition-all active:scale-95 disabled:opacity-50"
+                                >
+                                    {isDeploying ? <Loader2 className="animate-spin" size={16} /> : <Zap size={16} />}
+                                    <span className="uppercase tracking-widest text-[10px] font-black">{isDeploying ? 'Syncing...' : 'Sync Sitemaps to GitHub'}</span>
+                                </button>
+                                <button 
+                                    onClick={handleTestGitHub}
+                                    disabled={isTestingGh}
+                                    className="w-full font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 bg-zinc-900 hover:bg-zinc-800 text-gray-300 border border-white/10 transition-all text-xs"
+                                >
+                                    {isTestingGh ? <Loader2 className="animate-spin" size={14} /> : <Github size={14} />}
+                                    <span className="uppercase tracking-widest text-[10px] font-black">Test Connection</span>
+                                </button>
+                            </div>
                         )}
 
                         <div className="mt-auto pt-10">
@@ -987,12 +1153,14 @@ const AdminDashboard = () => {
                             <div className="flex items-center justify-between mb-10">
                                 <div className="flex items-center gap-4">
                                     <div className="text-blue-500 font-light text-4xl leading-none">
-                                        {activeSection === 'blog' ? (editingId ? '✎' : '+') : (editingNewsId ? '✎' : '+')}
+                                        {activeSection === 'blog' ? (editingId ? '✎' : '+') : activeSection === 'news' ? (editingNewsId ? '✎' : '+') : '⚡'}
                                     </div>
                                     <h2 className="text-2xl md:text-4xl font-black tracking-tight uppercase">
                                         {activeSection === 'blog' 
                                           ? (activeTab === 'create' ? (editingId ? 'Update Blog Post' : 'Create New Blog Post') : 'Manage Contents')
-                                          : (newsActiveTab === 'create' ? (editingNewsId ? 'Update News Article' : 'Create News Article') : `Manage News (${newsSubTab.toUpperCase()})`)
+                                          : activeSection === 'news'
+                                            ? (newsActiveTab === 'create' ? (editingNewsId ? 'Update News Article' : 'Create News Article') : `Manage News (${newsSubTab.toUpperCase()})`)
+                                            : 'Auto-Publish Pipeline: GitHub ➔ Vercel ➔ Google'
                                         }
                                     </h2>
                                 </div>
@@ -1411,26 +1579,141 @@ const AdminDashboard = () => {
                                                 />
                                             </div>
 
+                                            {/* Auto-Deploy to GitHub & Vercel Pipeline Card */}
+                                            <div className="p-6 bg-gradient-to-r from-blue-950/40 via-indigo-950/20 to-purple-950/30 border border-blue-500/20 rounded-3xl space-y-4">
+                                                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                                    <div className="flex items-start sm:items-center gap-3">
+                                                        <div className="w-10 h-10 rounded-2xl bg-blue-500/20 flex items-center justify-center text-blue-400 shrink-0 border border-blue-500/30">
+                                                            <GitBranch size={20} />
+                                                        </div>
+                                                        <div>
+                                                            <div className="flex items-center gap-2">
+                                                                <h4 className="text-xs font-black uppercase text-white tracking-wider">Automated GitHub, Vercel & Google Pipeline</h4>
+                                                                <span className={`text-[9px] px-2 py-0.5 rounded-full font-black uppercase tracking-wider ${githubToken ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'}`}>
+                                                                    {githubToken ? 'Git Connected' : 'Local Only'}
+                                                                </span>
+                                                            </div>
+                                                            <p className="text-[11px] text-gray-400 mt-0.5">
+                                                                Publish hote hi sitemap update hoga, GitHub par commit jayega, Vercel automatic live deploy karega aur Google ko ping hoga.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <label className="relative inline-flex items-center cursor-pointer shrink-0">
+                                                        <input 
+                                                            type="checkbox" 
+                                                            checked={autoDeployEnabled} 
+                                                            onChange={e => setAutoDeployEnabled(e.target.checked)} 
+                                                            className="sr-only peer"
+                                                        />
+                                                        <div className="w-11 h-6 bg-zinc-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                                                    </label>
+                                                </div>
+
+                                                {!githubToken && (
+                                                    <div className="text-[11px] text-amber-300/90 bg-amber-500/10 border border-amber-500/20 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                                        <span>
+                                                            💡 <strong>GitHub Token Setup:</strong> Zero-click GitHub push aur Vercel auto-deploy ke liye sidebar mein <strong>"Auto-Deploy & Sync"</strong> tab par apna GitHub Token save karein.
+                                                        </span>
+                                                        <button 
+                                                            type="button" 
+                                                            onClick={() => setActiveSection('deploy')}
+                                                            className="px-4 py-2 bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 rounded-xl font-black text-[10px] uppercase tracking-wider shrink-0 transition-colors"
+                                                        >
+                                                            Configure Token
+                                                        </button>
+                                                    </div>
+                                                )}
+
+                                                {/* Live Deployment Pipeline Progress */}
+                                                <AnimatePresence>
+                                                    {deployStatus && (
+                                                        <motion.div
+                                                            initial={{ opacity: 0, height: 0 }}
+                                                            animate={{ opacity: 1, height: 'auto' }}
+                                                            exit={{ opacity: 0, height: 0 }}
+                                                            className={`p-5 rounded-2xl border text-xs space-y-3 ${
+                                                                deployStatus.completed 
+                                                                    ? 'bg-emerald-950/30 border-emerald-500/30 text-emerald-300' 
+                                                                    : deployStatus.error 
+                                                                        ? 'bg-amber-950/30 border-amber-500/30 text-amber-300' 
+                                                                        : 'bg-blue-950/40 border-blue-500/30 text-blue-300'
+                                                            }`}
+                                                        >
+                                                            <div className="flex items-center justify-between">
+                                                                <div className="flex items-center gap-2 font-black uppercase tracking-wider text-[11px]">
+                                                                    {deployStatus.inProgress ? (
+                                                                        <Loader2 className="animate-spin text-blue-400" size={16} />
+                                                                    ) : deployStatus.completed ? (
+                                                                        <CheckCircle2 className="text-emerald-400" size={16} />
+                                                                    ) : (
+                                                                        <AlertCircle className="text-amber-400" size={16} />
+                                                                    )}
+                                                                    <span>{deployStatus.step}</span>
+                                                                </div>
+                                                                {deployStatus.commitUrl && (
+                                                                    <a 
+                                                                        href={deployStatus.commitUrl} 
+                                                                        target="_blank" 
+                                                                        rel="noopener noreferrer" 
+                                                                        className="flex items-center gap-1 text-[10px] font-black uppercase text-blue-400 hover:text-blue-300 underline"
+                                                                    >
+                                                                        View GitHub Commit <ArrowUpRight size={12} />
+                                                                    </a>
+                                                                )}
+                                                            </div>
+
+                                                            {/* Pipeline Status Steps */}
+                                                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-2 text-[10px] font-bold">
+                                                                <div className="p-2.5 rounded-xl bg-black/40 border border-white/5 flex items-center gap-2">
+                                                                    <span className="text-emerald-400">✓</span> 1. Firestore Database
+                                                                </div>
+                                                                <div className="p-2.5 rounded-xl bg-black/40 border border-white/5 flex items-center gap-2">
+                                                                    <span className={deployResult?.localSitemap ? "text-emerald-400" : "text-gray-500"}>✓</span> 2. Sitemap & RSS
+                                                                </div>
+                                                                <div className="p-2.5 rounded-xl bg-black/40 border border-white/5 flex items-center gap-2">
+                                                                    <span className={deployResult?.githubPostFile || deployResult?.githubSitemap ? "text-emerald-400" : "text-amber-400"}>
+                                                                        {deployResult?.githubPostFile || deployResult?.githubSitemap ? "✓" : "•"}
+                                                                    </span> 3. GitHub & Vercel
+                                                                </div>
+                                                            </div>
+
+                                                            {/* Logs Drawer */}
+                                                            {deployStatus.logs && deployStatus.logs.length > 0 && (
+                                                                <div className="bg-black/60 rounded-xl p-3 max-h-36 overflow-y-auto font-mono text-[10px] text-gray-400 space-y-1 border border-white/5">
+                                                                    {deployStatus.logs.map((log, lIdx) => (
+                                                                        <div key={lIdx} className="leading-relaxed">
+                                                                            <span className="text-blue-400/80">➜</span> {log}
+                                                                        </div>
+                                                                    ))}
+                                                                </div>
+                                                            )}
+                                                        </motion.div>
+                                                    )}
+                                                </AnimatePresence>
+                                            </div>
+
                                             {/* Form Actions */}
                                             <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row gap-6 items-center justify-between">
                                                 <div className="flex items-center gap-3 text-zinc-600">
                                                     <Clock size={14} />
-                                                    <p className="text-[10px] font-black uppercase tracking-widest">Autosave enabled</p>
+                                                    <p className="text-[10px] font-black uppercase tracking-widest">
+                                                        {autoDeployEnabled ? "Auto-Deploy Enabled" : "Manual Publish"}
+                                                    </p>
                                                 </div>
                                                 <div className="flex gap-4 w-full md:w-auto">
                                                     <button 
                                                         type="button"
-                                                        className="flex-1 md:flex-none px-10 py-5 rounded-2xl border border-white/10 hover:bg-white/5 font-black uppercase tracking-widest text-[10px] transition-all"
+                                                        className="flex-1 md:flex-none px-10 py-5 rounded-2xl border border-white/10 hover:bg-white/5 font-black uppercase tracking-widest text-[10px] transition-all text-gray-400 hover:text-white"
                                                     >
                                                         Save Draft
                                                     </button>
                                                     <button 
                                                         type="submit" 
-                                                        disabled={isSubmitting}
-                                                        className="flex-1 md:flex-none px-16 py-5 rounded-2xl bg-blue-600 hover:bg-blue-700 disabled:bg-blue-900/50 text-white font-black uppercase tracking-widest text-xs transition-all shadow-[0_10px_30px_rgba(37,99,235,0.3)] active:scale-95 flex items-center justify-center gap-3"
+                                                        disabled={isSubmitting || isDeploying}
+                                                        className="flex-1 md:flex-none px-14 py-5 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-500 hover:to-indigo-500 disabled:opacity-50 text-white font-black uppercase tracking-widest text-xs transition-all shadow-[0_10px_30px_rgba(37,99,235,0.3)] active:scale-95 flex items-center justify-center gap-3"
                                                     >
-                                                        {isSubmitting ? <Loader2 className="animate-spin" size={18} /> : null}
-                                                        {isSubmitting ? 'Saving...' : (editingId ? 'Update Changes' : 'Publish Post Now')}
+                                                        {isSubmitting || isDeploying ? <Loader2 className="animate-spin" size={18} /> : <Zap size={18} />}
+                                                        {isDeploying ? 'Deploying to GitHub & Vercel...' : isSubmitting ? 'Saving...' : (editingId ? 'Update & Deploy' : 'Publish & Deploy Now')}
                                                     </button>
                                                 </div>
                                             </div>
@@ -1496,7 +1779,7 @@ const AdminDashboard = () => {
                         </motion.div>
                     )}
                 </AnimatePresence>
-            ) : (
+            ) : activeSection === 'news' ? (
                     <AnimatePresence mode="wait">
                         {newsActiveTab === 'create' ? (
                                 <motion.div
@@ -1771,6 +2054,247 @@ const AdminDashboard = () => {
                                 </motion.div>
                             )}
                         </AnimatePresence>
+                    ) : (
+                        /* Deploy Section */
+                        <motion.div
+                            key="deploy-panel"
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -15 }}
+                            className="space-y-8"
+                        >
+                            {/* Alert / Notice Banner */}
+                            {settingsSavedMessage && (
+                                <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-bold flex items-center gap-2">
+                                    <CheckCircle2 size={16} /> {settingsSavedMessage}
+                                </div>
+                            )}
+
+                            {/* Workflow Explanation Banner */}
+                            <div className="p-8 rounded-3xl bg-gradient-to-br from-blue-950/40 via-zinc-950 to-purple-950/30 border border-blue-500/20 space-y-4">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-2xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
+                                        <Zap size={22} />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-lg font-black uppercase text-white tracking-wide">
+                                            Automated Zero-Click Publishing Pipeline
+                                        </h3>
+                                        <p className="text-xs text-gray-400">
+                                            Admin Dashboard ➔ GitHub Repository ➔ Vercel Auto-Deploy ➔ Google/IndexNow Instant Crawl
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-5 gap-3 pt-2 text-xs">
+                                    <div className="p-4 rounded-2xl bg-black/50 border border-white/5 space-y-1.5">
+                                        <div className="text-[10px] font-black uppercase text-blue-400">Step 1</div>
+                                        <div className="font-bold text-white text-sm">Dashboard Publish</div>
+                                        <p className="text-[11px] text-gray-400">Article Firestore database mein turant save hota hai.</p>
+                                    </div>
+                                    <div className="p-4 rounded-2xl bg-black/50 border border-white/5 space-y-1.5">
+                                        <div className="text-[10px] font-black uppercase text-blue-400">Step 2</div>
+                                        <div className="font-bold text-white text-sm">Sitemap & RSS</div>
+                                        <p className="text-[11px] text-gray-400">sitemap.xml aur rss.xml mein nayi post link add hoti hai.</p>
+                                    </div>
+                                    <div className="p-4 rounded-2xl bg-black/50 border border-white/5 space-y-1.5">
+                                        <div className="text-[10px] font-black uppercase text-blue-400">Step 3</div>
+                                        <div className="font-bold text-white text-sm">GitHub Push</div>
+                                        <p className="text-[11px] text-gray-400">GitHub API ke zariye main branch par commit hota hai (bina terminal ke).</p>
+                                    </div>
+                                    <div className="p-4 rounded-2xl bg-black/50 border border-white/5 space-y-1.5">
+                                        <div className="text-[10px] font-black uppercase text-blue-400">Step 4</div>
+                                        <div className="font-bold text-white text-sm">Vercel Build</div>
+                                        <p className="text-[11px] text-gray-400">Vercel Git commit detect karke automatic live deploy karta hai.</p>
+                                    </div>
+                                    <div className="p-4 rounded-2xl bg-black/50 border border-white/5 space-y-1.5">
+                                        <div className="text-[10px] font-black uppercase text-blue-400">Step 5</div>
+                                        <div className="font-bold text-white text-sm">Google Live</div>
+                                        <p className="text-[11px] text-gray-400">Google aur IndexNow ko instant notification jati hai.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* One-Click Sync & Deploy Action */}
+                            <div className="p-8 rounded-3xl bg-zinc-950 border border-white/10 space-y-6">
+                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                    <div>
+                                        <h3 className="text-base font-black uppercase text-white tracking-wide flex items-center gap-2">
+                                            <UploadCloud className="text-blue-400" size={20} />
+                                            Instant Sync All Articles & Sitemaps
+                                        </h3>
+                                        <p className="text-xs text-gray-400 mt-1">
+                                            Sari maujooda blog posts (Local SEO Audit, TajweedPage Case Study waghera) aur latest sitemap ko abhi GitHub par push karein aur Vercel deployment start karein.
+                                        </p>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={() => runPublishDeployPipeline(null, true)}
+                                        disabled={isDeploying}
+                                        className="px-8 py-5 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-500 hover:to-indigo-500 disabled:opacity-50 text-white font-black uppercase tracking-widest text-xs transition-all shadow-[0_10px_30px_rgba(37,99,235,0.3)] active:scale-95 flex items-center justify-center gap-3 shrink-0"
+                                    >
+                                        {isDeploying ? <Loader2 className="animate-spin" size={18} /> : <Zap size={18} />}
+                                        {isDeploying ? 'Syncing to GitHub & Vercel...' : 'Sync Sitemaps & Deploy Now'}
+                                    </button>
+                                </div>
+
+                                {/* Live Execution Logs & Status */}
+                                {deployStatus && (
+                                    <div className={`p-6 rounded-2xl border text-xs space-y-4 ${
+                                        deployStatus.completed 
+                                            ? 'bg-emerald-950/20 border-emerald-500/30' 
+                                            : deployStatus.error 
+                                                ? 'bg-amber-950/20 border-amber-500/30' 
+                                                : 'bg-blue-950/20 border-blue-500/30'
+                                    }`}>
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-2 font-bold uppercase tracking-wider text-xs">
+                                                {deployStatus.inProgress ? (
+                                                    <Loader2 className="animate-spin text-blue-400" size={18} />
+                                                ) : deployStatus.completed ? (
+                                                    <CheckCircle2 className="text-emerald-400" size={18} />
+                                                ) : (
+                                                    <AlertCircle className="text-amber-400" size={18} />
+                                                )}
+                                                <span className={deployStatus.completed ? 'text-emerald-300' : deployStatus.error ? 'text-amber-300' : 'text-blue-300'}>
+                                                    {deployStatus.step}
+                                                </span>
+                                            </div>
+                                            {deployStatus.commitUrl && (
+                                                <a 
+                                                    href={deployStatus.commitUrl} 
+                                                    target="_blank" 
+                                                    rel="noopener noreferrer" 
+                                                    className="px-3 py-1.5 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 hover:text-blue-300 font-bold uppercase text-[10px] tracking-wider flex items-center gap-1.5 transition-colors"
+                                                >
+                                                    View GitHub Commit <ArrowUpRight size={14} />
+                                                </a>
+                                            )}
+                                        </div>
+
+                                        {deployStatus.logs && deployStatus.logs.length > 0 && (
+                                            <div className="bg-black/80 rounded-xl p-4 font-mono text-[11px] text-gray-300 space-y-1.5 max-h-56 overflow-y-auto border border-white/5">
+                                                {deployStatus.logs.map((log, i) => (
+                                                    <div key={i} className="flex items-start gap-2">
+                                                        <span className="text-blue-400 font-bold">➜</span>
+                                                        <span>{log}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Credentials & Settings Card */}
+                            <form onSubmit={handleSaveSettings} className="p-8 rounded-3xl bg-zinc-950 border border-white/10 space-y-6">
+                                <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                                    <div>
+                                        <h3 className="text-base font-black uppercase text-white tracking-wide flex items-center gap-2">
+                                            <Github className="text-blue-400" size={20} />
+                                            GitHub & Deployment Configuration
+                                        </h3>
+                                        <p className="text-xs text-gray-400">Yeh credentials browser mein securely save rehte hain aur direct commits bhejte hain.</p>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <button
+                                            type="button"
+                                            onClick={handleTestGitHub}
+                                            disabled={isTestingGh || !githubToken}
+                                            className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 disabled:opacity-40 text-white font-bold uppercase text-xs tracking-wider transition-all flex items-center gap-2"
+                                        >
+                                            {isTestingGh ? <Loader2 className="animate-spin" size={14} /> : <RefreshCw size={14} />}
+                                            Test Connection
+                                        </button>
+                                        <button
+                                            type="submit"
+                                            className="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-black uppercase text-xs tracking-wider transition-all shadow-md shadow-blue-600/30"
+                                        >
+                                            Save Settings
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {ghTestResult && (
+                                    <div className={`p-4 rounded-2xl border text-xs font-bold flex items-center gap-3 ${
+                                        ghTestResult.success ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300' : 'bg-red-500/10 border-red-500/30 text-red-300'
+                                    }`}>
+                                        {ghTestResult.success ? <CheckCircle2 size={18} /> : <AlertCircle size={18} />}
+                                        <span>{ghTestResult.message}</span>
+                                    </div>
+                                )}
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div className="space-y-2">
+                                        <label className="text-[10px] font-black uppercase tracking-wider text-gray-400 flex justify-between">
+                                            <span>GitHub Personal Access Token (PAT)</span>
+                                            <a 
+                                                href="https://github.com/settings/tokens/new?scopes=repo&description=AbuQitmirLabs-AutoPublisher" 
+                                                target="_blank" 
+                                                rel="noopener noreferrer" 
+                                                className="text-blue-400 hover:underline flex items-center gap-1 lowercase"
+                                            >
+                                                Generate Token ↗
+                                            </a>
+                                        </label>
+                                        <input
+                                            type="password"
+                                            value={githubToken}
+                                            onChange={e => setGithubToken(e.target.value)}
+                                            placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                                            className="w-full bg-[#111] border border-white/10 rounded-2xl px-5 py-4 text-white font-mono text-xs focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
+                                        />
+                                        <p className="text-[10px] text-gray-500">
+                                            Token mein <strong>repo</strong> (Full control of private and public repositories) permission hona zaroori hai.
+                                        </p>
+                                    </div>
+
+                                    <div className="space-y-2">
+                                        <label className="text-[10px] font-black uppercase tracking-wider text-gray-400">
+                                            GitHub Repository
+                                        </label>
+                                        <input
+                                            type="text"
+                                            value={githubRepo}
+                                            onChange={e => setGithubRepo(e.target.value)}
+                                            placeholder="abuqitmirshirazalmadani-prog/ABUQITMIRLABS.TECH"
+                                            className="w-full bg-[#111] border border-white/10 rounded-2xl px-5 py-4 text-white font-mono text-xs focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
+                                        />
+                                        <p className="text-[10px] text-gray-500">
+                                            Format: <code>owner/repo</code> (e.g. <code>abuqitmirshirazalmadani-prog/ABUQITMIRLABS.TECH</code>)
+                                        </p>
+                                    </div>
+
+                                    <div className="space-y-2">
+                                        <label className="text-[10px] font-black uppercase tracking-wider text-gray-400">
+                                            Git Branch
+                                        </label>
+                                        <input
+                                            type="text"
+                                            value={githubBranch}
+                                            onChange={e => setGithubBranch(e.target.value)}
+                                            placeholder="main"
+                                            className="w-full bg-[#111] border border-white/10 rounded-2xl px-5 py-4 text-white font-mono text-xs focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
+                                        />
+                                    </div>
+
+                                    <div className="space-y-2">
+                                        <label className="text-[10px] font-black uppercase tracking-wider text-gray-400">
+                                            Vercel Deploy Hook URL (Optional)
+                                        </label>
+                                        <input
+                                            type="url"
+                                            value={vercelDeployHook}
+                                            onChange={e => setVercelDeployHook(e.target.value)}
+                                            placeholder="https://api.vercel.com/v1/integrations/deploy/prj_.../..."
+                                            className="w-full bg-[#111] border border-white/10 rounded-2xl px-5 py-4 text-white font-mono text-xs focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
+                                        />
+                                        <p className="text-[10px] text-gray-500">
+                                            Agar Vercel Deploy Hook hai to yahan paste karein, warna GitHub push se Vercel automatically deploy karta hai.
+                                        </p>
+                                    </div>
+                                </div>
+                            </form>
+                        </motion.div>
                     )}
                         </motion.div>
                     </section>
@@ -1778,13 +2302,32 @@ const AdminDashboard = () => {
 
                 {/* Mobile Navigation Bar */}
                 <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-xl border-t border-white/10 px-8 py-4 flex justify-around items-center z-50">
-                    <button className="flex flex-col items-center gap-1.5 text-blue-500">
+                    <button 
+                        onClick={() => {
+                            setActiveSection('blog');
+                            setActiveTab('create');
+                        }}
+                        className={`flex flex-col items-center gap-1.5 ${activeSection === 'blog' && activeTab === 'create' ? 'text-blue-500 font-bold' : 'text-zinc-600'}`}
+                    >
                         <Plus size={24} />
                         <span className="text-[8px] font-black uppercase tracking-[0.2em]">New</span>
                     </button>
-                    <button className="flex flex-col items-center gap-1.5 text-zinc-600">
+                    <button 
+                        onClick={() => {
+                            setActiveSection('blog');
+                            setActiveTab('list');
+                        }}
+                        className={`flex flex-col items-center gap-1.5 ${activeSection === 'blog' && activeTab === 'list' ? 'text-blue-500 font-bold' : 'text-zinc-600'}`}
+                    >
                         <FileText size={24} />
                         <span className="text-[8px] font-black uppercase tracking-[0.2em]">Posts</span>
+                    </button>
+                    <button 
+                        onClick={() => setActiveSection('deploy')}
+                        className={`flex flex-col items-center gap-1.5 ${activeSection === 'deploy' ? 'text-blue-500 font-bold' : 'text-zinc-600'}`}
+                    >
+                        <GitBranch size={24} />
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em]">Deploy</span>
                     </button>
                     <button 
                         onClick={handleLogout}

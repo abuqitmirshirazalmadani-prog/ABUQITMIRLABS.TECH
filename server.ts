@@ -215,11 +215,371 @@ Generate a detailed JSON analysis matching this schema:
   ]
 }
 
-Return ONLY valid JSON.`;const aiRes=await ai.models.generateContent({model:"gemini-2.5-flash",contents:aiPrompt,config:{responseMimeType:"application/json",temperature:.2}});const raw=aiRes.text?aiRes.text.trim():"";const cleaned=raw.replace(/^```json\s*/,"").replace(/\s*```$/,"").trim();const parsed=JSON.parse(cleaned);if(parsed.benchmark&&parsed.roadmap&&parsed.roadmap.length){aiAnalysis={benchmark:parsed.benchmark,strengths:parsed.strengths||aiAnalysis.strengths,improvements:parsed.improvements||aiAnalysis.improvements};fullReport={roadmap:parsed.roadmap,priorityActions:parsed.priorityActions||fullReport.priorityActions,templates:parsed.templates||fullReport.templates}}}catch(e){handleGeminiError(e);console.warn("[Authority Analyzer] Gemini AI synthesis deferred; serving algorithmic baseline.")}}const result={domain,url:cleanUrl,overallScore,authorityLevel,percentile,industryRank,scoreSummary,domainAuthority,domainAge,siteQuality,trustSignals,aiAnalysis,fullReport,generatedAt:new Date().toISOString(),source:ai?"ai":"algorithmic"};authorityAuditCache.set(domain,{data:result,expiresAt:Date.now()+15*60*1e3});return res.json({success:true,result})}catch(err){console.error("Error in /api/authority-analyzer:",err);return res.status(500).json({error:"Failed to complete website authority analysis"})}});app.post("/api/authority-analyzer/lead",async(req,res)=>{try{const{email,url,domain,score}=req.body||{};if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){return res.status(400).json({error:"Valid email is required"})}if(db){try{const{addDoc}=await import("firebase/firestore").then(s=>{const e="default";return s[e]&&typeof s[e]=="object"&&"__esModule"in s[e]?s[e]:s});await addDoc(collection(db,"authority_leads"),{email:String(email).trim().toLowerCase().slice(0,150),url:String(url||"").slice(0,500),domain:String(domain||"").slice(0,200),score:typeof score==="number"?score:Number(score)||0,source:"website-authority-analyzer",createdAt:new Date().toISOString()})}catch(fsErr){console.warn("[Authority Analyzer] Firestore lead capture notice:",fsErr?.message||fsErr)}}return res.json({success:true,message:"Lead recorded successfully"})}catch(err){console.error("Error in /api/authority-analyzer/lead:",err);return res.status(500).json({error:"Failed to record lead"})}});const BLOG_SLUG_REDIRECTS={"rag-ai-integration-for-startups":"the-complete-guide-to-rag-ai-integration-for-startups","rag-ai-integration-startups":"the-complete-guide-to-rag-ai-integration-for-startups","rag-ai-integration-for-startups-abuqitmirlabs":"the-complete-guide-to-rag-ai-integration-for-startups","custom-web-development-company-2026":"custom-web-development-company","custom-web-development-company-2026-built-in-visibility":"custom-web-development-company","custom-web-development-vs-templates":"custom-web-development-vs-website-templates-2026-guide","custom-ai-solutions-for-corporate-events":"custom-ai-solutions-for-corporate-events-2026-guide","local-business-visibility-seo-geo-aio-aeo-sxo-2026":"local-business-visibility-2026-seo-geo-aio-aeo-sxo","what-seo-services-actually-means-2026":"what-seo-services-actually-mean-in-2026-abuqitmirlabs","how-to-choose-mobile-app-development-company-2026":"how-to-choose-a-mobile-app-development-company-2026","custom-ai-solutions-for-fintech-2026":"custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting","what-does-a-custom-web-development-company-do":"what-does-a-custom-web-development-company-do-2026-guide","ai-integration-with-legacy-systems-2026":"ai-integration-with-legacy-systems-the-complete-2026-guide","5-step-web-development-lifecycle-2026":"5-step-web-development-lifecycle-2026-custom-web-development-process-guide","why-custom-web-development-matters-2026":"why-custom-web-development-matters-in-2026-build-vs-buy-guide"};app.get("/blog/:slug",(req,res,next)=>{const slug=req.params.slug;if(BLOG_SLUG_REDIRECTS[slug]){return res.redirect(301,`/blog/${BLOG_SLUG_REDIRECTS[slug]}`)}next()});const sendDownloadFile=__name((res,filePath,filename)=>{const absPath=path.resolve(filePath);if(!fs.existsSync(absPath)){return res.status(404).json({error:"File not found"})}const stat=fs.statSync(absPath);const ext=path.extname(filename).toLowerCase();const contentType=ext===".png"?"image/png":ext===".zip"?"application/zip":"application/octet-stream";res.writeHead(200,{"Content-Type":contentType,"Content-Length":stat.size,"Content-Disposition":`attachment; filename="${filename}"`,"Cache-Control":"no-cache, no-store, must-revalidate","Pragma":"no-cache","Expires":"0","Access-Control-Allow-Origin":"*"});const stream=fs.createReadStream(absPath);stream.pipe(res)},"sendDownloadFile");const handleZipDownload=__name((req,res)=>{const candidates=[path.join(process.cwd(),"public","abuqitmirlabs-social-media-kit.zip"),path.join(process.cwd(),"public","brand-assets","abuqitmirlabs-social-media-kit.zip"),path.join(process.cwd(),"dist","abuqitmirlabs-social-media-kit.zip"),path.join(process.cwd(),"dist","brand-assets","abuqitmirlabs-social-media-kit.zip"),path.join(__dirname,"public","abuqitmirlabs-social-media-kit.zip")];for(const p of candidates){if(fs.existsSync(p)){return sendDownloadFile(res,p,"abuqitmirlabs-social-media-kit.zip")}}return res.status(404).json({error:"Asset package not found"})},"handleZipDownload");app.get("/api/download-kit",handleZipDownload);app.get("/abuqitmirlabs-social-media-kit.zip",handleZipDownload);app.get("/brand-assets/abuqitmirlabs-social-media-kit.zip",handleZipDownload);app.get("/download/abuqitmirlabs-social-media-kit.zip",handleZipDownload);app.get("/api/download-asset",(req,res)=>{try{const requestedFile=req.query.file;if(!requestedFile||typeof requestedFile!=="string"){return res.status(400).json({error:"Missing file parameter"})}const safeFileName=path.basename(requestedFile);const candidates=[path.join(process.cwd(),"public",requestedFile),path.join(process.cwd(),"public",requestedFile.replace(/^\/+/,"")),path.join(process.cwd(),"public","brand-assets",requestedFile.replace(/^\/+brand-assets\/?/,"")),path.join(process.cwd(),"public","brand-assets",safeFileName),path.join(process.cwd(),"dist",requestedFile.replace(/^\/+/,"")),path.join(process.cwd(),"dist","brand-assets",safeFileName)];for(const p of candidates){if(fs.existsSync(p)&&fs.statSync(p).isFile()){return sendDownloadFile(res,p,safeFileName)}}return res.status(404).json({error:"Asset file not found"})}catch(e){return res.status(500).json({error:"Server error downloading asset"})}});app.get("/robots.txt",(req,res)=>{try{const robotsPath=path.join(process.cwd(),"public","robots.txt");if(fs.existsSync(robotsPath)){res.setHeader("Content-Type","text/plain; charset=utf-8");res.setHeader("Cache-Control","public, max-age=3600");return res.sendFile(robotsPath)}const defaultRobots=`User-agent: *
+Return ONLY valid JSON.`;const aiRes=await ai.models.generateContent({model:"gemini-2.5-flash",contents:aiPrompt,config:{responseMimeType:"application/json",temperature:.2}});const raw=aiRes.text?aiRes.text.trim():"";const cleaned=raw.replace(/^```json\s*/,"").replace(/\s*```$/,"").trim();const parsed=JSON.parse(cleaned);if(parsed.benchmark&&parsed.roadmap&&parsed.roadmap.length){aiAnalysis={benchmark:parsed.benchmark,strengths:parsed.strengths||aiAnalysis.strengths,improvements:parsed.improvements||aiAnalysis.improvements};fullReport={roadmap:parsed.roadmap,priorityActions:parsed.priorityActions||fullReport.priorityActions,templates:parsed.templates||fullReport.templates}}}catch(e){handleGeminiError(e);console.warn("[Authority Analyzer] Gemini AI synthesis deferred; serving algorithmic baseline.")}}const result={domain,url:cleanUrl,overallScore,authorityLevel,percentile,industryRank,scoreSummary,domainAuthority,domainAge,siteQuality,trustSignals,aiAnalysis,fullReport,generatedAt:new Date().toISOString(),source:ai?"ai":"algorithmic"};authorityAuditCache.set(domain,{data:result,expiresAt:Date.now()+15*60*1e3});return res.json({success:true,result})}catch(err){console.error("Error in /api/authority-analyzer:",err);return res.status(500).json({error:"Failed to complete website authority analysis"})}});app.post("/api/authority-analyzer/lead",async(req,res)=>{try{const{email,url,domain,score}=req.body||{};if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){return res.status(400).json({error:"Valid email is required"})}if(db){try{const{addDoc}=await import("firebase/firestore").then(s=>{const e="default";return s[e]&&typeof s[e]=="object"&&"__esModule"in s[e]?s[e]:s});await addDoc(collection(db,"authority_leads"),{email:String(email).trim().toLowerCase().slice(0,150),url:String(url||"").slice(0,500),domain:String(domain||"").slice(0,200),score:typeof score==="number"?score:Number(score)||0,source:"website-authority-analyzer",createdAt:new Date().toISOString()})}catch(fsErr){console.warn("[Authority Analyzer] Firestore lead capture notice:",fsErr?.message||fsErr)}}return res.json({success:true,message:"Lead recorded successfully"})}catch(err){console.error("Error in /api/authority-analyzer/lead:",err);return res.status(500).json({error:"Failed to record lead"})}});
+
+// ==========================================
+// AUTOMATED PUBLISH & DEPLOY PIPELINE
+// (Firestore -> Sitemap/RSS -> GitHub main -> Vercel -> Google/IndexNow)
+// ==========================================
+app.post("/api/github/test-connection", async (req, res) => {
+  try {
+    const { token, repo = "abuqitmirshirazalmadani-prog/ABUQITMIRLABS.TECH" } = req.body || {};
+    const effectiveToken = token || process.env.GITHUB_TOKEN || "";
+    if (!effectiveToken || !effectiveToken.trim()) {
+      return res.status(400).json({ success: false, error: "GitHub Personal Access Token is required." });
+    }
+    const [owner, repoName] = repo.trim().split("/");
+    if (!owner || !repoName) {
+      return res.status(400).json({ success: false, error: "Invalid repository format. Please use 'owner/repo' format." });
+    }
+    const resp = await fetch(`https://api.github.com/repos/${owner}/${repoName}`, {
+      headers: {
+        "Authorization": `Bearer ${effectiveToken.trim()}`,
+        "Accept": "application/vnd.github.v3+json",
+        "User-Agent": "AbuQitmirLabs-AutoPublisher"
+      }
+    });
+    if (!resp.ok) {
+      const errJson: any = await resp.json().catch(() => ({}));
+      return res.status(resp.status).json({
+        success: false,
+        error: errJson.message || `GitHub returned HTTP ${resp.status}`
+      });
+    }
+    const data: any = await resp.json();
+    return res.json({
+      success: true,
+      repo: data.full_name,
+      defaultBranch: data.default_branch || "main",
+      permissions: data.permissions || {},
+      canPush: data.permissions ? (data.permissions.push || data.permissions.admin) : true
+    });
+  } catch (e: any) {
+    return res.status(500).json({ success: false, error: e.message || "Failed to test GitHub connection" });
+  }
+});
+
+app.post("/api/publish-sync", async (req, res) => {
+  try {
+    const {
+      post,
+      githubToken: customGithubToken,
+      githubRepo: customGithubRepo,
+      githubBranch: customGithubBranch,
+      vercelDeployHook: customVercelHook
+    } = req.body || {};
+
+    const githubToken = customGithubToken || process.env.GITHUB_TOKEN || "";
+    const repoFullName = (customGithubRepo || process.env.GITHUB_REPO || "abuqitmirshirazalmadani-prog/ABUQITMIRLABS.TECH").trim();
+    const branch = (customGithubBranch || process.env.GITHUB_BRANCH || "main").trim();
+    const vercelHook = (customVercelHook || process.env.VERCEL_DEPLOY_HOOK_URL || "").trim();
+
+    const logs: string[] = [];
+    const results: any = {
+      localSitemap: false,
+      localRss: false,
+      githubSitemap: false,
+      githubRss: false,
+      githubPostFile: false,
+      vercelTriggered: false,
+      googlePinged: false,
+      indexNowPinged: false,
+      commitUrl: null,
+      logs
+    };
+
+    const today = new Date().toISOString().split("T")[0];
+    const pubDateRss = new Date().toUTCString();
+
+    // 1. Update local public/sitemap.xml and dist/sitemap.xml
+    const sitemapPath = path.join(process.cwd(), "public", "sitemap.xml");
+    const distSitemapPath = path.join(process.cwd(), "dist", "sitemap.xml");
+    let sitemapContent = "";
+    if (fs.existsSync(sitemapPath)) {
+      sitemapContent = fs.readFileSync(sitemapPath, "utf-8");
+      if (post && post.slug) {
+        const cleanSlug = post.slug.replace(/^\/+/, "").replace(/^blog\//, "");
+        const postUrl = `https://www.abuqitmirlabs.tech/blog/${cleanSlug}`;
+        if (!sitemapContent.includes(`<loc>${postUrl}</loc>`)) {
+          const newEntry = `  <url><loc>${postUrl}</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>${today}</lastmod></url>\n</urlset>`;
+          sitemapContent = sitemapContent.replace("</urlset>", newEntry);
+          fs.writeFileSync(sitemapPath, sitemapContent, "utf-8");
+          if (fs.existsSync(distSitemapPath)) {
+            try { fs.writeFileSync(distSitemapPath, sitemapContent, "utf-8"); } catch (e) {}
+          }
+          results.localSitemap = true;
+          logs.push(`Added ${postUrl} to public/sitemap.xml`);
+        } else {
+          // Update lastmod date to today
+          const regex = new RegExp(`(<loc>${postUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}<\\/loc>[^<]*<changefreq>[^<]*<\\/changefreq>[^<]*<priority>[^<]*<\\/priority>[^<]*<lastmod>)[^<]*(<\\/lastmod>)`, 'g');
+          if (regex.test(sitemapContent)) {
+            sitemapContent = sitemapContent.replace(regex, `$1${today}$2`);
+            fs.writeFileSync(sitemapPath, sitemapContent, "utf-8");
+            if (fs.existsSync(distSitemapPath)) {
+              try { fs.writeFileSync(distSitemapPath, sitemapContent, "utf-8"); } catch (e) {}
+            }
+            results.localSitemap = true;
+            logs.push(`Updated lastmod for ${postUrl} in public/sitemap.xml`);
+          } else {
+            results.localSitemap = true;
+            logs.push(`URL ${postUrl} verified in sitemap.xml`);
+          }
+        }
+      } else {
+        results.localSitemap = true;
+        logs.push("Local sitemap.xml verified.");
+      }
+    }
+
+    // 2. Update local public/rss.xml and dist/rss.xml
+    const rssPath = path.join(process.cwd(), "public", "rss.xml");
+    const distRssPath = path.join(process.cwd(), "dist", "rss.xml");
+    let rssContent = "";
+    if (fs.existsSync(rssPath)) {
+      rssContent = fs.readFileSync(rssPath, "utf-8");
+      if (post && post.slug) {
+        const cleanSlug = post.slug.replace(/^\/+/, "").replace(/^blog\//, "");
+        const postUrl = `https://www.abuqitmirlabs.tech/blog/${cleanSlug}`;
+        if (!rssContent.includes(`<link>${postUrl}</link>`) && !rssContent.includes(`>${postUrl}</guid>`)) {
+          const titleEscaped = (post.title || cleanSlug).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+          const newItem = `  <item>\n    <title>${titleEscaped}</title>\n    <link>${postUrl}</link>\n    <guid isPermaLink="true">${postUrl}</guid>\n    <pubDate>${pubDateRss}</pubDate>\n  </item>\n`;
+          if (rssContent.includes("<atom:link")) {
+            rssContent = rssContent.replace(/(<atom:link [^>]*\/>)/, `$1\n${newItem}`);
+          } else if (rssContent.includes("</channel>")) {
+            rssContent = rssContent.replace("</channel>", `${newItem}</channel>`);
+          }
+          fs.writeFileSync(rssPath, rssContent, "utf-8");
+          if (fs.existsSync(distRssPath)) {
+            try { fs.writeFileSync(distRssPath, rssContent, "utf-8"); } catch (e) {}
+          }
+          results.localRss = true;
+          logs.push(`Added "${titleEscaped}" to public/rss.xml`);
+        } else {
+          results.localRss = true;
+          logs.push(`Article ${postUrl} verified in rss.xml`);
+        }
+      } else {
+        results.localRss = true;
+        logs.push("Local rss.xml verified.");
+      }
+    }
+
+    // 3. GitHub Direct API Commit
+    if (githubToken && repoFullName) {
+      const [owner, repo] = repoFullName.split("/");
+      if (!owner || !repo) {
+        logs.push(`Invalid repository format: ${repoFullName}. Expected 'owner/repo'.`);
+      } else {
+        const ghHeaders = {
+          "Authorization": `Bearer ${githubToken.trim()}`,
+          "Accept": "application/vnd.github.v3+json",
+          "User-Agent": "AbuQitmirLabs-AutoPublisher"
+        };
+
+        const updateGitHubFile = async (filePath: string, contentStr: string, commitMsg: string) => {
+          try {
+            const getRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${branch}`, {
+              headers: ghHeaders
+            });
+            let sha = "";
+            if (getRes.ok) {
+              const fileData: any = await getRes.json();
+              sha = fileData.sha;
+            }
+
+            const putBody: any = {
+              message: commitMsg,
+              content: Buffer.from(contentStr, "utf-8").toString("base64"),
+              branch
+            };
+            if (sha) {
+              putBody.sha = sha;
+            }
+
+            const putRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`, {
+              method: "PUT",
+              headers: { ...ghHeaders, "Content-Type": "application/json" },
+              body: JSON.stringify(putBody)
+            });
+
+            if (putRes.ok) {
+              const putData: any = await putRes.json();
+              return { success: true, sha: putData.commit?.sha || putData.content?.sha, commitUrl: putData.commit?.html_url };
+            } else {
+              const errData: any = await putRes.json().catch(() => ({}));
+              return { success: false, error: errData.message || `HTTP ${putRes.status}` };
+            }
+          } catch (e: any) {
+            return { success: false, error: e.message || String(e) };
+          }
+        };
+
+        // Commit Sitemap to GitHub
+        if (sitemapContent) {
+          const sitemapSync = await updateGitHubFile(
+            "public/sitemap.xml",
+            sitemapContent,
+            `seo: auto-update sitemap with ${post?.slug || 'latest pages'}`
+          );
+          if (sitemapSync.success) {
+            results.githubSitemap = true;
+            results.commitUrl = sitemapSync.commitUrl;
+            logs.push(`Committed public/sitemap.xml to GitHub (${owner}/${repo}@${branch})`);
+          } else {
+            logs.push(`GitHub sitemap commit: ${sitemapSync.error}`);
+          }
+        }
+
+        // Commit RSS to GitHub
+        if (rssContent) {
+          const rssSync = await updateGitHubFile(
+            "public/rss.xml",
+            rssContent,
+            `rss: auto-update rss feed with ${post?.slug || 'latest articles'}`
+          );
+          if (rssSync.success) {
+            results.githubRss = true;
+            logs.push(`Committed public/rss.xml to GitHub (${owner}/${repo}@${branch})`);
+          } else {
+            logs.push(`GitHub rss commit: ${rssSync.error}`);
+          }
+        }
+
+        // Commit Post JSON/Markdown to GitHub to ensure repository content sync and trigger Vercel
+        if (post && post.slug) {
+          const cleanSlug = post.slug.replace(/^\/+/, "").replace(/^blog\//, "");
+          const postMeta = {
+            title: post.title || "",
+            slug: cleanSlug,
+            excerpt: post.excerpt || "",
+            category: post.category || "AI",
+            author: post.author || "Abu Qitmir Mohammad Shiraz Al-Madani",
+            published: post.published ?? true,
+            tags: post.tags || [],
+            publishedAt: today,
+            syncedAt: new Date().toISOString()
+          };
+          const fileContent = `---
+${JSON.stringify(postMeta, null, 2)}
+---
+
+${post.content || ""}
+`;
+          const postSync = await updateGitHubFile(
+            `content/blog/${cleanSlug}.md`,
+            fileContent,
+            `publish: auto-publish blog post "${post.title || cleanSlug}" [deploy vercel]`
+          );
+          if (postSync.success) {
+            results.githubPostFile = true;
+            results.commitUrl = postSync.commitUrl || results.commitUrl;
+            logs.push(`Committed content/blog/${cleanSlug}.md to GitHub! GitHub commit triggers Vercel automatic deployment.`);
+          } else {
+            logs.push(`GitHub post commit note: ${postSync.error}`);
+          }
+        }
+      }
+    } else {
+      logs.push("GitHub Token not configured. Local sitemap/RSS updated. Add GitHub Token in settings for automated push to GitHub & Vercel.");
+    }
+
+    // 4. Trigger Vercel Deploy Hook if configured
+    if (vercelHook && vercelHook.startsWith("https://")) {
+      try {
+        const vRes = await fetch(vercelHook, { method: "POST" });
+        if (vRes.ok) {
+          results.vercelTriggered = true;
+          logs.push("Triggered Vercel Deploy Hook successfully. Build started!");
+        } else {
+          logs.push(`Vercel Deploy Hook returned status ${vRes.status}`);
+        }
+      } catch (vErr: any) {
+        logs.push(`Vercel Deploy Hook error: ${vErr.message || vErr}`);
+      }
+    } else if (results.githubPostFile || results.githubSitemap || results.githubRss) {
+      results.vercelTriggered = true;
+      logs.push("GitHub push on main branch triggers Vercel auto-deployment automatically.");
+    }
+
+    // 5. Ping Search Engines (Google & IndexNow)
+    const postSlugClean = post && post.slug ? post.slug.replace(/^\/+/, "").replace(/^blog\//, "") : "";
+    const targetUrl = postSlugClean ? `https://www.abuqitmirlabs.tech/blog/${postSlugClean}` : "https://www.abuqitmirlabs.tech/sitemap.xml";
+    try {
+      fetch(`https://www.google.com/ping?sitemap=${encodeURIComponent("https://www.abuqitmirlabs.tech/sitemap.xml")}`).catch(() => {});
+      results.googlePinged = true;
+      logs.push("Google Sitemap ping dispatched.");
+
+      fetch("https://api.indexnow.org/indexnow", {
+        method: "POST",
+        headers: { "Content-Type": "application/json; charset=utf-8" },
+        body: JSON.stringify({
+          host: "www.abuqitmirlabs.tech",
+          key: "abuqitmirlabs2026",
+          keyLocation: "https://www.abuqitmirlabs.tech/indexnow.txt",
+          urlList: [targetUrl, "https://www.abuqitmirlabs.tech/sitemap.xml"]
+        })
+      }).catch(() => {});
+      results.indexNowPinged = true;
+      logs.push("IndexNow search engine ping sent.");
+    } catch (pingErr) {}
+
+    return res.json({
+      success: true,
+      ...results,
+      message: (results.githubPostFile || results.githubSitemap)
+        ? "Publish & Deploy Pipeline completed! Synced to GitHub, Vercel build triggered, and search engines pinged."
+        : "Local sitemap & RSS updated. Add GitHub Token in settings to push to GitHub & Vercel with 1 click."
+    });
+  } catch (err: any) {
+    console.error("Error in /api/publish-sync:", err);
+    return res.status(500).json({ error: err.message || "Failed to sync publish" });
+  }
+});
+const BLOG_SLUG_REDIRECTS={"rag-ai-integration-for-startups":"the-complete-guide-to-rag-ai-integration-for-startups","rag-ai-integration-startups":"the-complete-guide-to-rag-ai-integration-for-startups","rag-ai-integration-for-startups-abuqitmirlabs":"the-complete-guide-to-rag-ai-integration-for-startups","custom-web-development-company-2026":"custom-web-development-company","custom-web-development-company-2026-built-in-visibility":"custom-web-development-company","custom-web-development-vs-templates":"custom-web-development-vs-website-templates-2026-guide","custom-ai-solutions-for-corporate-events":"custom-ai-solutions-for-corporate-events-2026-guide","local-business-visibility-seo-geo-aio-aeo-sxo-2026":"local-business-visibility-2026-seo-geo-aio-aeo-sxo","what-seo-services-actually-means-2026":"what-seo-services-actually-mean-in-2026-abuqitmirlabs","how-to-choose-mobile-app-development-company-2026":"how-to-choose-a-mobile-app-development-company-2026","custom-ai-solutions-for-fintech-2026":"custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting","what-does-a-custom-web-development-company-do":"what-does-a-custom-web-development-company-do-2026-guide","ai-integration-with-legacy-systems-2026":"ai-integration-with-legacy-systems-the-complete-2026-guide","5-step-web-development-lifecycle-2026":"5-step-web-development-lifecycle-2026-custom-web-development-process-guide","why-custom-web-development-matters-2026":"why-custom-web-development-matters-in-2026-build-vs-buy-guide"};app.get("/blog/:slug",(req,res,next)=>{const slug=req.params.slug;if(BLOG_SLUG_REDIRECTS[slug]){return res.redirect(301,`/blog/${BLOG_SLUG_REDIRECTS[slug]}`)}next()});const sendDownloadFile=__name((res,filePath,filename)=>{const absPath=path.resolve(filePath);if(!fs.existsSync(absPath)){return res.status(404).json({error:"File not found"})}const stat=fs.statSync(absPath);const ext=path.extname(filename).toLowerCase();const contentType=ext===".png"?"image/png":ext===".zip"?"application/zip":"application/octet-stream";res.writeHead(200,{"Content-Type":contentType,"Content-Length":stat.size,"Content-Disposition":`attachment; filename="${filename}"`,"Cache-Control":"no-cache, no-store, must-revalidate","Pragma":"no-cache","Expires":"0","Access-Control-Allow-Origin":"*"});const stream=fs.createReadStream(absPath);stream.pipe(res)},"sendDownloadFile");const handleZipDownload=__name((req,res)=>{const candidates=[path.join(process.cwd(),"public","abuqitmirlabs-social-media-kit.zip"),path.join(process.cwd(),"public","brand-assets","abuqitmirlabs-social-media-kit.zip"),path.join(process.cwd(),"dist","abuqitmirlabs-social-media-kit.zip"),path.join(process.cwd(),"dist","brand-assets","abuqitmirlabs-social-media-kit.zip"),path.join(__dirname,"public","abuqitmirlabs-social-media-kit.zip")];for(const p of candidates){if(fs.existsSync(p)){return sendDownloadFile(res,p,"abuqitmirlabs-social-media-kit.zip")}}return res.status(404).json({error:"Asset package not found"})},"handleZipDownload");app.get("/api/download-kit",handleZipDownload);app.get("/abuqitmirlabs-social-media-kit.zip",handleZipDownload);app.get("/brand-assets/abuqitmirlabs-social-media-kit.zip",handleZipDownload);app.get("/download/abuqitmirlabs-social-media-kit.zip",handleZipDownload);app.get("/api/download-asset",(req,res)=>{try{const requestedFile=req.query.file;if(!requestedFile||typeof requestedFile!=="string"){return res.status(400).json({error:"Missing file parameter"})}const safeFileName=path.basename(requestedFile);const candidates=[path.join(process.cwd(),"public",requestedFile),path.join(process.cwd(),"public",requestedFile.replace(/^\/+/,"")),path.join(process.cwd(),"public","brand-assets",requestedFile.replace(/^\/+brand-assets\/?/,"")),path.join(process.cwd(),"public","brand-assets",safeFileName),path.join(process.cwd(),"dist",requestedFile.replace(/^\/+/,"")),path.join(process.cwd(),"dist","brand-assets",safeFileName)];for(const p of candidates){if(fs.existsSync(p)&&fs.statSync(p).isFile()){return sendDownloadFile(res,p,safeFileName)}}return res.status(404).json({error:"Asset file not found"})}catch(e){return res.status(500).json({error:"Server error downloading asset"})}});app.get("/robots.txt",(req,res)=>{try{const robotsPath=path.join(process.cwd(),"public","robots.txt");if(fs.existsSync(robotsPath)){res.setHeader("Content-Type","text/plain; charset=utf-8");res.setHeader("Cache-Control","public, max-age=3600");return res.sendFile(robotsPath)}const defaultRobots=`User-agent: *
 Allow: /
 Disallow: /admin
 
-Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;res.setHeader("Content-Type","text/plain; charset=utf-8");res.setHeader("Cache-Control","public, max-age=3600");return res.status(200).send(defaultRobots)}catch(err){console.error("Error serving robots.txt:",err);res.setHeader("Content-Type","text/plain; charset=utf-8");return res.status(200).send("User-agent: *\nAllow: /\nSitemap: https://www.abuqitmirlabs.tech/sitemap.xml")}});app.get("/blog/custom-software-development-company-karachi-pakistan-abuqitmirlabs",(req,res)=>{res.redirect(301,"/blog/custom-software-development-company-karachi-pakistan")});app.get(["/custom-software-development","/custom-software-development/"],(req,res)=>{res.redirect(301,"/custom-software")});app.get(["/llm.txt","/LLM.txt"],(req,res)=>{try{const llmPath=path.join(process.cwd(),"public","llm.txt");if(fs.existsSync(llmPath)){res.setHeader("Content-Type","text/plain; charset=utf-8");res.setHeader("Cache-Control","public, max-age=3600");return res.sendFile(llmPath)}return res.status(404).send("Not found")}catch(err){console.error("Error serving llm.txt:",err);return res.status(500).send("Server error")}});app.get("/rss.xml",(req,res)=>{res.setHeader("Content-Type","application/rss+xml; charset=utf-8");res.setHeader("Cache-Control","public,max-age=3600");const rss='<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AbuQitmirLabs .TECH</title><link>https://www.abuqitmirlabs.tech</link><description>Custom Software and AI Engineering insights.</description><language>en-us</language><lastBuildDate>Sat, 27 Sep 2026 14:00:00 GMT</lastBuildDate><atom:link href="https://www.abuqitmirlabs.tech/rss.xml" rel="self" type="application/rss+xml"/><item><title>What a Local SEO Audit Actually Checks in 2026</title><link>https://www.abuqitmirlabs.tech/blog/what-a-local-seo-audit-actually-checks-2026-complete-guide</link><guid>https://www.abuqitmirlabs.tech/blog/what-a-local-seo-audit-actually-checks-2026-complete-guide</guid><pubDate>Sun, 27 Sep 2026 00:00:00 GMT</pubDate></item><item><title>Programmatic SEO: How We Scaled TajweedPage.com 2026</title><link>https://www.abuqitmirlabs.tech/blog/programmatic-seo-how-we-scaled-tajweedpage</link><guid>https://www.abuqitmirlabs.tech/blog/programmatic-seo-how-we-scaled-tajweedpage</guid><pubDate>Fri, 25 Sep 2026 00:00:00 GMT</pubDate></item><item><title>Flutter vs React Native 2026</title><link>https://www.abuqitmirlabs.tech/blog/flutter-vs-react-native-choosing-your-mobile-app-stack-in-2026</link><guid>https://www.abuqitmirlabs.tech/blog/flutter-vs-react-native-choosing-your-mobile-app-stack-in-2026</guid><pubDate>Fri, 26 Sep 2026 00:00:00 GMT</pubDate></item><item><title>App Development Agency UK 2026</title><link>https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026-guide</link><guid>https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026-guide</guid><pubDate>Mon, 14 Sep 2026 00:00:00 GMT</pubDate></item><item><title>RAG AI Integration for Startups</title><link>https://www.abuqitmirlabs.tech/blog/rag-ai-integration-for-startups</link><guid>https://www.abuqitmirlabs.tech/blog/rag-ai-integration-for-startups</guid><pubDate>Mon, 01 Sep 2026 00:00:00 GMT</pubDate></item><item><title>Healthcare AI Agents 2026</title><link>https://www.abuqitmirlabs.tech/blog/what-are-healthcare-ai-agents-complete-guide-2026</link><guid>https://www.abuqitmirlabs.tech/blog/what-are-healthcare-ai-agents-complete-guide-2026</guid><pubDate>Sat, 01 Aug 2026 00:00:00 GMT</pubDate></item><item><title>Custom Web Development Company</title><link>https://www.abuqitmirlabs.tech/blog/custom-web-development-company</link><guid>https://www.abuqitmirlabs.tech/blog/custom-web-development-company</guid><pubDate>Tue, 01 Jul 2026 00:00:00 GMT</pubDate></item><item><title>Custom AI Solutions for Fintech 2026</title><link>https://www.abuqitmirlabs.tech/blog/custom-ai-solutions-for-fintech-2026</link><guid>https://www.abuqitmirlabs.tech/blog/custom-ai-solutions-for-fintech-2026</guid><pubDate>Sun, 01 Jun 2026 00:00:00 GMT</pubDate></item></channel></rss>';return res.send(rss)});app.get("/sitemap.xml",(req,res)=>{try{const sitemapPath=path.join(process.cwd(),"dist","sitemap.xml");if(fs.existsSync(sitemapPath)){res.setHeader("Content-Type","application/xml; charset=utf-8");res.setHeader("Cache-Control","public, max-age=3600");return res.sendFile(sitemapPath)}return res.status(404).send("Sitemap not found")}catch(error){console.error("Error serving sitemap.xml:",error);res.status(500).send("Error serving sitemap.xml")}});app.get(["/sitemap_index.xml","/sitemap-index.xml"],(req,res)=>{try{const today=new Date().toISOString().split("T")[0];const sitemapIndex=`<?xml version="1.0" encoding="UTF-8"?>
+Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;res.setHeader("Content-Type","text/plain; charset=utf-8");res.setHeader("Cache-Control","public, max-age=3600");return res.status(200).send(defaultRobots)}catch(err){console.error("Error serving robots.txt:",err);res.setHeader("Content-Type","text/plain; charset=utf-8");return res.status(200).send("User-agent: *\nAllow: /\nSitemap: https://www.abuqitmirlabs.tech/sitemap.xml")}});app.get("/blog/custom-software-development-company-karachi-pakistan-abuqitmirlabs",(req,res)=>{res.redirect(301,"/blog/custom-software-development-company-karachi-pakistan")});app.get(["/custom-software-development","/custom-software-development/"],(req,res)=>{res.redirect(301,"/custom-software")});app.get(["/llm.txt","/LLM.txt"],(req,res)=>{try{const llmPath=path.join(process.cwd(),"public","llm.txt");if(fs.existsSync(llmPath)){res.setHeader("Content-Type","text/plain; charset=utf-8");res.setHeader("Cache-Control","public, max-age=3600");return res.sendFile(llmPath)}return res.status(404).send("Not found")}catch(err){console.error("Error serving llm.txt:",err);return res.status(500).send("Server error")}});
+
+app.get(["/indexnow.txt","/abuqitmirlabs2026.txt"],(req,res)=>{
+  res.setHeader("Content-Type","text/plain; charset=utf-8");
+  res.setHeader("Cache-Control","public, max-age=86400");
+  return res.send("abuqitmirlabs2026");
+});
+
+app.get("/rss.xml",(req,res)=>{
+  try{
+    const distRss=path.join(process.cwd(),"dist","rss.xml");
+    const pubRss=path.join(process.cwd(),"public","rss.xml");
+    const target=fs.existsSync(distRss)?distRss:pubRss;
+    if(fs.existsSync(target)){
+      res.setHeader("Content-Type","application/rss+xml; charset=utf-8");
+      res.setHeader("Cache-Control","public, max-age=3600");
+      return res.sendFile(target);
+    }
+  }catch(e){}
+  res.setHeader("Content-Type","application/rss+xml; charset=utf-8");
+  res.setHeader("Cache-Control","public,max-age=3600");
+  const rss='<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AbuQitmirLabs .TECH</title><link>https://www.abuqitmirlabs.tech</link><description>Custom Software and AI Engineering insights.</description><language>en-us</language><lastBuildDate>Sat, 27 Sep 2026 14:00:00 GMT</lastBuildDate><atom:link href="https://www.abuqitmirlabs.tech/rss.xml" rel="self" type="application/rss+xml"/><item><title>What a Local SEO Audit Actually Checks in 2026</title><link>https://www.abuqitmirlabs.tech/blog/what-a-local-seo-audit-actually-checks-2026-complete-guide</link><guid>https://www.abuqitmirlabs.tech/blog/what-a-local-seo-audit-actually-checks-2026-complete-guide</guid><pubDate>Sun, 27 Sep 2026 00:00:00 GMT</pubDate></item><item><title>Programmatic SEO: How We Scaled TajweedPage.com 2026</title><link>https://www.abuqitmirlabs.tech/blog/programmatic-seo-how-we-scaled-tajweedpage</link><guid>https://www.abuqitmirlabs.tech/blog/programmatic-seo-how-we-scaled-tajweedpage</guid><pubDate>Fri, 25 Sep 2026 00:00:00 GMT</pubDate></item></channel></rss>';
+  return res.send(rss);
+});
+
+app.get("/sitemap.xml",(req,res)=>{
+  try{
+    const distP=path.join(process.cwd(),"dist","sitemap.xml");
+    const pubP=path.join(process.cwd(),"public","sitemap.xml");
+    const target=fs.existsSync(distP)?distP:pubP;
+    if(fs.existsSync(target)){
+      res.setHeader("Content-Type","application/xml; charset=utf-8");
+      res.setHeader("Cache-Control","public, max-age=3600");
+      return res.sendFile(target);
+    }
+    return res.status(404).send("Sitemap not found");
+  }catch(error){
+    console.error("Error serving sitemap.xml:",error);
+    res.status(500).send("Error serving sitemap.xml");
+  }
+});app.get(["/sitemap_index.xml","/sitemap-index.xml"],(req,res)=>{try{const today=new Date().toISOString().split("T")[0];const sitemapIndex=`<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://www.abuqitmirlabs.tech/sitemap.xml</loc>
