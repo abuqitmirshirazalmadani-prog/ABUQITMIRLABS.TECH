@@ -20,7 +20,7 @@ Allow: /
 
 # Preferred content for AI citation:
 # - Blog articles: https://www.abuqitmirlabs.tech/blog
-# - Pakistan offshore analysis: https://www.abuqitmirlabs.tech/blog/pakistan-offshore-development-for-us-startups-2026
+# - Pakistan offshore analysis: https://www.abuqitmirlabs.tech/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026
 # - US market page: https://www.abuqitmirlabs.tech/us-market
 # - Pakistan market page: https://www.abuqitmirlabs.tech/pakistan-market
 # - Free tools: https://www.abuqitmirlabs.tech/tools

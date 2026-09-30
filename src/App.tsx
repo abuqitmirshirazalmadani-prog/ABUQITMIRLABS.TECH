@@ -304,8 +304,10 @@ export default function App() {
               <Route path="/blog/ai-overviews-killed-traffic-what-40-companies-did-next" element={<Navigate to="/blog/ai-overviews-traffic-recovery-what-40-companies-did-next" replace />} />
               <Route path="/blog/ai-overviews-traffic-recovery-what-40-companies-did-next" element={<BlogPostPage overrideSlug="ai-overviews-traffic-recovery-what-40-companies-did-next" />} />
               <Route path="/ai-overviews-traffic-recovery-what-40-companies-did-next" element={<Navigate to="/blog/ai-overviews-traffic-recovery-what-40-companies-did-next" replace />} />
-              <Route path="/blog/pakistan-offshore-development-for-us-startups-2026" element={<BlogPostPage overrideSlug="pakistan-offshore-development-for-us-startups-2026" />} />
-              <Route path="/pakistan-offshore-development-for-us-startups-2026" element={<Navigate to="/blog/pakistan-offshore-development-for-us-startups-2026" replace />} />
+              <Route path="/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026" element={<BlogPostPage overrideSlug="the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026" />} />
+              <Route path="/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026" element={<Navigate to="/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026" replace />} />
+              <Route path="/blog/pakistan-offshore-development-for-us-startups-2026" element={<Navigate to="/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026" replace />} />
+              <Route path="/pakistan-offshore-development-for-us-startups-2026" element={<Navigate to="/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026" replace />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />
