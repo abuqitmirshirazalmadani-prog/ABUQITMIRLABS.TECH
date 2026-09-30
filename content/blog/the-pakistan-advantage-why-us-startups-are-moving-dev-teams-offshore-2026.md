@@ -38,10 +38,6 @@
 }
 ---
 
-# The Pakistan Advantage: Why US Startups Are Quietly Moving Dev Teams Offshore in 2026
-
----
-
 ## Table of Contents
 
 1. [The Data Behind the Shift](#the-data)
