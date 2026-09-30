@@ -91,40 +91,18 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
 
     const getInjectedContent = () => {
         if (!post || !post.content) return '';
-
-        // Deduplicate top-level title heading if markdown starts with heading matching post.title
-        let baseContent = post.content;
-        const normTitle = (post.title || '').toLowerCase().replace(/[^a-z0-9]/g, '');
-        const contentLines = baseContent.split(/\r?\n/);
-        if (contentLines.length > 0) {
-            const firstLine = contentLines[0].trim();
-            const headerMatch = firstLine.match(/^#{1,3}\s+(.+)$/);
-            if (headerMatch) {
-                const headerTextNorm = headerMatch[1].toLowerCase().replace(/[^a-z0-9]/g, '');
-                if (
-                    headerTextNorm === normTitle ||
-                    (normTitle && (headerTextNorm.includes(normTitle) || normTitle.includes(headerTextNorm)))
-                ) {
-                    contentLines.shift();
-                    while (contentLines.length > 0 && contentLines[0].trim() === '') {
-                        contentLines.shift();
-                    }
-                    baseContent = contentLines.join('\n');
-                }
-            }
-        }
         
         // Find images that are not already present in the content
         const imagesToInject = (post.helperImages || []).filter(
-            (img: any) => img && img.url && img.url.trim() !== '' && !baseContent.includes(img.url)
+            (img: any) => img && img.url && img.url.trim() !== '' && !post.content.includes(img.url)
         );
 
         if (imagesToInject.length === 0) {
-            return baseContent;
+            return post.content;
         }
 
         // Parse markdown content into logical blocks (e.g. paragraphs, lists, code blocks)
-        const rawLines = baseContent.split(/\r?\n/);
+        const rawLines = post.content.split(/\r?\n/);
         
         interface Block {
             text: string;
@@ -2528,39 +2506,22 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         <div className="mt-16">
                             <div className="bg-[#0b0b0e] border border-zinc-800/80 rounded-[2.5rem] p-8 md:p-10 flex flex-wrap gap-x-4 gap-y-3 overflow-hidden shadow-xl">
                                 {(() => {
-                                    const stopWords = new Set(['to', 'the', 'in', 'on', 'at', 'by', 'for', 'with', 'a', 'an', 'and', 'or', 'what', 'how', 'why', 'did', 'is', 'are', 'was', 'were', 'our', 'your', 'from']);
-                                    const rawTags = Array.isArray(post.tags) ? post.tags : [post.tags];
-                                    const formattedTags: string[] = [];
-                                    const seen = new Set<string>();
-
-                                    rawTags.forEach(raw => {
-                                        if (!raw) return;
-                                        const str = String(raw).trim();
-                                        // Keep multi-word semantic tags intact as clean PascalCase hashtag
-                                        const words = str.split(/\s+/).filter(w => !stopWords.has(w.toLowerCase().replace(/[^a-z]/g, '')));
-                                        if (words.length === 0) return;
-                                        
-                                        const hashtag = words.map(w => {
-                                            const clean = w.replace(/[^a-zA-Z0-9]/g, '');
-                                            if (!clean) return '';
-                                            return clean.charAt(0).toUpperCase() + clean.slice(1);
-                                        }).join('');
-
-                                        const key = hashtag.toLowerCase();
-                                        if (hashtag.length > 1 && !seen.has(key)) {
-                                            seen.add(key);
-                                            formattedTags.push(hashtag);
-                                        }
+                                    const allTags = Array.isArray(post.tags) 
+                                        ? post.tags.flatMap(t => String(t).split(/[\s,#]+/).filter(Boolean))
+                                        : String(post.tags).split(/[\s,#]+/).filter(Boolean);
+                                    
+                                    return allTags.map((tag, idx) => {
+                                        const cleanTag = tag.trim().toUpperCase();
+                                        if (!cleanTag) return null;
+                                        return (
+                                            <span 
+                                                key={`${tag}-${idx}`} 
+                                                className="inline-block text-xs font-mono font-bold text-[#ccff00] bg-[#16161a] px-4 py-2 rounded-full border border-zinc-800 uppercase tracking-wider hover:bg-[#ccff00] hover:text-black transition-all cursor-pointer"
+                                            >
+                                                #{cleanTag}
+                                            </span>
+                                        );
                                     });
-
-                                    return formattedTags.map((tag) => (
-                                        <span 
-                                            key={tag} 
-                                            className="inline-block text-xs font-mono font-bold text-[#ccff00] bg-[#16161a] px-4 py-2 rounded-full border border-zinc-800 uppercase tracking-wider hover:bg-[#ccff00] hover:text-black transition-all cursor-pointer"
-                                        >
-                                            #{tag}
-                                        </span>
-                                    ));
                                 })()}
                             </div>
                         </div>
