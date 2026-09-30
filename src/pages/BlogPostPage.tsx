@@ -96,14 +96,20 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         let baseContent = post.content;
         const normTitle = (post.title || '').toLowerCase().replace(/[^a-z0-9]/g, '');
         const contentLines = baseContent.split(/\r?\n/);
+        while (contentLines.length > 0 && contentLines[0].trim() === '') {
+            contentLines.shift();
+        }
         if (contentLines.length > 0) {
             const firstLine = contentLines[0].trim();
             const headerMatch = firstLine.match(/^#{1,3}\s+(.+)$/);
             if (headerMatch) {
                 const headerTextNorm = headerMatch[1].toLowerCase().replace(/[^a-z0-9]/g, '');
+                const prefixNorm = normTitle.slice(0, 20);
                 if (
                     headerTextNorm === normTitle ||
-                    (normTitle && (headerTextNorm.includes(normTitle) || normTitle.includes(headerTextNorm)))
+                    (normTitle && (headerTextNorm.includes(normTitle) || normTitle.includes(headerTextNorm))) ||
+                    (prefixNorm.length >= 10 && (headerTextNorm.startsWith(prefixNorm) || headerTextNorm.includes(prefixNorm))) ||
+                    firstLine.startsWith('# ')
                 ) {
                     contentLines.shift();
                     while (contentLines.length > 0 && (contentLines[0].trim() === '' || contentLines[0].trim() === '---')) {

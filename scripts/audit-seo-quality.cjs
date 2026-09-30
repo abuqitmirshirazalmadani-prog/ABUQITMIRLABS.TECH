@@ -114,7 +114,14 @@ if (fs.existsSync(staticBlogPath)) {
         if (headings.length > 0 && headings[0].level <= 2) {
           const firstHeadingNorm = headings[0].text.toLowerCase().replace(/[^a-z0-9]/g, '');
           const postTitleNorm = postTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
-          if (firstHeadingNorm && postTitleNorm && (firstHeadingNorm === postTitleNorm || firstHeadingNorm.includes(postTitleNorm) || postTitleNorm.includes(firstHeadingNorm))) {
+          const prefixNorm = postTitleNorm.slice(0, 20);
+          if (firstHeadingNorm && postTitleNorm && (
+            firstHeadingNorm === postTitleNorm ||
+            firstHeadingNorm.includes(postTitleNorm) ||
+            postTitleNorm.includes(firstHeadingNorm) ||
+            (prefixNorm.length >= 10 && (firstHeadingNorm.startsWith(prefixNorm) || firstHeadingNorm.includes(prefixNorm))) ||
+            headings[0].level === 1
+          )) {
             console.log(`  ℹ️ Post "${slug}" starts with title heading: "${headings[0].text}" (Handled by runtime deduplicator).`);
           }
         }

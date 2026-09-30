@@ -118,6 +118,16 @@
       "source": "/blog/the-complete-guide-to-rag-ai-integration-for-startups",
       "destination": "/blog/rag-ai-integration-for-startups",
       "permanent": true
+    },
+    {
+      "source": "/blog/pakistan-offshore-development-for-us-startups-2026",
+      "destination": "/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026",
+      "permanent": true
+    },
+    {
+      "source": "/pakistan-offshore-development-for-us-startups-2026",
+      "destination": "/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026",
+      "permanent": true
     }
   ],
   "rewrites": [
