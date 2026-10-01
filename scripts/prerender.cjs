@@ -179,7 +179,8 @@ const routes = [
   '/blog/what-a-local-seo-audit-actually-checks-2026-complete-guide',
   '/blog/programmatic-seo-how-we-scaled-tajweedpage',
   '/blog/ai-overviews-traffic-recovery-what-40-companies-did-next',
-  '/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026'
+  '/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026',
+  '/blog/saas-pricing-page-optimization-7-structural-decisions'
 ];
 
 // Merge explicitly defined routes with any routes declared in SEO_ROUTES_METADATA

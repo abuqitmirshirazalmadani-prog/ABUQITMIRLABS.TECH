@@ -308,6 +308,8 @@ export default function App() {
               <Route path="/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026" element={<Navigate to="/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026" replace />} />
               <Route path="/blog/pakistan-offshore-development-for-us-startups-2026" element={<Navigate to="/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026" replace />} />
               <Route path="/pakistan-offshore-development-for-us-startups-2026" element={<Navigate to="/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026" replace />} />
+              <Route path="/blog/saas-pricing-page-optimization-7-structural-decisions" element={<BlogPostPage overrideSlug="saas-pricing-page-optimization-7-structural-decisions" />} />
+              <Route path="/saas-pricing-page-optimization-7-structural-decisions" element={<Navigate to="/blog/saas-pricing-page-optimization-7-structural-decisions" replace />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />

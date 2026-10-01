@@ -1751,4 +1751,204 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   ]
 }
   },
+  '/blog/saas-pricing-page-optimization-7-structural-decisions': {
+    title: 'SaaS Pricing Page Optimization: 7 Decisions Backed by Data',
+    description: 'Seven pricing page decisions, from tier count to trust signals, with A/B test data and honest limits. A practical guide for SaaS founders.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/saas-pricing-page-optimization-7-structural-decisions',
+    ogTitle: 'SaaS Pricing Page Optimization: 7 Decisions Backed by Data',
+    ogDescription: 'Seven pricing page decisions, from tier count to trust signals, with A/B test data and honest limits. A practical guide for SaaS founders.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/blog/saas-pricing-page-optimization-2026-og.jpg',
+    ogType: 'article',
+    twitterTitle: 'SaaS Pricing Page Optimization: 7 Decisions Backed by A/B Test Data',
+    twitterDescription: 'Seven pricing page decisions, from tier count to trust signals, with A/B test data and honest limits. A practical guide for SaaS founders.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/saas-pricing-page-optimization-2026-og.jpg',
+    schemaJsonLd: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.abuqitmirlabs.tech/#organization",
+          "name": "AbuQitmirLabs",
+          "url": "https://www.abuqitmirlabs.tech/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.abuqitmirlabs.tech/logo.png",
+            "width": 512,
+            "height": 512
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/abu-qitmir-697423390/",
+            "https://x.com/AbuQitmir",
+            "https://www.youtube.com/@AbuQitmir",
+            "https://www.instagram.com/abuqitmirshirazalmadani/",
+            "https://www.facebook.com/profile.php?id=61583768706452",
+            "https://www.pinterest.com/abuqitmir",
+            "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani",
+            "https://www.goodfirms.co/company/abuqitmirlabs-tech",
+            "https://clutch.co/profile/abuqitmirlabstech"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.abuqitmirlabs.tech/#website",
+          "url": "https://www.abuqitmirlabs.tech/",
+          "name": "AbuQitmirLabs",
+          "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.abuqitmirlabs.tech/blog/saas-pricing-page-optimization-7-structural-decisions#webpage",
+          "url": "https://www.abuqitmirlabs.tech/blog/saas-pricing-page-optimization-7-structural-decisions",
+          "name": "SaaS Pricing Page Optimization: 7 Decisions Backed by Data",
+          "description": "Seven pricing page decisions, from tier count to trust signals, with A/B test data and honest limits. A practical guide for SaaS founders.",
+          "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" },
+          "about": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+          "primaryImageOfPage": {
+            "@type": "ImageObject",
+            "url": "https://www.abuqitmirlabs.tech/images/blog/saas-pricing-page-optimization-2026-og.jpg",
+            "width": 1200,
+            "height": 630
+          },
+          "breadcrumb": { "@id": "https://www.abuqitmirlabs.tech/blog/saas-pricing-page-optimization-7-structural-decisions#breadcrumb" },
+          "datePublished": "2026-10-02",
+          "dateModified": "2026-10-02",
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.abuqitmirlabs.tech/blog/saas-pricing-page-optimization-7-structural-decisions#article",
+          "headline": "SaaS Pricing Page Optimization: 7 Structural Decisions Backed by A/B Test Data",
+          "description": "Seven pricing page decisions, from tier count to trust signals, with published A/B test data, honest limits, and a plan for testing them properly.",
+          "image": "https://www.abuqitmirlabs.tech/images/blog/saas-pricing-page-optimization-2026-og.jpg",
+          "datePublished": "2026-10-02",
+          "dateModified": "2026-10-02",
+          "author": {
+            "@type": "Person",
+            "name": "Abu Qitmir Mohammad Shiraz Al-Madani",
+            "url": "https://www.linkedin.com/in/abu-qitmir-697423390/"
+          },
+          "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+          "mainEntityOfPage": { "@id": "https://www.abuqitmirlabs.tech/blog/saas-pricing-page-optimization-7-structural-decisions#webpage" },
+          "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" },
+          "articleSection": "SaaS Growth",
+          "keywords": [
+            "SaaS pricing page optimization",
+            "SaaS pricing page conversion",
+            "pricing page A/B testing",
+            "pricing tiers",
+            "annual vs monthly billing",
+            "anchoring and decoy pricing"
+          ],
+          "inLanguage": "en-US",
+          "citation": [
+            {
+              "@type": "CreativeWork",
+              "name": "Pricing Page Conversion Statistics 2026 (Visionary Marketing)",
+              "url": "https://visionary-marketing.co.uk/blog/pricing-page-conversion-statistics-2026"
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "A/B Testing Pricing Pages: What Actually Moves Conversion Rates (Mida)",
+              "url": "https://mida.so/blog/ab-testing-pricing-pages"
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "Pricing Page Research: How to Test Pricing Pages With Real Customer Interviews (Koji)",
+              "url": "https://www.koji.so/docs/pricing-page-research-testing"
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "Pricing Experiments You Might Not Know, But Can Learn From (CXL)",
+              "url": "https://cxl.com/blog/pricing-experiments-you-might-not-know-but-can-learn-from/"
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "Anchoring Bias Tests for SaaS Pricing Pages (Atticus Li)",
+              "url": "https://atticusli.com/blog/posts/anchoring-bias-tests-for-saas-pricing-pages/"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.abuqitmirlabs.tech/blog/saas-pricing-page-optimization-7-structural-decisions#faq",
+          "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/blog/saas-pricing-page-optimization-7-structural-decisions#webpage" },
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is a good conversion rate for a SaaS pricing page?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Kirro's 2026 benchmarks, as cited by Koji, put the median at about 2 to 5 percent. The right target depends on traffic source, price point, and whether visitors are trialling or buying. Compare your page against your own history before you compare it against a benchmark."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How many pricing tiers should a SaaS product have?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Three is the strongest default. Visionary Marketing's 2026 benchmark found three-tier pages converted 41 percent better than pages with four or more. Test a fourth tier only if it serves a distinct customer segment."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Should I default to annual or monthly billing?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It depends on your goal. In Visionary Marketing's data, an annual default lifted annual signups by 27 percent but reduced total conversion by 6 percent. Measure revenue per visitor to decide, and keep the monthly option visible."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How long should I run a pricing page A/B test?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Run it for at least two to four weeks, and avoid ending it early. Pricing pages are high-stakes, so a wrong call is expensive. Low-traffic products may need a month or more for reliable results."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does the decoy effect work on SaaS pricing pages?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It can, but the evidence is mixed in practice. Ariely's classic result is from a lab experiment. For live pages, the decoy has to offer real but inferior value and the plans must be comparable on the same dimensions. Test it rather than assume it."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can AbuQitmirLabs build a pricing page that is easy to test?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "AbuQitmirLabs builds custom SaaS platforms, including pricing, billing, and experiment-ready front ends. See the custom software development page for how engagements are structured, or contact the team to discuss your product."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.abuqitmirlabs.tech/blog/saas-pricing-page-optimization-7-structural-decisions#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.abuqitmirlabs.tech/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://www.abuqitmirlabs.tech/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "SaaS Pricing Page Optimization: 7 Structural Decisions Backed by A/B Test Data",
+              "item": "https://www.abuqitmirlabs.tech/blog/saas-pricing-page-optimization-7-structural-decisions"
+            }
+          ]
+        }
+      ]
+    }
+  },
 };
