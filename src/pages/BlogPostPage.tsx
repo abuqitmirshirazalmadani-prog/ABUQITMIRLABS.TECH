@@ -58,14 +58,29 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             }
 
             try {
-                const q = query(
-                    collection(db, 'posts'), 
-                    where('slug', '==', slug), 
-                    where('published', '==', true)
-                );
-                let snapshot = await getDocs(q);
-                if (!snapshot.empty) {
-                    setPost(snapshot.docs[0].data() as Post);
+                const slugsToTry = [slug];
+                if (slug === 'ai-agents-cost-benefit-analysis') {
+                    slugsToTry.push('ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont');
+                } else if (slug === 'ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont') {
+                    slugsToTry.push('ai-agents-cost-benefit-analysis');
+                }
+
+                let foundPost: Post | null = null;
+                for (const s of slugsToTry) {
+                    const q = query(
+                        collection(db, 'posts'), 
+                        where('slug', '==', s), 
+                        where('published', '==', true)
+                    );
+                    const snapshot = await getDocs(q);
+                    if (!snapshot.empty) {
+                        foundPost = snapshot.docs[0].data() as Post;
+                        break;
+                    }
+                }
+
+                if (foundPost) {
+                    setPost(foundPost);
                 } else if (staticFallback) {
                     setPost(staticFallback);
                 } else {
@@ -961,7 +976,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
           "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" },
           "primaryImageOfPage": {
             "@type": "ImageObject",
-            "url": "https://www.abuqitmirlabs.tech/images/ai-agents-cost-benefit-analysis-og.jpg",
+            "url": "https://i.postimg.cc/j2pfBQ3d/A-7-question-framework.jpg",
             "width": 1200,
             "height": 630
           },
@@ -974,7 +989,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
           "headline": "AI Agents Cost Benefit Analysis: When They Save Money",
           "description": "A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don't.",
           "url": "https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis",
-          "image": "https://www.abuqitmirlabs.tech/images/ai-agents-cost-benefit-analysis-og.jpg",
+          "image": "https://i.postimg.cc/j2pfBQ3d/A-7-question-framework.jpg",
           "datePublished": "2026-10-03T00:00:00+00:00",
           "dateModified": "2026-10-03T00:00:00+00:00",
           "author": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
@@ -2323,7 +2338,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis" />
                         <meta property="og:title" content="AI Agents Cost Benefit Analysis: When They Save Money" />
                         <meta property="og:description" content="A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don't." />
-                        <meta property="og:image" content="https://www.abuqitmirlabs.tech/images/ai-agents-cost-benefit-analysis-og.jpg" />
+                        <meta property="og:image" content="https://i.postimg.cc/j2pfBQ3d/A-7-question-framework.jpg" />
                         <meta property="og:image:width" content="1200" />
                         <meta property="og:image:height" content="630" />
                         <meta property="og:image:alt" content="AI Agents Cost Benefit Analysis decision framework by AbuQitmirLabs" />
@@ -2342,7 +2357,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis" />
                         <meta name="twitter:title" content="AI Agents Cost Benefit Analysis: When They Save Money" />
                         <meta name="twitter:description" content="A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don't." />
-                        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/ai-agents-cost-benefit-analysis-og.jpg" />
+                        <meta name="twitter:image" content="https://i.postimg.cc/j2pfBQ3d/A-7-question-framework.jpg" />
                         <meta name="twitter:image:alt" content="AI Agents Cost Benefit Analysis decision framework by AbuQitmirLabs" />
                         <meta name="twitter:label1" content="Reading time" />
                         <meta name="twitter:data1" content="12 minutes" />
@@ -3114,6 +3129,12 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                 decoding="async"
                                 onError={(e) => {
                                     const target = e.target as HTMLImageElement;
+                                    if (target.src.includes('cost-benefit') || target.src.includes('A-7-question-framework') || target.src.includes('j2pfBQ3d')) {
+                                        if (!target.src.endsWith('/images/A-7-question-framework.jpg') && !target.src.endsWith('/images/ai-agents-cost-benefit-analysis-og.jpg')) {
+                                            target.src = '/images/A-7-question-framework.jpg';
+                                            return;
+                                        }
+                                    }
                                     if (target.src.includes('offshore') || target.src.includes('checklist')) {
                                         if (!target.src.endsWith('/og-offshore-web-development-checklist.jpg')) {
                                             target.src = '/og-offshore-web-development-checklist.jpg';

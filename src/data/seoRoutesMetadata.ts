@@ -1960,11 +1960,11 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis',
     ogTitle: 'AI Agents Cost Benefit Analysis: When They Save Money',
     ogDescription: 'A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don\'t.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/ai-agents-cost-benefit-analysis-og.jpg',
+    ogImage: 'https://i.postimg.cc/j2pfBQ3d/A-7-question-framework.jpg',
     ogType: 'article',
     twitterTitle: 'AI Agents Cost Benefit Analysis: When They Save Money',
     twitterDescription: 'A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don\'t.',
-    twitterImage: 'https://www.abuqitmirlabs.tech/images/ai-agents-cost-benefit-analysis-og.jpg',
+    twitterImage: 'https://i.postimg.cc/j2pfBQ3d/A-7-question-framework.jpg',
     schema: {
       "@context": "https://schema.org",
       "@graph": [
@@ -2039,7 +2039,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" },
           "primaryImageOfPage": {
             "@type": "ImageObject",
-            "url": "https://www.abuqitmirlabs.tech/images/ai-agents-cost-benefit-analysis-og.jpg",
+            "url": "https://i.postimg.cc/j2pfBQ3d/A-7-question-framework.jpg",
             "width": 1200,
             "height": 630
           },
@@ -2052,7 +2052,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           "headline": "AI Agents Cost Benefit Analysis: When They Save Money",
           "description": "A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don't.",
           "url": "https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis",
-          "image": "https://www.abuqitmirlabs.tech/images/ai-agents-cost-benefit-analysis-og.jpg",
+          "image": "https://i.postimg.cc/j2pfBQ3d/A-7-question-framework.jpg",
           "datePublished": "2026-10-03T00:00:00+00:00",
           "dateModified": "2026-10-03T00:00:00+00:00",
           "author": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
