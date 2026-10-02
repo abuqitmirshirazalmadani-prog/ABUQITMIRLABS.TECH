@@ -310,7 +310,9 @@ export default function App() {
               <Route path="/pakistan-offshore-development-for-us-startups-2026" element={<Navigate to="/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026" replace />} />
               <Route path="/blog/saas-pricing-page-optimization-7-structural-decisions" element={<BlogPostPage overrideSlug="saas-pricing-page-optimization-7-structural-decisions" />} />
               <Route path="/saas-pricing-page-optimization-7-structural-decisions" element={<Navigate to="/blog/saas-pricing-page-optimization-7-structural-decisions" replace />} />
-              <Route path="/blog/saas-pricing-page-optimization-7-decisions-backed-by-data" element={<Navigate to="/blog/saas-pricing-page-optimization-7-structural-decisions" replace />} />
+              <Route path="/blog/ai-agents-cost-benefit-analysis" element={<BlogPostPage overrideSlug="ai-agents-cost-benefit-analysis" />} />
+              <Route path="/ai-agents-cost-benefit-analysis" element={<Navigate to="/blog/ai-agents-cost-benefit-analysis" replace />} />
+              <Route path="/blog/ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont" element={<Navigate to="/blog/ai-agents-cost-benefit-analysis" replace />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />

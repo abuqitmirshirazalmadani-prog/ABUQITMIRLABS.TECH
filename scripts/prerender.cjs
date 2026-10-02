@@ -180,7 +180,8 @@ const routes = [
   '/blog/programmatic-seo-how-we-scaled-tajweedpage',
   '/blog/ai-overviews-traffic-recovery-what-40-companies-did-next',
   '/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026',
-  '/blog/saas-pricing-page-optimization-7-structural-decisions'
+  '/blog/saas-pricing-page-optimization-7-structural-decisions',
+  '/blog/ai-agents-cost-benefit-analysis'
 ];
 
 // Merge explicitly defined routes with any routes declared in SEO_ROUTES_METADATA
