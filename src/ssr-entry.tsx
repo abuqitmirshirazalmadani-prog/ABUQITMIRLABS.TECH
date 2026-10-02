@@ -152,6 +152,12 @@ export function renderFullApp(url: string = '/') {
               <Route path="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
               <Route path="/blog/ai-overviews-killed-traffic-what-40-companies-did-next" element={<BlogPostPage overrideSlug="ai-overviews-killed-traffic-what-40-companies-did-next" />} />
               <Route path="/blog/ai-overviews-traffic-recovery-what-40-companies-did-next" element={<BlogPostPage overrideSlug="ai-overviews-traffic-recovery-what-40-companies-did-next" />} />
+              <Route path="/blog/saas-pricing-page-optimization-7-structural-decisions" element={<BlogPostPage overrideSlug="saas-pricing-page-optimization-7-structural-decisions" />} />
+              <Route path="/saas-pricing-page-optimization-7-structural-decisions" element={<Navigate to="/blog/saas-pricing-page-optimization-7-structural-decisions" replace />} />
+              <Route path="/blog/ai-agents-cost-benefit-analysis" element={<BlogPostPage overrideSlug="ai-agents-cost-benefit-analysis" />} />
+              <Route path="/ai-agents-cost-benefit-analysis" element={<Navigate to="/blog/ai-agents-cost-benefit-analysis" replace />} />
+              <Route path="/blog/ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont" element={<Navigate to="/blog/ai-agents-cost-benefit-analysis" replace />} />
+              <Route path="/ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont" element={<Navigate to="/blog/ai-agents-cost-benefit-analysis" replace />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
             </Routes>
           </Suspense>

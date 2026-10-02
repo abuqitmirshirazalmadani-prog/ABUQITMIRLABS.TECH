@@ -1955,14 +1955,14 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     }
   },
   '/blog/ai-agents-cost-benefit-analysis': {
-    title: 'AI Agents Cost Benefit Analysis: When They Save Money',
+    title: 'AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don\'t) | AbuQitmirLabs',
     description: 'A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don\'t.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis',
-    ogTitle: 'AI Agents Cost Benefit Analysis: When They Save Money',
+    ogTitle: 'AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don\'t) | AbuQitmirLabs',
     ogDescription: 'A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don\'t.',
     ogImage: 'https://i.postimg.cc/j2pfBQ3d/A-7-question-framework.jpg',
     ogType: 'article',
-    twitterTitle: 'AI Agents Cost Benefit Analysis: When They Save Money',
+    twitterTitle: 'AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don\'t) | AbuQitmirLabs',
     twitterDescription: 'A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don\'t.',
     twitterImage: 'https://i.postimg.cc/j2pfBQ3d/A-7-question-framework.jpg',
     schema: {
@@ -2034,7 +2034,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           "@type": "WebPage",
           "@id": "https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis#webpage",
           "url": "https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis",
-          "name": "AI Agents Cost Benefit Analysis: When They Save Money | AbuQitmirLabs",
+          "name": "AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don't) | AbuQitmirLabs",
           "description": "A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don't.",
           "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" },
           "primaryImageOfPage": {
@@ -2049,7 +2049,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           "@type": "Article",
           "@id": "https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis#article",
-          "headline": "AI Agents Cost Benefit Analysis: When They Save Money",
+          "headline": "AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don't)",
           "description": "A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don't.",
           "url": "https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis",
           "image": "https://i.postimg.cc/j2pfBQ3d/A-7-question-framework.jpg",
@@ -2081,7 +2081,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
             {
               "@type": "ListItem",
               "position": 3,
-              "name": "AI Agents Cost Benefit Analysis: When They Save Money",
+              "name": "AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don't)",
               "item": "https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis"
             }
           ]

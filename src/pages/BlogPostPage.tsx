@@ -971,7 +971,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
           "@type": "WebPage",
           "@id": "https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis#webpage",
           "url": "https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis",
-          "name": "AI Agents Cost Benefit Analysis: When They Save Money | AbuQitmirLabs",
+          "name": "AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don't) | AbuQitmirLabs",
           "description": "A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don't.",
           "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" },
           "primaryImageOfPage": {
@@ -986,7 +986,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         {
           "@type": "Article",
           "@id": "https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis#article",
-          "headline": "AI Agents Cost Benefit Analysis: When They Save Money",
+          "headline": "AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don't)",
           "description": "A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don't.",
           "url": "https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis",
           "image": "https://i.postimg.cc/j2pfBQ3d/A-7-question-framework.jpg",
@@ -1018,7 +1018,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             {
               "@type": "ListItem",
               "position": 3,
-              "name": "AI Agents Cost Benefit Analysis: When They Save Money",
+              "name": "AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don't)",
               "item": "https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis"
             }
           ]
@@ -2320,8 +2320,8 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                     <>
                         <html lang="en" />
                         {/* Primary Meta Tags */}
-                        <title>AI Agents Cost Benefit Analysis: When They Save Money</title>
-                        <meta name="title" content="AI Agents Cost Benefit Analysis: When They Save Money" />
+                        <title>AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don't) | AbuQitmirLabs</title>
+                        <meta name="title" content="AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don't) | AbuQitmirLabs" />
                         <meta name="description" content="A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don't." />
                         <meta
                           name="keywords"
@@ -2336,7 +2336,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         <meta property="og:site_name" content="AbuQitmirLabs" />
                         <meta property="og:locale" content="en_US" />
                         <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis" />
-                        <meta property="og:title" content="AI Agents Cost Benefit Analysis: When They Save Money" />
+                        <meta property="og:title" content="AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don't) | AbuQitmirLabs" />
                         <meta property="og:description" content="A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don't." />
                         <meta property="og:image" content="https://i.postimg.cc/j2pfBQ3d/A-7-question-framework.jpg" />
                         <meta property="og:image:width" content="1200" />
@@ -2355,7 +2355,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         <meta name="twitter:site" content="@abuqitmirlabs" />
                         <meta name="twitter:creator" content="@abuqitmirlabs" />
                         <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis" />
-                        <meta name="twitter:title" content="AI Agents Cost Benefit Analysis: When They Save Money" />
+                        <meta name="twitter:title" content="AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don't) | AbuQitmirLabs" />
                         <meta name="twitter:description" content="A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don't." />
                         <meta name="twitter:image" content="https://i.postimg.cc/j2pfBQ3d/A-7-question-framework.jpg" />
                         <meta name="twitter:image:alt" content="AI Agents Cost Benefit Analysis decision framework by AbuQitmirLabs" />

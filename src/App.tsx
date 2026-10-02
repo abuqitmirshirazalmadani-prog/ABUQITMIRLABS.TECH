@@ -128,6 +128,27 @@ function MetaHeadSanitizer() {
   return null;
 }
 
+function GoogleAnalyticsTracker() {
+  const { pathname, search } = useLocation();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+        const canonicalUrl = `https://www.abuqitmirlabs.tech${pathname}`;
+        (window as any).gtag('event', 'page_view', {
+          page_title: document.title,
+          page_location: canonicalUrl,
+          page_path: pathname + search,
+        });
+      }
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, [pathname, search]);
+
+  return null;
+}
+
 const FloatingWhatsApp = () => (
   <a 
     href="https://wa.me/923233260859"
@@ -190,6 +211,7 @@ export default function App() {
         <ScrollToTop />
         <MetaHeadSanitizer />
         <FacebookPixel />
+        <GoogleAnalyticsTracker />
         <FloatingWhatsApp />
         <ErrorBoundary>
           <Suspense fallback={<PageLoader />}>
@@ -313,6 +335,7 @@ export default function App() {
               <Route path="/blog/ai-agents-cost-benefit-analysis" element={<BlogPostPage overrideSlug="ai-agents-cost-benefit-analysis" />} />
               <Route path="/ai-agents-cost-benefit-analysis" element={<Navigate to="/blog/ai-agents-cost-benefit-analysis" replace />} />
               <Route path="/blog/ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont" element={<Navigate to="/blog/ai-agents-cost-benefit-analysis" replace />} />
+              <Route path="/ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont" element={<Navigate to="/blog/ai-agents-cost-benefit-analysis" replace />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />
