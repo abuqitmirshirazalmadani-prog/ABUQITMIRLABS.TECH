@@ -183,6 +183,166 @@
       "source": "/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026-guide",
       "destination": "/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026",
       "permanent": true
+    },
+    {
+      "source": "/flutter-vs-react-native-choosing-your-mobile-app-stack-in-2026",
+      "destination": "/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026",
+      "permanent": true
+    },
+    {
+      "source": "/app-development-agency-uk-what-to-ask-before-you-sign-2026-guide",
+      "destination": "/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-choose-mobile-app-development-company",
+      "destination": "/blog/how-to-choose-mobile-app-development-company-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-choose-mobile-app-development-company-2026",
+      "destination": "/blog/how-to-choose-a-mobile-app-development-company-2026",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-choose-mobile-app-development-company-2026",
+      "destination": "/blog/how-to-choose-a-mobile-app-development-company-2026",
+      "permanent": true
+    },
+    {
+      "source": "/rag-ai-integration",
+      "destination": "/blog/rag-ai-integration-for-startups",
+      "permanent": true
+    },
+    {
+      "source": "/the-complete-guide-to-rag-ai-integration-for-startups",
+      "destination": "/blog/rag-ai-integration-for-startups",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rag-ai-integration-startups",
+      "destination": "/blog/rag-ai-integration-for-startups",
+      "permanent": true
+    },
+    {
+      "source": "/rag-ai-integration-startups",
+      "destination": "/blog/rag-ai-integration-for-startups",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rag-ai-integration-for-startups-abuqitmirlabs",
+      "destination": "/blog/rag-ai-integration-for-startups",
+      "permanent": true
+    },
+    {
+      "source": "/rag-ai-integration-for-startups-abuqitmirlabs",
+      "destination": "/blog/rag-ai-integration-for-startups",
+      "permanent": true
+    },
+    {
+      "source": "/the-go-to-guide-ai-agent-development-agency-vs-in-house",
+      "destination": "/blog/ai-agent-development-agency-vs-in-house",
+      "permanent": true
+    },
+    {
+      "source": "/the-go-to-guide-to-ai-agent-development-agency-vs-building-in-house",
+      "destination": "/blog/ai-agent-development-agency-vs-in-house",
+      "permanent": true
+    },
+    {
+      "source": "/custom-software-development-company-karachi-pakistan-abuqitmirlabs",
+      "destination": "/blog/custom-software-development-company-karachi-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/custom-web-development-company-2026",
+      "destination": "/blog/custom-web-development-company",
+      "permanent": true
+    },
+    {
+      "source": "/custom-web-development-company-2026-built-in-visibility",
+      "destination": "/blog/custom-web-development-company",
+      "permanent": true
+    },
+    {
+      "source": "/custom-web-development-vs-templates",
+      "destination": "/blog/custom-web-development-vs-website-templates-2026-guide",
+      "permanent": true
+    },
+    {
+      "source": "/custom-web-development-vs",
+      "destination": "/blog/custom-web-development-vs-website-templates-2026-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/what-does-a-custom-web-development-company-do",
+      "destination": "/blog/what-does-a-custom-web-development-company-do-2026-guide",
+      "permanent": true
+    },
+    {
+      "source": "/what-does-a-custom-web-development-company-do",
+      "destination": "/blog/what-does-a-custom-web-development-company-do-2026-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/why-custom-web-development-matters-2026",
+      "destination": "/blog/why-custom-web-development-matters-in-2026-build-vs-buy-guide",
+      "permanent": true
+    },
+    {
+      "source": "/why-custom-web-development-matters-2026",
+      "destination": "/blog/why-custom-web-development-matters-in-2026-build-vs-buy-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/5-step-web-development-lifecycle-2026",
+      "destination": "/blog/5-step-web-development-lifecycle-2026-custom-web-development-process-guide",
+      "permanent": true
+    },
+    {
+      "source": "/5-step-web-development-lifecycle-2026",
+      "destination": "/blog/5-step-web-development-lifecycle-2026-custom-web-development-process-guide",
+      "permanent": true
+    },
+    {
+      "source": "/custom-ai-solutions-for-corporate-events",
+      "destination": "/blog/custom-ai-solutions-for-corporate-events-2026-guide",
+      "permanent": true
+    },
+    {
+      "source": "/local-business-visibility",
+      "destination": "/blog/local-business-visibility-seo-geo-aio-aeo-sxo-2026",
+      "permanent": true
+    },
+    {
+      "source": "/what-seo-services-actually-means",
+      "destination": "/blog/what-seo-services-actually-means-2026",
+      "permanent": true
+    },
+    {
+      "source": "/what-are-healthcare-ai-agents",
+      "destination": "/blog/what-are-healthcare-ai-agents-complete-guide-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/custom-ai-solutions-for-fintech-2026",
+      "destination": "/blog/custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting",
+      "permanent": true
+    },
+    {
+      "source": "/custom-ai-solutions-for-fintech-2026",
+      "destination": "/blog/custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ai-integration-with-legacy-systems-2026",
+      "destination": "/blog/ai-integration-with-legacy-systems-the-complete-2026-guide",
+      "permanent": true
+    },
+    {
+      "source": "/ai-integration-with-legacy-systems-2026",
+      "destination": "/blog/ai-integration-with-legacy-systems-the-complete-2026-guide",
+      "permanent": true
     }
   ],
   "rewrites": [

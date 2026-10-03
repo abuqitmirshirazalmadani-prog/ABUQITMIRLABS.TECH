@@ -437,7 +437,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   '/blog/what-does-a-custom-web-development-company-do-2026-guide': {
     title: 'What Does a Custom Web Development Company Actually Do? | AbuQitmirLabs',
     description: 'Discover what a custom web development company actually builds, how SEO web development works, and whether your business needs custom web app development services.',
-    canonical: 'https://www.abuqitmirlabs.tech/blog/what-does-a-custom-web-development-company-do',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/what-does-a-custom-web-development-company-do-2026-guide',
     ogTitle: 'What Does a Custom Web Development Company Actually Do? | AbuQitmirLabs',
     ogDescription: 'Discover what custom web engineering delivers vs off-the-shelf website templates.',
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png',

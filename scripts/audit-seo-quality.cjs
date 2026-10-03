@@ -18,6 +18,17 @@ const issuesFixed = [];
 
 console.log('\n🔍 [AbuQitmirLabs SEO Auditor] Starting comprehensive quality audit...\n');
 
+// Load master canonical redirects map
+const redirectsPath = path.join(rootDir, 'src/data/canonicalRedirects.ts');
+let knownRedirects = {};
+if (fs.existsSync(redirectsPath)) {
+  const content = fs.readFileSync(redirectsPath, 'utf8');
+  const matches = [...content.matchAll(/['"]([^'"]+)['"]:\s*['"]([^'"]+)['"]/g)];
+  matches.forEach(m => {
+    knownRedirects[m[1]] = m[2];
+  });
+}
+
 // ==========================================
 // 1. AUDIT SITEMAPS FOR DUPLICATES & CANONICAL MISMATCHES
 // ==========================================
@@ -44,32 +55,45 @@ sitemapPaths.forEach(sitemapPath => {
 
   locMatches.forEach(match => {
     const fullBlock = match[0];
-    const url = match[1].trim();
+    let url = match[1].trim();
     
-    // Check duplicate URL
-    if (seenLocs.has(url)) {
-      console.log(`  ⚠️ Duplicate URL detected in ${path.basename(sitemapPath)}: ${url}`);
-      sitemapChanged = true;
-      issuesFixed.push(`Removed duplicate URL from ${path.basename(sitemapPath)}: ${url}`);
-      return;
+    // Check if this URL contains a legacy slug from knownRedirects
+    if (url.includes('/blog/')) {
+      const slug = url.split('/blog/')[1].replace(/\/+$/, '');
+      if (knownRedirects[slug]) {
+        const canonicalUrl = `https://www.abuqitmirlabs.tech/blog/${knownRedirects[slug]}`;
+        console.log(`  ⚠️ Auto-fixing legacy slug in sitemap: ${url} -> ${canonicalUrl}`);
+        url = canonicalUrl;
+        sitemapChanged = true;
+        issuesFixed.push(`Canonicalized legacy sitemap link: ${slug} -> ${knownRedirects[slug]}`);
+      }
     }
 
-    // Check canonical mismatch (if this URL has a canonical pointing elsewhere, it must not be in sitemap)
+    // Check canonical mismatch (if this URL has a canonical pointing elsewhere)
     const routePath = url.replace('https://www.abuqitmirlabs.tech', '') || '/';
     const canonRegex = new RegExp(`['"]${routePath}['"]:\\s*\\{[\\s\\S]*?canonical:\\s*['"]([^'"]+)['"]`);
     const canonMatch = seoRoutesContent.match(canonRegex);
     if (canonMatch) {
       const canonical = canonMatch[1];
       if (canonical !== url && canonical !== url + '/') {
-        console.log(`  ⚠️ Non-canonical URL in sitemap: ${url} (canonical is ${canonical})`);
+        console.log(`  ⚠️ Auto-correcting non-canonical URL in sitemap: ${url} -> ${canonical}`);
+        url = canonical;
         sitemapChanged = true;
-        issuesFixed.push(`Removed non-canonical URL from ${path.basename(sitemapPath)}: ${url}`);
-        return;
+        issuesFixed.push(`Corrected non-canonical sitemap entry to: ${canonical}`);
       }
     }
 
+    // Check duplicate URL
+    if (seenLocs.has(url)) {
+      console.log(`  ⚠️ Duplicate URL removed from ${path.basename(sitemapPath)}: ${url}`);
+      sitemapChanged = true;
+      issuesFixed.push(`Removed duplicate URL from ${path.basename(sitemapPath)}: ${url}`);
+      return;
+    }
+
     seenLocs.add(url);
-    validUrlBlocks.push(fullBlock);
+    const updatedBlock = fullBlock.replace(/<loc>[\s\S]*?<\/loc>/, `<loc>${url}</loc>`);
+    validUrlBlocks.push(updatedBlock);
   });
 
   if (sitemapChanged) {
@@ -88,24 +112,27 @@ console.log('\n📌 Checking RSS feed for canonical compliance...');
 const rssPath = path.join(rootDir, 'public/rss.xml');
 if (fs.existsSync(rssPath)) {
   let rssContent = fs.readFileSync(rssPath, 'utf8');
-  const rssLinkMatches = [...rssContent.matchAll(/<link>(.*?)<\/link>/g)];
   let rssChanged = false;
-  
-  const knownRedirects = {
-    'saas-pricing-page-optimization-7-decisions-backed-by-data': 'saas-pricing-page-optimization-7-structural-decisions',
-    'ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont': 'ai-agents-cost-benefit-analysis',
-    'ai-overviews-killed-traffic-what-40-companies-did-next': 'ai-overviews-traffic-recovery-what-40-companies-did-next',
-    'flutter-vs-react-native-choosing-your-mobile-app-stack-in-2026': 'flutter-vs-react-native-choosing-mobile-app-stack-2026',
-    'app-development-agency-uk-what-to-ask-before-you-sign-2026-guide': 'app-development-agency-uk-what-to-ask-before-you-sign-2026'
-  };
 
   for (const [legacy, canonical] of Object.entries(knownRedirects)) {
-    if (rssContent.includes(legacy)) {
-      console.log(`  ⚠️ Found legacy slug "${legacy}" in rss.xml, replacing with "${canonical}"`);
-      rssContent = rssContent.replaceAll(legacy, canonical);
-      rssChanged = true;
-      issuesFixed.push(`Fixed non-canonical RSS link: ${legacy} -> ${canonical}`);
-    }
+    const legacyPatterns = [
+      `<link>https://www.abuqitmirlabs.tech/blog/${legacy}</link>`,
+      `<guid isPermaLink="true">https://www.abuqitmirlabs.tech/blog/${legacy}</guid>`,
+      `<guid>https://www.abuqitmirlabs.tech/blog/${legacy}</guid>`
+    ];
+    const canonPatterns = [
+      `<link>https://www.abuqitmirlabs.tech/blog/${canonical}</link>`,
+      `<guid isPermaLink="true">https://www.abuqitmirlabs.tech/blog/${canonical}</guid>`,
+      `<guid>https://www.abuqitmirlabs.tech/blog/${canonical}</guid>`
+    ];
+
+    legacyPatterns.forEach((pat, idx) => {
+      if (rssContent.includes(pat)) {
+        rssContent = rssContent.replaceAll(pat, canonPatterns[idx]);
+        rssChanged = true;
+        issuesFixed.push(`Fixed non-canonical RSS link: ${legacy} -> ${canonical}`);
+      }
+    });
   }
 
   if (rssChanged) {
@@ -113,6 +140,50 @@ if (fs.existsSync(rssPath)) {
     console.log('  ✅ Auto-fixed public/rss.xml to 100% canonical links.');
   } else {
     console.log('  ✅ public/rss.xml is 100% canonical.');
+  }
+}
+
+// ==========================================
+// 1C. AUDIT VERCEL REDIRECTS SYNCHRONIZATION
+// ==========================================
+console.log('\n📌 Checking vercel.json 301 redirects synchronization...');
+const vercelPath = path.join(rootDir, 'vercel.json');
+if (fs.existsSync(vercelPath)) {
+  try {
+    const vercelConfig = JSON.parse(fs.readFileSync(vercelPath, 'utf8'));
+    let vercelChanged = false;
+    if (!Array.isArray(vercelConfig.redirects)) {
+      vercelConfig.redirects = [];
+    }
+    const existingRedirectSources = new Set(vercelConfig.redirects.map(r => r.source));
+
+    for (const [legacy, canonical] of Object.entries(knownRedirects)) {
+      const blogSource = `/blog/${legacy}`;
+      const rootSource = `/${legacy}`;
+      const dest = `/blog/${canonical}`;
+
+      if (!existingRedirectSources.has(blogSource)) {
+        vercelConfig.redirects.push({ source: blogSource, destination: dest, permanent: true });
+        existingRedirectSources.add(blogSource);
+        vercelChanged = true;
+        issuesFixed.push(`Synced missing Vercel redirect: ${blogSource} -> ${dest}`);
+      }
+      if (!existingRedirectSources.has(rootSource)) {
+        vercelConfig.redirects.push({ source: rootSource, destination: dest, permanent: true });
+        existingRedirectSources.add(rootSource);
+        vercelChanged = true;
+        issuesFixed.push(`Synced missing Vercel redirect: ${rootSource} -> ${dest}`);
+      }
+    }
+
+    if (vercelChanged) {
+      fs.writeFileSync(vercelPath, JSON.stringify(vercelConfig, null, 2) + '\n', 'utf8');
+      console.log('  ✅ Auto-synchronized missing 301 redirects into vercel.json.');
+    } else {
+      console.log('  ✅ vercel.json 301 redirects are 100% synchronized.');
+    }
+  } catch (err) {
+    console.warn('  ⚠️ Could not parse vercel.json:', err.message);
   }
 }
 
