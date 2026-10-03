@@ -135,6 +135,11 @@
       "permanent": true
     },
     {
+      "source": "/blog/saas-pricing-page-optimization-7-decisions-backed-by-data",
+      "destination": "/blog/saas-pricing-page-optimization-7-structural-decisions",
+      "permanent": true
+    },
+    {
       "source": "/ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont",
       "destination": "/blog/ai-agents-cost-benefit-analysis",
       "permanent": true
