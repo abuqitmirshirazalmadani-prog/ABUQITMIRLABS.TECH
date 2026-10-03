@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
     auth, googleProvider, signInWithPopup, signOut, 
-    db, collection, addDoc, getDocs, updateDoc, deleteDoc, doc, serverTimestamp 
+    db, collection, addDoc, getDocs, updateDoc, deleteDoc, doc, serverTimestamp, query, where 
 } from '../lib/firebase';
+import { getCanonicalSlug } from '../data/canonicalRedirects';
 import { signInWithRedirect, getRedirectResult } from 'firebase/auth';
 import { 
     LayoutDashboard, FileText, Plus, LogOut, Shield, 
@@ -799,20 +800,35 @@ const AdminDashboard = () => {
         }
 
         try {
+            const cleanSlug = getCanonicalSlug(formData.slug);
+            const canonicalFormData = { ...formData, slug: cleanSlug };
             const tagsArray = formData.tags.split(',').map(tag => tag.trim().replace(/^#/, '')).filter(tag => tag !== '');
-            const postPayload = { ...formData, tags: tagsArray };
+            const postPayload = { ...canonicalFormData, tags: tagsArray };
             
-            if (editingId) {
-                await updateDoc(doc(db, 'posts', editingId), {
-                    ...formData,
+            let targetId = editingId;
+            if (!targetId) {
+                try {
+                    const existingQ = query(collection(db, 'posts'), where('slug', '==', cleanSlug));
+                    const existingSnap = await getDocs(existingQ);
+                    if (!existingSnap.empty) {
+                        targetId = existingSnap.docs[0].id;
+                    }
+                } catch (findErr) {
+                    console.warn('[AdminDashboard] Slug lookup notice:', findErr);
+                }
+            }
+
+            if (targetId) {
+                await updateDoc(doc(db, 'posts', targetId), {
+                    ...canonicalFormData,
                     helperImages: cleanHelperImages,
                     tags: tagsArray,
                     updatedAt: serverTimestamp()
                 });
-                setStatus({ type: 'success', message: 'Post updated in Firestore database!' });
+                setStatus({ type: 'success', message: `Post "${cleanSlug}" updated in database (duplicate prevented)!` });
             } else {
                 const docRef = await addDoc(collection(db, 'posts'), {
-                    ...formData,
+                    ...canonicalFormData,
                     helperImages: cleanHelperImages,
                     tags: tagsArray,
                     authorId: user.uid,

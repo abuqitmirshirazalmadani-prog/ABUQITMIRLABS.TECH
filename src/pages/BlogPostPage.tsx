@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
 import { db, collection, getDocs, query, where, handleFirestoreError, OperationType } from '../lib/firebase';
@@ -11,6 +11,7 @@ import MarkdownRenderer from '../components/MarkdownRenderer';
 import remarkGfm from 'remark-gfm';
 import { STATIC_BLOG_POSTS } from '../data/staticBlogPosts';
 import { generateBlogPostMeta } from '../utils/seoUtils';
+import { getCanonicalSlug } from '../data/canonicalRedirects';
 
 interface Post {
   title: string;
@@ -35,6 +36,12 @@ interface BlogPostPageProps {
 const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
     const { slug: paramSlug } = useParams<{ slug: string }>();
     const slug = overrideSlug || paramSlug;
+    
+    // Immediate client-side 301-equivalent redirect for any non-canonical or alias slugs
+    const canonicalSlug = getCanonicalSlug(slug || '');
+    if (slug && canonicalSlug && canonicalSlug !== slug) {
+        return <Navigate to={`/blog/${canonicalSlug}`} replace />;
+    }
     
     // Strictly use exact matching to prevent flashing wrong or outdated post data/images
     const staticFallback = (slug && STATIC_POSTS_MAP[slug]) 
@@ -63,6 +70,10 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                     slugsToTry.push('ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont');
                 } else if (slug === 'ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont') {
                     slugsToTry.push('ai-agents-cost-benefit-analysis');
+                } else if (slug === 'saas-pricing-page-optimization-7-structural-decisions') {
+                    slugsToTry.push('saas-pricing-page-optimization-7-decisions-backed-by-data');
+                } else if (slug === 'saas-pricing-page-optimization-7-decisions-backed-by-data') {
+                    slugsToTry.push('saas-pricing-page-optimization-7-structural-decisions');
                 }
 
                 let foundPost: Post | null = null;
@@ -1064,7 +1075,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
       ]
     };
 
-    const isSaasPricing = slug === 'saas-pricing-page-optimization-7-structural-decisions';
+    const isSaasPricing = slug === 'saas-pricing-page-optimization-7-structural-decisions' || slug === 'saas-pricing-page-optimization-7-decisions-backed-by-data';
 
     const saasPricingPageSchema = {
       "@context": "https://schema.org",

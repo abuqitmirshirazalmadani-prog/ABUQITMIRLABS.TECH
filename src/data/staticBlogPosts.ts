@@ -1102,6 +1102,7 @@ STATIC_BLOG_POSTS["ai-agents-cost-benefit-analysis"] = {
   ]
 };
 STATIC_BLOG_POSTS["ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont"] = STATIC_BLOG_POSTS["ai-agents-cost-benefit-analysis"];
+STATIC_BLOG_POSTS["saas-pricing-page-optimization-7-decisions-backed-by-data"] = STATIC_BLOG_POSTS["saas-pricing-page-optimization-7-structural-decisions"];
 
 export interface BlogPostSummary {
   id: string;

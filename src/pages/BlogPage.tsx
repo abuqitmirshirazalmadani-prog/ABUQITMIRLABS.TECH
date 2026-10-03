@@ -8,6 +8,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { getStaticBlogList } from '../data/staticBlogPosts';
+import { BLOG_SLUG_REDIRECTS, getCanonicalSlug } from '../data/canonicalRedirects';
 
 interface Post {
   id: string;
@@ -79,6 +80,8 @@ const formatCoverImage = (url?: string, width = 800) => {
     return cleanUrl;
 };
 
+const KNOWN_CANONICAL_SLUG_MAP: Record<string, string> = BLOG_SLUG_REDIRECTS;
+
 const BlogPage = () => {
     const staticInitialPosts = getStaticBlogList() as unknown as Post[];
     const [posts, setPosts] = useState<Post[]>(() => {
@@ -142,7 +145,8 @@ const BlogPage = () => {
                         }
 
                         const rawSlug = data.slug || doc.id;
-                        const cleanSlug = String(rawSlug).replace(/^\/+/, '').replace(/^blog\//, '');
+                        let cleanSlug = String(rawSlug).replace(/^\/+/, '').replace(/^blog\//, '');
+                        cleanSlug = KNOWN_CANONICAL_SLUG_MAP[cleanSlug] || cleanSlug;
 
                         return {
                             id: doc.id,

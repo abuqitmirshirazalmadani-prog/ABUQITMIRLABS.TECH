@@ -128,17 +128,20 @@ function MetaHeadSanitizer() {
   return null;
 }
 
+import { getCanonicalPath } from './data/canonicalRedirects';
+
 function GoogleAnalyticsTracker() {
   const { pathname, search } = useLocation();
 
   useEffect(() => {
     const timer = setTimeout(() => {
       if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
-        const canonicalUrl = `https://www.abuqitmirlabs.tech${pathname}`;
+        const canonicalPath = getCanonicalPath(pathname);
+        const canonicalUrl = `https://www.abuqitmirlabs.tech${canonicalPath}`;
         (window as any).gtag('event', 'page_view', {
           page_title: document.title,
           page_location: canonicalUrl,
-          page_path: pathname + search,
+          page_path: canonicalPath,
         });
       }
     }, 200);
@@ -332,6 +335,10 @@ export default function App() {
               <Route path="/pakistan-offshore-development-for-us-startups-2026" element={<Navigate to="/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026" replace />} />
               <Route path="/blog/saas-pricing-page-optimization-7-structural-decisions" element={<BlogPostPage overrideSlug="saas-pricing-page-optimization-7-structural-decisions" />} />
               <Route path="/saas-pricing-page-optimization-7-structural-decisions" element={<Navigate to="/blog/saas-pricing-page-optimization-7-structural-decisions" replace />} />
+              <Route path="/blog/saas-pricing-page-optimization-7-decisions-backed-by-data" element={<Navigate to="/blog/saas-pricing-page-optimization-7-structural-decisions" replace />} />
+              <Route path="/saas-pricing-page-optimization-7-decisions-backed-by-data" element={<Navigate to="/blog/saas-pricing-page-optimization-7-structural-decisions" replace />} />
+              <Route path="/blog/flutter-vs-react-native-choosing-your-mobile-app-stack-in-2026" element={<Navigate to="/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026" replace />} />
+              <Route path="/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026-guide" element={<Navigate to="/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026" replace />} />
               <Route path="/blog/ai-agents-cost-benefit-analysis" element={<BlogPostPage overrideSlug="ai-agents-cost-benefit-analysis" />} />
               <Route path="/ai-agents-cost-benefit-analysis" element={<Navigate to="/blog/ai-agents-cost-benefit-analysis" replace />} />
               <Route path="/blog/ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont" element={<Navigate to="/blog/ai-agents-cost-benefit-analysis" replace />} />

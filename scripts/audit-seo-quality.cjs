@@ -82,6 +82,41 @@ sitemapPaths.forEach(sitemapPath => {
 });
 
 // ==========================================
+// 1B. AUDIT RSS FEED FOR CANONICAL CONSISTENCY
+// ==========================================
+console.log('\n📌 Checking RSS feed for canonical compliance...');
+const rssPath = path.join(rootDir, 'public/rss.xml');
+if (fs.existsSync(rssPath)) {
+  let rssContent = fs.readFileSync(rssPath, 'utf8');
+  const rssLinkMatches = [...rssContent.matchAll(/<link>(.*?)<\/link>/g)];
+  let rssChanged = false;
+  
+  const knownRedirects = {
+    'saas-pricing-page-optimization-7-decisions-backed-by-data': 'saas-pricing-page-optimization-7-structural-decisions',
+    'ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont': 'ai-agents-cost-benefit-analysis',
+    'ai-overviews-killed-traffic-what-40-companies-did-next': 'ai-overviews-traffic-recovery-what-40-companies-did-next',
+    'flutter-vs-react-native-choosing-your-mobile-app-stack-in-2026': 'flutter-vs-react-native-choosing-mobile-app-stack-2026',
+    'app-development-agency-uk-what-to-ask-before-you-sign-2026-guide': 'app-development-agency-uk-what-to-ask-before-you-sign-2026'
+  };
+
+  for (const [legacy, canonical] of Object.entries(knownRedirects)) {
+    if (rssContent.includes(legacy)) {
+      console.log(`  ⚠️ Found legacy slug "${legacy}" in rss.xml, replacing with "${canonical}"`);
+      rssContent = rssContent.replaceAll(legacy, canonical);
+      rssChanged = true;
+      issuesFixed.push(`Fixed non-canonical RSS link: ${legacy} -> ${canonical}`);
+    }
+  }
+
+  if (rssChanged) {
+    fs.writeFileSync(rssPath, rssContent, 'utf8');
+    console.log('  ✅ Auto-fixed public/rss.xml to 100% canonical links.');
+  } else {
+    console.log('  ✅ public/rss.xml is 100% canonical.');
+  }
+}
+
+// ==========================================
 // 2. AUDIT BLOG POSTS FOR DUPLICATE HEADINGS
 // ==========================================
 console.log('\n📌 Checking blog posts for duplicate headings and title duplication...');

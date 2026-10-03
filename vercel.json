@@ -148,6 +148,41 @@
       "source": "/ai-agents-cost-benefit-analysis",
       "destination": "/blog/ai-agents-cost-benefit-analysis",
       "permanent": true
+    },
+    {
+      "source": "/blog/saas-pricing-page-optimization-7-decisions-backed-by-data",
+      "destination": "/blog/saas-pricing-page-optimization-7-structural-decisions",
+      "permanent": true
+    },
+    {
+      "source": "/saas-pricing-page-optimization-7-decisions-backed-by-data",
+      "destination": "/blog/saas-pricing-page-optimization-7-structural-decisions",
+      "permanent": true
+    },
+    {
+      "source": "/saas-pricing-page-optimization-7-structural-decisions",
+      "destination": "/blog/saas-pricing-page-optimization-7-structural-decisions",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ai-overviews-killed-traffic-what-40-companies-did-next",
+      "destination": "/blog/ai-overviews-traffic-recovery-what-40-companies-did-next",
+      "permanent": true
+    },
+    {
+      "source": "/ai-overviews-killed-traffic-what-40-companies-did-next",
+      "destination": "/blog/ai-overviews-traffic-recovery-what-40-companies-did-next",
+      "permanent": true
+    },
+    {
+      "source": "/blog/flutter-vs-react-native-choosing-your-mobile-app-stack-in-2026",
+      "destination": "/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026-guide",
+      "destination": "/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026",
+      "permanent": true
     }
   ],
   "rewrites": [
