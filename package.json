@@ -4,11 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "tsx server.ts",
+    "dev": "node scripts/sync-blog-posts.mjs && tsx server.ts",
     "audit:seo": "node scripts/audit-seo-quality.cjs",
     "prerender": "node scripts/prerender.cjs",
     "generate:logos": "node scripts/generate-logos.js && node scripts/generate-social-assets.js && node scripts/generate-ecommerce-banner.cjs",
-    "build": "node scripts/audit-seo-quality.cjs && node scripts/generate-logos.js && node scripts/generate-social-assets.js && node scripts/generate-ecommerce-banner.cjs && vite build && node scripts/prerender.cjs && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs && cp -r public/images dist/ && cp public/sitemap.xml dist/sitemap.xml && cp public/robots.txt dist/robots.txt && cp public/rss.xml dist/rss.xml",
+    "build": "node scripts/sync-blog-posts.mjs && node scripts/audit-seo-quality.cjs && node scripts/generate-logos.js && node scripts/generate-social-assets.js && node scripts/generate-ecommerce-banner.cjs && vite build && node scripts/prerender.cjs && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs && cp -r public/images dist/ && cp public/sitemap.xml dist/sitemap.xml && cp public/robots.txt dist/robots.txt && cp public/rss.xml dist/rss.xml",
     "start": "node dist/server.cjs",
     "preview": "vite preview",
     "clean": "rm -rf dist",

@@ -1180,3 +1180,4 @@ export function getStaticBlogList(): BlogPostSummary[] {
     };
   }).filter(Boolean) as BlogPostSummary[];
 }
+
