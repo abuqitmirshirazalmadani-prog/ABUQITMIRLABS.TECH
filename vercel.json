@@ -343,6 +343,16 @@
       "source": "/ai-integration-with-legacy-systems-2026",
       "destination": "/blog/ai-integration-with-legacy-systems-the-complete-2026-guide",
       "permanent": true
+    },
+    {
+      "source": "/blog/url-fragmentation-headless-spa",
+      "destination": "/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs",
+      "permanent": true
+    },
+    {
+      "source": "/url-fragmentation-headless-spa",
+      "destination": "/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs",
+      "permanent": true
     }
   ],
   "rewrites": [

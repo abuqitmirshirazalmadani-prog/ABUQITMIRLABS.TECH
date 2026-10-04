@@ -49,7 +49,8 @@ export const BLOG_SLUG_REDIRECTS: Record<string, string> = {
   'what-seo-services-actually-means': 'what-seo-services-actually-means-2026',
   'what-are-healthcare-ai-agents': 'what-are-healthcare-ai-agents-complete-guide-2026',
   'custom-ai-solutions-for-fintech-2026': 'custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting',
-  'ai-integration-with-legacy-systems-2026': 'ai-integration-with-legacy-systems-the-complete-2026-guide'
+  'ai-integration-with-legacy-systems-2026': 'ai-integration-with-legacy-systems-the-complete-2026-guide',
+  'url-fragmentation-headless-spa': 'fix-url-fragmentation-in-headless-spas-abuqitmirlabs'
 };
 
 /**
