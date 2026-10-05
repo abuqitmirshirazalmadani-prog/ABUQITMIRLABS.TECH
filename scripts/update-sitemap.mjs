@@ -84,8 +84,10 @@ for (const rawSlug of slugs) {
   }
 }
 
-// 4. Save karein
+// 4. Save karein (public/sitemap.xml and root sitemap.xml)
 fs.writeFileSync(sitemapPath, sitemap);
+const rootSitemapPath = path.join(rootDir, 'sitemap.xml');
+fs.writeFileSync(rootSitemapPath, sitemap);
 
 if (added > 0) {
   console.log(`\n🎉 Added ${added} new URLs to sitemap.xml`);

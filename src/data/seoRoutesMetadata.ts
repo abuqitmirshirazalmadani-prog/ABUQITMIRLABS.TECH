@@ -18,15 +18,15 @@ export interface RouteSeoMetadata {
 
 export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   '/': {
-    title: 'Custom Software Development Company | AI & Web Agency | AbuQitmirLabs',
-    description: 'AbuQitmirLabs is a custom software development company in Karachi building AI agents, mobile apps & web solutions for US, UK & global clients. Get a free consultation.',
+    title: 'Custom Software Development & AI Agency | AbuQitmirLabs',
+    description: 'AbuQitmirLabs is a custom software & AI development company building web platforms and mobile apps for US, UK & global clients. Contact us today.',
     canonical: 'https://www.abuqitmirlabs.tech/',
-    ogTitle: 'Custom Software Development Company | AI & Web Agency | AbuQitmirLabs',
-    ogDescription: 'AbuQitmirLabs is a custom software development company in Karachi building AI agents, mobile apps & web solutions for US, UK & global clients. Get a free consultation.',
+    ogTitle: 'Custom Software Development & AI Agency | AbuQitmirLabs',
+    ogDescription: 'AbuQitmirLabs is a custom software & AI development company building web platforms and mobile apps for US, UK & global clients. Contact us today.',
     ogImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg',
     ogType: 'website',
-    twitterTitle: 'Custom Software Development Company | AI & Web Agency | AbuQitmirLabs',
-    twitterDescription: 'AbuQitmirLabs is a custom software development company in Karachi building AI agents, mobile apps & web solutions for US, UK & global clients. Get a free consultation.',
+    twitterTitle: 'Custom Software Development & AI Agency | AbuQitmirLabs',
+    twitterDescription: 'AbuQitmirLabs is a custom software & AI development company building web platforms and mobile apps for US, UK & global clients. Contact us today.',
     twitterImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg'
   },
   '/about': {
@@ -2152,10 +2152,10 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
       ]
     }
   },
-  '/blog/url-fragmentation-headless-spa': {
+  '/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs': {
     title: 'Fix URL Fragmentation in Headless SPAs | AbuQitmirLabs',
     description: 'Eliminate duplicate indexing across headless SPAs, GA4, and RSS feeds with a 5-layer self-healing architecture. Includes code for Next.js, React, and edge CDNs.',
-    canonical: 'https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs',
     ogTitle: 'Fix URL Fragmentation in Headless SPAs | AbuQitmirLabs',
     ogDescription: 'A 5-layer self-healing architecture that eliminates duplicate URLs across headless SPAs, GA4, and syndication feeds.',
     ogImage: 'https://www.abuqitmirlabs.tech/assets/blog/url-fragmentation-headless-spa-cover.png',
@@ -2205,18 +2205,18 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         },
         {
           "@type": "WebPage",
-          "@id": "https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa#webpage",
-          "url": "https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa",
+          "@id": "https://www.abuqitmirlabs.tech/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs#webpage",
+          "url": "https://www.abuqitmirlabs.tech/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs",
           "name": "Fix URL Fragmentation in Headless SPAs | AbuQitmirLabs",
           "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" },
-          "about": { "@id": "https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa#article" },
+          "about": { "@id": "https://www.abuqitmirlabs.tech/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs#article" },
           "description": "Eliminate duplicate indexing across headless SPAs, GA4, and RSS feeds with a 5-layer self-healing architecture.",
           "inLanguage": "en-US",
-          "breadcrumb": { "@id": "https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa#breadcrumb" }
+          "breadcrumb": { "@id": "https://www.abuqitmirlabs.tech/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs#breadcrumb" }
         },
         {
           "@type": "Article",
-          "@id": "https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa#article",
+          "@id": "https://www.abuqitmirlabs.tech/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs#article",
           "headline": "URL Fragmentation in Headless SPAs: Why Duplicate Indexing Happens and How to Eliminate It Permanently",
           "name": "Fix URL Fragmentation in Headless SPAs | AbuQitmirLabs",
           "description": "A 5-layer self-healing architecture to eliminate URL fragmentation and duplicate indexing across headless SPAs, GA4, and syndication feeds.",
@@ -2229,7 +2229,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
           "datePublished": "2026-10-03T00:00:00+00:00",
           "dateModified": "2026-10-03T00:00:00+00:00",
-          "mainEntityOfPage": { "@id": "https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa#webpage" },
+          "mainEntityOfPage": { "@id": "https://www.abuqitmirlabs.tech/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs#webpage" },
           "keywords": "URL fragmentation headless SPA, duplicate URL indexing, GA4 duplicate pageviews, canonical URL SPA, edge redirect SPA, headless CMS URL management, Next.js canonical URL",
           "articleSection": "Web Development",
           "inLanguage": "en-US",
@@ -2237,7 +2237,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         },
         {
           "@type": "FAQPage",
-          "@id": "https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa#faq",
+          "@id": "https://www.abuqitmirlabs.tech/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs#faq",
           "mainEntity": [
             {
               "@type": "Question",
@@ -2283,7 +2283,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         },
         {
           "@type": "BreadcrumbList",
-          "@id": "https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa#breadcrumb",
+          "@id": "https://www.abuqitmirlabs.tech/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs#breadcrumb",
           "itemListElement": [
             {
               "@type": "ListItem",
@@ -2301,7 +2301,128 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
               "@type": "ListItem",
               "position": 3,
               "name": "Fix URL Fragmentation in Headless SPAs",
-              "item": "https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa"
+              "item": "https://www.abuqitmirlabs.tech/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  '/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact': {
+    title: 'Hidden Cost of Cheap Hosting: SEO & Revenue Impact | AbuQitmirLabs',
+    description: 'Cheap hosting keeps TTFB above 800ms, fails Core Web Vitals, and costs more in lost revenue than the price difference. Here is what the data actually shows.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact',
+    ogTitle: 'Hidden Cost of Cheap Hosting: SEO & Revenue Impact | AbuQitmirLabs',
+    ogDescription: 'Cheap hosting keeps TTFB above 800ms, fails Core Web Vitals, and costs more in lost revenue than the price difference. Here is what the data actually shows.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/blog/cheap-hosting-performance-impact-2026-og.jpg',
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Hidden Cost of Cheap Hosting: SEO & Revenue Impact | AbuQitmirLabs',
+    twitterDescription: 'Cheap hosting keeps TTFB above 800ms, fails Core Web Vitals, and costs more in lost revenue than the price difference.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/cheap-hosting-performance-impact-2026-og.jpg',
+    schema: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.abuqitmirlabs.tech/#organization",
+          "name": "AbuQitmirLabs",
+          "url": "https://www.abuqitmirlabs.tech/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.abuqitmirlabs.tech/assets/logo.png",
+            "width": 512,
+            "height": 512
+          },
+          "description": "Custom software, AI agent, and web development studio in Karachi building high-performance applications for US, UK, Canada, and Australia clients."
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.abuqitmirlabs.tech/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact#webpage",
+          "url": "https://www.abuqitmirlabs.tech/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact",
+          "name": "Hidden Cost of Cheap Hosting: SEO & Revenue Impact | AbuQitmirLabs",
+          "description": "Cheap hosting keeps TTFB above 800ms, fails Core Web Vitals, and costs more in lost revenue than the price difference.",
+          "breadcrumb": { "@id": "https://www.abuqitmirlabs.tech/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact#breadcrumb" }
+        },
+        {
+          "@type": "Article",
+          "@id": "https://www.abuqitmirlabs.tech/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact#article",
+          "headline": "Hidden Cost of Cheap Hosting: SEO & Revenue Impact",
+          "name": "Hidden Cost of Cheap Hosting: SEO & Revenue Impact | AbuQitmirLabs",
+          "description": "Cheap hosting keeps TTFB above 800ms, fails Core Web Vitals, and costs more in lost revenue than the price difference. Here is what the data actually shows.",
+          "image": "https://www.abuqitmirlabs.tech/images/blog/cheap-hosting-performance-impact-2026-og.jpg",
+          "author": {
+            "@type": "Person",
+            "name": "Abu Qitmir Mohammad Shiraz Al-Madani"
+          },
+          "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+          "datePublished": "2026-10-05T00:00:00+00:00",
+          "dateModified": "2026-10-05T00:00:00+00:00",
+          "mainEntityOfPage": { "@id": "https://www.abuqitmirlabs.tech/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact#webpage" },
+          "keywords": "cheap hosting performance impact, shared hosting vs managed hosting, hosting affect SEO, TTFB shared hosting, cheap hosting Core Web Vitals",
+          "articleSection": "Performance Engineering",
+          "inLanguage": "en-US",
+          "wordCount": 2600
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.abuqitmirlabs.tech/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Does cheap hosting affect SEO rankings?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Core Web Vitals are a confirmed ranking signal since the 2021 Page Experience update. Cheap shared hosting that keeps TTFB above 800ms makes it structurally difficult to pass the LCP threshold of 2.5 seconds."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What TTFB should I aim for?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Web.dev guidelines published by Google define good TTFB as anything under 800ms, while under 200ms is considered excellent."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I fix slow shared hosting with caching?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Caching reduces database queries and dynamic rendering, but cache misses, uncacheable cart/checkout flows, and first requests still hit underlying origin hardware constraints."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is cheap hosting ever the right choice?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. For pre-rendered static sites (SSG) distributed directly on global CDN edges (like Cloudflare, Vercel, or AWS CloudFront), origin compute is bypassed entirely and TTFB is sub-50ms worldwide."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.abuqitmirlabs.tech/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.abuqitmirlabs.tech/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://www.abuqitmirlabs.tech/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Hidden Cost of Cheap Hosting: SEO & Revenue Impact",
+              "item": "https://www.abuqitmirlabs.tech/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact"
             }
           ]
         }

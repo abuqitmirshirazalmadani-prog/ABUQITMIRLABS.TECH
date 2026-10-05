@@ -129,8 +129,8 @@ export const homeSchema = {
       "@type": "WebPage",
       "@id": "https://www.abuqitmirlabs.tech/#webpage",
       "url": "https://www.abuqitmirlabs.tech/",
-      "name": "Custom Software Development Company | AI & Web Agency | AbuQitmirLabs",
-      "description": "AbuQitmirLabs is a custom software development company in Karachi building AI agents, mobile apps & web solutions for US, UK & global clients. Get a free consultation.",
+      "name": "Custom Software Development & AI Agency | AbuQitmirLabs",
+      "description": "AbuQitmirLabs is a custom software & AI development company building web platforms and mobile apps for US, UK & global clients. Contact us today.",
       "inLanguage": "en-US",
       "isPartOf": {
         "@type": "WebSite",

@@ -75,7 +75,9 @@ export default function HomePage() {
     "name": "AbuQitmirLabs",
     "description": "Custom Software Development Company and AI Agency",
     "publisher": {
-      "@id": "https://www.abuqitmirlabs.tech/#organization"
+      "@type": "Organization",
+      "@id": "https://www.abuqitmirlabs.tech/#organization",
+      "name": "AbuQitmirLabs"
     },
     "potentialAction": {
       "@type": "SearchAction",
@@ -90,20 +92,22 @@ export default function HomePage() {
   return (
     <main id="main-content" className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <Helmet>
-        <title>Custom Software Development Company | AI &amp; Web Agency | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs is a custom software development company in Karachi building AI agents, mobile apps &amp; web solutions for US, UK &amp; global clients. Get a free consultation." />
+        <title>Custom Software Development &amp; AI Agency | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs is a custom software &amp; AI development company building web platforms and mobile apps for US, UK &amp; global clients. Contact us today." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/" />
+        <link rel="alternate" hreflang="x-default" href="https://www.abuqitmirlabs.tech/" />
+        <link rel="alternate" hreflang="en" href="https://www.abuqitmirlabs.tech/" />
         <link rel="preload" as="image" href="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" type="image/jpeg" fetchPriority="high" />
         
-        <meta property="og:title" content="Custom Software Development Company | AI &amp; Web Agency | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs is a custom software development company in Karachi building AI agents, mobile apps &amp; web solutions for US, UK &amp; global clients. Get a free consultation." />
+        <meta property="og:title" content="Custom Software Development &amp; AI Agency | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs is a custom software &amp; AI development company building web platforms and mobile apps for US, UK &amp; global clients. Contact us today." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
         <meta property="og:image:alt" content="AbuQitmirLabs Custom Software &amp; AI Development Studio" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Custom Software Development Company | AI &amp; Web Agency | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs is a custom software development company in Karachi building AI agents, mobile apps &amp; web solutions for US, UK &amp; global clients. Get a free consultation." />
+        <meta name="twitter:title" content="Custom Software Development &amp; AI Agency | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs is a custom software &amp; AI development company building web platforms and mobile apps for US, UK &amp; global clients. Contact us today." />
         <meta name="twitter:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
         <script type="application/ld+json">{JSON.stringify(homeSchema)}</script>
       
