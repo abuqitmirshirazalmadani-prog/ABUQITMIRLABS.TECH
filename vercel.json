@@ -47,6 +47,21 @@
   ],
   "redirects": [
     {
+      "source": "/the-2026-static-site-comeback-why-jamstack-won-after-all",
+      "destination": "/blog/the-2026-static-site-comeback-why-jamstack-won-after-all",
+      "permanent": true
+    },
+    {
+      "source": "/blog/2026-static-site-comeback-jamstack-vs-dynamic-website",
+      "destination": "/blog/the-2026-static-site-comeback-why-jamstack-won-after-all",
+      "permanent": true
+    },
+    {
+      "source": "/2026-static-site-comeback-jamstack-vs-dynamic-website",
+      "destination": "/blog/the-2026-static-site-comeback-why-jamstack-won-after-all",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
