@@ -95,8 +95,8 @@ export default function HomePage() {
         <title>Custom Software Development &amp; AI Agency | AbuQitmirLabs</title>
         <meta name="description" content="AbuQitmirLabs is a custom software &amp; AI development company building web platforms and mobile apps for US, UK &amp; global clients. Contact us today." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/" />
-        <link rel="alternate" hreflang="x-default" href="https://www.abuqitmirlabs.tech/" />
-        <link rel="alternate" hreflang="en" href="https://www.abuqitmirlabs.tech/" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.abuqitmirlabs.tech/" />
+        <link rel="alternate" hrefLang="en" href="https://www.abuqitmirlabs.tech/" />
         <link rel="preload" as="image" href="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" type="image/jpeg" fetchPriority="high" />
         
         <meta property="og:title" content="Custom Software Development &amp; AI Agency | AbuQitmirLabs" />

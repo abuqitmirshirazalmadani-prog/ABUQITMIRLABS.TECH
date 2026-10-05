@@ -185,7 +185,9 @@ const routes = [
   '/blog/ai-agent-development-agency-vs-in-house',
   '/blog/generative-ai-chatbot-development-what-it-actually-costs-in-2026',
   '/blog/healthcare-software-development-solutions-2026-custom-ehr-clinical-software',
-'/blog/ai-agents-cost-benefit-analysis'
+  '/blog/ai-agents-cost-benefit-analysis',
+  '/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs',
+  '/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact'
 ];
 
 // Merge explicitly defined routes with any routes declared in SEO_ROUTES_METADATA
