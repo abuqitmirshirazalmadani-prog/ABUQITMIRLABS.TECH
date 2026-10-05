@@ -844,6 +844,31 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     twitterDescription: "Custom LMS without these 9 features will fail at engagement and retention. Here's what separates production-ready platforms from proof-of-concept toys.",
     twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/edtech-lms-9-features-og.jpg'
   },
+
+  '/blog/flutter-vs-native-mobile-app-development-2026': {
+    title: 'Flutter vs Native Mobile App Development 2026: Which to Choose',
+    description: 'Flutter vs native iOS and Android in 2026. A practical comparison of performance, cost, and team requirements for founders and CTOs.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/flutter-vs-native-mobile-app-development-2026',
+    ogTitle: 'Flutter vs Native Mobile App Development 2026',
+    ogDescription: 'Flutter vs native iOS and Android in 2026. A practical comparison of performance, cost, and team requirements.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/blog/flutter-vs-native-mobile-app-development-2026-og.jpg',
+    ogType: 'article',
+    twitterTitle: 'Flutter vs Native Mobile App Development 2026',
+    twitterDescription: 'Flutter vs native iOS and Android in 2026. A practical comparison of performance, cost, and team requirements.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/flutter-vs-native-mobile-app-development-2026-og.jpg',
+  },
+  '/blog/ai-agent-development-agency-vs-in-house': {
+    title: 'AI Agent Development: Agency vs In-House — The Complete Guide',
+    description: 'Agency vs in-house AI agent development: cost, speed, control, and when each approach makes sense for startups and enterprise teams.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/ai-agent-development-agency-vs-in-house',
+    ogTitle: 'AI Agent Development: Agency vs In-House',
+    ogDescription: 'Agency vs in-house AI agent development: cost, speed, control, and when each approach makes sense.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/blog/ai-agent-development-agency-vs-in-house-og.jpg',
+    ogType: 'article',
+    twitterTitle: 'AI Agent Development: Agency vs In-House',
+    twitterDescription: 'Agency vs in-house AI agent development: cost, speed, control, and when each approach makes sense.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/ai-agent-development-agency-vs-in-house-og.jpg',
+  },
   '/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026': {
     title: 'Flutter vs React Native: Choosing Your Mobile App Stack in 2026',
     description: "Flutter now has 46% market share. React Native has 4× more developers. Here's the honest decision framework for choosing between them in 2026.",

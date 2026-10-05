@@ -181,7 +181,11 @@ const routes = [
   '/blog/ai-overviews-traffic-recovery-what-40-companies-did-next',
   '/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026',
   '/blog/saas-pricing-page-optimization-7-structural-decisions',
-  '/blog/ai-agents-cost-benefit-analysis'
+    '/blog/flutter-vs-native-mobile-app-development-2026',
+  '/blog/ai-agent-development-agency-vs-in-house',
+  '/blog/generative-ai-chatbot-development-what-it-actually-costs-in-2026',
+  '/blog/healthcare-software-development-solutions-2026-custom-ehr-clinical-software',
+'/blog/ai-agents-cost-benefit-analysis'
 ];
 
 // Merge explicitly defined routes with any routes declared in SEO_ROUTES_METADATA
