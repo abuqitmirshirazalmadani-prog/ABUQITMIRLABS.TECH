@@ -308,3 +308,12 @@ A chatbot reacts to prompts. An agent pursues a goal: it plans steps, invokes to
 
 ### How does AbuQitmirLabs approach AI agent development?
 AbuQitmirLabs builds production AI agents for startups and enterprises. We follow the Agentic Value Filter before scoping any engagement. Our work includes TajweedPage.com, a RAG-based AI education platform.
+
+---
+
+### Related Internal Content
+- AI Agent Development Pillar: https://www.abuqitmirlabs.tech/ai-agent-development
+- Enterprise AI Automation: https://www.abuqitmirlabs.tech/solutions/ai-automation
+- RAG AI Integration Guide: https://www.abuqitmirlabs.tech/blog/the-complete-guide-to-rag-ai-integration-for-startups
+- Custom Software Development: https://www.abuqitmirlabs.tech/custom-software
+- TajweedPage Case Study: https://www.abuqitmirlabs.tech/case-studies/tajweedpage
