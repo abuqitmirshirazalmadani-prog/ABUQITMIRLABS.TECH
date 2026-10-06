@@ -186,7 +186,8 @@ const routes = [
   '/blog/generative-ai-chatbot-development-what-it-actually-costs-in-2026',
   '/blog/healthcare-software-development-solutions-2026-custom-ehr-clinical-software',
   '/blog/ai-agents-cost-benefit-analysis',
-  '/blog/when-to-invest-in-ai-agent',
+  '/blog/when-to-invest-in-an-ai-agent-in-2026-a-realistic-cost-benefit-analysis-for-founders',
+  
   '/blog/the-2026-static-site-comeback-why-jamstack-won-after-all',
   '/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs',
   '/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact'
