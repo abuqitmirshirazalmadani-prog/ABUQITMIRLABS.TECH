@@ -9,6 +9,7 @@
  */
 
 export const BLOG_SLUG_REDIRECTS: Record<string, string> = {
+  'when-to-invest-in-an-ai-agent-in-2026-a-realistic-cost-benefit-analysis-for-founders': 'when-to-invest-in-ai-agent',
   '2026-static-site-comeback-jamstack-vs-dynamic-website': 'the-2026-static-site-comeback-why-jamstack-won-after-all',
   // SaaS Pricing Page Optimization
   'saas-pricing-page-optimization-7-decisions-backed-by-data': 'saas-pricing-page-optimization-7-structural-decisions',

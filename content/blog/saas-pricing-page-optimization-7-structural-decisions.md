@@ -208,22 +208,7 @@ Kirro's 2026 benchmarks, as cited by Koji, put the median at about 2 to 5 percen
 
 **How many pricing tiers should a SaaS product have?**
 Three is the strongest default. Visionary Marketing's 2026 benchmark found three-tier pages converted 41 percent better than pages with four or more. Test a fourth tier only if it serves a distinct customer segment.
-- **Source quality.** Visionary Marketing's study covers more than 4,200 tests across 218 pricing pages, but it is self-published by an agency, not peer reviewed.
-- **Lifts do not add up.** Seven individual lifts do not equal one combined lift. Overlapping changes share the same underlying effect.
-- **Your audience differs.** A self-serve tool priced at $20 a month and an enterprise platform behave differently.
-- **Lab versus live.** Ariely's decoy result is a classroom experiment. It explains why the effect exists, not how large it is on your page.
 
-This is the reason the title of this guide makes no promise of a fixed conversion lift. The data supports a list of well-founded things to test, in a sensible order.
-
----
-
-## FAQs {#faqs}
-
-**What is a good conversion rate for a SaaS pricing page?**
-Kirro's 2026 benchmarks, as cited by Koji, put the median at about 2 to 5 percent. The right target depends on traffic source, price point, and whether visitors are trialling or buying. Compare your page against your own history before you compare it against a benchmark.
-
-**How many pricing tiers should a SaaS product have?**
-Three is the strongest default. Visionary Marketing's 2026 benchmark found three-tier pages converted 41 percent better than pages with four or more. Test a fourth tier only if it serves a distinct customer segment.
 **Should I default to annual or monthly billing?**
 It depends on your goal. In Visionary Marketing's data, an annual default lifted annual signups by 27 percent but reduced total conversion by 6 percent. Measure revenue per visitor to decide, and keep the monthly option visible.
 

@@ -47,6 +47,16 @@
   ],
   "redirects": [
     {
+      "source": "/blog/when-to-invest-in-an-ai-agent-in-2026-a-realistic-cost-benefit-analysis-for-founders",
+      "destination": "/blog/when-to-invest-in-ai-agent",
+      "permanent": true
+    },
+    {
+      "source": "/when-to-invest-in-an-ai-agent-in-2026-a-realistic-cost-benefit-analysis-for-founders",
+      "destination": "/blog/when-to-invest-in-ai-agent",
+      "permanent": true
+    },
+    {
       "source": "/when-to-invest-in-ai-agent",
       "destination": "/blog/when-to-invest-in-ai-agent",
       "permanent": true
