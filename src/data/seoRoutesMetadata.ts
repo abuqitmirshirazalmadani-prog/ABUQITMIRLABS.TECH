@@ -2703,12 +2703,12 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     keywords: 'technical audit checklist for founders, how to vet a developer, developer vetting checklist, questions to ask before hiring a developer, technical due diligence for founders, vetting a software development agency, code quality audit, developer portfolio review, how to hire a developer',
     ogTitle: 'Technical Audit Checklist for Founders 2026 | AbuQitmirLabs',
     ogDescription: 'Five minutes. Ten checks. Everything a non-technical founder needs to verify before hiring a developer.',
-    ogImage: 'https://www.abuqitmirlabs.tech/assets/blog/5-minute-technical-audit-cover.png',
+    ogImage: 'https://i.postimg.cc/Y92rZgvg/Five-Minute-Technical-Audit-Checklist.png',
     ogType: 'article',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Technical Audit Checklist for Founders 2026 | AbuQitmirLabs',
     twitterDescription: 'Ten checks. Five minutes. Zero engineering background required.',
-    twitterImage: 'https://www.abuqitmirlabs.tech/assets/blog/5-minute-technical-audit-cover.png',
+    twitterImage: 'https://i.postimg.cc/Y92rZgvg/Five-Minute-Technical-Audit-Checklist.png',
     schemaJsonLd: {
       "@context": "https://schema.org",
       "@graph": [
@@ -2765,7 +2765,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           "headline": "The 5-Minute Technical Audit: What Every Founder Should Check Before Hiring a Developer in 2026",
           "name": "Technical Audit Checklist for Founders 2026 | AbuQitmirLabs",
           "description": "A five-minute technical audit checklist for founders hiring a developer. Spot red flags in portfolios, Git history, security, and contracts before you sign.",
-          "image": "https://www.abuqitmirlabs.tech/assets/blog/5-minute-technical-audit-cover.png",
+          "image": "https://i.postimg.cc/Y92rZgvg/Five-Minute-Technical-Audit-Checklist.png",
           "author": {
             "@type": "Organization",
             "name": "AbuQitmirLabs",

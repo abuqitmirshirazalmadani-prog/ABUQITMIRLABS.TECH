@@ -9,6 +9,7 @@
  */
 
 export const BLOG_SLUG_REDIRECTS: Record<string, string> = {
+  'the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026': '5-minute-technical-audit-for-founders',
   'when-to-invest-in-an-ai-agent-in-2026-a-realistic-cost-benefit-analysis-for-founders': 'when-to-invest-in-ai-agent',
     '2026-static-site-comeback-jamstack-vs-dynamic-website': 'the-2026-static-site-comeback-why-jamstack-won-after-all',
   // SaaS Pricing Page Optimization

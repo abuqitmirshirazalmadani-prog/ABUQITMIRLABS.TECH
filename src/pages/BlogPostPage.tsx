@@ -3138,15 +3138,21 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                 height="675"
                                 loading="lazy"
                                 decoding="async"
-                                onError={(e) => {
+                                 onError={(e) => {
                                     const target = e.target as HTMLImageElement;
+                                    if (target.src.includes('Five-Minute-Technical-Audit-Checklist') || target.src.includes('5-minute-technical-audit')) {
+                                        if (!target.src.endsWith('/assets/blog/5-minute-technical-audit-cover.png')) {
+                                            target.src = '/assets/blog/5-minute-technical-audit-cover.png';
+                                            return;
+                                        }
+                                    }
                                     if (target.src.includes('cost-benefit') || target.src.includes('A-7-question-framework') || target.src.includes('j2pfBQ3d')) {
                                         if (!target.src.endsWith('/images/A-7-question-framework.jpg') && !target.src.endsWith('/images/ai-agents-cost-benefit-analysis-og.jpg')) {
                                             target.src = '/images/A-7-question-framework.jpg';
                                             return;
                                         }
                                     }
-                                    if (target.src.includes('offshore') || target.src.includes('checklist')) {
+                                    if ((target.src.includes('offshore') || target.src.includes('checklist')) && !target.src.includes('Technical-Audit') && !target.src.includes('technical-audit')) {
                                         if (!target.src.endsWith('/og-offshore-web-development-checklist.jpg')) {
                                             target.src = '/og-offshore-web-development-checklist.jpg';
                                             return;

@@ -411,6 +411,16 @@
       "source": "/url-fragmentation-headless-spa",
       "destination": "/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs",
       "permanent": true
+    },
+    {
+      "source": "/blog/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026",
+      "destination": "/blog/5-minute-technical-audit-for-founders",
+      "permanent": true
+    },
+    {
+      "source": "/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026",
+      "destination": "/blog/5-minute-technical-audit-for-founders",
+      "permanent": true
     }
   ],
   "rewrites": [
