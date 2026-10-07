@@ -2310,15 +2310,15 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact': {
     title: 'The Hidden Cost of Cheap Hosting: Performance, SEO & Revenue Impact | AbuQitmirLabs',
-    description: 'Cheap hosting keeps TTFB above 800ms, fails Core Web Vitals, and costs more in lost revenue than the price difference. Here is what the data actually shows.',
+    description: 'Cheap hosting can push TTFB past 800ms and hurt Core Web Vitals. See what published data shows, where it is vendor-biased, and how to test your own site.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact',
     ogTitle: 'The Hidden Cost of Cheap Hosting: Performance, SEO & Revenue Impact | AbuQitmirLabs',
-    ogDescription: 'Cheap hosting keeps TTFB above 800ms, fails Core Web Vitals, and costs more in lost revenue than the price difference. Here is what the data actually shows.',
+    ogDescription: 'Cheap hosting can push TTFB past 800ms and hurt Core Web Vitals. See what published data shows, where it is vendor-biased, and how to test your own site.',
     ogImage: 'https://www.abuqitmirlabs.tech/images/blog/cheap-hosting-performance-impact-2026-og.jpg',
     ogType: 'article',
     twitterCard: 'summary_large_image',
     twitterTitle: 'The Hidden Cost of Cheap Hosting: Performance, SEO & Revenue Impact | AbuQitmirLabs',
-    twitterDescription: 'Cheap hosting keeps TTFB above 800ms, fails Core Web Vitals, and costs more in lost revenue than the price difference.',
+    twitterDescription: 'Cheap hosting can push TTFB past 800ms and hurt Core Web Vitals. See what the published data shows and how to test your own site.',
     twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/cheap-hosting-performance-impact-2026-og.jpg',
     schema: {
       "@context": "https://schema.org",
@@ -2341,7 +2341,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           "@id": "https://www.abuqitmirlabs.tech/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact#webpage",
           "url": "https://www.abuqitmirlabs.tech/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact",
           "name": "Hidden Cost of Cheap Hosting: SEO & Revenue Impact | AbuQitmirLabs",
-          "description": "Cheap hosting keeps TTFB above 800ms, fails Core Web Vitals, and costs more in lost revenue than the price difference.",
+          "description": "Cheap hosting can push TTFB past 800ms and hurt Core Web Vitals. See what the published data shows and how to test your own site.",
           "breadcrumb": { "@id": "https://www.abuqitmirlabs.tech/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact#breadcrumb" }
         },
         {
@@ -2349,7 +2349,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           "@id": "https://www.abuqitmirlabs.tech/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact#article",
           "headline": "The Hidden Cost of Cheap Hosting: Performance, SEO & Revenue Impact",
           "name": "Hidden Cost of Cheap Hosting: SEO & Revenue Impact | AbuQitmirLabs",
-          "description": "Cheap hosting keeps TTFB above 800ms, fails Core Web Vitals, and costs more in lost revenue than the price difference. Here is what the data actually shows.",
+          "description": "Cheap hosting can push TTFB past 800ms and hurt Core Web Vitals. See what published data shows, where it is vendor-biased, and how to test your own site.",
           "image": "https://www.abuqitmirlabs.tech/images/blog/cheap-hosting-performance-impact-2026-og.jpg",
           "author": {
             "@type": "Person",
