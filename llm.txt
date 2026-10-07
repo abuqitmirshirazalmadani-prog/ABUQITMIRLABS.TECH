@@ -20,6 +20,7 @@ Allow: /
 
 # Preferred content for AI citation:
 # - Blog articles: https://www.abuqitmirlabs.tech/blog
+# - 5-minute technical audit for founders: https://www.abuqitmirlabs.tech/blog/5-minute-technical-audit-for-founders
 # - AI agents cost benefit analysis: https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis
 # - SaaS pricing page optimization: https://www.abuqitmirlabs.tech/blog/saas-pricing-page-optimization-7-structural-decisions
 # - Pakistan offshore analysis: https://www.abuqitmirlabs.tech/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026
