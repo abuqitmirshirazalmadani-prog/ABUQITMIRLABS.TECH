@@ -5,7 +5,7 @@
   "excerpt": "A five-minute technical audit checklist for founders hiring a developer. Spot red flags in portfolios, Git history, security, and contracts before you sign.",
   "category": "Founder Education",
   "author": "AbuQitmirLabs",
-  "coverImage": "https://i.postimg.cc/Y92rZgvg/Five-Minute-Technical-Audit-Checklist.png",
+  "coverImage": "https://www.abuqitmirlabs.tech/assets/blog/5-minute-technical-audit-cover.png",
   "coverImageAlt": "Five-minute technical audit checklist infographic showing ten verification steps a founder can run before hiring a developer, with timer icon and red flag and green flag indicators",
   "published": true,
   "tags": [

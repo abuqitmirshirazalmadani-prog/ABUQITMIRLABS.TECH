@@ -25,4 +25,12 @@
       <image:caption>High performance client-centric web architecture powered by modern web technologies</image:caption>
     </image:image>
   </url>
+  <url>
+    <loc>https://www.abuqitmirlabs.tech/blog/5-minute-technical-audit-for-founders</loc>
+    <image:image>
+      <image:loc>https://www.abuqitmirlabs.tech/assets/blog/5-minute-technical-audit-cover.png</image:loc>
+      <image:title>Technical Audit Checklist for Founders 2026</image:title>
+      <image:caption>Five-minute technical audit checklist infographic showing ten verification steps a founder can run before hiring a developer</image:caption>
+    </image:image>
+  </url>
 </urlset>

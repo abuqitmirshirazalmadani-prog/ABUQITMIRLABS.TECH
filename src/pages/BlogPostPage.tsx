@@ -3124,7 +3124,9 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         >
                             <img 
                                 src={
-                                    post.coverImage && (post.coverImage.includes('web-development-checklist') || post.coverImage.includes('og-offshore-web-development-checklist'))
+                                    post.coverImage && (post.coverImage.includes('Five-Minute-Technical-Audit-Checklist') || post.coverImage.includes('5-minute-technical-audit') || post.coverImage.includes('Y92rZgvg') || post.coverImage.includes('F93YfVmP'))
+                                        ? '/assets/blog/5-minute-technical-audit-cover.png'
+                                        : post.coverImage && (post.coverImage.includes('web-development-checklist') || post.coverImage.includes('og-offshore-web-development-checklist'))
                                         ? '/og-offshore-web-development-checklist.jpg'
                                         : post.coverImage && (post.coverImage.includes('og-ecommerce-platform-development') || post.coverImage.includes('Custom-Build-vs-Shopify'))
                                         ? '/og-ecommerce-platform-development.jpg'
@@ -3136,11 +3138,11 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                 referrerPolicy="no-referrer"
                                 width="1200"
                                 height="675"
-                                loading="lazy"
+                                loading="eager"
                                 decoding="async"
-                                 onError={(e) => {
+                                onError={(e) => {
                                     const target = e.target as HTMLImageElement;
-                                    if (target.src.includes('Five-Minute-Technical-Audit-Checklist') || target.src.includes('5-minute-technical-audit')) {
+                                    if (target.src.includes('Five-Minute-Technical-Audit-Checklist') || target.src.includes('5-minute-technical-audit') || target.src.includes('Y92rZgvg') || target.src.includes('F93YfVmP')) {
                                         if (!target.src.endsWith('/assets/blog/5-minute-technical-audit-cover.png')) {
                                             target.src = '/assets/blog/5-minute-technical-audit-cover.png';
                                             return;
@@ -3219,10 +3221,15 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                 table: ({node, ...props}) => <div className="overflow-x-auto my-8"><table className="w-full text-left border-collapse border border-zinc-800 rounded-xl overflow-hidden" {...props} /></div>,
                                 th: ({node, ...props}) => <th className="bg-zinc-900 text-white font-bold uppercase text-xs p-4 border border-zinc-800" {...props} />,
                                 td: ({node, ...props}) => <td className="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50" {...props} />,
-                                img: ({node, ...props}) => {
+                                img: ({node, src, ...props}) => {
+                                    let resolvedSrc = src;
+                                    if (src && (src.includes('Five-Minute-Technical-Audit-Checklist') || src.includes('5-minute-technical-audit') || src.includes('Y92rZgvg') || src.includes('F93YfVmP'))) {
+                                        resolvedSrc = '/assets/blog/5-minute-technical-audit-cover.png';
+                                    }
                                     return (
                                         <span className="block my-12 text-center overflow-hidden">
                                             <img 
+                                                src={resolvedSrc}
                                                 width={props.width || 1200}
                                                 height={props.height || 675}
                                                 loading="lazy"
@@ -3230,7 +3237,15 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                                 alt={props.alt || "AbuQitmirLabs engineering and technology diagram"}
                                                 {...props} 
                                                 referrerPolicy="no-referrer"
-                                                className="mx-auto rounded-[2rem] shadow-2xl border border-zinc-800 max-h-[600px] w-full object-cover select-none hover:scale-[1.01] transition-transform duration-700" 
+                                                onError={(e) => {
+                                                    const target = e.target as HTMLImageElement;
+                                                    if (target.src.includes('Five-Minute-Technical-Audit-Checklist') || target.src.includes('5-minute-technical-audit') || target.src.includes('Y92rZgvg') || target.src.includes('F93YfVmP')) {
+                                                        if (!target.src.endsWith('/assets/blog/5-minute-technical-audit-cover.png')) {
+                                                            target.src = '/assets/blog/5-minute-technical-audit-cover.png';
+                                                        }
+                                                    }
+                                                }}
+                                                className="mx-auto rounded-[2rem] shadow-2xl border border-zinc-800 max-h-[700px] w-auto max-w-full object-contain select-none hover:scale-[1.01] transition-transform duration-700" 
                                             />
                                             {props.alt && (
                                                 <span className="block mt-4 text-center text-[10px] text-zinc-400 uppercase tracking-[0.25em] font-mono">
