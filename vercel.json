@@ -421,6 +421,16 @@
       "source": "/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026",
       "destination": "/blog/5-minute-technical-audit-for-founders",
       "permanent": true
+    },
+    {
+      "source": "/blog/mvp-to-scale-roadmap-for-founders",
+      "destination": "/blog/mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-2026",
+      "permanent": true
+    },
+    {
+      "source": "/mvp-to-scale-roadmap-for-founders",
+      "destination": "/blog/mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-2026",
+      "permanent": true
     }
   ],
   "rewrites": [

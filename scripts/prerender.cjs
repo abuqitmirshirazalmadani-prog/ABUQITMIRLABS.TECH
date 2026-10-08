@@ -191,7 +191,9 @@ const routes = [
   
   '/blog/the-2026-static-site-comeback-why-jamstack-won-after-all',
   '/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs',
-  '/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact'
+  '/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact',
+  '/blog/5-minute-technical-audit-for-founders',
+  '/blog/mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-2026'
 ];
 
 // Merge explicitly defined routes with any routes declared in SEO_ROUTES_METADATA

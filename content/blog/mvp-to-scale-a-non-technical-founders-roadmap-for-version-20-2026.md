@@ -5,6 +5,8 @@
   "excerpt": "Most founders assume the hard part is launching an MVP. The harder part is what comes next. This seven-phase roadmap for MVP to scale gives non-technical founders a step-by-step plan for taking a live Version 1.0 product to a scalable Version 2.0. It covers stabilisation, user research, data audit, architecture decisions, rebuild versus refactor analysis, Version 2 scoping, and execution with decision gates. Includes real cost ranges for each path, a foundation-versus-liability framework for the rebuild decision, and the common mistakes that turn Version 2.0 into a six-figure unplanned rebuild. Written by AbuQitmirLabs, a Karachi-based software studio that has helped founders scale from MVP to production across web, mobile, and AI products.",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
+  "coverImage": "https://www.abuqitmirlabs.tech/assets/blog/mvp-to-scale-roadmap-cover.png",
+  "coverImageAlt": "Seven-phase MVP to scale roadmap diagram showing Version 1.0 to Version 2.0 journey for non-technical founders",
   "published": true,
   "tags": [
     "roadmap for MVP to scale",

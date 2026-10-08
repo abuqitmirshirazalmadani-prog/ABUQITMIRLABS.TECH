@@ -53,7 +53,8 @@ export const BLOG_SLUG_REDIRECTS: Record<string, string> = {
   'what-are-healthcare-ai-agents': 'what-are-healthcare-ai-agents-complete-guide-2026',
   'custom-ai-solutions-for-fintech-2026': 'custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting',
   'ai-integration-with-legacy-systems-2026': 'ai-integration-with-legacy-systems-the-complete-2026-guide',
-  'url-fragmentation-headless-spa': 'fix-url-fragmentation-in-headless-spas-abuqitmirlabs'
+  'url-fragmentation-headless-spa': 'fix-url-fragmentation-in-headless-spas-abuqitmirlabs',
+  'mvp-to-scale-roadmap-for-founders': 'mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-2026'
 };
 
 /**
