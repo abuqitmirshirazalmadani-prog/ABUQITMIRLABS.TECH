@@ -125,6 +125,7 @@ const routes = [
   '/web-development',
   '/ai-agent-development',
   '/seo-mastery',
+  '/digital-marketing',
   '/local-seo-for-small-business',
   '/local-seo-citation-building',
   '/white-label-local-seo',

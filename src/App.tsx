@@ -19,6 +19,7 @@ const MobileAppDevelopmentPage = lazy(() => import('./pages/MobileAppDevelopment
 const WebDevelopmentPage = lazy(() => import('./pages/WebDevelopmentPage'));
 const AIAgentDevelopmentPage = lazy(() => import('./pages/AIAgentDevelopmentPage'));
 const SEOPage = lazy(() => import('./pages/SEOPage'));
+const DigitalMarketingPage = lazy(() => import('./pages/DigitalMarketingPage'));
 const LocalSEOSmallBusinessPage = lazy(() => import('./pages/LocalSEOSmallBusinessPage'));
 const LocalSEOCitationBuildingPage = lazy(() => import('./pages/LocalSEOCitationBuildingPage'));
 const WhiteLabelLocalSEOPage = lazy(() => import('./pages/WhiteLabelLocalSEOPage'));
@@ -255,6 +256,7 @@ export default function App() {
               <Route path="/web-development" element={<WebDevelopmentPage />} />
               <Route path="/ai-agent-development" element={<AIAgentDevelopmentPage />} />
               <Route path="/seo-mastery" element={<SEOPage />} />
+              <Route path="/digital-marketing" element={<DigitalMarketingPage />} />
               <Route path="/local-seo-services" element={<Navigate to="/seo-mastery" replace />} />
               <Route path="/local-seo-for-small-business" element={<LocalSEOSmallBusinessPage />} />
               <Route path="/local-seo-small-business" element={<Navigate to="/local-seo-for-small-business" replace />} />
