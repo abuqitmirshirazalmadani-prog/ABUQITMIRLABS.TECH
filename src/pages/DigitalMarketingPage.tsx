@@ -561,11 +561,6 @@ const DigitalMarketingPage = () => {
             <p className="text-sm text-zinc-400 font-sans mb-6">
               We review your technical SEO, content, and conversion architecture, and tell you what is actually worth fixing first.
             </p>
-            <div className="flex border-t border-white/10 pt-4 justify-between items-center text-xs font-mono text-zinc-400 tracking-widest uppercase">
-              <span>Avg. Discovery Phase: 2 Weeks</span>
-              <span>·</span>
-              <span>Current Lead Time: 4 Weeks</span>
-            </div>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-xl mx-auto">
