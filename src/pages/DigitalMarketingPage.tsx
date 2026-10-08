@@ -72,18 +72,18 @@ const DigitalMarketingPage = () => {
     <div className="bg-[#000000] text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]/30 selection:text-white">
       <Helmet>
         <title>Digital Marketing Services for Software & SaaS Companies | AbuQitmirLabs</title>
-        <meta name="description" content="Digital marketing built for software and SaaS companies: technical SEO, E-E-A-T content, and conversion-focused web architecture. No paid ads, no vanity metrics." />
+        <meta name="description" content="Digital marketing for software and SaaS companies: technical SEO, E-E-A-T content, and conversion-focused web architecture. No paid ads." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/digital-marketing" />
 
         <meta property="og:title" content="Digital Marketing Services for Software & SaaS Companies | AbuQitmirLabs" />
-        <meta property="og:description" content="Digital marketing built for software and SaaS companies: technical SEO, E-E-A-T content, and conversion-focused web architecture. No paid ads, no vanity metrics." />
+        <meta property="og:description" content="Digital marketing for software and SaaS companies: technical SEO, E-E-A-T content, and conversion-focused web architecture. No paid ads." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/digital-marketing" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Digital Marketing Services for Software & SaaS Companies | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Digital marketing built for software and SaaS companies: technical SEO, E-E-A-T content, and conversion-focused web architecture. No paid ads, no vanity metrics." />
+        <meta name="twitter:description" content="Digital marketing for software and SaaS companies: technical SEO, E-E-A-T content, and conversion-focused web architecture. No paid ads." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         <script

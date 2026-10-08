@@ -110,6 +110,14 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogDescription: 'Enterprise technical SEO, Core Web Vitals optimization, and Generative Engine Optimization.',
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
   },
+  '/digital-marketing': {
+    title: 'Digital Marketing Services for Software & SaaS Companies | AbuQitmirLabs',
+    description: 'Digital marketing for software and SaaS companies: technical SEO, E-E-A-T content, and conversion-focused web architecture. No paid ads.',
+    canonical: 'https://www.abuqitmirlabs.tech/digital-marketing',
+    ogTitle: 'Digital Marketing Services for Software & SaaS Companies | AbuQitmirLabs',
+    ogDescription: 'Digital marketing for software and SaaS companies: technical SEO, E-E-A-T content, and conversion architecture. No paid ads.',
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
+  },
   '/local-seo-for-small-business': {
     title: 'Local SEO Services for Small Businesses | AbuQitmirLabs',
     description: 'Dominate Google Local 3-Pack and Google Maps search. Specialized local SEO, citation building, and review automation for local business growth.',
