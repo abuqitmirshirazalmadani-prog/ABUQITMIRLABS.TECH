@@ -1225,6 +1225,7 @@ export interface BlogPostSummary {
 
 export function getStaticBlogList(): BlogPostSummary[] {
   const canonicalSlugs = [
+    "the-non-technical-founders-guide-to-software-ownership-ip-2026",
     "mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-2026",
     "5-minute-technical-audit-for-founders",
     "when-to-invest-in-ai-agent",
