@@ -195,12 +195,12 @@ The performance marketing vs brand marketing debate has a simple answer: you nee
 Performance marketing keeps the lights on today. Brand marketing builds the business that survives tomorrow. Founders who master both create companies that grow profitably and defend themselves against competitors.
 
 At AbuQitmirLabs, we help startups build marketing systems that balance performance and brand. Our team combines [technical SEO](https://www.abuqitmirlabs.tech/seo-mastery), content strategy, and performance marketing to create growth engines that scale. If you want help allocating your marketing budget, [get in touch](https://www.abuqitmirlabs.tech/contact).`,
-  "excerpt": "Every startup founder faces the same uncomfortable question: should I spend my limited marketing budget on ads that generate immediate leads, or on brand-building that pays off later? This guide answers that question with a practical framework.",
+  "excerpt": "A practical framework for startups to split budget between performance and brand marketing. Learn when to invest in each and how to measure ROI.",
   "coverImage": "https://www.abuqitmirlabs.tech/images/blog/performance-vs-brand-marketing-cover.jpg",
-  "coverImageAlt": "Performance vs brand marketing budget allocation framework for startups by AbuQitmirLabs",
-  "category": "Business",
+  "coverImageAlt": "Performance marketing vs brand marketing budget allocation framework showing 60/40 split for startups",
+  "category": "Digital Marketing",
   "createdAt": "2026-10-10",
-  "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
+  "author": "Shiraz Almadani",
   "tags": [
     "performance marketing vs brand marketing",
     "startup marketing budget",

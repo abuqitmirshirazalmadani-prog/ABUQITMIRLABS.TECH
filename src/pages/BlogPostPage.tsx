@@ -2740,6 +2740,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 {seoData.keywordsString && (
                     <meta name="keywords" content={seoData.keywordsString} />
                 )}
+                <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
                 <link rel="canonical" href={seoData.canonicalUrl} />
 
                 {/* Open Graph */}
@@ -2748,10 +2749,11 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 <meta property="og:title" content={seoData.ogTitle} />
                 <meta property="og:description" content={seoData.ogDescription} />
                 <meta property="og:image" content={seoData.ogImage} />
+                <meta property="og:image:alt" content={slug && slug.includes('performance-marketing') ? 'Performance marketing vs brand marketing budget allocation framework showing 60/40 split for startups' : (post.coverImageAlt || seoData.ogTitle)} />
                 <meta property="og:site_name" content={seoData.ogSiteName} />
                 <meta property="article:published_time" content={seoData.articlePublishedTime} />
                 <meta property="article:modified_time" content={seoData.articleModifiedTime} />
-                <meta property="article:author" content={seoData.articleAuthor} />
+                <meta property="article:author" content={seoData.articleAuthor === 'ABUQITMIRLABS .TECH Shiraz Almadani' ? 'Shiraz Almadani' : seoData.articleAuthor} />
                 {seoData.articleSection && <meta property="article:section" content={seoData.articleSection} />}
 
                 {/* Twitter */}

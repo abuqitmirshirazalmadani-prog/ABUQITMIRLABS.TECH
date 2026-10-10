@@ -92,11 +92,15 @@ const stripCanonicalTags = (htmlSource) => {
 let baseTemplate = distIndex;
 baseTemplate = replaceRootElement(baseTemplate, '', '');
 baseTemplate = stripCanonicalTags(baseTemplate);
+baseTemplate = baseTemplate.replace(/<script\b[^>]*>[\s\S]*?dedupeHead[\s\S]*?<\/script>/gis, '');
 baseTemplate = baseTemplate.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '');
 baseTemplate = baseTemplate.replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis, '');
 baseTemplate = baseTemplate.replace(/<meta\b[^>]*property=["']og:[^"']+["'][^>]*\/?>/gis, '');
 baseTemplate = baseTemplate.replace(/<meta\b[^>]*name=["']twitter:[^"']+["'][^>]*\/?>/gis, '');
 baseTemplate = baseTemplate.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis, '');
+baseTemplate = baseTemplate.replace(/<meta\b[^>]*property=["']article:[^"']+["'][^>]*\/?>/gis, '');
+baseTemplate = baseTemplate.replace(/<meta\b[^>]*name=["']keywords["'][^>]*\/?>/gis, '');
+baseTemplate = baseTemplate.replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gis, '');
 
 // Preserve a clean, unpopulated SPA shell for dynamic client-side routes (e.g. dynamic blog posts, admin dashboard)
 const spaShellPath = path.join(distDir, 'spa-shell.html');
@@ -222,12 +226,16 @@ for (const routeUrl of allRoutes) {
     // 2. Unconditionally strip ANY existing <title> tags from baseTemplate and headTags
     html = html.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '');
 
-    // 3. Inject hoisted head tags (preloads, metadata) into <head> (excluding title tags, canonicals, and description)
+    // 3. Inject hoisted head tags (preloads, etc) into <head> (excluding title, canonicals, descriptions, og, and twitter)
     if (headTags && headTags.trim().length > 0) {
       const cleanHeadTags = stripCanonicalTags(
         headTags
           .replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '')
           .replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis, '')
+          .replace(/<meta\b[^>]*property=["']og:[^"']+["'][^>]*\/?>/gis, '')
+          .replace(/<meta\b[^>]*name=["']twitter:[^"']+["'][^>]*\/?>/gis, '')
+          .replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gis, '')
+          .replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis, '')
       );
       if (cleanHeadTags.trim().length > 0) {
         html = html.replace('</head>', `  ${cleanHeadTags}\n</head>`);
@@ -295,8 +303,13 @@ for (const routeUrl of allRoutes) {
 
       // Unique og:image
       if (seo.ogImage) {
-        html = html.replace('</head>', `  <meta property="og:image" content="${seo.ogImage}" />\n  <meta property="og:image:alt" content="AbuQitmirLabs Custom Software &amp; AI Development Studio" />\n</head>`);
+        const altText = seo.ogImageAlt || "AbuQitmirLabs Custom Software & AI Development Studio";
+        html = html.replace('</head>', `  <meta property="og:image" content="${seo.ogImage}" />\n  <meta property="og:image:alt" content="${altText.replace(/"/g, '&quot;')}" />\n</head>`);
       }
+
+      // Unique meta robots
+      const robotsContent = seo.robots || "index, follow, max-snippet:-1, max-image-preview:large";
+      html = html.replace('</head>', `  <meta name="robots" content="${robotsContent}" />\n</head>`);
 
       // Unique twitter:card, twitter:title, twitter:description, twitter:image
       const twTitle = seo.twitterTitle || seo.title;

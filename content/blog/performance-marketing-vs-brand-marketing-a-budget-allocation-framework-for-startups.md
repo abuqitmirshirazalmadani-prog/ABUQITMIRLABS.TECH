@@ -2,9 +2,9 @@
 {
   "title": "Performance Marketing vs Brand Marketing: A Budget Allocation Framework for Startups",
   "slug": "performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups",
-  "excerpt": "Every startup founder faces the same uncomfortable question: should I spend my limited marketing budget on ads that generate immediate leads, or on brand-building that pays off later? This guide answers that question with a practical framework. You will learn the core difference between performance marketing and brand marketing, when each one makes sense for a startup, and how to allocate your budget using the tested 60/40 model that balances short-term revenue with long-term brand equity.",
-  "category": "Business",
-  "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
+  "excerpt": "A practical framework for startups to split budget between performance and brand marketing. Learn when to invest in each and how to measure ROI.",
+  "category": "Digital Marketing",
+  "author": "Shiraz Almadani",
   "published": true,
   "tags": [
     "performance marketing vs brand marketing",
