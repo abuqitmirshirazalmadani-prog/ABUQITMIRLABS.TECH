@@ -3370,10 +3370,50 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "What is the 60/40 rule in marketing?",
+              "name": "What is the difference between performance marketing and brand marketing?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "The 60/40 rule comes from research by Les Binet and Peter Field. It suggests mature businesses should spend roughly 60% of their marketing budget on brand building and 40% on performance marketing for optimal long-term growth. Early-stage startups usually invert this ratio."
+                "text": "Performance marketing drives immediate, measurable actions like clicks and purchases. Brand marketing builds long-term awareness and trust. The key difference is time horizon: performance optimizes for today's revenue, brand invests in tomorrow's customer loyalty."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What percentage of my budget should go to performance marketing?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Most startups should allocate 60% to performance marketing and 40% to brand marketing in their first 18 months. Shift toward 50/50 as you mature, and 30/70 as brand equity becomes your primary competitive advantage."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "When should a startup invest in brand marketing?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Invest in brand marketing after you have validated demand through performance channels. For most startups, this is after reaching $10K MRR. Before that, focus on performance to prove your product solves a real problem."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I measure brand marketing ROI?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Measure brand marketing through brand lift studies, share of search tracking, and customer acquisition cost trends. If your CAC decreases over time without changes to performance campaigns, brand marketing is working."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is performance marketing better than brand marketing?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Neither is better. They serve different purposes. Performance marketing generates immediate revenue and validates demand. Brand marketing builds defensibility, reduces long-term acquisition costs, and creates pricing power."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I do both performance and brand marketing at the same time?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The 60/40 model is designed for startups to invest in both simultaneously. The key is to set the right split based on your stage and adjust as you grow."
               }
             },
             {
@@ -3381,23 +3421,15 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
               "name": "How long does brand marketing take to show results?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Brand marketing typically begins producing measurable effects within 6 to 12 months. Leading indicators like branded search volume, direct traffic, and decreased customer acquisition costs appear earlier, often within 3 to 6 months."
+                "text": "Brand marketing typically shows measurable results in 6-12 months. Share of search and brand lift metrics may move sooner, but revenue impact usually takes longer to materialize."
               }
             },
             {
               "@type": "Question",
-              "name": "Can an early-stage startup rely entirely on performance marketing?",
+              "name": "What is the best marketing budget for a startup?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes, but only temporarily. In the first 6 to 12 months, performance marketing generates the rapid feedback and initial revenue startups need. Over-relying on it beyond that stage causes rising acquisition costs and diminishing returns as ad fatigue sets in."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How should a B2B startup split its marketing budget differently from B2C?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "B2B startups typically spend more on content-driven brand building (40-50%) earlier because sales cycles are longer and purchases involve committee decisions. Performance marketing in B2B focuses on high-intent search and targeted LinkedIn campaigns rather than mass conversion ads."
+                "text": "There is no single best budget. A common starting point is 20-30% of projected revenue for marketing. Allocate 60% to performance and 40% to brand, and adjust based on what you learn."
               }
             }
           ]

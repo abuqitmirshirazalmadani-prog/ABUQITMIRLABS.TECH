@@ -13,9 +13,10 @@ export interface BreadcrumbItem {
 interface BreadcrumbsProps {
     customItems?: BreadcrumbItem[];
     items?: BreadcrumbItem[];
+    disableSchema?: boolean;
 }
 
-const Breadcrumbs = ({ customItems, items: propItems }: BreadcrumbsProps) => {
+const Breadcrumbs = ({ customItems, items: propItems, disableSchema }: BreadcrumbsProps) => {
     const location = useLocation();
     const pathnames = location.pathname.split('/').filter((x) => x);
 
@@ -39,23 +40,25 @@ const Breadcrumbs = ({ customItems, items: propItems }: BreadcrumbsProps) => {
 
     return (
         <nav className="absolute top-24 left-0 right-0 z-40 px-6 md:px-10 py-4 pointer-events-none" aria-label="Breadcrumb">
-            {/* SEO BreadcrumbList JSON-LD Schema */}
-            <script type="application/ld+json">
-                {JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "BreadcrumbList",
-                    "itemListElement": items.map((item, index) => {
-                        const path = item.to || location.pathname;
-                        const absoluteUrl = path.startsWith('http') ? path : `https://www.abuqitmirlabs.tech${path === '/' ? '' : path}`;
-                        return {
-                            "@type": "ListItem",
-                            "position": index + 1,
-                            "name": item.name.toUpperCase(),
-                            "item": absoluteUrl
-                        };
-                    })
-                })}
-            </script>
+            {/* SEO BreadcrumbList JSON-LD Schema (Disabled when parent page supplies unified @graph) */}
+            {!disableSchema && (
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "BreadcrumbList",
+                        "itemListElement": items.map((item, index) => {
+                            const path = item.to || location.pathname;
+                            const absoluteUrl = path.startsWith('http') ? path : `https://www.abuqitmirlabs.tech${path === '/' ? '' : path}`;
+                            return {
+                                "@type": "ListItem",
+                                "position": index + 1,
+                                "name": item.name.toUpperCase(),
+                                "item": absoluteUrl
+                            };
+                        })
+                    })}
+                </script>
+            )}
 
             <ol className="max-w-7xl mx-auto flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] pointer-events-auto list-none m-0 p-0">
                 {items.map((item, index) => {

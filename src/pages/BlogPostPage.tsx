@@ -3047,6 +3047,76 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                         }
                                     }
                                 ]
+                            }] : []),
+                            ...(slug && slug.includes('performance-marketing-vs-brand-marketing') ? [{
+                                "@type": "FAQPage",
+                                "@id": `${seoData.canonicalUrl}#faq`,
+                                "mainEntity": [
+                                    {
+                                        "@type": "Question",
+                                        "name": "What is the difference between performance marketing and brand marketing?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Performance marketing drives immediate, measurable actions like clicks and purchases. Brand marketing builds long-term awareness and trust. The key difference is time horizon: performance optimizes for today's revenue, brand invests in tomorrow's customer loyalty."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "What percentage of my budget should go to performance marketing?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Most startups should allocate 60% to performance marketing and 40% to brand marketing in their first 18 months. Shift toward 50/50 as you mature, and 30/70 as brand equity becomes your primary competitive advantage."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "When should a startup invest in brand marketing?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Invest in brand marketing after you have validated demand through performance channels. For most startups, this is after reaching $10K MRR. Before that, focus on performance to prove your product solves a real problem."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "How do I measure brand marketing ROI?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Measure brand marketing through brand lift studies, share of search tracking, and customer acquisition cost trends. If your CAC decreases over time without changes to performance campaigns, brand marketing is working."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "Is performance marketing better than brand marketing?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Neither is better. They serve different purposes. Performance marketing generates immediate revenue and validates demand. Brand marketing builds defensibility, reduces long-term acquisition costs, and creates pricing power."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "Can I do both performance and brand marketing at the same time?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Yes. The 60/40 model is designed for startups to invest in both simultaneously. The key is to set the right split based on your stage and adjust as you grow."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "How long does brand marketing take to show results?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Brand marketing typically shows measurable results in 6-12 months. Share of search and brand lift metrics may move sooner, but revenue impact usually takes longer to materialize."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "What is the best marketing budget for a startup?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "There is no single best budget. A common starting point is 20-30% of projected revenue for marketing. Allocate 60% to performance and 40% to brand, and adjust based on what you learn."
+                                        }
+                                    }
+                                ]
                             }] : [])
                         ]
                     })}
@@ -3056,7 +3126,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             </Helmet>
             
             <Header />
-            <Breadcrumbs customItems={breadcrumbItems} />
+            <Breadcrumbs customItems={breadcrumbItems} disableSchema={true} />
             
             <main className="pt-36 md:pt-44 pb-20 px-6">
                 <div className="max-w-4xl mx-auto">
