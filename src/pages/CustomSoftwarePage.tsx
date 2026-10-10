@@ -119,21 +119,21 @@ const CustomSoftwarePage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans antialiased">
       <Helmet>
-        <title>Custom Software Development Company | AbuQitmirLabs</title>
-        <meta name="description" content="Enterprise-grade custom software development company in Karachi, Pakistan. We build scalable web apps, cloud architectures, and bespoke business systems." />
+        <title>Custom Software Development for Startups | AbuQitmirLabs</title>
+        <meta name="description" content="Software built around how your business works, not the other way around. Custom systems for startups and SaaS companies, full IP ownership included." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/custom-software" />
 
         {/* Open Graph */}
-        <meta property="og:title" content="Custom Software Development Company | AbuQitmirLabs" />
-        <meta property="og:description" content="Enterprise-grade custom software development company in Karachi, Pakistan. We build scalable web apps, cloud architectures, and bespoke business systems." />
+        <meta property="og:title" content="Custom Software Development for Startups | AbuQitmirLabs" />
+        <meta property="og:description" content="Software built around how your business works, not the other way around. Custom systems for startups and SaaS companies, full IP ownership included." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/custom-software" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Custom Software Development Company | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Enterprise-grade custom software development company in Karachi, Pakistan. We build scalable web apps, cloud architectures, and bespoke business systems." />
+        <meta name="twitter:title" content="Custom Software Development for Startups | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Software built around how your business works, not the other way around. Custom systems for startups and SaaS companies, full IP ownership included." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Unified JSON-LD Schema */}
@@ -170,7 +170,7 @@ const CustomSoftwarePage: React.FC = () => {
             </div>
 
             <h1 id="custom-software-hero-title" className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 max-w-5xl text-white">
-              Custom Software Development Company
+              Custom Software Development for Startups &amp; SaaS Companies
             </h1>
 
             {/* Direct Answer Block for AEO/GEO */}

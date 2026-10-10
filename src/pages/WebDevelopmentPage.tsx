@@ -196,23 +196,23 @@ Do not sign a website contract without these protective legal terms.
   return (
     <div className="bg-[#050505] text-axiom-sub font-body antialiased overflow-x-hidden min-h-screen relative selection:bg-blue-500/30 selection:text-white">
       <Helmet>
-        <title>Web Development Company | Custom Web Solutions | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications." />
+        <title>Custom Website Development Services | AbuQitmirLabs</title>
+        <meta name="description" content="React and Next.js websites engineered for speed and search visibility, not stitched together from templates. Based in Karachi, built for clients worldwide." />
         <meta name="keywords" content="web development, web development company, web development services, custom web development, custom web development company, web application development, full-stack web development, React web development, Next.js development, custom website development, professional web development services" />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/web-development" />
         <meta name="robots" content="index, follow" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Web Development Company | Custom Web Solutions | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications." />
+        <meta property="og:title" content="Custom Website Development Services | AbuQitmirLabs" />
+        <meta property="og:description" content="React and Next.js websites engineered for speed and search visibility, not stitched together from templates. Based in Karachi, built for clients worldwide." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/web-development" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Web Development Company | Custom Web Solutions | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications." />
+        <meta name="twitter:title" content="Custom Website Development Services | AbuQitmirLabs" />
+        <meta name="twitter:description" content="React and Next.js websites engineered for speed and search visibility, not stitched together from templates. Based in Karachi, built for clients worldwide." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Unified JSON-LD Structured Data Schema (@graph) */}
@@ -254,8 +254,8 @@ Do not sign a website contract without these protective legal terms.
                   "@type": "WebPage",
                   "@id": "https://www.abuqitmirlabs.tech/web-development/#webpage",
                   "url": "https://www.abuqitmirlabs.tech/web-development",
-                  "name": "Web Development Company | Custom Web Solutions | AbuQitmirLabs",
-                  "description": "AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications.",
+                  "name": "Custom Website Development Services | AbuQitmirLabs",
+                  "description": "React and Next.js websites engineered for speed and search visibility, not stitched together from templates. Based in Karachi, built for clients worldwide.",
                   "isPartOf": {
                     "@id": "https://www.abuqitmirlabs.tech/#website"
                   },
@@ -272,7 +272,7 @@ Do not sign a website contract without these protective legal terms.
                   "provider": {
                     "@id": "https://www.abuqitmirlabs.tech/#organization"
                   },
-                  "description": "AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications.",
+                  "description": "React and Next.js websites engineered for speed and search visibility, not stitched together from templates. Based in Karachi, built for clients worldwide.",
                   "url": "https://www.abuqitmirlabs.tech/web-development",
                   "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
                   "hasOfferCatalog": {
@@ -410,7 +410,7 @@ Do not sign a website contract without these protective legal terms.
           animate={{ opacity: 1, y: 0 }}
           className="text-5xl md:text-7xl lg:text-[6.5rem] font-medium tracking-tight text-white text-center mb-8 leading-[1.1] max-w-5xl"
         >
-          Web Development Company <br />
+          Custom Website Development Services <br />
           <span className="text-neutral-500">for Growing Businesses</span>
         </motion.h1>
 

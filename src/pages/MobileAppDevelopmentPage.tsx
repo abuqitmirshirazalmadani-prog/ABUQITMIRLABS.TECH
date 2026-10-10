@@ -133,21 +133,21 @@ const MobileAppDevelopmentPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans antialiased">
       <Helmet>
-        <title>Mobile App Development Company | AbuQitmirLabs</title>
-        <meta name="description" content="Flutter, React Native, and native iOS/Android app development. Full source code ownership, App Store submission, and backend integration included." />
+        <title>Flutter Mobile App Development Services | AbuQitmirLabs</title>
+        <meta name="description" content="One Flutter codebase, both app stores. We build iOS and Android apps for startups that need to launch fast without cutting corners on performance." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/mobile-app-development" />
 
         {/* Open Graph */}
-        <meta property="og:title" content="Mobile App Development Company | AbuQitmirLabs" />
-        <meta property="og:description" content="Flutter, React Native, and native iOS/Android app development. Full source code ownership, App Store submission, and backend integration included." />
+        <meta property="og:title" content="Flutter Mobile App Development Services | AbuQitmirLabs" />
+        <meta property="og:description" content="One Flutter codebase, both app stores. We build iOS and Android apps for startups that need to launch fast without cutting corners on performance." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/mobile-app-development" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Mobile App Development Company | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Flutter, React Native, and native iOS/Android app development. Full source code ownership, App Store submission, and backend integration included." />
+        <meta name="twitter:title" content="Flutter Mobile App Development Services | AbuQitmirLabs" />
+        <meta name="twitter:description" content="One Flutter codebase, both app stores. We build iOS and Android apps for startups that need to launch fast without cutting corners on performance." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Unified JSON-LD Schema */}
@@ -184,7 +184,7 @@ const MobileAppDevelopmentPage: React.FC = () => {
             </div>
 
             <h1 id="mobile-hero-title" className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 max-w-5xl text-white">
-              Mobile App Development Company | Flutter &amp; Native iOS/Android
+              Flutter Mobile App Development Services, Built for Both App Stores
             </h1>
 
             {/* Direct Answer Block for AEO/GEO */}

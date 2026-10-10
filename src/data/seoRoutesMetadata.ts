@@ -71,26 +71,26 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
   },
   '/custom-software': {
-    title: 'Custom Software Development Company | AbuQitmirLabs',
-    description: 'Enterprise-grade custom software development company in Karachi, Pakistan. We build scalable web apps, cloud architectures, and bespoke business systems.',
+    title: 'Custom Software Development for Startups | AbuQitmirLabs',
+    description: 'Software built around how your business works, not the other way around. Custom systems for startups and SaaS companies, full IP ownership included.',
     canonical: 'https://www.abuqitmirlabs.tech/custom-software',
-    ogTitle: 'Custom Software Development Company | AbuQitmirLabs',
+    ogTitle: 'Custom Software Development for Startups | AbuQitmirLabs',
     ogDescription: 'Enterprise-grade custom software development company in Karachi, Pakistan.',
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
   },
   '/mobile-app-development': {
-    title: 'Mobile App Development Company | AbuQitmirLabs',
-    description: 'Expert mobile app development company specializing in iOS, Android, and Flutter applications. Karachi, Pakistan software studio serving global clients.',
+    title: 'Flutter Mobile App Development Services | AbuQitmirLabs',
+    description: 'One Flutter codebase, both app stores. We build iOS and Android apps for startups that need to launch fast without cutting corners on performance.',
     canonical: 'https://www.abuqitmirlabs.tech/mobile-app-development',
-    ogTitle: 'Mobile App Development Company | AbuQitmirLabs',
+    ogTitle: 'Flutter Mobile App Development Services | AbuQitmirLabs',
     ogDescription: 'Expert mobile app development company specializing in iOS, Android, and Flutter applications.',
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
   },
   '/web-development': {
-    title: 'Web Development Company | Custom Web Solutions | AbuQitmirLabs',
-    description: 'Full-stack custom web development company in Karachi, Pakistan. High-performance React, Next.js, and Node.js web applications engineered for speed and conversion.',
+    title: 'Custom Website Development Services | AbuQitmirLabs',
+    description: 'React and Next.js websites engineered for speed and search visibility, not stitched together from templates. Based in Karachi, built for clients worldwide.',
     canonical: 'https://www.abuqitmirlabs.tech/web-development',
-    ogTitle: 'Web Development Company | Custom Web Solutions | AbuQitmirLabs',
+    ogTitle: 'Custom Website Development Services | AbuQitmirLabs',
     ogDescription: 'Full-stack custom web development company in Karachi, Pakistan. High-performance web applications.',
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
   },
@@ -605,10 +605,10 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
   },
   '/custom-software-development': {
-    title: 'Custom Software Development Company | AbuQitmirLabs',
+    title: 'Custom Software Development for Startups | AbuQitmirLabs',
     description: 'Enterprise custom software development services: microservices, cloud migrations, database engineering, and secure API architectures.',
     canonical: 'https://www.abuqitmirlabs.tech/custom-software',
-    ogTitle: 'Custom Software Development Company | AbuQitmirLabs',
+    ogTitle: 'Custom Software Development for Startups | AbuQitmirLabs',
     ogDescription: 'Enterprise custom software development services: microservices, cloud migrations, and secure API architectures.',
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
     ogType: 'website'
