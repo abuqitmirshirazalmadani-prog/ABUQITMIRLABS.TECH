@@ -88,11 +88,15 @@ const stripCanonicalTags = (htmlSource) => {
     .replace(/<link\b[^>]*\brel=["']?canonical["']?[^>]*>[\s\S]*?<\/link>/gis, '');
 };
 
-// Base template with clean empty #root and stripped default canonical & description
+// Base template with clean empty #root and stripped default tags to prevent any metadata leakage
 let baseTemplate = distIndex;
 baseTemplate = replaceRootElement(baseTemplate, '', '');
 baseTemplate = stripCanonicalTags(baseTemplate);
+baseTemplate = baseTemplate.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '');
 baseTemplate = baseTemplate.replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis, '');
+baseTemplate = baseTemplate.replace(/<meta\b[^>]*property=["']og:[^"']+["'][^>]*\/?>/gis, '');
+baseTemplate = baseTemplate.replace(/<meta\b[^>]*name=["']twitter:[^"']+["'][^>]*\/?>/gis, '');
+baseTemplate = baseTemplate.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis, '');
 
 // Preserve a clean, unpopulated SPA shell for dynamic client-side routes (e.g. dynamic blog posts, admin dashboard)
 const spaShellPath = path.join(distDir, 'spa-shell.html');
@@ -194,7 +198,8 @@ const routes = [
   '/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact',
   '/blog/5-minute-technical-audit-for-founders',
   '/blog/mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-2026',
-  '/blog/the-non-technical-founders-guide-to-software-ownership-ip-2026'
+  '/blog/the-non-technical-founders-guide-to-software-ownership-ip-2026',
+  '/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups'
 ];
 
 // Merge explicitly defined routes with any routes declared in SEO_ROUTES_METADATA

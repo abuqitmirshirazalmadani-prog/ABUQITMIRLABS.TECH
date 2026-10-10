@@ -4,26 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Primary SEO Metadata & Canonical References -->
-    <title>Custom Software Development &amp; AI Agency | AbuQitmirLabs</title>
-    <meta name="description" content="AbuQitmirLabs is a custom software &amp; AI development company building web platforms and mobile apps for US, UK &amp; global clients. Contact us today." />
-    <link rel="canonical" href="https://www.abuqitmirlabs.tech/" />
-    <link rel="alternate" hreflang="x-default" href="https://www.abuqitmirlabs.tech/" />
-    <link rel="alternate" hreflang="en" href="https://www.abuqitmirlabs.tech/" />
-    
-    <!-- Open Graph / Facebook / LinkedIn Meta Tags -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.abuqitmirlabs.tech/" />
-    <meta property="og:title" content="Custom Software Development &amp; AI Agency | AbuQitmirLabs" />
-    <meta property="og:description" content="AbuQitmirLabs is a custom software &amp; AI development company building web platforms and mobile apps for US, UK &amp; global clients. Contact us today." />
-    <meta property="og:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
-    
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@AbuQitmir" />
-    <meta name="twitter:title" content="Custom Software Development &amp; AI Agency | AbuQitmirLabs" />
-    <meta name="twitter:description" content="AbuQitmirLabs is a custom software &amp; AI development company building web platforms and mobile apps for US, UK &amp; global clients. Contact us today." />
-    <meta name="twitter:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
 
     <!-- Performance Optimization: Preconnect & DNS Prefetch to Critical CDNs -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,28 +28,88 @@
       gtag('config', 'G-EJH1V89EP0', { send_page_view: false });
     </script>
     
-    <!-- Immediate Meta Description Deduplicator to ensure strictly 1 meta description tag for search crawlers (Bing/Google) -->
+    <!-- Universal Head Metadata & Canonical Deduplicator (Strict Single-Tag Enforcement) -->
     <script>
       (function() {
-        function dedupeMeta() {
-          var descs = document.querySelectorAll('meta[name="description"]');
-          if (descs.length > 1) {
-            for (var i = 0; i < descs.length - 1; i++) {
-              if (descs[i].parentNode) {
-                descs[i].parentNode.removeChild(descs[i]);
+        function dedupeHead() {
+          try {
+            // 1. Strict Canonical Deduplication: keep only the latest route-specific canonical
+            var canons = document.querySelectorAll('link[rel="canonical"]');
+            if (canons.length > 1) {
+              var isSubpage = window.location.pathname !== '/' && window.location.pathname !== '';
+              var primaryCanon = canons[canons.length - 1];
+              for (var c = 0; c < canons.length; c++) {
+                var href = canons[c].getAttribute('href') || '';
+                if (isSubpage && (href === 'https://www.abuqitmirlabs.tech/' || href === 'https://www.abuqitmirlabs.tech')) {
+                  if (canons[c].parentNode) canons[c].parentNode.removeChild(canons[c]);
+                } else if (canons[c] !== primaryCanon && canons[c].parentNode) {
+                  canons[c].parentNode.removeChild(canons[c]);
+                }
               }
             }
-          }
+
+            // 2. Strict Title Deduplication: preserve active title
+            var titles = document.querySelectorAll('title');
+            if (titles.length > 1) {
+              var activeTitle = document.querySelector('title[data-rh="true"]') || titles[titles.length - 1];
+              for (var t = 0; t < titles.length; t++) {
+                if (titles[t] !== activeTitle && titles[t].parentNode) {
+                  titles[t].parentNode.removeChild(titles[t]);
+                }
+              }
+            }
+
+            // 3. Strict Meta Description Deduplication: keep exactly 1
+            var descs = document.querySelectorAll('meta[name="description"]');
+            if (descs.length > 1) {
+              for (var d = 0; d < descs.length - 1; d++) {
+                if (descs[d].parentNode) descs[d].parentNode.removeChild(descs[d]);
+              }
+            }
+
+            // 4. Strict OG & Twitter Deduplication
+            var ogTitles = document.querySelectorAll('meta[property="og:title"]');
+            if (ogTitles.length > 1) {
+              for (var ot = 0; ot < ogTitles.length - 1; ot++) {
+                if (ogTitles[ot].parentNode) ogTitles[ot].parentNode.removeChild(ogTitles[ot]);
+              }
+            }
+
+            var ogUrls = document.querySelectorAll('meta[property="og:url"]');
+            if (ogUrls.length > 1) {
+              for (var ou = 0; ou < ogUrls.length - 1; ou++) {
+                if (ogUrls[ou].parentNode) ogUrls[ou].parentNode.removeChild(ogUrls[ou]);
+              }
+            }
+
+            // 5. Strict JSON-LD Deduplication: Prevent duplicate @graph scripts
+            var ldScripts = document.querySelectorAll('script[type="application/ld+json"]');
+            if (ldScripts.length > 1) {
+              var seenIds = {};
+              for (var s = 0; s < ldScripts.length; s++) {
+                try {
+                  var parsed = JSON.parse(ldScripts[s].textContent || '{}');
+                  var keyId = parsed['@id'] || (parsed['@graph'] && parsed['@graph'][0] && parsed['@graph'][0]['@id']) || 'schema-' + s;
+                  if (seenIds[keyId]) {
+                    if (ldScripts[s].parentNode) ldScripts[s].parentNode.removeChild(ldScripts[s]);
+                  } else {
+                    seenIds[keyId] = true;
+                  }
+                } catch(e) {}
+              }
+            }
+          } catch(err) {}
         }
+
         if (typeof MutationObserver !== 'undefined') {
           try {
-            new MutationObserver(dedupeMeta).observe(document.head || document.documentElement, {
+            new MutationObserver(dedupeHead).observe(document.head || document.documentElement, {
               childList: true,
               subtree: true
             });
           } catch(e) {}
         }
-        window.addEventListener('DOMContentLoaded', dedupeMeta);
+        window.addEventListener('DOMContentLoaded', dedupeHead);
       })();
     </script>
     <!-- Favicon & Brand Icons -->
@@ -127,232 +167,6 @@
     <link rel="prefetch" href="https://www.abuqitmirlabs.tech/ai-agent-development" />
     <link rel="prefetch" href="https://www.abuqitmirlabs.tech/contact" />
 
-    <!-- Unified JSON-LD Structured Data Schema (LocalBusiness & Organization) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": ["LocalBusiness", "ProfessionalService", "Organization"],
-            "@id": "https://www.abuqitmirlabs.tech/#organization",
-            "name": "AbuQitmirLabs",
-            "alternateName": "AbuQitmirLabs .TECH",
-            "url": "https://www.abuqitmirlabs.tech/",
-            "logo": {
-              "@type": "ImageObject",
-              "@id": "https://www.abuqitmirlabs.tech/#logo",
-              "url": "https://www.abuqitmirlabs.tech/logo.png",
-              "contentUrl": "https://www.abuqitmirlabs.tech/logo.png",
-              "caption": "AbuQitmirLabs Logo"
-            },
-            "image": "https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg",
-            "description": "AbuQitmirLabs is a premier custom software and AI development company delivering web platforms, mobile apps, and SEO engineering for global businesses across US, UK, and Europe.",
-            "email": "hello@abuqitmirlabs.tech",
-            "telephone": "+923233260859",
-            "priceRange": "$$",
-            "openingHours": "Mo-Fr 09:00-18:00",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
-              "addressLocality": "Karachi",
-              "addressRegion": "Sindh",
-              "postalCode": "75160",
-              "addressCountry": "PK"
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "24.8934",
-              "longitude": "67.1554"
-            },
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+923233260859",
-              "contactType": "sales",
-              "areaServed": ["US", "GB", "PK", "AU", "EU", "CA"]
-            },
-            "sameAs": [
-              "https://x.com/AbuQitmir",
-              "https://www.linkedin.com/in/abu-qitmir-697423390/",
-              "https://www.facebook.com/profile.php?id=61583768706452",
-              "https://www.instagram.com/abuqitmirshirazalmadani/",
-              "https://www.youtube.com/@AbuQitmir"
-            ],
-            "hasOfferCatalog": {
-              "@type": "OfferCatalog",
-              "name": "AbuQitmirLabs Core Digital Services",
-              "itemListElement": [
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Custom Software Development",
-                    "url": "https://www.abuqitmirlabs.tech/custom-software",
-                    "description": "Bespoke enterprise software engineering, scalable cloud systems, and architectural solutions."
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Mobile App Development",
-                    "url": "https://www.abuqitmirlabs.tech/mobile-app-development",
-                    "description": "Cross-platform iOS and Android mobile app development using Flutter and React Native."
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Web Development",
-                    "url": "https://www.abuqitmirlabs.tech/web-development",
-                    "description": "High-performance full-stack web development with Next.js, React, Node.js, and headless CMS."
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "AI Agent & Automation Systems",
-                    "url": "https://www.abuqitmirlabs.tech/ai-agent-development",
-                    "description": "Autonomous AI agent architecture, LLM fine-tuning, RAG pipelines, and enterprise automation."
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Technical SEO & Organic Growth",
-                    "url": "https://www.abuqitmirlabs.tech/seo-mastery",
-                    "description": "Enterprise technical SEO, semantic SEO, AEO optimization, and Core Web Vitals optimization."
-                  }
-                }
-              ]
-            }
-          },
-          {
-            "@type": "WebSite",
-            "@id": "https://www.abuqitmirlabs.tech/#website",
-            "url": "https://www.abuqitmirlabs.tech/",
-            "name": "AbuQitmirLabs",
-            "description": "Custom Software & AI Development Agency — AbuQitmirLabs",
-            "publisher": {
-              "@type": "Organization",
-              "@id": "https://www.abuqitmirlabs.tech/#organization"
-            }
-          },
-          {
-            "@type": "WebPage",
-            "@id": "https://www.abuqitmirlabs.tech/#webpage",
-            "url": "https://www.abuqitmirlabs.tech/",
-            "name": "Custom Software, Web & AI Development | AbuQitmirLabs",
-            "isPartOf": {
-              "@type": "WebSite",
-              "@id": "https://www.abuqitmirlabs.tech/#website"
-            },
-            "about": {
-              "@type": "Organization",
-              "@id": "https://www.abuqitmirlabs.tech/#organization"
-            },
-            "primaryImageOfPage": {
-              "@type": "ImageObject",
-              "@id": "https://www.abuqitmirlabs.tech/#hero-bg-image"
-            },
-            "image": [
-              {
-                "@type": "ImageObject",
-                "@id": "https://www.abuqitmirlabs.tech/#hero-bg-image"
-              },
-              {
-                "@type": "ImageObject",
-                "@id": "https://www.abuqitmirlabs.tech/#hero-img-software"
-              },
-              {
-                "@type": "ImageObject",
-                "@id": "https://www.abuqitmirlabs.tech/#hero-img-mobile"
-              },
-              {
-                "@type": "ImageObject",
-                "@id": "https://www.abuqitmirlabs.tech/#hero-img-web"
-              },
-              {
-                "@type": "ImageObject",
-                "@id": "https://www.abuqitmirlabs.tech/#hero-img-ai"
-              },
-              {
-                "@type": "ImageObject",
-                "@id": "https://www.abuqitmirlabs.tech/#hero-img-seo"
-              }
-            ]
-          },
-          {
-            "@type": "ImageObject",
-            "@id": "https://www.abuqitmirlabs.tech/#hero-bg-image",
-            "url": "https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg",
-            "contentUrl": "https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg",
-            "name": "AbuQitmirLabs Custom Software Studio Showcase",
-            "description": "AbuQitmirLabs custom software studio delivering AI apps, enterprise web systems, and high-performance digital solutions across US, UK, and Europe.",
-            "caption": "AbuQitmirLabs custom software studio delivering AI apps, enterprise web systems, and high-performance digital solutions across US, UK, and Europe.",
-            "representativeOfPage": true
-          },
-          {
-            "@type": "ImageObject",
-            "@id": "https://www.abuqitmirlabs.tech/#hero-img-software",
-            "url": "https://i.postimg.cc/gktVScfQ/software-development.jpg",
-            "contentUrl": "https://i.postimg.cc/gktVScfQ/software-development.jpg",
-            "name": "Custom Software Development Expertise",
-            "description": "Custom software development and full-stack engineering team delivering bespoke enterprise web applications and scalable cloud systems at AbuQitmirLabs.",
-            "caption": "Custom software development and full-stack engineering team delivering bespoke enterprise web applications and scalable cloud systems at AbuQitmirLabs."
-          },
-          {
-            "@type": "ImageObject",
-            "@id": "https://www.abuqitmirlabs.tech/#hero-img-mobile",
-            "url": "https://i.postimg.cc/nzxBjXDf/mobile-app-develpment-abuqitmirlabs.jpg",
-            "contentUrl": "https://i.postimg.cc/nzxBjXDf/mobile-app-develpment-abuqitmirlabs.jpg",
-            "name": "Mobile App Development Solutions",
-            "description": "Cross-platform mobile app development for iOS and Android platforms built using Flutter, React Native, and native architectures at AbuQitmirLabs studio.",
-            "caption": "Cross-platform mobile app development for iOS and Android platforms built using Flutter, React Native, and native architectures at AbuQitmirLabs studio."
-          },
-          {
-            "@type": "ImageObject",
-            "@id": "https://www.abuqitmirlabs.tech/#hero-img-web",
-            "url": "https://i.postimg.cc/hPYm8yd5/web-development-abuqitmirlabs.jpg",
-            "contentUrl": "https://i.postimg.cc/hPYm8yd5/web-development-abuqitmirlabs.jpg",
-            "name": "Full-Stack Web Development Services",
-            "description": "Modern full-stack web development services utilizing Next.js, React, Node.js, and cloud infrastructure for fast, SEO-optimized apps at AbuQitmirLabs.",
-            "caption": "Modern full-stack web development services utilizing Next.js, React, Node.js, and cloud infrastructure for fast, SEO-optimized apps at AbuQitmirLabs."
-          },
-          {
-            "@type": "ImageObject",
-            "@id": "https://www.abuqitmirlabs.tech/#hero-img-ai",
-            "url": "https://i.postimg.cc/85wJ7tGm/ai-agent-development-abuqitmirlabs.jpg",
-            "contentUrl": "https://i.postimg.cc/85wJ7tGm/ai-agent-development-abuqitmirlabs.jpg",
-            "name": "Autonomous AI Agent Development",
-            "description": "Autonomous AI agent development, custom LLM integration, workflow automation, and intelligent RAG systems engineered for enterprises by AbuQitmirLabs.",
-            "caption": "Autonomous AI agent development, custom LLM integration, workflow automation, and intelligent RAG systems engineered for enterprises by AbuQitmirLabs."
-          },
-          {
-            "@type": "ImageObject",
-            "@id": "https://www.abuqitmirlabs.tech/#hero-img-seo",
-            "url": "https://i.postimg.cc/NGJ2YJp9/seo-local-seo.jpg",
-            "contentUrl": "https://i.postimg.cc/NGJ2YJp9/seo-local-seo.jpg",
-            "name": "Technical & Semantic SEO Mastery",
-            "description": "Technical SEO, semantic optimization, AEO AI search visibility, and organic growth marketing strategies engineered for brands by AbuQitmirLabs agency.",
-            "caption": "Technical SEO, semantic optimization, AEO AI search visibility, and organic growth marketing strategies engineered for brands by AbuQitmirLabs agency."
-          },
-          {
-            "@type": "Person",
-            "@id": "https://www.abuqitmirlabs.tech/#author",
-            "name": "Mohammad Shiraz Almadani",
-            "url": "https://www.linkedin.com/in/abu-qitmir-697423390/",
-            "jobTitle": "CEO & Lead Engineer of AbuQitmirLabs",
-            "sameAs": [
-              "https://www.linkedin.com/in/abu-qitmir-697423390/",
-              "https://x.com/AbuQitmir"
-            ]
-          }
-        ]
-      }
-    </script>
   </head>
   <body>
     <noscript>

@@ -3012,7 +3012,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                             }] : []),
                             ...(slug && (slug.includes('ecommerce-platform-development') || slug.includes('e-commerce-platform-development')) ? [{
                                 "@type": "FAQPage",
-                                "@id": "https://www.abuqitmirlabs.tech/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026#faq",
+                                "@id": `${seoData.canonicalUrl}#faq`,
                                 "mainEntity": [
                                     {
                                         "@type": "Question",
