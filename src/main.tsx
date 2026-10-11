@@ -1,4 +1,4 @@
-import {StrictMode} from 'react';
+import React, {StrictMode} from 'react';
 import {createRoot, hydrateRoot} from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
@@ -25,7 +25,7 @@ if (container) {
           <App />
         </StrictMode>,
         {
-          onRecoverableError(error, errorInfo) {
+          onRecoverableError(error: Error, errorInfo: React.ErrorInfo) {
             console.warn('[Hydration Notice]:', error, errorInfo);
           },
         }

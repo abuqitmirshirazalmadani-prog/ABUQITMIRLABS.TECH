@@ -99,8 +99,9 @@ function MetaHeadSanitizer() {
       if (descs.length > 1) {
         // Keep the latest rendered tag, remove older/redundant tags
         for (let i = 0; i < descs.length - 1; i++) {
-          if (descs[i].parentNode) {
-            descs[i].parentNode.removeChild(descs[i]);
+          const target = descs[i];
+          if (target?.parentNode) {
+            target.parentNode.removeChild(target);
           }
         }
       }
@@ -109,8 +110,9 @@ function MetaHeadSanitizer() {
       const canonicals = document.querySelectorAll('link[rel="canonical"]');
       if (canonicals.length > 1) {
         for (let i = 0; i < canonicals.length - 1; i++) {
-          if (canonicals[i].parentNode) {
-            canonicals[i].parentNode.removeChild(canonicals[i]);
+          const target = canonicals[i];
+          if (target?.parentNode) {
+            target.parentNode.removeChild(target);
           }
         }
       }

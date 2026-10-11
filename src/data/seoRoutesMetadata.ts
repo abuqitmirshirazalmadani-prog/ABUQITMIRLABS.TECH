@@ -6,7 +6,9 @@ export interface RouteSeoMetadata {
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   ogType?: string;
+  robots?: string;
   twitterTitle?: string;
   twitterDescription?: string;
   twitterImage?: string;
