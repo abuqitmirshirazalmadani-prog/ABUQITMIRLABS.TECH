@@ -4,74 +4,79 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   ArrowUpRight, 
+  ShieldCheck, 
   Globe, 
   Zap, 
   Plus, 
   Cpu, 
-  Search, 
-  Smartphone, 
-  ShieldCheck, 
-  BarChart3, 
-  ChevronRight, 
+  Search,
+  Code,
+  Smartphone,
+  ChevronRight,
   ExternalLink,
   Building,
   CreditCard,
-  Lock
+  Lock,
+  Database,
+  BarChart3,
+  CheckCircle2,
+  Sparkles,
+  Server,
+  Layers
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CountryMarquee from '../components/CountryMarquee';
 import HeroText from '../components/ui/hero-shutter-text';
+import { AnimatedShinyText } from '../components/ui/animated-shiny-text';
+import { AnimatedBreathingText } from '../components/ui/animated-breathing-text';
+import { MagicText } from '../components/ui/magic-text';
 
 const UAEMarketPage: React.FC = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   const faqData = [
     {
-      q: "Are your platforms compliant with the UAE Data Protection Law (Federal Decree-Law No. 45)?",
-      a: "Yes. All our digital platforms, enterprise backends, and AI pipelines adhere to the UAE Data Protection Law and DIFC/ADGM data protection standards, including user consent mechanisms and end-to-end encryption."
+      q: "How much does mobile app development cost in Dubai?",
+      a: "Mobile app development in Dubai typically ranges from AED 80,000 to AED 400,000 at local agency rates, depending on complexity, platform (iOS, Android, or both), and backend requirements. At AbuQitmirLabs, offshore engineering rates for a comparable scope typically range from $20,000 to $80,000 USD. The difference reflects the cost structure of offshore delivery, not a reduction in quality or capability."
     },
     {
-      q: "Can you integrate UAE payment processors and multi-currency AED billing?",
-      a: "Absolutely. We integrate leading UAE and regional payment gateways including Stripe UAE, Network International, Telr, PayCaps, and Tabby/Tamara for Buy Now Pay Later (BNPL) checkouts."
+      q: "Do you build Arabic-first apps with RTL support?",
+      a: "Yes. Every mobile and web application we build for the UAE market is designed with Arabic as a primary language. This includes RTL layout for all UI components, Arabic typography, and localized content that reflects how UAE users actually communicate. We do not build English-first apps and translate them later."
     },
     {
-      q: "How do your working hours coordinate with Dubai and Abu Dhabi businesses?",
-      a: "The UAE operates on Gulf Standard Time (GST, UTC+4). Our software squads operate with full synchronous overlap during your standard 9 AM to 6 PM working hours, ensuring instant communication on Slack and Microsoft Teams."
+      q: "What is NESA compliance and why does it matter for UAE software?",
+      a: "NESA (National Electronic Security Authority) is the UAE's cybersecurity framework, now overseen by the Signals Intelligence Agency. It defines security controls that organizations in the UAE — particularly those in critical sectors — must implement to protect digital assets. For software projects, NESA compliance affects architecture decisions, access controls, encryption standards, and audit logging. We build every UAE project with NESA-aligned security as a baseline."
     },
     {
-      q: "Do you specialize in fintech and web3 solutions for DIFC and ADGM entities?",
-      a: "Yes. We design high-throughput microservices, algorithmic trading dashboards, PCI-DSS compliant customer portals, and regulatory-ready fintech architectures tailored to UAE financial centers."
+      q: "Can you integrate with UAE payment gateways and government services?",
+      a: "Yes. We integrate Careem Pay, Telr, Network International, Stripe UAE, Tabby, Tamara, and other UAE payment gateways into web and mobile applications. Where applicable, we also integrate with UAE digital government service APIs for identity verification, document submission, and regulatory reporting."
     },
     {
-      q: "Can you provide dual-language Arabic and English interfaces for UAE consumers?",
-      a: "Yes. We build responsive bilingual web and mobile experiences with fluid LTR/RTL switching, localized typographic hierarchy, and semantic SEO optimized for google.ae."
-    },
-    {
-      q: "How fast can you deliver an MVP for a Dubai-based startup?",
-      a: "Depending on system scope, our senior development squads can architect, build, test, and deploy an investor-ready MVP in 6 to 10 weeks."
+      q: "Do you have experience with UAE fintech regulations?",
+      a: "Our engineering team has built financial technology platforms with security architectures suitable for DFSA and ADGM regulatory environments. This includes transaction monitoring, KYC/AML workflows, audit trail generation, and regulatory reporting infrastructure."
     }
   ];
 
   return (
-    <div className="bg-[#090a0f] text-[#d1d5db] min-h-screen font-sans selection:bg-[#38bdf8] selection:text-black">
+    <div className="bg-[#05080c] text-[#d6e0ea] min-h-screen font-sans selection:bg-[#38bdf8] selection:text-black">
       <Helmet>
-        <title>Software Development for UAE | Dubai & Abu Dhabi Tech Squads | AbuQitmirLabs</title>
-        <meta name="description" content="Elite software engineering, mobile apps, and AI agents for UAE enterprises and startups across Dubai and Abu Dhabi. Fully compliant with UAE Federal Decree-Law No. 45." />
+        <title>Software Development UAE | Arabic Apps & AI Agents | AbuQitmirLabs</title>
+        <meta name="description" content="Custom software, AI agents & local SEO for UAE businesses. Arabic-first, NESA-compliant, Dubai & Abu Dhabi coverage. Get a free consultation." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/uae-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Software Development for UAE | Dubai & Abu Dhabi Tech Squads | AbuQitmirLabs" />
-        <meta property="og:description" content="Elite software engineering, mobile apps, and AI agents for UAE enterprises and startups across Dubai and Abu Dhabi. Fully compliant with UAE Federal Decree-Law No. 45." />
+        <meta property="og:title" content="Software Development UAE | Arabic Apps & AI Agents | AbuQitmirLabs" />
+        <meta property="og:description" content="Custom software, AI agents & local SEO for UAE businesses. Arabic-first, NESA-compliant, Dubai & Abu Dhabi coverage. Get a free consultation." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/uae-market" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Software Development for UAE | Dubai & Abu Dhabi Tech Squads | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Elite software engineering, mobile apps, and AI agents for UAE enterprises and startups across Dubai and Abu Dhabi. Fully compliant with UAE Federal Decree-Law No. 45." />
+        <meta name="twitter:title" content="Software Development UAE | Arabic Apps & AI Agents | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Custom software, AI agents & local SEO for UAE businesses. Arabic-first, NESA-compliant, Dubai & Abu Dhabi coverage. Get a free consultation." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
@@ -99,15 +104,16 @@ const UAEMarketPage: React.FC = () => {
               },
               {
                 "@context": "https://schema.org",
-                "@type": "Service",
-                "name": "Enterprise Software Engineering for UAE",
-                "description": "Custom software development, mobile apps, and AI automation for Dubai, Abu Dhabi, and UAE businesses.",
-                "provider": {
-                  "@type": "Organization",
-                  "name": "AbuQitmirLabs",
-                  "url": "https://www.abuqitmirlabs.tech"
-                },
-                "areaServed": "AE"
+                "@type": "LocalBusiness",
+                "name": "AbuQitmirLabs - UAE Tech Solutions",
+                "description": "NESA-compliant software development, Arabic-first mobile applications, AI agents, and bilingual local SEO for Dubai and Abu Dhabi.",
+                "url": "https://www.abuqitmirlabs.tech/uae-market",
+                "areaServed": "AE",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": "Karachi",
+                  "addressCountry": "PK"
+                }
               },
               {
                 "@context": "https://schema.org",
@@ -130,114 +136,184 @@ const UAEMarketPage: React.FC = () => {
       <Breadcrumbs />
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex flex-col justify-center items-center px-6 pt-32 md:pt-40 md:px-10 overflow-hidden text-center">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.06),transparent_70%)] pointer-events-none" />
+      <section className="relative min-h-screen flex flex-col justify-center items-center px-6 pt-32 md:pt-40 md:px-10 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.08),transparent_40%),linear-gradient(to_bottom,rgba(56,189,248,0.02),transparent_25%,transparent_80%,rgba(56,189,248,0.03))] pointer-events-none" />
         
-        <div className="relative mx-auto max-w-7xl w-full text-center">
-          <div className="flex flex-col gap-10 items-center">
+        {/* Glow Spheres */}
+        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-[#38bdf8]/10 blur-[130px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-blue-700/10 blur-[140px] rounded-full pointer-events-none" />
+
+        <div className="relative mx-auto max-w-7xl w-full">
+          <div className="flex flex-col gap-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.4em] text-[#38bdf8]"
+              className="flex items-center gap-4 text-xs font-mono uppercase tracking-[0.35em] text-[#38bdf8]"
             >
-              <Building size={16} className="text-[#38bdf8]" />
-              United Arab Emirates // Dubai & Abu Dhabi Tech Engineering
+              <span className="inline-block h-2 w-2 rounded-full bg-[#38bdf8] animate-pulse" />
+              United Arab Emirates // Dubai &amp; Abu Dhabi Digital Engineering
             </motion.div>
 
-            <div className="mb-8">
+            <div className="mb-4">
               <HeroText text="UAE TECH HUB" />
             </div>
 
             <motion.h1 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.15 }}
+              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase mb-8"
+            >
+              Software Development <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] via-[#60a5fa] to-[#93c5fd]">for UAE | Arabic-First Apps</span>
+            </motion.h1>
+
+            {/* Quick Takeaways Box */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter text-white uppercase mb-8"
+              transition={{ delay: 0.22 }}
+              className="max-w-4xl p-8 rounded-2xl bg-gradient-to-br from-sky-950/30 to-black border border-[#38bdf8]/30 backdrop-blur-md shadow-2xl relative overflow-hidden"
             >
-              Engineering Scale <br />
-              <span className="text-[#38bdf8]">for UAE Enterprises</span>
-            </motion.h1>
+              <div className="flex items-center gap-2 text-xs font-mono text-[#38bdf8] uppercase tracking-widest mb-4">
+                <Sparkles size={16} />
+                Quick Takeaways
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm font-sans text-gray-200">
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 size={18} className="text-[#38bdf8] shrink-0" />
+                  <span>74,150 monthly buyer intent signals in UAE app dev (low 14.6 competition)</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 size={18} className="text-[#38bdf8] shrink-0" />
+                  <span>Arabic-first mobile apps see 40-60% higher engagement</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 size={18} className="text-[#38bdf8] shrink-0" />
+                  <span>NESA &amp; UAE IA compliant engineering standards</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 size={18} className="text-[#38bdf8] shrink-0" />
+                  <span>Serving Dubai, Abu Dhabi, Sharjah, and all Emirates</span>
+                </div>
+              </div>
+            </motion.div>
 
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25 }}
-              className="max-w-4xl text-lg md:text-xl text-[#9ca3af] leading-relaxed font-sans font-light mx-auto"
+              className="max-w-4xl text-lg md:text-xl text-[#9ca3af] leading-relaxed font-sans font-light"
             >
-              From ambitious startups in Dubai Internet City to established conglomerates in Abu Dhabi and financial pioneers in DIFC and ADGM, we build bank-grade software, high-conversion web apps, and intelligent AI agents.
+              The UAE mobile application development segment commands 74,150 monthly buyer intent signals, yet competitive intensity averages a remarkably low 14.6, the lowest in the GCC region. This gap between demand and supply represents a rare opportunity. AbuQitmirLabs builds custom software, AI agents, and mobile applications for UAE businesses across fintech, real estate, hospitality, healthcare, and e-commerce with Arabic-first UX, NESA-aligned security, and full ecosystem integration.
             </motion.p>
-
-            {/* Core Capabilities */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.28 }}
-              className="max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg mx-auto"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
-                {[
-                  "UAE Data Protection Decree-Law No. 45 Compliance",
-                  "DIFC & ADGM Regulatory Tech Alignment",
-                  "AED Payment Gateways: Network Intl, Telr, Stripe",
-                  "Tabby & Tamara BNPL Checkout Integration",
-                  "Full Synchronous GST (UTC+4) Working Hours",
-                  "Localized Bilingual Arabic & English UX Systems"
-                ].map((bullet, idx) => (
-                  <div key={idx} className="flex items-start gap-3 group">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] mt-2 shrink-0 group-hover:bg-[#7dd3fc] transition-colors duration-300" />
-                    <span className="text-sm font-sans font-light text-slate-300 tracking-tight leading-relaxed group-hover:text-white transition-colors duration-300">{bullet}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
 
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-6 mt-12"
+              className="flex flex-col sm:flex-row gap-6 mt-6"
             >
               <a 
                 href="https://wa.me/923233260859"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#38bdf8] text-black px-12 py-8 rounded-full font-black text-xl hover:bg-white transition-all flex items-center justify-center gap-3 uppercase tracking-tighter shadow-2xl shadow-[#38bdf8]/20"
+                className="bg-[#38bdf8] text-black px-12 py-7 rounded-2xl font-bold text-lg hover:bg-white hover:scale-105 transition-all flex items-center justify-center gap-3 shadow-2xl shadow-[#38bdf8]/30 uppercase tracking-tight"
               >
-                <ArrowUpRight size={24} />
-                Connect in UAE Time
+                <ArrowUpRight size={22} />
+                Partner with Us in UAE
               </a>
-              <a 
-                href="https://wa.me/923233260859"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-2 border-[#38bdf8]/40 text-[#38bdf8] px-12 py-8 rounded-full font-black text-xl hover:bg-[#38bdf8]/10 transition-all flex items-center justify-center gap-3 uppercase tracking-tighter"
+              <Link 
+                to="/contact"
+                className="border border-white/10 text-[#d1d5db] px-12 py-7 rounded-2xl font-bold text-lg hover:bg-white/5 transition-all flex items-center justify-center gap-3 uppercase tracking-tight"
               >
-                <Globe size={24} />
-                Explore UAE Solutions
-              </a>
+                <Smartphone size={22} className="text-[#38bdf8]" />
+                Get a Free UAE Market Audit
+              </Link>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* UAE Highlights */}
-      <section className="py-32 px-6 md:px-10 bg-[#0c1017] border-y border-white/5 relative overflow-hidden">
+      {/* Marquee Branding */}
+      <section className="overflow-hidden border-y border-white/5 bg-[#070b10] py-14">
+        <div className="flex animate-marquee whitespace-nowrap gap-12 text-4xl md:text-7xl font-semibold uppercase tracking-tight opacity-90 italic">
+          <span>High Demand · Low Competition</span> <span className="text-[#38bdf8]">·</span>
+          <span>40-60% Higher Arabic Engagement</span> <span className="text-[#38bdf8]">·</span>
+          <span>NESA &amp; UAE IA Compliant</span> <span className="text-[#38bdf8]">·</span>
+          <span>DIFC &amp; ADGM Fintech Standards</span> <span className="text-[#38bdf8]">·</span>
+          <span>Dubai · Abu Dhabi · Sharjah</span> <span className="text-[#38bdf8]">·</span>
+          <span>High Demand · Low Competition</span> <span className="text-[#38bdf8]">·</span>
+          <span>40-60% Higher Arabic Engagement</span> <span className="text-[#38bdf8]">·</span>
+        </div>
+      </section>
+
+      {/* The UAE Digital Market Opportunity */}
+      <section className="py-32 px-6 md:px-10 border-b border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-24 p-12 border border-[#38bdf8]/20 bg-[#38bdf8]/5 rounded-3xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-8 opacity-10">
-              <ShieldCheck size={120} className="text-[#38bdf8]" />
-            </div>
-            <div className="relative z-10 max-w-3xl text-left">
-              <h2 className="text-sm font-mono text-[#38bdf8] mb-6 uppercase tracking-[0.4em] font-bold">[ UAE_REGULATORY_PROTOCOL ]</h2>
-              <h3 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tighter mb-8 leading-tight">
-                UAE Data Protection & <br />
-                Financial Hub Compliance
-              </h3>
-              <p className="text-xl text-[#9ca3af] leading-relaxed mb-8">
-                Operating in the UAE demands adherence to <span className="text-white font-bold italic">Federal Decree-Law No. 45</span> and stringent DIFC/ADGM cybersecurity guidelines. We build cloud architectures with automated audit trails, strict consent tracking, and localized Middle East cloud failover.
+          <div className="grid md:grid-cols-2 gap-16 items-start">
+            <div>
+              <span className="text-xs font-mono uppercase tracking-[0.35em] text-[#38bdf8] mb-6 block">// MARKET INTELLIGENCE</span>
+              <AnimatedShinyText 
+                text="The UAE Digital Market: High Demand, Low Competition" 
+                textClassName="text-4xl md:text-6xl text-white font-bold leading-tight"
+              />
+              <p className="mt-8 text-xl text-[#38bdf8] font-medium">
+                Why UAE App Development Has the Lowest Competitive Intensity in the GCC
               </p>
-              <div className="flex flex-wrap gap-4">
-                {["UAE Federal Decree-Law No. 45", "DIFC Data Protection Act", "ADGM Cyber Regulations", "PCI-DSS Level 1 Ready", "VAT Compliant Logic"].map(tag => (
-                  <span key={tag} className="px-4 py-2 bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-widest text-[#38bdf8] rounded-full">
+            </div>
+            <div className="text-lg text-[#9ca3af] leading-relaxed space-y-6 font-light">
+              <p>
+                The UAE leads the GCC in mobile sophistication and spending. Smartphone penetration is 96.2%, and users spend an average of 3.2 hours per day on apps. Unlike most emerging markets where Android dominates overwhelmingly, the UAE's high iOS adoption rate means iOS-first strategies are viable. This creates opportunities for businesses that build premium, design-forward applications.
+              </p>
+              <p>
+                The competitive gap is most pronounced in Arabic-first development. Apps launched with native Arabic support from day one see 40-60% higher engagement than English-only apps retrofitted with translation. Retrofitting costs 3-5x more than building bilingual from the start. Yet most UAE agencies still build English-first products, leaving a significant portion of the market unreached.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Compliance Protocol Section */}
+      <section className="py-32 px-6 md:px-10 bg-[#060a0f]">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-20 p-12 border border-[#38bdf8]/25 bg-gradient-to-br from-[#38bdf8]/10 via-black to-black rounded-3xl relative overflow-hidden shadow-2xl">
+            <div className="absolute top-0 right-0 p-8 opacity-10">
+              <ShieldCheck size={140} className="text-[#38bdf8]" />
+            </div>
+            <div className="relative z-10 max-w-4xl">
+              <span className="text-xs font-mono text-[#38bdf8] mb-6 uppercase tracking-[0.4em] font-bold block">[ UAE_DATA_PROTOCOL ]</span>
+              <h2 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tighter mb-8 leading-tight">
+                NESA &amp; UAE IA Compliant Engineering Standards
+              </h2>
+              <p className="text-lg md:text-xl text-[#d1d5db] leading-relaxed mb-8 font-light">
+                Operating in the UAE requires adherence to the UAE Information Assurance (IA) Standards, developed by the Signals Intelligence Agency, and the NESA (National Electronic Security Authority) framework. We architect all UAE projects with enterprise security controls, access management, encryption standards, and UAE in-country data residency options.
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-6 my-8 text-sm">
+                <div className="p-6 rounded-2xl bg-black/60 border border-white/5">
+                  <h3 className="font-bold text-white uppercase text-base mb-2 flex items-center gap-2">
+                    <Database size={18} className="text-[#38bdf8]" />
+                    What UAE Information Assurance Means
+                  </h3>
+                  <p className="text-[#9ca3af] font-light">
+                    Granular role-based access management, encrypted transit and rest layers, and comprehensive audit trails compliant with Signals Intelligence Agency criteria.
+                  </p>
+                </div>
+                <div className="p-6 rounded-2xl bg-black/60 border border-white/5">
+                  <h3 className="font-bold text-white uppercase text-base mb-2 flex items-center gap-2">
+                    <Server size={18} className="text-[#38bdf8]" />
+                    Data Residency Options for UAE Businesses
+                  </h3>
+                  <p className="text-[#9ca3af] font-light">
+                    Direct hosting configurations in UAE local cloud availability zones (AWS UAE Region, Azure UAE Central/North) for regulated sectors.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-4 pt-4">
+                {["NESA Aligned Controls", "UAE IA Standard", "DFSA & ADGM Ready", "UAE In-Country Cloud", "PCI-DSS Level 1"].map(tag => (
+                  <span key={tag} className="px-4 py-2 bg-white/5 border border-white/10 text-xs font-mono font-bold uppercase tracking-wider text-[#38bdf8] rounded-full">
                     {tag}
                   </span>
                 ))}
@@ -245,101 +321,246 @@ const UAEMarketPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <span className="text-sm font-bold text-[#38bdf8] uppercase tracking-[0.4em] mb-6 block">Emirate Reach</span>
-              <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-none mb-10">
-                Powering Digital in <br />
-                <span className="text-[#0284c7] italic">The GCC Powerhouse.</span>
-              </h2>
-              <p className="text-xl text-[#9ca3af] font-light leading-relaxed mb-8">
-                From luxury retail apps in Downtown Dubai to enterprise platforms in Abu Dhabi Global Market and logistics in Sharjah, we deliver precision engineering.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                {['Dubai', 'Abu Dhabi', 'Sharjah', 'DIFC', 'ADGM', 'Ajman', 'Ras Al Khaimah'].map((city) => (
-                  <span key={city} className="px-4 py-2 bg-black/40 border border-white/10 rounded-full text-xs font-mono tracking-widest text-[#38bdf8]">
-                    {city}
-                  </span>
-                ))}
+          <div className="mb-16">
+            <span className="text-xs font-mono uppercase tracking-[0.35em] text-[#38bdf8] mb-6 block">// THE ABUQITMIRLABS EDGE</span>
+            <AnimatedShinyText 
+              text="Silicon-Grade Velocity for Dubai and Abu Dhabi." 
+              textClassName="text-4xl md:text-7xl font-bold text-white"
+            />
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Arabic-First Native Apps",
+                desc: "Engineered for 40-60% higher engagement with fluid RTL ergonomics, Arabic micro-typography, and seamless Apple Pay checkouts.",
+                icon: <Smartphone className="text-[#38bdf8]" size={32} />
+              },
+              {
+                title: "Fintech & SaaS Platforms",
+                desc: "High-throughput cloud architectures built for DFSA and ADGM regulatory compliance with automated KYC and transaction auditing.",
+                icon: <Zap className="text-[#38bdf8]" size={32} />
+              },
+              {
+                title: "Bilingual Dubai SEO",
+                desc: "Commanding Google.ae local and map-pack visibility across Dubai, DIFC, Downtown, and Abu Dhabi with structured semantic entity mapping.",
+                icon: <Search className="text-[#38bdf8]" size={32} />
+              }
+            ].map((feature, i) => (
+              <div key={i} className="p-10 bg-white/[0.02] border border-white/5 hover:border-[#38bdf8]/40 rounded-3xl transition-all group flex flex-col items-start">
+                <div className="mb-6 p-4 rounded-2xl bg-white/5 border border-white/10">{feature.icon}</div>
+                <AnimatedBreathingText text={feature.title} className="text-2xl font-bold uppercase tracking-tight mb-4 group-hover:text-white" />
+                <MagicText text={feature.desc} className="text-[#9ca3af] leading-relaxed font-light" />
               </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-8"
-            >
-              {[
-                { title: "AED Currency Ready", icon: <CreditCard className="text-[#38bdf8]" /> },
-                { title: "Decree No. 45 Ready", icon: <ShieldCheck className="text-[#38bdf8]" /> },
-                { title: "GST 100% Overlap", icon: <Cpu className="text-[#38bdf8]" /> },
-                { title: "google.ae Mastery", icon: <Search className="text-[#38bdf8]" /> }
-              ].map((item, i) => (
-                <div key={i} className="p-8 bg-black/30 border border-white/5 rounded-3xl flex flex-col items-center text-center group hover:border-[#38bdf8]/30 transition-all">
-                  <div className="mb-6">{item.icon}</div>
-                  <h3 className="text-lg font-bold text-white uppercase tracking-tight">{item.title}</h3>
-                </div>
-              ))}
-            </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-32 px-6 md:px-10 bg-[#07090e] relative overflow-hidden border-b border-white/5">
+      <CountryMarquee />
+
+      {/* Cinematic Reveal Sections: Core Services */}
+      <section className="py-32 px-6 md:px-10 border-y border-white/5 bg-[#040609] relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-24 text-center">
-            <span className="text-xs font-mono text-[#38bdf8] uppercase tracking-[0.4em] block mb-6">// UAE INDUSTRY FOCUS</span>
+          <div className="mb-32 text-center">
+            <span className="text-xs font-mono text-[#38bdf8] uppercase tracking-[0.4em] block mb-6">// CORE SERVICES FOR THE UAE MARKET</span>
             <h2 className="text-4xl md:text-7xl font-serif font-light text-white uppercase tracking-tight leading-none">
-              Modern Solutions for <br />
-              <span className="italic text-[#9ca3af]">High-Velocity UAE Markets</span>
+              Engineering Built for <br />
+              <span className="italic text-[#9ca3af] font-light">the UAE Digital Infrastructure</span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-10 rounded-3xl bg-zinc-950/60 border border-white/5 space-y-6">
-              <div className="w-12 h-12 rounded-xl bg-[#38bdf8]/10 flex items-center justify-center text-[#38bdf8]">
-                <Globe size={24} />
+          <div className="space-y-40">
+            {/* Service 1: Arabic-First Mobile App Development */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start"
+            >
+              <div className="lg:col-span-7 space-y-8">
+                <div className="flex items-center gap-4 text-xs font-mono text-[#38bdf8] uppercase tracking-widest">
+                  <span className="h-px w-8 bg-[#38bdf8]" />
+                  PREMIUM MOBILE ARCHITECTURE
+                </div>
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
+                  Arabic-First Mobile <br />
+                  <span className="italic text-[#9ca3af]">App Development (iOS, Android, Flutter)</span>
+                </h3>
+                <div className="font-sans font-light text-[#9ca3af] leading-relaxed text-base md:text-lg space-y-6">
+                  <p>
+                    We build native iOS (Swift) and Android (Kotlin) applications, as well as cross-platform apps in Flutter and React Native, designed specifically for UAE users. Every mobile build includes Arabic-first UX with proper RTL layout, local payment gateway integration (Careem Pay, Telr, Network International, Stripe UAE), and utility service integrations similar to Salik, DEWA, and RTA.
+                  </p>
+                  <p>
+                    The 40-60% engagement differential between Arabic-first and English-only apps is not theoretical. It reflects the reality that UAE consumers, whether Emirati nationals or expatriates from Arab countries, interact with digital products in their preferred language. Building for that preference from the start produces measurably better retention and conversion.
+                  </p>
+                </div>
               </div>
-              <h3 className="text-2xl font-bold text-white uppercase tracking-tight">E-Commerce & BNPL Platforms</h3>
-              <p className="text-[#9ca3af] leading-relaxed font-light text-sm">
-                High-converting headless e-commerce builds integrated with Tabby, Tamara, Apple Pay, and automated UAE VAT invoicing for seamless online transactions.
+
+              {/* Parallax Card 1 */}
+              <div className="lg:col-span-5 lg:sticky lg:top-24 mt-8 lg:mt-0">
+                <div className="relative group p-8 rounded-3xl bg-zinc-950/80 border border-[#38bdf8]/20 backdrop-blur-md overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.9)]">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#38bdf8]/10 blur-3xl rounded-full" />
+                  
+                  <div className="mb-8 border border-white/10 rounded-2xl p-6 bg-black/60 relative">
+                    <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-4 text-xs font-mono text-[#9ca3af]">
+                      <span>UAE_MOBILE_TELEMETRY</span>
+                      <span className="text-[#38bdf8] flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-[#38bdf8] animate-pulse" />
+                        ENGAGEMENT +54%
+                      </span>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      {[
+                        { name: "Smartphone Penetration", stat: "96.2% iOS/Android", status: "TIER 1" },
+                        { name: "Daily App Consumption", stat: "3.2 Hours / User", status: "OPTIMIZED" },
+                        { name: "Payment Integrations", stat: "Apple Pay, Telr, Tabby", status: "INTEGRATED" },
+                      ].map((item, i) => (
+                        <div key={i} className="p-4 border border-white/5 rounded-xl flex justify-between items-center bg-white/[0.02]">
+                          <div>
+                            <span className="text-sm font-bold text-white block uppercase">{item.name}</span>
+                            <span className="text-xs text-[#9ca3af]">{item.stat}</span>
+                          </div>
+                          <span className="text-[10px] font-mono px-2 py-1 rounded bg-[#38bdf8]/20 text-[#38bdf8] font-bold">{item.status}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 border-t border-white/5 pt-6 text-xs font-mono text-[#9ca3af]">
+                    <div className="flex justify-between">
+                      <span>COMPETITIVE INTENSITY:</span>
+                      <span className="text-[#38bdf8] font-bold">14.6 (LOWEST IN GCC)</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>TIME ZONE OVERLAP:</span>
+                      <span className="text-white">FULL GST (UTC+4)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Service 2: Custom Software & Web Applications */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start border-t border-white/5 pt-40"
+            >
+              <div className="lg:col-span-7 space-y-8">
+                <div className="flex items-center gap-4 text-xs font-mono text-[#38bdf8] uppercase tracking-widest">
+                  <span className="h-px w-8 bg-[#38bdf8]" />
+                  ENTERPRISE WEB PLATFORMS
+                </div>
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
+                  Custom Software &amp; <br />
+                  <span className="italic text-[#9ca3af]">Enterprise Web Platforms</span>
+                </h3>
+                <div className="font-sans font-light text-[#9ca3af] leading-relaxed text-base md:text-lg space-y-6">
+                  <p>
+                    We engineer bespoke web applications and SaaS platforms for UAE enterprises using Next.js, React, Node.js, and Laravel. Common builds include multi-tenant SaaS products for the UAE market, real estate and hospitality portals, fintech dashboards, and enterprise B2B platforms.
+                  </p>
+                  <p>
+                    Every build is architected for the UAE's digital infrastructure: high-performance edge hosting, CDN delivery optimized for UAE network topology, and bilingual Arabic/English interfaces.
+                  </p>
+                </div>
+              </div>
+
+              {/* Parallax Card 2 */}
+              <div className="lg:col-span-5 lg:sticky lg:top-24 mt-8 lg:mt-0">
+                <div className="relative group p-8 rounded-3xl bg-zinc-950/80 border border-[#38bdf8]/20 backdrop-blur-md overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.9)]">
+                  <div className="mb-8 border border-white/10 rounded-2xl p-6 bg-black/60 relative">
+                    <span className="text-xs font-mono text-[#38bdf8] uppercase tracking-widest block mb-4">Enterprise Capabilities</span>
+                    <div className="space-y-3 text-xs font-mono">
+                      <div className="p-3 rounded-lg bg-white/5 text-gray-200">✓ Multi-Tenant SaaS Architecture</div>
+                      <div className="p-3 rounded-lg bg-white/5 text-gray-200">✓ DFSA &amp; ADGM Regulatory Tech</div>
+                      <div className="p-3 rounded-lg bg-white/5 text-gray-200">✓ Real Estate &amp; Hospitality Portals</div>
+                      <div className="p-3 rounded-lg bg-white/5 text-gray-200">✓ Sub-Second Edge CDN Deployment</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Service 3: AI Agents & Dubai Local SEO */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start border-t border-white/5 pt-40"
+            >
+              <div className="lg:col-span-7 space-y-8">
+                <div className="flex items-center gap-4 text-xs font-mono text-[#38bdf8] uppercase tracking-widest">
+                  <span className="h-px w-8 bg-[#38bdf8]" />
+                  AI &amp; LOCAL SEARCH GROWTH
+                </div>
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
+                  AI Agents &amp; <br />
+                  <span className="italic text-[#9ca3af]">Local SEO for Dubai, Abu Dhabi &amp; Sharjah</span>
+                </h3>
+                <div className="font-sans font-light text-[#9ca3af] leading-relaxed text-base md:text-lg space-y-6">
+                  <p>
+                    UAE businesses are adopting AI agents across customer service, document processing, and operational workflows. We build custom AI agents with Arabic-capable LLM integration, RAG pipelines grounded in organizational knowledge, and integration with existing CRM, ERP, and EHR systems.
+                  </p>
+                  <p>
+                    For local search discovery, we manage complete Google Business Profile optimization with bilingual Arabic/English keyword strategy, district-level landing pages, and review generation workflows across Dubai (including DIFC, Business Bay, JLT, Downtown), Abu Dhabi (ADGM, Al Maryah Island), and Sharjah.
+                  </p>
+                </div>
+              </div>
+
+              {/* Parallax Card 3 */}
+              <div className="lg:col-span-5 lg:sticky lg:top-24 mt-8 lg:mt-0">
+                <div className="relative group p-8 rounded-3xl bg-zinc-950/80 border border-[#38bdf8]/20 backdrop-blur-md overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.9)]">
+                  <span className="text-xs font-mono text-[#38bdf8] uppercase tracking-widest block mb-4">Key Municipal Districts</span>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {["DIFC", "Business Bay", "Downtown Dubai", "Dubai Marina", "ADGM Abu Dhabi", "Sharjah Hub", "JLT"].map(dist => (
+                      <span key={dist} className="px-3 py-1.5 rounded-lg bg-black border border-white/10 text-xs font-mono text-gray-300">
+                        {dist}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="p-4 rounded-xl bg-white/5 border border-white/5 text-xs text-[#9ca3af] leading-relaxed">
+                    Bilingual Google.ae entity graph mapping guarantees map-pack positioning across high-competition hospitality, commercial real estate, and financial verticals.
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Offshore Advantages Section */}
+      <section className="py-32 px-6 md:px-10 bg-[#070b10] border-b border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="text-xs font-mono text-[#38bdf8] uppercase tracking-[0.35em] block mb-4">// COMMERCIAL EFFICIENCY</span>
+              <h2 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-tight leading-tight">
+                Why UAE Businesses Choose Offshore Engineering Partners
+              </h2>
+              <p className="mt-6 text-xl text-[#38bdf8] font-medium">
+                Cost Advantage vs Local Dubai Agencies + GST Time Zone Overlap
               </p>
             </div>
-
-            <div className="p-10 rounded-3xl bg-zinc-950/60 border border-white/5 space-y-6">
-              <div className="w-12 h-12 rounded-xl bg-[#38bdf8]/10 flex items-center justify-center text-[#38bdf8]">
-                <Smartphone size={24} />
-              </div>
-              <h3 className="text-2xl font-bold text-white uppercase tracking-tight">Luxury & Corporate Mobile Apps</h3>
-              <p className="text-[#9ca3af] leading-relaxed font-light text-sm">
-                Smooth 120fps cross-platform mobile apps built with Flutter. Engineered for UAE lifestyle, luxury concierge, real estate portals, and corporate services.
+            <div className="text-lg text-[#9ca3af] leading-relaxed space-y-6 font-light">
+              <p>
+                Dubai agency rates for custom software and mobile app development rank among the highest in the region. Offshore engineering partners offer cost advantages without sacrificing technical quality, provided they understand the UAE market's specific requirements.
               </p>
-            </div>
-
-            <div className="p-10 rounded-3xl bg-zinc-950/60 border border-white/5 space-y-6">
-              <div className="w-12 h-12 rounded-xl bg-[#38bdf8]/10 flex items-center justify-center text-[#38bdf8]">
-                <Cpu size={24} />
-              </div>
-              <h3 className="text-2xl font-bold text-white uppercase tracking-tight">AI Agents & Workflow Bots</h3>
-              <p className="text-[#9ca3af] leading-relaxed font-light text-sm">
-                Custom conversational AI agents built on your business knowledge bases, providing 24/7 client support across WhatsApp, web chat, and internal ERP systems.
+              <p>
+                AbuQitmirLabs operates in a time zone (PKT, GST+1) that overlaps with UAE business hours. You get direct Slack or Teams communication with the engineering team, fixed-price milestones, and full source code ownership. No account manager layers, no hidden markups, and no licensing lock-in.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Country Marquee */}
-      <CountryMarquee />
-
-      {/* FAQ Section */}
-      <section className="py-32 px-6 md:px-10 bg-[#0c1017] border-t border-white/5">
+      {/* Frequently Asked Questions */}
+      <section className="py-32 px-6 md:px-10 bg-[#040609]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-20">
             <span className="text-xs font-mono text-[#38bdf8] uppercase tracking-[0.3em] block mb-4">// FREQUENTLY ASKED QUESTIONS</span>
@@ -352,7 +573,7 @@ const UAEMarketPage: React.FC = () => {
             {faqData.map((faq, index) => (
               <div 
                 key={index}
-                className="border border-white/5 bg-black/40 rounded-2xl overflow-hidden transition-all duration-300"
+                className="border border-white/5 bg-black/60 rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#38bdf8]/30"
               >
                 <button
                   onClick={() => setActiveFaq(activeFaq === index ? null : index)}
@@ -382,52 +603,70 @@ const UAEMarketPage: React.FC = () => {
             ))}
           </div>
 
-          {/* Internal Links */}
+          {/* Internal Links Matrix */}
           <div className="mt-20 pt-12 border-t border-white/5 space-y-8 text-left">
             <div>
-              <h4 className="text-xs font-mono text-[#38bdf8] uppercase tracking-[0.3em] font-bold mb-4">// UAE DIGITAL SERVICES & AUDITS</h4>
+              <h4 className="text-xs font-mono text-[#38bdf8] uppercase tracking-[0.3em] font-bold mb-4">// RELATED SERVICES &amp; TECHNICAL DEEP DIVES</h4>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
-                <Link to="/custom-software" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#38bdf8] transition-colors border border-white/5 flex items-center justify-between">
-                  <span>Custom Software</span>
+                <Link to="/mobile-app-development" className="p-3 bg-[#080d14] hover:bg-white/5 rounded-lg text-[#8d9ba8] hover:text-[#38bdf8] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Mobile App Dev</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#38bdf8]" />
                 </Link>
-                <Link to="/web-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#38bdf8] transition-colors border border-white/5 flex items-center justify-between">
-                  <span>Web Development</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-[#38bdf8]" />
-                </Link>
-                <Link to="/mobile-app-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#38bdf8] transition-colors border border-white/5 flex items-center justify-between">
-                  <span>Mobile Apps</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-[#38bdf8]" />
-                </Link>
-                <Link to="/ai-agent-development" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#38bdf8] transition-colors border border-white/5 flex items-center justify-between">
+                <Link to="/ai-agent-development" className="p-3 bg-[#080d14] hover:bg-white/5 rounded-lg text-[#8d9ba8] hover:text-[#38bdf8] transition-colors border border-white/5 flex items-center justify-between">
                   <span>AI Agent Systems</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#38bdf8]" />
                 </Link>
-                <Link to="/seo-mastery" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#38bdf8] transition-colors border border-white/5 flex items-center justify-between">
-                  <span>Dubai SEO</span>
+                <Link to="/custom-software" className="p-3 bg-[#080d14] hover:bg-white/5 rounded-lg text-[#8d9ba8] hover:text-[#38bdf8] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Custom Software</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#38bdf8]" />
                 </Link>
-                <Link to="/saudi-arabia-market" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#38bdf8] transition-colors border border-white/5 flex items-center justify-between">
-                  <span>Saudi Market</span>
+                <Link to="/local-seo-for-small-business" className="p-3 bg-[#080d14] hover:bg-white/5 rounded-lg text-[#8d9ba8] hover:text-[#38bdf8] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Local SEO Services</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#38bdf8]" />
                 </Link>
-                <Link to="/case-studies" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#38bdf8] transition-colors border border-white/5 flex items-center justify-between">
-                  <span>Case Studies</span>
+                <Link to="/web-development" className="p-3 bg-[#080d14] hover:bg-white/5 rounded-lg text-[#8d9ba8] hover:text-[#38bdf8] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Web Development</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#38bdf8]" />
                 </Link>
-                <Link to="/contact" className="p-3 bg-[#0b0b0b] hover:bg-white/5 rounded-lg text-[#8d8579] hover:text-[#38bdf8] transition-colors border border-white/5 flex items-center justify-between">
-                  <span>Book UAE Audit</span>
+                <Link to="/seo-mastery" className="p-3 bg-[#080d14] hover:bg-white/5 rounded-lg text-[#8d9ba8] hover:text-[#38bdf8] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>SEO Mastery</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#38bdf8]" />
                 </Link>
+                <Link to="/saudi-arabia-market" className="p-3 bg-[#080d14] hover:bg-white/5 rounded-lg text-[#8d9ba8] hover:text-[#38bdf8] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Saudi Arabia Market</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#38bdf8]" />
+                </Link>
+                <Link to="/contact" className="p-3 bg-[#080d14] hover:bg-white/5 rounded-lg text-[#8d9ba8] hover:text-[#38bdf8] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Book Consultation</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#38bdf8]" />
+                </Link>
+              </div>
+            </div>
+
+            {/* External Regulatory References */}
+            <div className="pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#7d8894]">
+              <span className="uppercase tracking-widest text-[11px] font-bold text-zinc-400">UAE Regulatory References:</span>
+              <div className="flex flex-wrap items-center gap-4">
+                <a href="https://tdra.gov.ae" target="_blank" rel="noopener noreferrer" className="hover:text-[#38bdf8] transition-colors inline-flex items-center gap-1">
+                  TDRA UAE Information Assurance <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://www.difc.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#38bdf8] transition-colors inline-flex items-center gap-1">
+                  DIFC Data Protection Standards <ExternalLink className="w-3 h-3" />
+                </a>
+                <span>•</span>
+                <a href="https://www.adgm.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#38bdf8] transition-colors inline-flex items-center gap-1">
+                  ADGM Cyber Regulations <ExternalLink className="w-3 h-3" />
+                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Final Call to Action */}
+      {/* Final Cinematic Call to Action */}
       <section className="py-44 relative border-t border-white/5 overflow-hidden text-center bg-black">
-        <div className="absolute inset-0 bg-[#38bdf8]/5 blur-[200px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[#38bdf8]/10 blur-[200px] pointer-events-none" />
         <div className="max-w-6xl mx-auto relative z-10 px-6">
           <h2 className="text-6xl md:text-[8rem] font-black text-white italic tracking-tighter uppercase leading-[0.85] mb-14">
             Build for <br />
@@ -435,16 +674,14 @@ const UAEMarketPage: React.FC = () => {
           </h2>
           
           <div className="flex flex-col md:flex-row gap-10 justify-center items-center">
-            <a 
-              href="https://wa.me/923233260859"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#38bdf8] text-black text-2xl font-bold px-16 py-8 rounded-full hover:bg-white transition-all transform hover:scale-105 uppercase tracking-tighter shadow-2xl shadow-[#38bdf8]/20"
+            <Link 
+              to="/contact"
+              className="bg-[#38bdf8] text-black text-2xl font-bold px-16 py-8 rounded-full hover:bg-white transition-all transform hover:scale-105 uppercase tracking-tighter shadow-2xl shadow-[#38bdf8]/30"
             >
-              Request UAE Tech Audit
-            </a>
-            <div className="text-[#38bdf8] font-mono text-[10px] uppercase tracking-[0.4em] max-w-[320px] text-left border-l-2 border-[#38bdf8] pl-8 leading-relaxed h-16 flex items-center">
-              DUBAI & ABU DHABI TIME // GST (UTC+4) READY
+              Book a Free Consultation
+            </Link>
+            <div className="text-[#38bdf8] font-mono text-xs uppercase tracking-[0.4em] max-w-[320px] text-left border-l-2 border-[#38bdf8] pl-8 leading-relaxed h-16 flex items-center">
+              DUBAI &amp; ABU DHABI TIME // GST (UTC+4) READY
             </div>
           </div>
         </div>
