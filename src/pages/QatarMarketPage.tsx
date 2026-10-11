@@ -108,12 +108,27 @@ const QatarMarketPage: React.FC = () => {
                 "name": "AbuQitmirLabs - Qatar Tech Engineering",
                 "description": "NCSA-compliant software engineering, QFC fintech infrastructure, TASMU-aligned AI agents, and bilingual local SEO for Doha and Lusail.",
                 "url": "https://www.abuqitmirlabs.tech/qatar-market",
-                "areaServed": "QA",
+                "telephone": "+923233260859",
+                "priceRange": "$$$$",
+                "image": "https://www.abuqitmirlabs.tech/logo.png",
+                "areaServed": ["QA", "Doha", "Lusail", "Al Rayyan"],
                 "address": {
                   "@type": "PostalAddress",
-                  "addressLocality": "Karachi",
-                  "addressCountry": "PK"
+                  "addressLocality": "Doha",
+                  "addressCountry": "QA"
                 }
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                "name": "Software Development for Qatar",
+                "description": "Enterprise software development, Jamstack web platforms, mobile apps, and localized AI systems for Doha and Lusail businesses.",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "AbuQitmirLabs",
+                  "url": "https://www.abuqitmirlabs.tech"
+                },
+                "areaServed": "QA"
               },
               {
                 "@context": "https://schema.org",
@@ -129,7 +144,7 @@ const QatarMarketPage: React.FC = () => {
               }
             ])
           }}
-        />
+        ></script>
       </Helmet>
 
       <Header />

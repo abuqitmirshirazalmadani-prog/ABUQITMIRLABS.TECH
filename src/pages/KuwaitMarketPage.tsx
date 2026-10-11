@@ -109,12 +109,27 @@ const KuwaitMarketPage: React.FC = () => {
                 "name": "AbuQitmirLabs - Kuwait Tech & SEO Engineering",
                 "description": "CITRA-compliant software development, KNET payment integrations, bilingual Arabic/English SEO, and autonomous AI agents for Kuwait.",
                 "url": "https://www.abuqitmirlabs.tech/kuwait-market",
-                "areaServed": "KW",
+                "telephone": "+923233260859",
+                "priceRange": "$$$$",
+                "image": "https://www.abuqitmirlabs.tech/logo.png",
+                "areaServed": ["KW", "Kuwait City", "Salmiya", "Hawally", "Al Ahmadi"],
                 "address": {
                   "@type": "PostalAddress",
-                  "addressLocality": "Karachi",
-                  "addressCountry": "PK"
+                  "addressLocality": "Kuwait City",
+                  "addressCountry": "KW"
                 }
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                "name": "Software Development for Kuwait",
+                "description": "Custom software engineering, Flutter mobile apps, high-speed web apps, and AI agents for Kuwait City enterprises. Compliant with CITRA data regulations and seamless KNET gateway integration.",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "AbuQitmirLabs",
+                  "url": "https://www.abuqitmirlabs.tech"
+                },
+                "areaServed": "KW"
               },
               {
                 "@context": "https://schema.org",
@@ -130,7 +145,7 @@ const KuwaitMarketPage: React.FC = () => {
               }
             ])
           }}
-        />
+        ></script>
       </Helmet>
 
       <Header />

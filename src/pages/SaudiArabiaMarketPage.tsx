@@ -107,12 +107,27 @@ const SaudiArabiaMarketPage: React.FC = () => {
                 "name": "AbuQitmirLabs - Saudi Arabia Regional Tech Solutions",
                 "description": "PDPL-compliant custom software, Arabic-first web applications, ZATCA e-invoicing integration, and enterprise AI agents for Saudi enterprises.",
                 "url": "https://www.abuqitmirlabs.tech/saudi-arabia-market",
-                "areaServed": "SA",
+                "telephone": "+923233260859",
+                "priceRange": "$$$$",
+                "image": "https://www.abuqitmirlabs.tech/logo.png",
+                "areaServed": ["SA", "Riyadh", "Jeddah", "Dammam"],
                 "address": {
                   "@type": "PostalAddress",
-                  "addressLocality": "Karachi",
-                  "addressCountry": "PK"
+                  "addressLocality": "Riyadh",
+                  "addressCountry": "SA"
                 }
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                "name": "Software Development for Saudi Arabia",
+                "description": "Saudi Arabia-focused custom software development, mobile apps, Arabic SEO, and enterprise AI agents. Fully compliant with Saudi PDPL and Vision 2030 digital mandates.",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "AbuQitmirLabs",
+                  "url": "https://www.abuqitmirlabs.tech"
+                },
+                "areaServed": "SA"
               },
               {
                 "@context": "https://schema.org",
@@ -128,7 +143,7 @@ const SaudiArabiaMarketPage: React.FC = () => {
               }
             ])
           }}
-        />
+        ></script>
       </Helmet>
 
       <Header />

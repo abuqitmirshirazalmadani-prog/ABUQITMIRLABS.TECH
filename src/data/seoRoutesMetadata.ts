@@ -262,7 +262,58 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/saudi-arabia-market',
     ogTitle: 'Software Development for Saudi Arabia | Vision 2030 & PDPL Compliant | AbuQitmirLabs',
     ogDescription: 'Saudi Arabia-focused custom software development, mobile apps, Arabic SEO, and enterprise AI agents with PDPL compliance.',
-    ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    schemaJsonLd: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.abuqitmirlabs.tech/saudi-arabia-market#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.abuqitmirlabs.tech/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Saudi Arabia Market",
+              "item": "https://www.abuqitmirlabs.tech/saudi-arabia-market"
+            }
+          ]
+        },
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://www.abuqitmirlabs.tech/saudi-arabia-market#localbusiness",
+          "name": "AbuQitmirLabs - Saudi Arabia Regional Tech Solutions",
+          "description": "PDPL-compliant custom software, Arabic-first web applications, ZATCA e-invoicing integration, and enterprise AI agents for Saudi enterprises.",
+          "url": "https://www.abuqitmirlabs.tech/saudi-arabia-market",
+          "telephone": "+923233260859",
+          "priceRange": "$$$$",
+          "image": "https://www.abuqitmirlabs.tech/logo.png",
+          "areaServed": ["SA", "Riyadh", "Jeddah", "Dammam"],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Riyadh",
+            "addressCountry": "SA"
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://www.abuqitmirlabs.tech/saudi-arabia-market#service",
+          "name": "Software Development for Saudi Arabia",
+          "description": "Saudi Arabia-focused custom software development, mobile apps, Arabic SEO, and enterprise AI agents with PDPL compliance.",
+          "provider": {
+            "@type": "Organization",
+            "name": "AbuQitmirLabs",
+            "url": "https://www.abuqitmirlabs.tech"
+          },
+          "areaServed": "SA"
+        }
+      ]
+    }
   },
   '/uae-market': {
     title: 'Software Development for UAE | Dubai & Abu Dhabi Tech Squads | AbuQitmirLabs',
@@ -270,7 +321,58 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/uae-market',
     ogTitle: 'Software Development for UAE | Dubai & Abu Dhabi Tech Squads | AbuQitmirLabs',
     ogDescription: 'Elite software engineering, mobile apps, and AI agents for UAE enterprises and startups.',
-    ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    schemaJsonLd: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.abuqitmirlabs.tech/uae-market#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.abuqitmirlabs.tech/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "UAE Market",
+              "item": "https://www.abuqitmirlabs.tech/uae-market"
+            }
+          ]
+        },
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://www.abuqitmirlabs.tech/uae-market#localbusiness",
+          "name": "AbuQitmirLabs - UAE Tech Solutions",
+          "description": "NESA-compliant software development, Arabic-first mobile applications, AI agents, and bilingual local SEO for Dubai and Abu Dhabi.",
+          "url": "https://www.abuqitmirlabs.tech/uae-market",
+          "telephone": "+923233260859",
+          "priceRange": "$$$$",
+          "image": "https://www.abuqitmirlabs.tech/logo.png",
+          "areaServed": ["AE", "Dubai", "Abu Dhabi", "Sharjah"],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Dubai",
+            "addressCountry": "AE"
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://www.abuqitmirlabs.tech/uae-market#service",
+          "name": "Software Development for UAE",
+          "description": "Elite software engineering, mobile apps, and AI agents for UAE enterprises and startups across Dubai and Abu Dhabi.",
+          "provider": {
+            "@type": "Organization",
+            "name": "AbuQitmirLabs",
+            "url": "https://www.abuqitmirlabs.tech"
+          },
+          "areaServed": "AE"
+        }
+      ]
+    }
   },
   '/qatar-market': {
     title: 'Software Development for Qatar | Qatar National Vision 2030 | AbuQitmirLabs',
@@ -278,7 +380,58 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/qatar-market',
     ogTitle: 'Software Development for Qatar | Qatar National Vision 2030 | AbuQitmirLabs',
     ogDescription: 'Enterprise software development, Jamstack web platforms, mobile apps, and localized AI systems for Qatar.',
-    ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    schemaJsonLd: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.abuqitmirlabs.tech/qatar-market#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.abuqitmirlabs.tech/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Qatar Market",
+              "item": "https://www.abuqitmirlabs.tech/qatar-market"
+            }
+          ]
+        },
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://www.abuqitmirlabs.tech/qatar-market#localbusiness",
+          "name": "AbuQitmirLabs - Qatar Tech Engineering",
+          "description": "NCSA-compliant software engineering, QFC fintech infrastructure, TASMU-aligned AI agents, and bilingual local SEO for Doha and Lusail.",
+          "url": "https://www.abuqitmirlabs.tech/qatar-market",
+          "telephone": "+923233260859",
+          "priceRange": "$$$$",
+          "image": "https://www.abuqitmirlabs.tech/logo.png",
+          "areaServed": ["QA", "Doha", "Lusail", "Al Rayyan"],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Doha",
+            "addressCountry": "QA"
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://www.abuqitmirlabs.tech/qatar-market#service",
+          "name": "Software Development for Qatar",
+          "description": "Enterprise software development, Jamstack web platforms, mobile apps, and localized AI systems for Doha and Lusail businesses.",
+          "provider": {
+            "@type": "Organization",
+            "name": "AbuQitmirLabs",
+            "url": "https://www.abuqitmirlabs.tech"
+          },
+          "areaServed": "QA"
+        }
+      ]
+    }
   },
   '/kuwait-market': {
     title: 'Software Development for Kuwait | Kuwait Vision 2035 & KNET Ready | AbuQitmirLabs',
@@ -286,7 +439,58 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/kuwait-market',
     ogTitle: 'Software Development for Kuwait | Kuwait Vision 2035 & KNET Ready | AbuQitmirLabs',
     ogDescription: 'Custom software engineering, Flutter mobile apps, high-speed web apps, and AI agents for Kuwait.',
-    ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    schemaJsonLd: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.abuqitmirlabs.tech/kuwait-market#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.abuqitmirlabs.tech/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Kuwait Market",
+              "item": "https://www.abuqitmirlabs.tech/kuwait-market"
+            }
+          ]
+        },
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://www.abuqitmirlabs.tech/kuwait-market#localbusiness",
+          "name": "AbuQitmirLabs - Kuwait Tech & SEO Engineering",
+          "description": "CITRA-compliant software development, KNET payment integrations, bilingual Arabic/English SEO, and autonomous AI agents for Kuwait.",
+          "url": "https://www.abuqitmirlabs.tech/kuwait-market",
+          "telephone": "+923233260859",
+          "priceRange": "$$$$",
+          "image": "https://www.abuqitmirlabs.tech/logo.png",
+          "areaServed": ["KW", "Kuwait City", "Salmiya", "Hawally", "Al Ahmadi"],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kuwait City",
+            "addressCountry": "KW"
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://www.abuqitmirlabs.tech/kuwait-market#service",
+          "name": "Software Development for Kuwait",
+          "description": "Custom software engineering, Flutter mobile apps, high-speed web apps, and AI agents for Kuwait City enterprises. Compliant with CITRA data regulations and seamless KNET gateway integration.",
+          "provider": {
+            "@type": "Organization",
+            "name": "AbuQitmirLabs",
+            "url": "https://www.abuqitmirlabs.tech"
+          },
+          "areaServed": "KW"
+        }
+      ]
+    }
   },
   '/contact': {
     title: 'Contact Us | Free Project Quote & Consultation | AbuQitmirLabs',

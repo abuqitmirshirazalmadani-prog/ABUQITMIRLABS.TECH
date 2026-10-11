@@ -108,12 +108,27 @@ const UAEMarketPage: React.FC = () => {
                 "name": "AbuQitmirLabs - UAE Tech Solutions",
                 "description": "NESA-compliant software development, Arabic-first mobile applications, AI agents, and bilingual local SEO for Dubai and Abu Dhabi.",
                 "url": "https://www.abuqitmirlabs.tech/uae-market",
-                "areaServed": "AE",
+                "telephone": "+923233260859",
+                "priceRange": "$$$$",
+                "image": "https://www.abuqitmirlabs.tech/logo.png",
+                "areaServed": ["AE", "Dubai", "Abu Dhabi", "Sharjah"],
                 "address": {
                   "@type": "PostalAddress",
-                  "addressLocality": "Karachi",
-                  "addressCountry": "PK"
+                  "addressLocality": "Dubai",
+                  "addressCountry": "AE"
                 }
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                "name": "Software Development for UAE",
+                "description": "Elite software engineering, mobile apps, and AI agents for UAE enterprises and startups across Dubai and Abu Dhabi.",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "AbuQitmirLabs",
+                  "url": "https://www.abuqitmirlabs.tech"
+                },
+                "areaServed": "AE"
               },
               {
                 "@context": "https://schema.org",
@@ -129,7 +144,7 @@ const UAEMarketPage: React.FC = () => {
               }
             ])
           }}
-        />
+        ></script>
       </Helmet>
 
       <Header />

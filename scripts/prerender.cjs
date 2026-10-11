@@ -329,12 +329,15 @@ for (const routeUrl of allRoutes) {
     html = stripCanonicalTags(html);
     html = html.replace('</head>', `  <link rel="canonical" data-rh="true" href="${canonicalUrl}" />\n</head>`);
 
-    // 6. Inject Schema.org JSON-LD if explicitly declared in SEO metadata
+    // 6. Inject Schema.org JSON-LD
     if (seo && seo.schemaJsonLd) {
-      const routeId = (seo.schemaJsonLd['@graph'] && seo.schemaJsonLd['@graph'][3] && seo.schemaJsonLd['@graph'][3]['@id']) || canonicalUrl;
-      if (!html.includes(routeId)) {
-        const schemaSnippet = `<script type="application/ld+json" data-rh="true">\n${JSON.stringify(seo.schemaJsonLd, null, 2)}\n  </script>`;
-        html = html.replace('</head>', `  ${schemaSnippet}\n</head>`);
+      html = html.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis, '');
+      const schemaSnippet = `<script type="application/ld+json" data-rh="true">\n${JSON.stringify(seo.schemaJsonLd, null, 2)}\n  </script>`;
+      html = html.replace('</head>', `  ${schemaSnippet}\n</head>`);
+    } else if (helmet && helmet.script) {
+      const helmetScripts = helmet.script.toString();
+      if (helmetScripts && helmetScripts.includes('application/ld+json') && !html.includes('application/ld+json')) {
+        html = html.replace('</head>', `  ${helmetScripts}\n</head>`);
       }
     }
 
