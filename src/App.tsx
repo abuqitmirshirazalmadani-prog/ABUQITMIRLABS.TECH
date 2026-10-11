@@ -12,6 +12,10 @@ import { preloadAllRoutes } from './utils/preloader';
 
 // Eager import landing page for immediate initial render
 import HomePage from './pages/HomePage';
+import SaudiArabiaMarketPage from './pages/SaudiArabiaMarketPage';
+import UAEMarketPage from './pages/UAEMarketPage';
+import QatarMarketPage from './pages/QatarMarketPage';
+import KuwaitMarketPage from './pages/KuwaitMarketPage';
 
 // Lazy load all secondary and service pages for fast initial bundle size
 const CustomSoftwarePage = lazy(() => import('./pages/CustomSoftwarePage'));
@@ -100,7 +104,7 @@ function MetaHeadSanitizer() {
         // Keep the latest rendered tag, remove older/redundant tags
         for (let i = 0; i < descs.length - 1; i++) {
           const target = descs[i];
-          if (target?.parentNode) {
+          if (target && target.parentNode) {
             target.parentNode.removeChild(target);
           }
         }
@@ -111,7 +115,7 @@ function MetaHeadSanitizer() {
       if (canonicals.length > 1) {
         for (let i = 0; i < canonicals.length - 1; i++) {
           const target = canonicals[i];
-          if (target?.parentNode) {
+          if (target && target.parentNode) {
             target.parentNode.removeChild(target);
           }
         }
@@ -273,6 +277,10 @@ export default function App() {
               <Route path="/content-writing" element={<ContentWritingPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/us-market" element={<USMarketPage />} />
+              <Route path="/saudi-arabia-market" element={<SaudiArabiaMarketPage />} />
+              <Route path="/uae-market" element={<UAEMarketPage />} />
+              <Route path="/qatar-market" element={<QatarMarketPage />} />
+              <Route path="/kuwait-market" element={<KuwaitMarketPage />} />
               <Route path="/uk-market" element={<UKMarketPage />} />
               <Route path="/pakistan-market" element={<PakistanMarketPage />} />
               <Route path="/canada-market" element={<CanadaMarketPage />} />

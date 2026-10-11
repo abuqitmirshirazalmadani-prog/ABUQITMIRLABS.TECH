@@ -43,6 +43,10 @@ import NewsArticlePage from './pages/news/NewsArticlePage';
 
 // Market & Legal Pages
 import USMarketPage from './pages/USMarketPage';
+import SaudiArabiaMarketPage from './pages/SaudiArabiaMarketPage';
+import UAEMarketPage from './pages/UAEMarketPage';
+import QatarMarketPage from './pages/QatarMarketPage';
+import KuwaitMarketPage from './pages/KuwaitMarketPage';
 import UKMarketPage from './pages/UKMarketPage';
 import PakistanMarketPage from './pages/PakistanMarketPage';
 import CanadaMarketPage from './pages/CanadaMarketPage';
@@ -111,6 +115,10 @@ export function render(url: string) {
           
           {/* Market Pages */}
           <Route path="/us-market" element={<USMarketPage />} />
+          <Route path="/saudi-arabia-market" element={<SaudiArabiaMarketPage />} />
+          <Route path="/uae-market" element={<UAEMarketPage />} />
+          <Route path="/qatar-market" element={<QatarMarketPage />} />
+          <Route path="/kuwait-market" element={<KuwaitMarketPage />} />
           <Route path="/uk-market" element={<UKMarketPage />} />
           <Route path="/pakistan-market" element={<PakistanMarketPage />} />
           <Route path="/canada-market" element={<CanadaMarketPage />} />

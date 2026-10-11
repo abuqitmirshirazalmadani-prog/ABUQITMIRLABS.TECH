@@ -60,6 +60,10 @@ const Header = () => {
             href: '#',
             dropdown: [
                 { name: 'United States Market', href: '/us-market' },
+                { name: 'Saudi Arabia Market', href: '/saudi-arabia-market' },
+                { name: 'UAE Market', href: '/uae-market' },
+                { name: 'Qatar Market', href: '/qatar-market' },
+                { name: 'Kuwait Market', href: '/kuwait-market' },
                 { name: 'United Kingdom Market', href: '/uk-market' },
                 { name: 'Pakistan Market', href: '/pakistan-market' },
                 { name: 'Canada Market', href: '/canada-market' },

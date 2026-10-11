@@ -41,6 +41,10 @@ import IndustryInsightsPage from './pages/news/IndustryInsightsPage';
 import AllNewsPage from './pages/news/AllNewsPage';
 import NewsArticlePage from './pages/news/NewsArticlePage';
 import USMarketPage from './pages/USMarketPage';
+import SaudiArabiaMarketPage from './pages/SaudiArabiaMarketPage';
+import UAEMarketPage from './pages/UAEMarketPage';
+import QatarMarketPage from './pages/QatarMarketPage';
+import KuwaitMarketPage from './pages/KuwaitMarketPage';
 import UKMarketPage from './pages/UKMarketPage';
 import PakistanMarketPage from './pages/PakistanMarketPage';
 import CanadaMarketPage from './pages/CanadaMarketPage';
@@ -124,6 +128,10 @@ export function renderFullApp(url: string = '/') {
               <Route path="/content-writing" element={<ContentWritingPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/us-market" element={<USMarketPage />} />
+              <Route path="/saudi-arabia-market" element={<SaudiArabiaMarketPage />} />
+              <Route path="/uae-market" element={<UAEMarketPage />} />
+              <Route path="/qatar-market" element={<QatarMarketPage />} />
+              <Route path="/kuwait-market" element={<KuwaitMarketPage />} />
               <Route path="/uk-market" element={<UKMarketPage />} />
               <Route path="/pakistan-market" element={<PakistanMarketPage />} />
               <Route path="/canada-market" element={<CanadaMarketPage />} />

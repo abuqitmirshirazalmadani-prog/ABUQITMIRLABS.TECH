@@ -256,6 +256,38 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogDescription: 'Custom web apps, mobile engineering, and AI automation for Australian tech leaders.',
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
   },
+  '/saudi-arabia-market': {
+    title: 'Software Development for Saudi Arabia | Vision 2030 & PDPL Compliant | AbuQitmirLabs',
+    description: 'Saudi Arabia-focused custom software development, mobile apps, Arabic SEO, and enterprise AI agents. Fully compliant with Saudi PDPL and Vision 2030 digital mandates.',
+    canonical: 'https://www.abuqitmirlabs.tech/saudi-arabia-market',
+    ogTitle: 'Software Development for Saudi Arabia | Vision 2030 & PDPL Compliant | AbuQitmirLabs',
+    ogDescription: 'Saudi Arabia-focused custom software development, mobile apps, Arabic SEO, and enterprise AI agents with PDPL compliance.',
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
+  },
+  '/uae-market': {
+    title: 'Software Development for UAE | Dubai & Abu Dhabi Tech Squads | AbuQitmirLabs',
+    description: 'Elite software engineering, mobile apps, and AI agents for UAE enterprises and startups across Dubai and Abu Dhabi. Fully compliant with UAE Federal Decree-Law No. 45.',
+    canonical: 'https://www.abuqitmirlabs.tech/uae-market',
+    ogTitle: 'Software Development for UAE | Dubai & Abu Dhabi Tech Squads | AbuQitmirLabs',
+    ogDescription: 'Elite software engineering, mobile apps, and AI agents for UAE enterprises and startups.',
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
+  },
+  '/qatar-market': {
+    title: 'Software Development for Qatar | Qatar National Vision 2030 | AbuQitmirLabs',
+    description: 'Enterprise software development, Jamstack web platforms, mobile apps, and localized AI systems for Doha and Lusail businesses. Compliant with Qatar PDPPL Law No. 13.',
+    canonical: 'https://www.abuqitmirlabs.tech/qatar-market',
+    ogTitle: 'Software Development for Qatar | Qatar National Vision 2030 | AbuQitmirLabs',
+    ogDescription: 'Enterprise software development, Jamstack web platforms, mobile apps, and localized AI systems for Qatar.',
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
+  },
+  '/kuwait-market': {
+    title: 'Software Development for Kuwait | Kuwait Vision 2035 & KNET Ready | AbuQitmirLabs',
+    description: 'Custom software engineering, Flutter mobile apps, high-speed web apps, and AI agents for Kuwait City enterprises. Compliant with CITRA data regulations and seamless KNET gateway integration.',
+    canonical: 'https://www.abuqitmirlabs.tech/kuwait-market',
+    ogTitle: 'Software Development for Kuwait | Kuwait Vision 2035 & KNET Ready | AbuQitmirLabs',
+    ogDescription: 'Custom software engineering, Flutter mobile apps, high-speed web apps, and AI agents for Kuwait.',
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
+  },
   '/contact': {
     title: 'Contact Us | Free Project Quote & Consultation | AbuQitmirLabs',
     description: 'Schedule a technical consultation with our lead software architects. Free discovery session, architecture blueprint, and milestone-based pricing.',
