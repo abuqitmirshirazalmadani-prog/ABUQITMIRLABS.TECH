@@ -47,6 +47,21 @@
   ],
   "redirects": [
     {
+      "source": "/blog/guest-posting-strategy-2026",
+      "destination": "/blog/guest-posting-in-2026-what-works-abuqitmirlabs",
+      "permanent": true
+    },
+    {
+      "source": "/guest-posting-strategy-2026",
+      "destination": "/blog/guest-posting-in-2026-what-works-abuqitmirlabs",
+      "permanent": true
+    },
+    {
+      "source": "/guest-posting-in-2026-what-works-abuqitmirlabs",
+      "destination": "/blog/guest-posting-in-2026-what-works-abuqitmirlabs",
+      "permanent": true
+    },
+    {
       "source": "/blog/the-2026-digital-marketing-stack-what-actually-moves-revenue",
       "destination": "/blog/digital-marketing-stack-2026",
       "permanent": true

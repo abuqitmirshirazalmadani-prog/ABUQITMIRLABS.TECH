@@ -98,37 +98,106 @@ function MetaHeadSanitizer() {
   const { pathname } = useLocation();
   useEffect(() => {
     const sanitize = () => {
-      // 1. Strictly guarantee exactly one meta[name="description"] in document.head
-      const descs = document.querySelectorAll('meta[name="description"]');
-      if (descs.length > 1) {
-        // Keep the latest rendered tag, remove older/redundant tags
-        for (let i = 0; i < descs.length - 1; i++) {
-          const target = descs[i];
-          if (target && target.parentNode) {
-            target.parentNode.removeChild(target);
+      // 1. Strictly guarantee exactly one <title> in document.head
+      const titles = Array.from(document.querySelectorAll('title'));
+      if (titles.length > 1) {
+        // Prefer the one managed by React Helmet (data-rh="true"), else keep the latest
+        const rhTitle = titles.find(t => t.hasAttribute('data-rh'));
+        titles.forEach(t => {
+          if (rhTitle && t !== rhTitle && t.parentNode) {
+            t.parentNode.removeChild(t);
+          } else if (!rhTitle && t !== titles[titles.length - 1] && t.parentNode) {
+            t.parentNode.removeChild(t);
           }
-        }
+        });
       }
 
-      // 2. Guarantee single canonical link
-      const canonicals = document.querySelectorAll('link[rel="canonical"]');
-      if (canonicals.length > 1) {
-        for (let i = 0; i < canonicals.length - 1; i++) {
-          const target = canonicals[i];
-          if (target && target.parentNode) {
-            target.parentNode.removeChild(target);
+      // 2. Strictly guarantee exactly one meta[name="description"] in document.head
+      const descs = Array.from(document.querySelectorAll('meta[name="description"]'));
+      if (descs.length > 1) {
+        const rhDesc = descs.find(d => d.hasAttribute('data-rh'));
+        descs.forEach(d => {
+          if (rhDesc && d !== rhDesc && d.parentNode) {
+            d.parentNode.removeChild(d);
+          } else if (!rhDesc && d !== descs[descs.length - 1] && d.parentNode) {
+            d.parentNode.removeChild(d);
           }
+        });
+      }
+
+      // 3. Guarantee strictly one canonical link matching current path
+      const canonicals = Array.from(document.querySelectorAll('link[rel="canonical"]'));
+      if (canonicals.length > 1) {
+        // If not on homepage, remove any canonical pointing to homepage
+        const isNotHome = pathname !== '/' && pathname !== '';
+        let targetKeep: Element | null = null;
+        if (isNotHome) {
+          // Find canonical that does NOT end in .tech/ or .tech
+          targetKeep = canonicals.find(c => {
+            const href = c.getAttribute('href') || '';
+            return href !== 'https://www.abuqitmirlabs.tech/' && href !== 'https://www.abuqitmirlabs.tech';
+          }) || canonicals[canonicals.length - 1];
+        } else {
+          targetKeep = canonicals.find(c => c.hasAttribute('data-rh')) || canonicals[canonicals.length - 1];
         }
+
+        canonicals.forEach(c => {
+          if (c !== targetKeep && c.parentNode) {
+            c.parentNode.removeChild(c);
+          }
+        });
+      }
+
+      // 4. Guarantee single og:title, og:description, og:url
+      ['og:title', 'og:description', 'og:url'].forEach(prop => {
+        const ogTags = Array.from(document.querySelectorAll(`meta[property="${prop}"]`));
+        if (ogTags.length > 1) {
+          const keepTag = ogTags[ogTags.length - 1];
+          ogTags.forEach(tag => {
+            if (tag !== keepTag && tag.parentNode) {
+              tag.parentNode.removeChild(tag);
+            }
+          });
+        }
+      });
+
+      // 5. Guarantee single twitter:title, twitter:description
+      ['twitter:title', 'twitter:description'].forEach(name => {
+        const twTags = Array.from(document.querySelectorAll(`meta[name="${name}"]`));
+        if (twTags.length > 1) {
+          const keepTag = twTags[twTags.length - 1];
+          twTags.forEach(tag => {
+            if (tag !== keepTag && tag.parentNode) {
+              tag.parentNode.removeChild(tag);
+            }
+          });
+        }
+      });
+
+      // 6. Deduplicate JSON-LD script blocks
+      const jsonLdScripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
+      if (jsonLdScripts.length > 1) {
+        const seenSchemas = new Set<string>();
+        jsonLdScripts.forEach(script => {
+          const text = (script.textContent || '').trim();
+          if (seenSchemas.has(text) && script.parentNode) {
+            script.parentNode.removeChild(script);
+          } else {
+            seenSchemas.add(text);
+          }
+        });
       }
     };
 
     sanitize();
     const timer = setTimeout(sanitize, 50);
-    const timer2 = setTimeout(sanitize, 300);
+    const timer2 = setTimeout(sanitize, 250);
+    const timer3 = setTimeout(sanitize, 600);
 
     return () => {
       clearTimeout(timer);
       clearTimeout(timer2);
+      clearTimeout(timer3);
     };
   }, [pathname]);
 
@@ -354,7 +423,9 @@ export default function App() {
               <Route path="/blog/ai-agents-cost-benefit-analysis" element={<BlogPostPage overrideSlug="ai-agents-cost-benefit-analysis" />} />
               <Route path="/ai-agents-cost-benefit-analysis" element={<Navigate to="/blog/ai-agents-cost-benefit-analysis" replace />} />
               <Route path="/blog/ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont" element={<Navigate to="/blog/ai-agents-cost-benefit-analysis" replace />} />
-              <Route path="/ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont" element={<Navigate to="/blog/ai-agents-cost-benefit-analysis" replace />} />
+              <Route path="/blog/guest-posting-in-2026-what-works-abuqitmirlabs" element={<BlogPostPage overrideSlug="guest-posting-in-2026-what-works-abuqitmirlabs" />} />
+              <Route path="/blog/guest-posting-strategy-2026" element={<Navigate to="/blog/guest-posting-in-2026-what-works-abuqitmirlabs" replace />} />
+              <Route path="/guest-posting-in-2026-what-works-abuqitmirlabs" element={<Navigate to="/blog/guest-posting-in-2026-what-works-abuqitmirlabs" replace />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />

@@ -9,6 +9,7 @@
  */
 
 export const BLOG_SLUG_REDIRECTS: Record<string, string> = {
+  'guest-posting-strategy-2026': 'guest-posting-in-2026-what-works-abuqitmirlabs',
   'the-2026-digital-marketing-stack-what-actually-moves-revenue': 'digital-marketing-stack-2026',
   'the-2026-digital-marketing-stack-what-moves-revenue': 'digital-marketing-stack-2026',
   'the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026': '5-minute-technical-audit-for-founders',
