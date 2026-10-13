@@ -43,6 +43,9 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import CountryMarquee from '../components/CountryMarquee';
 import ServiceToolCtaBanner from '../components/ServiceToolCtaBanner';
 import { OnboardingChecklist } from '../components/ui/onboarding-checklist';
+import { YouTubeFacade } from '../components/ui/youtube-facade';
+import { AnimatedBreathingText } from '../components/ui/animated-breathing-text';
+import { MagicText } from '../components/ui/magic-text';
 
 // 10 Authoritative FAQ Items with direct answers for search and AI engine citation
 const faqData = [
@@ -144,6 +147,71 @@ const videoDeliverableStyles = [
     idealFor: "Luxury jewelry & gold launches (e.g. Atta Gold), hardware hardware devices, and mobile apps.",
     pipeline: ["CAD/Macro AI Texture Synthesis", "Zero-Gravity Lighting Simulation", "Haptic Sound & Foley Engineering", "Seamless Infinite Loop Formatting"],
     metrics: "78% reduction in production cost vs physical studio shooting for Atta Gold."
+  }
+];
+
+// 6 Authentic Production Video Case Studies matching Home Page style
+const featuredVideoCaseStudies = [
+  {
+    id: "video-1",
+    videoId: "RAn9IZAjjBo",
+    title: "Cinematic Brand Story — GhastlyPages",
+    category: "Horror Literature & Media",
+    client: "GhastlyPages.com",
+    clientUrl: "https://ghastlypages.com",
+    badge: "Verified Client Work",
+    techStack: "Runway Gen-3 • Midjourney v6 • ElevenLabs",
+    desc: "Full library of atmospheric cinematic story teaser videos engineered with high-tension visual pacing, character consistency, and bespoke neural Foley acoustic design."
+  },
+  {
+    id: "video-2",
+    videoId: "FbkOoJ81utg",
+    title: "AI Video Ads That Actually Convert",
+    category: "Performance Video Creative",
+    client: "Direct Response Growth",
+    badge: "High-Converting Ad",
+    techStack: "Kling 1.5 • Topaz 4K • DaVinci Resolve",
+    desc: "Hook-optimized high-conversion commercial creative engineered for Meta, TikTok, and YouTube Shorts with rapid visual retention pacing and zero uncanny morphing."
+  },
+  {
+    id: "video-3",
+    videoId: "RplBYs9dkP8",
+    title: "Atta Gold: From Wheat Fields to Your Table",
+    category: "Luxury Product Launch",
+    client: "Atta Gold Launch",
+    badge: "Authentic Production",
+    techStack: "Flux Pro • Runway Gen-3 • Neural Voice",
+    desc: "Cinematic agricultural and heritage journey tracing organic golden wheat cultivation into premium artisanal flour with golden-hour volumetric illumination."
+  },
+  {
+    id: "video-4",
+    videoId: "C2I4yh0mkIQ",
+    title: "The Flour That Brings Families Home",
+    category: "Emotional Brand Narrative",
+    client: "Atta Gold Campaign",
+    badge: "Brand Film",
+    techStack: "Midjourney v6 • Kling 1.5 • Spatial Audio",
+    desc: "Heartwarming commercial film connecting generational family traditions with golden flour craft. Emotionally grounded pacing calibrated for broad audience trust."
+  },
+  {
+    id: "video-5",
+    videoId: "R8Oqwo8VDDc",
+    title: "Pure Wheat. Pure Flour. Pure Atta Gold.",
+    category: "Macro Product Cinema",
+    client: "Atta Gold Showcase",
+    badge: "Macro Simulation",
+    techStack: "Particle Physics • Topaz 4K • Studio Grade",
+    desc: "Hyper-realistic slow-motion grain dynamics, macro fluid physics, and luxury studio lighting delivered in lossless 4K resolution within a 72-hour turnaround."
+  },
+  {
+    id: "video-6",
+    videoId: "22goyybbytM",
+    title: "AI Brand Film — Sample",
+    category: "Enterprise Studio Showcase",
+    client: "AbuQitmirLabs",
+    badge: "Studio Showcase",
+    techStack: "Multi-Engine Orchestration • 4K Master",
+    desc: "Cinema-grade generative diffusion benchmark showing character continuity, photorealistic lighting, and seamless narrative transitions without uncanny artifacts."
   }
 ];
 
@@ -769,6 +837,102 @@ export default function AIVideoCreator() {
               videoThumbnailUrl="/images/og/default-share-card.jpg"
               videoUrl="https://www.youtube.com/embed/ScMzIvxBSi4"
             />
+          </div>
+
+          {/* 6 Video Cards matching Home Page Case Studies Style */}
+          <div className="mb-20">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#ccff00] font-bold flex items-center gap-2 mb-2">
+                  <span className="w-2 h-2 rounded-full bg-[#ccff00] animate-pulse" />
+                  FEATURED VIDEO CASE STUDIES
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-serif text-white tracking-tight">
+                  Production Video Showcase: <span className="text-[#ccff00]">6 Commercial Deployments</span>
+                </h3>
+              </div>
+              <p className="text-xs text-zinc-400 font-mono">
+                Click any thumbnail to stream in 4K resolution
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featuredVideoCaseStudies.map((item, idx) => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="group flex flex-col bg-zinc-950/80 border border-white/10 rounded-3xl overflow-hidden hover:border-[#ccff00]/40 transition-all shadow-xl backdrop-blur-sm hover:shadow-[0_0_35px_rgba(204,255,0,0.1)]"
+                >
+                  {/* Video Container with Facade */}
+                  <div className="aspect-video relative overflow-hidden bg-black/60">
+                    <YouTubeFacade videoId={item.videoId} title={item.title} />
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                      {/* Top Badges */}
+                      <div className="flex items-center justify-between gap-2 mb-3">
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-[#ccff00] bg-[#ccff00]/10 border border-[#ccff00]/20 px-2.5 py-0.5 rounded-full font-bold">
+                          {item.badge}
+                        </span>
+                        <span className="text-[11px] font-mono text-zinc-400 truncate">
+                          {item.client}
+                        </span>
+                      </div>
+
+                      <div className="mb-2">
+                        <AnimatedBreathingText
+                          text={item.title}
+                          className="text-lg font-bold text-white tracking-tight group-hover:text-[#ccff00] transition-colors line-clamp-2 block"
+                        />
+                      </div>
+
+                      <div className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed mb-4">
+                        <MagicText text={item.desc} className="text-xs sm:text-sm text-zinc-400 font-light" />
+                      </div>
+                    </div>
+
+                    <div>
+                      {/* Tech stack badge */}
+                      <div className="pt-3 border-t border-white/5 mb-3 flex items-center justify-between text-[10px] font-mono text-zinc-500">
+                        <span className="truncate">{item.techStack}</span>
+                      </div>
+
+                      <div className="pt-3 border-t border-white/5 flex items-center justify-between">
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-[#ccff00] font-mono">
+                          CASE STUDY
+                        </span>
+                        {item.clientUrl ? (
+                          <a
+                            href={item.clientUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-white transition-colors font-mono"
+                          >
+                            <span>Client Site</span>
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        ) : (
+                          <a
+                            href={`https://www.youtube.com/watch?v=${item.videoId}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-[#ccff00] transition-colors font-mono"
+                          >
+                            <span>YouTube</span>
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
