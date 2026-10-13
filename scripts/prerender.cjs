@@ -210,7 +210,8 @@ const routes = [
   '/blog/the-non-technical-founders-guide-to-software-ownership-ip-2026',
   '/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups',
   '/blog/digital-marketing-stack-2026',
-  '/blog/guest-posting-in-2026-what-works-abuqitmirlabs'
+  '/blog/guest-posting-in-2026-what-works-abuqitmirlabs',
+  '/blog/measure-marketing-roi-without-tracking'
 ];
 
 // Merge explicitly defined routes with any routes declared in SEO_ROUTES_METADATA

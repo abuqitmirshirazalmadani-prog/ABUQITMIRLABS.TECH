@@ -97,45 +97,89 @@ function ScrollToTop() {
   return null;
 }
 
+import { getCanonicalPath } from './data/canonicalRedirects';
+import { SEO_ROUTES_METADATA } from './data/seoRoutesMetadata';
+
 function MetaHeadSanitizer() {
   const { pathname } = useLocation();
   useEffect(() => {
     const sanitize = () => {
+      const canonicalPath = getCanonicalPath(pathname);
+      const isNotHome = canonicalPath !== '/' && canonicalPath !== '';
+      const expectedCanonicalUrl = `https://www.abuqitmirlabs.tech${canonicalPath}`;
+      const routeSeo = SEO_ROUTES_METADATA[canonicalPath] || SEO_ROUTES_METADATA[pathname];
+
       // 1. Strictly guarantee exactly one <title> in document.head
       const titles = Array.from(document.querySelectorAll('title'));
       if (titles.length > 1) {
-        // Prefer the one managed by React Helmet (data-rh="true"), else keep the latest
-        const rhTitle = titles.find(t => t.hasAttribute('data-rh'));
-        titles.forEach(t => {
-          if (rhTitle && t !== rhTitle && t.parentNode) {
-            t.parentNode.removeChild(t);
-          } else if (!rhTitle && t !== titles[titles.length - 1] && t.parentNode) {
-            t.parentNode.removeChild(t);
+        if (isNotHome) {
+          // Discard any residual homepage titles on inner pages
+          const nonHomeTitles = titles.filter(t => {
+            const text = (t.textContent || '').trim();
+            return !text.includes('Custom Software Development &') && 
+                   !text.includes('Custom Software & AI App Development Company') &&
+                   !text.includes('Custom Software Development Company & AI Agency');
+          });
+          const keepTitle = nonHomeTitles.length > 0 ? nonHomeTitles[nonHomeTitles.length - 1] : titles[titles.length - 1];
+          titles.forEach(t => {
+            if (t !== keepTitle && t.parentNode) {
+              t.parentNode.removeChild(t);
+            }
+          });
+        } else {
+          // On homepage, prefer the latest
+          const keepTitle = titles[titles.length - 1];
+          titles.forEach(t => {
+            if (t !== keepTitle && t.parentNode) {
+              t.parentNode.removeChild(t);
+            }
+          });
+        }
+      }
+
+      // If on an inner page and title is still erroneously set to homepage title, rectify it
+      if (isNotHome && routeSeo && routeSeo.title) {
+        const curTitle = document.querySelector('title');
+        if (curTitle) {
+          const curText = (curTitle.textContent || '').trim();
+          if (curText.includes('Custom Software Development & AI Agency | AbuQitmirLabs')) {
+            curTitle.textContent = routeSeo.title;
           }
-        });
+        }
       }
 
       // 2. Strictly guarantee exactly one meta[name="description"] in document.head
       const descs = Array.from(document.querySelectorAll('meta[name="description"]'));
       if (descs.length > 1) {
-        const rhDesc = descs.find(d => d.hasAttribute('data-rh'));
-        descs.forEach(d => {
-          if (rhDesc && d !== rhDesc && d.parentNode) {
-            d.parentNode.removeChild(d);
-          } else if (!rhDesc && d !== descs[descs.length - 1] && d.parentNode) {
-            d.parentNode.removeChild(d);
-          }
-        });
+        if (isNotHome) {
+          // Discard homepage meta descriptions
+          const nonHomeDescs = descs.filter(d => {
+            const content = (d.getAttribute('content') || '').trim();
+            return !content.includes('AbuQitmirLabs is a custom software & AI development company') &&
+                   !content.includes('AbuQitmirLabs engineers custom software, AI agents');
+          });
+          const keepDesc = nonHomeDescs.length > 0 ? nonHomeDescs[nonHomeDescs.length - 1] : descs[descs.length - 1];
+          descs.forEach(d => {
+            if (d !== keepDesc && d.parentNode) {
+              d.parentNode.removeChild(d);
+            }
+          });
+        } else {
+          const keepDesc = descs[descs.length - 1];
+          descs.forEach(d => {
+            if (d !== keepDesc && d.parentNode) {
+              d.parentNode.removeChild(d);
+            }
+          });
+        }
       }
 
-      // 2b. Strictly guarantee exactly one meta[name="robots"] in document.head (remove duplicate CMS/template robots tag)
+      // 2b. Strictly guarantee exactly one meta[name="robots"] in document.head
       const robots = Array.from(document.querySelectorAll('meta[name="robots"]'));
       if (robots.length > 1) {
-        const rhRobot = robots.find(r => r.hasAttribute('data-rh'));
+        const keepRobot = robots[robots.length - 1];
         robots.forEach(r => {
-          if (rhRobot && r !== rhRobot && r.parentNode) {
-            r.parentNode.removeChild(r);
-          } else if (!rhRobot && r !== robots[robots.length - 1] && r.parentNode) {
+          if (r !== keepRobot && r.parentNode) {
             r.parentNode.removeChild(r);
           }
         });
@@ -144,36 +188,81 @@ function MetaHeadSanitizer() {
       // 3. Guarantee strictly one canonical link matching current path
       const canonicals = Array.from(document.querySelectorAll('link[rel="canonical"]'));
       if (canonicals.length > 1) {
-        // If not on homepage, remove any canonical pointing to homepage
-        const isNotHome = pathname !== '/' && pathname !== '';
-        let targetKeep: Element | null = null;
         if (isNotHome) {
-          // Find canonical that does NOT end in .tech/ or .tech
-          targetKeep = canonicals.find(c => {
-            const href = c.getAttribute('href') || '';
+          // Remove any canonical pointing to homepage
+          const matchingCanonicals = canonicals.filter(c => {
+            const href = (c.getAttribute('href') || '').trim();
             return href !== 'https://www.abuqitmirlabs.tech/' && href !== 'https://www.abuqitmirlabs.tech';
-          }) || canonicals[canonicals.length - 1];
-        } else {
-          targetKeep = canonicals.find(c => c.hasAttribute('data-rh')) || canonicals[canonicals.length - 1];
-        }
-
-        canonicals.forEach(c => {
-          if (c !== targetKeep && c.parentNode) {
-            c.parentNode.removeChild(c);
-          }
-        });
-      }
-
-      // 4. Guarantee single og:title, og:description, og:url
-      ['og:title', 'og:description', 'og:url'].forEach(prop => {
-        const ogTags = Array.from(document.querySelectorAll(`meta[property="${prop}"]`));
-        if (ogTags.length > 1) {
-          const keepTag = ogTags[ogTags.length - 1];
-          ogTags.forEach(tag => {
-            if (tag !== keepTag && tag.parentNode) {
-              tag.parentNode.removeChild(tag);
+          });
+          const targetKeep = matchingCanonicals.length > 0 ? matchingCanonicals[matchingCanonicals.length - 1] : canonicals[canonicals.length - 1];
+          canonicals.forEach(c => {
+            if (c !== targetKeep && c.parentNode) {
+              c.parentNode.removeChild(c);
             }
           });
+          if (targetKeep) {
+            targetKeep.setAttribute('href', expectedCanonicalUrl);
+          }
+        } else {
+          const targetKeep = canonicals[canonicals.length - 1];
+          canonicals.forEach(c => {
+            if (c !== targetKeep && c.parentNode) {
+              c.parentNode.removeChild(c);
+            }
+          });
+          if (targetKeep) {
+            targetKeep.setAttribute('href', 'https://www.abuqitmirlabs.tech/');
+          }
+        }
+      } else if (canonicals.length === 1 && isNotHome) {
+        const curHref = (canonicals[0].getAttribute('href') || '').trim();
+        if (curHref === 'https://www.abuqitmirlabs.tech/' || curHref === 'https://www.abuqitmirlabs.tech') {
+          canonicals[0].setAttribute('href', expectedCanonicalUrl);
+        }
+      }
+
+      // 4. Guarantee single og:url, og:title, og:description
+      const ogUrls = Array.from(document.querySelectorAll('meta[property="og:url"]'));
+      if (ogUrls.length > 1) {
+        const keepOgUrl = ogUrls[ogUrls.length - 1];
+        ogUrls.forEach(tag => {
+          if (tag !== keepOgUrl && tag.parentNode) {
+            tag.parentNode.removeChild(tag);
+          }
+        });
+        if (keepOgUrl) {
+          keepOgUrl.setAttribute('content', expectedCanonicalUrl);
+        }
+      } else if (ogUrls.length === 1 && isNotHome) {
+        const curHref = (ogUrls[0].getAttribute('content') || '').trim();
+        if (curHref === 'https://www.abuqitmirlabs.tech/' || curHref === 'https://www.abuqitmirlabs.tech') {
+          ogUrls[0].setAttribute('content', expectedCanonicalUrl);
+        }
+      }
+
+      ['og:title', 'og:description'].forEach(prop => {
+        const ogTags = Array.from(document.querySelectorAll(`meta[property="${prop}"]`));
+        if (ogTags.length > 1) {
+          if (isNotHome) {
+            const nonHomeTags = ogTags.filter(tag => {
+              const content = (tag.getAttribute('content') || '').trim();
+              return !content.includes('Custom Software Development &') && 
+                     !content.includes('AbuQitmirLabs is a custom software & AI development company');
+            });
+            const keepTag = nonHomeTags.length > 0 ? nonHomeTags[nonHomeTags.length - 1] : ogTags[ogTags.length - 1];
+            ogTags.forEach(tag => {
+              if (tag !== keepTag && tag.parentNode) {
+                tag.parentNode.removeChild(tag);
+              }
+            });
+          } else {
+            const keepTag = ogTags[ogTags.length - 1];
+            ogTags.forEach(tag => {
+              if (tag !== keepTag && tag.parentNode) {
+                tag.parentNode.removeChild(tag);
+              }
+            });
+          }
         }
       });
 
@@ -181,12 +270,26 @@ function MetaHeadSanitizer() {
       ['twitter:title', 'twitter:description'].forEach(name => {
         const twTags = Array.from(document.querySelectorAll(`meta[name="${name}"]`));
         if (twTags.length > 1) {
-          const keepTag = twTags[twTags.length - 1];
-          twTags.forEach(tag => {
-            if (tag !== keepTag && tag.parentNode) {
-              tag.parentNode.removeChild(tag);
-            }
-          });
+          if (isNotHome) {
+            const nonHomeTags = twTags.filter(tag => {
+              const content = (tag.getAttribute('content') || '').trim();
+              return !content.includes('Custom Software Development &') && 
+                     !content.includes('AbuQitmirLabs is a custom software & AI development company');
+            });
+            const keepTag = nonHomeTags.length > 0 ? nonHomeTags[nonHomeTags.length - 1] : twTags[twTags.length - 1];
+            twTags.forEach(tag => {
+              if (tag !== keepTag && tag.parentNode) {
+                tag.parentNode.removeChild(tag);
+              }
+            });
+          } else {
+            const keepTag = twTags[twTags.length - 1];
+            twTags.forEach(tag => {
+              if (tag !== keepTag && tag.parentNode) {
+                tag.parentNode.removeChild(tag);
+              }
+            });
+          }
         }
       });
 
@@ -219,8 +322,6 @@ function MetaHeadSanitizer() {
 
   return null;
 }
-
-import { getCanonicalPath } from './data/canonicalRedirects';
 
 function GoogleAnalyticsTracker() {
   const { pathname, search } = useLocation();
@@ -444,6 +545,8 @@ export default function App() {
               <Route path="/blog/guest-posting-in-2026-what-works-abuqitmirlabs" element={<BlogPostPage overrideSlug="guest-posting-in-2026-what-works-abuqitmirlabs" />} />
               <Route path="/blog/guest-posting-strategy-2026" element={<Navigate to="/blog/guest-posting-in-2026-what-works-abuqitmirlabs" replace />} />
               <Route path="/guest-posting-in-2026-what-works-abuqitmirlabs" element={<Navigate to="/blog/guest-posting-in-2026-what-works-abuqitmirlabs" replace />} />
+              <Route path="/blog/measure-marketing-roi-without-tracking" element={<BlogPostPage overrideSlug="measure-marketing-roi-without-tracking" />} />
+              <Route path="/measure-marketing-roi-without-tracking" element={<Navigate to="/blog/measure-marketing-roi-without-tracking" replace />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />

@@ -169,6 +169,8 @@ export function renderFullApp(url: string = '/') {
               <Route path="/ai-agents-cost-benefit-analysis" element={<Navigate to="/blog/ai-agents-cost-benefit-analysis" replace />} />
               <Route path="/blog/ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont" element={<Navigate to="/blog/ai-agents-cost-benefit-analysis" replace />} />
               <Route path="/ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont" element={<Navigate to="/blog/ai-agents-cost-benefit-analysis" replace />} />
+              <Route path="/blog/measure-marketing-roi-without-tracking" element={<BlogPostPage overrideSlug="measure-marketing-roi-without-tracking" />} />
+              <Route path="/measure-marketing-roi-without-tracking" element={<Navigate to="/blog/measure-marketing-roi-without-tracking" replace />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
             </Routes>
           </Suspense>

@@ -2,7 +2,7 @@
 {
   "title": "Measure Marketing ROI Without Tracking | AbuQitmirLabs",
   "slug": "measure-marketing-roi-without-tracking",
-  "excerpt": "Most founders believe they have a measurement problem. They do not. They have an attribution problem disguised as a measurement problem. This guide solves it. You will learn three methods for measuring marketing ROI when attribution is impossible: incrementality testing (the gold standard), marketing mix modeling (the portfolio approach), and share of search (the leading indicator). Includes a startup-ready dashboard framework, common mistakes, and real examples from client engagements.",
+  "excerpt": "A guide to measuring marketing ROI when attribution is impossible. Learn incrementality testing, MMM, and practical frameworks for startups.",
   "category": "Business",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
   "published": true,
