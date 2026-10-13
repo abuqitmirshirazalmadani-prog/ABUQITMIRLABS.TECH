@@ -10,6 +10,7 @@ import CustomSoftwarePage from './pages/CustomSoftwarePage';
 import MobileAppDevelopmentPage from './pages/MobileAppDevelopmentPage';
 import WebDevelopmentPage from './pages/WebDevelopmentPage';
 import AIAgentDevelopmentPage from './pages/AIAgentDevelopmentPage';
+import AIVideoCreator from './pages/AIVideoCreator';
 import SEOPage from './pages/SEOPage';
 import LocalSEOSmallBusinessPage from './pages/LocalSEOSmallBusinessPage';
 import LocalSEOCitationBuildingPage from './pages/LocalSEOCitationBuildingPage';
@@ -118,6 +119,8 @@ export function renderFullApp(url: string = '/') {
               <Route path="/mobile-app-development" element={<MobileAppDevelopmentPage />} />
               <Route path="/web-development" element={<WebDevelopmentPage />} />
               <Route path="/ai-agent-development" element={<AIAgentDevelopmentPage />} />
+              <Route path="/ai-video-creation" element={<AIVideoCreator />} />
+              <Route path="/ai-video-creator" element={<Navigate to="/ai-video-creation" replace />} />
               <Route path="/seo-mastery" element={<SEOPage />} />
               <Route path="/local-seo-for-small-business" element={<LocalSEOSmallBusinessPage />} />
               <Route path="/local-seo-citation-building" element={<LocalSEOCitationBuildingPage />} />

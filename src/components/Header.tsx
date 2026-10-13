@@ -33,6 +33,7 @@ const Header = () => {
                 { name: 'Mobile App Development', href: '/mobile-app-development' },
                 { name: 'High-Performance Web Development', href: '/web-development' },
                 { name: 'Intelligent AI Agent Development', href: '/ai-agent-development' },
+                { name: 'Cinematic AI Video Creation', href: '/ai-video-creation' },
                 { name: 'SEO & Local SEO Mastery', href: '/seo-mastery' },
                 { name: 'Digital Marketing', href: '/digital-marketing' },
                 { name: 'Local SEO for Small Business', href: '/local-seo-for-small-business' },

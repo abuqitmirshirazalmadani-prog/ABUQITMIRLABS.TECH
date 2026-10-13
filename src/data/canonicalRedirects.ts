@@ -80,5 +80,8 @@ export function getCanonicalPath(pathname: string): string {
     const canonicalSlug = getCanonicalSlug(slug);
     return `/blog/${canonicalSlug}`;
   }
+  if (clean === '/ai-video-creator') {
+    return '/ai-video-creation';
+  }
   return clean;
 }

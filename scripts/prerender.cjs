@@ -132,6 +132,7 @@ const routes = [
   '/mobile-app-development',
   '/web-development',
   '/ai-agent-development',
+  '/ai-video-creation',
   '/seo-mastery',
   '/digital-marketing',
   '/local-seo-for-small-business',

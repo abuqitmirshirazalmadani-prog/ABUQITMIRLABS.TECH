@@ -104,6 +104,28 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogDescription: 'Custom AI agent development company specializing in HIPAA-compliant healthcare AI and autonomous workflows.',
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
   },
+  '/ai-video-creation': {
+    title: 'AI Video Creation Services | Cinematic AI Production Agency | AbuQitmirLabs',
+    description: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.',
+    canonical: 'https://www.abuqitmirlabs.tech/ai-video-creation',
+    ogTitle: 'AI Video Creation Services | Cinematic AI Production Agency | AbuQitmirLabs',
+    ogDescription: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.',
+    ogImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg',
+    ogType: 'website',
+    twitterTitle: 'AI Video Creation Services | Cinematic AI Production Agency | AbuQitmirLabs',
+    twitterDescription: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.',
+    twitterImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg',
+    twitterCard: 'summary_large_image'
+  },
+  '/ai-video-creator': {
+    title: 'AI Video Creation Services | Cinematic AI Production Agency | AbuQitmirLabs',
+    description: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.',
+    canonical: 'https://www.abuqitmirlabs.tech/ai-video-creation',
+    ogTitle: 'AI Video Creation Services | Cinematic AI Production Agency | AbuQitmirLabs',
+    ogDescription: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.',
+    ogImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg',
+    ogType: 'website'
+  },
   '/seo-mastery': {
     title: 'Technical SEO & Search Dominance Services | AbuQitmirLabs',
     description: 'Enterprise technical SEO, Core Web Vitals optimization, semantic schema graphs, and Generative Engine Optimization (GEO) for global brands.',

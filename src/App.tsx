@@ -22,6 +22,7 @@ const CustomSoftwarePage = lazy(() => import('./pages/CustomSoftwarePage'));
 const MobileAppDevelopmentPage = lazy(() => import('./pages/MobileAppDevelopmentPage'));
 const WebDevelopmentPage = lazy(() => import('./pages/WebDevelopmentPage'));
 const AIAgentDevelopmentPage = lazy(() => import('./pages/AIAgentDevelopmentPage'));
+const AIVideoCreator = lazy(() => import('./pages/AIVideoCreator'));
 const SEOPage = lazy(() => import('./pages/SEOPage'));
 const DigitalMarketingPage = lazy(() => import('./pages/DigitalMarketingPage'));
 const LocalSEOSmallBusinessPage = lazy(() => import('./pages/LocalSEOSmallBusinessPage'));
@@ -330,6 +331,8 @@ export default function App() {
               <Route path="/mobile-app-development" element={<MobileAppDevelopmentPage />} />
               <Route path="/web-development" element={<WebDevelopmentPage />} />
               <Route path="/ai-agent-development" element={<AIAgentDevelopmentPage />} />
+              <Route path="/ai-video-creation" element={<AIVideoCreator />} />
+              <Route path="/ai-video-creator" element={<Navigate to="/ai-video-creation" replace />} />
               <Route path="/seo-mastery" element={<SEOPage />} />
               <Route path="/digital-marketing" element={<DigitalMarketingPage />} />
               <Route path="/local-seo-services" element={<Navigate to="/seo-mastery" replace />} />
