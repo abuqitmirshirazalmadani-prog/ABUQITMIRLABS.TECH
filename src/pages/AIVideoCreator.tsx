@@ -399,6 +399,8 @@ export default function AIVideoCreator() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="mb-6">
             <Breadcrumbs 
+              inline
+              disableSchema
               items={[
                 { name: 'Home', to: '/' },
                 { name: 'Services', to: '/#services' },
