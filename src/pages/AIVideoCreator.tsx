@@ -42,7 +42,6 @@ import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CountryMarquee from '../components/CountryMarquee';
 import ServiceToolCtaBanner from '../components/ServiceToolCtaBanner';
-import { OnboardingChecklist } from '../components/ui/onboarding-checklist';
 import { YouTubeFacade } from '../components/ui/youtube-facade';
 import { AnimatedBreathingText } from '../components/ui/animated-breathing-text';
 import { MagicText } from '../components/ui/magic-text';
@@ -797,46 +796,6 @@ export default function AIVideoCreator() {
               Every metric and client referenced below is an authentic production deployment engineered by 
               AbuQitmirLabs since our founding in Karachi in 2021.
             </p>
-          </div>
-
-          {/* Integrated Production Onboarding Checklist */}
-          <div className="mb-16">
-            <OnboardingChecklist
-              title="Verified Production Deployment Onboarding"
-              description="How AbuQitmirLabs moves from initial brand briefing to final 4K cinematic export with zero hallucinations and verified client sign-offs."
-              items={[
-                {
-                  id: "step-1",
-                  text: "Brand Brief & Visual Identity Architecture",
-                  helperText: "Ingesting brand guidelines, hex palettes, typography, and mood references to lock stylistic boundaries.",
-                  helperLink: {
-                    href: "#calculator",
-                    text: "Configure Project Parameters"
-                  }
-                },
-                {
-                  id: "step-2",
-                  text: "Human-Led Script & Storyboard Keyframing",
-                  helperText: "Writing hook-centric narrative scripts with frame-by-frame prompt blueprints before any rendering begins.",
-                  helperLink: {
-                    href: "https://ghastlypages.com",
-                    text: "Review GhastlyPages Case Evidence"
-                  }
-                },
-                {
-                  id: "step-3",
-                  text: "Multi-Engine Diffusion & Temporal Motion Synthesis",
-                  helperText: "Generating high-coherence footage across Kling 1.5, Runway Gen-3 Alpha, and Midjourney v6 with character seed locking."
-                },
-                {
-                  id: "step-4",
-                  text: "Neural Audio Foley, Dialogue & DaVinci Resolve Master",
-                  helperText: "Bespoke ElevenLabs voiceovers, spatial Foley acoustic sound design, and color grading for lossless 4K delivery."
-                }
-              ]}
-              videoThumbnailUrl="/images/og/default-share-card.jpg"
-              videoUrl="https://www.youtube.com/embed/ScMzIvxBSi4"
-            />
           </div>
 
           {/* 6 Video Cards matching Home Page Case Studies Style */}
