@@ -246,7 +246,7 @@ export default function AIVideoCreator() {
     };
   }, [videosPerMonth, videoTierType]);
 
-  const pageTitle = "AI Video Creation Services | Cinematic AI Production Agency | AbuQitmirLabs";
+  const pageTitle = "AI Video Creation Services | AbuQitmirLabs";
   const pageDescription = "Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.";
   const canonicalUrl = "https://www.abuqitmirlabs.tech/ai-video-creation";
 

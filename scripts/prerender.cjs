@@ -314,9 +314,10 @@ for (const routeUrl of allRoutes) {
         html = html.replace('</head>', `  <meta property="og:image" content="${seo.ogImage}" />\n  <meta property="og:image:alt" content="${altText.replace(/"/g, '&quot;')}" />\n</head>`);
       }
 
-      // Unique meta robots
-      const robotsContent = seo.robots || "index, follow, max-snippet:-1, max-image-preview:large";
-      html = html.replace('</head>', `  <meta name="robots" content="${robotsContent}" />\n</head>`);
+      // Unique meta robots with max-video-preview:-1 and data-rh="true" to prevent duplicate injection
+      html = html.replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gis, '');
+      const robotsContent = seo.robots || "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1";
+      html = html.replace('</head>', `  <meta data-rh="true" name="robots" content="${robotsContent}" />\n</head>`);
 
       // Unique twitter:card, twitter:title, twitter:description, twitter:image
       const twTitle = seo.twitterTitle || seo.title;

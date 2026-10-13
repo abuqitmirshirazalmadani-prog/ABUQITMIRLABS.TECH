@@ -80,7 +80,29 @@ for (const rawSlug of slugs) {
     const newEntry = `  <url><loc>${fullUrl}</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>${today}</lastmod></url>\n`;
     sitemap = sitemap.replace('</urlset>', `${newEntry}</urlset>`);
     added++;
-    console.log(`✅ Added: ${cleanSlug}`);
+    console.log(`✅ Added blog URL: ${cleanSlug}`);
+  }
+}
+
+// 3b. Har static/service page check karein from seoRoutesMetadata.ts
+const seoRoutesPath = path.join(rootDir, 'src', 'data', 'seoRoutesMetadata.ts');
+if (fs.existsSync(seoRoutesPath)) {
+  const seoContent = fs.readFileSync(seoRoutesPath, 'utf-8');
+  const routeKeyRegex = /['"](\/[a-zA-Z0-9_\-\/]+)['"]\s*:\s*\{/g;
+  let rMatch;
+  while ((rMatch = routeKeyRegex.exec(seoContent)) !== null) {
+    const routePath = rMatch[1];
+    // Skip aliases, redirects, or dynamic blog placeholders
+    if (redirects[routePath.replace(/^\//, '')] || routePath.startsWith('/blog/')) {
+      continue;
+    }
+    const fullServiceUrl = `${baseUrl}${routePath}`;
+    if (!sitemap.includes(fullServiceUrl)) {
+      const serviceEntry = `  <url><loc>${fullServiceUrl}</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>${today}</lastmod></url>\n`;
+      sitemap = sitemap.replace('</urlset>', `${serviceEntry}</urlset>`);
+      added++;
+      console.log(`✅ Added service route: ${routePath}`);
+    }
   }
 }
 

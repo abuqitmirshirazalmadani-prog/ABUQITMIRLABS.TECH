@@ -128,6 +128,19 @@ function MetaHeadSanitizer() {
         });
       }
 
+      // 2b. Strictly guarantee exactly one meta[name="robots"] in document.head (remove duplicate CMS/template robots tag)
+      const robots = Array.from(document.querySelectorAll('meta[name="robots"]'));
+      if (robots.length > 1) {
+        const rhRobot = robots.find(r => r.hasAttribute('data-rh'));
+        robots.forEach(r => {
+          if (rhRobot && r !== rhRobot && r.parentNode) {
+            r.parentNode.removeChild(r);
+          } else if (!rhRobot && r !== robots[robots.length - 1] && r.parentNode) {
+            r.parentNode.removeChild(r);
+          }
+        });
+      }
+
       // 3. Guarantee strictly one canonical link matching current path
       const canonicals = Array.from(document.querySelectorAll('link[rel="canonical"]'));
       if (canonicals.length > 1) {

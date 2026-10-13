@@ -105,26 +105,28 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
   },
   '/ai-video-creation': {
-    title: 'AI Video Creation Services | Cinematic AI Production Agency | AbuQitmirLabs',
+    title: 'AI Video Creation Services | AbuQitmirLabs',
     description: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.',
     canonical: 'https://www.abuqitmirlabs.tech/ai-video-creation',
-    ogTitle: 'AI Video Creation Services | Cinematic AI Production Agency | AbuQitmirLabs',
+    ogTitle: 'AI Video Creation Services | AbuQitmirLabs',
     ogDescription: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.',
     ogImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg',
     ogType: 'website',
-    twitterTitle: 'AI Video Creation Services | Cinematic AI Production Agency | AbuQitmirLabs',
+    twitterTitle: 'AI Video Creation Services | AbuQitmirLabs',
     twitterDescription: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.',
     twitterImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg',
-    twitterCard: 'summary_large_image'
+    twitterCard: 'summary_large_image',
+    robots: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
   },
   '/ai-video-creator': {
-    title: 'AI Video Creation Services | Cinematic AI Production Agency | AbuQitmirLabs',
+    title: 'AI Video Creation Services | AbuQitmirLabs',
     description: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.',
     canonical: 'https://www.abuqitmirlabs.tech/ai-video-creation',
-    ogTitle: 'AI Video Creation Services | Cinematic AI Production Agency | AbuQitmirLabs',
+    ogTitle: 'AI Video Creation Services | AbuQitmirLabs',
     ogDescription: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.',
     ogImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg',
-    ogType: 'website'
+    ogType: 'website',
+    robots: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
   },
   '/seo-mastery': {
     title: 'Technical SEO & Search Dominance Services | AbuQitmirLabs',
