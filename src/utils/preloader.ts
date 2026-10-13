@@ -42,6 +42,12 @@ export const routeLoaders: Record<string, () => Promise<any>> = {
   '/canada-market': () => import('../pages/CanadaMarketPage'),
   '/poland-market': () => import('../pages/PolandMarketPage'),
   '/australia-market': () => import('../pages/AustraliaMarketPage'),
+  '/ai-video-creation': () => import('../pages/AIVideoCreator'),
+  '/digital-marketing': () => import('../pages/DigitalMarketingPage'),
+  '/guest-post-service': () => import('../pages/GuestPostServicePage'),
+  '/editorial-policy': () => import('../pages/EditorialPolicyPage'),
+  '/brand-assets': () => import('../pages/BrandAssetsPage'),
+  '/tools': () => import('../pages/ToolsIndexPage'),
   '/terms': () => import('../pages/TermsPage'),
   '/privacy': () => import('../pages/PrivacyPage'),
   '/website-contract': () => import('../pages/WebsiteContractPage'),
@@ -59,8 +65,8 @@ const preloadedSet = new Set<string>();
  * Preloads a specific route's code bundle
  */
 export function preloadRoute(path: string) {
-  // Normalize path by stripping hashes
-  const cleanPath = path.split('#')[0];
+  // Normalize path by stripping query params and hashes
+  const cleanPath = path.split('?')[0].split('#')[0];
   if (!cleanPath || preloadedSet.has(cleanPath)) return;
 
   const loader = routeLoaders[cleanPath];
@@ -73,25 +79,63 @@ export function preloadRoute(path: string) {
 }
 
 /**
- * Non-blocking, idle preloader for top primary routes only
+ * Global Instant Page Transitions
+ * Detects pointer hover, focus, and touchstart on any internal link
+ * and preloads the target route module immediately (~150-300ms before click).
+ */
+export function initInstantPageTransitions() {
+  if (typeof window === 'undefined') return;
+
+  const handlePointerInteraction = (e: Event) => {
+    const target = (e.target as HTMLElement | null)?.closest('a');
+    if (!target) return;
+
+    const href = target.getAttribute('href');
+    if (!href) return;
+
+    // Only internal relative routes
+    if (href.startsWith('/') && !href.startsWith('//') && !href.includes(':')) {
+      preloadRoute(href);
+    }
+  };
+
+  // Passive listeners for instant responsiveness without scrolling lag
+  document.addEventListener('mouseover', handlePointerInteraction, { passive: true });
+  document.addEventListener('touchstart', handlePointerInteraction, { passive: true });
+  document.addEventListener('focusin', handlePointerInteraction, { passive: true });
+}
+
+/**
+ * Non-blocking, idle preloader for top primary routes
  */
 export function preloadAllRoutes() {
   if (typeof window === 'undefined') return;
 
-  // Only prewarm top 3 most visited primary routes when the browser is completely idle
-  const highPriorityRoutes = ['/custom-software', '/ai-agent-development', '/contact'];
+  // Initialize instant hover transitions globally
+  initInstantPageTransitions();
+
+  // Prewarm highest-traffic routes during browser idle time
+  const highPriorityRoutes = [
+    '/ai-video-creation',
+    '/custom-software',
+    '/ai-agent-development',
+    '/web-development',
+    '/mobile-app-development',
+    '/case-studies',
+    '/contact'
+  ];
 
   const prewarm = () => {
     highPriorityRoutes.forEach((route, idx) => {
       setTimeout(() => {
         preloadRoute(route);
-      }, idx * 600);
+      }, idx * 300);
     });
   };
 
   if ('requestIdleCallback' in window) {
-    (window as any).requestIdleCallback(prewarm, { timeout: 3000 });
+    (window as any).requestIdleCallback(prewarm, { timeout: 2000 });
   } else {
-    setTimeout(prewarm, 2000);
+    setTimeout(prewarm, 1000);
   }
 }

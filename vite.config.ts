@@ -62,6 +62,7 @@ export default defineConfig(({mode}) => {
         staticDir: path.resolve(process.cwd(), 'dist'),
         routes: [
           '/',
+          '/ai-video-creation',
           '/custom-software',
           '/mobile-app-development',
           '/web-development',
@@ -118,6 +119,7 @@ export default defineConfig(({mode}) => {
             { url: '/custom-software',         changefreq: 'weekly',  priority: 0.9, title: 'Custom Software Development Company | AbuQitmirLabs', description: 'Bespoke software built around your workflows — ERPs, SaaS platforms, AI-powered tools, and enterprise systems. Full IP ownership.' },
             { url: '/mobile-app-development',  changefreq: 'weekly',  priority: 0.9, title: 'Mobile App Development Company | AbuQitmirLabs', description: 'Flutter, React Native, and native iOS/Android app development. Full source code ownership, App Store submission, and backend integration included.' },
             { url: '/web-development',         changefreq: 'weekly',  priority: 0.9, title: 'Web Development Company | Custom Web Solutions | AbuQitmirLabs', description: 'AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications.' },
+            { url: '/ai-video-creation',       changefreq: 'weekly',  priority: 0.9, title: 'AI Video Creation Services | Cinematic AI Production Agency | AbuQitmirLabs', description: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.' },
             { url: '/ai-agent-development',    changefreq: 'weekly',  priority: 0.9, title: 'Healthcare AI Agent Development Company | AbuQitmirLabs', description: 'Custom healthcare AI agents for patient intake, RAG, EHR integration and workflow automation. Build secure AI systems with AbuQitmirLabs.' },
             { url: '/seo-mastery',             changefreq: 'weekly',  priority: 0.8, title: 'SEO Services | Professional Search Engine Optimization | AbuQitmirLabs', description: 'AbuQitmirLabs delivers data-driven SEO services — technical audits, on-page optimization, local SEO, and authority building. Rank higher, attract quality traffic, and grow your business.' },
             { url: '/local-seo-for-small-business', changefreq: 'weekly', priority: 0.9, title: 'Local SEO Services for Small Businesses | AbuQitmirLabs', description: 'Grow local visibility with expert Local SEO for small businesses, including Google Business Profile, local rankings, citations, and on-page optimization.' },

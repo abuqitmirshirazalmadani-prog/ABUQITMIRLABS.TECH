@@ -12,10 +12,12 @@ import { preloadAllRoutes } from './utils/preloader';
 
 // Eager import landing page for immediate initial render
 import HomePage from './pages/HomePage';
-import SaudiArabiaMarketPage from './pages/SaudiArabiaMarketPage';
-import UAEMarketPage from './pages/UAEMarketPage';
-import QatarMarketPage from './pages/QatarMarketPage';
-import KuwaitMarketPage from './pages/KuwaitMarketPage';
+
+// Lazy load all secondary and service pages for ultra-fast initial bundle size
+const SaudiArabiaMarketPage = lazy(() => import('./pages/SaudiArabiaMarketPage'));
+const UAEMarketPage = lazy(() => import('./pages/UAEMarketPage'));
+const QatarMarketPage = lazy(() => import('./pages/QatarMarketPage'));
+const KuwaitMarketPage = lazy(() => import('./pages/KuwaitMarketPage'));
 
 // Lazy load all secondary and service pages for fast initial bundle size
 const CustomSoftwarePage = lazy(() => import('./pages/CustomSoftwarePage'));

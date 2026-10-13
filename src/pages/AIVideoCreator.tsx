@@ -54,7 +54,7 @@ const faqData = [
   },
   {
     q: "How much does custom AI video production cost compared to traditional agencies?",
-    a: "Traditional live-action or 3D animation agencies typically charge $8,000 to $25,000+ per brand video due to studio rentals, camera crews, and lengthy revision cycles. AbuQitmirLabs provides broadcast-ready AI video production ranging from $650 for focused teaser assets to $3,800 for full monthly commercial suites. This reduces production overhead by 70% to 85% while delivering superior turnaround speed."
+    a: "Traditional live-action or 3D animation agencies typically charge $8,000 to $25,000+ per brand video due to studio rentals, camera crews, and lengthy revision cycles. AbuQitmirLabs provides broadcast-ready AI video production starting from just $99 for focused teaser and hook assets to $299 for full multi-variant commercial explainer suites (and $990/month for ongoing agency retainers). This reduces production overhead by 90% to 95% while delivering 48-hour turnaround speed."
   },
   {
     q: "How long does it take to produce an enterprise AI video?",
@@ -226,8 +226,8 @@ export default function AIVideoCreator() {
     const traditionalCostPerVideo = videoTierType === 'teaser' ? 6500 : videoTierType === 'explainer' ? 8500 : 4000;
     const traditionalTimelineDays = videoTierType === 'teaser' ? 24 : videoTierType === 'explainer' ? 30 : 18;
 
-    const abuQitmirCostPerVideo = videoTierType === 'teaser' ? 650 : videoTierType === 'explainer' ? 950 : 500;
-    const abuQitmirTimelineDays = videoTierType === 'teaser' ? 3 : videoTierType === 'explainer' ? 4 : 2;
+    const abuQitmirCostPerVideo = videoTierType === 'teaser' ? 99 : videoTierType === 'explainer' ? 299 : 79;
+    const abuQitmirTimelineDays = videoTierType === 'teaser' ? 2 : videoTierType === 'explainer' ? 3 : 2;
 
     const annualTraditionalCost = traditionalCostPerVideo * videosPerMonth * 12;
     const annualAbuQitmirCost = abuQitmirCostPerVideo * videosPerMonth * 12;
@@ -299,7 +299,7 @@ export default function AIVideoCreator() {
         "offers": {
           "@type": "Offer",
           "priceCurrency": "USD",
-          "price": "650",
+          "price": "99",
           "priceValidUntil": "2027-12-31",
           "availability": "https://schema.org/InStock",
           "url": canonicalUrl
@@ -893,180 +893,6 @@ export default function AIVideoCreator() {
               ))}
             </div>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Case Study 1: GhastlyPages */}
-            <div className="bg-zinc-950 border border-white/10 rounded-3xl p-8 hover:border-[#ccff00]/40 transition-all group flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-xs font-mono text-[#ccff00] bg-[#ccff00]/10 px-3 py-1 rounded-full border border-[#ccff00]/20">
-                    Horror Literature & Media
-                  </span>
-                  <a 
-                    href="https://ghastlypages.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-xs font-mono text-zinc-400 hover:text-white flex items-center gap-1 transition-colors"
-                  >
-                    GhastlyPages.com <ExternalLink className="w-3 h-3" />
-                  </a>
-                </div>
-
-                <h3 className="text-2xl font-serif text-white mb-3">
-                  GhastlyPages: 40+ Cinematic Teaser Library
-                </h3>
-
-                <p className="text-zinc-300 text-sm font-light leading-relaxed mb-6">
-                  Delivered an expansive library of dark atmospheric video teasers for classic horror stories 
-                  and original fiction. Orchestrated Midjourney v6 lighting keyframes with Runway Gen-3 camera movement 
-                  and deep acoustic Foley sounds.
-                </p>
-
-                <div className="space-y-2 mb-6 text-xs text-zinc-400">
-                  <div className="flex items-center justify-between py-2 border-b border-white/5">
-                    <span>Delivered Assets:</span>
-                    <strong className="text-white font-mono">40+ Cinematic Video Trailers</strong>
-                  </div>
-                  <div className="flex items-center justify-between py-2 border-b border-white/5">
-                    <span>Reach Acceleration:</span>
-                    <strong className="text-[#ccff00] font-mono">3.4x Higher Organic Reach on TikTok</strong>
-                  </div>
-                  <div className="flex items-center justify-between py-2 border-b border-white/5">
-                    <span>Visual Fidelity:</span>
-                    <strong className="text-white font-mono">Zero Morphing / Zero Glitches</strong>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-zinc-500 font-mono">
-                <span>STACK: FLUX PRO • RUNWAY GEN-3 • ELEVENLABS</span>
-                <span className="text-[#ccff00]">VERIFIED DEPLOYMENT</span>
-              </div>
-            </div>
-
-            {/* Case Study 2: Atta Gold */}
-            <div className="bg-zinc-950 border border-white/10 rounded-3xl p-8 hover:border-[#ccff00]/40 transition-all group flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-xs font-mono text-[#ccff00] bg-[#ccff00]/10 px-3 py-1 rounded-full border border-[#ccff00]/20">
-                    Luxury Commodity & E-Commerce
-                  </span>
-                  <span className="text-xs font-mono text-zinc-400">Atta Gold Product Launch</span>
-                </div>
-
-                <h3 className="text-2xl font-serif text-white mb-3">
-                  Atta Gold: 72-Hour Luxury Launch Teaser
-                </h3>
-
-                <p className="text-zinc-300 text-sm font-light leading-relaxed mb-6">
-                  Engineered hyper-realistic liquid gold physics, macro reflections, and high-fashion lighting 
-                  for a premier gold product launch without requiring physical studio rentals or high-risk jewelry transportation.
-                </p>
-
-                <div className="space-y-2 mb-6 text-xs text-zinc-400">
-                  <div className="flex items-center justify-between py-2 border-b border-white/5">
-                    <span>Production Timeline:</span>
-                    <strong className="text-white font-mono">72 Hours (vs 4-Week Agency SLA)</strong>
-                  </div>
-                  <div className="flex items-center justify-between py-2 border-b border-white/5">
-                    <span>Budget Efficiency:</span>
-                    <strong className="text-[#ccff00] font-mono">78% Production Cost Reduction</strong>
-                  </div>
-                  <div className="flex items-center justify-between py-2 border-b border-white/5">
-                    <span>Asset Delivery:</span>
-                    <strong className="text-white font-mono">16:9 Master + 9:16 Reels Variant</strong>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-zinc-500 font-mono">
-                <span>STACK: KLING 1.5 • LUMA • TOPAZ 4K • DAVINCI</span>
-                <span className="text-[#ccff00]">VERIFIED DEPLOYMENT</span>
-              </div>
-            </div>
-
-            {/* Case Study 3: ClinicOSH */}
-            <div className="bg-zinc-950 border border-white/10 rounded-3xl p-8 hover:border-[#ccff00]/40 transition-all group flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-xs font-mono text-[#ccff00] bg-[#ccff00]/10 px-3 py-1 rounded-full border border-[#ccff00]/20">
-                    Healthtech & Clinical Workflows
-                  </span>
-                  <span className="text-xs font-mono text-zinc-400">ClinicOSH Healthcare Platform</span>
-                </div>
-
-                <h3 className="text-2xl font-serif text-white mb-3">
-                  ClinicOSH: HIPAA-Conscious Video Explainers
-                </h3>
-
-                <p className="text-zinc-300 text-sm font-light leading-relaxed mb-6">
-                  Synthesized complex EHR interoperability, patient intake triage, and HIPAA-compliant data security 
-                  into a series of 60-second animated clinical explainers and paid social video advertisements.
-                </p>
-
-                <div className="space-y-2 mb-6 text-xs text-zinc-400">
-                  <div className="flex items-center justify-between py-2 border-b border-white/5">
-                    <span>Audience Retention:</span>
-                    <strong className="text-[#ccff00] font-mono">84% Full Video Completion Rate</strong>
-                  </div>
-                  <div className="flex items-center justify-between py-2 border-b border-white/5">
-                    <span>Conversion Lift:</span>
-                    <strong className="text-white font-mono">+36% Clinical Demo Bookings</strong>
-                  </div>
-                  <div className="flex items-center justify-between py-2 border-b border-white/5">
-                    <span>Compliance:</span>
-                    <strong className="text-white font-mono">100% Medically Vetted Scripting</strong>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-zinc-500 font-mono">
-                <span>STACK: MIDJOURNEY V6 • RUNWAY • ELEVENLABS PRO</span>
-                <span className="text-[#ccff00]">VERIFIED DEPLOYMENT</span>
-              </div>
-            </div>
-
-            {/* Case Study 4: ProFit Command Center */}
-            <div className="bg-zinc-950 border border-white/10 rounded-3xl p-8 hover:border-[#ccff00]/40 transition-all group flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-xs font-mono text-[#ccff00] bg-[#ccff00]/10 px-3 py-1 rounded-full border border-[#ccff00]/20">
-                    B2B SaaS & Venture Capital
-                  </span>
-                  <span className="text-xs font-mono text-zinc-400">ProFit Command Center</span>
-                </div>
-
-                <h3 className="text-2xl font-serif text-white mb-3">
-                  ProFit: High-Impact Founder Vision Film
-                </h3>
-
-                <p className="text-zinc-300 text-sm font-light leading-relaxed mb-6">
-                  Produced a cinema-grade founder introduction film setting the stage for executive investor meetings. 
-                  Blended metaphorical visual effects with razor-sharp business positioning and an orchestral score.
-                </p>
-
-                <div className="space-y-2 mb-6 text-xs text-zinc-400">
-                  <div className="flex items-center justify-between py-2 border-b border-white/5">
-                    <span>Investment Outcome:</span>
-                    <strong className="text-[#ccff00] font-mono">Accelerated Seed Round Conversations</strong>
-                  </div>
-                  <div className="flex items-center justify-between py-2 border-b border-white/5">
-                    <span>Production Speed:</span>
-                    <strong className="text-white font-mono">5 Business Days End-to-End</strong>
-                  </div>
-                  <div className="flex items-center justify-between py-2 border-b border-white/5">
-                    <span>Format Flexibility:</span>
-                    <strong className="text-white font-mono">Keynote Master + Pitch Deck Cuts</strong>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-zinc-500 font-mono">
-                <span>STACK: FLUX • KLING • DAVINCI FAIRLIGHT</span>
-                <span className="text-[#ccff00]">VERIFIED DEPLOYMENT</span>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -1242,7 +1068,7 @@ export default function AIVideoCreator() {
                   <td className="py-4 px-6 font-medium text-white">Cost Per Asset</td>
                   <td className="py-4 px-6 text-zinc-400">$6,000 to $25,000+</td>
                   <td className="py-4 px-6 text-zinc-400">$30/mo subscription + 40 hrs staff time</td>
-                  <td className="py-4 px-6 text-[#ccff00] font-semibold bg-[#ccff00]/5">$500 to $1,800 flat</td>
+                  <td className="py-4 px-6 text-[#ccff00] font-semibold bg-[#ccff00]/5">$99 to $299 flat</td>
                 </tr>
                 <tr>
                   <td className="py-4 px-6 font-medium text-white">Turnaround SLA</td>
@@ -1300,44 +1126,44 @@ export default function AIVideoCreator() {
             {/* Tier 1 */}
             <div className="bg-zinc-950 border border-white/10 rounded-3xl p-8 flex flex-col justify-between hover:border-white/20 transition-all">
               <div>
-                <span className="text-xs font-mono text-zinc-400 uppercase tracking-widest block mb-2">Starter Vignette</span>
-                <h3 className="text-2xl font-serif text-white mb-2">Cinematic Teaser</h3>
-                <p className="text-zinc-400 text-xs mb-6 font-light">Ideal for new product unveils, book trailers, and event reveals.</p>
-                <div className="text-4xl font-mono font-bold text-white mb-1">$650</div>
-                <span className="text-xs font-mono text-zinc-500 block mb-6">Per Single Asset • 48-Hour SLA</span>
+                <span className="text-xs font-mono text-zinc-400 uppercase tracking-widest block mb-2">Starter Test Pilot</span>
+                <h3 className="text-2xl font-serif text-white mb-2">Cinematic Short / Ad</h3>
+                <p className="text-zinc-400 text-xs mb-6 font-light">Low-friction entry test pilot for small businesses, D2C brands, and product launches.</p>
+                <div className="text-4xl font-mono font-bold text-white mb-1">$99</div>
+                <span className="text-xs font-mono text-zinc-500 block mb-6">Per Single Master Asset • 48-Hour SLA</span>
 
                 <ul className="space-y-3 text-xs text-zinc-300">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#ccff00] shrink-0" />
-                    <span>Up to 30 Seconds High-Impact Duration</span>
+                    <span>Up to 30 Seconds High-Impact Retention Duration</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#ccff00] shrink-0" />
-                    <span>Runway Gen-3 + Flux Pro Architecture</span>
+                    <span>Runway Gen-3 + Flux Pro Diffusion Pipeline</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#ccff00] shrink-0" />
-                    <span>Neural Voiceover + Cinematic Sound FX</span>
+                    <span>Neural Voiceover + Dynamic Sound Design</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#ccff00] shrink-0" />
-                    <span>Native 16:9 & 9:16 Vertical Export</span>
+                    <span>Native 16:9 Landscape & 9:16 Vertical Delivery</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#ccff00] shrink-0" />
-                    <span>Topaz AI 4K Resolution Master</span>
+                    <span>Topaz AI 4K Upscale Master + Full Commercial Rights</span>
                   </li>
                 </ul>
               </div>
 
               <div className="mt-8 pt-6 border-t border-white/10">
                 <a
-                  href="https://wa.me/923233260859?text=Hello%20AbuQitmirLabs,%20I%20want%20to%20order%20the%20$650%20Cinematic%20Teaser%20package."
+                  href="https://wa.me/923233260859?text=Hello%20AbuQitmirLabs,%20I%20want%20to%20order%20the%20$99%20Starter%20Video%20Pilot%20package."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3 bg-zinc-900 hover:bg-zinc-800 text-white font-medium rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 border border-white/10"
                 >
-                  <span>Select Teaser Package</span>
+                  <span>Select $99 Pilot Package</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </div>
@@ -1353,7 +1179,7 @@ export default function AIVideoCreator() {
                 <span className="text-xs font-mono text-[#ccff00] uppercase tracking-widest block mb-2">Campaign Suite</span>
                 <h3 className="text-2xl font-serif text-white mb-2">Commercial Explainer</h3>
                 <p className="text-zinc-400 text-xs mb-6 font-light">Engineered for tech explainers, medical onboarding, and high-CTR ad campaigns.</p>
-                <div className="text-4xl font-mono font-bold text-[#ccff00] mb-1">$1,650</div>
+                <div className="text-4xl font-mono font-bold text-[#ccff00] mb-1">$299</div>
                 <span className="text-xs font-mono text-zinc-400 block mb-6">3 Multi-Angle Variants • 72-Hour SLA</span>
 
                 <ul className="space-y-3 text-xs text-zinc-200">
@@ -1382,7 +1208,7 @@ export default function AIVideoCreator() {
 
               <div className="mt-8 pt-6 border-t border-white/10">
                 <a
-                  href="https://wa.me/923233260859?text=Hello%20AbuQitmirLabs,%20I%20want%20to%20order%20the%20$1,650%20Commercial%20Explainer%20suite."
+                  href="https://wa.me/923233260859?text=Hello%20AbuQitmirLabs,%20I%20want%20to%20order%20the%20$299%20Commercial%20Explainer%20suite."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3.5 bg-[#ccff00] hover:bg-[#b8e600] text-black font-bold rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg"
@@ -1399,7 +1225,7 @@ export default function AIVideoCreator() {
                 <span className="text-xs font-mono text-zinc-400 uppercase tracking-widest block mb-2">Monthly Engine</span>
                 <h3 className="text-2xl font-serif text-white mb-2">Enterprise Video Retainer</h3>
                 <p className="text-zinc-400 text-xs mb-6 font-light">Dedicated monthly production for scaling brands and venture-backed startups.</p>
-                <div className="text-4xl font-mono font-bold text-white mb-1">$3,800</div>
+                <div className="text-4xl font-mono font-bold text-white mb-1">$990</div>
                 <span className="text-xs font-mono text-zinc-500 block mb-6">8 Delivered Master Assets / Month</span>
 
                 <ul className="space-y-3 text-xs text-zinc-300">
@@ -1428,7 +1254,7 @@ export default function AIVideoCreator() {
 
               <div className="mt-8 pt-6 border-t border-white/10">
                 <a
-                  href="https://wa.me/923233260859?text=Hello%20AbuQitmirLabs,%20I%20want%20to%20discuss%20the%20$3,800%20Enterprise%20Video%20Retainer."
+                  href="https://wa.me/923233260859?text=Hello%20AbuQitmirLabs,%20I%20want%20to%20discuss%20the%20$990%20Enterprise%20Video%20Retainer."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3 bg-zinc-900 hover:bg-zinc-800 text-white font-medium rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 border border-white/10"
