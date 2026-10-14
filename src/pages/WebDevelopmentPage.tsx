@@ -274,7 +274,29 @@ Do not sign a website contract without these protective legal terms.
                   },
                   "description": "React and Next.js websites engineered for speed and search visibility, not stitched together from templates. Based in Karachi, built for clients worldwide.",
                   "url": "https://www.abuqitmirlabs.tech/web-development",
-                  "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
+                  "areaServed": [
+                  { "@type": "Country", "name": "United States" },
+                  { "@type": "Country", "name": "United Kingdom" },
+                  { "@type": "Country", "name": "Canada" },
+                  { "@type": "Country", "name": "Australia" },
+                  { "@type": "Country", "name": "Poland" },
+                  { "@type": "Country", "name": "Pakistan" },
+                  { "@type": "Country", "name": "United Arab Emirates" },
+                  { "@type": "Country", "name": "Saudi Arabia" },
+                  { "@type": "Country", "name": "Qatar" },
+                  { "@type": "Country", "name": "Kuwait" }
+                ],
+                "offers": {
+                  "@type": "Offer",
+                  "priceCurrency": "USD",
+                  "priceSpecification": {
+                    "@type": "PriceSpecification",
+                    "priceCurrency": "USD",
+                    "minPrice": "500",
+                    "description": "Custom web development projects start at $500 USD"
+                  },
+                  "availability": "https://schema.org/InStock"
+                },
                   "hasOfferCatalog": {
                     "@type": "OfferCatalog",
                     "name": "Web Development Capabilities",
