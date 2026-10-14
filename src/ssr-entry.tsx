@@ -54,6 +54,12 @@ import AustraliaMarketPage from './pages/AustraliaMarketPage';
 import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
 import BlogPostPage from './pages/BlogPostPage';
+import ToolsIndexPage from './pages/ToolsIndexPage';
+import WebsiteAuditPage from './pages/WebsiteAuditPage';
+import SeoChecklistPage from './pages/SeoChecklistPage';
+import AiReadinessScorePage from './pages/AiReadinessScorePage';
+import TechStackRecommenderPage from './pages/TechStackRecommenderPage';
+import WebsiteAuthorityAnalyzerPage from './pages/WebsiteAuthorityAnalyzerPage';
 import ErrorBoundary from './components/ErrorBoundary';
 
 export { SEO_ROUTES_METADATA } from './data/seoRoutesMetadata';
@@ -142,13 +148,20 @@ export function renderFullApp(url: string = '/') {
               <Route path="/australia-market" element={<AustraliaMarketPage />} />
               <Route path="/brand-assets" element={<BrandAssetsPage />} />
               <Route path="/website-contract" element={<WebsiteContractPage />} />
+              <Route path="/tools" element={<ToolsIndexPage />} />
               <Route path="/tools/project-cost-estimator" element={<ProjectCostEstimatorPage />} />
               <Route path="/project-cost-estimator" element={<Navigate to="/tools/project-cost-estimator" replace />} />
+              <Route path="/tools/website-audit" element={<WebsiteAuditPage />} />
+              <Route path="/tools/seo-checklist" element={<SeoChecklistPage />} />
+              <Route path="/tools/ai-readiness-score" element={<AiReadinessScorePage />} />
+              <Route path="/tools/tech-stack-recommender" element={<TechStackRecommenderPage />} />
+              <Route path="/tools/website-authority-analyzer" element={<WebsiteAuthorityAnalyzerPage />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />
+              <Route path="/news/industry-insights/:id" element={<NewsArticlePage />} />
               <Route path="/news/article/:id" element={<NewsArticlePage />} />
               <Route path="/news/read/:id" element={<NewsArticlePage />} />
               <Route path="/blog/healthcare-software-development-solutions-2026" element={<Navigate to="/blog/healthcare-software-development-solutions-2026-custom-ehr-clinical-software" replace />} />
@@ -190,10 +203,22 @@ export function renderFullApp(url: string = '/') {
     bodyHtml = rawHtml.substring(match[0].length);
   }
 
+  // Extract all page-specific JSON-LD scripts rendered in the component tree
+  const jsonLdScripts: string[] = [];
+  const scriptRegex = /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis;
+  let scriptMatch;
+  while ((scriptMatch = scriptRegex.exec(rawHtml)) !== null) {
+    jsonLdScripts.push(scriptMatch[0]);
+  }
+
+  // Also strip the JSON-LD script tags from bodyHtml so they don't pollute the DOM inside #root
+  bodyHtml = bodyHtml.replace(scriptRegex, '');
+
   return {
     rawHtml,
     headTags,
     bodyHtml,
+    jsonLdScripts,
     helmet: helmetContext.helmet
   };
 }

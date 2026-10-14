@@ -53,6 +53,10 @@ if (!fs.existsSync(indexHtmlTemplatePath)) {
 const rawSourceIndex = fs.readFileSync(path.join(rootDir, 'index.html'), 'utf8');
 const distIndex = fs.readFileSync(indexHtmlTemplatePath, 'utf8');
 
+// Extract site-wide Organization & WebSite schemas strictly from source index.html
+const siteWideSchemasMatches = rawSourceIndex.match(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis) || [];
+const siteWideSchemasHtml = siteWideSchemasMatches.join('\n  ');
+
 // Extract built script/css tags from dist/index.html and merge with clean template
 const scriptMatches = distIndex.match(/<script\b[^>]*>[\s\S]*?<\/script>/gi) || [];
 const linkCssMatches = distIndex.match(/<link\b[^>]*rel=["']stylesheet["'][^>]*\/?>/gi) || [];
@@ -102,9 +106,12 @@ baseTemplate = baseTemplate.replace(/<meta\b[^>]*property=["']article:[^"']+["']
 baseTemplate = baseTemplate.replace(/<meta\b[^>]*name=["']keywords["'][^>]*\/?>/gis, '');
 baseTemplate = baseTemplate.replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gis, '');
 
-// Preserve a clean, unpopulated SPA shell for dynamic client-side routes (e.g. dynamic blog posts, admin dashboard)
+// Preserve a clean, unpopulated SPA shell with site-wide schemas for dynamic client-side routes
 const spaShellPath = path.join(distDir, 'spa-shell.html');
-fs.writeFileSync(spaShellPath, baseTemplate, 'utf8');
+const spaShellContent = siteWideSchemasHtml 
+  ? baseTemplate.replace('</head>', `  ${siteWideSchemasHtml}\n</head>`)
+  : baseTemplate;
+fs.writeFileSync(spaShellPath, spaShellContent, 'utf8');
 
 const routes = [
   '/',
@@ -160,9 +167,15 @@ const routes = [
   '/case-studies/tajweedpage',
   '/website-contract',
   '/brand-assets',
+  '/tools',
   '/tools/project-cost-estimator',
   '/tools/website-audit',
   '/tools/seo-checklist',
+  '/tools/ai-readiness-score',
+  '/tools/tech-stack-recommender',
+  '/tools/website-authority-analyzer',
+  '/editorial-policy',
+  '/news/industry-insights/google-ai-dogfooding-enterprise-results',
   '/blog/rag-ai-integration-for-startups',
   '/blog/agentic-ai-production-failures',
   '/blog/custom-web-development-company',
@@ -224,7 +237,7 @@ let successCount = 0;
 
 for (const routeUrl of allRoutes) {
   try {
-    const { bodyHtml, headTags, helmet } = renderFullApp(routeUrl);
+    const { bodyHtml, headTags, jsonLdScripts, helmet } = renderFullApp(routeUrl);
     
     let html = baseTemplate;
 
@@ -334,16 +347,53 @@ for (const routeUrl of allRoutes) {
     html = stripCanonicalTags(html);
     html = html.replace('</head>', `  <link rel="canonical" data-rh="true" href="${canonicalUrl}" />\n</head>`);
 
-    // 6. Inject Schema.org JSON-LD
-    if (seo && seo.schemaJsonLd) {
-      html = html.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis, '');
-      const schemaSnippet = `<script type="application/ld+json" data-rh="true">\n${JSON.stringify(seo.schemaJsonLd, null, 2)}\n  </script>`;
-      html = html.replace('</head>', `  ${schemaSnippet}\n</head>`);
-    } else if (helmet && helmet.script) {
-      const helmetScripts = helmet.script.toString();
-      if (helmetScripts && helmetScripts.includes('application/ld+json') && !html.includes('application/ld+json')) {
-        html = html.replace('</head>', `  ${helmetScripts}\n</head>`);
+    // 6. Inject Schema.org JSON-LD into <head> (Site-wide Organization + WebSite, plus route-specific Service, FAQPage, HowTo, BreadcrumbList, Article, etc.)
+    html = html.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis, '');
+
+    const schemasToInject = [];
+
+    // A. Include site-wide Organization & WebSite schemas
+    if (siteWideSchemasHtml) {
+      schemasToInject.push(siteWideSchemasHtml);
+    }
+
+    // B. Include all route/page-specific schemas extracted from React component SSR
+    if (Array.isArray(jsonLdScripts) && jsonLdScripts.length > 0) {
+      for (const scriptTag of jsonLdScripts) {
+        let formattedTag = scriptTag.trim();
+        if (!formattedTag.includes('data-rh=')) {
+          formattedTag = formattedTag.replace('<script', '<script data-rh="true"');
+        }
+        schemasToInject.push(formattedTag);
       }
+    }
+
+    // C. Include schemaJsonLd from SEO_ROUTES_METADATA if not already included
+    if (seo && seo.schemaJsonLd) {
+      const seoSchemaString = JSON.stringify(seo.schemaJsonLd);
+      const alreadyPresent = schemasToInject.some(s => s.includes(seoSchemaString) || (seo.schemaJsonLd['@id'] && s.includes(seo.schemaJsonLd['@id'])));
+      if (!alreadyPresent) {
+        schemasToInject.push(`<script type="application/ld+json" data-rh="true">\n${JSON.stringify(seo.schemaJsonLd, null, 2)}\n  </script>`);
+      }
+    }
+
+    // D. Include helmet.script if helmet captured any additional JSON-LD scripts
+    if (helmet && helmet.script) {
+      const helmetScripts = helmet.script.toString();
+      if (helmetScripts && helmetScripts.includes('application/ld+json')) {
+        const hMatches = helmetScripts.match(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis) || [];
+        for (const hTag of hMatches) {
+          if (!schemasToInject.some(s => s.includes(hTag) || hTag.includes(s))) {
+            schemasToInject.push(hTag.trim());
+          }
+        }
+      }
+    }
+
+    // Deduplicate schemas if any identical script tags exist
+    const uniqueSchemas = Array.from(new Set(schemasToInject.map(s => s.trim()))).filter(Boolean);
+    if (uniqueSchemas.length > 0) {
+      html = html.replace('</head>', `  ${uniqueSchemas.join('\n  ')}\n</head>`);
     }
 
     // 7. Strict deduplication verification: Guarantee strictly ONE <meta name="description"> in the generated HTML
@@ -368,6 +418,14 @@ for (const routeUrl of allRoutes) {
         fs.mkdirSync(targetDir, { recursive: true });
       }
       fs.writeFileSync(path.join(targetDir, 'index.html'), html, 'utf8');
+
+      // Also write cleanRoute.html for Vercel cleanUrls: true direct static match
+      const htmlFilePath = path.join(distDir, `${cleanRoute}.html`);
+      const htmlFileParent = path.dirname(htmlFilePath);
+      if (!fs.existsSync(htmlFileParent)) {
+        fs.mkdirSync(htmlFileParent, { recursive: true });
+      }
+      fs.writeFileSync(htmlFilePath, html, 'utf8');
     }
 
     successCount++;

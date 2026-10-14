@@ -315,14 +315,25 @@ export const generateSlug = (text: string) => {
 const NewsArticlePage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [article, setArticle] = useState<NewsArticle | null>(null);
+  const targetId = typeof id === 'string' ? id.toLowerCase().trim() : '';
+  const initialArticle = staticNewsArticles.find(a => {
+    const aId = typeof a.id === 'string' ? a.id.toLowerCase() : '';
+    const aSlug = typeof a.slug === 'string' ? a.slug.toLowerCase() : '';
+    return (aId && aId === targetId) ||
+      (aSlug && (aSlug === targetId || aSlug.endsWith('/' + targetId))) ||
+      (a.title && generateSlug(a.title) === targetId);
+  }) || null;
+
+  const [article, setArticle] = useState<NewsArticle | null>(initialArticle);
   const [allArticles, setAllArticles] = useState<NewsArticle[]>(staticNewsArticles);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!initialArticle);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const fetchArticleAndList = async () => {
-      setLoading(true);
+      if (!initialArticle) {
+        setLoading(true);
+      }
       try {
         const snapshot = await getDocs(collection(db, 'news_items'));
         const dbItems: NewsArticle[] = snapshot.docs.map(doc => ({
@@ -506,7 +517,7 @@ const NewsArticlePage = () => {
           <Breadcrumbs items={[
             { label: 'News Archive', path: '/news/all' },
             { label: article.category, path: `/news/${article.type || 'latest'}` },
-            { label: 'Article', path: window.location.pathname }
+            { label: 'Article', path: typeof window !== 'undefined' ? window.location.pathname : `/news/article/${id || ''}` }
           ]} />
         </div>
 
