@@ -82,10 +82,15 @@ const AiReadinessScorePage = lazy(() => import('./pages/AiReadinessScorePage'));
 const TechStackRecommenderPage = lazy(() => import('./pages/TechStackRecommenderPage'));
 const WebsiteAuthorityAnalyzerPage = lazy(() => import('./pages/WebsiteAuthorityAnalyzerPage'));
 
-// Loading fallback
+import TopLoadingBar from './components/TopLoadingBar';
+
+// Loading fallback: Sleek, non-blocking page transition indicator
 const PageLoader = () => (
-    <div className="min-h-screen bg-[#080808] flex items-center justify-center">
-        <div className="w-12 h-12 border-4 border-[#ccff00]/20 border-t-[#ccff00] rounded-full animate-spin"></div>
+    <div className="min-h-[60vh] bg-[#09090b] flex items-center justify-center py-24" role="status" aria-label="Loading page">
+        <div className="flex flex-col items-center gap-3">
+            <div className="w-8 h-8 border-2 border-[#ccff00]/20 border-t-[#ccff00] rounded-full animate-spin"></div>
+            <span className="text-[10px] font-mono tracking-widest text-[#ccff00]/70 uppercase">Instant Loading</span>
+        </div>
     </div>
 );
 
@@ -404,6 +409,7 @@ export default function App() {
   return (
     <HelmetProvider>
       <Router>
+        <TopLoadingBar />
         <ScrollToTop />
         <MetaHeadSanitizer />
         <FacebookPixel />

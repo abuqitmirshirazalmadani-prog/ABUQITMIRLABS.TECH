@@ -53,6 +53,16 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
     const [copied, setCopied] = useState(false);
 
     useEffect(() => {
+        // If static fallback is available, render immediately with zero delay
+        if (staticFallback) {
+            setPost(staticFallback);
+            setLoading(false);
+            if (typeof window !== 'undefined') {
+                window.scrollTo(0, 0);
+            }
+            return;
+        }
+
         const fetchPost = async () => {
             if (!slug) {
                 setLoading(false);
@@ -60,9 +70,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 return;
             }
 
-            if (!staticFallback) {
-                setLoading(true);
-            }
+            setLoading(true);
 
             try {
                 const slugsToTry = [slug];
@@ -77,14 +85,17 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 }
 
                 let foundPost: Post | null = null;
+                // Add a 2000ms timeout race so page never hangs on slow network
+                const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 2000));
+
                 for (const s of slugsToTry) {
                     const q = query(
                         collection(db, 'posts'), 
                         where('slug', '==', s), 
                         where('published', '==', true)
                     );
-                    const snapshot = await getDocs(q);
-                    if (!snapshot.empty) {
+                    const snapshot = await Promise.race([getDocs(q), timeoutPromise]) as any;
+                    if (snapshot && !snapshot.empty) {
                         foundPost = snapshot.docs[0].data() as Post;
                         break;
                     }
@@ -92,18 +103,12 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
 
                 if (foundPost) {
                     setPost(foundPost);
-                } else if (staticFallback) {
-                    setPost(staticFallback);
                 } else {
                     setPost(null);
                 }
             } catch (error) {
-                if (staticFallback) {
-                    setPost(staticFallback);
-                } else {
-                    handleFirestoreError(error, OperationType.GET, `posts/${slug}`);
-                    setPost(null);
-                }
+                handleFirestoreError(error, OperationType.GET, `posts/${slug}`);
+                setPost(null);
             } finally {
                 setLoading(false);
             }
