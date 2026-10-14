@@ -82,7 +82,53 @@
     <link rel="prefetch" href="https://www.abuqitmirlabs.tech/solutions/edtech" />
     <link rel="prefetch" href="https://www.abuqitmirlabs.tech/ai-agent-development" />
     <link rel="prefetch" href="https://www.abuqitmirlabs.tech/contact" />
+         <!-- Site-Wide JSON-LD Schema (Organization + WebSite) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.abuqitmirlabs.tech/#organization",
+          "name": "AbuQitmirLabs",
+          "url": "https://www.abuqitmirlabs.tech",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.abuqitmirlabs.tech/logo.png"
+          },
+          "email": "hello@abuqitmirlabs.tech",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Karachi",
+            "addressRegion": "Sindh",
+            "addressCountry": "PK"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/abuqitmirlabs",
+            "https://twitter.com/abuqitmirlabs",
+            "https://www.clutch.co/profile/abuqitmirlabs",
+            "https://www.goodfirms.co/company/abuqitmirlabs"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.abuqitmirlabs.tech/#website",
+          "url": "https://www.abuqitmirlabs.tech",
+          "name": "AbuQitmirLabs",
+          "publisher": {
+            "@id": "https://www.abuqitmirlabs.tech/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.abuqitmirlabs.tech/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
+    }
+    </script>
 
+  </head>
   </head>
   <body>
     <noscript>
