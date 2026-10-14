@@ -138,10 +138,10 @@ export default function HomeCaseStudiesSection() {
             <div className="lg:col-span-5 h-[320px] md:h-[400px] lg:h-[480px] relative rounded-3xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center p-6 group-hover:border-[#ccff00]/10 transition-colors">
               <div className="absolute inset-0 bg-gradient-to-t from-black via-zinc-950/40 to-transparent z-10" />
               
-              {/* Photo representation of Islamic Quran edtech design */}
+              {/* Photo representation of TajweedPage platform */}
               <img
-                src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1000"
-                alt="TajweedPage EdTech Quran Platform Display Illustration"
+                src="https://i.postimg.cc/VkCrrNtc/Gemini-Generated-Image-t1ptnbt1ptnbt1pt.png"
+                alt="TajweedPage AI Recitation & Voice Diagnostics Platform by AbuQitmirLabs"
                 width={1000}
                 height={667}
                 loading="lazy"

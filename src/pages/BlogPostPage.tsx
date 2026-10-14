@@ -3396,13 +3396,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         >
                             <img 
                                 src={
-                                    post.coverImage && (post.coverImage.includes('Five-Minute-Technical-Audit-Checklist') || post.coverImage.includes('5-minute-technical-audit') || post.coverImage.includes('Y92rZgvg') || post.coverImage.includes('F93YfVmP'))
-                                        ? '/assets/blog/5-minute-technical-audit-cover.png'
-                                        : post.coverImage && (post.coverImage.includes('web-development-checklist') || post.coverImage.includes('og-offshore-web-development-checklist'))
-                                        ? '/og-offshore-web-development-checklist.jpg'
-                                        : post.coverImage && (post.coverImage.includes('og-ecommerce-platform-development') || post.coverImage.includes('Custom-Build-vs-Shopify'))
-                                        ? '/og-ecommerce-platform-development.jpg'
-                                        : post.coverImage.startsWith('https://www.abuqitmirlabs.tech/') 
+                                    post.coverImage.startsWith('https://www.abuqitmirlabs.tech/') 
                                         ? post.coverImage.replace('https://www.abuqitmirlabs.tech', '') 
                                         : post.coverImage
                                 } 
