@@ -178,18 +178,24 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
             </span>
 
             <h1 className="font-serif text-white font-light text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
-              Custom Software Development Company &amp; <br />
-              <span className="italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-[#C8EB5F] to-emerald-300">
-                AI Agency
-              </span>{" "}
-              <span className="font-sans font-light text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white/90 block sm:inline">
-                | AbuQitmirLabs
-              </span>
+              Growth Engineering for Modern Businesses
             </h1>
 
-            <p className="text-neutral-300 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-light">
-              As a dedicated custom software development company and AI agency based in Karachi, we use AI to build fast without hiding behind it. Every line of code, every architecture decision, and every deployment for our US, UK, Canadian, and Australian clients is personally engineered and reviewed—not generated and shipped unchecked.
+            <p className="text-base sm:text-lg md:text-xl text-[#C8EB5F] font-mono tracking-wide font-medium">
+              We build revenue systems, not just software.
             </p>
+
+            <div className="text-neutral-300 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-light space-y-4">
+              <p>
+                AbuQitmirLabs is a growth engineering agency helping B2B companies build revenue infrastructure. We connect marketing, sales, and product data into one measurable growth engine using custom software, AI agents, and modern web platforms.
+              </p>
+              <p>
+                Trusted by founders across US, UK, Canada, Australia, Poland, Saudi Arabia, UAE, Qatar, and Kuwait.
+              </p>
+              <p>
+                Built a 2,500+ community for GhastlyPages in 90 days. Built a RAG-based AI education platform for TajweedPage.com.
+              </p>
+            </div>
 
             {/* Quick Email / Project Input Form */}
             <form onSubmit={handleConsultationSubmit} className="max-w-md pt-2">
@@ -243,14 +249,14 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
                   onClick={handleDemo}
                   className="border border-white/20 hover:border-[#C8EB5F] text-white hover:text-[#C8EB5F] text-xs sm:text-sm font-bold tracking-wider px-8 py-4 font-mono uppercase rounded-none transition-colors duration-300 flex items-center gap-2 cursor-pointer"
                 >
-                  Get Free Consultation
+                  Request Your Free Growth Infrastructure Audit
                 </button>
               ) : (
                 <Link
                   to="/contact"
                   className="border border-white/20 hover:border-[#C8EB5F] text-white hover:text-[#C8EB5F] text-xs sm:text-sm font-bold tracking-wider px-8 py-4 font-mono uppercase rounded-none transition-colors duration-300 flex items-center gap-2"
                 >
-                  Get Free Consultation
+                  Request Your Free Growth Infrastructure Audit
                 </Link>
               )}
             </div>

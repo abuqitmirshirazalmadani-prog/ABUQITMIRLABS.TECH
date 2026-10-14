@@ -29,6 +29,7 @@ interface Service {
     number: string;
     title: string;
     fullTitle: string;
+    tagline?: string;
     description: string;
     tags: string[];
     icon: React.ReactNode;
@@ -41,6 +42,7 @@ const services: Service[] = [
         number: "01",
         title: "Custom Software",
         fullTitle: "Custom Software Development",
+        tagline: "Revenue infrastructure built around your business logic",
         description: "Turn your disruptive ideas into market-ready realities. We specialize in scalable MVP development for tech startups and comprehensive software solutions for established enterprises.",
         tags: ["React Native", "MVP", "SaaS"],
         icon: <Smartphone className="text-violet-400" />,
@@ -49,8 +51,9 @@ const services: Service[] = [
     },
     {
         number: "02",
-        title: "Web Tech",
+        title: "Web Development",
         fullTitle: "Web Development Services",
+        tagline: "Conversion-engineered web platforms with sub-second performance",
         description: "We engineer high-performance Jamstack web development solutions that prioritize speed, security, and scalability. Sub-second load times that convert.",
         tags: ["Jamstack", "Headless CMS", "Next.js"],
         icon: <Globe className="text-violet-400" />,
@@ -61,6 +64,7 @@ const services: Service[] = [
         number: "03",
         title: "AI Agents",
         fullTitle: "AI Agent Development Services",
+        tagline: "Autonomous revenue agents that qualify leads and trigger workflows",
         description: "Transform your business with autonomous LLM agents that automate complex workflows and provide 24/7 intelligent support. Agentic AI is the future.",
         tags: ["LLM", "RAG", "Automation"],
         icon: <Bot className="text-violet-400" />,
@@ -69,6 +73,17 @@ const services: Service[] = [
     },
     {
         number: "04",
+        title: "Mobile Apps",
+        fullTitle: "Cross-Platform Mobile App Development",
+        tagline: "Cross-platform apps integrated with your growth systems",
+        description: "We build native-grade mobile products on Flutter and React Native with unified codebases, biometric hardware authentication, and offline synchronization.",
+        tags: ["React Native", "Flutter", "iOS & Android"],
+        icon: <Smartphone className="text-violet-400" />,
+        highlight: false,
+        href: "/mobile-app-development"
+    },
+    {
+        number: "05",
         title: "SEO Mastery",
         fullTitle: "SEO & Local SEO Services",
         description: "We utilize data-driven Semantic Entity SEO and hyper-local map strategies to establish topical authority and capture high-intent buyers.",
@@ -78,7 +93,7 @@ const services: Service[] = [
         href: "/seo-mastery"
     },
     {
-        number: "05",
+        number: "06",
         title: "Design",
         fullTitle: "Graphics & Brand Design",
         description: "Conversion-focused brand identity design. Logos, UI/UX layouts, and social media creatives strategically formulated to build trust.",
@@ -88,7 +103,7 @@ const services: Service[] = [
         href: "/graphics-design"
     },
     {
-        number: "06",
+        number: "07",
         title: "Content",
         fullTitle: "Content Writing Services",
         description: "E-E-A-T focused technical content writing that satisfies algorithms and humans. Naratives that establish your brand as an authority.",
@@ -272,6 +287,11 @@ const ServiceItem: React.FC<{ service: Service }> = ({ service }) => {
                             text={service.title} 
                             textClassName="text-2xl sm:text-5xl md:text-6xl"
                         />
+                    )}
+                    {service.tagline && (
+                        <p className="text-sm sm:text-base text-zinc-300 font-mono mt-3 tracking-wide font-medium">
+                            {service.tagline}
+                        </p>
                     )}
                 </div>
 

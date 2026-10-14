@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "motion/react";
+import { ArrowRight } from "lucide-react";
 import { TestimonialsColumn } from "./ui/testimonials-columns-1";
 
 const testimonials = [
@@ -82,6 +84,44 @@ export default function TestimonialsSection() {
           <TestimonialsColumn testimonials={firstColumn} duration={25} />
           <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={35} />
           <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={30} />
+        </div>
+
+        {/* Real Client Results Block */}
+        <div className="mt-20 max-w-5xl mx-auto">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white">
+              Real Client Results
+            </h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="p-8 bg-zinc-950/80 border border-white/10 rounded-2xl relative space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xl font-bold text-white tracking-tight">GhastlyPages</span>
+                <span className="text-xs font-mono text-[#B9FF66] uppercase tracking-wider font-semibold">Community Growth</span>
+              </div>
+              <p className="text-sm text-zinc-300 leading-relaxed font-light">
+                Built a 2,500+ follower community in 90 days using AI-generated video content. No paid ads.
+              </p>
+            </div>
+            <div className="p-8 bg-zinc-950/80 border border-white/10 rounded-2xl relative space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xl font-bold text-white tracking-tight">TajweedPage.com</span>
+                <span className="text-xs font-mono text-[#B9FF66] uppercase tracking-wider font-semibold">RAG Platform</span>
+              </div>
+              <p className="text-sm text-zinc-300 leading-relaxed font-light">
+                Built a RAG-based AI education platform serving students globally.
+              </p>
+            </div>
+          </div>
+          <div className="text-center">
+            <Link
+              to="/case-studies"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono uppercase tracking-wider font-bold text-[#B9FF66] hover:underline"
+            >
+              <span>Explore All Case Studies</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </div>
 
