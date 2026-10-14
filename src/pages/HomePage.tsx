@@ -21,98 +21,181 @@ import TestimonialsSection from '../components/TestimonialsSection';
 import FAQSection from '../components/FAQSection';
 import ContactSection from '../components/ContactSection';
 import FeaturedToolsSection from '../components/FeaturedToolsSection';
-import { homeSchema } from '../utils/homeStaticHtml';
-
 export default function HomePage() {
 
-  const organizationSchema = {
+  const growthEngineeringSchema = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": "https://www.abuqitmirlabs.tech/#organization",
-    "name": "AbuQitmirLabs",
-    "alternateName": "AbuQitmirLabs .TECH",
-    "url": "https://www.abuqitmirlabs.tech",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.abuqitmirlabs.tech/logo.png",
-      "width": 512,
-      "height": 512
-    },
-    "description": "AbuQitmirLabs is a custom software development company in Karachi building AI agents, mobile apps and web solutions for US, UK and global clients.",
-    "foundingDate": "2021",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
-      "addressLocality": "Karachi",
-      "addressRegion": "Sindh",
-      "postalCode": "75160",
-      "addressCountry": "PK"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+92-323-3260859",
-      "contactType": "customer service",
-      "availableLanguage": ["English", "Urdu"]
-    },
-    "sameAs": [
-      "https://www.facebook.com/profile.php?id=61583768706452",
-      "https://www.instagram.com/abuqitmirshirazalmadani/",
-      "https://www.linkedin.com/in/abu-qitmir-697423390/",
-      "https://www.youtube.com/@AbuQitmir",
-      "https://x.com/AbuQitmir",
-      "https://www.goodfirms.co/company/abuqitmirlabs-tech",
-      "https://clutch.co/profile/abuqitmirlabstech"
-    ],
-    "areaServed": ["US", "GB", "CA", "AU", "PK", "PL"],
-    "serviceType": ["Custom Software Development", "AI Agent Development", "Mobile App Development", "Web Development", "SEO Services"]
-  };
-
-  const websiteSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": "https://www.abuqitmirlabs.tech/#website",
-    "url": "https://www.abuqitmirlabs.tech",
-    "name": "AbuQitmirLabs",
-    "description": "Custom Software Development Company and AI Agency",
-    "publisher": {
-      "@type": "Organization",
-      "@id": "https://www.abuqitmirlabs.tech/#organization",
-      "name": "AbuQitmirLabs"
-    },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://www.abuqitmirlabs.tech/blog?q={search_term_string}"
+    "@graph": [
+      // NODE 1: Organization (Updated)
+      {
+        "@type": "Organization",
+        "@id": "https://www.abuqitmirlabs.tech/#organization",
+        "name": "AbuQitmirLabs",
+        "url": "https://www.abuqitmirlabs.tech",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.abuqitmirlabs.tech/logo.png"
+        },
+        "image": "https://www.abuqitmirlabs.tech/logo.png",
+        "email": "hello@abuqitmirlabs.tech",
+        "telephone": "+923233260859",
+        "description": "Growth engineering agency building revenue systems for B2B companies. We connect marketing, sales, and product data into one measurable growth engine.",
+        "slogan": "We build revenue systems, not just software.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Karachi",
+          "addressRegion": "Sindh",
+          "addressCountry": "PK"
+        },
+        "areaServed": [
+          { "@type": "Country", "name": "United States" },
+          { "@type": "Country", "name": "United Kingdom" },
+          { "@type": "Country", "name": "Canada" },
+          { "@type": "Country", "name": "Australia" },
+          { "@type": "Country", "name": "Poland" },
+          { "@type": "Country", "name": "Pakistan" },
+          { "@type": "Country", "name": "United Arab Emirates" },
+          { "@type": "Country", "name": "Saudi Arabia" },
+          { "@type": "Country", "name": "Qatar" },
+          { "@type": "Country", "name": "Kuwait" }
+        ],
+        "knowsAbout": [
+          "Growth Engineering",
+          "Revenue Operations",
+          "Marketing Technology",
+          "Data Infrastructure",
+          "Attribution Modeling",
+          "AI Agent Development",
+          "Custom Software Development",
+          "Web Development"
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/company/abuqitmirlabs",
+          "https://twitter.com/abuqitmirlabs",
+          "https://www.clutch.co/profile/abuqitmirlabs",
+          "https://www.goodfirms.co/company/abuqitmirlabs"
+        ]
       },
-      "query-input": "required name=search_term_string"
-    }
+
+      // NODE 2: WebSite (Existing — no change)
+      {
+        "@type": "WebSite",
+        "@id": "https://www.abuqitmirlabs.tech/#website",
+        "url": "https://www.abuqitmirlabs.tech",
+        "name": "AbuQitmirLabs",
+        "publisher": {
+          "@id": "https://www.abuqitmirlabs.tech/#organization"
+        }
+      },
+
+      // NODE 3: WebPage (Existing — no change)
+      {
+        "@type": "WebPage",
+        "@id": "https://www.abuqitmirlabs.tech/#webpage",
+        "url": "https://www.abuqitmirlabs.tech/",
+        "name": "Growth Engineering Agency | AbuQitmirLabs",
+        "description": "Growth engineering agency building revenue systems for B2B companies.",
+        "isPartOf": {
+          "@id": "https://www.abuqitmirlabs.tech/#website"
+        },
+        "inLanguage": "en-US"
+      },
+
+      // NODE 4: Service — Growth Infrastructure Audit (NEW)
+      {
+        "@type": "Service",
+        "@id": "https://www.abuqitmirlabs.tech/#growth-audit-service",
+        "serviceType": "Growth Engineering",
+        "name": "Growth Infrastructure Audit",
+        "provider": {
+          "@id": "https://www.abuqitmirlabs.tech/#organization"
+        },
+        "description": "A complimentary audit of your marketing technology stack, attribution model, and data infrastructure. Delivered as a prioritized roadmap for building a measurable revenue engine.",
+        "url": "https://www.abuqitmirlabs.tech/contact",
+        "areaServed": [
+          { "@type": "Country", "name": "United States" },
+          { "@type": "Country", "name": "United Kingdom" },
+          { "@type": "Country", "name": "Canada" },
+          { "@type": "Country", "name": "Australia" },
+          { "@type": "Country", "name": "Poland" },
+          { "@type": "Country", "name": "Pakistan" },
+          { "@type": "Country", "name": "United Arab Emirates" },
+          { "@type": "Country", "name": "Saudi Arabia" },
+          { "@type": "Country", "name": "Qatar" },
+          { "@type": "Country", "name": "Kuwait" }
+        ],
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Complimentary initial growth infrastructure audit",
+          "availability": "https://schema.org/InStock"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Growth Engineering Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Growth Infrastructure Audit"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Revenue Operations Setup"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Attribution Modeling"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Marketing Technology Integration"
+              }
+            }
+          ]
+        }
+      }
+    ]
   };
 
   return (
     <main id="main-content" className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <Helmet>
-        <title>Custom Software Development &amp; AI Agency | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs is a custom software &amp; AI development company building web platforms and mobile apps for US, UK &amp; global clients. Contact us today." />
+        <title>Growth Engineering Agency | AbuQitmirLabs</title>
+        <meta name="description" content="Growth engineering agency building revenue systems for B2B companies. Connect marketing, sales, and product data into one measurable engine." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/" />
         <link rel="alternate" hrefLang="x-default" href="https://www.abuqitmirlabs.tech/" />
         <link rel="alternate" hrefLang="en" href="https://www.abuqitmirlabs.tech/" />
         <link rel="preload" as="image" href="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" type="image/jpeg" fetchPriority="high" />
         
-        <meta property="og:title" content="Custom Software Development &amp; AI Agency | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs is a custom software &amp; AI development company building web platforms and mobile apps for US, UK &amp; global clients. Contact us today." />
+        <meta property="og:title" content="Growth Engineering Agency | AbuQitmirLabs" />
+        <meta property="og:description" content="Growth engineering agency building revenue systems for B2B companies. Connect marketing, sales, and product data into one measurable engine." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
-        <meta property="og:image:alt" content="AbuQitmirLabs Custom Software &amp; AI Development Studio" />
+        <meta property="og:image:alt" content="AbuQitmirLabs Growth Engineering Agency" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Custom Software Development &amp; AI Agency | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs is a custom software &amp; AI development company building web platforms and mobile apps for US, UK &amp; global clients. Contact us today." />
+        <meta name="twitter:title" content="Growth Engineering Agency | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Growth engineering agency building revenue systems for B2B companies. Connect marketing, sales, and product data into one measurable engine." />
         <meta name="twitter:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
-        <script type="application/ld+json">{JSON.stringify(homeSchema)}</script>
-      
-        <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
-        <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
+
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(growthEngineeringSchema)
+          }}
+        />
       </Helmet>
 
       <Header />

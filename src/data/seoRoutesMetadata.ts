@@ -176,15 +176,15 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     }
   },
   '/': {
-    title: 'Custom Software Development & AI Agency | AbuQitmirLabs',
-    description: 'AbuQitmirLabs is a custom software & AI development company building web platforms and mobile apps for US, UK & global clients. Contact us today.',
+    title: 'Growth Engineering Agency | AbuQitmirLabs',
+    description: 'Growth engineering agency building revenue systems for B2B companies. Connect marketing, sales, and product data into one measurable engine.',
     canonical: 'https://www.abuqitmirlabs.tech/',
-    ogTitle: 'Custom Software Development & AI Agency | AbuQitmirLabs',
-    ogDescription: 'AbuQitmirLabs is a custom software & AI development company building web platforms and mobile apps for US, UK & global clients. Contact us today.',
+    ogTitle: 'Growth Engineering Agency | AbuQitmirLabs',
+    ogDescription: 'Growth engineering agency building revenue systems for B2B companies. Connect marketing, sales, and product data into one measurable engine.',
     ogImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg',
     ogType: 'website',
-    twitterTitle: 'Custom Software Development & AI Agency | AbuQitmirLabs',
-    twitterDescription: 'AbuQitmirLabs is a custom software & AI development company building web platforms and mobile apps for US, UK & global clients. Contact us today.',
+    twitterTitle: 'Growth Engineering Agency | AbuQitmirLabs',
+    twitterDescription: 'Growth engineering agency building revenue systems for B2B companies. Connect marketing, sales, and product data into one measurable engine.',
     twitterImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg'
   },
   '/about': {
