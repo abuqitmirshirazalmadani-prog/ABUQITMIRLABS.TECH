@@ -4,6 +4,8 @@
   "slug": "performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups",
   "excerpt": "A practical framework for startups to split budget between performance and brand marketing. Learn when to invest in each and how to measure ROI.",
   "category": "Digital Marketing",
+  "coverImage": "https://www.abuqitmirlabs.tech/images/blog/performance-vs-brand-marketing-cover.jpg",
+  "coverImageAlt": "Performance marketing vs brand marketing budget allocation framework showing 60/40 split for startups by AbuQitmirLabs",
   "author": "Shiraz Almadani",
   "published": true,
   "tags": [

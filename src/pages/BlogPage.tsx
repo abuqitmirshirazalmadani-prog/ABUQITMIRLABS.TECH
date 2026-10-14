@@ -67,12 +67,12 @@ const formatDateShort = (timestamp: any) => {
 };
 
 const formatCoverImage = (url?: string, width = 800) => {
-    if (!url || typeof url !== 'string' || url.trim() === '') {
-        return 'https://www.abuqitmirlabs.tech/logo.png';
+    if (!url || typeof url !== 'string' || url.trim() === '' || url.includes('logo.png')) {
+        return '/images/blog/performance-vs-brand-marketing-cover.jpg';
     }
     const cleanUrl = url.trim();
-    if (cleanUrl.startsWith('/') || cleanUrl.endsWith('.svg') || cleanUrl.endsWith('.png') || cleanUrl.includes('.tech/blog/')) {
-        return cleanUrl;
+    if (cleanUrl.startsWith('https://www.abuqitmirlabs.tech/')) {
+        return cleanUrl.replace('https://www.abuqitmirlabs.tech', '');
     }
     if (cleanUrl.includes('unsplash.com')) {
         return `${cleanUrl}&w=${width}&fm=webp`;
@@ -376,8 +376,8 @@ const BlogPage = () => {
                                                 referrerPolicy="no-referrer"
                                                 onError={(e) => {
                                                     const target = e.target as HTMLImageElement;
-                                                    if (!target.src.includes('logo.png')) {
-                                                        target.src = 'https://www.abuqitmirlabs.tech/logo.png';
+                                                    if (!target.src.includes('performance-vs-brand-marketing-cover.jpg')) {
+                                                        target.src = '/images/blog/performance-vs-brand-marketing-cover.jpg';
                                                     }
                                                 }}
                                             />
@@ -492,8 +492,8 @@ const BlogPage = () => {
                                                         referrerPolicy="no-referrer"
                                                         onError={(e) => {
                                                             const target = e.target as HTMLImageElement;
-                                                            if (!target.src.includes('logo.png')) {
-                                                                target.src = 'https://www.abuqitmirlabs.tech/logo.png';
+                                                            if (!target.src.includes('performance-vs-brand-marketing-cover.jpg')) {
+                                                                target.src = '/images/blog/performance-vs-brand-marketing-cover.jpg';
                                                             }
                                                         }}
                                                     />

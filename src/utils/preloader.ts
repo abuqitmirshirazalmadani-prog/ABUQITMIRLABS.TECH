@@ -120,14 +120,32 @@ export function initInstantPageTransitions() {
   isInitialized = true;
 
   const extractHref = (e: Event): string | null => {
-    const target = (e.target as HTMLElement | null)?.closest('a');
-    if (!target) return null;
-    const href = target.getAttribute('href');
-    if (!href) return null;
-    if (href.startsWith('/') && !href.startsWith('//') && !href.includes(':')) {
-      return href;
+    try {
+      const rawTarget = e.target;
+      if (!rawTarget) return null;
+
+      // Handle Text nodes and non-Element nodes safely
+      const element =
+        rawTarget instanceof Element
+          ? rawTarget
+          : (rawTarget as Node)?.parentElement instanceof Element
+          ? (rawTarget as Node).parentElement
+          : null;
+
+      if (!element || typeof element.closest !== 'function') return null;
+
+      const anchor = element.closest('a');
+      if (!anchor) return null;
+
+      const href = anchor.getAttribute('href');
+      if (!href) return null;
+      if (href.startsWith('/') && !href.startsWith('//') && !href.includes(':')) {
+        return href;
+      }
+      return null;
+    } catch {
+      return null;
     }
-    return null;
   };
 
   const handlePointerInteraction = (e: Event) => {

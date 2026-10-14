@@ -51,8 +51,10 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
     const [post, setPost] = useState<Post | null>(staticFallback);
     const [loading, setLoading] = useState(!staticFallback);
     const [copied, setCopied] = useState(false);
+    const [imageError, setImageError] = useState(false);
 
     useEffect(() => {
+        setImageError(false);
         // If static fallback is available, render immediately with zero delay
         if (staticFallback) {
             setPost(staticFallback);
@@ -3386,11 +3388,11 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         </div>
                     </motion.div>
 
-                    {post.coverImage && (
+                    {post.coverImage && !post.coverImage.endsWith('logo.png') && !imageError ? (
                         <motion.div 
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="aspect-video w-full rounded-[2.5rem] overflow-hidden mb-16 border border-zinc-800/80 shadow-2xl group bg-[#090a0f] flex items-center justify-center"
+                            className="aspect-video w-full rounded-[2.5rem] overflow-hidden mb-16 border border-zinc-800/80 shadow-2xl group bg-[#090a0f] flex items-center justify-center relative"
                         >
                             <img 
                                 src={
@@ -3404,44 +3406,66 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                         ? post.coverImage.replace('https://www.abuqitmirlabs.tech', '') 
                                         : post.coverImage
                                 } 
-                                alt={post.coverImageAlt || `futuristic ${post.title} feature illustration`} 
+                                alt={post.coverImageAlt || `Feature illustration for ${post.title}`} 
                                 referrerPolicy="no-referrer"
                                 width="1200"
                                 height="675"
                                 loading="eager"
                                 decoding="async"
-                                onError={(e) => {
-                                    const target = e.target as HTMLImageElement;
-                                    if (target.src.includes('Five-Minute-Technical-Audit-Checklist') || target.src.includes('5-minute-technical-audit') || target.src.includes('Y92rZgvg') || target.src.includes('F93YfVmP')) {
-                                        if (!target.src.endsWith('/assets/blog/5-minute-technical-audit-cover.png')) {
-                                            target.src = '/assets/blog/5-minute-technical-audit-cover.png';
-                                            return;
-                                        }
-                                    }
-                                    if (target.src.includes('cost-benefit') || target.src.includes('A-7-question-framework') || target.src.includes('j2pfBQ3d')) {
-                                        if (!target.src.endsWith('/images/A-7-question-framework.jpg') && !target.src.endsWith('/images/ai-agents-cost-benefit-analysis-og.jpg')) {
-                                            target.src = '/images/A-7-question-framework.jpg';
-                                            return;
-                                        }
-                                    }
-                                    if ((target.src.includes('offshore') || target.src.includes('checklist')) && !target.src.includes('Technical-Audit') && !target.src.includes('technical-audit')) {
-                                        if (!target.src.endsWith('/og-offshore-web-development-checklist.jpg')) {
-                                            target.src = '/og-offshore-web-development-checklist.jpg';
-                                            return;
-                                        }
-                                    }
-                                    if (target.src.includes('ecommerce') || target.src.includes('shopify')) {
-                                        if (!target.src.endsWith('/og-ecommerce-platform-development.jpg')) {
-                                            target.src = '/og-ecommerce-platform-development.jpg';
-                                            return;
-                                        }
-                                    }
-                                    if (!target.src.includes('logo.png')) {
-                                        target.src = 'https://www.abuqitmirlabs.tech/logo.png';
-                                    }
+                                onError={() => {
+                                    setImageError(true);
                                 }}
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
                             />
+                        </motion.div>
+                    ) : (
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="aspect-video w-full rounded-[2.5rem] overflow-hidden mb-16 border border-zinc-800/80 shadow-2xl group relative bg-gradient-to-br from-[#0e121a] via-[#090b10] to-[#040507] p-8 md:p-14 flex flex-col justify-between"
+                        >
+                            <div className="absolute inset-0 bg-[radial-gradient(#ccff00_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none"></div>
+                            <div className="absolute top-0 right-0 w-96 h-96 bg-[#ccff00]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                            {/* Top badge */}
+                            <div className="relative z-10 flex items-center justify-between">
+                                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] text-xs font-mono font-bold tracking-wider uppercase">
+                                    <span className="w-2 h-2 rounded-full bg-[#ccff00] animate-pulse"></span>
+                                    {post.category || 'TECHNICAL INSIGHT'}
+                                </span>
+                                <span className="text-zinc-500 font-mono text-xs tracking-wider">
+                                    ABUQITMIRLABS.TECH
+                                </span>
+                            </div>
+
+                            {/* Middle title and excerpt */}
+                            <div className="relative z-10 my-auto py-4">
+                                <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white tracking-tight leading-tight mb-4 font-display">
+                                    {post.title}
+                                </h2>
+                                {post.excerpt && (
+                                    <p className="text-zinc-400 text-sm md:text-lg max-w-3xl line-clamp-2 font-sans font-normal leading-relaxed">
+                                        {post.excerpt}
+                                    </p>
+                                )}
+                            </div>
+
+                            {/* Bottom stats/author bar */}
+                            <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/10 text-xs font-mono text-zinc-400">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-8 h-8 rounded-full bg-[#ccff00] text-black font-black flex items-center justify-center text-xs">
+                                        AQ
+                                    </div>
+                                    <div>
+                                        <div className="text-white font-bold">{post.author || 'Shiraz Almadani'}</div>
+                                        <div className="text-[10px] text-zinc-500">AbuQitmirLabs Research</div>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-4 text-[11px] text-[#ccff00]">
+                                    <span className="px-2.5 py-1 rounded bg-white/5 border border-white/10">Verified Engineering Playbook</span>
+                                    <span className="px-2.5 py-1 rounded bg-white/5 border border-white/10">2026 Production Standard</span>
+                                </div>
+                            </div>
                         </motion.div>
                     )}
 
