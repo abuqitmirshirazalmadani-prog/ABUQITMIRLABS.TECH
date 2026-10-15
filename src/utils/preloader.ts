@@ -43,6 +43,8 @@ export const routeLoaders: Record<string, () => Promise<any>> = {
   '/blog': () => import('../pages/BlogPage'),
   '/brand-assets': () => import('../pages/BrandAssetsPage'),
   '/website-contract': () => import('../pages/WebsiteContractPage'),
+  '/luxury-brand-experience': () => import('../pages/LuxuryBrandExperiencePage'),
+  '/atelier': () => import('../pages/LuxuryBrandExperiencePage'),
 
   // Tools
   '/tools': () => import('../pages/ToolsIndexPage'),

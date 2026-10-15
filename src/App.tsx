@@ -81,6 +81,7 @@ const SeoChecklistPage = lazy(() => import('./pages/SeoChecklistPage'));
 const AiReadinessScorePage = lazy(() => import('./pages/AiReadinessScorePage'));
 const TechStackRecommenderPage = lazy(() => import('./pages/TechStackRecommenderPage'));
 const WebsiteAuthorityAnalyzerPage = lazy(() => import('./pages/WebsiteAuthorityAnalyzerPage'));
+const LuxuryBrandExperiencePage = lazy(() => import('./pages/LuxuryBrandExperiencePage'));
 
 import TopLoadingBar from './components/TopLoadingBar';
 
@@ -573,6 +574,9 @@ export default function App() {
               <Route path="/tech-stack-recommender" element={<Navigate to="/tools/tech-stack-recommender" replace />} />
               <Route path="/tools/website-authority-analyzer" element={<WebsiteAuthorityAnalyzerPage />} />
               <Route path="/website-authority-analyzer" element={<Navigate to="/tools/website-authority-analyzer" replace />} />
+              <Route path="/luxury-brand-experience" element={<LuxuryBrandExperiencePage />} />
+              <Route path="/atelier" element={<Navigate to="/luxury-brand-experience" replace />} />
+              <Route path="/luxury-showcase" element={<Navigate to="/luxury-brand-experience" replace />} />
               <Route path="/admin" element={<AdminDashboard />} />
             </Routes>
           </Suspense>

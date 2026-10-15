@@ -72,11 +72,7 @@ import EditorialPolicyPage from './pages/EditorialPolicyPage';
 
 export function render(url: string) {
   const helmetContext: any = {};
-export function render(url: string) {
-  export function renderFullApp(url: string) {
   const html = ReactDOMServer.renderToString(
-      const html = ReactDOMServer.renderToString(
-      const bodyHtml = ReactDOMServer.renderToString(
     <HelmetProvider context={helmetContext}>
       <MemoryRouter initialEntries={[url]}>
         <Routes>
@@ -187,14 +183,5 @@ export function render(url: string) {
       </MemoryRouter>
     </HelmetProvider>
   );
-  return { html, helmet: helmetContext.helmet };
-}
-    return { 
-    bodyHtml,
-    headTags: '',
-    jsonLdScripts: [],
-    helmet: helmetContext.helmet
-  };
-}
   return { html, helmet: helmetContext.helmet };
 }

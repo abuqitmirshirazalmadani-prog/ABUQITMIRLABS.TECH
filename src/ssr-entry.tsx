@@ -60,6 +60,7 @@ import SeoChecklistPage from './pages/SeoChecklistPage';
 import AiReadinessScorePage from './pages/AiReadinessScorePage';
 import TechStackRecommenderPage from './pages/TechStackRecommenderPage';
 import WebsiteAuthorityAnalyzerPage from './pages/WebsiteAuthorityAnalyzerPage';
+import LuxuryBrandExperiencePage from './pages/LuxuryBrandExperiencePage';
 import ErrorBoundary from './components/ErrorBoundary';
 
 export { SEO_ROUTES_METADATA } from './data/seoRoutesMetadata';
@@ -156,6 +157,9 @@ export function renderFullApp(url: string = '/') {
               <Route path="/tools/ai-readiness-score" element={<AiReadinessScorePage />} />
               <Route path="/tools/tech-stack-recommender" element={<TechStackRecommenderPage />} />
               <Route path="/tools/website-authority-analyzer" element={<WebsiteAuthorityAnalyzerPage />} />
+              <Route path="/luxury-brand-experience" element={<LuxuryBrandExperiencePage />} />
+              <Route path="/atelier" element={<Navigate to="/luxury-brand-experience" replace />} />
+              <Route path="/luxury-showcase" element={<Navigate to="/luxury-brand-experience" replace />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/blog" element={<BlogPage />} />

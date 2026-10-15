@@ -688,6 +688,17 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogDescription: 'Download official AbuQitmirLabs brand assets, high-resolution PNG logos, and custom banners.',
     ogImage: 'https://www.abuqitmirlabs.tech/brand-assets/og-social-preview-1200x630.png'
   },
+  '/luxury-brand-experience': {
+    title: "L'Atelier De Réserve | Luxury Artisanal Tin Collection | AbuQitmirLabs",
+    description: 'Experience the pinnacle of old-money luxury branding. Five single-estate numbered tins unveiled with Locomotive Scroll, GSAP parallax depth, and cinematic reveals.',
+    canonical: 'https://www.abuqitmirlabs.tech/luxury-brand-experience',
+    ogTitle: "L'Atelier De Réserve — Bespoke Luxury Brand Experience",
+    ogDescription: 'Ultra-smooth Locomotive Scroll and GSAP parallax reveals. One product per scroll section designed to make your product feel like it costs 10x more.',
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    twitterTitle: "L'Atelier De Réserve — Luxury Brand Experience",
+    twitterDescription: 'Old-money typography and cinematic reveals with Locomotive Scroll and GSAP.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/logo.png'
+  },
   '/website-contract': {
     title: 'Free Website Contract Template | Ownership Protection | AbuQitmirLabs',
     description: 'Download our comprehensive 2026 website development contract template. Complete IP transfer clauses, milestone payment structures, and scope protection.',

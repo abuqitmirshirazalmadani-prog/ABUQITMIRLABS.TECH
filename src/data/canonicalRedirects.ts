@@ -83,5 +83,8 @@ export function getCanonicalPath(pathname: string): string {
   if (clean === '/ai-video-creator') {
     return '/ai-video-creation';
   }
+  if (clean === '/atelier' || clean === '/luxury-showcase') {
+    return '/luxury-brand-experience';
+  }
   return clean;
 }
