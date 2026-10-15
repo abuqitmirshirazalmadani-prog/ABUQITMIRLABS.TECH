@@ -58,11 +58,25 @@ import BlogPostPage from './pages/BlogPostPage';
 import CaseStudyTajweedPage from './pages/CaseStudyTajweedPage';
 import WebsiteContractPage from './pages/WebsiteContractPage';
 import ProjectCostEstimatorPage from './pages/ProjectCostEstimatorPage';
+import AIVideoCreator from './pages/AIVideoCreator';
+import DigitalMarketingPage from './pages/DigitalMarketingPage';
+import GuestPostServicePage from './pages/GuestPostServicePage';
+import BrandAssetsPage from './pages/BrandAssetsPage';
+import ToolsIndexPage from './pages/ToolsIndexPage';
+import WebsiteAuditPage from './pages/WebsiteAuditPage';
+import SeoChecklistPage from './pages/SeoChecklistPage';
+import AiReadinessScorePage from './pages/AiReadinessScorePage';
+import TechStackRecommenderPage from './pages/TechStackRecommenderPage';
+import WebsiteAuthorityAnalyzerPage from './pages/WebsiteAuthorityAnalyzerPage';
+import EditorialPolicyPage from './pages/EditorialPolicyPage';
 
 export function render(url: string) {
   const helmetContext: any = {};
-
+export function render(url: string) {
+  export function renderFullApp(url: string) {
   const html = ReactDOMServer.renderToString(
+      const html = ReactDOMServer.renderToString(
+      const bodyHtml = ReactDOMServer.renderToString(
     <HelmetProvider context={helmetContext}>
       <MemoryRouter initialEntries={[url]}>
         <Routes>
@@ -102,6 +116,17 @@ export function render(url: string) {
           <Route path="/mobile-app-development" element={<MobileAppDevelopmentPage />} />
           <Route path="/web-development" element={<WebDevelopmentPage />} />
           <Route path="/ai-agent-development" element={<AIAgentDevelopmentPage />} />
+          <Route path="/ai-video-creation" element={<AIVideoCreator />} />
+          <Route path="/digital-marketing" element={<DigitalMarketingPage />} />
+          <Route path="/guest-post-service" element={<GuestPostServicePage />} />
+          <Route path="/brand-assets" element={<BrandAssetsPage />} />
+          <Route path="/tools" element={<ToolsIndexPage />} />
+          <Route path="/tools/website-audit" element={<WebsiteAuditPage />} />
+          <Route path="/tools/seo-checklist" element={<SeoChecklistPage />} />
+          <Route path="/tools/ai-readiness-score" element={<AiReadinessScorePage />} />
+          <Route path="/tools/tech-stack-recommender" element={<TechStackRecommenderPage />} />
+          <Route path="/tools/website-authority-analyzer" element={<WebsiteAuthorityAnalyzerPage />} />
+          <Route path="/editorial-policy" element={<EditorialPolicyPage />} />
           <Route path="/seo-mastery" element={<SEOPage />} />
           <Route path="/local-seo-services" element={<Navigate to="/seo-mastery" replace />} />
           <Route path="/local-seo-for-small-business" element={<LocalSEOSmallBusinessPage />} />
@@ -162,6 +187,14 @@ export function render(url: string) {
       </MemoryRouter>
     </HelmetProvider>
   );
-
+  return { html, helmet: helmetContext.helmet };
+}
+    return { 
+    bodyHtml,
+    headTags: '',
+    jsonLdScripts: [],
+    helmet: helmetContext.helmet
+  };
+}
   return { html, helmet: helmetContext.helmet };
 }
