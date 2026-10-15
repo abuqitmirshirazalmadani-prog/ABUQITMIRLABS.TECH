@@ -88,12 +88,21 @@ for (const rawSlug of slugs) {
 const seoRoutesPath = path.join(rootDir, 'src', 'data', 'seoRoutesMetadata.ts');
 if (fs.existsSync(seoRoutesPath)) {
   const seoContent = fs.readFileSync(seoRoutesPath, 'utf-8');
-  const routeKeyRegex = /['"](\/[a-zA-Z0-9_\-\/]+)['"]\s*:\s*\{/g;
+  const routeBlockRegex = /['"](\/[a-zA-Z0-9_\-\/]+)['"]\s*:\s*\{([\s\S]*?)\n\s*\},/g;
   let rMatch;
-  while ((rMatch = routeKeyRegex.exec(seoContent)) !== null) {
+  while ((rMatch = routeBlockRegex.exec(seoContent)) !== null) {
     const routePath = rMatch[1];
+    const blockContent = rMatch[2];
+    const canonMatch = blockContent.match(/canonical:\s*['"]([^'"]+)['"]/);
+    const canonical = canonMatch ? canonMatch[1] : `${baseUrl}${routePath}`;
+
+    // Skip if canonical points elsewhere (alias / redirect)
+    if (canonical !== `${baseUrl}${routePath}`) {
+      continue;
+    }
+
     // Skip aliases, redirects, or dynamic blog placeholders
-    if (redirects[routePath.replace(/^\//, '')] || routePath.startsWith('/blog/')) {
+    if (redirects[routePath.replace(/^\//, '')] || redirects[routePath] || routePath.startsWith('/blog/')) {
       continue;
     }
     const fullServiceUrl = `${baseUrl}${routePath}`;

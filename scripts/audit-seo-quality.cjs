@@ -193,26 +193,28 @@ if (fs.existsSync(vercelPath)) {
 console.log('\n📌 Checking blog posts for duplicate headings and title duplication...');
 const staticBlogPath = path.join(rootDir, 'src/data/staticBlogPosts.ts');
 if (fs.existsSync(staticBlogPath)) {
-  const content = fs.readFileSync(staticBlogPath, 'utf8');
-  const postMatches = [...content.matchAll(/STATIC_BLOG_POSTS\["([^"]+)"\]\s*=\s*\{([\s\S]*?)\n\};/g)];
+  let fileContent = fs.readFileSync(staticBlogPath, 'utf8');
+  const postMatches = [...fileContent.matchAll(/STATIC_BLOG_POSTS\["([^"]+)"\]\s*=\s*\{([\s\S]*?)\n\};/g)];
+  let fileWasModified = false;
 
   postMatches.forEach(m => {
     const slug = m[1];
     const postBody = m[2];
-    const contentMatch = postBody.match(/"content":\s*([\s\S]*?)(,\s*"excerpt"|,\s*"coverImage")/);
+    const contentMatch = postBody.match(/"content":\s*("[\s\S]*?"),\s*\n\s*"excerpt"/);
     const titleMatch = postBody.match(/"title":\s*"([^"]+)"/);
     const postTitle = titleMatch ? titleMatch[1] : '';
 
     if (contentMatch) {
       try {
-        const text = JSON.parse(contentMatch[1]);
+        const rawJsonString = contentMatch[1];
+        const text = JSON.parse(rawJsonString);
         const lines = text.split('\n');
         const headings = [];
 
         lines.forEach((line, lineIdx) => {
           const hm = line.match(/^(#{1,6})\s+(.*)$/);
           if (hm) {
-            headings.push({ level: hm[1].length, text: hm[2].trim(), line: lineIdx + 1 });
+            headings.push({ level: hm[1].length, text: hm[2].trim(), line: lineIdx });
           }
         });
 
@@ -232,22 +234,75 @@ if (fs.existsSync(staticBlogPath)) {
           }
         }
 
-        // 2. Check for duplicate headings inside the post
+        // 2. Check and auto-resolve duplicate headings inside the post
         const seenHeadings = new Map();
-        headings.forEach(h => {
-          const normKey = h.text.toLowerCase().replace(/[:\s]+/g, ' ').trim();
+        const headingCounts = new Map();
+        let postWasModified = false;
+        let lastParentHeading = '';
+
+        lines.forEach((line, lineIdx) => {
+          const hm = line.match(/^(#{1,6})\s+(.*)$/);
+          if (!hm) return;
+
+          const hashes = hm[1];
+          const level = hashes.length;
+          const originalText = hm[2].trim();
+          const normKey = originalText.toLowerCase().replace(/[:\s]+/g, ' ').trim();
+
+          if (level <= 2) {
+            lastParentHeading = originalText.replace(/^[\d\.\-\s]+/, '').trim();
+          }
+
           if (seenHeadings.has(normKey)) {
-            console.log(`  ❌ Duplicate heading in "${slug}": "${h.text}" on line ${h.line} (previously on line ${seenHeadings.get(normKey)})`);
-            hasErrors = true;
+            const count = (headingCounts.get(normKey) || 1) + 1;
+            headingCounts.set(normKey, count);
+
+            // Generate clean, contextual, unique heading
+            let resolvedText = '';
+            if (lastParentHeading && !originalText.toLowerCase().includes(lastParentHeading.toLowerCase())) {
+              resolvedText = `${originalText} (${lastParentHeading})`;
+            } else {
+              resolvedText = `${originalText} (Part ${count})`;
+            }
+
+            // Verify resolution uniqueness
+            const resolvedNorm = resolvedText.toLowerCase().replace(/[:\s]+/g, ' ').trim();
+            if (seenHeadings.has(resolvedNorm)) {
+              resolvedText = `${originalText} (${count})`;
+            }
+
+            console.log(`  ✨ Auto-resolved duplicate heading in "${slug}": "${originalText}" -> "${resolvedText}"`);
+            issuesFixed.push(`Auto-resolved duplicate heading in "${slug}": "${originalText}" -> "${resolvedText}"`);
+            lines[lineIdx] = `${hashes} ${resolvedText}`;
+            seenHeadings.set(resolvedText.toLowerCase().replace(/[:\s]+/g, ' ').trim(), lineIdx + 1);
+            postWasModified = true;
           } else {
-            seenHeadings.set(normKey, h.line);
+            seenHeadings.set(normKey, lineIdx + 1);
+            headingCounts.set(normKey, 1);
           }
         });
+
+        if (postWasModified) {
+          const updatedMarkdown = lines.join('\n');
+          const updatedJsonString = JSON.stringify(updatedMarkdown);
+          // Replace only this post's content string in fileContent
+          const oldSnippet = `"content": ${rawJsonString},\n  "excerpt"`;
+          const newSnippet = `"content": ${updatedJsonString},\n  "excerpt"`;
+          if (fileContent.includes(oldSnippet)) {
+            fileContent = fileContent.replace(oldSnippet, newSnippet);
+            fileWasModified = true;
+          }
+        }
       } catch (e) {
         // parse error ignored
       }
     }
   });
+
+  if (fileWasModified) {
+    fs.writeFileSync(staticBlogPath, fileContent, 'utf8');
+    console.log('  ✅ Auto-saved deduplicated headings to src/data/staticBlogPosts.ts');
+  }
 }
 
 // ==========================================
