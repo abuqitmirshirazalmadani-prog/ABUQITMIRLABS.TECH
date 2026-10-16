@@ -314,15 +314,6 @@ function MetaHeadSanitizer() {
     };
 
     sanitize();
-    const timer = setTimeout(sanitize, 50);
-    const timer2 = setTimeout(sanitize, 250);
-    const timer3 = setTimeout(sanitize, 600);
-
-    return () => {
-      clearTimeout(timer);
-      clearTimeout(timer2);
-      clearTimeout(timer3);
-    };
   }, [pathname]);
 
   return null;
