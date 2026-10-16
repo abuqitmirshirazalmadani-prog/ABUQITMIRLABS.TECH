@@ -1,8 +1,8 @@
-import React, {StrictMode} from 'react';
-import {createRoot, hydrateRoot} from 'react-dom/client';
+import React, { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
-import {initPerformanceMonitoring} from './utils/performanceMonitor.ts';
+import { initPerformanceMonitoring } from './utils/performanceMonitor.ts';
 
 // Initialize Core Web Vitals performance tracking & local storage audit logger
 initPerformanceMonitoring();
@@ -10,43 +10,20 @@ initPerformanceMonitoring();
 const container = document.getElementById('root')!;
 
 if (container) {
-  const renderedRoute = container.getAttribute('data-rendered-route');
-  const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
-  const isMatchingRoute = Boolean(
-    renderedRoute && (renderedRoute.replace(/\/$/, '') || '/') === currentPath
+  // Always use createRoot — never hydrateRoot.
+  //
+  // Reason: On non-homepage routes, the prerendered HTML inside #root is
+  // hand-crafted static SEO markup (see vite.config.ts fallbackPrerenderHtml),
+  // NOT the actual React render output. Hydrating against it causes a mismatch,
+  // which breaks React's event system — dropdowns stop working, navigation
+  // stops re-rendering, and the URL changes without the page updating.
+  //
+  // The static HTML still serves SEO crawlers in the raw HTML response.
+  // Real users get a fresh React render immediately after.
+  container.innerHTML = '';
+  createRoot(container).render(
+    <StrictMode>
+      <App />
+    </StrictMode>
   );
-
-  // Hydrate only if the pre-rendered HTML on the page strictly matches the current client route
-  if (isMatchingRoute && container.hasChildNodes() && container.children.length > 0) {
-    try {
-      hydrateRoot(
-        container,
-        <StrictMode>
-          <App />
-        </StrictMode>,
-        {
-          onRecoverableError(error: Error, errorInfo: React.ErrorInfo) {
-            console.warn('[Hydration Notice]:', error, errorInfo);
-          },
-        }
-      );
-    } catch (e) {
-      console.warn('[Hydration Fallback]: Mounting fresh root', e);
-      container.innerHTML = '';
-      createRoot(container).render(
-        <StrictMode>
-          <App />
-        </StrictMode>
-      );
-    }
-  } else {
-    // If the route doesn't match the pre-rendered route or is a dynamic fallback, clear and mount cleanly
-    container.innerHTML = '';
-    createRoot(container).render(
-      <StrictMode>
-        <App />
-      </StrictMode>
-    );
-  }
 }
-
