@@ -14,74 +14,74 @@ import ErrorBoundary from './components/ErrorBoundary';
 import HomePage from './pages/HomePage';
 
 // Lazy load all secondary and service pages for ultra-fast initial bundle size
-const SaudiArabiaMarketPage = lazy(() => import('./pages/SaudiArabiaMarketPage'));
-const UAEMarketPage = lazy(() => import('./pages/UAEMarketPage'));
-const QatarMarketPage = lazy(() => import('./pages/QatarMarketPage'));
-const KuwaitMarketPage = lazy(() => import('./pages/KuwaitMarketPage'));
+const SaudiArabiaMarketPage = lazyWithRetry(() => import('./pages/SaudiArabiaMarketPage'));
+const UAEMarketPage = lazyWithRetry(() => import('./pages/UAEMarketPage'));
+const QatarMarketPage = lazyWithRetry(() => import('./pages/QatarMarketPage'));
+const KuwaitMarketPage = lazyWithRetry(() => import('./pages/KuwaitMarketPage'));
 
 // Lazy load all secondary and service pages for fast initial bundle size
-const CustomSoftwarePage = lazy(() => import('./pages/CustomSoftwarePage'));
-const MobileAppDevelopmentPage = lazy(() => import('./pages/MobileAppDevelopmentPage'));
-const WebDevelopmentPage = lazy(() => import('./pages/WebDevelopmentPage'));
-const AIAgentDevelopmentPage = lazy(() => import('./pages/AIAgentDevelopmentPage'));
-const AIVideoCreator = lazy(() => import('./pages/AIVideoCreator'));
-const SEOPage = lazy(() => import('./pages/SEOPage'));
-const DigitalMarketingPage = lazy(() => import('./pages/DigitalMarketingPage'));
-const LocalSEOSmallBusinessPage = lazy(() => import('./pages/LocalSEOSmallBusinessPage'));
-const LocalSEOCitationBuildingPage = lazy(() => import('./pages/LocalSEOCitationBuildingPage'));
-const WhiteLabelLocalSEOPage = lazy(() => import('./pages/WhiteLabelLocalSEOPage'));
-const LocalSEOAuditPage = lazy(() => import('./pages/LocalSEOAuditPage'));
-const GuestPostServicePage = lazy(() => import('./pages/GuestPostServicePage'));
-const GraphicsDesignPage = lazy(() => import('./pages/GraphicsDesignPage'));
-const ContentWritingPage = lazy(() => import('./pages/ContentWritingPage'));
-const AboutPage = lazy(() => import('./pages/AboutPage'));
-const ContactPage = lazy(() => import('./pages/ContactPage'));
-const BlogPage = lazy(() => import('./pages/BlogPage'));
-const CaseStudiesPage = lazy(() => import('./pages/CaseStudiesPage'));
+const CustomSoftwarePage = lazyWithRetry(() => import('./pages/CustomSoftwarePage'));
+const MobileAppDevelopmentPage = lazyWithRetry(() => import('./pages/MobileAppDevelopmentPage'));
+const WebDevelopmentPage = lazyWithRetry(() => import('./pages/WebDevelopmentPage'));
+const AIAgentDevelopmentPage = lazyWithRetry(() => import('./pages/AIAgentDevelopmentPage'));
+const AIVideoCreator = lazyWithRetry(() => import('./pages/AIVideoCreator'));
+const SEOPage = lazyWithRetry(() => import('./pages/SEOPage'));
+const DigitalMarketingPage = lazyWithRetry(() => import('./pages/DigitalMarketingPage'));
+const LocalSEOSmallBusinessPage = lazyWithRetry(() => import('./pages/LocalSEOSmallBusinessPage'));
+const LocalSEOCitationBuildingPage = lazyWithRetry(() => import('./pages/LocalSEOCitationBuildingPage'));
+const WhiteLabelLocalSEOPage = lazyWithRetry(() => import('./pages/WhiteLabelLocalSEOPage'));
+const LocalSEOAuditPage = lazyWithRetry(() => import('./pages/LocalSEOAuditPage'));
+const GuestPostServicePage = lazyWithRetry(() => import('./pages/GuestPostServicePage'));
+const GraphicsDesignPage = lazyWithRetry(() => import('./pages/GraphicsDesignPage'));
+const ContentWritingPage = lazyWithRetry(() => import('./pages/ContentWritingPage'));
+const AboutPage = lazyWithRetry(() => import('./pages/AboutPage'));
+const ContactPage = lazyWithRetry(() => import('./pages/ContactPage'));
+const BlogPage = lazyWithRetry(() => import('./pages/BlogPage'));
+const CaseStudiesPage = lazyWithRetry(() => import('./pages/CaseStudiesPage'));
 
 // Solutions Pages
-const FintechSolutionsPage = lazy(() => import('./pages/solutions/FintechSolutionsPage'));
-const HealthcarePlatformsPage = lazy(() => import('./pages/solutions/HealthcarePlatformsPage'));
-const AIAutomationPage = lazy(() => import('./pages/solutions/AIAutomationPage'));
-const ECommerceDevelopmentPage = lazy(() => import('./pages/solutions/ECommerceDevelopmentPage'));
-const EdTechPlatformsPage = lazy(() => import('./pages/solutions/EdTechPlatformsPage'));
+const FintechSolutionsPage = lazyWithRetry(() => import('./pages/solutions/FintechSolutionsPage'));
+const HealthcarePlatformsPage = lazyWithRetry(() => import('./pages/solutions/HealthcarePlatformsPage'));
+const AIAutomationPage = lazyWithRetry(() => import('./pages/solutions/AIAutomationPage'));
+const ECommerceDevelopmentPage = lazyWithRetry(() => import('./pages/solutions/ECommerceDevelopmentPage'));
+const EdTechPlatformsPage = lazyWithRetry(() => import('./pages/solutions/EdTechPlatformsPage'));
 
 // About Dropdown Pages
-const OurCompanyPage = lazy(() => import('./pages/about/OurCompanyPage'));
-const OurTeamPage = lazy(() => import('./pages/about/OurTeamPage'));
-const OurProcessPage = lazy(() => import('./pages/about/OurProcessPage'));
-const CareersPage = lazy(() => import('./pages/about/CareersPage'));
+const OurCompanyPage = lazyWithRetry(() => import('./pages/about/OurCompanyPage'));
+const OurTeamPage = lazyWithRetry(() => import('./pages/about/OurTeamPage'));
+const OurProcessPage = lazyWithRetry(() => import('./pages/about/OurProcessPage'));
+const CareersPage = lazyWithRetry(() => import('./pages/about/CareersPage'));
 
 // News Dropdown Pages
-const LatestNewsPage = lazy(() => import('./pages/news/LatestNewsPage'));
-const PressReleasesPage = lazy(() => import('./pages/news/PressReleasesPage'));
-const IndustryInsightsPage = lazy(() => import('./pages/news/IndustryInsightsPage'));
-const AllNewsPage = lazy(() => import('./pages/news/AllNewsPage'));
-const NewsArticlePage = lazy(() => import('./pages/news/NewsArticlePage'));
+const LatestNewsPage = lazyWithRetry(() => import('./pages/news/LatestNewsPage'));
+const PressReleasesPage = lazyWithRetry(() => import('./pages/news/PressReleasesPage'));
+const IndustryInsightsPage = lazyWithRetry(() => import('./pages/news/IndustryInsightsPage'));
+const AllNewsPage = lazyWithRetry(() => import('./pages/news/AllNewsPage'));
+const NewsArticlePage = lazyWithRetry(() => import('./pages/news/NewsArticlePage'));
 
 // Secondary & administrative pages
-const USMarketPage = lazy(() => import('./pages/USMarketPage'));
-const UKMarketPage = lazy(() => import('./pages/UKMarketPage'));
-const PakistanMarketPage = lazy(() => import('./pages/PakistanMarketPage'));
-const CanadaMarketPage = lazy(() => import('./pages/CanadaMarketPage'));
-const PolandMarketPage = lazy(() => import('./pages/PolandMarketPage'));
-const AustraliaMarketPage = lazy(() => import('./pages/AustraliaMarketPage'));
-const TermsPage = lazy(() => import('./pages/TermsPage'));
-const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
-const EditorialPolicyPage = lazy(() => import('./pages/EditorialPolicyPage'));
-const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
-const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
-const CaseStudyTajweedPage = lazy(() => import('./pages/CaseStudyTajweedPage'));
-const WebsiteContractPage = lazy(() => import('./pages/WebsiteContractPage'));
-const BrandAssetsPage = lazy(() => import('./pages/BrandAssetsPage'));
-const ToolsIndexPage = lazy(() => import('./pages/ToolsIndexPage'));
-const ProjectCostEstimatorPage = lazy(() => import('./pages/ProjectCostEstimatorPage'));
-const WebsiteAuditPage = lazy(() => import('./pages/WebsiteAuditPage'));
-const SeoChecklistPage = lazy(() => import('./pages/SeoChecklistPage'));
-const AiReadinessScorePage = lazy(() => import('./pages/AiReadinessScorePage'));
-const TechStackRecommenderPage = lazy(() => import('./pages/TechStackRecommenderPage'));
-const WebsiteAuthorityAnalyzerPage = lazy(() => import('./pages/WebsiteAuthorityAnalyzerPage'));
-const LuxuryBrandExperiencePage = lazy(() => import('./pages/LuxuryBrandExperiencePage'));
+const USMarketPage = lazyWithRetry(() => import('./pages/USMarketPage'));
+const UKMarketPage = lazyWithRetry(() => import('./pages/UKMarketPage'));
+const PakistanMarketPage = lazyWithRetry(() => import('./pages/PakistanMarketPage'));
+const CanadaMarketPage = lazyWithRetry(() => import('./pages/CanadaMarketPage'));
+const PolandMarketPage = lazyWithRetry(() => import('./pages/PolandMarketPage'));
+const AustraliaMarketPage = lazyWithRetry(() => import('./pages/AustraliaMarketPage'));
+const TermsPage = lazyWithRetry(() => import('./pages/TermsPage'));
+const PrivacyPage = lazyWithRetry(() => import('./pages/PrivacyPage'));
+const EditorialPolicyPage = lazyWithRetry(() => import('./pages/EditorialPolicyPage'));
+const AdminDashboard = lazyWithRetry(() => import('./pages/AdminDashboard'));
+const BlogPostPage = lazyWithRetry(() => import('./pages/BlogPostPage'));
+const CaseStudyTajweedPage = lazyWithRetry(() => import('./pages/CaseStudyTajweedPage'));
+const WebsiteContractPage = lazyWithRetry(() => import('./pages/WebsiteContractPage'));
+const BrandAssetsPage = lazyWithRetry(() => import('./pages/BrandAssetsPage'));
+const ToolsIndexPage = lazyWithRetry(() => import('./pages/ToolsIndexPage'));
+const ProjectCostEstimatorPage = lazyWithRetry(() => import('./pages/ProjectCostEstimatorPage'));
+const WebsiteAuditPage = lazyWithRetry(() => import('./pages/WebsiteAuditPage'));
+const SeoChecklistPage = lazyWithRetry(() => import('./pages/SeoChecklistPage'));
+const AiReadinessScorePage = lazyWithRetry(() => import('./pages/AiReadinessScorePage'));
+const TechStackRecommenderPage = lazyWithRetry(() => import('./pages/TechStackRecommenderPage'));
+const WebsiteAuthorityAnalyzerPage = lazyWithRetry(() => import('./pages/WebsiteAuthorityAnalyzerPage'));
+const LuxuryBrandExperiencePage = lazyWithRetry(() => import('./pages/LuxuryBrandExperiencePage'));
 
 import TopLoadingBar from './components/TopLoadingBar';
 
