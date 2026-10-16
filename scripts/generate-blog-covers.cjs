@@ -1,6 +1,13 @@
-const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
+
+let sharp;
+try {
+  sharp = require('sharp');
+} catch {
+  console.log('[generate-blog-covers] sharp is not installed; static blog covers already exist in public/. Skipping generation.');
+  process.exit(0);
+}
 
 const BLOG_COVERS = [
   {

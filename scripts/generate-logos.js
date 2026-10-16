@@ -1,6 +1,13 @@
-import sharp from 'sharp';
 import fs from 'fs';
 import path from 'path';
+
+let sharp;
+try {
+  sharp = (await import('sharp')).default;
+} catch {
+  console.log('[generate-logos] sharp is not installed; static logos already exist in public/. Skipping generation.');
+  process.exit(0);
+}
 
 const svgLogo = `
 <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">

@@ -1,7 +1,14 @@
-import sharp from 'sharp';
 import fs from 'fs';
 import path from 'path';
 import { createRequire } from 'module';
+
+let sharp;
+try {
+  sharp = (await import('sharp')).default;
+} catch {
+  console.log('[generate-social-assets] sharp is not installed; static assets already exist in public/. Skipping generation.');
+  process.exit(0);
+}
 
 const require = createRequire(import.meta.url);
 const { ZipArchive } = require('archiver');

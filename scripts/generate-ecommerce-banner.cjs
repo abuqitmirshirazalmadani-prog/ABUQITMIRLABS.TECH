@@ -1,6 +1,13 @@
-const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
+
+let sharp;
+try {
+  sharp = require('sharp');
+} catch {
+  console.log('[generate-ecommerce-banner] sharp is not installed; static banners already exist in public/. Skipping generation.');
+  process.exit(0);
+}
 
 async function generateBanner() {
   const customPng = path.join(process.cwd(), 'public/Custom-Build-vs-Shopify.png');

@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import LocomotiveScroll from 'locomotive-scroll';
 import { Sparkles, ArrowDown, ChevronRight, ShieldCheck, Compass, Droplet, Clock, Check } from 'lucide-react';
 import { LuxuryHeader } from '../components/luxury/LuxuryHeader';
 import { LuxuryTinVisual, TinDetails } from '../components/luxury/LuxuryTinVisual';
@@ -138,23 +137,33 @@ export default function LuxuryBrandExperiencePage() {
   // Initialize Locomotive Scroll for ultra-smooth inertial momentum
   useEffect(() => {
     let scrollInstance: any = null;
+    let isMounted = true;
 
-    try {
-      scrollInstance = new LocomotiveScroll({
-        lenisOptions: {
-          lerp: 0.08,
-          duration: 1.4,
-          smoothWheel: true,
-          wheelMultiplier: 0.9,
-          touchMultiplier: 1.5,
-        },
+    if (typeof window !== 'undefined') {
+      import('locomotive-scroll').then((module) => {
+        if (!isMounted) return;
+        const LocomotiveScroll = module.default || module;
+        try {
+          scrollInstance = new (LocomotiveScroll as any)({
+            lenisOptions: {
+              lerp: 0.08,
+              duration: 1.4,
+              smoothWheel: true,
+              wheelMultiplier: 0.9,
+              touchMultiplier: 1.5,
+            },
+          });
+          locomotiveScrollRef.current = scrollInstance;
+        } catch (e) {
+          console.warn('Locomotive scroll fallback:', e);
+        }
+      }).catch((e) => {
+        console.warn('Locomotive scroll load error:', e);
       });
-      locomotiveScrollRef.current = scrollInstance;
-    } catch (e) {
-      console.warn('Locomotive scroll fallback:', e);
     }
 
     return () => {
+      isMounted = false;
       if (scrollInstance) {
         scrollInstance.destroy();
       }
