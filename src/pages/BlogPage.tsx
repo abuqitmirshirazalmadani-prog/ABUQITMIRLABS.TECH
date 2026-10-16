@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { getStaticBlogList } from '../data/staticBlogPosts';
 import { BLOG_SLUG_REDIRECTS, getCanonicalSlug } from '../data/canonicalRedirects';
+import { setCachedPosts } from '../utils/blogCache';
 
 interface Post {
   id: string;
@@ -66,9 +67,31 @@ const formatDateShort = (timestamp: any) => {
     }
 };
 
+export const DEFAULT_BRAND_COVER = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090a10"/>
+      <stop offset="50%" stop-color="#050608"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="80%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#ccff00" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  <rect width="100%" height="100%" fill="url(#glow)"/>
+  <circle cx="600" cy="337" r="160" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="2"/>
+  <circle cx="600" cy="337" r="100" fill="none" stroke="#ccff00" stroke-opacity="0.25" stroke-width="2"/>
+  <text x="600" y="325" fill="#ccff00" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="28" letter-spacing="8" text-anchor="middle">ABUQITMIRLABS</text>
+  <text x="600" y="365" fill="#a1a1aa" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="14" letter-spacing="4" text-anchor="middle">RESEARCH &amp; ENGINEERING JOURNAL</text>
+</svg>
+`);
+
 const formatCoverImage = (url?: string, width = 800) => {
     if (!url || typeof url !== 'string' || url.trim() === '' || url.includes('logo.png')) {
-        return '/images/blog/performance-vs-brand-marketing-cover.jpg';
+        return DEFAULT_BRAND_COVER;
     }
     const cleanUrl = url.trim();
     if (cleanUrl.startsWith('https://www.abuqitmirlabs.tech/')) {
@@ -219,10 +242,12 @@ const BlogPage = () => {
 
                     combined.sort((a, b) => parseDateToMillis(b.createdAt) - parseDateToMillis(a.createdAt));
                     setPosts(combined);
+                    setCachedPosts(combined as any);
                 } else if (isMounted) {
                     const staticPosts = getStaticBlogList() as unknown as Post[];
                     staticPosts.sort((a, b) => parseDateToMillis(b.createdAt) - parseDateToMillis(a.createdAt));
                     setPosts(staticPosts);
+                    setCachedPosts(staticPosts as any);
                 }
             } catch (error) {
                 console.warn('[BlogPage] Using static fallback articles:', error);
@@ -230,6 +255,7 @@ const BlogPage = () => {
                     const staticPosts = getStaticBlogList() as unknown as Post[];
                     staticPosts.sort((a, b) => parseDateToMillis(b.createdAt) - parseDateToMillis(a.createdAt));
                     setPosts(staticPosts);
+                    setCachedPosts(staticPosts as any);
                 }
             } finally {
                 if (isMounted) {
@@ -376,8 +402,8 @@ const BlogPage = () => {
                                                 referrerPolicy="no-referrer"
                                                 onError={(e) => {
                                                     const target = e.target as HTMLImageElement;
-                                                    if (!target.src.includes('performance-vs-brand-marketing-cover.jpg')) {
-                                                        target.src = '/images/blog/performance-vs-brand-marketing-cover.jpg';
+                                                    if (target.src !== DEFAULT_BRAND_COVER) {
+                                                        target.src = DEFAULT_BRAND_COVER;
                                                     }
                                                 }}
                                             />
@@ -492,8 +518,8 @@ const BlogPage = () => {
                                                         referrerPolicy="no-referrer"
                                                         onError={(e) => {
                                                             const target = e.target as HTMLImageElement;
-                                                            if (!target.src.includes('performance-vs-brand-marketing-cover.jpg')) {
-                                                                target.src = '/images/blog/performance-vs-brand-marketing-cover.jpg';
+                                                            if (target.src !== DEFAULT_BRAND_COVER) {
+                                                                target.src = DEFAULT_BRAND_COVER;
                                                             }
                                                         }}
                                                     />

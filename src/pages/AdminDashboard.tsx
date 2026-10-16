@@ -16,6 +16,7 @@ import {
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
+import { setCachedPost } from '../utils/blogCache';
 
 const ADMIN_EMAIL = "abuqitmirshirazalmadani@gmail.com";
 const ADMIN_UID = "cRAf1wZFRRXMVadj7RDaC8WM4152";
@@ -881,6 +882,12 @@ const AdminDashboard = () => {
                     tags: tagsArray,
                     updatedAt: serverTimestamp()
                 });
+                setCachedPost(cleanSlug, {
+                    ...postPayload,
+                    helperImages: cleanHelperImages,
+                    id: targetId,
+                    createdAt: new Date().toISOString()
+                } as any);
                 setStatus({ type: 'success', message: `Post "${cleanSlug}" updated in database (duplicate prevented)!` });
             } else {
                 const docRef = await addDoc(collection(db, 'posts'), {
@@ -891,6 +898,12 @@ const AdminDashboard = () => {
                     createdAt: serverTimestamp(),
                     updatedAt: serverTimestamp()
                 });
+                setCachedPost(cleanSlug, {
+                    ...postPayload,
+                    helperImages: cleanHelperImages,
+                    id: docRef.id,
+                    createdAt: new Date().toISOString()
+                } as any);
                 setStatus({ type: 'success', message: `Post published in database! ID: ${docRef.id}` });
             }
 

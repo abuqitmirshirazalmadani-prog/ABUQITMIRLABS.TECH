@@ -19,18 +19,32 @@ export interface RouteSeoMetadata {
 }
 
 export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
+  '/blog/ai-is-quietly-stealing-your-ability-to-think': {
+    title: 'AI Is Quietly Stealing Your Ability to Think | AbuQitmirLabs',
+    description: 'Three recent peer-reviewed studies show how heavy AI use silently degrades critical thinking, problem-solving, and professional judgment.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/ai-is-quietly-stealing-your-ability-to-think',
+    ogTitle: 'AI Is Quietly Stealing Your Ability to Think | AbuQitmirLabs',
+    ogDescription: 'Three recent peer-reviewed studies show how heavy AI use silently degrades critical thinking, problem-solving, and professional judgment.',
+    ogImage: 'https://i.postimg.cc/1XLhtg4d/Three-Studies-One-AI-Warning.png',
+    ogImageAlt: 'Three Studies One AI Warning - Cognitive Offloading and Skill Atrophy in the AI Era',
+    ogType: 'article',
+    twitterTitle: 'AI Is Quietly Stealing Your Ability to Think | AbuQitmirLabs',
+    twitterDescription: 'Three recent peer-reviewed studies show how heavy AI use silently degrades critical thinking, problem-solving, and professional judgment.',
+    twitterImage: 'https://i.postimg.cc/1XLhtg4d/Three-Studies-One-AI-Warning.png',
+    robots: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
+  },
   '/blog/measure-marketing-roi-without-tracking': {
     title: 'Measure Marketing ROI Without Tracking | AbuQitmirLabs',
     description: 'A guide to measuring marketing ROI when attribution is impossible. Learn incrementality testing, MMM, and practical frameworks for startups.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/measure-marketing-roi-without-tracking',
     ogTitle: 'Measure Marketing ROI Without Tracking | AbuQitmirLabs',
     ogDescription: 'A guide to measuring marketing ROI when attribution is impossible. Learn incrementality testing, MMM, and practical frameworks for startups.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog/measure-marketing-roi-without-tracking-cover.jpg',
+    ogImage: 'https://i.postimg.cc/7L09n4zn/Marketing-ROI-Without-Perfect-Attribution.png',
     ogImageAlt: 'Marketing ROI measurement framework showing incrementality testing, marketing mix modeling, and share of search for startups by AbuQitmirLabs',
     ogType: 'article',
     twitterTitle: 'Measure Marketing ROI Without Tracking | AbuQitmirLabs',
     twitterDescription: 'A guide to measuring marketing ROI when attribution is impossible. Learn incrementality testing, MMM, and practical frameworks for startups.',
-    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/measure-marketing-roi-without-tracking-cover.jpg',
+    twitterImage: 'https://i.postimg.cc/7L09n4zn/Marketing-ROI-Without-Perfect-Attribution.png',
     robots: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
     schemaJsonLd: {
       "@context": "https://schema.org",
@@ -860,13 +874,13 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     keywords: 'guest posting strategy 2026, guest post outreach, link building guest posts, guest posting penalties, guest posting checklist, safe guest posting, editorial guest posts, sponsored posts, link schemes, SEO link building',
     ogTitle: 'Guest Posting in 2026: What Works | AbuQitmirLabs',
     ogDescription: 'A detailed checklist for safe, effective guest posting in 2026. Learn which tactics still work, which get penalized, and how to build quality links.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog/guest-posting-strategy-2026-cover.jpg',
+    ogImage: 'https://i.postimg.cc/7ZW4Gnv9/Guest-Posting-2026-Safety-Guide.png',
     ogImageAlt: 'Guest posting in 2026 safety checklist showing 18 points across prospecting, outreach, content creation, link placement, and post-publication by AbuQitmirLabs',
     ogType: 'article',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Guest Posting in 2026: What Works | AbuQitmirLabs',
     twitterDescription: 'A detailed checklist for safe, effective guest posting in 2026. Learn which tactics still work, which get penalized, and how to build quality links.',
-    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/guest-posting-strategy-2026-cover.jpg',
+    twitterImage: 'https://i.postimg.cc/7ZW4Gnv9/Guest-Posting-2026-Safety-Guide.png',
     h1: 'Guest Posting in 2026: What Works',
     schemaJsonLd: {
       '@context': 'https://schema.org',
@@ -979,13 +993,13 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     keywords: 'digital marketing stack 2026, marketing technology stack, revenue-focused marketing tools, best marketing stack for startups, digital marketing tools 2026, marketing stack Middle East, marketing stack Saudi Arabia, marketing stack UAE, marketing stack Qatar, marketing stack Kuwait',
     ogTitle: 'The 2026 Digital Marketing Stack | AbuQitmirLabs',
     ogDescription: 'Twelve layers that actually move revenue. Plus the four adjustments required for Saudi Arabia, UAE, Qatar, and Kuwait.',
-    ogImage: 'https://www.abuqitmirlabs.tech/assets/blog/digital-marketing-stack-2026-cover.png',
+    ogImage: 'https://i.postimg.cc/qM1gRZc0/2026-Digital-Marketing-Stack-Infographic.png',
     ogImageAlt: 'Twelve-layer digital marketing stack diagram for 2026, with Middle East market adjustment panel for Saudi Arabia, UAE, Qatar, and Kuwait',
     ogType: 'article',
     twitterCard: 'summary_large_image',
     twitterTitle: 'The 2026 Digital Marketing Stack | AbuQitmirLabs',
     twitterDescription: 'Twelve layers that actually move revenue. Plus the four changes required for Saudi Arabia, UAE, Qatar, and Kuwait.',
-    twitterImage: 'https://www.abuqitmirlabs.tech/assets/blog/digital-marketing-stack-2026-cover.png',
+    twitterImage: 'https://i.postimg.cc/qM1gRZc0/2026-Digital-Marketing-Stack-Infographic.png',
     h1: 'The 2026 Digital Marketing Stack: What Moves Revenue',
     schemaJsonLd: {
       '@context': 'https://schema.org',
@@ -1165,7 +1179,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/what-does-a-custom-web-development-company-do-2026-guide',
     ogTitle: 'What Does a Custom Web Development Company Actually Do? | AbuQitmirLabs',
     ogDescription: 'Discover what custom web engineering delivers vs off-the-shelf website templates.',
-    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogImage: 'https://i.postimg.cc/sgt3fYtG/A-high-impact-You-Tube-thumbnail-featuring-a-developer-looking-at-a-split-screen-left-side-templat.jpg',
     ogType: 'article'
   },
   '/blog/custom-web-development-company': {
@@ -1192,7 +1206,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/custom-web-development-company',
     ogTitle: 'Custom Web Development Company 2026 | Built-In Visibility | AbuQitmirLabs',
     ogDescription: 'Why modern businesses choose bespoke web development over templates in 2026.',
-    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogImage: 'https://i.postimg.cc/kM6C3FTY/Custom-Web-Development-Company-2026.png',
     ogType: 'article'
   },
   '/blog/custom-web-development-vs-website-templates-2026-guide': {
@@ -1201,7 +1215,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/custom-web-development-vs-website-templates-2026-guide',
     ogTitle: 'Custom Web Development vs. Website Templates (2026 Guide) | AbuQitmirLabs',
     ogDescription: 'Engineering, cost, and performance comparison between custom web code and website templates.',
-    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogImage: 'https://i.postimg.cc/tJMgz0Vd/Custom-Web-Development-vs-Website-Templates.jpg',
     ogType: 'article'
   },
   '/blog/custom-ai-solutions-for-corporate-events-2026-guide': {
@@ -1210,7 +1224,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/custom-ai-solutions-for-corporate-events-2026-guide',
     ogTitle: 'Custom AI Solutions for Corporate Events (2026 Guide) | AbuQitmirLabs',
     ogDescription: 'How enterprise event organizers leverage custom AI agents for matchmaking and autonomous attendee concierge.',
-    ogImage: 'https://www.abuqitmirlabs.tech/assets/images/custom-ai-solutions-corporate-events-og-image.jpg',
+    ogImage: 'https://i.postimg.cc/9fBvmXkH/Custom-AI-solutions-for-corporate-events.jpg',
     ogType: 'article'
   },
   '/blog/local-business-visibility-2026-seo-geo-aio-aeo-sxo': {
@@ -1219,7 +1233,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/local-business-visibility-2026-seo-geo-aio-aeo-sxo',
     ogTitle: 'Local Business Visibility 2026: SEO + GEO + AIO + AEO + SXO | AbuQitmirLabs',
     ogDescription: 'Why your local business is invisible in 2026 and how to dominate search engines and AI overviews.',
-    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogImage: 'https://i.postimg.cc/tCS3GRnr/magic-edit-TUFIUkl-XYUt4Vzgj-MSNl-Yz-M4ZTRl-YWQx-OTUy-MGNj-ZDY5YWEy-Zjg2MWNi-Yzg0YSMx-Njgw-Iy-NUUk-F.jpg',
     ogType: 'article'
   },
   '/blog/what-seo-services-actually-mean-in-2026-abuqitmirlabs': {
@@ -1228,7 +1242,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/what-seo-services-actually-mean-in-2026-abuqitmirlabs',
     ogTitle: 'What SEO Services Actually Mean in 2026 | AbuQitmirLabs',
     ogDescription: 'What real technical SEO, entity architecture, and Generative Engine Optimization include in 2026.',
-    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogImage: 'https://i.postimg.cc/BQY9Rz5z/seo-company.jpg',
     ogType: 'article'
   },
   '/blog/how-to-choose-a-mobile-app-development-company-2026': {
@@ -1237,7 +1251,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/how-to-choose-a-mobile-app-development-company-2026',
     ogTitle: 'How to Choose a Mobile App Development Company 2026 | AbuQitmirLabs',
     ogDescription: 'Essential criteria for vetting mobile app agencies: tech stack selection, code ownership, QA testing, and maintenance.',
-    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogImage: 'https://i.postimg.cc/2SpnxZCj/mobile-app-development-company.png',
     ogType: 'article'
   },
   '/blog/custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting': {
@@ -1246,7 +1260,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting',
     ogTitle: 'Custom AI Solutions for Fintech 2026 | Fraud Detection & Underwriting',
     ogDescription: 'How fintech companies deploy custom ML models for fraud prevention, automated underwriting, and AML compliance.',
-    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogImage: 'https://i.postimg.cc/QtHfgngS/Custom-AI-Solutions-for-Fintech-2026-Fraud-Detection-Underwriting.jpg',
     ogType: 'article'
   },
   '/blog/what-are-healthcare-ai-agents-complete-guide-2026': {
@@ -1255,7 +1269,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/what-are-healthcare-ai-agents-complete-guide-2026',
     ogTitle: 'What Are Healthcare AI Agents? Complete 2026 Guide | AbuQitmirLabs',
     ogDescription: 'A comprehensive architectural guide to healthcare AI agents: HIPAA compliance, EHR integration, and clinical workflows.',
-    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogImage: 'https://i.postimg.cc/SNtwq1QD/Healthcare-AI-Agents.jpg',
     ogType: 'article'
   },
   '/blog/healthcare-software-development-solutions-2026-custom-ehr-clinical-software': {
@@ -1264,7 +1278,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/healthcare-software-development-solutions-2026-custom-ehr-clinical-software',
     ogTitle: 'Healthcare Software Development Solutions: The Complete 2026 Guide | AbuQitmirLabs',
     ogDescription: 'Building custom medical software in 2026: FHIR/HL7 interoperability, telemedicine security, and HIPAA compliance.',
-    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogImage: 'https://i.postimg.cc/kgVJg9xf/Healthcare-Software-Development-Solutions.png',
     ogType: 'article'
   },
   '/blog/generative-ai-chatbot-development-what-it-actually-costs-in-2026': {
@@ -1273,11 +1287,11 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/generative-ai-chatbot-development-what-it-actually-costs-in-2026',
     ogTitle: 'Generative AI Chatbot Development Cost 2026: Real Numbers',
     ogDescription: 'Real 2026 cost breakdowns for generative AI chatbot development — rule-based vs RAG vs agentic builds, plus what GPT-6 Astra changes for enterprise teams.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog/generative-ai-chatbot-cost-2026-og.jpg',
+    ogImage: 'https://i.postimg.cc/fLZj9qgL/Generative-AI-Chatbot-Development-What-It-Actually-Costs-in-2026.png',
     ogType: 'article',
     twitterTitle: 'Generative AI Chatbot Development Cost 2026: Real Numbers',
     twitterDescription: 'Real 2026 cost breakdowns for generative AI chatbot development — rule-based vs RAG vs agentic builds, plus what GPT-6 Astra changes for enterprise teams.',
-    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/generative-ai-chatbot-cost-2026-twitter.jpg',
+    twitterImage: 'https://i.postimg.cc/fLZj9qgL/Generative-AI-Chatbot-Development-What-It-Actually-Costs-in-2026.png',
     h1: 'Generative AI Chatbot Development: What It Actually Costs in 2026'
   },
   '/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house': {
@@ -1286,7 +1300,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house',
     ogTitle: 'The Go-To Guide to AI Agent Development: Agency vs. Building In-House | AbuQitmirLabs',
     ogDescription: 'Compare AI agent development agency vs in-house costs, timelines, and risks — with real startup-scale numbers, not enterprise ones.',
-    ogImage: 'https://www.abuqitmirlabs.tech/blog/ai-agent-agency-vs-inhouse-cover.jpg',
+    ogImage: 'https://i.postimg.cc/63PPBMsw/AI-Agent-Development-Agency-vs-In-House.png',
     ogType: 'article'
   },
   '/our-company': {
@@ -1340,7 +1354,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogType: 'website',
     twitterTitle: 'High-Authority Guest Post Service | Editorial Backlinks & Outreach | AbuQitmirLabs',
     twitterDescription: 'Manual, high-authority guest post service with DA/DR 40-80+ contextual backlinks. Real editorial outreach, zero PBNs, 100% indexed, verified organic traffic.',
-    twitterImage: 'https://www.abuqitmirlabs.tech/logo.png'
+    twitterImage: 'https://i.postimg.cc/63PPBMsw/AI-Agent-Development-Agency-vs-In-House.png'
   },
   '/local-seo-services': {
     title: 'Local SEO Services for Small Business | AbuQitmirLabs',
@@ -1375,11 +1389,11 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/local-seo-citation-building-the-15-directory-checklist',
     ogTitle: 'Local SEO Citation Building: The 15-Directory Checklist',
     ogDescription: 'A tiered checklist of 15 directories for building consistent NAP citations, plus why AI search engines now check citation consistency too.',
-    ogImage: 'https://www.abuqitmirlabs.tech/blog/local-seo-citation-building-15-directory-checklist/cover.jpg',
+    ogImage: 'https://i.postimg.cc/Njjh8TsX/Local-SEO-Citation-Building-The-15-Directory-Checklist.png',
     ogType: 'article',
     twitterTitle: 'Local SEO Citation Building: The 15-Directory Checklist',
     twitterDescription: 'A tiered checklist of 15 directories for building consistent NAP citations, plus why AI search engines now check citation consistency too.',
-    twitterImage: 'https://www.abuqitmirlabs.tech/blog/local-seo-citation-building-15-directory-checklist/cover.jpg'
+    twitterImage: 'https://i.postimg.cc/Njjh8TsX/Local-SEO-Citation-Building-The-15-Directory-Checklist.png'
   },
   '/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026': {
     title: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
@@ -1387,11 +1401,11 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026',
     ogTitle: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
     ogDescription: 'Shopify Plus costs $2,300/month before fees. A custom build breaks even at $2M–$4M GMV. Full 2026 decision framework.',
-    ogImage: 'https://www.abuqitmirlabs.tech/og-ecommerce-platform-development.jpg',
+    ogImage: 'https://i.postimg.cc/Y216rgxR/Custom-Build-vs-Shopify.png',
     ogType: 'article',
     twitterTitle: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
     twitterDescription: 'Shopify Plus costs $2,300/month before fees. Custom build breaks even at $2M–$4M GMV. Full 2026 decision framework.',
-    twitterImage: 'https://www.abuqitmirlabs.tech/twitter-ecommerce-platform-development.jpg',
+    twitterImage: 'https://i.postimg.cc/Y216rgxR/Custom-Build-vs-Shopify.png',
     h1: 'E-Commerce Platform Development: Custom Build vs Shopify Plus 2026',
     schemaJsonLd: {
       "@context": "https://schema.org",
@@ -1837,11 +1851,11 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/what-a-local-seo-audit-actually-checks-2026-complete-guide',
     ogTitle: 'What a Local SEO Audit Actually Checks in 2026',
     ogDescription: 'Most local SEO audits miss AI search, voice, and geo-grid analysis. This 2026 guide covers all 7 audit dimensions including the ones your competitors skip.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog/local-seo-audit-2026-og.jpg',
+    ogImage: 'https://i.postimg.cc/zfv1LWzc/Local-SEO-Audit.png',
     ogType: 'article',
     twitterTitle: 'What a Local SEO Audit Actually Checks in 2026',
     twitterDescription: 'Most local SEO audits miss AI search, voice, and geo-grid analysis. This 2026 guide covers all 7 audit dimensions including the ones your competitors skip.',
-    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/local-seo-audit-2026-og.jpg'
+    twitterImage: 'https://i.postimg.cc/zfv1LWzc/Local-SEO-Audit.png'
   },
   '/blog/programmatic-seo-how-we-scaled-tajweedpage': {
     title: 'Programmatic SEO: How We Scaled TajweedPage.com (2026 Case Study)',
@@ -1849,11 +1863,11 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/programmatic-seo-how-we-scaled-tajweedpage',
     ogTitle: 'Programmatic SEO: How We Scaled TajweedPage.com (2026 Case Study)',
     ogDescription: 'The pSEO playbook that made Zapier famous is declining 40-70%. Here is the semantic hub-and-spoke framework AbuQitmirLabs used to scale TajweedPage.com across 20+ country markets.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog/programmatic-seo-tajweedpage-2026-og.jpg',
+    ogImage: 'https://i.postimg.cc/13khwJyt/Programmatic-SEO-Global-Case-Study.png',
     ogType: 'article',
     twitterTitle: 'Programmatic SEO: How We Scaled TajweedPage.com (2026 Case Study)',
     twitterDescription: 'The pSEO playbook that made Zapier famous is declining 40-70%. Here is the semantic hub-and-spoke framework AbuQitmirLabs used to scale TajweedPage.com across 20+ country markets.',
-    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/programmatic-seo-tajweedpage-2026-og.jpg'
+    twitterImage: 'https://i.postimg.cc/13khwJyt/Programmatic-SEO-Global-Case-Study.png'
   },
 
   '/blog/ai-overviews-killed-traffic-what-40-companies-did-next': {
@@ -1862,11 +1876,11 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/ai-overviews-traffic-recovery-what-40-companies-did-next',
     ogTitle: 'AI Overviews Killed Traffic: What 40 Companies Did Next',
     ogDescription: 'AI Overviews cut organic clicks by 61%. We analyzed 40 companies that recovered. Here are the 7 tactics that actually worked, with specific metrics.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog/ai-overviews-traffic-recovery-2026-og.jpg',
+    ogImage: 'https://i.postimg.cc/C54mQkrC/Google-AI-Overviews-Cut-Organic-Clicks.png',
     ogType: 'article',
     twitterTitle: 'AI Overviews Killed Traffic: What 40 Companies Did Next',
     twitterDescription: 'AI Overviews cut organic clicks by 61%. We analyzed 40 companies that recovered. Here are the 7 tactics that actually worked, with specific metrics.',
-    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/ai-overviews-traffic-recovery-2026-og.jpg',
+    twitterImage: 'https://i.postimg.cc/C54mQkrC/Google-AI-Overviews-Cut-Organic-Clicks.png',
     schemaJsonLd: {
   "@context": "https://schema.org",
   "@graph": [
@@ -2315,12 +2329,12 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026',
     ogTitle: 'The Pakistan Advantage: Why US Startups Are Moving Dev Teams Offshore',
     ogDescription: 'Pakistan IT exports hit a record $4.6B in FY2025-26 and tax incentives now run through 2029. Here is the real data behind why US startups are evaluating Pakistan for engineering talent.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog/pakistan-offshore-development-2026-og.jpg',
+    ogImage: 'https://i.postimg.cc/rw3p0qvT/Pakistan-US-Offshore-Tech-Infographic.png',
     ogType: 'article',
     twitterCard: 'summary_large_image',
     twitterTitle: 'The Pakistan Advantage: Why US Startups Are Moving Dev Teams Offshore',
     twitterDescription: 'Pakistan IT exports hit a record $4.6B in FY2025-26 and tax incentives now run through 2029. Here is the real data behind why US startups are evaluating Pakistan for engineering talent.',
-    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/pakistan-offshore-development-2026-og.jpg',
+    twitterImage: 'https://i.postimg.cc/rw3p0qvT/Pakistan-US-Offshore-Tech-Infographic.png',
     schemaJsonLd: {
   "@context": "https://schema.org",
   "@graph": [
@@ -2883,12 +2897,12 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs',
     ogTitle: 'Fix URL Fragmentation in Headless SPAs | AbuQitmirLabs',
     ogDescription: 'A 5-layer self-healing architecture that eliminates duplicate URLs across headless SPAs, GA4, and syndication feeds.',
-    ogImage: 'https://www.abuqitmirlabs.tech/assets/blog/url-fragmentation-headless-spa-cover.png',
+    ogImage: 'https://i.postimg.cc/RhcSLQzQ/URL-Fragmentation-in-Headless-SPAs.png',
     ogType: 'article',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Fix URL Fragmentation in Headless SPAs | AbuQitmirLabs',
     twitterDescription: 'Why GA4 shows two URLs for one article, and the 5-layer architecture that eliminates duplicate indexing permanently.',
-    twitterImage: 'https://www.abuqitmirlabs.tech/assets/blog/url-fragmentation-headless-spa-cover.png',
+    twitterImage: 'https://i.postimg.cc/RhcSLQzQ/URL-Fragmentation-in-Headless-SPAs.png',
     schema: {
       "@context": "https://schema.org",
       "@graph": [
@@ -3039,12 +3053,12 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact',
     ogTitle: 'The Hidden Cost of Cheap Hosting: Performance, SEO & Revenue Impact | AbuQitmirLabs',
     ogDescription: 'Cheap hosting can push TTFB past 800ms and hurt Core Web Vitals. See what published data shows, where it is vendor-biased, and how to test your own site.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog/cheap-hosting-performance-impact-2026-og.jpg',
+    ogImage: 'https://i.postimg.cc/zfKXk3cj/The-Hidden-Cost-of-Cheap-Hosting.jpg',
     ogType: 'article',
     twitterCard: 'summary_large_image',
     twitterTitle: 'The Hidden Cost of Cheap Hosting: Performance, SEO & Revenue Impact | AbuQitmirLabs',
     twitterDescription: 'Cheap hosting can push TTFB past 800ms and hurt Core Web Vitals. See what the published data shows and how to test your own site.',
-    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/cheap-hosting-performance-impact-2026-og.jpg',
+    twitterImage: 'https://i.postimg.cc/zfKXk3cj/The-Hidden-Cost-of-Cheap-Hosting.jpg',
     schema: {
       "@context": "https://schema.org",
       "@graph": [
@@ -3160,12 +3174,12 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/the-2026-static-site-comeback-why-jamstack-won-after-all',
     ogTitle: 'The 2026 Static Site Comeback: Why Jamstack Won After All | AbuQitmirLabs',
     ogDescription: 'Jamstack vs dynamic website 2026 comparison showing the Three-Tier Static Model with pre-render, on-demand render, and client fetch tiers by AbuQitmirLabs',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog/2026-static-site-comeback-og.jpg',
+    ogImage: 'https://i.postimg.cc/MHS9LKHB/The-2026-Static-Site-Comeback.png',
     ogType: 'article',
     twitterCard: 'summary_large_image',
     twitterTitle: 'The 2026 Static Site Comeback: Why Jamstack Won After All | AbuQitmirLabs',
     twitterDescription: 'Jamstack vs dynamic website 2026 comparison showing the Three-Tier Static Model with pre-render, on-demand render, and client fetch tiers by AbuQitmirLabs',
-    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog/2026-static-site-comeback-og.jpg',
+    twitterImage: 'https://i.postimg.cc/MHS9LKHB/The-2026-Static-Site-Comeback.png',
     schema: {
       "@context": "https://schema.org",
       "@graph": [
@@ -3766,11 +3780,11 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     keywords: 'software ownership IP non-technical founder, who owns source code when hiring developer, software IP assignment, startup IP ownership',
     ogTitle: 'Software Ownership & IP for Founders 2026 | AbuQitmirLabs',
     ogDescription: 'A step-by-step software ownership and IP checklist for non-technical founders. Learn who owns the code, domains, repositories, and APIs before you sign a development contract.',
-    ogImage: 'https://www.abuqitmirlabs.tech/assets/blog/software-ownership-ip-cover.png',
+    ogImage: 'https://i.postimg.cc/NGNQF3vh/Software-Ownership-IP-Guide.png',
     ogType: 'article',
     twitterTitle: 'Software Ownership & IP for Founders 2026 | AbuQitmirLabs',
     twitterDescription: 'A step-by-step software ownership and IP checklist for non-technical founders.',
-    twitterImage: 'https://www.abuqitmirlabs.tech/assets/blog/software-ownership-ip-cover.png',
+    twitterImage: 'https://i.postimg.cc/NGNQF3vh/Software-Ownership-IP-Guide.png',
     twitterCard: 'summary_large_image',
     schemaJsonLd: {
       "@context": "https://schema.org",

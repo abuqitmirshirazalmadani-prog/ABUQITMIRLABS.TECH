@@ -539,8 +539,10 @@ export default function App() {
               <Route path="/blog/guest-posting-in-2026-what-works-abuqitmirlabs" element={<BlogPostPage overrideSlug="guest-posting-in-2026-what-works-abuqitmirlabs" />} />
               <Route path="/blog/guest-posting-strategy-2026" element={<Navigate to="/blog/guest-posting-in-2026-what-works-abuqitmirlabs" replace />} />
               <Route path="/guest-posting-in-2026-what-works-abuqitmirlabs" element={<Navigate to="/blog/guest-posting-in-2026-what-works-abuqitmirlabs" replace />} />
-              <Route path="/blog/measure-marketing-roi-without-tracking" element={<BlogPostPage overrideSlug="measure-marketing-roi-without-tracking" />} />
+               <Route path="/blog/measure-marketing-roi-without-tracking" element={<BlogPostPage overrideSlug="measure-marketing-roi-without-tracking" />} />
               <Route path="/measure-marketing-roi-without-tracking" element={<Navigate to="/blog/measure-marketing-roi-without-tracking" replace />} />
+              <Route path="/blog/ai-is-quietly-stealing-your-ability-to-think" element={<BlogPostPage overrideSlug="ai-is-quietly-stealing-your-ability-to-think" />} />
+              <Route path="/ai-is-quietly-stealing-your-ability-to-think" element={<Navigate to="/blog/ai-is-quietly-stealing-your-ability-to-think" replace />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />

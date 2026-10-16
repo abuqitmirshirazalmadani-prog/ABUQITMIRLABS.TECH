@@ -13,6 +13,8 @@ import { STATIC_BLOG_POSTS } from '../data/staticBlogPosts';
 import { generateBlogPostMeta } from '../utils/seoUtils';
 import { getCanonicalSlug } from '../data/canonicalRedirects';
 
+import { getCachedPost, setCachedPost } from '../utils/blogCache';
+
 interface Post {
   title: string;
   content: string;
@@ -43,26 +45,26 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         return <Navigate to={`/blog/${canonicalSlug}`} replace />;
     }
     
-    // Strictly use exact matching to prevent flashing wrong or outdated post data/images
+    // Retrieve cached or static post for instant, zero-delay rendering
+    const cachedPost = (slug ? getCachedPost(slug) : null) as Post | null;
     const staticFallback = (slug && STATIC_POSTS_MAP[slug]) 
       ? (STATIC_POSTS_MAP[slug] as Post) 
       : null;
+    const initialPost = cachedPost || staticFallback;
     
-    const [post, setPost] = useState<Post | null>(staticFallback);
-    const [loading, setLoading] = useState(!staticFallback);
+    const [post, setPost] = useState<Post | null>(initialPost);
+    const [loading, setLoading] = useState(!initialPost);
     const [copied, setCopied] = useState(false);
     const [imageError, setImageError] = useState(false);
 
     useEffect(() => {
         setImageError(false);
-        // If static fallback is available, render immediately with zero delay
-        if (staticFallback) {
-            setPost(staticFallback);
+        const currentInitial = (slug ? getCachedPost(slug) : null) as Post | null || 
+          (slug && STATIC_POSTS_MAP[slug] ? (STATIC_POSTS_MAP[slug] as Post) : null);
+        
+        if (currentInitial) {
+            setPost(currentInitial);
             setLoading(false);
-            if (typeof window !== 'undefined') {
-                window.scrollTo(0, 0);
-            }
-            return;
         }
 
         const fetchPost = async () => {
@@ -72,10 +74,16 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 return;
             }
 
-            setLoading(true);
+            if (!currentInitial) {
+                setLoading(true);
+            }
 
             try {
                 const slugsToTry = [slug];
+                const canonical = getCanonicalSlug(slug);
+                if (canonical && !slugsToTry.includes(canonical)) {
+                    slugsToTry.push(canonical);
+                }
                 if (slug === 'ai-agents-cost-benefit-analysis') {
                     slugsToTry.push('ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont');
                 } else if (slug === 'ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont') {
@@ -87,30 +95,42 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 }
 
                 let foundPost: Post | null = null;
-                // Add a 2000ms timeout race so page never hangs on slow network
-                const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 2000));
+                // Generous 12-second timeout so mobile or cold connections never falsely abort to 404
+                const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 12000));
 
                 for (const s of slugsToTry) {
-                    const q = query(
-                        collection(db, 'posts'), 
-                        where('slug', '==', s), 
-                        where('published', '==', true)
-                    );
-                    const snapshot = await Promise.race([getDocs(q), timeoutPromise]) as any;
-                    if (snapshot && !snapshot.empty) {
-                        foundPost = snapshot.docs[0].data() as Post;
-                        break;
+                    try {
+                        const q = query(
+                            collection(db, 'posts'), 
+                            where('slug', '==', s)
+                        );
+                        const snapshot = await Promise.race([getDocs(q), timeoutPromise]) as any;
+                        if (snapshot && !snapshot.empty) {
+                            const docData = snapshot.docs[0].data() as Post;
+                            if ((docData as any).published !== false) {
+                                foundPost = docData;
+                                break;
+                            }
+                        }
+                    } catch (subErr) {
+                        // ignore and try next slug variant
                     }
                 }
 
                 if (foundPost) {
                     setPost(foundPost);
-                } else {
+                    setCachedPost(slug, foundPost as any);
+                    if (canonical) {
+                        setCachedPost(canonical, foundPost as any);
+                    }
+                } else if (!currentInitial) {
                     setPost(null);
                 }
             } catch (error) {
                 handleFirestoreError(error, OperationType.GET, `posts/${slug}`);
-                setPost(null);
+                if (!currentInitial) {
+                    setPost(null);
+                }
             } finally {
                 setLoading(false);
             }

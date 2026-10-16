@@ -499,8 +499,8 @@
       "destination": "/api/$1"
     },
     {
-      "source": "/((?!api/|.*\\.[\\w]+$).*)",
-      "destination": "/spa-shell.html"
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
     }
   ]
 }

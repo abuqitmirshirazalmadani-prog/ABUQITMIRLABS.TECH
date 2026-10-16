@@ -108,10 +108,15 @@ baseTemplate = baseTemplate.replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gi
 
 // Preserve a clean, unpopulated SPA shell with site-wide schemas for dynamic client-side routes
 const spaShellPath = path.join(distDir, 'spa-shell.html');
+const spaShellDir = path.join(distDir, 'spa-shell');
 const spaShellContent = siteWideSchemasHtml 
   ? baseTemplate.replace('</head>', `  ${siteWideSchemasHtml}\n</head>`)
   : baseTemplate;
 fs.writeFileSync(spaShellPath, spaShellContent, 'utf8');
+if (!fs.existsSync(spaShellDir)) {
+  fs.mkdirSync(spaShellDir, { recursive: true });
+}
+fs.writeFileSync(path.join(spaShellDir, 'index.html'), spaShellContent, 'utf8');
 
 const routes = [
   '/',
@@ -177,6 +182,7 @@ const routes = [
   '/tools/website-authority-analyzer',
   '/editorial-policy',
   '/news/industry-insights/google-ai-dogfooding-enterprise-results',
+  '/blog/ai-is-quietly-stealing-your-ability-to-think',
   '/blog/rag-ai-integration-for-startups',
   '/blog/agentic-ai-production-failures',
   '/blog/custom-web-development-company',
