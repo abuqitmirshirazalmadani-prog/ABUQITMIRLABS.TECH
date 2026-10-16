@@ -538,8 +538,7 @@ export default function App() {
               <Route path="/blog/ai-agents-cost-benefit-analysis-when-they-actually-save-money-and-when-they-dont" element={<Navigate to="/blog/ai-agents-cost-benefit-analysis" replace />} />
               <Route path="/blog/guest-posting-in-2026-what-works-abuqitmirlabs" element={<BlogPostPage overrideSlug="guest-posting-in-2026-what-works-abuqitmirlabs" />} />
               <Route path="/blog/guest-posting-strategy-2026" element={<Navigate to="/blog/guest-posting-in-2026-what-works-abuqitmirlabs" replace />} />
-              <Route path="/guest-posting-in-2026-what-works-abuqitmirlabs" element={<Navigate to="/blog/guest-posting-in-2026-what-works-abuqitmirlabs" replace />} />
-               <Route path="/blog/measure-marketing-roi-without-tracking" element={<BlogPostPage overrideSlug="measure-marketing-roi-without-tracking" />} />
+              <Route path="/blog/measure-marketing-roi-without-tracking" element={<BlogPostPage overrideSlug="measure-marketing-roi-without-tracking" />} />
               <Route path="/measure-marketing-roi-without-tracking" element={<Navigate to="/blog/measure-marketing-roi-without-tracking" replace />} />
               <Route path="/blog/ai-is-quietly-stealing-your-ability-to-think" element={<BlogPostPage overrideSlug="ai-is-quietly-stealing-your-ability-to-think" />} />
               <Route path="/ai-is-quietly-stealing-your-ability-to-think" element={<Navigate to="/blog/ai-is-quietly-stealing-your-ability-to-think" replace />} />
@@ -557,6 +556,16 @@ export default function App() {
               <Route path="/website-audit" element={<Navigate to="/tools/website-audit" replace />} />
               <Route path="/tools/seo-checklist" element={<SeoChecklistPage />} />
               <Route path="/seo-checklist" element={<Navigate to="/tools/seo-checklist" replace />} />
+              <Route path="*" element={
+                <div className="min-h-screen flex items-center justify-center bg-[#09090b] text-white">
+                  <div className="text-center max-w-md px-6">
+                    <p className="text-white/60 mb-8">Page not found.</p>
+                    <a href="/" className="inline-block px-6 py-3 bg-[#ccff00] text-black font-bold rounded-lg">
+                      Go Home
+                    </a>
+                  </div>
+                </div>
+              } />
               <Route path="/tools/ai-readiness-score" element={<AiReadinessScorePage />} />
               <Route path="/ai-readiness-score" element={<Navigate to="/tools/ai-readiness-score" replace />} />
               <Route path="/tools/tech-stack-recommender" element={<TechStackRecommenderPage />} />
