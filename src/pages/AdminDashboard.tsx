@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
-    auth, googleProvider, signInWithPopup, signOut, 
+    auth, googleProvider, signInWithPopup, signOut, signInWithEmailAndPassword,
     db, collection, addDoc, getDocs, updateDoc, deleteDoc, doc, serverTimestamp, query, where 
 } from '../lib/firebase';
 import { getCanonicalSlug } from '../data/canonicalRedirects';
@@ -122,6 +122,9 @@ const AdminDashboard = () => {
     const [status, setStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null);
     const [loginError, setLoginError] = useState<string | null>(null);
     const [isInIframe, setIsInIframe] = useState(false);
+    const [showPasswordLogin, setShowPasswordLogin] = useState(false);
+    const [adminPassword, setAdminPassword] = useState('');
+    const [isPasswordLoading, setIsPasswordLoading] = useState(false);
     
     // Blog State
     const [posts, setPosts] = useState<any[]>([]);
@@ -624,11 +627,21 @@ const AdminDashboard = () => {
             }
         });
 
-        // Handle redirect result
-        getRedirectResult(auth).catch((error) => {
-            console.error("Redirect Error:", error);
-            setLoginError(`Redirect login failed: ${error.message}`);
-        });
+        // Handle redirect result cleanly
+        getRedirectResult(auth)
+            .then((result) => {
+                if (result?.user) {
+                    console.log("Redirect login success:", result.user.email);
+                    setUser(result.user);
+                    setLoginError(null);
+                }
+            })
+            .catch((error) => {
+                console.error("Redirect Error:", error);
+                if (error && error.code && error.code !== 'auth/null-user') {
+                    setLoginError(`Redirect login failed: ${error.message}`);
+                }
+            });
 
         return () => unsubscribe();
     }, []);
@@ -691,6 +704,26 @@ const AdminDashboard = () => {
     };
 
     const handleLogout = () => signOut(auth);
+
+    const handlePasswordLogin = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsPasswordLoading(true);
+        setLoginError(null);
+        try {
+            await signInWithEmailAndPassword(auth, ADMIN_EMAIL, adminPassword);
+        } catch (err: any) {
+            console.error("Password login error:", err);
+            let msg = err.message || 'Login failed';
+            if (err.code === 'auth/wrong-password' || err.code === 'auth/invalid-credential') {
+                msg = 'Incorrect password. If your account was set up via Google, please click "Sign in with Google" or "Direct Redirect Login".';
+            } else if (err.code === 'auth/user-not-found') {
+                msg = 'Email/password account not registered yet. Please click "Sign in with Google".';
+            }
+            setLoginError(msg);
+        } finally {
+            setIsPasswordLoading(false);
+        }
+    };
 
     const handleSaveSettings = (e?: React.FormEvent) => {
         if (e) e.preventDefault();
@@ -951,19 +984,62 @@ const AdminDashboard = () => {
                             <button 
                                 onClick={handleLogin}
                                 disabled={isLoginLoading}
-                                className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 text-white font-black py-5 rounded-2xl transition-all uppercase tracking-widest text-base shadow-lg shadow-blue-600/30 active:scale-95 flex items-center justify-center gap-3"
+                                className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 text-white font-black py-4 rounded-2xl transition-all uppercase tracking-widest text-sm shadow-lg shadow-blue-600/30 active:scale-95 flex items-center justify-center gap-3 cursor-pointer"
                             >
-                                {isLoginLoading ? <Loader2 className="animate-spin" /> : null}
-                                {isLoginLoading ? 'Connecting...' : 'Sign in with Google'}
+                                {isLoginLoading ? <Loader2 className="animate-spin" size={18} /> : null}
+                                {isLoginLoading ? 'Connecting...' : 'Sign in with Google (Popup)'}
                             </button>
 
                             <button 
                                 onClick={handleRedirectLogin}
                                 disabled={isLoginLoading}
-                                className="w-full bg-white/5 hover:bg-white/10 text-gray-400 font-bold py-3 rounded-xl border border-white/10 transition-colors uppercase tracking-widest text-xs flex items-center justify-center gap-2"
+                                className="w-full bg-white/10 hover:bg-white/15 text-white font-bold py-3.5 rounded-2xl border border-white/20 transition-colors uppercase tracking-widest text-xs flex items-center justify-center gap-2 cursor-pointer shadow-sm"
                             >
-                                <Globe size={14} /> Redirect Login Method
+                                <Globe size={15} /> Direct Redirect Login (Recommended if popup closes)
                             </button>
+
+                            <div className="pt-2">
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPasswordLogin(!showPasswordLogin)}
+                                    className="text-[11px] text-zinc-400 hover:text-white uppercase tracking-wider underline cursor-pointer"
+                                >
+                                    {showPasswordLogin ? 'Hide Password Login' : 'Or Sign in with Email / Password'}
+                                </button>
+                            </div>
+
+                            {showPasswordLogin && (
+                                <form onSubmit={handlePasswordLogin} className="pt-3 space-y-3 text-left bg-white/5 p-4 rounded-2xl border border-white/10">
+                                    <div>
+                                        <label className="text-[10px] text-zinc-400 uppercase font-mono tracking-widest block mb-1">Admin Email</label>
+                                        <input 
+                                            type="email" 
+                                            value={ADMIN_EMAIL} 
+                                            disabled 
+                                            className="w-full bg-black/60 border border-white/10 rounded-xl px-3 py-2 text-xs text-zinc-300 font-mono"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="text-[10px] text-zinc-400 uppercase font-mono tracking-widest block mb-1">Password</label>
+                                        <input 
+                                            type="password" 
+                                            value={adminPassword}
+                                            onChange={(e) => setAdminPassword(e.target.value)}
+                                            placeholder="Enter password..."
+                                            required
+                                            className="w-full bg-black border border-white/20 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500"
+                                        />
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        disabled={isPasswordLoading}
+                                        className="w-full bg-white text-black font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider hover:bg-zinc-200 transition-all cursor-pointer flex items-center justify-center gap-2"
+                                    >
+                                        {isPasswordLoading && <Loader2 size={14} className="animate-spin" />}
+                                        Sign In with Password
+                                    </button>
+                                </form>
+                            )}
                         </div>
 
                         <div className="mt-8 pt-6 border-t border-white/5 space-y-4">
