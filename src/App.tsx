@@ -8,7 +8,6 @@ import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'r
 import { useEffect, lazy, Suspense } from 'react';
 import FacebookPixel from './components/FacebookPixel';
 import ErrorBoundary from './components/ErrorBoundary';
-import { preloadAllRoutes } from './utils/preloader';
 
 // Eager import landing page for immediate initial render
 import HomePage from './pages/HomePage';
@@ -402,9 +401,6 @@ export default function App() {
     };
     
     trigger();
-
-    // Trigger instant background route preloading for smooth zero-wait page navigation
-    preloadAllRoutes();
   }, []);
 
   return (
