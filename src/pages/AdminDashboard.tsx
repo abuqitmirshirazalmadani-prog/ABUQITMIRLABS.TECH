@@ -20,6 +20,13 @@ import { Link } from 'react-router-dom';
 const ADMIN_EMAIL = "abuqitmirshirazalmadani@gmail.com";
 const ADMIN_UID = "cRAf1wZFRRXMVadj7RDaC8WM4152";
 
+export const isUserAdmin = (u: any): boolean => {
+    if (!u) return false;
+    const email = String(u.email || '').toLowerCase().trim();
+    const uid = String(u.uid || '').trim();
+    return email === ADMIN_EMAIL.toLowerCase().trim() || uid === ADMIN_UID;
+};
+
 const DEFAULT_NEWS_SEED = [
     {
       title: "AbuQitmirLabs Releases Autonomous Multi-Agent RAG Framework for Enterprise Clients",
@@ -240,7 +247,7 @@ const AdminDashboard = () => {
     };
 
     useEffect(() => {
-        if (user && (user.email === ADMIN_EMAIL || user.uid === ADMIN_UID)) {
+        if (isUserAdmin(user)) {
             fetchPosts();
             fetchNewsItems();
         }
@@ -345,8 +352,8 @@ const AdminDashboard = () => {
 
     const handleNewsSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const isAuthorized = user && (user.email === ADMIN_EMAIL || user.uid === ADMIN_UID);
-        if (!isAuthorized || !user.emailVerified) {
+        const isAuthorized = isUserAdmin(user);
+        if (!isAuthorized) {
             setStatus({ type: 'error', message: 'Unauthorized action' });
             return;
         }
@@ -634,21 +641,34 @@ const AdminDashboard = () => {
         setIsLoginLoading(true);
         setLoginError(null);
         try {
-            await signInWithPopup(auth, googleProvider);
+            googleProvider.setCustomParameters({
+                prompt: 'select_account'
+            });
+            const result = await signInWithPopup(auth, googleProvider);
+            if (result?.user) {
+                const userEmail = (result.user.email || '').toLowerCase().trim();
+                if (userEmail !== ADMIN_EMAIL.toLowerCase().trim() && result.user.uid !== ADMIN_UID) {
+                    setLoginError(`Signed in with ${result.user.email}, but this dashboard requires ${ADMIN_EMAIL}. Please sign in with the admin email.`);
+                }
+            }
         } catch (error: any) {
             console.error("Login Error:", error);
             let message = `Sign-in failed (${error.code || 'unknown error'}).`;
             
             if (error.code === 'auth/popup-blocked') {
-                message = "Sign-in popup was blocked. Please allow popups or try the Redirect method below.";
+                message = "Sign-in popup was blocked by browser. Please allow popups or use Launch in New Tab.";
             } else if (error.code === 'auth/popup-closed-by-user') {
-                message = "Sign-in window was closed. If popups aren't working, try the Redirect method below.";
+                message = `Sign-in window was closed before selecting your Google account. Please choose ${ADMIN_EMAIL}.`;
             } else if (error.code === 'auth/cancelled-closure-interaction') {
                 message = "Sign-in was cancelled.";
             } else if (error.code === 'auth/operation-not-allowed') {
                 message = "Google Sign-In is not enabled in your Firebase Project.";
             } else if (error.code === 'auth/unauthorized-domain') {
-                message = "This domain is not authorized for Firebase Auth.";
+                message = `Domain "${window.location.hostname}" is not authorized for Firebase Auth. Please launch this page in a New Tab or check Firebase Console.`;
+            } else if (error.code === 'auth/network-request-failed') {
+                message = "Network error communicating with Firebase Auth. Please check your internet connection and disable blocking extensions.";
+            } else if (error.message) {
+                message = error.message;
             }
             
             setLoginError(message);
@@ -660,6 +680,9 @@ const AdminDashboard = () => {
     const handleRedirectLogin = async () => {
         setIsLoginLoading(true);
         try {
+            googleProvider.setCustomParameters({
+                prompt: 'select_account'
+            });
             await signInWithRedirect(auth, googleProvider);
         } catch (error: any) {
             setLoginError(`Redirect failed: ${error.message}`);
@@ -771,10 +794,10 @@ const AdminDashboard = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const isAuthorized = user && (user.email === ADMIN_EMAIL || user.uid === ADMIN_UID);
+        const isAuthorized = isUserAdmin(user);
         
-        if (!isAuthorized || !user.emailVerified) {
-            setStatus({ type: 'error', message: 'Unauthorized action or unverified email' });
+        if (!isAuthorized) {
+            setStatus({ type: 'error', message: 'Unauthorized action' });
             return;
         }
 
@@ -907,18 +930,20 @@ const AdminDashboard = () => {
                         <div className="space-y-4">
                             {isInIframe ? (
                                 <>
-                                    <button 
-                                        onClick={handleOpenInNewTab}
-                                        className="w-full bg-white text-black font-black py-5 rounded-2xl transition-all uppercase tracking-widest text-base shadow-lg active:scale-95 flex items-center justify-center gap-3 mb-2"
+                                    <a 
+                                        href={window.location.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full bg-white hover:bg-gray-100 text-black font-black py-5 rounded-2xl transition-all uppercase tracking-widest text-base shadow-lg active:scale-95 flex items-center justify-center gap-3 mb-2 text-center"
                                     >
                                         <Globe size={20} /> Launch in New Tab
-                                    </button>
+                                    </a>
                                     <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-4">
-                                        Required for secure authentication
+                                        Required for Google authentication in sandboxed preview
                                     </p>
                                     <div className="relative">
                                         <hr className="border-white/10" />
-                                        <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#111] px-4 text-[10px] font-black text-white/20">OR TRY ANYWAY</span>
+                                        <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#111] px-4 text-[10px] font-black text-white/20">OR SIGN IN DIRECTLY</span>
                                     </div>
                                 </>
                             ) : null}
@@ -959,24 +984,44 @@ const AdminDashboard = () => {
             );
         }
 
-        const isAuthorized = user && (user.email === ADMIN_EMAIL || user.uid === ADMIN_UID);
+        const isAuthorized = isUserAdmin(user);
 
-        if (!isAuthorized || (user.email === ADMIN_EMAIL && !user.emailVerified)) {
+        if (!isAuthorized) {
             return (
                 <div className="flex items-center justify-center min-h-[60vh] p-6">
                     <div className="max-w-md w-full bg-[#0a0a0a] border border-red-500/30 p-8 rounded-3xl text-center brutalist-shadow border-4 border-red-500/10">
                         <AlertCircle className="mx-auto text-red-500 mb-6" size={64} />
                         <h1 className="text-3xl font-black text-white uppercase mb-4 tracking-tighter">Access Denied</h1>
-                        <p className="text-gray-400 mb-8 font-medium">
-                            Administrative access is strictly restricted.
-                            {!isAuthorized ? ` Your account (${user.email || user.uid}) is not authorized.` : " Please verify your email to continue."}
+                        <p className="text-gray-400 mb-4 font-medium text-sm">
+                            Administrative access is strictly restricted to: <br />
+                            <span className="text-white font-mono font-bold">{ADMIN_EMAIL}</span>
                         </p>
-                        <button 
-                            onClick={handleLogout}
-                            className="w-full bg-white/5 hover:bg-white/10 text-white font-bold py-4 rounded-xl border border-white/10 transition-colors uppercase tracking-widest text-sm"
-                        >
-                            Log Out & Try Admin Account
-                        </button>
+                        {user?.email && (
+                            <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-xs text-left">
+                                <div className="text-gray-400 font-mono text-[11px]">Currently signed in as:</div>
+                                <div className="font-bold text-red-300 font-mono text-sm break-all mt-1">{user.email}</div>
+                                <div className="text-[10px] text-gray-500 mt-2">
+                                    Please switch to your designated admin Google account ({ADMIN_EMAIL}).
+                                </div>
+                            </div>
+                        )}
+                        <div className="space-y-3">
+                            <button 
+                                onClick={async () => {
+                                    await signOut(auth);
+                                    handleLogin();
+                                }}
+                                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-colors uppercase tracking-widest text-xs shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 cursor-pointer"
+                            >
+                                <RefreshCw size={16} /> Switch to Admin Account
+                            </button>
+                            <button 
+                                onClick={handleLogout}
+                                className="w-full bg-white/5 hover:bg-white/10 text-gray-300 font-bold py-3.5 rounded-xl border border-white/10 transition-colors uppercase tracking-widest text-xs cursor-pointer"
+                            >
+                                Log Out
+                            </button>
+                        </div>
                     </div>
                 </div>
             );

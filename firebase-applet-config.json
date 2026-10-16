@@ -6,5 +6,7 @@
   "firestoreDatabaseId": "ai-studio-675d15b3-f001-4d2e-a88b-bbcb33443014",
   "storageBucket": "angular-oxide-tcf5x.firebasestorage.app",
   "messagingSenderId": "658682320044",
-  "measurementId": ""
+  "measurementId": "",
+  "oAuthClientId": "658682320044-laoldviin7cjdd7meihfhvos3n0ahmoe.apps.googleusercontent.com",
+  "recaptchaSiteKey": ""
 }
