@@ -15,8 +15,12 @@
   ],
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/((?!api/|.*\\.[\\w]+$).*)",
+      "destination": "/spa-shell"
     }
   ],
   "redirects": [

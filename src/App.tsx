@@ -541,6 +541,8 @@ export default function App() {
               <Route path="/measure-marketing-roi-without-tracking" element={<Navigate to="/blog/measure-marketing-roi-without-tracking" replace />} />
               <Route path="/blog/ai-is-quietly-stealing-your-ability-to-think" element={<BlogPostPage overrideSlug="ai-is-quietly-stealing-your-ability-to-think" />} />
               <Route path="/ai-is-quietly-stealing-your-ability-to-think" element={<Navigate to="/blog/ai-is-quietly-stealing-your-ability-to-think" replace />} />
+              <Route path="/blog/brand-identity-vs-logo-design" element={<BlogPostPage overrideSlug="brand-identity-vs-logo-design" />} />
+              <Route path="/brand-identity-vs-logo-design" element={<Navigate to="/blog/brand-identity-vs-logo-design" replace />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />

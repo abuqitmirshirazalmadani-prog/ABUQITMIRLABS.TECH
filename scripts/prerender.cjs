@@ -183,6 +183,7 @@ const routes = [
   '/editorial-policy',
   '/news/industry-insights/google-ai-dogfooding-enterprise-results',
   '/blog/ai-is-quietly-stealing-your-ability-to-think',
+  '/blog/brand-identity-vs-logo-design',
   '/blog/rag-ai-integration-for-startups',
   '/blog/agentic-ai-production-failures',
   '/blog/custom-web-development-company',
@@ -234,9 +235,28 @@ const routes = [
   '/blog/measure-marketing-roi-without-tracking'
 ];
 
-// Merge explicitly defined routes with any routes declared in SEO_ROUTES_METADATA
+// Dynamically discover all articles from content/blog/*.md so new posts are always prerendered
+const contentBlogDir = path.join(rootDir, 'content', 'blog');
+const blogMarkdownRoutes = [];
+if (fs.existsSync(contentBlogDir)) {
+  const mdFiles = fs.readdirSync(contentBlogDir).filter(f => f.endsWith('.md'));
+  for (const file of mdFiles) {
+    try {
+      const fileContent = fs.readFileSync(path.join(contentBlogDir, file), 'utf8');
+      const slugMatch = fileContent.match(/["']slug["']\s*:\s*["']([^"']+)["']/);
+      const articleSlug = slugMatch && slugMatch[1] ? slugMatch[1] : file.replace(/\.md$/, '');
+      const blogRoute = `/blog/${articleSlug.trim()}`;
+      if (!routes.includes(blogRoute)) {
+        blogMarkdownRoutes.push(blogRoute);
+      }
+    } catch (e) {}
+  }
+}
+
+// Merge explicitly defined routes with markdown routes and SEO_ROUTES_METADATA
 const allRoutes = Array.from(new Set([
   ...routes,
+  ...blogMarkdownRoutes,
   ...Object.keys(SEO_ROUTES_METADATA || {}).filter(k => typeof k === 'string' && k.startsWith('/'))
 ]));
 
