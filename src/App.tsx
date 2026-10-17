@@ -398,7 +398,7 @@ export default function App() {
       <Router>
         {/* <TopLoadingBar /> */}
         <ScrollToTop />
-        <MetaHeadSanitizer />
+        {/* <MetaHeadSanitizer /> */}   ← COMMENT OUT
         <FacebookPixel />
         <GoogleAnalyticsTracker />
         <FloatingWhatsApp />
