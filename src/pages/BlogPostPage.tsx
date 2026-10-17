@@ -19,6 +19,7 @@ interface Post {
   title: string;
   content: string;
   excerpt?: string;
+  metaDescription?: string;
   coverImage?: string;
   coverImageAlt?: string;
   category?: string;

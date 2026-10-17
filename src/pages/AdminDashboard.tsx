@@ -215,6 +215,7 @@ const AdminDashboard = () => {
         title: '',
         slug: '',
         excerpt: '',
+        metaDescription: '',
         content: '',
         author: 'Abu Qitmir Mohammad Shiraz Al-Madani',
         category: 'AI',
@@ -263,6 +264,7 @@ const AdminDashboard = () => {
             title: post.title || '',
             slug: post.slug || '',
             excerpt: post.excerpt || '',
+            metaDescription: post.metaDescription || post.excerpt || '',
             content: post.content || '',
             author: post.author || 'Abu Qitmir Mohammad Shiraz Al-Madani',
             category: post.category || 'AI',
@@ -916,6 +918,7 @@ const AdminDashboard = () => {
                 title: '',
                 slug: '',
                 excerpt: '',
+                metaDescription: '',
                 content: '',
                 author: 'Abu Qitmir Mohammad Shiraz Al-Madani',
                 category: 'AI',
@@ -1474,16 +1477,46 @@ const AdminDashboard = () => {
                                                 </AnimatePresence>
                                             </div>
 
+                                            {/* SEO Meta Description */}
+                                            <div className="space-y-3">
+                                                <div className="flex items-center justify-between">
+                                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 flex items-center gap-2">
+                                                        <span>SEO Meta Description (Google Search Snippet)</span>
+                                                        <span className="text-[9px] px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 lowercase">meta tag & schema</span>
+                                                    </label>
+                                                    <span className={`text-[10px] font-mono ${(formData.metaDescription || formData.excerpt).length > 160 ? 'text-amber-400' : 'text-zinc-500'}`}>
+                                                        {(formData.metaDescription || formData.excerpt).length} / 160 chars
+                                                    </span>
+                                                </div>
+                                                <textarea 
+                                                    className="w-full bg-[#1a1a1a] border border-white/5 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all placeholder:text-gray-700 resize-none text-white text-sm leading-relaxed" 
+                                                    placeholder="Enter custom SEO Meta Description for Google Search, OpenGraph & Twitter (recommended 150-160 characters)..." 
+                                                    rows={2}
+                                                    value={formData.metaDescription}
+                                                    onChange={e => setFormData({...formData, metaDescription: e.target.value})}
+                                                ></textarea>
+                                                <p className="text-[11px] text-zinc-500 leading-normal">
+                                                    Jo description aap yahan likhengay, wohi exact description Google Search, Social Share Cards aur Schema.org JSON-LD mein jayegi.
+                                                </p>
+                                            </div>
+
                                             {/* Excerpt */}
                                             <div className="space-y-3">
-                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Excerpt (Brief Summary)</label>
+                                                <div className="flex items-center justify-between">
+                                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Excerpt (Card View & Summary)</label>
+                                                    <span className="text-[10px] font-mono text-zinc-500">{formData.excerpt.length} chars</span>
+                                                </div>
                                                 <textarea 
                                                     className="w-full bg-[#1a1a1a] border border-white/5 rounded-2xl px-6 py-5 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all placeholder:text-gray-700 resize-none text-white leading-relaxed" 
-                                                    placeholder="Enter a short catchy summary for the card view..." 
+                                                    placeholder="Enter a short summary for the blog card and article header..." 
                                                     rows={3}
                                                     required
                                                     value={formData.excerpt}
-                                                    onChange={e => setFormData({...formData, excerpt: e.target.value})}
+                                                    onChange={e => setFormData({
+                                                        ...formData, 
+                                                        excerpt: e.target.value,
+                                                        metaDescription: formData.metaDescription || e.target.value
+                                                    })}
                                                 ></textarea>
                                             </div>
 

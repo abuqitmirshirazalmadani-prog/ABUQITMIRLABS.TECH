@@ -11,6 +11,7 @@ export interface BlogPostMetaInput {
   title: string;
   content?: string;
   excerpt?: string;
+  metaDescription?: string;
   coverImage?: string;
   coverImageAlt?: string;
   category?: string;
@@ -121,9 +122,10 @@ export function generateBlogPostMeta(
   const rawTitle = post.title?.trim() || 'Journal Article';
   const pageTitle = rawTitle.includes(siteName) ? rawTitle : `${rawTitle} | ${siteName}`;
 
-  // 2. Unique Dynamic Description: Use post excerpt or generate from content
-  const description = post.excerpt?.trim() 
-    ? cleanExcerpt(post.excerpt, 160)
+  // 2. Unique Dynamic Description: Prioritize explicit metaDescription, then post excerpt, then fallback to content
+  const rawDescription = post.metaDescription?.trim() || post.excerpt?.trim();
+  const description = rawDescription 
+    ? cleanExcerpt(rawDescription, 160)
     : cleanExcerpt(post.content || rawTitle, 160);
 
   // 3. Media and Taxonomy
