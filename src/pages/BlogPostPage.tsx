@@ -446,6 +446,19 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         }
     };
 
+    const formatAuthorDisplay = (rawAuthor?: string) => {
+        if (!rawAuthor) return 'Abu Qitmir Mohammad Shiraz Al-Madani (AbuQitmirLabs)';
+        const clean = rawAuthor.trim();
+        if (
+            clean.toUpperCase().includes('SHIRAZ') ||
+            clean.toUpperCase().includes('ABUQITMIRLABS') ||
+            clean.toUpperCase().includes('ABU QITMIR')
+        ) {
+            return 'Abu Qitmir Mohammad Shiraz Al-Madani (AbuQitmirLabs)';
+        }
+        return clean;
+    };
+
     const formatISODate = (timestamp: any) => {
         if (!timestamp) return new Date().toISOString();
         try {
@@ -2973,7 +2986,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 <meta property="og:site_name" content={seoData.ogSiteName} />
                 <meta property="article:published_time" content={seoData.articlePublishedTime} />
                 <meta property="article:modified_time" content={seoData.articleModifiedTime} />
-                <meta property="article:author" content={seoData.articleAuthor === 'ABUQITMIRLABS .TECH Shiraz Almadani' ? 'Shiraz Almadani' : seoData.articleAuthor} />
+                <meta property="article:author" content={!seoData.articleAuthor || seoData.articleAuthor.toUpperCase().includes('SHIRAZ') || seoData.articleAuthor.toUpperCase().includes('ABUQITMIR') ? 'Abu Qitmir Mohammad Shiraz Al-Madani' : seoData.articleAuthor} />
                 {seoData.articleSection && <meta property="article:section" content={seoData.articleSection} />}
 
                 {/* Twitter */}
@@ -3365,9 +3378,25 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                             {post.title}
                         </h1>
 
-                        <div className="flex flex-wrap items-center gap-6 md:gap-8 text-xs text-zinc-400 uppercase tracking-widest font-mono border-y border-zinc-800/80 py-6 mb-12">
-                            <span className="flex items-center gap-2 text-zinc-300"><Calendar size={14} className="text-[#ccff00]" /> {formatDate(post.createdAt)}</span>
-                            <span className="flex items-center gap-2 text-white font-bold">{post.author}</span>
+                        <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-zinc-400 font-mono border-y border-zinc-800/80 py-5 mb-12">
+                            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+                                <span className="flex items-center gap-2 text-zinc-300">
+                                    <Calendar size={14} className="text-[#ccff00]" /> {formatDate(post.createdAt) || 'October 17, 2026'}
+                                </span>
+                                <span className="text-zinc-600 select-none font-normal" aria-hidden="true">•</span>
+                                <span className="flex items-center gap-2 text-zinc-300 font-medium tracking-normal">
+                                    <User size={14} className="text-[#ccff00]" />
+                                    <span>
+                                        By{' '}
+                                        <span className="text-white font-semibold">
+                                            {post.author && !post.author.toUpperCase().includes('SHIRAZ') && !post.author.toUpperCase().includes('ABUQITMIR')
+                                                ? post.author
+                                                : 'Abu Qitmir Mohammad Shiraz Al-Madani'}
+                                        </span>{' '}
+                                        <span className="text-zinc-400">(AbuQitmirLabs)</span>
+                                    </span>
+                                </span>
+                            </div>
                             <div className="flex items-center gap-4 ml-auto">
                                 <span className="hidden md:inline-block text-zinc-400">Share:</span>
                                 <div className="flex items-center gap-2">
@@ -3471,7 +3500,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                         AQ
                                     </div>
                                     <div>
-                                        <div className="text-white font-bold">{post.author || 'Shiraz Almadani'}</div>
+                                        <div className="text-white font-bold">{formatAuthorDisplay(post.author)}</div>
                                         <div className="text-[10px] text-zinc-500">AbuQitmirLabs Research</div>
                                     </div>
                                 </div>

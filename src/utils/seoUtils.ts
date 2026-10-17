@@ -220,9 +220,15 @@ export function generateBlogPostMeta(
         "description": description,
         "image": coverImage,
         "author": {
-          "@type": "Organization",
-          "name": authorName,
-          "url": siteUrl
+          "@type": "Person",
+          "name": "Abu Qitmir Mohammad Shiraz Al-Madani",
+          "jobTitle": "Founder & Growth Engineer",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "AbuQitmirLabs",
+            "url": "https://www.abuqitmirlabs.tech/"
+          },
+          "url": "https://www.abuqitmirlabs.tech/about/our-team"
         },
         "publisher": { "@id": `${siteUrl}/#organization` },
         "datePublished": publishedTime,
