@@ -396,7 +396,7 @@ export default function App() {
   return (
     <HelmetProvider>
       <Router>
-        <TopLoadingBar />
+        {/* <TopLoadingBar /> */}
         <ScrollToTop />
         <MetaHeadSanitizer />
         <FacebookPixel />
