@@ -54,7 +54,6 @@ const Header = () => {
                 { name: 'AI-Powered Automation', href: '/solutions/ai-automation' },
                 { name: 'E-Commerce Development', href: '/solutions/e-commerce' },
                 { name: 'EdTech & Learning Platforms', href: '/solutions/edtech' },
-                { name: "L'Atelier: Luxury Brand Experience", href: '/luxury-brand-experience' },
             ]
         },
         {
