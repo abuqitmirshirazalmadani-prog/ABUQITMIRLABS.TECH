@@ -35,7 +35,7 @@ const AboutPage = () => {
   const stats = [
     { label: "Founded in Karachi", value: "2021", icon: <Calendar className="w-5 h-5 text-blue-400" /> },
     { label: "Elite Team Members", value: "12+", icon: <Users className="w-5 h-5 text-purple-400" /> },
-    { label: "Client retention rate", value: "98%", icon: <ShieldCheck className="w-5 h-5 text-[#ccff00]" /> },
+    { label: "Client Retention Rate", value: "98%", icon: <ShieldCheck className="w-5 h-5 text-[#ccff00]" /> },
   ];
 
   const services = [
@@ -91,13 +91,13 @@ const AboutPage = () => {
   return (
     <div className="bg-[#050505] text-zinc-400 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]/10 selection:text-white">
       <Helmet>
-        <title>About Us | Professional Software Studio — Karachi, Pakistan</title>
-        <meta name="description" content="Meet Abu Qitmir Mohammad Shiraz Al- Madani, founder of AbuQitmirLabs based in Karachi. We are a premier software engineering studio specialized in high-performance web systems, custom mobile apps, and robust AI implementations." />
+        <title>We Were Engineers First. Now We Engineer Growth | About Us | AbuQitmirLabs</title>
+        <meta name="description" content="We aren't marketers who learned tech. We're engineers who learned marketing. Discover AbuQitmirLabs, our origin story, and The Revenue Velocity Engine." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/about" />
         
         {/* OG Tags */}
-        <meta property="og:title" content="About Us | Professional Software Studio — Karachi, Pakistan" />
-        <meta property="og:description" content="Meet Abu Qitmir Mohammad Shiraz Al- Madani, founder of AbuQitmirLabs. Based in Karachi, we engineer premium digital solutions worldwide." />
+        <meta property="og:title" content="We Were Engineers First. Now We Engineer Growth | About Us | AbuQitmirLabs" />
+        <meta property="og:description" content="Most agencies deliver reports. We deliver systems. Discover AbuQitmirLabs, our origin story, and The Revenue Velocity Engine." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/about" />
         <meta property="og:type" content="profile" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
@@ -184,10 +184,10 @@ const AboutPage = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-4xl sm:text-6xl md:text-7xl lg:text-[7.5rem] font-serif font-light text-white tracking-tighter leading-[0.95] mb-8 uppercase"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-serif font-light text-white tracking-tighter leading-[0.98] mb-8"
              >
-                Redefining <br />
-                <span className="text-zinc-600 font-serif italic">Digital Craft.</span>
+                We Were Engineers First. <br />
+                <span className="text-zinc-600 font-serif italic">Now We Engineer Growth.</span>
              </motion.h1>
              
              <motion.p 
@@ -196,7 +196,7 @@ const AboutPage = () => {
                 transition={{ delay: 0.4 }}
                 className="text-lg md:text-xl font-light text-zinc-400 max-w-3xl leading-relaxed"
               >
-                AbuQitmirLabs is a premium software boutique founded by <span className="text-white font-medium">Abu Qitmir Mohammad Shiraz Al- Madani</span> in Karachi, Pakistan. Since our founding in <span className="text-white font-semibold">2021</span>, we've dedicated ourselves to engineering lightning-fast digital solutions with unparalleled visual depth.
+                AbuQitmirLabs is a growth engineering firm founded by <span className="text-white font-medium">Abu Qitmir Mohammad Shiraz Al- Madani</span> in Karachi, Pakistan. Since our founding in <span className="text-white font-semibold">2021</span>, our transition from software engineering to growth engineering has defined our ethos: We aren't marketers who learned tech. We're engineers who learned marketing.
               </motion.p>
           </div>
 
@@ -256,24 +256,24 @@ const AboutPage = () => {
                    className="space-y-6"
                 >
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-white/10 text-[9px] font-mono uppercase tracking-wider text-slate-400">
-                      <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-                      THE COGNITIVE BLUEPRINT
+                      <Sparkles className="w-3.5 h-3.5 text-[#ccff00]" />
+                      THE GROWTH ENGINEERING METHODOLOGY
                     </div>
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight">
                         Our Mission: <br />
-                        <span className="text-zinc-600 font-serif font-light italic">Refined, High-Converting Architecture.</span>
+                        <span className="text-zinc-600 font-serif font-light italic">Most Agencies Deliver Reports. We Deliver Systems.</span>
                     </h2>
                 </motion.div>
  
                 <div className="space-y-6 text-zinc-400 text-lg font-light leading-relaxed">
                     <p className="border-l border-[#ccff00]/40 pl-6 italic text-zinc-300">
-                       "At AbuQitmirLabs, generic templates are forbidden. We design bespoke, lightning-fast digital pipelines configured to convert international leads into permanent digital loyalty."
+                       "Most agencies deliver reports. We deliver systems. We aren't marketers who learned tech. We're engineers who learned marketing."
                     </p>
                     <p>
-                        Under Abu Qitmir Mohammad Shiraz Al- Madani’s precise technical direction, our Karachi studio has scaled to accommodate the digital demands of complex global platforms. Combining a comprehensive <span className="text-white font-medium">M.B.A. in Commerce from Karachi University (Graduated 2010)</span> with extensive hands-on expertise, Abu Qitmir Mohammad Shiraz Al- Madani blends deep business strategy with cutting-edge engineering.
+                        Under Abu Qitmir Mohammad Shiraz Al- Madani’s technical direction, our Karachi studio has pioneered our proprietary methodology: <strong className="text-white font-medium">The Revenue Velocity Engine</strong> — connecting marketing channels, sales funnels, and data infrastructure into one predictable, measurable growth system. Combining an <span className="text-white font-medium">M.B.A. in Commerce from Karachi University (Graduated 2010)</span> with deep technical stack expertise and verified engineering certifications, Abu Qitmir Mohammad Shiraz Al- Madani blends business intelligence with production-grade engineering.
                     </p>
                     <p>
-                        Whether deploying secure AI processing pipelines, compiling low-latency mobile platforms, or optimizing e-commerce structures and SEO parameters, our mission remains absolute: delivering pristine code written to accelerate corporate growth.
+                        Backed by verified engineering certifications, extensive tech stack expertise (React, TypeScript, Node.js, Python AI models, and cloud infrastructure), and a <strong className="text-white font-medium">98% client retention</strong> rate across global enterprises, our mission remains absolute: delivering high-performance systems engineered to scale revenue.
                     </p>
                 </div>
             </div>

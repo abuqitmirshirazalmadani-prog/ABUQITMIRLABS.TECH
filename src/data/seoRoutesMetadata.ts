@@ -290,20 +290,20 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     twitterImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg'
   },
   '/about': {
-    title: 'About Us | Professional Software Studio — Karachi, Pakistan',
-    description: 'Meet Abu Qitmir Mohammad Shiraz Al-Madani, founder of AbuQitmirLabs based in Karachi. We are a premier software engineering studio specialized in high-performance web systems, custom mobile apps, and robust AI implementations.',
+    title: 'We Were Engineers First. Now We Engineer Growth | About Us | AbuQitmirLabs',
+    description: 'We aren’t marketers who learned tech. We’re engineers who learned marketing. Discover AbuQitmirLabs, our origin story, and The Revenue Velocity Engine.',
     canonical: 'https://www.abuqitmirlabs.tech/about',
-    ogTitle: 'About Us | Professional Software Studio — Karachi, Pakistan',
-    ogDescription: 'Meet Abu Qitmir Mohammad Shiraz Al-Madani, founder of AbuQitmirLabs. Based in Karachi, we engineer premium digital solutions worldwide.',
+    ogTitle: 'We Were Engineers First. Now We Engineer Growth | About Us | AbuQitmirLabs',
+    ogDescription: 'Most agencies deliver reports. We deliver systems. Discover AbuQitmirLabs and The Revenue Velocity Engine.',
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
     ogType: 'website'
   },
   '/about/our-company': {
-    title: 'Our Company | Engineering Culture & Mission | AbuQitmirLabs',
-    description: 'Discover the vision, engineering principles, and international standards driving AbuQitmirLabs. Based in Karachi, serving US, UK, and global innovators.',
+    title: 'We Were Engineers First. Now We Engineer Growth | Our Company | AbuQitmirLabs',
+    description: 'AbuQitmirLabs: We aren’t marketers who learned tech. We’re engineers who learned marketing. Discover our 98% client retention and The Revenue Velocity Engine.',
     canonical: 'https://www.abuqitmirlabs.tech/about/our-company',
-    ogTitle: 'Our Company | Engineering Culture & Mission | AbuQitmirLabs',
-    ogDescription: 'Discover the vision, engineering principles, and international standards driving AbuQitmirLabs.',
+    ogTitle: 'We Were Engineers First. Now We Engineer Growth | Our Company | AbuQitmirLabs',
+    ogDescription: 'Most agencies deliver reports. We deliver systems. Discover AbuQitmirLabs, our 98% client retention, and The Revenue Velocity Engine.',
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
   },
   '/about/our-team': {

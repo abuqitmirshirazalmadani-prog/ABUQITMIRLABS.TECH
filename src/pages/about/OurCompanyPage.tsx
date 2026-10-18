@@ -31,7 +31,7 @@ const OurCompanyPage = () => {
   const faqs = [
     {
       q: "What is AbuQitmirLabs .TECH?",
-      a: "AbuQitmirLabs .TECH is a high-performance software boutique and digital strategy firm headquartered in Karachi, Pakistan. We specialize in custom software engineering, mobile app development, high-speed web platforms, AI agent pipelines, and technical SEO for international clients."
+      a: "AbuQitmirLabs .TECH is a growth engineering firm and software studio headquartered in Karachi, Pakistan. We were engineers first — now we engineer growth. We specialize in custom software engineering, mobile app development, high-speed web platforms, AI agent pipelines, and our proprietary Revenue Velocity Engine for international clients."
     },
     {
       q: "Where is AbuQitmirLabs located?",
@@ -39,7 +39,7 @@ const OurCompanyPage = () => {
     },
     {
       q: "How many projects has AbuQitmirLabs completed?",
-      a: "Since founding in 2021, we have successfully delivered 410+ custom software and digital strategy projects for over 350 satisfied enterprise and mid-market clients worldwide."
+      a: "Since founding in 2021, we have successfully delivered 410+ custom software, web app, and growth engineering projects for over 350 satisfied enterprise and mid-market clients worldwide, maintaining a 98% client retention rate."
     },
     {
       q: "What industries do you specialize in?",
@@ -67,7 +67,7 @@ const OurCompanyPage = () => {
   const aboutSchema = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    "name": "About Our Company — AbuQitmirLabs .TECH",
+    "name": "We Were Engineers First. Now We Engineer Growth — AbuQitmirLabs .TECH",
     "mainEntity": {
       "@type": "Organization",
       "name": "AbuQitmirLabs .TECH",
@@ -86,28 +86,28 @@ const OurCompanyPage = () => {
         "addressCountry": "Pakistan",
         "postalCode": "75950"
       },
-      "description": "Bespoke software engineering boutique specializing in low-latency custom software, mobile apps, AI agent platforms, and international technical SEO."
+      "description": "Bespoke growth engineering boutique specializing in low-latency custom software, mobile apps, AI agent platforms, and The Revenue Velocity Engine."
     }
   };
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
-        <title>About Our Company | Global Software Studio | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs is a Karachi-based software boutique. 410+ custom projects for 350+ global clients. Zero lock-in, 100% in-house talent. Learn about our mission and values." />
+        <title>We Were Engineers First. Now We Engineer Growth | Our Company | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs: We aren't marketers who learned tech. We're engineers who learned marketing. Discover our 98% client retention and The Revenue Velocity Engine." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/about/our-company" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="About Our Company | Global Software Studio | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs is a Karachi-based software boutique. 410+ custom projects for 350+ global clients. Zero lock-in, 100% in-house talent. Learn about our mission and values." />
+        <meta property="og:title" content="We Were Engineers First. Now We Engineer Growth | Our Company | AbuQitmirLabs" />
+        <meta property="og:description" content="Most agencies deliver reports. We deliver systems. Discover AbuQitmirLabs, our 98% client retention, and The Revenue Velocity Engine." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/about/our-company" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Our Company | Global Software Studio | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs is a Karachi-based software boutique. 410+ custom projects for 350+ global clients. Zero lock-in, 100% in-house talent. Learn about our mission and values." />
+        <meta name="twitter:title" content="We Were Engineers First. Now We Engineer Growth | Our Company | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Most agencies deliver reports. We deliver systems. Discover AbuQitmirLabs, our 98% client retention, and The Revenue Velocity Engine." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
@@ -134,25 +134,25 @@ const OurCompanyPage = () => {
               <Building2 className="w-4 h-4" /> Company Overview
             </div>
 
-            <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 max-w-5xl">
-              Our Company — <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] via-white to-[#88a800]">AbuQitmirLabs .TECH</span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 max-w-5xl">
+              We Were Engineers First. <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] via-white to-[#88a800]">Now We Engineer Growth.</span>
             </h1>
 
             {/* Direct Answer Block */}
             <div className="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl max-w-4xl mb-12 shadow-2xl backdrop-blur-md">
               <p className="text-sm md:text-base text-gray-200 leading-relaxed font-mono">
-                <strong className="text-[#ccff00]">Direct Answer:</strong> AbuQitmirLabs .TECH is a premium software boutique and digital strategy firm founded in Karachi, Pakistan in 2021 by Abu Qitmir Mohammad Shiraz Al-Madani (M.B.A. Commerce, 2010). Having completed 410+ custom software, web app, and AI projects for 350+ global clients across the US, UK, Canada, Australia, and Europe, AbuQitmirLabs delivers 3x faster ROI with zero proprietary lock-in.
+                <strong className="text-[#ccff00]">Direct Answer:</strong> AbuQitmirLabs .TECH is a growth engineering firm and software studio founded in Karachi, Pakistan in 2021 by Abu Qitmir Mohammad Shiraz Al-Madani (M.B.A. Commerce, 2010). Having completed 410+ custom software, web app, and AI projects for 350+ global clients across the US, UK, Canada, Australia, and Europe, AbuQitmirLabs delivers 3x faster ROI with zero proprietary lock-in. Most agencies deliver reports. We deliver systems.
               </p>
             </div>
 
             <p className="text-xl md:text-2xl text-gray-400 max-w-3xl leading-relaxed mb-10 font-light">
-              Generic templates are strictly forbidden. We engineer bespoke, lightning-fast digital pipelines configured to convert international leads into permanent digital brand loyalty.
+              We aren't marketers who learned tech. We're engineers who learned marketing. Using our proprietary methodology, <strong className="text-white font-medium">The Revenue Velocity Engine</strong>, we architect high-converting digital platforms that turn traffic into measurable enterprise value.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 my-12 border-y border-white/10 py-8">
               {[
                 { label: "Projects Completed", value: "410+" },
-                { label: "Global Clients", value: "350+" },
+                { label: "Client Retention Rate", value: "98%" },
                 { label: "Average Client ROI", value: "3x Faster" },
                 { label: "In-House Talent", value: "100%" }
               ].map((stat, idx) => (
@@ -187,19 +187,19 @@ const OurCompanyPage = () => {
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
-                <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest">Our Origin</span>
+                <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest">Our Origin Story</span>
                 <h2 className="text-3xl md:text-5xl font-extrabold mt-3 mb-6">
-                  From Karachi Studio to Global Delivery
+                  From Software Engineering to Growth Engineering
                 </h2>
                 <p className="text-gray-300 text-base leading-relaxed mb-6 font-light">
-                  AbuQitmirLabs .TECH was established in 2021 by <strong>Abu Qitmir Mohammad Shiraz Al-Madani</strong>. Holding an M.B.A. in Commerce from the University of Karachi (2010), Abu Qitmir recognized a critical flaw in the global software industry: agency bloat, copy-pasted WordPress templates, and hidden third-party lock-ins.
+                  AbuQitmirLabs .TECH was established in 2021 by <strong>Abu Qitmir Mohammad Shiraz Al-Madani</strong>. Holding an M.B.A. in Commerce from the University of Karachi (2010), Abu Qitmir spearheaded our evolution from pure software development to full-funnel growth engineering. We realized that traditional marketing agencies lacked technical depth, while traditional dev shops ignored commercial outcomes. <strong>We aren't marketers who learned tech. We're engineers who learned marketing.</strong>
                 </p>
                 <p className="text-gray-400 text-base leading-relaxed mb-6 font-light">
-                  We set out to build an elite, highly disciplined software boutique in Karachi operating on strict architectural principles: sub-second response times, zero unnecessary code bloat, impenetrable security matrices, and multi-market search optimization.
+                  <strong>Most agencies deliver reports. We deliver systems.</strong> Through our proprietary framework, <strong>The Revenue Velocity Engine</strong>, we unify full-stack application development, data infrastructure, attribution modeling, and search dominance into a singular, predictable growth mechanism.
                 </p>
                 <div className="p-6 rounded-2xl bg-zinc-900/80 border border-white/10">
                   <p className="text-sm font-mono text-[#ccff00] italic">
-                    "Our mantra is uncompromising: Software must solve real business problems with mathematical speed and visual elegance."
+                    "Most agencies deliver reports. We deliver systems. We build revenue engines, not just software."
                   </p>
                   <p className="text-xs text-gray-400 mt-3 font-mono">
                     — Abu Qitmir Mohammad Shiraz Al-Madani, Founder & Lead Architect
@@ -253,9 +253,9 @@ const OurCompanyPage = () => {
                   <div className="w-12 h-12 rounded-xl bg-[#ccff00]/10 border border-[#ccff00]/20 flex items-center justify-center text-[#ccff00] group-hover:scale-110 group-hover:bg-[#ccff00] group-hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(204,255,0,0.2)] mb-4">
                     <GraduationCap className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-[#ccff00] transition-colors">Certifications & Credentials</h3>
+                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-[#ccff00] transition-colors">Engineering Certifications & Tech Stack</h3>
                   <p className="text-gray-300 text-sm leading-relaxed font-light">
-                    <a href="https://digiskills.pk/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] underline transition-colors inline-flex items-center gap-0.5">DigiSkills Certified <ExternalLink className="w-3 h-3" /></a> (2021–2025), IDM Pakistan Certified, M.B.A. Commerce (<a href="https://uok.edu.pk/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] underline transition-colors inline-flex items-center gap-0.5">University of Karachi <ExternalLink className="w-3 h-3" /></a>, 2010), <a href="https://clutch.co/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] underline transition-colors inline-flex items-center gap-0.5">Clutch <ExternalLink className="w-3 h-3" /></a> & GoodFirms Recognized.
+                    <a href="https://digiskills.pk/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] underline transition-colors inline-flex items-center gap-0.5">DigiSkills Certified <ExternalLink className="w-3 h-3" /></a> (2021–2025) & IDM Pakistan certified across full-stack TypeScript, React, Next.js, Node.js, and autonomous AI agents. Verified 98% client retention across global enterprise engagements.
                   </p>
                 </motion.div>
               </div>
@@ -302,23 +302,23 @@ const OurCompanyPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                title: "Engineering Excellence",
-                desc: "Every line of code is clean, typed, modular, and optimized for maximum speed and sub-second load times.",
+                title: "Engineers First",
+                desc: "We aren't marketers who learned tech. We're engineers who learned marketing. Every solution is built on clean, resilient architecture.",
                 icon: Rocket
               },
               {
-                title: "Client-First Transparency",
-                desc: "Clear milestone pricing, daily/weekly sprint updates, and direct developer access without agency gatekeepers.",
+                title: "Systems Over Reports",
+                desc: "Most agencies deliver reports. We deliver systems — connecting marketing, sales, and analytics into one automated engine.",
                 icon: Target
               },
               {
-                title: "Zero Proprietary Lock-In",
-                desc: "You own 100% of your source code, deployment scripts, database schemas, and intellectual property.",
+                title: "Revenue Velocity Engine",
+                desc: "Our proprietary growth framework unifies tech stack excellence, data infrastructure, and conversion rate optimization.",
                 icon: ShieldCheck
               },
               {
-                title: "In-House Studio Model",
-                desc: "No outsourced freelancers or low-quality offshore handoffs. 100% internal talent in Karachi.",
+                title: "98% Client Retention",
+                desc: "Backed by engineering certifications and full IP ownership, our long-term client retention rate reflects uncompromising delivery.",
                 icon: Users
               }
             ].map((v, idx) => (
