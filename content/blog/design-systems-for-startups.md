@@ -3,6 +3,7 @@
   "title": "Design Systems for Startups: Building a Visual Language",
   "slug": "design-systems-for-startups",
   "excerpt": "Your startup launched with a beautiful homepage. Six months later, your app looks like a different company built it. This is the scaling problem, and it happens when you build pages instead of a system. This guide breaks down exactly how startups can build a lean design system without over-engineering. It covers the three pillars (design tokens, component library, and guidelines), the step-by-step \"Lean Design System\" method, and how to use atomic design to speed up web and mobile development. Includes a breakdown of the most common design system mistakes founders make, and how connecting your design system to your web development workflow saves thousands in rework.",
+  "metaDescription": "Build scalable design systems for startups. Learn how lean tokens, component libraries, and atomic design eliminate UI debt and accelerate development.",
   "category": "Development",
   "author": "Abu Qitmir Mohammad Shiraz Al-Madani",
   "published": true,
@@ -142,7 +143,7 @@ If you are investing in [performance marketing vs brand marketing](https://www.a
 
 ## Frequently Asked Questions
 
-### What is a design system?
+### What is a design system in simple terms?
 A design system is a complete set of standards and reusable components intended to manage design at scale. It typically includes a component library, design tokens (colors, typography, spacing), and usage guidelines, ensuring that everyone building the product works from the same visual language.
 
 ### Why do startups need a design system?

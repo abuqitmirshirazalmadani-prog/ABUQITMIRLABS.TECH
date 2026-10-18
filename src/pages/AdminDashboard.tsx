@@ -1169,7 +1169,7 @@ const AdminDashboard = () => {
                                         setActiveTab('create');
                                         setEditingId(null);
                                         setFormData({
-                                            title: '', slug: '', excerpt: '', content: '', 
+                                            title: '', slug: '', excerpt: '', metaDescription: '', content: '', 
                                             author: 'ABUQITMIRLABS .TECH Shiraz Almadani', category: 'AI', 
                                             published: true, coverImage: '', coverImageAlt: '', tags: ''
                                         });
@@ -1321,8 +1321,8 @@ const AdminDashboard = () => {
                                     <button 
                                         onClick={() => {
                                             setEditingId(null);
-                                             setFormData({
-                                                title: '', slug: '', excerpt: '', content: '', 
+                                            setFormData({
+                                                title: '', slug: '', excerpt: '', metaDescription: '', content: '', 
                                                 author: 'ABUQITMIRLABS .TECH Shiraz Almadani', category: 'AI', 
                                                 published: true, coverImage: '', coverImageAlt: '', tags: ''
                                             });

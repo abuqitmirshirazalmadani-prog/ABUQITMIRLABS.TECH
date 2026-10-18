@@ -292,7 +292,7 @@ for (const routeUrl of allRoutes) {
 
     // 4. Inject unique Dynamic Title, Description & Open Graph tags for each route from SEO_ROUTES_METADATA
     const normalizedRoute = routeUrl.endsWith('/') && routeUrl !== '/' ? routeUrl.slice(0, -1) : routeUrl;
-    const seo = (SEO_ROUTES_METADATA && (
+    let seo = (SEO_ROUTES_METADATA && (
       SEO_ROUTES_METADATA[routeUrl] ||
       SEO_ROUTES_METADATA[normalizedRoute] ||
       SEO_ROUTES_METADATA[`${normalizedRoute}/`]
@@ -302,6 +302,31 @@ for (const routeUrl of allRoutes) {
         return normK === normalizedRoute;
       })?.[1]
     );
+
+    // If blog route is not in SEO_ROUTES_METADATA, automatically pull clean metadata from content/blog/*.md
+    if (!seo && routeUrl.startsWith('/blog/')) {
+      const blogSlug = routeUrl.replace(/^\/blog\//, '').replace(/\/$/, '');
+      const mdFile = path.join(contentBlogDir, `${blogSlug}.md`);
+      if (fs.existsSync(mdFile)) {
+        try {
+          const rawMd = fs.readFileSync(mdFile, 'utf8');
+          const m = rawMd.match(/---[\s\S]*?\{([\s\S]*?)\}[\s\S]*?---/);
+          if (m) {
+            const parsedMeta = JSON.parse(`{${m[1]}}`);
+            const postDesc = (parsedMeta.metaDescription || parsedMeta.excerpt || '').slice(0, 160).trim();
+            seo = {
+              title: parsedMeta.title ? (parsedMeta.title.includes('AbuQitmirLabs') ? parsedMeta.title : `${parsedMeta.title} | AbuQitmirLabs`) : 'AbuQitmirLabs Journal',
+              description: postDesc,
+              canonical: `https://www.abuqitmirlabs.tech/blog/${blogSlug}`,
+              ogTitle: parsedMeta.title,
+              ogDescription: postDesc,
+              ogImage: parsedMeta.coverImage || 'https://www.abuqitmirlabs.tech/logo.png',
+              ogType: 'article'
+            };
+          }
+        } catch (e) {}
+      }
+    }
 
     // Compute canonical URL: Every route MUST have its own URL as canonical, NEVER homepage (unless route is literally '/')
     const cleanPath = routeUrl === '/' ? '/' : (routeUrl.startsWith('/') ? routeUrl : `/${routeUrl}`);
@@ -423,9 +448,26 @@ for (const routeUrl of allRoutes) {
       html = html.replace('</head>', `  ${uniqueSchemas.join('\n  ')}\n</head>`);
     }
 
-    // 7. Strict deduplication verification: Guarantee strictly ONE <meta name="description"> in the generated HTML
+    // 7. Strict deduplication verification: Guarantee strictly ONE <title> in the generated HTML
+    const titleMatches = html.match(/<title\b[^>]*>[\s\S]*?<\/title>/gis) || [];
+    if (titleMatches.length > 1) {
+      let keepIndex = 0;
+      const targetIdx = titleMatches.findIndex(t => t.includes(titleToUse));
+      if (targetIdx !== -1) keepIndex = targetIdx;
+      let curTitleIdx = 0;
+      html = html.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gis, (tag) => {
+        const keep = curTitleIdx === keepIndex;
+        curTitleIdx++;
+        return keep ? tag : '';
+      });
+    }
+
+    // 8. Strict deduplication verification: Guarantee strictly ONE <meta name="description"> in the generated HTML
     const metaDescMatches = html.match(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis) || [];
-    if (metaDescMatches.length > 1) {
+    if (metaDescMatches.length === 0 && seo && seo.description) {
+      const escapedDesc = seo.description.replace(/"/g, '&quot;');
+      html = html.replace('</head>', `  <meta data-rh="true" name="description" content="${escapedDesc}" />\n</head>`);
+    } else if (metaDescMatches.length > 1) {
       let keepIndex = metaDescMatches.length - 1;
       let currentIndex = 0;
       html = html.replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis, (tag) => {
