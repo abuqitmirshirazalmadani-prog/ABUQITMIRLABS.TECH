@@ -115,10 +115,14 @@ if (fs.existsSync(seoRoutesPath)) {
   }
 }
 
-// 4. Save karein (public/sitemap.xml and root sitemap.xml)
+// 4. Save karein (public/sitemap.xml, root sitemap.xml, public/pages-sitemap.xml)
 fs.writeFileSync(sitemapPath, sitemap);
 const rootSitemapPath = path.join(rootDir, 'sitemap.xml');
 fs.writeFileSync(rootSitemapPath, sitemap);
+const pagesSitemapPath = path.join(rootDir, 'public', 'pages-sitemap.xml');
+fs.writeFileSync(pagesSitemapPath, sitemap);
+const rootPagesSitemapPath = path.join(rootDir, 'pages-sitemap.xml');
+fs.writeFileSync(rootPagesSitemapPath, sitemap);
 
 if (added > 0) {
   console.log(`\n🎉 Added ${added} new URLs to sitemap.xml`);
