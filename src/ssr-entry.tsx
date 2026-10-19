@@ -192,6 +192,7 @@ export function renderFullApp(url: string = '/') {
               <Route path="/measure-marketing-roi-without-tracking" element={<Navigate to="/blog/measure-marketing-roi-without-tracking" replace />} />
               <Route path="/blog/ai-is-quietly-stealing-your-ability-to-think" element={<BlogPostPage overrideSlug="ai-is-quietly-stealing-your-ability-to-think" />} />
               <Route path="/ai-is-quietly-stealing-your-ability-to-think" element={<Navigate to="/blog/ai-is-quietly-stealing-your-ability-to-think" replace />} />
+              <Route path="/blog/ui-ux-design-conversion" element={<BlogPostPage overrideSlug="ui-ux-design-conversion" />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
             </Routes>
           </Suspense>

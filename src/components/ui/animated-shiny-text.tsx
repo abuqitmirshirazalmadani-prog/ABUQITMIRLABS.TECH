@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion, Variants } from "motion/react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 
 interface AnimatedTextProps extends React.HTMLAttributes<HTMLDivElement> {
   text: string;

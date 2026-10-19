@@ -236,7 +236,8 @@ const routes = [
   '/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups',
   '/blog/digital-marketing-stack-2026',
   '/blog/guest-posting-in-2026-what-works-abuqitmirlabs',
-  '/blog/measure-marketing-roi-without-tracking'
+  '/blog/measure-marketing-roi-without-tracking',
+  '/blog/ui-ux-design-conversion'
 ];
 
 // Dynamically discover all articles from content/blog/*.md so new posts are always prerendered

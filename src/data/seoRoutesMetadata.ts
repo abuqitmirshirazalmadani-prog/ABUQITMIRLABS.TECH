@@ -191,6 +191,20 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     twitterImage: 'https://i.postimg.cc/1XLhtg4d/Three-Studies-One-AI-Warning.png',
     robots: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
   },
+  '/blog/ui-ux-design-conversion': {
+    title: 'UI/UX Design Principles That Convert | AbuQitmirLabs',
+    description: 'Stop losing customers to bad design. Learn 10 UI/UX design principles that actually move conversion rates and reduce friction. Read the guide now.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/ui-ux-design-conversion',
+    ogTitle: 'UI/UX Design Principles That Convert | AbuQitmirLabs',
+    ogDescription: 'Stop losing customers to bad design. Learn 10 UI/UX design principles that actually move conversion rates and reduce friction. Read the guide now.',
+    ogImage: 'https://i.postimg.cc/DwCKpyng/Frictionless-Design-Higher-Conversions.png',
+    ogImageAlt: 'Visual representation of a UI/UX wireframe turning into a high-converting checkout page',
+    ogType: 'article',
+    twitterTitle: 'UI/UX Design Principles That Convert | AbuQitmirLabs',
+    twitterDescription: 'Stop losing customers to bad design. Learn 10 UI/UX design principles that actually move conversion rates and reduce friction. Read the guide now.',
+    twitterImage: 'https://i.postimg.cc/DwCKpyng/Frictionless-Design-Higher-Conversions.png',
+    robots: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
+  },
   '/blog/measure-marketing-roi-without-tracking': {
     title: 'Measure Marketing ROI Without Tracking | AbuQitmirLabs',
     description: 'A guide to measuring marketing ROI when attribution is impossible. Learn incrementality testing, MMM, and practical frameworks for startups.',

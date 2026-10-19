@@ -1,5 +1,5 @@
 "use client";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { RefreshCw } from "lucide-react";
