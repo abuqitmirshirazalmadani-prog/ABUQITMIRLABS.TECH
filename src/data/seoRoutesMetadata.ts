@@ -19,6 +19,76 @@ export interface RouteSeoMetadata {
 }
 
 export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
+  "/solutions/fintech/web-development": {
+    title: "Fintech Web Development in Dubai | AbuQitmirLabs",
+    description: "Bespoke fintech web development in Dubai compliant with DFSA, DIFC, and PCI-DSS. Scalable, low-latency financial systems engineered for UAE institutions.",
+    canonical: "https://www.abuqitmirlabs.tech/solutions/fintech/web-development",
+    keywords: "fintech web development dubai, uae fintech developers, dfsa compliant web development, difc fintech software, payment gateway development dubai",
+    ogTitle: "Fintech Web Development in Dubai | AbuQitmirLabs",
+    ogDescription: "Bespoke fintech web development in Dubai compliant with DFSA, DIFC, and PCI-DSS. Scalable, low-latency financial systems engineered for UAE institutions.",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: "website",
+    twitterCard: "summary_large_image",
+    twitterTitle: "Fintech Web Development in Dubai | AbuQitmirLabs",
+    twitterDescription: "Bespoke fintech web development in Dubai compliant with DFSA, DIFC, and PCI-DSS. Scalable, low-latency financial systems engineered for UAE institutions.",
+    twitterImage: "https://www.abuqitmirlabs.tech/logo.png"
+  },
+  "/solutions/healthcare/mobile-app-development": {
+    title: "Healthcare App Development in Riyadh | AbuQitmirLabs",
+    description: "End-to-end healthcare mobile app development in Riyadh, KSA. Compliant with Saudi MoH, Seha, and NDMO standards with zero latency.",
+    canonical: "https://www.abuqitmirlabs.tech/solutions/healthcare/mobile-app-development",
+    keywords: "healthcare app development riyadh, saudi telemedicine app, seha integration riyadh, moh compliant mobile app, healthtech ksa",
+    ogTitle: "Healthcare App Development in Riyadh | AbuQitmirLabs",
+    ogDescription: "End-to-end healthcare mobile app development in Riyadh, KSA. Compliant with Saudi MoH, Seha, and NDMO standards with zero latency.",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: "website",
+    twitterCard: "summary_large_image",
+    twitterTitle: "Healthcare App Development in Riyadh | AbuQitmirLabs",
+    twitterDescription: "End-to-end healthcare mobile app development in Riyadh, KSA. Compliant with Saudi MoH, Seha, and NDMO standards with zero latency.",
+    twitterImage: "https://www.abuqitmirlabs.tech/logo.png"
+  },
+  "/solutions/e-commerce/custom-software": {
+    title: "E-Commerce Custom Software in London | AbuQitmirLabs",
+    description: "Custom e-commerce software development in London. High-volume order routing, multi-currency checkout, and headless architectures engineered for UK brands.",
+    canonical: "https://www.abuqitmirlabs.tech/solutions/e-commerce/custom-software",
+    keywords: "custom ecommerce software london, headless ecommerce uk, high volume checkout engineering, uk gdpr compliant ecommerce, custom store development london",
+    ogTitle: "E-Commerce Custom Software in London | AbuQitmirLabs",
+    ogDescription: "Custom e-commerce software development in London. High-volume order routing, multi-currency checkout, and headless architectures engineered for UK brands.",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: "website",
+    twitterCard: "summary_large_image",
+    twitterTitle: "E-Commerce Custom Software in London | AbuQitmirLabs",
+    twitterDescription: "Custom e-commerce software development in London. High-volume order routing, multi-currency checkout, and headless architectures engineered for UK brands.",
+    twitterImage: "https://www.abuqitmirlabs.tech/logo.png"
+  },
+  "/solutions/ai-automation/custom-software": {
+    title: "AI Automation Software in NYC | AbuQitmirLabs",
+    description: "Custom AI agent and workflow automation software in New York City. SOC2 compliant, enterprise-grade autonomous systems that accelerate revenue velocity.",
+    canonical: "https://www.abuqitmirlabs.tech/solutions/ai-automation/custom-software",
+    keywords: "ai automation software nyc, new york ai agents, enterprise ai workflow automation, soc2 ai development, custom autonomous agents nyc",
+    ogTitle: "AI Automation Software in NYC | AbuQitmirLabs",
+    ogDescription: "Custom AI agent and workflow automation software in New York City. SOC2 compliant, enterprise-grade autonomous systems that accelerate revenue velocity.",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: "website",
+    twitterCard: "summary_large_image",
+    twitterTitle: "AI Automation Software in NYC | AbuQitmirLabs",
+    twitterDescription: "Custom AI agent and workflow automation software in New York City. SOC2 compliant, enterprise-grade autonomous systems that accelerate revenue velocity.",
+    twitterImage: "https://www.abuqitmirlabs.tech/logo.png"
+  },
+  "/solutions/edtech/web-development": {
+    title: "EdTech Web Development in Sydney | AbuQitmirLabs",
+    description: "Scalable EdTech web development and custom LMS platforms in Sydney, Australia. Compliant with ASQA, Privacy Act 1988, and WCAG 2.1 AA accessibility.",
+    canonical: "https://www.abuqitmirlabs.tech/solutions/edtech/web-development",
+    keywords: "edtech web development sydney, custom lms development australia, scorm xapi compliant lms, university web application sydney, online learning platform australia",
+    ogTitle: "EdTech Web Development in Sydney | AbuQitmirLabs",
+    ogDescription: "Scalable EdTech web development and custom LMS platforms in Sydney, Australia. Compliant with ASQA, Privacy Act 1988, and WCAG 2.1 AA accessibility.",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: "website",
+    twitterCard: "summary_large_image",
+    twitterTitle: "EdTech Web Development in Sydney | AbuQitmirLabs",
+    twitterDescription: "Scalable EdTech web development and custom LMS platforms in Sydney, Australia. Compliant with ASQA, Privacy Act 1988, and WCAG 2.1 AA accessibility.",
+    twitterImage: "https://www.abuqitmirlabs.tech/logo.png"
+  },
   "/blog/design-systems-for-startups": {
     title: "Design Systems for Startups: Building a Visual Language | AbuQitmirLabs",
     description: "Build scalable design systems for startups. Learn how lean tokens, component libraries, and atomic design eliminate UI debt and accelerate development.",

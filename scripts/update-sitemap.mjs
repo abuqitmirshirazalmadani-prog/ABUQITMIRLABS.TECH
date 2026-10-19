@@ -115,6 +115,23 @@ if (fs.existsSync(seoRoutesPath)) {
   }
 }
 
+// 3c. Programmatic SEO money pages from src/data/programmatic-seo.ts
+const pseoPath = path.join(rootDir, 'src', 'data', 'programmatic-seo.ts');
+if (fs.existsSync(pseoPath)) {
+  const pseoContent = fs.readFileSync(pseoPath, 'utf-8');
+  const slugMatches = pseoContent.matchAll(/slug:\s*['"]([^'"]+)['"]/g);
+  for (const match of slugMatches) {
+    const pSlug = match[1].trim();
+    const fullPseoUrl = `${baseUrl}/solutions/${pSlug}`;
+    if (!sitemap.includes(fullPseoUrl)) {
+      const pseoEntry = `  <url><loc>${fullPseoUrl}</loc><changefreq>weekly</changefreq><priority>0.85</priority><lastmod>${today}</lastmod></url>\n`;
+      sitemap = sitemap.replace('</urlset>', `${pseoEntry}</urlset>`);
+      added++;
+      console.log(`✅ Added pSEO money page: /solutions/${pSlug}`);
+    }
+  }
+}
+
 // 4. Save karein (public/sitemap.xml, root sitemap.xml, public/pages-sitemap.xml)
 fs.writeFileSync(sitemapPath, sitemap);
 const rootSitemapPath = path.join(rootDir, 'sitemap.xml');

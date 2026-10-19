@@ -38,6 +38,7 @@ const AboutPage = lazyWithRetry(() => import('./pages/AboutPage'));
 const ContactPage = lazyWithRetry(() => import('./pages/ContactPage'));
 const BlogPage = lazyWithRetry(() => import('./pages/BlogPage'));
 const CaseStudiesPage = lazyWithRetry(() => import('./pages/CaseStudiesPage'));
+const LuxuryBrandExperiencePage = lazyWithRetry(() => import('./pages/LuxuryBrandExperiencePage'));
 
 // Solutions Pages
 const FintechSolutionsPage = lazyWithRetry(() => import('./pages/solutions/FintechSolutionsPage'));
@@ -45,6 +46,7 @@ const HealthcarePlatformsPage = lazyWithRetry(() => import('./pages/solutions/He
 const AIAutomationPage = lazyWithRetry(() => import('./pages/solutions/AIAutomationPage'));
 const ECommerceDevelopmentPage = lazyWithRetry(() => import('./pages/solutions/ECommerceDevelopmentPage'));
 const EdTechPlatformsPage = lazyWithRetry(() => import('./pages/solutions/EdTechPlatformsPage'));
+const ProgrammaticSEOPage = lazyWithRetry(() => import('./pages/ProgrammaticSEOPage'));
 
 // About Dropdown Pages
 const OurCompanyPage = lazyWithRetry(() => import('./pages/about/OurCompanyPage'));
@@ -422,6 +424,7 @@ export default function App() {
               <Route path="/solutions/ai-automation" element={<AIAutomationPage />} />
               <Route path="/solutions/e-commerce" element={<ECommerceDevelopmentPage />} />
               <Route path="/solutions/edtech" element={<EdTechPlatformsPage />} />
+              <Route path="/solutions/:industry/:service" element={<ProgrammaticSEOPage />} />
 
               {/* News Routes */}
               <Route path="/news" element={<Navigate to="/news/latest" replace />} />
@@ -557,6 +560,16 @@ export default function App() {
               <Route path="/website-audit" element={<Navigate to="/tools/website-audit" replace />} />
               <Route path="/tools/seo-checklist" element={<SeoChecklistPage />} />
               <Route path="/seo-checklist" element={<Navigate to="/tools/seo-checklist" replace />} />
+              <Route path="/luxury-brand-experience" element={<LuxuryBrandExperiencePage />} />
+              <Route path="/atelier" element={<Navigate to="/luxury-brand-experience" replace />} />
+              <Route path="/luxury-showcase" element={<Navigate to="/luxury-brand-experience" replace />} />
+              <Route path="/tools/ai-readiness-score" element={<AiReadinessScorePage />} />
+              <Route path="/ai-readiness-score" element={<Navigate to="/tools/ai-readiness-score" replace />} />
+              <Route path="/tools/tech-stack-recommender" element={<TechStackRecommenderPage />} />
+              <Route path="/tech-stack-recommender" element={<Navigate to="/tools/tech-stack-recommender" replace />} />
+              <Route path="/tools/website-authority-analyzer" element={<WebsiteAuthorityAnalyzerPage />} />
+              <Route path="/website-authority-analyzer" element={<Navigate to="/tools/website-authority-analyzer" replace />} />
+              <Route path="/admin" element={<AdminDashboard />} />
               <Route path="*" element={
                 <div className="min-h-screen flex items-center justify-center bg-[#09090b] text-white">
                   <div className="text-center max-w-md px-6">
@@ -567,13 +580,6 @@ export default function App() {
                   </div>
                 </div>
               } />
-              <Route path="/tools/ai-readiness-score" element={<AiReadinessScorePage />} />
-              <Route path="/ai-readiness-score" element={<Navigate to="/tools/ai-readiness-score" replace />} />
-              <Route path="/tools/tech-stack-recommender" element={<TechStackRecommenderPage />} />
-              <Route path="/tech-stack-recommender" element={<Navigate to="/tools/tech-stack-recommender" replace />} />
-              <Route path="/tools/website-authority-analyzer" element={<WebsiteAuthorityAnalyzerPage />} />
-              <Route path="/website-authority-analyzer" element={<Navigate to="/tools/website-authority-analyzer" replace />} />
-              <Route path="/admin" element={<AdminDashboard />} />
             </Routes>
           </Suspense>
         </ErrorBoundary>

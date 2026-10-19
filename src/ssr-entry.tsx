@@ -32,6 +32,7 @@ import HealthcarePlatformsPage from './pages/solutions/HealthcarePlatformsPage';
 import AIAutomationPage from './pages/solutions/AIAutomationPage';
 import ECommerceDevelopmentPage from './pages/solutions/ECommerceDevelopmentPage';
 import EdTechPlatformsPage from './pages/solutions/EdTechPlatformsPage';
+import ProgrammaticSEOPage from './pages/ProgrammaticSEOPage';
 import OurCompanyPage from './pages/about/OurCompanyPage';
 import OurTeamPage from './pages/about/OurTeamPage';
 import OurProcessPage from './pages/about/OurProcessPage';
@@ -117,6 +118,7 @@ export function renderFullApp(url: string = '/') {
               <Route path="/solutions/ai-automation" element={<AIAutomationPage />} />
               <Route path="/solutions/e-commerce" element={<ECommerceDevelopmentPage />} />
               <Route path="/solutions/edtech" element={<EdTechPlatformsPage />} />
+              <Route path="/solutions/:industry/:service" element={<ProgrammaticSEOPage />} />
               <Route path="/news" element={<Navigate to="/news/latest" replace />} />
               <Route path="/news/latest" element={<LatestNewsPage />} />
               <Route path="/news/press-releases" element={<PressReleasesPage />} />
