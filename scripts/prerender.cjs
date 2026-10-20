@@ -276,26 +276,26 @@ for (const routeUrl of allRoutes) {
     // 1. Inject pure, clean React SSR DOM tree inside #root with explicit route identifier
     html = replaceRootElement(html, bodyHtml, routeUrl);
 
-    // 2. Unconditionally strip ANY existing <title> tags from baseTemplate and headTags
+    // 2. Unconditionally strip ANY pre-existing <title>, <meta description>, canonical, og, and twitter tags from template
     html = html.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '');
+    html = html.replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis, '');
+    html = html.replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gis, '');
+    html = html.replace(/<meta\b[^>]*property=["']og:[^"']+["'][^>]*\/?>/gis, '');
+    html = html.replace(/<meta\b[^>]*name=["']twitter:[^"']+["'][^>]*\/?>/gis, '');
+    html = stripCanonicalTags(html);
 
-    // 3. Inject hoisted head tags (preloads, etc) into <head> (excluding title, canonicals, descriptions, og, and twitter)
+    // 3. Inject hoisted head tags directly from React Helmet SSR
+    // Ensure every element has data-rh="true" so client-side React Helmet updates them in-place during hydration
     if (headTags && headTags.trim().length > 0) {
-      const cleanHeadTags = stripCanonicalTags(
-        headTags
-          .replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '')
-          .replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis, '')
-          .replace(/<meta\b[^>]*property=["']og:[^"']+["'][^>]*\/?>/gis, '')
-          .replace(/<meta\b[^>]*name=["']twitter:[^"']+["'][^>]*\/?>/gis, '')
-          .replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gis, '')
-          .replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis, '')
-      );
-      if (cleanHeadTags.trim().length > 0) {
-        html = html.replace('</head>', `  ${cleanHeadTags}\n</head>`);
-      }
+      let formattedHeadTags = headTags;
+      formattedHeadTags = formattedHeadTags.replace(/<(title|meta|link)\b([^>]*?)>/gis, (fullTag, tagName, attrs) => {
+        if (attrs.includes('data-rh=')) return fullTag;
+        return `<${tagName} data-rh="true"${attrs}>`;
+      });
+      html = html.replace('</head>', `  ${formattedHeadTags}\n</head>`);
     }
 
-    // 4. Inject unique Dynamic Title, Description & Open Graph tags for each route from SEO_ROUTES_METADATA
+    // 4. Resolve fallback metadata for routes without Helmet
     const normalizedRoute = routeUrl.endsWith('/') && routeUrl !== '/' ? routeUrl.slice(0, -1) : routeUrl;
     let seo = (SEO_ROUTES_METADATA && (
       SEO_ROUTES_METADATA[routeUrl] ||
@@ -333,13 +333,12 @@ for (const routeUrl of allRoutes) {
       }
     }
 
-    // Compute canonical URL: Every route MUST have its own URL as canonical, NEVER homepage (unless route is literally '/')
+    // Compute canonical URL: Every route MUST have its own URL as canonical
     const cleanPath = routeUrl === '/' ? '/' : (routeUrl.startsWith('/') ? routeUrl : `/${routeUrl}`);
     let canonicalUrl;
     if (cleanPath === '/') {
       canonicalUrl = 'https://www.abuqitmirlabs.tech/';
     } else {
-      // If explicitly declared in SEO metadata and NOT pointing to homepage, use it; otherwise use exact route URL
       if (seo && seo.canonical && seo.canonical !== 'https://www.abuqitmirlabs.tech/' && seo.canonical !== 'https://www.abuqitmirlabs.tech') {
         canonicalUrl = seo.canonical;
       } else {
@@ -348,63 +347,60 @@ for (const routeUrl of allRoutes) {
     }
 
     const titleToUse = (seo && seo.title) || 'AbuQitmirLabs | Custom Software, AI Agents & Mobile Development';
-    html = html.replace('</head>', `  <title data-rh="true">${titleToUse}</title>\n</head>`);
 
-    // Clean any pre-existing description, OpenGraph, and Twitter tags before injecting unique route tags
-    html = html.replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis, '');
-    html = html.replace(/<meta\b[^>]*property=["']og:[^"']+["'][^>]*\/?>/gis, '');
-    html = html.replace(/<meta\b[^>]*name=["']twitter:[^"']+["'][^>]*\/?>/gis, '');
-
-    if (seo) {
-      // Unique <meta name="description">
-      if (seo.description) {
-        const escapedDesc = seo.description.replace(/"/g, '&quot;');
-        html = html.replace('</head>', `  <meta data-rh="true" name="description" content="${escapedDesc}" />\n</head>`);
-      }
-
-      // Unique og:title
-      const ogTitle = seo.ogTitle || seo.title;
-      if (ogTitle) {
-        const escapedOgTitle = ogTitle.replace(/"/g, '&quot;');
-        html = html.replace('</head>', `  <meta property="og:title" content="${escapedOgTitle}" />\n</head>`);
-      }
-
-      // Unique og:description
-      const ogDesc = seo.ogDescription || seo.description;
-      if (ogDesc) {
-        const escapedOgDesc = ogDesc.replace(/"/g, '&quot;');
-        html = html.replace('</head>', `  <meta property="og:description" content="${escapedOgDesc}" />\n</head>`);
-      }
-
-      // Unique og:url & og:type
-      html = html.replace('</head>', `  <meta property="og:url" content="${canonicalUrl}" />\n  <meta property="og:type" content="${seo.ogType || 'website'}" />\n</head>`);
-
-      // Unique og:image
-      if (seo.ogImage) {
-        const altText = seo.ogImageAlt || "AbuQitmirLabs Custom Software & AI Development Studio";
-        html = html.replace('</head>', `  <meta property="og:image" content="${seo.ogImage}" />\n  <meta property="og:image:alt" content="${altText.replace(/"/g, '&quot;')}" />\n</head>`);
-      }
-
-      // Unique meta robots with max-video-preview:-1 and data-rh="true" to prevent duplicate injection
-      html = html.replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gis, '');
-      const robotsContent = seo.robots || "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1";
-      html = html.replace('</head>', `  <meta data-rh="true" name="robots" content="${robotsContent}" />\n</head>`);
-
-      // Unique twitter:card, twitter:title, twitter:description, twitter:image
-      const twTitle = seo.twitterTitle || seo.title;
-      const twDesc = seo.twitterDescription || seo.description;
-      const twImage = seo.ogImage || 'https://www.abuqitmirlabs.tech/logo.png';
-      html = html.replace('</head>', `  <meta name="twitter:card" content="summary_large_image" />\n  <meta name="twitter:title" content="${(twTitle || '').replace(/"/g, '&quot;')}" />\n  <meta name="twitter:description" content="${(twDesc || '').replace(/"/g, '&quot;')}" />\n  <meta name="twitter:image" content="${twImage}" />\n</head>`);
-    } else {
-      // Fallback og:url for routes without explicit SEO metadata
-      html = html.replace('</head>', `  <meta property="og:url" content="${canonicalUrl}" />\n  <meta property="og:type" content="website" />\n</head>`);
+    // If title was not already injected via Helmet/headTags, inject it now with data-rh="true"
+    if (!/<title\b/i.test(html)) {
+      html = html.replace('</head>', `  <title data-rh="true">${titleToUse}</title>\n</head>`);
     }
 
-    // 5. Update canonical link (strip any remaining canonical tags, then inject the route-specific canonical)
-    html = stripCanonicalTags(html);
-    html = html.replace('</head>', `  <link rel="canonical" data-rh="true" href="${canonicalUrl}" />\n</head>`);
+    // If meta description was not already injected, inject it now with data-rh="true"
+    if (!/<meta\b[^>]*name=["']description["']/i.test(html) && seo && seo.description) {
+      const escapedDesc = seo.description.replace(/"/g, '&quot;');
+      html = html.replace('</head>', `  <meta data-rh="true" name="description" content="${escapedDesc}" />\n</head>`);
+    }
 
-    // 6. Inject Schema.org JSON-LD into <head> (Site-wide Organization + WebSite, plus route-specific Service, FAQPage, HowTo, BreadcrumbList, Article, etc.)
+    // If meta robots was not already injected, inject it now with data-rh="true"
+    if (!/<meta\b[^>]*name=["']robots["']/i.test(html)) {
+      const robotsContent = (seo && seo.robots) || "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1";
+      html = html.replace('</head>', `  <meta data-rh="true" name="robots" content="${robotsContent}" />\n</head>`);
+    }
+
+    // If canonical was not already injected, inject it now with data-rh="true"
+    if (!/<link\b[^>]*\brel=["']?canonical["']?/i.test(html)) {
+      html = html.replace('</head>', `  <link rel="canonical" data-rh="true" href="${canonicalUrl}" />\n</head>`);
+    }
+
+    // If OpenGraph tags were not already injected via Helmet, inject them with data-rh="true"
+    if (!/<meta\b[^>]*property=["']og:title["']/i.test(html)) {
+      const ogTitle = (seo && (seo.ogTitle || seo.title)) || titleToUse;
+      const escapedOgTitle = ogTitle.replace(/"/g, '&quot;');
+      html = html.replace('</head>', `  <meta data-rh="true" property="og:title" content="${escapedOgTitle}" />\n</head>`);
+    }
+    if (!/<meta\b[^>]*property=["']og:description["']/i.test(html) && seo && (seo.ogDescription || seo.description)) {
+      const ogDesc = seo.ogDescription || seo.description;
+      const escapedOgDesc = ogDesc.replace(/"/g, '&quot;');
+      html = html.replace('</head>', `  <meta data-rh="true" property="og:description" content="${escapedOgDesc}" />\n</head>`);
+    }
+    if (!/<meta\b[^>]*property=["']og:url["']/i.test(html)) {
+      html = html.replace('</head>', `  <meta data-rh="true" property="og:url" content="${canonicalUrl}" />\n</head>`);
+    }
+    if (!/<meta\b[^>]*property=["']og:type["']/i.test(html)) {
+      html = html.replace('</head>', `  <meta data-rh="true" property="og:type" content="${(seo && seo.ogType) || 'website'}" />\n</head>`);
+    }
+    if (!/<meta\b[^>]*property=["']og:image["']/i.test(html) && seo && seo.ogImage) {
+      const altText = seo.ogImageAlt || "AbuQitmirLabs Custom Software & AI Development Studio";
+      html = html.replace('</head>', `  <meta data-rh="true" property="og:image" content="${seo.ogImage}" />\n  <meta data-rh="true" property="og:image:alt" content="${altText.replace(/"/g, '&quot;')}" />\n</head>`);
+    }
+
+    // If Twitter tags were not already injected via Helmet, inject them with data-rh="true"
+    if (!/<meta\b[^>]*name=["']twitter:card["']/i.test(html)) {
+      const twTitle = (seo && (seo.twitterTitle || seo.title)) || titleToUse;
+      const twDesc = (seo && (seo.twitterDescription || seo.description)) || '';
+      const twImage = (seo && seo.ogImage) || 'https://www.abuqitmirlabs.tech/logo.png';
+      html = html.replace('</head>', `  <meta data-rh="true" name="twitter:card" content="summary_large_image" />\n  <meta data-rh="true" name="twitter:title" content="${(twTitle || '').replace(/"/g, '&quot;')}" />\n  <meta data-rh="true" name="twitter:description" content="${(twDesc || '').replace(/"/g, '&quot;')}" />\n  <meta data-rh="true" name="twitter:image" content="${twImage}" />\n</head>`);
+    }
+
+    // 5. Inject Schema.org JSON-LD into <head> (Site-wide Organization + WebSite, plus route-specific schemas)
     html = html.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis, '');
 
     const schemasToInject = [];
@@ -453,7 +449,8 @@ for (const routeUrl of allRoutes) {
       html = html.replace('</head>', `  ${uniqueSchemas.join('\n  ')}\n</head>`);
     }
 
-    // 7. Strict deduplication verification: Guarantee strictly ONE <title> in the generated HTML
+    // 6. STRICT SINGLE-PASS DEDUPLICATION GUARANTEE
+    // A. Title: strictly ONE <title>
     const titleMatches = html.match(/<title\b[^>]*>[\s\S]*?<\/title>/gis) || [];
     if (titleMatches.length > 1) {
       let keepIndex = 0;
@@ -463,24 +460,80 @@ for (const routeUrl of allRoutes) {
       html = html.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gis, (tag) => {
         const keep = curTitleIdx === keepIndex;
         curTitleIdx++;
-        return keep ? tag : '';
+        return keep ? (tag.includes('data-rh=') ? tag : tag.replace('<title', '<title data-rh="true"')) : '';
       });
     }
 
-    // 8. Strict deduplication verification: Guarantee strictly ONE <meta name="description"> in the generated HTML
+    // B. Meta Description: strictly ONE <meta name="description">
     const metaDescMatches = html.match(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis) || [];
-    if (metaDescMatches.length === 0 && seo && seo.description) {
-      const escapedDesc = seo.description.replace(/"/g, '&quot;');
-      html = html.replace('</head>', `  <meta data-rh="true" name="description" content="${escapedDesc}" />\n</head>`);
-    } else if (metaDescMatches.length > 1) {
-      let keepIndex = metaDescMatches.length - 1;
+    if (metaDescMatches.length > 1) {
+      let keepIndex = 0;
       let currentIndex = 0;
       html = html.replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis, (tag) => {
         const keep = currentIndex === keepIndex;
         currentIndex++;
-        return keep ? tag : '';
+        return keep ? (tag.includes('data-rh=') ? tag : tag.replace('<meta', '<meta data-rh="true"')) : '';
       });
     }
+
+    // C. Meta Robots: strictly ONE <meta name="robots">
+    const robotsMatches = html.match(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gis) || [];
+    if (robotsMatches.length > 1) {
+      let keepIndex = 0;
+      let curRobotsIdx = 0;
+      html = html.replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gis, (tag) => {
+        const keep = curRobotsIdx === keepIndex;
+        curRobotsIdx++;
+        return keep ? (tag.includes('data-rh=') ? tag : tag.replace('<meta', '<meta data-rh="true"')) : '';
+      });
+    }
+
+    // D. Canonical Link: strictly ONE <link rel="canonical">
+    const canonMatches = html.match(/<link\b[^>]*\brel=["']?canonical["']?[^>]*\/?>/gis) || [];
+    if (canonMatches.length > 1) {
+      let keepIndex = 0;
+      const exactTargetIdx = canonMatches.findIndex(c => c.includes(canonicalUrl));
+      if (exactTargetIdx !== -1) keepIndex = exactTargetIdx;
+      let curCanonIdx = 0;
+      html = html.replace(/<link\b[^>]*\brel=["']?canonical["']?[^>]*\/?>/gis, (tag) => {
+        const keep = curCanonIdx === keepIndex;
+        curCanonIdx++;
+        return keep ? (tag.includes('data-rh=') ? tag : tag.replace('<link', '<link data-rh="true"')) : '';
+      });
+    }
+
+    // E. OpenGraph tags: strictly ONE of each property (og:title, og:description, og:url, og:image, etc.)
+    const seenOgProps = new Set();
+    html = html.replace(/<meta\b[^>]*property=["'](og:[^"']+)["'][^>]*\/?>/gis, (tag, prop) => {
+      const lower = prop.toLowerCase();
+      if (seenOgProps.has(lower)) {
+        return '';
+      }
+      seenOgProps.add(lower);
+      return tag.includes('data-rh=') ? tag : tag.replace('<meta', '<meta data-rh="true"');
+    });
+
+    // F. Twitter tags: strictly ONE of each name (twitter:card, twitter:title, twitter:description, twitter:image, etc.)
+    const seenTwNames = new Set();
+    html = html.replace(/<meta\b[^>]*name=["'](twitter:[^"']+)["'][^>]*\/?>/gis, (tag, name) => {
+      const lower = name.toLowerCase();
+      if (seenTwNames.has(lower)) {
+        return '';
+      }
+      seenTwNames.add(lower);
+      return tag.includes('data-rh=') ? tag : tag.replace('<meta', '<meta data-rh="true"');
+    });
+
+    // G. Article meta tags: strictly ONE of each property (article:published_time, article:author, etc.)
+    const seenArtProps = new Set();
+    html = html.replace(/<meta\b[^>]*property=["'](article:[^"']+)["'][^>]*\/?>/gis, (tag, prop) => {
+      const lower = prop.toLowerCase();
+      if (seenArtProps.has(lower)) {
+        return '';
+      }
+      seenArtProps.add(lower);
+      return tag.includes('data-rh=') ? tag : tag.replace('<meta', '<meta data-rh="true"');
+    });
 
     // Write to target destination
     if (routeUrl === '/') {

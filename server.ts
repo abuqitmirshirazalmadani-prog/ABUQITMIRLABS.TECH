@@ -579,10 +579,27 @@ app.get("/sitemap.xml",(req,res)=>{
       res.setHeader("Cache-Control","public, max-age=3600");
       return res.sendFile(target);
     }
-    return res.status(404).send("Sitemap not found");
+    const today=new Date().toISOString().split("T")[0];
+    const fallbackSitemap=`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.abuqitmirlabs.tech</loc><changefreq>weekly</changefreq><priority>1.0</priority><lastmod>${today}</lastmod></url>
+  <url><loc>https://www.abuqitmirlabs.tech/blog</loc><changefreq>daily</changefreq><priority>0.9</priority><lastmod>${today}</lastmod></url>
+  <url><loc>https://www.abuqitmirlabs.tech/blog/design-trends-2026</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>${today}</lastmod></url>
+</urlset>`;
+    res.setHeader("Content-Type","application/xml; charset=utf-8");
+    res.setHeader("Cache-Control","public, max-age=3600");
+    return res.status(200).send(fallbackSitemap);
   }catch(error){
     console.error("Error serving sitemap.xml:",error);
-    return res.status(500).send("Error serving sitemap.xml");
+    const today=new Date().toISOString().split("T")[0];
+    const fallbackSitemap=`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.abuqitmirlabs.tech</loc><changefreq>weekly</changefreq><priority>1.0</priority><lastmod>${today}</lastmod></url>
+  <url><loc>https://www.abuqitmirlabs.tech/blog</loc><changefreq>daily</changefreq><priority>0.9</priority><lastmod>${today}</lastmod></url>
+  <url><loc>https://www.abuqitmirlabs.tech/blog/design-trends-2026</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>${today}</lastmod></url>
+</urlset>`;
+    res.setHeader("Content-Type","application/xml; charset=utf-8");
+    return res.status(200).send(fallbackSitemap);
   }
 });app.get(["/sitemap_index.xml","/sitemap-index.xml"],(req,res)=>{try{const today=new Date().toISOString().split("T")[0];const sitemapIndex=`<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
