@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import { 
   ArrowUpRight, 
   ShieldCheck, 
-  Globe, 
   Zap, 
   Plus, 
   Cpu, 
@@ -21,8 +20,13 @@ import {
   BarChart3,
   CheckCircle2,
   Sparkles,
-  Server,
-  Layers
+  Bot,
+  Layers,
+  Building2,
+  Stethoscope,
+  ShoppingBag,
+  Calculator,
+  Gauge
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -34,49 +38,49 @@ import { AnimatedBreathingText } from '../components/ui/animated-breathing-text'
 import { MagicText } from '../components/ui/magic-text';
 
 const QatarMarketPage: React.FC = () => {
-  const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const [activeFaq, setActiveFaq] = useState<number | null>(0);
 
   const faqData = [
     {
-      q: "How much does AI agent development cost in Qatar?",
-      a: "AI agent development costs vary by complexity. A focused customer service agent with RAG capability and CRM integration typically ranges from $15,000 to $40,000 USD. Multi-agent orchestration systems with complex workflow automation and compliance requirements range from $40,000 to $120,000 USD. We provide fixed-price quotes after a discovery session."
+      q: "What makes an AI consulting company in Qatar compliant with local data laws?",
+      a: "An enterprise AI consulting company in Qatar must adhere strictly to the National Cyber Security Agency (NCSA) frameworks and Qatar PDPPL Law No. 13 on personal data protection. At AbuQitmirLabs, we design private cloud topologies, on-premise vector embeddings, and zero-data-retention pipelines ensuring proprietary Doha corporate data and government records remain within sovereign Qatari boundaries."
     },
     {
-      q: "Do you build Arabic-capable AI agents for Qatari businesses?",
-      a: "Yes. Our AI agents for the Qatari market are designed with Arabic and English conversational capability from the start. This includes Arabic natural language understanding, dialect awareness for Gulf Arabic, and the ability to switch between Arabic and English within the same conversation based on user preference."
+      q: "How does conversational AI and chatbot development handle Gulf Arabic dialects in Doha?",
+      a: "Our conversational AI consultancy in Doha builds custom linguistic models fine-tuned on Qatari and Khaleeji (Gulf Arabic) vernacular as well as Modern Standard Arabic (MSA) and English. These chatbots support multi-turn conversational memory, intelligent code-switching between Arabic and English, and seamless fallback to human concierge agents across WhatsApp and web portals."
     },
     {
-      q: "What is NCSA compliance and how does it affect software projects?",
-      a: "The National Cyber Security Agency (NCSA) is Qatar's national cybersecurity authority. NCSA compliance involves implementing security controls across access management, encryption, network security, and incident response. For software projects, NCSA alignment affects architecture decisions, data handling procedures, and audit capabilities. We build every Qatari project with NCSA-aligned security as a baseline requirement."
+      q: "What is the typical timeline and cost for custom software and web development in Qatar?",
+      a: "A focused enterprise MVP or custom web application typically deploys within 8 to 12 weeks. High-throughput platforms, multi-agent orchestration systems, or QFC-grade fintech pipelines range between $20,000 to $90,000 USD. You can calculate precise architectural estimates instantly using our Project Cost Estimator Tool."
     },
     {
-      q: "Can you build QFC-compliant fintech platforms?",
-      a: "Yes. We have experience building financial platforms with the regulatory reporting, transaction monitoring, KYC/AML workflows, and audit trail infrastructure required for QFC-registered entities. Our fintech architecture follows the security and compliance patterns expected by QFC regulators."
+      q: "Can AbuQitmirLabs integrate QFC-compliant fintech rails and Qatari payment gateways?",
+      a: "Yes. We engineer compliant financial technology integrating regional gateways such as QPAY, SkipCash, and Dibsy, paired with automated AML/KYC workflows, transaction monitoring, and immutable audit logs that comply with Qatar Financial Centre (QFC) Regulatory Authority and Qatar Central Bank (QCB) standards."
     },
     {
-      q: "Do you offer bilingual Arabic/English SEO for Doha businesses?",
-      a: "Yes. We manage bilingual SEO campaigns that target both Arabic and English search terms with separate keyword research, content strategy, and landing page optimization for each language. This is essential for Qatari businesses serving both Qatari nationals and expatriate communities."
+      q: "How does bilingual local SEO help businesses in West Bay and Lusail dominate search?",
+      a: "Doha consumers and B2B buyers search in both Arabic and English with high intent. By building dual-language technical architecture, localized Schema.org markup, and geo-targeted landing pages for districts like West Bay, The Pearl, and Lusail City, businesses capture low-competition Arabic SERPs and high-converting English keywords simultaneously."
     }
   ];
 
   return (
     <div className="bg-[#070609] text-[#ded8e2] min-h-screen font-sans selection:bg-[#f43f5e] selection:text-white">
       <Helmet>
-        <title>Software Development Qatar | AI Agents & Local SEO | AbuQitmirLabs</title>
-        <meta name="description" content="Custom software, AI agents & bilingual SEO for Qatar businesses. Arabic-first, NCSA-compliant, Doha & Lusail coverage. Book a consultation." />
+        <title>AI Consulting Qatar & AI Agency Doha | AbuQitmirLabs</title>
+        <meta name="description" content="Premier AI consulting in Qatar & AI agency Doha. We engineer conversational chatbots, custom web development & mobile apps for QNV 2030." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/qatar-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Software Development Qatar | AI Agents & Local SEO | AbuQitmirLabs" />
-        <meta property="og:description" content="Custom software, AI agents & bilingual SEO for Qatar businesses. Arabic-first, NCSA-compliant, Doha & Lusail coverage. Book a consultation." />
+        <meta property="og:title" content="AI Consulting Qatar & AI Agency Doha | AbuQitmirLabs" />
+        <meta property="og:description" content="Premier AI consulting in Qatar & AI agency Doha. We engineer conversational chatbots, custom web development & mobile apps for QNV 2030." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/qatar-market" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Software Development Qatar | AI Agents & Local SEO | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Custom software, AI agents & bilingual SEO for Qatar businesses. Arabic-first, NCSA-compliant, Doha & Lusail coverage. Book a consultation." />
+        <meta name="twitter:title" content="AI Consulting Qatar & AI Agency Doha | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Premier AI consulting in Qatar & AI agency Doha. We engineer conversational chatbots, custom web development & mobile apps for QNV 2030." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         
         {/* Schema Markup */}
@@ -105,13 +109,13 @@ const QatarMarketPage: React.FC = () => {
               {
                 "@context": "https://schema.org",
                 "@type": "LocalBusiness",
-                "name": "AbuQitmirLabs - Qatar Tech Engineering",
-                "description": "NCSA-compliant software engineering, QFC fintech infrastructure, TASMU-aligned AI agents, and bilingual local SEO for Doha and Lusail.",
+                "name": "AbuQitmirLabs - AI Consulting & Software Engineering Qatar",
+                "description": "Leading AI agency and software engineering firm in Doha, delivering conversational AI chatbots, custom web development, and mobile app engineering aligned with Qatar National Vision 2030 and TASMU.",
                 "url": "https://www.abuqitmirlabs.tech/qatar-market",
                 "telephone": "+923233260859",
                 "priceRange": "$$$$",
                 "image": "https://www.abuqitmirlabs.tech/logo.png",
-                "areaServed": ["QA", "Doha", "Lusail", "Al Rayyan"],
+                "areaServed": ["QA", "Doha", "Lusail", "Al Rayyan", "West Bay"],
                 "address": {
                   "@type": "PostalAddress",
                   "addressLocality": "Doha",
@@ -121,8 +125,8 @@ const QatarMarketPage: React.FC = () => {
               {
                 "@context": "https://schema.org",
                 "@type": "Service",
-                "name": "Software Development for Qatar",
-                "description": "Enterprise software development, Jamstack web platforms, mobile apps, and localized AI systems for Doha and Lusail businesses.",
+                "name": "AI Consulting & Custom Software Engineering Qatar",
+                "description": "Bespoke AI consulting, conversational chatbot development, custom web development, and mobile applications for enterprises across Doha, Lusail, and Qatar.",
                 "provider": {
                   "@type": "Organization",
                   "name": "AbuQitmirLabs",
@@ -166,24 +170,27 @@ const QatarMarketPage: React.FC = () => {
               className="flex items-center gap-4 text-xs font-mono uppercase tracking-[0.35em] text-[#f43f5e]"
             >
               <span className="inline-block h-2 w-2 rounded-full bg-[#f43f5e] animate-pulse" />
-              State of Qatar // Qatar National Vision 2030 &amp; TASMU
+              State of Qatar // QNV 2030 &amp; TASMU Smart Country Framework
             </motion.div>
 
             <div className="mb-4">
               <HeroText text="QATAR TECH HUB" />
             </div>
 
+            {/* H1 Title as strictly requested */}
             <motion.h1 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.15 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase mb-8"
+              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.95] text-white uppercase mb-8"
             >
-              Software Development <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f43f5e] via-[#fb7185] to-[#fecdd3]">for Qatar | Arabic AI Agents</span>
+              AI Consulting Qatar &amp; AI Agency Doha | <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f43f5e] via-[#fb7185] to-[#fecdd3]">
+                Custom Web &amp; Mobile App Development
+              </span>
             </motion.h1>
 
-            {/* Quick Takeaways Box */}
+            {/* Quick Takeaways / GEO Direct Answer Box */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -192,58 +199,61 @@ const QatarMarketPage: React.FC = () => {
             >
               <div className="flex items-center gap-2 text-xs font-mono text-[#f43f5e] uppercase tracking-widest mb-4">
                 <Sparkles size={16} />
-                Quick Takeaways
+                Executive Summary // Direct Answer for AI Overviews
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm font-sans text-gray-200">
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 size={18} className="text-[#f43f5e] shrink-0" />
-                  <span>Arabic-first AI agents for Qatar enterprises</span>
+              <p className="text-sm sm:text-base text-gray-200 leading-relaxed font-normal mb-4">
+                AbuQitmirLabs is a specialized technology consultancy delivering high-tier <strong>AI consulting in Qatar</strong> and serving as an elite <strong>AI agency in Doha</strong>. We architect sovereign, NCSA-compliant <Link to="/ai-agent-development" className="text-[#fb7185] underline hover:text-white transition-colors">Custom AI Agents</Link>, bilingual Khaleeji chatbots, institutional <Link to="/custom-software" className="text-[#fb7185] underline hover:text-white transition-colors">Custom Software</Link>, and scalable <Link to="/web-development" className="text-[#fb7185] underline hover:text-white transition-colors">Custom Web Development</Link> and <Link to="/mobile-app-development" className="text-[#fb7185] underline hover:text-white transition-colors">Mobile App Development</Link> tailored for the Qatar National Vision 2030 (QNV 2030) and TASMU Smart Qatar ecosystem.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-mono text-gray-300 border-t border-white/10 pt-4">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-[#f43f5e] shrink-0" />
+                  <span>Sovereign NCSA &amp; PDPPL Data Security</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 size={18} className="text-[#f43f5e] shrink-0" />
-                  <span>QFC-compliant fintech infrastructure</span>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-[#f43f5e] shrink-0" />
+                  <span>Bilingual Gulf Arabic &amp; English LLM Fine-Tuning</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 size={18} className="text-[#f43f5e] shrink-0" />
-                  <span>TASMU Smart Qatar aligned digital solutions</span>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-[#f43f5e] shrink-0" />
+                  <span>QFC Regulatory &amp; QCB Sandbox Readiness</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 size={18} className="text-[#f43f5e] shrink-0" />
-                  <span>Doha, Lusail, Al Rayyan, and Al Wakrah coverage</span>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-[#f43f5e] shrink-0" />
+                  <span>Doha, Lusail City &amp; West Bay Municipal Coverage</span>
                 </div>
               </div>
             </motion.div>
 
+            {/* Authoritative Opening Hook */}
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25 }}
               className="max-w-4xl text-lg md:text-xl text-[#9ca3af] leading-relaxed font-sans font-light"
             >
-              Qatar's digital infrastructure, built for the 2022 FIFA World Cup, now serves as a foundation for enterprise AI, smart city systems, and cloud-native applications across the country. The Qatar National Vision 2030 and TASMU Smart Qatar initiative have directed sovereign investment into technology that positions Qatar as one of the most well-capitalized AI markets in the region. AbuQitmirLabs builds custom software, AI agents, and web applications combining Arabic-capable AI engineering, QFC-aligned fintech architecture, and bilingual SEO that captures Qatar's unique search behavior.
+              As the State of Qatar transitions from monumental FIFA World Cup infrastructure investments to an advanced knowledge-based digital economy under the <strong>Qatar National Vision 2030 (QNV 2030)</strong> and the Ministry of Communications and Information Technology’s <strong>TASMU Smart Qatar</strong> initiative, institutional demand for specialized <strong>ai consulting companies in Qatar</strong> has reached unprecedented velocity. As an established <strong>conversational ai consultancy in Doha</strong> and high-performance digital engineering studio, AbuQitmirLabs builds the digital engines driving Qatar’s premier financial institutions, healthcare operators, logistics enterprises, and government contractors.
             </motion.p>
 
+            {/* Action Buttons */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-6 mt-6"
+              className="flex flex-col sm:flex-row gap-5 mt-4"
             >
-              <a 
-                href="https://wa.me/923233260859"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#f43f5e] text-white px-12 py-7 rounded-2xl font-bold text-lg hover:bg-white hover:text-black hover:scale-105 transition-all flex items-center justify-center gap-3 shadow-2xl shadow-[#f43f5e]/30 uppercase tracking-tight"
-              >
-                <ArrowUpRight size={22} />
-                Partner with Us in Qatar
-              </a>
               <Link 
-                to="/contact"
-                className="border border-white/10 text-[#d1d5db] px-12 py-7 rounded-2xl font-bold text-lg hover:bg-white/5 transition-all flex items-center justify-center gap-3 uppercase tracking-tight"
+                to="/tools/ai-readiness-score"
+                className="bg-[#f43f5e] text-white px-8 py-5 rounded-2xl font-bold text-base hover:bg-white hover:text-black hover:scale-105 transition-all flex items-center justify-center gap-3 shadow-2xl shadow-[#f43f5e]/30 uppercase tracking-tight"
               >
-                <Smartphone size={22} className="text-[#f43f5e]" />
-                Get a Free Qatar Market Audit
+                <Gauge size={20} />
+                Get a Free AI Readiness Assessment
+              </Link>
+              <Link 
+                to="/tools/project-cost-estimator"
+                className="border border-white/10 text-[#d1d5db] px-8 py-5 rounded-2xl font-bold text-base hover:bg-white/5 transition-all flex items-center justify-center gap-3 uppercase tracking-tight"
+              >
+                <Calculator size={20} className="text-[#f43f5e]" />
+                Project Cost Estimator Tool
               </Link>
             </motion.div>
           </div>
@@ -253,308 +263,434 @@ const QatarMarketPage: React.FC = () => {
       {/* Marquee Branding */}
       <section className="overflow-hidden border-y border-white/5 bg-[#09070c] py-14">
         <div className="flex animate-marquee whitespace-nowrap gap-12 text-4xl md:text-7xl font-semibold uppercase tracking-tight opacity-90 italic">
-          <span>QNV 2030 Aligned</span> <span className="text-[#f43f5e]">·</span>
-          <span>TASMU Smart Country Infrastructure</span> <span className="text-[#f43f5e]">·</span>
-          <span>QFC Compliant Fintech</span> <span className="text-[#f43f5e]">·</span>
-          <span>Doha · Lusail · West Bay</span> <span className="text-[#f43f5e]">·</span>
-          <span>NCSA Security Architecture</span> <span className="text-[#f43f5e]">·</span>
-          <span>QNV 2030 Aligned</span> <span className="text-[#f43f5e]">·</span>
-          <span>TASMU Smart Country Infrastructure</span> <span className="text-[#f43f5e]">·</span>
+          <span>AI Consulting Qatar</span> <span className="text-[#f43f5e]">·</span>
+          <span>Conversational AI Doha</span> <span className="text-[#f43f5e]">·</span>
+          <span>Chatbot Development Qatar</span> <span className="text-[#f43f5e]">·</span>
+          <span>Custom Web Development</span> <span className="text-[#f43f5e]">·</span>
+          <span>Mobile App Development Doha</span> <span className="text-[#f43f5e]">·</span>
+          <span>QNV 2030 &amp; TASMU Aligned</span> <span className="text-[#f43f5e]">·</span>
         </div>
       </section>
 
-      {/* Qatar's Digital Transformation */}
-      <section className="py-32 px-6 md:px-10 border-b border-white/5">
+      {/* Why Choose Us Comparison Table Section */}
+      <section className="py-28 px-6 md:px-10 border-b border-white/5 bg-[#050407]">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-start">
-            <div>
-              <span className="text-xs font-mono uppercase tracking-[0.35em] text-[#f43f5e] mb-6 block">// VISION 2030 &amp; TASMU</span>
-              <AnimatedShinyText 
-                text="Qatar's Digital Transformation: Vision 2030 and TASMU" 
-                textClassName="text-4xl md:text-6xl text-white font-bold leading-tight"
-              />
-              <p className="mt-8 text-xl text-[#fb7185] font-medium">
-                Why Qatar's AI Market Is One of the Most Well-Capitalized in the GCC
-              </p>
-            </div>
-            <div className="text-lg text-[#9ca3af] leading-relaxed space-y-6 font-light">
-              <p>
-                Qatar's approach to digital transformation is distinctive. The country's population is concentrated in Doha and nearby municipalities: Al Rayyan, Al Wakrah, Al Daayen, and the rapidly growing Lusail smart city. Most residents are expatriates from South Asia, the Arab world, the Philippines, and Europe, while Qatari citizens represent a smaller but exceptionally high-value audience.
-              </p>
-              <p>
-                Arabic searches in Qatar frequently come from Qatari nationals and Arab expatriates with high spending power. English searches dominate among other international communities. A digital strategy that addresses only one language captures only part of the market. Our engineering and SEO practice in Qatar is built around bilingual delivery from the ground up.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Compliance Protocol Section */}
-      <section className="py-32 px-6 md:px-10 bg-[#08060b]">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-20 p-12 border border-[#f43f5e]/25 bg-gradient-to-br from-[#f43f5e]/10 via-black to-black rounded-3xl relative overflow-hidden shadow-2xl">
-            <div className="absolute top-0 right-0 p-8 opacity-10">
-              <ShieldCheck size={140} className="text-[#f43f5e]" />
-            </div>
-            <div className="relative z-10 max-w-4xl">
-              <span className="text-xs font-mono text-[#f43f5e] mb-6 uppercase tracking-[0.4em] font-bold block">[ QATAR_DATA_PROTOCOL ]</span>
-              <h2 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tighter mb-8 leading-tight">
-                NCSA &amp; QFC Compliant Engineering Standards
-              </h2>
-              <p className="text-lg md:text-xl text-[#d1d5db] leading-relaxed mb-8 font-light">
-                Operating in Qatar requires adherence to the National Cyber Security Agency (NCSA) framework and, for financial services, the Qatar Financial Centre (QFC) regulatory requirements. We build all Qatari projects with bank-grade access management, encryption, and sovereign audit logging.
-              </p>
-              
-              <div className="grid md:grid-cols-2 gap-6 my-8 text-sm">
-                <div className="p-6 rounded-2xl bg-black/60 border border-white/5">
-                  <h3 className="font-bold text-white uppercase text-base mb-2 flex items-center gap-2">
-                    <Database size={18} className="text-[#f43f5e]" />
-                    What NCSA Compliance Means for Software
-                  </h3>
-                  <p className="text-[#9ca3af] font-light">
-                    Implementation of national cybersecurity controls across network segmentation, cryptographic key rotation, incident monitoring, and PDPPL Law No. 13 data sovereignty.
-                  </p>
-                </div>
-                <div className="p-6 rounded-2xl bg-black/60 border border-white/5">
-                  <h3 className="font-bold text-white uppercase text-base mb-2 flex items-center gap-2">
-                    <Landmark size={18} className="text-[#f43f5e]" />
-                    QFC Regulatory Framework for Fintech
-                  </h3>
-                  <p className="text-[#9ca3af] font-light">
-                    Built-in regulatory reporting, automated transaction surveillance, customer KYC/AML onboarding, and immutable audit trails for 800+ QFC registered entities.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-4 pt-4">
-                {["NCSA Aligned Controls", "QFC Fintech Architecture", "TASMU Smart Standards", "Qatar Data Residency", "QPAY & QAR Ready"].map(tag => (
-                  <span key={tag} className="px-4 py-2 bg-white/5 border border-white/10 text-xs font-mono font-bold uppercase tracking-wider text-[#fb7185] rounded-full">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="mb-16">
-            <span className="text-xs font-mono uppercase tracking-[0.35em] text-[#f43f5e] mb-6 block">// THE ABUQITMIRLABS EDGE</span>
-            <AnimatedShinyText 
-              text="Precision Engineering for Doha's Digital Elite." 
-              textClassName="text-4xl md:text-7xl font-bold text-white"
-            />
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Arabic AI Agent Factories",
-                desc: "Autonomous LLM agents trained on enterprise knowledge bases, handling Arabic dialogue, English queries, and complex corporate intake workflows.",
-                icon: <Cpu className="text-[#f43f5e]" size={32} />
-              },
-              {
-                title: "QFC-Grade SaaS Platforms",
-                desc: "Multi-tenant cloud architectures built for Qatar energy, logistics, healthcare, and finance sectors with full data isolation.",
-                icon: <Zap className="text-[#f43f5e]" size={32} />
-              },
-              {
-                title: "Bilingual Doha SEO",
-                desc: "Capturing low-competition Arabic search volume and high-intent English queries across West Bay, Lusail, and The Pearl.",
-                icon: <Search className="text-[#f43f5e]" size={32} />
-              }
-            ].map((feature, i) => (
-              <div key={i} className="p-10 bg-white/[0.02] border border-white/5 hover:border-[#f43f5e]/40 rounded-3xl transition-all group flex flex-col items-start">
-                <div className="mb-6 p-4 rounded-2xl bg-white/5 border border-white/10">{feature.icon}</div>
-                <AnimatedBreathingText text={feature.title} className="text-2xl font-bold uppercase tracking-tight mb-4 group-hover:text-white" />
-                <MagicText text={feature.desc} className="text-[#9ca3af] leading-relaxed font-light" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <CountryMarquee />
-
-      {/* Cinematic Reveal Sections: Core Services */}
-      <section className="py-32 px-6 md:px-10 border-y border-white/5 bg-[#050407] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-32 text-center">
-            <span className="text-xs font-mono text-[#f43f5e] uppercase tracking-[0.4em] block mb-6">// CORE SERVICES FOR THE QATARI MARKET</span>
-            <h2 className="text-4xl md:text-7xl font-serif font-light text-white uppercase tracking-tight leading-none">
-              Strategic Solutions for <br />
-              <span className="italic text-[#9ca3af] font-light">Qatar's Enterprise Sector</span>
+          <div className="mb-14 text-center max-w-3xl mx-auto">
+            <span className="text-xs font-mono uppercase tracking-[0.35em] text-[#f43f5e] mb-4 block">// STRATEGIC COMPARISON</span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tight">
+              Why Choose Us: Enterprise Tech Delivery in Qatar
             </h2>
+            <p className="mt-4 text-[#9ca3af] text-sm md:text-base font-light">
+              How our specialized engineering and advisory practices compare against generic agencies across the Gulf.
+            </p>
           </div>
 
-          <div className="space-y-40">
-            {/* Service 1: AI Agents & RAG Pipelines */}
-            <motion.div 
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start"
-            >
-              <div className="lg:col-span-7 space-y-8">
-                <div className="flex items-center gap-4 text-xs font-mono text-[#f43f5e] uppercase tracking-widest">
-                  <span className="h-px w-8 bg-[#f43f5e]" />
-                  INTELLIGENT AGENTIC SYSTEMS
-                </div>
-                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
-                  AI Agents &amp; RAG Pipelines <br />
-                  <span className="italic text-[#9ca3af]">for Qatar Enterprises</span>
-                </h3>
-                <div className="font-sans font-light text-[#9ca3af] leading-relaxed text-base md:text-lg space-y-6">
-                  <p>
-                    Qatar's AI adoption is accelerating across government, finance, healthcare, and energy. The Ministry of Commerce and Industry has launched an AI Agent Factory in collaboration with Microsoft to deploy intelligent agents across government services. AI course enrollments in Qatar have increased 70% year over year, with agentic workflow enrollment growing 187%.
-                  </p>
-                  <p>
-                    We engineer custom AI agents with Arabic and English conversational capability, RAG pipelines that ground responses in organizational knowledge, and integration with existing enterprise systems. Typical deployments include customer service automation for Qatari banks, patient intake for healthcare providers, logistics workflow automation, and government process automation.
-                  </p>
-                </div>
-              </div>
-
-              {/* Parallax Card 1 */}
-              <div className="lg:col-span-5 lg:sticky lg:top-24 mt-8 lg:mt-0">
-                <div className="relative group p-8 rounded-3xl bg-zinc-950/80 border border-[#f43f5e]/20 backdrop-blur-md overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.9)]">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#f43f5e]/10 blur-3xl rounded-full" />
-                  
-                  <div className="mb-8 border border-white/10 rounded-2xl p-6 bg-black/60 relative">
-                    <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-4 text-xs font-mono text-[#9ca3af]">
-                      <span>QATAR_AI_ADOPTION_METRICS</span>
-                      <span className="text-[#f43f5e] flex items-center gap-1">
-                        <span className="h-2 w-2 rounded-full bg-[#f43f5e] animate-pulse" />
-                        SURGE +187%
-                      </span>
+          <div className="overflow-x-auto rounded-2xl border border-white/10 bg-black/60 shadow-2xl">
+            <table className="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr className="border-b border-white/10 bg-white/[0.03] text-xs font-mono text-[#fb7185] uppercase tracking-wider">
+                  <th className="p-5 md:p-6">Engineering Service</th>
+                  <th className="p-5 md:p-6">Standard Agency Approach</th>
+                  <th className="p-5 md:p-6 text-white font-bold bg-[#f43f5e]/10">AbuQitmirLabs Qatar Delivery</th>
+                  <th className="p-5 md:p-6">Qatar Enterprise Impact</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5 font-light text-[#ded8e2]">
+                <tr className="hover:bg-white/[0.01] transition-colors">
+                  <td className="p-5 md:p-6 font-semibold text-white">
+                    <div className="flex items-center gap-2">
+                      <Cpu size={18} className="text-[#f43f5e] shrink-0" />
+                      <span>AI Consulting &amp; Automation</span>
                     </div>
-                    
-                    <div className="space-y-4">
-                      {[
-                        { metric: "AI Course Enrollments", stat: "+70% YoY Growth", badge: "ACCELERATING" },
-                        { metric: "Agentic Workflow Growth", stat: "+187% Surge", badge: "EXPONENTIAL" },
-                        { metric: "Sovereign AI Backing", stat: "TASMU Smart Country", badge: "SUPPORTED" },
-                      ].map((item, i) => (
-                        <div key={i} className="p-4 border border-white/5 rounded-xl flex justify-between items-center bg-white/[0.02]">
-                          <div>
-                            <span className="text-sm font-bold text-white block uppercase">{item.metric}</span>
-                            <span className="text-xs text-[#9ca3af]">{item.stat}</span>
-                          </div>
-                          <span className="text-[10px] font-mono px-2 py-1 rounded bg-[#f43f5e]/20 text-[#f43f5e] font-bold">{item.badge}</span>
-                        </div>
-                      ))}
+                    <span className="text-xs text-[#9ca3af] block font-mono mt-1">ai consulting qatar</span>
+                  </td>
+                  <td className="p-5 md:p-6 text-[#9ca3af]">Generic wrappers around public APIs without data residency.</td>
+                  <td className="p-5 md:p-6 bg-[#f43f5e]/5 font-normal text-white">
+                    Sovereign private cloud architectures, enterprise vector databases, and NCSA security control alignment.
+                  </td>
+                  <td className="p-5 md:p-6 text-[#fb7185] font-mono text-xs">
+                    Automates up to 80% of institutional audit workflows with zero data leaks.
+                  </td>
+                </tr>
+
+                <tr className="hover:bg-white/[0.01] transition-colors">
+                  <td className="p-5 md:p-6 font-semibold text-white">
+                    <div className="flex items-center gap-2">
+                      <Bot size={18} className="text-[#f43f5e] shrink-0" />
+                      <span>Chatbot Development Qatar</span>
                     </div>
-                  </div>
+                    <span className="text-xs text-[#9ca3af] block font-mono mt-1">conversational ai consultant doha</span>
+                  </td>
+                  <td className="p-5 md:p-6 text-[#9ca3af]">Rigid, rule-based if/else scripts incapable of Arabic nuance.</td>
+                  <td className="p-5 md:p-6 bg-[#f43f5e]/5 font-normal text-white">
+                    Bilingual Khaleeji/Modern Standard Arabic (MSA) conversational AI with multi-turn memory and ERP/CRM sync.
+                  </td>
+                  <td className="p-5 md:p-6 text-[#fb7185] font-mono text-xs">
+                    24/7 customer engagement in native Qatari dialects across WhatsApp and portals.
+                  </td>
+                </tr>
 
-                  <div className="space-y-3 border-t border-white/5 pt-6 text-xs font-mono text-[#9ca3af]">
-                    <div className="flex justify-between">
-                      <span>LINGUISTIC CAPABILITY:</span>
-                      <span className="text-white">ARABIC + ENGLISH FLUENT</span>
+                <tr className="hover:bg-white/[0.01] transition-colors">
+                  <td className="p-5 md:p-6 font-semibold text-white">
+                    <div className="flex items-center gap-2">
+                      <Code size={18} className="text-[#f43f5e] shrink-0" />
+                      <span>Custom Software Engineering</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span>FINTECH REGULATORY:</span>
-                      <span className="text-[#fb7185] font-bold">QFC COMPLIANT</span>
+                    <span className="text-xs text-[#9ca3af] block font-mono mt-1">custom software doha</span>
+                  </td>
+                  <td className="p-5 md:p-6 text-[#9ca3af]">Bloated off-the-shelf templates with recurring license overhead.</td>
+                  <td className="p-5 md:p-6 bg-[#f43f5e]/5 font-normal text-white">
+                    Bespoke microservices, QFC-grade compliance engines, and event-driven architectures you own completely.
+                  </td>
+                  <td className="p-5 md:p-6 text-[#fb7185] font-mono text-xs">
+                    Sub-second response times, zero vendor lock-in, and 100% intellectual property ownership.
+                  </td>
+                </tr>
+
+                <tr className="hover:bg-white/[0.01] transition-colors">
+                  <td className="p-5 md:p-6 font-semibold text-white">
+                    <div className="flex items-center gap-2">
+                      <Smartphone size={18} className="text-[#f43f5e] shrink-0" />
+                      <span>Custom Web &amp; Mobile App Dev</span>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Service 2: Custom Software & SaaS Platforms */}
-            <motion.div 
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start border-t border-white/5 pt-40"
-            >
-              <div className="lg:col-span-7 space-y-8">
-                <div className="flex items-center gap-4 text-xs font-mono text-[#f43f5e] uppercase tracking-widest">
-                  <span className="h-px w-8 bg-[#f43f5e]" />
-                  ENTERPRISE APPLICATION ENGINEERING
-                </div>
-                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
-                  Custom Software &amp; <br />
-                  <span className="italic text-[#9ca3af]">SaaS Platforms</span>
-                </h3>
-                <div className="font-sans font-light text-[#9ca3af] leading-relaxed text-base md:text-lg space-y-6">
-                  <p>
-                    We build bespoke web applications and SaaS products for Qatari businesses using Next.js, React, Node.js, and Laravel. Common builds include multi-tenant SaaS platforms, energy sector process management systems, healthcare portals, and enterprise internal tools. Every build includes bilingual Arabic/English interfaces with proper RTL support.
-                  </p>
-                  <p>
-                    We also engineer native and cross-platform mobile applications designed for Qatari users. This includes Arabic-first UX, QAR payment gateway integration (SkipCash, QPAY), and offline resilience for high-reliability mobile usage.
-                  </p>
-                </div>
-              </div>
-
-              {/* Parallax Card 2 */}
-              <div className="lg:col-span-5 lg:sticky lg:top-24 mt-8 lg:mt-0">
-                <div className="relative group p-8 rounded-3xl bg-zinc-950/80 border border-[#f43f5e]/20 backdrop-blur-md overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.9)]">
-                  <span className="text-xs font-mono text-[#f43f5e] uppercase tracking-widest block mb-4">Enterprise Capabilities</span>
-                  <div className="space-y-3 text-xs font-mono">
-                    <div className="p-3 rounded-lg bg-white/5 text-gray-200">✓ Multi-Tenant SaaS Architecture</div>
-                    <div className="p-3 rounded-lg bg-white/5 text-gray-200">✓ Energy Sector Process Automation</div>
-                    <div className="p-3 rounded-lg bg-white/5 text-gray-200">✓ QPAY &amp; SkipCash QAR Gateways</div>
-                    <div className="p-3 rounded-lg bg-white/5 text-gray-200">✓ Hospitality &amp; Tourism Portals</div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Service 3: Bilingual Local SEO for Doha */}
-            <motion.div 
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start border-t border-white/5 pt-40"
-            >
-              <div className="lg:col-span-7 space-y-8">
-                <div className="flex items-center gap-4 text-xs font-mono text-[#f43f5e] uppercase tracking-widest">
-                  <span className="h-px w-8 bg-[#f43f5e]" />
-                  LOCAL SEARCH AUTHORITY
-                </div>
-                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight leading-tight uppercase">
-                  Bilingual Local SEO <br />
-                  <span className="italic text-[#9ca3af]">for Doha &amp; Qatar</span>
-                </h3>
-                <div className="font-sans font-light text-[#9ca3af] leading-relaxed text-base md:text-lg space-y-6">
-                  <p>
-                    Qatar does not use postcodes in everyday life. People search by area name: West Bay, The Pearl-Qatar, Lusail, Msheireb, Al Sadd, Al Waab, Al Wakrah, and landmarks. Location-specific landing pages and Google Business Profile optimization drive disproportionate results.
-                  </p>
-                  <p>
-                    Arabic SEO competition in Qatar remains significantly lower than English across most service categories. Businesses that invest in proper bilingual SEO capture page-one visibility at half the keyword difficulty of comparable English terms.
-                  </p>
-                </div>
-              </div>
-
-              {/* Parallax Card 3 */}
-              <div className="lg:col-span-5 lg:sticky lg:top-24 mt-8 lg:mt-0">
-                <div className="relative group p-8 rounded-3xl bg-zinc-950/80 border border-[#f43f5e]/20 backdrop-blur-md overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.9)]">
-                  <span className="text-xs font-mono text-[#f43f5e] uppercase tracking-widest block mb-4">Key Municipalities &amp; Zones</span>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {["West Bay", "The Pearl", "Lusail City", "Msheireb", "Al Sadd", "Al Wakrah", "Al Rayyan"].map(dist => (
-                      <span key={dist} className="px-3 py-1.5 rounded-lg bg-black border border-white/10 text-xs font-mono text-gray-300">
-                        {dist}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="p-4 rounded-xl bg-white/5 border border-white/5 text-xs text-[#9ca3af] leading-relaxed">
-                    Page-one Google.com.qa rankings in Arabic can be established within months, securing permanent digital territory before competition intensifies.
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+                    <span className="text-xs text-[#9ca3af] block font-mono mt-1">mobile app development qatar</span>
+                  </td>
+                  <td className="p-5 md:p-6 text-[#9ca3af]">Cookie-cutter hybrid apps prone to lag and broken RTL layouts.</td>
+                  <td className="p-5 md:p-6 bg-[#f43f5e]/5 font-normal text-white">
+                    High-performance React/Next.js and Flutter platforms with native QAR payment rails (SkipCash, QPAY).
+                  </td>
+                  <td className="p-5 md:p-6 text-[#fb7185] font-mono text-xs">
+                    Sub-100ms Core Web Vitals, 99.99% uptime, and frictionless mobile checkouts.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
 
-      {/* Frequently Asked Questions */}
-      <section className="py-32 px-6 md:px-10 bg-[#050407]">
+      {/* Core Services Section (H2) */}
+      <section className="py-32 px-6 md:px-10 border-b border-white/5 bg-[#08060b]">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-24 text-center">
+            <span className="text-xs font-mono text-[#f43f5e] uppercase tracking-[0.4em] block mb-4">// CORE CAPABILITIES</span>
+            <h2 className="text-4xl md:text-6xl font-serif font-light text-white uppercase tracking-tight">
+              Enterprise Engineering Services in Qatar
+            </h2>
+            <p className="mt-4 text-[#9ca3af] max-w-2xl mx-auto text-base font-light">
+              Engineered by our senior technical strategists to meet the stringent demands of Doha’s most forward-thinking enterprises.
+            </p>
+          </div>
+
+          <div className="space-y-32">
+            {/* Core Service 1 */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              <div className="lg:col-span-7 space-y-6">
+                <div className="flex items-center gap-3 text-xs font-mono text-[#f43f5e] uppercase tracking-widest">
+                  <span className="w-8 h-px bg-[#f43f5e]" />
+                  <span>PILLAR 01 // ADVISORY &amp; AUTOMATION</span>
+                </div>
+                <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight uppercase">
+                  1. AI Consulting &amp; Automation (AI Agency Qatar)
+                </h2>
+                <div className="text-[#9ca3af] space-y-4 font-light text-base md:text-lg leading-relaxed">
+                  <p>
+                    As a recognized <strong>ai agency in Qatar</strong>, AbuQitmirLabs guides executive leadership teams, family offices, and sovereign-backed enterprises through the complete artificial intelligence lifecycle. Our <strong>ai consultants in Qatar</strong> cut through industry hyperbole, developing deterministic roadmaps that link advanced machine intelligence directly to EBITDA expansion and labor productivity.
+                  </p>
+                  <p>
+                    Through our deep expertise in <Link to="/ai-agent-development" className="text-[#fb7185] underline font-medium hover:text-white transition-colors">Custom AI Agents</Link>, we build autonomous multi-agent pipelines that orchestrate complex business logic. From automated document analysis in compliance departments to predictive telemetry for maritime and energy operators, our <strong>ai automation tools in Qatar</strong> function with mathematical precision while respecting sovereign data privacy mandates under NCSA guidelines.
+                  </p>
+                  <p>
+                    Whether engaging our <strong>ai consultant in Doha</strong> for enterprise architecture reviews or hiring our full development pod, we ensure that every model deployment aligns with your technical governance standards.
+                  </p>
+                </div>
+                <div className="pt-4 flex flex-wrap gap-3">
+                  <Link 
+                    to="/tools/ai-readiness-score" 
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-[#f43f5e]/40 text-xs font-mono text-white transition-colors"
+                  >
+                    <span>Assess Organization AI Score</span>
+                    <ChevronRight size={14} className="text-[#f43f5e]" />
+                  </Link>
+                  <Link 
+                    to="/solutions/fintech" 
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-[#f43f5e]/40 text-xs font-mono text-white transition-colors"
+                  >
+                    <span>Fintech Automation Systems</span>
+                    <ChevronRight size={14} className="text-[#f43f5e]" />
+                  </Link>
+                </div>
+              </div>
+
+              <div className="lg:col-span-5 p-8 rounded-3xl bg-zinc-950/80 border border-[#f43f5e]/20 shadow-2xl relative">
+                <div className="text-xs font-mono text-[#fb7185] uppercase tracking-wider mb-6 flex justify-between items-center border-b border-white/10 pb-4">
+                  <span>AI_CONSULTANCY_SPECIFICATION</span>
+                  <span className="flex items-center gap-1 text-[#f43f5e]">
+                    <span className="w-2 h-2 rounded-full bg-[#f43f5e] animate-ping" />
+                    DOHA_ONLINE
+                  </span>
+                </div>
+                <ul className="space-y-4 text-xs font-mono text-gray-300">
+                  <li className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-start gap-3">
+                    <CheckCircle2 size={16} className="text-[#f43f5e] shrink-0 mt-0.5" />
+                    <span><strong>Sovereign RAG Engineering:</strong> Enterprise retrieval-augmented generation anchored strictly in Qatari private clouds.</span>
+                  </li>
+                  <li className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-start gap-3">
+                    <CheckCircle2 size={16} className="text-[#f43f5e] shrink-0 mt-0.5" />
+                    <span><strong>Agentic Workflow Automation:</strong> Deterministic LangChain and LlamaIndex agents replacing manual verification tasks.</span>
+                  </li>
+                  <li className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-start gap-3">
+                    <CheckCircle2 size={16} className="text-[#f43f5e] shrink-0 mt-0.5" />
+                    <span><strong>Executive AI Roadmapping:</strong> Rigorous feasibility and ROI modeling conducted by an experienced <strong>ai consultant in Doha</strong>.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Core Service 2 */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center border-t border-white/5 pt-28">
+              <div className="lg:col-span-7 space-y-6">
+                <div className="flex items-center gap-3 text-xs font-mono text-[#f43f5e] uppercase tracking-widest">
+                  <span className="w-8 h-px bg-[#f43f5e]" />
+                  <span>PILLAR 02 // CONVERSATIONAL SYSTEMS</span>
+                </div>
+                <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight uppercase">
+                  2. Conversational AI &amp; Chatbot Development Qatar
+                </h2>
+                <div className="text-[#9ca3af] space-y-4 font-light text-base md:text-lg leading-relaxed">
+                  <p>
+                    Modern consumers in Doha, Lusail, and West Bay demand immediate, intelligent, and context-aware interaction. Legacy rule-based bots that fail at the first misspelled Arabic query frustrate high-net-worth users. As a leading <strong>conversational ai consultancy in Doha</strong>, AbuQitmirLabs specializes in state-of-the-art <strong>chatbot development in Qatar</strong>.
+                  </p>
+                  <p>
+                    Our linguistic engineering accounts for the rich nuances of Gulf Arabic, colloquial Qatari phrasing, and fluid switching between Arabic and English within a single chat session. Operating as an authoritative <strong>conversational ai consultant in Qatar</strong>, we embed conversational agents directly into WhatsApp Business API, bespoke mobile apps, and institutional web portals.
+                  </p>
+                  <p>
+                    These intelligent agents are not just chat widgets; they connect bidirectionally to enterprise ERP, CRM, and banking core ledgers to process bookings, issue statements, verify KYC documentation, and execute transactions securely.
+                  </p>
+                </div>
+                <div className="pt-4 flex flex-wrap gap-3">
+                  <Link 
+                    to="/local-seo-for-small-business" 
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-[#f43f5e]/40 text-xs font-mono text-white transition-colors"
+                  >
+                    <span>Local SEO for Small Business</span>
+                    <ChevronRight size={14} className="text-[#f43f5e]" />
+                  </Link>
+                  <Link 
+                    to="/contact" 
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-[#f43f5e]/40 text-xs font-mono text-white transition-colors"
+                  >
+                    <span>Book Conversational AI Demo</span>
+                    <ChevronRight size={14} className="text-[#f43f5e]" />
+                  </Link>
+                </div>
+              </div>
+
+              <div className="lg:col-span-5 p-8 rounded-3xl bg-zinc-950/80 border border-[#f43f5e]/20 shadow-2xl relative">
+                <div className="text-xs font-mono text-[#fb7185] uppercase tracking-wider mb-6 flex justify-between items-center border-b border-white/10 pb-4">
+                  <span>LINGUISTIC_MATRIX_ARABIC</span>
+                  <span className="text-white font-bold">KHALEEJI + MSA</span>
+                </div>
+                <div className="space-y-3 text-xs font-mono text-gray-300">
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5">
+                    <span className="text-[#fb7185] block font-bold mb-1">WhatsApp Business Cloud API:</span>
+                    <span>Direct integration enabling Doha consumers to purchase, book, and query directly from WhatsApp.</span>
+                  </div>
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5">
+                    <span className="text-[#fb7185] block font-bold mb-1">Human-in-the-Loop Handover:</span>
+                    <span>Smooth conversational escalation to human concierge or VIP relationship managers when intent thresholds trigger.</span>
+                  </div>
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5">
+                    <span className="text-[#fb7185] block font-bold mb-1">Autonomous Transaction Actions:</span>
+                    <span>Live integration with PostgreSQL, SAP, Salesforce, and banking ledger protocols.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Core Service 3 */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center border-t border-white/5 pt-28">
+              <div className="lg:col-span-7 space-y-6">
+                <div className="flex items-center gap-3 text-xs font-mono text-[#f43f5e] uppercase tracking-widest">
+                  <span className="w-8 h-px bg-[#f43f5e]" />
+                  <span>PILLAR 03 // FULL-STACK DIGITAL PLATFORMS</span>
+                </div>
+                <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight uppercase">
+                  3. Custom Web &amp; Mobile App Development Qatar
+                </h2>
+                <div className="text-[#9ca3af] space-y-4 font-light text-base md:text-lg leading-relaxed">
+                  <p>
+                    Pre-packaged templates, slow WordPress instances, and brittle hybrid app wrappers fail when tested against the high expectations of Qatari digital consumers. AbuQitmirLabs engineers high-performance <Link to="/web-development" className="text-[#fb7185] underline font-medium hover:text-white transition-colors">Custom Web Development</Link> solutions built with modern React, Next.js, and TypeScript, delivering sub-second load times and native Right-to-Left (RTL) Arabic typography.
+                  </p>
+                  <p>
+                    In the mobile realm, our studio delivers production-grade <Link to="/mobile-app-development" className="text-[#fb7185] underline font-medium hover:text-white transition-colors">Mobile App Development</Link> in Flutter and native iOS/Android. Every mobile application built for the Qatar territory features seamless integration with local QAR payment rails—including SkipCash, QPAY, and Sadad—alongside biometric authentication, real-time push notification telemetry, and offline-first data caching.
+                  </p>
+                  <p>
+                    For organizations transitioning legacy infrastructure into the cloud, our <Link to="/custom-software" className="text-[#fb7185] underline font-medium hover:text-white transition-colors">Custom Software</Link> engineers construct scalable SaaS platforms, patient management systems, and enterprise portals that comply with Qatari data residency mandates.
+                  </p>
+                </div>
+                <div className="pt-4 flex flex-wrap gap-3">
+                  <Link 
+                    to="/tools/project-cost-estimator" 
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-[#f43f5e]/40 text-xs font-mono text-white transition-colors"
+                  >
+                    <span>Calculate Custom Build Estimate</span>
+                    <ChevronRight size={14} className="text-[#f43f5e]" />
+                  </Link>
+                  <Link 
+                    to="/web-development" 
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-[#f43f5e]/40 text-xs font-mono text-white transition-colors"
+                  >
+                    <span>Explore Web Engineering</span>
+                    <ChevronRight size={14} className="text-[#f43f5e]" />
+                  </Link>
+                </div>
+              </div>
+
+              <div className="lg:col-span-5 p-8 rounded-3xl bg-zinc-950/80 border border-[#f43f5e]/20 shadow-2xl relative">
+                <div className="text-xs font-mono text-[#fb7185] uppercase tracking-wider mb-6 flex justify-between items-center border-b border-white/10 pb-4">
+                  <span>PRODUCTION_STACK</span>
+                  <span className="text-[#f43f5e] font-bold">NEXT.JS + FLUTTER</span>
+                </div>
+                <div className="grid grid-cols-2 gap-3 text-xs font-mono text-gray-300">
+                  <div className="p-3 bg-white/[0.02] rounded-xl border border-white/5">
+                    <span className="text-white block font-bold mb-1">Architecture:</span>
+                    <span className="text-[#9ca3af]">Headless &amp; Microservices</span>
+                  </div>
+                  <div className="p-3 bg-white/[0.02] rounded-xl border border-white/5">
+                    <span className="text-white block font-bold mb-1">Speed:</span>
+                    <span className="text-[#9ca3af]">Sub-100ms TTFB</span>
+                  </div>
+                  <div className="p-3 bg-white/[0.02] rounded-xl border border-white/5">
+                    <span className="text-white block font-bold mb-1">Payment:</span>
+                    <span className="text-[#9ca3af]">SkipCash &amp; QPAY</span>
+                  </div>
+                  <div className="p-3 bg-white/[0.02] rounded-xl border border-white/5">
+                    <span className="text-white block font-bold mb-1">Bilingual:</span>
+                    <span className="text-[#9ca3af]">Pixel-Perfect Arabic RTL</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Industry Solutions (H2) */}
+      <section className="py-28 px-6 md:px-10 border-b border-white/5 bg-[#050407]">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-20 text-center max-w-3xl mx-auto">
+            <span className="text-xs font-mono uppercase tracking-[0.35em] text-[#f43f5e] mb-4 block">// INDUSTRY SECTOR PLAYBOOKS</span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tight">
+              Industry Solutions: Tailored for Qatar’s Strategic Sectors
+            </h2>
+            <p className="mt-4 text-[#9ca3af] text-base font-light">
+              Purpose-built software and AI architectures aligned with the specific regulatory and commercial frameworks of Doha.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Sector 1: Fintech */}
+            <div className="p-8 rounded-3xl bg-zinc-950/60 border border-white/5 hover:border-[#f43f5e]/40 transition-all flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-[#f43f5e]/10 border border-[#f43f5e]/20 flex items-center justify-center text-[#f43f5e] mb-6">
+                  <Landmark size={24} />
+                </div>
+                <h3 className="text-xl font-bold text-white uppercase tracking-tight mb-4">
+                  Fintech &amp; QFC-Regulated Entities
+                </h3>
+                <p className="text-sm text-[#9ca3af] font-light leading-relaxed mb-6">
+                  For financial institutions, wealth managers, and payment facilitators governed by the Qatar Financial Centre (QFC) and Qatar Central Bank (QCB). We implement deterministic ledgers, automated KYC/AML onboarding, and real-time transaction surveillance through our dedicated <Link to="/solutions/fintech" className="text-[#fb7185] underline font-medium hover:text-white transition-colors">Industry Solutions (Fintech)</Link> architecture.
+                </p>
+              </div>
+              <ul className="text-xs font-mono text-gray-300 space-y-2 border-t border-white/5 pt-4">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-[#f43f5e]" />
+                  <span>QFC Regulatory Sandbox Compliance</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-[#f43f5e]" />
+                  <span>Automated SAR &amp; STR Audit Reporting</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-[#f43f5e]" />
+                  <span>Sub-second Settlement Interfaces</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Sector 2: Healthcare & Smart Cities */}
+            <div className="p-8 rounded-3xl bg-zinc-950/60 border border-white/5 hover:border-[#f43f5e]/40 transition-all flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-[#f43f5e]/10 border border-[#f43f5e]/20 flex items-center justify-center text-[#f43f5e] mb-6">
+                  <Stethoscope size={24} />
+                </div>
+                <h3 className="text-xl font-bold text-white uppercase tracking-tight mb-4">
+                  Healthcare &amp; Smart Cities (TASMU)
+                </h3>
+                <p className="text-sm text-[#9ca3af] font-light leading-relaxed mb-6">
+                  Aligned with the Ministry of Communications and Information Technology’s TASMU Smart Qatar initiatives and Ministry of Public Health (MoPH) standards. We engineer HIPAA/MoPH-aligned patient intake chatbots, IoT sensor telemetry platforms for smart districts like Lusail, and clinical appointment scheduling systems.
+                </p>
+              </div>
+              <ul className="text-xs font-mono text-gray-300 space-y-2 border-t border-white/5 pt-4">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-[#f43f5e]" />
+                  <span>TASMU Smart Country Standards</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-[#f43f5e]" />
+                  <span>MoPH Patient Data Sovereignty</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-[#f43f5e]" />
+                  <span>Bilingual Medical Triage Intake</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Sector 3: E-commerce & Retail */}
+            <div className="p-8 rounded-3xl bg-zinc-950/60 border border-white/5 hover:border-[#f43f5e]/40 transition-all flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-[#f43f5e]/10 border border-[#f43f5e]/20 flex items-center justify-center text-[#f43f5e] mb-6">
+                  <ShoppingBag size={24} />
+                </div>
+                <h3 className="text-xl font-bold text-white uppercase tracking-tight mb-4">
+                  E-commerce &amp; High-End Retail
+                </h3>
+                <p className="text-sm text-[#9ca3af] font-light leading-relaxed mb-6">
+                  Tailored for luxury retailers, hospitality brands, and marketplace operators in Doha and The Pearl. We build headless commerce experiences that integrate dynamic QAR currency checkout, ERP inventory synchronization, and conversational WhatsApp shopping assistants that drive VIP customer retention.
+                </p>
+              </div>
+              <ul className="text-xs font-mono text-gray-300 space-y-2 border-t border-white/5 pt-4">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-[#f43f5e]" />
+                  <span>Instant SkipCash &amp; Apple Pay Checkout</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-[#f43f5e]" />
+                  <span>Microsecond ERP Inventory Sync</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-[#f43f5e]" />
+                  <span>Conversational AI Cart Recovery</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Standalone FAQ (H2) */}
+      <section className="py-32 px-6 md:px-10 bg-[#070609]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-20">
             <span className="text-xs font-mono text-[#f43f5e] uppercase tracking-[0.3em] block mb-4">// FREQUENTLY ASKED QUESTIONS</span>
             <h2 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-tight">
-              Qatar Market Tech FAQs
+              Qatar Market Technology &amp; AI FAQs
             </h2>
+            <p className="mt-4 text-[#9ca3af] text-sm md:text-base font-light">
+              Direct, concise answers to the most critical technical questions facing Doha founders and enterprise directors.
+            </p>
           </div>
 
           <div className="space-y-6">
@@ -568,7 +704,7 @@ const QatarMarketPage: React.FC = () => {
                   className="w-full p-8 text-left flex justify-between items-center gap-6"
                   aria-expanded={activeFaq === index}
                 >
-                  <span className="text-xl md:text-2xl font-bold text-white tracking-tight">{faq.q}</span>
+                  <span className="text-lg md:text-xl font-bold text-white tracking-tight">{faq.q}</span>
                   <span className={`w-8 h-8 rounded-full border border-white/10 flex items-center justify-center shrink-0 transition-transform ${activeFaq === index ? 'rotate-45 text-[#f43f5e]' : 'text-gray-400'}`}>
                     <Plus size={18} />
                   </span>
@@ -581,7 +717,7 @@ const QatarMarketPage: React.FC = () => {
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden"
                     >
-                      <p className="px-8 pb-8 text-lg text-[#9ca3af] font-light leading-relaxed">
+                      <p className="px-8 pb-8 text-base text-[#9ca3af] font-light leading-relaxed border-t border-white/5 pt-4">
                         {faq.a}
                       </p>
                     </motion.div>
@@ -594,38 +730,38 @@ const QatarMarketPage: React.FC = () => {
           {/* Internal Links Matrix */}
           <div className="mt-20 pt-12 border-t border-white/5 space-y-8 text-left">
             <div>
-              <h4 className="text-xs font-mono text-[#f43f5e] uppercase tracking-[0.3em] font-bold mb-4">// RELATED SERVICES &amp; TECHNICAL DEEP DIVES</h4>
+              <h4 className="text-xs font-mono text-[#f43f5e] uppercase tracking-[0.3em] font-bold mb-4">// RELATED CAPABILITIES &amp; FREE TOOLS</h4>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
                 <Link to="/ai-agent-development" className="p-3 bg-[#0d0a11] hover:bg-white/5 rounded-lg text-[#9c93a3] hover:text-[#f43f5e] transition-colors border border-white/5 flex items-center justify-between">
-                  <span>AI Agent Systems</span>
+                  <span>Custom AI Agents</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#f43f5e]" />
                 </Link>
                 <Link to="/custom-software" className="p-3 bg-[#0d0a11] hover:bg-white/5 rounded-lg text-[#9c93a3] hover:text-[#f43f5e] transition-colors border border-white/5 flex items-center justify-between">
                   <span>Custom Software</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#f43f5e]" />
                 </Link>
-                <Link to="/local-seo-for-small-business" className="p-3 bg-[#0d0a11] hover:bg-white/5 rounded-lg text-[#9c93a3] hover:text-[#f43f5e] transition-colors border border-white/5 flex items-center justify-between">
-                  <span>Local SEO Services</span>
+                <Link to="/web-development" className="p-3 bg-[#0d0a11] hover:bg-white/5 rounded-lg text-[#9c93a3] hover:text-[#f43f5e] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Custom Web Dev</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#f43f5e]" />
                 </Link>
                 <Link to="/mobile-app-development" className="p-3 bg-[#0d0a11] hover:bg-white/5 rounded-lg text-[#9c93a3] hover:text-[#f43f5e] transition-colors border border-white/5 flex items-center justify-between">
                   <span>Mobile App Dev</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#f43f5e]" />
                 </Link>
-                <Link to="/web-development" className="p-3 bg-[#0d0a11] hover:bg-white/5 rounded-lg text-[#9c93a3] hover:text-[#f43f5e] transition-colors border border-white/5 flex items-center justify-between">
-                  <span>Web Development</span>
+                <Link to="/solutions/fintech" className="p-3 bg-[#0d0a11] hover:bg-white/5 rounded-lg text-[#9c93a3] hover:text-[#f43f5e] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Fintech Solutions</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#f43f5e]" />
                 </Link>
-                <Link to="/seo-mastery" className="p-3 bg-[#0d0a11] hover:bg-white/5 rounded-lg text-[#9c93a3] hover:text-[#f43f5e] transition-colors border border-white/5 flex items-center justify-between">
-                  <span>Bilingual SEO</span>
+                <Link to="/local-seo-for-small-business" className="p-3 bg-[#0d0a11] hover:bg-white/5 rounded-lg text-[#9c93a3] hover:text-[#f43f5e] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Local SEO Services</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#f43f5e]" />
                 </Link>
-                <Link to="/uae-market" className="p-3 bg-[#0d0a11] hover:bg-white/5 rounded-lg text-[#9c93a3] hover:text-[#f43f5e] transition-colors border border-white/5 flex items-center justify-between">
-                  <span>UAE Market</span>
+                <Link to="/tools/project-cost-estimator" className="p-3 bg-[#0d0a11] hover:bg-white/5 rounded-lg text-[#9c93a3] hover:text-[#f43f5e] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>Cost Estimator</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#f43f5e]" />
                 </Link>
-                <Link to="/contact" className="p-3 bg-[#0d0a11] hover:bg-white/5 rounded-lg text-[#9c93a3] hover:text-[#f43f5e] transition-colors border border-white/5 flex items-center justify-between">
-                  <span>Book Consultation</span>
+                <Link to="/tools/ai-readiness-score" className="p-3 bg-[#0d0a11] hover:bg-white/5 rounded-lg text-[#9c93a3] hover:text-[#f43f5e] transition-colors border border-white/5 flex items-center justify-between">
+                  <span>AI Readiness Tool</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#f43f5e]" />
                 </Link>
               </div>
@@ -633,10 +769,10 @@ const QatarMarketPage: React.FC = () => {
 
             {/* External Regulatory References */}
             <div className="pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#8c8294]">
-              <span className="uppercase tracking-widest text-[11px] font-bold text-zinc-400">Qatar Regulatory References:</span>
+              <span className="uppercase tracking-widest text-[11px] font-bold text-zinc-400">Qatar Regulatory Ecosystem:</span>
               <div className="flex flex-wrap items-center gap-4">
                 <a href="https://ncsa.gov.qa" target="_blank" rel="noopener noreferrer" className="hover:text-[#f43f5e] transition-colors inline-flex items-center gap-1">
-                  NCSA National Cyber Security Agency <ExternalLink className="w-3 h-3" />
+                  National Cyber Security Agency (NCSA) <ExternalLink className="w-3 h-3" />
                 </a>
                 <span>•</span>
                 <a href="https://www.qfc.qa" target="_blank" rel="noopener noreferrer" className="hover:text-[#f43f5e] transition-colors inline-flex items-center gap-1">
@@ -644,7 +780,7 @@ const QatarMarketPage: React.FC = () => {
                 </a>
                 <span>•</span>
                 <a href="https://www.mcit.gov.qa" target="_blank" rel="noopener noreferrer" className="hover:text-[#f43f5e] transition-colors inline-flex items-center gap-1">
-                  TASMU Smart Qatar Initiative <ExternalLink className="w-3 h-3" />
+                  TASMU Smart Qatar Program <ExternalLink className="w-3 h-3" />
                 </a>
               </div>
             </div>
@@ -652,25 +788,39 @@ const QatarMarketPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Final Cinematic Call to Action */}
-      <section className="py-44 relative border-t border-white/5 overflow-hidden text-center bg-black">
+      {/* Call to Action (CTA) */}
+      <section className="py-40 relative border-t border-white/5 overflow-hidden text-center bg-black">
         <div className="absolute inset-0 bg-[#f43f5e]/10 blur-[200px] pointer-events-none" />
-        <div className="max-w-6xl mx-auto relative z-10 px-6">
-          <h2 className="text-6xl md:text-[8rem] font-black text-white italic tracking-tighter uppercase leading-[0.85] mb-14">
-            Build for <br />
-            <span className="text-transparent" style={{ WebkitTextStroke: '2px #f43f5e' }}>Qatar 2030.</span>
+        <div className="max-w-5xl mx-auto relative z-10 px-6">
+          <span className="text-xs font-mono uppercase tracking-[0.4em] text-[#f43f5e] mb-6 block">// STRATEGIC PARTNERSHIP</span>
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white italic tracking-tighter uppercase leading-[0.9] mb-10">
+            Accelerate for <br />
+            <span className="text-transparent" style={{ WebkitTextStroke: '2px #f43f5e' }}>Qatar Vision 2030.</span>
           </h2>
+          <p className="max-w-2xl mx-auto text-[#9ca3af] text-base md:text-lg font-light leading-relaxed mb-12">
+            Connect directly with an elite <strong>ai consultant in Doha</strong>. Whether you require sovereign <strong>chatbot development in Qatar</strong>, complex <strong>ai consulting in Qatar</strong>, or bespoke <strong>custom web and mobile app development</strong>, our senior engineering pods are prepared to deploy.
+          </p>
           
-          <div className="flex flex-col md:flex-row gap-10 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Link 
               to="/contact"
-              className="bg-[#f43f5e] text-white text-2xl font-bold px-16 py-8 rounded-full hover:bg-white hover:text-black transition-all transform hover:scale-105 uppercase tracking-tighter shadow-2xl shadow-[#f43f5e]/30"
+              className="w-full sm:w-auto bg-[#f43f5e] text-white text-lg font-bold px-12 py-6 rounded-2xl hover:bg-white hover:text-black transition-all transform hover:scale-105 uppercase tracking-tight shadow-2xl shadow-[#f43f5e]/30 flex items-center justify-center gap-3"
             >
-              Get Free Qatar Consultation
+              <span>Schedule Doha Advisory Session</span>
+              <ArrowUpRight size={20} />
             </Link>
-            <div className="text-[#fb7185] font-mono text-xs uppercase tracking-[0.4em] max-w-[320px] text-left border-l-2 border-[#f43f5e] pl-8 leading-relaxed h-16 flex items-center">
-              DOHA &amp; LUSAIL // AST (UTC+3) READY
-            </div>
+            <a 
+              href="https://wa.me/923233260859"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto border border-white/10 text-white text-lg font-bold px-12 py-6 rounded-2xl hover:bg-white/5 transition-all flex items-center justify-center gap-3 uppercase tracking-tight"
+            >
+              <span>Direct WhatsApp Concierge</span>
+            </a>
+          </div>
+
+          <div className="mt-12 text-[#fb7185] font-mono text-xs uppercase tracking-[0.35em]">
+            DOHA · LUSAIL CITY · WEST BAY // AST (UTC+3) DEPLOYED
           </div>
         </div>
       </section>

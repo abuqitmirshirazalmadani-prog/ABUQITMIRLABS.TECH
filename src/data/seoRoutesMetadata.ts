@@ -741,11 +741,11 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     }
   },
   '/qatar-market': {
-    title: 'Software Development for Qatar | Qatar National Vision 2030 | AbuQitmirLabs',
-    description: 'Enterprise software development, Jamstack web platforms, mobile apps, and localized AI systems for Doha and Lusail businesses. Compliant with Qatar PDPPL Law No. 13.',
+    title: 'AI Consulting Qatar & AI Agency Doha | AbuQitmirLabs',
+    description: 'Premier AI consulting in Qatar & AI agency Doha. We engineer conversational chatbots, custom web development & mobile apps for QNV 2030.',
     canonical: 'https://www.abuqitmirlabs.tech/qatar-market',
-    ogTitle: 'Software Development for Qatar | Qatar National Vision 2030 | AbuQitmirLabs',
-    ogDescription: 'Enterprise software development, Jamstack web platforms, mobile apps, and localized AI systems for Qatar.',
+    ogTitle: 'AI Consulting Qatar & AI Agency Doha | AbuQitmirLabs',
+    ogDescription: 'Premier AI consulting in Qatar & AI agency Doha. We engineer conversational chatbots, custom web development & mobile apps for QNV 2030.',
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
     schemaJsonLd: {
       "@context": "https://schema.org",
