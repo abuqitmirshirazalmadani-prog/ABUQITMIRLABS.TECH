@@ -2969,35 +2969,35 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 ) : (
                     <>
                         <html lang="en" />
-                        <title data-rh="true">{seoData.title}</title>
-                        <meta data-rh="true" name="description" content={seoData.description} />
+                        <title>{seoData.title}</title>
+                        <meta name="description" content={seoData.description} />
                         {seoData.keywordsString && (
-                            <meta data-rh="true" name="keywords" content={seoData.keywordsString} />
+                            <meta name="keywords" content={seoData.keywordsString} />
                         )}
-                        <meta data-rh="true" name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-                        <link data-rh="true" rel="canonical" href={seoData.canonicalUrl} />
+                        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+                        <link rel="canonical" href={seoData.canonicalUrl} />
 
                         {/* Open Graph */}
-                        <meta data-rh="true" property="og:type" content={seoData.ogType} />
-                        <meta data-rh="true" property="og:url" content={seoData.ogUrl} />
-                        <meta data-rh="true" property="og:title" content={seoData.ogTitle} />
-                        <meta data-rh="true" property="og:description" content={seoData.ogDescription} />
-                        <meta data-rh="true" property="og:image" content={seoData.ogImage} />
-                        <meta data-rh="true" property="og:image:alt" content={slug && slug.includes('performance-marketing') ? 'Performance marketing vs brand marketing budget allocation framework showing 60/40 split for startups' : (post.coverImageAlt || seoData.ogTitle)} />
-                        <meta data-rh="true" property="og:site_name" content={seoData.ogSiteName} />
-                        <meta data-rh="true" property="article:published_time" content={seoData.articlePublishedTime} />
-                        <meta data-rh="true" property="article:modified_time" content={seoData.articleModifiedTime} />
-                        <meta data-rh="true" property="article:author" content={!seoData.articleAuthor || seoData.articleAuthor.toUpperCase().includes('SHIRAZ') || seoData.articleAuthor.toUpperCase().includes('ABUQITMIR') ? 'Abu Qitmir Mohammad Shiraz Al-Madani' : seoData.articleAuthor} />
-                        {seoData.articleSection && <meta data-rh="true" property="article:section" content={seoData.articleSection} />}
+                        <meta property="og:type" content={seoData.ogType} />
+                        <meta property="og:url" content={seoData.ogUrl} />
+                        <meta property="og:title" content={seoData.ogTitle} />
+                        <meta property="og:description" content={seoData.ogDescription} />
+                        <meta property="og:image" content={seoData.ogImage} />
+                        <meta property="og:image:alt" content={slug && slug.includes('performance-marketing') ? 'Performance marketing vs brand marketing budget allocation framework showing 60/40 split for startups' : (post.coverImageAlt || seoData.ogTitle)} />
+                        <meta property="og:site_name" content={seoData.ogSiteName} />
+                        <meta property="article:published_time" content={seoData.articlePublishedTime} />
+                        <meta property="article:modified_time" content={seoData.articleModifiedTime} />
+                        <meta property="article:author" content={!seoData.articleAuthor || seoData.articleAuthor.toUpperCase().includes('SHIRAZ') || seoData.articleAuthor.toUpperCase().includes('ABUQITMIR') ? 'Abu Qitmir Mohammad Shiraz Al-Madani' : seoData.articleAuthor} />
+                        {seoData.articleSection && <meta property="article:section" content={seoData.articleSection} />}
 
                         {/* Twitter */}
-                        <meta data-rh="true" name="twitter:card" content={seoData.twitterCard} />
-                        <meta data-rh="true" name="twitter:title" content={seoData.twitterTitle} />
-                        <meta data-rh="true" name="twitter:description" content={seoData.twitterDescription} />
-                        <meta data-rh="true" name="twitter:image" content={seoData.twitterImage} />
+                        <meta name="twitter:card" content={seoData.twitterCard} />
+                        <meta name="twitter:title" content={seoData.twitterTitle} />
+                        <meta name="twitter:description" content={seoData.twitterDescription} />
+                        <meta name="twitter:image" content={seoData.twitterImage} />
 
                         {/* Dynamic Schema.org Graph */}
-                        <script type="application/ld+json" data-rh="true">
+                        <script type="application/ld+json">
                     {JSON.stringify({
                         ...seoData.schemaJsonLd,
                         "@graph": [

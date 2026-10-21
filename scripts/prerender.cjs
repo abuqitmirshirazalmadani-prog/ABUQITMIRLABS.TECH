@@ -318,7 +318,12 @@ for (const routeUrl of allRoutes) {
           const m = rawMd.match(/---[\s\S]*?\{([\s\S]*?)\}[\s\S]*?---/);
           if (m) {
             const parsedMeta = JSON.parse(`{${m[1]}}`);
-            const postDesc = (parsedMeta.metaDescription || parsedMeta.excerpt || '').slice(0, 160).trim();
+            let postDesc = parsedMeta.metaDescription || parsedMeta.excerpt || '';
+            if (postDesc.length > 165) {
+              const cut = postDesc.slice(0, 160);
+              const lastSp = cut.lastIndexOf(' ');
+              postDesc = (lastSp > 110 ? cut.slice(0, lastSp) : cut).trim() + '...';
+            }
             seo = {
               title: parsedMeta.title ? (parsedMeta.title.includes('AbuQitmirLabs') ? parsedMeta.title : `${parsedMeta.title} | AbuQitmirLabs`) : 'AbuQitmirLabs Journal',
               description: postDesc,

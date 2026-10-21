@@ -11,16 +11,13 @@ const container = document.getElementById('root')!;
 
 if (container) {
   // Always use createRoot — never hydrateRoot.
-  //
-  // Reason: On non-homepage routes, the prerendered HTML inside #root is
-  // hand-crafted static SEO markup (see vite.config.ts fallbackPrerenderHtml),
-  // NOT the actual React render output. Hydrating against it causes a mismatch,
-  // which breaks React's event system — dropdowns stop working, navigation
-  // stops re-rendering, and the URL changes without the page updating.
-  //
-  // The static HTML still serves SEO crawlers in the raw HTML response.
-  // Real users get a fresh React render immediately after.
   container.innerHTML = '';
+
+  // Clean up SSR-rendered head tags marked with data-rh="true" so client-side React Helmet
+  // has exclusive control over <head> elements without creating duplicate DOM nodes
+  const ssrHeadElements = document.querySelectorAll('head [data-rh="true"]');
+  ssrHeadElements.forEach(el => el.remove());
+
   createRoot(container).render(
     <StrictMode>
       <App />

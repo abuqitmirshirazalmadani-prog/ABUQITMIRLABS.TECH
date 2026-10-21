@@ -74,7 +74,11 @@ export function cleanExcerpt(rawText?: string, maxLength = 160): string {
     .trim();
 
   if (cleaned.length <= maxLength) return cleaned;
-  return cleaned.slice(0, maxLength).trim() + '...';
+  // Truncate cleanly at a whole word boundary to prevent cutting words mid-word
+  const cut = cleaned.slice(0, maxLength);
+  const lastSpace = cut.lastIndexOf(' ');
+  const safeCut = lastSpace > 110 ? cut.slice(0, lastSpace) : cut;
+  return safeCut.trim() + '...';
 }
 
 /**
@@ -122,11 +126,18 @@ export function generateBlogPostMeta(
   const rawTitle = post.title?.trim() || 'Journal Article';
   const pageTitle = rawTitle.includes(siteName) ? rawTitle : `${rawTitle} | ${siteName}`;
 
-  // 2. Unique Dynamic Description: Prioritize explicit metaDescription, then post excerpt, then fallback to content
-  const rawDescription = post.metaDescription?.trim() || post.excerpt?.trim();
-  const description = rawDescription 
-    ? cleanExcerpt(rawDescription, 160)
-    : cleanExcerpt(post.content || rawTitle, 160);
+  // 2. Unique Dynamic Description: Prioritize explicit metaDescription or description field, then post excerpt, then fallback to content
+  let description = '';
+  const explicitDesc = (post.metaDescription || (post as any).description)?.trim();
+  if (explicitDesc) {
+    const cleanExplicit = explicitDesc.replace(/\s+/g, ' ');
+    description = cleanExplicit.length <= 170 ? cleanExplicit : cleanExcerpt(cleanExplicit, 160);
+  } else if (post.excerpt?.trim()) {
+    const cleanEx = post.excerpt.trim().replace(/\s+/g, ' ');
+    description = cleanEx.length <= 170 ? cleanEx : cleanExcerpt(cleanEx, 160);
+  } else {
+    description = cleanExcerpt(post.content || rawTitle, 160);
+  }
 
   // 3. Media and Taxonomy
   const coverImage = post.coverImage?.trim() || defaultImage;

@@ -1,8 +1,8 @@
----
 {
   "title": "How to Brief a Graphic Designer: A Founder's Checklist",
   "slug": "how-to-brief-graphic-designer",
-  "excerpt": "A bad design brief is the number one reason design projects go over budget and miss deadlines. When you send a designer a message saying \"make it look modern and pop,\" you are setting the project up for failure. This guide breaks down the 12-point checklist every founder needs to write a professional graphic design brief. It covers defining your target audience, listing exact deliverables and formats, providing real copy, sharing mood boards, and managing revision rounds. You will learn how to separate what the designer actually needs to know from what you can leave out, and how to avoid the most common mistakes that cost founders thousands in redesigns. Includes a free design brief template and a comparison matrix of good vs. bad briefs.",
+  "metaDescription": "A founder-friendly checklist for briefing graphic designers. Includes a free brief template, 12 must-have sections, and common mistakes to avoid. Read now.",
+  "excerpt": "A founder-friendly checklist for briefing graphic designers. Includes a free brief template, 12 must-have sections, and common mistakes to avoid. Read now.",
   "category": "Development",
   "author": "Abu Qitmir Mohammad Shiraz Al-Madani",
   "published": true,
