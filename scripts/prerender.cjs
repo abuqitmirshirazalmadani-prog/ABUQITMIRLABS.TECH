@@ -176,6 +176,7 @@ const routes = [
   '/case-studies/tajweedpage',
   '/website-contract',
   '/brand-assets',
+  '/brand-building',
   '/luxury-brand-experience',
   '/tools',
   '/tools/project-cost-estimator',

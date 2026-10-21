@@ -19,6 +19,20 @@ export interface RouteSeoMetadata {
 }
 
 export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
+  "/brand-building": {
+    title: "Brand Building Services for Small Businesses | AbuQitmirLabs",
+    description: "Strategy. Design. Website. SEO. All Under One Roof. AbuQitmirLabs builds complete brands from scratch for small businesses in Pakistan, the US, UK, UAE, and beyond.",
+    canonical: "https://www.abuqitmirlabs.tech/brand-building",
+    keywords: "brand building services for small businesses, brand strategy, visual identity design, custom nextjs website, small business branding, branding agency",
+    ogTitle: "Brand Building Services for Small Businesses | AbuQitmirLabs",
+    ogDescription: "Strategy. Design. Website. SEO. All Under One Roof. AbuQitmirLabs builds complete brands from scratch for small businesses in Pakistan, the US, UK, UAE, and beyond.",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: "website",
+    twitterCard: "summary_large_image",
+    twitterTitle: "Brand Building Services for Small Businesses | AbuQitmirLabs",
+    twitterDescription: "Strategy. Design. Website. SEO. All Under One Roof. AbuQitmirLabs builds complete brands from scratch for small businesses in Pakistan, the US, UK, UAE, and beyond.",
+    twitterImage: "https://www.abuqitmirlabs.tech/logo.png"
+  },
   "/solutions/fintech/web-development": {
     title: "Fintech Web Development in Dubai | AbuQitmirLabs",
     description: "Bespoke fintech web development in Dubai compliant with DFSA, DIFC, and PCI-DSS. Scalable, low-latency financial systems engineered for UAE institutions.",

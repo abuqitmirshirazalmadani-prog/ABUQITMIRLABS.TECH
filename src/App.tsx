@@ -39,6 +39,8 @@ const ContactPage = lazyWithRetry(() => import('./pages/ContactPage'));
 const BlogPage = lazyWithRetry(() => import('./pages/BlogPage'));
 const CaseStudiesPage = lazyWithRetry(() => import('./pages/CaseStudiesPage'));
 const LuxuryBrandExperiencePage = lazyWithRetry(() => import('./pages/LuxuryBrandExperiencePage'));
+const BrandBuildingPage = lazyWithRetry(() => import('./pages/BrandBuildingPage'));
+
 
 // Solutions Pages
 const FintechSolutionsPage = lazyWithRetry(() => import('./pages/solutions/FintechSolutionsPage'));
@@ -458,6 +460,9 @@ export default function App() {
               <Route path="/guest-post-services" element={<Navigate to="/guest-post-service" replace />} />
               <Route path="/guest-posts" element={<Navigate to="/guest-post-service" replace />} />
               <Route path="/graphics-design" element={<GraphicsDesignPage />} />
+              <Route path="/brand-building" element={<BrandBuildingPage />} />
+              <Route path="/brand-building-services" element={<Navigate to="/brand-building" replace />} />
+              <Route path="/brand-building-services-for-small-businesses" element={<Navigate to="/brand-building" replace />} />
               <Route path="/content-writing" element={<ContentWritingPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/us-market" element={<USMarketPage />} />

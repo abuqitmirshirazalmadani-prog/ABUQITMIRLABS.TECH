@@ -86,5 +86,8 @@ export function getCanonicalPath(pathname: string): string {
   if (clean === '/atelier' || clean === '/luxury-showcase') {
     return '/luxury-brand-experience';
   }
+  if (clean === '/brand-building-services' || clean === '/brand-building-services-for-small-businesses') {
+    return '/brand-building';
+  }
   return clean;
 }
