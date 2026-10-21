@@ -42,21 +42,56 @@ if (fs.existsSync(blogPostsPath)) {
   }
 }
 
-// Also check content/blog/*.md frontmatter
-if (fs.existsSync(blogContentDir)) {
+// Also check content/blog/*.md frontmatter and auto-sync missing posts into staticBlogPosts.ts
+if (fs.existsSync(blogContentDir) && fs.existsSync(blogPostsPath)) {
+  let staticPostsSource = fs.readFileSync(blogPostsPath, 'utf-8');
+  let staticModified = false;
   const mdFiles = fs.readdirSync(blogContentDir).filter(f => f.endsWith('.md'));
+  
   for (const file of mdFiles) {
     try {
-      const content = fs.readFileSync(path.join(blogContentDir, file), 'utf-8');
-      const m = content.match(/["']slug["']\s*:\s*["']([^"']+)["']/);
-      if (m && m[1]) {
-        slugsSet.add(m[1]);
-      } else {
-        slugsSet.add(file.replace(/\.md$/, ''));
+      const rawContent = fs.readFileSync(path.join(blogContentDir, file), 'utf-8');
+      const fmMatch = rawContent.match(/^---[\s\n]*\{([\s\S]*?)\}[\s\n]*---/);
+      let articleSlug = file.replace(/\.md$/, '');
+      let parsedMeta = null;
+      let body = rawContent;
+      
+      if (fmMatch) {
+        parsedMeta = JSON.parse('{' + fmMatch[1] + '}');
+        body = rawContent.replace(/^---[\s\S]*?---[\s\n]*/, '');
+        if (parsedMeta.slug) {
+          articleSlug = parsedMeta.slug.trim();
+        }
       }
-    } catch {
+      
+      slugsSet.add(articleSlug);
+      
+      // Auto-append to staticBlogPosts.ts if missing
+      if (!staticPostsSource.includes(`STATIC_BLOG_POSTS["${articleSlug}"]`) && !staticPostsSource.includes(`'${articleSlug}'`)) {
+        const postObj = {
+          canonical: `https://www.abuqitmirlabs.tech/blog/${articleSlug}`,
+          title: parsedMeta?.title ? (parsedMeta.title.includes('AbuQitmirLabs') ? parsedMeta.title : `${parsedMeta.title} | AbuQitmirLabs`) : `${articleSlug} | AbuQitmirLabs`,
+          content: body,
+          excerpt: parsedMeta?.excerpt || '',
+          metaDescription: parsedMeta?.metaDescription || parsedMeta?.excerpt || '',
+          coverImage: parsedMeta?.coverImage || 'https://www.abuqitmirlabs.tech/logo.png',
+          coverImageAlt: parsedMeta?.coverImageAlt || (parsedMeta?.title ? `${parsedMeta.title} by AbuQitmirLabs` : 'AbuQitmirLabs Journal'),
+          category: parsedMeta?.category || 'Development',
+          createdAt: parsedMeta?.publishedAt || today,
+          author: parsedMeta?.author || 'Abu Qitmir Mohammad Shiraz Al-Madani',
+          tags: parsedMeta?.tags || []
+        };
+        staticPostsSource += `\nSTATIC_BLOG_POSTS["${articleSlug}"] = ${JSON.stringify(postObj, null, 2)};\n`;
+        staticModified = true;
+        console.log(`📦 Auto-synced blog post into staticBlogPosts.ts: ${articleSlug}`);
+      }
+    } catch (e) {
       // ignore read error
     }
+  }
+  
+  if (staticModified) {
+    fs.writeFileSync(blogPostsPath, staticPostsSource, 'utf-8');
   }
 }
 
