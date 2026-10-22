@@ -40,6 +40,7 @@ const BlogPage = lazyWithRetry(() => import('./pages/BlogPage'));
 const CaseStudiesPage = lazyWithRetry(() => import('./pages/CaseStudiesPage'));
 const LuxuryBrandExperiencePage = lazyWithRetry(() => import('./pages/LuxuryBrandExperiencePage'));
 const BrandBuildingPage = lazyWithRetry(() => import('./pages/BrandBuildingPage'));
+const SkillsAcademyPage = lazyWithRetry(() => import('./pages/SkillsAcademyPage'));
 
 
 // Solutions Pages
@@ -463,6 +464,9 @@ export default function App() {
               <Route path="/brand-building" element={<BrandBuildingPage />} />
               <Route path="/brand-building-services" element={<Navigate to="/brand-building" replace />} />
               <Route path="/brand-building-services-for-small-businesses" element={<Navigate to="/brand-building" replace />} />
+              <Route path="/skills-academy" element={<SkillsAcademyPage />} />
+              <Route path="/brand-banao-business-chalao" element={<Navigate to="/skills-academy" replace />} />
+              <Route path="/course" element={<Navigate to="/skills-academy" replace />} />
               <Route path="/content-writing" element={<ContentWritingPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/us-market" element={<USMarketPage />} />

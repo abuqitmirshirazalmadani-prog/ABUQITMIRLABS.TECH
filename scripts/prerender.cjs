@@ -177,6 +177,7 @@ const routes = [
   '/website-contract',
   '/brand-assets',
   '/brand-building',
+  '/skills-academy',
   '/luxury-brand-experience',
   '/tools',
   '/tools/project-cost-estimator',

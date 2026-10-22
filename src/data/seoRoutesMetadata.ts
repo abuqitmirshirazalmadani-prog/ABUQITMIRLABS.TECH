@@ -33,6 +33,20 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     twitterDescription: "Strategy. Design. Website. SEO. All Under One Roof. AbuQitmirLabs builds complete brands from scratch for small businesses in Pakistan, the US, UK, UAE, and beyond.",
     twitterImage: "https://www.abuqitmirlabs.tech/logo.png"
   },
+  "/skills-academy": {
+    title: "Learn to Build a Brand & Business Online — AI Course in Urdu | AbuQitmirLabs",
+    description: "Pakistan ka pehla AI-powered course jahan tum sirf website nahi — poora brand aur online business banana seekhte ho. Real projects, agency backing, live Next.js portfolio.",
+    canonical: "https://www.abuqitmirlabs.tech/skills-academy",
+    keywords: "skills academy, brand banao business chalao, ai powered course urdu, learn web development karachi, freelancing course pakistan, nextjs ai course",
+    ogTitle: "Learn to Build a Brand & Business Online — AI Course in Urdu | AbuQitmirLabs",
+    ogDescription: "Pakistan ka pehla AI-powered course jahan tum sirf website nahi — poora brand aur online business banana seekhte ho. Real projects, agency backing, live Next.js portfolio.",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: "website",
+    twitterCard: "summary_large_image",
+    twitterTitle: "Learn to Build a Brand & Business Online — AI Course in Urdu | AbuQitmirLabs",
+    twitterDescription: "Pakistan ka pehla AI-powered course jahan tum sirf website nahi — poora brand aur online business banana seekhte ho. Real projects, agency backing, live Next.js portfolio.",
+    twitterImage: "https://www.abuqitmirlabs.tech/logo.png"
+  },
   "/solutions/fintech/web-development": {
     title: "Fintech Web Development in Dubai | AbuQitmirLabs",
     description: "Bespoke fintech web development in Dubai compliant with DFSA, DIFC, and PCI-DSS. Scalable, low-latency financial systems engineered for UAE institutions.",
