@@ -35,17 +35,17 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   "/skills-academy": {
     title: "Learn to Build a Brand & Business Online — AI Course in Urdu | AbuQitmirLabs",
-    description: "Pakistan ka pehla AI-powered course jahan tum sirf website nahi — poora brand aur online business banana seekhte ho. Real projects, agency backing, live Next.js portfolio.",
+    description: "Pakistan's premier AI-powered course in Urdu teaching complete brand building and online business development. Real agency client projects, Next.js portfolio, and client acquisition.",
     canonical: "https://www.abuqitmirlabs.tech/skills-academy",
     keywords: "skills academy, brand banao business chalao, ai powered course urdu, learn web development karachi, freelancing course pakistan, nextjs ai course",
     ogTitle: "Learn to Build a Brand & Business Online — AI Course in Urdu | AbuQitmirLabs",
-    ogDescription: "Pakistan ka pehla AI-powered course jahan tum sirf website nahi — poora brand aur online business banana seekhte ho. Real projects, agency backing, live Next.js portfolio.",
-    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogDescription: "Pakistan's premier AI-powered course in Urdu teaching complete brand building and online business development. Real agency client projects, Next.js portfolio, and client acquisition.",
+    ogImage: "https://www.abuqitmirlabs.tech/og-skills-academy.jpg",
     ogType: "website",
     twitterCard: "summary_large_image",
     twitterTitle: "Learn to Build a Brand & Business Online — AI Course in Urdu | AbuQitmirLabs",
-    twitterDescription: "Pakistan ka pehla AI-powered course jahan tum sirf website nahi — poora brand aur online business banana seekhte ho. Real projects, agency backing, live Next.js portfolio.",
-    twitterImage: "https://www.abuqitmirlabs.tech/logo.png"
+    twitterDescription: "Pakistan's premier AI-powered course in Urdu teaching complete brand building and online business development. Real agency client projects, Next.js portfolio, and client acquisition.",
+    twitterImage: "https://www.abuqitmirlabs.tech/twitter-skills-academy.jpg"
   },
   "/solutions/fintech/web-development": {
     title: "Fintech Web Development in Dubai | AbuQitmirLabs",

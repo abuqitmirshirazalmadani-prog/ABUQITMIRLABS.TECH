@@ -62,6 +62,8 @@ import AiReadinessScorePage from './pages/AiReadinessScorePage';
 import TechStackRecommenderPage from './pages/TechStackRecommenderPage';
 import WebsiteAuthorityAnalyzerPage from './pages/WebsiteAuthorityAnalyzerPage';
 import LuxuryBrandExperiencePage from './pages/LuxuryBrandExperiencePage';
+import BrandBuildingPage from './pages/BrandBuildingPage';
+import SkillsAcademyPage from './pages/SkillsAcademyPage';
 import ErrorBoundary from './components/ErrorBoundary';
 
 export { SEO_ROUTES_METADATA } from './data/seoRoutesMetadata';
@@ -137,6 +139,8 @@ export function renderFullApp(url: string = '/') {
               <Route path="/local-seo-audit" element={<LocalSEOAuditPage />} />
               <Route path="/guest-post-service" element={<GuestPostServicePage />} />
               <Route path="/graphics-design" element={<GraphicsDesignPage />} />
+              <Route path="/brand-building" element={<BrandBuildingPage />} />
+              <Route path="/skills-academy" element={<SkillsAcademyPage />} />
               <Route path="/content-writing" element={<ContentWritingPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/us-market" element={<USMarketPage />} />

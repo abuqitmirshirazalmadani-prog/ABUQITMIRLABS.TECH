@@ -72,6 +72,21 @@ const SkillsAcademyPage: React.FC = () => {
     setIsModalOpen(true);
   };
 
+  const scrollToForm = (mode: 'enroll' | 'waitlist', planName?: string) => {
+    setModalMode(mode);
+    setSubmitted(false);
+    if (planName) {
+      setFormData(prev => ({ ...prev, plan: planName }));
+    }
+    const el = document.getElementById('enrollment-section');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      if (mode === 'enroll') openEnrollModal(planName);
+      else openWaitlistModal();
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
@@ -348,7 +363,7 @@ const SkillsAcademyPage: React.FC = () => {
         "@type": "Course",
         "@id": "https://www.abuqitmirlabs.tech/skills-academy#course",
         "name": "Brand Banao Business Chalao: AI-Powered Brand & Web Building Course",
-        "description": "Pakistan ka pehla AI-powered course jahan tum sirf website nahi — poora brand aur online business banana seekhte ho. Real projects, agency backing, live Next.js portfolio.",
+        "description": "Pakistan's premier AI-powered course in Urdu teaching complete brand building and online business development. Real agency client projects, Next.js portfolio, and client acquisition.",
         "provider": {
           "@type": "Organization",
           "name": "AbuQitmirLabs",
@@ -413,23 +428,26 @@ const SkillsAcademyPage: React.FC = () => {
     <div className="bg-[#050505] text-neutral-300 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00] selection:text-black">
       <Helmet>
         <title>Learn to Build a Brand &amp; Business Online — AI Course in Urdu | AbuQitmirLabs</title>
-        <meta name="description" content="Pakistan ka pehla AI-powered course jahan tum sirf website nahi — poora brand aur online business banana seekhte ho. Real projects, agency backing, live Next.js portfolio." />
+        <meta name="description" content="Pakistan's premier AI-powered course in Urdu teaching complete brand building and online business development. Real agency client projects, Next.js portfolio, and client acquisition." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/skills-academy" />
 
         {/* Open Graph */}
         <meta property="og:title" content="Learn to Build a Brand &amp; Business Online — AI Course in Urdu | AbuQitmirLabs" />
-        <meta property="og:description" content="Pakistan ka pehla AI-powered course jahan tum sirf website nahi — poora brand aur online business banana seekhte ho. Real projects, agency backing, live Next.js portfolio." />
+        <meta property="og:description" content="Pakistan's premier AI-powered course in Urdu teaching complete brand building and online business development. Real agency client projects, Next.js portfolio, and client acquisition." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/skills-academy" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="AbuQitmirLabs" />
-        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/og-skills-academy.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="AbuQitmirLabs Skills Academy - Brand Banao Business Chalao AI Course" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@AbuQitmir" />
         <meta name="twitter:title" content="Learn to Build a Brand &amp; Business Online — AI Course in Urdu | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Pakistan ka pehla AI-powered course jahan tum sirf website nahi — poora brand aur online business banana seekhte ho. Real projects, agency backing, live Next.js portfolio." />
-        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
+        <meta name="twitter:description" content="Pakistan's premier AI-powered course in Urdu teaching complete brand building and online business development. Real agency client projects, Next.js portfolio, and client acquisition." />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/twitter-skills-academy.jpg" />
 
         {/* Structured Data Graph */}
         <script 
@@ -496,14 +514,14 @@ const SkillsAcademyPage: React.FC = () => {
               className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
             >
               <button 
-                onClick={() => openEnrollModal('Early Bird (Rs. 12,000)')}
+                onClick={() => scrollToForm('enroll', 'Early Bird (Rs. 12,000)')}
                 className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#ccff00] text-black font-semibold tracking-wide text-sm uppercase transition-all duration-300 hover:bg-[#b8e600] hover:shadow-[0_0_30px_rgba(204,255,0,0.3)] flex items-center justify-center gap-2 cursor-pointer"
               >
                 Enroll Now — Rs. 18,000
                 <ArrowRight className="w-4 h-4" />
               </button>
               <button 
-                onClick={openWaitlistModal}
+                onClick={() => scrollToForm('waitlist')}
                 className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/[0.05] text-white border border-[#3b82f6]/40 hover:border-[#3b82f6] hover:bg-[#3b82f6]/10 font-semibold tracking-wide text-sm uppercase transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
               >
                 Join Waiting List (Free)
@@ -902,7 +920,7 @@ const SkillsAcademyPage: React.FC = () => {
                 </div>
 
                 <button
-                  onClick={() => openEnrollModal(`${plan.name} (${plan.price})`)}
+                  onClick={() => scrollToForm('enroll', `${plan.name} (${plan.price})`)}
                   className={`w-full py-3.5 rounded-xl font-semibold text-center text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                     plan.popular
                       ? 'bg-[#ccff00] text-black hover:bg-[#b8e600]'
@@ -929,11 +947,206 @@ const SkillsAcademyPage: React.FC = () => {
               </div>
             </div>
             <button
-              onClick={() => openEnrollModal('Early Bird (Rs. 12,000)')}
+              onClick={() => scrollToForm('enroll', 'Early Bird (Rs. 12,000)')}
               className="px-6 py-2.5 rounded-xl bg-[#ccff00] text-black text-xs font-bold uppercase tracking-wider hover:bg-[#b8e600] shrink-0 cursor-pointer"
             >
               Claim Rs. 12,000 Spot
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* 6.5 EMBEDDED ON-PAGE ENROLLMENT & WAITING LIST SECTION */}
+      <section id="enrollment-section" className="py-20 md:py-28 relative border-b border-white/5 bg-[#09090b]">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-[#ccff00] mb-3 block">
+              Direct Application Portal
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-white tracking-tight mb-4">
+              Direct Enrollment &amp; Priority Waiting List Application
+            </h2>
+            <p className="text-neutral-400 text-sm sm:text-base max-w-2xl mx-auto">
+              Apna slot book karein ya upcoming batch ki free waiting list join karein. Form submit karne ke baad hamari team WhatsApp par 2 ghante mein rabta karegi.
+            </p>
+          </div>
+
+          <div className="p-8 sm:p-12 rounded-3xl bg-neutral-950 border border-white/10 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#ccff00]/5 blur-3xl rounded-full pointer-events-none" />
+
+            {/* Mode Switcher Tabs */}
+            <div className="flex items-center justify-center p-1.5 rounded-2xl bg-white/[0.04] border border-white/10 max-w-md mx-auto mb-10">
+              <button
+                type="button"
+                onClick={() => { setModalMode('enroll'); setSubmitted(false); }}
+                className={`flex-1 py-3 px-4 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                  modalMode === 'enroll'
+                    ? 'bg-[#ccff00] text-black shadow-lg'
+                    : 'text-neutral-400 hover:text-white'
+                }`}
+              >
+                Enroll in Batch 2026
+              </button>
+              <button
+                type="button"
+                onClick={() => { setModalMode('waitlist'); setSubmitted(false); }}
+                className={`flex-1 py-3 px-4 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                  modalMode === 'waitlist'
+                    ? 'bg-[#3b82f6] text-white shadow-lg'
+                    : 'text-neutral-400 hover:text-white'
+                }`}
+              >
+                Join Free Waiting List
+              </button>
+            </div>
+
+            {submitted ? (
+              <div className="text-center py-10">
+                <div className="w-16 h-16 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle2 className="w-10 h-10 text-[#ccff00]" />
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-serif text-white mb-2">
+                  {modalMode === 'enroll' ? 'Enrollment Application Received!' : 'Added to Waiting List!'}
+                </h3>
+                <p className="text-sm sm:text-base text-neutral-300 mb-8 max-w-lg mx-auto leading-relaxed">
+                  Shukriya <strong className="text-white">{formData.name}</strong>! Hamara team lead aap se agle 2–4 ghanton ke andar WhatsApp (<strong className="text-[#ccff00]">{formData.phone}</strong>) par direct rabta karega aur orientation guide share karega.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <a
+                    href={`https://wa.me/923233260859?text=Assalam%20o%20Alaikum%20AbuQitmirLabs!%20Maine%20Skills%20Academy%20ke%20liye%20form%20submit%20kiya%20hai%20(${encodeURIComponent(formData.name)}).%20Pls%20share%20details.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3 rounded-xl bg-[#25D366] text-black text-xs font-bold uppercase tracking-wider flex items-center gap-2 hover:opacity-90"
+                  >
+                    <MessageSquare className="w-4 h-4" /> Message Direct on WhatsApp
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => setSubmitted(false)}
+                    className="px-6 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white text-xs font-mono uppercase tracking-wider hover:bg-white/[0.1]"
+                  >
+                    Submit Another Response
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2">
+                      Full Name *
+                    </label>
+                    <input 
+                      type="text" 
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="e.g. Mohammad Ali"
+                      className="w-full px-4 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white text-sm focus:outline-none focus:border-[#ccff00] transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2">
+                      WhatsApp / Mobile Number *
+                    </label>
+                    <input 
+                      type="tel" 
+                      required
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="e.g. 0323 3260859"
+                      className="w-full px-4 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white text-sm focus:outline-none focus:border-[#ccff00] transition-colors"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2">
+                      Email Address *
+                    </label>
+                    <input 
+                      type="email" 
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="e.g. student@gmail.com"
+                      className="w-full px-4 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white text-sm focus:outline-none focus:border-[#ccff00] transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2">
+                      City of Residence
+                    </label>
+                    <input 
+                      type="text" 
+                      value={formData.city}
+                      onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                      placeholder="Karachi, Lahore, Islamabad, etc."
+                      className="w-full px-4 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white text-sm focus:outline-none focus:border-[#ccff00] transition-colors"
+                    />
+                  </div>
+                </div>
+
+                {modalMode === 'enroll' && (
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2">
+                      Select Preferred Payment / Learning Plan
+                    </label>
+                    <select
+                      value={formData.plan}
+                      onChange={(e) => setFormData({ ...formData, plan: e.target.value })}
+                      className="w-full px-4 py-3.5 rounded-xl bg-neutral-900 border border-white/10 text-white text-sm focus:outline-none focus:border-[#ccff00]"
+                    >
+                      <option value="Early Bird (Rs. 12,000)">⚡ Early Bird Special — Rs. 12,000 (Pehle 20 Students)</option>
+                      <option value="Online Full (Rs. 18,000)">Online Full Access — Rs. 18,000 (One-Time)</option>
+                      <option value="Installments (Rs. 10k + 10k)">Easy Installment Plan — Rs. 10,000 + Rs. 10,000</option>
+                      <option value="In-Person Karachi Cohort">In-Person Karachi Cohort — Rs. 18,000 + Conveyance</option>
+                    </select>
+                  </div>
+                )}
+
+                <div>
+                  <label className="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2">
+                    Questions or Specific Goals (Optional)
+                  </label>
+                  <textarea
+                    rows={3}
+                    value={formData.notes}
+                    onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+                    placeholder="Koi sawaal ya specific business idea jo aap course mein build karna chahte hain..."
+                    className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white text-sm focus:outline-none focus:border-[#ccff00] transition-colors"
+                  />
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
+                  <button
+                    type="submit"
+                    className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#ccff00] text-black font-semibold text-xs uppercase tracking-wider hover:bg-[#b8e600] transition-colors cursor-pointer flex items-center justify-center gap-2"
+                  >
+                    {modalMode === 'enroll' ? 'Submit Enrollment Application' : 'Join Priority Waiting List'}
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+
+                  <a
+                    href="https://wa.me/923233260859?text=Assalam%20o%20Alaikum%20AbuQitmirLabs!%20Mujhe%20Skills%20Academy%20Course%20ke%20bare%20mein%20poochna%20hai."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto px-6 py-4 rounded-xl bg-white/[0.04] text-neutral-300 border border-white/10 text-xs font-mono uppercase tracking-wider hover:bg-white/[0.08] hover:text-white transition-colors flex items-center justify-center gap-2"
+                  >
+                    <MessageSquare className="w-4 h-4 text-[#25D366]" />
+                    Direct WhatsApp: 0323 3260859
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-2 text-xs font-mono text-neutral-500 pt-2">
+                  <ShieldCheck className="w-4 h-4 text-[#ccff00]" />
+                  <span>100% Privacy. Zero spam. Directly connected with AbuQitmirLabs admissions team.</span>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </section>
@@ -1150,14 +1363,14 @@ const SkillsAcademyPage: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <button 
-              onClick={() => openEnrollModal('Early Bird (Rs. 12,000)')}
+              onClick={() => scrollToForm('enroll', 'Early Bird (Rs. 12,000)')}
               className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#ccff00] text-black font-semibold tracking-wide text-sm uppercase hover:bg-[#b8e600] transition-all duration-300 hover:shadow-[0_0_30px_rgba(204,255,0,0.3)] flex items-center justify-center gap-2 cursor-pointer"
             >
               Enroll Now — Rs. 18,000
               <ArrowRight className="w-4 h-4" />
             </button>
             <button 
-              onClick={openWaitlistModal}
+              onClick={() => scrollToForm('waitlist')}
               className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/[0.04] text-white border border-[#3b82f6]/40 hover:bg-[#3b82f6]/10 font-semibold tracking-wide text-sm uppercase hover:bg-white/[0.08] transition-colors flex items-center justify-center gap-2 cursor-pointer"
             >
               Join Free Waiting List
