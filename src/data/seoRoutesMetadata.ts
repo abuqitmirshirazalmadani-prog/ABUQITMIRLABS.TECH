@@ -4228,5 +4228,106 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         }
       ]
     }
+  },
+  '/blog/how-to-brief-graphic-designer': {
+    title: "How to Brief a Graphic Designer: A Founder's Checklist | AbuQitmirLabs",
+    description: "A founder-friendly checklist for briefing graphic designers. Includes a brief template, must-have sections, and common mistakes to avoid.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/how-to-brief-graphic-designer',
+    ogTitle: "How to Brief a Graphic Designer: A Founder's Checklist | AbuQitmirLabs",
+    ogDescription: "A founder-friendly checklist for briefing graphic designers. Includes a brief template, must-have sections, and common mistakes to avoid.",
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogType: 'article'
+  },
+  '/blog/seo-content-vs-thought-leadership': {
+    title: 'SEO Content vs Thought Leadership: When to Write Which | AbuQitmirLabs',
+    description: 'Detailed founder guide comparing SEO content vs thought leadership. Stage-based decision matrix, search intent differences, and how to combine both for topical authority.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/seo-content-vs-thought-leadership',
+    ogTitle: 'SEO Content vs Thought Leadership: When to Write Which | AbuQitmirLabs',
+    ogDescription: 'Detailed founder guide comparing SEO content vs thought leadership. Stage-based decision matrix, search intent differences, and how to combine both for topical authority.',
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogType: 'article',
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/seo-content-vs-thought-leadership#article',
+          'headline': 'SEO Content vs Thought Leadership: When to Write Which',
+          'description': 'Breakdown of SEO content vs thought leadership for founders. Learn when to write which, how to balance demand capture and trust, and stage-based allocation matrix.',
+          'image': 'https://www.abuqitmirlabs.tech/logo.png',
+          'author': {
+            '@type': 'Person',
+            'name': 'Abu Qitmir Mohammad Shiraz Al-Madani',
+            'url': 'https://www.abuqitmirlabs.tech/about'
+          },
+          'publisher': {
+            '@type': 'Organization',
+            'name': 'AbuQitmirLabs',
+            'url': 'https://www.abuqitmirlabs.tech/',
+            'logo': {
+              '@type': 'ImageObject',
+              'url': 'https://www.abuqitmirlabs.tech/logo.png'
+            }
+          },
+          'datePublished': '2026-10-22',
+          'dateModified': '2026-10-22',
+          'mainEntityOfPage': 'https://www.abuqitmirlabs.tech/blog/seo-content-vs-thought-leadership'
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/seo-content-vs-thought-leadership#breadcrumb',
+          'itemListElement': [
+            {
+              '@type': 'ListItem',
+              'position': 1,
+              'name': 'Home',
+              'item': 'https://www.abuqitmirlabs.tech/'
+            },
+            {
+              '@type': 'ListItem',
+              'position': 2,
+              'name': 'Blog',
+              'item': 'https://www.abuqitmirlabs.tech/blog'
+            },
+            {
+              '@type': 'ListItem',
+              'position': 3,
+              'name': 'SEO Content vs Thought Leadership: When to Write Which',
+              'item': 'https://www.abuqitmirlabs.tech/blog/seo-content-vs-thought-leadership'
+            }
+          ]
+        },
+        {
+          '@type': 'FAQPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/seo-content-vs-thought-leadership#faq',
+          'mainEntity': [
+            {
+              '@type': 'Question',
+              'name': 'Can thought leadership rank on Google?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': "Yes. Thought leadership can rank on Google if structured with clear headings and answers specific queries. Google's E-E-A-T guidelines prioritize first-hand experience."
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'Do I need both SEO content and thought leadership for a B2B SaaS?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Yes. Thought leadership builds trust and brand awareness, while SEO content captures buyers who are actively searching for solutions.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'How does AI Overviews affect SEO content?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'AI Overviews summarize generic information directly in search results. SEO content must now include unique data, original research, or strong opinions that AI cannot generate.'
+              }
+            }
+          ]
+        }
+      ]
+    }
   }
 };
