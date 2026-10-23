@@ -459,11 +459,11 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
   },
   '/web-development': {
-    title: 'Custom Web Development Services in Pakistan & API Integration | AbuQitmirLabs',
-    description: 'AbuQitmirLabs builds custom web services, scalable web applications, and API integrations in Karachi, Pakistan. We connect Stripe, CRM, and ERP systems for growing businesses.',
+    title: 'Custom Website Development Services | AbuQitmirLabs',
+    description: 'React and Next.js websites engineered for speed and search visibility, not stitched together from templates. Based in Karachi, built for clients worldwide.',
     canonical: 'https://www.abuqitmirlabs.tech/web-development',
-    ogTitle: 'Custom Web Development Services in Pakistan & API Integration | AbuQitmirLabs',
-    ogDescription: 'AbuQitmirLabs builds custom web services, scalable web applications, and API integrations in Karachi, Pakistan. We connect Stripe, CRM, and ERP systems for growing businesses.',
+    ogTitle: 'Custom Website Development Services | AbuQitmirLabs',
+    ogDescription: 'Full-stack custom web development company in Karachi, Pakistan. High-performance web applications.',
     ogImage: 'https://www.abuqitmirlabs.tech/logo.png'
   },
   '/ai-agent-development': {
