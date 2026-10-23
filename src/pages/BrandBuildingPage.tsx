@@ -776,6 +776,20 @@ const BrandBuildingPage: React.FC = () => {
                     </div>
                   ))}
                 </div>
+
+                {pillars[activePillar].id === 'website' && (
+                  <div className="mt-8 p-4 rounded-xl bg-blue-500/10 border border-blue-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div className="text-xs text-neutral-300">
+                      Looking specifically for standalone custom web engineering, REST API development, or payment integrations?
+                    </div>
+                    <Link
+                      to="/web-development"
+                      className="shrink-0 inline-flex items-center gap-1.5 text-xs font-mono font-bold text-blue-400 hover:text-blue-300 transition-colors"
+                    >
+                      API Development & Integration Services in Karachi &rarr;
+                    </Link>
+                  </div>
+                )}
               </div>
 
               <div className="lg:col-span-5 bg-white/[0.02] border border-white/5 rounded-2xl p-6 sm:p-8 flex flex-col justify-between h-full">
