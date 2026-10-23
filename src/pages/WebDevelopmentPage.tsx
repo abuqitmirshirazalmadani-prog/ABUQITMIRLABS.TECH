@@ -196,23 +196,23 @@ Do not sign a website contract without these protective legal terms.
   return (
     <div className="bg-[#050505] text-axiom-sub font-body antialiased overflow-x-hidden min-h-screen relative selection:bg-blue-500/30 selection:text-white">
       <Helmet>
-        <title>Custom Website Development Services | AbuQitmirLabs</title>
-        <meta name="description" content="React and Next.js websites engineered for speed and search visibility, not stitched together from templates. Based in Karachi, built for clients worldwide." />
-        <meta name="keywords" content="web development, web development company, web development services, custom web development, custom web development company, web application development, full-stack web development, React web development, Next.js development, custom website development, professional web development services" />
+        <title>Custom Web Development Services in Pakistan & API Integration | AbuQitmirLabs</title>
+        <meta name="description" content="AbuQitmirLabs builds custom web services, scalable web applications, and API integrations in Karachi, Pakistan. We connect Stripe, CRM, and ERP systems for growing businesses." />
+        <meta name="keywords" content="custom web development services in Pakistan, API development and integration services in Karachi, custom web services company Pakistan, scalable web applications Pakistan, website development services in Pakistan, web development company, React web development, Next.js development" />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/web-development" />
         <meta name="robots" content="index, follow" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Custom Website Development Services | AbuQitmirLabs" />
-        <meta property="og:description" content="React and Next.js websites engineered for speed and search visibility, not stitched together from templates. Based in Karachi, built for clients worldwide." />
+        <meta property="og:title" content="Custom Web Development Services in Pakistan & API Integration | AbuQitmirLabs" />
+        <meta property="og:description" content="AbuQitmirLabs builds custom web services, scalable web applications, and API integrations in Karachi, Pakistan. We connect Stripe, CRM, and ERP systems for growing businesses." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/web-development" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Custom Website Development Services | AbuQitmirLabs" />
-        <meta name="twitter:description" content="React and Next.js websites engineered for speed and search visibility, not stitched together from templates. Based in Karachi, built for clients worldwide." />
+        <meta name="twitter:title" content="Custom Web Development Services in Pakistan & API Integration | AbuQitmirLabs" />
+        <meta name="twitter:description" content="AbuQitmirLabs builds custom web services, scalable web applications, and API integrations in Karachi, Pakistan. We connect Stripe, CRM, and ERP systems for growing businesses." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 
         {/* Unified JSON-LD Structured Data Schema (@graph) */}
@@ -254,8 +254,8 @@ Do not sign a website contract without these protective legal terms.
                   "@type": "WebPage",
                   "@id": "https://www.abuqitmirlabs.tech/web-development/#webpage",
                   "url": "https://www.abuqitmirlabs.tech/web-development",
-                  "name": "Custom Website Development Services | AbuQitmirLabs",
-                  "description": "React and Next.js websites engineered for speed and search visibility, not stitched together from templates. Based in Karachi, built for clients worldwide.",
+                  "name": "Custom Web Development Services in Pakistan & API Integration | AbuQitmirLabs",
+                  "description": "AbuQitmirLabs builds custom web services, scalable web applications, and API integrations in Karachi, Pakistan. We connect Stripe, CRM, and ERP systems for growing businesses.",
                   "isPartOf": {
                     "@id": "https://www.abuqitmirlabs.tech/#website"
                   },
@@ -886,7 +886,7 @@ Do not sign a website contract without these protective legal terms.
                   Need to connect your existing website with another software system?
                   AbuQitmirLabs provides <strong className="text-white font-medium">API development and integration services in Karachi</strong>.
                   We build custom <strong className="text-white font-medium">REST APIs</strong> and integrate payment gateways
-                  (<strong className="text-white font-medium">Stripe, JazzCash</strong>), <strong className="text-white font-medium">CRM systems</strong>, and
+                  (<strong className="text-white font-medium">Stripe, JazzCash</strong>), <strong className="text-white font-medium">CRM systems</strong>, and{' '}
                   <strong className="text-white font-medium">ERP platforms</strong> directly into your web application.
                 </p>
 
@@ -896,6 +896,26 @@ Do not sign a website contract without these protective legal terms.
                   that keep your business tools in sync.
                 </p>
               </div>
+            </motion.div>
+          </section>
+
+          {/* NEW SECTION: Scalable Web Applications */}
+          <section className="scalable-apps-pakistan mb-24" aria-labelledby="scalable-heading">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#080808] border border-white/5 rounded-3xl p-8 md:p-12 relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-600/[0.02] rounded-full blur-3xl pointer-events-none" />
+              <span className="text-[10px] font-mono text-indigo-400 tracking-wider uppercase font-bold mb-3 block">[ INFRASTRUCTURE_SCALING ]</span>
+              <h2 id="scalable-heading" className="text-2xl md:text-3xl lg:text-4xl font-bold text-white uppercase tracking-tight mb-6">
+                Scalable Web Applications for Growing Businesses in Pakistan
+              </h2>
+
+              <p className="text-neutral-300 font-light leading-relaxed font-sans max-w-4xl text-base md:text-lg">
+                Using <strong className="text-white font-medium">Next.js</strong> and <strong className="text-white font-medium">cloud hosting</strong> (AWS, Vercel, Cloudflare), we build <strong className="text-white font-medium">highly scalable web applications in Pakistan</strong> that stay fast and stable as your traffic grows. Our architecture is designed for horizontal scaling, edge caching, and sub-second load times—so your application does not crash during peak demand.
+              </p>
             </motion.div>
           </section>
 
