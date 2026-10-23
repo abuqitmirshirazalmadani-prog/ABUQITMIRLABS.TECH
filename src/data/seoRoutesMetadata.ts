@@ -19,6 +19,20 @@ export interface RouteSeoMetadata {
 }
 
 export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
+  "/blog/content-brief-template": {
+    title: "The Content Brief Template That Gets Writers 90% There | AbuQitmirLabs",
+    description: "14-point content brief template that gets writers 90% there. Includes 14 sections, live examples, Table of Contents, and a downloadable copy-paste template.",
+    canonical: "https://www.abuqitmirlabs.tech/blog/content-brief-template",
+    keywords: "content brief template, how to write content brief, SEO content brief, content brief example, content marketing, content strategy, B2B content marketing, content writing services, content brief checklist, AbuQitmirLabs",
+    ogTitle: "The Content Brief Template That Gets Writers 90% There | AbuQitmirLabs",
+    ogDescription: "14-point content brief template that gets writers 90% there. Includes 14 sections, live examples, Table of Contents, and a downloadable copy-paste template.",
+    ogImage: "https://i.postimg.cc/8C8xN6Vc/14-Point-Content-Brief-Guide.png",
+    ogType: "article",
+    twitterCard: "summary_large_image",
+    twitterTitle: "The Content Brief Template That Gets Writers 90% There | AbuQitmirLabs",
+    twitterDescription: "14-point content brief template that gets writers 90% there. Includes 14 sections, live examples, Table of Contents, and a downloadable copy-paste template.",
+    twitterImage: "https://i.postimg.cc/8C8xN6Vc/14-Point-Content-Brief-Guide.png"
+  },
   "/brand-building": {
     title: "Brand Building Services for Small Businesses | AbuQitmirLabs",
     description: "Strategy. Design. Website. SEO. All Under One Roof. AbuQitmirLabs builds complete brands from scratch for small businesses in Pakistan, the US, UK, UAE, and beyond.",

@@ -17,6 +17,7 @@ import { getCachedPost, setCachedPost } from '../utils/blogCache';
 
 interface Post {
   title: string;
+  heroSubtitle?: string;
   content: string;
   excerpt?: string;
   metaDescription?: string;
@@ -3484,9 +3485,15 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
 
                             {/* Middle title and excerpt */}
                             <div className="relative z-10 my-auto py-4">
-                                <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white tracking-tight leading-tight mb-4 font-display">
-                                    {post.title}
-                                </h2>
+                                {post.heroSubtitle ? (
+                                    <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white tracking-tight leading-tight mb-4 font-display">
+                                        {post.heroSubtitle}
+                                    </h2>
+                                ) : (
+                                    <div className="text-2xl sm:text-3xl md:text-5xl font-black text-white tracking-tight leading-tight mb-4 font-display" aria-hidden="true">
+                                        {post.title}
+                                    </div>
+                                )}
                                 {post.excerpt && (
                                     <p className="text-zinc-400 text-sm md:text-lg max-w-3xl line-clamp-2 font-sans font-normal leading-relaxed">
                                         {post.excerpt}
@@ -3523,10 +3530,26 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                             remarkPlugins={[remarkGfm]}
                             components={{
                                 p: ({node, ...props}) => <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans" {...props} />,
-                                h1: ({node, ...props}) => <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mt-12 mb-6 font-serif border-b border-zinc-800/80 pb-4" {...props} />,
-                                h2: ({node, ...props}) => <h2 className="text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3" {...props} />,
-                                h3: ({node, ...props}) => <h3 className="text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif" {...props} />,
-                                h4: ({node, ...props}) => <h4 className="text-lg font-bold text-zinc-200 mt-6 mb-2 font-serif" {...props} />,
+                                h1: ({node, children, ...props}: any) => {
+                                    const text = React.Children.toArray(children).map(c => typeof c === 'string' || typeof c === 'number' ? String(c) : '').join('');
+                                    const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                                    return <h2 id={id || undefined} className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mt-12 mb-6 font-serif border-b border-zinc-800/80 pb-4" {...props}>{children}</h2>;
+                                },
+                                h2: ({node, children, ...props}: any) => {
+                                    const text = React.Children.toArray(children).map(c => typeof c === 'string' || typeof c === 'number' ? String(c) : '').join('');
+                                    const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                                    return <h2 id={id || undefined} className="text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3" {...props}>{children}</h2>;
+                                },
+                                h3: ({node, children, ...props}: any) => {
+                                    const text = React.Children.toArray(children).map(c => typeof c === 'string' || typeof c === 'number' ? String(c) : '').join('');
+                                    const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                                    return <h3 id={id || undefined} className="text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif" {...props}>{children}</h3>;
+                                },
+                                h4: ({node, children, ...props}: any) => {
+                                    const text = React.Children.toArray(children).map(c => typeof c === 'string' || typeof c === 'number' ? String(c) : '').join('');
+                                    const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                                    return <h4 id={id || undefined} className="text-lg font-bold text-zinc-200 mt-6 mb-2 font-serif" {...props}>{children}</h4>;
+                                },
                                 a: ({node, href, children, ...props}) => {
                                     if (href && href.startsWith('/')) {
                                         return (

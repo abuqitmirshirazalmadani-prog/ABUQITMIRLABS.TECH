@@ -71,6 +71,7 @@ if (fs.existsSync(blogContentDir) && fs.existsSync(blogPostsPath)) {
         const postObj = {
           canonical: `https://www.abuqitmirlabs.tech/blog/${articleSlug}`,
           title: parsedMeta?.title ? (parsedMeta.title.includes('AbuQitmirLabs') ? parsedMeta.title : `${parsedMeta.title} | AbuQitmirLabs`) : `${articleSlug} | AbuQitmirLabs`,
+          heroSubtitle: parsedMeta?.heroSubtitle || undefined,
           content: body,
           excerpt: parsedMeta?.excerpt || '',
           metaDescription: parsedMeta?.metaDescription || parsedMeta?.excerpt || '',

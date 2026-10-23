@@ -241,7 +241,8 @@ const routes = [
   '/blog/measure-marketing-roi-without-tracking',
   '/blog/ui-ux-design-conversion',
   '/blog/how-to-brief-graphic-designer',
-  '/blog/seo-content-vs-thought-leadership'
+  '/blog/seo-content-vs-thought-leadership',
+  '/blog/content-brief-template'
 ];
 
 // Dynamically discover all articles from content/blog/*.md so new posts are always prerendered
