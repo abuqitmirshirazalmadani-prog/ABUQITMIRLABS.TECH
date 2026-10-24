@@ -574,7 +574,7 @@ export default function App() {
           <RouteSEO />
           {/* <TopLoadingBar /> */}
           <ScrollToTop />
-          
+          <MetaHeadSanitizer />
           <FacebookPixel />
           <GoogleAnalyticsTracker />
           <FloatingWhatsApp />
