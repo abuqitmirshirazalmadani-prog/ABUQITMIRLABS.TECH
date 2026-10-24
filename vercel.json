@@ -402,6 +402,16 @@
       "source": "/mvp-to-scale-roadmap-for-founders",
       "destination": "/blog/mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-2026",
       "permanent": true
+    },
+    {
+      "source": "/blog/how-to-brief-a-graphic-designer-a-practical-guide-for-founders-who-want-results",
+      "destination": "/blog/how-to-brief-graphic-designer",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-brief-a-graphic-designer-a-practical-guide-for-founders-who-want-results",
+      "destination": "/blog/how-to-brief-graphic-designer",
+      "permanent": true
     }
   ]
 }
