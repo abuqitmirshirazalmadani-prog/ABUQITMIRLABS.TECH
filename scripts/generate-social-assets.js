@@ -492,8 +492,17 @@ Generated with precision by AbuQitmirLabs Asset Engineering System
 
   fs.writeFileSync(path.join(baseDir, 'README.txt'), readmeContent);
 
+  // Remove any pre-existing zip inside baseDir before archiving to prevent recursive self-inclusion
+  const nestedZipPath = path.join(baseDir, 'abuqitmirlabs-social-media-kit.zip');
+  if (fs.existsSync(nestedZipPath)) {
+    fs.unlinkSync(nestedZipPath);
+  }
+
   // Create ZIP archive
   const zipPath = path.join(zipOutputDir, 'abuqitmirlabs-social-media-kit.zip');
+  if (fs.existsSync(zipPath)) {
+    fs.unlinkSync(zipPath);
+  }
   const output = fs.createWriteStream(zipPath);
   const archive = new ZipArchive({ zlib: { level: 9 } });
 
@@ -501,7 +510,7 @@ Generated with precision by AbuQitmirLabs Asset Engineering System
     output.on('close', () => {
       console.log(`✓ Created complete ZIP package: ${zipPath} (${archive.pointer()} total bytes)`);
       // Also copy zip into public/brand-assets for convenience
-      fs.copyFileSync(zipPath, path.join(baseDir, 'abuqitmirlabs-social-media-kit.zip'));
+      fs.copyFileSync(zipPath, nestedZipPath);
       resolve(assetList);
     });
 

@@ -28,8 +28,8 @@
     }
   ],
   "functions": {
-    "api/*.ts": {
-      "includeFiles": "public/**"
+    "api/sitemap.ts": {
+      "includeFiles": "public/*sitemap*.xml"
     }
   },
   "rewrites": [
@@ -165,12 +165,12 @@
     },
     {
       "source": "/blog/how-to-choose-mobile-app-development-company",
-      "destination": "/blog/how-to-choose-mobile-app-development-company-2026",
+      "destination": "/blog/how-to-choose-a-mobile-app-development-company-2026",
       "permanent": true
     },
     {
       "source": "/how-to-choose-mobile-app-development-company",
-      "destination": "/blog/how-to-choose-mobile-app-development-company-2026",
+      "destination": "/blog/how-to-choose-a-mobile-app-development-company-2026",
       "permanent": true
     },
     {
