@@ -6,9 +6,11 @@
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { useEffect, lazy, Suspense } from 'react';
+import { ReactLenis } from '@studio-freight/react-lenis';
 import { lazyWithRetry } from './utils/lazyWithRetry';
 import FacebookPixel from './components/FacebookPixel';
 import ErrorBoundary from './components/ErrorBoundary';
+import SEO from './components/SEO';
 
 // Eager import landing page for immediate initial render
 import HomePage from './pages/HomePage';
@@ -108,6 +110,39 @@ function ScrollToTop() {
 
 import { getCanonicalPath } from './data/canonicalRedirects';
 import { SEO_ROUTES_METADATA } from './data/seoRoutesMetadata';
+
+function RouteSEO() {
+  const { pathname } = useLocation();
+  const canonicalPath = getCanonicalPath(pathname);
+  const normalizedPath =
+    canonicalPath.endsWith('/') && canonicalPath !== '/'
+      ? canonicalPath.slice(0, -1)
+      : canonicalPath;
+
+  const routeSeo =
+    SEO_ROUTES_METADATA[canonicalPath] ||
+    SEO_ROUTES_METADATA[normalizedPath] ||
+    SEO_ROUTES_METADATA[pathname];
+
+  return (
+    <SEO
+      title={routeSeo?.title}
+      description={routeSeo?.description}
+      canonical={routeSeo?.canonical}
+      keywords={routeSeo?.keywords}
+      ogTitle={routeSeo?.ogTitle}
+      ogDescription={routeSeo?.ogDescription}
+      ogImage={routeSeo?.ogImage}
+      ogImageAlt={routeSeo?.ogImageAlt}
+      ogType={routeSeo?.ogType}
+      twitterCard={routeSeo?.twitterCard}
+      twitterTitle={routeSeo?.twitterTitle}
+      twitterDescription={routeSeo?.twitterDescription}
+      twitterImage={routeSeo?.twitterImage}
+      robots={routeSeo?.robots}
+    />
+  );
+}
 
 function MetaHeadSanitizer() {
   const { pathname } = useLocation();
@@ -400,10 +435,12 @@ export default function App() {
 
   return (
     <HelmetProvider>
-      <Router>
+      <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothWheel: true }}>
+        <Router>
+        <RouteSEO />
         {/* <TopLoadingBar /> */}
         <ScrollToTop />
-        {/* <MetaHeadSanitizer /> */}
+        <MetaHeadSanitizer />
         <FacebookPixel />
         <GoogleAnalyticsTracker />
         <FloatingWhatsApp />
@@ -594,7 +631,8 @@ export default function App() {
             </Routes>
           </Suspense>
         </ErrorBoundary>
-      </Router>
+        </Router>
+      </ReactLenis>
     </HelmetProvider>
   );
 }

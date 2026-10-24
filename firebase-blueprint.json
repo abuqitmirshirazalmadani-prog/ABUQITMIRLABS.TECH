@@ -127,6 +127,36 @@
         "createdAt": { "type": "string", "format": "date-time" }
       },
       "required": ["email", "domain", "score"]
+    },
+    "NewsletterSubscriber": {
+      "title": "Newsletter Subscriber",
+      "description": "A user email subscription for future engineering insights, product updates, and newsletter dispatches.",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 150,
+          "minLength": 5,
+          "description": "Subscriber email address"
+        },
+        "source": {
+          "type": "string",
+          "enum": ["footer", "sidebar", "blog"],
+          "description": "Placement source where the user subscribed"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "unsubscribed"],
+          "description": "Subscription status"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the subscription was created"
+        }
+      },
+      "required": ["email", "source", "status", "createdAt"]
     }
   },
   "firestore": {
@@ -153,6 +183,10 @@
     "authority_leads": {
       "schema": "AuthorityLead",
       "description": "Collection of leads generated through the Website Authority Analyzer tool"
+    },
+    "newsletter_subscribers": {
+      "schema": "NewsletterSubscriber",
+      "description": "Collection of newsletter email subscribers from footer and blog sidebar"
     }
   }
 }

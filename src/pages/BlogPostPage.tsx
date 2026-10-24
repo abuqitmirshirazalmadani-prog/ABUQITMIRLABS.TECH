@@ -3,15 +3,17 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
 import { db, collection, getDocs, query, where, handleFirestoreError, OperationType } from '../lib/firebase';
-import { ArrowLeft, Calendar, User, Clock, Share2, Twitter, Linkedin, Facebook, Link as LinkIcon } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, User, Clock, Share2, Twitter, Linkedin, Facebook, Link as LinkIcon, BookOpen } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import MarkdownRenderer from '../components/MarkdownRenderer';
 import remarkGfm from 'remark-gfm';
-import { STATIC_BLOG_POSTS } from '../data/staticBlogPosts';
+import { STATIC_BLOG_POSTS, getStaticBlogList } from '../data/staticBlogPosts';
 import { generateBlogPostMeta } from '../utils/seoUtils';
+import { calculateReadingTime } from '../utils/readingTime';
 import { getCanonicalSlug } from '../data/canonicalRedirects';
+import NewsletterSubscriptionForm from '../components/NewsletterSubscriptionForm';
 
 import { getCachedPost, setCachedPost } from '../utils/blogCache';
 
@@ -575,6 +577,63 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         { name: categoryDetails.name, to: categoryDetails.to },
         { name: post.title || 'Journal' }
     ];
+
+    const relatedPosts = (() => {
+        const allPosts = getStaticBlogList();
+        const currentCanonical = getCanonicalSlug(slug || '');
+        const normalizeText = (str?: string) => (str || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+        const currentNormTitle = normalizeText(post.title);
+        const currentCategoryRaw = (post.category || '').trim().toLowerCase();
+        const currentCategoryGroup = categoryDetails.name.toLowerCase();
+        const currentTags = new Set(
+            (Array.isArray(post.tags) ? post.tags : [])
+                .map(t => String(t || '').toLowerCase().trim())
+                .filter(Boolean)
+        );
+
+        const seenCanonicalSlugs = new Set<string>();
+        const seenNormTitles = new Set<string>();
+
+        const candidates = allPosts
+            .map(item => ({
+                ...item,
+                slug: getCanonicalSlug(item.slug),
+            }))
+            .filter(item => {
+                if (!item.slug || !item.title) return false;
+                if (item.slug === currentCanonical) return false;
+                const normTitle = normalizeText(item.title);
+                if (!normTitle || normTitle === currentNormTitle) return false;
+                if (seenCanonicalSlugs.has(item.slug) || seenNormTitles.has(normTitle)) return false;
+                seenCanonicalSlugs.add(item.slug);
+                seenNormTitles.add(normTitle);
+                return true;
+            });
+
+        const scored = candidates.map(candidate => {
+            const candidateCatRaw = (candidate.category || '').trim().toLowerCase();
+            const candidateCatGroup = getCategoryDetails(candidate.category).name.toLowerCase();
+
+            let score = 0;
+            if (currentCategoryRaw && candidateCatRaw === currentCategoryRaw) {
+                score += 100;
+            }
+            if (candidateCatGroup === currentCategoryGroup) {
+                score += 50;
+            }
+            const candidateTags = Array.isArray(candidate.tags) ? candidate.tags : [];
+            for (const tag of candidateTags) {
+                if (currentTags.has(String(tag || '').toLowerCase().trim())) {
+                    score += 5;
+                }
+            }
+
+            return { candidate, score };
+        });
+
+        scored.sort((a, b) => b.score - a.score);
+        return scored.slice(0, 3).map(entry => entry.candidate);
+    })();
 
     const seoData = generateBlogPostMeta(post, slug || '', {
         siteUrl: 'https://www.abuqitmirlabs.tech',
@@ -3416,6 +3475,10 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                         <span className="text-zinc-400">(AbuQitmirLabs)</span>
                                     </span>
                                 </span>
+                                <span className="text-zinc-600 select-none font-normal" aria-hidden="true">•</span>
+                                <span className="flex items-center gap-2 text-zinc-300" data-testid="reading-time">
+                                    <Clock size={14} className="text-[#ccff00]" /> {calculateReadingTime(post.content)}
+                                </span>
                             </div>
                             <div className="flex items-center gap-4 ml-auto">
                                 <span className="hidden md:inline-block text-zinc-400">Share:</span>
@@ -3682,6 +3745,83 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                             </div>
                         </div>
                     )}
+
+                    {/* Related Articles Section */}
+                    {relatedPosts.length > 0 && (
+                        <section
+                            aria-label="Related Articles"
+                            data-testid="related-articles-section"
+                            className="mt-16 pt-10 border-t border-zinc-800/80"
+                        >
+                            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+                                <div>
+                                    <span className="inline-flex items-center gap-2 text-[10px] font-mono text-[#ccff00] uppercase tracking-[0.2em] font-bold mb-2">
+                                        <BookOpen size={13} className="text-[#ccff00]" />
+                                        [ SIMILAR TOPICS IN {(post.category || categoryDetails.name).toUpperCase()} ]
+                                    </span>
+                                    <h2 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight font-serif">
+                                        Related Articles
+                                    </h2>
+                                </div>
+                                <Link
+                                    to="/blog"
+                                    className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-zinc-400 hover:text-[#ccff00] transition-colors group"
+                                >
+                                    View All Articles
+                                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                                </Link>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                {relatedPosts.map((related) => {
+                                    const relatedFullPost = STATIC_POSTS_MAP[related.slug];
+                                    const relatedReadingTime = calculateReadingTime(
+                                        relatedFullPost?.content || related.excerpt || ''
+                                    );
+                                    return (
+                                        <Link
+                                            key={related.slug}
+                                            to={`/blog/${related.slug}`}
+                                            data-testid="related-article-link"
+                                            className="group bg-[#0b0b0e] border border-zinc-800/80 hover:border-[#ccff00]/50 rounded-[2rem] p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-xl"
+                                        >
+                                            <div>
+                                                <div className="flex items-center justify-between gap-2 mb-4">
+                                                    <span className="inline-block px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] text-[10px] font-mono font-bold uppercase tracking-wider">
+                                                        {related.category || categoryDetails.name}
+                                                    </span>
+                                                    <span className="flex items-center gap-1 text-[11px] font-mono text-zinc-400">
+                                                        <Clock size={12} className="text-[#ccff00]" />
+                                                        {relatedReadingTime}
+                                                    </span>
+                                                </div>
+
+                                                <span className="block text-lg font-black text-white group-hover:text-[#ccff00] transition-colors leading-snug mb-3 font-serif uppercase tracking-tight line-clamp-3">
+                                                    {related.title}
+                                                </span>
+
+                                                {related.excerpt && (
+                                                    <p className="text-zinc-400 text-xs leading-relaxed line-clamp-3 mb-6 font-sans">
+                                                        {related.excerpt}
+                                                    </p>
+                                                )}
+                                            </div>
+
+                                            <div className="pt-4 border-t border-zinc-800/60 flex items-center justify-between text-xs font-mono font-bold uppercase tracking-wider text-zinc-300 group-hover:text-[#ccff00] transition-colors">
+                                                <span>Read Article</span>
+                                                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform text-[#ccff00]" />
+                                            </div>
+                                        </Link>
+                                    );
+                                })}
+                            </div>
+                        </section>
+                    )}
+
+                    {/* Newsletter Subscription Callout */}
+                    <div className="mt-16">
+                        <NewsletterSubscriptionForm variant="sidebar" source="blog" />
+                    </div>
 
                     <div className="mt-16 pt-10 border-t border-zinc-800/80">
                         <div className="bg-[#0b0b0e] border border-zinc-800/80 rounded-[2.5rem] p-10 flex flex-col md:flex-row items-center gap-10 shadow-xl">

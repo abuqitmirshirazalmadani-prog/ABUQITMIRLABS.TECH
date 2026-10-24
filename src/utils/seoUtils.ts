@@ -286,3 +286,7 @@ export function generateBlogPostMeta(
     schemaJsonLd
   };
 }
+
+export { calculateReadingTime, getReadingTimeStats, countReadableWords } from './readingTime';
+export type { ReadingTimeResult } from './readingTime';
+

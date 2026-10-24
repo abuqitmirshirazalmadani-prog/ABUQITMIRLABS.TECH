@@ -548,39 +548,6 @@ const InteractivePortfolio = () => {
                         </motion.div>
                     </div>
                 </div>
-
-                {/* BOTTOM LUXURY CTA - "Your project could be next" */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="mt-28 md:mt-36 p-8 md:p-16 border border-white/5 rounded-[2.5rem] bg-gradient-to-b from-white/[0.02] to-transparent text-center relative overflow-hidden"
-                    id="portfolio-cta-container"
-                >
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(204,255,0,0.015)_0%,transparent_65%)] pointer-events-none"></div>
-                    <h3 className="text-3xl md:text-5xl font-black text-white tracking-tight mb-4">
-                        Your project could be <span className="text-[#ccff00] italic">next.</span>
-                    </h3>
-                    <p className="text-zinc-500 max-w-xl mx-auto text-sm md:text-base font-light mb-10 leading-relaxed">
-                        From idea conceptualization to ultra-optimized live implementation — we build fast, modern, and high-conversion assets.
-                    </p>
-                    <div className="flex flex-wrap items-center justify-center gap-4">
-                        <a 
-                            href="https://wa.me/923233260859" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            aria-label="Start project consultation on WhatsApp"
-                            className="bg-[#ccff00] text-black font-black uppercase text-xs tracking-wider py-4 px-8 rounded-full flex items-center gap-2 hover:bg-[#b0d600] hover:text-black transition-all"
-                            style={{ color: '#000000' }}
-                            id="portfolio-whatsapp-cta"
-                        >
-                            <MessageCircle size={14} className="fill-current text-black" style={{ color: '#000000' }} />
-                            <span className="text-black font-black" style={{ color: '#000000' }}>Start on WhatsApp</span>
-                        </a>
-                    </div>
-                </motion.div>
-
             </div>
         </section>
     );

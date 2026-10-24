@@ -19,6 +19,126 @@ export interface RouteSeoMetadata {
 }
 
 export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
+  "/tools": {
+    title: "Free Engineering, AI Readiness & SEO Tools | AbuQitmirLabs",
+    description: "Free interactive software engineering, technical SEO, AI readiness, project cost estimation, and website authority tools built by AbuQitmirLabs.",
+    canonical: "https://www.abuqitmirlabs.tech/tools",
+    keywords: "free software tools, project cost estimator, website audit tool, SEO checklist, AI readiness score, tech stack recommender, website authority analyzer",
+    ogTitle: "Free Engineering, AI Readiness & SEO Tools | AbuQitmirLabs",
+    ogDescription: "Free interactive software engineering, technical SEO, AI readiness, project cost estimation, and website authority tools built by AbuQitmirLabs.",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: "website",
+    twitterCard: "summary_large_image"
+  },
+  "/tools/website-audit": {
+    title: "Free Technical Website Audit & Performance Analyzer | AbuQitmirLabs",
+    description: "Run an instant technical SEO, Core Web Vitals, security headers, and conversion architecture audit on your website with AbuQitmirLabs.",
+    canonical: "https://www.abuqitmirlabs.tech/tools/website-audit",
+    keywords: "website audit tool, technical SEO audit, Core Web Vitals checker, website performance analyzer, AbuQitmirLabs",
+    ogTitle: "Free Technical Website Audit & Performance Analyzer | AbuQitmirLabs",
+    ogDescription: "Run an instant technical SEO, Core Web Vitals, security headers, and conversion architecture audit on your website.",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: "website",
+    twitterCard: "summary_large_image"
+  },
+  "/tools/seo-checklist": {
+    title: "Interactive Technical & Local SEO Checklist (2026) | AbuQitmirLabs",
+    description: "Step-by-step interactive SEO checklist covering technical foundations, Schema.org entities, Core Web Vitals, local citations, and AI search optimization.",
+    canonical: "https://www.abuqitmirlabs.tech/tools/seo-checklist",
+    keywords: "SEO checklist 2026, technical SEO checklist, local SEO checklist, interactive SEO tool, AbuQitmirLabs",
+    ogTitle: "Interactive Technical & Local SEO Checklist (2026) | AbuQitmirLabs",
+    ogDescription: "Step-by-step interactive SEO checklist covering technical foundations, Schema.org entities, Core Web Vitals, and AI search optimization.",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: "website",
+    twitterCard: "summary_large_image"
+  },
+  "/tools/ai-readiness-score": {
+    title: "Enterprise AI Readiness Score & RAG Assessment Tool | AbuQitmirLabs",
+    description: "Evaluate your organization's data infrastructure, workflow maturity, and security readiness for autonomous AI agents and RAG deployment.",
+    canonical: "https://www.abuqitmirlabs.tech/tools/ai-readiness-score",
+    keywords: "AI readiness score, AI assessment tool, RAG readiness, enterprise AI adoption, AbuQitmirLabs",
+    ogTitle: "Enterprise AI Readiness Score & RAG Assessment Tool | AbuQitmirLabs",
+    ogDescription: "Evaluate your organization's data infrastructure and workflow maturity for autonomous AI agents and RAG deployment.",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: "website",
+    twitterCard: "summary_large_image"
+  },
+  "/tools/tech-stack-recommender": {
+    title: "Software & AI Tech Stack Recommender | AbuQitmirLabs",
+    description: "Get a tailored architecture recommendation across Next.js, Flutter, Node.js, Python, and vector databases based on your product scope and scale.",
+    canonical: "https://www.abuqitmirlabs.tech/tools/tech-stack-recommender",
+    keywords: "tech stack recommender, software architecture tool, Next.js vs React, Flutter vs Native, AbuQitmirLabs",
+    ogTitle: "Software & AI Tech Stack Recommender | AbuQitmirLabs",
+    ogDescription: "Get a tailored architecture recommendation across Next.js, Flutter, Node.js, Python, and vector databases.",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: "website",
+    twitterCard: "summary_large_image"
+  },
+  "/tools/website-authority-analyzer": {
+    title: "Website Authority & Semantic Entity Analyzer | AbuQitmirLabs",
+    description: "Analyze your domain's topical authority, structured data coverage, and citation signals for Google and AI answer engines.",
+    canonical: "https://www.abuqitmirlabs.tech/tools/website-authority-analyzer",
+    keywords: "website authority analyzer, topical authority checker, semantic SEO analyzer, AI search visibility, AbuQitmirLabs",
+    ogTitle: "Website Authority & Semantic Entity Analyzer | AbuQitmirLabs",
+    ogDescription: "Analyze your domain's topical authority, structured data coverage, and citation signals for Google and AI answer engines.",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: "website",
+    twitterCard: "summary_large_image"
+  },
+  "/blog/enterprise-software-engineering-what-changes-at-scale": {
+    title: "Enterprise Software Engineering: What Changes at Scale | AbuQitmirLabs",
+    description: "From architecture to deployment pipelines, enterprise software engineering demands a completely different discipline. Here is what actually changes when you build at scale.",
+    canonical: "https://www.abuqitmirlabs.tech/blog/enterprise-software-engineering-what-changes-at-scale",
+    keywords: "enterprise software engineering, scalable software architecture, microservices vs modular monolith, enterprise CI/CD, AbuQitmirLabs",
+    ogTitle: "Enterprise Software Engineering: What Changes at Scale | AbuQitmirLabs",
+    ogDescription: "From architecture to deployment pipelines, enterprise software engineering demands a completely different discipline.",
+    ogImage: "https://www.abuqitmirlabs.tech/images/blog/enterprise-software-engineering-scale-og.jpg",
+    ogType: "article",
+    twitterCard: "summary_large_image"
+  },
+  "/blog/brand-identity-vs-logo-design": {
+    title: "Brand Identity vs Logo Design: What Startups Actually Need First | AbuQitmirLabs",
+    description: "A logo is not a brand. Learn the difference between logo design and a complete brand identity system, what each costs in 2026, and what startups need first.",
+    canonical: "https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design",
+    keywords: "brand identity vs logo design, startup branding, visual identity system, brand guidelines, AbuQitmirLabs",
+    ogTitle: "Brand Identity vs Logo Design: What Startups Actually Need First | AbuQitmirLabs",
+    ogDescription: "A logo is not a brand. Learn the difference between logo design and a complete brand identity system.",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: "article",
+    twitterCard: "summary_large_image"
+  },
+  "/custom-ai-solutions-for-corporate-events-2026-guide": {
+    title: "Custom AI Solutions for Corporate Events (2026 Guide) | AbuQitmirLabs",
+    description: "How enterprise event organizers use custom AI agents, real-time matchmaking, and automated attendee workflows to transform corporate conferences.",
+    canonical: "https://www.abuqitmirlabs.tech/blog/custom-ai-solutions-for-corporate-events-2026-guide",
+    keywords: "custom AI solutions corporate events, event AI agents, conference automation software, AbuQitmirLabs",
+    ogTitle: "Custom AI Solutions for Corporate Events (2026 Guide) | AbuQitmirLabs",
+    ogDescription: "How enterprise event organizers use custom AI agents and real-time matchmaking to transform corporate conferences.",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: "article",
+    twitterCard: "summary_large_image"
+  },
+  "/custom-web-development-vs-website-templates-2026-guide": {
+    title: "7 Signs Your Business Needs Custom Web Development Instead of Templates | AbuQitmirLabs",
+    description: "Compare custom web development vs website templates in 2026. Learn the 7 clear technical and revenue signals that show you have outgrown templates.",
+    canonical: "https://www.abuqitmirlabs.tech/blog/7-signs-your-business-needs-custom-web-development-instead-of-templates-2026-guide",
+    keywords: "custom web development vs website templates, custom web development business case, scalable web architecture, AbuQitmirLabs",
+    ogTitle: "7 Signs Your Business Needs Custom Web Development Instead of Templates | AbuQitmirLabs",
+    ogDescription: "Compare custom web development vs website templates in 2026 and learn when to upgrade to custom architecture.",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: "article",
+    twitterCard: "summary_large_image"
+  },
+  "/admin": {
+    title: "Admin Portal | AbuQitmirLabs",
+    description: "AbuQitmirLabs content and editorial management portal.",
+    canonical: "https://www.abuqitmirlabs.tech/admin",
+    robots: "noindex, nofollow",
+    ogTitle: "Admin Portal | AbuQitmirLabs",
+    ogDescription: "AbuQitmirLabs content and editorial management portal.",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: "website"
+  },
   "/blog/small-business-branding-mistakes-pakistan": {
     title: "Small Business Branding Mistakes Pakistan (And How to Fix It) | AbuQitmirLabs",
     description: "Discover the 9 most common small business branding mistakes in Pakistan. Get a practical checklist to fix them and build brand trust without wasting budget.",

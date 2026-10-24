@@ -90,6 +90,15 @@ service cloud.firestore {
              (data.createdAt is string && data.createdAt.size() <= 100 || !data.keys().contains('createdAt'));
     }
 
+    function isValidNewsletterSubscriber(data) {
+      return data.keys().hasAll(['email', 'source', 'status', 'createdAt']) &&
+             data.keys().hasOnly(['email', 'source', 'status', 'createdAt']) &&
+             data.email is string && data.email.size() >= 5 && data.email.size() <= 150 &&
+             data.email.matches('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$') &&
+             data.source is string && data.source in ["footer", "sidebar", "blog"] &&
+             data.status is string && data.status in ["active", "unsubscribed"];
+    }
+
     // --- COLLECTION RULES ---
 
     // Blog Posts
@@ -167,6 +176,22 @@ service cloud.firestore {
       // Admin can update or clear lead record
       allow update: if isAdmin() && isValidId(leadId) && isValidAuthorityLead(incoming());
       allow delete: if isAdmin() && isValidId(leadId);
+    }
+
+    // Newsletter Subscribers
+    match /newsletter_subscribers/{subscriberId} {
+      // PII isolation: Only admin can fetch lists or single records
+      allow get, list: if isAdmin();
+      // Standard visitor client can subscribe with active status and server timestamp
+      allow create: if isValidId(subscriberId) &&
+                    isValidNewsletterSubscriber(incoming()) &&
+                    incoming().status == "active" &&
+                    incoming().createdAt == request.time;
+      // Only admin can update status or delete subscriber records
+      allow update: if isAdmin() && isValidId(subscriberId) &&
+                    isValidNewsletterSubscriber(incoming()) &&
+                    incoming().createdAt == existing().createdAt;
+      allow delete: if isAdmin() && isValidId(subscriberId);
     }
   }
 }

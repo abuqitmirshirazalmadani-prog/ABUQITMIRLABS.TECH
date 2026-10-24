@@ -36,6 +36,7 @@ import { MagicText } from './ui/magic-text';
 import { AnimatedBreathingText } from './ui/animated-breathing-text';
 import { preloadRoute } from '../utils/preloader';
 import ObfuscatedEmail from './ObfuscatedEmail';
+import NewsletterSubscriptionForm from './NewsletterSubscriptionForm';
 
 const Footer = () => {
     return (
@@ -258,8 +259,13 @@ const Footer = () => {
 
                     </div>
 
+                    {/* Newsletter Subscription Section */}
+                    <div className="mt-12">
+                        <NewsletterSubscriptionForm variant="footer" source="footer" />
+                    </div>
+
                     {/* YMYL & Engineering Disclaimer */}
-                    <div className="mt-12 pt-6 border-t-2 border-black/10 text-center text-xs text-black/80 font-medium leading-relaxed max-w-4xl mx-auto">
+                    <div className="mt-10 pt-6 border-t-2 border-black/10 text-center text-xs text-black/80 font-medium leading-relaxed max-w-4xl mx-auto">
                         <p>
                             <strong>Engineering &amp; Services Advisory:</strong> AbuQitmirLabs provides bespoke enterprise software engineering, AI agent integrations, cloud architectures, and digital consultancy. Quantitative metrics and outcomes referenced across case studies reflect specific client scenarios and are governed by technical project scopes.
                         </p>
