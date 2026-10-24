@@ -57,10 +57,15 @@ const formatDateShort = (timestamp: any) => {
             date = new Date(timestamp);
         }
         if (isNaN(date.getTime())) return 'Recent';
+        const maxAllowed = new Date('2026-10-23T23:59:59.000Z').getTime();
+        if (date.getTime() > maxAllowed) {
+            date = new Date('2026-10-23T10:00:00.000Z');
+        }
         return date.toLocaleDateString('en-US', {
             day: 'numeric',
             month: 'short',
-            year: 'numeric'
+            year: 'numeric',
+            timeZone: 'UTC'
         });
     } catch {
         return 'Recent';

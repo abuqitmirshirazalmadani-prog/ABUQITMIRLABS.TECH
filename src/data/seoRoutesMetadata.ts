@@ -19,6 +19,21 @@ export interface RouteSeoMetadata {
 }
 
 export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
+  "/blog/small-business-branding-mistakes-pakistan": {
+    title: "Small Business Branding Mistakes Pakistan (And How to Fix It) | AbuQitmirLabs",
+    description: "Discover the 9 most common small business branding mistakes in Pakistan. Get a practical checklist to fix them and build brand trust without wasting budget.",
+    canonical: "https://www.abuqitmirlabs.tech/blog/small-business-branding-mistakes-pakistan",
+    keywords: "small business branding mistakes Pakistan, why small businesses fail branding, brand building mistakes Pakistani SMEs, branding failures small business, brand identity system, brand guidelines, local SEO Pakistan, SME branding, brand positioning, logo design mistakes, AbuQitmirLabs",
+    ogTitle: "Small Business Branding Mistakes Pakistan (And How to Fix It) | AbuQitmirLabs",
+    ogDescription: "Discover the 9 most common small business branding mistakes in Pakistan. Get a practical checklist to fix them and build brand trust without wasting budget.",
+    ogImage: "https://i.postimg.cc/cLTBf9mr/Brand-Building-Mistakes-Guide.png",
+    ogImageAlt: "The 9 Most Common Brand Building Mistakes Small Businesses Make in Pakistan — Infographic and Step-by-Step Brand Fix Checklist by AbuQitmirLabs",
+    ogType: "article",
+    twitterCard: "summary_large_image",
+    twitterTitle: "Small Business Branding Mistakes Pakistan (And How to Fix It) | AbuQitmirLabs",
+    twitterDescription: "Discover the 9 most common small business branding mistakes in Pakistan. Get a practical checklist to fix them and build brand trust without wasting budget.",
+    twitterImage: "https://i.postimg.cc/cLTBf9mr/Brand-Building-Mistakes-Guide.png"
+  },
   "/blog/content-brief-template": {
     title: "The Content Brief Template That Gets Writers 90% There | AbuQitmirLabs",
     description: "14-point content brief template that gets writers 90% there. Includes 14 sections, live examples, Table of Contents, and a downloadable copy-paste template.",

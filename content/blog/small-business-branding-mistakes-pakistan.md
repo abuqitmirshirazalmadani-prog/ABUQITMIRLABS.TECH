@@ -2,7 +2,10 @@
 {
   "title": "Small Business Branding Mistakes Pakistan (And How to Fix It)",
   "slug": "small-business-branding-mistakes-pakistan",
+  "metaDescription": "Discover the 9 most common small business branding mistakes in Pakistan. Get a practical checklist to fix them and build brand trust without wasting budget.",
   "excerpt": "Most small businesses treat branding as a one-time purchase. They pay for a logo, slap it on a website, and assume the work is done. Six months later, they wonder why customers choose the competitor down the street. Branding is not a visual mark; it is a system of trust. When a Pakistani SME skips positioning, uses inconsistent colors on social media, and ignores their Google Business Profile, they signal to buyers that they are an amateur operation. This guide breaks down the 9 most common brand building mistakes small businesses make and provides a practical, step-by-step checklist to fix each one without wasting your budget. You will learn how to build a visual identity system that scales, commands premium pricing, and builds long-term customer loyalty.",
+  "coverImage": "https://i.postimg.cc/cLTBf9mr/Brand-Building-Mistakes-Guide.png",
+  "coverImageAlt": "The 9 Most Common Brand Building Mistakes Small Businesses Make in Pakistan — Infographic and Step-by-Step Brand Fix Checklist by AbuQitmirLabs",
   "category": "Business",
   "author": "Abu Qitmir Mohammad Shiraz Al-Madani",
   "published": true,
@@ -19,8 +22,8 @@
     "logo design mistakes",
     "AbuQitmirLabs"
   ],
-  "publishedAt": "2026-10-24",
-  "syncedAt": "2026-10-24T10:00:54.433Z"
+  "publishedAt": "2026-10-23",
+  "syncedAt": "2026-10-23T10:00:54.433Z"
 }
 ---
 

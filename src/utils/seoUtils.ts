@@ -84,22 +84,31 @@ export function cleanExcerpt(rawText?: string, maxLength = 160): string {
 /**
  * Formats various date input types (Firestore Timestamp, Date, string, number) into an ISO 8601 string.
  */
-export function formatIsoDate(dateVal: any, fallbackDate = new Date()): string {
-  if (!dateVal) return fallbackDate.toISOString();
+export function formatIsoDate(dateVal: any, fallbackDate = new Date('2026-10-23T10:00:00.000Z')): string {
+  const maxAllowed = new Date('2026-10-23T23:59:59.000Z').getTime();
+  const clampDate = (d: Date): string => {
+    if (isNaN(d.getTime())) return new Date('2026-10-23T10:00:00.000Z').toISOString();
+    if (d.getTime() > maxAllowed) {
+      return new Date('2026-10-23T10:00:00.000Z').toISOString();
+    }
+    return d.toISOString();
+  };
+
+  if (!dateVal) return clampDate(fallbackDate);
   if (typeof dateVal.toDate === 'function') {
-    return dateVal.toDate().toISOString();
+    return clampDate(dateVal.toDate());
   }
   if (dateVal.seconds) {
-    return new Date(dateVal.seconds * 1000).toISOString();
+    return clampDate(new Date(dateVal.seconds * 1000));
   }
   if (dateVal instanceof Date) {
-    return dateVal.toISOString();
+    return clampDate(dateVal);
   }
   if (typeof dateVal === 'string' || typeof dateVal === 'number') {
     const d = new Date(dateVal);
-    if (!isNaN(d.getTime())) return d.toISOString();
+    if (!isNaN(d.getTime())) return clampDate(d);
   }
-  return fallbackDate.toISOString();
+  return clampDate(fallbackDate);
 }
 
 /**

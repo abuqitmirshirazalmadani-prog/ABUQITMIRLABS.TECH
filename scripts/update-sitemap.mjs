@@ -42,6 +42,9 @@ if (fs.existsSync(blogPostsPath)) {
   }
 }
 
+const baseUrl = 'https://www.abuqitmirlabs.tech';
+const today = '2026-10-23';
+
 // Also check content/blog/*.md frontmatter and auto-sync missing posts into staticBlogPosts.ts
 if (fs.existsSync(blogContentDir) && fs.existsSync(blogPostsPath)) {
   let staticPostsSource = fs.readFileSync(blogPostsPath, 'utf-8');
@@ -100,8 +103,6 @@ const slugs = Array.from(slugsSet);
 console.log(`📄 Found ${slugs.length} blog posts in staticBlogPosts.ts & content/blog`);
 
 // 3. Har slug ke liye URL check karein, agar missing ho to add karein
-const baseUrl = 'https://www.abuqitmirlabs.tech';
-const today = new Date().toISOString().split('T')[0];
 let added = 0;
 
 for (const rawSlug of slugs) {

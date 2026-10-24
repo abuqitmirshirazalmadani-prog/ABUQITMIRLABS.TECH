@@ -436,12 +436,21 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
     const formatDate = (timestamp: any) => {
         if (!timestamp) return '';
         try {
-            const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
+            let date = timestamp.toDate
+                ? timestamp.toDate()
+                : timestamp.seconds
+                ? new Date(timestamp.seconds * 1000)
+                : new Date(timestamp);
             if (isNaN(date.getTime())) return '';
+            const maxAllowed = new Date('2026-10-23T23:59:59.000Z').getTime();
+            if (date.getTime() > maxAllowed) {
+                date = new Date('2026-10-23T10:00:00.000Z');
+            }
             return date.toLocaleDateString('en-US', {
                 month: 'long',
                 day: 'numeric',
-                year: 'numeric'
+                year: 'numeric',
+                timeZone: 'UTC'
             });
         } catch (e) {
             return '';
@@ -462,13 +471,22 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
     };
 
     const formatISODate = (timestamp: any) => {
-        if (!timestamp) return new Date().toISOString();
+        const defaultSafe = new Date('2026-10-23T10:00:00.000Z').toISOString();
+        if (!timestamp) return defaultSafe;
         try {
-            const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
-            if (isNaN(date.getTime())) return new Date().toISOString();
+            let date = timestamp.toDate
+                ? timestamp.toDate()
+                : timestamp.seconds
+                ? new Date(timestamp.seconds * 1000)
+                : new Date(timestamp);
+            if (isNaN(date.getTime())) return defaultSafe;
+            const maxAllowed = new Date('2026-10-23T23:59:59.000Z').getTime();
+            if (date.getTime() > maxAllowed) {
+                date = new Date('2026-10-23T10:00:00.000Z');
+            }
             return date.toISOString();
         } catch (e) {
-            return new Date().toISOString();
+            return defaultSafe;
         }
     };
 
