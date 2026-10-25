@@ -22,7 +22,11 @@ const Header = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-
+        // URL change hone par menu band karne ke liye
+    useEffect(() => {
+        setIsOpen(false);
+        setActiveDropdown(null);
+    }, [location.pathname]);
     const navLinks = [
         { name: 'Home', href: '/' },
         { 
