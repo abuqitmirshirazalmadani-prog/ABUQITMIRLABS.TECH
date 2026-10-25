@@ -6,7 +6,7 @@
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { useEffect, lazy, Suspense } from 'react';
-import { ReactLenis, useLenis } from '@studio-freight/react-lenis';
+import { ReactLenis } from '@studio-freight/react-lenis';
 import { lazyWithRetry } from './utils/lazyWithRetry';
 import FacebookPixel from './components/FacebookPixel';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -99,18 +99,11 @@ const PageLoader = () => (
     </div>
   </div>
 );
-function LenisScrollReset() {
+function ScrollToTop() {
   const { pathname } = useLocation();
-  const lenis = useLenis();
-  
   useEffect(() => {
-    if (lenis) {
-      lenis.scrollTo(0, { immediate: true });
-    } else {
-      window.scrollTo(0, 0);
-    }
-  }, [pathname, lenis]);
-  
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return null;
 }
 
@@ -596,25 +589,28 @@ export default function App() {
 
   return (
     <HelmetProvider>
-      <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothWheel: true }}>
-        <Router>
+      <Router>
+        {/* ReactLenis ab Router ke andar hai */}
+        <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothWheel: true }}>
+          
           <RouteSEO />
-          {/* <TopLoadingBar /> */}
-          <LenisScrollReset />
-         {/* <MetaHeadSanitizer /> */}
+          <ScrollToTop /> {/* Yeh wapas laga diya */}
+          
+          {/* MetaHeadSanitizer ko hata diya hai */}
+          {/* <MetaHeadSanitizer /> */}
+          
           <FacebookPixel />
           <GoogleAnalyticsTracker />
           <FloatingWhatsApp />
+          
           <ErrorBoundary>
             <Suspense fallback={<PageLoader />}>
-              
-              {/* Yahan humne naya AppRoutes component call kar diya hai */}
-              <AppRoutes />
-              
+              <AppRoutes /> {/* Purana AppRoutes yahan call ho raha hai */}
             </Suspense>
           </ErrorBoundary>
-        </Router>
-      </ReactLenis>
+          
+        </ReactLenis>
+      </Router>
     </HelmetProvider>
   );
 }
