@@ -14,6 +14,7 @@ import { generateBlogPostMeta } from '../utils/seoUtils';
 import { calculateReadingTime } from '../utils/readingTime';
 import { getCanonicalSlug } from '../data/canonicalRedirects';
 import NewsletterSubscriptionForm from '../components/NewsletterSubscriptionForm';
+import TableOfContents, { slugifyHeading } from '../components/TableOfContents';
 
 import { getCachedPost, setCachedPost } from '../utils/blogCache';
 
@@ -38,6 +39,19 @@ const STATIC_POSTS_MAP = STATIC_BLOG_POSTS;
 interface BlogPostPageProps {
   overrideSlug?: string;
 }
+
+const extractNodeText = (node: React.ReactNode): string => {
+  if (typeof node === 'string' || typeof node === 'number') {
+    return String(node);
+  }
+  if (Array.isArray(node)) {
+    return node.map(extractNodeText).join('');
+  }
+  if (React.isValidElement(node)) {
+    return extractNodeText((node.props as { children?: React.ReactNode }).children);
+  }
+  return '';
+};
 
 const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
     const { slug: paramSlug } = useParams<{ slug: string }>();
@@ -3448,7 +3462,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             <Breadcrumbs customItems={breadcrumbItems} disableSchema={true} />
             
             <main className="pt-36 md:pt-44 pb-20 px-6">
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-7xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -3606,107 +3620,121 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         </motion.div>
                     )}
 
-                    <motion.div 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                        className="bg-[#0b0b0e] rounded-[2.5rem] p-8 md:p-16 border border-zinc-800/80 shadow-2xl text-zinc-200 leading-relaxed font-sans space-y-6"
-                    >
-                        <MarkdownRenderer 
-                            remarkPlugins={[remarkGfm]}
-                            components={{
-                                p: ({node, ...props}) => <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans" {...props} />,
-                                h1: ({node, children, ...props}: any) => {
-                                    const text = React.Children.toArray(children).map(c => typeof c === 'string' || typeof c === 'number' ? String(c) : '').join('');
-                                    const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-                                    return <h2 id={id || undefined} className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mt-12 mb-6 font-serif border-b border-zinc-800/80 pb-4" {...props}>{children}</h2>;
-                                },
-                                h2: ({node, children, ...props}: any) => {
-                                    const text = React.Children.toArray(children).map(c => typeof c === 'string' || typeof c === 'number' ? String(c) : '').join('');
-                                    const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-                                    return <h2 id={id || undefined} className="text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3" {...props}>{children}</h2>;
-                                },
-                                h3: ({node, children, ...props}: any) => {
-                                    const text = React.Children.toArray(children).map(c => typeof c === 'string' || typeof c === 'number' ? String(c) : '').join('');
-                                    const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-                                    return <h3 id={id || undefined} className="text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif" {...props}>{children}</h3>;
-                                },
-                                h4: ({node, children, ...props}: any) => {
-                                    const text = React.Children.toArray(children).map(c => typeof c === 'string' || typeof c === 'number' ? String(c) : '').join('');
-                                    const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-                                    return <h4 id={id || undefined} className="text-lg font-bold text-zinc-200 mt-6 mb-2 font-serif" {...props}>{children}</h4>;
-                                },
-                                a: ({node, href, children, ...props}) => {
-                                    if (href && href.startsWith('/')) {
-                                        return (
-                                            <Link 
-                                                to={href} 
-                                                className="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer"
-                                            >
-                                                {children}
-                                            </Link>
-                                        );
-                                    }
-                                    return (
-                                        <a 
-                                            href={href} 
-                                            className="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer" 
-                                            {...props}
-                                        >
-                                            {children}
-                                        </a>
-                                    );
-                                },
-                                strong: ({node, ...props}) => <strong className="text-white font-black" {...props} />,
-                                code: ({node, ...props}) => <code className="bg-[#161619] text-[#ccff00] px-2 py-0.5 rounded-md font-mono text-sm border border-zinc-800" {...props} />,
-                                pre: ({node, ...props}) => <pre className="bg-[#050507] border border-zinc-800 rounded-2xl p-6 overflow-x-auto text-zinc-200 font-mono text-sm my-8 shadow-inner" {...props} />,
-                                blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-[#ccff00] pl-6 py-3 my-6 text-zinc-300 italic bg-[#141418] rounded-r-2xl border-y border-r border-zinc-800/50" {...props} />,
-                                ul: ({node, ...props}) => <ul className="list-disc list-inside space-y-2 text-zinc-300 my-6 pl-2" {...props} />,
-                                ol: ({node, ...props}) => <ol className="list-decimal list-inside space-y-2 text-zinc-300 my-6 pl-2" {...props} />,
-                                li: ({node, ...props}) => <li className="text-zinc-300 leading-relaxed mb-1" {...props} />,
-                                hr: ({node, ...props}) => <hr className="border-zinc-800 my-10" {...props} />,
-                                table: ({node, ...props}) => <div className="overflow-x-auto my-8"><table className="w-full text-left border-collapse border border-zinc-800 rounded-xl overflow-hidden" {...props} /></div>,
-                                th: ({node, ...props}) => <th className="bg-zinc-900 text-white font-bold uppercase text-xs p-4 border border-zinc-800" {...props} />,
-                                td: ({node, ...props}) => <td className="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50" {...props} />,
-                                img: ({node, src, ...props}) => {
-                                    let resolvedSrc = src;
-                                    if (src && (src.includes('Five-Minute-Technical-Audit-Checklist') || src.includes('5-minute-technical-audit') || src.includes('Y92rZgvg') || src.includes('F93YfVmP'))) {
-                                        resolvedSrc = '/assets/blog/5-minute-technical-audit-cover.png';
-                                    }
-                                    return (
-                                        <span className="block my-12 text-center overflow-hidden">
-                                            <img 
-                                                src={resolvedSrc}
-                                                width={props.width || 1200}
-                                                height={props.height || 675}
-                                                loading="lazy"
-                                                decoding="async"
-                                                alt={props.alt || "AbuQitmirLabs engineering and technology diagram"}
-                                                {...props} 
-                                                referrerPolicy="no-referrer"
-                                                onError={(e) => {
-                                                    const target = e.target as HTMLImageElement;
-                                                    if (target.src.includes('Five-Minute-Technical-Audit-Checklist') || target.src.includes('5-minute-technical-audit') || target.src.includes('Y92rZgvg') || target.src.includes('F93YfVmP')) {
-                                                        if (!target.src.endsWith('/assets/blog/5-minute-technical-audit-cover.png')) {
-                                                            target.src = '/assets/blog/5-minute-technical-audit-cover.png';
-                                                        }
-                                                    }
-                                                }}
-                                                className="mx-auto rounded-[2rem] shadow-2xl border border-zinc-800 max-h-[700px] w-auto max-w-full object-contain select-none hover:scale-[1.01] transition-transform duration-700" 
-                                            />
-                                            {props.alt && (
-                                                <span className="block mt-4 text-center text-[10px] text-zinc-400 uppercase tracking-[0.25em] font-mono">
-                                                    {props.alt}
-                                                </span>
-                                            )}
-                                        </span>
-                                    );
-                                }
-                            }}
-                        >
-                            {getInjectedContent()}
-                        </MarkdownRenderer>
-                    </motion.div>
+                    {(() => {
+                        const injectedMarkdown = getInjectedContent();
+                        return (
+                            <div className="xl:grid xl:grid-cols-[minmax(0,1fr)_290px] xl:gap-10 xl:items-start">
+                                <TableOfContents
+                                    content={injectedMarkdown}
+                                    containerSelector="[data-article-content]"
+                                    className="xl:sticky xl:top-32 xl:order-2"
+                                />
+
+                                <motion.div 
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: 0.2 }}
+                                    data-article-content="true"
+                                    className="xl:order-1 min-w-0 bg-[#0b0b0e] rounded-[2.5rem] p-8 md:p-16 border border-zinc-800/80 shadow-2xl text-zinc-200 leading-relaxed font-sans space-y-6"
+                                >
+                                    <MarkdownRenderer 
+                                        remarkPlugins={[remarkGfm]}
+                                        components={{
+                                            p: ({node, ...props}) => <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans" {...props} />,
+                                            h1: ({node, children, ...props}: any) => {
+                                                const text = extractNodeText(children);
+                                                const id = slugifyHeading(text);
+                                                return <h2 id={id || undefined} className="scroll-mt-32 text-3xl md:text-4xl font-black text-white uppercase tracking-tight mt-12 mb-6 font-serif border-b border-zinc-800/80 pb-4" {...props}>{children}</h2>;
+                                            },
+                                            h2: ({node, children, ...props}: any) => {
+                                                const text = extractNodeText(children);
+                                                const id = slugifyHeading(text);
+                                                return <h2 id={id || undefined} className="scroll-mt-32 text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3" {...props}>{children}</h2>;
+                                            },
+                                            h3: ({node, children, ...props}: any) => {
+                                                const text = extractNodeText(children);
+                                                const id = slugifyHeading(text);
+                                                return <h3 id={id || undefined} className="scroll-mt-32 text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif" {...props}>{children}</h3>;
+                                            },
+                                            h4: ({node, children, ...props}: any) => {
+                                                const text = extractNodeText(children);
+                                                const id = slugifyHeading(text);
+                                                return <h4 id={id || undefined} className="scroll-mt-32 text-lg font-bold text-zinc-200 mt-6 mb-2 font-serif" {...props}>{children}</h4>;
+                                            },
+                                            a: ({node, href, children, ...props}) => {
+                                                if (href && href.startsWith('/')) {
+                                                    return (
+                                                        <Link 
+                                                            to={href} 
+                                                            className="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer"
+                                                        >
+                                                            {children}
+                                                        </Link>
+                                                    );
+                                                }
+                                                return (
+                                                    <a 
+                                                        href={href} 
+                                                        className="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer" 
+                                                        {...props}
+                                                    >
+                                                        {children}
+                                                    </a>
+                                                );
+                                            },
+                                            strong: ({node, ...props}) => <strong className="text-white font-black" {...props} />,
+                                            code: ({node, ...props}) => <code className="bg-[#161619] text-[#ccff00] px-2 py-0.5 rounded-md font-mono text-sm border border-zinc-800" {...props} />,
+                                            pre: ({node, ...props}) => <pre className="bg-[#050507] border border-zinc-800 rounded-2xl p-6 overflow-x-auto text-zinc-200 font-mono text-sm my-8 shadow-inner" {...props} />,
+                                            blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-[#ccff00] pl-6 py-3 my-6 text-zinc-300 italic bg-[#141418] rounded-r-2xl border-y border-r border-zinc-800/50" {...props} />,
+                                            ul: ({node, ...props}) => <ul className="list-disc list-inside space-y-2 text-zinc-300 my-6 pl-2" {...props} />,
+                                            ol: ({node, ...props}) => <ol className="list-decimal list-inside space-y-2 text-zinc-300 my-6 pl-2" {...props} />,
+                                            li: ({node, ...props}) => <li className="text-zinc-300 leading-relaxed mb-1" {...props} />,
+                                            hr: ({node, ...props}) => <hr className="border-zinc-800 my-10" {...props} />,
+                                            table: ({node, ...props}) => <div className="overflow-x-auto my-8"><table className="w-full text-left border-collapse border border-zinc-800 rounded-xl overflow-hidden" {...props} /></div>,
+                                            th: ({node, ...props}) => <th className="bg-zinc-900 text-white font-bold uppercase text-xs p-4 border border-zinc-800" {...props} />,
+                                            td: ({node, ...props}) => <td className="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50" {...props} />,
+                                            img: ({node, src, ...props}) => {
+                                                let resolvedSrc = src;
+                                                if (src && (src.includes('Five-Minute-Technical-Audit-Checklist') || src.includes('5-minute-technical-audit') || src.includes('Y92rZgvg') || src.includes('F93YfVmP'))) {
+                                                    resolvedSrc = '/assets/blog/5-minute-technical-audit-cover.png';
+                                                }
+                                                return (
+                                                    <span className="block my-12 text-center overflow-hidden">
+                                                        <img 
+                                                            src={resolvedSrc}
+                                                            width={props.width || 1200}
+                                                            height={props.height || 675}
+                                                            loading="lazy"
+                                                            decoding="async"
+                                                            alt={props.alt || "AbuQitmirLabs engineering and technology diagram"}
+                                                            {...props} 
+                                                            referrerPolicy="no-referrer"
+                                                            onError={(e) => {
+                                                                const target = e.target as HTMLImageElement;
+                                                                if (target.src.includes('Five-Minute-Technical-Audit-Checklist') || target.src.includes('5-minute-technical-audit') || target.src.includes('Y92rZgvg') || target.src.includes('F93YfVmP')) {
+                                                                    if (!target.src.endsWith('/assets/blog/5-minute-technical-audit-cover.png')) {
+                                                                        target.src = '/assets/blog/5-minute-technical-audit-cover.png';
+                                                                    }
+                                                                }
+                                                            }}
+                                                            className="mx-auto rounded-[2rem] shadow-2xl border border-zinc-800 max-h-[700px] w-auto max-w-full object-contain select-none hover:scale-[1.01] transition-transform duration-700" 
+                                                        />
+                                                        {props.alt && (
+                                                            <span className="block mt-4 text-center text-[10px] text-zinc-400 uppercase tracking-[0.25em] font-mono">
+                                                                {props.alt}
+                                                            </span>
+                                                        )}
+                                                    </span>
+                                                );
+                                            }
+                                        }}
+                                    >
+                                        {injectedMarkdown}
+                                    </MarkdownRenderer>
+                                </motion.div>
+                            </div>
+                        );
+                    })()}
 
                     {/* Hashtags at the Bottom */}
                     {post.tags && (
