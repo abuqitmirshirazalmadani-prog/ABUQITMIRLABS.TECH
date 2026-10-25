@@ -123,7 +123,7 @@ We use a compressed method at AbuQitmirLabs through our [graphics design practic
 
 This method does not replace a full six-month brand refresh. It gives early-stage startups the system they need to build consistently without waiting.
 
-For startups ready to build the actual website after the brand sprint, our guide on [custom web development](https://www.abuqitmirlabs.tech/blog/custom-web-development-company) covers how the system translates to the technical build.
+For startups ready to build the actual website after the brand sprint, our guide on [custom web development](https://www.abuqitmirlabs.tech/blog/custom-web-development-company) covers how the system translates to the technical build. If you are an SME operating in Pakistan and comparing local PKR budgets, see our dedicated breakdown of [brand strategy vs logo design in Pakistan](https://www.abuqitmirlabs.tech/blog/brand-strategy-vs-logo-design-pakistan-sme).
 
 ---
 

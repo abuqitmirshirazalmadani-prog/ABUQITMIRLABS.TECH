@@ -133,7 +133,7 @@ Use this table to audit your own brand today.
 
 If your brand looks amateurish, you will lose customers to competitors who look more trustworthy. You will also be forced to compete on price rather than value. 
 
-When you invest in a system, you speed up development. Your web developer does not have to guess your hex codes. Your marketer does not have to invent a tone of voice. You save money in the long run.
+When you invest in a system, you speed up development. Your web developer does not have to guess your hex codes. Your marketer does not have to invent a tone of voice. You save money in the long run. For a full local breakdown of local agency and freelancer rates, read our guide on [brand strategy vs logo design in Pakistan](https://www.abuqitmirlabs.tech/blog/brand-strategy-vs-logo-design-pakistan-sme).
 
 ---
 

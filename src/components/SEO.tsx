@@ -122,7 +122,21 @@ export const SEO: React.FC<SEOProps> = ({
   useEffect(() => {
     const syncHeadInPlace = () => {
       if (resolvedTitle) {
-        document.title = resolvedTitle;
+        const titleNodes = document.head.querySelectorAll('title');
+        if (titleNodes.length === 1) {
+          if (titleNodes[0].textContent !== resolvedTitle) {
+            titleNodes[0].textContent = resolvedTitle;
+          }
+        } else if (titleNodes.length > 1) {
+          // Keep the last <title> (hoisted by React 19 / Helmet) and remove any earlier orphan <title>
+          for (let i = 0; i < titleNodes.length - 1; i++) {
+            titleNodes[i].remove();
+          }
+          const activeTitle = titleNodes[titleNodes.length - 1];
+          if (activeTitle && activeTitle.textContent !== resolvedTitle) {
+            activeTitle.textContent = resolvedTitle;
+          }
+        }
       }
 
       const updateMetaByName = (name: string, content?: string) => {

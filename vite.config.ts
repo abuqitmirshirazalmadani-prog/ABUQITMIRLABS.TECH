@@ -61,7 +61,7 @@ export default defineConfig(({ mode }) => {
           '/about', '/about/our-company', '/about/our-team', '/about/our-process', '/about/careers',
           '/us-market', '/uk-market', '/pakistan-market', '/canada-market', '/poland-market',
           '/australia-market', '/privacy', '/terms', '/blog', '/blog/custom-web-development-company',
-          '/blog/content-calendar-strategy',
+          '/blog/content-calendar-strategy', '/blog/brand-strategy-vs-logo-design-pakistan-sme',
           '/local-seo-for-small-business', '/local-seo-citation-building', '/white-label-local-seo',
           '/local-seo-audit', '/website-contract', '/contact'
         ],
@@ -114,6 +114,7 @@ export default defineConfig(({ mode }) => {
             { url: '/terms', changefreq: 'yearly', priority: 0.3, title: 'Terms of Service | Client Agreement & IP Policy | AbuQitmirLabs', description: 'AbuQitmirLabs terms of service: agreement, IP, payment terms, and liability. Learn about client responsibilities and termination protocols for our software services.' },
             { url: '/privacy', changefreq: 'yearly', priority: 0.3, title: 'Privacy Policy | Data Protection & Compliance | AbuQitmirLabs', description: 'AbuQitmirLabs privacy policy: how we collect, use, and protect your data. Learn about our security measures, cookie use, and GDPR/APP compliance.' },
             { url: '/blog/content-calendar-strategy', changefreq: 'weekly', priority: 0.9, title: 'How to Build a Content Calendar That Gets Followed | AbuQitmirLabs', description: 'Content Calendar: A step-by-step guide to building a content calendar your team will actually follow. Includes templates, cadence recommendations, and tools.' },
+            { url: '/blog/brand-strategy-vs-logo-design-pakistan-sme', changefreq: 'weekly', priority: 0.9, title: 'Brand Strategy vs Logo Design Pakistan | AbuQitmirLabs', description: 'Brand strategy vs logo design for Pakistani SMEs: real PKR pricing (PKR 3,000–50,000 vs PKR 80,000+), deliverables, and a founder decision matrix.' },
           ];
 
           const fs = await import('fs');
@@ -189,7 +190,14 @@ export default defineConfig(({ mode }) => {
           const cacheDir = path.resolve(process.cwd(), 'node_modules/.cache/seo-generator');
           const cacheFilePath = path.resolve(cacheDir, 'cache.json');
           
-          const trackedBlogFiles = ['src/data/staticBlogPosts.ts', 'src/data/seoRoutesMetadata.ts', 'src/utils/ragAiBlogStaticData.ts', 'src/utils/customWebDevBlogStaticHtml.ts'];
+          const trackedBlogFiles = [
+            'public/sitemap.xml',
+            'public/rss.xml',
+            'src/data/staticBlogPosts.ts',
+            'src/data/seoRoutesMetadata.ts',
+            'src/utils/ragAiBlogStaticData.ts',
+            'src/utils/customWebDevBlogStaticHtml.ts'
+          ];
           const fileSignatures: Record<string, { mtimeMs: number; size: number }> = {};
           for (const relFile of trackedBlogFiles) {
             const absFile = path.resolve(process.cwd(), relFile);
@@ -208,25 +216,26 @@ export default defineConfig(({ mode }) => {
 
           const sitemapPath = path.resolve(outDir, 'sitemap.xml');
           const rssPath = path.resolve(outDir, 'rss.xml');
+          const publicSitemap = path.resolve(process.cwd(), 'public/sitemap.xml');
 
-          const isCacheValid = Boolean(cachedData && cachedData.dataHash === dataHash && cachedData.sitemapContent && cachedData.rssContent);
-
-          if (isCacheValid && fs.existsSync(sitemapPath) && fs.existsSync(rssPath)) {
-            console.log('⚡ [SEO Generator] Blog data has not changed. Skipping regeneration.');
-          } else if (isCacheValid && cachedData?.sitemapContent && cachedData?.rssContent) {
-            fs.writeFileSync(sitemapPath, cachedData.sitemapContent, 'utf-8');
-            fs.writeFileSync(rssPath, cachedData.rssContent, 'utf-8');
-            console.log('⚡ [SEO Generator] Blog data unchanged. Restored from cache.');
+          // Always synchronize public/sitemap.xml directly to dist/sitemap.xml so Vercel never serves a stale cached sitemap
+          let sitemapContent = '';
+          if (fs.existsSync(publicSitemap)) {
+            sitemapContent = fs.readFileSync(publicSitemap, 'utf-8');
           } else {
-            const publicSitemap = path.resolve(process.cwd(), 'public/sitemap.xml');
-            let sitemapContent = '';
-            if (fs.existsSync(publicSitemap)) {
-              sitemapContent = fs.readFileSync(publicSitemap, 'utf-8');
-            } else {
-              sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map(route => `  <url>\n    <loc>${hostname}${route.url === '/' ? '' : route.url}</loc>\n    <changefreq>${route.changefreq}</changefreq>\n    <priority>${route.priority.toFixed(1)}</priority>\n    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>\n  </url>`).join('\n')}\n</urlset>`;
-            }
-            fs.writeFileSync(sitemapPath, sitemapContent, 'utf-8');
-            console.log(`✅ [Sitemap] Synchronized sitemap.xml to dist!`);
+            sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map(route => `  <url>\n    <loc>${hostname}${route.url === '/' ? '' : route.url}</loc>\n    <changefreq>${route.changefreq}</changefreq>\n    <priority>${route.priority.toFixed(1)}</priority>\n    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>\n  </url>`).join('\n')}\n</urlset>`;
+          }
+          fs.writeFileSync(sitemapPath, sitemapContent, 'utf-8');
+          console.log(`✅ [Sitemap] Synchronized fresh sitemap.xml to dist!`);
+
+          const isCacheValid = Boolean(cachedData && cachedData.dataHash === dataHash && cachedData.rssContent);
+
+          if (isCacheValid && fs.existsSync(rssPath)) {
+            console.log('⚡ [SEO Generator] Blog data has not changed. Skipping RSS regeneration.');
+          } else if (isCacheValid && cachedData?.rssContent) {
+            fs.writeFileSync(rssPath, cachedData.rssContent, 'utf-8');
+            console.log('⚡ [SEO Generator] Blog data unchanged. Restored RSS from cache.');
+          } else {
 
             const rssItemsContent = fetchedPosts.map(post => `    <item>\n      <title>${escapeXml(post.title)}</title>\n      <link>${hostname}/blog/${post.slug}</link>\n      <guid isPermaLink="true">${hostname}/blog/${post.slug}</guid>\n      <pubDate>${new Date(post.createdAt).toUTCString()}</pubDate>\n      <description>${escapeXml(post.excerpt)}</description>\n      <author>hello@abuqitmirlabs.tech (${escapeXml(post.author)})</author>\n      <category>${escapeXml(post.category)}</category>\n    </item>`).join('\n');
 
@@ -252,10 +261,10 @@ export default defineConfig(({ mode }) => {
             const safeTitle = route.title.replace(/&/g, '&amp;');
             const safeDesc = route.description.replace(/"/g, '&quot;').replace(/&/g, '&amp;');
             
-            routeHtml = routeHtml.replace(/<title>[\s\S]*?<\/title>/gi, '').replace('</head>', `  <title>${safeTitle}</title>\n</head>`);
-            routeHtml = routeHtml.replace(/<meta\s+property="og:title"\s+content="[\s\S]*?"\s*\/?>/gi, '').replace(/<meta\s+name="twitter:title"\s+content="[\s\S]*?"\s*\/?>/gi, '').replace('</head>', `  <meta property="og:title" content="${safeTitle}" />\n  <meta name="twitter:title" content="${safeTitle}" />\n</head>`);
-            routeHtml = routeHtml.replace(/<meta\s+name="description"\s+content="[\s\S]*?"\s*\/?>/gi, '').replace(/<meta\s+property="og:description"\s+content="[\s\S]*?"\s*\/?>/gi, '').replace(/<meta\s+name="twitter:description"\s+content="[\s\S]*?"\s*\/?>/gi, '').replace('</head>', `  <meta name="description" content="${safeDesc}" />\n  <meta property="og:description" content="${safeDesc}" />\n  <meta name="twitter:description" content="${safeDesc}" />\n</head>`);
-            routeHtml = routeHtml.replace(/<meta\s+property="og:url"\s+content="[\s\S]*?"\s*\/?>/gi, '').replace(/<meta\s+name="twitter:url"\s+content="[\s\S]*?"\s*\/?>/gi, '').replace('</head>', `  <meta property="og:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n  <meta name="twitter:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
+            routeHtml = routeHtml.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '').replace('</head>', `  <title data-rh="true">${safeTitle}</title>\n</head>`);
+            routeHtml = routeHtml.replace(/<meta\b[^>]*property="og:title"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*name="twitter:title"[^>]*\/?>/gi, '').replace('</head>', `  <meta data-rh="true" property="og:title" content="${safeTitle}" />\n  <meta data-rh="true" name="twitter:title" content="${safeTitle}" />\n</head>`);
+            routeHtml = routeHtml.replace(/<meta\b[^>]*name="description"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*property="og:description"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*name="twitter:description"[^>]*\/?>/gi, '').replace('</head>', `  <meta data-rh="true" name="description" content="${safeDesc}" />\n  <meta data-rh="true" property="og:description" content="${safeDesc}" />\n  <meta data-rh="true" name="twitter:description" content="${safeDesc}" />\n</head>`);
+            routeHtml = routeHtml.replace(/<meta\b[^>]*property="og:url"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*name="twitter:url"[^>]*\/?>/gi, '').replace('</head>', `  <meta data-rh="true" property="og:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n  <meta data-rh="true" name="twitter:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
             routeHtml = routeHtml.replace(/<link\s+rel="canonical"[^>]*\/?>/gi, '').replace('</head>', `  <link rel="canonical" data-rh="true" href="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
             
             const replaceRootElement = (htmlSource: string, newInnerHtml: string, renderedRouteAttr?: string) => {
@@ -368,6 +377,24 @@ export default defineConfig(({ mode }) => {
               }
               const contentCalendarHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader('/blog/content-calendar-strategy')}<main id="main-content" class="max-w-4xl mx-auto px-6 pt-36 pb-20"><h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-8 font-serif">How to Build a Content Calendar That Gets Followed</h1><article class="prose prose-invert max-w-none text-zinc-300"><h2>Quick Takeaways</h2><ul><li>Most content calendars fail because they are built on unrealistic expectations and lack of clear ownership, not because of a lack of tools.</li><li>A successful calendar requires a system: defining content pillars, setting a realistic cadence, and assigning clear owners.</li><li>You do not need expensive software. A shared Google Sheet or a simple Notion board is usually sufficient.</li><li>Build a content backlog to prevent last-minute scrambling and quality drops.</li></ul><h2>Why Most Content Calendars Fail</h2><p>Most content calendars fail because they are disconnected from actual production capacity. A calendar must account for the entire production cycle: ideation, research, drafting, editing, design, and publishing.</p><h2>The 6-Step Content Calendar Strategy</h2><h3>Step 1: Define Your Content Pillars</h3><h3>Step 2: Set a Realistic Publishing Cadence</h3><h3>Step 3: Assign Clear Ownership</h3><h3>Step 4: Build a Content Backlog</h3><h3>Step 5: Schedule and Integrate with SEO</h3><h3>Step 6: Review, Iterate, and Repurpose</h3><h2>The Content Calendar Template</h2><h2>Common Mistakes Founders Make with Content Calendars</h2><h2>Frequently Asked Questions</h2><h3>What is a content calendar strategy?</h3><p>A content calendar strategy is a systematic plan for creating, scheduling, and publishing content. It defines the topics, the target audience, the publishing frequency, and the team responsible for execution.</p><h3>How far in advance should I plan content?</h3><p>Plan your core themes and backlogs 3 months in advance. However, finalize specific publishing dates and drafts on a rolling 4-week basis to remain flexible to market changes.</p><h3>What tools are best for content calendars?</h3><p>Google Sheets, Notion, or Airtable are usually sufficient for small to mid-sized teams. For enterprise teams, tools like CoSchedule or Asana can help manage complex workflows.</p></article></main></div>`;
               routeHtml = replaceRootElement(routeHtml, contentCalendarHtml, '/blog/content-calendar-strategy');
+              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
+              continue;
+            }
+
+            if (route.url === '/blog/brand-strategy-vs-logo-design-pakistan-sme') {
+              const seoMeta = SEO_ROUTES_METADATA['/blog/brand-strategy-vs-logo-design-pakistan-sme'];
+              if (seoMeta && seoMeta.schemaJsonLd) {
+                routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json" data-rh="true">\n${JSON.stringify(seoMeta.schemaJsonLd, null, 2)}\n  </script>\n</head>`);
+              }
+              if (seoMeta && seoMeta.ogImage) {
+                routeHtml = routeHtml
+                  .replace(/<meta\b[^>]*property="og:image"[^>]*\/?>/gi, '')
+                  .replace(/<meta\b[^>]*name="twitter:image"[^>]*\/?>/gi, '')
+                  .replace(/<meta\b[^>]*property="og:type"[^>]*\/?>/gi, '')
+                  .replace('</head>', `  <meta data-rh="true" property="og:type" content="article" />\n  <meta data-rh="true" property="og:image" content="${seoMeta.ogImage}" />\n  <meta data-rh="true" name="twitter:image" content="${seoMeta.ogImage}" />\n</head>`);
+              }
+              const brandStrategyHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader('/blog/brand-strategy-vs-logo-design-pakistan-sme')}<main id="main-content" class="max-w-4xl mx-auto px-6 pt-36 pb-20"><h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-8 font-serif">Brand Strategy vs Logo Design Pakistan | AbuQitmirLabs</h1><article class="prose prose-invert max-w-none text-zinc-300"><h2>Introduction</h2><p>Most Pakistani SMEs treat branding as a one-time transaction. They hire a freelancer, pay PKR 10,000 for a visual mark, slap it on a website, and wonder why they cannot command premium prices or attract serious clients.</p><h2>Quick Verdict: The Difference in 50 Words</h2><p>A logo is a single visual mark that gives you a PNG and SVG. Brand strategy is the comprehensive system of positioning, typography, color palettes, and guidelines that tells you how to use that logo. In Pakistan, a logo costs PKR 3,000 to 50,000, while a full brand strategy starts at PKR 80,000.</p><h2>The Problem: Why SMEs Get This Wrong</h2><h2>What Is a Logo? (And What It Is Not)</h2><h2>What Is a Brand Strategy?</h2><h2 id="cost-comparison-pkr-pricing-for-pakistani-smes">Cost Comparison: PKR Pricing for Pakistani SMEs</h2><h2>The Decision Matrix: Logo or Strategy First?</h2><h2>Why Cheap Logos Hurt Your Business Long-Term</h2><h2>Frequently Asked Questions</h2><h3>What is the difference between a logo and brand strategy?</h3><p>A logo is a single visual mark. Brand strategy is the comprehensive plan that defines your positioning, target audience, brand voice, and visual identity system.</p><h3>How much does a logo cost in Pakistan?</h3><p>In Pakistan, a freelance logo design can range from PKR 3,000 to PKR 15,000. A professional design agency might charge between PKR 20,000 and PKR 50,000 for a comprehensive logo suite.</p><h3>How much does brand strategy cost in Pakistan?</h3><p>A full brand strategy and identity system for an SME in Pakistan typically starts around PKR 80,000 and can exceed PKR 250,000 depending on the agency's expertise, the depth of research, and the deliverables.</p><h2>Conclusion</h2></article></main></div>`;
+              routeHtml = replaceRootElement(routeHtml, brandStrategyHtml, '/blog/brand-strategy-vs-logo-design-pakistan-sme');
               fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
               continue;
             }

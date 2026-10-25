@@ -250,7 +250,8 @@ const routes = [
   '/blog/seo-content-vs-thought-leadership',
   '/blog/content-brief-template',
   '/blog/small-business-branding-mistakes-pakistan',
-  '/blog/content-calendar-strategy'
+  '/blog/content-calendar-strategy',
+  '/blog/brand-strategy-vs-logo-design-pakistan-sme'
 ];
 
 // Dynamically discover all articles from content/blog/*.md so new posts are always prerendered

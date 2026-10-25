@@ -15,6 +15,7 @@ import { getCanonicalPath } from './data/canonicalRedirects';
 import { SEO_ROUTES_METADATA } from './data/seoRoutesMetadata';
 
 import HomePage from './pages/HomePage';
+import BlogPostPage from './pages/BlogPostPage';
 
 const SaudiArabiaMarketPage = lazyWithRetry(() => import('./pages/SaudiArabiaMarketPage'));
 const UAEMarketPage = lazyWithRetry(() => import('./pages/UAEMarketPage'));
@@ -66,7 +67,6 @@ const TermsPage = lazyWithRetry(() => import('./pages/TermsPage'));
 const PrivacyPage = lazyWithRetry(() => import('./pages/PrivacyPage'));
 const EditorialPolicyPage = lazyWithRetry(() => import('./pages/EditorialPolicyPage'));
 const AdminDashboard = lazyWithRetry(() => import('./pages/AdminDashboard'));
-const BlogPostPage = lazyWithRetry(() => import('./pages/BlogPostPage'));
 const CaseStudyTajweedPage = lazyWithRetry(() => import('./pages/CaseStudyTajweedPage'));
 const WebsiteContractPage = lazyWithRetry(() => import('./pages/WebsiteContractPage'));
 const BrandAssetsPage = lazyWithRetry(() => import('./pages/BrandAssetsPage'));
@@ -316,6 +316,10 @@ function AppRoutes() {
       <Route path="/ai-is-quietly-stealing-your-ability-to-think" element={<Navigate to="/blog/ai-is-quietly-stealing-your-ability-to-think" replace />} />
       <Route path="/blog/brand-identity-vs-logo-design" element={<BlogPostPage overrideSlug="brand-identity-vs-logo-design" />} />
       <Route path="/brand-identity-vs-logo-design" element={<Navigate to="/blog/brand-identity-vs-logo-design" replace />} />
+      <Route path="/blog/brand-strategy-vs-logo-design-pakistan-sme" element={<BlogPostPage overrideSlug="brand-strategy-vs-logo-design-pakistan-sme" />} />
+      <Route path="/brand-strategy-vs-logo-design-pakistan-sme" element={<Navigate to="/blog/brand-strategy-vs-logo-design-pakistan-sme" replace />} />
+      <Route path="/blog/content-calendar-strategy" element={<BlogPostPage overrideSlug="content-calendar-strategy" />} />
+      <Route path="/content-calendar-strategy" element={<Navigate to="/blog/content-calendar-strategy" replace />} />
       <Route path="/blog/ui-ux-design-conversion" element={<BlogPostPage overrideSlug="ui-ux-design-conversion" />} />
       <Route path="/ui-ux-design-conversion" element={<Navigate to="/blog/ui-ux-design-conversion" replace />} />
       
