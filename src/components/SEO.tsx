@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import { SEO_ROUTES_METADATA } from '../data/seoRoutesMetadata';
 import { getCanonicalPath } from '../data/canonicalRedirects';
@@ -119,67 +118,67 @@ export const SEO: React.FC<SEOProps> = ({
     routeMeta?.robots ||
     'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1';
 
-  // Ensure client-side DOM head never retains duplicate canonical or description tags across SPA route transitions
+  // Synchronize head attributes in-place WITHOUT removing React 19 / Helmet fiber DOM nodes
   useEffect(() => {
-    const syncHeadCanonical = () => {
-      const canonicalLinks = Array.from(
-        document.head.querySelectorAll('link[rel="canonical"]')
-      ) as HTMLLinkElement[];
-
-      if (canonicalLinks.length > 1) {
-        canonicalLinks.forEach((link, idx) => {
-          if (idx === 0) {
-            link.setAttribute('href', resolvedCanonical);
-          } else {
-            link.remove();
-          }
-        });
-      } else if (canonicalLinks.length === 1) {
-        canonicalLinks[0].setAttribute('href', resolvedCanonical);
+    const syncHeadInPlace = () => {
+      if (resolvedTitle) {
+        document.title = resolvedTitle;
       }
 
-      const ogUrlMetas = Array.from(
-        document.head.querySelectorAll('meta[property="og:url"]')
-      ) as HTMLMetaElement[];
-      if (ogUrlMetas.length > 1) {
-        ogUrlMetas.forEach((meta, idx) => {
-          if (idx === 0) {
-            meta.setAttribute('content', resolvedCanonical);
-          } else {
-            meta.remove();
-          }
-        });
-      }
+      const updateMetaByName = (name: string, content?: string) => {
+        if (!content) return;
+        const nodes = document.head.querySelectorAll(`meta[name="${name}"]`);
+        nodes.forEach((node) => node.setAttribute('content', content));
+      };
+
+      const updateMetaByProperty = (prop: string, content?: string) => {
+        if (!content) return;
+        const nodes = document.head.querySelectorAll(`meta[property="${prop}"]`);
+        nodes.forEach((node) => node.setAttribute('content', content));
+      };
+
+      const canonicalLinks = document.head.querySelectorAll('link[rel="canonical"]');
+      canonicalLinks.forEach((link) => {
+        link.setAttribute('href', resolvedCanonical);
+      });
+
+      updateMetaByName('description', resolvedDescription);
+      if (resolvedKeywords) updateMetaByName('keywords', resolvedKeywords);
+      updateMetaByName('robots', resolvedRobots);
+      updateMetaByProperty('og:title', resolvedOgTitle);
+      updateMetaByProperty('og:description', resolvedOgDescription);
+      updateMetaByProperty('og:url', resolvedCanonical);
+      updateMetaByProperty('og:type', resolvedOgType);
+      updateMetaByProperty('og:image', resolvedOgImage);
+      updateMetaByProperty('og:image:alt', resolvedOgImageAlt);
+      updateMetaByName('twitter:card', resolvedTwitterCard);
+      updateMetaByName('twitter:title', resolvedTwitterTitle);
+      updateMetaByName('twitter:description', resolvedTwitterDescription);
+      updateMetaByName('twitter:image', resolvedTwitterImage);
     };
 
-    const timer = setTimeout(syncHeadCanonical, 50);
+    syncHeadInPlace();
+    const timer = setTimeout(syncHeadInPlace, 30);
     return () => clearTimeout(timer);
-  }, [resolvedCanonical]);
+  }, [
+    pathname,
+    resolvedTitle,
+    resolvedDescription,
+    resolvedCanonical,
+    resolvedKeywords,
+    resolvedRobots,
+    resolvedOgTitle,
+    resolvedOgDescription,
+    resolvedOgType,
+    resolvedOgImage,
+    resolvedOgImageAlt,
+    resolvedTwitterCard,
+    resolvedTwitterTitle,
+    resolvedTwitterDescription,
+    resolvedTwitterImage,
+  ]);
 
-  return (
-    <Helmet prioritizeSeoTags>
-      <title>{resolvedTitle}</title>
-      <meta name="description" content={resolvedDescription} />
-      {resolvedKeywords && <meta name="keywords" content={resolvedKeywords} />}
-      <meta name="robots" content={resolvedRobots} />
-      <link rel="canonical" href={resolvedCanonical} />
-
-      {/* Open Graph Metadata */}
-      <meta property="og:site_name" content="AbuQitmirLabs" />
-      <meta property="og:title" content={resolvedOgTitle} />
-      <meta property="og:description" content={resolvedOgDescription} />
-      <meta property="og:url" content={resolvedCanonical} />
-      <meta property="og:type" content={resolvedOgType} />
-      <meta property="og:image" content={resolvedOgImage} />
-      <meta property="og:image:alt" content={resolvedOgImageAlt} />
-
-      {/* Twitter Card Metadata */}
-      <meta name="twitter:card" content={resolvedTwitterCard} />
-      <meta name="twitter:title" content={resolvedTwitterTitle} />
-      <meta name="twitter:description" content={resolvedTwitterDescription} />
-      <meta name="twitter:image" content={resolvedTwitterImage} />
-    </Helmet>
-  );
+  return null;
 };
 
 export default SEO;
