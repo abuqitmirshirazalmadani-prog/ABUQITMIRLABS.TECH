@@ -14,15 +14,12 @@ import SEO from './components/SEO';
 import { getCanonicalPath } from './data/canonicalRedirects';
 import { SEO_ROUTES_METADATA } from './data/seoRoutesMetadata';
 
-// Eager import landing page for immediate initial render
 import HomePage from './pages/HomePage';
 
-// Lazy load all secondary and service pages
 const SaudiArabiaMarketPage = lazyWithRetry(() => import('./pages/SaudiArabiaMarketPage'));
 const UAEMarketPage = lazyWithRetry(() => import('./pages/UAEMarketPage'));
 const QatarMarketPage = lazyWithRetry(() => import('./pages/QatarMarketPage'));
 const KuwaitMarketPage = lazyWithRetry(() => import('./pages/KuwaitMarketPage'));
-
 const CustomSoftwarePage = lazyWithRetry(() => import('./pages/CustomSoftwarePage'));
 const MobileAppDevelopmentPage = lazyWithRetry(() => import('./pages/MobileAppDevelopmentPage'));
 const WebDevelopmentPage = lazyWithRetry(() => import('./pages/WebDevelopmentPage'));
@@ -44,29 +41,21 @@ const CaseStudiesPage = lazyWithRetry(() => import('./pages/CaseStudiesPage'));
 const LuxuryBrandExperiencePage = lazyWithRetry(() => import('./pages/LuxuryBrandExperiencePage'));
 const BrandBuildingPage = lazyWithRetry(() => import('./pages/BrandBuildingPage'));
 const SkillsAcademyPage = lazyWithRetry(() => import('./pages/SkillsAcademyPage'));
-
-// Solutions Pages
 const FintechSolutionsPage = lazyWithRetry(() => import('./pages/solutions/FintechSolutionsPage'));
 const HealthcarePlatformsPage = lazyWithRetry(() => import('./pages/solutions/HealthcarePlatformsPage'));
 const AIAutomationPage = lazyWithRetry(() => import('./pages/solutions/AIAutomationPage'));
 const ECommerceDevelopmentPage = lazyWithRetry(() => import('./pages/solutions/ECommerceDevelopmentPage'));
 const EdTechPlatformsPage = lazyWithRetry(() => import('./pages/solutions/EdTechPlatformsPage'));
 const ProgrammaticSEOPage = lazyWithRetry(() => import('./pages/ProgrammaticSEOPage'));
-
-// About Dropdown Pages
 const OurCompanyPage = lazyWithRetry(() => import('./pages/about/OurCompanyPage'));
 const OurTeamPage = lazyWithRetry(() => import('./pages/about/OurTeamPage'));
 const OurProcessPage = lazyWithRetry(() => import('./pages/about/OurProcessPage'));
 const CareersPage = lazyWithRetry(() => import('./pages/about/CareersPage'));
-
-// News Dropdown Pages
 const LatestNewsPage = lazyWithRetry(() => import('./pages/news/LatestNewsPage'));
 const PressReleasesPage = lazyWithRetry(() => import('./pages/news/PressReleasesPage'));
 const IndustryInsightsPage = lazyWithRetry(() => import('./pages/news/IndustryInsightsPage'));
 const AllNewsPage = lazyWithRetry(() => import('./pages/news/AllNewsPage'));
 const NewsArticlePage = lazyWithRetry(() => import('./pages/news/NewsArticlePage'));
-
-// Secondary & administrative pages
 const USMarketPage = lazyWithRetry(() => import('./pages/USMarketPage'));
 const UKMarketPage = lazyWithRetry(() => import('./pages/UKMarketPage'));
 const PakistanMarketPage = lazyWithRetry(() => import('./pages/PakistanMarketPage'));
@@ -89,7 +78,6 @@ const AiReadinessScorePage = lazyWithRetry(() => import('./pages/AiReadinessScor
 const TechStackRecommenderPage = lazyWithRetry(() => import('./pages/TechStackRecommenderPage'));
 const WebsiteAuthorityAnalyzerPage = lazyWithRetry(() => import('./pages/WebsiteAuthorityAnalyzerPage'));
 
-// Loading fallback
 const PageLoader = () => (
   <div className="min-h-[60vh] bg-[#09090b] flex items-center justify-center py-24" role="status" aria-label="Loading page">
     <div className="flex flex-col items-center gap-3">
@@ -163,13 +151,7 @@ function GoogleAnalyticsTracker() {
 }
 
 const FloatingWhatsApp = () => (
-  <a 
-    href="https://wa.me/923233260859"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="fixed bottom-8 right-8 z-[9999] group"
-    aria-label="Contact on WhatsApp"
-  >
+  <a href="https://wa.me/923233260859" target="_blank" rel="noopener noreferrer" className="fixed bottom-8 right-8 z-[9999] group" aria-label="Contact on WhatsApp">
     <div className="absolute right-full mr-4 bottom-2 bg-black text-white px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0 pointer-events-none border border-white/20 shadow-lg">
       Chat with us
     </div>
@@ -177,9 +159,7 @@ const FloatingWhatsApp = () => (
       <div className="absolute inset-0 bg-[#25D366] border-2 border-black rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover:translate-x-1 group-hover:translate-y-1 transition-all"></div>
       <div className="absolute inset-2 border-t border-black/10 animate-pulse pointer-events-none"></div>
       <div className="absolute inset-2 border-b border-black/10 animate-pulse delay-75 pointer-events-none"></div>
-      <div className="absolute -top-1 -right-1 w-6 h-6 bg-red-600 border-2 border-black rounded-full flex items-center justify-center text-[10px] font-black text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] z-20">
-        1
-      </div>
+      <div className="absolute -top-1 -right-1 w-6 h-6 bg-red-600 border-2 border-black rounded-full flex items-center justify-center text-[10px] font-black text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] z-20">1</div>
       <svg viewBox="0 0 24 24" width="32" height="32" fill="black" className="relative z-10">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.438 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.394 0 12.03c0 2.122.541 4.193 1.57 6.05L0 24l6.117-1.605a11.845 11.845 0 005.932 1.583h.005c6.627 0 12.032-5.403 12.035-12.039.001-3.207-1.246-6.222-3.504-8.48z" />
       </svg>
@@ -187,12 +167,9 @@ const FloatingWhatsApp = () => (
   </a>
 );
 
-// AppRoutes Component - Routing ka asal fix yahan hai
 function AppRoutes() {
   const location = useLocation();
-  
   return (
-    // key={location.pathname} force karta hai ke naya page mount ho
     <Routes location={location} key={location.pathname}>
       <Route path="/" element={<HomePage />} />
       <Route path="/about" element={<AboutPage />} />
@@ -342,7 +319,7 @@ function AppRoutes() {
       <Route path="/blog/ui-ux-design-conversion" element={<BlogPostPage overrideSlug="ui-ux-design-conversion" />} />
       <Route path="/ui-ux-design-conversion" element={<Navigate to="/blog/ui-ux-design-conversion" replace />} />
       
-      {/* Dynamic Blog Route - Isko Hamesha Sab Se Neeche Rakhein */}
+      {/* Dynamic Blog Route */}
       <Route path="/blog/:slug" element={<BlogPostPage />} />
       
       <Route path="/case-studies" element={<CaseStudiesPage />} />
@@ -395,14 +372,9 @@ export default function App() {
   return (
     <HelmetProvider>
       <Router>
-        {/* ReactLenis ab Router ke andar hai, taake route change par isko control kiya ja sake */}
         <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothWheel: true }}>
-          
           <RouteSEO />
           <ScrollToTop />
-          
-          {/* MetaHeadSanitizer ko hata diya hai kyunke yeh React ke DOM se takra raha tha */}
-          
           <FacebookPixel />
           <GoogleAnalyticsTracker />
           <FloatingWhatsApp />
@@ -412,7 +384,6 @@ export default function App() {
               <AppRoutes />
             </Suspense>
           </ErrorBoundary>
-          
         </ReactLenis>
       </Router>
     </HelmetProvider>
