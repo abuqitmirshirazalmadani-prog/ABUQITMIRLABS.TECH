@@ -18,6 +18,7 @@ import { customWebDevBlogSchema, customWebDevBlogInitialHtml } from './src/utils
 import { localSEOSmallBusinessSchema, localSEOSmallBusinessInitialHtml } from './src/utils/localSEOSmallBusinessStaticHtml';
 import { homeSchema, homeInitialHtml } from './src/utils/homeStaticHtml';
 import { renderStaticHeader } from './src/utils/sharedStaticHeader';
+import { SEO_ROUTES_METADATA } from './src/data/seoRoutesMetadata';
 
 interface PrerenderPlugin {
   (options: { staticDir: string; routes: string[]; renderer?: any }): any;
@@ -60,6 +61,7 @@ export default defineConfig(({ mode }) => {
           '/about', '/about/our-company', '/about/our-team', '/about/our-process', '/about/careers',
           '/us-market', '/uk-market', '/pakistan-market', '/canada-market', '/poland-market',
           '/australia-market', '/privacy', '/terms', '/blog', '/blog/custom-web-development-company',
+          '/blog/content-calendar-strategy',
           '/local-seo-for-small-business', '/local-seo-citation-building', '/white-label-local-seo',
           '/local-seo-audit', '/website-contract', '/contact'
         ],
@@ -111,6 +113,7 @@ export default defineConfig(({ mode }) => {
             { url: '/website-contract', changefreq: 'weekly', priority: 0.8, title: 'Free Website Contract Template | Ownership Protection | AbuQitmirLabs', description: 'Download a free, ownership-protected website contract template. Includes domain ownership, support SLAs, tech stack disclosure, and exit terms. No strings attached.' },
             { url: '/terms', changefreq: 'yearly', priority: 0.3, title: 'Terms of Service | Client Agreement & IP Policy | AbuQitmirLabs', description: 'AbuQitmirLabs terms of service: agreement, IP, payment terms, and liability. Learn about client responsibilities and termination protocols for our software services.' },
             { url: '/privacy', changefreq: 'yearly', priority: 0.3, title: 'Privacy Policy | Data Protection & Compliance | AbuQitmirLabs', description: 'AbuQitmirLabs privacy policy: how we collect, use, and protect your data. Learn about our security measures, cookie use, and GDPR/APP compliance.' },
+            { url: '/blog/content-calendar-strategy', changefreq: 'weekly', priority: 0.9, title: 'How to Build a Content Calendar That Gets Followed | AbuQitmirLabs', description: 'Content Calendar: A step-by-step guide to building a content calendar your team will actually follow. Includes templates, cadence recommendations, and tools.' },
           ];
 
           const fs = await import('fs');
@@ -347,6 +350,24 @@ export default defineConfig(({ mode }) => {
             if (route.url === '/blog/custom-web-development-company') {
               routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(customWebDevBlogSchema, null, 2)}\n  </script>\n</head>`);
               routeHtml = replaceRootElement(routeHtml, customWebDevBlogInitialHtml, '/blog/custom-web-development-company');
+              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
+              continue;
+            }
+
+            if (route.url === '/blog/content-calendar-strategy') {
+              const seoMeta = SEO_ROUTES_METADATA['/blog/content-calendar-strategy'];
+              if (seoMeta && seoMeta.schemaJsonLd) {
+                routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json" data-rh="true">\n${JSON.stringify(seoMeta.schemaJsonLd, null, 2)}\n  </script>\n</head>`);
+              }
+              if (seoMeta && seoMeta.ogImage) {
+                routeHtml = routeHtml
+                  .replace(/<meta\s+property="og:image"\s+content="[\s\S]*?"\s*\/?>/gi, '')
+                  .replace(/<meta\s+name="twitter:image"\s+content="[\s\S]*?"\s*\/?>/gi, '')
+                  .replace(/<meta\s+property="og:type"\s+content="[\s\S]*?"\s*\/?>/gi, '')
+                  .replace('</head>', `  <meta property="og:type" content="article" />\n  <meta property="og:image" content="${seoMeta.ogImage}" />\n  <meta name="twitter:image" content="${seoMeta.ogImage}" />\n</head>`);
+              }
+              const contentCalendarHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader('/blog/content-calendar-strategy')}<main id="main-content" class="max-w-4xl mx-auto px-6 pt-36 pb-20"><h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-8 font-serif">How to Build a Content Calendar That Gets Followed</h1><article class="prose prose-invert max-w-none text-zinc-300"><h2>Quick Takeaways</h2><ul><li>Most content calendars fail because they are built on unrealistic expectations and lack of clear ownership, not because of a lack of tools.</li><li>A successful calendar requires a system: defining content pillars, setting a realistic cadence, and assigning clear owners.</li><li>You do not need expensive software. A shared Google Sheet or a simple Notion board is usually sufficient.</li><li>Build a content backlog to prevent last-minute scrambling and quality drops.</li></ul><h2>Why Most Content Calendars Fail</h2><p>Most content calendars fail because they are disconnected from actual production capacity. A calendar must account for the entire production cycle: ideation, research, drafting, editing, design, and publishing.</p><h2>The 6-Step Content Calendar Strategy</h2><h3>Step 1: Define Your Content Pillars</h3><h3>Step 2: Set a Realistic Publishing Cadence</h3><h3>Step 3: Assign Clear Ownership</h3><h3>Step 4: Build a Content Backlog</h3><h3>Step 5: Schedule and Integrate with SEO</h3><h3>Step 6: Review, Iterate, and Repurpose</h3><h2>The Content Calendar Template</h2><h2>Common Mistakes Founders Make with Content Calendars</h2><h2>Frequently Asked Questions</h2><h3>What is a content calendar strategy?</h3><p>A content calendar strategy is a systematic plan for creating, scheduling, and publishing content. It defines the topics, the target audience, the publishing frequency, and the team responsible for execution.</p><h3>How far in advance should I plan content?</h3><p>Plan your core themes and backlogs 3 months in advance. However, finalize specific publishing dates and drafts on a rolling 4-week basis to remain flexible to market changes.</p><h3>What tools are best for content calendars?</h3><p>Google Sheets, Notion, or Airtable are usually sufficient for small to mid-sized teams. For enterprise teams, tools like CoSchedule or Asana can help manage complex workflows.</p></article></main></div>`;
+              routeHtml = replaceRootElement(routeHtml, contentCalendarHtml, '/blog/content-calendar-strategy');
               fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
               continue;
             }

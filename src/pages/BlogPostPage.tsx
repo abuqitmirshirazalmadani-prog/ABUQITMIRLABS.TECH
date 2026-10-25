@@ -3432,7 +3432,12 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                     }
                                 ]
                             }] : [])
-                        ]
+                        ].filter((node: any, idx: number, arr: any[]) => {
+                            if (node && node['@type'] === 'FAQPage') {
+                                return arr.findIndex((n: any) => n && n['@type'] === 'FAQPage') === idx;
+                            }
+                            return true;
+                        })
                     })}
                 </script>
                     </>

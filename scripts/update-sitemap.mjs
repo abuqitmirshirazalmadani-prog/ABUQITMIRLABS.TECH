@@ -73,7 +73,7 @@ if (fs.existsSync(blogContentDir) && fs.existsSync(blogPostsPath)) {
       if (!staticPostsSource.includes(`STATIC_BLOG_POSTS["${articleSlug}"]`) && !staticPostsSource.includes(`'${articleSlug}'`)) {
         const postObj = {
           canonical: `https://www.abuqitmirlabs.tech/blog/${articleSlug}`,
-          title: parsedMeta?.title ? (parsedMeta.title.includes('AbuQitmirLabs') ? parsedMeta.title : `${parsedMeta.title} | AbuQitmirLabs`) : `${articleSlug} | AbuQitmirLabs`,
+          title: parsedMeta?.title || articleSlug,
           heroSubtitle: parsedMeta?.heroSubtitle || undefined,
           content: body,
           excerpt: parsedMeta?.excerpt || '',

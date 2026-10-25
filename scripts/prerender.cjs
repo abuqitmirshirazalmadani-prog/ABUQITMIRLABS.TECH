@@ -30,10 +30,16 @@ try {
 // 2. Load bundled React SSR renderer
 let renderFullApp;
 let SEO_ROUTES_METADATA = {};
+let STATIC_BLOG_POSTS = {};
+let getCanonicalSlug = (s) => s;
 try {
   const ssrModule = require(ssrBundlePath);
   renderFullApp = ssrModule.renderFullApp;
   SEO_ROUTES_METADATA = ssrModule.SEO_ROUTES_METADATA || {};
+  STATIC_BLOG_POSTS = ssrModule.STATIC_BLOG_POSTS || {};
+  if (typeof ssrModule.getCanonicalSlug === 'function') {
+    getCanonicalSlug = ssrModule.getCanonicalSlug;
+  }
   if (!renderFullApp) {
     throw new Error('renderFullApp function not found in SSR bundle');
   }
@@ -243,7 +249,8 @@ const routes = [
   '/blog/how-to-brief-graphic-designer',
   '/blog/seo-content-vs-thought-leadership',
   '/blog/content-brief-template',
-  '/blog/small-business-branding-mistakes-pakistan'
+  '/blog/small-business-branding-mistakes-pakistan',
+  '/blog/content-calendar-strategy'
 ];
 
 // Dynamically discover all articles from content/blog/*.md so new posts are always prerendered
@@ -256,7 +263,8 @@ if (fs.existsSync(contentBlogDir)) {
       const fileContent = fs.readFileSync(path.join(contentBlogDir, file), 'utf8');
       const slugMatch = fileContent.match(/["']slug["']\s*:\s*["']([^"']+)["']/);
       const articleSlug = slugMatch && slugMatch[1] ? slugMatch[1] : file.replace(/\.md$/, '');
-      const blogRoute = `/blog/${articleSlug.trim()}`;
+      const canonicalSlug = getCanonicalSlug(articleSlug.trim());
+      const blogRoute = `/blog/${canonicalSlug}`;
       if (!routes.includes(blogRoute)) {
         blogMarkdownRoutes.push(blogRoute);
       }
@@ -264,10 +272,17 @@ if (fs.existsSync(contentBlogDir)) {
   }
 }
 
-// Merge explicitly defined routes with markdown routes and SEO_ROUTES_METADATA
+// Also discover all canonical blog posts from STATIC_BLOG_POSTS
+const staticBlogRoutes = Object.keys(STATIC_BLOG_POSTS || {})
+  .map(slug => getCanonicalSlug(slug.trim()))
+  .filter(Boolean)
+  .map(slug => `/blog/${slug}`);
+
+// Merge explicitly defined routes with markdown routes, STATIC_BLOG_POSTS, and SEO_ROUTES_METADATA
 const allRoutes = Array.from(new Set([
   ...routes,
   ...blogMarkdownRoutes,
+  ...staticBlogRoutes,
   ...Object.keys(SEO_ROUTES_METADATA || {}).filter(k => typeof k === 'string' && k.startsWith('/'))
 ]));
 
@@ -435,8 +450,13 @@ for (const routeUrl of allRoutes) {
     // C. Include schemaJsonLd from SEO_ROUTES_METADATA if not already included
     if (seo && seo.schemaJsonLd) {
       const seoSchemaString = JSON.stringify(seo.schemaJsonLd);
-      const alreadyPresent = schemasToInject.some(s => s.includes(seoSchemaString) || (seo.schemaJsonLd['@id'] && s.includes(seo.schemaJsonLd['@id'])));
-      if (!alreadyPresent) {
+      const hasRouteGraphAlready = schemasToInject.some(s =>
+        s.includes(seoSchemaString) ||
+        (seo.schemaJsonLd['@id'] && s.includes(seo.schemaJsonLd['@id'])) ||
+        s.includes(`${canonicalUrl}#article`) ||
+        s.includes(`${canonicalUrl}/#article`)
+      );
+      if (!hasRouteGraphAlready) {
         schemasToInject.push(`<script type="application/ld+json" data-rh="true">\n${JSON.stringify(seo.schemaJsonLd, null, 2)}\n  </script>`);
       }
     }
@@ -447,7 +467,9 @@ for (const routeUrl of allRoutes) {
       if (helmetScripts && helmetScripts.includes('application/ld+json')) {
         const hMatches = helmetScripts.match(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis) || [];
         for (const hTag of hMatches) {
-          if (!schemasToInject.some(s => s.includes(hTag) || hTag.includes(s))) {
+          const hasArticleAlready = schemasToInject.some(s => s.includes(`${canonicalUrl}#article`) || s.includes(`${canonicalUrl}/#article`));
+          const isDuplicateArticle = hasArticleAlready && (hTag.includes(`${canonicalUrl}#article`) || hTag.includes(`${canonicalUrl}/#article`));
+          if (!isDuplicateArticle && !schemasToInject.some(s => s.includes(hTag) || hTag.includes(s))) {
             schemasToInject.push(hTag.trim());
           }
         }

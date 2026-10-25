@@ -71,7 +71,8 @@ sitemapPaths.forEach(sitemapPath => {
 
     // Check canonical mismatch (if this URL has a canonical pointing elsewhere)
     const routePath = url.replace('https://www.abuqitmirlabs.tech', '') || '/';
-    const canonRegex = new RegExp(`['"]${routePath}['"]:\\s*\\{[\\s\\S]*?canonical:\\s*['"]([^'"]+)['"]`);
+    const escapedRoute = routePath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const canonRegex = new RegExp(`['"]${escapedRoute}['"]\\s*:\\s*\\{(?:(?!\\n\\s*['"]\\/)[^])*?['"]?canonical['"]?\\s*:\\s*['"]([^'"]+)['"]`);
     const canonMatch = seoRoutesContent.match(canonRegex);
     if (canonMatch) {
       const canonical = canonMatch[1];

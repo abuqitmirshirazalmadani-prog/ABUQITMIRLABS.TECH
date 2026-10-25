@@ -67,6 +67,8 @@ import SkillsAcademyPage from './pages/SkillsAcademyPage';
 import ErrorBoundary from './components/ErrorBoundary';
 
 export { SEO_ROUTES_METADATA } from './data/seoRoutesMetadata';
+export { STATIC_BLOG_POSTS } from './data/staticBlogPosts';
+export { getCanonicalSlug } from './data/canonicalRedirects';
 
 const FloatingWhatsApp = () => (
   <a 

@@ -7,6 +7,10 @@
  * for dynamic blog posts fetched from Firestore or static fallbacks.
  */
 
+import { calculateReadingTime, getReadingTimeStats, countReadableWords } from './readingTime';
+export { calculateReadingTime, getReadingTimeStats, countReadableWords };
+export type { ReadingTimeResult } from './readingTime';
+
 export interface BlogPostMetaInput {
   title: string;
   content?: string;
@@ -258,8 +262,19 @@ export function generateBlogPostMeta(
         "mainEntityOfPage": { "@id": `${currentUrl}#webpage` },
         "articleSection": categoryName,
         "keywords": keywords,
-        "inLanguage": "en-US"
-      }
+        "wordCount": countReadableWords(post.content || '') || 1500,
+        "inLanguage": "en-US",
+        "isAccessibleForFree": true
+      },
+      ...(extractFaqEntitiesFromMarkdown(post.content).length > 0
+        ? [
+            {
+              "@type": "FAQPage",
+              "@id": `${currentUrl}#faq`,
+              "mainEntity": extractFaqEntitiesFromMarkdown(post.content)
+            }
+          ]
+        : [])
     ]
   };
 
@@ -287,6 +302,60 @@ export function generateBlogPostMeta(
   };
 }
 
-export { calculateReadingTime, getReadingTimeStats, countReadableWords } from './readingTime';
-export type { ReadingTimeResult } from './readingTime';
+/**
+ * Extracts FAQ Question/Answer pairs from a markdown "## Frequently Asked Questions" or "## FAQ" section.
+ */
+export function extractFaqEntitiesFromMarkdown(markdownContent?: string): Array<{
+  "@type": "Question";
+  name: string;
+  acceptedAnswer: {
+    "@type": "Answer";
+    text: string;
+  };
+}> {
+  if (!markdownContent) return [];
+  const faqSectionMatch = markdownContent.match(
+    /(?:^|\n)##\s+(?:Frequently Asked Questions|FAQs?)\b[^\n]*\n([\s\S]*?)(?=\n##\s+|\n---\s*\n##\s+|(?![\s\S]))/i
+  );
+  if (!faqSectionMatch || !faqSectionMatch[1]) return [];
+
+  const faqBlock = faqSectionMatch[1].replace(/\n---\s*$/g, '').trim();
+  const entities: Array<{
+    "@type": "Question";
+    name: string;
+    acceptedAnswer: {
+      "@type": "Answer";
+      text: string;
+    };
+  }> = [];
+
+  const questionRegex = /(?:^|\n)###\s+([^\n]+)\n+([\s\S]*?)(?=\n###\s+|\n##\s+|\n---\s*(?:\n|(?![\s\S]))|(?![\s\S]))/g;
+  let match: RegExpExecArray | null;
+  while ((match = questionRegex.exec(faqBlock)) !== null) {
+    const rawQ = match[1]
+      .replace(/^\d+\.\s*/, '')
+      .replace(/[*_`~]/g, '')
+      .trim();
+    const rawA = match[2]
+      .replace(/^---+\s*$/gm, '')
+      .replace(/<[^>]*>/g, '')
+      .replace(/!\[.*?\]\(.*?\)/g, '')
+      .replace(/\[(.*?)\]\(.*?\)/g, '$1')
+      .replace(/[*_`~>]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+    if (rawQ && rawA) {
+      entities.push({
+        "@type": "Question",
+        name: rawQ,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: rawA
+        }
+      });
+    }
+  }
+
+  return entities;
+}
 
