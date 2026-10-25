@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import fs from 'fs';
 import crypto from 'crypto';
+import zlib from 'zlib';
 import { defineConfig, loadEnv } from 'vite';
 import compression from 'vite-plugin-compression';
 import { aiAgentSchema, aiAgentInitialHtml } from './src/utils/aiAgentStaticHtml';
@@ -19,6 +20,9 @@ import { localSEOSmallBusinessSchema, localSEOSmallBusinessInitialHtml } from '.
 import { homeSchema, homeInitialHtml } from './src/utils/homeStaticHtml';
 import { renderStaticHeader } from './src/utils/sharedStaticHeader';
 import { SEO_ROUTES_METADATA } from './src/data/seoRoutesMetadata';
+import { BLOG_SLUG_REDIRECTS, getCanonicalPath } from './src/data/canonicalRedirects';
+import { STATIC_BLOG_POSTS } from './src/data/staticBlogPosts';
+import { programmaticSEOPages } from './src/data/programmatic-seo';
 
 interface PrerenderPlugin {
   (options: { staticDir: string; routes: string[]; renderer?: any }): any;
@@ -215,18 +219,258 @@ export default defineConfig(({ mode }) => {
           } catch { cachedData = null; }
 
           const sitemapPath = path.resolve(outDir, 'sitemap.xml');
+          const distPagesSitemapPath = path.resolve(outDir, 'pages-sitemap.xml');
           const rssPath = path.resolve(outDir, 'rss.xml');
           const publicSitemap = path.resolve(process.cwd(), 'public/sitemap.xml');
+          const publicPagesSitemap = path.resolve(process.cwd(), 'public/pages-sitemap.xml');
+          const rootSitemap = path.resolve(process.cwd(), 'sitemap.xml');
+          const rootPagesSitemap = path.resolve(process.cwd(), 'pages-sitemap.xml');
 
-          // Always synchronize public/sitemap.xml directly to dist/sitemap.xml so Vercel never serves a stale cached sitemap
-          let sitemapContent = '';
-          if (fs.existsSync(publicSitemap)) {
-            sitemapContent = fs.readFileSync(publicSitemap, 'utf-8');
-          } else {
-            sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map(route => `  <url>\n    <loc>${hostname}${route.url === '/' ? '' : route.url}</loc>\n    <changefreq>${route.changefreq}</changefreq>\n    <priority>${route.priority.toFixed(1)}</priority>\n    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>\n  </url>`).join('\n')}\n</urlset>`;
+          // Sitemap 0.9 & Google Search Console Standards Validator & Generator
+          const VALID_CHANGEFREQS = new Set(['always', 'hourly', 'daily', 'weekly', 'monthly', 'yearly', 'never']);
+          const DISALLOWED_PATHS = new Set(['/admin', '/google87984536fe5662da', '/404', '/spa-shell', '/login']);
+          const defaultLastMod = '2026-10-25';
+
+          const normalizeToAbsoluteCanonicalUrl = (rawInput: string): string | null => {
+            if (!rawInput || typeof rawInput !== 'string') return null;
+            let trimmed = rawInput.trim();
+            if (!trimmed) return null;
+
+            // Convert relative URLs or non-canonical domains to https://www.abuqitmirlabs.tech
+            let pathname = '/';
+            try {
+              if (/^https?:\/\//i.test(trimmed)) {
+                const parsed = new URL(trimmed);
+                pathname = parsed.pathname || '/';
+              } else {
+                pathname = trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
+              }
+            } catch {
+              pathname = trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
+            }
+
+            // Strip query strings, hashes, and trailing slashes (except root '/')
+            pathname = pathname.split('?')[0].split('#')[0].replace(/\/+$/, '') || '/';
+
+            // Reject disallowed or non-indexable paths (must match robots.txt Disallow rules)
+            if (
+              DISALLOWED_PATHS.has(pathname) ||
+              pathname.startsWith('/admin/') ||
+              pathname.startsWith('/api/')
+            ) {
+              return null;
+            }
+
+            // Resolve legacy aliases/redirects via canonicalRedirects
+            const canonicalPathname = getCanonicalPath(pathname);
+            if (canonicalPathname.startsWith('/blog/')) {
+              const slug = canonicalPathname.slice('/blog/'.length);
+              if (BLOG_SLUG_REDIRECTS[slug]) {
+                return null;
+              }
+            }
+
+            // Verify against SEO_ROUTES_METADATA canonical if defined
+            const routeMeta = SEO_ROUTES_METADATA[canonicalPathname];
+            if (routeMeta?.canonical) {
+              const metaCanon = routeMeta.canonical.trim().replace(/\/+$/, '');
+              const expectedCanon = `${hostname}${canonicalPathname === '/' ? '' : canonicalPathname}`;
+              if (metaCanon !== expectedCanon) {
+                // This route is an alias pointing to another primary canonical URL
+                return normalizeToAbsoluteCanonicalUrl(metaCanon);
+              }
+            }
+
+            const finalAbsoluteUrl = `${hostname}${canonicalPathname === '/' ? '' : canonicalPathname}`;
+
+            // Final RFC-3986 / Sitemap 0.9 URL validation
+            try {
+              const validated = new URL(finalAbsoluteUrl);
+              if (validated.protocol !== 'https:' || validated.hostname !== 'www.abuqitmirlabs.tech') {
+                return null;
+              }
+              return finalAbsoluteUrl;
+            } catch {
+              return null;
+            }
+          };
+
+          const validateChangefreq = (freq?: string): string => {
+            const clean = (freq || '').trim().toLowerCase();
+            return VALID_CHANGEFREQS.has(clean) ? clean : 'weekly';
+          };
+
+          const validatePriority = (prio?: string | number, isRoot?: boolean): string => {
+            if (isRoot) return '1.0';
+            const num = typeof prio === 'number' ? prio : parseFloat(String(prio || '0.8'));
+            if (Number.isNaN(num) || num < 0 || num > 1) return '0.8';
+            return num.toFixed(1);
+          };
+
+          const validateLastmod = (lastmod?: unknown): string => {
+            if (!lastmod) return defaultLastMod;
+            if (typeof lastmod === 'string') {
+              const clean = lastmod.trim();
+              if (/^\d{4}-\d{2}-\d{2}$/.test(clean)) return clean;
+              const parsed = new Date(clean);
+              if (!Number.isNaN(parsed.getTime())) {
+                return parsed.toISOString().split('T')[0];
+              }
+              return defaultLastMod;
+            }
+            if (lastmod instanceof Date && !Number.isNaN(lastmod.getTime())) {
+              return lastmod.toISOString().split('T')[0];
+            }
+            if (typeof lastmod === 'number') {
+              const parsed = new Date(lastmod);
+              if (!Number.isNaN(parsed.getTime())) {
+                return parsed.toISOString().split('T')[0];
+              }
+            }
+            if (typeof lastmod === 'object' && lastmod !== null && 'seconds' in lastmod && typeof (lastmod as any).seconds === 'number') {
+              const parsed = new Date((lastmod as any).seconds * 1000);
+              if (!Number.isNaN(parsed.getTime())) {
+                return parsed.toISOString().split('T')[0];
+              }
+            }
+            return defaultLastMod;
+          };
+
+          interface SitemapEntry {
+            loc: string;
+            changefreq: string;
+            priority: string;
+            lastmod: string;
           }
-          fs.writeFileSync(sitemapPath, sitemapContent, 'utf-8');
-          console.log(`✅ [Sitemap] Synchronized fresh sitemap.xml to dist!`);
+
+          const sitemapEntriesMap = new Map<string, SitemapEntry>();
+
+          const upsertSitemapEntry = (rawUrl: string, changefreq?: string, priority?: string | number, lastmod?: string, overwrite = false) => {
+            const canonicalLoc = normalizeToAbsoluteCanonicalUrl(rawUrl);
+            if (!canonicalLoc) return;
+            const isRoot = canonicalLoc === hostname;
+            const existing = sitemapEntriesMap.get(canonicalLoc);
+            if (!existing || overwrite) {
+              sitemapEntriesMap.set(canonicalLoc, {
+                loc: canonicalLoc,
+                changefreq: validateChangefreq(changefreq || existing?.changefreq),
+                priority: validatePriority(priority ?? existing?.priority, isRoot),
+                lastmod: validateLastmod(lastmod || existing?.lastmod),
+              });
+            }
+          };
+
+          // 1. Seed from existing public/sitemap.xml to preserve historical lastmod dates
+          if (fs.existsSync(publicSitemap)) {
+            const rawXml = fs.readFileSync(publicSitemap, 'utf-8');
+            const urlBlocks = [...rawXml.matchAll(/<url>([\s\S]*?)<\/url>/g)];
+            for (const match of urlBlocks) {
+              const block = match[1];
+              const locMatch = block.match(/<loc>([\s\S]*?)<\/loc>/);
+              if (!locMatch) continue;
+              const freqMatch = block.match(/<changefreq>([\s\S]*?)<\/changefreq>/);
+              const prioMatch = block.match(/<priority>([\s\S]*?)<\/priority>/);
+              const modMatch = block.match(/<lastmod>([\s\S]*?)<\/lastmod>/);
+              upsertSitemapEntry(
+                locMatch[1],
+                freqMatch ? freqMatch[1] : 'weekly',
+                prioMatch ? prioMatch[1] : '0.8',
+                modMatch ? modMatch[1] : '2026-09-26'
+              );
+            }
+          }
+
+          // 2. Ensure all baseRoutes and dynamicRoutes are present with absolute URLs
+          for (const route of routes) {
+            upsertSitemapEntry(
+              `${hostname}${route.url === '/' ? '' : route.url}`,
+              route.changefreq,
+              route.priority,
+              defaultLastMod
+            );
+          }
+
+          // 3. Ensure all canonical non-blog service routes from SEO_ROUTES_METADATA are present
+          for (const [routePath, meta] of Object.entries(SEO_ROUTES_METADATA)) {
+            if (DISALLOWED_PATHS.has(routePath) || routePath.startsWith('/blog/')) continue;
+            const expectedCanon = `${hostname}${routePath === '/' ? '' : routePath}`;
+            const routeCanon = (meta.canonical || expectedCanon).replace(/\/+$/, '');
+            if (routeCanon === expectedCanon) {
+              upsertSitemapEntry(expectedCanon, 'weekly', routePath === '/' ? 1.0 : 0.9, defaultLastMod);
+            }
+          }
+
+          // 4. Ensure all primary canonical static blog posts from content/blog/*.md and STATIC_BLOG_POSTS with explicit slug are present
+          for (const [slug, post] of Object.entries(STATIC_BLOG_POSTS)) {
+            if (!post?.slug || BLOG_SLUG_REDIRECTS[slug]) continue;
+            const cleanSlug = post.slug.trim();
+            if (cleanSlug !== slug || BLOG_SLUG_REDIRECTS[cleanSlug]) continue;
+            const postDate = post?.createdAt ? validateLastmod(post.createdAt) : defaultLastMod;
+            upsertSitemapEntry(`${hostname}/blog/${cleanSlug}`, 'weekly', 0.9, postDate);
+          }
+
+          const contentBlogDir = path.resolve(process.cwd(), 'content/blog');
+          if (fs.existsSync(contentBlogDir)) {
+            const mdFiles = fs.readdirSync(contentBlogDir).filter((f) => f.endsWith('.md'));
+            for (const file of mdFiles) {
+              const articleSlug = file.replace(/\.md$/, '').trim();
+              if (BLOG_SLUG_REDIRECTS[articleSlug]) continue;
+              const post = STATIC_BLOG_POSTS[articleSlug];
+              const postDate = post?.createdAt ? validateLastmod(post.createdAt) : defaultLastMod;
+              upsertSitemapEntry(`${hostname}/blog/${articleSlug}`, 'weekly', 0.9, postDate);
+            }
+          }
+
+          // 5. Ensure all programmatic SEO solution routes are present
+          for (const pPage of programmaticSEOPages) {
+            if (pPage.slug) {
+              upsertSitemapEntry(`${hostname}/solutions/${pPage.slug}`, 'weekly', 0.9, '2026-10-19');
+            }
+          }
+
+          // Build and validate final XML output against Sitemap 0.9 standards
+          const validatedEntries = Array.from(sitemapEntriesMap.values());
+          const sitemapXmlLines = [
+            '<?xml version="1.0" encoding="UTF-8"?>',
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+            ...validatedEntries.map(
+              (entry) =>
+                `<url><loc>${escapeXml(entry.loc)}</loc><changefreq>${entry.changefreq}</changefreq><priority>${entry.priority}</priority><lastmod>${entry.lastmod}</lastmod></url>`
+            ),
+            '</urlset>',
+            ''
+          ];
+          const sitemapContent = sitemapXmlLines.join('\n');
+
+          // Standards verification check before writing
+          const invalidUrls = validatedEntries.filter((e) => !e.loc.startsWith('https://www.abuqitmirlabs.tech'));
+          if (invalidUrls.length > 0) {
+            throw new Error(`[Sitemap Validator] Found non-absolute or invalid domain URLs: ${invalidUrls.map((u) => u.loc).join(', ')}`);
+          }
+
+          // Write validated sitemap to dist, public, and root directories
+          for (const targetSitemapPath of [
+            sitemapPath,
+            distPagesSitemapPath,
+            publicSitemap,
+            publicPagesSitemap,
+            rootSitemap,
+            rootPagesSitemap
+          ]) {
+            fs.writeFileSync(targetSitemapPath, sitemapContent, 'utf-8');
+          }
+
+          // Also refresh pre-compressed .gz and .br sitemap files in dist so CDNs never serve stale compressed sitemaps
+          try {
+            const gzBuffer = zlib.gzipSync(Buffer.from(sitemapContent, 'utf-8'));
+            const brBuffer = zlib.brotliCompressSync(Buffer.from(sitemapContent, 'utf-8'));
+            fs.writeFileSync(`${sitemapPath}.gz`, gzBuffer);
+            fs.writeFileSync(`${sitemapPath}.br`, brBuffer);
+            fs.writeFileSync(`${distPagesSitemapPath}.gz`, gzBuffer);
+            fs.writeFileSync(`${distPagesSitemapPath}.br`, brBuffer);
+          } catch (compErr) {}
+
+          console.log(`✅ [Sitemap] Generated & validated ${validatedEntries.length} canonical absolute URLs across dist & public sitemaps!`);
 
           const isCacheValid = Boolean(cachedData && cachedData.dataHash === dataHash && cachedData.rssContent);
 

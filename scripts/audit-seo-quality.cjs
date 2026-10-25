@@ -35,7 +35,9 @@ if (fs.existsSync(redirectsPath)) {
 console.log('📌 Checking sitemaps for duplicates and canonical compliance...');
 const sitemapPaths = [
   path.join(rootDir, 'public/sitemap.xml'),
-  path.join(rootDir, 'sitemap.xml')
+  path.join(rootDir, 'sitemap.xml'),
+  path.join(rootDir, 'public/pages-sitemap.xml'),
+  path.join(rootDir, 'pages-sitemap.xml')
 ];
 
 const seoRoutesPath = path.join(rootDir, 'src/data/seoRoutesMetadata.ts');
@@ -43,6 +45,8 @@ let seoRoutesContent = '';
 if (fs.existsSync(seoRoutesPath)) {
   seoRoutesContent = fs.readFileSync(seoRoutesPath, 'utf8');
 }
+
+const disallowedPaths = new Set(['/admin', '/google87984536fe5662da', '/404', '/spa-shell', '/login']);
 
 sitemapPaths.forEach(sitemapPath => {
   if (!fs.existsSync(sitemapPath)) return;
@@ -54,8 +58,29 @@ sitemapPaths.forEach(sitemapPath => {
   let sitemapChanged = false;
 
   locMatches.forEach(match => {
-    const fullBlock = match[0];
+    let fullBlock = match[0].trim();
     let url = match[1].trim();
+
+    // Enforce absolute canonical domain
+    if (url.startsWith('/')) {
+      url = `https://www.abuqitmirlabs.tech${url === '/' ? '' : url}`;
+      sitemapChanged = true;
+      issuesFixed.push(`Converted relative sitemap URL to absolute: ${url}`);
+    }
+    if (url !== 'https://www.abuqitmirlabs.tech' && url.endsWith('/')) {
+      url = url.replace(/\/+$/, '');
+      sitemapChanged = true;
+    }
+
+    const routePath = url.replace('https://www.abuqitmirlabs.tech', '') || '/';
+
+    // Remove disallowed routes (e.g. /admin blocked by robots.txt)
+    if (disallowedPaths.has(routePath) || routePath.startsWith('/admin/') || routePath.startsWith('/api/')) {
+      console.log(`  ⚠️ Removing disallowed route from ${path.basename(sitemapPath)}: ${url}`);
+      sitemapChanged = true;
+      issuesFixed.push(`Removed robots.txt disallowed route from ${path.basename(sitemapPath)}: ${url}`);
+      return;
+    }
     
     // Check if this URL contains a legacy slug from knownRedirects
     if (url.includes('/blog/')) {
@@ -70,13 +95,12 @@ sitemapPaths.forEach(sitemapPath => {
     }
 
     // Check canonical mismatch (if this URL has a canonical pointing elsewhere)
-    const routePath = url.replace('https://www.abuqitmirlabs.tech', '') || '/';
     const escapedRoute = routePath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const canonRegex = new RegExp(`['"]${escapedRoute}['"]\\s*:\\s*\\{(?:(?!\\n\\s*['"]\\/)[^])*?['"]?canonical['"]?\\s*:\\s*['"]([^'"]+)['"]`);
     const canonMatch = seoRoutesContent.match(canonRegex);
     if (canonMatch) {
-      const canonical = canonMatch[1];
-      if (canonical !== url && canonical !== url + '/') {
+      const canonical = canonMatch[1].replace(/\/+$/, '');
+      if (canonical !== url) {
         console.log(`  ⚠️ Auto-correcting non-canonical URL in sitemap: ${url} -> ${canonical}`);
         url = canonical;
         sitemapChanged = true;
@@ -93,14 +117,18 @@ sitemapPaths.forEach(sitemapPath => {
     }
 
     seenLocs.add(url);
-    const updatedBlock = fullBlock.replace(/<loc>[\s\S]*?<\/loc>/, `<loc>${url}</loc>`);
+    let updatedBlock = fullBlock.replace(/<loc>[\s\S]*?<\/loc>/, `<loc>${url}</loc>`);
+    if (!updatedBlock.includes('<lastmod>')) {
+      updatedBlock = updatedBlock.replace('</url>', '<lastmod>2026-10-13</lastmod></url>');
+      sitemapChanged = true;
+    }
     validUrlBlocks.push(updatedBlock);
   });
 
   if (sitemapChanged) {
     const newSitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${validUrlBlocks.join('\n')}\n</urlset>\n`;
     fs.writeFileSync(sitemapPath, newSitemap, 'utf8');
-    console.log(`  ✅ Auto-fixed ${path.basename(sitemapPath)}: cleaned duplicates and non-canonical entries.`);
+    console.log(`  ✅ Auto-fixed ${path.basename(sitemapPath)}: cleaned duplicates, disallowed routes, and non-canonical entries.`);
   } else {
     console.log(`  ✅ ${path.basename(sitemapPath)} is 100% clean (${seenLocs.size} unique canonical URLs).`);
   }

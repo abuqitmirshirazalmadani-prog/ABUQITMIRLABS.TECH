@@ -121,7 +121,11 @@ for (const rawSlug of slugs) {
   }
 }
 
+// Remove any disallowed routes (such as /admin) if present in existing sitemap
+sitemap = sitemap.replace(/^\s*<url><loc>https:\/\/www\.abuqitmirlabs\.tech\/(admin|google87984536fe5662da|404|spa-shell|login)<\/loc>[\s\S]*?<\/url>\n?/gm, '');
+
 // 3b. Har static/service page check karein from seoRoutesMetadata.ts
+const disallowedRoutes = new Set(['/admin', '/google87984536fe5662da', '/404', '/spa-shell', '/login']);
 const seoRoutesPath = path.join(rootDir, 'src', 'data', 'seoRoutesMetadata.ts');
 if (fs.existsSync(seoRoutesPath)) {
   const seoContent = fs.readFileSync(seoRoutesPath, 'utf-8');
@@ -129,6 +133,9 @@ if (fs.existsSync(seoRoutesPath)) {
   let rMatch;
   while ((rMatch = routeBlockRegex.exec(seoContent)) !== null) {
     const routePath = rMatch[1];
+    if (disallowedRoutes.has(routePath) || routePath.startsWith('/admin/') || routePath.startsWith('/api/')) {
+      continue;
+    }
     const blockContent = rMatch[2];
     const canonMatch = blockContent.match(/canonical:\s*['"]([^'"]+)['"]/);
     const canonical = canonMatch ? canonMatch[1] : `${baseUrl}${routePath}`;
@@ -144,7 +151,7 @@ if (fs.existsSync(seoRoutesPath)) {
     }
     const fullServiceUrl = `${baseUrl}${routePath}`;
     if (!sitemap.includes(fullServiceUrl)) {
-      const serviceEntry = `  <url><loc>${fullServiceUrl}</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>${today}</lastmod></url>\n`;
+      const serviceEntry = `<url><loc>${fullServiceUrl}</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>${today}</lastmod></url>\n`;
       sitemap = sitemap.replace('</urlset>', `${serviceEntry}</urlset>`);
       added++;
       console.log(`✅ Added service route: ${routePath}`);
