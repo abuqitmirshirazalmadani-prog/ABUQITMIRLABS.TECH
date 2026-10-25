@@ -6,7 +6,7 @@
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { useEffect, lazy, Suspense } from 'react';
-import { ReactLenis } from '@studio-freight/react-lenis';
+import { ReactLenis, useLenis } from '@studio-freight/react-lenis';
 import { lazyWithRetry } from './utils/lazyWithRetry';
 import FacebookPixel from './components/FacebookPixel';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -99,12 +99,18 @@ const PageLoader = () => (
     </div>
   </div>
 );
-
-function ScrollToTop() {
+function LenisScrollReset() {
   const { pathname } = useLocation();
+  const lenis = useLenis();
+  
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, lenis]);
+  
   return null;
 }
 
@@ -557,6 +563,27 @@ function AppRoutes() {
   );
 }
 
+function AppRoutes() {
+  const location = useLocation();
+  
+  return (
+      return (
+    <HelmetProvider>
+      <Router> {/* Router pehle aayega */}
+        <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothWheel: true }}> {/* Lenis Router ke andar */}
+      <Route path="*" element={
+        <div className="min-h-screen flex items-center justify-center bg-[#09090b] text-white">
+          <div className="text-center max-w-md px-6">
+            <p className="text-white/60 mb-8">Page not found.</p>
+            <a href="/" className="inline-block px-6 py-3 bg-[#ccff00] text-black font-bold rounded-lg">
+              Go Home
+            </a>
+          </div>
+        </div>
+      } />
+    </Routes>
+  );
+}
 export default function App() {
   useEffect(() => {
     const trigger = () => {
@@ -573,8 +600,8 @@ export default function App() {
         <Router>
           <RouteSEO />
           {/* <TopLoadingBar /> */}
-          <ScrollToTop />
-          <MetaHeadSanitizer />
+          <LenisScrollReset />
+         {/* <MetaHeadSanitizer /> */}
           <FacebookPixel />
           <GoogleAnalyticsTracker />
           <FloatingWhatsApp />
