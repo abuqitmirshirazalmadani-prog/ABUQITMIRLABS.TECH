@@ -3,8 +3,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import fs from 'fs';
 import crypto from 'crypto';
-import esbuild from 'esbuild';
-import {defineConfig, loadEnv} from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import compression from 'vite-plugin-compression';
 import { aiAgentSchema, aiAgentInitialHtml } from './src/utils/aiAgentStaticHtml';
 import { graphicsDesignSchema, graphicsDesignInitialHtml } from './src/utils/graphicsDesignStaticHtml';
@@ -20,7 +19,6 @@ import { localSEOSmallBusinessSchema, localSEOSmallBusinessInitialHtml } from '.
 import { homeSchema, homeInitialHtml } from './src/utils/homeStaticHtml';
 import { renderStaticHeader } from './src/utils/sharedStaticHeader';
 
-// Safe container-compatible prerender implementation to bypass Chromium/Puppeteer driver limitations
 interface PrerenderPlugin {
   (options: { staticDir: string; routes: string[]; renderer?: any }): any;
   PuppeteerRenderer: any;
@@ -43,123 +41,76 @@ prerender.PuppeteerRenderer = class PuppeteerRenderer {
   constructor(options?: any) {}
 };
 
-export default defineConfig(({mode}) => {
+export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
 
   return {
     plugins: [
       react(), 
       tailwindcss(),
-      compression({
-        algorithm: 'gzip',
-        ext: '.gz',
-      }),
-      compression({
-        algorithm: 'brotliCompress',
-        ext: '.br',
-      }),
+      compression({ algorithm: 'gzip', ext: '.gz' }),
+      compression({ algorithm: 'brotliCompress', ext: '.br' }),
       prerender({
         staticDir: path.resolve(process.cwd(), 'dist'),
         routes: [
-          '/',
-          '/ai-video-creation',
-          '/custom-software',
-          '/mobile-app-development',
-          '/web-development',
-          '/ai-agent-development',
-          '/seo-mastery',
-          '/graphics-design',
-          '/content-writing',
-          '/solutions/fintech',
-          '/solutions/healthcare',
-          '/solutions/ai-automation',
-          '/solutions/e-commerce',
-          '/solutions/edtech',
-          '/case-studies',
-          '/case-studies/tajweedpage',
-          '/about',
-          '/about/our-company',
-          '/about/our-team',
-          '/about/our-process',
-          '/about/careers',
-          '/us-market',
-          '/uk-market',
-          '/pakistan-market',
-          '/canada-market',
-          '/poland-market',
-          '/australia-market',
-          '/privacy',
-          '/terms',
-          '/blog',
-          '/blog/custom-web-development-company',
-          '/local-seo-for-small-business',
-          '/local-seo-citation-building',
-          '/white-label-local-seo',
-          '/local-seo-audit',
-          '/website-contract',
-          '/contact'
+          '/', '/ai-video-creation', '/custom-software', '/mobile-app-development',
+          '/web-development', '/ai-agent-development', '/seo-mastery', '/graphics-design',
+          '/content-writing', '/solutions/fintech', '/solutions/healthcare', '/solutions/ai-automation',
+          '/solutions/e-commerce', '/solutions/edtech', '/case-studies', '/case-studies/tajweedpage',
+          '/about', '/about/our-company', '/about/our-team', '/about/our-process', '/about/careers',
+          '/us-market', '/uk-market', '/pakistan-market', '/canada-market', '/poland-market',
+          '/australia-market', '/privacy', '/terms', '/blog', '/blog/custom-web-development-company',
+          '/local-seo-for-small-business', '/local-seo-citation-building', '/white-label-local-seo',
+          '/local-seo-audit', '/website-contract', '/contact'
         ],
-        renderer: new prerender.PuppeteerRenderer({
-          args: ['--no-sandbox', '--disable-setuid-sandbox']
-        })
+        renderer: new prerender.PuppeteerRenderer({ args: ['--no-sandbox', '--disable-setuid-sandbox'] })
       }),
-      // Custom sitemap, robots.txt, RSS Feed AND static route generation for SEO
       {
         name: 'custom-seo-generator',
         closeBundle: async () => {
           const hostname = 'https://www.abuqitmirlabs.tech';
           const baseRoutes = [
-            { url: '/',                        changefreq: 'weekly',  priority: 1.0, title: 'Custom Software & AI App Development Company | AbuQitmirLabs', description: "AbuQitmirLabs engineers custom software, AI agents, mobile apps, and web solutions. Top-rated development company in Karachi serving global clients." },
-            { url: '/about',                   changefreq: 'monthly', priority: 0.8, title: 'About Us | AbuQitmirLabs', description: 'Learn about our mission to build cutting-edge AI and mobile solutions.' },
-            { url: '/about/our-company',       changefreq: 'monthly', priority: 0.8, title: 'About Our Company | Global Software Studio | AbuQitmirLabs', description: 'AbuQitmirLabs is a Karachi-based software boutique. 410+ custom projects for 350+ global clients. Zero lock-in, 100% in-house talent. Learn about our mission and values.' },
-            { url: '/about/our-team',          changefreq: 'monthly', priority: 0.8, title: 'Our Team | Elite Software Architects | AbuQitmirLabs', description: 'Meet the AbuQitmirLabs team — 12+ in-house software architects, engineers, and UI/UX experts in Karachi. 410+ projects delivered globally. Led by founder Abu Qitmir.' },
-            { url: '/about/our-process',       changefreq: 'monthly', priority: 0.8, title: 'Our Process | 6-Step Software Engineering Method | AbuQitmirLabs', description: "AbuQitmirLabs' 6-step engineering process: Discovery, Architecture, Development, QA, Zero-Downtime Launch, and Support. Structured discipline delivering 3x faster ROI." },
-            { url: '/about/careers',           changefreq: 'monthly', priority: 0.8, title: 'Careers at AbuQitmirLabs | Join Our In-House Studio | AbuQitmirLabs', description: "Join AbuQitmirLabs — we're hiring senior full-stack architects, AI/RAG engineers, UI/UX designers, and SEO strategists in Karachi. Build global software that matters." },
-            { url: '/contact',                 changefreq: 'monthly', priority: 0.9, title: 'Contact Us | Free Project Quote & Consultation | AbuQitmirLabs', description: 'Contact AbuQitmirLabs for a free project quote. Get a free technical consultation and digital audit. Build custom software, mobile apps, AI agents, and web solutions.' },
-            { url: '/custom-software',         changefreq: 'weekly',  priority: 0.9, title: 'Custom Software Development Company | AbuQitmirLabs', description: 'Bespoke software built around your workflows — ERPs, SaaS platforms, AI-powered tools, and enterprise systems. Full IP ownership.' },
-            { url: '/mobile-app-development',  changefreq: 'weekly',  priority: 0.9, title: 'Mobile App Development Company | AbuQitmirLabs', description: 'Flutter, React Native, and native iOS/Android app development. Full source code ownership, App Store submission, and backend integration included.' },
-            { url: '/web-development',         changefreq: 'weekly',  priority: 0.9, title: 'Web Development Company | Custom Web Solutions | AbuQitmirLabs', description: 'AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications.' },
-            { url: '/ai-video-creation',       changefreq: 'weekly',  priority: 0.9, title: 'AI Video Creation Services | Cinematic AI Production Agency | AbuQitmirLabs', description: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.' },
-            { url: '/ai-agent-development',    changefreq: 'weekly',  priority: 0.9, title: 'Healthcare AI Agent Development Company | AbuQitmirLabs', description: 'Custom healthcare AI agents for patient intake, RAG, EHR integration and workflow automation. Build secure AI systems with AbuQitmirLabs.' },
-            { url: '/seo-mastery',             changefreq: 'weekly',  priority: 0.8, title: 'SEO Services | Professional Search Engine Optimization | AbuQitmirLabs', description: 'AbuQitmirLabs delivers data-driven SEO services — technical audits, on-page optimization, local SEO, and authority building. Rank higher, attract quality traffic, and grow your business.' },
+            { url: '/', changefreq: 'weekly', priority: 1.0, title: 'Custom Software & AI App Development Company | AbuQitmirLabs', description: "AbuQitmirLabs engineers custom software, AI agents, mobile apps, and web solutions. Top-rated development company in Karachi serving global clients." },
+            { url: '/about', changefreq: 'monthly', priority: 0.8, title: 'About Us | AbuQitmirLabs', description: 'Learn about our mission to build cutting-edge AI and mobile solutions.' },
+            { url: '/about/our-company', changefreq: 'monthly', priority: 0.8, title: 'About Our Company | Global Software Studio | AbuQitmirLabs', description: 'AbuQitmirLabs is a Karachi-based software boutique. 410+ custom projects for 350+ global clients. Zero lock-in, 100% in-house talent. Learn about our mission and values.' },
+            { url: '/about/our-team', changefreq: 'monthly', priority: 0.8, title: 'Our Team | Elite Software Architects | AbuQitmirLabs', description: 'Meet the AbuQitmirLabs team — 12+ in-house software architects, engineers, and UI/UX experts in Karachi. 410+ projects delivered globally. Led by founder Abu Qitmir.' },
+            { url: '/about/our-process', changefreq: 'monthly', priority: 0.8, title: 'Our Process | 6-Step Software Engineering Method | AbuQitmirLabs', description: "AbuQitmirLabs' 6-step engineering process: Discovery, Architecture, Development, QA, Zero-Downtime Launch, and Support. Structured discipline delivering 3x faster ROI." },
+            { url: '/about/careers', changefreq: 'monthly', priority: 0.8, title: 'Careers at AbuQitmirLabs | Join Our In-House Studio | AbuQitmirLabs', description: "Join AbuQitmirLabs — we're hiring senior full-stack architects, AI/RAG engineers, UI/UX designers, and SEO strategists in Karachi. Build global software that matters." },
+            { url: '/contact', changefreq: 'monthly', priority: 0.9, title: 'Contact Us | Free Project Quote & Consultation | AbuQitmirLabs', description: 'Contact AbuQitmirLabs for a free project quote. Get a free technical consultation and digital audit. Build custom software, mobile apps, AI agents, and web solutions.' },
+            { url: '/custom-software', changefreq: 'weekly', priority: 0.9, title: 'Custom Software Development Company | AbuQitmirLabs', description: 'Bespoke software built around your workflows — ERPs, SaaS platforms, AI-powered tools, and enterprise systems. Full IP ownership.' },
+            { url: '/mobile-app-development', changefreq: 'weekly', priority: 0.9, title: 'Mobile App Development Company | AbuQitmirLabs', description: 'Flutter, React Native, and native iOS/Android app development. Full source code ownership, App Store submission, and backend integration included.' },
+            { url: '/web-development', changefreq: 'weekly', priority: 0.9, title: 'Web Development Company | Custom Web Solutions | AbuQitmirLabs', description: 'AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications.' },
+            { url: '/ai-video-creation', changefreq: 'weekly', priority: 0.9, title: 'AI Video Creation Services | Cinematic AI Production Agency | AbuQitmirLabs', description: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.' },
+            { url: '/ai-agent-development', changefreq: 'weekly', priority: 0.9, title: 'Healthcare AI Agent Development Company | AbuQitmirLabs', description: 'Custom healthcare AI agents for patient intake, RAG, EHR integration and workflow automation. Build secure AI systems with AbuQitmirLabs.' },
+            { url: '/seo-mastery', changefreq: 'weekly', priority: 0.8, title: 'SEO Services | Professional Search Engine Optimization | AbuQitmirLabs', description: 'AbuQitmirLabs delivers data-driven SEO services — technical audits, on-page optimization, local SEO, and authority building. Rank higher, attract quality traffic, and grow your business.' },
             { url: '/local-seo-for-small-business', changefreq: 'weekly', priority: 0.9, title: 'Local SEO Services for Small Businesses | AbuQitmirLabs', description: 'Grow local visibility with expert Local SEO for small businesses, including Google Business Profile, local rankings, citations, and on-page optimization.' },
             { url: '/local-seo-citation-building', changefreq: 'weekly', priority: 0.8, title: 'Local SEO Citation Building | NAP Consistency Services | AbuQitmirLabs', description: 'Manual NAP citation building, audit & cleanup across top-tier directories. Boost local search rankings with consistent citations on Google, Yelp, Apple Maps & more. Start with a $150 audit.' },
-            { url: '/white-label-local-seo',   changefreq: 'weekly',  priority: 0.8, title: 'White Label Local SEO for Agencies | Reseller Plans | AbuQitmirLabs', description: 'White label local SEO fulfillment for agencies — citations, GBP optimization, and branded PDF reports. Reseller plans with 35–50% margins. Expand your services without expanding your team.' },
-            { url: '/local-seo-audit',          changefreq: 'weekly',  priority: 0.8, title: 'Free Local SEO Audit | Forensic Map Pack Analysis | AbuQitmirLabs', description: 'Free local SEO audit covering Google Business Profile, NAP citations, schema markup, and map-pack competitors. Get a prioritized action plan — not a jargon-filled deck.' },
-            { url: '/guest-post-service',       changefreq: 'weekly',  priority: 0.8, title: 'Guest Post Service | High-Authority White-Hat Placements | AbuQitmirLabs', description: 'Editorial guest post placements on real, high-DR websites with organic search traffic. 100% manual outreach, in-content dofollow links, permanent indexation.' },
-            { url: '/graphics-design',         changefreq: 'weekly',  priority: 0.8, title: 'Graphic Design Services for Brands & Businesses | AbuQitmirLabs', description: 'Professional graphic design services for brands and businesses: custom logos, brand identity, pitch decks, UI/UX, and marketing collateral with AbuQitmirLabs.' },
-            { url: '/content-writing',         changefreq: 'weekly',  priority: 0.8, title: 'Content Writing Services | SEO Copywriting & Blogging | AbuQitmirLabs', description: 'AbuQitmirLabs provides professional content writing services — SEO blogs, website copy, landing pages, and long-form articles. Data-driven content that ranks and converts.' },
-            { url: '/solutions/fintech',        changefreq: 'weekly',  priority: 0.8, title: 'FinTech Solutions for Digital Finance | AbuQitmirLabs', description: 'Build secure FinTech platforms, payment systems and digital finance experiences with AbuQitmirLabs for startups and growing businesses.' },
-            { url: '/solutions/healthcare',     changefreq: 'weekly',  priority: 0.8, title: 'Healthcare Software Solutions | AbuQitmirLabs', description: 'Build secure healthcare software, patient portals, telemedicine platforms and clinical systems with AbuQitmirLabs for modern healthcare businesses.' },
-            { url: '/solutions/ai-automation',  changefreq: 'weekly',  priority: 0.9, title: 'AI Automation Solutions | AbuQitmirLabs', description: 'Automate business workflows with AI agents, RAG, APIs and intelligent integrations. Build secure AI automation for startups and enterprises.' },
-            { url: '/solutions/e-commerce',     changefreq: 'weekly',  priority: 0.9, title: 'E-commerce Software Solutions | Custom E-commerce Development', description: 'Engineer high-performance e-commerce software solutions, custom online stores, B2B wholesale portals, mobile shopping apps & multi-vendor marketplaces.' },
-            { url: '/solutions/edtech',         changefreq: 'weekly',  priority: 0.9, title: 'EdTech Software Development | LMS & Learning Platforms', description: 'Build scalable EdTech software with custom LMS platforms, virtual classrooms, AI tutoring, student portals, assessments, and learning analytics.' },
-            { url: '/case-studies',            changefreq: 'weekly',  priority: 0.9, title: 'Case Studies | Real-World Success Stories | AbuQitmirLabs', description: 'Explore real-world success stories from AbuQitmirLabs — custom software, AI automation, mobile apps, and web solutions that delivered measurable ROI for 350+ global clients.' },
-            { url: '/case-studies/tajweedpage',changefreq: 'weekly',  priority: 0.9, title: 'AI Quran Learning Platform Case Study | AbuQitmirLabs', description: 'How we built the world\'s first AI-powered Quran learning platform with RAG Tajweed teacher, SEO for 20+ countries, and full Next.js stack — in just 10 days.' },
-            { url: '/us-market',               changefreq: 'monthly', priority: 0.7, title: 'Software Development for US Startups | CCPA & HIPAA Ready | AbuQitmirLabs', description: 'US-focused software development for startups — mobile apps, AI agents, and local SEO. CCPA & HIPAA compliant, built at startup speed. Scale your US presence with offshore expertise.' },
-            { url: '/uk-market',               changefreq: 'monthly', priority: 0.7, title: 'Digital Transformation for UK Businesses | GDPR Compliant | AbuQitmirLabs', description: 'UK-focused digital transformation services — GDPR-compliant software, mobile apps, AI agents, and high-street local SEO. Built for British businesses, with full GMT working-day overlap.' },
-            { url: '/pakistan-market',         changefreq: 'monthly', priority: 0.7, title: 'Digital Transformation for Pakistan | Local SEO & Custom Software | AbuQitmirLabs', description: 'Karachi-based digital transformation for Pakistani businesses — local SEO, custom software, mobile apps, and Roman Urdu AI agents. PKR pricing, in-person meetings, same time zone.' },
-            { url: '/canada-market',           changefreq: 'monthly', priority: 0.7, title: 'Software Development for Canada | PIPEDA Compliant | AbuQitmirLabs', description: 'Canada-focused software development — PIPEDA-compliant apps, local SEO, and bilingual-ready platforms (EN/FR). Built for Canadian startups and enterprises, with EST/PST overlap.' },
-            { url: '/poland-market',           changefreq: 'monthly', priority: 0.7, title: 'Software Development for Poland | GDPR & EU Expansion | AbuQitmirLabs', description: 'Poland-focused software development — GDPR-compliant apps, AI agents, SaaS, and local SEO for Krakow/Warsaw. Built for Polish startups and EU expansion, with CET overlap.' },
-            { url: '/australia-market',        changefreq: 'monthly', priority: 0.7, title: 'Software Development for Australia | APP Compliant | AbuQitmirLabs', description: 'Australia-focused software development — APP-compliant apps, high-speed web, mobile apps, and AI agents. Built for Australian businesses with AEST-aligned delivery. Start your audit today.' },
-            { url: '/blog',                    changefreq: 'daily',   priority: 0.8, title: 'Tech Blog & AI Insights | AbuQitmirLabs', description: 'AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies.' },
-            { url: '/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026', changefreq: 'weekly', priority: 0.9, title: 'The Pakistan Advantage: Why US Startups Are Moving Dev Teams Offshore (2026)', description: 'Pakistan IT exports hit a record $4.6B in FY2025-26 and tax incentives now run through 2029. Here is the real data behind why US startups are evaluating Pakistan for engineering talent.' },
-            { url: '/blog/ai-overviews-traffic-recovery-what-40-companies-did-next', changefreq: 'weekly', priority: 0.9, title: 'AI Overviews Killed Traffic: What 40 Companies Did Next | AbuQitmirLabs', description: 'AI Overviews cut organic clicks by 61%. We analyzed 40 companies that recovered. Here are the 7 tactics that actually worked, with specific metrics.' },
-            { url: '/blog/programmatic-seo-how-we-scaled-tajweedpage', changefreq: 'weekly', priority: 0.9, title: 'Programmatic SEO: How We Scaled TajweedPage.com (2026 Case Study)', description: 'The pSEO playbook that made Zapier famous is declining 40-70%. Here is the semantic hub-and-spoke framework AbuQitmirLabs used to scale TajweedPage.com across 20+ country markets.' },
-            { url: '/blog/what-a-local-seo-audit-actually-checks-2026-complete-guide', changefreq: 'weekly', priority: 0.9, title: 'What a Local SEO Audit Actually Checks in 2026 | AbuQitmirLabs', description: 'Most local SEO audits miss AI search, voice, and geo-grid analysis. This 2026 guide covers all 7 audit dimensions including the ones your competitors skip.' },
-            { url: '/blog/what-are-healthcare-ai-agents-complete-guide-2026', changefreq: 'weekly', priority: 0.9, title: 'What Are Healthcare AI Agents? Complete 2026 Guide | AbuQitmirLabs', description: 'Explore healthcare AI agents in 2026: autonomous architectures, EHR integration, RAG, clinical triage, HIPAA-aligned security, and engineering workflows.' },
-            { url: '/blog/healthcare-software-development-solutions-2026', changefreq: 'weekly', priority: 0.8, title: 'Healthcare Software Development Solutions: The Complete 2026 Guide | AbuQitmirLabs', description: 'A complete 2026 guide to healthcare software development — EHR systems, telemedicine platforms, clinical workflow tools, and compliance requirements.' },
-            { url: '/blog/custom-web-development-company-2026', changefreq: 'weekly', priority: 0.8, title: 'Custom Web Development Company 2026 | Built-In Visibility | AbuQitmirLabs', description: "The best custom web development companies don't add SEO, GEO, and AI visibility after launch. They build it into every decision from day one. Here's what that looks like — and why it matters." },
-            { url: '/blog/custom-web-development-company', changefreq: 'weekly', priority: 0.9, title: 'Custom Web Development Company: The Complete Guide to Web Apps, SEO, Security & B2B Solutions', description: 'Full guide to custom web application development — covering SEO web development, B2B platforms, healthcare web apps, security, and full-stack services.' },
-            { url: '/blog/rag-ai-integration-for-startups', changefreq: 'weekly', priority: 0.9, title: 'RAG AI Integration for Startups | AbuQitmirLabs', description: 'How startups use RAG to ground AI in real data — architecture, cost, RAG vs fine-tuning, and build vs hire, with a real RAG case study.' },
-            { url: '/blog/custom-ai-solutions-for-fintech-2026', changefreq: 'weekly', priority: 0.8, title: 'Custom AI Solutions for Fintech 2026 | Fraud Detection & Underwriting | AbuQitmirLabs', description: 'Custom AI solutions for fintech in 2026 — real-time fraud detection, AI-assisted underwriting, and RAG-based support. See what a fintech software development company actually builds.' },
-            { url: '/news/latest',             changefreq: 'weekly',  priority: 0.8, title: 'Latest News | Company Updates & Press Releases | AbuQitmirLabs', description: 'AbuQitmirLabs newsroom — latest company updates, software launches, AI agent releases, and press announcements. Subscribe for monthly engineering and tech insights.' },
-            { url: '/news/press-releases',     changefreq: 'monthly', priority: 0.8, title: 'Press Releases | Corporate Announcements | AbuQitmirLabs', description: 'Official press releases and corporate announcements from AbuQitmirLabs software engineering studio in Karachi.' },
-            { url: '/news/industry-insights', changefreq: 'weekly',  priority: 0.8, title: 'Industry Insights | Technical Benchmarks & AI Architecture | AbuQitmirLabs', description: 'Industry insights from AbuQitmirLabs — technical breakdowns on AI RAG, GEO, HIPAA compliance, and low-latency full-stack design. Written by senior software architects.' },
-            { url: '/news/all',                changefreq: 'weekly',  priority: 0.8, title: 'All News & Media Archive | AbuQitmirLabs', description: 'All news and media archive from AbuQitmirLabs — company announcements, press releases, product launches, and technical engineering insights. Browse our complete catalog.' },
-            { url: '/website-contract',        changefreq: 'weekly',  priority: 0.8, title: 'Free Website Contract Template | Ownership Protection | AbuQitmirLabs', description: 'Download a free, ownership-protected website contract template. Includes domain ownership, support SLAs, tech stack disclosure, and exit terms. No strings attached.' },
-            { url: '/terms',                   changefreq: 'yearly',  priority: 0.3, title: 'Terms of Service | Client Agreement & IP Policy | AbuQitmirLabs', description: 'AbuQitmirLabs terms of service: agreement, IP, payment terms, and liability. Learn about client responsibilities and termination protocols for our software services.' },
-            { url: '/privacy',                 changefreq: 'yearly',  priority: 0.3, title: 'Privacy Policy | Data Protection & Compliance | AbuQitmirLabs', description: 'AbuQitmirLabs privacy policy: how we collect, use, and protect your data. Learn about our security measures, cookie use, and GDPR/APP compliance.' },
+            { url: '/white-label-local-seo', changefreq: 'weekly', priority: 0.8, title: 'White Label Local SEO for Agencies | Reseller Plans | AbuQitmirLabs', description: 'White label local SEO fulfillment for agencies — citations, GBP optimization, and branded PDF reports. Reseller plans with 35–50% margins. Expand your services without expanding your team.' },
+            { url: '/local-seo-audit', changefreq: 'weekly', priority: 0.8, title: 'Free Local SEO Audit | Forensic Map Pack Analysis | AbuQitmirLabs', description: 'Free local SEO audit covering Google Business Profile, NAP citations, schema markup, and map-pack competitors. Get a prioritized action plan — not a jargon-filled deck.' },
+            { url: '/guest-post-service', changefreq: 'weekly', priority: 0.8, title: 'Guest Post Service | High-Authority White-Hat Placements | AbuQitmirLabs', description: 'Editorial guest post placements on real, high-DR websites with organic search traffic. 100% manual outreach, in-content dofollow links, permanent indexation.' },
+            { url: '/graphics-design', changefreq: 'weekly', priority: 0.8, title: 'Graphic Design Services for Brands & Businesses | AbuQitmirLabs', description: 'Professional graphic design services for brands and businesses: custom logos, brand identity, pitch decks, UI/UX, and marketing collateral with AbuQitmirLabs.' },
+            { url: '/content-writing', changefreq: 'weekly', priority: 0.8, title: 'Content Writing Services | SEO Copywriting & Blogging | AbuQitmirLabs', description: 'AbuQitmirLabs provides professional content writing services — SEO blogs, website copy, landing pages, and long-form articles. Data-driven content that ranks and converts.' },
+            { url: '/solutions/fintech', changefreq: 'weekly', priority: 0.8, title: 'FinTech Solutions for Digital Finance | AbuQitmirLabs', description: 'Build secure FinTech platforms, payment systems and digital finance experiences with AbuQitmirLabs for startups and growing businesses.' },
+            { url: '/solutions/healthcare', changefreq: 'weekly', priority: 0.8, title: 'Healthcare Software Solutions | AbuQitmirLabs', description: 'Build secure healthcare software, patient portals, telemedicine platforms and clinical systems with AbuQitmirLabs for modern healthcare businesses.' },
+            { url: '/solutions/ai-automation', changefreq: 'weekly', priority: 0.9, title: 'AI Automation Solutions | AbuQitmirLabs', description: 'Automate business workflows with AI agents, RAG, APIs and intelligent integrations. Build secure AI automation for startups and enterprises.' },
+            { url: '/solutions/e-commerce', changefreq: 'weekly', priority: 0.9, title: 'E-commerce Software Solutions | Custom E-commerce Development', description: 'Engineer high-performance e-commerce software solutions, custom online stores, B2B wholesale portals, mobile shopping apps & multi-vendor marketplaces.' },
+            { url: '/solutions/edtech', changefreq: 'weekly', priority: 0.9, title: 'EdTech Software Development | LMS & Learning Platforms', description: 'Build scalable EdTech software with custom LMS platforms, virtual classrooms, AI tutoring, student portals, assessments, and learning analytics.' },
+            { url: '/case-studies', changefreq: 'weekly', priority: 0.9, title: 'Case Studies | Real-World Success Stories | AbuQitmirLabs', description: 'Explore real-world success stories from AbuQitmirLabs — custom software, AI automation, mobile apps, and web solutions that delivered measurable ROI for 350+ global clients.' },
+            { url: '/case-studies/tajweedpage', changefreq: 'weekly', priority: 0.9, title: 'AI Quran Learning Platform Case Study | AbuQitmirLabs', description: 'How we built the world\'s first AI-powered Quran learning platform with RAG Tajweed teacher, SEO for 20+ countries, and full Next.js stack — in just 10 days.' },
+            { url: '/us-market', changefreq: 'monthly', priority: 0.7, title: 'Software Development for US Startups | CCPA & HIPAA Ready | AbuQitmirLabs', description: 'US-focused software development for startups — mobile apps, AI agents, and local SEO. CCPA & HIPAA compliant, built at startup speed. Scale your US presence with offshore expertise.' },
+            { url: '/uk-market', changefreq: 'monthly', priority: 0.7, title: 'Digital Transformation for UK Businesses | GDPR Compliant | AbuQitmirLabs', description: 'UK-focused digital transformation services — GDPR-compliant software, mobile apps, AI agents, and high-street local SEO. Built for British businesses, with full GMT working-day overlap.' },
+            { url: '/pakistan-market', changefreq: 'monthly', priority: 0.7, title: 'Digital Transformation for Pakistan | Local SEO & Custom Software | AbuQitmirLabs', description: 'Karachi-based digital transformation for Pakistani businesses — local SEO, custom software, mobile apps, and Roman Urdu AI agents. PKR pricing, in-person meetings, same time zone.' },
+            { url: '/canada-market', changefreq: 'monthly', priority: 0.7, title: 'Software Development for Canada | PIPEDA Compliant | AbuQitmirLabs', description: 'Canada-focused software development — PIPEDA-compliant apps, local SEO, and bilingual-ready platforms (EN/FR). Built for Canadian startups and enterprises, with EST/PST overlap.' },
+            { url: '/poland-market', changefreq: 'monthly', priority: 0.7, title: 'Software Development for Poland | GDPR & EU Expansion | AbuQitmirLabs', description: 'Poland-focused software development — GDPR-compliant apps, AI agents, SaaS, and local SEO for Krakow/Warsaw. Built for Polish startups and EU expansion, with CET overlap.' },
+            { url: '/australia-market', changefreq: 'monthly', priority: 0.7, title: 'Software Development for Australia | APP Compliant | AbuQitmirLabs', description: 'Australia-focused software development — APP-compliant apps, high-speed web, mobile apps, and AI agents. Built for Australian businesses with AEST-aligned delivery. Start your audit today.' },
+            { url: '/blog', changefreq: 'daily', priority: 0.8, title: 'Tech Blog & AI Insights | AbuQitmirLabs', description: 'AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies.' },
+            { url: '/news/latest', changefreq: 'weekly', priority: 0.8, title: 'Latest News | Company Updates & Press Releases | AbuQitmirLabs', description: 'AbuQitmirLabs newsroom — latest company updates, software launches, AI agent releases, and press announcements. Subscribe for monthly engineering and tech insights.' },
+            { url: '/news/press-releases', changefreq: 'monthly', priority: 0.8, title: 'Press Releases | Corporate Announcements | AbuQitmirLabs', description: 'Official press releases and corporate announcements from AbuQitmirLabs software engineering studio in Karachi.' },
+            { url: '/news/industry-insights', changefreq: 'weekly', priority: 0.8, title: 'Industry Insights | Technical Benchmarks & AI Architecture | AbuQitmirLabs', description: 'Industry insights from AbuQitmirLabs — technical breakdowns on AI RAG, GEO, HIPAA compliance, and low-latency full-stack design. Written by senior software architects.' },
+            { url: '/news/all', changefreq: 'weekly', priority: 0.8, title: 'All News & Media Archive | AbuQitmirLabs', description: 'All news and media archive from AbuQitmirLabs — company announcements, press releases, product launches, and technical engineering insights. Browse our complete catalog.' },
+            { url: '/website-contract', changefreq: 'weekly', priority: 0.8, title: 'Free Website Contract Template | Ownership Protection | AbuQitmirLabs', description: 'Download a free, ownership-protected website contract template. Includes domain ownership, support SLAs, tech stack disclosure, and exit terms. No strings attached.' },
+            { url: '/terms', changefreq: 'yearly', priority: 0.3, title: 'Terms of Service | Client Agreement & IP Policy | AbuQitmirLabs', description: 'AbuQitmirLabs terms of service: agreement, IP, payment terms, and liability. Learn about client responsibilities and termination protocols for our software services.' },
+            { url: '/privacy', changefreq: 'yearly', priority: 0.3, title: 'Privacy Policy | Data Protection & Compliance | AbuQitmirLabs', description: 'AbuQitmirLabs privacy policy: how we collect, use, and protect your data. Learn about our security measures, cookie use, and GDPR/APP compliance.' },
           ];
 
           const fs = await import('fs');
@@ -167,7 +118,6 @@ export default defineConfig(({mode}) => {
           const outDir = path.resolve(process.cwd(), 'dist');
           const indexHtmlPath = path.resolve(outDir, 'index.html');
 
-          // Helper to escape special XML characters
           function escapeXml(unsafe: string) {
             return unsafe.replace(/[<>&'"]/g, (c) => {
               switch (c) {
@@ -181,7 +131,6 @@ export default defineConfig(({mode}) => {
             });
           }
 
-          // Fetch dynamic posts from Firestore REST API at build time
           let fetchedPosts: { slug: string; title: string; excerpt: string; createdAt: string; category: string; author: string }[] = [];
           try {
             let projectId = "angular-oxide-tcf5x";
@@ -197,9 +146,7 @@ export default defineConfig(({mode}) => {
                 if (configJSON.firestoreDatabaseId) databaseId = configJSON.firestoreDatabaseId;
                 if (configJSON.apiKey) apiKey = configJSON.apiKey;
               }
-            } catch (cfgErr) {
-              console.log('[SEO Generator] note: Could not parse optional configuration, using fallback:', cfgErr);
-            }
+            } catch (cfgErr) {}
 
             const firestoreUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/${databaseId}/documents/posts${apiKey ? `?key=${apiKey}` : ''}`;
             const response = await fetch(firestoreUrl);
@@ -218,16 +165,10 @@ export default defineConfig(({mode}) => {
                     author: fields.author?.stringValue || 'Shiraz Almadani',
                   };
                 }).filter((p: any) => p.published && p.slug);
-                console.log(`✨ [SEO Generator] Successfully loaded ${fetchedPosts.length} dynamic posts from Firestore!`);
               }
-            } else {
-              console.log(`[SEO Generator] note: Firestore fetch responded with status ${response.status}. Using empty fallback.`);
             }
-          } catch (err: any) {
-            console.log('[SEO Generator] note: Querying optional Firestore database omitted during compilation:', err.message || err);
-          }
+          } catch (err: any) {}
 
-          // Append dynamic blog routes to Sitemap & SSG lists
           const dynamicRoutes = fetchedPosts.map(post => ({
             url: `/blog/${post.slug}`,
             changefreq: 'weekly' as const,
@@ -242,18 +183,10 @@ export default defineConfig(({mode}) => {
           
           const baseHtml = fs.readFileSync(indexHtmlPath, 'utf8');
 
-          // File modification and content cache for sitemap.xml and rss.xml
           const cacheDir = path.resolve(process.cwd(), 'node_modules/.cache/seo-generator');
           const cacheFilePath = path.resolve(cacheDir, 'cache.json');
           
-          const trackedBlogFiles = [
-            'src/data/staticBlogPosts.ts',
-            'src/data/seoRoutesMetadata.ts',
-            'src/utils/ragAiBlogStaticData.ts',
-            'src/utils/customWebDevBlogStaticHtml.ts'
-          ];
-
-          // Compute signatures of tracked files (mtime & size)
+          const trackedBlogFiles = ['src/data/staticBlogPosts.ts', 'src/data/seoRoutesMetadata.ts', 'src/utils/ragAiBlogStaticData.ts', 'src/utils/customWebDevBlogStaticHtml.ts'];
           const fileSignatures: Record<string, { mtimeMs: number; size: number }> = {};
           for (const relFile of trackedBlogFiles) {
             const absFile = path.resolve(process.cwd(), relFile);
@@ -263,160 +196,68 @@ export default defineConfig(({mode}) => {
             }
           }
 
-          // Compute composite data hash of tracked blog files, dynamic Firestore posts, and route metadata
-          const dataHash = crypto.createHash('sha256')
-            .update(JSON.stringify({ fileSignatures, fetchedPosts, baseRoutesCount: baseRoutes.length }))
-            .digest('hex');
+          const dataHash = crypto.createHash('sha256').update(JSON.stringify({ fileSignatures, fetchedPosts, baseRoutesCount: baseRoutes.length })).digest('hex');
 
-          let cachedData: {
-            dataHash?: string;
-            sitemapContent?: string;
-            rssContent?: string;
-            timestamp?: string;
-          } | null = null;
-
+          let cachedData: { dataHash?: string; sitemapContent?: string; rssContent?: string; timestamp?: string; } | null = null;
           try {
-            if (fs.existsSync(cacheFilePath)) {
-              cachedData = JSON.parse(fs.readFileSync(cacheFilePath, 'utf-8'));
-            }
-          } catch {
-            cachedData = null;
-          }
+            if (fs.existsSync(cacheFilePath)) cachedData = JSON.parse(fs.readFileSync(cacheFilePath, 'utf-8'));
+          } catch { cachedData = null; }
 
           const sitemapPath = path.resolve(outDir, 'sitemap.xml');
           const rssPath = path.resolve(outDir, 'rss.xml');
 
-          const isCacheValid = 
-            Boolean(cachedData &&
-            cachedData.dataHash === dataHash &&
-            cachedData.sitemapContent &&
-            cachedData.rssContent);
+          const isCacheValid = Boolean(cachedData && cachedData.dataHash === dataHash && cachedData.sitemapContent && cachedData.rssContent);
 
           if (isCacheValid && fs.existsSync(sitemapPath) && fs.existsSync(rssPath)) {
-            console.log('⚡ [SEO Generator] Blog data has not changed (cache hit). Skipping sitemap.xml and rss.xml regeneration.');
+            console.log('⚡ [SEO Generator] Blog data has not changed. Skipping regeneration.');
           } else if (isCacheValid && cachedData?.sitemapContent && cachedData?.rssContent) {
-            // Target files missing in dist output but blog data unchanged: restore from cached content
             fs.writeFileSync(sitemapPath, cachedData.sitemapContent, 'utf-8');
             fs.writeFileSync(rssPath, cachedData.rssContent, 'utf-8');
-            console.log('⚡ [SEO Generator] Blog data unchanged (cache hit). Restored sitemap.xml and rss.xml from file cache.');
+            console.log('⚡ [SEO Generator] Blog data unchanged. Restored from cache.');
           } else {
-            // Blog data changed or cache missing: regenerate sitemap.xml & rss.xml
-            // 1. Generate Sitemap (sitemap.xml)
             const publicSitemap = path.resolve(process.cwd(), 'public/sitemap.xml');
             let sitemapContent = '';
             if (fs.existsSync(publicSitemap)) {
               sitemapContent = fs.readFileSync(publicSitemap, 'utf-8');
             } else {
-              sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${routes.map(route => `  <url>
-    <loc>${hostname}${route.url === '/' ? '' : route.url}</loc>
-    <changefreq>${route.changefreq}</changefreq>
-    <priority>${route.priority.toFixed(1)}</priority>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-  </url>`).join('\n')}
-</urlset>`;
+              sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map(route => `  <url>\n    <loc>${hostname}${route.url === '/' ? '' : route.url}</loc>\n    <changefreq>${route.changefreq}</changefreq>\n    <priority>${route.priority.toFixed(1)}</priority>\n    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>\n  </url>`).join('\n')}\n</urlset>`;
             }
             fs.writeFileSync(sitemapPath, sitemapContent, 'utf-8');
             console.log(`✅ [Sitemap] Synchronized sitemap.xml to dist!`);
 
-            // 2. Generate RSS Feed (rss.xml)
-            const rssItemsContent = fetchedPosts.map(post => `    <item>
-      <title>${escapeXml(post.title)}</title>
-      <link>${hostname}/blog/${post.slug}</link>
-      <guid isPermaLink="true">${hostname}/blog/${post.slug}</guid>
-      <pubDate>${new Date(post.createdAt).toUTCString()}</pubDate>
-      <description>${escapeXml(post.excerpt)}</description>
-      <author>hello@abuqitmirlabs.tech (${escapeXml(post.author)})</author>
-      <category>${escapeXml(post.category)}</category>
-    </item>`).join('\n');
+            const rssItemsContent = fetchedPosts.map(post => `    <item>\n      <title>${escapeXml(post.title)}</title>\n      <link>${hostname}/blog/${post.slug}</link>\n      <guid isPermaLink="true">${hostname}/blog/${post.slug}</guid>\n      <pubDate>${new Date(post.createdAt).toUTCString()}</pubDate>\n      <description>${escapeXml(post.excerpt)}</description>\n      <author>hello@abuqitmirlabs.tech (${escapeXml(post.author)})</author>\n      <category>${escapeXml(post.category)}</category>\n    </item>`).join('\n');
 
-            const rssContent = `<?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>AbuQitmirLabs .TECH - Custom Software &amp; AI Engineering Journal</title>
-    <link>https://www.abuqitmirlabs.tech</link>
-    <description>Discover leading insights in AI Agent automations, ERP configurations, customizable web systems, and semantic local SEO solutions from Shiraz Almadani.</description>
-    <language>en-us</language>
-    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    <atom:link href="https://www.abuqitmirlabs.tech/rss.xml" rel="self" type="application/rss+xml" />
-${rssItemsContent}
-  </channel>
-</rss>`;
+            const rssContent = `<?xml version="1.0" encoding="UTF-8" ?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n  <channel>\n    <title>AbuQitmirLabs .TECH - Custom Software &amp; AI Engineering Journal</title>\n    <link>https://www.abuqitmirlabs.tech</link>\n    <description>Discover leading insights in AI Agent automations, ERP configurations, customizable web systems, and semantic local SEO solutions from Shiraz Almadani.</description>\n    <language>en-us</language>\n    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>\n    <atom:link href="https://www.abuqitmirlabs.tech/rss.xml" rel="self" type="application/rss+xml" />\n${rssItemsContent}\n  </channel>\n</rss>`;
             fs.writeFileSync(rssPath, rssContent, 'utf-8');
             console.log(`✅ [RSS Feed] Regenerated RSS Feed with ${fetchedPosts.length} dynamic articles!`);
 
-            // Persist new cache state
             try {
-              if (!fs.existsSync(cacheDir)) {
-                fs.mkdirSync(cacheDir, { recursive: true });
-              }
-              fs.writeFileSync(cacheFilePath, JSON.stringify({
-                dataHash,
-                sitemapContent,
-                rssContent,
-                timestamp: new Date().toISOString(),
-                fileSignatures
-              }, null, 2), 'utf-8');
-            } catch (err: any) {
-              console.log('[SEO Generator] Note: Could not write cache file:', err?.message || err);
-            }
+              if (!fs.existsSync(cacheDir)) fs.mkdirSync(cacheDir, { recursive: true });
+              fs.writeFileSync(cacheFilePath, JSON.stringify({ dataHash, sitemapContent, rssContent, timestamp: new Date().toISOString(), fileSignatures }, null, 2), 'utf-8');
+            } catch (err: any) {}
           }
 
-          // 3. Generate Robots.txt
-          const robotsContent = `User-agent: *
-Allow: /
-Disallow: /admin
-Disallow: /google87984536fe5662da
-
-Sitemap: ${hostname}/sitemap.xml`;
+          const robotsContent = `User-agent: *\nAllow: /\nDisallow: /admin\nDisallow: /google87984536fe5662da\n\nSitemap: ${hostname}/sitemap.xml`;
           fs.writeFileSync(path.resolve(outDir, 'robots.txt'), robotsContent);
 
-          // 4. Generate Static HTML for each route (Soft SSG/Prerendering)
           for (const route of routes) {
             const isRoot = route.url === '/';
             const routeDir = isRoot ? outDir : path.join(outDir, route.url);
+            if (!isRoot && !fs.existsSync(routeDir)) fs.mkdirSync(routeDir, { recursive: true });
             
-            if (!isRoot && !fs.existsSync(routeDir)) {
-              fs.mkdirSync(routeDir, { recursive: true });
-            }
-            
-            // Inject route specific meta tags into index.html
             let routeHtml = baseHtml;
             const safeTitle = route.title.replace(/&/g, '&amp;');
             const safeDesc = route.description.replace(/"/g, '&quot;').replace(/&/g, '&amp;');
             
-            // Replace Title
-            // Deduplicate and replace title
-            routeHtml = routeHtml.replace(/<title>[\s\S]*?<\/title>/gi, '');
-            routeHtml = routeHtml.replace('</head>', `  <title>${safeTitle}</title>\n</head>`);
+            routeHtml = routeHtml.replace(/<title>[\s\S]*?<\/title>/gi, '').replace('</head>', `  <title>${safeTitle}</title>\n</head>`);
+            routeHtml = routeHtml.replace(/<meta\s+property="og:title"\s+content="[\s\S]*?"\s*\/?>/gi, '').replace(/<meta\s+name="twitter:title"\s+content="[\s\S]*?"\s*\/?>/gi, '').replace('</head>', `  <meta property="og:title" content="${safeTitle}" />\n  <meta name="twitter:title" content="${safeTitle}" />\n</head>`);
+            routeHtml = routeHtml.replace(/<meta\s+name="description"\s+content="[\s\S]*?"\s*\/?>/gi, '').replace(/<meta\s+property="og:description"\s+content="[\s\S]*?"\s*\/?>/gi, '').replace(/<meta\s+name="twitter:description"\s+content="[\s\S]*?"\s*\/?>/gi, '').replace('</head>', `  <meta name="description" content="${safeDesc}" />\n  <meta property="og:description" content="${safeDesc}" />\n  <meta name="twitter:description" content="${safeDesc}" />\n</head>`);
+            routeHtml = routeHtml.replace(/<meta\s+property="og:url"\s+content="[\s\S]*?"\s*\/?>/gi, '').replace(/<meta\s+name="twitter:url"\s+content="[\s\S]*?"\s*\/?>/gi, '').replace('</head>', `  <meta property="og:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n  <meta name="twitter:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
+            routeHtml = routeHtml.replace(/<link\s+rel="canonical"[^>]*\/?>/gi, '').replace('</head>', `  <link rel="canonical" data-rh="true" href="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
             
-            // Deduplicate and replace OG/Twitter titles
-            routeHtml = routeHtml.replace(/<meta\s+property="og:title"\s+content="[\s\S]*?"\s*\/?>/gi, '');
-            routeHtml = routeHtml.replace(/<meta\s+name="twitter:title"\s+content="[\s\S]*?"\s*\/?>/gi, '');
-            routeHtml = routeHtml.replace('</head>', `  <meta property="og:title" content="${safeTitle}" />\n  <meta name="twitter:title" content="${safeTitle}" />\n</head>`);
-
-            // Deduplicate and replace Descriptions
-            routeHtml = routeHtml.replace(/<meta\s+name="description"\s+content="[\s\S]*?"\s*\/?>/gi, '');
-            routeHtml = routeHtml.replace(/<meta\s+property="og:description"\s+content="[\s\S]*?"\s*\/?>/gi, '');
-            routeHtml = routeHtml.replace(/<meta\s+name="twitter:description"\s+content="[\s\S]*?"\s*\/?>/gi, '');
-            routeHtml = routeHtml.replace('</head>', `  <meta name="description" content="${safeDesc}" />\n  <meta property="og:description" content="${safeDesc}" />\n  <meta name="twitter:description" content="${safeDesc}" />\n</head>`);
-
-            // Update URL
-            routeHtml = routeHtml.replace(/<meta\s+property="og:url"\s+content="[\s\S]*?"\s*\/?>/gi, '');
-            routeHtml = routeHtml.replace(/<meta\s+name="twitter:url"\s+content="[\s\S]*?"\s*\/?>/gi, '');
-            routeHtml = routeHtml.replace('</head>', `  <meta property="og:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n  <meta name="twitter:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
-            
-            // Deduplicate and replace canonical link cleanly
-            routeHtml = routeHtml.replace(/<link\s+rel="canonical"[^>]*\/?>/gi, '');
-            routeHtml = routeHtml.replace('</head>', `  <link rel="canonical" data-rh="true" href="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
-            
-            // Helper to cleanly replace #root inner contents without leaving residual DOM elements
             const replaceRootElement = (htmlSource: string, newInnerHtml: string, renderedRouteAttr?: string) => {
               const startMatch = htmlSource.match(/<div\s+id=["']root["'][^>]*>/i);
-              if (!startMatch || startMatch.index === undefined) {
-                return htmlSource;
-              }
+              if (!startMatch || startMatch.index === undefined) return htmlSource;
               const startIdx = startMatch.index;
               const scriptOrBodyMatch = htmlSource.slice(startIdx).match(/(<script\b|<\/body>)/i);
               if (scriptOrBodyMatch && scriptOrBodyMatch.index !== undefined) {
@@ -433,326 +274,109 @@ Sitemap: ${hostname}/sitemap.xml`;
               return htmlSource.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root"${attrStr}>${newInnerHtml}</div>`);
             };
 
-            // Special authoritative injection for / (Homepage)
             if (route.url === '/') {
-              // 1. Inject authoritative JSON-LD schema
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
-              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(homeSchema, null, 2)}\n  </script>\n</head>`);
-
-              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(homeSchema, null, 2)}\n  </script>\n</head>`);
               routeHtml = replaceRootElement(routeHtml, homeInitialHtml, '/');
-
-              // 3. Write directly to indexHtmlPath
               fs.writeFileSync(indexHtmlPath, routeHtml);
               continue;
             }
 
-            // Special authoritative injection for /ai-agent-development
             if (route.url === '/ai-agent-development') {
-              // 1. Inject authoritative 7-entity JSON-LD schema
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
-              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(aiAgentSchema, null, 2)}\n  </script>\n</head>`);
-
-              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(aiAgentSchema, null, 2)}\n  </script>\n</head>`);
               routeHtml = replaceRootElement(routeHtml, aiAgentInitialHtml, '/ai-agent-development');
-
-              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
-              fs.writeFileSync(targetPath, routeHtml);
+              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
               continue;
             }
 
-            // Special authoritative injection for /graphics-design
             if (route.url === '/graphics-design') {
-              // 1. Inject authoritative 6-entity JSON-LD schema
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
-              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(graphicsDesignSchema, null, 2)}\n  </script>\n</head>`);
-
-              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(graphicsDesignSchema, null, 2)}\n  </script>\n</head>`);
               routeHtml = replaceRootElement(routeHtml, graphicsDesignInitialHtml, '/graphics-design');
-
-              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
-              fs.writeFileSync(targetPath, routeHtml);
+              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
               continue;
             }
 
-            // Special authoritative injection for /solutions/fintech
             if (route.url === '/solutions/fintech') {
-              // 1. Inject authoritative 7-entity JSON-LD schema
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
-              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(fintechSchema, null, 2)}\n  </script>\n</head>`);
-
-              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(fintechSchema, null, 2)}\n  </script>\n</head>`);
               routeHtml = replaceRootElement(routeHtml, fintechInitialHtml, '/solutions/fintech');
-
-              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
-              fs.writeFileSync(targetPath, routeHtml);
+              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
               continue;
             }
 
-            // Special authoritative injection for /solutions/healthcare
             if (route.url === '/solutions/healthcare') {
-              // 1. Inject authoritative JSON-LD schema
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
-              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(healthcareSchema, null, 2)}\n  </script>\n</head>`);
-
-              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(healthcareSchema, null, 2)}\n  </script>\n</head>`);
               routeHtml = replaceRootElement(routeHtml, healthcareInitialHtml, '/solutions/healthcare');
-
-              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
-              fs.writeFileSync(targetPath, routeHtml);
+              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
               continue;
             }
 
-            // Special authoritative injection for /solutions/ai-automation
             if (route.url === '/solutions/ai-automation') {
-              // 1. Inject authoritative JSON-LD schema
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
-              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(aiAutomationSchema, null, 2)}\n  </script>\n</head>`);
-
-              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(aiAutomationSchema, null, 2)}\n  </script>\n</head>`);
               routeHtml = replaceRootElement(routeHtml, aiAutomationInitialHtml, '/solutions/ai-automation');
-
-              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
-              fs.writeFileSync(targetPath, routeHtml);
+              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
               continue;
             }
 
-            // Special authoritative injection for /solutions/e-commerce
             if (route.url === '/solutions/e-commerce') {
-              // 1. Inject authoritative JSON-LD schema
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
-              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(eCommerceSchema, null, 2)}\n  </script>\n</head>`);
-
-              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(eCommerceSchema, null, 2)}\n  </script>\n</head>`);
               routeHtml = replaceRootElement(routeHtml, eCommerceInitialHtml, '/solutions/e-commerce');
-
-              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
-              fs.writeFileSync(targetPath, routeHtml);
+              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
               continue;
             }
 
-            // Special authoritative injection for /solutions/edtech
             if (route.url === '/solutions/edtech') {
-              // 1. Inject authoritative JSON-LD schema
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
-              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(edTechSchema, null, 2)}\n  </script>\n</head>`);
-
-              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(edTechSchema, null, 2)}\n  </script>\n</head>`);
               routeHtml = replaceRootElement(routeHtml, edTechInitialHtml, '/solutions/edtech');
-
-              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
-              fs.writeFileSync(targetPath, routeHtml);
+              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
               continue;
             }
 
-            // Special authoritative injection for /custom-software
             if (route.url === '/custom-software') {
-              // 1. Inject authoritative JSON-LD schema
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
-              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(customSoftwareSchema, null, 2)}\n  </script>\n</head>`);
-
-              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(customSoftwareSchema, null, 2)}\n  </script>\n</head>`);
               routeHtml = replaceRootElement(routeHtml, customSoftwareInitialHtml, '/custom-software');
-
-              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
-              fs.writeFileSync(targetPath, routeHtml);
+              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
               continue;
             }
 
-            // Special authoritative injection for /mobile-app-development
             if (route.url === '/mobile-app-development') {
-              // 1. Inject authoritative JSON-LD schema
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
-              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(mobileAppSchema, null, 2)}\n  </script>\n</head>`);
-
-              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(mobileAppSchema, null, 2)}\n  </script>\n</head>`);
               routeHtml = replaceRootElement(routeHtml, mobileAppInitialHtml, '/mobile-app-development');
-
-              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
-              fs.writeFileSync(targetPath, routeHtml);
+              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
               continue;
             }
 
-            // Special authoritative injection for /blog/custom-web-development-company
             if (route.url === '/blog/custom-web-development-company') {
-              // 1. Inject authoritative JSON-LD schema
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
-              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(customWebDevBlogSchema, null, 2)}\n  </script>\n</head>`);
-
-              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(customWebDevBlogSchema, null, 2)}\n  </script>\n</head>`);
               routeHtml = replaceRootElement(routeHtml, customWebDevBlogInitialHtml, '/blog/custom-web-development-company');
-
-              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
-              fs.writeFileSync(targetPath, routeHtml);
+              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
               continue;
             }
 
-            // Special authoritative injection for /local-seo-for-small-business
             if (route.url === '/local-seo-for-small-business') {
-              // 1. Inject authoritative JSON-LD schema
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
-              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(localSEOSmallBusinessSchema, null, 2)}\n  </script>\n</head>`);
-
-              // 2. Inject full authentic crawlable HTML inside #root
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(localSEOSmallBusinessSchema, null, 2)}\n  </script>\n</head>`);
               routeHtml = replaceRootElement(routeHtml, localSEOSmallBusinessInitialHtml, '/local-seo-for-small-business');
-
-              const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
-              fs.writeFileSync(targetPath, routeHtml);
+              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
               continue;
             }
 
-            // FIX: Inject meaningful body content for any remaining routes to avoid empty root
             let articleContent = '';
-            
             if (route.url === '/seo-mastery') {
-              articleContent = `
-                <h2>SEO Mastery: Data-Driven Search Engine Optimization</h2>
-                <p>
-                  Ranking isn't about stuffing keywords — it's about technical health plus 
-                  content that actually answers search intent. We run full technical audits, 
-                  fix crawl and indexing issues, and build content structures that Google can 
-                  understand and trust. Hamari SEO services ko aap <a href="/web-development">Web Development</a> aur <a href="/content-writing">Content Writing</a> ke sath combine kar ke maximum search visibility hasil kar sakte hain.
-                </p>
-                <img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" />
-                <p>${route.description}</p>
-                <section>
-                  <h3>Our Technical Expertise</h3>
-                  <ul>
-                    <li>Technical SEO Audits & Crawl Error Fixes</li>
-                    <li>On-Page & Semantic Entity Optimization</li>
-                    <li>XML Sitemap & Schema Markup Implementation</li>
-                    <li>Local SEO & Google Business Profile Optimization</li>
-                    <li>Content Strategy Aligned with Search Intent</li>
-                  </ul>
-                </section>
-              `;
+              articleContent = `<h2>SEO Mastery: Data-Driven Search Engine Optimization</h2><p>Ranking isn't about stuffing keywords — it's about technical health plus content that actually answers search intent. We run full technical audits, fix crawl and indexing issues, and build content structures that Google can understand and trust. Hamari SEO services ko aap <a href="/web-development">Web Development</a> aur <a href="/content-writing">Content Writing</a> ke sath combine kar ke maximum search visibility hasil kar sakte hain.</p><img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" /><p>${route.description}</p><section><h3>Our Technical Expertise</h3><ul><li>Technical SEO Audits & Crawl Error Fixes</li><li>On-Page & Semantic Entity Optimization</li><li>XML Sitemap & Schema Markup Implementation</li><li>Local SEO & Google Business Profile Optimization</li><li>Content Strategy Aligned with Search Intent</li></ul></section>`;
             } else if (route.url === '/case-studies') {
-              articleContent = `
-                <h2>Real Projects. Real Results.</h2>
-                <p>
-                  We don't publish polished portfolio pieces with the hard parts edited out. 
-                  Each case study here covers a real project we built — the problem, our actual 
-                  technical approach, and what shipped. Our work spans AI products, custom 
-                  platforms, and growth-focused engineering.
-                </p>
-                <img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" />
-                <p>${route.description}</p>
-                <section>
-                  <h3>Our Technical Expertise</h3>
-                  <ul>
-                    <li>Real Client Projects, Not Mockups</li>
-                    <li>AI & RAG-Powered Product Builds</li>
-                    <li>Custom Platform Engineering Case Studies</li>
-                    <li>Technical Breakdown of Our Approach</li>
-                    <li>Measurable Outcomes Where Available</li>
-                  </ul>
-                </section>
-              `;
+              articleContent = `<h2>Real Projects. Real Results.</h2><p>We don't publish polished portfolio pieces with the hard parts edited out. Each case study here covers a real project we built — the problem, our actual technical approach, and what shipped. Our work spans AI products, custom platforms, and growth-focused engineering.</p><img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" /><p>${route.description}</p><section><h3>Our Technical Expertise</h3><ul><li>Real Client Projects, Not Mockups</li><li>AI & RAG-Powered Product Builds</li><li>Custom Platform Engineering Case Studies</li><li>Technical Breakdown of Our Approach</li><li>Measurable Outcomes Where Available</li></ul></section>`;
             } else if (route.url === '/about' || route.url === '/about/our-company' || route.url === '/about/our-team') {
-              articleContent = `
-                <h2>AI builds fast. Judgment builds trust.</h2>
-                <p>
-                  Anyone can wire up an AI tool today. That's not a differentiator anymore — it's the baseline. What still can't be automated is the part that actually matters: knowing when the AI is wrong, when a shortcut will break in production, and when 'technically correct' isn't the same as 'actually right for this client.'
-                </p>
-                <p>
-                  That's the work we do. AI drafts, searches, and accelerates — but every architecture decision, every line of code, and every claim we make about our own work is reviewed by a person before it ships. Not because we distrust AI, but because a client's product is not the place to find out where it fails.
-                </p>
-                <p>
-                  We'd rather be known for what we caught and fixed than for how fast we generated something. That's the standard behind every project with our name on it — led by Abu Qitmir Mohammad Shiraz Al-Madani, and held to the same bar whether it's a line of code or a line of marketing copy.
-                </p>
-                <img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" />
-                <p>${route.description}</p>
-                <section>
-                  <h3>AbuQitmirLabs Engineering Leadership</h3>
-                  <p>Founded by Abu Qitmir Mohammad Shiraz Al-Madani in Karachi, Pakistan, AbuQitmirLabs delivers custom software, AI agents, mobile apps, and technical SEO with 100% human-verified architecture.</p>
-                </section>
-              `;
+              articleContent = `<h2>AI builds fast. Judgment builds trust.</h2><p>Anyone can wire up an AI tool today. That's not a differentiator anymore — it's the baseline. What still can't be automated is the part that actually matters: knowing when the AI is wrong, when a shortcut will break in production, and when 'technically correct' isn't the same as 'actually right for this client.'</p><p>That's the work we do. AI drafts, searches, and accelerates — but every architecture decision, every line of code, and every claim we make about our own work is reviewed by a person before it ships. Not because we distrust AI, but because a client's product is not the place to find out where it fails.</p><p>We'd rather be known for what we caught and fixed than for how fast we generated something. That's the standard behind every project with our name on it — led by Abu Qitmir Mohammad Shiraz Al-Madani, and held to the same bar whether it's a line of code or a line of marketing copy.</p><img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" /><p>${route.description}</p><section><h3>AbuQitmirLabs Engineering Leadership</h3><p>Founded by Abu Qitmir Mohammad Shiraz Al-Madani in Karachi, Pakistan, AbuQitmirLabs delivers custom software, AI agents, mobile apps, and technical SEO with 100% human-verified architecture.</p></section>`;
             } else {
-              const routeH2 = route.url === '/' 
-                ? 'Custom Software · Web Development · AI Agents · Mobile Apps · SEO' 
-                : 'Elite Digital Architecture &amp; Technical Solutions';
-                
-              articleContent = `
-                <h2>${routeH2}</h2>
-                <p>At AbuQitmirLabs .TECH, we specialize in <strong>custom software engineering</strong> and high-performance digital solutions.</p>
-                <img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" />
-                <p>${route.description}</p>
-                <section>
-                  <h3>Our Technical Expertise</h3>
-                  <p>We deliver cutting-edge software solutions including:</p>
-                  <ul>
-                    <li>Custom Mobile & Web App Engineering</li>
-                    <li>Autonomous AI Agents & RAG Integration</li>
-                    <li>Scalable Cloud-Native Microservices</li>
-                    <li>High-ROI Semantic SEO Strategies</li>
-                    <li>Cinematic UX Frameworks</li>
-                  </ul>
-                </section>
-              `;
+              const routeH2 = route.url === '/' ? 'Custom Software · Web Development · AI Agents · Mobile Apps · SEO' : 'Elite Digital Architecture &amp; Technical Solutions';
+              articleContent = `<h2>${routeH2}</h2><p>At AbuQitmirLabs .TECH, we specialize in <strong>custom software engineering</strong> and high-performance digital solutions.</p><img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" /><p>${route.description}</p><section><h3>Our Technical Expertise</h3><p>We deliver cutting-edge software solutions including:</p><ul><li>Custom Mobile & Web App Engineering</li><li>Autonomous AI Agents & RAG Integration</li><li>Scalable Cloud-Native Microservices</li><li>High-ROI Semantic SEO Strategies</li><li>Cinematic UX Frameworks</li></ul></section>`;
             }
 
-            const fallbackPrerenderHtml = `
-              <div class="min-h-screen bg-[#050505] text-white">
-                ${renderStaticHeader(route.url)}
-                <main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16">
-                  <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${route.title}</h1>
-                  <article class="prose prose-invert max-w-none text-neutral-300">
-                    ${articleContent}
-                  </article>
-                </main>
-              </div>
-            `;
-
-            // Inject full authentic crawlable HTML inside #root
+            const fallbackPrerenderHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader(route.url)}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${route.title}</h1><article class="prose prose-invert max-w-none text-neutral-300">${articleContent}</article></main></div>`;
             routeHtml = replaceRootElement(routeHtml, fallbackPrerenderHtml, route.url);
             
-            const targetPath = isRoot ? indexHtmlPath : path.join(routeDir, 'index.html');
-            fs.writeFileSync(targetPath, routeHtml);
+            fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
           }
           
-          // Post-process all CSS & JS files in dist/assets for 100% minification with esbuild
-          const assetsDir = path.resolve(outDir, 'assets');
-          if (fs.existsSync(assetsDir)) {
-            const files = fs.readdirSync(assetsDir);
-            for (const file of files) {
-              if (file.endsWith('.css')) {
-                const cssPath = path.join(assetsDir, file);
-                const rawCss = fs.readFileSync(cssPath, 'utf-8');
-                try {
-                  const minifiedResult = esbuild.transformSync(rawCss, {
-                    loader: 'css',
-                    minify: true,
-                    minifyWhitespace: true,
-                    minifySyntax: true,
-                    legalComments: 'none',
-                  });
-                  fs.writeFileSync(cssPath, minifiedResult.code, 'utf-8');
-                  console.log(`⚡ Minified CSS asset: ${file} (${rawCss.length} -> ${minifiedResult.code.length} bytes)`);
-                } catch (err) {
-                  console.warn(`Warning: Could not post-minify CSS file ${file}:`, err);
-                }
-              } else if (file.endsWith('.js')) {
-                const jsPath = path.join(assetsDir, file);
-                const rawJs = fs.readFileSync(jsPath, 'utf-8');
-                try {
-                  const minifiedResult = esbuild.transformSync(rawJs, {
-                    loader: 'js',
-                    minify: true,
-                    minifyWhitespace: true,
-                    minifySyntax: true,
-                    minifyIdentifiers: true,
-                    legalComments: 'none',
-                  });
-                  fs.writeFileSync(jsPath, minifiedResult.code, 'utf-8');
-                  console.log(`⚡ Minified JS asset: ${file} (${rawJs.length} -> ${minifiedResult.code.length} bytes)`);
-                } catch (err) {
-                  console.warn(`Warning: Could not post-minify JS file ${file}:`, err);
-                }
-              }
-            }
-          }
-
-          console.log('✅ SEO Assets, RSS dynamic feed, and Minified CSS/JS assets generated successfully!');
+          console.log('✅ SEO Assets and RSS dynamic feed generated successfully!');
         }
       }
     ],
@@ -780,15 +404,8 @@ Sitemap: ${hostname}/sitemap.xml`;
       cssMinify: true,
       cssCodeSplit: true,
       chunkSizeWarningLimit: 2000,
-      rollupOptions: {
-        output: {
-          // Standard Vite code splitting for reliable production loading across all hosts
-        }
-      }
     },
     server: {
-      // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',
     },
   };
