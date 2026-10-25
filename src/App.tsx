@@ -13,12 +13,11 @@ import ErrorBoundary from './components/ErrorBoundary';
 import SEO from './components/SEO';
 import { getCanonicalPath } from './data/canonicalRedirects';
 import { SEO_ROUTES_METADATA } from './data/seoRoutesMetadata';
-import TopLoadingBar from './components/TopLoadingBar';
 
 // Eager import landing page for immediate initial render
 import HomePage from './pages/HomePage';
 
-// Lazy load all secondary and service pages for ultra-fast initial bundle size
+// Lazy load all secondary and service pages
 const SaudiArabiaMarketPage = lazyWithRetry(() => import('./pages/SaudiArabiaMarketPage'));
 const UAEMarketPage = lazyWithRetry(() => import('./pages/UAEMarketPage'));
 const QatarMarketPage = lazyWithRetry(() => import('./pages/QatarMarketPage'));
@@ -99,6 +98,7 @@ const PageLoader = () => (
     </div>
   </div>
 );
+
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -138,178 +138,6 @@ function RouteSEO() {
       robots={routeSeo?.robots}
     />
   );
-}
-
-function MetaHeadSanitizer() {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    const sanitize = () => {
-      const canonicalPath = getCanonicalPath(pathname);
-      const isNotHome = canonicalPath !== '/' && canonicalPath !== '';
-      const expectedCanonicalUrl = `https://www.abuqitmirlabs.tech${canonicalPath}`;
-      const routeSeo = SEO_ROUTES_METADATA[canonicalPath] || SEO_ROUTES_METADATA[pathname];
-
-      const titles = Array.from(document.querySelectorAll('title'));
-      if (titles.length > 1) {
-        if (isNotHome) {
-          const nonHomeTitles = titles.filter(t => {
-            const text = (t.textContent || '').trim();
-            return !text.includes('Custom Software Development &') && 
-                   !text.includes('Custom Software & AI App Development Company') &&
-                   !text.includes('Custom Software Development Company & AI Agency');
-          });
-          const keepTitle = nonHomeTitles.length > 0 ? nonHomeTitles[nonHomeTitles.length - 1] : titles[titles.length - 1];
-          titles.forEach(t => {
-            if (t !== keepTitle && t.parentNode) t.parentNode.removeChild(t);
-          });
-        } else {
-          const keepTitle = titles[titles.length - 1];
-          titles.forEach(t => {
-            if (t !== keepTitle && t.parentNode) t.parentNode.removeChild(t);
-          });
-        }
-      }
-
-      if (isNotHome && routeSeo && routeSeo.title) {
-        const curTitle = document.querySelector('title');
-        if (curTitle) {
-          const curText = (curTitle.textContent || '').trim();
-          if (curText.includes('Custom Software Development & AI Agency | AbuQitmirLabs')) {
-            curTitle.textContent = routeSeo.title;
-          }
-        }
-      }
-
-      const descs = Array.from(document.querySelectorAll('meta[name="description"]'));
-      if (descs.length > 1) {
-        if (isNotHome) {
-          const nonHomeDescs = descs.filter(d => {
-            const content = (d.getAttribute('content') || '').trim();
-            return !content.includes('AbuQitmirLabs is a custom software & AI development company') &&
-                   !content.includes('AbuQitmirLabs engineers custom software, AI agents');
-          });
-          const keepDesc = nonHomeDescs.length > 0 ? nonHomeDescs[nonHomeDescs.length - 1] : descs[descs.length - 1];
-          descs.forEach(d => {
-            if (d !== keepDesc && d.parentNode) d.parentNode.removeChild(d);
-          });
-        } else {
-          const keepDesc = descs[descs.length - 1];
-          descs.forEach(d => {
-            if (d !== keepDesc && d.parentNode) d.parentNode.removeChild(d);
-          });
-        }
-      }
-
-      const robots = Array.from(document.querySelectorAll('meta[name="robots"]'));
-      if (robots.length > 1) {
-        const keepRobot = robots[robots.length - 1];
-        robots.forEach(r => {
-          if (r !== keepRobot && r.parentNode) r.parentNode.removeChild(r);
-        });
-      }
-
-      const canonicals = Array.from(document.querySelectorAll('link[rel="canonical"]'));
-      if (canonicals.length > 1) {
-        if (isNotHome) {
-          const matchingCanonicals = canonicals.filter(c => {
-            const href = (c.getAttribute('href') || '').trim();
-            return href !== 'https://www.abuqitmirlabs.tech/' && href !== 'https://www.abuqitmirlabs.tech';
-          });
-          const targetKeep = matchingCanonicals.length > 0 ? matchingCanonicals[matchingCanonicals.length - 1] : canonicals[canonicals.length - 1];
-          canonicals.forEach(c => {
-            if (c !== targetKeep && c.parentNode) c.parentNode.removeChild(c);
-          });
-          if (targetKeep) targetKeep.setAttribute('href', expectedCanonicalUrl);
-        } else {
-          const targetKeep = canonicals[canonicals.length - 1];
-          canonicals.forEach(c => {
-            if (c !== targetKeep && c.parentNode) c.parentNode.removeChild(c);
-          });
-          if (targetKeep) targetKeep.setAttribute('href', 'https://www.abuqitmirlabs.tech/');
-        }
-      } else if (canonicals.length === 1 && isNotHome) {
-        const curHref = (canonicals[0].getAttribute('href') || '').trim();
-        if (curHref === 'https://www.abuqitmirlabs.tech/' || curHref === 'https://www.abuqitmirlabs.tech') {
-          canonicals[0].setAttribute('href', expectedCanonicalUrl);
-        }
-      }
-
-      const ogUrls = Array.from(document.querySelectorAll('meta[property="og:url"]'));
-      if (ogUrls.length > 1) {
-        const keepOgUrl = ogUrls[ogUrls.length - 1];
-        ogUrls.forEach(tag => {
-          if (tag !== keepOgUrl && tag.parentNode) tag.parentNode.removeChild(tag);
-        });
-        if (keepOgUrl) keepOgUrl.setAttribute('content', expectedCanonicalUrl);
-      } else if (ogUrls.length === 1 && isNotHome) {
-        const curHref = (ogUrls[0].getAttribute('content') || '').trim();
-        if (curHref === 'https://www.abuqitmirlabs.tech/' || curHref === 'https://www.abuqitmirlabs.tech') {
-          ogUrls[0].setAttribute('content', expectedCanonicalUrl);
-        }
-      }
-
-      ['og:title', 'og:description'].forEach(prop => {
-        const ogTags = Array.from(document.querySelectorAll(`meta[property="${prop}"]`));
-        if (ogTags.length > 1) {
-          if (isNotHome) {
-            const nonHomeTags = ogTags.filter(tag => {
-              const content = (tag.getAttribute('content') || '').trim();
-              return !content.includes('Custom Software Development &') && 
-                     !content.includes('AbuQitmirLabs is a custom software & AI development company');
-            });
-            const keepTag = nonHomeTags.length > 0 ? nonHomeTags[nonHomeTags.length - 1] : ogTags[ogTags.length - 1];
-            ogTags.forEach(tag => {
-              if (tag !== keepTag && tag.parentNode) tag.parentNode.removeChild(tag);
-            });
-          } else {
-            const keepTag = ogTags[ogTags.length - 1];
-            ogTags.forEach(tag => {
-              if (tag !== keepTag && tag.parentNode) tag.parentNode.removeChild(tag);
-            });
-          }
-        }
-      });
-
-      ['twitter:title', 'twitter:description'].forEach(name => {
-        const twTags = Array.from(document.querySelectorAll(`meta[name="${name}"]`));
-        if (twTags.length > 1) {
-          if (isNotHome) {
-            const nonHomeTags = twTags.filter(tag => {
-              const content = (tag.getAttribute('content') || '').trim();
-              return !content.includes('Custom Software Development &') && 
-                     !content.includes('AbuQitmirLabs is a custom software & AI development company');
-            });
-            const keepTag = nonHomeTags.length > 0 ? nonHomeTags[nonHomeTags.length - 1] : twTags[twTags.length - 1];
-            twTags.forEach(tag => {
-              if (tag !== keepTag && tag.parentNode) tag.parentNode.removeChild(tag);
-            });
-          } else {
-            const keepTag = twTags[twTags.length - 1];
-            twTags.forEach(tag => {
-              if (tag !== keepTag && tag.parentNode) tag.parentNode.removeChild(tag);
-            });
-          }
-        }
-      });
-
-      const jsonLdScripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
-      if (jsonLdScripts.length > 1) {
-        const seenSchemas = new Set<string>();
-        jsonLdScripts.forEach(script => {
-          const text = (script.textContent || '').trim();
-          if (seenSchemas.has(text) && script.parentNode) {
-            script.parentNode.removeChild(script);
-          } else {
-            seenSchemas.add(text);
-          }
-        });
-      }
-    };
-
-    sanitize();
-  }, [pathname]);
-
-  return null;
 }
 
 function GoogleAnalyticsTracker() {
@@ -359,14 +187,12 @@ const FloatingWhatsApp = () => (
   </a>
 );
 
-// ==========================================
-// YAHAN HAI ASAL FIX: AppRoutes Component
-// ==========================================
+// AppRoutes Component - Routing ka asal fix yahan hai
 function AppRoutes() {
   const location = useLocation();
   
   return (
-    // key={location.pathname} lazmi hai taake page reload ho
+    // key={location.pathname} force karta hai ke naya page mount ho
     <Routes location={location} key={location.pathname}>
       <Route path="/" element={<HomePage />} />
       <Route path="/about" element={<AboutPage />} />
@@ -556,27 +382,6 @@ function AppRoutes() {
   );
 }
 
-function AppRoutes() {
-  const location = useLocation();
-  
-  return (
-      return (
-    <HelmetProvider>
-      <Router> {/* Router pehle aayega */}
-        <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothWheel: true }}> {/* Lenis Router ke andar */}
-      <Route path="*" element={
-        <div className="min-h-screen flex items-center justify-center bg-[#09090b] text-white">
-          <div className="text-center max-w-md px-6">
-            <p className="text-white/60 mb-8">Page not found.</p>
-            <a href="/" className="inline-block px-6 py-3 bg-[#ccff00] text-black font-bold rounded-lg">
-              Go Home
-            </a>
-          </div>
-        </div>
-      } />
-    </Routes>
-  );
-}
 export default function App() {
   useEffect(() => {
     const trigger = () => {
@@ -590,14 +395,13 @@ export default function App() {
   return (
     <HelmetProvider>
       <Router>
-        {/* ReactLenis ab Router ke andar hai */}
+        {/* ReactLenis ab Router ke andar hai, taake route change par isko control kiya ja sake */}
         <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothWheel: true }}>
           
           <RouteSEO />
-          <ScrollToTop /> {/* Yeh wapas laga diya */}
+          <ScrollToTop />
           
-          {/* MetaHeadSanitizer ko hata diya hai */}
-          {/* <MetaHeadSanitizer /> */}
+          {/* MetaHeadSanitizer ko hata diya hai kyunke yeh React ke DOM se takra raha tha */}
           
           <FacebookPixel />
           <GoogleAnalyticsTracker />
@@ -605,7 +409,7 @@ export default function App() {
           
           <ErrorBoundary>
             <Suspense fallback={<PageLoader />}>
-              <AppRoutes /> {/* Purana AppRoutes yahan call ho raha hai */}
+              <AppRoutes />
             </Suspense>
           </ErrorBoundary>
           
