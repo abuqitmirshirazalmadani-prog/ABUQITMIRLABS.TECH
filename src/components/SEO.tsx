@@ -118,43 +118,89 @@ export const SEO: React.FC<SEOProps> = ({
     routeMeta?.robots ||
     'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1';
 
-  // Synchronize head attributes in-place WITHOUT removing React 19 / Helmet fiber DOM nodes
+  // Synchronize head attributes in-place and guarantee strictly ONE <title> tag in <head>
   useEffect(() => {
-    const syncHeadInPlace = () => {
-      if (resolvedTitle) {
-        const titleNodes = document.head.querySelectorAll('title');
-        if (titleNodes.length === 1) {
-          if (titleNodes[0].textContent !== resolvedTitle) {
-            titleNodes[0].textContent = resolvedTitle;
-          }
-        } else if (titleNodes.length > 1) {
-          // Keep the last <title> (hoisted by React 19 / Helmet) and remove any earlier orphan <title>
+    const isReactManagedNode = (node: Element) =>
+      Object.keys(node).some(
+        (k) => k.startsWith('__reactFiber$') || k.startsWith('__reactProps$')
+      );
+
+    const deduplicateTitleTags = () => {
+      const titleNodes = Array.from(document.head.querySelectorAll('title'));
+      if (titleNodes.length > 1) {
+        const reactTitles = titleNodes.filter(isReactManagedNode);
+        if (reactTitles.length > 0) {
+          // Remove all non-React static/orphan <title> tags and keep only the latest React Helmet <title>
+          const keepNode = reactTitles[reactTitles.length - 1];
+          titleNodes.forEach((node) => {
+            if (node !== keepNode) {
+              node.remove();
+            }
+          });
+        } else {
+          // Keep only the last <title> tag
           for (let i = 0; i < titleNodes.length - 1; i++) {
             titleNodes[i].remove();
           }
-          const activeTitle = titleNodes[titleNodes.length - 1];
-          if (activeTitle && activeTitle.textContent !== resolvedTitle) {
-            activeTitle.textContent = resolvedTitle;
+        }
+      }
+    };
+
+    const syncHeadInPlace = () => {
+      deduplicateTitleTags();
+
+      if (resolvedTitle) {
+        const titleNodes = document.head.querySelectorAll('title');
+        if (titleNodes.length === 0) {
+          document.title = resolvedTitle;
+        } else if (titleNodes.length === 1) {
+          if (titleNodes[0].textContent !== resolvedTitle) {
+            titleNodes[0].textContent = resolvedTitle;
           }
         }
       }
 
       const updateMetaByName = (name: string, content?: string) => {
         if (!content) return;
-        const nodes = document.head.querySelectorAll(`meta[name="${name}"]`);
-        nodes.forEach((node) => node.setAttribute('content', content));
+        const nodes = Array.from(document.head.querySelectorAll(`meta[name="${name}"]`));
+        if (nodes.length > 1) {
+          const reactNodes = nodes.filter(isReactManagedNode);
+          const keepNode = reactNodes.length > 0 ? reactNodes[reactNodes.length - 1] : nodes[nodes.length - 1];
+          nodes.forEach((node) => {
+            if (node !== keepNode) node.remove();
+          });
+          keepNode.setAttribute('content', content);
+        } else if (nodes.length === 1) {
+          nodes[0].setAttribute('content', content);
+        }
       };
 
       const updateMetaByProperty = (prop: string, content?: string) => {
         if (!content) return;
-        const nodes = document.head.querySelectorAll(`meta[property="${prop}"]`);
-        nodes.forEach((node) => node.setAttribute('content', content));
+        const nodes = Array.from(document.head.querySelectorAll(`meta[property="${prop}"]`));
+        if (nodes.length > 1) {
+          const reactNodes = nodes.filter(isReactManagedNode);
+          const keepNode = reactNodes.length > 0 ? reactNodes[reactNodes.length - 1] : nodes[nodes.length - 1];
+          nodes.forEach((node) => {
+            if (node !== keepNode) node.remove();
+          });
+          keepNode.setAttribute('content', content);
+        } else if (nodes.length === 1) {
+          nodes[0].setAttribute('content', content);
+        }
       };
 
-      const canonicalLinks = document.head.querySelectorAll('link[rel="canonical"]');
-      canonicalLinks.forEach((link) => {
-        link.setAttribute('href', resolvedCanonical);
-      });
+      const canonicalLinks = Array.from(document.head.querySelectorAll('link[rel="canonical"]'));
+      if (canonicalLinks.length > 1) {
+        const reactLinks = canonicalLinks.filter(isReactManagedNode);
+        const keepLink = reactLinks.length > 0 ? reactLinks[reactLinks.length - 1] : canonicalLinks[canonicalLinks.length - 1];
+        canonicalLinks.forEach((link) => {
+          if (link !== keepLink) link.remove();
+        });
+        keepLink.setAttribute('href', resolvedCanonical);
+      } else if (canonicalLinks.length === 1) {
+        canonicalLinks[0].setAttribute('href', resolvedCanonical);
+      }
 
       updateMetaByName('description', resolvedDescription);
       if (resolvedKeywords) updateMetaByName('keywords', resolvedKeywords);
@@ -173,7 +219,18 @@ export const SEO: React.FC<SEOProps> = ({
 
     syncHeadInPlace();
     const timer = setTimeout(syncHeadInPlace, 30);
-    return () => clearTimeout(timer);
+
+    const observer = new MutationObserver(() => {
+      if (document.head.querySelectorAll('title').length > 1) {
+        deduplicateTitleTags();
+      }
+    });
+    observer.observe(document.head, { childList: true });
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
   }, [
     pathname,
     resolvedTitle,

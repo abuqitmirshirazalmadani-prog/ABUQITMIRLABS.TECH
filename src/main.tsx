@@ -13,10 +13,10 @@ if (container) {
   // Always use createRoot — never hydrateRoot.
   container.innerHTML = '';
 
-  // Clean up SSR-rendered head tags marked with data-rh="true" and any pre-existing <title>
-  // so client-side React 19 / React Helmet owns the single <title> element without duplicates
-  const ssrHeadElements = document.querySelectorAll('head [data-rh="true"], head > title');
-  ssrHeadElements.forEach(el => el.remove());
+  // Remove any static <title> tag from <head> before mounting so that
+  // only the dynamic React Helmet <title> is present in the DOM.
+  const staticTitleElements = document.querySelectorAll('head > title');
+  staticTitleElements.forEach((el) => el.remove());
 
   createRoot(container).render(
     <StrictMode>

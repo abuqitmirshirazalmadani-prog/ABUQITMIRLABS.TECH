@@ -217,6 +217,25 @@ if (fs.existsSync(vercelPath)) {
 }
 
 // ==========================================
+// 1D. AUDIT INDEX.HTML FOR STATIC DUPLICATE <TITLE> TAGS
+// ==========================================
+console.log('\n📌 Checking index.html for static <title> tags (preventing duplicate titles with React Helmet)...');
+const rootIndexHtmlPath = path.join(rootDir, 'index.html');
+if (fs.existsSync(rootIndexHtmlPath)) {
+  let indexHtmlContent = fs.readFileSync(rootIndexHtmlPath, 'utf8');
+  const titleTagRegex = /<title\b[^>]*>[\s\S]*?<\/title>/gi;
+  const staticTitles = indexHtmlContent.match(titleTagRegex) || [];
+  if (staticTitles.length > 0) {
+    indexHtmlContent = indexHtmlContent.replace(titleTagRegex, '');
+    fs.writeFileSync(rootIndexHtmlPath, indexHtmlContent, 'utf8');
+    issuesFixed.push(`Removed ${staticTitles.length} static <title> tag(s) from index.html to prevent duplicate titles with React Helmet.`);
+    console.log(`  ✅ Auto-removed ${staticTitles.length} static <title> tag(s) from index.html.`);
+  } else {
+    console.log('  ✅ index.html has zero static <title> tags (React Helmet manages dynamic <title> exclusively).');
+  }
+}
+
+// ==========================================
 // 2. AUDIT BLOG POSTS FOR DUPLICATE HEADINGS
 // ==========================================
 console.log('\n📌 Checking blog posts for duplicate headings and title duplication...');
