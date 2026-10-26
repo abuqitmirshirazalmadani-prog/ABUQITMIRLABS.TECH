@@ -233,16 +233,11 @@ export default defineConfig(({ mode }) => {
           const rootSitemap = path.resolve(process.cwd(), 'sitemap.xml');
           const rootPagesSitemap = path.resolve(process.cwd(), 'pages-sitemap.xml');
 
-          // Sitemap 0.9 & Google Search Console Standards Validator & Generator
           const SITEMAP_ORIGIN = 'https://www.abuqitmirlabs.tech';
           const VALID_CHANGEFREQS = new Set(['always', 'hourly', 'daily', 'weekly', 'monthly', 'yearly', 'never']);
           const DISALLOWED_PATHS = new Set(['/admin', '/google87984536fe5662da', '/404', '/spa-shell', '/login']);
           const defaultLastMod = '2026-10-25';
 
-          /**
-           * Explicitly prepends https://www.abuqitmirlabs.tech to any relative path
-           * and normalizes any input URL to the canonical origin, strictly avoiding relative paths.
-           */
           const prependCanonicalOrigin = (inputPathOrUrl: string): string => {
             const raw = (inputPathOrUrl || '').trim();
             if (!raw || raw === '/') return SITEMAP_ORIGIN;
@@ -268,7 +263,6 @@ export default defineConfig(({ mode }) => {
             const trimmed = rawInput.trim();
             if (!trimmed) return null;
 
-            // Explicitly ensure origin is prepended before parsing pathname
             const withOrigin = prependCanonicalOrigin(trimmed.split('?')[0].split('#')[0]);
             let pathname = '/';
             try {
@@ -278,10 +272,8 @@ export default defineConfig(({ mode }) => {
               return null;
             }
 
-            // Strip any trailing slashes (except root '/')
             pathname = pathname.replace(/\/+$/, '') || '/';
 
-            // Reject disallowed or non-indexable paths (must match robots.txt Disallow rules)
             if (
               DISALLOWED_PATHS.has(pathname) ||
               pathname.startsWith('/admin/') ||
@@ -290,7 +282,6 @@ export default defineConfig(({ mode }) => {
               return null;
             }
 
-            // Resolve legacy aliases/redirects via canonicalRedirects
             const canonicalPathname = getCanonicalPath(pathname);
             if (canonicalPathname.startsWith('/blog/')) {
               const slug = canonicalPathname.slice('/blog/'.length);
@@ -299,20 +290,17 @@ export default defineConfig(({ mode }) => {
               }
             }
 
-            // Verify against SEO_ROUTES_METADATA canonical if defined
             const routeMeta = SEO_ROUTES_METADATA[canonicalPathname];
             if (routeMeta?.canonical) {
               const metaCanon = prependCanonicalOrigin(routeMeta.canonical);
               const expectedCanon = prependCanonicalOrigin(canonicalPathname);
               if (metaCanon !== expectedCanon) {
-                // This route is an alias pointing to another primary canonical URL
                 return normalizeToAbsoluteCanonicalUrl(metaCanon);
               }
             }
 
             const finalAbsoluteUrl = prependCanonicalOrigin(canonicalPathname);
 
-            // Final RFC-3986 / Sitemap 0.9 URL validation — strictly reject any relative path
             if (!finalAbsoluteUrl.startsWith(SITEMAP_ORIGIN)) {
               return null;
             }
@@ -392,7 +380,6 @@ export default defineConfig(({ mode }) => {
             }
           };
 
-          // 1. Seed from existing public/sitemap.xml to preserve historical lastmod dates
           if (fs.existsSync(publicSitemap)) {
             const rawXml = fs.readFileSync(publicSitemap, 'utf-8');
             const urlBlocks = [...rawXml.matchAll(/<url>([\s\S]*?)<\/url>/g)];
@@ -412,7 +399,6 @@ export default defineConfig(({ mode }) => {
             }
           }
 
-          // 2. Ensure all baseRoutes and dynamicRoutes are present with explicit https://www.abuqitmirlabs.tech origin
           for (const route of routes) {
             upsertSitemapEntry(
               prependCanonicalOrigin(route.url),
@@ -422,7 +408,6 @@ export default defineConfig(({ mode }) => {
             );
           }
 
-          // 3. Ensure all canonical non-blog service routes from SEO_ROUTES_METADATA are present with absolute origin
           for (const [routePath, meta] of Object.entries(SEO_ROUTES_METADATA)) {
             if (DISALLOWED_PATHS.has(routePath) || routePath.startsWith('/blog/')) continue;
             const expectedCanon = prependCanonicalOrigin(routePath);
@@ -432,7 +417,6 @@ export default defineConfig(({ mode }) => {
             }
           }
 
-          // 4. Ensure all primary canonical static blog posts from content/blog/*.md and STATIC_BLOG_POSTS with explicit slug are present
           for (const [slug, post] of Object.entries(STATIC_BLOG_POSTS)) {
             if (!post?.slug || BLOG_SLUG_REDIRECTS[slug]) continue;
             const cleanSlug = post.slug.trim().replace(/^\/+/, '');
@@ -453,7 +437,6 @@ export default defineConfig(({ mode }) => {
             }
           }
 
-          // 5. Ensure all programmatic SEO solution routes are present with explicit https://www.abuqitmirlabs.tech origin
           for (const pPage of programmaticSEOPages) {
             if (pPage.slug) {
               const cleanSolutionSlug = pPage.slug.trim().replace(/^\/+/, '');
@@ -461,7 +444,6 @@ export default defineConfig(({ mode }) => {
             }
           }
 
-          // Build and validate final XML output against Sitemap 0.9 standards, strictly guaranteeing https://www.abuqitmirlabs.tech origin
           const validatedEntries = Array.from(sitemapEntriesMap.values()).map((entry) => ({
             ...entry,
             loc: prependCanonicalOrigin(entry.loc),
@@ -478,7 +460,6 @@ export default defineConfig(({ mode }) => {
           ];
           const sitemapContent = sitemapXmlLines.join('\n');
 
-          // Standards verification check before writing: strictly forbid any relative path or non-matching origin
           const invalidUrls = validatedEntries.filter(
             (e) => !e.loc.startsWith(SITEMAP_ORIGIN) || e.loc.startsWith('/')
           );
@@ -486,7 +467,6 @@ export default defineConfig(({ mode }) => {
             throw new Error(`[Sitemap Validator] Found non-absolute or invalid domain URLs: ${invalidUrls.map((u) => u.loc).join(', ')}`);
           }
 
-          // Write validated sitemap to dist, public, and root directories
           for (const targetSitemapPath of [
             sitemapPath,
             distPagesSitemapPath,
@@ -498,7 +478,6 @@ export default defineConfig(({ mode }) => {
             fs.writeFileSync(targetSitemapPath, sitemapContent, 'utf-8');
           }
 
-          // Also refresh pre-compressed .gz and .br sitemap files in dist so CDNs never serve stale compressed sitemaps
           try {
             const gzBuffer = zlib.gzipSync(Buffer.from(sitemapContent, 'utf-8'));
             const brBuffer = zlib.brotliCompressSync(Buffer.from(sitemapContent, 'utf-8'));
@@ -689,6 +668,9 @@ export default defineConfig(({ mode }) => {
               continue;
             }
             
+            // ========================================================
+            // FIXED: AI Content vs Human Content Block
+            // ========================================================
             if (route.url === '/blog/ai-content-vs-human-content') {
               // 1. Inject specific Article Schema
               const aiContentSchema = {
