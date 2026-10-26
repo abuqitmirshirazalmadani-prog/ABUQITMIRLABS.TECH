@@ -318,6 +318,8 @@ function AppRoutes() {
       <Route path="/brand-identity-vs-logo-design" element={<Navigate to="/blog/brand-identity-vs-logo-design" replace />} />
       <Route path="/blog/brand-strategy-vs-logo-design-pakistan-sme" element={<BlogPostPage overrideSlug="brand-strategy-vs-logo-design-pakistan-sme" />} />
       <Route path="/brand-strategy-vs-logo-design-pakistan-sme" element={<Navigate to="/blog/brand-strategy-vs-logo-design-pakistan-sme" replace />} />
+      <Route path="/blog/ai-content-vs-human-content" element={<BlogPostPage overrideSlug="ai-content-vs-human-content" />} />
+      <Route path="/ai-content-vs-human-content" element={<Navigate to="/blog/ai-content-vs-human-content" replace />} />
       <Route path="/blog/content-calendar-strategy" element={<BlogPostPage overrideSlug="content-calendar-strategy" />} />
       <Route path="/content-calendar-strategy" element={<Navigate to="/blog/content-calendar-strategy" replace />} />
       <Route path="/blog/ui-ux-design-conversion" element={<BlogPostPage overrideSlug="ui-ux-design-conversion" />} />
