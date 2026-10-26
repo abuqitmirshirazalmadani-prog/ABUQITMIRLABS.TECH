@@ -136,10 +136,26 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 }
 
                 if (foundPost) {
-                    setPost(foundPost);
-                    setCachedPost(slug, foundPost as any);
+                    const cleanQuoteStr = (s?: string) =>
+                        typeof s === 'string'
+                            ? s.trim().replace(/^(?:&quot;|["'“”])+|(?:&quot;|["'“”])+$/gi, '').trim()
+                            : s;
+                    const staticEntry = (slug && STATIC_POSTS_MAP[slug]) ? STATIC_POSTS_MAP[slug] : null;
+                    const sanitizedPost: Post = {
+                        ...foundPost,
+                        metaDescription: cleanQuoteStr(staticEntry?.metaDescription || foundPost.metaDescription),
+                        excerpt: cleanQuoteStr(foundPost.excerpt || staticEntry?.excerpt),
+                        category:
+                            slug === 'ai-content-vs-human-content'
+                                ? 'Content Writing'
+                                : (staticEntry?.category && staticEntry.category !== 'Development')
+                                ? staticEntry.category
+                                : foundPost.category,
+                    };
+                    setPost(sanitizedPost);
+                    setCachedPost(slug, sanitizedPost as any);
                     if (canonical) {
-                        setCachedPost(canonical, foundPost as any);
+                        setCachedPost(canonical, sanitizedPost as any);
                     }
                 } else if (!currentInitial) {
                     setPost(null);

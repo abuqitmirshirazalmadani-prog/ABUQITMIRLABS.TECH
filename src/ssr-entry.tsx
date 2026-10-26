@@ -200,6 +200,7 @@ export function renderFullApp(url: string = '/') {
               <Route path="/ai-is-quietly-stealing-your-ability-to-think" element={<Navigate to="/blog/ai-is-quietly-stealing-your-ability-to-think" replace />} />
               <Route path="/blog/ui-ux-design-conversion" element={<BlogPostPage overrideSlug="ui-ux-design-conversion" />} />
               <Route path="/blog/brand-strategy-vs-logo-design-pakistan-sme" element={<BlogPostPage overrideSlug="brand-strategy-vs-logo-design-pakistan-sme" />} />
+              <Route path="/blog/ai-content-vs-human-content" element={<BlogPostPage overrideSlug="ai-content-vs-human-content" />} />
               <Route path="/blog/content-calendar-strategy" element={<BlogPostPage overrideSlug="content-calendar-strategy" />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
             </Routes>

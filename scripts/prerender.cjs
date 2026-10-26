@@ -251,10 +251,17 @@ const routes = [
   '/blog/content-brief-template',
   '/blog/small-business-branding-mistakes-pakistan',
   '/blog/content-calendar-strategy',
-  '/blog/brand-strategy-vs-logo-design-pakistan-sme'
+  '/blog/brand-strategy-vs-logo-design-pakistan-sme',
+  '/blog/ai-content-vs-human-content'
 ];
 
-// Dynamically discover all articles from content/blog/*.md so new posts are always prerendered
+const stripOuterQuotes = (str) =>
+  String(str || '')
+    .trim()
+    .replace(/^(?:&quot;|["'“”])+|(?:&quot;|["'“”])+$/gi, '')
+    .trim();
+
+// Dynamically discover all articles from content/blog/*.md so new posts are always prerendered with full H1/H2 SSR
 const contentBlogDir = path.join(rootDir, 'content', 'blog');
 const blogMarkdownRoutes = [];
 if (fs.existsSync(contentBlogDir)) {
@@ -268,6 +275,30 @@ if (fs.existsSync(contentBlogDir)) {
       const blogRoute = `/blog/${canonicalSlug}`;
       if (!routes.includes(blogRoute)) {
         blogMarkdownRoutes.push(blogRoute);
+      }
+
+      // Ensure STATIC_BLOG_POSTS has this markdown post so BlogPostPage renders full H1/H2 SSR instead of loading skeleton
+      if (STATIC_BLOG_POSTS && !STATIC_BLOG_POSTS[canonicalSlug]) {
+        const fmMatch = fileContent.match(/^---\s*\r?\n(\{[\s\S]*?\})\r?\n---\s*\r?\n([\s\S]*)$/);
+        if (fmMatch) {
+          const parsedMeta = JSON.parse(fmMatch[1]);
+          const mdBody = fmMatch[2].trim();
+          STATIC_BLOG_POSTS[canonicalSlug] = {
+            id: `static-${canonicalSlug}`,
+            title: parsedMeta.title || canonicalSlug,
+            slug: canonicalSlug,
+            metaDescription: stripOuterQuotes(parsedMeta.metaDescription || parsedMeta.excerpt || ''),
+            excerpt: stripOuterQuotes(parsedMeta.excerpt || parsedMeta.metaDescription || ''),
+            content: mdBody,
+            author: parsedMeta.author || 'Abu Qitmir Mohammad Shiraz Al-Madani',
+            category: canonicalSlug === 'ai-content-vs-human-content' ? 'Content Writing' : (parsedMeta.category || 'Content Writing'),
+            published: parsedMeta.published !== false,
+            coverImage: parsedMeta.coverImage || 'https://www.abuqitmirlabs.tech/logo.png',
+            coverImageAlt: parsedMeta.coverImageAlt || parsedMeta.title || '',
+            tags: Array.isArray(parsedMeta.tags) ? parsedMeta.tags : [],
+            createdAt: parsedMeta.publishedAt ? `${parsedMeta.publishedAt}T10:00:00.000Z` : new Date().toISOString()
+          };
+        }
       }
     } catch (e) {}
   }
@@ -340,7 +371,7 @@ for (const routeUrl of allRoutes) {
           const m = rawMd.match(/---[\s\S]*?\{([\s\S]*?)\}[\s\S]*?---/);
           if (m) {
             const parsedMeta = JSON.parse(`{${m[1]}}`);
-            let postDesc = parsedMeta.metaDescription || parsedMeta.excerpt || '';
+            let postDesc = stripOuterQuotes(parsedMeta.metaDescription || parsedMeta.excerpt || '');
             if (postDesc.length > 165) {
               const cut = postDesc.slice(0, 160);
               const lastSp = cut.lastIndexOf(' ');
@@ -382,7 +413,7 @@ for (const routeUrl of allRoutes) {
 
     // If meta description was not already injected, inject it now with data-rh="true"
     if (!/<meta\b[^>]*name=["']description["']/i.test(html) && seo && seo.description) {
-      const escapedDesc = seo.description.replace(/"/g, '&quot;');
+      const escapedDesc = stripOuterQuotes(seo.description).replace(/"/g, '&quot;');
       html = html.replace('</head>', `  <meta data-rh="true" name="description" content="${escapedDesc}" />\n</head>`);
     }
 
@@ -404,7 +435,7 @@ for (const routeUrl of allRoutes) {
       html = html.replace('</head>', `  <meta data-rh="true" property="og:title" content="${escapedOgTitle}" />\n</head>`);
     }
     if (!/<meta\b[^>]*property=["']og:description["']/i.test(html) && seo && (seo.ogDescription || seo.description)) {
-      const ogDesc = seo.ogDescription || seo.description;
+      const ogDesc = stripOuterQuotes(seo.ogDescription || seo.description);
       const escapedOgDesc = ogDesc.replace(/"/g, '&quot;');
       html = html.replace('</head>', `  <meta data-rh="true" property="og:description" content="${escapedOgDesc}" />\n</head>`);
     }
@@ -422,23 +453,23 @@ for (const routeUrl of allRoutes) {
     // If Twitter tags were not already injected via Helmet, inject them with data-rh="true"
     if (!/<meta\b[^>]*name=["']twitter:card["']/i.test(html)) {
       const twTitle = (seo && (seo.twitterTitle || seo.title)) || titleToUse;
-      const twDesc = (seo && (seo.twitterDescription || seo.description)) || '';
+      const twDesc = stripOuterQuotes((seo && (seo.twitterDescription || seo.description)) || '');
       const twImage = (seo && seo.ogImage) || 'https://www.abuqitmirlabs.tech/logo.png';
       html = html.replace('</head>', `  <meta data-rh="true" name="twitter:card" content="summary_large_image" />\n  <meta data-rh="true" name="twitter:title" content="${(twTitle || '').replace(/"/g, '&quot;')}" />\n  <meta data-rh="true" name="twitter:description" content="${(twDesc || '').replace(/"/g, '&quot;')}" />\n  <meta data-rh="true" name="twitter:image" content="${twImage}" />\n</head>`);
     }
 
-    // 5. Inject Schema.org JSON-LD into <head> (Site-wide Organization + WebSite, plus route-specific schemas)
+    // 5. Inject Schema.org JSON-LD into <head> (strictly one unified @graph block when available)
     html = html.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis, '');
 
     const schemasToInject = [];
 
-    // A. Include site-wide Organization & WebSite schemas
-    if (siteWideSchemasHtml) {
-      schemasToInject.push(siteWideSchemasHtml);
+    // A. Include schemaJsonLd from SEO_ROUTES_METADATA first if available (authoritative @graph)
+    if (seo && seo.schemaJsonLd) {
+      schemasToInject.push(`<script type="application/ld+json" data-rh="true">\n${JSON.stringify(seo.schemaJsonLd, null, 2)}\n  </script>`);
     }
 
-    // B. Include all route/page-specific schemas extracted from React component SSR
-    if (Array.isArray(jsonLdScripts) && jsonLdScripts.length > 0) {
+    // B. Include route/page-specific schemas extracted from React component SSR if not already covered by SEO_ROUTES_METADATA @graph
+    if (schemasToInject.length === 0 && Array.isArray(jsonLdScripts) && jsonLdScripts.length > 0) {
       for (const scriptTag of jsonLdScripts) {
         let formattedTag = scriptTag.trim();
         if (!formattedTag.includes('data-rh=')) {
@@ -448,37 +479,34 @@ for (const routeUrl of allRoutes) {
       }
     }
 
-    // C. Include schemaJsonLd from SEO_ROUTES_METADATA if not already included
-    if (seo && seo.schemaJsonLd) {
-      const seoSchemaString = JSON.stringify(seo.schemaJsonLd);
-      const hasRouteGraphAlready = schemasToInject.some(s =>
-        s.includes(seoSchemaString) ||
-        (seo.schemaJsonLd['@id'] && s.includes(seo.schemaJsonLd['@id'])) ||
-        s.includes(`${canonicalUrl}#article`) ||
-        s.includes(`${canonicalUrl}/#article`)
-      );
-      if (!hasRouteGraphAlready) {
-        schemasToInject.push(`<script type="application/ld+json" data-rh="true">\n${JSON.stringify(seo.schemaJsonLd, null, 2)}\n  </script>`);
-      }
-    }
-
-    // D. Include helmet.script if helmet captured any additional JSON-LD scripts
-    if (helmet && helmet.script) {
+    // C. Include helmet.script if no schema was captured yet
+    if (schemasToInject.length === 0 && helmet && helmet.script) {
       const helmetScripts = helmet.script.toString();
       if (helmetScripts && helmetScripts.includes('application/ld+json')) {
         const hMatches = helmetScripts.match(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis) || [];
         for (const hTag of hMatches) {
-          const hasArticleAlready = schemasToInject.some(s => s.includes(`${canonicalUrl}#article`) || s.includes(`${canonicalUrl}/#article`));
-          const isDuplicateArticle = hasArticleAlready && (hTag.includes(`${canonicalUrl}#article`) || hTag.includes(`${canonicalUrl}/#article`));
-          if (!isDuplicateArticle && !schemasToInject.some(s => s.includes(hTag) || hTag.includes(s))) {
-            schemasToInject.push(hTag.trim());
+          let formattedTag = hTag.trim();
+          if (!formattedTag.includes('data-rh=')) {
+            formattedTag = formattedTag.replace('<script', '<script data-rh="true"');
           }
+          schemasToInject.push(formattedTag);
         }
       }
     }
 
-    // Deduplicate schemas if any identical script tags exist
-    const uniqueSchemas = Array.from(new Set(schemasToInject.map(s => s.trim()))).filter(Boolean);
+    // D. Fallback to site-wide Organization & WebSite schemas only if no route schema exists
+    if (schemasToInject.length === 0 && siteWideSchemasHtml) {
+      schemasToInject.push(siteWideSchemasHtml);
+    }
+
+    // Deduplicate schemas: if any schema has @graph, keep strictly that single unified @graph script
+    let uniqueSchemas = Array.from(new Set(schemasToInject.map(s => s.trim()))).filter(Boolean);
+    if (uniqueSchemas.length > 1) {
+      const graphSchema = uniqueSchemas.find(s => s.includes('"@graph"'));
+      if (graphSchema) {
+        uniqueSchemas = [graphSchema];
+      }
+    }
     if (uniqueSchemas.length > 0) {
       html = html.replace('</head>', `  ${uniqueSchemas.join('\n  ')}\n</head>`);
     }
@@ -498,7 +526,7 @@ for (const routeUrl of allRoutes) {
       });
     }
 
-    // B. Meta Description: strictly ONE <meta name="description">
+    // B. Meta Description: strictly ONE <meta name="description"> and strip any literal surrounding quotes (&quot;)
     const metaDescMatches = html.match(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis) || [];
     if (metaDescMatches.length > 1) {
       let keepIndex = 0;
@@ -509,6 +537,14 @@ for (const routeUrl of allRoutes) {
         return keep ? (tag.includes('data-rh=') ? tag : tag.replace('<meta', '<meta data-rh="true"')) : '';
       });
     }
+    html = html.replace(
+      /(<meta\b[^>]*name=["'](?:description|twitter:description)["'][^>]*content=["'])(?:&quot;|["'“”])+([\s\S]*?)(?:&quot;|["'“”])+(["'][^>]*\/?>)/gis,
+      '$1$2$3'
+    );
+    html = html.replace(
+      /(<meta\b[^>]*property=["']og:description["'][^>]*content=["'])(?:&quot;|["'“”])+([\s\S]*?)(?:&quot;|["'“”])+(["'][^>]*\/?>)/gis,
+      '$1$2$3'
+    );
 
     // C. Meta Robots: strictly ONE <meta name="robots">
     const robotsMatches = html.match(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gis) || [];

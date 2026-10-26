@@ -118,6 +118,14 @@ export function formatIsoDate(dateVal: any, fallbackDate = new Date('2026-10-23T
 /**
  * Dynamically generates unique SEO metadata and structured JSON-LD schemas for a blog post.
  */
+export function stripSurroundingQuotes(raw?: string): string {
+  if (!raw || typeof raw !== 'string') return '';
+  return raw
+    .trim()
+    .replace(/^(?:&quot;|["'“”])+|(?:&quot;|["'“”])+$/gi, '')
+    .trim();
+}
+
 export function generateBlogPostMeta(
   post: BlogPostMetaInput,
   slug: string,
@@ -141,22 +149,25 @@ export function generateBlogPostMeta(
 
   // 2. Unique Dynamic Description: Prioritize explicit metaDescription or description field, then post excerpt, then fallback to content
   let description = '';
-  const explicitDesc = (post.metaDescription || (post as any).description)?.trim();
+  const explicitDesc = stripSurroundingQuotes(post.metaDescription || (post as any).description);
   if (explicitDesc) {
     const cleanExplicit = explicitDesc.replace(/\s+/g, ' ');
-    description = cleanExplicit.length <= 170 ? cleanExplicit : cleanExcerpt(cleanExplicit, 160);
+    description = stripSurroundingQuotes(cleanExplicit.length <= 170 ? cleanExplicit : cleanExcerpt(cleanExplicit, 160));
   } else if (post.excerpt?.trim()) {
-    const cleanEx = post.excerpt.trim().replace(/\s+/g, ' ');
-    description = cleanEx.length <= 170 ? cleanEx : cleanExcerpt(cleanEx, 160);
+    const cleanEx = stripSurroundingQuotes(post.excerpt).replace(/\s+/g, ' ');
+    description = stripSurroundingQuotes(cleanEx.length <= 170 ? cleanEx : cleanExcerpt(cleanEx, 160));
   } else {
-    description = cleanExcerpt(post.content || rawTitle, 160);
+    description = stripSurroundingQuotes(cleanExcerpt(post.content || rawTitle, 160));
   }
 
   // 3. Media and Taxonomy
   const coverImage = post.coverImage?.trim() || defaultImage;
   const publishedTime = formatIsoDate(post.createdAt);
   const modifiedTime = formatIsoDate(post.updatedAt || post.createdAt);
-  const categoryName = post.category?.trim() || 'Software & AI Engineering';
+  const categoryName =
+    slug === 'ai-content-vs-human-content'
+      ? 'Content Writing'
+      : post.category?.trim() || 'Software & AI Engineering';
   
   const keywords = (post.tags && Array.isArray(post.tags) && post.tags.length > 0)
     ? post.tags.map(t => t.trim()).filter(Boolean)

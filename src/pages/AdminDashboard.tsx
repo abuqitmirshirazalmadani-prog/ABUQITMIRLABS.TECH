@@ -187,7 +187,7 @@ const AdminDashboard = () => {
         published: true
     });
 
-    const CATEGORIES = ["AI", "Software", "Business", "App", "Development"];
+    const CATEGORIES = ["AI", "Software", "Business", "App", "Development", "Content Writing", "SEO", "Graphic Design", "Digital Marketing"];
 
     const textareaRef = useRef<HTMLTextAreaElement>(null);
     const [isConverting, setIsConverting] = useState<boolean[]>([false, false, false, false, false, false]);
@@ -860,7 +860,15 @@ const AdminDashboard = () => {
 
         try {
             const cleanSlug = getCanonicalSlug(formData.slug);
-            const canonicalFormData = { ...formData, slug: cleanSlug };
+            const stripOuterQuotes = (str?: string) =>
+                (str || '').trim().replace(/^(?:&quot;|["'“”])+|(?:&quot;|["'“”])+$/gi, '').trim();
+            const canonicalFormData = {
+                ...formData,
+                slug: cleanSlug,
+                metaDescription: stripOuterQuotes(formData.metaDescription),
+                excerpt: stripOuterQuotes(formData.excerpt),
+                category: cleanSlug === 'ai-content-vs-human-content' ? 'Content Writing' : formData.category,
+            };
             const tagsArray = formData.tags.split(',').map(tag => tag.trim().replace(/^#/, '')).filter(tag => tag !== '');
             const postPayload = { ...canonicalFormData, tags: tagsArray };
             

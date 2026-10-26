@@ -66,6 +66,7 @@ export default defineConfig(({ mode }) => {
           '/us-market', '/uk-market', '/pakistan-market', '/canada-market', '/poland-market',
           '/australia-market', '/privacy', '/terms', '/blog', '/blog/custom-web-development-company',
           '/blog/content-calendar-strategy', '/blog/brand-strategy-vs-logo-design-pakistan-sme',
+          '/blog/ai-content-vs-human-content',
           '/local-seo-for-small-business', '/local-seo-citation-building', '/white-label-local-seo',
           '/local-seo-audit', '/website-contract', '/contact'
         ],
@@ -119,6 +120,7 @@ export default defineConfig(({ mode }) => {
             { url: '/privacy', changefreq: 'yearly', priority: 0.3, title: 'Privacy Policy | Data Protection & Compliance | AbuQitmirLabs', description: 'AbuQitmirLabs privacy policy: how we collect, use, and protect your data. Learn about our security measures, cookie use, and GDPR/APP compliance.' },
             { url: '/blog/content-calendar-strategy', changefreq: 'weekly', priority: 0.9, title: 'How to Build a Content Calendar That Gets Followed | AbuQitmirLabs', description: 'Content Calendar: A step-by-step guide to building a content calendar your team will actually follow. Includes templates, cadence recommendations, and tools.' },
             { url: '/blog/brand-strategy-vs-logo-design-pakistan-sme', changefreq: 'weekly', priority: 0.9, title: 'Brand Strategy vs Logo Design Pakistan | AbuQitmirLabs', description: 'Brand strategy vs logo design for Pakistani SMEs: real PKR pricing (PKR 3,000–50,000 vs PKR 80,000+), deliverables, and a founder decision matrix.' },
+            { url: '/blog/ai-content-vs-human-content', changefreq: 'weekly', priority: 0.9, title: 'AI Content vs Human Content 2026 | AbuQitmirLabs', description: "Learn what Google's 2026 guidelines actually say about AI content vs human content. Discover the E-E-A-T rules and how to safely rank in search." },
           ];
 
           const fs = await import('fs');
@@ -161,15 +163,18 @@ export default defineConfig(({ mode }) => {
             if (response.ok) {
               const data = await response.json();
               if (data && data.documents) {
+                const cleanQuote = (val: string) =>
+                  (val || '').trim().replace(/^(?:&quot;|["'“”])+|(?:&quot;|["'“”])+$/gi, '').trim();
                 fetchedPosts = data.documents.map((doc: any) => {
                   const fields = doc.fields || {};
+                  const slugVal = fields.slug?.stringValue || '';
                   return {
-                    slug: fields.slug?.stringValue || '',
+                    slug: slugVal,
                     title: fields.title?.stringValue || '',
-                    excerpt: fields.excerpt?.stringValue || '',
+                    excerpt: cleanQuote(fields.metaDescription?.stringValue || fields.excerpt?.stringValue || ''),
                     published: fields.published?.booleanValue ?? false,
                     createdAt: fields.createdAt?.timestampValue || new Date().toISOString(),
-                    category: fields.category?.stringValue || 'Software',
+                    category: slugVal === 'ai-content-vs-human-content' ? 'Content Writing' : (fields.category?.stringValue || 'Software'),
                     author: fields.author?.stringValue || 'Shiraz Almadani',
                   };
                 }).filter((p: any) => p.published && p.slug);
@@ -177,13 +182,15 @@ export default defineConfig(({ mode }) => {
             }
           } catch (err: any) {}
 
-          const dynamicRoutes = fetchedPosts.map(post => ({
-            url: `/blog/${post.slug}`,
-            changefreq: 'weekly' as const,
-            priority: 0.8,
-            title: `${post.title} | AbuQitmirLabs Journal`,
-            description: post.excerpt || 'Technical Insights from Shiraz Almadani.'
-          }));
+          const dynamicRoutes = fetchedPosts
+            .filter(post => !baseRoutes.some(b => b.url === `/blog/${post.slug}`))
+            .map(post => ({
+              url: `/blog/${post.slug}`,
+              changefreq: 'weekly' as const,
+              priority: 0.8,
+              title: post.title.includes('AbuQitmirLabs') ? post.title : `${post.title} | AbuQitmirLabs`,
+              description: post.excerpt || 'Technical Insights from Shiraz Almadani.'
+            }));
 
           const routes = [...baseRoutes, ...dynamicRoutes];
 
@@ -534,7 +541,8 @@ export default defineConfig(({ mode }) => {
             
             let routeHtml = baseHtml;
             const safeTitle = route.title.replace(/&/g, '&amp;');
-            const safeDesc = route.description.replace(/"/g, '&quot;').replace(/&/g, '&amp;');
+            const strippedDesc = route.description.trim().replace(/^(?:&quot;|["'“”])+|(?:&quot;|["'“”])+$/gi, '').trim();
+            const safeDesc = strippedDesc.replace(/"/g, '&quot;').replace(/&/g, '&amp;');
             
             routeHtml = routeHtml.replace(/<title\b[^>]*>[^<]*<\/title>/gi, '').replace('</head>', `  <title data-rh="true">${safeTitle}</title>\n</head>`);
             routeHtml = routeHtml.replace(/<meta\b[^>]*property="og:title"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*name="twitter:title"[^>]*\/?>/gi, '').replace('</head>', `  <meta data-rh="true" property="og:title" content="${safeTitle}" />\n  <meta data-rh="true" name="twitter:title" content="${safeTitle}" />\n</head>`);
@@ -659,7 +667,7 @@ export default defineConfig(({ mode }) => {
             if (route.url === '/blog/brand-strategy-vs-logo-design-pakistan-sme') {
               const seoMeta = SEO_ROUTES_METADATA['/blog/brand-strategy-vs-logo-design-pakistan-sme'];
               if (seoMeta && seoMeta.schemaJsonLd) {
-                routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json" data-rh="true">\n${JSON.stringify(seoMeta.schemaJsonLd, null, 2)}\n  </script>\n</head>`);
+                routeHtml = routeHtml.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json" data-rh="true">\n${JSON.stringify(seoMeta.schemaJsonLd, null, 2)}\n  </script>\n</head>`);
               }
               if (seoMeta && seoMeta.ogImage) {
                 routeHtml = routeHtml
@@ -670,6 +678,27 @@ export default defineConfig(({ mode }) => {
               }
               const brandStrategyHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader('/blog/brand-strategy-vs-logo-design-pakistan-sme')}<main id="main-content" class="max-w-4xl mx-auto px-6 pt-36 pb-20"><h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-8 font-serif">Brand Strategy vs Logo Design Pakistan | AbuQitmirLabs</h1><article class="prose prose-invert max-w-none text-zinc-300"><h2>Introduction</h2><p>Most Pakistani SMEs treat branding as a one-time transaction. They hire a freelancer, pay PKR 10,000 for a visual mark, slap it on a website, and wonder why they cannot command premium prices or attract serious clients.</p><h2>Quick Verdict: The Difference in 50 Words</h2><p>A logo is a single visual mark that gives you a PNG and SVG. Brand strategy is the comprehensive system of positioning, typography, color palettes, and guidelines that tells you how to use that logo. In Pakistan, a logo costs PKR 3,000 to 50,000, while a full brand strategy starts at PKR 80,000.</p><h2>The Problem: Why SMEs Get This Wrong</h2><h2>What Is a Logo? (And What It Is Not)</h2><h2>What Is a Brand Strategy?</h2><h2 id="cost-comparison-pkr-pricing-for-pakistani-smes">Cost Comparison: PKR Pricing for Pakistani SMEs</h2><h2>The Decision Matrix: Logo or Strategy First?</h2><h2>Why Cheap Logos Hurt Your Business Long-Term</h2><h2>Frequently Asked Questions</h2><h3>What is the difference between a logo and brand strategy?</h3><p>A logo is a single visual mark. Brand strategy is the comprehensive plan that defines your positioning, target audience, brand voice, and visual identity system.</p><h3>How much does a logo cost in Pakistan?</h3><p>In Pakistan, a freelance logo design can range from PKR 3,000 to PKR 15,000. A professional design agency might charge between PKR 20,000 and PKR 50,000 for a comprehensive logo suite.</p><h3>How much does brand strategy cost in Pakistan?</h3><p>A full brand strategy and identity system for an SME in Pakistan typically starts around PKR 80,000 and can exceed PKR 250,000 depending on the agency's expertise, the depth of research, and the deliverables.</p><h2>Conclusion</h2></article></main></div>`;
               routeHtml = replaceRootElement(routeHtml, brandStrategyHtml, '/blog/brand-strategy-vs-logo-design-pakistan-sme');
+              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
+              continue;
+            }
+
+            if (route.url === '/blog/ai-content-vs-human-content') {
+              const seoMeta = SEO_ROUTES_METADATA['/blog/ai-content-vs-human-content'];
+              if (seoMeta && seoMeta.schemaJsonLd) {
+                routeHtml = routeHtml
+                  .replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi, '')
+                  .replace('</head>', `  <script type="application/ld+json" data-rh="true">\n${JSON.stringify(seoMeta.schemaJsonLd, null, 2)}\n  </script>\n</head>`);
+              }
+              if (seoMeta && seoMeta.ogImage) {
+                routeHtml = routeHtml
+                  .replace(/<meta\b[^>]*property="og:image"[^>]*\/?>/gi, '')
+                  .replace(/<meta\b[^>]*name="twitter:image"[^>]*\/?>/gi, '')
+                  .replace(/<meta\b[^>]*property="og:type"[^>]*\/?>/gi, '')
+                  .replace(/<meta\b[^>]*property="article:section"[^>]*\/?>/gi, '')
+                  .replace('</head>', `  <meta data-rh="true" property="og:type" content="article" />\n  <meta data-rh="true" property="article:section" content="Content Writing" />\n  <meta data-rh="true" property="og:image" content="${seoMeta.ogImage}" />\n  <meta data-rh="true" name="twitter:image" content="${seoMeta.ogImage}" />\n</head>`);
+              }
+              const aiContentVsHumanHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader('/blog/ai-content-vs-human-content')}<main id="main-content" class="max-w-4xl mx-auto px-6 pt-36 pb-20"><h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-8 font-serif">AI Content vs Human Content 2026 | AbuQitmirLabs</h1><article class="prose prose-invert max-w-none text-zinc-300"><h2>Introduction</h2><p>In 2026, roughly 60% of all Google searches are zero-click. Users get their answers directly from AI Overviews, featured snippets, and knowledge panels without ever visiting a website. Google does not penalize AI content. Google penalizes unhelpful content.</p><h2>Quick Verdict: Google's 2026 Stance on AI Content</h2><p>Google does not care whether AI or a human wrote the content. Google cares about E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness). If the content is helpful, accurate, and demonstrates first-hand experience, it will rank.</p><h2>What Google's 2026 Guidelines Actually Say</h2><h2>Why Pure AI Content Fails in 2026</h2><h2>The E-E-A-T Framework: What Humans Do That AI Cannot</h2><h2>The "Human-in-the-Loop" Workflow (How We Do It)</h2><h3>Step 1: Human Strategy and Keyword Intent</h3><h3>Step 2: AI Research and Structuring</h3><h3>Step 3: The "Human Experience" Injection</h3><h3>Step 4: AI Drafting (Section by Section)</h3><h3>Step 5: Ruthless Human Editing and Fact-Checking</h3><h2>Comparison: Pure AI vs Human-in-the-Loop vs Pure Human</h2><h2>How to Optimize Content for AI Overviews (Zero-Click Search)</h2><h2>Frequently Asked Questions</h2><h3>Does Google penalize AI content in 2026?</h3><p>No. Google does not penalize content simply because it was generated by AI. However, Google does penalize unoriginal, low-quality, or spammy content.</p><h3>Can Google detect AI-written content?</h3><p>Yes. Advanced language models and search algorithms can easily detect the predictable patterns, syntax, and lack of burstiness typical of raw AI output.</p><h3>What is the best ratio of AI to human effort in content creation?</h3><p>A healthy benchmark is the 30/70 rule: use AI for 30% of the work and humans for 70% of the work.</p><h2>Conclusion</h2></article></main></div>`;
+              routeHtml = replaceRootElement(routeHtml, aiContentVsHumanHtml, '/blog/ai-content-vs-human-content');
               fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
               continue;
             }

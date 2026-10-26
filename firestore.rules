@@ -38,7 +38,8 @@ service cloud.firestore {
              data.slug is string && data.slug.size() > 0 && data.slug.size() <= 100 && data.slug.matches('^[a-z0-9-]+$') &&
              data.authorId == request.auth.uid &&
              data.author is string && data.author.size() <= 100 &&
-             (data.category in ["AI", "Software", "Business", "App", "Development"] || !data.keys().contains('category')) &&
+             (data.category in ["AI", "Software", "Business", "App", "Development", "Content Writing", "SEO", "Graphic Design", "Digital Marketing"] || !data.keys().contains('category')) &&
+             (data.metaDescription is string && data.metaDescription.size() <= 1000 || !data.keys().contains('metaDescription')) &&
              (data.excerpt is string && data.excerpt.size() <= 1000 || !data.keys().contains('excerpt')) &&
              (data.coverImage is string && data.coverImage.size() <= 1000 || !data.keys().contains('coverImage')) &&
              (data.coverImageAlt is string && data.coverImageAlt.size() <= 1000 || !data.keys().contains('coverImageAlt')) &&

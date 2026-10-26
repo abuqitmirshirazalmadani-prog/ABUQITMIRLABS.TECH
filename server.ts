@@ -448,11 +448,16 @@ app.post("/api/publish-sync", async (req, res) => {
         // Commit Post JSON/Markdown to GitHub to ensure repository content sync and trigger Vercel
         if (post && post.slug) {
           const cleanSlug = post.slug.replace(/^\/+/, "").replace(/^blog\//, "");
+          const stripQuotes = (s?: string) =>
+            (s || "").trim().replace(/^(?:&quot;|["'“”])+|(?:&quot;|["'“”])+$/gi, "").trim();
           const postMeta = {
             title: post.title || "",
             slug: cleanSlug,
-            excerpt: post.excerpt || "",
-            category: post.category || "AI",
+            metaDescription: stripQuotes(post.metaDescription || post.excerpt || ""),
+            excerpt: stripQuotes(post.excerpt || ""),
+            coverImage: post.coverImage || "",
+            coverImageAlt: post.coverImageAlt || "",
+            category: cleanSlug === "ai-content-vs-human-content" ? "Content Writing" : (post.category || "AI"),
             author: post.author || "Abu Qitmir Mohammad Shiraz Al-Madani",
             published: post.published ?? true,
             tags: post.tags || [],

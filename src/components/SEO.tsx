@@ -70,12 +70,19 @@ export const SEO: React.FC<SEOProps> = ({
         : `${staticBlogPost.title} | AbuQitmirLabs`
       : DEFAULT_TITLE);
 
-  const resolvedDescription =
+  const stripOuterQuotes = (val?: string) =>
+    (val || '')
+      .trim()
+      .replace(/^(?:&quot;|["'“”])+|(?:&quot;|["'“”])+$/gi, '')
+      .trim();
+
+  const resolvedDescription = stripOuterQuotes(
     description ||
-    routeMeta?.description ||
-    staticBlogPost?.metaDescription ||
-    staticBlogPost?.excerpt ||
-    DEFAULT_DESCRIPTION;
+      routeMeta?.description ||
+      staticBlogPost?.metaDescription ||
+      staticBlogPost?.excerpt ||
+      DEFAULT_DESCRIPTION
+  );
 
   const resolvedCanonical =
     canonical ||
@@ -93,8 +100,9 @@ export const SEO: React.FC<SEOProps> = ({
     (Array.isArray(staticBlogPost?.tags) ? staticBlogPost.tags.join(', ') : undefined);
 
   const resolvedOgTitle = ogTitle || routeMeta?.ogTitle || resolvedTitle;
-  const resolvedOgDescription =
-    ogDescription || routeMeta?.ogDescription || resolvedDescription;
+  const resolvedOgDescription = stripOuterQuotes(
+    ogDescription || routeMeta?.ogDescription || resolvedDescription
+  );
   const resolvedOgImage =
     ogImage || routeMeta?.ogImage || staticBlogPost?.coverImage || DEFAULT_IMAGE;
   const resolvedOgImageAlt =
@@ -109,8 +117,9 @@ export const SEO: React.FC<SEOProps> = ({
     twitterCard || routeMeta?.twitterCard || 'summary_large_image';
   const resolvedTwitterTitle =
     twitterTitle || routeMeta?.twitterTitle || resolvedOgTitle;
-  const resolvedTwitterDescription =
-    twitterDescription || routeMeta?.twitterDescription || resolvedOgDescription;
+  const resolvedTwitterDescription = stripOuterQuotes(
+    twitterDescription || routeMeta?.twitterDescription || resolvedOgDescription
+  );
   const resolvedTwitterImage =
     twitterImage || routeMeta?.twitterImage || resolvedOgImage;
   const resolvedRobots =
@@ -118,7 +127,7 @@ export const SEO: React.FC<SEOProps> = ({
     routeMeta?.robots ||
     'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1';
 
-  // Synchronize head attributes in-place and guarantee strictly ONE <title> tag in <head>
+  // Synchronize head attributes in-place and guarantee strictly ONE <title> and ONE <script type="application/ld+json"> tag in <head>
   useEffect(() => {
     const isReactManagedNode = (node: Element) =>
       Object.keys(node).some(
@@ -146,8 +155,35 @@ export const SEO: React.FC<SEOProps> = ({
       }
     };
 
+    const deduplicateJsonLdScripts = () => {
+      const ldNodes = Array.from(
+        document.head.querySelectorAll('script[type="application/ld+json"]')
+      );
+      if (ldNodes.length > 1) {
+        const reactLdNodes = ldNodes.filter(
+          (node) => isReactManagedNode(node) || node.getAttribute('data-rh') === 'true'
+        );
+        // Prefer the script that matches the current canonical URL or is the latest React Helmet script
+        const matchingCanonicalNode =
+          ldNodes
+            .slice()
+            .reverse()
+            .find((node) => (node.textContent || '').includes(resolvedCanonical)) ||
+          (reactLdNodes.length > 0
+            ? reactLdNodes[reactLdNodes.length - 1]
+            : ldNodes[ldNodes.length - 1]);
+
+        ldNodes.forEach((node) => {
+          if (node !== matchingCanonicalNode) {
+            node.remove();
+          }
+        });
+      }
+    };
+
     const syncHeadInPlace = () => {
       deduplicateTitleTags();
+      deduplicateJsonLdScripts();
 
       if (resolvedTitle) {
         const titleNodes = document.head.querySelectorAll('title');
@@ -223,6 +259,9 @@ export const SEO: React.FC<SEOProps> = ({
     const observer = new MutationObserver(() => {
       if (document.head.querySelectorAll('title').length > 1) {
         deduplicateTitleTags();
+      }
+      if (document.head.querySelectorAll('script[type="application/ld+json"]').length > 1) {
+        deduplicateJsonLdScripts();
       }
     });
     observer.observe(document.head, { childList: true });
