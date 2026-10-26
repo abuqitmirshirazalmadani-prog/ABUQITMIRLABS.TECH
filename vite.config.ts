@@ -530,22 +530,36 @@ export default defineConfig(({ mode }) => {
             routeHtml = routeHtml.replace(/<link\s+rel="canonical"[^>]*\/?>/gi, '').replace('</head>', `  <link rel="canonical" data-rh="true" href="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
             
             const replaceRootElement = (htmlSource: string, newInnerHtml: string, renderedRouteAttr?: string) => {
-              const startMatch = htmlSource.match(/<div\s+id=["']root["'][^>]*>/i);
-              if (!startMatch || startMatch.index === undefined) return htmlSource;
-              const startIdx = startMatch.index;
-              const scriptOrBodyMatch = htmlSource.slice(startIdx).match(/(<script\b|<\/body>)/i);
-              if (scriptOrBodyMatch && scriptOrBodyMatch.index !== undefined) {
-                const segment = htmlSource.slice(startIdx, startIdx + scriptOrBodyMatch.index);
-                const lastCloseDivIdx = segment.lastIndexOf('</div>');
-                if (lastCloseDivIdx !== -1) {
-                  const endIdx = startIdx + lastCloseDivIdx + '</div>'.length;
-                  const attrStr = renderedRouteAttr ? ` data-rendered-route="${renderedRouteAttr}"` : '';
-                  const newRoot = `<div id="root"${attrStr}>${newInnerHtml}</div>`;
+              const attrStr = renderedRouteAttr ? ` data-rendered-route="${renderedRouteAttr}"` : '';
+              const newRoot = `<div id="root"${attrStr}>${newInnerHtml}</div>`;
+              
+              const startTag = '<div id="root"';
+              const startIdx = htmlSource.indexOf(startTag);
+              
+              if (startIdx === -1) {
+                return htmlSource.replace(/<\/body>/i, `${newRoot}\n</body>`);
+              }
+              
+              const endOfStartTagIdx = htmlSource.indexOf('>', startIdx) + 1;
+              const afterStartTag = htmlSource.slice(endOfStartTagIdx);
+              
+              const scriptIdx = afterStartTag.search(/<script/i);
+              const bodyIdx = afterStartTag.search(/<\/body>/i);
+              
+              let boundaryIdx = -1;
+              if (scriptIdx !== -1 && (bodyIdx === -1 || scriptIdx < bodyIdx)) boundaryIdx = scriptIdx;
+              else if (bodyIdx !== -1) boundaryIdx = bodyIdx;
+              
+              if (boundaryIdx !== -1) {
+                const beforeBoundary = afterStartTag.slice(0, boundaryIdx);
+                const lastDivIdx = beforeBoundary.lastIndexOf('</div>');
+                if (lastDivIdx !== -1) {
+                  const endIdx = endOfStartTagIdx + lastDivIdx + 6;
                   return htmlSource.slice(0, startIdx) + newRoot + htmlSource.slice(endIdx);
                 }
               }
-              const attrStr = renderedRouteAttr ? ` data-rendered-route="${renderedRouteAttr}"` : '';
-              return htmlSource.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root"${attrStr}>${newInnerHtml}</div>`);
+              
+              return htmlSource;
             };
 
             if (route.url === '/') {
@@ -672,6 +686,8 @@ export default defineConfig(({ mode }) => {
             // SPECIFIC ARTICLE: AI Content vs Human Content
             // ========================================================
             if (route.url === '/blog/ai-content-vs-human-content') {
+              console.log('✅ [SEO Generator] Injecting static HTML for AI Content vs Human Content');
+              
               const aiContentSchema = {
                 "@context": "https://schema.org",
                 "@type": "Article",
