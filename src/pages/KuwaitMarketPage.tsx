@@ -481,10 +481,10 @@ const KuwaitMarketPage: React.FC = () => {
                 </h3>
                 <div className="font-sans font-light text-[#9ca3af] leading-relaxed text-base md:text-lg space-y-6">
                   <p>
-                    We build bespoke web applications and SaaS platforms for Kuwaiti businesses using Next.js, React, Node.js, and Laravel. Common builds include e-commerce platforms with native KNET integration, B2B portals, internal dashboards, and customer self-service systems.
+                    We build bespoke web applications and SaaS platforms through our <Link to="/custom-software" className="text-[#38bdf8] underline hover:text-white transition-colors">custom software development Kuwait</Link> practice using Next.js, React, Node.js, and Laravel. Common builds include e-commerce platforms with native KNET integration, B2B portals, internal dashboards, and customer self-service systems.
                   </p>
                   <p>
-                    Every build includes Arabic/English bilingual UI with proper RTL layout, Kuwait-compatible payment gateway integration, and performance optimization for Kuwait's mobile network conditions. We also develop native and Flutter mobile apps with biometric authentication and KNET checkouts.
+                    Every build includes Arabic/English bilingual UI with proper RTL layout, Kuwait-compatible payment gateway integration, and performance optimization for Kuwait's mobile network conditions. We also deliver native and cross-platform <Link to="/mobile-app-development" className="text-[#38bdf8] underline hover:text-white transition-colors">mobile app development Kuwait</Link> solutions in Flutter with biometric authentication and KNET checkouts.
                   </p>
                 </div>
               </div>
@@ -522,7 +522,7 @@ const KuwaitMarketPage: React.FC = () => {
                 </h3>
                 <div className="font-sans font-light text-[#9ca3af] leading-relaxed text-base md:text-lg space-y-6">
                   <p>
-                    We build custom AI agents with Arabic conversational capability for Kuwaiti businesses. Typical deployments include WhatsApp-based customer support automation, appointment booking agents, and document processing for intake and compliance workflows.
+                    Through our specialized <Link to="/ai-agent-development" className="text-[#38bdf8] underline hover:text-white transition-colors">AI agent development Kuwait</Link> engineering, we build custom AI agents with Arabic conversational capability for Kuwaiti businesses. Typical deployments include WhatsApp-based customer support automation, appointment booking agents, and document processing for intake and compliance workflows.
                   </p>
                   <p>
                     Our agents are designed to handle Gulf Arabic dialects and switch effortlessly between Arabic and English based on customer preference.
@@ -670,7 +670,7 @@ const KuwaitMarketPage: React.FC = () => {
               to="/contact"
               className="bg-[#0ea5e9] text-black text-2xl font-bold px-16 py-8 rounded-full hover:bg-white transition-all transform hover:scale-105 uppercase tracking-tighter shadow-2xl shadow-[#0ea5e9]/30"
             >
-              Get Free Kuwait SEO Audit
+              Get a free Kuwait consultation
             </Link>
             <div className="text-[#38bdf8] font-mono text-xs uppercase tracking-[0.4em] max-w-[320px] text-left border-l-2 border-[#0ea5e9] pl-8 leading-relaxed h-16 flex items-center">
               SALMIYA &amp; KUWAIT CITY // AST (UTC+3) READY

@@ -42,6 +42,10 @@ const QatarMarketPage: React.FC = () => {
 
   const faqData = [
     {
+      q: "Does AbuQitmirLabs serve clients in Qatar?",
+      a: "Yes. AbuQitmirLabs provides AI agent development, conversational AI, custom software development, and digital transformation services to businesses in Doha and across Qatar. All work is delivered remotely with dedicated project management and Qatar time zone scheduling."
+    },
+    {
       q: "What makes an AI consulting company in Qatar compliant with local data laws?",
       a: "An enterprise AI consulting company in Qatar must adhere strictly to the National Cyber Security Agency (NCSA) frameworks and Qatar PDPPL Law No. 13 on personal data protection. At AbuQitmirLabs, we design private cloud topologies, on-premise vector embeddings, and zero-data-retention pipelines ensuring proprietary Doha corporate data and government records remain within sovereign Qatari boundaries."
     },
@@ -260,6 +264,18 @@ const QatarMarketPage: React.FC = () => {
         </div>
       </section>
 
+      {/* AEO Direct Answer Block */}
+      <section className="py-12 px-6 md:px-10 border-t border-white/5 bg-[#09070c]">
+        <div className="max-w-4xl mx-auto p-6 md:p-8 rounded-2xl bg-zinc-900/90 border-l-4 border-[#f43f5e] shadow-xl">
+          <h3 className="text-lg md:text-xl font-bold text-white mb-2">
+            Does AbuQitmirLabs serve clients in Qatar?
+          </h3>
+          <p className="text-sm md:text-base text-gray-200 leading-relaxed">
+            Yes. AbuQitmirLabs provides AI agent development, conversational AI, custom software development, and digital transformation services to businesses in Doha and across Qatar. All work is delivered remotely with dedicated project management and Qatar time zone scheduling.
+          </p>
+        </div>
+      </section>
+
       {/* Marquee Branding */}
       <section className="overflow-hidden border-y border-white/5 bg-[#09070c] py-14">
         <div className="flex animate-marquee whitespace-nowrap gap-12 text-4xl md:text-7xl font-semibold uppercase tracking-tight opacity-90 italic">
@@ -398,7 +414,7 @@ const QatarMarketPage: React.FC = () => {
                     As a recognized <strong>ai agency in Qatar</strong>, AbuQitmirLabs guides executive leadership teams, family offices, and sovereign-backed enterprises through the complete artificial intelligence lifecycle. Our <strong>ai consultants in Qatar</strong> cut through industry hyperbole, developing deterministic roadmaps that link advanced machine intelligence directly to EBITDA expansion and labor productivity.
                   </p>
                   <p>
-                    Through our deep expertise in <Link to="/ai-agent-development" className="text-[#fb7185] underline font-medium hover:text-white transition-colors">Custom AI Agents</Link>, we build autonomous multi-agent pipelines that orchestrate complex business logic. From automated document analysis in compliance departments to predictive telemetry for maritime and energy operators, our <strong>ai automation tools in Qatar</strong> function with mathematical precision while respecting sovereign data privacy mandates under NCSA guidelines.
+                    Through our deep expertise in <Link to="/ai-agent-development" className="text-[#fb7185] underline font-medium hover:text-white transition-colors">AI agent development Qatar</Link> and <Link to="/solutions/ai-automation" className="text-[#fb7185] underline font-medium hover:text-white transition-colors">AI automation solutions Doha</Link>, we build autonomous multi-agent pipelines that orchestrate complex business logic. From automated document analysis in compliance departments to predictive telemetry for maritime and energy operators, our <strong>ai automation tools in Qatar</strong> function with mathematical precision while respecting sovereign data privacy mandates under NCSA guidelines.
                   </p>
                   <p>
                     Whether engaging our <strong>ai consultant in Doha</strong> for enterprise architecture reviews or hiring our full development pod, we ensure that every model deployment aligns with your technical governance standards.
@@ -526,7 +542,7 @@ const QatarMarketPage: React.FC = () => {
                     In the mobile realm, our studio delivers production-grade <Link to="/mobile-app-development" className="text-[#fb7185] underline font-medium hover:text-white transition-colors">Mobile App Development</Link> in Flutter and native iOS/Android. Every mobile application built for the Qatar territory features seamless integration with local QAR payment rails—including SkipCash, QPAY, and Sadad—alongside biometric authentication, real-time push notification telemetry, and offline-first data caching.
                   </p>
                   <p>
-                    For organizations transitioning legacy infrastructure into the cloud, our <Link to="/custom-software" className="text-[#fb7185] underline font-medium hover:text-white transition-colors">Custom Software</Link> engineers construct scalable SaaS platforms, patient management systems, and enterprise portals that comply with Qatari data residency mandates.
+                    For organizations transitioning legacy infrastructure into the cloud, our <Link to="/custom-software" className="text-[#fb7185] underline font-medium hover:text-white transition-colors">custom software development Qatar</Link> engineers construct scalable SaaS platforms, patient management systems, and enterprise portals that comply with Qatari data residency mandates.
                   </p>
                 </div>
                 <div className="pt-4 flex flex-wrap gap-3">
@@ -806,7 +822,7 @@ const QatarMarketPage: React.FC = () => {
               to="/contact"
               className="w-full sm:w-auto bg-[#f43f5e] text-white text-lg font-bold px-12 py-6 rounded-2xl hover:bg-white hover:text-black transition-all transform hover:scale-105 uppercase tracking-tight shadow-2xl shadow-[#f43f5e]/30 flex items-center justify-center gap-3"
             >
-              <span>Schedule Doha Advisory Session</span>
+              <span>Book a free Qatar consultation</span>
               <ArrowUpRight size={20} />
             </Link>
             <a 

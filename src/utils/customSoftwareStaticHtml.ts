@@ -95,6 +95,14 @@ export const customSoftwareSchema = {
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "What is custom software development?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Custom software development is the process of designing, building, and deploying software built specifically for one business — not adapted from an off-the-shelf product. It gives businesses full ownership, flexibility, and scalability that generic SaaS tools cannot provide."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "What technologies do you use for custom software development?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -195,6 +203,18 @@ export const customSoftwareInitialHtml = `
         <a href="/case-studies" class="px-8 py-4 border border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-all text-sm uppercase tracking-wider">
           View Case Studies
         </a>
+      </div>
+    </section>
+
+    <!-- AEO Direct Answer Block -->
+    <section class="py-10 bg-zinc-950/80 border-b border-white/10" aria-label="Direct Answer">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="bg-zinc-900/90 border border-[#ccff00]/30 rounded-2xl p-6 md:p-8 max-w-4xl">
+          <p class="text-lg md:text-xl font-bold text-white mb-2"><strong>What is custom software development?</strong></p>
+          <p class="text-gray-300 text-base leading-relaxed font-light">
+            Custom software development is the process of designing, building, and deploying software built specifically for one business — not adapted from an off-the-shelf product. It gives businesses full ownership, flexibility, and scalability that generic SaaS tools cannot provide.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -532,6 +552,20 @@ export const customSoftwareInitialHtml = `
               If your team has developers, yes — the codebase is documented and fully yours. If not, we can provide a retainer for ongoing changes, or we can help you hire developers who can maintain it independently.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Markets We Serve -->
+    <section class="py-16 md:py-20 bg-zinc-950/60 border-t border-white/10" aria-labelledby="markets-we-serve-h2">
+      <div class="max-w-7xl mx-auto px-6">
+        <span class="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Global Delivery</span>
+        <h2 id="markets-we-serve-h2" class="text-2xl md:text-4xl font-extrabold tracking-tight mb-6 text-white">Markets We Serve</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a href="/canada-market" class="p-5 rounded-xl bg-zinc-900/60 border border-white/10 hover:border-[#ccff00]/50 text-[#ccff00] font-semibold text-sm transition-all">custom software development Canada</a>
+          <a href="/uk-market" class="p-5 rounded-xl bg-zinc-900/60 border border-white/10 hover:border-[#ccff00]/50 text-[#ccff00] font-semibold text-sm transition-all">custom software development UK</a>
+          <a href="/kuwait-market" class="p-5 rounded-xl bg-zinc-900/60 border border-white/10 hover:border-[#ccff00]/50 text-[#ccff00] font-semibold text-sm transition-all">custom software development Kuwait</a>
+          <a href="/saudi-arabia-market" class="p-5 rounded-xl bg-zinc-900/60 border border-white/10 hover:border-[#ccff00]/50 text-[#ccff00] font-semibold text-sm transition-all">bespoke software development Saudi Arabia</a>
         </div>
       </div>
     </section>

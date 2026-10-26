@@ -162,6 +162,20 @@ const FintechSolutionsPage = () => {
           </div>
         </section>
 
+        {/* AEO Direct Answer Block */}
+        <section className="py-10 bg-zinc-950/80 border-b border-white/10" aria-label="Direct Answer">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="bg-zinc-900/90 border border-[#ccff00]/30 rounded-2xl p-6 md:p-8 max-w-4xl">
+              <h3 className="text-lg md:text-xl font-bold text-white mb-2">
+                What fintech software solutions does AbuQitmirLabs provide?
+              </h3>
+              <p className="text-gray-300 text-base leading-relaxed font-light">
+                AbuQitmirLabs builds custom fintech software including payment platforms, AI fraud detection systems, mortgage underwriting automation, investment tools, and PDPL/HIPAA-compliant financial applications for startups and enterprises in the US, UK, UAE, and Saudi Arabia.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <CountryMarquee />
 
         {/* Section 1: What Are FinTech Solutions? */}
@@ -746,18 +760,37 @@ const FintechSolutionsPage = () => {
 
         {/* Cross-Disciplinary Integration Banner */}
         <section className="py-12 bg-zinc-950 border-b border-white/10" id="cross-disciplinary-links">
-          <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest">Cross-Disciplinary Capabilities</span>
-              <h3 className="text-xl md:text-2xl font-bold text-white mt-1">Explore Related Technology & Healthcare Solutions</h3>
-              <p className="text-gray-400 text-xs mt-1">Discover how our engineering frameworks support regulated industries including healthcare and enterprise software.</p>
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
+              <div>
+                <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest">Cross-Disciplinary Capabilities</span>
+                <h3 className="text-xl md:text-2xl font-bold text-white mt-1">Explore Related Technology & Healthcare Solutions</h3>
+                <p className="text-gray-400 text-xs mt-1">Discover how our engineering frameworks support regulated industries including healthcare and enterprise software.</p>
+              </div>
+              <div className="flex flex-wrap gap-3 shrink-0">
+                <Link to="/solutions/healthcare" className="px-5 py-2.5 bg-zinc-900 border border-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-lg hover:border-[#ccff00] transition-all">
+                  Healthcare Solutions
+                </Link>
+                <Link to="/seo-mastery" className="px-5 py-2.5 bg-zinc-900 border border-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-lg hover:border-[#ccff00] transition-all">
+                  SEO & AEO Services
+                </Link>
+              </div>
             </div>
-            <div className="flex flex-wrap gap-3 shrink-0">
-              <Link to="/solutions/healthcare" className="px-5 py-2.5 bg-zinc-900 border border-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-lg hover:border-[#ccff00] transition-all">
-                Healthcare Solutions
+            <div className="pt-6 border-t border-white/10 flex flex-wrap items-center gap-4 text-sm">
+              <Link to="/blog/custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting" className="px-4 py-2 rounded-lg bg-zinc-900/70 border border-white/10 text-[#ccff00] hover:border-[#ccff00]/50 transition-all font-medium">
+                AI fraud detection for fintech
               </Link>
-              <Link to="/seo-mastery" className="px-5 py-2.5 bg-zinc-900 border border-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-lg hover:border-[#ccff00] transition-all">
-                SEO & AEO Services
+              <Link to="/saudi-arabia-market" className="px-4 py-2 rounded-lg bg-zinc-900/70 border border-white/10 text-[#ccff00] hover:border-[#ccff00]/50 transition-all font-medium">
+                fintech software development Saudi Arabia
+              </Link>
+              <Link to="/uae-market" className="px-4 py-2 rounded-lg bg-zinc-900/70 border border-white/10 text-[#ccff00] hover:border-[#ccff00]/50 transition-all font-medium">
+                fintech solutions UAE
+              </Link>
+              <Link to="/ai-agent-development" className="px-4 py-2 rounded-lg bg-zinc-900/70 border border-white/10 text-[#ccff00] hover:border-[#ccff00]/50 transition-all font-medium">
+                AI agents for financial services
+              </Link>
+              <Link to="/custom-software" className="px-4 py-2 rounded-lg bg-zinc-900/70 border border-white/10 text-[#ccff00] hover:border-[#ccff00]/50 transition-all font-medium">
+                custom fintech software development
               </Link>
             </div>
           </div>

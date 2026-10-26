@@ -1054,7 +1054,15 @@ export const AiReadinessScorePage: React.FC = () => {
                 className="px-6 py-3.5 bg-white/5 hover:bg-white/10 text-white font-semibold text-xs rounded-xl border border-white/10 transition-colors flex items-center gap-2"
               >
                 <BrainCircuit className="w-4 h-4 text-[#ccff00]" />
-                <span>Build Custom AI with AbuQitmirLabs</span>
+                <span>AI agent development services</span>
+              </Link>
+
+              <Link
+                to="/solutions/ai-automation"
+                className="px-6 py-3.5 bg-white/5 hover:bg-white/10 text-white font-semibold text-xs rounded-xl border border-white/10 transition-colors flex items-center gap-2"
+              >
+                <Zap className="w-4 h-4 text-[#ccff00]" />
+                <span>AI automation solutions</span>
               </Link>
 
               <button
@@ -1156,13 +1164,27 @@ export const AiReadinessScorePage: React.FC = () => {
                 to="/ai-agent-development"
                 className="px-8 py-4 bg-[#ccff00] text-black font-extrabold text-sm rounded-xl hover:bg-[#b8e600] transition-all shadow-xl shadow-[#ccff00]/15"
               >
-                Explore AI Agent Development →
+                AI agent development services
+              </Link>
+              <Link
+                to="/solutions/ai-automation"
+                className="px-6 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold text-sm rounded-xl border border-white/10 transition-colors"
+              >
+                AI automation solutions
               </Link>
               <Link
                 to="/contact"
                 className="px-6 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold text-sm rounded-xl border border-white/10 transition-colors"
               >
-                Schedule Technical Architecture Call
+                Book a free AI consultation
+              </Link>
+            </div>
+            <div className="mt-6">
+              <Link
+                to="/blog/ai-agents-cost-benefit-analysis"
+                className="text-xs sm:text-sm text-[#ccff00] hover:underline font-mono"
+              >
+                Is AI worth it for your business? →
               </Link>
             </div>
           </div>

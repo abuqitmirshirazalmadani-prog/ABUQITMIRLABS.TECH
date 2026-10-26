@@ -95,6 +95,14 @@ export const mobileAppSchema = {
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "How much does mobile app development cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mobile app development costs range from $5,000 for simple apps to $150,000+ for complex enterprise platforms. Cost depends on platform (iOS, Android, cross-platform), features, and team location. Pakistan-based teams like AbuQitmirLabs deliver the same quality at 60-70% lower cost than US or UK agencies."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Do you build mobile apps for both iOS and Android?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -203,6 +211,18 @@ export const mobileAppInitialHtml = `
         <a href="/case-studies/tajweedpage" class="px-8 py-4 border border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-all text-sm uppercase tracking-wider">
           View Case Study
         </a>
+      </div>
+    </section>
+
+    <!-- AEO Direct Answer Block -->
+    <section class="py-10 bg-zinc-950/80 border-b border-white/10" aria-label="Direct Answer">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="bg-zinc-900/90 border border-[#ccff00]/30 rounded-2xl p-6 md:p-8 max-w-4xl">
+          <p class="text-lg md:text-xl font-bold text-white mb-2"><strong>How much does mobile app development cost?</strong></p>
+          <p class="text-gray-300 text-base leading-relaxed font-light">
+            Mobile app development costs range from $5,000 for simple apps to $150,000+ for complex enterprise platforms. Cost depends on platform (iOS, Android, cross-platform), features, and team location. Pakistan-based teams like AbuQitmirLabs deliver the same quality at 60-70% lower cost than US or UK agencies.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -532,8 +552,11 @@ export const mobileAppInitialHtml = `
           <p class="text-gray-300 text-base leading-relaxed mb-6 font-light">
             Our engineering approach covers <a href="/custom-software" class="text-[#ccff00] hover:underline font-medium">custom software</a>, <a href="/web-development" class="text-[#ccff00] hover:underline font-medium">web development</a>, and <a href="/ai-agent-development" class="text-[#ccff00] hover:underline font-medium">AI agent integration</a> alongside mobile — which means the app we build for you fits into a coherent technical architecture, not a patchwork of disconnected tools.
           </p>
+          <p class="text-gray-300 text-base leading-relaxed mb-4 font-light">
+            We also work across multiple markets. Whether you're building for an audience in the <a href="/us-market" class="text-[#ccff00] hover:underline font-medium">US</a>, <a href="/uk-market" class="text-[#ccff00] hover:underline font-medium">UK</a>, or <a href="/pakistan-market" class="text-[#ccff00] hover:underline font-medium">Pakistan</a>, we understand the platform expectations, payment integrations, and compliance requirements that differ by region — including <a href="/qatar-market" class="text-[#ccff00] hover:underline font-medium">mobile app development Qatar</a>, <a href="/saudi-arabia-market" class="text-[#ccff00] hover:underline font-medium">app development Saudi Arabia</a>, and <a href="/pakistan-market" class="text-[#ccff00] hover:underline font-medium">app developers Karachi Pakistan</a>.
+          </p>
           <p class="text-gray-300 text-base leading-relaxed font-light">
-            We also work across multiple markets. Whether you're building for an audience in the <a href="/us-market" class="text-[#ccff00] hover:underline font-medium">US</a>, <a href="/uk-market" class="text-[#ccff00] hover:underline font-medium">UK</a>, or <a href="/pakistan-market" class="text-[#ccff00] hover:underline font-medium">Pakistan</a>, we understand the platform expectations, payment integrations, and compliance requirements that differ by region.
+            Read our complete pricing guide: <a href="/blog/mobile-app-development-cost-2026-complete-pricing-guide" class="text-[#ccff00] hover:underline font-medium">How much does mobile app development cost in 2026?</a>
           </p>
         </div>
       </div>

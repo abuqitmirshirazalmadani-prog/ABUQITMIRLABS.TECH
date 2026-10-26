@@ -227,6 +227,20 @@ const MobileAppDevelopmentPage: React.FC = () => {
           </div>
         </section>
 
+        {/* AEO Direct Answer Block */}
+        <section className="py-10 bg-zinc-950/80 border-b border-white/10" aria-label="Direct Answer">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="bg-zinc-900/90 border border-[#ccff00]/30 rounded-2xl p-6 md:p-8 max-w-4xl">
+              <p className="text-lg md:text-xl font-bold text-white mb-2">
+                <strong>How much does mobile app development cost?</strong>
+              </p>
+              <p className="text-gray-300 text-base leading-relaxed font-light">
+                Mobile app development costs range from $5,000 for simple apps to $150,000+ for complex enterprise platforms. Cost depends on platform (iOS, Android, cross-platform), features, and team location. Pakistan-based teams like AbuQitmirLabs deliver the same quality at 60-70% lower cost than US or UK agencies.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <CountryMarquee />
 
         {/* Section 1: What Is Mobile App Development? */}
@@ -458,8 +472,8 @@ const MobileAppDevelopmentPage: React.FC = () => {
           </div>
 
           <div className="bg-zinc-900/70 p-8 rounded-2xl border border-white/10 max-w-3xl">
-            <p className="text-gray-300 text-sm leading-relaxed mb-6 font-light">
-              The most reliable cost comes from a scoped discovery engagement — a structured requirements session that produces a detailed specification. This gives you a fixed scope to price against.
+            <p className="text-gray-300 text-sm leading-relaxed mb-4 font-light">
+              The most reliable cost comes from a scoped discovery engagement — a structured requirements session that produces a detailed specification. This gives you a fixed scope to price against. Read our full breakdown: <Link to="/blog/mobile-app-development-cost-2026-complete-pricing-guide" className="text-[#ccff00] hover:underline font-semibold">How much does mobile app development cost in 2026?</Link>
             </p>
             <Link 
               to="/contact" 
@@ -503,7 +517,7 @@ const MobileAppDevelopmentPage: React.FC = () => {
               Our engineering approach covers <Link to="/custom-software" className="text-[#ccff00] hover:underline font-medium" aria-label="Explore our custom software development">custom software</Link>, <Link to="/web-development" className="text-[#ccff00] hover:underline font-medium" aria-label="Explore our web development services">web development</Link>, and <Link to="/ai-agent-development" className="text-[#ccff00] hover:underline font-medium" aria-label="Explore our AI agent integration services">AI agent integration</Link> alongside mobile — which means the app we build for you fits into a coherent technical architecture, not a patchwork of disconnected tools.
             </p>
             <p className="text-gray-300 text-base leading-relaxed font-light">
-              We also work across multiple markets. Whether you're building for an audience in the <Link to="/us-market" className="text-[#ccff00] hover:underline font-medium" aria-label="Learn about our US market capabilities">US</Link>, <Link to="/uk-market" className="text-[#ccff00] hover:underline font-medium" aria-label="Learn about our UK market capabilities">UK</Link>, or <Link to="/pakistan-market" className="text-[#ccff00] hover:underline font-medium" aria-label="Learn about our Pakistan market capabilities">Pakistan</Link>, we understand the platform expectations, payment integrations, and compliance requirements that differ by region.
+              We also work across multiple markets. Whether you're building for an audience in the <Link to="/us-market" className="text-[#ccff00] hover:underline font-medium" aria-label="Learn about our US market capabilities">US</Link>, <Link to="/uk-market" className="text-[#ccff00] hover:underline font-medium" aria-label="Learn about our UK market capabilities">UK</Link>, or <Link to="/pakistan-market" className="text-[#ccff00] hover:underline font-medium" aria-label="Learn about our Pakistan market capabilities">Pakistan</Link>, we understand the platform expectations, payment integrations, and compliance requirements that differ by region — including specialized <Link to="/qatar-market" className="text-[#ccff00] hover:underline font-medium">mobile app development Qatar</Link>, <Link to="/saudi-arabia-market" className="text-[#ccff00] hover:underline font-medium">app development Saudi Arabia</Link>, and senior <Link to="/pakistan-market" className="text-[#ccff00] hover:underline font-medium">app developers Karachi Pakistan</Link>.
             </p>
           </div>
         </section>

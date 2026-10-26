@@ -738,7 +738,7 @@ const HealthcarePlatformsPage = () => {
               </div>
 
               <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
-                Mobile applications provide patients and healthcare providers with immediate access to critical health services wherever they are. As part of our healthcare mobile app development services, we build intuitive, cross-platform mobile apps for iOS and Android using Flutter and React Native.
+                Mobile applications provide patients and healthcare providers with immediate access to critical health services wherever they are. As part of our <Link to="/solutions/healthcare/mobile-app-development" className="text-emerald-400 underline hover:text-white transition-colors">healthcare mobile app development</Link> services and regional <Link to="/saudi-arabia-market" className="text-emerald-400 underline hover:text-white transition-colors">healthcare app development Saudi Arabia</Link> programs, we build intuitive, cross-platform mobile apps for iOS and Android using Flutter and React Native.
               </p>
 
               <p className="text-gray-400 text-base leading-relaxed">
@@ -835,7 +835,7 @@ const HealthcarePlatformsPage = () => {
                 Healthcare AI &amp; Automation
               </h2>
               <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
-                Artificial intelligence and workflow automation can dramatically reduce administrative burden, accelerate medical document processing, and improve operational throughput when implemented with strict privacy guardrails. As part of our healthcare AI automation solutions, we build specialized AI agents and automation pipelines designed for medical organizations.
+                Artificial intelligence and workflow automation can dramatically reduce administrative burden, accelerate medical document processing, and improve operational throughput when implemented with strict privacy guardrails. As part of our <Link to="/ai-agent-development" className="text-emerald-400 underline hover:text-white transition-colors">healthcare AI agent development</Link> solutions (learn more in our guide on <Link to="/blog/what-are-healthcare-ai-agents-complete-guide-2026" className="text-emerald-400 underline hover:text-white transition-colors">What are healthcare AI agents?</Link>), we build specialized AI agents and automation pipelines designed for medical organizations.
               </p>
               
               <div className="p-6 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs font-mono leading-relaxed mb-8">
@@ -1295,7 +1295,7 @@ const HealthcarePlatformsPage = () => {
                 to="/contact" 
                 className="inline-flex items-center gap-3 px-10 py-5 bg-[#ccff00] text-black font-extrabold text-sm uppercase tracking-wider rounded-xl hover:scale-105 transition-all shadow-[0_0_40px_rgba(204,255,0,0.4)]"
               >
-                Schedule Healthcare Technical Consultation <ArrowRight className="w-5 h-5" />
+                Book a free healthcare tech consultation <ArrowRight className="w-5 h-5" />
               </Link>
               <Link 
                 to="/about/our-company" 

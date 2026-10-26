@@ -661,7 +661,7 @@ export const healthcareInitialHtml = `
           </div>
 
           <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
-            Mobile applications provide patients and healthcare providers with immediate access to critical health services wherever they are. As part of our healthcare mobile app development services, we build intuitive, cross-platform mobile apps for iOS and Android using Flutter and React Native.
+            Mobile applications provide patients and healthcare providers with immediate access to critical health services wherever they are. As part of our <a href="/solutions/healthcare/mobile-app-development" class="text-emerald-400 underline hover:text-white transition-colors">healthcare mobile app development</a> services, we build intuitive, cross-platform mobile apps for iOS and Android using Flutter and React Native.
           </p>
 
           <p class="text-gray-400 text-base leading-relaxed">
@@ -730,7 +730,7 @@ export const healthcareInitialHtml = `
             Healthcare AI &amp; Automation
           </h2>
           <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
-            Artificial intelligence and workflow automation can dramatically reduce administrative burden, accelerate medical document processing, and improve operational throughput when implemented with strict privacy guardrails. As part of our healthcare AI automation solutions, we build specialized AI agents and automation pipelines designed for medical organizations.
+            Artificial intelligence and workflow automation can dramatically reduce administrative burden, accelerate medical document processing, and improve operational throughput when implemented with strict privacy guardrails. As part of our <a href="/ai-agent-development" class="text-emerald-400 underline hover:text-white transition-colors">custom AI agent development for healthcare</a>, we build specialized AI agents and automation pipelines designed for medical organizations, including <a href="/saudi-arabia-market" class="text-emerald-400 underline hover:text-white transition-colors">healthcare solutions Saudi Arabia</a>. For a comprehensive look at clinical and administrative automation, explore our <a href="/blog/what-are-healthcare-ai-agents-complete-guide-2026" class="text-emerald-400 underline hover:text-white transition-colors">healthcare AI agents guide</a>.
           </p>
           
           <div class="p-6 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs font-mono leading-relaxed mb-8">
@@ -1118,7 +1118,7 @@ export const healthcareInitialHtml = `
         </p>
         <div class="flex flex-wrap justify-center items-center gap-5">
           <a href="/contact" class="inline-flex items-center gap-3 px-10 py-5 bg-[#ccff00] text-black font-extrabold text-sm uppercase tracking-wider rounded-xl hover:scale-105 transition-all shadow-[0_0_40px_rgba(204,255,0,0.4)]">
-            Schedule Healthcare Technical Consultation &rarr;
+            Discuss your healthcare software project &rarr;
           </a>
           <a href="/about/our-company" class="px-8 py-5 border border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-all text-sm uppercase tracking-wider">
             About AbuQitmirLabs

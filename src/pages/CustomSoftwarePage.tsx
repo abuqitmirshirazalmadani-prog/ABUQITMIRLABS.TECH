@@ -213,6 +213,20 @@ const CustomSoftwarePage: React.FC = () => {
           </div>
         </section>
 
+        {/* AEO Direct Answer Block */}
+        <section className="py-10 bg-zinc-950/80 border-b border-white/10" aria-label="Direct Answer">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="bg-zinc-900/90 border border-[#ccff00]/30 rounded-2xl p-6 md:p-8 max-w-4xl">
+              <p className="text-lg md:text-xl font-bold text-white mb-2">
+                <strong>What is custom software development?</strong>
+              </p>
+              <p className="text-gray-300 text-base leading-relaxed font-light">
+                Custom software development is the process of designing, building, and deploying software built specifically for one business — not adapted from an off-the-shelf product. It gives businesses full ownership, flexibility, and scalability that generic SaaS tools cannot provide.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <CountryMarquee />
 
         {/* Section 1: What Is Custom Software Development? */}
@@ -510,6 +524,49 @@ const CustomSoftwarePage: React.FC = () => {
           headline="Evaluate Scope & Architecture Before You Build"
           subheadline="Estimate development sprint budgets or determine the optimal stack for your custom enterprise platform — 100% free with zero signup required."
         />
+
+        {/* Markets We Serve */}
+        <section className="py-16 md:py-20 bg-zinc-950/60 border-t border-white/10" aria-labelledby="markets-we-serve-h2">
+          <div className="max-w-7xl mx-auto px-6">
+            <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Global Delivery</span>
+            <h2 id="markets-we-serve-h2" className="text-2xl md:text-4xl font-extrabold tracking-tight mb-6 text-white">
+              Markets We Serve
+            </h2>
+            <p className="text-gray-300 text-base leading-relaxed mb-8 max-w-3xl font-light">
+              We partner with startups, SMEs, and enterprises across North America, Europe, and the GCC — delivering full-cycle engineering with timezone-aligned project management:
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <Link
+                to="/canada-market"
+                className="p-5 rounded-xl bg-zinc-900/60 border border-white/10 hover:border-[#ccff00]/50 text-[#ccff00] font-semibold text-sm transition-all flex items-center justify-between"
+              >
+                <span>custom software development Canada</span>
+                <span aria-hidden="true">→</span>
+              </Link>
+              <Link
+                to="/uk-market"
+                className="p-5 rounded-xl bg-zinc-900/60 border border-white/10 hover:border-[#ccff00]/50 text-[#ccff00] font-semibold text-sm transition-all flex items-center justify-between"
+              >
+                <span>custom software development UK</span>
+                <span aria-hidden="true">→</span>
+              </Link>
+              <Link
+                to="/kuwait-market"
+                className="p-5 rounded-xl bg-zinc-900/60 border border-white/10 hover:border-[#ccff00]/50 text-[#ccff00] font-semibold text-sm transition-all flex items-center justify-between"
+              >
+                <span>custom software development Kuwait</span>
+                <span aria-hidden="true">→</span>
+              </Link>
+              <Link
+                to="/saudi-arabia-market"
+                className="p-5 rounded-xl bg-zinc-900/60 border border-white/10 hover:border-[#ccff00]/50 text-[#ccff00] font-semibold text-sm transition-all flex items-center justify-between"
+              >
+                <span>bespoke software development Saudi Arabia</span>
+                <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
+        </section>
 
         {/* Section 10: Start Your Custom Software Project (CTA) */}
         <section className="py-20 md:py-28 text-center bg-gradient-to-b from-zinc-900 to-black border-t border-white/10" aria-labelledby="cta-section-h2">

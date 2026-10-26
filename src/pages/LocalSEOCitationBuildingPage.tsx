@@ -43,6 +43,10 @@ export default function LocalSEOCitationBuildingPage() {
 
     const faqs = [
         {
+            q: "What is NAP citation building for local SEO?",
+            a: "NAP citation building is the process of listing your business Name, Address, and Phone number consistently across online directories, maps, and data aggregators. Consistent NAP citations help Google verify your business location and improve your local search rankings. AbuQitmirLabs manages NAP citations across 50+ directories for small businesses in Pakistan, the US, UK, and UAE."
+        },
+        {
             q: "What is a local SEO citation?",
             a: "A local SEO citation is any online mention of a business's name, address, and phone number (NAP) — whether on a directory like Yelp or Google Business Profile, a local chamber of commerce page, or an industry-specific listing site. Citations help search engines verify that a business exists at a specific location, and consistent NAP data across multiple citations strengthens local ranking signals."
         },
@@ -229,6 +233,18 @@ export default function LocalSEOCitationBuildingPage() {
                     </div>
                 </section>
 
+                {/* AEO Direct Answer Block */}
+                <section className="px-6 md:px-12 max-w-7xl mx-auto pt-12">
+                    <div className="max-w-4xl p-6 md:p-8 rounded-2xl bg-zinc-900/90 border-l-4 border-[#ccff00] shadow-xl">
+                        <h3 className="text-lg md:text-xl font-bold text-white mb-2">
+                            What is NAP citation building for local SEO?
+                        </h3>
+                        <p className="text-sm md:text-base text-zinc-200 leading-relaxed">
+                            NAP citation building is the process of listing your business Name, Address, and Phone number consistently across online directories, maps, and data aggregators. Consistent NAP citations help Google verify your business location and improve your local search rankings. AbuQitmirLabs manages NAP citations across 50+ directories for small businesses in Pakistan, the US, UK, and UAE.
+                        </p>
+                    </div>
+                </section>
+
                 {/* NEO-BRUTALIST MARQUEE BANNER */}
                 <div className="overflow-hidden transform z-20 bg-[#B9FF66] w-full border-y-4 border-black py-4 relative shadow-[0_8px_0_0_rgba(0,0,0,1)] -rotate-1 my-12">
                     <div className="flex whitespace-nowrap w-max animate-marquee">
@@ -326,7 +342,7 @@ export default function LocalSEOCitationBuildingPage() {
                                 The critical word is <em className="text-[#ccff00] not-italic font-medium">consistent</em>. Search engines resolve conflicting signals by reducing confidence in all of them — which often means the business drops in local ranking or fails to appear in the map pack at all.
                             </p>
                             <p>
-                                Our <strong className="text-white font-semibold">local SEO citation building</strong> service is designed to complement our broader <Link to="/local-seo-for-small-business" className="text-[#ccff00] hover:underline font-medium">Local SEO for Small Businesses</Link>, authoritative <Link to="/guest-post-service" className="text-[#ccff00] hover:underline font-medium">Guest Post Service</Link>, agency-grade <Link to="/white-label-local-seo" className="text-[#ccff00] hover:underline font-medium">White Label Local SEO</Link>, forensic <Link to="/local-seo-audit" className="text-[#ccff00] hover:underline font-medium">Local SEO Audits</Link>, and holistic <Link to="/seo-mastery" className="text-[#ccff00] hover:underline font-medium">SEO Mastery</Link> solutions. You can also pair citation consistency with bespoke <Link to="/custom-software" className="text-[#ccff00] hover:underline font-medium">Custom Software</Link>, high-performance <Link to="/web-development" className="text-[#ccff00] hover:underline font-medium">Web Development</Link>, native <Link to="/mobile-app-development" className="text-[#ccff00] hover:underline font-medium">Mobile App Development</Link>, autonomous <Link to="/ai-agent-development" className="text-[#ccff00] hover:underline font-medium">AI Agents</Link>, and localized <Link to="/content-writing" className="text-[#ccff00] hover:underline font-medium">Content Writing</Link>. Discover client outcomes in our <Link to="/case-studies" className="text-[#ccff00] hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-[#ccff00] hover:underline font-medium">Blog</Link>, read more <Link to="/about" className="text-[#ccff00] hover:underline font-medium">about us</Link>, or <Link to="/contact" className="text-[#ccff00] hover:underline font-medium">contact us</Link> today.
+                                Our <strong className="text-white font-semibold">local SEO citation building</strong> service is designed to complement our broader <Link to="/local-seo-for-small-business" className="text-[#ccff00] hover:underline font-medium">local SEO for small businesses</Link>, high-trust <Link to="/guest-post-service" className="text-[#ccff00] hover:underline font-medium">authority link building</Link>, agency-grade <Link to="/white-label-local-seo" className="text-[#ccff00] hover:underline font-medium">white label NAP citation services</Link>, forensic <Link to="/local-seo-audit" className="text-[#ccff00] hover:underline font-medium">local SEO audit</Link>, and holistic <Link to="/seo-mastery" className="text-[#ccff00] hover:underline font-medium">complete SEO services</Link>. You can also pair citation consistency with bespoke <Link to="/custom-software" className="text-[#ccff00] hover:underline font-medium">Custom Software</Link>, high-performance <Link to="/web-development" className="text-[#ccff00] hover:underline font-medium">Web Development</Link>, native <Link to="/mobile-app-development" className="text-[#ccff00] hover:underline font-medium">Mobile App Development</Link>, autonomous <Link to="/ai-agent-development" className="text-[#ccff00] hover:underline font-medium">AI Agents</Link>, and localized <Link to="/content-writing" className="text-[#ccff00] hover:underline font-medium">Content Writing</Link>. Discover client outcomes in our <Link to="/case-studies" className="text-[#ccff00] hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-[#ccff00] hover:underline font-medium">Blog</Link>, read more <Link to="/about" className="text-[#ccff00] hover:underline font-medium">about us</Link>, or <Link to="/contact" className="text-[#ccff00] hover:underline font-medium">contact us</Link> today.
                             </p>
                         </div>
                     </div>
@@ -573,13 +589,21 @@ export default function LocalSEOCitationBuildingPage() {
                         <p className="text-zinc-300 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
                             We'll scan your existing citation profile, identify every inconsistency, and tell you exactly what needs fixing before any build work begins.
                         </p>
-                        <Link 
-                            to="/contact" 
-                            className="inline-flex items-center gap-3 px-8 py-4 bg-[#ccff00] text-black font-bold text-sm uppercase tracking-wider rounded-xl hover:bg-white transition-all brutalist-shadow"
-                        >
-                            Request Your Citation Audit
-                            <ArrowRight className="w-5 h-5" />
-                        </Link>
+                        <div className="flex flex-wrap justify-center items-center gap-4">
+                            <Link 
+                                to="/contact" 
+                                className="inline-flex items-center gap-3 px-8 py-4 bg-[#ccff00] text-black font-bold text-sm uppercase tracking-wider rounded-xl hover:bg-white transition-all brutalist-shadow"
+                            >
+                                Request Your Citation Audit
+                                <ArrowRight className="w-5 h-5" />
+                            </Link>
+                            <Link 
+                                to="/seo-mastery" 
+                                className="inline-flex items-center gap-2 px-6 py-4 bg-zinc-900 border border-white/20 text-white font-bold text-sm uppercase tracking-wider rounded-xl hover:bg-zinc-800 transition-all"
+                            >
+                                Explore complete SEO services
+                            </Link>
+                        </div>
                     </div>
                 </section>
             </main>

@@ -37,6 +37,10 @@ const SaudiArabiaMarketPage: React.FC = () => {
 
   const faqData = [
     {
+      q: "What software development services does AbuQitmirLabs offer in Saudi Arabia?",
+      a: "AbuQitmirLabs provides custom AI agent development, healthcare app development, fintech software, and PDPL-compliant software solutions for businesses in Riyadh, Jeddah, and across KSA. We serve both enterprise and startup clients with full-cycle development and support."
+    },
+    {
       q: "How much does custom software development cost in Saudi Arabia?",
       a: "Custom business software in Saudi Arabia typically ranges from SAR 40,000 to SAR 400,000 at standard agency rates, with enterprise platforms exceeding that range. At AbuQitmirLabs, offshore engineering rates are significantly lower than local Saudi agency pricing. We provide fixed-price quotes after a discovery session. A mid-complexity SaaS platform or enterprise portal typically falls between $15,000 and $60,000 USD depending on scope."
     },
@@ -249,6 +253,18 @@ const SaudiArabiaMarketPage: React.FC = () => {
         </div>
       </section>
 
+      {/* AEO Direct Answer Block */}
+      <section className="py-12 px-6 md:px-10 border-t border-white/5 bg-[#080b09]">
+        <div className="max-w-4xl mx-auto p-6 md:p-8 rounded-2xl bg-zinc-900/90 border-l-4 border-[#10b981] shadow-xl">
+          <h3 className="text-lg md:text-xl font-bold text-white mb-2">
+            What software development services does AbuQitmirLabs offer in Saudi Arabia?
+          </h3>
+          <p className="text-sm md:text-base text-gray-200 leading-relaxed">
+            AbuQitmirLabs provides custom AI agent development, healthcare app development, fintech software, and PDPL-compliant software solutions for businesses in Riyadh, Jeddah, and across KSA. We serve both enterprise and startup clients with full-cycle development and support.
+          </p>
+        </div>
+      </section>
+
       {/* Marquee Branding */}
       <section className="overflow-hidden border-y border-white/5 bg-[#080b09] py-14">
         <div className="flex animate-marquee whitespace-nowrap gap-12 text-4xl md:text-7xl font-semibold uppercase tracking-tight opacity-90 italic">
@@ -406,7 +422,7 @@ const SaudiArabiaMarketPage: React.FC = () => {
                 </h3>
                 <div className="font-sans font-light text-[#9ca3af] leading-relaxed text-base md:text-lg space-y-6">
                   <p>
-                    We architect and build bespoke web applications using Next.js, React, Node.js, and Laravel, the exact stacks that power modern Saudi enterprise platforms. Every build includes Arabic/English bilingual UI with proper RTL layout, ZATCA compliance, and integration with Saudi payment gateways including Mada and STC Pay.
+                    Through our <Link to="/custom-software" className="text-[#34d399] underline hover:text-white transition-colors">custom software development KSA</Link> practice, we architect and build bespoke web applications using Next.js, React, Node.js, and Laravel, the exact stacks that power modern Saudi enterprise platforms. Every build includes Arabic/English bilingual UI with proper RTL layout, ZATCA compliance, and <Link to="/solutions/fintech" className="text-[#34d399] underline hover:text-white transition-colors">fintech software Saudi Arabia PDPL</Link> integration with Saudi payment gateways including Mada and STC Pay.
                   </p>
                   <p>
                     Common builds include customer self-service portals, B2B partner platforms, multi-tenant SaaS products, and internal dashboards that replace disconnected spreadsheets. For Saudi enterprises evaluating software partners, we provide full source code ownership and zero vendor lock-in.
@@ -492,7 +508,7 @@ const SaudiArabiaMarketPage: React.FC = () => {
                 </h3>
                 <div className="font-sans font-light text-[#9ca3af] leading-relaxed text-base md:text-lg space-y-6">
                   <p>
-                    Saudi Arabia's AI adoption is accelerating across government, energy, and financial services. We engineer custom AI agents with Arabic-capable LLM integration, RAG (Retrieval-Augmented Generation) pipelines that ground AI responses in your organization's verified knowledge, and human-in-the-loop oversight for regulated workflows.
+                    Saudi Arabia's AI adoption is accelerating across government, energy, and financial services. Through our <Link to="/ai-agent-development" className="text-[#34d399] underline hover:text-white transition-colors">AI agent development Riyadh</Link> engineering, we build custom AI agents with Arabic-capable LLM integration, RAG (Retrieval-Augmented Generation) pipelines that ground AI responses in your organization's verified knowledge, and human-in-the-loop oversight for regulated workflows.
                   </p>
                   <p>
                     Typical deployments include customer service automation, document processing for compliance and intake, internal knowledge retrieval, and workflow orchestration across EHR, ERP, and CRM systems.
@@ -548,7 +564,7 @@ const SaudiArabiaMarketPage: React.FC = () => {
                 </h3>
                 <div className="font-sans font-light text-[#9ca3af] leading-relaxed text-base md:text-lg space-y-6">
                   <p>
-                    We build native iOS (Swift) and Android (Kotlin) applications, as well as cross-platform apps in Flutter, designed specifically for Saudi mobile users. Every mobile build includes Arabic-first UX, regional payment gateway support, and offline resilience for users on variable network conditions.
+                    We build native iOS (Swift) and Android (Kotlin) applications, as well as cross-platform apps in Flutter—including specialized <Link to="/solutions/healthcare" className="text-[#34d399] underline hover:text-white transition-colors">healthcare app development Saudi Arabia</Link> platforms—designed specifically for Saudi mobile users. Every mobile build includes Arabic-first UX, regional payment gateway support, and offline resilience for users on variable network conditions.
                   </p>
                   <p>
                     For Saudi businesses that depend on local discovery across Riyadh, Jeddah, Dammam, and NEOM, we manage complete Google Business Profile optimization, Arabic keyword research, category alignment, geo-tagged imagery, structured Q&amp;A, and review generation workflows.
@@ -725,7 +741,7 @@ const SaudiArabiaMarketPage: React.FC = () => {
               to="/contact"
               className="bg-[#10b981] text-black text-2xl font-bold px-16 py-8 rounded-full hover:bg-white transition-all transform hover:scale-105 uppercase tracking-tighter shadow-2xl shadow-[#10b981]/30"
             >
-              Get Free Architecture Consultation
+              Book a free Saudi Arabia consultation
             </Link>
             <div className="text-[#34d399] font-mono text-xs uppercase tracking-[0.4em] max-w-[320px] text-left border-l-2 border-[#10b981] pl-8 leading-relaxed h-16 flex items-center">
               RIYADH &amp; JEDDAH OVERLAP // AST (UTC+3) READY

@@ -32,6 +32,11 @@ export default function HomePage() {
         "@id": "https://www.abuqitmirlabs.tech/#organization",
         "name": "AbuQitmirLabs",
         "url": "https://www.abuqitmirlabs.tech",
+        "founder": {
+          "@type": "Person",
+          "name": "AbuQitmir Mohammad Shiraz Al Madani"
+        },
+        "foundingDate": "2021",
         "logo": {
           "@type": "ImageObject",
           "url": "https://www.abuqitmirlabs.tech/logo.png"
@@ -47,18 +52,7 @@ export default function HomePage() {
           "addressRegion": "Sindh",
           "addressCountry": "PK"
         },
-        "areaServed": [
-          { "@type": "Country", "name": "United States" },
-          { "@type": "Country", "name": "United Kingdom" },
-          { "@type": "Country", "name": "Canada" },
-          { "@type": "Country", "name": "Australia" },
-          { "@type": "Country", "name": "Poland" },
-          { "@type": "Country", "name": "Pakistan" },
-          { "@type": "Country", "name": "United Arab Emirates" },
-          { "@type": "Country", "name": "Saudi Arabia" },
-          { "@type": "Country", "name": "Qatar" },
-          { "@type": "Country", "name": "Kuwait" }
-        ],
+        "areaServed": ["PK", "US", "GB", "AE", "SA", "QA", "KW", "CA", "AU", "PL"],
         "knowsAbout": [
           "Growth Engineering",
           "Revenue Operations",

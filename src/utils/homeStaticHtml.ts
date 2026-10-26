@@ -23,8 +23,12 @@ export const homeSchema = {
         "height": "512"
       },
       "image": "https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg",
-      "description": "AbuQitmirLabs is a premier custom software and AI development company delivering web platforms, mobile apps, autonomous AI agents, and technical SEO for global businesses across the US, UK, and Europe.",
-      "foundingDate": "2020",
+      "description": "AI agent development and custom software engineering company serving businesses in the USA, UK, UAE, Saudi Arabia, Qatar, Kuwait, Canada, Australia, and Pakistan.",
+      "foundingDate": "2021",
+      "founder": {
+        "@type": "Person",
+        "name": "Syed Shiraz"
+      },
       "email": "hello@abuqitmirlabs.tech",
       "telephone": "+923233260859",
       "priceRange": "$$",
@@ -37,6 +41,7 @@ export const homeSchema = {
         "postalCode": "75160",
         "addressCountry": "PK"
       },
+      "areaServed": ["PK", "US", "GB", "AE", "SA", "QA", "KW", "CA", "AU", "PL"],
       "geo": {
         "@type": "GeoCoordinates",
         "latitude": "24.8934",
@@ -47,7 +52,7 @@ export const homeSchema = {
         "telephone": "+923233260859",
         "contactType": "customer service",
         "email": "hello@abuqitmirlabs.tech",
-        "areaServed": ["US", "GB", "PK", "AU", "EU", "CA"],
+        "areaServed": ["PK", "US", "GB", "AE", "SA", "QA", "KW", "CA", "AU", "PL"],
         "availableLanguage": ["English", "Urdu"]
       },
       "sameAs": [

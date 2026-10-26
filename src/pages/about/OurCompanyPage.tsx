@@ -90,6 +90,43 @@ const OurCompanyPage = () => {
     }
   };
 
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AbuQitmirLabs",
+    "url": "https://www.abuqitmirlabs.tech",
+    "founder": {
+      "@type": "Person",
+      "name": "AbuQitmir Mohammad Shiraz Al Madani"
+    },
+    "foundingDate": "2021",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Karachi",
+      "addressCountry": "PK"
+    },
+    "areaServed": ["PK", "US", "GB", "AE", "SA", "QA", "KW", "CA", "AU", "PL"]
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.abuqitmirlabs.tech"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Our Company",
+        "item": "https://www.abuqitmirlabs.tech/about/our-company"
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
@@ -112,6 +149,8 @@ const OurCompanyPage = () => {
 
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(aboutSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
       <Header />
