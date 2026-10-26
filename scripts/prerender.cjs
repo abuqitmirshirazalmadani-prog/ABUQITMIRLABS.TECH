@@ -63,10 +63,6 @@ const distIndex = fs.readFileSync(indexHtmlTemplatePath, 'utf8');
 const siteWideSchemasMatches = rawSourceIndex.match(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis) || [];
 const siteWideSchemasHtml = siteWideSchemasMatches.join('\n  ');
 
-// Extract built script/css tags from dist/index.html and merge with clean template
-const scriptMatches = distIndex.match(/<script\b[^>]*>[\s\S]*?<\/script>/gi) || [];
-const linkCssMatches = distIndex.match(/<link\b[^>]*rel=["']stylesheet["'][^>]*\/?>/gi) || [];
-
 // Helper to cleanly replace #root inner contents without leaving residual DOM elements
 const replaceRootElement = (htmlSource, newInnerHtml, renderedRouteAttr) => {
   const startMatch = htmlSource.match(/<div\s+id=["']root["'][^>]*>/i);
@@ -228,13 +224,12 @@ const routes = [
   '/blog/ai-overviews-traffic-recovery-what-40-companies-did-next',
   '/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026',
   '/blog/saas-pricing-page-optimization-7-structural-decisions',
-    '/blog/flutter-vs-native-mobile-app-development-2026',
+  '/blog/flutter-vs-native-mobile-app-development-2026',
   '/blog/ai-agent-development-agency-vs-in-house',
   '/blog/generative-ai-chatbot-development-what-it-actually-costs-in-2026',
   '/blog/healthcare-software-development-solutions-2026-custom-ehr-clinical-software',
   '/blog/ai-agents-cost-benefit-analysis',
   '/blog/when-to-invest-in-an-ai-agent-in-2026-a-realistic-cost-benefit-analysis-for-founders',
-  
   '/blog/the-2026-static-site-comeback-why-jamstack-won-after-all',
   '/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs',
   '/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact',
@@ -318,9 +313,22 @@ const allRoutes = Array.from(new Set([
   ...Object.keys(SEO_ROUTES_METADATA || {}).filter(k => typeof k === 'string' && k.startsWith('/'))
 ]));
 
+// ⚠️ THIS IS THE FIX: Skip routes that are explicitly handled by vite.config.ts to prevent overwriting their HTML
+const customHandledRoutes = [
+  '/blog/ai-content-vs-human-content',
+  '/blog/content-calendar-strategy',
+  '/blog/brand-strategy-vs-logo-design-pakistan-sme'
+];
+
 let successCount = 0;
 
 for (const routeUrl of allRoutes) {
+  // Skip the routes that are perfectly handled by vite.config.ts
+  if (customHandledRoutes.includes(routeUrl)) {
+    console.log(`⏭️ [SSG Skipped] ${routeUrl} (Preserved from vite.config.ts)`);
+    continue;
+  }
+
   try {
     const { bodyHtml, headTags, jsonLdScripts, helmet } = renderFullApp(routeUrl);
     
