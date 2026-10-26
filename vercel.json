@@ -33,11 +33,10 @@
       "includeFiles": "public/*sitemap*.xml"
     }
   },
-  "rewrites": [
-    {
-      "source": "/((?!api/|.*\\.[\\w]+$).*)",
-      "destination": "/index.html"
-    }
+    "routes": [
+    { "handle": "filesystem" },
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ],
   "redirects": [
     {
