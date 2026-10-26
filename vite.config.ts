@@ -669,10 +669,9 @@ export default defineConfig(({ mode }) => {
             }
             
             // ========================================================
-            // FIXED: AI Content vs Human Content Block
+            // SPECIFIC ARTICLE: AI Content vs Human Content
             // ========================================================
             if (route.url === '/blog/ai-content-vs-human-content') {
-              // 1. Inject specific Article Schema
               const aiContentSchema = {
                 "@context": "https://schema.org",
                 "@type": "Article",
@@ -701,7 +700,6 @@ export default defineConfig(({ mode }) => {
               routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
               routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(aiContentSchema, null, 2)}\n  </script>\n</head>`);
 
-              // 2. Inject the ACTUAL H1 and H2s for crawlers
               const realArticleHtml = `
                 <div class="min-h-screen bg-[#09090b] text-white">
                   ${renderStaticHeader(route.url)}
@@ -741,13 +739,12 @@ export default defineConfig(({ mode }) => {
                 </div>
               `;
 
-              // Replace the root with the real HTML
               routeHtml = replaceRootElement(routeHtml, realArticleHtml, route.url);
               
               const targetPath = path.join(outDir, 'blog', 'ai-content-vs-human-content', 'index.html');
               fs.mkdirSync(path.dirname(targetPath), { recursive: true });
               fs.writeFileSync(targetPath, routeHtml);
-              continue; // Skip the generic fallback for this route
+              continue;
             }
 
             let articleContent = '';
