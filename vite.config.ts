@@ -529,38 +529,66 @@ export default defineConfig(({ mode }) => {
             routeHtml = routeHtml.replace(/<meta\b[^>]*property="og:url"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*name="twitter:url"[^>]*\/?>/gi, '').replace('</head>', `  <meta data-rh="true" property="og:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n  <meta data-rh="true" name="twitter:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
             routeHtml = routeHtml.replace(/<link\s+rel="canonical"[^>]*\/?>/gi, '').replace('</head>', `  <link rel="canonical" data-rh="true" href="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
             
+            // ==== SUPER-SAFE replaceRootElement ====
             const replaceRootElement = (htmlSource: string, newInnerHtml: string, renderedRouteAttr?: string) => {
               const attrStr = renderedRouteAttr ? ` data-rendered-route="${renderedRouteAttr}"` : '';
               const newRoot = `<div id="root"${attrStr}>${newInnerHtml}</div>`;
               
-              const startTag = '<div id="root"';
-              const startIdx = htmlSource.indexOf(startTag);
+              // Find the root div opening tag (handles any attributes like <div id="root" class="...">)
+              const rootRegex = /<div[^>]*id=["']root["'][^>]*>/i;
+              const match = htmlSource.match(rootRegex);
               
-              if (startIdx === -1) {
-                return htmlSource.replace(/<\/body>/i, `${newRoot}\n</body>`);
+              if (!match) {
+                // Fallback: If no root div found, inject right before the first script tag
+                if (htmlSource.includes('<script')) {
+                  return htmlSource.replace(/<script/i, `${newRoot}\n<script`);
+                }
+                return htmlSource.replace('</body>', `${newRoot}\n</body>`);
               }
               
-              const endOfStartTagIdx = htmlSource.indexOf('>', startIdx) + 1;
-              const afterStartTag = htmlSource.slice(endOfStartTagIdx);
+              const startIdx = match.index!;
+              const startTagLen = match[0].length;
               
-              const scriptIdx = afterStartTag.search(/<script/i);
-              const bodyIdx = afterStartTag.search(/<\/body>/i);
+              // Find the matching closing </div> by counting depth
+              const afterRoot = htmlSource.slice(startIdx + startTagLen);
+              let depth = 1;
+              let i = 0;
+              let endDivIdx = -1;
               
-              let boundaryIdx = -1;
-              if (scriptIdx !== -1 && (bodyIdx === -1 || scriptIdx < bodyIdx)) boundaryIdx = scriptIdx;
-              else if (bodyIdx !== -1) boundaryIdx = bodyIdx;
-              
-              if (boundaryIdx !== -1) {
-                const beforeBoundary = afterStartTag.slice(0, boundaryIdx);
-                const lastDivIdx = beforeBoundary.lastIndexOf('</div>');
-                if (lastDivIdx !== -1) {
-                  const endIdx = endOfStartTagIdx + lastDivIdx + 6;
-                  return htmlSource.slice(0, startIdx) + newRoot + htmlSource.slice(endIdx);
+              while (i < afterRoot.length) {
+                const openDiv = afterRoot.indexOf('<div', i);
+                const closeDiv = afterRoot.indexOf('</div>', i);
+                
+                if (closeDiv === -1) break; // Malformed HTML
+                
+                if (openDiv !== -1 && openDiv < closeDiv) {
+                  depth++;
+                  i = openDiv + 4;
+                } else {
+                  depth--;
+                  if (depth === 0) {
+                    endDivIdx = closeDiv;
+                    break;
+                  }
+                  i = closeDiv + 6;
                 }
+              }
+              
+              if (endDivIdx !== -1) {
+                const absoluteEndIdx = startIdx + startTagLen + endDivIdx + 6;
+                return htmlSource.slice(0, startIdx) + newRoot + htmlSource.slice(absoluteEndIdx);
+              }
+              
+              // Fallback if depth counter fails
+              const firstClose = afterRoot.indexOf('</div>');
+              if (firstClose !== -1) {
+                const absoluteEndIdx = startIdx + startTagLen + firstClose + 6;
+                return htmlSource.slice(0, startIdx) + newRoot + htmlSource.slice(absoluteEndIdx);
               }
               
               return htmlSource;
             };
+            // =======================================
 
             if (route.url === '/') {
               routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(homeSchema, null, 2)}\n  </script>\n</head>`);
