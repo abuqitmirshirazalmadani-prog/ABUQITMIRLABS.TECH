@@ -103,7 +103,7 @@ let baseTemplate = distIndex;
 baseTemplate = replaceRootElement(baseTemplate, '', '');
 baseTemplate = stripCanonicalTags(baseTemplate);
 baseTemplate = baseTemplate.replace(/<script\b[^>]*>[\s\S]*?dedupeHead[\s\S]*?<\/script>/gis, '');
-baseTemplate = baseTemplate.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '');
+baseTemplate = baseTemplate.replace(/<title\b[^>]*>[^<]*<\/title>/gi, '');
 baseTemplate = baseTemplate.replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis, '');
 baseTemplate = baseTemplate.replace(/<meta\b[^>]*property=["']og:[^"']+["'][^>]*\/?>/gis, '');
 baseTemplate = baseTemplate.replace(/<meta\b[^>]*name=["']twitter:[^"']+["'][^>]*\/?>/gis, '');
@@ -299,7 +299,7 @@ for (const routeUrl of allRoutes) {
     html = replaceRootElement(html, bodyHtml, routeUrl);
 
     // 2. Unconditionally strip ANY pre-existing <title>, <meta description>, canonical, og, and twitter tags from template
-    html = html.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '');
+    html = html.replace(/<title\b[^>]*>[^<]*<\/title>/gi, '');
     html = html.replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis, '');
     html = html.replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gis, '');
     html = html.replace(/<meta\b[^>]*property=["']og:[^"']+["'][^>]*\/?>/gis, '');
@@ -485,13 +485,13 @@ for (const routeUrl of allRoutes) {
 
     // 6. STRICT SINGLE-PASS DEDUPLICATION GUARANTEE
     // A. Title: strictly ONE <title>
-    const titleMatches = html.match(/<title\b[^>]*>[\s\S]*?<\/title>/gis) || [];
+    const titleMatches = html.match(/<title\b[^>]*>[^<]*<\/title>/gis) || [];
     if (titleMatches.length > 1) {
       let keepIndex = 0;
       const targetIdx = titleMatches.findIndex(t => t.includes(titleToUse));
       if (targetIdx !== -1) keepIndex = targetIdx;
       let curTitleIdx = 0;
-      html = html.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gis, (tag) => {
+      html = html.replace(/<title\b[^>]*>[^<]*<\/title>/gis, (tag) => {
         const keep = curTitleIdx === keepIndex;
         curTitleIdx++;
         return keep ? (tag.includes('data-rh=') ? tag : tag.replace('<title', '<title data-rh="true"')) : '';
@@ -568,6 +568,11 @@ for (const routeUrl of allRoutes) {
       seenArtProps.add(lower);
       return tag.includes('data-rh=') ? tag : tag.replace('<meta', '<meta data-rh="true"');
     });
+
+    // Verify that Vite's compiled CSS and JS bundle tags are intact before writing
+    if (!/<link\b[^>]*rel=["']stylesheet["'][^>]*href=["']\/assets\//i.test(html) || !/<script\b[^>]*src=["']\/assets\//i.test(html)) {
+      throw new Error(`Critical asset tags (<link rel="stylesheet"> or <script src="/assets/...">) missing in generated HTML for ${routeUrl}`);
+    }
 
     // Write to target destination
     if (routeUrl === '/') {

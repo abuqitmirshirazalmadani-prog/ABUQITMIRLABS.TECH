@@ -536,7 +536,7 @@ export default defineConfig(({ mode }) => {
             const safeTitle = route.title.replace(/&/g, '&amp;');
             const safeDesc = route.description.replace(/"/g, '&quot;').replace(/&/g, '&amp;');
             
-            routeHtml = routeHtml.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '').replace('</head>', `  <title data-rh="true">${safeTitle}</title>\n</head>`);
+            routeHtml = routeHtml.replace(/<title\b[^>]*>[^<]*<\/title>/gi, '').replace('</head>', `  <title data-rh="true">${safeTitle}</title>\n</head>`);
             routeHtml = routeHtml.replace(/<meta\b[^>]*property="og:title"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*name="twitter:title"[^>]*\/?>/gi, '').replace('</head>', `  <meta data-rh="true" property="og:title" content="${safeTitle}" />\n  <meta data-rh="true" name="twitter:title" content="${safeTitle}" />\n</head>`);
             routeHtml = routeHtml.replace(/<meta\b[^>]*name="description"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*property="og:description"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*name="twitter:description"[^>]*\/?>/gi, '').replace('</head>', `  <meta data-rh="true" name="description" content="${safeDesc}" />\n  <meta data-rh="true" property="og:description" content="${safeDesc}" />\n  <meta data-rh="true" name="twitter:description" content="${safeDesc}" />\n</head>`);
             routeHtml = routeHtml.replace(/<meta\b[^>]*property="og:url"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*name="twitter:url"[^>]*\/?>/gi, '').replace('</head>', `  <meta data-rh="true" property="og:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n  <meta data-rh="true" name="twitter:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);

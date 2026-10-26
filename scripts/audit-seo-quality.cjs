@@ -223,8 +223,9 @@ console.log('\n📌 Checking index.html for static <title> tags (preventing dupl
 const rootIndexHtmlPath = path.join(rootDir, 'index.html');
 if (fs.existsSync(rootIndexHtmlPath)) {
   let indexHtmlContent = fs.readFileSync(rootIndexHtmlPath, 'utf8');
-  const titleTagRegex = /<title\b[^>]*>[\s\S]*?<\/title>/gi;
-  const staticTitles = indexHtmlContent.match(titleTagRegex) || [];
+  const titleTagRegex = /<title\b[^>]*>[^<]*<\/title>/gi;
+  const withoutComments = indexHtmlContent.replace(/<!--[\s\S]*?-->/g, '');
+  const staticTitles = withoutComments.match(titleTagRegex) || [];
   if (staticTitles.length > 0) {
     indexHtmlContent = indexHtmlContent.replace(titleTagRegex, '');
     fs.writeFileSync(rootIndexHtmlPath, indexHtmlContent, 'utf8');
