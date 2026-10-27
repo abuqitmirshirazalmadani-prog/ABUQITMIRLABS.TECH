@@ -317,7 +317,8 @@ const allRoutes = Array.from(new Set([
 const customHandledRoutes = [
   '/blog/ai-content-vs-human-content',
   '/blog/content-calendar-strategy',
-  '/blog/brand-strategy-vs-logo-design-pakistan-sme'
+  '/blog/brand-strategy-vs-logo-design-pakistan-sme',
+  '/blog/startup-brand-identity-checklist'
 ];
 
 let successCount = 0;

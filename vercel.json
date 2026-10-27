@@ -34,9 +34,17 @@
     }
   },
   "routes": [
-    { "handle": "filesystem" },
-    { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
   ],
   "redirects": [
     {
@@ -407,6 +415,16 @@
     {
       "source": "/how-to-brief-a-graphic-designer-a-practical-guide-for-founders-who-want-results",
       "destination": "/blog/how-to-brief-graphic-designer",
+      "permanent": true
+    },
+    {
+      "source": "/blog/brand-identity-vs-logo-design-pakistan-sme",
+      "destination": "/blog/brand-strategy-vs-logo-design-pakistan-sme",
+      "permanent": true
+    },
+    {
+      "source": "/brand-identity-vs-logo-design-pakistan-sme",
+      "destination": "/blog/brand-strategy-vs-logo-design-pakistan-sme",
       "permanent": true
     }
   ]

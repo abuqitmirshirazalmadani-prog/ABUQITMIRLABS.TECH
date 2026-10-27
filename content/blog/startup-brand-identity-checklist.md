@@ -6,7 +6,7 @@
   "excerpt": "Most startup founders wait too long to build a brand. They think they need a massive budget. That is a mistake. In 2026, roughly 60% of all searches are zero-click. Buyers are evaluating your credibility before they ever talk to you. If your brand looks fragmented, you lose the deal before it starts. This checklist is designed specifically for pre-seed and seed-stage startups in Pakistan. It cuts through the fluff of Western branding agencies and focuses on what actually matters at your stage: limited budgets, family-business legacies, bilingual brand voice needs, and WhatsApp-first customer engagement. Learn the 14 essential items you need across four distinct stages to build your Minimum Viable Brand.",
   "coverImage": "https://i.postimg.cc/SRxngZxY/Gemini-Generated-Image-74i3u574i3u574i3.jpg",
   "coverImageAlt": "A startup founder reviewing a brand strategy document with color swatches and typography scales.",
-  "category": "Development",
+  "category": "Graphic Design",
   "author": "Abu Qitmir Mohammad Shiraz Al-Madani",
   "published": true,
   "tags": [
@@ -198,7 +198,7 @@ You should use a bilingual approach. Use English for formal communications, tech
 A Minimum Viable Brand is the absolute minimum amount of brand strategy, design, and messaging required to launch a credible business. It includes a positioning statement, a professional logo, a color palette, a voice guide, and a landing page.
 
 ### Why is a logo system better than just a single logo?
-A logo system provides variations (horizontal, vertical, icon) for different platforms. A single logo often looks distorted on app icons or social media profiles, creating a fragmented brand presence. Read our guide on [brand identity vs logo design](https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design-pakistan-sme) for more details.
+A logo system provides variations (horizontal, vertical, icon) for different platforms. A single logo often looks distorted on app icons or social media profiles, creating a fragmented brand presence. Read our guide on [brand identity vs logo design](https://www.abuqitmirlabs.tech/blog/brand-strategy-vs-logo-design-pakistan-sme) for more details.
 
 ### How do I choose the right colors for my brand?
 Choose colors based on the psychology of your target audience and your industry. For example, blue conveys trust (suitable for fintech), while bold yellows and greens convey energy and growth (suitable for consumer startups).

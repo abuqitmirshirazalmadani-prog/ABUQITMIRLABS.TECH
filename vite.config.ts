@@ -66,7 +66,7 @@ export default defineConfig(({ mode }) => {
           '/us-market', '/uk-market', '/pakistan-market', '/canada-market', '/poland-market',
           '/australia-market', '/privacy', '/terms', '/blog', '/blog/custom-web-development-company',
           '/blog/content-calendar-strategy', '/blog/brand-strategy-vs-logo-design-pakistan-sme',
-          '/blog/ai-content-vs-human-content',
+          '/blog/ai-content-vs-human-content', '/blog/startup-brand-identity-checklist',
           '/local-seo-for-small-business', '/local-seo-citation-building', '/white-label-local-seo',
           '/local-seo-audit', '/website-contract', '/contact'
         ],
@@ -121,6 +121,7 @@ export default defineConfig(({ mode }) => {
             { url: '/blog/content-calendar-strategy', changefreq: 'weekly', priority: 0.9, title: 'How to Build a Content Calendar That Gets Followed | AbuQitmirLabs', description: 'Content Calendar: A step-by-step guide to building a content calendar your team will actually follow. Includes templates, cadence recommendations, and tools.' },
             { url: '/blog/brand-strategy-vs-logo-design-pakistan-sme', changefreq: 'weekly', priority: 0.9, title: 'Brand Strategy vs Logo Design Pakistan | AbuQitmirLabs', description: 'Brand strategy vs logo design for Pakistani SMEs: real PKR pricing (PKR 3,000–50,000 vs PKR 80,000+), deliverables, and a founder decision matrix.' },
             { url: '/blog/ai-content-vs-human-content', changefreq: 'weekly', priority: 0.9, title: 'AI Content vs Human Content 2026 | AbuQitmirLabs', description: "Learn what Google's 2026 guidelines actually say about AI content vs human content. Discover the E-E-A-T rules and how to safely rank in search." },
+            { url: '/blog/startup-brand-identity-checklist', changefreq: 'weekly', priority: 0.9, title: 'The Complete Brand Identity Checklist for Startups | AbuQitmirLabs', description: 'A pre-seed and seed-stage brand identity checklist for startups. Covers positioning, visual system, voice, and launch assets in the right order.' },
           ];
 
           const fs = await import('fs');
@@ -786,6 +787,78 @@ export default defineConfig(({ mode }) => {
               routeHtml = replaceRootElement(routeHtml, realArticleHtml, route.url);
               
               const targetPath = path.join(outDir, 'blog', 'ai-content-vs-human-content', 'index.html');
+              fs.mkdirSync(path.dirname(targetPath), { recursive: true });
+              fs.writeFileSync(targetPath, routeHtml);
+              continue;
+            }
+
+            if (route.url === '/blog/startup-brand-identity-checklist') {
+              const startupChecklistSchema = {
+                "@context": "https://schema.org",
+                "@graph": [
+                  {
+                    "@type": "Article",
+                    "headline": "The Complete Brand Identity Checklist for Startups",
+                    "description": "A pre-seed and seed-stage brand identity checklist for startups. Covers positioning, visual system, voice, and launch assets in the right order.",
+                    "image": "https://i.postimg.cc/SRxngZxY/Gemini-Generated-Image-74i3u574i3u574i3.jpg",
+                    "author": {
+                      "@type": "Person",
+                      "name": "Abu Qitmir Mohammad Shiraz Al-Madani"
+                    },
+                    "publisher": {
+                      "@type": "Organization",
+                      "name": "AbuQitmirLabs",
+                      "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://www.abuqitmirlabs.tech/logo.png"
+                      }
+                    },
+                    "datePublished": "2026-10-27T00:00:00+00:00",
+                    "dateModified": "2026-10-27T00:00:00+00:00",
+                    "mainEntityOfPage": {
+                      "@type": "WebPage",
+                      "@id": "https://www.abuqitmirlabs.tech/blog/startup-brand-identity-checklist"
+                    }
+                  },
+                  {
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                      {
+                        "@type": "Question",
+                        "name": "What is a brand identity checklist for startups?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "A brand identity checklist for startups is a structured guide that outlines the essential visual, verbal, and strategic elements a new business needs to build a recognizable and trustworthy brand."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "How much does it cost to build a startup brand in Pakistan?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "You can build a minimum viable brand for under PKR 50,000 if you focus on the essentials (logo, colors, landing page). Full agency branding can range from PKR 80,000 to PKR 250,000 depending on the depth of research and deliverables."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "What is a Minimum Viable Brand (MVB)?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "A Minimum Viable Brand is the absolute minimum amount of brand strategy, design, and messaging required to launch a credible business. It includes a positioning statement, a professional logo, a color palette, a voice guide, and a landing page."
+                        }
+                      }
+                    ]
+                  }
+                ]
+              };
+
+              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
+              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(startupChecklistSchema, null, 2)}\n  </script>\n</head>`);
+
+              const startupChecklistHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader(route.url)}<main id="main-content" class="max-w-4xl mx-auto px-6 pt-36 pb-20"><h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-8 font-serif">The Complete Brand Identity Checklist for Startups</h1><article class="prose prose-invert max-w-none text-zinc-300"><h2>Introduction</h2><p>Most startup founders wait too long to build a brand. In 2026, roughly 60% of all searches are zero-click. Buyers are evaluating your credibility on Google, LinkedIn, and AI Overviews before they ever talk to you. This checklist is designed specifically for pre-seed and seed-stage startups in Pakistan across four distinct stages.</p><h2>Quick Verdict: The Minimum Viable Brand (MVB)</h2><p>For a Pakistani startup, the minimum viable brand requires four things: a defined positioning statement, a functional logo system, a bilingual voice guide, and a high-converting landing page.</p><h2>Stage 1: Foundation (The Strategy)</h2><h3>1. Define Your Positioning Statement</h3><h3>2. Map Your Target Audience Persona</h3><h3>3. Establish Competitive Differentiation</h3><h2>Stage 2: Visual System (The Look)</h2><h3>4. Build a Logo Suite (Not Just a Logo)</h3><h3>5. Lock In Your Color Palette</h3><h3>6. Select Your Typography Hierarchy</h3><h3>7. Create a Basic Iconography Style</h3><h2>Stage 3: Voice &amp; Messaging (The Words)</h2><h3>8. Develop Brand Voice Guidelines</h3><h3>9. Craft a Memorable Tagline</h3><h3>10. Write Your Boilerplate Copy</h3><h2>Stage 4: Launch Assets (The Execution)</h2><h3>11. Design a High-Converting Landing Page</h3><h3>12. Build a Professional Pitch Deck</h3><h3>13. Create Social Media Templates</h3><h3>14. Create a Basic Brand Guidelines Document</h3><h2>Frequently Asked Questions</h2><h3>What is a brand identity checklist for startups?</h3><p>A brand identity checklist for startups is a structured guide that outlines the essential visual, verbal, and strategic elements a new business needs to build a recognizable and trustworthy brand.</p><h3>How much does it cost to build a startup brand in Pakistan?</h3><p>You can build a minimum viable brand for under PKR 50,000 if you focus on the essentials (logo, colors, landing page). Full agency branding can range from PKR 80,000 to PKR 250,000.</p><h2>Conclusion</h2></article></main></div>`;
+
+              routeHtml = replaceRootElement(routeHtml, startupChecklistHtml, route.url);
+              const targetPath = path.join(outDir, 'blog', 'startup-brand-identity-checklist', 'index.html');
               fs.mkdirSync(path.dirname(targetPath), { recursive: true });
               fs.writeFileSync(targetPath, routeHtml);
               continue;

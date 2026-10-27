@@ -274,13 +274,24 @@ const AdminDashboard = () => {
             tags: Array.isArray(post.tags) ? post.tags.join(', ') : (post.tags || '')
         });
 
-        // Auto-extract or load from saved helperImages field
-        if (post.helperImages && Array.isArray(post.helperImages) && post.helperImages.length > 0) {
+        // Auto-extract or load from saved helperImages field (filtering out accidental stock presets)
+        const UNWANTED_PRESET_URLS = [
+            'photo-1618005182384-a83a8bd57fbe',
+            'photo-1600585154340-be6161a56a0c',
+            'photo-1522335789203-aabd1fc54bc9',
+            'photo-1507238691740-187a5b1d37b8',
+            'photo-1555538995-7ccc83f60f40',
+            'photo-1513694203232-719a280e022f'
+        ];
+        const filteredSavedHelpers = Array.isArray(post.helperImages)
+            ? post.helperImages.filter((img: any) => img && img.url && !UNWANTED_PRESET_URLS.some(p => String(img.url).includes(p)))
+            : [];
+        if (filteredSavedHelpers.length > 0) {
             setHelperImages(prev => {
                 const updated = [...prev].map(() => ({ url: '', caption: '' }));
                 for (let i = 0; i < 6; i++) {
-                    if (post.helperImages[i]) {
-                        updated[i] = post.helperImages[i];
+                    if (filteredSavedHelpers[i]) {
+                        updated[i] = filteredSavedHelpers[i];
                     }
                 }
                 return updated;
@@ -1719,42 +1730,6 @@ const AdminDashboard = () => {
                                                             </div>
                                                         );
                                                     })}
-                                                </div>
-
-                                                {/* Presets Grid */}
-                                                <div className="pt-4 border-t border-white/5 space-y-3">
-                                                    <div className="text-[9px] font-black text-zinc-500 uppercase tracking-widest">
-                                                        ✨ ABUQITMIRLABS Premium Curated Editorial Presets
-                                                    </div>
-                                                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-                                                        {[
-                                                            { name: "Cybernetics", url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80", caption: "High-End Cybernetic Abstract Visual" },
-                                                            { name: "Architect", url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80", caption: "Timeless Minimalist Brutalist Concrete Structure" },
-                                                            { name: "Timepiece", url: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80", caption: "Precision Engineered High-End Chronometer Detail" },
-                                                            { name: "Molten Gold", url: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80", caption: "Premium Abstract Molten Golden Liquid Canvas" },
-                                                            { name: "Workspace", url: "https://images.unsplash.com/photo-1555538995-7ccc83f60f40?auto=format&fit=crop&w=1200&q=80", caption: "Vaporwave Developer Console and Ergonomic Tech Station" },
-                                                            { name: "Studio", url: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80", caption: "Modern Open-Plan High-Contrast Architectural Studio" }
-                                                        ].map((pre, pIdx) => (
-                                                            <button
-                                                                key={pIdx}
-                                                                type="button"
-                                                                onClick={() => {
-                                                                    const newImages = [...helperImages];
-                                                                    const emptyIndex = newImages.findIndex(i => i.url.trim() === '');
-                                                                    const targetIdx = emptyIndex !== -1 ? emptyIndex : 0;
-                                                                    
-                                                                    newImages[targetIdx] = { url: pre.url, caption: pre.caption };
-                                                                    setHelperImages(newImages);
-                                                                }}
-                                                                className="p-2 rounded-xl bg-white/5 border border-white/5 hover:border-blue-500/50 hover:bg-white/10 text-left transition-all group"
-                                                            >
-                                                                <div className="aspect-video rounded-lg overflow-hidden mb-1">
-                                                                    <img src={pre.url} alt={pre.name} width={200} height={112} loading="lazy" decoding="async" referrerPolicy="no-referrer" className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
-                                                                </div>
-                                                                <div className="text-[8px] font-black text-gray-400 uppercase truncate tracking-wider">{pre.name}</div>
-                                                            </button>
-                                                        ))}
-                                                    </div>
                                                 </div>
                                             </div>
 

@@ -140,14 +140,28 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         typeof s === 'string'
                             ? s.trim().replace(/^(?:&quot;|["'“”])+|(?:&quot;|["'“”])+$/gi, '').trim()
                             : s;
+                    const UNWANTED_PRESET_URLS = [
+                        'photo-1618005182384-a83a8bd57fbe',
+                        'photo-1600585154340-be6161a56a0c',
+                        'photo-1522335789203-aabd1fc54bc9',
+                        'photo-1507238691740-187a5b1d37b8',
+                        'photo-1555538995-7ccc83f60f40',
+                        'photo-1513694203232-719a280e022f'
+                    ];
+                    const cleanHelperList = ( foundPost.helperImages || [] ).filter(
+                        (img: any) => img && img.url && !UNWANTED_PRESET_URLS.some(p => String(img.url).includes(p))
+                    );
                     const staticEntry = (slug && STATIC_POSTS_MAP[slug]) ? STATIC_POSTS_MAP[slug] : null;
                     const sanitizedPost: Post = {
                         ...foundPost,
+                        helperImages: cleanHelperList,
                         metaDescription: cleanQuoteStr(staticEntry?.metaDescription || foundPost.metaDescription),
                         excerpt: cleanQuoteStr(foundPost.excerpt || staticEntry?.excerpt),
                         category:
                             slug === 'ai-content-vs-human-content'
                                 ? 'Content Writing'
+                                : slug === 'startup-brand-identity-checklist'
+                                ? 'Graphic Design'
                                 : (staticEntry?.category && staticEntry.category !== 'Development')
                                 ? staticEntry.category
                                 : foundPost.category,
@@ -180,7 +194,10 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         if (!post || !post.content) return '';
 
         // Deduplicate top-level title heading if markdown starts with heading matching post.title
-        let baseContent = post.content;
+        let baseContent = post.content.replace(
+            /https:\/\/www\.abuqitmirlabs\.tech\/blog\/brand-identity-vs-logo-design-pakistan-sme/g,
+            'https://www.abuqitmirlabs.tech/blog/brand-strategy-vs-logo-design-pakistan-sme'
+        );
         const normTitle = (post.title || '').toLowerCase().replace(/[^a-z0-9]/g, '');
         const contentLines = baseContent.split(/\r?\n/);
         while (contentLines.length > 0 && contentLines[0].trim() === '') {
@@ -207,9 +224,23 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             }
         }
         
-        // Find images that are not already present in the content
+        const UNWANTED_PRESET_URLS = [
+            'photo-1618005182384-a83a8bd57fbe',
+            'photo-1600585154340-be6161a56a0c',
+            'photo-1522335789203-aabd1fc54bc9',
+            'photo-1507238691740-187a5b1d37b8',
+            'photo-1555538995-7ccc83f60f40',
+            'photo-1513694203232-719a280e022f'
+        ];
+
+        // Find images that are not already present in the content and not accidental stock presets
         const imagesToInject = (post.helperImages || []).filter(
-            (img: any) => img && img.url && img.url.trim() !== '' && !baseContent.includes(img.url)
+            (img: any) =>
+                img &&
+                img.url &&
+                img.url.trim() !== '' &&
+                !baseContent.includes(img.url) &&
+                !UNWANTED_PRESET_URLS.some(p => String(img.url).includes(p))
         );
 
         if (imagesToInject.length === 0) {
