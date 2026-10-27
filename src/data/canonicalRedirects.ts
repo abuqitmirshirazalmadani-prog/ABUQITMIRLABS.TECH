@@ -29,9 +29,23 @@ export const BLOG_SLUG_REDIRECTS: Record<string, string> = {
   
   // Mobile app stack & Agency guides
   'flutter-vs-react-native-choosing-your-mobile-app-stack-in-2026': 'flutter-vs-react-native-choosing-mobile-app-stack-2026',
+  'flutter-vs-react-native-2026': 'flutter-vs-react-native-choosing-mobile-app-stack-2026',
+  'flutter-vs-react-native': 'flutter-vs-react-native-choosing-mobile-app-stack-2026',
+  'flutter-vs-native-2026': 'flutter-vs-native-mobile-app-development-2026',
+  'flutter-vs-native-mobile-app-development': 'flutter-vs-native-mobile-app-development-2026',
   'app-development-agency-uk-what-to-ask-before-you-sign-2026-guide': 'app-development-agency-uk-what-to-ask-before-you-sign-2026',
-  'how-to-choose-mobile-app-development-company': 'how-to-choose-mobile-app-development-company-2026',
+  'app-development-agency-uk-2026': 'app-development-agency-uk-what-to-ask-before-you-sign-2026',
+  'app-development-agency-uk': 'app-development-agency-uk-what-to-ask-before-you-sign-2026',
+  'how-to-choose-mobile-app-development-company': 'how-to-choose-a-mobile-app-development-company-2026',
   'how-to-choose-mobile-app-development-company-2026': 'how-to-choose-a-mobile-app-development-company-2026',
+  'native-mobile-app-development-ios-vs-android-cost-2026': 'native-mobile-app-development-ios-vs-android-cost',
+  'native-mobile-app-development-ios-vs-android': 'native-mobile-app-development-ios-vs-android-cost',
+  'ios-vs-android-cost-2026': 'native-mobile-app-development-ios-vs-android-cost',
+  'tailor-made-software-solutions-when-off-the-shelf-fails-2026': 'tailor-made-software-solutions-when-off-the-shelf-fails',
+  'tailor-made-software-solutions': 'tailor-made-software-solutions-when-off-the-shelf-fails',
+  'when-off-the-shelf-software-fails': 'tailor-made-software-solutions-when-off-the-shelf-fails',
+  'ecommerce-platform-development-custom-build-vs-shopify-plus-2026': 'e-commerce-platform-development-custom-build-vs-shopify-plus-2026',
+  'healthcare-software-development-solutions-2026': 'healthcare-software-development-solutions-2026-custom-ehr-clinical-software',
   
   // RAG and AI Agents Agency vs In-house
   'rag-ai-integration': 'rag-ai-integration-for-startups',
@@ -40,6 +54,7 @@ export const BLOG_SLUG_REDIRECTS: Record<string, string> = {
   'rag-ai-integration-for-startups-abuqitmirlabs': 'rag-ai-integration-for-startups',
   'the-go-to-guide-ai-agent-development-agency-vs-in-house': 'ai-agent-development-agency-vs-in-house',
   'the-go-to-guide-to-ai-agent-development-agency-vs-building-in-house': 'ai-agent-development-agency-vs-in-house',
+  'ai-agent-development-agency-vs-in-house-abuqitmirlabs': 'ai-agent-development-agency-vs-in-house',
   
   // Custom Software & Web Development
   'custom-software-development-company-karachi-pakistan-abuqitmirlabs': 'custom-software-development-company-karachi-pakistan',
@@ -51,8 +66,10 @@ export const BLOG_SLUG_REDIRECTS: Record<string, string> = {
   'why-custom-web-development-matters-2026': 'why-custom-web-development-matters-in-2026-build-vs-buy-guide',
   '5-step-web-development-lifecycle-2026': '5-step-web-development-lifecycle-2026-custom-web-development-process-guide',
   'custom-ai-solutions-for-corporate-events': 'custom-ai-solutions-for-corporate-events-2026-guide',
-  'local-business-visibility': 'local-business-visibility-seo-geo-aio-aeo-sxo-2026',
-  'what-seo-services-actually-means': 'what-seo-services-actually-means-2026',
+  'local-business-visibility': 'local-business-visibility-2026-seo-geo-aio-aeo-sxo',
+  'local-business-visibility-seo-geo-aio-aeo-sxo-2026': 'local-business-visibility-2026-seo-geo-aio-aeo-sxo',
+  'what-seo-services-actually-means': 'what-seo-services-actually-mean-in-2026-abuqitmirlabs',
+  'what-seo-services-actually-means-2026': 'what-seo-services-actually-mean-in-2026-abuqitmirlabs',
   'what-are-healthcare-ai-agents': 'what-are-healthcare-ai-agents-complete-guide-2026',
   'custom-ai-solutions-for-fintech-2026': 'custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting',
   'ai-integration-with-legacy-systems-2026': 'ai-integration-with-legacy-systems-the-complete-2026-guide',
@@ -67,8 +84,13 @@ export const BLOG_SLUG_REDIRECTS: Record<string, string> = {
  */
 export function getCanonicalSlug(rawSlug: string): string {
   if (!rawSlug) return '';
-  const clean = rawSlug.trim().replace(/^\/+/, '').replace(/^blog\//, '').replace(/\/+$/, '');
-  return BLOG_SLUG_REDIRECTS[clean] || clean;
+  let clean = rawSlug.trim().replace(/^\/+/, '').replace(/^blog\//, '').replace(/\/+$/, '');
+  const visited = new Set<string>();
+  while (BLOG_SLUG_REDIRECTS[clean] && !visited.has(clean)) {
+    visited.add(clean);
+    clean = BLOG_SLUG_REDIRECTS[clean];
+  }
+  return clean;
 }
 
 /**

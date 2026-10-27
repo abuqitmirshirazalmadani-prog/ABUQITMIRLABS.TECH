@@ -20,7 +20,7 @@ import { localSEOSmallBusinessSchema, localSEOSmallBusinessInitialHtml } from '.
 import { homeSchema, homeInitialHtml } from './src/utils/homeStaticHtml';
 import { renderStaticHeader } from './src/utils/sharedStaticHeader';
 import { SEO_ROUTES_METADATA } from './src/data/seoRoutesMetadata';
-import { BLOG_SLUG_REDIRECTS, getCanonicalPath } from './src/data/canonicalRedirects';
+import { BLOG_SLUG_REDIRECTS, getCanonicalPath, getCanonicalSlug } from './src/data/canonicalRedirects';
 import { STATIC_BLOG_POSTS } from './src/data/staticBlogPosts';
 import { programmaticSEOPages } from './src/data/programmatic-seo';
 
@@ -185,17 +185,20 @@ export default defineConfig(({ mode }) => {
             }
           } catch (err: any) {}
 
-          const seenBlogRoutes = new Set(baseRoutes.map(b => b.url));
+          const seenBlogRoutes = new Set(baseRoutes.map(b => getCanonicalPath(b.url)));
           const staticBlogRoutes = Object.entries(STATIC_BLOG_POSTS)
             .map(([rawSlug, post]: [string, any]) => {
-              const canonSlug = BLOG_SLUG_REDIRECTS[rawSlug] || rawSlug;
+              const canonSlug = getCanonicalSlug(rawSlug);
               const url = `/blog/${canonSlug}`;
+              const bestPost = (STATIC_BLOG_POSTS[canonSlug] && (STATIC_BLOG_POSTS[canonSlug].content?.length || 0) >= (post.content?.length || 0))
+                ? STATIC_BLOG_POSTS[canonSlug]
+                : post;
               return {
                 url,
                 changefreq: 'weekly' as const,
                 priority: 0.85,
-                title: (post.title || canonSlug).includes('AbuQitmirLabs') ? post.title : `${post.title || canonSlug} | AbuQitmirLabs`,
-                description: (post.metaDescription || post.excerpt || 'Technical Insights from AbuQitmirLabs.').slice(0, 155)
+                title: (bestPost.title || canonSlug).includes('AbuQitmirLabs') ? bestPost.title : `${bestPost.title || canonSlug} | AbuQitmirLabs`,
+                description: (bestPost.metaDescription || bestPost.excerpt || 'Technical Insights from AbuQitmirLabs.').slice(0, 155)
               };
             })
             .filter(r => {
@@ -205,6 +208,10 @@ export default defineConfig(({ mode }) => {
             });
 
           const dynamicRoutes = fetchedPosts
+            .map(post => {
+              const canonSlug = getCanonicalSlug(post.slug);
+              return { ...post, slug: canonSlug };
+            })
             .filter(post => {
               const url = `/blog/${post.slug}`;
               if (seenBlogRoutes.has(url)) return false;
@@ -219,7 +226,13 @@ export default defineConfig(({ mode }) => {
               description: (post.excerpt || 'Technical Insights from AbuQitmirLabs.').slice(0, 155)
             }));
 
-          const routes = [...baseRoutes, ...staticBlogRoutes, ...dynamicRoutes];
+          const dedupedBaseRoutes = baseRoutes.filter((b, idx, arr) => {
+            const canonUrl = getCanonicalPath(b.url);
+            if (canonUrl !== b.url) return false;
+            return arr.findIndex(x => x.url === b.url) === idx;
+          });
+
+          const routes = [...dedupedBaseRoutes, ...staticBlogRoutes, ...dynamicRoutes];
 
           if (!fs.existsSync(indexHtmlPath)) return;
           
@@ -547,7 +560,17 @@ export default defineConfig(({ mode }) => {
             
             let routeHtml = baseHtml;
             const safeTitle = route.title.replace(/&/g, '&amp;');
-            const strippedDesc = route.description.trim().replace(/^(?:&quot;|["'“”])+|(?:&quot;|["'“”])+$/gi, '').trim();
+            let strippedDesc = (SEO_ROUTES_METADATA[route.url]?.description || route.description || '')
+              .trim()
+              .replace(/^(?:&quot;|["'“”])+|(?:&quot;|["'“”])+$/gi, '')
+              .replace(/["“”]/g, "'")
+              .replace(/\s+/g, ' ')
+              .trim();
+            if (strippedDesc.length > 152) {
+              const cut = strippedDesc.slice(0, 150);
+              const lastSpace = cut.lastIndexOf(' ');
+              strippedDesc = `${(lastSpace > 100 ? cut.slice(0, lastSpace) : cut).replace(/[.,;:!?-]+$/, '')}.`;
+            }
             const safeDesc = strippedDesc.replace(/"/g, '&quot;').replace(/&/g, '&amp;');
             
             routeHtml = routeHtml.replace(/<title\b[^>]*>[^<]*<\/title>/gi, '').replace('</head>', `  <title data-rh="true">${safeTitle}</title>\n</head>`);
@@ -1079,8 +1102,15 @@ export default defineConfig(({ mode }) => {
             if (route.url.startsWith('/blog/') && route.url !== '/blog') {
               const blogSlug = route.url.replace(/^\/blog\//, '').replace(/\/+$/, '');
               const seoMeta = SEO_ROUTES_METADATA[route.url];
-              const staticPost = STATIC_BLOG_POSTS[blogSlug];
-              const firestorePost = fetchedPosts.find(p => p.slug === blogSlug);
+              let staticPost = STATIC_BLOG_POSTS[blogSlug];
+              for (const [candidateSlug, candidatePost] of Object.entries(STATIC_BLOG_POSTS)) {
+                if (getCanonicalSlug(candidateSlug) === blogSlug) {
+                  if (!staticPost || (candidatePost?.content?.length || 0) > (staticPost?.content?.length || 0)) {
+                    staticPost = candidatePost;
+                  }
+                }
+              }
+              const firestorePost = fetchedPosts.find(p => getCanonicalSlug(p.slug) === blogSlug);
 
               let mdSource = firestorePost?.content || staticPost?.content || '';
               if (!mdSource) {
@@ -1243,6 +1273,52 @@ export default defineConfig(({ mode }) => {
               } else {
                 const routeH2 = route.url === '/' ? 'Custom Software · Web Development · AI Agents · Mobile Apps · SEO' : 'Elite Digital Architecture &amp; Technical Solutions';
                 articleContent = `<h2>${routeH2}</h2><p>At AbuQitmirLabs .TECH, we specialize in <strong>custom software engineering</strong> and high-performance digital solutions.</p><img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" /><p>${route.description}</p><section><h3>Our Technical Expertise</h3><p>We deliver cutting-edge software solutions including:</p><ul><li>Custom Mobile & Web App Engineering</li><li>Autonomous AI Agents & RAG Integration</li><li>Scalable Cloud-Native Microservices</li><li>High-ROI Semantic SEO Strategies</li><li>Cinematic UX Frameworks</li></ul></section>`;
+              }
+            }
+
+            if (!route.url.startsWith('/blog/') || route.url === '/blog') {
+              const seoMeta = SEO_ROUTES_METADATA[route.url];
+              const fullCanonical = `${hostname}${route.url === '/' ? '/' : route.url}`;
+              if (seoMeta && seoMeta.schemaJsonLd) {
+                routeHtml = injectSingleSchema(routeHtml, seoMeta.schemaJsonLd);
+              } else {
+                const pageSchema = {
+                  "@context": "https://schema.org",
+                  "@graph": [
+                    {
+                      "@type": "Organization",
+                      "@id": "https://www.abuqitmirlabs.tech/#organization",
+                      "name": "AbuQitmirLabs .TECH",
+                      "alternateName": "AbuQitmirLabs",
+                      "url": "https://www.abuqitmirlabs.tech/",
+                      "logo": "https://www.abuqitmirlabs.tech/logo.png"
+                    },
+                    {
+                      "@type": "WebSite",
+                      "@id": "https://www.abuqitmirlabs.tech/#website",
+                      "url": "https://www.abuqitmirlabs.tech/",
+                      "name": "AbuQitmirLabs .TECH",
+                      "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" }
+                    },
+                    {
+                      "@type": "WebPage",
+                      "@id": `${fullCanonical}#webpage`,
+                      "url": fullCanonical,
+                      "name": route.title,
+                      "description": strippedDesc,
+                      "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" }
+                    },
+                    {
+                      "@type": "BreadcrumbList",
+                      "@id": `${fullCanonical}#breadcrumb`,
+                      "itemListElement": [
+                        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abuqitmirlabs.tech/" },
+                        { "@type": "ListItem", "position": 2, "name": route.title.replace(/\s*\|\s*AbuQitmirLabs.*$/i, ''), "item": fullCanonical }
+                      ]
+                    }
+                  ]
+                };
+                routeHtml = injectSingleSchema(routeHtml, pageSchema);
               }
             }
 

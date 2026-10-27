@@ -53,6 +53,33 @@ for (const filePath of htmlFiles) {
     html = html.replace('</head>', `  ${keptSchema}\n</head>`);
     modified = true;
     fixedSchemaCount++;
+  } else if (schemaMatches.length === 0 && html.includes('</head>')) {
+    const canonMatch = html.match(/<link\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/i);
+    const titleMatch = html.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i);
+    const fullCanonical = canonMatch ? canonMatch[1] : 'https://www.abuqitmirlabs.tech/';
+    const pageTitle = titleMatch ? titleMatch[1].trim() : 'AbuQitmirLabs .TECH';
+    const fallbackSchema = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.abuqitmirlabs.tech/#organization",
+          "name": "AbuQitmirLabs .TECH",
+          "url": "https://www.abuqitmirlabs.tech/",
+          "logo": "https://www.abuqitmirlabs.tech/logo.png"
+        },
+        {
+          "@type": "WebPage",
+          "@id": `${fullCanonical}#webpage`,
+          "url": fullCanonical,
+          "name": pageTitle,
+          "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" }
+        }
+      ]
+    };
+    html = html.replace('</head>', `  <script type="application/ld+json" data-rh="true">\n${JSON.stringify(fallbackSchema, null, 2)}\n  </script>\n</head>`);
+    modified = true;
+    fixedSchemaCount++;
   }
 
   // 2. Ensure at least one <h2> exists inside <div id="root">
@@ -79,4 +106,5 @@ for (const filePath of htmlFiles) {
   verifiedCount++;
 }
 
-console.log(`✅ [Post-Build SEO Verifier] Verified ${verifiedCount} static HTML files in dist/ (Auto-deduplicated schemas: ${fixedSchemaCount}, Auto-enforced H2: ${fixedH2Count}).`);
+console.log(`✅ [Post-Build SEO Verifier] Verified ${verifiedCount} static HTML files in dist/ (Auto-fixed schemas: ${fixedSchemaCount}, Auto-enforced H2: ${fixedH2Count}).`);
+
