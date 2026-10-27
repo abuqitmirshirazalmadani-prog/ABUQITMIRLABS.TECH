@@ -3589,7 +3589,54 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                         }
                                     }
                                 ]
-                            }] : [])
+                            }] : []),
+                            ...((() => {
+                                const md = post?.content || '';
+                                if (!md) return [];
+                                const lines = md.split(/\r?\n/);
+                                const faqs: Array<{ q: string; a: string }> = [];
+                                let inFaq = false;
+                                let currQ = '';
+                                let currA: string[] = [];
+                                const flush = () => {
+                                    if (currQ && currA.length > 0) {
+                                        faqs.push({ q: currQ, a: currA.join(' ').trim() });
+                                    }
+                                    currQ = '';
+                                    currA = [];
+                                };
+                                for (const rawLine of lines) {
+                                    const t = rawLine.trim();
+                                    if (!t || t === '---') continue;
+                                    if (t.startsWith('## ')) {
+                                        flush();
+                                        const h2 = t.slice(3).replace(/\*\*/g, '').trim();
+                                        inFaq = /frequently asked questions|\bfaq\b/i.test(h2);
+                                    } else if (t.startsWith('### ')) {
+                                        flush();
+                                        const h3 = t.slice(4).replace(/\*\*/g, '').trim();
+                                        if (inFaq || h3.endsWith('?')) {
+                                            currQ = h3.replace(/^\d+[\.\)]\s*/, '').trim();
+                                        }
+                                    } else if (currQ && !t.startsWith('#') && !t.startsWith('|') && !t.startsWith('```') && !t.startsWith('![')) {
+                                        currA.push(t.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1'));
+                                    }
+                                }
+                                flush();
+                                if (faqs.length === 0) return [];
+                                return [{
+                                    "@type": "FAQPage",
+                                    "@id": `${seoData.canonicalUrl}#faq`,
+                                    "mainEntity": faqs.slice(0, 12).map(item => ({
+                                        "@type": "Question",
+                                        "name": item.q,
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": item.a
+                                        }
+                                    }))
+                                }];
+                            })())
                         ].filter((node: any, idx: number, arr: any[]) => {
                             if (node && node['@type'] === 'FAQPage') {
                                 return arr.findIndex((n: any) => n && n['@type'] === 'FAQPage') === idx;

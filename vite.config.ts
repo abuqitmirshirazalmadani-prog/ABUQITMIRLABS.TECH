@@ -142,7 +142,7 @@ export default defineConfig(({ mode }) => {
             });
           }
 
-          let fetchedPosts: { slug: string; title: string; excerpt: string; createdAt: string; category: string; author: string }[] = [];
+          let fetchedPosts: { slug: string; title: string; excerpt: string; content: string; coverImage: string; createdAt: string; category: string; author: string }[] = [];
           try {
             let projectId = "angular-oxide-tcf5x";
             let databaseId = "ai-studio-675d15b3-f001-4d2e-a88b-bbcb33443014";
@@ -159,7 +159,7 @@ export default defineConfig(({ mode }) => {
               }
             } catch (cfgErr) {}
 
-            const firestoreUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/${databaseId}/documents/posts${apiKey ? `?key=${apiKey}` : ''}`;
+            const firestoreUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/${databaseId}/documents/posts?pageSize=200${apiKey ? `&key=${apiKey}` : ''}`;
             const response = await fetch(firestoreUrl);
             if (response.ok) {
               const data = await response.json();
@@ -168,32 +168,58 @@ export default defineConfig(({ mode }) => {
                   (val || '').trim().replace(/^(?:&quot;|["'“”])+|(?:&quot;|["'“”])+$/gi, '').trim();
                 fetchedPosts = data.documents.map((doc: any) => {
                   const fields = doc.fields || {};
-                  const slugVal = fields.slug?.stringValue || '';
+                  const slugVal = (fields.slug?.stringValue || '').trim().replace(/^\/+/, '').replace(/^blog\//, '').replace(/\/+$/, '');
                   return {
-                    slug: slugVal,
+                    slug: BLOG_SLUG_REDIRECTS[slugVal] || slugVal,
                     title: fields.title?.stringValue || '',
                     excerpt: cleanQuote(fields.metaDescription?.stringValue || fields.excerpt?.stringValue || ''),
-                    published: fields.published?.booleanValue ?? false,
+                    content: fields.content?.stringValue || '',
+                    coverImage: fields.coverImage?.stringValue || '',
+                    published: fields.published?.booleanValue ?? true,
                     createdAt: fields.createdAt?.timestampValue || new Date().toISOString(),
                     category: slugVal === 'ai-content-vs-human-content' ? 'Content Writing' : (fields.category?.stringValue || 'Software'),
-                    author: fields.author?.stringValue || 'Shiraz Almadani',
+                    author: fields.author?.stringValue || 'Abu Qitmir Mohammad Shiraz Al-Madani',
                   };
                 }).filter((p: any) => p.published && p.slug);
               }
             }
           } catch (err: any) {}
 
+          const seenBlogRoutes = new Set(baseRoutes.map(b => b.url));
+          const staticBlogRoutes = Object.entries(STATIC_BLOG_POSTS)
+            .map(([rawSlug, post]: [string, any]) => {
+              const canonSlug = BLOG_SLUG_REDIRECTS[rawSlug] || rawSlug;
+              const url = `/blog/${canonSlug}`;
+              return {
+                url,
+                changefreq: 'weekly' as const,
+                priority: 0.85,
+                title: (post.title || canonSlug).includes('AbuQitmirLabs') ? post.title : `${post.title || canonSlug} | AbuQitmirLabs`,
+                description: (post.metaDescription || post.excerpt || 'Technical Insights from AbuQitmirLabs.').slice(0, 155)
+              };
+            })
+            .filter(r => {
+              if (seenBlogRoutes.has(r.url)) return false;
+              seenBlogRoutes.add(r.url);
+              return true;
+            });
+
           const dynamicRoutes = fetchedPosts
-            .filter(post => !baseRoutes.some(b => b.url === `/blog/${post.slug}`))
+            .filter(post => {
+              const url = `/blog/${post.slug}`;
+              if (seenBlogRoutes.has(url)) return false;
+              seenBlogRoutes.add(url);
+              return true;
+            })
             .map(post => ({
               url: `/blog/${post.slug}`,
               changefreq: 'weekly' as const,
-              priority: 0.8,
+              priority: 0.85,
               title: post.title.includes('AbuQitmirLabs') ? post.title : `${post.title} | AbuQitmirLabs`,
-              description: post.excerpt || 'Technical Insights from Shiraz Almadani.'
+              description: (post.excerpt || 'Technical Insights from AbuQitmirLabs.').slice(0, 155)
             }));
 
-          const routes = [...baseRoutes, ...dynamicRoutes];
+          const routes = [...baseRoutes, ...staticBlogRoutes, ...dynamicRoutes];
 
           if (!fs.existsSync(indexHtmlPath)) return;
           
@@ -1053,11 +1079,10 @@ export default defineConfig(({ mode }) => {
             if (route.url.startsWith('/blog/') && route.url !== '/blog') {
               const blogSlug = route.url.replace(/^\/blog\//, '').replace(/\/+$/, '');
               const seoMeta = SEO_ROUTES_METADATA[route.url];
-              if (seoMeta && seoMeta.schemaJsonLd) {
-                routeHtml = injectSingleSchema(routeHtml, seoMeta.schemaJsonLd);
-              }
               const staticPost = STATIC_BLOG_POSTS[blogSlug];
-              let mdSource = staticPost?.content || '';
+              const firestorePost = fetchedPosts.find(p => p.slug === blogSlug);
+
+              let mdSource = firestorePost?.content || staticPost?.content || '';
               if (!mdSource) {
                 const mdPath = path.resolve(process.cwd(), 'content/blog', `${blogSlug}.md`);
                 if (fs.existsSync(mdPath)) {
@@ -1065,24 +1090,146 @@ export default defineConfig(({ mode }) => {
                   mdSource = rawMdFile.replace(/^---[\s\S]*?---\s*/, '');
                 }
               }
+
+              const slugifyId = (txt: string) =>
+                txt.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
+
+              const extractedFaqs: Array<{ question: string; answer: string }> = [];
               if (mdSource) {
                 const htmlBlocks: string[] = [];
                 const lines = mdSource.split(/\r?\n/);
+                let inFaqSection = false;
+                let currentFaqQuestion = '';
+                let currentFaqAnswerParts: string[] = [];
+
+                const flushFaq = () => {
+                  if (currentFaqQuestion && currentFaqAnswerParts.length > 0) {
+                    extractedFaqs.push({
+                      question: currentFaqQuestion,
+                      answer: currentFaqAnswerParts.join(' ').trim()
+                    });
+                  }
+                  currentFaqQuestion = '';
+                  currentFaqAnswerParts = [];
+                };
+
                 for (const line of lines) {
                   const trimmed = line.trim();
                   if (!trimmed || trimmed === '---') continue;
                   if (trimmed.startsWith('## ')) {
+                    flushFaq();
                     const h2Text = trimmed.slice(3).replace(/\*\*/g, '').trim();
-                    htmlBlocks.push(`<h2>${escapeXml(h2Text)}</h2>`);
+                    inFaqSection = /frequently asked questions|\bfaq\b/i.test(h2Text);
+                    htmlBlocks.push(`<h2 id="${slugifyId(h2Text)}" class="text-2xl font-bold mt-10 mb-4">${escapeXml(h2Text)}</h2>`);
                   } else if (trimmed.startsWith('### ')) {
+                    flushFaq();
                     const h3Text = trimmed.slice(4).replace(/\*\*/g, '').trim();
-                    htmlBlocks.push(`<h3>${escapeXml(h3Text)}</h3>`);
-                  } else if (!trimmed.startsWith('#') && !trimmed.startsWith('|') && !trimmed.startsWith('```')) {
-                    const pText = trimmed.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
-                    htmlBlocks.push(`<p>${escapeXml(pText)}</p>`);
+                    if (inFaqSection || h3Text.endsWith('?')) {
+                      currentFaqQuestion = h3Text.replace(/^\d+[\.\)]\s*/, '').trim();
+                    }
+                    htmlBlocks.push(`<h3 id="${slugifyId(h3Text)}" class="text-xl font-bold mt-6 mb-3">${escapeXml(h3Text)}</h3>`);
+                  } else if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+                    const liText = trimmed.slice(2).replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
+                    htmlBlocks.push(`<li>${escapeXml(liText)}</li>`);
+                  } else if (!trimmed.startsWith('#') && !trimmed.startsWith('|') && !trimmed.startsWith('```') && !trimmed.startsWith('![')) {
+                    const cleanText = trimmed.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
+                    if (currentFaqQuestion) {
+                      currentFaqAnswerParts.push(cleanText);
+                    }
+                    htmlBlocks.push(`<p class="text-neutral-300 mb-4">${escapeXml(cleanText)}</p>`);
                   }
                 }
-                articleContent = htmlBlocks.join('');
+                flushFaq();
+                // Guarantee at least one H2 even if a short post had no ## headings
+                if (!htmlBlocks.some(b => b.startsWith('<h2'))) {
+                  htmlBlocks.unshift(`<h2 id="overview" class="text-2xl font-bold mt-8 mb-4">Key Takeaways &amp; Overview</h2>`);
+                }
+                articleContent = htmlBlocks.join('\n');
+              }
+
+              const coverImgUrl = seoMeta?.ogImage || firestorePost?.coverImage || staticPost?.coverImage || 'https://www.abuqitmirlabs.tech/logo.png';
+              routeHtml = routeHtml
+                .replace(/<meta\b[^>]*property="og:image"[^>]*\/?>/gi, '')
+                .replace(/<meta\b[^>]*name="twitter:image"[^>]*\/?>/gi, '')
+                .replace(/<meta\b[^>]*property="og:type"[^>]*\/?>/gi, '')
+                .replace('</head>', `  <meta data-rh="true" property="og:type" content="article" />\n  <meta data-rh="true" property="og:image" content="${coverImgUrl}" />\n  <meta data-rh="true" name="twitter:image" content="${coverImgUrl}" />\n</head>`);
+
+              if (seoMeta && seoMeta.schemaJsonLd) {
+                routeHtml = injectSingleSchema(routeHtml, seoMeta.schemaJsonLd);
+              } else {
+                const fullCanonical = `${hostname}${route.url}`;
+                const cleanHeadline = (firestorePost?.title || staticPost?.title || route.title).replace(/\s*\|\s*AbuQitmirLabs.*$/i, '');
+                const autoGraph: any[] = [
+                  {
+                    "@type": "Organization",
+                    "@id": "https://www.abuqitmirlabs.tech/#organization",
+                    "name": "AbuQitmirLabs .TECH",
+                    "alternateName": "AbuQitmirLabs",
+                    "url": "https://www.abuqitmirlabs.tech/",
+                    "logo": "https://www.abuqitmirlabs.tech/logo.png"
+                  },
+                  {
+                    "@type": "WebSite",
+                    "@id": "https://www.abuqitmirlabs.tech/#website",
+                    "url": "https://www.abuqitmirlabs.tech/",
+                    "name": "AbuQitmirLabs .TECH",
+                    "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" }
+                  },
+                  {
+                    "@type": "WebPage",
+                    "@id": `${fullCanonical}#webpage`,
+                    "url": fullCanonical,
+                    "name": route.title,
+                    "description": strippedDesc,
+                    "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" }
+                  },
+                  {
+                    "@type": "BreadcrumbList",
+                    "@id": `${fullCanonical}#breadcrumb`,
+                    "itemListElement": [
+                      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abuqitmirlabs.tech/" },
+                      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.abuqitmirlabs.tech/blog" },
+                      { "@type": "ListItem", "position": 3, "name": cleanHeadline, "item": fullCanonical }
+                    ]
+                  },
+                  {
+                    "@type": "Article",
+                    "@id": `${fullCanonical}#article`,
+                    "isPartOf": { "@id": `${fullCanonical}#webpage` },
+                    "headline": cleanHeadline,
+                    "description": strippedDesc,
+                    "image": coverImgUrl,
+                    "author": {
+                      "@type": "Person",
+                      "name": firestorePost?.author || staticPost?.author || "Abu Qitmir Mohammad Shiraz Al-Madani",
+                      "url": "https://www.abuqitmirlabs.tech/about/our-team"
+                    },
+                    "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+                    "mainEntityOfPage": { "@id": `${fullCanonical}#webpage` },
+                    "datePublished": "2026-10-23T00:00:00+00:00",
+                    "dateModified": "2026-10-27T00:00:00+00:00"
+                  }
+                ];
+
+                if (extractedFaqs.length > 0) {
+                  autoGraph.push({
+                    "@type": "FAQPage",
+                    "@id": `${fullCanonical}#faq`,
+                    "mainEntity": extractedFaqs.slice(0, 12).map(faq => ({
+                      "@type": "Question",
+                      "name": faq.question,
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": faq.answer
+                      }
+                    }))
+                  });
+                }
+
+                routeHtml = injectSingleSchema(routeHtml, {
+                  "@context": "https://schema.org",
+                  "@graph": autoGraph
+                });
               }
             }
 

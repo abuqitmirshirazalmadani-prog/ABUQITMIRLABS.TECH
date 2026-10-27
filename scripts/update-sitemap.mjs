@@ -45,10 +45,11 @@ if (fs.existsSync(blogPostsPath)) {
 const baseUrl = 'https://www.abuqitmirlabs.tech';
 const today = '2026-10-23';
 
-// Also check content/blog/*.md frontmatter and auto-sync missing posts into staticBlogPosts.ts
-if (fs.existsSync(blogContentDir) && fs.existsSync(blogPostsPath)) {
-  let staticPostsSource = fs.readFileSync(blogPostsPath, 'utf-8');
-  let staticModified = false;
+// Also check content/blog/*.md frontmatter and Firestore posts, and auto-sync missing posts into staticBlogPosts.ts
+let staticPostsSource = fs.existsSync(blogPostsPath) ? fs.readFileSync(blogPostsPath, 'utf-8') : '';
+let staticModified = false;
+
+if (fs.existsSync(blogContentDir) && staticPostsSource) {
   const mdFiles = fs.readdirSync(blogContentDir).filter(f => f.endsWith('.md'));
   
   for (const file of mdFiles) {
@@ -87,20 +88,80 @@ if (fs.existsSync(blogContentDir) && fs.existsSync(blogPostsPath)) {
         };
         staticPostsSource += `\nSTATIC_BLOG_POSTS["${articleSlug}"] = ${JSON.stringify(postObj, null, 2)};\n`;
         staticModified = true;
-        console.log(`📦 Auto-synced blog post into staticBlogPosts.ts: ${articleSlug}`);
+        console.log(`📦 Auto-synced markdown blog post into staticBlogPosts.ts: ${articleSlug}`);
       }
     } catch (e) {
       // ignore read error
     }
   }
-  
-  if (staticModified) {
-    fs.writeFileSync(blogPostsPath, staticPostsSource, 'utf-8');
+}
+
+// 2b. Fetch published posts from Firestore so Admin Dashboard posts are automatically included in SSG & Sitemaps
+try {
+  let projectId = 'angular-oxide-tcf5x';
+  let databaseId = 'ai-studio-675d15b3-f001-4d2e-a88b-bbcb33443014';
+  let apiKey = '';
+  const cfgPath = path.join(rootDir, 'firebase-applet-config.json');
+  if (fs.existsSync(cfgPath)) {
+    const cfg = JSON.parse(fs.readFileSync(cfgPath, 'utf-8'));
+    if (cfg.projectId) projectId = cfg.projectId;
+    if (cfg.firestoreDatabaseId) databaseId = cfg.firestoreDatabaseId;
+    if (cfg.apiKey) apiKey = cfg.apiKey;
   }
+  const firestoreUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/${databaseId}/documents/posts?pageSize=200${apiKey ? `&key=${apiKey}` : ''}`;
+  const res = await fetch(firestoreUrl);
+  if (res.ok) {
+    const data = await res.json();
+    const docs = data?.documents || [];
+    const cleanQuote = (val) => (val || '').trim().replace(/^(?:&quot;|["'“”])+|(?:&quot;|["'“”])+$/gi, '').trim();
+    for (const doc of docs) {
+      const f = doc.fields || {};
+      const published = f.published?.booleanValue ?? true;
+      const rawSlug = (f.slug?.stringValue || '').trim().replace(/^\/+/, '').replace(/^blog\//, '').replace(/\/+$/, '');
+      if (!published || !rawSlug) continue;
+      const canonicalSlug = redirects[rawSlug] || rawSlug;
+      slugsSet.add(canonicalSlug);
+
+      const postTitle = f.title?.stringValue || canonicalSlug;
+      const postContent = f.content?.stringValue || '';
+      const postExcerpt = cleanQuote(f.excerpt?.stringValue || '');
+      const postMetaDesc = cleanQuote(f.metaDescription?.stringValue || postExcerpt);
+      const postCover = f.coverImage?.stringValue || 'https://www.abuqitmirlabs.tech/logo.png';
+      const postCoverAlt = f.coverImageAlt?.stringValue || `${postTitle} by AbuQitmirLabs`;
+      const postCategory = f.category?.stringValue || 'Development';
+      const postAuthor = f.author?.stringValue || 'Abu Qitmir Mohammad Shiraz Al-Madani';
+      const postTags = (f.tags?.arrayValue?.values || []).map(v => v.stringValue).filter(Boolean);
+
+      if (postContent && staticPostsSource && !staticPostsSource.includes(`STATIC_BLOG_POSTS["${canonicalSlug}"]`) && !staticPostsSource.includes(`'${canonicalSlug}':`)) {
+        const postObj = {
+          canonical: `https://www.abuqitmirlabs.tech/blog/${canonicalSlug}`,
+          title: postTitle,
+          content: postContent,
+          excerpt: postExcerpt,
+          metaDescription: postMetaDesc,
+          coverImage: postCover,
+          coverImageAlt: postCoverAlt,
+          category: postCategory,
+          createdAt: today,
+          author: postAuthor,
+          tags: postTags
+        };
+        staticPostsSource += `\nSTATIC_BLOG_POSTS["${canonicalSlug}"] = ${JSON.stringify(postObj, null, 2)};\n`;
+        staticModified = true;
+        console.log(`🔥 Auto-synced Firestore Admin post into staticBlogPosts.ts: ${canonicalSlug}`);
+      }
+    }
+  }
+} catch (fsErr) {
+  // continue offline gracefully
+}
+
+if (staticModified && blogPostsPath) {
+  fs.writeFileSync(blogPostsPath, staticPostsSource, 'utf-8');
 }
 
 const slugs = Array.from(slugsSet);
-console.log(`📄 Found ${slugs.length} blog posts in staticBlogPosts.ts & content/blog`);
+console.log(`📄 Found ${slugs.length} blog posts in staticBlogPosts.ts, content/blog & Firestore`);
 
 // 3. Har slug ke liye URL check karein, agar missing ho to add karein
 let added = 0;
