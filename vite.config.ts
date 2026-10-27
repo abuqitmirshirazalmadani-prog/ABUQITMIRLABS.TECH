@@ -591,105 +591,123 @@ export default defineConfig(({ mode }) => {
             };
             // =======================================
 
+            const writeRouteFiles = (rUrl: string, rDir: string, htmlContent: string) => {
+              fs.writeFileSync(path.join(rDir, 'index.html'), htmlContent, 'utf-8');
+              if (rUrl !== '/') {
+                const cleanRel = rUrl.replace(/^\/+/, '').replace(/\/+$/, '');
+                if (cleanRel) {
+                  const directHtmlPath = path.join(outDir, `${cleanRel}.html`);
+                  const parentDir = path.dirname(directHtmlPath);
+                  if (!fs.existsSync(parentDir)) fs.mkdirSync(parentDir, { recursive: true });
+                  fs.writeFileSync(directHtmlPath, htmlContent, 'utf-8');
+                }
+              }
+            };
+
+            const injectSingleSchema = (htmlSource: string, schemaObj: any) => {
+              const cleaned = htmlSource.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis, '');
+              return cleaned.replace('</head>', `  <script type="application/ld+json" data-rh="true">\n${JSON.stringify(schemaObj, null, 2)}\n  </script>\n</head>`);
+            };
+
             if (route.url === '/') {
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(homeSchema, null, 2)}\n  </script>\n</head>`);
+              routeHtml = injectSingleSchema(routeHtml, homeSchema);
               routeHtml = replaceRootElement(routeHtml, homeInitialHtml, '/');
               fs.writeFileSync(indexHtmlPath, routeHtml);
               continue;
             }
 
             if (route.url === '/ai-agent-development') {
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(aiAgentSchema, null, 2)}\n  </script>\n</head>`);
+              routeHtml = injectSingleSchema(routeHtml, aiAgentSchema);
               routeHtml = replaceRootElement(routeHtml, aiAgentInitialHtml, '/ai-agent-development');
-              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
+              writeRouteFiles(route.url, routeDir, routeHtml);
               continue;
             }
 
             if (route.url === '/graphics-design') {
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(graphicsDesignSchema, null, 2)}\n  </script>\n</head>`);
+              routeHtml = injectSingleSchema(routeHtml, graphicsDesignSchema);
               routeHtml = replaceRootElement(routeHtml, graphicsDesignInitialHtml, '/graphics-design');
-              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
+              writeRouteFiles(route.url, routeDir, routeHtml);
               continue;
             }
 
             if (route.url === '/solutions/fintech') {
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(fintechSchema, null, 2)}\n  </script>\n</head>`);
+              routeHtml = injectSingleSchema(routeHtml, fintechSchema);
               routeHtml = replaceRootElement(routeHtml, fintechInitialHtml, '/solutions/fintech');
-              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
+              writeRouteFiles(route.url, routeDir, routeHtml);
               continue;
             }
 
             if (route.url === '/solutions/healthcare') {
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(healthcareSchema, null, 2)}\n  </script>\n</head>`);
+              routeHtml = injectSingleSchema(routeHtml, healthcareSchema);
               routeHtml = replaceRootElement(routeHtml, healthcareInitialHtml, '/solutions/healthcare');
-              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
+              writeRouteFiles(route.url, routeDir, routeHtml);
               continue;
             }
 
             if (route.url === '/solutions/ai-automation') {
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(aiAutomationSchema, null, 2)}\n  </script>\n</head>`);
+              routeHtml = injectSingleSchema(routeHtml, aiAutomationSchema);
               routeHtml = replaceRootElement(routeHtml, aiAutomationInitialHtml, '/solutions/ai-automation');
-              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
+              writeRouteFiles(route.url, routeDir, routeHtml);
               continue;
             }
 
             if (route.url === '/solutions/e-commerce') {
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(eCommerceSchema, null, 2)}\n  </script>\n</head>`);
+              routeHtml = injectSingleSchema(routeHtml, eCommerceSchema);
               routeHtml = replaceRootElement(routeHtml, eCommerceInitialHtml, '/solutions/e-commerce');
-              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
+              writeRouteFiles(route.url, routeDir, routeHtml);
               continue;
             }
 
             if (route.url === '/solutions/edtech') {
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(edTechSchema, null, 2)}\n  </script>\n</head>`);
+              routeHtml = injectSingleSchema(routeHtml, edTechSchema);
               routeHtml = replaceRootElement(routeHtml, edTechInitialHtml, '/solutions/edtech');
-              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
+              writeRouteFiles(route.url, routeDir, routeHtml);
               continue;
             }
 
             if (route.url === '/custom-software') {
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(customSoftwareSchema, null, 2)}\n  </script>\n</head>`);
+              routeHtml = injectSingleSchema(routeHtml, customSoftwareSchema);
               routeHtml = replaceRootElement(routeHtml, customSoftwareInitialHtml, '/custom-software');
-              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
+              writeRouteFiles(route.url, routeDir, routeHtml);
               continue;
             }
 
             if (route.url === '/mobile-app-development') {
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(mobileAppSchema, null, 2)}\n  </script>\n</head>`);
+              routeHtml = injectSingleSchema(routeHtml, mobileAppSchema);
               routeHtml = replaceRootElement(routeHtml, mobileAppInitialHtml, '/mobile-app-development');
-              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
+              writeRouteFiles(route.url, routeDir, routeHtml);
               continue;
             }
 
             if (route.url === '/blog/custom-web-development-company') {
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(customWebDevBlogSchema, null, 2)}\n  </script>\n</head>`);
+              routeHtml = injectSingleSchema(routeHtml, customWebDevBlogSchema);
               routeHtml = replaceRootElement(routeHtml, customWebDevBlogInitialHtml, '/blog/custom-web-development-company');
-              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
+              writeRouteFiles(route.url, routeDir, routeHtml);
               continue;
             }
 
             if (route.url === '/blog/content-calendar-strategy') {
               const seoMeta = SEO_ROUTES_METADATA['/blog/content-calendar-strategy'];
               if (seoMeta && seoMeta.schemaJsonLd) {
-                routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json" data-rh="true">\n${JSON.stringify(seoMeta.schemaJsonLd, null, 2)}\n  </script>\n</head>`);
+                routeHtml = injectSingleSchema(routeHtml, seoMeta.schemaJsonLd);
               }
               if (seoMeta && seoMeta.ogImage) {
                 routeHtml = routeHtml
-                  .replace(/<meta\s+property="og:image"\s+content="[\s\S]*?"\s*\/?>/gi, '')
-                  .replace(/<meta\s+name="twitter:image"\s+content="[\s\S]*?"\s*\/?>/gi, '')
-                  .replace(/<meta\s+property="og:type"\s+content="[\s\S]*?"\s*\/?>/gi, '')
-                  .replace('</head>', `  <meta property="og:type" content="article" />\n  <meta property="og:image" content="${seoMeta.ogImage}" />\n  <meta name="twitter:image" content="${seoMeta.ogImage}" />\n</head>`);
+                  .replace(/<meta\b[^>]*property="og:image"[^>]*\/?>/gi, '')
+                  .replace(/<meta\b[^>]*name="twitter:image"[^>]*\/?>/gi, '')
+                  .replace(/<meta\b[^>]*property="og:type"[^>]*\/?>/gi, '')
+                  .replace('</head>', `  <meta data-rh="true" property="og:type" content="article" />\n  <meta data-rh="true" property="og:image" content="${seoMeta.ogImage}" />\n  <meta data-rh="true" name="twitter:image" content="${seoMeta.ogImage}" />\n</head>`);
               }
               const contentCalendarHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader('/blog/content-calendar-strategy')}<main id="main-content" class="max-w-4xl mx-auto px-6 pt-36 pb-20"><h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-8 font-serif">How to Build a Content Calendar That Gets Followed</h1><article class="prose prose-invert max-w-none text-zinc-300"><h2>Quick Takeaways</h2><ul><li>Most content calendars fail because they are built on unrealistic expectations and lack of clear ownership, not because of a lack of tools.</li><li>A successful calendar requires a system: defining content pillars, setting a realistic cadence, and assigning clear owners.</li><li>You do not need expensive software. A shared Google Sheet or a simple Notion board is usually sufficient.</li><li>Build a content backlog to prevent last-minute scrambling and quality drops.</li></ul><h2>Why Most Content Calendars Fail</h2><p>Most content calendars fail because they are disconnected from actual production capacity. A calendar must account for the entire production cycle: ideation, research, drafting, editing, design, and publishing.</p><h2>The 6-Step Content Calendar Strategy</h2><h3>Step 1: Define Your Content Pillars</h3><h3>Step 2: Set a Realistic Publishing Cadence</h3><h3>Step 3: Assign Clear Ownership</h3><h3>Step 4: Build a Content Backlog</h3><h3>Step 5: Schedule and Integrate with SEO</h3><h3>Step 6: Review, Iterate, and Repurpose</h3><h2>The Content Calendar Template</h2><h2>Common Mistakes Founders Make with Content Calendars</h2><h2>Frequently Asked Questions</h2><h3>What is a content calendar strategy?</h3><p>A content calendar strategy is a systematic plan for creating, scheduling, and publishing content. It defines the topics, the target audience, the publishing frequency, and the team responsible for execution.</p><h3>How far in advance should I plan content?</h3><p>Plan your core themes and backlogs 3 months in advance. However, finalize specific publishing dates and drafts on a rolling 4-week basis to remain flexible to market changes.</p><h3>What tools are best for content calendars?</h3><p>Google Sheets, Notion, or Airtable are usually sufficient for small to mid-sized teams. For enterprise teams, tools like CoSchedule or Asana can help manage complex workflows.</p></article></main></div>`;
               routeHtml = replaceRootElement(routeHtml, contentCalendarHtml, '/blog/content-calendar-strategy');
-              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
+              writeRouteFiles(route.url, routeDir, routeHtml);
               continue;
             }
 
             if (route.url === '/blog/brand-strategy-vs-logo-design-pakistan-sme') {
               const seoMeta = SEO_ROUTES_METADATA['/blog/brand-strategy-vs-logo-design-pakistan-sme'];
               if (seoMeta && seoMeta.schemaJsonLd) {
-                routeHtml = routeHtml.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json" data-rh="true">\n${JSON.stringify(seoMeta.schemaJsonLd, null, 2)}\n  </script>\n</head>`);
+                routeHtml = injectSingleSchema(routeHtml, seoMeta.schemaJsonLd);
               }
               if (seoMeta && seoMeta.ogImage) {
                 routeHtml = routeHtml
@@ -700,14 +718,14 @@ export default defineConfig(({ mode }) => {
               }
               const brandStrategyHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader('/blog/brand-strategy-vs-logo-design-pakistan-sme')}<main id="main-content" class="max-w-4xl mx-auto px-6 pt-36 pb-20"><h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-8 font-serif">Brand Strategy vs Logo Design Pakistan | AbuQitmirLabs</h1><article class="prose prose-invert max-w-none text-zinc-300"><h2>Introduction</h2><p>Most Pakistani SMEs treat branding as a one-time transaction. They hire a freelancer, pay PKR 10,000 for a visual mark, slap it on a website, and wonder why they cannot command premium prices or attract serious clients.</p><h2>Quick Verdict: The Difference in 50 Words</h2><p>A logo is a single visual mark that gives you a PNG and SVG. Brand strategy is the comprehensive system of positioning, typography, color palettes, and guidelines that tells you how to use that logo. In Pakistan, a logo costs PKR 3,000 to 50,000, while a full brand strategy starts at PKR 80,000.</p><h2>The Problem: Why SMEs Get This Wrong</h2><h2>What Is a Logo? (And What It Is Not)</h2><h2>What Is a Brand Strategy?</h2><h2 id="cost-comparison-pkr-pricing-for-pakistani-smes">Cost Comparison: PKR Pricing for Pakistani SMEs</h2><h2>The Decision Matrix: Logo or Strategy First?</h2><h2>Why Cheap Logos Hurt Your Business Long-Term</h2><h2>Frequently Asked Questions</h2><h3>What is the difference between a logo and brand strategy?</h3><p>A logo is a single visual mark. Brand strategy is the comprehensive plan that defines your positioning, target audience, brand voice, and visual identity system.</p><h3>How much does a logo cost in Pakistan?</h3><p>In Pakistan, a freelance logo design can range from PKR 3,000 to PKR 15,000. A professional design agency might charge between PKR 20,000 and PKR 50,000 for a comprehensive logo suite.</p><h3>How much does brand strategy cost in Pakistan?</h3><p>A full brand strategy and identity system for an SME in Pakistan typically starts around PKR 80,000 and can exceed PKR 250,000 depending on the agency's expertise, the depth of research, and the deliverables.</p><h2>Conclusion</h2></article></main></div>`;
               routeHtml = replaceRootElement(routeHtml, brandStrategyHtml, '/blog/brand-strategy-vs-logo-design-pakistan-sme');
-              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
+              writeRouteFiles(route.url, routeDir, routeHtml);
               continue;
             }
 
             if (route.url === '/local-seo-for-small-business') {
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(localSEOSmallBusinessSchema, null, 2)}\n  </script>\n</head>`);
+              routeHtml = injectSingleSchema(routeHtml, localSEOSmallBusinessSchema);
               routeHtml = replaceRootElement(routeHtml, localSEOSmallBusinessInitialHtml, '/local-seo-for-small-business');
-              fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
+              writeRouteFiles(route.url, routeDir, routeHtml);
               continue;
             }
             
@@ -716,8 +734,8 @@ export default defineConfig(({ mode }) => {
             // ========================================================
             if (route.url === '/blog/ai-content-vs-human-content') {
               console.log('✅ [SEO Generator] Injecting static HTML for AI Content vs Human Content');
-              
-              const aiContentSchema = {
+              const seoMeta = SEO_ROUTES_METADATA['/blog/ai-content-vs-human-content'];
+              const aiContentSchema = (seoMeta && seoMeta.schemaJsonLd) || {
                 "@context": "https://schema.org",
                 "@type": "Article",
                 "headline": "AI Content vs Human Content: What Google's 2026 Guidelines Actually Say",
@@ -742,8 +760,7 @@ export default defineConfig(({ mode }) => {
                 }
               };
 
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
-              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(aiContentSchema, null, 2)}\n  </script>\n</head>`);
+              routeHtml = injectSingleSchema(routeHtml, aiContentSchema);
 
               const realArticleHtml = `
                 <div class="min-h-screen bg-[#09090b] text-white">
@@ -785,19 +802,22 @@ export default defineConfig(({ mode }) => {
               `;
 
               routeHtml = replaceRootElement(routeHtml, realArticleHtml, route.url);
-              
-              const targetPath = path.join(outDir, 'blog', 'ai-content-vs-human-content', 'index.html');
-              fs.mkdirSync(path.dirname(targetPath), { recursive: true });
-              fs.writeFileSync(targetPath, routeHtml);
+              writeRouteFiles(route.url, routeDir, routeHtml);
               continue;
             }
 
+            // ========================================================
+            // SPECIFIC ARTICLE: The Complete Brand Identity Checklist for Startups
+            // ========================================================
             if (route.url === '/blog/startup-brand-identity-checklist') {
-              const startupChecklistSchema = {
+              console.log('✅ [SEO Generator] Injecting static HTML for The Complete Brand Identity Checklist for Startups');
+              const seoMeta = SEO_ROUTES_METADATA['/blog/startup-brand-identity-checklist'];
+              const startupChecklistSchema = (seoMeta && seoMeta.schemaJsonLd) || {
                 "@context": "https://schema.org",
                 "@graph": [
                   {
                     "@type": "Article",
+                    "@id": "https://www.abuqitmirlabs.tech/blog/startup-brand-identity-checklist#article",
                     "headline": "The Complete Brand Identity Checklist for Startups",
                     "description": "A pre-seed and seed-stage brand identity checklist for startups. Covers positioning, visual system, voice, and launch assets in the right order.",
                     "image": "https://i.postimg.cc/SRxngZxY/Gemini-Generated-Image-74i3u574i3u574i3.jpg",
@@ -822,13 +842,14 @@ export default defineConfig(({ mode }) => {
                   },
                   {
                     "@type": "FAQPage",
+                    "@id": "https://www.abuqitmirlabs.tech/blog/startup-brand-identity-checklist#faq",
                     "mainEntity": [
                       {
                         "@type": "Question",
                         "name": "What is a brand identity checklist for startups?",
                         "acceptedAnswer": {
                           "@type": "Answer",
-                          "text": "A brand identity checklist for startups is a structured guide that outlines the essential visual, verbal, and strategic elements a new business needs to build a recognizable and trustworthy brand."
+                          "text": "A brand identity checklist for startups is a structured guide that outlines the essential visual, verbal, and strategic elements a new business needs to build a recognizable and trustworthy brand. It ensures founders do not skip foundational steps."
                         }
                       },
                       {
@@ -841,10 +862,50 @@ export default defineConfig(({ mode }) => {
                       },
                       {
                         "@type": "Question",
+                        "name": "When should a startup invest in brand identity?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "A startup should invest in a basic minimum viable brand right before launching its product or seeking its first round of funding. You need a credible identity to attract early adopters and investors."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "Should I use Urdu or English for my startup brand?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "You should use a bilingual approach. Use English for formal communications, technical documentation, and investor decks. Use Roman Urdu for social media engagement, customer support, and WhatsApp marketing to build trust with local consumers."
+                        }
+                      },
+                      {
+                        "@type": "Question",
                         "name": "What is a Minimum Viable Brand (MVB)?",
                         "acceptedAnswer": {
                           "@type": "Answer",
                           "text": "A Minimum Viable Brand is the absolute minimum amount of brand strategy, design, and messaging required to launch a credible business. It includes a positioning statement, a professional logo, a color palette, a voice guide, and a landing page."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "Why is a logo system better than just a single logo?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "A logo system provides variations (horizontal, vertical, icon) for different platforms. A single logo often looks distorted on app icons or social media profiles, creating a fragmented brand presence."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "How do I choose the right colors for my brand?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "Choose colors based on the psychology of your target audience and your industry. For example, blue conveys trust (suitable for fintech), while bold yellows and greens convey energy and growth (suitable for consumer startups)."
+                        }
+                      },
+                      {
+                        "@type": "Question",
+                        "name": "What is the biggest branding mistake Pakistani startups make?",
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": "The biggest mistake is copying global brands without localization. A brand that works in Silicon Valley will not automatically resonate in Karachi. You must adapt your messaging, tone, and visual triggers to local cultural contexts."
                         }
                       }
                     ]
@@ -852,34 +913,196 @@ export default defineConfig(({ mode }) => {
                 ]
               };
 
-              routeHtml = routeHtml.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/gi, '');
-              routeHtml = routeHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(startupChecklistSchema, null, 2)}\n  </script>\n</head>`);
+              routeHtml = injectSingleSchema(routeHtml, startupChecklistSchema);
+              routeHtml = routeHtml
+                .replace(/<meta\b[^>]*property="og:image"[^>]*\/?>/gi, '')
+                .replace(/<meta\b[^>]*name="twitter:image"[^>]*\/?>/gi, '')
+                .replace(/<meta\b[^>]*property="og:type"[^>]*\/?>/gi, '')
+                .replace('</head>', `  <meta data-rh="true" property="og:type" content="article" />\n  <meta data-rh="true" property="og:image" content="https://i.postimg.cc/SRxngZxY/Gemini-Generated-Image-74i3u574i3u574i3.jpg" />\n  <meta data-rh="true" name="twitter:image" content="https://i.postimg.cc/SRxngZxY/Gemini-Generated-Image-74i3u574i3u574i3.jpg" />\n</head>`);
 
-              const startupChecklistHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader(route.url)}<main id="main-content" class="max-w-4xl mx-auto px-6 pt-36 pb-20"><h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-8 font-serif">The Complete Brand Identity Checklist for Startups</h1><article class="prose prose-invert max-w-none text-zinc-300"><h2>Introduction</h2><p>Most startup founders wait too long to build a brand. In 2026, roughly 60% of all searches are zero-click. Buyers are evaluating your credibility on Google, LinkedIn, and AI Overviews before they ever talk to you. This checklist is designed specifically for pre-seed and seed-stage startups in Pakistan across four distinct stages.</p><h2>Quick Verdict: The Minimum Viable Brand (MVB)</h2><p>For a Pakistani startup, the minimum viable brand requires four things: a defined positioning statement, a functional logo system, a bilingual voice guide, and a high-converting landing page.</p><h2>Stage 1: Foundation (The Strategy)</h2><h3>1. Define Your Positioning Statement</h3><h3>2. Map Your Target Audience Persona</h3><h3>3. Establish Competitive Differentiation</h3><h2>Stage 2: Visual System (The Look)</h2><h3>4. Build a Logo Suite (Not Just a Logo)</h3><h3>5. Lock In Your Color Palette</h3><h3>6. Select Your Typography Hierarchy</h3><h3>7. Create a Basic Iconography Style</h3><h2>Stage 3: Voice &amp; Messaging (The Words)</h2><h3>8. Develop Brand Voice Guidelines</h3><h3>9. Craft a Memorable Tagline</h3><h3>10. Write Your Boilerplate Copy</h3><h2>Stage 4: Launch Assets (The Execution)</h2><h3>11. Design a High-Converting Landing Page</h3><h3>12. Build a Professional Pitch Deck</h3><h3>13. Create Social Media Templates</h3><h3>14. Create a Basic Brand Guidelines Document</h3><h2>Frequently Asked Questions</h2><h3>What is a brand identity checklist for startups?</h3><p>A brand identity checklist for startups is a structured guide that outlines the essential visual, verbal, and strategic elements a new business needs to build a recognizable and trustworthy brand.</p><h3>How much does it cost to build a startup brand in Pakistan?</h3><p>You can build a minimum viable brand for under PKR 50,000 if you focus on the essentials (logo, colors, landing page). Full agency branding can range from PKR 80,000 to PKR 250,000.</p><h2>Conclusion</h2></article></main></div>`;
+              const realArticleHtml = `
+                <div class="min-h-screen bg-[#050505] text-white">
+                  ${renderStaticHeader(route.url)}
+                  <main id="main-content" class="max-w-4xl mx-auto px-6 pt-36 pb-20">
+                    <h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-8 font-serif">
+                      The Complete Brand Identity Checklist for Startups
+                    </h1>
+                    <article class="prose prose-invert max-w-none text-zinc-300">
+                      <h2 id="introduction" class="text-2xl font-bold mt-10 mb-4">Introduction</h2>
+                      <p class="text-neutral-300 mb-6">
+                        Most startup founders wait too long to build a brand. They think they need a massive budget, a full agency team, or a hundred thousand users before they can invest in their identity. In 2026, roughly 60% of all searches are zero-click. Buyers are evaluating your credibility on Google, LinkedIn, and AI Overviews before they ever talk to you. If your brand looks fragmented, you lose the deal before it starts.
+                      </p>
+                      <p class="text-neutral-300 mb-6">
+                        This checklist is designed specifically for pre-seed and seed-stage startups in Pakistan. It focuses on what actually matters at your stage: limited budgets, family-business legacies, bilingual (Urdu and English) brand voice needs, and WhatsApp-first customer engagement. At <a href="/brand-building">AbuQitmirLabs</a>, this guide breaks down the 14 essential items you need across four distinct stages.
+                      </p>
 
-              routeHtml = replaceRootElement(routeHtml, startupChecklistHtml, route.url);
-              const targetPath = path.join(outDir, 'blog', 'startup-brand-identity-checklist', 'index.html');
-              fs.mkdirSync(path.dirname(targetPath), { recursive: true });
-              fs.writeFileSync(targetPath, routeHtml);
+                      <h2 id="quick-verdict-the-minimum-viable-brand-mvb" class="text-2xl font-bold mt-10 mb-4">Quick Verdict: The Minimum Viable Brand (MVB)</h2>
+                      <p class="text-neutral-300 mb-6">
+                        <strong>For a Pakistani startup, the minimum viable brand requires four things: a defined positioning statement, a functional logo system, a bilingual voice guide, and a high-converting landing page.</strong> You do not need a 100-page brand book at pre-seed. You need the foundational elements that build immediate trust.
+                      </p>
+
+                      <h2 id="stage-1-foundation-the-strategy" class="text-2xl font-bold mt-10 mb-4">Stage 1: Foundation (The Strategy)</h2>
+                      <p class="text-neutral-300 mb-6">
+                        Before you pick a single font or color, you must define your strategic foundation. This is what separates a real business from a side project.
+                      </p>
+                      <h3 id="1-define-your-positioning-statement" class="text-xl font-bold mt-6 mb-3">1. Define Your Positioning Statement</h3>
+                      <p class="text-neutral-300 mb-4">
+                        <strong>Direct Answer:</strong> A positioning statement is a single sentence that defines who you serve, what you provide, and why you are different. It prevents you from chasing every potential customer and tells investors and early adopters exactly where you fit in the market.
+                      </p>
+                      <h3 id="2-map-your-target-audience-persona" class="text-xl font-bold mt-6 mb-3">2. Map Your Target Audience Persona</h3>
+                      <p class="text-neutral-300 mb-4">
+                        <strong>Direct Answer:</strong> An audience persona is a detailed profile of your ideal customer, including their daily frustrations, where they spend time online, and how they make buying decisions. Talk to 5 potential customers on WhatsApp or LinkedIn and use their exact words in your marketing.
+                      </p>
+                      <h3 id="3-establish-competitive-differentiation" class="text-xl font-bold mt-6 mb-3">3. Establish Competitive Differentiation</h3>
+                      <p class="text-neutral-300 mb-6">
+                        <strong>Direct Answer:</strong> Competitive differentiation is the specific combination of features, price, or service that makes you the obvious choice over your competitors. If you cannot explain why you are better in 10 seconds, you do not have a brand.
+                      </p>
+
+                      <h2 id="stage-2-visual-system-the-look" class="text-2xl font-bold mt-10 mb-4">Stage 2: Visual System (The Look)</h2>
+                      <p class="text-neutral-300 mb-6">
+                        Your visual system is how your brand looks to the outside world. You need consistency across your website and social media. If you need help, our <a href="/graphics-design">graphics design services</a> are built for startups.
+                      </p>
+                      <h3 id="4-build-a-logo-suite-not-just-a-logo" class="text-xl font-bold mt-6 mb-3">4. Build a Logo Suite (Not Just a Logo)</h3>
+                      <p class="text-neutral-300 mb-4">
+                        <strong>Direct Answer:</strong> A logo suite is a collection of logo variations: the primary logo, a secondary logo, and a brand mark or icon, delivered in SVG, PNG, and EPS formats. Read our guide on <a href="/blog/how-to-brief-graphic-designer">how to brief a graphic designer</a>.
+                      </p>
+                      <h3 id="5-lock-in-your-color-palette" class="text-xl font-bold mt-6 mb-3">5. Lock In Your Color Palette</h3>
+                      <p class="text-neutral-300 mb-4">
+                        <strong>Direct Answer:</strong> A color palette is a set of 4 to 5 specific colors (with exact Hex codes) that represent your brand: one primary brand color, one dark contrast color, one light background color, and two accent colors.
+                      </p>
+                      <h3 id="6-select-your-typography-hierarchy" class="text-xl font-bold mt-6 mb-3">6. Select Your Typography Hierarchy</h3>
+                      <p class="text-neutral-300 mb-4">
+                        <strong>Direct Answer:</strong> Typography is the specific set of fonts your brand uses for headlines and body text, defining sizes for H1, H2, Body, and Caption.
+                      </p>
+                      <h3 id="7-create-a-basic-iconography-style" class="text-xl font-bold mt-6 mb-3">7. Create a Basic Iconography Style</h3>
+                      <p class="text-neutral-300 mb-6">
+                        <strong>Direct Answer:</strong> Iconography is the visual style of the icons you use on your website, app, or pitch deck. Our guide on <a href="/blog/design-systems-for-startups">design systems for startups</a> explains how to structure this.
+                      </p>
+
+                      <h2 id="stage-3-voice-messaging-the-words" class="text-2xl font-bold mt-10 mb-4">Stage 3: Voice &amp; Messaging (The Words)</h2>
+                      <p class="text-neutral-300 mb-6">
+                        How you speak to your customers is just as important as how you look, especially in the Pakistani market where trust is built through clear, culturally relevant communication.
+                      </p>
+                      <h3 id="8-develop-brand-voice-guidelines" class="text-xl font-bold mt-6 mb-3">8. Develop Brand Voice Guidelines</h3>
+                      <p class="text-neutral-300 mb-4">
+                        <strong>Direct Answer:</strong> Brand voice guidelines define the tone your company uses in its communication and when to use English vs Roman Urdu. Our <a href="/content-writing">content writing team</a> uses this exact framework.
+                      </p>
+                      <h3 id="9-craft-a-memorable-tagline" class="text-xl font-bold mt-6 mb-3">9. Craft a Memorable Tagline</h3>
+                      <p class="text-neutral-300 mb-4">
+                        <strong>Direct Answer:</strong> A tagline is a short, punchy phrase that encapsulates your brand promise and states the benefit without jargon.
+                      </p>
+                      <h3 id="10-write-your-boilerplate-copy" class="text-xl font-bold mt-6 mb-3">10. Write Your Boilerplate Copy</h3>
+                      <p class="text-neutral-300 mb-6">
+                        <strong>Direct Answer:</strong> A boilerplate is a standardized 50 to 100 word paragraph that describes your company for press releases, pitch decks, and your website footer.
+                      </p>
+
+                      <h2 id="stage-4-launch-assets-the-execution" class="text-2xl font-bold mt-10 mb-4">Stage 4: Launch Assets (The Execution)</h2>
+                      <p class="text-neutral-300 mb-6">
+                        Now you have the foundation, the look, and the words. It is time to put them together to launch your product with our <a href="/web-development">web development team</a>.
+                      </p>
+                      <h3 id="11-design-a-high-converting-landing-page" class="text-xl font-bold mt-6 mb-3">11. Design a High-Converting Landing Page</h3>
+                      <p class="text-neutral-300 mb-4">
+                        <strong>Direct Answer:</strong> A landing page is a single web page designed specifically to convert visitors into leads or customers using Headline, Subheadline, Problem, Solution, Social Proof, and a Call-to-Action button.
+                      </p>
+                      <h3 id="12-build-a-professional-pitch-deck" class="text-xl font-bold mt-6 mb-3">12. Build a Professional Pitch Deck</h3>
+                      <p class="text-neutral-300 mb-4">
+                        <strong>Direct Answer:</strong> A pitch deck is a 10 to 15 slide presentation used to explain your business, problem, market size, solution, and traction to investors or partners.
+                      </p>
+                      <h3 id="13-create-social-media-templates" class="text-xl font-bold mt-6 mb-3">13. Create Social Media Templates</h3>
+                      <p class="text-neutral-300 mb-4">
+                        <strong>Direct Answer:</strong> Social media templates are pre-designed graphics that allow you to post consistently on LinkedIn, Instagram, and Facebook.
+                      </p>
+                      <h3 id="14-create-a-basic-brand-guidelines-document" class="text-xl font-bold mt-6 mb-3">14. Create a Basic Brand Guidelines Document</h3>
+                      <p class="text-neutral-300 mb-6">
+                        <strong>Direct Answer:</strong> A brand guidelines document is a concise 5-page PDF or presentation that houses all your brand rules: logo usage, colors, fonts, and voice.
+                      </p>
+
+                      <h2 id="frequently-asked-questions" class="text-2xl font-bold mt-10 mb-4">Frequently Asked Questions</h2>
+                      <h3>What is a brand identity checklist for startups?</h3>
+                      <p>A brand identity checklist for startups is a structured guide that outlines the essential visual, verbal, and strategic elements a new business needs to build a recognizable and trustworthy brand. It ensures founders do not skip foundational steps.</p>
+                      <h3>How much does it cost to build a startup brand in Pakistan?</h3>
+                      <p>You can build a minimum viable brand for under PKR 50,000 if you focus on the essentials (logo, colors, landing page). Full agency branding can range from PKR 80,000 to PKR 250,000 depending on the depth of research and deliverables.</p>
+                      <h3>When should a startup invest in brand identity?</h3>
+                      <p>A startup should invest in a basic minimum viable brand right before launching its product or seeking its first round of funding. You need a credible identity to attract early adopters and investors.</p>
+                      <h3>Should I use Urdu or English for my startup brand?</h3>
+                      <p>You should use a bilingual approach. Use English for formal communications, technical documentation, and investor decks. Use Roman Urdu for social media engagement, customer support, and WhatsApp marketing to build trust with local consumers.</p>
+                      <h3>What is a Minimum Viable Brand (MVB)?</h3>
+                      <p>A Minimum Viable Brand is the absolute minimum amount of brand strategy, design, and messaging required to launch a credible business. It includes a positioning statement, a professional logo, a color palette, a voice guide, and a landing page.</p>
+                      <h3>Why is a logo system better than just a single logo?</h3>
+                      <p>A logo system provides variations (horizontal, vertical, icon) for different platforms. A single logo often looks distorted on app icons or social media profiles, creating a fragmented brand presence. Read our guide on <a href="/blog/brand-strategy-vs-logo-design-pakistan-sme">brand identity vs logo design</a> for more details.</p>
+                      <h3>How do I choose the right colors for my brand?</h3>
+                      <p>Choose colors based on the psychology of your target audience and your industry. For example, blue conveys trust (suitable for fintech), while bold yellows and greens convey energy and growth (suitable for consumer startups).</p>
+                      <h3>What is the biggest branding mistake Pakistani startups make?</h3>
+                      <p>The biggest mistake is copying global brands without localization. A brand that works in Silicon Valley will not automatically resonate in Karachi. You must adapt your messaging, tone, and visual triggers to local cultural contexts. We cover this in <a href="/blog/small-business-branding-mistakes-pakistan">small business branding mistakes</a>.</p>
+
+                      <h2 id="conclusion" class="text-2xl font-bold mt-10 mb-4">Conclusion</h2>
+                      <p class="text-neutral-300 mb-6">
+                        Building a brand does not require a massive budget. It requires clarity, consistency, and a focus on the right priorities for your stage. Use this 14-point checklist to build your Minimum Viable Brand, or explore our <a href="/brand-building">brand building services</a> and <a href="/contact">get in touch today</a>.
+                      </p>
+                    </article>
+                  </main>
+                </div>
+              `;
+
+              routeHtml = replaceRootElement(routeHtml, realArticleHtml, route.url);
+              writeRouteFiles(route.url, routeDir, routeHtml);
               continue;
             }
 
             let articleContent = '';
-            if (route.url === '/seo-mastery') {
-              articleContent = `<h2>SEO Mastery: Data-Driven Search Engine Optimization</h2><p>Ranking isn't about stuffing keywords — it's about technical health plus content that actually answers search intent. We run full technical audits, fix crawl and indexing issues, and build content structures that Google can understand and trust. Hamari SEO services ko aap <a href="/web-development">Web Development</a> aur <a href="/content-writing">Content Writing</a> ke sath combine kar ke maximum search visibility hasil kar sakte hain.</p><img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" /><p>${route.description}</p><section><h3>Our Technical Expertise</h3><ul><li>Technical SEO Audits & Crawl Error Fixes</li><li>On-Page & Semantic Entity Optimization</li><li>XML Sitemap & Schema Markup Implementation</li><li>Local SEO & Google Business Profile Optimization</li><li>Content Strategy Aligned with Search Intent</li></ul></section>`;
-            } else if (route.url === '/case-studies') {
-              articleContent = `<h2>Real Projects. Real Results.</h2><p>We don't publish polished portfolio pieces with the hard parts edited out. Each case study here covers a real project we built — the problem, our actual technical approach, and what shipped. Our work spans AI products, custom platforms, and growth-focused engineering.</p><img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" /><p>${route.description}</p><section><h3>Our Technical Expertise</h3><ul><li>Real Client Projects, Not Mockups</li><li>AI & RAG-Powered Product Builds</li><li>Custom Platform Engineering Case Studies</li><li>Technical Breakdown of Our Approach</li><li>Measurable Outcomes Where Available</li></ul></section>`;
-            } else if (route.url === '/about' || route.url === '/about/our-company' || route.url === '/about/our-team') {
-              articleContent = `<h2>AI builds fast. Judgment builds trust.</h2><p>Anyone can wire up an AI tool today. That's not a differentiator anymore — it's the baseline. What still can't be automated is the part that actually matters: knowing when the AI is wrong, when a shortcut will break in production, and when 'technically correct' isn't the same as 'actually right for this client.'</p><p>That's the work we do. AI drafts, searches, and accelerates — but every architecture decision, every line of code, and every claim we make about our own work is reviewed by a person before it ships. Not because we distrust AI, but because a client's product is not the place to find out where it fails.</p><p>We'd rather be known for what we caught and fixed than for how fast we generated something. That's the standard behind every project with our name on it — led by Abu Qitmir Mohammad Shiraz Al-Madani, and held to the same bar whether it's a line of code or a line of marketing copy.</p><img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" /><p>${route.description}</p><section><h3>AbuQitmirLabs Engineering Leadership</h3><p>Founded by Abu Qitmir Mohammad Shiraz Al-Madani in Karachi, Pakistan, AbuQitmirLabs delivers custom software, AI agents, mobile apps, and technical SEO with 100% human-verified architecture.</p></section>`;
-            } else {
-              const routeH2 = route.url === '/' ? 'Custom Software · Web Development · AI Agents · Mobile Apps · SEO' : 'Elite Digital Architecture &amp; Technical Solutions';
-              articleContent = `<h2>${routeH2}</h2><p>At AbuQitmirLabs .TECH, we specialize in <strong>custom software engineering</strong> and high-performance digital solutions.</p><img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" /><p>${route.description}</p><section><h3>Our Technical Expertise</h3><p>We deliver cutting-edge software solutions including:</p><ul><li>Custom Mobile & Web App Engineering</li><li>Autonomous AI Agents & RAG Integration</li><li>Scalable Cloud-Native Microservices</li><li>High-ROI Semantic SEO Strategies</li><li>Cinematic UX Frameworks</li></ul></section>`;
+            if (route.url.startsWith('/blog/') && route.url !== '/blog') {
+              const blogSlug = route.url.replace(/^\/blog\//, '').replace(/\/+$/, '');
+              const seoMeta = SEO_ROUTES_METADATA[route.url];
+              if (seoMeta && seoMeta.schemaJsonLd) {
+                routeHtml = injectSingleSchema(routeHtml, seoMeta.schemaJsonLd);
+              }
+              const staticPost = STATIC_BLOG_POSTS[blogSlug];
+              let mdSource = staticPost?.content || '';
+              if (!mdSource) {
+                const mdPath = path.resolve(process.cwd(), 'content/blog', `${blogSlug}.md`);
+                if (fs.existsSync(mdPath)) {
+                  const rawMdFile = fs.readFileSync(mdPath, 'utf-8');
+                  mdSource = rawMdFile.replace(/^---[\s\S]*?---\s*/, '');
+                }
+              }
+              if (mdSource) {
+                const htmlBlocks: string[] = [];
+                const lines = mdSource.split(/\r?\n/);
+                for (const line of lines) {
+                  const trimmed = line.trim();
+                  if (!trimmed || trimmed === '---') continue;
+                  if (trimmed.startsWith('## ')) {
+                    const h2Text = trimmed.slice(3).replace(/\*\*/g, '').trim();
+                    htmlBlocks.push(`<h2>${escapeXml(h2Text)}</h2>`);
+                  } else if (trimmed.startsWith('### ')) {
+                    const h3Text = trimmed.slice(4).replace(/\*\*/g, '').trim();
+                    htmlBlocks.push(`<h3>${escapeXml(h3Text)}</h3>`);
+                  } else if (!trimmed.startsWith('#') && !trimmed.startsWith('|') && !trimmed.startsWith('```')) {
+                    const pText = trimmed.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
+                    htmlBlocks.push(`<p>${escapeXml(pText)}</p>`);
+                  }
+                }
+                articleContent = htmlBlocks.join('');
+              }
+            }
+
+            if (!articleContent) {
+              if (route.url === '/seo-mastery') {
+                articleContent = `<h2>SEO Mastery: Data-Driven Search Engine Optimization</h2><p>Ranking isn't about stuffing keywords — it's about technical health plus content that actually answers search intent. We run full technical audits, fix crawl and indexing issues, and build content structures that Google can understand and trust. Hamari SEO services ko aap <a href="/web-development">Web Development</a> aur <a href="/content-writing">Content Writing</a> ke sath combine kar ke maximum search visibility hasil kar sakte hain.</p><img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" /><p>${route.description}</p><section><h3>Our Technical Expertise</h3><ul><li>Technical SEO Audits & Crawl Error Fixes</li><li>On-Page & Semantic Entity Optimization</li><li>XML Sitemap & Schema Markup Implementation</li><li>Local SEO & Google Business Profile Optimization</li><li>Content Strategy Aligned with Search Intent</li></ul></section>`;
+              } else if (route.url === '/case-studies') {
+                articleContent = `<h2>Real Projects. Real Results.</h2><p>We don't publish polished portfolio pieces with the hard parts edited out. Each case study here covers a real project we built — the problem, our actual technical approach, and what shipped. Our work spans AI products, custom platforms, and growth-focused engineering.</p><img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" /><p>${route.description}</p><section><h3>Our Technical Expertise</h3><ul><li>Real Client Projects, Not Mockups</li><li>AI & RAG-Powered Product Builds</li><li>Custom Platform Engineering Case Studies</li><li>Technical Breakdown of Our Approach</li><li>Measurable Outcomes Where Available</li></ul></section>`;
+              } else if (route.url === '/about' || route.url === '/about/our-company' || route.url === '/about/our-team') {
+                articleContent = `<h2>AI builds fast. Judgment builds trust.</h2><p>Anyone can wire up an AI tool today. That's not a differentiator anymore — it's the baseline. What still can't be automated is the part that actually matters: knowing when the AI is wrong, when a shortcut will break in production, and when 'technically correct' isn't the same as 'actually right for this client.'</p><p>That's the work we do. AI drafts, searches, and accelerates — but every architecture decision, every line of code, and every claim we make about our own work is reviewed by a person before it ships. Not because we distrust AI, but because a client's product is not the place to find out where it fails.</p><p>We'd rather be known for what we caught and fixed than for how fast we generated something. That's the standard behind every project with our name on it — led by Abu Qitmir Mohammad Shiraz Al-Madani, and held to the same bar whether it's a line of code or a line of marketing copy.</p><img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" /><p>${route.description}</p><section><h3>AbuQitmirLabs Engineering Leadership</h3><p>Founded by Abu Qitmir Mohammad Shiraz Al-Madani in Karachi, Pakistan, AbuQitmirLabs delivers custom software, AI agents, mobile apps, and technical SEO with 100% human-verified architecture.</p></section>`;
+              } else {
+                const routeH2 = route.url === '/' ? 'Custom Software · Web Development · AI Agents · Mobile Apps · SEO' : 'Elite Digital Architecture &amp; Technical Solutions';
+                articleContent = `<h2>${routeH2}</h2><p>At AbuQitmirLabs .TECH, we specialize in <strong>custom software engineering</strong> and high-performance digital solutions.</p><img src="/logo.png" alt="AbuQitmirLabs - Custom Software Development & AI Engineering" width="300" height="300" loading="lazy" decoding="async" style="max-width:300px" /><p>${route.description}</p><section><h3>Our Technical Expertise</h3><p>We deliver cutting-edge software solutions including:</p><ul><li>Custom Mobile & Web App Engineering</li><li>Autonomous AI Agents & RAG Integration</li><li>Scalable Cloud-Native Microservices</li><li>High-ROI Semantic SEO Strategies</li><li>Cinematic UX Frameworks</li></ul></section>`;
+              }
             }
 
             const fallbackPrerenderHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader(route.url)}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${route.title}</h1><article class="prose prose-invert max-w-none text-neutral-300">${articleContent}</article></main></div>`;
             routeHtml = replaceRootElement(routeHtml, fallbackPrerenderHtml, route.url);
             
-            fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml);
+            writeRouteFiles(route.url, routeDir, routeHtml);
           }
           
           console.log('✅ SEO Assets and RSS dynamic feed generated successfully!');

@@ -190,6 +190,33 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         }
     }, [slug]);
 
+    // Ensure strictly one application/ld+json @graph block exists in <head> after hydration
+    useEffect(() => {
+        if (typeof document === 'undefined') return;
+        const cleanupDuplicateJsonLd = () => {
+            const scripts = Array.from(document.head.querySelectorAll('script[type="application/ld+json"]'));
+            if (scripts.length <= 1) return;
+            const helmetScripts = scripts.filter(s => s.hasAttribute('data-rh'));
+            if (helmetScripts.length > 0) {
+                // Remove non-helmet scripts and any extra helmet scripts beyond the last one
+                scripts.forEach(s => {
+                    if (!s.hasAttribute('data-rh')) {
+                        s.remove();
+                    }
+                });
+                const remaining = Array.from(document.head.querySelectorAll('script[type="application/ld+json"]'));
+                if (remaining.length > 1) {
+                    remaining.slice(0, -1).forEach(s => s.remove());
+                }
+            } else {
+                scripts.slice(0, -1).forEach(s => s.remove());
+            }
+        };
+        cleanupDuplicateJsonLd();
+        const timer = setTimeout(cleanupDuplicateJsonLd, 50);
+        return () => clearTimeout(timer);
+    }, [slug, post]);
+
     const getInjectedContent = () => {
         if (!post || !post.content) return '';
 
@@ -3489,6 +3516,76 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                         "acceptedAnswer": {
                                             "@type": "Answer",
                                             "text": "There is no single best budget. A common starting point is 20-30% of projected revenue for marketing. Allocate 60% to performance and 40% to brand, and adjust based on what you learn."
+                                        }
+                                    }
+                                ]
+                            }] : []),
+                            ...(slug && slug.includes('startup-brand-identity-checklist') ? [{
+                                "@type": "FAQPage",
+                                "@id": `${seoData.canonicalUrl}#faq`,
+                                "mainEntity": [
+                                    {
+                                        "@type": "Question",
+                                        "name": "How much does a startup brand identity cost?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "A Minimum Viable Brand (MVB) built in-house using free tools like Figma and Google Fonts costs $0 to $500. Hiring a specialized freelance designer costs $1,500 to $5,000. Full-service branding agencies charge $10,000 to $50,000+, which is only recommended for funded startups (Seed or Series A)."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "What is the difference between a brand and a logo?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "A logo is a single visual mark that identifies your company. A brand identity is the complete system of how your company looks, sounds, and positions itself—including your color palette, typography, tone of voice, value proposition, and visual templates."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "Can I use Canva to build my startup brand?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "You can use Canva for day-to-day social media templates, pitch decks, and internal documents. However, you should never use pre-made Canva templates to design your primary logo, because you cannot trademark Canva stock elements and other businesses will have the exact same mark."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "How many colors should a startup brand have?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "A startup brand palette should have 3 to 5 colors: one primary brand color, one high-contrast action color (for buttons and CTAs), one dark neutral (for text and dark backgrounds), and one light neutral (for light backgrounds).Follow the 60-30-10 rule for application."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "Should I trademark my startup name before launching?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "You do not need to pay for formal trademark registration before validating your MVP, as registration takes months and costs hundreds of dollars. However, you must run a free trademark database search (USPTO in the US, IPO in Pakistan) before launching to ensure you are not infringing on an existing registered mark."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "When should a startup rebrand?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "A startup should rebrand when it has achieved product-market fit, raised a significant funding round (Seed or Series A), pivoted to a completely different target audience, or discovered that its current visual identity is actively hurting enterprise sales conversions."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "What file formats do I need for my logo?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "At a minimum, you need SVG (for websites and apps), transparent PNG (for presentations and social media), and EPS or PDF (for print materials and merchandise). Never accept a logo delivered only as a JPG."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "How long does it take to build a startup brand identity?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "A Minimum Viable Brand (MVB) can be defined and assembled in 1 to 2 weeks. A comprehensive, custom brand identity system built by a professional design team typically takes 4 to 8 weeks from strategy discovery to final asset delivery."
                                         }
                                     }
                                 ]
