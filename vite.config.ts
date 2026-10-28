@@ -227,13 +227,44 @@ export default defineConfig(({ mode }) => {
               description: (post.excerpt || 'Technical Insights from AbuQitmirLabs.').slice(0, 155)
             }));
 
+          const contentBlogDirForRoutes = path.resolve(process.cwd(), 'content/blog');
+          const markdownBlogRoutes: { url: string; changefreq: 'weekly'; priority: number; title: string; description: string }[] = [];
+          if (fs.existsSync(contentBlogDirForRoutes)) {
+            const mdFiles = fs.readdirSync(contentBlogDirForRoutes).filter(f => f.endsWith('.md'));
+            for (const file of mdFiles) {
+              const rawSlug = file.replace(/\.md$/, '').trim();
+              const canonSlug = getCanonicalSlug(rawSlug);
+              const url = `/blog/${canonSlug}`;
+              if (seenBlogRoutes.has(url)) continue;
+              try {
+                const rawMd = fs.readFileSync(path.join(contentBlogDirForRoutes, file), 'utf-8');
+                const fmMatch = rawMd.match(/^---\s*\r?\n(\{[\s\S]*?\})\r?\n---/);
+                let parsedTitle = canonSlug;
+                let parsedDesc = 'Technical Insights from AbuQitmirLabs.';
+                if (fmMatch) {
+                  const metaObj = JSON.parse(fmMatch[1]);
+                  if (metaObj.title) parsedTitle = metaObj.title;
+                  if (metaObj.metaDescription || metaObj.excerpt) parsedDesc = metaObj.metaDescription || metaObj.excerpt;
+                }
+                seenBlogRoutes.add(url);
+                markdownBlogRoutes.push({
+                  url,
+                  changefreq: 'weekly' as const,
+                  priority: 0.85,
+                  title: parsedTitle.includes('AbuQitmirLabs') ? parsedTitle : `${parsedTitle} | AbuQitmirLabs`,
+                  description: parsedDesc.slice(0, 155)
+                });
+              } catch {}
+            }
+          }
+
           const dedupedBaseRoutes = baseRoutes.filter((b, idx, arr) => {
             const canonUrl = getCanonicalPath(b.url);
             if (canonUrl !== b.url) return false;
             return arr.findIndex(x => x.url === b.url) === idx;
           });
 
-          const routes = [...dedupedBaseRoutes, ...staticBlogRoutes, ...dynamicRoutes];
+          const routes = [...dedupedBaseRoutes, ...staticBlogRoutes, ...dynamicRoutes, ...markdownBlogRoutes];
 
           if (!fs.existsSync(indexHtmlPath)) return;
           
@@ -1246,21 +1277,28 @@ export default defineConfig(({ mode }) => {
               if (seoMeta && seoMeta.schemaJsonLd) {
                 const clonedSchema = JSON.parse(JSON.stringify(seoMeta.schemaJsonLd));
                 const fullCanonical = `${hostname}${route.url}`;
-                if (Array.isArray(clonedSchema['@graph']) && extractedFaqs.length > 0) {
-                  const hasFaq = clonedSchema['@graph'].some((n: any) => n && n['@type'] === 'FAQPage');
-                  if (!hasFaq) {
-                    clonedSchema['@graph'].push({
-                      "@type": "FAQPage",
-                      "@id": `${fullCanonical}#faq`,
-                      "mainEntity": extractedFaqs.slice(0, 12).map(faq => ({
-                        "@type": "Question",
-                        "name": faq.question,
-                        "acceptedAnswer": {
-                          "@type": "Answer",
-                          "text": faq.answer
-                        }
-                      }))
-                    });
+                if (Array.isArray(clonedSchema['@graph'])) {
+                  for (const node of clonedSchema['@graph']) {
+                    if (node && node['@type'] === 'Article' && coverImgUrl) {
+                      node.image = coverImgUrl;
+                    }
+                  }
+                  if (extractedFaqs.length > 0) {
+                    const hasFaq = clonedSchema['@graph'].some((n: any) => n && n['@type'] === 'FAQPage');
+                    if (!hasFaq) {
+                      clonedSchema['@graph'].push({
+                        "@type": "FAQPage",
+                        "@id": `${fullCanonical}#faq`,
+                        "mainEntity": extractedFaqs.slice(0, 12).map(faq => ({
+                          "@type": "Question",
+                          "name": faq.question,
+                          "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": faq.answer
+                          }
+                        }))
+                      });
+                    }
                   }
                 }
                 routeHtml = injectSingleSchema(routeHtml, clonedSchema);
@@ -1400,7 +1438,10 @@ export default defineConfig(({ mode }) => {
               }
             }
 
-            const fallbackPrerenderHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader(route.url)}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${route.title}</h1><article class="prose prose-invert max-w-none text-neutral-300">${articleContent}</article></main></div>`;
+            const cleanH1Title = (route.url.startsWith('/blog/') && route.url !== '/blog')
+              ? route.title.replace(/\s*\|\s*AbuQitmirLabs.*$/i, '')
+              : route.title;
+            const fallbackPrerenderHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader(route.url)}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${cleanH1Title}</h1><article class="prose prose-invert max-w-none text-neutral-300">${articleContent}</article></main></div>`;
             routeHtml = replaceRootElement(routeHtml, fallbackPrerenderHtml, route.url);
             
             writeRouteFiles(route.url, routeDir, routeHtml);

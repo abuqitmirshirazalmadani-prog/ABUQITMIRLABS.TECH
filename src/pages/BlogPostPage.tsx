@@ -195,27 +195,30 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
     useEffect(() => {
         if (typeof document === 'undefined') return;
         const cleanupDuplicateJsonLd = () => {
-            const scripts = Array.from(document.head.querySelectorAll('script[type="application/ld+json"]'));
+            const scripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
             if (scripts.length <= 1) return;
             const helmetScripts = scripts.filter(s => s.hasAttribute('data-rh'));
-            if (helmetScripts.length > 0) {
-                // Remove non-helmet scripts and any extra helmet scripts beyond the last one
-                scripts.forEach(s => {
-                    if (!s.hasAttribute('data-rh')) {
-                        s.remove();
-                    }
-                });
-                const remaining = Array.from(document.head.querySelectorAll('script[type="application/ld+json"]'));
-                if (remaining.length > 1) {
-                    remaining.slice(0, -1).forEach(s => s.remove());
+            const keepScript = helmetScripts.length > 0
+                ? helmetScripts[helmetScripts.length - 1]
+                : scripts[scripts.length - 1];
+            scripts.forEach(s => {
+                if (s !== keepScript) {
+                    s.remove();
                 }
-            } else {
-                scripts.slice(0, -1).forEach(s => s.remove());
-            }
+            });
         };
         cleanupDuplicateJsonLd();
         const timer = setTimeout(cleanupDuplicateJsonLd, 50);
-        return () => clearTimeout(timer);
+        const observer = new MutationObserver(() => {
+            if (document.querySelectorAll('script[type="application/ld+json"]').length > 1) {
+                cleanupDuplicateJsonLd();
+            }
+        });
+        observer.observe(document.head, { childList: true });
+        return () => {
+            clearTimeout(timer);
+            observer.disconnect();
+        };
     }, [slug, post]);
 
     const getInjectedContent = () => {
