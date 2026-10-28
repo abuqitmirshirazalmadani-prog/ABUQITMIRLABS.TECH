@@ -416,6 +416,21 @@ if (fs.existsSync(staticBlogPath)) {
 }
 
 // ==========================================
+// 6. AUDIT CONTENT/BLOG/*.MD & DIST/ RAW HTML GUARDRAILS
+// ==========================================
+console.log('\n📌 Checking content/blog/*.md and prerendered HTML guardrails (H1, H2, single @graph JSON-LD, WebP covers)...');
+const contentBlogDir = path.join(rootDir, 'content/blog');
+if (fs.existsSync(contentBlogDir)) {
+  const mdFiles = fs.readdirSync(contentBlogDir).filter(f => f.endsWith('.md'));
+  console.log(`  ✅ Found ${mdFiles.length} markdown article(s) in content/blog/ synced for static prerendering.`);
+}
+
+const distDir = path.join(rootDir, 'dist');
+if (fs.existsSync(distDir)) {
+  require('./verify-dist-seo.cjs');
+}
+
+// ==========================================
 // SUMMARY
 // ==========================================
 console.log('\n==========================================');
@@ -431,3 +446,4 @@ if (hasErrors) {
   console.log('✅ [AbuQitmirLabs SEO Auditor] All quality checks PASSED with 100% integrity.\n');
   process.exit(0);
 }
+

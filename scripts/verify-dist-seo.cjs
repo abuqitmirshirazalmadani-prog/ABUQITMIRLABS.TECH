@@ -82,7 +82,12 @@ for (const filePath of htmlFiles) {
     fixedSchemaCount++;
   }
 
-  // 2. Ensure at least one <h2> exists inside <div id="root">
+  // 2. Ensure at least one <h1> and clean site suffix from <h1> on blog pages
+  if (relPath.startsWith('blog' + path.sep) && relPath !== path.join('blog', 'index.html')) {
+    html = html.replace(/(<h1\b[^>]*>)([\s\S]*?)\s*\|\s*AbuQitmirLabs[^<]*(<\/h1>)/gi, '$1$2$3');
+  }
+
+  // 3. Ensure at least one <h2> exists inside <div id="root">
   const h2Matches = html.match(/<h2\b[^>]*>[\s\S]*?<\/h2>/gi) || [];
   if (h2Matches.length === 0 && html.includes('<main')) {
     html = html.replace(/(<h1\b[^>]*>[\s\S]*?<\/h1>)/i, `$1\n<h2 id="overview" class="text-2xl font-bold mt-8 mb-4">Key Takeaways &amp; Overview</h2>`);
@@ -90,7 +95,7 @@ for (const filePath of htmlFiles) {
     fixedH2Count++;
   }
 
-  // 3. Ensure strictly 1 <title> tag
+  // 4. Ensure strictly 1 <title> tag
   const titleRegex = /<title\b[^>]*>[\s\S]*?<\/title>/gis;
   const titleMatches = html.match(titleRegex) || [];
   if (titleMatches.length > 1) {
@@ -100,11 +105,28 @@ for (const filePath of htmlFiles) {
     modified = true;
   }
 
+  // 5. Ensure meta description does not contain literal &quot;
+  html = html.replace(/(<meta\b[^>]*name=["']description["'][^>]*content=["'])([^"']*)(["'][^>]*>)/gi, (full, p1, p2, p3) => {
+    if (p2.includes('&quot;')) {
+      modified = true;
+      return `${p1}${p2.replace(/&quot;/g, "'")}${p3}`;
+    }
+    return full;
+  });
+
   if (modified) {
     fs.writeFileSync(filePath, html, 'utf-8');
+    // Also keep public/blog/<slug>/index.html in sync if applicable
+    if (relPath.startsWith('blog' + path.sep)) {
+      const publicCopy = path.resolve(__dirname, '..', 'public', relPath);
+      if (fs.existsSync(path.dirname(publicCopy))) {
+        fs.writeFileSync(publicCopy, html, 'utf-8');
+      }
+    }
   }
   verifiedCount++;
 }
 
 console.log(`✅ [Post-Build SEO Verifier] Verified ${verifiedCount} static HTML files in dist/ (Auto-fixed schemas: ${fixedSchemaCount}, Auto-enforced H2: ${fixedH2Count}).`);
+
 
