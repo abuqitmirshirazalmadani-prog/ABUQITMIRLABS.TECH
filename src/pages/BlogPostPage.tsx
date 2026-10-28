@@ -13,6 +13,7 @@ import { STATIC_BLOG_POSTS, getStaticBlogList } from '../data/staticBlogPosts';
 import { generateBlogPostMeta } from '../utils/seoUtils';
 import { calculateReadingTime } from '../utils/readingTime';
 import { getCanonicalSlug } from '../data/canonicalRedirects';
+import { resolveOptimizedCoverImage } from '../data/localCoverImageMap';
 import NewsletterSubscriptionForm from '../components/NewsletterSubscriptionForm';
 import TableOfContents, { slugifyHeading } from '../components/TableOfContents';
 
@@ -532,9 +533,9 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 ? new Date(timestamp.seconds * 1000)
                 : new Date(timestamp);
             if (isNaN(date.getTime())) return '';
-            const maxAllowed = new Date('2026-10-23T23:59:59.000Z').getTime();
+            const maxAllowed = Date.now() + 86400000;
             if (date.getTime() > maxAllowed) {
-                date = new Date('2026-10-23T10:00:00.000Z');
+                date = new Date();
             }
             return date.toLocaleDateString('en-US', {
                 month: 'long',
@@ -570,9 +571,9 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 ? new Date(timestamp.seconds * 1000)
                 : new Date(timestamp);
             if (isNaN(date.getTime())) return defaultSafe;
-            const maxAllowed = new Date('2026-10-23T23:59:59.000Z').getTime();
+            const maxAllowed = Date.now() + 86400000;
             if (date.getTime() > maxAllowed) {
-                date = new Date('2026-10-23T10:00:00.000Z');
+                date = new Date();
             }
             return date.toISOString();
         } catch (e) {
@@ -3647,6 +3648,13 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 </script>
                     </>
                 )}
+                {post.coverImage && !post.coverImage.endsWith('logo.png') && (
+                    <link
+                        rel="preload"
+                        as="image"
+                        href={resolveOptimizedCoverImage(post.coverImage, slug)}
+                    />
+                )}
             </Helmet>
             
             <Header />
@@ -3731,29 +3739,30 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                     </motion.div>
 
                     {post.coverImage && !post.coverImage.endsWith('logo.png') && !imageError ? (
-                        <motion.div 
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
+                        <div 
                             className="aspect-video w-full rounded-[2.5rem] overflow-hidden mb-16 border border-zinc-800/80 shadow-2xl group bg-[#090a0f] flex items-center justify-center relative"
                         >
                             <img 
-                                src={
-                                    post.coverImage.startsWith('https://www.abuqitmirlabs.tech/') 
-                                        ? post.coverImage.replace('https://www.abuqitmirlabs.tech', '') 
-                                        : post.coverImage
-                                } 
+                                src={resolveOptimizedCoverImage(post.coverImage, slug)} 
                                 alt={post.coverImageAlt || `Feature illustration for ${post.title}`} 
                                 referrerPolicy="no-referrer"
                                 width="1200"
                                 height="675"
                                 loading="eager"
+                                fetchPriority="high"
                                 decoding="async"
-                                onError={() => {
-                                    setImageError(true);
+                                onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    if (post.coverImage && target.src !== post.coverImage && !target.dataset.retriedRemote) {
+                                        target.dataset.retriedRemote = 'true';
+                                        target.src = post.coverImage;
+                                    } else {
+                                        setImageError(true);
+                                    }
                                 }}
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
                             />
-                        </motion.div>
+                        </div>
                     ) : (
                         <motion.div 
                             initial={{ opacity: 0, scale: 0.95 }}
@@ -4051,7 +4060,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         <div className="bg-[#0b0b0e] border border-zinc-800/80 rounded-[2.5rem] p-10 flex flex-col md:flex-row items-center gap-10 shadow-xl">
                             <div className="h-24 w-24 bg-zinc-900 rounded-3xl overflow-hidden shrink-0 shadow-lg border-2 border-[#ccff00]/40">
                                 <img 
-                                    src="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" 
+                                    src={resolveOptimizedCoverImage("https://i.postimg.cc/hjLzDQHK/abuqitmir222.png", "author-abuqitmir-shiraz")} 
                                     alt="Shiraz Almadani - Lead Architect at AbuQitmirLabs" 
                                     className="w-full h-full object-cover object-top" 
                                     width="96"

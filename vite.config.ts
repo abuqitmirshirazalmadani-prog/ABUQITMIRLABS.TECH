@@ -22,6 +22,7 @@ import { renderStaticHeader } from './src/utils/sharedStaticHeader';
 import { SEO_ROUTES_METADATA } from './src/data/seoRoutesMetadata';
 import { BLOG_SLUG_REDIRECTS, getCanonicalPath, getCanonicalSlug } from './src/data/canonicalRedirects';
 import { STATIC_BLOG_POSTS } from './src/data/staticBlogPosts';
+import { resolveOptimizedCoverImage } from './src/data/localCoverImageMap';
 import { programmaticSEOPages } from './src/data/programmatic-seo';
 
 interface PrerenderPlugin {
@@ -1143,9 +1144,60 @@ export default defineConfig(({ mode }) => {
                   currentFaqAnswerParts = [];
                 };
 
+                let tableRows: string[][] = [];
+                const flushTable = () => {
+                  if (tableRows.length === 0) return;
+                  const headerRow = tableRows[0];
+                  const bodyRows = tableRows.slice(1);
+                  const thead = `<thead><tr>${headerRow.map(c => `<th class="border border-zinc-800 p-3 text-left font-bold">${escapeXml(c)}</th>`).join('')}</tr></thead>`;
+                  const tbody = bodyRows.length > 0
+                    ? `<tbody>${bodyRows.map(r => `<tr>${r.map(c => `<td class="border border-zinc-800 p-3">${escapeXml(c)}</td>`).join('')}</tr>`).join('')}</tbody>`
+                    : '';
+                  htmlBlocks.push(`<div class="overflow-x-auto my-6"><table class="w-full border-collapse border border-zinc-800">${thead}${tbody}</table></div>`);
+                  tableRows = [];
+                };
+
+                const formatInlineHtml = (rawStr: string) => {
+                  // Convert markdown links [text](url) and bold **text** safely
+                  const strippedBold = rawStr.replace(/\*\*([^*]+)\*\*/g, '$1');
+                  const parts: string[] = [];
+                  let lastIdx = 0;
+                  const linkRe = /\[([^\]]+)\]\(([^)]+)\)/g;
+                  let m: RegExpExecArray | null;
+                  while ((m = linkRe.exec(strippedBold)) !== null) {
+                    if (m.index > lastIdx) {
+                      parts.push(escapeXml(strippedBold.slice(lastIdx, m.index)));
+                    }
+                    parts.push(`<a href="${escapeXml(m[2].trim())}" class="text-[#ccff00] underline">${escapeXml(m[1].trim())}</a>`);
+                    lastIdx = m.index + m[0].length;
+                  }
+                  if (lastIdx < strippedBold.length) {
+                    parts.push(escapeXml(strippedBold.slice(lastIdx)));
+                  }
+                  return parts.join('');
+                };
+
                 for (const line of lines) {
                   const trimmed = line.trim();
-                  if (!trimmed || trimmed === '---') continue;
+                  if (!trimmed || trimmed === '---') {
+                    flushTable();
+                    continue;
+                  }
+                  if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
+                    const cells = trimmed
+                      .slice(1, -1)
+                      .split('|')
+                      .map(c => c.replace(/\*\*([^*]+)\*\*/g, '$1').trim());
+                    // Skip markdown separator row like | :--- | :--- |
+                    if (cells.every(c => /^:?-{2,}:?$/.test(c))) {
+                      continue;
+                    }
+                    tableRows.push(cells);
+                    continue;
+                  } else {
+                    flushTable();
+                  }
+
                   if (trimmed.startsWith('## ')) {
                     flushFaq();
                     const h2Text = trimmed.slice(3).replace(/\*\*/g, '').trim();
@@ -1159,16 +1211,17 @@ export default defineConfig(({ mode }) => {
                     }
                     htmlBlocks.push(`<h3 id="${slugifyId(h3Text)}" class="text-xl font-bold mt-6 mb-3">${escapeXml(h3Text)}</h3>`);
                   } else if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
-                    const liText = trimmed.slice(2).replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
-                    htmlBlocks.push(`<li>${escapeXml(liText)}</li>`);
-                  } else if (!trimmed.startsWith('#') && !trimmed.startsWith('|') && !trimmed.startsWith('```') && !trimmed.startsWith('![')) {
+                    const liRaw = trimmed.slice(2);
+                    htmlBlocks.push(`<li>${formatInlineHtml(liRaw)}</li>`);
+                  } else if (!trimmed.startsWith('#') && !trimmed.startsWith('```') && !trimmed.startsWith('![')) {
                     const cleanText = trimmed.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
                     if (currentFaqQuestion) {
                       currentFaqAnswerParts.push(cleanText);
                     }
-                    htmlBlocks.push(`<p class="text-neutral-300 mb-4">${escapeXml(cleanText)}</p>`);
+                    htmlBlocks.push(`<p class="text-neutral-300 mb-4">${formatInlineHtml(trimmed)}</p>`);
                   }
                 }
+                flushTable();
                 flushFaq();
                 // Guarantee at least one H2 even if a short post had no ## headings
                 if (!htmlBlocks.some(b => b.startsWith('<h2'))) {
@@ -1177,15 +1230,40 @@ export default defineConfig(({ mode }) => {
                 articleContent = htmlBlocks.join('\n');
               }
 
-              const coverImgUrl = seoMeta?.ogImage || firestorePost?.coverImage || staticPost?.coverImage || 'https://www.abuqitmirlabs.tech/logo.png';
+              const rawCoverImgUrl = seoMeta?.ogImage || firestorePost?.coverImage || staticPost?.coverImage || 'https://www.abuqitmirlabs.tech/logo.png';
+              const optimizedLocalCover = resolveOptimizedCoverImage(rawCoverImgUrl, blogSlug);
+              const coverImgUrl = optimizedLocalCover.startsWith('/')
+                ? `${hostname}${optimizedLocalCover}`
+                : optimizedLocalCover;
+              const preloadHref = optimizedLocalCover || rawCoverImgUrl;
+
               routeHtml = routeHtml
                 .replace(/<meta\b[^>]*property="og:image"[^>]*\/?>/gi, '')
                 .replace(/<meta\b[^>]*name="twitter:image"[^>]*\/?>/gi, '')
                 .replace(/<meta\b[^>]*property="og:type"[^>]*\/?>/gi, '')
-                .replace('</head>', `  <meta data-rh="true" property="og:type" content="article" />\n  <meta data-rh="true" property="og:image" content="${coverImgUrl}" />\n  <meta data-rh="true" name="twitter:image" content="${coverImgUrl}" />\n</head>`);
+                .replace('</head>', `  <link rel="preload" as="image" href="${preloadHref}" />\n  <meta data-rh="true" property="og:type" content="article" />\n  <meta data-rh="true" property="og:image" content="${coverImgUrl}" />\n  <meta data-rh="true" name="twitter:image" content="${coverImgUrl}" />\n</head>`);
 
               if (seoMeta && seoMeta.schemaJsonLd) {
-                routeHtml = injectSingleSchema(routeHtml, seoMeta.schemaJsonLd);
+                const clonedSchema = JSON.parse(JSON.stringify(seoMeta.schemaJsonLd));
+                const fullCanonical = `${hostname}${route.url}`;
+                if (Array.isArray(clonedSchema['@graph']) && extractedFaqs.length > 0) {
+                  const hasFaq = clonedSchema['@graph'].some((n: any) => n && n['@type'] === 'FAQPage');
+                  if (!hasFaq) {
+                    clonedSchema['@graph'].push({
+                      "@type": "FAQPage",
+                      "@id": `${fullCanonical}#faq`,
+                      "mainEntity": extractedFaqs.slice(0, 12).map(faq => ({
+                        "@type": "Question",
+                        "name": faq.question,
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": faq.answer
+                        }
+                      }))
+                    });
+                  }
+                }
+                routeHtml = injectSingleSchema(routeHtml, clonedSchema);
               } else {
                 const fullCanonical = `${hostname}${route.url}`;
                 const cleanHeadline = (firestorePost?.title || staticPost?.title || route.title).replace(/\s*\|\s*AbuQitmirLabs.*$/i, '');

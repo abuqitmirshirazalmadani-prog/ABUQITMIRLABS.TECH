@@ -8,6 +8,7 @@
  */
 
 import { calculateReadingTime, getReadingTimeStats, countReadableWords } from './readingTime';
+import { resolveOptimizedCoverImage } from '../data/localCoverImageMap';
 export { calculateReadingTime, getReadingTimeStats, countReadableWords };
 export type { ReadingTimeResult } from './readingTime';
 
@@ -89,11 +90,11 @@ export function cleanExcerpt(rawText?: string, maxLength = 160): string {
  * Formats various date input types (Firestore Timestamp, Date, string, number) into an ISO 8601 string.
  */
 export function formatIsoDate(dateVal: any, fallbackDate = new Date('2026-10-23T10:00:00.000Z')): string {
-  const maxAllowed = new Date('2026-10-23T23:59:59.000Z').getTime();
+  const maxAllowed = Date.now() + 86400000;
   const clampDate = (d: Date): string => {
     if (isNaN(d.getTime())) return new Date('2026-10-23T10:00:00.000Z').toISOString();
     if (d.getTime() > maxAllowed) {
-      return new Date('2026-10-23T10:00:00.000Z').toISOString();
+      return new Date().toISOString();
     }
     return d.toISOString();
   };
@@ -161,7 +162,11 @@ export function generateBlogPostMeta(
   }
 
   // 3. Media and Taxonomy
-  const coverImage = post.coverImage?.trim() || defaultImage;
+  const rawCover = post.coverImage?.trim() || defaultImage;
+  const localOrRemoteCover = resolveOptimizedCoverImage(rawCover, slug) || rawCover;
+  const coverImage = localOrRemoteCover.startsWith('/')
+    ? `${siteUrl}${localOrRemoteCover}`
+    : localOrRemoteCover;
   const publishedTime = formatIsoDate(post.createdAt);
   const modifiedTime = formatIsoDate(post.updatedAt || post.createdAt);
   const categoryName =

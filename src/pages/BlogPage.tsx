@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { getStaticBlogList } from '../data/staticBlogPosts';
 import { BLOG_SLUG_REDIRECTS, getCanonicalSlug } from '../data/canonicalRedirects';
+import { resolveOptimizedCoverImage } from '../data/localCoverImageMap';
 import { setCachedPosts } from '../utils/blogCache';
 
 interface Post {
@@ -57,9 +58,9 @@ const formatDateShort = (timestamp: any) => {
             date = new Date(timestamp);
         }
         if (isNaN(date.getTime())) return 'Recent';
-        const maxAllowed = new Date('2026-10-23T23:59:59.000Z').getTime();
+        const maxAllowed = Date.now() + 86400000;
         if (date.getTime() > maxAllowed) {
-            date = new Date('2026-10-23T10:00:00.000Z');
+            date = new Date();
         }
         return date.toLocaleDateString('en-US', {
             day: 'numeric',
@@ -94,11 +95,12 @@ export const DEFAULT_BRAND_COVER = 'data:image/svg+xml;charset=utf-8,' + encodeU
 </svg>
 `);
 
-const formatCoverImage = (url?: string, width = 800) => {
-    if (!url || typeof url !== 'string' || url.trim() === '' || url.includes('logo.png')) {
+const formatCoverImage = (url?: string, width = 800, slug?: string) => {
+    const resolved = resolveOptimizedCoverImage(url, slug);
+    if (!resolved || typeof resolved !== 'string' || resolved.trim() === '' || resolved.includes('logo.png')) {
         return DEFAULT_BRAND_COVER;
     }
-    const cleanUrl = url.trim();
+    const cleanUrl = resolved.trim();
     if (cleanUrl.startsWith('https://www.abuqitmirlabs.tech/')) {
         return cleanUrl.replace('https://www.abuqitmirlabs.tech', '');
     }
@@ -119,6 +121,7 @@ const BlogPage = () => {
     });
     const [loading, setLoading] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState<string>('All');
+    const [visibleCount, setVisibleCount] = useState<number>(12);
 
     const CATEGORIES = ["All", "AI", "Software", "Business", "App", "Development"];
 
@@ -286,6 +289,11 @@ const BlogPage = () => {
         });
 
     const featuredPost = filteredPosts[0] || posts[0];
+    const displayedPosts = filteredPosts.slice(0, visibleCount);
+
+    useEffect(() => {
+        setVisibleCount(12);
+    }, [selectedCategory]);
 
     return (
         <div className="min-h-screen bg-[#050505]">
@@ -293,6 +301,13 @@ const BlogPage = () => {
                 <title>Tech Blog & AI Insights | AbuQitmirLabs</title>
                 <meta name="description" content="AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies." />
                 <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog" />
+                {featuredPost && (
+                    <link
+                        rel="preload"
+                        as="image"
+                        href={formatCoverImage(featuredPost.coverImage, 1200, featuredPost.slug)}
+                    />
+                )}
                 
                 {/* OG Tags */}
                 <meta property="og:title" content="Tech Blog & AI Insights | AbuQitmirLabs" />
@@ -387,27 +402,29 @@ const BlogPage = () => {
                     <div className="space-y-24">
                         {/* FEATURED POST - New Design */}
                         {featuredPost && (
-                            <motion.div 
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
+                            <div 
                                 className="relative rounded-[3rem] overflow-hidden bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-white/10 group shadow-2xl"
                             >
                                 <div className="flex flex-col">
                                     {/* Image Section - ALWAYS TOP */}
                                     <div className="aspect-video w-full overflow-hidden p-6 md:p-10">
-                                        <div className="w-full h-full rounded-[2.5rem] overflow-hidden relative border border-white/5 shadow-2xl">
+                                        <div className="w-full h-full rounded-[2.5rem] overflow-hidden relative border border-white/5 shadow-2xl bg-zinc-900">
                                             <img 
-                                                src={formatCoverImage(featuredPost.coverImage, 1200)} 
+                                                src={formatCoverImage(featuredPost.coverImage, 1200, featuredPost.slug)} 
                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                                                 alt={featuredPost.coverImageAlt || `futuristic ${featuredPost.title} featured article cover image`}
                                                 width="1200"
                                                 height="675"
+                                                loading="eager"
                                                 decoding="async"
                                                 fetchPriority="high"
                                                 referrerPolicy="no-referrer"
                                                 onError={(e) => {
                                                     const target = e.target as HTMLImageElement;
-                                                    if (target.src !== DEFAULT_BRAND_COVER) {
+                                                    if (featuredPost.coverImage && target.src !== featuredPost.coverImage && !target.dataset.retriedRemote) {
+                                                        target.dataset.retriedRemote = 'true';
+                                                        target.src = featuredPost.coverImage;
+                                                    } else if (target.src !== DEFAULT_BRAND_COVER) {
                                                         target.src = DEFAULT_BRAND_COVER;
                                                     }
                                                 }}
@@ -434,7 +451,7 @@ const BlogPage = () => {
                                             <div className="flex items-center gap-3">
                                                 <div className="w-12 h-12 rounded-full bg-white/5 p-0.5 border border-white/10 ring-4 ring-blue-500/10">
                                                     <img 
-                                                        src="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" 
+                                                        src={resolveOptimizedCoverImage("https://i.postimg.cc/hjLzDQHK/abuqitmir222.png", "author-abuqitmir-shiraz")} 
                                                         alt="AbuQitmirLabs Shiraz Almadani" 
                                                         className="w-full h-full rounded-full object-cover object-top" 
                                                         width="48"
@@ -459,7 +476,7 @@ const BlogPage = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </div>
                         )}
 
                         {/* ALL BLOG POSTS SECTION */}
@@ -501,29 +518,32 @@ const BlogPage = () => {
                             {/* Right Posts Grid */}
                             <div className="flex-1">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-                                    {filteredPosts.map((post, idx) => (
+                                    {displayedPosts.map((post, idx) => (
                                         <motion.article 
                                             key={post.id || post.slug || idx}
                                             initial={{ opacity: 0, y: 20 }}
                                             whileInView={{ opacity: 1, y: 0 }}
                                             viewport={{ once: true }}
-                                            transition={{ delay: Math.min(idx * 0.05, 0.4) }}
+                                            transition={{ delay: Math.min((idx % 6) * 0.04, 0.2) }}
                                             className="group"
                                         >
                                             <Link to={`/blog/${post.slug}`} className="block h-full">
                                                 <div className="aspect-[16/10] rounded-[2.5rem] overflow-hidden mb-8 border border-white/5 bg-zinc-900 group-hover:border-white/10 transition-colors shadow-lg">
                                                     <img 
-                                                        src={formatCoverImage(post.coverImage, 800)} 
+                                                        src={formatCoverImage(post.coverImage, 800, post.slug)} 
                                                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
                                                         alt={post.coverImageAlt || `futuristic ${post.title} blog post thumbnail`}
                                                         width="800"
                                                         height="500"
-                                                        loading="lazy"
+                                                        loading={idx < 2 ? "eager" : "lazy"}
                                                         decoding="async"
                                                         referrerPolicy="no-referrer"
                                                         onError={(e) => {
                                                             const target = e.target as HTMLImageElement;
-                                                            if (target.src !== DEFAULT_BRAND_COVER) {
+                                                            if (post.coverImage && target.src !== post.coverImage && !target.dataset.retriedRemote) {
+                                                                target.dataset.retriedRemote = 'true';
+                                                                target.src = post.coverImage;
+                                                            } else if (target.src !== DEFAULT_BRAND_COVER) {
                                                                 target.src = DEFAULT_BRAND_COVER;
                                                             }
                                                         }}
@@ -549,6 +569,18 @@ const BlogPage = () => {
                                         </motion.article>
                                     ))}
                                 </div>
+
+                                {visibleCount < filteredPosts.length && (
+                                    <div className="mt-14 flex justify-center">
+                                        <button
+                                            type="button"
+                                            onClick={() => setVisibleCount(prev => prev + 12)}
+                                            className="px-8 py-4 rounded-full bg-white/5 hover:bg-blue-600 text-white border border-white/10 hover:border-blue-500 font-black uppercase tracking-widest text-xs transition-all shadow-lg"
+                                        >
+                                            Load More Articles ({filteredPosts.length - visibleCount} Remaining)
+                                        </button>
+                                    </div>
+                                )}
 
                                 {filteredPosts.length === 0 && (
                                     <div className="text-center py-32 bg-white/5 rounded-[3rem] border border-white/5">

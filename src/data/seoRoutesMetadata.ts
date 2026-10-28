@@ -5171,7 +5171,601 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         }
       ]
     }
-  }
+  },
+  '/blog/brand-identity-vs-logo-design': {
+    title: "Brand Identity vs Logo Design: What Startups Need First | AbuQitmirLabs",
+    description: "Most startups spend $500 on a logo and then pay double to reverse-engineer a brand identity around it later. This guide breaks down the exact difference",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design',
+    ogTitle: "Brand Identity vs Logo Design: What Startups Need First | AbuQitmirLabs",
+    ogDescription: "Most startups spend $500 on a logo and then pay double to reverse-engineer a brand identity around it later. This guide breaks down the exact difference",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: "Brand Identity vs Logo Design: What Startups Need First | AbuQitmirLabs",
+    twitterDescription: "Most startups spend $500 on a logo and then pay double to reverse-engineer a brand identity around it later. This guide breaks down the exact difference",
+    twitterImage: "https://www.abuqitmirlabs.tech/logo.png",
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.abuqitmirlabs.tech/#organization',
+          name: 'AbuQitmirLabs .TECH',
+          url: 'https://www.abuqitmirlabs.tech/',
+          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://www.abuqitmirlabs.tech/#website',
+          url: 'https://www.abuqitmirlabs.tech/',
+          name: 'AbuQitmirLabs .TECH',
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
+        },
+        {
+          '@type': 'WebPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design#webpage',
+          url: 'https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design',
+          name: "Brand Identity vs Logo Design: What Startups Need First | AbuQitmirLabs",
+          description: "Most startups spend $500 on a logo and then pay double to reverse-engineer a brand identity around it later. This guide breaks down the exact difference",
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design#breadcrumb',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
+            { '@type': 'ListItem', position: 3, name: "Brand Identity vs Logo Design: What Startups Need First", item: 'https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design' }
+          ]
+        },
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design#article',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design#webpage' },
+          headline: "Brand Identity vs Logo Design: What Startups Need First",
+          description: "Most startups spend $500 on a logo and then pay double to reverse-engineer a brand identity around it later. This guide breaks down the exact difference",
+          image: "https://www.abuqitmirlabs.tech/logo.png",
+          author: {
+            '@type': 'Person',
+            name: "Abu Qitmir Mohammad Shiraz Al-Madani",
+            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+          },
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
+          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design#webpage' },
+          datePublished: "2026-10-17T00:00:00+00:00",
+          dateModified: "2026-10-17T00:00:00+00:00"
+        }
+      ]
+    }
+  },
+  '/blog/content-brief-template': {
+    title: "The Content Brief Template That Gets Writers 90% There | AbuQitmirLabs",
+    description: "14-point content brief template that gets writers 90% there. Includes 14 sections, live examples, Table of Contents, and a downloadable copy-paste templ",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/content-brief-template',
+    ogTitle: "The Content Brief Template That Gets Writers 90% There | AbuQitmirLabs",
+    ogDescription: "14-point content brief template that gets writers 90% there. Includes 14 sections, live examples, Table of Contents, and a downloadable copy-paste templ",
+    ogImage: "https://i.postimg.cc/8C8xN6Vc/14-Point-Content-Brief-Guide.png",
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: "The Content Brief Template That Gets Writers 90% There | AbuQitmirLabs",
+    twitterDescription: "14-point content brief template that gets writers 90% there. Includes 14 sections, live examples, Table of Contents, and a downloadable copy-paste templ",
+    twitterImage: "https://i.postimg.cc/8C8xN6Vc/14-Point-Content-Brief-Guide.png",
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.abuqitmirlabs.tech/#organization',
+          name: 'AbuQitmirLabs .TECH',
+          url: 'https://www.abuqitmirlabs.tech/',
+          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://www.abuqitmirlabs.tech/#website',
+          url: 'https://www.abuqitmirlabs.tech/',
+          name: 'AbuQitmirLabs .TECH',
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
+        },
+        {
+          '@type': 'WebPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/content-brief-template#webpage',
+          url: 'https://www.abuqitmirlabs.tech/blog/content-brief-template',
+          name: "The Content Brief Template That Gets Writers 90% There | AbuQitmirLabs",
+          description: "14-point content brief template that gets writers 90% there. Includes 14 sections, live examples, Table of Contents, and a downloadable copy-paste templ",
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/content-brief-template#breadcrumb',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
+            { '@type': 'ListItem', position: 3, name: "The Content Brief Template That Gets Writers 90% There", item: 'https://www.abuqitmirlabs.tech/blog/content-brief-template' }
+          ]
+        },
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/content-brief-template#article',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/content-brief-template#webpage' },
+          headline: "The Content Brief Template That Gets Writers 90% There",
+          description: "14-point content brief template that gets writers 90% there. Includes 14 sections, live examples, Table of Contents, and a downloadable copy-paste templ",
+          image: "https://i.postimg.cc/8C8xN6Vc/14-Point-Content-Brief-Guide.png",
+          author: {
+            '@type': 'Person',
+            name: "Abu Qitmir Mohammad Shiraz Al-Madani",
+            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+          },
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
+          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/content-brief-template#webpage' },
+          datePublished: "2026-10-18T00:00:00+00:00",
+          dateModified: "2026-10-18T00:00:00+00:00"
+        }
+      ]
+    }
+  },
+  '/blog/design-systems-for-startups': {
+    title: "Design Systems for Startups: Building a Visual Language | AbuQitmirLabs",
+    description: "Build scalable design systems for startups. Learn how lean tokens, component libraries, and atomic design eliminate UI debt and accelerate development.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/design-systems-for-startups',
+    ogTitle: "Design Systems for Startups: Building a Visual Language | AbuQitmirLabs",
+    ogDescription: "Build scalable design systems for startups. Learn how lean tokens, component libraries, and atomic design eliminate UI debt and accelerate development.",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: "Design Systems for Startups: Building a Visual Language | AbuQitmirLabs",
+    twitterDescription: "Build scalable design systems for startups. Learn how lean tokens, component libraries, and atomic design eliminate UI debt and accelerate development.",
+    twitterImage: "https://www.abuqitmirlabs.tech/logo.png",
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.abuqitmirlabs.tech/#organization',
+          name: 'AbuQitmirLabs .TECH',
+          url: 'https://www.abuqitmirlabs.tech/',
+          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://www.abuqitmirlabs.tech/#website',
+          url: 'https://www.abuqitmirlabs.tech/',
+          name: 'AbuQitmirLabs .TECH',
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
+        },
+        {
+          '@type': 'WebPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/design-systems-for-startups#webpage',
+          url: 'https://www.abuqitmirlabs.tech/blog/design-systems-for-startups',
+          name: "Design Systems for Startups: Building a Visual Language | AbuQitmirLabs",
+          description: "Build scalable design systems for startups. Learn how lean tokens, component libraries, and atomic design eliminate UI debt and accelerate development.",
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/design-systems-for-startups#breadcrumb',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
+            { '@type': 'ListItem', position: 3, name: "Design Systems for Startups: Building a Visual Language", item: 'https://www.abuqitmirlabs.tech/blog/design-systems-for-startups' }
+          ]
+        },
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/design-systems-for-startups#article',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/design-systems-for-startups#webpage' },
+          headline: "Design Systems for Startups: Building a Visual Language",
+          description: "Build scalable design systems for startups. Learn how lean tokens, component libraries, and atomic design eliminate UI debt and accelerate development.",
+          image: "https://www.abuqitmirlabs.tech/logo.png",
+          author: {
+            '@type': 'Person',
+            name: "Abu Qitmir Mohammad Shiraz Al-Madani",
+            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+          },
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
+          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/design-systems-for-startups#webpage' },
+          datePublished: "2026-10-18T00:00:00+00:00",
+          dateModified: "2026-10-18T00:00:00+00:00"
+        }
+      ]
+    }
+  },
+  '/blog/design-trends-2026': {
+    title: "The 2026 Design Trends That Will Actually Last | AbuQitmirLabs",
+    description: "Every January, the design world gets hit with a wave of \"trends.\" Founders panic, spend thousands on a redesign, and implement whatever is trending on D",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/design-trends-2026',
+    ogTitle: "The 2026 Design Trends That Will Actually Last | AbuQitmirLabs",
+    ogDescription: "Every January, the design world gets hit with a wave of \"trends.\" Founders panic, spend thousands on a redesign, and implement whatever is trending on D",
+    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: "The 2026 Design Trends That Will Actually Last | AbuQitmirLabs",
+    twitterDescription: "Every January, the design world gets hit with a wave of \"trends.\" Founders panic, spend thousands on a redesign, and implement whatever is trending on D",
+    twitterImage: "https://www.abuqitmirlabs.tech/logo.png",
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.abuqitmirlabs.tech/#organization',
+          name: 'AbuQitmirLabs .TECH',
+          url: 'https://www.abuqitmirlabs.tech/',
+          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://www.abuqitmirlabs.tech/#website',
+          url: 'https://www.abuqitmirlabs.tech/',
+          name: 'AbuQitmirLabs .TECH',
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
+        },
+        {
+          '@type': 'WebPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/design-trends-2026#webpage',
+          url: 'https://www.abuqitmirlabs.tech/blog/design-trends-2026',
+          name: "The 2026 Design Trends That Will Actually Last | AbuQitmirLabs",
+          description: "Every January, the design world gets hit with a wave of \"trends.\" Founders panic, spend thousands on a redesign, and implement whatever is trending on D",
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/design-trends-2026#breadcrumb',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
+            { '@type': 'ListItem', position: 3, name: "The 2026 Design Trends That Will Actually Last", item: 'https://www.abuqitmirlabs.tech/blog/design-trends-2026' }
+          ]
+        },
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/design-trends-2026#article',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/design-trends-2026#webpage' },
+          headline: "The 2026 Design Trends That Will Actually Last",
+          description: "Every January, the design world gets hit with a wave of \"trends.\" Founders panic, spend thousands on a redesign, and implement whatever is trending on D",
+          image: "https://www.abuqitmirlabs.tech/logo.png",
+          author: {
+            '@type': 'Person',
+            name: "Abu Qitmir Mohammad Shiraz Al-Madani",
+            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+          },
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
+          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/design-trends-2026#webpage' },
+          datePublished: "2026-10-20T00:00:00+00:00",
+          dateModified: "2026-10-20T00:00:00+00:00"
+        }
+      ]
+    }
+  },
+  '/blog/geo-content-writing': {
+    title: "Writing for GEO: How to Structure Content That AI Cites | AbuQitmirLabs",
+    description: "A guide to writing content that AI engines cite. Learn GEO best practices, direct answer formatting, and entity optimization.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/geo-content-writing',
+    ogTitle: "Writing for GEO: How to Structure Content That AI Cites | AbuQitmirLabs",
+    ogDescription: "A guide to writing content that AI engines cite. Learn GEO best practices, direct answer formatting, and entity optimization.",
+    ogImage: "https://i.postimg.cc/k4mt95rh/Zero-Click-SEO-AI-Search-Visibility.png",
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: "Writing for GEO: How to Structure Content That AI Cites | AbuQitmirLabs",
+    twitterDescription: "A guide to writing content that AI engines cite. Learn GEO best practices, direct answer formatting, and entity optimization.",
+    twitterImage: "https://i.postimg.cc/k4mt95rh/Zero-Click-SEO-AI-Search-Visibility.png",
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.abuqitmirlabs.tech/#organization',
+          name: 'AbuQitmirLabs .TECH',
+          url: 'https://www.abuqitmirlabs.tech/',
+          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://www.abuqitmirlabs.tech/#website',
+          url: 'https://www.abuqitmirlabs.tech/',
+          name: 'AbuQitmirLabs .TECH',
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
+        },
+        {
+          '@type': 'WebPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/geo-content-writing#webpage',
+          url: 'https://www.abuqitmirlabs.tech/blog/geo-content-writing',
+          name: "Writing for GEO: How to Structure Content That AI Cites | AbuQitmirLabs",
+          description: "A guide to writing content that AI engines cite. Learn GEO best practices, direct answer formatting, and entity optimization.",
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/geo-content-writing#breadcrumb',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
+            { '@type': 'ListItem', position: 3, name: "Writing for GEO: How to Structure Content That AI Cites", item: 'https://www.abuqitmirlabs.tech/blog/geo-content-writing' }
+          ]
+        },
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/geo-content-writing#article',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/geo-content-writing#webpage' },
+          headline: "Writing for GEO: How to Structure Content That AI Cites",
+          description: "A guide to writing content that AI engines cite. Learn GEO best practices, direct answer formatting, and entity optimization.",
+          image: "https://i.postimg.cc/k4mt95rh/Zero-Click-SEO-AI-Search-Visibility.png",
+          author: {
+            '@type': 'Person',
+            name: "Abu Qitmir Mohammad Shiraz Al-Madani",
+            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+          },
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
+          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/geo-content-writing#webpage' },
+          datePublished: "2026-10-28T00:00:00+00:00",
+          dateModified: "2026-10-28T00:00:00+00:00"
+        }
+      ]
+    }
+  },
+  '/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups': {
+    title: "Performance Marketing vs Brand Marketing: A Budget Allocation Framework for Startups | AbuQitmirLabs",
+    description: "A practical framework for startups to split budget between performance and brand marketing. Learn when to invest in each and how to measure ROI.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups',
+    ogTitle: "Performance Marketing vs Brand Marketing: A Budget Allocation Framework for Startups | AbuQitmirLabs",
+    ogDescription: "A practical framework for startups to split budget between performance and brand marketing. Learn when to invest in each and how to measure ROI.",
+    ogImage: "https://www.abuqitmirlabs.tech/images/blog/performance-vs-brand-marketing-cover.jpg",
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: "Performance Marketing vs Brand Marketing: A Budget Allocation Framework for Startups | AbuQitmirLabs",
+    twitterDescription: "A practical framework for startups to split budget between performance and brand marketing. Learn when to invest in each and how to measure ROI.",
+    twitterImage: "https://www.abuqitmirlabs.tech/images/blog/performance-vs-brand-marketing-cover.jpg",
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.abuqitmirlabs.tech/#organization',
+          name: 'AbuQitmirLabs .TECH',
+          url: 'https://www.abuqitmirlabs.tech/',
+          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://www.abuqitmirlabs.tech/#website',
+          url: 'https://www.abuqitmirlabs.tech/',
+          name: 'AbuQitmirLabs .TECH',
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
+        },
+        {
+          '@type': 'WebPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups#webpage',
+          url: 'https://www.abuqitmirlabs.tech/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups',
+          name: "Performance Marketing vs Brand Marketing: A Budget Allocation Framework for Startups | AbuQitmirLabs",
+          description: "A practical framework for startups to split budget between performance and brand marketing. Learn when to invest in each and how to measure ROI.",
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups#breadcrumb',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
+            { '@type': 'ListItem', position: 3, name: "Performance Marketing vs Brand Marketing: A Budget Allocation Framework for Startups", item: 'https://www.abuqitmirlabs.tech/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups' }
+          ]
+        },
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups#article',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups#webpage' },
+          headline: "Performance Marketing vs Brand Marketing: A Budget Allocation Framework for Startups",
+          description: "A practical framework for startups to split budget between performance and brand marketing. Learn when to invest in each and how to measure ROI.",
+          image: "https://www.abuqitmirlabs.tech/images/blog/performance-vs-brand-marketing-cover.jpg",
+          author: {
+            '@type': 'Person',
+            name: "Shiraz Almadani",
+            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+          },
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
+          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups#webpage' },
+          datePublished: "2026-10-10T00:00:00+00:00",
+          dateModified: "2026-10-10T00:00:00+00:00"
+        }
+      ]
+    }
+  },
+  '/blog/small-business-branding-mistakes-pakistan': {
+    title: "Small Business Branding Mistakes Pakistan (And How to Fix It) | AbuQitmirLabs",
+    description: "Discover the 9 most common small business branding mistakes in Pakistan. Get a practical checklist to fix them and build brand trust without wasting bud",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/small-business-branding-mistakes-pakistan',
+    ogTitle: "Small Business Branding Mistakes Pakistan (And How to Fix It) | AbuQitmirLabs",
+    ogDescription: "Discover the 9 most common small business branding mistakes in Pakistan. Get a practical checklist to fix them and build brand trust without wasting bud",
+    ogImage: "https://i.postimg.cc/cLTBf9mr/Brand-Building-Mistakes-Guide.png",
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: "Small Business Branding Mistakes Pakistan (And How to Fix It) | AbuQitmirLabs",
+    twitterDescription: "Discover the 9 most common small business branding mistakes in Pakistan. Get a practical checklist to fix them and build brand trust without wasting bud",
+    twitterImage: "https://i.postimg.cc/cLTBf9mr/Brand-Building-Mistakes-Guide.png",
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.abuqitmirlabs.tech/#organization',
+          name: 'AbuQitmirLabs .TECH',
+          url: 'https://www.abuqitmirlabs.tech/',
+          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://www.abuqitmirlabs.tech/#website',
+          url: 'https://www.abuqitmirlabs.tech/',
+          name: 'AbuQitmirLabs .TECH',
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
+        },
+        {
+          '@type': 'WebPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/small-business-branding-mistakes-pakistan#webpage',
+          url: 'https://www.abuqitmirlabs.tech/blog/small-business-branding-mistakes-pakistan',
+          name: "Small Business Branding Mistakes Pakistan (And How to Fix It) | AbuQitmirLabs",
+          description: "Discover the 9 most common small business branding mistakes in Pakistan. Get a practical checklist to fix them and build brand trust without wasting bud",
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/small-business-branding-mistakes-pakistan#breadcrumb',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
+            { '@type': 'ListItem', position: 3, name: "Small Business Branding Mistakes Pakistan (And How to Fix It)", item: 'https://www.abuqitmirlabs.tech/blog/small-business-branding-mistakes-pakistan' }
+          ]
+        },
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/small-business-branding-mistakes-pakistan#article',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/small-business-branding-mistakes-pakistan#webpage' },
+          headline: "Small Business Branding Mistakes Pakistan (And How to Fix It)",
+          description: "Discover the 9 most common small business branding mistakes in Pakistan. Get a practical checklist to fix them and build brand trust without wasting bud",
+          image: "https://i.postimg.cc/cLTBf9mr/Brand-Building-Mistakes-Guide.png",
+          author: {
+            '@type': 'Person',
+            name: "Abu Qitmir Mohammad Shiraz Al-Madani",
+            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+          },
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
+          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/small-business-branding-mistakes-pakistan#webpage' },
+          datePublished: "2026-10-23T00:00:00+00:00",
+          dateModified: "2026-10-23T00:00:00+00:00"
+        }
+      ]
+    }
+  },
+  '/blog/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026': {
+    title: "The 5-Minute Technical Audit: What Every Founder Should Check Before Hiring a Developer in 2026 | AbuQitmirLabs",
+    description: "Most founders cannot read code. That does not mean they cannot vet a developer. This five-minute technical audit checklist gives non-technical founders",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026',
+    ogTitle: "The 5-Minute Technical Audit: What Every Founder Should Check Before Hiring a Developer in 2026 | AbuQitmirLabs",
+    ogDescription: "Most founders cannot read code. That does not mean they cannot vet a developer. This five-minute technical audit checklist gives non-technical founders",
+    ogImage: "https://i.postimg.cc/Y92rZgvg/Five-Minute-Technical-Audit-Checklist.png",
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: "The 5-Minute Technical Audit: What Every Founder Should Check Before Hiring a Developer in 2026 | AbuQitmirLabs",
+    twitterDescription: "Most founders cannot read code. That does not mean they cannot vet a developer. This five-minute technical audit checklist gives non-technical founders",
+    twitterImage: "https://i.postimg.cc/Y92rZgvg/Five-Minute-Technical-Audit-Checklist.png",
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.abuqitmirlabs.tech/#organization',
+          name: 'AbuQitmirLabs .TECH',
+          url: 'https://www.abuqitmirlabs.tech/',
+          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://www.abuqitmirlabs.tech/#website',
+          url: 'https://www.abuqitmirlabs.tech/',
+          name: 'AbuQitmirLabs .TECH',
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
+        },
+        {
+          '@type': 'WebPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026#webpage',
+          url: 'https://www.abuqitmirlabs.tech/blog/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026',
+          name: "The 5-Minute Technical Audit: What Every Founder Should Check Before Hiring a Developer in 2026 | AbuQitmirLabs",
+          description: "Most founders cannot read code. That does not mean they cannot vet a developer. This five-minute technical audit checklist gives non-technical founders",
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026#breadcrumb',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
+            { '@type': 'ListItem', position: 3, name: "The 5-Minute Technical Audit: What Every Founder Should Check Before Hiring a Developer in 2026", item: 'https://www.abuqitmirlabs.tech/blog/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026' }
+          ]
+        },
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026#article',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026#webpage' },
+          headline: "The 5-Minute Technical Audit: What Every Founder Should Check Before Hiring a Developer in 2026",
+          description: "Most founders cannot read code. That does not mean they cannot vet a developer. This five-minute technical audit checklist gives non-technical founders",
+          image: "https://i.postimg.cc/Y92rZgvg/Five-Minute-Technical-Audit-Checklist.png",
+          author: {
+            '@type': 'Person',
+            name: "ABUQITMIRLABS .TECH Shiraz Almadani",
+            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+          },
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
+          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026#webpage' },
+          datePublished: "2026-10-07T00:00:00+00:00",
+          dateModified: "2026-10-07T00:00:00+00:00"
+        }
+      ]
+    }
+  },
+  '/blog/url-fragmentation-headless-spa': {
+    title: "Fix URL Fragmentation in Headless SPAs | AbuQitmirLabs",
+    description: "Eliminate duplicate indexing across headless SPAs, GA4, and RSS feeds with a 5-layer self-healing architecture. Includes code for Next.js, React, and ed",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa',
+    ogTitle: "Fix URL Fragmentation in Headless SPAs | AbuQitmirLabs",
+    ogDescription: "Eliminate duplicate indexing across headless SPAs, GA4, and RSS feeds with a 5-layer self-healing architecture. Includes code for Next.js, React, and ed",
+    ogImage: "https://www.abuqitmirlabs.tech/assets/blog/url-fragmentation-headless-spa-cover.png",
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: "Fix URL Fragmentation in Headless SPAs | AbuQitmirLabs",
+    twitterDescription: "Eliminate duplicate indexing across headless SPAs, GA4, and RSS feeds with a 5-layer self-healing architecture. Includes code for Next.js, React, and ed",
+    twitterImage: "https://www.abuqitmirlabs.tech/assets/blog/url-fragmentation-headless-spa-cover.png",
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.abuqitmirlabs.tech/#organization',
+          name: 'AbuQitmirLabs .TECH',
+          url: 'https://www.abuqitmirlabs.tech/',
+          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://www.abuqitmirlabs.tech/#website',
+          url: 'https://www.abuqitmirlabs.tech/',
+          name: 'AbuQitmirLabs .TECH',
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
+        },
+        {
+          '@type': 'WebPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa#webpage',
+          url: 'https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa',
+          name: "Fix URL Fragmentation in Headless SPAs | AbuQitmirLabs",
+          description: "Eliminate duplicate indexing across headless SPAs, GA4, and RSS feeds with a 5-layer self-healing architecture. Includes code for Next.js, React, and ed",
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa#breadcrumb',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
+            { '@type': 'ListItem', position: 3, name: "Fix URL Fragmentation in Headless SPAs", item: 'https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa' }
+          ]
+        },
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa#article',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa#webpage' },
+          headline: "Fix URL Fragmentation in Headless SPAs",
+          description: "Eliminate duplicate indexing across headless SPAs, GA4, and RSS feeds with a 5-layer self-healing architecture. Includes code for Next.js, React, and ed",
+          image: "https://www.abuqitmirlabs.tech/assets/blog/url-fragmentation-headless-spa-cover.png",
+          author: {
+            '@type': 'Person',
+            name: "Engineering Architecture Team",
+            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+          },
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
+          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa#webpage' },
+          datePublished: "2026-10-28T00:00:00+00:00",
+          dateModified: "2026-10-28T00:00:00+00:00"
+        }
+      ]
+    }
+  },
 };
 
 
