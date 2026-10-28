@@ -87,8 +87,8 @@ export default function HomePage() {
         "@type": "WebPage",
         "@id": "https://www.abuqitmirlabs.tech/#webpage",
         "url": "https://www.abuqitmirlabs.tech/",
-        "name": "Growth Engineering Agency | AbuQitmirLabs",
-        "description": "Growth engineering agency building revenue systems for B2B companies.",
+        "name": "Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs",
+        "description": "Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.",
         "isPartOf": {
           "@id": "https://www.abuqitmirlabs.tech/#website"
         },
@@ -166,22 +166,22 @@ export default function HomePage() {
   return (
     <main id="main-content" className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <Helmet>
-        <title>Growth Engineering Agency | AbuQitmirLabs</title>
-        <meta name="description" content="Growth engineering agency building revenue systems for B2B companies. Connect marketing, sales, and product data into one measurable engine." />
+        <title>Growth Engineering Firm | Custom Software &amp; AI | AbuQitmirLabs</title>
+        <meta name="description" content="Growth engineering firm for B2B companies. Custom software, AI automation &amp; performance marketing engineered as one revenue system." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/" />
         <link rel="alternate" hrefLang="x-default" href="https://www.abuqitmirlabs.tech/" />
         <link rel="alternate" hrefLang="en" href="https://www.abuqitmirlabs.tech/" />
         <link rel="preload" as="image" href="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" type="image/jpeg" fetchPriority="high" />
         
-        <meta property="og:title" content="Growth Engineering Agency | AbuQitmirLabs" />
-        <meta property="og:description" content="Growth engineering agency building revenue systems for B2B companies. Connect marketing, sales, and product data into one measurable engine." />
+        <meta property="og:title" content="Growth Engineering Firm | Custom Software &amp; AI | AbuQitmirLabs" />
+        <meta property="og:description" content="Growth engineering firm for B2B companies. Custom software, AI automation &amp; performance marketing engineered as one revenue system." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
-        <meta property="og:image:alt" content="AbuQitmirLabs Growth Engineering Agency" />
+        <meta property="og:image:alt" content="AbuQitmirLabs Growth Engineering Firm" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Growth Engineering Agency | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Growth engineering agency building revenue systems for B2B companies. Connect marketing, sales, and product data into one measurable engine." />
+        <meta name="twitter:title" content="Growth Engineering Firm | Custom Software &amp; AI | AbuQitmirLabs" />
+        <meta name="twitter:description" content="Growth engineering firm for B2B companies. Custom software, AI automation &amp; performance marketing engineered as one revenue system." />
         <meta name="twitter:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
 
         <script 

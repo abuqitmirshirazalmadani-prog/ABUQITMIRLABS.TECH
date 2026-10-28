@@ -78,7 +78,7 @@ export default defineConfig(({ mode }) => {
         closeBundle: async () => {
           const hostname = 'https://www.abuqitmirlabs.tech';
           const baseRoutes = [
-            { url: '/', changefreq: 'weekly', priority: 1.0, title: 'Custom Software & AI App Development Company | AbuQitmirLabs', description: "AbuQitmirLabs engineers custom software, AI agents, mobile apps, and web solutions. Top-rated development company in Karachi serving global clients." },
+            { url: '/', changefreq: 'weekly', priority: 1.0, title: 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs', description: "Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system." },
             { url: '/about', changefreq: 'monthly', priority: 0.8, title: 'About Us | AbuQitmirLabs', description: 'Learn about our mission to build cutting-edge AI and mobile solutions.' },
             { url: '/about/our-company', changefreq: 'monthly', priority: 0.8, title: 'About Our Company | Global Software Studio | AbuQitmirLabs', description: 'AbuQitmirLabs is a Karachi-based software boutique. 410+ custom projects for 350+ global clients. Zero lock-in, 100% in-house talent. Learn about our mission and values.' },
             { url: '/about/our-team', changefreq: 'monthly', priority: 0.8, title: 'Our Team | Elite Software Architects | AbuQitmirLabs', description: 'Meet the AbuQitmirLabs team — 12+ in-house software architects, engineers, and UI/UX experts in Karachi. 410+ projects delivered globally. Led by founder Abu Qitmir.' },

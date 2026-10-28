@@ -539,15 +539,15 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     }
   },
   '/': {
-    title: 'Growth Engineering Agency | AbuQitmirLabs',
-    description: 'Growth engineering agency building revenue systems for B2B companies. Connect marketing, sales, and product data into one measurable engine.',
+    title: 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs',
+    description: 'Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.',
     canonical: 'https://www.abuqitmirlabs.tech/',
-    ogTitle: 'Growth Engineering Agency | AbuQitmirLabs',
-    ogDescription: 'Growth engineering agency building revenue systems for B2B companies. Connect marketing, sales, and product data into one measurable engine.',
+    ogTitle: 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs',
+    ogDescription: 'Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.',
     ogImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg',
     ogType: 'website',
-    twitterTitle: 'Growth Engineering Agency | AbuQitmirLabs',
-    twitterDescription: 'Growth engineering agency building revenue systems for B2B companies. Connect marketing, sales, and product data into one measurable engine.',
+    twitterTitle: 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs',
+    twitterDescription: 'Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.',
     twitterImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg'
   },
   '/about': {

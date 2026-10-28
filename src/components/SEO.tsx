@@ -22,11 +22,11 @@ export interface SEOProps {
 }
 
 const SITE_URL = 'https://www.abuqitmirlabs.tech';
-const DEFAULT_TITLE = 'Growth Engineering Agency | AbuQitmirLabs';
+const DEFAULT_TITLE = 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs';
 const DEFAULT_DESCRIPTION =
-  'Growth engineering agency building revenue systems for B2B companies. Connect marketing, sales, and product data into one measurable engine.';
+  'Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.';
 const DEFAULT_IMAGE = 'https://www.abuqitmirlabs.tech/logo.png';
-const DEFAULT_IMAGE_ALT = 'AbuQitmirLabs Growth Engineering Agency';
+const DEFAULT_IMAGE_ALT = 'AbuQitmirLabs Growth Engineering Firm';
 
 export const SEO: React.FC<SEOProps> = ({
   title,

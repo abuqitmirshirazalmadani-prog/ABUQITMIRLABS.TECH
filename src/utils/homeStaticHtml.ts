@@ -134,8 +134,8 @@ export const homeSchema = {
       "@type": "WebPage",
       "@id": "https://www.abuqitmirlabs.tech/#webpage",
       "url": "https://www.abuqitmirlabs.tech/",
-      "name": "Custom Software Development & AI Agency | AbuQitmirLabs",
-      "description": "AbuQitmirLabs is a custom software & AI development company building web platforms and mobile apps for US, UK & global clients. Contact us today.",
+      "name": "Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs",
+      "description": "Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.",
       "inLanguage": "en-US",
       "isPartOf": {
         "@type": "WebSite",
