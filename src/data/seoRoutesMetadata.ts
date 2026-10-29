@@ -57,7 +57,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   "/tools/seo-checklist": {
     title: "Interactive Technical & Local SEO Checklist (2026) | AbuQitmirLabs",
-    description: "Step-by-step interactive SEO checklist covering technical foundations, Schema.org entities, Core Web Vitals, local citations, and AI search optimization.",
+    description: "Interactive 2026 SEO checklist covering technical foundations, Schema.org entities, Core Web Vitals, local citations, and AI search.",
     canonical: "https://www.abuqitmirlabs.tech/tools/seo-checklist",
     keywords: "SEO checklist 2026, technical SEO checklist, local SEO checklist, interactive SEO tool, AbuQitmirLabs",
     ogTitle: "Interactive Technical & Local SEO Checklist (2026) | AbuQitmirLabs",
@@ -101,7 +101,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   "/blog/enterprise-software-engineering-what-changes-at-scale": {
     title: "Enterprise Software Engineering: What Changes at Scale | AbuQitmirLabs",
-    description: "From architecture to deployment pipelines, enterprise software engineering demands a completely different discipline. Here is what actually changes when you build at scale.",
+    description: "From system architecture to CI/CD pipelines, learn what actually changes when you engineer enterprise software at scale.",
     canonical: "https://www.abuqitmirlabs.tech/blog/enterprise-software-engineering-what-changes-at-scale",
     keywords: "enterprise software engineering, scalable software architecture, microservices vs modular monolith, enterprise CI/CD, AbuQitmirLabs",
     ogTitle: "Enterprise Software Engineering: What Changes at Scale | AbuQitmirLabs",
@@ -112,7 +112,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   "/blog/brand-identity-vs-logo-design": {
     title: "Brand Identity vs Logo Design: What Startups Actually Need First | AbuQitmirLabs",
-    description: "A logo is not a brand. Learn the difference between logo design and a complete brand identity system, what each costs in 2026, and what startups need first.",
+    description: "A logo is not a brand. Learn the difference between logo design and a complete brand identity system, what each costs in 2026, and what to build first.",
     canonical: "https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design",
     keywords: "brand identity vs logo design, startup branding, visual identity system, brand guidelines, AbuQitmirLabs",
     ogTitle: "Brand Identity vs Logo Design: What Startups Actually Need First | AbuQitmirLabs",
@@ -155,7 +155,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   "/blog/small-business-branding-mistakes-pakistan": {
     title: "Small Business Branding Mistakes Pakistan (And How to Fix It) | AbuQitmirLabs",
-    description: "Discover the 9 most common small business branding mistakes in Pakistan. Get a practical checklist to fix them and build brand trust without wasting budget.",
+    description: "Discover the 9 most common small business branding mistakes in Pakistan and get a practical checklist to build brand trust without wasting budget.",
     canonical: "https://www.abuqitmirlabs.tech/blog/small-business-branding-mistakes-pakistan",
     keywords: "small business branding mistakes Pakistan, why small businesses fail branding, brand building mistakes Pakistani SMEs, branding failures small business, brand identity system, brand guidelines, local SEO Pakistan, SME branding, brand positioning, logo design mistakes, AbuQitmirLabs",
     ogTitle: "Small Business Branding Mistakes Pakistan (And How to Fix It) | AbuQitmirLabs",
@@ -170,7 +170,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   "/blog/content-brief-template": {
     title: "The Content Brief Template That Gets Writers 90% There | AbuQitmirLabs",
-    description: "14-point content brief template that gets writers 90% there. Includes 14 sections, live examples, Table of Contents, and a downloadable copy-paste template.",
+    description: "14-point content brief template that gets writers 90% there on the first draft, complete with live examples and a copy-paste framework.",
     canonical: "https://www.abuqitmirlabs.tech/blog/content-brief-template",
     keywords: "content brief template, how to write content brief, SEO content brief, content brief example, content marketing, content strategy, B2B content marketing, content writing services, content brief checklist, AbuQitmirLabs",
     ogTitle: "The Content Brief Template That Gets Writers 90% There | AbuQitmirLabs",
@@ -184,7 +184,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   "/brand-building": {
     title: "Brand Building Services for Small Businesses | AbuQitmirLabs",
-    description: "Strategy. Design. Website. SEO. All Under One Roof. AbuQitmirLabs builds complete brands from scratch for small businesses in Pakistan, the US, UK, UAE, and beyond.",
+    description: "Strategy, design, custom Next.js websites, and SEO under one roof. AbuQitmirLabs builds complete brands from scratch for global small businesses.",
     canonical: "https://www.abuqitmirlabs.tech/brand-building",
     keywords: "brand building services for small businesses, brand strategy, visual identity design, custom nextjs website, small business branding, branding agency",
     ogTitle: "Brand Building Services for Small Businesses | AbuQitmirLabs",
@@ -198,7 +198,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   "/skills-academy": {
     title: "Learn to Build a Brand & Business Online — AI Course in Urdu | AbuQitmirLabs",
-    description: "Pakistan's premier AI-powered course in Urdu teaching complete brand building and online business development. Real agency client projects, Next.js portfolio, and client acquisition.",
+    description: "Pakistan's AI-powered course in Urdu teaching brand building, Next.js web development, and international client acquisition.",
     canonical: "https://www.abuqitmirlabs.tech/skills-academy",
     keywords: "skills academy, brand banao business chalao, ai powered course urdu, learn web development karachi, freelancing course pakistan, nextjs ai course",
     ogTitle: "Learn to Build a Brand & Business Online — AI Course in Urdu | AbuQitmirLabs",
@@ -212,7 +212,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   "/solutions/fintech/web-development": {
     title: "Fintech Web Development in Dubai | AbuQitmirLabs",
-    description: "Bespoke fintech web development in Dubai compliant with DFSA, DIFC, and PCI-DSS. Scalable, low-latency financial systems engineered for UAE institutions.",
+    description: "Bespoke fintech web development in Dubai compliant with DFSA, DIFC, and PCI-DSS. Low-latency financial systems engineered for UAE institutions.",
     canonical: "https://www.abuqitmirlabs.tech/solutions/fintech/web-development",
     keywords: "fintech web development dubai, uae fintech developers, dfsa compliant web development, difc fintech software, payment gateway development dubai",
     ogTitle: "Fintech Web Development in Dubai | AbuQitmirLabs",
@@ -240,7 +240,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   "/solutions/e-commerce/custom-software": {
     title: "E-Commerce Custom Software in London | AbuQitmirLabs",
-    description: "Custom e-commerce software development in London. High-volume order routing, multi-currency checkout, and headless architectures engineered for UK brands.",
+    description: "Custom e-commerce software in London: high-volume order routing, multi-currency checkout, and headless architectures for UK brands.",
     canonical: "https://www.abuqitmirlabs.tech/solutions/e-commerce/custom-software",
     keywords: "custom ecommerce software london, headless ecommerce uk, high volume checkout engineering, uk gdpr compliant ecommerce, custom store development london",
     ogTitle: "E-Commerce Custom Software in London | AbuQitmirLabs",
@@ -254,7 +254,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   "/solutions/ai-automation/custom-software": {
     title: "AI Automation Software in NYC | AbuQitmirLabs",
-    description: "Custom AI agent and workflow automation software in New York City. SOC2 compliant, enterprise-grade autonomous systems that accelerate revenue velocity.",
+    description: "Custom AI agent and workflow automation software in New York City. SOC 2 compliant autonomous systems that accelerate B2B revenue velocity.",
     canonical: "https://www.abuqitmirlabs.tech/solutions/ai-automation/custom-software",
     keywords: "ai automation software nyc, new york ai agents, enterprise ai workflow automation, soc2 ai development, custom autonomous agents nyc",
     ogTitle: "AI Automation Software in NYC | AbuQitmirLabs",
@@ -282,7 +282,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   "/blog/design-systems-for-startups": {
     title: "Design Systems for Startups: Building a Visual Language | AbuQitmirLabs",
-    description: "Build scalable design systems for startups. Learn how lean tokens, component libraries, and atomic design eliminate UI debt and accelerate development.",
+    description: "Build scalable design systems for startups. Learn how design tokens, component libraries, and atomic UI architecture eliminate frontend debt.",
     canonical: "https://www.abuqitmirlabs.tech/blog/design-systems-for-startups",
     keywords: "design systems for startups, building design system, scalable visual language, design system components, design tokens, component library, atomic design, UI/UX design, Figma design system",
     ogTitle: "Design Systems for Startups: Building a Visual Language | AbuQitmirLabs",
@@ -552,18 +552,6 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
       ]
     }
   },
-  '/': {
-    title: 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs',
-    description: 'Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.',
-    canonical: 'https://www.abuqitmirlabs.tech/',
-    ogTitle: 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs',
-    ogDescription: 'Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.',
-    ogImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg',
-    ogType: 'website',
-    twitterTitle: 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs',
-    twitterDescription: 'Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.',
-    twitterImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg'
-  },
   '/growth-engineering': {
     title: 'Growth Engineering Firm | Software + AI + Marketing | AbuQitmirLabs',
     description: 'AbuQitmirLabs engineers revenue systems for B2B companies — combining custom software, AI automation, and performance marketing under one roof.',
@@ -578,7 +566,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/about': {
     title: 'We Were Engineers First. Now We Engineer Growth | About Us | AbuQitmirLabs',
-    description: 'We aren’t marketers who learned tech. We’re engineers who learned marketing. Discover AbuQitmirLabs, our origin story, and The Revenue Velocity Engine.',
+    description: 'Engineers who learned marketing. Discover AbuQitmirLabs, our origin story in Karachi, and how The Revenue Velocity Engine scales B2B brands.',
     canonical: 'https://www.abuqitmirlabs.tech/about',
     ogTitle: 'We Were Engineers First. Now We Engineer Growth | About Us | AbuQitmirLabs',
     ogDescription: 'Most agencies deliver reports. We deliver systems. Discover AbuQitmirLabs and The Revenue Velocity Engine.',
@@ -587,7 +575,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/about/our-company': {
     title: 'We Were Engineers First. Now We Engineer Growth | Our Company | AbuQitmirLabs',
-    description: 'AbuQitmirLabs: We aren’t marketers who learned tech. We’re engineers who learned marketing. Discover our 98% client retention and The Revenue Velocity Engine.',
+    description: 'Explore AbuQitmirLabs company culture, 98% client retention, 100% IP ownership model, and The Revenue Velocity Engine for global B2B growth.',
     canonical: 'https://www.abuqitmirlabs.tech/about/our-company',
     ogTitle: 'We Were Engineers First. Now We Engineer Growth | Our Company | AbuQitmirLabs',
     ogDescription: 'Most agencies deliver reports. We deliver systems. Discover AbuQitmirLabs, our 98% client retention, and The Revenue Velocity Engine.',
@@ -603,7 +591,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/about/our-process': {
     title: 'Our Process | 5-Stage Engineering Lifecycle | AbuQitmirLabs',
-    description: 'Explore our battle-tested agile development methodology — Discovery, System Architecture, Sprint Engineering, Automated QA, and Zero-Downtime Deployment.',
+    description: 'Explore our 5-stage agile engineering lifecycle: Discovery, System Architecture, Sprint Engineering, Automated QA, and Zero-Downtime Deployment.',
     canonical: 'https://www.abuqitmirlabs.tech/about/our-process',
     ogTitle: 'Our Process | 5-Stage Engineering Lifecycle | AbuQitmirLabs',
     ogDescription: 'Explore our battle-tested agile development methodology from discovery to zero-downtime deployment.',
@@ -635,7 +623,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/web-development': {
     title: 'Custom Web Development Services in Pakistan & API Integration | AbuQitmirLabs',
-    description: 'AbuQitmirLabs builds custom web services, scalable web applications, and API integrations in Karachi, Pakistan. We connect Stripe, CRM, and ERP systems for growing businesses.',
+    description: 'AbuQitmirLabs builds custom Next.js web applications, SaaS portals, and Stripe/CRM/ERP API integrations for high-growth global businesses.',
     canonical: 'https://www.abuqitmirlabs.tech/web-development',
     ogTitle: 'Custom Web Development Services in Pakistan & API Integration | AbuQitmirLabs',
     ogDescription: 'AbuQitmirLabs builds custom web services, scalable web applications, and API integrations in Karachi, Pakistan. We connect Stripe, CRM, and ERP systems for growing businesses.',
@@ -643,7 +631,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/ai-agent-development': {
     title: 'Healthcare AI Agent Development Company | AbuQitmirLabs',
-    description: 'Custom AI agent development company specializing in HIPAA-compliant healthcare AI, triage bots, autonomous scheduling, and clinical workflow automation.',
+    description: 'Custom AI agent development company building HIPAA-compliant healthcare AI, triage bots, autonomous scheduling, and clinical workflow systems.',
     canonical: 'https://www.abuqitmirlabs.tech/ai-agent-development',
     ogTitle: 'Healthcare AI Agent Development Company | AbuQitmirLabs',
     ogDescription: 'Custom AI agent development company specializing in HIPAA-compliant healthcare AI and autonomous workflows.',
@@ -651,7 +639,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/ai-video-creation': {
     title: 'AI Video Creation Services | AbuQitmirLabs',
-    description: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.',
+    description: 'Cinematic AI video production agency combining human direction with generative AI for product teasers, explainers, ads, and founder stories.',
     canonical: 'https://www.abuqitmirlabs.tech/ai-video-creation',
     ogTitle: 'AI Video Creation Services | AbuQitmirLabs',
     ogDescription: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.',
@@ -665,7 +653,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/ai-video-creator': {
     title: 'AI Video Creation Services | AbuQitmirLabs',
-    description: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.',
+    description: 'Generative AI video studio producing high-converting brand films, commercial spots, and social video campaigns for US, UK, and global startups.',
     canonical: 'https://www.abuqitmirlabs.tech/ai-video-creation',
     ogTitle: 'AI Video Creation Services | AbuQitmirLabs',
     ogDescription: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.',
@@ -707,7 +695,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/white-label-local-seo': {
     title: 'White Label Local SEO for Agencies | Reseller Plans | AbuQitmirLabs',
-    description: 'Scalable white-label local SEO fulfilment for digital marketing agencies. Unbranded reporting, Google Business Profile management, and citation distribution.',
+    description: 'Scalable white-label local SEO fulfillment for agencies: unbranded reporting, Google Business Profile management, and citation building.',
     canonical: 'https://www.abuqitmirlabs.tech/white-label-local-seo',
     ogTitle: 'White Label Local SEO for Agencies | Reseller Plans | AbuQitmirLabs',
     ogDescription: 'Scalable white-label local SEO fulfilment for digital marketing agencies.',
@@ -715,7 +703,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/local-seo-audit': {
     title: 'Comprehensive Local SEO Audit | Google Maps & Citations | AbuQitmirLabs',
-    description: 'Get an in-depth 40-point local SEO audit: Google Business Profile health check, NAP citation scan, on-page localisation review, and competitor gap report.',
+    description: 'Get a 40-point local SEO audit covering Google Business Profile health, NAP citation accuracy, on-page local signals, and competitor gaps.',
     canonical: 'https://www.abuqitmirlabs.tech/local-seo-audit',
     ogTitle: 'Comprehensive Local SEO Audit | Google Maps & Citations | AbuQitmirLabs',
     ogDescription: 'Get an in-depth 40-point local SEO audit covering Google Business Profile, citations, and on-page technical health.',
@@ -739,7 +727,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/solutions/fintech': {
     title: 'Fintech Software Solutions | PCI-DSS Compliant Systems | AbuQitmirLabs',
-    description: 'Hardened fintech software development: automated underwriting, anti-money laundering (AML), low-latency payment processing, and core banking microservices.',
+    description: 'Hardened fintech software development: automated loan underwriting, AML compliance, low-latency payment processing, and banking APIs.',
     canonical: 'https://www.abuqitmirlabs.tech/solutions/fintech',
     ogTitle: 'Fintech Software Solutions | PCI-DSS Compliant Systems | AbuQitmirLabs',
     ogDescription: 'Hardened fintech software development: automated underwriting, AML compliance, and low-latency payment microservices.',
@@ -779,7 +767,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/us-market': {
     title: 'Software Development for US Startups | CCPA & HIPAA Ready | AbuQitmirLabs',
-    description: 'Dedicated software engineering squads for US tech enterprises. Real-time EST overlap, CCPA/HIPAA data compliance, and senior architectural leadership.',
+    description: 'Dedicated software engineering squads for US enterprises with EST timezone overlap, CCPA/HIPAA compliance, and senior systems architecture.',
     canonical: 'https://www.abuqitmirlabs.tech/us-market',
     ogTitle: 'Software Development for US Startups | CCPA & HIPAA Ready | AbuQitmirLabs',
     ogDescription: 'Dedicated software engineering squads for US tech enterprises with real-time EST overlap.',
@@ -795,7 +783,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/pakistan-market': {
     title: 'Custom Software & IT Solutions in Pakistan | AbuQitmirLabs Karachi',
-    description: 'Top-rated software development company in Karachi, Pakistan. Delivering enterprise ERPs, mobile apps, e-commerce systems, and AI solutions nationwide.',
+    description: 'Software development company in Karachi, Pakistan delivering custom enterprise ERPs, Flutter mobile apps, e-commerce systems, and AI agents.',
     canonical: 'https://www.abuqitmirlabs.tech/pakistan-market',
     ogTitle: 'Custom Software & IT Solutions in Pakistan | AbuQitmirLabs Karachi',
     ogDescription: 'Top-rated software development company in Karachi, Pakistan delivering enterprise solutions nationwide.',
@@ -827,7 +815,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/saudi-arabia-market': {
     title: 'Software Development for Saudi Arabia | Vision 2030 & PDPL Compliant | AbuQitmirLabs',
-    description: 'Saudi Arabia-focused custom software development, mobile apps, Arabic SEO, and enterprise AI agents. Fully compliant with Saudi PDPL and Vision 2030 digital mandates.',
+    description: 'Saudi Arabia custom software development, mobile apps, Arabic SEO, and enterprise AI agents compliant with Saudi PDPL and Vision 2030.',
     canonical: 'https://www.abuqitmirlabs.tech/saudi-arabia-market',
     ogTitle: 'Software Development for Saudi Arabia | Vision 2030 & PDPL Compliant | AbuQitmirLabs',
     ogDescription: 'Saudi Arabia-focused custom software development, mobile apps, Arabic SEO, and enterprise AI agents with PDPL compliance.',
@@ -886,7 +874,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/uae-market': {
     title: 'Software Development for UAE | Dubai & Abu Dhabi Tech Squads | AbuQitmirLabs',
-    description: 'Elite software engineering, mobile apps, and AI agents for UAE enterprises and startups across Dubai and Abu Dhabi. Fully compliant with UAE Federal Decree-Law No. 45.',
+    description: 'Custom software engineering, mobile apps, and AI agents for Dubai and Abu Dhabi enterprises compliant with UAE Federal Decree-Law No. 45.',
     canonical: 'https://www.abuqitmirlabs.tech/uae-market',
     ogTitle: 'Software Development for UAE | Dubai & Abu Dhabi Tech Squads | AbuQitmirLabs',
     ogDescription: 'Elite software engineering, mobile apps, and AI agents for UAE enterprises and startups.',
@@ -1004,7 +992,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/kuwait-market': {
     title: 'Software Development for Kuwait | Kuwait Vision 2035 & KNET Ready | AbuQitmirLabs',
-    description: 'Custom software engineering, Flutter mobile apps, high-speed web apps, and AI agents for Kuwait City enterprises. Compliant with CITRA data regulations and seamless KNET gateway integration.',
+    description: 'Custom software engineering, Flutter apps, web platforms, and AI agents for Kuwait City enterprises with CITRA compliance and KNET integration.',
     canonical: 'https://www.abuqitmirlabs.tech/kuwait-market',
     ogTitle: 'Software Development for Kuwait | Kuwait Vision 2035 & KNET Ready | AbuQitmirLabs',
     ogDescription: 'Custom software engineering, Flutter mobile apps, high-speed web apps, and AI agents for Kuwait.',
@@ -1071,7 +1059,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/brand-assets': {
     title: 'Official Brand Assets & Social Media Kit | AbuQitmirLabs',
-    description: 'Download official AbuQitmirLabs brand assets, high-resolution PNG logos, and custom banners tailored for Google Business Profile, YouTube, LinkedIn, Facebook, Instagram, and X.',
+    description: 'Download official AbuQitmirLabs brand assets, high-resolution logos, and custom social media banners for LinkedIn, YouTube, X, and Google.',
     canonical: 'https://www.abuqitmirlabs.tech/brand-assets',
     ogTitle: 'Official Brand Assets & Social Media Kit | AbuQitmirLabs',
     ogDescription: 'Download official AbuQitmirLabs brand assets, high-resolution PNG logos, and custom banners.',
@@ -1079,7 +1067,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/luxury-brand-experience': {
     title: "L'Atelier De Réserve | Luxury Artisanal Tin Collection | AbuQitmirLabs",
-    description: 'Experience the pinnacle of old-money luxury branding. Five single-estate numbered tins unveiled with Locomotive Scroll, GSAP parallax depth, and cinematic reveals.',
+    description: 'Old-money luxury brand showcase featuring five numbered reserve tins with Locomotive Scroll, GSAP parallax depth, and full-screen reveals.',
     canonical: 'https://www.abuqitmirlabs.tech/luxury-brand-experience',
     ogTitle: "L'Atelier De Réserve — Bespoke Luxury Brand Experience",
     ogDescription: 'Ultra-smooth Locomotive Scroll and GSAP parallax reveals. One product per scroll section designed to make your product feel like it costs 10x more.',
@@ -1090,7 +1078,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/website-contract': {
     title: 'Free Website Contract Template | Ownership Protection | AbuQitmirLabs',
-    description: 'Download our comprehensive 2026 website development contract template. Complete IP transfer clauses, milestone payment structures, and scope protection.',
+    description: 'Download our 2026 website development contract template with 100% IP transfer clauses, milestone payment schedules, and scope protection.',
     canonical: 'https://www.abuqitmirlabs.tech/website-contract',
     ogTitle: 'Free Website Contract Template | Ownership Protection | AbuQitmirLabs',
     ogDescription: 'Download our comprehensive 2026 website development contract template with complete IP protection.',
@@ -1130,7 +1118,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/case-studies/tajweedpage': {
     title: 'AI Quran Learning Platform Case Study | AbuQitmirLabs',
-    description: 'How we built the world\'s first AI-powered Quran learning platform with RAG Tajweed teacher, SEO for 20+ countries, and full Next.js stack — in just 10 days.',
+    description: 'How AbuQitmirLabs built TajweedPage.com: an AI-powered Quran learning platform with RAG Tajweed tutoring and programmatic SEO across 20+ countries.',
     canonical: 'https://www.abuqitmirlabs.tech/case-studies/tajweedpage',
     ogTitle: 'AI Quran Learning Platform Case Study | AbuQitmirLabs',
     ogDescription: 'How we built the world\'s first AI-powered Quran learning platform with RAG Tajweed teacher in just 10 days.',
@@ -1138,7 +1126,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog': {
     title: 'Tech Blog & AI Insights | AbuQitmirLabs',
-    description: 'AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies.',
+    description: 'AbuQitmirLabs engineering journal covering AI agents, custom software, web and mobile development, technical SEO, and B2B growth architectures.',
     canonical: 'https://www.abuqitmirlabs.tech/blog',
     ogTitle: 'Tech Blog & AI Insights | AbuQitmirLabs',
     ogDescription: 'AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation.',
@@ -1188,7 +1176,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   // 6 News Articles
   '/news/article/google-ai-dogfooding-enterprise-results': {
     title: "Google's AI 'Dogfooding' Playbook: 83% Sales Adoption & 20% Higher Win Rates | AbuQitmirLabs",
-    description: "Google's internal AI metrics reveal 83% sales adoption, 20% higher win rates, and 75% autonomous support resolution. What enterprise leaders can learn from a decade of AI dogfooding.",
+    description: "Google's internal AI metrics show 83% sales adoption, 20% higher win rates, and 75% autonomous support resolution across enterprise workflows.",
     canonical: 'https://www.abuqitmirlabs.tech/news/article/google-ai-dogfooding-enterprise-results',
     ogTitle: "Google's AI 'Dogfooding' Playbook: 83% Sales Adoption & 20% Higher Win Rates",
     ogDescription: "Google's internal AI metrics reveal 83% sales adoption, 20% higher win rates, and 75% autonomous support resolution.",
@@ -1197,7 +1185,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/news/article/ai-rag-framework-launch': {
     title: 'AbuQitmirLabs Releases Autonomous Multi-Agent RAG Framework for Enterprise Clients',
-    description: 'Our engineering studio in Karachi has announced a new open-spec RAG framework that cuts LLM vector search latency to under 180ms while guaranteeing zero data hallucination.',
+    description: 'AbuQitmirLabs announces a multi-agent RAG framework cutting enterprise vector search latency below 180ms with strict citation grounding.',
     canonical: 'https://www.abuqitmirlabs.tech/news/article/ai-rag-framework-launch',
     ogTitle: 'AbuQitmirLabs Releases Autonomous Multi-Agent RAG Framework for Enterprise Clients',
     ogDescription: 'New open-spec RAG framework cutting LLM vector search latency to under 180ms with zero hallucination.',
@@ -1206,7 +1194,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/news/article/us-uk-expansion-q3': {
     title: 'AbuQitmirLabs Expands Dedicated Engineering Squads for US & UK Fintech Markets',
-    description: 'Following a 45% growth in international client contracts, AbuQitmirLabs expands its in-house developer squads in Karachi to support round-the-clock US EST and UK GMT shift deployments.',
+    description: 'AbuQitmirLabs expands dedicated engineering squads in Karachi to support US EST and UK GMT fintech and enterprise software deployments.',
     canonical: 'https://www.abuqitmirlabs.tech/news/article/us-uk-expansion-q3',
     ogTitle: 'AbuQitmirLabs Expands Dedicated Engineering Squads for US & UK Fintech Markets',
     ogDescription: 'AbuQitmirLabs expands in-house developer squads in Karachi to support round-the-clock US EST and UK GMT deployments.',
@@ -1215,7 +1203,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/news/article/generative-engine-optimization-geo-strategy': {
     title: 'Generative Engine Optimization (GEO): The Complete 2026 Strategy for Technical Leaders | AbuQitmirLabs',
-    description: 'Why traditional keyword stuffing fails in ChatGPT and Google AI Overviews. How to structure JSON-LD Schema entity graphs and direct answer blocks for maximum AI citation rates.',
+    description: 'How to structure JSON-LD Schema entity graphs and direct answer blocks for maximum citation visibility in ChatGPT and Google AI Overviews.',
     canonical: 'https://www.abuqitmirlabs.tech/news/article/generative-engine-optimization-geo-strategy',
     ogTitle: 'Generative Engine Optimization (GEO): The Complete 2026 Strategy for Technical Leaders',
     ogDescription: 'How to structure JSON-LD Schema entity graphs and direct answer blocks for maximum AI citation rates.',
@@ -1224,7 +1212,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/news/article/hipaa-cloud-certification': {
     title: 'AbuQitmirLabs Achieves Full HIPAA & ISO 27001 Cloud Security Validation',
-    description: 'Official security audit confirms that all custom medical software platforms engineered by AbuQitmirLabs meet strict HIPAA, HITECH, and ISO 27001 data protection protocols.',
+    description: 'Independent security validation confirms AbuQitmirLabs healthcare software architectures meet strict HIPAA, HITECH, and ISO 27001 controls.',
     canonical: 'https://www.abuqitmirlabs.tech/news/article/hipaa-cloud-certification',
     ogTitle: 'AbuQitmirLabs Achieves Full HIPAA & ISO 27001 Cloud Security Validation',
     ogDescription: 'Official security audit confirms custom medical software platforms meet strict HIPAA & ISO 27001 standards.',
@@ -1363,7 +1351,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
 
   '/blog/digital-marketing-stack-2026': {
     title: 'The 2026 Digital Marketing Stack | AbuQitmirLabs',
-    description: 'A breakdown of the 12 digital marketing layers that actually drive revenue in 2026, including stack adjustments for Saudi Arabia, UAE, Qatar, and Kuwait.',
+    description: 'Breakdown of the 12 digital marketing layers that drive B2B revenue in 2026, plus stack adjustments for Saudi Arabia, UAE, Qatar, and Kuwait.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/digital-marketing-stack-2026',
     keywords: 'digital marketing stack 2026, marketing technology stack, revenue-focused marketing tools, best marketing stack for startups, digital marketing tools 2026, marketing stack Middle East, marketing stack Saudi Arabia, marketing stack UAE, marketing stack Qatar, marketing stack Kuwait',
     ogTitle: 'The 2026 Digital Marketing Stack | AbuQitmirLabs',
@@ -1541,7 +1529,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/agentic-ai-production-failures': {
     title: 'Agentic AI Systems: Production Failures and Architectural Remedies | AbuQitmirLabs',
-    description: 'Learn why 90% of production agentic AI systems fail (infinite loops, memory fragmentation, compound errors) and explore the 5-pillar AbuQitmirLabs framework for resilient AI.',
+    description: 'Why production agentic AI systems fail (loops, memory drift, compound errors) and the 5-pillar AbuQitmirLabs architecture for resilient AI.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/agentic-ai-production-failures',
     ogTitle: 'Agentic AI Systems: Production Failures and Architectural Remedies',
     ogDescription: 'Why agentic AI systems fail in production and how to architect resilient multi-agent pipelines.',
@@ -1550,7 +1538,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/what-does-a-custom-web-development-company-do-2026-guide': {
     title: 'What Does a Custom Web Development Company Actually Do? | AbuQitmirLabs',
-    description: 'Discover what a custom web development company actually builds, how SEO web development works, and whether your business needs custom web app development services.',
+    description: 'Discover what a custom web development company builds, how technical SEO architecture works, and when your business needs custom web apps.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/what-does-a-custom-web-development-company-do-2026-guide',
     ogTitle: 'What Does a Custom Web Development Company Actually Do? | AbuQitmirLabs',
     ogDescription: 'Discover what custom web engineering delivers vs off-the-shelf website templates.',
@@ -1595,7 +1583,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/custom-ai-solutions-for-corporate-events-2026-guide': {
     title: 'Custom AI Solutions for Corporate Events (2026 Guide) | AbuQitmirLabs',
-    description: 'How enterprise event organizers leverage custom AI agents for smart matchmaking, autonomous attendee concierge, dynamic agenda scheduling, and post-event analytics.',
+    description: 'How enterprise event organizers deploy custom AI agents for attendee matchmaking, autonomous concierge support, and live agenda scheduling.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/custom-ai-solutions-for-corporate-events-2026-guide',
     ogTitle: 'Custom AI Solutions for Corporate Events (2026 Guide) | AbuQitmirLabs',
     ogDescription: 'How enterprise event organizers leverage custom AI agents for matchmaking and autonomous attendee concierge.',
@@ -1622,7 +1610,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/how-to-choose-a-mobile-app-development-company-2026': {
     title: 'How to Choose a Mobile App Development Company 2026 | AbuQitmirLabs',
-    description: 'Essential criteria for vetting mobile app agencies: tech stack selection (Native vs Flutter vs React Native), code ownership, QA testing, and maintenance costs.',
+    description: 'Essential criteria for vetting mobile app agencies in 2026: Native vs Flutter selection, IP ownership, QA automation, and maintenance costs.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/how-to-choose-a-mobile-app-development-company-2026',
     ogTitle: 'How to Choose a Mobile App Development Company 2026 | AbuQitmirLabs',
     ogDescription: 'Essential criteria for vetting mobile app agencies: tech stack selection, code ownership, QA testing, and maintenance.',
@@ -1640,7 +1628,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/what-are-healthcare-ai-agents-complete-guide-2026': {
     title: 'What Are Healthcare AI Agents? Complete 2026 Guide | AbuQitmirLabs',
-    description: 'A comprehensive architectural guide to healthcare AI agents: HIPAA compliance, EHR integration, automated clinical workflows, and patient safety safeguards.',
+    description: 'Architectural guide to healthcare AI agents in 2026: HIPAA compliance, FHIR/EHR integration, clinical triage workflows, and patient safety.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/what-are-healthcare-ai-agents-complete-guide-2026',
     ogTitle: 'What Are Healthcare AI Agents? Complete 2026 Guide | AbuQitmirLabs',
     ogDescription: 'A comprehensive architectural guide to healthcare AI agents: HIPAA compliance, EHR integration, and clinical workflows.',
@@ -1658,7 +1646,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/generative-ai-chatbot-development-what-it-actually-costs-in-2026': {
     title: 'Generative AI Chatbot Development Cost 2026: Real Numbers',
-    description: 'Real 2026 cost breakdowns for generative AI chatbot development — rule-based vs RAG vs agentic builds, plus what GPT-6 Astra changes for enterprise teams.',
+    description: '2026 cost breakdown for generative AI chatbot development: rule-based vs RAG vs agentic architectures, token economics, and enterprise ROI.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/generative-ai-chatbot-development-what-it-actually-costs-in-2026',
     ogTitle: 'Generative AI Chatbot Development Cost 2026: Real Numbers',
     ogDescription: 'Real 2026 cost breakdowns for generative AI chatbot development — rule-based vs RAG vs agentic builds, plus what GPT-6 Astra changes for enterprise teams.',
@@ -1680,7 +1668,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/our-company': {
     title: 'Our Company | Engineering Culture & Mission | AbuQitmirLabs',
-    description: 'Discover the vision, engineering principles, and international standards driving AbuQitmirLabs. Based in Karachi, serving US, UK, and global innovators.',
+    description: 'Discover the engineering culture, mission, and delivery standards driving AbuQitmirLabs in Karachi for US, UK, and global B2B clients.',
     canonical: 'https://www.abuqitmirlabs.tech/about/our-company',
     ogTitle: 'Our Company | Engineering Culture & Mission | AbuQitmirLabs',
     ogDescription: 'Discover the vision, engineering principles, and international standards driving AbuQitmirLabs.',
@@ -1688,7 +1676,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/our-team': {
     title: 'Our Team | Senior Software Engineers & AI Architects | AbuQitmirLabs',
-    description: 'Meet the senior engineers, AI architects, and UI/UX designers behind AbuQitmirLabs. High-velocity squads delivering bank-grade digital software.',
+    description: 'Meet the AbuQitmirLabs leadership, full-stack software engineers, AI specialists, and product designers building scalable B2B platforms.',
     canonical: 'https://www.abuqitmirlabs.tech/about/our-team',
     ogTitle: 'Our Team | Senior Software Engineers & AI Architects | AbuQitmirLabs',
     ogDescription: 'Meet the senior engineers, AI architects, and UI/UX designers behind AbuQitmirLabs.',
@@ -1696,7 +1684,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/our-process': {
     title: 'Our Process | 5-Stage Engineering Lifecycle | AbuQitmirLabs',
-    description: 'Explore our battle-tested agile development methodology — Discovery, System Architecture, Sprint Engineering, Automated QA, and Zero-Downtime Deployment.',
+    description: 'How AbuQitmirLabs delivers custom software and AI systems through structured discovery, architecture blueprints, agile sprints, and CI/CD.',
     canonical: 'https://www.abuqitmirlabs.tech/about/our-process',
     ogTitle: 'Our Process | 5-Stage Engineering Lifecycle | AbuQitmirLabs',
     ogDescription: 'Explore our battle-tested agile development methodology from discovery to zero-downtime deployment.',
@@ -1704,7 +1692,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/careers': {
     title: 'Careers | Join AbuQitmirLabs Engineering Squads | Karachi & Remote',
-    description: 'Join AbuQitmirLabs. We are hiring senior full-stack developers, AI prompt architects, and systems engineers to build international digital platforms.',
+    description: 'Join AbuQitmirLabs in Karachi or remote. We hire senior full-stack developers, AI engineers, and systems architects for global projects.',
     canonical: 'https://www.abuqitmirlabs.tech/about/careers',
     ogTitle: 'Careers | Join AbuQitmirLabs Engineering Squads | Karachi & Remote',
     ogDescription: 'Join AbuQitmirLabs. Hiring senior full-stack developers, AI architects, and systems engineers.',
@@ -1721,7 +1709,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/guest-post-service': {
     title: 'High-Authority Guest Post Service | Editorial Backlinks & Outreach | AbuQitmirLabs',
-    description: 'Manual, high-authority guest post service with DA/DR 40-80+ contextual backlinks. Real editorial outreach, zero PBNs, 100% indexed, verified organic traffic.',
+    description: 'Manual guest post service delivering DA/DR 40-80+ contextual backlinks via white-hat editorial outreach on indexed, high-traffic publications.',
     canonical: 'https://www.abuqitmirlabs.tech/guest-post-service',
     ogTitle: 'High-Authority Guest Post Service | Editorial Backlinks & Outreach | AbuQitmirLabs',
     ogDescription: 'Manual, high-authority guest post service with DA/DR 40-80+ contextual backlinks. Real editorial outreach, zero PBNs, 100% indexed, verified organic traffic.',
@@ -1936,7 +1924,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/tools/project-cost-estimator': {
     title: 'AI Project Cost Estimator 2026 | Free Software & Website Pricing Calculator | AbuQitmirLabs',
-    description: 'Calculate instant, accurate project costs for websites, custom software, mobile apps, and AI agents. Compare 8 country rates with 100% free PDF report download.',
+    description: 'Calculate instant software, website, mobile app, and AI agent project costs across 8 regional markets with a free downloadable PDF breakdown.',
     canonical: 'https://www.abuqitmirlabs.tech/tools/project-cost-estimator',
     ogTitle: 'AI Project Cost Estimator 2026 | AbuQitmirLabs',
     ogDescription: 'Instant cost estimates for websites, mobile apps, and AI agents with country-wise breakdown and free PDF report.',
@@ -1948,7 +1936,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/edtech-software-development-lms-features-every-platform-needs': {
     title: 'EdTech Software Development: 9 Features Every LMS Needs',
-    description: "Custom LMS without these 9 features will fail at engagement and retention. Here's what separates production-ready platforms from proof-of-concept toys.",
+    description: "Custom LMS platforms without these 9 core features fail at student retention. Learn what separates production EdTech software from prototypes.",
     canonical: 'https://www.abuqitmirlabs.tech/blog/edtech-software-development-lms-features-every-platform-needs',
     ogTitle: 'EdTech Software Development: 9 Features Every LMS Needs',
     ogDescription: "Custom LMS without these 9 features will fail at engagement and retention. Here's what separates production-ready platforms from proof-of-concept toys.",
@@ -2021,7 +2009,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/native-mobile-app-development-ios-vs-android-cost': {
     title: 'Native Mobile App Development: iOS vs Android Cost (2026)',
-    description: 'iOS or Android first? Get the real 2026 cost breakdown for native mobile app development, platform by platform, feature by feature. No vague estimates.',
+    description: 'iOS or Android first? Get the 2026 cost breakdown for native mobile app development, platform by platform and feature by feature.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/native-mobile-app-development-ios-vs-android-cost',
     ogTitle: 'Native Mobile App Development: iOS vs Android Cost (2026)',
     ogDescription: 'iOS or Android first? Get the real 2026 cost breakdown for native mobile app development, platform by platform, feature by feature. No vague estimates.',
@@ -2033,7 +2021,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/tailor-made-software-solutions-when-off-the-shelf-fails': {
     title: 'Tailor-Made Software Solutions: When Off-the-Shelf Fails (2026)',
-    description: 'Off-the-shelf software costs more than you think. Learn when tailor-made software solutions win — with a decision matrix, TCO data, and transition playbook.',
+    description: 'Off-the-shelf SaaS often costs more at scale. Learn when tailor-made software solutions win with 5-year TCO data and a migration playbook.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/tailor-made-software-solutions-when-off-the-shelf-fails',
     ogTitle: 'Tailor-Made Software Solutions: When Off-the-Shelf Fails (2026)',
     ogDescription: 'Off-the-shelf software costs more than you think. Learn when tailor-made software solutions win — with a decision matrix, TCO data, and transition playbook.',
@@ -2222,7 +2210,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/what-a-local-seo-audit-actually-checks-2026-complete-guide': {
     title: 'What a Local SEO Audit Actually Checks in 2026',
-    description: 'Most local SEO audits miss AI search, voice, and geo-grid analysis. This 2026 guide covers all 7 audit dimensions including the ones your competitors skip.',
+    description: 'Most local SEO audits miss AI search, voice, and geo-grid analysis. This 2026 guide covers all 7 local audit dimensions your competitors skip.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/what-a-local-seo-audit-actually-checks-2026-complete-guide',
     ogTitle: 'What a Local SEO Audit Actually Checks in 2026',
     ogDescription: 'Most local SEO audits miss AI search, voice, and geo-grid analysis. This 2026 guide covers all 7 audit dimensions including the ones your competitors skip.',
@@ -2234,7 +2222,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/programmatic-seo-how-we-scaled-tajweedpage': {
     title: 'Programmatic SEO: How We Scaled TajweedPage.com (2026 Case Study)',
-    description: 'The pSEO playbook that made Zapier famous is declining 40-70%. Here is the semantic hub-and-spoke framework AbuQitmirLabs used to scale TajweedPage.com across 20+ country markets.',
+    description: 'How AbuQitmirLabs used a semantic hub-and-spoke programmatic SEO architecture to scale TajweedPage.com across 20+ country markets.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/programmatic-seo-how-we-scaled-tajweedpage',
     ogTitle: 'Programmatic SEO: How We Scaled TajweedPage.com (2026 Case Study)',
     ogDescription: 'The pSEO playbook that made Zapier famous is declining 40-70%. Here is the semantic hub-and-spoke framework AbuQitmirLabs used to scale TajweedPage.com across 20+ country markets.',
@@ -2247,7 +2235,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
 
   '/blog/ai-overviews-killed-traffic-what-40-companies-did-next': {
     title: 'AI Overviews Killed Traffic: What 40 Companies Did Next',
-    description: 'AI Overviews cut organic clicks by 61%. We analyzed 40 companies that recovered. Here are the 7 tactics that actually worked, with specific metrics.',
+    description: 'Case study analysis of 40 companies that recovered organic search revenue after Google AI Overviews reduced informational CTR by 61%.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/ai-overviews-traffic-recovery-what-40-companies-did-next',
     ogTitle: 'AI Overviews Killed Traffic: What 40 Companies Did Next',
     ogDescription: 'AI Overviews cut organic clicks by 61%. We analyzed 40 companies that recovered. Here are the 7 tactics that actually worked, with specific metrics.',
@@ -2699,7 +2687,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026': {
     title: 'The Pakistan Advantage: Why US Startups Are Moving Dev Teams Offshore',
-    description: 'Pakistan IT exports hit a record $4.6B in FY2025-26 and tax incentives now run through 2029. Here is the real data behind why US startups are evaluating Pakistan for engineering talent.',
+    description: 'Pakistan IT exports hit $4.6B in FY2025-26 with tax incentives through 2029. See why US startups hire senior offshore engineering teams in Pakistan.',
     keywords: 'Pakistan offshore development for US startups, Pakistan vs India software development, Pakistan IT exports 2026, hire developers Pakistan, offshore development rate comparison 2026, Pakistan software outsourcing, IT export tax incentives Pakistan, senior developer rates Pakistan, async-first offshore workflow',
     canonical: 'https://www.abuqitmirlabs.tech/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026',
     ogTitle: 'The Pakistan Advantage: Why US Startups Are Moving Dev Teams Offshore',
@@ -3095,7 +3083,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/ai-agents-cost-benefit-analysis': {
     title: 'AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don\'t) | AbuQitmirLabs',
-    description: 'A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don\'t.',
+    description: '2026 decision framework for AI agent ROI with real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis',
     ogTitle: 'AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don\'t) | AbuQitmirLabs',
     ogDescription: 'A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don\'t.',
@@ -3268,7 +3256,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs': {
     title: 'Fix URL Fragmentation in Headless SPAs | AbuQitmirLabs',
-    description: 'Eliminate duplicate indexing across headless SPAs, GA4, and RSS feeds with a 5-layer self-healing architecture. Includes code for Next.js, React, and edge CDNs.',
+    description: 'Eliminate duplicate indexing across headless SPAs, GA4, and RSS feeds using a 5-layer self-healing canonical architecture for React and Next.js.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs',
     ogTitle: 'Fix URL Fragmentation in Headless SPAs | AbuQitmirLabs',
     ogDescription: 'A 5-layer self-healing architecture that eliminates duplicate URLs across headless SPAs, GA4, and syndication feeds.',
@@ -3424,7 +3412,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact': {
     title: 'The Hidden Cost of Cheap Hosting: Performance, SEO & Revenue Impact | AbuQitmirLabs',
-    description: 'Cheap hosting can push TTFB past 800ms and hurt Core Web Vitals. See what published data shows, where it is vendor-biased, and how to test your own site.',
+    description: 'Cheap shared hosting pushes TTFB past 800ms and hurts Core Web Vitals. See what benchmark data shows and how to test your hosting stack.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact',
     ogTitle: 'The Hidden Cost of Cheap Hosting: Performance, SEO & Revenue Impact | AbuQitmirLabs',
     ogDescription: 'Cheap hosting can push TTFB past 800ms and hurt Core Web Vitals. See what published data shows, where it is vendor-biased, and how to test your own site.',
@@ -3545,7 +3533,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/the-2026-static-site-comeback-why-jamstack-won-after-all': {
     title: 'The 2026 Static Site Comeback: Why Jamstack Won After All | AbuQitmirLabs',
-    description: 'Jamstack vs dynamic website 2026 comparison showing the Three-Tier Static Model with pre-render, on-demand render, and client fetch tiers by AbuQitmirLabs',
+    description: 'Jamstack vs dynamic websites in 2026: how the Three-Tier Static Model combines pre-rendering, edge compute, and client hydration.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/the-2026-static-site-comeback-why-jamstack-won-after-all',
     ogTitle: 'The 2026 Static Site Comeback: Why Jamstack Won After All | AbuQitmirLabs',
     ogDescription: 'Jamstack vs dynamic website 2026 comparison showing the Three-Tier Static Model with pre-render, on-demand render, and client fetch tiers by AbuQitmirLabs',
@@ -3628,7 +3616,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/when-to-invest-in-ai-agent': {
     title: 'When to Invest in AI Agent: 2026 Cost Guide | AbuQitmirLabs',
-    description: "A five-question decision framework for founders evaluating whether an AI agent will pay for itself. Includes real 2026 cost data, failure rates, and build vs hire guidance.",
+    description: "A 5-question decision framework for founders evaluating AI agent ROI, featuring 2026 build costs, failure rates, and agency vs in-house guidance.",
     canonical: 'https://www.abuqitmirlabs.tech/blog/when-to-invest-in-ai-agent',
     ogTitle: 'When to Invest in AI Agent: 2026 Cost Guide | AbuQitmirLabs',
     ogDescription: "Five questions tell you whether an AI agent will pay for itself before you commit budget. Real 2026 cost data and build vs hire guidance.",
@@ -3812,7 +3800,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/5-minute-technical-audit-for-founders': {
     title: 'Technical Audit Checklist for Founders 2026 | AbuQitmirLabs',
-    description: 'A five-minute technical audit checklist for founders hiring a developer. Spot red flags in portfolios, Git history, security, and contracts before you sign.',
+    description: 'A 5-minute technical audit checklist for founders hiring developers: spot red flags in portfolios, Git history, security, and IP contracts.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/5-minute-technical-audit-for-founders',
     keywords: 'technical audit checklist for founders, how to vet a developer, developer vetting checklist, questions to ask before hiring a developer, technical due diligence for founders, vetting a software development agency, code quality audit, developer portfolio review, how to hire a developer',
     ogTitle: 'Technical Audit Checklist for Founders 2026 | AbuQitmirLabs',
@@ -4001,7 +3989,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-2026': {
     title: "MVP to Scale Roadmap for Founders 2026 | AbuQitmirLabs",
-    description: "A step-by-step MVP to scale roadmap for non-technical founders. Learn the 7 phases, common mistakes, and architecture decisions that prevent a costly Version 2.0 rebuild.",
+    description: "Step-by-step MVP to scale roadmap for non-technical founders covering the 7 architecture phases that prevent a costly Version 2.0 rebuild.",
     canonical: "https://www.abuqitmirlabs.tech/blog/mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-2026",
     keywords: "roadmap for MVP to scale, MVP to version 2, scaling a startup product, post-launch roadmap, MVP rebuild, version 2 architecture, non-technical founder scaling, product roadmap after MVP",
     ogTitle: "MVP to Scale Roadmap for Founders 2026 | AbuQitmirLabs",
@@ -4150,7 +4138,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/the-non-technical-founders-guide-to-software-ownership-ip-2026': {
     title: 'Software Ownership & IP for Founders 2026 | AbuQitmirLabs',
-    description: 'A step-by-step software ownership and IP checklist for non-technical founders. Learn who owns the code, domains, repositories, and APIs before you sign a development contract.',
+    description: 'Software ownership and IP checklist for non-technical founders: secure your source code, domains, Git repos, and cloud accounts before signing.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/the-non-technical-founders-guide-to-software-ownership-ip-2026',
     keywords: 'software ownership IP non-technical founder, who owns source code when hiring developer, software IP assignment, startup IP ownership',
     ogTitle: 'Software Ownership & IP for Founders 2026 | AbuQitmirLabs',
@@ -4415,7 +4403,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/seo-content-vs-thought-leadership': {
     title: 'SEO Content vs Thought Leadership: When to Write Which | AbuQitmirLabs',
-    description: 'Detailed founder guide comparing SEO content vs thought leadership. Stage-based decision matrix, search intent differences, and how to combine both for topical authority.',
+    description: 'Founder guide comparing SEO content vs thought leadership with a stage-based decision matrix, search intent breakdown, and authority playbook.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/seo-content-vs-thought-leadership',
     ogTitle: 'SEO Content vs Thought Leadership: When to Write Which | AbuQitmirLabs',
     ogDescription: 'Detailed founder guide comparing SEO content vs thought leadership. Stage-based decision matrix, search intent differences, and how to combine both for topical authority.',
@@ -4507,7 +4495,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/content-calendar-strategy': {
     title: 'How to Build a Content Calendar That Gets Followed | AbuQitmirLabs',
-    description: 'Content Calendar: A step-by-step guide to building a content calendar your team will actually follow. Includes templates, cadence recommendations, and tools.',
+    description: 'Step-by-step guide to building a B2B content calendar your team will actually follow, complete with workflow templates and cadence rules.',
     canonical: 'https://www.abuqitmirlabs.tech/blog/content-calendar-strategy',
     ogTitle: 'How to Build a Content Calendar That Gets Followed | AbuQitmirLabs',
     ogDescription: 'Content Calendar: A step-by-step guide to building a content calendar your team will actually follow. Includes templates, cadence recommendations, and tools.',
@@ -5198,215 +5186,17 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
       ]
     }
   },
-  '/blog/brand-identity-vs-logo-design': {
-    title: "Brand Identity vs Logo Design: What Startups Need First | AbuQitmirLabs",
-    description: "Most startups spend $500 on a logo and then pay double to reverse-engineer a brand identity around it later. This guide breaks down the exact difference",
-    canonical: 'https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design',
-    ogTitle: "Brand Identity vs Logo Design: What Startups Need First | AbuQitmirLabs",
-    ogDescription: "Most startups spend $500 on a logo and then pay double to reverse-engineer a brand identity around it later. This guide breaks down the exact difference",
-    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
-    ogType: 'article',
-    twitterCard: 'summary_large_image',
-    twitterTitle: "Brand Identity vs Logo Design: What Startups Need First | AbuQitmirLabs",
-    twitterDescription: "Most startups spend $500 on a logo and then pay double to reverse-engineer a brand identity around it later. This guide breaks down the exact difference",
-    twitterImage: "https://www.abuqitmirlabs.tech/logo.png",
-    schemaJsonLd: {
-      '@context': 'https://schema.org',
-      '@graph': [
-        {
-          '@type': 'Organization',
-          '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
-          url: 'https://www.abuqitmirlabs.tech/',
-          logo: 'https://www.abuqitmirlabs.tech/logo.png'
-        },
-        {
-          '@type': 'WebSite',
-          '@id': 'https://www.abuqitmirlabs.tech/#website',
-          url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
-          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
-        },
-        {
-          '@type': 'WebPage',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design#webpage',
-          url: 'https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design',
-          name: "Brand Identity vs Logo Design: What Startups Need First | AbuQitmirLabs",
-          description: "Most startups spend $500 on a logo and then pay double to reverse-engineer a brand identity around it later. This guide breaks down the exact difference",
-          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
-        },
-        {
-          '@type': 'BreadcrumbList',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design#breadcrumb',
-          itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
-            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
-            { '@type': 'ListItem', position: 3, name: "Brand Identity vs Logo Design: What Startups Need First", item: 'https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design' }
-          ]
-        },
-        {
-          '@type': 'Article',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design#article',
-          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design#webpage' },
-          headline: "Brand Identity vs Logo Design: What Startups Need First",
-          description: "Most startups spend $500 on a logo and then pay double to reverse-engineer a brand identity around it later. This guide breaks down the exact difference",
-          image: "https://www.abuqitmirlabs.tech/logo.png",
-          author: {
-            '@type': 'Person',
-            name: "Abu Qitmir Mohammad Shiraz Al-Madani",
-            url: 'https://www.abuqitmirlabs.tech/about/our-team'
-          },
-          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
-          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design#webpage' },
-          datePublished: "2026-10-17T00:00:00+00:00",
-          dateModified: "2026-10-17T00:00:00+00:00"
-        }
-      ]
-    }
-  },
-  '/blog/content-brief-template': {
-    title: "The Content Brief Template That Gets Writers 90% There | AbuQitmirLabs",
-    description: "14-point content brief template that gets writers 90% there. Includes 14 sections, live examples, Table of Contents, and a downloadable copy-paste templ",
-    canonical: 'https://www.abuqitmirlabs.tech/blog/content-brief-template',
-    ogTitle: "The Content Brief Template That Gets Writers 90% There | AbuQitmirLabs",
-    ogDescription: "14-point content brief template that gets writers 90% there. Includes 14 sections, live examples, Table of Contents, and a downloadable copy-paste templ",
-    ogImage: "https://i.postimg.cc/8C8xN6Vc/14-Point-Content-Brief-Guide.png",
-    ogType: 'article',
-    twitterCard: 'summary_large_image',
-    twitterTitle: "The Content Brief Template That Gets Writers 90% There | AbuQitmirLabs",
-    twitterDescription: "14-point content brief template that gets writers 90% there. Includes 14 sections, live examples, Table of Contents, and a downloadable copy-paste templ",
-    twitterImage: "https://i.postimg.cc/8C8xN6Vc/14-Point-Content-Brief-Guide.png",
-    schemaJsonLd: {
-      '@context': 'https://schema.org',
-      '@graph': [
-        {
-          '@type': 'Organization',
-          '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
-          url: 'https://www.abuqitmirlabs.tech/',
-          logo: 'https://www.abuqitmirlabs.tech/logo.png'
-        },
-        {
-          '@type': 'WebSite',
-          '@id': 'https://www.abuqitmirlabs.tech/#website',
-          url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
-          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
-        },
-        {
-          '@type': 'WebPage',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/content-brief-template#webpage',
-          url: 'https://www.abuqitmirlabs.tech/blog/content-brief-template',
-          name: "The Content Brief Template That Gets Writers 90% There | AbuQitmirLabs",
-          description: "14-point content brief template that gets writers 90% there. Includes 14 sections, live examples, Table of Contents, and a downloadable copy-paste templ",
-          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
-        },
-        {
-          '@type': 'BreadcrumbList',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/content-brief-template#breadcrumb',
-          itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
-            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
-            { '@type': 'ListItem', position: 3, name: "The Content Brief Template That Gets Writers 90% There", item: 'https://www.abuqitmirlabs.tech/blog/content-brief-template' }
-          ]
-        },
-        {
-          '@type': 'Article',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/content-brief-template#article',
-          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/content-brief-template#webpage' },
-          headline: "The Content Brief Template That Gets Writers 90% There",
-          description: "14-point content brief template that gets writers 90% there. Includes 14 sections, live examples, Table of Contents, and a downloadable copy-paste templ",
-          image: "https://i.postimg.cc/8C8xN6Vc/14-Point-Content-Brief-Guide.png",
-          author: {
-            '@type': 'Person',
-            name: "Abu Qitmir Mohammad Shiraz Al-Madani",
-            url: 'https://www.abuqitmirlabs.tech/about/our-team'
-          },
-          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
-          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/content-brief-template#webpage' },
-          datePublished: "2026-10-18T00:00:00+00:00",
-          dateModified: "2026-10-18T00:00:00+00:00"
-        }
-      ]
-    }
-  },
-  '/blog/design-systems-for-startups': {
-    title: "Design Systems for Startups: Building a Visual Language | AbuQitmirLabs",
-    description: "Build scalable design systems for startups. Learn how lean tokens, component libraries, and atomic design eliminate UI debt and accelerate development.",
-    canonical: 'https://www.abuqitmirlabs.tech/blog/design-systems-for-startups',
-    ogTitle: "Design Systems for Startups: Building a Visual Language | AbuQitmirLabs",
-    ogDescription: "Build scalable design systems for startups. Learn how lean tokens, component libraries, and atomic design eliminate UI debt and accelerate development.",
-    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
-    ogType: 'article',
-    twitterCard: 'summary_large_image',
-    twitterTitle: "Design Systems for Startups: Building a Visual Language | AbuQitmirLabs",
-    twitterDescription: "Build scalable design systems for startups. Learn how lean tokens, component libraries, and atomic design eliminate UI debt and accelerate development.",
-    twitterImage: "https://www.abuqitmirlabs.tech/logo.png",
-    schemaJsonLd: {
-      '@context': 'https://schema.org',
-      '@graph': [
-        {
-          '@type': 'Organization',
-          '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
-          url: 'https://www.abuqitmirlabs.tech/',
-          logo: 'https://www.abuqitmirlabs.tech/logo.png'
-        },
-        {
-          '@type': 'WebSite',
-          '@id': 'https://www.abuqitmirlabs.tech/#website',
-          url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
-          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
-        },
-        {
-          '@type': 'WebPage',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/design-systems-for-startups#webpage',
-          url: 'https://www.abuqitmirlabs.tech/blog/design-systems-for-startups',
-          name: "Design Systems for Startups: Building a Visual Language | AbuQitmirLabs",
-          description: "Build scalable design systems for startups. Learn how lean tokens, component libraries, and atomic design eliminate UI debt and accelerate development.",
-          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
-        },
-        {
-          '@type': 'BreadcrumbList',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/design-systems-for-startups#breadcrumb',
-          itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
-            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
-            { '@type': 'ListItem', position: 3, name: "Design Systems for Startups: Building a Visual Language", item: 'https://www.abuqitmirlabs.tech/blog/design-systems-for-startups' }
-          ]
-        },
-        {
-          '@type': 'Article',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/design-systems-for-startups#article',
-          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/design-systems-for-startups#webpage' },
-          headline: "Design Systems for Startups: Building a Visual Language",
-          description: "Build scalable design systems for startups. Learn how lean tokens, component libraries, and atomic design eliminate UI debt and accelerate development.",
-          image: "https://www.abuqitmirlabs.tech/logo.png",
-          author: {
-            '@type': 'Person',
-            name: "Abu Qitmir Mohammad Shiraz Al-Madani",
-            url: 'https://www.abuqitmirlabs.tech/about/our-team'
-          },
-          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
-          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/design-systems-for-startups#webpage' },
-          datePublished: "2026-10-18T00:00:00+00:00",
-          dateModified: "2026-10-18T00:00:00+00:00"
-        }
-      ]
-    }
-  },
   '/blog/design-trends-2026': {
     title: "The 2026 Design Trends That Will Actually Last | AbuQitmirLabs",
-    description: "Every January, the design world gets hit with a wave of \"trends.\" Founders panic, spend thousands on a redesign, and implement whatever is trending on D",
+    description: "Discover the 2026 UI/UX and brand design trends that actually drive conversions vs short-lived Dribbble fads that waste startup budgets.",
     canonical: 'https://www.abuqitmirlabs.tech/blog/design-trends-2026',
     ogTitle: "The 2026 Design Trends That Will Actually Last | AbuQitmirLabs",
-    ogDescription: "Every January, the design world gets hit with a wave of \"trends.\" Founders panic, spend thousands on a redesign, and implement whatever is trending on D",
+    ogDescription: "Discover the 2026 UI/UX and brand design trends that actually drive conversions vs short-lived Dribbble fads that waste startup budgets.",
     ogImage: "https://www.abuqitmirlabs.tech/logo.png",
     ogType: 'article',
     twitterCard: 'summary_large_image',
     twitterTitle: "The 2026 Design Trends That Will Actually Last | AbuQitmirLabs",
-    twitterDescription: "Every January, the design world gets hit with a wave of \"trends.\" Founders panic, spend thousands on a redesign, and implement whatever is trending on D",
+    twitterDescription: "Discover the 2026 UI/UX and brand design trends that actually drive conversions vs short-lived Dribbble fads that waste startup budgets.",
     twitterImage: "https://www.abuqitmirlabs.tech/logo.png",
     schemaJsonLd: {
       '@context': 'https://schema.org',
@@ -5430,7 +5220,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@id': 'https://www.abuqitmirlabs.tech/blog/design-trends-2026#webpage',
           url: 'https://www.abuqitmirlabs.tech/blog/design-trends-2026',
           name: "The 2026 Design Trends That Will Actually Last | AbuQitmirLabs",
-          description: "Every January, the design world gets hit with a wave of \"trends.\" Founders panic, spend thousands on a redesign, and implement whatever is trending on D",
+          description: "Discover the 2026 UI/UX and brand design trends that actually drive conversions vs short-lived Dribbble fads that waste startup budgets.",
           isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
         },
         {
@@ -5447,7 +5237,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@id': 'https://www.abuqitmirlabs.tech/blog/design-trends-2026#article',
           isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/design-trends-2026#webpage' },
           headline: "The 2026 Design Trends That Will Actually Last",
-          description: "Every January, the design world gets hit with a wave of \"trends.\" Founders panic, spend thousands on a redesign, and implement whatever is trending on D",
+          description: "Discover the 2026 UI/UX and brand design trends that actually drive conversions vs short-lived Dribbble fads that waste startup budgets.",
           image: "https://www.abuqitmirlabs.tech/logo.png",
           author: {
             '@type': 'Person',
@@ -5527,271 +5317,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         }
       ]
     }
-  },
-  '/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups': {
-    title: "Performance Marketing vs Brand Marketing: A Budget Allocation Framework for Startups | AbuQitmirLabs",
-    description: "A practical framework for startups to split budget between performance and brand marketing. Learn when to invest in each and how to measure ROI.",
-    canonical: 'https://www.abuqitmirlabs.tech/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups',
-    ogTitle: "Performance Marketing vs Brand Marketing: A Budget Allocation Framework for Startups | AbuQitmirLabs",
-    ogDescription: "A practical framework for startups to split budget between performance and brand marketing. Learn when to invest in each and how to measure ROI.",
-    ogImage: "https://www.abuqitmirlabs.tech/images/blog/performance-vs-brand-marketing-cover.jpg",
-    ogType: 'article',
-    twitterCard: 'summary_large_image',
-    twitterTitle: "Performance Marketing vs Brand Marketing: A Budget Allocation Framework for Startups | AbuQitmirLabs",
-    twitterDescription: "A practical framework for startups to split budget between performance and brand marketing. Learn when to invest in each and how to measure ROI.",
-    twitterImage: "https://www.abuqitmirlabs.tech/images/blog/performance-vs-brand-marketing-cover.jpg",
-    schemaJsonLd: {
-      '@context': 'https://schema.org',
-      '@graph': [
-        {
-          '@type': 'Organization',
-          '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
-          url: 'https://www.abuqitmirlabs.tech/',
-          logo: 'https://www.abuqitmirlabs.tech/logo.png'
-        },
-        {
-          '@type': 'WebSite',
-          '@id': 'https://www.abuqitmirlabs.tech/#website',
-          url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
-          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
-        },
-        {
-          '@type': 'WebPage',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups#webpage',
-          url: 'https://www.abuqitmirlabs.tech/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups',
-          name: "Performance Marketing vs Brand Marketing: A Budget Allocation Framework for Startups | AbuQitmirLabs",
-          description: "A practical framework for startups to split budget between performance and brand marketing. Learn when to invest in each and how to measure ROI.",
-          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
-        },
-        {
-          '@type': 'BreadcrumbList',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups#breadcrumb',
-          itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
-            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
-            { '@type': 'ListItem', position: 3, name: "Performance Marketing vs Brand Marketing: A Budget Allocation Framework for Startups", item: 'https://www.abuqitmirlabs.tech/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups' }
-          ]
-        },
-        {
-          '@type': 'Article',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups#article',
-          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups#webpage' },
-          headline: "Performance Marketing vs Brand Marketing: A Budget Allocation Framework for Startups",
-          description: "A practical framework for startups to split budget between performance and brand marketing. Learn when to invest in each and how to measure ROI.",
-          image: "https://www.abuqitmirlabs.tech/images/blog/performance-vs-brand-marketing-cover.jpg",
-          author: {
-            '@type': 'Person',
-            name: "Shiraz Almadani",
-            url: 'https://www.abuqitmirlabs.tech/about/our-team'
-          },
-          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
-          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups#webpage' },
-          datePublished: "2026-10-10T00:00:00+00:00",
-          dateModified: "2026-10-10T00:00:00+00:00"
-        }
-      ]
-    }
-  },
-  '/blog/small-business-branding-mistakes-pakistan': {
-    title: "Small Business Branding Mistakes Pakistan (And How to Fix It) | AbuQitmirLabs",
-    description: "Discover the 9 most common small business branding mistakes in Pakistan. Get a practical checklist to fix them and build brand trust without wasting bud",
-    canonical: 'https://www.abuqitmirlabs.tech/blog/small-business-branding-mistakes-pakistan',
-    ogTitle: "Small Business Branding Mistakes Pakistan (And How to Fix It) | AbuQitmirLabs",
-    ogDescription: "Discover the 9 most common small business branding mistakes in Pakistan. Get a practical checklist to fix them and build brand trust without wasting bud",
-    ogImage: "https://i.postimg.cc/cLTBf9mr/Brand-Building-Mistakes-Guide.png",
-    ogType: 'article',
-    twitterCard: 'summary_large_image',
-    twitterTitle: "Small Business Branding Mistakes Pakistan (And How to Fix It) | AbuQitmirLabs",
-    twitterDescription: "Discover the 9 most common small business branding mistakes in Pakistan. Get a practical checklist to fix them and build brand trust without wasting bud",
-    twitterImage: "https://i.postimg.cc/cLTBf9mr/Brand-Building-Mistakes-Guide.png",
-    schemaJsonLd: {
-      '@context': 'https://schema.org',
-      '@graph': [
-        {
-          '@type': 'Organization',
-          '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
-          url: 'https://www.abuqitmirlabs.tech/',
-          logo: 'https://www.abuqitmirlabs.tech/logo.png'
-        },
-        {
-          '@type': 'WebSite',
-          '@id': 'https://www.abuqitmirlabs.tech/#website',
-          url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
-          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
-        },
-        {
-          '@type': 'WebPage',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/small-business-branding-mistakes-pakistan#webpage',
-          url: 'https://www.abuqitmirlabs.tech/blog/small-business-branding-mistakes-pakistan',
-          name: "Small Business Branding Mistakes Pakistan (And How to Fix It) | AbuQitmirLabs",
-          description: "Discover the 9 most common small business branding mistakes in Pakistan. Get a practical checklist to fix them and build brand trust without wasting bud",
-          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
-        },
-        {
-          '@type': 'BreadcrumbList',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/small-business-branding-mistakes-pakistan#breadcrumb',
-          itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
-            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
-            { '@type': 'ListItem', position: 3, name: "Small Business Branding Mistakes Pakistan (And How to Fix It)", item: 'https://www.abuqitmirlabs.tech/blog/small-business-branding-mistakes-pakistan' }
-          ]
-        },
-        {
-          '@type': 'Article',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/small-business-branding-mistakes-pakistan#article',
-          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/small-business-branding-mistakes-pakistan#webpage' },
-          headline: "Small Business Branding Mistakes Pakistan (And How to Fix It)",
-          description: "Discover the 9 most common small business branding mistakes in Pakistan. Get a practical checklist to fix them and build brand trust without wasting bud",
-          image: "https://i.postimg.cc/cLTBf9mr/Brand-Building-Mistakes-Guide.png",
-          author: {
-            '@type': 'Person',
-            name: "Abu Qitmir Mohammad Shiraz Al-Madani",
-            url: 'https://www.abuqitmirlabs.tech/about/our-team'
-          },
-          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
-          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/small-business-branding-mistakes-pakistan#webpage' },
-          datePublished: "2026-10-23T00:00:00+00:00",
-          dateModified: "2026-10-23T00:00:00+00:00"
-        }
-      ]
-    }
-  },
-  '/blog/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026': {
-    title: "The 5-Minute Technical Audit: What Every Founder Should Check Before Hiring a Developer in 2026 | AbuQitmirLabs",
-    description: "Most founders cannot read code. That does not mean they cannot vet a developer. This five-minute technical audit checklist gives non-technical founders",
-    canonical: 'https://www.abuqitmirlabs.tech/blog/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026',
-    ogTitle: "The 5-Minute Technical Audit: What Every Founder Should Check Before Hiring a Developer in 2026 | AbuQitmirLabs",
-    ogDescription: "Most founders cannot read code. That does not mean they cannot vet a developer. This five-minute technical audit checklist gives non-technical founders",
-    ogImage: "https://i.postimg.cc/Y92rZgvg/Five-Minute-Technical-Audit-Checklist.png",
-    ogType: 'article',
-    twitterCard: 'summary_large_image',
-    twitterTitle: "The 5-Minute Technical Audit: What Every Founder Should Check Before Hiring a Developer in 2026 | AbuQitmirLabs",
-    twitterDescription: "Most founders cannot read code. That does not mean they cannot vet a developer. This five-minute technical audit checklist gives non-technical founders",
-    twitterImage: "https://i.postimg.cc/Y92rZgvg/Five-Minute-Technical-Audit-Checklist.png",
-    schemaJsonLd: {
-      '@context': 'https://schema.org',
-      '@graph': [
-        {
-          '@type': 'Organization',
-          '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
-          url: 'https://www.abuqitmirlabs.tech/',
-          logo: 'https://www.abuqitmirlabs.tech/logo.png'
-        },
-        {
-          '@type': 'WebSite',
-          '@id': 'https://www.abuqitmirlabs.tech/#website',
-          url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
-          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
-        },
-        {
-          '@type': 'WebPage',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026#webpage',
-          url: 'https://www.abuqitmirlabs.tech/blog/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026',
-          name: "The 5-Minute Technical Audit: What Every Founder Should Check Before Hiring a Developer in 2026 | AbuQitmirLabs",
-          description: "Most founders cannot read code. That does not mean they cannot vet a developer. This five-minute technical audit checklist gives non-technical founders",
-          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
-        },
-        {
-          '@type': 'BreadcrumbList',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026#breadcrumb',
-          itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
-            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
-            { '@type': 'ListItem', position: 3, name: "The 5-Minute Technical Audit: What Every Founder Should Check Before Hiring a Developer in 2026", item: 'https://www.abuqitmirlabs.tech/blog/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026' }
-          ]
-        },
-        {
-          '@type': 'Article',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026#article',
-          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026#webpage' },
-          headline: "The 5-Minute Technical Audit: What Every Founder Should Check Before Hiring a Developer in 2026",
-          description: "Most founders cannot read code. That does not mean they cannot vet a developer. This five-minute technical audit checklist gives non-technical founders",
-          image: "https://i.postimg.cc/Y92rZgvg/Five-Minute-Technical-Audit-Checklist.png",
-          author: {
-            '@type': 'Person',
-            name: "ABUQITMIRLABS .TECH Shiraz Almadani",
-            url: 'https://www.abuqitmirlabs.tech/about/our-team'
-          },
-          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
-          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026#webpage' },
-          datePublished: "2026-10-07T00:00:00+00:00",
-          dateModified: "2026-10-07T00:00:00+00:00"
-        }
-      ]
-    }
-  },
-  '/blog/url-fragmentation-headless-spa': {
-    title: "Fix URL Fragmentation in Headless SPAs | AbuQitmirLabs",
-    description: "Eliminate duplicate indexing across headless SPAs, GA4, and RSS feeds with a 5-layer self-healing architecture. Includes code for Next.js, React, and ed",
-    canonical: 'https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa',
-    ogTitle: "Fix URL Fragmentation in Headless SPAs | AbuQitmirLabs",
-    ogDescription: "Eliminate duplicate indexing across headless SPAs, GA4, and RSS feeds with a 5-layer self-healing architecture. Includes code for Next.js, React, and ed",
-    ogImage: "https://www.abuqitmirlabs.tech/assets/blog/url-fragmentation-headless-spa-cover.png",
-    ogType: 'article',
-    twitterCard: 'summary_large_image',
-    twitterTitle: "Fix URL Fragmentation in Headless SPAs | AbuQitmirLabs",
-    twitterDescription: "Eliminate duplicate indexing across headless SPAs, GA4, and RSS feeds with a 5-layer self-healing architecture. Includes code for Next.js, React, and ed",
-    twitterImage: "https://www.abuqitmirlabs.tech/assets/blog/url-fragmentation-headless-spa-cover.png",
-    schemaJsonLd: {
-      '@context': 'https://schema.org',
-      '@graph': [
-        {
-          '@type': 'Organization',
-          '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
-          url: 'https://www.abuqitmirlabs.tech/',
-          logo: 'https://www.abuqitmirlabs.tech/logo.png'
-        },
-        {
-          '@type': 'WebSite',
-          '@id': 'https://www.abuqitmirlabs.tech/#website',
-          url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
-          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
-        },
-        {
-          '@type': 'WebPage',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa#webpage',
-          url: 'https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa',
-          name: "Fix URL Fragmentation in Headless SPAs | AbuQitmirLabs",
-          description: "Eliminate duplicate indexing across headless SPAs, GA4, and RSS feeds with a 5-layer self-healing architecture. Includes code for Next.js, React, and ed",
-          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
-        },
-        {
-          '@type': 'BreadcrumbList',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa#breadcrumb',
-          itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
-            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
-            { '@type': 'ListItem', position: 3, name: "Fix URL Fragmentation in Headless SPAs", item: 'https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa' }
-          ]
-        },
-        {
-          '@type': 'Article',
-          '@id': 'https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa#article',
-          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa#webpage' },
-          headline: "Fix URL Fragmentation in Headless SPAs",
-          description: "Eliminate duplicate indexing across headless SPAs, GA4, and RSS feeds with a 5-layer self-healing architecture. Includes code for Next.js, React, and ed",
-          image: "https://www.abuqitmirlabs.tech/assets/blog/url-fragmentation-headless-spa-cover.png",
-          author: {
-            '@type': 'Person',
-            name: "Engineering Architecture Team",
-            url: 'https://www.abuqitmirlabs.tech/about/our-team'
-          },
-          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
-          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/url-fragmentation-headless-spa#webpage' },
-          datePublished: "2026-10-28T00:00:00+00:00",
-          dateModified: "2026-10-28T00:00:00+00:00"
-        }
-      ]
-    }
-  },
+  }
 };
 
 

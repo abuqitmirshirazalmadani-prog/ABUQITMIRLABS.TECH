@@ -79,53 +79,123 @@ export default defineConfig(({ mode }) => {
         closeBundle: async () => {
           const hostname = 'https://www.abuqitmirlabs.tech';
           const baseRoutes = [
-            { url: '/', changefreq: 'weekly', priority: 1.0, title: 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs', description: "Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system." },
+            { url: '/', changefreq: 'weekly', priority: 1.0, title: 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs', description: 'Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.' },
             { url: '/growth-engineering', changefreq: 'monthly', priority: 0.9, lastmod: '2026-10-29', title: 'Growth Engineering Firm | Software + AI + Marketing | AbuQitmirLabs', description: 'AbuQitmirLabs engineers revenue systems for B2B companies — combining custom software, AI automation, and performance marketing under one roof.' },
-            { url: '/about', changefreq: 'monthly', priority: 0.8, title: 'About Us | AbuQitmirLabs', description: 'Learn about our mission to build cutting-edge AI and mobile solutions.' },
-            { url: '/about/our-company', changefreq: 'monthly', priority: 0.8, title: 'About Our Company | Global Software Studio | AbuQitmirLabs', description: 'AbuQitmirLabs is a Karachi-based software boutique. 410+ custom projects for 350+ global clients. Zero lock-in, 100% in-house talent. Learn about our mission and values.' },
-            { url: '/about/our-team', changefreq: 'monthly', priority: 0.8, title: 'Our Team | Elite Software Architects | AbuQitmirLabs', description: 'Meet the AbuQitmirLabs team — 12+ in-house software architects, engineers, and UI/UX experts in Karachi. 410+ projects delivered globally. Led by founder Abu Qitmir.' },
-            { url: '/about/our-process', changefreq: 'monthly', priority: 0.8, title: 'Our Process | 6-Step Software Engineering Method | AbuQitmirLabs', description: "AbuQitmirLabs' 6-step engineering process: Discovery, Architecture, Development, QA, Zero-Downtime Launch, and Support. Structured discipline delivering 3x faster ROI." },
-            { url: '/about/careers', changefreq: 'monthly', priority: 0.8, title: 'Careers at AbuQitmirLabs | Join Our In-House Studio | AbuQitmirLabs', description: "Join AbuQitmirLabs — we're hiring senior full-stack architects, AI/RAG engineers, UI/UX designers, and SEO strategists in Karachi. Build global software that matters." },
-            { url: '/contact', changefreq: 'monthly', priority: 0.9, title: 'Contact Us | Free Project Quote & Consultation | AbuQitmirLabs', description: 'Contact AbuQitmirLabs for a free project quote. Get a free technical consultation and digital audit. Build custom software, mobile apps, AI agents, and web solutions.' },
-            { url: '/custom-software', changefreq: 'weekly', priority: 0.9, title: 'Custom Software Development Company | AbuQitmirLabs', description: 'Bespoke software built around your workflows — ERPs, SaaS platforms, AI-powered tools, and enterprise systems. Full IP ownership.' },
+            { url: '/about', changefreq: 'monthly', priority: 0.8, title: 'We Were Engineers First. Now We Engineer Growth | About Us | AbuQitmirLabs', description: 'We were engineers first. Now we engineer growth. Discover AbuQitmirLabs, our origin story in Karachi, and The Revenue Velocity Engine for B2B.' },
+            { url: '/about/our-company', changefreq: 'monthly', priority: 0.8, title: 'About Our Company | Global Software Studio | AbuQitmirLabs', description: 'Karachi-based growth engineering studio with 410+ custom projects for 350+ global clients. 100% in-house talent, full IP ownership & zero lock-in.' },
+            { url: '/about/our-team', changefreq: 'monthly', priority: 0.8, title: 'Our Team | Elite Software Architects | AbuQitmirLabs', description: 'Meet the AbuQitmirLabs team — 12+ senior software architects, AI engineers, and UI/UX designers in Karachi led by founder Abu Qitmir Al-Madani.' },
+            { url: '/about/our-process', changefreq: 'monthly', priority: 0.8, title: 'Our Process | 6-Step Software Engineering Method | AbuQitmirLabs', description: "AbuQitmirLabs' 6-step engineering process: Discovery, Architecture, Development, QA, Zero-Downtime Launch, and Support for 3x faster B2B ROI." },
+            { url: '/about/careers', changefreq: 'monthly', priority: 0.8, title: 'Careers at AbuQitmirLabs | Join Our In-House Studio | AbuQitmirLabs', description: 'Join AbuQitmirLabs in Karachi. We are hiring senior full-stack architects, AI/RAG engineers, UI/UX designers, and technical SEO strategists.' },
+            { url: '/contact', changefreq: 'monthly', priority: 0.9, title: 'Contact Us | Free Project Quote & Consultation | AbuQitmirLabs', description: 'Contact AbuQitmirLabs for a free project quote, technical consultation, and digital audit for custom software, AI agents, and web applications.' },
+            { url: '/custom-software', changefreq: 'weekly', priority: 0.9, title: 'Custom Software Development Company | AbuQitmirLabs', description: 'Bespoke software built around your workflows — ERPs, SaaS platforms, AI-powered tools, and enterprise systems. Full IP ownership included.' },
             { url: '/mobile-app-development', changefreq: 'weekly', priority: 0.9, title: 'Mobile App Development Company | AbuQitmirLabs', description: 'Flutter, React Native, and native iOS/Android app development. Full source code ownership, App Store submission, and backend integration included.' },
-            { url: '/web-development', changefreq: 'weekly', priority: 0.9, title: 'Web Development Company | Custom Web Solutions | AbuQitmirLabs', description: 'AbuQitmirLabs provides custom web development for startups and businesses, building fast, secure, responsive websites and scalable web applications.' },
-            { url: '/ai-video-creation', changefreq: 'weekly', priority: 0.9, title: 'AI Video Creation Services | Cinematic AI Production Agency | AbuQitmirLabs', description: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.' },
-            { url: '/ai-agent-development', changefreq: 'weekly', priority: 0.9, title: 'Healthcare AI Agent Development Company | AbuQitmirLabs', description: 'Custom healthcare AI agents for patient intake, RAG, EHR integration and workflow automation. Build secure AI systems with AbuQitmirLabs.' },
-            { url: '/seo-mastery', changefreq: 'weekly', priority: 0.8, title: 'SEO Services | Professional Search Engine Optimization | AbuQitmirLabs', description: 'AbuQitmirLabs delivers data-driven SEO services — technical audits, on-page optimization, local SEO, and authority building. Rank higher, attract quality traffic, and grow your business.' },
-            { url: '/local-seo-for-small-business', changefreq: 'weekly', priority: 0.9, title: 'Local SEO Services for Small Businesses | AbuQitmirLabs', description: 'Grow local visibility with expert Local SEO for small businesses, including Google Business Profile, local rankings, citations, and on-page optimization.' },
-            { url: '/local-seo-citation-building', changefreq: 'weekly', priority: 0.8, title: 'Local SEO Citation Building | NAP Consistency Services | AbuQitmirLabs', description: 'Manual NAP citation building, audit & cleanup across top-tier directories. Boost local search rankings with consistent citations on Google, Yelp, Apple Maps & more. Start with a $150 audit.' },
-            { url: '/white-label-local-seo', changefreq: 'weekly', priority: 0.8, title: 'White Label Local SEO for Agencies | Reseller Plans | AbuQitmirLabs', description: 'White label local SEO fulfillment for agencies — citations, GBP optimization, and branded PDF reports. Reseller plans with 35–50% margins. Expand your services without expanding your team.' },
-            { url: '/local-seo-audit', changefreq: 'weekly', priority: 0.8, title: 'Free Local SEO Audit | Forensic Map Pack Analysis | AbuQitmirLabs', description: 'Free local SEO audit covering Google Business Profile, NAP citations, schema markup, and map-pack competitors. Get a prioritized action plan — not a jargon-filled deck.' },
-            { url: '/guest-post-service', changefreq: 'weekly', priority: 0.8, title: 'Guest Post Service | High-Authority White-Hat Placements | AbuQitmirLabs', description: 'Editorial guest post placements on real, high-DR websites with organic search traffic. 100% manual outreach, in-content dofollow links, permanent indexation.' },
-            { url: '/graphics-design', changefreq: 'weekly', priority: 0.8, title: 'Graphic Design Services for Brands & Businesses | AbuQitmirLabs', description: 'Professional graphic design services for brands and businesses: custom logos, brand identity, pitch decks, UI/UX, and marketing collateral with AbuQitmirLabs.' },
-            { url: '/content-writing', changefreq: 'weekly', priority: 0.8, title: 'Content Writing Services | SEO Copywriting & Blogging | AbuQitmirLabs', description: 'AbuQitmirLabs provides professional content writing services — SEO blogs, website copy, landing pages, and long-form articles. Data-driven content that ranks and converts.' },
-            { url: '/solutions/fintech', changefreq: 'weekly', priority: 0.8, title: 'FinTech Solutions for Digital Finance | AbuQitmirLabs', description: 'Build secure FinTech platforms, payment systems and digital finance experiences with AbuQitmirLabs for startups and growing businesses.' },
-            { url: '/solutions/healthcare', changefreq: 'weekly', priority: 0.8, title: 'Healthcare Software Solutions | AbuQitmirLabs', description: 'Build secure healthcare software, patient portals, telemedicine platforms and clinical systems with AbuQitmirLabs for modern healthcare businesses.' },
-            { url: '/solutions/ai-automation', changefreq: 'weekly', priority: 0.9, title: 'AI Automation Solutions | AbuQitmirLabs', description: 'Automate business workflows with AI agents, RAG, APIs and intelligent integrations. Build secure AI automation for startups and enterprises.' },
-            { url: '/solutions/e-commerce', changefreq: 'weekly', priority: 0.9, title: 'E-commerce Software Solutions | Custom E-commerce Development', description: 'Engineer high-performance e-commerce software solutions, custom online stores, B2B wholesale portals, mobile shopping apps & multi-vendor marketplaces.' },
+            { url: '/web-development', changefreq: 'weekly', priority: 0.9, title: 'Web Development Company | Custom Web Solutions | AbuQitmirLabs', description: 'Custom web development and API integrations by AbuQitmirLabs. We build fast, scalable web applications connected to Stripe, CRM, and ERP systems.' },
+            { url: '/ai-video-creation', changefreq: 'weekly', priority: 0.9, title: 'AI Video Creation Services | Cinematic AI Production Agency | AbuQitmirLabs', description: 'Cinematic AI video production agency combining human direction with generative AI for teasers, explainers, ads, and founder stories worldwide.' },
+            { url: '/ai-agent-development', changefreq: 'weekly', priority: 0.9, title: 'Healthcare AI Agent Development Company | AbuQitmirLabs', description: 'Custom healthcare AI agents for patient intake, RAG, EHR integration, and workflow automation. Build secure AI systems with AbuQitmirLabs.' },
+            { url: '/seo-mastery', changefreq: 'weekly', priority: 0.8, title: 'SEO Services | Professional Search Engine Optimization | AbuQitmirLabs', description: 'Data-driven technical SEO services by AbuQitmirLabs: crawl audits, Core Web Vitals, semantic schema, local SEO, and AI search optimization.' },
+            { url: '/digital-marketing', changefreq: 'weekly', priority: 0.8, title: 'Digital Marketing Services for Software & SaaS Companies | AbuQitmirLabs', description: 'Digital marketing for software and SaaS companies: technical SEO, E-E-A-T content, and conversion-focused web architecture with measurable ROI.' },
+            { url: '/local-seo-for-small-business', changefreq: 'weekly', priority: 0.9, title: 'Local SEO Services for Small Businesses | AbuQitmirLabs', description: 'Grow local visibility with expert Local SEO for small businesses: Google Business Profile optimization, local citations, and map-pack rankings.' },
+            { url: '/local-seo-citation-building', changefreq: 'weekly', priority: 0.8, title: 'Local SEO Citation Building | NAP Consistency Services | AbuQitmirLabs', description: 'Manual NAP citation building, audit, and cleanup across top directories. Boost local rankings on Google, Yelp, and Apple Maps with a $150 audit.' },
+            { url: '/white-label-local-seo', changefreq: 'weekly', priority: 0.8, title: 'White Label Local SEO for Agencies | Reseller Plans | AbuQitmirLabs', description: 'White-label local SEO fulfillment for agencies: manual citations, GBP optimization, and unbranded PDF reports with 35–50% reseller profit margins.' },
+            { url: '/local-seo-audit', changefreq: 'weekly', priority: 0.8, title: 'Free Local SEO Audit | Forensic Map Pack Analysis | AbuQitmirLabs', description: 'Free forensic local SEO audit covering Google Business Profile, NAP citations, schema markup, and map-pack competitors with a clear action plan.' },
+            { url: '/guest-post-service', changefreq: 'weekly', priority: 0.8, title: 'Guest Post Service | High-Authority White-Hat Placements | AbuQitmirLabs', description: 'Editorial guest post placements on real, high-DR websites with organic traffic. 100% manual outreach, contextual dofollow links, and indexation.' },
+            { url: '/graphics-design', changefreq: 'weekly', priority: 0.8, title: 'Graphic Design Services for Brands & Businesses | AbuQitmirLabs', description: 'Professional graphic design services for brands: custom logos, brand identity systems, pitch decks, UI/UX design, and B2B marketing collateral.' },
+            { url: '/content-writing', changefreq: 'weekly', priority: 0.8, title: 'Content Writing Services | SEO Copywriting & Blogging | AbuQitmirLabs', description: 'Data-driven SEO content writing services by AbuQitmirLabs: technical blogs, B2B website copy, landing pages, and long-form authority articles.' },
+            { url: '/brand-building', changefreq: 'weekly', priority: 0.85, title: 'Brand Building Services for Small Businesses | AbuQitmirLabs', description: 'Complete brand building for small businesses: positioning strategy, visual identity, custom Next.js website, and SEO engineered under one roof.' },
+            { url: '/skills-academy', changefreq: 'weekly', priority: 0.85, title: 'Learn to Build a Brand & Business Online — AI Course in Urdu | AbuQitmirLabs', description: 'AI-powered Urdu course teaching complete brand building, Next.js web development, real agency projects, and global client acquisition.' },
+            { url: '/solutions/fintech', changefreq: 'weekly', priority: 0.8, title: 'FinTech Solutions for Digital Finance | AbuQitmirLabs', description: 'Build secure FinTech platforms, payment systems, and PCI-DSS compliant digital finance experiences with AbuQitmirLabs for B2B companies.' },
+            { url: '/solutions/healthcare', changefreq: 'weekly', priority: 0.8, title: 'Healthcare Software Solutions | AbuQitmirLabs', description: 'Build HIPAA-compliant healthcare software, patient portals, telemedicine platforms, and EHR systems with AbuQitmirLabs for modern clinics.' },
+            { url: '/solutions/ai-automation', changefreq: 'weekly', priority: 0.9, title: 'AI Automation Solutions | AbuQitmirLabs', description: 'Automate business workflows with AI agents, RAG pipelines, APIs, and intelligent integrations built for startups and enterprise operations.' },
+            { url: '/solutions/e-commerce', changefreq: 'weekly', priority: 0.9, title: 'E-commerce Software Solutions | Custom E-commerce Development', description: 'Engineer high-performance e-commerce platforms, custom online stores, B2B wholesale portals, mobile shopping apps, and multi-vendor marketplaces.' },
             { url: '/solutions/edtech', changefreq: 'weekly', priority: 0.9, title: 'EdTech Software Development | LMS & Learning Platforms', description: 'Build scalable EdTech software with custom LMS platforms, virtual classrooms, AI tutoring, student portals, assessments, and learning analytics.' },
-            { url: '/case-studies', changefreq: 'weekly', priority: 0.9, title: 'Case Studies | Real-World Success Stories | AbuQitmirLabs', description: 'Explore real-world success stories from AbuQitmirLabs — custom software, AI automation, mobile apps, and web solutions that delivered measurable ROI for 350+ global clients.' },
-            { url: '/case-studies/tajweedpage', changefreq: 'weekly', priority: 0.9, title: 'AI Quran Learning Platform Case Study | AbuQitmirLabs', description: 'How we built the world\'s first AI-powered Quran learning platform with RAG Tajweed teacher, SEO for 20+ countries, and full Next.js stack — in just 10 days.' },
-            { url: '/us-market', changefreq: 'monthly', priority: 0.7, title: 'Software Development for US Startups | CCPA & HIPAA Ready | AbuQitmirLabs', description: 'US-focused software development for startups — mobile apps, AI agents, and local SEO. CCPA & HIPAA compliant, built at startup speed. Scale your US presence with offshore expertise.' },
-            { url: '/uk-market', changefreq: 'monthly', priority: 0.7, title: 'Digital Transformation for UK Businesses | GDPR Compliant | AbuQitmirLabs', description: 'UK-focused digital transformation services — GDPR-compliant software, mobile apps, AI agents, and high-street local SEO. Built for British businesses, with full GMT working-day overlap.' },
-            { url: '/pakistan-market', changefreq: 'monthly', priority: 0.7, title: 'Digital Transformation for Pakistan | Local SEO & Custom Software | AbuQitmirLabs', description: 'Karachi-based digital transformation for Pakistani businesses — local SEO, custom software, mobile apps, and Roman Urdu AI agents. PKR pricing, in-person meetings, same time zone.' },
-            { url: '/canada-market', changefreq: 'monthly', priority: 0.7, title: 'Software Development for Canada | PIPEDA Compliant | AbuQitmirLabs', description: 'Canada-focused software development — PIPEDA-compliant apps, local SEO, and bilingual-ready platforms (EN/FR). Built for Canadian startups and enterprises, with EST/PST overlap.' },
-            { url: '/poland-market', changefreq: 'monthly', priority: 0.7, title: 'Software Development for Poland | GDPR & EU Expansion | AbuQitmirLabs', description: 'Poland-focused software development — GDPR-compliant apps, AI agents, SaaS, and local SEO for Krakow/Warsaw. Built for Polish startups and EU expansion, with CET overlap.' },
-            { url: '/australia-market', changefreq: 'monthly', priority: 0.7, title: 'Software Development for Australia | APP Compliant | AbuQitmirLabs', description: 'Australia-focused software development — APP-compliant apps, high-speed web, mobile apps, and AI agents. Built for Australian businesses with AEST-aligned delivery. Start your audit today.' },
-            { url: '/blog', changefreq: 'daily', priority: 0.8, title: 'Tech Blog & AI Insights | AbuQitmirLabs', description: 'AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies.' },
-            { url: '/news/latest', changefreq: 'weekly', priority: 0.8, title: 'Latest News | Company Updates & Press Releases | AbuQitmirLabs', description: 'AbuQitmirLabs newsroom — latest company updates, software launches, AI agent releases, and press announcements. Subscribe for monthly engineering and tech insights.' },
-            { url: '/news/press-releases', changefreq: 'monthly', priority: 0.8, title: 'Press Releases | Corporate Announcements | AbuQitmirLabs', description: 'Official press releases and corporate announcements from AbuQitmirLabs software engineering studio in Karachi.' },
-            { url: '/news/industry-insights', changefreq: 'weekly', priority: 0.8, title: 'Industry Insights | Technical Benchmarks & AI Architecture | AbuQitmirLabs', description: 'Industry insights from AbuQitmirLabs — technical breakdowns on AI RAG, GEO, HIPAA compliance, and low-latency full-stack design. Written by senior software architects.' },
-            { url: '/news/all', changefreq: 'weekly', priority: 0.8, title: 'All News & Media Archive | AbuQitmirLabs', description: 'All news and media archive from AbuQitmirLabs — company announcements, press releases, product launches, and technical engineering insights. Browse our complete catalog.' },
-            { url: '/website-contract', changefreq: 'weekly', priority: 0.8, title: 'Free Website Contract Template | Ownership Protection | AbuQitmirLabs', description: 'Download a free, ownership-protected website contract template. Includes domain ownership, support SLAs, tech stack disclosure, and exit terms. No strings attached.' },
-            { url: '/terms', changefreq: 'yearly', priority: 0.3, title: 'Terms of Service | Client Agreement & IP Policy | AbuQitmirLabs', description: 'AbuQitmirLabs terms of service: agreement, IP, payment terms, and liability. Learn about client responsibilities and termination protocols for our software services.' },
+            { url: '/solutions/fintech/web-development', changefreq: 'weekly', priority: 0.85, title: 'Fintech Web Development in Dubai | AbuQitmirLabs', description: 'Bespoke fintech web development in Dubai compliant with DFSA, DIFC, and PCI-DSS. Low-latency financial platforms engineered for UAE institutions.' },
+            { url: '/solutions/healthcare/mobile-app-development', changefreq: 'weekly', priority: 0.85, title: 'Healthcare App Development in Riyadh | AbuQitmirLabs', description: 'End-to-end healthcare mobile app development in Riyadh, KSA. Compliant with Saudi MoH, Seha, and NDMO standards with zero-latency architecture.' },
+            { url: '/solutions/e-commerce/custom-software', changefreq: 'weekly', priority: 0.85, title: 'E-Commerce Custom Software in London | AbuQitmirLabs', description: 'Custom e-commerce software development in London: high-volume order routing, multi-currency checkout, and headless commerce for UK brands.' },
+            { url: '/solutions/ai-automation/custom-software', changefreq: 'weekly', priority: 0.85, title: 'AI Automation Software in NYC | AbuQitmirLabs', description: 'Custom AI agent and workflow automation software in New York City. SOC2-ready autonomous systems engineered to accelerate B2B revenue velocity.' },
+            { url: '/solutions/edtech/web-development', changefreq: 'weekly', priority: 0.85, title: 'EdTech Web Development in Sydney | AbuQitmirLabs', description: 'Scalable EdTech web development and custom LMS platforms in Sydney, Australia, built for ASQA, Privacy Act 1988, and WCAG 2.1 AA compliance.' },
+            { url: '/case-studies', changefreq: 'weekly', priority: 0.9, title: 'Case Studies | Real-World Success Stories | AbuQitmirLabs', description: 'Explore real-world case studies from AbuQitmirLabs: custom software, AI automation, mobile apps, and web systems delivering measurable B2B ROI.' },
+            { url: '/case-studies/tajweedpage', changefreq: 'weekly', priority: 0.9, title: 'AI Quran Learning Platform Case Study | AbuQitmirLabs', description: 'How we built TajweedPage.com, an AI-powered Quran learning platform with a RAG Tajweed teacher, Next.js stack, and 20-country SEO in just 10 days.' },
+            { url: '/us-market', changefreq: 'monthly', priority: 0.7, title: 'Software Development for US Startups | CCPA & HIPAA Ready | AbuQitmirLabs', description: 'US-focused software development for startups: mobile apps, AI agents, and local SEO. CCPA & HIPAA compliant engineering with EST workday overlap.' },
+            { url: '/uk-market', changefreq: 'monthly', priority: 0.7, title: 'Digital Transformation for UK Businesses | GDPR Compliant | AbuQitmirLabs', description: 'UK-focused digital transformation and bespoke software: GDPR-compliant web apps, mobile apps, AI agents, and local SEO with full GMT workday overlap.' },
+            { url: '/pakistan-market', changefreq: 'monthly', priority: 0.7, title: 'Digital Transformation for Pakistan | Local SEO & Custom Software | AbuQitmirLabs', description: 'Karachi-based digital transformation for Pakistani businesses: custom software, mobile apps, local SEO, and Roman Urdu AI agents with PKR pricing.' },
+            { url: '/canada-market', changefreq: 'monthly', priority: 0.7, title: 'Software Development for Canada | PIPEDA Compliant | AbuQitmirLabs', description: 'Canada-focused software development: PIPEDA-compliant web apps, AI agents, local SEO, and bilingual EN/FR platforms with EST/PST workday overlap.' },
+            { url: '/poland-market', changefreq: 'monthly', priority: 0.7, title: 'Software Development for Poland | GDPR & EU Expansion | AbuQitmirLabs', description: 'Poland-focused software development: GDPR-compliant web apps, AI agents, SaaS platforms, and local SEO for Warsaw and Krakow with CET overlap.' },
+            { url: '/australia-market', changefreq: 'monthly', priority: 0.7, title: 'Software Development for Australia | APP Compliant | AbuQitmirLabs', description: 'Australia-focused software development: Privacy Act compliant web apps, mobile apps, and AI agents for Australian businesses with AEST delivery.' },
+            { url: '/saudi-arabia-market', changefreq: 'monthly', priority: 0.8, title: 'Software Development for Saudi Arabia | Vision 2030 & PDPL Compliant | AbuQitmirLabs', description: 'Saudi Arabia custom software, mobile apps, Arabic SEO, and enterprise AI agents fully compliant with Saudi PDPL and Vision 2030 digital mandates.' },
+            { url: '/uae-market', changefreq: 'monthly', priority: 0.8, title: 'Software Development for UAE | Dubai & Abu Dhabi Tech Squads | AbuQitmirLabs', description: 'Custom software engineering, mobile apps, and AI agents for Dubai and Abu Dhabi enterprises, compliant with UAE Federal Decree-Law No. 45.' },
+            { url: '/qatar-market', changefreq: 'monthly', priority: 0.8, title: 'AI Consulting Qatar & AI Agency Doha | AbuQitmirLabs', description: 'Premier AI consulting in Qatar and Doha software agency. We engineer Arabic/English AI chatbots, custom web platforms, and mobile apps for QNV 2030.' },
+            { url: '/kuwait-market', changefreq: 'monthly', priority: 0.8, title: 'Software Development for Kuwait | Kuwait Vision 2035 & KNET Ready | AbuQitmirLabs', description: 'Custom software, Flutter mobile apps, and AI agents for Kuwait City enterprises with CITRA data compliance and seamless KNET gateway integration.' },
+            { url: '/blog', changefreq: 'daily', priority: 0.8, title: 'Tech Blog & AI Insights | AbuQitmirLabs', description: 'AbuQitmirLabs engineering journal covering AI agents, custom software, web & mobile development, technical SEO, and B2B digital transformation.' },
+            { url: '/news/latest', changefreq: 'weekly', priority: 0.8, title: 'Latest News | Company Updates & Press Releases | AbuQitmirLabs', description: 'AbuQitmirLabs newsroom: latest company updates, software launches, AI framework releases, and press announcements from our engineering studio.' },
+            { url: '/news/press-releases', changefreq: 'monthly', priority: 0.8, title: 'Press Releases | Corporate Announcements | AbuQitmirLabs', description: 'Official press releases, security certifications, and corporate announcements from the AbuQitmirLabs software engineering studio in Karachi.' },
+            { url: '/news/industry-insights', changefreq: 'weekly', priority: 0.8, title: 'Industry Insights | Technical Benchmarks & AI Architecture | AbuQitmirLabs', description: 'Industry insights from AbuQitmirLabs: technical breakdowns on enterprise RAG, GEO, HIPAA compliance, and low-latency full-stack architecture.' },
+            { url: '/news/all', changefreq: 'weekly', priority: 0.8, title: 'All News & Media Archive | AbuQitmirLabs', description: 'Complete news and media archive from AbuQitmirLabs: company announcements, press releases, product launches, and technical engineering reports.' },
+            { url: '/news/article/google-ai-dogfooding-enterprise-results', changefreq: 'monthly', priority: 0.75, title: "Google's AI 'Dogfooding' Playbook: 83% Sales Adoption & 20% Higher Win Rates | AbuQitmirLabs", description: "Google's internal AI metrics show 83% sales adoption, 20% higher win rates, and 75% autonomous support resolution from enterprise AI dogfooding." },
+            { url: '/news/article/ai-rag-framework-launch', changefreq: 'monthly', priority: 0.75, title: 'AbuQitmirLabs Releases Autonomous Multi-Agent RAG Framework for Enterprise Clients', description: 'AbuQitmirLabs launches an open-spec enterprise RAG framework in Karachi that cuts vector search latency below 180ms with zero hallucination.' },
+            { url: '/news/article/us-uk-expansion-q3', changefreq: 'monthly', priority: 0.75, title: 'AbuQitmirLabs Expands Dedicated Engineering Squads for US & UK Fintech Markets', description: 'Following 45% international contract growth, AbuQitmirLabs expands Karachi engineering squads for dedicated US EST and UK GMT shift deployments.' },
+            { url: '/news/article/generative-engine-optimization-geo-strategy', changefreq: 'monthly', priority: 0.75, title: 'Generative Engine Optimization (GEO): The Complete 2026 Strategy for Technical Leaders | AbuQitmirLabs', description: 'How to structure JSON-LD entity graphs and direct answer blocks for maximum citation visibility in ChatGPT, Perplexity, and Google AI Overviews.' },
+            { url: '/news/article/hipaa-cloud-certification', changefreq: 'monthly', priority: 0.75, title: 'AbuQitmirLabs Achieves Full HIPAA & ISO 27001 Cloud Security Validation', description: 'Independent security audit confirms all custom medical software platforms built by AbuQitmirLabs meet HIPAA, HITECH, and ISO 27001 protocols.' },
+            { url: '/news/article/sub-200ms-rag-pipelines', changefreq: 'monthly', priority: 0.75, title: 'Engineering Sub-200ms RAG Pipelines with Pinecone Vector Indexing and LlamaIndex | AbuQitmirLabs', description: 'A deep dive into chunking strategies, hybrid keyword-semantic search, and LLM prompt caching that cut enterprise AI query latency in half.' },
+            { url: '/tools', changefreq: 'weekly', priority: 0.85, title: 'Free Engineering, AI Readiness & SEO Tools | AbuQitmirLabs', description: 'Free interactive software engineering, technical SEO, AI readiness, project cost estimation, and website authority tools built by AbuQitmirLabs.' },
+            { url: '/tools/project-cost-estimator', changefreq: 'weekly', priority: 0.85, title: 'AI Project Cost Estimator 2026 | Free Software & Website Pricing Calculator | AbuQitmirLabs', description: 'Calculate instant project costs for custom software, websites, mobile apps, and AI agents across 8 countries with a free PDF breakdown.' },
+            { url: '/tools/website-audit', changefreq: 'weekly', priority: 0.85, title: 'Free Technical Website Audit & Performance Analyzer | AbuQitmirLabs', description: 'Run an instant technical SEO, Core Web Vitals, security headers, and conversion architecture audit on your website with AbuQitmirLabs.' },
+            { url: '/tools/seo-checklist', changefreq: 'weekly', priority: 0.85, title: 'Interactive Technical & Local SEO Checklist (2026) | AbuQitmirLabs', description: 'Interactive 2026 SEO checklist covering technical crawl health, Schema.org entities, Core Web Vitals, local citations, and AI search readiness.' },
+            { url: '/tools/ai-readiness-score', changefreq: 'weekly', priority: 0.85, title: 'Enterprise AI Readiness Score & RAG Assessment Tool | AbuQitmirLabs', description: "Evaluate your organization's data infrastructure, workflow maturity, and security readiness for autonomous AI agents and RAG deployment." },
+            { url: '/tools/tech-stack-recommender', changefreq: 'weekly', priority: 0.85, title: 'Software & AI Tech Stack Recommender | AbuQitmirLabs', description: 'Get a tailored architecture recommendation across Next.js, Flutter, Node.js, Python, and vector databases based on your product scope and scale.' },
+            { url: '/tools/website-authority-analyzer', changefreq: 'weekly', priority: 0.85, title: 'Website Authority & Semantic Entity Analyzer | AbuQitmirLabs', description: "Analyze your domain's topical authority, structured data coverage, and citation signals for Google and AI answer engines." },
+            { url: '/brand-assets', changefreq: 'monthly', priority: 0.6, title: 'Official Brand Assets & Social Media Kit | AbuQitmirLabs', description: 'Download official AbuQitmirLabs brand assets, high-resolution logos, and social media banners for Google Business Profile, LinkedIn, and YouTube.' },
+            { url: '/luxury-brand-experience', changefreq: 'monthly', priority: 0.7, title: "L'Atelier De Réserve | Luxury Artisanal Tin Collection | AbuQitmirLabs", description: 'Experience old-money luxury web design: five numbered artisanal tins unveiled with Locomotive Scroll, GSAP parallax depth, and cinematic reveals.' },
+            { url: '/website-contract', changefreq: 'weekly', priority: 0.8, title: 'Free Website Contract Template | Ownership Protection | AbuQitmirLabs', description: 'Download a free, ownership-protected website contract template with full IP ownership, domain transfer, support SLAs, and clear exit clauses.' },
+            { url: '/editorial-policy', changefreq: 'yearly', priority: 0.4, title: 'Editorial Policy & Content Standards | AbuQitmirLabs', description: 'Learn about AbuQitmirLabs editorial guidelines, senior engineering review process, AI assistance disclosure, and technical accuracy standards.' },
+            { url: '/terms', changefreq: 'yearly', priority: 0.3, title: 'Terms of Service | Client Agreement & IP Policy | AbuQitmirLabs', description: 'AbuQitmirLabs terms of service: client agreements, full IP ownership, milestone payment terms, liability limits, and software delivery policies.' },
             { url: '/privacy', changefreq: 'yearly', priority: 0.3, title: 'Privacy Policy | Data Protection & Compliance | AbuQitmirLabs', description: 'AbuQitmirLabs privacy policy: how we collect, use, and protect your data. Learn about our security measures, cookie use, and GDPR/APP compliance.' },
-            { url: '/blog/content-calendar-strategy', changefreq: 'weekly', priority: 0.9, title: 'How to Build a Content Calendar That Gets Followed | AbuQitmirLabs', description: 'Content Calendar: A step-by-step guide to building a content calendar your team will actually follow. Includes templates, cadence recommendations, and tools.' },
+            { url: '/blog/content-calendar-strategy', changefreq: 'weekly', priority: 0.9, title: 'How to Build a Content Calendar That Gets Followed | AbuQitmirLabs', description: 'Step-by-step guide to building a content calendar your team will actually follow, complete with templates, publishing cadences, and workflow tools.' },
             { url: '/blog/brand-strategy-vs-logo-design-pakistan-sme', changefreq: 'weekly', priority: 0.9, title: 'Brand Strategy vs Logo Design Pakistan | AbuQitmirLabs', description: 'Brand strategy vs logo design for Pakistani SMEs: real PKR pricing (PKR 3,000–50,000 vs PKR 80,000+), deliverables, and a founder decision matrix.' },
             { url: '/blog/ai-content-vs-human-content', changefreq: 'weekly', priority: 0.9, title: 'AI Content vs Human Content 2026 | AbuQitmirLabs', description: "Learn what Google's 2026 guidelines actually say about AI content vs human content. Discover the E-E-A-T rules and how to safely rank in search." },
             { url: '/blog/startup-brand-identity-checklist', changefreq: 'weekly', priority: 0.9, title: 'The Complete Brand Identity Checklist for Startups | AbuQitmirLabs', description: 'A pre-seed and seed-stage brand identity checklist for startups. Covers positioning, visual system, voice, and launch assets in the right order.' },
           ];
+
+          const clampMetaDescription = (raw: string, maxLen = 148): string => {
+            const cleaned = (raw || '')
+              .replace(/<[^>]*>?/gm, '')
+              .trim()
+              .replace(/^(?:&quot;|["'“”])+|(?:&quot;|["'“”])+$/gi, '')
+              .replace(/["“”]/g, "'")
+              .replace(/\s+/g, ' ')
+              .trim();
+            if (cleaned.length <= maxLen) return cleaned;
+            const cut = cleaned.slice(0, maxLen - 1);
+            const lastSpace = cut.lastIndexOf(' ');
+            return `${(lastSpace > 80 ? cut.slice(0, lastSpace) : cut).replace(/[.,;:!?—–-]+$/, '')}.`;
+          };
+
+          const ensureUniqueMetaDescription = (
+            rawDesc: string,
+            routeUrl: string,
+            routeTitle: string,
+            usedSet: Set<string>
+          ): string => {
+            const cleanHeadline = (routeTitle || routeUrl)
+              .replace(/\s*\|\s*AbuQitmirLabs.*$/i, '')
+              .replace(/["“”]/g, "'")
+              .trim();
+            const isGeneric = !rawDesc || /^technical insights from abuqitmirlabs\.?$/i.test(rawDesc.trim());
+            let candidate = clampMetaDescription(
+              isGeneric
+                ? `${cleanHeadline}: practical engineering, architecture, and B2B growth analysis from AbuQitmirLabs.`
+                : rawDesc,
+              148
+            );
+            if (usedSet.has(candidate.toLowerCase())) {
+              const slugLabel = routeUrl.replace(/^\/blog\//, '').replace(/^\//, '').replace(/-/g, ' ');
+              candidate = clampMetaDescription(`${cleanHeadline} — ${ candidate.replace(/\.$/, '') } (${slugLabel}).`, 148);
+              if (usedSet.has(candidate.toLowerCase())) {
+                candidate = clampMetaDescription(`${cleanHeadline}: in-depth 2026 guide and analysis by AbuQitmirLabs (${slugLabel}).`, 148);
+              }
+            }
+            usedSet.add(candidate.toLowerCase());
+            return candidate;
+          };
 
           const fs = await import('fs');
           const path = await import('path');
@@ -196,12 +266,14 @@ export default defineConfig(({ mode }) => {
               const bestPost = (STATIC_BLOG_POSTS[canonSlug] && (STATIC_BLOG_POSTS[canonSlug].content?.length || 0) >= (post.content?.length || 0))
                 ? STATIC_BLOG_POSTS[canonSlug]
                 : post;
+              const routeTitle = (bestPost.title || canonSlug).includes('AbuQitmirLabs') ? bestPost.title : `${bestPost.title || canonSlug} | AbuQitmirLabs`;
+              const rawDesc = SEO_ROUTES_METADATA[url]?.description || bestPost.metaDescription || bestPost.excerpt || '';
               return {
                 url,
                 changefreq: 'weekly' as const,
                 priority: 0.85,
-                title: (bestPost.title || canonSlug).includes('AbuQitmirLabs') ? bestPost.title : `${bestPost.title || canonSlug} | AbuQitmirLabs`,
-                description: (bestPost.metaDescription || bestPost.excerpt || 'Technical Insights from AbuQitmirLabs.').slice(0, 155)
+                title: routeTitle,
+                description: clampMetaDescription(rawDesc || `${bestPost.title || canonSlug}: technical insights from AbuQitmirLabs.`, 148)
               };
             })
             .filter(r => {
@@ -221,13 +293,18 @@ export default defineConfig(({ mode }) => {
               seenBlogRoutes.add(url);
               return true;
             })
-            .map(post => ({
-              url: `/blog/${post.slug}`,
-              changefreq: 'weekly' as const,
-              priority: 0.85,
-              title: post.title.includes('AbuQitmirLabs') ? post.title : `${post.title} | AbuQitmirLabs`,
-              description: (post.excerpt || 'Technical Insights from AbuQitmirLabs.').slice(0, 155)
-            }));
+            .map(post => {
+              const url = `/blog/${post.slug}`;
+              const routeTitle = post.title.includes('AbuQitmirLabs') ? post.title : `${post.title} | AbuQitmirLabs`;
+              const rawDesc = SEO_ROUTES_METADATA[url]?.description || post.excerpt || '';
+              return {
+                url,
+                changefreq: 'weekly' as const,
+                priority: 0.85,
+                title: routeTitle,
+                description: clampMetaDescription(rawDesc || `${post.title}: technical insights from AbuQitmirLabs.`, 148)
+              };
+            });
 
           const contentBlogDirForRoutes = path.resolve(process.cwd(), 'content/blog');
           const markdownBlogRoutes: { url: string; changefreq: 'weekly'; priority: number; title: string; description: string }[] = [];
@@ -242,19 +319,21 @@ export default defineConfig(({ mode }) => {
                 const rawMd = fs.readFileSync(path.join(contentBlogDirForRoutes, file), 'utf-8');
                 const fmMatch = rawMd.match(/^---\s*\r?\n(\{[\s\S]*?\})\r?\n---/);
                 let parsedTitle = canonSlug;
-                let parsedDesc = 'Technical Insights from AbuQitmirLabs.';
+                let parsedDesc = '';
                 if (fmMatch) {
                   const metaObj = JSON.parse(fmMatch[1]);
                   if (metaObj.title) parsedTitle = metaObj.title;
                   if (metaObj.metaDescription || metaObj.excerpt) parsedDesc = metaObj.metaDescription || metaObj.excerpt;
                 }
                 seenBlogRoutes.add(url);
+                const routeTitle = parsedTitle.includes('AbuQitmirLabs') ? parsedTitle : `${parsedTitle} | AbuQitmirLabs`;
+                const rawDesc = SEO_ROUTES_METADATA[url]?.description || parsedDesc || `${parsedTitle}: technical insights from AbuQitmirLabs.`;
                 markdownBlogRoutes.push({
                   url,
                   changefreq: 'weekly' as const,
                   priority: 0.85,
-                  title: parsedTitle.includes('AbuQitmirLabs') ? parsedTitle : `${parsedTitle} | AbuQitmirLabs`,
-                  description: parsedDesc.slice(0, 155)
+                  title: routeTitle,
+                  description: clampMetaDescription(rawDesc, 148)
                 });
               } catch {}
             }
@@ -266,7 +345,15 @@ export default defineConfig(({ mode }) => {
             return arr.findIndex(x => x.url === b.url) === idx;
           });
 
-          const routes = [...dedupedBaseRoutes, ...staticBlogRoutes, ...dynamicRoutes, ...markdownBlogRoutes];
+          const usedMetaDescriptions = new Set<string>();
+          const routes = [...dedupedBaseRoutes, ...staticBlogRoutes, ...dynamicRoutes, ...markdownBlogRoutes].map(r => {
+            const preferredDesc = SEO_ROUTES_METADATA[r.url]?.description || r.description || '';
+            const uniqueDesc = ensureUniqueMetaDescription(preferredDesc, r.url, r.title, usedMetaDescriptions);
+            return {
+              ...r,
+              description: uniqueDesc
+            };
+          });
 
           if (!fs.existsSync(indexHtmlPath)) return;
           
@@ -596,17 +683,7 @@ export default defineConfig(({ mode }) => {
             
             let routeHtml = baseHtml;
             const safeTitle = route.title.replace(/&/g, '&amp;');
-            let strippedDesc = (SEO_ROUTES_METADATA[route.url]?.description || route.description || '')
-              .trim()
-              .replace(/^(?:&quot;|["'“”])+|(?:&quot;|["'“”])+$/gi, '')
-              .replace(/["“”]/g, "'")
-              .replace(/\s+/g, ' ')
-              .trim();
-            if (strippedDesc.length > 152) {
-              const cut = strippedDesc.slice(0, 150);
-              const lastSpace = cut.lastIndexOf(' ');
-              strippedDesc = `${(lastSpace > 100 ? cut.slice(0, lastSpace) : cut).replace(/[.,;:!?-]+$/, '')}.`;
-            }
+            const strippedDesc = clampMetaDescription(route.description || '', 148);
             const safeDesc = strippedDesc.replace(/"/g, '&quot;').replace(/&/g, '&amp;');
             
             routeHtml = routeHtml.replace(/<title\b[^>]*>[^<]*<\/title>/gi, '').replace('</head>', `  <title data-rh="true">${safeTitle}</title>\n</head>`);
