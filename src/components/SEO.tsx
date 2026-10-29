@@ -19,6 +19,7 @@ export interface SEOProps {
   twitterDescription?: string;
   twitterImage?: string;
   robots?: string;
+  schema?: Record<string, any> | Array<Record<string, any>>;
 }
 
 const SITE_URL = 'https://www.abuqitmirlabs.tech';
@@ -43,6 +44,7 @@ export const SEO: React.FC<SEOProps> = ({
   twitterDescription,
   twitterImage,
   robots,
+  schema,
 }) => {
   const { pathname } = useLocation();
   const canonicalPath = getCanonicalPath(pathname);
@@ -127,65 +129,9 @@ export const SEO: React.FC<SEOProps> = ({
     routeMeta?.robots ||
     'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1';
 
-  // Synchronize head attributes in-place and guarantee strictly ONE <title> and ONE <script type="application/ld+json"> tag in <head>
+  // Safely update <head> tags in-place WITHOUT calling .remove() or removeChild() on React 19 / Helmet managed DOM nodes
   useEffect(() => {
-    const isReactManagedNode = (node: Element) =>
-      node.getAttribute('data-rh') === 'true' ||
-      Object.keys(node).some(
-        (k) => k.startsWith('__reactFiber$') || k.startsWith('__reactProps$')
-      );
-
-    const deduplicateTitleTags = () => {
-      const titleNodes = Array.from(document.head.querySelectorAll('title'));
-      if (titleNodes.length > 1) {
-        const reactTitles = titleNodes.filter(isReactManagedNode);
-        if (reactTitles.length > 0) {
-          // Remove all non-React static/orphan <title> tags and keep only the latest React Helmet <title>
-          const keepNode = reactTitles[reactTitles.length - 1];
-          titleNodes.forEach((node) => {
-            if (node !== keepNode) {
-              node.remove();
-            }
-          });
-        } else {
-          // Keep only the last <title> tag
-          for (let i = 0; i < titleNodes.length - 1; i++) {
-            titleNodes[i].remove();
-          }
-        }
-      }
-    };
-
-    const deduplicateJsonLdScripts = () => {
-      const ldNodes = Array.from(
-        document.head.querySelectorAll('script[type="application/ld+json"]')
-      );
-      if (ldNodes.length > 1) {
-        const reactLdNodes = ldNodes.filter(
-          (node) => isReactManagedNode(node) || node.getAttribute('data-rh') === 'true'
-        );
-        // Prefer the script that matches the current canonical URL or is the latest React Helmet script
-        const matchingCanonicalNode =
-          ldNodes
-            .slice()
-            .reverse()
-            .find((node) => (node.textContent || '').includes(resolvedCanonical)) ||
-          (reactLdNodes.length > 0
-            ? reactLdNodes[reactLdNodes.length - 1]
-            : ldNodes[ldNodes.length - 1]);
-
-        ldNodes.forEach((node) => {
-          if (node !== matchingCanonicalNode) {
-            node.remove();
-          }
-        });
-      }
-    };
-
     const syncHeadInPlace = () => {
-      deduplicateTitleTags();
-      deduplicateJsonLdScripts();
-
       if (resolvedTitle) {
         if (document.title !== resolvedTitle) {
           document.title = resolvedTitle;
@@ -193,31 +139,28 @@ export const SEO: React.FC<SEOProps> = ({
         const titleNodes = document.head.querySelectorAll('title');
         if (titleNodes.length === 0) {
           const newTitle = document.createElement('title');
-          newTitle.setAttribute('data-rh', 'true');
           newTitle.textContent = resolvedTitle;
           document.head.appendChild(newTitle);
         } else {
-          if (titleNodes[0].textContent !== resolvedTitle) {
-            titleNodes[0].textContent = resolvedTitle;
-          }
+          titleNodes.forEach((node) => {
+            if (node.textContent !== resolvedTitle) {
+              node.textContent = resolvedTitle;
+            }
+          });
         }
       }
 
       const updateMetaByName = (name: string, content?: string) => {
         if (!content) return;
-        const nodes = Array.from(document.head.querySelectorAll(`meta[name="${name}"]`));
-        if (nodes.length > 1) {
-          const reactNodes = nodes.filter(isReactManagedNode);
-          const keepNode = reactNodes.length > 0 ? reactNodes[reactNodes.length - 1] : nodes[nodes.length - 1];
+        const nodes = document.head.querySelectorAll(`meta[name="${name}"]`);
+        if (nodes.length > 0) {
           nodes.forEach((node) => {
-            if (node !== keepNode) node.remove();
+            if (node.getAttribute('content') !== content) {
+              node.setAttribute('content', content);
+            }
           });
-          keepNode.setAttribute('content', content);
-        } else if (nodes.length === 1) {
-          nodes[0].setAttribute('content', content);
         } else {
           const meta = document.createElement('meta');
-          meta.setAttribute('data-rh', 'true');
           meta.setAttribute('name', name);
           meta.setAttribute('content', content);
           document.head.appendChild(meta);
@@ -226,41 +169,50 @@ export const SEO: React.FC<SEOProps> = ({
 
       const updateMetaByProperty = (prop: string, content?: string) => {
         if (!content) return;
-        const nodes = Array.from(document.head.querySelectorAll(`meta[property="${prop}"]`));
-        if (nodes.length > 1) {
-          const reactNodes = nodes.filter(isReactManagedNode);
-          const keepNode = reactNodes.length > 0 ? reactNodes[reactNodes.length - 1] : nodes[nodes.length - 1];
+        const nodes = document.head.querySelectorAll(`meta[property="${prop}"]`);
+        if (nodes.length > 0) {
           nodes.forEach((node) => {
-            if (node !== keepNode) node.remove();
+            if (node.getAttribute('content') !== content) {
+              node.setAttribute('content', content);
+            }
           });
-          keepNode.setAttribute('content', content);
-        } else if (nodes.length === 1) {
-          nodes[0].setAttribute('content', content);
         } else {
           const meta = document.createElement('meta');
-          meta.setAttribute('data-rh', 'true');
           meta.setAttribute('property', prop);
           meta.setAttribute('content', content);
           document.head.appendChild(meta);
         }
       };
 
-      const canonicalLinks = Array.from(document.head.querySelectorAll('link[rel="canonical"]'));
-      if (canonicalLinks.length > 1) {
-        const reactLinks = canonicalLinks.filter(isReactManagedNode);
-        const keepLink = reactLinks.length > 0 ? reactLinks[reactLinks.length - 1] : canonicalLinks[canonicalLinks.length - 1];
+      const canonicalLinks = document.head.querySelectorAll('link[rel="canonical"]');
+      if (canonicalLinks.length > 0) {
         canonicalLinks.forEach((link) => {
-          if (link !== keepLink) link.remove();
+          if (link.getAttribute('href') !== resolvedCanonical) {
+            link.setAttribute('href', resolvedCanonical);
+          }
         });
-        keepLink.setAttribute('href', resolvedCanonical);
-      } else if (canonicalLinks.length === 1) {
-        canonicalLinks[0].setAttribute('href', resolvedCanonical);
       } else {
         const link = document.createElement('link');
         link.setAttribute('rel', 'canonical');
-        link.setAttribute('data-rh', 'true');
         link.setAttribute('href', resolvedCanonical);
         document.head.appendChild(link);
+      }
+
+      if (schema) {
+        const schemaJson = JSON.stringify(schema);
+        const existingLd = document.head.querySelector(
+          'script[type="application/ld+json"]'
+        );
+        if (existingLd) {
+          if (existingLd.textContent !== schemaJson) {
+            existingLd.textContent = schemaJson;
+          }
+        } else {
+          const script = document.createElement('script');
+          script.setAttribute('type', 'application/ld+json');
+          script.textContent = schemaJson;
+          document.head.appendChild(script);
+        }
       }
 
       updateMetaByName('description', resolvedDescription);
@@ -279,21 +231,10 @@ export const SEO: React.FC<SEOProps> = ({
     };
 
     syncHeadInPlace();
-    const timer = setTimeout(syncHeadInPlace, 30);
-
-    const observer = new MutationObserver(() => {
-      if (document.head.querySelectorAll('title').length > 1) {
-        deduplicateTitleTags();
-      }
-      if (document.head.querySelectorAll('script[type="application/ld+json"]').length > 1) {
-        deduplicateJsonLdScripts();
-      }
-    });
-    observer.observe(document.head, { childList: true });
+    const timer = setTimeout(syncHeadInPlace, 40);
 
     return () => {
       clearTimeout(timer);
-      observer.disconnect();
     };
   }, [
     pathname,
@@ -311,6 +252,7 @@ export const SEO: React.FC<SEOProps> = ({
     resolvedTwitterTitle,
     resolvedTwitterDescription,
     resolvedTwitterImage,
+    schema,
   ]);
 
   return null;
