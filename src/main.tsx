@@ -13,10 +13,11 @@ if (container) {
   // Always use createRoot — never hydrateRoot.
   container.innerHTML = '';
 
-  // Remove any static <title> tag from <head> before mounting so that
-  // only the dynamic React Helmet <title> is present in the DOM.
+  // Keep the primary <title> tag intact and only remove extra duplicate <title> tags if present
   const staticTitleElements = document.querySelectorAll('head > title');
-  staticTitleElements.forEach((el) => el.remove());
+  staticTitleElements.forEach((el, idx) => {
+    if (idx > 0) el.remove();
+  });
 
   createRoot(container).render(
     <StrictMode>

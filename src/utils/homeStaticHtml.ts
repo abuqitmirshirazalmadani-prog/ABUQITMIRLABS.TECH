@@ -125,7 +125,7 @@ export const homeSchema = {
       "@id": "https://www.abuqitmirlabs.tech/#website",
       "url": "https://www.abuqitmirlabs.tech/",
       "name": "AbuQitmirLabs",
-      "description": "Custom Software, Web Platforms & Autonomous AI Development Agency — AbuQitmirLabs",
+      "description": "Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.",
       "publisher": {
         "@type": "Organization",
         "@id": "https://www.abuqitmirlabs.tech/#organization"
@@ -298,21 +298,15 @@ export const homeInitialHtml = `
 
     <div class="relative z-10 max-w-7xl mx-auto w-full space-y-8">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 border border-[#ccff00]/30 bg-[#ccff00]/10 text-[#ccff00] font-mono text-xs font-semibold tracking-widest uppercase rounded-full">
-        <span>✦ Award-Winning Software Development Agency ✦</span>
+        <span>✦ Growth Engineering Firm | Custom Software &amp; AI ✦</span>
       </div>
 
       <h1 class="font-serif text-white font-light text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight">
-        Custom Software Development Company &amp; <br />
-        <span class="italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-[#ccff00] to-emerald-300">
-          AI Agency
-        </span> 
-        <span class="font-sans font-light text-3xl sm:text-5xl md:text-6xl text-white/90 block sm:inline">
-          | AbuQitmirLabs
-        </span>
+        Growth Engineering Firm | Custom Software &amp; AI | AbuQitmirLabs
       </h1>
 
       <p class="text-neutral-300 text-lg md:text-xl max-w-3xl leading-relaxed font-light">
-        As a dedicated custom software development company and AI agency based in Karachi, we use AI to build fast without hiding behind it. Every line of code, every architecture decision, and every deployment for our US, UK, Canadian, and Australian clients is personally engineered and reviewed—not generated and shipped unchecked.
+        Growth engineering firm for B2B companies. Custom software, AI automation &amp; performance marketing engineered as one revenue system. We connect marketing, sales, and product data into one measurable growth engine using custom software, AI agents, and modern web platforms.
       </p>
 
       <div class="flex flex-wrap gap-4 pt-4">

@@ -122,6 +122,7 @@ fs.writeFileSync(path.join(spaShellDir, 'index.html'), spaShellContent, 'utf8');
 
 const routes = [
   '/',
+  '/growth-engineering',
   '/about',
   '/about/our-company',
   '/about/our-team',
@@ -438,7 +439,7 @@ for (const routeUrl of allRoutes) {
       }
     }
 
-    const titleToUse = (seo && seo.title) || 'AbuQitmirLabs | Custom Software, AI Agents & Mobile Development';
+    const titleToUse = (seo && seo.title) || 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs';
 
     // If title was not already injected via Helmet/headTags, inject it now with data-rh="true"
     if (!/<title\b/i.test(html)) {

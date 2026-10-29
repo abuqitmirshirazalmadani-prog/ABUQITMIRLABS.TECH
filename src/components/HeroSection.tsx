@@ -174,11 +174,11 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
           {/* Left Title & Buttons */}
           <div className="lg:col-span-8 space-y-6">
             <span className="text-[#C8EB5F] text-[11px] sm:text-xs font-mono font-bold tracking-[0.3em] uppercase block">
-              ✦ Award-Winning Software Development Agency ✦
+              ✦ Growth Engineering Firm | Custom Software &amp; AI ✦
             </span>
 
             <h1 className="font-serif text-white font-light text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
-              Growth Engineering for Modern Businesses
+              Growth Engineering Firm | Custom Software &amp; AI | AbuQitmirLabs
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-[#C8EB5F] font-mono tracking-wide font-medium">
@@ -187,7 +187,7 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
 
             <div className="text-neutral-300 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-light space-y-4">
               <p>
-                AbuQitmirLabs is a growth engineering agency helping B2B companies build revenue infrastructure. We connect marketing, sales, and product data into one measurable growth engine using custom software, AI agents, and modern web platforms.
+                Growth engineering firm for B2B companies. Custom software, AI automation &amp; performance marketing engineered as one revenue system. We connect marketing, sales, and product data into one measurable growth engine using custom software, AI agents, and modern web platforms.
               </p>
               <p>
                 Trusted by founders across US, UK, Canada, Australia, Poland, Saudi Arabia, UAE, Qatar, and Kuwait.

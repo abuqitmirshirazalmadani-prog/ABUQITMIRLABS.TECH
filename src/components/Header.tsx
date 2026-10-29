@@ -29,7 +29,6 @@ const Header = () => {
     }, [location.pathname]);
     const navLinks = [
         { name: 'Home', href: '/' },
-        { name: 'Growth Engineering', href: '/growth-engineering' },
         { 
             name: 'Services', 
             href: '/#services',
@@ -142,7 +141,11 @@ const Header = () => {
                                         aria-expanded={activeDropdown === link.name}
                                         aria-label={`${link.name} Submenu`}
                                     >
-                                        <span className="text-xs xl:text-sm font-semibold text-gray-300 hover:text-white transition-colors whitespace-nowrap">
+                                        <span className={`text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap ${
+                                            link.dropdown.some((sub: any) => sub.href === location.pathname)
+                                                ? 'text-[#ccff00]'
+                                                : 'text-gray-300 hover:text-white'
+                                        }`}>
                                             {link.name}
                                         </span>
                                         <ChevronDown className="w-3.5 h-3.5 text-gray-400 group-hover:text-white transition-colors" />
@@ -187,7 +190,9 @@ const Header = () => {
                                                                 key={sub.name}
                                                                 to={sub.href}
                                                                 className={`block px-4 py-2 text-xs xl:text-sm transition-colors ${
-                                                                    sub.isTool
+                                                                    location.pathname === sub.href
+                                                                        ? 'text-[#ccff00] font-bold bg-white/5'
+                                                                        : sub.isTool
                                                                         ? 'text-white hover:text-[#ccff00] hover:bg-white/5 flex items-center justify-between'
                                                                         : 'text-gray-300 hover:text-white hover:bg-white/10'
                                                                 }`}

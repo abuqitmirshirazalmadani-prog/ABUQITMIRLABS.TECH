@@ -130,6 +130,7 @@ export const SEO: React.FC<SEOProps> = ({
   // Synchronize head attributes in-place and guarantee strictly ONE <title> and ONE <script type="application/ld+json"> tag in <head>
   useEffect(() => {
     const isReactManagedNode = (node: Element) =>
+      node.getAttribute('data-rh') === 'true' ||
       Object.keys(node).some(
         (k) => k.startsWith('__reactFiber$') || k.startsWith('__reactProps$')
       );
@@ -186,10 +187,16 @@ export const SEO: React.FC<SEOProps> = ({
       deduplicateJsonLdScripts();
 
       if (resolvedTitle) {
+        if (document.title !== resolvedTitle) {
+          document.title = resolvedTitle;
+        }
         const titleNodes = document.head.querySelectorAll('title');
         if (titleNodes.length === 0) {
-          document.title = resolvedTitle;
-        } else if (titleNodes.length === 1) {
+          const newTitle = document.createElement('title');
+          newTitle.setAttribute('data-rh', 'true');
+          newTitle.textContent = resolvedTitle;
+          document.head.appendChild(newTitle);
+        } else {
           if (titleNodes[0].textContent !== resolvedTitle) {
             titleNodes[0].textContent = resolvedTitle;
           }
@@ -208,6 +215,12 @@ export const SEO: React.FC<SEOProps> = ({
           keepNode.setAttribute('content', content);
         } else if (nodes.length === 1) {
           nodes[0].setAttribute('content', content);
+        } else {
+          const meta = document.createElement('meta');
+          meta.setAttribute('data-rh', 'true');
+          meta.setAttribute('name', name);
+          meta.setAttribute('content', content);
+          document.head.appendChild(meta);
         }
       };
 
@@ -223,6 +236,12 @@ export const SEO: React.FC<SEOProps> = ({
           keepNode.setAttribute('content', content);
         } else if (nodes.length === 1) {
           nodes[0].setAttribute('content', content);
+        } else {
+          const meta = document.createElement('meta');
+          meta.setAttribute('data-rh', 'true');
+          meta.setAttribute('property', prop);
+          meta.setAttribute('content', content);
+          document.head.appendChild(meta);
         }
       };
 
@@ -236,6 +255,12 @@ export const SEO: React.FC<SEOProps> = ({
         keepLink.setAttribute('href', resolvedCanonical);
       } else if (canonicalLinks.length === 1) {
         canonicalLinks[0].setAttribute('href', resolvedCanonical);
+      } else {
+        const link = document.createElement('link');
+        link.setAttribute('rel', 'canonical');
+        link.setAttribute('data-rh', 'true');
+        link.setAttribute('href', resolvedCanonical);
+        document.head.appendChild(link);
       }
 
       updateMetaByName('description', resolvedDescription);

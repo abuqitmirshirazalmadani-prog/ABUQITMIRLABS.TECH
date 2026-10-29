@@ -33,16 +33,9 @@ export function renderStaticHeader(activePath: string = '/'): string {
         </a>
       </div>
 
-      <!-- Growth Engineering -->
-      <div class="relative group">
-        <a href="/growth-engineering" class="text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap ${activePath === '/growth-engineering' ? 'text-[#ccff00]' : 'text-gray-300 hover:text-white'}">
-          Growth Engineering
-        </a>
-      </div>
-
       <!-- Services Dropdown -->
       <div class="relative group">
-        <a href="/#services" class="flex items-center gap-1 cursor-pointer py-4 text-xs xl:text-sm font-semibold text-gray-300 hover:text-white transition-colors whitespace-nowrap" aria-label="Services Submenu">
+        <a href="/#services" class="flex items-center gap-1 cursor-pointer py-4 text-xs xl:text-sm font-semibold ${activePath === '/growth-engineering' ? 'text-[#ccff00]' : 'text-gray-300 hover:text-white'} transition-colors whitespace-nowrap" aria-label="Services Submenu">
           <span>Services</span>
           <svg class="w-3.5 h-3.5 text-gray-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </a>

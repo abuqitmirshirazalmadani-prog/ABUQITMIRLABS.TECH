@@ -6,6 +6,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 // Eagerly import the key pages for SSG pre-rendering
 import HomePage from './pages/HomePage';
+import GrowthEngineeringPage from './pages/GrowthEngineeringPage';
 import CustomSoftwarePage from './pages/CustomSoftwarePage';
 import MobileAppDevelopmentPage from './pages/MobileAppDevelopmentPage';
 import WebDevelopmentPage from './pages/WebDevelopmentPage';
@@ -128,6 +129,7 @@ export function renderFullApp(url: string = '/') {
               <Route path="/news/press-releases" element={<PressReleasesPage />} />
               <Route path="/news/industry-insights" element={<IndustryInsightsPage />} />
               <Route path="/news/all" element={<AllNewsPage />} />
+              <Route path="/growth-engineering" element={<GrowthEngineeringPage />} />
               <Route path="/custom-software" element={<CustomSoftwarePage />} />
               <Route path="/mobile-app-development" element={<MobileAppDevelopmentPage />} />
               <Route path="/web-development" element={<WebDevelopmentPage />} />
