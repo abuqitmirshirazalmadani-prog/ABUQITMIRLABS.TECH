@@ -260,7 +260,7 @@ export default function ProjectCostEstimatorPage() {
       <main id="main-content" className="pt-28 md:pt-36 pb-24 font-sans">
         
         {/* HERO SECTION */}
-        <section className="max-w-[1240px] mx-auto px-6 md:px-12 text-center">
+        <section className="max-w-[1240px] mx-auto px-6 md:px-12 text-center animate-enter">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="flex items-center justify-center gap-2 text-xs text-neutral-400 font-mono uppercase tracking-wider mb-6">
             <Link to="/" className="hover:text-white transition-colors">Home</Link>
@@ -276,11 +276,11 @@ export default function ProjectCostEstimatorPage() {
             <span>100% Free · No Signup Required · 2026 Real Market Rates</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white max-w-4xl mx-auto leading-[1.1] mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white max-w-4xl mx-auto leading-[1.1] mb-6 animate-enter-delay-1">
             AI-Powered <span className="text-[#ccff00]">Project Cost</span> Estimator
           </h1>
 
-          <p className="text-neutral-300 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed font-light mb-8">
+          <p className="text-neutral-300 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed font-light mb-8 animate-enter-delay-2">
             Get instant, algorithmic and AI-grounded cost estimates for websites, custom software, and autonomous AI agents. Real market rates across 8 countries with transparent phase-wise breakdowns.
           </p>
 

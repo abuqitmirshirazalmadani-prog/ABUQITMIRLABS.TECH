@@ -169,7 +169,7 @@ const AboutPage = () => {
         <div className="absolute top-0 left-0 w-full h-[100vh] bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.04)_0%,transparent_70%)] pointer-events-none z-0" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-500/5 blur-[120px] pointer-events-none rounded-full" />
         
-        <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
+        <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10 animate-enter">
           <div className="lg:col-span-12 mb-12">
              <motion.div 
                initial={{ opacity: 0, scale: 0.9 }}
@@ -184,7 +184,7 @@ const AboutPage = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-serif font-light text-white tracking-tighter leading-[0.98] mb-8"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-serif font-light text-white tracking-tighter leading-[0.98] mb-8 animate-enter-delay-1"
              >
                 We Were Engineers First. <br />
                 <span className="text-zinc-600 font-serif italic">Now We Engineer Growth.</span>

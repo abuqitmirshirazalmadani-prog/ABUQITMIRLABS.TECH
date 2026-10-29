@@ -137,7 +137,7 @@ const CanadaMarketPage = () => {
       <section className="relative min-h-[90vh] flex flex-col justify-center items-center px-6 pt-32 md:pt-40 md:px-10 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),transparent_34%)] pointer-events-none"></div>
         
-        <div className="relative mx-auto max-w-7xl w-full">
+        <div className="relative mx-auto max-w-7xl w-full animate-enter">
           <div className="flex flex-col gap-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -155,7 +155,7 @@ const CanadaMarketPage = () => {
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter text-white uppercase mb-8"
+              className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter text-white uppercase mb-8 animate-enter-delay-1"
             >
               Digital Engineering <br />
               <span className="text-[#ff5b36]">for The Great White North</span>

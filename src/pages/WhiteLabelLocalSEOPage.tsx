@@ -235,16 +235,16 @@ export default function WhiteLabelLocalSEOPage() {
 
                 {/* Hero Section */}
                 <section className="px-6 md:px-12 max-w-7xl mx-auto py-16 md:py-24 border-b border-white/10">
-                    <div className="max-w-4xl">
+                    <div className="max-w-4xl animate-enter">
                         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] text-xs font-mono font-bold tracking-widest uppercase mb-6">
                             <Building2 className="w-3.5 h-3.5" />
                             AbuQitmirLabs .TECH — Agency Partner Programme
                         </div>
-                        <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-medium tracking-tight text-white leading-[1.1] mb-8">
+                        <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-medium tracking-tight text-white leading-[1.1] mb-8 animate-enter animate-enter-delay-1">
                             White Label Local SEO Your Clients <br />
                             <em className="text-[#ccff00] italic font-normal">Never See Coming</em>
                         </h1>
-                        <p className="text-lg md:text-xl text-zinc-300 font-sans leading-relaxed mb-10 max-w-4xl">
+                        <p className="text-lg md:text-xl text-zinc-300 font-sans leading-relaxed mb-10 max-w-4xl animate-enter animate-enter-delay-2">
                             Fully brandable local SEO delivery — citations, GBP optimization, and polished PDF reports — all under your agency name. Starting from our <Link to="/" className="text-[#ccff00] hover:underline font-medium">home page</Link>, we empower digital agencies to scale fulfillment without overhead.
                         </p>
                         <div className="flex flex-wrap gap-4 items-center">

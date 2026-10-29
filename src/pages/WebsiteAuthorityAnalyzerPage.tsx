@@ -370,7 +370,7 @@ export const WebsiteAuthorityAnalyzerPage: React.FC = () => {
           <section className="relative pt-8 pb-14 md:pt-12 md:pb-18 border-b border-white/5 overflow-hidden">
             <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#ccff00]/5 blur-[130px] pointer-events-none rounded-full" />
 
-            <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10 animate-enter">
               {/* Breadcrumbs */}
               <nav className="flex items-center justify-center space-x-2 text-xs text-neutral-400 mb-6 font-mono">
                 <Link to="/" className="hover:text-white transition-colors">Home</Link>
@@ -387,12 +387,12 @@ export const WebsiteAuthorityAnalyzerPage: React.FC = () => {
               </div>
 
               {/* Headline */}
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.1] mb-6">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.1] mb-6 animate-enter animate-enter-delay-1">
                 Website <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] via-white to-[#ccff00]">Authority Analyzer</span>
               </h1>
 
               {/* Subheadline */}
-              <p className="text-base sm:text-lg text-neutral-300 max-w-2xl mx-auto leading-relaxed mb-8">
+              <p className="text-base sm:text-lg text-neutral-300 max-w-2xl mx-auto leading-relaxed mb-8 animate-enter animate-enter-delay-2">
                 Audit any domain's authority score, tenure age, Core Web Vitals quality, and security trust signals in seconds. Get a tailored backlink strategy roadmap — completely free.
               </p>
 

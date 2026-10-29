@@ -521,7 +521,7 @@ const ContentWritingPage = () => {
         {/* Soft atmospheric radial backing */}
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[#ccff00]/5 rounded-full blur-[140px] pointer-events-none" />
         
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12 w-full relative z-10 text-center">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12 w-full relative z-10 text-center animate-enter">
             <motion.div 
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -536,7 +536,7 @@ const ContentWritingPage = () => {
                 initial={{ opacity: 0, y: 25 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.9 }}
-                className="text-4xl md:text-6xl lg:text-8xl font-serif leading-[1.05] tracking-tight text-white mb-10"
+                className="text-4xl md:text-6xl lg:text-8xl font-serif leading-[1.05] tracking-tight text-white mb-10 animate-enter-delay-1"
             >
                 Content Writing Services: <br />
                 <span className="text-neutral-400 italic font-light">Words That Drive Authority, Search Visibility &amp; Conversions</span>

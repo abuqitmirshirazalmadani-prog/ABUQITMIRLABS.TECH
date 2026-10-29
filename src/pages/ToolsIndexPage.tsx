@@ -302,7 +302,7 @@ const ToolsIndexPage: React.FC = () => {
 
       <main id="main-content" className="pt-28 md:pt-36 pb-20">
         {/* ═══════════════ HERO SECTION ═══════════════ */}
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 text-center animate-enter">
           {/* Breadcrumbs */}
           <nav aria-label="Breadcrumb" className="inline-flex items-center gap-2 text-xs font-mono text-neutral-400 mb-8">
             <Link to="/" className="hover:text-[#ccff00] transition-colors">
@@ -321,7 +321,7 @@ const ToolsIndexPage: React.FC = () => {
           </div>
 
           {/* Headline */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif italic text-white tracking-tight leading-[1.08] max-w-4xl mx-auto mb-6">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif italic text-white tracking-tight leading-[1.08] max-w-4xl mx-auto mb-6 animate-enter animate-enter-delay-1">
             Free Engineering &amp; AI Tools <br className="hidden sm:inline" />
             <span className="not-italic font-sans font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-200 to-[#ccff00]">
               for Modern Businesses
@@ -329,7 +329,7 @@ const ToolsIndexPage: React.FC = () => {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-neutral-300 text-base sm:text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed mb-10">
+          <p className="text-neutral-300 text-base sm:text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed mb-10 animate-enter animate-enter-delay-2">
             Plan smarter, audit faster, and optimize better with our suite of free tools. Built by AbuQitmirLabs — no signup, no credit card, no artificial limits.
           </p>
 

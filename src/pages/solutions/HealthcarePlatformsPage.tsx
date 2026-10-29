@@ -353,12 +353,12 @@ const HealthcarePlatformsPage = () => {
         <section className="relative py-16 md:py-24 overflow-hidden border-b border-white/10" aria-labelledby="hero-heading">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(16,185,129,0.08),transparent_50%)] pointer-events-none" />
           
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="max-w-7xl mx-auto px-6 relative z-10 animate-enter">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-400 text-xs font-mono uppercase tracking-widest mb-8">
               <HeartPulse className="w-4 h-4 text-emerald-400" /> Healthcare Technology Solutions &amp; Software Engineering
             </div>
 
-            <h1 id="hero-heading" className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08] mb-8 max-w-5xl">
+            <h1 id="hero-heading" className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08] mb-8 max-w-5xl animate-enter-delay-1">
               Healthcare Software Solutions for Modern Healthcare
             </h1>
 

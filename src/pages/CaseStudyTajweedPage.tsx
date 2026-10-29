@@ -75,7 +75,7 @@ export default function CaseStudyTajweedPage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-zinc-900/40 via-black to-black pointer-events-none" />
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-emerald-500/5 blur-[120px] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 text-center space-y-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 text-center space-y-8 animate-enter">
           
           {/* Badges row */}
           <div className="flex flex-wrap items-center justify-center gap-3">
@@ -99,7 +99,7 @@ export default function CaseStudyTajweedPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="font-serif italic font-light text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight max-w-5xl mx-auto tracking-tight"
+            className="font-serif italic font-light text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight max-w-5xl mx-auto tracking-tight animate-enter-delay-1"
           >
             How We Built the World's First AI-Powered Quran Learning Platform
           </motion.h1>

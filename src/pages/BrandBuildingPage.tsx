@@ -507,7 +507,7 @@ const BrandBuildingPage: React.FC = () => {
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#ccff00]/5 blur-[140px] pointer-events-none rounded-full" />
         <div className="absolute top-1/3 -right-20 w-[450px] h-[350px] bg-amber-500/5 blur-[120px] pointer-events-none rounded-full" />
 
-        <div className="w-full max-w-7xl mx-auto px-6 relative z-10">
+        <div className="w-full max-w-7xl mx-auto px-6 relative z-10 animate-enter">
           <div className="max-w-4xl mx-auto text-center">
             {/* Live Status Pill */}
             <motion.div 
@@ -527,7 +527,7 @@ const BrandBuildingPage: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-white leading-[1.08] mb-8"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-white leading-[1.08] mb-8 animate-enter-delay-1"
             >
               Brand Building Services for <br className="hidden sm:inline" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-200 to-neutral-400">

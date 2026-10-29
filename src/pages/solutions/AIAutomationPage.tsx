@@ -126,18 +126,18 @@ const AIAutomationPage = () => {
 
         {/* Hero Section */}
         <section aria-labelledby="hero-title" className="relative py-16 md:py-24 overflow-hidden border-b border-white/10">
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="max-w-7xl mx-auto px-6 relative z-10 animate-enter">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/20 text-[#ccff00] text-xs font-mono mb-6 uppercase tracking-wider">
               <Cpu className="w-3.5 h-3.5" />
               <span>Autonomous Business Intelligence &amp; Intelligent Workflows</span>
             </div>
 
-            <h1 id="hero-title" className="text-4xl md:text-7xl font-extrabold tracking-tight mb-8 max-w-5xl leading-[1.08]">
+            <h1 id="hero-title" className="text-4xl md:text-7xl font-extrabold tracking-tight mb-8 max-w-5xl leading-[1.08] animate-enter-delay-1">
               AI Automation Solutions for Modern Businesses
             </h1>
 
             {/* Direct Answer Box (AEO Direct Answer 01) */}
-            <div className="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 md:p-8 rounded-r-xl max-w-4xl mb-8 shadow-[0_0_30px_rgba(204,255,0,0.05)]">
+            <div className="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 md:p-8 rounded-r-xl max-w-4xl mb-8 shadow-[0_0_30px_rgba(204,255,0,0.05)] animate-enter-delay-2">
               <h2 className="text-xs font-mono uppercase tracking-widest text-[#ccff00] mb-2 font-bold">Direct Answer: What Is AI Automation?</h2>
               <p className="text-gray-200 text-base md:text-lg leading-relaxed font-normal">
                 <strong>AI automation</strong> uses intelligent software, AI agents, APIs, and workflow orchestration to automate repetitive business processes, connect business systems, retrieve information from company data, and assist teams with faster decision-making.

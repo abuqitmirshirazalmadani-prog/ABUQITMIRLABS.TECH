@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Star, ShieldCheck, ArrowRight, CheckCircle2, Code2, Cpu, Globe2, Layers, Search, Sparkles, Terminal, Smartphone } from 'lucide-react';
@@ -162,39 +162,28 @@ export default function HomePage() {
 
   return (
     <main id="main-content" className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
-      <Helmet>
-        <title>Growth Engineering Firm | Custom Software &amp; AI | AbuQitmirLabs</title>
-        <meta name="description" content="Growth engineering firm for B2B companies. Custom software, AI automation &amp; performance marketing engineered as one revenue system." />
-        <link rel="canonical" href="https://www.abuqitmirlabs.tech/" />
-        <link rel="alternate" hrefLang="x-default" href="https://www.abuqitmirlabs.tech/" />
-        <link rel="alternate" hrefLang="en" href="https://www.abuqitmirlabs.tech/" />
-        <link rel="preload" as="image" href="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" type="image/jpeg" fetchPriority="high" />
-        
-        <meta property="og:title" content="Growth Engineering Firm | Custom Software &amp; AI | AbuQitmirLabs" />
-        <meta property="og:description" content="Growth engineering firm for B2B companies. Custom software, AI automation &amp; performance marketing engineered as one revenue system." />
-        <meta property="og:url" content="https://www.abuqitmirlabs.tech/" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
-        <meta property="og:image:alt" content="AbuQitmirLabs Growth Engineering Firm" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Growth Engineering Firm | Custom Software &amp; AI | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Growth engineering firm for B2B companies. Custom software, AI automation &amp; performance marketing engineered as one revenue system." />
-        <meta name="twitter:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
-
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(growthEngineeringSchema)
-          }}
-        />
-      </Helmet>
+      <SEO
+        title="Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs"
+        description="Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system."
+        canonical="https://www.abuqitmirlabs.tech/"
+        ogTitle="Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs"
+        ogDescription="Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system."
+        ogImage="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg"
+        ogImageAlt="AbuQitmirLabs Growth Engineering Firm"
+        ogType="website"
+        twitterCard="summary_large_image"
+        twitterTitle="Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs"
+        twitterDescription="Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system."
+        twitterImage="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg"
+        schema={growthEngineeringSchema}
+      />
 
       <Header />
       
       <HeroSection />
       
       {/* Dynamic Animated Marquee Ribbon */}
-      <div className="relative w-full overflow-hidden py-3 bg-black">
+      <div className="relative w-full overflow-hidden py-3 bg-black animate-enter">
         <div className="overflow-hidden bg-[#B9FF66] w-full border-y-2 border-black py-4 relative">
           <div className="flex whitespace-nowrap w-max animate-marquee">
             <div className="flex gap-10 text-2xl sm:text-3xl md:text-4xl font-black tracking-tight uppercase items-center text-black px-8">

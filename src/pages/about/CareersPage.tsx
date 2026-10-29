@@ -246,17 +246,17 @@ const CareersPage = () => {
         <section className="relative py-16 md:py-24 overflow-hidden border-b border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(204,255,0,0.06),transparent_50%)] pointer-events-none" />
           
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="max-w-7xl mx-auto px-6 relative z-10 animate-enter">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[#ccff00] text-xs font-mono uppercase tracking-widest mb-8">
               <Briefcase className="w-4 h-4" /> Join Our Studio Collective
             </div>
 
-            <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 max-w-5xl">
+            <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 max-w-5xl animate-enter-delay-1">
               Careers at AbuQitmirLabs — <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] via-white to-[#88a800]">Build Software That Matters</span>
             </h1>
 
             {/* Direct Answer Block */}
-            <div className="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl max-w-4xl mb-12 shadow-2xl backdrop-blur-md">
+            <div className="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl max-w-4xl mb-12 shadow-2xl backdrop-blur-md animate-enter-delay-2">
               <p className="text-sm md:text-base text-gray-200 leading-relaxed font-mono">
                 <strong className="text-[#ccff00]">Direct Answer:</strong> AbuQitmirLabs .TECH is actively seeking senior full-stack architects, AI & RAG engineers, UI/UX motion designers, and technical SEO strategists to join our in-house collective in Karachi, Pakistan. We build high-speed, custom software solutions for international clients across the US, UK, Canada, Australia, and Europe.
               </p>

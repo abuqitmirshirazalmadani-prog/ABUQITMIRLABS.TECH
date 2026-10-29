@@ -467,7 +467,7 @@ const SkillsAcademyPage: React.FC = () => {
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[380px] bg-[#ccff00]/5 blur-[140px] pointer-events-none rounded-full" />
         <div className="absolute top-1/3 -right-20 w-[450px] h-[350px] bg-[#8b5cf6]/10 blur-[130px] pointer-events-none rounded-full" />
 
-        <div className="w-full max-w-7xl mx-auto px-6 relative z-10">
+        <div className="w-full max-w-7xl mx-auto px-6 relative z-10 animate-enter">
           <div className="max-w-4xl mx-auto text-center">
             {/* Live Status Badge */}
             <motion.div 
@@ -487,7 +487,7 @@ const SkillsAcademyPage: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-white leading-[1.08] mb-8"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-white leading-[1.08] mb-8 animate-enter animate-enter-delay-1"
             >
               Learn to Build a Brand &amp; Business Online —{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] via-white to-[#a78bfa]">
@@ -500,7 +500,7 @@ const SkillsAcademyPage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-lg sm:text-xl md:text-2xl font-light text-neutral-300 max-w-3xl mx-auto leading-relaxed mb-10"
+              className="text-lg sm:text-xl md:text-2xl font-light text-neutral-300 max-w-3xl mx-auto leading-relaxed mb-10 animate-enter animate-enter-delay-2"
             >
               Pakistan ka pehla AI-powered course jahan tum sirf website nahi — poora brand aur online business banana seekhte ho.{' '}
               <span className="text-[#ccff00] font-medium">Real projects. Real agency. Real income.</span>

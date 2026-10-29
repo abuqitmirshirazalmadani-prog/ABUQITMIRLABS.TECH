@@ -363,13 +363,13 @@ const BlogPage = () => {
             <Breadcrumbs />
             <div className="pt-32 pb-20 px-4 md:px-8 max-w-[1400px] mx-auto">
                 {/* Header Section */}
-                <div className="text-center mb-16">
+                <div className="text-center mb-16 animate-enter">
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-blue-400 text-xs font-black uppercase tracking-[0.2em] mb-6">
                         <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
                         Latest
                     </div>
-                    <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter uppercase mb-6">Discover our Insights</h1>
-                    <p className="text-zinc-400 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-8">
+                    <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter uppercase mb-6 animate-enter-delay-1">Discover our Insights</h1>
+                    <p className="text-zinc-400 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-8 animate-enter-delay-2">
                         Stay up-to-date with engineering deep-dives, AI automation strategies, SEO mastery guides, and software architecture trends.
                     </p>
 

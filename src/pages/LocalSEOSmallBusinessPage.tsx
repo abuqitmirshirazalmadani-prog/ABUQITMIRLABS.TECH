@@ -297,7 +297,7 @@ export default function LocalSEOSmallBusinessPage() {
                     {/* Background Ambient Glow */}
                     <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[#ccff00]/10 blur-[140px] pointer-events-none rounded-full" />
 
-                    <div className="relative z-10 max-w-4xl mx-auto text-center">
+                    <div className="relative z-10 max-w-4xl mx-auto text-center animate-enter">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -313,7 +313,7 @@ export default function LocalSEOSmallBusinessPage() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
-                            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-medium tracking-tight text-white leading-[1.1] mb-8"
+                            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-medium tracking-tight text-white leading-[1.1] mb-8 animate-enter-delay-1"
                         >
                             Local Search Visibility for <em className="text-[#ccff00] not-italic underline decoration-[#ccff00]/40 underline-offset-8">Small Businesses</em>
                         </motion.h1>

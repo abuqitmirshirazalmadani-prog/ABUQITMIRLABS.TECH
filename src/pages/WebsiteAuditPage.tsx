@@ -241,7 +241,7 @@ export default function WebsiteAuditPage() {
       <main id="main-content" className="pt-28 md:pt-36 pb-24">
 
         {/* 1. HERO SECTION */}
-        <section className="max-w-[1240px] mx-auto px-6 md:px-12 text-center mb-12">
+        <section className="max-w-[1240px] mx-auto px-6 md:px-12 text-center mb-12 animate-enter">
           {/* Breadcrumbs */}
           <nav className="flex items-center justify-center gap-2 text-xs font-mono text-gray-400 mb-6">
             <Link to="/" className="hover:text-[#ccff00] transition-colors">Home</Link>
@@ -257,11 +257,11 @@ export default function WebsiteAuditPage() {
             <span>100% Free · Instant Results · No Signup Required</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-[1.1] mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-[1.1] mb-6 animate-enter animate-enter-delay-1">
             Free AI-Powered <span className="text-[#ccff00]">Website Audit</span> Tool
           </h1>
 
-          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed mb-8">
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed mb-8 animate-enter animate-enter-delay-2">
             Get instant performance, Google Core Web Vitals, SEO, accessibility, and security analysis for any website — mobile and desktop, powered by Google Lighthouse and AI.
           </p>
 

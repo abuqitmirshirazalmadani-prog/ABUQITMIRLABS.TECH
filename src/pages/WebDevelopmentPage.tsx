@@ -408,7 +408,7 @@ Do not sign a website contract without these protective legal terms.
       <Breadcrumbs customItems={[{ name: 'Home', to: '/' }, { name: 'Web Development', to: '/web-development' }]} />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center pt-24 md:pt-32 pb-20 px-6 z-10 overflow-hidden">
+      <section className="relative min-h-screen flex flex-col justify-center items-center pt-24 md:pt-32 pb-20 px-6 z-10 overflow-hidden animate-enter">
         {/* Background Effects */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-blue-600/10 rounded-[100%] blur-[120px] pointer-events-none" />
         <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-indigo-600/5 rounded-[100%] blur-[120px] pointer-events-none" />
@@ -430,7 +430,7 @@ Do not sign a website contract without these protective legal terms.
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-5xl md:text-7xl lg:text-[6.5rem] font-medium tracking-tight text-white text-center mb-8 leading-[1.1] max-w-5xl"
+          className="text-5xl md:text-7xl lg:text-[6.5rem] font-medium tracking-tight text-white text-center mb-8 leading-[1.1] max-w-5xl animate-enter animate-enter-delay-1"
         >
           Custom Website Development Services for Growing Businesses <br />
           <span className="text-neutral-500">| API Development &amp; Integration in Karachi</span>
@@ -440,7 +440,7 @@ Do not sign a website contract without these protective legal terms.
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-lg md:text-xl text-neutral-400 text-center max-w-4xl mb-12 leading-relaxed font-light font-sans"
+          className="text-lg md:text-xl text-neutral-400 text-center max-w-4xl mb-12 leading-relaxed font-light font-sans animate-enter animate-enter-delay-2"
         >
           AbuQitmirLabs is a <strong>web development company</strong> providing <strong>custom web development</strong> and <strong>web development services</strong> for startups and growing businesses. From high-converting corporate sites to complex <strong>web application development</strong>, we build fast, responsive, and SEO-ready platforms using modern frontend and backend architectures (React, Next.js, TypeScript, APIs, and headless CMS). We also specialise in API development and third-party integrations in Karachi, connecting your website with Stripe, CRM, and ERP systems for seamless business operations. You can pair our web builds with modular <Link to="/custom-software" className="text-blue-400 hover:underline font-medium">Custom Software</Link> engines, expand into native <Link to="/mobile-app-development" className="text-blue-400 hover:underline font-medium">Mobile App Development</Link>, integrate autonomous <Link to="/ai-agent-development" className="text-blue-400 hover:underline font-medium">AI Agents</Link>, or maximize organic growth with our <Link to="/seo-mastery" className="text-blue-400 hover:underline font-medium">SEO Mastery</Link> and <Link to="/local-seo-for-small-business" className="text-blue-400 hover:underline font-medium">Local SEO</Link> strategies. Elevate messaging with targeted <Link to="/content-writing" className="text-blue-400 hover:underline font-medium">Content Writing</Link>, explore client <Link to="/case-studies" className="text-blue-400 hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-blue-400 hover:underline font-medium">Blog</Link>, learn more <Link to="/about" className="text-blue-400 hover:underline font-medium">about us</Link>, or <Link to="/contact" className="text-blue-400 hover:underline font-medium">contact us</Link> today.
         </motion.p>

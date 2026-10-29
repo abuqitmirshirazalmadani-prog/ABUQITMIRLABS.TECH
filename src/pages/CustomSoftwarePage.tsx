@@ -163,18 +163,18 @@ const CustomSoftwarePage: React.FC = () => {
         <section className="relative py-16 md:py-24 overflow-hidden border-b border-white/10" aria-labelledby="custom-software-hero-title">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(204,255,0,0.06),transparent_50%)] pointer-events-none" />
           
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="max-w-7xl mx-auto px-6 relative z-10 animate-enter">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[#ccff00] text-xs font-mono uppercase tracking-widest mb-6">
               <svg className="w-4 h-4 text-[#ccff00]" aria-hidden="true"><use href="/sprite.svg#icon-code" /></svg>
               Bespoke Engineering Studio
             </div>
 
-            <h1 id="custom-software-hero-title" className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 max-w-5xl text-white">
+            <h1 id="custom-software-hero-title" className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 max-w-5xl text-white animate-enter-delay-1">
               Custom Software Development for Startups &amp; SaaS Companies
             </h1>
 
             {/* Direct Answer Block for AEO/GEO */}
-            <div className="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl max-w-4xl mb-8 shadow-2xl backdrop-blur-md">
+            <div className="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl max-w-4xl mb-8 shadow-2xl backdrop-blur-md animate-enter-delay-2">
               <p className="text-sm md:text-base text-gray-200 leading-relaxed font-mono">
                 <strong className="text-[#ccff00]">Direct Answer:</strong> Custom software development is the process of building software engineered specifically for your business — designed around your exact workflows, data requirements, and integrations rather than forcing you to adapt to a generic tool. AbuQitmirLabs builds bespoke software systems that you own outright, from enterprise ERPs to AI-powered SaaS platforms.
               </p>

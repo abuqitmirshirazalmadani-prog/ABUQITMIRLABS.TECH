@@ -195,16 +195,16 @@ export default function GuestPostServicePage() {
 
                 {/* Hero Section */}
                 <section className="px-6 md:px-12 max-w-7xl mx-auto py-16 md:py-24 border-b border-white/10">
-                    <div className="max-w-4xl">
+                    <div className="max-w-4xl animate-enter">
                         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] text-xs font-mono font-bold tracking-widest uppercase mb-6">
                             <Sparkles className="w-3.5 h-3.5" />
                             AbuQitmirLabs .TECH — High-Authority Guest Post Service
                         </div>
-                        <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-medium tracking-tight text-white leading-[1.1] mb-8">
+                        <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-medium tracking-tight text-white leading-[1.1] mb-8 animate-enter-delay-1">
                             Editorial Backlinks That Move Rankings. <br />
                             <em className="text-[#ccff00] italic font-normal">Zero PBNs. Real Traffic. Editorial Only.</em>
                         </h1>
-                        <p className="text-lg md:text-xl text-zinc-300 font-sans leading-relaxed mb-10 max-w-4xl">
+                        <p className="text-lg md:text-xl text-zinc-300 font-sans leading-relaxed mb-10 max-w-4xl animate-enter-delay-2">
                             Stop burning your SEO budget on low-tier link directories and artificial PBN farms that invite Google penalties. We run manual, white-hat editorial outreach to established industry blogs, magazines, and tech portals (DA/DR 40–70) with genuine monthly search audiences.
                         </p>
                         <div className="flex flex-wrap gap-4 items-center">

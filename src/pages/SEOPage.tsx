@@ -304,7 +304,7 @@ const SEOPage = () => {
       <Breadcrumbs />
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex flex-col justify-center items-center pt-24 md:pt-32 pb-20 px-6 z-10 bg-black overflow-hidden">
+      <section className="relative min-h-[90vh] flex flex-col justify-center items-center pt-24 md:pt-32 pb-20 px-6 z-10 bg-black overflow-hidden animate-enter">
         {/* Subtle Ambient Glow */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-[#ccff00]/5 rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-purple-950/20 rounded-full blur-[120px] pointer-events-none" />
@@ -325,7 +325,7 @@ const SEOPage = () => {
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white text-center mb-10 leading-[0.95] max-w-6xl uppercase"
+          className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white text-center mb-10 leading-[0.95] max-w-6xl uppercase animate-enter-delay-1"
         >
           SEO Mastery: <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-zinc-400">Data-Driven Search</span> <br />

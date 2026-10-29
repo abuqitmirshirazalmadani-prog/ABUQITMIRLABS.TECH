@@ -626,7 +626,7 @@ export default function AIAgentDevelopmentPage() {
         {/* Hero Section */}
         <section id="ai-agent-hero" className="relative pt-20 md:pt-28 pb-20 px-6">
           <div className="mx-auto max-w-6xl">
-            <div className="text-center relative z-10 max-w-4xl mx-auto">
+            <div className="text-center relative z-10 max-w-4xl mx-auto animate-enter">
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -642,7 +642,7 @@ export default function AIAgentDevelopmentPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
-                className="text-4xl sm:text-6xl md:text-7xl font-serif font-light tracking-tight text-white mb-8 leading-[1.1]"
+                className="text-4xl sm:text-6xl md:text-7xl font-serif font-light tracking-tight text-white mb-8 leading-[1.1] animate-enter-delay-1"
               >
                 Healthcare AI Agent Development <br className="hidden sm:inline" />
                 <span className="italic font-serif text-[#ccff00] font-normal">for Smarter Healthcare Workflows</span>

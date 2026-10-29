@@ -161,7 +161,7 @@ export default function ProgrammaticSEOPage() {
           {/* Subtle Ambient Radial Glow */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[radial-gradient(circle_at_center,_rgba(204,255,0,0.06)_0%,_transparent_70%)] pointer-events-none -z-10" />
 
-          <div className="max-w-5xl mx-auto space-y-8">
+          <div className="max-w-5xl mx-auto space-y-8 animate-enter">
             {/* Meta Tags / Badges */}
             <div className="flex flex-wrap items-center gap-3">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-[#ccff00]/10 text-[#ccff00] border border-[#ccff00]/30">
@@ -179,7 +179,7 @@ export default function ProgrammaticSEOPage() {
             </div>
 
             {/* H1 Main Title */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold tracking-tight leading-[1.08] text-white">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold tracking-tight leading-[1.08] text-white animate-enter-delay-1">
               {pageData.service} for <br className="hidden sm:inline" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] via-white to-neutral-400">
                 {pageData.industry} in {pageData.location}
@@ -187,7 +187,7 @@ export default function ProgrammaticSEOPage() {
             </h1>
 
             {/* Direct Answer Box (GEO / AI Overviews Grounding) */}
-            <div className="relative p-6 sm:p-8 rounded-2xl bg-neutral-950/80 border border-[#ccff00]/30 shadow-[0_0_30px_rgba(204,255,0,0.05)]">
+            <div className="relative p-6 sm:p-8 rounded-2xl bg-neutral-950/80 border border-[#ccff00]/30 shadow-[0_0_30px_rgba(204,255,0,0.05)] animate-enter-delay-2">
               <div className="flex items-center gap-2 mb-3">
                 <span className="w-2 h-2 rounded-full bg-[#ccff00] animate-pulse" />
                 <span className="text-[11px] font-mono uppercase tracking-widest text-[#ccff00] font-semibold">

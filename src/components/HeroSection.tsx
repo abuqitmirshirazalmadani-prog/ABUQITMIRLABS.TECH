@@ -105,7 +105,7 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
       </div>
 
       {/* Hero Content Container */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 space-y-12">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 space-y-12 animate-enter">
         {/* Avatar stack + Ratings + Ticker stats */}
         <div className="space-y-4">
           <div className="flex -space-x-3 items-center">
@@ -172,7 +172,7 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
         {/* Main Headline & Call To Actions */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
           {/* Left Title & Buttons */}
-          <div className="lg:col-span-8 space-y-6">
+          <div className="lg:col-span-8 space-y-6 animate-enter-delay-1">
             <span className="text-[#C8EB5F] text-[11px] sm:text-xs font-mono font-bold tracking-[0.3em] uppercase block">
               ✦ Growth Engineering Firm | Custom Software &amp; AI ✦
             </span>
@@ -185,9 +185,9 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
               We build revenue systems, not just software.
             </p>
 
-            <div className="text-neutral-300 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-light space-y-4">
+            <div className="text-neutral-300 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-light space-y-4 animate-enter-delay-2">
               <p>
-                Growth engineering firm for B2B companies. Custom software, AI automation &amp; performance marketing engineered as one revenue system. We connect marketing, sales, and product data into one measurable growth engine using custom software, AI agents, and modern web platforms.
+                Growth engineering firm for B2B companies. Custom software, AI automation &amp; performance marketing engineered as one revenue system — uniting bespoke product architecture, autonomous AI agents, and search authority under one roof.
               </p>
               <p>
                 Trusted by founders across US, UK, Canada, Australia, Poland, Saudi Arabia, UAE, Qatar, and Kuwait.

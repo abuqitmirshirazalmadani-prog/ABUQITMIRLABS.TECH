@@ -192,7 +192,7 @@ const PakistanMarketPage = () => {
         {/* Soft Glow Background */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,91,54,0.06),transparent_40%),linear-gradient(to_bottom,rgba(255,255,255,0.02),transparent_18%,transparent_82%,rgba(255,255,255,0.02))] pointer-events-none"></div>
 
-        <div className="relative mx-auto max-w-7xl w-full">
+        <div className="relative mx-auto max-w-7xl w-full animate-enter">
           <div className="flex flex-col gap-8 md:gap-12">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -207,7 +207,7 @@ const PakistanMarketPage = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase mb-6"
+              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase mb-6 animate-enter-delay-1"
             >
               Software Engineering <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5b36] to-[#ff9d85]">For Pakistan's Digital Economy</span>

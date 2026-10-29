@@ -111,13 +111,13 @@ export const growthEngineeringInitialHtml = `
       </nav>
     </div>
     <section id="hero" class="relative pt-4 md:pt-8 pb-20 md:pb-28 overflow-hidden border-b border-white/10">
-      <div class="max-w-7xl mx-auto px-6 relative z-10 space-y-8">
+      <div class="max-w-7xl mx-auto px-6 relative z-10 space-y-8 animate-enter">
         <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-zinc-900/90 border border-[#ccff00]/30">
           <span class="w-2 h-2 rounded-full bg-[#ccff00]"></span>
           <p class="eyebrow text-xs font-mono uppercase tracking-[0.25em] text-[#ccff00] font-bold m-0">Growth Engineering Firm</p>
         </div>
-        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-light text-white leading-[1.08] tracking-tight max-w-5xl">Growth Engineering: Software, AI &amp; Marketing Engineered as <span class="text-[#ccff00] italic font-normal">One Revenue System</span></h1>
-        <div class="p-6 md:p-8 rounded-r-2xl bg-zinc-900/80 border-l-4 border-[#ccff00] border-y border-r border-y-white/10 border-r-white/10 max-w-4xl">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-light text-white leading-[1.08] tracking-tight max-w-5xl animate-enter-delay-1">Growth Engineering: Software, AI &amp; Marketing Engineered as <span class="text-[#ccff00] italic font-normal">One Revenue System</span></h1>
+        <div class="p-6 md:p-8 rounded-r-2xl bg-zinc-900/80 border-l-4 border-[#ccff00] border-y border-r border-y-white/10 border-r-white/10 max-w-4xl animate-enter-delay-2">
           <p class="lead text-lg md:text-xl text-neutral-200 leading-relaxed font-light m-0">
             <strong>Growth engineering</strong> is the discipline of building custom software, AI automation, and performance marketing as a single connected system — so every line of code, every AI workflow, and every acquisition channel is engineered around measurable revenue outcomes.
           </p>

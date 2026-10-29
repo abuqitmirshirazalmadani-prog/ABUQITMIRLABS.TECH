@@ -2510,7 +2510,7 @@ const AdminDashboard = () => {
     return (
         <div className="min-h-screen bg-black">
             <Header />
-            <div className="pt-32 pb-20 px-6">
+            <div className="pt-32 pb-20 px-6 animate-enter">
                 {renderContent()}
             </div>
             <Footer />

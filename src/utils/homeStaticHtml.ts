@@ -296,17 +296,17 @@ export const homeInitialHtml = `
       <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/80"></div>
     </div>
 
-    <div class="relative z-10 max-w-7xl mx-auto w-full space-y-8">
+    <div class="relative z-10 max-w-7xl mx-auto w-full space-y-8 animate-enter">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 border border-[#ccff00]/30 bg-[#ccff00]/10 text-[#ccff00] font-mono text-xs font-semibold tracking-widest uppercase rounded-full">
         <span>✦ Growth Engineering Firm | Custom Software &amp; AI ✦</span>
       </div>
 
-      <h1 class="font-serif text-white font-light text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight">
+      <h1 class="font-serif text-white font-light text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight animate-enter-delay-1">
         Growth Engineering Firm | Custom Software &amp; AI | AbuQitmirLabs
       </h1>
 
-      <p class="text-neutral-300 text-lg md:text-xl max-w-3xl leading-relaxed font-light">
-        Growth engineering firm for B2B companies. Custom software, AI automation &amp; performance marketing engineered as one revenue system. We connect marketing, sales, and product data into one measurable growth engine using custom software, AI agents, and modern web platforms.
+      <p class="text-neutral-300 text-lg md:text-xl max-w-3xl leading-relaxed font-light animate-enter-delay-2">
+        Growth engineering firm for B2B companies. Custom software, AI automation &amp; performance marketing engineered as one revenue system — uniting bespoke product architecture, autonomous AI agents, and search authority under one roof.
       </p>
 
       <div class="flex flex-wrap gap-4 pt-4">

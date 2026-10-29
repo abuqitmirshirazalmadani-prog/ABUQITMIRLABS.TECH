@@ -3663,7 +3663,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             <Header />
             <Breadcrumbs customItems={breadcrumbItems} disableSchema={true} />
             
-            <main className="pt-36 md:pt-44 pb-20 px-6">
+            <main className="pt-36 md:pt-44 pb-20 px-6 animate-enter">
                 <div className="max-w-7xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -3674,7 +3674,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                             <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to The Journal
                         </Link>
                         
-                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight leading-[1.1] mb-8 font-serif">
+                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight leading-[1.1] mb-8 font-serif animate-enter animate-enter-delay-1">
                             {post.title}
                         </h1>
 

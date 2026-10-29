@@ -159,7 +159,7 @@ const KuwaitMarketPage: React.FC = () => {
         <div className="absolute top-1/4 -right-20 w-96 h-96 bg-[#0ea5e9]/10 blur-[130px] rounded-full pointer-events-none" />
         <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-cyan-700/10 blur-[140px] rounded-full pointer-events-none" />
 
-        <div className="relative mx-auto max-w-7xl w-full">
+        <div className="relative mx-auto max-w-7xl w-full animate-enter">
           <div className="flex flex-col gap-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -178,7 +178,7 @@ const KuwaitMarketPage: React.FC = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.15 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase mb-8"
+              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase mb-8 animate-enter-delay-1"
             >
               Software Development <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0ea5e9] via-[#38bdf8] to-[#7dd3fc]">for Kuwait | Arabic SEO &amp; Apps</span>

@@ -176,12 +176,22 @@
 
 /* Fade Slide In */
 @keyframes fadeSlideIn {
-  0% { opacity: 0; transform: translateY(30px); filter: blur(8px); }
-  100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
+  0% { opacity: 0; transform: translateY(24px); filter: blur(6px); }
+  100% { opacity: 1; transform: none; filter: none; }
 }
-.animate-enter { animation: fadeSlideIn 0.8s ease-out 0s both; }
-.animate-enter-delay-1 { animation: fadeSlideIn 0.8s ease-out 0.1s both; }
-.animate-enter-delay-2 { animation: fadeSlideIn 0.8s ease-out 0.2s both; }
+.animate-enter { animation: fadeSlideIn 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0s both; }
+.animate-enter-delay-1 { animation: fadeSlideIn 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both; }
+.animate-enter-delay-2 { animation: fadeSlideIn 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both; }
+.animate-enter-delay-3 { animation: fadeSlideIn 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-enter,
+  .animate-enter-delay-1,
+  .animate-enter-delay-2,
+  .animate-enter-delay-3 {
+    animation: none !important;
+  }
+}
 
 /* 3D Utilities */
 .perspective-1000 {

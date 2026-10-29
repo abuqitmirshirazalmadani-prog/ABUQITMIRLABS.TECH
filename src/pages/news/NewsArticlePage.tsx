@@ -554,7 +554,7 @@ const NewsArticlePage = () => {
         </div>
 
         {/* Article Header & Metadata */}
-        <article className="max-w-4xl mx-auto px-6">
+        <article className="max-w-4xl mx-auto px-6 animate-enter">
           <header className="mb-12">
             <div className="flex flex-wrap items-center gap-3 mb-6">
               <span className="text-xs font-mono font-bold text-[#ccff00] px-3.5 py-1.5 bg-[#ccff00]/10 rounded-full border border-[#ccff00]/20 uppercase tracking-wider">
@@ -568,7 +568,7 @@ const NewsArticlePage = () => {
               </span>
             </div>
 
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-8 text-white">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-8 text-white animate-enter-delay-1">
               {article.title}
             </h1>
 

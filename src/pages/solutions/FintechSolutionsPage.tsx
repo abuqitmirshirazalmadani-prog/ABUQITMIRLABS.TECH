@@ -125,12 +125,12 @@ const FintechSolutionsPage = () => {
         <section className="relative py-16 md:py-24 overflow-hidden border-b border-white/10" id="hero-section">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(204,255,0,0.06),transparent_50%)] pointer-events-none" />
           
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="max-w-7xl mx-auto px-6 relative z-10 animate-enter">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[#ccff00] text-xs font-mono uppercase tracking-widest mb-8">
               <Coins className="w-4 h-4" /> Financial Technology Engineering & Architecture
             </div>
 
-            <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.08] mb-8 max-w-5xl">
+            <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.08] mb-8 max-w-5xl animate-enter-delay-1">
               FinTech Solutions for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] via-white to-[#88a800]">Digital Finance</span>
             </h1>
 

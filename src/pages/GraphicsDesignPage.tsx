@@ -311,7 +311,7 @@ const GraphicsDesignPage: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/95 to-transparent"></div>
         </div>
 
-        <div className="w-full max-w-7xl mx-auto px-6 relative z-10">
+        <div className="w-full max-w-7xl mx-auto px-6 relative z-10 animate-enter">
           <div className="max-w-3xl">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
@@ -326,7 +326,7 @@ const GraphicsDesignPage: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white uppercase leading-[1.05] mb-8"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white uppercase leading-[1.05] mb-8 animate-enter-delay-1"
             >
               Professional Graphic Design Services for <br />
               <span className="text-[#ccff00]">Brands &amp; Businesses</span>

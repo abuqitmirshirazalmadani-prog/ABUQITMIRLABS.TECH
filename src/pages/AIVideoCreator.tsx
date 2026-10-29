@@ -409,7 +409,7 @@ export default function AIVideoCreator() {
             />
           </div>
 
-          <div className="max-w-4xl">
+          <div className="max-w-4xl animate-enter">
             {/* Cinematic Studio Badge */}
             <motion.div 
               initial={{ opacity: 0, y: 15 }}
@@ -426,7 +426,7 @@ export default function AIVideoCreator() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl sm:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-white leading-[1.08] mb-8"
+              className="text-4xl sm:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-white leading-[1.08] mb-8 animate-enter-delay-1"
             >
               Cinematic AI Video Production <br />
               <span className="text-[#ccff00] italic font-normal">Without the Uncanny Slop.</span>

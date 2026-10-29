@@ -171,17 +171,17 @@ export const customSoftwareInitialHtml = `
     </div>
 
     <!-- Hero Section with EXACT Single H1 -->
-    <section class="max-w-7xl mx-auto px-6 pb-16 md:pb-24 border-b border-white/10" aria-labelledby="custom-software-hero-title">
+    <section class="max-w-7xl mx-auto px-6 pb-16 md:pb-24 border-b border-white/10 animate-enter" aria-labelledby="custom-software-hero-title">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[#ccff00] text-xs font-mono uppercase tracking-widest mb-6">
         <span>Bespoke Engineering Studio</span>
       </div>
 
-      <h1 id="custom-software-hero-title" class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.08] mb-8 max-w-5xl">
+      <h1 id="custom-software-hero-title" class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.08] mb-8 max-w-5xl animate-enter-delay-1">
         Custom Software Development Company
       </h1>
 
       <!-- Direct Answer Block for AEO/GEO -->
-      <div class="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl max-w-4xl mb-8 shadow-2xl">
+      <div class="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl max-w-4xl mb-8 shadow-2xl animate-enter-delay-2">
         <p class="text-sm md:text-base text-gray-200 leading-relaxed font-mono">
           <strong class="text-[#ccff00]">Direct Answer:</strong> Custom software development is the process of building software engineered specifically for your business — designed around your exact workflows, data requirements, and integrations rather than forcing you to adapt to a generic tool. AbuQitmirLabs builds bespoke software systems that you own outright, from enterprise ERPs to AI-powered SaaS platforms.
         </p>

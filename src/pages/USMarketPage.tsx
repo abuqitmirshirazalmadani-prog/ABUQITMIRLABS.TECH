@@ -152,7 +152,7 @@ const USMarketPage = () => {
         <div className="absolute top-1/4 -right-20 w-96 h-96 bg-[#ff5b36]/5 blur-[120px] rounded-full"></div>
         <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-blue-600/5 blur-[120px] rounded-full"></div>
 
-        <div className="relative mx-auto max-w-7xl w-full">
+        <div className="relative mx-auto max-w-7xl w-full animate-enter">
           <div className="flex flex-col gap-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -167,7 +167,7 @@ const USMarketPage = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase mb-12"
+              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase mb-12 animate-enter animate-enter-delay-1"
             >
               Software Development <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5b36] to-[#ff9d85]">for US Startups | OffShore</span>
@@ -177,7 +177,7 @@ const USMarketPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25 }}
-              className="max-w-4xl text-lg md:text-xl text-[#9f978a] leading-relaxed font-sans font-light"
+              className="max-w-4xl text-lg md:text-xl text-[#9f978a] leading-relaxed font-sans font-light animate-enter animate-enter-delay-2"
             >
               US startups need offshore development partners who move at startup speed, not agency speed. We work across EST/PST overlap hours, communicate in clear async updates, and build with the compliance and scalability standards US investors expect — at a fraction of Silicon Valley dev costs.
             </motion.p>

@@ -431,7 +431,7 @@ export const SeoChecklistPage: React.FC = () => {
       {/* Global Brand Header & Navigation */}
       <Header />
 
-      <main id="main-content" className="pt-20 md:pt-28">
+      <main id="main-content" className="pt-20 md:pt-28 animate-enter">
         {/* Hero Section */}
         <HeroSection onScrollToForm={scrollToForm} onLoadSample={handleLoadSample} />
 

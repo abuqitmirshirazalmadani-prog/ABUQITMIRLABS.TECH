@@ -469,17 +469,17 @@ export default function BrandAssetsPage() {
 
       <main className="flex-1 pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
         {/* Header Hero Section */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16 animate-enter">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#ccff00]/30 bg-[#ccff00]/5 text-[#ccff00] text-xs font-semibold uppercase tracking-wider mb-6">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Official Identity &amp; Social Media Kit</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 animate-enter-delay-1">
             AbuQitmir<span className="text-[#ccff00]">Labs</span> Brand Assets
           </h1>
 
-          <p className="text-base sm:text-lg text-zinc-400 leading-relaxed mb-8">
+          <p className="text-base sm:text-lg text-zinc-400 leading-relaxed mb-8 animate-enter-delay-2">
             Tamam social media platforms (GMB, YouTube, LinkedIn, Facebook, Instagram, X) aur digital platforms ke liye exact dimensions par tayyar shuda official high-resolution PNG logos aur banners.
           </p>
 

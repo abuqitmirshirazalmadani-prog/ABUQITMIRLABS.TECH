@@ -135,7 +135,7 @@ const AustraliaMarketPage = () => {
       <section className="relative min-h-screen flex flex-col justify-center items-center px-6 pt-32 md:pt-40 md:px-10 overflow-hidden text-center">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(102,252,241,0.05),transparent_70%)] pointer-events-none"></div>
         
-        <div className="relative mx-auto max-w-7xl w-full text-center">
+        <div className="relative mx-auto max-w-7xl w-full text-center animate-enter">
           <div className="flex flex-col gap-10 items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -153,7 +153,7 @@ const AustraliaMarketPage = () => {
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter text-white uppercase mb-8"
+              className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter text-white uppercase mb-8 animate-enter-delay-1"
             >
               Tech Solutions <br />
               <span className="text-[#66fcf1]">for Australian Growth</span>

@@ -193,7 +193,7 @@ Do not sign a website contract without these protective legal terms.
       {/* Section 1: Hero Section */}
       <section className="relative pt-12 md:pt-24 pb-16 md:pb-24 border-b border-white/5 z-10 px-6 md:px-12">
         <div className="max-w-[1400px] mx-auto">
-          <div className="max-w-4xl">
+          <div className="max-w-4xl animate-enter">
             {/* Tagline Badge */}
             <motion.div 
               initial={{ opacity: 0, y: -10 }}
@@ -209,7 +209,7 @@ Do not sign a website contract without these protective legal terms.
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-4xl sm:text-6xl md:text-7xl font-black text-white leading-tight tracking-tight mb-6"
+              className="text-4xl sm:text-6xl md:text-7xl font-black text-white leading-tight tracking-tight mb-6 animate-enter animate-enter-delay-1"
             >
               Don't Sign a Website <br />
               <span className="text-[#ccff00]">Contract Without This</span>
@@ -220,7 +220,7 @@ Do not sign a website contract without these protective legal terms.
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-lg sm:text-2xl text-gray-400 font-light max-w-3xl leading-relaxed mb-8"
+              className="text-lg sm:text-2xl text-gray-400 font-light max-w-3xl leading-relaxed mb-8 animate-enter animate-enter-delay-2"
             >
               Download the same ownership-protected contract template AbuQitmirLabs uses on every project — free, no obligation.
             </motion.p>

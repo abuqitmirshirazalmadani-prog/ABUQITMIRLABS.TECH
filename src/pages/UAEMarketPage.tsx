@@ -158,7 +158,7 @@ const UAEMarketPage: React.FC = () => {
         <div className="absolute top-1/4 -right-20 w-96 h-96 bg-[#38bdf8]/10 blur-[130px] rounded-full pointer-events-none" />
         <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-blue-700/10 blur-[140px] rounded-full pointer-events-none" />
 
-        <div className="relative mx-auto max-w-7xl w-full">
+        <div className="relative mx-auto max-w-7xl w-full animate-enter">
           <div className="flex flex-col gap-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -177,7 +177,7 @@ const UAEMarketPage: React.FC = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.15 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase mb-8"
+              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase mb-8 animate-enter animate-enter-delay-1"
             >
               Software Development <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] via-[#60a5fa] to-[#93c5fd]">for UAE | Arabic-First Apps</span>

@@ -116,7 +116,7 @@ const GrowthEngineeringPage: React.FC = () => {
             }}
           />
 
-          <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-8">
+          <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-8 animate-enter">
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
@@ -133,7 +133,7 @@ const GrowthEngineeringPage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.08 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-light text-white leading-[1.08] tracking-tight max-w-5xl"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-light text-white leading-[1.08] tracking-tight max-w-5xl animate-enter-delay-1"
             >
               Growth Engineering: Software, AI &amp; Marketing Engineered as{' '}
               <span className="text-[#ccff00] italic font-normal">One Revenue System</span>
@@ -144,7 +144,7 @@ const GrowthEngineeringPage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.16 }}
-              className="relative p-6 md:p-8 rounded-r-2xl bg-zinc-900/80 border-l-4 border-[#ccff00] border-y border-r border-y-white/10 border-r-white/10 max-w-4xl backdrop-blur-xl shadow-2xl"
+              className="relative p-6 md:p-8 rounded-r-2xl bg-zinc-900/80 border-l-4 border-[#ccff00] border-y border-r border-y-white/10 border-r-white/10 max-w-4xl backdrop-blur-xl shadow-2xl animate-enter-delay-2"
             >
               <p className="lead text-lg md:text-xl text-neutral-200 leading-relaxed font-light m-0">
                 <strong className="text-white font-semibold">Growth engineering</strong> is the discipline of building custom software, AI automation, and performance marketing as a single connected system — so every line of code, every AI workflow, and every acquisition channel is engineered around measurable revenue outcomes.

@@ -475,7 +475,7 @@ export default function CaseStudiesPage() {
                 {/* Visual accents */}
                 <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-gradient-to-r from-blue-500/5 to-purple-500/5 blur-[120px] pointer-events-none" />
                 
-                <div className="max-w-[1400px] mx-auto px-6 md:px-12 w-full text-center space-y-12 relative z-10 py-12">
+                <div className="max-w-[1400px] mx-auto px-6 md:px-12 w-full text-center space-y-12 relative z-10 py-12 animate-enter">
                     <motion.div
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -491,7 +491,7 @@ export default function CaseStudiesPage() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="font-serif italic font-light text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white tracking-tighter leading-none"
+                            className="font-serif italic font-light text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white tracking-tighter leading-none animate-enter-delay-1"
                         >
                             The Science of <br />
                             <span className="text-[#ccff00]">Absolute Performance</span>

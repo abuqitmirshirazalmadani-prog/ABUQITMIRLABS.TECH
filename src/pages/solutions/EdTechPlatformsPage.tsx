@@ -184,13 +184,13 @@ const EdTechPlatformsPage: React.FC = () => {
         <section className="relative py-16 md:py-24 overflow-hidden border-b border-white/10" aria-labelledby="edtech-hero-title">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(204,255,0,0.06),transparent_50%)] pointer-events-none" />
           
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="max-w-7xl mx-auto px-6 relative z-10 animate-enter">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[#ccff00] text-xs font-mono uppercase tracking-widest mb-6">
               <svg className="w-4 h-4 text-[#ccff00]" aria-hidden="true"><use href="/sprite.svg#icon-graduation-cap" /></svg>
               Next-Gen Educational Engineering
             </div>
 
-            <h1 id="edtech-hero-title" className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 max-w-5xl text-white">
+            <h1 id="edtech-hero-title" className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 max-w-5xl text-white animate-enter-delay-1">
               EdTech Software Development for Modern Learning
             </h1>
 

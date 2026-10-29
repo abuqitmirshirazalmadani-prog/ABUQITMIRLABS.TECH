@@ -349,15 +349,15 @@ export default function LuxuryBrandExperiencePage() {
         </div>
 
         {/* Grand Cormorant Garamond Monolithic Headline */}
-        <div className="max-w-4xl mx-auto space-y-6 my-auto">
+        <div className="max-w-4xl mx-auto space-y-6 my-auto animate-enter">
           <p className="text-xs sm:text-sm font-mono tracking-[0.3em] uppercase text-amber-400/80">
             Private Cellar Release · Harvest 2026
           </p>
-          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-serif text-white tracking-tight font-normal leading-[0.95]">
+          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-serif text-white tracking-tight font-normal leading-[0.95] animate-enter-delay-1">
             Where Scarcity <br />
             <span className="italic font-light text-neutral-300">Becomes Sovereign</span>
           </h1>
-          <p className="max-w-xl mx-auto text-sm sm:text-base font-serif italic text-neutral-400 leading-relaxed font-light pt-2">
+          <p className="max-w-xl mx-auto text-sm sm:text-base font-serif italic text-neutral-400 leading-relaxed font-light pt-2 animate-enter-delay-2">
             Luxury brands never crowd their canvas. Five single-estate botanical harvests, encased in hand-turned heavy gauge tins, unveiled one single masterpiece at a time.
           </p>
         </div>

@@ -25,13 +25,13 @@ const EditorialPolicyPage: React.FC = () => {
       <Breadcrumbs customItems={[{ label: 'Editorial Policy', path: '/editorial-policy' }]} />
 
       <main className="pt-32 md:pt-40 pb-24 px-6">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto animate-enter">
           {/* Header Banner */}
           <div className="mb-12 border-b border-zinc-800 pb-8">
             <span className="text-xs font-mono text-[#ccff00] uppercase tracking-widest font-bold block mb-3">
               [ TRUST &amp; TRANSPARENCY PROTOCOL ]
             </span>
-            <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white font-serif mb-4">
+            <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white font-serif mb-4 animate-enter-delay-1">
               Editorial Policy &amp; Engineering Content Standards
             </h1>
             <div className="flex flex-wrap gap-4 text-xs font-mono text-zinc-400">

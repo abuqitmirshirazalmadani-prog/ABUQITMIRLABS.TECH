@@ -32,7 +32,7 @@ const TermsPage = () => {
       <Header />
       <Breadcrumbs />
 
-      <main className="pt-32 pb-20 px-6 max-w-5xl mx-auto space-y-16">
+      <main className="pt-32 pb-20 px-6 max-w-5xl mx-auto space-y-16 animate-enter">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -43,7 +43,7 @@ const TermsPage = () => {
             <span>Legal Governance & Service Agreement</span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter mb-12 leading-none">
+          <h1 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter mb-12 leading-none animate-enter animate-enter-delay-1">
             Terms of <br />
             <span className="text-zinc-600">Service.</span>
           </h1>
