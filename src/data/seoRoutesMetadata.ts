@@ -550,6 +550,18 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     twitterDescription: 'Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.',
     twitterImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg'
   },
+  '/growth-engineering': {
+    title: 'Growth Engineering Firm | Software + AI + Marketing | AbuQitmirLabs',
+    description: 'AbuQitmirLabs engineers revenue systems for B2B companies — combining custom software, AI automation, and performance marketing under one roof.',
+    canonical: 'https://www.abuqitmirlabs.tech/growth-engineering',
+    ogTitle: 'Growth Engineering Firm | Software + AI + Marketing | AbuQitmirLabs',
+    ogDescription: 'AbuQitmirLabs engineers revenue systems for B2B companies — combining custom software, AI automation, and performance marketing under one roof.',
+    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogType: 'website',
+    twitterTitle: 'Growth Engineering Firm | Software + AI + Marketing | AbuQitmirLabs',
+    twitterDescription: 'AbuQitmirLabs engineers revenue systems for B2B companies — combining custom software, AI automation, and performance marketing under one roof.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/logo.png'
+  },
   '/about': {
     title: 'We Were Engineers First. Now We Engineer Growth | About Us | AbuQitmirLabs',
     description: 'We aren’t marketers who learned tech. We’re engineers who learned marketing. Discover AbuQitmirLabs, our origin story, and The Revenue Velocity Engine.',

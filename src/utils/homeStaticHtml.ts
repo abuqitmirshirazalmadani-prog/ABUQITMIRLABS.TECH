@@ -23,7 +23,7 @@ export const homeSchema = {
         "height": "512"
       },
       "image": "https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg",
-      "description": "AI agent development and custom software engineering company serving businesses in the USA, UK, UAE, Saudi Arabia, Qatar, Kuwait, Canada, Australia, and Pakistan.",
+      "description": "Growth engineering firm combining custom software, AI automation, and performance marketing for B2B companies.",
       "foundingDate": "2021",
       "founder": {
         "@type": "Person",
@@ -42,6 +42,14 @@ export const homeSchema = {
         "addressCountry": "PK"
       },
       "areaServed": ["PK", "US", "GB", "AE", "SA", "QA", "KW", "CA", "AU", "PL"],
+      "knowsAbout": [
+        "Growth Engineering",
+        "Custom Software Development",
+        "AI Agent Development",
+        "Performance Marketing",
+        "SEO",
+        "Brand Building"
+      ],
       "geo": {
         "@type": "GeoCoordinates",
         "latitude": "24.8934",
@@ -56,11 +64,9 @@ export const homeSchema = {
         "availableLanguage": ["English", "Urdu"]
       },
       "sameAs": [
-        "https://x.com/AbuQitmir",
-        "https://www.linkedin.com/in/abu-qitmir-697423390/",
-        "https://www.facebook.com/profile.php?id=61583768706452",
-        "https://www.instagram.com/abuqitmirshirazalmadani/",
-        "https://www.youtube.com/@AbuQitmir"
+        "https://www.linkedin.com/company/abuqitmirlabs",
+        "https://twitter.com/abuqitmirlabs",
+        "https://www.facebook.com/abuqitmirlabs"
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -313,6 +319,9 @@ export const homeInitialHtml = `
         <a href="/contact" class="bg-[#ccff00] text-black font-mono text-sm font-bold tracking-wider px-8 py-4 uppercase rounded-none hover:bg-white transition-all shadow-[0_0_30px_rgba(204,255,0,0.2)]">
           Start Your Project
         </a>
+        <a href="/growth-engineering" class="border border-white/20 hover:border-[#ccff00] text-white hover:text-[#ccff00] font-mono text-sm font-bold tracking-wider px-8 py-4 uppercase rounded-none transition-colors">
+          Explore Growth Engineering
+        </a>
         <a href="/case-studies" class="border border-white/20 hover:border-[#ccff00] text-white hover:text-[#ccff00] font-mono text-sm font-bold tracking-wider px-8 py-4 uppercase rounded-none transition-colors">
           Explore Case Studies
         </a>
@@ -353,7 +362,17 @@ export const homeInitialHtml = `
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <article class="p-8 bg-zinc-950/80 border border-[#ccff00]/30 rounded-2xl space-y-4">
+          <h3 class="text-xl font-sans font-bold text-white tracking-tight">Growth Engineering — Software + AI + Marketing as One System</h3>
+          <p class="text-neutral-400 text-sm leading-relaxed">
+            We engineer custom software, autonomous AI agents, and performance marketing into one connected B2B revenue system — replacing disconnected dev shops and marketing retainers.
+          </p>
+          <a href="/growth-engineering" class="inline-flex items-center gap-2 text-xs font-mono text-[#ccff00] hover:underline uppercase tracking-wider">
+            Explore Growth Engineering →
+          </a>
+        </article>
+
         <article class="p-8 bg-zinc-950/80 border border-white/10 rounded-2xl space-y-4">
           <h3 class="text-xl font-sans font-bold text-white tracking-tight">Enterprise Cloud Platforms & Microservices</h3>
           <p class="text-neutral-400 text-sm leading-relaxed">
@@ -735,6 +754,7 @@ export const homeInitialHtml = `
       <div>
         <div class="font-bold text-white uppercase tracking-wider mb-3">Core Services</div>
         <ul class="space-y-2">
+          <li><a href="/growth-engineering" class="hover:text-white">Growth Engineering</a></li>
           <li><a href="/custom-software" class="hover:text-white">Custom Software Development</a></li>
           <li><a href="/web-development" class="hover:text-white">Web Development</a></li>
           <li><a href="/ai-agent-development" class="hover:text-white">AI Agent Development</a></li>

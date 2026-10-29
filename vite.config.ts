@@ -18,6 +18,7 @@ import { mobileAppSchema, mobileAppInitialHtml } from './src/utils/mobileAppStat
 import { customWebDevBlogSchema, customWebDevBlogInitialHtml } from './src/utils/customWebDevBlogStaticHtml';
 import { localSEOSmallBusinessSchema, localSEOSmallBusinessInitialHtml } from './src/utils/localSEOSmallBusinessStaticHtml';
 import { homeSchema, homeInitialHtml } from './src/utils/homeStaticHtml';
+import { growthEngineeringPageSchema, growthEngineeringInitialHtml } from './src/utils/growthEngineeringStaticHtml';
 import { renderStaticHeader } from './src/utils/sharedStaticHeader';
 import { SEO_ROUTES_METADATA } from './src/data/seoRoutesMetadata';
 import { BLOG_SLUG_REDIRECTS, getCanonicalPath, getCanonicalSlug } from './src/data/canonicalRedirects';
@@ -59,7 +60,7 @@ export default defineConfig(({ mode }) => {
       prerender({
         staticDir: path.resolve(process.cwd(), 'dist'),
         routes: [
-          '/', '/ai-video-creation', '/custom-software', '/mobile-app-development',
+          '/', '/growth-engineering', '/ai-video-creation', '/custom-software', '/mobile-app-development',
           '/web-development', '/ai-agent-development', '/seo-mastery', '/graphics-design',
           '/content-writing', '/solutions/fintech', '/solutions/healthcare', '/solutions/ai-automation',
           '/solutions/e-commerce', '/solutions/edtech', '/case-studies', '/case-studies/tajweedpage',
@@ -79,6 +80,7 @@ export default defineConfig(({ mode }) => {
           const hostname = 'https://www.abuqitmirlabs.tech';
           const baseRoutes = [
             { url: '/', changefreq: 'weekly', priority: 1.0, title: 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs', description: "Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system." },
+            { url: '/growth-engineering', changefreq: 'monthly', priority: 0.9, lastmod: '2026-10-29', title: 'Growth Engineering Firm | Software + AI + Marketing | AbuQitmirLabs', description: 'AbuQitmirLabs engineers revenue systems for B2B companies — combining custom software, AI automation, and performance marketing under one roof.' },
             { url: '/about', changefreq: 'monthly', priority: 0.8, title: 'About Us | AbuQitmirLabs', description: 'Learn about our mission to build cutting-edge AI and mobile solutions.' },
             { url: '/about/our-company', changefreq: 'monthly', priority: 0.8, title: 'About Our Company | Global Software Studio | AbuQitmirLabs', description: 'AbuQitmirLabs is a Karachi-based software boutique. 410+ custom projects for 350+ global clients. Zero lock-in, 100% in-house talent. Learn about our mission and values.' },
             { url: '/about/our-team', changefreq: 'monthly', priority: 0.8, title: 'Our Team | Elite Software Architects | AbuQitmirLabs', description: 'Meet the AbuQitmirLabs team — 12+ in-house software architects, engineers, and UI/UX experts in Karachi. 410+ projects delivered globally. Led by founder Abu Qitmir.' },
@@ -472,11 +474,13 @@ export default defineConfig(({ mode }) => {
           }
 
           for (const route of routes) {
+            const customLastmod = (route as any).lastmod;
             upsertSitemapEntry(
               prependCanonicalOrigin(route.url),
               route.changefreq,
               route.priority,
-              defaultLastMod
+              customLastmod || defaultLastMod,
+              Boolean(customLastmod)
             );
           }
 
@@ -694,6 +698,13 @@ export default defineConfig(({ mode }) => {
               routeHtml = injectSingleSchema(routeHtml, homeSchema);
               routeHtml = replaceRootElement(routeHtml, homeInitialHtml, '/');
               fs.writeFileSync(indexHtmlPath, routeHtml);
+              continue;
+            }
+
+            if (route.url === '/growth-engineering') {
+              routeHtml = injectSingleSchema(routeHtml, growthEngineeringPageSchema);
+              routeHtml = replaceRootElement(routeHtml, growthEngineeringInitialHtml, '/growth-engineering');
+              writeRouteFiles(route.url, routeDir, routeHtml);
               continue;
             }
 

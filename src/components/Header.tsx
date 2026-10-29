@@ -29,10 +29,12 @@ const Header = () => {
     }, [location.pathname]);
     const navLinks = [
         { name: 'Home', href: '/' },
+        { name: 'Growth Engineering', href: '/growth-engineering' },
         { 
             name: 'Services', 
             href: '/#services',
             dropdown: [
+                { name: 'Growth Engineering', href: '/growth-engineering' },
                 { name: 'Custom Software Development', href: '/custom-software' },
                 { name: 'Mobile App Development', href: '/mobile-app-development' },
                 { name: 'High-Performance Web Development', href: '/web-development' },

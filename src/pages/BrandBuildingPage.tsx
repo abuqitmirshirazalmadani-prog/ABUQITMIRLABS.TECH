@@ -1445,6 +1445,10 @@ const BrandBuildingPage: React.FC = () => {
             <span>·</span>
             <span>100% Vector IP Transfer</span>
           </div>
+
+          <p className="mt-8 text-sm md:text-base text-neutral-300">
+            Beyond brand: <Link to="/growth-engineering" className="text-[#ccff00] font-semibold underline hover:text-white transition-colors">Growth Engineering</Link> combines software, AI, and marketing.
+          </p>
         </div>
       </section>
 

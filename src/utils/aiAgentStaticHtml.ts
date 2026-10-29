@@ -804,6 +804,9 @@ export const aiAgentInitialHtml = `
             Explore Healthcare Software ↗
           </a>
         </div>
+        <p class="mt-8 text-slate-300 text-sm">
+          Combine AI automation with product engineering and demand generation — <a href="/growth-engineering" class="text-[#ccff00] font-semibold underline">Growth Engineering</a>.
+        </p>
       </div>
     </section>
   </main>

@@ -588,8 +588,11 @@ const DigitalMarketingPage = () => {
       {/* Related Services */}
       <section className="py-24 bg-[#0c0c0e] border-t border-white/10 relative z-10 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
+          <div className="mb-12 space-y-3">
             <h3 className="text-xs font-mono text-[#ccff00] mb-2 uppercase tracking-[0.4em] font-bold">[ RELATED_SYSTEMS ]</h3>
+            <p className="text-sm md:text-base text-zinc-200 font-sans">
+              Need the software and AI built alongside the marketing? See <Link to="/growth-engineering" className="text-[#ccff00] font-semibold underline hover:text-white transition-colors">Growth Engineering</Link>.
+            </p>
             <p className="text-sm text-zinc-400 font-sans">
               Explore our related services: <Link to="/seo-mastery" className="text-white underline hover:text-[#ccff00]">SEO Mastery</Link> · <Link to="/content-writing" className="text-white underline hover:text-[#ccff00]">Content Writing</Link> · <Link to="/web-development" className="text-white underline hover:text-[#ccff00]">Web Development</Link>
             </p>

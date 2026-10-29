@@ -1840,6 +1840,9 @@ export default function AIAgentDevelopmentPage() {
         {/* Related Systems / Internal Links Siloing */}
         <section className="py-20 bg-black border-t border-white/10 px-6">
           <div className="max-w-6xl mx-auto">
+            <div className="mb-8 p-6 rounded-2xl bg-white/[0.02] border border-[#ccff00]/30 text-sm md:text-base text-slate-200">
+              Combine AI automation with product engineering and demand generation — <Link to="/growth-engineering" className="text-[#ccff00] font-semibold underline hover:text-white transition-colors">Growth Engineering</Link>.
+            </div>
             <h3 className="text-xs font-mono text-slate-500 mb-8 uppercase tracking-[0.3em] font-bold">
               [ RELATED ENGINEERING DISCIPLINES ]
             </h3>

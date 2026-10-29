@@ -156,6 +156,7 @@ const Footer = () => {
                         <div className="space-y-4">
                             <h3 className="text-sm font-black text-black border-b-2 border-black pb-2 mb-4 tracking-wider">Core Services</h3>
                             <ul className="space-y-3">
+                                <li><Link to="/growth-engineering" onMouseEnter={() => preloadRoute('/growth-engineering')} onTouchStart={() => preloadRoute('/growth-engineering')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Growth Engineering</Link></li>
                                 <li><Link to="/custom-software" onMouseEnter={() => preloadRoute('/custom-software')} onTouchStart={() => preloadRoute('/custom-software')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Custom Software Dev</Link></li>
                                 <li><Link to="/mobile-app-development" onMouseEnter={() => preloadRoute('/mobile-app-development')} onTouchStart={() => preloadRoute('/mobile-app-development')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">Mobile App Development</Link></li>
                                 <li><Link to="/web-development" onMouseEnter={() => preloadRoute('/web-development')} onTouchStart={() => preloadRoute('/web-development')} className="text-black font-extrabold hover:underline hover:opacity-80 transition-all">High-Performance Web</Link></li>

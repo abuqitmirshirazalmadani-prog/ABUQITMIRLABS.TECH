@@ -21,6 +21,7 @@ const SaudiArabiaMarketPage = lazyWithRetry(() => import('./pages/SaudiArabiaMar
 const UAEMarketPage = lazyWithRetry(() => import('./pages/UAEMarketPage'));
 const QatarMarketPage = lazyWithRetry(() => import('./pages/QatarMarketPage'));
 const KuwaitMarketPage = lazyWithRetry(() => import('./pages/KuwaitMarketPage'));
+const GrowthEngineeringPage = lazyWithRetry(() => import('./pages/GrowthEngineeringPage'));
 const CustomSoftwarePage = lazyWithRetry(() => import('./pages/CustomSoftwarePage'));
 const MobileAppDevelopmentPage = lazyWithRetry(() => import('./pages/MobileAppDevelopmentPage'));
 const WebDevelopmentPage = lazyWithRetry(() => import('./pages/WebDevelopmentPage'));
@@ -200,6 +201,7 @@ function AppRoutes() {
       <Route path="/news/industry-insights/:id" element={<NewsArticlePage />} />
       <Route path="/news/press-releases/:id" element={<NewsArticlePage />} />
 
+      <Route path="/growth-engineering" element={<GrowthEngineeringPage />} />
       <Route path="/custom-software" element={<CustomSoftwarePage />} />
       <Route path="/custom-software-development" element={<Navigate to="/custom-software" replace />} />
       <Route path="/mobile-app-development" element={<MobileAppDevelopmentPage />} />

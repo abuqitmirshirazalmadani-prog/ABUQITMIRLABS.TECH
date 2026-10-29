@@ -39,6 +39,17 @@ interface Service {
 
 const services: Service[] = [
     {
+        number: "00",
+        title: "Growth Engineering",
+        fullTitle: "Growth Engineering — Software + AI + Marketing as One System",
+        tagline: "Growth Engineering — Software + AI + Marketing as One System",
+        description: "We engineer custom software, autonomous AI agents, and performance marketing into one connected B2B revenue system — replacing disconnected dev shops and marketing retainers.",
+        tags: ["Software + AI", "Marketing", "Revenue System"],
+        icon: <Layers className="text-violet-400" />,
+        highlight: false,
+        href: "/growth-engineering"
+    },
+    {
         number: "01",
         title: "Custom Software",
         fullTitle: "Custom Software Development",

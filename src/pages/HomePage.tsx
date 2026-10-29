@@ -44,7 +44,7 @@ export default function HomePage() {
         "image": "https://www.abuqitmirlabs.tech/logo.png",
         "email": "hello@abuqitmirlabs.tech",
         "telephone": "+923233260859",
-        "description": "Growth engineering agency building revenue systems for B2B companies. We connect marketing, sales, and product data into one measurable growth engine.",
+        "description": "Growth engineering firm combining custom software, AI automation, and performance marketing for B2B companies.",
         "slogan": "We build revenue systems, not just software.",
         "address": {
           "@type": "PostalAddress",
@@ -55,19 +55,16 @@ export default function HomePage() {
         "areaServed": ["PK", "US", "GB", "AE", "SA", "QA", "KW", "CA", "AU", "PL"],
         "knowsAbout": [
           "Growth Engineering",
-          "Revenue Operations",
-          "Marketing Technology",
-          "Data Infrastructure",
-          "Attribution Modeling",
-          "AI Agent Development",
           "Custom Software Development",
-          "Web Development"
+          "AI Agent Development",
+          "Performance Marketing",
+          "SEO",
+          "Brand Building"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/abuqitmirlabs",
           "https://twitter.com/abuqitmirlabs",
-          "https://www.clutch.co/profile/abuqitmirlabs",
-          "https://www.goodfirms.co/company/abuqitmirlabs"
+          "https://www.facebook.com/abuqitmirlabs"
         ]
       },
 
@@ -266,6 +263,10 @@ export default function HomePage() {
                 We design resilient digital interfaces and decoupled cloud platforms with sub-second performance. For comprehensive architectural specifications, technical frameworks, and delivery roadmaps, explore our dedicated engineering practices:
               </p>
               <div className="pt-2 space-y-3">
+                <Link to="/growth-engineering" className="inline-flex items-center gap-2 text-xs font-mono text-[#ccff00] hover:underline uppercase tracking-wider font-semibold block">
+                  <span>Growth Engineering — Software + AI + Marketing as One System</span>
+                  <ArrowRight size={14} className="inline" />
+                </Link>
                 <Link to="/web-development" className="inline-flex items-center gap-2 text-xs font-mono text-[#ccff00] hover:underline uppercase tracking-wider font-semibold block">
                   <span>View Web Development Hub</span>
                   <ArrowRight size={14} className="inline" />

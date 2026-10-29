@@ -1678,6 +1678,9 @@ Do not sign a website contract without these protective legal terms.
       {/* Internal Linking / Related Services */}
       <section className="py-24 bg-[#050505] border-t border-white/5 relative z-10 px-6">
         <div className="max-w-7xl mx-auto">
+          <div className="mb-10 p-6 rounded-2xl bg-white/[0.02] border border-blue-500/20 text-sm md:text-base text-neutral-300">
+            Looking for the full revenue system? See our <Link to="/growth-engineering" className="text-[#ccff00] font-semibold underline hover:text-white transition-colors">Growth Engineering model</Link>.
+          </div>
           <h3 className="text-xs font-mono text-neutral-500 mb-12 uppercase tracking-[0.4em] font-bold">[ RELATED_SYSTEMS ]</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[

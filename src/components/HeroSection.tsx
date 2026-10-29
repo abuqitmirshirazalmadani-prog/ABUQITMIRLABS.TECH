@@ -253,10 +253,10 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
                 </button>
               ) : (
                 <Link
-                  to="/contact"
+                  to="/growth-engineering"
                   className="border border-white/20 hover:border-[#C8EB5F] text-white hover:text-[#C8EB5F] text-xs sm:text-sm font-bold tracking-wider px-8 py-4 font-mono uppercase rounded-none transition-colors duration-300 flex items-center gap-2"
                 >
-                  Request Your Free Growth Infrastructure Audit
+                  Explore Growth Engineering
                 </Link>
               )}
             </div>
