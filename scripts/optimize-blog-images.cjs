@@ -39,14 +39,16 @@ function syncMarkdownPosts() {
       if (!slug) continue;
 
       if (!staticSource.includes(`STATIC_BLOG_POSTS["${slug}"]`)) {
+        const cleanPostTitle = String(meta.title || slug).replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
         const postObj = {
+          slug,
           canonical: `https://www.abuqitmirlabs.tech/blog/${slug}`,
-          title: meta.title || slug,
+          title: cleanPostTitle,
           content: body,
           excerpt: meta.excerpt || '',
           metaDescription: meta.metaDescription || meta.excerpt || '',
           coverImage: meta.coverImage || 'https://www.abuqitmirlabs.tech/logo.png',
-          coverImageAlt: meta.coverImageAlt || `${meta.title || slug} | AbuQitmirLabs`,
+          coverImageAlt: meta.coverImageAlt || `${cleanPostTitle} | AbuQitmirLabs`,
           category: meta.category || 'Development',
           createdAt: meta.publishedAt || '2026-10-28',
           author: meta.author || 'Abu Qitmir Mohammad Shiraz Al-Madani',
@@ -63,8 +65,13 @@ function syncMarkdownPosts() {
         console.log(`✅ Synced new markdown post into staticBlogPosts.ts: ${slug}`);
       }
 
-      const routeKey = `'/blog/${slug}'`;
-      if (seoSource && !seoSource.includes(routeKey)) {
+      const aliasSkip = new Set([
+        'the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026',
+        'url-fragmentation-headless-spa'
+      ]);
+      const routeKeySingle = `'/blog/${slug}'`;
+      const routeKeyDouble = `"/blog/${slug}"`;
+      if (seoSource && !aliasSkip.has(slug) && !seoSource.includes(routeKeySingle) && !seoSource.includes(routeKeyDouble)) {
         const cleanTitle = (meta.title || slug).includes('AbuQitmirLabs')
           ? meta.title
           : `${meta.title || slug} | AbuQitmirLabs`;

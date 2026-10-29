@@ -76,7 +76,11 @@ export const BLOG_SLUG_REDIRECTS: Record<string, string> = {
   'url-fragmentation-headless-spa': 'fix-url-fragmentation-in-headless-spas-abuqitmirlabs',
   'mvp-to-scale-roadmap-for-founders': 'mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-2026',
   'how-to-brief-a-graphic-designer-a-practical-guide-for-founders-who-want-results': 'how-to-brief-graphic-designer',
-  'brand-identity-vs-logo-design-pakistan-sme': 'brand-strategy-vs-logo-design-pakistan-sme'
+  'brand-identity-vs-logo-design-pakistan-sme': 'brand-strategy-vs-logo-design-pakistan-sme',
+  'edtech-software-development-9-features-every-lms-needs': 'edtech-software-development-lms-features-every-platform-needs',
+  'native-mobile-app-development-ios-vs-android-cost-2026-abuqitmirlabs': 'native-mobile-app-development-ios-vs-android-cost',
+  'flutter-vs-native-choosing-your-mobile-app-stack-in-2026': 'flutter-vs-native-mobile-app-development-2026',
+  'high-performance-web-apps-12-engineering-decisions': 'high-performance-web-applications-12-engineering-decisions'
 };
 
 /**

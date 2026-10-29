@@ -122,7 +122,8 @@ try {
       const canonicalSlug = redirects[rawSlug] || rawSlug;
       slugsSet.add(canonicalSlug);
 
-      const postTitle = f.title?.stringValue || canonicalSlug;
+      const rawTitle = (f.title?.stringValue || canonicalSlug).trim();
+      const postTitle = rawTitle.replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
       const postContent = f.content?.stringValue || '';
       const postExcerpt = cleanQuote(f.excerpt?.stringValue || '');
       const postMetaDesc = cleanQuote(f.metaDescription?.stringValue || postExcerpt);
@@ -134,6 +135,7 @@ try {
 
       if (postContent && staticPostsSource && !staticPostsSource.includes(`STATIC_BLOG_POSTS["${canonicalSlug}"]`) && !staticPostsSource.includes(`'${canonicalSlug}':`)) {
         const postObj = {
+          slug: canonicalSlug,
           canonical: `https://www.abuqitmirlabs.tech/blog/${canonicalSlug}`,
           title: postTitle,
           content: postContent,
@@ -146,7 +148,13 @@ try {
           author: postAuthor,
           tags: postTags
         };
-        staticPostsSource += `\nSTATIC_BLOG_POSTS["${canonicalSlug}"] = ${JSON.stringify(postObj, null, 2)};\n`;
+        const entryStr = `\nSTATIC_BLOG_POSTS["${canonicalSlug}"] = ${JSON.stringify(postObj, null, 2)};\n`;
+        const insertBefore = 'export interface BlogPostSummary';
+        if (staticPostsSource.includes(insertBefore)) {
+          staticPostsSource = staticPostsSource.replace(insertBefore, entryStr + '\n' + insertBefore);
+        } else {
+          staticPostsSource += entryStr;
+        }
         staticModified = true;
         console.log(`🔥 Auto-synced Firestore Admin post into staticBlogPosts.ts: ${canonicalSlug}`);
       }

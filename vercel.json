@@ -33,17 +33,14 @@
       "includeFiles": "public/*sitemap*.xml"
     }
   },
-  "routes": [
+  "rewrites": [
     {
-      "handle": "filesystem"
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
     },
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/((?!api/|assets/|images/|.*\\..*).*)",
+      "destination": "/index.html"
     }
   ],
   "redirects": [
@@ -595,6 +592,46 @@
     {
       "source": "/what-seo-services-actually-means-2026",
       "destination": "/blog/what-seo-services-actually-mean-in-2026-abuqitmirlabs",
+      "permanent": true
+    },
+    {
+      "source": "/blog/edtech-software-development-9-features-every-lms-needs",
+      "destination": "/blog/edtech-software-development-lms-features-every-platform-needs",
+      "permanent": true
+    },
+    {
+      "source": "/edtech-software-development-9-features-every-lms-needs",
+      "destination": "/blog/edtech-software-development-lms-features-every-platform-needs",
+      "permanent": true
+    },
+    {
+      "source": "/blog/native-mobile-app-development-ios-vs-android-cost-2026-abuqitmirlabs",
+      "destination": "/blog/native-mobile-app-development-ios-vs-android-cost",
+      "permanent": true
+    },
+    {
+      "source": "/native-mobile-app-development-ios-vs-android-cost-2026-abuqitmirlabs",
+      "destination": "/blog/native-mobile-app-development-ios-vs-android-cost",
+      "permanent": true
+    },
+    {
+      "source": "/blog/flutter-vs-native-choosing-your-mobile-app-stack-in-2026",
+      "destination": "/blog/flutter-vs-native-mobile-app-development-2026",
+      "permanent": true
+    },
+    {
+      "source": "/flutter-vs-native-choosing-your-mobile-app-stack-in-2026",
+      "destination": "/blog/flutter-vs-native-mobile-app-development-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/high-performance-web-apps-12-engineering-decisions",
+      "destination": "/blog/high-performance-web-applications-12-engineering-decisions",
+      "permanent": true
+    },
+    {
+      "source": "/high-performance-web-apps-12-engineering-decisions",
+      "destination": "/blog/high-performance-web-applications-12-engineering-decisions",
       "permanent": true
     }
   ]

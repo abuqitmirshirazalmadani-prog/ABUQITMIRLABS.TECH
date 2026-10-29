@@ -762,6 +762,12 @@ export default defineConfig(({ mode }) => {
                   const parentDir = path.dirname(directHtmlPath);
                   if (!fs.existsSync(parentDir)) fs.mkdirSync(parentDir, { recursive: true });
                   fs.writeFileSync(directHtmlPath, htmlContent, 'utf-8');
+                  if (cleanRel.startsWith('blog/')) {
+                    const publicBlogFile = path.resolve(process.cwd(), 'public', cleanRel, 'index.html');
+                    const publicBlogDir = path.dirname(publicBlogFile);
+                    if (!fs.existsSync(publicBlogDir)) fs.mkdirSync(publicBlogDir, { recursive: true });
+                    fs.writeFileSync(publicBlogFile, htmlContent, 'utf-8');
+                  }
                 }
               }
             };
