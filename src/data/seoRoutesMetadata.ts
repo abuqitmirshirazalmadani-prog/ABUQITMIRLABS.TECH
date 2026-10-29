@@ -19,6 +19,20 @@ export interface RouteSeoMetadata {
 }
 
 export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
+  "/": {
+    title: "Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs",
+    description: "Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.",
+    canonical: "https://www.abuqitmirlabs.tech/",
+    ogTitle: "Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs",
+    ogDescription: "Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.",
+    ogImage: "https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg",
+    ogImageAlt: "AbuQitmirLabs Growth Engineering Firm",
+    ogType: "website",
+    twitterCard: "summary_large_image",
+    twitterTitle: "Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs",
+    twitterDescription: "Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.",
+    twitterImage: "https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg"
+  },
   "/tools": {
     title: "Free Engineering, AI Readiness & SEO Tools | AbuQitmirLabs",
     description: "Free interactive software engineering, technical SEO, AI readiness, project cost estimation, and website authority tools built by AbuQitmirLabs.",
