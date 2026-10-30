@@ -139,8 +139,12 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 if (foundPost) {
                     const cleanQuoteStr = (s?: string) =>
                         typeof s === 'string'
-                            ? s.trim().replace(/^(?:&quot;|["'“”])+|(?:&quot;|["'“”])+$/gi, '').trim()
+                            ? s.trim().replace(/^(?:&quot;|["'“”`])+|(?:&quot;|["'“”`])+$/gi, '').trim()
                             : s;
+                    const cleanTitleStr = (s?: string) =>
+                        cleanQuoteStr(s)?.replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim() || '';
+                    const countH2Headings = (md?: string) =>
+                        (md || '').split(/\r?\n/).filter(l => /^##\s+/.test(l.trim())).length;
                     const UNWANTED_PRESET_URLS = [
                         'photo-1618005182384-a83a8bd57fbe',
                         'photo-1600585154340-be6161a56a0c',
@@ -153,8 +157,14 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         (img: any) => img && img.url && !UNWANTED_PRESET_URLS.some(p => String(img.url).includes(p))
                     );
                     const staticEntry = (slug && STATIC_POSTS_MAP[slug]) ? STATIC_POSTS_MAP[slug] : null;
+                    const resolvedContent =
+                        staticEntry?.content && countH2Headings(staticEntry.content) > countH2Headings(foundPost.content)
+                            ? staticEntry.content
+                            : foundPost.content;
                     const sanitizedPost: Post = {
                         ...foundPost,
+                        title: cleanTitleStr(staticEntry?.title || foundPost.title) || foundPost.title,
+                        content: resolvedContent,
                         helperImages: cleanHelperList,
                         metaDescription: cleanQuoteStr(staticEntry?.metaDescription || foundPost.metaDescription),
                         excerpt: cleanQuoteStr(foundPost.excerpt || staticEntry?.excerpt),
@@ -229,7 +239,13 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             /https:\/\/www\.abuqitmirlabs\.tech\/blog\/brand-identity-vs-logo-design-pakistan-sme/g,
             'https://www.abuqitmirlabs.tech/blog/brand-strategy-vs-logo-design-pakistan-sme'
         );
-        const normTitle = (post.title || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+        const cleanTitleForMatch = (post.title || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+        const normTitle = cleanTitleForMatch.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const titleWords = cleanTitleForMatch
+            .toLowerCase()
+            .replace(/[^a-z0-9\s]/g, ' ')
+            .split(/\s+/)
+            .filter(w => w.length >= 2);
         const contentLines = baseContent.split(/\r?\n/);
         while (contentLines.length > 0 && contentLines[0].trim() === '') {
             contentLines.shift();
@@ -239,11 +255,21 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             const headerMatch = firstLine.match(/^#{1,3}\s+(.+)$/);
             if (headerMatch) {
                 const headerTextNorm = headerMatch[1].toLowerCase().replace(/[^a-z0-9]/g, '');
+                const headerWords = new Set(
+                    headerMatch[1]
+                        .toLowerCase()
+                        .replace(/[^a-z0-9\s]/g, ' ')
+                        .split(/\s+/)
+                        .filter(w => w.length >= 2)
+                );
+                const matchedTitleWords = titleWords.filter(w => headerWords.has(w)).length;
+                const wordOverlapRatio = titleWords.length >= 4 ? matchedTitleWords / titleWords.length : 0;
                 const prefixNorm = normTitle.slice(0, 20);
                 if (
                     headerTextNorm === normTitle ||
                     (normTitle && (headerTextNorm.includes(normTitle) || normTitle.includes(headerTextNorm))) ||
                     (prefixNorm.length >= 10 && (headerTextNorm.startsWith(prefixNorm) || headerTextNorm.includes(prefixNorm))) ||
+                    wordOverlapRatio >= 0.8 ||
                     firstLine.startsWith('# ')
                 ) {
                     contentLines.shift();
@@ -253,6 +279,54 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                     baseContent = contentLines.join('\n');
                 }
             }
+        }
+
+        // Auto-promote main section ### (H3) headings to ## (H2) if article body before FAQ has <= 1 H2 and >= 3 H3s
+        const checkLines = baseContent.split(/\r?\n/);
+        let h2BeforeFaq = 0;
+        let h3BeforeFaq = 0;
+        let inCode = false;
+        let reachedFaq = false;
+        for (const l of checkLines) {
+            const t = l.trim();
+            if (t.startsWith('```')) {
+                inCode = !inCode;
+                continue;
+            }
+            if (inCode) continue;
+            if (/^#{2,3}\s+(?:frequently asked questions|faq\b)/i.test(t)) {
+                reachedFaq = true;
+                continue;
+            }
+            if (!reachedFaq) {
+                if (/^##\s+/.test(t)) h2BeforeFaq++;
+                else if (/^###\s+/.test(t)) h3BeforeFaq++;
+            }
+        }
+        if (h2BeforeFaq <= 1 && h3BeforeFaq >= 3) {
+            let inCodeNorm = false;
+            let inFaqNorm = false;
+            baseContent = checkLines
+                .map(line => {
+                    const t = line.trim();
+                    if (t.startsWith('```')) {
+                        inCodeNorm = !inCodeNorm;
+                        return line;
+                    }
+                    if (inCodeNorm) return line;
+                    if (/^#{2,3}\s+(?:frequently asked questions|faq\b)/i.test(t)) {
+                        inFaqNorm = true;
+                        return line.replace(/^###\s+/, '## ');
+                    }
+                    if (!inFaqNorm && /^###\s+/.test(t)) {
+                        return line.replace(/^(\s*)###\s+/, '$1## ');
+                    }
+                    if (inFaqNorm && /^\*\*[^*]+\?\*\*\s*$/.test(t)) {
+                        return `### ${t.replace(/^\*\*|\*\*\s*$/g, '').trim()}`;
+                    }
+                    return line;
+                })
+                .join('\n');
         }
         
         const UNWANTED_PRESET_URLS = [
