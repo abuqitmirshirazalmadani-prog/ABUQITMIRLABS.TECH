@@ -907,59 +907,39 @@ const AdminDashboard = () => {
             const cleanPostTitle = stripOuterQuotes(formData.title).replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
             const normalizeMarkdownHeadings = (rawMd: string, titleStr: string) => {
                 let md = (rawMd || '').trim();
-                const normTitle = titleStr.toLowerCase().replace(/[^a-z0-9]/g, '');
-                const titleWords = titleStr
-                    .toLowerCase()
-                    .replace(/[^a-z0-9\s]/g, ' ')
-                    .split(/\s+/)
-                    .filter(w => w.length >= 2);
+                const isMetaOrDividerLine = (lineStr: string) => {
+                    const t = lineStr.trim();
+                    return t === '' || t === '---' || /^(?:\*\*)?by\s+abu\s*qitmir/i.test(t);
+                };
                 const lines = md.split(/\r?\n/);
-                while (lines.length > 0 && lines[0].trim() === '') {
+                while (lines.length > 0 && isMetaOrDividerLine(lines[0])) {
                     lines.shift();
                 }
                 if (lines.length > 0) {
                     const firstLine = lines[0].trim();
-                    const headerMatch = firstLine.match(/^#{1,3}\s+(.+)$/);
-                    if (headerMatch) {
-                        const headerTextNorm = headerMatch[1].toLowerCase().replace(/[^a-z0-9]/g, '');
-                        const headerWords = new Set(
-                            headerMatch[1]
-                                .toLowerCase()
-                                .replace(/[^a-z0-9\s]/g, ' ')
-                                .split(/\s+/)
-                                .filter(w => w.length >= 2)
-                        );
-                        const matchedTitleWords = titleWords.filter(w => headerWords.has(w)).length;
-                        const wordOverlapRatio = titleWords.length >= 4 ? matchedTitleWords / titleWords.length : 0;
-                        const prefixNorm = normTitle.slice(0, 20);
-                        if (
-                            headerTextNorm === normTitle ||
-                            (normTitle && (headerTextNorm.includes(normTitle) || normTitle.includes(headerTextNorm))) ||
-                            (prefixNorm.length >= 10 && (headerTextNorm.startsWith(prefixNorm) || headerTextNorm.includes(prefixNorm))) ||
-                            wordOverlapRatio >= 0.8 ||
-                            firstLine.startsWith('# ')
-                        ) {
-                            lines.shift();
-                            while (
-                                lines.length > 0 &&
-                                (lines[0].trim() === '' ||
-                                    lines[0].trim() === '---' ||
-                                    /^(?:\*\*)?by\s+abu\s*qitmir/i.test(lines[0].trim()))
-                            ) {
-                                lines.shift();
-                            }
-                            md = lines.join('\n');
+                    if (/^#\s+/.test(firstLine)) {
+                        let lookaheadIdx = 1;
+                        while (lookaheadIdx < lines.length && isMetaOrDividerLine(lines[lookaheadIdx])) {
+                            lookaheadIdx++;
+                        }
+                        if (lookaheadIdx < lines.length && /^##\s+/.test(lines[lookaheadIdx].trim())) {
+                            lines.splice(0, lookaheadIdx);
+                        } else {
+                            const h1Text = firstLine.replace(/^#\s+/, '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+                            lines[0] = `## ${h1Text}`;
                         }
                     }
-                    while (
-                        lines.length > 0 &&
-                        (lines[0].trim() === '' ||
-                            lines[0].trim() === '---' ||
-                            /^(?:\*\*)?by\s+abu\s*qitmir/i.test(lines[0].trim()))
-                    ) {
-                        lines.shift();
-                        md = lines.join('\n');
+                    if (lines.length > 0 && /^##\s+/.test(lines[0].trim())) {
+                        const h2Text = lines[0].trim().replace(/^##\s+/, '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+                        lines[0] = `## ${h2Text}`;
+                        while (lines.length > 1 && isMetaOrDividerLine(lines[1])) {
+                            lines.splice(1, 1);
+                        }
+                        lines.splice(1, 0, '');
+                    } else if (lines.length > 0 && !/^#{1,6}\s+/.test(lines[0].trim()) && titleStr) {
+                        lines.unshift(`## ${titleStr}`, '');
                     }
+                    md = lines.join('\n');
                 }
                 const checkLines = md.split(/\r?\n/);
                 let h2BeforeFaq = 0;

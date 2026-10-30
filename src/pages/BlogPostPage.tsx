@@ -243,60 +243,47 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             'https://www.abuqitmirlabs.tech/blog/brand-strategy-vs-logo-design-pakistan-sme'
         );
         const cleanTitleForMatch = (post.title || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
-        const normTitle = cleanTitleForMatch.toLowerCase().replace(/[^a-z0-9]/g, '');
-        const titleWords = cleanTitleForMatch
-            .toLowerCase()
-            .replace(/[^a-z0-9\s]/g, ' ')
-            .split(/\s+/)
-            .filter(w => w.length >= 2);
+        const isMetaOrDividerLine = (lineStr: string) => {
+            const t = lineStr.trim();
+            return t === '' || t === '---' || /^(?:\*\*)?by\s+abu\s*qitmir/i.test(t);
+        };
         const contentLines = baseContent.split(/\r?\n/);
-        while (contentLines.length > 0 && contentLines[0].trim() === '') {
+        while (contentLines.length > 0 && isMetaOrDividerLine(contentLines[0])) {
             contentLines.shift();
         }
         if (contentLines.length > 0) {
             const firstLine = contentLines[0].trim();
-            const headerMatch = firstLine.match(/^#{1,3}\s+(.+)$/);
-            if (headerMatch) {
-                const headerTextNorm = headerMatch[1].toLowerCase().replace(/[^a-z0-9]/g, '');
-                const headerWords = new Set(
-                    headerMatch[1]
-                        .toLowerCase()
-                        .replace(/[^a-z0-9\s]/g, ' ')
-                        .split(/\s+/)
-                        .filter(w => w.length >= 2)
-                );
-                const matchedTitleWords = titleWords.filter(w => headerWords.has(w)).length;
-                const wordOverlapRatio = titleWords.length >= 4 ? matchedTitleWords / titleWords.length : 0;
-                const prefixNorm = normTitle.slice(0, 20);
-                if (
-                    headerTextNorm === normTitle ||
-                    (normTitle && (headerTextNorm.includes(normTitle) || normTitle.includes(headerTextNorm))) ||
-                    (prefixNorm.length >= 10 && (headerTextNorm.startsWith(prefixNorm) || headerTextNorm.includes(prefixNorm))) ||
-                    wordOverlapRatio >= 0.8 ||
-                    firstLine.startsWith('# ')
-                ) {
-                    contentLines.shift();
-                    while (
-                        contentLines.length > 0 &&
-                        (contentLines[0].trim() === '' ||
-                            contentLines[0].trim() === '---' ||
-                            /^(?:\*\*)?by\s+abu\s*qitmir/i.test(contentLines[0].trim()))
-                    ) {
-                        contentLines.shift();
-                    }
-                    baseContent = contentLines.join('\n');
+            if (/^#\s+/.test(firstLine)) {
+                // Single # H1 at top of markdown: check if there is already a ## H2 right after it
+                let lookaheadIdx = 1;
+                while (lookaheadIdx < contentLines.length && isMetaOrDividerLine(contentLines[lookaheadIdx])) {
+                    lookaheadIdx++;
+                }
+                if (lookaheadIdx < contentLines.length && /^##\s+/.test(contentLines[lookaheadIdx].trim())) {
+                    // Drop the # H1 and any meta/divider lines before the ## H2 so the ## H2 stays at the top
+                    contentLines.splice(0, lookaheadIdx);
+                } else {
+                    // Convert # H1 into ## H2 so the opening heading remains visible as H2
+                    const h1Text = firstLine.replace(/^#\s+/, '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+                    contentLines[0] = `## ${h1Text}`;
                 }
             }
-            // Even if top heading was already stripped, remove standalone top author byline / divider if present
-            while (
-                contentLines.length > 0 &&
-                (contentLines[0].trim() === '' ||
-                    contentLines[0].trim() === '---' ||
-                    /^(?:\*\*)?by\s+abu\s*qitmir/i.test(contentLines[0].trim()))
-            ) {
-                contentLines.shift();
-                baseContent = contentLines.join('\n');
+            if (contentLines.length > 0 && /^##\s+/.test(contentLines[0].trim())) {
+                // Clean any trailing "| AbuQitmirLabs" from the opening ## H2 and strip redundant byline/divider right below it
+                const h2Text = contentLines[0].trim().replace(/^##\s+/, '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+                contentLines[0] = `## ${h2Text}`;
+                while (contentLines.length > 1 && isMetaOrDividerLine(contentLines[1])) {
+                    contentLines.splice(1, 1);
+                }
+                contentLines.splice(1, 0, '');
+            } else if (contentLines.length > 0 && !/^#{1,6}\s+/.test(contentLines[0].trim()) && cleanTitleForMatch) {
+                // If the opening ## H2 was previously stripped and content starts directly with paragraph text, restore it
+                const fallbackH2 = slug === 'ecommerce-platform-development'
+                    ? 'E-Commerce Platform Development: Build vs Shopify Plus'
+                    : cleanTitleForMatch;
+                contentLines.unshift(`## ${fallbackH2}`, '');
             }
+            baseContent = contentLines.join('\n');
         }
 
         // Auto-promote main section ### (H3) headings to ## (H2) if article body before FAQ has <= 1 H2 and >= 3 H3s,

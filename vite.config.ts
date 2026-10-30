@@ -1278,7 +1278,29 @@ export default defineConfig(({ mode }) => {
               const extractedFaqs: Array<{ question: string; answer: string }> = [];
               if (mdSource) {
                 const htmlBlocks: string[] = [];
-                const lines = mdSource.split(/\r?\n/);
+                let lines = mdSource.trim().split(/\r?\n/);
+                const cleanPostHeading = (firestorePost?.title || staticPost?.title || route.title || '')
+                  .replace(/\s*\|\s*AbuQitmirLabs.*$/i, '')
+                  .trim();
+                if (lines.length > 0) {
+                  const firstLine = lines[0].trim();
+                  if (/^#\s+/.test(firstLine)) {
+                    const h1Text = firstLine.replace(/^#\s+/, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
+                    let nextNonEmptyIdx = 1;
+                    while (nextNonEmptyIdx < lines.length && (!lines[nextNonEmptyIdx].trim() || lines[nextNonEmptyIdx].trim() === '---' || /^\*\*By\s+Abu\s*Qitmir/i.test(lines[nextNonEmptyIdx].trim()))) {
+                      nextNonEmptyIdx++;
+                    }
+                    if (nextNonEmptyIdx < lines.length && /^##\s+/.test(lines[nextNonEmptyIdx].trim())) {
+                      lines = lines.slice(nextNonEmptyIdx);
+                    } else {
+                      lines[0] = `## ${h1Text || cleanPostHeading}`;
+                    }
+                  } else if (/^##\s+/.test(firstLine)) {
+                    lines[0] = `## ${firstLine.replace(/^##\s+/, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim()}`;
+                  } else if (cleanPostHeading && !/^#{2,6}\s+/.test(firstLine)) {
+                    lines.unshift(`## ${cleanPostHeading}`, '');
+                  }
+                }
                 let inFaqSection = false;
                 let currentFaqQuestion = '';
                 let currentFaqAnswerParts: string[] = [];
@@ -1329,7 +1351,7 @@ export default defineConfig(({ mode }) => {
 
                 for (const line of lines) {
                   const trimmed = line.trim();
-                  if (!trimmed || trimmed === '---') {
+                  if (!trimmed || trimmed === '---' || /^\*\*By\s+Abu\s*Qitmir/i.test(trimmed)) {
                     flushTable();
                     continue;
                   }
@@ -1350,7 +1372,7 @@ export default defineConfig(({ mode }) => {
 
                   if (trimmed.startsWith('## ')) {
                     flushFaq();
-                    const h2Text = trimmed.slice(3).replace(/\*\*/g, '').trim();
+                    const h2Text = trimmed.slice(3).replace(/\*\*/g, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
                     inFaqSection = /frequently asked questions|\bfaq\b/i.test(h2Text);
                     htmlBlocks.push(`<h2 id="${slugifyId(h2Text)}" class="text-2xl font-bold mt-10 mb-4">${escapeXml(h2Text)}</h2>`);
                   } else if (trimmed.startsWith('### ')) {
