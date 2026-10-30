@@ -273,15 +273,31 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                     firstLine.startsWith('# ')
                 ) {
                     contentLines.shift();
-                    while (contentLines.length > 0 && (contentLines[0].trim() === '' || contentLines[0].trim() === '---')) {
+                    while (
+                        contentLines.length > 0 &&
+                        (contentLines[0].trim() === '' ||
+                            contentLines[0].trim() === '---' ||
+                            /^(?:\*\*)?by\s+abu\s*qitmir/i.test(contentLines[0].trim()))
+                    ) {
                         contentLines.shift();
                     }
                     baseContent = contentLines.join('\n');
                 }
             }
+            // Even if top heading was already stripped, remove standalone top author byline / divider if present
+            while (
+                contentLines.length > 0 &&
+                (contentLines[0].trim() === '' ||
+                    contentLines[0].trim() === '---' ||
+                    /^(?:\*\*)?by\s+abu\s*qitmir/i.test(contentLines[0].trim()))
+            ) {
+                contentLines.shift();
+                baseContent = contentLines.join('\n');
+            }
         }
 
-        // Auto-promote main section ### (H3) headings to ## (H2) if article body before FAQ has <= 1 H2 and >= 3 H3s
+        // Auto-promote main section ### (H3) headings to ## (H2) if article body before FAQ has <= 1 H2 and >= 3 H3s,
+        // and ALWAYS convert standalone bold FAQ questions (**Question?**) under FAQ section to ### Question?
         const checkLines = baseContent.split(/\r?\n/);
         let h2BeforeFaq = 0;
         let h3BeforeFaq = 0;
@@ -303,31 +319,56 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 else if (/^###\s+/.test(t)) h3BeforeFaq++;
             }
         }
-        if (h2BeforeFaq <= 1 && h3BeforeFaq >= 3) {
-            let inCodeNorm = false;
-            let inFaqNorm = false;
-            baseContent = checkLines
-                .map(line => {
-                    const t = line.trim();
-                    if (t.startsWith('```')) {
-                        inCodeNorm = !inCodeNorm;
-                        return line;
-                    }
-                    if (inCodeNorm) return line;
-                    if (/^#{2,3}\s+(?:frequently asked questions|faq\b)/i.test(t)) {
-                        inFaqNorm = true;
-                        return line.replace(/^###\s+/, '## ');
-                    }
-                    if (!inFaqNorm && /^###\s+/.test(t)) {
-                        return line.replace(/^(\s*)###\s+/, '$1## ');
-                    }
-                    if (inFaqNorm && /^\*\*[^*]+\?\*\*\s*$/.test(t)) {
-                        return `### ${t.replace(/^\*\*|\*\*\s*$/g, '').trim()}`;
-                    }
+        const shouldPromoteBodyH3 = h2BeforeFaq <= 1 && h3BeforeFaq >= 3;
+        let inCodeNorm = false;
+        let inFaqNorm = false;
+        const seenHeadingNorms = new Set<string>();
+        const dedupeHeadingText = (rawHeadingText: string): string => {
+            const cleanText = rawHeadingText.trim();
+            const normKey = cleanText.toLowerCase().replace(/[:\s]+/g, ' ').trim();
+            if (!seenHeadingNorms.has(normKey)) {
+                seenHeadingNorms.add(normKey);
+                return cleanText;
+            }
+            const whatIsMatch = cleanText.match(/^what\s+is\s+(.+)\?$/i);
+            const candidate = whatIsMatch
+                ? `What does ${whatIsMatch[1].trim()} include?`
+                : `${cleanText} — Key Details`;
+            seenHeadingNorms.add(candidate.toLowerCase().replace(/[:\s]+/g, ' ').trim());
+            return candidate;
+        };
+        baseContent = checkLines
+            .map(line => {
+                const t = line.trim();
+                if (t.startsWith('```')) {
+                    inCodeNorm = !inCodeNorm;
                     return line;
-                })
-                .join('\n');
-        }
+                }
+                if (inCodeNorm) return line;
+                if (/^#{2,3}\s+(?:frequently asked questions|faq\b)/i.test(t)) {
+                    inFaqNorm = true;
+                    return line.replace(/^###\s+/, '## ');
+                }
+                if (inFaqNorm && /^##\s+/.test(t) && !/^##\s+(?:frequently asked questions|faq\b)/i.test(t)) {
+                    inFaqNorm = false;
+                }
+                if (shouldPromoteBodyH3 && !inFaqNorm && /^###\s+/.test(t)) {
+                    const hText = dedupeHeadingText(t.replace(/^###\s+/, ''));
+                    return `## ${hText}`;
+                }
+                if (inFaqNorm && /^\*\*[^*]+\?\*\*\s*$/.test(t)) {
+                    const qText = dedupeHeadingText(t.replace(/^\*\*|\*\*\s*$/g, ''));
+                    return `### ${qText}`;
+                }
+                const hm = t.match(/^(#{2,4})\s+(.+)$/);
+                if (hm) {
+                    const hashes = hm[1];
+                    const hText = dedupeHeadingText(hm[2]);
+                    return `${hashes} ${hText}`;
+                }
+                return line;
+            })
+            .join('\n');
         
         const UNWANTED_PRESET_URLS = [
             'photo-1618005182384-a83a8bd57fbe',
@@ -3696,6 +3737,9 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                         if (inFaq || h3.endsWith('?')) {
                                             currQ = h3.replace(/^\d+[\.\)]\s*/, '').trim();
                                         }
+                                    } else if (inFaq && /^\*\*[^*]+\?\*\*\s*$/.test(t)) {
+                                        flush();
+                                        currQ = t.replace(/^\*\*|\*\*\s*$/g, '').replace(/^\d+[\.\)]\s*/, '').trim();
                                     } else if (currQ && !t.startsWith('#') && !t.startsWith('|') && !t.startsWith('```') && !t.startsWith('![')) {
                                         currA.push(t.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1'));
                                     }

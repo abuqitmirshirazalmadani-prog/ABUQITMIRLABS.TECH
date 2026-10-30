@@ -44,7 +44,8 @@ export const BLOG_SLUG_REDIRECTS: Record<string, string> = {
   'tailor-made-software-solutions-when-off-the-shelf-fails-2026': 'tailor-made-software-solutions-when-off-the-shelf-fails',
   'tailor-made-software-solutions': 'tailor-made-software-solutions-when-off-the-shelf-fails',
   'when-off-the-shelf-software-fails': 'tailor-made-software-solutions-when-off-the-shelf-fails',
-  'ecommerce-platform-development-custom-build-vs-shopify-plus-2026': 'e-commerce-platform-development-custom-build-vs-shopify-plus-2026',
+  'ecommerce-platform-development-custom-build-vs-shopify-plus-2026': 'ecommerce-platform-development',
+  'e-commerce-platform-development-custom-build-vs-shopify-plus-2026': 'ecommerce-platform-development',
   'healthcare-software-development-solutions-2026': 'healthcare-software-development-solutions-2026-custom-ehr-clinical-software',
   
   // RAG and AI Agents Agency vs In-house
@@ -77,7 +78,8 @@ export const BLOG_SLUG_REDIRECTS: Record<string, string> = {
   'mvp-to-scale-roadmap-for-founders': 'mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-2026',
   'how-to-brief-a-graphic-designer-a-practical-guide-for-founders-who-want-results': 'how-to-brief-graphic-designer',
   'brand-identity-vs-logo-design-pakistan-sme': 'brand-strategy-vs-logo-design-pakistan-sme',
-  'edtech-software-development-9-features-every-lms-needs': 'edtech-software-development-lms-features-every-platform-needs',
+  'edtech-software-development-9-features-every-lms-needs': 'edtech-software-development',
+  'edtech-software-development-lms-features-every-platform-needs': 'edtech-software-development',
   'native-mobile-app-development-ios-vs-android-cost-2026-abuqitmirlabs': 'native-mobile-app-development-ios-vs-android-cost',
   'flutter-vs-native-choosing-your-mobile-app-stack-in-2026': 'flutter-vs-native-mobile-app-development-2026',
   'high-performance-web-apps-12-engineering-decisions': 'high-performance-web-applications-12-engineering-decisions'

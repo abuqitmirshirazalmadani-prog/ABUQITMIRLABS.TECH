@@ -109,6 +109,14 @@ export async function syncPostToGitHubAndDeploy(
   post: {
     title: string;
     slug: string;
+    content?: string;
+    excerpt?: string;
+    metaDescription?: string;
+    coverImage?: string;
+    coverImageAlt?: string;
+    category?: string;
+    author?: string;
+    tags?: string[];
     type?: 'blog' | 'news';
   },
   config: AutomationConfig,
@@ -135,6 +143,62 @@ export async function syncPostToGitHubAndDeploy(
   const today = new Date().toISOString().split('T')[0];
 
   try {
+    // 0. Commit content/blog/<slug>.md if post.content is provided so Vercel SSG prerenders the full static HTML
+    if (post.content) {
+      logStep(`0/4 Committing content/blog/${cleanSlug}.md to GitHub...`);
+      const frontmatterObj = {
+        title: (post.title || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim(),
+        slug: cleanSlug,
+        excerpt: post.excerpt || '',
+        metaDescription: post.metaDescription || post.excerpt || '',
+        coverImage: post.coverImage || 'https://www.abuqitmirlabs.tech/logo.png',
+        coverImageAlt: post.coverImageAlt || `${post.title} by AbuQitmirLabs`,
+        category: post.category || 'Development',
+        author: post.author || 'Abu Qitmir Mohammad Shiraz Al-Madani',
+        publishedAt: today,
+        tags: Array.isArray(post.tags) ? post.tags : []
+      };
+      const mdContent = `---\n${JSON.stringify(frontmatterObj, null, 2)}\n---\n\n${post.content.trim()}\n`;
+      const mdPath = `content/blog/${cleanSlug}.md`;
+      let existingSha: string | undefined;
+      try {
+        const checkMdRes = await fetch(
+          `https://api.github.com/repos/${config.githubRepo}/contents/${mdPath}?ref=${config.githubBranch}`,
+          {
+            headers: {
+              'Authorization': `Bearer ${config.githubToken.trim()}`,
+              'Accept': 'application/vnd.github.v3+json'
+            }
+          }
+        );
+        if (checkMdRes.ok) {
+          const checkMdData = await checkMdRes.json();
+          existingSha = checkMdData.sha;
+        }
+      } catch {}
+
+      const putMdRes = await fetch(
+        `https://api.github.com/repos/${config.githubRepo}/contents/${mdPath}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${config.githubToken.trim()}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: `feat(blog): publish /blog/${cleanSlug} markdown for SSG prerender`,
+            content: utf8ToBase64(mdContent),
+            ...(existingSha ? { sha: existingSha } : {}),
+            branch: config.githubBranch
+          })
+        }
+      );
+      if (putMdRes.ok) {
+        logStep(`✓ Committed ${mdPath} to GitHub`);
+      }
+    }
+
     // 1. Fetch current public/sitemap.xml from GitHub
     logStep('1/4 Fetching sitemap.xml from GitHub...');
     const sitemapFileRes = await fetch(

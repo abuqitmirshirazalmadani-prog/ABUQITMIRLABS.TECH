@@ -170,9 +170,13 @@ export function render(url: string) {
           <Route path="/ai-agent-development-agency-vs-in-house" element={<Navigate to="/blog/the-go-to-guide-ai-agent-development-agency-vs-in-house" replace />} />
           <Route path="/blog/generative-ai-chatbot-development-cost-2026" element={<Navigate to="/blog/generative-ai-chatbot-development-what-it-actually-costs-in-2026" replace />} />
           <Route path="/generative-ai-chatbot-development-cost-2026" element={<Navigate to="/blog/generative-ai-chatbot-development-what-it-actually-costs-in-2026" replace />} />
-          <Route path="/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
-          <Route path="/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
-          <Route path="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" replace />} />
+          <Route path="/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/ecommerce-platform-development" replace />} />
+          <Route path="/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/ecommerce-platform-development" replace />} />
+          <Route path="/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/ecommerce-platform-development" replace />} />
+          <Route path="/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026" element={<Navigate to="/blog/ecommerce-platform-development" replace />} />
+          <Route path="/blog/ecommerce-platform-development" element={<BlogPostPage overrideSlug="ecommerce-platform-development" />} />
+          <Route path="/blog/edtech-software-development" element={<BlogPostPage overrideSlug="edtech-software-development" />} />
+          <Route path="/blog/edtech-software-development-lms-features-every-platform-needs" element={<Navigate to="/blog/edtech-software-development" replace />} />
           <Route path="/blog/ai-is-quietly-stealing-your-ability-to-think" element={<BlogPostPage overrideSlug="ai-is-quietly-stealing-your-ability-to-think" />} />
           <Route path="/ai-is-quietly-stealing-your-ability-to-think" element={<Navigate to="/blog/ai-is-quietly-stealing-your-ability-to-think" replace />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />

@@ -796,25 +796,55 @@ const AdminDashboard = () => {
         });
 
         try {
-            const res = await fetch('/api/publish-sync', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    post: postData || null,
-                    githubToken: githubToken.trim(),
-                    githubRepo: githubRepo.trim(),
-                    githubBranch: githubBranch.trim(),
-                    vercelDeployHook: vercelDeployHook.trim(),
-                    syncAll: isSyncAll
-                })
-            });
-
-            const data = await res.json();
-            setDeployResult(data);
-
-            if (!res.ok || !data.success) {
-                throw new Error(data.error || 'Failed to sync with deployment pipeline');
+            let data: any = null;
+            try {
+                const res = await fetch('/api/publish-sync', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        post: postData || null,
+                        githubToken: githubToken.trim(),
+                        githubRepo: githubRepo.trim(),
+                        githubBranch: githubBranch.trim(),
+                        vercelDeployHook: vercelDeployHook.trim(),
+                        syncAll: isSyncAll
+                    })
+                });
+                const contentType = res.headers.get('content-type') || '';
+                if (res.ok && contentType.includes('application/json')) {
+                    data = await res.json();
+                }
+            } catch {
+                // Fallback to direct client-side GitHub REST API below
             }
+
+            if (!data || !data.success) {
+                if (postData) {
+                    const clientRes = await syncPostToGitHubAndDeploy(
+                        postData,
+                        {
+                            githubToken: githubToken.trim(),
+                            githubRepo: githubRepo.trim(),
+                            githubBranch: githubBranch.trim(),
+                            vercelDeployHook: vercelDeployHook.trim(),
+                            autoDeployEnabled: true
+                        }
+                    );
+                    if (clientRes.success) {
+                        data = {
+                            success: true,
+                            logs: clientRes.steps,
+                            commitUrl: null
+                        };
+                    } else {
+                        throw new Error(clientRes.error || 'Failed to sync with deployment pipeline');
+                    }
+                } else {
+                    throw new Error(data?.error || 'Failed to sync with deployment pipeline');
+                }
+            }
+
+            setDeployResult(data);
 
             setDeployStatus({
                 inProgress: false,
@@ -909,11 +939,25 @@ const AdminDashboard = () => {
                             firstLine.startsWith('# ')
                         ) {
                             lines.shift();
-                            while (lines.length > 0 && (lines[0].trim() === '' || lines[0].trim() === '---')) {
+                            while (
+                                lines.length > 0 &&
+                                (lines[0].trim() === '' ||
+                                    lines[0].trim() === '---' ||
+                                    /^(?:\*\*)?by\s+abu\s*qitmir/i.test(lines[0].trim()))
+                            ) {
                                 lines.shift();
                             }
                             md = lines.join('\n');
                         }
+                    }
+                    while (
+                        lines.length > 0 &&
+                        (lines[0].trim() === '' ||
+                            lines[0].trim() === '---' ||
+                            /^(?:\*\*)?by\s+abu\s*qitmir/i.test(lines[0].trim()))
+                    ) {
+                        lines.shift();
+                        md = lines.join('\n');
                     }
                 }
                 const checkLines = md.split(/\r?\n/);
@@ -937,31 +981,33 @@ const AdminDashboard = () => {
                         else if (/^###\s+/.test(t)) h3BeforeFaq++;
                     }
                 }
-                if (h2BeforeFaq <= 1 && h3BeforeFaq >= 3) {
-                    let inCodeNorm = false;
-                    let inFaqNorm = false;
-                    md = checkLines
-                        .map(line => {
-                            const t = line.trim();
-                            if (t.startsWith('```')) {
-                                inCodeNorm = !inCodeNorm;
-                                return line;
-                            }
-                            if (inCodeNorm) return line;
-                            if (/^#{2,3}\s+(?:frequently asked questions|faq\b)/i.test(t)) {
-                                inFaqNorm = true;
-                                return line.replace(/^###\s+/, '## ');
-                            }
-                            if (!inFaqNorm && /^###\s+/.test(t)) {
-                                return line.replace(/^(\s*)###\s+/, '$1## ');
-                            }
-                            if (inFaqNorm && /^\*\*[^*]+\?\*\*\s*$/.test(t)) {
-                                return `### ${t.replace(/^\*\*|\*\*\s*$/g, '').trim()}`;
-                            }
+                const shouldPromoteBodyH3 = h2BeforeFaq <= 1 && h3BeforeFaq >= 3;
+                let inCodeNorm = false;
+                let inFaqNorm = false;
+                md = checkLines
+                    .map(line => {
+                        const t = line.trim();
+                        if (t.startsWith('```')) {
+                            inCodeNorm = !inCodeNorm;
                             return line;
-                        })
-                        .join('\n');
-                }
+                        }
+                        if (inCodeNorm) return line;
+                        if (/^#{2,3}\s+(?:frequently asked questions|faq\b)/i.test(t)) {
+                            inFaqNorm = true;
+                            return line.replace(/^###\s+/, '## ');
+                        }
+                        if (inFaqNorm && /^##\s+/.test(t) && !/^##\s+(?:frequently asked questions|faq\b)/i.test(t)) {
+                            inFaqNorm = false;
+                        }
+                        if (shouldPromoteBodyH3 && !inFaqNorm && /^###\s+/.test(t)) {
+                            return line.replace(/^(\s*)###\s+/, '$1## ');
+                        }
+                        if (inFaqNorm && /^\*\*[^*]+\?\*\*\s*$/.test(t)) {
+                            return `### ${t.replace(/^\*\*|\*\*\s*$/g, '').trim()}`;
+                        }
+                        return line;
+                    })
+                    .join('\n');
                 return md;
             };
             const canonicalFormData = {

@@ -119,6 +119,7 @@ if (!fs.existsSync(spaShellDir)) {
   fs.mkdirSync(spaShellDir, { recursive: true });
 }
 fs.writeFileSync(path.join(spaShellDir, 'index.html'), spaShellContent, 'utf8');
+fs.writeFileSync(path.join(distDir, '404.html'), spaShellContent, 'utf8');
 
 const routes = [
   '/',
@@ -212,9 +213,9 @@ const routes = [
   '/blog/healthcare-software-development-solutions-2026-custom-ehr-clinical-software',
   '/blog/bespoke-saas-development-build-vs-buy-decision-guide',
   '/blog/local-seo-citation-building-the-15-directory-checklist',
-  '/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026',
+  '/blog/ecommerce-platform-development',
   '/blog/enterprise-software-engineering-what-changes-at-scale',
-  '/blog/edtech-software-development-lms-features-every-platform-needs',
+  '/blog/edtech-software-development',
   '/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026',
   '/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026',
   '/blog/high-performance-web-applications-12-engineering-decisions',
@@ -230,7 +231,7 @@ const routes = [
   '/blog/generative-ai-chatbot-development-what-it-actually-costs-in-2026',
   '/blog/healthcare-software-development-solutions-2026-custom-ehr-clinical-software',
   '/blog/ai-agents-cost-benefit-analysis',
-  '/blog/when-to-invest-in-an-ai-agent-in-2026-a-realistic-cost-benefit-analysis-for-founders',
+  '/blog/when-to-invest-in-ai-agent',
   '/blog/the-2026-static-site-comeback-why-jamstack-won-after-all',
   '/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs',
   '/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact',
@@ -312,7 +313,13 @@ const allRoutes = Array.from(new Set([
   ...blogMarkdownRoutes,
   ...staticBlogRoutes,
   ...Object.keys(SEO_ROUTES_METADATA || {}).filter(k => typeof k === 'string' && k.startsWith('/'))
-]));
+])).filter(r => {
+  if (r.startsWith('/blog/')) {
+    const s = r.slice(6);
+    return getCanonicalSlug(s) === s;
+  }
+  return true;
+});
 
 // ⚠️ THIS IS THE FIX: Skip routes that are explicitly handled by vite.config.ts to prevent overwriting their HTML
 const customHandledRoutes = [

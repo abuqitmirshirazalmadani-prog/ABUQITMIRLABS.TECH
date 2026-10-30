@@ -138,10 +138,12 @@ export function generateBlogPostMeta(
   const authorName = post.author?.trim() || options.defaultAuthor || DEFAULT_AUTHOR;
 
   let currentUrl = `${siteUrl}/blog/${encodeURIComponent(slug)}`;
-  if (post.canonical) {
+  if (slug === 'e-commerce-platform-development-custom-build-vs-shopify-plus-2026' || slug === 'ecommerce-platform-development-custom-build-vs-shopify-plus-2026') {
+    currentUrl = `${siteUrl}/blog/ecommerce-platform-development`;
+  } else if (slug === 'edtech-software-development-lms-features-every-platform-needs' || slug === 'edtech-software-development-9-features-every-lms-needs') {
+    currentUrl = `${siteUrl}/blog/edtech-software-development`;
+  } else if (post.canonical) {
     currentUrl = post.canonical;
-  } else if (slug === 'e-commerce-platform-development-custom-build-vs-shopify-plus-2026' || slug === 'ecommerce-platform-development-custom-build-vs-shopify-plus-2026') {
-    currentUrl = `${siteUrl}/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026`;
   }
   
   // 1. Unique Dynamic Title: "<Post Title> | AbuQitmirLabs"

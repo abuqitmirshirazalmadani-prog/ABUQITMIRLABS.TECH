@@ -39,8 +39,12 @@
       "destination": "/api/$1"
     },
     {
+      "source": "/blog/:slug*",
+      "destination": "/spa-shell"
+    },
+    {
       "source": "/((?!api/|assets/|images/|.*\\..*).*)",
-      "destination": "/index.html"
+      "destination": "/spa-shell"
     }
   ],
   "redirects": [
@@ -546,12 +550,22 @@
     },
     {
       "source": "/blog/ecommerce-platform-development-custom-build-vs-shopify-plus-2026",
-      "destination": "/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026",
+      "destination": "/blog/ecommerce-platform-development",
       "permanent": true
     },
     {
       "source": "/ecommerce-platform-development-custom-build-vs-shopify-plus-2026",
-      "destination": "/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026",
+      "destination": "/blog/ecommerce-platform-development",
+      "permanent": true
+    },
+    {
+      "source": "/blog/e-commerce-platform-development-custom-build-vs-shopify-plus-2026",
+      "destination": "/blog/ecommerce-platform-development",
+      "permanent": true
+    },
+    {
+      "source": "/e-commerce-platform-development-custom-build-vs-shopify-plus-2026",
+      "destination": "/blog/ecommerce-platform-development",
       "permanent": true
     },
     {
@@ -596,12 +610,22 @@
     },
     {
       "source": "/blog/edtech-software-development-9-features-every-lms-needs",
-      "destination": "/blog/edtech-software-development-lms-features-every-platform-needs",
+      "destination": "/blog/edtech-software-development",
       "permanent": true
     },
     {
       "source": "/edtech-software-development-9-features-every-lms-needs",
-      "destination": "/blog/edtech-software-development-lms-features-every-platform-needs",
+      "destination": "/blog/edtech-software-development",
+      "permanent": true
+    },
+    {
+      "source": "/blog/edtech-software-development-lms-features-every-platform-needs",
+      "destination": "/blog/edtech-software-development",
+      "permanent": true
+    },
+    {
+      "source": "/edtech-software-development-lms-features-every-platform-needs",
+      "destination": "/blog/edtech-software-development",
       "permanent": true
     },
     {
