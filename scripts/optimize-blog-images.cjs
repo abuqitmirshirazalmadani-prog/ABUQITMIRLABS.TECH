@@ -19,7 +19,107 @@ if (!fs.existsSync(outDir)) {
   fs.mkdirSync(outDir, { recursive: true });
 }
 
-// 1. First, ensure all markdown files in content/blog/*.md are synced into staticBlogPosts.ts and seoRoutesMetadata.ts
+// 0. Automatically sync any newly published Firestore blog posts into content/blog/*.md
+async function syncFirestorePostsToMarkdown() {
+  try {
+    const cfgPath = path.join(rootDir, 'firebase-applet-config.json');
+    if (!fs.existsSync(cfgPath)) return;
+    const cfg = JSON.parse(fs.readFileSync(cfgPath, 'utf8'));
+    const projectId = cfg.projectId || 'angular-oxide-tcf5x';
+    const databaseId = cfg.firestoreDatabaseId || 'ai-studio-675d15b3-f001-4d2e-a88b-bbcb33443014';
+    const apiKey = cfg.apiKey || '';
+
+    const redirectsPath = path.join(rootDir, 'src/data/canonicalRedirects.ts');
+    const knownRedirects = {};
+    if (fs.existsSync(redirectsPath)) {
+      const rContent = fs.readFileSync(redirectsPath, 'utf8');
+      for (const m of rContent.matchAll(/['"]([^'"]+)['"]:\s*['"]([^'"]+)['"]/g)) {
+        knownRedirects[m[1]] = m[2];
+      }
+    }
+
+    const staticSource = fs.existsSync(staticPostsPath) ? fs.readFileSync(staticPostsPath, 'utf8') : '';
+    const url = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/${databaseId}/documents:runQuery${apiKey ? `?key=${apiKey}` : ''}`;
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ structuredQuery: { from: [{ collectionId: 'posts' }] } })
+    });
+    if (!res.ok) return;
+    const rows = await res.json();
+    if (!Array.isArray(rows)) return;
+
+    if (!fs.existsSync(blogContentDir)) fs.mkdirSync(blogContentDir, { recursive: true });
+
+    for (const row of rows) {
+      if (!row || !row.document || !row.document.fields) continue;
+      const fields = row.document.fields;
+      const published = fields.published?.booleanValue ?? true;
+      if (!published) continue;
+      const rawSlug = (fields.slug?.stringValue || '').trim().replace(/^\/+/, '').replace(/^blog\//, '').replace(/\/+$/, '');
+      if (!rawSlug) continue;
+      const slug = knownRedirects[rawSlug] || rawSlug;
+      const mdPath = path.join(blogContentDir, `${slug}.md`);
+
+      if (!fs.existsSync(mdPath) && !staticSource.includes(`STATIC_BLOG_POSTS["${slug}"]`)) {
+        const rawTitle = (fields.title?.stringValue || slug).trim();
+        const cleanTitle = rawTitle.replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
+        const seoTitle = rawTitle.includes('AbuQitmirLabs') ? rawTitle : `${cleanTitle} | AbuQitmirLabs`;
+        const excerpt = (fields.excerpt?.stringValue || '').trim();
+        const metaDescription = (fields.metaDescription?.stringValue || excerpt).trim().slice(0, 158);
+        const category = (fields.category?.stringValue || 'Business').trim();
+        const author = (fields.author?.stringValue || 'Abu Qitmir Mohammad Shiraz Al-Madani').trim();
+        const createdAtRaw = fields.createdAt?.timestampValue || new Date().toISOString();
+        const publishedAt = createdAtRaw.slice(0, 10);
+        const coverImage = (fields.coverImage?.stringValue || 'https://www.abuqitmirlabs.tech/logo.png').trim();
+        const coverImageAlt = (fields.coverImageAlt?.stringValue || `${cleanTitle} | AbuQitmirLabs`).trim();
+        const tags = (fields.tags?.arrayValue?.values || []).map(v => v.stringValue).filter(Boolean);
+
+        let body = (fields.content?.stringValue || '').trim();
+        const lines = body.split(/\r?\n/);
+        if (lines.length > 0) {
+          const first = lines[0].trim();
+          if (/^#\s+/.test(first)) {
+            lines[0] = `## ${first.replace(/^#\s+/, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim()}`;
+          } else if (/^##\s+/.test(first)) {
+            lines[0] = `## ${first.replace(/^##\s+/, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim()}`;
+          } else if (!/^#{2,6}\s+/.test(first)) {
+            lines.unshift(`## ${cleanTitle}`, '');
+          }
+        }
+        const cleanedLines = [];
+        for (let i = 0; i < lines.length; i++) {
+          const t = lines[i].trim();
+          if (i < 6 && /^\*\*By\s+Abu\s*Qitmir/i.test(t)) continue;
+          if (i < 6 && t === '---' && cleanedLines.length <= 2) continue;
+          cleanedLines.push(lines[i]);
+        }
+        body = cleanedLines.join('\n').trim();
+
+        const fm = {
+          title: cleanTitle,
+          seoTitle,
+          slug,
+          canonical: `https://www.abuqitmirlabs.tech/blog/${slug}`,
+          excerpt,
+          metaDescription,
+          category,
+          author,
+          publishedAt,
+          coverImage,
+          coverImageAlt,
+          tags
+        };
+        fs.writeFileSync(mdPath, `---\n${JSON.stringify(fm, null, 2)}\n---\n\n${body}\n`, 'utf8');
+        console.log(`✅ Auto-created markdown file from Firestore post: content/blog/${slug}.md`);
+      }
+    }
+  } catch (err) {
+    console.warn('⚠️ Firestore auto-sync skipped:', err.message);
+  }
+}
+
+// 1. Ensure all markdown files in content/blog/*.md are synced into staticBlogPosts.ts and seoRoutesMetadata.ts
 function syncMarkdownPosts() {
   if (!fs.existsSync(blogContentDir) || !fs.existsSync(staticPostsPath)) return;
   let staticSource = fs.readFileSync(staticPostsPath, 'utf8');
@@ -72,10 +172,12 @@ function syncMarkdownPosts() {
       const routeKeySingle = `'/blog/${slug}'`;
       const routeKeyDouble = `"/blog/${slug}"`;
       if (seoSource && !aliasSkip.has(slug) && !seoSource.includes(routeKeySingle) && !seoSource.includes(routeKeyDouble)) {
-        const cleanTitle = (meta.title || slug).includes('AbuQitmirLabs')
-          ? meta.title
-          : `${meta.title || slug} | AbuQitmirLabs`;
-        const cleanDesc = (meta.metaDescription || meta.excerpt || '').slice(0, 152).trim();
+        const cleanTitle = meta.seoTitle
+          ? meta.seoTitle
+          : ((meta.title || slug).includes('AbuQitmirLabs')
+            ? meta.title
+            : `${meta.title || slug} | AbuQitmirLabs`);
+        const cleanDesc = (meta.metaDescription || meta.excerpt || '').slice(0, 158).trim();
         const cover = meta.coverImage || 'https://www.abuqitmirlabs.tech/logo.png';
         const pubDate = (meta.publishedAt || '2026-10-28') + 'T00:00:00+00:00';
         const seoEntry = `  '/blog/${slug}': {
@@ -184,6 +286,7 @@ async function optimizeOversizedLocalPngs() {
 }
 
 async function main() {
+  await syncFirestorePostsToMarkdown();
   syncMarkdownPosts();
   await optimizeOversizedLocalPngs();
 

@@ -180,7 +180,7 @@ export default defineConfig(({ mode }) => {
             { url: '/blog/startup-brand-identity-checklist', changefreq: 'weekly', priority: 0.9, title: 'The Complete Brand Identity Checklist for Startups | AbuQitmirLabs', description: 'A pre-seed and seed-stage brand identity checklist for startups. Covers positioning, visual system, voice, and launch assets in the right order.' },
           ];
 
-          const clampMetaDescription = (raw: string, maxLen = 148): string => {
+          const clampMetaDescription = (raw: string, maxLen = 158): string => {
             const cleaned = (raw || '')
               .replace(/<[^>]*>?/gm, '')
               .trim()
@@ -209,13 +209,13 @@ export default defineConfig(({ mode }) => {
               isGeneric
                 ? `${cleanHeadline}: practical engineering, architecture, and B2B growth analysis from AbuQitmirLabs.`
                 : rawDesc,
-              148
+              158
             );
             if (usedSet.has(candidate.toLowerCase())) {
               const slugLabel = routeUrl.replace(/^\/blog\//, '').replace(/^\//, '').replace(/-/g, ' ');
-              candidate = clampMetaDescription(`${cleanHeadline} — ${ candidate.replace(/\.$/, '') } (${slugLabel}).`, 148);
+              candidate = clampMetaDescription(`${cleanHeadline} — ${ candidate.replace(/\.$/, '') } (${slugLabel}).`, 158);
               if (usedSet.has(candidate.toLowerCase())) {
-                candidate = clampMetaDescription(`${cleanHeadline}: in-depth 2026 guide and analysis by AbuQitmirLabs (${slugLabel}).`, 148);
+                candidate = clampMetaDescription(`${cleanHeadline}: in-depth 2026 guide and analysis by AbuQitmirLabs (${slugLabel}).`, 158);
               }
             }
             usedSet.add(candidate.toLowerCase());
@@ -257,28 +257,35 @@ export default defineConfig(({ mode }) => {
               }
             } catch (cfgErr) {}
 
-            const firestoreUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/${databaseId}/documents/posts?pageSize=200${apiKey ? `&key=${apiKey}` : ''}`;
-            const response = await fetch(firestoreUrl);
+            const firestoreUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/${databaseId}/documents:runQuery${apiKey ? `?key=${apiKey}` : ''}`;
+            const response = await fetch(firestoreUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ structuredQuery: { from: [{ collectionId: 'posts' }] } })
+            });
             if (response.ok) {
-              const data = await response.json();
-              if (data && data.documents) {
+              const rows = await response.json();
+              if (Array.isArray(rows)) {
                 const cleanQuote = (val: string) =>
                   (val || '').trim().replace(/^(?:&quot;|["'“”])+|(?:&quot;|["'“”])+$/gi, '').trim();
-                fetchedPosts = data.documents.map((doc: any) => {
-                  const fields = doc.fields || {};
-                  const slugVal = (fields.slug?.stringValue || '').trim().replace(/^\/+/, '').replace(/^blog\//, '').replace(/\/+$/, '');
-                  return {
-                    slug: BLOG_SLUG_REDIRECTS[slugVal] || slugVal,
-                    title: fields.title?.stringValue || '',
-                    excerpt: cleanQuote(fields.metaDescription?.stringValue || fields.excerpt?.stringValue || ''),
-                    content: fields.content?.stringValue || '',
-                    coverImage: fields.coverImage?.stringValue || '',
-                    published: fields.published?.booleanValue ?? true,
-                    createdAt: fields.createdAt?.timestampValue || new Date().toISOString(),
-                    category: slugVal === 'ai-content-vs-human-content' ? 'Content Writing' : (fields.category?.stringValue || 'Software'),
-                    author: fields.author?.stringValue || 'Abu Qitmir Mohammad Shiraz Al-Madani',
-                  };
-                }).filter((p: any) => p.published && p.slug);
+                fetchedPosts = rows
+                  .filter((r: any) => r && r.document && r.document.fields)
+                  .map((r: any) => {
+                    const fields = r.document.fields || {};
+                    const slugVal = (fields.slug?.stringValue || '').trim().replace(/^\/+/, '').replace(/^blog\//, '').replace(/\/+$/, '');
+                    return {
+                      slug: BLOG_SLUG_REDIRECTS[slugVal] || slugVal,
+                      title: fields.title?.stringValue || '',
+                      excerpt: cleanQuote(fields.metaDescription?.stringValue || fields.excerpt?.stringValue || ''),
+                      content: fields.content?.stringValue || '',
+                      coverImage: fields.coverImage?.stringValue || '',
+                      published: fields.published?.booleanValue ?? true,
+                      createdAt: fields.createdAt?.timestampValue || new Date().toISOString(),
+                      category: slugVal === 'ai-content-vs-human-content' ? 'Content Writing' : (fields.category?.stringValue || 'Software'),
+                      author: fields.author?.stringValue || 'Abu Qitmir Mohammad Shiraz Al-Madani',
+                    };
+                  })
+                  .filter((p: any) => p.published && p.slug);
               }
             }
           } catch (err: any) {}
@@ -291,14 +298,15 @@ export default defineConfig(({ mode }) => {
               const bestPost = (STATIC_BLOG_POSTS[canonSlug] && (STATIC_BLOG_POSTS[canonSlug].content?.length || 0) >= (post.content?.length || 0))
                 ? STATIC_BLOG_POSTS[canonSlug]
                 : post;
-              const routeTitle = (bestPost.title || canonSlug).includes('AbuQitmirLabs') ? bestPost.title : `${bestPost.title || canonSlug} | AbuQitmirLabs`;
+              const defaultRouteTitle = (bestPost.title || canonSlug).includes('AbuQitmirLabs') ? bestPost.title : `${bestPost.title || canonSlug} | AbuQitmirLabs`;
+              const routeTitle = SEO_ROUTES_METADATA[url]?.title || defaultRouteTitle;
               const rawDesc = SEO_ROUTES_METADATA[url]?.description || bestPost.metaDescription || bestPost.excerpt || '';
               return {
                 url,
                 changefreq: 'weekly' as const,
                 priority: 0.85,
                 title: routeTitle,
-                description: clampMetaDescription(rawDesc || `${bestPost.title || canonSlug}: technical insights from AbuQitmirLabs.`, 148)
+                description: clampMetaDescription(rawDesc || `${bestPost.title || canonSlug}: technical insights from AbuQitmirLabs.`, 158)
               };
             })
             .filter(r => {
@@ -320,14 +328,15 @@ export default defineConfig(({ mode }) => {
             })
             .map(post => {
               const url = `/blog/${post.slug}`;
-              const routeTitle = post.title.includes('AbuQitmirLabs') ? post.title : `${post.title} | AbuQitmirLabs`;
+              const defaultRouteTitle = post.title.includes('AbuQitmirLabs') ? post.title : `${post.title} | AbuQitmirLabs`;
+              const routeTitle = SEO_ROUTES_METADATA[url]?.title || defaultRouteTitle;
               const rawDesc = SEO_ROUTES_METADATA[url]?.description || post.excerpt || '';
               return {
                 url,
                 changefreq: 'weekly' as const,
                 priority: 0.85,
                 title: routeTitle,
-                description: clampMetaDescription(rawDesc || `${post.title}: technical insights from AbuQitmirLabs.`, 148)
+                description: clampMetaDescription(rawDesc || `${post.title}: technical insights from AbuQitmirLabs.`, 158)
               };
             });
 
@@ -344,21 +353,24 @@ export default defineConfig(({ mode }) => {
                 const rawMd = fs.readFileSync(path.join(contentBlogDirForRoutes, file), 'utf-8');
                 const fmMatch = rawMd.match(/^---\s*\r?\n(\{[\s\S]*?\})\r?\n---/);
                 let parsedTitle = canonSlug;
+                let parsedSeoTitle = '';
                 let parsedDesc = '';
                 if (fmMatch) {
                   const metaObj = JSON.parse(fmMatch[1]);
                   if (metaObj.title) parsedTitle = metaObj.title;
+                  if (metaObj.seoTitle) parsedSeoTitle = metaObj.seoTitle;
                   if (metaObj.metaDescription || metaObj.excerpt) parsedDesc = metaObj.metaDescription || metaObj.excerpt;
                 }
                 seenBlogRoutes.add(url);
-                const routeTitle = parsedTitle.includes('AbuQitmirLabs') ? parsedTitle : `${parsedTitle} | AbuQitmirLabs`;
+                const defaultRouteTitle = parsedSeoTitle || (parsedTitle.includes('AbuQitmirLabs') ? parsedTitle : `${parsedTitle} | AbuQitmirLabs`);
+                const routeTitle = SEO_ROUTES_METADATA[url]?.title || defaultRouteTitle;
                 const rawDesc = SEO_ROUTES_METADATA[url]?.description || parsedDesc || `${parsedTitle}: technical insights from AbuQitmirLabs.`;
                 markdownBlogRoutes.push({
                   url,
                   changefreq: 'weekly' as const,
                   priority: 0.85,
                   title: routeTitle,
-                  description: clampMetaDescription(rawDesc, 148)
+                  description: clampMetaDescription(rawDesc, 158)
                 });
               } catch {}
             }
@@ -383,6 +395,13 @@ export default defineConfig(({ mode }) => {
           if (!fs.existsSync(indexHtmlPath)) return;
           
           const baseHtml = fs.readFileSync(indexHtmlPath, 'utf8');
+
+          // Ensure dist/spa-shell.html, dist/spa-shell/index.html, and dist/404.html exist for Vercel dynamic rewrites
+          const spaShellDir = path.join(outDir, 'spa-shell');
+          if (!fs.existsSync(spaShellDir)) fs.mkdirSync(spaShellDir, { recursive: true });
+          fs.writeFileSync(path.join(outDir, 'spa-shell.html'), baseHtml, 'utf-8');
+          fs.writeFileSync(path.join(spaShellDir, 'index.html'), baseHtml, 'utf-8');
+          fs.writeFileSync(path.join(outDir, '404.html'), baseHtml, 'utf-8');
 
           const cacheDir = path.resolve(process.cwd(), 'node_modules/.cache/seo-generator');
           const cacheFilePath = path.resolve(cacheDir, 'cache.json');
@@ -708,7 +727,7 @@ export default defineConfig(({ mode }) => {
             
             let routeHtml = baseHtml;
             const safeTitle = route.title.replace(/&/g, '&amp;');
-            const strippedDesc = clampMetaDescription(route.description || '', 148);
+            const strippedDesc = clampMetaDescription(route.description || '', 158);
             const safeDesc = strippedDesc.replace(/"/g, '&quot;').replace(/&/g, '&amp;');
             
             routeHtml = routeHtml.replace(/<title\b[^>]*>[^<]*<\/title>/gi, '').replace('</head>', `  <title data-rh="true">${safeTitle}</title>\n</head>`);
@@ -1579,8 +1598,14 @@ export default defineConfig(({ mode }) => {
               }
             }
 
+            const blogPostSlug = (route.url.startsWith('/blog/') && route.url !== '/blog')
+              ? route.url.replace(/^\/blog\//, '').replace(/\/+$/, '')
+              : '';
+            const exactBlogTitle = blogPostSlug
+              ? (STATIC_BLOG_POSTS[blogPostSlug]?.title || fetchedPosts.find(p => p.slug === blogPostSlug)?.title || route.title)
+              : route.title;
             const cleanH1Title = (route.url.startsWith('/blog/') && route.url !== '/blog')
-              ? route.title.replace(/\s*\|\s*AbuQitmirLabs.*$/i, '')
+              ? exactBlogTitle.replace(/\s*\|\s*AbuQitmirLabs.*$/i, '')
               : route.title;
             const fallbackPrerenderHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader(route.url)}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${cleanH1Title}</h1><article class="prose prose-invert max-w-none text-neutral-300">${articleContent}</article></main></div>`;
             routeHtml = replaceRootElement(routeHtml, fallbackPrerenderHtml, route.url);

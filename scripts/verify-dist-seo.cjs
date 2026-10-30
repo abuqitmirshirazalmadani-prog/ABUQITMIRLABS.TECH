@@ -38,7 +38,12 @@ let fixedH2Count = 0;
 
 for (const filePath of htmlFiles) {
   const relPath = path.relative(distDir, filePath);
-  if (relPath === 'google87984536fe5662da.html' || relPath === 'spa-shell.html') continue;
+  if (
+    relPath === 'google87984536fe5662da.html' ||
+    relPath === 'spa-shell.html' ||
+    relPath === path.join('spa-shell', 'index.html') ||
+    relPath === '404.html'
+  ) continue;
 
   let html = fs.readFileSync(filePath, 'utf-8');
   let modified = false;
