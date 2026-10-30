@@ -158,7 +158,9 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                     );
                     const staticEntry = (slug && STATIC_POSTS_MAP[slug]) ? STATIC_POSTS_MAP[slug] : null;
                     const resolvedContent =
-                        staticEntry?.content && countH2Headings(staticEntry.content) > countH2Headings(foundPost.content)
+                        staticEntry?.content &&
+                        (countH2Headings(staticEntry.content) > countH2Headings(foundPost.content) ||
+                            staticEntry.content.length >= (foundPost.content?.length || 0))
                             ? staticEntry.content
                             : foundPost.content;
                     const sanitizedPost: Post = {

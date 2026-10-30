@@ -1282,7 +1282,10 @@ export default defineConfig(({ mode }) => {
               }
               const firestorePost = fetchedPosts.find(p => getCanonicalSlug(p.slug) === blogSlug);
 
-              let mdSource = firestorePost?.content || staticPost?.content || '';
+              let mdSource =
+                staticPost?.content && staticPost.content.length >= (firestorePost?.content?.length || 0)
+                  ? staticPost.content
+                  : (firestorePost?.content || staticPost?.content || '');
               if (!mdSource) {
                 const mdPath = path.resolve(process.cwd(), 'content/blog', `${blogSlug}.md`);
                 if (fs.existsSync(mdPath)) {
