@@ -618,8 +618,6 @@
 
     "@splinetool/runtime": ["@splinetool/runtime@2.0.111", "", { "dependencies": { "on-change": "4.0.0", "semver-compare": "1.0.0" } }, "sha512-ebOODMXtDIs8nvhqnCsqgfZTQMsemxadg9GhAo7TfD4Mff/o9zisLVY0bG9uFPYEwzHuG5xzk8Ne8ZpVuSCjAQ=="],
 
-    "@studio-freight/hamo": ["@studio-freight/hamo@0.6.33", "", { "dependencies": { "@studio-freight/tempus": "^0.0.38", "just-debounce-it": "^3.2.0", "nanoevents": "^9.0.0" }, "peerDependencies": { "react": "^18.2.0", "react-dom": "^18.2.0" } }, "sha512-U3Nvw5wDvB/jps2/ZbGL2TFL+CcZvJF/tkjL7S7ajuzDi9T5VkqCguws6tuWHttZ74Z6DfXxV1b8F1EB30AyJg=="],
-
     "@studio-freight/lenis": ["@studio-freight/lenis@1.0.42", "", {}, "sha512-HJAGf2DeM+BTvKzHv752z6Z7zy6bA643nZM7W88Ft9tnw2GsJSp6iJ+3cekjyMIWH+cloL2U9X82dKXgdU8kPg=="],
 
     "@studio-freight/react-lenis": ["@studio-freight/react-lenis@0.0.47", "", { "dependencies": { "@studio-freight/hamo": "^0.6.28", "@studio-freight/lenis": "^1.0.40", "@types/react": "^18.0.0", "clsx": "^2.0.0", "react": "^18.0.0", "zustand": "^4.4.7" }, "peerDependencies": { "react-dom": "^17 || ^18" } }, "sha512-h+IAqiyiNo8mRo/CA3/sHCqX2IV0tTLyzZRWsdRaLPtM2aBaRqK0+ISYWTUmktQfcf3qvp4hsn0Oeyt9uXwLTQ=="],
@@ -2297,6 +2295,8 @@
     "@modelcontextprotocol/sdk/zod": ["zod@3.25.76", "", {}, "sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ=="],
 
     "@mswjs/interceptors/@open-draft/deferred-promise": ["@open-draft/deferred-promise@2.2.0", "", {}, "sha512-CecwLWx3rhxVQF6V4bAgPS5t+So2sTbPgAzafKkVizyi7tlwpcFpdFqq+wqF2OwNBmqFuu6tOyouTuxgpMfzmA=="],
+
+    "@studio-freight/react-lenis/@studio-freight/hamo": ["@studio-freight/hamo@0.6.33", "", { "dependencies": { "@studio-freight/tempus": "^0.0.38", "just-debounce-it": "^3.2.0", "nanoevents": "^9.0.0" }, "peerDependencies": { "react": "^18.2.0", "react-dom": "^18.2.0" } }, "sha512-U3Nvw5wDvB/jps2/ZbGL2TFL+CcZvJF/tkjL7S7ajuzDi9T5VkqCguws6tuWHttZ74Z6DfXxV1b8F1EB30AyJg=="],
 
     "@studio-freight/react-lenis/@types/react": ["@types/react@18.3.31", "", { "dependencies": { "@types/prop-types": "*", "csstype": "^3.2.2" } }, "sha512-vfEqpXTvwT91yhmwdfouStN2hSKwTvyRs8qpLfADyrq/kxDw0hZM7Wk9Ug1FELj8hIby+S/+kQCSRFF32nv2Qw=="],
 

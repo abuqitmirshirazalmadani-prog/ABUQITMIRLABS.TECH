@@ -197,6 +197,9 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
 
         fetchPost();
         if (typeof window !== 'undefined') {
+            if (window.location.hash && window.history && window.history.replaceState) {
+                window.history.replaceState(null, '', window.location.pathname + window.location.search);
+            }
             window.scrollTo(0, 0);
         }
     }, [slug]);
@@ -700,7 +703,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
     };
 
     const handleShare = (platform: string) => {
-        const url = window.location.href;
+        const url = window.location.origin + window.location.pathname;
         const title = post?.title || 'Check out this post from AbuQitmirLabs Collective';
         
         const shareLinks: Record<string, string> = {

@@ -17,6 +17,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import { setCachedPost } from '../utils/blogCache';
+import { syncPostToGitHubAndDeploy } from '../utils/githubPublisher';
 
 const ADMIN_EMAIL = "abuqitmirshirazalmadani@gmail.com";
 const ADMIN_UID = "cRAf1wZFRRXMVadj7RDaC8WM4152";

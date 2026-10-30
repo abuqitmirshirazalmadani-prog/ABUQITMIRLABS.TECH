@@ -6,25 +6,6 @@ import crypto from 'crypto';
 import zlib from 'zlib';
 import { defineConfig, loadEnv } from 'vite';
 import compression from 'vite-plugin-compression';
-import { aiAgentSchema, aiAgentInitialHtml } from './src/utils/aiAgentStaticHtml';
-import { graphicsDesignSchema, graphicsDesignInitialHtml } from './src/utils/graphicsDesignStaticHtml';
-import { fintechSchema, fintechInitialHtml } from './src/utils/fintechStaticHtml';
-import { healthcareSchema, healthcareInitialHtml } from './src/utils/healthcareStaticHtml';
-import { aiAutomationSchema, aiAutomationInitialHtml } from './src/utils/aiAutomationStaticHtml';
-import { eCommerceSchema, eCommerceInitialHtml } from './src/utils/eCommerceStaticHtml';
-import { edTechSchema, edTechInitialHtml } from './src/utils/edTechStaticHtml';
-import { customSoftwareSchema, customSoftwareInitialHtml } from './src/utils/customSoftwareStaticHtml';
-import { mobileAppSchema, mobileAppInitialHtml } from './src/utils/mobileAppStaticHtml';
-import { customWebDevBlogSchema, customWebDevBlogInitialHtml } from './src/utils/customWebDevBlogStaticHtml';
-import { localSEOSmallBusinessSchema, localSEOSmallBusinessInitialHtml } from './src/utils/localSEOSmallBusinessStaticHtml';
-import { homeSchema, homeInitialHtml } from './src/utils/homeStaticHtml';
-import { growthEngineeringPageSchema, growthEngineeringInitialHtml } from './src/utils/growthEngineeringStaticHtml';
-import { renderStaticHeader } from './src/utils/sharedStaticHeader';
-import { SEO_ROUTES_METADATA } from './src/data/seoRoutesMetadata';
-import { BLOG_SLUG_REDIRECTS, getCanonicalPath, getCanonicalSlug } from './src/data/canonicalRedirects';
-import { STATIC_BLOG_POSTS } from './src/data/staticBlogPosts';
-import { resolveOptimizedCoverImage } from './src/data/localCoverImageMap';
-import { programmaticSEOPages } from './src/data/programmatic-seo';
 
 interface PrerenderPlugin {
   (options: { staticDir: string; routes: string[]; renderer?: any }): any;
@@ -55,8 +36,10 @@ export default defineConfig(({ mode }) => {
     plugins: [
       react(), 
       tailwindcss(),
-      compression({ algorithm: 'gzip', ext: '.gz' }),
-      compression({ algorithm: 'brotliCompress', ext: '.br' }),
+      ...(mode === 'production' ? [
+        compression({ algorithm: 'gzip', ext: '.gz' }),
+        compression({ algorithm: 'brotliCompress', ext: '.br' }),
+      ] : []),
       prerender({
         staticDir: path.resolve(process.cwd(), 'dist'),
         routes: [
@@ -76,7 +59,49 @@ export default defineConfig(({ mode }) => {
       }),
       {
         name: 'custom-seo-generator',
+        apply: 'build' as const,
         closeBundle: async () => {
+          const [
+            { aiAgentSchema, aiAgentInitialHtml },
+            { graphicsDesignSchema, graphicsDesignInitialHtml },
+            { fintechSchema, fintechInitialHtml },
+            { healthcareSchema, healthcareInitialHtml },
+            { aiAutomationSchema, aiAutomationInitialHtml },
+            { eCommerceSchema, eCommerceInitialHtml },
+            { edTechSchema, edTechInitialHtml },
+            { customSoftwareSchema, customSoftwareInitialHtml },
+            { mobileAppSchema, mobileAppInitialHtml },
+            { customWebDevBlogSchema, customWebDevBlogInitialHtml },
+            { localSEOSmallBusinessSchema, localSEOSmallBusinessInitialHtml },
+            { homeSchema, homeInitialHtml },
+            { growthEngineeringPageSchema, growthEngineeringInitialHtml },
+            { renderStaticHeader },
+            { SEO_ROUTES_METADATA },
+            { BLOG_SLUG_REDIRECTS, getCanonicalPath, getCanonicalSlug },
+            { STATIC_BLOG_POSTS },
+            { resolveOptimizedCoverImage },
+            { programmaticSEOPages }
+          ] = await Promise.all([
+            import('./src/utils/aiAgentStaticHtml'),
+            import('./src/utils/graphicsDesignStaticHtml'),
+            import('./src/utils/fintechStaticHtml'),
+            import('./src/utils/healthcareStaticHtml'),
+            import('./src/utils/aiAutomationStaticHtml'),
+            import('./src/utils/eCommerceStaticHtml'),
+            import('./src/utils/edTechStaticHtml'),
+            import('./src/utils/customSoftwareStaticHtml'),
+            import('./src/utils/mobileAppStaticHtml'),
+            import('./src/utils/customWebDevBlogStaticHtml'),
+            import('./src/utils/localSEOSmallBusinessStaticHtml'),
+            import('./src/utils/homeStaticHtml'),
+            import('./src/utils/growthEngineeringStaticHtml'),
+            import('./src/utils/sharedStaticHeader'),
+            import('./src/data/seoRoutesMetadata'),
+            import('./src/data/canonicalRedirects'),
+            import('./src/data/staticBlogPosts'),
+            import('./src/data/localCoverImageMap'),
+            import('./src/data/programmatic-seo')
+          ]);
           const hostname = 'https://www.abuqitmirlabs.tech';
           const baseRoutes = [
             { url: '/', changefreq: 'weekly', priority: 1.0, title: 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs', description: 'Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.' },

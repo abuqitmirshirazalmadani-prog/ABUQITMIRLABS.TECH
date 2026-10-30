@@ -148,8 +148,32 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
     };
   }, [headings]);
 
-  const handleSelectHeading = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
+  // Strip any #hash fragment from the browser address bar so blog URLs remain 100% canonical
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const cleanUrlHash = () => {
+      if (window.location.hash && window.history && window.history.replaceState) {
+        const hashId = window.location.hash.replace(/^#/, '');
+        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+        if (hashId) {
+          const target = document.getElementById(hashId);
+          if (target) {
+            const headerOffset = 128;
+            const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({
+              top: Math.max(0, elementPosition - headerOffset),
+              behavior: 'smooth',
+            });
+          }
+        }
+      }
+    };
+    cleanUrlHash();
+    window.addEventListener('hashchange', cleanUrlHash);
+    return () => window.removeEventListener('hashchange', cleanUrlHash);
+  }, []);
+
+  const handleSelectHeading = (id: string) => {
     setActiveId(id);
     setMobileOpen(false);
 
@@ -165,8 +189,9 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
           behavior: 'smooth',
         });
 
-        if (window.history && window.history.replaceState) {
-          window.history.replaceState(null, '', `#${id}`);
+        // Keep URL strictly clean without #hash fragments
+        if (window.location.hash && window.history && window.history.replaceState) {
+          window.history.replaceState(null, '', window.location.pathname + window.location.search);
         }
       }
     }
@@ -207,10 +232,10 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
               const isActive = activeId === item.id;
               return (
                 <li key={item.id}>
-                  <a
-                    href={`#${item.id}`}
-                    onClick={(e) => handleSelectHeading(e, item.id)}
-                    className={`flex items-baseline gap-2.5 py-1 transition-colors leading-snug ${
+                  <button
+                    type="button"
+                    onClick={() => handleSelectHeading(item.id)}
+                    className={`w-full text-left flex items-baseline gap-2.5 py-1 transition-colors leading-snug cursor-pointer ${
                       isActive
                         ? 'text-[#ccff00] font-semibold'
                         : 'text-zinc-400 hover:text-white'
@@ -220,7 +245,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
                       {String(idx + 1).padStart(2, '0')}.
                     </span>
                     <span>{item.text}</span>
-                  </a>
+                  </button>
                 </li>
               );
             })}
@@ -242,11 +267,11 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
             const isActive = activeId === item.id;
             return (
               <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  onClick={(e) => handleSelectHeading(e, item.id)}
+                <button
+                  type="button"
+                  onClick={() => handleSelectHeading(item.id)}
                   aria-current={isActive ? 'location' : undefined}
-                  className={`group flex items-baseline gap-2.5 py-1.5 px-2.5 rounded-lg text-xs leading-relaxed transition-all ${
+                  className={`w-full text-left group flex items-baseline gap-2.5 py-1.5 px-2.5 rounded-lg text-xs leading-relaxed transition-all cursor-pointer ${
                     isActive
                       ? 'bg-[#ccff00]/10 text-[#ccff00] font-semibold'
                       : 'text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.03]'
@@ -260,7 +285,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
                     {String(idx + 1).padStart(2, '0')}
                   </span>
                   <span className="line-clamp-2">{item.text}</span>
-                </a>
+                </button>
               </li>
             );
           })}
