@@ -773,7 +773,7 @@ const AdminDashboard = () => {
             if (data.success) {
                 setGhTestResult({
                     success: true,
-                    message: `Connected successfully to GitHub repo: ${data.repo}! Default branch: ${data.defaultBranch}. Push permissions confirmed.`,
+                    message: data.message || `Connected successfully to GitHub repo: ${data.repo}! Default branch: ${data.defaultBranch}.`,
                     repo: data.repo
                 });
             } else {
@@ -796,9 +796,9 @@ const AdminDashboard = () => {
         setIsDeploying(true);
         setDeployStatus({
             inProgress: true,
-            step: isSyncAll ? 'Syncing all sitemaps & articles to GitHub...' : 'Starting automated publish & deployment pipeline...',
+            step: isSyncAll ? 'Syncing all sitemaps, RSS & SEO queue...' : 'Starting automated publish & deployment pipeline...',
             logs: [
-                `Initiating deployment pipeline for: ${postData?.title || 'All Site Pages & Sitemaps'}`,
+                `Initiating deployment pipeline for: ${postData?.title || 'All Site Pages, Sitemaps & SEO Auto-Fix Queue'}`,
                 `Target Repository: ${githubRepo} (${githubBranch})`
             ]
         });
@@ -857,10 +857,11 @@ const AdminDashboard = () => {
             setDeployStatus({
                 inProgress: false,
                 completed: true,
-                step: 'Deployment Pipeline Finished Successfully!',
+                step: data.message || 'Deployment & Sync Pipeline Finished Successfully!',
                 logs: data.logs || ['Pipeline execution complete.'],
                 commitUrl: data.commitUrl || null
             });
+            window.dispatchEvent(new CustomEvent('seo-queue-updated'));
             return data;
         } catch (err: any) {
             console.error('Publish-deploy pipeline error:', err);
@@ -1011,13 +1012,14 @@ const AdminDashboard = () => {
             });
 
             // Persist unfixed warnings (e.g. external images) to content/.fix-queue.json via backend API without blocking
-            if (layer1Result.unfixedWarnings.length > 0 || layer1Result.appliedFixes.length > 0) {
+            const warningsList = layer1Result.warnings || layer1Result.unfixedWarnings || [];
+            if (warningsList.length > 0 || layer1Result.appliedFixes.length > 0) {
                 fetch('/api/seo/auto-fix', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         article: layer1Result.article,
-                        warnings: layer1Result.unfixedWarnings
+                        warnings: warningsList
                     })
                 }).catch(() => {});
             }
@@ -1330,8 +1332,8 @@ const AdminDashboard = () => {
                                 <span className="flex items-center gap-2">
                                     <GitBranch size={16} /> Auto-Deploy & Sync
                                 </span>
-                                <span className={`text-[9px] px-2 py-0.5 rounded-full font-black ${githubToken ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-amber-500/20 text-amber-300'}`}>
-                                    {githubToken ? 'Ready' : 'Setup'}
+                                <span className="text-[9px] px-2 py-0.5 rounded-full font-black bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                                    Ready
                                 </span>
                             </button>
                             <button
@@ -1539,6 +1541,70 @@ const AdminDashboard = () => {
                                     </button>
                                 )}
                             </div>
+
+                            {/* Global Pipeline & Connection Feedback Banner (visible on any tab when triggered from sidebar) */}
+                            {activeSection !== 'deploy' && (deployStatus || ghTestResult) && (
+                                <div className="mb-8 space-y-3">
+                                    {ghTestResult && (
+                                        <div className={`p-4 rounded-2xl border text-xs font-bold flex items-center justify-between gap-3 ${
+                                            ghTestResult.success ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300' : 'bg-red-500/10 border-red-500/30 text-red-300'
+                                        }`}>
+                                            <div className="flex items-center gap-3">
+                                                {ghTestResult.success ? <CheckCircle2 size={18} /> : <AlertCircle size={18} />}
+                                                <span>{ghTestResult.message}</span>
+                                            </div>
+                                            <button
+                                                type="button"
+                                                onClick={() => setGhTestResult(null)}
+                                                className="text-[10px] font-mono uppercase opacity-70 hover:opacity-100"
+                                            >
+                                                Dismiss
+                                            </button>
+                                        </div>
+                                    )}
+                                    {deployStatus && (
+                                        <div className={`p-5 rounded-2xl border text-xs space-y-3 ${
+                                            deployStatus.completed
+                                                ? 'bg-emerald-950/20 border-emerald-500/30'
+                                                : deployStatus.error
+                                                    ? 'bg-amber-950/20 border-amber-500/30'
+                                                    : 'bg-blue-950/20 border-blue-500/30'
+                                        }`}>
+                                            <div className="flex items-center justify-between gap-4">
+                                                <div className="flex items-center gap-2 font-bold uppercase tracking-wider text-xs">
+                                                    {deployStatus.inProgress ? (
+                                                        <Loader2 className="animate-spin text-blue-400" size={18} />
+                                                    ) : deployStatus.completed ? (
+                                                        <CheckCircle2 className="text-emerald-400" size={18} />
+                                                    ) : (
+                                                        <AlertCircle className="text-amber-400" size={18} />
+                                                    )}
+                                                    <span className={deployStatus.completed ? 'text-emerald-300' : deployStatus.error ? 'text-amber-300' : 'text-blue-300'}>
+                                                        {deployStatus.step}
+                                                    </span>
+                                                </div>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setDeployStatus(null)}
+                                                    className="text-[10px] font-mono uppercase text-zinc-400 hover:text-white"
+                                                >
+                                                    Dismiss
+                                                </button>
+                                            </div>
+                                            {deployStatus.logs && deployStatus.logs.length > 0 && (
+                                                <div className="bg-black/80 rounded-xl p-3.5 font-mono text-[11px] text-gray-300 space-y-1 max-h-40 overflow-y-auto border border-white/5">
+                                                    {deployStatus.logs.map((log, i) => (
+                                                        <div key={i} className="flex items-start gap-2">
+                                                            <span className="text-blue-400 font-bold">➜</span>
+                                                            <span>{log}</span>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
+                            )}
 
                             {activeSection === 'blog' ? (
                                 <AnimatePresence mode="wait">
@@ -2530,7 +2596,7 @@ const AdminDashboard = () => {
                                         <button
                                             type="button"
                                             onClick={handleTestGitHub}
-                                            disabled={isTestingGh || !githubToken}
+                                            disabled={isTestingGh}
                                             className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 disabled:opacity-40 text-white font-bold uppercase text-xs tracking-wider transition-all flex items-center gap-2"
                                         >
                                             {isTestingGh ? <Loader2 className="animate-spin" size={14} /> : <RefreshCw size={14} />}

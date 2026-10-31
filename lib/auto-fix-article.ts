@@ -17,12 +17,14 @@ export interface SeoFixQueueItem {
   slug: string;
   title: string;
   type: SeoFixWarningType;
+  issueType?: SeoFixWarningType;
   severity: 'warning' | 'info';
   message: string;
   suggestedFix: string;
   field: 'coverImage' | 'title' | 'metaDescription' | 'publishedAt' | 'content' | 'tags';
   currentValue?: string;
   proposedValue?: string;
+  suggestedValue?: string;
   autoFixable: boolean;
   createdAt: string;
   resolved?: boolean;
@@ -62,7 +64,9 @@ export interface AutoFixResult {
     tags: string[];
   };
   appliedFixes: string[];
+  fixedActions: string[];
   warnings: SeoFixQueueItem[];
+  unfixedWarnings: SeoFixQueueItem[];
 }
 
 const CONTEXTUAL_INTERNAL_LINK_POOL: Array<{
@@ -624,6 +628,8 @@ export function autoFixArticle(input: ArticleInput): AutoFixResult {
       tags: resolvedTags,
     },
     appliedFixes,
+    fixedActions: appliedFixes,
     warnings,
+    unfixedWarnings: warnings,
   };
 }

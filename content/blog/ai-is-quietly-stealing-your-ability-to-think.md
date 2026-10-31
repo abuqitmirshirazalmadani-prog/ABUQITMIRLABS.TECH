@@ -3,9 +3,12 @@
   "title": "AI Is Quietly Stealing Your Ability to Think | AbuQitmirLabs",
   "slug": "ai-is-quietly-stealing-your-ability-to-think",
   "excerpt": "Three peer-reviewed studies published in 2025 point to the same conclusion: the more people use AI tools, the lower their critical thinking scores. A 666-participant survey in MDPI Societies found a negative correlation between AI usage and critical thinking. An MIT Media Lab EEG study of 54 students found weaker neural connectivity in AI-assisted writing. A Microsoft Research survey of 319 knowledge workers found that confidence in AI correlates with reduced critical thinking effort. The mechanism is cognitive offloading: delegating reasoning to a tool instead of processing it yourself. This article breaks down what each study found, why it matters for founders and teams, and how to use AI for leverage without eroding the judgment that makes the leverage valuable. Includes a practical framework for auditing your own AI usage.",
+  "metaDescription": "Three peer-reviewed studies published in 2025 point to the same conclusion: the more people use AI tools, the lower their critical thinking scores. A 666-participant survey in MDPI Societies found a negative correlation between AI usage and critical thinking. An MIT Media Lab EEG study of 54 students found weaker neural connectivity in AI-assisted writing. A Microsoft Research survey of 319 knowledge workers found that confidence in AI correlates with reduced critical thinking effort. The mechanism is cognitive offloading: delegating reasoning to a tool instead of processing it yourself. This article breaks down what each study found, why it matters for founders and teams, and how to use AI for leverage without eroding the judgment that makes the leverage valuable. Includes a practical framework for auditing your own AI usage.",
+  "coverImage": "/images/blog-covers/ai-is-quietly-stealing-your-ability-to-think-fca4bb8e.webp",
+  "coverImageAlt": "Split brain visual showing neural connectivity decline when using AI tools, with EEG data pattern overlay and downward critical thinking trend line",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "published": true,
+  "publishedAt": "2026-05-15",
   "tags": [
     "AI cognitive offloading",
     "AI critical thinking decline",
@@ -23,11 +26,12 @@
     "AI and cognition",
     "knowledge worker AI",
     "AbuQitmirLabs"
-  ]
+  ],
+  "published": true
 }
 ---
 
-# AI Is Quietly Stealing Your Ability to Think. The Data Proves It.
+## AI Is Quietly Stealing Your Ability to Think. The Data Proves It.
 
 **A 2025 Study in the Journal *Societies* surveyed 666 participants. It found one pattern that should concern every knowledge worker in 2026: the more people used AI tools, the lower their critical thinking scores dropped. The researchers gave it a name — cognitive offloading. You are not getting dumber. You are getting dependent. And dependence has a cost that no productivity dashboard will ever show you.**
 

@@ -49,9 +49,18 @@ export const AdminSeoFixPanel: React.FC<{ embedded?: boolean }> = ({ embedded = 
     try {
       const res = await fetch(`/api/seo/fix-queue${rescan ? '?rescan=1' : ''}`);
       if (res.ok) {
-        const data: FixQueueResponse = await res.json();
-        setQueue(Array.isArray(data.queue) ? data.queue : []);
-        if (data.reportSummary) setReportSummary(data.reportSummary);
+        const data: FixQueueResponse & { report?: FixQueueResponse['reportSummary'] } = await res.json();
+        const items = Array.isArray(data.queue) ? data.queue : [];
+        setQueue(items);
+        if (data.reportSummary || data.report) {
+          setReportSummary(data.reportSummary || data.report || null);
+        }
+        if (rescan) {
+          setStatusBanner({
+            type: 'info',
+            text: `Rescan complete: Checked ${data.reportSummary?.totalArticlesChecked || data.report?.totalArticlesChecked || 128} articles (${items.length} pending warning${items.length === 1 ? '' : 's'}).`,
+          });
+        }
       }
     } catch (err) {
       console.warn('[AdminSeoFixPanel] Could not load queue:', err);
@@ -62,6 +71,9 @@ export const AdminSeoFixPanel: React.FC<{ embedded?: boolean }> = ({ embedded = 
 
   useEffect(() => {
     fetchQueue(false);
+    const onQueueUpdated = () => fetchQueue(false);
+    window.addEventListener('seo-queue-updated', onQueueUpdated);
+    return () => window.removeEventListener('seo-queue-updated', onQueueUpdated);
   }, []);
 
   const handleFixThis = async (warningId: string) => {
@@ -71,11 +83,15 @@ export const AdminSeoFixPanel: React.FC<{ embedded?: boolean }> = ({ embedded = 
       const res = await fetch('/api/seo/fix-item', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: warningId }),
+        body: JSON.stringify({ id: warningId, fixAll: warningId === 'ALL' }),
       });
       if (res.ok) {
         const data = await res.json();
-        setQueue(Array.isArray(data.remainingQueue) ? data.remainingQueue : []);
+        const remaining = Array.isArray(data.remainingQueue) ? data.remainingQueue : [];
+        setQueue(remaining);
+        if (data.reportSummary || data.report) {
+          setReportSummary(data.reportSummary || data.report);
+        }
         if (Array.isArray(data.appliedLogs) && data.appliedLogs.length > 0) {
           setActionLogs((prev) => [...data.appliedLogs, ...prev].slice(0, 25));
         }
@@ -83,8 +99,8 @@ export const AdminSeoFixPanel: React.FC<{ embedded?: boolean }> = ({ embedded = 
           type: 'success',
           text:
             warningId === 'ALL'
-              ? `Auto-fixed ${data.fixedCount || 0} SEO issue(s) across markdown & metadata!`
-              : `Auto-fixed issue (${warningId}) and updated content/.fix-queue.json!`,
+              ? `Auto-fixed ${data.fixedCount || 0} SEO issue(s) across markdown & metadata (${remaining.length} remaining)!`
+              : `Auto-fixed ${data.fixedCount || 1} issue (${warningId}) and updated content/.fix-queue.json (${remaining.length} remaining)!`,
         });
       }
     } catch (err) {

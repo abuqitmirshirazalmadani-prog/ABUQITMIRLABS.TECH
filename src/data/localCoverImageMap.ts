@@ -253,18 +253,31 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "high-performance-web-applications-12-engineering-decisions": "/images/blog-covers/high-performance-web-applications-12-engineering-decisions-7f75ceb8.webp",
   "native-mobile-app-development-ios-vs-android-cost": "/images/blog-covers/native-mobile-app-development-ios-vs-android-cost-9610730c.webp",
   "the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026": "/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
+  "5-minute-technical-audit-for-founders": "/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
+  "generative-ai-chatbot-development-cost-2026": "/images/blog-covers/generative-ai-chatbot-development-what-it-actually-costs-in--fdd0d1da.webp",
+  "agentic-ai-production-failures": "/images/blog-covers/ai-agent-development-agency-vs-in-house-5ea2debf.webp",
+  "saas-pricing-page-optimization-7-structural-decisions": "/images/blog-covers/bespoke-saas-development-build-vs-buy-decision-guide-c0840937.webp",
+  "measure-marketing-roi-without-tracking": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp",
+  "ai-overviews-traffic-recovery-what-40-companies-did-next": "/images/blog-covers/ai-overviews-killed-traffic-what-40-companies-did-next-eb108ed0.webp",
   "author-abuqitmir-shiraz": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp"
 };
 
 export function resolveOptimizedCoverImage(url?: string, slug?: string): string {
   if (url && typeof url === 'string') {
     const clean = url.trim();
+    if (clean.startsWith('/images/blog-covers/')) {
+      return clean;
+    }
+    if (clean.startsWith('https://www.abuqitmirlabs.tech/images/blog-covers/')) {
+      return clean.replace('https://www.abuqitmirlabs.tech', '');
+    }
     if (REMOTE_TO_LOCAL_COVER_MAP[clean]) {
       return REMOTE_TO_LOCAL_COVER_MAP[clean];
     }
     if (clean.startsWith('https://www.abuqitmirlabs.tech/')) {
       const rel = clean.replace('https://www.abuqitmirlabs.tech', '');
       if (REMOTE_TO_LOCAL_COVER_MAP[rel]) return REMOTE_TO_LOCAL_COVER_MAP[rel];
+      if (slug && SLUG_TO_LOCAL_COVER_MAP[slug]) return SLUG_TO_LOCAL_COVER_MAP[slug];
       return rel;
     }
   }

@@ -14,12 +14,15 @@ export default async function handler(req: any, res: any) {
     const autoFixOutcome = rawPost ? runAutoFixAndPersistOnSave(rawPost) : null;
     const post = autoFixOutcome ? autoFixOutcome.article : rawPost;
 
-    if (autoFixOutcome && autoFixOutcome.appliedFixes.length > 0) {
-      autoFixOutcome.appliedFixes.forEach((msg) => logs.push(`🛡️ [Auto-Fix] ${msg}`));
+    const appliedFixes = autoFixOutcome?.appliedFixes || [];
+    const unfixedWarnings = autoFixOutcome?.warnings || autoFixOutcome?.unfixedWarnings || [];
+
+    if (appliedFixes.length > 0) {
+      appliedFixes.forEach((msg) => logs.push(`🛡️ [Auto-Fix] ${msg}`));
     }
-    if (autoFixOutcome && autoFixOutcome.unfixedWarnings.length > 0) {
+    if (unfixedWarnings.length > 0) {
       logs.push(
-        `⚠️ [Fix Queue] ${autoFixOutcome.unfixedWarnings.length} non-blocking warning(s) saved to content/.fix-queue.json`
+        `⚠️ [Fix Queue] ${unfixedWarnings.length} non-blocking warning(s) saved to content/.fix-queue.json`
       );
     }
 

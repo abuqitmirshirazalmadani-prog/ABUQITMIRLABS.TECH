@@ -78,22 +78,7 @@ export function generateSeoReport(): BuildTimeSeoReport {
   const fixQueuePath = path.join(process.cwd(), 'content', '.fix-queue.json');
   const reportPath = path.join(process.cwd(), 'content', '.seo-report.json');
 
-  // Preserve any previously resolved status if the warning ID is identical
-  const existingQueueMap = new Map<string, SeoFixQueueItem>();
-  if (fs.existsSync(fixQueuePath)) {
-    try {
-      const existing = JSON.parse(fs.readFileSync(fixQueuePath, 'utf-8'));
-      if (Array.isArray(existing)) {
-        for (const item of existing) {
-          if (item && item.id) existingQueueMap.set(item.id, item);
-        }
-      }
-    } catch {
-      // ignore malformed file
-    }
-  }
-
-  // Merge articles from content/blog/*.md and STATIC_BLOG_POSTS (canonical slugs only)
+  // Merge articles from STATIC_BLOG_POSTS and content/blog/*.md (canonical slugs only)
   const articlesBySlug = new Map<string, Record<string, any>>();
 
   for (const [slug, post] of Object.entries(STATIC_BLOG_POSTS)) {
@@ -113,12 +98,15 @@ export function generateSeoReport(): BuildTimeSeoReport {
       const parsed = parseMarkdownFile(path.join(contentBlogDir, file));
       if (parsed) {
         const prev = articlesBySlug.get(canonicalSlug) || {};
-        articlesBySlug.set(canonicalSlug, {
-          ...prev,
-          ...parsed,
-          slug: canonicalSlug,
-          source: `content/blog/${file}`,
-        });
+        const merged: Record<string, any> = { ...prev };
+        for (const [k, v] of Object.entries(parsed)) {
+          if (v !== undefined && v !== null && String(v).trim() !== '') {
+            merged[k] = v;
+          }
+        }
+        merged.slug = canonicalSlug;
+        merged.source = `content/blog/${file}`;
+        articlesBySlug.set(canonicalSlug, merged);
       }
     }
   }
@@ -335,17 +323,9 @@ export function generateSeoReport(): BuildTimeSeoReport {
     }
   }
 
-  // Merge with any runtime-queued items from Layer 1 that aren't resolved yet
   const mergedWarningsMap = new Map<string, SeoFixQueueItem>();
   for (const w of warnings) {
-    const prev = existingQueueMap.get(w.id);
-    if (prev?.resolved) continue;
     mergedWarningsMap.set(w.id, w);
-  }
-  for (const [id, prev] of existingQueueMap.entries()) {
-    if (!prev.resolved && !mergedWarningsMap.has(id)) {
-      mergedWarningsMap.set(id, prev);
-    }
   }
 
   const finalWarnings = Array.from(mergedWarningsMap.values());

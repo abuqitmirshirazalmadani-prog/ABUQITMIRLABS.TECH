@@ -3,9 +3,12 @@
   "title": "AI Overviews Killed Traffic: What 40 Companies Did Next",
   "slug": "ai-overviews-traffic-recovery-what-40-companies-did-next",
   "excerpt": "Google AI Overviews now appear in 58% of all search results and have cut organic CTR on top-ranking pages by up to 61%. This is not an algorithm update you wait out. It is a structural change in how search demand reaches websites. We analyzed 40 companies that recovered lost traffic between January 2025 and August 2026. Seven recurring tactics appeared. Only three of them involve traditional SEO. This article documents the full framework, includes the SignLab case study (50% traffic loss, 5-month recovery), and provides a cost breakdown for DIY versus agency-assisted recovery.",
+  "metaDescription": "Google AI Overviews now appear in 58% of all search results and have cut organic CTR on top-ranking pages by up to 61%. This is not an algorithm update you wait out. It is a structural change in how search demand reaches websites. We analyzed 40 companies that recovered lost traffic between January 2025 and August 2026. Seven recurring tactics appeared. Only three of them involve traditional SEO. This article documents the full framework, includes the SignLab case study (50% traffic loss, 5-month recovery), and provides a cost breakdown for DIY versus agency-assisted recovery.",
+  "coverImage": "/images/blog-covers/ai-overviews-killed-traffic-what-40-companies-did-next-eb108ed0.webp",
+  "coverImageAlt": "AI Overviews traffic recovery case study showing 40 companies and 7 recovery tactics with specific metrics",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "published": true,
+  "publishedAt": "2026-09-29",
   "tags": [
     "AI Overviews traffic recovery",
     "recover traffic lost to AI Overviews",
@@ -32,12 +35,13 @@
     "technical SEO services",
     "AbuQitmirLabs"
   ],
-  "publishedAt": "2026-09-29",
+  "published": true,
   "syncedAt": "2026-09-29T21:19:50.020Z"
 }
 ---
 
-# AI Overviews Killed Your Traffic: What 40 Companies Did Next
+## AI Overviews Killed Traffic: What 40 Companies Did Next
+
 
 ## Quick Takeaways
 
