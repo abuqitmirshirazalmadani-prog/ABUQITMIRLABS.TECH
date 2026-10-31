@@ -152,13 +152,29 @@ export default async function handler(req: any, res: any) {
 
     // Parse markdown content into semantic HTML with guaranteed opening H2 and extracted FAQs
     let lines = String(postData.content || '').trim().split(/\r?\n/);
+    const isMetaOrDivider = (l: string) => {
+      const t = (l || '').trim();
+      return t === '' || t === '---' || /^(?:\*\*)?by\s+abu\s*qitmir/i.test(t);
+    };
+    while (lines.length > 0 && isMetaOrDivider(lines[0])) {
+      lines.shift();
+    }
     if (lines.length > 0) {
       const first = lines[0].trim();
       if (/^#\s+/.test(first)) {
-        lines[0] = `## ${first.replace(/^#\s+/, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim() || cleanH1}`;
-      } else if (/^##\s+/.test(first)) {
-        lines[0] = `## ${first.replace(/^##\s+/, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim()}`;
-      } else if (!/^#{2,6}\s+/.test(first)) {
+        let lookahead = 1;
+        while (lookahead < lines.length && isMetaOrDivider(lines[lookahead])) {
+          lookahead++;
+        }
+        if (lookahead < lines.length && /^##\s+/.test(lines[lookahead].trim())) {
+          lines = lines.slice(lookahead);
+        } else {
+          lines[0] = `## ${first.replace(/^#\s+/, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim() || cleanH1}`;
+        }
+      }
+      if (lines.length > 0 && /^##\s+/.test(lines[0].trim())) {
+        lines[0] = `## ${lines[0].trim().replace(/^##\s+/, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim()}`;
+      } else if (lines.length > 0 && !/^#{2,6}\s+/.test(lines[0].trim())) {
         lines.unshift(`## ${cleanH1}`, '');
       }
     }
@@ -209,7 +225,7 @@ export default async function handler(req: any, res: any) {
       {
         '@type': 'Organization',
         '@id': 'https://www.abuqitmirlabs.tech/#organization',
-        name: 'AbuQitmirLabs .TECH',
+        name: 'AbuQitmirLabs',
         alternateName: 'AbuQitmirLabs',
         url: 'https://www.abuqitmirlabs.tech/',
         logo: 'https://www.abuqitmirlabs.tech/logo.png'
@@ -218,7 +234,7 @@ export default async function handler(req: any, res: any) {
         '@type': 'WebSite',
         '@id': 'https://www.abuqitmirlabs.tech/#website',
         url: 'https://www.abuqitmirlabs.tech/',
-        name: 'AbuQitmirLabs .TECH',
+        name: 'AbuQitmirLabs',
         publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
       },
       {

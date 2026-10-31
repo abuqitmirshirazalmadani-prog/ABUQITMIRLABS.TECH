@@ -5204,7 +5204,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -5212,7 +5212,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -5270,7 +5270,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -5278,7 +5278,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -5336,7 +5336,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -5344,7 +5344,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -5472,7 +5472,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: {
             '@type': 'ImageObject',
@@ -5486,7 +5486,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -5600,7 +5600,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -5608,7 +5608,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -5666,7 +5666,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -5674,7 +5674,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -5732,7 +5732,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -5740,7 +5740,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -5798,7 +5798,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -5806,7 +5806,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -5864,7 +5864,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -5872,7 +5872,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -5930,7 +5930,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -5938,7 +5938,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -5996,7 +5996,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -6004,7 +6004,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -6062,7 +6062,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -6070,7 +6070,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -6128,7 +6128,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -6136,7 +6136,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -6194,7 +6194,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -6202,7 +6202,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -6260,7 +6260,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -6268,7 +6268,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -6326,7 +6326,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -6334,7 +6334,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -6392,7 +6392,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -6400,7 +6400,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -6458,7 +6458,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -6466,7 +6466,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -6524,7 +6524,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -6532,7 +6532,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -6590,7 +6590,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -6598,7 +6598,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -6656,7 +6656,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -6664,7 +6664,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -6722,7 +6722,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -6730,7 +6730,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -6788,7 +6788,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -6796,7 +6796,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -6854,7 +6854,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -6862,7 +6862,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -6920,7 +6920,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -6928,7 +6928,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -6986,7 +6986,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -6994,7 +6994,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -7052,7 +7052,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -7060,7 +7060,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -7118,7 +7118,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -7126,7 +7126,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -7184,7 +7184,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -7192,7 +7192,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -7250,7 +7250,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -7258,7 +7258,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -7316,7 +7316,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -7324,7 +7324,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -7382,7 +7382,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -7390,7 +7390,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -7448,7 +7448,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -7456,7 +7456,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -7514,7 +7514,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -7522,7 +7522,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -7580,7 +7580,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -7588,7 +7588,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -7646,7 +7646,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -7654,7 +7654,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -7712,7 +7712,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -7720,7 +7720,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -7778,7 +7778,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -7786,7 +7786,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -7844,7 +7844,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -7852,7 +7852,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -7910,7 +7910,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -7918,7 +7918,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -7976,7 +7976,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -7984,7 +7984,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -8042,7 +8042,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -8050,7 +8050,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -8108,7 +8108,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -8116,7 +8116,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -8174,7 +8174,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -8182,7 +8182,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -8240,7 +8240,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -8248,7 +8248,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -8306,7 +8306,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -8314,7 +8314,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -8372,7 +8372,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -8380,7 +8380,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -8438,7 +8438,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -8446,7 +8446,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -8504,7 +8504,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -8512,7 +8512,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -8570,7 +8570,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -8578,7 +8578,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -8636,7 +8636,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -8644,7 +8644,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -8702,7 +8702,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -8710,7 +8710,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -8768,7 +8768,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -8776,7 +8776,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -8834,7 +8834,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -8842,7 +8842,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -8900,7 +8900,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -8908,7 +8908,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -8966,7 +8966,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -8974,7 +8974,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -9032,7 +9032,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -9040,7 +9040,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -9098,7 +9098,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -9106,7 +9106,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -9164,7 +9164,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -9172,7 +9172,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -9230,7 +9230,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -9238,7 +9238,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -9296,7 +9296,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -9304,7 +9304,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -9362,7 +9362,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -9370,7 +9370,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -9428,7 +9428,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -9436,7 +9436,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -9494,7 +9494,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -9502,7 +9502,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -9560,7 +9560,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -9568,7 +9568,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -9626,7 +9626,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -9634,7 +9634,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -9692,7 +9692,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -9700,7 +9700,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -9758,7 +9758,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -9766,7 +9766,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -9824,7 +9824,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -9832,7 +9832,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -9890,7 +9890,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -9898,7 +9898,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -9956,7 +9956,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -9964,7 +9964,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -10022,7 +10022,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -10030,7 +10030,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -10088,7 +10088,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -10096,7 +10096,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -10154,7 +10154,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -10162,7 +10162,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -10220,7 +10220,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -10228,7 +10228,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -10286,7 +10286,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -10294,7 +10294,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -10352,7 +10352,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -10360,7 +10360,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {

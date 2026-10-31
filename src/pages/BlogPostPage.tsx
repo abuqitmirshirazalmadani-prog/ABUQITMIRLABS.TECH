@@ -64,12 +64,21 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         return <Navigate to={`/blog/${canonicalSlug}`} replace />;
     }
     
-    // Retrieve cached or static post for instant, zero-delay rendering
+    // Retrieve cached or static post for instant, zero-delay rendering (preferring richer static content when available)
     const cachedPost = (slug ? getCachedPost(slug) : null) as Post | null;
     const staticFallback = (slug && STATIC_POSTS_MAP[slug]) 
       ? (STATIC_POSTS_MAP[slug] as Post) 
       : null;
-    const initialPost = cachedPost || staticFallback;
+    const resolveBestInitial = (cached: Post | null, stat: Post | null): Post | null => {
+        if (!cached) return stat;
+        if (!stat) return cached;
+        return {
+            ...cached,
+            content: (stat.content?.length || 0) >= (cached.content?.length || 0) ? stat.content : cached.content,
+            metaDescription: stat.metaDescription || cached.metaDescription,
+        };
+    };
+    const initialPost = resolveBestInitial(cachedPost, staticFallback);
     
     const [post, setPost] = useState<Post | null>(initialPost);
     const [loading, setLoading] = useState(!initialPost);
@@ -78,8 +87,10 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
 
     useEffect(() => {
         setImageError(false);
-        const currentInitial = (slug ? getCachedPost(slug) : null) as Post | null || 
-          (slug && STATIC_POSTS_MAP[slug] ? (STATIC_POSTS_MAP[slug] as Post) : null);
+        const currentInitial = resolveBestInitial(
+            (slug ? getCachedPost(slug) : null) as Post | null,
+            (slug && STATIC_POSTS_MAP[slug] ? (STATIC_POSTS_MAP[slug] as Post) : null)
+        );
         
         if (currentInitial) {
             setPost(currentInitial);
@@ -206,27 +217,51 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         }
     }, [slug]);
 
-    // Ensure strictly one application/ld+json @graph block exists in <head> after hydration
+    // Ensure strictly one <title>, one <meta name="description">, one <link rel="canonical">, and one application/ld+json @graph block exist in <head>
     useEffect(() => {
         if (typeof document === 'undefined') return;
-        const cleanupDuplicateJsonLd = () => {
-            const scripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
-            if (scripts.length <= 1) return;
-            const helmetScripts = scripts.filter(s => s.hasAttribute('data-rh'));
-            const keepScript = helmetScripts.length > 0
-                ? helmetScripts[helmetScripts.length - 1]
-                : scripts[scripts.length - 1];
-            scripts.forEach(s => {
-                if (s !== keepScript) {
-                    s.remove();
-                }
-            });
+        const SINGLETON_SELECTORS = [
+            'script[type="application/ld+json"]',
+            'title',
+            'meta[name="description"]',
+            'meta[name="title"]',
+            'meta[name="keywords"]',
+            'meta[name="robots"]',
+            'link[rel="canonical"]',
+            'meta[property="og:title"]',
+            'meta[property="og:description"]',
+            'meta[property="og:url"]',
+            'meta[property="og:image"]',
+            'meta[property="og:type"]',
+            'meta[name="twitter:title"]',
+            'meta[name="twitter:description"]',
+            'meta[name="twitter:image"]',
+            'meta[name="twitter:card"]',
+        ];
+        const cleanupDuplicateHeadTags = () => {
+            for (const selector of SINGLETON_SELECTORS) {
+                const nodes = Array.from(document.head.querySelectorAll(selector));
+                if (nodes.length <= 1) continue;
+                const helmetNodes = nodes.filter(n => n.hasAttribute('data-rh'));
+                const keepNode = helmetNodes.length > 0
+                    ? helmetNodes[helmetNodes.length - 1]
+                    : nodes[nodes.length - 1];
+                keepNode.setAttribute('data-rh', 'true');
+                nodes.forEach(n => {
+                    if (n !== keepNode) {
+                        n.remove();
+                    }
+                });
+            }
         };
-        cleanupDuplicateJsonLd();
-        const timer = setTimeout(cleanupDuplicateJsonLd, 50);
+        cleanupDuplicateHeadTags();
+        const timer = setTimeout(cleanupDuplicateHeadTags, 50);
         const observer = new MutationObserver(() => {
-            if (document.querySelectorAll('script[type="application/ld+json"]').length > 1) {
-                cleanupDuplicateJsonLd();
+            const hasDuplicates = SINGLETON_SELECTORS.some(
+                sel => document.head.querySelectorAll(sel).length > 1
+            );
+            if (hasDuplicates) {
+                cleanupDuplicateHeadTags();
             }
         });
         observer.observe(document.head, { childList: true });

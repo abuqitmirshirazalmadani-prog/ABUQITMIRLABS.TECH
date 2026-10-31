@@ -179,12 +179,18 @@ const BlogPage = () => {
                         let cleanSlug = String(rawSlug).replace(/^\/+/, '').replace(/^blog\//, '');
                         cleanSlug = KNOWN_CANONICAL_SLUG_MAP[cleanSlug] || cleanSlug;
 
+                        const staticMatch = staticInitialPosts.find(sp => sp.slug === cleanSlug);
+                        const bestContent =
+                            staticMatch?.content && staticMatch.content.length >= (data.content?.length || 0)
+                                ? staticMatch.content
+                                : (data.content || '');
+
                         return {
                             id: doc.id,
                             slug: cleanSlug,
                             title: data.title || 'Untitled Article',
                             excerpt,
-                            content: data.content || '',
+                            content: bestContent,
                             coverImage: data.coverImage || data.featuredImage || data.imageUrl || data.image || 'https://www.abuqitmirlabs.tech/logo.png',
                             coverImageAlt: data.coverImageAlt || `${data.title || 'Article'} | AbuQitmirLabs`,
                             category: data.category || 'AI',

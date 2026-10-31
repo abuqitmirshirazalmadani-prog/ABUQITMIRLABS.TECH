@@ -129,38 +129,56 @@ export const SEO: React.FC<SEOProps> = ({
     routeMeta?.robots ||
     'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1';
 
-  // Safely update <head> tags in-place WITHOUT calling .remove() or removeChild() on React 19 / Helmet managed DOM nodes
+  // Safely update and deduplicate <head> tags so strictly ONE <title>, ONE <meta name="description">, ONE <link rel="canonical">, and ONE JSON-LD block exist
   useEffect(() => {
+    const pickSingleNode = <T extends Element>(nodes: NodeListOf<T>): T | null => {
+      if (nodes.length === 0) return null;
+      if (nodes.length === 1) {
+        nodes[0].setAttribute('data-rh', 'true');
+        return nodes[0];
+      }
+      const arr = Array.from(nodes);
+      const rhNodes = arr.filter((n) => n.hasAttribute('data-rh'));
+      const keep = rhNodes.length > 0 ? rhNodes[rhNodes.length - 1] : arr[arr.length - 1];
+      keep.setAttribute('data-rh', 'true');
+      arr.forEach((n) => {
+        if (n !== keep && !n.hasAttribute('data-rh')) {
+          n.remove();
+        } else if (n !== keep && rhNodes.length > 1) {
+          n.remove();
+        }
+      });
+      return keep;
+    };
+
     const syncHeadInPlace = () => {
       if (resolvedTitle) {
         if (document.title !== resolvedTitle) {
           document.title = resolvedTitle;
         }
         const titleNodes = document.head.querySelectorAll('title');
-        if (titleNodes.length === 0) {
+        const keptTitle = pickSingleNode(titleNodes);
+        if (!keptTitle) {
           const newTitle = document.createElement('title');
+          newTitle.setAttribute('data-rh', 'true');
           newTitle.textContent = resolvedTitle;
           document.head.appendChild(newTitle);
-        } else {
-          titleNodes.forEach((node) => {
-            if (node.textContent !== resolvedTitle) {
-              node.textContent = resolvedTitle;
-            }
-          });
+        } else if (keptTitle.textContent !== resolvedTitle) {
+          keptTitle.textContent = resolvedTitle;
         }
       }
 
       const updateMetaByName = (name: string, content?: string) => {
         if (!content) return;
         const nodes = document.head.querySelectorAll(`meta[name="${name}"]`);
-        if (nodes.length > 0) {
-          nodes.forEach((node) => {
-            if (node.getAttribute('content') !== content) {
-              node.setAttribute('content', content);
-            }
-          });
+        const kept = pickSingleNode(nodes);
+        if (kept) {
+          if (kept.getAttribute('content') !== content) {
+            kept.setAttribute('content', content);
+          }
         } else {
           const meta = document.createElement('meta');
+          meta.setAttribute('data-rh', 'true');
           meta.setAttribute('name', name);
           meta.setAttribute('content', content);
           document.head.appendChild(meta);
@@ -170,14 +188,14 @@ export const SEO: React.FC<SEOProps> = ({
       const updateMetaByProperty = (prop: string, content?: string) => {
         if (!content) return;
         const nodes = document.head.querySelectorAll(`meta[property="${prop}"]`);
-        if (nodes.length > 0) {
-          nodes.forEach((node) => {
-            if (node.getAttribute('content') !== content) {
-              node.setAttribute('content', content);
-            }
-          });
+        const kept = pickSingleNode(nodes);
+        if (kept) {
+          if (kept.getAttribute('content') !== content) {
+            kept.setAttribute('content', content);
+          }
         } else {
           const meta = document.createElement('meta');
+          meta.setAttribute('data-rh', 'true');
           meta.setAttribute('property', prop);
           meta.setAttribute('content', content);
           document.head.appendChild(meta);
@@ -185,14 +203,14 @@ export const SEO: React.FC<SEOProps> = ({
       };
 
       const canonicalLinks = document.head.querySelectorAll('link[rel="canonical"]');
-      if (canonicalLinks.length > 0) {
-        canonicalLinks.forEach((link) => {
-          if (link.getAttribute('href') !== resolvedCanonical) {
-            link.setAttribute('href', resolvedCanonical);
-          }
-        });
+      const keptCanon = pickSingleNode(canonicalLinks);
+      if (keptCanon) {
+        if (keptCanon.getAttribute('href') !== resolvedCanonical) {
+          keptCanon.setAttribute('href', resolvedCanonical);
+        }
       } else {
         const link = document.createElement('link');
+        link.setAttribute('data-rh', 'true');
         link.setAttribute('rel', 'canonical');
         link.setAttribute('href', resolvedCanonical);
         document.head.appendChild(link);
@@ -200,15 +218,15 @@ export const SEO: React.FC<SEOProps> = ({
 
       if (schema) {
         const schemaJson = JSON.stringify(schema);
-        const existingLd = document.head.querySelector(
-          'script[type="application/ld+json"]'
-        );
-        if (existingLd) {
-          if (existingLd.textContent !== schemaJson) {
-            existingLd.textContent = schemaJson;
+        const ldNodes = document.head.querySelectorAll('script[type="application/ld+json"]');
+        const keptLd = pickSingleNode(ldNodes);
+        if (keptLd) {
+          if (keptLd.textContent !== schemaJson) {
+            keptLd.textContent = schemaJson;
           }
         } else {
           const script = document.createElement('script');
+          script.setAttribute('data-rh', 'true');
           script.setAttribute('type', 'application/ld+json');
           script.textContent = schemaJson;
           document.head.appendChild(script);

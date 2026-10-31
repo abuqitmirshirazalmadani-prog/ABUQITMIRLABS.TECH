@@ -69,7 +69,7 @@ for (const filePath of htmlFiles) {
         {
           "@type": "Organization",
           "@id": "https://www.abuqitmirlabs.tech/#organization",
-          "name": "AbuQitmirLabs .TECH",
+          "name": "AbuQitmirLabs",
           "url": "https://www.abuqitmirlabs.tech/",
           "logo": "https://www.abuqitmirlabs.tech/logo.png"
         },
@@ -87,6 +87,12 @@ for (const filePath of htmlFiles) {
     fixedSchemaCount++;
   }
 
+  // Normalize Organization schema name from "AbuQitmirLabs .TECH" to "AbuQitmirLabs"
+  if (html.includes('"name": "AbuQitmirLabs .TECH"')) {
+    html = html.replace(/"name":\s*"AbuQitmirLabs \.TECH"/g, '"name": "AbuQitmirLabs"');
+    modified = true;
+  }
+
   // 2. Ensure at least one <h1> and clean site suffix from <h1> on blog pages
   if (relPath.startsWith('blog' + path.sep) && relPath !== path.join('blog', 'index.html')) {
     html = html.replace(/(<h1\b[^>]*>)([\s\S]*?)\s*\|\s*AbuQitmirLabs[^<]*(<\/h1>)/gi, '$1$2$3');
@@ -100,13 +106,42 @@ for (const filePath of htmlFiles) {
     fixedH2Count++;
   }
 
-  // 4. Ensure strictly 1 <title> tag
+  // 4. Ensure strictly 1 <title> tag (with data-rh="true")
   const titleRegex = /<title\b[^>]*>[\s\S]*?<\/title>/gis;
   const titleMatches = html.match(titleRegex) || [];
   if (titleMatches.length > 1) {
-    const keptTitle = titleMatches[titleMatches.length - 1];
+    let keptTitle = titleMatches[titleMatches.length - 1];
+    if (!/data-rh=/i.test(keptTitle)) {
+      keptTitle = keptTitle.replace(/^<title/i, '<title data-rh="true"');
+    }
     html = html.replace(titleRegex, '');
     html = html.replace('</head>', `  ${keptTitle}\n</head>`);
+    modified = true;
+  }
+
+  // 4b. Ensure strictly 1 <meta name="description"> tag (with data-rh="true")
+  const descRegex = /<meta\b[^>]*name=["']description["'][^>]*\/?>/gis;
+  const descMatches = html.match(descRegex) || [];
+  if (descMatches.length > 1) {
+    let keptDesc = descMatches[descMatches.length - 1];
+    if (!/data-rh=/i.test(keptDesc)) {
+      keptDesc = keptDesc.replace(/^<meta/i, '<meta data-rh="true"');
+    }
+    html = html.replace(descRegex, '');
+    html = html.replace('</head>', `  ${keptDesc}\n</head>`);
+    modified = true;
+  }
+
+  // 4c. Ensure strictly 1 <link rel="canonical"> tag (with data-rh="true")
+  const canonRegex = /<link\b[^>]*rel=["']canonical["'][^>]*\/?>/gis;
+  const canonMatches = html.match(canonRegex) || [];
+  if (canonMatches.length > 1) {
+    let keptCanon = canonMatches[canonMatches.length - 1];
+    if (!/data-rh=/i.test(keptCanon)) {
+      keptCanon = keptCanon.replace(/^<link/i, '<link data-rh="true"');
+    }
+    html = html.replace(canonRegex, '');
+    html = html.replace('</head>', `  ${keptCanon}\n</head>`);
     modified = true;
   }
 

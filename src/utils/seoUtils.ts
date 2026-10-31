@@ -194,11 +194,11 @@ export function generateBlogPostMeta(
       {
         "@type": "Organization",
         "@id": `${siteUrl}/#organization`,
-        "name": "AbuQitmirLabs .TECH",
+        "name": "AbuQitmirLabs",
         "alternateName": siteName,
         "url": `${siteUrl}/`,
         "logo": defaultImage,
-        "description": "AbuQitmirLabs .TECH is a custom software, mobile app, AI agent, web development, SEO, graphics, and content writing studio serving startups, SMEs, and enterprises globally.",
+        "description": "AbuQitmirLabs is a custom software, mobile app, AI agent, web development, SEO, graphics, and content writing studio serving startups, SMEs, and enterprises globally.",
         "sameAs": [
           "https://www.linkedin.com/in/abu-qitmir-697423390/",
           "https://x.com/AbuQitmir",
@@ -216,7 +216,7 @@ export function generateBlogPostMeta(
         "@type": "WebSite",
         "@id": `${siteUrl}/#website`,
         "url": `${siteUrl}/`,
-        "name": `${siteName} .TECH`,
+        "name": siteName,
         "publisher": { "@id": `${siteUrl}/#organization` },
         "inLanguage": "en-US"
       },

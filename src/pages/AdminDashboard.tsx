@@ -261,12 +261,17 @@ const AdminDashboard = () => {
 
     const handleEdit = (post: any) => {
         setEditingId(post.id);
+        let editContent = (post.content || '').trim();
+        const cleanEditTitle = String(post.title || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+        if (editContent && !/^#{1,6}\s+/.test(editContent.split(/\r?\n/)[0].trim()) && cleanEditTitle) {
+            editContent = `## ${cleanEditTitle}\n\n${editContent}`;
+        }
         setFormData({
             title: post.title || '',
             slug: post.slug || '',
             excerpt: post.excerpt || '',
             metaDescription: post.metaDescription || post.excerpt || '',
-            content: post.content || '',
+            content: editContent,
             author: post.author || 'Abu Qitmir Mohammad Shiraz Al-Madani',
             category: post.category || 'AI',
             published: post.published ?? true,
