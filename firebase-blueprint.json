@@ -16,9 +16,11 @@
         "slug": { "type": "string", "description": "Unique URL slug for the article" },
         "coverImage": { "type": "string", "description": "URL to header cover illustration" },
         "coverImageAlt": { "type": "string", "description": "SEO descriptive alt text for cover illustration" },
+        "metaDescription": { "type": "string", "description": "SEO meta description for Google Search and OpenGraph" },
+        "publishedAt": { "type": "string", "description": "Publication date in YYYY-MM-DD format" },
         "category": { 
           "type": "string", 
-          "enum": ["AI", "Software", "Business", "App", "Development"],
+          "enum": ["AI", "Software", "Business", "App", "Development", "Content Writing", "SEO", "Graphic Design", "Digital Marketing"],
           "description": "Primary classification category" 
         },
         "tags": { 
@@ -38,7 +40,7 @@
           }
         }
       },
-      "required": ["title", "content", "slug", "authorId"]
+      "required": ["title", "content", "slug"]
     },
     "Inquiry": {
       "title": "Contact Inquiry",

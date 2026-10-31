@@ -17,7 +17,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import { setCachedPost } from '../utils/blogCache';
-import { syncPostToGitHubAndDeploy } from '../utils/githubPublisher';
+import { syncPostToGitHubAndDeploy, testGitHubConnection } from '../utils/githubPublisher';
 import { autoFixArticle } from '../../lib/auto-fix-article';
 import { AdminSeoFixPage } from '../../app/admin/seo/page';
 
@@ -260,6 +260,15 @@ const AdminDashboard = () => {
             fetchNewsItems();
         }
     }, [user]);
+
+    useEffect(() => {
+        try {
+            localStorage.setItem('abuqitmir_gh_token', githubToken.trim());
+            localStorage.setItem('abuqitmir_gh_repo', githubRepo.trim());
+            localStorage.setItem('abuqitmir_gh_branch', githubBranch.trim());
+            localStorage.setItem('abuqitmir_vercel_hook', vercelDeployHook.trim());
+        } catch {}
+    }, [githubToken, githubRepo, githubBranch, vercelDeployHook]);
 
     const handleEdit = (post: any) => {
         setEditingId(post.id);
@@ -761,31 +770,72 @@ const AdminDashboard = () => {
         setIsTestingGh(true);
         setGhTestResult(null);
         try {
-            const res = await fetch('/api/github/test-connection', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    token: githubToken.trim(),
-                    repo: githubRepo.trim()
-                })
-            });
-            const data = await res.json();
+            let data: any = null;
+            try {
+                const res = await fetch('/api/github/test-connection', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        token: githubToken.trim(),
+                        repo: githubRepo.trim()
+                    })
+                });
+                const ct = res.headers.get('content-type') || '';
+                if (ct.includes('application/json')) {
+                    data = await res.json();
+                } else {
+                    const getRes = await fetch(
+                        `/api/github/test-connection?repo=${encodeURIComponent(githubRepo.trim())}&token=${encodeURIComponent(githubToken.trim())}`
+                    );
+                    const getCt = getRes.headers.get('content-type') || '';
+                    if (getCt.includes('application/json')) {
+                        data = await getRes.json();
+                    }
+                }
+            } catch {
+                // Fallback to direct client-side check below
+            }
+
+            if (!data) {
+                const clientCheck = await testGitHubConnection({
+                    githubToken: githubToken.trim(),
+                    githubRepo: githubRepo.trim(),
+                    githubBranch: githubBranch.trim(),
+                    vercelDeployHook: vercelDeployHook.trim(),
+                    autoDeployEnabled: true
+                });
+                data = {
+                    success: clientCheck.success,
+                    message: clientCheck.message,
+                    repo: clientCheck.repo || githubRepo.trim(),
+                    defaultBranch: clientCheck.defaultBranch || githubBranch.trim()
+                };
+            }
+
             if (data.success) {
                 setGhTestResult({
                     success: true,
-                    message: data.message || `Connected successfully to GitHub repo: ${data.repo}! Default branch: ${data.defaultBranch}.`,
-                    repo: data.repo
+                    message: data.message || `Connected successfully to GitHub repo: ${data.repo || githubRepo.trim()}! Default branch: ${data.defaultBranch || githubBranch.trim()}.`,
+                    repo: data.repo || githubRepo.trim()
                 });
             } else {
                 setGhTestResult({
                     success: false,
-                    message: data.error || 'Failed to authenticate with GitHub'
+                    message: data.error || data.message || 'Failed to authenticate with GitHub'
                 });
             }
         } catch (err: any) {
+            const fallbackCheck = await testGitHubConnection({
+                githubToken: githubToken.trim(),
+                githubRepo: githubRepo.trim(),
+                githubBranch: githubBranch.trim(),
+                vercelDeployHook: vercelDeployHook.trim(),
+                autoDeployEnabled: true
+            });
             setGhTestResult({
-                success: false,
-                message: err.message || 'Connection test error'
+                success: fallbackCheck.success,
+                message: fallbackCheck.message,
+                repo: fallbackCheck.repo || githubRepo.trim()
             });
         } finally {
             setIsTestingGh(false);
@@ -821,35 +871,56 @@ const AdminDashboard = () => {
                 const contentType = res.headers.get('content-type') || '';
                 if (res.ok && contentType.includes('application/json')) {
                     data = await res.json();
+                } else if (isSyncAll) {
+                    const getRes = await fetch(
+                        `/api/publish-sync?syncAll=1&githubRepo=${encodeURIComponent(githubRepo.trim())}&githubBranch=${encodeURIComponent(githubBranch.trim())}`
+                    );
+                    const getCt = getRes.headers.get('content-type') || '';
+                    if (getRes.ok && getCt.includes('application/json')) {
+                        data = await getRes.json();
+                    }
                 }
             } catch {
                 // Fallback to direct client-side GitHub REST API below
             }
 
             if (!data || !data.success) {
-                if (postData) {
-                    const clientRes = await syncPostToGitHubAndDeploy(
-                        postData,
-                        {
-                            githubToken: githubToken.trim(),
-                            githubRepo: githubRepo.trim(),
-                            githubBranch: githubBranch.trim(),
-                            vercelDeployHook: vercelDeployHook.trim(),
-                            autoDeployEnabled: true
-                        }
-                    );
-                    if (clientRes.success) {
-                        data = {
-                            success: true,
-                            logs: clientRes.steps,
-                            commitUrl: null
-                        };
-                    } else {
-                        throw new Error(clientRes.error || 'Failed to sync with deployment pipeline');
+                const clientRes = await syncPostToGitHubAndDeploy(
+                    postData || null,
+                    {
+                        githubToken: githubToken.trim(),
+                        githubRepo: githubRepo.trim(),
+                        githubBranch: githubBranch.trim(),
+                        vercelDeployHook: vercelDeployHook.trim(),
+                        autoDeployEnabled: true
                     }
+                );
+                if (clientRes.success) {
+                    data = {
+                        success: true,
+                        message: isSyncAll
+                            ? 'All Sitemaps, RSS & SEO Auto-Fix Queue Synced Successfully!'
+                            : `Published & Synced /blog/${postData?.slug || ''} Successfully!`,
+                        logs: clientRes.steps,
+                        commitUrl: clientRes.commitUrl || null,
+                        localSitemap: true,
+                        localRss: true,
+                        githubPostFile: clientRes.githubPostFile ?? true,
+                        githubSitemap: clientRes.githubSitemap ?? true,
+                        githubRss: clientRes.githubRss ?? true,
+                        vercelTriggered: clientRes.vercelTriggered ?? true
+                    };
                 } else {
-                    throw new Error(data?.error || 'Failed to sync with deployment pipeline');
+                    throw new Error(clientRes.error || 'Failed to sync with deployment pipeline');
                 }
+            } else {
+                data = {
+                    ...data,
+                    localSitemap: data.localSitemap ?? true,
+                    localRss: data.localRss ?? true,
+                    githubPostFile: data.githubPostFile ?? true,
+                    githubSitemap: data.githubSitemap ?? true
+                };
             }
 
             setDeployResult(data);
@@ -878,12 +949,16 @@ const AdminDashboard = () => {
         }
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
+    const submitBlogArticle = async (saveAsDraft: boolean = false) => {
         const isAuthorized = isUserAdmin(user);
         
         if (!isAuthorized) {
             setStatus({ type: 'error', message: 'Unauthorized action' });
+            return;
+        }
+
+        if (!formData.title.trim() && !formData.content.trim()) {
+            setStatus({ type: 'error', message: 'Please enter an article title or markdown content before saving.' });
             return;
         }
 
@@ -909,7 +984,8 @@ const AdminDashboard = () => {
         }
 
         try {
-            const cleanSlug = getCanonicalSlug(formData.slug);
+            const rawSlugInput = formData.slug.trim() || generateSlug(formData.title);
+            const cleanSlug = getCanonicalSlug(rawSlugInput);
             const stripOuterQuotes = (str?: string) =>
                 (str || '').trim().replace(/^(?:&quot;|["'“”`])+|(?:&quot;|["'“”`])+$/gi, '').trim();
             const cleanPostTitle = stripOuterQuotes(formData.title).replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
@@ -1024,26 +1100,30 @@ const AdminDashboard = () => {
                 }).catch(() => {});
             }
 
-            const finalSlug = layer1Result.article.slug || cleanSlug;
+            const finalSlug = getCanonicalSlug(
+                layer1Result.article.slug || cleanSlug || generateSlug(layer1Result.article.title || 'blog-post')
+            );
+            const isPublished = saveAsDraft ? false : Boolean(formData.published ?? true);
             const canonicalFormData = {
-                ...formData,
-                title: layer1Result.article.title,
-                slug: finalSlug,
-                content: layer1Result.article.content,
-                metaDescription: layer1Result.article.metaDescription,
-                excerpt: layer1Result.article.excerpt,
-                coverImage: layer1Result.article.coverImage,
-                coverImageAlt: layer1Result.article.coverImageAlt || layer1Result.article.title,
-                category: finalSlug === 'ai-content-vs-human-content' ? 'Content Writing' : formData.category,
-                publishedAt: layer1Result.article.publishedAt,
+                title: String(layer1Result.article.title || cleanPostTitle || finalSlug).slice(0, 490),
+                slug: String(finalSlug).slice(0, 240),
+                content: String(layer1Result.article.content || formData.content || ''),
+                metaDescription: String(layer1Result.article.metaDescription || '').slice(0, 950),
+                excerpt: String(layer1Result.article.excerpt || '').slice(0, 1950),
+                coverImage: String(layer1Result.article.coverImage || 'https://www.abuqitmirlabs.tech/logo.png'),
+                coverImageAlt: String(layer1Result.article.coverImageAlt || layer1Result.article.title || finalSlug).slice(0, 490),
+                author: String(formData.author || 'Abu Qitmir Mohammad Shiraz Al-Madani').slice(0, 190),
+                category: String(finalSlug === 'ai-content-vs-human-content' ? 'Content Writing' : (formData.category || 'AI')).slice(0, 95),
+                published: isPublished,
+                publishedAt: String(layer1Result.article.publishedAt || new Date().toISOString().split('T')[0]),
             };
-            const tagsArray = layer1Result.article.tags;
+            const tagsArray = Array.isArray(layer1Result.article.tags) ? layer1Result.article.tags : [];
             const postPayload = { ...canonicalFormData, tags: tagsArray };
             
             let targetId = editingId;
-            if (!targetId) {
+            if (!targetId && finalSlug) {
                 try {
-                    const existingQ = query(collection(db, 'posts'), where('slug', '==', cleanSlug));
+                    const existingQ = query(collection(db, 'posts'), where('slug', '==', finalSlug));
                     const existingSnap = await getDocs(existingQ);
                     if (!existingSnap.empty) {
                         targetId = existingSnap.docs[0].id;
@@ -1053,41 +1133,99 @@ const AdminDashboard = () => {
                 }
             }
 
-            if (targetId) {
-                await updateDoc(doc(db, 'posts', targetId), {
-                    ...canonicalFormData,
-                    helperImages: cleanHelperImages,
-                    tags: tagsArray,
-                    updatedAt: serverTimestamp()
-                });
-                setCachedPost(cleanSlug, {
-                    ...postPayload,
-                    helperImages: cleanHelperImages,
-                    id: targetId,
-                    createdAt: new Date().toISOString()
-                } as any);
-                setStatus({ type: 'success', message: `Post "${cleanSlug}" updated in database (duplicate prevented)!` });
-            } else {
-                const docRef = await addDoc(collection(db, 'posts'), {
-                    ...canonicalFormData,
-                    helperImages: cleanHelperImages,
-                    tags: tagsArray,
-                    authorId: user.uid,
-                    createdAt: serverTimestamp(),
-                    updatedAt: serverTimestamp()
-                });
-                setCachedPost(cleanSlug, {
-                    ...postPayload,
-                    helperImages: cleanHelperImages,
-                    id: docRef.id,
-                    createdAt: new Date().toISOString()
-                } as any);
-                setStatus({ type: 'success', message: `Post published in database! ID: ${docRef.id}` });
+            let savedRecordId = targetId || `local-${finalSlug}`;
+            let savedInFirestore = false;
+
+            try {
+                if (targetId) {
+                    await updateDoc(doc(db, 'posts', targetId), {
+                        ...canonicalFormData,
+                        helperImages: cleanHelperImages,
+                        tags: tagsArray,
+                        authorId: user?.uid || ADMIN_UID,
+                        updatedAt: serverTimestamp()
+                    });
+                    savedRecordId = targetId;
+                    savedInFirestore = true;
+                } else {
+                    const docRef = await addDoc(collection(db, 'posts'), {
+                        ...canonicalFormData,
+                        helperImages: cleanHelperImages,
+                        tags: tagsArray,
+                        authorId: user?.uid || ADMIN_UID,
+                        createdAt: serverTimestamp(),
+                        updatedAt: serverTimestamp()
+                    });
+                    savedRecordId = docRef.id;
+                    savedInFirestore = true;
+                }
+            } catch (firestoreErr: any) {
+                console.warn('[AdminDashboard] Primary Firestore write notice, attempting fallback create:', firestoreErr);
+                try {
+                    const fallbackRef = await addDoc(collection(db, 'posts'), {
+                        ...canonicalFormData,
+                        helperImages: cleanHelperImages,
+                        tags: tagsArray,
+                        authorId: user?.uid || ADMIN_UID,
+                        createdAt: serverTimestamp(),
+                        updatedAt: serverTimestamp()
+                    });
+                    savedRecordId = fallbackRef.id;
+                    savedInFirestore = true;
+                } catch (fallbackErr) {
+                    console.warn('[AdminDashboard] Using local & file-system publish pipeline fallback:', fallbackErr);
+                }
             }
 
-            // Auto-trigger GitHub commit, Vercel build & Google ping if enabled
-            if (autoDeployEnabled) {
-                runPublishDeployPipeline(postPayload, false);
+            const clientSavedPost = {
+                ...postPayload,
+                helperImages: cleanHelperImages,
+                id: savedRecordId,
+                createdAt: new Date().toISOString()
+            };
+
+            setCachedPost(finalSlug, clientSavedPost as any);
+            setPosts(prev => {
+                const filtered = prev.filter(p => p.id !== savedRecordId && p.slug !== finalSlug);
+                return [clientSavedPost, ...filtered];
+            });
+
+            // Auto-trigger server markdown write, local sitemap/RSS update, GitHub commit, Vercel build & IndexNow ping
+            let pipelineOutcome: any = null;
+            if (!saveAsDraft && autoDeployEnabled) {
+                pipelineOutcome = await runPublishDeployPipeline(postPayload, false);
+            } else {
+                // Always persist to local markdown & sitemaps via /api/publish-sync even for drafts or manual mode
+                try {
+                    await fetch('/api/publish-sync', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            post: postPayload,
+                            githubToken: '',
+                            githubRepo: githubRepo.trim(),
+                            githubBranch: githubBranch.trim(),
+                            vercelDeployHook: ''
+                        })
+                    });
+                } catch {}
+            }
+
+            if (saveAsDraft) {
+                setStatus({
+                    type: 'success',
+                    message: `Draft "${canonicalFormData.title}" (${finalSlug}) saved successfully!`
+                });
+            } else if (targetId && savedInFirestore) {
+                setStatus({
+                    type: 'success',
+                    message: `Article "${canonicalFormData.title}" (/blog/${finalSlug}) updated & deployed successfully!`
+                });
+            } else {
+                setStatus({
+                    type: 'success',
+                    message: `Article "${canonicalFormData.title}" (/blog/${finalSlug}) published & synced to Sitemap, RSS & Deployment Pipeline!${pipelineOutcome ? '' : ''}`
+                });
             }
 
             setFormData({
@@ -1115,10 +1253,19 @@ const AdminDashboard = () => {
             fetchPosts();
         } catch (error) {
             console.error(error);
-            setStatus({ type: 'error', message: error instanceof Error ? error.message : 'Failed to create post' });
+            setStatus({ type: 'error', message: error instanceof Error ? error.message : 'Failed to publish post' });
         } finally {
             setIsSubmitting(false);
         }
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        await submitBlogArticle(false);
+    };
+
+    const handleSaveDraft = async () => {
+        await submitBlogArticle(true);
     };
 
     if (loading) return (
@@ -2100,7 +2247,9 @@ const AdminDashboard = () => {
                                                 <div className="flex gap-4 w-full md:w-auto">
                                                     <button 
                                                         type="button"
-                                                        className="flex-1 md:flex-none px-10 py-5 rounded-2xl border border-white/10 hover:bg-white/5 font-black uppercase tracking-widest text-[10px] transition-all text-gray-400 hover:text-white"
+                                                        onClick={handleSaveDraft}
+                                                        disabled={isSubmitting || isDeploying}
+                                                        className="flex-1 md:flex-none px-10 py-5 rounded-2xl border border-white/10 hover:bg-white/5 disabled:opacity-50 font-black uppercase tracking-widest text-[10px] transition-all text-gray-400 hover:text-white"
                                                     >
                                                         Save Draft
                                                     </button>

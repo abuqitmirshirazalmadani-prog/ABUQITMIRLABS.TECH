@@ -3,11 +3,12 @@
   "title": "Technical Audit Checklist for Founders 2026 | AbuQitmirLabs",
   "slug": "5-minute-technical-audit-for-founders",
   "excerpt": "A five-minute technical audit checklist for founders hiring a developer. Spot red flags in portfolios, Git history, security, and contracts before you sign.",
+  "metaDescription": "A five-minute technical audit checklist for founders hiring a developer. Spot red flags in portfolios, Git history, security, and contracts before you sign.",
+  "coverImage": "/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
+  "coverImageAlt": "Five-minute technical audit checklist infographic showing ten verification steps a founder can run before hiring a developer, with timer icon and red flag and green flag indicators",
   "category": "Founder Education",
   "author": "AbuQitmirLabs",
-  "coverImage": "https://www.abuqitmirlabs.tech/assets/blog/5-minute-technical-audit-cover.png",
-  "coverImageAlt": "Five-minute technical audit checklist infographic showing ten verification steps a founder can run before hiring a developer, with timer icon and red flag and green flag indicators",
-  "published": true,
+  "publishedAt": "2026-10-08",
   "tags": [
     "technical audit checklist for founders",
     "how to vet a developer",
@@ -19,7 +20,7 @@
     "developer portfolio review",
     "how to hire a developer"
   ],
-  "publishedAt": "2026-10-08",
+  "published": true,
   "syncedAt": "2026-10-08T00:00:00.000Z"
 }
 ---

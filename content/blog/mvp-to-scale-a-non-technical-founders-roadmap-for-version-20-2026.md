@@ -3,11 +3,12 @@
   "title": "MVP to Scale: A Non-Technical Founder's Roadmap for Version 2.0 (2026)",
   "slug": "mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-2026",
   "excerpt": "Most founders assume the hard part is launching an MVP. The harder part is what comes next. This seven-phase roadmap for MVP to scale gives non-technical founders a step-by-step plan for taking a live Version 1.0 product to a scalable Version 2.0. It covers stabilisation, user research, data audit, architecture decisions, rebuild versus refactor analysis, Version 2 scoping, and execution with decision gates. Includes real cost ranges for each path, a foundation-versus-liability framework for the rebuild decision, and the common mistakes that turn Version 2.0 into a six-figure unplanned rebuild. Written by AbuQitmirLabs, a Karachi-based software studio that has helped founders scale from MVP to production across web, mobile, and AI products.",
+  "metaDescription": "Most founders assume the hard part is launching an MVP. The harder part is what comes next. This seven-phase roadmap for MVP to scale gives non-technical founders a step-by-step plan for taking a live Version 1.0 product to a scalable Version 2.0. It covers stabilisation, user research, data audit, architecture decisions, rebuild versus refactor analysis, Version 2 scoping, and execution with decision gates. Includes real cost ranges for each path, a foundation-versus-liability framework for the rebuild decision, and the common mistakes that turn Version 2.0 into a six-figure unplanned rebuild. Written by AbuQitmirLabs, a Karachi-based software studio that has helped founders scale from MVP to production across web, mobile, and AI products.",
+  "coverImage": "/images/blog-covers/mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-b90cd424.webp",
+  "coverImageAlt": "Seven-phase MVP to scale roadmap diagram showing Version 1.0 to Version 2.0 journey for non-technical founders",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "coverImage": "https://www.abuqitmirlabs.tech/assets/blog/mvp-to-scale-roadmap-cover.png",
-  "coverImageAlt": "Seven-phase MVP to scale roadmap diagram showing Version 1.0 to Version 2.0 journey for non-technical founders",
-  "published": true,
+  "publishedAt": "2026-10-08",
   "tags": [
     "roadmap for MVP to scale",
     "MVP to version 2",
@@ -26,7 +27,7 @@
     "software scaling roadmap",
     "AbuQitmirLabs"
   ],
-  "publishedAt": "2026-10-08",
+  "published": true,
   "syncedAt": "2026-10-08T20:28:49.178Z"
 }
 ---
@@ -530,4 +531,3 @@ If you are planning Version 2.0 and need an engineering second opinion, start wi
 If you are ready to build the next version, AbuQitmirLabs can handle **custom software architecture, development, deployment, and scaling** as one engineering engagement. When AI is part of the roadmap, [AI agent development](https://www.abuqitmirlabs.tech/ai-agent-development) can be treated as a dedicated track rather than allowing it to derail the core product rebuild.
 
 **Verify the roadmap first. Then commit the budget.**
-

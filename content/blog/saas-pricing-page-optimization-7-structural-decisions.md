@@ -3,9 +3,12 @@
   "title": "SaaS Pricing Page Optimization: 7 Structural Decisions Backed by A/B Test Data",
   "slug": "saas-pricing-page-optimization-7-structural-decisions",
   "excerpt": "Seven pricing page decisions, from tier count to trust signals, with published A/B test data, honest limits, and a plan for testing them properly.",
+  "metaDescription": "Seven pricing page decisions, from tier count to trust signals, with published A/B test data, honest limits, and a plan for testing them properly.",
+  "coverImage": "/images/blog-covers/bespoke-saas-development-build-vs-buy-decision-guide-c0840937.webp",
+  "coverImageAlt": "Three abstract SaaS pricing plan cards with the middle plan highlighted, illustrating pricing page optimization",
   "category": "Web Development",
   "author": "AbuQitmirLabs Team",
-  "published": true,
+  "publishedAt": "2026-10-02",
   "tags": [
     "SaaS pricing page optimization",
     "SaaS pricing page conversion",
@@ -14,7 +17,7 @@
     "annual vs monthly billing",
     "anchoring and decoy pricing"
   ],
-  "publishedAt": "2026-10-02"
+  "published": true
 }
 ---
 

@@ -3,11 +3,12 @@
   "title": "Performance Marketing vs Brand Marketing: A Budget Allocation Framework for Startups",
   "slug": "performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups",
   "excerpt": "A practical framework for startups to split budget between performance and brand marketing. Learn when to invest in each and how to measure ROI.",
-  "category": "Digital Marketing",
-  "coverImage": "https://www.abuqitmirlabs.tech/images/blog/performance-vs-brand-marketing-cover.jpg",
+  "metaDescription": "A practical framework for startups to split budget between performance and brand marketing. Learn when to invest in each and how to measure ROI.",
+  "coverImage": "/images/blog-covers/performance-marketing-vs-brand-marketing-a-budget-allocation-ceb070fb.webp",
   "coverImageAlt": "Performance marketing vs brand marketing budget allocation framework showing 60/40 split for startups by AbuQitmirLabs",
+  "category": "Digital Marketing",
   "author": "Shiraz Almadani",
-  "published": true,
+  "publishedAt": "2026-10-10",
   "tags": [
     "performance marketing vs brand marketing",
     "startup marketing budget",
@@ -30,7 +31,7 @@
     "startup marketing framework",
     "when to invest in brand marketing"
   ],
-  "publishedAt": "2026-10-10",
+  "published": true,
   "syncedAt": "2026-10-10T21:53:46.366Z"
 }
 ---

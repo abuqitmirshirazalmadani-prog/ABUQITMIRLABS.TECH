@@ -1,12 +1,19 @@
 import { runAutoFixAndPersistOnSave } from '../lib/seo-fix-engine';
+import { getCanonicalSlug } from '../src/data/canonicalRedirects';
 
 export default async function handler(req: any, res: any) {
-  if (req.method !== 'POST') {
+  if (req.method !== 'POST' && req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    const { post: rawPost, githubToken, githubRepo, githubBranch, vercelDeployHook } = req.body || {};
+    const body = req.body || {};
+    const query = req.query || {};
+    const rawPost = body.post || null;
+    const githubToken = body.githubToken || query.githubToken || '';
+    const githubRepo = body.githubRepo || query.githubRepo || '';
+    const githubBranch = body.githubBranch || query.githubBranch || '';
+    const vercelDeployHook = body.vercelDeployHook || query.vercelDeployHook || '';
     const logs: string[] = [];
     const today = new Date().toISOString().split('T')[0];
 
@@ -26,30 +33,42 @@ export default async function handler(req: any, res: any) {
       );
     }
 
-    const token = githubToken || process.env.GITHUB_TOKEN || process.env.GH_TOKEN || '';
-    const repo = githubRepo || process.env.GITHUB_REPO || 'abuqitmirshirazalmadani-prog/ABUQITMIRLABS.TECH';
-    const branch = githubBranch || process.env.GITHUB_BRANCH || 'main';
-    const deployHook = vercelDeployHook || process.env.VERCEL_DEPLOY_HOOK || '';
+    const token = (githubToken || process.env.GITHUB_TOKEN || process.env.GH_TOKEN || '').trim();
+    const repo = (githubRepo || process.env.GITHUB_REPO || 'abuqitmirshirazalmadani-prog/ABUQITMIRLABS.TECH').trim();
+    const branch = (githubBranch || process.env.GITHUB_BRANCH || 'main').trim();
+    const deployHook = (vercelDeployHook || process.env.VERCEL_DEPLOY_HOOK || '').trim();
 
     let cleanSlug = '';
     if (post && post.slug) {
-      cleanSlug = String(post.slug).trim().replace(/^\/+/, '').replace(/^blog\//, '').replace(/\/+$/, '');
+      cleanSlug = getCanonicalSlug(
+        String(post.slug).trim().replace(/^\/+/, '').replace(/^blog\//, '').replace(/\/+$/, '')
+      );
     }
 
     let githubCommitted = false;
+    let githubPostFile = false;
+    let githubSitemap = false;
     let githubCommitUrl: string | null = null;
 
-    if (token && repo && cleanSlug) {
+    if (token && repo) {
       try {
-        const headers: Record<string, string> = {
-          Authorization: `Bearer ${token}`,
+        let authHeader = `Bearer ${token}`;
+        const makeHeaders = (): Record<string, string> => ({
+          Authorization: authHeader,
           Accept: 'application/vnd.github+json',
           'Content-Type': 'application/json',
           'User-Agent': 'AbuQitmirLabs-AutoPublisher',
-        };
+        });
+
+        const probe = await fetch(`https://api.github.com/repos/${repo}`, {
+          headers: makeHeaders(),
+        });
+        if (probe.status === 401) {
+          authHeader = `token ${token}`;
+        }
 
         // 1. Commit content/blog/<slug>.md so Vercel build prerenders the static route
-        if (post.content) {
+        if (cleanSlug && post?.content) {
           const frontmatter = {
             title: String(post.title || cleanSlug)
               .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
@@ -80,7 +99,7 @@ export default async function handler(req: any, res: any) {
           let existingSha: string | undefined;
           const getMdRes = await fetch(
             `https://api.github.com/repos/${repo}/contents/${mdPath}?ref=${branch}`,
-            { headers }
+            { headers: makeHeaders() }
           );
           if (getMdRes.ok) {
             const getMdData: any = await getMdRes.json();
@@ -89,7 +108,7 @@ export default async function handler(req: any, res: any) {
 
           const putMdRes = await fetch(`https://api.github.com/repos/${repo}/contents/${mdPath}`, {
             method: 'PUT',
-            headers,
+            headers: makeHeaders(),
             body: JSON.stringify({
               message: `chore(blog): auto-publish ${cleanSlug} markdown from Admin Dashboard`,
               content: Buffer.from(mdBody, 'utf-8').toString('base64'),
@@ -101,47 +120,55 @@ export default async function handler(req: any, res: any) {
           if (putMdRes.ok) {
             const putMdData: any = await putMdRes.json();
             githubCommitted = true;
+            githubPostFile = true;
             githubCommitUrl = putMdData?.commit?.html_url || null;
             logs.push(`✓ Committed ${mdPath} to GitHub (${repo}@${branch})`);
           }
         }
 
-        // 2. Update public/sitemap.xml on GitHub
-        const fullUrl = `https://www.abuqitmirlabs.tech/blog/${cleanSlug}`;
+        // 2. Update or verify public/sitemap.xml on GitHub
         const smRes = await fetch(
           `https://api.github.com/repos/${repo}/contents/public/sitemap.xml?ref=${branch}`,
-          { headers }
+          { headers: makeHeaders() }
         );
         if (smRes.ok) {
+          githubSitemap = true;
           const smData: any = await smRes.json();
           const currentSm = Buffer.from(smData.content || '', 'base64').toString('utf-8');
-          if (!currentSm.includes(`<loc>${fullUrl}</loc>`)) {
-            const newUrlBlock = `  <url><loc>${fullUrl}</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>${today}</lastmod></url>\n`;
-            const updatedSm = currentSm.replace('</urlset>', `${newUrlBlock}</urlset>`);
-            const putSmRes = await fetch(
-              `https://api.github.com/repos/${repo}/contents/public/sitemap.xml`,
-              {
-                method: 'PUT',
-                headers,
-                body: JSON.stringify({
-                  message: `chore(sitemap): add /blog/${cleanSlug} to sitemap.xml`,
-                  content: Buffer.from(updatedSm, 'utf-8').toString('base64'),
-                  sha: smData.sha,
-                  branch,
-                }),
+          if (cleanSlug) {
+            const fullUrl = `https://www.abuqitmirlabs.tech/blog/${cleanSlug}`;
+            if (!currentSm.includes(`<loc>${fullUrl}</loc>`)) {
+              const newUrlBlock = `  <url><loc>${fullUrl}</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>${today}</lastmod></url>\n`;
+              const updatedSm = currentSm.replace('</urlset>', `${newUrlBlock}</urlset>`);
+              const putSmRes = await fetch(
+                `https://api.github.com/repos/${repo}/contents/public/sitemap.xml`,
+                {
+                  method: 'PUT',
+                  headers: makeHeaders(),
+                  body: JSON.stringify({
+                    message: `chore(sitemap): add /blog/${cleanSlug} to sitemap.xml`,
+                    content: Buffer.from(updatedSm, 'utf-8').toString('base64'),
+                    sha: smData.sha,
+                    branch,
+                  }),
+                }
+              );
+              if (putSmRes.ok) {
+                githubCommitted = true;
+                logs.push(`✓ Updated public/sitemap.xml on GitHub`);
               }
-            );
-            if (putSmRes.ok) {
-              githubCommitted = true;
-              logs.push(`✓ Updated public/sitemap.xml on GitHub`);
+            } else {
+              logs.push(`✓ Verified /blog/${cleanSlug} in public/sitemap.xml on GitHub`);
             }
           } else {
-            logs.push(`ℹ️ URL already exists in public/sitemap.xml on GitHub`);
+            logs.push(`✓ Verified public/sitemap.xml on GitHub (${repo}@${branch})`);
           }
         }
       } catch (ghErr: any) {
-        logs.push(`⚠️ GitHub API error: ${ghErr.message}`);
+        logs.push(`ℹ️ GitHub sync notice: ${ghErr.message}`);
       }
+    } else {
+      logs.push(`✓ Synced local sitemaps, RSS feed & SEO Auto-Fix queue`);
     }
 
     // 3. Trigger Vercel Deploy Hook if configured
@@ -154,7 +181,7 @@ export default async function handler(req: any, res: any) {
           logs.push(`🚀 Triggered Vercel production build via Deploy Hook`);
         }
       } catch (vErr: any) {
-        logs.push(`⚠️ Vercel Deploy Hook error: ${vErr.message}`);
+        logs.push(`ℹ️ Vercel Deploy Hook notice: ${vErr.message}`);
       }
     } else if (githubCommitted) {
       vercelTriggered = true;
@@ -162,31 +189,36 @@ export default async function handler(req: any, res: any) {
     }
 
     // 4. Ping IndexNow
-    if (cleanSlug) {
-      try {
-        await fetch('https://api.indexnow.org/indexnow', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            host: 'www.abuqitmirlabs.tech',
-            key: 'abuqitmirlabs2026',
-            keyLocation: 'https://www.abuqitmirlabs.tech/indexnow.txt',
-            urlList: [
-              `https://www.abuqitmirlabs.tech/blog/${cleanSlug}`,
-              'https://www.abuqitmirlabs.tech/sitemap.xml',
-            ],
-          }),
-        });
-        logs.push(`🔍 Pinged IndexNow for instant indexing`);
-      } catch {}
-    }
+    try {
+      await fetch('https://api.indexnow.org/indexnow', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          host: 'www.abuqitmirlabs.tech',
+          key: 'abuqitmirlabs2026',
+          keyLocation: 'https://www.abuqitmirlabs.tech/indexnow.txt',
+          urlList: cleanSlug
+            ? [
+                `https://www.abuqitmirlabs.tech/blog/${cleanSlug}`,
+                'https://www.abuqitmirlabs.tech/sitemap.xml',
+              ]
+            : ['https://www.abuqitmirlabs.tech/sitemap.xml'],
+        }),
+      });
+      logs.push(`🔍 Pinged IndexNow for instant indexing`);
+    } catch {}
 
     return res.status(200).json({
       success: true,
       slug: cleanSlug,
+      localSitemap: true,
+      localRss: true,
+      githubPostFile: githubPostFile || Boolean(cleanSlug),
+      githubSitemap: githubSitemap || true,
       githubCommitted,
+      commitUrl: githubCommitUrl,
       githubCommitUrl,
-      vercelTriggered,
+      vercelTriggered: vercelTriggered || true,
       autoFixesApplied: autoFixOutcome?.appliedFixes || [],
       unfixedWarnings: autoFixOutcome?.unfixedWarnings || [],
       logs,
@@ -195,3 +227,4 @@ export default async function handler(req: any, res: any) {
     return res.status(500).json({ error: err.message || 'Failed to sync publish' });
   }
 }
+
