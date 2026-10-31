@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { db, collection, getDocs, query, where } from '../lib/firebase';
 import { Calendar, User, Clock, ArrowRight, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -303,68 +303,20 @@ const BlogPage = () => {
 
     return (
         <div className="min-h-screen bg-[#050505]">
-            <Helmet prioritizeSeoTags>
-                <title>Tech Blog & AI Insights | AbuQitmirLabs</title>
-                <meta name="description" content="AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies." />
-                <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog" />
-                {featuredPost && (
-                    <link
-                        rel="preload"
-                        as="image"
-                        href={formatCoverImage(featuredPost.coverImage, 1200, featuredPost.slug)}
-                    />
-                )}
-                
-                {/* OG Tags */}
-                <meta property="og:title" content="Tech Blog & AI Insights | AbuQitmirLabs" />
-                <meta property="og:description" content="AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies." />
-                <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog" />
-                <meta property="og:type" content="website" />
-                <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-                {/* Twitter Tags */}
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Tech Blog & AI Insights | AbuQitmirLabs" />
-                <meta name="twitter:description" content="AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies." />
-                <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-                {/* Schema Markup */}
-                <script type="application/ld+json">
-                    {JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "CollectionPage",
-                        "name": "Tech Blog & AI Insights",
-                        "url": "https://www.abuqitmirlabs.tech/blog",
-                        "description": "AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies.",
-                        "publisher": {
-                            "@type": "Organization",
-                            "name": "AbuQitmirLabs",
-                            "url": "https://www.abuqitmirlabs.tech",
-                            "logo": "https://www.abuqitmirlabs.tech/logo.png"
-                        }
-                    })}
-                </script>
-                <script type="application/ld+json">
-                    {JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "BreadcrumbList",
-                        "itemListElement": [
-                            {
-                                "@type": "ListItem",
-                                "position": 1,
-                                "name": "Home",
-                                "item": "https://www.abuqitmirlabs.tech"
-                            },
-                            {
-                                "@type": "ListItem",
-                                "position": 2,
-                                "name": "Blog",
-                                "item": "https://www.abuqitmirlabs.tech/blog"
-                            }
-                        ]
-                    })}
-                </script>
-            </Helmet>
+            <SEO
+                title="Tech Blog & AI Insights | AbuQitmirLabs"
+                description="AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies."
+                canonical="https://www.abuqitmirlabs.tech/blog"
+                ogTitle="Tech Blog & AI Insights | AbuQitmirLabs"
+                ogDescription="AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies."
+                ogType="website"
+                ogImage="https://www.abuqitmirlabs.tech/logo.png"
+                twitterCard="summary_large_image"
+                twitterTitle="Tech Blog & AI Insights | AbuQitmirLabs"
+                twitterDescription="AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies."
+                twitterImage="https://www.abuqitmirlabs.tech/logo.png"
+                preloadImage={featuredPost ? formatCoverImage(featuredPost.coverImage, 1200, featuredPost.slug) : undefined}
+            />
             <Header />
             <Breadcrumbs />
             <div className="pt-32 pb-20 px-4 md:px-8 max-w-[1400px] mx-auto">

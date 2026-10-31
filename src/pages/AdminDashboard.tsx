@@ -18,6 +18,8 @@ import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import { setCachedPost } from '../utils/blogCache';
 import { syncPostToGitHubAndDeploy } from '../utils/githubPublisher';
+import { autoFixArticle } from '../../lib/auto-fix-article';
+import { AdminSeoFixPage } from '../../app/admin/seo/page';
 
 const ADMIN_EMAIL = "abuqitmirshirazalmadani@gmail.com";
 const ADMIN_UID = "cRAf1wZFRRXMVadj7RDaC8WM4152";
@@ -134,8 +136,8 @@ const AdminDashboard = () => {
     const [editingId, setEditingId] = useState<string | null>(null);
     const [activeTab, setActiveTab] = useState<'create' | 'list'>('create');
 
-    // Section Switcher: 'blog' | 'news' | 'deploy'
-    const [activeSection, setActiveSection] = useState<'blog' | 'news' | 'deploy'>('blog');
+    // Section Switcher: 'blog' | 'news' | 'deploy' | 'seo'
+    const [activeSection, setActiveSection] = useState<'blog' | 'news' | 'deploy' | 'seo'>('blog');
 
     // GitHub & Vercel Auto-Publish Pipeline State
     const [githubToken, setGithubToken] = useState<string>(() => {
@@ -996,7 +998,8 @@ const AdminDashboard = () => {
                     .join('\n');
                 return md;
             };
-            const canonicalFormData = {
+            // Layer 1: Non-Blocking SEO Auto-Fix on Save
+            const layer1Result = autoFixArticle({
                 ...formData,
                 title: cleanPostTitle || formData.title,
                 slug: cleanSlug,
@@ -1004,8 +1007,35 @@ const AdminDashboard = () => {
                 metaDescription: stripOuterQuotes(formData.metaDescription),
                 excerpt: stripOuterQuotes(formData.excerpt),
                 category: cleanSlug === 'ai-content-vs-human-content' ? 'Content Writing' : formData.category,
+                tags: formData.tags,
+            });
+
+            // Persist unfixed warnings (e.g. external images) to content/.fix-queue.json via backend API without blocking
+            if (layer1Result.unfixedWarnings.length > 0 || layer1Result.appliedFixes.length > 0) {
+                fetch('/api/seo/auto-fix', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        article: layer1Result.article,
+                        warnings: layer1Result.unfixedWarnings
+                    })
+                }).catch(() => {});
+            }
+
+            const finalSlug = layer1Result.article.slug || cleanSlug;
+            const canonicalFormData = {
+                ...formData,
+                title: layer1Result.article.title,
+                slug: finalSlug,
+                content: layer1Result.article.content,
+                metaDescription: layer1Result.article.metaDescription,
+                excerpt: layer1Result.article.excerpt,
+                coverImage: layer1Result.article.coverImage,
+                coverImageAlt: layer1Result.article.coverImageAlt || layer1Result.article.title,
+                category: finalSlug === 'ai-content-vs-human-content' ? 'Content Writing' : formData.category,
+                publishedAt: layer1Result.article.publishedAt,
             };
-            const tagsArray = formData.tags.split(',').map(tag => tag.trim().replace(/^#/, '')).filter(tag => tag !== '');
+            const tagsArray = layer1Result.article.tags;
             const postPayload = { ...canonicalFormData, tags: tagsArray };
             
             let targetId = editingId;
@@ -1304,6 +1334,17 @@ const AdminDashboard = () => {
                                     {githubToken ? 'Ready' : 'Setup'}
                                 </span>
                             </button>
+                            <button
+                                onClick={() => setActiveSection('seo')}
+                                className={`w-full font-bold py-3 px-4 rounded-xl flex items-center justify-between text-xs tracking-wider transition-all uppercase ${activeSection === 'seo' ? 'bg-[#ccff00] text-black shadow-lg shadow-[#ccff00]/20 font-black' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
+                            >
+                                <span className="flex items-center gap-2">
+                                    <ShieldCheck size={16} /> SEO Fix-It Queue
+                                </span>
+                                <span className="text-[9px] px-2 py-0.5 rounded-full font-black bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                                    4-Layer
+                                </span>
+                            </button>
                         </div>
 
                         {activeSection === 'blog' ? (
@@ -1457,7 +1498,9 @@ const AdminDashboard = () => {
                                           ? (activeTab === 'create' ? (editingId ? 'Update Blog Post' : 'Create New Blog Post') : 'Manage Contents')
                                           : activeSection === 'news'
                                             ? (newsActiveTab === 'create' ? (editingNewsId ? 'Update News Article' : 'Create News Article') : `Manage News (${newsSubTab.toUpperCase()})`)
-                                            : 'Auto-Publish Pipeline: GitHub ➔ Vercel ➔ Google'
+                                            : activeSection === 'seo'
+                                              ? '4-Layer Non-Blocking SEO Auto-Correct'
+                                              : 'Auto-Publish Pipeline: GitHub ➔ Vercel ➔ Google'
                                         }
                                     </h2>
                                 </div>
@@ -1541,13 +1584,12 @@ const AdminDashboard = () => {
                                                 <div className="md:col-span-8 space-y-3">
                                                     <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 flex justify-between">
                                                         Post Title
-                                                        <span className="text-blue-500/50">Required</span>
+                                                        <span className="text-emerald-400/80">Auto-Generated if Blank</span>
                                                     </label>
                                                     <input 
                                                         className="w-full bg-[#1a1a1a] border border-white/5 rounded-2xl px-6 py-5 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all placeholder:text-gray-700 text-white font-medium" 
-                                                        placeholder="Future-Proofing with AI" 
+                                                        placeholder="Future-Proofing with AI (or leave blank to auto-generate from H1)" 
                                                         type="text"
-                                                        required
                                                         value={formData.title}
                                                         onChange={handleTitleChange}
                                                     />
@@ -1556,12 +1598,11 @@ const AdminDashboard = () => {
 
                                             {/* Slug */}
                                             <div className="space-y-3">
-                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Slug (URL Friendly)</label>
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Slug (URL Friendly — Auto-Set if Blank)</label>
                                                 <input 
                                                     className="w-full bg-[#1a1a1a] border border-white/5 rounded-2xl px-6 py-5 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all placeholder:text-gray-700 text-gray-400 font-mono text-sm" 
                                                     placeholder="future-proofing-with-ai" 
                                                     type="text"
-                                                    required
                                                     value={formData.slug}
                                                     onChange={e => setFormData({...formData, slug: e.target.value.toLowerCase().replace(/ /g, '-')})}
                                                 />
@@ -1647,14 +1688,13 @@ const AdminDashboard = () => {
                                             {/* Excerpt */}
                                             <div className="space-y-3">
                                                 <div className="flex items-center justify-between">
-                                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Excerpt (Card View & Summary)</label>
+                                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Excerpt (Auto-Generated from H1 if Blank)</label>
                                                     <span className="text-[10px] font-mono text-zinc-500">{formData.excerpt.length} chars</span>
                                                 </div>
                                                 <textarea 
                                                     className="w-full bg-[#1a1a1a] border border-white/5 rounded-2xl px-6 py-5 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all placeholder:text-gray-700 resize-none text-white leading-relaxed" 
-                                                    placeholder="Enter a short summary for the blog card and article header..." 
+                                                    placeholder="Enter a short summary (or leave blank to auto-generate from H1 on save)..." 
                                                     rows={3}
-                                                    required
                                                     value={formData.excerpt}
                                                     onChange={e => setFormData({
                                                         ...formData, 
@@ -2345,7 +2385,7 @@ const AdminDashboard = () => {
                                 </motion.div>
                             )}
                         </AnimatePresence>
-                    ) : (
+                    ) : activeSection === 'deploy' ? (
                         /* Deploy Section */
                         <motion.div
                             key="deploy-panel"
@@ -2586,6 +2626,8 @@ const AdminDashboard = () => {
                                 </div>
                             </form>
                         </motion.div>
+                    ) : (
+                        <AdminSeoFixPage embedded={true} />
                     )}
                         </motion.div>
                     </section>

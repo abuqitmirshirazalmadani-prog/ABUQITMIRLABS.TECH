@@ -18,6 +18,9 @@
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "react-helmet-async": [
+        "./lib/generate-metadata.ts"
       ]
     },
     "noImplicitAny": false,

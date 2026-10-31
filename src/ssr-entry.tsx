@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { generateMetadata, renderMetadataToHeadHtml } from '../lib/generate-metadata';
 
 // Eagerly import the key pages for SSG pre-rendering
 import HomePage from './pages/HomePage';
@@ -103,13 +103,10 @@ const FloatingWhatsApp = () => (
 );
 
 export function renderFullApp(url: string = '/') {
-  const helmetContext: any = {};
-  
   const rawHtml = renderToString(
-    <HelmetProvider context={helmetContext}>
-      <StaticRouter location={url}>
-        <FloatingWhatsApp />
-        <ErrorBoundary>
+    <StaticRouter location={url}>
+      <FloatingWhatsApp />
+      <ErrorBoundary>
           <Suspense fallback={null}>
             <Routes>
               <Route path="/" element={<HomePage />} />
@@ -214,36 +211,33 @@ export function renderFullApp(url: string = '/') {
           </Suspense>
         </ErrorBoundary>
       </StaticRouter>
-    </HelmetProvider>
   );
 
-  // Extract all hoisted head tags (preloads, titles, meta tags hoisted by React / Helmet)
-  let headTags = '';
+  const metadata = generateMetadata({ pathname: url });
+  const headTags = renderMetadataToHeadHtml(metadata);
   let bodyHtml = rawHtml;
-  
+
   const headElementsRegex = /^(?:<link\b[^>]*\/?>|<meta\b[^>]*\/?>|<title\b[^>]*>[\s\S]*?<\/title>|<style\b[^>]*>[\s\S]*?<\/style>)+/i;
   const match = rawHtml.match(headElementsRegex);
   if (match) {
-    headTags = match[0];
     bodyHtml = rawHtml.substring(match[0].length);
   }
 
-  // Extract all page-specific JSON-LD scripts rendered in the component tree
-  const jsonLdScripts: string[] = [];
   const scriptRegex = /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis;
-  let scriptMatch;
-  while ((scriptMatch = scriptRegex.exec(rawHtml)) !== null) {
-    jsonLdScripts.push(scriptMatch[0]);
-  }
-
-  // Also strip the JSON-LD script tags from bodyHtml so they don't pollute the DOM inside #root
   bodyHtml = bodyHtml.replace(scriptRegex, '');
+
+  const jsonLdScripts = [`<script type="application/ld+json">${JSON.stringify(metadata.jsonLdGraph)}</script>`];
 
   return {
     rawHtml,
     headTags,
     bodyHtml,
     jsonLdScripts,
-    helmet: helmetContext.helmet
+    helmet: {
+      title: { toString: () => `<title>${metadata.title}</title>` },
+      meta: { toString: () => `<meta name="description" content="${metadata.description.replace(/"/g, '&quot;')}" />` },
+      link: { toString: () => `<link rel="canonical" href="${metadata.canonical}" />` },
+      script: { toString: () => jsonLdScripts[0] },
+    }
   };
 }

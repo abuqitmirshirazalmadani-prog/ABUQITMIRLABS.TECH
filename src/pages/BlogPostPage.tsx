@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
 import { db, collection, getDocs, query, where, handleFirestoreError, OperationType } from '../lib/firebase';
 import { ArrowLeft, ArrowRight, Calendar, User, Clock, Share2, Twitter, Linkedin, Facebook, Link as LinkIcon, BookOpen } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 import Breadcrumbs from '../components/Breadcrumbs';
 import MarkdownRenderer from '../components/MarkdownRenderer';
 import remarkGfm from 'remark-gfm';
@@ -775,10 +775,11 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
     if (!post) {
         return (
             <div className="min-h-screen bg-[#050505] text-white flex flex-col">
-                <Helmet>
-                    <title>Article Not Found | AbuQitmirLabs</title>
-                    <meta name="robots" content="noindex, follow" />
-                </Helmet>
+                <SEO
+                    title="Article Not Found | AbuQitmirLabs"
+                    description="The requested publication could not be found or has moved to a new permanent location."
+                    robots="noindex, follow"
+                />
                 <Header />
                 <div className="flex-grow flex flex-col items-center justify-center p-6 text-center pt-32 pb-20">
                     <div className="max-w-md w-full bg-[#0b0b0e] border border-zinc-800/80 rounded-[2.5rem] p-10 md:p-12 shadow-2xl">
@@ -2777,538 +2778,48 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
       ]
     };
 
+    const activeBlogSchema = isAIOverviewsRecovery
+        ? aiOverviewsRecoverySchema
+        : isMeasureMarketingROI
+        ? measureMarketingROISchema
+        : isAIAgentsCostBenefit
+        ? aiAgentsCostBenefitSchema
+        : isSaasPricing
+        ? saasPricingPageSchema
+        : isPakistanOffshore
+        ? pakistanOffshoreSchema
+        : isHighPerformanceWebApps
+        ? highPerformanceWebAppsSchema
+        : isAppDevAgencyUK
+        ? appDevAgencyUKSchema
+        : isFlutterVsReactNative
+        ? flutterVsReactNativeSchema
+        : isEdTechLMSFeatures
+        ? edTechLMSFeaturesSchema
+        : isEnterpriseSoftware
+        ? enterpriseSoftwareSchema
+        : isFlutterVsNative
+        ? flutterVsNativeSchema
+        : seoData.schemaJsonLd;
+
     return (
         <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00]/30 selection:text-white">
-            <Helmet prioritizeSeoTags>
-                {isAIOverviewsRecovery ? (
-                    <>
-                        <html lang="en" />
-                        {/* Primary Meta Tags */}
-                        <title>AI Overviews Killed Traffic: What 40 Companies Did Next</title>
-                        <meta name="title" content="AI Overviews Killed Traffic: What 40 Companies Did Next" />
-                        <meta name="description" content="AI Overviews cut organic clicks by 61%. We analyzed 40 companies that recovered. Here are the 7 tactics that actually worked, with specific metrics." />
-                        <meta name="keywords" content="AI Overviews traffic recovery, recover traffic lost to AI Overviews, AI Overviews SEO strategy, how to get cited in AI Overviews, AI search traffic recovery, Google AI Overviews update, zero-click search recovery, AI Overviews CTR decline, bottom-funnel SEO, AI Overviews case study" />
-                        <meta name="author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
-                        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-                        <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog/ai-overviews-traffic-recovery-what-40-companies-did-next" />
-
-                        {/* Open Graph / Facebook */}
-                        <meta property="og:type" content="article" />
-                        <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/ai-overviews-traffic-recovery-what-40-companies-did-next" />
-                        <meta property="og:title" content="AI Overviews Killed Traffic: What 40 Companies Did Next" />
-                        <meta property="og:description" content="AI Overviews cut organic clicks by 61%. We analyzed 40 companies that recovered. Here are the 7 tactics that actually worked, with specific metrics." />
-                        <meta property="og:image" content="https://www.abuqitmirlabs.tech/images/blog/ai-overviews-traffic-recovery-2026-og.jpg" />
-                        <meta property="og:image:width" content="1200" />
-                        <meta property="og:image:height" content="630" />
-                        <meta property="og:image:alt" content="AI Overviews traffic recovery case study showing 40 companies and 7 recovery tactics with specific metrics" />
-                        <meta property="og:site_name" content="AbuQitmirLabs" />
-                        <meta property="og:locale" content="en_US" />
-                        <meta property="article:published_time" content="2026-09-28T00:00:00+00:00" />
-                        <meta property="article:modified_time" content="2026-09-28T00:00:00+00:00" />
-                        <meta property="article:author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
-                        <meta property="article:section" content="SEO Services" />
-                        <meta property="article:tag" content="AI Overviews" />
-                        <meta property="article:tag" content="SEO Recovery" />
-                        <meta property="article:tag" content="Traffic Recovery" />
-
-                        {/* Twitter Card */}
-                        <meta name="twitter:card" content="summary_large_image" />
-                        <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/ai-overviews-traffic-recovery-what-40-companies-did-next" />
-                        <meta name="twitter:title" content="AI Overviews Killed Traffic: What 40 Companies Did Next" />
-                        <meta name="twitter:description" content="AI Overviews cut organic clicks by 61%. We analyzed 40 companies that recovered. Here are the 7 tactics that actually worked, with specific metrics." />
-                        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/blog/ai-overviews-traffic-recovery-2026-og.jpg" />
-                        <meta name="twitter:image:alt" content="AI Overviews traffic recovery 2026 — 40 companies, 7 tactics, full case study" />
-                        <meta name="twitter:site" content="@AbuQitmirLabs" />
-                        <meta name="twitter:creator" content="@AbuQitmirLabs" />
-
-                        <script type="application/ld+json">
-                            {JSON.stringify(aiOverviewsRecoverySchema)}
-                        </script>
-                    </>
-                ) : isMeasureMarketingROI ? (
-                    <>
-                        <html lang="en" />
-                        {/* Primary Meta Tags */}
-                        <title>Measure Marketing ROI Without Tracking | AbuQitmirLabs</title>
-                        <meta name="title" content="Measure Marketing ROI Without Tracking | AbuQitmirLabs" />
-                        <meta name="description" content="A guide to measuring marketing ROI when attribution is impossible. Learn incrementality testing, MMM, and practical frameworks for startups." />
-                        <meta name="keywords" content="marketing ROI measurement, attribution modeling, marketing measurement framework, ROI without tracking, incrementality testing, marketing mix modeling, share of search, marketing attribution, startup marketing measurement, MMM" />
-                        <meta name="author" content="AbuQitmirLabs" />
-                        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-                        <meta name="language" content="English" />
-                        <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog/measure-marketing-roi-without-tracking" />
-
-                        {/* Open Graph / Facebook */}
-                        <meta property="og:type" content="article" />
-                        <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/measure-marketing-roi-without-tracking" />
-                        <meta property="og:title" content="Measure Marketing ROI Without Tracking | AbuQitmirLabs" />
-                        <meta property="og:description" content="A guide to measuring marketing ROI when attribution is impossible. Learn incrementality testing, MMM, and practical frameworks for startups." />
-                        <meta property="og:image" content="https://www.abuqitmirlabs.tech/images/blog/measure-marketing-roi-without-tracking-cover.jpg" />
-                        <meta property="og:image:width" content="1200" />
-                        <meta property="og:image:height" content="630" />
-                        <meta property="og:image:alt" content="Marketing ROI measurement framework showing incrementality testing, marketing mix modeling, and share of search for startups by AbuQitmirLabs" />
-                        <meta property="og:site_name" content="AbuQitmirLabs" />
-                        <meta property="og:locale" content="en_US" />
-
-                        {/* Twitter Card */}
-                        <meta name="twitter:card" content="summary_large_image" />
-                        <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/measure-marketing-roi-without-tracking" />
-                        <meta name="twitter:title" content="Measure Marketing ROI Without Tracking | AbuQitmirLabs" />
-                        <meta name="twitter:description" content="A guide to measuring marketing ROI when attribution is impossible. Learn incrementality testing, MMM, and practical frameworks for startups." />
-                        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/blog/measure-marketing-roi-without-tracking-cover.jpg" />
-                        <meta name="twitter:image:alt" content="Measure marketing ROI without attribution by AbuQitmirLabs" />
-                        <meta name="twitter:site" content="@abuqitmirlabs" />
-                        <meta name="twitter:creator" content="@abuqitmirlabs" />
-
-                        {/* Article Meta */}
-                        <meta property="article:published_time" content="2026-10-14T00:00:00+00:00" />
-                        <meta property="article:modified_time" content="2026-10-14T00:00:00+00:00" />
-                        <meta property="article:author" content="AbuQitmirLabs" />
-                        <meta property="article:section" content="Digital Marketing" />
-                        <meta property="article:tag" content="Marketing ROI" />
-                        <meta property="article:tag" content="Attribution" />
-                        <meta property="article:tag" content="Measurement" />
-
-                        <script type="application/ld+json">
-                            {JSON.stringify(measureMarketingROISchema)}
-                        </script>
-                    </>
-                ) : isAIAgentsCostBenefit ? (
-                    <>
-                        <html lang="en" />
-                        {/* Primary Meta Tags */}
-                        <title>AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don't) | AbuQitmirLabs</title>
-                        <meta name="title" content="AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don't) | AbuQitmirLabs" />
-                        <meta name="description" content="A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don't." />
-                        <meta
-                          name="keywords"
-                          content="AI agents cost benefit analysis, AI agent ROI, AI agent TCO, when to use AI agents, AI agent development cost, AbuQitmirLabs"
-                        />
-                        <meta name="author" content="AbuQitmirLabs" />
-                        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-                        <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis" />
-
-                        {/* Open Graph / Facebook */}
-                        <meta property="og:type" content="article" />
-                        <meta property="og:site_name" content="AbuQitmirLabs" />
-                        <meta property="og:locale" content="en_US" />
-                        <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis" />
-                        <meta property="og:title" content="AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don't) | AbuQitmirLabs" />
-                        <meta property="og:description" content="A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don't." />
-                        <meta property="og:image" content="https://i.postimg.cc/j2pfBQ3d/A-7-question-framework.jpg" />
-                        <meta property="og:image:width" content="1200" />
-                        <meta property="og:image:height" content="630" />
-                        <meta property="og:image:alt" content="AI Agents Cost Benefit Analysis decision framework by AbuQitmirLabs" />
-                        <meta property="article:published_time" content="2026-10-03T00:00:00+00:00" />
-                        <meta property="article:modified_time" content="2026-10-03T00:00:00+00:00" />
-                        <meta property="article:author" content="AbuQitmirLabs" />
-                        <meta property="article:section" content="AI Agent Development" />
-                        <meta property="article:tag" content="AI Agents" />
-                        <meta property="article:tag" content="Cost Benefit Analysis" />
-                        <meta property="article:tag" content="ROI" />
-
-                        {/* Twitter Card */}
-                        <meta name="twitter:card" content="summary_large_image" />
-                        <meta name="twitter:site" content="@abuqitmirlabs" />
-                        <meta name="twitter:creator" content="@abuqitmirlabs" />
-                        <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis" />
-                        <meta name="twitter:title" content="AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don't) | AbuQitmirLabs" />
-                        <meta name="twitter:description" content="A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don't." />
-                        <meta name="twitter:image" content="https://i.postimg.cc/j2pfBQ3d/A-7-question-framework.jpg" />
-                        <meta name="twitter:image:alt" content="AI Agents Cost Benefit Analysis decision framework by AbuQitmirLabs" />
-                        <meta name="twitter:label1" content="Reading time" />
-                        <meta name="twitter:data1" content="12 minutes" />
-                        <meta name="twitter:label2" content="Written by" />
-                        <meta name="twitter:data2" content="AbuQitmirLabs" />
-
-                        <script type="application/ld+json">
-                            {JSON.stringify(aiAgentsCostBenefitSchema)}
-                        </script>
-                    </>
-                ) : isSaasPricing ? (
-                    <>
-                        <html lang="en" />
-                        {/* Primary Meta Tags */}
-                        <title>SaaS Pricing Page Optimization: 7 Decisions Backed by Data</title>
-                        <meta name="title" content="SaaS Pricing Page Optimization: 7 Decisions Backed by Data" />
-                        <meta name="description" content="Seven pricing page decisions, from tier count to trust signals, with A/B test data and honest limits. A practical guide for SaaS founders." />
-                        <meta
-                          name="keywords"
-                          content="SaaS pricing page optimization, SaaS pricing page conversion, pricing page A/B testing, pricing tiers, annual vs monthly billing, anchoring and decoy pricing"
-                        />
-                        <meta name="author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
-                        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-                        <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog/saas-pricing-page-optimization-7-structural-decisions" />
-
-                        {/* Open Graph / Facebook */}
-                        <meta property="og:type" content="article" />
-                        <meta property="og:site_name" content="AbuQitmirLabs" />
-                        <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/saas-pricing-page-optimization-7-structural-decisions" />
-                        <meta property="og:title" content="SaaS Pricing Page Optimization: 7 Decisions Backed by Data" />
-                        <meta property="og:description" content="Seven pricing page decisions, from tier count to trust signals, with A/B test data and honest limits. A practical guide for SaaS founders." />
-                        <meta property="og:image" content="https://www.abuqitmirlabs.tech/images/blog/saas-pricing-page-optimization-2026-og.jpg" />
-                        <meta property="og:image:width" content="1200" />
-                        <meta property="og:image:height" content="630" />
-                        <meta property="og:image:alt" content="Three abstract SaaS pricing plan cards with the middle plan highlighted, illustrating pricing page optimization" />
-                        <meta property="article:published_time" content="2026-10-02T00:00:00+00:00" />
-                        <meta property="article:modified_time" content="2026-10-02T00:00:00+00:00" />
-                        <meta property="article:author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
-                        <meta property="article:section" content="SaaS Growth" />
-                        <meta property="article:tag" content="SaaS pricing page optimization" />
-
-                        {/* Twitter Card */}
-                        <meta name="twitter:card" content="summary_large_image" />
-                        <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/saas-pricing-page-optimization-7-structural-decisions" />
-                        <meta name="twitter:title" content="SaaS Pricing Page Optimization: 7 Decisions Backed by A/B Test Data" />
-                        <meta name="twitter:description" content="Seven pricing page decisions, from tier count to trust signals, with A/B test data and honest limits. A practical guide for SaaS founders." />
-                        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/blog/saas-pricing-page-optimization-2026-og.jpg" />
-
-                        <script type="application/ld+json">
-                            {JSON.stringify(saasPricingPageSchema)}
-                        </script>
-                    </>
-                ) : isPakistanOffshore ? (
-                    <>
-                        <html lang="en" />
-                        {/* Primary Meta Tags */}
-                        <title>The Pakistan Advantage: Why US Startups Are Moving Dev Teams Offshore</title>
-                        <meta name="title" content="The Pakistan Advantage: Why US Startups Are Moving Dev Teams Offshore" />
-                        <meta name="description" content="Pakistan IT exports hit a record $4.6B in FY2025-26 and tax incentives now run through 2029. Here is the real data behind why US startups are evaluating Pakistan for engineering talent." />
-                        <meta name="keywords" content="Pakistan offshore development for US startups, Pakistan vs India software development, Pakistan IT exports 2026, hire developers Pakistan, offshore development rate comparison 2026, Pakistan software outsourcing, IT export tax incentives Pakistan, senior developer rates Pakistan, async-first offshore workflow" />
-                        <meta name="author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
-                        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-                        <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026" />
-
-                        {/* Open Graph / Facebook */}
-                        <meta property="og:type" content="article" />
-                        <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026" />
-                        <meta property="og:title" content="The Pakistan Advantage: Why US Startups Are Moving Dev Teams Offshore" />
-                        <meta property="og:description" content="Pakistan IT exports hit a record $4.6B in FY2025-26 and tax incentives now run through 2029. Here is the real data behind why US startups are evaluating Pakistan for engineering talent." />
-                        <meta property="og:image" content="https://www.abuqitmirlabs.tech/images/blog/pakistan-offshore-development-2026-og.jpg" />
-                        <meta property="og:image:width" content="1200" />
-                        <meta property="og:image:height" content="630" />
-                        <meta property="og:image:alt" content="Pakistan offshore development 2026 comparison showing $4.6B IT exports, developer rate ranges, and tax incentives through 2029" />
-                        <meta property="og:site_name" content="AbuQitmirLabs" />
-                        <meta property="og:locale" content="en_US" />
-                        <meta property="article:published_time" content="2026-09-30T00:00:00+00:00" />
-                        <meta property="article:modified_time" content="2026-09-30T00:00:00+00:00" />
-                        <meta property="article:author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
-                        <meta property="article:section" content="Regional Markets" />
-                        <meta property="article:tag" content="Pakistan" />
-                        <meta property="article:tag" content="Offshore Development" />
-                        <meta property="article:tag" content="US Startups" />
-
-                        {/* Twitter Card */}
-                        <meta name="twitter:card" content="summary_large_image" />
-                        <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026" />
-                        <meta name="twitter:title" content="The Pakistan Advantage: Why US Startups Are Moving Dev Teams Offshore" />
-                        <meta name="twitter:description" content="Pakistan IT exports hit a record $4.6B in FY2025-26 and tax incentives now run through 2029. Here is the real data behind why US startups are evaluating Pakistan for engineering talent." />
-                        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/blog/pakistan-offshore-development-2026-og.jpg" />
-                        <meta name="twitter:image:alt" content="Pakistan offshore development 2026 for US startups with rate comparison and tax incentive data" />
-                        <meta name="twitter:site" content="@AbuQitmirLabs" />
-                        <meta name="twitter:creator" content="@AbuQitmirLabs" />
-
-                        <script type="application/ld+json">
-                            {JSON.stringify(pakistanOffshoreSchema)}
-                        </script>
-                    </>
-                ) : isHighPerformanceWebApps ? (
-                    <>
-                        <html lang="en" />
-                        {/* Primary Meta Tags */}
-                        <title>High-Performance Web Apps: 12 Engineering Decisions</title>
-                        <meta name="title" content="High-Performance Web Apps: 12 Engineering Decisions" />
-                        <meta name="description" content="Learn the 12 engineering decisions that separate high-performance web applications from slow ones. Optimize Core Web Vitals and scale effectively." />
-                        <meta name="keywords" content="high-performance web applications, web performance optimization, Core Web Vitals, web engineering decisions, web application performance" />
-                        <meta name="author" content="AbuQitmirLabs" />
-                        <meta name="robots" content="index, follow" />
-                        <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog/high-performance-web-applications-12-engineering-decisions" />
-
-                        {/* Open Graph / Facebook */}
-                        <meta property="og:type" content="article" />
-                        <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/high-performance-web-applications-12-engineering-decisions" />
-                        <meta property="og:title" content="High-Performance Web Apps: 12 Engineering Decisions" />
-                        <meta property="og:description" content="Learn the 12 engineering decisions that separate high-performance web applications from slow ones. Optimize Core Web Vitals and scale effectively." />
-                        <meta property="og:image" content="https://www.abuqitmirlabs.tech/images/high-performance-web-apps-cover.jpg" />
-                        <meta property="og:image:alt" content="A dashboard showing Core Web Vitals metrics with green scores for LCP, INP, and CLS." />
-                        <meta property="og:site_name" content="AbuQitmirLabs" />
-                        <meta property="article:published_time" content="2026-09-24T00:00:00+00:00" />
-                        <meta property="article:author" content="AbuQitmirLabs" />
-                        <meta property="article:section" content="Web Development" />
-                        <meta property="article:tag" content="high-performance web applications" />
-                        <meta property="article:tag" content="Core Web Vitals" />
-                        <meta property="article:tag" content="web performance optimization" />
-
-                        {/* Twitter */}
-                        <meta name="twitter:card" content="summary_large_image" />
-                        <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/high-performance-web-applications-12-engineering-decisions" />
-                        <meta name="twitter:title" content="High-Performance Web Apps: 12 Engineering Decisions" />
-                        <meta name="twitter:description" content="Learn the 12 engineering decisions that separate high-performance web applications from slow ones. Optimize Core Web Vitals and scale effectively." />
-                        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/high-performance-web-apps-cover.jpg" />
-                        <meta name="twitter:image:alt" content="A dashboard showing Core Web Vitals metrics with green scores for LCP, INP, and CLS." />
-                        <meta name="twitter:site" content="@abuqitmirlabs" />
-                        <meta name="twitter:creator" content="@abuqitmirlabs" />
-
-                        <script type="application/ld+json">
-                            {JSON.stringify(highPerformanceWebAppsSchema)}
-                        </script>
-                    </>
-                ) : isAppDevAgencyUK ? (
-                    <>
-                        <html lang="en" />
-                        {/* Primary Meta Tags */}
-                        <title>App Development Agency UK: What to Ask Before You Sign</title>
-                        <meta name="title" content="App Development Agency UK: What to Ask Before You Sign" />
-                        <meta name="description" content="A 15-point evaluation framework for UK businesses vetting app development agencies. Covers costs, red flags, IP ownership, and offshore options." />
-                        <meta name="keywords" content="app development agency UK, mobile app development company UK, offshore app development UK, UK GDPR compliant app development, app development cost UK 2026, how to choose app development agency, app development red flags, IP ownership app development" />
-                        <meta name="author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
-                        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-                        <meta name="language" content="English" />
-                        <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026" />
-
-                        {/* Open Graph / Facebook */}
-                        <meta property="og:type" content="article" />
-                        <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026" />
-                        <meta property="og:title" content="App Development Agency UK: What to Ask Before You Sign" />
-                        <meta property="og:description" content="15-point framework for vetting UK app development agencies. Costs, red flags, IP ownership, and offshore options." />
-                        <meta property="og:image" content="https://www.abuqitmirlabs.tech/og-app-development-agency-uk.jpg" />
-                        <meta property="og:image:width" content="1200" />
-                        <meta property="og:image:height" content="630" />
-                        <meta property="og:image:alt" content="App development agency UK evaluation framework — 15 questions to ask before signing" />
-                        <meta property="og:site_name" content="AbuQitmirLabs .TECH" />
-                        <meta property="og:locale" content="en_US" />
-                        <meta property="article:published_time" content="2026-09-17T09:00:00+05:00" />
-                        <meta property="article:modified_time" content="2026-09-17T09:00:00+05:00" />
-                        <meta property="article:author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
-                        <meta property="article:section" content="Mobile App Development" />
-                        <meta property="article:tag" content="app development agency UK" />
-                        <meta property="article:tag" content="mobile app development UK" />
-                        <meta property="article:tag" content="offshore app development" />
-
-                        {/* Twitter Card */}
-                        <meta name="twitter:card" content="summary_large_image" />
-                        <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026" />
-                        <meta name="twitter:title" content="App Development Agency UK: What to Ask Before You Sign" />
-                        <meta name="twitter:description" content="15-point framework for vetting UK app development agencies. Costs, red flags, IP ownership, offshore options." />
-                        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/twitter-app-development-agency-uk.jpg" />
-                        <meta name="twitter:image:alt" content="App development agency UK evaluation framework" />
-                        <meta name="twitter:site" content="@AbuQitmirLabs" />
-                        <meta name="twitter:creator" content="@AbuQitmir" />
-
-                        <script type="application/ld+json">
-                            {JSON.stringify(appDevAgencyUKSchema)}
-                        </script>
-                    </>
-                ) : isFlutterVsReactNative ? (
-                    <>
-                        <html lang="en" />
-                        {/* Primary Meta Tags */}
-                        <title>Flutter vs React Native: Choosing Your Mobile App Stack in 2026</title>
-                        <meta name="title" content="Flutter vs React Native: Choosing Your Mobile App Stack in 2026" />
-                        <meta name="description" content="Flutter now has 46% market share. React Native has 4× more developers. Here's the honest decision framework for choosing between them in 2026." />
-                        <meta name="keywords" content="Flutter app development, React Native vs Flutter 2026, cross-platform mobile development, Flutter vs React Native comparison, mobile app framework choice, Flutter market share, React Native developers, mobile app development company Pakistan, cross-platform mobile apps, Flutter vs React Native cost" />
-                        <meta name="author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
-                        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-                        <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026" />
-
-                        {/* Open Graph / Facebook */}
-                        <meta property="og:type" content="article" />
-                        <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026" />
-                        <meta property="og:title" content="Flutter vs React Native: Choosing Your Mobile App Stack in 2026" />
-                        <meta property="og:description" content="Flutter now has 46% market share. React Native has 4× more developers. Here's the honest decision framework for choosing between them in 2026." />
-                        <meta property="og:image" content="https://www.abuqitmirlabs.tech/images/blog/flutter-vs-react-native-2026-og.jpg" />
-                        <meta property="og:image:width" content="1200" />
-                        <meta property="og:image:height" content="630" />
-                        <meta property="og:image:alt" content="Flutter vs React Native comparison 2026 — market share, cost breakdown, and decision framework for mobile app development" />
-                        <meta property="og:site_name" content="AbuQitmirLabs" />
-                        <meta property="og:locale" content="en_US" />
-                        <meta property="article:published_time" content="2026-09-22T00:00:00+00:00" />
-                        <meta property="article:modified_time" content="2026-09-22T00:00:00+00:00" />
-                        <meta property="article:author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
-                        <meta property="article:section" content="Mobile App Development" />
-                        <meta property="article:tag" content="Flutter" />
-                        <meta property="article:tag" content="React Native" />
-                        <meta property="article:tag" content="Cross-Platform Development" />
-
-                        {/* Twitter Card */}
-                        <meta name="twitter:card" content="summary_large_image" />
-                        <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026" />
-                        <meta name="twitter:title" content="Flutter vs React Native: Choosing Your Mobile App Stack in 2026" />
-                        <meta name="twitter:description" content="Flutter now has 46% market share. React Native has 4× more developers. Here's the honest decision framework for choosing between them in 2026." />
-                        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/blog/flutter-vs-react-native-2026-og.jpg" />
-                        <meta name="twitter:image:alt" content="Flutter vs React Native — 2026 decision framework for mobile app stack" />
-                        <meta name="twitter:site" content="@AbuQitmirLabs" />
-                        <meta name="twitter:creator" content="@AbuQitmirLabs" />
-
-                        <script type="application/ld+json">
-                            {JSON.stringify(flutterVsReactNativeSchema)}
-                        </script>
-                    </>
-                ) : isEdTechLMSFeatures ? (
-                    <>
-                        <html lang="en" />
-                        {/* Primary Meta Tags */}
-                        <title>EdTech Software Development: 9 Features Every LMS Needs</title>
-                        <meta name="title" content="EdTech Software Development: 9 Features Every LMS Needs" />
-                        <meta name="description" content="Custom LMS without these 9 features will fail at engagement and retention. Here's what separates production-ready platforms from proof-of-concept toys." />
-                        <meta name="keywords" content="edtech software development, LMS features, learning management system development, educational platform features, custom LMS development, LMS development cost, custom LMS platform, edtech platform build, SCORM xAPI LMS, personalized learning paths" />
-                        <meta name="author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
-                        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-                        <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog/edtech-software-development-lms-features-every-platform-needs" />
-
-                        {/* Open Graph / Facebook */}
-                        <meta property="og:type" content="article" />
-                        <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/edtech-software-development-lms-features-every-platform-needs" />
-                        <meta property="og:title" content="EdTech Software Development: 9 Features Every LMS Needs" />
-                        <meta property="og:description" content="Custom LMS without these 9 features will fail at engagement and retention. Here's what separates production-ready platforms from proof-of-concept toys." />
-                        <meta property="og:image" content="https://www.abuqitmirlabs.tech/images/blog/edtech-lms-9-features-og.jpg" />
-                        <meta property="og:image:width" content="1200" />
-                        <meta property="og:image:height" content="630" />
-                        <meta property="og:image:alt" content="EdTech software development architecture diagram showing 9 essential LMS features for engagement and retention" />
-                        <meta property="og:site_name" content="AbuQitmirLabs" />
-                        <meta property="og:locale" content="en_US" />
-                        <meta property="article:published_time" content="2026-09-21T00:00:00+00:00" />
-                        <meta property="article:modified_time" content="2026-09-21T00:00:00+00:00" />
-                        <meta property="article:author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
-                        <meta property="article:section" content="EdTech Software Development" />
-                        <meta property="article:tag" content="EdTech" />
-                        <meta property="article:tag" content="LMS Features" />
-                        <meta property="article:tag" content="E-Learning" />
-
-                        {/* Twitter Card */}
-                        <meta name="twitter:card" content="summary_large_image" />
-                        <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/edtech-software-development-lms-features-every-platform-needs" />
-                        <meta name="twitter:title" content="EdTech Software Development: 9 Features Every LMS Needs" />
-                        <meta name="twitter:description" content="Custom LMS without these 9 features will fail at engagement and retention. Here's what separates production-ready platforms from proof-of-concept toys." />
-                        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/blog/edtech-lms-9-features-og.jpg" />
-                        <meta name="twitter:image:alt" content="EdTech software development: 9 essential LMS features for custom platforms" />
-                        <meta name="twitter:site" content="@AbuQitmirLabs" />
-                        <meta name="twitter:creator" content="@AbuQitmirLabs" />
-
-                        <script type="application/ld+json">
-                            {JSON.stringify(edTechLMSFeaturesSchema)}
-                        </script>
-                    </>
-                ) : isEnterpriseSoftware ? (
-                    <>
-                        <html lang="en" />
-                        {/* Primary Meta Tags */}
-                        <title>Enterprise Software Engineering: What Changes at Scale</title>
-                        <meta name="title" content="Enterprise Software Engineering: What Changes at Scale" />
-                        <meta name="description" content="From architecture to deployment pipelines, enterprise software engineering demands a completely different discipline. Here's what actually changes when you build at scale." />
-                        <meta name="keywords" content="enterprise software engineering, enterprise software architecture, scalable software engineering, microservices vs monolith, custom enterprise software development, enterprise software engineering cost, monolith vs microservices 2026, enterprise architecture patterns, observability enterprise, compliance by design" />
-                        <meta name="author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
-                        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-                        <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog/enterprise-software-engineering-what-changes-at-scale" />
-
-                        {/* Open Graph / Facebook */}
-                        <meta property="og:type" content="article" />
-                        <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/enterprise-software-engineering-what-changes-at-scale" />
-                        <meta property="og:title" content="Enterprise Software Engineering: What Changes at Scale" />
-                        <meta property="og:description" content="From architecture to deployment pipelines, enterprise software engineering demands a completely different discipline. Here's what actually changes when you build at scale." />
-                        <meta property="og:image" content="https://www.abuqitmirlabs.tech/images/blog/enterprise-software-engineering-scale-og.jpg" />
-                        <meta property="og:image:width" content="1200" />
-                        <meta property="og:image:height" content="630" />
-                        <meta property="og:image:alt" content="Enterprise software engineering architecture diagram showing monolith vs microservices, observability, and compliance patterns at scale" />
-                        <meta property="og:site_name" content="AbuQitmirLabs" />
-                        <meta property="og:locale" content="en_US" />
-                        <meta property="article:published_time" content="2026-09-19T00:00:00+00:00" />
-                        <meta property="article:modified_time" content="2026-09-19T00:00:00+00:00" />
-                        <meta property="article:author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
-                        <meta property="article:section" content="Software Engineering" />
-                        <meta property="article:tag" content="Enterprise Architecture" />
-                        <meta property="article:tag" content="Microservices" />
-                        <meta property="article:tag" content="Scalable Software" />
-
-                        {/* Twitter Card */}
-                        <meta name="twitter:card" content="summary_large_image" />
-                        <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/enterprise-software-engineering-what-changes-at-scale" />
-                        <meta name="twitter:title" content="Enterprise Software Engineering: What Changes at Scale" />
-                        <meta name="twitter:description" content="From architecture to deployment pipelines, enterprise software engineering demands a completely different discipline. Here's what actually changes when you build at scale." />
-                        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/blog/enterprise-software-engineering-scale-og.jpg" />
-                        <meta name="twitter:image:alt" content="Enterprise software engineering architecture at scale — what changes and why it matters" />
-                        <meta name="twitter:site" content="@AbuQitmirLabs" />
-                        <meta name="twitter:creator" content="@AbuQitmirLabs" />
-
-                        <script type="application/ld+json">
-                            {JSON.stringify(enterpriseSoftwareSchema)}
-                        </script>
-                    </>
-                ) : isFlutterVsNative ? (
-                    <>
-                        <html lang="en" />
-                        <title>Flutter vs Native App Development: Which to Choose in 2026?</title>
-                        <meta name="title" content="Flutter vs Native App Development: Which to Choose in 2026?" />
-                        <meta name="description" content="Flutter vs native mobile app development in 2026 — real cost breakdown, performance comparison, and decision framework for startups and enterprises." />
-                        <meta name="keywords" content="Flutter app development, React Native vs Flutter 2026, native mobile app development, cross-platform mobile app development, mobile app development company Pakistan, Flutter vs Native cost, Flutter vs Swift, Kotlin vs Flutter" />
-                        <meta name="author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
-                        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-                        <link rel="canonical" href="https://www.abuqitmirlabs.tech/blog/flutter-vs-native-mobile-app-development-2026" />
-
-                        {/* Open Graph / Facebook */}
-                        <meta property="og:type" content="article" />
-                        <meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/flutter-vs-native-mobile-app-development-2026" />
-                        <meta property="og:title" content="Flutter vs Native App Development: Which to Choose in 2026?" />
-                        <meta property="og:description" content="Flutter vs native mobile app development in 2026 — real cost breakdown, performance comparison, and decision framework for startups and enterprises." />
-                        <meta property="og:image" content="https://www.abuqitmirlabs.tech/images/blog/flutter-vs-native-2026-og.jpg" />
-                        <meta property="og:image:width" content="1200" />
-                        <meta property="og:image:height" content="630" />
-                        <meta property="og:image:alt" content="Flutter vs Native mobile app development comparison — cost, performance, and decision framework for 2026" />
-                        <meta property="og:site_name" content="AbuQitmirLabs" />
-                        <meta property="og:locale" content="en_US" />
-                        <meta property="article:published_time" content="2026-09-19T00:00:00+00:00" />
-                        <meta property="article:modified_time" content="2026-09-19T00:00:00+00:00" />
-                        <meta property="article:author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
-                        <meta property="article:section" content="Mobile App Development" />
-                        <meta property="article:tag" content="Flutter" />
-                        <meta property="article:tag" content="Native App Development" />
-                        <meta property="article:tag" content="Mobile App Cost" />
-
-                        {/* Twitter Card */}
-                        <meta name="twitter:card" content="summary_large_image" />
-                        <meta name="twitter:url" content="https://www.abuqitmirlabs.tech/blog/flutter-vs-native-mobile-app-development-2026" />
-                        <meta name="twitter:title" content="Flutter vs Native App Development: Which to Choose in 2026?" />
-                        <meta name="twitter:description" content="Flutter vs native mobile app development in 2026 — real cost breakdown, performance comparison, and decision framework for startups and enterprises." />
-                        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/blog/flutter-vs-native-2026-og.jpg" />
-                        <meta name="twitter:image:alt" content="Flutter vs Native mobile app development comparison 2026" />
-                        <meta name="twitter:site" content="@AbuQitmirLabs" />
-                        <meta name="twitter:creator" content="@AbuQitmirLabs" />
-
-                        <script type="application/ld+json">
-                            {JSON.stringify(flutterVsNativeSchema)}
-                        </script>
-                    </>
-                ) : (
-                    <>
-                        <html lang="en" />
-                        <title>{seoData.title}</title>
-                        <meta name="description" content={seoData.description} />
-                        {seoData.keywordsString && (
-                            <meta name="keywords" content={seoData.keywordsString} />
-                        )}
-                        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-                        <link rel="canonical" href={seoData.canonicalUrl} />
-
-                        {/* Open Graph */}
-                        <meta property="og:type" content={seoData.ogType} />
-                        <meta property="og:url" content={seoData.ogUrl} />
-                        <meta property="og:title" content={seoData.ogTitle} />
-                        <meta property="og:description" content={seoData.ogDescription} />
-                        <meta property="og:image" content={seoData.ogImage} />
-                        <meta property="og:image:alt" content={slug && slug.includes('performance-marketing') ? 'Performance marketing vs brand marketing budget allocation framework showing 60/40 split for startups' : (post.coverImageAlt || seoData.ogTitle)} />
-                        <meta property="og:site_name" content={seoData.ogSiteName} />
-                        <meta property="article:published_time" content={seoData.articlePublishedTime} />
-                        <meta property="article:modified_time" content={seoData.articleModifiedTime} />
-                        <meta property="article:author" content={!seoData.articleAuthor || seoData.articleAuthor.toUpperCase().includes('SHIRAZ') || seoData.articleAuthor.toUpperCase().includes('ABUQITMIR') ? 'Abu Qitmir Mohammad Shiraz Al-Madani' : seoData.articleAuthor} />
-                        {seoData.articleSection && <meta property="article:section" content={seoData.articleSection} />}
-
-                        {/* Twitter */}
-                        <meta name="twitter:card" content={seoData.twitterCard} />
-                        <meta name="twitter:title" content={seoData.twitterTitle} />
-                        <meta name="twitter:description" content={seoData.twitterDescription} />
-                        <meta name="twitter:image" content={seoData.twitterImage} />
-
-                        {/* Dynamic Schema.org Graph */}
+            <SEO
+                title={seoData.title}
+                description={seoData.description}
+                canonical={seoData.canonicalUrl}
+                ogTitle={seoData.ogTitle}
+                ogDescription={seoData.ogDescription}
+                ogImage={seoData.ogImage}
+                ogType="article"
+                twitterCard="summary_large_image"
+                keywords={seoData.keywordsString}
+                author={seoData.articleAuthor}
+                robots="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+                schema={activeBlogSchema}
+            />
+            {false && (
+                <>
                         <script type="application/ld+json">
                     {JSON.stringify({
                         ...seoData.schemaJsonLd,
@@ -3795,15 +3306,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                     })}
                 </script>
                     </>
-                )}
-                {post.coverImage && !post.coverImage.endsWith('logo.png') && (
-                    <link
-                        rel="preload"
-                        as="image"
-                        href={resolveOptimizedCoverImage(post.coverImage, slug)}
-                    />
-                )}
-            </Helmet>
+            )}
             
             <Header />
             <Breadcrumbs customItems={breadcrumbItems} disableSchema={true} />

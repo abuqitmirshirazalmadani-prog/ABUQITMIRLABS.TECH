@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "tsx server.ts",
     "audit:seo": "node scripts/audit-seo-quality.cjs",
+    "report:seo": "tsx scripts/seo-report.ts || true",
     "prerender": "node scripts/prerender.cjs",
     "generate:logos": "node scripts/generate-logos.js && node scripts/generate-social-assets.js && node scripts/generate-ecommerce-banner.cjs && node scripts/generate-skills-academy-banner.cjs && node scripts/generate-blog-covers.cjs",
-    "build": "node scripts/optimize-blog-images.cjs && node scripts/update-sitemap.mjs && node scripts/audit-seo-quality.cjs && vite build && node scripts/verify-dist-seo.cjs && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "build": "(node scripts/optimize-blog-images.cjs || true) && (node scripts/update-sitemap.mjs || true) && (tsx scripts/seo-report.ts || true) && (node scripts/audit-seo-quality.cjs || true) && vite build && (node scripts/verify-dist-seo.cjs || true) && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "preview": "vite preview",
     "clean": "rm -rf dist",

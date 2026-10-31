@@ -115,6 +115,7 @@ export const REMOTE_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "https://i.postimg.cc/k4mt95rh/Zero-Click-SEO-AI-Search-Visibility.png": "/images/blog-covers/geo-content-writing-bea6b0bb.webp",
   "https://i.postimg.cc/vHrRJwxy/Ecommerce-Platform-Costs-Custom-Build-vs-Shopify-Plus.png": "/images/blog-covers/ecommerce-platform-development-f4009edd.webp",
   "https://i.postimg.cc/kX7TSgWK/Smarter-LMS-Stronger-Learning.png": "/images/blog-covers/edtech-software-development-80675541.webp",
+  "https://i.postimg.cc/kXLcd3yy/From-Logo-Chaos-to-Brand-Trust.png": "/images/blog-covers/complete-brand-building-guide-527885f5.webp",
   "https://i.postimg.cc/8C8xN6Vc/14-Point-Content-Brief-Guide.png": "/images/blog-covers/content-brief-template-fcc385c7.webp",
   "https://i.postimg.cc/cLTBf9mr/Brand-Building-Mistakes-Guide.png": "/images/blog-covers/small-business-branding-mistakes-pakistan-6d2717c9.webp",
   "https://i.postimg.cc/PrsYCMKW/Content-Calendar-Workspace-Dashboard.png": "/images/blog-covers/content-calendar-strategy-c110168a.webp",
@@ -124,7 +125,6 @@ export const REMOTE_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "https://i.postimg.cc/66hdS5Lz/Flutter-vs-native.jpg": "/images/blog-covers/flutter-vs-native-mobile-app-development-2026-afa89aed.webp",
   "https://i.postimg.cc/Hn3dYfY4/Flutter-vs-React-Native-Choosing-Your-Mobile-App-Stack-in-2026.png": "/images/blog-covers/flutter-vs-react-native-choosing-mobile-app-stack-2026-32817b64.webp",
   "https://i.postimg.cc/5Nq2FmvY/12-engineering-decisions.png": "/images/blog-covers/high-performance-web-applications-12-engineering-decisions-7f75ceb8.webp",
-  "https://i.postimg.cc/kXLcd3yy/From-Logo-Chaos-to-Brand-Trust.png": "/images/blog-covers/complete-brand-building-guide-527885f5.webp",
   "https://i.postimg.cc/JzyymVDV/i-OS-or-Android.png": "/images/blog-covers/native-mobile-app-development-ios-vs-android-cost-9610730c.webp",
   "https://i.postimg.cc/Y92rZgvg/Five-Minute-Technical-Audit-Checklist.png": "/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
   "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp"
@@ -241,6 +241,7 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "geo-content-writing": "/images/blog-covers/geo-content-writing-bea6b0bb.webp",
   "ecommerce-platform-development": "/images/blog-covers/ecommerce-platform-development-f4009edd.webp",
   "edtech-software-development": "/images/blog-covers/edtech-software-development-80675541.webp",
+  "complete-brand-building-guide": "/images/blog-covers/complete-brand-building-guide-527885f5.webp",
   "content-brief-template": "/images/blog-covers/content-brief-template-fcc385c7.webp",
   "small-business-branding-mistakes-pakistan": "/images/blog-covers/small-business-branding-mistakes-pakistan-6d2717c9.webp",
   "content-calendar-strategy": "/images/blog-covers/content-calendar-strategy-c110168a.webp",
@@ -250,7 +251,6 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "flutter-vs-native-mobile-app-development-2026": "/images/blog-covers/flutter-vs-native-mobile-app-development-2026-afa89aed.webp",
   "flutter-vs-react-native-choosing-mobile-app-stack-2026": "/images/blog-covers/flutter-vs-react-native-choosing-mobile-app-stack-2026-32817b64.webp",
   "high-performance-web-applications-12-engineering-decisions": "/images/blog-covers/high-performance-web-applications-12-engineering-decisions-7f75ceb8.webp",
-  "complete-brand-building-guide": "/images/blog-covers/complete-brand-building-guide-527885f5.webp",
   "native-mobile-app-development-ios-vs-android-cost": "/images/blog-covers/native-mobile-app-development-ios-vs-android-cost-9610730c.webp",
   "the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026": "/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
   "author-abuqitmir-shiraz": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp"

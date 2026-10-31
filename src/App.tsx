@@ -3,7 +3,6 @@
  * @SPDX-License-Identifier: Apache-2.0
  */
 
-import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { useEffect, Suspense } from 'react';
 import { lazyWithRetry } from './utils/lazyWithRetry';
@@ -79,6 +78,7 @@ import TechStackRecommenderPage from './pages/TechStackRecommenderPage';
 import WebsiteAuthorityAnalyzerPage from './pages/WebsiteAuthorityAnalyzerPage';
 
 const AdminDashboard = lazyWithRetry(() => import('./pages/AdminDashboard'));
+const AdminSeoFixPage = lazyWithRetry(() => import('../app/admin/seo/page'));
 
 const PageLoader = () => (
   <div className="min-h-[60vh] bg-[#09090b] flex items-center justify-center py-24" role="status" aria-label="Loading page">
@@ -362,6 +362,7 @@ function AppRoutes() {
           <Route path="/tools/website-authority-analyzer" element={<WebsiteAuthorityAnalyzerPage />} />
           <Route path="/website-authority-analyzer" element={<Navigate to="/tools/website-authority-analyzer" replace />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/seo" element={<AdminSeoFixPage />} />
           <Route path="*" element={
             <div className="min-h-screen flex items-center justify-center bg-[#09090b] text-white">
               <div className="text-center max-w-md px-6">
@@ -389,16 +390,14 @@ export default function App() {
   }, []);
 
   return (
-    <HelmetProvider>
-      <Router>
-        <TopLoadingBar />
-        <RouteSEO />
-        <ScrollToTop />
-        <FacebookPixel />
-        <GoogleAnalyticsTracker />
-        <FloatingWhatsApp />
-        <AppRoutes />
-      </Router>
-    </HelmetProvider>
+    <Router>
+      <TopLoadingBar />
+      <RouteSEO />
+      <ScrollToTop />
+      <FacebookPixel />
+      <GoogleAnalyticsTracker />
+      <FloatingWhatsApp />
+      <AppRoutes />
+    </Router>
   );
 }

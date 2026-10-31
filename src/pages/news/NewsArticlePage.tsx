@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../../components/SEO';
 import { motion } from 'motion/react';
 import { db, collection, getDocs, query, where } from '../../lib/firebase';
 import { 
@@ -516,20 +516,15 @@ const NewsArticlePage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
-      <Helmet>
-        <title>{`${article.title} — AbuQitmirLabs .TECH Newsroom`}</title>
-        <meta name="description" content={article.excerpt} />
-        <link rel="canonical" href={currentUrl} />
-        <meta property="og:title" content={`${article.title} | AbuQitmirLabs`} />
-        <meta property="og:description" content={article.excerpt} />
-        <meta property="og:url" content={currentUrl} />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={article.title} />
-        <meta name="twitter:description" content={article.excerpt} />
-        <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
-        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
-      </Helmet>
+      <SEO
+        title={`${article.title} | AbuQitmirLabs`}
+        description={article.excerpt}
+        canonical={currentUrl}
+        ogTitle={`${article.title} | AbuQitmirLabs`}
+        ogDescription={article.excerpt}
+        ogType="article"
+        schema={articleSchema}
+      />
 
       <Header />
 

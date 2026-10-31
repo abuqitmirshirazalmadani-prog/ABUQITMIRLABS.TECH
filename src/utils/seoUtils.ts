@@ -377,3 +377,312 @@ export function extractFaqEntitiesFromMarkdown(markdownContent?: string): Array<
   return entities;
 }
 
+import { getCanonicalPath, getCanonicalSlug } from '../data/canonicalRedirects';
+export { getCanonicalPath, getCanonicalSlug };
+
+export const SITE_ORIGIN = 'https://www.abuqitmirlabs.tech';
+export const DEFAULT_OG_IMAGE = 'https://www.abuqitmirlabs.tech/logo.png';
+
+export interface BreadcrumbItem {
+  name: string;
+  url?: string;
+  to?: string;
+}
+
+export function clampMetaDescription(raw?: string, maxLen = 158): string {
+  const stripped = stripSurroundingQuotes(cleanExcerpt(raw || '', maxLen + 20));
+  if (!stripped) return '';
+  if (stripped.length <= maxLen) return stripped;
+  const cut = stripped.slice(0, maxLen - 3);
+  const lastSpace = cut.lastIndexOf(' ');
+  return `${(lastSpace > 100 ? cut.slice(0, lastSpace) : cut).trim()}...`;
+}
+
+export function ensureUniqueTitle(candidateTitle?: string, pathname = '/'): string {
+  const clean = stripSurroundingQuotes(candidateTitle || '').trim();
+  if (clean) {
+    if (/abuqitmirlabs/i.test(clean)) return clean;
+    return `${clean} | AbuQitmirLabs`;
+  }
+  if (pathname === '/' || !pathname) {
+    return 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs';
+  }
+  const slugPart = pathname
+    .replace(/^\/+|\/+$/g, '')
+    .split('/')
+    .pop() || 'Insights';
+  const humanized = slugPart
+    .split('-')
+    .map((w) => (w ? w.charAt(0).toUpperCase() + w.slice(1) : ''))
+    .join(' ');
+  return `${humanized} | AbuQitmirLabs`;
+}
+
+const STOP_WORDS = new Set([
+  'a', 'an', 'the', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with',
+  'by', 'from', 'up', 'about', 'into', 'over', 'after', 'is', 'are', 'was', 'were',
+  'be', 'been', 'being', 'have', 'has', 'had', 'do', 'does', 'did', 'what', 'how',
+  'why', 'when', 'where', 'which', 'who', 'whom', 'this', 'that', 'these', 'those',
+  'your', 'our', 'their', 'its', 'vs', 'versus'
+]);
+
+export function cleanAndNormalizeTags(
+  rawTags?: string[] | string,
+  fallbackCategory = 'Software Engineering'
+): string[] {
+  const rawList: string[] = Array.isArray(rawTags)
+    ? rawTags.map((t) => String(t || ''))
+    : typeof rawTags === 'string'
+    ? rawTags.split(',')
+    : [];
+
+  const seen = new Set<string>();
+  const cleaned: string[] = [];
+
+  for (const item of rawList) {
+    const phrase = item
+      .replace(/^#+/, '')
+      .replace(/["'“”`]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+    if (!phrase || phrase.length < 3) continue;
+    const words = phrase.split(' ');
+    if (words.length === 1 && STOP_WORDS.has(words[0].toLowerCase())) continue;
+    const key = phrase.toLowerCase();
+    if (!seen.has(key)) {
+      seen.add(key);
+      cleaned.push(phrase);
+    }
+    if (cleaned.length >= 12) break;
+  }
+
+  if (cleaned.length === 0) {
+    return [fallbackCategory, 'AbuQitmirLabs', 'Enterprise Engineering'];
+  }
+  return cleaned;
+}
+
+export function stripDuplicateLeadingTitleAndHeadings(
+  content: string,
+  articleTitle?: string
+): string {
+  if (!content) return '';
+  const normTitle = (articleTitle || '')
+    .toLowerCase()
+    .replace(/\s*\|\s*abuqitmirlabs.*$/i, '')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+
+  const lines = content.split(/\r?\n/);
+  while (lines.length > 0 && lines[0].trim() === '') {
+    lines.shift();
+  }
+  if (lines.length > 0 && normTitle) {
+    const first = lines[0].trim();
+    const match = first.match(/^#{1,2}\s+(.+?)\s*#*\s*$/);
+    if (match) {
+      const normFirst = match[1]
+        .toLowerCase()
+        .replace(/\s*\|\s*abuqitmirlabs.*$/i, '')
+        .replace(/[^a-z0-9]+/g, ' ')
+        .trim();
+      if (normFirst === normTitle) {
+        lines.shift();
+        while (lines.length > 0 && lines[0].trim() === '') {
+          lines.shift();
+        }
+      }
+    }
+  }
+  return lines.join('\n');
+}
+
+export function deduplicateMarkdownHeadings(
+  content: string,
+  articleTitle?: string
+): string {
+  if (!content) return '';
+  const seenHeadings = new Map<string, number>();
+  const normTitle = (articleTitle || '')
+    .toLowerCase()
+    .replace(/\s*\|\s*abuqitmirlabs.*$/i, '')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+  if (normTitle) {
+    seenHeadings.set(normTitle, 1);
+  }
+
+  let inCodeBlock = false;
+  const lines = content.split(/\r?\n/);
+  const result: string[] = [];
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed.startsWith('```')) {
+      inCodeBlock = !inCodeBlock;
+      result.push(line);
+      continue;
+    }
+    if (!inCodeBlock) {
+      const hMatch = trimmed.match(/^(#{1,3})\s+(.+?)\s*#*\s*$/);
+      if (hMatch) {
+        const hashes = hMatch[1] === '#' ? '##' : hMatch[1];
+        const rawHeadingText = hMatch[2].trim();
+        const normKey = rawHeadingText
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, ' ')
+          .trim();
+        if (normKey) {
+          const count = seenHeadings.get(normKey) || 0;
+          seenHeadings.set(normKey, count + 1);
+          if (count > 0) {
+            result.push(`${hashes} ${rawHeadingText} (Part ${count + 1})`);
+            continue;
+          }
+        }
+        result.push(`${hashes} ${rawHeadingText}`);
+        continue;
+      }
+    }
+    result.push(line);
+  }
+
+  return result.join('\n');
+}
+
+export function buildCanonicalGraphSchema(params: {
+  pathname: string;
+  title: string;
+  description: string;
+  canonical: string;
+  ogImage: string;
+  ogType?: string;
+  breadcrumbs?: BreadcrumbItem[];
+  articleMeta?: {
+    publishedTime?: string;
+    modifiedTime?: string;
+    author?: string;
+    section?: string;
+    tags?: string[];
+  };
+  extraSchema?: any;
+  faqs?: { question: string; answer: string }[];
+}): Record<string, any> {
+  // If extraSchema is already a complete @graph object, return it directly
+  if (
+    params.extraSchema &&
+    typeof params.extraSchema === 'object' &&
+    Array.isArray(params.extraSchema['@graph'])
+  ) {
+    return params.extraSchema;
+  }
+
+  const cleanHeadingTitle = params.title.replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
+  const breadcrumbItems =
+    params.breadcrumbs && params.breadcrumbs.length > 0
+      ? params.breadcrumbs.map((b, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: b.name,
+          item: b.url || (b.to ? `${SITE_ORIGIN}${b.to}` : params.canonical),
+        }))
+      : [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `${SITE_ORIGIN}/`,
+          },
+          ...(params.pathname !== '/'
+            ? [
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: cleanHeadingTitle,
+                  item: params.canonical,
+                },
+              ]
+            : []),
+        ];
+
+  const graphNodes: Record<string, any>[] = [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_ORIGIN}/#organization`,
+      name: 'AbuQitmirLabs',
+      url: `${SITE_ORIGIN}/`,
+      logo: DEFAULT_OG_IMAGE,
+      sameAs: [
+        'https://www.linkedin.com/in/abu-qitmir-697423390/',
+        'https://x.com/AbuQitmir',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_ORIGIN}/#website`,
+      url: `${SITE_ORIGIN}/`,
+      name: 'AbuQitmirLabs',
+      publisher: { '@id': `${SITE_ORIGIN}/#organization` },
+      inLanguage: 'en-US',
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${params.canonical}#webpage`,
+      url: params.canonical,
+      name: cleanHeadingTitle,
+      description: params.description,
+      isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
+      breadcrumb: { '@id': `${params.canonical}#breadcrumb` },
+      inLanguage: 'en-US',
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${params.canonical}#breadcrumb`,
+      itemListElement: breadcrumbItems,
+    },
+  ];
+
+  if (params.ogType === 'article' || params.pathname.startsWith('/blog/')) {
+    graphNodes.push({
+      '@type': 'Article',
+      '@id': `${params.canonical}#article`,
+      headline: cleanHeadingTitle,
+      description: params.description,
+      image: params.ogImage,
+      author: {
+        '@type': 'Person',
+        name: params.articleMeta?.author || 'Abu Qitmir Mohammad Shiraz Al-Madani',
+      },
+      publisher: { '@id': `${SITE_ORIGIN}/#organization` },
+      datePublished: params.articleMeta?.publishedTime || '2026-03-15',
+      dateModified:
+        params.articleMeta?.modifiedTime ||
+        params.articleMeta?.publishedTime ||
+        '2026-03-15',
+      mainEntityOfPage: { '@id': `${params.canonical}#webpage` },
+      inLanguage: 'en-US',
+    });
+  }
+
+  if (Array.isArray(params.faqs) && params.faqs.length > 0) {
+    graphNodes.push({
+      '@type': 'FAQPage',
+      '@id': `${params.canonical}#faq`,
+      mainEntity: params.faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: f.answer,
+        },
+      })),
+    });
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': graphNodes,
+  };
+}
+
+

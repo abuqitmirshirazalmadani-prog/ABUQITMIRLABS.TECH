@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { MemoryRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
+import { generateMetadata, renderMetadataToHeadHtml } from '../lib/generate-metadata';
 
 // Direct synchronous imports for SSR to avoid Suspense fallback during server rendering
 import HomePage from './pages/HomePage';
@@ -71,11 +71,9 @@ import WebsiteAuthorityAnalyzerPage from './pages/WebsiteAuthorityAnalyzerPage';
 import EditorialPolicyPage from './pages/EditorialPolicyPage';
 
 export function render(url: string) {
-  const helmetContext: any = {};
   const html = ReactDOMServer.renderToString(
-    <HelmetProvider context={helmetContext}>
-      <MemoryRouter initialEntries={[url]}>
-        <Routes>
+    <MemoryRouter initialEntries={[url]}>
+      <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/about/our-company" element={<OurCompanyPage />} />
@@ -187,7 +185,17 @@ export function render(url: string) {
           <Route path="/project-cost-estimator" element={<Navigate to="/tools/project-cost-estimator" replace />} />
         </Routes>
       </MemoryRouter>
-    </HelmetProvider>
   );
-  return { html, helmet: helmetContext.helmet };
+  const metadata = generateMetadata({ pathname: url });
+  const headHtml = renderMetadataToHeadHtml(metadata);
+  return {
+    html,
+    headHtml,
+    helmet: {
+      title: { toString: () => `<title>${metadata.title}</title>` },
+      meta: { toString: () => `<meta name="description" content="${metadata.description.replace(/"/g, '&quot;')}" />` },
+      link: { toString: () => `<link rel="canonical" href="${metadata.canonical}" />` },
+      script: { toString: () => `<script type="application/ld+json">${JSON.stringify(metadata.jsonLdGraph)}</script>` },
+    },
+  };
 }
