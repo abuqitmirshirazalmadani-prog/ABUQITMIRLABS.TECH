@@ -22,7 +22,7 @@ export const homeSchema = {
         "width": "512",
         "height": "512"
       },
-      "image": "https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg",
+      "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
       "description": "Growth engineering firm combining custom software, AI automation, and performance marketing for B2B companies.",
       "foundingDate": "2021",
       "founder": {
@@ -260,13 +260,13 @@ export const homeSchema = {
     {
       "@type": "ImageObject",
       "@id": "https://www.abuqitmirlabs.tech/#hero-bg-image",
-      "url": "https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg",
-      "contentUrl": "https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg",
-      "name": "AbuQitmirLabs Custom Software & AI Development Studio",
+      "url": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+      "contentUrl": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+      "name": "AbuQitmirLabs Custom Software Development",
       "description": "AbuQitmirLabs custom software studio delivering AI apps, enterprise web systems, and high-performance digital solutions across US, UK, and Europe.",
       "caption": "AbuQitmirLabs custom software studio delivering AI apps, enterprise web systems, and high-performance digital solutions.",
-      "width": "1920",
-      "height": "1080",
+      "width": "1200",
+      "height": "630",
       "representativeOfPage": true
     }
   ]
@@ -283,12 +283,11 @@ export const homeInitialHtml = `
   <section id="hero-section" class="relative min-h-[90vh] flex flex-col justify-center pt-32 pb-20 px-6 overflow-hidden bg-[#020202] border-b border-white/10" aria-label="Hero Introduction">
     <div class="absolute inset-0 z-0 opacity-40">
       <img 
-        src="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" 
-        alt="AbuQitmirLabs custom software studio delivering AI apps and enterprise web solutions." 
+        src="/images/hero-abuqitmirlabs.webp" 
+        alt="AbuQitmirLabs Custom Software Development" 
         class="w-full h-full object-cover object-center filter contrast-125"
-        referrerpolicy="no-referrer"
-        width="1920" 
-        height="1080" 
+        width="1200" 
+        height="630" 
         loading="eager"
         fetchpriority="high"
         decoding="async"

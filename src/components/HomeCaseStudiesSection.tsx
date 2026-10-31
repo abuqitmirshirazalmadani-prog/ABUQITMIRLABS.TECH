@@ -140,14 +140,13 @@ export default function HomeCaseStudiesSection() {
               
               {/* Photo representation of TajweedPage platform */}
               <img
-                src="https://i.postimg.cc/VkCrrNtc/Gemini-Generated-Image-t1ptnbt1ptnbt1pt.png"
+                src="/images/case-study-tajweedpage.webp"
                 alt="TajweedPage AI Recitation & Voice Diagnostics Platform by AbuQitmirLabs"
-                width={1000}
-                height={667}
+                width={1200}
+                height={675}
                 loading="lazy"
                 decoding="async"
                 className="absolute inset-0 w-full h-full object-cover opacity-50 filter grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-1000 ease-out scale-100 group-hover:scale-105"
-                referrerPolicy="no-referrer"
               />
 
               {/* Inner floating mockup UI panel overlay to project high technical elegance */}

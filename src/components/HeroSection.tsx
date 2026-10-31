@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Star, ArrowRight, Mail, SendHorizonal } from "lucide-react";
+import Image from "./ui/Image";
 
 interface HeroSectionProps {
   onTrialClick?: () => void;
@@ -10,27 +11,27 @@ interface HeroSectionProps {
 const teamAvatars = [
   {
     initials: "SD",
-    src: "https://i.postimg.cc/gktVScfQ/software-development.jpg",
+    src: "/images/avatar-software-development.webp",
     alt: "Custom software development and scalable cloud systems engineered by AbuQitmirLabs.",
   },
   {
     initials: "MD",
-    src: "https://i.postimg.cc/nzxBjXDf/mobile-app-develpment-abuqitmirlabs.jpg",
+    src: "/images/avatar-mobile-app-development.webp",
     alt: "Cross-platform mobile app development for iOS and Android built by AbuQitmirLabs studio.",
   },
   {
     initials: "WD",
-    src: "https://i.postimg.cc/hPYm8yd5/web-development-abuqitmirlabs.jpg",
+    src: "/images/avatar-web-development.webp",
     alt: "Modern full-stack web development with Next.js and cloud infrastructure by AbuQitmirLabs.",
   },
   {
     initials: "AI",
-    src: "https://i.postimg.cc/85wJ7tGm/ai-agent-development-abuqitmirlabs.jpg",
+    src: "/images/avatar-ai-agent-development.webp",
     alt: "Autonomous AI agent development and intelligent RAG systems engineered by AbuQitmirLabs.",
   },
   {
     initials: "SEO",
-    src: "https://i.postimg.cc/NGJ2YJp9/seo-local-seo.jpg",
+    src: "/images/avatar-seo-local-seo.webp",
     alt: "Technical SEO and organic growth marketing strategies engineered by AbuQitmirLabs agency.",
   },
 ];
@@ -90,16 +91,13 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
     >
       {/* Background Image with Cinematic Gradient Overlay */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg"
-          alt="AbuQitmirLabs custom software studio delivering AI apps and enterprise web solutions."
+        <Image
+          src="/images/hero-abuqitmirlabs.webp"
+          alt="AbuQitmirLabs Custom Software Development"
+          width={1200}
+          height={630}
+          priority
           className="w-full h-full object-cover object-center opacity-40 scale-105 filter contrast-125"
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-          width={1920}
-          height={1080}
-          referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/80" />
       </div>
@@ -115,15 +113,12 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
                 className="size-11 sm:size-13 rounded-full border-2 border-[#C8EB5F] overflow-hidden bg-neutral-800 shrink-0 relative shadow-lg"
                 style={{ zIndex: teamAvatars.length - i }}
               >
-                <img
+                <Image
                   alt={member.alt}
                   src={member.src}
                   width={56}
                   height={56}
-                  decoding="async"
                   className="object-cover w-full h-full"
-                  referrerPolicy="no-referrer"
-                  loading="eager"
                 />
               </div>
             ))}

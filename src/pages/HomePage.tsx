@@ -168,13 +168,13 @@ export default function HomePage() {
         canonical="https://www.abuqitmirlabs.tech/"
         ogTitle="Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs"
         ogDescription="Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system."
-        ogImage="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg"
-        ogImageAlt="AbuQitmirLabs Growth Engineering Firm"
+        ogImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        ogImageAlt="AbuQitmirLabs Custom Software Development"
         ogType="website"
         twitterCard="summary_large_image"
         twitterTitle="Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs"
         twitterDescription="Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system."
-        twitterImage="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg"
+        twitterImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
         schema={growthEngineeringSchema}
       />
 

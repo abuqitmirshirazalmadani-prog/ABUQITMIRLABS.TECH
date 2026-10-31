@@ -217,22 +217,42 @@ if (fs.existsSync(vercelPath)) {
 }
 
 // ==========================================
-// 1D. AUDIT INDEX.HTML FOR STATIC DUPLICATE <TITLE> TAGS
+// 1D. AUDIT INDEX.HTML FOR SINGLE <TITLE data-rh="true"> & LOCAL WEBP HERO
 // ==========================================
-console.log('\n📌 Checking index.html for static <title> tags (preventing duplicate titles with React Helmet)...');
+console.log('\n📌 Checking index.html for single <title data-rh="true"> and local WebP hero image...');
 const rootIndexHtmlPath = path.join(rootDir, 'index.html');
 if (fs.existsSync(rootIndexHtmlPath)) {
   let indexHtmlContent = fs.readFileSync(rootIndexHtmlPath, 'utf8');
+  let indexModified = false;
   const titleTagRegex = /<title\b[^>]*>[^<]*<\/title>/gi;
   const withoutComments = indexHtmlContent.replace(/<!--[\s\S]*?-->/g, '');
   const staticTitles = withoutComments.match(titleTagRegex) || [];
-  if (staticTitles.length > 0) {
-    indexHtmlContent = indexHtmlContent.replace(titleTagRegex, '');
+  if (staticTitles.length > 1) {
+    let seen = 0;
+    indexHtmlContent = indexHtmlContent.replace(titleTagRegex, (match) => {
+      seen++;
+      return seen === 1 ? match.replace(/^<title\b(?![^>]*data-rh)/i, '<title data-rh="true"') : '';
+    });
+    indexModified = true;
+    issuesFixed.push(`Deduplicated ${staticTitles.length} <title> tags in index.html down to 1.`);
+  } else if (staticTitles.length === 1 && !staticTitles[0].includes('data-rh=')) {
+    indexHtmlContent = indexHtmlContent.replace(/<title\b/i, '<title data-rh="true"');
+    indexModified = true;
+    issuesFixed.push('Added data-rh="true" to <title> in index.html.');
+  }
+  if (indexHtmlContent.includes('https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg')) {
+    indexHtmlContent = indexHtmlContent.replaceAll(
+      'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg',
+      'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
+    );
+    indexModified = true;
+    issuesFixed.push('Replaced postimg.cc OG/Twitter hero image in index.html with local WebP.');
+  }
+  if (indexModified) {
     fs.writeFileSync(rootIndexHtmlPath, indexHtmlContent, 'utf8');
-    issuesFixed.push(`Removed ${staticTitles.length} static <title> tag(s) from index.html to prevent duplicate titles with React Helmet.`);
-    console.log(`  ✅ Auto-removed ${staticTitles.length} static <title> tag(s) from index.html.`);
+    console.log('  ✅ Auto-normalized index.html <title data-rh="true"> and local WebP hero image.');
   } else {
-    console.log('  ✅ index.html has zero static <title> tags (React Helmet manages dynamic <title> exclusively).');
+    console.log('  ✅ index.html has strictly 1 <title data-rh="true"> tag and local WebP hero image.');
   }
 }
 

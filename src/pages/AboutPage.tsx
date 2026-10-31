@@ -231,14 +231,13 @@ const AboutPage = () => {
                    className="relative w-full max-w-sm aspect-[4/5] rounded-[3rem] overflow-hidden border border-white/10 bg-zinc-950 p-2 shadow-2xl"
                 >
                     <img 
-                        src="https://i.postimg.cc/hjLzDQHK/abuqitmir222.png" 
+                        src="/images/blog-covers/author-abuqitmir-shiraz-6bc2697f.webp" 
                         alt="Abu Qitmir Mohammad Shiraz Al- Madani - Founder & Architect at AbuQitmirLabs" 
                         className="w-full h-full object-cover rounded-[2.8rem] transition-transform duration-1000 hover:scale-105"
                         width="400"
                         height="500"
                         loading="lazy"
                         decoding="async"
-                        referrerPolicy="no-referrer"
                     />
                 </motion.div>
 

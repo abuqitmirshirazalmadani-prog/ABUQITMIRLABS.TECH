@@ -56,7 +56,7 @@ const CASE_STUDIES: CaseStudy[] = [
         impact: "Students now get instant feedback between live sessions instead of waiting a full week — extending the academy's teaching capacity without diluting quality.",
         technologies: ["RAG Pipeline", "Speech & Voice Analysis", "Session-state Persistence", "Next.js", "Firebase", "Tailwind CSS"],
         colorAccent: "from-emerald-500/10 via-transparent to-black",
-        image: "https://i.postimg.cc/VkCrrNtc/Gemini-Generated-Image-t1ptnbt1ptnbt1pt.png",
+        image: "/images/case-study-tajweedpage.webp",
         citeText: "AbuQitmirLabs. (2026). RAG-augmented speech diagnostics & hybrid AI tutor ecosystems for Quranic recitation. AbuQitmirLabs AI EdTech Deployments.",
         hasDetailedPage: true,
         link: "/case-studies/tajweedpage"
@@ -85,7 +85,7 @@ const CASE_STUDIES: CaseStudy[] = [
         impact: "Delivered a breathtaking, cinematic web application with excellent performance, enabling readers to engage with immersive stories without any media loading latency.",
         technologies: ["GSAP Animation", "ScrollTrigger", "Vite 7", "React 19", "Audio Object API", "Tailwind CSS"],
         colorAccent: "from-red-950/20 via-transparent to-black",
-        image: "https://i.postimg.cc/YCcWrnqM/Screenshot-2026-07-20-145734.png",
+        image: "/images/case-study-ghastlypages.webp",
         citeText: "AbuQitmirLabs. (2026). High-fidelity cinematic storytelling engines and optimized frame-sequence media loading. AbuQitmirLabs Creative Deployments."
     },
     {
@@ -113,7 +113,7 @@ const CASE_STUDIES: CaseStudy[] = [
         impact: "Empowered a non-technical editorial team to safely publish stories, blogs, and audio narrations with built-in search dominance and instant monetization readiness.",
         technologies: ["Supabase Database", "Row-Level Security", "TanStack Start v1", "Google Search Console API", "JSON-LD Schemas", "Edge Workers"],
         colorAccent: "from-zinc-850/20 via-transparent to-black",
-        image: "https://i.postimg.cc/6pLy9Bmf/Screenshot-2026-07-20-150051.png",
+        image: "/images/case-study-enterprise.webp",
         citeText: "AbuQitmirLabs. (2026). Programmatic SEO architectures and secure distributed content management engines. AbuQitmirLabs Technical Publications."
     },
     {

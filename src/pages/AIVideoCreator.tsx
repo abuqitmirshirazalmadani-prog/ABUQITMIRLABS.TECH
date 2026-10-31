@@ -364,7 +364,7 @@ export default function AIVideoCreator() {
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
+        <meta property="og:image" content="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="AbuQitmirLabs" />
@@ -375,7 +375,7 @@ export default function AIVideoCreator() {
         <meta name="twitter:url" content={canonicalUrl} />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content="https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg" />
+        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp" />
         <meta name="twitter:site" content="@AbuQitmir" />
         <meta name="twitter:creator" content="@AbuQitmir" />
 
