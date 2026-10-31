@@ -93,10 +93,7 @@ for (const filePath of htmlFiles) {
     modified = true;
   }
 
-  // 2. Ensure at least one <h1> and clean site suffix from <h1> on blog pages
-  if (relPath.startsWith('blog' + path.sep) && relPath !== path.join('blog', 'index.html')) {
-    html = html.replace(/(<h1\b[^>]*>)([\s\S]*?)\s*\|\s*AbuQitmirLabs[^<]*(<\/h1>)/gi, '$1$2$3');
-  }
+  // 2. Preserve full H1 title on blog pages (including "| AbuQitmirLabs" when part of post title)
 
   // 3. Ensure at least one <h2> exists inside <div id="root">
   const h2Matches = html.match(/<h2\b[^>]*>[\s\S]*?<\/h2>/gi) || [];

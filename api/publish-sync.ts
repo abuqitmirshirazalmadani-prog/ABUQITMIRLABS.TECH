@@ -69,11 +69,10 @@ export default async function handler(req: any, res: any) {
 
         // 1. Commit content/blog/<slug>.md so Vercel build prerenders the static route
         if (cleanSlug && post?.content) {
+          const rawPostTitle = String(post.title || cleanSlug).trim();
           const frontmatter = {
-            title: String(post.title || cleanSlug)
-              .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
-              .trim(),
-            seoTitle: post.seoTitle || `${post.title || cleanSlug} | AbuQitmirLabs`,
+            title: rawPostTitle,
+            seoTitle: post.seoTitle || (/Abu\s*Qitmir\s*Labs/i.test(rawPostTitle) ? rawPostTitle : `${rawPostTitle} | AbuQitmirLabs`),
             slug: cleanSlug,
             excerpt: post.excerpt || '',
             metaDescription: post.metaDescription || post.excerpt || '',

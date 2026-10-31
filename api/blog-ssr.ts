@@ -141,8 +141,8 @@ export default async function handler(req: any, res: any) {
     const fullCanonical = `${hostname}${routeUrl}`;
     const seoMeta = SEO_ROUTES_METADATA[routeUrl];
 
-    const cleanH1 = String(postData.title || canonicalSlug).replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
-    const pageTitle = seoMeta?.title || (cleanH1.includes('AbuQitmirLabs') ? cleanH1 : `${cleanH1} | AbuQitmirLabs`);
+    const cleanH1 = String(postData.title || canonicalSlug).trim();
+    const pageTitle = seoMeta?.title || (/Abu\s*Qitmir\s*Labs/i.test(cleanH1) ? cleanH1 : `${cleanH1} | AbuQitmirLabs`);
     const rawDesc = (seoMeta?.description || postData.metaDescription || postData.excerpt || `${cleanH1}: in-depth guide by AbuQitmirLabs.`).trim();
     const metaDesc = rawDesc.length > 158 ? `${rawDesc.slice(0, 155).trim()}...` : rawDesc;
 

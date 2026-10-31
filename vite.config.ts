@@ -1608,7 +1608,7 @@ export default defineConfig(({ mode }) => {
               ? (STATIC_BLOG_POSTS[blogPostSlug]?.title || fetchedPosts.find(p => p.slug === blogPostSlug)?.title || route.title)
               : route.title;
             const cleanH1Title = (route.url.startsWith('/blog/') && route.url !== '/blog')
-              ? exactBlogTitle.replace(/\s*\|\s*AbuQitmirLabs.*$/i, '')
+              ? exactBlogTitle.trim()
               : route.title;
             const fallbackPrerenderHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader(route.url)}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${cleanH1Title}</h1><article class="prose prose-invert max-w-none text-neutral-300">${articleContent}</article></main></div>`;
             routeHtml = replaceRootElement(routeHtml, fallbackPrerenderHtml, route.url);

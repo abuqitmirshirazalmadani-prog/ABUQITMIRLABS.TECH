@@ -493,10 +493,8 @@ export function autoFixArticle(input: ArticleInput): AutoFixResult {
   const rawContent = String(input.content || '').trim();
   const rawSlug = String(input.slug || '').trim();
 
-  // 1. Title Missing -> Auto-set from first heading or slug
-  let resolvedTitle = stripOuterQuotes(input.title)
-    .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
-    .trim();
+  // 1. Title Missing -> Auto-set from first heading or slug (preserve "| AbuQitmirLabs" for 54-60 char SEO H1)
+  let resolvedTitle = stripOuterQuotes(input.title).trim();
 
   if (!resolvedTitle) {
     const extractedHeading = extractFirstHeading(rawContent);
@@ -504,14 +502,23 @@ export function autoFixArticle(input: ArticleInput): AutoFixResult {
     appliedFixes.push(`Title was missing -> Auto-set to "${resolvedTitle}"`);
   }
 
-  // Ensure canonical slug
+  if (
+    resolvedTitle.length > 0 &&
+    resolvedTitle.length <= 44 &&
+    !/Abu\s*Qitmir\s*Labs/i.test(resolvedTitle)
+  ) {
+    resolvedTitle = `${resolvedTitle} | AbuQitmirLabs`;
+  }
+
+  // Ensure canonical slug (strip brand suffix when generating slug from title)
+  const titleWithoutBrandForSlug = resolvedTitle.replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
   const baseSlug = rawSlug
     ? rawSlug.replace(/^\/+|\/+$/g, '').replace(/^blog\//i, '')
-    : slugifyText(resolvedTitle);
-  const resolvedSlug = getCanonicalSlug(baseSlug || slugifyText(resolvedTitle) || `article-${Date.now()}`);
+    : slugifyText(titleWithoutBrandForSlug || resolvedTitle);
+  const resolvedSlug = getCanonicalSlug(baseSlug || slugifyText(titleWithoutBrandForSlug || resolvedTitle) || `article-${Date.now()}`);
 
   // 2. Content starts with `# H1` -> Auto-remove `# H1` and convert to `## H2`
-  const h1Fix = convertContentH1ToH2(rawContent, resolvedTitle);
+  const h1Fix = convertContentH1ToH2(rawContent, titleWithoutBrandForSlug || resolvedTitle);
   let resolvedContent = h1Fix.content;
   if (h1Fix.convertedCount > 0) {
     appliedFixes.push(

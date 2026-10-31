@@ -30,7 +30,7 @@ function normalizeQueueItem(raw: any): SeoFixQueueItem | null {
   return {
     id,
     slug,
-    title: String(raw.title || slug).replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim(),
+    title: String(raw.title || slug).trim(),
     type,
     issueType: type,
     severity: raw.severity === 'info' ? 'info' : 'warning',
@@ -142,9 +142,7 @@ function loadArticleForSlug(slug: string, fallbackTitle?: string): {
     {};
 
   const frontmatter: Record<string, any> = {
-    title: String(staticPost.title || fallbackTitle || canonicalSlug)
-      .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
-      .trim(),
+    title: String(staticPost.title || fallbackTitle || canonicalSlug).trim(),
     slug: canonicalSlug,
     excerpt: String(staticPost.excerpt || staticPost.metaDescription || '').trim(),
     metaDescription: String(staticPost.metaDescription || staticPost.excerpt || '').trim(),

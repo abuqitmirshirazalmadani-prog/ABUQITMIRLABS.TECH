@@ -164,7 +164,7 @@ if (fs.existsSync(blogContentDir) && staticPostsSource) {
       const canonicalSlug = redirects[articleSlug] || articleSlug;
       slugsSet.add(canonicalSlug);
       
-      const cleanTitle = (parsedMeta?.title || canonicalSlug).replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+      const cleanTitle = cleanQuote(parsedMeta?.title || canonicalSlug);
       const normBody = normalizeMarkdownContent(body, cleanTitle);
 
       // Auto-append to staticBlogPosts.ts if missing
@@ -221,7 +221,7 @@ try {
         slugsSet.add(canonicalSlug);
 
         const rawTitle = String(data.title || canonicalSlug).trim();
-        const postTitle = cleanQuote(rawTitle).replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+        const postTitle = cleanQuote(rawTitle);
         const rawContent = String(data.content || '');
         if (!rawContent) continue;
         const postContent = normalizeMarkdownContent(rawContent, postTitle);

@@ -153,7 +153,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                             ? s.trim().replace(/^(?:&quot;|["'“”`])+|(?:&quot;|["'“”`])+$/gi, '').trim()
                             : s;
                     const cleanTitleStr = (s?: string) =>
-                        cleanQuoteStr(s)?.replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim() || '';
+                        cleanQuoteStr(s)?.trim() || '';
                     const countH2Headings = (md?: string) =>
                         (md || '').split(/\r?\n/).filter(l => /^##\s+/.test(l.trim())).length;
                     const UNWANTED_PRESET_URLS = [
@@ -174,9 +174,18 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                             staticEntry.content.length >= (foundPost.content?.length || 0))
                             ? staticEntry.content
                             : foundPost.content;
+                    const rawCandidateTitle = cleanTitleStr(foundPost.title || staticEntry?.title) || foundPost.title;
+                    const resolvedFullTitle =
+                        rawCandidateTitle &&
+                        rawCandidateTitle.length <= 44 &&
+                        !/Abu\s*Qitmir\s*Labs/i.test(rawCandidateTitle)
+                            ? (staticEntry?.title && /Abu\s*Qitmir\s*Labs/i.test(staticEntry.title)
+                                ? cleanTitleStr(staticEntry.title)
+                                : `${rawCandidateTitle} | AbuQitmirLabs`)
+                            : rawCandidateTitle;
                     const sanitizedPost: Post = {
                         ...foundPost,
-                        title: cleanTitleStr(staticEntry?.title || foundPost.title) || foundPost.title,
+                        title: resolvedFullTitle,
                         content: resolvedContent,
                         helperImages: cleanHelperList,
                         metaDescription: cleanQuoteStr(staticEntry?.metaDescription || foundPost.metaDescription),

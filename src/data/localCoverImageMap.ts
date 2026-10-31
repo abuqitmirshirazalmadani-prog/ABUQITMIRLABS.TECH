@@ -127,7 +127,8 @@ export const REMOTE_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "https://i.postimg.cc/5Nq2FmvY/12-engineering-decisions.png": "/images/blog-covers/high-performance-web-applications-12-engineering-decisions-7f75ceb8.webp",
   "https://i.postimg.cc/JzyymVDV/i-OS-or-Android.png": "/images/blog-covers/native-mobile-app-development-ios-vs-android-cost-9610730c.webp",
   "https://i.postimg.cc/Y92rZgvg/Five-Minute-Technical-Audit-Checklist.png": "/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
-  "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp"
+  "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp",
+  "https://i.postimg.cc/2yXtnD5Z/ai-automation-compliance.jpg": "/images/blog-covers/ai-automation-compliance-79cfaf63.webp"
 };
 
 export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
@@ -259,7 +260,8 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "saas-pricing-page-optimization-7-structural-decisions": "/images/blog-covers/bespoke-saas-development-build-vs-buy-decision-guide-c0840937.webp",
   "measure-marketing-roi-without-tracking": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp",
   "ai-overviews-traffic-recovery-what-40-companies-did-next": "/images/blog-covers/ai-overviews-killed-traffic-what-40-companies-did-next-eb108ed0.webp",
-  "author-abuqitmir-shiraz": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp"
+  "author-abuqitmir-shiraz": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp",
+  "ai-automation-compliance": "/images/blog-covers/ai-automation-compliance-79cfaf63.webp"
 };
 
 export function resolveOptimizedCoverImage(url?: string, slug?: string): string {

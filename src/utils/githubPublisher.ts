@@ -244,9 +244,7 @@ export async function syncPostToGitHubAndDeploy(
       // 0. Commit content/blog/<slug>.md if post.content is provided
       if (post && cleanSlug && post.content) {
         logStep(`Syncing content/blog/${cleanSlug}.md to GitHub (${repo}@${branch})...`);
-        const cleanTitle = String(post.title || cleanSlug)
-          .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
-          .trim();
+        const cleanTitle = String(post.title || cleanSlug).trim();
         const tagsList = Array.isArray(post.tags)
           ? post.tags
           : typeof post.tags === 'string'

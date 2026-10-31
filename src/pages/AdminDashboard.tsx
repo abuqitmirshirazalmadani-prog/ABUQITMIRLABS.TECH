@@ -232,7 +232,18 @@ const AdminDashboard = () => {
         setFetchingPosts(true);
         try {
             const querySnapshot = await getDocs(collection(db, 'posts'));
-            const p = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            const p = querySnapshot.docs.map(docSnap => {
+                const rawData: any = docSnap.data();
+                const rawTitle = String(rawData.title || '').trim();
+                const restoredTitle =
+                    rawTitle.length > 0 && rawTitle.length <= 44 && !/Abu\s*Qitmir\s*Labs/i.test(rawTitle)
+                        ? `${rawTitle} | AbuQitmirLabs`
+                        : rawTitle;
+                if (restoredTitle !== rawTitle && isUserAdmin(auth.currentUser)) {
+                    updateDoc(doc(db, 'posts', docSnap.id), { title: restoredTitle }).catch(() => {});
+                }
+                return { id: docSnap.id, ...rawData, title: restoredTitle || rawData.title };
+            });
             setPosts(p);
         } catch (error) {
             console.error("Fetch Posts Error:", error);
@@ -273,12 +284,17 @@ const AdminDashboard = () => {
     const handleEdit = (post: any) => {
         setEditingId(post.id);
         let editContent = (post.content || '').trim();
-        const cleanEditTitle = String(post.title || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+        const rawEditTitle = String(post.title || '').trim();
+        const fullEditTitle =
+            rawEditTitle.length > 0 && rawEditTitle.length <= 44 && !/Abu\s*Qitmir\s*Labs/i.test(rawEditTitle)
+                ? `${rawEditTitle} | AbuQitmirLabs`
+                : rawEditTitle;
+        const cleanEditTitle = fullEditTitle.replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
         if (editContent && !/^#{1,6}\s+/.test(editContent.split(/\r?\n/)[0].trim()) && cleanEditTitle) {
             editContent = `## ${cleanEditTitle}\n\n${editContent}`;
         }
         setFormData({
-            title: post.title || '',
+            title: fullEditTitle,
             slug: post.slug || '',
             excerpt: post.excerpt || '',
             metaDescription: post.metaDescription || post.excerpt || '',
@@ -642,7 +658,8 @@ const AdminDashboard = () => {
 
     const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const title = e.target.value;
-        const slug = generateSlug(title);
+        const baseForSlug = title.replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+        const slug = editingId && formData.slug ? formData.slug : generateSlug(baseForSlug || title);
         setFormData({ ...formData, title, slug });
     };
 
@@ -988,8 +1005,15 @@ const AdminDashboard = () => {
             const cleanSlug = getCanonicalSlug(rawSlugInput);
             const stripOuterQuotes = (str?: string) =>
                 (str || '').trim().replace(/^(?:&quot;|["'“”`])+|(?:&quot;|["'“”`])+$/gi, '').trim();
-            const cleanPostTitle = stripOuterQuotes(formData.title).replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+            const rawTitleTrimmed = stripOuterQuotes(formData.title).trim();
+            const cleanPostTitle =
+                rawTitleTrimmed.length > 0 &&
+                rawTitleTrimmed.length <= 44 &&
+                !/Abu\s*Qitmir\s*Labs/i.test(rawTitleTrimmed)
+                    ? `${rawTitleTrimmed} | AbuQitmirLabs`
+                    : rawTitleTrimmed;
             const normalizeMarkdownHeadings = (rawMd: string, titleStr: string) => {
+                const baseHeadingTitle = (titleStr || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
                 let md = (rawMd || '').trim();
                 const isMetaOrDividerLine = (lineStr: string) => {
                     const t = lineStr.trim();
@@ -1020,8 +1044,8 @@ const AdminDashboard = () => {
                             lines.splice(1, 1);
                         }
                         lines.splice(1, 0, '');
-                    } else if (lines.length > 0 && !/^#{1,6}\s+/.test(lines[0].trim()) && titleStr) {
-                        lines.unshift(`## ${titleStr}`, '');
+                    } else if (lines.length > 0 && !/^#{1,6}\s+/.test(lines[0].trim()) && baseHeadingTitle) {
+                        lines.unshift(`## ${baseHeadingTitle}`, '');
                     }
                     md = lines.join('\n');
                 }
@@ -1795,13 +1819,41 @@ const AdminDashboard = () => {
                                                     </select>
                                                 </div>
                                                 <div className="md:col-span-8 space-y-3">
-                                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 flex justify-between">
-                                                        Post Title
-                                                        <span className="text-emerald-400/80">Auto-Generated if Blank</span>
+                                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 flex flex-wrap items-center justify-between gap-2">
+                                                        <span>Post Title (H1)</span>
+                                                        <span className="flex items-center gap-3">
+                                                            {!/Abu\s*Qitmir\s*Labs/i.test(formData.title || '') && (
+                                                                <button
+                                                                    type="button"
+                                                                    onClick={() => {
+                                                                        const base = (formData.title || '').replace(/\s*\|+\s*$/, '').trim();
+                                                                        if (base) {
+                                                                            setFormData({ ...formData, title: `${base} | AbuQitmirLabs` });
+                                                                        }
+                                                                    }}
+                                                                    className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 hover:bg-blue-500/25 border border-blue-500/30 transition-colors normal-case tracking-normal"
+                                                                >
+                                                                    + Add "| AbuQitmirLabs"
+                                                                </button>
+                                                            )}
+                                                            <span
+                                                                className={
+                                                                    (formData.title || '').trim().length >= 50 && (formData.title || '').trim().length <= 65
+                                                                        ? 'text-emerald-400'
+                                                                        : (formData.title || '').trim().length > 0
+                                                                        ? 'text-amber-400'
+                                                                        : 'text-emerald-400/80'
+                                                                }
+                                                            >
+                                                                {(formData.title || '').trim().length > 0
+                                                                    ? `${(formData.title || '').trim().length} / 60 chars (Ideal: 54–60)`
+                                                                    : 'Auto-Generated if Blank (54–60 chars)'}
+                                                            </span>
+                                                        </span>
                                                     </label>
                                                     <input 
                                                         className="w-full bg-[#1a1a1a] border border-white/5 rounded-2xl px-6 py-5 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all placeholder:text-gray-700 text-white font-medium" 
-                                                        placeholder="Future-Proofing with AI (or leave blank to auto-generate from H1)" 
+                                                        placeholder="AI Automation for Regulated Industries | AbuQitmirLabs (Ideal 54–60 chars)" 
                                                         type="text"
                                                         value={formData.title}
                                                         onChange={handleTitleChange}
