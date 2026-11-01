@@ -905,365 +905,9 @@ export default defineConfig(({ mode }) => {
               continue;
             }
 
-            if (route.url === '/blog/content-calendar-strategy') {
-              const seoMeta = SEO_ROUTES_METADATA['/blog/content-calendar-strategy'];
-              if (seoMeta && seoMeta.schemaJsonLd) {
-                routeHtml = injectSingleSchema(routeHtml, seoMeta.schemaJsonLd);
-              }
-              if (seoMeta && seoMeta.ogImage) {
-                routeHtml = routeHtml
-                  .replace(/<meta\b[^>]*property="og:image"[^>]*\/?>/gi, '')
-                  .replace(/<meta\b[^>]*name="twitter:image"[^>]*\/?>/gi, '')
-                  .replace(/<meta\b[^>]*property="og:type"[^>]*\/?>/gi, '')
-                  .replace('</head>', `  <meta property="og:type" content="article" />\n  <meta property="og:image" content="${seoMeta.ogImage}" />\n  <meta name="twitter:image" content="${seoMeta.ogImage}" />\n</head>`);
-              }
-              const contentCalendarHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader('/blog/content-calendar-strategy')}<main id="main-content" class="max-w-4xl mx-auto px-6 pt-36 pb-20"><h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-8 font-serif">How to Build a Content Calendar That Gets Followed</h1><article class="prose prose-invert max-w-none text-zinc-300"><h2>Quick Takeaways</h2><ul><li>Most content calendars fail because they are built on unrealistic expectations and lack of clear ownership, not because of a lack of tools.</li><li>A successful calendar requires a system: defining content pillars, setting a realistic cadence, and assigning clear owners.</li><li>You do not need expensive software. A shared Google Sheet or a simple Notion board is usually sufficient.</li><li>Build a content backlog to prevent last-minute scrambling and quality drops.</li></ul><h2>Why Most Content Calendars Fail</h2><p>Most content calendars fail because they are disconnected from actual production capacity. A calendar must account for the entire production cycle: ideation, research, drafting, editing, design, and publishing.</p><h2>The 6-Step Content Calendar Strategy</h2><h3>Step 1: Define Your Content Pillars</h3><h3>Step 2: Set a Realistic Publishing Cadence</h3><h3>Step 3: Assign Clear Ownership</h3><h3>Step 4: Build a Content Backlog</h3><h3>Step 5: Schedule and Integrate with SEO</h3><h3>Step 6: Review, Iterate, and Repurpose</h3><h2>The Content Calendar Template</h2><h2>Common Mistakes Founders Make with Content Calendars</h2><h2>Frequently Asked Questions</h2><h3>What is a content calendar strategy?</h3><p>A content calendar strategy is a systematic plan for creating, scheduling, and publishing content. It defines the topics, the target audience, the publishing frequency, and the team responsible for execution.</p><h3>How far in advance should I plan content?</h3><p>Plan your core themes and backlogs 3 months in advance. However, finalize specific publishing dates and drafts on a rolling 4-week basis to remain flexible to market changes.</p><h3>What tools are best for content calendars?</h3><p>Google Sheets, Notion, or Airtable are usually sufficient for small to mid-sized teams. For enterprise teams, tools like CoSchedule or Asana can help manage complex workflows.</p></article></main></div>`;
-              routeHtml = replaceRootElement(routeHtml, contentCalendarHtml, '/blog/content-calendar-strategy');
-              writeRouteFiles(route.url, routeDir, routeHtml);
-              continue;
-            }
-
-            if (route.url === '/blog/brand-strategy-vs-logo-design-pakistan-sme') {
-              const seoMeta = SEO_ROUTES_METADATA['/blog/brand-strategy-vs-logo-design-pakistan-sme'];
-              if (seoMeta && seoMeta.schemaJsonLd) {
-                routeHtml = injectSingleSchema(routeHtml, seoMeta.schemaJsonLd);
-              }
-              if (seoMeta && seoMeta.ogImage) {
-                routeHtml = routeHtml
-                  .replace(/<meta\b[^>]*property="og:image"[^>]*\/?>/gi, '')
-                  .replace(/<meta\b[^>]*name="twitter:image"[^>]*\/?>/gi, '')
-                  .replace(/<meta\b[^>]*property="og:type"[^>]*\/?>/gi, '')
-                  .replace('</head>', `  <meta property="og:type" content="article" />\n  <meta property="og:image" content="${seoMeta.ogImage}" />\n  <meta name="twitter:image" content="${seoMeta.ogImage}" />\n</head>`);
-              }
-              const brandStrategyHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader('/blog/brand-strategy-vs-logo-design-pakistan-sme')}<main id="main-content" class="max-w-4xl mx-auto px-6 pt-36 pb-20"><h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-8 font-serif">Brand Strategy vs Logo Design Pakistan</h1><article class="prose prose-invert max-w-none text-zinc-300"><h2>Introduction</h2><p>Most Pakistani SMEs treat branding as a one-time transaction. They hire a freelancer, pay PKR 10,000 for a visual mark, slap it on a website, and wonder why they cannot command premium prices or attract serious clients.</p><h2>Quick Verdict: The Difference in 50 Words</h2><p>A logo is a single visual mark that gives you a PNG and SVG. Brand strategy is the comprehensive system of positioning, typography, color palettes, and guidelines that tells you how to use that logo. In Pakistan, a logo costs PKR 3,000 to 50,000, while a full brand strategy starts at PKR 80,000.</p><h2>The Problem: Why SMEs Get This Wrong</h2><h2>What Is a Logo? (And What It Is Not)</h2><h2>What Is a Brand Strategy?</h2><h2 id="cost-comparison-pkr-pricing-for-pakistani-smes">Cost Comparison: PKR Pricing for Pakistani SMEs</h2><h2>The Decision Matrix: Logo or Strategy First?</h2><h2>Why Cheap Logos Hurt Your Business Long-Term</h2><h2>Frequently Asked Questions</h2><h3>What is the difference between a logo and brand strategy?</h3><p>A logo is a single visual mark. Brand strategy is the comprehensive plan that defines your positioning, target audience, brand voice, and visual identity system.</p><h3>How much does a logo cost in Pakistan?</h3><p>In Pakistan, a freelance logo design can range from PKR 3,000 to PKR 15,000. A professional design agency might charge between PKR 20,000 and PKR 50,000 for a comprehensive logo suite.</p><h3>How much does brand strategy cost in Pakistan?</h3><p>A full brand strategy and identity system for an SME in Pakistan typically starts around PKR 80,000 and can exceed PKR 250,000 depending on the agency's expertise, the depth of research, and the deliverables.</p><h2>Conclusion</h2></article></main></div>`;
-              routeHtml = replaceRootElement(routeHtml, brandStrategyHtml, '/blog/brand-strategy-vs-logo-design-pakistan-sme');
-              writeRouteFiles(route.url, routeDir, routeHtml);
-              continue;
-            }
-
             if (route.url === '/local-seo-for-small-business') {
               routeHtml = injectSingleSchema(routeHtml, localSEOSmallBusinessSchema);
               routeHtml = replaceRootElement(routeHtml, localSEOSmallBusinessInitialHtml, '/local-seo-for-small-business');
-              writeRouteFiles(route.url, routeDir, routeHtml);
-              continue;
-            }
-            
-            // ========================================================
-            // SPECIFIC ARTICLE: AI Content vs Human Content
-            // ========================================================
-            if (route.url === '/blog/ai-content-vs-human-content') {
-              console.log('✅ [SEO Generator] Injecting static HTML for AI Content vs Human Content');
-              const seoMeta = SEO_ROUTES_METADATA['/blog/ai-content-vs-human-content'];
-              const aiContentSchema = (seoMeta && seoMeta.schemaJsonLd) || {
-                "@context": "https://schema.org",
-                "@type": "Article",
-                "headline": "AI Content vs Human Content: What Google's 2026 Guidelines Actually Say",
-                "description": "Learn what Google's 2026 guidelines actually say about AI content vs human content. Discover the E-E-A-T rules and how to safely rank in search.",
-                "author": {
-                  "@type": "Person",
-                  "name": "Abu Qitmir Mohammad Shiraz Al-Madani"
-                },
-                "publisher": {
-                  "@type": "Organization",
-                  "name": "AbuQitmirLabs",
-                  "logo": {
-                    "@type": "ImageObject",
-                    "url": "https://www.abuqitmirlabs.tech/logo.png"
-                  }
-                },
-                "datePublished": "2026-10-27T00:00:00+00:00",
-                "dateModified": "2026-10-27T00:00:00+00:00",
-                "mainEntityOfPage": {
-                  "@type": "WebPage",
-                  "@id": "https://www.abuqitmirlabs.tech/blog/ai-content-vs-human-content"
-                }
-              };
-
-              routeHtml = injectSingleSchema(routeHtml, aiContentSchema);
-
-              const realArticleHtml = `
-                <div class="min-h-screen bg-[#09090b] text-white">
-                  ${renderStaticHeader(route.url)}
-                  <main id="main-content" class="max-w-4xl mx-auto px-6 pt-24 md:pt-32 pb-16">
-                    
-                    <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">
-                      AI Content vs Human Content: What Google's 2026 Guidelines Actually Say
-                    </h1>
-                    
-                    <p class="text-xl text-neutral-400 mb-8">
-                      In 2026, roughly 60% of all Google searches are zero-click. Users get their answers directly from AI Overviews. This combination has created panic among founders. This guide breaks down exactly what Google's 2026 guidelines say.
-                    </p>
-
-                    <h2 class="text-2xl font-bold mt-10 mb-4">Quick Verdict: Google's 2026 Stance on AI Content</h2>
-                    <p class="text-neutral-300 mb-6">
-                      Google does not care whether AI or a human wrote the content. Google cares about E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness). If the content is helpful, accurate, and demonstrates first-hand experience, it will rank.
-                    </p>
-
-                    <h2 class="text-2xl font-bold mt-10 mb-4">What Google's 2026 Guidelines Actually Say</h2>
-                    <p class="text-neutral-300 mb-6">
-                      Google's "Helpful Content" system evaluates content based on people-first value, not its method of creation. In their official guidance, Google explicitly states that they reward high-quality content, however it is produced.
-                    </p>
-
-                    <h2 class="text-2xl font-bold mt-10 mb-4">The "Human-in-the-Loop" AI Workflow</h2>
-                    <p class="text-neutral-300 mb-6">
-                      To rank in 2026, you must use a structured workflow where AI does the heavy lifting, but humans do the thinking, fact-checking, and optimizing.
-                    </p>
-                    <ul class="list-disc pl-6 mb-6 text-neutral-300">
-                      <li>Human-Led Research: Identify target keywords and gather original data.</li>
-                      <li>AI-Assisted Drafting: Generate the initial outline based on data points.</li>
-                      <li>Human Editing: Add personal stories, client examples, and brand voice.</li>
-                      <li>Human Fact-Checking: Verify every statistic and remove AI fluff.</li>
-                      <li>Formatting for AEO: Structure with direct answers and bullet points.</li>
-                    </ul>
-
-                  </main>
-                </div>
-              `;
-
-              routeHtml = replaceRootElement(routeHtml, realArticleHtml, route.url);
-              writeRouteFiles(route.url, routeDir, routeHtml);
-              continue;
-            }
-
-            // ========================================================
-            // SPECIFIC ARTICLE: The Complete Brand Identity Checklist for Startups
-            // ========================================================
-            if (route.url === '/blog/startup-brand-identity-checklist') {
-              console.log('✅ [SEO Generator] Injecting static HTML for The Complete Brand Identity Checklist for Startups');
-              const seoMeta = SEO_ROUTES_METADATA['/blog/startup-brand-identity-checklist'];
-              const startupChecklistSchema = (seoMeta && seoMeta.schemaJsonLd) || {
-                "@context": "https://schema.org",
-                "@graph": [
-                  {
-                    "@type": "Article",
-                    "@id": "https://www.abuqitmirlabs.tech/blog/startup-brand-identity-checklist#article",
-                    "headline": "The Complete Brand Identity Checklist for Startups",
-                    "description": "A pre-seed and seed-stage brand identity checklist for startups. Covers positioning, visual system, voice, and launch assets in the right order.",
-                    "image": "https://i.postimg.cc/SRxngZxY/Gemini-Generated-Image-74i3u574i3u574i3.jpg",
-                    "author": {
-                      "@type": "Person",
-                      "name": "Abu Qitmir Mohammad Shiraz Al-Madani"
-                    },
-                    "publisher": {
-                      "@type": "Organization",
-                      "name": "AbuQitmirLabs",
-                      "logo": {
-                        "@type": "ImageObject",
-                        "url": "https://www.abuqitmirlabs.tech/logo.png"
-                      }
-                    },
-                    "datePublished": "2026-10-27T00:00:00+00:00",
-                    "dateModified": "2026-10-27T00:00:00+00:00",
-                    "mainEntityOfPage": {
-                      "@type": "WebPage",
-                      "@id": "https://www.abuqitmirlabs.tech/blog/startup-brand-identity-checklist"
-                    }
-                  },
-                  {
-                    "@type": "FAQPage",
-                    "@id": "https://www.abuqitmirlabs.tech/blog/startup-brand-identity-checklist#faq",
-                    "mainEntity": [
-                      {
-                        "@type": "Question",
-                        "name": "What is a brand identity checklist for startups?",
-                        "acceptedAnswer": {
-                          "@type": "Answer",
-                          "text": "A brand identity checklist for startups is a structured guide that outlines the essential visual, verbal, and strategic elements a new business needs to build a recognizable and trustworthy brand. It ensures founders do not skip foundational steps."
-                        }
-                      },
-                      {
-                        "@type": "Question",
-                        "name": "How much does it cost to build a startup brand in Pakistan?",
-                        "acceptedAnswer": {
-                          "@type": "Answer",
-                          "text": "You can build a minimum viable brand for under PKR 50,000 if you focus on the essentials (logo, colors, landing page). Full agency branding can range from PKR 80,000 to PKR 250,000 depending on the depth of research and deliverables."
-                        }
-                      },
-                      {
-                        "@type": "Question",
-                        "name": "When should a startup invest in brand identity?",
-                        "acceptedAnswer": {
-                          "@type": "Answer",
-                          "text": "A startup should invest in a basic minimum viable brand right before launching its product or seeking its first round of funding. You need a credible identity to attract early adopters and investors."
-                        }
-                      },
-                      {
-                        "@type": "Question",
-                        "name": "Should I use Urdu or English for my startup brand?",
-                        "acceptedAnswer": {
-                          "@type": "Answer",
-                          "text": "You should use a bilingual approach. Use English for formal communications, technical documentation, and investor decks. Use Roman Urdu for social media engagement, customer support, and WhatsApp marketing to build trust with local consumers."
-                        }
-                      },
-                      {
-                        "@type": "Question",
-                        "name": "What is a Minimum Viable Brand (MVB)?",
-                        "acceptedAnswer": {
-                          "@type": "Answer",
-                          "text": "A Minimum Viable Brand is the absolute minimum amount of brand strategy, design, and messaging required to launch a credible business. It includes a positioning statement, a professional logo, a color palette, a voice guide, and a landing page."
-                        }
-                      },
-                      {
-                        "@type": "Question",
-                        "name": "Why is a logo system better than just a single logo?",
-                        "acceptedAnswer": {
-                          "@type": "Answer",
-                          "text": "A logo system provides variations (horizontal, vertical, icon) for different platforms. A single logo often looks distorted on app icons or social media profiles, creating a fragmented brand presence."
-                        }
-                      },
-                      {
-                        "@type": "Question",
-                        "name": "How do I choose the right colors for my brand?",
-                        "acceptedAnswer": {
-                          "@type": "Answer",
-                          "text": "Choose colors based on the psychology of your target audience and your industry. For example, blue conveys trust (suitable for fintech), while bold yellows and greens convey energy and growth (suitable for consumer startups)."
-                        }
-                      },
-                      {
-                        "@type": "Question",
-                        "name": "What is the biggest branding mistake Pakistani startups make?",
-                        "acceptedAnswer": {
-                          "@type": "Answer",
-                          "text": "The biggest mistake is copying global brands without localization. A brand that works in Silicon Valley will not automatically resonate in Karachi. You must adapt your messaging, tone, and visual triggers to local cultural contexts."
-                        }
-                      }
-                    ]
-                  }
-                ]
-              };
-
-              routeHtml = injectSingleSchema(routeHtml, startupChecklistSchema);
-              routeHtml = routeHtml
-                .replace(/<meta\b[^>]*property="og:image"[^>]*\/?>/gi, '')
-                .replace(/<meta\b[^>]*name="twitter:image"[^>]*\/?>/gi, '')
-                .replace(/<meta\b[^>]*property="og:type"[^>]*\/?>/gi, '')
-                .replace('</head>', `  <meta property="og:type" content="article" />\n  <meta property="og:image" content="https://www.abuqitmirlabs.tech/images/blog-covers/startup-brand-identity-checklist-be48b842.webp" />\n  <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/blog-covers/startup-brand-identity-checklist-be48b842.webp" />\n</head>`);
-
-              const realArticleHtml = `
-                <div class="min-h-screen bg-[#050505] text-white">
-                  ${renderStaticHeader(route.url)}
-                  <main id="main-content" class="max-w-4xl mx-auto px-6 pt-36 pb-20">
-                    <h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-8 font-serif">
-                      The Complete Brand Identity Checklist for Startups
-                    </h1>
-                    <article class="prose prose-invert max-w-none text-zinc-300">
-                      <h2 id="introduction" class="text-2xl font-bold mt-10 mb-4">Introduction</h2>
-                      <p class="text-neutral-300 mb-6">
-                        Most startup founders wait too long to build a brand. They think they need a massive budget, a full agency team, or a hundred thousand users before they can invest in their identity. In 2026, roughly 60% of all searches are zero-click. Buyers are evaluating your credibility on Google, LinkedIn, and AI Overviews before they ever talk to you. If your brand looks fragmented, you lose the deal before it starts.
-                      </p>
-                      <p class="text-neutral-300 mb-6">
-                        This checklist is designed specifically for pre-seed and seed-stage startups in Pakistan. It focuses on what actually matters at your stage: limited budgets, family-business legacies, bilingual (Urdu and English) brand voice needs, and WhatsApp-first customer engagement. At <a href="/brand-building">AbuQitmirLabs</a>, this guide breaks down the 14 essential items you need across four distinct stages.
-                      </p>
-
-                      <h2 id="quick-verdict-the-minimum-viable-brand-mvb" class="text-2xl font-bold mt-10 mb-4">Quick Verdict: The Minimum Viable Brand (MVB)</h2>
-                      <p class="text-neutral-300 mb-6">
-                        <strong>For a Pakistani startup, the minimum viable brand requires four things: a defined positioning statement, a functional logo system, a bilingual voice guide, and a high-converting landing page.</strong> You do not need a 100-page brand book at pre-seed. You need the foundational elements that build immediate trust.
-                      </p>
-
-                      <h2 id="stage-1-foundation-the-strategy" class="text-2xl font-bold mt-10 mb-4">Stage 1: Foundation (The Strategy)</h2>
-                      <p class="text-neutral-300 mb-6">
-                        Before you pick a single font or color, you must define your strategic foundation. This is what separates a real business from a side project.
-                      </p>
-                      <h3 id="1-define-your-positioning-statement" class="text-xl font-bold mt-6 mb-3">1. Define Your Positioning Statement</h3>
-                      <p class="text-neutral-300 mb-4">
-                        <strong>Direct Answer:</strong> A positioning statement is a single sentence that defines who you serve, what you provide, and why you are different. It prevents you from chasing every potential customer and tells investors and early adopters exactly where you fit in the market.
-                      </p>
-                      <h3 id="2-map-your-target-audience-persona" class="text-xl font-bold mt-6 mb-3">2. Map Your Target Audience Persona</h3>
-                      <p class="text-neutral-300 mb-4">
-                        <strong>Direct Answer:</strong> An audience persona is a detailed profile of your ideal customer, including their daily frustrations, where they spend time online, and how they make buying decisions. Talk to 5 potential customers on WhatsApp or LinkedIn and use their exact words in your marketing.
-                      </p>
-                      <h3 id="3-establish-competitive-differentiation" class="text-xl font-bold mt-6 mb-3">3. Establish Competitive Differentiation</h3>
-                      <p class="text-neutral-300 mb-6">
-                        <strong>Direct Answer:</strong> Competitive differentiation is the specific combination of features, price, or service that makes you the obvious choice over your competitors. If you cannot explain why you are better in 10 seconds, you do not have a brand.
-                      </p>
-
-                      <h2 id="stage-2-visual-system-the-look" class="text-2xl font-bold mt-10 mb-4">Stage 2: Visual System (The Look)</h2>
-                      <p class="text-neutral-300 mb-6">
-                        Your visual system is how your brand looks to the outside world. You need consistency across your website and social media. If you need help, our <a href="/graphics-design">graphics design services</a> are built for startups.
-                      </p>
-                      <h3 id="4-build-a-logo-suite-not-just-a-logo" class="text-xl font-bold mt-6 mb-3">4. Build a Logo Suite (Not Just a Logo)</h3>
-                      <p class="text-neutral-300 mb-4">
-                        <strong>Direct Answer:</strong> A logo suite is a collection of logo variations: the primary logo, a secondary logo, and a brand mark or icon, delivered in SVG, PNG, and EPS formats. Read our guide on <a href="/blog/how-to-brief-graphic-designer">how to brief a graphic designer</a>.
-                      </p>
-                      <h3 id="5-lock-in-your-color-palette" class="text-xl font-bold mt-6 mb-3">5. Lock In Your Color Palette</h3>
-                      <p class="text-neutral-300 mb-4">
-                        <strong>Direct Answer:</strong> A color palette is a set of 4 to 5 specific colors (with exact Hex codes) that represent your brand: one primary brand color, one dark contrast color, one light background color, and two accent colors.
-                      </p>
-                      <h3 id="6-select-your-typography-hierarchy" class="text-xl font-bold mt-6 mb-3">6. Select Your Typography Hierarchy</h3>
-                      <p class="text-neutral-300 mb-4">
-                        <strong>Direct Answer:</strong> Typography is the specific set of fonts your brand uses for headlines and body text, defining sizes for H1, H2, Body, and Caption.
-                      </p>
-                      <h3 id="7-create-a-basic-iconography-style" class="text-xl font-bold mt-6 mb-3">7. Create a Basic Iconography Style</h3>
-                      <p class="text-neutral-300 mb-6">
-                        <strong>Direct Answer:</strong> Iconography is the visual style of the icons you use on your website, app, or pitch deck. Our guide on <a href="/blog/design-systems-for-startups">design systems for startups</a> explains how to structure this.
-                      </p>
-
-                      <h2 id="stage-3-voice-messaging-the-words" class="text-2xl font-bold mt-10 mb-4">Stage 3: Voice &amp; Messaging (The Words)</h2>
-                      <p class="text-neutral-300 mb-6">
-                        How you speak to your customers is just as important as how you look, especially in the Pakistani market where trust is built through clear, culturally relevant communication.
-                      </p>
-                      <h3 id="8-develop-brand-voice-guidelines" class="text-xl font-bold mt-6 mb-3">8. Develop Brand Voice Guidelines</h3>
-                      <p class="text-neutral-300 mb-4">
-                        <strong>Direct Answer:</strong> Brand voice guidelines define the tone your company uses in its communication and when to use English vs Roman Urdu. Our <a href="/content-writing">content writing team</a> uses this exact framework.
-                      </p>
-                      <h3 id="9-craft-a-memorable-tagline" class="text-xl font-bold mt-6 mb-3">9. Craft a Memorable Tagline</h3>
-                      <p class="text-neutral-300 mb-4">
-                        <strong>Direct Answer:</strong> A tagline is a short, punchy phrase that encapsulates your brand promise and states the benefit without jargon.
-                      </p>
-                      <h3 id="10-write-your-boilerplate-copy" class="text-xl font-bold mt-6 mb-3">10. Write Your Boilerplate Copy</h3>
-                      <p class="text-neutral-300 mb-6">
-                        <strong>Direct Answer:</strong> A boilerplate is a standardized 50 to 100 word paragraph that describes your company for press releases, pitch decks, and your website footer.
-                      </p>
-
-                      <h2 id="stage-4-launch-assets-the-execution" class="text-2xl font-bold mt-10 mb-4">Stage 4: Launch Assets (The Execution)</h2>
-                      <p class="text-neutral-300 mb-6">
-                        Now you have the foundation, the look, and the words. It is time to put them together to launch your product with our <a href="/web-development">web development team</a>.
-                      </p>
-                      <h3 id="11-design-a-high-converting-landing-page" class="text-xl font-bold mt-6 mb-3">11. Design a High-Converting Landing Page</h3>
-                      <p class="text-neutral-300 mb-4">
-                        <strong>Direct Answer:</strong> A landing page is a single web page designed specifically to convert visitors into leads or customers using Headline, Subheadline, Problem, Solution, Social Proof, and a Call-to-Action button.
-                      </p>
-                      <h3 id="12-build-a-professional-pitch-deck" class="text-xl font-bold mt-6 mb-3">12. Build a Professional Pitch Deck</h3>
-                      <p class="text-neutral-300 mb-4">
-                        <strong>Direct Answer:</strong> A pitch deck is a 10 to 15 slide presentation used to explain your business, problem, market size, solution, and traction to investors or partners.
-                      </p>
-                      <h3 id="13-create-social-media-templates" class="text-xl font-bold mt-6 mb-3">13. Create Social Media Templates</h3>
-                      <p class="text-neutral-300 mb-4">
-                        <strong>Direct Answer:</strong> Social media templates are pre-designed graphics that allow you to post consistently on LinkedIn, Instagram, and Facebook.
-                      </p>
-                      <h3 id="14-create-a-basic-brand-guidelines-document" class="text-xl font-bold mt-6 mb-3">14. Create a Basic Brand Guidelines Document</h3>
-                      <p class="text-neutral-300 mb-6">
-                        <strong>Direct Answer:</strong> A brand guidelines document is a concise 5-page PDF or presentation that houses all your brand rules: logo usage, colors, fonts, and voice.
-                      </p>
-
-                      <h2 id="frequently-asked-questions" class="text-2xl font-bold mt-10 mb-4">Frequently Asked Questions</h2>
-                      <h3>What is a brand identity checklist for startups?</h3>
-                      <p>A brand identity checklist for startups is a structured guide that outlines the essential visual, verbal, and strategic elements a new business needs to build a recognizable and trustworthy brand. It ensures founders do not skip foundational steps.</p>
-                      <h3>How much does it cost to build a startup brand in Pakistan?</h3>
-                      <p>You can build a minimum viable brand for under PKR 50,000 if you focus on the essentials (logo, colors, landing page). Full agency branding can range from PKR 80,000 to PKR 250,000 depending on the depth of research and deliverables.</p>
-                      <h3>When should a startup invest in brand identity?</h3>
-                      <p>A startup should invest in a basic minimum viable brand right before launching its product or seeking its first round of funding. You need a credible identity to attract early adopters and investors.</p>
-                      <h3>Should I use Urdu or English for my startup brand?</h3>
-                      <p>You should use a bilingual approach. Use English for formal communications, technical documentation, and investor decks. Use Roman Urdu for social media engagement, customer support, and WhatsApp marketing to build trust with local consumers.</p>
-                      <h3>What is a Minimum Viable Brand (MVB)?</h3>
-                      <p>A Minimum Viable Brand is the absolute minimum amount of brand strategy, design, and messaging required to launch a credible business. It includes a positioning statement, a professional logo, a color palette, a voice guide, and a landing page.</p>
-                      <h3>Why is a logo system better than just a single logo?</h3>
-                      <p>A logo system provides variations (horizontal, vertical, icon) for different platforms. A single logo often looks distorted on app icons or social media profiles, creating a fragmented brand presence. Read our guide on <a href="/blog/brand-strategy-vs-logo-design-pakistan-sme">brand identity vs logo design</a> for more details.</p>
-                      <h3>How do I choose the right colors for my brand?</h3>
-                      <p>Choose colors based on the psychology of your target audience and your industry. For example, blue conveys trust (suitable for fintech), while bold yellows and greens convey energy and growth (suitable for consumer startups).</p>
-                      <h3>What is the biggest branding mistake Pakistani startups make?</h3>
-                      <p>The biggest mistake is copying global brands without localization. A brand that works in Silicon Valley will not automatically resonate in Karachi. You must adapt your messaging, tone, and visual triggers to local cultural contexts. We cover this in <a href="/blog/small-business-branding-mistakes-pakistan">small business branding mistakes</a>.</p>
-
-                      <h2 id="conclusion" class="text-2xl font-bold mt-10 mb-4">Conclusion</h2>
-                      <p class="text-neutral-300 mb-6">
-                        Building a brand does not require a massive budget. It requires clarity, consistency, and a focus on the right priorities for your stage. Use this 14-point checklist to build your Minimum Viable Brand, or explore our <a href="/brand-building">brand building services</a> and <a href="/contact">get in touch today</a>.
-                      </p>
-                    </article>
-                  </main>
-                </div>
-              `;
-
-              routeHtml = replaceRootElement(routeHtml, realArticleHtml, route.url);
               writeRouteFiles(route.url, routeDir, routeHtml);
               continue;
             }
@@ -1282,8 +926,9 @@ export default defineConfig(({ mode }) => {
               }
               const firestorePost = fetchedPosts.find(p => getCanonicalSlug(p.slug) === blogSlug);
 
+              // Always prefer normalized staticPost.content when present so raw Firestore markdown never overrides clean headings or internal links
               let mdSource =
-                staticPost?.content && staticPost.content.length >= (firestorePost?.content?.length || 0)
+                staticPost?.content && staticPost.content.trim().length > 500
                   ? staticPost.content
                   : (firestorePost?.content || staticPost?.content || '');
               if (!mdSource) {
@@ -1301,15 +946,22 @@ export default defineConfig(({ mode }) => {
               if (mdSource) {
                 const htmlBlocks: string[] = [];
                 let lines = mdSource.trim().split(/\r?\n/);
-                const cleanPostHeading = (firestorePost?.title || staticPost?.title || route.title || '')
+                const cleanPostHeading = (staticPost?.title || firestorePost?.title || route.title || '')
                   .replace(/\s*\|\s*AbuQitmirLabs.*$/i, '')
                   .trim();
+                const isMetaOrDivider = (l: string) => {
+                  const t = (l || '').trim();
+                  return !t || t === '---' || /^(?:\*\*)?By\s+Abu\s*Qitmir/i.test(t) || /^\*By\s+Abu\s*Qitmir/i.test(t);
+                };
+                while (lines.length > 0 && isMetaOrDivider(lines[0])) {
+                  lines.shift();
+                }
                 if (lines.length > 0) {
                   const firstLine = lines[0].trim();
                   if (/^#\s+/.test(firstLine)) {
                     const h1Text = firstLine.replace(/^#\s+/, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
                     let nextNonEmptyIdx = 1;
-                    while (nextNonEmptyIdx < lines.length && (!lines[nextNonEmptyIdx].trim() || lines[nextNonEmptyIdx].trim() === '---' || /^\*\*By\s+Abu\s*Qitmir/i.test(lines[nextNonEmptyIdx].trim()))) {
+                    while (nextNonEmptyIdx < lines.length && isMetaOrDivider(lines[nextNonEmptyIdx])) {
                       nextNonEmptyIdx++;
                     }
                     if (nextNonEmptyIdx < lines.length && /^##\s+/.test(lines[nextNonEmptyIdx].trim())) {
@@ -1323,9 +975,71 @@ export default defineConfig(({ mode }) => {
                     lines.unshift(`## ${cleanPostHeading}`, '');
                   }
                 }
+
+                // Check if body before FAQ has <= 1 H2 and >= 3 H3s (promote orphan H3 sections to H2)
+                let h2BeforeFaq = 0;
+                let h3BeforeFaq = 0;
+                let inPreCheck = false;
+                let reachedFaqCheck = false;
+                for (const l of lines) {
+                  const t = l.trim();
+                  if (t.startsWith('```')) { inPreCheck = !inPreCheck; continue; }
+                  if (inPreCheck) continue;
+                  if (/^#{2,3}\s+(?:frequently asked questions|\bfaq\b)/i.test(t)) { reachedFaqCheck = true; continue; }
+                  if (!reachedFaqCheck) {
+                    if (/^##\s+/.test(t)) h2BeforeFaq++;
+                    else if (/^###\s+/.test(t)) h3BeforeFaq++;
+                  }
+                }
+                const promoteOrphanH3 = h2BeforeFaq <= 1 && h3BeforeFaq >= 3;
+
                 let inFaqSection = false;
                 let currentFaqQuestion = '';
                 let currentFaqAnswerParts: string[] = [];
+                let ulItems: string[] = [];
+                let olItems: string[] = [];
+                let inCodeBlock = false;
+                let codeBlockLines: string[] = [];
+
+                const formatInlineHtml = (rawStr: string) => {
+                  const parts: string[] = [];
+                  let lastIdx = 0;
+                  const tokenRe = /\[([^\]]+)\]\(([^)]+)\)|`([^`]+)`|\*\*([^*]+)\*\*/g;
+                  let m: RegExpExecArray | null;
+                  while ((m = tokenRe.exec(rawStr)) !== null) {
+                    if (m.index > lastIdx) {
+                      parts.push(escapeXml(rawStr.slice(lastIdx, m.index)));
+                    }
+                    if (m[1] !== undefined && m[2] !== undefined) {
+                      const cleanLabel = m[1].replace(/\*\*/g, '').trim();
+                      let cleanHref = m[2].trim();
+                      if (cleanHref.startsWith('https://www.abuqitmirlabs.tech')) {
+                        cleanHref = cleanHref.replace('https://www.abuqitmirlabs.tech', '') || '/';
+                      }
+                      parts.push(`<a href="${escapeXml(cleanHref)}" class="text-[#ccff00] underline">${escapeXml(cleanLabel)}</a>`);
+                    } else if (m[3] !== undefined) {
+                      parts.push(`<code class="bg-zinc-900 text-[#ccff00] px-1.5 py-0.5 rounded font-mono text-sm">${escapeXml(m[3])}</code>`);
+                    } else if (m[4] !== undefined) {
+                      parts.push(`<strong>${escapeXml(m[4].trim())}</strong>`);
+                    }
+                    lastIdx = m.index + m[0].length;
+                  }
+                  if (lastIdx < rawStr.length) {
+                    parts.push(escapeXml(rawStr.slice(lastIdx)));
+                  }
+                  return parts.join('');
+                };
+
+                const flushLists = () => {
+                  if (ulItems.length > 0) {
+                    htmlBlocks.push(`<ul class="list-disc pl-6 my-4 space-y-2 text-neutral-300">${ulItems.map(item => `<li>${formatInlineHtml(item)}</li>`).join('')}</ul>`);
+                    ulItems = [];
+                  }
+                  if (olItems.length > 0) {
+                    htmlBlocks.push(`<ol class="list-decimal pl-6 my-4 space-y-2 text-neutral-300">${olItems.map(item => `<li>${formatInlineHtml(item)}</li>`).join('')}</ol>`);
+                    olItems = [];
+                  }
+                };
 
                 const flushFaq = () => {
                   if (currentFaqQuestion && currentFaqAnswerParts.length > 0) {
@@ -1343,48 +1057,43 @@ export default defineConfig(({ mode }) => {
                   if (tableRows.length === 0) return;
                   const headerRow = tableRows[0];
                   const bodyRows = tableRows.slice(1);
-                  const thead = `<thead><tr>${headerRow.map(c => `<th class="border border-zinc-800 p-3 text-left font-bold">${escapeXml(c)}</th>`).join('')}</tr></thead>`;
+                  const thead = `<thead><tr>${headerRow.map(c => `<th class="border border-zinc-800 p-3 text-left font-bold">${formatInlineHtml(c)}</th>`).join('')}</tr></thead>`;
                   const tbody = bodyRows.length > 0
-                    ? `<tbody>${bodyRows.map(r => `<tr>${r.map(c => `<td class="border border-zinc-800 p-3">${escapeXml(c)}</td>`).join('')}</tr>`).join('')}</tbody>`
+                    ? `<tbody>${bodyRows.map(r => `<tr>${r.map(c => `<td class="border border-zinc-800 p-3">${formatInlineHtml(c)}</td>`).join('')}</tr>`).join('')}</tbody>`
                     : '';
                   htmlBlocks.push(`<div class="overflow-x-auto my-6"><table class="w-full border-collapse border border-zinc-800">${thead}${tbody}</table></div>`);
                   tableRows = [];
                 };
 
-                const formatInlineHtml = (rawStr: string) => {
-                  // Convert markdown links [text](url) and bold **text** safely
-                  const parts: string[] = [];
-                  let lastIdx = 0;
-                  const tokenRe = /\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*/g;
-                  let m: RegExpExecArray | null;
-                  while ((m = tokenRe.exec(rawStr)) !== null) {
-                    if (m.index > lastIdx) {
-                      parts.push(escapeXml(rawStr.slice(lastIdx, m.index)));
-                    }
-                    if (m[1] !== undefined && m[2] !== undefined) {
-                      parts.push(`<a href="${escapeXml(m[2].trim())}" class="text-[#ccff00] underline">${escapeXml(m[1].trim())}</a>`);
-                    } else if (m[3] !== undefined) {
-                      parts.push(`<strong>${escapeXml(m[3].trim())}</strong>`);
-                    }
-                    lastIdx = m.index + m[0].length;
-                  }
-                  if (lastIdx < rawStr.length) {
-                    parts.push(escapeXml(rawStr.slice(lastIdx)));
-                  }
-                  return parts.join('');
-                };
-
                 for (const line of lines) {
-                  const trimmed = line.trim();
-                  if (!trimmed || trimmed === '---' || /^\*\*By\s+Abu\s*Qitmir/i.test(trimmed)) {
+                  const trimmed = line.replace(/[\u200B-\u200D\uFEFF]/g, '').trim();
+                  if (trimmed.startsWith('```')) {
+                    flushLists();
+                    flushTable();
+                    if (inCodeBlock) {
+                      htmlBlocks.push(`<pre class="bg-zinc-950 border border-zinc-800 rounded-xl p-4 overflow-x-auto my-6 font-mono text-sm text-zinc-200"><code>${escapeXml(codeBlockLines.join('\n'))}</code></pre>`);
+                      codeBlockLines = [];
+                      inCodeBlock = false;
+                    } else {
+                      inCodeBlock = true;
+                    }
+                    continue;
+                  }
+                  if (inCodeBlock) {
+                    codeBlockLines.push(line);
+                    continue;
+                  }
+                  if (!trimmed || trimmed === '---' || /^\*?(\*\*)?By\s+Abu\s*Qitmir/i.test(trimmed)) {
+                    flushLists();
                     flushTable();
                     continue;
                   }
                   if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
+                    flushLists();
                     const cells = trimmed
                       .slice(1, -1)
                       .split('|')
-                      .map(c => c.replace(/\*\*([^*]+)\*\*/g, '$1').trim());
+                      .map(c => c.trim());
                     // Skip markdown separator row like | :--- | :--- |
                     if (cells.every(c => /^:?-{2,}:?$/.test(c))) {
                       continue;
@@ -1395,26 +1104,48 @@ export default defineConfig(({ mode }) => {
                     flushTable();
                   }
 
-                  if (trimmed.startsWith('## ')) {
+                  const rawHeadingMatch = trimmed.match(/^(?:\*\*)?(#{1,6})[\s\u00A0]+(.+?)(?:\*\*)?\s*#*$/);
+                  if (rawHeadingMatch) {
+                    flushLists();
                     flushFaq();
-                    const h2Text = trimmed.slice(3).replace(/\*\*/g, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
-                    inFaqSection = /frequently asked questions|\bfaq\b/i.test(h2Text);
-                    htmlBlocks.push(`<h2 id="${slugifyId(h2Text)}" class="text-2xl font-bold mt-10 mb-4">${escapeXml(h2Text)}</h2>`);
-                  } else if (trimmed.startsWith('### ')) {
-                    flushFaq();
-                    const h3Text = trimmed.slice(4).replace(/\*\*/g, '').trim();
-                    if (inFaqSection || h3Text.endsWith('?')) {
-                      currentFaqQuestion = h3Text.replace(/^\d+[\.\)]\s*/, '').trim();
+                    let level = rawHeadingMatch[1].length;
+                    if (level === 1) level = 2;
+                    let hText = rawHeadingMatch[2].replace(/\*\*/g, '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+                    if (/^[a-z]/.test(hText)) {
+                      hText = hText.charAt(0).toUpperCase() + hText.slice(1);
                     }
-                    htmlBlocks.push(`<h3 id="${slugifyId(h3Text)}" class="text-xl font-bold mt-6 mb-3">${escapeXml(h3Text)}</h3>`);
-                  } else if (trimmed.startsWith('#### ')) {
-                    flushFaq();
-                    const h4Text = trimmed.slice(5).replace(/\*\*/g, '').trim();
-                    htmlBlocks.push(`<h4 id="${slugifyId(h4Text)}" class="text-lg font-bold mt-5 mb-2">${escapeXml(h4Text)}</h4>`);
-                  } else if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
-                    const liRaw = trimmed.slice(2);
-                    htmlBlocks.push(`<li>${formatInlineHtml(liRaw)}</li>`);
-                  } else if (!trimmed.startsWith('#') && !trimmed.startsWith('```') && !trimmed.startsWith('![')) {
+                    if (/^introduction$/i.test(hText) && blogSlug === 'how-to-build-personal-brand-online') {
+                      hText = 'Introduction: Why Positioning Beats Volume';
+                    }
+                    if (/^a guide to ai automation in regulated industries\.?$/i.test(hText)) {
+                      hText = 'Introduction: AI Automation in Regulated Industries';
+                    }
+                    if (level === 3 && /frequently asked questions|\bfaq\b/i.test(hText)) {
+                      level = 2;
+                    } else if (level === 3 && promoteOrphanH3 && !inFaqSection) {
+                      level = 2;
+                    }
+                    if (level === 2) {
+                      inFaqSection = /frequently asked questions|\bfaq\b/i.test(hText);
+                      htmlBlocks.push(`<h2 id="${slugifyId(hText)}" class="text-2xl font-bold mt-10 mb-4">${escapeXml(hText)}</h2>`);
+                    } else if (level === 3) {
+                      if (inFaqSection || hText.endsWith('?')) {
+                        currentFaqQuestion = hText.replace(/^\d+[\.\)]\s*/, '').trim();
+                      }
+                      htmlBlocks.push(`<h3 id="${slugifyId(hText)}" class="text-xl font-bold mt-6 mb-3">${escapeXml(hText)}</h3>`);
+                    } else {
+                      htmlBlocks.push(`<h4 id="${slugifyId(hText)}" class="text-lg font-bold mt-5 mb-2">${escapeXml(hText)}</h4>`);
+                    }
+                  } else if (/^[-*+]\s+/.test(trimmed)) {
+                    if (olItems.length > 0) flushLists();
+                    const liRaw = trimmed.replace(/^[-*+]\s+/, '').replace(/^\[[ xX]\]\s+/, '');
+                    ulItems.push(liRaw);
+                  } else if (/^\d+[\.\)]\s+/.test(trimmed)) {
+                    if (ulItems.length > 0) flushLists();
+                    const liRaw = trimmed.replace(/^\d+[\.\)]\s+/, '');
+                    olItems.push(liRaw);
+                  } else if (!trimmed.startsWith('![')) {
+                    flushLists();
                     const cleanText = trimmed.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
                     if (currentFaqQuestion) {
                       currentFaqAnswerParts.push(cleanText);
@@ -1422,6 +1153,7 @@ export default defineConfig(({ mode }) => {
                     htmlBlocks.push(`<p class="text-neutral-300 mb-4">${formatInlineHtml(trimmed)}</p>`);
                   }
                 }
+                flushLists();
                 flushTable();
                 flushFaq();
                 // Guarantee at least one H2 even if a short post had no ## headings

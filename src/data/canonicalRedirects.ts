@@ -78,6 +78,8 @@ export const BLOG_SLUG_REDIRECTS: Record<string, string> = {
   'mvp-to-scale-roadmap-for-founders': 'mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-2026',
   'how-to-brief-a-graphic-designer-a-practical-guide-for-founders-who-want-results': 'how-to-brief-graphic-designer',
   'brand-identity-vs-logo-design-pakistan-sme': 'brand-strategy-vs-logo-design-pakistan-sme',
+  'brand-identity-vs-logo-design': 'brand-strategy-vs-logo-design-pakistan-sme',
+  'ai-automation-for-regulated-industries-abuqitmirlabs': 'ai-automation-compliance',
   'edtech-software-development-9-features-every-lms-needs': 'edtech-software-development',
   'edtech-software-development-lms-features-every-platform-needs': 'edtech-software-development',
   'native-mobile-app-development-ios-vs-android-cost-2026-abuqitmirlabs': 'native-mobile-app-development-ios-vs-android-cost',

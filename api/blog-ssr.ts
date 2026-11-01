@@ -33,6 +33,9 @@ const BLOG_SLUG_REDIRECTS: Record<string, string> = {
   'the-2026-digital-marketing-stack-what-actually-moves-revenue': 'digital-marketing-stack-2026',
   'the-2026-digital-marketing-stack-what-moves-revenue': 'digital-marketing-stack-2026',
   'the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026': '5-minute-technical-audit-for-founders',
+  'brand-identity-vs-logo-design-pakistan-sme': 'brand-strategy-vs-logo-design-pakistan-sme',
+  'brand-identity-vs-logo-design': 'brand-strategy-vs-logo-design-pakistan-sme',
+  'ai-automation-for-regulated-industries-abuqitmirlabs': 'ai-automation-compliance',
 };
 
 function getCanonicalSlug(rawSlug: string): string {
@@ -60,16 +63,23 @@ function slugifyId(txt: string): string {
 function formatInlineHtml(rawStr: string): string {
   const parts: string[] = [];
   let lastIdx = 0;
-  const tokenRe = /\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*/g;
+  const tokenRe = /\[([^\]]+)\]\(([^)]+)\)|`([^`]+)`|\*\*([^*]+)\*\*/g;
   let m: RegExpExecArray | null;
   while ((m = tokenRe.exec(rawStr)) !== null) {
     if (m.index > lastIdx) {
       parts.push(escapeHtml(rawStr.slice(lastIdx, m.index)));
     }
     if (m[1] !== undefined && m[2] !== undefined) {
-      parts.push(`<a href="${escapeHtml(m[2].trim())}" class="text-[#ccff00] underline">${escapeHtml(m[1].trim())}</a>`);
+      const cleanLabel = m[1].replace(/\*\*/g, '').trim();
+      let cleanHref = m[2].trim();
+      if (cleanHref.startsWith('https://www.abuqitmirlabs.tech')) {
+        cleanHref = cleanHref.replace('https://www.abuqitmirlabs.tech', '') || '/';
+      }
+      parts.push(`<a href="${escapeHtml(cleanHref)}" class="text-[#ccff00] underline">${escapeHtml(cleanLabel)}</a>`);
     } else if (m[3] !== undefined) {
-      parts.push(`<strong>${escapeHtml(m[3].trim())}</strong>`);
+      parts.push(`<code class="bg-zinc-900 text-[#ccff00] px-1.5 py-0.5 rounded font-mono text-sm">${escapeHtml(m[3])}</code>`);
+    } else if (m[4] !== undefined) {
+      parts.push(`<strong>${escapeHtml(m[4].trim())}</strong>`);
     }
     lastIdx = m.index + m[0].length;
   }
@@ -246,7 +256,7 @@ export default async function handler(req: any, res: any) {
     const rawCover = postData.coverImage || `${hostname}/logo.png`;
     const ogImageUrl = rawCover.startsWith('/') ? `${hostname}${rawCover}` : rawCover;
 
-    // Parse markdown content into semantic HTML with H2, H3, H4, GFM Tables, Lists, Links, and FAQs
+    // Parse markdown content into semantic HTML with H2, H3, H4, GFM Tables, Lists, Code Blocks, Links, and FAQs
     let lines = String(postData.content || '').trim().split(/\r?\n/);
     const isMetaOrDivider = (l: string) => {
       const t = (l || '').trim();
@@ -275,12 +285,44 @@ export default async function handler(req: any, res: any) {
       }
     }
 
+    // Check if body before FAQ has <= 1 H2 and >= 3 H3s (orphan H3 promotion)
+    let h2BeforeFaq = 0;
+    let h3BeforeFaq = 0;
+    let inPreCheck = false;
+    let reachedFaqCheck = false;
+    for (const l of lines) {
+      const t = l.trim();
+      if (t.startsWith('```')) { inPreCheck = !inPreCheck; continue; }
+      if (inPreCheck) continue;
+      if (/^#{2,3}\s+(?:frequently asked questions|\bfaq\b)/i.test(t)) { reachedFaqCheck = true; continue; }
+      if (!reachedFaqCheck) {
+        if (/^##\s+/.test(t)) h2BeforeFaq++;
+        else if (/^###\s+/.test(t)) h3BeforeFaq++;
+      }
+    }
+    const promoteOrphanH3 = h2BeforeFaq <= 1 && h3BeforeFaq >= 3;
+
     const htmlBlocks: string[] = [];
     const extractedFaqs: Array<{ question: string; answer: string }> = [];
     let inFaqSection = false;
     let currentFaqQuestion = '';
     let currentFaqAnswerParts: string[] = [];
     let tableRows: string[][] = [];
+    let ulItems: string[] = [];
+    let olItems: string[] = [];
+    let inCodeBlock = false;
+    let codeBlockLines: string[] = [];
+
+    const flushLists = () => {
+      if (ulItems.length > 0) {
+        htmlBlocks.push(`<ul class="list-disc pl-6 my-4 space-y-2 text-neutral-300">${ulItems.map(item => `<li>${formatInlineHtml(item)}</li>`).join('')}</ul>`);
+        ulItems = [];
+      }
+      if (olItems.length > 0) {
+        htmlBlocks.push(`<ol class="list-decimal pl-6 my-4 space-y-2 text-neutral-300">${olItems.map(item => `<li>${formatInlineHtml(item)}</li>`).join('')}</ol>`);
+        olItems = [];
+      }
+    };
 
     const flushTable = () => {
       if (tableRows.length === 0) return;
@@ -307,12 +349,30 @@ export default async function handler(req: any, res: any) {
     };
 
     for (const line of lines) {
-      const trimmed = line.trim();
+      const trimmed = line.replace(/[\u200B-\u200D\uFEFF]/g, '').trim();
+      if (trimmed.startsWith('```')) {
+        flushLists();
+        flushTable();
+        if (inCodeBlock) {
+          htmlBlocks.push(`<pre class="bg-zinc-950 border border-zinc-800 rounded-xl p-4 overflow-x-auto my-6 font-mono text-sm text-zinc-200"><code>${escapeHtml(codeBlockLines.join('\n'))}</code></pre>`);
+          codeBlockLines = [];
+          inCodeBlock = false;
+        } else {
+          inCodeBlock = true;
+        }
+        continue;
+      }
+      if (inCodeBlock) {
+        codeBlockLines.push(line);
+        continue;
+      }
       if (!trimmed || trimmed === '---' || /^\*?(\*\*)?By\s+Abu\s*Qitmir/i.test(trimmed)) {
+        flushLists();
         flushTable();
         continue;
       }
       if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
+        flushLists();
         const cells = trimmed
           .slice(1, -1)
           .split('|')
@@ -326,30 +386,49 @@ export default async function handler(req: any, res: any) {
         flushTable();
       }
 
-      if (trimmed.startsWith('## ')) {
+      const rawHeadingMatch = trimmed.match(/^(?:\*\*)?(#{1,6})[\s\u00A0]+(.+?)(?:\*\*)?\s*#*$/);
+      if (rawHeadingMatch) {
+        flushLists();
         flushFaq();
-        const h2Text = trimmed.slice(3).replace(/\*\*/g, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
-        inFaqSection = /frequently asked questions|\bfaq\b/i.test(h2Text);
-        htmlBlocks.push(`<h2 id="${slugifyId(h2Text)}" class="text-2xl font-bold mt-10 mb-4">${escapeHtml(h2Text)}</h2>`);
-      } else if (trimmed.startsWith('### ')) {
-        flushFaq();
-        const h3Text = trimmed.slice(4).replace(/\*\*/g, '').trim();
-        if (inFaqSection || h3Text.endsWith('?')) {
-          currentFaqQuestion = h3Text.replace(/^\d+[\.\)]\s*/, '').trim();
+        let level = rawHeadingMatch[1].length;
+        if (level === 1) level = 2;
+        let hText = rawHeadingMatch[2].replace(/\*\*/g, '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+        if (/^[a-z]/.test(hText)) {
+          hText = hText.charAt(0).toUpperCase() + hText.slice(1);
         }
-        htmlBlocks.push(`<h3 id="${slugifyId(h3Text)}" class="text-xl font-bold mt-6 mb-3">${escapeHtml(h3Text)}</h3>`);
-      } else if (trimmed.startsWith('#### ')) {
-        flushFaq();
-        const h4Text = trimmed.slice(5).replace(/\*\*/g, '').trim();
-        htmlBlocks.push(`<h4 id="${slugifyId(h4Text)}" class="text-lg font-bold mt-5 mb-2">${escapeHtml(h4Text)}</h4>`);
-      } else if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
-        htmlBlocks.push(`<li>${formatInlineHtml(trimmed.slice(2))}</li>`);
-      } else if (!trimmed.startsWith('#') && !trimmed.startsWith('```') && !trimmed.startsWith('![')) {
+        if (/^introduction$/i.test(hText) && canonicalSlug === 'how-to-build-personal-brand-online') {
+          hText = 'Introduction: Why Positioning Beats Volume';
+        }
+        if (level === 3 && /frequently asked questions|\bfaq\b/i.test(hText)) {
+          level = 2;
+        } else if (level === 3 && promoteOrphanH3 && !inFaqSection) {
+          level = 2;
+        }
+        if (level === 2) {
+          inFaqSection = /frequently asked questions|\bfaq\b/i.test(hText);
+          htmlBlocks.push(`<h2 id="${slugifyId(hText)}" class="text-2xl font-bold mt-10 mb-4">${escapeHtml(hText)}</h2>`);
+        } else if (level === 3) {
+          if (inFaqSection || hText.endsWith('?')) {
+            currentFaqQuestion = hText.replace(/^\d+[\.\)]\s*/, '').trim();
+          }
+          htmlBlocks.push(`<h3 id="${slugifyId(hText)}" class="text-xl font-bold mt-6 mb-3">${escapeHtml(hText)}</h3>`);
+        } else {
+          htmlBlocks.push(`<h4 id="${slugifyId(hText)}" class="text-lg font-bold mt-5 mb-2">${escapeHtml(hText)}</h4>`);
+        }
+      } else if (/^[-*+]\s+/.test(trimmed)) {
+        if (olItems.length > 0) flushLists();
+        ulItems.push(trimmed.replace(/^[-*+]\s+/, '').replace(/^\[[ xX]\]\s+/, ''));
+      } else if (/^\d+[\.\)]\s+/.test(trimmed)) {
+        if (ulItems.length > 0) flushLists();
+        olItems.push(trimmed.replace(/^\d+[\.\)]\s+/, ''));
+      } else if (!trimmed.startsWith('![')) {
+        flushLists();
         const cleanTxt = trimmed.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
         if (currentFaqQuestion) currentFaqAnswerParts.push(cleanTxt);
         htmlBlocks.push(`<p class="text-neutral-300 mb-4">${formatInlineHtml(trimmed)}</p>`);
       }
     }
+    flushLists();
     flushTable();
     flushFaq();
 
