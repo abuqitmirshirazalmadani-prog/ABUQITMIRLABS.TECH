@@ -10616,6 +10616,72 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
       ]
     }
   },
+  '/blog/how-to-build-personal-brand-online': {
+    title: "How to Build a Personal Brand Online | AbuQitmirLabs",
+    description: "Learn how to build a personal brand online in 2026 using the AUTHORITY Framework—positioning, visual identity, content engines, and AI search optimization.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/how-to-build-personal-brand-online',
+    ogTitle: "How to Build a Personal Brand Online | AbuQitmirLabs",
+    ogDescription: "Learn how to build a personal brand online in 2026 using the AUTHORITY Framework—positioning, visual identity, content engines, and AI search optimization.",
+    ogImage: "/images/blog-covers/how-to-build-personal-brand-online-1e2d72bb.webp",
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: "How to Build a Personal Brand Online | AbuQitmirLabs",
+    twitterDescription: "Learn how to build a personal brand online in 2026 using the AUTHORITY Framework—positioning, visual identity, content engines, and AI search optimization.",
+    twitterImage: "/images/blog-covers/how-to-build-personal-brand-online-1e2d72bb.webp",
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.abuqitmirlabs.tech/#organization',
+          name: 'AbuQitmirLabs .TECH',
+          url: 'https://www.abuqitmirlabs.tech/',
+          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://www.abuqitmirlabs.tech/#website',
+          url: 'https://www.abuqitmirlabs.tech/',
+          name: 'AbuQitmirLabs .TECH',
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
+        },
+        {
+          '@type': 'WebPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/how-to-build-personal-brand-online#webpage',
+          url: 'https://www.abuqitmirlabs.tech/blog/how-to-build-personal-brand-online',
+          name: "How to Build a Personal Brand Online | AbuQitmirLabs",
+          description: "Learn how to build a personal brand online in 2026 using the AUTHORITY Framework—positioning, visual identity, content engines, and AI search optimization.",
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/how-to-build-personal-brand-online#breadcrumb',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
+            { '@type': 'ListItem', position: 3, name: "How to Build a Personal Brand Online", item: 'https://www.abuqitmirlabs.tech/blog/how-to-build-personal-brand-online' }
+          ]
+        },
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/how-to-build-personal-brand-online#article',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/how-to-build-personal-brand-online#webpage' },
+          headline: "How to Build a Personal Brand Online",
+          description: "Learn how to build a personal brand online in 2026 using the AUTHORITY Framework—positioning, visual identity, content engines, and AI search optimization.",
+          image: "/images/blog-covers/how-to-build-personal-brand-online-1e2d72bb.webp",
+          author: {
+            '@type': 'Person',
+            name: "Abu Qitmir Mohammad Shiraz Al-Madani",
+            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+          },
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
+          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/how-to-build-personal-brand-online#webpage' },
+          datePublished: "2026-04-20T00:00:00+00:00",
+          dateModified: "2026-04-20T00:00:00+00:00"
+        }
+      ]
+    }
+  },
 };
 
 

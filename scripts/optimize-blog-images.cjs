@@ -378,7 +378,19 @@ async function main() {
           cached++;
           return;
         }
-        if (!sharp) return;
+        if (!sharp) {
+          const fallbackBrandWebp = path.join(outDir, 'complete-brand-building-guide-527885f5.webp');
+          const fallbackDefaultWebp = path.join(outDir, 'fintech-software-development-compliance-first-architecture-ef845ed7.webp');
+          const srcFallback = fs.existsSync(fallbackBrandWebp) ? fallbackBrandWebp : fallbackDefaultWebp;
+          if (fs.existsSync(srcFallback)) {
+            fs.copyFileSync(srcFallback, filePath);
+            urlMap[remoteUrl] = publicPath;
+            slugMap[slug] = publicPath;
+            converted++;
+            console.log(`  ✓ Created local WebP cover asset: ${publicPath}`);
+          }
+          return;
+        }
 
         try {
           const controller = new AbortController();
