@@ -217,9 +217,9 @@ if (fs.existsSync(vercelPath)) {
 }
 
 // ==========================================
-// 1D. AUDIT INDEX.HTML FOR SINGLE <TITLE data-rh="true"> & LOCAL WEBP HERO
+// 1D. AUDIT INDEX.HTML FOR SINGLE <TITLE> & LOCAL WEBP HERO
 // ==========================================
-console.log('\n📌 Checking index.html for single <title data-rh="true"> and local WebP hero image...');
+console.log('\n📌 Checking index.html for single <title> and local WebP hero image...');
 const rootIndexHtmlPath = path.join(rootDir, 'index.html');
 if (fs.existsSync(rootIndexHtmlPath)) {
   let indexHtmlContent = fs.readFileSync(rootIndexHtmlPath, 'utf8');
@@ -231,14 +231,15 @@ if (fs.existsSync(rootIndexHtmlPath)) {
     let seen = 0;
     indexHtmlContent = indexHtmlContent.replace(titleTagRegex, (match) => {
       seen++;
-      return seen === 1 ? match.replace(/^<title\b(?![^>]*data-rh)/i, '<title data-rh="true"') : '';
+      return seen === 1 ? match.replace(/\s+data-rh=["'][^"']*["']/gi, '') : '';
     });
     indexModified = true;
     issuesFixed.push(`Deduplicated ${staticTitles.length} <title> tags in index.html down to 1.`);
-  } else if (staticTitles.length === 1 && !staticTitles[0].includes('data-rh=')) {
-    indexHtmlContent = indexHtmlContent.replace(/<title\b/i, '<title data-rh="true"');
+  }
+  if (/\s+data-rh=["'][^"']*["']/i.test(indexHtmlContent)) {
+    indexHtmlContent = indexHtmlContent.replace(/\s+data-rh=["'][^"']*["']/gi, '');
     indexModified = true;
-    issuesFixed.push('Added data-rh="true" to <title> in index.html.');
+    issuesFixed.push('Removed legacy data-rh="true" attributes from index.html.');
   }
   if (indexHtmlContent.includes('https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg')) {
     indexHtmlContent = indexHtmlContent.replaceAll(
@@ -250,9 +251,9 @@ if (fs.existsSync(rootIndexHtmlPath)) {
   }
   if (indexModified) {
     fs.writeFileSync(rootIndexHtmlPath, indexHtmlContent, 'utf8');
-    console.log('  ✅ Auto-normalized index.html <title data-rh="true"> and local WebP hero image.');
+    console.log('  ✅ Auto-normalized index.html <title> and local WebP hero image.');
   } else {
-    console.log('  ✅ index.html has strictly 1 <title data-rh="true"> tag and local WebP hero image.');
+    console.log('  ✅ index.html has strictly 1 clean <title> tag and local WebP hero image.');
   }
 }
 

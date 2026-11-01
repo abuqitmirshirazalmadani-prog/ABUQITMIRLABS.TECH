@@ -3332,7 +3332,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         </Link>
                         
                         <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight leading-[1.1] mb-8 font-serif animate-enter animate-enter-delay-1">
-                            {post.title}
+                            {String(post.title || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim()}
                         </h1>
 
                         <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-zinc-400 font-mono border-y border-zinc-800/80 py-5 mb-12">

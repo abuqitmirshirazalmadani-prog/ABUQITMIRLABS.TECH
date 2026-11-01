@@ -24,20 +24,23 @@ function slugifyId(txt: string): string {
 }
 
 function formatInlineHtml(rawStr: string): string {
-  const strippedBold = rawStr.replace(/\*\*([^*]+)\*\*/g, '$1');
   const parts: string[] = [];
   let lastIdx = 0;
-  const linkRe = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const tokenRe = /\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*/g;
   let m: RegExpExecArray | null;
-  while ((m = linkRe.exec(strippedBold)) !== null) {
+  while ((m = tokenRe.exec(rawStr)) !== null) {
     if (m.index > lastIdx) {
-      parts.push(escapeHtml(strippedBold.slice(lastIdx, m.index)));
+      parts.push(escapeHtml(rawStr.slice(lastIdx, m.index)));
     }
-    parts.push(`<a href="${escapeHtml(m[2].trim())}" class="text-[#ccff00] underline">${escapeHtml(m[1].trim())}</a>`);
+    if (m[1] !== undefined && m[2] !== undefined) {
+      parts.push(`<a href="${escapeHtml(m[2].trim())}" class="text-[#ccff00] underline">${escapeHtml(m[1].trim())}</a>`);
+    } else if (m[3] !== undefined) {
+      parts.push(`<strong>${escapeHtml(m[3].trim())}</strong>`);
+    }
     lastIdx = m.index + m[0].length;
   }
-  if (lastIdx < strippedBold.length) {
-    parts.push(escapeHtml(strippedBold.slice(lastIdx)));
+  if (lastIdx < rawStr.length) {
+    parts.push(escapeHtml(rawStr.slice(lastIdx)));
   }
   return parts.join('');
 }
@@ -141,7 +144,7 @@ export default async function handler(req: any, res: any) {
     const fullCanonical = `${hostname}${routeUrl}`;
     const seoMeta = SEO_ROUTES_METADATA[routeUrl];
 
-    const cleanH1 = String(postData.title || canonicalSlug).trim();
+    const cleanH1 = String(postData.title || canonicalSlug).replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
     const pageTitle = seoMeta?.title || (/Abu\s*Qitmir\s*Labs/i.test(cleanH1) ? cleanH1 : `${cleanH1} | AbuQitmirLabs`);
     const rawDesc = (seoMeta?.description || postData.metaDescription || postData.excerpt || `${cleanH1}: in-depth guide by AbuQitmirLabs.`).trim();
     const metaDesc = rawDesc.length > 158 ? `${rawDesc.slice(0, 155).trim()}...` : rawDesc;
@@ -211,6 +214,10 @@ export default async function handler(req: any, res: any) {
           currentFaqQuestion = h3Text.replace(/^\d+[\.\)]\s*/, '').trim();
         }
         htmlBlocks.push(`<h3 id="${slugifyId(h3Text)}" class="text-xl font-bold mt-6 mb-3">${escapeHtml(h3Text)}</h3>`);
+      } else if (trimmed.startsWith('#### ')) {
+        flushFaq();
+        const h4Text = trimmed.slice(5).replace(/\*\*/g, '').trim();
+        htmlBlocks.push(`<h4 id="${slugifyId(h4Text)}" class="text-lg font-bold mt-5 mb-2">${escapeHtml(h4Text)}</h4>`);
       } else if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
         htmlBlocks.push(`<li>${formatInlineHtml(trimmed.slice(2))}</li>`);
       } else if (!trimmed.startsWith('#') && !trimmed.startsWith('```') && !trimmed.startsWith('![')) {
@@ -285,7 +292,7 @@ export default async function handler(req: any, res: any) {
       });
     }
 
-    const schemaBlock = `<script type="application/ld+json" data-rh="true">\n${JSON.stringify({ '@context': 'https://schema.org', '@graph': graphNodes }, null, 2)}\n</script>`;
+    const schemaBlock = `<script id="canonical-schema-graph" type="application/ld+json">\n${JSON.stringify({ '@context': 'https://schema.org', '@graph': graphNodes }, null, 2)}\n</script>`;
     const innerRootHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader(routeUrl)}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${escapeHtml(cleanH1)}</h1><article class="prose prose-invert max-w-none text-neutral-300">${htmlBlocks.join('\n')}</article></main></div>`;
 
     // Load SPA shell if available to keep client bundle scripts intact
@@ -313,11 +320,11 @@ export default async function handler(req: any, res: any) {
         .replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis, '')
         .replace(
           '</head>',
-          `  <title data-rh="true">${escapeHtml(pageTitle)}</title>\n  <meta data-rh="true" name="description" content="${escapeHtml(metaDesc)}" />\n  <link rel="canonical" data-rh="true" href="${fullCanonical}" />\n  <meta data-rh="true" property="og:type" content="article" />\n  <meta data-rh="true" property="og:title" content="${escapeHtml(pageTitle)}" />\n  <meta data-rh="true" property="og:description" content="${escapeHtml(metaDesc)}" />\n  <meta data-rh="true" property="og:url" content="${fullCanonical}" />\n  <meta data-rh="true" property="og:image" content="${escapeHtml(ogImageUrl)}" />\n  <meta data-rh="true" name="twitter:card" content="summary_large_image" />\n  <meta data-rh="true" name="twitter:title" content="${escapeHtml(pageTitle)}" />\n  <meta data-rh="true" name="twitter:description" content="${escapeHtml(metaDesc)}" />\n  <meta data-rh="true" name="twitter:image" content="${escapeHtml(ogImageUrl)}" />\n  ${schemaBlock}\n</head>`
+          `  <title>${escapeHtml(pageTitle)}</title>\n  <meta name="description" content="${escapeHtml(metaDesc)}" />\n  <link rel="canonical" href="${fullCanonical}" />\n  <meta property="og:type" content="article" />\n  <meta property="og:title" content="${escapeHtml(pageTitle)}" />\n  <meta property="og:description" content="${escapeHtml(metaDesc)}" />\n  <meta property="og:url" content="${fullCanonical}" />\n  <meta property="og:image" content="${escapeHtml(ogImageUrl)}" />\n  <meta name="twitter:card" content="summary_large_image" />\n  <meta name="twitter:title" content="${escapeHtml(pageTitle)}" />\n  <meta name="twitter:description" content="${escapeHtml(metaDesc)}" />\n  <meta name="twitter:image" content="${escapeHtml(ogImageUrl)}" />\n  ${schemaBlock}\n</head>`
         )
         .replace(/<div id="root"[^>]*>[\s\S]*?<\/div>/i, `<div id="root" data-rendered-route="${routeUrl}">${innerRootHtml}</div>`);
     } else {
-      finalHtml = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title data-rh="true">${escapeHtml(pageTitle)}</title><meta data-rh="true" name="description" content="${escapeHtml(metaDesc)}" /><link rel="canonical" data-rh="true" href="${fullCanonical}" /><meta data-rh="true" property="og:type" content="article" /><meta data-rh="true" property="og:title" content="${escapeHtml(pageTitle)}" /><meta data-rh="true" property="og:description" content="${escapeHtml(metaDesc)}" /><meta data-rh="true" property="og:url" content="${fullCanonical}" /><meta data-rh="true" property="og:image" content="${escapeHtml(ogImageUrl)}" />${schemaBlock}</head><body><div id="root" data-rendered-route="${routeUrl}">${innerRootHtml}</div></body></html>`;
+      finalHtml = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>${escapeHtml(pageTitle)}</title><meta name="description" content="${escapeHtml(metaDesc)}" /><link rel="canonical" href="${fullCanonical}" /><meta property="og:type" content="article" /><meta property="og:title" content="${escapeHtml(pageTitle)}" /><meta property="og:description" content="${escapeHtml(metaDesc)}" /><meta property="og:url" content="${fullCanonical}" /><meta property="og:image" content="${escapeHtml(ogImageUrl)}" />${schemaBlock}</head><body><div id="root" data-rendered-route="${routeUrl}">${innerRootHtml}</div></body></html>`;
     }
 
     res.setHeader('Content-Type', 'text/html; charset=utf-8');

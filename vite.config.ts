@@ -730,11 +730,11 @@ export default defineConfig(({ mode }) => {
             const strippedDesc = clampMetaDescription(route.description || '', 158);
             const safeDesc = strippedDesc.replace(/"/g, '&quot;').replace(/&/g, '&amp;');
             
-            routeHtml = routeHtml.replace(/<title\b[^>]*>[^<]*<\/title>/gi, '').replace('</head>', `  <title data-rh="true">${safeTitle}</title>\n</head>`);
-            routeHtml = routeHtml.replace(/<meta\b[^>]*property="og:title"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*name="twitter:title"[^>]*\/?>/gi, '').replace('</head>', `  <meta data-rh="true" property="og:title" content="${safeTitle}" />\n  <meta data-rh="true" name="twitter:title" content="${safeTitle}" />\n</head>`);
-            routeHtml = routeHtml.replace(/<meta\b[^>]*name="description"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*property="og:description"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*name="twitter:description"[^>]*\/?>/gi, '').replace('</head>', `  <meta data-rh="true" name="description" content="${safeDesc}" />\n  <meta data-rh="true" property="og:description" content="${safeDesc}" />\n  <meta data-rh="true" name="twitter:description" content="${safeDesc}" />\n</head>`);
-            routeHtml = routeHtml.replace(/<meta\b[^>]*property="og:url"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*name="twitter:url"[^>]*\/?>/gi, '').replace('</head>', `  <meta data-rh="true" property="og:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n  <meta data-rh="true" name="twitter:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
-            routeHtml = routeHtml.replace(/<link\s+rel="canonical"[^>]*\/?>/gi, '').replace('</head>', `  <link rel="canonical" data-rh="true" href="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
+            routeHtml = routeHtml.replace(/<title\b[^>]*>[^<]*<\/title>/gi, '').replace('</head>', `  <title>${safeTitle}</title>\n</head>`);
+            routeHtml = routeHtml.replace(/<meta\b[^>]*property="og:title"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*name="twitter:title"[^>]*\/?>/gi, '').replace('</head>', `  <meta property="og:title" content="${safeTitle}" />\n  <meta name="twitter:title" content="${safeTitle}" />\n</head>`);
+            routeHtml = routeHtml.replace(/<meta\b[^>]*name="description"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*property="og:description"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*name="twitter:description"[^>]*\/?>/gi, '').replace('</head>', `  <meta name="description" content="${safeDesc}" />\n  <meta property="og:description" content="${safeDesc}" />\n  <meta name="twitter:description" content="${safeDesc}" />\n</head>`);
+            routeHtml = routeHtml.replace(/<meta\b[^>]*property="og:url"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*name="twitter:url"[^>]*\/?>/gi, '').replace('</head>', `  <meta property="og:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n  <meta name="twitter:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
+            routeHtml = routeHtml.replace(/<link\s+rel="canonical"[^>]*\/?>/gi, '').replace('</head>', `  <link rel="canonical" href="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
             
             // ==== SUPER-SAFE replaceRootElement ====
             const replaceRootElement = (htmlSource: string, newInnerHtml: string, renderedRouteAttr?: string) => {
@@ -818,7 +818,7 @@ export default defineConfig(({ mode }) => {
 
             const injectSingleSchema = (htmlSource: string, schemaObj: any) => {
               const cleaned = htmlSource.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis, '');
-              return cleaned.replace('</head>', `  <script type="application/ld+json" data-rh="true">\n${JSON.stringify(schemaObj, null, 2)}\n  </script>\n</head>`);
+              return cleaned.replace('</head>', `  <script id="canonical-schema-graph" type="application/ld+json">\n${JSON.stringify(schemaObj, null, 2)}\n  </script>\n</head>`);
             };
 
             if (route.url === '/') {
@@ -915,7 +915,7 @@ export default defineConfig(({ mode }) => {
                   .replace(/<meta\b[^>]*property="og:image"[^>]*\/?>/gi, '')
                   .replace(/<meta\b[^>]*name="twitter:image"[^>]*\/?>/gi, '')
                   .replace(/<meta\b[^>]*property="og:type"[^>]*\/?>/gi, '')
-                  .replace('</head>', `  <meta data-rh="true" property="og:type" content="article" />\n  <meta data-rh="true" property="og:image" content="${seoMeta.ogImage}" />\n  <meta data-rh="true" name="twitter:image" content="${seoMeta.ogImage}" />\n</head>`);
+                  .replace('</head>', `  <meta property="og:type" content="article" />\n  <meta property="og:image" content="${seoMeta.ogImage}" />\n  <meta name="twitter:image" content="${seoMeta.ogImage}" />\n</head>`);
               }
               const contentCalendarHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader('/blog/content-calendar-strategy')}<main id="main-content" class="max-w-4xl mx-auto px-6 pt-36 pb-20"><h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-8 font-serif">How to Build a Content Calendar That Gets Followed</h1><article class="prose prose-invert max-w-none text-zinc-300"><h2>Quick Takeaways</h2><ul><li>Most content calendars fail because they are built on unrealistic expectations and lack of clear ownership, not because of a lack of tools.</li><li>A successful calendar requires a system: defining content pillars, setting a realistic cadence, and assigning clear owners.</li><li>You do not need expensive software. A shared Google Sheet or a simple Notion board is usually sufficient.</li><li>Build a content backlog to prevent last-minute scrambling and quality drops.</li></ul><h2>Why Most Content Calendars Fail</h2><p>Most content calendars fail because they are disconnected from actual production capacity. A calendar must account for the entire production cycle: ideation, research, drafting, editing, design, and publishing.</p><h2>The 6-Step Content Calendar Strategy</h2><h3>Step 1: Define Your Content Pillars</h3><h3>Step 2: Set a Realistic Publishing Cadence</h3><h3>Step 3: Assign Clear Ownership</h3><h3>Step 4: Build a Content Backlog</h3><h3>Step 5: Schedule and Integrate with SEO</h3><h3>Step 6: Review, Iterate, and Repurpose</h3><h2>The Content Calendar Template</h2><h2>Common Mistakes Founders Make with Content Calendars</h2><h2>Frequently Asked Questions</h2><h3>What is a content calendar strategy?</h3><p>A content calendar strategy is a systematic plan for creating, scheduling, and publishing content. It defines the topics, the target audience, the publishing frequency, and the team responsible for execution.</p><h3>How far in advance should I plan content?</h3><p>Plan your core themes and backlogs 3 months in advance. However, finalize specific publishing dates and drafts on a rolling 4-week basis to remain flexible to market changes.</p><h3>What tools are best for content calendars?</h3><p>Google Sheets, Notion, or Airtable are usually sufficient for small to mid-sized teams. For enterprise teams, tools like CoSchedule or Asana can help manage complex workflows.</p></article></main></div>`;
               routeHtml = replaceRootElement(routeHtml, contentCalendarHtml, '/blog/content-calendar-strategy');
@@ -933,9 +933,9 @@ export default defineConfig(({ mode }) => {
                   .replace(/<meta\b[^>]*property="og:image"[^>]*\/?>/gi, '')
                   .replace(/<meta\b[^>]*name="twitter:image"[^>]*\/?>/gi, '')
                   .replace(/<meta\b[^>]*property="og:type"[^>]*\/?>/gi, '')
-                  .replace('</head>', `  <meta data-rh="true" property="og:type" content="article" />\n  <meta data-rh="true" property="og:image" content="${seoMeta.ogImage}" />\n  <meta data-rh="true" name="twitter:image" content="${seoMeta.ogImage}" />\n</head>`);
+                  .replace('</head>', `  <meta property="og:type" content="article" />\n  <meta property="og:image" content="${seoMeta.ogImage}" />\n  <meta name="twitter:image" content="${seoMeta.ogImage}" />\n</head>`);
               }
-              const brandStrategyHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader('/blog/brand-strategy-vs-logo-design-pakistan-sme')}<main id="main-content" class="max-w-4xl mx-auto px-6 pt-36 pb-20"><h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-8 font-serif">Brand Strategy vs Logo Design Pakistan | AbuQitmirLabs</h1><article class="prose prose-invert max-w-none text-zinc-300"><h2>Introduction</h2><p>Most Pakistani SMEs treat branding as a one-time transaction. They hire a freelancer, pay PKR 10,000 for a visual mark, slap it on a website, and wonder why they cannot command premium prices or attract serious clients.</p><h2>Quick Verdict: The Difference in 50 Words</h2><p>A logo is a single visual mark that gives you a PNG and SVG. Brand strategy is the comprehensive system of positioning, typography, color palettes, and guidelines that tells you how to use that logo. In Pakistan, a logo costs PKR 3,000 to 50,000, while a full brand strategy starts at PKR 80,000.</p><h2>The Problem: Why SMEs Get This Wrong</h2><h2>What Is a Logo? (And What It Is Not)</h2><h2>What Is a Brand Strategy?</h2><h2 id="cost-comparison-pkr-pricing-for-pakistani-smes">Cost Comparison: PKR Pricing for Pakistani SMEs</h2><h2>The Decision Matrix: Logo or Strategy First?</h2><h2>Why Cheap Logos Hurt Your Business Long-Term</h2><h2>Frequently Asked Questions</h2><h3>What is the difference between a logo and brand strategy?</h3><p>A logo is a single visual mark. Brand strategy is the comprehensive plan that defines your positioning, target audience, brand voice, and visual identity system.</p><h3>How much does a logo cost in Pakistan?</h3><p>In Pakistan, a freelance logo design can range from PKR 3,000 to PKR 15,000. A professional design agency might charge between PKR 20,000 and PKR 50,000 for a comprehensive logo suite.</p><h3>How much does brand strategy cost in Pakistan?</h3><p>A full brand strategy and identity system for an SME in Pakistan typically starts around PKR 80,000 and can exceed PKR 250,000 depending on the agency's expertise, the depth of research, and the deliverables.</p><h2>Conclusion</h2></article></main></div>`;
+              const brandStrategyHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader('/blog/brand-strategy-vs-logo-design-pakistan-sme')}<main id="main-content" class="max-w-4xl mx-auto px-6 pt-36 pb-20"><h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-8 font-serif">Brand Strategy vs Logo Design Pakistan</h1><article class="prose prose-invert max-w-none text-zinc-300"><h2>Introduction</h2><p>Most Pakistani SMEs treat branding as a one-time transaction. They hire a freelancer, pay PKR 10,000 for a visual mark, slap it on a website, and wonder why they cannot command premium prices or attract serious clients.</p><h2>Quick Verdict: The Difference in 50 Words</h2><p>A logo is a single visual mark that gives you a PNG and SVG. Brand strategy is the comprehensive system of positioning, typography, color palettes, and guidelines that tells you how to use that logo. In Pakistan, a logo costs PKR 3,000 to 50,000, while a full brand strategy starts at PKR 80,000.</p><h2>The Problem: Why SMEs Get This Wrong</h2><h2>What Is a Logo? (And What It Is Not)</h2><h2>What Is a Brand Strategy?</h2><h2 id="cost-comparison-pkr-pricing-for-pakistani-smes">Cost Comparison: PKR Pricing for Pakistani SMEs</h2><h2>The Decision Matrix: Logo or Strategy First?</h2><h2>Why Cheap Logos Hurt Your Business Long-Term</h2><h2>Frequently Asked Questions</h2><h3>What is the difference between a logo and brand strategy?</h3><p>A logo is a single visual mark. Brand strategy is the comprehensive plan that defines your positioning, target audience, brand voice, and visual identity system.</p><h3>How much does a logo cost in Pakistan?</h3><p>In Pakistan, a freelance logo design can range from PKR 3,000 to PKR 15,000. A professional design agency might charge between PKR 20,000 and PKR 50,000 for a comprehensive logo suite.</p><h3>How much does brand strategy cost in Pakistan?</h3><p>A full brand strategy and identity system for an SME in Pakistan typically starts around PKR 80,000 and can exceed PKR 250,000 depending on the agency's expertise, the depth of research, and the deliverables.</p><h2>Conclusion</h2></article></main></div>`;
               routeHtml = replaceRootElement(routeHtml, brandStrategyHtml, '/blog/brand-strategy-vs-logo-design-pakistan-sme');
               writeRouteFiles(route.url, routeDir, routeHtml);
               continue;
@@ -1137,7 +1137,7 @@ export default defineConfig(({ mode }) => {
                 .replace(/<meta\b[^>]*property="og:image"[^>]*\/?>/gi, '')
                 .replace(/<meta\b[^>]*name="twitter:image"[^>]*\/?>/gi, '')
                 .replace(/<meta\b[^>]*property="og:type"[^>]*\/?>/gi, '')
-                .replace('</head>', `  <meta data-rh="true" property="og:type" content="article" />\n  <meta data-rh="true" property="og:image" content="https://i.postimg.cc/SRxngZxY/Gemini-Generated-Image-74i3u574i3u574i3.jpg" />\n  <meta data-rh="true" name="twitter:image" content="https://i.postimg.cc/SRxngZxY/Gemini-Generated-Image-74i3u574i3u574i3.jpg" />\n</head>`);
+                .replace('</head>', `  <meta property="og:type" content="article" />\n  <meta property="og:image" content="https://www.abuqitmirlabs.tech/images/blog-covers/startup-brand-identity-checklist-be48b842.webp" />\n  <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/blog-covers/startup-brand-identity-checklist-be48b842.webp" />\n</head>`);
 
               const realArticleHtml = `
                 <div class="min-h-screen bg-[#050505] text-white">
@@ -1353,20 +1353,23 @@ export default defineConfig(({ mode }) => {
 
                 const formatInlineHtml = (rawStr: string) => {
                   // Convert markdown links [text](url) and bold **text** safely
-                  const strippedBold = rawStr.replace(/\*\*([^*]+)\*\*/g, '$1');
                   const parts: string[] = [];
                   let lastIdx = 0;
-                  const linkRe = /\[([^\]]+)\]\(([^)]+)\)/g;
+                  const tokenRe = /\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*/g;
                   let m: RegExpExecArray | null;
-                  while ((m = linkRe.exec(strippedBold)) !== null) {
+                  while ((m = tokenRe.exec(rawStr)) !== null) {
                     if (m.index > lastIdx) {
-                      parts.push(escapeXml(strippedBold.slice(lastIdx, m.index)));
+                      parts.push(escapeXml(rawStr.slice(lastIdx, m.index)));
                     }
-                    parts.push(`<a href="${escapeXml(m[2].trim())}" class="text-[#ccff00] underline">${escapeXml(m[1].trim())}</a>`);
+                    if (m[1] !== undefined && m[2] !== undefined) {
+                      parts.push(`<a href="${escapeXml(m[2].trim())}" class="text-[#ccff00] underline">${escapeXml(m[1].trim())}</a>`);
+                    } else if (m[3] !== undefined) {
+                      parts.push(`<strong>${escapeXml(m[3].trim())}</strong>`);
+                    }
                     lastIdx = m.index + m[0].length;
                   }
-                  if (lastIdx < strippedBold.length) {
-                    parts.push(escapeXml(strippedBold.slice(lastIdx)));
+                  if (lastIdx < rawStr.length) {
+                    parts.push(escapeXml(rawStr.slice(lastIdx)));
                   }
                   return parts.join('');
                 };
@@ -1404,6 +1407,10 @@ export default defineConfig(({ mode }) => {
                       currentFaqQuestion = h3Text.replace(/^\d+[\.\)]\s*/, '').trim();
                     }
                     htmlBlocks.push(`<h3 id="${slugifyId(h3Text)}" class="text-xl font-bold mt-6 mb-3">${escapeXml(h3Text)}</h3>`);
+                  } else if (trimmed.startsWith('#### ')) {
+                    flushFaq();
+                    const h4Text = trimmed.slice(5).replace(/\*\*/g, '').trim();
+                    htmlBlocks.push(`<h4 id="${slugifyId(h4Text)}" class="text-lg font-bold mt-5 mb-2">${escapeXml(h4Text)}</h4>`);
                   } else if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
                     const liRaw = trimmed.slice(2);
                     htmlBlocks.push(`<li>${formatInlineHtml(liRaw)}</li>`);
@@ -1435,7 +1442,7 @@ export default defineConfig(({ mode }) => {
                 .replace(/<meta\b[^>]*property="og:image"[^>]*\/?>/gi, '')
                 .replace(/<meta\b[^>]*name="twitter:image"[^>]*\/?>/gi, '')
                 .replace(/<meta\b[^>]*property="og:type"[^>]*\/?>/gi, '')
-                .replace('</head>', `  <link rel="preload" as="image" href="${preloadHref}" />\n  <meta data-rh="true" property="og:type" content="article" />\n  <meta data-rh="true" property="og:image" content="${coverImgUrl}" />\n  <meta data-rh="true" name="twitter:image" content="${coverImgUrl}" />\n</head>`);
+                .replace('</head>', `  <link rel="preload" as="image" href="${preloadHref}" />\n  <meta property="og:type" content="article" />\n  <meta property="og:image" content="${coverImgUrl}" />\n  <meta name="twitter:image" content="${coverImgUrl}" />\n</head>`);
 
               if (seoMeta && seoMeta.schemaJsonLd) {
                 const clonedSchema = JSON.parse(JSON.stringify(seoMeta.schemaJsonLd));
@@ -1608,7 +1615,7 @@ export default defineConfig(({ mode }) => {
               ? (STATIC_BLOG_POSTS[blogPostSlug]?.title || fetchedPosts.find(p => p.slug === blogPostSlug)?.title || route.title)
               : route.title;
             const cleanH1Title = (route.url.startsWith('/blog/') && route.url !== '/blog')
-              ? exactBlogTitle.trim()
+              ? exactBlogTitle.replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim()
               : route.title;
             const fallbackPrerenderHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader(route.url)}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${cleanH1Title}</h1><article class="prose prose-invert max-w-none text-neutral-300">${articleContent}</article></main></div>`;
             routeHtml = replaceRootElement(routeHtml, fallbackPrerenderHtml, route.url);

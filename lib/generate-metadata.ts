@@ -407,7 +407,7 @@ export function applyMetadataToDocumentHead(metadata: NextStyleMetadata): void {
     });
   }
   if (titleTags[0]) {
-    titleTags[0].setAttribute('data-rh', 'true');
+    titleTags[0].removeAttribute('data-rh');
     titleTags[0].textContent = metadata.title;
   }
 
@@ -426,7 +426,7 @@ export function applyMetadataToDocumentHead(metadata: NextStyleMetadata): void {
       document.head.appendChild(el);
     }
     el.setAttribute('content', content);
-    el.setAttribute('data-rh', 'true');
+    el.removeAttribute('data-rh');
   };
 
   upsertMeta('name', 'title', metadata.title);
@@ -483,7 +483,12 @@ export function applyMetadataToDocumentHead(metadata: NextStyleMetadata): void {
     document.head.appendChild(canonicalEl);
   }
   canonicalEl.setAttribute('href', metadata.alternates.canonical);
-  canonicalEl.setAttribute('data-rh', 'true');
+  canonicalEl.removeAttribute('data-rh');
+
+  // Strip any leftover data-rh attributes in document.head
+  document.head.querySelectorAll('[data-rh]').forEach((node) => {
+    node.removeAttribute('data-rh');
+  });
 
   // Strictly 1 JSON-LD @graph script in the entire DOM
   const allJsonLd = document.querySelectorAll('script[type="application/ld+json"]');
@@ -497,6 +502,7 @@ export function applyMetadataToDocumentHead(metadata: NextStyleMetadata): void {
     graphScript.type = 'application/ld+json';
     document.head.appendChild(graphScript);
   }
+  graphScript.removeAttribute('data-rh');
   graphScript.textContent = JSON.stringify(metadata.schemaGraph);
 }
 
@@ -513,25 +519,25 @@ export function renderMetadataToHeadHtml(metadata: NextStyleMetadata): string {
 
   const img = metadata.openGraph.images[0];
   const lines = [
-    `<title data-rh="true">${esc(metadata.title)}</title>`,
-    `<meta name="description" content="${esc(metadata.description)}" data-rh="true" />`,
+    `<title>${esc(metadata.title)}</title>`,
+    `<meta name="description" content="${esc(metadata.description)}" />`,
     metadata.keywords
-      ? `<meta name="keywords" content="${esc(metadata.keywords)}" data-rh="true" />`
+      ? `<meta name="keywords" content="${esc(metadata.keywords)}" />`
       : '',
-    `<meta name="robots" content="${esc(metadata.robots)}" data-rh="true" />`,
-    `<link rel="canonical" href="${esc(metadata.alternates.canonical)}" data-rh="true" />`,
-    `<meta property="og:type" content="${esc(metadata.openGraph.type)}" data-rh="true" />`,
-    `<meta property="og:site_name" content="${esc(metadata.openGraph.siteName)}" data-rh="true" />`,
-    `<meta property="og:title" content="${esc(metadata.openGraph.title)}" data-rh="true" />`,
-    `<meta property="og:description" content="${esc(metadata.openGraph.description)}" data-rh="true" />`,
-    `<meta property="og:url" content="${esc(metadata.openGraph.url)}" data-rh="true" />`,
-    img ? `<meta property="og:image" content="${esc(img.url)}" data-rh="true" />` : '',
-    img ? `<meta property="og:image:alt" content="${esc(img.alt)}" data-rh="true" />` : '',
-    `<meta name="twitter:card" content="${esc(metadata.twitter.card)}" data-rh="true" />`,
-    `<meta name="twitter:title" content="${esc(metadata.twitter.title)}" data-rh="true" />`,
-    `<meta name="twitter:description" content="${esc(metadata.twitter.description)}" data-rh="true" />`,
+    `<meta name="robots" content="${esc(metadata.robots)}" />`,
+    `<link rel="canonical" href="${esc(metadata.alternates.canonical)}" />`,
+    `<meta property="og:type" content="${esc(metadata.openGraph.type)}" />`,
+    `<meta property="og:site_name" content="${esc(metadata.openGraph.siteName)}" />`,
+    `<meta property="og:title" content="${esc(metadata.openGraph.title)}" />`,
+    `<meta property="og:description" content="${esc(metadata.openGraph.description)}" />`,
+    `<meta property="og:url" content="${esc(metadata.openGraph.url)}" />`,
+    img ? `<meta property="og:image" content="${esc(img.url)}" />` : '',
+    img ? `<meta property="og:image:alt" content="${esc(img.alt)}" />` : '',
+    `<meta name="twitter:card" content="${esc(metadata.twitter.card)}" />`,
+    `<meta name="twitter:title" content="${esc(metadata.twitter.title)}" />`,
+    `<meta name="twitter:description" content="${esc(metadata.twitter.description)}" />`,
     metadata.twitter.images[0]
-      ? `<meta name="twitter:image" content="${esc(metadata.twitter.images[0])}" data-rh="true" />`
+      ? `<meta name="twitter:image" content="${esc(metadata.twitter.images[0])}" />`
       : '',
     metadata.preloadCoverHref
       ? `<link rel="preload" as="image" href="${esc(metadata.preloadCoverHref)}" />`

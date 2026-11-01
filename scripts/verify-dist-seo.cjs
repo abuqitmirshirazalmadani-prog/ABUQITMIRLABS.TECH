@@ -82,7 +82,7 @@ for (const filePath of htmlFiles) {
         }
       ]
     };
-    html = html.replace('</head>', `  <script type="application/ld+json" data-rh="true">\n${JSON.stringify(fallbackSchema, null, 2)}\n  </script>\n</head>`);
+    html = html.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(fallbackSchema, null, 2)}\n  </script>\n</head>`);
     modified = true;
     fixedSchemaCount++;
   }
@@ -93,7 +93,17 @@ for (const filePath of htmlFiles) {
     modified = true;
   }
 
-  // 2. Preserve full H1 title on blog pages (including "| AbuQitmirLabs" when part of post title)
+  // 2. Strip any "| AbuQitmirLabs" suffix from <h1> on blog pages (Rule 6)
+  if (relPath.startsWith('blog' + path.sep)) {
+    const cleanedH1Html = html.replace(/(<h1\b[^>]*>)([\s\S]*?)(<\/h1>)/gi, (full, open, inner, close) => {
+      const cleaned = inner.replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+      return cleaned !== inner ? `${open}${cleaned}${close}` : full;
+    });
+    if (cleanedH1Html !== html) {
+      html = cleanedH1Html;
+      modified = true;
+    }
+  }
 
   // 3. Ensure at least one <h2> exists inside <div id="root">
   const h2Matches = html.match(/<h2\b[^>]*>[\s\S]*?<\/h2>/gi) || [];
@@ -103,42 +113,39 @@ for (const filePath of htmlFiles) {
     fixedH2Count++;
   }
 
-  // 4. Ensure strictly 1 <title> tag (with data-rh="true")
+  // 4. Ensure strictly 1 <title> tag (without data-rh="true")
   const titleRegex = /<title\b[^>]*>[\s\S]*?<\/title>/gis;
   const titleMatches = html.match(titleRegex) || [];
   if (titleMatches.length > 1) {
-    let keptTitle = titleMatches[titleMatches.length - 1];
-    if (!/data-rh=/i.test(keptTitle)) {
-      keptTitle = keptTitle.replace(/^<title/i, '<title data-rh="true"');
-    }
+    const keptTitle = titleMatches[titleMatches.length - 1].replace(/\s+data-rh=["']true["']/gi, '');
     html = html.replace(titleRegex, '');
     html = html.replace('</head>', `  ${keptTitle}\n</head>`);
     modified = true;
   }
 
-  // 4b. Ensure strictly 1 <meta name="description"> tag (with data-rh="true")
+  // 4b. Ensure strictly 1 <meta name="description"> tag (without data-rh="true")
   const descRegex = /<meta\b[^>]*name=["']description["'][^>]*\/?>/gis;
   const descMatches = html.match(descRegex) || [];
   if (descMatches.length > 1) {
-    let keptDesc = descMatches[descMatches.length - 1];
-    if (!/data-rh=/i.test(keptDesc)) {
-      keptDesc = keptDesc.replace(/^<meta/i, '<meta data-rh="true"');
-    }
+    const keptDesc = descMatches[descMatches.length - 1].replace(/\s+data-rh=["']true["']/gi, '');
     html = html.replace(descRegex, '');
     html = html.replace('</head>', `  ${keptDesc}\n</head>`);
     modified = true;
   }
 
-  // 4c. Ensure strictly 1 <link rel="canonical"> tag (with data-rh="true")
+  // 4c. Ensure strictly 1 <link rel="canonical"> tag (without data-rh="true")
   const canonRegex = /<link\b[^>]*rel=["']canonical["'][^>]*\/?>/gis;
   const canonMatches = html.match(canonRegex) || [];
   if (canonMatches.length > 1) {
-    let keptCanon = canonMatches[canonMatches.length - 1];
-    if (!/data-rh=/i.test(keptCanon)) {
-      keptCanon = keptCanon.replace(/^<link/i, '<link data-rh="true"');
-    }
+    const keptCanon = canonMatches[canonMatches.length - 1].replace(/\s+data-rh=["']true["']/gi, '');
     html = html.replace(canonRegex, '');
     html = html.replace('</head>', `  ${keptCanon}\n</head>`);
+    modified = true;
+  }
+
+  // 4d. Strip any leftover React Helmet data-rh="true" attributes
+  if (/\sdata-rh=["']true["']/i.test(html)) {
+    html = html.replace(/\s+data-rh=["']true["']/gi, '');
     modified = true;
   }
 

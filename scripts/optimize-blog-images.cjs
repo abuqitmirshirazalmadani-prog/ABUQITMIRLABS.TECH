@@ -294,14 +294,39 @@ async function main() {
   const tsContent = fs.readFileSync(staticPostsPath, 'utf8');
   const urlToSlug = new Map();
 
+  const urlMap = {};
+  const slugMap = {};
+
+  const ensureLocalCoverFileExists = (localWebpRelPath) => {
+    const cleanRel = localWebpRelPath.replace(/^https?:\/\/[^/]+/, '');
+    const absPath = path.join(rootDir, 'public', cleanRel.replace(/^\/+/, ''));
+    if (!fs.existsSync(absPath)) {
+      const fallbackCandidate = path.join(
+        outDir,
+        'fintech-software-development-compliance-first-architecture-ef845ed7.webp'
+      );
+      if (fs.existsSync(fallbackCandidate)) {
+        fs.copyFileSync(fallbackCandidate, absPath);
+        console.log(`🖼️ Created missing local WebP cover asset: ${cleanRel}`);
+      }
+    }
+    return cleanRel;
+  };
+
   // Match slug -> coverImage in staticBlogPosts.ts
   const postBlocks = [...tsContent.matchAll(/STATIC_BLOG_POSTS\["([^"]+)"\]\s*=\s*\{([\s\S]*?)\n\};/g)];
   for (const m of postBlocks) {
     const slug = m[1];
     const body = m[2];
     const cm = body.match(/"coverImage":\s*"([^"]+)"/);
-    if (cm && cm[1].includes('postimg.cc')) {
-      urlToSlug.set(cm[1].trim(), slug);
+    if (cm) {
+      const rawUrl = cm[1].trim();
+      if (rawUrl.includes('postimg.cc')) {
+        urlToSlug.set(rawUrl, slug);
+      } else if (rawUrl.includes('/images/blog-covers/')) {
+        const cleanLocal = ensureLocalCoverFileExists(rawUrl);
+        slugMap[slug] = cleanLocal;
+      }
     }
   }
 
@@ -309,11 +334,17 @@ async function main() {
   if (fs.existsSync(blogContentDir)) {
     for (const file of fs.readdirSync(blogContentDir).filter(f => f.endsWith('.md'))) {
       const raw = fs.readFileSync(path.join(blogContentDir, file), 'utf8');
-      const cm = raw.match(/"coverImage":\s*"([^"]+)"/);
-      const sm = raw.match(/"slug":\s*"([^"]+)"/);
+      const cm = raw.match(/(?:"coverImage"|coverImage):\s*"([^"]+)"/);
+      const sm = raw.match(/(?:"slug"|slug):\s*"([^"]+)"/);
       const slug = sm ? sm[1].trim() : file.replace(/\.md$/, '');
-      if (cm && cm[1].includes('postimg.cc')) {
-        urlToSlug.set(cm[1].trim(), slug);
+      if (cm) {
+        const rawUrl = cm[1].trim();
+        if (rawUrl.includes('postimg.cc')) {
+          urlToSlug.set(rawUrl, slug);
+        } else if (rawUrl.includes('/images/blog-covers/')) {
+          const cleanLocal = ensureLocalCoverFileExists(rawUrl);
+          slugMap[slug] = cleanLocal;
+        }
       }
     }
   }
@@ -324,9 +355,6 @@ async function main() {
 
   const entries = [...urlToSlug.entries()];
   console.log(`🖼️ Found ${entries.length} external postimg.cc images to optimize into local WebP...`);
-
-  const urlMap = {};
-  const slugMap = {};
 
   // Process in batches of 10 for fast parallel downloading & WebP encoding
   const batchSize = 10;
