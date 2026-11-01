@@ -170,11 +170,11 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                     const staticEntry = (slug && STATIC_POSTS_MAP[slug]) ? STATIC_POSTS_MAP[slug] : null;
                     const resolvedContent =
                         staticEntry?.content &&
-                        (countH2Headings(staticEntry.content) > countH2Headings(foundPost.content) ||
+                        (countH2Headings(staticEntry.content) >= countH2Headings(foundPost.content) ||
                             staticEntry.content.length >= (foundPost.content?.length || 0))
                             ? staticEntry.content
                             : foundPost.content;
-                    const rawCandidateTitle = cleanTitleStr(foundPost.title || staticEntry?.title) || foundPost.title;
+                    const rawCandidateTitle = cleanTitleStr(staticEntry?.title || foundPost.title) || foundPost.title;
                     const resolvedFullTitle =
                         rawCandidateTitle &&
                         rawCandidateTitle.length <= 44 &&
@@ -183,10 +183,15 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                 ? cleanTitleStr(staticEntry.title)
                                 : `${rawCandidateTitle} | AbuQitmirLabs`)
                             : rawCandidateTitle;
+                    const resolvedCover = resolveOptimizedCoverImage(
+                        foundPost.coverImage || staticEntry?.coverImage,
+                        canonical || slug
+                    );
                     const sanitizedPost: Post = {
                         ...foundPost,
                         title: resolvedFullTitle,
                         content: resolvedContent,
+                        coverImage: resolvedCover || foundPost.coverImage,
                         helperImages: cleanHelperList,
                         metaDescription: cleanQuoteStr(staticEntry?.metaDescription || foundPost.metaDescription),
                         excerpt: cleanQuoteStr(foundPost.excerpt || staticEntry?.excerpt),
@@ -250,12 +255,9 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         const cleanupDuplicateHeadTags = () => {
             for (const selector of SINGLETON_SELECTORS) {
                 const nodes = Array.from(document.head.querySelectorAll(selector));
+                nodes.forEach(n => n.removeAttribute('data-rh'));
                 if (nodes.length <= 1) continue;
-                const helmetNodes = nodes.filter(n => n.hasAttribute('data-rh'));
-                const keepNode = helmetNodes.length > 0
-                    ? helmetNodes[helmetNodes.length - 1]
-                    : nodes[nodes.length - 1];
-                keepNode.setAttribute('data-rh', 'true');
+                const keepNode = nodes[nodes.length - 1];
                 nodes.forEach(n => {
                     if (n !== keepNode) {
                         n.remove();

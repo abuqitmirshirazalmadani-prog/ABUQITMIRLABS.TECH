@@ -302,7 +302,12 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
     if (/^[-*+]\s+/.test(trimmed)) {
       const items: string[] = [];
       while (i < lines.length && /^[-*+]\s+/.test(lines[i].trim())) {
-        items.push(lines[i].trim().replace(/^[-*+]\s+/, ''));
+        items.push(
+          lines[i]
+            .trim()
+            .replace(/^[-*+]\s+/, '')
+            .replace(/^\[[ xX]\]\s+/, '')
+        );
         i++;
       }
       const currentListKey = blockKey++;

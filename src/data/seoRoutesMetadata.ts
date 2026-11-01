@@ -10617,16 +10617,16 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     }
   },
   '/blog/how-to-build-personal-brand-online': {
-    title: "How to Build a Personal Brand Online | AbuQitmirLabs",
-    description: "Learn how to build a personal brand online in 2026 using the AUTHORITY Framework—positioning, visual identity, content engines, and AI search optimization.",
+    title: "How to Build a Personal Brand Online: A Founder's Checklist | AbuQitmirLabs",
+    description: "12-step checklist to build a personal brand online: define your niche, publish on one platform, prove expertise. Start the checklist.",
     canonical: 'https://www.abuqitmirlabs.tech/blog/how-to-build-personal-brand-online',
-    ogTitle: "How to Build a Personal Brand Online | AbuQitmirLabs",
-    ogDescription: "Learn how to build a personal brand online in 2026 using the AUTHORITY Framework—positioning, visual identity, content engines, and AI search optimization.",
+    ogTitle: "How to Build a Personal Brand Online: A Founder's Checklist | AbuQitmirLabs",
+    ogDescription: "12-step checklist to build a personal brand online: define your niche, publish on one platform, prove expertise. Start the checklist.",
     ogImage: "/images/blog-covers/how-to-build-personal-brand-online-1e2d72bb.webp",
     ogType: 'article',
     twitterCard: 'summary_large_image',
-    twitterTitle: "How to Build a Personal Brand Online | AbuQitmirLabs",
-    twitterDescription: "Learn how to build a personal brand online in 2026 using the AUTHORITY Framework—positioning, visual identity, content engines, and AI search optimization.",
+    twitterTitle: "How to Build a Personal Brand Online: A Founder's Checklist | AbuQitmirLabs",
+    twitterDescription: "12-step checklist to build a personal brand online: define your niche, publish on one platform, prove expertise. Start the checklist.",
     twitterImage: "/images/blog-covers/how-to-build-personal-brand-online-1e2d72bb.webp",
     schemaJsonLd: {
       '@context': 'https://schema.org',
@@ -10649,8 +10649,8 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebPage',
           '@id': 'https://www.abuqitmirlabs.tech/blog/how-to-build-personal-brand-online#webpage',
           url: 'https://www.abuqitmirlabs.tech/blog/how-to-build-personal-brand-online',
-          name: "How to Build a Personal Brand Online | AbuQitmirLabs",
-          description: "Learn how to build a personal brand online in 2026 using the AUTHORITY Framework—positioning, visual identity, content engines, and AI search optimization.",
+          name: "How to Build a Personal Brand Online: A Founder's Checklist | AbuQitmirLabs",
+          description: "12-step checklist to build a personal brand online: define your niche, publish on one platform, prove expertise. Start the checklist.",
           isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
         },
         {
@@ -10659,15 +10659,15 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
             { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
-            { '@type': 'ListItem', position: 3, name: "How to Build a Personal Brand Online", item: 'https://www.abuqitmirlabs.tech/blog/how-to-build-personal-brand-online' }
+            { '@type': 'ListItem', position: 3, name: "How to Build a Personal Brand Online: A Founder's Checklist", item: 'https://www.abuqitmirlabs.tech/blog/how-to-build-personal-brand-online' }
           ]
         },
         {
           '@type': 'Article',
           '@id': 'https://www.abuqitmirlabs.tech/blog/how-to-build-personal-brand-online#article',
           isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/how-to-build-personal-brand-online#webpage' },
-          headline: "How to Build a Personal Brand Online",
-          description: "Learn how to build a personal brand online in 2026 using the AUTHORITY Framework—positioning, visual identity, content engines, and AI search optimization.",
+          headline: "How to Build a Personal Brand Online: A Founder's Checklist",
+          description: "12-step checklist to build a personal brand online: define your niche, publish on one platform, prove expertise. Start the checklist.",
           image: "/images/blog-covers/how-to-build-personal-brand-online-1e2d72bb.webp",
           author: {
             '@type': 'Person',
