@@ -1,5 +1,10 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import {
+  evaluateAnalyticsBlockReason,
+  isSuspiciousFacebookBotReferral,
+  waitForVerifiedHumanEngagement,
+} from '../utils/analyticsShield';
 
 declare global {
   interface Window {
@@ -12,21 +17,23 @@ export default function FacebookPixel() {
   const location = useLocation();
 
   useEffect(() => {
-    // Get the Pixel ID from environment variables, or fallback to a placeholder
+    // Do not load or fire Meta Pixel for Admin, Internal Team, Tag Assistant, or Spam/Bot traffic
+    if (evaluateAnalyticsBlockReason(window.location.pathname)) {
+      return;
+    }
+
     const rawPixelId = (import.meta as any).env?.VITE_FACEBOOK_PIXEL_ID;
     const isMock = !rawPixelId || rawPixelId === 'YOUR_FACEBOOK_PIXEL_ID';
     const pixelId = isMock ? '61583768706452' : rawPixelId;
 
-    if (isMock) {
-      console.log(
-        `%c[Meta Pixel]%c Dynamic initialization using development fallback ID: ${pixelId}. Set VITE_FACEBOOK_PIXEL_ID in your environment to override.`,
-        'color: #3b5998; font-weight: bold;',
-        'color: inherit;'
-      );
-    }
-
-    const initPixel = () => {
-      // Initialize Facebook Pixel if not already initialized
+    const initPixel = async () => {
+      if (evaluateAnalyticsBlockReason(window.location.pathname)) {
+        return;
+      }
+      if (isSuspiciousFacebookBotReferral()) {
+        const isHuman = await waitForVerifiedHumanEngagement(15000);
+        if (!isHuman) return;
+      }
       if (!window.fbq) {
         /* eslint-disable */
         (function (f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
@@ -52,14 +59,12 @@ export default function FacebookPixel() {
         /* eslint-enable */
       }
 
-      // Connect pixel ID to instance
       if (window.fbq) {
         window.fbq('init', pixelId);
         window.fbq('track', 'PageView');
       }
     };
 
-    // Defer script loading so it does not block first Paint or Speed Index
     if ('requestIdleCallback' in window) {
       window.requestIdleCallback(() => {
         setTimeout(initPixel, 1200);
@@ -69,8 +74,10 @@ export default function FacebookPixel() {
     }
   }, []);
 
-  // Track standard "PageView" on every route/location transition
   useEffect(() => {
+    if (evaluateAnalyticsBlockReason(location.pathname)) {
+      return;
+    }
     if (window.fbq) {
       window.fbq('track', 'PageView');
     }

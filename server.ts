@@ -743,6 +743,86 @@ Disallow: /admin
 
 Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml`;res.setHeader("Content-Type","text/plain; charset=utf-8");res.setHeader("Cache-Control","public, max-age=3600");return res.status(200).send(defaultRobots)}catch(err){console.error("Error serving robots.txt:",err);res.setHeader("Content-Type","text/plain; charset=utf-8");return res.status(200).send("User-agent: *\nAllow: /\nSitemap: https://www.abuqitmirlabs.tech/sitemap.xml")}});app.get("/blog/custom-software-development-company-karachi-pakistan-abuqitmirlabs",(req,res)=>{res.redirect(301,"/blog/custom-software-development-company-karachi-pakistan")});app.get(["/custom-software-development","/custom-software-development/"],(req,res)=>{res.redirect(301,"/custom-software")});app.get(["/llm.txt","/LLM.txt"],(req,res)=>{try{const llmPath=path.join(process.cwd(),"public","llm.txt");if(fs.existsSync(llmPath)){res.setHeader("Content-Type","text/plain; charset=utf-8");res.setHeader("Cache-Control","public, max-age=3600");return res.sendFile(llmPath)}return res.status(404).send("Not found")}catch(err){console.error("Error serving llm.txt:",err);return res.status(500).send("Server error")}});
 
+const shieldConfigPath = path.join(process.cwd(), "content", ".analytics-shield.json");
+const readShieldConfig = () => {
+  const defaultCfg = {
+    teamIps: [] as string[],
+    unwantedReferrals: [
+      "m.facebook.com",
+      "l.facebook.com",
+      "lm.facebook.com",
+      "ghastlypages.com",
+      "tagassistant.google.com",
+      "googletagmanager.com",
+      "semalt.com",
+      "buttons-for-website.com",
+      "darodar.com",
+      "ilovevitaly.com",
+      "free-social-buttons.com"
+    ]
+  };
+  try {
+    if (fs.existsSync(shieldConfigPath)) {
+      const parsed = JSON.parse(fs.readFileSync(shieldConfigPath, "utf-8"));
+      return {
+        teamIps: Array.isArray(parsed.teamIps) ? parsed.teamIps : [],
+        unwantedReferrals: Array.from(new Set([...defaultCfg.unwantedReferrals, ...(Array.isArray(parsed.unwantedReferrals) ? parsed.unwantedReferrals : [])]))
+      };
+    }
+  } catch {}
+  return defaultCfg;
+};
+
+// Block known referral spam bots (ghastlypages.com, semalt.com, etc.) at the HTTP level
+app.use((req, res, next) => {
+  const ref = String(req.headers.referer || req.headers.referrer || "").toLowerCase();
+  if (
+    ref.includes("ghastlypages.com") ||
+    ref.includes("semalt.com") ||
+    ref.includes("buttons-for-website.com") ||
+    ref.includes("darodar.com") ||
+    ref.includes("ilovevitaly.com") ||
+    ref.includes("free-social-buttons.com")
+  ) {
+    return res.status(403).end("Forbidden");
+  }
+  next();
+});
+
+app.get("/api/client-ip", (req, res) => {
+  const xff = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim();
+  const realIp = String(req.headers["x-real-ip"] || "").trim();
+  const ip = xff || realIp || req.socket.remoteAddress || "127.0.0.1";
+  const cfg = readShieldConfig();
+  return res.json({
+    ip,
+    isTeamIp: cfg.teamIps.includes(ip),
+    teamIps: cfg.teamIps,
+    unwantedReferrals: cfg.unwantedReferrals
+  });
+});
+
+app.post("/api/client-ip", (req, res) => {
+  try {
+    const current = readShieldConfig();
+    const { teamIps, unwantedReferrals } = req.body || {};
+    const updated = {
+      teamIps: Array.isArray(teamIps)
+        ? Array.from(new Set(teamIps.map((x: any) => String(x).trim()).filter(Boolean)))
+        : current.teamIps,
+      unwantedReferrals: Array.isArray(unwantedReferrals)
+        ? Array.from(new Set([...current.unwantedReferrals, ...unwantedReferrals.map((x: any) => String(x).trim().toLowerCase()).filter(Boolean)]))
+        : current.unwantedReferrals
+    };
+    const dir = path.dirname(shieldConfigPath);
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(shieldConfigPath, JSON.stringify(updated, null, 2), "utf-8");
+    return res.json({ success: true, ...updated });
+  } catch (err: any) {
+    return res.status(500).json({ error: err.message || "Failed to update shield config" });
+  }
+});
+
 app.get(["/indexnow.txt","/abuqitmirlabs2026.txt"],(req,res)=>{
   res.setHeader("Content-Type","text/plain; charset=utf-8");
   res.setHeader("Cache-Control","public, max-age=86400");

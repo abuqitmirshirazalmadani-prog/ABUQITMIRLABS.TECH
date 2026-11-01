@@ -49,13 +49,90 @@
       onload="this.media='all'"
     />
 
-    <!-- Google tag (gtag.js) - Non-Blocking Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EJH1V89EP0"></script>
+    <!-- Google tag (gtag.js) - Non-Blocking Analytics with Bot, Referral & Internal Traffic Shield -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-EJH1V89EP0', { send_page_view: false });
+      (function() {
+        var GA_ID = 'G-EJH1V89EP0';
+        var host = (window.location.hostname || '').toLowerCase();
+        var path = (window.location.pathname || '').toLowerCase();
+        var search = (window.location.search || '').toLowerCase();
+        var ref = (document.referrer || '').toLowerCase();
+        var ua = (navigator.userAgent || '').toLowerCase();
+
+        // 1. Auto-tag Admin / Login visits or ?internal=1 as Internal Team Traffic
+        var isAdminPath = path === '/admin' || path.indexOf('/admin/') === 0 || path === '/login' || path.indexOf('/login/') === 0;
+        if (isAdminPath || search.indexOf('internal=1') !== -1 || search.indexOf('internal_traffic=1') !== -1 || search.indexOf('traffic_type=internal') !== -1) {
+          try {
+            window.localStorage.setItem('aql_internal_traffic', 'true');
+            document.cookie = 'aql_internal_traffic=1; path=/; max-age=31536000; SameSite=Lax';
+          } catch (e) {}
+        }
+
+        var isInternal = isAdminPath;
+        try {
+          if (window.localStorage.getItem('aql_internal_traffic') === 'true' || document.cookie.indexOf('aql_internal_traffic=1') !== -1) {
+            isInternal = true;
+          }
+        } catch (e) {}
+
+        // 2. Detect Tag Assistant, GTM Debug, Preview/Localhost, Spam Referrers (ghastlypages.com), and Headless Bots
+        var isPreviewOrDebug =
+          host === 'localhost' ||
+          host === '127.0.0.1' ||
+          host.slice(-8) === '.run.app' ||
+          host.slice(-11) === '.vercel.app' ||
+          ref.indexOf('tagassistant.google.com') !== -1 ||
+          ref.indexOf('googletagmanager.com') !== -1 ||
+          search.indexOf('gtm_debug') !== -1 ||
+          search.indexOf('tagassistant') !== -1 ||
+          search.indexOf('ga_debug') !== -1;
+
+        var isHardSpamReferrer =
+          ref.indexOf('ghastlypages.com') !== -1 ||
+          ref.indexOf('semalt.com') !== -1 ||
+          ref.indexOf('buttons-for-website.com') !== -1 ||
+          ref.indexOf('darodar.com') !== -1 ||
+          ref.indexOf('ilovevitaly.com') !== -1 ||
+          ref.indexOf('free-social-buttons.com') !== -1;
+
+        var isBot =
+          Boolean(navigator.webdriver) ||
+          /headlesschrome|phantomjs|slimerjs|puppeteer|playwright|lighthouse|ptst|pagespeed|facebookexternalhit|facebot|meta-externalagent/i.test(ua);
+
+        // 3. Unwanted Referrals List (m.facebook.com, l.facebook.com, lm.facebook.com, ghastlypages.com, tagassistant.google.com)
+        var isUnwantedReferral =
+          isHardSpamReferrer ||
+          ref.indexOf('m.facebook.com') !== -1 ||
+          ref.indexOf('l.facebook.com') !== -1 ||
+          ref.indexOf('lm.facebook.com') !== -1 ||
+          ref.indexOf('tagassistant.google.com') !== -1;
+
+        if (isInternal || isPreviewOrDebug || isHardSpamReferrer || isBot) {
+          window['ga-disable-' + GA_ID] = true;
+        }
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer.push(arguments);}
+        window.gtag = gtag;
+
+        if (!window['ga-disable-' + GA_ID]) {
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+          document.head.appendChild(s);
+
+          gtag('js', new Date());
+          var configOpts = { send_page_view: false };
+          if (isInternal) {
+            configOpts.traffic_type = 'internal';
+          }
+          if (isUnwantedReferral) {
+            configOpts.page_referrer = '';
+            configOpts.ignore_referrer = true;
+          }
+          gtag('config', GA_ID, configOpts);
+        }
+      })();
     </script>
     
     <!-- Favicon & Brand Icons -->

@@ -12,6 +12,14 @@ import SEO from './components/SEO';
 import TopLoadingBar from './components/TopLoadingBar';
 import { getCanonicalPath } from './data/canonicalRedirects';
 import { SEO_ROUTES_METADATA } from './data/seoRoutesMetadata';
+import {
+  GA_MEASUREMENT_ID,
+  evaluateAnalyticsBlockReason,
+  detectClientIpAndVerifyTeamFilter,
+  isSuspiciousFacebookBotReferral,
+  isUnwantedReferral,
+  waitForVerifiedHumanEngagement,
+} from './utils/analyticsShield';
 
 // Eagerly loaded public pages for instant 0ms route transitions (zero lazy-chunk hang)
 import HomePage from './pages/HomePage';
@@ -136,19 +144,56 @@ function GoogleAnalyticsTracker() {
   const { pathname, search } = useLocation();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+    let cancelled = false;
+
+    const trackPageView = async () => {
+      // 1. Synchronous check for Admin route, Internal flag, Tag Assistant, ghastlypages.com, or Headless Bot
+      const immediateBlock = evaluateAnalyticsBlockReason(pathname);
+      if (immediateBlock) {
+        (window as any)[`ga-disable-${GA_MEASUREMENT_ID}`] = true;
+        return;
+      }
+
+      // 2. Verify client IP against Team Internal Traffic IP filter
+      const { isTeamIp } = await detectClientIpAndVerifyTeamFilter();
+      if (cancelled || isTeamIp || evaluateAnalyticsBlockReason(pathname)) {
+        (window as any)[`ga-disable-${GA_MEASUREMENT_ID}`] = true;
+        return;
+      }
+
+      // 3. If traffic comes from m.facebook.com / facebook.com, require verified human engagement (>2.2s + real scroll/touch/pointer) to block 0s bots
+      if (isSuspiciousFacebookBotReferral()) {
+        const isRealHuman = await waitForVerifiedHumanEngagement(15000);
+        if (cancelled || !isRealHuman) {
+          return;
+        }
+      }
+
+      if (cancelled) return;
+      if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function' && !(window as any)[`ga-disable-${GA_MEASUREMENT_ID}`]) {
         const canonicalPath = getCanonicalPath(pathname);
         const canonicalUrl = `https://www.abuqitmirlabs.tech${canonicalPath}`;
-        (window as any).gtag('event', 'page_view', {
+        const eventPayload: Record<string, any> = {
           page_title: document.title,
           page_location: canonicalUrl,
           page_path: canonicalPath,
-        });
+        };
+        if (isUnwantedReferral()) {
+          eventPayload.page_referrer = '';
+          eventPayload.ignore_referrer = true;
+        }
+        (window as any).gtag('event', 'page_view', eventPayload);
       }
-    }, 200);
+    };
 
-    return () => clearTimeout(timer);
+    const timer = setTimeout(() => {
+      trackPageView();
+    }, 250);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
   }, [pathname, search]);
 
   return null;

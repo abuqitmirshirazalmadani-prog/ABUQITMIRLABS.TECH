@@ -20,6 +20,8 @@ import { setCachedPost } from '../utils/blogCache';
 import { syncPostToGitHubAndDeploy, testGitHubConnection } from '../utils/githubPublisher';
 import { autoFixArticle } from '../../lib/auto-fix-article';
 import { AdminSeoFixPage } from '../../app/admin/seo/page';
+import AnalyticsShieldCard from '../components/AnalyticsShieldCard';
+import { markBrowserAsInternalTraffic } from '../utils/analyticsShield';
 
 const ADMIN_EMAIL = "abuqitmirshirazalmadani@gmail.com";
 const ADMIN_UID = "cRAf1wZFRRXMVadj7RDaC8WM4152";
@@ -266,6 +268,7 @@ const AdminDashboard = () => {
     };
 
     useEffect(() => {
+        markBrowserAsInternalTraffic(true);
         if (isUserAdmin(user)) {
             fetchPosts();
             fetchNewsItems();
@@ -2892,9 +2895,14 @@ const AdminDashboard = () => {
                                     </div>
                                 </div>
                             </form>
+
+                            <AnalyticsShieldCard />
                         </motion.div>
                     ) : (
-                        <AdminSeoFixPage embedded={true} />
+                        <div className="space-y-8">
+                            <AnalyticsShieldCard />
+                            <AdminSeoFixPage embedded={true} />
+                        </div>
                     )}
                         </motion.div>
                     </section>
