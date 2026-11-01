@@ -1009,105 +1009,13 @@ const AdminDashboard = () => {
             const stripOuterQuotes = (str?: string) =>
                 (str || '').trim().replace(/^(?:&quot;|["'“”`])+|(?:&quot;|["'“”`])+$/gi, '').trim();
             const rawTitleTrimmed = stripOuterQuotes(formData.title).trim();
-            const cleanPostTitle =
-                rawTitleTrimmed.length > 0 &&
-                rawTitleTrimmed.length <= 44 &&
-                !/Abu\s*Qitmir\s*Labs/i.test(rawTitleTrimmed)
-                    ? `${rawTitleTrimmed} | AbuQitmirLabs`
-                    : rawTitleTrimmed;
-            const normalizeMarkdownHeadings = (rawMd: string, titleStr: string) => {
-                const baseHeadingTitle = (titleStr || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
-                let md = (rawMd || '').trim();
-                const isMetaOrDividerLine = (lineStr: string) => {
-                    const t = lineStr.trim();
-                    return t === '' || t === '---' || /^(?:\*\*)?by\s+abu\s*qitmir/i.test(t);
-                };
-                const lines = md.split(/\r?\n/);
-                while (lines.length > 0 && isMetaOrDividerLine(lines[0])) {
-                    lines.shift();
-                }
-                if (lines.length > 0) {
-                    const firstLine = lines[0].trim();
-                    if (/^#\s+/.test(firstLine)) {
-                        let lookaheadIdx = 1;
-                        while (lookaheadIdx < lines.length && isMetaOrDividerLine(lines[lookaheadIdx])) {
-                            lookaheadIdx++;
-                        }
-                        if (lookaheadIdx < lines.length && /^##\s+/.test(lines[lookaheadIdx].trim())) {
-                            lines.splice(0, lookaheadIdx);
-                        } else {
-                            const h1Text = firstLine.replace(/^#\s+/, '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
-                            lines[0] = `## ${h1Text}`;
-                        }
-                    }
-                    if (lines.length > 0 && /^##\s+/.test(lines[0].trim())) {
-                        const h2Text = lines[0].trim().replace(/^##\s+/, '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
-                        lines[0] = `## ${h2Text}`;
-                        while (lines.length > 1 && isMetaOrDividerLine(lines[1])) {
-                            lines.splice(1, 1);
-                        }
-                        lines.splice(1, 0, '');
-                    } else if (lines.length > 0 && !/^#{1,6}\s+/.test(lines[0].trim()) && baseHeadingTitle) {
-                        lines.unshift(`## ${baseHeadingTitle}`, '');
-                    }
-                    md = lines.join('\n');
-                }
-                const checkLines = md.split(/\r?\n/);
-                let h2BeforeFaq = 0;
-                let h3BeforeFaq = 0;
-                let inCode = false;
-                let reachedFaq = false;
-                for (const l of checkLines) {
-                    const t = l.trim();
-                    if (t.startsWith('```')) {
-                        inCode = !inCode;
-                        continue;
-                    }
-                    if (inCode) continue;
-                    if (/^#{2,3}\s+(?:frequently asked questions|faq\b)/i.test(t)) {
-                        reachedFaq = true;
-                        continue;
-                    }
-                    if (!reachedFaq) {
-                        if (/^##\s+/.test(t)) h2BeforeFaq++;
-                        else if (/^###\s+/.test(t)) h3BeforeFaq++;
-                    }
-                }
-                const shouldPromoteBodyH3 = h2BeforeFaq <= 1 && h3BeforeFaq >= 3;
-                let inCodeNorm = false;
-                let inFaqNorm = false;
-                md = checkLines
-                    .map(line => {
-                        const t = line.trim();
-                        if (t.startsWith('```')) {
-                            inCodeNorm = !inCodeNorm;
-                            return line;
-                        }
-                        if (inCodeNorm) return line;
-                        if (/^#{2,3}\s+(?:frequently asked questions|faq\b)/i.test(t)) {
-                            inFaqNorm = true;
-                            return line.replace(/^###\s+/, '## ');
-                        }
-                        if (inFaqNorm && /^##\s+/.test(t) && !/^##\s+(?:frequently asked questions|faq\b)/i.test(t)) {
-                            inFaqNorm = false;
-                        }
-                        if (shouldPromoteBodyH3 && !inFaqNorm && /^###\s+/.test(t)) {
-                            return line.replace(/^(\s*)###\s+/, '$1## ');
-                        }
-                        if (inFaqNorm && /^\*\*[^*]+\?\*\*\s*$/.test(t)) {
-                            return `### ${t.replace(/^\*\*|\*\*\s*$/g, '').trim()}`;
-                        }
-                        return line;
-                    })
-                    .join('\n');
-                return md;
-            };
-            // Layer 1: Non-Blocking SEO Auto-Fix on Save
+            const cleanPostTitle = rawTitleTrimmed.replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+            // Layer 1: Non-Blocking SEO/AEO/GEO Auto-Fix on Save (preserves author content & only fixes H1/H2/H3 or internal link issues)
             const layer1Result = autoFixArticle({
                 ...formData,
                 title: cleanPostTitle || formData.title,
                 slug: cleanSlug,
-                content: normalizeMarkdownHeadings(formData.content, cleanPostTitle || formData.title),
+                content: formData.content,
                 metaDescription: stripOuterQuotes(formData.metaDescription),
                 excerpt: stripOuterQuotes(formData.excerpt),
                 category: cleanSlug === 'ai-content-vs-human-content' ? 'Content Writing' : formData.category,

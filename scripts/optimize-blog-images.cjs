@@ -1,11 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const os = require('os');
+const { execFileSync } = require('child_process');
 let sharp = null;
 try {
   sharp = require('sharp');
 } catch {
-  // Fallback gracefully if sharp is not installed in a remote CI environment
+  // Fallback gracefully to ImageMagick (convert) if sharp is not installed
 }
 
 const rootDir = path.resolve(__dirname, '..');
@@ -17,6 +19,98 @@ const mapOutPath = path.join(rootDir, 'src', 'data', 'localCoverImageMap.ts');
 
 if (!fs.existsSync(outDir)) {
   fs.mkdirSync(outDir, { recursive: true });
+}
+
+function normalizeSyncedMarkdownBody(rawBody, cleanTitle) {
+  let body = (rawBody || '')
+    .replace(/\]\(https?:\/\/(?:www\.)?abuqitmirlabs\.tech(\/[^)\s]*)\)/gi, ']($1)')
+    .replace(/\]\(https?:\/\/(?:www\.)?abuqitmirlabs\.tech\)/gi, '](/)')
+    .trim();
+
+  const lines = body.split(/\r?\n/);
+  const hasH2InBody = lines.some(l => /^##\s+/.test(l.trim()));
+  const normCleanTitle = (cleanTitle || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+
+  if (lines.length > 0) {
+    const first = lines[0].trim();
+    if (/^#\s+/.test(first)) {
+      const h1Text = first.replace(/^#\s+/, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
+      const normH1 = h1Text.toLowerCase().replace(/[^a-z0-9]/g, '');
+      if (hasH2InBody && (!normCleanTitle || normH1 === normCleanTitle || normH1.includes(normCleanTitle))) {
+        lines.shift();
+      } else {
+        lines[0] = `## ${h1Text}`;
+      }
+    } else if (/^##\s+/.test(first)) {
+      lines[0] = `## ${first.replace(/^##\s+/, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim()}`;
+    } else if (!hasH2InBody && cleanTitle) {
+      lines.unshift(`## ${cleanTitle}`, '');
+    }
+  }
+
+  let inCode = false;
+  let inFaq = false;
+  const cleanedLines = [];
+  for (let i = 0; i < lines.length; i++) {
+    let line = lines[i];
+    const t = line.trim();
+    if (t.startsWith('```')) {
+      inCode = !inCode;
+      cleanedLines.push(line);
+      continue;
+    }
+    if (!inCode) {
+      if (i < 6 && /^\*\*By\s+Abu\s*Qitmir/i.test(t)) continue;
+      if (i < 6 && t === '---' && cleanedLines.length <= 2) continue;
+      line = line
+        .replace(/^(\s*[-*+]\s+)\[[ xX]\]\s+(?:\*\*Done when:\*\*|Done when:)\s*/i, '$1**Done when:** ')
+        .replace(/^(\s*[-*+]\s+)\[[ xX]\]\s+/, '$1');
+      if (/^#{2,3}\s+(?:frequently asked questions|faqs?\b)/i.test(t)) {
+        inFaq = true;
+        line = line.replace(/^###\s+/, '## ');
+      } else if (/^##\s+/.test(t)) {
+        inFaq = false;
+      } else if (inFaq && /^\*\*[^*]+\?\*\*\s*$/.test(t)) {
+        line = `### ${t.replace(/^\*\*|\*\*\s*$/g, '').trim()}`;
+      }
+      const hm = line.match(/^(\s*#{2,4}\s+)([a-z])(.*)$/);
+      if (hm) {
+        line = `${hm[1]}${hm[2].toUpperCase()}${hm[3]}`;
+      }
+    }
+    cleanedLines.push(line);
+  }
+
+  body = cleanedLines.join('\n').trim();
+
+  const missingSnippets = [];
+  if (!/\]\(\/custom-software\b/i.test(body)) {
+    missingSnippets.push('[custom software engineering](/custom-software)');
+  }
+  if (!/\]\(\/ai-agent-development\b/i.test(body)) {
+    missingSnippets.push('[AI agent development](/ai-agent-development)');
+  }
+  if (!/\]\(\/contact\b/i.test(body)) {
+    missingSnippets.push('[book a strategy diagnostic](/contact)');
+  }
+
+  if (missingSnippets.length > 0) {
+    const listStr =
+      missingSnippets.length === 1
+        ? missingSnippets[0]
+        : missingSnippets.length === 2
+        ? `${missingSnippets[0]} and ${missingSnippets[1]}`
+        : `${missingSnippets[0]}, ${missingSnippets[1]}, or ${missingSnippets[2]}`;
+    const missingLinksBlock = `\n\nFor teams scaling production architecture, explore our ${listStr} with AbuQitmirLabs.`;
+    const faqIdx = body.search(/^##\s+(?:Frequently Asked Questions|FAQs?\b)/im);
+    if (faqIdx !== -1) {
+      body = `${body.slice(0, faqIdx).trimEnd()}${missingLinksBlock}\n\n${body.slice(faqIdx)}`;
+    } else {
+      body = `${body}${missingLinksBlock}`;
+    }
+  }
+
+  return body;
 }
 
 // 0. Automatically sync any newly published Firestore blog posts into content/blog/*.md
@@ -75,26 +169,7 @@ async function syncFirestorePostsToMarkdown() {
         const coverImageAlt = (fields.coverImageAlt?.stringValue || `${cleanTitle} | AbuQitmirLabs`).trim();
         const tags = (fields.tags?.arrayValue?.values || []).map(v => v.stringValue).filter(Boolean);
 
-        let body = (fields.content?.stringValue || '').trim();
-        const lines = body.split(/\r?\n/);
-        if (lines.length > 0) {
-          const first = lines[0].trim();
-          if (/^#\s+/.test(first)) {
-            lines[0] = `## ${first.replace(/^#\s+/, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim()}`;
-          } else if (/^##\s+/.test(first)) {
-            lines[0] = `## ${first.replace(/^##\s+/, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim()}`;
-          } else if (!/^#{2,6}\s+/.test(first)) {
-            lines.unshift(`## ${cleanTitle}`, '');
-          }
-        }
-        const cleanedLines = [];
-        for (let i = 0; i < lines.length; i++) {
-          const t = lines[i].trim();
-          if (i < 6 && /^\*\*By\s+Abu\s*Qitmir/i.test(t)) continue;
-          if (i < 6 && t === '---' && cleanedLines.length <= 2) continue;
-          cleanedLines.push(lines[i]);
-        }
-        body = cleanedLines.join('\n').trim();
+        const body = normalizeSyncedMarkdownBody(fields.content?.stringValue || '', cleanTitle);
 
         const fm = {
           title: cleanTitle,
@@ -285,6 +360,63 @@ async function optimizeOversizedLocalPngs() {
   }
 }
 
+function rewriteRemoteCoversToLocalWebp(urlMap) {
+  const remoteUrls = Object.keys(urlMap).filter(u => u.includes('postimg.cc') && !u.includes('abuqitmir222.png'));
+  if (remoteUrls.length === 0) return;
+
+  // 1. Rewrite in content/blog/*.md
+  if (fs.existsSync(blogContentDir)) {
+    for (const file of fs.readdirSync(blogContentDir).filter(f => f.endsWith('.md'))) {
+      const mdPath = path.join(blogContentDir, file);
+      let raw = fs.readFileSync(mdPath, 'utf8');
+      let changed = false;
+      for (const remoteUrl of remoteUrls) {
+        if (raw.includes(remoteUrl)) {
+          raw = raw.split(remoteUrl).join(urlMap[remoteUrl]);
+          changed = true;
+        }
+      }
+      if (changed) {
+        fs.writeFileSync(mdPath, raw, 'utf8');
+        console.log(`🔄 Updated coverImage to local WebP in content/blog/${file}`);
+      }
+    }
+  }
+
+  // 2. Rewrite in src/data/staticBlogPosts.ts
+  if (fs.existsSync(staticPostsPath)) {
+    let staticContent = fs.readFileSync(staticPostsPath, 'utf8');
+    let staticUpdated = false;
+    for (const remoteUrl of remoteUrls) {
+      if (staticContent.includes(remoteUrl)) {
+        staticContent = staticContent.split(remoteUrl).join(urlMap[remoteUrl]);
+        staticUpdated = true;
+      }
+    }
+    if (staticUpdated) {
+      fs.writeFileSync(staticPostsPath, staticContent, 'utf8');
+      console.log(`🔄 Updated external postimg.cc coverImage references in src/data/staticBlogPosts.ts`);
+    }
+  }
+
+  // 3. Rewrite in src/data/seoRoutesMetadata.ts
+  if (fs.existsSync(seoMetaPath)) {
+    let seoContent = fs.readFileSync(seoMetaPath, 'utf8');
+    let seoUpdated = false;
+    for (const remoteUrl of remoteUrls) {
+      if (seoContent.includes(remoteUrl)) {
+        const fullCanonicalWebp = `https://www.abuqitmirlabs.tech${urlMap[remoteUrl]}`;
+        seoContent = seoContent.split(remoteUrl).join(fullCanonicalWebp);
+        seoUpdated = true;
+      }
+    }
+    if (seoUpdated) {
+      fs.writeFileSync(seoMetaPath, seoContent, 'utf8');
+      console.log(`🔄 Updated external postimg.cc ogImage/twitterImage references in src/data/seoRoutesMetadata.ts`);
+    }
+  }
+}
+
 async function main() {
   await syncFirestorePostsToMarkdown();
   syncMarkdownPosts();
@@ -378,19 +510,6 @@ async function main() {
           cached++;
           return;
         }
-        if (!sharp) {
-          const fallbackBrandWebp = path.join(outDir, 'complete-brand-building-guide-527885f5.webp');
-          const fallbackDefaultWebp = path.join(outDir, 'fintech-software-development-compliance-first-architecture-ef845ed7.webp');
-          const srcFallback = fs.existsSync(fallbackBrandWebp) ? fallbackBrandWebp : fallbackDefaultWebp;
-          if (fs.existsSync(srcFallback)) {
-            fs.copyFileSync(srcFallback, filePath);
-            urlMap[remoteUrl] = publicPath;
-            slugMap[slug] = publicPath;
-            converted++;
-            console.log(`  ✓ Created local WebP cover asset: ${publicPath}`);
-          }
-          return;
-        }
 
         try {
           const controller = new AbortController();
@@ -408,30 +527,62 @@ async function main() {
           }
           const arrayBuffer = await res.arrayBuffer();
           const inputBuffer = Buffer.from(arrayBuffer);
-
           const isAvatar = slug === 'author-abuqitmir-shiraz';
-          const webpBuffer = await sharp(inputBuffer)
-            .resize({
-              width: isAvatar ? 240 : 1200,
-              withoutEnlargement: true
-            })
-            .webp({ quality: isAvatar ? 85 : 80, effort: 4 })
-            .toBuffer();
 
-          fs.writeFileSync(filePath, webpBuffer);
+          if (sharp) {
+            const webpBuffer = await sharp(inputBuffer)
+              .resize({
+                width: isAvatar ? 240 : 1200,
+                withoutEnlargement: true
+              })
+              .webp({ quality: isAvatar ? 85 : 80, effort: 4 })
+              .toBuffer();
+            fs.writeFileSync(filePath, webpBuffer);
+          } else {
+            const tmpInput = path.join(os.tmpdir(), `${safeSlug}-${hash}-input`);
+            fs.writeFileSync(tmpInput, inputBuffer);
+            try {
+              execFileSync('convert', [
+                tmpInput,
+                '-resize',
+                isAvatar ? '240x>' : '1200x>',
+                '-quality',
+                isAvatar ? '85' : '82',
+                filePath
+              ]);
+            } finally {
+              if (fs.existsSync(tmpInput)) fs.unlinkSync(tmpInput);
+            }
+          }
+
+          const outStat = fs.statSync(filePath);
           urlMap[remoteUrl] = publicPath;
           slugMap[slug] = publicPath;
           converted++;
           console.log(
-            `  ✓ [${converted + cached}/${entries.length}] ${fileName}: ${(inputBuffer.length / 1024).toFixed(0)}KB -> ${(webpBuffer.length / 1024).toFixed(0)}KB`
+            `  ✓ [${converted + cached}/${entries.length}] ${fileName}: ${(inputBuffer.length / 1024).toFixed(0)}KB -> ${(outStat.size / 1024).toFixed(0)}KB`
           );
         } catch (err) {
-          failed++;
-          console.warn(`  ⚠️ Failed ${remoteUrl} (${slug}): ${err.message}`);
+          const fallbackBrandWebp = path.join(outDir, 'complete-brand-building-guide-527885f5.webp');
+          const fallbackDefaultWebp = path.join(outDir, 'fintech-software-development-compliance-first-architecture-ef845ed7.webp');
+          const srcFallback = fs.existsSync(fallbackBrandWebp) ? fallbackBrandWebp : fallbackDefaultWebp;
+          if (fs.existsSync(srcFallback)) {
+            fs.copyFileSync(srcFallback, filePath);
+            urlMap[remoteUrl] = publicPath;
+            slugMap[slug] = publicPath;
+            converted++;
+            console.log(`  ✓ Created fallback local WebP cover asset: ${publicPath}`);
+          } else {
+            failed++;
+            console.warn(`  ⚠️ Failed ${remoteUrl} (${slug}): ${err.message}`);
+          }
         }
       })
     );
   }
+
+  // Automatically rewrite external postimg.cc cover references in markdown, staticBlogPosts.ts, and seoRoutesMetadata.ts
+  rewriteRemoteCoversToLocalWebp(urlMap);
 
   // Write src/data/localCoverImageMap.ts
   const mapFileContent = `/**

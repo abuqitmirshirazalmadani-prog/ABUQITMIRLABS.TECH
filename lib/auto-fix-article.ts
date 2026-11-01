@@ -247,8 +247,77 @@ export function countInternalLinksInContent(markdown: string): number {
   return count;
 }
 
+const LEGACY_INTERNAL_PATH_MAP: Record<string, string> = {
+  '/services/custom-software': '/custom-software',
+  '/services/web-development': '/web-development',
+  '/services/mobile-app-development': '/mobile-app-development',
+  '/services/ai-agent-development': '/ai-agent-development',
+  '/services/ai-agents': '/ai-agent-development',
+  '/services/seo': '/seo-mastery',
+  '/services/seo-mastery': '/seo-mastery',
+  '/services/digital-marketing': '/digital-marketing',
+  '/services/brand-building': '/brand-building',
+  '/services/content-writing': '/content-writing',
+  '/services/graphics-design': '/graphics-design',
+  '/case-studies/tajweed-page': '/case-studies/tajweedpage',
+  '/contact-us': '/contact',
+  '/book-call': '/contact',
+};
+
 /**
- * Auto-injects contextual internal links into markdown when missing
+ * Normalizes internal links in markdown without altering the author's anchor text or placement:
+ * 1. Converts full https://www.abuqitmirlabs.tech/... links to clean relative canonical paths (/...)
+ * 2. Resolves legacy /blog/<old-slug> links via getCanonicalSlug and legacy /services/... paths
+ */
+export function normalizeExistingInternalLinks(markdown: string): {
+  content: string;
+  normalizedCount: number;
+} {
+  if (!markdown) return { content: '', normalizedCount: 0 };
+  let normalizedCount = 0;
+
+  const updated = String(markdown).replace(
+    /\[([^\]]+)\]\(([^)\s]+)(\s+"[^"]*")?\)/g,
+    (fullMatch, anchorText, rawHref, titleAttr = '') => {
+      let href = String(rawHref || '').trim();
+      const origHref = href;
+
+      if (/^https?:\/\/(?:www\.)?abuqitmirlabs\.tech$/i.test(href)) {
+        href = '/';
+      } else if (/^https?:\/\/(?:www\.)?abuqitmirlabs\.tech(\/[^#\s?]*)(.*)$/i.test(href)) {
+        href = href.replace(/^https?:\/\/(?:www\.)?abuqitmirlabs\.tech/i, '');
+      }
+
+      if (href.startsWith('/') && !href.startsWith('//')) {
+        const [pathPart, hashOrQuery = ''] = href.split(/(?=[#?])/);
+        const cleanPath = pathPart.length > 1 ? pathPart.replace(/\/+$/, '') : pathPart;
+        const lowerPath = cleanPath.toLowerCase();
+
+        if (LEGACY_INTERNAL_PATH_MAP[lowerPath]) {
+          href = `${LEGACY_INTERNAL_PATH_MAP[lowerPath]}${hashOrQuery}`;
+        } else if (lowerPath.startsWith('/blog/')) {
+          const rawBlogSlug = cleanPath.slice('/blog/'.length);
+          const canonBlogSlug = getCanonicalSlug(rawBlogSlug);
+          href = `/blog/${canonBlogSlug}${hashOrQuery}`;
+        } else {
+          href = `${cleanPath}${hashOrQuery}`;
+        }
+      }
+
+      if (href !== origHref) {
+        normalizedCount++;
+        return `[${anchorText}](${href}${titleAttr})`;
+      }
+      return fullMatch;
+    }
+  );
+
+  return { content: updated, normalizedCount };
+}
+
+/**
+ * Preserves all existing internal links placed by the author, normalizes non-canonical internal URLs,
+ * and surgically appends only missing core SEO/GEO entity links if they are not already present.
  */
 export function injectContextualInternalLinks(
   markdown: string,
@@ -256,48 +325,85 @@ export function injectContextualInternalLinks(
   category: string,
   currentSlug: string
 ): { content: string; addedCount: number } {
-  const existingCount = countInternalLinksInContent(markdown);
-  if (existingCount >= 2) {
-    return { content: markdown, addedCount: 0 };
+  const { content: normalizedMd, normalizedCount } = normalizeExistingInternalLinks(markdown);
+  let addedCount = normalizedCount;
+
+  const hasHref = (md: string, targetPath: string): boolean => {
+    const escaped = targetPath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const rx = new RegExp(`\\]\\((?:https?:\\/\\/(?:www\\.)?abuqitmirlabs\\.tech)?${escaped}(?:[\\/#?\\s)]|$)`, 'i');
+    return rx.test(md);
+  };
+
+  const missingCoreSnippets: string[] = [];
+  if (!hasHref(normalizedMd, '/custom-software')) {
+    missingCoreSnippets.push('[custom software engineering](/custom-software)');
+  }
+  if (!hasHref(normalizedMd, '/ai-agent-development')) {
+    missingCoreSnippets.push('[AI agent development](/ai-agent-development)');
+  }
+  if (!hasHref(normalizedMd, '/contact')) {
+    missingCoreSnippets.push('[book a strategy diagnostic](/contact)');
   }
 
-  const combinedContext = `${title} ${category} ${markdown.slice(0, 1500)}`;
-  const selectedLinks: string[] = [];
+  const existingCount = countInternalLinksInContent(normalizedMd);
+  if (existingCount >= 3 && missingCoreSnippets.length === 0) {
+    return { content: normalizedMd, addedCount };
+  }
 
-  for (const candidate of CONTEXTUAL_INTERNAL_LINK_POOL) {
-    if (candidate.href.endsWith(`/${currentSlug}`)) continue;
-    if (candidate.keywords.test(combinedContext) && !markdown.includes(candidate.href)) {
-      selectedLinks.push(candidate.contextSentence);
-      if (selectedLinks.length >= 2) break;
+  const selectedBlocks: string[] = [];
+
+  if (missingCoreSnippets.length > 0) {
+    const formattedList =
+      missingCoreSnippets.length === 1
+        ? missingCoreSnippets[0]
+        : missingCoreSnippets.length === 2
+        ? `${missingCoreSnippets[0]} and ${missingCoreSnippets[1]}`
+        : `${missingCoreSnippets[0]}, ${missingCoreSnippets[1]}, or ${missingCoreSnippets[2]}`;
+    selectedBlocks.push(
+      `For teams scaling production architecture, explore our ${formattedList} with AbuQitmirLabs.`
+    );
+    addedCount += missingCoreSnippets.length;
+  }
+
+  const combinedContext = `${title} ${category} ${normalizedMd.slice(0, 1500)}`;
+  if (existingCount + missingCoreSnippets.length < 3) {
+    for (const candidate of CONTEXTUAL_INTERNAL_LINK_POOL) {
+      if (candidate.href.endsWith(`/${currentSlug}`)) continue;
+      if (candidate.keywords.test(combinedContext) && !hasHref(normalizedMd, candidate.href)) {
+        selectedBlocks.push(candidate.contextSentence);
+        addedCount++;
+        if (existingCount + addedCount >= 3) break;
+      }
     }
   }
 
-  if (selectedLinks.length === 0) {
-    selectedLinks.push(
-      CONTEXTUAL_INTERNAL_LINK_POOL[CONTEXTUAL_INTERNAL_LINK_POOL.length - 1].contextSentence
-    );
+  if (selectedBlocks.length === 0) {
+    return { content: normalizedMd, addedCount };
   }
 
-  const blockToInject = `\n\n## Related Engineering Resources\n\n${selectedLinks
-    .map((s) => `- ${s}`)
-    .join('\n')}\n`;
+  const blockToInject = `\n\n${selectedBlocks.join('\n\n')}\n`;
 
-  const faqHeadingMatch = markdown.match(/\n##\s+(?:Frequently Asked Questions|FAQs?)\b/i);
+  const faqHeadingMatch = normalizedMd.match(/\n##\s+(?:Frequently Asked Questions|FAQs?)\b/i);
   if (faqHeadingMatch && typeof faqHeadingMatch.index === 'number') {
     const idx = faqHeadingMatch.index;
-    const updated = `${markdown.slice(0, idx)}${blockToInject}${markdown.slice(idx)}`;
-    return { content: updated.trim(), addedCount: selectedLinks.length };
+    const updated = `${normalizedMd.slice(0, idx)}${blockToInject}${normalizedMd.slice(idx)}`;
+    return { content: updated.trim(), addedCount };
   }
 
   return {
-    content: `${markdown.trim()}${blockToInject}`.trim(),
-    addedCount: selectedLinks.length,
+    content: `${normalizedMd.trim()}${blockToInject}`.trim(),
+    addedCount,
   };
 }
 
 /**
- * Removes leading or body `# H1` headings from markdown content and converts them to `## H2`
- * while deduplicating consecutive identical headings.
+ * Surgically cleans H1/H2/H3 hierarchy for SEO, AEO (Answer Engine Optimization), and GEO
+ * while preserving the author's original content, intro paragraphs, and structure:
+ * 1. Strips duplicate top `# H1` if it repeats the article title; converts other `# H1` in body to `## H2`.
+ * 2. Preserves opening AEO direct-answer paragraphs before the first `## H2` (never prepends a duplicate title H2 if body already has H2s).
+ * 3. Fixes skipped heading levels (e.g. H2 -> H4 without H3) and capitalizes accidental lowercase heading starts (`## introduction` -> `## Introduction`).
+ * 4. Disambiguates duplicate H2/H3 headings using parent section context instead of deleting the author's headings.
+ * 5. Converts bold question lines inside FAQ sections into `### Question?` so AEO `FAQPage` schema extracts them cleanly.
  */
 export function convertContentH1ToH2(
   rawMarkdown: string,
@@ -308,6 +414,11 @@ export function convertContentH1ToH2(
   let inCodeBlock = false;
   let convertedCount = 0;
 
+  const cleanArticleTitle = String(articleTitle || '')
+    .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
+    .trim();
+  const normArticleTitle = cleanArticleTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
+
   const isMetaOrDividerLine = (lineStr: string) => {
     const t = lineStr.trim();
     return t === '' || t === '---' || /^(?:\*\*)?by\s+abu\s*qitmir/i.test(t);
@@ -317,8 +428,41 @@ export function convertContentH1ToH2(
     lines.shift();
   }
 
+  // Check if the body already has any H2/H3 headings
+  let bodyHasH2 = false;
+  let h2BeforeFaq = 0;
+  let h3BeforeFaq = 0;
+  let scanCode = false;
+  let scanFaq = false;
+  for (let i = 0; i < lines.length; i++) {
+    const t = lines[i].trim();
+    if (t.startsWith('```')) {
+      scanCode = !scanCode;
+      continue;
+    }
+    if (scanCode) continue;
+    if (/^#{2,3}\s+(?:frequently asked questions|faqs?\b)/i.test(t)) {
+      scanFaq = true;
+      bodyHasH2 = true;
+      continue;
+    }
+    if (/^##\s+/.test(t)) {
+      bodyHasH2 = true;
+      if (!scanFaq) h2BeforeFaq++;
+    } else if (/^###\s+/.test(t) && !scanFaq) {
+      h3BeforeFaq++;
+    }
+  }
+
+  // Only promote body H3 -> H2 if the author wrote the entire article with 0 H2s and >= 3 H3s
+  const shouldPromoteOrphanH3s = h2BeforeFaq === 0 && h3BeforeFaq >= 3;
+
   const transformed: string[] = [];
-  const seenHeadingKeys = new Set<string>();
+  const seenHeadingCounts = new Map<string, number>();
+  let lastParentH2 = '';
+  let lastHeadingLevel = 1;
+  let inFaqSection = false;
+  let lastAddedHeadingNorm = '';
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
@@ -335,55 +479,139 @@ export function convertContentH1ToH2(
       continue;
     }
 
-    // Match single `# Heading` (H1) and convert to `## Heading` (H2)
-    if (/^#\s+/.test(trimmed)) {
+    // Clean raw GFM task list syntax: `- [ ] Done when:` -> `- **Done when:**`
+    if (/^[-*+]\s+\[[ xX]\]\s+/.test(trimmed)) {
       convertedCount++;
-      const h1Text = trimmed
-        .replace(/^#\s+/, '')
-        .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
-        .trim();
-
-      // Look ahead: if there is already a `## ` heading right after, drop the redundant top `# H1`
-      let lookahead = i + 1;
-      while (lookahead < lines.length && isMetaOrDividerLine(lines[lookahead])) {
-        lookahead++;
-      }
-      if (i === 0 && lookahead < lines.length && /^##\s+/.test(lines[lookahead].trim())) {
-        continue;
-      }
-
-      const normKey = `h2:${h1Text.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
-      if (!seenHeadingKeys.has(normKey)) {
-        seenHeadingKeys.add(normKey);
-        transformed.push(`## ${h1Text}`);
-      }
+      const indent = (line.match(/^(\s*)/) || ['', ''])[1];
+      const cleanedItem = trimmed
+        .replace(/^([-*+])\s+\[[ xX]\]\s+/, '$1 ')
+        .replace(/^([-*+]\s+)Done when:\s*/i, '$1**Done when:** ');
+      transformed.push(`${indent}${cleanedItem}`);
       continue;
     }
 
-    // Also deduplicate exact duplicate H2/H3 headings inside the same article
-    const hMatch = trimmed.match(/^(#{2,3})\s+(.+)$/);
+    // Inside FAQ section, promote bold standalone questions `**Question?**` to `### Question?` for AEO FAQPage schema
+    if (inFaqSection && /^\*\*[^*]+\?\*\*\s*$/.test(trimmed)) {
+      const qText = trimmed.replace(/^\*\*|\*\*\s*$/g, '').trim();
+      transformed.push(`### ${qText}`);
+      lastHeadingLevel = 3;
+      convertedCount++;
+      continue;
+    }
+
+    // Handle any markdown heading (# to ####)
+    const hMatch = trimmed.match(/^(#{1,4})\s+(.+)$/);
     if (hMatch) {
-      const level = hMatch[1];
-      const text = hMatch[2].replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
-      const normKey = `${level}:${text.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
-      if (seenHeadingKeys.has(normKey)) {
+      let hashes = hMatch[1];
+      let text = hMatch[2].replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+      const textNorm = text.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+      // 1. If `# Heading` (H1) appears in markdown content:
+      if (hashes === '#') {
+        convertedCount++;
+        const isSameAsTitle =
+          normArticleTitle.length > 0 &&
+          (textNorm === normArticleTitle ||
+            textNorm.includes(normArticleTitle) ||
+            normArticleTitle.includes(textNorm));
+
+        // If top H1 duplicates the article title and the article already has H2 headings, drop the redundant top H1
+        if (i === 0 && (isSameAsTitle || bodyHasH2)) {
+          while (i + 1 < lines.length && isMetaOrDividerLine(lines[i + 1])) {
+            i++;
+          }
+          continue;
+        }
+        hashes = '##';
+      }
+
+      // 2. If the first H2 at line 0 is an exact duplicate of the H1 article title and another H2 follows right after, drop the redundant title H2
+      if (i === 0 && hashes === '##' && normArticleTitle && textNorm === normArticleTitle) {
+        let lookahead = i + 1;
+        while (lookahead < lines.length && isMetaOrDividerLine(lines[lookahead])) {
+          lookahead++;
+        }
+        if (lookahead < lines.length && /^##\s+/.test(lines[lookahead].trim())) {
+          convertedCount++;
+          i = lookahead - 1;
+          continue;
+        }
+      }
+
+      // 3. Detect FAQ section for AEO
+      if (/^(?:frequently asked questions|faqs?\b)/i.test(text)) {
+        inFaqSection = true;
+        if (hashes !== '##') {
+          hashes = '##';
+          convertedCount++;
+        }
+      } else if (hashes === '##') {
+        inFaqSection = false;
+      }
+
+      // 4. Promote orphan H3s to H2 only if the article had 0 H2s before FAQ
+      if (shouldPromoteOrphanH3s && !inFaqSection && hashes === '###') {
+        hashes = '##';
+        convertedCount++;
+      }
+
+      // 5. Fix skipped heading level (e.g. H2 -> H4 directly without H3)
+      if (hashes === '####' && lastHeadingLevel <= 2) {
+        hashes = '###';
+        convertedCount++;
+      }
+
+      // 6. Capitalize accidental lowercase first character (e.g. `## introduction` -> `## Introduction`)
+      if (text.length > 0 && /^[a-z]/.test(text)) {
+        text = text.charAt(0).toUpperCase() + text.slice(1);
+        convertedCount++;
+      }
+
+      // 7. Drop only if it's an immediate consecutive duplicate heading; otherwise disambiguate if repeated later
+      const dedupeKey = text.toLowerCase().replace(/[:\s]+/g, ' ').trim();
+      if (dedupeKey === lastAddedHeadingNorm) {
         convertedCount++;
         continue;
       }
-      seenHeadingKeys.add(normKey);
-      transformed.push(`${level} ${text}`);
+
+      if (seenHeadingCounts.has(dedupeKey)) {
+        const count = (seenHeadingCounts.get(dedupeKey) || 1) + 1;
+        seenHeadingCounts.set(dedupeKey, count);
+        if (
+          hashes.length >= 3 &&
+          lastParentH2 &&
+          !text.toLowerCase().includes(lastParentH2.toLowerCase())
+        ) {
+          text = `${text} (${lastParentH2})`;
+        } else {
+          text = `${text} (Part ${count})`;
+        }
+        convertedCount++;
+      } else {
+        seenHeadingCounts.set(dedupeKey, 1);
+      }
+
+      if (hashes === '##') {
+        lastParentH2 = text.replace(/^[\d.\-\s]+/, '').trim();
+      }
+      lastHeadingLevel = hashes.length;
+      lastAddedHeadingNorm = text.toLowerCase().replace(/[:\s]+/g, ' ').trim();
+
+      transformed.push(`${hashes} ${text}`);
       continue;
     }
 
+    if (trimmed.length > 0) {
+      lastAddedHeadingNorm = '';
+    }
     transformed.push(line);
   }
 
-  if (
-    transformed.length > 0 &&
-    !/^#{2,6}\s+/.test(transformed[0].trim()) &&
-    articleTitle
-  ) {
-    transformed.unshift(`## ${articleTitle}`, '');
+  // Only add an H2 if the entire article has ZERO H2 headings anywhere (required by Rule 6)
+  const hasAnyH2 = transformed.some((l) => /^##\s+/.test(l.trim()));
+  if (!hasAnyH2 && transformed.length > 0 && cleanArticleTitle) {
+    transformed.unshift(`## ${cleanArticleTitle}`, '');
+    convertedCount++;
   }
 
   return {
@@ -493,21 +721,15 @@ export function autoFixArticle(input: ArticleInput): AutoFixResult {
   const rawContent = String(input.content || '').trim();
   const rawSlug = String(input.slug || '').trim();
 
-  // 1. Title Missing -> Auto-set from first heading or slug (preserve "| AbuQitmirLabs" for 54-60 char SEO H1)
-  let resolvedTitle = stripOuterQuotes(input.title).trim();
+  // 1. Title Missing -> Auto-set from first heading or slug (NEVER append "| AbuQitmirLabs" to H1 title — Rule 6)
+  let resolvedTitle = stripOuterQuotes(input.title)
+    .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
+    .trim();
 
   if (!resolvedTitle) {
     const extractedHeading = extractFirstHeading(rawContent);
     resolvedTitle = extractedHeading || humanizeSlug(rawSlug);
     appliedFixes.push(`Title was missing -> Auto-set to "${resolvedTitle}"`);
-  }
-
-  if (
-    resolvedTitle.length > 0 &&
-    resolvedTitle.length <= 44 &&
-    !/Abu\s*Qitmir\s*Labs/i.test(resolvedTitle)
-  ) {
-    resolvedTitle = `${resolvedTitle} | AbuQitmirLabs`;
   }
 
   // Ensure canonical slug (strip brand suffix when generating slug from title)
