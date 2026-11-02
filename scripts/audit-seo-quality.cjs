@@ -72,7 +72,7 @@ sitemapPaths.forEach(sitemapPath => {
       sitemapChanged = true;
     }
 
-    const routePath = url.replace('https://www.abuqitmirlabs.tech', '') || '/';
+    let routePath = url.replace('https://www.abuqitmirlabs.tech', '') || '/';
 
     // Remove disallowed routes (e.g. /admin blocked by robots.txt)
     if (disallowedPaths.has(routePath) || routePath.startsWith('/admin/') || routePath.startsWith('/api/')) {
@@ -89,6 +89,7 @@ sitemapPaths.forEach(sitemapPath => {
         const canonicalUrl = `https://www.abuqitmirlabs.tech/blog/${knownRedirects[slug]}`;
         console.log(`  ⚠️ Auto-fixing legacy slug in sitemap: ${url} -> ${canonicalUrl}`);
         url = canonicalUrl;
+        routePath = `/blog/${knownRedirects[slug]}`;
         sitemapChanged = true;
         issuesFixed.push(`Canonicalized legacy sitemap link: ${slug} -> ${knownRedirects[slug]}`);
       }
@@ -100,7 +101,8 @@ sitemapPaths.forEach(sitemapPath => {
     const canonMatch = seoRoutesContent.match(canonRegex);
     if (canonMatch) {
       const canonical = canonMatch[1].replace(/\/+$/, '');
-      if (canonical !== url) {
+      const targetSlug = canonical.includes('/blog/') ? canonical.split('/blog/')[1] : '';
+      if (canonical !== url && (!targetSlug || !knownRedirects[targetSlug])) {
         console.log(`  ⚠️ Auto-correcting non-canonical URL in sitemap: ${url} -> ${canonical}`);
         url = canonical;
         sitemapChanged = true;

@@ -8,7 +8,7 @@
   "metaDescription": "12-step checklist to build a personal brand online: define your niche, publish on one platform, prove expertise. Start the checklist.",
   "category": "Branding",
   "author": "Abu Qitmir Mohammad Shiraz Al-Madani",
-  "publishedAt": "2026-04-20",
+  "publishedAt": "2026-11-01T19:19:06.328Z",
   "coverImage": "/images/blog-covers/how-to-build-personal-brand-online-1e2d72bb.webp",
   "coverImageAlt": "How to Build a Personal Brand Online: A Founder's Checklist — 12-Step Personal Branding Checklist by AbuQitmirLabs",
   "tags": [

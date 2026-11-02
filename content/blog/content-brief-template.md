@@ -19,9 +19,9 @@
     "content brief checklist",
     "AbuQitmirLabs"
   ],
-  "coverImage": "https://i.postimg.cc/8C8xN6Vc/14-Point-Content-Brief-Guide.png",
+  "coverImage": "/images/blog-covers/content-brief-template-fcc385c7.webp",
   "coverImageAlt": "A structured content brief document with checklists, headings, and keyword targets",
-  "publishedAt": "2026-10-18"
+  "publishedAt": "2026-10-23"
 }
 ---
 ## Quick Takeaways

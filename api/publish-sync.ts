@@ -125,6 +125,8 @@ export default async function handler(req: any, res: any) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  const rawBody = req.body || {};
+  const postPayload = (rawBody.post && typeof rawBody.post === 'object') ? rawBody.post : rawBody;
   const {
     title,
     slug,
@@ -138,7 +140,7 @@ export default async function handler(req: any, res: any) {
     tags,
     type = 'blog',
     action = 'publish'
-  } = req.body || {};
+  } = postPayload;
 
   const steps: string[] = [];
   const today = new Date().toISOString().split('T')[0];
@@ -259,10 +261,10 @@ export default async function handler(req: any, res: any) {
   }
 
   // 4. Optional Server-Side GitHub Commit & Vercel Deploy Hook
-  const ghToken = process.env.GITHUB_TOKEN || process.env.VITE_GITHUB_TOKEN || '';
-  const ghRepo = process.env.GITHUB_REPO || 'abuqitmirshirazalmadani-prog/ABUQITMIRLABS.TECH';
-  const ghBranch = process.env.GITHUB_BRANCH || 'main';
-  const vercelHook = process.env.VERCEL_DEPLOY_HOOK || process.env.VITE_VERCEL_DEPLOY_HOOK || '';
+  const ghToken = String(rawBody.githubToken || process.env.GITHUB_TOKEN || process.env.VITE_GITHUB_TOKEN || '').trim();
+  const ghRepo = String(rawBody.githubRepo || process.env.GITHUB_REPO || 'abuqitmirshirazalmadani-prog/ABUQITMIRLABS.TECH').trim();
+  const ghBranch = String(rawBody.githubBranch || process.env.GITHUB_BRANCH || 'main').trim();
+  const vercelHook = String(rawBody.vercelDeployHook || process.env.VERCEL_DEPLOY_HOOK || process.env.VITE_VERCEL_DEPLOY_HOOK || '').trim();
 
   if (ghToken && postUrl) {
     try {
@@ -346,7 +348,7 @@ export default async function handler(req: any, res: any) {
   }
 
   return res.status(200).json({
-    success: true,
+    success: Boolean(localMarkdownSaved || localSitemapUpdated || githubSynced || vercelTriggered),
     slug: cleanSlug,
     canonicalUrl: postUrl || 'https://www.abuqitmirlabs.tech/sitemap.xml',
     type,
@@ -355,6 +357,7 @@ export default async function handler(req: any, res: any) {
     localSitemapUpdated,
     localRssUpdated,
     githubSynced,
+    githubPostFile: githubSynced,
     vercelTriggered,
     commitUrl,
     steps

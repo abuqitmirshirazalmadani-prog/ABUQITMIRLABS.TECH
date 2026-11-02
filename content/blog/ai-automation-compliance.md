@@ -1,12 +1,23 @@
 ---
-title: "AI Automation for Regulated Industries"
-slug: "ai-automation-compliance"
-metaDescription: "A guide to AI automation in regulated industries. Learn what's allowed in fintech and healthcare, and how to build compliant AI systems."
-coverImage: "/images/blog-covers/ai-automation-compliance-79cfaf63.webp"
-category: "AI"
-author: "Abu Qitmir Mohammad Shiraz Al-Madani"
-createdAt: "2026-10-31"
-tags: ["AI automation compliance", "AI in regulated industries", "AI compliance framework", "automation in fintech healthcare", "explainable AI", "AI audit trails", "HIPAA compliant AI"]
+{
+  "title": "AI Automation for Regulated Industries",
+  "slug": "ai-automation-compliance",
+  "metaDescription": "A guide to AI automation in regulated industries. Learn what's allowed in fintech and healthcare, and how to build compliant AI systems.",
+  "coverImage": "/images/blog-covers/ai-automation-compliance-79cfaf63.webp",
+  "category": "AI",
+  "author": "Abu Qitmir Mohammad Shiraz Al-Madani",
+  "publishedAt": "2026-10-31",
+  "published": true,
+  "tags": [
+    "AI automation compliance",
+    "AI in regulated industries",
+    "AI compliance framework",
+    "automation in fintech healthcare",
+    "explainable AI",
+    "AI audit trails",
+    "HIPAA compliant AI"
+  ]
+}
 ---
 
 ## A guide to AI automation in regulated industries.

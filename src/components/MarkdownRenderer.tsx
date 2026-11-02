@@ -110,7 +110,15 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
   const raw = typeof children === 'string' ? children : String(children || '');
   if (!raw.trim()) return null;
 
-  const lines = raw.replace(/\r\n/g, '\n').split('\n');
+  const cleanedRaw = raw
+    .replace(/\r\n/g, '\n')
+    .replace(/[\u200B-\u200D\uFEFF]/g, '')
+    .replace(/^---\s*\n[\s\S]*?\n---\s*\n+/, '')
+    .replace(/^([ \t]*#{1,6})[\u00A0]+/gm, '$1 ')
+    .replace(/^[ \t]*\*\*(#{1,6})\s+(.+?)\*\*[ \t]*$/gm, '$1 $2')
+    .replace(/^([ \t]*#{1,6})([A-Za-z0-9])/gm, '$1 $2');
+
+  const lines = cleanedRaw.split('\n');
   const elements: React.ReactNode[] = [];
 
   const H1Comp = components.h1 || 'h1';
@@ -176,11 +184,12 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
     }
 
     // 4. Headings (# through ######)
-    const headingMatch = trimmed.match(/^(#{1,6})\s+(.+?)\s*#*$/);
+    const headingMatch = trimmed.match(/^(?:\*\*)?(#{1,6})[\s\u00A0]+(.+?)(?:\s*\{#[^}]+\})?(?:\*\*)?\s*#*$/);
     if (headingMatch) {
       const level = headingMatch[1].length;
       const rawHeadingText = headingMatch[2]
         .replace(/^\*\*([\s\S]+)\*\*$/, '$1')
+        .replace(/\s*\{#[^}]+\}\s*$/, '')
         .trim();
       const headingChildren = renderInlineNodes(
         rawHeadingText,
@@ -359,7 +368,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
         !l ||
         l.startsWith('```') ||
         /^(?:-{3,}|\*{3,}|_{3,})$/.test(l) ||
-        /^#{1,6}\s+/.test(l) ||
+        /^(?:\*\*)?#{1,6}[\s\u00A0]+/.test(l) ||
         /^!\[([^\]]*)\]\(([^)]+)\)$/.test(l) ||
         l.startsWith('>') ||
         /^[-*+]\s+/.test(l) ||

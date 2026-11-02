@@ -152,8 +152,23 @@ export default async function handler(req: any, res: any) {
       try {
         const rawMd = fs.readFileSync(mdFilePath, 'utf-8');
         const fmMatch = rawMd.match(/^---\s*\r?\n(\{[\s\S]*?\})\r?\n---\s*/);
-        const bodyMd = fmMatch ? rawMd.slice(fmMatch[0].length) : rawMd;
-        const meta = fmMatch ? JSON.parse(fmMatch[1]) : {};
+        let bodyMd = rawMd;
+        let meta: Record<string, any> = {};
+        if (fmMatch) {
+          bodyMd = rawMd.slice(fmMatch[0].length);
+          meta = JSON.parse(fmMatch[1]);
+        } else {
+          const yamlMatch = rawMd.match(/^---\s*\r?\n([\s\S]*?)\r?\n---\s*/);
+          if (yamlMatch) {
+            bodyMd = rawMd.slice(yamlMatch[0].length);
+            for (const line of yamlMatch[1].split(/\r?\n/)) {
+              const kv = line.match(/^([A-Za-z0-9_]+)\s*:\s*(.+)$/);
+              if (kv) {
+                meta[kv[1].trim()] = kv[2].trim().replace(/^["']|["']$/g, '');
+              }
+            }
+          }
+        }
         postData = {
           slug: canonicalSlug,
           title: meta.title || canonicalSlug,
@@ -164,7 +179,7 @@ export default async function handler(req: any, res: any) {
           coverImage: meta.coverImage || '/logo.png',
           author: meta.author || 'Abu Qitmir Mohammad Shiraz Al-Madani',
           category: meta.category || 'Business',
-          createdAt: meta.publishedAt || '2026-11-01',
+          createdAt: meta.publishedAt || meta.createdAt || '2026-11-01',
         };
       } catch {}
     }

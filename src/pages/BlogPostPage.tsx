@@ -74,7 +74,13 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         if (!stat) return cached;
         return {
             ...cached,
-            content: (stat.content?.length || 0) >= (cached.content?.length || 0) ? stat.content : cached.content,
+            title: stat.title || cached.title,
+            createdAt: stat.createdAt || cached.createdAt,
+            content: (stat.content && stat.content.trim().length > 500)
+                ? stat.content
+                : (stat.content?.length || 0) >= (cached.content?.length || 0)
+                ? stat.content
+                : cached.content,
             metaDescription: stat.metaDescription || cached.metaDescription,
         };
     };
@@ -168,10 +174,14 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         (img: any) => img && img.url && !UNWANTED_PRESET_URLS.some(p => String(img.url).includes(p))
                     );
                     const staticEntry = (slug && STATIC_POSTS_MAP[slug]) ? STATIC_POSTS_MAP[slug] : null;
+                    // Always prefer curated, SEO-audited static content when available (>500 chars)
+                    // so internal links, H2/H3 structure, and prerendered SSR HTML never regress on hydration
                     const resolvedContent =
-                        staticEntry?.content &&
-                        (countH2Headings(staticEntry.content) >= countH2Headings(foundPost.content) ||
-                            staticEntry.content.length >= (foundPost.content?.length || 0))
+                        staticEntry?.content && staticEntry.content.trim().length > 500
+                            ? staticEntry.content
+                            : staticEntry?.content &&
+                              (countH2Headings(staticEntry.content) >= countH2Headings(foundPost.content) ||
+                                  staticEntry.content.length >= (foundPost.content?.length || 0))
                             ? staticEntry.content
                             : foundPost.content;
                     const rawCandidateTitle = cleanTitleStr(staticEntry?.title || foundPost.title) || foundPost.title;
@@ -190,6 +200,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                     const sanitizedPost: Post = {
                         ...foundPost,
                         title: resolvedFullTitle,
+                        createdAt: staticEntry?.createdAt || foundPost.createdAt,
                         content: resolvedContent,
                         coverImage: resolvedCover || foundPost.coverImage,
                         helperImages: cleanHelperList,
@@ -689,10 +700,6 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 ? new Date(timestamp.seconds * 1000)
                 : new Date(timestamp);
             if (isNaN(date.getTime())) return '';
-            const maxAllowed = Date.now() + 86400000;
-            if (date.getTime() > maxAllowed) {
-                date = new Date();
-            }
             return date.toLocaleDateString('en-US', {
                 month: 'long',
                 day: 'numeric',
@@ -727,10 +734,6 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 ? new Date(timestamp.seconds * 1000)
                 : new Date(timestamp);
             if (isNaN(date.getTime())) return defaultSafe;
-            const maxAllowed = Date.now() + 86400000;
-            if (date.getTime() > maxAllowed) {
-                date = new Date();
-            }
             return date.toISOString();
         } catch (e) {
             return defaultSafe;

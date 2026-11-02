@@ -660,6 +660,26 @@
       "source": "/high-performance-web-apps-12-engineering-decisions",
       "destination": "/blog/high-performance-web-applications-12-engineering-decisions",
       "permanent": true
+    },
+    {
+      "source": "/blog/brand-identity-vs-logo-design",
+      "destination": "/blog/brand-strategy-vs-logo-design-pakistan-sme",
+      "permanent": true
+    },
+    {
+      "source": "/brand-identity-vs-logo-design",
+      "destination": "/blog/brand-strategy-vs-logo-design-pakistan-sme",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ai-automation-for-regulated-industries-abuqitmirlabs",
+      "destination": "/blog/ai-automation-compliance",
+      "permanent": true
+    },
+    {
+      "source": "/ai-automation-for-regulated-industries-abuqitmirlabs",
+      "destination": "/blog/ai-automation-compliance",
+      "permanent": true
     }
   ]
 }

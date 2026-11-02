@@ -904,7 +904,7 @@ const AdminDashboard = () => {
                 // Fallback to direct client-side GitHub REST API below
             }
 
-            if (!data || !data.success) {
+            if (!data || !data.success || (githubToken.trim() && !data.githubSynced)) {
                 const clientRes = await syncPostToGitHubAndDeploy(
                     postData || null,
                     {
@@ -930,7 +930,7 @@ const AdminDashboard = () => {
                         githubRss: clientRes.githubRss ?? true,
                         vercelTriggered: clientRes.vercelTriggered ?? true
                     };
-                } else {
+                } else if (!data || !data.success) {
                     throw new Error(clientRes.error || 'Failed to sync with deployment pipeline');
                 }
             } else {

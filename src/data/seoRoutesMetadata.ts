@@ -113,11 +113,11 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   "/blog/brand-identity-vs-logo-design": {
     title: "Brand Identity vs Logo Design: What Startups Actually Need First | AbuQitmirLabs",
     description: "A logo is not a brand. Learn the difference between logo design and a complete brand identity system, what each costs in 2026, and what to build first.",
-    canonical: "https://www.abuqitmirlabs.tech/blog/brand-identity-vs-logo-design",
+    canonical: "https://www.abuqitmirlabs.tech/blog/brand-strategy-vs-logo-design-pakistan-sme",
     keywords: "brand identity vs logo design, startup branding, visual identity system, brand guidelines, AbuQitmirLabs",
     ogTitle: "Brand Identity vs Logo Design: What Startups Actually Need First | AbuQitmirLabs",
     ogDescription: "A logo is not a brand. Learn the difference between logo design and a complete brand identity system.",
-    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp",
     ogType: "article",
     twitterCard: "summary_large_image"
   },
@@ -160,13 +160,13 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     keywords: "small business branding mistakes Pakistan, why small businesses fail branding, brand building mistakes Pakistani SMEs, branding failures small business, brand identity system, brand guidelines, local SEO Pakistan, SME branding, brand positioning, logo design mistakes, AbuQitmirLabs",
     ogTitle: "Small Business Branding Mistakes Pakistan (And How to Fix It) | AbuQitmirLabs",
     ogDescription: "Discover the 9 most common small business branding mistakes in Pakistan. Get a practical checklist to fix them and build brand trust without wasting budget.",
-    ogImage: "https://i.postimg.cc/cLTBf9mr/Brand-Building-Mistakes-Guide.png",
+    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/small-business-branding-mistakes-pakistan-6d2717c9.webp",
     ogImageAlt: "The 9 Most Common Brand Building Mistakes Small Businesses Make in Pakistan — Infographic and Step-by-Step Brand Fix Checklist by AbuQitmirLabs",
     ogType: "article",
     twitterCard: "summary_large_image",
     twitterTitle: "Small Business Branding Mistakes Pakistan (And How to Fix It) | AbuQitmirLabs",
     twitterDescription: "Discover the 9 most common small business branding mistakes in Pakistan. Get a practical checklist to fix them and build brand trust without wasting budget.",
-    twitterImage: "https://i.postimg.cc/cLTBf9mr/Brand-Building-Mistakes-Guide.png"
+    twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/small-business-branding-mistakes-pakistan-6d2717c9.webp"
   },
   "/blog/content-brief-template": {
     title: "The Content Brief Template That Gets Writers 90% There | AbuQitmirLabs",
@@ -175,12 +175,12 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     keywords: "content brief template, how to write content brief, SEO content brief, content brief example, content marketing, content strategy, B2B content marketing, content writing services, content brief checklist, AbuQitmirLabs",
     ogTitle: "The Content Brief Template That Gets Writers 90% There | AbuQitmirLabs",
     ogDescription: "14-point content brief template that gets writers 90% there. Includes 14 sections, live examples, Table of Contents, and a downloadable copy-paste template.",
-    ogImage: "https://i.postimg.cc/8C8xN6Vc/14-Point-Content-Brief-Guide.png",
+    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/content-brief-template-fcc385c7.webp",
     ogType: "article",
     twitterCard: "summary_large_image",
     twitterTitle: "The Content Brief Template That Gets Writers 90% There | AbuQitmirLabs",
     twitterDescription: "14-point content brief template that gets writers 90% there. Includes 14 sections, live examples, Table of Contents, and a downloadable copy-paste template.",
-    twitterImage: "https://i.postimg.cc/8C8xN6Vc/14-Point-Content-Brief-Guide.png"
+    twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/content-brief-template-fcc385c7.webp"
   },
   "/brand-building": {
     title: "Brand Building Services for Small Businesses | AbuQitmirLabs",
@@ -10487,15 +10487,15 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   '/blog/ai-automation-for-regulated-industries-abuqitmirlabs': {
     title: "AI Automation for Regulated Industries | AbuQitmirLabs",
     description: "A guide to AI automation in regulated industries. Learn what's allowed in fintech and healthcare, and how to build compliant AI systems.",
-    canonical: 'https://www.abuqitmirlabs.tech/blog/ai-automation-for-regulated-industries-abuqitmirlabs',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/ai-automation-compliance',
     ogTitle: "AI Automation for Regulated Industries | AbuQitmirLabs",
     ogDescription: "A guide to AI automation in regulated industries. Learn what's allowed in fintech and healthcare, and how to build compliant AI systems.",
-    ogImage: "https://i.postimg.cc/2yXtnD5Z/ai-automation-compliance.jpg",
+    ogImage: "/images/blog-covers/ai-automation-compliance-79cfaf63.webp",
     ogType: 'article',
     twitterCard: 'summary_large_image',
     twitterTitle: "AI Automation for Regulated Industries | AbuQitmirLabs",
     twitterDescription: "A guide to AI automation in regulated industries. Learn what's allowed in fintech and healthcare, and how to build compliant AI systems.",
-    twitterImage: "https://i.postimg.cc/2yXtnD5Z/ai-automation-compliance.jpg",
+    twitterImage: "/images/blog-covers/ai-automation-compliance-79cfaf63.webp",
     schemaJsonLd: {
       '@context': 'https://schema.org',
       '@graph': [
@@ -10676,8 +10676,8 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           },
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
           mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/how-to-build-personal-brand-online#webpage' },
-          datePublished: "2026-04-20T00:00:00+00:00",
-          dateModified: "2026-04-20T00:00:00+00:00"
+          datePublished: "2026-11-01T19:19:06.328Z",
+          dateModified: "2026-11-01T19:19:06.328Z"
         }
       ]
     }

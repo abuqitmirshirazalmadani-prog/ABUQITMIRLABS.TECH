@@ -36,16 +36,16 @@ export function parseMarkdownH2Headings(markdown?: string): TocHeadingItem[] {
   let inCodeBlock = false;
 
   for (const line of lines) {
-    const trimmed = line.trim();
+    const trimmed = line.replace(/[\u200B-\u200D\uFEFF]/g, '').trim();
     if (trimmed.startsWith('```')) {
       inCodeBlock = !inCodeBlock;
       continue;
     }
     if (inCodeBlock) continue;
 
-    const match = trimmed.match(/^##\s+(.+)$/);
+    const match = trimmed.match(/^(?:\*\*)?##[\s\u00A0]+(.+?)(?:\s*\{#[^}]+\})?(?:\*\*)?\s*#*$/);
     if (match && match[1]) {
-      const cleanText = stripMarkdownInline(match[1]);
+      const cleanText = stripMarkdownInline(match[1].replace(/\s*\{#[^}]+\}\s*$/, ''));
       if (!cleanText) continue;
       if (cleanText.toLowerCase() === 'table of contents') continue;
 
