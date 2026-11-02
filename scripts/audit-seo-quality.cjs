@@ -439,12 +439,32 @@ if (fs.existsSync(staticBlogPath)) {
 }
 
 // ==========================================
-// 6. AUDIT CONTENT/BLOG/*.MD & DIST/ RAW HTML GUARDRAILS
+// 6. AUDIT CONTENT/BLOG/*.MD & DIST/ RAW HTML GUARDRAILS (Rules 9, 10, 11)
 // ==========================================
-console.log('\n📌 Checking content/blog/*.md and prerendered HTML guardrails (H1, H2, single @graph JSON-LD, WebP covers)...');
+console.log('\n📌 Checking content/blog/*.md, heading normalization, internal links, and prerendered HTML guardrails...');
 const contentBlogDir = path.join(rootDir, 'content/blog');
 if (fs.existsSync(contentBlogDir)) {
   const mdFiles = fs.readdirSync(contentBlogDir).filter(f => f.endsWith('.md'));
+  let normalizedMdCount = 0;
+
+  mdFiles.forEach(file => {
+    const mdPath = path.join(contentBlogDir, file);
+    const rawMd = fs.readFileSync(mdPath, 'utf8');
+    // Normalize bold-wrapped ATX headings (**## Heading**) and trailing {#id} anchors inside markdown body
+    const cleanedMd = rawMd
+      .replace(/^[ \t]*\*\*(#{1,6})[ \t]+([^*\n]+)\*\*[ \t]*$/gm, '$1 $2')
+      .replace(/^(#{1,6}[ \t]+.+?)[ \t]*\{#[a-zA-Z0-9_-]+\}[ \t]*$/gm, '$1');
+
+    if (cleanedMd !== rawMd) {
+      fs.writeFileSync(mdPath, cleanedMd, 'utf8');
+      normalizedMdCount++;
+      issuesFixed.push(`Normalized ATX heading syntax in content/blog/${file}`);
+    }
+  });
+
+  if (normalizedMdCount > 0) {
+    console.log(`  ✅ Auto-normalized ATX headings in ${normalizedMdCount} markdown file(s).`);
+  }
   console.log(`  ✅ Found ${mdFiles.length} markdown article(s) in content/blog/ synced for static prerendering.`);
 }
 

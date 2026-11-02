@@ -50,7 +50,7 @@
 
 ---
 
-## The Data Behind the Shift {#the-data}
+## The Data Behind the Shift
 
 **Pakistan's IT and IT-enabled services exports reached a record $4.6 billion in fiscal year 2025-26, up roughly 18 percent year over year, and the government has now locked in reduced tax rates for the sector through 2029.** That combination of export growth and policy stability is why more US founders are quietly adding Pakistan to their offshore shortlist alongside India and Eastern Europe.
 
@@ -62,7 +62,7 @@ For a US founder evaluating offshore options, policy stability matters more than
 
 ---
 
-## Why the Old "Pakistan Is Risky" Narrative Is Outdated {#outdated-narrative}
+## Why the Old "Pakistan Is Risky" Narrative Is Outdated
 
 **The reputation of Pakistan's tech sector as a low-cost, low-capability back office has not kept pace with what is actually happening on the ground in 2026.** The country that spent two decades competing purely on price is now producing founders backed by international venture firms including a16z, and software firms are increasingly building proprietary AI-assisted development accelerators rather than just executing spec sheets.
 
@@ -78,7 +78,7 @@ None of these trade-offs are disqualifying. They are the same category of due di
 
 ---
 
-## Pakistan vs India vs Poland vs Philippines: The Real Rate Comparison {#rate-comparison}
+## Pakistan vs India vs Poland vs Philippines: The Real Rate Comparison
 
 Rate comparisons across offshore markets vary by source depending on methodology (freelancer marketplace data versus managed-agency billing rates), but the directional pattern across 2026 market research is consistent.
 
@@ -96,7 +96,7 @@ Rate comparisons across offshore markets vary by source depending on methodology
 
 ---
 
-## What US Startups Actually Get at Pakistan Rates {#what-you-get}
+## What US Startups Actually Get at Pakistan Rates
 
 **The rate gap between Pakistan and Western markets is not primarily a quality gap. It is a cost-of-living and currency gap that lets a founder access senior-level engineering attention at a price point that would only buy junior-to-mid-level work domestically.**
 
@@ -109,7 +109,7 @@ What changes the calculation in 2026 specifically:
 
 ---
 
-## The Honest Trade-offs {#trade-offs}
+## The Honest Trade-offs
 
 **A 9 to 10 hour timezone gap with US East Coast is the single biggest operational trade-off of hiring in Pakistan, and no amount of rate advantage changes that fact.** This is not a reason to avoid the market. It is a reason to structure the engagement correctly from day one.
 
@@ -123,7 +123,7 @@ What does not work: treating a Pakistan-based team like a same-timezone extensio
 
 ---
 
-## How to Vet a Pakistan-Based Dev Team {#how-to-vet}
+## How to Vet a Pakistan-Based Dev Team
 
 **Vetting a Pakistan-based studio follows the same due diligence framework that applies to any offshore engineering hire — the market does not require a different playbook, just the same one applied carefully.**
 
@@ -135,7 +135,7 @@ What does not work: treating a Pakistan-based team like a same-timezone extensio
 
 ---
 
-## FAQs {#faqs}
+## FAQs
 
 **Is Pakistan safe and reliable for offshore software outsourcing in 2026?**
 Yes, with the same due diligence expected for any offshore market. Pakistan's IT sector posted record export earnings of $4.6 billion in FY2025-26 and the government has extended tax incentives for the sector through 2029, both signals of a maturing, policy-backed industry rather than an informal or unstable one. Vetting individual vendors on portfolio, reviews, and contract terms remains essential regardless of country.

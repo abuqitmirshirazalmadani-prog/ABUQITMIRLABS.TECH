@@ -47,7 +47,7 @@ This guide walks through each decision with the published test data behind it, w
 
 ---
 
-## Why SaaS Pricing Page Optimization Behaves Differently {#why-different}
+## Why SaaS Pricing Page Optimization Behaves Differently
 
 **A pricing page is a decision page, not a browsing page. Visitors arrive already interested and are weighing risk, so small structural changes can move results more than they would on a homepage or blog post.**
 
@@ -56,7 +56,7 @@ The cognitive state matters too. A visitor reading an article is gathering infor
 
 ---
 
-## Decision 1: How Many Tiers to Show {#tiers}
+## Decision 1: How Many Tiers to Show
 
 **Three tiers is the strongest default. In Visionary Marketing's 2026 benchmark of pricing page tests, three-tier pages converted 41 percent better than pages with four or more tiers.**
 
@@ -72,7 +72,7 @@ Caveat: the 41 percent figure is a cross-portfolio observation from one agency. 
 
 ---
 
-## Decision 2: Anchoring and the Decoy Tier {#anchoring}
+## Decision 2: Anchoring and the Decoy Tier
 **Prices are judged relative to their neighbours. Anchoring and decoy plans change what visitors compare a plan against, and that can shift which plan they choose.**
 
 The best-known evidence is Dan Ariely's experiment built on an Economist subscription offer. Participants saw web-only for $59, print-only for $125, and print plus web for $125. Eighty-four percent chose the bundle and none chose print-only. When the print-only option was removed, the bundle's share fell to 32 percent. CXL notes this was run with about 100 MIT students, so it is a lab result, not a live SaaS test.
@@ -87,7 +87,7 @@ What to do:
 
 ---
 
-## Decision 3: Annual or Monthly as the Default {#billing-default}
+## Decision 3: Annual or Monthly as the Default
 
 **Defaulting the toggle to annual raises annual signups but can lower total conversion. Visionary Marketing reports a 27 percent lift in annual signups alongside a 6 percent drop in overall conversion.**
 The same dataset notes that about two thirds of SaaS pricing pages (67 percent) now default to annual billing, so annual-first has become the market norm.
@@ -102,7 +102,7 @@ What to do:
 
 ---
 
-## Decision 4: Comparison Table Length {#table-length}
+## Decision 4: Comparison Table Length
 
 **Shorter comparison tables win. In Visionary Marketing's benchmark, tables with fewer than 12 rows outperformed tables with more than 20 rows by 31 percent.**
 
@@ -116,7 +116,7 @@ What to do:
 
 ---
 
-## Decision 5: The Enterprise or Contact Us Tier {#enterprise-tier}
+## Decision 5: The Enterprise or Contact Us Tier
 **An enterprise tier with a "contact us" call to action can lift conversion on the middle tier. Visionary Marketing measured a 12 percent lift on the middle tier when an enterprise option was added.**
 
 The likely reason is anchoring. A custom-priced top tier makes the published prices feel more reasonable, and it signals the product scales with bigger customers.
@@ -129,7 +129,7 @@ What to do:
 
 ---
 
-## Decision 6: Risk Reversal {#risk-reversal}
+## Decision 6: Risk Reversal
 
 **A longer money-back guarantee reduces perceived risk. Visionary Marketing reports that guarantees longer than 60 days lifted conversion by 19 percent.**
 
@@ -143,7 +143,7 @@ What to do:
 
 ---
 
-## Decision 7: Trust Signals Next to the Price {#trust-signals}
+## Decision 7: Trust Signals Next to the Price
 **Proof placed near the price reduces hesitation at the moment of decision. Visionary Marketing reports a combined 21 percent lift from trust signals placed near pricing.**
 
 Mida's guide adds a detail worth copying: testimonials that address specific fears, such as "is this worth the price" or "will my team adopt it," outperform generic praise.
@@ -156,7 +156,7 @@ What to do:
 
 ---
 
-## The Engineering Layer of a Testable Pricing Page {#engineering}
+## The Engineering Layer of a Testable Pricing Page
 
 **Pricing page results depend on how the page is built as much as how it is designed. Mobile performance, configuration, and testability all affect what you can learn and what you can earn.**
 
@@ -171,7 +171,7 @@ These are the same decisions a custom SaaS build has to make early. If you are p
 
 ---
 
-## How to A/B Test a SaaS Pricing Page Without Fooling Yourself {#testing}
+## How to A/B Test a SaaS Pricing Page Without Fooling Yourself
 
 **Run pricing page tests for at least two to four weeks, change one variable at a time, and judge results on revenue per visitor. Calling a test early is the most common way to ship a lift that was never real.**
 
@@ -190,7 +190,7 @@ If your traffic is low, a month or more may be needed for reliable results. When
 
 ---
 
-## The Honest Limits of This Data {#limits}
+## The Honest Limits of This Data
 
 **Treat every percentage in this guide as a hypothesis to test, not a promise. Most of the figures come from one agency's published benchmark and are not independently verified.**
 
@@ -204,7 +204,7 @@ This is the reason the title of this guide makes no promise of a fixed conversio
 
 ---
 
-## FAQs {#faqs}
+## FAQs
 
 **What is a good conversion rate for a SaaS pricing page?**
 Kirro's 2026 benchmarks, as cited by Koji, put the median at about 2 to 5 percent. The right target depends on traffic source, price point, and whether visitors are trialling or buying. Compare your page against your own history before you compare it against a benchmark.

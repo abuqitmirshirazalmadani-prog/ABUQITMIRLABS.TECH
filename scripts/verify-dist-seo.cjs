@@ -105,6 +105,32 @@ for (const filePath of htmlFiles) {
     }
   }
 
+  // 2b. Convert any accidental raw <p>...## Heading...</p> into proper semantic <h2> / <h3> (Rule 9)
+  if (relPath.startsWith('blog' + path.sep)) {
+    const rawHeadingCleaned = html.replace(
+      /<p\b[^>]*>\s*(#{2,4})\s+([\s\S]*?)<\/p>/gi,
+      (_, hashes, innerText) => {
+        const level = Math.min(hashes.length, 4);
+        const cleanText = innerText.replace(/\s*\{#[^}]+\}\s*$/, '').trim();
+        const id = cleanText
+          .replace(/<[^>]+>/g, '')
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/(^-|-$)/g, '');
+        const className =
+          level === 2
+            ? 'text-2xl md:text-3xl font-bold mt-12 mb-5 text-slate-900 dark:text-white tracking-tight scroll-mt-28'
+            : 'text-xl md:text-2xl font-bold mt-8 mb-4 text-slate-800 dark:text-slate-100 scroll-mt-28';
+        return `<h${level} id="${id}" class="${className}">${cleanText}</h${level}>`;
+      }
+    );
+    if (rawHeadingCleaned !== html) {
+      html = rawHeadingCleaned;
+      modified = true;
+      fixedH2Count++;
+    }
+  }
+
   // 3. Ensure at least one <h2> exists inside <div id="root">
   const h2Matches = html.match(/<h2\b[^>]*>[\s\S]*?<\/h2>/gi) || [];
   if (h2Matches.length === 0 && html.includes('<main')) {

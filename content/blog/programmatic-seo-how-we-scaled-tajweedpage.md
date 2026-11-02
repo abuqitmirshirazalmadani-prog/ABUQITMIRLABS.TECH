@@ -75,7 +75,7 @@ Before this article, here is what matters most:
 
 ---
 
-## The Problem With Every Programmatic SEO Guide You Have Read {#problem}
+## The Problem With Every Programmatic SEO Guide You Have Read
 
 Every article about programmatic SEO cites the same four case studies: Zapier, Wise, TripAdvisor, Canva. They all present these as examples of what pSEO can do for you. Almost none of them note what happened next.
 
@@ -87,7 +87,7 @@ This article covers the version of programmatic SEO that survives in 2026. It al
 
 ---
 
-## What Google Actually Changed in 2026 {#google-change}
+## What Google Actually Changed in 2026
 
 **In March 2026, Google enforced its scaled content abuse policy with measurable severity — and the enforcement targeted a specific pattern, not programmatic SEO as a category.**
 
@@ -111,7 +111,7 @@ Pages that fail on all three get de-indexed. Pages that fail on one may survive 
 
 ---
 
-## Syntax-Based vs Semantic pSEO: The Conceptual Shift {#syntax-vs-semantic}
+## Syntax-Based vs Semantic pSEO: The Conceptual Shift
 
 **The old approach to programmatic SEO swapped variables into a fixed template. The 2026 approach rewrites entire content sections based on the specific intent behind each variable.**
 
@@ -144,7 +144,7 @@ Semantic pSEO uses the variable not just to fill a slot, but to modulate the ent
 
 ---
 
-## The TajweedPage.com Case Study: Architecture and Execution {#case-study}
+## The TajweedPage.com Case Study: Architecture and Execution
 
 **AbuQitmirLabs engineered TajweedPage.com — the world's first RAG-based AI Tajweed teacher — as a programmatically accelerated Islamic EdTech platform designed to serve students across more than 20 countries.**
 
@@ -188,7 +188,7 @@ For specific traffic numbers or conversion metrics from TajweedPage.com, the [fu
 
 ---
 
-## Hub-and-Spoke Architecture for pSEO: How to Build It {#hub-and-spoke}
+## Hub-and-Spoke Architecture for pSEO: How to Build It
 
 **Hub-and-spoke is not the same as pillar-and-cluster. The distinction is critical for programmatic SEO.**
 
@@ -222,7 +222,7 @@ For a 20-country deployment, the internal link structure should follow this patt
 
 ---
 
-## Index Bloat and Crawl Budget Economics {#crawl-budget}
+## Index Bloat and Crawl Budget Economics
 
 **Publishing more pages does not increase your indexation rate — it can decrease it. This is the counterintuitive lesson most pSEO practitioners learn expensively.**
 
@@ -253,7 +253,7 @@ Monitoring the indexation decay curve requires weekly Search Console checks in t
 
 ---
 
-## Brand Governance for AI-Generated Content at Scale {#brand-governance}
+## Brand Governance for AI-Generated Content at Scale
 
 **The biggest risk in AI-assisted programmatic SEO is not thin content — it is brand hallucination: AI-generated pages that sound generic, contradict your brand positioning, or introduce factual errors at scale.**
 
@@ -282,7 +282,7 @@ If any answer is no, the page does not publish.
 
 ---
 
-## Structuring pSEO Pages for AI Citation (GEO/AEO) {#geo-aeo}
+## Structuring pSEO Pages for AI Citation (GEO/AEO)
 
 **AI Overviews appear in 82 percent of Google searches with monthly search volume under 1,000 — which is exactly the long-tail query space that programmatic SEO is designed to capture.**
 
@@ -311,7 +311,7 @@ AI engines use schema to understand what a page is about before reading it. Page
 
 ---
 
-## Technical Infrastructure: Next.js, Dynamic Routing, and Data Pipelines {#technical}
+## Technical Infrastructure: Next.js, Dynamic Routing, and Data Pipelines
 
 **For most programmatic SEO deployments in 2026, Next.js with Incremental Static Regeneration is the correct technical foundation.**
 
@@ -346,7 +346,7 @@ Canonical tags on programmatic pages should always point to the page itself unle
 
 ---
 
-## Common pSEO Mistakes {#mistakes}
+## Common pSEO Mistakes
 
 ### Mistake 1: Publishing Pages With Thin Data
 The minimum viable programmatic page in 2026 contains at least three entity-specific data points that cannot appear identically on any other page in the deployment. If your data pipeline cannot supply this, your page count is exceeding your data quality. Reduce scope until data quality catches up.
@@ -365,7 +365,7 @@ pSEO pages that do not include direct answers, unique data, and proper schema ar
 
 ---
 
-## FAQs {#faqs}
+## FAQs
 
 **What is programmatic SEO and does it still work in 2026?**
 Programmatic SEO is the automated creation of pages targeting specific long-tail queries at scale, using templates and structured data. It still works in 2026 — Zapier's 50,000-plus integration pages drive roughly 16 million monthly organic visits. What stopped working is syntax-based pSEO: template plus variable swapping with no unique information inside the template. Semantic pSEO, which generates intent-driven content grounded in entity-specific data, continues to build traffic.

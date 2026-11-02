@@ -56,7 +56,7 @@ This article pulls together what the published performance data shows, attribute
 
 ---
 
-## Why Hosting Is a Performance Decision, Not a Cost Decision {#why-hosting}
+## Why Hosting Is a Performance Decision, Not a Cost Decision
 
 **The price difference between shared and managed hosting is usually a matter of tens of dollars per month. The performance difference, on vendor-reported figures, can be a factor of several times on the single metric that precedes every other user experience measure.**
 
@@ -68,7 +68,7 @@ The difference shows up immediately in TTFB, the time from a browser's HTTP requ
 
 ---
 
-## The TTFB Gap Between Hosting Tiers {#ttfb-gap}
+## The TTFB Gap Between Hosting Tiers
 
 **Managed WordPress hosting typically achieves TTFB of 100 to 200ms. Standard shared hosting frequently produces TTFB of 400 to 800ms or more on uncached requests. That gap is the single biggest performance lever available to most sites.**
 
@@ -82,7 +82,7 @@ What does not appear to be contested is the direction of the gap. In the 2025 an
 
 ---
 
-## How Hosting Affects Core Web Vitals {#cwv}
+## How Hosting Affects Core Web Vitals
 
 **TTFB directly constrains Largest Contentful Paint (LCP). A shared hosting environment with a TTFB consistently above 800ms cannot achieve a good LCP score regardless of what optimizations are applied to the frontend.**
 
@@ -96,7 +96,7 @@ The CLS (Cumulative Layout Shift) metric is less directly affected by hosting ti
 
 ---
 
-## What Slow Pages Actually Cost You {#revenue-cost}
+## What Slow Pages Actually Cost You
 
 **Speed is not just an engineering metric. The Deloitte and Google "Milliseconds Make Millions" study, based on 37 retail and travel brands over four weeks, found that a 0.1 second improvement in four mobile speed metrics lifted retail conversion rates by 8.4% and retail average order value by 9.2%.**
 
@@ -112,7 +112,7 @@ You can test where your own site falls using the Website Audit Tool at [/tools/w
 
 ---
 
-## Does Hosting Affect Google Rankings? {#rankings}
+## Does Hosting Affect Google Rankings?
 
 **Core Web Vitals are a confirmed ranking signal for Google as of the 2021 Page Experience update. The direct weight of CWV in rankings is modest, but failing Core Web Vitals means failing a confirmed signal, and the indirect effects of slow loading, higher bounce rates, lower dwell time, fewer conversions, affect the behavioral signals Google uses to assess content quality.**
 
@@ -124,7 +124,7 @@ For SEO purposes, the clearest direct recommendation is: pass Core Web Vitals. F
 
 ---
 
-## When Cheap Hosting Is Not a Problem {#when-cheap-is-fine}
+## When Cheap Hosting Is Not a Problem
 
 **Static sites deployed on a CDN can achieve excellent TTFB and Core Web Vitals scores at hosting costs comparable to or cheaper than shared hosting. The performance problems of cheap hosting apply specifically to dynamically rendered pages served from a single-origin server.**
 
@@ -142,7 +142,7 @@ Sites built on static generation with CDN delivery avoid many of the problems as
 
 ---
 
-## The Honest Limits of This Data {#limits}
+## The Honest Limits of This Data
 
 **All of the TTFB figures referenced in this article come from managed hosting vendors benchmarking their own products. No independently funded, peer-reviewed study comparing hosting performance across tiers at scale exists in the public domain.**
 
@@ -158,7 +158,7 @@ The practical implication: measure your own TTFB before and after any hosting ch
 
 ---
 
-## How to Measure Your Own Hosting Performance {#measure}
+## How to Measure Your Own Hosting Performance
 
 **The most actionable step is to measure your current TTFB against Google's threshold before deciding whether a hosting change is warranted.**
 
@@ -178,7 +178,7 @@ For sites being built or rebuilt, the architecture decision, static generation v
 
 ---
 
-## FAQs {#faqs}
+## FAQs
 
 **Does cheap hosting affect SEO rankings?**
 Core Web Vitals are a confirmed ranking signal since the 2021 Page Experience update. Cheap shared hosting that keeps TTFB above 800ms makes it structurally difficult to pass the LCP threshold of 2.5 seconds, which is one of three Core Web Vitals metrics used as a ranking factor. The direct ranking weight is modest, but failing a confirmed signal is a measurable disadvantage.
