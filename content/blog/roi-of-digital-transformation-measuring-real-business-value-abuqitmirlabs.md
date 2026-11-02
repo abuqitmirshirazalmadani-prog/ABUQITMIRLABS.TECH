@@ -4,7 +4,7 @@
   "slug": "roi-of-digital-transformation-measuring-real-business-value-abuqitmirlabs",
   "excerpt": "ROI of digital transformation, digital transformation ROI, measuring digital transformation success, digital transformation strategy, custom software development company, enterprise digital transformation, digital transformation consulting, Karachi Pakistan software",
   "metaDescription": "ROI of digital transformation, digital transformation ROI, measuring digital transformation success, digital transformation strategy, custom software development company, enterprise digital transformation, digital transformation consulting, Karachi Pakistan software",
-  "coverImage": "https://i.postimg.cc/d3PQLPpd/Untitled-design.png",
+  "coverImage": "/images/blog-covers/roi-of-digital-transformation-measuring-real-business-value--91f12abc.webp",
   "coverImageAlt": "Minimalist editorial chart illustration showing a rising ROI",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

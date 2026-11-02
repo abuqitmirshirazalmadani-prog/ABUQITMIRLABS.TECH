@@ -4,7 +4,7 @@
   "slug": "ecommerce-platform-development",
   "excerpt": "Choosing between a custom ecommerce build and Shopify Plus is the most important infrastructure decision you will make. This guide breaks down the real total cost of ownership over 3 years, the hidden fees, and the exact revenue threshold where a custom build becomes cheaper.",
   "metaDescription": "A comparison of custom e-commerce development vs Shopify Plus. Learn costs, scalability, flexibility, and which is right for your business.",
-  "coverImage": "https://i.postimg.cc/vHrRJwxy/Ecommerce-Platform-Costs-Custom-Build-vs-Shopify-Plus.png",
+  "coverImage": "/images/blog-covers/ecommerce-platform-development-f4009edd.webp",
   "coverImageAlt": "Side-by-side comparison of custom ecommerce development versus Shopify Plus architecture and total cost of ownership.",
   "category": "Business",
   "author": "Abu Qitmir Mohammad Shiraz Al-Madani",

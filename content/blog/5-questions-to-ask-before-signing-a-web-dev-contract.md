@@ -4,7 +4,7 @@
   "slug": "5-questions-to-ask-before-signing-a-web-dev-contract",
   "excerpt": "Every web development pitch sounds the same: fast, custom, professional. What separates a good agency from a risky one isn't the pitch — it's how they answer five specific questions before any contract gets signed. Most buyers never ask. Most agencies are relieved when they don't.",
   "metaDescription": "Every web development pitch sounds the same: fast, custom, professional. What separates a good agency from a risky one isn't the pitch — it's how they answer five specific questions before any contract gets signed. Most buyers never ask. Most agencies are relieved when they don't.",
-  "coverImage": "https://i.postimg.cc/CMQDnRV3/Gemini-Generated-Image-rihowcrihowcriho.png",
+  "coverImage": "/images/blog-covers/5-questions-to-ask-before-signing-a-web-dev-contract-ac9e02af.webp",
   "coverImageAlt": "Two people reviewing a Web Dev Contract document at a desk",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

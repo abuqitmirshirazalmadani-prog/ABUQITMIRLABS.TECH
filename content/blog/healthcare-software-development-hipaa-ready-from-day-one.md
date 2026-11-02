@@ -4,7 +4,7 @@
   "slug": "healthcare-software-development-hipaa-ready-from-day-one",
   "excerpt": "Two healthcare apps can look identical in a pitch deck and be quoted 5x apart once the real requirements are scoped. This guide breaks down what it actually means to build HIPAA-ready healthcare software from day one PHI safeguards, FHIR interoperability, BAAs, and real 2026 cost benchmarks.",
   "metaDescription": "Two healthcare apps can look identical in a pitch deck and be quoted 5x apart once the real requirements are scoped. This guide breaks down what it actually means to build HIPAA-ready healthcare software from day one PHI safeguards, FHIR interoperability, BAAs, and real 2026 cost benchmarks.",
-  "coverImage": "https://i.postimg.cc/Dz8x68bc/Healthcare-Software-Development.png",
+  "coverImage": "/images/blog-covers/healthcare-software-development-hipaa-ready-from-day-one-93003061.webp",
   "coverImageAlt": "AbuQitmirLabs Healthcare Software Development infographic featuring a doctor using a patient dashboard interface, highlighting HIPAA compliance, FHIR interoperability, Business Associate Agreements (BAAs), and PHI safeguards, alongside 2026 cost benchmarks for a basic EHR system ($40K–$80K), telemedicine platform ($30K–$70K), and custom healthcare app ($80K–$200K+)",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

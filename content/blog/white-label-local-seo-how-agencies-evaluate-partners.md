@@ -4,7 +4,7 @@
   "slug": "white-label-local-seo-how-agencies-evaluate-partners",
   "excerpt": "A 12-point evaluation framework for agencies vetting white label local SEO partners. Covers SLAs, reporting transparency, margin protection, and the red flags that predict partner failure.",
   "metaDescription": "A 12-point evaluation framework for agencies vetting white label local SEO partners. Covers SLAs, reporting transparency, margin protection, and the red flags that predict partner failure.",
-  "coverImage": "https://i.postimg.cc/HkkM0L96/white-label-local-seo.png",
+  "coverImage": "/images/blog-covers/white-label-local-seo-how-agencies-evaluate-partners-e0e2fac4.webp",
   "coverImageAlt": "12-point white label local SEO partner evaluation framework covering SLAs, reporting, margins, compliance, and red flags.",
   "category": "Business",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

@@ -4,7 +4,7 @@
   "slug": "startup-brand-identity-checklist",
   "metaDescription": "A pre-seed and seed-stage brand identity checklist for startups. Covers positioning, visual system, voice, and launch assets in the right order.",
   "excerpt": "Most startup founders wait too long to build a brand. They think they need a massive budget. That is a mistake. In 2026, roughly 60% of all searches are zero-click. Buyers are evaluating your credibility before they ever talk to you. If your brand looks fragmented, you lose the deal before it starts. This checklist is designed specifically for pre-seed and seed-stage startups in Pakistan. It cuts through the fluff of Western branding agencies and focuses on what actually matters at your stage: limited budgets, family-business legacies, bilingual brand voice needs, and WhatsApp-first customer engagement. Learn the 14 essential items you need across four distinct stages to build your Minimum Viable Brand.",
-  "coverImage": "https://i.postimg.cc/SRxngZxY/Gemini-Generated-Image-74i3u574i3u574i3.jpg",
+  "coverImage": "/images/blog-covers/startup-brand-identity-checklist-be48b842.webp",
   "coverImageAlt": "A startup founder reviewing a brand strategy document with color swatches and typography scales.",
   "category": "Graphic Design",
   "author": "Abu Qitmir Mohammad Shiraz Al-Madani",

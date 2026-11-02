@@ -4,7 +4,7 @@
   "slug": "dead-internet-theory-and-ai-training-2026-why-ai-models-are-learning-from-less",
   "excerpt": "Somewhere between 2018 and today, a large share of the internet's most useful content quietly stopped being written. Not because people stopped having knowledge worth sharing — but because the incentives to share it publicly broke down. What replaced that knowledge is a flood of generic, aggregated, and increasingly AI-generated content. This matters far beyond the quality of your search results. Every major AI model is trained on what's publicly available online, and a training corpus with less authentic human expertise in it produces AI systems that know less than they appear to.",
   "metaDescription": "Somewhere between 2018 and today, a large share of the internet's most useful content quietly stopped being written. Not because people stopped having knowledge worth sharing — but because the incentives to share it publicly broke down. What replaced that knowledge is a flood of generic, aggregated, and increasingly AI-generated content. This matters far beyond the quality of your search results. Every major AI model is trained on what's publicly available online, and a training corpus with less authentic human expertise in it produces AI systems that know less than they appear to.",
-  "coverImage": "https://i.postimg.cc/jj3gZSBS/Chat-GPT-Image-Jul-17-2026-01-05-56-AM.png",
+  "coverImage": "/images/blog-covers/dead-internet-theory-and-ai-training-2026-why-ai-models-are--cf7493ee.webp",
   "coverImageAlt": "Dead Internet Theory and AI Training",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

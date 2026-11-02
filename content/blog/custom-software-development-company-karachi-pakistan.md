@@ -4,7 +4,7 @@
   "slug": "custom-software-development-company-karachi-pakistan",
   "excerpt": "There is a particular kind of business owner who has already tried the obvious options — a freelancer who disappeared, an agency that delivered something close but not quite right, an in-house hire who couldn't keep pace with the roadmap. This is the story of what happens after that search ends, and why so many of those searches now end in Karachi.",
   "metaDescription": "There is a particular kind of business owner who has already tried the obvious options — a freelancer who disappeared, an agency that delivered something close but not quite right, an in-house hire who couldn't keep pace with the roadmap. This is the story of what happens after that search ends, and why so many of those searches now end in Karachi.",
-  "coverImage": "https://i.postimg.cc/C1m78mnw/Gemini-Generated-Image-gm7g0rgm7g0rgm7g.png",
+  "coverImage": "/images/blog-covers/custom-software-development-company-karachi-pakistan-1604554e.webp",
   "coverImageAlt": "Custom Software Development Company Karachi Pakistan",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

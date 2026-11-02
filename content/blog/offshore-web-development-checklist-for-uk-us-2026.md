@@ -4,7 +4,7 @@
   "slug": "offshore-web-development-checklist-for-uk-us-2026",
   "excerpt": "A 21-point offshore web development checklist for UK and US businesses. Covers scope definition, partner vetting, contracts, UK GDPR and US state privacy compliance, and post-launch delivery — with 2026 pricing data and cost breakdowns.",
   "metaDescription": "A 21-point offshore web development checklist for UK and US businesses. Covers scope definition, partner vetting, contracts, UK GDPR and US state privacy compliance, and post-launch delivery — with 2026 pricing data and cost breakdowns.",
-  "coverImage": "https://i.postimg.cc/MH5mRpDq/web-development-checklist.png",
+  "coverImage": "/images/blog-covers/offshore-web-development-checklist-for-uk-us-2026-cb0651a2.webp",
   "coverImageAlt": "21-point offshore web development checklist for UK and US businesses.",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

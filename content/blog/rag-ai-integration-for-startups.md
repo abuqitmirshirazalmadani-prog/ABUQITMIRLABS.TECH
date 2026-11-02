@@ -4,7 +4,7 @@
   "slug": "rag-ai-integration-for-startups",
   "excerpt": "RAG grounds AI in your own data instead of guesswork — cutting hallucinations and skipping the cost of retraining. Here's how startups actually use it, what a custom RAG pipeline requires, RAG vs fine-tuning, what it costs, and a real case study: TajweedPage.com's real-time RAG-based Tajweed guidance.",
   "metaDescription": "RAG grounds AI in your own data instead of guesswork — cutting hallucinations and skipping the cost of retraining. Here's how startups actually use it, what a custom RAG pipeline requires, RAG vs fine-tuning, what it costs, and a real case study: TajweedPage.com's real-time RAG-based Tajweed guidance.",
-  "coverImage": "https://i.postimg.cc/9QkpzWpM/abuqitmirlabs-RAG.jpg",
+  "coverImage": "/images/blog-covers/rag-ai-integration-for-startups-a162cdc3.webp",
   "coverImageAlt": "Abuqitmirlabs case study RAG",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

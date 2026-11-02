@@ -4,7 +4,7 @@
   "slug": "what-are-healthcare-ai-agents-complete-guide-2026",
   "excerpt": "How healthcare AI agents work, their use cases, RAG architecture, EHR integrations, security, costs, timelines, and responsible AI.",
   "metaDescription": "How healthcare AI agents work, their use cases, RAG architecture, EHR integrations, security, costs, timelines, and responsible AI.",
-  "coverImage": "https://i.postimg.cc/SNtwq1QD/Healthcare-AI-Agents.jpg",
+  "coverImage": "/images/blog-covers/what-are-healthcare-ai-agents-complete-guide-2026-ce3ff14e.webp",
   "coverImageAlt": "Healthcare AI agent architecture connecting patients, healthcare systems, RAG, and clinical workflows",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

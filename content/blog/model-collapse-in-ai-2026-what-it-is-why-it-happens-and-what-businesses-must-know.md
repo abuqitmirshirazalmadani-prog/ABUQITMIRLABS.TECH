@@ -4,7 +4,7 @@
   "slug": "model-collapse-in-ai-2026-what-it-is-why-it-happens-and-what-businesses-must-know",
   "excerpt": "Most conversations about AI quality focus on benchmark scores, capability announcements, and version numbers. Almost none of them address the structural problem that sits underneath all of it: the internet — the primary source of training data for every major commercial AI — is running out of authentic human-generated content to learn from. What fills the gap is AI-generated content. And when AI models train on the outputs of previous AI models, the quality of each successive generation quietly degrades. This is model collapse, and it is not a future risk. It is happening now.",
   "metaDescription": "Most conversations about AI quality focus on benchmark scores, capability announcements, and version numbers. Almost none of them address the structural problem that sits underneath all of it: the internet — the primary source of training data for every major commercial AI — is running out of authentic human-generated content to learn from. What fills the gap is AI-generated content. And when AI models train on the outputs of previous AI models, the quality of each successive generation quietly degrades. This is model collapse, and it is not a future risk. It is happening now.",
-  "coverImage": "https://i.postimg.cc/xCTFJwT9/Gemini-Generated-Image-u6pvrru6pvrru6pv.png",
+  "coverImage": "/images/blog-covers/model-collapse-in-ai-2026-what-it-is-why-it-happens-and-what-0c9581e2.webp",
   "coverImageAlt": "Model Collapse in AI 2026 | What It Is, Why It Happens, and What Businesses Must Know by AbuQitmirLabs",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

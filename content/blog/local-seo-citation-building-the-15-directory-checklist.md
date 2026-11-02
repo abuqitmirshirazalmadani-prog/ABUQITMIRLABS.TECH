@@ -4,7 +4,7 @@
   "slug": "local-seo-citation-building-the-15-directory-checklist",
   "excerpt": "A citation with the wrong phone number doesn't just confuse a customer — it can quietly tell Google your business isn't verified where it claims to be. This guide covers a tiered, 15-directory checklist for building and maintaining consistent citations, plus the mistakes that actually suppress rankings.",
   "metaDescription": "A citation with the wrong phone number doesn't just confuse a customer — it can quietly tell Google your business isn't verified where it claims to be. This guide covers a tiered, 15-directory checklist for building and maintaining consistent citations, plus the mistakes that actually suppress rankings.",
-  "coverImage": "https://i.postimg.cc/Njjh8TsX/Local-SEO-Citation-Building-The-15-Directory-Checklist.png",
+  "coverImage": "/images/blog-covers/local-seo-citation-building-the-15-directory-checklist-29a10c29.webp",
   "coverImageAlt": "Infographic titled \"A Wrong Phone Number Can Hurt Your Rankings\" by AbuQitmirLabs, featuring a Google Maps search on a smartphone showing a coffee shop listing flagged with a \"Wrong Number\" warning, alongside a Google Business Profile performance dashboard and a hand-written Local SEO Checklist covering citations, reviews, on-page optimization, and monthly reporting, promoting a tiered 15-directory citation-building checklist",
   "category": "Business",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

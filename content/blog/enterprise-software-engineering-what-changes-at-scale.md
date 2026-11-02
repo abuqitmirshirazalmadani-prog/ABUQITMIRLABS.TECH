@@ -4,7 +4,7 @@
   "slug": "enterprise-software-engineering-what-changes-at-scale",
   "excerpt": "Enterprise software engineering isn't a bigger version of building a web app it's a separate discipline. At scale, the same architectural decisions that worked at 500 users quietly become the most expensive mistakes on your balance sheet. This guide maps exactly what changes across architecture, team structure, observability, compliance, and deployment pipelines based on real projects AbuQitmirLabs has shipped for enterprise clients across the US, UK, and EU.",
   "metaDescription": "Enterprise software engineering isn't a bigger version of building a web app it's a separate discipline. At scale, the same architectural decisions that worked at 500 users quietly become the most expensive mistakes on your balance sheet. This guide maps exactly what changes across architecture, team structure, observability, compliance, and deployment pipelines based on real projects AbuQitmirLabs has shipped for enterprise clients across the US, UK, and EU.",
-  "coverImage": "https://i.postimg.cc/sXcMJw5F/nterprise-Software-Engineering-Guide.png",
+  "coverImage": "/images/blog-covers/enterprise-software-engineering-what-changes-at-scale-4b2f472e.webp",
   "coverImageAlt": "Enterprise software engineering guide showing scalable architecture, observability, security, compliance, and automated deployment on a laptop dashboard.",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

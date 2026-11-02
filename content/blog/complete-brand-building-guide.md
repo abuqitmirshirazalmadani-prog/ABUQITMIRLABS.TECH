@@ -9,7 +9,7 @@
   "category": "Business",
   "author": "Abu Qitmir Mohammad Shiraz Al-Madani",
   "publishedAt": "2026-10-30",
-  "coverImage": "https://i.postimg.cc/kXLcd3yy/From-Logo-Chaos-to-Brand-Trust.png",
+  "coverImage": "/images/blog-covers/complete-brand-building-guide-527885f5.webp",
   "coverImageAlt": "Brand building guide showing the 6 stages from strategy and visual identity to website development and trust.",
   "tags": [
     "brand building",

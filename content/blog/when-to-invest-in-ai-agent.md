@@ -5,7 +5,7 @@
   "excerpt": "A five-question decision framework for founders evaluating whether an AI agent will pay for itself. Includes real 2026 cost data, failure rates, and build vs hire guidance.",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "coverImage": "https://i.postimg.cc/FH0CBwgH/AI-Agent-Decision-Framework-Infographic.png",
+  "coverImage": "/images/blog-covers/when-to-invest-in-ai-agent-826c1e4f.webp",
   "coverImageAlt": "Decision funnel diagram showing five questions that determine whether an AI agent investment will pay for itself",
   "published": true,
   "tags": [

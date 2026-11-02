@@ -4,7 +4,7 @@
   "slug": "what-is-digital-transformation-the-complete-2026-guide-for-business-leaders",
   "excerpt": "Digital transformation is the most overused phrase in business strategy — and possibly the least consistently understood. Ask ten business leaders what it means and you will receive ten different answers, ranging from \"moving to the cloud\" to \"using AI\" to \"updating our website\" to \"completely rethinking how we operate.\" All of those answers contain a fragment of the truth. None of them is the whole picture. This guide is the whole picture.",
   "metaDescription": "Digital transformation is the most overused phrase in business strategy — and possibly the least consistently understood. Ask ten business leaders what it means and you will receive ten different answers, ranging from \"moving to the cloud\" to \"using AI\" to \"updating our website\" to \"completely rethinking how we operate.\" All of those answers contain a fragment of the truth. None of them is the whole picture. This guide is the whole picture.",
-  "coverImage": "https://i.postimg.cc/6pmxQYG4/Untitled-design-(60).png",
+  "coverImage": "/images/blog-covers/what-is-digital-transformation-the-complete-2026-guide-for-b-d9995a9d.webp",
   "coverImageAlt": "What is Digital Transformation? The Complete 2026 Guide for Business Leaders",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

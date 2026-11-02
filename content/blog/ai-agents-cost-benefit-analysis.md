@@ -5,7 +5,7 @@
   "excerpt": "Every AI agent demo looks impressive. The invoice tells a different story. A 7-question framework to know when AI agents actually save money and when they don't.",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "coverImage": "https://i.postimg.cc/j2pfBQ3d/A-7-question-framework.jpg",
+  "coverImage": "/images/blog-covers/ai-agents-cost-benefit-analysis-225b4bab.webp",
   "coverImageAlt": "A 7-question framework: AI Agents Cost Benefit Analysis by AbuQitmirLabs",
   "published": true,
   "tags": [

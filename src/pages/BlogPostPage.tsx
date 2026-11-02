@@ -3441,10 +3441,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                             <div className="relative z-10 flex items-center justify-between">
                                 <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] text-xs font-mono font-bold tracking-wider uppercase">
                                     <span className="w-2 h-2 rounded-full bg-[#ccff00] animate-pulse"></span>
-                                    {post.category || 'TECHNICAL INSIGHT'}
-                                </span>
-                                <span className="text-zinc-500 font-mono text-xs tracking-wider">
-                                    ABUQITMIRLABS.TECH
+                                    {post.category || 'Development'}
                                 </span>
                             </div>
 
@@ -3600,49 +3597,6 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                             </div>
                         );
                     })()}
-
-                    {/* Hashtags at the Bottom */}
-                    {post.tags && (
-                        <div className="mt-16">
-                            <div className="bg-[#0b0b0e] border border-zinc-800/80 rounded-[2.5rem] p-8 md:p-10 flex flex-wrap gap-x-4 gap-y-3 overflow-hidden shadow-xl">
-                                {(() => {
-                                    const stopWords = new Set(['to', 'the', 'in', 'on', 'at', 'by', 'for', 'with', 'a', 'an', 'and', 'or', 'what', 'how', 'why', 'did', 'is', 'are', 'was', 'were', 'our', 'your', 'from']);
-                                    const rawTags = Array.isArray(post.tags) ? post.tags : [post.tags];
-                                    const formattedTags: string[] = [];
-                                    const seen = new Set<string>();
-
-                                    rawTags.forEach(raw => {
-                                        if (!raw) return;
-                                        const str = String(raw).trim();
-                                        // Keep multi-word semantic tags intact as clean PascalCase hashtag
-                                        const words = str.split(/\s+/).filter(w => !stopWords.has(w.toLowerCase().replace(/[^a-z]/g, '')));
-                                        if (words.length === 0) return;
-                                        
-                                        const hashtag = words.map(w => {
-                                            const clean = w.replace(/[^a-zA-Z0-9]/g, '');
-                                            if (!clean) return '';
-                                            return clean.charAt(0).toUpperCase() + clean.slice(1);
-                                        }).join('');
-
-                                        const key = hashtag.toLowerCase();
-                                        if (hashtag.length > 1 && !seen.has(key)) {
-                                            seen.add(key);
-                                            formattedTags.push(hashtag);
-                                        }
-                                    });
-
-                                    return formattedTags.slice(0, 12).map((tag) => (
-                                        <span 
-                                            key={tag} 
-                                            className="inline-block text-xs font-mono font-bold text-[#ccff00] bg-[#16161a] px-4 py-2 rounded-full border border-zinc-800 uppercase tracking-wider hover:bg-[#ccff00] hover:text-black transition-all cursor-pointer"
-                                        >
-                                            #{tag}
-                                        </span>
-                                    ));
-                                })()}
-                            </div>
-                        </div>
-                    )}
 
                     {/* Related Articles Section */}
                     {relatedPosts.length > 0 && (

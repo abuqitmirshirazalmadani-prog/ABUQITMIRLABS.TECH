@@ -4,7 +4,7 @@
   "slug": "retail-logistics-software-development-2026-complete-guide",
   "excerpt": "Retail software and logistics software solve different problems — and confusing them is where most projects fail. A complete 2026 guide to building both correctly.",
   "metaDescription": "Retail software and logistics software solve different problems — and confusing them is where most projects fail. A complete 2026 guide to building both correctly.",
-  "coverImage": "https://i.postimg.cc/8zn4WDF6/Retail-software-and-logistics-software.png",
+  "coverImage": "/images/blog-covers/retail-logistics-software-development-2026-complete-guide-47bb166b.webp",
   "coverImageAlt": "Retail & Logistics Software Development 2026",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

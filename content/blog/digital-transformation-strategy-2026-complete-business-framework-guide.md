@@ -4,7 +4,7 @@
   "slug": "digital-transformation-strategy-2026-complete-business-framework-guide",
   "excerpt": "Most digital transformation strategies are written backwards. They begin with a technology selection a new platform, a cloud migration, an AI tool and then build a strategic narrative around the technology that was already chosen. The result looks like a strategy and behaves like a procurement decision. This guide is about writing the strategy the right way around starting with the business outcome and working backwards to the technology, rather than starting with the technology and hoping the outcome follows.",
   "metaDescription": "Most digital transformation strategies are written backwards. They begin with a technology selection a new platform, a cloud migration, an AI tool and then build a strategic narrative around the technology that was already chosen. The result looks like a strategy and behaves like a procurement decision. This guide is about writing the strategy the right way around starting with the business outcome and working backwards to the technology, rather than starting with the technology and hoping the outcome follows.",
-  "coverImage": "https://i.postimg.cc/ZqVqm6gC/Gemini-Generated-Image-x2ca00x2ca00x2ca.png",
+  "coverImage": "/images/blog-covers/digital-transformation-strategy-2026-complete-business-frame-8f470ae9.webp",
   "coverImageAlt": "Digital Transformation Strategy 2026",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

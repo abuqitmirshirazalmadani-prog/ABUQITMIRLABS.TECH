@@ -4,7 +4,7 @@
   "slug": "edtech-software-development",
   "metaDescription": "9 essential features every LMS needs in 2026. A guide to EdTech software development, from AI tutoring to adaptive learning and analytics.",
   "excerpt": "Most LMS platforms lose learners before the second lesson. The problem is not the content. It is the software. Discover the 9 essential features every learning management system needs to retain learners, improve completion rates, and scale effectively in 2026.",
-  "coverImage": "https://i.postimg.cc/kX7TSgWK/Smarter-LMS-Stronger-Learning.png",
+  "coverImage": "/images/blog-covers/edtech-software-development-80675541.webp",
   "coverImageAlt": "EdTech software development guide showing the 9 essential features of a modern learning management system (LMS).",
   "category": "Software",
   "author": "Abu Qitmir Mohammad Shiraz Al-Madani",

@@ -4,7 +4,7 @@
   "slug": "high-performance-web-applications-12-engineering-decisions",
   "excerpt": "Slow web applications destroy revenue. A 100-millisecond delay can reduce conversions by 7%. This guide covers the 12 engineering decisions that separate high-performance web applications from slow ones. From rendering strategy and edge computing to database optimization and continuous monitoring, these decisions are made at the architecture level. Written for CTOs, engineering leads, and senior developers who want to build systems that scale and respond instantly.",
   "metaDescription": "Slow web applications destroy revenue. A 100-millisecond delay can reduce conversions by 7%. This guide covers the 12 engineering decisions that separate high-performance web applications from slow ones. From rendering strategy and edge computing to database optimization and continuous monitoring, these decisions are made at the architecture level. Written for CTOs, engineering leads, and senior developers who want to build systems that scale and respond instantly.",
-  "coverImage": "https://i.postimg.cc/5Nq2FmvY/12-engineering-decisions.png",
+  "coverImage": "/images/blog-covers/high-performance-web-applications-12-engineering-decisions-7f75ceb8.webp",
   "coverImageAlt": "High-performance web applications guide by AbuQitmirLabs featuring 12 engineering decisions, with a laptop showing a 99/100 performance score and Core Web Vitals metrics, highlighting faster load times, higher conversions, better user experience, scalable architecture, rendering strategy, edge computing, database optimization, caching, and monitoring.",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

@@ -247,14 +247,55 @@ function syncMarkdownPosts() {
       const routeKeySingle = `'/blog/${slug}'`;
       const routeKeyDouble = `"/blog/${slug}"`;
       if (seoSource && !aliasSkip.has(slug) && !seoSource.includes(routeKeySingle) && !seoSource.includes(routeKeyDouble)) {
+        const cleanH1 = String(meta.title || slug).replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
         const cleanTitle = meta.seoTitle
           ? meta.seoTitle
-          : ((meta.title || slug).includes('AbuQitmirLabs')
-            ? meta.title
-            : `${meta.title || slug} | AbuQitmirLabs`);
+          : (cleanH1.length <= 44 ? `${cleanH1} | AbuQitmirLabs` : `${cleanH1.split(':')[0].trim()} | AbuQitmirLabs`);
         const cleanDesc = (meta.metaDescription || meta.excerpt || '').slice(0, 158).trim();
-        const cover = meta.coverImage || 'https://www.abuqitmirlabs.tech/logo.png';
+        const cover = meta.coverImage
+          ? (meta.coverImage.startsWith('/') ? `https://www.abuqitmirlabs.tech${meta.coverImage}` : meta.coverImage)
+          : 'https://www.abuqitmirlabs.tech/logo.png';
         const pubDate = (meta.publishedAt || '2026-10-28') + 'T00:00:00+00:00';
+
+        // Extract FAQ questions from markdown body for FAQPage schema
+        const extractedFaqs = [];
+        let inFaqSec = false;
+        let curQ = '';
+        let curAParts = [];
+        const flushCurFaq = () => {
+          if (curQ && curAParts.length > 0) {
+            extractedFaqs.push({ q: curQ, a: curAParts.join(' ').trim() });
+          }
+          curQ = '';
+          curAParts = [];
+        };
+        for (const rLine of body.split(/\r?\n/)) {
+          const tLine = rLine.trim();
+          if (!tLine || tLine === '---') continue;
+          if (/^##\s+/.test(tLine)) {
+            flushCurFaq();
+            inFaqSec = /frequently asked questions|\bfaq\b/i.test(tLine);
+          } else if (inFaqSec && /^###\s+/.test(tLine)) {
+            flushCurFaq();
+            curQ = tLine.replace(/^###\s+/, '').replace(/\*\*/g, '').trim();
+          } else if (inFaqSec && curQ && !tLine.startsWith('#') && !tLine.startsWith('|') && !tLine.startsWith('```')) {
+            curAParts.push(tLine.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1'));
+          }
+        }
+        flushCurFaq();
+
+        const faqGraphPart = extractedFaqs.length > 0
+          ? `,\n        {\n          '@type': 'FAQPage',\n          '@id': 'https://www.abuqitmirlabs.tech/blog/${slug}#faq',\n          mainEntity: ${JSON.stringify(
+              extractedFaqs.slice(0, 12).map(f => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: { '@type': 'Answer', text: f.a }
+              })),
+              null,
+              10
+            )}\n        }`
+          : '';
+
         const seoEntry = `  '/blog/${slug}': {
     title: ${JSON.stringify(cleanTitle)},
     description: ${JSON.stringify(cleanDesc)},
@@ -273,7 +314,7 @@ function syncMarkdownPosts() {
         {
           '@type': 'Organization',
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
           logo: 'https://www.abuqitmirlabs.tech/logo.png'
         },
@@ -281,7 +322,7 @@ function syncMarkdownPosts() {
           '@type': 'WebSite',
           '@id': 'https://www.abuqitmirlabs.tech/#website',
           url: 'https://www.abuqitmirlabs.tech/',
-          name: 'AbuQitmirLabs .TECH',
+          name: 'AbuQitmirLabs',
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
         },
         {
@@ -298,14 +339,14 @@ function syncMarkdownPosts() {
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
             { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
-            { '@type': 'ListItem', position: 3, name: ${JSON.stringify(meta.title || slug)}, item: 'https://www.abuqitmirlabs.tech/blog/${slug}' }
+            { '@type': 'ListItem', position: 3, name: ${JSON.stringify(cleanH1)}, item: 'https://www.abuqitmirlabs.tech/blog/${slug}' }
           ]
         },
         {
           '@type': 'Article',
           '@id': 'https://www.abuqitmirlabs.tech/blog/${slug}#article',
           isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/${slug}#webpage' },
-          headline: ${JSON.stringify(meta.title || slug)},
+          headline: ${JSON.stringify(cleanH1)},
           description: ${JSON.stringify(cleanDesc)},
           image: ${JSON.stringify(cover)},
           author: {
@@ -317,7 +358,7 @@ function syncMarkdownPosts() {
           mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/${slug}#webpage' },
           datePublished: ${JSON.stringify(pubDate)},
           dateModified: ${JSON.stringify(pubDate)}
-        }
+        }${faqGraphPart}
       ]
     }
   },\n`;

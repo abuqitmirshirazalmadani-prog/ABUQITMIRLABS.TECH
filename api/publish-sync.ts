@@ -268,6 +268,63 @@ export default async function handler(req: any, res: any) {
 
   if (ghToken && postUrl) {
     try {
+      // 4a. Commit content/blog/<slug>.md to GitHub repository
+      if (cleanSlug && content && action !== 'delete') {
+        const cleanTitle = String(title || cleanSlug).replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
+        const frontmatterObj = {
+          title: cleanTitle,
+          slug: cleanSlug,
+          excerpt: excerpt || '',
+          metaDescription: metaDescription || excerpt || '',
+          coverImage: coverImage || '/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp',
+          coverImageAlt: coverImageAlt || `${cleanTitle} by AbuQitmirLabs`,
+          category: category || 'Development',
+          author: author || 'Abu Qitmir Mohammad Shiraz Al-Madani',
+          publishedAt: today,
+          tags: cleanedTags
+        };
+        const mdFileContent = `---\n${JSON.stringify(frontmatterObj, null, 2)}\n---\n\n${String(content).trim()}\n`;
+        const mdRepoPath = `content/blog/${cleanSlug}.md`;
+        let existingMdSha: string | undefined;
+        const getMdRes = await fetch(
+          `https://api.github.com/repos/${ghRepo}/contents/${mdRepoPath}?ref=${ghBranch}`,
+          {
+            headers: {
+              Authorization: `Bearer ${ghToken}`,
+              Accept: 'application/vnd.github+json'
+            }
+          }
+        );
+        if (getMdRes.ok) {
+          const mdMeta: any = await getMdRes.json();
+          existingMdSha = mdMeta.sha;
+        }
+        const putMdRes = await fetch(
+          `https://api.github.com/repos/${ghRepo}/contents/${mdRepoPath}`,
+          {
+            method: 'PUT',
+            headers: {
+              Authorization: `Bearer ${ghToken}`,
+              Accept: 'application/vnd.github+json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              message: `feat(blog): publish /blog/${cleanSlug} markdown for static prerendering`,
+              content: Buffer.from(mdFileContent, 'utf-8').toString('base64'),
+              ...(existingMdSha ? { sha: existingMdSha } : {}),
+              branch: ghBranch
+            })
+          }
+        );
+        if (putMdRes.ok) {
+          const putMdData: any = await putMdRes.json();
+          githubSynced = true;
+          commitUrl = putMdData.commit?.html_url || commitUrl;
+          steps.push(`✓ Committed ${mdRepoPath} to GitHub repository`);
+        }
+      }
+
+      // 4b. Commit public/sitemap.xml to GitHub repository
       const ghRes = await fetch(
         `https://api.github.com/repos/${ghRepo}/contents/public/sitemap.xml?ref=${ghBranch}`,
         {
@@ -303,7 +360,7 @@ export default async function handler(req: any, res: any) {
           if (putRes.ok) {
             const putData: any = await putRes.json();
             githubSynced = true;
-            commitUrl = putData.commit?.html_url || null;
+            commitUrl = putData.commit?.html_url || commitUrl;
             steps.push('✓ Committed updated public/sitemap.xml to GitHub repository');
           }
         } else {

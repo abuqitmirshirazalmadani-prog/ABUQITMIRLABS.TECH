@@ -4,7 +4,7 @@
   "slug": "app-development-agency-uk-what-to-ask-before-you-sign-2026",
   "excerpt": "A 15-point evaluation framework for UK businesses vetting app development agencies. Covers live portfolio testing, IP ownership, code repository access, GDPR compliance, and real 2026 cost benchmarks for UK and offshore development.",
   "metaDescription": "A 15-point evaluation framework for UK businesses vetting app development agencies. Covers live portfolio testing, IP ownership, code repository access, GDPR compliance, and real 2026 cost benchmarks for UK and offshore development.",
-  "coverImage": "https://i.postimg.cc/SKMrkFLF/App-Development-Agency-UK.png",
+  "coverImage": "/images/blog-covers/app-development-agency-uk-what-to-ask-before-you-sign-2026-0191a5e7.webp",
   "coverImageAlt": "A 15-point evaluation framework for UK businesses vetting app development agencies. Covers live portfolio testing, IP ownership, code repository access, GDPR compliance, and real 2026 cost benchmarks for UK and offshore development.",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

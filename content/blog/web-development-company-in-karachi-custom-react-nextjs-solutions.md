@@ -4,7 +4,7 @@
   "slug": "web-development-company-in-karachi-custom-react-nextjs-solutions",
   "excerpt": "AbuQitmirLabs is a custom web development company in Karachi building fast, scalable websites and web applications with React and Next.js — for startups launching their first product and SMEs replacing a website that no longer represents their business. Every project is engineered around your specific goals, not assembled from a template.",
   "metaDescription": "AbuQitmirLabs is a custom web development company in Karachi building fast, scalable websites and web applications with React and Next.js — for startups launching their first product and SMEs replacing a website that no longer represents their business. Every project is engineered around your specific goals, not assembled from a template.",
-  "coverImage": "https://i.postimg.cc/MT4cpKYv/Gemini-Generated-Image-4ie6mo4ie6mo4ie6.png",
+  "coverImage": "/images/blog-covers/web-development-company-in-karachi-custom-react-nextjs-solut-c0f1e885.webp",
   "coverImageAlt": "The Custom Build vs Template",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

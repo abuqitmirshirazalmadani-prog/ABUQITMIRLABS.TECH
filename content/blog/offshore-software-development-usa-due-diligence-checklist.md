@@ -4,7 +4,7 @@
   "slug": "offshore-software-development-usa-due-diligence-checklist",
   "excerpt": "Most offshore engagements don't fail because the developers weren't skilled — they fail because a founder signed based on a sales pitch instead of verified specifics. This checklist covers the 12 things worth verifying before you sign, plus what offshore development actually costs by region in 2026.",
   "metaDescription": "Most offshore engagements don't fail because the developers weren't skilled — they fail because a founder signed based on a sales pitch instead of verified specifics. This checklist covers the 12 things worth verifying before you sign, plus what offshore development actually costs by region in 2026.",
-  "coverImage": "https://i.postimg.cc/rw9rXdyR/Offshore-Software-Development.jpg",
+  "coverImage": "/images/blog-covers/offshore-software-development-usa-due-diligence-checklist-b25cfc03.webp",
   "coverImageAlt": "Checklist-style diagram showing 12 due diligence categories for offshore software development — IP ownership, developer access, references, pricing, security, and regional cost benchmarks",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

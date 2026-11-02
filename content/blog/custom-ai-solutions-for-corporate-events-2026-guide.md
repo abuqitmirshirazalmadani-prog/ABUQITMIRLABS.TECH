@@ -4,7 +4,7 @@
   "slug": "custom-ai-solutions-for-corporate-events-2026-guide",
   "excerpt": "The global events industry is worth $1.46 trillion in 2026, yet most event organizers still operate on scattered Excel sheets and disconnected tools. Custom AI solutions for corporate events — like EventFlow by AbuQitmirLabs — transform attendee management, speaker coordination, venue booking, and financial tracking into a seamless, AI-powered operation. This complete 2026 guide covers everything from QR check-in to AI invoice chasing.",
   "metaDescription": "The global events industry is worth $1.46 trillion in 2026, yet most event organizers still operate on scattered Excel sheets and disconnected tools. Custom AI solutions for corporate events — like EventFlow by AbuQitmirLabs — transform attendee management, speaker coordination, venue booking, and financial tracking into a seamless, AI-powered operation. This complete 2026 guide covers everything from QR check-in to AI invoice chasing.",
-  "coverImage": "https://i.postimg.cc/9fBvmXkH/Custom-AI-solutions-for-corporate-events.jpg",
+  "coverImage": "/images/blog-covers/custom-ai-solutions-for-corporate-events-2026-guide-0ee8bfb6.webp",
   "coverImageAlt": "Custom AI solutions for corporate events — EventFlow dashboard showing attendee check-in metrics, speaker schedules, and revenue analytics on a laptop screen with holographic UI elements floating around it. Dark premium background with gold and navy accents. Professional corporate event technology scene.",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

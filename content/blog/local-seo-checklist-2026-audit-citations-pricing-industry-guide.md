@@ -4,7 +4,7 @@
   "slug": "local-seo-checklist-2026-audit-citations-pricing-industry-guide",
   "excerpt": "A complete local SEO checklist for 2026 — Google Business Profile optimization, citations, pricing, industry-specific tactics for dentists, lawyers, and restaurants, and white-label local SEO for agencies.",
   "metaDescription": "A complete local SEO checklist for 2026 — Google Business Profile optimization, citations, pricing, industry-specific tactics for dentists, lawyers, and restaurants, and white-label local SEO for agencies.",
-  "coverImage": "https://i.postimg.cc/pLwz55b7/Local-SEO-Checklist-2026-Audit-Citations-Pricing-Industry-Guide.jpg",
+  "coverImage": "/images/blog-covers/local-seo-checklist-2026-audit-citations-pricing-industry-gu-ceca4e96.webp",
   "coverImageAlt": "Local SEO Checklist 2026",
   "category": "Business",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

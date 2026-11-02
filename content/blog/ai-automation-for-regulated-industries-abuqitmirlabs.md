@@ -9,7 +9,7 @@
   "category": "AI",
   "author": "Abu Qitmir Mohammad Shiraz Al-Madani",
   "publishedAt": "2026-10-31",
-  "coverImage": "https://i.postimg.cc/2yXtnD5Z/ai-automation-compliance.jpg",
+  "coverImage": "/images/blog-covers/ai-automation-for-regulated-industries-abuqitmirlabs-79cfaf63.webp",
   "coverImageAlt": "AI automation compliance framework showing audit trails, data governance, and human-in-the-loop architecture for fintech and healthcare.",
   "tags": [
     "AI automation compliance",

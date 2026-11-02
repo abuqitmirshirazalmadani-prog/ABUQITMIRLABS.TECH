@@ -4,7 +4,7 @@
   "slug": "rlhf-and-model-bias-why-new-models-are-arrogant",
   "excerpt": "Your AI model just rejected your proven solution and suggested something \"better.\" Why does it think it knows better than you?\n\nThe answer lies in how newer models are trained. It's called RLHF (Reinforcement Learning from Human Feedback), and while it makes models smarter in many ways, it has a profound side effect: **it trains them to be arrogant about overriding human choices.**\n\nThis article explains why this happens, what you're paying for it, and what you can do about it.",
   "metaDescription": "Your AI model just rejected your proven solution and suggested something \"better.\" Why does it think it knows better than you?\n\nThe answer lies in how newer models are trained. It's called RLHF (Reinforcement Learning from Human Feedback), and while it makes models smarter in many ways, it has a profound side effect: **it trains them to be arrogant about overriding human choices.**\n\nThis article explains why this happens, what you're paying for it, and what you can do about it.",
-  "coverImage": "https://i.postimg.cc/7hB1cvKH/Chat-GPT-Image-Jul-13-2026-12-51-01-AM.png",
+  "coverImage": "/images/blog-covers/rlhf-and-model-bias-why-new-models-are-arrogant-7a3bfb46.webp",
   "coverImageAlt": "Why New Models Are Arrogant",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

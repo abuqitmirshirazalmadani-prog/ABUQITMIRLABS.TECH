@@ -5,7 +5,7 @@
   "excerpt": "Most founders cannot read code. That does not mean they cannot vet a developer. This five-minute technical audit checklist gives non-technical founders ten specific checks that expose bad developers before a contract is signed. It covers portfolio verification, Git history review, security basics, communication process, contract IP terms, and handover readiness. Each check takes under thirty seconds and requires zero engineering background. The guide includes real red flags that should end a conversation, green flags that confirm you found the right partner, a ten-point audit checklist table, and a real founder scenario where the framework saved a $40,000 mistake. Written by AbuQitmirLabs, a Karachi-based software studio that vets engineering teams on behalf of client founders across the US, UK, Canada, and Australia.",
   "category": "Business",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "coverImage": "https://i.postimg.cc/Y92rZgvg/Five-Minute-Technical-Audit-Checklist.png",
+  "coverImage": "/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
   "coverImageAlt": "Five-minute technical audit checklist infographic showing ten verification steps a founder can run before hiring a developer, with timer icon and red flag and green flag indicators",
   "published": true,
   "tags": [

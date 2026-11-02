@@ -4,7 +4,7 @@
   "slug": "ai-agent-development-agency-vs-in-house",
   "excerpt": "Build vs hire isn't really about cost — it's timeline versus ownership. Here's when building AI agents in-house makes sense, when hiring an agency wins, the hidden costs founders miss, and the hybrid model most early-stage companies should actually use.",
   "metaDescription": "Build vs hire isn't really about cost — it's timeline versus ownership. Here's when building AI agents in-house makes sense, when hiring an agency wins, the hidden costs founders miss, and the hybrid model most early-stage companies should actually use.",
-  "coverImage": "https://i.postimg.cc/90bgzFy5/AI-Agent-Development-Agency-vs-In-House.jpg",
+  "coverImage": "/images/blog-covers/ai-agent-development-agency-vs-in-house-5ea2debf.webp",
   "coverImageAlt": "Comparison illustration of AI agent development agency versus in-house engineering team for building production AI agents",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

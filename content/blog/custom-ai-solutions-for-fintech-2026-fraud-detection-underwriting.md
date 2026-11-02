@@ -4,7 +4,7 @@
   "slug": "custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting",
   "excerpt": "Custom AI solutions for fintech in 2026 — real-time fraud detection, AI-assisted underwriting, and RAG-based support. See what a fintech software development company actually builds.",
   "metaDescription": "Custom AI solutions for fintech in 2026 — real-time fraud detection, AI-assisted underwriting, and RAG-based support. See what a fintech software development company actually builds.",
-  "coverImage": "https://i.postimg.cc/QtHfgngS/Custom-AI-Solutions-for-Fintech-2026-Fraud-Detection-Underwriting.jpg",
+  "coverImage": "/images/blog-covers/custom-ai-solutions-for-fintech-2026-fraud-detection-underwr-71c25814.webp",
   "coverImageAlt": "Custom AI Solutions for Fintech",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

@@ -4,7 +4,7 @@
   "slug": "generative-ai-chatbot-development-what-it-actually-costs-in-2026",
   "excerpt": "Generative AI chatbot costs in 2026 vary dramatically by type: rule-based bots run $5K–$30K, RAG-based bots $30K–$120K, and agentic multi-step assistants $80K–$250K+. This guide breaks down real price bands, the six factors that move the number most, and what GPT-6 Astra changes for enterprise teams — including the hidden 20–35% EU AI Act compliance premium most quotes miss.",
   "metaDescription": "Generative AI chatbot costs in 2026 vary dramatically by type: rule-based bots run $5K–$30K, RAG-based bots $30K–$120K, and agentic multi-step assistants $80K–$250K+. This guide breaks down real price bands, the six factors that move the number most, and what GPT-6 Astra changes for enterprise teams — including the hidden 20–35% EU AI Act compliance premium most quotes miss.",
-  "coverImage": "https://i.postimg.cc/fLZj9qgL/Generative-AI-Chatbot-Development-What-It-Actually-Costs-in-2026.png",
+  "coverImage": "/images/blog-covers/generative-ai-chatbot-development-what-it-actually-costs-in--fdd0d1da.webp",
   "coverImageAlt": "Generative AI chatbot costs in 2026 infographic showing rule-based, RAG-based, and agentic chatbot pricing, cost factors, GPT-6 Astra features, and AbuQitmirLabs branding.",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

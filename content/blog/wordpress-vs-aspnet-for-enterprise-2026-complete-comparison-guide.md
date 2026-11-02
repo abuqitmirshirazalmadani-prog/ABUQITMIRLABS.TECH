@@ -4,7 +4,7 @@
   "slug": "wordpress-vs-aspnet-for-enterprise-2026-complete-comparison-guide",
   "excerpt": "The WordPress vs. ASP.NET debate for enterprise has been running for years, and most of the content on it falls into one of two camps: WordPress advocates who minimize its enterprise limitations, and Microsoft-stack developers who overstate the complexity barrier of ASP.NET for non-enterprise use cases. Neither version is particularly useful for a business that actually needs to make this decision. This guide is the honest version.",
   "metaDescription": "The WordPress vs. ASP.NET debate for enterprise has been running for years, and most of the content on it falls into one of two camps: WordPress advocates who minimize its enterprise limitations, and Microsoft-stack developers who overstate the complexity barrier of ASP.NET for non-enterprise use cases. Neither version is particularly useful for a business that actually needs to make this decision. This guide is the honest version.",
-  "coverImage": "https://i.postimg.cc/VNyCVZQj/Untitled-design-(68).png",
+  "coverImage": "/images/blog-covers/wordpress-vs-aspnet-for-enterprise-2026-complete-comparison--47905280.webp",
   "coverImageAlt": "WordPress vs ASP.NET for Enterprise 2026 | Complete Comparison Guide",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

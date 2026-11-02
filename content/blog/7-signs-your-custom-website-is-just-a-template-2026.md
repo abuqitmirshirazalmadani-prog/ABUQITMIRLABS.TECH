@@ -4,7 +4,7 @@
   "slug": "7-signs-your-custom-website-is-just-a-template-2026",
   "excerpt": "You've probably been quoted for a \"custom website\" at least once. But most agencies that use that phrase are selling you a customized theme, not a website built from scratch. Here's how to tell the difference before you pay for one and get the other.",
   "metaDescription": "You've probably been quoted for a \"custom website\" at least once. But most agencies that use that phrase are selling you a customized theme, not a website built from scratch. Here's how to tell the difference before you pay for one and get the other.",
-  "coverImage": "https://i.postimg.cc/76VDdQ1y/Gemini-Generated-Image-gpv4nhgpv4nhgpv4.png",
+  "coverImage": "/images/blog-covers/7-signs-your-custom-website-is-just-a-template-2026-c9bd2d99.webp",
   "coverImageAlt": "Custom website development timeline",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

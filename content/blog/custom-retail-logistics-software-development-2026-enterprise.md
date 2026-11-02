@@ -4,7 +4,7 @@
   "slug": "custom-retail-logistics-software-development-2026-enterprise",
   "excerpt": "What custom retail and logistics software development actually involves POS systems, WMS, TMS, fleet tracking, AI supply chain, and e-commerce platforms built for your exact operations.",
   "metaDescription": "What custom retail and logistics software development actually involves POS systems, WMS, TMS, fleet tracking, AI supply chain, and e-commerce platforms built for your exact operations.",
-  "coverImage": "https://i.postimg.cc/7LQZ5GdL/Custom-Retail-Logistics-Software-Development-2026-Enterprise.jpg",
+  "coverImage": "/images/blog-covers/custom-retail-logistics-software-development-2026-enterprise-52e493a1.webp",
   "coverImageAlt": "Custom Retail & Logistics Software Development",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

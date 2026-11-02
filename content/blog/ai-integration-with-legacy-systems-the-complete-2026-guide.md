@@ -4,7 +4,7 @@
   "slug": "ai-integration-with-legacy-systems-the-complete-2026-guide",
   "excerpt": "There is a particular kind of CTO or IT director who finds their way to this page. They are not starting from scratch — they have a system that has been running for seven, ten, sometimes fifteen years. It works. It holds the business together. And now the board wants AI in it by Q3. The question is never really \"should we modernize?\" It is always the harder one: how do we add intelligence to something that cannot afford to go down?",
   "metaDescription": "There is a particular kind of CTO or IT director who finds their way to this page. They are not starting from scratch — they have a system that has been running for seven, ten, sometimes fifteen years. It works. It holds the business together. And now the board wants AI in it by Q3. The question is never really \"should we modernize?\" It is always the harder one: how do we add intelligence to something that cannot afford to go down?",
-  "coverImage": "https://i.postimg.cc/sXCnqtqC/Why-should-I-choose-a-Karachi-based-developer-for-my-website-(8).png",
+  "coverImage": "/images/blog-covers/ai-integration-with-legacy-systems-the-complete-2026-guide-da6c37be.webp",
   "coverImageAlt": "AI Integration with Legacy Systems: The Complete 2026 Guide",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

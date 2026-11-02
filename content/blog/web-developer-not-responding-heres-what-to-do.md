@@ -4,7 +4,7 @@
   "slug": "web-developer-not-responding-heres-what-to-do",
   "excerpt": "Three weeks ago, your web developer answered every message within the hour. Now there's nothing — no replies, no updates, no explanation. If you're staring at a half-finished website and a silent inbox, here's exactly what to do next, in order, without panic.",
   "metaDescription": "Three weeks ago, your web developer answered every message within the hour. Now there's nothing — no replies, no updates, no explanation. If you're staring at a half-finished website and a silent inbox, here's exactly what to do next, in order, without panic.",
-  "coverImage": "https://i.postimg.cc/52kNxtWs/Gemini-Generated-Image-62e5qs62e5qs62e5.png",
+  "coverImage": "/images/blog-covers/web-developer-not-responding-heres-what-to-do-a50b350e.webp",
   "coverImageAlt": "A business owner sitting at a desk looking at a phone with an unanswered message thread",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",

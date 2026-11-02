@@ -4,7 +4,7 @@
   "slug": "version-control-for-brand-identity-2026-protecting-your-work-from-ai-model-drift",
   "excerpt": "You approve a design. Your business runs on it for months. Then an AI tool gets updated, you regenerate something using the same instructions, and the output has quietly changed — a different layout, a different tone, a different structure than the one you signed off on. Nothing was broken. It was simply overwritten by a newer model's confidence that its version was better. Version control is the practical, immediate defense against this not a fix for why it happens, but a way to make sure you're never left without the version you actually approved.",
   "metaDescription": "You approve a design. Your business runs on it for months. Then an AI tool gets updated, you regenerate something using the same instructions, and the output has quietly changed — a different layout, a different tone, a different structure than the one you signed off on. Nothing was broken. It was simply overwritten by a newer model's confidence that its version was better. Version control is the practical, immediate defense against this not a fix for why it happens, but a way to make sure you're never left without the version you actually approved.",
-  "coverImage": "https://i.postimg.cc/44hLfPC6/Gemini-Generated-Image-8cgtel8cgtel8cgt.png",
+  "coverImage": "/images/blog-covers/version-control-for-brand-identity-2026-protecting-your-work-ef8aef6b.webp",
   "coverImageAlt": "Version Control for Brand Identity 2026",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
