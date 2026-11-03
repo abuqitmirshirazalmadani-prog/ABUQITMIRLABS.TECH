@@ -3607,10 +3607,6 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         >
                             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
                                 <div>
-                                    <span className="inline-flex items-center gap-2 text-[10px] font-mono text-[#ccff00] uppercase tracking-[0.2em] font-bold mb-2">
-                                        <BookOpen size={13} className="text-[#ccff00]" />
-                                        [ SIMILAR TOPICS IN {(post.category || categoryDetails.name).toUpperCase()} ]
-                                    </span>
                                     <h2 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight font-serif">
                                         Related Articles
                                     </h2>
@@ -3675,7 +3671,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         <NewsletterSubscriptionForm variant="sidebar" source="blog" />
                     </div>
 
-                    <div className="mt-16 pt-10 border-t border-zinc-800/80">
+                    <aside aria-label="About the Author" className="mt-16 pt-10 border-t border-zinc-800/80">
                         <div className="bg-[#0b0b0e] border border-zinc-800/80 rounded-[2.5rem] p-10 flex flex-col md:flex-row items-center gap-10 shadow-xl">
                             <div className="h-24 w-24 bg-zinc-900 rounded-3xl overflow-hidden shrink-0 shadow-lg border-2 border-[#ccff00]/40">
                                 <img 
@@ -3691,11 +3687,11 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                             </div>
                             <div>
                                 <div className="flex items-center gap-2 mb-1">
-                                    <span className="text-[10px] font-mono text-[#ccff00] uppercase tracking-widest font-bold">[ VERIFIED AUTHOR &amp; ARCHITECT ]</span>
+                                    <span className="text-[10px] font-mono text-[#ccff00] uppercase tracking-widest font-bold">About the Author</span>
                                 </div>
-                                <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tight font-serif">
+                                <div className="text-2xl font-black text-white mb-2 uppercase tracking-tight font-serif">
                                     Abu Qitmir Mohammad Shiraz Al-Madani
-                                </h3>
+                                </div>
                                 <p className="text-zinc-400 text-sm leading-relaxed max-w-xl mb-4">
                                     Founder &amp; Lead Systems Architect at AbuQitmirLabs. Specializing in high-performance digital ecosystems, AI-driven architectures, and building scalable full-stack software systems.
                                 </p>
@@ -3706,7 +3702,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </aside>
                 </div>
             </main>
 
