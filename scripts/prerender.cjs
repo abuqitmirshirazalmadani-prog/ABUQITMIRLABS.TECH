@@ -655,6 +655,15 @@ for (const routeUrl of allRoutes) {
       }
       fs.writeFileSync(path.join(targetDir, 'index.html'), html, 'utf8');
 
+      // Mirror blog prerendered HTML into public/blog/<slug>/index.html for static edge serving
+      if (cleanRoute.startsWith('blog/')) {
+        const publicTargetDir = path.join(rootDir, 'public', cleanRoute);
+        if (!fs.existsSync(publicTargetDir)) {
+          fs.mkdirSync(publicTargetDir, { recursive: true });
+        }
+        fs.writeFileSync(path.join(publicTargetDir, 'index.html'), html, 'utf8');
+      }
+
       // Also write cleanRoute.html for Vercel cleanUrls: true direct static match
       const htmlFilePath = path.join(distDir, `${cleanRoute}.html`);
       const htmlFileParent = path.dirname(htmlFilePath);

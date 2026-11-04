@@ -155,7 +155,25 @@ async function syncFirestorePostsToMarkdown() {
       const slug = knownRedirects[rawSlug] || rawSlug;
       const mdPath = path.join(blogContentDir, `${slug}.md`);
 
-      if (!fs.existsSync(mdPath) && !staticSource.includes(`STATIC_BLOG_POSTS["${slug}"]`)) {
+      if (fs.existsSync(mdPath)) {
+        const existingMd = fs.readFileSync(mdPath, 'utf8');
+        const fsCover = (fields.coverImage?.stringValue || '').trim();
+        if (
+          existingMd.includes('the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp') &&
+          fsCover &&
+          !fsCover.includes('459758ec.webp') &&
+          slug !== '5-minute-technical-audit-for-founders'
+        ) {
+          const updatedMd = existingMd.replace(
+            '"/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp"',
+            JSON.stringify(fsCover)
+          );
+          if (updatedMd !== existingMd) {
+            fs.writeFileSync(mdPath, updatedMd, 'utf8');
+            console.log(`🔄 Restored real Firestore coverImage in content/blog/${slug}.md`);
+          }
+        }
+      } else if (!staticSource.includes(`STATIC_BLOG_POSTS["${slug}"]`)) {
         const rawTitle = (fields.title?.stringValue || slug).trim();
         const cleanTitle = rawTitle.replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
         const seoTitle = rawTitle.includes('AbuQitmirLabs') ? rawTitle : `${cleanTitle} | AbuQitmirLabs`;
@@ -213,22 +231,23 @@ function syncMarkdownPosts() {
       const slug = (meta.slug || file.replace(/\.md$/, '')).trim();
       if (!slug) continue;
 
+      const cleanPostTitle = String(meta.title || slug).replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
+      const postObj = {
+        slug,
+        canonical: `https://www.abuqitmirlabs.tech/blog/${slug}`,
+        title: cleanPostTitle,
+        content: body,
+        excerpt: meta.excerpt || '',
+        metaDescription: meta.metaDescription || meta.excerpt || '',
+        coverImage: meta.coverImage || 'https://www.abuqitmirlabs.tech/logo.png',
+        coverImageAlt: meta.coverImageAlt || `${cleanPostTitle} | AbuQitmirLabs`,
+        category: meta.category || 'Development',
+        createdAt: meta.publishedAt || '2026-10-28',
+        author: meta.author || 'Abu Qitmir Mohammad Shiraz Al-Madani',
+        tags: meta.tags || []
+      };
+
       if (!staticSource.includes(`STATIC_BLOG_POSTS["${slug}"]`)) {
-        const cleanPostTitle = String(meta.title || slug).replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
-        const postObj = {
-          slug,
-          canonical: `https://www.abuqitmirlabs.tech/blog/${slug}`,
-          title: cleanPostTitle,
-          content: body,
-          excerpt: meta.excerpt || '',
-          metaDescription: meta.metaDescription || meta.excerpt || '',
-          coverImage: meta.coverImage || 'https://www.abuqitmirlabs.tech/logo.png',
-          coverImageAlt: meta.coverImageAlt || `${cleanPostTitle} | AbuQitmirLabs`,
-          category: meta.category || 'Development',
-          createdAt: meta.publishedAt || '2026-10-28',
-          author: meta.author || 'Abu Qitmir Mohammad Shiraz Al-Madani',
-          tags: meta.tags || []
-        };
         const insertBefore = 'export interface BlogPostSummary';
         const entryStr = `\nSTATIC_BLOG_POSTS["${slug}"] = ${JSON.stringify(postObj, null, 2)};\n\n`;
         if (staticSource.includes(insertBefore)) {
@@ -238,6 +257,15 @@ function syncMarkdownPosts() {
         }
         staticChanged = true;
         console.log(`✅ Synced new markdown post into staticBlogPosts.ts: ${slug}`);
+      } else {
+        const existingRe = new RegExp(`STATIC_BLOG_POSTS\\["${slug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"\\]\\s*=\\s*\\{[\\s\\S]*?\\n\\};`);
+        const newEntryBlock = `STATIC_BLOG_POSTS["${slug}"] = ${JSON.stringify(postObj, null, 2)};`;
+        const replaced = staticSource.replace(existingRe, newEntryBlock);
+        if (replaced !== staticSource) {
+          staticSource = replaced;
+          staticChanged = true;
+          console.log(`🔄 Updated existing markdown post in staticBlogPosts.ts: ${slug}`);
+        }
       }
 
       const aliasSkip = new Set([

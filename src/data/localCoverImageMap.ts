@@ -6,19 +6,19 @@
 
 export const REMOTE_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp",
-  "https://i.postimg.cc/sXy5NLHN/Gemini-Generated-Image-wwjsrzwwjsrzwwjs.jpg": "/images/blog-covers/build-brand-on-social-media-9338c994.webp"
+  "https://i.postimg.cc/QNRK2QST/Bridging-Saudi-Arabia-s-Tech-Talent-Gap.png": "/images/blog-covers/offshore-software-development-saudi-arabia-7826c9d9.webp",
+  "https://i.postimg.cc/vZKFBKyj/Pakistani-SME-Branding-Strategy-Infographic.png": "/images/blog-covers/brand-strategy-vs-logo-design-pakistan-sme-b52ea078.webp"
 };
 
 export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
-  "measure-marketing-roi-without-tracking": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp",
-  "guest-posting-in-2026-what-works-abuqitmirlabs": "/images/blog-covers/guest-posting-in-2026-what-works-abuqitmirlabs-458d126e.webp",
-  "digital-marketing-stack-2026": "/images/blog-covers/digital-marketing-stack-2026-f69ac6a2.webp",
+  "5-minute-technical-audit-for-founders": "/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
   "performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups": "/images/blog-covers/performance-marketing-vs-brand-marketing-a-budget-allocation-ceb070fb.webp",
   "mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-2026": "/images/blog-covers/mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-b90cd424.webp",
   "ecommerce-platform-development-custom-build-vs-shopify-plus-2026": "/images/blog-covers/e-commerce-platform-development-custom-build-vs-shopify-plus-29f9730c.webp",
   "generative-ai-chatbot-development-cost-2026": "/images/blog-covers/generative-ai-chatbot-development-what-it-actually-costs-in--fdd0d1da.webp",
   "the-complete-guide-to-rag-ai-integration-for-startups": "/images/blog-covers/the-complete-guide-to-rag-ai-integration-for-startups-a3cea42b.webp",
   "rag-ai-integration-for-startups": "/images/blog-covers/rag-ai-integration-for-startups-a162cdc3.webp",
+  "agentic-ai-production-failures": "/images/blog-covers/ai-agent-development-agency-vs-in-house-5ea2debf.webp",
   "what-does-a-custom-web-development-company-do-2026-guide": "/images/blog-covers/what-does-a-custom-web-development-company-do-2026-guide-bc98cf25.webp",
   "custom-web-development-company": "/images/blog-covers/custom-web-development-company-1a9e4695.webp",
   "custom-web-development-vs-website-templates-2026-guide": "/images/blog-covers/custom-web-development-vs-website-templates-2026-guide-16b479d6.webp",
@@ -37,6 +37,10 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "flutter-vs-native-mobile-app-development-2026": "/images/blog-covers/flutter-vs-native-mobile-app-development-2026-afa89aed.webp",
   "enterprise-software-engineering-what-changes-at-scale": "/images/blog-covers/enterprise-software-engineering-what-changes-at-scale-4b2f472e.webp",
   "flutter-vs-react-native-choosing-mobile-app-stack-2026": "/images/blog-covers/flutter-vs-react-native-choosing-mobile-app-stack-2026-32817b64.webp",
+  "app-development-agency-uk-what-to-ask-before-you-sign-2026": "/images/blog-covers/app-development-agency-uk-what-to-ask-before-you-sign-2026-0191a5e7.webp",
+  "high-performance-web-applications-12-engineering-decisions": "/images/blog-covers/high-performance-web-applications-12-engineering-decisions-7f75ceb8.webp",
+  "native-mobile-app-development-ios-vs-android-cost": "/images/blog-covers/native-mobile-app-development-ios-vs-android-cost-9610730c.webp",
+  "tailor-made-software-solutions-when-off-the-shelf-fails": "/images/blog-covers/tailor-made-software-solutions-when-off-the-shelf-fails-beb4a4ab.webp",
   "custom-web-development-company-2026": "/images/blog-covers/custom-software-development-company-karachi-pakistan-abuqitm-213c7dde.webp",
   "custom-web-development-company-2026-built-in-visibility": "/images/blog-covers/custom-web-development-company-1a9e4695.webp",
   "tailor-made-software-solutions-when-off-the-shelf-fails-2026": "/images/blog-covers/tailor-made-software-solutions-when-off-the-shelf-fails-beb4a4ab.webp",
@@ -58,11 +62,8 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "what-a-local-seo-audit-actually-checks-2026-complete-guide": "/images/blog-covers/what-a-local-seo-audit-actually-checks-2026-complete-guide-72c2bc3d.webp",
   "programmatic-seo-how-we-scaled-tajweedpage": "/images/blog-covers/programmatic-seo-how-we-scaled-tajweedpage-c823894c.webp",
   "ai-overviews-killed-traffic-what-40-companies-did-next": "/images/blog-covers/ai-overviews-killed-traffic-what-40-companies-did-next-eb108ed0.webp",
-  "the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026": "/images/blog-covers/the-pakistan-advantage-why-us-startups-are-moving-dev-teams--21cc0e08.webp",
+  "saas-pricing-page-optimization-7-structural-decisions": "/images/blog-covers/bespoke-saas-development-build-vs-buy-decision-guide-c0840937.webp",
   "ai-agents-cost-benefit-analysis": "/images/blog-covers/ai-agents-cost-benefit-analysis-225b4bab.webp",
-  "the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact": "/images/blog-covers/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-imp-63afd577.webp",
-  "fix-url-fragmentation-in-headless-spas-abuqitmirlabs": "/images/blog-covers/fix-url-fragmentation-in-headless-spas-abuqitmirlabs-c11c02b3.webp",
-  "the-2026-static-site-comeback-why-jamstack-won-after-all": "/images/blog-covers/the-2026-static-site-comeback-why-jamstack-won-after-all-00f21f97.webp",
   "when-to-invest-in-ai-agent": "/images/blog-covers/when-to-invest-in-ai-agent-826c1e4f.webp",
   "ai-integration-with-legacy-systems-the-complete-2026-guide": "/images/blog-covers/ai-integration-with-legacy-systems-the-complete-2026-guide-da6c37be.webp",
   "how-to-choose-a-mobile-app-development-company-2026": "/images/blog-covers/how-to-choose-a-mobile-app-development-company-2026-34e2b42a.webp",
@@ -138,8 +139,6 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "ai-and-automation-are-rapidly-changing-custom-software-development": "/images/blog-covers/ai-and-automation-are-rapidly-changing-custom-software-devel-f047be44.webp",
   "how-much-does-custom-software-development-cost-in-2026": "/images/blog-covers/how-much-does-custom-software-development-cost-in-2026-581b69a7.webp",
   "ai-is-quietly-stealing-your-ability-to-think": "/images/blog-covers/ai-is-quietly-stealing-your-ability-to-think-fca4bb8e.webp",
-  "brand-identity-vs-logo-design": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp",
-  "ui-ux-design-conversion": "/images/blog-covers/ui-ux-design-conversion-e56a7379.webp",
   "geo-content-writing": "/images/blog-covers/geo-content-writing-bea6b0bb.webp",
   "ecommerce-platform-development": "/images/blog-covers/ecommerce-platform-development-f4009edd.webp",
   "edtech-software-development": "/images/blog-covers/edtech-software-development-80675541.webp",
@@ -148,23 +147,16 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "ai-automation-for-regulated-industries-abuqitmirlabs": "/images/blog-covers/ai-automation-for-regulated-industries-abuqitmirlabs-79cfaf63.webp",
   "how-to-build-personal-brand-online": "/images/blog-covers/how-to-build-personal-brand-online-1e2d72bb.webp",
   "soc-2-fintech-startups": "/images/blog-covers/soc-2-fintech-startups-80cea562.webp",
+  "build-brand-on-social-media": "/images/blog-covers/build-brand-on-social-media-9338c994.webp",
   "content-brief-template": "/images/blog-covers/content-brief-template-fcc385c7.webp",
   "small-business-branding-mistakes-pakistan": "/images/blog-covers/small-business-branding-mistakes-pakistan-6d2717c9.webp",
-  "content-calendar-strategy": "/images/blog-covers/content-calendar-strategy-c110168a.webp",
   "ai-content-vs-human-content": "/images/blog-covers/ai-content-vs-human-content-23537d4c.webp",
   "startup-brand-identity-checklist": "/images/blog-covers/startup-brand-identity-checklist-be48b842.webp",
-  "5-minute-technical-audit-for-founders": "/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
-  "agentic-ai-production-failures": "/images/blog-covers/ai-agent-development-agency-vs-in-house-5ea2debf.webp",
   "ai-overviews-traffic-recovery-what-40-companies-did-next": "/images/blog-covers/ai-overviews-killed-traffic-what-40-companies-did-next-eb108ed0.webp",
-  "app-development-agency-uk-what-to-ask-before-you-sign-2026": "/images/blog-covers/app-development-agency-uk-what-to-ask-before-you-sign-2026-0191a5e7.webp",
-  "brand-strategy-vs-logo-design-pakistan-sme": "/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
-  "high-performance-web-applications-12-engineering-decisions": "/images/blog-covers/high-performance-web-applications-12-engineering-decisions-7f75ceb8.webp",
-  "native-mobile-app-development-ios-vs-android-cost": "/images/blog-covers/native-mobile-app-development-ios-vs-android-cost-9610730c.webp",
-  "saas-pricing-page-optimization-7-structural-decisions": "/images/blog-covers/bespoke-saas-development-build-vs-buy-decision-guide-c0840937.webp",
-  "tailor-made-software-solutions-when-off-the-shelf-fails": "/images/blog-covers/tailor-made-software-solutions-when-off-the-shelf-fails-beb4a4ab.webp",
   "the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026": "/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
   "author-abuqitmir-shiraz": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp",
-  "build-brand-on-social-media": "/images/blog-covers/build-brand-on-social-media-9338c994.webp"
+  "offshore-software-development-saudi-arabia": "/images/blog-covers/offshore-software-development-saudi-arabia-7826c9d9.webp",
+  "brand-strategy-vs-logo-design-pakistan-sme": "/images/blog-covers/brand-strategy-vs-logo-design-pakistan-sme-b52ea078.webp"
 };
 
 export function resolveOptimizedCoverImage(url?: string, slug?: string): string {
