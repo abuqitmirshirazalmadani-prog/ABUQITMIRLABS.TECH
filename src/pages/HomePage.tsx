@@ -13,167 +13,320 @@ import ServicesSection from '../components/ServicesSection';
 import ProcessSection from '../components/ProcessSection';
 import CountryMarquee from '../components/CountryMarquee';
 import TechStackSection from '../components/TechStackSection';
-import VideoPortfolio from '../components/VideoPortfolio';
+import VideoPortfolio, { portfolioVideos } from '../components/VideoPortfolio';
 import InteractivePortfolio from '../components/InteractivePortfolio';
 import WebDevelopmentPricing from '../components/WebDevelopmentPricing';
 import HomeCaseStudiesSection from '../components/HomeCaseStudiesSection';
 import TestimonialsSection from '../components/TestimonialsSection';
-import FAQSection from '../components/FAQSection';
+import FAQSection, { faqItems } from '../components/FAQSection';
 import ContactSection from '../components/ContactSection';
 import FeaturedToolsSection from '../components/FeaturedToolsSection';
+
+const latestBlogHighlights = [
+  {
+    slug: 'brand-audit-checklist-pakistan',
+    title: 'Brand Audit Checklist for Pakistani Businesses: 35-Point Diagnostic (2026)',
+    excerpt: 'Score your brand positioning, visual identity, website conversion, and social presence across 35 weighted checkpoints in under 60 minutes.',
+    category: 'Brand Building',
+    pillarPath: '/brand-building',
+    pillarLabel: 'Brand Building Services',
+    date: '2026-04-20',
+    readTime: '18 min read',
+  },
+  {
+    slug: 'offshore-software-development-saudi-arabia',
+    title: 'Offshore Software Development for Saudi Arabia: Save 40–60% (2026 Guide)',
+    excerpt: 'Compare Riyadh/Jeddah local hiring vs. Karachi offshore engineering squads, Saudi PDPL compliance, Arabic RTL architecture, and SAR cost models.',
+    category: 'Custom Software',
+    pillarPath: '/custom-software',
+    pillarLabel: 'Custom Software Development',
+    date: '2026-04-18',
+    readTime: '16 min read',
+  },
+  {
+    slug: 'soc-2-fintech-startups',
+    title: 'SOC 2 for Fintech Startups: The Engineering Architecture Checklist (2026)',
+    excerpt: 'How seed and Series A fintech founders implement SOC 2 Type II controls, RBAC, immutable audit logs, and zero-trust CI/CD pipelines from day one.',
+    category: 'FinTech Engineering',
+    pillarPath: '/solutions/fintech',
+    pillarLabel: 'FinTech Software Solutions',
+    date: '2026-04-16',
+    readTime: '15 min read',
+  },
+  {
+    slug: 'build-brand-on-social-media',
+    title: 'How to Build a Brand on Social Media: 17 Proven B2B & Consumer Strategies',
+    excerpt: 'A tactical blueprint for turning fragmented social media posts into a compounding brand authority and inbound demand engine.',
+    category: 'Digital Growth',
+    pillarPath: '/digital-marketing',
+    pillarLabel: 'Digital Marketing Services',
+    date: '2026-04-17',
+    readTime: '19 min read',
+  },
+  {
+    slug: 'ai-integration-with-legacy-systems-the-complete-2026-guide',
+    title: 'AI Integration with Legacy Systems: The Complete Enterprise 2026 Guide',
+    excerpt: 'Connect autonomous LLM and RAG agents to existing SQL databases, ERPs, and mainframes using secure middleware without downtime.',
+    category: 'AI Engineering',
+    pillarPath: '/ai-agent-development',
+    pillarLabel: 'AI Agent Development',
+    date: '2026-03-14',
+    readTime: '14 min read',
+  },
+  {
+    slug: 'flutter-vs-react-native-choosing-mobile-app-stack-2026',
+    title: 'Flutter vs React Native in 2026: Choosing the Right Mobile App Stack',
+    excerpt: 'Architectural comparison of rendering engines, 120fps performance, native bridges, and total cost of ownership for iOS and Android apps.',
+    category: 'Mobile Engineering',
+    pillarPath: '/mobile-app-development',
+    pillarLabel: 'Mobile App Development',
+    date: '2026-03-10',
+    readTime: '13 min read',
+  },
+];
+
 export default function HomePage() {
 
   const growthEngineeringSchema = {
     "@context": "https://schema.org",
     "@graph": [
-      // NODE 1: Organization (Updated)
+      // NODE 1: Organization & LocalBusiness (Unified Entity)
       {
-        "@type": "Organization",
+        "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
         "@id": "https://www.abuqitmirlabs.tech/#organization",
         "name": "AbuQitmirLabs",
-        "url": "https://www.abuqitmirlabs.tech",
+        "url": "https://www.abuqitmirlabs.tech/",
         "founder": {
           "@type": "Person",
-          "name": "AbuQitmir Mohammad Shiraz Al Madani"
+          "name": "Abu Qitmir Mohammad Shiraz Al-Madani",
+          "url": "https://www.linkedin.com/in/abu-qitmir-697423390/"
         },
         "foundingDate": "2021",
         "logo": {
           "@type": "ImageObject",
           "url": "https://www.abuqitmirlabs.tech/logo.png"
         },
-        "image": "https://www.abuqitmirlabs.tech/logo.png",
+        "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
         "email": "hello@abuqitmirlabs.tech",
         "telephone": "+923233260859",
-        "description": "Growth engineering firm combining custom software, AI automation, and performance marketing for B2B companies.",
+        "priceRange": "$$",
+        "openingHours": "Mo-Fr 09:00-18:00",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+          }
+        ],
+        "description": "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system.",
         "slogan": "We build revenue systems, not just software.",
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "Shahrah-e-Faisal, PECHS",
           "addressLocality": "Karachi",
           "addressRegion": "Sindh",
+          "postalCode": "75400",
           "addressCountry": "PK"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 24.8607,
+          "longitude": 67.0011
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+923233260859",
+          "email": "hello@abuqitmirlabs.tech",
+          "contactType": "sales and technical support",
+          "areaServed": ["US", "GB", "SA", "AE", "QA", "KW", "CA", "AU", "PL", "PK"],
+          "availableLanguage": ["English", "Urdu", "Arabic"]
         },
         "areaServed": ["PK", "US", "GB", "AE", "SA", "QA", "KW", "CA", "AU", "PL"],
         "knowsAbout": [
           "Growth Engineering",
           "Custom Software Development",
+          "Web Application Development",
           "AI Agent Development",
-          "Performance Marketing",
-          "SEO",
-          "Brand Building"
+          "Mobile App Development",
+          "Technical SEO & GEO",
+          "Brand Identity Design",
+          "E-E-A-T Content Engineering"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/abuqitmirlabs",
-          "https://twitter.com/abuqitmirlabs",
-          "https://www.facebook.com/abuqitmirlabs"
+          "https://x.com/AbuQitmir",
+          "https://www.facebook.com/abuqitmirlabs",
+          "https://www.linkedin.com/in/abu-qitmir-697423390/"
         ]
       },
 
-      // NODE 2: WebSite (Existing — no change)
+      // NODE 2: WebSite
       {
         "@type": "WebSite",
         "@id": "https://www.abuqitmirlabs.tech/#website",
-        "url": "https://www.abuqitmirlabs.tech",
+        "url": "https://www.abuqitmirlabs.tech/",
         "name": "AbuQitmirLabs",
         "publisher": {
           "@id": "https://www.abuqitmirlabs.tech/#organization"
         }
       },
 
-      // NODE 3: WebPage (Existing — no change)
+      // NODE 3: WebPage
       {
         "@type": "WebPage",
         "@id": "https://www.abuqitmirlabs.tech/#webpage",
         "url": "https://www.abuqitmirlabs.tech/",
-        "name": "Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs",
-        "description": "Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.",
+        "name": "Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs",
+        "description": "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Free technical audit.",
         "isPartOf": {
           "@id": "https://www.abuqitmirlabs.tech/#website"
+        },
+        "about": {
+          "@id": "https://www.abuqitmirlabs.tech/#organization"
         },
         "inLanguage": "en-US"
       },
 
-      // NODE 4: Service — Growth Infrastructure Audit (NEW)
+      // NODE 4: Service 1 — Growth Infrastructure Audit & Growth Engineering
       {
         "@type": "Service",
         "@id": "https://www.abuqitmirlabs.tech/#growth-audit-service",
         "serviceType": "Growth Engineering",
-        "name": "Growth Infrastructure Audit",
-        "provider": {
-          "@id": "https://www.abuqitmirlabs.tech/#organization"
-        },
-        "description": "A complimentary audit of your marketing technology stack, attribution model, and data infrastructure. Delivered as a prioritized roadmap for building a measurable revenue engine.",
-        "url": "https://www.abuqitmirlabs.tech/contact",
-        "areaServed": [
-          { "@type": "Country", "name": "United States" },
-          { "@type": "Country", "name": "United Kingdom" },
-          { "@type": "Country", "name": "Canada" },
-          { "@type": "Country", "name": "Australia" },
-          { "@type": "Country", "name": "Poland" },
-          { "@type": "Country", "name": "Pakistan" },
-          { "@type": "Country", "name": "United Arab Emirates" },
-          { "@type": "Country", "name": "Saudi Arabia" },
-          { "@type": "Country", "name": "Qatar" },
-          { "@type": "Country", "name": "Kuwait" }
-        ],
+        "name": "B2B Growth Engineering & Technical Infrastructure Audit",
+        "provider": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+        "description": "Complimentary technical audit of your software architecture, AI automation readiness, and search attribution stack delivered as an actionable B2B revenue roadmap.",
+        "url": "https://www.abuqitmirlabs.tech/growth-engineering",
+        "areaServed": ["US", "GB", "CA", "AU", "SA", "AE", "QA", "KW", "PL", "PK"],
         "offers": {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "USD",
-          "description": "Complimentary initial growth infrastructure audit",
+          "description": "Complimentary initial 30-minute technical & growth infrastructure audit",
           "availability": "https://schema.org/InStock"
-        },
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Growth Engineering Services",
-          "itemListElement": [
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Growth Infrastructure Audit"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Revenue Operations Setup"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Attribution Modeling"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Marketing Technology Integration"
-              }
-            }
-          ]
         }
-      }
+      },
+
+      // NODE 5: Service 2 — Custom Software Development
+      {
+        "@type": "Service",
+        "@id": "https://www.abuqitmirlabs.tech/#service-custom-software",
+        "serviceType": "Custom Software Development",
+        "name": "Custom Software Development & Enterprise Architecture",
+        "provider": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+        "description": "Bespoke B2B SaaS platforms, multi-tenant cloud ERPs, HIPAA/SOC2-ready portals, and API middleware with 100% client IP ownership.",
+        "url": "https://www.abuqitmirlabs.tech/custom-software",
+        "areaServed": ["US", "GB", "CA", "AU", "SA", "AE", "PK"]
+      },
+
+      // NODE 6: Service 3 — Web Application Development
+      {
+        "@type": "Service",
+        "@id": "https://www.abuqitmirlabs.tech/#service-web-development",
+        "serviceType": "Web Development",
+        "name": "Full-Stack Web Application Development (Next.js & React)",
+        "provider": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+        "description": "High-speed Jamstack, headless CMS, and full-stack Next.js web applications engineered for sub-second Core Web Vitals and conversion.",
+        "url": "https://www.abuqitmirlabs.tech/web-development",
+        "areaServed": ["US", "GB", "CA", "AU", "SA", "AE", "PK"]
+      },
+
+      // NODE 7: Service 4 — AI Agent & RAG Development
+      {
+        "@type": "Service",
+        "@id": "https://www.abuqitmirlabs.tech/#service-ai-agents",
+        "serviceType": "AI Agent Development",
+        "name": "Autonomous AI Agent & Enterprise RAG Development",
+        "provider": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+        "description": "Custom LLM agents, private Retrieval-Augmented Generation (RAG) pipelines, and autonomous multi-step workflow automation.",
+        "url": "https://www.abuqitmirlabs.tech/ai-agent-development",
+        "areaServed": ["US", "GB", "CA", "AU", "SA", "AE", "PK"]
+      },
+
+      // NODE 8: Service 5 — Mobile App Development
+      {
+        "@type": "Service",
+        "@id": "https://www.abuqitmirlabs.tech/#service-mobile-apps",
+        "serviceType": "Mobile App Development",
+        "name": "Cross-Platform & Native Mobile App Development (Flutter & React Native)",
+        "provider": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+        "description": "iOS and Android mobile applications engineered with Flutter, React Native, Swift, and Kotlin with full App Store and Google Play deployment.",
+        "url": "https://www.abuqitmirlabs.tech/mobile-app-development",
+        "areaServed": ["US", "GB", "CA", "AU", "SA", "AE", "PK"]
+      },
+
+      // NODE 9: Service 6 — Technical SEO & GEO Mastery
+      {
+        "@type": "Service",
+        "@id": "https://www.abuqitmirlabs.tech/#service-seo-mastery",
+        "serviceType": "Search Engine Optimization",
+        "name": "Technical SEO, Semantic Entity Graphs & Generative Engine Optimization (GEO)",
+        "provider": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+        "description": "Forensic technical SEO audits, Schema.org JSON-LD entity engineering, Local SEO citation building, and AI search optimization.",
+        "url": "https://www.abuqitmirlabs.tech/seo-mastery",
+        "areaServed": ["US", "GB", "CA", "AU", "SA", "AE", "PK"]
+      },
+
+      // NODE 10: Service 7 — Brand Identity, UI/UX & E-E-A-T Content
+      {
+        "@type": "Service",
+        "@id": "https://www.abuqitmirlabs.tech/#service-brand-content",
+        "serviceType": "Brand Identity & Technical Content Engineering",
+        "name": "Brand Building, UI/UX Design & E-E-A-T Technical Content Writing",
+        "provider": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+        "description": "Conversion-engineered brand identity systems, Figma design systems, and senior-reviewed E-E-A-T technical content clusters.",
+        "url": "https://www.abuqitmirlabs.tech/brand-building",
+        "areaServed": ["US", "GB", "CA", "AU", "SA", "AE", "PK"]
+      },
+
+      // NODE 11: FAQPage (10 Conversational AEO Questions & 40-60 Word Answers)
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.abuqitmirlabs.tech/#faq",
+        "mainEntity": faqItems.map((item) => ({
+          "@type": "Question",
+          "name": item.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.answer
+          }
+        }))
+      },
+
+      // NODES 12–17: 6 VideoObject Nodes for Homepage YouTube Portfolio
+      ...portfolioVideos.map((video) => ({
+        "@type": "VideoObject",
+        "@id": `https://www.abuqitmirlabs.tech/#video-${video.videoId}`,
+        "name": `${video.title} | AbuQitmirLabs`,
+        "description": video.desc,
+        "thumbnailUrl": [
+          `https://i.ytimg.com/vi/${video.videoId}/maxresdefault.jpg`,
+          `https://i.ytimg.com/vi/${video.videoId}/hqdefault.jpg`
+        ],
+        "uploadDate": video.uploadDate,
+        "contentUrl": `https://www.youtube.com/watch?v=${video.videoId}`,
+        "embedUrl": `https://www.youtube-nocookie.com/embed/${video.videoId}`,
+        "publisher": {
+          "@id": "https://www.abuqitmirlabs.tech/#organization"
+        }
+      }))
     ]
   };
 
   return (
     <main id="main-content" className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <SEO
-        title="Custom Software, AI & Growth Engineering | AbuQitmirLabs"
-        description="Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system."
+        title="Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs"
+        description="Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Free technical audit."
         canonical="https://www.abuqitmirlabs.tech/"
-        ogTitle="Custom Software, AI & Growth Engineering | AbuQitmirLabs"
-        ogDescription="Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system."
+        ogTitle="Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs"
+        ogDescription="Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Free technical audit."
         ogImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
-        ogImageAlt="AbuQitmirLabs Custom Software Development"
+        ogImageAlt="AbuQitmirLabs Growth Engineering Firm — Custom Software, AI & Technical SEO"
         ogType="website"
         twitterCard="summary_large_image"
-        twitterTitle="Custom Software, AI & Growth Engineering | AbuQitmirLabs"
-        twitterDescription="Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system."
+        twitterTitle="Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs"
+        twitterDescription="Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Free technical audit."
         twitterImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
         schema={growthEngineeringSchema}
       />
@@ -410,6 +563,78 @@ export default function HomePage() {
       <HomeCaseStudiesSection />
 
       <TestimonialsSection />
+
+      {/* Latest from the Blog — Engineering & Growth Insights (Freshness & Topical Authority) */}
+      <section id="latest-blog-insights" className="py-24 bg-[#070707] border-t border-white/10 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+            <div className="max-w-3xl space-y-3">
+              <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#C8EB5F] font-bold block">
+                Engineering Journal &amp; B2B Playbooks
+              </span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif italic text-white tracking-tight">
+                Latest from the Blog: Software, AI &amp; SEO Insights
+              </h2>
+              <p className="text-sm sm:text-base text-neutral-400 font-light leading-relaxed">
+                Deep-dive technical guides, compliance checklists, and regional software benchmarks authored and reviewed by our senior engineering architects in Karachi.
+              </p>
+            </div>
+            <div>
+              <Link
+                to="/blog"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-white/5 hover:bg-[#C8EB5F] text-white hover:text-black border border-white/15 font-mono text-xs uppercase tracking-wider font-bold transition-all"
+              >
+                <span>View All Engineering Articles</span>
+                <ArrowRight size={15} />
+              </Link>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {latestBlogHighlights.map((post) => (
+              <article
+                key={post.slug}
+                className="flex flex-col justify-between bg-zinc-950/90 border border-white/10 hover:border-[#C8EB5F]/50 rounded-2xl p-6 sm:p-7 transition-all group"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between gap-2 text-xs font-mono">
+                    <span className="text-[#C8EB5F] uppercase tracking-wider font-bold">
+                      {post.category}
+                    </span>
+                    <span className="text-zinc-500">
+                      <time dateTime={post.date}>{post.date}</time> &bull; {post.readTime}
+                    </span>
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-[#C8EB5F] transition-colors leading-snug">
+                    <Link to={`/blog/${post.slug}`}>
+                      {post.title}
+                    </Link>
+                  </h3>
+                  <p className="text-sm text-neutral-400 leading-relaxed font-light">
+                    {post.excerpt}
+                  </p>
+                </div>
+
+                <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between gap-3 text-xs font-mono">
+                  <Link
+                    to={`/blog/${post.slug}`}
+                    className="inline-flex items-center gap-1.5 text-white group-hover:text-[#C8EB5F] font-bold uppercase tracking-wider"
+                  >
+                    <span>Read Guide</span>
+                    <ArrowRight size={13} />
+                  </Link>
+                  <Link
+                    to={post.pillarPath}
+                    className="text-zinc-400 hover:text-white underline decoration-white/20"
+                  >
+                    {post.pillarLabel}
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <FAQSection />
 

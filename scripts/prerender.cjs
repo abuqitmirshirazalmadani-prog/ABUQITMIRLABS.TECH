@@ -98,6 +98,7 @@ const stripCanonicalTags = (htmlSource) => {
 let baseTemplate = distIndex;
 baseTemplate = replaceRootElement(baseTemplate, '', '');
 baseTemplate = stripCanonicalTags(baseTemplate);
+baseTemplate = baseTemplate.replace(/<link\b[^>]*rel=["']alternate["'][^>]*hreflang=["'][^"']+["'][^>]*\/?>/gis, '');
 baseTemplate = baseTemplate.replace(/<script\b[^>]*>[\s\S]*?dedupeHead[\s\S]*?<\/script>/gis, '');
 baseTemplate = baseTemplate.replace(/<title\b[^>]*>[^<]*<\/title>/gi, '');
 baseTemplate = baseTemplate.replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis, '');
@@ -143,7 +144,7 @@ try {
 }
 
 const TITLE_OVERRIDES = {
-  '/': 'Custom Software, AI & Growth Engineering | AbuQitmirLabs',
+  '/': 'Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs',
   '/blog/ai-integration-with-legacy-systems-the-complete-2026-guide':
     'AI in Enterprise Software: 2026 Guide | AbuQitmirLabs',
   '/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026':
@@ -175,7 +176,7 @@ function formatConciseTitle(rawTitle, pathname) {
     .replace(/&amp;/gi, '&')
     .replace(/\s+/g, ' ')
     .trim();
-  if (!cleaned) return 'Custom Software, AI & Growth Engineering | AbuQitmirLabs';
+  if (!cleaned) return 'Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs';
   if (cleaned.length <= 60) return cleaned;
 
   const core = cleaned
@@ -532,10 +533,10 @@ for (const routeUrl of allRoutes) {
       }
     }
 
-    const rawTitleToUse = (seo && seo.title) || 'Custom Software, AI & Growth Engineering | AbuQitmirLabs';
+    const rawTitleToUse = (seo && seo.title) || 'Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs';
     const titleToUse = formatConciseTitle(rawTitleToUse, routeUrl);
 
-    // Always enforce concise <= 60 char <title> tag
+    // Always enforce concise <title> tag
     const escapedTitle = titleToUse.replace(/&/g, '&amp;');
     if (!/<title\b/i.test(html)) {
       html = html.replace('</head>', `  <title>${escapedTitle}</title>\n</head>`);
@@ -559,6 +560,15 @@ for (const routeUrl of allRoutes) {
     if (!/<link\b[^>]*\brel=["']?canonical["']?/i.test(html)) {
       html = html.replace('</head>', `  <link rel="canonical" href="${canonicalUrl}" />\n</head>`);
     }
+
+    // Deduplicate any hreflang alternate links so each hreflang appears at most once
+    const seenHreflangs = new Set();
+    html = html.replace(/<link\b[^>]*rel=["']alternate["'][^>]*hreflang=["']([^"']+)["'][^>]*\/?>/gis, (tag, lang) => {
+      const lower = lang.toLowerCase();
+      if (seenHreflangs.has(lower)) return '';
+      seenHreflangs.add(lower);
+      return tag;
+    });
 
     // If OpenGraph tags were not already injected, inject them
     if (!/<meta\b[^>]*property=["']og:title["']/i.test(html)) {
@@ -595,17 +605,17 @@ for (const routeUrl of allRoutes) {
 
     const schemasToInject = [];
 
-    // A. Include schemaJsonLd from SEO_ROUTES_METADATA first if available (authoritative @graph)
-    if (seo && seo.schemaJsonLd) {
-      schemasToInject.push(`<script id="canonical-schema-graph" type="application/ld+json">\n${JSON.stringify(seo.schemaJsonLd, null, 2)}\n  </script>`);
-    }
-
-    // B. Include route/page-specific schemas extracted from React component SSR if not already covered by SEO_ROUTES_METADATA @graph
-    if (schemasToInject.length === 0 && Array.isArray(jsonLdScripts) && jsonLdScripts.length > 0) {
+    // A. Prefer React SSR jsonLdScripts when it has a comprehensive @graph (e.g. HomePage with FAQPage, Services, VideoObjects)
+    if (Array.isArray(jsonLdScripts) && jsonLdScripts.length > 0) {
       for (const scriptTag of jsonLdScripts) {
         const formattedTag = scriptTag.trim().replace(/\s+data-rh=["'][^"']*["']/gi, '');
         schemasToInject.push(formattedTag);
       }
+    }
+
+    // B. Fallback to schemaJsonLd from SEO_ROUTES_METADATA if SSR did not emit one
+    if (schemasToInject.length === 0 && seo && seo.schemaJsonLd) {
+      schemasToInject.push(`<script id="canonical-schema-graph" type="application/ld+json">\n${JSON.stringify(seo.schemaJsonLd, null, 2)}\n  </script>`);
     }
 
     // C. Include helmet.script if no schema was captured yet

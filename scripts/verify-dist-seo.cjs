@@ -32,7 +32,7 @@ function getAllHtmlFiles(dir, fileList = []) {
 }
 
 const TITLE_OVERRIDES = {
-  '/': 'Custom Software, AI & Growth Engineering | AbuQitmirLabs',
+  '/': 'Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs',
   '/blog/ai-integration-with-legacy-systems-the-complete-2026-guide':
     'AI in Enterprise Software: 2026 Guide | AbuQitmirLabs',
   '/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026':
@@ -64,7 +64,7 @@ function formatConciseTitle(rawTitle, pathname) {
     .replace(/&amp;/gi, '&')
     .replace(/\s+/g, ' ')
     .trim();
-  if (!cleaned) return 'Custom Software, AI & Growth Engineering | AbuQitmirLabs';
+  if (!cleaned) return 'Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs';
   if (cleaned.length <= 60) return cleaned;
 
   const core = cleaned

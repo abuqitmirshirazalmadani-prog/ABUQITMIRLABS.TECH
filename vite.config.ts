@@ -104,7 +104,7 @@ export default defineConfig(({ mode }) => {
           ]);
           const hostname = 'https://www.abuqitmirlabs.tech';
           const baseRoutes = [
-            { url: '/', changefreq: 'weekly', priority: 1.0, title: 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs', description: 'Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.' },
+            { url: '/', changefreq: 'weekly', priority: 1.0, title: 'Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs', description: 'Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Free technical audit.' },
             { url: '/growth-engineering', changefreq: 'monthly', priority: 0.9, lastmod: '2026-10-29', title: 'Growth Engineering Firm | Software + AI + Marketing | AbuQitmirLabs', description: 'AbuQitmirLabs engineers revenue systems for B2B companies — combining custom software, AI automation, and performance marketing under one roof.' },
             { url: '/about', changefreq: 'monthly', priority: 0.8, title: 'We Were Engineers First. Now We Engineer Growth | About Us | AbuQitmirLabs', description: 'We were engineers first. Now we engineer growth. Discover AbuQitmirLabs, our origin story in Karachi, and The Revenue Velocity Engine for B2B.' },
             { url: '/about/our-company', changefreq: 'monthly', priority: 0.8, title: 'About Our Company | Global Software Studio | AbuQitmirLabs', description: 'Karachi-based growth engineering studio with 410+ custom projects for 350+ global clients. 100% in-house talent, full IP ownership & zero lock-in.' },

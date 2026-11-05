@@ -7,42 +7,46 @@ import { AnimatedShinyText } from './ui/animated-shiny-text';
 import { MagicText } from './ui/magic-text';
 import { AnimatedBreathingText } from './ui/animated-breathing-text';
 
-const faqItems = [
+export const faqItems = [
     {
-        question: "What industries does AbuQitmirLabs specialize in?",
-        answer: "We specialize in Fintech, E-commerce, Healthcare, logistics, and SaaS platforms. Our engineering team provides high-performance, secure, and scalable digital solutions tailor-made for these high-stakes industries where data integrity and user trust are paramount."
-    },
-    {
-        question: "How much time does it take to build a scalable MVP for a startup?",
-        answer: "A standard MVP (Minimum Viable Product) usually takes 8-12 weeks to design and deploy. Larger, complex enterprise solutions can take 4-6 months depending on the depth of integrations and specific business logic required. We use Agile methodology to deliver usable features rapidly, ensuring you can start testing your market fit as early as possible."
-    },
-    {
-        question: "Why should my business upgrade to Jamstack and Headless CMS?",
-        answer: "Traditional, monolithic websites are often slow, hard to scale, and vulnerable to security breaches. By leveraging Jamstack web development and headless CMS integration services, we decouple your frontend from your backend database. The result? Lightning-fast, sub-second load times that easily pass Google’s Core Web Vitals. This speed drastically reduces bounce rates and provides a frictionless journey that converts casual visitors into buyers."
-    },
-    {
-        question: "What is the exact difference between a standard chatbot and a Custom LLM AI Agent?",
-        answer: "A standard chatbot follows rigid, rule-based scripts and often frustrates users when questions go off-script. In contrast, our custom LLM agents for workflow automation are fully autonomous. Powered by large language models, they understand deep context, learn directly from your proprietary data, and can independently execute complex tasks—from handling 24/7 intelligent customer support to deep data analysis—without requiring human intervention."
-    },
-    {
-        question: "How does Semantic Entity SEO differ from traditional keyword SEO?",
-        answer: "Traditional SEO relies heavily on stuffing exact-match keywords into text. Semantic Entity SEO optimization is about building a recognizable, trusted digital identity that Google's AI understands conceptually. Instead of just ranking for words, we build your topical authority. Combined with our Google Business Profile authority building, this hyper-local strategy ensures you dominate map results and capture high-intent, ready-to-buy customers in your vicinity."
-    },
-    {
-        question: "Does a conversion-focused brand identity actually improve ROI?",
-        answer: "Absolutely. Beautiful design is meaningless if it doesn't drive action. Our conversion-focused brand identity design goes beyond aesthetics. By applying accessible design principles and intuitive UI/UX layouts, we remove friction from the user journey. Every memorable logo, color palette, and social media creative we craft is strategically formulated to build instant trust and subtly guide the user toward making a purchase."
-    },
-    {
-        question: "What is E-E-A-T compliant content, and why do I need it to rank?",
-        answer: "E-E-A-T stands for Experience, Expertise, Authoritativeness, and Trustworthiness. In an internet flooded with generic, AI-generated text, search engines now penalize low-quality content and reward verifiable human expertise. We use detailed semantic content briefs to write E-E-A-T focused technical content. From high-converting landing pages to thought-leadership blog posts, we craft copy that satisfies complex search algorithms while building genuine trust with human readers."
+        question: "What is AbuQitmirLabs and what do they do?",
+        answer: "AbuQitmirLabs is a Karachi-based growth engineering firm and custom software development studio founded in 2021 by Abu Qitmir Mohammad Shiraz Al-Madani. We engineer connected B2B revenue systems by combining bespoke web and mobile software, autonomous RAG AI agents, and semantic technical SEO under one roof with 100% client IP ownership."
     },
     {
         question: "How much does custom software development cost in Pakistan?",
-        answer: "Custom software development in Pakistan typically ranges between $5,000 and $25,000 for production-ready platforms, delivering 60% to 75% cost savings compared to US ($50,000–$150,000+) and UK agency equivalents. At AbuQitmirLabs, we uphold international engineering standards, zero-debt architecture, and strict code review protocols. For a granular breakdown tailored to your scope, explore our interactive Project Cost Estimator tool to calculate instant estimates."
+        answer: "Custom software development in Pakistan typically ranges between $5,000 and $25,000 for production-ready platforms, delivering 60% to 75% cost savings compared to US ($50,000–$150,000+) and UK agency equivalents. At AbuQitmirLabs, we uphold international engineering standards, zero-debt architecture, strict code reviews, and full source code transfer."
     },
     {
-        question: "Do you work with clients in the US and UK remotely?",
-        answer: "Yes. Over 80% of our clients operate across the United States, United Kingdom, Canada, and Australia. We operate with dedicated timezone overlap (4–6 hours daily with EST/PST and full afternoon overlap with GMT/BST). Our distributed delivery workflow leverages Slack, GitHub, Jira, Loom asynchronous video walkthroughs, and weekly video strategy calls to maintain 100% transparency, rapid iteration sprints, and seamless communication across borders."
+        question: "How long does it take to build a custom MVP?",
+        answer: "A standard production-ready MVP (Minimum Viable Product) typically takes 4 to 8 weeks to architect, build, and deploy using agile sprint delivery, while complex enterprise platforms take 3 to 5 months. Focused AI platforms like TajweedPage.com were engineered and launched globally in just 10 days."
+    },
+    {
+        question: "Do you work with international clients remotely?",
+        answer: "Yes, over 80% of our clients operate across the United States, United Kingdom, Saudi Arabia, UAE, Canada, and Australia. Our Karachi engineering squads work with dedicated timezone overlap (4–6 hours daily with US EST/PST and full overlap with UK GMT and GCC AST) via Slack, GitHub, Jira, and weekly video demos."
+    },
+    {
+        question: "What industries does AbuQitmirLabs specialize in?",
+        answer: "AbuQitmirLabs specializes in Fintech, Healthcare, E-commerce, EdTech, Logistics, and B2B SaaS platforms. Our senior engineering team architects high-performance, compliance-ready digital systems aligned with HIPAA, SOC 2, GDPR, PCI-DSS, and Saudi PDPL standards where data integrity, low latency, and security are paramount."
+    },
+    {
+        question: "Why should my business upgrade to Jamstack and Headless CMS?",
+        answer: "Upgrading to Jamstack and headless CMS architecture decouples your frontend user experience from your backend database, eliminating slow monolithic bottlenecks and plugin vulnerabilities. This delivers sub-second page loads that pass Google Core Web Vitals, lowers bounce rates, and converts high-intent B2B visitors into qualified pipeline."
+    },
+    {
+        question: "What is the exact difference between a standard chatbot and a Custom LLM AI Agent?",
+        answer: "A standard chatbot follows rigid, rule-based decision trees and fails when users ask complex questions. A Custom LLM AI Agent uses Retrieval-Augmented Generation (RAG) and secure API tool-calling to reason over your proprietary databases, resolve 24/7 customer support, qualify CRM leads, and automate multi-step enterprise workflows autonomously."
+    },
+    {
+        question: "How does Semantic Entity SEO differ from traditional keyword SEO?",
+        answer: "Traditional SEO focuses on repeating exact-match keywords on isolated pages. Semantic Entity SEO structures your entire domain around verified Schema.org JSON-LD entity graphs, topical authority clusters, and Google Business Profile signals so Google Search, AI Overviews, ChatGPT, and Perplexity cite your brand as a trusted authority."
+    },
+    {
+        question: "Does a conversion-focused brand identity actually improve ROI?",
+        answer: "Yes, a conversion-focused brand identity directly improves B2B ROI by aligning visual hierarchy, accessible UI/UX systems, and technical copywriting around buyer trust. By removing friction across your landing pages, pitch decks, and product interfaces, a cohesive brand system increases qualified demo requests and lowers customer acquisition costs."
+    },
+    {
+        question: "What is E-E-A-T compliant content, and why do I need it to rank?",
+        answer: "E-E-A-T stands for Experience, Expertise, Authoritativeness, and Trustworthiness—the core quality framework Google and AI answer engines use to evaluate content. We engineer E-E-A-T compliant technical articles, case studies, and service pages backed by real architectural benchmarks and senior engineer attribution so your site ranks durably."
     }
 ];
 
@@ -74,9 +78,9 @@ const FAQItem = ({
                 aria-controls={`faq-content-${id}`}
                 className="w-full text-left px-6 sm:px-8 py-5 sm:py-6 flex items-start justify-between gap-6 transition-colors"
             >
-                <span className={`text-lg sm:text-xl font-bold tracking-tight ${isOpen ? 'text-white' : 'text-neutral-300'}`}>
+                <h3 className={`text-lg sm:text-xl font-bold tracking-tight m-0 ${isOpen ? 'text-white' : 'text-neutral-300'}`}>
                     <AnimatedBreathingText text={question} className={isOpen ? 'text-white' : 'text-neutral-300'} />
-                </span>
+                </h3>
                 <span className="inline-flex items-center justify-center rounded-full bg-white/10 ring-1 ring-white/10 text-white h-8 w-8 shrink-0 relative">
                     <motion.div
                         initial={false}

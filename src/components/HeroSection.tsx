@@ -145,11 +145,11 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
           {/* Left Title & Buttons */}
           <div className="lg:col-span-8 space-y-6 animate-enter-delay-1">
             <span className="text-[#C8EB5F] text-[11px] sm:text-xs font-mono font-bold tracking-[0.3em] uppercase block">
-              AbuQitmirLabs &bull; Build Software &bull; Automate with AI &bull; Grow Demand
+              AbuQitmirLabs &bull; Karachi HQ &bull; Build Software &bull; Automate with AI &bull; Grow Demand
             </span>
 
             <h1 className="font-serif text-white font-light text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
-              Custom Software, AI Automation &amp; Growth Engineering
+              Growth Engineering Firm: Custom Software, AI &amp; Technical SEO
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-[#C8EB5F] font-mono tracking-wide font-medium">
@@ -158,58 +158,24 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
 
             <div className="text-neutral-300 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-light space-y-4 animate-enter-delay-2">
               <p>
-                Growth engineering firm for B2B companies. Custom software, AI automation &amp; performance marketing engineered as one revenue system — uniting bespoke product architecture, autonomous AI agents, and search authority under one roof.
+                Karachi-based growth engineering firm and custom software development studio for US, UK, GCC, and global B2B companies. We unite <Link to="/custom-software" className="text-[#C8EB5F] underline hover:text-white">custom software development</Link>, <Link to="/ai-agent-development" className="text-[#C8EB5F] underline hover:text-white">autonomous AI agents</Link>, and <Link to="/seo-mastery" className="text-[#C8EB5F] underline hover:text-white">technical SEO</Link> as one connected revenue system.
               </p>
               <p>
-                Serving founders and engineering leaders across the US, UK, Canada, Australia, Poland, Saudi Arabia, UAE, Qatar, and Kuwait with 100% IP ownership and direct senior architect access.
+                Serving founders and engineering leaders across the <Link to="/us-market" className="text-white/90 underline hover:text-[#C8EB5F]">US</Link>, <Link to="/uk-market" className="text-white/90 underline hover:text-[#C8EB5F]">UK</Link>, <Link to="/canada-market" className="text-white/90 underline hover:text-[#C8EB5F]">Canada</Link>, <Link to="/australia-market" className="text-white/90 underline hover:text-[#C8EB5F]">Australia</Link>, <Link to="/saudi-arabia-market" className="text-white/90 underline hover:text-[#C8EB5F]">Saudi Arabia</Link>, <Link to="/uae-market" className="text-white/90 underline hover:text-[#C8EB5F]">UAE</Link>, and <Link to="/pakistan-market" className="text-white/90 underline hover:text-[#C8EB5F]">Pakistan</Link> with 100% IP ownership and direct senior architect access.
               </p>
               <p>
-                Delivered a 2,500+ organic community for GhastlyPages in 90 days and built the AI-assisted Quran education platform for <Link to="/case-studies/tajweedpage" className="text-[#C8EB5F] underline hover:text-white">TajweedPage.com</Link>.
+                Delivered a 2,500+ organic community for GhastlyPages in 90 days and built the AI-assisted Quran education platform for <Link to="/case-studies/tajweedpage" className="text-[#C8EB5F] underline hover:text-white">TajweedPage.com</Link> (ranking across 20+ countries in 10 days).
               </p>
             </div>
 
-            {/* Quick Email / Project Input Form */}
-            <form onSubmit={handleConsultationSubmit} className="max-w-md pt-2">
-              <div className="bg-zinc-950/90 has-[input:focus]:ring-[#C8EB5F]/50 relative grid grid-cols-[1fr_auto] items-center rounded-none border border-white/15 pr-1.5 shadow-2xl has-[input:focus]:ring-2 transition-all">
-                <div className="relative flex items-center">
-                  <label htmlFor="hero-email-input" className="sr-only">
-                    Enter work email for a technical discovery call
-                  </label>
-                  <Mail className="text-gray-400 pointer-events-none absolute left-4 size-5" />
-                  <input
-                    id="hero-email-input"
-                    name="email"
-                    autoComplete="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter work email for discovery call..."
-                    className="h-12 w-full bg-transparent pl-12 pr-3 text-xs sm:text-sm text-white placeholder:text-gray-500 focus:outline-none font-mono"
-                    type="email"
-                    required
-                    aria-label="Enter work email for a technical discovery call"
-                  />
-                </div>
-                <div>
-                  <button
-                    type="submit"
-                    aria-label="Submit email for technical consultation"
-                    className="bg-[#C8EB5F] hover:bg-white text-black font-bold h-9 px-4 rounded-none transition-all cursor-pointer flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider"
-                  >
-                    <span>{submitted ? "Sending..." : "Start"}</span>
-                    <SendHorizonal className="size-3.5 text-black" />
-                  </button>
-                </div>
-              </div>
-            </form>
-
-            {/* Clear Primary & Secondary Action Buttons */}
+            {/* Clear Primary & Secondary Action Buttons (Immediate Primary Position) */}
             <div className="flex flex-wrap gap-4 pt-2">
               {onTrialClick ? (
                 <button
                   onClick={onTrialClick}
                   className="bg-[#C8EB5F] text-black hover:bg-white text-xs sm:text-sm font-bold tracking-wider px-8 py-4 font-mono uppercase rounded-none transition-all duration-300 shadow-[0_0_30px_rgba(200,235,95,0.2)] flex items-center gap-3 group cursor-pointer"
                 >
-                  Book a Technical Discovery Call
+                  Book Free Technical Audit
                   <ArrowRight
                     size={16}
                     className="group-hover:translate-x-1.5 transition-transform"
@@ -220,7 +186,7 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
                   to="/contact"
                   className="bg-[#C8EB5F] text-black hover:bg-white text-xs sm:text-sm font-bold tracking-wider px-8 py-4 font-mono uppercase rounded-none transition-all duration-300 shadow-[0_0_30px_rgba(200,235,95,0.2)] flex items-center gap-3 group"
                 >
-                  Book a Technical Discovery Call
+                  Book Free Technical Audit
                   <ArrowRight
                     size={16}
                     className="group-hover:translate-x-1.5 transition-transform"
@@ -234,6 +200,7 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
                   className="border border-white/20 hover:border-[#C8EB5F] text-white hover:text-[#C8EB5F] text-xs sm:text-sm font-bold tracking-wider px-6 py-4 font-mono uppercase rounded-none transition-colors duration-300 flex items-center gap-2 cursor-pointer"
                 >
                   View Case Studies
+                  <ArrowRight size={14} />
                 </button>
               ) : (
                 <Link
@@ -241,6 +208,7 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
                   className="border border-white/20 hover:border-[#C8EB5F] text-white hover:text-[#C8EB5F] text-xs sm:text-sm font-bold tracking-wider px-6 py-4 font-mono uppercase rounded-none transition-colors duration-300 flex items-center gap-2"
                 >
                   View Case Studies
+                  <ArrowRight size={14} />
                 </Link>
               )}
 
@@ -251,13 +219,47 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
                 Estimate Project Cost
               </Link>
             </div>
+
+            {/* Secondary Quick Email Callback Capture */}
+            <form onSubmit={handleConsultationSubmit} className="max-w-md pt-1">
+              <div className="bg-zinc-950/90 has-[input:focus]:ring-[#C8EB5F]/50 relative grid grid-cols-[1fr_auto] items-center rounded-none border border-white/15 pr-1.5 shadow-2xl has-[input:focus]:ring-2 transition-all">
+                <div className="relative flex items-center">
+                  <label htmlFor="hero-email-input" className="sr-only">
+                    Or enter work email for a 24-hour senior architect callback
+                  </label>
+                  <Mail className="text-gray-400 pointer-events-none absolute left-4 size-5" />
+                  <input
+                    id="hero-email-input"
+                    name="email"
+                    autoComplete="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Or enter work email for 24h callback..."
+                    className="h-11 w-full bg-transparent pl-12 pr-3 text-xs sm:text-sm text-white placeholder:text-gray-500 focus:outline-none font-mono"
+                    type="email"
+                    required
+                    aria-label="Enter work email for a technical discovery call"
+                  />
+                </div>
+                <div>
+                  <button
+                    type="submit"
+                    aria-label="Submit email for technical consultation"
+                    className="bg-white/10 hover:bg-[#C8EB5F] text-white hover:text-black font-bold h-8 px-3.5 rounded-none transition-all cursor-pointer flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-wider"
+                  >
+                    <span>{submitted ? "Sending..." : "Callback"}</span>
+                    <SendHorizonal className="size-3.5" />
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
 
           {/* Right Subtitle & Description */}
           <div className="lg:col-span-4 lg:pl-6 pt-4 lg:pt-0">
             <div className="p-4 sm:p-5 rounded-none border-l-2 border-[#C8EB5F]/40 bg-zinc-950/40 backdrop-blur-sm">
               <p className="text-xs sm:text-sm md:text-base text-neutral-300 italic font-serif leading-relaxed font-light">
-                &ldquo;AbuQitmirLabs is a premier custom software development company delivering AI app development services, custom website development services and enterprise software solutions to clients across the United States, United Kingdom, and Europe.&rdquo;
+                &ldquo;AbuQitmirLabs is a Karachi-based growth engineering firm uniting bespoke software architecture, autonomous AI workflows, and semantic search engineering into one measurable B2B revenue system.&rdquo;
               </p>
             </div>
           </div>

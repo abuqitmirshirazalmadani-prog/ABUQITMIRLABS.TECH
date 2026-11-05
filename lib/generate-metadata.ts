@@ -90,15 +90,44 @@ export interface NextStyleMetadata {
 
 const SITE_URL = 'https://www.abuqitmirlabs.tech';
 const SITE_NAME = 'AbuQitmirLabs';
-const DEFAULT_TITLE = 'Custom Software, AI & Growth Engineering | AbuQitmirLabs';
+const DEFAULT_TITLE = 'Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs';
 const DEFAULT_DESCRIPTION =
-  'Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.';
+  'Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Free technical audit.';
 const DEFAULT_IMAGE = 'https://www.abuqitmirlabs.tech/logo.png';
 const DEFAULT_IMAGE_ALT = 'AbuQitmirLabs Growth Engineering Firm';
 const DEFAULT_AUTHOR = 'Abu Qitmir Mohammad Shiraz Al-Madani';
 
+export const HREFLANG_MARKET_ALTERNATES: Array<{ hreflang: string; href: string }> = [
+  { hreflang: 'x-default', href: 'https://www.abuqitmirlabs.tech/' },
+  { hreflang: 'en', href: 'https://www.abuqitmirlabs.tech/' },
+  { hreflang: 'en-US', href: 'https://www.abuqitmirlabs.tech/us-market' },
+  { hreflang: 'en-GB', href: 'https://www.abuqitmirlabs.tech/uk-market' },
+  { hreflang: 'en-CA', href: 'https://www.abuqitmirlabs.tech/canada-market' },
+  { hreflang: 'en-AU', href: 'https://www.abuqitmirlabs.tech/australia-market' },
+  { hreflang: 'en-PK', href: 'https://www.abuqitmirlabs.tech/pakistan-market' },
+  { hreflang: 'en-SA', href: 'https://www.abuqitmirlabs.tech/saudi-arabia-market' },
+  { hreflang: 'en-AE', href: 'https://www.abuqitmirlabs.tech/uae-market' },
+  { hreflang: 'en-QA', href: 'https://www.abuqitmirlabs.tech/qatar-market' },
+  { hreflang: 'en-KW', href: 'https://www.abuqitmirlabs.tech/kuwait-market' },
+  { hreflang: 'en-PL', href: 'https://www.abuqitmirlabs.tech/poland-market' },
+];
+
+const HREFLANG_ELIGIBLE_PATHS = new Set([
+  '/',
+  '/us-market',
+  '/uk-market',
+  '/canada-market',
+  '/australia-market',
+  '/pakistan-market',
+  '/saudi-arabia-market',
+  '/uae-market',
+  '/qatar-market',
+  '/kuwait-market',
+  '/poland-market',
+]);
+
 const TITLE_OVERRIDES: Record<string, string> = {
-  '/': 'Custom Software, AI & Growth Engineering | AbuQitmirLabs',
+  '/': 'Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs',
   '/blog/ai-integration-with-legacy-systems-the-complete-2026-guide':
     'AI in Enterprise Software: 2026 Guide | AbuQitmirLabs',
   '/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026':
@@ -360,19 +389,26 @@ export function buildConsolidatedSchemaGraph(
   const seenKeys = new Set<string>();
 
   for (const node of [...customNodes, ...baseNodes]) {
-    const nodeType = String(node['@type'] || '');
+    const rawType = node['@type'];
+    const nodeType = Array.isArray(rawType) ? rawType.join(',') : String(rawType || '');
     const nodeId = String(node['@id'] || '');
     const dedupeKey =
       nodeType === 'FAQPage'
         ? 'type:FAQPage'
-        : nodeType === 'Organization'
+        : nodeType.includes('Organization')
         ? 'type:Organization'
         : nodeType === 'WebSite'
         ? 'type:WebSite'
         : nodeType === 'BreadcrumbList'
         ? 'type:BreadcrumbList'
         : nodeType === 'Service'
-        ? 'type:Service'
+        ? nodeId
+          ? `id:${nodeId}`
+          : `service:${String(node.name || '')}`
+        : nodeType === 'VideoObject'
+        ? nodeId
+          ? `id:${nodeId}`
+          : `video:${String(node.name || node.embedUrl || '')}`
         : nodeId
         ? `id:${nodeId}`
         : `json:${JSON.stringify(node).slice(0, 120)}`;
@@ -656,6 +692,20 @@ export function applyMetadataToDocumentHead(metadata: NextStyleMetadata): void {
   canonicalEl.setAttribute('href', metadata.alternates.canonical);
   canonicalEl.removeAttribute('data-rh');
 
+  // Hreflang alternate links for homepage and market pages
+  const canonPath = metadata.alternates.canonical.replace(/^https?:\/\/[^/]+/i, '') || '/';
+  const cleanCanonPath = canonPath.endsWith('/') && canonPath !== '/' ? canonPath.slice(0, -1) : canonPath;
+  document.head.querySelectorAll('link[rel="alternate"][hreflang]').forEach((node) => node.remove());
+  if (HREFLANG_ELIGIBLE_PATHS.has(cleanCanonPath)) {
+    for (const alt of HREFLANG_MARKET_ALTERNATES) {
+      const linkEl = document.createElement('link');
+      linkEl.setAttribute('rel', 'alternate');
+      linkEl.setAttribute('hreflang', alt.hreflang);
+      linkEl.setAttribute('href', alt.href);
+      document.head.appendChild(linkEl);
+    }
+  }
+
   // Strip any leftover data-rh attributes in document.head
   document.head.querySelectorAll('[data-rh]').forEach((node) => {
     node.removeAttribute('data-rh');
@@ -688,6 +738,14 @@ export function renderMetadataToHeadHtml(metadata: NextStyleMetadata): string {
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;');
 
+  const canonPath = metadata.alternates.canonical.replace(/^https?:\/\/[^/]+/i, '') || '/';
+  const cleanCanonPath = canonPath.endsWith('/') && canonPath !== '/' ? canonPath.slice(0, -1) : canonPath;
+  const hreflangLines = HREFLANG_ELIGIBLE_PATHS.has(cleanCanonPath)
+    ? HREFLANG_MARKET_ALTERNATES.map(
+        (alt) => `<link rel="alternate" hreflang="${esc(alt.hreflang)}" href="${esc(alt.href)}" />`
+      )
+    : [];
+
   const img = metadata.openGraph.images[0];
   const lines = [
     `<title>${esc(metadata.title)}</title>`,
@@ -697,6 +755,7 @@ export function renderMetadataToHeadHtml(metadata: NextStyleMetadata): string {
       : '',
     `<meta name="robots" content="${esc(metadata.robots)}" />`,
     `<link rel="canonical" href="${esc(metadata.alternates.canonical)}" />`,
+    ...hreflangLines,
     `<meta property="og:type" content="${esc(metadata.openGraph.type)}" />`,
     `<meta property="og:site_name" content="${esc(metadata.openGraph.siteName)}" />`,
     `<meta property="og:title" content="${esc(metadata.openGraph.title)}" />`,

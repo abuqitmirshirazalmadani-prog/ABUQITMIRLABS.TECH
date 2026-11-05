@@ -11,7 +11,6 @@ export const homeSchema = {
       "@type": ["LocalBusiness", "ProfessionalService", "Organization"],
       "@id": "https://www.abuqitmirlabs.tech/#organization",
       "name": "AbuQitmirLabs",
-      "alternateName": "AbuQitmirLabs .TECH",
       "url": "https://www.abuqitmirlabs.tech/",
       "logo": {
         "@type": "ImageObject",
@@ -23,125 +22,81 @@ export const homeSchema = {
         "height": "512"
       },
       "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
-      "description": "Growth engineering firm combining custom software, AI automation, and performance marketing for B2B companies.",
+      "description": "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system.",
       "foundingDate": "2021",
       "founder": {
         "@type": "Person",
-        "name": "Syed Shiraz"
+        "name": "Abu Qitmir Mohammad Shiraz Al-Madani",
+        "url": "https://www.linkedin.com/in/abu-qitmir-697423390/"
       },
       "email": "hello@abuqitmirlabs.tech",
       "telephone": "+923233260859",
       "priceRange": "$$",
       "openingHours": "Mo-Fr 09:00-18:00",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
+        "streetAddress": "Shahrah-e-Faisal, PECHS",
         "addressLocality": "Karachi",
         "addressRegion": "Sindh",
-        "postalCode": "75160",
+        "postalCode": "75400",
         "addressCountry": "PK"
       },
       "areaServed": ["PK", "US", "GB", "AE", "SA", "QA", "KW", "CA", "AU", "PL"],
       "knowsAbout": [
         "Growth Engineering",
         "Custom Software Development",
+        "Web Application Development",
         "AI Agent Development",
-        "Performance Marketing",
-        "SEO",
-        "Brand Building"
+        "Mobile App Development",
+        "Technical SEO & GEO",
+        "Brand Identity Design",
+        "E-E-A-T Content Engineering"
       ],
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "24.8934",
-        "longitude": "67.1554"
+        "latitude": 24.8607,
+        "longitude": 67.0011
       },
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+923233260859",
-        "contactType": "customer service",
+        "contactType": "sales and technical support",
         "email": "hello@abuqitmirlabs.tech",
         "areaServed": ["PK", "US", "GB", "AE", "SA", "QA", "KW", "CA", "AU", "PL"],
-        "availableLanguage": ["English", "Urdu"]
+        "availableLanguage": ["English", "Urdu", "Arabic"]
       },
       "sameAs": [
         "https://www.linkedin.com/company/abuqitmirlabs",
-        "https://twitter.com/abuqitmirlabs",
-        "https://www.facebook.com/abuqitmirlabs"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "AbuQitmirLabs Core Engineering Services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Custom Software Development",
-              "url": "https://www.abuqitmirlabs.tech/custom-software",
-              "description": "Bespoke enterprise software engineering, scalable cloud systems, and architectural solutions."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Mobile App Development",
-              "url": "https://www.abuqitmirlabs.tech/mobile-app-development",
-              "description": "Cross-platform iOS and Android mobile app development using Flutter and React Native."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Web Development",
-              "url": "https://www.abuqitmirlabs.tech/web-development",
-              "description": "High-performance full-stack web development with Next.js, React, Node.js, and headless CMS."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "AI Agent & Automation Systems",
-              "url": "https://www.abuqitmirlabs.tech/ai-agent-development",
-              "description": "Autonomous AI agent architecture, LLM fine-tuning, RAG pipelines, and enterprise automation."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Technical SEO & Organic Growth",
-              "url": "https://www.abuqitmirlabs.tech/seo-mastery",
-              "description": "Enterprise technical SEO, semantic SEO, AEO optimization, and Core Web Vitals optimization."
-            }
-          }
-        ]
-      }
+        "https://x.com/AbuQitmir",
+        "https://www.facebook.com/abuqitmirlabs",
+        "https://www.linkedin.com/in/abu-qitmir-697423390/"
+      ]
     },
     {
       "@type": "WebSite",
       "@id": "https://www.abuqitmirlabs.tech/#website",
       "url": "https://www.abuqitmirlabs.tech/",
       "name": "AbuQitmirLabs",
-      "description": "Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.",
+      "description": "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Free technical audit.",
       "publisher": {
         "@type": "Organization",
         "@id": "https://www.abuqitmirlabs.tech/#organization"
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://www.abuqitmirlabs.tech/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
       }
     },
     {
       "@type": "WebPage",
       "@id": "https://www.abuqitmirlabs.tech/#webpage",
       "url": "https://www.abuqitmirlabs.tech/",
-      "name": "Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs",
-      "description": "Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.",
+      "name": "Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs",
+      "description": "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Free technical audit.",
       "inLanguage": "en-US",
       "isPartOf": {
         "@type": "WebSite",
@@ -150,124 +105,7 @@ export const homeSchema = {
       "about": {
         "@type": "Organization",
         "@id": "https://www.abuqitmirlabs.tech/#organization"
-      },
-      "primaryImageOfPage": {
-        "@type": "ImageObject",
-        "@id": "https://www.abuqitmirlabs.tech/#hero-bg-image"
-      },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "@id": "https://www.abuqitmirlabs.tech/#breadcrumb"
       }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://www.abuqitmirlabs.tech/#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.abuqitmirlabs.tech/"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.abuqitmirlabs.tech/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What industries does AbuQitmirLabs specialize in?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "AbuQitmirLabs specializes in Fintech, E-commerce, Healthcare platforms, EdTech solutions, and SaaS applications. We design secure, scalable digital architectures engineered for high-transaction workloads and regulatory compliance."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How long does it take to develop a custom Minimum Viable Product (MVP)?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A standard startup MVP typically takes 8 to 12 weeks from scoping to production launch. Larger enterprise platforms with complex third-party integrations and compliance requirements generally span 3 to 6 months using iterative Agile sprints."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Why should businesses choose Jamstack and headless architectures over monolithic systems?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Decoupling the frontend presentation layer from the backend database provides sub-second load times, superior Core Web Vitals, enterprise-grade security against common attack vectors, and effortless traffic scaling without infrastructure bloat."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What makes autonomous AI agents different from traditional chatbots?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Traditional chatbots rely on static decision trees and pre-scripted answers. Autonomous AI agents utilize Large Language Models, Retrieval-Augmented Generation (RAG), and multi-tool execution pipelines to understand context, reason over private data, and execute complex multi-step workflows autonomously."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How does semantic entity SEO differ from standard keyword stuffing?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Semantic SEO focuses on entity relationships, schema graphs, topical authority, and search intent rather than repetitive keyword density. This ensures content ranks sustainably across Google AI Overviews, generative search engines, and traditional SERPs."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does AbuQitmirLabs provide full IP ownership and source code handover?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Every client retains 100% intellectual property ownership, complete source code repositories, architectural blueprints, and deployment credentials upon milestone completion with zero vendor lock-in."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How much does custom software development cost in Pakistan?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Custom software development in Pakistan typically ranges between $5,000 and $25,000 for production-ready platforms, delivering 60% to 75% cost savings compared to US ($50,000–$150,000+) and UK agency equivalents. At AbuQitmirLabs, we uphold international engineering standards, zero-debt architecture, and strict code review protocols. For a granular breakdown tailored to your scope, explore our interactive Project Cost Estimator tool to calculate instant estimates."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you work with clients in the US and UK remotely?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Over 80% of our clients operate across the United States, United Kingdom, Canada, and Australia. We operate with dedicated timezone overlap (4–6 hours daily with EST/PST and full afternoon overlap with GMT/BST). Our distributed delivery workflow leverages Slack, GitHub, Jira, Loom asynchronous video walkthroughs, and weekly video strategy calls to maintain 100% transparency, rapid iteration sprints, and seamless communication across borders."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "Person",
-      "@id": "https://www.abuqitmirlabs.tech/#author",
-      "name": "Mohammad Shiraz Almadani",
-      "alternateName": "Abu Qitmir",
-      "url": "https://www.linkedin.com/in/abu-qitmir-697423390/",
-      "jobTitle": "CEO & Lead Technical Architect",
-      "worksFor": {
-        "@id": "https://www.abuqitmirlabs.tech/#organization"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/in/abu-qitmir-697423390/",
-        "https://x.com/AbuQitmir"
-      ]
-    },
-    {
-      "@type": "ImageObject",
-      "@id": "https://www.abuqitmirlabs.tech/#hero-bg-image",
-      "url": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
-      "contentUrl": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
-      "name": "AbuQitmirLabs Custom Software Development",
-      "description": "AbuQitmirLabs custom software studio delivering AI apps, enterprise web systems, and high-performance digital solutions across US, UK, and Europe.",
-      "caption": "AbuQitmirLabs custom software studio delivering AI apps, enterprise web systems, and high-performance digital solutions.",
-      "width": "1200",
-      "height": "630",
-      "representativeOfPage": true
     }
   ]
 };
@@ -284,7 +122,7 @@ export const homeInitialHtml = `
     <div class="absolute inset-0 z-0 opacity-40">
       <img 
         src="/images/hero-abuqitmirlabs.webp" 
-        alt="AbuQitmirLabs Custom Software Development" 
+        alt="AbuQitmirLabs Growth Engineering Firm — Custom Software, AI &amp; Technical SEO" 
         class="w-full h-full object-cover object-center filter contrast-125"
         width="1200" 
         height="630" 
@@ -297,20 +135,20 @@ export const homeInitialHtml = `
 
     <div class="relative z-10 max-w-7xl mx-auto w-full space-y-8 animate-enter">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 border border-[#ccff00]/30 bg-[#ccff00]/10 text-[#ccff00] font-mono text-xs font-semibold tracking-widest uppercase rounded-full">
-        <span>AbuQitmirLabs &bull; Build Software &bull; Automate with AI &bull; Grow Demand</span>
+        <span>AbuQitmirLabs &bull; Karachi HQ &bull; Build Software &bull; Automate with AI &bull; Grow Demand</span>
       </div>
 
       <h1 class="font-serif text-white font-light text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight animate-enter-delay-1">
-        Custom Software, AI Automation &amp; Growth Engineering
+        Growth Engineering Firm: Custom Software, AI &amp; Technical SEO
       </h1>
 
       <p class="text-neutral-300 text-lg md:text-xl max-w-3xl leading-relaxed font-light animate-enter-delay-2">
-        Growth engineering firm for B2B companies. Custom software, AI automation &amp; performance marketing engineered as one revenue system — uniting bespoke product architecture, autonomous AI agents, and search authority under one roof.
+        Karachi-based growth engineering firm and custom software development studio for US, UK, GCC, and global B2B companies. We unite custom software development, autonomous AI agents, and technical SEO as one connected revenue system.
       </p>
 
       <div class="flex flex-wrap gap-4 pt-4">
         <a href="/contact" class="bg-[#ccff00] text-black font-mono text-sm font-bold tracking-wider px-8 py-4 uppercase rounded-none hover:bg-white transition-all shadow-[0_0_30px_rgba(204,255,0,0.2)]">
-          Book a Technical Discovery Call
+          Book Free Technical Audit
         </a>
         <a href="/case-studies" class="border border-white/20 hover:border-[#ccff00] text-white hover:text-[#ccff00] font-mono text-sm font-bold tracking-wider px-8 py-4 uppercase rounded-none transition-colors">
           View Case Studies
