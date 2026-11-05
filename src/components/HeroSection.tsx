@@ -37,12 +37,12 @@ const teamAvatars = [
 ];
 
 const stats = [
-  { emoji: "⚡", label: "Full-Stack Web & Next.js", value: "High Performance" },
-  { emoji: "🤖", label: "Autonomous AI Agents & RAG", value: "Enterprise AI" },
-  { emoji: "🌍", label: "Clients Across US, UK & Europe", value: "Global Delivery" },
-  { emoji: "🛡️", label: "Zero-Trust Architecture", value: "99.9% Uptime" },
-  { emoji: "🚀", label: "Core Web Vitals Optimized", value: "<0.8s Load Times" },
-  { emoji: "⭐", label: "Clutch & GoodFirms", value: "Verified Profile" },
+  { label: "Full Repository & IP Transfer", value: "100% IP & Source Code Ownership" },
+  { label: "Scoping to Launch Governance", value: "Structured 5-Step Delivery Process" },
+  { label: "Direct Architect Collaboration", value: "Senior-Led Engineering" },
+  { label: "US, UK, Europe & GCC", value: "Global Remote Delivery" },
+  { label: "Encrypted Pipelines & RBAC", value: "Security-First Architecture" },
+  { label: "Founded in 2021", value: "5+ Years Engineering Experience" },
 ];
 
 export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
@@ -64,25 +64,6 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
     }
   };
 
-  const handleTrial = () => {
-    if (onTrialClick) {
-      onTrialClick();
-    } else {
-      window.open(
-        `https://wa.me/923233260859?text=${encodeURIComponent(
-          "Hello AbuQitmirLabs team, I would like to discuss building my custom software or AI project."
-        )}`,
-        "_blank"
-      );
-    }
-  };
-
-  const handleDemo = () => {
-    if (onDemoClick) {
-      onDemoClick();
-    }
-  };
-
   return (
     <section 
       id="hero-section" 
@@ -93,7 +74,7 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero-abuqitmirlabs.webp"
-          alt="AbuQitmirLabs Custom Software Development"
+          alt="AbuQitmirLabs custom software, AI automation, and growth engineering architecture"
           width={1200}
           height={630}
           priority
@@ -104,7 +85,7 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
 
       {/* Hero Content Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 space-y-12 animate-enter">
-        {/* Avatar stack + Ratings + Ticker stats */}
+        {/* Avatar stack + Directory Listing + Ticker stats */}
         <div className="space-y-4">
           <div className="flex -space-x-3 items-center">
             {teamAvatars.map((member, i) => (
@@ -123,13 +104,11 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
               </div>
             ))}
             <div className="pl-6 flex flex-col justify-center">
-              <div className="flex items-center gap-1.5 text-[#C8EB5F]">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={11} className="fill-current" />
-                ))}
-              </div>
+              <span className="text-xs font-mono font-bold text-[#C8EB5F] uppercase tracking-wider">
+                Founded in 2021 &bull; 5+ Years Engineering Experience
+              </span>
               <span className="text-[10px] tracking-wider text-neutral-400 font-mono uppercase block mt-0.5">
-                COMMITTED TO ENGINEERING EXCELLENCE &bull; TOP RATED
+                SENIOR-LED ENGINEERING &bull; LISTED ON CLUTCH &amp; GOODFIRMS
               </span>
             </div>
           </div>
@@ -145,10 +124,8 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
                   <span className="text-[10px] text-white/70 uppercase tracking-[0.15em] font-mono">
                     {stat.label}
                   </span>
-                  <span className="text-xs">{stat.emoji}</span>
                 </div>
               ))}
-              {/* Duplicate array for continuous infinite marquee loop */}
               {stats.map((stat, idx) => (
                 <div className="flex items-center gap-3 shrink-0" key={`dup-${idx}`}>
                   <span className="font-bold text-[#C8EB5F] text-sm tracking-wider font-mono">
@@ -157,7 +134,6 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
                   <span className="text-[10px] text-white/70 uppercase tracking-[0.15em] font-mono">
                     {stat.label}
                   </span>
-                  <span className="text-xs">{stat.emoji}</span>
                 </div>
               ))}
             </div>
@@ -169,11 +145,11 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
           {/* Left Title & Buttons */}
           <div className="lg:col-span-8 space-y-6 animate-enter-delay-1">
             <span className="text-[#C8EB5F] text-[11px] sm:text-xs font-mono font-bold tracking-[0.3em] uppercase block">
-              ✦ Growth Engineering Firm | Custom Software &amp; AI ✦
+              AbuQitmirLabs &bull; Build Software &bull; Automate with AI &bull; Grow Demand
             </span>
 
             <h1 className="font-serif text-white font-light text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
-              Growth Engineering Firm | Custom Software &amp; AI | AbuQitmirLabs
+              Custom Software, AI Automation &amp; Growth Engineering
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-[#C8EB5F] font-mono tracking-wide font-medium">
@@ -185,10 +161,10 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
                 Growth engineering firm for B2B companies. Custom software, AI automation &amp; performance marketing engineered as one revenue system — uniting bespoke product architecture, autonomous AI agents, and search authority under one roof.
               </p>
               <p>
-                Trusted by founders across US, UK, Canada, Australia, Poland, Saudi Arabia, UAE, Qatar, and Kuwait.
+                Serving founders and engineering leaders across the US, UK, Canada, Australia, Poland, Saudi Arabia, UAE, Qatar, and Kuwait with 100% IP ownership and direct senior architect access.
               </p>
               <p>
-                Built a 2,500+ community for GhastlyPages in 90 days. Built a RAG-based AI education platform for TajweedPage.com.
+                Delivered a 2,500+ organic community for GhastlyPages in 90 days and built the AI-assisted Quran education platform for <Link to="/case-studies/tajweedpage" className="text-[#C8EB5F] underline hover:text-white">TajweedPage.com</Link>.
               </p>
             </div>
 
@@ -197,7 +173,7 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
               <div className="bg-zinc-950/90 has-[input:focus]:ring-[#C8EB5F]/50 relative grid grid-cols-[1fr_auto] items-center rounded-none border border-white/15 pr-1.5 shadow-2xl has-[input:focus]:ring-2 transition-all">
                 <div className="relative flex items-center">
                   <label htmlFor="hero-email-input" className="sr-only">
-                    Enter email or project idea
+                    Enter work email for a technical discovery call
                   </label>
                   <Mail className="text-gray-400 pointer-events-none absolute left-4 size-5" />
                   <input
@@ -206,54 +182,74 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
                     autoComplete="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter email or project idea..."
+                    placeholder="Enter work email for discovery call..."
                     className="h-12 w-full bg-transparent pl-12 pr-3 text-xs sm:text-sm text-white placeholder:text-gray-500 focus:outline-none font-mono"
                     type="email"
                     required
-                    aria-label="Enter email or project idea"
+                    aria-label="Enter work email for a technical discovery call"
                   />
                 </div>
                 <div>
                   <button
                     type="submit"
-                    aria-label="Submit project idea"
+                    aria-label="Submit email for technical consultation"
                     className="bg-[#C8EB5F] hover:bg-white text-black font-bold h-9 px-4 rounded-none transition-all cursor-pointer flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider"
                   >
-                    <span>{submitted ? "Sending..." : "Submit"}</span>
+                    <span>{submitted ? "Sending..." : "Start"}</span>
                     <SendHorizonal className="size-3.5 text-black" />
                   </button>
                 </div>
               </div>
             </form>
 
-            {/* Action Buttons */}
+            {/* Clear Primary & Secondary Action Buttons */}
             <div className="flex flex-wrap gap-4 pt-2">
-              <button
-                onClick={handleTrial}
-                className="bg-[#C8EB5F] text-black hover:bg-white text-xs sm:text-sm font-bold tracking-wider px-8 py-4 font-mono uppercase rounded-none transition-all duration-300 shadow-[0_0_30px_rgba(200,235,95,0.2)] flex items-center gap-3 group cursor-pointer"
-              >
-                Build Your AI App
-                <ArrowRight
-                  size={16}
-                  className="group-hover:translate-x-1.5 transition-transform"
-                />
-              </button>
-
-              {onDemoClick ? (
+              {onTrialClick ? (
                 <button
-                  onClick={handleDemo}
-                  className="border border-white/20 hover:border-[#C8EB5F] text-white hover:text-[#C8EB5F] text-xs sm:text-sm font-bold tracking-wider px-8 py-4 font-mono uppercase rounded-none transition-colors duration-300 flex items-center gap-2 cursor-pointer"
+                  onClick={onTrialClick}
+                  className="bg-[#C8EB5F] text-black hover:bg-white text-xs sm:text-sm font-bold tracking-wider px-8 py-4 font-mono uppercase rounded-none transition-all duration-300 shadow-[0_0_30px_rgba(200,235,95,0.2)] flex items-center gap-3 group cursor-pointer"
                 >
-                  Request Your Free Growth Infrastructure Audit
+                  Book a Technical Discovery Call
+                  <ArrowRight
+                    size={16}
+                    className="group-hover:translate-x-1.5 transition-transform"
+                  />
                 </button>
               ) : (
                 <Link
-                  to="/growth-engineering"
-                  className="border border-white/20 hover:border-[#C8EB5F] text-white hover:text-[#C8EB5F] text-xs sm:text-sm font-bold tracking-wider px-8 py-4 font-mono uppercase rounded-none transition-colors duration-300 flex items-center gap-2"
+                  to="/contact"
+                  className="bg-[#C8EB5F] text-black hover:bg-white text-xs sm:text-sm font-bold tracking-wider px-8 py-4 font-mono uppercase rounded-none transition-all duration-300 shadow-[0_0_30px_rgba(200,235,95,0.2)] flex items-center gap-3 group"
                 >
-                  Explore Growth Engineering
+                  Book a Technical Discovery Call
+                  <ArrowRight
+                    size={16}
+                    className="group-hover:translate-x-1.5 transition-transform"
+                  />
                 </Link>
               )}
+
+              {onDemoClick ? (
+                <button
+                  onClick={onDemoClick}
+                  className="border border-white/20 hover:border-[#C8EB5F] text-white hover:text-[#C8EB5F] text-xs sm:text-sm font-bold tracking-wider px-6 py-4 font-mono uppercase rounded-none transition-colors duration-300 flex items-center gap-2 cursor-pointer"
+                >
+                  View Case Studies
+                </button>
+              ) : (
+                <Link
+                  to="/case-studies"
+                  className="border border-white/20 hover:border-[#C8EB5F] text-white hover:text-[#C8EB5F] text-xs sm:text-sm font-bold tracking-wider px-6 py-4 font-mono uppercase rounded-none transition-colors duration-300 flex items-center gap-2"
+                >
+                  View Case Studies
+                </Link>
+              )}
+
+              <Link
+                to="/tools/project-cost-estimator"
+                className="border border-white/20 hover:border-[#C8EB5F] text-neutral-300 hover:text-[#C8EB5F] text-xs sm:text-sm font-bold tracking-wider px-6 py-4 font-mono uppercase rounded-none transition-colors duration-300 flex items-center gap-2"
+              >
+                Estimate Project Cost
+              </Link>
             </div>
           </div>
 

@@ -1,9 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ArrowUpRight, Star, ShieldCheck, Check, TrendingUp, Lock, Award, Zap } from 'lucide-react';
+import { ShieldCheck, Check, Lock, Award, Code2, Globe2, GitBranch } from 'lucide-react';
 import { AnimatedShinyText } from './ui/animated-shiny-text';
 import { AnimatedBreathingText } from './ui/animated-breathing-text';
-import { MagicText } from './ui/magic-text';
 
 const TrustSection = () => {
     const fadeInSlide = {
@@ -32,7 +32,7 @@ const TrustSection = () => {
                 >
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         
-                        {/* Left: Core differentiator */}
+                        {/* Left: Verified Entity & Directory Presence */}
                         <motion.div 
                             custom={0.1}
                             variants={fadeInSlide}
@@ -42,113 +42,124 @@ const TrustSection = () => {
                                 backgroundSize: 'cover'
                             }}
                             role="img"
-                            aria-label="Futuristic technical server room representing secure enterprise architecture"
+                            aria-label="Enterprise cloud and software architecture environment at AbuQitmirLabs"
                         >
-                            <div className="absolute inset-0 bg-black/60"></div>
-                            <div className="relative h-full p-8 flex flex-col">
-                                {/* Stats Overlay */}
-                                <div className="mt-4 grid grid-cols-2 gap-3">
-                                    <div className="bg-black/40 backdrop-blur-md rounded-xl p-3 border border-white/10 hover:bg-white/10 transition-colors">
-                                        <div className="text-xl font-black text-white">Clutch</div>
-                                        <div className="text-[10px] text-neutral-400 uppercase tracking-widest font-black">Verified Profile</div>
+                            <div className="absolute inset-0 bg-black/65"></div>
+                            <div className="relative h-full p-8 flex flex-col justify-between">
+                                <div className="grid grid-cols-2 gap-3">
+                                    <div className="bg-black/50 backdrop-blur-md rounded-xl p-3 border border-white/10">
+                                        <div className="text-xl font-black text-white">5+ Years</div>
+                                        <div className="text-[10px] text-neutral-400 uppercase tracking-widest font-black">Founded in 2021</div>
                                     </div>
-                                    <div className="bg-black/40 backdrop-blur-md rounded-xl p-3 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div className="bg-black/50 backdrop-blur-md rounded-xl p-3 border border-white/10">
+                                        <div className="text-xl font-black text-white">100% IP</div>
+                                        <div className="text-[10px] text-neutral-400 uppercase tracking-widest font-black">Code Ownership</div>
+                                    </div>
+                                    <div className="bg-black/50 backdrop-blur-md rounded-xl p-3 border border-white/10">
+                                        <div className="text-xl font-black text-white">Clutch</div>
+                                        <div className="text-[10px] text-neutral-400 uppercase tracking-widest font-black">Listed on Clutch</div>
+                                    </div>
+                                    <div className="bg-black/50 backdrop-blur-md rounded-xl p-3 border border-white/10">
                                         <div className="text-xl font-black text-white">GoodFirms</div>
                                         <div className="text-[10px] text-neutral-400 uppercase tracking-widest font-black">Listed Agency</div>
                                     </div>
-                                    <div className="bg-black/40 backdrop-blur-md rounded-xl p-3 border border-white/10 hover:bg-white/10 transition-colors">
-                                        <div className="text-xl font-black text-white">5+</div>
-                                        <div className="text-[10px] text-neutral-400 uppercase tracking-widest font-black">Years</div>
+                                </div>
+
+                                <div className="bg-black/60 backdrop-blur-md rounded-xl p-4 border border-white/10 space-y-2">
+                                    <div className="text-xs font-mono text-[#ccff00] uppercase tracking-wider font-bold">
+                                        Engineering Governance
                                     </div>
-                                    <div className="bg-black/40 backdrop-blur-md rounded-xl p-3 border border-white/10 hover:bg-white/10 transition-colors">
-                                        <div className="text-xl font-black text-white">GMB</div>
-                                        <div className="text-[10px] text-neutral-400 uppercase tracking-widest font-black">Google Verified</div>
-                                    </div>
+                                    <p className="text-xs text-neutral-300 leading-relaxed">
+                                        Every engagement is governed by written Statements of Work, milestone acceptance criteria, and full GitHub repository ownership from day one.
+                                    </p>
                                 </div>
                             </div>
                         </motion.div>
 
-                        {/* Middle: Results & methodology */}
+                        {/* Middle: 5 Benefit-Led Trust Signals */}
                         <motion.div 
                             custom={0.2}
                             variants={fadeInSlide}
                             className="p-8 bg-white/5 border border-white/10 rounded-2xl relative flex flex-col"
                         >
                             <span className="text-sm text-neutral-400 font-bold tracking-widest uppercase mb-2 block">
-                                Trust Signals &amp; Authority
+                                Engineering Commitments
                             </span>
                             <AnimatedShinyText 
-                                text="3x Faster ROI, Verified Excellence" 
-                                textClassName="text-3xl md:text-4xl lg:text-5xl leading-tight"
+                                text="Built for Long-Term Ownership & Scale" 
+                                textClassName="text-3xl md:text-4xl leading-tight"
                                 className="mt-2"
                             />
 
-                            <div className="mt-8 space-y-4">
+                            <div className="mt-6 space-y-4">
                                 <div className="flex items-start gap-3 text-sm text-neutral-200">
-                                    <TrendingUp className="h-5 w-5 text-[#ccff00] shrink-0" />
+                                    <Code2 className="h-5 w-5 text-[#ccff00] shrink-0 mt-0.5" />
                                     <div>
-                                        <AnimatedBreathingText text="Data-Driven ROI Focus" className="font-bold text-white block" />
-                                        <p className="text-neutral-400 text-sm mt-0.5">We measure success by your revenue growth.</p>
+                                        <AnimatedBreathingText text="100% IP & Source Code Ownership" className="font-bold text-white block" />
+                                        <p className="text-neutral-400 text-xs mt-0.5">Complete GitHub repositories, infrastructure-as-code, and documentation transferred upon milestone completion.</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3 text-sm text-neutral-200">
-                                    <Lock className="h-5 w-5 text-[#ccff00] shrink-0" />
+                                    <GitBranch className="h-5 w-5 text-[#ccff00] shrink-0 mt-0.5" />
                                     <div>
-                                        <AnimatedBreathingText text="Enterprise-Grade Security" className="font-bold text-white block" />
-                                        <p className="text-neutral-400 text-sm mt-0.5">100% secure, scalable, and robust architecture.</p>
+                                        <AnimatedBreathingText text="Structured 5-Step Delivery Process" className="font-bold text-white block" />
+                                        <p className="text-neutral-400 text-xs mt-0.5">
+                                            Predictable 2-week sprints from scoping to launch.{' '}
+                                            <Link to="/about/our-process" className="text-[#ccff00] underline hover:text-white">
+                                                Review our 5-step process
+                                            </Link>.
+                                        </p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3 text-sm text-neutral-200">
-                                    <Award className="h-5 w-5 text-[#ccff00] shrink-0" />
+                                    <Award className="h-5 w-5 text-[#ccff00] shrink-0 mt-0.5" />
                                     <div>
-                                        <AnimatedBreathingText text="E-E-A-T Compliant" className="font-bold text-white block" />
-                                        <p className="text-neutral-400 text-sm mt-0.5">Proven experience, expertise, and authority.</p>
+                                        <AnimatedBreathingText text="Senior-Led Engineering" className="font-bold text-white block" />
+                                        <p className="text-neutral-400 text-xs mt-0.5">Direct communication with lead software architects and senior engineers—no account-manager bottlenecks.</p>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div className="mt-auto pt-8">
-                                <div className="rounded-xl border p-5 border-white/10 bg-black/40 backdrop-blur-md relative overflow-hidden">
-                                    <div className="flex items-center gap-1 text-[#ccff00] mb-3">
-                                        {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
+                                <div className="flex items-start gap-3 text-sm text-neutral-200">
+                                    <Globe2 className="h-5 w-5 text-[#ccff00] shrink-0 mt-0.5" />
+                                    <div>
+                                        <AnimatedBreathingText text="Global Remote Delivery" className="font-bold text-white block" />
+                                        <p className="text-neutral-400 text-xs mt-0.5">Dedicated timezone overlap across the US, UK, Europe, and GCC with weekly staging demos.</p>
                                     </div>
-                                    <blockquote className="text-sm text-neutral-200 italic font-serif leading-relaxed">
-                                        &ldquo;AbuQitmirLabs doesn&apos;t just build websites—they architect growth engines. Their strategic thinking transformed our digital presence.&rdquo;
-                                    </blockquote>
-                                    <div className="mt-4 flex items-center gap-3">
-                                        <div className="h-8 w-8 rounded-full bg-gradient-to-br from-[#ccff00] to-emerald-500"></div>
-                                        <div className="text-sm">
-                                            <p className="text-neutral-200 font-bold">James R.</p>
-                                            <p className="text-xs text-neutral-500">SaaS Founder, United States</p>
-                                        </div>
+                                </div>
+                                <div className="flex items-start gap-3 text-sm text-neutral-200">
+                                    <Lock className="h-5 w-5 text-[#ccff00] shrink-0 mt-0.5" />
+                                    <div>
+                                        <AnimatedBreathingText text="Security-First Architecture" className="font-bold text-white block" />
+                                        <p className="text-neutral-400 text-xs mt-0.5">Least-privilege access controls, encrypted data pipelines, and automated CI/CD quality gates.</p>
                                     </div>
                                 </div>
                             </div>
                         </motion.div>
 
-                        {/* Right: Trust indicators & guarantees */}
+                        {/* Right: Trust indicators & Production Proof */}
                         <div className="grid grid-rows-2 gap-6">
-                            {/* Trust & expertise */}
                             <motion.div 
                                 custom={0.3}
                                 variants={fadeInSlide}
                                 className="p-8 bg-white/5 border border-white/10 rounded-2xl flex flex-col items-center justify-center text-center"
                             >
-                                <div className="relative h-24 w-24">
+                                <div className="relative h-20 w-20">
                                     <div className="absolute inset-0 rounded-full bg-[#ccff00] animate-pulse opacity-10"></div>
-                                    <div className="absolute inset-[8px] rounded-full bg-[#ccff00]/10 border border-[#ccff00]/40 flex items-center justify-center">
-                                        <ShieldCheck className="h-10 w-10 text-[#ccff00]" />
+                                    <div className="absolute inset-[6px] rounded-full bg-[#ccff00]/10 border border-[#ccff00]/40 flex items-center justify-center">
+                                        <ShieldCheck className="h-9 w-9 text-[#ccff00]" />
                                     </div>
                                 </div>
-                                <div className="mt-6 flex flex-col items-center">
-                                    <AnimatedBreathingText text="5-Star Business Rating" className="text-lg font-bold text-white mb-2" />
-                                    <p className="text-sm text-neutral-400 leading-relaxed max-w-[200px]">
-                                        Verified entity on Google Business recognized for technical excellence.
+                                <div className="mt-5 flex flex-col items-center">
+                                    <AnimatedBreathingText text="Production Case Studies" className="text-lg font-bold text-white mb-2" />
+                                    <p className="text-xs text-neutral-400 leading-relaxed max-w-[240px]">
+                                        Explore live architectures including{' '}
+                                        <Link to="/case-studies/tajweedpage" className="text-[#ccff00] underline hover:text-white">
+                                            TajweedPage.com
+                                        </Link>{' '}
+                                        and our B2B growth engineering systems.
                                     </p>
                                 </div>
                             </motion.div>
 
-                            {/* Key metrics */}
                             <motion.div 
                                 custom={0.4}
                                 variants={fadeInSlide}
@@ -156,23 +167,23 @@ const TrustSection = () => {
                             >
                                 <div className="space-y-4">
                                     <div className="flex items-center justify-between text-sm">
-                                        <span className="text-neutral-300">Semantic SEO</span>
-                                        <span className="text-[#ccff00] font-bold">Expert</span>
+                                        <span className="text-neutral-300">Custom Software &amp; Web</span>
+                                        <span className="text-[#ccff00] font-bold">Core Practice</span>
                                     </div>
                                     <div className="flex items-center justify-between text-sm">
-                                        <span className="text-neutral-300">AI Integration</span>
-                                        <span className="text-[#ccff00] font-bold">Expert</span>
+                                        <span className="text-neutral-300">AI Agents &amp; RAG Systems</span>
+                                        <span className="text-[#ccff00] font-bold">Core Practice</span>
                                     </div>
                                     <div className="flex items-center justify-between text-sm">
-                                        <span className="text-neutral-300">Cloud Infrastructure</span>
-                                        <span className="text-[#ccff00] font-bold">Expert</span>
+                                        <span className="text-neutral-300">Technical &amp; Semantic SEO</span>
+                                        <span className="text-[#ccff00] font-bold">Core Practice</span>
                                     </div>
                                 </div>
 
                                 <div className="mt-6 pt-4 border-t border-white/10">
                                     <div className="flex items-center gap-2 text-[10px] text-neutral-300 uppercase tracking-widest font-bold">
                                         <Check className="h-3 w-3 text-[#ccff00]" />
-                                        Certified Digital Excellence
+                                        Listed on Clutch, GoodFirms &amp; Google Business
                                     </div>
                                 </div>
                             </motion.div>

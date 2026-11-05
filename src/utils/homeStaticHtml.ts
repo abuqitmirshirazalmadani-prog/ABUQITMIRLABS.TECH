@@ -297,11 +297,11 @@ export const homeInitialHtml = `
 
     <div class="relative z-10 max-w-7xl mx-auto w-full space-y-8 animate-enter">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 border border-[#ccff00]/30 bg-[#ccff00]/10 text-[#ccff00] font-mono text-xs font-semibold tracking-widest uppercase rounded-full">
-        <span>✦ Growth Engineering Firm | Custom Software &amp; AI ✦</span>
+        <span>AbuQitmirLabs &bull; Build Software &bull; Automate with AI &bull; Grow Demand</span>
       </div>
 
       <h1 class="font-serif text-white font-light text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight animate-enter-delay-1">
-        Growth Engineering Firm | Custom Software &amp; AI | AbuQitmirLabs
+        Custom Software, AI Automation &amp; Growth Engineering
       </h1>
 
       <p class="text-neutral-300 text-lg md:text-xl max-w-3xl leading-relaxed font-light animate-enter-delay-2">
@@ -310,33 +310,33 @@ export const homeInitialHtml = `
 
       <div class="flex flex-wrap gap-4 pt-4">
         <a href="/contact" class="bg-[#ccff00] text-black font-mono text-sm font-bold tracking-wider px-8 py-4 uppercase rounded-none hover:bg-white transition-all shadow-[0_0_30px_rgba(204,255,0,0.2)]">
-          Start Your Project
-        </a>
-        <a href="/growth-engineering" class="border border-white/20 hover:border-[#ccff00] text-white hover:text-[#ccff00] font-mono text-sm font-bold tracking-wider px-8 py-4 uppercase rounded-none transition-colors">
-          Explore Growth Engineering
+          Book a Technical Discovery Call
         </a>
         <a href="/case-studies" class="border border-white/20 hover:border-[#ccff00] text-white hover:text-[#ccff00] font-mono text-sm font-bold tracking-wider px-8 py-4 uppercase rounded-none transition-colors">
-          Explore Case Studies
+          View Case Studies
+        </a>
+        <a href="/tools/project-cost-estimator" class="border border-white/20 hover:border-[#ccff00] text-white hover:text-[#ccff00] font-mono text-sm font-bold tracking-wider px-8 py-4 uppercase rounded-none transition-colors">
+          Estimate Project Cost
         </a>
       </div>
 
-      <!-- Trust Bar Metrics -->
+      <!-- Benefit-Led Trust Bar -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-12 border-t border-white/10">
         <div>
-          <div class="text-2xl sm:text-3xl font-mono font-bold text-[#ccff00]">410+</div>
-          <div class="text-xs text-neutral-400 font-mono uppercase tracking-wider mt-1">Projects Delivered</div>
+          <div class="text-2xl sm:text-3xl font-mono font-bold text-[#ccff00]">5+ Years</div>
+          <div class="text-xs text-neutral-400 font-mono uppercase tracking-wider mt-1">Founded in 2021</div>
         </div>
         <div>
-          <div class="text-2xl sm:text-3xl font-mono font-bold text-[#ccff00]">99.9%</div>
-          <div class="text-xs text-neutral-400 font-mono uppercase tracking-wider mt-1">Uptime SLA</div>
+          <div class="text-2xl sm:text-3xl font-mono font-bold text-[#ccff00]">100% IP</div>
+          <div class="text-xs text-neutral-400 font-mono uppercase tracking-wider mt-1">Source Code Ownership</div>
         </div>
         <div>
-          <div class="text-2xl sm:text-3xl font-mono font-bold text-[#ccff00]">&lt;0.8s</div>
-          <div class="text-xs text-neutral-400 font-mono uppercase tracking-wider mt-1">Average Page Load</div>
+          <div class="text-2xl sm:text-3xl font-mono font-bold text-[#ccff00]">5-Step</div>
+          <div class="text-xs text-neutral-400 font-mono uppercase tracking-wider mt-1"><a href="/about/our-process" class="hover:text-white underline">Structured Delivery Process</a></div>
         </div>
         <div>
-          <div class="text-2xl sm:text-3xl font-mono font-bold text-[#ccff00]">100%</div>
-          <div class="text-xs text-neutral-400 font-mono uppercase tracking-wider mt-1">IP & Code Ownership</div>
+          <div class="text-2xl sm:text-3xl font-mono font-bold text-[#ccff00]">Senior-Led</div>
+          <div class="text-xs text-neutral-400 font-mono uppercase tracking-wider mt-1">Direct Architect Access</div>
         </div>
       </div>
     </div>

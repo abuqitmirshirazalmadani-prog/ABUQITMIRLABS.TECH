@@ -5,9 +5,7 @@
  */
 
 export const REMOTE_TO_LOCAL_COVER_MAP: Record<string, string> = {
-  "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp",
-  "https://i.postimg.cc/QNRK2QST/Bridging-Saudi-Arabia-s-Tech-Talent-Gap.png": "/images/blog-covers/offshore-software-development-saudi-arabia-7826c9d9.webp",
-  "https://i.postimg.cc/vZKFBKyj/Pakistani-SME-Branding-Strategy-Infographic.png": "/images/blog-covers/brand-strategy-vs-logo-design-pakistan-sme-b52ea078.webp"
+  "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp"
 };
 
 export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
@@ -148,15 +146,15 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "how-to-build-personal-brand-online": "/images/blog-covers/how-to-build-personal-brand-online-1e2d72bb.webp",
   "soc-2-fintech-startups": "/images/blog-covers/soc-2-fintech-startups-80cea562.webp",
   "build-brand-on-social-media": "/images/blog-covers/build-brand-on-social-media-9338c994.webp",
+  "offshore-software-development-saudi-arabia": "/images/blog-covers/offshore-software-development-saudi-arabia-7826c9d9.webp",
   "content-brief-template": "/images/blog-covers/content-brief-template-fcc385c7.webp",
   "small-business-branding-mistakes-pakistan": "/images/blog-covers/small-business-branding-mistakes-pakistan-6d2717c9.webp",
+  "brand-strategy-vs-logo-design-pakistan-sme": "/images/blog-covers/brand-strategy-vs-logo-design-pakistan-sme-b52ea078.webp",
   "ai-content-vs-human-content": "/images/blog-covers/ai-content-vs-human-content-23537d4c.webp",
   "startup-brand-identity-checklist": "/images/blog-covers/startup-brand-identity-checklist-be48b842.webp",
   "ai-overviews-traffic-recovery-what-40-companies-did-next": "/images/blog-covers/ai-overviews-killed-traffic-what-40-companies-did-next-eb108ed0.webp",
   "the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026": "/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
-  "author-abuqitmir-shiraz": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp",
-  "offshore-software-development-saudi-arabia": "/images/blog-covers/offshore-software-development-saudi-arabia-7826c9d9.webp",
-  "brand-strategy-vs-logo-design-pakistan-sme": "/images/blog-covers/brand-strategy-vs-logo-design-pakistan-sme-b52ea078.webp"
+  "author-abuqitmir-shiraz": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp"
 };
 
 export function resolveOptimizedCoverImage(url?: string, slug?: string): string {

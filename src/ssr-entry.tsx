@@ -65,6 +65,9 @@ import WebsiteAuthorityAnalyzerPage from './pages/WebsiteAuthorityAnalyzerPage';
 import LuxuryBrandExperiencePage from './pages/LuxuryBrandExperiencePage';
 import BrandBuildingPage from './pages/BrandBuildingPage';
 import SkillsAcademyPage from './pages/SkillsAcademyPage';
+import DigitalMarketingPage from './pages/DigitalMarketingPage';
+import EditorialPolicyPage from './pages/EditorialPolicyPage';
+import NotFoundPage from './pages/NotFoundPage';
 import ErrorBoundary from './components/ErrorBoundary';
 
 export { SEO_ROUTES_METADATA } from './data/seoRoutesMetadata';
@@ -134,7 +137,10 @@ export function renderFullApp(url: string = '/') {
               <Route path="/ai-video-creation" element={<AIVideoCreator />} />
               <Route path="/ai-video-creator" element={<Navigate to="/ai-video-creation" replace />} />
               <Route path="/seo-mastery" element={<SEOPage />} />
+              <Route path="/digital-marketing" element={<DigitalMarketingPage />} />
               <Route path="/local-seo-for-small-business" element={<LocalSEOSmallBusinessPage />} />
+              <Route path="/local-seo/small-business" element={<LocalSEOSmallBusinessPage />} />
+              <Route path="/local-seo-small-business" element={<LocalSEOSmallBusinessPage />} />
               <Route path="/local-seo-citation-building" element={<LocalSEOCitationBuildingPage />} />
               <Route path="/white-label-local-seo" element={<WhiteLabelLocalSEOPage />} />
               <Route path="/local-seo-audit" element={<LocalSEOAuditPage />} />
@@ -169,10 +175,13 @@ export function renderFullApp(url: string = '/') {
               <Route path="/luxury-showcase" element={<Navigate to="/luxury-brand-experience" replace />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/editorial-policy" element={<EditorialPolicyPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/case-studies/tajweedpage" element={<CaseStudyTajweedPage />} />
               <Route path="/news/industry-insights/:id" element={<NewsArticlePage />} />
+              <Route path="/news/press-releases/:id" element={<NewsArticlePage />} />
+              <Route path="/news/latest/:id" element={<NewsArticlePage />} />
               <Route path="/news/article/:id" element={<NewsArticlePage />} />
               <Route path="/news/read/:id" element={<NewsArticlePage />} />
               <Route path="/blog/healthcare-software-development-solutions-2026" element={<Navigate to="/blog/healthcare-software-development-solutions-2026-custom-ehr-clinical-software" replace />} />
@@ -207,6 +216,8 @@ export function renderFullApp(url: string = '/') {
               <Route path="/blog/startup-brand-identity-checklist" element={<BlogPostPage overrideSlug="startup-brand-identity-checklist" />} />
               <Route path="/blog/content-calendar-strategy" element={<BlogPostPage overrideSlug="content-calendar-strategy" />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
+              <Route path="/404" element={<NotFoundPage />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Suspense>
         </ErrorBoundary>

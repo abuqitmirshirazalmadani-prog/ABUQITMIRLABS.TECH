@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { 
-  MessageSquare, 
   Mail, 
-  Phone, 
   MapPin, 
   Send, 
-  Github, 
   Twitter, 
   Linkedin, 
   Facebook, 
   Instagram, 
   Youtube,
   ArrowUp,
-  Monitor,
-  Terminal as TerminalIcon,
   Cpu,
   ShieldCheck,
   ExternalLink,
@@ -26,8 +20,10 @@ import {
   HelpCircle,
   Briefcase,
   Award,
-  ChevronRight
+  ChevronRight,
+  Clock
 } from 'lucide-react';
+import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -38,21 +34,36 @@ const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    company: '',
+    projectType: 'Custom Software Development',
+    budget: '$10,000 – $25,000',
+    timeline: '1 – 2 Months',
+    message: '',
+    privacyConsent: true,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage(null);
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setErrorMessage('Please complete your name, work email, and project message before submitting.');
+      return;
+    }
     setIsSubmitting(true);
 
     try {
-      // Persist inquiry to Firestore
       await addDoc(collection(db, 'inquiries'), {
         name: formData.name,
         email: formData.email,
+        company: formData.company,
+        projectType: formData.projectType,
+        budget: formData.budget,
+        timeline: formData.timeline,
         message: formData.message,
+        privacyConsent: formData.privacyConsent,
         status: 'pending',
         createdAt: serverTimestamp()
       });
@@ -65,16 +76,15 @@ const ContactPage = () => {
       }
     }
 
-    const subject = encodeURIComponent(`New Inquiry from ${formData.name}`);
-    const bodyText = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
+    const subject = encodeURIComponent(`New Project Inquiry: ${formData.projectType} — ${formData.name} (${formData.company || 'Direct'})`);
+    const bodyText = encodeURIComponent(
+      `Name: ${formData.name}\nWork Email: ${formData.email}\nCompany: ${formData.company || 'N/A'}\nProject Type: ${formData.projectType}\nBudget Range: ${formData.budget}\nTarget Timeline: ${formData.timeline}\n\nProject Brief:\n${formData.message}`
+    );
     
-    // Direct Gmail Compose URL
     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=hello@abuqitmirlabs.tech&su=${subject}&body=${bodyText}`;
 
-    // Complete processing
     setIsSubmitting(false);
     setSubmitted(true);
-    // Open Gmail directly
     window.open(gmailUrl, '_blank');
   };
 
@@ -82,73 +92,33 @@ const ContactPage = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": "https://www.abuqitmirlabs.tech/contact#contactpage",
+    "name": "Contact AbuQitmirLabs — Book a Technical Discovery Call",
+    "url": "https://www.abuqitmirlabs.tech/contact",
+    "description": "Book a technical discovery call or request a project quote for custom software, AI automation, mobile apps, and technical SEO.",
+    "mainEntity": {
+      "@type": "Organization",
+      "@id": "https://www.abuqitmirlabs.tech/#organization",
+      "name": "AbuQitmirLabs",
+      "telephone": "+923233260859",
+      "email": "hello@abuqitmirlabs.tech"
+    }
+  };
+
   return (
     <div className="bg-black text-[#E8E8ED] font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]/30 selection:text-black">
-      <Helmet>
-        <title>Contact Us | Free Project Quote &amp; Consultation | AbuQitmirLabs</title>
-        <meta name="description" content="Contact AbuQitmirLabs for a free project quote. Get a free technical consultation and digital audit. Build custom software, mobile apps, AI agents, and web solutions." />
-        <link rel="canonical" href="https://www.abuqitmirlabs.tech/contact" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="Contact Us | Free Project Quote &amp; Consultation | AbuQitmirLabs" />
-        <meta property="og:description" content="Contact AbuQitmirLabs for a free project quote. Get a free technical consultation and digital audit. Build custom software, mobile apps, AI agents, and web solutions." />
-        <meta property="og:url" content="https://www.abuqitmirlabs.tech/contact" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Twitter Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact Us | Free Project Quote &amp; Consultation | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Contact AbuQitmirLabs for a free project quote. Get a free technical consultation and digital audit. Build custom software, mobile apps, AI agents, and web solutions." />
-        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-        
-        {/* Schema Markup */}
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://www.abuqitmirlabs.tech"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Contact",
-                  "item": "https://www.abuqitmirlabs.tech/contact"
-                }
-              ]
-            })
-          }}
-        ></script>
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "ContactPage",
-              "name": "Contact AbuQitmirLabs",
-              "description": "Get in touch for custom software development, AI agent consultation, and mobile app inquiries.",
-              "mainEntity": {
-                "@type": "Organization",
-                "name": "AbuQitmirLabs",
-                "telephone": "+923233260859",
-                "email": "abuqitmirshirazalmadani@gmail.com",
-                "contactPoint": {
-                  "@type": "ContactPoint",
-                  "telephone": "+923233260859",
-                  "contactType": "customer service"
-                }
-              }
-            })
-          }}
-        ></script>
-      </Helmet>
+      <SEO
+        title="Contact & Book a Discovery Call | AbuQitmirLabs"
+        description="Book a technical discovery call or request a project quote from AbuQitmirLabs. Custom software, AI agents, mobile apps, and growth engineering."
+        canonical="https://www.abuqitmirlabs.tech/contact"
+        ogTitle="Contact & Book a Discovery Call | AbuQitmirLabs"
+        ogDescription="Book a technical discovery call or request a project quote from AbuQitmirLabs. Response within 24 business hours."
+        ogImage="https://www.abuqitmirlabs.tech/logo.png"
+        schema={contactSchema}
+      />
 
       {/* Scanline Overlay */}
       <div className="fixed inset-0 pointer-events-none z-[60] opacity-5" style={{ background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(204,255,0,0.05) 2px, rgba(204,255,0,0.05) 4px)' }}></div>
@@ -162,30 +132,32 @@ const ContactPage = () => {
       <main className="pt-32 pb-20 px-6">
         <div className="max-w-7xl mx-auto">
           {/* Hero Section */}
-          <section className="mb-24 text-center animate-enter">
+          <section className="mb-16 text-center animate-enter">
              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-2 bg-[#ccff00]/10 border border-[#ccff00]/30 px-4 py-2 text-[10px] uppercase font-mono tracking-[0.2em] text-[#ccff00] mb-10"
+                className="inline-flex items-center gap-2 bg-[#ccff00]/10 border border-[#ccff00]/30 px-4 py-2 text-[10px] uppercase font-mono tracking-[0.2em] text-[#ccff00] mb-8"
              >
-                <Cpu size={14} className="animate-pulse" />
-                Connectivity Established
+                <Clock size={14} />
+                Response SLA: Within 24 Business Hours &bull; Senior Architect Review
              </motion.div>
              
              <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="text-4xl md:text-6xl lg:text-[5.5rem] font-black tracking-tighter leading-[0.9] text-white uppercase mb-8 animate-enter-delay-1"
+                className="text-4xl md:text-6xl font-black tracking-tighter leading-tight text-white uppercase mb-6 animate-enter-delay-1"
              >
-                Contact App Developer <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-[#ccff00]">| Get Free Project Quote</span>
+                Book a Technical Discovery Call &amp; Project Quote
              </motion.h1>
-             <div className="w-32 h-2 bg-[#ccff00] mx-auto mb-12 shadow-[0_0_20px_rgba(204,255,0,0.5)]"></div>
+             <p className="max-w-2xl mx-auto text-zinc-400 text-sm md:text-base leading-relaxed mb-8">
+                Share your product scope, architecture goals, or growth bottlenecks below. Every inquiry is reviewed directly by a senior software architect within one business day.
+             </p>
+             <div className="w-32 h-2 bg-[#ccff00] mx-auto mb-10 shadow-[0_0_20px_rgba(204,255,0,0.5)]"></div>
           </section>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-            {/* Terminal Style Form */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            {/* Accessible Server-Rendered Project Inquiry Form */}
             <motion.div
                initial={{ opacity: 0, x: -30 }}
                animate={{ opacity: 1, x: 0 }}
@@ -193,61 +165,179 @@ const ContactPage = () => {
                className="bg-black border-4 border-[#ccff00] p-8 relative overflow-hidden group rounded-2xl"
                style={{ boxShadow: '12px 12px 0 rgba(204,255,0,0.9)' }}
             >
-               {/* Terminal Header */}
-               <div className="flex items-center gap-2 mb-8 pb-4 border-b-2 border-[#ccff00]/30">
-                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-[#ccff00]"></div>
-                  <span className="font-mono text-xs ml-4 text-[#ccff00] tracking-widest">CONTACT_PROTOCOL.SYS</span>
+               {/* Form Header */}
+               <div className="flex items-center justify-between gap-2 mb-6 pb-4 border-b-2 border-[#ccff00]/30">
+                  <div className="flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-[#ccff00]"></div>
+                    <span className="font-mono text-xs ml-3 text-[#ccff00] tracking-widest uppercase">Project Scoping Brief</span>
+                  </div>
+                  <span className="font-mono text-[10px] text-zinc-400 uppercase">NDA Available on Request</span>
                </div>
 
-               <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
-                  <div>
-                     <label htmlFor="contact-page-name" className="font-mono text-xs text-[#ccff00] mb-3 block tracking-widest">USER_ID / NAME_</label>
-                     <input 
-                        id="contact-page-name"
-                        name="name"
-                        autoComplete="name"
-                        required
-                        type="text" 
-                        value={formData.name}
-                        onChange={(e) => setFormData({...formData, name: e.target.value})}
-                        className="w-full bg-zinc-900/60 border-2 border-zinc-800 px-6 py-4 text-white font-mono focus:outline-none focus:border-[#ccff00] transition-all hover:bg-zinc-900 rounded-xl" 
-                        placeholder="IDENTIFY YOURSELF..."
-                     />
+               <form onSubmit={handleSubmit} className="space-y-6 relative z-10" aria-label="Project discovery and quote request form">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                       <label htmlFor="contact-page-name" className="font-mono text-xs text-[#ccff00] mb-2 block tracking-wider uppercase">
+                         Full Name *
+                       </label>
+                       <input 
+                          id="contact-page-name"
+                          name="name"
+                          autoComplete="name"
+                          required
+                          type="text" 
+                          value={formData.name}
+                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          className="w-full bg-zinc-900/60 border-2 border-zinc-800 px-4 py-3.5 text-white text-sm font-mono focus:outline-none focus:border-[#ccff00] transition-all hover:bg-zinc-900 rounded-xl" 
+                          placeholder="Your full name"
+                       />
+                    </div>
+                    <div>
+                       <label htmlFor="contact-page-email" className="font-mono text-xs text-[#ccff00] mb-2 block tracking-wider uppercase">
+                         Work Email *
+                       </label>
+                       <input 
+                          id="contact-page-email"
+                          name="email"
+                          autoComplete="email"
+                          required
+                          type="email" 
+                          value={formData.email}
+                          onChange={(e) => setFormData({...formData, email: e.target.value})}
+                          className="w-full bg-zinc-900/60 border-2 border-zinc-800 px-4 py-3.5 text-white text-sm font-mono focus:outline-none focus:border-[#ccff00] transition-all hover:bg-zinc-900 rounded-xl" 
+                          placeholder="you@company.com"
+                       />
+                    </div>
                   </div>
-                  <div>
-                     <label htmlFor="contact-page-email" className="font-mono text-xs text-[#ccff00] mb-3 block tracking-widest">COMMUNICATION_RELAY / EMAIL_</label>
-                     <input 
-                        id="contact-page-email"
-                        name="email"
-                        autoComplete="email"
-                        required
-                        type="email" 
-                        value={formData.email}
-                        onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        className="w-full bg-zinc-900/60 border-2 border-zinc-800 px-6 py-4 text-white font-mono focus:outline-none focus:border-[#ccff00] transition-all hover:bg-zinc-900 rounded-xl" 
-                        placeholder="SECURE RELAY ADDRESS..."
-                     />
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                       <label htmlFor="contact-page-company" className="font-mono text-xs text-[#ccff00] mb-2 block tracking-wider uppercase">
+                         Company / Organization
+                       </label>
+                       <input 
+                          id="contact-page-company"
+                          name="company"
+                          autoComplete="organization"
+                          type="text" 
+                          value={formData.company}
+                          onChange={(e) => setFormData({...formData, company: e.target.value})}
+                          className="w-full bg-zinc-900/60 border-2 border-zinc-800 px-4 py-3.5 text-white text-sm font-mono focus:outline-none focus:border-[#ccff00] transition-all hover:bg-zinc-900 rounded-xl" 
+                          placeholder="Company or startup name"
+                       />
+                    </div>
+                    <div>
+                       <label htmlFor="contact-page-project-type" className="font-mono text-xs text-[#ccff00] mb-2 block tracking-wider uppercase">
+                         Project Type *
+                       </label>
+                       <select
+                          id="contact-page-project-type"
+                          name="projectType"
+                          value={formData.projectType}
+                          onChange={(e) => setFormData({...formData, projectType: e.target.value})}
+                          className="w-full bg-zinc-900/80 border-2 border-zinc-800 px-4 py-3.5 text-white text-sm font-mono focus:outline-none focus:border-[#ccff00] transition-all rounded-xl"
+                       >
+                          <option value="Custom Software Development">Custom Software Development</option>
+                          <option value="AI Agent & RAG Automation">AI Agent &amp; RAG Automation</option>
+                          <option value="Full-Stack Web Application">Full-Stack Web Application</option>
+                          <option value="Mobile App Development (Flutter / React Native)">Mobile App Development (Flutter / React Native)</option>
+                          <option value="Technical & Programmatic SEO">Technical &amp; Programmatic SEO</option>
+                          <option value="B2B Growth Engineering System">B2B Growth Engineering System</option>
+                       </select>
+                    </div>
                   </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                       <label htmlFor="contact-page-budget" className="font-mono text-xs text-[#ccff00] mb-2 block tracking-wider uppercase">
+                         Budget Range *
+                       </label>
+                       <select
+                          id="contact-page-budget"
+                          name="budget"
+                          value={formData.budget}
+                          onChange={(e) => setFormData({...formData, budget: e.target.value})}
+                          className="w-full bg-zinc-900/80 border-2 border-zinc-800 px-4 py-3.5 text-white text-sm font-mono focus:outline-none focus:border-[#ccff00] transition-all rounded-xl"
+                       >
+                          <option value="$5,000 – $10,000">$5,000 – $10,000 (MVP / Focused Scope)</option>
+                          <option value="$10,000 – $25,000">$10,000 – $25,000 (Full Product / AI System)</option>
+                          <option value="$25,000 – $50,000">$25,000 – $50,000 (Enterprise Platform)</option>
+                          <option value="$50,000+">$50,000+ (Multi-Quarter Engineering Pod)</option>
+                          <option value="Need Scoping Estimate">Need Scoping Estimate</option>
+                       </select>
+                    </div>
+                    <div>
+                       <label htmlFor="contact-page-timeline" className="font-mono text-xs text-[#ccff00] mb-2 block tracking-wider uppercase">
+                         Target Timeline *
+                       </label>
+                       <select
+                          id="contact-page-timeline"
+                          name="timeline"
+                          value={formData.timeline}
+                          onChange={(e) => setFormData({...formData, timeline: e.target.value})}
+                          className="w-full bg-zinc-900/80 border-2 border-zinc-800 px-4 py-3.5 text-white text-sm font-mono focus:outline-none focus:border-[#ccff00] transition-all rounded-xl"
+                       >
+                          <option value="Immediate (Within 2 Weeks)">Immediate (Within 2 Weeks)</option>
+                          <option value="1 – 2 Months">1 – 2 Months</option>
+                          <option value="3 – 6 Months">3 – 6 Months</option>
+                          <option value="Exploratory / Roadmap Planning">Exploratory / Roadmap Planning</option>
+                       </select>
+                    </div>
+                  </div>
+
                   <div>
-                     <label htmlFor="contact-page-message" className="font-mono text-xs text-[#ccff00] mb-3 block tracking-widest">TRANSMISSION_PAYLOAD / MESSAGE_</label>
+                     <label htmlFor="contact-page-message" className="font-mono text-xs text-[#ccff00] mb-2 block tracking-wider uppercase">
+                       Project Message &amp; Requirements *
+                     </label>
                      <textarea 
                         id="contact-page-message"
                         name="message"
                         autoComplete="off"
                         required
-                        rows={6} 
+                        rows={5} 
                         value={formData.message}
                         onChange={(e) => setFormData({...formData, message: e.target.value})}
-                        className="w-full bg-zinc-900/60 border-2 border-zinc-800 px-6 py-4 text-white font-mono focus:outline-none focus:border-[#ccff00] transition-all hover:bg-zinc-900 rounded-xl resize-none" 
-                        placeholder="DECODE YOUR THOUGHTS..."
+                        className="w-full bg-zinc-900/60 border-2 border-zinc-800 px-4 py-3.5 text-white text-sm font-mono focus:outline-none focus:border-[#ccff00] transition-all hover:bg-zinc-900 rounded-xl resize-none" 
+                        placeholder="Describe your target architecture, key features, integrations, or growth goals..."
                      ></textarea>
                   </div>
+
+                  <div className="flex items-start gap-3">
+                    <input
+                      id="contact-page-privacy"
+                      name="privacyConsent"
+                      type="checkbox"
+                      required
+                      checked={formData.privacyConsent}
+                      onChange={(e) => setFormData({...formData, privacyConsent: e.target.checked})}
+                      className="mt-1 h-4 w-4 accent-[#ccff00] rounded border-zinc-700"
+                    />
+                    <label htmlFor="contact-page-privacy" className="text-xs text-zinc-400 leading-relaxed">
+                      I consent to AbuQitmirLabs processing my inquiry data to prepare a technical consultation in accordance with the{' '}
+                      <Link to="/privacy" className="text-[#ccff00] underline hover:text-white">Privacy Policy</Link> and{' '}
+                      <Link to="/terms" className="text-[#ccff00] underline hover:text-white">Terms of Service</Link>.
+                    </label>
+                  </div>
+
+                  {errorMessage && (
+                    <div role="alert" className="p-3 rounded-lg bg-red-950/60 border border-red-500/40 text-red-300 text-xs font-mono">
+                      {errorMessage}
+                    </div>
+                  )}
+
+                  {submitted && (
+                    <div role="status" className="p-4 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 text-xs font-mono space-y-1">
+                      <p className="font-bold text-white">Inquiry Logged Successfully</p>
+                      <p>Thank you, {formData.name}. Our engineering lead will review your brief and respond within 24 business hours.</p>
+                    </div>
+                  )}
+
                   <button 
                      type="submit" 
                      disabled={isSubmitting || submitted}
-                     className={`w-full px-10 py-6 font-black text-xl border-4 transition-all duration-300 flex items-center justify-center gap-4 relative overflow-hidden group rounded-xl cursor-pointer
+                     className={`w-full px-8 py-5 font-black text-base sm:text-lg border-4 transition-all duration-300 flex items-center justify-center gap-3 relative overflow-hidden group rounded-xl cursor-pointer uppercase tracking-wider
                         ${submitted ? 'bg-green-500 border-green-500 !text-black' : 'bg-[#ccff00] border-[#ccff00] !text-black hover:bg-[#b0d600]'}`}
                   >
                      <AnimatePresence mode="wait">
@@ -260,7 +350,7 @@ const ContactPage = () => {
                               className="flex items-center gap-3 !text-black font-black"
                            >
                                <Cpu className="animate-spin !text-black" />
-                               PROCESSING...
+                               Submitting Project Brief...
                            </motion.div>
                         ) : submitted ? (
                            <motion.div
@@ -270,26 +360,26 @@ const ContactPage = () => {
                               className="flex items-center gap-3 !text-black font-black"
                            >
                                <ShieldCheck className="!text-black" />
-                               TRANSMISSION SUCCESSFUL
+                               Brief Submitted &mdash; Response Within 24h
                            </motion.div>
                         ) : (
                            <motion.div
                               key="initial"
                               className="flex items-center gap-3 !text-black font-black"
                            >
-                               <Send size={24} className="!text-black" />
-                               INITIATE TRANSMISSION
+                               <Send size={20} className="!text-black" />
+                               Request Technical Discovery Call
                            </motion.div>
                         )}
                      </AnimatePresence>
                   </button>
                </form>
 
-               {/* Terminal Output */}
-               <div className="mt-8 pt-6 border-t-2 border-[#ccff00]/20 font-mono text-[10px] space-y-2">
-                  <p className="text-[#ccff00]/70">&gt; STATUS: STANDBY</p>
-                  <p className="text-[#ccff00]/70">&gt; ENCRYPTION: AES-256 ACTIVE</p>
-                  <p className="text-[#ccff00]">&gt; {submitted ? 'READY FOR NEXT INPUT' : 'AWAITING USER INPUT'}<span className="animate-pulse">_</span></p>
+               {/* Expected Response SLA */}
+               <div className="mt-6 pt-5 border-t-2 border-[#ccff00]/20 font-mono text-[11px] space-y-1.5 text-zinc-400">
+                  <p className="text-[#ccff00] font-bold">&gt; EXPECTED RESPONSE TIME: WITHIN 24 BUSINESS HOURS</p>
+                  <p>&gt; DIRECT REVIEW BY SENIOR SOFTWARE ARCHITECT (NO SALES MIDDLEMEN)</p>
+                  <p>&gt; 100% CONFIDENTIAL &bull; MUTUAL NDA AVAILABLE PRIOR TO CODE REVIEW</p>
                </div>
 
                {/* Background Pattern */}
@@ -305,14 +395,14 @@ const ContactPage = () => {
                   className="space-y-10"
                >
                   <div className="group">
-                     <p className="font-mono text-xs text-[#ccff00] mb-4 tracking-[0.4em] uppercase">Communication_Relays</p>
+                     <h2 className="font-mono text-xs text-[#ccff00] mb-4 tracking-[0.3em] uppercase font-bold">Direct Communication Channels</h2>
                      <div className="space-y-6">
                         <div className="flex items-center gap-6 group/item">
                            <div className="w-16 h-16 bg-[#ccff00]/5 border-2 border-[#ccff00]/20 flex items-center justify-center group-hover/item:border-[#ccff00] group-hover/item:bg-[#ccff00]/10 transition-all shadow-[0_0_15px_rgba(204,255,0,0.1)] rounded-xl">
                               <Mail className="text-[#ccff00]" size={28} />
                            </div>
                            <div>
-                              <p className="text-white font-bold uppercase tracking-widest text-sm mb-1">Email Protocol</p>
+                              <p className="text-white font-bold uppercase tracking-widest text-sm mb-1">Corporate Email</p>
                               <div className="flex flex-col gap-1.5 mt-1">
                                  <ObfuscatedEmail 
                                     user="hello" 
@@ -324,7 +414,7 @@ const ContactPage = () => {
                                     domain="gmail.com" 
                                     className="text-zinc-500 font-mono text-xs hover:text-[#ccff00] transition-colors hover:underline block"
                                  />
-                                 <p className="text-[#ccff00]/50 font-mono text-[9px] uppercase tracking-tighter">Direct Relay Enabled &bull; Updated: August 2026</p>
+                                 <p className="text-[#ccff00]/70 font-mono text-[10px] uppercase tracking-tight">Response SLA: Within 24 Business Hours</p>
                               </div>
                            </div>
                         </div>
@@ -332,27 +422,29 @@ const ContactPage = () => {
                            href="https://wa.me/923233260859" 
                            target="_blank"
                            rel="noopener noreferrer"
+                           aria-label="Chat with AbuQitmirLabs on WhatsApp (+92-323-3260859)"
                            className="flex items-center gap-6 group/item"
                         >
                            <div className="w-16 h-16 bg-[#25D366]/10 border-2 border-[#25D366]/30 flex items-center justify-center group-hover/item:border-[#25D366] group-hover/item:bg-[#25D366]/20 transition-all rounded-xl">
                                <MessageCircle className="text-[#25D366]" size={28} />
                            </div>
                            <div>
-                              <p className="text-white font-bold uppercase tracking-widest text-sm mb-1">WhatsApp Relay</p>
-                              <p className="text-zinc-400 font-mono text-xs group-hover/item:text-[#25D366] transition-colors">+92-323-3260859 (Direct Chat)</p>
+                              <p className="text-white font-bold uppercase tracking-widest text-sm mb-1">WhatsApp Direct</p>
+                              <p className="text-zinc-400 font-mono text-xs group-hover/item:text-[#25D366] transition-colors">+92-323-3260859 (Direct Engineering Chat)</p>
                            </div>
                         </a>
                         <a 
-                           href="https://www.google.com/search?q=AbuQitmirLabs.Tech&stick=H4sIAAAAAAAA_-NgU1I1qEg0SUwyMkw2MzIySUkyTba0MqhITUtOMUgztzRLTTM2TjI3XMQq5JhUGphZkptZ5JOYVKwXkpqcAQAWzgp1PgAAAA&hl=en&mat=CZLYxD3dn4-XElYBTVDHnmXmYtE_z1-ukd4W15_4xSOvjTxlQ1o8WZE3DhyScxz25ZkTwHN99aYAJPksPmWrBMFOl-sP_YDLnxLlKt51TeOkcb_wt2bWebGPkDFcieVKmA&authuser=0" 
+                           href="https://www.google.com/search?q=AbuQitmirLabs.Tech" 
                            target="_blank"
                            rel="noopener noreferrer"
+                           aria-label="View AbuQitmirLabs headquarters address in Karachi, Pakistan"
                            className="flex items-center gap-6 group/item"
                         >
                            <div className="w-16 h-16 bg-[#ccff00]/5 border-2 border-[#ccff00]/20 flex items-center justify-center group-hover/item:border-[#ccff00] transition-all rounded-xl">
                                <MapPin className="text-[#ccff00]" size={28} />
                            </div>
                            <div>
-                              <p className="text-white font-bold uppercase tracking-widest text-sm mb-1">Base Coordinates</p>
+                              <p className="text-white font-bold uppercase tracking-widest text-sm mb-1">Headquarters Address</p>
                               <p className="text-zinc-400 font-sans text-xs leading-relaxed max-w-sm">8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town, 75160, Karachi, Pakistan</p>
                            </div>
                         </a>
@@ -360,29 +452,31 @@ const ContactPage = () => {
                   </div>
 
                   <div className="pt-10 border-t border-white/5">
-                     <p className="font-mono text-xs text-[#ccff00] mb-8 tracking-[0.4em] uppercase">Social_Matrix</p>
+                     <h2 className="font-mono text-xs text-[#ccff00] mb-6 tracking-[0.3em] uppercase font-bold">Verified Profiles &amp; Social Channels</h2>
                      <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-6 gap-3">
                         {[
-                           { icon: <Facebook />, color: 'hover:bg-[#1877F2]', href: "https://www.facebook.com/profile.php?id=61583768706452" },
-                           { icon: <MapPin />, color: 'hover:bg-[#4285F4]', href: "https://www.google.com/search?q=AbuQitmirLabs.Tech&stick=H4sIAAAAAAAA_-NgU1I1qEg0SUwyMkw2MzIySUkyTba0MqhITUtOMUgztzRLTTM2TjI3XMQq5JhUGphZkptZ5JOYVKwXkpqcAQAWzgp1PgAAAA&hl=en&mat=CZLYxD3dn4-XElYBTVDHnmXmYtE_z1-ukd4W15_4xSOvjTxlQ1o8WZE3DhyScxz25ZkTwHN99aYAJPksPmWrBMFOl-sP_YDLnxLlKt51TeOkcb_wt2bWebGPkDFcieVKmA&authuser=0" },
-                           { icon: <Instagram />, color: 'hover:bg-[#E4405F]', href: "https://www.instagram.com/abuqitmirshirazalmadani/" },
-                           { icon: <Youtube />, color: 'hover:bg-[#FF0000]', href: "https://www.youtube.com/@AbuQitmir" },
-                           { icon: <Linkedin />, color: 'hover:bg-[#0A66C2]', href: "https://www.linkedin.com/in/abu-qitmir-697423390/" },
-                           { icon: <Twitter />, color: 'hover:bg-[#1DA1F2]', href: "https://x.com/AbuQitmir" },
-                           { icon: <Smartphone />, color: 'hover:bg-[#FF0050]', href: "https://www.tiktok.com/@abuqitmirmohammadshiraz" },
-                           { icon: <Pin />, color: 'hover:bg-[#E60023]', href: "https://www.pinterest.com/abuqitmir" },
-                           { icon: <HelpCircle />, color: 'hover:bg-[#B92B27]', href: "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani" },
-                           { icon: <Briefcase />, color: 'hover:bg-[#0F82C4]', href: "https://www.goodfirms.co/company/abuqitmirlabs-tech" },
-                           { icon: <Award />, color: 'hover:bg-[#D41058]', href: "https://clutch.co/profile/abuqitmirlabstech?_gl=1*1notqlc*_gcl_au*Nzg0MzYyMjI0LjE3Nzg1MzM3NjkuMjA3OTQ5MjcxNC4xNzc4NTMzODc1LjE3Nzg1MzQzNTA.*FPAU*Nzg0MzYyMjI0LjE3Nzg1MzM3Njk.*_ga*NzczMDM5MTg3LjE3Nzg1MzM3Njk.*_ga_D0WFGX8X3V*czE3ODIzMzYxNTAkbzUkZzEkdDE3ODIzMzYxNTAkbzUkZzEkdDE3ODIzMzYxODEkajI5JGwwJGgxMDQ0NTQyMjU.*_fplc*TnJmYjRHNWsxYTk2R1olMkZZOVVyd2VMU21OUjZiQ1RkRyUyRk1uVjMlMkJSb2JDMkh4RjVFNFBnbmFHeWNDWmZjTWY1YzhMJTJGdXpoZ0VYQWo0bDlHbHRUQzFHcHc3d3JSUndXck5VWEtBRGhWTHN1c2VuOGg4dkgzN1Vha2EzM2xNTlElM0QlM0Q." }
+                           { label: 'AbuQitmirLabs on Facebook', icon: <Facebook />, color: 'hover:bg-[#1877F2]', href: "https://www.facebook.com/profile.php?id=61583768706452" },
+                           { label: 'AbuQitmirLabs on Google Business Profile', icon: <MapPin />, color: 'hover:bg-[#4285F4]', href: "https://www.google.com/search?q=AbuQitmirLabs.Tech" },
+                           { label: 'AbuQitmirLabs on Instagram', icon: <Instagram />, color: 'hover:bg-[#E4405F]', href: "https://www.instagram.com/abuqitmirshirazalmadani/" },
+                           { label: 'AbuQitmirLabs on YouTube', icon: <Youtube />, color: 'hover:bg-[#FF0000]', href: "https://www.youtube.com/@AbuQitmir" },
+                           { label: 'AbuQitmirLabs on LinkedIn', icon: <Linkedin />, color: 'hover:bg-[#0A66C2]', href: "https://www.linkedin.com/in/abu-qitmir-697423390/" },
+                           { label: 'AbuQitmirLabs on X (Twitter)', icon: <Twitter />, color: 'hover:bg-[#1DA1F2]', href: "https://x.com/AbuQitmir" },
+                           { label: 'AbuQitmirLabs on TikTok', icon: <Smartphone />, color: 'hover:bg-[#FF0050]', href: "https://www.tiktok.com/@abuqitmirmohammadshiraz" },
+                           { label: 'AbuQitmirLabs on Pinterest', icon: <Pin />, color: 'hover:bg-[#E60023]', href: "https://www.pinterest.com/abuqitmir" },
+                           { label: 'AbuQitmirLabs on Quora', icon: <HelpCircle />, color: 'hover:bg-[#B92B27]', href: "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani" },
+                           { label: 'AbuQitmirLabs on GoodFirms Directory', icon: <Briefcase />, color: 'hover:bg-[#0F82C4]', href: "https://www.goodfirms.co/company/abuqitmirlabs-tech" },
+                           { label: 'AbuQitmirLabs on Clutch Directory', icon: <Award />, color: 'hover:bg-[#D41058]', href: "https://clutch.co/profile/abuqitmirlabstech" }
                         ].map((social, i) => (
                            <a 
                               key={i} 
                               href={social.href}
                               target="_blank"
                               rel="noopener noreferrer"
+                              aria-label={social.label}
+                              title={social.label}
                               className={`w-full aspect-square bg-[#ccff00]/5 border-2 border-[#ccff00]/20 rounded-xl flex items-center justify-center text-white transition-all duration-300 hover:border-transparent hover:scale-110 ${social.color} hover:shadow-[0_0_20px_rgba(204,255,0,0.3)]`}
                            >
-                               {React.cloneElement(social.icon as React.ReactElement<any>, { size: 24 })}
+                               {React.cloneElement(social.icon as React.ReactElement<any>, { size: 24, 'aria-hidden': true })}
                            </a>
                         ))}
                      </div>

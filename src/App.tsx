@@ -84,6 +84,7 @@ import SeoChecklistPage from './pages/SeoChecklistPage';
 import AiReadinessScorePage from './pages/AiReadinessScorePage';
 import TechStackRecommenderPage from './pages/TechStackRecommenderPage';
 import WebsiteAuthorityAnalyzerPage from './pages/WebsiteAuthorityAnalyzerPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 const AdminDashboard = lazyWithRetry(() => import('./pages/AdminDashboard'));
 const AdminSeoFixPage = lazyWithRetry(() => import('../app/admin/seo/page'));
@@ -264,6 +265,7 @@ function AppRoutes() {
           <Route path="/local-seo-services" element={<Navigate to="/seo-mastery" replace />} />
           <Route path="/local-seo-for-small-business" element={<LocalSEOSmallBusinessPage />} />
           <Route path="/local-seo-small-business" element={<Navigate to="/local-seo-for-small-business" replace />} />
+          <Route path="/local-seo/small-business" element={<Navigate to="/local-seo-for-small-business" replace />} />
           <Route path="/local-seo-citation-building" element={<LocalSEOCitationBuildingPage />} />
           <Route path="/white-label-local-seo" element={<WhiteLabelLocalSEOPage />} />
           <Route path="/local-seo-audit" element={<LocalSEOAuditPage />} />
@@ -408,16 +410,8 @@ function AppRoutes() {
           <Route path="/website-authority-analyzer" element={<Navigate to="/tools/website-authority-analyzer" replace />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/seo" element={<AdminSeoFixPage />} />
-          <Route path="*" element={
-            <div className="min-h-screen flex items-center justify-center bg-[#09090b] text-white">
-              <div className="text-center max-w-md px-6">
-                <p className="text-white/60 mb-8">Page not found.</p>
-                <a href="/" className="inline-block px-6 py-3 bg-[#ccff00] text-black font-bold rounded-lg">
-                  Go Home
-                </a>
-              </div>
-            </div>
-          } />
+          <Route path="/404" element={<NotFoundPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
     </ErrorBoundary>

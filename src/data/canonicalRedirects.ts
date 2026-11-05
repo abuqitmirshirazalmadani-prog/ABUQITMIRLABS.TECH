@@ -124,5 +124,8 @@ export function getCanonicalPath(pathname: string): string {
   if (clean === '/brand-banao-business-chalao' || clean === '/course') {
     return '/skills-academy';
   }
+  if (clean === '/local-seo/small-business' || clean === '/local-seo-small-business' || clean === '/local-seo-services') {
+    return '/local-seo-for-small-business';
+  }
   return clean;
 }

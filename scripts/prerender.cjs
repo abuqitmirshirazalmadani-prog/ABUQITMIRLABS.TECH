@@ -108,7 +108,7 @@ baseTemplate = baseTemplate.replace(/<meta\b[^>]*property=["']article:[^"']+["']
 baseTemplate = baseTemplate.replace(/<meta\b[^>]*name=["']keywords["'][^>]*\/?>/gis, '');
 baseTemplate = baseTemplate.replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gis, '');
 
-// Preserve a clean, unpopulated SPA shell with site-wide schemas for dynamic client-side routes
+// Preserve a clean, unpopulated SPA shell with site-wide schemas for dynamic client-side routes (e.g. /admin)
 const spaShellPath = path.join(distDir, 'spa-shell.html');
 const spaShellDir = path.join(distDir, 'spa-shell');
 const spaShellContent = siteWideSchemasHtml 
@@ -119,7 +119,109 @@ if (!fs.existsSync(spaShellDir)) {
   fs.mkdirSync(spaShellDir, { recursive: true });
 }
 fs.writeFileSync(path.join(spaShellDir, 'index.html'), spaShellContent, 'utf8');
-fs.writeFileSync(path.join(distDir, '404.html'), spaShellContent, 'utf8');
+
+// Pre-render rich custom 404.html with search, top services, contact CTA, homepage link, and noindex robots tag
+try {
+  const notFoundRender = renderFullApp('/404');
+  let notFoundHtml = replaceRootElement(baseTemplate, notFoundRender.bodyHtml || '', '/404');
+  notFoundHtml = stripCanonicalTags(notFoundHtml);
+  const notFoundHead = [
+    '  <title>404 Page Not Found | AbuQitmirLabs</title>',
+    '  <meta name="description" content="The page you requested could not be found. Search AbuQitmirLabs services, engineering guides, or book a technical discovery call." />',
+    '  <meta name="robots" content="noindex, follow" />',
+    '  <meta property="og:title" content="404 Page Not Found | AbuQitmirLabs" />',
+    '  <meta property="og:description" content="The page you requested could not be found. Explore AbuQitmirLabs custom software, AI automation, and SEO services." />',
+    '  <meta property="og:type" content="website" />'
+  ].join('\n');
+  notFoundHtml = notFoundHtml.replace('</head>', `${notFoundHead}\n</head>`);
+  fs.writeFileSync(path.join(distDir, '404.html'), notFoundHtml, 'utf8');
+  fs.writeFileSync(path.join(rootDir, 'public', '404.html'), notFoundHtml, 'utf8');
+  console.log('✓ [SSG Rendered] /404 -> dist/404.html (Custom 404 with noindex, follow)');
+} catch (err404) {
+  console.warn('⚠️ [SSG Warning] Fallback 404 generation warning:', err404);
+  fs.writeFileSync(path.join(distDir, '404.html'), spaShellContent, 'utf8');
+}
+
+const TITLE_OVERRIDES = {
+  '/': 'Custom Software, AI & Growth Engineering | AbuQitmirLabs',
+  '/blog/ai-integration-with-legacy-systems-the-complete-2026-guide':
+    'AI in Enterprise Software: 2026 Guide | AbuQitmirLabs',
+  '/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026':
+    'Flutter vs React Native: Which Is Better in 2026?',
+  '/blog/offshore-software-development-saudi-arabia':
+    'Offshore Software Development Saudi Arabia: Save 40–60%',
+  '/case-studies/tajweedpage':
+    'TajweedPage Case Study: AI EdTech & SEO | AbuQitmirLabs',
+  '/contact': 'Contact & Book a Discovery Call | AbuQitmirLabs',
+  '/privacy': 'Privacy Policy & Data Protection | AbuQitmirLabs',
+  '/terms': 'Terms of Service & IP Ownership | AbuQitmirLabs',
+  '/about/our-process': 'Our 5-Step Software Delivery Process | AbuQitmirLabs',
+  '/web-development': 'Custom Web Application Development | AbuQitmirLabs',
+  '/local-seo-for-small-business': 'Local SEO Services for Small Business | AbuQitmirLabs',
+};
+
+function formatConciseTitle(rawTitle, pathname) {
+  const normPath = pathname
+    ? pathname.endsWith('/') && pathname !== '/'
+      ? pathname.slice(0, -1)
+      : pathname
+    : '';
+  if (normPath && TITLE_OVERRIDES[normPath]) {
+    return TITLE_OVERRIDES[normPath];
+  }
+  const cleaned = String(rawTitle || '')
+    .trim()
+    .replace(/^(?:&quot;|["'“”`])+|(?:&quot;|["'“”`])+$/gi, '')
+    .replace(/&amp;/gi, '&')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (!cleaned) return 'Custom Software, AI & Growth Engineering | AbuQitmirLabs';
+  if (cleaned.length <= 60) return cleaned;
+
+  const core = cleaned
+    .replace(/\s*[|–—-]\s*Abu\s*Qitmir\s*Labs(?:\s*\.?\s*TECH)?.*$/i, '')
+    .trim();
+
+  const withBrand = `${core} | AbuQitmirLabs`;
+  if (withBrand.length <= 60) return withBrand;
+
+  const colonParts = core.split(/\s*[:—–]\s*/);
+  if (colonParts.length > 1 && colonParts[0].trim().length >= 16) {
+    const firstPart = colonParts[0].trim();
+    const firstWithBrand = `${firstPart} | AbuQitmirLabs`;
+    if (firstWithBrand.length <= 60) return firstWithBrand;
+    if (firstPart.length <= 60 && firstPart.length >= 30) return firstPart;
+  }
+
+  if (core.length <= 60) return core;
+
+  const maxCoreWithBrand = 44;
+  const words = core.split(' ');
+  let acc = '';
+  for (const w of words) {
+    const next = acc ? `${acc} ${w}` : w;
+    if (next.length <= maxCoreWithBrand) {
+      acc = next;
+    } else {
+      break;
+    }
+  }
+  acc = acc.replace(/[,;:\-–—&]+$/, '').trim();
+  if (acc.length >= 22) {
+    return `${acc} | AbuQitmirLabs`;
+  }
+
+  let standalone = '';
+  for (const w of words) {
+    const next = standalone ? `${standalone} ${w}` : w;
+    if (next.length <= 58) {
+      standalone = next;
+    } else {
+      break;
+    }
+  }
+  return standalone.replace(/[,;:\-–—&]+$/, '').trim() || core.slice(0, 57).trim();
+}
 
 const routes = [
   '/',
@@ -228,8 +330,6 @@ const routes = [
   '/blog/saas-pricing-page-optimization-7-structural-decisions',
   '/blog/flutter-vs-native-mobile-app-development-2026',
   '/blog/ai-agent-development-agency-vs-in-house',
-  '/blog/generative-ai-chatbot-development-what-it-actually-costs-in-2026',
-  '/blog/healthcare-software-development-solutions-2026-custom-ehr-clinical-software',
   '/blog/ai-agents-cost-benefit-analysis',
   '/blog/when-to-invest-in-ai-agent',
   '/blog/the-2026-static-site-comeback-why-jamstack-won-after-all',
@@ -301,65 +401,56 @@ if (fs.existsSync(contentBlogDir)) {
   }
 }
 
+// Discover routes from public/sitemap.xml so 100% of sitemap URLs are prerendered
+const sitemapRoutes = [];
+try {
+  const pubSitemapPath = path.join(rootDir, 'public', 'sitemap.xml');
+  if (fs.existsSync(pubSitemapPath)) {
+    const smRaw = fs.readFileSync(pubSitemapPath, 'utf8');
+    const locMatches = smRaw.matchAll(/<loc>\s*https?:\/\/[^/<]+(\/[^<]*?)\s*<\/loc>/gi);
+    for (const m of locMatches) {
+      const p = (m[1] || '/').trim();
+      const normP = p.endsWith('/') && p !== '/' ? p.slice(0, -1) : p;
+      if (normP && normP !== '/local-seo/small-business' && normP !== '/local-seo-small-business' && normP !== '/local-seo-services') {
+        sitemapRoutes.push(normP);
+      }
+    }
+  }
+} catch (e) {}
+
 // Also discover all canonical blog posts from STATIC_BLOG_POSTS
 const staticBlogRoutes = Object.keys(STATIC_BLOG_POSTS || {})
   .map(slug => getCanonicalSlug(slug.trim()))
   .filter(Boolean)
   .map(slug => `/blog/${slug}`);
 
-// Merge explicitly defined routes with markdown routes, STATIC_BLOG_POSTS, and SEO_ROUTES_METADATA
+const REDIRECT_ALIAS_PATHS = new Set([
+  '/local-seo/small-business',
+  '/local-seo-small-business',
+  '/local-seo-services'
+]);
+
+// Merge explicitly defined routes with markdown routes, STATIC_BLOG_POSTS, sitemap routes, and SEO_ROUTES_METADATA
 const allRoutes = Array.from(new Set([
   ...routes,
   ...blogMarkdownRoutes,
   ...staticBlogRoutes,
+  ...sitemapRoutes,
   ...Object.keys(SEO_ROUTES_METADATA || {}).filter(k => typeof k === 'string' && k.startsWith('/'))
 ])).filter(r => {
-  if (r.startsWith('/blog/')) {
-    const s = r.slice(6);
+  const norm = r.endsWith('/') && r !== '/' ? r.slice(0, -1) : r;
+  if (REDIRECT_ALIAS_PATHS.has(norm)) return false;
+  if (norm.startsWith('/blog/')) {
+    const s = norm.slice(6);
     return getCanonicalSlug(s) === s;
   }
   return true;
 });
 
-// ⚠️ THIS IS THE FIX: Skip routes that are explicitly handled by vite.config.ts to prevent overwriting their HTML
-const customHandledRoutes = [
-  '/blog/ai-content-vs-human-content',
-  '/blog/content-calendar-strategy',
-  '/blog/brand-strategy-vs-logo-design-pakistan-sme',
-  '/blog/startup-brand-identity-checklist'
-];
-
 let successCount = 0;
 
 for (const routeUrl of allRoutes) {
-  // Skip the routes that are perfectly handled by vite.config.ts
-  if (customHandledRoutes.includes(routeUrl)) {
-    console.log(`⏭️ [SSG Skipped] ${routeUrl} (Preserved from vite.config.ts)`);
-    continue;
-  }
-
   try {
-    const existingTargetHtmlPath = routeUrl === '/'
-      ? indexHtmlTemplatePath
-      : path.join(distDir, routeUrl.replace(/^\//, ''), 'index.html');
-    if (fs.existsSync(existingTargetHtmlPath)) {
-      const existingContent = fs.readFileSync(existingTargetHtmlPath, 'utf8');
-      if (/<h1\b[^>]*>[\s\S]*?<\/h1>/i.test(existingContent) && /<h2\b[^>]*>[\s\S]*?<\/h2>/i.test(existingContent)) {
-        // Already generated by vite.config.ts (System A); preserve without overwriting
-        if (routeUrl !== '/') {
-          const cleanR = routeUrl.replace(/^\//, '');
-          const directFile = path.join(distDir, `${cleanR}.html`);
-          if (!fs.existsSync(directFile)) {
-            const parentD = path.dirname(directFile);
-            if (!fs.existsSync(parentD)) fs.mkdirSync(parentD, { recursive: true });
-            fs.writeFileSync(directFile, existingContent, 'utf8');
-          }
-        }
-        successCount++;
-        continue;
-      }
-    }
-
     const { bodyHtml, headTags, jsonLdScripts, helmet } = renderFullApp(routeUrl);
     if (!/<h1\b[^>]*>/i.test(bodyHtml || '')) {
       console.warn(`⚠️ [SSG Guard] Skipping overwrite for ${routeUrl} because SSR output lacked <h1> tag.`);
@@ -441,11 +532,15 @@ for (const routeUrl of allRoutes) {
       }
     }
 
-    const titleToUse = (seo && seo.title) || 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs';
+    const rawTitleToUse = (seo && seo.title) || 'Custom Software, AI & Growth Engineering | AbuQitmirLabs';
+    const titleToUse = formatConciseTitle(rawTitleToUse, routeUrl);
 
-    // If title was not already injected via headTags, inject it now
+    // Always enforce concise <= 60 char <title> tag
+    const escapedTitle = titleToUse.replace(/&/g, '&amp;');
     if (!/<title\b/i.test(html)) {
-      html = html.replace('</head>', `  <title>${titleToUse}</title>\n</head>`);
+      html = html.replace('</head>', `  <title>${escapedTitle}</title>\n</head>`);
+    } else {
+      html = html.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, `<title>${escapedTitle}</title>`);
     }
 
     // If meta description was not already injected, inject it now

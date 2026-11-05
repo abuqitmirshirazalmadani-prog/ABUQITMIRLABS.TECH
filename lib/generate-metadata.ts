@@ -90,12 +90,94 @@ export interface NextStyleMetadata {
 
 const SITE_URL = 'https://www.abuqitmirlabs.tech';
 const SITE_NAME = 'AbuQitmirLabs';
-const DEFAULT_TITLE = 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs';
+const DEFAULT_TITLE = 'Custom Software, AI & Growth Engineering | AbuQitmirLabs';
 const DEFAULT_DESCRIPTION =
   'Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.';
 const DEFAULT_IMAGE = 'https://www.abuqitmirlabs.tech/logo.png';
 const DEFAULT_IMAGE_ALT = 'AbuQitmirLabs Growth Engineering Firm';
 const DEFAULT_AUTHOR = 'Abu Qitmir Mohammad Shiraz Al-Madani';
+
+const TITLE_OVERRIDES: Record<string, string> = {
+  '/': 'Custom Software, AI & Growth Engineering | AbuQitmirLabs',
+  '/blog/ai-integration-with-legacy-systems-the-complete-2026-guide':
+    'AI in Enterprise Software: 2026 Guide | AbuQitmirLabs',
+  '/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026':
+    'Flutter vs React Native: Which Is Better in 2026?',
+  '/blog/offshore-software-development-saudi-arabia':
+    'Offshore Software Development Saudi Arabia: Save 40–60%',
+  '/case-studies/tajweedpage':
+    'TajweedPage Case Study: AI EdTech & SEO | AbuQitmirLabs',
+  '/contact': 'Contact & Book a Discovery Call | AbuQitmirLabs',
+  '/privacy': 'Privacy Policy & Data Protection | AbuQitmirLabs',
+  '/terms': 'Terms of Service & IP Ownership | AbuQitmirLabs',
+  '/about/our-process': 'Our 5-Step Software Delivery Process | AbuQitmirLabs',
+  '/web-development': 'Custom Web Application Development | AbuQitmirLabs',
+  '/local-seo-for-small-business': 'Local SEO Services for Small Business | AbuQitmirLabs',
+};
+
+export function formatConciseTitle(rawTitle: string, pathname?: string): string {
+  const normPath = pathname
+    ? pathname.endsWith('/') && pathname !== '/'
+      ? pathname.slice(0, -1)
+      : pathname
+    : '';
+  if (normPath && TITLE_OVERRIDES[normPath]) {
+    return TITLE_OVERRIDES[normPath];
+  }
+
+  const cleaned = stripOuterQuotes(rawTitle)
+    .replace(/&amp;/gi, '&')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (!cleaned) return DEFAULT_TITLE;
+  if (cleaned.length <= 60) return cleaned;
+
+  const core = cleaned
+    .replace(/\s*[|–—-]\s*Abu\s*Qitmir\s*Labs(?:\s*\.?\s*TECH)?.*$/i, '')
+    .trim();
+
+  const withBrand = `${core} | ${SITE_NAME}`;
+  if (withBrand.length <= 60) return withBrand;
+
+  // Try splitting on colon or em-dash to keep the primary topic + brand
+  const colonParts = core.split(/\s*[:—–]\s*/);
+  if (colonParts.length > 1 && colonParts[0].trim().length >= 16) {
+    const firstPart = colonParts[0].trim();
+    const firstWithBrand = `${firstPart} | ${SITE_NAME}`;
+    if (firstWithBrand.length <= 60) return firstWithBrand;
+    if (firstPart.length <= 60 && firstPart.length >= 30) return firstPart;
+  }
+
+  if (core.length <= 60) return core;
+
+  // Truncate cleanly at word boundary to fit " | AbuQitmirLabs" (16 chars) if possible, or standalone <= 58 chars
+  const maxCoreWithBrand = 60 - ` | ${SITE_NAME}`.length; // 44 chars
+  const words = core.split(' ');
+  let acc = '';
+  for (const w of words) {
+    const next = acc ? `${acc} ${w}` : w;
+    if (next.length <= maxCoreWithBrand) {
+      acc = next;
+    } else {
+      break;
+    }
+  }
+  acc = acc.replace(/[,;:\-–—&]+$/, '').trim();
+  if (acc.length >= 22) {
+    return `${acc} | ${SITE_NAME}`;
+  }
+
+  let standalone = '';
+  for (const w of words) {
+    const next = standalone ? `${standalone} ${w}` : w;
+    if (next.length <= 58) {
+      standalone = next;
+    } else {
+      break;
+    }
+  }
+  return standalone.replace(/[,;:\-–—&]+$/, '').trim() || core.slice(0, 57).trim();
+}
 
 function stripOuterQuotes(val?: string): string {
   return String(val || '')
@@ -121,13 +203,28 @@ function humanizePathname(pathname: string): string {
       .replace(/-/g, ' ')
       .replace(/\b\w/g, (c) => c.toUpperCase())
   );
-  return `${parts.reverse().join(' — ')} | ${SITE_NAME}`;
+  return formatConciseTitle(`${parts.reverse().join(' — ')} | ${SITE_NAME}`, pathname);
 }
 
-/**
- * Normalizes any schema input into a single consolidated `@graph` JSON-LD object
- * (Enforces AGENTS.md Critical Rule 7: Strictly Single `@graph` JSON-LD Schema Block)
- */
+const SERVICE_ROUTES = new Set([
+  '/custom-software',
+  '/mobile-app-development',
+  '/web-development',
+  '/ai-agent-development',
+  '/ai-video-creation',
+  '/seo-mastery',
+  '/digital-marketing',
+  '/local-seo-for-small-business',
+  '/local-seo-citation-building',
+  '/white-label-local-seo',
+  '/local-seo-audit',
+  '/guest-post-service',
+  '/graphics-design',
+  '/content-writing',
+  '/brand-building',
+  '/growth-engineering',
+]);
+
 export function buildConsolidatedSchemaGraph(
   canonicalUrl: string,
   title: string,
@@ -135,15 +232,25 @@ export function buildConsolidatedSchemaGraph(
   imageUrl: string,
   customSchema?: Record<string, any> | Array<Record<string, any>>
 ): { '@context': 'https://schema.org'; '@graph': Array<Record<string, any>> } {
+  const urlPath = canonicalUrl.replace(/^https?:\/\/[^/]+/i, '') || '/';
+  const cleanUrlPath = urlPath.endsWith('/') && urlPath !== '/' ? urlPath.slice(0, -1) : urlPath;
+
   const baseNodes: Array<Record<string, any>> = [
     {
       '@type': 'Organization',
       '@id': `${SITE_URL}/#organization`,
       name: SITE_NAME,
       url: `${SITE_URL}/`,
+      foundingDate: '2021',
       logo: {
         '@type': 'ImageObject',
         url: DEFAULT_IMAGE,
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        email: 'hello@abuqitmirlabs.tech',
+        contactType: 'customer support',
+        availableLanguage: ['English', 'Arabic', 'Urdu'],
       },
     },
     {
@@ -167,18 +274,78 @@ export function buildConsolidatedSchemaGraph(
     },
   ];
 
+  if (cleanUrlPath !== '/' && cleanUrlPath !== '') {
+    const segments = cleanUrlPath.replace(/^\//, '').split('/');
+    const itemListElement: Array<Record<string, any>> = [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: `${SITE_URL}/`,
+      },
+    ];
+    let accPath = '';
+    segments.forEach((seg, idx) => {
+      accPath += `/${seg}`;
+      const isLast = idx === segments.length - 1;
+      const segLabel = isLast
+        ? title.replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim()
+        : seg.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+      itemListElement.push({
+        '@type': 'ListItem',
+        position: idx + 2,
+        name: segLabel,
+        item: `${SITE_URL}${accPath}`,
+      });
+    });
+    baseNodes.push({
+      '@type': 'BreadcrumbList',
+      '@id': `${canonicalUrl}#breadcrumb`,
+      itemListElement,
+    });
+  }
+
+  if (SERVICE_ROUTES.has(cleanUrlPath) || cleanUrlPath.startsWith('/solutions/')) {
+    baseNodes.push({
+      '@type': 'Service',
+      '@id': `${canonicalUrl}#service`,
+      name: title.replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim(),
+      description,
+      url: canonicalUrl,
+      provider: { '@id': `${SITE_URL}/#organization` },
+      areaServed: ['US', 'GB', 'SA', 'AE', 'QA', 'KW', 'CA', 'AU', 'PK'],
+    });
+  } else if (cleanUrlPath.startsWith('/case-studies/') && cleanUrlPath !== '/case-studies') {
+    baseNodes.push({
+      '@type': 'TechArticle',
+      '@id': `${canonicalUrl}#article`,
+      headline: title.replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim(),
+      description,
+      url: canonicalUrl,
+      image: imageUrl,
+      datePublished: '2026-01-15T10:00:00.000Z',
+      dateModified: '2026-11-05T10:00:00.000Z',
+      author: {
+        '@type': 'Person',
+        name: DEFAULT_AUTHOR,
+      },
+      publisher: { '@id': `${SITE_URL}/#organization` },
+      mainEntityOfPage: { '@id': `${canonicalUrl}#webpage` },
+    });
+  }
+
   const customNodes: Array<Record<string, any>> = [];
   const appendItem = (item: any) => {
     if (!item || typeof item !== 'object') return;
     if (Array.isArray(item['@graph'])) {
       for (const sub of item['@graph']) {
         if (sub && typeof sub === 'object') {
-          const { '@context': _ctx, ...rest } = sub;
+          const { '@context': _ctx, aggregateRating: _ar, review: _rv, ...rest } = sub;
           customNodes.push(rest);
         }
       }
     } else {
-      const { '@context': _ctx, ...rest } = item;
+      const { '@context': _ctx, aggregateRating: _ar, review: _rv, ...rest } = item;
       customNodes.push(rest);
     }
   };
@@ -202,6 +369,10 @@ export function buildConsolidatedSchemaGraph(
         ? 'type:Organization'
         : nodeType === 'WebSite'
         ? 'type:WebSite'
+        : nodeType === 'BreadcrumbList'
+        ? 'type:BreadcrumbList'
+        : nodeType === 'Service'
+        ? 'type:Service'
         : nodeId
         ? `id:${nodeId}`
         : `json:${JSON.stringify(node).slice(0, 120)}`;
@@ -258,7 +429,7 @@ export function generateMetadata(input: MetadataInput = {}): NextStyleMetadata {
         : `${staticBlogPost.title} | ${SITE_NAME}`
       : humanizePathname(normalizedPath));
 
-  const resolvedTitle = rawTitle || DEFAULT_TITLE;
+  const resolvedTitle = formatConciseTitle(rawTitle || DEFAULT_TITLE, normalizedPath);
 
   const resolvedDescription = clampMetaDescription(
     input.description ||

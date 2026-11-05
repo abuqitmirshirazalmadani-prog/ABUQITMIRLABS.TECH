@@ -163,16 +163,16 @@ export default function HomePage() {
   return (
     <main id="main-content" className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <SEO
-        title="Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs"
+        title="Custom Software, AI & Growth Engineering | AbuQitmirLabs"
         description="Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system."
         canonical="https://www.abuqitmirlabs.tech/"
-        ogTitle="Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs"
+        ogTitle="Custom Software, AI & Growth Engineering | AbuQitmirLabs"
         ogDescription="Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system."
         ogImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
         ogImageAlt="AbuQitmirLabs Custom Software Development"
         ogType="website"
         twitterCard="summary_large_image"
-        twitterTitle="Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs"
+        twitterTitle="Custom Software, AI & Growth Engineering | AbuQitmirLabs"
         twitterDescription="Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system."
         twitterImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
         schema={growthEngineeringSchema}
@@ -187,22 +187,22 @@ export default function HomePage() {
         <div className="overflow-hidden bg-[#B9FF66] w-full border-y-2 border-black py-4 relative">
           <div className="flex whitespace-nowrap w-max animate-marquee">
             <div className="flex gap-10 text-2xl sm:text-3xl md:text-4xl font-black tracking-tight uppercase items-center text-black px-8">
-              <span>Comprehensive digital strategy</span> <Star className="fill-current" size={24} />
-              <span>End-to-end software engineering</span> <Star className="fill-current" size={24} />
-              <span>Performance-focused web development</span> <Star className="fill-current" size={24} />
-              <span>Strategic SEO and content growth</span> <Star className="fill-current" size={24} />
-              <span>Custom AI-powered automation</span> <Star className="fill-current" size={24} />
-              <span>Conversion-driven UI/UX design</span> <Star className="fill-current" size={24} />
-              <span>Scalable mobile app solutions</span> <Star className="fill-current" size={24} />
+              <span>Build Software</span> <Star className="fill-current" size={24} />
+              <span>Automate with AI</span> <Star className="fill-current" size={24} />
+              <span>Grow Organic Demand</span> <Star className="fill-current" size={24} />
+              <span>100% IP &amp; Code Ownership</span> <Star className="fill-current" size={24} />
+              <span>Senior-Led Engineering</span> <Star className="fill-current" size={24} />
+              <span>5-Step Delivery Process</span> <Star className="fill-current" size={24} />
+              <span>Global Remote Delivery</span> <Star className="fill-current" size={24} />
             </div>
             <div aria-hidden="true" className="flex gap-10 text-2xl sm:text-3xl md:text-4xl font-black tracking-tight uppercase items-center text-black px-8">
-              <span>Comprehensive digital strategy</span> <Star className="fill-current" size={24} />
-              <span>End-to-end software engineering</span> <Star className="fill-current" size={24} />
-              <span>Performance-focused web development</span> <Star className="fill-current" size={24} />
-              <span>Strategic SEO and content growth</span> <Star className="fill-current" size={24} />
-              <span>Custom AI-powered automation</span> <Star className="fill-current" size={24} />
-              <span>Conversion-driven UI/UX design</span> <Star className="fill-current" size={24} />
-              <span>Scalable mobile app solutions</span> <Star className="fill-current" size={24} />
+              <span>Build Software</span> <Star className="fill-current" size={24} />
+              <span>Automate with AI</span> <Star className="fill-current" size={24} />
+              <span>Grow Organic Demand</span> <Star className="fill-current" size={24} />
+              <span>100% IP &amp; Code Ownership</span> <Star className="fill-current" size={24} />
+              <span>Senior-Led Engineering</span> <Star className="fill-current" size={24} />
+              <span>5-Step Delivery Process</span> <Star className="fill-current" size={24} />
+              <span>Global Remote Delivery</span> <Star className="fill-current" size={24} />
             </div>
           </div>
         </div>
@@ -210,7 +210,7 @@ export default function HomePage() {
 
       <TrustSection />
       
-      {/* Comprehensive Architectural Overview & Semantic Authority Section */}
+      {/* Three Core Commercial Funnels: Build Software, Automate with AI, Grow Demand */}
       <section className="py-24 md:py-32 bg-[#060606] border-y border-white/5 relative overflow-hidden" id="authority-narrative">
         <div className="absolute inset-0 bg-[#ccff00]/[0.01] blur-3xl pointer-events-none" />
         <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-24">
@@ -219,125 +219,137 @@ export default function HomePage() {
           <div className="max-w-4xl space-y-4">
             <div className="flex flex-wrap items-center gap-3">
               <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.25em] text-[#ccff00] font-bold block">
-                Scientific Engineering &amp; Technical Authority
+                Core Commercial Funnels &amp; Technical Architecture
               </span>
               <span className="text-zinc-600 text-xs font-mono">|</span>
               <span className="text-zinc-400 text-xs font-mono">
-                Lead Architect: <span className="text-white font-semibold">Abu Qitmir</span> • Updated: <time dateTime="2026-09-28" className="text-[#ccff00]">September 2026</time>
+                Lead Architect: <span className="text-white font-semibold">Abu Qitmir</span> &bull; Founded in <time dateTime="2021" className="text-[#ccff00]">2021</time>
               </span>
             </div>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif italic text-white font-light tracking-tight leading-tight">
-              Engineering Digital Resilience &amp; <br />
+              Three Integrated Funnels: <br />
               <span className="text-neutral-400 font-sans not-italic font-extralight tracking-tighter">
-                Institutional Software Craftsmanship.
+                Build Software. Automate with AI. Grow Demand.
               </span>
             </h2>
             <p className="text-neutral-300 font-sans leading-relaxed text-base md:text-lg font-light mt-6 text-justify">
-              <strong>AbuQitmirLabs</strong> is an independent software studio and technical consulting practice. We architect modular, secure digital products for ambitious startups and global enterprises — moving beyond fragile off-the-shelf software to build owned digital assets that scale seamlessly across markets.
+              <strong>AbuQitmirLabs</strong> focuses its senior engineering and growth practice around three focused commercial pillars so buyers can engage us for a single technical milestone or a complete B2B revenue system.
             </p>
           </div>
 
-          {/* Three Pillar Cards */}
+          {/* Three Funnel Pillar Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             
-            {/* Column 1: Core Web & Enterprise Platforms */}
+            {/* Funnel 1: Build Software */}
             <div className="space-y-6 bg-[#0a0a09] border border-white/10 rounded-2xl p-8">
               <div className="border-b border-white/10 pb-4">
-                <span className="text-xs font-mono text-[#ccff00] font-bold">01 / WEB &amp; ENTERPRISE SYSTEMS</span>
+                <span className="text-xs font-mono text-[#ccff00] font-bold">01 / BUILD SOFTWARE</span>
               </div>
               <h3 className="text-xl font-sans font-bold text-white tracking-tight">
-                Custom Software &amp; Web Development Services
+                Custom Software, Web &amp; Mobile Engineering
               </h3>
               <p className="text-neutral-300 font-sans leading-relaxed text-sm font-light text-justify">
-                We design resilient digital interfaces and decoupled cloud platforms with sub-second performance. For comprehensive architectural specifications, technical frameworks, and delivery roadmaps, explore our dedicated engineering practices:
+                We architect bespoke SaaS products, enterprise cloud backends, Next.js web applications, and cross-platform iOS/Android mobile apps with 100% source code and IP transfer.
               </p>
               <div className="pt-2 space-y-3">
-                <Link to="/growth-engineering" className="inline-flex items-center gap-2 text-xs font-mono text-[#ccff00] hover:underline uppercase tracking-wider font-semibold block">
-                  <span>Growth Engineering — Software + AI + Marketing as One System</span>
+                <Link to="/custom-software" className="inline-flex items-center gap-2 text-xs font-mono text-[#ccff00] hover:underline uppercase tracking-wider font-semibold block">
+                  <span>Custom Software Development</span>
                   <ArrowRight size={14} className="inline" />
                 </Link>
-                <Link to="/web-development" className="inline-flex items-center gap-2 text-xs font-mono text-[#ccff00] hover:underline uppercase tracking-wider font-semibold block">
-                  <span>View Web Development Hub</span>
+                <Link to="/web-development" className="inline-flex items-center gap-2 text-xs font-mono text-zinc-300 hover:text-[#ccff00] hover:underline uppercase tracking-wider font-semibold block">
+                  <span>Full-Stack Web Development</span>
                   <ArrowRight size={14} className="inline" />
                 </Link>
-                <Link to="/custom-software" className="inline-flex items-center gap-2 text-xs font-mono text-zinc-400 hover:text-[#ccff00] hover:underline uppercase tracking-wider font-semibold block">
-                  <span>View Custom Software Architecture</span>
+                <Link to="/mobile-app-development" className="inline-flex items-center gap-2 text-xs font-mono text-zinc-400 hover:text-[#ccff00] hover:underline uppercase tracking-wider font-semibold block">
+                  <span>Mobile App Development (Flutter &amp; React Native)</span>
                   <ArrowRight size={14} className="inline" />
                 </Link>
               </div>
             </div>
 
-            {/* Column 2: Autonomous AI & Cognitive Automation */}
+            {/* Funnel 2: Automate with AI */}
             <div className="space-y-6 bg-[#0a0a09] border border-white/10 rounded-2xl p-8">
               <div className="border-b border-white/10 pb-4">
-                <span className="text-xs font-mono text-[#ccff00] font-bold">02 / AI &amp; COGNITIVE AUTOMATION</span>
+                <span className="text-xs font-mono text-[#ccff00] font-bold">02 / AUTOMATE WITH AI</span>
               </div>
               <h3 className="text-xl font-sans font-bold text-white tracking-tight">
-                AI Agent Development &amp; Intelligent Automation
+                Autonomous AI Agents, RAG &amp; Workflow Automation
               </h3>
               <p className="text-neutral-300 font-sans leading-relaxed text-sm font-light text-justify">
-                We develop multi-agent intelligence systems, semantic retrieval engines, and localized LLM integrations to automate operational bottlenecks. For detailed case studies and deployment methodologies, visit our specialized division:
+                We engineer production AI agents, private Retrieval-Augmented Generation (RAG) knowledge pipelines, and legacy-system integrations with role-based access controls and audit logging.
               </p>
               <div className="pt-2 space-y-3">
                 <Link to="/ai-agent-development" className="inline-flex items-center gap-2 text-xs font-mono text-[#ccff00] hover:underline uppercase tracking-wider font-semibold block">
-                  <span>View AI Agent Development</span>
+                  <span>AI Agent &amp; RAG Development</span>
                   <ArrowRight size={14} className="inline" />
                 </Link>
-                <Link to="/solutions/ai-automation" className="inline-flex items-center gap-2 text-xs font-mono text-zinc-400 hover:text-[#ccff00] hover:underline uppercase tracking-wider font-semibold block">
-                  <span>View Enterprise Automation</span>
+                <Link to="/solutions/ai-automation" className="inline-flex items-center gap-2 text-xs font-mono text-zinc-300 hover:text-[#ccff00] hover:underline uppercase tracking-wider font-semibold block">
+                  <span>Enterprise AI Workflow Automation</span>
+                  <ArrowRight size={14} className="inline" />
+                </Link>
+                <Link to="/tools/ai-readiness-score" className="inline-flex items-center gap-2 text-xs font-mono text-zinc-400 hover:text-[#ccff00] hover:underline uppercase tracking-wider font-semibold block">
+                  <span>Assess Your AI Readiness Score</span>
                   <ArrowRight size={14} className="inline" />
                 </Link>
               </div>
             </div>
 
-            {/* Column 3: Cross-Platform Mobile Engineering */}
+            {/* Funnel 3: Grow Demand */}
             <div className="space-y-6 bg-[#0a0a09] border border-white/10 rounded-2xl p-8">
               <div className="border-b border-white/10 pb-4">
-                <span className="text-xs font-mono text-[#ccff00] font-bold">03 / MOBILE APPLICATIONS</span>
+                <span className="text-xs font-mono text-[#ccff00] font-bold">03 / GROW DEMAND</span>
               </div>
               <h3 className="text-xl font-sans font-bold text-white tracking-tight">
-                Cross-Platform Mobile App Development
+                Technical SEO, Programmatic SEO &amp; Growth Engineering
               </h3>
               <p className="text-neutral-300 font-sans leading-relaxed text-sm font-light text-justify">
-                We build native-grade mobile products on Flutter and React Native with unified codebases, biometric hardware authentication, and offline synchronization. Explore our full mobile capability matrix and store launch process:
+                We compound organic customer acquisition through technical SEO, Schema.org entity graphs, AEO/GEO content systems, and conversion-engineered landing architectures.
               </p>
-              <div className="pt-2">
-                <Link to="/mobile-app-development" className="inline-flex items-center gap-2 text-xs font-mono text-[#ccff00] hover:underline uppercase tracking-wider font-semibold">
-                  <span>View Mobile App Practice</span>
-                  <ArrowRight size={14} />
+              <div className="pt-2 space-y-3">
+                <Link to="/seo-mastery" className="inline-flex items-center gap-2 text-xs font-mono text-[#ccff00] hover:underline uppercase tracking-wider font-semibold block">
+                  <span>Technical &amp; Semantic SEO Mastery</span>
+                  <ArrowRight size={14} className="inline" />
+                </Link>
+                <Link to="/growth-engineering" className="inline-flex items-center gap-2 text-xs font-mono text-zinc-300 hover:text-[#ccff00] hover:underline uppercase tracking-wider font-semibold block">
+                  <span>B2B Growth Engineering Systems</span>
+                  <ArrowRight size={14} className="inline" />
+                </Link>
+                <Link to="/local-seo-for-small-business" className="inline-flex items-center gap-2 text-xs font-mono text-zinc-400 hover:text-[#ccff00] hover:underline uppercase tracking-wider font-semibold block">
+                  <span>Local SEO &amp; Citation Engineering</span>
+                  <ArrowRight size={14} className="inline" />
                 </Link>
               </div>
             </div>
 
           </div>
 
-          {/* Core Section: Technical & Semantic SEO Navigation */}
+          {/* Core Section: Structured 5-Step Delivery Process & Case Studies */}
           <div className="bg-[#0a0a09] border border-white/10 rounded-2xl p-8 md:p-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-8 space-y-4">
                 <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.25em] text-[#ccff00] font-bold block">
-                  04 / SEARCH ARCHITECTURE &amp; DISCOVERY
+                  04 / DELIVERY GOVERNANCE &amp; VERIFIED CASE STUDIES
                 </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif italic text-white">
-                  Technical SEO &amp; Search Architecture Services
+                  Structured 5-Step Delivery Process &amp; Production Proof
                 </h2>
                 <p className="text-neutral-300 font-sans text-sm md:text-base leading-relaxed font-light text-justify">
-                  Search discoverability is an engineering discipline requiring semantic Schema.org entity networks, Core Web Vitals optimization, and generative answer engine indexing (GEO/AEO). To review our specific organic search frameworks and localized map strategies:
+                  Every project is scoped and delivered through our documented 5-stage engineering lifecycle—covering architectural discovery, interactive prototyping, test-driven sprints, security/performance QA, and full source-code handover.
                 </p>
                 <div className="flex flex-wrap gap-4 pt-2">
-                  <Link to="/seo-mastery" className="inline-flex items-center gap-2 text-xs font-mono bg-white/10 hover:bg-[#ccff00] hover:text-black text-white px-4 py-2 rounded-none transition-colors uppercase font-bold tracking-wider">
-                    Enterprise Technical SEO Hub →
+                  <Link to="/about/our-process" className="inline-flex items-center gap-2 text-xs font-mono bg-white/10 hover:bg-[#ccff00] hover:text-black text-white px-4 py-2 rounded-none transition-colors uppercase font-bold tracking-wider">
+                    Review Our 5-Step Delivery Process →
                   </Link>
-                  <Link to="/local-seo-for-small-business" className="inline-flex items-center gap-2 text-xs font-mono border border-white/20 hover:border-[#ccff00] text-neutral-300 hover:text-[#ccff00] px-4 py-2 rounded-none transition-colors uppercase font-bold tracking-wider">
-                    Local Maps &amp; Citation Strategy →
+                  <Link to="/case-studies/tajweedpage" className="inline-flex items-center gap-2 text-xs font-mono border border-white/20 hover:border-[#ccff00] text-neutral-300 hover:text-[#ccff00] px-4 py-2 rounded-none transition-colors uppercase font-bold tracking-wider">
+                    Read TajweedPage.com Case Study →
                   </Link>
                 </div>
               </div>
               <div className="lg:col-span-4 bg-zinc-950 border border-white/10 rounded-xl p-6 space-y-3">
-                <div className="text-xs font-mono text-[#ccff00] font-bold uppercase tracking-wider">Knowledge Graph Entity Integration</div>
-                <div className="text-sm font-sans text-white font-semibold">Specialized Practice Linking</div>
+                <div className="text-xs font-mono text-[#ccff00] font-bold uppercase tracking-wider">100% IP &amp; Source Code Ownership</div>
+                <div className="text-sm font-sans text-white font-semibold">Zero Vendor Lock-In</div>
                 <p className="text-xs text-neutral-400 leading-relaxed font-light">
-                  Our homepage acts as an institutional knowledge hub, distributing contextual authority to dedicated technical practices across software, mobile engineering, AI agents, and search optimization.
+                  Clients receive complete GitHub repositories, deployment pipelines, and database schemas upon milestone completion.
                 </p>
               </div>
             </div>
@@ -350,20 +362,17 @@ export default function HomePage() {
                 05 / GLOBAL DELIVERY FOOTPRINT
               </span>
               <h2 className="text-2xl sm:text-3xl font-serif italic text-white">
-                Why US, UK &amp; Global Clients Choose Our Software Company in Karachi
+                Why US, UK &amp; Global Clients Partner With Our Karachi Studio
               </h2>
               <p className="text-neutral-300 font-sans leading-relaxed text-sm md:text-base font-light text-justify">
-                Operating proudly as an elite software engineering studio based in Karachi, Pakistan, AbuQitmirLabs combines international delivery standards with optimal capital efficiency. When international leadership teams choose to work with us, they gain direct access to senior software architects, test-driven development methodologies, and 100% intellectual property ownership without administrative bureaucracy.
-              </p>
-              <p className="text-neutral-400 font-sans leading-relaxed text-sm font-light text-justify">
-                Whether you are launching a new FinTech venture, scaling an e-commerce infrastructure, or automating enterprise operations with autonomous AI agents, AbuQitmirLabs stands ready to design, deploy, and support your computational assets.
+                Founded in 2021 and headquartered in Karachi, Pakistan, AbuQitmirLabs combines international software engineering standards with capital efficiency. Partnering with our team gives you direct access to senior software architects, structured milestone governance, and 100% intellectual property ownership.
               </p>
             </div>
             <div className="lg:col-span-4 bg-[#0a0a09] border border-white/10 rounded-2xl p-6 text-center lg:text-left space-y-3">
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#ccff00] font-bold block">ENGINEERING HUB METRICS</span>
+              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#ccff00] font-bold block">ENGINEERING HUB</span>
               <h3 className="text-lg font-serif italic text-white">Karachi, Pakistan</h3>
               <p className="text-xs text-neutral-400 font-mono leading-relaxed uppercase">
-                ACTIVE LAB • ZERO-TRUST ARCHITECTURE • 100% SOURCE REPO HANDOVER
+                FOUNDED 2021 &bull; SECURITY-FIRST ARCHITECTURE &bull; 100% SOURCE REPO HANDOVER
               </p>
               <div className="pt-2">
                 <Link to="/about/our-company" className="text-xs font-mono text-[#ccff00] hover:underline uppercase tracking-wider block">
@@ -411,38 +420,36 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(204,255,0,0.03)_0%,_transparent_65%)] pointer-events-none"></div>
         <div className="max-w-4xl mx-auto relative z-10">
           <h2 className="text-3xl md:text-5xl font-serif text-white mb-4 italic tracking-tight">
-            Start your project today.
+            Book a Technical Discovery Call
           </h2>
           <p className="text-zinc-400 mb-12 text-sm md:text-base font-sans tracking-wide">
-            Complimentary technical consultation available with our senior engineering leads.
+            Schedule a 30-minute architectural consultation with our senior engineering leads. Response within 24 business hours.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
+            <Link
+              to="/contact"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#ccff00] text-black hover:bg-white font-mono text-xs font-bold tracking-[0.14em] uppercase px-8 py-4 rounded-full transition-all duration-300 h-14"
+            >
+              Book a Discovery Call
+            </Link>
             <a
               id="cta-whatsapp-link"
               href="https://wa.me/923233260859"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#25d366]/10 text-[#25d366] hover:bg-[#25d366]/20 font-sans text-xs tracking-[0.14em] uppercase border border-[#25d366]/20 px-8 py-4 rounded-full transition-all duration-300 h-14"
-              aria-label="Message on WhatsApp"
+              aria-label="Message AbuQitmirLabs on WhatsApp"
             >
-              💬 <span className="normal-case">Message on WhatsApp (+92 323 3260859)</span>
+              <span className="normal-case">WhatsApp (+92 323 3260859)</span>
             </a>
             <div className="flex flex-col gap-2">
               <a
                 id="cta-email-link-corporate"
                 href="mailto:hello@abuqitmirlabs.tech"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 text-zinc-200 hover:bg-white/10 font-sans text-xs tracking-[0.14em] uppercase border border-white/20 px-8 py-3.5 rounded-full transition-all duration-300"
-                aria-label="Send Email to hello@abuqitmirlabs.tech"
+                aria-label="Send email to hello@abuqitmirlabs.tech"
               >
-                📧 <span className="normal-case font-mono font-medium tracking-tight">hello@abuqitmirlabs.tech</span>
-              </a>
-              <a
-                id="cta-email-link-personal"
-                href="mailto:abuqitmirshirazalmadani@gmail.com"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 text-zinc-400 hover:bg-white/10 font-sans text-[10px] tracking-[0.14em] uppercase border border-white/10 px-8 py-2 rounded-full transition-all duration-300"
-                aria-label="Send Email to abuqitmirshirazalmadani@gmail.com"
-              >
-                📧 <span className="normal-case font-mono font-medium tracking-tight">abuqitmirshirazalmadani@gmail.com</span>
+                <span className="normal-case font-mono font-medium tracking-tight">hello@abuqitmirlabs.tech</span>
               </a>
             </div>
           </div>
