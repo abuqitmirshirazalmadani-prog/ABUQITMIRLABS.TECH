@@ -549,6 +549,17 @@ export function convertContentH1ToH2(
         inFaqSection = false;
       }
 
+      // 3b. If under a "Part X:" H2 section and this heading is a numbered item (`## 1. ...`), demote to `### 1. ...` (H3)
+      if (
+        hashes === '##' &&
+        !inFaqSection &&
+        /^part\s+\d+\b/i.test(lastParentH2) &&
+        /^\d+\.\s+/.test(text)
+      ) {
+        hashes = '###';
+        convertedCount++;
+      }
+
       // 4. Promote orphan H3s to H2 only if the article had 0 H2s before FAQ
       if (shouldPromoteOrphanH3s && !inFaqSection && hashes === '###') {
         hashes = '##';
@@ -749,7 +760,10 @@ export function autoFixArticle(input: ArticleInput): AutoFixResult {
   }
 
   // 3. Meta Missing -> Auto-generate from H1 / Title & opening content
-  let resolvedMeta = stripOuterQuotes(input.metaDescription || input.excerpt);
+  const rawMetaCandidate = stripOuterQuotes(input.metaDescription || input.excerpt);
+  const isCandidateKeywordList =
+    rawMetaCandidate.split(',').length >= 5 && !/\.\s|\.$/.test(rawMetaCandidate);
+  let resolvedMeta = isCandidateKeywordList ? '' : rawMetaCandidate;
   if (!resolvedMeta || resolvedMeta.length < 50) {
     resolvedMeta = generateMetaFromH1AndContent(resolvedTitle, resolvedContent);
     appliedFixes.push(`Meta description was missing/short -> Auto-generated (${resolvedMeta.length} chars)`);
@@ -760,7 +774,9 @@ export function autoFixArticle(input: ArticleInput): AutoFixResult {
     appliedFixes.push(`Clamped meta description to ${resolvedMeta.length} chars`);
   }
 
-  const resolvedExcerpt = stripOuterQuotes(input.excerpt) || resolvedMeta;
+  const rawExcerpt = stripOuterQuotes(input.excerpt);
+  const isExcerptKeywordList = rawExcerpt.split(',').length >= 5 && !/\.\s|\.$/.test(rawExcerpt);
+  const resolvedExcerpt = !rawExcerpt || isExcerptKeywordList ? resolvedMeta : rawExcerpt;
 
   // 4. Publish Date in Future -> Clamp to Today's Date
   const dateCheck = parsePublishDateAndClampFuture(input.publishedAt || input.createdAt);

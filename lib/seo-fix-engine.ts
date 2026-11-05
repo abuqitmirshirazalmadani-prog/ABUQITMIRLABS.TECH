@@ -13,7 +13,6 @@ import {
   sanitizeArticleTags,
 } from './auto-fix-article';
 import { resolveOptimizedCoverImage } from '../src/data/localCoverImageMap';
-import { STATIC_BLOG_POSTS } from '../src/data/staticBlogPosts';
 import { getCanonicalSlug } from '../src/data/canonicalRedirects';
 
 const FIX_QUEUE_FILE = path.join(process.cwd(), 'content', '.fix-queue.json');
@@ -128,33 +127,29 @@ export function readSeoReportSummary(): Record<string, any> | null {
 }
 
 /**
- * Loads existing article data for a slug by merging `STATIC_BLOG_POSTS[slug]`
- * with `content/blog/<slug>.md` so no metadata or content is ever lost.
+ * Loads existing article data for a slug from `content/blog/<slug>.md`
+ * so no metadata or content is ever lost.
  */
 function loadArticleForSlug(slug: string, fallbackTitle?: string): {
   frontmatter: Record<string, any>;
   body: string;
 } {
   const canonicalSlug = getCanonicalSlug(slug);
-  const staticPost =
-    (STATIC_BLOG_POSTS as Record<string, any>)[canonicalSlug] ||
-    (STATIC_BLOG_POSTS as Record<string, any>)[slug] ||
-    {};
 
   const frontmatter: Record<string, any> = {
-    title: String(staticPost.title || fallbackTitle || canonicalSlug).trim(),
+    title: String(fallbackTitle || canonicalSlug).trim(),
     slug: canonicalSlug,
-    excerpt: String(staticPost.excerpt || staticPost.metaDescription || '').trim(),
-    metaDescription: String(staticPost.metaDescription || staticPost.excerpt || '').trim(),
-    coverImage: String(staticPost.coverImage || '').trim(),
-    coverImageAlt: String(staticPost.coverImageAlt || staticPost.title || canonicalSlug).trim(),
-    category: String(staticPost.category || 'AI').trim(),
-    author: String(staticPost.author || 'Abu Qitmir Mohammad Shiraz Al-Madani').trim(),
-    publishedAt: String(staticPost.publishedAt || staticPost.date || '2026-05-15').trim(),
-    tags: sanitizeArticleTags(staticPost.tags, String(staticPost.category || 'AI')),
+    excerpt: '',
+    metaDescription: '',
+    coverImage: '',
+    coverImageAlt: String(fallbackTitle || canonicalSlug).trim(),
+    category: 'AI',
+    author: 'Abu Qitmir Mohammad Shiraz Al-Madani',
+    publishedAt: '2026-05-15',
+    tags: sanitizeArticleTags([], 'AI'),
   };
 
-  let body = String(staticPost.content || '').trim();
+  let body = '';
 
   const mdPath = path.join(CONTENT_BLOG_DIR, `${canonicalSlug}.md`);
   if (fs.existsSync(mdPath)) {

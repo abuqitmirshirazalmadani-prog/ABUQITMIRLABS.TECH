@@ -3525,9 +3525,12 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                             },
                                             a: ({node, href, children, ...props}) => {
                                                 if (href && href.startsWith('/')) {
+                                                    const isRelatedBlogGuide = href.startsWith('/blog/');
                                                     return (
                                                         <Link 
                                                             to={href} 
+                                                            target={isRelatedBlogGuide ? "_blank" : undefined}
+                                                            rel={isRelatedBlogGuide ? "noopener noreferrer" : undefined}
                                                             className="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer"
                                                         >
                                                             {children}

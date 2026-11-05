@@ -310,14 +310,24 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
     // 8. Unordered list (- , * , + )
     if (/^[-*+]\s+/.test(trimmed)) {
       const items: string[] = [];
-      while (i < lines.length && /^[-*+]\s+/.test(lines[i].trim())) {
-        items.push(
-          lines[i]
-            .trim()
-            .replace(/^[-*+]\s+/, '')
-            .replace(/^\[[ xX]\]\s+/, '')
-        );
-        i++;
+      while (i < lines.length) {
+        const currTrimmed = lines[i].trim();
+        if (/^[-*+]\s+/.test(currTrimmed)) {
+          items.push(
+            currTrimmed
+              .replace(/^[-*+]\s+/, '')
+              .replace(/^\[[ xX]\]\s+/, '')
+          );
+          i++;
+        } else if (
+          currTrimmed === '' &&
+          i + 1 < lines.length &&
+          /^[-*+]\s+/.test(lines[i + 1].trim())
+        ) {
+          i++;
+        } else {
+          break;
+        }
       }
       const currentListKey = blockKey++;
       elements.push(
@@ -339,9 +349,20 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
     // 9. Ordered list (1. , 2. )
     if (/^\d+[\.\)]\s+/.test(trimmed)) {
       const items: string[] = [];
-      while (i < lines.length && /^\d+[\.\)]\s+/.test(lines[i].trim())) {
-        items.push(lines[i].trim().replace(/^\d+[\.\)]\s+/, ''));
-        i++;
+      while (i < lines.length) {
+        const currTrimmed = lines[i].trim();
+        if (/^\d+[\.\)]\s+/.test(currTrimmed)) {
+          items.push(currTrimmed.replace(/^\d+[\.\)]\s+/, ''));
+          i++;
+        } else if (
+          currTrimmed === '' &&
+          i + 1 < lines.length &&
+          /^\d+[\.\)]\s+/.test(lines[i + 1].trim())
+        ) {
+          i++;
+        } else {
+          break;
+        }
       }
       const currentListKey = blockKey++;
       elements.push(
