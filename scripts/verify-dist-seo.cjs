@@ -47,6 +47,8 @@ const TITLE_OVERRIDES = {
   '/about/our-process': 'Our 5-Step Software Delivery Process | AbuQitmirLabs',
   '/web-development': 'Custom Web Application Development | AbuQitmirLabs',
   '/local-seo-for-small-business': 'Local SEO Services for Small Business | AbuQitmirLabs',
+  '/blog/offshore-ai-agent-development-partner-uae':
+    'Offshore AI Agent Development Partner UAE | AbuQitmirLabs',
 };
 
 function formatConciseTitle(rawTitle, pathname) {

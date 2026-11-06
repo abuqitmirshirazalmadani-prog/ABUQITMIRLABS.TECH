@@ -142,6 +142,8 @@ const TITLE_OVERRIDES: Record<string, string> = {
   '/about/our-process': 'Our 5-Step Software Delivery Process | AbuQitmirLabs',
   '/web-development': 'Custom Web Application Development | AbuQitmirLabs',
   '/local-seo-for-small-business': 'Local SEO Services for Small Business | AbuQitmirLabs',
+  '/blog/offshore-ai-agent-development-partner-uae':
+    'Offshore AI Agent Development Partner UAE | AbuQitmirLabs',
 };
 
 export function formatConciseTitle(rawTitle: string, pathname?: string): string {
@@ -224,13 +226,59 @@ function clampMetaDescription(desc: string): string {
   return `${(lastSpace > 110 ? sliced.slice(0, lastSpace) : sliced).replace(/[.,;:-]+$/, '')}...`;
 }
 
+const UPPERCASE_ACRONYMS = new Set([
+  'ai',
+  'uae',
+  'usa',
+  'uk',
+  'eu',
+  'seo',
+  'aeo',
+  'geo',
+  'aio',
+  'sxo',
+  'pdpl',
+  'rag',
+  'mvp',
+  'saas',
+  'b2b',
+  'gcc',
+  'ksa',
+  'sme',
+  'smes',
+  'api',
+  'llm',
+  'llms',
+  'erp',
+  'crm',
+  'roi',
+  'hipaa',
+  'soc',
+  'gdpr',
+  'difc',
+  'adgm',
+  'lms',
+  'ehr',
+  'ui',
+  'ux',
+]);
+
 function humanizePathname(pathname: string): string {
   const clean = pathname.replace(/^\/+|\/+$/g, '');
   if (!clean) return DEFAULT_TITLE;
   const parts = clean.split('/').map((segment) =>
     segment
-      .replace(/-/g, ' ')
-      .replace(/\b\w/g, (c) => c.toUpperCase())
+      .split('-')
+      .filter(Boolean)
+      .map((word) => {
+        const lower = word.toLowerCase();
+        if (lower === 'smes') return 'SMEs';
+        if (lower === 'llms') return 'LLMs';
+        if (lower === 'saas') return 'SaaS';
+        if (UPPERCASE_ACRONYMS.has(lower)) return lower.toUpperCase();
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      })
+      .join(' ')
   );
   return formatConciseTitle(`${parts.reverse().join(' — ')} | ${SITE_NAME}`, pathname);
 }
@@ -540,7 +588,7 @@ export function generateMetadata(input: MetadataInput = {}): NextStyleMetadata {
   const resolvedAuthor =
     input.author || blogAutoMeta?.articleAuthor || staticBlogPost?.author || DEFAULT_AUTHOR;
 
-  const schemaSource = input.schema || blogAutoMeta?.schemaJsonLd;
+  const schemaSource = input.schema || routeMeta?.schemaJsonLd || blogAutoMeta?.schemaJsonLd;
   const schemaGraph = buildConsolidatedSchemaGraph(
     resolvedCanonical,
     resolvedTitle,

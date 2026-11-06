@@ -4,7 +4,7 @@
   "slug": "brand-audit-checklist-pakistan",
   "excerpt": "Audit your Pakistani small business before rebranding. Score positioning, identity, website, WhatsApp, reviews and customer trust with 25 questions.",
   "metaDescription": "Audit your Pakistani small business before rebranding. Score positioning, identity, website, WhatsApp, reviews and customer trust with 25 questions.",
-  "coverImage": "/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
+  "coverImage": "/images/blog-covers/brand-audit-checklist-pakistan-905f4323.webp",
   "coverImageAlt": "Brand audit checklist for Pakistani small businesses - 25 questions before rebranding",
   "category": "Business",
   "author": "Abu Qitmir Mohammad Shiraz Al-Madani",

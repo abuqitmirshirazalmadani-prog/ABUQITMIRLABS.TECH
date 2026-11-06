@@ -116,6 +116,11 @@ function RouteSEO() {
       ? canonicalPath.slice(0, -1)
       : canonicalPath;
 
+  // Individual blog post routes render their own <SEO /> inside BlogPostPage with full Article + FAQPage schema
+  if (normalizedPath.startsWith('/blog/') && normalizedPath !== '/blog') {
+    return null;
+  }
+
   const routeSeo =
     SEO_ROUTES_METADATA[canonicalPath] ||
     SEO_ROUTES_METADATA[normalizedPath] ||

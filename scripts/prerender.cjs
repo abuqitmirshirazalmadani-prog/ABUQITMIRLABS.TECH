@@ -158,6 +158,8 @@ const TITLE_OVERRIDES = {
   '/terms': 'Terms of Service & IP Ownership | AbuQitmirLabs',
   '/about/our-process': 'Our 5-Step Software Delivery Process | AbuQitmirLabs',
   '/web-development': 'Custom Web Application Development | AbuQitmirLabs',
+  '/blog/offshore-ai-agent-development-partner-uae':
+    'Offshore AI Agent Development Partner UAE | AbuQitmirLabs',
   '/local-seo-for-small-business': 'Local SEO Services for Small Business | AbuQitmirLabs',
 };
 

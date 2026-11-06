@@ -147,6 +147,8 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "soc-2-fintech-startups": "/images/blog-covers/soc-2-fintech-startups-80cea562.webp",
   "build-brand-on-social-media": "/images/blog-covers/build-brand-on-social-media-9338c994.webp",
   "offshore-software-development-saudi-arabia": "/images/blog-covers/offshore-software-development-saudi-arabia-7826c9d9.webp",
+  "brand-audit-checklist-pakistan": "/images/blog-covers/brand-audit-checklist-pakistan-905f4323.webp",
+  "offshore-ai-agent-development-partner-uae": "/images/blog-covers/offshore-ai-agent-development-partner-uae-3970d441.webp",
   "content-brief-template": "/images/blog-covers/content-brief-template-fcc385c7.webp",
   "small-business-branding-mistakes-pakistan": "/images/blog-covers/small-business-branding-mistakes-pakistan-6d2717c9.webp",
   "brand-strategy-vs-logo-design-pakistan-sme": "/images/blog-covers/brand-strategy-vs-logo-design-pakistan-sme-b52ea078.webp",
