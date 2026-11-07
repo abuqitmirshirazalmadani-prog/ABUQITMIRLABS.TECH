@@ -276,6 +276,18 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             'meta[name="twitter:card"]',
         ];
         const cleanupDuplicateHeadTags = () => {
+            const bodyLdNodes = Array.from(document.body.querySelectorAll('script[type="application/ld+json"]'));
+            if (bodyLdNodes.length > 0) {
+                const latestBodyLd = bodyLdNodes[bodyLdNodes.length - 1];
+                const existingHeadLd = Array.from(document.head.querySelectorAll('script[type="application/ld+json"]'));
+                existingHeadLd.forEach(n => n.remove());
+                const headScript = document.createElement('script');
+                headScript.type = 'application/ld+json';
+                headScript.id = 'canonical-schema-graph';
+                headScript.textContent = latestBodyLd.textContent || '';
+                document.head.appendChild(headScript);
+                bodyLdNodes.forEach(n => n.remove());
+            }
             for (const selector of SINGLETON_SELECTORS) {
                 const nodes = Array.from(document.head.querySelectorAll(selector));
                 nodes.forEach(n => n.removeAttribute('data-rh'));
@@ -3338,46 +3350,52 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             <Breadcrumbs customItems={breadcrumbItems} disableSchema={true} />
             
             <main className="pt-36 md:pt-44 pb-20 px-6 animate-enter">
-                <div className="max-w-7xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mb-12"
-                    >
-                        <Link to="/blog" className="inline-flex items-center gap-2 text-zinc-400 hover:text-[#ccff00] transition-colors uppercase tracking-widest text-xs font-bold mb-10 group">
-                            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to The Journal
-                        </Link>
-                        
-                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight leading-[1.1] mb-8 font-serif animate-enter animate-enter-delay-1">
-                            {String(post.title || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim()}
+                <article className="max-w-7xl mx-auto" itemScope itemType="https://schema.org/BlogPosting">
+                    <header className="mb-12">
+                        <div className="mb-10" data-nosnippet>
+                            <Link to="/blog" className="inline-flex items-center gap-2 text-zinc-400 hover:text-[#ccff00] transition-colors uppercase tracking-widest text-xs font-bold group">
+                                <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to The Journal
+                            </Link>
+                        </div>
+                        {"\n\n"}
+                        <h1 itemProp="headline" className="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight leading-[1.1] mb-8 font-serif animate-enter animate-enter-delay-1">
+                            {slug === 'brand-refresh-vs-rebrand'
+                                ? "Brand Refresh vs Rebrand Pakistan: A Founder's Decision Guide"
+                                : String(post.title || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim()}
                         </h1>
-
+                        {"\n\n"}
                         <div aria-label="Article metadata" className="flex flex-wrap items-center justify-between gap-4 text-xs text-zinc-400 font-mono border-y border-zinc-800/80 py-5 mb-12">
-                            <p className="flex flex-wrap items-center gap-2.5 sm:gap-3 m-0">
-                                <span className="flex items-center gap-2 text-zinc-300">
+                            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+                                <p className="flex items-center gap-2 text-zinc-300 m-0">
                                     <Calendar size={14} className="text-[#ccff00]" />
-                                    <span>{formatDate(post.createdAt) || 'October 17, 2026'}</span>
-                                </span>
-                                <span className="text-zinc-600 select-none font-normal">{' • '}</span>
-                                <span className="flex items-center gap-2 text-zinc-300 font-medium tracking-normal">
+                                    <time itemProp="datePublished" dateTime={String(post.createdAt || '2026-11-07').slice(0, 10)}>
+                                        {formatDate(post.createdAt) || 'October 17, 2026'}
+                                    </time>
+                                </p>
+                                {"\n"}
+                                <span className="text-zinc-600 font-normal">{' • '}</span>
+                                {"\n"}
+                                <p itemProp="author" itemScope itemType="https://schema.org/Person" className="flex items-center gap-2 text-zinc-300 font-medium tracking-normal m-0">
                                     <User size={14} className="text-[#ccff00]" />
                                     <span>
-                                        By{' '}
-                                        <span className="text-white font-semibold">
+                                        {'By '}
+                                        <span itemProp="name" className="text-white font-semibold">
                                             {post.author && !post.author.toUpperCase().includes('SHIRAZ') && !post.author.toUpperCase().includes('ABUQITMIR')
                                                 ? post.author
                                                 : 'Abu Qitmir Mohammad Shiraz Al-Madani'}
                                         </span>{' '}
                                         <span className="text-zinc-400">(AbuQitmirLabs)</span>
                                     </span>
-                                </span>
-                                <span className="text-zinc-600 select-none font-normal">{' • '}</span>
-                                <span className="flex items-center gap-2 text-zinc-300" data-testid="reading-time">
+                                </p>
+                                {"\n"}
+                                <span className="text-zinc-600 font-normal">{' • '}</span>
+                                {"\n"}
+                                <p className="flex items-center gap-2 text-zinc-300 m-0" data-testid="reading-time">
                                     <Clock size={14} className="text-[#ccff00]" />
                                     <span>{calculateReadingTime(post.content)}</span>
-                                </span>
-                            </p>
-                            <div className="flex items-center gap-4 ml-auto">
+                                </p>
+                            </div>
+                            <div className="flex items-center gap-4 ml-auto" data-nosnippet>
                                 <span className="hidden md:inline-block text-zinc-400">Share:</span>
                                 <div className="flex items-center gap-2">
                                     <button 
@@ -3415,7 +3433,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                 </div>
                             </div>
                         </div>
-                    </motion.div>
+                    </header>
 
                     {post.coverImage && !post.coverImage.endsWith('logo.png') && !imageError ? (
                         <div 
@@ -3506,10 +3524,8 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                     className="xl:sticky xl:top-32 xl:order-2"
                                 />
 
-                                <motion.div 
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ delay: 0.2 }}
+                                <div 
+                                    itemProp="articleBody"
                                     data-article-content="true"
                                     className="xl:order-1 min-w-0 bg-[#0b0b0e] rounded-[2.5rem] p-8 md:p-16 border border-zinc-800/80 shadow-2xl text-zinc-200 leading-relaxed font-sans space-y-6"
                                 >
@@ -3610,7 +3626,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                     >
                                         {injectedMarkdown}
                                     </MarkdownRenderer>
-                                </motion.div>
+                                </div>
                             </div>
                         );
                     })()}
@@ -3653,6 +3669,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         <section
                             aria-label="Related Articles"
                             data-testid="related-articles-section"
+                            data-nosnippet
                             className="mt-16 pt-10 border-t border-zinc-800/80"
                         >
                             <div className="mb-8">
@@ -3725,7 +3742,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                             </div>
                         </section>
                     )}
-                </div>
+                </article>
             </main>
 
             {/* Elegant Copy Notification Toast */}

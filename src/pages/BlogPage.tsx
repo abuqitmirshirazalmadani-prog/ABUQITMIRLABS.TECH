@@ -181,21 +181,24 @@ const BlogPage = () => {
 
                         const staticMatch = staticInitialPosts.find(sp => sp.slug === cleanSlug);
                         const bestContent =
-                            staticMatch?.content && staticMatch.content.length >= (data.content?.length || 0)
+                            staticMatch?.content && staticMatch.content.trim().length > 500
+                                ? staticMatch.content
+                                : staticMatch?.content && staticMatch.content.length >= (data.content?.length || 0)
                                 ? staticMatch.content
                                 : (data.content || '');
+                        const bestTitle = staticMatch?.title || data.title || 'Untitled Article';
 
                         return {
                             id: doc.id,
                             slug: cleanSlug,
-                            title: data.title || 'Untitled Article',
-                            excerpt,
+                            title: bestTitle,
+                            excerpt: staticMatch?.excerpt || excerpt,
                             content: bestContent,
-                            coverImage: data.coverImage || data.featuredImage || data.imageUrl || data.image || 'https://www.abuqitmirlabs.tech/logo.png',
-                            coverImageAlt: data.coverImageAlt || `${data.title || 'Article'} | AbuQitmirLabs`,
-                            category: data.category || 'AI',
-                            createdAt: data.createdAt || data.date || new Date().toISOString(),
-                            author: data.author || 'AbuQitmirLabs',
+                            coverImage: staticMatch?.coverImage || data.coverImage || data.featuredImage || data.imageUrl || data.image || 'https://www.abuqitmirlabs.tech/logo.png',
+                            coverImageAlt: staticMatch?.coverImageAlt || data.coverImageAlt || `${bestTitle} | AbuQitmirLabs`,
+                            category: staticMatch?.category || data.category || 'AI',
+                            createdAt: staticMatch?.createdAt || data.createdAt || data.date || new Date().toISOString(),
+                            author: staticMatch?.author || data.author || 'AbuQitmirLabs',
                             tags: Array.isArray(data.tags) ? data.tags : (typeof data.tags === 'string' ? data.tags.split(',').map((t: string) => t.trim()).filter(Boolean) : []),
                             published: data.published
                         };
