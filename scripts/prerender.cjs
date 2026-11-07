@@ -160,6 +160,8 @@ const TITLE_OVERRIDES = {
   '/web-development': 'Custom Web Application Development | AbuQitmirLabs',
   '/blog/offshore-ai-agent-development-partner-uae':
     'Offshore AI Agent Development Partner UAE | AbuQitmirLabs',
+  '/blog/brand-refresh-vs-rebrand':
+    'Brand Refresh vs Rebrand Pakistan | AbuQitmirLabs',
   '/local-seo-for-small-business': 'Local SEO Services for Small Business | AbuQitmirLabs',
 };
 

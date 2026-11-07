@@ -144,6 +144,8 @@ const TITLE_OVERRIDES: Record<string, string> = {
   '/local-seo-for-small-business': 'Local SEO Services for Small Business | AbuQitmirLabs',
   '/blog/offshore-ai-agent-development-partner-uae':
     'Offshore AI Agent Development Partner UAE | AbuQitmirLabs',
+  '/blog/brand-refresh-vs-rebrand':
+    'Brand Refresh vs Rebrand Pakistan | AbuQitmirLabs',
 };
 
 export function formatConciseTitle(rawTitle: string, pathname?: string): string {

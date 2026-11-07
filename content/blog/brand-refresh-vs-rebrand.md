@@ -1,6 +1,6 @@
 ---
 {
-  "title": "Brand Refresh vs Rebrand Pakistan",
+  "title": "Brand Refresh vs Rebrand Pakistan: A Founder's Decision Guide",
   "seoTitle": "Brand Refresh vs Rebrand Pakistan | AbuQitmirLabs",
   "slug": "brand-refresh-vs-rebrand",
   "canonical": "https://www.abuqitmirlabs.tech/blog/brand-refresh-vs-rebrand",

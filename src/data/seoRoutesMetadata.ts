@@ -11389,14 +11389,14 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
             { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
-            { '@type': 'ListItem', position: 3, name: "Brand Refresh vs Rebrand Pakistan", item: 'https://www.abuqitmirlabs.tech/blog/brand-refresh-vs-rebrand' }
+            { '@type': 'ListItem', position: 3, name: "Brand Refresh vs Rebrand Pakistan: A Founder's Decision Guide", item: 'https://www.abuqitmirlabs.tech/blog/brand-refresh-vs-rebrand' }
           ]
         },
         {
           '@type': 'Article',
           '@id': 'https://www.abuqitmirlabs.tech/blog/brand-refresh-vs-rebrand#article',
           isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/brand-refresh-vs-rebrand#webpage' },
-          headline: "Brand Refresh vs Rebrand Pakistan",
+          headline: "Brand Refresh vs Rebrand Pakistan: A Founder's Decision Guide",
           description: "Learn whether your Pakistani business needs a visual refresh, repositioning or full rebrand. Use this practical decision matrix before hiring a designer.",
           image: "https://www.abuqitmirlabs.tech/images/blog-covers/brand-refresh-vs-rebrand-82641034.webp",
           author: {
