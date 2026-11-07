@@ -11418,7 +11418,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
                     "name": "How much does a rebrand cost in Pakistan?",
                     "acceptedAnswer": {
                               "@type": "Answer",
-                              "text": "A rebrand costs more than a refresh because strategy, identity, rollout and reprinting all change together. Price depends on scope, the number of touchpoints and the agency. Ask for an itemised quote that separates brand strategy, visual identity, website work and rollout. Compare quotes line by line rather than by the total."
+                              "text": "In Pakistan, a visual brand refresh for an SME typically ranges from PKR 50,000 to PKR 150,000, repositioning ranges from PKR 150,000 to PKR 300,000, and a full rebrand starts at PKR 300,000+ because strategy, identity, website rebuild, rollout and reprinting all change together. Ask for an itemised quote that separates brand strategy, visual identity, website work and rollout."
                     }
           },
           {

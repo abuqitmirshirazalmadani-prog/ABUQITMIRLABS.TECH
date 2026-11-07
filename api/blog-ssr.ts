@@ -511,6 +511,19 @@ export default async function handler(req: any, res: any) {
       });
     }
 
+    const ssrPostPayload = JSON.stringify({
+      slug: canonicalSlug,
+      title: cleanH1,
+      seoTitle: pageTitle,
+      excerpt: postData.excerpt || metaDesc,
+      metaDescription: metaDesc,
+      content: postData.content || '',
+      coverImage: rawCover,
+      author: postData.author || 'Abu Qitmir Mohammad Shiraz Al-Madani',
+      category: postData.category || 'Business',
+      createdAt: String(postData.createdAt || '2026-11-01').slice(0, 10),
+    }).replace(/</g, '\\u003c');
+    const ssrStateScript = `<script id="__SSR_BLOG_POST__" type="application/json">${ssrPostPayload}</script>`;
     const schemaBlock = `<script id="canonical-schema-graph" type="application/ld+json">\n${JSON.stringify({ '@context': 'https://schema.org', '@graph': graphNodes }, null, 2)}\n</script>`;
     const innerRootHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader()}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${escapeHtml(cleanH1)}</h1><article class="prose prose-invert max-w-none text-neutral-300">${htmlBlocks.join('\n')}</article></main></div>`;
 
@@ -538,11 +551,11 @@ export default async function handler(req: any, res: any) {
         .replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis, '')
         .replace(
           '</head>',
-          `  <title>${escapeHtml(pageTitle)}</title>\n  <meta name="description" content="${escapeHtml(metaDesc)}" />\n  <link rel="canonical" href="${fullCanonical}" />\n  <meta property="og:type" content="article" />\n  <meta property="og:title" content="${escapeHtml(pageTitle)}" />\n  <meta property="og:description" content="${escapeHtml(metaDesc)}" />\n  <meta property="og:url" content="${fullCanonical}" />\n  <meta property="og:image" content="${escapeHtml(ogImageUrl)}" />\n  <meta name="twitter:card" content="summary_large_image" />\n  <meta name="twitter:title" content="${escapeHtml(pageTitle)}" />\n  <meta name="twitter:description" content="${escapeHtml(metaDesc)}" />\n  <meta name="twitter:image" content="${escapeHtml(ogImageUrl)}" />\n  ${schemaBlock}\n</head>`
+          `  <title>${escapeHtml(pageTitle)}</title>\n  <meta name="description" content="${escapeHtml(metaDesc)}" />\n  <link rel="canonical" href="${fullCanonical}" />\n  <meta property="og:type" content="article" />\n  <meta property="og:title" content="${escapeHtml(pageTitle)}" />\n  <meta property="og:description" content="${escapeHtml(metaDesc)}" />\n  <meta property="og:url" content="${fullCanonical}" />\n  <meta property="og:image" content="${escapeHtml(ogImageUrl)}" />\n  <meta name="twitter:card" content="summary_large_image" />\n  <meta name="twitter:title" content="${escapeHtml(pageTitle)}" />\n  <meta name="twitter:description" content="${escapeHtml(metaDesc)}" />\n  <meta name="twitter:image" content="${escapeHtml(ogImageUrl)}" />\n  ${schemaBlock}\n  ${ssrStateScript}\n</head>`
         )
         .replace(/<div id="root"[^>]*>[\s\S]*?<\/div>/i, `<div id="root" data-rendered-route="${routeUrl}">${innerRootHtml}</div>`);
     } else {
-      finalHtml = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>${escapeHtml(pageTitle)}</title><meta name="description" content="${escapeHtml(metaDesc)}" /><link rel="canonical" href="${fullCanonical}" /><meta property="og:type" content="article" /><meta property="og:title" content="${escapeHtml(pageTitle)}" /><meta property="og:description" content="${escapeHtml(metaDesc)}" /><meta property="og:url" content="${fullCanonical}" /><meta property="og:image" content="${escapeHtml(ogImageUrl)}" />${schemaBlock}</head><body><div id="root" data-rendered-route="${routeUrl}">${innerRootHtml}</div></body></html>`;
+      finalHtml = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>${escapeHtml(pageTitle)}</title><meta name="description" content="${escapeHtml(metaDesc)}" /><link rel="canonical" href="${fullCanonical}" /><meta property="og:type" content="article" /><meta property="og:title" content="${escapeHtml(pageTitle)}" /><meta property="og:description" content="${escapeHtml(metaDesc)}" /><meta property="og:url" content="${fullCanonical}" /><meta property="og:image" content="${escapeHtml(ogImageUrl)}" />${schemaBlock}${ssrStateScript}</head><body><div id="root" data-rendered-route="${routeUrl}">${innerRootHtml}</div></body></html>`;
     }
 
     res.setHeader('Content-Type', 'text/html; charset=utf-8');

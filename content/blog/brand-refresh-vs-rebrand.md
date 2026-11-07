@@ -139,7 +139,7 @@ A written diagnosis fixes all three causes. Our [brand audit checklist for Pakis
 | Messaging | Tone tightened | Rewritten for the new audience | Rewritten from the base |
 | Website | Visual update and copy fixes | Copy, structure and offer pages rebuilt | Full redesign or rebuild |
 | Customer experience | Touchpoints made consistent | Touchpoints aligned to the new promise | Every touchpoint redesigned |
-| Cost | Low to mid | Mid | Mid to high |
+| Cost (Pakistan SME benchmark) | Low to mid (PKR 50,000 – 150,000) | Mid (PKR 150,000 – 300,000) | Mid to high (PKR 300,000+) |
 | Typical timeline | 2 to 4 weeks | 4 to 8 weeks | 8 to 14 weeks |
 | Risk | Low | Medium | High |
 | Customer recognition kept | High | Medium to high | Low to medium |
@@ -216,13 +216,13 @@ A reputation problem needs its own fix. Rebranding hides a bad reputation for a 
 
 ## Cost and Timeline: What Each Option Involves
 
-**Direct Answer:** Cost and timeline rise with scope. A refresh costs the least and takes the fewest weeks. Repositioning sits in the middle. A full rebrand costs the most because strategy, identity, rollout and reprinting all change at once. Request an itemised quote that separates strategy, design and rollout so you can compare agencies fairly.
+**Direct Answer:** Cost and timeline rise with scope. In the Pakistani SME market, a brand refresh typically ranges from PKR 50,000 to PKR 150,000 (2 to 4 weeks), repositioning sits between PKR 150,000 and PKR 300,000 (4 to 8 weeks), and a full rebrand starts at PKR 300,000+ (8 to 14 weeks) because strategy, identity, website rebuild and rollout all change together. Request an itemised quote that separates strategy, design and rollout so you can compare agencies fairly.
 
-**Basic option: brand refresh.** Logo clean-up, colour and type lock, a short brand guide, template updates for social media and documents, and profile updates. Low to mid cost.
+**Basic option: brand refresh (typically PKR 50,000 – PKR 150,000).** Logo clean-up, colour and type lock, a short brand guide, template updates for social media and documents, and profile updates.
 
-**Mid-level option: repositioning.** Everything in a refresh, plus audience definition, messaging rewrite, website copy and structure changes, and updated sales material. Mid cost.
+**Mid-level option: repositioning (typically PKR 150,000 – PKR 300,000).** Everything in a refresh, plus audience definition, messaging rewrite, website copy and structure changes, and updated sales material.
 
-**Advanced option: full rebrand.** Brand strategy, naming if needed, a complete identity system, website rebuild, packaging and signage, launch communication and phased rollout. Mid to high cost.
+**Advanced option: full rebrand (typically PKR 300,000+).** Brand strategy, naming if needed, a complete identity system, website rebuild, packaging and signage, launch communication and phased rollout.
 
 **Hidden costs to plan for:**
 
@@ -289,7 +289,7 @@ For teams scaling production architecture, explore our [custom software engineer
 ## Frequently Asked Questions
 
 ### How much does a rebrand cost in Pakistan?
-A rebrand costs more than a refresh because strategy, identity, rollout and reprinting all change together. Price depends on scope, the number of touchpoints and the agency. Ask for an itemised quote that separates brand strategy, visual identity, website work and rollout. Compare quotes line by line rather than by the total.
+In Pakistan, a visual brand refresh for an SME typically ranges from PKR 50,000 to PKR 150,000, repositioning ranges from PKR 150,000 to PKR 300,000, and a full rebrand starts at PKR 300,000+ because strategy, identity, website rebuild, rollout and reprinting all change together. Ask for an itemised quote that separates brand strategy, visual identity, website work and rollout.
 
 ### How long does a rebrand take?
 A refresh typically takes 2 to 4 weeks, repositioning 4 to 8 weeks, and a full rebrand 8 to 14 weeks including rollout. Timelines grow with the number of touchpoints, such as packaging, signage and branches. Strategy work comes first and should not be rushed, because every later step depends on it.

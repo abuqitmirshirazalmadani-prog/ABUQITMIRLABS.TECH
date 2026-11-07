@@ -58,7 +58,7 @@
       "includeFiles": "public/*sitemap*.xml"
     },
     "api/blog-ssr.ts": {
-      "includeFiles": "{dist/spa-shell.html,content/blog/**,firebase-applet-config.json}"
+      "includeFiles": "{dist/spa-shell.html,dist/blog/**,public/blog/**,content/blog/**,firebase-applet-config.json}"
     }
   },
   "rewrites": [

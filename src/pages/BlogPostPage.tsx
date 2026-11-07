@@ -64,11 +64,24 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         return <Navigate to={`/blog/${canonicalSlug}`} replace />;
     }
     
-    // Retrieve cached or static post for instant, zero-delay rendering (preferring richer static content when available)
+    const getSsrInjectedPost = (targetSlug?: string): Post | null => {
+        if (!targetSlug || typeof document === 'undefined') return null;
+        try {
+            const el = document.getElementById('__SSR_BLOG_POST__');
+            if (!el || !el.textContent) return null;
+            const parsed = JSON.parse(el.textContent);
+            if (parsed && (parsed.slug === targetSlug || getCanonicalSlug(parsed.slug || '') === getCanonicalSlug(targetSlug))) {
+                return parsed as Post;
+            }
+        } catch {}
+        return null;
+    };
+
+    // Retrieve cached, static, or SSR-injected post for instant, zero-delay rendering
     const cachedPost = (slug ? getCachedPost(slug) : null) as Post | null;
     const staticFallback = (slug && STATIC_POSTS_MAP[slug]) 
       ? (STATIC_POSTS_MAP[slug] as Post) 
-      : null;
+      : getSsrInjectedPost(slug);
     const resolveBestInitial = (cached: Post | null, stat: Post | null): Post | null => {
         if (!cached) return stat;
         if (!stat) return cached;
@@ -95,7 +108,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         setImageError(false);
         const currentInitial = resolveBestInitial(
             (slug ? getCachedPost(slug) : null) as Post | null,
-            (slug && STATIC_POSTS_MAP[slug] ? (STATIC_POSTS_MAP[slug] as Post) : null)
+            (slug && STATIC_POSTS_MAP[slug] ? (STATIC_POSTS_MAP[slug] as Post) : getSsrInjectedPost(slug))
         );
         
         if (currentInitial) {
