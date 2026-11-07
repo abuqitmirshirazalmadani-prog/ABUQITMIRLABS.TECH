@@ -326,8 +326,9 @@ Explore the full [brand building](/brand-building) cluster, browse more articles
 
 ### Related Guides
 
-- [25-Question Brand Audit Checklist for Pakistan](/blog/brand-audit-checklist-pakistan)
+- [Brand Audit Checklist for Pakistani Small Businesses](/blog/brand-audit-checklist-pakistan)
+- [The Complete Brand Building Guide](/blog/complete-brand-building-guide)
+- [How to Build a Brand on Social Media](/blog/build-brand-on-social-media)
 - [Small Business Branding Mistakes in Pakistan](/blog/small-business-branding-mistakes-pakistan)
 - [Brand Identity vs Logo Design: What Pakistani SMEs Actually Need](/blog/brand-strategy-vs-logo-design-pakistan-sme)
-- [Performance Marketing vs Brand Marketing: A Budget Allocation Framework for Startups](/blog/performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups)
-- [Complete Brand Building Guide](/blog/complete-brand-building-guide)
+

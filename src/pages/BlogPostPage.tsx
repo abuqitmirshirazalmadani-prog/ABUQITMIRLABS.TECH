@@ -14,7 +14,6 @@ import { generateBlogPostMeta } from '../utils/seoUtils';
 import { calculateReadingTime } from '../utils/readingTime';
 import { getCanonicalSlug } from '../data/canonicalRedirects';
 import { resolveOptimizedCoverImage } from '../data/localCoverImageMap';
-import NewsletterSubscriptionForm from '../components/NewsletterSubscriptionForm';
 import TableOfContents, { slugifyHeading } from '../components/TableOfContents';
 
 import { getCachedPost, setCachedPost } from '../utils/blogCache';
@@ -3353,12 +3352,13 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                             {String(post.title || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim()}
                         </h1>
 
-                        <div role="doc-subtitle" aria-label="Article metadata" className="flex flex-wrap items-center justify-between gap-4 text-xs text-zinc-400 font-mono border-y border-zinc-800/80 py-5 mb-12">
+                        <div aria-label="Article metadata" className="flex flex-wrap items-center justify-between gap-4 text-xs text-zinc-400 font-mono border-y border-zinc-800/80 py-5 mb-12">
                             <p className="flex flex-wrap items-center gap-2.5 sm:gap-3 m-0">
                                 <span className="flex items-center gap-2 text-zinc-300">
-                                    <Calendar size={14} className="text-[#ccff00]" /> {formatDate(post.createdAt) || 'October 17, 2026'}
+                                    <Calendar size={14} className="text-[#ccff00]" />
+                                    <span>{formatDate(post.createdAt) || 'October 17, 2026'}</span>
                                 </span>
-                                <span className="text-zinc-600 select-none font-normal" aria-hidden="true">{' • '}</span>
+                                <span className="text-zinc-600 select-none font-normal">{' • '}</span>
                                 <span className="flex items-center gap-2 text-zinc-300 font-medium tracking-normal">
                                     <User size={14} className="text-[#ccff00]" />
                                     <span>
@@ -3371,9 +3371,10 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                         <span className="text-zinc-400">(AbuQitmirLabs)</span>
                                     </span>
                                 </span>
-                                <span className="text-zinc-600 select-none font-normal" aria-hidden="true">{' • '}</span>
+                                <span className="text-zinc-600 select-none font-normal">{' • '}</span>
                                 <span className="flex items-center gap-2 text-zinc-300" data-testid="reading-time">
-                                    <Clock size={14} className="text-[#ccff00]" /> {calculateReadingTime(post.content)}
+                                    <Clock size={14} className="text-[#ccff00]" />
+                                    <span>{calculateReadingTime(post.content)}</span>
                                 </span>
                             </p>
                             <div className="flex items-center gap-4 ml-auto">
@@ -3654,29 +3655,20 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                             data-testid="related-articles-section"
                             className="mt-16 pt-10 border-t border-zinc-800/80"
                         >
-                            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-                                <div>
-                                    <h2 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight font-serif">
-                                        Related Articles
-                                    </h2>
-                                </div>
-                                <Link
-                                    to="/blog"
-                                    className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-zinc-400 hover:text-[#ccff00] transition-colors group"
-                                >
-                                    View All Articles
-                                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                                </Link>
+                            <div className="mb-8">
+                                <h2 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight font-serif">
+                                    Related Articles
+                                </h2>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <ul className="grid grid-cols-1 md:grid-cols-3 gap-6 list-none p-0 m-0">
                                 {relatedPosts.map((related) => {
                                     const relatedFullPost = STATIC_POSTS_MAP[related.slug];
                                     const relatedReadingTime = calculateReadingTime(
                                         relatedFullPost?.content || related.excerpt || ''
                                     );
                                     return (
-                                        <article
+                                        <li
                                             key={related.slug}
                                             className="group bg-[#0b0b0e] border border-zinc-800/80 hover:border-[#ccff00]/50 rounded-[2rem] p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-xl"
                                         >
@@ -3717,17 +3709,22 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform text-[#ccff00]" />
                                                 </Link>
                                             </div>
-                                        </article>
+                                        </li>
                                     );
                                 })}
+                            </ul>
+
+                            <div className="mt-8 flex justify-end">
+                                <Link
+                                    to="/blog"
+                                    className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-zinc-400 hover:text-[#ccff00] transition-colors group"
+                                >
+                                    View All Articles
+                                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                                </Link>
                             </div>
                         </section>
                     )}
-
-                    {/* Newsletter Subscription Callout */}
-                    <div className="mt-16">
-                        <NewsletterSubscriptionForm variant="sidebar" source="blog" />
-                    </div>
                 </div>
             </main>
 

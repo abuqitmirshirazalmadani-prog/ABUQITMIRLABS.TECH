@@ -40,7 +40,7 @@ import NewsletterSubscriptionForm from './NewsletterSubscriptionForm';
 
 const Footer = () => {
     return (
-        <section id="contact" className="bg-[#ccff00] border-t-[8px] border-black w-full py-24 relative overflow-hidden text-black font-display">
+        <footer id="contact" role="contentinfo" aria-label="Site Footer" data-nosnippet className="bg-[#ccff00] border-t-[8px] border-black w-full py-24 relative overflow-hidden text-black font-display">
             <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
                 {/* Top Label */}
                 <div className="flex items-center justify-center">
@@ -112,7 +112,7 @@ const Footer = () => {
                 </div>
 
                 {/* Footer Bottom */}
-                <footer role="contentinfo" aria-label="Site Footer" className="pt-20">
+                <div className="pt-20">
                     <div className="flex flex-col md:flex-row gap-10 items-center justify-between">
                         {/* Brand */}
                         <div className="flex flex-col gap-2 origin-left">
@@ -290,9 +290,9 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                </footer>
+                </div>
             </div>
-        </section>
+        </footer>
     );
 };
 
