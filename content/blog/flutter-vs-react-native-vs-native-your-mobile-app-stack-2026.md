@@ -8,7 +8,7 @@
   "coverImageAlt": "An infographic titled \"A Decade of Trade-offs\" vs \"The Convergence\" detailing mobile app framework history. It compares pre-2024 trade-offs (Flutter, React Native, Native) with the predicted 2026 convergence, where framework choice is no longer about technology performance but rather equal considerations of ecosystem, developer skill, and business need.",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-09-12",
   "tags": [
     "MobileAppDevelopment #Flutter #ReactNative #AppDevelopment #TechGuide #abuqitmirlabs"
   ]

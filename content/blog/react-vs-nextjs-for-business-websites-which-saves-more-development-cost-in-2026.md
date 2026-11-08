@@ -8,7 +8,7 @@
   "coverImageAlt": "React vs Next.js for Business Websites: Which Saves More Development Cost in 2026? by AbuQitmirLabs",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-05-31",
   "tags": [
     "React vs Next.js",
     "React development services",

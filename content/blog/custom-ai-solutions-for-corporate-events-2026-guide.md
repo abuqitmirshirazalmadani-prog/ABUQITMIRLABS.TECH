@@ -8,7 +8,7 @@
   "coverImageAlt": "Custom AI solutions for corporate events — EventFlow dashboard showing attendee check-in metrics, speaker schedules, and revenue analytics on a laptop screen with holographic UI elements floating around it. Dark premium background with gold and navy accents. Professional corporate event technology scene.",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-31",
   "tags": [
     "CorporateEvents #EventManagement #AIEvents #EventTech #EventFlow #AbuQitmirLabs #EventSoftware #AICopilot #EventAutomation #CustomSoftware #EventIndustry #Events2026 #EventPlanner #EventProfs #TechEvents"
   ]

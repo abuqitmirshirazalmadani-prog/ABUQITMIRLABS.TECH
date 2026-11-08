@@ -8,7 +8,7 @@
   "coverImageAlt": "Common Software Development Mistakes Businesses Make (2026 Guide) by AbuQitmirLabs",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-05-21",
   "tags": [
     "software development mistakes",
     "startup software problems",

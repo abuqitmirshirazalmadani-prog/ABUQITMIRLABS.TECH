@@ -8,7 +8,7 @@
   "coverImageAlt": "AI and Automation Are Rapidly Changing Custom Software Development by AbuQitmirLabs",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-05-16",
   "tags": [
     "AI software development",
     "business automation software",

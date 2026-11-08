@@ -8,7 +8,7 @@
   "coverImageAlt": "WordPress vs ASP.NET for Enterprise 2026 | Complete Comparison Guide",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-04",
   "tags": [
     "WordPress vs ASP.NET enterprise",
     "WordPress vs ASP.NET",

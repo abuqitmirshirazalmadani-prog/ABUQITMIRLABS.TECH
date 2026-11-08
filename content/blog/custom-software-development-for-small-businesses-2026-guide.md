@@ -8,7 +8,7 @@
   "coverImageAlt": "Custom Software Development for Small Businesses (2026 Guide) by AbuQitmirLabs",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-05-16",
   "tags": [
     "custom software development",
     "small business software solutions",

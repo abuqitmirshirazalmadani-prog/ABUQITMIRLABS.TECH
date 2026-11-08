@@ -8,7 +8,7 @@
   "coverImageAlt": "Infographic comparing obsolete keyword-based SEO — single keywords, exact match, keyword stuffing, thin content — against a 2026 semantic SEO framework built on entity SEO, topic clusters, pillar content, and schema markup, titled \"Semantic SEO Strategy: The Complete 2026 Framework\" by AbuQitmirLabs",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-08-31",
   "tags": [
     "SEO #SemanticSEO #TechnicalSEO #ContentStrategy #abuqitmirlabs"
   ]

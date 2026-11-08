@@ -8,7 +8,7 @@
   "coverImageAlt": "What is Digital Transformation? The Complete 2026 Guide for Business Leaders",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-06",
   "tags": [
     "DigitalTransformation #BusinessStrategy #CustomSoftware #AIforBusiness #KarachiTech #AbuQitmirLabs"
   ]

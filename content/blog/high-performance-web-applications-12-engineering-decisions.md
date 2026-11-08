@@ -8,7 +8,7 @@
   "coverImageAlt": "High-performance web applications guide by AbuQitmirLabs featuring 12 engineering decisions, with a laptop showing a 99/100 performance score and Core Web Vitals metrics, highlighting faster load times, higher conversions, better user experience, scalable architecture, rendering strategy, edge computing, database optimization, caching, and monitoring.",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-09-23",
   "tags": [
     "high-performance web applications",
     "web performance optimization",

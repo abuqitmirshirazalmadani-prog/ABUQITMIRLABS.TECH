@@ -145,15 +145,29 @@ const BRAND_ASSETS: BrandAsset[] = [
     previewUrl: '/brand-assets/03-LinkedIn/linkedin-personal-profile-800x800.png'
   },
   {
+    id: 'linkedin-founder-banner',
+    name: 'LinkedIn Founder Banner (AI Engineering + Custom Software)',
+    category: 'linkedin',
+    categoryLabel: 'LinkedIn',
+    platformIcon: 'IN',
+    dimensions: '1584 × 396 px',
+    fileSize: '142 KB',
+    type: 'PNG (Founder Executive Cover)',
+    purpose: 'AI Engineering + Custom Software | AI Agents • RAG Systems • SaaS • Web Platforms | Build systems that are ready to scale.',
+    downloadUrl: '/brand-assets/03-LinkedIn/linkedin-founder-banner-1584x396.png',
+    previewUrl: '/brand-assets/03-LinkedIn/linkedin-founder-banner-1584x396.png',
+    isBanner: true
+  },
+  {
     id: 'linkedin-personal-banner',
     name: 'LinkedIn Personal Profile Banner',
     category: 'linkedin',
     categoryLabel: 'LinkedIn',
     platformIcon: 'IN',
     dimensions: '1584 × 396 px',
-    fileSize: '52 KB',
+    fileSize: '142 KB',
     type: 'PNG (Background Cover)',
-    purpose: 'Personal Profile Header Banner for Shiraz Almadani & Team',
+    purpose: 'Personal Profile Header Banner for Shiraz Almadani & Team (Safe-Zone Engineered)',
     downloadUrl: '/brand-assets/03-LinkedIn/linkedin-personal-banner-1584x396.png',
     previewUrl: '/brand-assets/03-LinkedIn/linkedin-personal-banner-1584x396.png',
     isBanner: true
@@ -335,6 +349,290 @@ export default function BrandAssetsPage() {
   const [downloadingId, setDownloadingId] = useState<string | null>(null);
   const [downloadSuccessId, setDownloadSuccessId] = useState<string | null>(null);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const [showLinkedInAvatarOverlay, setShowLinkedInAvatarOverlay] = useState<boolean>(false);
+
+  // Instant Client-Side High-Resolution Canvas Generator for Founder LinkedIn Banner (1x 1584x396 or 2x 3168x792)
+  const downloadFounderBannerCanvas = (scale: 1 | 2 = 1) => {
+    const id = scale === 2 ? 'founder-banner-2x' : 'founder-banner-canvas';
+    const w = 1584 * scale;
+    const h = 396 * scale;
+    const filename = scale === 2
+      ? 'abuqitmirlabs-linkedin-founder-banner-3168x792-retina.png'
+      : 'linkedin-founder-banner-1584x396.png';
+
+    setDownloadingId(id);
+    setStatusMessage(`Generating & downloading ${filename}...`);
+
+    try {
+      const canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) throw new Error('Canvas 2D context unavailable');
+
+      ctx.scale(scale, scale);
+
+      // 1. Deep Onyx Background
+      const bgGrad = ctx.createLinearGradient(0, 0, 1584, 396);
+      bgGrad.addColorStop(0, '#050505');
+      bgGrad.addColorStop(0.5, '#090b0d');
+      bgGrad.addColorStop(1, '#050505');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, 1584, 396);
+
+      // 2. Subtle Radial Glow
+      const radGrad = ctx.createRadialGradient(1080, 198, 20, 1080, 198, 560);
+      radGrad.addColorStop(0, 'rgba(204, 255, 0, 0.11)');
+      radGrad.addColorStop(0.6, 'rgba(204, 255, 0, 0.03)');
+      radGrad.addColorStop(1, 'rgba(5, 5, 5, 0)');
+      ctx.fillStyle = radGrad;
+      ctx.fillRect(0, 0, 1584, 396);
+
+      // 3. Architectural Grid
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+      ctx.lineWidth = 1;
+      for (let x = 0; x <= 1584; x += 44) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, 396);
+        ctx.stroke();
+      }
+      for (let y = 0; y <= 396; y += 44) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(1584, y);
+        ctx.stroke();
+      }
+
+      // 4. Top & Bottom Accent Bars
+      ctx.fillStyle = '#ccff00';
+      ctx.fillRect(0, 0, 1584, 3);
+      ctx.fillStyle = '#18181b';
+      ctx.fillRect(0, 393, 1584, 3);
+      ctx.fillStyle = '#ccff00';
+      ctx.fillRect(346, 393, 924, 3);
+
+      // 5. Left Safe-Zone Geometry
+      ctx.strokeStyle = 'rgba(204, 255, 0, 0.22)';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.arc(172, 266, 112, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.arc(172, 266, 136, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.strokeStyle = 'rgba(204, 255, 0, 0.48)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(0, 88);
+      ctx.lineTo(296, 88);
+      ctx.stroke();
+
+      ctx.fillStyle = '#ccff00';
+      ctx.beginPath();
+      ctx.arc(296, 88, 4, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Vertical Divider
+      ctx.strokeStyle = '#27272a';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(346, 38);
+      ctx.lineTo(346, 358);
+      ctx.stroke();
+      ctx.fillStyle = '#ccff00';
+      ctx.fillRect(344.5, 128, 3, 140);
+
+      // 6. Top Brand Emblem + AbuQitmirLabs Wordmark
+      ctx.fillStyle = '#ccff00';
+      ctx.beginPath();
+      ctx.arc(402, 62, 22, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#050505';
+      ctx.beginPath();
+      ctx.moveTo(402, 48);
+      ctx.lineTo(414, 74);
+      ctx.lineTo(408, 74);
+      ctx.lineTo(402, 60);
+      ctx.lineTo(396, 74);
+      ctx.lineTo(390, 74);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.font = '800 25px Inter, system-ui, -apple-system, sans-serif';
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText('AbuQitmir', 436, 71);
+      const abuqitmirW = ctx.measureText('AbuQitmir').width;
+      ctx.fillStyle = '#ccff00';
+      ctx.fillText('Labs', 436 + abuqitmirW + 2, 71);
+
+      // Studio Domain Pill
+      ctx.fillStyle = '#111610';
+      ctx.strokeStyle = 'rgba(204, 255, 0, 0.42)';
+      ctx.lineWidth = 1.3;
+      ctx.beginPath();
+      ctx.roundRect(676, 46, 220, 32, 16);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = '#ccff00';
+      ctx.beginPath();
+      ctx.arc(695, 62, 4, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.font = '700 13px "JetBrains Mono", monospace';
+      ctx.fillStyle = '#e4e4e7';
+      ctx.fillText('ABUQITMIRLABS.TECH', 710, 67);
+
+      // 7. Headline: AI Engineering + Custom Software
+      ctx.font = '800 46px Inter, system-ui, -apple-system, sans-serif';
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText('AI Engineering ', 378, 156);
+      const aiEngW = ctx.measureText('AI Engineering ').width;
+      ctx.fillStyle = '#ccff00';
+      ctx.fillText('+ Custom Software', 378 + aiEngW, 156);
+
+      // 8. Pillars Box: AI Agents • RAG Systems • SaaS • Web Platforms
+      ctx.fillStyle = 'rgba(18, 23, 16, 0.94)';
+      ctx.strokeStyle = 'rgba(204, 255, 0, 0.42)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.roundRect(378, 194, 884, 60, 12);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = '#ccff00';
+      ctx.beginPath();
+      ctx.roundRect(378, 194, 6, 60, 3);
+      ctx.fill();
+
+      ctx.font = '700 24px "JetBrains Mono", monospace';
+      let px = 408;
+      const py = 233;
+      const pillars = ['AI Agents', 'RAG Systems', 'SaaS', 'Web Platforms'];
+      pillars.forEach((p, idx) => {
+        ctx.fillStyle = '#f4f4f5';
+        ctx.fillText(p, px, py);
+        px += ctx.measureText(p).width + 24;
+        if (idx < pillars.length - 1) {
+          ctx.fillStyle = '#ccff00';
+          ctx.fillText('•', px, py);
+          px += ctx.measureText('•').width + 24;
+        }
+      });
+
+      // 9. Tagline: Build systems that are ready to scale.
+      ctx.fillStyle = 'rgba(204, 255, 0, 0.14)';
+      ctx.strokeStyle = '#ccff00';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.roundRect(378, 292, 36, 36, 8);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.font = '700 18px "JetBrains Mono", monospace';
+      ctx.fillStyle = '#ccff00';
+      ctx.fillText('>_', 385, 316);
+
+      ctx.font = '700 30px Inter, system-ui, -apple-system, sans-serif';
+      ctx.fillStyle = '#e4e4e7';
+      ctx.fillText('Build systems that are ', 430, 321);
+      const buildW = ctx.measureText('Build systems that are ').width;
+      ctx.fillStyle = '#ccff00';
+      ctx.fillText('ready to scale.', 430 + buildW, 321);
+
+      // 10. Right Node Card
+      ctx.fillStyle = '#0b0e0b';
+      ctx.strokeStyle = '#27272a';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.roundRect(1326, 46, 216, 304, 18);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = '#080a08';
+      ctx.strokeStyle = 'rgba(204, 255, 0, 0.26)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.roundRect(1340, 60, 188, 276, 12);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = '#ccff00';
+      ctx.beginPath();
+      ctx.arc(1358, 80, 3.5, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.font = '700 10px "JetBrains Mono", monospace';
+      ctx.fillStyle = '#ccff00';
+      ctx.fillText('SCALE // 99.9%', 1432, 84);
+
+      // Node edges
+      const nodes = [
+        { x: 1434, y: 132, label: 'AI', active: true },
+        { x: 1384, y: 198, label: 'RAG', active: false },
+        { x: 1484, y: 198, label: 'SaaS', active: false },
+        { x: 1434, y: 264, label: 'WEB', active: true }
+      ];
+      ctx.strokeStyle = 'rgba(204, 255, 0, 0.55)';
+      ctx.lineWidth = 1.8;
+      [[0, 1], [0, 2], [1, 3], [2, 3], [1, 2]].forEach(([a, b]) => {
+        ctx.beginPath();
+        ctx.moveTo(nodes[a].x, nodes[a].y);
+        ctx.lineTo(nodes[b].x, nodes[b].y);
+        ctx.stroke();
+      });
+
+      nodes.forEach((n) => {
+        ctx.fillStyle = n.active ? '#13190e' : '#111318';
+        ctx.strokeStyle = n.active ? '#ccff00' : '#e4e4e7';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 19, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.font = '700 11px "JetBrains Mono", monospace';
+        ctx.fillStyle = n.active ? '#ccff00' : '#ffffff';
+        const tw = ctx.measureText(n.label).width;
+        ctx.fillText(n.label, n.x - tw / 2, n.y + 4);
+      });
+
+      ctx.font = '700 10px "JetBrains Mono", monospace';
+      ctx.fillStyle = '#a1a1aa';
+      ctx.fillText('PRODUCTION-GRADE', 1384, 318);
+
+      canvas.toBlob((blob) => {
+        if (!blob) {
+          triggerDownload('/brand-assets/03-LinkedIn/linkedin-founder-banner-1584x396.png', filename, id);
+          return;
+        }
+        const blobUrl = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = blobUrl;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setTimeout(() => window.URL.revokeObjectURL(blobUrl), 2000);
+
+        setDownloadingId(null);
+        setDownloadSuccessId(id);
+        setStatusMessage(`✓ ${filename} downloaded successfully!`);
+        setTimeout(() => {
+          setDownloadSuccessId(null);
+          setStatusMessage(null);
+        }, 3500);
+      }, 'image/png', 1.0);
+    } catch {
+      triggerDownload('/brand-assets/03-LinkedIn/linkedin-founder-banner-1584x396.png', filename, id);
+    }
+  };
 
   const filteredAssets = selectedCategory === 'all' 
     ? BRAND_ASSETS 
@@ -533,6 +831,136 @@ export default function BrandAssetsPage() {
           </div>
         </div>
 
+        {/* ================================================================= */}
+        {/* FEATURED SPOTLIGHT: LINKEDIN FOUNDER BANNER (1584 x 396)          */}
+        {/* ================================================================= */}
+        <div className="bg-zinc-900/80 border-2 border-[#ccff00]/40 rounded-2xl p-6 sm:p-8 mb-16 shadow-2xl shadow-[#ccff00]/5">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#ccff00]/15 border border-[#ccff00]/40 text-[#ccff00] text-xs font-mono font-bold uppercase tracking-wider mb-2">
+                <span>Featured Founder Asset · 1584 × 396 px (4:1 LinkedIn Spec)</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white">
+                LinkedIn Founder Profile Banner
+              </h2>
+              <p className="text-sm text-zinc-400 mt-1">
+                Engineered with LinkedIn left profile-photo safe zone (<code className="text-[#ccff00] font-mono">x &lt; 346px</code>) so your circular photo never covers the copy.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onClick={() => setShowLinkedInAvatarOverlay((prev) => !prev)}
+                className={`px-3.5 py-2 rounded-lg text-xs font-mono font-semibold border transition-all cursor-pointer ${
+                  showLinkedInAvatarOverlay
+                    ? 'bg-[#ccff00]/20 border-[#ccff00] text-[#ccff00]'
+                    : 'bg-zinc-950 border-zinc-700 text-zinc-300 hover:border-zinc-500'
+                }`}
+              >
+                {showLinkedInAvatarOverlay ? '✓ Safe-Zone Overlay Active' : 'Preview LinkedIn Avatar Safe-Zone'}
+              </button>
+            </div>
+          </div>
+
+          {/* Live Banner Preview */}
+          <div className="relative rounded-xl overflow-hidden border border-zinc-800 bg-[#050505] mb-6 shadow-2xl">
+            <img
+              src="/brand-assets/03-LinkedIn/linkedin-founder-banner-1584x396.png"
+              alt="LinkedIn Founder Banner — AI Engineering + Custom Software | AI Agents • RAG Systems • SaaS • Web Platforms | Build systems that are ready to scale."
+              width={1584}
+              height={396}
+              className="w-full h-auto block object-contain"
+            />
+
+            {/* Optional Simulated LinkedIn Circular Profile Picture Overlay */}
+            {showLinkedInAvatarOverlay && (
+              <div className="absolute left-[4.5%] bottom-[6%] w-[15.5%] aspect-square rounded-full border-4 border-[#ccff00] bg-zinc-900/95 flex flex-col items-center justify-center text-center p-2 shadow-2xl pointer-events-none">
+                <span className="text-[10px] sm:text-xs font-mono font-bold text-[#ccff00] uppercase">LinkedIn</span>
+                <span className="text-[9px] sm:text-[11px] text-zinc-300 font-medium">Profile Photo Zone</span>
+              </div>
+            )}
+          </div>
+
+          {/* Copy Breakdown & Download Actions */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center bg-zinc-950/90 border border-zinc-800/90 rounded-xl p-5">
+            <div className="lg:col-span-6 space-y-1.5 font-mono text-xs">
+              <div className="text-zinc-500 uppercase tracking-wider text-[11px]">Exact Embedded Banner Copy:</div>
+              <div className="text-white font-bold text-sm sm:text-base">
+                AI Engineering <span className="text-[#ccff00]">+ Custom Software</span>
+              </div>
+              <div className="text-zinc-200">
+                AI Agents <span className="text-[#ccff00]">•</span> RAG Systems <span className="text-[#ccff00]">•</span> SaaS <span className="text-[#ccff00]">•</span> Web Platforms
+              </div>
+              <div className="text-zinc-300">
+                Build systems that are <span className="text-[#ccff00] font-semibold">ready to scale.</span>
+              </div>
+            </div>
+
+            <div className="lg:col-span-6 flex flex-wrap items-center lg:justify-end gap-3">
+              <button
+                type="button"
+                onClick={() =>
+                  triggerDownload(
+                    '/brand-assets/03-LinkedIn/linkedin-founder-banner-1584x396.png',
+                    'abuqitmirlabs-linkedin-founder-banner-1584x396.png',
+                    'featured-founder-png'
+                  )
+                }
+                disabled={downloadingId === 'featured-founder-png'}
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#ccff00] text-black font-bold text-xs sm:text-sm rounded-xl hover:bg-[#b8e600] active:scale-95 transition-all cursor-pointer shadow-lg shadow-[#ccff00]/15"
+              >
+                {downloadSuccessId === 'featured-founder-png' ? (
+                  <>
+                    <Check className="w-4 h-4 text-black" />
+                    <span>Downloaded PNG!</span>
+                  </>
+                ) : (
+                  <>
+                    <Download className="w-4 h-4" />
+                    <span>Download PNG (1584 × 396)</span>
+                  </>
+                )}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => downloadFounderBannerCanvas(2)}
+                disabled={downloadingId === 'founder-banner-2x'}
+                className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-zinc-900 border border-[#ccff00]/40 text-[#ccff00] font-semibold text-xs sm:text-sm rounded-xl hover:bg-zinc-800 active:scale-95 transition-all cursor-pointer"
+              >
+                {downloadSuccessId === 'founder-banner-2x' ? (
+                  <>
+                    <Check className="w-4 h-4 text-[#ccff00]" />
+                    <span>2x Retina Downloaded!</span>
+                  </>
+                ) : (
+                  <>
+                    <Sparkles className="w-4 h-4" />
+                    <span>Download 2x Retina (3168 × 792)</span>
+                  </>
+                )}
+              </button>
+
+              <button
+                type="button"
+                onClick={() =>
+                  triggerDownload(
+                    '/brand-assets/03-LinkedIn/linkedin-founder-banner-1584x396.svg',
+                    'abuqitmirlabs-linkedin-founder-banner-1584x396.svg',
+                    'featured-founder-svg'
+                  )
+                }
+                disabled={downloadingId === 'featured-founder-svg'}
+                className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-zinc-900 border border-zinc-700 text-zinc-200 font-medium text-xs sm:text-sm rounded-xl hover:border-zinc-500 hover:text-white active:scale-95 transition-all cursor-pointer"
+              >
+                <Download className="w-4 h-4" />
+                <span>SVG</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
         {/* Color Palette Tokens */}
         <div className="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl p-6 sm:p-8 mb-16 backdrop-blur-sm">
           <div className="flex items-center gap-3 mb-6">
@@ -572,7 +1000,7 @@ export default function BrandAssetsPage() {
         {/* Category Filters */}
         <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar">
           {[
-            { id: 'all', label: 'All Assets (21)' },
+            { id: 'all', label: `All Assets (${BRAND_ASSETS.length})` },
             { id: 'gmb', label: 'Google Business Profile' },
             { id: 'youtube', label: 'YouTube' },
             { id: 'linkedin', label: 'LinkedIn' },

@@ -8,7 +8,7 @@
   "coverImageAlt": "A 15-point evaluation framework for UK businesses vetting app development agencies. Covers live portfolio testing, IP ownership, code repository access, GDPR compliance, and real 2026 cost benchmarks for UK and offshore development.",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-09-22",
   "tags": [
     "app development agency UK",
     "mobile app development company UK",

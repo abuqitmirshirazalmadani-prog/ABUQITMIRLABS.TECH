@@ -8,7 +8,7 @@
   "coverImageAlt": "Two people reviewing a Web Dev Contract document at a desk",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-06-20",
   "tags": [
     "website development contract",
     "web development questions",

@@ -8,7 +8,7 @@
   "coverImageAlt": "Checklist-style diagram showing 12 due diligence categories for offshore software development — IP ownership, developer access, references, pricing, security, and regional cost benchmarks",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-09-03",
   "tags": [
     "offshore software development",
     "offshore development usa",

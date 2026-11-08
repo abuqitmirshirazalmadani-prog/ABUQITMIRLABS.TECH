@@ -8,7 +8,7 @@
   "coverImageAlt": "Custom Software Development Company Karachi Pakistan",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-06-23",
   "tags": [
     "custom software development company",
     "Karachi Pakistan software",

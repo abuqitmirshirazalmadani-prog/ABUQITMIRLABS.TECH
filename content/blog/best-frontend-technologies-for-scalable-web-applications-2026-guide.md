@@ -8,7 +8,7 @@
   "coverImageAlt": "Best Frontend Technologies for Scalable Web Applications (2026 Guide) by AbuQitmirLabs",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-06-06",
   "tags": [
     "scalable frontend technologies",
     "React framework",

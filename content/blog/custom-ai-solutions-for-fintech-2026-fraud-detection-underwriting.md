@@ -8,7 +8,7 @@
   "coverImageAlt": "Custom AI Solutions for Fintech",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-08-08",
   "tags": [
     "fintech software development company",
     "fintech software development",

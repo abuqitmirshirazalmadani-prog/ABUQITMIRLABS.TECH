@@ -8,7 +8,7 @@
   "coverImageAlt": "Custom Web Development vs. Website Templates",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-08-14",
   "tags": [
     "Custom Web Development",
     "Website Templates",

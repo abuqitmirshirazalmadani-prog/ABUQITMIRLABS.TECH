@@ -8,7 +8,7 @@
   "coverImageAlt": "Custom Retail & Logistics Software Development",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-27",
   "tags": [
     "Logistics #Retail #SupplyChain #CustomSoftware #AI #AbuQitmirlabs"
   ]

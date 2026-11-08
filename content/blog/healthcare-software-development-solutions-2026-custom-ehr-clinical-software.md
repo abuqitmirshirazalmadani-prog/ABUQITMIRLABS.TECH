@@ -8,7 +8,7 @@
   "coverImageAlt": "Healthcare Software Development Solutions 2026 | Custom EHR & Clinical Software by AbuQitmirLabs",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-24",
   "tags": [
     "healthcare software development solutions",
     "custom EHR development",

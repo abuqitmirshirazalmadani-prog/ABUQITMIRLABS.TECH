@@ -8,7 +8,7 @@
   "coverImageAlt": "Infographic titled \"A Wrong Phone Number Can Hurt Your Rankings\" by AbuQitmirLabs, featuring a Google Maps search on a smartphone showing a coffee shop listing flagged with a \"Wrong Number\" warning, alongside a Google Business Profile performance dashboard and a hand-written Local SEO Checklist covering citations, reviews, on-page optimization, and monthly reporting, promoting a tiered 15-directory citation-building checklist",
   "category": "Business",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-09-08",
   "tags": [
     "local seo citation building",
     "nap consistency",

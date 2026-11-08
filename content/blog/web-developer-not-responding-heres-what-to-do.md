@@ -8,7 +8,7 @@
   "coverImageAlt": "A business owner sitting at a desk looking at a phone with an unanswered message thread",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-06-22",
   "tags": [
     "web developer unresponsive",
     "freelancer disappeared",

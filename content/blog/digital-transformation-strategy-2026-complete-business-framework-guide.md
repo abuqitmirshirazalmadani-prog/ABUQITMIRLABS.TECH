@@ -8,7 +8,7 @@
   "coverImageAlt": "Digital Transformation Strategy 2026",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-11",
   "tags": [
     "digital transformation strategy 2026",
     "digital transformation framework",

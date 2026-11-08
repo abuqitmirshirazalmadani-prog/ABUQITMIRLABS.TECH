@@ -8,7 +8,7 @@
   "coverImageAlt": "Fintech App Development Guide 2026 for Startups & Businesses by AbuQitmirLabs",
   "category": "App",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-05-15",
   "tags": [
     "fintech app development",
     "fintech apps",

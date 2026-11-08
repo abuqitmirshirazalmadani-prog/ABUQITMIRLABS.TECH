@@ -8,7 +8,7 @@
   "coverImageAlt": "AbuQitmirLabs Healthcare Software Development infographic featuring a doctor using a patient dashboard interface, highlighting HIPAA compliance, FHIR interoperability, Business Associate Agreements (BAAs), and PHI safeguards, alongside 2026 cost benchmarks for a basic EHR system ($40K–$80K), telemedicine platform ($30K–$70K), and custom healthcare app ($80K–$200K+)",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-09-04",
   "tags": [
     "healthcare software development",
     "hipaa compliant software",

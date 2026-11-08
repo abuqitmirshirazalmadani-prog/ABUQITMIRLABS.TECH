@@ -8,7 +8,7 @@
   "coverImageAlt": "Custom Software vs SaaS — Which Is Better for Businesses? by AbuQitmirLabs",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-05-19",
   "tags": [
     "custom software vs SaaS",
     "SaaS vs custom apps",

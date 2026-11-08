@@ -8,7 +8,7 @@
   "coverImageAlt": "mobile app development company",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-08-03",
   "tags": [
     "MobileAppDevelopment #FlutterDevelopment #ReactNative #AppDiscoverability #AbuQitmirLabs"
   ]

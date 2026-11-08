@@ -8,7 +8,7 @@
   "coverImageAlt": "Mobile App Development Cost 2026 | Complete Pricing Guide",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-18",
   "tags": [
     "mobile app development cost",
     "Flutter app development",

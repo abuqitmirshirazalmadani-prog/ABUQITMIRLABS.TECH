@@ -8,7 +8,7 @@
   "coverImageAlt": "Custom website development timeline",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-06-19",
   "tags": [
     "custom website development",
     "web development red flags",

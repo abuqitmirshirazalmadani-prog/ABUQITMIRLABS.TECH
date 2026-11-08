@@ -8,7 +8,7 @@
   "coverImageAlt": "AbuQitmirLabs promotional banner explaining when off-the-shelf SaaS fails and custom software makes sense, showing SaaS tools with 53% idle licenses and 68% integration overhead contrasted with a custom business dashboard. The graphic highlights build-vs-buy-vs-buy-and-extend, an AI-driven inflection point, scoring matrix, transition playbook, five warning signs, and five mistakes to avoid.",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-09-25",
   "tags": [
     "tailor-made software solutions",
     "custom software vs SaaS",

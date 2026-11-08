@@ -8,7 +8,7 @@
   "coverImageAlt": "Infographic titled \"Guide to Compliance-First Fintech Architecture\" comparing a photo app bug (minor issue) to a fintech ledger bug (regulatory inquiry), showing three compliance standards — PCI DSS, KYC/AML, SOC 2 — core design decisions (secure design, data isolation, least privilege access, logging, monitoring, disaster recovery), illustrative tech stack tools, and 2026 cost benchmark ranges for early-stage startup, growth stage, and established enterprise fintech builds",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-09-01",
   "tags": [
     "fintech software development",
     "fintech compliance",

@@ -54,14 +54,12 @@ const formatDateShort = (timestamp: any) => {
             date = new Date(timestamp.seconds * 1000);
         } else if (timestamp instanceof Date) {
             date = timestamp;
+        } else if (typeof timestamp === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(timestamp.trim())) {
+            date = new Date(`${timestamp.trim()}T00:00:00Z`);
         } else {
             date = new Date(timestamp);
         }
         if (isNaN(date.getTime())) return 'Recent';
-        const maxAllowed = Date.now() + 86400000;
-        if (date.getTime() > maxAllowed) {
-            date = new Date();
-        }
         return date.toLocaleDateString('en-US', {
             day: 'numeric',
             month: 'short',
@@ -121,9 +119,10 @@ const BlogPage = () => {
     });
     const [loading, setLoading] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState<string>('All');
-    const [visibleCount, setVisibleCount] = useState<number>(12);
+    const [searchQuery, setSearchQuery] = useState<string>('');
+    const [visibleCount, setVisibleCount] = useState<number>(36);
 
-    const CATEGORIES = ["All", "AI", "Software", "Business", "App", "Development"];
+    const CATEGORIES = ["All", "AI", "Software", "Development", "Business", "Branding & Design", "Marketing & SEO", "App"];
 
     useEffect(() => {
         let isMounted = true;
@@ -177,7 +176,7 @@ const BlogPage = () => {
 
                         const rawSlug = data.slug || doc.id;
                         let cleanSlug = String(rawSlug).replace(/^\/+/, '').replace(/^blog\//, '');
-                        cleanSlug = KNOWN_CANONICAL_SLUG_MAP[cleanSlug] || cleanSlug;
+                        cleanSlug = KNOWN_CANONICAL_SLUG_MAP[cleanSlug] || getCanonicalSlug(cleanSlug) || cleanSlug;
 
                         const staticMatch = staticInitialPosts.find(sp => sp.slug === cleanSlug);
                         const bestContent =
@@ -204,56 +203,30 @@ const BlogPage = () => {
                         };
                     }) as Post[];
 
-                    // Helper to normalize strings for robust deduplication (slugs and titles)
-                    const normalizeKey = (str?: string): string => {
+                    const normalizeExact = (str?: string): string => {
                         if (!str) return '';
                         return str
                             .toLowerCase()
-                            .replace(/[^a-z0-9]/g, '')
-                            .replace(/(2026|guide|complete|abuqitmirlabs|the)/g, '');
+                            .replace(/\s*\|\s*abuqitmirlabs.*$/i, '')
+                            .replace(/[^a-z0-9]/g, '');
                     };
-
-                    // Collect normalized keys from Firestore posts (primary source of truth)
-                    const firestoreSlugs = new Set(fetchedPosts.map(p => p.slug));
-                    const firestoreNormSlugs = new Set(fetchedPosts.map(p => normalizeKey(p.slug)).filter(Boolean));
-                    const firestoreNormTitles = new Set(fetchedPosts.map(p => normalizeKey(p.title)).filter(Boolean));
 
                     const staticPosts = getStaticBlogList() as unknown as Post[];
 
-                    // Strictly filter out any static post that duplicates a Firestore post
-                    const uniqueStatic = staticPosts.filter(sp => {
-                        if (firestoreSlugs.has(sp.slug)) return false;
-                        const normSlug = normalizeKey(sp.slug);
-                        if (normSlug && firestoreNormSlugs.has(normSlug)) return false;
-                        const normTitle = normalizeKey(sp.title);
-                        if (normTitle && firestoreNormTitles.has(normTitle)) return false;
-                        
-                        // Check partial overlap with any Firestore post
-                        for (const fp of fetchedPosts) {
-                            const fpNormTitle = normalizeKey(fp.title);
-                            if (normTitle && fpNormTitle && (normTitle.includes(fpNormTitle) || fpNormTitle.includes(normTitle))) {
-                                return false;
-                            }
-                            const fpNormSlug = normalizeKey(fp.slug);
-                            if (normSlug && fpNormSlug && (normSlug.includes(fpNormSlug) || fpNormSlug.includes(normSlug))) {
-                                return false;
-                            }
-                        }
-                        return true;
-                    });
-
-                    // Final deduplication pass guaranteeing no duplicate titles or slugs appear
+                    // Prioritize curated static posts first so their synced dates/titles/covers are preserved,
+                    // then merge any additional Firestore-only posts without substring collisions.
                     const seenSlugs = new Set<string>();
                     const seenTitles = new Set<string>();
                     const combined: Post[] = [];
 
-                    for (const p of [...fetchedPosts, ...uniqueStatic]) {
-                        const normSlug = normalizeKey(p.slug) || p.slug.toLowerCase();
-                        const normTitle = normalizeKey(p.title) || p.title.toLowerCase();
-                        if (!seenSlugs.has(normSlug) && !seenTitles.has(normTitle)) {
+                    for (const p of [...staticPosts, ...fetchedPosts]) {
+                        const canonSlug = KNOWN_CANONICAL_SLUG_MAP[p.slug] || getCanonicalSlug(p.slug) || p.slug;
+                        const normSlug = canonSlug.toLowerCase().trim();
+                        const normTitle = normalizeExact(p.title);
+                        if (!seenSlugs.has(normSlug) && (!normTitle || !seenTitles.has(normTitle))) {
                             seenSlugs.add(normSlug);
-                            seenTitles.add(normTitle);
-                            combined.push(p);
+                            if (normTitle) seenTitles.add(normTitle);
+                            combined.push({ ...p, slug: canonSlug });
                         }
                     }
 
@@ -287,22 +260,65 @@ const BlogPage = () => {
         };
     }, []);
 
-    const filteredPosts = selectedCategory === 'All' 
-        ? posts 
-        : posts.filter(p => {
-            const cat = typeof p.category === 'string' ? p.category.toLowerCase() : '';
-            const filter = typeof selectedCategory === 'string' ? selectedCategory.toLowerCase() : '';
-            const tags = Array.isArray(p.tags) ? p.tags.map((t: any) => String(t || '').toLowerCase()) : [];
-            const title = typeof p.title === 'string' ? p.title.toLowerCase() : '';
-            return (filter && cat.includes(filter)) || tags.some((t: string) => filter && t.includes(filter)) || (filter && title.includes(filter));
-        });
+    const filteredPosts = posts.filter(p => {
+        const cat = typeof p.category === 'string' ? p.category.toLowerCase() : '';
+        const tags = Array.isArray(p.tags) ? p.tags.map((t: any) => String(t || '').toLowerCase()) : [];
+        const title = typeof p.title === 'string' ? p.title.toLowerCase() : '';
+        const slug = typeof p.slug === 'string' ? p.slug.toLowerCase() : '';
+        const excerpt = typeof p.excerpt === 'string' ? p.excerpt.toLowerCase() : '';
+
+        // 1. Search Query Filter
+        if (searchQuery.trim()) {
+            const q = searchQuery.toLowerCase().trim();
+            const matchesSearch =
+                title.includes(q) ||
+                slug.includes(q) ||
+                cat.includes(q) ||
+                excerpt.includes(q) ||
+                tags.some((t: string) => t.includes(q));
+            if (!matchesSearch) return false;
+        }
+
+        // 2. Category Filter
+        if (selectedCategory === 'All') return true;
+        if (selectedCategory === 'Branding & Design') {
+            return (
+                cat.includes('brand') ||
+                cat.includes('design') ||
+                title.includes('brand') ||
+                title.includes('design') ||
+                title.includes('logo') ||
+                title.includes('ui/ux') ||
+                tags.some((t: string) => t.includes('brand') || t.includes('design') || t.includes('logo'))
+            );
+        }
+        if (selectedCategory === 'Marketing & SEO') {
+            return (
+                cat.includes('marketing') ||
+                cat.includes('seo') ||
+                cat.includes('content') ||
+                title.includes('seo') ||
+                title.includes('marketing') ||
+                title.includes('content') ||
+                title.includes('geo') ||
+                tags.some((t: string) => t.includes('seo') || t.includes('marketing') || t.includes('content'))
+            );
+        }
+
+        const filter = selectedCategory.toLowerCase();
+        return (
+            (filter && cat.includes(filter)) ||
+            tags.some((t: string) => filter && t.includes(filter)) ||
+            (filter && title.includes(filter))
+        );
+    });
 
     const featuredPost = filteredPosts[0] || posts[0];
     const displayedPosts = filteredPosts.slice(0, visibleCount);
 
     useEffect(() => {
-        setVisibleCount(12);
-    }, [selectedCategory]);
+        setVisibleCount(36);
+    }, [selectedCategory, searchQuery]);
 
     return (
         <div className="min-h-screen bg-[#050505]">
@@ -442,9 +458,24 @@ const BlogPage = () => {
 
                         {/* ALL BLOG POSTS SECTION */}
                         <div className="space-y-12">
-                            <div className="flex items-end justify-between border-b border-white/5 pb-8">
-                                <h3 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter">The journal</h3>
-                                <div className="text-zinc-600 text-xs font-black uppercase tracking-widest">{filteredPosts.length} Articles Found</div>
+                            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/5 pb-8">
+                                <div>
+                                    <h3 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter">The journal</h3>
+                                    <div className="text-zinc-500 text-xs font-black uppercase tracking-widest mt-2">
+                                        Showing {displayedPosts.length} of {filteredPosts.length} Published Articles
+                                    </div>
+                                </div>
+
+                                {/* Instant Search Bar */}
+                                <div className="w-full md:w-96">
+                                    <input
+                                        type="search"
+                                        value={searchQuery}
+                                        onChange={(e) => setSearchQuery(e.target.value)}
+                                        placeholder="Search articles by title, topic, or slug..."
+                                        className="w-full px-5 py-3.5 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-zinc-500 text-sm focus:outline-none focus:border-blue-500 transition-colors"
+                                    />
+                                </div>
                             </div>
 
                             <div className="flex flex-col lg:flex-row gap-12">
@@ -532,13 +563,20 @@ const BlogPage = () => {
                                 </div>
 
                                 {visibleCount < filteredPosts.length && (
-                                    <div className="mt-14 flex justify-center">
+                                    <div className="mt-14 flex flex-wrap items-center justify-center gap-4">
                                         <button
                                             type="button"
-                                            onClick={() => setVisibleCount(prev => prev + 12)}
-                                            className="px-8 py-4 rounded-full bg-white/5 hover:bg-blue-600 text-white border border-white/10 hover:border-blue-500 font-black uppercase tracking-widest text-xs transition-all shadow-lg"
+                                            onClick={() => setVisibleCount(prev => prev + 24)}
+                                            className="px-8 py-4 rounded-full bg-white/5 hover:bg-blue-600 text-white border border-white/10 hover:border-blue-500 font-black uppercase tracking-widest text-xs transition-all shadow-lg cursor-pointer"
                                         >
-                                            Load More Articles ({filteredPosts.length - visibleCount} Remaining)
+                                            Load 24 More ({filteredPosts.length - visibleCount} Remaining)
+                                        </button>
+                                        <button
+                                            type="button"
+                                            onClick={() => setVisibleCount(filteredPosts.length)}
+                                            className="px-8 py-4 rounded-full bg-blue-600/20 hover:bg-blue-600 text-blue-300 hover:text-white border border-blue-500/40 font-black uppercase tracking-widest text-xs transition-all shadow-lg cursor-pointer"
+                                        >
+                                            Show All {filteredPosts.length} Articles
                                         </button>
                                     </div>
                                 )}

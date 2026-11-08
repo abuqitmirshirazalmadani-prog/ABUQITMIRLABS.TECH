@@ -8,7 +8,7 @@
   "coverImageAlt": "React Development Trends 2026-2030 | Future of Web Development",
   "category": "Business",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-06-25",
   "tags": [
     "React development trends 2026",
     "NextJS development",

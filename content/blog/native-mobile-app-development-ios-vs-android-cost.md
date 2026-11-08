@@ -8,7 +8,7 @@
   "coverImageAlt": "AbuQitmirLabs promotional banner comparing iOS and Android native mobile app development costs in 2026, featuring two smartphones, cost breakdowns, Android fragmentation premium, revenue per user differences, six key cost factors, and a founder-focused decision framework.",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-09-24",
   "tags": [
     "native mobile app development",
     "iOS app development cost",

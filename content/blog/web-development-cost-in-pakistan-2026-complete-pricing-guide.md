@@ -8,7 +8,7 @@
   "coverImageAlt": "Web Development Cost in Pakistan 2026 using React and Next.js technologies",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-06-18",
   "tags": [
     "web development cost pakistan 2026",
     "website development pricing pakistan",

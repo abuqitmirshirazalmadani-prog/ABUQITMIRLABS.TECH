@@ -8,7 +8,7 @@
   "coverImageAlt": "Split brain visual showing neural connectivity decline when using AI tools, with EEG data pattern overlay and downward critical thinking trend line",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-05-15",
+  "publishedAt": "2026-10-16",
   "tags": [
     "AI cognitive offloading",
     "AI critical thinking decline",

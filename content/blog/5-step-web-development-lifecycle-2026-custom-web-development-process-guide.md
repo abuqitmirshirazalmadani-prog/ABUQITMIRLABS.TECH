@@ -8,7 +8,7 @@
   "coverImageAlt": "\"The 5-Step Web Development Lifecycle\"",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-01",
   "tags": [
     "WebDevelopmentLifecycle #WebDevelopmentProcess #CustomWebDevelopment #WebDesign2026 #UIUXDesign #FrontendDevelopment #BackendDevelopment #WebDevelopment #DigitalTransformation #ResponsiveDesign #WebAppDevelopment #KarachiTech #PakistanTech #AbuQitmirLabs #B2BWebDevelopment #LandingPageDesign #WebsiteDevelopment #CoreWebVitals #WebPerformance #CustomSoftware"
   ]

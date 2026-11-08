@@ -8,7 +8,7 @@
   "coverImageAlt": "Local Business Visibility 2026: SEO + GEO + AIO + AEO + SXO",
   "category": "Business",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-08-02",
   "tags": [
     "LocalSEO #GEO #AEO #AISearch #LocalBusiness #AbuQitmirLabs"
   ]

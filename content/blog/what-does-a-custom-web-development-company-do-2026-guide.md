@@ -8,7 +8,7 @@
   "coverImageAlt": "Custom web development vs template builder YouTube thumbnail — AbuQitmirLabs",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-26",
   "tags": [
     "CustomWebDevelopment #WebDevelopment #B2BWebDevelopment #SEO #FullStack #DigitalTransformation #AbuQitmirLabs"
   ]

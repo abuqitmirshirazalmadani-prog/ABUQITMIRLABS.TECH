@@ -8,7 +8,7 @@
   "coverImageAlt": "Why Custom Web Development Matters in 2026 | Build vs Buy Guide",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-02",
   "tags": [
     "why custom web development matters",
     "custom web development benefits",

@@ -8,7 +8,7 @@
   "coverImageAlt": "Model Collapse in AI 2026 | What It Is, Why It Happens, and What Businesses Must Know by AbuQitmirLabs",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-14",
   "tags": [
     "model collapse AI",
     "synthetic data poisoning",

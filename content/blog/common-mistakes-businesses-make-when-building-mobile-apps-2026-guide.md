@@ -8,7 +8,7 @@
   "coverImageAlt": "Common Mistakes Businesses Make When Building Mobile Apps (2026 Guide) by AbuQitmirLabs",
   "category": "App",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-05-16",
   "tags": [
     "app development mistakes",
     "startup app problems",

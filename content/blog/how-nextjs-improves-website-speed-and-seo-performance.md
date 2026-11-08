@@ -8,7 +8,7 @@
   "coverImageAlt": "How Next.js Improves Website Speed and SEO Performance by AbuQitmirLabs",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-06-03",
   "tags": [
     "next js SEO optimization",
     "fast loading websites",

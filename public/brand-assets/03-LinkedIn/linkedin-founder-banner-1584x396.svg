@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1584" height="396" viewBox="0 0 1584 396">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050505" />
+      <stop offset="45%" stop-color="#0a0c0e" />
+      <stop offset="100%" stop-color="#050505" />
+    </linearGradient>
+    <linearGradient id="limeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4ff00" />
+      <stop offset="100%" stop-color="#99cc00" />
+    </linearGradient>
+  </defs>
+  <rect width="1584" height="396" fill="url(#bgGrad)" />
+  <rect x="0" y="0" width="1584" height="3" fill="url(#limeGrad)" />
+  <g transform="translate(378, 46)">
+    <circle cx="22" cy="22" r="22" fill="url(#limeGrad)" />
+    <path d="M22 8 L33 33 L27 33 L22 21 L17 33 L11 33 Z" fill="#050505" />
+    <text x="56" y="30" font-family="Inter, sans-serif" font-weight="800" font-size="24" fill="#ffffff">AbuQitmir<tspan fill="#ccff00">Labs</tspan></text>
+  </g>
+  <text x="378" y="162" font-family="Inter, sans-serif" font-weight="800" font-size="45" fill="#ffffff">AI Engineering <tspan fill="#ccff00">+ Custom Software</tspan></text>
+  <text x="378" y="236" font-family="JetBrains Mono, monospace" font-weight="700" font-size="23" fill="#f4f4f5">AI Agents <tspan fill="#ccff00">•</tspan> RAG Systems <tspan fill="#ccff00">•</tspan> SaaS <tspan fill="#ccff00">•</tspan> Web Platforms</text>
+  <text x="378" y="322" font-family="Inter, sans-serif" font-weight="700" font-size="29" fill="#e4e4e7">Build systems that are <tspan fill="#ccff00">ready to scale.</tspan></text>
+</svg>

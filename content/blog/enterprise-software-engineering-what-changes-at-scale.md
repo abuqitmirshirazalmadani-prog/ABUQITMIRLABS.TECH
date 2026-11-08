@@ -8,7 +8,7 @@
   "coverImageAlt": "Enterprise software engineering guide showing scalable architecture, observability, security, compliance, and automated deployment on a laptop dashboard.",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-09-19",
   "tags": [
     "enterprise software engineering",
     "enterprise software architecture",

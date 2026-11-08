@@ -8,7 +8,7 @@
   "coverImageAlt": "Flutter vs React Native in 2026 comparison infographic showing two smartphones, framework trade-offs, market statistics, a 5-question decision framework, and AbuQitmirLabs branding.",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-09-21",
   "tags": [
     "Flutter app development",
     "React Native vs Flutter 2026",

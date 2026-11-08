@@ -8,7 +8,7 @@
   "coverImageAlt": "Generative AI chatbot costs in 2026 infographic showing rule-based, RAG-based, and agentic chatbot pricing, cost factors, GPT-6 Astra features, and AbuQitmirLabs branding.",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-09-11",
   "tags": [
     "generative AI chatbot development cost",
     "AI chatbot cost 2026",

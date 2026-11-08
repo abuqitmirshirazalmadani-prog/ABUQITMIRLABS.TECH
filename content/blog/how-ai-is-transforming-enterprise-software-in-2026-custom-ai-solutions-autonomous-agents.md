@@ -8,7 +8,7 @@
   "coverImageAlt": "Modern software development studio in Karachi, Pakistan",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-06-29",
   "tags": [
     "AI transforming enterprise software",
     "autonomous AI agents",

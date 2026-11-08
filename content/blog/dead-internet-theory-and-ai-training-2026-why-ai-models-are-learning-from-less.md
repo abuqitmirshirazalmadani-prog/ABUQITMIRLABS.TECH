@@ -8,7 +8,7 @@
   "coverImageAlt": "Dead Internet Theory and AI Training",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-16",
   "tags": [
     "Dead Internet Theory",
     "AI training data",

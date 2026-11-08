@@ -8,7 +8,7 @@
   "coverImageAlt": "How Much Does Custom Software Development Cost in 2026? by AbuQitmirLabs",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-05-18",
   "tags": [
     "software development cost",
     "custom software pricing",

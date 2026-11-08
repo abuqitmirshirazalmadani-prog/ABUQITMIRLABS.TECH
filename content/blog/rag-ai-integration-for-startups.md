@@ -8,7 +8,7 @@
   "coverImageAlt": "Abuqitmirlabs case study RAG",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-08-18",
   "tags": [
     "RAG",
     "RetrievalAugmentedGeneration",

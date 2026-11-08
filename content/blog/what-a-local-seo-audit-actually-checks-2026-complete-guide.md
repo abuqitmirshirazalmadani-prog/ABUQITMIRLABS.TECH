@@ -8,7 +8,7 @@
   "coverImageAlt": "Local SEO audit checklist showing 7 dimensions including AI search visibility and geo-grid analysis",
   "category": "Business",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-09-27",
   "tags": [
     "local SEO audit",
     "local SEO audit checklist",

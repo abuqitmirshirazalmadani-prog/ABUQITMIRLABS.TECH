@@ -8,7 +8,7 @@
   "coverImageAlt": "Three abstract SaaS pricing plan cards with the middle plan highlighted, illustrating pricing page optimization",
   "category": "Web Development",
   "author": "AbuQitmirLabs Team",
-  "publishedAt": "2026-10-02",
+  "publishedAt": "2026-10-01",
   "tags": [
     "SaaS pricing page optimization",
     "SaaS pricing page conversion",

@@ -8,7 +8,7 @@
   "coverImageAlt": "How to Build a Flutter App in 2026: Complete Startup & Business Guide by AbuQitmirLabs",
   "category": "App",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-06-05",
   "tags": [
     "Flutter development",
     "mobile app development",

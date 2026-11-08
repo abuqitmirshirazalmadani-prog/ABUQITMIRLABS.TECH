@@ -8,7 +8,7 @@
   "coverImageAlt": "Why New Models Are Arrogant",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-13",
   "tags": [
     "AI Development",
     "Model Behavior",

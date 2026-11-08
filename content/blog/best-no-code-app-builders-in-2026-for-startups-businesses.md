@@ -8,7 +8,7 @@
   "coverImageAlt": "Best No-Code App Builders in 2026 for Startups & Businesses by AbuQitmirLabs",
   "category": "App",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-05-15",
   "tags": [
     "no-code app builders",
     "AI app development tools",

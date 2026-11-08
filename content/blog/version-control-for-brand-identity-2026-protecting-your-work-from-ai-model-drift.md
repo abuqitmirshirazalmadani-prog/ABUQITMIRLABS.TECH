@@ -8,7 +8,7 @@
   "coverImageAlt": "Version Control for Brand Identity 2026",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-19",
   "tags": [
     "version control",
     "brand identity protection",

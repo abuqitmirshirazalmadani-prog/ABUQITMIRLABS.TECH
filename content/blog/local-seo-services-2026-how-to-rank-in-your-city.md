@@ -8,7 +8,7 @@
   "coverImageAlt": "Local SEO Services 2026 | How to Rank in Your City",
   "category": "Business",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-19",
   "tags": [
     "local SEO services",
     "Google Business Profile",

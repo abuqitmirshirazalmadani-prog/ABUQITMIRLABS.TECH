@@ -8,7 +8,7 @@
   "coverImageAlt": "Custom Web Development Company 2026",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-08-05",
   "tags": [
     "CustomWebDevelopment #WebDevelopmentCompany #SEOWebDevelopment #BuiltInVisibility #AbuQitmirLabs"
   ]

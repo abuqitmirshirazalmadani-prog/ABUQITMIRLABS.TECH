@@ -8,7 +8,7 @@
   "coverImageAlt": "What Is RAG and Why Your Business Needs It in 2026 by AbuQitmirLabs",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-06-07",
   "tags": [
     "RAG AI",
     "Retrieval Augmented Generation",

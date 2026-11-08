@@ -8,7 +8,7 @@
   "coverImageAlt": "Minimalist editorial chart illustration showing a rising ROI",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-09",
   "tags": [
     "ROI of digital transformation",
     "digital transformation ROI",

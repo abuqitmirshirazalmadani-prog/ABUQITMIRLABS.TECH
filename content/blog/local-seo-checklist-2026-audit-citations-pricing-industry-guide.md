@@ -8,7 +8,7 @@
   "coverImageAlt": "Local SEO Checklist 2026",
   "category": "Business",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-29",
   "tags": [
     "LocalSEO #GoogleBusinessProfile #WhiteLabelSEO #DigitalAgency #LocalSEO #ReviewManagement #abuqitmirlabs"
   ]

@@ -8,7 +8,7 @@
   "coverImageAlt": "React development trends 2026 and future Next.js development technologies",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-06-16",
   "tags": [
     "react development trends 2026",
     "nextjs future",

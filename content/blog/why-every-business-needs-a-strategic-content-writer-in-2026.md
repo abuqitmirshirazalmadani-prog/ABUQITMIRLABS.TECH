@@ -8,7 +8,7 @@
   "coverImageAlt": "Strategic Content Writer in 2026",
   "category": "Business",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-08-01",
   "tags": [
     "contentwriting #contentmarketing #digitalmarketing #contentwriter #copywriting #seo #contentcreator #socialmediamarketing #contentcreation #abuqitmirlabs"
   ]

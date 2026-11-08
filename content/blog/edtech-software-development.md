@@ -18,7 +18,7 @@
     "AI tutoring LMS",
     "adaptive learning"
   ],
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-09-20",
   "syncedAt": "2026-10-30T10:02:13.916Z"
 }
 ---

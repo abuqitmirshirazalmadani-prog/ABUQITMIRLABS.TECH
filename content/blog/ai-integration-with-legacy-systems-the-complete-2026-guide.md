@@ -8,7 +8,7 @@
   "coverImageAlt": "AI Integration with Legacy Systems: The Complete 2026 Guide",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-06-30",
   "tags": [
     "AI integration with legacy systems",
     "legacy system modernization",

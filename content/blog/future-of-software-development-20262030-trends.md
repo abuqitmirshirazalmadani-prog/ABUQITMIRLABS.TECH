@@ -8,7 +8,7 @@
   "coverImageAlt": "Future of Software Development (2026–2030 Trends) by AbuQitmirLabs",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-05-29",
   "tags": [
     "future of software development",
     "AI software trends",

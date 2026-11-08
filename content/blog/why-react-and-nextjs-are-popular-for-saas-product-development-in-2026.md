@@ -8,7 +8,7 @@
   "coverImageAlt": "Why React and Next.js Are Popular for SaaS Product Development in 2026 by AbuQitmirLabs",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-06-10",
   "tags": [
     "React",
     "Next.js",

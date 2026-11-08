@@ -8,7 +8,7 @@
   "coverImageAlt": "How Startups Build MVP Software Products Fast (2026 Guide) by AbuQitmirLabs",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-05-25",
   "tags": [
     "MVP software development",
     "startup software guide",

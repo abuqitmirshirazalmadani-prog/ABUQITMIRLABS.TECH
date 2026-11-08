@@ -8,7 +8,7 @@
   "coverImageAlt": "Healthcare AI agent architecture connecting patients, healthcare systems, RAG, and clinical workflows",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-08-16",
   "tags": [
     "Healthcare AI Agents",
     "Healthcare AI Agent Development",

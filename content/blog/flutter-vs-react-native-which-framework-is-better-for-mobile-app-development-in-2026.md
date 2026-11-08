@@ -8,7 +8,7 @@
   "coverImageAlt": "Flutter vs React Native — Which Framework Is Better for Mobile App Development in 2026? by AbuQitmirLabs",
   "category": "App",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-05-15",
   "tags": [
     "flutter vs react native",
     "mobile app frameworks",

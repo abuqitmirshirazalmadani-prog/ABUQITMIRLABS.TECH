@@ -8,7 +8,7 @@
   "coverImageAlt": "12-point white label local SEO partner evaluation framework covering SLAs, reporting, margins, compliance, and red flags.",
   "category": "Business",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-09-16",
   "tags": [
     "white label local SEO",
     "white label SEO partner",

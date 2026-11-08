@@ -8,7 +8,7 @@
   "coverImageAlt": "The Custom Build vs Template",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-17",
   "tags": [
     "WebDevelopment #ReactJS #NextJS #Karachi #Pakistan #CustomWebsite  #TechStartup #SmallBusiness"
   ]

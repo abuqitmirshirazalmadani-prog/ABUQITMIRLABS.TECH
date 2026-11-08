@@ -8,7 +8,7 @@
   "coverImageAlt": "Mobile App UI/UX Design Guide for Better User Retention (2026) by AbuQitmirLabs",
   "category": "App",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-05-15",
   "tags": [
     "app UI UX design",
     "mobile app user experience",

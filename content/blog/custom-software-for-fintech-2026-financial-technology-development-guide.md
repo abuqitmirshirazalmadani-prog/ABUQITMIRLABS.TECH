@@ -8,7 +8,7 @@
   "coverImageAlt": "Custom Software for Fintech",
   "category": "Business",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-22",
   "tags": [
     "CustomSoftwareForFintech #FintechSoftwareDevelopment #FinancialTechnologySoftware #FintechDevelopment #FintechApp #PaymentSoftware #LendingTechnology #WealthTech #NeoBank #InsurTech #CustomFintech #FinancialSoftware2026 #KarachiTech #PakistanTech #AbuQitmirLabs #B2BFintech #FintechArchitecture #ComplianceSoftware #MobileFintech #CustomSoftware"
   ]

@@ -8,7 +8,7 @@
   "coverImageAlt": "RAG Architecture for Enterprise AI",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-18",
   "tags": [
     "RAG architecture",
     "retrieval augmented generation",

@@ -8,7 +8,7 @@
   "coverImageAlt": "21-point offshore web development checklist for UK and US businesses.",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-09-16",
   "tags": [
     "offshore web development checklist",
     "offshore web development",

@@ -8,7 +8,7 @@
   "coverImageAlt": "Website Speed vs User Experience: Why Slow Websites Lose Customers by AbuQitmirLabs",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-06-14",
   "tags": [
     "WebsiteSpeed #UserExperience #ReactJS #NextJS #ConversionOptimization #WebDevelopment #SEO #TechnicalSEO #CoreWebVitals #BusinessGrowth #DigitalMarketing #UIUXDesign #SaaSDevelopment #WebsiteOptimization #AbuQitmirLabs"
   ]

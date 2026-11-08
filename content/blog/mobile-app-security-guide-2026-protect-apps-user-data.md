@@ -8,7 +8,7 @@
   "coverImageAlt": "Mobile App Security Guide 2026 — Protect Apps & User Data by AbuQitmirLabs",
   "category": "App",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-05-15",
   "tags": [
     "mobile app security",
     "app security guide",

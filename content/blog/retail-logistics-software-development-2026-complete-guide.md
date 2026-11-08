@@ -8,7 +8,7 @@
   "coverImageAlt": "Retail & Logistics Software Development 2026",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-08-10",
   "tags": [
     "LogisticsSoftware #RetailSoftware #SupplyChainTech #DemandForecasting #AbuQitmirLabs"
   ]

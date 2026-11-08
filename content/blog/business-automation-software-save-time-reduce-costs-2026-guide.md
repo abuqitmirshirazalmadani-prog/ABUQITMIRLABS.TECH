@@ -8,7 +8,7 @@
   "coverImageAlt": "Business Automation Software — Save Time & Reduce Costs (2026 Guide) by AbuQitmirLabs",
   "category": "Business",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-05-27",
   "tags": [
     "business automation software",
     "workflow automation systems",

@@ -8,7 +8,7 @@
   "coverImageAlt": "Native vs Hybrid Apps — Which Should You Choose in 2026? by AbuQitmirLabs",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-05-15",
   "tags": [
     "native apps",
     "hybrid apps",

@@ -8,7 +8,7 @@
   "coverImageAlt": "AbuQitmirLabs promotional graphic comparing Flutter vs Native app development in 2026, featuring a laptop and mobile phone displaying performance metrics, architecture blocks, and cost comparisons against a dark tech-themed background.",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-09-19",
   "tags": [
     "Flutter app development",
     "React Native vs Flutter 2026",

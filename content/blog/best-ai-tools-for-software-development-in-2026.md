@@ -8,7 +8,7 @@
   "coverImageAlt": "Best AI Tools for Software Development in 2026 by AbuQitmirLabs",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-05-23",
   "tags": [
     "AI software development tools",
     "AI coding assistants",

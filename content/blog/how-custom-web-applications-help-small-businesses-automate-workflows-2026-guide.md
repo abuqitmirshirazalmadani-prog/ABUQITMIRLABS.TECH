@@ -8,7 +8,7 @@
   "coverImageAlt": "How Custom Web Applications Help Small Businesses Automate Workflows (2026 Guide) by AbuQitmirLabs",
   "category": "Development",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-06-10",
   "tags": [
     "custom web applications for small business",
     "business automation software",

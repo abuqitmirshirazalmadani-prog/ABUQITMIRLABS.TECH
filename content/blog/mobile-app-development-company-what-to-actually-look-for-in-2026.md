@@ -8,7 +8,7 @@
   "coverImageAlt": "Mobile App Development Company: What to Actually Look For in 2026",
   "category": "App",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-27",
   "tags": [
     "MobileAppDevelopment #Flutter #ReactNative #AppDevelopment #AbuQitmirlabs #PakistanTech"
   ]

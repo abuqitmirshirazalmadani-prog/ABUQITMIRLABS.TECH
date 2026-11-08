@@ -8,7 +8,7 @@
   "coverImageAlt": "Mobile App Development — Complete Guide for Businesses & Startups (2026) by AbuQitmirLabs",
   "category": "App",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-05-15",
   "tags": [
     "mobile app development",
     "app development guide",

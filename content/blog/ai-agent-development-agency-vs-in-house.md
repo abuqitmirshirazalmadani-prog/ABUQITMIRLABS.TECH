@@ -8,7 +8,7 @@
   "coverImageAlt": "Comparison illustration of AI agent development agency versus in-house engineering team for building production AI agents",
   "category": "AI",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-08-19",
   "tags": [
     "AIAgents",
     "AgenticAI",

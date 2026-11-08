@@ -8,7 +8,7 @@
   "coverImageAlt": "Programmatic SEO case study showing semantic hub-and-spoke architecture used to scale TajweedPage.com across 20+ country markets",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-09-29",
+  "publishedAt": "2026-09-28",
   "tags": [
     "programmatic SEO",
     "programmatic SEO case study",

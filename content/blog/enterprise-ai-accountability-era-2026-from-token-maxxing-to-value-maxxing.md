@@ -8,7 +8,7 @@
   "coverImageAlt": "Business leader reviewing an AI dashboard showing revenue growth, cost savings, and ROI percentages in a modern boardroom. The shift from token-maxxing to value-maxxing in enterprise AI accountability era 2026. Professional corporate finance and AI strategy visualization.",
   "category": "Software",
   "author": "ABUQITMIRLABS .TECH Shiraz Almadani",
-  "publishedAt": "2026-10-30",
+  "publishedAt": "2026-07-21",
   "tags": [
     "Enterprise AI",
     "AI accountability",
