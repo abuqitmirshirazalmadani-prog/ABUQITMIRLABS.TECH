@@ -19,6 +19,21 @@ export interface RouteSeoMetadata {
 }
 
 export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
+  "/blog/custom-software-development-qatar": {
+    title: "Custom Software Development Qatar | AbuQitmirLabs",
+    description: "Build compliant custom software in Qatar. Navigate Law No. 13 of 2016 (DPL), QFC regulations, QCB cloud mandates, and Doha cloud data residency in 2026.",
+    canonical: "https://www.abuqitmirlabs.tech/blog/custom-software-development-qatar",
+    ogTitle: "Custom Software Development Qatar | AbuQitmirLabs",
+    ogDescription: "Build compliant custom software in Qatar. Navigate Law No. 13 of 2016 (DPL), QFC regulations, QCB cloud mandates, and Doha cloud data residency in 2026.",
+    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/custom-software-development-qatar-06910d97.webp",
+    ogImageAlt: "Custom Software Development Qatar: Data Protection Laws — AbuQitmirLabs",
+    ogType: "article",
+    twitterCard: "summary_large_image",
+    twitterTitle: "Custom Software Development Qatar | AbuQitmirLabs",
+    twitterDescription: "Build compliant custom software in Qatar. Navigate Law No. 13 of 2016 (DPL), QFC regulations, QCB cloud mandates, and Doha cloud data residency in 2026.",
+    twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/custom-software-development-qatar-06910d97.webp",
+    h1: "Custom Software Development Qatar: Data Protection Laws"
+  },
   "/": {
     title: "Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs",
     description: "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Free technical audit.",

@@ -14,6 +14,7 @@ import { generateBlogPostMeta } from '../utils/seoUtils';
 import { calculateReadingTime } from '../utils/readingTime';
 import { getCanonicalSlug } from '../data/canonicalRedirects';
 import { resolveOptimizedCoverImage } from '../data/localCoverImageMap';
+import { DEFAULT_BRAND_COVER } from './BlogPage';
 import TableOfContents, { slugifyHeading } from '../components/TableOfContents';
 
 import { getCachedPost, setCachedPost } from '../utils/blogCache';
@@ -350,6 +351,10 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                     const h1Text = firstLine.replace(/^#\s+/, '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
                     contentLines[0] = `## ${h1Text}`;
                 }
+            }
+            if (contentLines.length > 0 && /^###\s+/.test(contentLines[0].trim())) {
+                // Promote opening ### (e.g. ### Quick Takeaways) to ## so the article starts with a semantic H2 after H1
+                contentLines[0] = contentLines[0].replace(/^(\s*)###\s+/, '$1## ');
             }
             if (contentLines.length > 0 && /^##\s+/.test(contentLines[0].trim())) {
                 // Clean any trailing "| AbuQitmirLabs" from the opening ## H2 and strip redundant byline/divider right below it
@@ -716,14 +721,21 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
     };
 
     const formatDate = (timestamp: any) => {
-        if (!timestamp) return '';
+        if (!timestamp) return 'November 8, 2026';
         try {
-            let date = timestamp.toDate
-                ? timestamp.toDate()
-                : timestamp.seconds
-                ? new Date(timestamp.seconds * 1000)
-                : new Date(timestamp);
-            if (isNaN(date.getTime())) return '';
+            let date: Date;
+            if (typeof timestamp.toDate === 'function') {
+                date = timestamp.toDate();
+            } else if (typeof timestamp.seconds === 'number') {
+                date = new Date(timestamp.seconds * 1000);
+            } else if (typeof timestamp._seconds === 'number') {
+                date = new Date(timestamp._seconds * 1000);
+            } else if (typeof timestamp === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(timestamp.trim())) {
+                date = new Date(`${timestamp.trim()}T00:00:00Z`);
+            } else {
+                date = new Date(timestamp);
+            }
+            if (isNaN(date.getTime())) return 'November 8, 2026';
             return date.toLocaleDateString('en-US', {
                 month: 'long',
                 day: 'numeric',
@@ -731,7 +743,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 timeZone: 'UTC'
             });
         } catch (e) {
-            return '';
+            return 'November 8, 2026';
         }
     };
 
@@ -3351,168 +3363,112 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             
             <main className="pt-36 md:pt-44 pb-20 px-6 animate-enter">
                 <article className="max-w-7xl mx-auto" itemScope itemType="https://schema.org/BlogPosting">
-                    <header className="mb-12">
+                    <header className="mb-8">
                         <div className="mb-10" data-nosnippet>
                             <Link to="/blog" className="inline-flex items-center gap-2 text-zinc-400 hover:text-[#ccff00] transition-colors uppercase tracking-widest text-xs font-bold group">
                                 <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to The Journal
                             </Link>
                         </div>
-                        {"\n\n"}
-                        <h1 itemProp="headline" className="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight leading-[1.1] mb-8 font-serif animate-enter animate-enter-delay-1">
+                        <h1 itemProp="headline" className="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight leading-[1.1] font-serif animate-enter animate-enter-delay-1">
                             {slug === 'brand-refresh-vs-rebrand'
                                 ? "Brand Refresh vs Rebrand Pakistan: A Founder's Decision Guide"
                                 : String(post.title || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim()}
                         </h1>
-                        {"\n\n"}
-                        <div aria-label="Article metadata" className="flex flex-wrap items-center justify-between gap-4 text-xs text-zinc-400 font-mono border-y border-zinc-800/80 py-5 mb-12">
-                            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
-                                <p className="flex items-center gap-2 text-zinc-300 m-0">
-                                    <Calendar size={14} className="text-[#ccff00]" />
-                                    <time itemProp="datePublished" dateTime={String(post.createdAt || '2026-11-07').slice(0, 10)}>
-                                        {formatDate(post.createdAt) || 'October 17, 2026'}
-                                    </time>
-                                </p>
-                                {"\n"}
-                                <span className="text-zinc-600 font-normal">{' • '}</span>
-                                {"\n"}
-                                <p itemProp="author" itemScope itemType="https://schema.org/Person" className="flex items-center gap-2 text-zinc-300 font-medium tracking-normal m-0">
-                                    <User size={14} className="text-[#ccff00]" />
-                                    <span>
-                                        {'By '}
-                                        <span itemProp="name" className="text-white font-semibold">
-                                            {post.author && !post.author.toUpperCase().includes('SHIRAZ') && !post.author.toUpperCase().includes('ABUQITMIR')
-                                                ? post.author
-                                                : 'Abu Qitmir Mohammad Shiraz Al-Madani'}
-                                        </span>{' '}
-                                        <span className="text-zinc-400">(AbuQitmirLabs)</span>
-                                    </span>
-                                </p>
-                                {"\n"}
-                                <span className="text-zinc-600 font-normal">{' • '}</span>
-                                {"\n"}
-                                <p className="flex items-center gap-2 text-zinc-300 m-0" data-testid="reading-time">
-                                    <Clock size={14} className="text-[#ccff00]" />
-                                    <span>{calculateReadingTime(post.content)}</span>
-                                </p>
-                            </div>
-                            <div className="flex items-center gap-4 ml-auto" data-nosnippet>
-                                <span className="hidden md:inline-block text-zinc-400">Share:</span>
-                                <div className="flex items-center gap-2">
-                                    <button 
-                                        onClick={() => handleShare('twitter')}
-                                        className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 flex items-center justify-center hover:bg-[#ccff00] hover:text-black transition-all shadow-md"
-                                        title="Share on Twitter"
-                                        aria-label="Share this blog post on Twitter"
-                                    >
-                                        <Twitter size={14} />
-                                    </button>
-                                    <button 
-                                        onClick={() => handleShare('linkedin')}
-                                        className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 flex items-center justify-center hover:bg-[#ccff00] hover:text-black transition-all shadow-md"
-                                        title="Share on LinkedIn"
-                                        aria-label="Share this blog post on LinkedIn"
-                                    >
-                                        <Linkedin size={14} />
-                                    </button>
-                                    <button 
-                                        onClick={() => handleShare('facebook')}
-                                        className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 flex items-center justify-center hover:bg-[#ccff00] hover:text-black transition-all shadow-md"
-                                        title="Share on Facebook"
-                                        aria-label="Share this blog post on Facebook"
-                                    >
-                                        <Facebook size={14} />
-                                    </button>
-                                    <button 
-                                        onClick={() => handleShare('copy')}
-                                        className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 flex items-center justify-center hover:bg-[#ccff00] hover:text-black transition-all shadow-md"
-                                        title="Copy Link"
-                                        aria-label="Copy blog post link to clipboard"
-                                    >
-                                        <LinkIcon size={14} />
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
                     </header>
 
-                    {post.coverImage && !post.coverImage.endsWith('logo.png') && !imageError ? (
-                        <div 
-                            className="aspect-video w-full rounded-[2.5rem] overflow-hidden mb-16 border border-zinc-800/80 shadow-2xl group bg-[#090a0f] flex items-center justify-center relative"
-                        >
-                            <img 
-                                src={resolveOptimizedCoverImage(post.coverImage, slug)} 
-                                alt={post.coverImageAlt || `Feature illustration for ${post.title}`} 
-                                referrerPolicy="no-referrer"
-                                width="1200"
-                                height="675"
-                                loading="eager"
-                                fetchPriority="high"
-                                decoding="async"
-                                onError={(e) => {
-                                    const target = e.target as HTMLImageElement;
-                                    if (post.coverImage && target.src !== post.coverImage && !target.dataset.retriedRemote) {
-                                        target.dataset.retriedRemote = 'true';
-                                        target.src = post.coverImage;
-                                    } else {
-                                        setImageError(true);
-                                    }
-                                }}
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
-                            />
-                        </div>
-                    ) : (
-                        <motion.div 
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="aspect-video w-full rounded-[2.5rem] overflow-hidden mb-16 border border-zinc-800/80 shadow-2xl group relative bg-gradient-to-br from-[#0e121a] via-[#090b10] to-[#040507] p-8 md:p-14 flex flex-col justify-between"
-                        >
-                            <div className="absolute inset-0 bg-[radial-gradient(#ccff00_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none"></div>
-                            <div className="absolute top-0 right-0 w-96 h-96 bg-[#ccff00]/10 rounded-full blur-3xl pointer-events-none"></div>
-
-                            {/* Top badge */}
-                            <div className="relative z-10 flex items-center justify-between">
-                                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] text-xs font-mono font-bold tracking-wider uppercase">
-                                    <span className="w-2 h-2 rounded-full bg-[#ccff00] animate-pulse"></span>
-                                    {post.category || 'Development'}
+                    <div aria-label="Article metadata" data-nosnippet className="flex flex-wrap items-center justify-between gap-4 text-xs text-zinc-400 font-mono border-y border-zinc-800/80 py-5 mb-12">
+                        <div className="flex flex-wrap items-center gap-4">
+                            <p className="flex items-center gap-2 text-zinc-300 m-0 sm:border-r sm:border-zinc-800 sm:pr-4">
+                                <Calendar size={14} className="text-[#ccff00]" />
+                                <time itemProp="datePublished" dateTime={formatISODate(post.createdAt).slice(0, 10)}>
+                                    {formatDate(post.createdAt)}
+                                </time>
+                            </p>
+                            <p itemProp="author" itemScope itemType="https://schema.org/Person" className="flex items-center gap-2 text-zinc-300 font-medium tracking-normal m-0 sm:border-r sm:border-zinc-800 sm:pr-4">
+                                <User size={14} className="text-[#ccff00]" />
+                                <span>
+                                    {'By '}
+                                    <span itemProp="name" className="text-white font-semibold">
+                                        {post.author && !post.author.toUpperCase().includes('SHIRAZ') && !post.author.toUpperCase().includes('ABUQITMIR')
+                                            ? post.author
+                                            : 'Abu Qitmir Mohammad Shiraz Al-Madani'}
+                                    </span>{' '}
+                                    <span className="text-zinc-400">(AbuQitmirLabs)</span>
                                 </span>
+                            </p>
+                            <p className="flex items-center gap-2 text-zinc-300 m-0" data-testid="reading-time">
+                                <Clock size={14} className="text-[#ccff00]" />
+                                <span>{calculateReadingTime(post.content)}</span>
+                            </p>
+                        </div>
+                        <div className="flex items-center gap-4 ml-auto" data-nosnippet aria-hidden="true">
+                            <span className="hidden md:inline-block text-zinc-400">Share:</span>
+                            <div className="flex items-center gap-2">
+                                <button 
+                                    onClick={() => handleShare('twitter')}
+                                    className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 flex items-center justify-center hover:bg-[#ccff00] hover:text-black transition-all shadow-md"
+                                    title="Share on Twitter"
+                                    aria-label="Share this blog post on Twitter"
+                                >
+                                    <Twitter size={14} />
+                                </button>
+                                <button 
+                                    onClick={() => handleShare('linkedin')}
+                                    className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 flex items-center justify-center hover:bg-[#ccff00] hover:text-black transition-all shadow-md"
+                                    title="Share on LinkedIn"
+                                    aria-label="Share this blog post on LinkedIn"
+                                >
+                                    <Linkedin size={14} />
+                                </button>
+                                <button 
+                                    onClick={() => handleShare('facebook')}
+                                    className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 flex items-center justify-center hover:bg-[#ccff00] hover:text-black transition-all shadow-md"
+                                    title="Share on Facebook"
+                                    aria-label="Share this blog post on Facebook"
+                                >
+                                    <Facebook size={14} />
+                                </button>
+                                <button 
+                                    onClick={() => handleShare('copy')}
+                                    className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 flex items-center justify-center hover:bg-[#ccff00] hover:text-black transition-all shadow-md"
+                                    title="Copy Link"
+                                    aria-label="Copy blog post link to clipboard"
+                                >
+                                    <LinkIcon size={14} />
+                                </button>
                             </div>
+                        </div>
+                    </div>
 
-                            {/* Middle title and excerpt */}
-                            <div className="relative z-10 my-auto py-4">
-                                {post.heroSubtitle ? (
-                                    <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white tracking-tight leading-tight mb-4 font-display">
-                                        {post.heroSubtitle}
-                                    </h2>
-                                ) : (
-                                    <div className="text-2xl sm:text-3xl md:text-5xl font-black text-white tracking-tight leading-tight mb-4 font-display" aria-hidden="true">
-                                        {post.title}
-                                    </div>
-                                )}
-                                {post.excerpt && (
-                                    <p className="text-zinc-400 text-sm md:text-lg max-w-3xl line-clamp-2 font-sans font-normal leading-relaxed">
-                                        {post.excerpt}
-                                    </p>
-                                )}
-                            </div>
-
-                            {/* Bottom stats/author bar */}
-                            <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/10 text-xs font-mono text-zinc-400">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-8 h-8 rounded-full bg-[#ccff00] text-black font-black flex items-center justify-center text-xs">
-                                        AQ
-                                    </div>
-                                    <div>
-                                        <div className="text-white font-bold">{formatAuthorDisplay(post.author)}</div>
-                                        <div className="text-[10px] text-zinc-500">AbuQitmirLabs Research</div>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-4 text-[11px] text-[#ccff00]">
-                                    <span className="px-2.5 py-1 rounded bg-white/5 border border-white/10">Verified Engineering Playbook</span>
-                                    <span className="px-2.5 py-1 rounded bg-white/5 border border-white/10">2026 Production Standard</span>
-                                </div>
-                            </div>
-                        </motion.div>
-                    )}
+                    <div 
+                        className="aspect-video w-full rounded-[2.5rem] overflow-hidden mb-16 border border-zinc-800/80 shadow-2xl group bg-[#090a0f] flex items-center justify-center relative"
+                    >
+                        <img 
+                            src={
+                                !imageError && post.coverImage && !post.coverImage.endsWith('logo.png')
+                                    ? resolveOptimizedCoverImage(post.coverImage, slug)
+                                    : resolveOptimizedCoverImage(undefined, slug) || DEFAULT_BRAND_COVER
+                            } 
+                            alt={post.coverImageAlt || `Feature illustration for ${post.title}`} 
+                            referrerPolicy="no-referrer"
+                            width="1200"
+                            height="675"
+                            loading="eager"
+                            fetchPriority="high"
+                            decoding="async"
+                            onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                if (post.coverImage && target.src !== post.coverImage && !target.dataset.retriedRemote) {
+                                    target.dataset.retriedRemote = 'true';
+                                    target.src = post.coverImage;
+                                } else if (target.src !== DEFAULT_BRAND_COVER) {
+                                    target.src = DEFAULT_BRAND_COVER;
+                                    setImageError(true);
+                                }
+                            }}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
+                        />
+                    </div>
 
                     {(() => {
                         const injectedMarkdown = getInjectedContent();

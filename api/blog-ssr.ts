@@ -223,6 +223,8 @@ export default async function handler(req: any, res: any) {
         const docRow = Array.isArray(rows) ? rows.find((r: any) => r && r.document && r.document.fields) : null;
         if (docRow) {
           const f = docRow.document.fields;
+          const mapSec = f.createdAt?.mapValue?.fields?.seconds?.integerValue || f.createdAt?.mapValue?.fields?.seconds?.stringValue;
+          const mapIso = mapSec ? new Date(Number(mapSec) * 1000).toISOString().slice(0, 10) : '';
           postData = {
             slug: canonicalSlug,
             title: f.title?.stringValue || canonicalSlug,
@@ -232,7 +234,7 @@ export default async function handler(req: any, res: any) {
             coverImage: f.coverImage?.stringValue || 'https://www.abuqitmirlabs.tech/logo.png',
             author: f.author?.stringValue || 'Abu Qitmir Mohammad Shiraz Al-Madani',
             category: f.category?.stringValue || 'Business',
-            createdAt: f.publishedAt?.stringValue || f.createdAt?.timestampValue || new Date().toISOString(),
+            createdAt: f.publishedAt?.stringValue || f.createdAt?.timestampValue || mapIso || new Date().toISOString().slice(0, 10),
           };
         }
       }
@@ -287,13 +289,15 @@ export default async function handler(req: any, res: any) {
         while (lookahead < lines.length && isMetaOrDivider(lines[lookahead])) {
           lookahead++;
         }
-        if (lookahead < lines.length && /^##\s+/.test(lines[lookahead].trim())) {
+        if (lookahead < lines.length && /^#{2,3}\s+/.test(lines[lookahead].trim())) {
           lines = lines.slice(lookahead);
         } else {
           lines[0] = `## ${first.replace(/^#\s+/, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim() || cleanH1}`;
         }
       }
-      if (lines.length > 0 && /^##\s+/.test(lines[0].trim())) {
+      if (lines.length > 0 && /^###\s+/.test(lines[0].trim())) {
+        lines[0] = `## ${lines[0].trim().replace(/^###\s+/, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim()}`;
+      } else if (lines.length > 0 && /^##\s+/.test(lines[0].trim())) {
         lines[0] = `## ${lines[0].trim().replace(/^##\s+/, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim()}`;
       } else if (lines.length > 0 && !/^#{2,6}\s+/.test(lines[0].trim())) {
         lines.unshift(`## ${cleanH1}`, '');
@@ -525,9 +529,9 @@ export default async function handler(req: any, res: any) {
     }).replace(/</g, '\\u003c');
     const ssrStateScript = `<script id="__SSR_BLOG_POST__" type="application/json">${ssrPostPayload}</script>`;
     const schemaBlock = `<script id="canonical-schema-graph" type="application/ld+json">\n${JSON.stringify({ '@context': 'https://schema.org', '@graph': graphNodes }, null, 2)}\n</script>`;
-    const bylineDate = escapeHtml(String(postData.createdAt || '2026-11-07').slice(0, 10));
+    const bylineDate = escapeHtml(String(postData.createdAt || '2026-11-08').slice(0, 10));
     const bylineAuthor = escapeHtml(postData.author || 'Abu Qitmir Mohammad Shiraz Al-Madani');
-    const innerRootHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader()}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${escapeHtml(cleanH1)}</h1><p class="text-xs text-zinc-400 font-mono mb-8">${bylineDate} • By ${bylineAuthor} (AbuQitmirLabs)</p><article class="prose prose-invert max-w-none text-neutral-300">${htmlBlocks.join('\n')}</article></main></div>`;
+    const innerRootHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader()}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><header class="mb-6"><h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${escapeHtml(cleanH1)}</h1></header><div class="mb-8 flex flex-wrap gap-4 text-xs text-zinc-400 font-mono"><p>${bylineDate}</p><p>By ${bylineAuthor} (AbuQitmirLabs)</p></div><article class="prose prose-invert max-w-none text-neutral-300">${htmlBlocks.join('\n')}</article></main></div>`;
 
     const shellCandidates = [
       path.join(process.cwd(), 'dist', 'spa-shell.html'),
