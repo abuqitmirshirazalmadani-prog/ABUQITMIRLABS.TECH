@@ -5,7 +5,13 @@
  */
 
 export const REMOTE_TO_LOCAL_COVER_MAP: Record<string, string> = {
-  "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp"
+  "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp",
+  "https://i.postimg.cc/9Q2XXHMf/SEO-Thought-Leadership.jpg": "/images/blog-covers/seo-content-vs-thought-leadership-a066fe07.webp",
+  "https://i.postimg.cc/FFjdpXPB/Abu-Qitmir-Labs-Design-Brief-Blueprint.png": "/images/blog-covers/how-to-brief-graphic-designer-88ed316b.webp",
+  "https://i.postimg.cc/L5K7zjJ3/Design-Trends-Lasting-vs-Dying.png": "/images/blog-covers/design-trends-2026-c38bcffb.webp",
+  "https://i.postimg.cc/HnPS19gt/Neon-Design-System-Startup-Guide.png": "/images/blog-covers/design-systems-for-startups-848e7249.webp",
+  "https://i.postimg.cc/7L09n4zn/Marketing-ROI-Without-Perfect-Attribution.png": "/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp",
+  "https://i.postimg.cc/NGNQF3vh/Software-Ownership-IP-Guide.png": "/images/blog-covers/the-non-technical-founders-guide-to-software-ownership-ip-20-85a1300b.webp"
 };
 
 export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
@@ -157,23 +163,52 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "startup-brand-identity-checklist": "/images/blog-covers/startup-brand-identity-checklist-be48b842.webp",
   "ai-overviews-traffic-recovery-what-40-companies-did-next": "/images/blog-covers/ai-overviews-killed-traffic-what-40-companies-did-next-eb108ed0.webp",
   "the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026": "/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
-  "author-abuqitmir-shiraz": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp"
+  "author-abuqitmir-shiraz": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp",
+  "seo-content-vs-thought-leadership": "/images/blog-covers/seo-content-vs-thought-leadership-a066fe07.webp",
+  "how-to-brief-graphic-designer": "/images/blog-covers/how-to-brief-graphic-designer-88ed316b.webp",
+  "design-trends-2026": "/images/blog-covers/design-trends-2026-c38bcffb.webp",
+  "design-systems-for-startups": "/images/blog-covers/design-systems-for-startups-848e7249.webp",
+  "measure-marketing-roi-without-tracking": "/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp",
+  "the-non-technical-founders-guide-to-software-ownership-ip-2026": "/images/blog-covers/the-non-technical-founders-guide-to-software-ownership-ip-20-85a1300b.webp",
+  "guest-posting-in-2026-what-works-abuqitmirlabs": "/images/blog-covers/guest-posting-in-2026-what-works-abuqitmirlabs-458d126e.webp",
+  "digital-marketing-stack-2026": "/images/blog-covers/digital-marketing-stack-2026-f69ac6a2.webp",
+  "tailor-made-software-solutions": "/images/blog-covers/tailor-made-software-solutions-when-off-the-shelf-fails-2026-beb4a4ab.webp",
+  "native-mobile-app-development-ios-vs-android": "/images/blog-covers/native-mobile-app-development-ios-vs-android-cost-9610730c.webp",
+  "app-development-agency-uk": "/images/blog-covers/app-development-agency-uk-what-to-ask-before-you-sign-2026-0191a5e7.webp",
+  "brand-identity-vs-logo-design": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp",
+  "ui-ux-design-conversion": "/images/blog-covers/ui-ux-design-conversion-e56a7379.webp",
+  "content-calendar-strategy": "/images/blog-covers/content-calendar-strategy-c110168a.webp",
+  "native-mobile-app-development-ios-vs-android-cost-2026": "/images/blog-covers/native-mobile-app-development-ios-vs-android-cost-9610730c.webp",
+  "the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026": "/images/blog-covers/the-pakistan-advantage-why-us-startups-are-moving-dev-teams--21cc0e08.webp",
+  "the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact": "/images/blog-covers/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-imp-63afd577.webp",
+  "fix-url-fragmentation-in-headless-spas-abuqitmirlabs": "/images/blog-covers/fix-url-fragmentation-in-headless-spas-abuqitmirlabs-c11c02b3.webp",
+  "the-2026-static-site-comeback-why-jamstack-won-after-all": "/images/blog-covers/the-2026-static-site-comeback-why-jamstack-won-after-all-00f21f97.webp"
 };
 
 export function resolveOptimizedCoverImage(url?: string, slug?: string): string {
+  // 1. Always check SLUG_TO_LOCAL_COVER_MAP first if slug is provided
+  if (slug) {
+    const cleanSlug = slug.replace(/^\/+/, '').replace(/^blog\//, '').trim();
+    if (SLUG_TO_LOCAL_COVER_MAP[cleanSlug]) {
+      return SLUG_TO_LOCAL_COVER_MAP[cleanSlug];
+    }
+  }
+
+  // 2. Check URL if it is not a generic logo.png placeholder
   if (url && typeof url === 'string') {
     const clean = url.trim();
-    if (REMOTE_TO_LOCAL_COVER_MAP[clean]) {
-      return REMOTE_TO_LOCAL_COVER_MAP[clean];
-    }
-    if (clean.startsWith('https://www.abuqitmirlabs.tech/')) {
-      const rel = clean.replace('https://www.abuqitmirlabs.tech', '');
-      if (REMOTE_TO_LOCAL_COVER_MAP[rel]) return REMOTE_TO_LOCAL_COVER_MAP[rel];
-      return rel;
+    if (clean && !clean.includes('/logo.png')) {
+      if (REMOTE_TO_LOCAL_COVER_MAP[clean]) {
+        return REMOTE_TO_LOCAL_COVER_MAP[clean];
+      }
+      if (clean.startsWith('https://www.abuqitmirlabs.tech/')) {
+        const rel = clean.replace('https://www.abuqitmirlabs.tech', '');
+        if (REMOTE_TO_LOCAL_COVER_MAP[rel]) return REMOTE_TO_LOCAL_COVER_MAP[rel];
+        return rel;
+      }
+      return clean;
     }
   }
-  if (slug && SLUG_TO_LOCAL_COVER_MAP[slug]) {
-    return SLUG_TO_LOCAL_COVER_MAP[slug];
-  }
+
   return url || '';
 }

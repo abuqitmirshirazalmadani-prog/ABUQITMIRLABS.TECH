@@ -187,13 +187,22 @@ const BlogPage = () => {
                                 : (data.content || '');
                         const bestTitle = staticMatch?.title || data.title || 'Untitled Article';
 
+                        const staticCover =
+                            staticMatch?.coverImage && !staticMatch.coverImage.includes('logo.png')
+                                ? staticMatch.coverImage
+                                : undefined;
+                        const resolvedCover = resolveOptimizedCoverImage(
+                            staticCover || data.coverImage || data.featuredImage || data.imageUrl || data.image,
+                            cleanSlug
+                        );
+
                         return {
                             id: doc.id,
                             slug: cleanSlug,
                             title: bestTitle,
                             excerpt: staticMatch?.excerpt || excerpt,
                             content: bestContent,
-                            coverImage: staticMatch?.coverImage || data.coverImage || data.featuredImage || data.imageUrl || data.image || 'https://www.abuqitmirlabs.tech/logo.png',
+                            coverImage: resolvedCover || staticCover || data.coverImage || data.featuredImage || data.imageUrl || data.image || 'https://www.abuqitmirlabs.tech/logo.png',
                             coverImageAlt: staticMatch?.coverImageAlt || data.coverImageAlt || `${bestTitle} | AbuQitmirLabs`,
                             category: staticMatch?.category || data.category || 'AI',
                             createdAt: staticMatch?.createdAt || data.createdAt || data.date || new Date().toISOString(),
@@ -418,7 +427,7 @@ const BlogPage = () => {
                                             <span className="px-5 py-2 rounded-full bg-white/5 border border-white/10 text-blue-400 text-xs font-black uppercase tracking-widest">{featuredPost.category || 'All'}</span>
                                         </div>
                                         <h2 className="text-3xl md:text-6xl lg:text-7xl font-black text-white uppercase leading-[0.9] tracking-tighter mb-8 group-hover:text-blue-400 transition-colors max-w-4xl">
-                                            {featuredPost.title}
+                                            {featuredPost.title.replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim()}
                                         </h2>
                                         <p className="text-zinc-400 text-base md:text-xl font-medium leading-relaxed mb-10 max-w-2xl">
                                             {featuredPost.excerpt}
@@ -547,7 +556,7 @@ const BlogPage = () => {
                                                     <span>{formatDateShort(post.createdAt)}</span>
                                                 </div>
                                                 <h4 className="text-2xl md:text-3xl font-black text-white uppercase leading-[1.1] tracking-tighter group-hover:text-blue-400 transition-colors px-2 mb-3">
-                                                    {post.title}
+                                                    {post.title.replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim()}
                                                 </h4>
                                                 {post.excerpt && (
                                                     <p className="text-zinc-400 text-sm font-medium leading-relaxed px-2 line-clamp-2 mb-4">

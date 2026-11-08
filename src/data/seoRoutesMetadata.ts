@@ -128,7 +128,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     keywords: "custom AI solutions corporate events, event AI agents, conference automation software, AbuQitmirLabs",
     ogTitle: "Custom AI Solutions for Corporate Events (2026 Guide) | AbuQitmirLabs",
     ogDescription: "How enterprise event organizers use custom AI agents and real-time matchmaking to transform corporate conferences.",
-    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/custom-ai-solutions-for-corporate-events-2026-guide-0ee8bfb6.webp",
     ogType: "article",
     twitterCard: "summary_large_image"
   },
@@ -139,7 +139,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     keywords: "custom web development vs website templates, custom web development business case, scalable web architecture, AbuQitmirLabs",
     ogTitle: "7 Signs Your Business Needs Custom Web Development Instead of Templates | AbuQitmirLabs",
     ogDescription: "Compare custom web development vs website templates in 2026 and learn when to upgrade to custom architecture.",
-    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/custom-web-development-vs-website-templates-2026-guide-16b479d6.webp",
     ogType: "article",
     twitterCard: "summary_large_image"
   },
@@ -287,13 +287,13 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     keywords: "design systems for startups, building design system, scalable visual language, design system components, design tokens, component library, atomic design, UI/UX design, Figma design system",
     ogTitle: "Design Systems for Startups: Building a Visual Language | AbuQitmirLabs",
     ogDescription: "Build scalable design systems for startups. Learn how lean tokens, component libraries, and atomic design eliminate UI debt and accelerate development.",
-    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/design-systems-for-startups-848e7249.webp",
     ogImageAlt: "Design systems for startups guide showing visual language tokens, components, and atomic UI architecture by AbuQitmirLabs",
     ogType: "article",
     twitterCard: "summary_large_image",
     twitterTitle: "Design Systems for Startups: Building a Visual Language | AbuQitmirLabs",
     twitterDescription: "Build scalable design systems for startups. Learn how lean tokens, component libraries, and atomic design eliminate UI debt and accelerate development.",
-    twitterImage: "https://www.abuqitmirlabs.tech/logo.png",
+    twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/design-systems-for-startups-848e7249.webp",
     robots: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
     schemaJsonLd: {
       "@context": "https://schema.org",
@@ -4143,11 +4143,11 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     keywords: 'software ownership IP non-technical founder, who owns source code when hiring developer, software IP assignment, startup IP ownership',
     ogTitle: 'Software Ownership & IP for Founders 2026 | AbuQitmirLabs',
     ogDescription: 'A step-by-step software ownership and IP checklist for non-technical founders. Learn who owns the code, domains, repositories, and APIs before you sign a development contract.',
-    ogImage: 'https://i.postimg.cc/NGNQF3vh/Software-Ownership-IP-Guide.png',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/the-non-technical-founders-guide-to-software-ownership-ip-20-85a1300b.webp',
     ogType: 'article',
     twitterTitle: 'Software Ownership & IP for Founders 2026 | AbuQitmirLabs',
     twitterDescription: 'A step-by-step software ownership and IP checklist for non-technical founders.',
-    twitterImage: 'https://i.postimg.cc/NGNQF3vh/Software-Ownership-IP-Guide.png',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/the-non-technical-founders-guide-to-software-ownership-ip-20-85a1300b.webp',
     twitterCard: 'summary_large_image',
     schemaJsonLd: {
       "@context": "https://schema.org",
@@ -4398,7 +4398,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/how-to-brief-graphic-designer',
     ogTitle: "How to Brief a Graphic Designer: A Founder's Checklist | AbuQitmirLabs",
     ogDescription: "A founder-friendly checklist for briefing graphic designers. Includes a brief template, must-have sections, and common mistakes to avoid.",
-    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/how-to-brief-graphic-designer-88ed316b.webp',
     ogType: 'article'
   },
   '/blog/seo-content-vs-thought-leadership': {
@@ -4407,7 +4407,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/seo-content-vs-thought-leadership',
     ogTitle: 'SEO Content vs Thought Leadership: When to Write Which | AbuQitmirLabs',
     ogDescription: 'Detailed founder guide comparing SEO content vs thought leadership. Stage-based decision matrix, search intent differences, and how to combine both for topical authority.',
-    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/seo-content-vs-thought-leadership-a066fe07.webp',
     ogType: 'article',
     schemaJsonLd: {
       '@context': 'https://schema.org',
@@ -5192,12 +5192,12 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/design-trends-2026',
     ogTitle: "The 2026 Design Trends That Will Actually Last | AbuQitmirLabs",
     ogDescription: "Discover the 2026 UI/UX and brand design trends that actually drive conversions vs short-lived Dribbble fads that waste startup budgets.",
-    ogImage: "https://www.abuqitmirlabs.tech/logo.png",
+    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/design-trends-2026-c38bcffb.webp",
     ogType: 'article',
     twitterCard: 'summary_large_image',
     twitterTitle: "The 2026 Design Trends That Will Actually Last | AbuQitmirLabs",
     twitterDescription: "Discover the 2026 UI/UX and brand design trends that actually drive conversions vs short-lived Dribbble fads that waste startup budgets.",
-    twitterImage: "https://www.abuqitmirlabs.tech/logo.png",
+    twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/design-trends-2026-c38bcffb.webp",
     schemaJsonLd: {
       '@context': 'https://schema.org',
       '@graph': [
