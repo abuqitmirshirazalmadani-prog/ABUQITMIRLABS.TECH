@@ -354,7 +354,9 @@ const routes = [
   '/blog/small-business-branding-mistakes-pakistan',
   '/blog/content-calendar-strategy',
   '/blog/brand-strategy-vs-logo-design-pakistan-sme',
-  '/blog/ai-content-vs-human-content'
+  '/blog/ai-content-vs-human-content',
+  '/blog/brand-refresh-vs-rebrand',
+  '/blog/custom-software-development-qatar'
 ];
 
 const stripOuterQuotes = (str) =>

@@ -3364,7 +3364,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             <main className="pt-36 md:pt-44 pb-20 px-6 animate-enter">
                 <article className="max-w-7xl mx-auto" itemScope itemType="https://schema.org/BlogPosting">
                     <header className="mb-8">
-                        <div className="mb-10" data-nosnippet>
+                        <div className="mb-10" data-nosnippet aria-hidden="true">
                             <Link to="/blog" className="inline-flex items-center gap-2 text-zinc-400 hover:text-[#ccff00] transition-colors uppercase tracking-widest text-xs font-bold group">
                                 <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to The Journal
                             </Link>
@@ -3376,7 +3376,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         </h1>
                     </header>
 
-                    <div aria-label="Article metadata" data-nosnippet className="flex flex-wrap items-center justify-between gap-4 text-xs text-zinc-400 font-mono border-y border-zinc-800/80 py-5 mb-12">
+                    <div aria-label="Article metadata" data-nosnippet aria-hidden="true" className="flex flex-wrap items-center justify-between gap-4 text-xs text-zinc-400 font-mono border-y border-zinc-800/80 py-5 mb-12">
                         <div className="flex flex-wrap items-center gap-4">
                             <p className="flex items-center gap-2 text-zinc-300 m-0 sm:border-r sm:border-zinc-800 sm:pr-4">
                                 <Calendar size={14} className="text-[#ccff00]" />

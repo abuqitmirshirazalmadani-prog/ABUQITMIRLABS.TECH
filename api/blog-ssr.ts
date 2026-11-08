@@ -531,7 +531,7 @@ export default async function handler(req: any, res: any) {
     const schemaBlock = `<script id="canonical-schema-graph" type="application/ld+json">\n${JSON.stringify({ '@context': 'https://schema.org', '@graph': graphNodes }, null, 2)}\n</script>`;
     const bylineDate = escapeHtml(String(postData.createdAt || '2026-11-08').slice(0, 10));
     const bylineAuthor = escapeHtml(postData.author || 'Abu Qitmir Mohammad Shiraz Al-Madani');
-    const innerRootHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader()}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><header class="mb-6"><h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${escapeHtml(cleanH1)}</h1></header><div class="mb-8 flex flex-wrap gap-4 text-xs text-zinc-400 font-mono"><p>${bylineDate}</p><p>By ${bylineAuthor} (AbuQitmirLabs)</p></div><article class="prose prose-invert max-w-none text-neutral-300">${htmlBlocks.join('\n')}</article></main></div>`;
+    const innerRootHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader()}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><header class="mb-6"><h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${escapeHtml(cleanH1)}</h1></header><div aria-label="Article metadata" data-nosnippet="true" aria-hidden="true" class="mb-8 flex flex-wrap gap-4 text-xs text-zinc-400 font-mono"><p>${bylineDate}</p><p>By ${bylineAuthor} (AbuQitmirLabs)</p></div><article class="prose prose-invert max-w-none text-neutral-300">${htmlBlocks.join('\n')}</article></main></div>`;
 
     const shellCandidates = [
       path.join(process.cwd(), 'dist', 'spa-shell.html'),
