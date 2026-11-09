@@ -21,16 +21,16 @@ export interface RouteSeoMetadata {
 export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   "/": {
     title: "Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs",
-    description: "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Free technical audit.",
+    description: "Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Free technical audit.",
     canonical: "https://www.abuqitmirlabs.tech/",
     ogTitle: "Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs",
-    ogDescription: "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Free technical audit.",
+    ogDescription: "Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Free technical audit.",
     ogImage: "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
     ogImageAlt: "AbuQitmirLabs Growth Engineering Firm — Custom Software, AI & Technical SEO",
     ogType: "website",
     twitterCard: "summary_large_image",
     twitterTitle: "Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs",
-    twitterDescription: "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Free technical audit.",
+    twitterDescription: "Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Free technical audit.",
     twitterImage: "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
   },
   "/tools": {

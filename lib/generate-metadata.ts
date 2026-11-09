@@ -92,10 +92,24 @@ const SITE_URL = 'https://www.abuqitmirlabs.tech';
 const SITE_NAME = 'AbuQitmirLabs';
 const DEFAULT_TITLE = 'Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs';
 const DEFAULT_DESCRIPTION =
-  'Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Free technical audit.';
+  'Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Free technical audit.';
 const DEFAULT_IMAGE = 'https://www.abuqitmirlabs.tech/logo.png';
 const DEFAULT_IMAGE_ALT = 'AbuQitmirLabs Growth Engineering Firm';
 const DEFAULT_AUTHOR = 'Abu Qitmir Mohammad Shiraz Al-Madani';
+
+let ssrCapturedMetadata: NextStyleMetadata | null = null;
+
+export function resetSsrCapturedMetadata(): void {
+  ssrCapturedMetadata = null;
+}
+
+export function setSsrCapturedMetadata(meta: NextStyleMetadata): void {
+  ssrCapturedMetadata = meta;
+}
+
+export function getSsrCapturedMetadata(): NextStyleMetadata | null {
+  return ssrCapturedMetadata;
+}
 
 export const HREFLANG_MARKET_ALTERNATES: Array<{ hreflang: string; href: string }> = [
   { hreflang: 'x-default', href: 'https://www.abuqitmirlabs.tech/' },
@@ -222,10 +236,10 @@ function stripOuterQuotes(val?: string): string {
 function clampMetaDescription(desc: string): string {
   const cleaned = stripOuterQuotes(desc).replace(/\s+/g, ' ').trim();
   if (!cleaned) return DEFAULT_DESCRIPTION;
-  if (cleaned.length <= 160) return cleaned;
-  const sliced = cleaned.slice(0, 157);
+  if (cleaned.length <= 155) return cleaned;
+  const sliced = cleaned.slice(0, 152);
   const lastSpace = sliced.lastIndexOf(' ');
-  return `${(lastSpace > 110 ? sliced.slice(0, lastSpace) : sliced).replace(/[.,;:-]+$/, '')}...`;
+  return `${(lastSpace > 105 ? sliced.slice(0, lastSpace) : sliced).replace(/[.,;:-]+$/, '')}...`;
 }
 
 const UPPERCASE_ACRONYMS = new Set([
@@ -316,21 +330,47 @@ export function buildConsolidatedSchemaGraph(
 
   const baseNodes: Array<Record<string, any>> = [
     {
-      '@type': 'Organization',
+      '@type': ['Organization', 'LocalBusiness', 'ProfessionalService'],
       '@id': `${SITE_URL}/#organization`,
       name: SITE_NAME,
       url: `${SITE_URL}/`,
       foundingDate: '2021',
+      founder: {
+        '@type': 'Person',
+        name: DEFAULT_AUTHOR,
+        url: 'https://www.linkedin.com/in/abu-qitmir-697423390/',
+      },
       logo: {
         '@type': 'ImageObject',
         url: DEFAULT_IMAGE,
       },
+      image: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
+      email: 'hello@abuqitmirlabs.tech',
+      telephone: '+923233260859',
+      priceRange: '$$',
+      description: DEFAULT_DESCRIPTION,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Shahrah-e-Faisal, PECHS',
+        addressLocality: 'Karachi',
+        addressRegion: 'Sindh',
+        postalCode: '75400',
+        addressCountry: 'PK',
+      },
+      areaServed: ['PK', 'US', 'GB', 'AE', 'SA', 'QA', 'KW', 'CA', 'AU', 'PL'],
       contactPoint: {
         '@type': 'ContactPoint',
+        telephone: '+923233260859',
         email: 'hello@abuqitmirlabs.tech',
-        contactType: 'customer support',
+        contactType: 'sales and technical support',
         availableLanguage: ['English', 'Arabic', 'Urdu'],
       },
+      sameAs: [
+        'https://www.linkedin.com/company/abuqitmirlabs',
+        'https://x.com/AbuQitmir',
+        'https://www.facebook.com/abuqitmirlabs',
+        'https://www.linkedin.com/in/abu-qitmir-697423390/',
+      ],
     },
     {
       '@type': 'WebSite',

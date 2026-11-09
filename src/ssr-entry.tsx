@@ -2,7 +2,12 @@ import React, { Suspense } from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { generateMetadata, renderMetadataToHeadHtml } from '../lib/generate-metadata';
+import {
+  generateMetadata,
+  renderMetadataToHeadHtml,
+  resetSsrCapturedMetadata,
+  getSsrCapturedMetadata,
+} from '../lib/generate-metadata';
 
 // Eagerly import the key pages for SSG pre-rendering
 import HomePage from './pages/HomePage';
@@ -106,6 +111,7 @@ const FloatingWhatsApp = () => (
 );
 
 export function renderFullApp(url: string = '/') {
+  resetSsrCapturedMetadata();
   const rawHtml = renderToString(
     <StaticRouter location={url}>
       <FloatingWhatsApp />
@@ -224,7 +230,7 @@ export function renderFullApp(url: string = '/') {
       </StaticRouter>
   );
 
-  const metadata = generateMetadata({ pathname: url });
+  const metadata = getSsrCapturedMetadata() || generateMetadata({ pathname: url });
   const headTags = renderMetadataToHeadHtml(metadata);
   let bodyHtml = rawHtml;
 
@@ -237,7 +243,7 @@ export function renderFullApp(url: string = '/') {
   const scriptRegex = /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis;
   bodyHtml = bodyHtml.replace(scriptRegex, '');
 
-  const jsonLdScripts = [`<script type="application/ld+json">${JSON.stringify(metadata.jsonLdGraph)}</script>`];
+  const jsonLdScripts = [`<script id="canonical-schema-graph" type="application/ld+json">${JSON.stringify(metadata.jsonLdGraph)}</script>`];
 
   return {
     rawHtml,

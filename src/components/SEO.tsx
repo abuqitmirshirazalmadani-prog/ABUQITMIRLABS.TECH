@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import {
   applyMetadataToDocumentHead,
   generateMetadata,
+  setSsrCapturedMetadata,
 } from '../../lib/generate-metadata';
 
 export interface SEOProps {
@@ -40,6 +41,8 @@ export const SEO: React.FC<SEOProps> = (props) => {
     pathname,
     ...props,
   });
+
+  setSsrCapturedMetadata(metadata);
 
   useEffect(() => {
     applyMetadataToDocumentHead(metadata);
