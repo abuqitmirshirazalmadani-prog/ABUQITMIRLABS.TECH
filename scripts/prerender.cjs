@@ -492,12 +492,19 @@ for (const routeUrl of allRoutes) {
     
     let cleanBodyHtml = (bodyHtml || '')
       .replace(/style="opacity:0;transform:translateY\([^"]*\)"/gi, 'style="opacity:1;transform:translateY(0)"')
-      .replace(/style="opacity:0"/gi, 'style="opacity:1"');
+      .replace(/style="opacity:0"/gi, 'style="opacity:1"')
+      .replace(/(<(?:header|main|article|section|aside|footer|nav|h1|h2|h3|h4|p|ul|ol|li|table|thead|tbody|tr|blockquote|hr)\b[^>]*>)/gi, '\n  $1')
+      .replace(/(<\/(?:header|main|article|section|aside|footer|nav|h1|h2|h3|h4|p|ul|ol|li|table|thead|tbody|tr|blockquote)>)/gi, '$1\n')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
 
     let html = baseTemplate.replace(/(<meta\s+name=["']viewport["'][^>]*>\s*)+/i, '$1\n  <!-- __SEO_HEAD_TOP__ -->\n  ');
+    if (routeUrl !== '/') {
+      html = html.replace(/<link\b[^>]*href=["']\/images\/hero-abuqitmirlabs\.webp["'][^>]*\/?>\s*/gi, '');
+    }
 
     // 1. Inject pure, clean React SSR DOM tree inside #root with explicit route identifier
-    html = replaceRootElement(html, cleanBodyHtml, routeUrl);
+    html = replaceRootElement(html, `\n  ${cleanBodyHtml}\n`, routeUrl);
 
     // 2. Unconditionally strip ANY pre-existing <title>, <meta description>, canonical, og, and twitter tags from template
     html = html.replace(/<title\b[^>]*>[^<]*<\/title>/gi, '');

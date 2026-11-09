@@ -3481,12 +3481,6 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         const injectedMarkdown = getInjectedContent();
                         return (
                             <div className="xl:grid xl:grid-cols-[minmax(0,1fr)_290px] xl:gap-10 xl:items-start">
-                                <TableOfContents
-                                    content={injectedMarkdown}
-                                    containerSelector="[data-article-content]"
-                                    className="xl:sticky xl:top-32 xl:order-2"
-                                />
-
                                 <div 
                                     itemProp="articleBody"
                                     data-article-content="true"
@@ -3590,6 +3584,12 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                         {injectedMarkdown}
                                     </MarkdownRenderer>
                                 </div>
+
+                                <TableOfContents
+                                    content={injectedMarkdown}
+                                    containerSelector="[data-article-content]"
+                                    className="xl:sticky xl:top-32 xl:order-2"
+                                />
                             </div>
                         );
                     })()}

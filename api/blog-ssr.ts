@@ -139,7 +139,7 @@ export default async function handler(req: any, res: any) {
       if (fs.existsSync(candidate)) {
         const html = fs.readFileSync(candidate, 'utf-8');
         res.setHeader('Content-Type', 'text/html; charset=utf-8');
-        res.setHeader('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=3600');
+        res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=15, must-revalidate');
         if (req.method === 'HEAD') return res.status(200).end();
         return res.status(200).send(html);
       }

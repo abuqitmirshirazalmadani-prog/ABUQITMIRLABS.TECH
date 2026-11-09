@@ -114,7 +114,6 @@ export function renderFullApp(url: string = '/') {
   resetSsrCapturedMetadata();
   const rawHtml = renderToString(
     <StaticRouter location={url}>
-      <FloatingWhatsApp />
       <ErrorBoundary>
           <Suspense fallback={null}>
             <Routes>
@@ -227,6 +226,7 @@ export function renderFullApp(url: string = '/') {
             </Routes>
           </Suspense>
         </ErrorBoundary>
+        <FloatingWhatsApp />
       </StaticRouter>
   );
 
