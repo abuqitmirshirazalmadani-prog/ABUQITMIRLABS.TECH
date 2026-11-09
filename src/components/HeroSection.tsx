@@ -86,7 +86,7 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
       {/* Hero Content Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 space-y-12 animate-enter">
         {/* Avatar stack + Directory Listing + Ticker stats */}
-        <div className="space-y-4">
+        <div className="space-y-4" aria-hidden="true" data-nosnippet="true">
           <div className="flex -space-x-3 items-center">
             {teamAvatars.map((member, i) => (
               <div
@@ -144,11 +144,11 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
           {/* Left Title & Buttons */}
           <div className="lg:col-span-8 space-y-6 animate-enter-delay-1">
-            <span className="text-[#C8EB5F] text-[11px] sm:text-xs font-mono font-bold tracking-[0.3em] uppercase block">
+            <span className="text-[#C8EB5F] text-[11px] sm:text-xs font-mono font-bold tracking-[0.3em] uppercase block" aria-hidden="true" data-nosnippet="true">
               AbuQitmirLabs &bull; Karachi HQ &bull; Build Software &bull; Automate with AI &bull; Grow Demand
             </span>
 
-            <h1 className="font-serif text-white font-light text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
+            <h1 id="homepage-h1" itemProp="headline" className="font-serif text-white font-light text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
               Growth Engineering Firm: Custom Software, AI &amp; Technical SEO
             </h1>
 

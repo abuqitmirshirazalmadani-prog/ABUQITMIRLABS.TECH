@@ -229,12 +229,80 @@
     <!-- Instant Navigation: High-speed route prefetch hints -->
     <link rel="prefetch" href="/custom-software" />
     <link rel="prefetch" href="/solutions/fintech" />
+
+    <script id="canonical-schema-graph" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
+      "@id": "https://www.abuqitmirlabs.tech/#organization",
+      "name": "AbuQitmirLabs",
+      "url": "https://www.abuqitmirlabs.tech/",
+      "founder": {
+        "@type": "Person",
+        "@id": "https://www.abuqitmirlabs.tech/#founder",
+        "name": "Abu Qitmir Mohammad Shiraz Al-Madani",
+        "url": "https://www.abuqitmirlabs.tech/about"
+      },
+      "foundingDate": "2021",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.abuqitmirlabs.tech/logo.png"
+      },
+      "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+      "email": "hello@abuqitmirlabs.tech",
+      "telephone": "+923233260859",
+      "description": "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.abuqitmirlabs.tech/#website",
+      "url": "https://www.abuqitmirlabs.tech/",
+      "name": "AbuQitmirLabs",
+      "publisher": {
+        "@id": "https://www.abuqitmirlabs.tech/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.abuqitmirlabs.tech/#webpage",
+      "url": "https://www.abuqitmirlabs.tech/",
+      "name": "Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs",
+      "description": "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Free technical audit.",
+      "isPartOf": {
+        "@id": "https://www.abuqitmirlabs.tech/#website"
+      },
+      "about": {
+        "@id": "https://www.abuqitmirlabs.tech/#organization"
+      }
+    }
+  ]
+}
+    </script>
   </head>
   <body>
     <noscript>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@600;700&display=swap" />
     </noscript>
-    <div id="root"></div>
+    <div id="root">
+      <div class="min-h-screen bg-[#020202] text-white">
+        <main id="main-content">
+          <section id="hero-section" aria-label="Hero Section" class="relative min-h-screen w-full flex flex-col justify-end pt-32 pb-16 sm:pb-24 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto">
+            <h1 id="homepage-h1" itemProp="headline" class="font-serif text-white font-light text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">Growth Engineering Firm: Custom Software, AI &amp; Technical SEO</h1>
+            <p class="text-base sm:text-lg md:text-xl text-[#C8EB5F] font-mono tracking-wide font-medium mt-4">We build revenue systems, not just software.</p>
+            <p class="text-neutral-300 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-light mt-4">Karachi-based growth engineering firm and custom software development studio for US, UK, GCC, and global B2B companies. We unite <a href="/custom-software">custom software development</a>, <a href="/ai-agent-development">autonomous AI agents</a>, and <a href="/seo-mastery">technical SEO</a> as one connected revenue system.</p>
+          </section>
+          <section class="max-w-7xl mx-auto px-6 py-16">
+            <h2>Built for Long-Term Ownership &amp; Scale</h2>
+            <h2>Three Integrated Funnels: Build Software. Automate with AI. Grow Search Demand.</h2>
+            <h2>Custom Software Development, Web &amp; AI Agent Services</h2>
+            <h2>Case Studies: Custom Software &amp; AI Development Results</h2>
+            <h2>Frequently Asked Questions: Software, AI &amp; Web Development</h2>
+          </section>
+        </main>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

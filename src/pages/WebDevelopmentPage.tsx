@@ -586,7 +586,7 @@ Do not sign a website contract without these protective legal terms.
                   $ npx axiom-audit --mode=performance<br />
                   <span className="text-neutral-500">Checking Core Web Vitals... [OK]</span><br />
                   <span className="text-neutral-500">Minifying bundle size... [DONE]</span><br />
-                  <span className="text-white font-bold ml-4">LCP: 0.8s | CLS: 0.01 | INP: 24ms</span><br />
+                  <span className="text-white font-bold ml-4">Target LCP: &lt; 2.5s | CLS: &lt; 0.1 | INP: &lt; 200ms</span><br />
                   <span className="text-green-400">$ architecture synchronized with Vercel Edge.</span>
                 </p>
               </div>

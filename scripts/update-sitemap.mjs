@@ -379,18 +379,49 @@ if (fs.existsSync(pseoPath)) {
   }
 }
 
-// 4. Save karein (public/sitemap.xml, root sitemap.xml, public/pages-sitemap.xml)
-fs.writeFileSync(sitemapPath, sitemap);
+// 4. Normalize homepage trailing slash and format all <url> entries into clean, standard multi-line XML
+sitemap = sitemap.replace(/<loc>https:\/\/www\.abuqitmirlabs\.tech<\/loc>/g, '<loc>https://www.abuqitmirlabs.tech/</loc>');
+
+const urlBlocks = [];
+const seenLocs = new Set();
+const urlRegex = /<url>\s*([\s\S]*?)\s*<\/url>/gi;
+let uMatch;
+while ((uMatch = urlRegex.exec(sitemap)) !== null) {
+  const inner = uMatch[1];
+  const locM = inner.match(/<loc>\s*([^<\s]+)\s*<\/loc>/i);
+  if (!locM) continue;
+  let loc = locM[1].trim();
+  if (loc === 'https://www.abuqitmirlabs.tech') loc = 'https://www.abuqitmirlabs.tech/';
+  if (seenLocs.has(loc)) continue;
+  seenLocs.add(loc);
+
+  const lastmodM = inner.match(/<lastmod>\s*([^<\s]+)\s*<\/lastmod>/i);
+  const changefreqM = inner.match(/<changefreq>\s*([^<\s]+)\s*<\/changefreq>/i);
+  const priorityM = inner.match(/<priority>\s*([^<\s]+)\s*<\/priority>/i);
+
+  const lastmod = lastmodM ? lastmodM[1].trim() : today;
+  const changefreq = changefreqM ? changefreqM[1].trim() : (loc === 'https://www.abuqitmirlabs.tech/' ? 'daily' : 'weekly');
+  const priority = priorityM ? priorityM[1].trim() : (loc === 'https://www.abuqitmirlabs.tech/' ? '1.0' : '0.9');
+
+  urlBlocks.push(
+    `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`
+  );
+}
+
+sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlBlocks.join('\n')}\n</urlset>\n`;
+
+// Save karein (public/sitemap.xml, root sitemap.xml, public/pages-sitemap.xml, root pages-sitemap.xml)
+fs.writeFileSync(sitemapPath, sitemap, 'utf-8');
 const rootSitemapPath = path.join(rootDir, 'sitemap.xml');
-fs.writeFileSync(rootSitemapPath, sitemap);
+fs.writeFileSync(rootSitemapPath, sitemap, 'utf-8');
 const pagesSitemapPath = path.join(rootDir, 'public', 'pages-sitemap.xml');
-fs.writeFileSync(pagesSitemapPath, sitemap);
+fs.writeFileSync(pagesSitemapPath, sitemap, 'utf-8');
 const rootPagesSitemapPath = path.join(rootDir, 'pages-sitemap.xml');
-fs.writeFileSync(rootPagesSitemapPath, sitemap);
+fs.writeFileSync(rootPagesSitemapPath, sitemap, 'utf-8');
 
 if (added > 0) {
-  console.log(`\n🎉 Added ${added} new URLs to sitemap.xml`);
+  console.log(`\n🎉 Added ${added} new URLs to sitemap.xml (${urlBlocks.length} total canonical URLs)`);
 } else {
-  console.log(`\n✨ Sitemap already up to date`);
+  console.log(`\n✨ Sitemap verified and formatted (${urlBlocks.length} total canonical URLs)`);
 }
 process.exit(0);

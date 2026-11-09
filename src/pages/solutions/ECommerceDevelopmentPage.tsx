@@ -196,8 +196,8 @@ const ECommerceDevelopmentPage = () => {
                 <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">Source Code &amp; IP Ownership</div>
               </div>
               <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                <div className="text-2xl md:text-3xl font-extrabold text-[#ccff00] font-mono">&lt; 0.8s</div>
-                <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">Sub-Second Storefront Speed</div>
+                <div className="text-2xl md:text-3xl font-extrabold text-[#ccff00] font-mono">&lt; 2.5s</div>
+                <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">Core Web Vitals LCP Target</div>
               </div>
               <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
                 <div className="text-2xl md:text-3xl font-extrabold text-[#ccff00] font-mono">0%</div>
