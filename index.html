@@ -211,7 +211,15 @@
         max-width: 100%;
         height: auto;
       }
+      html.is-subroute #ssr-home-fallback {
+        display: none !important;
+      }
     </style>
+    <script>
+      if (typeof window !== 'undefined' && window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
+        document.documentElement.classList.add('is-subroute');
+      }
+    </script>
     
     <!-- Pinterest Domain Verification -->
     <meta name="p:domain_verify" content="6b353b2d2bc7713e02417a6096df20ce"/>
@@ -269,7 +277,7 @@
       "@id": "https://www.abuqitmirlabs.tech/#webpage",
       "url": "https://www.abuqitmirlabs.tech/",
       "name": "Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs",
-      "description": "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Free technical audit.",
+      "description": "Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Free technical audit.",
       "isPartOf": {
         "@id": "https://www.abuqitmirlabs.tech/#website"
       },
@@ -286,7 +294,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@600;700&display=swap" />
     </noscript>
     <div id="root">
-      <div class="min-h-screen bg-[#020202] text-white">
+      <div id="ssr-home-fallback" class="min-h-screen bg-[#020202] text-white">
         <main id="main-content">
           <section id="hero-section" aria-label="Hero Section" class="relative min-h-screen w-full flex flex-col justify-end pt-32 pb-16 sm:pb-24 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto">
             <h1 id="homepage-h1" itemProp="headline" class="font-serif text-white font-light text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">Growth Engineering Firm: Custom Software, AI &amp; Technical SEO</h1>

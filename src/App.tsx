@@ -85,9 +85,8 @@ import AiReadinessScorePage from './pages/AiReadinessScorePage';
 import TechStackRecommenderPage from './pages/TechStackRecommenderPage';
 import WebsiteAuthorityAnalyzerPage from './pages/WebsiteAuthorityAnalyzerPage';
 import NotFoundPage from './pages/NotFoundPage';
-
-const AdminDashboard = lazyWithRetry(() => import('./pages/AdminDashboard'));
-const AdminSeoFixPage = lazyWithRetry(() => import('../app/admin/seo/page'));
+import AdminDashboard from './pages/AdminDashboard';
+import AdminSeoFixPage from '../app/admin/seo/page';
 
 const PageLoader = () => (
   <div className="min-h-[60vh] bg-[#09090b] flex items-center justify-center py-24" role="status" aria-label="Loading page">
