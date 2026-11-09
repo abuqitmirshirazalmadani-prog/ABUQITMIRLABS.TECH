@@ -4264,7 +4264,8 @@ STATIC_BLOG_POSTS["custom-software-development-qatar"] = {
   "category": "Custom Software",
   "coverImage": "/images/blog-covers/custom-software-development-qatar-06910d97.webp",
   "publishedAt": "2026-11-08",
-  "author": "Abu Qitmir Mohammad Shiraz Al-Madani (AbuQitmirLabs)",
+  "createdAt": "2026-11-08",
+  "author": "Abu Qitmir Mohammad Shiraz Al-Madani",
   "readTime": "18 min read",
   "tags": [
     "Custom Software Development Qatar",

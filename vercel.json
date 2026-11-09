@@ -44,24 +44,32 @@
       "headers": [
         {
           "key": "Content-Type",
-          "value": "application/xml; charset=utf-8"
+          "value": "text/xml; charset=utf-8"
         },
         {
           "key": "Cache-Control",
           "value": "public, max-age=3600, stale-while-revalidate=86400"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
         }
       ]
     }
   ],
   "functions": {
     "api/sitemap.ts": {
-      "includeFiles": "public/*sitemap*.xml"
+      "includeFiles": "{public/*sitemap*.xml,dist/*sitemap*.xml,sitemap.xml,firebase-applet-config.json}"
     },
     "api/blog-ssr.ts": {
       "includeFiles": "{dist/spa-shell.html,dist/blog/**,public/blog/**,content/blog/**,firebase-applet-config.json}"
     }
   },
   "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "/api/sitemap"
+    },
     {
       "source": "/api/(.*)",
       "destination": "/api/$1"
