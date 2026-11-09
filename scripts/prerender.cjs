@@ -489,10 +489,14 @@ for (const routeUrl of allRoutes) {
       continue;
     }
     
-    let html = baseTemplate;
+    let cleanBodyHtml = (bodyHtml || '')
+      .replace(/style="opacity:0;transform:translateY\([^"]*\)"/gi, 'style="opacity:1;transform:translateY(0)"')
+      .replace(/style="opacity:0"/gi, 'style="opacity:1"');
+
+    let html = baseTemplate.replace(/(<meta\s+name=["']viewport["'][^>]*>\s*)+/i, '$1\n  <!-- __SEO_HEAD_TOP__ -->\n  ');
 
     // 1. Inject pure, clean React SSR DOM tree inside #root with explicit route identifier
-    html = replaceRootElement(html, bodyHtml, routeUrl);
+    html = replaceRootElement(html, cleanBodyHtml, routeUrl);
 
     // 2. Unconditionally strip ANY pre-existing <title>, <meta description>, canonical, og, and twitter tags from template
     html = html.replace(/<title\b[^>]*>[^<]*<\/title>/gi, '');
@@ -502,10 +506,14 @@ for (const routeUrl of allRoutes) {
     html = html.replace(/<meta\b[^>]*name=["']twitter:[^"']+["'][^>]*\/?>/gis, '');
     html = stripCanonicalTags(html);
 
-    // 3. Inject hoisted head tags directly from SSR
+    // 3. Inject hoisted head tags directly at the very top of <head> right after <meta name="viewport">
     if (headTags && headTags.trim().length > 0) {
       const formattedHeadTags = headTags.replace(/\s+data-rh=["'][^"']*["']/gi, '');
-      html = html.replace('</head>', `  ${formattedHeadTags}\n</head>`);
+      if (html.includes('<!-- __SEO_HEAD_TOP__ -->')) {
+        html = html.replace('<!-- __SEO_HEAD_TOP__ -->', `${formattedHeadTags}\n  <!-- __SEO_HEAD_TOP__ -->`);
+      } else {
+        html = html.replace('</head>', `  ${formattedHeadTags}\n</head>`);
+      }
     }
 
     // 4. Resolve fallback metadata for routes
@@ -675,8 +683,14 @@ for (const routeUrl of allRoutes) {
       }
     }
     if (uniqueSchemas.length > 0) {
-      html = html.replace('</head>', `  ${uniqueSchemas.join('\n  ')}\n</head>`);
+      if (html.includes('<!-- __SEO_HEAD_TOP__ -->')) {
+        html = html.replace('<!-- __SEO_HEAD_TOP__ -->', `${uniqueSchemas.join('\n  ')}`);
+      } else {
+        html = html.replace('</head>', `  ${uniqueSchemas.join('\n  ')}\n</head>`);
+      }
     }
+    html = html.replace(/\s*<!-- __SEO_HEAD_TOP__ -->\s*/g, '\n  ');
+    html = html.replace(/\n\s*\n\s*\n+/g, '\n\n');
 
     // 6. STRICT SINGLE-PASS DEDUPLICATION GUARANTEE
     // A. Title: strictly ONE <title>

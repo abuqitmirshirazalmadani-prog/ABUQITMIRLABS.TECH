@@ -293,12 +293,11 @@ const ServiceItem: React.FC<{ service: Service }> = ({ service }) => {
 
                 {/* Main Label */}
                 <div className="lg:w-[500px] shrink-0">
-                    {isInView && (
-                        <AnimatedShinyText 
-                            text={service.title} 
-                            textClassName="text-2xl sm:text-5xl md:text-6xl"
-                        />
-                    )}
+                    <AnimatedShinyText 
+                        as="h3"
+                        text={service.title} 
+                        textClassName="text-2xl sm:text-5xl md:text-6xl"
+                    />
                     {service.tagline && (
                         <p className="text-sm sm:text-base text-zinc-300 font-mono mt-3 tracking-wide font-medium">
                             {service.tagline}
