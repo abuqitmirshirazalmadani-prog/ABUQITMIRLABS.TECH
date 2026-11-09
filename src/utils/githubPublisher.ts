@@ -349,8 +349,7 @@ export async function syncPostToGitHubAndDeploy(
           }
         }
       } else {
-        githubSitemap = true;
-        logStep('✓ Local public/sitemap.xml & pages-sitemap.xml verified and up-to-date');
+        logStep(`⚠️ GitHub public/sitemap.xml check returned HTTP ${sitemapFileRes.status} — check GitHub Token 'repo' permissions`);
       }
 
       // 2. Fetch and update public/rss.xml on GitHub if single post
@@ -401,16 +400,12 @@ export async function syncPostToGitHubAndDeploy(
             }
           }
         } catch {
-          githubRss = true;
+          // non-blocking
         }
-      } else {
-        githubRss = true;
       }
     } else {
-      githubSitemap = true;
-      githubRss = true;
       logStep(
-        '✓ Local Sitemaps (public/sitemap.xml, pages-sitemap.xml) & RSS feed synced (add GitHub Token in Auto-Deploy tab for direct Git push)'
+        'ℹ️ Saved to Firestore & Local Sitemaps only — add a GitHub Personal Access Token (with repo scope) in the Auto-Deploy tab or use the AI Studio GitHub icon to push commits to GitHub & Vercel.'
       );
     }
 
@@ -436,7 +431,7 @@ export async function syncPostToGitHubAndDeploy(
       }
     } else if (githubPostFile || githubSitemap) {
       vercelTriggered = true;
-      logStep('🚀 Pipeline ready — Vercel Git Integration connected to main branch');
+      logStep('🚀 GitHub commit pushed — Vercel Git Integration triggered on main branch');
     }
 
     // 4. Ping IndexNow for instant search engine discovery
@@ -460,23 +455,23 @@ export async function syncPostToGitHubAndDeploy(
       success: true,
       steps,
       commitUrl,
-      githubPostFile: githubPostFile || Boolean(cleanSlug),
-      githubSitemap: true,
-      githubRss: true,
-      vercelTriggered: true,
+      githubPostFile,
+      githubSitemap,
+      githubRss,
+      vercelTriggered,
       localSitemap: true,
       localRss: true,
     };
   } catch (err: any) {
-    logStep(`✓ Local Sitemap & SEO pipeline completed (${err?.message || 'offline fallback'})`);
+    logStep(`⚠️ GitHub sync notice: ${err?.message || 'offline fallback'}`);
     return {
       success: true,
       steps,
       commitUrl,
-      githubPostFile: Boolean(cleanSlug),
-      githubSitemap: true,
-      githubRss: true,
-      vercelTriggered: true,
+      githubPostFile: false,
+      githubSitemap: false,
+      githubRss: false,
+      vercelTriggered: false,
       localSitemap: true,
       localRss: true,
     };

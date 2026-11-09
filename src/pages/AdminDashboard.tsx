@@ -925,10 +925,10 @@ const AdminDashboard = () => {
                         commitUrl: clientRes.commitUrl || null,
                         localSitemap: true,
                         localRss: true,
-                        githubPostFile: clientRes.githubPostFile ?? true,
-                        githubSitemap: clientRes.githubSitemap ?? true,
-                        githubRss: clientRes.githubRss ?? true,
-                        vercelTriggered: clientRes.vercelTriggered ?? true
+                        githubPostFile: Boolean(clientRes.githubPostFile),
+                        githubSitemap: Boolean(clientRes.githubSitemap),
+                        githubRss: Boolean(clientRes.githubRss),
+                        vercelTriggered: Boolean(clientRes.vercelTriggered)
                     };
                 } else if (!data || !data.success) {
                     throw new Error(clientRes.error || 'Failed to sync with deployment pipeline');
@@ -938,8 +938,9 @@ const AdminDashboard = () => {
                     ...data,
                     localSitemap: data.localSitemap ?? true,
                     localRss: data.localRss ?? true,
-                    githubPostFile: data.githubPostFile ?? true,
-                    githubSitemap: data.githubSitemap ?? true
+                    githubPostFile: Boolean(data.githubPostFile),
+                    githubSitemap: Boolean(data.githubSitemap),
+                    vercelTriggered: Boolean(data.vercelTriggered)
                 };
             }
 

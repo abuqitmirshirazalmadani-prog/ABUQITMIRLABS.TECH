@@ -432,10 +432,32 @@ const staticBlogRoutes = Object.keys(STATIC_BLOG_POSTS || {})
   .map(slug => `/blog/${slug}`);
 
 const REDIRECT_ALIAS_PATHS = new Set([
+  '/admin',
+  '/brand-kit',
+  '/careers',
+  '/our-company',
+  '/our-process',
+  '/our-team',
+  '/custom-software-development',
+  '/custom-ai-solutions-for-corporate-events-2026-guide',
+  '/custom-web-development-vs-website-templates-2026-guide',
   '/local-seo/small-business',
   '/local-seo-small-business',
   '/local-seo-services'
 ]);
+
+// Ensure no stale prerendered 404 files exist for /admin or alias routes
+for (const aliasRoute of REDIRECT_ALIAS_PATHS) {
+  const cleanAlias = aliasRoute.replace(/^\//, '');
+  const aliasDir = path.join(distDir, cleanAlias);
+  const aliasHtml = path.join(distDir, `${cleanAlias}.html`);
+  if (fs.existsSync(aliasDir)) {
+    fs.rmSync(aliasDir, { recursive: true, force: true });
+  }
+  if (fs.existsSync(aliasHtml)) {
+    fs.rmSync(aliasHtml, { force: true });
+  }
+}
 
 // Merge explicitly defined routes with markdown routes, STATIC_BLOG_POSTS, sitemap routes, and SEO_ROUTES_METADATA
 const allRoutes = Array.from(new Set([
@@ -446,7 +468,7 @@ const allRoutes = Array.from(new Set([
   ...Object.keys(SEO_ROUTES_METADATA || {}).filter(k => typeof k === 'string' && k.startsWith('/'))
 ])).filter(r => {
   const norm = r.endsWith('/') && r !== '/' ? r.slice(0, -1) : r;
-  if (REDIRECT_ALIAS_PATHS.has(norm)) return false;
+  if (REDIRECT_ALIAS_PATHS.has(norm) || norm.startsWith('/admin/')) return false;
   if (norm.startsWith('/blog/')) {
     const s = norm.slice(6);
     return getCanonicalSlug(s) === s;
@@ -459,8 +481,11 @@ let successCount = 0;
 for (const routeUrl of allRoutes) {
   try {
     const { bodyHtml, headTags, jsonLdScripts, helmet } = renderFullApp(routeUrl);
-    if (!/<h1\b[^>]*>/i.test(bodyHtml || '')) {
-      console.warn(`⚠️ [SSG Guard] Skipping overwrite for ${routeUrl} because SSR output lacked <h1> tag.`);
+    if (
+      !/<h1\b[^>]*>/i.test(bodyHtml || '') ||
+      (bodyHtml && (bodyHtml.includes('HTTP 404 — Resource Not Found') || bodyHtml.includes('>Page Not Found<')))
+    ) {
+      console.warn(`⚠️ [SSG Guard] Skipping overwrite for ${routeUrl} because SSR output lacked valid <h1> or rendered 404 NotFoundPage.`);
       continue;
     }
     

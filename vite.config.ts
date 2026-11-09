@@ -651,16 +651,19 @@ export default defineConfig(({ mode }) => {
             }
           }
 
-          const validatedEntries = Array.from(sitemapEntriesMap.values()).map((entry) => ({
-            ...entry,
-            loc: prependCanonicalOrigin(entry.loc),
-          }));
+          const validatedEntries = Array.from(sitemapEntriesMap.values()).map((entry) => {
+            const normLoc = prependCanonicalOrigin(entry.loc);
+            return {
+              ...entry,
+              loc: normLoc === SITEMAP_ORIGIN ? `${SITEMAP_ORIGIN}/` : normLoc,
+            };
+          });
           const sitemapXmlLines = [
             '<?xml version="1.0" encoding="UTF-8"?>',
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
             ...validatedEntries.map(
               (entry) =>
-                `<url><loc>${escapeXml(entry.loc)}</loc><changefreq>${entry.changefreq}</changefreq><priority>${entry.priority}</priority><lastmod>${entry.lastmod}</lastmod></url>`
+                `  <url>\n    <loc>${escapeXml(entry.loc)}</loc>\n    <lastmod>${entry.lastmod}</lastmod>\n    <changefreq>${entry.changefreq}</changefreq>\n    <priority>${entry.priority}</priority>\n  </url>`
             ),
             '</urlset>',
             ''

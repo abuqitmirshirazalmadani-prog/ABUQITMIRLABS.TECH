@@ -59,7 +59,7 @@
   ],
   "functions": {
     "api/sitemap.ts": {
-      "includeFiles": "{public/*sitemap*.xml,dist/*sitemap*.xml,sitemap.xml,firebase-applet-config.json}"
+      "includeFiles": "public/*sitemap*.xml"
     },
     "api/blog-ssr.ts": {
       "includeFiles": "{dist/spa-shell.html,dist/blog/**,public/blog/**,content/blog/**,firebase-applet-config.json}"
