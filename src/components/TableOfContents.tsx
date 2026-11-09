@@ -91,7 +91,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
         const text = (node.textContent || '').trim();
         if (!text || text.toLowerCase() === 'table of contents') return;
 
-        let id = node.getAttribute('id') || '';
+        let id = node.getAttribute('id') || node.parentElement?.getAttribute('id') || '';
         if (!id) {
           id = slugifyHeading(text);
           if (id) {

@@ -425,14 +425,14 @@ export default async function handler(req: any, res: any) {
         }
         if (level === 2) {
           inFaqSection = /frequently asked questions|\bfaq\b/i.test(hText);
-          htmlBlocks.push(`<h2 id="${slugifyId(hText)}" class="text-2xl font-bold mt-10 mb-4">${escapeHtml(hText)}</h2>`);
+          htmlBlocks.push(`<div id="${slugifyId(hText)}" class="text-2xl font-bold mt-10 mb-4"><h2>${escapeHtml(hText)}</h2></div>`);
         } else if (level === 3) {
           if (inFaqSection || hText.endsWith('?')) {
             currentFaqQuestion = hText.replace(/^\d+[\.\)]\s*/, '').trim();
           }
-          htmlBlocks.push(`<h3 id="${slugifyId(hText)}" class="text-xl font-bold mt-6 mb-3">${escapeHtml(hText)}</h3>`);
+          htmlBlocks.push(`<div id="${slugifyId(hText)}" class="text-xl font-bold mt-6 mb-3"><h3>${escapeHtml(hText)}</h3></div>`);
         } else {
-          htmlBlocks.push(`<h4 id="${slugifyId(hText)}" class="text-lg font-bold mt-5 mb-2">${escapeHtml(hText)}</h4>`);
+          htmlBlocks.push(`<div id="${slugifyId(hText)}" class="text-lg font-bold mt-5 mb-2"><h4>${escapeHtml(hText)}</h4></div>`);
         }
       } else if (/^[-*+]\s+/.test(trimmed)) {
         if (olItems.length > 0) flushLists();
@@ -532,7 +532,7 @@ export default async function handler(req: any, res: any) {
     const schemaBlock = `<script id="canonical-schema-graph" type="application/ld+json">\n${JSON.stringify({ '@context': 'https://schema.org', '@graph': graphNodes }, null, 2)}\n</script>`;
     const bylineDate = escapeHtml(String(postData.createdAt || '2026-11-08').slice(0, 10));
     const bylineAuthor = escapeHtml(postData.author || 'Abu Qitmir Mohammad Shiraz Al-Madani');
-    const innerRootHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader()}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><header class="mb-6"><h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${escapeHtml(cleanH1)}</h1></header><div aria-label="Article metadata" data-nosnippet="true" aria-hidden="true" class="mb-8 flex flex-wrap gap-4 text-xs text-zinc-400 font-mono"><p>${bylineDate}</p><p>By ${bylineAuthor} (AbuQitmirLabs)</p></div><article class="prose prose-invert max-w-none text-neutral-300">${htmlBlocks.join('\n')}</article></main></div>`;
+    const innerRootHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader()}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><header class="mb-6"><div class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6"><h1>${escapeHtml(cleanH1)}</h1></div></header><div aria-label="Article metadata" data-nosnippet="true" aria-hidden="true" class="mb-8 flex flex-wrap gap-4 text-xs text-zinc-400 font-mono"><p>${bylineDate}</p><p>By ${bylineAuthor} (AbuQitmirLabs)</p></div><article class="prose prose-invert max-w-none text-neutral-300">${htmlBlocks.join('\n')}</article></main></div>`;
 
     const shellCandidates = [
       path.join(process.cwd(), 'dist', 'spa-shell.html'),
