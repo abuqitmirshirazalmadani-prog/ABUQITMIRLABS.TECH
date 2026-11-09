@@ -526,8 +526,9 @@ export default async function handler(req: any, res: any) {
       author: postData.author || 'Abu Qitmir Mohammad Shiraz Al-Madani',
       category: postData.category || 'Business',
       createdAt: String(postData.createdAt || '2026-11-01').slice(0, 10),
-    }).replace(/</g, '\\u003c');
-    const ssrStateScript = `<script id="__SSR_BLOG_POST__" type="application/json">${ssrPostPayload}</script>`;
+    });
+    const ssrPostBase64 = Buffer.from(ssrPostPayload, 'utf-8').toString('base64');
+    const ssrStateScript = `<script id="__SSR_BLOG_POST__" type="application/json" data-encoding="base64">${ssrPostBase64}</script>`;
     const schemaBlock = `<script id="canonical-schema-graph" type="application/ld+json">\n${JSON.stringify({ '@context': 'https://schema.org', '@graph': graphNodes }, null, 2)}\n</script>`;
     const bylineDate = escapeHtml(String(postData.createdAt || '2026-11-08').slice(0, 10));
     const bylineAuthor = escapeHtml(postData.author || 'Abu Qitmir Mohammad Shiraz Al-Madani');
@@ -546,22 +547,54 @@ export default async function handler(req: any, res: any) {
       }
     }
 
+    const seoHeadTopBlock = [
+      `  <title>${escapeHtml(pageTitle)}</title>`,
+      `  <meta name="description" content="${escapeHtml(metaDesc)}" />`,
+      `  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />`,
+      `  <link rel="canonical" href="${fullCanonical}" />`,
+      `  <link rel="alternate" hreflang="en" href="${fullCanonical}" />`,
+      `  <link rel="alternate" hreflang="x-default" href="${fullCanonical}" />`,
+      `  <meta property="og:type" content="article" />`,
+      `  <meta property="og:site_name" content="AbuQitmirLabs" />`,
+      `  <meta property="og:title" content="${escapeHtml(pageTitle)}" />`,
+      `  <meta property="og:description" content="${escapeHtml(metaDesc)}" />`,
+      `  <meta property="og:url" content="${fullCanonical}" />`,
+      `  <meta property="og:image" content="${escapeHtml(ogImageUrl)}" />`,
+      `  <meta name="twitter:card" content="summary_large_image" />`,
+      `  <meta name="twitter:title" content="${escapeHtml(pageTitle)}" />`,
+      `  <meta name="twitter:description" content="${escapeHtml(metaDesc)}" />`,
+      `  <meta name="twitter:image" content="${escapeHtml(ogImageUrl)}" />`,
+      `  ${schemaBlock}`,
+    ].join('\n');
+
     let finalHtml = '';
     if (shellHtml) {
-      finalHtml = shellHtml
+      let cleanedShell = shellHtml
         .replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '')
         .replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gi, '')
+        .replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gi, '')
         .replace(/<meta\b[^>]*property=["']og:[^"']+["'][^>]*\/?>/gi, '')
         .replace(/<meta\b[^>]*name=["']twitter:[^"']+["'][^>]*\/?>/gi, '')
         .replace(/<link\b[^>]*rel=["']canonical["'][^>]*\/?>/gi, '')
+        .replace(/<link\b[^>]*rel=["']alternate["'][^>]*hreflang=["'][^"']+["'][^>]*\/?>/gi, '')
+        .replace(/<link\b[^>]*href=["']\/images\/hero-abuqitmirlabs\.webp["'][^>]*\/?>/gi, '')
         .replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis, '')
-        .replace(
-          '</head>',
-          `  <title>${escapeHtml(pageTitle)}</title>\n  <meta name="description" content="${escapeHtml(metaDesc)}" />\n  <link rel="canonical" href="${fullCanonical}" />\n  <meta property="og:type" content="article" />\n  <meta property="og:title" content="${escapeHtml(pageTitle)}" />\n  <meta property="og:description" content="${escapeHtml(metaDesc)}" />\n  <meta property="og:url" content="${fullCanonical}" />\n  <meta property="og:image" content="${escapeHtml(ogImageUrl)}" />\n  <meta name="twitter:card" content="summary_large_image" />\n  <meta name="twitter:title" content="${escapeHtml(pageTitle)}" />\n  <meta name="twitter:description" content="${escapeHtml(metaDesc)}" />\n  <meta name="twitter:image" content="${escapeHtml(ogImageUrl)}" />\n  ${schemaBlock}\n  ${ssrStateScript}\n</head>`
-        )
-        .replace(/<div id="root"[^>]*>[\s\S]*?<\/div>/i, `<div id="root" data-rendered-route="${routeUrl}">${innerRootHtml}</div>`);
+        .replace(/(\r?\n[ \t]*){2,}/g, '\n');
+
+      if (/<meta\s+name=["']viewport["'][^>]*>/i.test(cleanedShell)) {
+        cleanedShell = cleanedShell.replace(
+          /(<meta\s+name=["']viewport["'][^>]*>)/i,
+          `$1\n${seoHeadTopBlock}`
+        );
+      } else {
+        cleanedShell = cleanedShell.replace('</head>', `${seoHeadTopBlock}\n</head>`);
+      }
+
+      finalHtml = cleanedShell
+        .replace(/<div id="root"[^>]*>[\s\S]*?<\/div>/i, `<div id="root" data-rendered-route="${routeUrl}">${innerRootHtml}</div>`)
+        .replace('</body>', `  ${ssrStateScript}\n</body>`);
     } else {
-      finalHtml = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>${escapeHtml(pageTitle)}</title><meta name="description" content="${escapeHtml(metaDesc)}" /><link rel="canonical" href="${fullCanonical}" /><meta property="og:type" content="article" /><meta property="og:title" content="${escapeHtml(pageTitle)}" /><meta property="og:description" content="${escapeHtml(metaDesc)}" /><meta property="og:url" content="${fullCanonical}" /><meta property="og:image" content="${escapeHtml(ogImageUrl)}" />${schemaBlock}${ssrStateScript}</head><body><div id="root" data-rendered-route="${routeUrl}">${innerRootHtml}</div></body></html>`;
+      finalHtml = `<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="utf-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n${seoHeadTopBlock}\n</head>\n<body>\n  <div id="root" data-rendered-route="${routeUrl}">${innerRootHtml}</div>\n  ${ssrStateScript}\n</body>\n</html>`;
     }
 
     res.setHeader('Content-Type', 'text/html; charset=utf-8');

@@ -83,11 +83,10 @@ function normalizeSyncedMarkdownBody(rawBody, cleanTitle) {
 
   body = cleanedLines.join('\n').trim();
 
+  const hasServicePillarLink = /\]\(\/(?:custom-software|ai-agent-development|seo-mastery|web-development|mobile-app-development|brand-building|content-writing|digital-marketing|graphics-design)\b/i.test(body);
   const missingSnippets = [];
-  if (!/\]\(\/custom-software\b/i.test(body)) {
+  if (!hasServicePillarLink) {
     missingSnippets.push('[custom software engineering](/custom-software)');
-  }
-  if (!/\]\(\/ai-agent-development\b/i.test(body)) {
     missingSnippets.push('[AI agent development](/ai-agent-development)');
   }
   if (!/\]\(\/contact\b/i.test(body)) {

@@ -108,13 +108,14 @@ baseTemplate = baseTemplate.replace(/<script\b[^>]*type=["']application\/ld\+jso
 baseTemplate = baseTemplate.replace(/<meta\b[^>]*property=["']article:[^"']+["'][^>]*\/?>/gis, '');
 baseTemplate = baseTemplate.replace(/<meta\b[^>]*name=["']keywords["'][^>]*\/?>/gis, '');
 baseTemplate = baseTemplate.replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gis, '');
+baseTemplate = baseTemplate.replace(/(\r?\n[ \t]*){2,}/g, '\n');
 
 // Preserve a clean, unpopulated SPA shell with site-wide schemas for dynamic client-side routes (e.g. /admin)
 const spaShellPath = path.join(distDir, 'spa-shell.html');
 const spaShellDir = path.join(distDir, 'spa-shell');
-const spaShellContent = siteWideSchemasHtml 
+const spaShellContent = (siteWideSchemasHtml 
   ? baseTemplate.replace('</head>', `  ${siteWideSchemasHtml}\n</head>`)
-  : baseTemplate;
+  : baseTemplate).replace(/<link\b[^>]*href=["']\/images\/hero-abuqitmirlabs\.webp["'][^>]*\/?>\s*/gi, '');
 fs.writeFileSync(spaShellPath, spaShellContent, 'utf8');
 if (!fs.existsSync(spaShellDir)) {
   fs.mkdirSync(spaShellDir, { recursive: true });

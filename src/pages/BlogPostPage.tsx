@@ -69,7 +69,14 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         try {
             const el = document.getElementById('__SSR_BLOG_POST__');
             if (!el || !el.textContent) return null;
-            const parsed = JSON.parse(el.textContent);
+            const rawContent = el.textContent.trim();
+            let jsonStr = rawContent;
+            if (el.getAttribute('data-encoding') === 'base64' && typeof window !== 'undefined' && typeof window.atob === 'function') {
+                const binString = window.atob(rawContent);
+                const bytes = Uint8Array.from(binString, (m) => m.codePointAt(0) || 0);
+                jsonStr = new TextDecoder('utf-8').decode(bytes);
+            }
+            const parsed = JSON.parse(jsonStr);
             if (parsed && (parsed.slug === targetSlug || getCanonicalSlug(parsed.slug || '') === getCanonicalSlug(targetSlug))) {
                 return parsed as Post;
             }
