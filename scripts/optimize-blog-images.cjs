@@ -235,6 +235,7 @@ function syncMarkdownPosts() {
         slug,
         canonical: `https://www.abuqitmirlabs.tech/blog/${slug}`,
         title: cleanPostTitle,
+        ...(meta.heroSubtitle ? { heroSubtitle: meta.heroSubtitle } : {}),
         content: body,
         excerpt: meta.excerpt || '',
         metaDescription: meta.metaDescription || meta.excerpt || '',

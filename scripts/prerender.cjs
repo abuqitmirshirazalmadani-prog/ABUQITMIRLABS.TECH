@@ -164,7 +164,7 @@ const TITLE_OVERRIDES = {
   '/blog/brand-refresh-vs-rebrand':
     'Brand Refresh vs Rebrand Pakistan | AbuQitmirLabs',
   '/blog/lead-generation-content-strategy-google-meta':
-    'Lead Generation Content Strategy That Works | AbuQitmirLabs',
+    'B2B Lead Generation Content Strategy: Google + Meta',
   '/local-seo-for-small-business': 'Local SEO Services for Small Business | AbuQitmirLabs',
 };
 

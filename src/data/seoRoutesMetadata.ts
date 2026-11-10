@@ -11665,10 +11665,14 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     }
   },
   "/blog/lead-generation-content-strategy-google-meta": {
-    "title": "Lead Generation Content Strategy That Works | AbuQitmirLabs",
-    "h1": "B2B Lead Generation Content Strategy: Google Search + Meta Distribution Framework",
-    "description": "Learn how to build a lead generation content strategy that follows Google and Meta guidelines, saves budget, and attracts qualified clients.",
+    "title": "B2B Lead Generation Content Strategy: Google + Meta",
+    "h1": "B2B Lead Generation Content Strategy: Google + Meta",
+    "description": "A practical B2B lead generation content strategy using Google Search, Meta distribution, original proof, internal links and qualified-lead tracking.",
     "canonical": "https://www.abuqitmirlabs.tech/blog/lead-generation-content-strategy-google-meta",
+    "ogTitle": "B2B Lead Generation Content Strategy: Google + Meta",
+    "ogDescription": "A practical B2B lead generation content strategy using Google Search, Meta distribution, original proof, internal links and qualified-lead tracking.",
+    "twitterTitle": "B2B Lead Generation Content Strategy: Google + Meta",
+    "twitterDescription": "A practical B2B lead generation content strategy using Google Search, Meta distribution, original proof, internal links and qualified-lead tracking.",
     "ogImage": "https://www.abuqitmirlabs.tech/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
     "ogType": "article"
   },

@@ -146,9 +146,14 @@ export function generateBlogPostMeta(
     currentUrl = post.canonical;
   }
   
-  // 1. Unique Dynamic Title: "<Post Title> | AbuQitmirLabs"
+  // 1. Unique Dynamic Title: "<Post Title> | AbuQitmirLabs" (or exact override for specific audited slugs)
   const rawTitle = post.title?.trim() || 'Journal Article';
-  const pageTitle = rawTitle.includes(siteName) ? rawTitle : `${rawTitle} | ${siteName}`;
+  const pageTitle =
+    slug === 'lead-generation-content-strategy-google-meta'
+      ? 'B2B Lead Generation Content Strategy: Google + Meta'
+      : rawTitle.includes(siteName)
+      ? rawTitle
+      : `${rawTitle} | ${siteName}`;
 
   // 2. Unique Dynamic Description: Prioritize explicit metaDescription or description field, then post excerpt, then fallback to content
   let description = '';
@@ -266,7 +271,8 @@ export function generateBlogPostMeta(
         "author": {
           "@type": "Person",
           "name": "Abu Qitmir Mohammad Shiraz Al-Madani",
-          "jobTitle": "Founder & Growth Engineer",
+          "jobTitle": "Founder & Lead Systems Architect",
+          "description": "Founder & Lead Systems Architect at AbuQitmirLabs (B.S. Software Engineering, +5 Years Experience) specializing in custom software, AI agents, and technical SEO acquisition systems.",
           "worksFor": {
             "@type": "Organization",
             "name": "AbuQitmirLabs",

@@ -95,6 +95,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         return {
             ...cached,
             title: stat.title || cached.title,
+            heroSubtitle: stat.heroSubtitle || cached.heroSubtitle,
             createdAt: stat.createdAt || cached.createdAt,
             coverImage: (stat.coverImage && !stat.coverImage.includes('logo.png')) ? stat.coverImage : cached.coverImage,
             content: (stat.content && stat.content.trim().length > 500)
@@ -226,6 +227,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                     const sanitizedPost: Post = {
                         ...foundPost,
                         title: resolvedFullTitle,
+                        heroSubtitle: (staticEntry as any)?.heroSubtitle || foundPost.heroSubtitle,
                         createdAt: staticEntry?.createdAt || foundPost.createdAt,
                         content: resolvedContent,
                         coverImage: resolvedCover || foundPost.coverImage,
@@ -3392,9 +3394,18 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                           .trim()}
                             </h1>
                         </div>
+                        {(post.heroSubtitle || slug === 'lead-generation-content-strategy-google-meta') && (
+                            <p
+                                itemProp="alternativeHeadline"
+                                className="mt-5 text-lg md:text-xl text-zinc-300 max-w-4xl leading-relaxed font-sans"
+                            >
+                                {post.heroSubtitle ||
+                                    'How B2B service firms, software agencies, and SaaS teams pair high-intent Google Search content with Meta distribution, original proof, and qualified-lead tracking.'}
+                            </p>
+                        )}
                     </header>
 
-                    <div aria-label="Article metadata" data-nosnippet aria-hidden="true" className="flex flex-wrap items-center justify-between gap-4 text-xs text-zinc-400 font-mono border-y border-zinc-800/80 py-5 mb-12">
+                    <div aria-label="Article metadata" className="flex flex-wrap items-center justify-between gap-4 text-xs text-zinc-400 font-mono border-y border-zinc-800/80 py-5 mb-12">
                         <div className="flex flex-wrap items-center gap-4">
                             <p className="flex items-center gap-2 text-zinc-300 m-0 sm:border-r sm:border-zinc-800 sm:pr-4">
                                 <Calendar size={14} className="text-[#ccff00]" />
@@ -3406,11 +3417,17 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                 <User size={14} className="text-[#ccff00]" />
                                 <span>
                                     {'By '}
-                                    <span itemProp="name" className="text-white font-semibold">
-                                        {post.author && !post.author.toUpperCase().includes('SHIRAZ') && !post.author.toUpperCase().includes('ABUQITMIR')
-                                            ? post.author
-                                            : 'Abu Qitmir Mohammad Shiraz Al-Madani'}
-                                    </span>{' '}
+                                    <Link
+                                        to="/about/our-team"
+                                        itemProp="url"
+                                        className="text-white font-semibold hover:text-[#ccff00] underline decoration-zinc-700 hover:decoration-[#ccff00] underline-offset-4 transition-colors"
+                                    >
+                                        <span itemProp="name">
+                                            {post.author && !post.author.toUpperCase().includes('SHIRAZ') && !post.author.toUpperCase().includes('ABUQITMIR')
+                                                ? post.author
+                                                : 'Abu Qitmir Mohammad Shiraz Al-Madani'}
+                                        </span>
+                                    </Link>{' '}
                                     <span className="text-zinc-400">(AbuQitmirLabs)</span>
                                 </span>
                             </p>
@@ -3610,7 +3627,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                             <div className="h-24 w-24 bg-zinc-900 rounded-3xl overflow-hidden shrink-0 shadow-lg border-2 border-[#ccff00]/40">
                                 <img 
                                     src={resolveOptimizedCoverImage("https://i.postimg.cc/hjLzDQHK/abuqitmir222.png", "author-abuqitmir-shiraz")} 
-                                    alt="Shiraz Almadani - Lead Architect at AbuQitmirLabs" 
+                                    alt="Abu Qitmir Mohammad Shiraz Al-Madani - Founder & Lead Systems Architect at AbuQitmirLabs" 
                                     className="w-full h-full object-cover object-top" 
                                     width="96"
                                     height="96"
@@ -3624,15 +3641,17 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                     <span className="text-[10px] font-mono text-[#ccff00] uppercase tracking-widest font-bold">About the Author</span>
                                 </div>
                                 <div className="text-2xl font-black text-white mb-2 uppercase tracking-tight font-serif">
-                                    Abu Qitmir Mohammad Shiraz Al-Madani
+                                    <Link to="/about/our-team" className="hover:text-[#ccff00] transition-colors">
+                                        Abu Qitmir Mohammad Shiraz Al-Madani
+                                    </Link>
                                 </div>
-                                <p className="text-zinc-400 text-sm leading-relaxed max-w-xl mb-4">
-                                    Founder &amp; Lead Systems Architect at AbuQitmirLabs. Specializing in high-performance digital ecosystems, AI-driven architectures, and building scalable full-stack software systems.
+                                <p className="text-zinc-300 text-sm leading-relaxed max-w-2xl mb-4">
+                                    Founder &amp; Lead Systems Architect at AbuQitmirLabs (B.S. Software Engineering, +5 Years Experience). Based in Karachi, Pakistan, he architects custom web and mobile software, production AI agents, and technical SEO acquisition systems for B2B companies across Pakistan, the GCC, the UK, and the US.
                                 </p>
                                 <div className="flex flex-wrap gap-4 text-xs font-mono">
-                                    <Link to="/about" className="text-[#ccff00] hover:underline font-bold">About Founder →</Link>
-                                    <Link to="/about/our-team" className="text-zinc-400 hover:text-white underline">Engineering Team</Link>
-                                    <Link to="/editorial-policy" className="text-zinc-400 hover:text-white underline">Editorial Standards</Link>
+                                    <Link to="/about/our-team" className="text-[#ccff00] hover:underline font-bold">Author &amp; Engineering Team Profile →</Link>
+                                    <Link to="/about" className="text-zinc-400 hover:text-white underline">About AbuQitmirLabs</Link>
+                                    <Link to="/editorial-policy" className="text-zinc-400 hover:text-white underline">Editorial Policy</Link>
                                 </div>
                             </div>
                         </div>
