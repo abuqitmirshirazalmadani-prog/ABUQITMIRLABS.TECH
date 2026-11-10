@@ -4,7 +4,7 @@
   "slug": "lead-generation-content-strategy-google-meta",
   "excerpt": "A lead engine fails when every sentence sounds like an advertisement. Most businesses blame Google or Meta when leads dry up, but the real problem sits in the strategy. Learn the 9-step framework to build a customer-first content system that drives qualified B2B leads.",
   "metaDescription": "Learn how to build a lead generation content strategy that follows Google and Meta guidelines, saves budget, and attracts qualified clients.",
-  "coverImage": "https://www.abuqitmirlabs.tech/images/blog-covers/lead-generation-content-strategy-google-meta-1576aa01.webp",
+  "coverImage": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
   "coverImageAlt": "Lead generation content strategy framework showing a funnel that converts traffic into qualified B2B clients using customer-first content.",
   "category": "Business",
   "author": "Abu Qitmir Mohammad Shiraz Al-Madani",

@@ -96,6 +96,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             ...cached,
             title: stat.title || cached.title,
             createdAt: stat.createdAt || cached.createdAt,
+            coverImage: (stat.coverImage && !stat.coverImage.includes('logo.png')) ? stat.coverImage : cached.coverImage,
             content: (stat.content && stat.content.trim().length > 500)
                 ? stat.content
                 : (stat.content?.length || 0) >= (cached.content?.length || 0)
@@ -217,7 +218,9 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                 : `${rawCandidateTitle} | AbuQitmirLabs`)
                             : rawCandidateTitle;
                     const resolvedCover = resolveOptimizedCoverImage(
-                        foundPost.coverImage || staticEntry?.coverImage,
+                        (staticEntry?.coverImage && !staticEntry.coverImage.includes('logo.png'))
+                            ? staticEntry.coverImage
+                            : foundPost.coverImage,
                         canonical || slug
                     );
                     const sanitizedPost: Post = {

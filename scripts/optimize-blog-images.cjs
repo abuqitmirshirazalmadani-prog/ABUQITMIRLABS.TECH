@@ -494,22 +494,28 @@ async function main() {
   const tsContent = fs.readFileSync(staticPostsPath, 'utf8');
   const urlToSlug = new Map();
 
-  const urlMap = {};
-  const slugMap = {};
+  const urlMap = {
+    "https://i.postimg.cc/hjLzDQHK/abuqitmir222.png": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp",
+    "https://i.postimg.cc/9Q2XXHMf/SEO-Thought-Leadership.jpg": "/images/blog-covers/seo-content-vs-thought-leadership-a066fe07.webp",
+    "https://i.postimg.cc/FFjdpXPB/Abu-Qitmir-Labs-Design-Brief-Blueprint.png": "/images/blog-covers/how-to-brief-graphic-designer-88ed316b.webp",
+    "https://i.postimg.cc/L5K7zjJ3/Design-Trends-Lasting-vs-Dying.png": "/images/blog-covers/design-trends-2026-c38bcffb.webp",
+    "https://i.postimg.cc/HnPS19gt/Neon-Design-System-Startup-Guide.png": "/images/blog-covers/design-systems-for-startups-848e7249.webp",
+    "https://i.postimg.cc/7L09n4zn/Marketing-ROI-Without-Perfect-Attribution.png": "/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp",
+    "https://i.postimg.cc/NGNQF3vh/Software-Ownership-IP-Guide.png": "/images/blog-covers/the-non-technical-founders-guide-to-software-ownership-ip-20-85a1300b.webp",
+    "https://i.postimg.cc/L5RsMkbN/Qatar-Custom-Software-Development-Guide.png": "/images/blog-covers/custom-software-development-qatar-06910d97.webp",
+    "https://i.postimg.cc/vBhWpH0q/Lead-Generation-Content-Strategy-That-Works.jpg": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
+    "https://i.postimg.cc/7YZRZy9q/Rebranding-Checklist-Pakistan-Before-During-and-After.jpg": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
+    "/images/blog-covers/lead-generation-content-strategy-google-meta-1576aa01.webp": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
+    "/images/blog-covers/rebranding-checklist-pakistan-9252c088.webp": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp"
+  };
+  const slugMap = {
+    "lead-generation-content-strategy-google-meta": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
+    "rebranding-checklist-pakistan": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp"
+  };
 
   const ensureLocalCoverFileExists = (localWebpRelPath) => {
     const cleanRel = localWebpRelPath.replace(/^https?:\/\/[^/]+/, '');
-    const absPath = path.join(rootDir, 'public', cleanRel.replace(/^\/+/, ''));
-    if (!fs.existsSync(absPath)) {
-      const fallbackCandidate = path.join(
-        outDir,
-        'fintech-software-development-compliance-first-architecture-ef845ed7.webp'
-      );
-      if (fs.existsSync(fallbackCandidate)) {
-        fs.copyFileSync(fallbackCandidate, absPath);
-        console.log(`🖼️ Created missing local WebP cover asset: ${cleanRel}`);
-      }
-    }
+    if (urlMap[cleanRel]) return urlMap[cleanRel];
     return cleanRel;
   };
 
@@ -566,6 +572,15 @@ async function main() {
     const batch = entries.slice(i, i + batchSize);
     await Promise.all(
       batch.map(async ([remoteUrl, slug]) => {
+        if (urlMap[remoteUrl]) {
+          const mappedRel = urlMap[remoteUrl];
+          const mappedAbs = path.join(rootDir, 'public', mappedRel.replace(/^\/+/, ''));
+          if (fs.existsSync(mappedAbs) && fs.statSync(mappedAbs).size > 1000) {
+            slugMap[slug] = mappedRel;
+            cached++;
+            return;
+          }
+        }
         const hash = crypto.createHash('md5').update(remoteUrl).digest('hex').slice(0, 8);
         const safeSlug = slug.replace(/[^a-z0-9-_]/gi, '-').slice(0, 60);
         const fileName = `${safeSlug}-${hash}.webp`;
@@ -618,6 +633,10 @@ async function main() {
                 isAvatar ? '85' : '82',
                 filePath
               ]);
+            } catch {
+              // If ImageMagick (convert) is not installed on the build host (e.g. Vercel),
+              // save the actual downloaded image bytes directly instead of a wrong fallback cover
+              fs.writeFileSync(filePath, inputBuffer);
             } finally {
               if (fs.existsSync(tmpInput)) fs.unlinkSync(tmpInput);
             }
@@ -631,19 +650,8 @@ async function main() {
             `  ✓ [${converted + cached}/${entries.length}] ${fileName}: ${(inputBuffer.length / 1024).toFixed(0)}KB -> ${(outStat.size / 1024).toFixed(0)}KB`
           );
         } catch (err) {
-          const fallbackBrandWebp = path.join(outDir, 'complete-brand-building-guide-527885f5.webp');
-          const fallbackDefaultWebp = path.join(outDir, 'fintech-software-development-compliance-first-architecture-ef845ed7.webp');
-          const srcFallback = fs.existsSync(fallbackBrandWebp) ? fallbackBrandWebp : fallbackDefaultWebp;
-          if (fs.existsSync(srcFallback)) {
-            fs.copyFileSync(srcFallback, filePath);
-            urlMap[remoteUrl] = publicPath;
-            slugMap[slug] = publicPath;
-            converted++;
-            console.log(`  ✓ Created fallback local WebP cover asset: ${publicPath}`);
-          } else {
-            failed++;
-            console.warn(`  ⚠️ Failed ${remoteUrl} (${slug}): ${err.message}`);
-          }
+          failed++;
+          console.warn(`  ⚠️ Failed ${remoteUrl} (${slug}): ${err.message}`);
         }
       })
     );
@@ -664,6 +672,12 @@ export const REMOTE_TO_LOCAL_COVER_MAP: Record<string, string> = ${JSON.stringif
 export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = ${JSON.stringify(slugMap, null, 2)};
 
 export function resolveOptimizedCoverImage(url?: string, slug?: string): string {
+  if (slug) {
+    const cleanSlug = slug.replace(/^\\/+/, '').replace(/^blog\\//, '').replace(/\\/+$/, '').trim();
+    if (SLUG_TO_LOCAL_COVER_MAP[cleanSlug]) {
+      return SLUG_TO_LOCAL_COVER_MAP[cleanSlug];
+    }
+  }
   if (url && typeof url === 'string') {
     const clean = url.trim();
     if (REMOTE_TO_LOCAL_COVER_MAP[clean]) {
@@ -674,9 +688,6 @@ export function resolveOptimizedCoverImage(url?: string, slug?: string): string 
       if (REMOTE_TO_LOCAL_COVER_MAP[rel]) return REMOTE_TO_LOCAL_COVER_MAP[rel];
       return rel;
     }
-  }
-  if (slug && SLUG_TO_LOCAL_COVER_MAP[slug]) {
-    return SLUG_TO_LOCAL_COVER_MAP[slug];
   }
   return url || '';
 }

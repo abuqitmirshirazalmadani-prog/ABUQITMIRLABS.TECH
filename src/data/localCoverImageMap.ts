@@ -12,11 +12,16 @@ export const REMOTE_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "https://i.postimg.cc/HnPS19gt/Neon-Design-System-Startup-Guide.png": "/images/blog-covers/design-systems-for-startups-848e7249.webp",
   "https://i.postimg.cc/7L09n4zn/Marketing-ROI-Without-Perfect-Attribution.png": "/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp",
   "https://i.postimg.cc/NGNQF3vh/Software-Ownership-IP-Guide.png": "/images/blog-covers/the-non-technical-founders-guide-to-software-ownership-ip-20-85a1300b.webp",
-  "https://i.postimg.cc/L5RsMkbN/Qatar-Custom-Software-Development-Guide.png": "/images/blog-covers/custom-software-development-qatar-06910d97.webp"
+  "https://i.postimg.cc/L5RsMkbN/Qatar-Custom-Software-Development-Guide.png": "/images/blog-covers/custom-software-development-qatar-06910d97.webp",
+  "https://i.postimg.cc/vBhWpH0q/Lead-Generation-Content-Strategy-That-Works.jpg": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
+  "https://i.postimg.cc/7YZRZy9q/Rebranding-Checklist-Pakistan-Before-During-and-After.jpg": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
+  "/images/blog-covers/lead-generation-content-strategy-google-meta-1576aa01.webp": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
+  "/images/blog-covers/rebranding-checklist-pakistan-9252c088.webp": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp"
 };
 
 export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
-  "custom-software-development-qatar": "/images/blog-covers/custom-software-development-qatar-06910d97.webp",
+  "lead-generation-content-strategy-google-meta": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
+  "rebranding-checklist-pakistan": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
   "5-minute-technical-audit-for-founders": "/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
   "performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups": "/images/blog-covers/performance-marketing-vs-brand-marketing-a-budget-allocation-ceb070fb.webp",
   "mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-2026": "/images/blog-covers/mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-b90cd424.webp",
@@ -158,59 +163,35 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "brand-audit-checklist-pakistan": "/images/blog-covers/brand-audit-checklist-pakistan-905f4323.webp",
   "offshore-ai-agent-development-partner-uae": "/images/blog-covers/offshore-ai-agent-development-partner-uae-3970d441.webp",
   "brand-refresh-vs-rebrand": "/images/blog-covers/brand-refresh-vs-rebrand-82641034.webp",
+  "how-to-brief-graphic-designer": "/images/blog-covers/how-to-brief-graphic-designer-88ed316b.webp",
   "content-brief-template": "/images/blog-covers/content-brief-template-fcc385c7.webp",
   "small-business-branding-mistakes-pakistan": "/images/blog-covers/small-business-branding-mistakes-pakistan-6d2717c9.webp",
   "brand-strategy-vs-logo-design-pakistan-sme": "/images/blog-covers/brand-strategy-vs-logo-design-pakistan-sme-b52ea078.webp",
   "ai-content-vs-human-content": "/images/blog-covers/ai-content-vs-human-content-23537d4c.webp",
   "startup-brand-identity-checklist": "/images/blog-covers/startup-brand-identity-checklist-be48b842.webp",
+  "custom-software-development-qatar": "/images/blog-covers/custom-software-development-qatar-06910d97.webp",
   "ai-overviews-traffic-recovery-what-40-companies-did-next": "/images/blog-covers/ai-overviews-killed-traffic-what-40-companies-did-next-eb108ed0.webp",
   "the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026": "/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
-  "author-abuqitmir-shiraz": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp",
-  "seo-content-vs-thought-leadership": "/images/blog-covers/seo-content-vs-thought-leadership-a066fe07.webp",
-  "how-to-brief-graphic-designer": "/images/blog-covers/how-to-brief-graphic-designer-88ed316b.webp",
-  "design-trends-2026": "/images/blog-covers/design-trends-2026-c38bcffb.webp",
-  "design-systems-for-startups": "/images/blog-covers/design-systems-for-startups-848e7249.webp",
-  "measure-marketing-roi-without-tracking": "/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp",
-  "the-non-technical-founders-guide-to-software-ownership-ip-2026": "/images/blog-covers/the-non-technical-founders-guide-to-software-ownership-ip-20-85a1300b.webp",
-  "guest-posting-in-2026-what-works-abuqitmirlabs": "/images/blog-covers/guest-posting-in-2026-what-works-abuqitmirlabs-458d126e.webp",
-  "digital-marketing-stack-2026": "/images/blog-covers/digital-marketing-stack-2026-f69ac6a2.webp",
-  "tailor-made-software-solutions": "/images/blog-covers/tailor-made-software-solutions-when-off-the-shelf-fails-2026-beb4a4ab.webp",
-  "native-mobile-app-development-ios-vs-android": "/images/blog-covers/native-mobile-app-development-ios-vs-android-cost-9610730c.webp",
-  "app-development-agency-uk": "/images/blog-covers/app-development-agency-uk-what-to-ask-before-you-sign-2026-0191a5e7.webp",
-  "brand-identity-vs-logo-design": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp",
-  "ui-ux-design-conversion": "/images/blog-covers/ui-ux-design-conversion-e56a7379.webp",
-  "content-calendar-strategy": "/images/blog-covers/content-calendar-strategy-c110168a.webp",
-  "native-mobile-app-development-ios-vs-android-cost-2026": "/images/blog-covers/native-mobile-app-development-ios-vs-android-cost-9610730c.webp",
-  "the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026": "/images/blog-covers/the-pakistan-advantage-why-us-startups-are-moving-dev-teams--21cc0e08.webp",
-  "the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact": "/images/blog-covers/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-imp-63afd577.webp",
-  "fix-url-fragmentation-in-headless-spas-abuqitmirlabs": "/images/blog-covers/fix-url-fragmentation-in-headless-spas-abuqitmirlabs-c11c02b3.webp",
-  "the-2026-static-site-comeback-why-jamstack-won-after-all": "/images/blog-covers/the-2026-static-site-comeback-why-jamstack-won-after-all-00f21f97.webp"
+  "author-abuqitmir-shiraz": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp"
 };
 
 export function resolveOptimizedCoverImage(url?: string, slug?: string): string {
-  // 1. Always check SLUG_TO_LOCAL_COVER_MAP first if slug is provided
   if (slug) {
-    const cleanSlug = slug.replace(/^\/+/, '').replace(/^blog\//, '').trim();
+    const cleanSlug = slug.replace(/^\/+/, '').replace(/^blog\//, '').replace(/\/+$/, '').trim();
     if (SLUG_TO_LOCAL_COVER_MAP[cleanSlug]) {
       return SLUG_TO_LOCAL_COVER_MAP[cleanSlug];
     }
   }
-
-  // 2. Check URL if it is not a generic logo.png placeholder
   if (url && typeof url === 'string') {
     const clean = url.trim();
-    if (clean && !clean.includes('/logo.png')) {
-      if (REMOTE_TO_LOCAL_COVER_MAP[clean]) {
-        return REMOTE_TO_LOCAL_COVER_MAP[clean];
-      }
-      if (clean.startsWith('https://www.abuqitmirlabs.tech/')) {
-        const rel = clean.replace('https://www.abuqitmirlabs.tech', '');
-        if (REMOTE_TO_LOCAL_COVER_MAP[rel]) return REMOTE_TO_LOCAL_COVER_MAP[rel];
-        return rel;
-      }
-      return clean;
+    if (REMOTE_TO_LOCAL_COVER_MAP[clean]) {
+      return REMOTE_TO_LOCAL_COVER_MAP[clean];
+    }
+    if (clean.startsWith('https://www.abuqitmirlabs.tech/')) {
+      const rel = clean.replace('https://www.abuqitmirlabs.tech', '');
+      if (REMOTE_TO_LOCAL_COVER_MAP[rel]) return REMOTE_TO_LOCAL_COVER_MAP[rel];
+      return rel;
     }
   }
-
   return url || '';
 }
