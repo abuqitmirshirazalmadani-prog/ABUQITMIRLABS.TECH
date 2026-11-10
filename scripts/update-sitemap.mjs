@@ -123,11 +123,22 @@ const normalizeMarkdownContent = (rawMd, titleStr) => {
   return md;
 };
 
-// 2. staticBlogPosts.ts aur content/blog/*.md se slugs nikalein
+// 2. staticBlogPosts.ts aur content/blog/*.md se slugs aur actual publish dates nikalein
 const slugsSet = new Set();
+const blogDateMap = {};
 
 if (fs.existsSync(blogPostsPath)) {
   const postsContent = fs.readFileSync(blogPostsPath, 'utf-8');
+  const postBlocks = postsContent.matchAll(/STATIC_BLOG_POSTS\["([^"]+)"\]\s*=\s*\{([\s\S]*?)\n\};/g);
+  for (const m of postBlocks) {
+    const rawS = m[1].trim();
+    const canonS = redirects[rawS] || rawS;
+    slugsSet.add(canonS);
+    const dateM = m[2].match(/"(?:createdAt|publishedAt)"\s*:\s*"(\d{4}-\d{2}-\d{2})"/);
+    if (dateM) {
+      blogDateMap[canonS] = dateM[1];
+    }
+  }
   const slugRegex = /["']slug["']\s*:\s*["']([^"']+)["']/g;
   let match;
   while ((match = slugRegex.exec(postsContent)) !== null) {
@@ -163,6 +174,9 @@ if (fs.existsSync(blogContentDir) && staticPostsSource) {
       }
       const canonicalSlug = redirects[articleSlug] || articleSlug;
       slugsSet.add(canonicalSlug);
+      if (parsedMeta?.publishedAt && /^\d{4}-\d{2}-\d{2}$/.test(String(parsedMeta.publishedAt).trim())) {
+        blogDateMap[canonicalSlug] = String(parsedMeta.publishedAt).trim();
+      }
       
       const cleanTitle = cleanQuote(parsedMeta?.title || canonicalSlug);
       const normBody = normalizeMarkdownContent(body, cleanTitle);
@@ -246,7 +260,7 @@ try {
               coverImageAlt: postCoverAlt,
               category: postCategory,
               author: postAuthor,
-              publishedAt: today,
+              publishedAt: blogDateMap[canonicalSlug] || today,
               tags: postTags
             };
             const mdFileContent = `---\n${JSON.stringify(fmObj, null, 2)}\n---\n\n${postContent}\n`;
@@ -266,7 +280,7 @@ try {
             coverImage: postCover,
             coverImageAlt: postCoverAlt,
             category: postCategory,
-            createdAt: today,
+            createdAt: blogDateMap[canonicalSlug] || today,
             author: postAuthor,
             tags: postTags
           };
@@ -316,8 +330,9 @@ for (const rawSlug of slugs) {
   }
 
   const fullUrl = `${baseUrl}/blog/${cleanSlug}`;
+  const postLastMod = blogDateMap[cleanSlug] || today;
   if (!sitemap.includes(`<loc>${fullUrl}</loc>`)) {
-    const newEntry = `  <url><loc>${fullUrl}</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>${today}</lastmod></url>\n`;
+    const newEntry = `  <url><loc>${fullUrl}</loc><lastmod>${postLastMod}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>\n`;
     sitemap = sitemap.replace('</urlset>', `${newEntry}</urlset>`);
     added++;
     console.log(`✅ Added blog URL: ${cleanSlug}`);
@@ -399,9 +414,19 @@ while ((uMatch = urlRegex.exec(sitemap)) !== null) {
   const changefreqM = inner.match(/<changefreq>\s*([^<\s]+)\s*<\/changefreq>/i);
   const priorityM = inner.match(/<priority>\s*([^<\s]+)\s*<\/priority>/i);
 
-  const lastmod = lastmodM ? lastmodM[1].trim() : today;
-  const changefreq = changefreqM ? changefreqM[1].trim() : (loc === 'https://www.abuqitmirlabs.tech/' ? 'daily' : 'weekly');
-  const priority = priorityM ? priorityM[1].trim() : (loc === 'https://www.abuqitmirlabs.tech/' ? '1.0' : '0.9');
+  const blogSlugMatch = loc.match(/^https:\/\/www\.abuqitmirlabs\.tech\/blog\/([^/?#]+)$/);
+  const matchedBlogSlug = blogSlugMatch ? blogSlugMatch[1] : null;
+
+  let lastmod = (matchedBlogSlug && blogDateMap[matchedBlogSlug])
+    ? blogDateMap[matchedBlogSlug]
+    : (lastmodM ? lastmodM[1].trim() : today);
+  let changefreq = changefreqM ? changefreqM[1].trim() : (loc === 'https://www.abuqitmirlabs.tech/' ? 'daily' : 'weekly');
+  let priority = priorityM ? priorityM[1].trim() : (loc === 'https://www.abuqitmirlabs.tech/' ? '1.0' : '0.9');
+
+  if (matchedBlogSlug === 'lead-generation-content-strategy-google-meta' || matchedBlogSlug === 'rebranding-checklist-pakistan') {
+    changefreq = 'monthly';
+    priority = '0.8';
+  }
 
   urlBlocks.push(
     `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`

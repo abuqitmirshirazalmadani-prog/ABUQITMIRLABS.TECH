@@ -11666,7 +11666,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   "/blog/lead-generation-content-strategy-google-meta": {
     "title": "Lead Generation Content Strategy That Works | AbuQitmirLabs",
-    "h1": "Lead Generation Content Strategy That Works",
+    "h1": "B2B Lead Generation Content Strategy: Google Search + Meta Distribution Framework",
     "description": "Learn how to build a lead generation content strategy that follows Google and Meta guidelines, saves budget, and attracts qualified clients.",
     "canonical": "https://www.abuqitmirlabs.tech/blog/lead-generation-content-strategy-google-meta",
     "ogImage": "https://www.abuqitmirlabs.tech/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",

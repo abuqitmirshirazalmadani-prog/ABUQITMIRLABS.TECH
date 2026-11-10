@@ -123,10 +123,10 @@ function formatConciseH1Text(plainText) {
     .replace(/\s*\|\s*The\s*9-Step.*$/i, '')
     .replace(/\s+/g, ' ')
     .trim();
-  if (cleaned.length <= 78) return cleaned;
+  if (cleaned.length <= 86) return cleaned;
 
   const colonParts = cleaned.split(/\s*[:|—–]\s*/);
-  if (colonParts.length > 1 && colonParts[0].trim().length >= 22 && colonParts[0].trim().length <= 78) {
+  if (colonParts.length > 1 && colonParts[0].trim().length >= 22 && colonParts[0].trim().length <= 86) {
     return colonParts[0].trim();
   }
 
