@@ -99,42 +99,28 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
                   src={member.src}
                   width={56}
                   height={56}
+                  priority
                   className="object-cover w-full h-full"
                 />
               </div>
             ))}
             <div className="pl-6 flex flex-col justify-center">
               <span className="text-xs font-mono font-bold text-[#C8EB5F] uppercase tracking-wider">
-                Founded in 2021 &bull; 5+ Years Engineering Experience
+                Founded in 2021. 5+ Years Experience.
               </span>
               <span className="text-[10px] tracking-wider text-neutral-400 font-mono uppercase block mt-0.5">
-                SENIOR-LED ENGINEERING &bull; LISTED ON CLUTCH &amp; GOODFIRMS
+                Senior-Led Team. Listed on Clutch &amp; GoodFirms.
               </span>
             </div>
           </div>
 
-          {/* Scrolling Stats Marquee */}
-          <div className="relative overflow-hidden w-full max-w-4xl py-3 border-y border-white/10 bg-black/40 backdrop-blur-sm [--gap:2.5rem] [--duration:25s]">
-            <div className="flex animate-marquee gap-[var(--gap)] whitespace-nowrap">
-              {stats.map((stat, idx) => (
-                <div className="flex items-center gap-3 shrink-0" key={idx}>
-                  <span className="font-bold text-[#C8EB5F] text-sm tracking-wider font-mono">
-                    {stat.value}
-                  </span>
-                  <span className="text-[10px] text-white/70 uppercase tracking-[0.15em] font-mono">
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
-              {stats.map((stat, idx) => (
-                <div className="flex items-center gap-3 shrink-0" key={`dup-${idx}`}>
-                  <span className="font-bold text-[#C8EB5F] text-sm tracking-wider font-mono">
-                    {stat.value}
-                  </span>
-                  <span className="text-[10px] text-white/70 uppercase tracking-[0.15em] font-mono">
-                    {stat.label}
-                  </span>
-                </div>
+          {/* Stats Bar */}
+          <div className="relative overflow-hidden w-full max-w-4xl py-3 border-y border-white/10 bg-black/40">
+            <div className="flex flex-wrap gap-6">
+              {stats.slice(0, 4).map((stat, idx) => (
+                <span className="font-bold text-[#C8EB5F] text-xs tracking-wider font-mono" key={idx}>
+                  {stat.value}.
+                </span>
               ))}
             </div>
           </div>
@@ -145,7 +131,7 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
           {/* Left Title & Buttons */}
           <div className="lg:col-span-8 space-y-6 animate-enter-delay-1">
             <span className="text-[#C8EB5F] text-[11px] sm:text-xs font-mono font-bold tracking-[0.3em] uppercase block" aria-hidden="true" data-nosnippet="true">
-              AbuQitmirLabs &bull; Karachi HQ &bull; Build Software &bull; Automate with AI &bull; Grow Demand
+              AbuQitmirLabs. Karachi HQ. Build Software. Automate with AI. Grow Demand.
             </span>
 
             <h1 id="homepage-h1" itemProp="headline" className="font-serif text-white font-light text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
@@ -158,13 +144,13 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
 
             <div className="text-neutral-300 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-light space-y-4 animate-enter-delay-2">
               <p>
-                Karachi-based growth engineering firm and custom software development studio for US, UK, GCC, and global B2B companies. We unite <Link to="/custom-software" className="text-[#C8EB5F] underline hover:text-white">custom software development</Link>, <Link to="/ai-agent-development" className="text-[#C8EB5F] underline hover:text-white">autonomous AI agents</Link>, and <Link to="/seo-mastery" className="text-[#C8EB5F] underline hover:text-white">technical SEO</Link> as one connected revenue system.
+                We are a Karachi software studio for US, UK, GCC, and global B2B teams. We unite <Link to="/custom-software" className="text-[#C8EB5F] underline hover:text-white">custom software development</Link>, <Link to="/ai-agent-development" className="text-[#C8EB5F] underline hover:text-white">AI agents</Link>, and <Link to="/seo-mastery" className="text-[#C8EB5F] underline hover:text-white">technical SEO</Link> into one system.
               </p>
               <p>
-                Serving founders and engineering leaders across the <Link to="/us-market" className="text-white/90 underline hover:text-[#C8EB5F]">US</Link>, <Link to="/uk-market" className="text-white/90 underline hover:text-[#C8EB5F]">UK</Link>, <Link to="/canada-market" className="text-white/90 underline hover:text-[#C8EB5F]">Canada</Link>, <Link to="/australia-market" className="text-white/90 underline hover:text-[#C8EB5F]">Australia</Link>, <Link to="/saudi-arabia-market" className="text-white/90 underline hover:text-[#C8EB5F]">Saudi Arabia</Link>, <Link to="/uae-market" className="text-white/90 underline hover:text-[#C8EB5F]">UAE</Link>, and <Link to="/pakistan-market" className="text-white/90 underline hover:text-[#C8EB5F]">Pakistan</Link> with 100% IP ownership and direct senior architect access.
+                We serve founders in the <Link to="/us-market" className="text-white/90 underline hover:text-[#C8EB5F]">US</Link>, <Link to="/uk-market" className="text-white/90 underline hover:text-[#C8EB5F]">UK</Link>, <Link to="/canada-market" className="text-white/90 underline hover:text-[#C8EB5F]">Canada</Link>, <Link to="/australia-market" className="text-white/90 underline hover:text-[#C8EB5F]">Australia</Link>, <Link to="/saudi-arabia-market" className="text-white/90 underline hover:text-[#C8EB5F]">Saudi Arabia</Link>, <Link to="/uae-market" className="text-white/90 underline hover:text-[#C8EB5F]">UAE</Link>, and <Link to="/pakistan-market" className="text-white/90 underline hover:text-[#C8EB5F]">Pakistan</Link>. You get 100% code ownership. You work directly with senior leads.
               </p>
               <p>
-                Delivered a 2,500+ organic community for GhastlyPages in 90 days and built the AI-assisted Quran education platform for <Link to="/case-studies/tajweedpage" className="text-[#C8EB5F] underline hover:text-white">TajweedPage.com</Link> (ranking across 20+ countries in 10 days).
+                We grew GhastlyPages to 2,500+ followers in 90 days. We also built <Link to="/case-studies/tajweedpage" className="text-[#C8EB5F] underline hover:text-white">TajweedPage.com</Link>, which ranked in 20+ countries in 10 days.
               </p>
             </div>
 

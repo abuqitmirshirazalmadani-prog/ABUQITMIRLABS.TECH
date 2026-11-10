@@ -1,12 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
 import { preloadRoute } from '../utils/preloader';
-import { ToolThemeIcon } from './ToolThemeIcon';
 
 interface ToolCardData {
   slug: string;
-  icon: string;
   title: string;
   description: string;
   badge: string;
@@ -16,51 +13,45 @@ interface ToolCardData {
 const FEATURED_TOOLS: ToolCardData[] = [
   {
     slug: '/tools/project-cost-estimator',
-    icon: '💰',
-    title: 'Project Cost Estimator',
-    description: 'Know your custom software, app, or web build cost before development.',
-    badge: '100% Free',
-    metric: 'Real-time Budgeting'
+    title: 'Project Cost Estimator.',
+    description: 'Check your custom software, mobile app, or web build cost in under two minutes.',
+    badge: '100% Free.',
+    metric: 'Instant Budget Guide.'
   },
   {
     slug: '/tools/website-audit',
-    icon: '🚀',
-    title: 'Website Audit Tool',
-    description: 'Full Core Web Vitals, mobile responsiveness, and SEO health check.',
-    badge: 'Instant Report',
-    metric: 'Performance & CWV'
+    title: 'Website Audit Tool.',
+    description: 'Run a fast check on your page speed, mobile layout, and search health.',
+    badge: 'Live Report.',
+    metric: 'Speed & SEO Check.'
   },
   {
     slug: '/tools/seo-checklist',
-    icon: '📋',
-    title: 'SEO Launch Checklist',
-    description: 'Interactive 45-point pre and post-launch checklist for organic ranking.',
-    badge: 'Interactive',
-    metric: 'Technical SEO'
+    title: 'SEO Launch Checklist.',
+    description: 'Use our 45-step checklist to fix your site before and after launch.',
+    badge: 'Step-by-Step.',
+    metric: 'Search Ranking Plan.'
   },
   {
     slug: '/tools/ai-readiness-score',
-    icon: '🤖',
-    title: 'AI Readiness Score',
-    description: 'Evaluate your business workflows and infrastructure for AI agents.',
-    badge: 'Strategic Score',
-    metric: 'Enterprise AI'
+    title: 'AI Readiness Score.',
+    description: 'See how ready your team and data are for custom AI agents and automation.',
+    badge: 'Quick Score.',
+    metric: 'AI Action Roadmap.'
   },
   {
     slug: '/tools/tech-stack-recommender',
-    icon: '⚙️',
-    title: 'Tech Stack Recommender',
-    description: 'Find the optimal architectural stack tailored to your exact constraints.',
-    badge: 'Architect Engine',
-    metric: 'Frontend & Cloud'
+    title: 'Tech Stack Recommender.',
+    description: 'Pick the best front-end, back-end, and cloud tools for your next build.',
+    badge: 'Smart Match.',
+    metric: 'Web, App & Cloud.'
   },
   {
     slug: '/tools/website-authority-analyzer',
-    icon: '🌐',
-    title: 'Website Authority Analyzer',
-    description: 'Measure Open PageRank score, Wayback domain tenure, and link assets.',
-    badge: 'Domain Trust',
-    metric: 'Backlinks & SSL'
+    title: 'Website Authority Analyzer.',
+    description: 'Check your domain rank, site age, and security headers in seconds.',
+    badge: 'Domain Trust.',
+    metric: 'Rank & Trust Check.'
   }
 ];
 
@@ -69,94 +60,55 @@ export const FeaturedToolsSection: React.FC = () => {
     <section
       id="featured-tools"
       aria-label="Six Free Tools for Modern Businesses"
-      className="featured-tools-section py-20 md:py-28 bg-[#070707] border-y border-white/10 relative overflow-hidden"
+      className="featured-tools-section py-20 bg-[#070707] border-y border-white/10"
     >
-      {/* Subtle background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-[#ccff00]/[0.02] blur-[120px] pointer-events-none" />
-
-      <div className="container max-w-7xl mx-auto px-6 relative z-10">
-        {/* Section Header */}
-        <div className="section-header text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[#ccff00] text-xs font-mono uppercase tracking-[0.2em]">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span className="section-tag">🛠️ Free Tools</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif italic text-white tracking-tight leading-tight">
-            Six Free Tools for <br />
-            <span className="text-neutral-400 font-sans not-italic font-light">
-              Modern Digital Businesses.
-            </span>
-          </h2>
-
-          <p className="text-neutral-300 font-sans text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
-            Plan, audit, and optimize — no signup required. Engineered to give founders, CTOs, and marketers instant clarity.
+      <div className="container max-w-7xl mx-auto px-6">
+        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
+          <p className="text-[#ccff00] text-xs font-mono uppercase tracking-[0.2em] font-bold">
+            Free Interactive Tools.
           </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-6 pt-2 text-xs font-mono text-neutral-400">
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#ccff00]" /> No Credit Card Required
-            </span>
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#ccff00]" /> Instant Real-Time Results
-            </span>
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#ccff00]" /> 100% Free Forever
-            </span>
-          </div>
+          <h2 className="text-3xl sm:text-5xl font-serif italic text-white tracking-tight leading-tight">
+            Six Free Tools for Modern Digital Businesses
+          </h2>
+          <p className="text-neutral-300 font-sans text-base sm:text-lg font-light leading-relaxed">
+            Plan your budget, audit your website, and test your AI readiness for free. You do not need a credit card or login.
+          </p>
         </div>
 
-        {/* 6-Tool Grid */}
-        <div className="homepage-tools-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
           {FEATURED_TOOLS.map((tool) => (
             <Link
               key={tool.slug}
               to={tool.slug}
               onMouseEnter={() => preloadRoute(tool.slug)}
               onTouchStart={() => preloadRoute(tool.slug)}
-              className="home-tool-card group p-7 rounded-2xl bg-neutral-900/50 hover:bg-neutral-900/90 border border-white/10 hover:border-[#ccff00]/60 transition-all duration-300 flex flex-col justify-between hover:shadow-2xl hover:shadow-[#ccff00]/5 hover:-translate-y-1"
+              className="group p-6 rounded-2xl bg-neutral-900/50 hover:bg-neutral-900/90 border border-white/10 hover:border-[#ccff00]/60 transition-all flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center justify-between mb-5">
-                  <ToolThemeIcon tool={tool.slug} size="lg" />
-                  <span className="px-2.5 py-1 rounded-full bg-white/5 text-[#ccff00] text-[10px] font-mono uppercase tracking-widest border border-white/10">
-                    {tool.badge}
-                  </span>
+                <div className="flex items-center justify-between mb-3 text-xs font-mono">
+                  <span className="text-neutral-400">{tool.metric}</span>
+                  <span className="text-[#ccff00] font-bold">{tool.badge}</span>
                 </div>
-
-                <div className="text-[11px] font-mono text-neutral-500 uppercase tracking-widest mb-1.5">
-                  {tool.metric}
-                </div>
-
-                <h3 className="text-xl font-bold text-white group-hover:text-[#ccff00] transition-colors mb-2.5">
+                <h3 className="text-xl font-bold text-white group-hover:text-[#ccff00] transition-colors mb-2">
                   {tool.title}
                 </h3>
-
-                <p className="text-sm text-neutral-400 font-sans leading-relaxed font-light">
+                <p className="text-sm text-neutral-300 font-sans leading-relaxed font-light">
                   {tool.description}
                 </p>
               </div>
-
-              <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-neutral-400 group-hover:text-white">
-                <span className="font-semibold text-neutral-300 group-hover:text-[#ccff00] transition-colors">
-                  Launch Free Tool →
-                </span>
-                <ArrowRight className="w-4 h-4 text-[#ccff00] group-hover:translate-x-1.5 transition-transform" />
-              </div>
+              <p className="mt-5 pt-3 border-t border-white/5 text-xs font-mono font-bold text-[#ccff00]">
+                Launch Free Tool →
+              </p>
             </Link>
           ))}
         </div>
 
-        {/* View All CTA */}
-        <div className="view-all-cta text-center">
+        <div className="text-center">
           <Link
             to="/tools"
-            onMouseEnter={() => preloadRoute('/tools')}
-            onTouchStart={() => preloadRoute('/tools')}
-            className="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-[#ccff00] hover:bg-[#b8e600] text-black font-extrabold text-sm font-mono tracking-wider transition-all duration-200 shadow-xl shadow-[#ccff00]/10 hover:scale-105 active:scale-95"
+            className="inline-flex items-center px-8 py-4 rounded-xl bg-[#ccff00] hover:bg-white text-black font-extrabold text-sm font-mono tracking-wider transition-all"
           >
-            <span>View All Tools →</span>
-            <ArrowRight className="w-4 h-4" />
+            View All 6 Free Tools →
           </Link>
         </div>
       </div>

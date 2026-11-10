@@ -192,6 +192,7 @@ for (const filePath of htmlFiles) {
     const pageTitle = titleMatch ? titleMatch[1].trim() : 'AbuQitmirLabs';
     const fallbackSchema = {
       "@context": "https://schema.org",
+      "@type": "WebPage",
       "@graph": [
         {
           "@type": "Organization",
@@ -210,7 +211,7 @@ for (const filePath of htmlFiles) {
         }
       ]
     };
-    html = html.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(fallbackSchema, null, 2)}\n  </script>\n</head>`);
+    html = html.replace('</head>', `  <script id="canonical-schema-graph" type="application/ld+json">${JSON.stringify(fallbackSchema)}</script>\n</head>`);
     modified = true;
     fixedSchemaCount++;
   }

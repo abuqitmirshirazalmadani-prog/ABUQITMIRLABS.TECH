@@ -115,9 +115,7 @@ export default function TestimonialsSection() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 border border-white/15 hover:border-[#B9FF66] text-white px-4 py-2.5 rounded-xl text-xs font-mono uppercase tracking-wider transition-all"
             >
-              <MapPin className="w-3.5 h-3.5 text-[#B9FF66]" />
-              <span>Google Business Profile (Karachi HQ)</span>
-              <ExternalLink className="w-3 h-3 text-zinc-400" />
+              Google Business Profile (Karachi HQ).
             </a>
             <a
               href="https://www.designrush.com"
@@ -125,9 +123,7 @@ export default function TestimonialsSection() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 border border-white/15 hover:border-[#B9FF66] text-white px-4 py-2.5 rounded-xl text-xs font-mono uppercase tracking-wider transition-all"
             >
-              <Star className="w-3.5 h-3.5 text-[#B9FF66] fill-[#B9FF66]" />
-              <span>DesignRush Verified Agency</span>
-              <ExternalLink className="w-3 h-3 text-zinc-400" />
+              DesignRush Verified Agency.
             </a>
             <a
               href="https://www.sortlist.com"
@@ -135,9 +131,7 @@ export default function TestimonialsSection() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 border border-white/15 hover:border-[#B9FF66] text-white px-4 py-2.5 rounded-xl text-xs font-mono uppercase tracking-wider transition-all"
             >
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#B9FF66]" />
-              <span>Sortlist Verified Studio</span>
-              <ExternalLink className="w-3 h-3 text-zinc-400" />
+              Sortlist Verified Studio.
             </a>
             <a
               href="https://www.linkedin.com/company/abuqitmirlabs"
@@ -145,84 +139,19 @@ export default function TestimonialsSection() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 border border-white/15 hover:border-[#B9FF66] text-white px-4 py-2.5 rounded-xl text-xs font-mono uppercase tracking-wider transition-all"
             >
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#B9FF66]" />
-              <span>LinkedIn Official Company Page</span>
-              <ExternalLink className="w-3 h-3 text-zinc-400" />
+              LinkedIn Official Company Page.
             </a>
           </div>
         </motion.div>
 
-        <div className="flex justify-center gap-6 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] max-h-[800px] overflow-hidden lg:px-12">
+        <div className="flex justify-center gap-6 lg:px-12">
           <TestimonialsColumn testimonials={firstColumn} duration={25} />
           <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={35} />
           <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={30} />
         </div>
-
-        {/* Real Client Results Block */}
-        <div className="mt-20 max-w-5xl mx-auto">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white">
-              Verifiable Production Case Studies
-            </h3>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div className="p-8 bg-zinc-950/80 border border-white/10 hover:border-[#B9FF66]/50 transition-colors rounded-2xl relative space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xl font-bold text-white tracking-tight">GhastlyPages</span>
-                <span className="text-xs font-mono text-[#B9FF66] uppercase tracking-wider font-semibold">Community Growth</span>
-              </div>
-              <p className="text-sm text-zinc-300 leading-relaxed font-light">
-                Built a 2,500+ follower community in 90 days using AI-generated video content and automated publishing workflows. Zero paid ads.
-              </p>
-              <div className="pt-2">
-                <Link to="/ai-video-creation" className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[#B9FF66] hover:underline">
-                  <span>Inspect AI Video Production Workflow</span>
-                  <ArrowRight size={14} />
-                </Link>
-              </div>
-            </div>
-            <div className="p-8 bg-zinc-950/80 border border-white/10 hover:border-[#B9FF66]/50 transition-colors rounded-2xl relative space-y-3">
-              <div className="flex items-center justify-between">
-                <Link to="/case-studies/tajweedpage" className="text-xl font-bold text-white hover:text-[#B9FF66] tracking-tight underline decoration-white/30">
-                  TajweedPage.com
-                </Link>
-                <span className="text-xs font-mono text-[#B9FF66] uppercase tracking-wider font-semibold">RAG EdTech + 20-Country SEO</span>
-              </div>
-              <p className="text-sm text-zinc-300 leading-relaxed font-light">
-                Built an AI-powered Quran learning platform with a RAG Tajweed teacher, Next.js SSR architecture, and programmatic SEO ranking in 20+ countries within 10 days.
-              </p>
-              <div className="pt-2 flex flex-wrap items-center gap-4">
-                <Link to="/case-studies/tajweedpage" className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[#B9FF66] hover:underline">
-                  <span>Read Full Case Study</span>
-                  <ArrowRight size={14} />
-                </Link>
-                <a
-                  href="https://www.tajweedpage.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs font-mono uppercase tracking-wider text-zinc-400 hover:text-white"
-                >
-                  <span>Visit Live Site</span>
-                  <ExternalLink size={12} />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="text-center">
-            <Link
-              to="/case-studies"
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono uppercase tracking-wider font-bold text-[#B9FF66] hover:underline"
-            >
-              <span>Explore All Case Studies</span>
-              <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
       </div>
-
-      {/* Decorative Grid */}
-      <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.03] pointer-events-none"></div>
     </section>
   );
 }
+
 

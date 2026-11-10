@@ -662,7 +662,8 @@ for (const routeUrl of allRoutes) {
 
     // B. Fallback to schemaJsonLd from SEO_ROUTES_METADATA if SSR did not emit one
     if (schemasToInject.length === 0 && seo && seo.schemaJsonLd) {
-      schemasToInject.push(`<script id="canonical-schema-graph" type="application/ld+json">\n${JSON.stringify(seo.schemaJsonLd, null, 2)}\n  </script>`);
+      const schemaObj = seo.schemaJsonLd['@type'] ? seo.schemaJsonLd : { '@type': 'WebPage', ...seo.schemaJsonLd };
+      schemasToInject.push(`<script id="canonical-schema-graph" type="application/ld+json">${JSON.stringify(schemaObj)}</script>`);
     }
 
     // C. Include helmet.script if no schema was captured yet

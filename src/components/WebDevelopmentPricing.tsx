@@ -270,15 +270,12 @@ export default function WebDevelopmentPricing() {
                       {/* Feature Bullet Layouts */}
                       <div className="space-y-3 pt-2">
                         <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest block font-black">
-                          // INCLUDED DELIVERABLES & FEATURES
+                          Included Deliverables &amp; Features.
                         </span>
                         <ul className="space-y-2">
                           {pkg.features.map((feat, fi) => (
-                            <li key={fi} className="flex items-start gap-2.5 text-xs text-neutral-300 font-light leading-relaxed">
-                              <CheckCircle2 className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${
-                                isPopular ? 'text-cyan-400' : 'text-neutral-600'
-                              }`} />
-                              <span>{feat}</span>
+                            <li key={fi} className="text-xs text-neutral-300 font-light leading-relaxed">
+                              ✓ {feat}.
                             </li>
                           ))}
                         </ul>
@@ -299,8 +296,7 @@ export default function WebDevelopmentPricing() {
                             : 'bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20'
                         }`}
                       >
-                        <PhoneCall className="w-3.5 h-3.5" />
-                        <span>{pkg.ctaText}</span>
+                        {pkg.ctaText}.
                       </a>
                     </div>
 

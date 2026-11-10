@@ -29,270 +29,30 @@
     <meta name="twitter:title" content="Growth Engineering Firm | Custom Software, AI &amp; SEO | AbuQitmirLabs" />
     <meta name="twitter:description" content="Growth Engineering Firm for US, UK &amp; global B2B companies. Custom software, AI agents &amp; technical SEO as one revenue system. Free technical audit." />
     <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp" />
+    <meta name="author" content="Abu Qitmir Mohammad Shiraz Al-Madani — Founder &amp; Lead Systems Architect" />
     <link rel="preload" as="image" href="/images/hero-abuqitmirlabs.webp" type="image/webp" fetchpriority="high" />
-
-    <!-- Performance Optimization: Preconnect & DNS Prefetch to Critical CDNs -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-    <link rel="dns-prefetch" href="https://connect.facebook.net" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-
-    <!-- High-Performance Critical Font Preloading (Only Core LCP Weights with display=swap) -->
-    <link
-      rel="preload"
-      as="style"
-      fetchpriority="high"
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@600;700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@600;700&display=swap"
-      media="print"
-      onload="this.media='all'"
-    />
-
-    <!-- Deferred Secondary Font Weights (Loaded Low-Priority After First Paint) -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,300&family=Inter:wght@500&family=JetBrains+Mono:wght@500&family=Sora:wght@400;600;700&family=Space+Grotesk:wght@400;500&display=swap"
-      media="print"
-      onload="this.media='all'"
-    />
-
-    <!-- Google tag (gtag.js) - Non-Blocking Analytics with Bot, Referral & Internal Traffic Shield -->
-    <script>
-      (function() {
-        var GA_ID = 'G-EJH1V89EP0';
-        var host = (window.location.hostname || '').toLowerCase();
-        var path = (window.location.pathname || '').toLowerCase();
-        var search = (window.location.search || '').toLowerCase();
-        var ref = (document.referrer || '').toLowerCase();
-        var ua = (navigator.userAgent || '').toLowerCase();
-
-        // 1. Auto-tag Admin / Login visits or ?internal=1 as Internal Team Traffic
-        var isAdminPath = path === '/admin' || path.indexOf('/admin/') === 0 || path === '/login' || path.indexOf('/login/') === 0;
-        if (isAdminPath || search.indexOf('internal=1') !== -1 || search.indexOf('internal_traffic=1') !== -1 || search.indexOf('traffic_type=internal') !== -1) {
-          try {
-            window.localStorage.setItem('aql_internal_traffic', 'true');
-            document.cookie = 'aql_internal_traffic=1; path=/; max-age=31536000; SameSite=Lax';
-          } catch (e) {}
-        }
-
-        var isInternal = isAdminPath;
-        try {
-          if (window.localStorage.getItem('aql_internal_traffic') === 'true' || document.cookie.indexOf('aql_internal_traffic=1') !== -1) {
-            isInternal = true;
-          }
-        } catch (e) {}
-
-        // 2. Detect Tag Assistant, GTM Debug, Preview/Localhost, Spam Referrers (ghastlypages.com), and Headless Bots
-        var isPreviewOrDebug =
-          host === 'localhost' ||
-          host === '127.0.0.1' ||
-          host.slice(-8) === '.run.app' ||
-          host.slice(-11) === '.vercel.app' ||
-          ref.indexOf('tagassistant.google.com') !== -1 ||
-          ref.indexOf('googletagmanager.com') !== -1 ||
-          search.indexOf('gtm_debug') !== -1 ||
-          search.indexOf('tagassistant') !== -1 ||
-          search.indexOf('ga_debug') !== -1;
-
-        var isHardSpamReferrer =
-          ref.indexOf('ghastlypages.com') !== -1 ||
-          ref.indexOf('semalt.com') !== -1 ||
-          ref.indexOf('buttons-for-website.com') !== -1 ||
-          ref.indexOf('darodar.com') !== -1 ||
-          ref.indexOf('ilovevitaly.com') !== -1 ||
-          ref.indexOf('free-social-buttons.com') !== -1;
-
-        var isBot =
-          Boolean(navigator.webdriver) ||
-          /headlesschrome|phantomjs|slimerjs|puppeteer|playwright|lighthouse|ptst|pagespeed|facebookexternalhit|facebot|meta-externalagent/i.test(ua);
-
-        // 3. Unwanted Referrals List (m.facebook.com, l.facebook.com, lm.facebook.com, ghastlypages.com, tagassistant.google.com)
-        var isUnwantedReferral =
-          isHardSpamReferrer ||
-          ref.indexOf('m.facebook.com') !== -1 ||
-          ref.indexOf('l.facebook.com') !== -1 ||
-          ref.indexOf('lm.facebook.com') !== -1 ||
-          ref.indexOf('tagassistant.google.com') !== -1;
-
-        if (isInternal || isPreviewOrDebug || isHardSpamReferrer || isBot) {
-          window['ga-disable-' + GA_ID] = true;
-        }
-
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){window.dataLayer.push(arguments);}
-        window.gtag = gtag;
-
-        if (!window['ga-disable-' + GA_ID]) {
-          var s = document.createElement('script');
-          s.async = true;
-          s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
-          document.head.appendChild(s);
-
-          gtag('js', new Date());
-          var configOpts = { send_page_view: false };
-          if (isInternal) {
-            configOpts.traffic_type = 'internal';
-          }
-          if (isUnwantedReferral) {
-            configOpts.page_referrer = '';
-            configOpts.ignore_referrer = true;
-          }
-          gtag('config', GA_ID, configOpts);
-        }
-      })();
-    </script>
-    
-    <!-- Favicon & Brand Icons -->
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hiA.woff2" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@600;700&display=swap" />
+    <script>(function(){var g='G-EJH1V89EP0',w=window,d=document,l=w.location,h=(l.hostname||'').toLowerCase(),p=(l.pathname||'').toLowerCase(),s=(l.search||'').toLowerCase(),r=(d.referrer||'').toLowerCase(),u=(navigator.userAgent||'').toLowerCase(),a=p==='/admin'||p.indexOf('/admin/')===0||p==='/login'||p.indexOf('/login/')===0;if(a||s.indexOf('internal=1')!==-1||s.indexOf('internal_traffic=1')!==-1||s.indexOf('traffic_type=internal')!==-1){try{w.localStorage.setItem('aql_internal_traffic','true');d.cookie='aql_internal_traffic=1;path=/;max-age=31536000;SameSite=Lax';}catch(e){}}var i=a;try{if(w.localStorage.getItem('aql_internal_traffic')==='true'||d.cookie.indexOf('aql_internal_traffic=1')!==-1){i=true;}}catch(e){}var v=h==='localhost'||h==='127.0.0.1'||h.slice(-8)==='.run.app'||h.slice(-11)==='.vercel.app'||r.indexOf('tagassistant.google.com')!==-1||r.indexOf('googletagmanager.com')!==-1||s.indexOf('gtm_debug')!==-1||s.indexOf('tagassistant')!==-1||s.indexOf('ga_debug')!==-1,x=r.indexOf('ghastlypages.com')!==-1||r.indexOf('semalt.com')!==-1||r.indexOf('buttons-for-website.com')!==-1||r.indexOf('darodar.com')!==-1||r.indexOf('ilovevitaly.com')!==-1||r.indexOf('free-social-buttons.com')!==-1,b=Boolean(navigator.webdriver)||/headlesschrome|phantomjs|slimerjs|puppeteer|playwright|lighthouse|ptst|pagespeed|facebookexternalhit|facebot|meta-externalagent/i.test(u),f=x||r.indexOf('m.facebook.com')!==-1||r.indexOf('l.facebook.com')!==-1||r.indexOf('lm.facebook.com')!==-1||r.indexOf('tagassistant.google.com')!==-1;if(i||v||x||b){w['ga-disable-'+g]=true;}w.dataLayer=w.dataLayer||[];function gtag(){w.dataLayer.push(arguments);}w.gtag=gtag;if(!w['ga-disable-'+g]){var c=d.createElement('script');c.async=true;c.src='https://www.googletagmanager.com/gtag/js?id='+g;d.head.appendChild(c);gtag('js',new Date());var o={send_page_view:false};if(i){o.traffic_type='internal';}if(f){o.page_referrer='';o.ignore_referrer=true;}gtag('config',g,o);}})();</script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/logo.png" />
     <link rel="alternate icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/logo.png" />
-    
-    <!-- Critical inline CSS with font-display: swap fallback metrics to guarantee instant LCP text paint -->
-    <style>
-      @font-face {
-        font-family: 'Cormorant Garamond Fallback';
-        src: local('Georgia'), local('Times New Roman');
-        font-display: swap;
-        size-adjust: 106%;
-        ascent-override: 92%;
-        descent-override: 24%;
-        line-gap-override: 0%;
-      }
-      @font-face {
-        font-family: 'Inter Fallback';
-        src: local('Inter'), local('-apple-system'), local('BlinkMacSystemFont'), local('Segoe UI'), local('Roboto'), local('Arial');
-        font-display: swap;
-        size-adjust: 107%;
-        ascent-override: 90%;
-        descent-override: 22%;
-        line-gap-override: 0%;
-      }
-      @font-face {
-        font-family: 'Space Grotesk Fallback';
-        src: local('Segoe UI'), local('Roboto'), local('Helvetica Neue'), local('Arial');
-        font-display: swap;
-        size-adjust: 103%;
-        ascent-override: 92%;
-        descent-override: 24%;
-        line-gap-override: 0%;
-      }
-      html, body {
-        background-color: #09090b !important;
-        color: #f4f4f5 !important;
-        font-family: 'Inter', 'Inter Fallback', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        font-synthesis: none;
-        margin: 0;
-        padding: 0;
-        text-rendering: optimizeSpeed;
-        -webkit-font-smoothing: antialiased;
-      }
-      h1, h2, h3, h4, h5, h6 {
-        font-family: 'Cormorant Garamond', 'Cormorant Garamond Fallback', 'Space Grotesk', 'Space Grotesk Fallback', Georgia, serif;
-        font-weight: 700;
-      }
-      button, .btn, .cta {
-        font-family: 'Sora', 'Inter Fallback', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        font-weight: 600;
-      }
-      #root a {
-        text-decoration: none;
-      }
-      #root a:hover {
-        text-decoration: underline;
-      }
-      #root img {
-        max-width: 100%;
-        height: auto;
-      }
-      html.is-subroute #ssr-home-fallback {
-        display: none !important;
-      }
-    </style>
-    <script>
-      if (typeof window !== 'undefined' && window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
-        document.documentElement.classList.add('is-subroute');
-      }
-    </script>
-    
-    <!-- Pinterest Domain Verification -->
+    <style>@font-face{font-family:'Cormorant Garamond Fallback';src:local('Georgia'),local('Times New Roman');font-display:swap;size-adjust:106%;ascent-override:92%;descent-override:24%;line-gap-override:0%}@font-face{font-family:'Inter Fallback';src:local('Inter'),local('-apple-system'),local('BlinkMacSystemFont'),local('Segoe UI'),local('Roboto'),local('Arial');font-display:swap;size-adjust:107%;ascent-override:90%;descent-override:22%;line-gap-override:0%}@font-face{font-family:'Space Grotesk Fallback';src:local('Segoe UI'),local('Roboto'),local('Helvetica Neue'),local('Arial');font-display:swap;size-adjust:103%;ascent-override:92%;descent-override:24%;line-gap-override:0%}html,body{background-color:#09090b!important;color:#f4f4f5!important;font-family:'Inter','Inter Fallback',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-synthesis:none;margin:0;padding:0;text-rendering:optimizeSpeed;-webkit-font-smoothing:antialiased}h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond','Cormorant Garamond Fallback','Space Grotesk','Space Grotesk Fallback',Georgia,serif;font-weight:700}button,.btn,.cta{font-family:'Sora','Inter Fallback',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-weight:600}#root a{text-decoration:none}#root a:hover{text-decoration:underline}#root img{max-width:100%;height:auto}html.is-subroute #ssr-home-fallback{display:none!important}</style>
+    <script>if(typeof window!=='undefined'&&window.location.pathname!=='/'&&window.location.pathname!=='/index.html'){document.documentElement.classList.add('is-subroute');}</script>
     <meta name="p:domain_verify" content="6b353b2d2bc7713e02417a6096df20ce"/>
-    
-    <!-- Bing Webmaster Tools Site Verification -->
     <meta name="msvalidate.01" content="8C9AD61EBF6841864CA29D2A78E46D1D" />
-    
-    <!-- Trustpilot Domain Verification -->
     <meta name="trustpilot-one-time-domain-verification-id" content="e76444b6-ef80-47c1-a9bd-a6c33c3df4cd"/>
-    
-    <!-- Progressive Web Application Manifest Link -->
     <link rel="manifest" href="/manifest.json" />
     <link rel="llms" href="/llms.txt" />
-
-    <!-- Instant Navigation: High-speed route prefetch hints -->
     <link rel="prefetch" href="/custom-software" />
     <link rel="prefetch" href="/solutions/fintech" />
-
-    <script id="canonical-schema-graph" type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
-      "@id": "https://www.abuqitmirlabs.tech/#organization",
-      "name": "AbuQitmirLabs",
-      "url": "https://www.abuqitmirlabs.tech/",
-      "founder": {
-        "@type": "Person",
-        "@id": "https://www.abuqitmirlabs.tech/#founder",
-        "name": "Abu Qitmir Mohammad Shiraz Al-Madani",
-        "url": "https://www.abuqitmirlabs.tech/about"
-      },
-      "foundingDate": "2021",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.abuqitmirlabs.tech/logo.png"
-      },
-      "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
-      "email": "hello@abuqitmirlabs.tech",
-      "telephone": "+923233260859",
-      "description": "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system."
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://www.abuqitmirlabs.tech/#website",
-      "url": "https://www.abuqitmirlabs.tech/",
-      "name": "AbuQitmirLabs",
-      "publisher": {
-        "@id": "https://www.abuqitmirlabs.tech/#organization"
-      }
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://www.abuqitmirlabs.tech/#webpage",
-      "url": "https://www.abuqitmirlabs.tech/",
-      "name": "Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs",
-      "description": "Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Free technical audit.",
-      "isPartOf": {
-        "@id": "https://www.abuqitmirlabs.tech/#website"
-      },
-      "about": {
-        "@id": "https://www.abuqitmirlabs.tech/#organization"
-      }
-    }
-  ]
-}
-    </script>
+    <script id="canonical-schema-graph" type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://www.abuqitmirlabs.tech/#webpage","url":"https://www.abuqitmirlabs.tech/","name":"Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs","description":"Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Free technical audit.","@graph":[{"@type":"Organization","@id":"https://www.abuqitmirlabs.tech/#organization","name":"AbuQitmirLabs","url":"https://www.abuqitmirlabs.tech/","founder":{"@type":"Person","@id":"https://www.abuqitmirlabs.tech/#founder","name":"Abu Qitmir Mohammad Shiraz Al-Madani","jobTitle":"Founder & Lead Systems Architect","url":"https://www.abuqitmirlabs.tech/about/our-team"},"foundingDate":"2021","logo":{"@type":"ImageObject","url":"https://www.abuqitmirlabs.tech/logo.png"},"image":"https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp","email":"hello@abuqitmirlabs.tech","telephone":"+923233260859","description":"Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system.","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"48","bestRating":"5","worstRating":"1"}},{"@type":"WebSite","@id":"https://www.abuqitmirlabs.tech/#website","url":"https://www.abuqitmirlabs.tech/","name":"AbuQitmirLabs","publisher":{"@id":"https://www.abuqitmirlabs.tech/#organization"}},{"@type":"WebPage","@id":"https://www.abuqitmirlabs.tech/#webpage","url":"https://www.abuqitmirlabs.tech/","name":"Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs","description":"Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Free technical audit.","author":{"@type":"Person","name":"Abu Qitmir Mohammad Shiraz Al-Madani","url":"https://www.abuqitmirlabs.tech/about/our-team"},"isPartOf":{"@id":"https://www.abuqitmirlabs.tech/#website"},"about":{"@id":"https://www.abuqitmirlabs.tech/#organization"}}]}</script>
   </head>
   <body>
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@600;700&display=swap" />
-    </noscript>
     <div id="root">
       <div id="ssr-home-fallback" class="min-h-screen bg-[#020202] text-white">
         <main id="main-content">

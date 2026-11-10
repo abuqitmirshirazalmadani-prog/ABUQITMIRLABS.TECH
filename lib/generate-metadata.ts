@@ -79,10 +79,12 @@ export interface NextStyleMetadata {
   };
   schemaGraph: {
     '@context': 'https://schema.org';
+    '@type': string;
     '@graph': Array<Record<string, any>>;
   };
   jsonLdGraph: {
     '@context': 'https://schema.org';
+    '@type': string;
     '@graph': Array<Record<string, any>>;
   };
   preloadCoverHref?: string;
@@ -324,13 +326,13 @@ export function buildConsolidatedSchemaGraph(
   description: string,
   imageUrl: string,
   customSchema?: Record<string, any> | Array<Record<string, any>>
-): { '@context': 'https://schema.org'; '@graph': Array<Record<string, any>> } {
+): { '@context': 'https://schema.org'; '@type': string; '@graph': Array<Record<string, any>> } {
   const urlPath = canonicalUrl.replace(/^https?:\/\/[^/]+/i, '') || '/';
   const cleanUrlPath = urlPath.endsWith('/') && urlPath !== '/' ? urlPath.slice(0, -1) : urlPath;
 
   const baseNodes: Array<Record<string, any>> = [
     {
-      '@type': ['Organization', 'LocalBusiness', 'ProfessionalService'],
+      '@type': 'Organization',
       '@id': `${SITE_URL}/#organization`,
       name: SITE_NAME,
       url: `${SITE_URL}/`,
@@ -338,7 +340,15 @@ export function buildConsolidatedSchemaGraph(
       founder: {
         '@type': 'Person',
         name: DEFAULT_AUTHOR,
+        jobTitle: 'Founder & Lead Systems Architect',
         url: 'https://www.linkedin.com/in/abu-qitmir-697423390/',
+      },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        reviewCount: '48',
+        bestRating: '5',
+        worstRating: '1',
       },
       logo: {
         '@type': 'ImageObject',
@@ -459,12 +469,12 @@ export function buildConsolidatedSchemaGraph(
     if (Array.isArray(item['@graph'])) {
       for (const sub of item['@graph']) {
         if (sub && typeof sub === 'object') {
-          const { '@context': _ctx, aggregateRating: _ar, review: _rv, ...rest } = sub;
+          const { '@context': _ctx, ...rest } = sub;
           customNodes.push(rest);
         }
       }
     } else {
-      const { '@context': _ctx, aggregateRating: _ar, review: _rv, ...rest } = item;
+      const { '@context': _ctx, ...rest } = item;
       customNodes.push(rest);
     }
   };
@@ -510,6 +520,7 @@ export function buildConsolidatedSchemaGraph(
 
   return {
     '@context': 'https://schema.org',
+    '@type': 'WebPage',
     '@graph': merged,
   };
 }
@@ -840,6 +851,7 @@ export function renderMetadataToHeadHtml(metadata: NextStyleMetadata): string {
   const lines = [
     `<title>${esc(metadata.title)}</title>`,
     `<meta name="description" content="${esc(metadata.description)}" />`,
+    `<meta name="author" content="${esc(metadata.authors?.[0]?.name || DEFAULT_AUTHOR)}" />`,
     metadata.keywords
       ? `<meta name="keywords" content="${esc(metadata.keywords)}" />`
       : '',
