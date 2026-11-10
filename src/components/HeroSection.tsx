@@ -106,7 +106,7 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
             ))}
             <div className="pl-6 flex flex-col justify-center">
               <span className="text-xs font-mono font-bold text-[#C8EB5F] uppercase tracking-wider">
-                Founded in 2021. 5+ Years Experience.
+                Founded in 2021. +5 Years Experience.
               </span>
               <span className="text-[10px] tracking-wider text-neutral-400 font-mono uppercase block mt-0.5">
                 Senior-Led Team. Listed on Clutch &amp; GoodFirms.

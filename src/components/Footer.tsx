@@ -137,7 +137,7 @@ const Footer = () => {
                         <a href="https://www.linkedin.com/in/abu-qitmir-697423390/" rel="author noopener noreferrer" target="_blank" className="underline font-bold">
                             Abu Qitmir Mohammad Shiraz Al-Madani
                         </a>{' '}
-                        (Founder &amp; Lead Systems Architect, B.S. Software Engineering, 10+ Years Experience). Verified 4.9/5 rating on Google, Clutch, and GoodFirms.
+                        (Founder &amp; Lead Systems Architect, B.S. Software Engineering, +5 Years Experience). Verified 4.9/5 rating on Google, Clutch, and GoodFirms.
                     </p>
                     <p className="disclaimer">
                         <strong>Disclaimer:</strong> All cost estimates, timelines, and case study metrics on this site are for general informational purposes only and do not constitute legal, financial, or regulatory advice. Project results vary by scope and market conditions.

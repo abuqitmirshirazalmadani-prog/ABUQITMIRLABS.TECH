@@ -11,7 +11,7 @@ const TrustSection = () => {
                         <div className="border border-white/10 rounded-2xl bg-zinc-950 p-7 flex flex-col justify-between space-y-6">
                             <div className="grid grid-cols-2 gap-3">
                                 <div className="bg-black/60 rounded-xl p-3 border border-white/10">
-                                    <p className="text-xl font-black text-white">5+ Years.</p>
+                                    <p className="text-xl font-black text-white">+5 Years.</p>
                                     <p className="text-[10px] text-neutral-400 uppercase tracking-widest font-bold">Founded in 2021.</p>
                                 </div>
                                 <div className="bg-black/60 rounded-xl p-3 border border-white/10">
