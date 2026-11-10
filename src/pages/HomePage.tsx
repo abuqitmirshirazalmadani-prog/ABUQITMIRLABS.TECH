@@ -558,7 +558,7 @@ export default function HomePage() {
                 {' '}— <span itemProp="jobTitle" className="author-credentials">Founder &amp; Lead Systems Architect, B.S. Software Engineering (+5 Years Experience)</span>.
               </div>
               <p className="text-sm text-neutral-300 leading-relaxed" itemProp="description">
-                <strong>About the Author:</strong> Abu Qitmir is a senior software architect and growth engineer based in Karachi, Pakistan. Since founding AbuQitmirLabs in 2021, he has led over 45 custom web, mobile, AI agent, and technical SEO builds for B2B teams in the US, UK, Saudi Arabia, UAE, and Pakistan. He personally checks all system designs, code security standards, and technical guides published on this site.
+                <strong>About the Author:</strong> Abu Qitmir is a senior software architect and growth engineer based in Karachi, Pakistan. Since founding AbuQitmirLabs in 2021, he has led custom web, mobile, AI agent, and technical SEO builds for B2B teams in the US, UK, Saudi Arabia, UAE, and Pakistan. He personally checks all system designs, code security standards, and technical guides published on this site.
               </p>
               <p className="text-xs text-neutral-400 font-mono">
                 Last fact-checked and updated: <time dateTime="2026-11-10">November 10, 2026</time> &bull; <Link to="/editorial-policy" className="text-[#ccff00] underline">Read Our Editorial Policy</Link> &bull; <Link to="/about/our-team" className="text-[#ccff00] underline">Meet Our Engineering Team</Link>.
