@@ -162,6 +162,8 @@ const TITLE_OVERRIDES: Record<string, string> = {
     'Offshore AI Agent Development Partner UAE | AbuQitmirLabs',
   '/blog/brand-refresh-vs-rebrand':
     'Brand Refresh vs Rebrand Pakistan | AbuQitmirLabs',
+  '/blog/lead-generation-content-strategy-google-meta':
+    'Lead Generation Content Strategy That Works | AbuQitmirLabs',
 };
 
 export function formatConciseTitle(rawTitle: string, pathname?: string): string {
@@ -179,7 +181,7 @@ export function formatConciseTitle(rawTitle: string, pathname?: string): string 
     .replace(/\s+/g, ' ')
     .trim();
   if (!cleaned) return DEFAULT_TITLE;
-  if (cleaned.length <= 60) return cleaned;
+  if (/Abu\s*Qitmir\s*Labs/i.test(cleaned) && cleaned.length <= 60) return cleaned;
 
   const core = cleaned
     .replace(/\s*[|–—-]\s*Abu\s*Qitmir\s*Labs(?:\s*\.?\s*TECH)?.*$/i, '')
@@ -188,16 +190,14 @@ export function formatConciseTitle(rawTitle: string, pathname?: string): string 
   const withBrand = `${core} | ${SITE_NAME}`;
   if (withBrand.length <= 60) return withBrand;
 
-  // Try splitting on colon or em-dash to keep the primary topic + brand
-  const colonParts = core.split(/\s*[:—–]\s*/);
+  // Try splitting on colon, pipe, or em-dash to keep the primary topic + brand
+  const colonParts = core.split(/\s*[:|—–]\s*/);
   if (colonParts.length > 1 && colonParts[0].trim().length >= 16) {
     const firstPart = colonParts[0].trim();
     const firstWithBrand = `${firstPart} | ${SITE_NAME}`;
     if (firstWithBrand.length <= 60) return firstWithBrand;
     if (firstPart.length <= 60 && firstPart.length >= 30) return firstPart;
   }
-
-  if (core.length <= 60) return core;
 
   // Truncate cleanly at word boundary to fit " | AbuQitmirLabs" (16 chars) if possible, or standalone <= 58 chars
   const maxCoreWithBrand = 60 - ` | ${SITE_NAME}`.length; // 44 chars

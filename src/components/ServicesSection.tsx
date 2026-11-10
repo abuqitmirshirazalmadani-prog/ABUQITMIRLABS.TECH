@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'motion/react';
 import { AnimatedShinyText } from './ui/animated-shiny-text';
 
 interface Service {
@@ -91,8 +92,14 @@ const services: Service[] = [
 
 const ServicesSection = () => {
     return (
-        <section id="services" className="bg-[#0a0a0a] py-20 px-6">
-            <div className="max-w-7xl mx-auto mb-16 text-center">
+        <section id="services" className="bg-[#0a0a0a] py-20 px-6 relative overflow-hidden">
+            <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="max-w-7xl mx-auto mb-16 text-center"
+            >
                 <span className="inline-block mb-6 text-xs font-bold uppercase tracking-widest text-violet-400 px-4 py-2 bg-violet-500/10 border border-violet-500/20 rounded-full">
                     Core Engineering Services.
                 </span>
@@ -104,17 +111,24 @@ const ServicesSection = () => {
                 <p className="mt-4 text-gray-300 text-lg max-w-2xl mx-auto font-light leading-relaxed">
                     Generic agency work wastes your budget. We build fast software, smart AI tools, and clear search systems that help your business grow every month.
                 </p>
-            </div>
+            </motion.div>
 
             <div className="w-full max-w-7xl mx-auto border-white/10 border rounded-[32px] overflow-hidden bg-[#050508]">
-                {services.map((service) => (
-                    <div key={service.number} className="group w-full border-white/10 border-b last:border-b-0 px-6 lg:px-12 py-12 flex flex-col lg:flex-row lg:items-center gap-8">
-                        <span className="text-lg text-[#ccff00] font-mono font-bold w-12 shrink-0">
+                {services.map((service, idx) => (
+                    <motion.div
+                        key={service.number}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.45, delay: idx * 0.05 }}
+                        className="group w-full border-white/10 border-b last:border-b-0 px-6 lg:px-12 py-12 flex flex-col lg:flex-row lg:items-center gap-8 hover:bg-[#ccff00]/[0.03] transition-all duration-500"
+                    >
+                        <span className="text-lg text-[#ccff00] font-mono font-bold w-12 shrink-0 group-hover:translate-x-1 transition-transform duration-300">
                             {service.number}.
                         </span>
                         <div className="lg:w-[380px] shrink-0">
                             <h3 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
-                                <Link to={service.href} className="hover:text-[#ccff00] transition-colors">
+                                <Link to={service.href} className="hover:text-[#ccff00] group-hover:text-[#ccff00] transition-colors">
                                     {service.title}
                                 </Link>
                             </h3>
@@ -132,17 +146,17 @@ const ServicesSection = () => {
                         </div>
                         <div className="flex flex-wrap lg:flex-col gap-2 shrink-0">
                             {service.tags.map((tag, i) => (
-                                <span key={i} className="px-3 py-1 rounded-full text-[10px] font-bold text-white/80 bg-white/5 border border-white/10">
+                                <span key={i} className="px-3 py-1 rounded-full text-[10px] font-bold text-white/80 bg-white/5 border border-white/10 group-hover:border-[#ccff00]/30 transition-colors">
                                     {tag}
                                 </span>
                             ))}
                         </div>
                         <div className="lg:ml-auto">
-                            <Link to={service.href} aria-label={`Explore ${service.title} services`} className="inline-flex items-center justify-center px-5 py-3 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-black bg-[#ccff00] hover:bg-white transition-all">
+                            <Link to={service.href} aria-label={`Explore ${service.title} services`} className="inline-flex items-center justify-center px-5 py-3 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-black bg-[#ccff00] hover:bg-white group-hover:scale-105 transition-all">
                                 Explore →
                             </Link>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </section>

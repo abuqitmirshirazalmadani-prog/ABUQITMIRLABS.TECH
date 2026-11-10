@@ -4,7 +4,7 @@
   "slug": "rebranding-checklist-pakistan",
   "excerpt": "Customers will not see your new logo first. They will see your old invoice. Most rebrand launches fail in the rollout, not the design. Use this 4-phase checklist and 30-day launch sequence to keep every touchpoint in sync.",
   "metaDescription": "A Pakistan-specific rebranding checklist: strategy, design, website, social profiles, WhatsApp, packaging, redirects and a 30-day launch plan.",
-  "coverImage": "https://i.postimg.cc/7YZRZy9q/Rebranding-Checklist-Pakistan-Before-During-and-After.jpg",
+  "coverImage": "https://www.abuqitmirlabs.tech/images/blog-covers/rebranding-checklist-pakistan-9252c088.webp",
   "coverImageAlt": "Rebranding checklist Pakistan showing a 4-phase launch plan covering digital identity, print materials, and customer announcements.",
   "category": "Business",
   "author": "Abu Qitmir Mohammad Shiraz Al-Madani",

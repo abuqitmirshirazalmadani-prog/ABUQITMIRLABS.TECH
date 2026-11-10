@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'motion/react';
 import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -315,8 +316,15 @@ export default function HomePage() {
 
       {/* Three Core Commercial Funnels: Build Software, Automate with AI, Grow Demand */}
       <section className="py-20 md:py-28 bg-[#060606] border-y border-white/5 relative overflow-hidden" id="authority-narrative">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(204,255,0,0.07),transparent_50%),radial-gradient(circle_at_85%_80%,rgba(0,102,255,0.07),transparent_50%)]" />
         <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-16">
-          <div className="max-w-4xl space-y-4">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl space-y-4"
+          >
             <p className="text-xs font-mono uppercase tracking-[0.2em] text-[#ccff00] font-bold">
               Core Growth Pillars. Lead Architect: Abu Qitmir. Founded in <time dateTime="2021">2021</time>.
             </p>
@@ -326,12 +334,18 @@ export default function HomePage() {
             <p className="text-neutral-300 font-sans leading-relaxed text-base md:text-lg font-light">
               Most companies hire three separate vendors for code, AI tools, and search traffic. Those teams rarely talk to each other. Code breaks your search rankings. Ad clicks land on slow pages. At <strong>AbuQitmirLabs</strong>, one senior team builds your whole growth system. You can hire us for one clear milestone or a full revenue platform.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-            <div className="space-y-4 bg-[#0a0a09] border border-white/10 rounded-2xl p-7">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.05 }}
+              className="space-y-4 bg-[#0a0a09] border border-white/10 hover:border-[#ccff00]/50 hover:-translate-y-2 hover:shadow-[0_0_35px_rgba(204,255,0,0.16)] transition-all duration-500 rounded-2xl p-7 group"
+            >
               <p className="text-xs font-mono text-[#ccff00] font-bold border-b border-white/10 pb-3">01 / BUILD SOFTWARE.</p>
-              <h3 className="text-xl font-sans font-bold text-white tracking-tight">
+              <h3 className="text-xl font-sans font-bold text-white group-hover:text-[#ccff00] transition-colors tracking-tight">
                 Custom Software, Web &amp; Mobile Engineering
               </h3>
               <p className="text-neutral-300 font-sans leading-relaxed text-sm font-light">
@@ -348,11 +362,17 @@ export default function HomePage() {
                   Mobile App Development →
                 </Link>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="space-y-4 bg-[#0a0a09] border border-white/10 rounded-2xl p-7">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="space-y-4 bg-[#0a0a09] border border-white/10 hover:border-[#ccff00]/50 hover:-translate-y-2 hover:shadow-[0_0_35px_rgba(204,255,0,0.16)] transition-all duration-500 rounded-2xl p-7 group"
+            >
               <p className="text-xs font-mono text-[#ccff00] font-bold border-b border-white/10 pb-3">02 / AUTOMATE WITH AI.</p>
-              <h3 className="text-xl font-sans font-bold text-white tracking-tight">
+              <h3 className="text-xl font-sans font-bold text-white group-hover:text-[#ccff00] transition-colors tracking-tight">
                 Autonomous AI Agents, RAG &amp; Workflow Automation
               </h3>
               <p className="text-neutral-300 font-sans leading-relaxed text-sm font-light">
@@ -369,11 +389,17 @@ export default function HomePage() {
                   Check Your AI Readiness Score →
                 </Link>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="space-y-4 bg-[#0a0a09] border border-white/10 rounded-2xl p-7">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.25 }}
+              className="space-y-4 bg-[#0a0a09] border border-white/10 hover:border-[#ccff00]/50 hover:-translate-y-2 hover:shadow-[0_0_35px_rgba(204,255,0,0.16)] transition-all duration-500 rounded-2xl p-7 group"
+            >
               <p className="text-xs font-mono text-[#ccff00] font-bold border-b border-white/10 pb-3">03 / GROW DEMAND.</p>
-              <h3 className="text-xl font-sans font-bold text-white tracking-tight">
+              <h3 className="text-xl font-sans font-bold text-white group-hover:text-[#ccff00] transition-colors tracking-tight">
                 Technical SEO, Programmatic SEO &amp; Growth Engineering
               </h3>
               <p className="text-neutral-300 font-sans leading-relaxed text-sm font-light">
@@ -390,10 +416,16 @@ export default function HomePage() {
                   Local SEO &amp; Citation Building →
                 </Link>
               </div>
-            </div>
+            </motion.div>
           </div>
 
-          <div className="bg-[#0a0a09] border border-white/10 rounded-2xl p-8 md:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55 }}
+            className="bg-[#0a0a09] border border-white/10 hover:border-[#ccff00]/30 transition-all duration-500 rounded-2xl p-8 md:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+          >
             <div className="lg:col-span-8 space-y-3">
               <p className="text-xs font-mono uppercase tracking-[0.2em] text-[#ccff00] font-bold">
                 04 / DELIVERY GOVERNANCE &amp; VERIFIED CASE STUDIES.
@@ -420,9 +452,15 @@ export default function HomePage() {
                 You receive full GitHub repos, cloud setup files, and database schemas when each milestone finishes.
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="pt-8 border-t border-white/5 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55 }}
+            className="pt-8 border-t border-white/5 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+          >
             <div className="lg:col-span-8 space-y-3">
               <p className="text-xs font-mono uppercase tracking-[0.2em] text-[#ccff00] font-bold">
                 05 / GLOBAL DELIVERY FOOTPRINT.
@@ -434,7 +472,7 @@ export default function HomePage() {
                 Founded in 2021 in Karachi, Pakistan, AbuQitmirLabs blends top global code quality with fair pricing. You work directly with senior software leads. We overlap hours with US, UK, and Gulf teams every day on Slack, GitHub, and Zoom.
               </p>
             </div>
-            <div className="lg:col-span-4 bg-[#0a0a09] border border-white/10 rounded-2xl p-6 space-y-2">
+            <div className="lg:col-span-4 bg-[#0a0a09] border border-white/10 hover:border-[#ccff00]/40 transition-all duration-500 rounded-2xl p-6 space-y-2">
               <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#ccff00] font-bold">ENGINEERING HUB.</p>
               <h3 className="text-lg font-serif italic text-white">Karachi, Pakistan</h3>
               <p className="text-xs text-neutral-400 font-mono leading-relaxed">
@@ -444,7 +482,7 @@ export default function HomePage() {
                 Learn About Our Studio →
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -463,9 +501,16 @@ export default function HomePage() {
       <TestimonialsSection />
 
       {/* Latest from the Blog */}
-      <section id="latest-blog-insights" className="py-20 bg-[#070707] border-t border-white/10 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <section id="latest-blog-insights" className="py-20 bg-[#070707] border-t border-white/10 px-6 relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(204,255,0,0.06),transparent_50%)]" />
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55 }}
+            className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
+          >
             <div className="max-w-3xl space-y-3">
               <p className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#C8EB5F] font-bold">
                 Engineering Journal &amp; B2B Playbooks.
@@ -485,13 +530,17 @@ export default function HomePage() {
                 View All Engineering Articles →
               </Link>
             </div>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {latestBlogHighlights.map((post) => (
-              <article
+            {latestBlogHighlights.map((post, idx) => (
+              <motion.article
                 key={post.slug}
-                className="flex flex-col justify-between bg-zinc-950/90 border border-white/10 hover:border-[#C8EB5F]/50 rounded-2xl p-6 transition-all group"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: idx * 0.06 }}
+                className="flex flex-col justify-between bg-zinc-950/90 border border-white/10 hover:border-[#C8EB5F]/50 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(200,235,95,0.14)] rounded-2xl p-6 transition-all duration-500 group"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between gap-2 text-xs font-mono">
@@ -526,7 +575,7 @@ export default function HomePage() {
                     {post.pillarLabel}
                   </Link>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
         </div>
@@ -588,7 +637,14 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section id="cta-section" className="bg-[#090908] border-t border-zinc-900 py-20 px-6 text-white text-center relative overflow-hidden">
-        <div className="max-w-4xl mx-auto relative z-10">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(204,255,0,0.08),transparent_60%)]" />
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-4xl mx-auto relative z-10"
+        >
           <h2 className="text-3xl md:text-5xl font-serif text-white mb-4 italic tracking-tight">
             Book a Technical Discovery Call
           </h2>
@@ -598,7 +654,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
             <Link
               to="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center bg-[#ccff00] text-black hover:bg-white font-mono text-xs font-bold tracking-[0.14em] uppercase px-8 py-4 rounded-full transition-all duration-300 h-14"
+              className="w-full sm:w-auto inline-flex items-center justify-center bg-[#ccff00] text-black hover:bg-white hover:scale-105 font-mono text-xs font-bold tracking-[0.14em] uppercase px-8 py-4 rounded-full transition-all duration-300 h-14 shadow-[0_0_25px_rgba(204,255,0,0.2)]"
             >
               Book a Discovery Call
             </Link>
@@ -621,7 +677,7 @@ export default function HomePage() {
               <span className="normal-case font-mono font-medium tracking-tight">hello@abuqitmirlabs.tech</span>
             </a>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <Footer />

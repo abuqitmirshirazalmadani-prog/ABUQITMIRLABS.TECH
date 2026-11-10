@@ -51,6 +51,8 @@ const TITLE_OVERRIDES = {
     'Offshore AI Agent Development Partner UAE | AbuQitmirLabs',
   '/blog/brand-refresh-vs-rebrand':
     'Brand Refresh vs Rebrand Pakistan | AbuQitmirLabs',
+  '/blog/lead-generation-content-strategy-google-meta':
+    'Lead Generation Content Strategy That Works | AbuQitmirLabs',
 };
 
 function formatConciseTitle(rawTitle, pathname) {
@@ -69,7 +71,7 @@ function formatConciseTitle(rawTitle, pathname) {
     .replace(/\s+/g, ' ')
     .trim();
   if (!cleaned) return 'Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs';
-  if (cleaned.length <= 60) return cleaned;
+  if (/Abu\s*Qitmir\s*Labs/i.test(cleaned) && cleaned.length <= 60) return cleaned;
 
   const core = cleaned
     .replace(/\s*[|–—-]\s*Abu\s*Qitmir\s*Labs(?:\s*\.?\s*TECH)?.*$/i, '')
@@ -78,15 +80,13 @@ function formatConciseTitle(rawTitle, pathname) {
   const withBrand = `${core} | AbuQitmirLabs`;
   if (withBrand.length <= 60) return withBrand;
 
-  const colonParts = core.split(/\s*[:—–]\s*/);
+  const colonParts = core.split(/\s*[:|—–]\s*/);
   if (colonParts.length > 1 && colonParts[0].trim().length >= 16) {
     const firstPart = colonParts[0].trim();
     const firstWithBrand = `${firstPart} | AbuQitmirLabs`;
     if (firstWithBrand.length <= 60) return firstWithBrand;
     if (firstPart.length <= 60 && firstPart.length >= 30) return firstPart;
   }
-
-  if (core.length <= 60) return core;
 
   const maxCoreWithBrand = 44;
   const words = core.split(' ');
@@ -120,11 +120,12 @@ function formatConciseH1Text(plainText) {
   let cleaned = String(plainText || '')
     .replace(/&amp;/gi, '&')
     .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs(?:\s*\.?\s*TECH)?.*$/i, '')
+    .replace(/\s*\|\s*The\s*9-Step.*$/i, '')
     .replace(/\s+/g, ' ')
     .trim();
   if (cleaned.length <= 78) return cleaned;
 
-  const colonParts = cleaned.split(/\s*[:—–]\s*/);
+  const colonParts = cleaned.split(/\s*[:|—–]\s*/);
   if (colonParts.length > 1 && colonParts[0].trim().length >= 22 && colonParts[0].trim().length <= 78) {
     return colonParts[0].trim();
   }

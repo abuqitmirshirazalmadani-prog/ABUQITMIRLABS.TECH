@@ -11664,9 +11664,20 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
       ]
     }
   },
+  "/blog/lead-generation-content-strategy-google-meta": {
+    "title": "Lead Generation Content Strategy That Works | AbuQitmirLabs",
+    "h1": "Lead Generation Content Strategy That Works",
+    "description": "Learn how to build a lead generation content strategy that follows Google and Meta guidelines, saves budget, and attracts qualified clients.",
+    "canonical": "https://www.abuqitmirlabs.tech/blog/lead-generation-content-strategy-google-meta",
+    "ogImage": "https://www.abuqitmirlabs.tech/images/blog-covers/lead-generation-content-strategy-google-meta-1576aa01.webp",
+    "ogType": "article"
+  },
+  "/blog/rebranding-checklist-pakistan": {
+    "title": "Rebranding Checklist Pakistan | AbuQitmirLabs",
+    "h1": "Rebranding Checklist Pakistan: Before, During and After",
+    "description": "A Pakistan-specific rebranding checklist: strategy, design, website, social profiles, WhatsApp, packaging, redirects and a 30-day launch plan.",
+    "canonical": "https://www.abuqitmirlabs.tech/blog/rebranding-checklist-pakistan",
+    "ogImage": "https://www.abuqitmirlabs.tech/images/blog-covers/rebranding-checklist-pakistan-9252c088.webp",
+    "ogType": "article"
+  }
 };
-
-
-
-
-

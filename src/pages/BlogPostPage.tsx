@@ -374,8 +374,8 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                     contentLines.splice(1, 1);
                 }
                 contentLines.splice(1, 0, '');
-            } else if (contentLines.length > 0 && !/^#{1,6}\s+/.test(contentLines[0].trim()) && cleanTitleForMatch) {
-                // If the opening ## H2 was previously stripped and content starts directly with paragraph text, restore it
+            } else if (contentLines.length > 0 && !contentLines.some(l => /^#{2,6}\s+/.test(l.trim())) && cleanTitleForMatch) {
+                // Only add a fallback ## H2 if the entire article has zero headings
                 const fallbackH2 = slug === 'ecommerce-platform-development'
                     ? 'E-Commerce Platform Development: Build vs Shopify Plus'
                     : cleanTitleForMatch;
@@ -3383,7 +3383,10 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                             <h1>
                                 {slug === 'brand-refresh-vs-rebrand'
                                     ? "Brand Refresh vs Rebrand Pakistan: A Founder's Decision Guide"
-                                    : String(post.title || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim()}
+                                    : String(post.title || '')
+                                          .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
+                                          .replace(/\s*\|\s*The\s*9-Step.*$/i, '')
+                                          .trim()}
                             </h1>
                         </div>
                     </header>

@@ -255,6 +255,7 @@ export default async function handler(req: any, res: any) {
 
     const cleanH1 = String(postData.title || canonicalSlug)
       .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
+      .replace(/\s*\|\s*The\s*9-Step.*$/i, '')
       .trim();
     const pageTitle =
       postData.seoTitle ||
@@ -262,7 +263,7 @@ export default async function handler(req: any, res: any) {
         ? cleanH1
         : cleanH1.length <= 44
         ? `${cleanH1} | AbuQitmirLabs`
-        : `${cleanH1.split(':')[0].trim()} | AbuQitmirLabs`);
+        : `${cleanH1.split(/[:|]/)[0].trim()} | AbuQitmirLabs`);
     const rawDesc = (
       postData.metaDescription ||
       postData.excerpt ||
@@ -299,7 +300,7 @@ export default async function handler(req: any, res: any) {
         lines[0] = `## ${lines[0].trim().replace(/^###\s+/, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim()}`;
       } else if (lines.length > 0 && /^##\s+/.test(lines[0].trim())) {
         lines[0] = `## ${lines[0].trim().replace(/^##\s+/, '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim()}`;
-      } else if (lines.length > 0 && !/^#{2,6}\s+/.test(lines[0].trim())) {
+      } else if (lines.length > 0 && !lines.some((l) => /^#{2,6}\s+/.test(l.trim()))) {
         lines.unshift(`## ${cleanH1}`, '');
       }
     }

@@ -163,6 +163,8 @@ const TITLE_OVERRIDES = {
     'Offshore AI Agent Development Partner UAE | AbuQitmirLabs',
   '/blog/brand-refresh-vs-rebrand':
     'Brand Refresh vs Rebrand Pakistan | AbuQitmirLabs',
+  '/blog/lead-generation-content-strategy-google-meta':
+    'Lead Generation Content Strategy That Works | AbuQitmirLabs',
   '/local-seo-for-small-business': 'Local SEO Services for Small Business | AbuQitmirLabs',
 };
 
@@ -182,7 +184,7 @@ function formatConciseTitle(rawTitle, pathname) {
     .replace(/\s+/g, ' ')
     .trim();
   if (!cleaned) return 'Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs';
-  if (cleaned.length <= 60) return cleaned;
+  if (/Abu\s*Qitmir\s*Labs/i.test(cleaned) && cleaned.length <= 60) return cleaned;
 
   const core = cleaned
     .replace(/\s*[|–—-]\s*Abu\s*Qitmir\s*Labs(?:\s*\.?\s*TECH)?.*$/i, '')
@@ -191,15 +193,13 @@ function formatConciseTitle(rawTitle, pathname) {
   const withBrand = `${core} | AbuQitmirLabs`;
   if (withBrand.length <= 60) return withBrand;
 
-  const colonParts = core.split(/\s*[:—–]\s*/);
+  const colonParts = core.split(/\s*[:|—–]\s*/);
   if (colonParts.length > 1 && colonParts[0].trim().length >= 16) {
     const firstPart = colonParts[0].trim();
     const firstWithBrand = `${firstPart} | AbuQitmirLabs`;
     if (firstWithBrand.length <= 60) return firstWithBrand;
     if (firstPart.length <= 60 && firstPart.length >= 30) return firstPart;
   }
-
-  if (core.length <= 60) return core;
 
   const maxCoreWithBrand = 44;
   const words = core.split(' ');
