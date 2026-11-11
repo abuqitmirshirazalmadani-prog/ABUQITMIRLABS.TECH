@@ -13,15 +13,19 @@ export const REMOTE_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "https://i.postimg.cc/7L09n4zn/Marketing-ROI-Without-Perfect-Attribution.png": "/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp",
   "https://i.postimg.cc/NGNQF3vh/Software-Ownership-IP-Guide.png": "/images/blog-covers/the-non-technical-founders-guide-to-software-ownership-ip-20-85a1300b.webp",
   "https://i.postimg.cc/L5RsMkbN/Qatar-Custom-Software-Development-Guide.png": "/images/blog-covers/custom-software-development-qatar-06910d97.webp",
+  "https://i.postimg.cc/vBhWpH0q/Lead-Generation-Content-Strategy-That_Works.jpg": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
   "https://i.postimg.cc/vBhWpH0q/Lead-Generation-Content-Strategy-That-Works.jpg": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
   "https://i.postimg.cc/7YZRZy9q/Rebranding-Checklist-Pakistan-Before-During-and-After.jpg": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
+  "https://i.postimg.cc/qqsFC1CD/Kuwait-Cybersecurity-Partner-Evaluation.png": "/images/blog-covers/kuwait-cybersecurity-partner-evaluation.webp",
   "/images/blog-covers/lead-generation-content-strategy-google-meta-1576aa01.webp": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
-  "/images/blog-covers/rebranding-checklist-pakistan-9252c088.webp": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp"
+  "/images/blog-covers/rebranding-checklist-pakistan-9252c088.webp": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
+  "/images/blog-covers/kuwait-digital-transformation-866e51c6.webp": "/images/blog-covers/kuwait-cybersecurity-partner-evaluation.webp"
 };
 
 export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "lead-generation-content-strategy-google-meta": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
   "rebranding-checklist-pakistan": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
+  "kuwait-digital-transformation": "/images/blog-covers/kuwait-cybersecurity-partner-evaluation.webp",
   "5-minute-technical-audit-for-founders": "/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
   "performance-marketing-vs-brand-marketing-a-budget-allocation-framework-for-startups": "/images/blog-covers/performance-marketing-vs-brand-marketing-a-budget-allocation-ceb070fb.webp",
   "mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-2026": "/images/blog-covers/mvp-to-scale-a-non-technical-founders-roadmap-for-version-20-b90cd424.webp",

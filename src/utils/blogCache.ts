@@ -16,7 +16,7 @@ export interface CachedPost {
 }
 
 const memoryCache = new Map<string, CachedPost>();
-const CACHE_STORAGE_KEY = 'abq_blog_cache_v8';
+const CACHE_STORAGE_KEY = 'abq_blog_cache_v9';
 
 export const normalizeSlug = (slug: string): string => {
   if (!slug) return '';
