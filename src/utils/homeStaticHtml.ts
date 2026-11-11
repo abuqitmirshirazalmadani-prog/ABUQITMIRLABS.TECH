@@ -95,7 +95,7 @@ export const homeSchema = {
       "@type": "WebPage",
       "@id": "https://www.abuqitmirlabs.tech/#webpage",
       "url": "https://www.abuqitmirlabs.tech/",
-      "name": "Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs",
+      "name": "Custom Software, AI & SEO Engineering | AbuQitmirLabs",
       "description": "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Free technical audit.",
       "inLanguage": "en-US",
       "isPartOf": {

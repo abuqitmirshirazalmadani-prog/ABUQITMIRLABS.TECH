@@ -1974,7 +1974,7 @@ function createSampleAuditResult(type: 'abuqitmirlabs' | 'ecommerce'): AuditResu
         referrerPolicyValue: 'strict-origin-when-cross-origin',
         robotsMeta: 'index, follow',
         xRobotsTag: null,
-        metaTitle: 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs',
+        metaTitle: 'Custom Software, AI & SEO Engineering | AbuQitmirLabs',
         metaDescription:
           'Growth engineering firm for B2B companies. Custom software, AI automation & technical SEO engineered as one revenue system.',
         canonicalUrl: 'https://www.abuqitmirlabs.tech/',

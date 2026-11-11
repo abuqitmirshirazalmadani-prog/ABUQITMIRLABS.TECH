@@ -95,7 +95,7 @@ export async function generateClientAuditResult(
         referrerPolicyValue: 'strict-origin-when-cross-origin',
         robotsMeta: 'index, follow',
         xRobotsTag: null,
-        metaTitle: 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs',
+        metaTitle: 'Custom Software, AI & SEO Engineering | AbuQitmirLabs',
         metaDescription:
           'Growth engineering firm for B2B companies. Custom software, AI automation & performance marketing engineered as one revenue system.',
         canonicalUrl: targetUrl,
