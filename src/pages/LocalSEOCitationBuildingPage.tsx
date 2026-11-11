@@ -68,7 +68,7 @@ export default function LocalSEOCitationBuildingPage() {
         <div className="min-h-screen bg-[#080808] text-white selection:bg-[#ccff00] selection:text-black font-sans antialiased">
             <Helmet>
                 {/* ═══ Primary Meta Tags ═══ */}
-                <title>Local SEO Citation Building | NAP Consistency Services | AbuQitmirLabs</title>
+                <title>Local SEO Citation Building | AbuQitmirLabs</title>
                 <meta name="description" content="Manual NAP citation building, audit & cleanup across top-tier directories. Boost local search rankings with consistent citations on Google, Yelp, Apple Maps & more. Start with a $150 audit." />
                 <link rel="canonical" href="https://www.abuqitmirlabs.tech/local-seo-citation-building" />
                 <meta name="keywords" content="local SEO citation building, NAP consistency, citation management, local citations, citation cleanup, local directory listings, small business citations" />
@@ -76,7 +76,7 @@ export default function LocalSEOCitationBuildingPage() {
                 {/* ═══ Open Graph (Facebook / LinkedIn) ═══ */}
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://www.abuqitmirlabs.tech/local-seo-citation-building" />
-                <meta property="og:title" content="Local SEO Citation Building | NAP Consistency Services | AbuQitmirLabs" />
+                <meta property="og:title" content="Local SEO Citation Building | AbuQitmirLabs" />
                 <meta property="og:description" content="Manual NAP citation building, audit & cleanup across top-tier directories. Boost local search rankings with consistent citations on Google, Yelp, Apple Maps & more. Start with a $150 audit." />
                 <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
                 <meta property="og:image:width" content="1200" />
@@ -86,7 +86,7 @@ export default function LocalSEOCitationBuildingPage() {
                 {/* ═══ Twitter Card ═══ */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@AbuQitmir" />
-                <meta name="twitter:title" content="Local SEO Citation Building | NAP Consistency Services | AbuQitmirLabs" />
+                <meta name="twitter:title" content="Local SEO Citation Building | AbuQitmirLabs" />
                 <meta name="twitter:description" content="Manual NAP citation building, audit & cleanup across top-tier directories. Boost local search rankings with consistent citations on Google, Yelp, Apple Maps & more. Start with a $150 audit." />
                 <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 

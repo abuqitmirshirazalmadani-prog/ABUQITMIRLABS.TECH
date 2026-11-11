@@ -63,12 +63,12 @@ const KuwaitMarketPage: React.FC = () => {
   return (
     <div className="bg-[#05070a] text-[#d6e0ea] min-h-screen font-sans selection:bg-[#0ea5e9] selection:text-white">
       <Helmet>
-        <title>Software Development Kuwait | Arabic SEO & Custom Apps | AbuQitmirLabs</title>
+        <title>Software Development Kuwait | AbuQitmirLabs</title>
         <meta name="description" content="Bilingual Arabic/English SEO, custom software & AI agents for Kuwait businesses. CITRA-compliant, Salmiya & Kuwait City coverage. Get a quote." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/kuwait-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Software Development Kuwait | Arabic SEO & Custom Apps | AbuQitmirLabs" />
+        <meta property="og:title" content="Software Development Kuwait | AbuQitmirLabs" />
         <meta property="og:description" content="Bilingual Arabic/English SEO, custom software & AI agents for Kuwait businesses. CITRA-compliant, Salmiya & Kuwait City coverage. Get a quote." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/kuwait-market" />
         <meta property="og:type" content="website" />
@@ -76,7 +76,7 @@ const KuwaitMarketPage: React.FC = () => {
 
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Software Development Kuwait | Arabic SEO & Custom Apps | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Software Development Kuwait | AbuQitmirLabs" />
         <meta name="twitter:description" content="Bilingual Arabic/English SEO, custom software & AI agents for Kuwait businesses. CITRA-compliant, Salmiya & Kuwait City coverage. Get a quote." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         

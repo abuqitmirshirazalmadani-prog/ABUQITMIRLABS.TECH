@@ -75,6 +75,9 @@ Compliance audits, bias monitoring, explainability documentation, and model trac
 - For engineering teams deploying production workflows, explore our blueprint on [custom AI agent development and enterprise RAG architecture](/ai-agent-development) and our [AI automation solutions](/solutions/ai-automation).
 - Ready to turn these engineering principles into production software? Explore our [custom web application development](/web-development) services or run a live diagnostic with our [free technical website audit tool](/tools/website-audit).
 
+
+For teams scaling production architecture, explore our [custom software engineering](/custom-software) and [book a strategy diagnostic](/contact) with AbuQitmirLabs.
+
 ## Frequently Asked Questions
 
 ### How much does it cost to build a generative AI chatbot in 2026?

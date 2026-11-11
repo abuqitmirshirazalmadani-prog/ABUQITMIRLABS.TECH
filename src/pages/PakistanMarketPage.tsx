@@ -115,12 +115,12 @@ const PakistanMarketPage = () => {
   return (
     <div className="bg-[#090909] text-[#d3c8b8] min-h-screen font-sans selection:bg-[#ff5b36] selection:text-white overflow-x-hidden">
       <Helmet>
-        <title>Software Development & Local SEO Agency in Pakistan | AbuQitmirLabs</title>
+        <title>Software Development &amp; Local SEO Agency in | AbuQitmirLabs</title>
         <meta name="description" content="Karachi-based engineering studio delivering custom software, mobile apps, local SEO, and AI agents for Pakistani enterprises and SMEs. Transparent PKR pricing & local payment gateway expertise." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/pakistan-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Software Development & Local SEO Agency in Pakistan | AbuQitmirLabs" />
+        <meta property="og:title" content="Software Development &amp; Local SEO Agency in | AbuQitmirLabs" />
         <meta property="og:description" content="Karachi-based engineering studio delivering custom software, mobile apps, local SEO, and AI agents for Pakistani enterprises and SMEs. Transparent PKR pricing & local payment gateway expertise." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/pakistan-market" />
         <meta property="og:type" content="website" />
@@ -128,7 +128,7 @@ const PakistanMarketPage = () => {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Software Development & Local SEO Agency in Pakistan | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Software Development &amp; Local SEO Agency in | AbuQitmirLabs" />
         <meta name="twitter:description" content="Karachi-based engineering studio delivering custom software, mobile apps, local SEO, and AI agents for Pakistani enterprises and SMEs. Transparent PKR pricing & local payment gateway expertise." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         

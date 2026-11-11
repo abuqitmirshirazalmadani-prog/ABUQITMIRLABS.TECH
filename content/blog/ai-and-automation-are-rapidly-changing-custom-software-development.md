@@ -1,6 +1,6 @@
 ---
 {
-  "title": "AI and Automation Are Rapidly Changing Custom Software Development",
+  "title": "AI and Automation Are Rapidly Changing Custom Software",
   "slug": "ai-and-automation-are-rapidly-changing-custom-software-development",
   "excerpt": "Learn how AI and automation are reshaping custom software development through AI coding tools, automation workflows, predictive analytics, cloud systems, and modern business software strategies.",
   "metaDescription": "Learn how AI and automation are reshaping custom software development through AI coding tools, automation workflows, predictive analytics, cloud systems, and modern business software strategies.",
@@ -20,7 +20,8 @@
     "predictive analytics",
     "cloud software",
     "AI tools for developers"
-  ]
+  ],
+  "seoTitle": "AI and Automation Are Rapidly Changing | AbuQitmirLabs"
 }
 ---
 
@@ -607,3 +608,5 @@ Yes. AI tools reduce costs, improve workflows, and make advanced software capabi
 
 - For engineering teams deploying production workflows, explore our blueprint on [custom AI agent development and enterprise RAG architecture](/ai-agent-development) and our [AI automation solutions](/solutions/ai-automation).
 - High-converting software pairs engineering rigor with distinctive positioning—explore our [strategic brand building and UI/UX design systems](/brand-building) and [graphics design studio](/graphics-design).
+
+For teams scaling production architecture, explore our [custom software engineering](/custom-software) and [book a strategy diagnostic](/contact) with AbuQitmirLabs.

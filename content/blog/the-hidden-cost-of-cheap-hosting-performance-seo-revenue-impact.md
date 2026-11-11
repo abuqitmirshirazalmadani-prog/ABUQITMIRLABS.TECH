@@ -1,6 +1,6 @@
 ---
 {
-  "title": "The Hidden Cost of Cheap Hosting: Performance, SEO & Revenue Impact",
+  "title": "The Hidden Cost of Cheap Hosting",
   "slug": "the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact",
   "excerpt": "Cheap hosting can push TTFB past 800ms and hurt Core Web Vitals. See what published data shows, where it is vendor-biased, and how to test your own site.",
   "category": "Development",
@@ -24,7 +24,8 @@
     "hosting ROI"
   ],
   "publishedAt": "2026-10-04",
-  "syncedAt": "2026-10-04T20:02:12.973Z"
+  "syncedAt": "2026-10-04T20:02:12.973Z",
+  "seoTitle": "The Hidden Cost of Cheap Hosting | AbuQitmirLabs"
 }
 ---
 

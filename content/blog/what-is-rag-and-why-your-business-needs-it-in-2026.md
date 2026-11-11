@@ -377,6 +377,9 @@ RAG (Retrieval-Augmented Generation) is an AI architecture that retrieves inform
 
 - For engineering teams deploying production workflows, explore our blueprint on [custom AI agent development and enterprise RAG architecture](/ai-agent-development) and our [AI automation solutions](/solutions/ai-automation).
 
+
+For teams scaling production architecture, explore our [custom software engineering](/custom-software) and [book a strategy diagnostic](/contact) with AbuQitmirLabs.
+
 ## FAQ
 
 ### What does RAG stand for?

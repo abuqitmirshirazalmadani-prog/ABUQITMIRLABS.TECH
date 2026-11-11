@@ -32,7 +32,8 @@ function getAllHtmlFiles(dir, fileList = []) {
 }
 
 const TITLE_OVERRIDES = {
-  '/': 'Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs',
+  '/': 'Custom Software, AI & SEO Engineering | AbuQitmirLabs',
+  '/growth-engineering': 'Growth Engineering: Software, AI & SEO | AbuQitmirLabs',
   '/blog/ai-integration-with-legacy-systems-the-complete-2026-guide':
     'AI in Enterprise Software: 2026 Guide | AbuQitmirLabs',
   '/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026':
@@ -70,22 +71,31 @@ function formatConciseTitle(rawTitle, pathname) {
     .replace(/&amp;/gi, '&')
     .replace(/\s+/g, ' ')
     .trim();
-  if (!cleaned) return 'Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs';
-  if (/Abu\s*Qitmir\s*Labs/i.test(cleaned) && cleaned.length <= 60) return cleaned;
+  if (!cleaned) return 'Custom Software, AI & SEO Engineering | AbuQitmirLabs';
+  if (/Abu\s*Qitmir\s*Labs/i.test(cleaned) && cleaned.length >= 30 && cleaned.length <= 60) {
+    return cleaned;
+  }
 
   const core = cleaned
     .replace(/\s*[|–—-]\s*Abu\s*Qitmir\s*Labs(?:\s*\.?\s*TECH)?.*$/i, '')
     .trim();
+  if (!core) return 'Custom Software, AI & SEO Engineering | AbuQitmirLabs';
 
   const withBrand = `${core} | AbuQitmirLabs`;
-  if (withBrand.length <= 60) return withBrand;
+  if (withBrand.length >= 30 && withBrand.length <= 60) return withBrand;
+  if (withBrand.length < 30) {
+    const padded = `${core} — Engineering & AI | AbuQitmirLabs`;
+    if (padded.length <= 60) return padded;
+    const altPadded = `${core} Guide | AbuQitmirLabs`;
+    if (altPadded.length >= 30 && altPadded.length <= 60) return altPadded;
+  }
 
   const colonParts = core.split(/\s*[:|—–]\s*/);
-  if (colonParts.length > 1 && colonParts[0].trim().length >= 16) {
+  if (colonParts.length > 1 && colonParts[0].trim().length >= 15) {
     const firstPart = colonParts[0].trim();
     const firstWithBrand = `${firstPart} | AbuQitmirLabs`;
-    if (firstWithBrand.length <= 60) return firstWithBrand;
-    if (firstPart.length <= 60 && firstPart.length >= 30) return firstPart;
+    if (firstWithBrand.length >= 30 && firstWithBrand.length <= 60) return firstWithBrand;
+    if (firstPart.length >= 30 && firstPart.length <= 60) return firstPart;
   }
 
   const maxCoreWithBrand = 44;
@@ -100,7 +110,7 @@ function formatConciseTitle(rawTitle, pathname) {
     }
   }
   acc = acc.replace(/[,;:\-–—&]+$/, '').trim();
-  if (acc.length >= 22) {
+  if (acc.length >= 16) {
     return `${acc} | AbuQitmirLabs`;
   }
 
@@ -113,7 +123,11 @@ function formatConciseTitle(rawTitle, pathname) {
       break;
     }
   }
-  return standalone.replace(/[,;:\-–—&]+$/, '').trim() || core.slice(0, 57).trim();
+  const finalStandalone = standalone.replace(/[,;:\-–—&]+$/, '').trim() || core.slice(0, 57).trim();
+  if (finalStandalone.length < 30) {
+    return `${finalStandalone.slice(0, 42).trim()} | AbuQitmirLabs`;
+  }
+  return finalStandalone;
 }
 
 function formatConciseH1Text(plainText) {
@@ -176,12 +190,11 @@ for (const filePath of htmlFiles) {
           .replace(/\/index\.html$/, '')
           .replace(/\.html$/, '');
 
-  // 1. Ensure strictly 1 application/ld+json script block
-  const schemaRegex = /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis;
-  const schemaMatches = html.match(schemaRegex) || [];
+  // 1. Ensure strictly 1 application/ld+json script block and normalize schema headline/name to 30-60 chars
+  const schemaRegex = /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gis;
+  const schemaMatches = [...html.matchAll(schemaRegex)];
   if (schemaMatches.length > 1) {
-    // Keep the last (most specific route-level @graph) block and strip earlier duplicates
-    const keptSchema = schemaMatches[schemaMatches.length - 1];
+    const keptSchema = schemaMatches[schemaMatches.length - 1][0];
     html = html.replace(schemaRegex, '');
     html = html.replace('</head>', `  ${keptSchema}\n</head>`);
     modified = true;
@@ -190,7 +203,7 @@ for (const filePath of htmlFiles) {
     const canonMatch = html.match(/<link\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/i);
     const titleMatch = html.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i);
     const fullCanonical = canonMatch ? canonMatch[1] : 'https://www.abuqitmirlabs.tech/';
-    const pageTitle = titleMatch ? titleMatch[1].trim() : 'AbuQitmirLabs';
+    const pageTitle = formatConciseTitle(titleMatch ? titleMatch[1].trim() : 'AbuQitmirLabs', routeFromRel);
     const fallbackSchema = {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -216,6 +229,37 @@ for (const filePath of htmlFiles) {
     modified = true;
     fixedSchemaCount++;
   }
+
+  // Normalize JSON-LD headline and WebPage/Article name lengths inside script tag
+  html = html.replace(/(<script\b[^>]*type=["']application\/ld\+json["'][^>]*>)([\s\S]*?)(<\/script>)/gi, (full, open, jsonRaw, close) => {
+    try {
+      const parsed = JSON.parse(jsonRaw);
+      let schemaChanged = false;
+      const fixNode = (n) => {
+        if (!n || typeof n !== 'object') return;
+        const nType = Array.isArray(n['@type']) ? n['@type'].join(',') : String(n['@type'] || '');
+        if (typeof n.headline === 'string' && (n.headline.length > 60 || n.headline.length < 30)) {
+          n.headline = formatConciseTitle(n.headline, routeFromRel);
+          schemaChanged = true;
+        }
+        if ((nType.includes('WebPage') || nType.includes('Article') || nType.includes('BlogPosting')) && typeof n.name === 'string' && (n.name.length > 60 || n.name.length < 30)) {
+          n.name = formatConciseTitle(n.name, routeFromRel);
+          schemaChanged = true;
+        }
+      };
+      if (Array.isArray(parsed['@graph'])) {
+        parsed['@graph'].forEach(fixNode);
+      } else {
+        fixNode(parsed);
+      }
+      if (schemaChanged) {
+        modified = true;
+        fixedSchemaCount++;
+        return `${open}${JSON.stringify(parsed)}${close}`;
+      }
+    } catch {}
+    return full;
+  });
 
   // Normalize Organization schema name from "AbuQitmirLabs .TECH" to "AbuQitmirLabs"
   if (html.includes('"name": "AbuQitmirLabs .TECH"')) {
@@ -272,7 +316,7 @@ for (const filePath of htmlFiles) {
     fixedH2Count++;
   }
 
-  // 4. Ensure strictly 1 <title> tag (without data-rh="true") and <= 60 chars (Audit Item 4)
+  // 4. Ensure strictly 1 <title> tag (without data-rh="true") and 30-60 chars (Audit Item 4)
   const titleRegex = /<title\b[^>]*>([\s\S]*?)<\/title>/gis;
   const titleMatches = [...html.matchAll(titleRegex)];
   if (titleMatches.length >= 1) {
@@ -291,6 +335,24 @@ for (const filePath of htmlFiles) {
       modified = true;
     }
   }
+
+  // 4a-og. Enforce 30-60 chars on og:title and twitter:title
+  html = html.replace(/(<meta\b[^>]*property=["']og:title["'][^>]*content=["'])([^"']*)(["'][^>]*>)/gi, (full, p1, val, p3) => {
+    const plain = val.replace(/&amp;/gi, '&');
+    if (plain.length > 60 || plain.length < 30) {
+      modified = true;
+      return `${p1}${formatConciseTitle(plain, routeFromRel).replace(/&/g, '&amp;')}${p3}`;
+    }
+    return full;
+  });
+  html = html.replace(/(<meta\b[^>]*name=["']twitter:title["'][^>]*content=["'])([^"']*)(["'][^>]*>)/gi, (full, p1, val, p3) => {
+    const plain = val.replace(/&amp;/gi, '&');
+    if (plain.length > 60 || plain.length < 30) {
+      modified = true;
+      return `${p1}${formatConciseTitle(plain, routeFromRel).replace(/&/g, '&amp;')}${p3}`;
+    }
+    return full;
+  });
 
   // 4b. Ensure strictly 1 <meta name="description"> tag (without data-rh="true")
   const descRegex = /<meta\b[^>]*name=["']description["'][^>]*\/?>/gis;

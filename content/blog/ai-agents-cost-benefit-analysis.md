@@ -1,6 +1,6 @@
 ---
 {
-  "title": "AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don't)",
+  "title": "AI Agents Cost Benefit Analysis: 2026 Guide",
   "slug": "ai-agents-cost-benefit-analysis",
   "excerpt": "Every AI agent demo looks impressive. The invoice tells a different story. A 7-question framework to know when AI agents actually save money and when they don't.",
   "category": "AI",
@@ -23,7 +23,8 @@
     "enterprise AI agent pricing"
   ],
   "publishedAt": "2026-10-02",
-  "syncedAt": "2026-10-02T20:39:54.827Z"
+  "syncedAt": "2026-10-02T20:39:54.827Z",
+  "seoTitle": "AI Agents Cost Benefit Analysis | AbuQitmirLabs"
 }
 ---
 

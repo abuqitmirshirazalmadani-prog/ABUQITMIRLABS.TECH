@@ -127,6 +127,71 @@ export function stripSurroundingQuotes(raw?: string): string {
     .trim();
 }
 
+export function formatConciseSeoTitle(rawTitle?: string, slug?: string, siteName = DEFAULT_SITE_NAME): string {
+  if (slug === 'lead-generation-content-strategy-google-meta') {
+    return 'B2B Lead Generation Content Strategy: Google + Meta';
+  }
+  const cleaned = stripSurroundingQuotes(rawTitle || '')
+    .replace(/&amp;/gi, '&')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (!cleaned) return `Software, AI & SEO Engineering | ${siteName}`;
+  if (/Abu\s*Qitmir\s*Labs/i.test(cleaned) && cleaned.length >= 30 && cleaned.length <= 60) {
+    return cleaned;
+  }
+
+  const core = cleaned
+    .replace(/\s*[|–—-]\s*Abu\s*Qitmir\s*Labs(?:\s*\.?\s*TECH)?.*$/i, '')
+    .trim();
+  if (!core) return `Software, AI & SEO Engineering | ${siteName}`;
+
+  const withBrand = `${core} | ${siteName}`;
+  if (withBrand.length >= 30 && withBrand.length <= 60) return withBrand;
+  if (withBrand.length < 30) {
+    const padded = `${core} — Engineering Guide | ${siteName}`;
+    if (padded.length <= 60) return padded;
+  }
+
+  const colonParts = core.split(/\s*[:|—–]\s*/);
+  if (colonParts.length > 1 && colonParts[0].trim().length >= 15) {
+    const firstPart = colonParts[0].trim();
+    const firstWithBrand = `${firstPart} | ${siteName}`;
+    if (firstWithBrand.length >= 30 && firstWithBrand.length <= 60) return firstWithBrand;
+    if (firstPart.length >= 30 && firstPart.length <= 60) return firstPart;
+  }
+
+  const maxCoreWithBrand = 60 - ` | ${siteName}`.length;
+  const words = core.split(' ');
+  let acc = '';
+  for (const w of words) {
+    const next = acc ? `${acc} ${w}` : w;
+    if (next.length <= maxCoreWithBrand) {
+      acc = next;
+    } else {
+      break;
+    }
+  }
+  acc = acc.replace(/[,;:\-–—&]+$/, '').trim();
+  if (acc.length >= 16) {
+    return `${acc} | ${siteName}`;
+  }
+
+  let standalone = '';
+  for (const w of words) {
+    const next = standalone ? `${standalone} ${w}` : w;
+    if (next.length <= 58) {
+      standalone = next;
+    } else {
+      break;
+    }
+  }
+  const finalStandalone = standalone.replace(/[,;:\-–—&]+$/, '').trim() || core.slice(0, 57).trim();
+  if (finalStandalone.length < 30) {
+    return `${finalStandalone.slice(0, 42).trim()} | ${siteName}`;
+  }
+  return finalStandalone;
+}
+
 export function generateBlogPostMeta(
   post: BlogPostMetaInput,
   slug: string,
@@ -146,14 +211,10 @@ export function generateBlogPostMeta(
     currentUrl = post.canonical;
   }
   
-  // 1. Unique Dynamic Title: "<Post Title> | AbuQitmirLabs" (or exact override for specific audited slugs)
+  // 1. Unique Dynamic Title strictly between 30 and 60 characters
   const rawTitle = post.title?.trim() || 'Journal Article';
-  const pageTitle =
-    slug === 'lead-generation-content-strategy-google-meta'
-      ? 'B2B Lead Generation Content Strategy: Google + Meta'
-      : rawTitle.includes(siteName)
-      ? rawTitle
-      : `${rawTitle} | ${siteName}`;
+  const pageTitle = formatConciseSeoTitle((post as any).seoTitle || rawTitle, slug, siteName);
+  const schemaHeadline = formatConciseSeoTitle(rawTitle, slug, siteName);
 
   // 2. Unique Dynamic Description: Prioritize explicit metaDescription or description field, then post excerpt, then fallback to content
   let description = '';
@@ -229,7 +290,7 @@ export function generateBlogPostMeta(
         "@type": "WebPage",
         "@id": `${currentUrl}#webpage`,
         "url": currentUrl,
-        "name": rawTitle,
+        "name": pageTitle,
         "isPartOf": { "@id": `${siteUrl}/#website` },
         "primaryImageOfPage": coverImage,
         "datePublished": publishedTime,
@@ -257,7 +318,7 @@ export function generateBlogPostMeta(
           {
             "@type": "ListItem",
             "position": 3,
-            "name": rawTitle,
+            "name": schemaHeadline.replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim(),
             "item": currentUrl
           }
         ]
@@ -265,7 +326,7 @@ export function generateBlogPostMeta(
       {
         "@type": "Article",
         "@id": `${currentUrl}#article`,
-        "headline": rawTitle,
+        "headline": schemaHeadline,
         "description": description,
         "image": coverImage,
         "author": {
@@ -407,11 +468,10 @@ export function clampMetaDescription(raw?: string, maxLen = 158): string {
 export function ensureUniqueTitle(candidateTitle?: string, pathname = '/'): string {
   const clean = stripSurroundingQuotes(candidateTitle || '').trim();
   if (clean) {
-    if (/abuqitmirlabs/i.test(clean)) return clean;
-    return `${clean} | AbuQitmirLabs`;
+    return formatConciseSeoTitle(clean);
   }
   if (pathname === '/' || !pathname) {
-    return 'Growth Engineering Firm | Custom Software & AI | AbuQitmirLabs';
+    return 'Custom Software, AI & SEO Engineering | AbuQitmirLabs';
   }
   const slugPart = pathname
     .replace(/^\/+|\/+$/g, '')
@@ -421,7 +481,7 @@ export function ensureUniqueTitle(candidateTitle?: string, pathname = '/'): stri
     .split('-')
     .map((w) => (w ? w.charAt(0).toUpperCase() + w.slice(1) : ''))
     .join(' ');
-  return `${humanized} | AbuQitmirLabs`;
+  return formatConciseSeoTitle(`${humanized} | AbuQitmirLabs`);
 }
 
 const STOP_WORDS = new Set([
@@ -584,6 +644,8 @@ export function buildCanonicalGraphSchema(params: {
   }
 
   const cleanHeadingTitle = params.title.replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
+  const concisePageTitle = formatConciseSeoTitle(params.title);
+  const conciseHeadline = formatConciseSeoTitle(cleanHeadingTitle);
   const breadcrumbItems =
     params.breadcrumbs && params.breadcrumbs.length > 0
       ? params.breadcrumbs.map((b, i) => ({
@@ -604,7 +666,7 @@ export function buildCanonicalGraphSchema(params: {
                 {
                   '@type': 'ListItem',
                   position: 2,
-                  name: cleanHeadingTitle,
+                  name: conciseHeadline.replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim(),
                   item: params.canonical,
                 },
               ]
@@ -635,7 +697,7 @@ export function buildCanonicalGraphSchema(params: {
       '@type': 'WebPage',
       '@id': `${params.canonical}#webpage`,
       url: params.canonical,
-      name: cleanHeadingTitle,
+      name: concisePageTitle,
       description: params.description,
       isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
       breadcrumb: { '@id': `${params.canonical}#breadcrumb` },
@@ -652,7 +714,7 @@ export function buildCanonicalGraphSchema(params: {
     graphNodes.push({
       '@type': 'Article',
       '@id': `${params.canonical}#article`,
-      headline: cleanHeadingTitle,
+      headline: conciseHeadline,
       description: params.description,
       image: params.ogImage,
       author: {

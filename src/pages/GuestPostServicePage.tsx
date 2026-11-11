@@ -66,7 +66,7 @@ export default function GuestPostServicePage() {
         <div className="min-h-screen bg-[#080808] text-white selection:bg-[#ccff00] selection:text-black font-sans antialiased">
             <Helmet>
                 {/* ═══ Primary Meta Tags ═══ */}
-                <title>High-Authority Guest Post Service | Editorial Backlinks & Outreach | AbuQitmirLabs</title>
+                <title>High-Authority Guest Post Service | AbuQitmirLabs</title>
                 <meta name="description" content="Manual, high-authority guest post service with DA/DR 40-70 contextual backlinks. Real editorial outreach, zero PBNs, crawlable, indexable sites, verified organic traffic. Boost domain authority and rankings." />
                 <link rel="canonical" href="https://www.abuqitmirlabs.tech/guest-post-service" />
                 <meta name="keywords" content="guest post service, guest posting service, buy guest posts, authority backlinks, editorial outreach, white hat link building, contextual backlinks, DA 50 guest posts, guest blogging service" />
@@ -74,7 +74,7 @@ export default function GuestPostServicePage() {
                 {/* ═══ Open Graph (Facebook / LinkedIn) ═══ */}
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://www.abuqitmirlabs.tech/guest-post-service" />
-                <meta property="og:title" content="High-Authority Guest Post Service | Editorial Backlinks & Outreach | AbuQitmirLabs" />
+                <meta property="og:title" content="High-Authority Guest Post Service | AbuQitmirLabs" />
                 <meta property="og:description" content="Manual, high-authority guest post service with DA/DR 40-70 contextual backlinks. Real editorial outreach, zero PBNs, crawlable, indexable sites, verified organic traffic. Boost domain authority and rankings." />
                 <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
                 <meta property="og:image:width" content="1200" />
@@ -84,7 +84,7 @@ export default function GuestPostServicePage() {
                 {/* ═══ Twitter Card ═══ */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@AbuQitmir" />
-                <meta name="twitter:title" content="High-Authority Guest Post Service | Editorial Backlinks & Outreach | AbuQitmirLabs" />
+                <meta name="twitter:title" content="High-Authority Guest Post Service | AbuQitmirLabs" />
                 <meta name="twitter:description" content="Manual, high-authority guest post service with DA/DR 40-70 contextual backlinks. Real editorial outreach, zero PBNs, crawlable, indexable sites, verified organic traffic." />
                 <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 

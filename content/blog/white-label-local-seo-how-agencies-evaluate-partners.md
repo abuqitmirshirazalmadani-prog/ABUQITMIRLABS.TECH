@@ -31,7 +31,7 @@
 - The average reseller margin on white label local SEO runs **35–55%**, but agencies that skip due diligence lose margin to rework, refunds, and churn
 - A **12-point evaluation framework** covering SLAs, reporting transparency, communication boundaries, and quality assurance
 - **Red flags that predict failure:** no direct account manager, unclear reporting access, junior execution on senior-priced contracts
-- [AbuQitmirLabs](https://www.abuqitmirlabs.tech/), a Karachi-based studio, provides [white label local SEO services](https://www.abuqitmirlabs.tech/white-label-local-seo) for agencies across the US, UK, and EU — with full white-label reporting and no client contact
+- [AbuQitmirLabs](/), a Karachi-based studio, provides [white label local SEO services](/white-label-local-seo) for agencies across the US, UK, and EU — with full white-label reporting and no client contact
 
 ---
 
@@ -285,6 +285,9 @@ At a **$500/month client fee** with a **$300/month white label cost**, the agenc
 
 ---
 
+
+For teams scaling production architecture, explore our [custom software engineering](/custom-software), [AI agent development](/ai-agent-development), or [book a strategy diagnostic](/contact) with AbuQitmirLabs.
+
 ## Frequently Asked Questions
 
 ### What is white label local SEO?
@@ -317,7 +320,7 @@ Red flags include: no dedicated account manager, no live client examples, unclea
 
 ### Can AbuQitmirLabs provide white label local SEO for agencies?
 
-Yes. [AbuQitmirLabs](https://www.abuqitmirlabs.tech/), a Karachi-based studio, provides [white label local SEO services](https://www.abuqitmirlabs.tech/white-label-local-seo) for agencies across the US, UK, and EU. The team provides dedicated account management, full reporting data access, and 100% white-labeled deliverables — with no direct client contact.
+Yes. [AbuQitmirLabs](/), a Karachi-based studio, provides [white label local SEO services](/white-label-local-seo) for agencies across the US, UK, and EU. The team provides dedicated account management, full reporting data access, and 100% white-labeled deliverables — with no direct client contact.
 
 ---
 
@@ -337,9 +340,9 @@ If you're an agency looking to add white label local SEO — whether you're vett
 
 **Ready to evaluate white label local SEO partners?**
 
-[AbuQitmirLabs](https://www.abuqitmirlabs.tech/) provides white label local SEO for agencies across the US, UK, and EU — with dedicated account management, full reporting access, and 100% white-labeled deliverables. No direct client contact. No hidden fees.
+[AbuQitmirLabs](/) provides white label local SEO for agencies across the US, UK, and EU — with dedicated account management, full reporting access, and 100% white-labeled deliverables. No direct client contact. No hidden fees.
 
-[**Explore our white label local SEO services →**](https://www.abuqitmirlabs.tech/white-label-local-seo)
+[**Explore our white label local SEO services →**](/white-label-local-seo)
 
 Or [chat with us on WhatsApp](https://wa.me/923233260859) to discuss your agency's needs.
 

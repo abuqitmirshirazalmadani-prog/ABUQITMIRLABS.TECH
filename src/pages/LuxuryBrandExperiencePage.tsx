@@ -304,7 +304,7 @@ export default function LuxuryBrandExperiencePage() {
       className="bg-black text-[#f4f4f5] min-h-screen selection:bg-amber-400/30 selection:text-amber-200 overflow-x-hidden font-sans"
     >
       <Helmet>
-        <title>L&apos;Atelier De Réserve | Luxury Artisanal Tin Collection | AbuQitmirLabs</title>
+        <title>L'Atelier De Réserve | AbuQitmirLabs</title>
         <meta
           name="description"
           content="Experience the pinnacle of old-money luxury branding. Five single-estate numbered tins unveiled with Locomotive Scroll, GSAP parallax depth, and cinematic reveals."

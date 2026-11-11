@@ -59,12 +59,12 @@ const AustraliaMarketPage = () => {
   return (
     <div className="bg-[#0b0c10] text-[#c5c6c7] min-h-screen font-sans selection:bg-[#66fcf1] selection:text-black">
       <Helmet>
-        <title>Software Development for Australia | APP Compliant | AbuQitmirLabs</title>
+        <title>Software Development for Australia | AbuQitmirLabs</title>
         <meta name="description" content="Australia-focused software development — APP-compliant apps, high-speed web, mobile apps, and AI agents. Built for Australian businesses with AEST-aligned delivery. Start your audit today." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/australia-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Software Development for Australia | APP Compliant | AbuQitmirLabs" />
+        <meta property="og:title" content="Software Development for Australia | AbuQitmirLabs" />
         <meta property="og:description" content="Australia-focused software development — APP-compliant apps, high-speed web, mobile apps, and AI agents. Built for Australian businesses with AEST-aligned delivery. Start your audit today." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/australia-market" />
         <meta property="og:type" content="website" />
@@ -72,7 +72,7 @@ const AustraliaMarketPage = () => {
 
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Software Development for Australia | APP Compliant | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Software Development for Australia | AbuQitmirLabs" />
         <meta name="twitter:description" content="Australia-focused software development — APP-compliant apps, high-speed web, mobile apps, and AI agents. Built for Australian businesses with AEST-aligned delivery. Start your audit today." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         

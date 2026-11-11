@@ -41,36 +41,43 @@ const AboutPage = () => {
   const services = [
     { 
       title: "Custom Software", 
+      path: "/custom-software",
       desc: "Architecting scale-ready, bespoke platforms tailored precisely to complex operational and relational requirements.", 
       icon: <Layers className="w-5 h-5 text-blue-400" /> 
     },
     { 
       title: "Mobile App Dev", 
+      path: "/mobile-app-development",
       desc: "Building high-fidelity iOS and Android native architectures designed for maximum fluidity and conversion.", 
       icon: <Smartphone className="w-5 h-5 text-purple-400" /> 
     },
     { 
       title: "Web Development", 
+      path: "/web-development",
       desc: "Creating lightning-fast web applications, modern corporate websites, and enterprise e-commerce systems.", 
       icon: <Code2 className="w-5 h-5 text-emerald-400" /> 
     },
     { 
       title: "AI Integration", 
+      path: "/ai-agent-development",
       desc: "Injecting custom deep-learning pipelines, LLMs, and automated agents into existing business workflows safely.", 
       icon: <Cpu className="w-5 h-5 text-amber-400" /> 
     },
     { 
       title: "SEO & Growth", 
+      path: "/seo-mastery",
       desc: "Optimizing code pathways and visual indexers to guarantee top placements across primary global search rankings.", 
       icon: <Search className="w-5 h-5 text-rose-400" /> 
     },
     { 
       title: "Graphics Design", 
+      path: "/graphics-design",
       desc: "Crafting beautiful branding elements, UI/UX interaction vectors, guidelines and corporate layouts.", 
       icon: <Palette className="w-5 h-5 text-indigo-400" /> 
     },
     { 
       title: "Content Writing", 
+      path: "/content-writing",
       desc: "Producing highly specialized technical, brand, and search-optimized copy that converts traffic to loyalty.", 
       icon: <PenTool className="w-5 h-5 text-teal-400" /> 
     },
@@ -91,12 +98,12 @@ const AboutPage = () => {
   return (
     <div className="bg-[#050505] text-zinc-400 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]/10 selection:text-white">
       <Helmet>
-        <title>We Were Engineers First. Now We Engineer Growth | About Us | AbuQitmirLabs</title>
+        <title>We Were Engineers First. Now We Engineer Growth</title>
         <meta name="description" content="We aren't marketers who learned tech. We're engineers who learned marketing. Discover AbuQitmirLabs, our origin story, and The Revenue Velocity Engine." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/about" />
         
         {/* OG Tags */}
-        <meta property="og:title" content="We Were Engineers First. Now We Engineer Growth | About Us | AbuQitmirLabs" />
+        <meta property="og:title" content="We Were Engineers First. Now We Engineer Growth" />
         <meta property="og:description" content="Most agencies deliver reports. We deliver systems. Discover AbuQitmirLabs, our origin story, and The Revenue Velocity Engine." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/about" />
         <meta property="og:type" content="profile" />
@@ -325,11 +332,16 @@ const AboutPage = () => {
                           {service.icon}
                       </div>
                       <h3 className="text-xl font-serif text-white uppercase tracking-tight mb-3">
-                          {service.title}
+                          <Link to={service.path} className="hover:text-[#ccff00] transition-colors">
+                            {service.title}
+                          </Link>
                       </h3>
-                      <p className="text-xs md:text-sm text-zinc-500 font-light leading-relaxed">
+                      <p className="text-xs md:text-sm text-zinc-500 font-light leading-relaxed mb-4">
                           {service.desc}
                       </p>
+                      <Link to={service.path} className="inline-flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-wider text-[#ccff00] hover:underline">
+                        Explore {service.title} <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
                   </motion.div>
               ))}
           </div>

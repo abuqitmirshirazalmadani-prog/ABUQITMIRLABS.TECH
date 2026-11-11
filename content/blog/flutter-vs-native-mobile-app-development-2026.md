@@ -154,6 +154,9 @@ Consider ongoing maintenance, updates, testing, and platform changes when calcul
 
 The cheapest initial quote may not represent the lowest total cost over the life of the application.
 
+
+For teams scaling production architecture, explore our [custom software engineering](/custom-software), [AI agent development](/ai-agent-development), or [book a strategy diagnostic](/contact) with AbuQitmirLabs.
+
 ## Frequently Asked Questions
 
 ### How much does a mobile app cost in 2026?
@@ -176,10 +179,10 @@ Choosing between Flutter and native development depends on your application's re
 
 **Still not sure which stack fits your project?**
 
-[AbuQitmirLabs](https://www.abuqitmirlabs.tech/) builds Flutter and native mobile applications for startups and businesses.
+[AbuQitmirLabs](/) builds Flutter and native mobile applications for startups and businesses.
 
-- [Tech Stack Recommender](https://www.abuqitmirlabs.tech/tools/tech-stack-recommender)
-- [AI Project Cost Estimator](https://www.abuqitmirlabs.tech/tools/project-cost-estimator)
-- [Website Audit Tool](https://www.abuqitmirlabs.tech/tools/website-audit)
+- [Tech Stack Recommender](/tools/tech-stack-recommender)
+- [AI Project Cost Estimator](/tools/project-cost-estimator)
+- [Website Audit Tool](/tools/website-audit)
 
-[Get a free project assessment](https://www.abuqitmirlabs.tech/mobile-app-development)
+[Get a free project assessment](/mobile-app-development)

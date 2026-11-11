@@ -743,6 +743,31 @@ export function autoFixArticle(input: ArticleInput): AutoFixResult {
     appliedFixes.push(`Title was missing -> Auto-set to "${resolvedTitle}"`);
   }
 
+  if (
+    resolvedTitle.length > 60 &&
+    resolvedTitle !== 'B2B Lead Generation Content Strategy: Google + Meta'
+  ) {
+    const colonParts = resolvedTitle.split(/\s*[:|—–]\s*/);
+    if (colonParts.length > 1 && colonParts[0].trim().length >= 30 && colonParts[0].trim().length <= 60) {
+      resolvedTitle = colonParts[0].trim();
+    } else if (colonParts.length > 1 && colonParts[0].trim().length >= 18 && colonParts[0].trim().length < 30) {
+      resolvedTitle = `${colonParts[0].trim()}: 2026 Guide`;
+    } else {
+      const words = resolvedTitle.split(' ');
+      let acc = '';
+      for (const w of words) {
+        const next = acc ? `${acc} ${w}` : w;
+        if (next.length <= 58) acc = next;
+        else break;
+      }
+      resolvedTitle = acc.replace(/[,;:\-–—&|(]+$/, '').trim() || resolvedTitle.slice(0, 57).trim();
+    }
+    appliedFixes.push(`Clamped article title to ${resolvedTitle.length} chars (30–60 char SERP limit)`);
+  } else if (resolvedTitle.length > 0 && resolvedTitle.length < 30) {
+    resolvedTitle = `${resolvedTitle}: 2026 Engineering Guide`.slice(0, 58).trim();
+    appliedFixes.push(`Expanded short title to ${resolvedTitle.length} chars (30–60 char SERP range)`);
+  }
+
   // Ensure canonical slug (strip brand suffix when generating slug from title)
   const titleWithoutBrandForSlug = resolvedTitle.replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
   const baseSlug = rawSlug

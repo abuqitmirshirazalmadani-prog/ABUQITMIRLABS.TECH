@@ -312,7 +312,7 @@ The real issue is that **RLHF optimizes for what's easy to measure (human prefer
 
 ## How This Connects to Hidden Knowledge
 
-There's a broader pattern worth naming here, one that connects to themes I've explored in [what digital transformation actually requires](https://www.abuqitmirlabs.tech/blog/what-is-digital-transformation-the-complete-2026-guide-for-business-leaders).
+There's a broader pattern worth naming here, one that connects to themes I've explored in [what digital transformation actually requires](/blog/what-is-digital-transformation-the-complete-2026-guide-for-business-leaders).
 
 RLHF trains models on **what's on the internet** about human preferences. But real expertise—your 20 years of domain knowledge—isn't on the internet.
 
@@ -404,10 +404,10 @@ Until models have access to your specific knowledge (through RAG), they'll keep 
 
 ## Related Reading
 
-- [Digital Transformation Strategy 2026](https://www.abuqitmirlabs.tech/blog/digital-transformation-strategy-2026-complete-business-framework-guide) - Understanding modern technology adoption patterns
-- [ROI of Digital Transformation](https://www.abuqitmirlabs.tech/blog/roi-of-digital-transformation-measuring-real-business-value-abuqitmirlabs) - Why new technology isn't always better
-- [What is Digital Transformation](https://www.abuqitmirlabs.tech/blog/what-is-digital-transformation-the-complete-2026-guide-for-business-leaders) - The bigger picture of technology change
-- [WordPress vs ASP.NET Comparison](https://www.abuqitmirlabs.tech/blog/wordpress-vs-aspnet-for-enterprise-2026-complete-comparison-guide) - When newer tools aren't necessarily better
+- [Digital Transformation Strategy 2026](/blog/digital-transformation-strategy-2026-complete-business-framework-guide) - Understanding modern technology adoption patterns
+- [ROI of Digital Transformation](/blog/roi-of-digital-transformation-measuring-real-business-value-abuqitmirlabs) - Why new technology isn't always better
+- [What is Digital Transformation](/blog/what-is-digital-transformation-the-complete-2026-guide-for-business-leaders) - The bigger picture of technology change
+- [WordPress vs ASP.NET Comparison](/blog/wordpress-vs-aspnet-for-enterprise-2026-complete-comparison-guide) - When newer tools aren't necessarily better
 
 ## Services
 
@@ -437,7 +437,7 @@ Share your experience in the comments. Your data point matters for understanding
 **AbuQitmirlabs**  
 Building with AI. Documenting what models actually do. Sharing what I learn.
 
-[Website](https://www.abuqitmirlabs.tech) • [LinkedIn](https://linkedin.com/in/abuqitmirlabs) • [GitHub](https://github.com/abuqitmirlabs)
+[Website](/) • [LinkedIn](https://linkedin.com/in/abuqitmirlabs) • [GitHub](https://github.com/abuqitmirlabs)
 
 ---
 
@@ -457,3 +457,5 @@ It's **not:**
 Model developers at OpenAI, Anthropic, and Google know more about this than I do. But they haven't publicly explained this behavior in detail, so I'm sharing my best interpretation.
 
 If I'm wrong about mechanisms, I'd welcome corrections. The important part is the pattern—many users experience this.
+
+For teams scaling production architecture, explore our [book a strategy diagnostic](/contact) with AbuQitmirLabs.

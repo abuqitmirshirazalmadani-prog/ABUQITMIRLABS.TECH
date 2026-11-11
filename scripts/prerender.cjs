@@ -145,7 +145,8 @@ try {
 }
 
 const TITLE_OVERRIDES = {
-  '/': 'Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs',
+  '/': 'Custom Software, AI & SEO Engineering | AbuQitmirLabs',
+  '/growth-engineering': 'Growth Engineering: Software, AI & SEO | AbuQitmirLabs',
   '/blog/ai-integration-with-legacy-systems-the-complete-2026-guide':
     'AI in Enterprise Software: 2026 Guide | AbuQitmirLabs',
   '/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026':
@@ -183,22 +184,31 @@ function formatConciseTitle(rawTitle, pathname) {
     .replace(/&amp;/gi, '&')
     .replace(/\s+/g, ' ')
     .trim();
-  if (!cleaned) return 'Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs';
-  if (/Abu\s*Qitmir\s*Labs/i.test(cleaned) && cleaned.length <= 60) return cleaned;
+  if (!cleaned) return 'Custom Software, AI & SEO Engineering | AbuQitmirLabs';
+  if (/Abu\s*Qitmir\s*Labs/i.test(cleaned) && cleaned.length >= 30 && cleaned.length <= 60) {
+    return cleaned;
+  }
 
   const core = cleaned
     .replace(/\s*[|–—-]\s*Abu\s*Qitmir\s*Labs(?:\s*\.?\s*TECH)?.*$/i, '')
     .trim();
+  if (!core) return 'Custom Software, AI & SEO Engineering | AbuQitmirLabs';
 
   const withBrand = `${core} | AbuQitmirLabs`;
-  if (withBrand.length <= 60) return withBrand;
+  if (withBrand.length >= 30 && withBrand.length <= 60) return withBrand;
+  if (withBrand.length < 30) {
+    const padded = `${core} — Engineering & AI | AbuQitmirLabs`;
+    if (padded.length <= 60) return padded;
+    const altPadded = `${core} Guide | AbuQitmirLabs`;
+    if (altPadded.length >= 30 && altPadded.length <= 60) return altPadded;
+  }
 
   const colonParts = core.split(/\s*[:|—–]\s*/);
-  if (colonParts.length > 1 && colonParts[0].trim().length >= 16) {
+  if (colonParts.length > 1 && colonParts[0].trim().length >= 15) {
     const firstPart = colonParts[0].trim();
     const firstWithBrand = `${firstPart} | AbuQitmirLabs`;
-    if (firstWithBrand.length <= 60) return firstWithBrand;
-    if (firstPart.length <= 60 && firstPart.length >= 30) return firstPart;
+    if (firstWithBrand.length >= 30 && firstWithBrand.length <= 60) return firstWithBrand;
+    if (firstPart.length >= 30 && firstPart.length <= 60) return firstPart;
   }
 
   const maxCoreWithBrand = 44;
@@ -213,7 +223,7 @@ function formatConciseTitle(rawTitle, pathname) {
     }
   }
   acc = acc.replace(/[,;:\-–—&]+$/, '').trim();
-  if (acc.length >= 22) {
+  if (acc.length >= 16) {
     return `${acc} | AbuQitmirLabs`;
   }
 
@@ -226,7 +236,11 @@ function formatConciseTitle(rawTitle, pathname) {
       break;
     }
   }
-  return standalone.replace(/[,;:\-–—&]+$/, '').trim() || core.slice(0, 57).trim();
+  const finalStandalone = standalone.replace(/[,;:\-–—&]+$/, '').trim() || core.slice(0, 57).trim();
+  if (finalStandalone.length < 30) {
+    return `${finalStandalone.slice(0, 42).trim()} | AbuQitmirLabs`;
+  }
+  return finalStandalone;
 }
 
 const routes = [
@@ -580,7 +594,7 @@ for (const routeUrl of allRoutes) {
       }
     }
 
-    const rawTitleToUse = (seo && seo.title) || 'Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs';
+    const rawTitleToUse = (seo && seo.title) || 'Custom Software, AI & SEO Engineering | AbuQitmirLabs';
     const titleToUse = formatConciseTitle(rawTitleToUse, routeUrl);
 
     // Always enforce concise <title> tag

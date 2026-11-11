@@ -93,12 +93,12 @@ const ECommerceDevelopmentPage = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
-        <title>E-commerce Software Solutions | Custom E-commerce Development</title>
+        <title>E-commerce Software Solutions | AbuQitmirLabs</title>
         <meta name="description" content="Engineer high-performance e-commerce software solutions, custom online stores, B2B wholesale portals, mobile shopping apps & multi-vendor marketplaces." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/solutions/e-commerce" />
 
         {/* Open Graph */}
-        <meta property="og:title" content="E-commerce Software Solutions | Custom E-commerce Development" />
+        <meta property="og:title" content="E-commerce Software Solutions | AbuQitmirLabs" />
         <meta property="og:description" content="Engineer high-performance e-commerce software solutions, custom online stores, B2B wholesale portals, mobile shopping apps & multi-vendor marketplaces." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/solutions/e-commerce" />
         <meta property="og:type" content="website" />
@@ -106,7 +106,7 @@ const ECommerceDevelopmentPage = () => {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="E-commerce Software Solutions | Custom E-commerce Development" />
+        <meta name="twitter:title" content="E-commerce Software Solutions | AbuQitmirLabs" />
         <meta name="twitter:description" content="Engineer high-performance e-commerce software solutions, custom online stores, B2B wholesale portals, mobile shopping apps & multi-vendor marketplaces." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 

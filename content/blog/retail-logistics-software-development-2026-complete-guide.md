@@ -1,6 +1,6 @@
 ---
 {
-  "title": "Retail & Logistics Software Development 2026 | Complete Guide",
+  "title": "Retail & Logistics Software Development 2026: Complete Guide",
   "slug": "retail-logistics-software-development-2026-complete-guide",
   "excerpt": "Retail software and logistics software solve different problems — and confusing them is where most projects fail. A complete 2026 guide to building both correctly.",
   "metaDescription": "Retail software and logistics software solve different problems — and confusing them is where most projects fail. A complete 2026 guide to building both correctly.",
@@ -11,7 +11,8 @@
   "publishedAt": "2026-08-10",
   "tags": [
     "LogisticsSoftware #RetailSoftware #SupplyChainTech #DemandForecasting #AbuQitmirLabs"
-  ]
+  ],
+  "seoTitle": "Retail & Logistics Software Development 2026 | AbuQitmirLabs"
 }
 ---
 

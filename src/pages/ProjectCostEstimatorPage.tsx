@@ -237,7 +237,7 @@ export default function ProjectCostEstimatorPage() {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black">
       <Helmet>
-        <title>AI Project Cost Estimator 2026 | Free Software & Website Pricing Calculator | AbuQitmirLabs</title>
+        <title>AI Project Cost Estimator 2026 | AbuQitmirLabs</title>
         <meta 
           name="description" 
           content="Calculate instant, accurate project costs for websites, custom software, mobile apps, and AI agents. Compare 8 country rates (Pakistan, US, UK, UAE) with 100% free PDF report download." 

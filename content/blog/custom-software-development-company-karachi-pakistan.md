@@ -92,7 +92,7 @@ Pakistan's broader technology sector has grown into one of the more credible off
 ## Attention
 
 **Let's talk if you want:**
-If your current system is something the team quietly works around rather than works with, [AbuQitmirLabs](https://www.abuqitmirlabs.tech/) is happy to start with a conversation about what a properly architected alternative would actually look like.
+If your current system is something the team quietly works around rather than works with, [AbuQitmirLabs](/) is happy to start with a conversation about what a properly architected alternative would actually look like.
 
 ---
 
@@ -104,7 +104,7 @@ Every engagement begins by understanding the business before a single line of co
 
 ### Custom Mobile & Web App Engineering
 
-For businesses that need a presence across iOS, Android, and the web simultaneously, [cross-platform Flutter app development](https://www.abuqitmirlabs.tech/mobile-app-development) has become the practical standard rather than the experimental one. A single, well-architected Flutter codebase now delivers native-grade performance across both major mobile platforms, which means businesses no longer need to fund and maintain two entirely separate engineering teams just to exist on both app stores.
+For businesses that need a presence across iOS, Android, and the web simultaneously, [cross-platform Flutter app development](/mobile-app-development) has become the practical standard rather than the experimental one. A single, well-architected Flutter codebase now delivers native-grade performance across both major mobile platforms, which means businesses no longer need to fund and maintain two entirely separate engineering teams just to exist on both app stores.
 
 For organizations where platform-specific performance is non-negotiable — deep hardware integration, demanding graphics, or OS-level features — a dedicated **Native Mobile development company** approach remains the right call, built in Swift and Kotlin rather than a cross-platform layer.
 
@@ -116,7 +116,7 @@ This is the difference between AI as a novelty feature and **high-quality Flutte
 
 ### Enterprise-Grade Systems at Scale
 
-For organizations operating beyond a single product, [custom software](https://www.abuqitmirlabs.tech/custom-software) engineering extends into scalable, cloud-native microservices — systems architected to grow in capacity without being rebuilt from scratch every time the business doubles in size. This is the unglamorous, structural work that **digital transformation** actually depends on: not a new interface, but an architecture capable of carrying years of future growth without buckling.
+For organizations operating beyond a single product, [custom software](/custom-software) engineering extends into scalable, cloud-native microservices — systems architected to grow in capacity without being rebuilt from scratch every time the business doubles in size. This is the unglamorous, structural work that **digital transformation** actually depends on: not a new interface, but an architecture capable of carrying years of future growth without buckling.
 
 ---
 
@@ -137,6 +137,9 @@ There is a meaningful difference between deciding to **hire software developers*
 This is the layer most comparison shopping misses entirely. The visible deliverable — an app, a dashboard, a website — looks similar regardless of who built it, right up until the moment it needs to handle more users, more data, or a feature nobody anticipated at the start.
 
 ---
+
+
+For teams scaling production architecture, explore our [AI agent development](/ai-agent-development) and [book a strategy diagnostic](/contact) with AbuQitmirLabs.
 
 ## Frequently Asked Questions
 
@@ -171,4 +174,4 @@ That is the standard AbuQitmirLabs builds toward — not a finished product that
 ## Attention
 
 **Let's talk if you want:**
-Whether the need is a Flutter mobile application, an AI system built to reason over your own data, or an enterprise platform architected to scale for years rather than months — [visit AbuQitmirLabs](https://www.abuqitmirlabs.tech/) to start the discovery conversation that should have come before your last build, not after it.
+Whether the need is a Flutter mobile application, an AI system built to reason over your own data, or an enterprise platform architected to scale for years rather than months — [visit AbuQitmirLabs](/) to start the discovery conversation that should have come before your last build, not after it.

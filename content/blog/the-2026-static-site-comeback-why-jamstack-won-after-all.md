@@ -418,7 +418,7 @@ The rule is straightforward:
 
 **If the feature is non-critical to SEO and first paint, client-side fetching may be enough.**
 
-AbuQitmirLabs applies this type of architectural thinking when planning modern web applications. The [web development services](https://www.abuqitmirlabs.tech/web-development) page explains the development approach, while the [custom software development](https://www.abuqitmirlabs.tech/custom-software) service focuses on larger applications that may require a combination of rendering strategies.
+AbuQitmirLabs applies this type of architectural thinking when planning modern web applications. The [web development services](/web-development) page explains the development approach, while the [custom software development](/custom-software) service focuses on larger applications that may require a combination of rendering strategies.
 
 ---
 
@@ -554,7 +554,7 @@ If a team needs a simple visual editing workflow and does not have the resources
 
 The best architecture is the one the team can operate reliably.
 
-The [TajweedPage case study](https://www.abuqitmirlabs.tech/case-studies/tajweedpage) demonstrates a hybrid approach where public content can use efficient delivery while interactive functionality relies on APIs and dynamic application features.
+The [TajweedPage case study](/case-studies/tajweedpage) demonstrates a hybrid approach where public content can use efficient delivery while interactive functionality relies on APIs and dynamic application features.
 
 ---
 
@@ -612,6 +612,9 @@ At the same time, a carefully optimized dynamic website can perform extremely we
 **Architecture is one variable in the performance equation — not the entire equation.**
 
 ---
+
+
+For teams scaling production architecture, explore our [AI agent development](/ai-agent-development) and [book a strategy diagnostic](/contact) with AbuQitmirLabs.
 
 ## FAQ: Jamstack vs Dynamic Website 2026
 
@@ -740,5 +743,4 @@ The goal is not to make everything static.
 
 The goal is to **avoid doing expensive work when it does not need to be done.**
 
-AbuQitmirLabs approaches web architecture with this decision made before development begins. If you are planning a new website or application, our [web development team](https://www.abuqitmirlabs.tech/web-development) can help determine which pages should be pre-rendered, which should be dynamic, and where a hybrid architecture makes the most sense.
-
+AbuQitmirLabs approaches web architecture with this decision made before development begins. If you are planning a new website or application, our [web development team](/web-development) can help determine which pages should be pre-rendered, which should be dynamic, and where a hybrid architecture makes the most sense.

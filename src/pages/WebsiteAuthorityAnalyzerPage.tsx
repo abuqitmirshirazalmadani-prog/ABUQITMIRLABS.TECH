@@ -332,7 +332,7 @@ export const WebsiteAuthorityAnalyzerPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-neutral-100 font-sans selection:bg-[#ccff00] selection:text-black">
       <Helmet>
-        <title>Free Website Authority Analyzer — Check Domain Authority Instantly | AbuQitmirLabs</title>
+        <title>Free Website Authority Analyzer | AbuQitmirLabs</title>
         <meta
           name="description"
           content="Analyze any website's domain authority, age, quality score, and trust signals instantly. Free AI-powered tool with personalized backlink strategy roadmap. No signup required."

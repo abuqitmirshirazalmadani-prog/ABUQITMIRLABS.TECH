@@ -238,3 +238,5 @@ For teams building on Next.js, React, or Vite with headless backends:
 - [ ] **Enforce Client-Side Replace:** In the catch-all dynamic route (`/blog/:slug`), verify that alias slugs execute an immediate client-side `Navigate replace` prior to layout rendering.
 - [ ] **Sanitize Syndication Feeds:** Never output un-mapped database slugs directly to `sitemap.xml` or `rss.xml`; pass them through the canonical mapping resolver.
 - [ ] **Automate Build Audits:** Block deployment pipelines unless an automated script passes with 0 duplicate `<loc>` entries and 0 canonical mismatches.
+
+For teams scaling production architecture, explore our [custom software engineering](/custom-software), [AI agent development](/ai-agent-development), or [book a strategy diagnostic](/contact) with AbuQitmirLabs.

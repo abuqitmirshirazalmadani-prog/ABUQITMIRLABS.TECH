@@ -735,6 +735,9 @@ Explore how scalable cloud applications are built step-by-step.
 - For engineering teams deploying production workflows, explore our blueprint on [custom AI agent development and enterprise RAG architecture](/ai-agent-development) and our [AI automation solutions](/solutions/ai-automation).
 - If you are scoping a mobile product roadmap, see our guide to [cross-platform and native mobile app engineering](/mobile-app-development) and estimate your build with our [interactive project cost estimator](/tools/project-cost-estimator).
 
+
+For teams scaling production architecture, explore our [custom software engineering](/custom-software) and [book a strategy diagnostic](/contact) with AbuQitmirLabs.
+
 ## FAQs
 
 ## 1. What is the future of software development?

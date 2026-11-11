@@ -100,7 +100,7 @@ export default function WhiteLabelLocalSEOPage() {
         <div className="min-h-screen bg-[#080808] text-white selection:bg-[#ccff00] selection:text-black font-sans antialiased">
             <Helmet>
                 {/* ═══ Primary Meta Tags ═══ */}
-                <title>White Label Local SEO for Agencies | Reseller Plans | AbuQitmirLabs</title>
+                <title>White Label Local SEO for Agencies | AbuQitmirLabs</title>
                 <meta name="description" content="White label local SEO fulfillment for agencies — citations, GBP optimization, and branded PDF reports. Reseller plans with 35–50% margins. Expand your services without expanding your team." />
                 <link rel="canonical" href="https://www.abuqitmirlabs.tech/white-label-local-seo" />
                 <meta name="keywords" content="white label local SEO, local SEO reseller, agency white label, white label SEO services, white label citation building, local SEO for agencies, SEO fulfilment partner" />
@@ -108,7 +108,7 @@ export default function WhiteLabelLocalSEOPage() {
                 {/* ═══ Open Graph (Facebook / LinkedIn) ═══ */}
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://www.abuqitmirlabs.tech/white-label-local-seo" />
-                <meta property="og:title" content="White Label Local SEO for Agencies | Reseller Plans | AbuQitmirLabs" />
+                <meta property="og:title" content="White Label Local SEO for Agencies | AbuQitmirLabs" />
                 <meta property="og:description" content="White label local SEO fulfillment for agencies — citations, GBP optimization, and branded PDF reports. Reseller plans with 35–50% margins. Expand your services without expanding your team." />
                 <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
                 <meta property="og:image:width" content="1200" />
@@ -118,7 +118,7 @@ export default function WhiteLabelLocalSEOPage() {
                 {/* ═══ Twitter Card ═══ */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@AbuQitmir" />
-                <meta name="twitter:title" content="White Label Local SEO for Agencies | Reseller Plans | AbuQitmirLabs" />
+                <meta name="twitter:title" content="White Label Local SEO for Agencies | AbuQitmirLabs" />
                 <meta name="twitter:description" content="White label local SEO fulfillment for agencies — citations, GBP optimization, and branded PDF reports. Reseller plans with 35–50% margins. Expand your services without expanding your team." />
                 <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 

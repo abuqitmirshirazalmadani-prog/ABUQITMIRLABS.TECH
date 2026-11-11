@@ -1,6 +1,6 @@
 ---
 {
-  "title": "Mobile App Development Company: What to Actually Look For in 2026",
+  "title": "Mobile App Development Company: 2026 Guide",
   "slug": "mobile-app-development-company-what-to-actually-look-for-in-2026",
   "excerpt": "What does a mobile app development company actually build? A practical guide to native vs cross-platform development, cost, process, and choosing the right mobile app development services for your business.",
   "metaDescription": "What does a mobile app development company actually build? A practical guide to native vs cross-platform development, cost, process, and choosing the right mobile app development services for your business.",
@@ -11,7 +11,8 @@
   "publishedAt": "2026-07-27",
   "tags": [
     "MobileAppDevelopment #Flutter #ReactNative #AppDevelopment #AbuQitmirlabs #PakistanTech"
-  ]
+  ],
+  "seoTitle": "Mobile App Development Company | AbuQitmirLabs"
 }
 ---
 

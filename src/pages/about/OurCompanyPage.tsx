@@ -130,12 +130,12 @@ const OurCompanyPage = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
-        <title>We Were Engineers First. Now We Engineer Growth | Our Company | AbuQitmirLabs</title>
+        <title>We Were Engineers First. Now We Engineer Growth</title>
         <meta name="description" content="AbuQitmirLabs: We aren't marketers who learned tech. We're engineers who learned marketing. Discover our 98% client retention and The Revenue Velocity Engine." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/about/our-company" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="We Were Engineers First. Now We Engineer Growth | Our Company | AbuQitmirLabs" />
+        <meta property="og:title" content="We Were Engineers First. Now We Engineer Growth" />
         <meta property="og:description" content="Most agencies deliver reports. We deliver systems. Discover AbuQitmirLabs, our 98% client retention, and The Revenue Velocity Engine." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/about/our-company" />
         <meta property="og:type" content="website" />
@@ -143,7 +143,7 @@ const OurCompanyPage = () => {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="We Were Engineers First. Now We Engineer Growth | Our Company | AbuQitmirLabs" />
+        <meta name="twitter:title" content="We Were Engineers First. Now We Engineer Growth" />
         <meta name="twitter:description" content="Most agencies deliver reports. We deliver systems. Discover AbuQitmirLabs, our 98% client retention, and The Revenue Velocity Engine." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 

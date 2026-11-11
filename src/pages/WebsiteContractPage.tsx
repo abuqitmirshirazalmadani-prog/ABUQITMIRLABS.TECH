@@ -141,12 +141,12 @@ Do not sign a website contract without these protective legal terms.
   return (
     <div className="bg-[#050505] text-zinc-400 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]/10 selection:text-white">
       <Helmet>
-        <title>Free Website Contract Template | Ownership Protection | AbuQitmirLabs</title>
+        <title>Free Website Contract Template | AbuQitmirLabs</title>
         <meta name="description" content="Download a free, ownership-protected website contract template. Includes domain ownership, support SLAs, tech stack disclosure, and exit terms. No strings attached." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/website-contract" />
         
         {/* OG Tags */}
-        <meta property="og:title" content="Free Website Contract Template | Ownership Protection | AbuQitmirLabs" />
+        <meta property="og:title" content="Free Website Contract Template | AbuQitmirLabs" />
         <meta property="og:description" content="Download a free, ownership-protected website contract template. Includes domain ownership, support SLAs, tech stack disclosure, and exit terms. No strings attached." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/website-contract" />
         <meta property="og:type" content="website" />
@@ -154,7 +154,7 @@ Do not sign a website contract without these protective legal terms.
 
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Free Website Contract Template | Ownership Protection | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Free Website Contract Template | AbuQitmirLabs" />
         <meta name="twitter:description" content="Download a free, ownership-protected website contract template. Includes domain ownership, support SLAs, tech stack disclosure, and exit terms. No strings attached." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 

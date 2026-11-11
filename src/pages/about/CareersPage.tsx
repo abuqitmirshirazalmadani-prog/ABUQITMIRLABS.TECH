@@ -210,12 +210,12 @@ const CareersPage = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
-        <title>Careers at AbuQitmirLabs | Join Our In-House Studio | AbuQitmirLabs</title>
+        <title>Careers at AbuQitmirLabs | AbuQitmirLabs</title>
         <meta name="description" content="Join AbuQitmirLabs — we're hiring senior full-stack architects, AI/RAG engineers, UI/UX designers, and SEO strategists in Karachi. Build global software that matters." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/about/careers" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Careers at AbuQitmirLabs | Join Our In-House Studio | AbuQitmirLabs" />
+        <meta property="og:title" content="Careers at AbuQitmirLabs | AbuQitmirLabs" />
         <meta property="og:description" content="Join AbuQitmirLabs — we're hiring senior full-stack architects, AI/RAG engineers, UI/UX designers, and SEO strategists in Karachi. Build global software that matters." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/about/careers" />
         <meta property="og:type" content="website" />
@@ -223,7 +223,7 @@ const CareersPage = () => {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Careers at AbuQitmirLabs | Join Our In-House Studio | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Careers at AbuQitmirLabs | AbuQitmirLabs" />
         <meta name="twitter:description" content="Join AbuQitmirLabs — we're hiring senior full-stack architects, AI/RAG engineers, UI/UX designers, and SEO strategists in Karachi. Build global software that matters." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 

@@ -65,12 +65,12 @@ const SaudiArabiaMarketPage: React.FC = () => {
   return (
     <div className="bg-[#060807] text-[#d6ded9] min-h-screen font-sans selection:bg-[#10b981] selection:text-black">
       <Helmet>
-        <title>Software Development Saudi Arabia | PDPL & Vision 2030 | AbuQitmirLabs</title>
+        <title>Software Development Saudi Arabia | AbuQitmirLabs</title>
         <meta name="description" content="Custom software, AI agents & local SEO for Saudi businesses. PDPL-compliant, Arabic-first, Riyadh & Jeddah coverage. Book a consultation." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/saudi-arabia-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Software Development Saudi Arabia | PDPL & Vision 2030 | AbuQitmirLabs" />
+        <meta property="og:title" content="Software Development Saudi Arabia | AbuQitmirLabs" />
         <meta property="og:description" content="Custom software, AI agents & local SEO for Saudi businesses. PDPL-compliant, Arabic-first, Riyadh & Jeddah coverage. Book a consultation." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/saudi-arabia-market" />
         <meta property="og:type" content="website" />
@@ -78,7 +78,7 @@ const SaudiArabiaMarketPage: React.FC = () => {
 
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Software Development Saudi Arabia | PDPL & Vision 2030 | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Software Development Saudi Arabia | AbuQitmirLabs" />
         <meta name="twitter:description" content="Custom software, AI agents & local SEO for Saudi businesses. PDPL-compliant, Arabic-first, Riyadh & Jeddah coverage. Book a consultation." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         

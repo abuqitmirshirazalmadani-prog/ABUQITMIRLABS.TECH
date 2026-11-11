@@ -427,12 +427,12 @@ const SkillsAcademyPage: React.FC = () => {
   return (
     <div className="bg-[#050505] text-neutral-300 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00] selection:text-black">
       <Helmet>
-        <title>Learn to Build a Brand &amp; Business Online — AI Course in Urdu | AbuQitmirLabs</title>
+        <title>Learn to Build a Brand &amp; Business Online | AbuQitmirLabs</title>
         <meta name="description" content="Pakistan's premier AI-powered course in Urdu teaching complete brand building and online business development. Real agency client projects, Next.js portfolio, and client acquisition." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/skills-academy" />
 
         {/* Open Graph */}
-        <meta property="og:title" content="Learn to Build a Brand &amp; Business Online — AI Course in Urdu | AbuQitmirLabs" />
+        <meta property="og:title" content="Learn to Build a Brand &amp; Business Online | AbuQitmirLabs" />
         <meta property="og:description" content="Pakistan's premier AI-powered course in Urdu teaching complete brand building and online business development. Real agency client projects, Next.js portfolio, and client acquisition." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/skills-academy" />
         <meta property="og:type" content="website" />
@@ -445,7 +445,7 @@ const SkillsAcademyPage: React.FC = () => {
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@AbuQitmir" />
-        <meta name="twitter:title" content="Learn to Build a Brand &amp; Business Online — AI Course in Urdu | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Learn to Build a Brand &amp; Business Online | AbuQitmirLabs" />
         <meta name="twitter:description" content="Pakistan's premier AI-powered course in Urdu teaching complete brand building and online business development. Real agency client projects, Next.js portfolio, and client acquisition." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/twitter-skills-academy.jpg" />
 

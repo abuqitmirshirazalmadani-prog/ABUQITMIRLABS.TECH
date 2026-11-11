@@ -293,16 +293,16 @@ export default function HomePage() {
   return (
     <main id="main-content" className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <SEO
-        title="Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs"
+        title="Custom Software, AI & SEO Engineering | AbuQitmirLabs"
         description="Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Free technical audit."
         canonical="https://www.abuqitmirlabs.tech/"
-        ogTitle="Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs"
+        ogTitle="Custom Software, AI & SEO Engineering | AbuQitmirLabs"
         ogDescription="Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Free technical audit."
         ogImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
         ogImageAlt="AbuQitmirLabs Growth Engineering Firm — Custom Software, AI & Technical SEO"
         ogType="website"
         twitterCard="summary_large_image"
-        twitterTitle="Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs"
+        twitterTitle="Custom Software, AI & SEO Engineering | AbuQitmirLabs"
         twitterDescription="Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Free technical audit."
         twitterImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
         schema={growthEngineeringSchema}

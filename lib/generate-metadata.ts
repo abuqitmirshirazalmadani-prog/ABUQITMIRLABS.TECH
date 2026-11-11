@@ -92,7 +92,7 @@ export interface NextStyleMetadata {
 
 const SITE_URL = 'https://www.abuqitmirlabs.tech';
 const SITE_NAME = 'AbuQitmirLabs';
-const DEFAULT_TITLE = 'Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs';
+const DEFAULT_TITLE = 'Custom Software, AI & SEO Engineering | AbuQitmirLabs';
 const DEFAULT_DESCRIPTION =
   'Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Free technical audit.';
 const DEFAULT_IMAGE = 'https://www.abuqitmirlabs.tech/logo.png';
@@ -143,7 +143,8 @@ const HREFLANG_ELIGIBLE_PATHS = new Set([
 ]);
 
 const TITLE_OVERRIDES: Record<string, string> = {
-  '/': 'Growth Engineering Firm | Custom Software, AI & SEO | AbuQitmirLabs',
+  '/': 'Custom Software, AI & SEO Engineering | AbuQitmirLabs',
+  '/growth-engineering': 'Growth Engineering: Software, AI & SEO | AbuQitmirLabs',
   '/blog/ai-integration-with-legacy-systems-the-complete-2026-guide':
     'AI in Enterprise Software: 2026 Guide | AbuQitmirLabs',
   '/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026':
@@ -181,22 +182,32 @@ export function formatConciseTitle(rawTitle: string, pathname?: string): string 
     .replace(/\s+/g, ' ')
     .trim();
   if (!cleaned) return DEFAULT_TITLE;
-  if (/Abu\s*Qitmir\s*Labs/i.test(cleaned) && cleaned.length <= 60) return cleaned;
+  if (/Abu\s*Qitmir\s*Labs/i.test(cleaned) && cleaned.length >= 30 && cleaned.length <= 60) {
+    return cleaned;
+  }
 
   const core = cleaned
     .replace(/\s*[|–—-]\s*Abu\s*Qitmir\s*Labs(?:\s*\.?\s*TECH)?.*$/i, '')
     .trim();
 
+  if (!core) return DEFAULT_TITLE;
+
   const withBrand = `${core} | ${SITE_NAME}`;
-  if (withBrand.length <= 60) return withBrand;
+  if (withBrand.length >= 30 && withBrand.length <= 60) return withBrand;
+  if (withBrand.length < 30) {
+    const padded = `${core} — Engineering & AI | ${SITE_NAME}`;
+    if (padded.length <= 60) return padded;
+    const altPadded = `${core} Guide | ${SITE_NAME}`;
+    if (altPadded.length >= 30 && altPadded.length <= 60) return altPadded;
+  }
 
   // Try splitting on colon, pipe, or em-dash to keep the primary topic + brand
   const colonParts = core.split(/\s*[:|—–]\s*/);
-  if (colonParts.length > 1 && colonParts[0].trim().length >= 16) {
+  if (colonParts.length > 1 && colonParts[0].trim().length >= 15) {
     const firstPart = colonParts[0].trim();
     const firstWithBrand = `${firstPart} | ${SITE_NAME}`;
-    if (firstWithBrand.length <= 60) return firstWithBrand;
-    if (firstPart.length <= 60 && firstPart.length >= 30) return firstPart;
+    if (firstWithBrand.length >= 30 && firstWithBrand.length <= 60) return firstWithBrand;
+    if (firstPart.length >= 30 && firstPart.length <= 60) return firstPart;
   }
 
   // Truncate cleanly at word boundary to fit " | AbuQitmirLabs" (16 chars) if possible, or standalone <= 58 chars
@@ -212,7 +223,7 @@ export function formatConciseTitle(rawTitle: string, pathname?: string): string 
     }
   }
   acc = acc.replace(/[,;:\-–—&]+$/, '').trim();
-  if (acc.length >= 22) {
+  if (acc.length >= 16) {
     return `${acc} | ${SITE_NAME}`;
   }
 
@@ -225,7 +236,12 @@ export function formatConciseTitle(rawTitle: string, pathname?: string): string 
       break;
     }
   }
-  return standalone.replace(/[,;:\-–—&]+$/, '').trim() || core.slice(0, 57).trim();
+  const finalStandalone = standalone.replace(/[,;:\-–—&]+$/, '').trim() || core.slice(0, 57).trim();
+  if (finalStandalone.length < 30) {
+    const fallbackWithBrand = `${finalStandalone.slice(0, 42).trim()} | ${SITE_NAME}`;
+    return fallbackWithBrand;
+  }
+  return finalStandalone;
 }
 
 function stripOuterQuotes(val?: string): string {
@@ -466,16 +482,31 @@ export function buildConsolidatedSchemaGraph(
   const customNodes: Array<Record<string, any>> = [];
   const appendItem = (item: any) => {
     if (!item || typeof item !== 'object') return;
+    const normalizeNode = (n: Record<string, any>) => {
+      const copy = { ...n };
+      const nType = Array.isArray(copy['@type']) ? copy['@type'].join(',') : String(copy['@type'] || '');
+      if (typeof copy.headline === 'string' && (copy.headline.length > 60 || copy.headline.length < 30)) {
+        copy.headline = formatConciseTitle(copy.headline, cleanUrlPath);
+      }
+      if (
+        (nType.includes('WebPage') || nType.includes('Article') || nType.includes('BlogPosting')) &&
+        typeof copy.name === 'string' &&
+        (copy.name.length > 60 || copy.name.length < 30)
+      ) {
+        copy.name = formatConciseTitle(copy.name, cleanUrlPath);
+      }
+      return copy;
+    };
     if (Array.isArray(item['@graph'])) {
       for (const sub of item['@graph']) {
         if (sub && typeof sub === 'object') {
           const { '@context': _ctx, ...rest } = sub;
-          customNodes.push(rest);
+          customNodes.push(normalizeNode(rest));
         }
       }
     } else {
       const { '@context': _ctx, ...rest } = item;
-      customNodes.push(rest);
+      customNodes.push(normalizeNode(rest));
     }
   };
 
@@ -614,8 +645,9 @@ export function generateMetadata(input: MetadataInput = {}): NextStyleMetadata {
     resolvedTitle ||
     DEFAULT_IMAGE_ALT;
 
-  const resolvedOgTitle = stripOuterQuotes(
-    input.ogTitle || routeMeta?.ogTitle || blogAutoMeta?.ogTitle || resolvedTitle
+  const resolvedOgTitle = formatConciseTitle(
+    stripOuterQuotes(input.ogTitle || routeMeta?.ogTitle || blogAutoMeta?.ogTitle || resolvedTitle),
+    normalizedPath
   );
   const resolvedOgDescription = clampMetaDescription(
     input.ogDescription || routeMeta?.ogDescription || blogAutoMeta?.ogDescription || resolvedDescription
@@ -624,8 +656,9 @@ export function generateMetadata(input: MetadataInput = {}): NextStyleMetadata {
 
   const resolvedTwitterCard =
     input.twitterCard || routeMeta?.twitterCard || 'summary_large_image';
-  const resolvedTwitterTitle = stripOuterQuotes(
-    input.twitterTitle || routeMeta?.twitterTitle || resolvedOgTitle
+  const resolvedTwitterTitle = formatConciseTitle(
+    stripOuterQuotes(input.twitterTitle || routeMeta?.twitterTitle || resolvedOgTitle),
+    normalizedPath
   );
   const resolvedTwitterDescription = clampMetaDescription(
     input.twitterDescription || routeMeta?.twitterDescription || resolvedOgDescription

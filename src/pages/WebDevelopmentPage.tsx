@@ -196,14 +196,14 @@ Do not sign a website contract without these protective legal terms.
   return (
     <div className="bg-[#050505] text-axiom-sub font-body antialiased overflow-x-hidden min-h-screen relative selection:bg-blue-500/30 selection:text-white">
       <Helmet>
-        <title>Custom Web Development Services in Pakistan & API Integration | AbuQitmirLabs</title>
+        <title>Custom Web Development Services in Pakistan | AbuQitmirLabs</title>
         <meta name="description" content="AbuQitmirLabs builds custom web services, scalable web applications, and API integrations in Karachi, Pakistan. We connect Stripe, CRM, and ERP systems for growing businesses." />
         <meta name="keywords" content="custom web development services in Pakistan, API development and integration services in Karachi, custom web services company Pakistan, scalable web applications Pakistan, website development services in Pakistan, web development company, React web development, Next.js development" />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/web-development" />
         <meta name="robots" content="index, follow" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Custom Web Development Services in Pakistan & API Integration | AbuQitmirLabs" />
+        <meta property="og:title" content="Custom Web Development Services in Pakistan | AbuQitmirLabs" />
         <meta property="og:description" content="AbuQitmirLabs builds custom web services, scalable web applications, and API integrations in Karachi, Pakistan. We connect Stripe, CRM, and ERP systems for growing businesses." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/web-development" />
         <meta property="og:type" content="website" />
@@ -211,7 +211,7 @@ Do not sign a website contract without these protective legal terms.
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Custom Web Development Services in Pakistan & API Integration | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Custom Web Development Services in Pakistan | AbuQitmirLabs" />
         <meta name="twitter:description" content="AbuQitmirLabs builds custom web services, scalable web applications, and API integrations in Karachi, Pakistan. We connect Stripe, CRM, and ERP systems for growing businesses." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 

@@ -400,7 +400,7 @@ export const SeoChecklistPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-neutral-100 font-sans selection:bg-[#ccff00] selection:text-black">
       <Helmet>
-        <title>Free SEO Checklist Generator — Personalized Step-by-Step Guide | AbuQitmirLabs</title>
+        <title>Free SEO Checklist Generator | AbuQitmirLabs</title>
         <meta
           name="description"
           content="Generate a free, personalized SEO checklist for your business. 45+ actionable SEO tasks tailored to your industry, goals, and website stage. No signup required."

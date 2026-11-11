@@ -341,3 +341,5 @@ Build custom React and Next.js solutions with Abu Qatmir Labs and create high-pe
 ## Related Engineering Resources
 
 - To build compounding organic visibility across Google Search and AI Overviews, review our [Generative Engine Optimization (GEO) and technical SEO mastery](/seo-mastery) framework and our [Programmatic SEO TajweedPage case study](/case-studies/tajweedpage).
+
+For teams scaling production architecture, explore our [custom software engineering](/custom-software), [AI agent development](/ai-agent-development), or [book a strategy diagnostic](/contact) with AbuQitmirLabs.

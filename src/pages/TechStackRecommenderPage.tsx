@@ -371,7 +371,7 @@ export const TechStackRecommenderPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-neutral-100 font-sans selection:bg-[#ccff00] selection:text-black">
       <Helmet>
-        <title>Free Tech Stack Recommender — Best Stack for Your Project | AbuQitmirLabs</title>
+        <title>Free Tech Stack Recommender | AbuQitmirLabs</title>
         <meta
           name="description"
           content="Get a personalized tech stack recommendation for your project. AI-powered analysis of frontend, backend, database, hosting, and tools — tailored to your team size, budget, and timeline."

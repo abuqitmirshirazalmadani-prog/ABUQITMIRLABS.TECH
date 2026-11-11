@@ -98,10 +98,10 @@ const EditorialPolicyPage: React.FC = () => {
                 </h2>
               </div>
               <p className="text-sm md:text-base text-zinc-300 mb-4">
-                The software and AI landscape evolves rapidly. We continuously audit our published materials to update deprecation warnings, API version changes, and evolving security best practices.
+                The software and AI landscape evolves rapidly. We continuously audit our published materials across <a href="/custom-software" className="text-[#ccff00] hover:underline">custom software engineering</a>, <a href="/ai-agent-development" className="text-[#ccff00] hover:underline">AI agent development</a>, and <a href="/seo-mastery" className="text-[#ccff00] hover:underline">technical SEO</a> to update deprecation warnings, API version changes, and evolving security best practices.
               </p>
               <p className="text-sm md:text-base text-zinc-400">
-                If you identify an inaccuracy or outdated code sample in any article, please contact our editorial desk directly at <a href="mailto:hello@abuqitmirlabs.tech" className="text-[#ccff00] hover:underline font-mono">hello@abuqitmirlabs.tech</a>.
+                If you identify an inaccuracy or outdated code sample in any article in our <a href="/blog" className="text-[#ccff00] hover:underline">engineering journal</a>, please review <a href="/about/our-team" className="text-[#ccff00] hover:underline">our engineering team</a> or contact our editorial desk directly via <a href="/contact" className="text-[#ccff00] hover:underline">our contact page</a> or at <a href="mailto:hello@abuqitmirlabs.tech" className="text-[#ccff00] hover:underline font-mono">hello@abuqitmirlabs.tech</a>.
               </p>
             </section>
           </div>

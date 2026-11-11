@@ -61,12 +61,12 @@ const CanadaMarketPage = () => {
   return (
     <div className="bg-[#090909] text-[#d3c8b8] min-h-screen font-sans selection:bg-[#ff5b36] selection:text-white">
       <Helmet>
-        <title>Software Development for Canada | PIPEDA Compliant & Local SEO | AbuQitmirLabs</title>
+        <title>Software Development for Canada | AbuQitmirLabs</title>
         <meta name="description" content="Canada-focused software development — PIPEDA-compliant web apps, mobile apps, bilingual AI agents, and local SEO for Toronto, Vancouver, and Montreal. Built with EST/PST overlap." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/canada-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Software Development for Canada | PIPEDA Compliant & Local SEO | AbuQitmirLabs" />
+        <meta property="og:title" content="Software Development for Canada | AbuQitmirLabs" />
         <meta property="og:description" content="Canada-focused software development — PIPEDA-compliant web apps, mobile apps, bilingual AI agents, and local SEO for Toronto, Vancouver, and Montreal. Built with EST/PST overlap." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/canada-market" />
         <meta property="og:type" content="website" />
@@ -74,7 +74,7 @@ const CanadaMarketPage = () => {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Software Development for Canada | PIPEDA Compliant & Local SEO | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Software Development for Canada | AbuQitmirLabs" />
         <meta name="twitter:description" content="Canada-focused software development — PIPEDA-compliant web apps, mobile apps, bilingual AI agents, and local SEO for Toronto, Vancouver, and Montreal. Built with EST/PST overlap." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         

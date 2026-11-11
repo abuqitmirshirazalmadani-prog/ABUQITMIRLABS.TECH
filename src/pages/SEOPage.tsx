@@ -93,12 +93,12 @@ const SEOPage = () => {
   return (
     <div className="bg-[#000000] text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]/30 selection:text-white">
       <Helmet>
-        <title>SEO Services | Professional Search Engine Optimization | AbuQitmirLabs</title>
+        <title>SEO Services | Professional Search Engine | AbuQitmirLabs</title>
         <meta name="description" content="AbuQitmirLabs delivers data-driven SEO services — technical audits, on-page optimization, local SEO, and authority building. Rank higher, attract quality traffic, and grow your business." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/seo-mastery" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="SEO Services | Professional Search Engine Optimization | AbuQitmirLabs" />
+        <meta property="og:title" content="SEO Services | Professional Search Engine | AbuQitmirLabs" />
         <meta property="og:description" content="AbuQitmirLabs delivers data-driven SEO services — technical audits, on-page optimization, local SEO, and authority building. Rank higher, attract quality traffic, and grow your business." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/seo-mastery" />
         <meta property="og:type" content="website" />
@@ -106,7 +106,7 @@ const SEOPage = () => {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="SEO Services | Professional Search Engine Optimization | AbuQitmirLabs" />
+        <meta name="twitter:title" content="SEO Services | Professional Search Engine | AbuQitmirLabs" />
         <meta name="twitter:description" content="AbuQitmirLabs delivers data-driven SEO services — technical audits, on-page optimization, local SEO, and authority building. Rank higher, attract quality traffic, and grow your business." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 

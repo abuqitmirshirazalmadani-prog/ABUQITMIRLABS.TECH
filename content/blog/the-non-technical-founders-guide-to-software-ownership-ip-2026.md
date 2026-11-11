@@ -1,6 +1,6 @@
 ---
 {
-  "title": "The Non-Technical Founder's Guide to Software Ownership & IP (2026)",
+  "title": "The Non-Technical Founder's Guide to Software Ownership",
   "slug": "the-non-technical-founders-guide-to-software-ownership-ip-2026",
   "excerpt": "You paid for the software. But do you own it? In most jurisdictions, the person who writes the code owns the copyright by default unless there is a written agreement transferring ownership. This guide gives non-technical founders a step-by-step checklist covering the 18 assets you must own, the IP assignment clauses to look for in every contract, the digital assets most founders forget to claim, and the exact questions to ask before signing anything. Includes a verification process for repositories, domains, cloud accounts, app store developer accounts, design files, and API credentials. Written by AbuQitmirLabs, a Karachi-based software studio that delivers 100% IP and source code ownership to every client.",
   "category": "Software",
@@ -25,7 +25,8 @@
     "AbuQitmirLabs"
   ],
   "publishedAt": "2026-10-09",
-  "syncedAt": "2026-10-09T19:59:11.250Z"
+  "syncedAt": "2026-10-09T19:59:11.250Z",
+  "seoTitle": "The Non-Technical Founder's Guide to | AbuQitmirLabs"
 }
 ---
 

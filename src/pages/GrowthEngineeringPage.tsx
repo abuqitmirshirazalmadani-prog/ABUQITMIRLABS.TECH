@@ -75,7 +75,7 @@ const GrowthEngineeringPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#000000] text-white font-sans antialiased overflow-x-hidden relative selection:bg-[#ccff00]/30 selection:text-white">
       <SEO
-        title="Growth Engineering Firm | Software + AI + Marketing | AbuQitmirLabs"
+        title="Growth Engineering: Software, AI & SEO | AbuQitmirLabs"
         description="AbuQitmirLabs engineers revenue systems for B2B companies — combining custom software, AI automation, and performance marketing under one roof."
         canonical="https://www.abuqitmirlabs.tech/growth-engineering"
         schema={growthEngineeringPageSchema}

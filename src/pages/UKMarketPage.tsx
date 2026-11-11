@@ -60,12 +60,12 @@ const UKMarketPage = () => {
   return (
     <div className="bg-[#090909] text-[#d3c8b8] min-h-screen font-sans selection:bg-[#ff5b36] selection:text-white">
       <Helmet>
-        <title>UK Software Development & Local SEO | GDPR Compliant | AbuQitmirLabs</title>
+        <title>UK Software Development &amp; Local SEO | AbuQitmirLabs</title>
         <meta name="description" content="UK-focused software development and local SEO for British businesses and London startups. GDPR-compliant Jamstack web apps, mobile apps, and AI agents with GMT overlap." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/uk-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="UK Software Development & Local SEO | GDPR Compliant | AbuQitmirLabs" />
+        <meta property="og:title" content="UK Software Development &amp; Local SEO | AbuQitmirLabs" />
         <meta property="og:description" content="UK-focused software development and local SEO for British businesses and London startups. GDPR-compliant Jamstack web apps, mobile apps, and AI agents with GMT overlap." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/uk-market" />
         <meta property="og:type" content="website" />
@@ -73,7 +73,7 @@ const UKMarketPage = () => {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="UK Software Development & Local SEO | GDPR Compliant | AbuQitmirLabs" />
+        <meta name="twitter:title" content="UK Software Development &amp; Local SEO | AbuQitmirLabs" />
         <meta name="twitter:description" content="UK-focused software development and local SEO for British businesses and London startups. GDPR-compliant Jamstack web apps, mobile apps, and AI agents with GMT overlap." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         

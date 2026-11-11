@@ -208,7 +208,7 @@ export default function WebsiteAuditPage() {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
-        <title>Free Website Audit Tool — Performance, SEO & Security Analysis | AbuQitmirLabs</title>
+        <title>Free Website Audit Tool | AbuQitmirLabs</title>
         <meta
           name="description"
           content="Get instant free website audit — performance, SEO, accessibility, and security analysis. Powered by Google Lighthouse + AI. No signup required."

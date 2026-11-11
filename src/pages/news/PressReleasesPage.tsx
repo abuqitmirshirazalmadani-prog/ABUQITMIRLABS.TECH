@@ -131,12 +131,12 @@ const PressReleasesPage = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
-        <title>Press Releases | Official Corporate Announcements | AbuQitmirLabs</title>
+        <title>Press Releases | Official Corporate | AbuQitmirLabs</title>
         <meta name="description" content="AbuQitmirLabs press releases — official corporate announcements, AI agent launches, fintech partnerships, and media resources. Get the latest news from our studio." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/news/press-releases" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Press Releases | Official Corporate Announcements | AbuQitmirLabs" />
+        <meta property="og:title" content="Press Releases | Official Corporate | AbuQitmirLabs" />
         <meta property="og:description" content="AbuQitmirLabs press releases — official corporate announcements, AI agent launches, fintech partnerships, and media resources. Get the latest news from our studio." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/news/press-releases" />
         <meta property="og:type" content="website" />
@@ -144,7 +144,7 @@ const PressReleasesPage = () => {
         
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Press Releases | Official Corporate Announcements | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Press Releases | Official Corporate | AbuQitmirLabs" />
         <meta name="twitter:description" content="AbuQitmirLabs press releases — official corporate announcements, AI agent launches, fintech partnerships, and media resources. Get the latest news from our studio." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 

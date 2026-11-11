@@ -135,12 +135,12 @@ const LatestNewsPage = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
-        <title>Latest News | Company Updates & Press Releases | AbuQitmirLabs</title>
+        <title>Latest News | Company Updates &amp; Press | AbuQitmirLabs</title>
         <meta name="description" content="AbuQitmirLabs newsroom — latest company updates, software launches, AI agent releases, and press announcements. Subscribe for monthly engineering and tech insights." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/news/latest" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Latest News | Company Updates & Press Releases | AbuQitmirLabs" />
+        <meta property="og:title" content="Latest News | Company Updates &amp; Press | AbuQitmirLabs" />
         <meta property="og:description" content="AbuQitmirLabs newsroom — latest company updates, software launches, AI agent releases, and press announcements. Subscribe for monthly engineering and tech insights." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/news/latest" />
         <meta property="og:type" content="website" />
@@ -148,7 +148,7 @@ const LatestNewsPage = () => {
         
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Latest News | Company Updates & Press Releases | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Latest News | Company Updates &amp; Press | AbuQitmirLabs" />
         <meta name="twitter:description" content="AbuQitmirLabs newsroom — latest company updates, software launches, AI agent releases, and press announcements. Subscribe for monthly engineering and tech insights." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 

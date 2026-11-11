@@ -359,7 +359,7 @@ export const AiReadinessScorePage: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-neutral-100 font-sans selection:bg-[#ccff00] selection:text-black">
       <Helmet>
-        <title>Free AI Readiness Score — Assess Your Business AI Maturity | AbuQitmirLabs</title>
+        <title>Free AI Readiness Score | AbuQitmirLabs</title>
         <meta
           name="description"
           content="Get a free AI Readiness Score for your business. Assess your data infrastructure, team skills, processes, and technology stack. Get a personalized AI adoption roadmap."

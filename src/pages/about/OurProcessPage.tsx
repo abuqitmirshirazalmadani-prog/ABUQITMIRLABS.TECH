@@ -118,12 +118,12 @@ const OurProcessPage = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
-        <title>Our Process | 6-Step Software Engineering Method | AbuQitmirLabs</title>
+        <title>Our Process | 6-Step Software Engineering | AbuQitmirLabs</title>
         <meta name="description" content="AbuQitmirLabs' 6-step engineering process: Discovery, Architecture, Development, QA, Zero-Downtime Launch, and Support. Structured discipline delivering 3x faster ROI." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/about/our-process" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Our Process | 6-Step Software Engineering Method | AbuQitmirLabs" />
+        <meta property="og:title" content="Our Process | 6-Step Software Engineering | AbuQitmirLabs" />
         <meta property="og:description" content="AbuQitmirLabs' 6-step engineering process: Discovery, Architecture, Development, QA, Zero-Downtime Launch, and Support. Structured discipline delivering 3x faster ROI." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/about/our-process" />
         <meta property="og:type" content="website" />
@@ -131,7 +131,7 @@ const OurProcessPage = () => {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Our Process | 6-Step Software Engineering Method | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Our Process | 6-Step Software Engineering | AbuQitmirLabs" />
         <meta name="twitter:description" content="AbuQitmirLabs' 6-step engineering process: Discovery, Architecture, Development, QA, Zero-Downtime Launch, and Support. Structured discipline delivering 3x faster ROI." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 

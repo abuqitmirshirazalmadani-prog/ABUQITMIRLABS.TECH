@@ -1,6 +1,6 @@
 ---
 {
-  "title": "Web Development Company in Karachi — Custom, React & Next.js Solutions",
+  "title": "Web Development Company in Karachi",
   "slug": "web-development-company-in-karachi-custom-react-nextjs-solutions",
   "excerpt": "AbuQitmirLabs is a custom web development company in Karachi building fast, scalable websites and web applications with React and Next.js — for startups launching their first product and SMEs replacing a website that no longer represents their business. Every project is engineered around your specific goals, not assembled from a template.",
   "metaDescription": "AbuQitmirLabs is a custom web development company in Karachi building fast, scalable websites and web applications with React and Next.js — for startups launching their first product and SMEs replacing a website that no longer represents their business. Every project is engineered around your specific goals, not assembled from a template.",
@@ -11,7 +11,8 @@
   "publishedAt": "2026-07-17",
   "tags": [
     "WebDevelopment #ReactJS #NextJS #Karachi #Pakistan #CustomWebsite  #TechStartup #SmallBusiness"
-  ]
+  ],
+  "seoTitle": "Web Development Company in Karachi | AbuQitmirLabs"
 }
 ---
 

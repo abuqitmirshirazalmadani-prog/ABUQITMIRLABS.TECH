@@ -153,12 +153,12 @@ const IndustryInsightsPage = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
       <Helmet>
-        <title>Industry Insights | Technical Benchmarks & AI Architecture | AbuQitmirLabs</title>
+        <title>Industry Insights | AbuQitmirLabs</title>
         <meta name="description" content="Industry insights from AbuQitmirLabs — technical breakdowns on AI RAG, GEO, HIPAA compliance, and low-latency full-stack design. Written by senior software architects." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/news/industry-insights" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Industry Insights | Technical Benchmarks & AI Architecture | AbuQitmirLabs" />
+        <meta property="og:title" content="Industry Insights | AbuQitmirLabs" />
         <meta property="og:description" content="Industry insights from AbuQitmirLabs — technical breakdowns on AI RAG, GEO, HIPAA compliance, and low-latency full-stack design. Written by senior software architects." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/news/industry-insights" />
         <meta property="og:type" content="website" />
@@ -166,7 +166,7 @@ const IndustryInsightsPage = () => {
         
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Industry Insights | Technical Benchmarks & AI Architecture | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Industry Insights | AbuQitmirLabs" />
         <meta name="twitter:description" content="Industry insights from AbuQitmirLabs — technical breakdowns on AI RAG, GEO, HIPAA compliance, and low-latency full-stack design. Written by senior software architects." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 

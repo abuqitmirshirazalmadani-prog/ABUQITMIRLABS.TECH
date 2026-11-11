@@ -36,7 +36,7 @@
 - **UK GDPR and PECR compliance** must be verified before signing — one misconfigured analytics tag can trigger ICO scrutiny
 - **US businesses face 20+ state privacy laws** in 2026, with CIPA claims carrying **$5,000 per-violation** statutory damages
 - A **typical web platform that costs $180,000 onshore** often lands at **$70,000–$90,000 offshore** for the same scope
-- [AbuQitmirLabs](https://www.abuqitmirlabs.tech/), a Karachi-based studio, delivers [web development](https://www.abuqitmirlabs.tech/web-development) for UK and US clients at **40–60% below local rates** — with compliance built in from day one
+- [AbuQitmirLabs](/), a Karachi-based studio, delivers [web development](/web-development) for UK and US clients at **40–60% below local rates** — with compliance built in from day one
 
 ---
 
@@ -303,7 +303,7 @@ A US-facing site needs:
 - Tag/pixel audits before launch
 - State-specific opt-out mechanisms
 
-[AbuQitmirLabs](https://www.abuqitmirlabs.tech/) builds compliance into the architecture from day one — not as an afterthought.
+[AbuQitmirLabs](/) builds compliance into the architecture from day one — not as an afterthought.
 
 ---
 
@@ -344,6 +344,9 @@ A US-facing site needs:
 
 ---
 
+
+For teams scaling production architecture, explore our [custom software engineering](/custom-software), [AI agent development](/ai-agent-development), or [book a strategy diagnostic](/contact) with AbuQitmirLabs.
+
 ## Frequently Asked Questions
 
 ### Is offshore web development from Pakistan safe for UK and US businesses?
@@ -368,7 +371,7 @@ As of January 2026, **12 states require recognition of browser-based opt-out sig
 
 ### Can AbuQitmirLabs build for both UK and US markets?
 
-Yes. [AbuQitmirLabs](https://www.abuqitmirlabs.tech/) builds compliance-ready web platforms for UK and US clients, with expertise in UK GDPR, PECR, and US state privacy laws. The studio has delivered projects for clients across the US, UK, and EU.
+Yes. [AbuQitmirLabs](/) builds compliance-ready web platforms for UK and US clients, with expertise in UK GDPR, PECR, and US state privacy laws. The studio has delivered projects for clients across the US, UK, and EU.
 
 ---
 
@@ -386,9 +389,9 @@ If you're a startup or enterprise in the US or UK looking to cut web development
 
 **Ready to scope your offshore web development project?**
 
-[AbuQitmirLabs](https://www.abuqitmirlabs.tech/) builds high-performance, compliance-ready web platforms for UK and US businesses at 40–60% below local rates. Every line of code is reviewed by a human. Every architecture decision is signed off.
+[AbuQitmirLabs](/) builds high-performance, compliance-ready web platforms for UK and US businesses at 40–60% below local rates. Every line of code is reviewed by a human. Every architecture decision is signed off.
 
-[**Get a free project assessment →**](https://www.abuqitmirlabs.tech/web-development)
+[**Get a free project assessment →**](/web-development)
 
 Or [chat with us on WhatsApp](https://wa.me/923233260859) to discuss your project directly.
 

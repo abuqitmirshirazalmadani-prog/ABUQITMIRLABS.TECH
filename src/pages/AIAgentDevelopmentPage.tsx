@@ -452,12 +452,12 @@ export default function AIAgentDevelopmentPage() {
       </a>
 
       <Helmet>
-        <title>AI Agent Development Company | Autonomous AI Solutions | AbuQitmirLabs</title>
+        <title>AI Agent Development Company | AbuQitmirLabs</title>
         <meta name="description" content="AbuQitmirLabs develops enterprise-grade AI agents, LLM autonomous workflows, RAG knowledge bases, and multi-agent systems. Karachi & Global." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/ai-agent-development" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="AI Agent Development Company | Autonomous AI Solutions | AbuQitmirLabs" />
+        <meta property="og:title" content="AI Agent Development Company | AbuQitmirLabs" />
         <meta property="og:description" content="AbuQitmirLabs develops enterprise-grade AI agents, LLM autonomous workflows, RAG knowledge bases, and multi-agent systems. Karachi & Global." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/ai-agent-development" />
         <meta property="og:type" content="website" />
@@ -465,7 +465,7 @@ export default function AIAgentDevelopmentPage() {
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI Agent Development Company | Autonomous AI Solutions | AbuQitmirLabs" />
+        <meta name="twitter:title" content="AI Agent Development Company | AbuQitmirLabs" />
         <meta name="twitter:description" content="AbuQitmirLabs develops enterprise-grade AI agents, LLM autonomous workflows, RAG knowledge bases, and multi-agent systems. Karachi & Global." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         

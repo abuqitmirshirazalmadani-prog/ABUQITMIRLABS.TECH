@@ -65,12 +65,12 @@ const PolandMarketPage = () => {
   return (
     <div className="bg-[#090909] text-[#d3c8b8] min-h-screen font-sans selection:bg-[#ff5b36] selection:text-white">
       <Helmet>
-        <title>Software Development for Poland | GDPR & EU Expansion | AbuQitmirLabs</title>
+        <title>Software Development for Poland | AbuQitmirLabs</title>
         <meta name="description" content="Poland-focused software development — GDPR-compliant apps, AI agents, SaaS, and local SEO for Krakow/Warsaw. Built for Polish startups and EU expansion, with CET overlap." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/poland-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Software Development for Poland | GDPR & EU Expansion | AbuQitmirLabs" />
+        <meta property="og:title" content="Software Development for Poland | AbuQitmirLabs" />
         <meta property="og:description" content="Poland-focused software development — GDPR-compliant apps, AI agents, SaaS, and local SEO for Krakow/Warsaw. Built for Polish startups and EU expansion, with CET overlap." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/poland-market" />
         <meta property="og:type" content="website" />
@@ -78,7 +78,7 @@ const PolandMarketPage = () => {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Software Development for Poland | GDPR & EU Expansion | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Software Development for Poland | AbuQitmirLabs" />
         <meta name="twitter:description" content="Poland-focused software development — GDPR-compliant apps, AI agents, SaaS, and local SEO for Krakow/Warsaw. Built for Polish startups and EU expansion, with CET overlap." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         

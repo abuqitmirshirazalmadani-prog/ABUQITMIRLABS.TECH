@@ -297,6 +297,9 @@ At AbuQitmirLabs, our **[custom software development](/custom-software)** approa
 
 ---
 
+
+For teams scaling production architecture, explore our [book a strategy diagnostic](/contact) with AbuQitmirLabs.
+
 ## Frequently Asked Questions
 
 ### What are custom AI solutions for corporate events?
@@ -349,7 +352,7 @@ The technology is ready. The tools exist. The question is not whether to adopt A
 
 AbuQitmirLabs builds custom event management platforms — from attendee check-in systems to full-scale enterprise solutions like EventFlow. Every project starts with a free technical consultation — a scoping conversation before any pricing discussion, so the estimate reflects your actual requirements.
 
-🌐 **Website:** [abuqitmirlabs.tech](https://www.abuqitmirlabs.tech/)  
+🌐 **Website:** [abuqitmirlabs.tech](/)  
 📞 **WhatsApp / Call:** +92 323 3260859
 
 ---

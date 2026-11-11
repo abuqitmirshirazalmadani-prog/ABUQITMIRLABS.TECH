@@ -263,12 +263,12 @@ const GraphicsDesignPage: React.FC = () => {
   return (
     <div className="bg-[#050505] text-neutral-300 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00] selection:text-black">
       <Helmet>
-        <title>Graphic Design Services for Brands &amp; Businesses | AbuQitmirLabs</title>
+        <title>Graphic Design Services for Brands | AbuQitmirLabs</title>
         <meta name="description" content="Professional graphic design services for brands and businesses: custom logos, brand identity, pitch decks, UI/UX, and marketing collateral with AbuQitmirLabs." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/graphics-design" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Graphic Design Services for Brands &amp; Businesses | AbuQitmirLabs" />
+        <meta property="og:title" content="Graphic Design Services for Brands | AbuQitmirLabs" />
         <meta property="og:description" content="Professional graphic design services for brands and businesses: custom logos, brand identity, pitch decks, UI/UX, and marketing collateral with AbuQitmirLabs." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/graphics-design" />
         <meta property="og:type" content="website" />
@@ -278,7 +278,7 @@ const GraphicsDesignPage: React.FC = () => {
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@AbuQitmir" />
-        <meta name="twitter:title" content="Graphic Design Services for Brands &amp; Businesses | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Graphic Design Services for Brands | AbuQitmirLabs" />
         <meta name="twitter:description" content="Professional graphic design services for brands and businesses: custom logos, brand identity, pitch decks, UI/UX, and marketing collateral with AbuQitmirLabs." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 

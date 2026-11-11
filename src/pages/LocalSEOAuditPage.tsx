@@ -116,7 +116,7 @@ export default function LocalSEOAuditPage() {
         <div className="min-h-screen bg-[#080808] text-white selection:bg-[#ccff00] selection:text-black font-sans antialiased">
             <Helmet>
                 {/* ═══ Primary Meta Tags ═══ */}
-                <title>Free Local SEO Audit | Forensic Map Pack Analysis | AbuQitmirLabs</title>
+                <title>Free Local SEO Audit | AbuQitmirLabs</title>
                 <meta name="description" content="Free local SEO audit covering Google Business Profile, NAP citations, schema markup, and map-pack competitors. Get a prioritized action plan — not a jargon-filled deck." />
                 <link rel="canonical" href="https://www.abuqitmirlabs.tech/local-seo-audit" />
                 <meta name="keywords" content="local SEO audit, free local SEO audit, local SEO analysis, Google Business Profile audit, citation audit, map pack analysis, local SEO consultant" />
@@ -124,7 +124,7 @@ export default function LocalSEOAuditPage() {
                 {/* ═══ Open Graph (Facebook / LinkedIn) ═══ */}
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://www.abuqitmirlabs.tech/local-seo-audit" />
-                <meta property="og:title" content="Free Local SEO Audit | Forensic Map Pack Analysis | AbuQitmirLabs" />
+                <meta property="og:title" content="Free Local SEO Audit | AbuQitmirLabs" />
                 <meta property="og:description" content="Free local SEO audit covering Google Business Profile, NAP citations, schema markup, and map-pack competitors. Get a prioritized action plan — not a jargon-filled deck." />
                 <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
                 <meta property="og:image:width" content="1200" />
@@ -134,7 +134,7 @@ export default function LocalSEOAuditPage() {
                 {/* ═══ Twitter Card ═══ */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@AbuQitmir" />
-                <meta name="twitter:title" content="Free Local SEO Audit | Forensic Map Pack Analysis | AbuQitmirLabs" />
+                <meta name="twitter:title" content="Free Local SEO Audit | AbuQitmirLabs" />
                 <meta name="twitter:description" content="Free local SEO audit covering Google Business Profile, NAP citations, schema markup, and map-pack competitors. Get a prioritized action plan — not a jargon-filled deck." />
                 <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 

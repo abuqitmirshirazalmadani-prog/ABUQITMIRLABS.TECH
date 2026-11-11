@@ -732,11 +732,14 @@ Look for experience with:
 
 It is also important to clarify who owns the source code, how data is handled, how integrations are maintained, and what happens when the AI produces an uncertain result.
 
-For organizations looking for a custom engineering partner, [Healthcare AI Agent Development by AbuQitmirLabs](https://www.abuqitmirlabs.tech/ai-agent-development) focuses on healthcare AI agents, RAG workflows, API integrations, workflow automation, and controlled AI systems.
+For organizations looking for a custom engineering partner, [Healthcare AI Agent Development by AbuQitmirLabs](/ai-agent-development) focuses on healthcare AI agents, RAG workflows, API integrations, workflow automation, and controlled AI systems.
 
-For broader healthcare software requirements, see [Healthcare Software Solutions](https://www.abuqitmirlabs.tech/solutions/healthcare).
+For broader healthcare software requirements, see [Healthcare Software Solutions](/solutions/healthcare).
 
 ---
+
+
+For teams scaling production architecture, explore our [custom software engineering](/custom-software) and [book a strategy diagnostic](/contact) with AbuQitmirLabs.
 
 ## Frequently Asked Questions
 
@@ -794,6 +797,6 @@ But successful implementation requires more than connecting a language model to 
 
 It requires thoughtful workflow design, secure integrations, reliable knowledge retrieval, evaluation, monitoring, and responsible governance.
 
-For organizations exploring a custom implementation, [AbuQitmirLabs' Healthcare AI Agent Development service](https://www.abuqitmirlabs.tech/ai-agent-development) provides a natural next step for evaluating healthcare AI workflows, RAG architecture, integrations, and custom agent development.
+For organizations exploring a custom implementation, [AbuQitmirLabs' Healthcare AI Agent Development service](/ai-agent-development) provides a natural next step for evaluating healthcare AI workflows, RAG architecture, integrations, and custom agent development.
 
 ---

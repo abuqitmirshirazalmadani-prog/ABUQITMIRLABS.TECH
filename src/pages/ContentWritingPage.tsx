@@ -279,13 +279,13 @@ const ContentWritingPage = () => {
   return (
     <div className="bg-[#030303] text-neutral-200 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00] selection:text-black">
       <Helmet>
-        <title>Content Writing Services | SEO &amp; Website Content | AbuQitmirLabs</title>
+        <title>Content Writing Services | AbuQitmirLabs</title>
         <meta name="description" content="Professional content writing services for websites, blogs, landing pages and businesses. SEO-focused, research-driven content built to attract traffic and convert readers." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/content-writing" />
         <meta name="robots" content="index, follow" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Content Writing Services | SEO &amp; Website Content | AbuQitmirLabs" />
+        <meta property="og:title" content="Content Writing Services | AbuQitmirLabs" />
         <meta property="og:description" content="Professional content writing services for websites, blogs, landing pages and businesses. SEO-focused, research-driven content built to attract traffic and convert readers." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/content-writing" />
         <meta property="og:type" content="website" />
@@ -293,7 +293,7 @@ const ContentWritingPage = () => {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Content Writing Services | SEO &amp; Website Content | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Content Writing Services | AbuQitmirLabs" />
         <meta name="twitter:description" content="Professional content writing services for websites, blogs, landing pages and businesses. SEO-focused, research-driven content built to attract traffic and convert readers." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
 

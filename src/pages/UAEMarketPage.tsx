@@ -62,12 +62,12 @@ const UAEMarketPage: React.FC = () => {
   return (
     <div className="bg-[#05080c] text-[#d6e0ea] min-h-screen font-sans selection:bg-[#38bdf8] selection:text-black">
       <Helmet>
-        <title>Software Development UAE | Arabic Apps & AI Agents | AbuQitmirLabs</title>
+        <title>Software Development UAE | AbuQitmirLabs</title>
         <meta name="description" content="Custom software, AI agents & local SEO for UAE businesses. Arabic-first, NESA-compliant, Dubai & Abu Dhabi coverage. Get a free consultation." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/uae-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Software Development UAE | Arabic Apps & AI Agents | AbuQitmirLabs" />
+        <meta property="og:title" content="Software Development UAE | AbuQitmirLabs" />
         <meta property="og:description" content="Custom software, AI agents & local SEO for UAE businesses. Arabic-first, NESA-compliant, Dubai & Abu Dhabi coverage. Get a free consultation." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/uae-market" />
         <meta property="og:type" content="website" />
@@ -75,7 +75,7 @@ const UAEMarketPage: React.FC = () => {
 
         {/* Twitter Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Software Development UAE | Arabic Apps & AI Agents | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Software Development UAE | AbuQitmirLabs" />
         <meta name="twitter:description" content="Custom software, AI agents & local SEO for UAE businesses. Arabic-first, NESA-compliant, Dubai & Abu Dhabi coverage. Get a free consultation." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         

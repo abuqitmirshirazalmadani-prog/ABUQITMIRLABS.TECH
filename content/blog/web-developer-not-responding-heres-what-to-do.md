@@ -141,7 +141,7 @@ If steps 1 through 3 haven't resolved things and you still have no response, esc
 ## Attention
 
 **If you're in the middle of this situation:**
-If you're in the middle of this situation right now and want a second opinion on next steps, [AbuQitmirLabs](https://www.abuqitmirlabs.tech/) is happy to take a quick look — no obligation either way.
+If you're in the middle of this situation right now and want a second opinion on next steps, [AbuQitmirLabs](/) is happy to take a quick look — no obligation either way.
 
 ---
 
@@ -163,9 +163,12 @@ Once you've recovered what you can, the most important thing is making sure this
 
 **Get it in writing.** A simple contract that states domain ownership, hosting access, payment milestones, and support terms protects both sides — and it's the single biggest difference between this situation happening once and it happening repeatedly.
 
-This is also where working with an established team — rather than an unverified freelancer found through a quick search — meaningfully reduces risk. At **[AbuQitmirLabs](https://www.abuqitmirlabs.tech/)**, a custom software, web development, and AI engineering studio, every project includes documented ownership terms, a defined support window, and direct communication with the people actually building the site — not a sales layer that disappears once payment is made.
+This is also where working with an established team — rather than an unverified freelancer found through a quick search — meaningfully reduces risk. At **[AbuQitmirLabs](/)**, a custom software, web development, and AI engineering studio, every project includes documented ownership terms, a defined support window, and direct communication with the people actually building the site — not a sales layer that disappears once payment is made.
 
 ---
+
+
+For teams scaling production architecture, explore our [custom software engineering](/custom-software), [AI agent development](/ai-agent-development), or [book a strategy diagnostic](/contact) with AbuQitmirLabs.
 
 ## Frequently Asked Questions
 
@@ -202,4 +205,4 @@ And once it's resolved, the best protection against this happening again isn't a
 ## Attention
 
 **website project has stalled? **
-If your current website project has stalled and you need someone to pick it up — or simply want to start your next one with proper ownership and support terms in writing from day one — [visit AbuQitmirLabs](https://www.abuqitmirlabs.tech/) for a free consultation.
+If your current website project has stalled and you need someone to pick it up — or simply want to start your next one with proper ownership and support terms in writing from day one — [visit AbuQitmirLabs](/) for a free consultation.

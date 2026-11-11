@@ -71,12 +71,12 @@ const USMarketPage = () => {
   return (
     <div className="bg-[#090909] text-[#d3c8b8] min-h-screen font-sans selection:bg-[#ff5b36] selection:text-white">
       <Helmet>
-        <title>Software Development for US Startups | CCPA & HIPAA Ready | AbuQitmirLabs</title>
+        <title>Software Development for US Startups | AbuQitmirLabs</title>
         <meta name="description" content="US-focused software development for startups — mobile apps, AI agents, and local SEO. CCPA & HIPAA compliant, built at startup speed. Scale your US presence with offshore expertise." />
         <link rel="canonical" href="https://www.abuqitmirlabs.tech/us-market" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Software Development for US Startups | CCPA & HIPAA Ready | AbuQitmirLabs" />
+        <meta property="og:title" content="Software Development for US Startups | AbuQitmirLabs" />
         <meta property="og:description" content="US-focused software development for startups — mobile apps, AI agents, and local SEO. CCPA & HIPAA compliant, built at startup speed. Scale your US presence with offshore expertise." />
         <meta property="og:url" content="https://www.abuqitmirlabs.tech/us-market" />
         <meta property="og:type" content="website" />
@@ -84,7 +84,7 @@ const USMarketPage = () => {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Software Development for US Startups | CCPA & HIPAA Ready | AbuQitmirLabs" />
+        <meta name="twitter:title" content="Software Development for US Startups | AbuQitmirLabs" />
         <meta name="twitter:description" content="US-focused software development for startups — mobile apps, AI agents, and local SEO. CCPA & HIPAA compliant, built at startup speed. Scale your US presence with offshore expertise." />
         <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
         

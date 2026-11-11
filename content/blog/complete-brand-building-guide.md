@@ -1,7 +1,7 @@
 ---
 {
   "title": "The Complete Brand Building Guide: From Strategy to Trust",
-  "seoTitle": "The Complete Brand Building Guide: Strategy to Trust | AbuQitmirLabs",
+  "seoTitle": "The Complete Brand Building Guide | AbuQitmirLabs",
   "slug": "complete-brand-building-guide",
   "canonical": "https://www.abuqitmirlabs.tech/blog/complete-brand-building-guide",
   "excerpt": "A logo is not a brand. Most founders spend money on logos, websites, and social media without a strategy connecting any of it. Learn the 6 stages of the brand building process from strategy to execution.",

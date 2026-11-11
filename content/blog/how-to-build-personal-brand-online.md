@@ -1,7 +1,7 @@
 ---
 {
   "title": "How to Build a Personal Brand Online: A Founder's Checklist",
-  "seoTitle": "How to Build a Personal Brand Online: A Founder's Checklist | AbuQitmirLabs",
+  "seoTitle": "How to Build a Personal Brand Online | AbuQitmirLabs",
   "slug": "how-to-build-personal-brand-online",
   "canonical": "https://www.abuqitmirlabs.tech/blog/how-to-build-personal-brand-online",
   "excerpt": "12-step checklist to build a personal brand online: define your niche, publish on one platform, prove expertise. Start the checklist.",
