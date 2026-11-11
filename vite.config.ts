@@ -5,7 +5,6 @@ import fs from 'fs';
 import crypto from 'crypto';
 import zlib from 'zlib';
 import { defineConfig, loadEnv } from 'vite';
-import compression from 'vite-plugin-compression';
 
 interface PrerenderPlugin {
   (options: { staticDir: string; routes: string[]; renderer?: any }): any;
@@ -36,10 +35,6 @@ export default defineConfig(({ mode }) => {
     plugins: [
       react(), 
       tailwindcss(),
-      ...(mode === 'production' ? [
-        compression({ algorithm: 'gzip', ext: '.gz' }),
-        compression({ algorithm: 'brotliCompress', ext: '.br' }),
-      ] : []),
       prerender({
         staticDir: path.resolve(process.cwd(), 'dist'),
         routes: [
@@ -61,6 +56,10 @@ export default defineConfig(({ mode }) => {
         name: 'custom-seo-generator',
         apply: 'build' as const,
         closeBundle: async () => {
+          if (process.env.VERCEL !== '1' && process.env.FULL_SEO_PRERENDER !== 'true') {
+            console.log('⚡ [SEO Generator] Skipping heavy in-bundler route cloning to prevent container OOM (use FULL_SEO_PRERENDER=true or npm run prerender when needed).');
+            return;
+          }
           const [
             { aiAgentSchema, aiAgentInitialHtml },
             { graphicsDesignSchema, graphicsDesignInitialHtml },
@@ -163,7 +162,7 @@ export default defineConfig(({ mode }) => {
             { url: '/news/article/sub-200ms-rag-pipelines', changefreq: 'monthly', priority: 0.75, title: 'Engineering Sub-200ms RAG Pipelines with Pinecone Vector Indexing and LlamaIndex | AbuQitmirLabs', description: 'A deep dive into chunking strategies, hybrid keyword-semantic search, and LLM prompt caching that cut enterprise AI query latency in half.' },
             { url: '/tools', changefreq: 'weekly', priority: 0.85, title: 'Free Engineering, AI Readiness & SEO Tools | AbuQitmirLabs', description: 'Free interactive software engineering, technical SEO, AI readiness, project cost estimation, and website authority tools built by AbuQitmirLabs.' },
             { url: '/tools/project-cost-estimator', changefreq: 'weekly', priority: 0.85, title: 'AI Project Cost Estimator 2026 | Free Software & Website Pricing Calculator | AbuQitmirLabs', description: 'Calculate instant project costs for custom software, websites, mobile apps, and AI agents across 8 countries with a free PDF breakdown.' },
-            { url: '/tools/website-audit', changefreq: 'weekly', priority: 0.85, title: 'Free Technical Website Audit & Performance Analyzer | AbuQitmirLabs', description: 'Run an instant technical SEO, Core Web Vitals, security headers, and conversion architecture audit on your website with AbuQitmirLabs.' },
+            { url: '/tools/website-audit', changefreq: 'weekly', priority: 0.85, title: 'Free Website Growth Audit Tool | AbuQitmirLabs', description: 'Find the issues slowing down your website, reducing search visibility and creating conversion friction with our deterministic Website Growth Audit.' },
             { url: '/tools/seo-checklist', changefreq: 'weekly', priority: 0.85, title: 'Interactive Technical & Local SEO Checklist (2026) | AbuQitmirLabs', description: 'Interactive 2026 SEO checklist covering technical crawl health, Schema.org entities, Core Web Vitals, local citations, and AI search readiness.' },
             { url: '/tools/ai-readiness-score', changefreq: 'weekly', priority: 0.85, title: 'Enterprise AI Readiness Score & RAG Assessment Tool | AbuQitmirLabs', description: "Evaluate your organization's data infrastructure, workflow maturity, and security readiness for autonomous AI agents and RAG deployment." },
             { url: '/tools/tech-stack-recommender', changefreq: 'weekly', priority: 0.85, title: 'Software & AI Tech Stack Recommender | AbuQitmirLabs', description: 'Get a tailored architecture recommendation across Next.js, Flutter, Node.js, Python, and vector databases based on your product scope and scale.' },
@@ -685,7 +684,9 @@ export default defineConfig(({ mode }) => {
             rootSitemap,
             rootPagesSitemap
           ]) {
-            fs.writeFileSync(targetSitemapPath, sitemapContent, 'utf-8');
+            if (!fs.existsSync(targetSitemapPath) || fs.readFileSync(targetSitemapPath, 'utf-8') !== sitemapContent) {
+              fs.writeFileSync(targetSitemapPath, sitemapContent, 'utf-8');
+            }
           }
 
           try {
@@ -813,7 +814,9 @@ export default defineConfig(({ mode }) => {
                     const publicBlogFile = path.resolve(process.cwd(), 'public', cleanRel, 'index.html');
                     const publicBlogDir = path.dirname(publicBlogFile);
                     if (!fs.existsSync(publicBlogDir)) fs.mkdirSync(publicBlogDir, { recursive: true });
-                    fs.writeFileSync(publicBlogFile, htmlContent, 'utf-8');
+                    if (!fs.existsSync(publicBlogFile) || fs.readFileSync(publicBlogFile, 'utf-8') !== htmlContent) {
+                      fs.writeFileSync(publicBlogFile, htmlContent, 'utf-8');
+                    }
                   }
                 }
               }

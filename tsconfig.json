@@ -27,5 +27,18 @@
     "strict": false,
     "allowImportingTsExtensions": true,
     "noEmit": true
-  }
+  },
+  "include": [
+    "src",
+    "api",
+    "lib",
+    "app",
+    "server.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "public",
+    "scripts"
+  ]
 }

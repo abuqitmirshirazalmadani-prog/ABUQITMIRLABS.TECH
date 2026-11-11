@@ -79,7 +79,7 @@ export const TOOLS_DATA: ToolItem[] = [
     categoryColor: '#3B82F6',
     features: [
       'Core Web Vitals diagnostic check',
-      '50+ automated technical SEO checks',
+      '38 deterministic technical & conversion checks',
       'AI-powered prioritized remediation',
       'Priority-based performance issues'
     ],

@@ -14,6 +14,8 @@ import {
   Layers,
 } from 'lucide-react';
 import { SEO } from '../components/SEO';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { AuditForm } from '../components/audit/AuditForm';
 import { LoadingState } from '../components/audit/LoadingState';
 import { OverallScoreCard } from '../components/audit/OverallScoreCard';
@@ -307,14 +309,17 @@ export const WebsiteAuditPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white pt-28 pb-24">
+    <div className="min-h-screen bg-[#050505] text-white flex flex-col">
       <SEO
         title="Free Website Growth Audit Tool | AbuQitmirLabs"
         description="Find the issues slowing down your website, reducing search visibility and creating conversion friction with our deterministic Website Growth Audit."
         canonical="https://www.abuqitmirlabs.tech/tools/website-audit"
       />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      {/* Global Brand Header */}
+      <Header />
+
+      <main className="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-24 space-y-12">
         {/* 1. Required Hero Section */}
         <header className="text-center max-w-4xl mx-auto space-y-5">
           <div className="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono text-[#CCFF00]">
@@ -632,6 +637,9 @@ export const WebsiteAuditPage: React.FC = () => {
         {/* 5. Expandable "How this audit works" Methodology Accordion & FAQs */}
         <AuditFaqSection />
       </main>
+
+      {/* Global Brand Footer */}
+      <Footer />
     </div>
   );
 };
