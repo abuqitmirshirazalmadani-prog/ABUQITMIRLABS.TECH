@@ -1,115 +1,197 @@
-import { AuditResult, AuditIssue, AiRecommendation, CoreWebVitals, InspectedMetrics, DeviceStrategy } from '../types/audit.js';
-import { calculateGrade, stripHtml } from './auditEngine.js';
+import {
+  AuditResult,
+  AiRecommendation,
+  CoreWebVitals,
+  InspectedMetrics,
+  DeviceStrategy,
+  DeviceSelection,
+  AuditMode,
+  AuditObjective,
+  AuditAdvancedOptions,
+  FieldDataSummary,
+  LabDataSummary,
+  MiniSiteAuditSummary,
+  SampledInternalPage
+} from '../types/audit.js';
+import {
+  calculateGrade,
+  stripHtml,
+  buildDeterministicChecks,
+  computeSixTransparentScores,
+  computeChecksSummary
+} from './auditEngine.js';
+import {
+  assertSafeExternalUrlWithDns,
+  safeFetchWithRedirects,
+  SsrfBlockedError
+} from './ssrfGuard.js';
 
-export async function performWebsiteAudit(
-  rawUrl: string,
-  device: DeviceStrategy = 'mobile',
-  categories: string[] = ['performance', 'seo', 'accessibility', 'bestPractices', 'security'],
-  geminiClient: any = null,
-  onAiFailure?: (err: any) => void
-): Promise<AuditResult> {
-  // Normalize URL
-  let targetUrl = rawUrl.trim();
-  if (!/^https?:\/\//i.test(targetUrl)) {
-    targetUrl = 'https://' + targetUrl;
+export interface PerformAuditOptions {
+  mode?: AuditMode;
+  objective?: AuditObjective;
+  deviceSelection?: DeviceSelection;
+  advanced?: AuditAdvancedOptions;
+  categories?: string[];
+}
+
+function parsePsiFieldData(psiJson: any): FieldDataSummary {
+  const exp = psiJson?.loadingExperience || psiJson?.originLoadingExperience;
+  const metrics = exp?.metrics;
+  if (!exp || !metrics || Object.keys(metrics).length === 0) {
+    return {
+      available: false,
+      sourceLabel: 'Chrome User Experience Report (CrUX 28-Day Field Data)',
+      overallCategory: 'UNAVAILABLE',
+      lcpSeconds: null,
+      clsScore: null,
+      inpMs: null,
+      fcpSeconds: null,
+      ttfbMs: null,
+      note: 'Origin or URL does not have sufficient 28-day real-user Chrome traffic in the public CrUX dataset.'
+    };
   }
 
-  let parsedUrl: URL;
-  try {
-    parsedUrl = new URL(targetUrl);
-  } catch {
-    throw new Error('Invalid URL format. Please provide a valid web address like https://example.com');
-  }
+  const lcpMs = metrics.LARGEST_CONTENTFUL_PAINT_MS?.percentile ?? null;
+  const clsRaw = metrics.CUMULATIVE_LAYOUT_SHIFT_SCORE?.percentile ?? null;
+  const inpMs = metrics.INTERACTION_TO_NEXT_PAINT?.percentile ?? null;
+  const fcpMs = metrics.FIRST_CONTENTFUL_PAINT_MS?.percentile ?? null;
+  const ttfbMs = metrics.EXPERIMENTAL_TIME_TO_FIRST_BYTE?.percentile ?? null;
 
-  // Attempt Google PageSpeed Insights if possible
-  let psiData: any = null;
+  return {
+    available: true,
+    sourceLabel: exp === psiJson?.loadingExperience ? 'CrUX Page-Level Field Data' : 'CrUX Origin-Level Field Data',
+    overallCategory: (exp.overall_category as 'FAST' | 'AVERAGE' | 'SLOW') || 'AVERAGE',
+    lcpSeconds: lcpMs !== null ? Number((lcpMs / 1000).toFixed(2)) : null,
+    clsScore: clsRaw !== null ? Number((clsRaw / 100).toFixed(3)) : null,
+    inpMs: inpMs !== null ? Math.round(inpMs) : null,
+    fcpSeconds: fcpMs !== null ? Number((fcpMs / 1000).toFixed(2)) : null,
+    ttfbMs: ttfbMs !== null ? Math.round(ttfbMs) : null,
+    note: '75th percentile (P75) real-user Chrome telemetry over the past 28 days.'
+  };
+}
+
+function parsePsiLabCwv(psiJson: any, fallbackTtfb: number): CoreWebVitals | null {
+  const audits = psiJson?.lighthouseResult?.audits;
+  if (!audits) return null;
+
+  const lcpVal = audits['largest-contentful-paint']?.numericValue;
+  const clsVal = audits['cumulative-layout-shift']?.numericValue;
+  const inpVal =
+    audits['interaction-to-next-paint']?.numericValue ??
+    audits['max-potential-fid']?.numericValue ??
+    audits['total-blocking-time']?.numericValue;
+  const fcpVal = audits['first-contentful-paint']?.numericValue;
+  const ttfbVal = audits['server-response-time']?.numericValue;
+  const siVal = audits['speed-index']?.numericValue;
+
+  return {
+    lcp: typeof lcpVal === 'number' ? Number((lcpVal / 1000).toFixed(2)) : null,
+    cls: typeof clsVal === 'number' ? Number(clsVal.toFixed(3)) : null,
+    inp: typeof inpVal === 'number' ? Math.round(inpVal) : null,
+    fcp: typeof fcpVal === 'number' ? Number((fcpVal / 1000).toFixed(2)) : null,
+    ttfb: typeof ttfbVal === 'number' ? Math.round(ttfbVal) : fallbackTtfb,
+    speedIndex: typeof siVal === 'number' ? Number((siVal / 1000).toFixed(2)) : null
+  };
+}
+
+async function fetchPsiForStrategy(targetUrl: string, strategy: 'mobile' | 'desktop'): Promise<any | null> {
   try {
     const psiUrl = new URL('https://www.googleapis.com/pagespeedonline/v5/runPagespeed');
     psiUrl.searchParams.set('url', targetUrl);
-    psiUrl.searchParams.set('strategy', device);
+    psiUrl.searchParams.set('strategy', strategy);
     if (process.env.PAGESPEED_API_KEY) {
       psiUrl.searchParams.set('key', process.env.PAGESPEED_API_KEY);
     }
-    categories.forEach(cat => {
-      const psiCat = cat === 'bestPractices' ? 'best-practices' : cat;
-      psiUrl.searchParams.append('category', psiCat);
-    });
+    ['performance', 'seo', 'accessibility', 'best-practices'].forEach((c) =>
+      psiUrl.searchParams.append('category', c)
+    );
 
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 12000);
-    const psiRes = await fetch(psiUrl.toString(), { signal: controller.signal });
+    const timeoutId = setTimeout(() => controller.abort(), 9500);
+    const res = await fetch(psiUrl.toString(), { signal: controller.signal });
     clearTimeout(timeoutId);
-
-    if (psiRes.ok) {
-      psiData = await psiRes.json();
+    if (res.ok) {
+      return await res.json();
     }
-  } catch (e) {
-    // Graceful fallback to real-time live network/DOM inspection
+  } catch {
+    // Gracefully return null when PSI times out or is rate-limited
   }
+  return null;
+}
 
-  // Live Technical Inspection via direct HTTP fetch
-  const t0 = Date.now();
-  let statusCode = 200;
-  let html = '';
-  let responseHeaders: Record<string, string> = {};
-  let ttfb = 250;
-
+export function extractHtmlAndDomMetrics(
+  finalUrl: string,
+  redirectCount: number,
+  statusCode: number,
+  responseTimeMs: number,
+  html: string,
+  htmlBytes: number,
+  truncatedBySizeLimit: boolean,
+  responseHeaders: Record<string, string>
+): { metrics: InspectedMetrics; internalLinkUrls: string[] } {
+  let parsedOrigin = '';
+  let parsedHostname = '';
+  let hasHttps = finalUrl.startsWith('https://');
   try {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000);
-
-    const liveRes = await fetch(targetUrl, {
-      method: 'GET',
-      headers: {
-        'User-Agent': device === 'mobile'
-          ? 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36 AbuQitmirLabs-Audit/2.0'
-          : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 AbuQitmirLabs-Audit/2.0',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        'Accept-Encoding': 'gzip, deflate, br'
-      },
-      signal: controller.signal,
-      redirect: 'follow'
-    });
-    clearTimeout(timeoutId);
-
-    ttfb = Date.now() - t0;
-    statusCode = liveRes.status;
-    html = await liveRes.text();
-    liveRes.headers.forEach((val, key) => {
-      responseHeaders[key.toLowerCase()] = val;
-    });
-  } catch (err: any) {
-    // If target site rejects bot, use fallback response time
-    ttfb = Math.max(Date.now() - t0, 320);
-    html = '';
+    const u = new URL(finalUrl);
+    parsedOrigin = u.origin;
+    parsedHostname = u.hostname.toLowerCase();
+    hasHttps = u.protocol === 'https:';
+  } catch {
+    // fallback
   }
 
-  // Inspect HTML characteristics
-  const hasHttps = parsedUrl.protocol === 'https:';
-  const hasHsts = Boolean(responseHeaders['strict-transport-security']);
-  const hasCsp = Boolean(responseHeaders['content-security-policy']);
-  const hasXFrame = Boolean(responseHeaders['x-frame-options']);
-  const hasContentTypeOptions = Boolean(responseHeaders['x-content-type-options']);
-  const hasReferrerPolicy = Boolean(responseHeaders['referrer-policy']);
+  const hstsValue = responseHeaders['strict-transport-security'] || null;
+  const cspValue = responseHeaders['content-security-policy'] || null;
+  const xFrameValue = responseHeaders['x-frame-options'] || null;
+  const referrerPolicyValue = responseHeaders['referrer-policy'] || null;
+  const xRobotsTag = responseHeaders['x-robots-tag'] || null;
   const contentEncoding = (responseHeaders['content-encoding'] || '').toLowerCase();
-  const isCompressed = contentEncoding.includes('gzip') || contentEncoding.includes('br') || contentEncoding.includes('deflate');
+  const isCompressed =
+    contentEncoding.includes('br') ||
+    contentEncoding.includes('gzip') ||
+    contentEncoding.includes('deflate');
 
-  // Extract meta tags with robust attribute ordering & data-attribute handling
-  const titleMatch = html.match(/<title[^>]*>([^<]+)<\/title>/i);
-  const metaTitle = titleMatch ? stripHtml(titleMatch[1]).trim() : null;
+  // Extract <title>
+  const titleMatch = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+  const metaTitle = titleMatch ? stripHtml(titleMatch[1]).replace(/\s+/g, ' ').trim() : null;
 
+  // Extract <meta> tags
   let metaDescription: string | null = null;
+  let robotsMeta: string | null = null;
+  let hasViewport = false;
+  let viewportContent: string | null = null;
+  let disablesZoom = false;
+  let hasOgTitle = false;
+  let hasOgDescription = false;
+  let hasOgImage = false;
+  let hasTwitterCard = false;
+
   const allMetaTags = html.match(/<meta\b[^>]*>/gi) || [];
   for (const tag of allMetaTags) {
-    if (/\bname=["']description["']/i.test(tag)) {
-      const contentMatch = tag.match(/\bcontent=["']([^"']*)["']/i);
-      if (contentMatch) {
-        metaDescription = stripHtml(contentMatch[1]).trim();
-        break;
+    const contentMatch = tag.match(/\bcontent=["']([^"']*)["']/i);
+    const contentVal = contentMatch ? contentMatch[1].trim() : '';
+
+    if (/\bname=["']description["']/i.test(tag) && !metaDescription) {
+      metaDescription = stripHtml(contentVal);
+    }
+    if (/\bname=["']robots["']/i.test(tag) && !robotsMeta) {
+      robotsMeta = contentVal;
+    }
+    if (/\bname=["']viewport["']/i.test(tag)) {
+      hasViewport = true;
+      viewportContent = contentVal;
+      if (/user-scalable\s*=\s*(no|0)/i.test(contentVal) || /maximum-scale\s*=\s*1(\.0)?\b/i.test(contentVal)) {
+        disablesZoom = true;
       }
     }
+    if (/\bproperty=["']og:title["']/i.test(tag) && contentVal) hasOgTitle = true;
+    if (/\bproperty=["']og:description["']/i.test(tag) && contentVal) hasOgDescription = true;
+    if (/\bproperty=["']og:image["']/i.test(tag) && contentVal) hasOgImage = true;
+    if (/\b(name|property)=["']twitter:card["']/i.test(tag) && contentVal) hasTwitterCard = true;
   }
 
+  // Canonical link
   let canonicalUrl: string | null = null;
   const allLinkTags = html.match(/<link\b[^>]*>/gi) || [];
   for (const tag of allLinkTags) {
@@ -122,599 +204,676 @@ export async function performWebsiteAudit(
     }
   }
 
-  const hasViewport = allMetaTags.some(tag => /\bname=["']viewport["']/i.test(tag));
-  const h1Count = (html.match(/<h1[^>]*>/gi) || []).length;
-  const h2Count = (html.match(/<h2[^>]*>/gi) || []).length;
+  // Headings
+  const h1Matches = html.match(/<h1\b[^>]*>[\s\S]*?<\/h1>/gi) || [];
+  const h1Count = h1Matches.length;
+  const h1Texts = h1Matches
+    .map((m) => stripHtml(m).replace(/\s+/g, ' ').trim())
+    .filter(Boolean)
+    .slice(0, 5);
+  const h2Count = (html.match(/<h2\b[^>]*>/gi) || []).length;
+  const h3Count = (html.match(/<h3\b[^>]*>/gi) || []).length;
 
-  const images = html.match(/<img[^>]*>/gi) || [];
+  // Images
+  const images = html.match(/<img\b[^>]*>/gi) || [];
   const imagesCount = images.length;
   let imagesMissingAlt = 0;
-  images.forEach(img => {
-    if (!/alt=["'][^"']*["']/i.test(img)) {
+  let imagesMissingDimensions = 0;
+  let legacyFormatImagesCount = 0;
+
+  for (const img of images) {
+    if (!/\balt\s*=\s*["'][^"']*["']/i.test(img)) {
       imagesMissingAlt++;
     }
-  });
+    const hasWidth = /\bwidth\s*=\s*["']?\d+/i.test(img);
+    const hasHeight = /\bheight\s*=\s*["']?\d+/i.test(img);
+    const hasAspectStyle = /aspect-ratio/i.test(img);
+    if ((!hasWidth || !hasHeight) && !hasAspectStyle) {
+      imagesMissingDimensions++;
+    }
+    const srcMatch = img.match(/\bsrc\s*=\s*["']([^"']+)["']/i);
+    if (srcMatch) {
+      const cleanSrc = srcMatch[1].split('?')[0].toLowerCase();
+      if (cleanSrc.endsWith('.png') || cleanSrc.endsWith('.jpg') || cleanSrc.endsWith('.jpeg')) {
+        legacyFormatImagesCount++;
+      }
+    }
+  }
 
-  // Separate JSON-LD structured data from executable script tags
-  const allScriptTags = html.match(/<script\b[^>]*>[\s\S]*?<\/script>/gi) || html.match(/<script\b[^>]*>/gi) || [];
-  const executableScripts = allScriptTags.filter(tag => !/type=["']application\/ld\+json["']/i.test(tag));
+  // Scripts & JSON-LD
+  const allScriptBlocks = html.match(/<script\b[^>]*>[\s\S]*?<\/script>/gi) || [];
+  const jsonLdBlocks = allScriptBlocks.filter((tag) =>
+    /type\s*=\s*["']application\/ld\+json["']/i.test(tag)
+  );
+  const jsonLdTypesSet = new Set<string>();
+  for (const block of jsonLdBlocks) {
+    const inner = block.replace(/^<script\b[^>]*>/i, '').replace(/<\/script>$/i, '').trim();
+    try {
+      const parsed = JSON.parse(inner);
+      const collectTypes = (node: any) => {
+        if (!node || typeof node !== 'object') return;
+        if (typeof node['@type'] === 'string') jsonLdTypesSet.add(node['@type']);
+        if (Array.isArray(node['@type'])) node['@type'].forEach((t: string) => jsonLdTypesSet.add(t));
+        if (Array.isArray(node['@graph'])) node['@graph'].forEach(collectTypes);
+      };
+      if (Array.isArray(parsed)) parsed.forEach(collectTypes);
+      else collectTypes(parsed);
+    } catch {
+      // ignore malformed JSON-LD
+    }
+  }
+
+  const executableScripts = allScriptBlocks.filter(
+    (tag) => !/type\s*=\s*["']application\/ld\+json["']/i.test(tag)
+  );
   const scriptsCount = executableScripts.length;
 
-  // Check for actual render-blocking scripts in <head>
   const headMatch = html.match(/<head\b[^>]*>([\s\S]*?)<\/head>/i);
   const headHtml = headMatch ? headMatch[1] : '';
   const headScripts = headHtml.match(/<script\b[^>]*>/gi) || [];
-  const renderBlockingScripts = headScripts.filter(tag => {
-    if (/type=["']application\/ld\+json["']/i.test(tag)) return false;
-    // Only external scripts with a src attribute block the network parser
-    if (!/src=["'][^"']+["']/i.test(tag)) return false;
-    if (/\basync\b/i.test(tag) || /\bdefer\b/i.test(tag) || /type=["']module["']/i.test(tag)) return false;
+  const renderBlockingScripts = headScripts.filter((tag) => {
+    if (/type\s*=\s*["']application\/ld\+json["']/i.test(tag)) return false;
+    if (!/\bsrc\s*=\s*["'][^"']+["']/i.test(tag)) return false;
+    if (/\basync\b/i.test(tag) || /\bdefer\b/i.test(tag) || /type\s*=\s*["']module["']/i.test(tag)) {
+      return false;
+    }
     return true;
   });
-  const hasRenderBlockingScripts = renderBlockingScripts.length > 0;
 
-  const stylesheetsCount = (html.match(/<link[^>]+rel=["']stylesheet["']/gi) || []).length;
-  const langMatch = html.match(/<html[^>]+lang=["']([^"']+)["']/i);
-  const langAttribute = langMatch ? langMatch[1] : null;
+  const stylesheetsCount = allLinkTags.filter((tag) =>
+    /\brel\s*=\s*["']stylesheet["']/i.test(tag)
+  ).length;
 
-  const inspectedMetrics: InspectedMetrics = {
+  const langMatch = html.match(/<html\b[^>]*\blang\s*=\s*["']([^"']+)["']/i);
+  const langAttribute = langMatch ? langMatch[1].trim() : null;
+
+  // Links, Mixed Content, Direct Contact Channels, CTAs
+  const anchorBlocks = html.match(/<a\b[^>]*>[\s\S]*?<\/a>/gi) || [];
+  let internalLinksCount = 0;
+  let externalLinksCount = 0;
+  let unsafeBlankLinksCount = 0;
+  const internalLinkSet = new Set<string>();
+  const contactMethodsSet = new Set<string>();
+  const ctaSamples: string[] = [];
+
+  const CTA_REGEX =
+    /\b(book|schedule|contact|quote|audit|start|get started|request|consultation|buy|order|subscribe|demo|talk to|hire|estimate|try free|sign up)\b/i;
+
+  for (const aBlock of anchorBlocks) {
+    const openTagMatch = aBlock.match(/^<a\b[^>]*>/i);
+    const openTag = openTagMatch ? openTagMatch[0] : '';
+    const hrefMatch = openTag.match(/\bhref\s*=\s*["']([^"']+)["']/i);
+    const href = hrefMatch ? hrefMatch[1].trim() : '';
+    const anchorText = stripHtml(aBlock).replace(/\s+/g, ' ').trim();
+
+    if (anchorText && anchorText.length <= 45 && CTA_REGEX.test(anchorText)) {
+      if (!ctaSamples.includes(anchorText)) {
+        ctaSamples.push(anchorText);
+      }
+    }
+
+    if (!href || href.startsWith('#') || href.toLowerCase().startsWith('javascript:')) {
+      continue;
+    }
+
+    const lowerHref = href.toLowerCase();
+    if (lowerHref.startsWith('tel:')) {
+      contactMethodsSet.add('Phone (tel:)');
+      continue;
+    }
+    if (lowerHref.startsWith('mailto:')) {
+      contactMethodsSet.add('Email (mailto:)');
+      continue;
+    }
+    if (lowerHref.includes('wa.me') || lowerHref.includes('whatsapp.com')) {
+      contactMethodsSet.add('WhatsApp');
+    }
+    if (lowerHref.includes('/contact') || lowerHref.includes('contact-us')) {
+      contactMethodsSet.add('/contact page');
+    }
+
+    try {
+      const resolved = new URL(href, finalUrl);
+      if (resolved.hostname.toLowerCase() === parsedHostname) {
+        internalLinksCount++;
+        if (
+          resolved.pathname !== '/' &&
+          !resolved.pathname.match(/\.(pdf|jpg|png|webp|svg|xml|zip)$/i) &&
+          internalLinkSet.size < 5
+        ) {
+          internalLinkSet.add(resolved.origin + resolved.pathname);
+        }
+      } else if (resolved.protocol === 'http:' || resolved.protocol === 'https:') {
+        externalLinksCount++;
+        if (/\btarget\s*=\s*["']_blank["']/i.test(openTag) && !/\brel\s*=\s*["'][^"']*noopener/i.test(openTag)) {
+          unsafeBlankLinksCount++;
+        }
+      }
+    } catch {
+      // ignore malformed href
+    }
+  }
+
+  // Also scan <button> tags for CTAs and accessibility labels
+  const buttonBlocks = html.match(/<button\b[^>]*>[\s\S]*?<\/button>/gi) || [];
+  let unlabeledButtonsCount = 0;
+  for (const btn of buttonBlocks) {
+    const openMatch = btn.match(/^<button\b[^>]*>/i);
+    const openTag = openMatch ? openMatch[0] : '';
+    const text = stripHtml(btn).replace(/\s+/g, ' ').trim();
+    const hasAria = /\baria-label(ledby)?\s*=\s*["'][^"']+["']/i.test(openTag) || /\btitle\s*=\s*["'][^"']+["']/i.test(openTag);
+    if (!text && !hasAria) {
+      unlabeledButtonsCount++;
+    }
+    if (text && text.length <= 45 && CTA_REGEX.test(text) && !ctaSamples.includes(text)) {
+      ctaSamples.push(text);
+    }
+  }
+
+  // Mixed content check on HTTPS pages
+  let mixedContentCount = 0;
+  if (hasHttps) {
+    const httpSubresources =
+      html.match(/\b(src|href)\s*=\s*["']http:\/\/[^"']+["']/gi) || [];
+    for (const attr of httpSubresources) {
+      // Ignore standard<a> navigation links, only count subresources in img/script/link/iframe
+      if (!/<a\b/i.test(attr)) {
+        mixedContentCount++;
+      }
+    }
+    // More accurate check on img/script/iframe/audio/video tags specifically
+    const resourceTags = html.match(/<(img|script|iframe|audio|video|source)\b[^>]*\bsrc\s*=\s*["']http:\/\/[^"']+["']/gi) || [];
+    mixedContentCount = resourceTags.length;
+  }
+
+  // Semantic Landmarks
+  const landmarks = {
+    main: /<main\b[^>]*>|role\s*=\s*["']main["']/i.test(html),
+    nav: /<nav\b[^>]*>|role\s*=\s*["']navigation["']/i.test(html),
+    header: /<header\b[^>]*>|role\s*=\s*["']banner["']/i.test(html),
+    footer: /<footer\b[^>]*>|role\s*=\s*["']contentinfo["']/i.test(html)
+  };
+
+  // Forms & Inputs
+  const formBlocks = html.match(/<form\b[^>]*>[\s\S]*?<\/form>/gi) || [];
+  const formsCount = formBlocks.length;
+  let maxFormInputsCount = 0;
+  for (const fBlock of formBlocks) {
+    const visibleInputs = (
+      fBlock.match(/<(input|select|textarea)\b[^>]*>/gi) || []
+    ).filter((inp) => !/\btype\s*=\s*["'](hidden|submit|button|reset)["']/i.test(inp));
+    if (visibleInputs.length > maxFormInputsCount) {
+      maxFormInputsCount = visibleInputs.length;
+    }
+  }
+
+  const allInputs = (html.match(/<(input|select|textarea)\b[^>]*>/gi) || []).filter(
+    (inp) => !/\btype\s*=\s*["'](hidden|submit|button|reset)["']/i.test(inp)
+  );
+  let unlabeledInputsCount = 0;
+  for (const inp of allInputs) {
+    const hasAria =
+      /\baria-label(ledby)?\s*=\s*["'][^"']+["']/i.test(inp) ||
+      /\bplaceholder\s*=\s*["'][^"']+["']/i.test(inp);
+    const idMatch = inp.match(/\bid\s*=\s*["']([^"']+)["']/i);
+    const hasMatchingFor =
+      idMatch && new RegExp(`<label\\b[^>]*\\bfor\\s*=\\s*["']${idMatch[1].replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}["']`, 'i').test(html);
+    if (!hasAria && !hasMatchingFor) {
+      unlabeledInputsCount++;
+    }
+  }
+
+  // Trust Signals Detection
+  const trustSignalsDetected: string[] = [];
+  if (/case-stud(y|ies)|portfolio|our-work/i.test(html)) {
+    trustSignalsDetected.push('Case Studies / Portfolio');
+  }
+  if (/testimonial|client review|clutch|goodfirms|trustpilot|rated\s+4\.|rated\s+5/i.test(html)) {
+    trustSignalsDetected.push('Client Reviews / Testimonials');
+  }
+  if (/\/privacy|privacy-policy|privacy policy/i.test(html)) {
+    trustSignalsDetected.push('Privacy Policy');
+  }
+  if (/\/terms|terms-of-service|editorial-policy/i.test(html)) {
+    trustSignalsDetected.push('Terms / Editorial Policy');
+  }
+  if (/\/about|our-team|founded in|years experience/i.test(html)) {
+    trustSignalsDetected.push('About / Team Credentials');
+  }
+
+  const metrics: InspectedMetrics = {
+    finalUrl,
+    redirectCount,
     statusCode,
-    responseTimeMs: ttfb,
-    htmlBytes: Buffer.byteLength(html, 'utf8'),
+    responseTimeMs,
+    htmlBytes,
+    truncatedBySizeLimit,
     isCompressed,
+    compressionType: contentEncoding || null,
     hasHttps,
-    hasHsts,
-    hasCsp,
-    hasXFrame,
-    hasContentTypeOptions,
-    hasReferrerPolicy,
+    hasHsts: Boolean(hstsValue),
+    hstsValue,
+    hasCsp: Boolean(cspValue),
+    cspValue,
+    hasXFrame: Boolean(xFrameValue),
+    xFrameValue,
+    hasContentTypeOptions: Boolean(responseHeaders['x-content-type-options']),
+    hasReferrerPolicy: Boolean(referrerPolicyValue),
+    referrerPolicyValue,
+    robotsMeta,
+    xRobotsTag,
     metaTitle,
     metaDescription,
     canonicalUrl,
     hasViewport,
+    viewportContent,
+    disablesZoom,
     h1Count,
+    h1Texts,
     h2Count,
+    h3Count,
     imagesCount,
     imagesMissingAlt,
+    imagesMissingDimensions,
+    legacyFormatImagesCount,
     scriptsCount,
+    renderBlockingScriptsCount: renderBlockingScripts.length,
     stylesheetsCount,
-    langAttribute
+    langAttribute,
+    jsonLdCount: jsonLdBlocks.length,
+    jsonLdTypes: Array.from(jsonLdTypesSet),
+    hasOgTitle,
+    hasOgDescription,
+    hasOgImage,
+    hasTwitterCard,
+    internalLinksCount,
+    externalLinksCount,
+    unsafeBlankLinksCount,
+    mixedContentCount,
+    landmarks,
+    formsCount,
+    maxFormInputsCount,
+    unlabeledInputsCount,
+    unlabeledButtonsCount,
+    ctaElementsCount: ctaSamples.length,
+    detectedCtaSamples: ctaSamples.slice(0, 6),
+    hasDirectContactLink: contactMethodsSet.size > 0,
+    contactMethodsDetected: Array.from(contactMethodsSet),
+    trustSignalsDetected
   };
 
-  const issues: AuditIssue[] = [];
-
-  // Core Web Vitals extraction or simulation from real metrics
-  let cwv: CoreWebVitals;
-  let performanceScore = 80;
-  let seoScore = 85;
-  let a11yScore = 85;
-  let bestPracticesScore = 85;
-  let securityScore = 85;
-
-  if (psiData?.lighthouseResult) {
-    const lh = psiData.lighthouseResult;
-    const cats = lh.categories || {};
-    const audits = lh.audits || {};
-
-    performanceScore = Math.round((cats.performance?.score || 0.8) * 100);
-    seoScore = Math.round((cats.seo?.score || 0.85) * 100);
-    a11yScore = Math.round((cats.accessibility?.score || 0.85) * 100);
-    bestPracticesScore = Math.round((cats['best-practices']?.score || 0.85) * 100);
-
-    const lcpSec = Number((audits['largest-contentful-paint']?.numericValue / 1000 || 2.2).toFixed(2));
-    const clsVal = Number((audits['cumulative-layout-shift']?.numericValue || 0.05).toFixed(3));
-    const inpMs = Math.round(audits['interaction-to-next-paint']?.numericValue || 120);
-    const fcpSec = Number((audits['first-contentful-paint']?.numericValue / 1000 || 1.4).toFixed(2));
-    const sTimeMs = Math.round(audits['server-response-time']?.numericValue || ttfb);
-    const siSec = Number((audits['speed-index']?.numericValue / 1000 || 2.5).toFixed(2));
-
-    cwv = {
-      lcp: lcpSec,
-      cls: clsVal,
-      inp: inpMs,
-      fcp: fcpSec,
-      ttfb: sTimeMs,
-      speedIndex: siSec
-    };
-
-    // Extract issues from PSI audits
-    Object.values(audits).forEach((audit: any) => {
-      if (audit.score !== null && audit.score < 0.9 && audit.title && audit.description) {
-        let cat = 'Best Practices';
-        const id = (audit.id || '').toLowerCase();
-        if (id.includes('image') || id.includes('render') || id.includes('paint') || id.includes('lcp') || id.includes('speed') || id.includes('byte')) cat = 'Performance';
-        else if (id.includes('meta') || id.includes('crawl') || id.includes('link') || id.includes('canonical') || id.includes('title')) cat = 'SEO';
-        else if (id.includes('aria') || id.includes('contrast') || id.includes('label') || id.includes('alt')) cat = 'Accessibility';
-        else if (id.includes('https') || id.includes('vulnerab') || id.includes('security')) cat = 'Security';
-
-        const priority = audit.score < 0.4 ? 'critical' : audit.score < 0.7 ? 'high' : audit.score < 0.85 ? 'medium' : 'low';
-        const impact = audit.score < 0.5 ? 'High' : audit.score < 0.8 ? 'Medium' : 'Low';
-
-        issues.push({
-          title: audit.title,
-          description: stripHtml(audit.description).slice(0, 240),
-          category: cat,
-          priority,
-          impact,
-          effort: audit.score < 0.5 ? '1-2 days' : 'Quick fix'
-        });
-      }
-    });
-  } else {
-    // Algorithmic deep inspection scoring
-    // 1. Performance calculation
-    let perfPenalties = 0;
-    if (ttfb > 1200) {
-      perfPenalties += 25;
-      issues.push({
-        title: `Slow Time to First Byte (${ttfb}ms)`,
-        description: 'Server initial response exceeds Google recommendation of 800ms. Consider CDN caching or database query optimization.',
-        category: 'Performance',
-        priority: 'critical',
-        impact: 'High',
-        effort: '1 day',
-        suggestedFix: 'Implement Cloudflare edge caching or upgrade origin server resources.'
-      });
-    } else if (ttfb > 600) {
-      perfPenalties += 10;
-      issues.push({
-        title: `Moderate Server Response Latency (${ttfb}ms)`,
-        description: 'TTFB is above 600ms. Edge caching can improve global delivery speeds.',
-        category: 'Performance',
-        priority: 'medium',
-        impact: 'Medium',
-        effort: '2-4 hours'
-      });
-    }
-
-    if (hasRenderBlockingScripts) {
-      perfPenalties += 10;
-      issues.push({
-        title: `Render-Blocking Scripts in <head> (${renderBlockingScripts.length} script${renderBlockingScripts.length > 1 ? 's' : ''})`,
-        description: 'Scripts loaded synchronously in the document <head> block the browser parser and delay Largest Contentful Paint.',
-        category: 'Performance',
-        priority: 'high',
-        impact: 'High',
-        effort: '1-2 hours',
-        suggestedFix: 'Add async or defer to non-critical scripts, or move initialization after window load.'
-      });
-    } else if (scriptsCount > 25) {
-      perfPenalties += 10;
-      issues.push({
-        title: `Excessive Script Dependencies (${scriptsCount} <script> tags)`,
-        description: 'High number of external and inline scripts can increase main-thread execution time and delay interactivity.',
-        category: 'Performance',
-        priority: 'medium',
-        impact: 'Medium',
-        effort: '1-2 days',
-        suggestedFix: 'Consolidate script bundles and defer non-critical third-party analytics.'
-      });
-    }
-
-    if (stylesheetsCount > 6) {
-      perfPenalties += 10;
-      issues.push({
-        title: `Multiple Render-Blocking Stylesheets (${stylesheetsCount} CSS files)`,
-        description: 'Consolidate multiple stylesheet requests into an optimized single CSS delivery or use critical CSS inlining.',
-        category: 'Performance',
-        priority: 'medium',
-        impact: 'Medium',
-        effort: '3-4 hours'
-      });
-    }
-
-    const rawHtmlBytes = inspectedMetrics.htmlBytes;
-    if (!isCompressed && rawHtmlBytes > 100000) {
-      perfPenalties += 12;
-      issues.push({
-        title: `Uncompressed HTML Transfer (${Math.round(rawHtmlBytes / 1024)} KB)`,
-        description: 'Server response is not compressed with Gzip or Brotli. Enabling text compression reduces transfer payload by up to 80% on mobile networks.',
-        category: 'Performance',
-        priority: 'high',
-        impact: 'High',
-        effort: '1-2 hours',
-        suggestedFix: 'Enable Gzip or Brotli compression on your web server or CDN (e.g., Cloudflare, Nginx, or Vercel).'
-      });
-    } else if (rawHtmlBytes > 1200000) {
-      perfPenalties += 10;
-      issues.push({
-        title: `Excessive DOM Tree Size (${Math.round(rawHtmlBytes / 1024)} KB)`,
-        description: 'Very large initial HTML payload (>1.2MB uncompressed) can delay DOM parsing and main-thread responsiveness on low-end mobile devices.',
-        category: 'Performance',
-        priority: 'medium',
-        impact: 'Medium',
-        effort: '2-3 hours',
-        suggestedFix: 'Lazy-load below-the-fold components and paginate lengthy data tables or feeds.'
-      });
-    }
-
-    performanceScore = Math.max(30, Math.min(98, 100 - perfPenalties));
-
-    // 2. SEO calculation
-    let seoPenalties = 0;
-    if (!metaTitle) {
-      seoPenalties += 25;
-      issues.push({
-        title: 'Missing <title> Element',
-        description: 'The page has no HTML title tag. Google search engine results require a title for snippet generation.',
-        category: 'SEO',
-        priority: 'critical',
-        impact: 'High',
-        effort: '15 mins',
-        suggestedFix: 'Add a concise 50-60 character <title> tag matching your core keywords.'
-      });
-    } else if (metaTitle.length < 20 || metaTitle.length > 70) {
-      seoPenalties += 8;
-      issues.push({
-        title: `Unoptimized Title Length (${metaTitle.length} characters)`,
-        description: 'Search engines prefer titles between 30 and 60 characters to avoid truncation in SERPs.',
-        category: 'SEO',
-        priority: 'low',
-        impact: 'Low',
-        effort: '15 mins'
-      });
-    }
-
-    if (!metaDescription) {
-      seoPenalties += 20;
-      issues.push({
-        title: 'Missing Meta Description',
-        description: 'No meta description found. Search engines may display arbitrary body text instead of a tailored summary.',
-        category: 'SEO',
-        priority: 'high',
-        impact: 'High',
-        effort: '30 mins',
-        suggestedFix: 'Add <meta name="description" content="..."> between 130 and 160 characters.'
-      });
-    }
-
-    if (!canonicalUrl) {
-      seoPenalties += 10;
-      issues.push({
-        title: 'Missing Canonical Link Tag',
-        description: 'Without a rel="canonical" link, search engines might treat URL variations (?ref=, www vs non-www) as duplicate content.',
-        category: 'SEO',
-        priority: 'medium',
-        impact: 'Medium',
-        effort: '30 mins'
-      });
-    }
-
-    if (h1Count === 0) {
-      seoPenalties += 15;
-      issues.push({
-        title: 'No <h1> Heading Found',
-        description: 'Pages should contain exactly one main <h1> heading to establish semantic content hierarchy.',
-        category: 'SEO',
-        priority: 'high',
-        impact: 'High',
-        effort: '20 mins'
-      });
-    } else if (h1Count > 1) {
-      seoPenalties += 5;
-      issues.push({
-        title: `Multiple <h1> Headings Found (${h1Count})`,
-        description: 'Best practice recommends a single primary <h1> per URL for optimal topic clarity.',
-        category: 'SEO',
-        priority: 'low',
-        impact: 'Low',
-        effort: '20 mins'
-      });
-    }
-
-    if (!hasViewport) {
-      seoPenalties += 25;
-      issues.push({
-        title: 'Missing Mobile Viewport Meta Tag',
-        description: 'The page lacks <meta name="viewport" content="width=device-width, initial-scale=1">, breaking mobile indexing.',
-        category: 'SEO',
-        priority: 'critical',
-        impact: 'High',
-        effort: '10 mins'
-      });
-    }
-
-    seoScore = Math.max(35, Math.min(100, 100 - seoPenalties));
-
-    // 3. Accessibility calculation
-    let a11yPenalties = 0;
-    if (!langAttribute) {
-      a11yPenalties += 15;
-      issues.push({
-        title: 'Missing <html> lang Attribute',
-        description: 'Screen readers need a declared language (e.g. lang="en") to pronounce text correctly.',
-        category: 'Accessibility',
-        priority: 'high',
-        impact: 'Medium',
-        effort: '5 mins'
-      });
-    }
-
-    if (imagesMissingAlt > 0) {
-      const p = imagesMissingAlt > 5 ? 25 : 12;
-      a11yPenalties += p;
-      issues.push({
-        title: `${imagesMissingAlt} Images Missing alt Attributes`,
-        description: 'Assistive technologies cannot describe images without alternative text descriptions.',
-        category: 'Accessibility',
-        priority: imagesMissingAlt > 5 ? 'high' : 'medium',
-        impact: 'Medium',
-        effort: '1-2 hours',
-        suggestedFix: 'Add descriptive alt text to all meaningful images; use alt="" only for decorative icons.'
-      });
-    }
-
-    a11yScore = Math.max(40, Math.min(98, 100 - a11yPenalties));
-
-    // 4. Security calculation
-    let secPenalties = 0;
-    if (!hasHttps) {
-      secPenalties += 40;
-      issues.push({
-        title: 'Insecure HTTP Connection (No SSL/TLS)',
-        description: 'Data transmitted to and from this site is not encrypted, triggering browser security warnings.',
-        category: 'Security',
-        priority: 'critical',
-        impact: 'High',
-        effort: '1 hour',
-        suggestedFix: 'Install a valid SSL certificate (Let\'s Encrypt / Cloudflare) and enforce 301 HTTPS redirects.'
-      });
-    }
-
-    if (!hasHsts) {
-      secPenalties += 12;
-      issues.push({
-        title: 'Missing Strict-Transport-Security (HSTS) Header',
-        description: 'Without HSTS, initial connections can be vulnerable to SSL stripping man-in-the-middle attacks.',
-        category: 'Security',
-        priority: 'medium',
-        impact: 'Medium',
-        effort: '20 mins'
-      });
-    }
-
-    if (!hasXFrame) {
-      secPenalties += 10;
-      issues.push({
-        title: 'Missing X-Frame-Options Header',
-        description: 'Protects the website from clickjacking attacks by controlling whether it can be embedded in iframes.',
-        category: 'Security',
-        priority: 'medium',
-        impact: 'Medium',
-        effort: '20 mins'
-      });
-    }
-
-    if (!hasCsp) {
-      secPenalties += 15;
-      issues.push({
-        title: 'Missing Content-Security-Policy (CSP)',
-        description: 'A robust CSP prevents Cross-Site Scripting (XSS) and unauthorized script injection.',
-        category: 'Security',
-        priority: 'high',
-        impact: 'High',
-        effort: '2-4 hours'
-      });
-    }
-
-    if (!hasContentTypeOptions) {
-      secPenalties += 8;
-      issues.push({
-        title: 'Missing X-Content-Type-Options Header',
-        description: 'Setting "nosniff" prevents MIME-type sniffing vulnerabilities.',
-        category: 'Security',
-        priority: 'low',
-        impact: 'Low',
-        effort: '10 mins'
-      });
-    }
-
-    securityScore = Math.max(25, Math.min(100, 100 - secPenalties));
-
-    // 5. Best practices calculation
-    bestPracticesScore = Math.round((performanceScore * 0.4) + (securityScore * 0.4) + (a11yScore * 0.2));
-
-    // Simulated realistic Core Web Vitals based on observed metrics
-    const estLcp = Number((Math.max(1.1, (ttfb / 1000) * 1.6 + (scriptsCount * 0.08))).toFixed(2));
-    const estFcp = Number((Math.max(0.8, (ttfb / 1000) * 1.1)).toFixed(2));
-    const estCls = imagesMissingAlt > 3 ? 0.18 : 0.04;
-    const estInp = Math.min(480, Math.round(75 + scriptsCount * 12));
-    const estSi = Number((estLcp * 1.25).toFixed(2));
-
-    cwv = {
-      lcp: estLcp,
-      cls: estCls,
-      inp: estInp,
-      fcp: estFcp,
-      ttfb,
-      speedIndex: estSi
-    };
-  }
-
-  // Calculate overall score (weighted)
-  const overallScore = Math.round(
-    (performanceScore * 0.35) +
-    (seoScore * 0.25) +
-    (accessibilityScoreAdjustment(a11yScore) * 0.15) +
-    (bestPracticesScore * 0.10) +
-    (securityScore * 0.15)
-  );
-
-  function accessibilityScoreAdjustment(s: number) {
-    return Math.max(30, Math.min(100, s));
-  }
-
-  const grade = calculateGrade(overallScore);
-
-  // Sort issues by priority order
-  const priorityOrder: Record<string, number> = { critical: 0, high: 1, medium: 2, low: 3 };
-  issues.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
-
-  // AI-Powered Recommendations
-  let recommendations: AiRecommendation[] = [];
-
-  if (geminiClient) {
-    try {
-      const aiPrompt = `
-You are a Principal Web Architect & Core Web Vitals Specialist at AbuQitmirLabs (https://www.abuqitmirlabs.tech).
-Analyze this technical audit report for website: ${targetUrl} (Tested Device: ${device}).
-
-METRICS:
-- Overall Score: ${overallScore}/100 (Grade: ${grade})
-- Performance: ${performanceScore}/100 | SEO: ${seoScore}/100 | Accessibility: ${a11yScore}/100 | Best Practices: ${bestPracticesScore}/100 | Security: ${securityScore}/100
-- Core Web Vitals: LCP: ${cwv.lcp}s | CLS: ${cwv.cls} | INP: ${cwv.inp}ms | FCP: ${cwv.fcp}s | TTFB: ${cwv.ttfb}ms | Speed Index: ${cwv.speedIndex}s
-- Issues Detected (${issues.length}):
-${issues.slice(0, 8).map((iss, i) => `${i + 1}. [${iss.category}] ${iss.title}: ${iss.description}`).join('\n')}
-
-Generate the TOP 5 most impactful, precise, engineering-grade fixes that will yield the biggest score improvements.
-Return ONLY a valid JSON object matching this schema:
-{
-  "recommendations": [
-    {
-      "title": "Actionable Title (e.g. Optimize Hero Banner LCP)",
-      "description": "Concrete technical explanation of what to implement...",
-      "scoreGain": 12,
-      "timeToFix": "2-4 hours",
-      "difficulty": "Easy",
-      "category": "Performance"
-    }
-  ]
+  return {
+    metrics,
+    internalLinkUrls: Array.from(internalLinkSet)
+  };
 }
-Do not wrap in markdown quotes if possible, or return pure JSON. Provide exactly 5 recommendations.
-`;
 
-      const response = await geminiClient.models.generateContent({
-        model: 'gemini-3.8-flash',
-        contents: aiPrompt
-      });
+async function runMiniSiteCrawl(
+  originUrl: string,
+  candidateInternalUrls: string[],
+  shouldSampleInternalPages: boolean
+): Promise<MiniSiteAuditSummary> {
+  let origin = originUrl;
+  try {
+    origin = new URL(originUrl).origin;
+  } catch {
+    // fallback
+  }
 
-      const responseText = response.text || '';
-      const jsonMatch = responseText.match(/\{[\s\S]*\}/);
-      if (jsonMatch) {
-        const parsed = JSON.parse(jsonMatch[0]);
-        if (Array.isArray(parsed.recommendations) && parsed.recommendations.length > 0) {
-          recommendations = parsed.recommendations.slice(0, 5);
+  const robotsTxtUrl = `${origin}/robots.txt`;
+  let robotsTxtStatus: number | null = null;
+  let robotsTxtAllowsCrawl: boolean | null = null;
+  let robotsTxtHasSitemapDirective = false;
+  let discoveredSitemapUrl = `${origin}/sitemap.xml`;
+
+  try {
+    const rRes = await safeFetchWithRedirects(robotsTxtUrl, {
+      timeoutMs: 4500,
+      maxBytes: 150_000,
+      maxRedirects: 3
+    });
+    robotsTxtStatus = rRes.statusCode;
+    if (rRes.statusCode === 200) {
+      const txt = rRes.bodyText || '';
+      robotsTxtHasSitemapDirective = /^sitemap:\s*https?:\/\//im.test(txt);
+      const smMatch = txt.match(/^sitemap:\s*(https?:\/\/\S+)/im);
+      if (smMatch && smMatch[1]) {
+        try {
+          const smUrl = new URL(smMatch[1].trim());
+          if (smUrl.hostname === new URL(origin).hostname) {
+            discoveredSitemapUrl = smUrl.toString();
+          }
+        } catch {
+          // keep default /sitemap.xml
         }
       }
-    } catch (aiErr: any) {
-      if (onAiFailure) {
-        onAiFailure(aiErr);
-      }
-      const errStr = String(aiErr?.message || aiErr || '');
-      if (errStr.includes('API_KEY_INVALID') || errStr.includes('API key not valid') || aiErr?.status === 400 || aiErr?.code === 400) {
-        console.log('[Audit Engine] Gemini API key not configured or invalid; seamlessly serving high-precision algorithmic recommendations.');
-      } else {
-        console.log('[Audit Engine] Gemini recommendation deferred; serving algorithmic recommendations.');
-      }
+      // Check if User-agent: * has exact Disallow: /
+      const blocksAll = /user-agent:\s*\*[\s\S]*?^disallow:\s*\/\s*$/im.test(txt);
+      robotsTxtAllowsCrawl = !blocksAll;
+    }
+  } catch {
+    robotsTxtStatus = null;
+  }
+
+  let sitemapXmlStatus: number | null = null;
+  let sitemapUrlCount: number | null = null;
+  try {
+    const sRes = await safeFetchWithRedirects(discoveredSitemapUrl, {
+      timeoutMs: 5000,
+      maxBytes: 800_000,
+      maxRedirects: 3
+    });
+    sitemapXmlStatus = sRes.statusCode;
+    if (sRes.statusCode === 200 && sRes.bodyText) {
+      const locMatches = sRes.bodyText.match(/<loc>/gi);
+      sitemapUrlCount = locMatches ? locMatches.length : 0;
+    }
+  } catch {
+    sitemapXmlStatus = null;
+  }
+
+  const sampledInternalPages: SampledInternalPage[] = [];
+  if (shouldSampleInternalPages && candidateInternalUrls.length > 0) {
+    const toSample = candidateInternalUrls.slice(0, 2);
+    const sampleResults = await Promise.all(
+      toSample.map(async (pageUrl): Promise<SampledInternalPage | null> => {
+        try {
+          const pRes = await safeFetchWithRedirects(pageUrl, {
+            timeoutMs: 4500,
+            maxBytes: 400_000,
+            maxRedirects: 3
+          });
+          const tMatch = pRes.bodyText.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+          const h1s = (pRes.bodyText.match(/<h1\b[^>]*>/gi) || []).length;
+          const hasCanon = /<link\b[^>]*\brel\s*=\s*["']canonical["']/i.test(pRes.bodyText);
+          return {
+            url: pageUrl,
+            statusCode: pRes.statusCode,
+            responseTimeMs: pRes.responseTimeMs,
+            title: tMatch ? stripHtml(tMatch[1]).replace(/\s+/g, ' ').trim() : null,
+            h1Count: h1s,
+            hasCanonical: hasCanon
+          };
+        } catch {
+          return null;
+        }
+      })
+    );
+    for (const item of sampleResults) {
+      if (item) sampledInternalPages.push(item);
     }
   }
 
-  // Fallback AI Recommendations if Gemini was unavailable or returned empty
-  if (recommendations.length === 0) {
-    if (cwv.lcp > 2.5) {
-      recommendations.push({
-        title: 'Optimize Largest Contentful Paint (LCP)',
-        description: 'Convert largest visual banners into modern WebP/AVIF formats, apply fetchpriority="high", and preload above-the-fold assets.',
-        scoreGain: 15,
-        timeToFix: '2-4 hours',
-        difficulty: 'Easy',
-        category: 'Performance'
-      });
-    }
+  return {
+    robotsTxtChecked: true,
+    robotsTxtUrl,
+    robotsTxtStatus,
+    robotsTxtAllowsCrawl,
+    robotsTxtHasSitemapDirective,
+    sitemapXmlChecked: true,
+    sitemapXmlUrl: discoveredSitemapUrl,
+    sitemapXmlStatus,
+    sitemapUrlCount,
+    sampledInternalPages
+  };
+}
 
-    if (cwv.ttfb > 600) {
-      recommendations.push({
-        title: 'Deploy Edge CDN Caching (Cloudflare / Fastly)',
-        description: 'Cache static pages and dynamic responses at geographic edges to reduce server response time under 200ms.',
-        scoreGain: 12,
-        timeToFix: '3-5 hours',
-        difficulty: 'Moderate',
-        category: 'Performance'
-      });
-    }
+export async function performWebsiteAudit(
+  rawUrl: string,
+  device: DeviceStrategy = 'mobile',
+  categories: string[] = ['performance', 'seo', 'accessibility', 'bestPractices', 'security'],
+  geminiClient: any = null,
+  onAiFailure?: (err: any) => void,
+  options: PerformAuditOptions = {}
+): Promise<AuditResult> {
+  const mode: AuditMode = options.mode || 'complete';
+  const objective: AuditObjective = options.objective || 'complete';
+  const deviceSelection: DeviceSelection = options.deviceSelection || device || 'mobile';
+  const primaryDevice: DeviceStrategy = deviceSelection === 'desktop' ? 'desktop' : 'mobile';
+  const advanced: AuditAdvancedOptions = options.advanced || {
+    industry: 'General Business',
+    businessGoal: 'Generate Qualified Leads & Conversions',
+    targetMarket: 'Global / International',
+    reportLanguage: 'en'
+  };
 
-    if (!hasCsp || !hasHsts) {
-      recommendations.push({
-        title: 'Enforce Enterprise Security Headers (HSTS & CSP)',
-        description: 'Add Strict-Transport-Security (max-age=31536000; preload) and Content-Security-Policy to protect users from XSS and clickjacking.',
-        scoreGain: 10,
-        timeToFix: '1-2 hours',
-        difficulty: 'Easy',
-        category: 'Security'
-      });
-    }
+  // 1. Validate URL & Enforce SSRF DNS Protection
+  const validated = await assertSafeExternalUrlWithDns(rawUrl);
+  const targetUrl = validated.normalizedUrl;
 
-    if (imagesMissingAlt > 0) {
-      recommendations.push({
-        title: 'Ensure 100% Image Accessibility (WCAG 2.1 AA)',
-        description: `Add descriptive alt attributes across all ${imagesMissingAlt} unlabelled images to ensure ADA legal compliance and image SEO rankings.`,
-        scoreGain: 8,
-        timeToFix: '2-3 hours',
-        difficulty: 'Easy',
-        category: 'Accessibility'
-      });
-    }
+  // 2. Run Live HTTP + DOM Inspection and (optionally) Google PageSpeed Insights in parallel
+  const userAgent =
+    primaryDevice === 'mobile'
+      ? 'Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36 AbuQitmirLabs-Audit/3.0'
+      : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 AbuQitmirLabs-Audit/3.0';
 
-    if (!metaTitle || !metaDescription || !canonicalUrl) {
-      recommendations.push({
-        title: 'Fix Missing Critical SEO Metadata & Canonical Tags',
-        description: 'Provide unique descriptive title tags, meta descriptions, and canonical references to prevent duplicate content penalties in Google.',
-        scoreGain: 9,
-        timeToFix: '1-2 hours',
-        difficulty: 'Easy',
-        category: 'SEO'
-      });
+  const fetchHtmlPromise = safeFetchWithRedirects(targetUrl, {
+    userAgent,
+    timeoutMs: 8000,
+    maxBytes: 1_500_000,
+    maxRedirects: 5
+  }).catch((err) => {
+    if (err instanceof SsrfBlockedError) {
+      throw err;
     }
+    return null;
+  });
 
-    if (!isCompressed && inspectedMetrics.htmlBytes > 100000) {
-      recommendations.push({
-        title: 'Enable Modern Brotli & Gzip Compression',
-        description: 'Server HTML is delivered uncompressed. Enabling Brotli/Gzip reduces payload by up to 80%, speeding up mobile data transfers.',
-        scoreGain: 10,
-        timeToFix: '1-2 hours',
-        difficulty: 'Easy',
-        category: 'Performance'
-      });
-    }
+  const psiMobilePromise =
+    deviceSelection === 'mobile' || deviceSelection === 'both'
+      ? fetchPsiForStrategy(targetUrl, 'mobile')
+      : Promise.resolve(null);
 
-    if (hasRenderBlockingScripts) {
-      recommendations.push({
-        title: 'Eliminate Render-Blocking Scripts with Defer/Async',
-        description: 'Add async, defer, or type="module" to scripts in <head> or defer their initialization after window load event.',
-        scoreGain: 7,
-        timeToFix: '1-2 hours',
-        difficulty: 'Easy',
-        category: 'Performance'
-      });
-    } else if (recommendations.length < 5) {
-      recommendations.push({
-        title: 'Continuous Core Web Vitals Monitoring & Edge Caching',
-        description: 'Maintain high performance benchmarks across regional edges with real-user metrics (RUM) tracking.',
-        scoreGain: 5,
-        timeToFix: '1-2 hours',
-        difficulty: 'Easy',
-        category: 'Performance'
-      });
+  const psiDesktopPromise =
+    deviceSelection === 'desktop' || deviceSelection === 'both'
+      ? fetchPsiForStrategy(targetUrl, 'desktop')
+      : Promise.resolve(null);
+
+  const [httpFetchResult, psiMobileJson, psiDesktopJson] = await Promise.all([
+    fetchHtmlPromise,
+    psiMobilePromise,
+    psiDesktopPromise
+  ]);
+
+  const finalUrl = httpFetchResult?.finalUrl || targetUrl;
+  const redirectCount = httpFetchResult?.redirectCount ?? 0;
+  const statusCode = httpFetchResult?.statusCode ?? 0;
+  const responseTimeMs = httpFetchResult?.responseTimeMs ?? 0;
+  const html = httpFetchResult?.bodyText ?? '';
+  const htmlBytes = httpFetchResult?.byteLength ?? 0;
+  const truncated = httpFetchResult?.truncated ?? false;
+  const responseHeaders = httpFetchResult?.headers ?? {};
+
+  const { metrics: inspectedMetrics, internalLinkUrls } = extractHtmlAndDomMetrics(
+    finalUrl,
+    redirectCount,
+    statusCode,
+    responseTimeMs,
+    html,
+    htmlBytes,
+    truncated,
+    responseHeaders
+  );
+
+  // 3. Run Mini-Site Crawl (/robots.txt, /sitemap.xml, and internal page sampling) when mode is 'mini-site' or 'complete',
+  // or always check robots.txt & sitemap.xml so crawlability checks have real data!
+  const miniSiteSummary = await runMiniSiteCrawl(
+    finalUrl,
+    internalLinkUrls,
+    mode === 'mini-site' || mode === 'complete'
+  );
+
+  // 4. Separate Real-User Field Data vs Lighthouse Lab Data
+  const primaryPsi = primaryDevice === 'desktop' ? psiDesktopJson || psiMobileJson : psiMobileJson || psiDesktopJson;
+  const fieldData = parsePsiFieldData(primaryPsi);
+
+  const mobileLabCwv = parsePsiLabCwv(psiMobileJson, responseTimeMs || 250);
+  const desktopLabCwv = parsePsiLabCwv(psiDesktopJson, responseTimeMs || 200);
+  const hasLab = Boolean(mobileLabCwv || desktopLabCwv);
+
+  const labData: LabDataSummary = {
+    available: hasLab,
+    sourceLabel: hasLab
+      ? `Google PageSpeed Insights Lighthouse (${deviceSelection.toUpperCase()})`
+      : 'Lighthouse Lab Data Unavailable (Static HTTP/DOM Inspection Active)',
+    mobile: mobileLabCwv,
+    desktop: desktopLabCwv,
+    note: hasLab
+      ? 'Synthetic Lighthouse run under simulated throttling.'
+      : 'Google PageSpeed API did not return a synthetic lab run within the timeout window; static HTTP & DOM checks were used without fabricating lab scores.'
+  };
+
+  const activeCwv: CoreWebVitals =
+    (primaryDevice === 'desktop' ? desktopLabCwv || mobileLabCwv : mobileLabCwv || desktopLabCwv) || {
+      lcp: fieldData.lcpSeconds,
+      cls: fieldData.clsScore,
+      inp: fieldData.inpMs,
+      fcp: fieldData.fcpSeconds,
+      ttfb: responseTimeMs > 0 ? responseTimeMs : fieldData.ttfbMs,
+      speedIndex: null
+    };
+
+  // 5. Execute all 38 Deterministic, Heuristic & Manual Review Checks
+  const allChecks = buildDeterministicChecks(
+    targetUrl,
+    inspectedMetrics,
+    fieldData,
+    labData,
+    miniSiteSummary,
+    mode
+  );
+
+  const { scores, scoreDetails } = computeSixTransparentScores(allChecks);
+  const checksSummary = computeChecksSummary(allChecks);
+
+  const failingIssues = allChecks.filter(
+    (c) => !c.passed && c.confidence !== 'Data unavailable'
+  );
+
+  // Sort failing issues by severity
+  const priorityOrder: Record<string, number> = {
+    critical: 0,
+    high: 1,
+    medium: 2,
+    low: 3,
+    passed: 4
+  };
+  failingIssues.sort((a, b) => (priorityOrder[a.priority] ?? 3) - (priorityOrder[b.priority] ?? 3));
+
+  const overallScore = Math.round(
+    (scores.crawlability +
+      scores.seo +
+      scores.performance +
+      scores.accessibility +
+      scores.securityAndTrust +
+      scores.conversionReadiness) /
+      6
+  );
+  const grade = calculateGrade(overallScore);
+
+  // 6. Build deterministic recommendations strictly grounded in failing checks
+  const recommendations: AiRecommendation[] = failingIssues
+    .filter((i) => i.confidence === 'Confirmed' || i.confidence === 'Likely')
+    .slice(0, 5)
+    .map((iss) => ({
+      title: iss.title,
+      description: iss.suggestedFix,
+      scoreGain: iss.priority === 'critical' ? 12 : iss.priority === 'high' ? 8 : 5,
+      timeToFix: iss.effort,
+      difficulty: iss.priority === 'critical' ? 'Moderate' : 'Easy',
+      category: iss.category,
+      basedOnCheckIds: [iss.checkId]
+    }));
+
+  // 7. Optional AI Explanation of Confirmed Deterministic Evidence ONLY (Never invents findings)
+  let aiExecutiveSummary = `Executed ${checksSummary.totalExecuted} deterministic checks on ${finalUrl}: ${checksSummary.confirmedPassed} passed, ${checksSummary.confirmedOrLikelyIssues} issues identified, ${checksSummary.manualReviewRequired} manual review items, and ${checksSummary.dataUnavailable} checks where external telemetry was unavailable.`;
+  let aiExecutiveSummaryUr = `${finalUrl} پر کل ${checksSummary.totalExecuted} تکنیکی چیکس مکمل کیے گئے: ${checksSummary.confirmedPassed} کامیاب رہے، ${checksSummary.confirmedOrLikelyIssues} مسائل کی نشاندہی ہوئی، اور ${checksSummary.manualReviewRequired} نکات دستی جانچ کے لیے تجویز کیے گئے ہیں۔`;
+
+  if (geminiClient && failingIssues.length > 0) {
+    try {
+      const confirmedEvidenceList = failingIssues
+        .filter((i) => i.confidence === 'Confirmed' || i.confidence === 'Likely')
+        .slice(0, 6)
+        .map(
+          (i) =>
+            `- [${i.checkId} | ${i.category} | ${i.priority.toUpperCase()}] ${i.title} | Evidence: ${i.evidence} | Fix: ${i.suggestedFix}`
+        )
+        .join('\n');
+
+      if (confirmedEvidenceList) {
+        const prompt = `You are a Principal Web Growth & Technical SEO Architect.
+STRICT CONSTRAINT: You must ONLY summarize the deterministic findings listed below. NEVER invent a finding, metric, or issue that is not explicitly present in the deterministic evidence list. Do not promise guaranteed Google rankings.
+
+AUDITED URL: ${finalUrl}
+INDUSTRY: ${advanced.industry}
+BUSINESS GOAL: ${advanced.businessGoal}
+TARGET MARKET: ${advanced.targetMarket}
+SCORES: Crawlability ${scores.crawlability}/100, SEO ${scores.seo}/100, Performance ${scores.performance}/100, Accessibility ${scores.accessibility}/100, Security ${scores.securityAndTrust}/100, Conversion Readiness ${scores.conversionReadiness}/100
+
+CONFIRMED DETERMINISTIC FINDINGS:
+${confirmedEvidenceList}
+
+Return ONLY valid JSON with two keys:
+{
+  "summaryEn": "2-3 concise sentences explaining the top confirmed bottlenecks from the list above and their impact on ${advanced.businessGoal}.",
+  "summaryUr": "2-3 concise sentences in natural Urdu explaining the exact same confirmed findings."
+}`;
+
+        const aiRes = await geminiClient.models.generateContent({
+          model: 'gemini-2.5-flash',
+          contents: prompt,
+          config: { responseMimeType: 'application/json', temperature: 0.1 }
+        });
+        const rawText = aiRes.text || '';
+        const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          const parsed = JSON.parse(jsonMatch[0]);
+          if (parsed.summaryEn && typeof parsed.summaryEn === 'string') {
+            aiExecutiveSummary = parsed.summaryEn;
+          }
+          if (parsed.summaryUr && typeof parsed.summaryUr === 'string') {
+            aiExecutiveSummaryUr = parsed.summaryUr;
+          }
+        }
+      }
+    } catch (aiErr) {
+      if (onAiFailure) onAiFailure(aiErr);
     }
   }
 
   return {
     url: targetUrl,
-    device,
+    finalUrl,
+    mode,
+    objective,
+    device: primaryDevice,
+    deviceSelection,
+    advanced,
     overallScore,
     grade,
-    categoryCount: 5,
-    issueCount: issues.length,
-    performance: performanceScore,
-    seo: seoScore,
-    accessibility: a11yScore,
-    bestPractices: bestPracticesScore,
-    security: securityScore,
-    cwv,
-    issues,
-    recommendations: recommendations.slice(0, 5),
+    categoryCount: 6,
+    issueCount: failingIssues.length,
+    scores,
+    scoreDetails,
+    performance: scores.performance,
+    seo: scores.seo,
+    accessibility: scores.accessibility,
+    bestPractices: scores.crawlability,
+    security: scores.securityAndTrust,
+    checksSummary,
+    fieldData,
+    labData,
+    cwv: activeCwv,
+    miniSiteSummary,
+    issues: failingIssues,
+    allChecks,
+    recommendations,
+    aiExecutiveSummary,
+    aiExecutiveSummaryUr,
     inspectedMetrics,
     analyzedAt: new Date().toISOString(),
-    engine: psiData ? 'Google Lighthouse (PSI)' : 'AbuQitmirLabs Deep DOM & Network Inspector'
+    engine: hasLab
+      ? 'Google Lighthouse (PSI) + Deterministic DOM/HTTP Inspector'
+      : 'Deterministic HTTP, DOM & Conversion Inspector'
   };
 }

@@ -45,12 +45,12 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     twitterCard: "summary_large_image"
   },
   "/tools/website-audit": {
-    title: "Free Technical Website Audit & Performance | AbuQitmirLabs",
-    description: "Run an instant technical SEO, Core Web Vitals, security headers, and conversion architecture audit on your website with AbuQitmirLabs.",
+    title: "Free Website Growth Audit Tool | AbuQitmirLabs",
+    description: "Find the issues slowing down your website, reducing search visibility and creating conversion friction with our deterministic Website Growth Audit.",
     canonical: "https://www.abuqitmirlabs.tech/tools/website-audit",
-    keywords: "website audit tool, technical SEO audit, Core Web Vitals checker, website performance analyzer, AbuQitmirLabs",
-    ogTitle: "Free Technical Website Audit & Performance | AbuQitmirLabs",
-    ogDescription: "Run an instant technical SEO, Core Web Vitals, security headers, and conversion architecture audit on your website.",
+    keywords: "website growth audit, technical SEO audit, Core Web Vitals checker, website performance analyzer, conversion readiness audit, AbuQitmirLabs",
+    ogTitle: "Free Website Growth Audit Tool | AbuQitmirLabs",
+    ogDescription: "Find the issues slowing down your website, reducing search visibility and creating conversion friction with our deterministic Website Growth Audit.",
     ogImage: "https://www.abuqitmirlabs.tech/logo.png",
     ogType: "website",
     twitterCard: "summary_large_image"

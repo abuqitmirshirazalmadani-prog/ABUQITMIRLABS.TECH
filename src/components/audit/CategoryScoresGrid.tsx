@@ -1,112 +1,110 @@
 import React from 'react';
-import { Zap, Search, Eye, CheckCircle, ShieldCheck } from 'lucide-react';
-import { AuditResult } from '../../types/audit';
-import { getScoreColor } from '../../utils/auditEngine';
+import { CheckCircle2, AlertCircle, HelpCircle, SlidersHorizontal } from 'lucide-react';
+import {
+  AuditResult,
+  FilterCategory,
+  ScoreDimensionDetail,
+} from '../../types/audit';
 
 interface CategoryScoresGridProps {
   result: AuditResult;
+  activeCategory: FilterCategory;
+  onSelectCategory: (category: FilterCategory) => void;
 }
 
-export const CategoryScoresGrid: React.FC<CategoryScoresGridProps> = ({ result }) => {
-  const categories = [
-    {
-      id: 'performance',
-      name: 'Performance',
-      icon: Zap,
-      score: result.performance,
-      desc: 'Speed, Core Web Vitals, and payload size'
-    },
-    {
-      id: 'seo',
-      name: 'Search Engine Optimization',
-      icon: Search,
-      score: result.seo,
-      desc: 'Meta tags, crawlability, canonicals & headings'
-    },
-    {
-      id: 'accessibility',
-      name: 'Accessibility (WCAG)',
-      icon: Eye,
-      score: result.accessibility,
-      desc: 'Screen-reader labels, color contrast & alt text'
-    },
-    {
-      id: 'bestPractices',
-      name: 'Best Practices',
-      icon: CheckCircle,
-      score: result.bestPractices,
-      desc: 'Modern web standards, console logs & assets'
-    },
-    {
-      id: 'security',
-      name: 'Security & Privacy',
-      icon: ShieldCheck,
-      score: result.security,
-      desc: 'HTTPS, HSTS, CSP, and clickjacking protection'
-    }
-  ];
+const mapDimensionToFilterCategory = (
+  id: ScoreDimensionDetail['id']
+): FilterCategory => {
+  switch (id) {
+    case 'crawlability':
+    case 'seo':
+      return 'SEO';
+    case 'performance':
+      return 'Performance';
+    case 'accessibility':
+      return 'Accessibility';
+    case 'securityAndTrust':
+      return 'Security';
+    case 'conversionReadiness':
+      return 'Conversion';
+    default:
+      return 'all';
+  }
+};
 
+export const CategoryScoresGrid: React.FC<CategoryScoresGridProps> = ({
+  result,
+  activeCategory,
+  onSelectCategory,
+}) => {
   return (
-    <div className="space-y-4">
-      <h3 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
-        <span>Category Score Breakdown</span>
-      </h3>
+    <section aria-label="Score methodology and category filter breakdown" className="space-y-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <h3 className="text-base font-bold text-white flex items-center gap-2">
+            <SlidersHorizontal className="w-4 h-4 text-[#CCFF00]" />
+            Click Any Growth Dimension to Filter Findings
+          </h3>
+          <p className="text-xs text-gray-400">
+            Showing transparent scoring formulas and exact check counts per dimension.
+          </p>
+        </div>
+        {activeCategory !== 'all' && (
+          <button
+            type="button"
+            onClick={() => onSelectCategory('all')}
+            className="self-start sm:self-auto text-xs font-mono text-[#CCFF00] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CCFF00] rounded px-2 py-1"
+          >
+            Reset category filter ({activeCategory})
+          </button>
+        )}
+      </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        {categories.map((cat) => {
-          const Icon = cat.icon;
-          const color = getScoreColor(cat.score);
-          const status = cat.score >= 90 ? 'Optimal' : cat.score >= 70 ? 'Moderate' : 'Needs Fix';
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
+        {result.scoreDetails.map((dim) => {
+          const targetCategory = mapDimensionToFilterCategory(dim.id);
+          const isSelected = activeCategory === targetCategory;
 
           return (
-            <div
-              key={cat.id}
-              className="bg-[#0e0e0e] border border-[#222] hover:border-[#333] rounded-xl p-5 flex flex-col justify-between transition-all group"
+            <button
+              key={dim.id}
+              type="button"
+              onClick={() =>
+                onSelectCategory(isSelected ? 'all' : targetCategory)
+              }
+              aria-pressed={isSelected}
+              className={`text-left p-4 rounded-2xl border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CCFF00] ${
+                isSelected
+                  ? 'bg-[#2667FF]/20 border-[#CCFF00] shadow-lg shadow-[#CCFF00]/10'
+                  : 'bg-[#0d0d0d] border-white/10 hover:border-white/25'
+              }`}
             >
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <div className="w-9 h-9 rounded-lg bg-[#181818] flex items-center justify-center text-gray-300 group-hover:text-[#ccff00] transition-colors">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <span
-                    className="text-xs font-mono px-2 py-0.5 rounded-full border"
-                    style={{
-                      borderColor: `${color}40`,
-                      backgroundColor: `${color}15`,
-                      color: color
-                    }}
-                  >
-                    {status}
-                  </span>
-                </div>
-
-                <div className="text-sm font-semibold text-white mb-1">{cat.name}</div>
-                <div className="text-xs text-gray-500 line-clamp-2 mb-4">{cat.desc}</div>
+              <div className="flex items-center justify-between gap-1 mb-1">
+                <span className="text-xs font-bold text-white truncate">
+                  {dim.label}
+                </span>
+                <span className="text-lg font-black text-[#CCFF00]">
+                  {dim.score}
+                </span>
               </div>
-
-              <div>
-                <div className="flex items-baseline justify-between mb-1.5">
-                  <span className="text-2xl font-bold font-mono" style={{ color }}>
-                    {cat.score}
-                  </span>
-                  <span className="text-xs text-gray-500 font-mono">/100</span>
-                </div>
-
-                {/* Progress Bar */}
-                <div className="w-full bg-[#1c1c1c] h-2 rounded-full overflow-hidden">
-                  <div
-                    className="h-full rounded-full transition-all duration-1000 ease-out"
-                    style={{
-                      width: `${cat.score}%`,
-                      backgroundColor: color
-                    }}
-                  ></div>
-                </div>
+              <div className="text-[10px] font-mono text-gray-400 mb-2 truncate" title={dim.weightFormula}>
+                {dim.weightFormula}
               </div>
-            </div>
+              <div className="flex items-center justify-between text-[11px] font-mono pt-2 border-t border-white/10">
+                <span className="inline-flex items-center gap-1 text-emerald-400">
+                  <CheckCircle2 className="w-3 h-3" /> {dim.passedChecks}
+                </span>
+                <span className="inline-flex items-center gap-1 text-rose-400">
+                  <AlertCircle className="w-3 h-3" /> {dim.failedChecks}
+                </span>
+                <span className="inline-flex items-center gap-1 text-gray-400">
+                  <HelpCircle className="w-3 h-3" /> {dim.manualOrUnavailableChecks}
+                </span>
+              </div>
+            </button>
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };

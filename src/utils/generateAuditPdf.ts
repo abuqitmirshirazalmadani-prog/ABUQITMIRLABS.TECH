@@ -10,241 +10,225 @@ export function generateAuditPdf(result: AuditResult): void {
 
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
-  const margin = 16;
-  const contentWidth = pageWidth - (margin * 2);
+  const margin = 14;
+  const contentWidth = pageWidth - margin * 2;
 
-  // Background Header
-  doc.setFillColor(10, 10, 10);
-  doc.rect(0, 0, pageWidth, 42, 'F');
+  // Header Banner
+  doc.setFillColor(10, 10, 12);
+  doc.rect(0, 0, pageWidth, 40, 'F');
 
-  // Brand Name
-  doc.setTextColor(204, 255, 0); // #ccff00 Neon Yellow
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(18);
-  doc.text('ABUQITMIRLABS.TECH', margin, 18);
-
-  // Subtitle
-  doc.setTextColor(200, 200, 200);
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(9);
-  doc.text('AI-POWERED WEBSITE PERFORMANCE, SEO & SECURITY AUDIT', margin, 26);
-  doc.text(`Audited: ${new Date(result.analyzedAt || Date.now()).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} | Device: ${result.device.toUpperCase()} | Ref: AQL-AUD-${Math.floor(100000 + Math.random() * 900000)}`, margin, 32);
-
-  // Overall Score Badge on top right
-  doc.setFillColor(25, 25, 25);
-  doc.roundedRect(pageWidth - margin - 45, 10, 45, 22, 2, 2, 'F');
-  doc.setTextColor(255, 255, 255);
-  doc.setFontSize(8);
-  doc.setFont('helvetica', 'bold');
-  doc.text('OVERALL GRADE', pageWidth - margin - 41, 17);
-  doc.setFontSize(14);
   doc.setTextColor(204, 255, 0);
-  doc.text(`${result.grade} (${result.overallScore}/100)`, pageWidth - margin - 41, 27);
-
-  let y = 50;
-
-  // URL & Executive Summary Box
-  doc.setFillColor(248, 249, 250);
-  doc.roundedRect(margin, y, contentWidth, 24, 3, 3, 'F');
-  doc.setDrawColor(220, 225, 230);
-  doc.roundedRect(margin, y, contentWidth, 24, 3, 3, 'S');
-
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(10);
-  doc.setTextColor(15, 23, 42);
-  doc.text('AUDITED TARGET URL', margin + 6, y + 8);
+  doc.setFontSize(16);
+  doc.text('FREE WEBSITE GROWTH AUDIT REPORT', margin, 16);
 
-  doc.setFontSize(8.5);
+  doc.setTextColor(210, 210, 210);
   doc.setFont('helvetica', 'normal');
-  doc.setTextColor(30, 41, 59);
-  const truncatedUrl = result.url.length > 70 ? result.url.slice(0, 67) + '...' : result.url;
-  doc.text(truncatedUrl, margin + 6, y + 14);
+  doc.setFontSize(8.5);
+  doc.text(
+    `Target: ${result.url} | Mode: ${(result.mode || 'complete').toUpperCase()} | Device: ${(result.deviceSelection || result.device).toUpperCase()}`,
+    margin,
+    24
+  );
+  const totalChecks = result.checksSummary?.totalExecuted ?? (result.allChecks?.length || 38);
+  const passedCount = result.checksSummary?.confirmedPassed ?? 0;
+  const issueCount = result.checksSummary?.confirmedOrLikelyIssues ?? result.issues.length;
+  doc.text(
+    `Audited: ${new Date(result.analyzedAt || Date.now()).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    })} | Checks Run: ${totalChecks} (${passedCount} Passed, ${issueCount} Issues, ${
+      result.checksSummary?.manualReviewRequired ?? 2
+    } Manual Review)`,
+    margin,
+    31
+  );
 
-  doc.setFontSize(7.5);
-  doc.setTextColor(100, 116, 139);
-  doc.text(`Engine: ${result.engine} | ${result.issueCount} Total Issues Found across 5 Assessment Dimensions`, margin + 6, y + 19);
+  let y = 48;
 
-  y += 30;
-
-  // Category Scores 5-Column Grid
+  // 1. Six Transparent Scores Grid (2 rows x 3 columns)
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
   doc.setTextColor(15, 23, 42);
-  doc.text('1. CORE CATEGORY SCORES', margin, y);
-  y += 5;
+  doc.text('1. SIX TRANSPARENT GROWTH & TECHNICAL SCORES', margin, y);
+  y += 4;
 
-  const cats = [
-    { label: 'Performance', score: result.performance },
-    { label: 'SEO', score: result.seo },
-    { label: 'Accessibility', score: result.accessibility },
-    { label: 'Best Practices', score: result.bestPractices },
-    { label: 'Security', score: result.security }
+  const scores = result.scores || {
+    crawlability: result.bestPractices || 85,
+    seo: result.seo || 85,
+    performance: result.performance || 80,
+    accessibility: result.accessibility || 85,
+    securityAndTrust: result.security || 85,
+    conversionReadiness: 80
+  };
+
+  const sixDims = [
+    { label: 'Crawlability', score: scores.crawlability },
+    { label: 'SEO', score: scores.seo },
+    { label: 'Performance', score: scores.performance },
+    { label: 'Accessibility', score: scores.accessibility },
+    { label: 'Security and Trust', score: scores.securityAndTrust },
+    { label: 'Conversion Readiness', score: scores.conversionReadiness }
   ];
 
-  const colWidth = (contentWidth - 8) / 5;
-  cats.forEach((cat, idx) => {
-    const colX = margin + (idx * (colWidth + 2));
-    doc.setFillColor(245, 247, 250);
-    doc.roundedRect(colX, y, colWidth, 18, 2, 2, 'F');
+  const colW = (contentWidth - 8) / 3;
+  sixDims.forEach((dim, idx) => {
+    const col = idx % 3;
+    const row = Math.floor(idx / 3);
+    const x = margin + col * (colW + 4);
+    const boxY = y + row * 17;
+
+    doc.setFillColor(246, 248, 250);
+    doc.roundedRect(x, boxY, colW, 14, 2, 2, 'F');
     doc.setDrawColor(220, 225, 230);
-    doc.roundedRect(colX, y, colWidth, 18, 2, 2, 'S');
+    doc.roundedRect(x, boxY, colW, 14, 2, 2, 'S');
 
     doc.setFont('helvetica', 'normal');
-    doc.setFontSize(7);
+    doc.setFontSize(7.5);
     doc.setTextColor(71, 85, 105);
-    doc.text(cat.label, colX + 3, y + 6);
+    doc.text(dim.label, x + 3, boxY + 5.5);
 
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(11);
-    if (cat.score >= 90) doc.setTextColor(34, 197, 94);
-    else if (cat.score >= 70) doc.setTextColor(161, 98, 7);
+    if (dim.score >= 90) doc.setTextColor(22, 163, 74);
+    else if (dim.score >= 70) doc.setTextColor(180, 83, 9);
     else doc.setTextColor(220, 38, 38);
-    doc.text(`${cat.score}/100`, colX + 3, y + 14);
+    doc.text(`${dim.score}/100`, x + 3, boxY + 11.5);
   });
 
-  y += 24;
+  y += 38;
 
-  // Core Web Vitals Table
+  // 2. Prioritized Action Plan (Fix Today / Fix This Week / Monitor)
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
   doc.setTextColor(15, 23, 42);
-  doc.text('2. GOOGLE CORE WEB VITALS BENCHMARK', margin, y);
-  y += 5;
+  doc.text('2. PRIORITIZED ACTION PLAN (FIX TODAY / FIX THIS WEEK / MONITOR)', margin, y);
+  y += 4;
 
-  doc.setFillColor(15, 23, 42);
-  doc.rect(margin, y, contentWidth, 7, 'F');
-  doc.setTextColor(255, 255, 255);
-  doc.setFontSize(7.5);
-  doc.text('Metric Name', margin + 4, y + 5);
-  doc.text('Observed Value', margin + 65, y + 5);
-  doc.text('Google 2026 Target', margin + 110, y + 5);
-  doc.text('Evaluation Status', margin + 145, y + 5);
-  y += 7;
+  const allItems = result.allChecks && result.allChecks.length > 0 ? result.allChecks : result.issues;
+  const fixToday = allItems.filter((i) => !i.passed && i.actionHorizon === 'Fix Today');
+  const fixWeek = allItems.filter((i) => !i.passed && i.actionHorizon === 'Fix This Week');
+  const monitor = allItems.filter((i) => i.actionHorizon === 'Monitor' && !i.passed);
 
-  const cwvRows = [
-    { name: 'Largest Contentful Paint (LCP)', val: `${result.cwv.lcp}s`, target: '< 2.5s', status: result.cwv.lcp <= 2.5 ? 'PASS' : result.cwv.lcp <= 4.0 ? 'NEEDS WORK' : 'POOR' },
-    { name: 'Cumulative Layout Shift (CLS)', val: `${result.cwv.cls}`, target: '< 0.10', status: result.cwv.cls <= 0.10 ? 'PASS' : result.cwv.cls <= 0.25 ? 'NEEDS WORK' : 'POOR' },
-    { name: 'Interaction to Next Paint (INP)', val: `${result.cwv.inp}ms`, target: '< 200ms', status: result.cwv.inp <= 200 ? 'PASS' : result.cwv.inp <= 500 ? 'NEEDS WORK' : 'POOR' },
-    { name: 'First Contentful Paint (FCP)', val: `${result.cwv.fcp}s`, target: '< 1.8s', status: result.cwv.fcp <= 1.8 ? 'PASS' : result.cwv.fcp <= 3.0 ? 'NEEDS WORK' : 'POOR' },
-    { name: 'Time to First Byte (TTFB)', val: `${result.cwv.ttfb}ms`, target: '< 800ms', status: result.cwv.ttfb <= 800 ? 'PASS' : result.cwv.ttfb <= 1800 ? 'NEEDS WORK' : 'POOR' }
+  const buckets = [
+    { name: `Fix Today (${fixToday.length})`, items: fixToday.slice(0, 3) },
+    { name: `Fix This Week (${fixWeek.length})`, items: fixWeek.slice(0, 3) },
+    { name: `Monitor / Manual (${monitor.length})`, items: monitor.slice(0, 3) }
   ];
 
-  cwvRows.forEach((row, rIdx) => {
-    doc.setFillColor(rIdx % 2 === 0 ? 255 : 248, 250, 252);
-    doc.rect(margin, y, contentWidth, 6.5, 'F');
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(7.5);
-    doc.setTextColor(15, 23, 42);
-    doc.text(row.name, margin + 4, y + 4.5);
-    doc.text(row.val, margin + 65, y + 4.5);
-    doc.setTextColor(100, 116, 139);
-    doc.text(row.target, margin + 110, y + 4.5);
+  buckets.forEach((b, bIdx) => {
+    const x = margin + bIdx * (colW + 4);
+    doc.setFillColor(250, 250, 252);
+    doc.roundedRect(x, y, colW, 26, 2, 2, 'F');
+    doc.setDrawColor(220, 225, 230);
+    doc.roundedRect(x, y, colW, 26, 2, 2, 'S');
 
     doc.setFont('helvetica', 'bold');
-    if (row.status === 'PASS') {
-      doc.setTextColor(22, 163, 74);
-    } else if (row.status === 'NEEDS WORK') {
-      doc.setTextColor(202, 138, 4);
+    doc.setFontSize(7.5);
+    doc.setTextColor(15, 23, 42);
+    doc.text(b.name, x + 3, y + 5);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(6.5);
+    doc.setTextColor(71, 85, 105);
+    if (b.items.length === 0) {
+      doc.text('No blocking items in this horizon.', x + 3, y + 11);
     } else {
-      doc.setTextColor(220, 38, 38);
+      b.items.forEach((it, idx) => {
+        const line = `• ${it.title.slice(0, 34)}${it.title.length > 34 ? '...' : ''}`;
+        doc.text(line, x + 3, y + 11 + idx * 5);
+      });
     }
-    doc.text(row.status, margin + 145, y + 4.5);
-    y += 6.5;
   });
 
-  y += 8;
+  y += 32;
 
-  // Critical Issues Section
+  // 3. Evidence-Based Growth Issue Cards
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
   doc.setTextColor(15, 23, 42);
-  doc.text('3. PRIORITY ISSUES IDENTIFIED', margin, y);
+  doc.text('3. EVIDENCE-BASED GROWTH FINDINGS', margin, y);
   y += 5;
 
-  const topIssues = result.issues.slice(0, 4);
+  const topIssues = result.issues.slice(0, 6);
   if (topIssues.length === 0) {
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(8);
     doc.setTextColor(22, 163, 74);
-    doc.text('No high or critical priority issues detected. Great job maintaining site health!', margin + 4, y + 4);
-    y += 8;
+    doc.text('All confirmed automated checks passed. Review manual verification items in the web dashboard.', margin, y + 4);
+    y += 10;
   } else {
     topIssues.forEach((issue) => {
-      doc.setFillColor(254, 242, 242);
-      doc.roundedRect(margin, y, contentWidth, 14, 2, 2, 'F');
-      doc.setDrawColor(254, 202, 202);
-      doc.roundedRect(margin, y, contentWidth, 14, 2, 2, 'S');
+      if (y > pageHeight - 45) {
+        doc.addPage();
+        y = 18;
+      }
+
+      doc.setFillColor(252, 248, 248);
+      doc.roundedRect(margin, y, contentWidth, 22, 2, 2, 'F');
+      doc.setDrawColor(240, 210, 210);
+      doc.roundedRect(margin, y, contentWidth, 22, 2, 2, 'S');
 
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(8);
-      doc.setTextColor(185, 28, 28);
-      doc.text(`[${issue.category.toUpperCase()}] ${issue.title}`, margin + 4, y + 5);
+      doc.setTextColor(153, 27, 27);
+      doc.text(
+        `[${issue.checkId || issue.category}] ${issue.title.slice(0, 82)}`,
+        margin + 3,
+        y + 5
+      );
 
       doc.setFont('helvetica', 'normal');
-      doc.setFontSize(7);
-      doc.setTextColor(71, 85, 105);
-      const descLine = issue.description.length > 110 ? issue.description.slice(0, 107) + '...' : issue.description;
-      doc.text(descLine, margin + 4, y + 9.5);
+      doc.setFontSize(6.8);
+      doc.setTextColor(51, 65, 85);
+      const evLine = `Evidence: ${(issue.evidence || '').slice(0, 108)}`;
+      doc.text(evLine, margin + 3, y + 9.5);
 
-      doc.setFontSize(6.5);
-      doc.setTextColor(120, 120, 120);
-      doc.text(`Priority: ${issue.priority.toUpperCase()} | Impact: ${issue.impact} | Effort: ${issue.effort}`, margin + 4, y + 12.5);
+      const fixLine = `Recommended Fix: ${(issue.suggestedFix || '').slice(0, 104)}`;
+      doc.text(fixLine, margin + 3, y + 14);
 
-      y += 16;
+      doc.setTextColor(100, 116, 139);
+      doc.text(
+        `Severity: ${issue.priority.toUpperCase()} | Confidence: ${issue.confidence || 'Confirmed'} | Owner: ${
+          issue.fixOwner || 'Engineering'
+        } | Effort: ${issue.effort} | Source: ${issue.dataType || 'HTML/static checks'}`,
+        margin + 3,
+        y + 19
+      );
+
+      y += 24.5;
     });
   }
 
-  y += 4;
-
-  // AI-Powered Recommendations
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(10);
-  doc.setTextColor(15, 23, 42);
-  doc.text('4. TOP IMPACT AI-POWERED ACTION PLAN', margin, y);
-  y += 5;
-
-  result.recommendations.slice(0, 3).forEach((rec, idx) => {
-    doc.setFillColor(240, 253, 244);
-    doc.roundedRect(margin, y, contentWidth, 13, 2, 2, 'F');
-    doc.setDrawColor(187, 247, 208);
-    doc.roundedRect(margin, y, contentWidth, 13, 2, 2, 'S');
-
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(8);
-    doc.setTextColor(21, 128, 61);
-    doc.text(`#${idx + 1}: ${rec.title} (+${rec.scoreGain} Pts Potential Gain)`, margin + 4, y + 5);
-
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(7);
-    doc.setTextColor(51, 65, 85);
-    const recDesc = rec.description.length > 115 ? rec.description.slice(0, 112) + '...' : rec.description;
-    doc.text(recDesc, margin + 4, y + 9);
-
-    doc.setFontSize(6.5);
-    doc.setTextColor(100, 116, 139);
-    doc.text(`Estimated Resolution Time: ${rec.timeToFix} | Complexity: ${rec.difficulty}`, margin + 4, y + 11.8);
-
-    y += 15;
-  });
-
-  // Footer / Next Steps
-  const footerY = pageHeight - 20;
-  doc.setDrawColor(220, 220, 220);
-  doc.line(margin, footerY - 4, pageWidth - margin, footerY - 4);
-
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(8.5);
-  doc.setTextColor(10, 10, 10);
-  doc.text('Need AbuQitmirLabs to implement these fixes with guaranteed 90+ Lighthouse scores?', margin, footerY);
+  // Footer Methodology & Legal Disclaimers
+  const footerY = pageHeight - 22;
+  doc.setDrawColor(215, 215, 215);
+  doc.line(margin, footerY - 3, pageWidth - margin, footerY - 3);
 
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(7.5);
-  doc.setTextColor(100, 100, 100);
-  doc.text('Contact AbuQitmirLabs Engineering: hello@abuqitmirlabs.tech | Website: https://www.abuqitmirlabs.tech', margin, footerY + 5);
-  doc.text('This automated audit report is generated for diagnostic guidance. Retainers and guarantee SLAs are available upon request.', margin, footerY + 9);
+  doc.setFontSize(6.8);
+  doc.setTextColor(90, 90, 90);
+  doc.text(
+    'Core Web Vitals are important user-experience signals used by Google’s ranking systems. They are not a ranking guarantee.',
+    margin,
+    footerY + 1
+  );
+  doc.text(
+    'Automated accessibility checks identify potential barriers but do not replace manual testing or legal advice.',
+    margin,
+    footerY + 5.5
+  );
+  doc.text(
+    'Generated by AbuQitmirLabs Free Website Growth Audit (https://www.abuqitmirlabs.tech/tools/website-audit).',
+    margin,
+    footerY + 10
+  );
 
-  // Save the PDF
-  const sanitizedDomain = result.url.replace(/https?:\/\//, '').replace(/[\/\?#].*$/, '').replace(/[^a-zA-Z0-9.-]/g, '_');
-  const filename = `AbuQitmirLabs-Audit-${sanitizedDomain}-${Date.now().toString().slice(-4)}.pdf`;
+  const sanitizedDomain = result.url
+    .replace(/https?:\/\//, '')
+    .replace(/[/?#].*$/, '')
+    .replace(/[^a-zA-Z0-9.-]/g, '_');
+  const filename = `Website-Growth-Audit-${sanitizedDomain}-${Date.now().toString().slice(-4)}.pdf`;
   doc.save(filename);
 }

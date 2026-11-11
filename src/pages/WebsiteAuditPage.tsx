@@ -1,27 +1,19 @@
-import React, { useState, useRef } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import {
-  Sparkles,
-  Download,
-  MessageSquare,
   RotateCcw,
-  Zap,
-  Search,
+  Download,
+  Link2,
+  FileSpreadsheet,
+  Check,
   ShieldCheck,
-  Eye,
-  AlertTriangle,
+  Sparkles,
   ArrowRight,
+  AlertCircle,
   CheckCircle2,
-  Lock,
-  FileText,
-  Clock,
-  Laptop
+  Layers,
 } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import RelatedToolsSection from '../components/RelatedToolsSection';
-import { trackToolUsage } from '../utils/analytics';
+import { SEO } from '../components/SEO';
 import { AuditForm } from '../components/audit/AuditForm';
 import { LoadingState } from '../components/audit/LoadingState';
 import { OverallScoreCard } from '../components/audit/OverallScoreCard';
@@ -30,626 +22,618 @@ import { CoreWebVitalsGrid } from '../components/audit/CoreWebVitalsGrid';
 import { IssuesSection } from '../components/audit/IssuesSection';
 import { AiRecommendationsSection } from '../components/audit/AiRecommendationsSection';
 import { AuditFaqSection } from '../components/audit/AuditFaqSection';
-import { AuditResult, DeviceStrategy } from '../types/audit';
-import { SAMPLE_AUDITS } from '../utils/auditEngine';
-import { generateAuditPdf } from '../utils/generateAuditPdf';
+import {
+  AuditAdvancedOptions,
+  AuditMode,
+  AuditObjective,
+  AuditResult,
+  DeviceSelection,
+  FilterCategory,
+  FilterSeverity,
+} from '../types/audit';
+import {
+  generateAuditCsvContent,
+  SAMPLE_AUDITS,
+} from '../utils/auditEngine';
 import { generateClientAuditResult } from '../utils/clientAudit';
+import { generateAuditPdf } from '../utils/generateAuditPdf';
+import { validatePublicAuditUrl } from '../utils/urlValidator';
 
-export default function WebsiteAuditPage() {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+export const WebsiteAuditPage: React.FC = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // Audit configuration state
+  const [url, setUrl] = useState<string>(() => searchParams.get('url') || '');
+  const [mode, setMode] = useState<AuditMode>(() => {
+    const m = searchParams.get('mode');
+    return m === 'quick' || m === 'mini-site' || m === 'complete' ? m : 'complete';
+  });
+  const [objective, setObjective] = useState<AuditObjective>(() => {
+    const o = searchParams.get('objective');
+    return o === 'seo' ||
+      o === 'speed' ||
+      o === 'accessibility' ||
+      o === 'security' ||
+      o === 'conversion' ||
+      o === 'complete'
+      ? o
+      : 'complete';
+  });
+  const [deviceSelection, setDeviceSelection] = useState<DeviceSelection>(() => {
+    const d = searchParams.get('device');
+    return d === 'mobile' || d === 'desktop' || d === 'both' ? d : 'both';
+  });
+  const [advanced, setAdvanced] = useState<AuditAdvancedOptions>({
+    industry: 'B2B SaaS / Technology',
+    businessGoal: 'Increase qualified leads & organic search conversions',
+    targetMarket: 'Global (US, UK, GCC, Pakistan)',
+    reportLanguage: 'en',
+  });
+
+  // Execution & Results state
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [result, setResult] = useState<AuditResult | null>(null);
-  const [activeAuditedUrl, setActiveAuditedUrl] = useState<string>('');
 
-  const resultsRef = useRef<HTMLDivElement>(null);
-  const formRef = useRef<HTMLDivElement>(null);
+  // Progressive disclosure filters & session state
+  const [activeCategory, setActiveCategory] = useState<FilterCategory>('all');
+  const [activeSeverity, setActiveSeverity] = useState<FilterSeverity>('all');
+  const [fixedIds, setFixedIds] = useState<string[]>([]);
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+  const [copiedLink, setCopiedLink] = useState(false);
 
-  const handleRunAudit = async (url: string, device: DeviceStrategy, categories: string[]) => {
-    setLoading(true);
-    setError(null);
-    setActiveAuditedUrl(url);
+  const resultsAnchorRef = useRef<HTMLDivElement | null>(null);
+  const autoTriggeredRef = useRef(false);
 
-    trackToolUsage('website-audit', 'run_audit', {
-      device,
-      categories_count: categories.length
-    });
+  const executeAudit = async (
+    targetInputUrl: string,
+    selectedMode: AuditMode = mode,
+    selectedObjective: AuditObjective = objective,
+    selectedDevice: DeviceSelection = deviceSelection,
+    selectedAdvanced: AuditAdvancedOptions = advanced
+  ) => {
+    setErrorMessage(null);
 
-    let auditData: AuditResult | null = null;
+    const validation = validatePublicAuditUrl(targetInputUrl);
+    if (!validation.valid || !validation.normalizedUrl) {
+      setErrorMessage(
+        validation.error ||
+          'Please enter a valid public website URL (e.g., https://example.com).'
+      );
+      return;
+    }
 
-    // Try server-side deep network & DOM inspection endpoint first
+    const cleanUrl = validation.normalizedUrl;
+    setUrl(cleanUrl);
+    setMode(selectedMode);
+    setObjective(selectedObjective);
+    setDeviceSelection(selectedDevice);
+    setAdvanced(selectedAdvanced);
+    setIsLoading(true);
+    setFixedIds([]);
+
+    // Sync query params on the current route (/tools/website-audit) for shareable links
+    setSearchParams(
+      {
+        url: cleanUrl,
+        mode: selectedMode,
+        objective: selectedObjective,
+        device: selectedDevice,
+      },
+      { replace: true }
+    );
+
+    // Pre-select category filter if user picked a specialized objective
+    if (selectedObjective === 'seo') setActiveCategory('SEO');
+    else if (selectedObjective === 'speed') setActiveCategory('Performance');
+    else if (selectedObjective === 'accessibility') setActiveCategory('Accessibility');
+    else if (selectedObjective === 'security') setActiveCategory('Security');
+    else if (selectedObjective === 'conversion') setActiveCategory('Conversion');
+    else setActiveCategory('all');
+
+    setActiveSeverity('all');
+
+    const primaryDevice = selectedDevice === 'desktop' ? 'desktop' : 'mobile';
+
     try {
       const response = await fetch('/api/audit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ url, device, categories })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          url: cleanUrl,
+          mode: selectedMode,
+          objective: selectedObjective,
+          device: selectedDevice,
+          advanced: selectedAdvanced,
+        }),
       });
 
-      const contentType = response.headers.get('content-type') || '';
-      if (response.ok && contentType.includes('application/json')) {
-        const text = await response.text();
-        if (text && text.trim().length > 0) {
-          try {
-            const data = JSON.parse(text);
-            if (data?.success && data?.result) {
-              auditData = data.result;
-            }
-          } catch (parseErr) {
-            console.warn('[Audit Page] JSON parsing error on server response:', parseErr);
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        if (response.status === 400 || response.status === 403 || response.status === 429) {
+          throw new Error(
+            data?.error ||
+              'Audit request was rejected by security or rate-limit controls.'
+          );
+        }
+        // Fallback to deterministic client-side inspector if backend route is unreachable
+        const fallbackResult = await generateClientAuditResult(
+          cleanUrl,
+          primaryDevice,
+          undefined,
+          {
+            mode: selectedMode,
+            objective: selectedObjective,
+            deviceSelection: selectedDevice,
+            advanced: selectedAdvanced,
           }
+        );
+        setResult(fallbackResult);
+      } else {
+        const resolvedResult = (data?.result ? data.result : data) as AuditResult;
+        setResult(resolvedResult);
+      }
+    } catch (err: any) {
+      const msg = err?.message || '';
+      if (
+        msg.includes('blocked') ||
+        msg.includes('private') ||
+        msg.includes('localhost') ||
+        msg.includes('Rate limit')
+      ) {
+        setErrorMessage(msg);
+      } else {
+        try {
+          const fallbackResult = await generateClientAuditResult(
+            cleanUrl,
+            primaryDevice,
+            undefined,
+            {
+              mode: selectedMode,
+              objective: selectedObjective,
+              deviceSelection: selectedDevice,
+              advanced: selectedAdvanced,
+            }
+          );
+          setResult(fallbackResult);
+        } catch (fallbackErr: any) {
+          setErrorMessage(
+            fallbackErr?.message ||
+              'Unable to complete the website audit. Please verify the URL is publicly reachable.'
+          );
         }
       }
-    } catch (fetchErr) {
-      console.warn('[Audit Page] Server endpoint unreachable, activating client inspection engine:', fetchErr);
-    }
-
-    // If server is on static hosting (e.g. Vercel static rewrites returning 405) or unavailable,
-    // seamlessly provide client-side deep technical audit with zero disruption to user
-    if (!auditData) {
-      try {
-        auditData = await generateClientAuditResult(url, device, categories);
-      } catch (clientErr: any) {
-        setError('Unable to analyze the specified address. Please verify the URL and try again.');
-        setLoading(false);
-        return;
-      }
-    }
-
-    setResult(auditData);
-    setLoading(false);
-
-    // Smooth scroll to results
-    setTimeout(() => {
-      resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 150);
-  };
-
-  const loadSampleReport = (sampleKey: 'abuqitmirlabs' | 'ecommerce') => {
-    setError(null);
-    setResult(SAMPLE_AUDITS[sampleKey]);
-    setTimeout(() => {
-      resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
-  };
-
-  const handleReset = () => {
-    setResult(null);
-    setError(null);
-    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
-  // Structured Data (JSON-LD)
-  const schemaWebApplication = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Free Website Audit Tool",
-    "url": "https://www.abuqitmirlabs.tech/tools/website-audit",
-    "description": "Instant, comprehensive website audit tool analyzing Google Core Web Vitals, performance, SEO, accessibility, and security headers.",
-    "applicationCategory": "DeveloperApplication",
-    "operatingSystem": "Web",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Performance analysis (Core Web Vitals LCP, CLS, INP)",
-      "Technical SEO audit and metadata validation",
-      "Accessibility checks (WCAG 2.1 AA standards)",
-      "Security headers scan (HSTS, CSP, X-Frame-Options)",
-      "Mobile and desktop simulation",
-      "AI-powered actionable engineering roadmap",
-      "Executive PDF report export"
-    ],
-    "provider": {
-      "@type": "Organization",
-      "name": "AbuQitmirLabs",
-      "url": "https://www.abuqitmirlabs.tech"
+    } finally {
+      setIsLoading(false);
+      window.setTimeout(() => {
+        resultsAnchorRef.current?.scrollIntoView({
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+            ? 'auto'
+            : 'smooth',
+          block: 'start',
+        });
+      }, 100);
     }
   };
 
-  const schemaFaq = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+  // Auto-run if URL query param is present on initial mount
+  useEffect(() => {
+    const initialUrl = searchParams.get('url');
+    if (initialUrl && !autoTriggeredRef.current) {
+      autoTriggeredRef.current = true;
+      executeAudit(initialUrl, mode, objective, deviceSelection, advanced);
+    }
+  }, []);
+
+  const handleLoadSample = (sampleKey: string) => {
+    const sample = SAMPLE_AUDITS[sampleKey];
+    if (!sample) return;
+    setErrorMessage(null);
+    setUrl(sample.url);
+    setMode(sample.mode);
+    setObjective(sample.objective);
+    setDeviceSelection(sample.deviceSelection);
+    setAdvanced(sample.advanced);
+    setFixedIds([]);
+    setResult(sample);
+    setSearchParams(
       {
-        "@type": "Question",
-        "name": "Is this website audit tool really free?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, 100% free with no registration, no credit card, and no hidden subscriptions."
-        }
+        url: sample.url,
+        mode: sample.mode,
+        objective: sample.objective,
+        device: sample.deviceSelection,
       },
-      {
-        "@type": "Question",
-        "name": "How accurate is the audit?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The audit uses Google PageSpeed Insights and Lighthouse standards combined with real-time DOM and network inspection."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is considered a good website audit score?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A score above 90 is excellent and qualifies for Google's top ranking tier. Scores below 70 require urgent optimization."
-        }
-      }
-    ]
+      { replace: true }
+    );
+    window.setTimeout(() => {
+      resultsAnchorRef.current?.scrollIntoView({
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          ? 'auto'
+          : 'smooth',
+        block: 'start',
+      });
+    }, 80);
   };
 
-  const schemaBreadcrumbs = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.abuqitmirlabs.tech"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Tools",
-        "item": "https://www.abuqitmirlabs.tech/tools"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Website Audit Tool",
-        "item": "https://www.abuqitmirlabs.tech/tools/website-audit"
-      }
-    ]
+  const handleToggleFixed = (id: string) => {
+    setFixedIds((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+    );
+  };
+
+  const handleDownloadPdf = async () => {
+    if (!result || isGeneratingPdf) return;
+    setIsGeneratingPdf(true);
+    try {
+      await generateAuditPdf(result);
+    } finally {
+      setIsGeneratingPdf(false);
+    }
+  };
+
+  const handleCopyReportLink = async () => {
+    if (!result) return;
+    const shareUrl = new URL('/tools/website-audit', window.location.origin);
+    shareUrl.searchParams.set('url', result.url);
+    shareUrl.searchParams.set('mode', result.mode);
+    shareUrl.searchParams.set('objective', result.objective);
+    shareUrl.searchParams.set('device', result.deviceSelection);
+
+    try {
+      await navigator.clipboard.writeText(shareUrl.toString());
+      setCopiedLink(true);
+      window.setTimeout(() => setCopiedLink(false), 2500);
+    } catch {
+      // ignore clipboard errors
+    }
+  };
+
+  const handleExportCsv = () => {
+    if (!result) return;
+    const csvContent = generateAuditCsvContent(result);
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const downloadUrl = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    const cleanHost = result.url
+      .replace(/^https?:\/\//, '')
+      .replace(/[^a-zA-Z0-9.-]/g, '_');
+    link.href = downloadUrl;
+    link.setAttribute('download', `website-growth-audit-${cleanHost}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(downloadUrl);
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
-      <Helmet>
-        <title>Free Website Audit Tool | AbuQitmirLabs</title>
-        <meta
-          name="description"
-          content="Get instant free website audit — performance, SEO, accessibility, and security analysis. Powered by Google Lighthouse + AI. No signup required."
-        />
-        <meta
-          name="keywords"
-          content="website audit tool, free website audit, website performance test, SEO audit tool, core web vitals checker, website speed test, website accessibility checker, free seo audit"
-        />
-        <link rel="canonical" href="https://www.abuqitmirlabs.tech/tools/website-audit" />
-        <meta property="og:title" content="Free Website Audit Tool | AbuQitmirLabs" />
-        <meta
-          property="og:description"
-          content="Instant performance, SEO, accessibility, and security analysis for any URL. Download free PDF report."
-        />
-        <meta property="og:url" content="https://www.abuqitmirlabs.tech/tools/website-audit" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Free Website Audit Tool | AbuQitmirLabs" />
-        <meta
-          name="twitter:description"
-          content="Instant performance, SEO, accessibility, and security analysis for any URL. Powered by Google Lighthouse and AI."
-        />
-        <script type="application/ld+json">{JSON.stringify(schemaWebApplication)}</script>
-        <script type="application/ld+json">{JSON.stringify(schemaFaq)}</script>
-        <script type="application/ld+json">{JSON.stringify(schemaBreadcrumbs)}</script>
-      </Helmet>
+    <div className="min-h-screen bg-[#050505] text-white pt-28 pb-24">
+      <SEO
+        title="Free Website Growth Audit Tool | AbuQitmirLabs"
+        description="Find the issues slowing down your website, reducing search visibility and creating conversion friction with our deterministic Website Growth Audit."
+        canonical="https://www.abuqitmirlabs.tech/tools/website-audit"
+      />
 
-      <Header />
-
-      <main id="main-content" className="pt-28 md:pt-36 pb-24">
-
-        {/* 1. HERO SECTION */}
-        <section className="max-w-[1240px] mx-auto px-6 md:px-12 text-center mb-12 animate-enter">
-          {/* Breadcrumbs */}
-          <nav className="flex items-center justify-center gap-2 text-xs font-mono text-gray-400 mb-6">
-            <Link to="/" className="hover:text-[#ccff00] transition-colors">Home</Link>
-            <span>›</span>
-            <Link to="/tools" className="hover:text-[#ccff00] transition-colors">Tools</Link>
-            <span>›</span>
-            <span className="text-[#ccff00]">Website Audit</span>
-          </nav>
-
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#141414] border border-[#2e2e2e] text-gray-300 text-xs md:text-sm font-mono mb-6 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-[#ccff00] animate-pulse"></span>
-            <span>100% Free · Instant Results · No Signup Required</span>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        {/* 1. Required Hero Section */}
+        <header className="text-center max-w-4xl mx-auto space-y-5">
+          <div className="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono text-[#CCFF00]">
+            <ShieldCheck className="w-4 h-4" />
+            <span>Deterministic HTTP, DOM, CrUX Field &amp; Lighthouse Lab Inspector</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-[1.1] mb-6 animate-enter animate-enter-delay-1">
-            Free AI-Powered <span className="text-[#ccff00]">Website Audit</span> Tool
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-[1.08]">
+            Free Website Growth Audit
           </h1>
 
-          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed mb-8 animate-enter animate-enter-delay-2">
-            Get instant performance, Google Core Web Vitals, SEO, accessibility, and security analysis for any website — mobile and desktop, powered by Google Lighthouse and AI.
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Find the issues slowing down your website, reducing search visibility and creating conversion friction.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
-            <a
-              href="#audit-tool-form"
-              className="px-8 py-4 rounded-xl bg-[#ccff00] text-black font-bold text-base hover:bg-[#b8e600] transition-all shadow-[0_0_25px_rgba(204,255,0,0.3)] flex items-center gap-2"
-            >
-              <span>Start Free Audit</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
-
-            <button
-              type="button"
-              onClick={() => loadSampleReport('abuqitmirlabs')}
-              className="px-8 py-4 rounded-xl bg-[#141414] hover:bg-[#1f1f1f] text-gray-200 font-semibold text-base border border-[#333] transition-all flex items-center gap-2"
-            >
-              <span>See Sample Report (94/100)</span>
-            </button>
+          {/* Truthful methodology badges */}
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-1 text-xs font-mono text-gray-400">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/[0.03] border border-white/10">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+              6 Transparent Scores
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/[0.03] border border-white/10">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+              38 Verifiable Engineering Checks
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/[0.03] border border-white/10">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+              Zero Fabricated AI Claims
+            </span>
           </div>
+        </header>
 
-          {/* Trust Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-6 text-xs font-mono text-gray-400 max-w-3xl mx-auto pt-2 border-t border-[#1a1a1a]">
-            <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-[#ccff00]" /> Instant Results</span>
-            <span className="text-gray-700">•</span>
-            <span className="flex items-center gap-1.5"><Search className="w-3.5 h-3.5 text-[#ccff00]" /> Works on Any URL</span>
-            <span className="text-gray-700">•</span>
-            <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-[#ccff00]" /> 50+ Checks</span>
-            <span className="text-gray-700">•</span>
-            <span className="flex items-center gap-1.5"><FileText className="w-3.5 h-3.5 text-[#ccff00]" /> Free PDF Export</span>
-            <span className="text-gray-700">•</span>
-            <span className="flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-[#ccff00]" /> AI Recommendations</span>
-            <span className="text-gray-700">•</span>
-            <span className="flex items-center gap-1.5"><Lock className="w-3.5 h-3.5 text-[#ccff00]" /> Zero Data Retention</span>
+        {/* 2. Progressive Audit Configuration Form (URL + Mode + Objective + Device + Collapsed Advanced Accordion) */}
+        <section aria-label="Website audit configuration" className="space-y-4">
+          <AuditForm
+            isLoading={isLoading}
+            initialUrl={url}
+            initialMode={mode}
+            initialObjective={objective}
+            initialDevice={deviceSelection}
+            initialLanguage={advanced.reportLanguage}
+            onRunAudit={(config) =>
+              executeAudit(
+                config.url,
+                config.mode,
+                config.objective,
+                config.deviceSelection,
+                config.advanced
+              )
+            }
+          />
+
+          {errorMessage && (
+            <div
+              role="alert"
+              className="max-w-4xl mx-auto p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-start gap-3 text-xs text-rose-200 font-mono"
+            >
+              <AlertCircle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+              <span>{errorMessage}</span>
+            </div>
+          )}
+
+          {/* Instant Sample Report Switcher (Stays on the exact same page) */}
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs font-mono text-gray-400">
+            <span>Or inspect an instant verified sample report on this page:</span>
+            {Object.keys(SAMPLE_AUDITS).map((domainKey) => (
+              <button
+                key={domainKey}
+                type="button"
+                onClick={() => handleLoadSample(domainKey)}
+                disabled={isLoading}
+                className="px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-[#CCFF00] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CCFF00]"
+              >
+                {domainKey}
+              </button>
+            ))}
           </div>
         </section>
 
-        {/* 2. AUDIT FORM CONTAINER */}
-        <section ref={formRef} className="max-w-[1000px] mx-auto px-6 md:px-12 mb-14">
-          <AuditForm
-            onRunAudit={handleRunAudit}
-            isLoading={loading}
+        {/* 3. Animated 8-Step Audit Progress Stepper */}
+        {isLoading && (
+          <LoadingState
+            url={url}
+            mode={mode}
+            objective={objective}
+            deviceSelection={deviceSelection}
           />
+        )}
 
-          {error && (
-            <div className="mt-4 p-4 rounded-xl bg-rose-950/40 border border-rose-500/40 text-rose-300 text-sm flex items-start gap-3">
-              <AlertTriangle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
-              <div>
-                <strong className="block font-semibold">Audit Request Notice:</strong>
-                <span>{error}</span>
+        {/* 4. Same-Page Audit Results Experience */}
+        <div ref={resultsAnchorRef} className="scroll-mt-24">
+          {!isLoading && result && (
+            <div className="space-y-10">
+              {/* Top Report Action Toolbar: Run Again, Download PDF, Copy Report Link, Export CSV */}
+              <div className="bg-[#0d0d0d] border border-white/15 rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 sticky top-20 z-30 shadow-2xl backdrop-blur-md">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#CCFF00] shrink-0" />
+                  <div className="truncate">
+                    <span className="text-xs font-mono text-gray-400 block">
+                      Active Growth Audit Report ({result.checksSummary.totalExecuted} checks run)
+                    </span>
+                    <strong className="text-sm font-mono text-white truncate block">
+                      {result.finalUrl || result.url}
+                    </strong>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      executeAudit(
+                        result.url,
+                        mode,
+                        objective,
+                        deviceSelection,
+                        advanced
+                      )
+                    }
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CCFF00]"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5 text-[#CCFF00]" />
+                    Run Again
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleDownloadPdf}
+                    disabled={isGeneratingPdf}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#CCFF00] hover:bg-[#b8e600] text-black text-xs font-mono font-bold transition-all disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    {isGeneratingPdf ? 'Building PDF...' : 'Download PDF'}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleCopyReportLink}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CCFF00]"
+                  >
+                    {copiedLink ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 text-emerald-400" />
+                        Link Copied
+                      </>
+                    ) : (
+                      <>
+                        <Link2 className="w-3.5 h-3.5 text-[#CCFF00]" />
+                        Copy Report Link
+                      </>
+                    )}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleExportCsv}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CCFF00]"
+                  >
+                    <FileSpreadsheet className="w-3.5 h-3.5 text-[#CCFF00]" />
+                    Export CSV
+                  </button>
+                </div>
+              </div>
+
+              {/* Six Transparent Scores & Separated Data Source Breakdown */}
+              <OverallScoreCard result={result} />
+
+              {/* Interactive Dimension Filter Strip */}
+              <CategoryScoresGrid
+                result={result}
+                activeCategory={activeCategory}
+                onSelectCategory={setActiveCategory}
+              />
+
+              {/* Separated CrUX Real-User Field Data vs. Lighthouse Lab Data */}
+              <CoreWebVitalsGrid
+                cwv={result.cwv}
+                fieldData={result.fieldData}
+                labData={result.labData}
+              />
+
+              {/* Fix Today / Fix This Week / Monitor + Evidence-Based Growth Issue Cards */}
+              <IssuesSection
+                issues={result.issues}
+                allChecks={result.allChecks}
+                activeCategory={activeCategory}
+                setActiveCategory={setActiveCategory}
+                activeSeverity={activeSeverity}
+                setActiveSeverity={setActiveSeverity}
+                reportLanguage={result.advanced?.reportLanguage || advanced.reportLanguage}
+                fixedIds={fixedIds}
+                onToggleFixed={handleToggleFixed}
+              />
+
+              {/* Grounded Remediation Synthesis */}
+              <AiRecommendationsSection recommendations={result.recommendations} />
+
+              {/* Engineering Consultation CTA (Truthful, No Fake Ranking/Traffic Guarantees) */}
+              <div className="rounded-3xl bg-gradient-to-br from-[#111936] via-[#0d0d0d] to-[#0d0d0d] border border-[#2667FF]/40 p-8 md:p-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                <div className="space-y-3 max-w-2xl">
+                  <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#CCFF00]">
+                    <Sparkles className="w-4 h-4" />
+                    Engineering &amp; Growth Implementation Support
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white">
+                    Need an engineering team to resolve your Fix Today &amp; Fix This Week backlog?
+                  </h3>
+                  <p className="text-sm text-gray-300 leading-relaxed">
+                    Share your downloaded PDF or CSV report with our technical architects. We scope and implement server-side TTFB optimizations, Core Web Vitals remediation, clean semantic HTML, security headers, and high-intent B2B conversion architecture.
+                  </p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-[#CCFF00] hover:bg-[#b8e600] text-black font-bold text-sm transition-all"
+                  >
+                    Request Engineering Review
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link
+                    to="/seo-mastery"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/15 text-white font-semibold text-sm transition-all"
+                  >
+                    Explore Technical SEO Architecture
+                  </Link>
+                </div>
               </div>
             </div>
           )}
-        </section>
+        </div>
 
-        {/* 3. LOADING STATE */}
-        {loading && (
-          <section className="max-w-[1000px] mx-auto px-6 md:px-12 mb-14">
-            <LoadingState url={activeAuditedUrl} />
-          </section>
-        )}
-
-        {/* 4. RESULTS SECTION (DYNAMIC) */}
-        {result && (
-          <section ref={resultsRef} className="max-w-[1240px] mx-auto px-6 md:px-12 mb-20 space-y-10 scroll-mt-28">
-            
-            {/* Header / Actions Bar */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#0a0a0a] border border-[#222] p-4 rounded-xl">
-              <div className="text-xs font-mono text-gray-400">
-                Audited URL: <strong className="text-white">{result.url}</strong> ({result.device.toUpperCase()})
+        {/* Overview of What We Inspect (Shown before or below results, with 100% accurate claims) */}
+        <section
+          aria-labelledby="six-dimensions-overview-heading"
+          className="bg-[#0d0d0d] border border-white/10 rounded-3xl p-6 md:p-8 space-y-6"
+        >
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-white/10 pb-5">
+            <div>
+              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#CCFF00] mb-1">
+                <Layers className="w-4 h-4" />
+                Deterministic Inspection Architecture
               </div>
-              <div className="flex flex-wrap items-center gap-2.5">
-                <button
-                  type="button"
-                  onClick={() => generateAuditPdf(result)}
-                  className="px-4 py-2 rounded-lg bg-[#ccff00] text-black font-bold text-xs font-mono flex items-center gap-1.5 hover:bg-[#b8e600] transition-colors shadow-md"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>Download PDF Report</span>
-                </button>
-
-                <Link
-                  to="/contact"
-                  className="px-4 py-2 rounded-lg bg-[#1a1a1a] hover:bg-[#252525] text-white text-xs font-mono flex items-center gap-1.5 border border-[#333] transition-colors"
-                >
-                  <MessageSquare className="w-3.5 h-3.5 text-[#ccff00]" />
-                  <span>Get a Fix Quote</span>
-                </Link>
-
-                <button
-                  type="button"
-                  onClick={handleReset}
-                  className="px-3 py-2 rounded-lg bg-[#141414] hover:bg-[#222] text-gray-400 hover:text-white text-xs font-mono flex items-center gap-1.5 border border-[#262626] transition-colors"
-                >
-                  <RotateCcw className="w-3.5 h-3.5" />
-                  <span>New Audit</span>
-                </button>
-              </div>
-            </div>
-
-            {/* 4.1 Overall Score Card */}
-            <OverallScoreCard result={result} />
-
-            {/* 4.2 Category Scores Grid */}
-            <CategoryScoresGrid result={result} />
-
-            {/* 4.3 Core Web Vitals */}
-            <CoreWebVitalsGrid cwv={result.cwv} />
-
-            {/* 4.6 AI Recommendations */}
-            {result.recommendations && result.recommendations.length > 0 && (
-              <AiRecommendationsSection recommendations={result.recommendations} />
-            )}
-
-            {/* 4.4 Critical Issues */}
-            <IssuesSection issues={result.issues} />
-
-            {/* 4.8 Action Buttons Box */}
-            <div className="bg-[#0f0f0f] border border-[#222] rounded-2xl p-8 text-center space-y-4">
-              <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
-                Take Action on Your Website Audit
-              </h3>
-              <p className="text-gray-400 text-sm max-w-xl mx-auto">
-                Download your executive PDF report for your development team, or let AbuQitmirLabs resolve every bottleneck with a 90+ score guarantee.
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-                <button
-                  type="button"
-                  onClick={() => generateAuditPdf(result)}
-                  className="px-6 py-3.5 rounded-xl bg-[#ccff00] text-black font-bold text-sm flex items-center gap-2 hover:bg-[#b8e600] transition-all shadow-[0_0_20px_rgba(204,255,0,0.25)]"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>Download Free PDF Report</span>
-                </button>
-
-                <Link
-                  to="/contact"
-                  className="px-6 py-3.5 rounded-xl bg-[#1b1b1b] hover:bg-[#262626] text-white font-semibold text-sm border border-[#333] transition-all flex items-center gap-2"
-                >
-                  <MessageSquare className="w-4 h-4 text-[#ccff00]" />
-                  <span>Get Fix Quote from AbuQitmirLabs</span>
-                </Link>
-
-                <button
-                  type="button"
-                  onClick={handleReset}
-                  className="px-6 py-3.5 rounded-xl bg-transparent hover:bg-[#141414] text-gray-400 hover:text-white font-semibold text-sm border border-[#2a2a2a] transition-all flex items-center gap-2"
-                >
-                  <RotateCcw className="w-4 h-4" />
-                  <span>Audit Another Website</span>
-                </button>
-              </div>
-            </div>
-
-          </section>
-        )}
-
-        {/* 5. SAMPLE PREVIEW STRIP (When no result is active yet) */}
-        {!result && !loading && (
-          <section className="max-w-[1000px] mx-auto px-6 md:px-12 mb-16">
-            <div className="bg-[#0c0c0c] border border-[#222] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="space-y-1 text-center md:text-left">
-                <span className="text-xs font-mono uppercase text-[#ccff00] font-semibold tracking-wider">
-                  Live Benchmarks Demo
-                </span>
-                <h3 className="text-lg md:text-xl font-bold text-white">
-                  Want to explore a sample report first?
-                </h3>
-                <p className="text-xs md:text-sm text-gray-400">
-                  Inspect real-world audit reports with Core Web Vitals, priority issues, and AI recommendations.
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-3">
-                <button
-                  type="button"
-                  onClick={() => loadSampleReport('abuqitmirlabs')}
-                  className="px-4 py-2.5 rounded-xl bg-[#16200a] hover:bg-[#202e0e] border border-[#ccff00]/40 text-[#ccff00] text-xs font-mono font-semibold transition-all"
-                >
-                  🌟 AbuQitmirLabs (Score 94)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => loadSampleReport('ecommerce')}
-                  className="px-4 py-2.5 rounded-xl bg-[#1e140d] hover:bg-[#2c1d12] border border-amber-500/40 text-amber-300 text-xs font-mono font-semibold transition-all"
-                >
-                  ⚠️ E-Commerce Store (Score 58)
-                </button>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* 6. WHY AUDIT MATTERS (EDUCATIONAL / SEO CONTENT) */}
-        <section className="max-w-[1240px] mx-auto px-6 md:px-12 mb-20">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight mb-3">
-              Why Regular Website Audits Are Vital in 2026
-            </h2>
-            <p className="text-gray-400 text-sm md:text-base">
-              A single slow page or security flaw quietly bleeds sales, damages your brand reputation, and downgrades search rankings.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-[#0c0c0c] border border-[#1f1f1f] rounded-2xl p-6 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-[#181818] flex items-center justify-center text-[#ccff00]">
-                <Zap className="w-5 h-5" />
-              </div>
-              <h3 className="text-lg font-bold text-white">Conversion & Speed</h3>
-              <p className="text-xs text-gray-400 leading-relaxed">
-                Google research proves that a 1-second delay in page load time reduces mobile conversion rates by up to 20%. Fast sites earn immediate user trust.
-              </p>
-            </div>
-
-            <div className="bg-[#0c0c0c] border border-[#1f1f1f] rounded-2xl p-6 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-[#181818] flex items-center justify-center text-[#ccff00]">
-                <Search className="w-5 h-5" />
-              </div>
-              <h3 className="text-lg font-bold text-white">Google Core Web Vitals</h3>
-              <p className="text-xs text-gray-400 leading-relaxed">
-                Google’s ranking algorithms penalize sites failing LCP, CLS, or INP thresholds. Passing Core Web Vitals is mandatory for top organic visibility.
-              </p>
-            </div>
-
-            <div className="bg-[#0c0c0c] border border-[#1f1f1f] rounded-2xl p-6 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-[#181818] flex items-center justify-center text-[#ccff00]">
-                <Eye className="w-5 h-5" />
-              </div>
-              <h3 className="text-lg font-bold text-white">Accessibility & WCAG</h3>
-              <p className="text-xs text-gray-400 leading-relaxed">
-                WCAG 2.1 compliance protects against legal lawsuits (ADA) while ensuring visually impaired users and screen readers navigate your brand seamlessly.
-              </p>
-            </div>
-
-            <div className="bg-[#0c0c0c] border border-[#1f1f1f] rounded-2xl p-6 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-[#181818] flex items-center justify-center text-[#ccff00]">
-                <ShieldCheck className="w-5 h-5" />
-              </div>
-              <h3 className="text-lg font-bold text-white">Security & Trust</h3>
-              <p className="text-xs text-gray-400 leading-relaxed">
-                Missing security headers like HSTS and CSP leave users vulnerable to cross-site scripting (XSS) and clickjacking, triggering browser warning bars.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* 7. COMMON ISSUES WE FIND */}
-        <section className="max-w-[1240px] mx-auto px-6 md:px-12 mb-20">
-          <div className="bg-[#0d0d0d] border border-[#222] rounded-3xl p-8 md:p-12">
-            <div className="max-w-2xl mb-8">
-              <span className="text-xs font-mono uppercase text-[#ccff00] font-semibold tracking-wider block mb-1">
-                Diagnostic Checklist
-              </span>
-              <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight mb-2">
-                Common Technical Issues Uncovered During Audits
+              <h2
+                id="six-dimensions-overview-heading"
+                className="text-2xl font-bold text-white"
+              >
+                Six Transparent Pillars Evaluated in Every Audit
               </h2>
-              <p className="text-gray-400 text-sm">
-                Our engine automatically runs over 50 deep technical evaluations across your entire web architecture:
-              </p>
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {[
-                { title: 'Slow LCP (> 2.5s)', desc: 'Heavy uncompressed hero banners and render-blocking CSS delay visible content.' },
-                { title: 'Missing Meta Descriptions', desc: 'Over 45% of websites fail to provide curated summaries for Google search snippets.' },
-                { title: 'Missing Image Alt Text', desc: 'Screen readers and image search crawlers cannot understand images without alt attributes.' },
-                { title: 'Insecure HTTP Redirects', desc: 'Failure to strictly enforce 301 HTTPS redirects exposes session cookies to interception.' },
-                { title: 'Missing Canonical URLs', desc: 'Query strings and URL variations create duplicate content dilution in Google index.' },
-                { title: 'Bloated JavaScript Bundles', desc: 'Unused third-party scripts choke main-thread CPU, triggering poor INP latency.' },
-                { title: 'Missing Security Headers', desc: 'Websites running without HSTS, CSP, and X-Content-Type-Options headers.' },
-                { title: 'Poor Mobile Viewport', desc: 'Missing responsive meta tags cause layout scaling breakages on smartphones.' }
-              ].map((item, idx) => (
-                <div key={idx} className="bg-[#141414] border border-[#262626] rounded-xl p-4 space-y-1.5">
-                  <div className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00]"></span>
-                    <h4 className="text-sm font-semibold text-white">{item.title}</h4>
-                  </div>
-                  <p className="text-xs text-gray-400 leading-relaxed">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 8. FAQ SECTION */}
-        <section className="max-w-[1240px] mx-auto px-6 md:px-12 mb-20">
-          <AuditFaqSection />
-        </section>
-
-        {/* 9. CROSS-LINKING & TOOLS ECOSYSTEM */}
-        <section className="max-w-[1240px] mx-auto px-6 md:px-12 mb-20">
-          <div className="text-center max-w-xl mx-auto mb-8">
-            <h3 className="text-xl font-bold text-white tracking-tight">
-              Complementary Engineering Tools & Services
-            </h3>
-            <p className="text-xs md:text-sm text-gray-400 mt-1">
-              Explore our full development suite to design, estimate, and deploy world-class digital products.
-            </p>
+            <span className="text-xs font-mono text-gray-400">
+              36 Quick Page Checks • 38 Mini-Site &amp; Complete Growth Checks
+            </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <Link
-              to="/tools/project-cost-estimator"
-              className="bg-[#0d0d0d] border border-[#222] hover:border-[#ccff00]/40 rounded-2xl p-6 transition-all group block space-y-2"
-            >
-              <span className="text-xs font-mono text-[#ccff00] uppercase tracking-wider block">Tool #1</span>
-              <h4 className="text-lg font-bold text-white group-hover:text-[#ccff00] transition-colors flex items-center justify-between">
-                <span>AI Cost Estimator</span>
-                <ArrowRight className="w-4 h-4 text-gray-500 group-hover:text-[#ccff00] group-hover:translate-x-1 transition-all" />
-              </h4>
-              <p className="text-xs text-gray-400 leading-relaxed">
-                Estimate full engineering hours and developer rates across 8 countries before building your website or mobile app.
-              </p>
-            </Link>
-
-            <Link
-              to="/tools/seo-checklist"
-              className="bg-[#0d0d0d] border border-[#222] hover:border-[#ccff00]/40 rounded-2xl p-6 transition-all group block space-y-2"
-            >
-              <span className="text-xs font-mono text-[#ccff00] uppercase tracking-wider block">Tool #3</span>
-              <h4 className="text-lg font-bold text-white group-hover:text-[#ccff00] transition-colors flex items-center justify-between">
-                <span>SEO Checklist Generator</span>
-                <ArrowRight className="w-4 h-4 text-gray-500 group-hover:text-[#ccff00] group-hover:translate-x-1 transition-all" />
-              </h4>
-              <p className="text-xs text-gray-400 leading-relaxed">
-                Generate a personalized, step-by-step 45+ task SEO checklist tailored to your industry, website stage, and revenue goals.
-              </p>
-            </Link>
-
-            <Link
-              to="/seo-mastery"
-              className="bg-[#0d0d0d] border border-[#222] hover:border-[#ccff00]/40 rounded-2xl p-6 transition-all group block space-y-2"
-            >
-              <span className="text-xs font-mono text-[#ccff00] uppercase tracking-wider block">Specialty</span>
-              <h4 className="text-lg font-bold text-white group-hover:text-[#ccff00] transition-colors flex items-center justify-between">
-                <span>SEO & Search Mastery</span>
-                <ArrowRight className="w-4 h-4 text-gray-500 group-hover:text-[#ccff00] group-hover:translate-x-1 transition-all" />
-              </h4>
-              <p className="text-xs text-gray-400 leading-relaxed">
-                Technical SEO, semantic Schema.org architecture, and AI search engine optimization (AIO / GEO / SXO).
-              </p>
-            </Link>
-          </div>
-        </section>
-
-        {/* 10. BOTTOM CTA BANNER */}
-        <section className="max-w-[1240px] mx-auto px-6 md:px-12">
-          <div className="bg-gradient-to-r from-[#11180a] via-[#16240d] to-[#0a0a0a] border border-[#ccff00]/40 rounded-3xl p-8 md:p-14 text-center relative overflow-hidden shadow-2xl">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[#ccff00]/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"></div>
-
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ccff00]/15 border border-[#ccff00]/30 text-[#ccff00] text-xs font-mono mb-4">
-              <Sparkles className="w-3.5 h-3.5" /> Guaranteed 90+ Score Remediation
-            </div>
-
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4 max-w-3xl mx-auto">
-              Ready to Fix Your Website Issues & Achieve Peak Speed?
-            </h2>
-
-            <p className="text-gray-300 text-sm md:text-base max-w-2xl mx-auto mb-8 leading-relaxed">
-              Don’t let slow load times and technical warnings drag down your organic conversions. Partner with AbuQitmirLabs for turnkey speed acceleration, Core Web Vitals remediation, and enterprise web engineering.
-            </p>
-
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <Link
-                to="/contact"
-                className="px-8 py-4 rounded-xl bg-[#ccff00] hover:bg-[#b8e600] text-black font-bold text-base transition-all shadow-[0_0_30px_rgba(204,255,0,0.3)] flex items-center gap-2"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+            {[
+              {
+                title: '1. Crawlability (7 Checks)',
+                items:
+                  'HTTP 200 status verification, redirect chain hops, meta robots & X-Robots-Tag directives, self-referencing canonical URL, HTML payload size, robots.txt rules, and XML sitemap discovery.',
+              },
+              {
+                title: '2. SEO & Google Visibility (8 Checks)',
+                items:
+                  'Title tag presence & 30–60 char length, meta description length, single primary H1, H2/H3 section hierarchy, JSON-LD structured data blocks, OpenGraph social tags, and internal link architecture.',
+              },
+              {
+                title: '3. Performance & Core Web Vitals (8 Checks)',
+                items:
+                  'Separated CrUX real-user field data and Lighthouse lab data (LCP, INP, CLS), server TTFB response time, HTTP Brotli/Gzip compression, render-blocking head scripts, and image dimensions/WebP formats.',
+              },
+              {
+                title: '4. Accessibility Barriers (5 Checks)',
+                items:
+                  'HTML lang attribute, image alt attribute coverage, semantic HTML5 landmarks (<main>, <nav>), programmatic form input labels, and accessible button/link naming.',
+              },
+              {
+                title: '5. Security & Trust (6 Checks)',
+                items:
+                  'HTTPS TLS encryption, Strict-Transport-Security (HSTS), Content-Security-Policy (CSP), X-Frame-Options / frame-ancestors, X-Content-Type-Options, Referrer-Policy, and mixed content checks.',
+              },
+              {
+                title: '6. Conversion Readiness (4 Checks)',
+                items:
+                  'Action-oriented primary CTA buttons, direct contact channel accessibility (tel, mailto, WhatsApp, or contact routes), lead form field friction analysis, and visible B2B trust/compliance signals.',
+              },
+            ].map((pillar) => (
+              <div
+                key={pillar.title}
+                className="p-5 rounded-2xl bg-black/50 border border-white/10 space-y-2"
               >
-                <span>Get a Fix Quote from AbuQitmirLabs</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+                <h3 className="text-sm font-bold text-white">{pillar.title}</h3>
+                <p className="text-gray-400 leading-relaxed">{pillar.items}</p>
+              </div>
+            ))}
+          </div>
 
-              <Link
-                to="/case-studies"
-                className="px-8 py-4 rounded-xl bg-[#141414] hover:bg-[#1f1f1f] text-gray-200 font-semibold text-base border border-[#333] transition-all"
-              >
-                <span>View Engineering Case Studies</span>
-              </Link>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+            <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 flex items-start gap-3">
+              <AlertCircle className="w-4 h-4 text-[#CCFF00] shrink-0 mt-0.5" />
+              <p className="text-xs text-gray-300 leading-relaxed">
+                Core Web Vitals are important user-experience signals used by Google’s ranking systems. They are not a ranking guarantee.
+              </p>
+            </div>
+            <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 flex items-start gap-3">
+              <AlertCircle className="w-4 h-4 text-[#CCFF00] shrink-0 mt-0.5" />
+              <p className="text-xs text-gray-300 leading-relaxed">
+                Automated accessibility checks identify potential barriers but do not replace manual testing or legal advice.
+              </p>
             </div>
           </div>
         </section>
 
+        {/* 5. Expandable "How this audit works" Methodology Accordion & FAQs */}
+        <AuditFaqSection />
       </main>
-
-      {/* Cross-Tool Linking Matrix */}
-      <RelatedToolsSection currentTool="website-audit" />
-
-      <Footer />
     </div>
   );
-}
+};
+
+export default WebsiteAuditPage;

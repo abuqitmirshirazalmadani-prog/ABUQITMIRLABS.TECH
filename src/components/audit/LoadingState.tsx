@@ -1,99 +1,230 @@
 import React, { useEffect, useState } from 'react';
-import { CheckCircle2, Circle, Loader2 } from 'lucide-react';
+import {
+  Globe,
+  FileCode2,
+  Heading,
+  Gauge,
+  Accessibility,
+  ShieldCheck,
+  MousePointerClick,
+  Sparkles,
+  CheckCircle2,
+  Loader2,
+  Circle,
+} from 'lucide-react';
+import { AuditMode, AuditObjective, DeviceSelection } from '../../types/audit';
 
 interface LoadingStateProps {
   url: string;
+  mode?: AuditMode;
+  objective?: AuditObjective;
+  deviceSelection?: DeviceSelection;
 }
 
-const STEPS = [
-  'Resolving domain & establishing TLS connection...',
-  'Fetching HTML DOM & calculating Server Response (TTFB)...',
-  'Executing Google Lighthouse Core Web Vitals checks...',
-  'Evaluating SEO tags, canonical URLs & heading structure...',
-  'Scanning image alt attributes & WCAG accessibility standards...',
-  'Inspecting security headers (HSTS, CSP, X-Frame-Options)...',
-  'Synthesizing AI engineering recommendations...'
+interface ProgressStep {
+  id: string;
+  label: string;
+  detail: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
+const PROGRESS_STEPS: ProgressStep[] = [
+  {
+    id: 'url-accessibility',
+    label: 'URL accessibility',
+    detail: 'Validating public IP/DNS safety, HTTPS TLS status, and HTTP redirect hops.',
+    icon: Globe,
+  },
+  {
+    id: 'html-extraction',
+    label: 'HTML extraction',
+    detail: 'Streaming document payload (max 1.5 MB) and measuring raw TTFB & compression.',
+    icon: FileCode2,
+  },
+  {
+    id: 'metadata-headings',
+    label: 'Metadata and heading checks',
+    detail: 'Inspecting title, meta description, canonical tag, H1–H3 hierarchy, and JSON-LD.',
+    icon: Heading,
+  },
+  {
+    id: 'core-web-vitals',
+    label: 'Core Web Vitals',
+    detail: 'Querying CrUX real-user field telemetry and Google Lighthouse lab metrics.',
+    icon: Gauge,
+  },
+  {
+    id: 'accessibility-checks',
+    label: 'Accessibility checks',
+    detail: 'Evaluating HTML lang, semantic landmarks, image alt attributes, and form labels.',
+    icon: Accessibility,
+  },
+  {
+    id: 'security-headers',
+    label: 'Security headers',
+    detail: 'Checking HSTS, Content-Security-Policy, X-Frame-Options, and mixed content.',
+    icon: ShieldCheck,
+  },
+  {
+    id: 'conversion-architecture',
+    label: 'Conversion architecture',
+    detail: 'Detecting primary CTAs, friction in lead forms, direct contact paths, and trust proof.',
+    icon: MousePointerClick,
+  },
+  {
+    id: 'recommendation-generation',
+    label: 'Recommendation generation',
+    detail: 'Compiling deterministic evidence into prioritized Fix Today / Fix This Week actions.',
+    icon: Sparkles,
+  },
 ];
 
-export const LoadingState: React.FC<LoadingStateProps> = ({ url }) => {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [progress, setProgress] = useState(12);
+export const LoadingState: React.FC<LoadingStateProps> = ({
+  url,
+  mode = 'complete',
+  objective = 'complete',
+  deviceSelection = 'both',
+}) => {
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    const stepInterval = setInterval(() => {
-      setCurrentStep(prev => (prev < STEPS.length - 1 ? prev + 1 : prev));
-    }, 2800);
-
-    const progressInterval = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 92) return 92;
-        return prev + Math.floor(Math.random() * 5) + 3;
-      });
-    }, 450);
-
-    return () => {
-      clearInterval(stepInterval);
-      clearInterval(progressInterval);
-    };
+    const interval = window.setInterval(() => {
+      setActiveIndex((prev) => (prev < PROGRESS_STEPS.length - 1 ? prev + 1 : prev));
+    }, 950);
+    return () => window.clearInterval(interval);
   }, []);
 
+  const progressPercentage = Math.min(
+    96,
+    Math.round(((activeIndex + 1) / PROGRESS_STEPS.length) * 100)
+  );
+
   return (
-    <div className="w-full bg-[#0d0d0d] border border-[#222] rounded-2xl p-6 md:p-10 shadow-2xl relative overflow-hidden">
-      <div className="max-w-2xl mx-auto text-center">
-        {/* Animated Radar Spinner */}
-        <div className="relative w-20 h-20 mx-auto mb-6 flex items-center justify-center">
-          <div className="absolute inset-0 rounded-full border border-[#ccff00]/30 animate-ping"></div>
-          <div className="absolute inset-2 rounded-full border border-[#ccff00]/50 animate-pulse"></div>
-          <div className="w-12 h-12 rounded-full bg-[#162208] border border-[#ccff00] flex items-center justify-center text-[#ccff00]">
-            <Loader2 className="w-6 h-6 animate-spin" />
+    <section
+      aria-live="polite"
+      aria-busy="true"
+      className="py-10 px-4 max-w-4xl mx-auto"
+    >
+      <div className="bg-[#0d0d0d] border border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl">
+        {/* Top status header */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/10">
+          <div>
+            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#CCFF00] mb-2">
+              <Loader2 className="w-3.5 h-3.5 animate-spin motion-reduce:animate-none" />
+              Running Deterministic Website Growth Audit
+            </div>
+            <h2 className="text-xl md:text-2xl font-bold text-white break-all">
+              Inspecting <span className="text-[#CCFF00] font-mono">{url}</span>
+            </h2>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-gray-300">
+            <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10">
+              Mode: {mode}
+            </span>
+            <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10">
+              Focus: {objective}
+            </span>
+            <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10">
+              Device: {deviceSelection}
+            </span>
           </div>
         </div>
 
-        <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
-          Deep Auditing <span className="text-[#ccff00] font-mono break-all">{url}</span>
-        </h3>
-        <p className="text-gray-400 text-sm mb-6">
-          Gathering live telemetry, Core Web Vitals, and security headers. This takes ~15–30 seconds.
-        </p>
-
-        {/* Progress bar */}
-        <div className="w-full bg-[#1f1f1f] rounded-full h-3 mb-8 overflow-hidden p-0.5 border border-[#333]">
+        {/* Overall progress bar */}
+        <div className="mt-6">
+          <div className="flex items-center justify-between text-xs font-mono text-gray-400 mb-2">
+            <span>
+              Step {activeIndex + 1} of {PROGRESS_STEPS.length}:{' '}
+              <strong className="text-white">{PROGRESS_STEPS[activeIndex].label}</strong>
+            </span>
+            <span className="text-[#CCFF00] font-bold">{progressPercentage}%</span>
+          </div>
           <div
-            className="bg-gradient-to-r from-[#99cc00] to-[#ccff00] h-full rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(204,255,0,0.5)]"
-            style={{ width: `${progress}%` }}
-          ></div>
+            className="w-full h-2 bg-white/5 rounded-full overflow-hidden border border-white/10"
+            role="progressbar"
+            aria-valuenow={progressPercentage}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label="Audit execution progress"
+          >
+            <div
+              className="h-full bg-gradient-to-r from-[#2667FF] to-[#CCFF00] transition-all duration-500 motion-reduce:transition-none"
+              style={{ width: `${progressPercentage}%` }}
+            />
+          </div>
         </div>
 
-        {/* Dynamic step ticker */}
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-5 text-left space-y-3">
-          {STEPS.map((step, idx) => {
-            const isDone = idx < currentStep;
-            const isCurrent = idx === currentStep;
+        {/* 8-Step Animated Audit Progress Stepper */}
+        <ol className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-3" aria-label="Audit progress steps">
+          {PROGRESS_STEPS.map((step, index) => {
+            const StepIcon = step.icon;
+            const isCompleted = index < activeIndex;
+            const isCurrent = index === activeIndex;
 
             return (
-              <div
-                key={step}
-                className={`flex items-center gap-3 text-xs md:text-sm transition-opacity duration-300 ${
-                  isDone
-                    ? 'text-gray-400'
-                    : isCurrent
-                    ? 'text-[#ccff00] font-medium'
-                    : 'text-gray-600'
+              <li
+                key={step.id}
+                className={`flex items-start gap-3.5 p-4 rounded-2xl border transition-all duration-300 motion-reduce:transition-none ${
+                  isCurrent
+                    ? 'bg-[#2667FF]/15 border-[#2667FF] shadow-lg shadow-[#2667FF]/10'
+                    : isCompleted
+                    ? 'bg-emerald-500/5 border-emerald-500/30'
+                    : 'bg-black/40 border-white/10 opacity-60'
                 }`}
               >
-                {isDone ? (
-                  <CheckCircle2 className="w-4 h-4 text-[#ccff00] shrink-0" />
-                ) : isCurrent ? (
-                  <Loader2 className="w-4 h-4 text-[#ccff00] animate-spin shrink-0" />
-                ) : (
-                  <Circle className="w-4 h-4 text-gray-700 shrink-0" />
-                )}
-                <span className="truncate">{step}</span>
-              </div>
+                <div className="mt-0.5 shrink-0">
+                  {isCompleted ? (
+                    <CheckCircle2
+                      className="w-5 h-5 text-emerald-400"
+                      aria-label="Completed"
+                    />
+                  ) : isCurrent ? (
+                    <Loader2
+                      className="w-5 h-5 text-[#CCFF00] animate-spin motion-reduce:animate-none"
+                      aria-label="In progress"
+                    />
+                  ) : (
+                    <Circle className="w-5 h-5 text-gray-600" aria-label="Pending" />
+                  )}
+                </div>
+
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between gap-2">
+                    <span
+                      className={`text-sm font-bold ${
+                        isCurrent
+                          ? 'text-white'
+                          : isCompleted
+                          ? 'text-emerald-300'
+                          : 'text-gray-400'
+                      }`}
+                    >
+                      {index + 1}. {step.label}
+                    </span>
+                    <StepIcon
+                      className={`w-4 h-4 shrink-0 ${
+                        isCurrent
+                          ? 'text-[#CCFF00]'
+                          : isCompleted
+                          ? 'text-emerald-400/80'
+                          : 'text-gray-600'
+                      }`}
+                    />
+                  </div>
+                  <p className="text-xs text-gray-400 mt-1 leading-relaxed">
+                    {step.detail}
+                  </p>
+                </div>
+              </li>
             );
           })}
-        </div>
+        </ol>
+
+        <p className="mt-6 text-center text-xs text-gray-400 font-mono">
+          Every finding is verified against live HTTP headers, HTML DOM nodes, or Google PageSpeed telemetry. Zero fabricated findings.
+        </p>
       </div>
-    </div>
+    </section>
   );
 };
