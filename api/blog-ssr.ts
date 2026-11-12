@@ -271,7 +271,41 @@ export default async function handler(req: any, res: any) {
     ).trim();
     const metaDesc = rawDesc.length > 158 ? `${rawDesc.slice(0, 155).trim()}...` : rawDesc;
 
-    const rawCover = postData.coverImage || `${hostname}/logo.png`;
+    const resolveLocalBlogCover = (inputUrl: string, slug: string): string => {
+      const knownMap: Record<string, string> = {
+        'https://i.postimg.cc/9QdHdDB2/Logo-Design-Pricing-in-Pakistan-Explained.png': '/images/blog-covers/rebranding-cost-pakistan-6b1f5c4e.webp',
+        'https://i.postimg.cc/qqsFC1CD/Kuwait-Cybersecurity-Partner-Evaluation.png': '/images/blog-covers/kuwait-cybersecurity-partner-evaluation.webp',
+        'https://i.postimg.cc/vBhWpH0q/Lead-Generation-Content-Strategy-That-Works.jpg': '/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp',
+        'https://i.postimg.cc/vBhWpH0q/Lead-Generation-Content-Strategy-That_Works.jpg': '/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp',
+        'https://i.postimg.cc/7YZRZy9q/Rebranding-Checklist-Pakistan-Before-During-and-After.jpg': '/images/blog-covers/rebranding-checklist-pakistan-v2.webp',
+        'https://i.postimg.cc/L5RsMkbN/Qatar-Custom-Software-Development-Guide.png': '/images/blog-covers/custom-software-development-qatar-06910d97.webp',
+      };
+      if (inputUrl && knownMap[inputUrl.trim()]) {
+        return knownMap[inputUrl.trim()];
+      }
+      const coverDirs = [
+        path.join(process.cwd(), 'dist', 'images', 'blog-covers'),
+        path.join(process.cwd(), 'public', 'images', 'blog-covers'),
+      ];
+      const safePrefix = slug.replace(/[^a-z0-9-_]/gi, '-').slice(0, 60);
+      for (const dir of coverDirs) {
+        try {
+          if (fs.existsSync(dir)) {
+            const files = fs.readdirSync(dir);
+            const exact = files.find((f) => f === `${slug}.webp` || f === `${safePrefix}.webp`);
+            if (exact) return `/images/blog-covers/${exact}`;
+            const hashed = files.find((f) => f.startsWith(`${safePrefix}-`) && f.endsWith('.webp'));
+            if (hashed) return `/images/blog-covers/${hashed}`;
+          }
+        } catch {}
+      }
+      if (inputUrl && !inputUrl.includes('postimg.cc')) {
+        return inputUrl;
+      }
+      return `/images/blog-covers/${slug}.webp`;
+    };
+
+    const rawCover = resolveLocalBlogCover(postData.coverImage || '', canonicalSlug);
     const ogImageUrl = rawCover.startsWith('/') ? `${hostname}${rawCover}` : rawCover;
 
     // Parse markdown content into semantic HTML with H2, H3, H4, GFM Tables, Lists, Code Blocks, Links, and FAQs

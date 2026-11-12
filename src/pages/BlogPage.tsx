@@ -437,7 +437,7 @@ const BlogPage = () => {
                                             <div className="flex items-center gap-3">
                                                 <div className="w-12 h-12 rounded-full bg-white/5 p-0.5 border border-white/10 ring-4 ring-blue-500/10">
                                                     <img 
-                                                        src={resolveOptimizedCoverImage("https://i.postimg.cc/hjLzDQHK/abuqitmir222.png", "author-abuqitmir-shiraz")} 
+                                                        src={resolveOptimizedCoverImage("/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp", "author-abuqitmir-shiraz")} 
                                                         alt="AbuQitmirLabs Shiraz Almadani" 
                                                         className="w-full h-full rounded-full object-cover object-top" 
                                                         width="48"

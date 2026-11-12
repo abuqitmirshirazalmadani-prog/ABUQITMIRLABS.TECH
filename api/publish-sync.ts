@@ -159,6 +159,32 @@ export default async function handler(req: any, res: any) {
   let vercelTriggered = false;
   let commitUrl: string | null = null;
 
+  let resolvedLocalCover = coverImage || '/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp';
+  let downloadedImageBuffer: Buffer | null = null;
+
+  if (cleanSlug && typeof coverImage === 'string' && /^https?:\/\//i.test(coverImage.trim()) && !coverImage.includes('abuqitmirlabs.tech')) {
+    try {
+      const imgRes = await fetch(coverImage.trim(), {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        }
+      });
+      if (imgRes.ok) {
+        const arrBuf = await imgRes.arrayBuffer();
+        downloadedImageBuffer = Buffer.from(arrBuf);
+        resolvedLocalCover = `/images/blog-covers/${cleanSlug}.webp`;
+        try {
+          const coversDir = path.join(process.cwd(), 'public', 'images', 'blog-covers');
+          if (!fs.existsSync(coversDir)) {
+            fs.mkdirSync(coversDir, { recursive: true });
+          }
+          fs.writeFileSync(path.join(coversDir, `${cleanSlug}.webp`), downloadedImageBuffer);
+          steps.push(`✓ Downloaded external cover image to public/images/blog-covers/${cleanSlug}.webp`);
+        } catch {}
+      }
+    } catch {}
+  }
+
   // 1. Write content/blog/<slug>.md when writable
   if (cleanSlug && content) {
     try {
@@ -172,7 +198,7 @@ export default async function handler(req: any, res: any) {
         slug: cleanSlug,
         excerpt: excerpt || '',
         metaDescription: metaDescription || excerpt || '',
-        coverImage: coverImage || '/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp',
+        coverImage: resolvedLocalCover,
         coverImageAlt: coverImageAlt || `${cleanTitle} by AbuQitmirLabs`,
         category: category || 'Development',
         author: author || 'Abu Qitmir Mohammad Shiraz Al-Madani',
@@ -182,7 +208,7 @@ export default async function handler(req: any, res: any) {
       const mdFileContent = `---\n${JSON.stringify(frontmatterObj, null, 2)}\n---\n\n${String(content).trim()}\n`;
       fs.writeFileSync(path.join(blogDir, `${cleanSlug}.md`), mdFileContent, 'utf-8');
       localMarkdownSaved = true;
-      seoFixesApplied.push('Canonical slug & tag sanitization applied');
+      seoFixesApplied.push('Canonical slug, local cover image & tag sanitization applied');
       steps.push(`✓ Saved canonical markdown content/blog/${cleanSlug}.md`);
     } catch {
       steps.push(`✓ Validated canonical metadata for /blog/${cleanSlug}`);
@@ -268,7 +294,47 @@ export default async function handler(req: any, res: any) {
 
   if (ghToken && postUrl) {
     try {
-      // 4a. Commit content/blog/<slug>.md to GitHub repository
+      // 4a. Commit downloaded cover image and content/blog/<slug>.md to GitHub repository
+      if (cleanSlug && downloadedImageBuffer && action !== 'delete') {
+        try {
+          const imgRepoPath = `public/images/blog-covers/${cleanSlug}.webp`;
+          let existingImgSha: string | undefined;
+          const getImgRes = await fetch(
+            `https://api.github.com/repos/${ghRepo}/contents/${imgRepoPath}?ref=${ghBranch}`,
+            {
+              headers: {
+                Authorization: `Bearer ${ghToken}`,
+                Accept: 'application/vnd.github+json'
+              }
+            }
+          );
+          if (getImgRes.ok) {
+            const imgMeta: any = await getImgRes.json();
+            existingImgSha = imgMeta.sha;
+          }
+          const putImgRes = await fetch(
+            `https://api.github.com/repos/${ghRepo}/contents/${imgRepoPath}`,
+            {
+              method: 'PUT',
+              headers: {
+                Authorization: `Bearer ${ghToken}`,
+                Accept: 'application/vnd.github+json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                message: `feat(images): add local cover image for /blog/${cleanSlug}`,
+                content: downloadedImageBuffer.toString('base64'),
+                ...(existingImgSha ? { sha: existingImgSha } : {}),
+                branch: ghBranch
+              })
+            }
+          );
+          if (putImgRes.ok) {
+            steps.push(`✓ Committed ${imgRepoPath} to GitHub repository`);
+          }
+        } catch {}
+      }
+
       if (cleanSlug && content && action !== 'delete') {
         const cleanTitle = String(title || cleanSlug).replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
         const frontmatterObj = {
@@ -276,7 +342,7 @@ export default async function handler(req: any, res: any) {
           slug: cleanSlug,
           excerpt: excerpt || '',
           metaDescription: metaDescription || excerpt || '',
-          coverImage: coverImage || '/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp',
+          coverImage: resolvedLocalCover,
           coverImageAlt: coverImageAlt || `${cleanTitle} by AbuQitmirLabs`,
           category: category || 'Development',
           author: author || 'Abu Qitmir Mohammad Shiraz Al-Madani',

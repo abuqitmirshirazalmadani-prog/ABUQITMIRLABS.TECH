@@ -21,7 +21,7 @@ export const ragAiBlogSchema = {
       "mainEntityOfPage": { "@id": "https://www.abuqitmirlabs.tech/blog/rag-ai-integration-for-startups#webpage" },
       "author": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
       "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
-      "image": "https://i.postimg.cc/Pr2j0Kgr/The-Complete-Guide-to-RAG-AI-Integration-for-Startups.jpg",
+      "image": "https://www.abuqitmirlabs.tech/images/blog-covers/the-complete-guide-to-rag-ai-integration-for-startups-a3cea42b.webp",
       "datePublished": "2026-08-18",
       "dateModified": "2026-08-21",
       "keywords": "RAG AI integration, RAG AI integration for startups, retrieval augmented generation for startups, RAG vs fine-tuning, AI agent development agency, generative AI chatbot development",

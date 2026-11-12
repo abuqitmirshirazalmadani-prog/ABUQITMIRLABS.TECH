@@ -1551,7 +1551,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
           "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" },
           "primaryImageOfPage": {
             "@type": "ImageObject",
-            "url": "https://i.postimg.cc/j2pfBQ3d/A-7-question-framework.jpg",
+            "url": "https://www.abuqitmirlabs.tech/images/blog-covers/ai-agents-cost-benefit-analysis-225b4bab.webp",
             "width": 1200,
             "height": 630
           },
@@ -1564,7 +1564,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
           "headline": "AI Agents Cost Benefit Analysis: When They Actually Save Money (And When They Don't)",
           "description": "A 2026 decision framework for AI agent ROI. Real cost data, TCO breakdowns, and a 7-question checklist to know when agents pay back — and when they don't.",
           "url": "https://www.abuqitmirlabs.tech/blog/ai-agents-cost-benefit-analysis",
-          "image": "https://i.postimg.cc/j2pfBQ3d/A-7-question-framework.jpg",
+          "image": "https://www.abuqitmirlabs.tech/images/blog-covers/ai-agents-cost-benefit-analysis-225b4bab.webp",
           "datePublished": "2026-10-03T00:00:00+00:00",
           "dateModified": "2026-10-03T00:00:00+00:00",
           "author": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
@@ -3626,7 +3626,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         <div className="bg-[#0b0b0e] border border-zinc-800/80 rounded-[2.5rem] p-10 flex flex-col md:flex-row items-center gap-10 shadow-xl">
                             <div className="h-24 w-24 bg-zinc-900 rounded-3xl overflow-hidden shrink-0 shadow-lg border-2 border-[#ccff00]/40">
                                 <img 
-                                    src={resolveOptimizedCoverImage("https://i.postimg.cc/hjLzDQHK/abuqitmir222.png", "author-abuqitmir-shiraz")} 
+                                    src={resolveOptimizedCoverImage("/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp", "author-abuqitmir-shiraz")} 
                                     alt="Abu Qitmir Mohammad Shiraz Al-Madani - Founder & Lead Systems Architect at AbuQitmirLabs" 
                                     className="w-full h-full object-cover object-top" 
                                     width="96"

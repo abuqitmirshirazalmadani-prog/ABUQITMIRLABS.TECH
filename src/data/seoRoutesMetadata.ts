@@ -643,11 +643,11 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/ai-video-creation',
     ogTitle: 'AI Video Creation Services | AbuQitmirLabs',
     ogDescription: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.',
-    ogImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
     ogType: 'website',
     twitterTitle: 'AI Video Creation Services | AbuQitmirLabs',
     twitterDescription: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.',
-    twitterImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
     twitterCard: 'summary_large_image',
     robots: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
   },
@@ -657,7 +657,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/ai-video-creation',
     ogTitle: 'AI Video Creation Services | AbuQitmirLabs',
     ogDescription: 'Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.',
-    ogImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
     ogType: 'website',
     robots: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
   },
@@ -1928,11 +1928,11 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/tools/project-cost-estimator',
     ogTitle: 'AI Project Cost Estimator 2026 | AbuQitmirLabs',
     ogDescription: 'Instant cost estimates for websites, mobile apps, and AI agents with country-wise breakdown and free PDF report.',
-    ogImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
     ogType: 'website',
     twitterTitle: 'AI Project Cost Estimator 2026 | AbuQitmirLabs',
     twitterDescription: 'Get instant cost estimates for software projects with regional comparisons and PDF export.',
-    twitterImage: 'https://i.postimg.cc/t4D5HtZr/abuqitmirlabs-tech.jpg'
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
   '/blog/edtech-software-development-lms-features-every-platform-needs': {
     title: 'EdTech Software Development: 9 Features Every LMS Needs',
@@ -11813,6 +11813,158 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
                     "acceptedAnswer": {
                               "@type": "Answer",
                               "text": "Kuwait Vision 2035, or New Kuwait, treats digital transformation as a key enabler of national development. The Central Agency for Information Technology leads government digital transformation, and national programmes cover cloud, AI, cybersecurity and digital identity. Projects aligned with these priorities are easier to explain to government stakeholders and procurement panels."
+                    }
+          }
+]
+        }
+      ]
+    }
+  },
+  '/blog/rebranding-cost-pakistan': {
+    title: "Rebranding Cost Pakistan | AbuQitmirLabs",
+    description: "Understand rebranding cost in Pakistan by scope. Compare logo refresh, visual identity, brand strategy, website, packaging and launch support.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/rebranding-cost-pakistan',
+    ogTitle: "Rebranding Cost Pakistan | AbuQitmirLabs",
+    ogDescription: "Understand rebranding cost in Pakistan by scope. Compare logo refresh, visual identity, brand strategy, website, packaging and launch support.",
+    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/rebranding-cost-pakistan-6b1f5c4e.webp",
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: "Rebranding Cost Pakistan | AbuQitmirLabs",
+    twitterDescription: "Understand rebranding cost in Pakistan by scope. Compare logo refresh, visual identity, brand strategy, website, packaging and launch support.",
+    twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/rebranding-cost-pakistan-6b1f5c4e.webp",
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.abuqitmirlabs.tech/#organization',
+          name: 'AbuQitmirLabs',
+          url: 'https://www.abuqitmirlabs.tech/',
+          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://www.abuqitmirlabs.tech/#website',
+          url: 'https://www.abuqitmirlabs.tech/',
+          name: 'AbuQitmirLabs',
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
+        },
+        {
+          '@type': 'WebPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/rebranding-cost-pakistan#webpage',
+          url: 'https://www.abuqitmirlabs.tech/blog/rebranding-cost-pakistan',
+          name: "Rebranding Cost Pakistan | AbuQitmirLabs",
+          description: "Understand rebranding cost in Pakistan by scope. Compare logo refresh, visual identity, brand strategy, website, packaging and launch support.",
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/rebranding-cost-pakistan#breadcrumb',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
+            { '@type': 'ListItem', position: 3, name: "Rebranding Cost Pakistan: Practical Scope Guide in 2026", item: 'https://www.abuqitmirlabs.tech/blog/rebranding-cost-pakistan' }
+          ]
+        },
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/rebranding-cost-pakistan#article',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/rebranding-cost-pakistan#webpage' },
+          headline: "Rebranding Cost Pakistan: Practical Scope Guide in 2026",
+          description: "Understand rebranding cost in Pakistan by scope. Compare logo refresh, visual identity, brand strategy, website, packaging and launch support.",
+          image: "https://www.abuqitmirlabs.tech/images/blog-covers/rebranding-cost-pakistan-6b1f5c4e.webp",
+          author: {
+            '@type': 'Person',
+            name: "Abu Qitmir Mohammad Shiraz Al-Madani",
+            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+          },
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
+          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/rebranding-cost-pakistan#webpage' },
+          datePublished: "2026-11-12T00:00:00+00:00",
+          dateModified: "2026-11-12T00:00:00+00:00"
+        },
+        {
+          '@type': 'FAQPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/rebranding-cost-pakistan#faq',
+          mainEntity: [
+          {
+                    "@type": "Question",
+                    "name": "How much does rebranding cost in Pakistan?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "There is no single official rate. The cost depends on whether the project covers a visual refresh, a full identity system, strategy, copy, website work, packaging, printing, administration, launch or maintenance. Request an itemized quotation rather than relying on one national number."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "How much does a logo cost in Pakistan?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "A logo quotation varies by designer, research depth, number of concepts, revisions, formats, licensing, source files and usage requirements. A logo-only quote should not be presented as the cost of a complete rebrand."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Does changing a logo require an SECP name change?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Not necessarily. A visual change and a legal company-name change are different actions. If the legal company name is changing, SECP’s official process includes reserving the proposed new name before submitting the change application, along with the required reason, approval and documents. [1]"
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Does a rebrand require an FBR update?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "It depends on what changed. A change to a registered business or company particular may require an update, while a logo-only refresh may not. Check the relevant FBR process or ask a tax professional before assuming that no update is needed. [2]"
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Do I need to register the new logo or name as a trademark?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "A business should assess trademark protection before making a major investment in a new name or logo. IPO Pakistan’s Trade Marks Registry provides the official trademark information, forms and fee guidance. Registration questions should be reviewed with a qualified professional. [3]"
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Who pays for packaging and local printing?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Packaging artwork and physical production are normally separate cost items unless the quotation says otherwise. Ask the printer for a specification-based quote covering quantity, material, size, finish, proofing and delivery."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Should the website be changed with the logo?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "If the website is a major customer touchpoint, the new identity should be applied there as part of the implementation plan. The exact work may be a small asset update, a content refresh, a design system update or a full redesign. Scope it separately."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Do I receive editable source files?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Do not assume. Put the required formats, editable files, licences, usage rights and ownership terms in the contract. The legal effect of a transfer depends on the agreement and applicable law, so obtain professional advice for a high-value or disputed project."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "How long does a rebrand take?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "There is no universal timeline. Strategy, approvals, number of touchpoints, website work, packaging, printing and administrative steps all affect delivery. Ask for milestones rather than accepting an unsupported fixed number of weeks."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Can a rebrand guarantee better Google rankings?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "No. A rebrand can improve consistency, clarity, technical implementation and user experience, but rankings depend on many factors. No provider should guarantee a specific ranking or traffic result solely because a new identity was launched."
                     }
           }
 ]

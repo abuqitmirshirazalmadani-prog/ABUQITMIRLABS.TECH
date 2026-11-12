@@ -508,6 +508,7 @@ async function main() {
     "https://i.postimg.cc/vBhWpH0q/Lead-Generation-Content-Strategy-That-Works.jpg": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
     "https://i.postimg.cc/7YZRZy9q/Rebranding-Checklist-Pakistan-Before-During-and-After.jpg": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
     "https://i.postimg.cc/qqsFC1CD/Kuwait-Cybersecurity-Partner-Evaluation.png": "/images/blog-covers/kuwait-cybersecurity-partner-evaluation.webp",
+    "https://i.postimg.cc/9QdHdDB2/Logo-Design-Pricing-in-Pakistan-Explained.png": "/images/blog-covers/rebranding-cost-pakistan-6b1f5c4e.webp",
     "/images/blog-covers/lead-generation-content-strategy-google-meta-1576aa01.webp": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
     "/images/blog-covers/rebranding-checklist-pakistan-9252c088.webp": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
     "/images/blog-covers/kuwait-digital-transformation-866e51c6.webp": "/images/blog-covers/kuwait-cybersecurity-partner-evaluation.webp"
@@ -515,7 +516,8 @@ async function main() {
   const slugMap = {
     "lead-generation-content-strategy-google-meta": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
     "rebranding-checklist-pakistan": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
-    "kuwait-digital-transformation": "/images/blog-covers/kuwait-cybersecurity-partner-evaluation.webp"
+    "kuwait-digital-transformation": "/images/blog-covers/kuwait-cybersecurity-partner-evaluation.webp",
+    "rebranding-cost-pakistan": "/images/blog-covers/rebranding-cost-pakistan-6b1f5c4e.webp"
   };
 
   const ensureLocalCoverFileExists = (localWebpRelPath) => {
@@ -600,21 +602,40 @@ async function main() {
         }
 
         try {
-          const controller = new AbortController();
-          const timer = setTimeout(() => controller.abort(), 15000);
-          const res = await fetch(remoteUrl, {
-            signal: controller.signal,
-            headers: {
-              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-            }
-          });
-          clearTimeout(timer);
+          let inputBuffer = null;
+          try {
+            const controller = new AbortController();
+            const timer = setTimeout(() => controller.abort(), 15000);
+            const res = await fetch(remoteUrl, {
+              signal: controller.signal,
+              headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+              }
+            });
+            clearTimeout(timer);
 
-          if (!res.ok) {
-            throw new Error(`HTTP ${res.status}`);
+            if (!res.ok) {
+              throw new Error(`HTTP ${res.status}`);
+            }
+            const arrayBuffer = await res.arrayBuffer();
+            inputBuffer = Buffer.from(arrayBuffer);
+          } catch {
+            const curlTmp = path.join(os.tmpdir(), `${safeSlug}-${hash}-curl`);
+            execFileSync('curl', [
+              '-4',
+              '-L',
+              '-sS',
+              '--max-time',
+              '30',
+              '-A',
+              'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+              '-o',
+              curlTmp,
+              remoteUrl
+            ]);
+            inputBuffer = fs.readFileSync(curlTmp);
+            if (fs.existsSync(curlTmp)) fs.unlinkSync(curlTmp);
           }
-          const arrayBuffer = await res.arrayBuffer();
-          const inputBuffer = Buffer.from(arrayBuffer);
           const isAvatar = slug === 'author-abuqitmir-shiraz';
 
           if (sharp) {
