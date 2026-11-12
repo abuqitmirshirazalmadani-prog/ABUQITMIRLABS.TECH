@@ -57,6 +57,37 @@ export default defineConfig(({ mode }) => {
         apply: 'build' as const,
         closeBundle: async () => {
           if (process.env.VERCEL !== '1' && process.env.FULL_SEO_PRERENDER !== 'true') {
+            try {
+              const outDirQuick = path.resolve(process.cwd(), 'dist');
+              const idxPathQuick = path.join(outDirQuick, 'index.html');
+              if (fs.existsSync(idxPathQuick)) {
+                const currentIdxHtml = fs.readFileSync(idxPathQuick, 'utf-8');
+                fs.writeFileSync(path.join(outDirQuick, 'spa-shell.html'), currentIdxHtml, 'utf-8');
+                const cssTagMatch = currentIdxHtml.match(/<link\s+rel=["']stylesheet["'][^>]*href=["']\/assets\/index-[^"']+\.css["'][^>]*>/i);
+                const jsTagMatch = currentIdxHtml.match(/<script\s+type=["']module["'][^>]*src=["']\/assets\/index-[^"']+\.js["'][^>]*><\/script>/i);
+                const inlineStyleMatch = currentIdxHtml.match(/<style>[\s\S]*?<\/style>/i);
+                if (cssTagMatch && jsTagMatch) {
+                  for (const baseBlogDir of [path.join(outDirQuick, 'blog'), path.resolve(process.cwd(), 'public', 'blog')]) {
+                    if (!fs.existsSync(baseBlogDir)) continue;
+                    for (const entry of fs.readdirSync(baseBlogDir, { withFileTypes: true })) {
+                      if (!entry.isDirectory()) continue;
+                      const htmlFile = path.join(baseBlogDir, entry.name, 'index.html');
+                      if (!fs.existsSync(htmlFile)) continue;
+                      let raw = fs.readFileSync(htmlFile, 'utf-8');
+                      let updated = raw
+                        .replace(/<link\s+rel=["']stylesheet["'][^>]*href=["']\/assets\/index-[^"']+\.css["'][^>]*>/gi, cssTagMatch[0])
+                        .replace(/<script\s+type=["']module["'][^>]*src=["']\/assets\/index-[^"']+\.js["'][^>]*><\/script>/gi, jsTagMatch[0]);
+                      if (inlineStyleMatch && !updated.includes('@font-face')) {
+                        updated = updated.replace('</head>', `${inlineStyleMatch[0]}\n</head>`);
+                      }
+                      if (updated !== raw) {
+                        fs.writeFileSync(htmlFile, updated, 'utf-8');
+                      }
+                    }
+                  }
+                }
+              }
+            } catch {}
             console.log('⚡ [SEO Generator] Skipping heavy in-bundler route cloning to prevent container OOM (use FULL_SEO_PRERENDER=true or npm run prerender when needed).');
             return;
           }
@@ -804,36 +835,28 @@ export default defineConfig(({ mode }) => {
             // =======================================
 
             const writeRouteFiles = (rUrl: string, rDir: string, htmlContent: string) => {
-              let finalHtmlToWrite = htmlContent;
+              fs.writeFileSync(path.join(rDir, 'index.html'), htmlContent, 'utf-8');
               if (rUrl !== '/') {
                 const cleanRel = rUrl.replace(/^\/+/, '').replace(/\/+$/, '');
                 if (cleanRel) {
+                  const directHtmlPath = path.join(outDir, `${cleanRel}.html`);
+                  const parentDir = path.dirname(directHtmlPath);
+                  if (!fs.existsSync(parentDir)) fs.mkdirSync(parentDir, { recursive: true });
+                  fs.writeFileSync(directHtmlPath, htmlContent, 'utf-8');
                   if (cleanRel.startsWith('blog/')) {
                     const publicBlogFile = path.resolve(process.cwd(), 'public', cleanRel, 'index.html');
                     const publicBlogDir = path.dirname(publicBlogFile);
                     if (!fs.existsSync(publicBlogDir)) fs.mkdirSync(publicBlogDir, { recursive: true });
-                    if (fs.existsSync(publicBlogFile)) {
-                      const existingPublicHtml = fs.readFileSync(publicBlogFile, 'utf-8');
-                      if (
-                        existingPublicHtml.includes('data-article-content="true"') &&
-                        existingPublicHtml.includes('id="canonical-schema-graph"') &&
-                        !htmlContent.includes('data-testid="related-articles-section"')
-                      ) {
-                        finalHtmlToWrite = existingPublicHtml;
-                      } else if (existingPublicHtml !== htmlContent) {
-                        fs.writeFileSync(publicBlogFile, htmlContent, 'utf-8');
-                      }
-                    } else {
+                    if (!fs.existsSync(publicBlogFile) || fs.readFileSync(publicBlogFile, 'utf-8') !== htmlContent) {
                       fs.writeFileSync(publicBlogFile, htmlContent, 'utf-8');
                     }
+                    const stalePublicDirectHtml = path.resolve(process.cwd(), 'public', `${cleanRel}.html`);
+                    if (fs.existsSync(stalePublicDirectHtml)) {
+                      try { fs.unlinkSync(stalePublicDirectHtml); } catch {}
+                    }
                   }
-                  const directHtmlPath = path.join(outDir, `${cleanRel}.html`);
-                  const parentDir = path.dirname(directHtmlPath);
-                  if (!fs.existsSync(parentDir)) fs.mkdirSync(parentDir, { recursive: true });
-                  fs.writeFileSync(directHtmlPath, finalHtmlToWrite, 'utf-8');
                 }
               }
-              fs.writeFileSync(path.join(rDir, 'index.html'), finalHtmlToWrite, 'utf-8');
             };
 
             const injectSingleSchema = (htmlSource: string, schemaObj: any) => {
@@ -1218,6 +1241,11 @@ export default defineConfig(({ mode }) => {
                 const clonedSchema = JSON.parse(JSON.stringify(seoMeta.schemaJsonLd));
                 const fullCanonical = `${hostname}${route.url}`;
                 if (Array.isArray(clonedSchema['@graph'])) {
+                  delete clonedSchema['@type'];
+                  delete clonedSchema['@id'];
+                  delete clonedSchema['url'];
+                  delete clonedSchema['name'];
+                  delete clonedSchema['description'];
                   for (const node of clonedSchema['@graph']) {
                     if (node && node['@type'] === 'Article' && coverImgUrl) {
                       node.image = coverImgUrl;
@@ -1387,7 +1415,26 @@ export default defineConfig(({ mode }) => {
             const cleanH1Title = (route.url.startsWith('/blog/') && route.url !== '/blog')
               ? exactBlogTitle.replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim()
               : route.title;
-            const fallbackPrerenderHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader(route.url)}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${cleanH1Title}</h1><article class="prose prose-invert max-w-none text-neutral-300">${articleContent}</article></main></div>`;
+            let relatedArticlesHtml = '';
+            if (blogPostSlug) {
+              const currentCategory = STATIC_BLOG_POSTS[blogPostSlug]?.category || 'Business';
+              const allCandidates = Object.entries(STATIC_BLOG_POSTS)
+                .filter(([k, v]: [string, any]) => v && v.slug === k && k !== blogPostSlug && !BLOG_SLUG_REDIRECTS[k] && v.title)
+                .map(([, v]: [string, any]) => v);
+              const sameCat = allCandidates.filter((p: any) => p.category === currentCategory);
+              const otherCat = allCandidates.filter((p: any) => p.category !== currentCategory);
+              const pickedRelated = [...sameCat, ...otherCat].slice(0, 3);
+              if (pickedRelated.length > 0) {
+                const cardsHtml = pickedRelated.map((rel: any) => {
+                  const relTitle = escapeXml(String(rel.title || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim());
+                  const relExcerpt = escapeXml(String(rel.excerpt || rel.metaDescription || '').slice(0, 180));
+                  const relCat = escapeXml(String(rel.category || 'Business'));
+                  return `<li class="group bg-[#0b0b0e] border border-zinc-800/80 rounded-[2rem] p-7 flex flex-col justify-between">\n  <div>\n    <div class="flex items-center justify-between gap-2 mb-4"><span class="inline-block px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] text-[10px] font-mono font-bold uppercase tracking-wider">${relCat}</span></div>\n    <h3 class="text-lg font-black text-white leading-snug mb-3 font-serif uppercase tracking-tight"><a href="/blog/${escapeXml(rel.slug)}" data-testid="related-article-link" class="hover:text-[#ccff00] transition-colors">${relTitle}</a></h3>\n    <p class="text-zinc-400 text-xs leading-relaxed mb-6 font-sans">${relExcerpt}</p>\n  </div>\n  <div class="pt-4 border-t border-zinc-800/60"><a href="/blog/${escapeXml(rel.slug)}" class="inline-flex items-center justify-between w-full text-xs font-mono font-bold uppercase tracking-wider text-zinc-300 hover:text-[#ccff00]"><span>Read Article</span></a></div>\n</li>`;
+                }).join('\n');
+                relatedArticlesHtml = `\n<section aria-label="Related Articles" data-testid="related-articles-section" class="mt-16 pt-10 border-t border-zinc-800/80">\n  <h2 class="mb-8 text-2xl md:text-3xl font-black text-white uppercase tracking-tight font-serif">Related Articles</h2>\n  <ul class="grid grid-cols-1 md:grid-cols-3 gap-6 list-none p-0 m-0">\n${cardsHtml}\n  </ul>\n</section>`;
+              }
+            }
+            const fallbackPrerenderHtml = `<div class="min-h-screen bg-[#050505] text-white">\n${renderStaticHeader(route.url)}\n<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16">\n  <header class="mb-8">\n    <h1 itemProp="headline" class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${escapeXml(cleanH1Title)}</h1>\n  </header>\n  <article itemProp="articleBody" data-article-content="true" class="prose prose-invert max-w-none text-neutral-300">\n${articleContent}\n  </article>${relatedArticlesHtml}\n</main>\n</div>`;
             routeHtml = replaceRootElement(routeHtml, fallbackPrerenderHtml, route.url);
             
             writeRouteFiles(route.url, routeDir, routeHtml);

@@ -137,7 +137,26 @@ export default async function handler(req: any, res: any) {
     ];
     for (const candidate of staticCandidates) {
       if (fs.existsSync(candidate)) {
-        const html = fs.readFileSync(candidate, 'utf-8');
+        let html = fs.readFileSync(candidate, 'utf-8');
+        // Ensure CSS and JS bundle hashes match the current deployment's spa-shell.html / index.html
+        const currentShellCandidates = [
+          path.join(process.cwd(), 'dist', 'spa-shell.html'),
+          path.join(process.cwd(), 'dist', 'index.html'),
+        ];
+        for (const sc of currentShellCandidates) {
+          if (fs.existsSync(sc)) {
+            const shellContent = fs.readFileSync(sc, 'utf-8');
+            const currentCss = shellContent.match(/\/assets\/index-[^"'>]+\.css/i)?.[0];
+            const currentJs = shellContent.match(/\/assets\/index-[^"'>]+\.js/i)?.[0];
+            if (currentCss) {
+              html = html.replace(/\/assets\/index-[^"'>]+\.css/gi, currentCss);
+            }
+            if (currentJs) {
+              html = html.replace(/\/assets\/index-[^"'>]+\.js/gi, currentJs);
+            }
+            break;
+          }
+        }
         res.setHeader('Content-Type', 'text/html; charset=utf-8');
         res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=15, must-revalidate');
         if (req.method === 'HEAD') return res.status(200).end();
