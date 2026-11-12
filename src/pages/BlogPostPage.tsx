@@ -3384,16 +3384,14 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                 <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to The Journal
                             </Link>
                         </div>
-                        <div itemProp="headline" className="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight leading-[1.1] font-serif animate-enter animate-enter-delay-1">
-                            <h1>
-                                {slug === 'brand-refresh-vs-rebrand'
-                                    ? "Brand Refresh vs Rebrand Pakistan: A Founder's Decision Guide"
-                                    : String(post.title || '')
-                                          .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
-                                          .replace(/\s*\|\s*The\s*9-Step.*$/i, '')
-                                          .trim()}
-                            </h1>
-                        </div>
+                        <h1 itemProp="headline" className="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight leading-[1.1] font-serif animate-enter animate-enter-delay-1">
+                            {slug === 'brand-refresh-vs-rebrand'
+                                ? "Brand Refresh vs Rebrand Pakistan: A Founder's Decision Guide"
+                                : String(post.title || '')
+                                      .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
+                                      .replace(/\s*\|\s*The\s*9-Step.*$/i, '')
+                                      .trim()}
+                        </h1>
                         {(post.heroSubtitle || slug === 'lead-generation-content-strategy-google-meta') && (
                             <p
                                 itemProp="alternativeHeadline"
@@ -3521,22 +3519,22 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                             h1: ({node, children, ...props}: any) => {
                                                 const text = extractNodeText(children);
                                                 const id = slugifyHeading(text);
-                                                return <div id={id || undefined} className="scroll-mt-32 text-3xl md:text-4xl font-black text-white uppercase tracking-tight mt-12 mb-6 font-serif border-b border-zinc-800/80 pb-4" {...props}><h2>{children}</h2></div>;
+                                                return <h2 id={id || undefined} className="scroll-mt-32 text-3xl md:text-4xl font-black text-white uppercase tracking-tight mt-12 mb-6 font-serif border-b border-zinc-800/80 pb-4" {...props}>{children}</h2>;
                                             },
                                             h2: ({node, children, ...props}: any) => {
                                                 const text = extractNodeText(children);
                                                 const id = slugifyHeading(text);
-                                                return <div id={id || undefined} className="scroll-mt-32 text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3" {...props}><h2>{children}</h2></div>;
+                                                return <h2 id={id || undefined} className="scroll-mt-32 text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3" {...props}>{children}</h2>;
                                             },
                                             h3: ({node, children, ...props}: any) => {
                                                 const text = extractNodeText(children);
                                                 const id = slugifyHeading(text);
-                                                return <div id={id || undefined} className="scroll-mt-32 text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif" {...props}><h3>{children}</h3></div>;
+                                                return <h3 id={id || undefined} className="scroll-mt-32 text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif" {...props}>{children}</h3>;
                                             },
                                             h4: ({node, children, ...props}: any) => {
                                                 const text = extractNodeText(children);
                                                 const id = slugifyHeading(text);
-                                                return <div id={id || undefined} className="scroll-mt-32 text-lg font-bold text-zinc-200 mt-6 mb-2 font-serif" {...props}><h4>{children}</h4></div>;
+                                                return <h4 id={id || undefined} className="scroll-mt-32 text-lg font-bold text-zinc-200 mt-6 mb-2 font-serif" {...props}>{children}</h4>;
                                             },
                                             a: ({node, href, children, ...props}) => {
                                                 if (href && href.startsWith('/')) {
@@ -3662,14 +3660,11 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         <section
                             aria-label="Related Articles"
                             data-testid="related-articles-section"
-                            data-nosnippet
                             className="mt-16 pt-10 border-t border-zinc-800/80"
                         >
-                            <div className="mb-8 text-2xl md:text-3xl font-black text-white uppercase tracking-tight font-serif">
-                                <h2>
-                                    Related Articles
-                                </h2>
-                            </div>
+                            <h2 className="mb-8 text-2xl md:text-3xl font-black text-white uppercase tracking-tight font-serif">
+                                Related Articles
+                            </h2>
 
                             <ul className="grid grid-cols-1 md:grid-cols-3 gap-6 list-none p-0 m-0">
                                 {relatedPosts.map((related) => {
@@ -3693,17 +3688,15 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                                     </span>
                                                 </div>
 
-                                                <div className="text-lg font-black text-white group-hover:text-[#ccff00] transition-colors leading-snug mb-3 font-serif uppercase tracking-tight line-clamp-3">
-                                                    <h3>
-                                                        <Link
-                                                            to={`/blog/${related.slug}`}
-                                                            data-testid="related-article-link"
-                                                            className="hover:text-[#ccff00] transition-colors"
-                                                        >
-                                                            {related.title}
-                                                        </Link>
-                                                    </h3>
-                                                </div>
+                                                <h3 className="text-lg font-black text-white group-hover:text-[#ccff00] transition-colors leading-snug mb-3 font-serif uppercase tracking-tight line-clamp-3">
+                                                    <Link
+                                                        to={`/blog/${related.slug}`}
+                                                        data-testid="related-article-link"
+                                                        className="hover:text-[#ccff00] transition-colors"
+                                                    >
+                                                        {related.title}
+                                                    </Link>
+                                                </h3>
 
                                                 {related.excerpt && (
                                                     <p className="text-zinc-400 text-xs leading-relaxed line-clamp-3 mb-6 font-sans">

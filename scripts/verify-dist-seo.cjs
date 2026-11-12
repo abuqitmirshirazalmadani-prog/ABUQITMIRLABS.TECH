@@ -206,7 +206,6 @@ for (const filePath of htmlFiles) {
     const pageTitle = formatConciseTitle(titleMatch ? titleMatch[1].trim() : 'AbuQitmirLabs', routeFromRel);
     const fallbackSchema = {
       "@context": "https://schema.org",
-      "@type": "WebPage",
       "@graph": [
         {
           "@type": "Organization",
@@ -235,6 +234,14 @@ for (const filePath of htmlFiles) {
     try {
       const parsed = JSON.parse(jsonRaw);
       let schemaChanged = false;
+      if (Array.isArray(parsed['@graph']) && parsed['@type']) {
+        delete parsed['@type'];
+        delete parsed['@id'];
+        delete parsed['url'];
+        delete parsed['name'];
+        delete parsed['description'];
+        schemaChanged = true;
+      }
       const fixNode = (n) => {
         if (!n || typeof n !== 'object') return;
         const nType = Array.isArray(n['@type']) ? n['@type'].join(',') : String(n['@type'] || '');

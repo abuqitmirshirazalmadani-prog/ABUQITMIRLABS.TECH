@@ -79,12 +79,12 @@ export interface NextStyleMetadata {
   };
   schemaGraph: {
     '@context': 'https://schema.org';
-    '@type': string;
+    '@type'?: string;
     '@graph': Array<Record<string, any>>;
   };
   jsonLdGraph: {
     '@context': 'https://schema.org';
-    '@type': string;
+    '@type'?: string;
     '@graph': Array<Record<string, any>>;
   };
   preloadCoverHref?: string;
@@ -342,7 +342,7 @@ export function buildConsolidatedSchemaGraph(
   description: string,
   imageUrl: string,
   customSchema?: Record<string, any> | Array<Record<string, any>>
-): { '@context': 'https://schema.org'; '@type': string; '@graph': Array<Record<string, any>> } {
+): { '@context': 'https://schema.org'; '@type'?: string; '@graph': Array<Record<string, any>> } {
   const urlPath = canonicalUrl.replace(/^https?:\/\/[^/]+/i, '') || '/';
   const cleanUrlPath = urlPath.endsWith('/') && urlPath !== '/' ? urlPath.slice(0, -1) : urlPath;
 
@@ -551,7 +551,6 @@ export function buildConsolidatedSchemaGraph(
 
   return {
     '@context': 'https://schema.org',
-    '@type': 'WebPage',
     '@graph': merged,
   };
 }

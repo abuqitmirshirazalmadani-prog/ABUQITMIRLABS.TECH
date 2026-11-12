@@ -804,24 +804,36 @@ export default defineConfig(({ mode }) => {
             // =======================================
 
             const writeRouteFiles = (rUrl: string, rDir: string, htmlContent: string) => {
-              fs.writeFileSync(path.join(rDir, 'index.html'), htmlContent, 'utf-8');
+              let finalHtmlToWrite = htmlContent;
               if (rUrl !== '/') {
                 const cleanRel = rUrl.replace(/^\/+/, '').replace(/\/+$/, '');
                 if (cleanRel) {
-                  const directHtmlPath = path.join(outDir, `${cleanRel}.html`);
-                  const parentDir = path.dirname(directHtmlPath);
-                  if (!fs.existsSync(parentDir)) fs.mkdirSync(parentDir, { recursive: true });
-                  fs.writeFileSync(directHtmlPath, htmlContent, 'utf-8');
                   if (cleanRel.startsWith('blog/')) {
                     const publicBlogFile = path.resolve(process.cwd(), 'public', cleanRel, 'index.html');
                     const publicBlogDir = path.dirname(publicBlogFile);
                     if (!fs.existsSync(publicBlogDir)) fs.mkdirSync(publicBlogDir, { recursive: true });
-                    if (!fs.existsSync(publicBlogFile) || fs.readFileSync(publicBlogFile, 'utf-8') !== htmlContent) {
+                    if (fs.existsSync(publicBlogFile)) {
+                      const existingPublicHtml = fs.readFileSync(publicBlogFile, 'utf-8');
+                      if (
+                        existingPublicHtml.includes('data-article-content="true"') &&
+                        existingPublicHtml.includes('id="canonical-schema-graph"') &&
+                        !htmlContent.includes('data-testid="related-articles-section"')
+                      ) {
+                        finalHtmlToWrite = existingPublicHtml;
+                      } else if (existingPublicHtml !== htmlContent) {
+                        fs.writeFileSync(publicBlogFile, htmlContent, 'utf-8');
+                      }
+                    } else {
                       fs.writeFileSync(publicBlogFile, htmlContent, 'utf-8');
                     }
                   }
+                  const directHtmlPath = path.join(outDir, `${cleanRel}.html`);
+                  const parentDir = path.dirname(directHtmlPath);
+                  if (!fs.existsSync(parentDir)) fs.mkdirSync(parentDir, { recursive: true });
+                  fs.writeFileSync(directHtmlPath, finalHtmlToWrite, 'utf-8');
                 }
               }
+              fs.writeFileSync(path.join(rDir, 'index.html'), finalHtmlToWrite, 'utf-8');
             };
 
             const injectSingleSchema = (htmlSource: string, schemaObj: any) => {
@@ -1073,7 +1085,8 @@ export default defineConfig(({ mode }) => {
                   tableRows = [];
                 };
 
-                for (const line of lines) {
+                for (let lineIdx = 0; lineIdx < lines.length; lineIdx++) {
+                  const line = lines[lineIdx];
                   const trimmed = line.replace(/[\u200B-\u200D\uFEFF]/g, '').trim();
                   if (trimmed.startsWith('```')) {
                     flushLists();
@@ -1091,7 +1104,24 @@ export default defineConfig(({ mode }) => {
                     codeBlockLines.push(line);
                     continue;
                   }
-                  if (!trimmed || trimmed === '---' || /^\*?(\*\*)?By\s+Abu\s*Qitmir/i.test(trimmed)) {
+                  if (!trimmed) {
+                    let nextNonEmpty = '';
+                    for (let k = lineIdx + 1; k < lines.length; k++) {
+                      const cand = lines[k].replace(/[\u200B-\u200D\uFEFF]/g, '').trim();
+                      if (cand) {
+                        nextNonEmpty = cand;
+                        break;
+                      }
+                    }
+                    const continuesUl = ulItems.length > 0 && /^[-*+]\s+/.test(nextNonEmpty);
+                    const continuesOl = olItems.length > 0 && /^\d+[\.\)]\s+/.test(nextNonEmpty);
+                    if (!continuesUl && !continuesOl) {
+                      flushLists();
+                    }
+                    flushTable();
+                    continue;
+                  }
+                  if (trimmed === '---' || /^\*?(\*\*)?By\s+Abu\s*Qitmir/i.test(trimmed)) {
                     flushLists();
                     flushTable();
                     continue;
