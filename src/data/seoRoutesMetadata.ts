@@ -11821,15 +11821,15 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     }
   },
   '/blog/rebranding-cost-pakistan': {
-    title: "Rebranding Cost Pakistan | AbuQitmirLabs",
+    title: "Rebranding Cost Pakistan: Practical Scope Guide in 2026",
     description: "Understand rebranding cost in Pakistan by scope. Compare logo refresh, visual identity, brand strategy, website, packaging and launch support.",
     canonical: 'https://www.abuqitmirlabs.tech/blog/rebranding-cost-pakistan',
-    ogTitle: "Rebranding Cost Pakistan | AbuQitmirLabs",
+    ogTitle: "Rebranding Cost Pakistan: Practical Scope Guide in 2026",
     ogDescription: "Understand rebranding cost in Pakistan by scope. Compare logo refresh, visual identity, brand strategy, website, packaging and launch support.",
     ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/rebranding-cost-pakistan-6b1f5c4e.webp",
     ogType: 'article',
     twitterCard: 'summary_large_image',
-    twitterTitle: "Rebranding Cost Pakistan | AbuQitmirLabs",
+    twitterTitle: "Rebranding Cost Pakistan: Practical Scope Guide in 2026",
     twitterDescription: "Understand rebranding cost in Pakistan by scope. Compare logo refresh, visual identity, brand strategy, website, packaging and launch support.",
     twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/rebranding-cost-pakistan-6b1f5c4e.webp",
     schemaJsonLd: {
@@ -11853,7 +11853,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebPage',
           '@id': 'https://www.abuqitmirlabs.tech/blog/rebranding-cost-pakistan#webpage',
           url: 'https://www.abuqitmirlabs.tech/blog/rebranding-cost-pakistan',
-          name: "Rebranding Cost Pakistan | AbuQitmirLabs",
+          name: "Rebranding Cost Pakistan: Practical Scope Guide in 2026",
           description: "Understand rebranding cost in Pakistan by scope. Compare logo refresh, visual identity, brand strategy, website, packaging and launch support.",
           isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
         },

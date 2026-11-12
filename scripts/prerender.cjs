@@ -164,6 +164,8 @@ const TITLE_OVERRIDES = {
     'Offshore AI Agent Development Partner UAE | AbuQitmirLabs',
   '/blog/brand-refresh-vs-rebrand':
     'Brand Refresh vs Rebrand Pakistan | AbuQitmirLabs',
+  '/blog/rebranding-cost-pakistan':
+    'Rebranding Cost Pakistan: Practical Scope Guide in 2026',
   '/blog/lead-generation-content-strategy-google-meta':
     'B2B Lead Generation Content Strategy: Google + Meta',
   '/local-seo-for-small-business': 'Local SEO Services for Small Business | AbuQitmirLabs',

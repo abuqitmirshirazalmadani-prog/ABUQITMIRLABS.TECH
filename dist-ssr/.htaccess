@@ -1,5 +1,0 @@
-# Prevent directory browsing / directory listing
-Options -Indexes
-
-# Fallback index files
-DirectoryIndex index.html index.php
