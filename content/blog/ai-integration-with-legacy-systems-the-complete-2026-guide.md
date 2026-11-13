@@ -1,9 +1,10 @@
 ---
 {
   "title": "AI Integration with Legacy Systems: The Complete 2026 Guide",
+  "seoTitle": "AI Integration with Legacy Systems: 2026 Enterprise Guide",
   "slug": "ai-integration-with-legacy-systems-the-complete-2026-guide",
-  "excerpt": "There is a particular kind of CTO or IT director who finds their way to this page. They are not starting from scratch — they have a system that has been running for seven, ten, sometimes fifteen years. It works. It holds the business together. And now the board wants AI in it by Q3. The question is never really \"should we modernize?\" It is always the harder one: how do we add intelligence to something that cannot afford to go down?",
-  "metaDescription": "There is a particular kind of CTO or IT director who finds their way to this page. They are not starting from scratch — they have a system that has been running for seven, ten, sometimes fifteen years. It works. It holds the business together. And now the board wants AI in it by Q3. The question is never really \"should we modernize?\" It is always the harder one: how do we add intelligence to something that cannot afford to go down?",
+  "excerpt": "Connect LLM agents to your ERP, CRM, or SQL database without downtime. 7 middleware strategies tested across real enterprise integrations in 2026.",
+  "metaDescription": "Connect LLM agents to your ERP, CRM, or SQL database without downtime. 7 middleware strategies tested across real enterprise integrations in 2026.",
   "coverImage": "/images/blog-covers/ai-integration-with-legacy-systems-the-complete-2026-guide-da6c37be.webp",
   "coverImageAlt": "AI Integration with Legacy Systems: The Complete 2026 Guide",
   "category": "AI",

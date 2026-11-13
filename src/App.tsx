@@ -141,6 +141,7 @@ function RouteSEO() {
       twitterDescription={routeSeo?.twitterDescription}
       twitterImage={routeSeo?.twitterImage}
       robots={routeSeo?.robots}
+      schema={routeSeo?.schemaJsonLd || routeSeo?.schema}
     />
   );
 }
@@ -412,6 +413,7 @@ function AppRoutes() {
           <Route path="/tech-stack-recommender" element={<Navigate to="/tools/tech-stack-recommender" replace />} />
           <Route path="/tools/website-authority-analyzer" element={<WebsiteAuthorityAnalyzerPage />} />
           <Route path="/website-authority-analyzer" element={<Navigate to="/tools/website-authority-analyzer" replace />} />
+          <Route path="/login" element={<AdminDashboard />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/seo" element={<AdminSeoFixPage />} />
           <Route path="/404" element={<NotFoundPage />} />

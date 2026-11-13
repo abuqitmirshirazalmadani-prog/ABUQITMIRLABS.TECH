@@ -1,8 +1,9 @@
 ---
 {
   "title": "AI Automation for Regulated Industries",
+  "seoTitle": "AI Automation for Regulated Industries (2026) | AbuQitmirLabs",
   "slug": "ai-automation-compliance",
-  "metaDescription": "A guide to AI automation in regulated industries. Learn what's allowed in fintech and healthcare, and how to build compliant AI systems.",
+  "metaDescription": "Build HIPAA, SOC 2, and GDPR compliant AI systems. Learn how RAG pipelines, audit trails, and human-in-the-loop pass enterprise security reviews.",
   "coverImage": "/images/blog-covers/ai-automation-compliance-79cfaf63.webp",
   "category": "AI",
   "author": "Abu Qitmir Mohammad Shiraz Al-Madani",

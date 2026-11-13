@@ -308,12 +308,81 @@ export const WebsiteAuditPage: React.FC = () => {
     URL.revokeObjectURL(downloadUrl);
   };
 
+  const websiteAuditSchema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      '@id': 'https://www.abuqitmirlabs.tech/tools/website-audit#software',
+      name: 'Website Audit Tool by AbuQitmirLabs',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
+      url: 'https://www.abuqitmirlabs.tech/tools/website-audit',
+      description:
+        '45-point website audit covering Core Web Vitals, SEO health, and mobile performance. Built for founders and small business owners. No signup needed.',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+      provider: {
+        '@type': 'Organization',
+        '@id': 'https://www.abuqitmirlabs.tech/#organization',
+        name: 'AbuQitmirLabs',
+        url: 'https://www.abuqitmirlabs.tech',
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      '@id': 'https://www.abuqitmirlabs.tech/tools/website-audit#faq',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'How does this website audit program work for founders and small businesses?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Our website audit program runs a live URL audit across 6 pillars: Crawlability, Technical SEO, Core Web Vitals performance, Accessibility, Security headers, and B2B Conversion Readiness. You get an instant prioritized Fix Today and Fix This Week engineering roadmap with PDF and CSV exports.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What does the live URL audit check during a technical SEO audit?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'The live URL audit inspects HTTP 200 status codes, redirect chains, canonical tags, title and meta description length, H1 to H3 heading structure, JSON-LD schema markup, CrUX field metrics, Lighthouse lab speed, and TLS security headers.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Do you offer a hands-on website auditing service and engineering implementation?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. After running this automated diagnostic, founders can share the exported PDF or CSV report with the AbuQitmirLabs engineering team for a comprehensive website auditing service and direct code implementation.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Does passing Core Web Vitals guarantee higher Google rankings?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'No. Core Web Vitals are important user-experience signals used by Google ranking systems, not a standalone ranking guarantee. Sustainable search growth combines technical speed with strong search-intent alignment and authoritative content.',
+          },
+        },
+      ],
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-[#050505] text-white flex flex-col">
       <SEO
-        title="Free Website Growth Audit Tool | AbuQitmirLabs"
-        description="Find the issues slowing down your website, reducing search visibility and creating conversion friction with our deterministic Website Growth Audit."
+        title="Website Audit Tool for Founders | Free | AbuQitmirLabs"
+        description="45-point website audit covering Core Web Vitals, SEO health, and mobile performance. Built for founders and small business owners. No signup needed."
         canonical="https://www.abuqitmirlabs.tech/tools/website-audit"
+        ogTitle="Website Audit Tool for Founders | Free | AbuQitmirLabs"
+        ogDescription="45-point website audit covering Core Web Vitals, SEO health, and mobile performance. Built for founders and small business owners. No signup needed."
+        twitterTitle="Website Audit Tool for Founders | Free | AbuQitmirLabs"
+        twitterDescription="45-point website audit covering Core Web Vitals, SEO health, and mobile performance. Built for founders and small business owners. No signup needed."
+        schema={websiteAuditSchema}
       />
 
       {/* Global Brand Header */}
@@ -324,15 +393,15 @@ export const WebsiteAuditPage: React.FC = () => {
         <header className="text-center max-w-4xl mx-auto space-y-5">
           <div className="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono text-[#CCFF00]">
             <ShieldCheck className="w-4 h-4" />
-            <span>Deterministic HTTP, DOM, CrUX Field &amp; Lighthouse Lab Inspector</span>
+            <span>Website Audit Program • Live URL Audit, CrUX Field &amp; Lighthouse Lab Inspector</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-[1.08]">
-            Free Website Growth Audit
+            Website Audit Tool for Founders
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Find the issues slowing down your website, reducing search visibility and creating conversion friction.
+            Run an instant URL audit covering Core Web Vitals, technical SEO health, security headers, and conversion friction. Built for startup founders and small business owners in the US, UK, GCC, and Pakistan.
           </p>
 
           {/* Truthful methodology badges */}
@@ -343,11 +412,11 @@ export const WebsiteAuditPage: React.FC = () => {
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/[0.03] border border-white/10">
               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-              38 Verifiable Engineering Checks
+              38+ Verifiable Engineering Checks
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/[0.03] border border-white/10">
               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-              Zero Fabricated AI Claims
+              Instant PDF &amp; CSV Export
             </span>
           </div>
         </header>

@@ -34,19 +34,47 @@ function getAllHtmlFiles(dir, fileList = []) {
 const TITLE_OVERRIDES = {
   '/': 'Custom Software, AI & SEO Engineering | AbuQitmirLabs',
   '/growth-engineering': 'Growth Engineering: Software, AI & SEO | AbuQitmirLabs',
+  '/blog/best-ai-tools-for-software-development-in-2026':
+    '23 AI Tools Developers Actually Ship Code With (2026)',
   '/blog/ai-integration-with-legacy-systems-the-complete-2026-guide':
-    'AI in Enterprise Software: 2026 Guide | AbuQitmirLabs',
+    'AI Integration with Legacy Systems: 2026 Enterprise Guide',
+  '/tools/website-audit':
+    'Website Audit Tool for Founders | Free | AbuQitmirLabs',
+  '/blog/best-no-code-app-builders-in-2026-for-startups-businesses':
+    '9 No-Code App Builders That Actually Launch in 2026',
+  '/web-development': 'Web Development Services in Pakistan | AbuQitmirLabs',
+  '/ai-agent-development':
+    'AI Agent Development Services | RAG & LLM | AbuQitmirLabs',
+  '/blog/high-performance-web-applications-12-engineering-decisions':
+    'High-Performance Web Apps: 12 Architecture Rules (2026)',
+  '/blog/brand-audit-checklist-pakistan':
+    'Brand Audit Checklist Pakistan: 25 Tests | AbuQitmirLabs',
+  '/about': 'About AbuQitmirLabs | B2B Growth Engineering Since 2021',
+  '/about/our-company': 'Our Company & 100% IP Ownership Model | AbuQitmirLabs',
+  '/blog': 'Software, AI & SEO Engineering Playbooks | AbuQitmirLabs',
+  '/tools': '6 Interactive Founder & SEO Audit Tools | AbuQitmirLabs',
+  '/case-studies/tajweedpage':
+    'TajweedPage Case Study: 20+ Countries in 10 Days | AI SEO',
+  '/tools/project-cost-estimator':
+    'Software & AI Project Cost Calculator 2026 | AbuQitmirLabs',
+  '/blog/soc-2-fintech-startups':
+    'SOC 2 for Fintech Startups: 2026 Cost & 12-Step Checklist',
+  '/blog/geo-content-writing':
+    'GEO Content Structure & Formatting: 2026 Citation Guide',
+  '/saudi-arabia-market':
+    'Fintech & Custom Software Development Saudi Arabia | KSA',
+  '/blog/ai-automation-compliance':
+    'AI for Regulated Industries: 2026 Compliance Architecture',
+  '/blog/5-minute-technical-audit-for-founders':
+    'Technology Audit for Founders: 10 Checks in 5 Minutes',
   '/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026':
     'Flutter vs React Native: Which Is Better in 2026?',
   '/blog/offshore-software-development-saudi-arabia':
-    'Offshore Software Development Saudi Arabia: Save 40–60%',
-  '/case-studies/tajweedpage':
-    'TajweedPage Case Study: AI EdTech & SEO | AbuQitmirLabs',
+    'Offshore Software Development Saudi Arabia: Save 40-60%',
   '/contact': 'Contact & Book a Discovery Call | AbuQitmirLabs',
   '/privacy': 'Privacy Policy & Data Protection | AbuQitmirLabs',
   '/terms': 'Terms of Service & IP Ownership | AbuQitmirLabs',
   '/about/our-process': 'Our 5-Step Software Delivery Process | AbuQitmirLabs',
-  '/web-development': 'Custom Web Application Development | AbuQitmirLabs',
   '/local-seo-for-small-business': 'Local SEO Services for Small Business | AbuQitmirLabs',
   '/blog/offshore-ai-agent-development-partner-uae':
     'Offshore AI Agent Development Partner UAE | AbuQitmirLabs',
@@ -74,19 +102,20 @@ function formatConciseTitle(rawTitle, pathname) {
     .replace(/\s+/g, ' ')
     .trim();
   if (!cleaned) return 'Custom Software, AI & SEO Engineering | AbuQitmirLabs';
-  if (/Abu\s*Qitmir\s*Labs/i.test(cleaned) && cleaned.length >= 30 && cleaned.length <= 60) {
+  if (/Abu\s*Qitmir\s*Labs/i.test(cleaned) && cleaned.length >= 30 && cleaned.length <= 60 && !/\s+(?:in|for|to|with|of|on|at|by|from|into|vs\.?|and|or|the|a|an)\s*\|\s*AbuQitmirLabs/i.test(cleaned)) {
     return cleaned;
   }
 
   const core = cleaned
     .replace(/\s*[|–—-]\s*Abu\s*Qitmir\s*Labs(?:\s*\.?\s*TECH)?.*$/i, '')
+    .replace(/\s+(?:in|for|to|with|of|on|at|by|from|into|vs\.?|and|or|the|a|an)$/i, '')
     .trim();
   if (!core) return 'Custom Software, AI & SEO Engineering | AbuQitmirLabs';
 
   const withBrand = `${core} | AbuQitmirLabs`;
   if (withBrand.length >= 30 && withBrand.length <= 60) return withBrand;
   if (withBrand.length < 30) {
-    const padded = `${core} — Engineering & AI | AbuQitmirLabs`;
+    const padded = `${core}: Engineering & AI | AbuQitmirLabs`;
     if (padded.length <= 60) return padded;
     const altPadded = `${core} Guide | AbuQitmirLabs`;
     if (altPadded.length >= 30 && altPadded.length <= 60) return altPadded;
@@ -111,7 +140,10 @@ function formatConciseTitle(rawTitle, pathname) {
       break;
     }
   }
-  acc = acc.replace(/[,;:\-–—&]+$/, '').trim();
+  acc = acc
+    .replace(/[,;:\-–—&]+$/, '')
+    .replace(/\s+(?:in|for|to|with|of|on|at|by|from|into|vs\.?|and|or|the|a|an)$/i, '')
+    .trim();
   if (acc.length >= 16) {
     return `${acc} | AbuQitmirLabs`;
   }
@@ -125,7 +157,11 @@ function formatConciseTitle(rawTitle, pathname) {
       break;
     }
   }
-  const finalStandalone = standalone.replace(/[,;:\-–—&]+$/, '').trim() || core.slice(0, 57).trim();
+  const finalStandalone =
+    standalone
+      .replace(/[,;:\-–—&]+$/, '')
+      .replace(/\s+(?:in|for|to|with|of|on|at|by|from|into|vs\.?|and|or|the|a|an)$/i, '')
+      .trim() || core.slice(0, 57).trim();
   if (finalStandalone.length < 30) {
     return `${finalStandalone.slice(0, 42).trim()} | AbuQitmirLabs`;
   }

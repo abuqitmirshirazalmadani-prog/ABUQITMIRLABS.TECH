@@ -91,6 +91,21 @@ const METHODOLOGY_TOPICS: MethodologyTopic[] = [
 
 const FAQS = [
   {
+    question: 'How does this website audit program work for founders and small businesses?',
+    answer:
+      'Our website audit program runs a live URL audit across 6 pillars: Crawlability, Technical SEO, Core Web Vitals performance, Accessibility, Security headers, and B2B Conversion Readiness. You get an instant prioritized Fix Today and Fix This Week engineering roadmap with PDF and CSV exports.',
+  },
+  {
+    question: 'What does the live URL audit check during a technical SEO audit?',
+    answer:
+      'The live URL audit inspects HTTP 200 status codes, redirect chains, canonical tags, title and meta description length, H1 to H3 heading structure, JSON-LD schema markup, CrUX field metrics, Lighthouse lab speed, and TLS security headers.',
+  },
+  {
+    question: 'Do you offer a hands-on website auditing service and engineering implementation?',
+    answer:
+      'Yes. After running this automated diagnostic, founders can share the exported PDF or CSV report with the AbuQitmirLabs engineering team for a comprehensive website auditing service and direct code implementation.',
+  },
+  {
     question: 'Does passing Core Web Vitals guarantee higher Google rankings?',
     answer:
       'No. Core Web Vitals are important user-experience signals used by Google’s ranking systems. They are not a ranking guarantee. Fixing slow LCP, INP, or CLS reduces visitor bounce rates and supports technical eligibility, but sustainable search growth also requires strong search-intent alignment, original proof, and clean information architecture.',

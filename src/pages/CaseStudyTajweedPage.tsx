@@ -22,14 +22,14 @@ export default function CaseStudyTajweedPage() {
     "@context": "https://schema.org",
     "@type": "TechArticle",
     "@id": "https://www.abuqitmirlabs.tech/case-studies/tajweedpage#article",
-    "headline": "TajweedPage.com: AI-Powered Quran Learning Platform Case Study",
-    "description": "How AbuQitmirLabs engineered TajweedPage.com with a Next.js full-stack architecture, domain-grounded RAG Tajweed assistant, and programmatic SEO across 20+ countries in 10 days.",
+    "headline": "TajweedPage Case Study: 20+ Countries in 10 Days | AI SEO",
+    "description": "How AbuQitmirLabs built TajweedPage.com in 10 days: Next.js SSR, RAG AI Tajweed tutor, and programmatic SEO ranking across 20+ countries. Full breakdown.",
     "url": "https://www.abuqitmirlabs.tech/case-studies/tajweedpage",
     "datePublished": "2026-02-10T10:00:00.000Z",
-    "dateModified": "2026-11-05T10:00:00.000Z",
+    "dateModified": "2026-11-14T10:00:00.000Z",
     "author": {
       "@type": "Person",
-      "name": "Abu Qitmir Mohammad Shiraz Al-Madani"
+      "name": "AbuQitmir Mohammad Shiraz Al Madani"
     },
     "publisher": {
       "@type": "Organization",
@@ -45,11 +45,11 @@ export default function CaseStudyTajweedPage() {
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-[#ccff00] selection:text-black">
       <SEO
-        title="TajweedPage Case Study: AI EdTech & SEO | AbuQitmirLabs"
-        description="How AbuQitmirLabs engineered TajweedPage.com with Next.js SSR, a domain-grounded RAG Tajweed assistant, and international SEO for 20+ countries in 10 days."
+        title="TajweedPage Case Study: 20+ Countries in 10 Days | AI SEO"
+        description="How AbuQitmirLabs built TajweedPage.com in 10 days: Next.js SSR, RAG AI Tajweed tutor, and programmatic SEO ranking across 20+ countries. Full breakdown."
         canonical="https://www.abuqitmirlabs.tech/case-studies/tajweedpage"
-        ogTitle="TajweedPage Case Study: AI EdTech & SEO | AbuQitmirLabs"
-        ogDescription="Full-stack Next.js EdTech architecture, RAG-based AI Tajweed assistant, and international SEO for TajweedPage.com."
+        ogTitle="TajweedPage Case Study: 20+ Countries in 10 Days | AI SEO"
+        ogDescription="How AbuQitmirLabs built TajweedPage.com in 10 days: Next.js SSR, RAG AI Tajweed tutor, and programmatic SEO ranking across 20+ countries. Full breakdown."
         ogImage="https://www.abuqitmirlabs.tech/logo.png"
         ogType="article"
         schema={caseStudySchema}

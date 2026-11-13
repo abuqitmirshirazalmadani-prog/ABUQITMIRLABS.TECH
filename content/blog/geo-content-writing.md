@@ -1,8 +1,9 @@
 ---
 {
   "title": "Writing for GEO: How to Structure Content That AI Cites",
+  "seoTitle": "GEO Content Structure & Formatting: 5 Rules | AbuQitmirLabs",
   "slug": "geo-content-writing",
-  "metaDescription": "A guide to writing content that AI engines cite. Learn GEO best practices, direct answer formatting, and entity optimization.",
+  "metaDescription": "60% of searches end without a click. Use these 5 GEO content structure and formatting rules so ChatGPT, Perplexity, and Google AI cite your site.",
   "excerpt": "In 2026, roughly 60% of Google searches are zero-click. Users get their answers directly from AI Overviews before they ever click a website. If your content is not structured to be extracted by these engines, you lose the traffic and the sale. This guide teaches you the exact framework we use at AbuQitmirLabs to write content that AI actually cites. You will learn the 5 core rules of Generative Engine Optimization (GEO), including the 40-60 word direct answer rule, entity clarity, and structured formatting. Learn how to transition from traditional SEO to GEO, avoid common mistakes like burying the answer, and implement a step-by-step process that wins the zero-click battle.",
   "coverImage": "/images/blog-covers/geo-content-writing-bea6b0bb.webp",
   "coverImageAlt": "A visual comparison of a traditional search result page versus an AI-generated answer citing a specific source.",

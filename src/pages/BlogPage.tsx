@@ -332,16 +332,16 @@ const BlogPage = () => {
     return (
         <div className="min-h-screen bg-[#050505]">
             <SEO
-                title="Tech Blog & AI Insights | AbuQitmirLabs"
-                description="AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies."
+                title="Software, AI & SEO Engineering Playbooks | AbuQitmirLabs"
+                description="140+ production engineering guides on AI agents, Next.js architecture, SaaS costs, and GEO/SEO systems. Written by senior architects. Full library inside."
                 canonical="https://www.abuqitmirlabs.tech/blog"
-                ogTitle="Tech Blog & AI Insights | AbuQitmirLabs"
-                ogDescription="AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies."
+                ogTitle="Software, AI & SEO Engineering Playbooks | AbuQitmirLabs"
+                ogDescription="140+ production engineering guides on AI agents, Next.js architecture, SaaS costs, and GEO/SEO systems. Written by senior architects. Full library inside."
                 ogType="website"
                 ogImage="https://www.abuqitmirlabs.tech/logo.png"
                 twitterCard="summary_large_image"
-                twitterTitle="Tech Blog & AI Insights | AbuQitmirLabs"
-                twitterDescription="AbuQitmirLabs tech journal covers AI agents, custom software, web & mobile development, SEO, and digital transformation. Read expert insights, guides, and case studies."
+                twitterTitle="Software, AI & SEO Engineering Playbooks | AbuQitmirLabs"
+                twitterDescription="140+ production engineering guides on AI agents, Next.js architecture, SaaS costs, and GEO/SEO systems. Written by senior architects. Full library inside."
                 twitterImage="https://www.abuqitmirlabs.tech/logo.png"
                 preloadImage={featuredPost ? formatCoverImage(featuredPost.coverImage, 1200, featuredPost.slug) : undefined}
             />

@@ -145,26 +145,97 @@ const HREFLANG_ELIGIBLE_PATHS = new Set([
 const TITLE_OVERRIDES: Record<string, string> = {
   '/': 'Custom Software, AI & SEO Engineering | AbuQitmirLabs',
   '/growth-engineering': 'Growth Engineering: Software, AI & SEO | AbuQitmirLabs',
+  '/blog/best-ai-tools-for-software-development-in-2026':
+    '23 AI Tools Developers Actually Ship Code With (2026)',
   '/blog/ai-integration-with-legacy-systems-the-complete-2026-guide':
-    'AI in Enterprise Software: 2026 Guide | AbuQitmirLabs',
+    'AI Integration with Legacy Systems: 2026 Enterprise Guide',
+  '/tools/website-audit':
+    'Website Audit Tool for Founders | Free | AbuQitmirLabs',
+  '/blog/best-no-code-app-builders-in-2026-for-startups-businesses':
+    '9 No-Code App Builders That Actually Launch in 2026',
+  '/web-development': 'Web Development Services in Pakistan | AbuQitmirLabs',
+  '/ai-agent-development':
+    'AI Agent Development Services | RAG & LLM | AbuQitmirLabs',
+  '/blog/high-performance-web-applications-12-engineering-decisions':
+    'High-Performance Web Apps: 12 Architecture Rules (2026)',
+  '/blog/brand-audit-checklist-pakistan':
+    'Brand Audit Checklist Pakistan: 25 Tests | AbuQitmirLabs',
+  '/about': 'About AbuQitmirLabs | B2B Growth Engineering Since 2021',
+  '/about/our-company': 'Our Company & 100% IP Ownership Model | AbuQitmirLabs',
+  '/blog': 'Software, AI & SEO Engineering Playbooks | AbuQitmirLabs',
+  '/tools': '6 Interactive Founder & SEO Audit Tools | AbuQitmirLabs',
+  '/case-studies/tajweedpage':
+    'TajweedPage Case Study: 20+ Countries in 10 Days | AI SEO',
+  '/tools/project-cost-estimator':
+    'Software & AI Project Cost Calculator 2026 | AbuQitmirLabs',
+  '/blog/soc-2-fintech-startups':
+    'SOC 2 for Fintech Startups: 2026 Cost & 12-Step Checklist',
+  '/blog/geo-content-writing':
+    'GEO Content Structure & Formatting: 2026 Citation Guide',
+  '/saudi-arabia-market':
+    'Fintech & Custom Software Development Saudi Arabia | KSA',
+  '/blog/ai-automation-compliance':
+    'AI for Regulated Industries: 2026 Compliance Architecture',
+  '/blog/5-minute-technical-audit-for-founders':
+    'Technology Audit for Founders: 10 Checks in 5 Minutes',
   '/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026':
     'Flutter vs React Native: Which Is Better in 2026?',
   '/blog/offshore-software-development-saudi-arabia':
-    'Offshore Software Development Saudi Arabia: Save 40–60%',
-  '/case-studies/tajweedpage':
-    'TajweedPage Case Study: AI EdTech & SEO | AbuQitmirLabs',
+    'Offshore Software Development Saudi Arabia: Save 40-60%',
   '/contact': 'Contact & Book a Discovery Call | AbuQitmirLabs',
   '/privacy': 'Privacy Policy & Data Protection | AbuQitmirLabs',
   '/terms': 'Terms of Service & IP Ownership | AbuQitmirLabs',
   '/about/our-process': 'Our 5-Step Software Delivery Process | AbuQitmirLabs',
-  '/web-development': 'Custom Web Application Development | AbuQitmirLabs',
   '/local-seo-for-small-business': 'Local SEO Services for Small Business | AbuQitmirLabs',
   '/blog/offshore-ai-agent-development-partner-uae':
     'Offshore AI Agent Development Partner UAE | AbuQitmirLabs',
   '/blog/brand-refresh-vs-rebrand':
     'Brand Refresh vs Rebrand Pakistan | AbuQitmirLabs',
+  '/blog/rebranding-cost-pakistan':
+    'Rebranding Cost Pakistan: Practical Scope Guide in 2026',
   '/blog/lead-generation-content-strategy-google-meta':
     'B2B Lead Generation Content Strategy: Google + Meta',
+};
+
+const DESCRIPTION_OVERRIDES: Record<string, string> = {
+  '/blog/best-ai-tools-for-software-development-in-2026':
+    'ChatGPT is not the top pick. We tested 23 AI tools across real production projects. Here are the ones that actually ship code in 2026.',
+  '/blog/ai-integration-with-legacy-systems-the-complete-2026-guide':
+    'Connect LLM agents to your ERP, CRM, or SQL database without downtime. 7 middleware strategies tested across real enterprise integrations in 2026.',
+  '/tools/website-audit':
+    '45-point website audit covering Core Web Vitals, SEO health, and mobile performance. Built for founders and small business owners. No signup needed.',
+  '/blog/best-no-code-app-builders-in-2026-for-startups-businesses':
+    'We tested 9 no-code builders across real startup projects. Bubble, Webflow, FlutterFlow: only 4 made it. Here is the ranked list with pricing.',
+  '/web-development':
+    'Next.js web development for US, UK, and GCC B2B companies. Sub-second load times, 100% IP ownership, senior-led delivery from Karachi. Book a call.',
+  '/ai-agent-development':
+    'Build autonomous AI agents for your business workflows. RAG pipelines, LLM integration, 24/7 operations. Senior-led delivery from Karachi since 2021.',
+  '/blog/high-performance-web-applications-12-engineering-decisions':
+    'Sub-second web apps require 12 specific architecture decisions. From edge caching to zero-bundle hydration, see how we cut LCP below 1.2s. Full guide.',
+  '/blog/brand-audit-checklist-pakistan':
+    '25-point brand audit checklist for Pakistani businesses. Score your positioning, website, WhatsApp funnel, and customer trust before rebranding. Read.',
+  '/about':
+    'Founded in 2021 by AbuQitmir Mohammad Shiraz Al Madani in Karachi. 5+ years building custom software, AI agents, and SEO systems for global B2B teams.',
+  '/about/our-company':
+    '98% client retention and 100% IP ownership since 2021. See how AbuQitmirLabs delivers senior-led software, AI agents, and SEO from Karachi to the world.',
+  '/blog':
+    '140+ production engineering guides on AI agents, Next.js architecture, SaaS costs, and GEO/SEO systems. Written by senior architects. Full library inside.',
+  '/tools':
+    '6 instant engineering calculators for founders: 45-point website audit, software cost estimator, AI readiness score, and tech stack recommender. Try now.',
+  '/case-studies/tajweedpage':
+    'How AbuQitmirLabs built TajweedPage.com in 10 days: Next.js SSR, RAG AI Tajweed tutor, and programmatic SEO ranking across 20+ countries. Full breakdown.',
+  '/tools/project-cost-estimator':
+    'Calculate custom software, mobile app, and AI agent build costs across 8 global markets in 60 seconds. Includes milestone breakdown and PDF export.',
+  '/blog/soc-2-fintech-startups':
+    'SOC 2 Type I takes 6 to 8 weeks with the right controls. Get the 2026 cost breakdown, Type I vs Type II timeline, and 12-step fintech checklist inside.',
+  '/blog/geo-content-writing':
+    'GEO content structure and formatting rules that get cited by ChatGPT, Perplexity, and Google AI Overviews. 7 formatting patterns tested. Full guide inside.',
+  '/saudi-arabia-market':
+    'Fintech software development, PDPL-compliant AI agents, and ZATCA integration for Saudi Arabia enterprises in Riyadh and Jeddah. 5+ years delivery. Book.',
+  '/blog/ai-automation-compliance':
+    'Deploy AI in fintech and healthcare without failing HIPAA, SOC 2, or GDPR audits. 6 compliance guardrails, audit trails, and RAG controls. Full guide.',
+  '/blog/5-minute-technical-audit-for-founders':
+    'Run this 10-point technology audit for founders before hiring any developer. Spot Git red flags, security gaps, and IP traps in 5 minutes. Full checklist.',
 };
 
 export function formatConciseTitle(rawTitle: string, pathname?: string): string {
@@ -182,12 +253,13 @@ export function formatConciseTitle(rawTitle: string, pathname?: string): string 
     .replace(/\s+/g, ' ')
     .trim();
   if (!cleaned) return DEFAULT_TITLE;
-  if (/Abu\s*Qitmir\s*Labs/i.test(cleaned) && cleaned.length >= 30 && cleaned.length <= 60) {
+  if (/Abu\s*Qitmir\s*Labs/i.test(cleaned) && cleaned.length >= 30 && cleaned.length <= 60 && !/\s+(?:in|for|to|with|of|on|at|by|from|into|vs\.?|and|or|the|a|an)\s*\|\s*AbuQitmirLabs/i.test(cleaned)) {
     return cleaned;
   }
 
   const core = cleaned
     .replace(/\s*[|–—-]\s*Abu\s*Qitmir\s*Labs(?:\s*\.?\s*TECH)?.*$/i, '')
+    .replace(/\s+(?:in|for|to|with|of|on|at|by|from|into|vs\.?|and|or|the|a|an)$/i, '')
     .trim();
 
   if (!core) return DEFAULT_TITLE;
@@ -195,7 +267,7 @@ export function formatConciseTitle(rawTitle: string, pathname?: string): string 
   const withBrand = `${core} | ${SITE_NAME}`;
   if (withBrand.length >= 30 && withBrand.length <= 60) return withBrand;
   if (withBrand.length < 30) {
-    const padded = `${core} — Engineering & AI | ${SITE_NAME}`;
+    const padded = `${core}: Engineering & AI | ${SITE_NAME}`;
     if (padded.length <= 60) return padded;
     const altPadded = `${core} Guide | ${SITE_NAME}`;
     if (altPadded.length >= 30 && altPadded.length <= 60) return altPadded;
@@ -222,7 +294,10 @@ export function formatConciseTitle(rawTitle: string, pathname?: string): string 
       break;
     }
   }
-  acc = acc.replace(/[,;:\-–—&]+$/, '').trim();
+  acc = acc
+    .replace(/[,;:\-–—&]+$/, '')
+    .replace(/\s+(?:in|for|to|with|of|on|at|by|from|into|vs\.?|and|or|the|a|an)$/i, '')
+    .trim();
   if (acc.length >= 16) {
     return `${acc} | ${SITE_NAME}`;
   }
@@ -236,7 +311,10 @@ export function formatConciseTitle(rawTitle: string, pathname?: string): string 
       break;
     }
   }
-  const finalStandalone = standalone.replace(/[,;:\-–—&]+$/, '').trim() || core.slice(0, 57).trim();
+  const finalStandalone = standalone
+    .replace(/[,;:\-–—&]+$/, '')
+    .replace(/\s+(?:in|for|to|with|of|on|at|by|from|into|vs\.?|and|or|the|a|an)$/i, '')
+    .trim() || core.slice(0, 57).trim();
   if (finalStandalone.length < 30) {
     const fallbackWithBrand = `${finalStandalone.slice(0, 42).trim()} | ${SITE_NAME}`;
     return fallbackWithBrand;
@@ -599,7 +677,8 @@ export function generateMetadata(input: MetadataInput = {}): NextStyleMetadata {
   const resolvedTitle = formatConciseTitle(rawTitle || DEFAULT_TITLE, normalizedPath);
 
   const resolvedDescription = clampMetaDescription(
-    input.description ||
+    DESCRIPTION_OVERRIDES[normalizedPath] ||
+      input.description ||
       routeMeta?.description ||
       blogAutoMeta?.description ||
       staticBlogPost?.metaDescription ||
@@ -649,7 +728,11 @@ export function generateMetadata(input: MetadataInput = {}): NextStyleMetadata {
     normalizedPath
   );
   const resolvedOgDescription = clampMetaDescription(
-    input.ogDescription || routeMeta?.ogDescription || blogAutoMeta?.ogDescription || resolvedDescription
+    DESCRIPTION_OVERRIDES[normalizedPath] ||
+      input.ogDescription ||
+      routeMeta?.ogDescription ||
+      blogAutoMeta?.ogDescription ||
+      resolvedDescription
   );
   const resolvedOgType = input.ogType || routeMeta?.ogType || (isBlogPost ? 'article' : 'website');
 
@@ -660,15 +743,26 @@ export function generateMetadata(input: MetadataInput = {}): NextStyleMetadata {
     normalizedPath
   );
   const resolvedTwitterDescription = clampMetaDescription(
-    input.twitterDescription || routeMeta?.twitterDescription || resolvedOgDescription
+    DESCRIPTION_OVERRIDES[normalizedPath] ||
+      input.twitterDescription ||
+      routeMeta?.twitterDescription ||
+      resolvedOgDescription
   );
   const resolvedTwitterImage =
     input.twitterImage || routeMeta?.twitterImage || resolvedOgImage;
 
-  const resolvedRobots =
-    input.robots ||
-    routeMeta?.robots ||
-    'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1';
+  const isNoIndexRoute =
+    normalizedPath === '/login' ||
+    normalizedPath.startsWith('/login/') ||
+    normalizedPath === '/admin' ||
+    normalizedPath.startsWith('/admin/') ||
+    normalizedPath === '/404';
+
+  const resolvedRobots = isNoIndexRoute
+    ? 'noindex, nofollow'
+    : input.robots ||
+      routeMeta?.robots ||
+      'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1';
 
   const resolvedAuthor =
     input.author || blogAutoMeta?.articleAuthor || staticBlogPost?.author || DEFAULT_AUTHOR;

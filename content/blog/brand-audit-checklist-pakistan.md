@@ -1,9 +1,10 @@
 ---
 {
   "title": "Brand Audit Checklist Pakistan: 25 Pre-Rebrand Questions",
+  "seoTitle": "Brand Audit Checklist Pakistan: 25 SME Tests | AbuQitmirLabs",
   "slug": "brand-audit-checklist-pakistan",
-  "excerpt": "Audit your Pakistani small business before rebranding. Score positioning, identity, website, WhatsApp, reviews and customer trust with 25 questions.",
-  "metaDescription": "Audit your Pakistani small business before rebranding. Score positioning, identity, website, WhatsApp, reviews and customer trust with 25 questions.",
+  "excerpt": "Score your Pakistani SME across 25 brand, website, and WhatsApp trust checkpoints before spending on a rebrand. Free 1-to-5 scoring matrix inside.",
+  "metaDescription": "Score your Pakistani SME across 25 brand, website, and WhatsApp trust checkpoints before spending on a rebrand. Free 1-to-5 scoring matrix inside.",
   "coverImage": "/images/blog-covers/brand-audit-checklist-pakistan-905f4323.webp",
   "coverImageAlt": "Brand audit checklist for Pakistani small businesses - 25 questions before rebranding",
   "category": "Business",
