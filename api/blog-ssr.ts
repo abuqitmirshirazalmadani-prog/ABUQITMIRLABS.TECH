@@ -284,11 +284,24 @@ export default async function handler(req: any, res: any) {
         ? `${cleanH1} | AbuQitmirLabs`
         : `${cleanH1.split(/[:|]/)[0].trim()} | AbuQitmirLabs`);
     const rawDesc = (
-      postData.metaDescription ||
-      postData.excerpt ||
-      `${cleanH1}: in-depth guide by AbuQitmirLabs.`
+      canonicalSlug === 'brand-guidelines-small-business-pakistan'
+        ? 'A practical guide for Pakistani SMEs on creating a 1-page brand style guide. Keep your logo, colors, and voice consistent across print and web.'
+        : postData.metaDescription ||
+          postData.excerpt ||
+          `${cleanH1}: in-depth guide by AbuQitmirLabs.`
     ).trim();
-    const metaDesc = rawDesc.length > 158 ? `${rawDesc.slice(0, 155).trim()}...` : rawDesc;
+    const clampCleanDesc = (str: string, maxLen = 155): string => {
+      if (str.length <= maxLen) return str;
+      const within = str.slice(0, maxLen);
+      const lastPeriod = Math.max(within.lastIndexOf('. '), within.endsWith('.') ? within.length - 1 : -1);
+      if (lastPeriod >= 85) {
+        return within.slice(0, lastPeriod + 1).trim();
+      }
+      const cut = str.slice(0, maxLen - 1);
+      const lastSpace = cut.lastIndexOf(' ');
+      return `${(lastSpace > 80 ? cut.slice(0, lastSpace) : cut).replace(/[.,;:!?—–-]+$/, '')}.`;
+    };
+    const metaDesc = clampCleanDesc(rawDesc, 155);
 
     const resolveLocalBlogCover = (inputUrl: string, slug: string): string => {
       const knownMap: Record<string, string> = {

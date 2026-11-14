@@ -216,6 +216,8 @@ const TITLE_OVERRIDES = {
     'Rebranding Cost Pakistan: Practical Scope Guide in 2026',
   '/blog/lead-generation-content-strategy-google-meta':
     'B2B Lead Generation Content Strategy: Google + Meta',
+  '/blog/brand-guidelines-small-business-pakistan':
+    'Brand Guidelines for Small Business in Pakistan 2026 Guide',
 };
 
 function formatConciseTitle(rawTitle, pathname) {
@@ -619,10 +621,16 @@ for (const routeUrl of allRoutes) {
           if (m) {
             const parsedMeta = JSON.parse(`{${m[1]}}`);
             let postDesc = stripOuterQuotes(parsedMeta.metaDescription || parsedMeta.excerpt || '');
-            if (postDesc.length > 165) {
-              const cut = postDesc.slice(0, 160);
-              const lastSp = cut.lastIndexOf(' ');
-              postDesc = (lastSp > 110 ? cut.slice(0, lastSp) : cut).trim() + '...';
+            if (postDesc.length > 155) {
+              const within = postDesc.slice(0, 155);
+              const lastPeriod = Math.max(within.lastIndexOf('. '), within.endsWith('.') ? within.length - 1 : -1);
+              if (lastPeriod >= 90) {
+                postDesc = within.slice(0, lastPeriod + 1).trim();
+              } else {
+                const cut = postDesc.slice(0, 154);
+                const lastSp = cut.lastIndexOf(' ');
+                postDesc = `${(lastSp > 80 ? cut.slice(0, lastSp) : cut).replace(/[.,;:!?—–-]+$/, '')}.`;
+              }
             }
             seo = {
               title: parsedMeta.title ? (parsedMeta.title.includes('AbuQitmirLabs') ? parsedMeta.title : `${parsedMeta.title} | AbuQitmirLabs`) : 'AbuQitmirLabs Journal',
@@ -910,10 +918,17 @@ for (const routeUrl of allRoutes) {
   }
 }
 
-// 4. Cleanup temporary ssr-bundle
+// 4. Cleanup temporary ssr-bundle and ensure dist sitemaps & robots.txt are synced
 try {
   if (fs.existsSync(ssrBundlePath)) {
     fs.unlinkSync(ssrBundlePath);
+  }
+  for (const xmlFile of ['sitemap.xml', 'pages-sitemap.xml', 'image-sitemap.xml', 'video-sitemap.xml', 'robots.txt']) {
+    const pubFile = path.join(rootDir, 'public', xmlFile);
+    const distFile = path.join(distDir, xmlFile);
+    if (fs.existsSync(pubFile)) {
+      fs.copyFileSync(pubFile, distFile);
+    }
   }
 } catch (e) {
   // ignore

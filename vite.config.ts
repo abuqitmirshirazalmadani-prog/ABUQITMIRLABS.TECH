@@ -759,7 +759,7 @@ export default defineConfig(({ mode }) => {
             } catch (err: any) {}
           }
 
-          const robotsContent = `User-agent: *\nAllow: /\n\n# Block XML sitemaps from appearing in search results\nDisallow: /pages-sitemap.xml\nDisallow: /image-sitemap.xml\nDisallow: /video-sitemap.xml\n\n# Block login and admin pages\nDisallow: /login\nDisallow: /login/\nDisallow: /admin\nDisallow: /admin/\nDisallow: /google87984536fe5662da\n\n# AI Search Engines & LLM Web Crawlers\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: ChatGPT-User\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nSitemap: ${hostname}/sitemap.xml\n`;
+          const robotsContent = `User-agent: *\nAllow: /\nAllow: /sitemap.xml\nAllow: /pages-sitemap.xml\nAllow: /image-sitemap.xml\nAllow: /video-sitemap.xml\n\n# Block login and admin pages\nDisallow: /login\nDisallow: /login/\nDisallow: /admin\nDisallow: /admin/\nDisallow: /google87984536fe5662da\n\n# AI Search Engines & LLM Web Crawlers\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: ChatGPT-User\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nSitemap: ${hostname}/sitemap.xml\nSitemap: ${hostname}/pages-sitemap.xml\n`;
           fs.writeFileSync(path.resolve(outDir, 'robots.txt'), robotsContent);
 
           for (const route of routes) {

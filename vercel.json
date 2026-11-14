@@ -48,7 +48,7 @@
       "headers": [
         {
           "key": "Content-Type",
-          "value": "text/xml; charset=utf-8"
+          "value": "application/xml; charset=utf-8"
         },
         {
           "key": "Cache-Control",
@@ -94,6 +94,10 @@
   "rewrites": [
     {
       "source": "/sitemap.xml",
+      "destination": "/api/sitemap"
+    },
+    {
+      "source": "/pages-sitemap.xml",
       "destination": "/api/sitemap"
     },
     {

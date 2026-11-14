@@ -1,10 +1,9 @@
 User-agent: *
 Allow: /
-
-# Block XML sitemaps from appearing in search results
-Disallow: /pages-sitemap.xml
-Disallow: /image-sitemap.xml
-Disallow: /video-sitemap.xml
+Allow: /sitemap.xml
+Allow: /pages-sitemap.xml
+Allow: /image-sitemap.xml
+Allow: /video-sitemap.xml
 
 # Block login and admin pages
 Disallow: /login
@@ -33,4 +32,4 @@ User-agent: PerplexityBot
 Allow: /
 
 Sitemap: https://www.abuqitmirlabs.tech/sitemap.xml
-
+Sitemap: https://www.abuqitmirlabs.tech/pages-sitemap.xml

@@ -54,21 +54,26 @@ export default async function handler(req: any, res: any) {
   try {
     const candidates = [
       path.join(process.cwd(), 'public', 'sitemap.xml'),
+      path.join(process.cwd(), 'public', 'pages-sitemap.xml'),
       path.join(process.cwd(), 'dist', 'sitemap.xml'),
+      path.join(process.cwd(), 'dist', 'pages-sitemap.xml'),
       path.join(process.cwd(), 'sitemap.xml'),
+      path.join(process.cwd(), 'pages-sitemap.xml'),
     ];
 
     let content = '';
     for (const p of candidates) {
       if (fs.existsSync(p)) {
         content = fs.readFileSync(p, 'utf-8');
-        break;
+        if (content && content.includes('<urlset')) {
+          break;
+        }
       }
     }
 
     const today = new Date().toISOString().split('T')[0];
 
-    // Dynamically merge any newly published Firestore posts so new CMS articles are immediately in /sitemap.xml
+    // Dynamically merge any newly published Firestore posts so new CMS articles are immediately in /sitemap.xml and /pages-sitemap.xml
     try {
       const cfgPath = path.join(process.cwd(), 'firebase-applet-config.json');
       if (fs.existsSync(cfgPath)) {
@@ -123,13 +128,17 @@ export default async function handler(req: any, res: any) {
 </urlset>`;
     }
 
-    content = content.replace(/<loc>https:\/\/www\.abuqitmirlabs\.tech<\/loc>/g, '<loc>https://www.abuqitmirlabs.tech/</loc>');
+    content = content
+      .replace(/^\uFEFF/, '')
+      .trim()
+      .replace(/<loc>https:\/\/www\.abuqitmirlabs\.tech<\/loc>/g, '<loc>https://www.abuqitmirlabs.tech/</loc>');
 
-    res.setHeader('Content-Type', 'text/xml; charset=utf-8');
+    res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+    res.setHeader('X-Robots-Tag', 'noindex, follow');
     res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
     res.setHeader('Access-Control-Allow-Origin', '*');
     if (req.method === 'HEAD') return res.status(200).end();
-    return res.status(200).send(content.trim() + '\n');
+    return res.status(200).send(content + '\n');
   } catch (error: any) {
     console.error('Error serving sitemap API:', error);
     const today = new Date().toISOString().split('T')[0];
@@ -148,7 +157,8 @@ export default async function handler(req: any, res: any) {
     <priority>0.9</priority>
   </url>
 </urlset>\n`;
-    res.setHeader('Content-Type', 'text/xml; charset=utf-8');
+    res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+    res.setHeader('X-Robots-Tag', 'noindex, follow');
     return res.status(200).send(fallbackXml);
   }
 }
