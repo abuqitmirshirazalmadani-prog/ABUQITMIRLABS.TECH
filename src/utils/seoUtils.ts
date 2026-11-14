@@ -218,15 +218,21 @@ export function generateBlogPostMeta(
 
   // 2. Unique Dynamic Description: Prioritize explicit metaDescription or description field, then post excerpt, then fallback to content
   let description = '';
+  const clampTo155 = (str: string) => {
+    const s = stripSurroundingQuotes(str).replace(/\s+/g, ' ').trim();
+    if (s.length <= 155) return s;
+    const within = s.slice(0, 155);
+    const lastPeriod = Math.max(within.lastIndexOf('. '), within.endsWith('.') ? within.length - 1 : -1);
+    if (lastPeriod >= 90) return within.slice(0, lastPeriod + 1).trim();
+    return cleanExcerpt(s, 152);
+  };
   const explicitDesc = stripSurroundingQuotes(post.metaDescription || (post as any).description);
   if (explicitDesc) {
-    const cleanExplicit = explicitDesc.replace(/\s+/g, ' ');
-    description = stripSurroundingQuotes(cleanExplicit.length <= 170 ? cleanExplicit : cleanExcerpt(cleanExplicit, 160));
+    description = clampTo155(explicitDesc);
   } else if (post.excerpt?.trim()) {
-    const cleanEx = stripSurroundingQuotes(post.excerpt).replace(/\s+/g, ' ');
-    description = stripSurroundingQuotes(cleanEx.length <= 170 ? cleanEx : cleanExcerpt(cleanEx, 160));
+    description = clampTo155(post.excerpt);
   } else {
-    description = stripSurroundingQuotes(cleanExcerpt(post.content || rawTitle, 160));
+    description = clampTo155(post.content || rawTitle);
   }
 
   // 3. Media and Taxonomy

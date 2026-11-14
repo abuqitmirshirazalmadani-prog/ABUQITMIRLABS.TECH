@@ -792,10 +792,16 @@ export function autoFixArticle(input: ArticleInput): AutoFixResult {
   if (!resolvedMeta || resolvedMeta.length < 50) {
     resolvedMeta = generateMetaFromH1AndContent(resolvedTitle, resolvedContent);
     appliedFixes.push(`Meta description was missing/short -> Auto-generated (${resolvedMeta.length} chars)`);
-  } else if (resolvedMeta.length > 160) {
-    const sliced = resolvedMeta.slice(0, 157);
-    const lastSpace = sliced.lastIndexOf(' ');
-    resolvedMeta = `${(lastSpace > 110 ? sliced.slice(0, lastSpace) : sliced).replace(/[.,;:-]+$/, '')}...`;
+  } else if (resolvedMeta.length > 155) {
+    const withinLimit = resolvedMeta.slice(0, 155);
+    const lastPeriod = Math.max(withinLimit.lastIndexOf('. '), withinLimit.endsWith('.') ? withinLimit.length - 1 : -1);
+    if (lastPeriod >= 90) {
+      resolvedMeta = withinLimit.slice(0, lastPeriod + 1).trim();
+    } else {
+      const sliced = resolvedMeta.slice(0, 152);
+      const lastSpace = sliced.lastIndexOf(' ');
+      resolvedMeta = `${(lastSpace > 105 ? sliced.slice(0, lastSpace) : sliced).replace(/[.,;:-]+$/, '')}.`;
+    }
     appliedFixes.push(`Clamped meta description to ${resolvedMeta.length} chars`);
   }
 

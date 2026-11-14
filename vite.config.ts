@@ -210,7 +210,7 @@ export default defineConfig(({ mode }) => {
             { url: '/blog/startup-brand-identity-checklist', changefreq: 'weekly', priority: 0.9, title: 'Brand Identity Checklist for Startups | AbuQitmirLabs', description: 'A pre-seed and seed-stage brand identity checklist for startups. Covers positioning, visual system, voice, and launch assets in the right order.' },
           ];
 
-          const clampMetaDescription = (raw: string, maxLen = 158): string => {
+          const clampMetaDescription = (raw: string, maxLen = 155): string => {
             const cleaned = (raw || '')
               .replace(/<[^>]*>?/gm, '')
               .trim()
@@ -219,6 +219,11 @@ export default defineConfig(({ mode }) => {
               .replace(/\s+/g, ' ')
               .trim();
             if (cleaned.length <= maxLen) return cleaned;
+            const withinLimit = cleaned.slice(0, maxLen);
+            const lastPeriod = Math.max(withinLimit.lastIndexOf('. '), withinLimit.endsWith('.') ? withinLimit.length - 1 : -1);
+            if (lastPeriod >= 90) {
+              return withinLimit.slice(0, lastPeriod + 1).trim();
+            }
             const cut = cleaned.slice(0, maxLen - 1);
             const lastSpace = cut.lastIndexOf(' ');
             return `${(lastSpace > 80 ? cut.slice(0, lastSpace) : cut).replace(/[.,;:!?—–-]+$/, '')}.`;

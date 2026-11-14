@@ -11972,4 +11972,77 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
       ]
     }
   },
+  '/blog/brand-guidelines-small-business-pakistan': {
+    title: 'Brand Guidelines for Small Business in Pakistan 2026 Guide',
+    description: 'A practical guide for Pakistani SMEs on creating a 1-page brand style guide. Keep your logo, colors, and voice consistent across print and web.',
+    canonical: 'https://www.abuqitmirlabs.tech/blog/brand-guidelines-small-business-pakistan',
+    ogTitle: 'Brand Guidelines for Small Business in Pakistan 2026 Guide',
+    ogDescription: 'A practical guide for Pakistani SMEs on creating a 1-page brand style guide. Keep your logo, colors, and voice consistent across print and web.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp',
+    ogImageAlt: 'One page brand guidelines checklist and style guide for small businesses in Pakistan',
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Brand Guidelines for Small Business in Pakistan 2026 Guide',
+    twitterDescription: 'A practical guide for Pakistani SMEs on creating a 1-page brand style guide. Keep your logo, colors, and voice consistent across print and web.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp',
+    publishedTime: '2026-11-14',
+    modifiedTime: '2026-11-14',
+    author: 'AbuQitmir Mohammad Shiraz Al Madani',
+    section: 'Business',
+    keywords: 'brand guidelines for small business Pakistan, brand style guide checklist, brand book contents, one page brand guidelines, Pakistani SMEs, brand strategy, graphic design Pakistan, AbuQitmirLabs',
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.abuqitmirlabs.tech/#organization',
+          name: 'AbuQitmirLabs',
+          alternateName: 'AbuQitmirLabs',
+          url: 'https://www.abuqitmirlabs.tech/',
+          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://www.abuqitmirlabs.tech/#website',
+          url: 'https://www.abuqitmirlabs.tech/',
+          name: 'AbuQitmirLabs',
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
+        },
+        {
+          '@type': 'WebPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/brand-guidelines-small-business-pakistan#webpage',
+          url: 'https://www.abuqitmirlabs.tech/blog/brand-guidelines-small-business-pakistan',
+          name: 'Brand Guidelines for Small Business in Pakistan 2026 Guide',
+          description: 'A practical guide for Pakistani SMEs on creating a 1-page brand style guide. Keep your logo, colors, and voice consistent across print and web.',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/brand-guidelines-small-business-pakistan#breadcrumb',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
+            { '@type': 'ListItem', position: 3, name: 'Brand Guidelines for Small Business in Pakistan 2026 Guide', item: 'https://www.abuqitmirlabs.tech/blog/brand-guidelines-small-business-pakistan' }
+          ]
+        },
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/brand-guidelines-small-business-pakistan#article',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/brand-guidelines-small-business-pakistan#webpage' },
+          headline: 'Brand Guidelines for Small Business in Pakistan 2026 Guide',
+          description: 'A practical guide for Pakistani SMEs on creating a 1-page brand style guide. Keep your logo, colors, and voice consistent across print and web.',
+          image: 'https://www.abuqitmirlabs.tech/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp',
+          author: {
+            '@type': 'Person',
+            name: 'AbuQitmir Mohammad Shiraz Al Madani',
+            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+          },
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
+          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/brand-guidelines-small-business-pakistan#webpage' },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14'
+        }
+      ]
+    }
+  }
 };

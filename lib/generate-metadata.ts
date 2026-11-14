@@ -195,9 +195,13 @@ const TITLE_OVERRIDES: Record<string, string> = {
     'Rebranding Cost Pakistan: Practical Scope Guide in 2026',
   '/blog/lead-generation-content-strategy-google-meta':
     'B2B Lead Generation Content Strategy: Google + Meta',
+  '/blog/brand-guidelines-small-business-pakistan':
+    'Brand Guidelines for Small Business in Pakistan 2026 Guide',
 };
 
 const DESCRIPTION_OVERRIDES: Record<string, string> = {
+  '/blog/brand-guidelines-small-business-pakistan':
+    'A practical guide for Pakistani SMEs on creating a 1-page brand style guide. Keep your logo, colors, and voice consistent across print and web.',
   '/blog/best-ai-tools-for-software-development-in-2026':
     'ChatGPT is not the top pick. We tested 23 AI tools across real production projects. Here are the ones that actually ship code in 2026.',
   '/blog/ai-integration-with-legacy-systems-the-complete-2026-guide':
@@ -333,9 +337,14 @@ function clampMetaDescription(desc: string): string {
   const cleaned = stripOuterQuotes(desc).replace(/\s+/g, ' ').trim();
   if (!cleaned) return DEFAULT_DESCRIPTION;
   if (cleaned.length <= 155) return cleaned;
+  const withinLimit = cleaned.slice(0, 155);
+  const lastPeriod = Math.max(withinLimit.lastIndexOf('. '), withinLimit.endsWith('.') ? withinLimit.length - 1 : -1);
+  if (lastPeriod >= 90) {
+    return withinLimit.slice(0, lastPeriod + 1).trim();
+  }
   const sliced = cleaned.slice(0, 152);
   const lastSpace = sliced.lastIndexOf(' ');
-  return `${(lastSpace > 105 ? sliced.slice(0, lastSpace) : sliced).replace(/[.,;:-]+$/, '')}...`;
+  return `${(lastSpace > 105 ? sliced.slice(0, lastSpace) : sliced).replace(/[.,;:-]+$/, '')}.`;
 }
 
 const UPPERCASE_ACRONYMS = new Set([
