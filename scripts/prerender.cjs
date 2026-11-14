@@ -923,7 +923,7 @@ try {
   if (fs.existsSync(ssrBundlePath)) {
     fs.unlinkSync(ssrBundlePath);
   }
-  for (const xmlFile of ['sitemap.xml', 'pages-sitemap.xml', 'image-sitemap.xml', 'video-sitemap.xml', 'robots.txt']) {
+  for (const xmlFile of ['sitemap.xml', 'pages-sitemap.xml', 'sitemap-pages.xml', 'sitemap_index.xml', 'image-sitemap.xml', 'video-sitemap.xml', 'robots.txt']) {
     const pubFile = path.join(rootDir, 'public', xmlFile);
     const distFile = path.join(distDir, xmlFile);
     if (fs.existsSync(pubFile)) {

@@ -134,8 +134,7 @@ export default async function handler(req: any, res: any) {
       .replace(/<loc>https:\/\/www\.abuqitmirlabs\.tech<\/loc>/g, '<loc>https://www.abuqitmirlabs.tech/</loc>');
 
     res.setHeader('Content-Type', 'application/xml; charset=utf-8');
-    res.setHeader('X-Robots-Tag', 'noindex, follow');
-    res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
+    res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
     res.setHeader('Access-Control-Allow-Origin', '*');
     if (req.method === 'HEAD') return res.status(200).end();
     return res.status(200).send(content + '\n');
@@ -158,7 +157,7 @@ export default async function handler(req: any, res: any) {
   </url>
 </urlset>\n`;
     res.setHeader('Content-Type', 'application/xml; charset=utf-8');
-    res.setHeader('X-Robots-Tag', 'noindex, follow');
+    res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
     return res.status(200).send(fallbackXml);
   }
 }

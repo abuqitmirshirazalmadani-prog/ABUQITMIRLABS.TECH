@@ -11985,10 +11985,6 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     twitterTitle: 'Brand Guidelines for Small Business in Pakistan 2026 Guide',
     twitterDescription: 'A practical guide for Pakistani SMEs on creating a 1-page brand style guide. Keep your logo, colors, and voice consistent across print and web.',
     twitterImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp',
-    publishedTime: '2026-11-14',
-    modifiedTime: '2026-11-14',
-    author: 'AbuQitmir Mohammad Shiraz Al Madani',
-    section: 'Business',
     keywords: 'brand guidelines for small business Pakistan, brand style guide checklist, brand book contents, one page brand guidelines, Pakistani SMEs, brand strategy, graphic design Pakistan, AbuQitmirLabs',
     schemaJsonLd: {
       '@context': 'https://schema.org',

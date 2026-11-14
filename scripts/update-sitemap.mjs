@@ -435,7 +435,7 @@ while ((uMatch = urlRegex.exec(sitemap)) !== null) {
 
 sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlBlocks.join('\n')}\n</urlset>\n`;
 
-// Save karein (public/sitemap.xml, root sitemap.xml, public/pages-sitemap.xml, root pages-sitemap.xml)
+// Save karein (public/sitemap.xml, root sitemap.xml, public/pages-sitemap.xml, root pages-sitemap.xml, public/sitemap-pages.xml, public/sitemap_index.xml)
 fs.writeFileSync(sitemapPath, sitemap, 'utf-8');
 const rootSitemapPath = path.join(rootDir, 'sitemap.xml');
 fs.writeFileSync(rootSitemapPath, sitemap, 'utf-8');
@@ -443,6 +443,10 @@ const pagesSitemapPath = path.join(rootDir, 'public', 'pages-sitemap.xml');
 fs.writeFileSync(pagesSitemapPath, sitemap, 'utf-8');
 const rootPagesSitemapPath = path.join(rootDir, 'pages-sitemap.xml');
 fs.writeFileSync(rootPagesSitemapPath, sitemap, 'utf-8');
+const altPagesSitemapPath = path.join(rootDir, 'public', 'sitemap-pages.xml');
+fs.writeFileSync(altPagesSitemapPath, sitemap, 'utf-8');
+const sitemapIndexXml = `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <sitemap>\n    <loc>https://www.abuqitmirlabs.tech/sitemap.xml</loc>\n    <lastmod>${today}</lastmod>\n  </sitemap>\n  <sitemap>\n    <loc>https://www.abuqitmirlabs.tech/pages-sitemap.xml</loc>\n    <lastmod>${today}</lastmod>\n  </sitemap>\n</sitemapindex>\n`;
+fs.writeFileSync(path.join(rootDir, 'public', 'sitemap_index.xml'), sitemapIndexXml, 'utf-8');
 
 if (added > 0) {
   console.log(`\n🎉 Added ${added} new URLs to sitemap.xml (${urlBlocks.length} total canonical URLs)`);
