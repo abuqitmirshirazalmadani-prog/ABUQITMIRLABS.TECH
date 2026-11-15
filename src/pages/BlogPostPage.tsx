@@ -337,10 +337,17 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         if (!post || !post.content) return '';
 
         // Deduplicate top-level title heading if markdown starts with heading matching post.title
-        let baseContent = post.content.replace(
-            /https:\/\/www\.abuqitmirlabs\.tech\/blog\/brand-identity-vs-logo-design-pakistan-sme/g,
-            'https://www.abuqitmirlabs.tech/blog/brand-strategy-vs-logo-design-pakistan-sme'
-        );
+        let baseContent = post.content
+            .replace(
+                /https:\/\/www\.abuqitmirlabs\.tech\/blog\/brand-identity-vs-logo-design-pakistan-sme/g,
+                'https://www.abuqitmirlabs.tech/blog/brand-strategy-vs-logo-design-pakistan-sme'
+            )
+            .replace(/\bit and product leaders\b/g, 'IT and product leaders')
+            .replace(/\bcontent and seo teams\b/gi, (m) => m.startsWith('C') ? 'Content and SEO teams' : 'content and SEO teams')
+            .replace(/\bconsidering ai agents\b/gi, 'considering AI agents')
+            .replace(/\bsearch and ai engines\b/gi, 'search and AI engines')
+            .replace(/\bseo and web development\b/g, 'SEO and web development')
+            .replace(/\bseo content writing\b/g, 'SEO content writing');
         const cleanTitleForMatch = (post.title || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
         const isMetaOrDividerLine = (lineStr: string) => {
             const t = lineStr.trim();

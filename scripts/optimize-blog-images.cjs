@@ -25,6 +25,10 @@ function normalizeSyncedMarkdownBody(rawBody, cleanTitle) {
   let body = (rawBody || '')
     .replace(/\]\(https?:\/\/(?:www\.)?abuqitmirlabs\.tech(\/[^)\s]*)\)/gi, ']($1)')
     .replace(/\]\(https?:\/\/(?:www\.)?abuqitmirlabs\.tech\)/gi, '](/)')
+    .replace(/\bit and product leaders\b/g, 'IT and product leaders')
+    .replace(/\bcontent and seo teams\b/gi, (m) => (m.startsWith('C') ? 'Content and SEO teams' : 'content and SEO teams'))
+    .replace(/\bconsidering ai agents\b/gi, 'considering AI agents')
+    .replace(/\bsearch and ai engines\b/gi, 'search and AI engines')
     .trim();
 
   const lines = body.split(/\r?\n/);

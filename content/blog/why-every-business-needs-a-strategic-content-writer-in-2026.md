@@ -177,7 +177,7 @@ The modern [content writer responsibilities](/content-writing) extend across the
 
 ### SEO Content Writer
 
-An SEO content writer specializes in creating content that ranks. Their seo content writing methodology prioritizes search intent alignment, keyword optimization, and content structure that gives Google crawlers clear signals about relevance and authority. They understand that what is seo content writing is fundamentally about serving the reader while making it easy for search engines to recognize that value.
+An SEO content writer specializes in creating content that ranks. Their SEO content writing methodology prioritizes search intent alignment, keyword optimization, and content structure that gives Google crawlers clear signals about relevance and authority. They understand that what is SEO content writing is fundamentally about serving the reader while making it easy for search engines to recognize that value.
 
 ### Copywriter for Website Content
 

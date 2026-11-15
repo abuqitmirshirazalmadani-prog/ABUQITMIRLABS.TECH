@@ -91,7 +91,7 @@ Technical SEO is not a plugin installed before launch. It is a set of architectu
 
 A custom web development company that treats technical SEO as a checklist item at the end of the build is producing a site where fixing a canonical tag structure or a crawl block requires touching the same codebase that would have been easier to get right the first time.
 
-The seo and web development relationship is not sequential. It is simultaneous — the same decisions that determine whether Next.js renders pages server-side or client-side also determine whether search engines index the correct content version or an empty JavaScript shell.
+The SEO and web development relationship is not sequential. It is simultaneous — the same decisions that determine whether Next.js renders pages server-side or client-side also determine whether search engines index the correct content version or an empty JavaScript shell.
 
 ### Layer 2 — GEO: Structured for AI Citation From Day One
 

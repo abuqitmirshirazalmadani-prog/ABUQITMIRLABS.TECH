@@ -347,7 +347,14 @@ export default async function handler(req: any, res: any) {
     const ogImageUrl = rawCover.startsWith('/') ? `${hostname}${rawCover}` : rawCover;
 
     // Parse markdown content into semantic HTML with H2, H3, H4, GFM Tables, Lists, Code Blocks, Links, and FAQs
-    let lines = String(postData.content || '').trim().split(/\r?\n/);
+    const normalizedRawContent = String(postData.content || '')
+      .replace(/\bit and product leaders\b/g, 'IT and product leaders')
+      .replace(/\bcontent and seo teams\b/gi, (m) => (m.startsWith('C') ? 'Content and SEO teams' : 'content and SEO teams'))
+      .replace(/\bconsidering ai agents\b/gi, 'considering AI agents')
+      .replace(/\bsearch and ai engines\b/gi, 'search and AI engines')
+      .replace(/\bseo and web development\b/g, 'SEO and web development')
+      .replace(/\bseo content writing\b/g, 'SEO content writing');
+    let lines = normalizedRawContent.trim().split(/\r?\n/);
     const isMetaOrDivider = (l: string) => {
       const t = (l || '').trim();
       return t === '' || t === '---' || /^(?:\*\*)?by\s+abu\s*qitmir/i.test(t) || /^\*by\s+abu\s*qitmir/i.test(t);
