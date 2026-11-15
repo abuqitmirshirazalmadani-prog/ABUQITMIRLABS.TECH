@@ -20,7 +20,9 @@ export const REMOTE_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "https://i.postimg.cc/9QdHdDB2/Logo-Design-Pricing-in-Pakistan-Explained.png": "/images/blog-covers/rebranding-cost-pakistan-6b1f5c4e.webp",
   "/images/blog-covers/lead-generation-content-strategy-google-meta-1576aa01.webp": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
   "/images/blog-covers/rebranding-checklist-pakistan-9252c088.webp": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
-  "/images/blog-covers/kuwait-digital-transformation-866e51c6.webp": "/images/blog-covers/kuwait-cybersecurity-partner-evaluation.webp"
+  "/images/blog-covers/kuwait-digital-transformation-866e51c6.webp": "/images/blog-covers/kuwait-cybersecurity-partner-evaluation.webp",
+  "https://i.postimg.cc/TYhzLzmz/Five-Blues-One-Brand-Guideline.png": "/images/blog-covers/brand-guidelines-small-business-pakistan-147e663e.webp",
+  "https://i.postimg.cc/MGJ7kWH0/Pakistan-IT-Exports-Readiness-Report.png": "/images/blog-covers/pakistan-offshore-development-gcc-8b86e137.webp"
 };
 
 export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
@@ -178,7 +180,9 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "custom-software-development-qatar": "/images/blog-covers/custom-software-development-qatar-06910d97.webp",
   "ai-overviews-traffic-recovery-what-40-companies-did-next": "/images/blog-covers/ai-overviews-killed-traffic-what-40-companies-did-next-eb108ed0.webp",
   "the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026": "/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
-  "author-abuqitmir-shiraz": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp"
+  "author-abuqitmir-shiraz": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp",
+  "brand-guidelines-small-business-pakistan": "/images/blog-covers/brand-guidelines-small-business-pakistan-147e663e.webp",
+  "pakistan-offshore-development-gcc": "/images/blog-covers/pakistan-offshore-development-gcc-8b86e137.webp"
 };
 
 export function resolveOptimizedCoverImage(url?: string, slug?: string): string {

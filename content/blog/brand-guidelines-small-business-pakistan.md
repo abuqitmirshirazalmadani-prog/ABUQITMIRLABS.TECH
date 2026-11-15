@@ -4,7 +4,7 @@
   "slug": "brand-guidelines-small-business-pakistan",
   "excerpt": "A practical guide for Pakistani SMEs on creating a 1-page brand style guide. Keep your logo, colors, and voice consistent across print and web.",
   "metaDescription": "A practical guide for Pakistani SMEs on creating a 1-page brand style guide. Keep your logo, colors, and voice consistent across print and web.",
-  "coverImage": "/images/blog-covers/brand-guidelines-small-business-pakistan-2b2595f5.webp",
+  "coverImage": "/images/blog-covers/brand-guidelines-small-business-pakistan-147e663e.webp",
   "coverImageAlt": "One page brand guidelines checklist and style guide for small businesses in Pakistan",
   "category": "Business",
   "author": "Abu Qitmir Mohammad Shiraz Al-Madani",

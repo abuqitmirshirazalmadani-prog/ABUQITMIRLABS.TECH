@@ -311,6 +311,8 @@ export default async function handler(req: any, res: any) {
         'https://i.postimg.cc/vBhWpH0q/Lead-Generation-Content-Strategy-That_Works.jpg': '/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp',
         'https://i.postimg.cc/7YZRZy9q/Rebranding-Checklist-Pakistan-Before-During-and-After.jpg': '/images/blog-covers/rebranding-checklist-pakistan-v2.webp',
         'https://i.postimg.cc/L5RsMkbN/Qatar-Custom-Software-Development-Guide.png': '/images/blog-covers/custom-software-development-qatar-06910d97.webp',
+        'https://i.postimg.cc/TYhzLzmz/Five-Blues-One-Brand-Guideline.png': '/images/blog-covers/brand-guidelines-small-business-pakistan-147e663e.webp',
+        'https://i.postimg.cc/MGJ7kWH0/Pakistan-IT-Exports-Readiness-Report.png': '/images/blog-covers/pakistan-offshore-development-gcc-8b86e137.webp',
       };
       if (inputUrl && knownMap[inputUrl.trim()]) {
         return knownMap[inputUrl.trim()];
