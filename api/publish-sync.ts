@@ -159,7 +159,7 @@ export default async function handler(req: any, res: any) {
   let vercelTriggered = false;
   let commitUrl: string | null = null;
 
-  let resolvedLocalCover = coverImage || '/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp';
+  let resolvedLocalCover = coverImage || (cleanSlug ? `/images/blog-covers/${cleanSlug}.webp` : '/logo.png');
   let downloadedImageBuffer: Buffer | null = null;
 
   if (cleanSlug && typeof coverImage === 'string' && /^https?:\/\//i.test(coverImage.trim()) && !coverImage.includes('abuqitmirlabs.tech')) {

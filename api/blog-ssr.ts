@@ -313,6 +313,7 @@ export default async function handler(req: any, res: any) {
         'https://i.postimg.cc/L5RsMkbN/Qatar-Custom-Software-Development-Guide.png': '/images/blog-covers/custom-software-development-qatar-06910d97.webp',
         'https://i.postimg.cc/TYhzLzmz/Five-Blues-One-Brand-Guideline.png': '/images/blog-covers/brand-guidelines-small-business-pakistan-147e663e.webp',
         'https://i.postimg.cc/MGJ7kWH0/Pakistan-IT-Exports-Readiness-Report.png': '/images/blog-covers/pakistan-offshore-development-gcc-8b86e137.webp',
+        'https://i.postimg.cc/C56BHBKN/Free-Website-AI-Tools-for-Founders.jpg': '/images/blog-covers/free-tools-website-seo-ai-readiness.webp',
       };
       if (inputUrl && knownMap[inputUrl.trim()]) {
         return knownMap[inputUrl.trim()];

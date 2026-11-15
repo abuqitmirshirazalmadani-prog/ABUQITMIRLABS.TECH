@@ -359,7 +359,7 @@ export function applyOneClickFix(targetInput: OneClickFixInput): {
         const targetCover =
           localOptimized && localOptimized.startsWith('/images/blog-covers/')
             ? localOptimized
-            : '/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp';
+            : `/images/blog-covers/${canonicalSlug}.webp`;
         frontmatter.coverImage = targetCover;
         appliedLogs.push(
           `[${canonicalSlug}] Shifted external cover image to local WebP (${targetCover})`

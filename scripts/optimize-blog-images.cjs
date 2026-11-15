@@ -398,6 +398,23 @@ function syncMarkdownPosts() {
           seoChanged = true;
           console.log(`✅ Added SEO metadata entry for /blog/${slug}`);
         }
+      } else if (seoSource && !aliasSkip.has(slug) && meta.coverImage && meta.coverImage.startsWith('/images/blog-covers/')) {
+        const expectedFullCover = `https://www.abuqitmirlabs.tech${meta.coverImage}`;
+        const routeIdx = Math.max(seoSource.indexOf(routeKeySingle), seoSource.indexOf(routeKeyDouble));
+        if (routeIdx !== -1) {
+          const nextRouteMatch = seoSource.slice(routeIdx + 10).search(/\n  ['"]\/blog\//);
+          const blockEnd = nextRouteMatch !== -1 ? routeIdx + 10 + nextRouteMatch : seoSource.length;
+          const block = seoSource.slice(routeIdx, blockEnd);
+          const updatedBlock = block
+            .replace(/(ogImage:\s*['"])https:\/\/www\.abuqitmirlabs\.tech\/images\/blog-covers\/[^'"]+(['"])/g, `$1${expectedFullCover}$2`)
+            .replace(/(twitterImage:\s*['"])https:\/\/www\.abuqitmirlabs\.tech\/images\/blog-covers\/[^'"]+(['"])/g, `$1${expectedFullCover}$2`)
+            .replace(/(image:\s*['"])https:\/\/www\.abuqitmirlabs\.tech\/images\/blog-covers\/[^'"]+(['"])/g, `$1${expectedFullCover}$2`);
+          if (updatedBlock !== block) {
+            seoSource = seoSource.slice(0, routeIdx) + updatedBlock + seoSource.slice(blockEnd);
+            seoChanged = true;
+            console.log(`🔄 Synced ogImage/twitterImage/Article.image in seoRoutesMetadata.ts for /blog/${slug}`);
+          }
+        }
       }
     } catch (err) {
       console.warn(`⚠️ Failed to parse ${file}:`, err.message);
@@ -509,6 +526,7 @@ async function main() {
     "https://i.postimg.cc/7YZRZy9q/Rebranding-Checklist-Pakistan-Before-During-and-After.jpg": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
     "https://i.postimg.cc/qqsFC1CD/Kuwait-Cybersecurity-Partner-Evaluation.png": "/images/blog-covers/kuwait-cybersecurity-partner-evaluation.webp",
     "https://i.postimg.cc/9QdHdDB2/Logo-Design-Pricing-in-Pakistan-Explained.png": "/images/blog-covers/rebranding-cost-pakistan-6b1f5c4e.webp",
+    "https://i.postimg.cc/C56BHBKN/Free-Website-AI-Tools-for-Founders.jpg": "/images/blog-covers/free-tools-website-seo-ai-readiness.webp",
     "/images/blog-covers/lead-generation-content-strategy-google-meta-1576aa01.webp": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
     "/images/blog-covers/rebranding-checklist-pakistan-9252c088.webp": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
     "/images/blog-covers/kuwait-digital-transformation-866e51c6.webp": "/images/blog-covers/kuwait-cybersecurity-partner-evaluation.webp"
@@ -517,7 +535,8 @@ async function main() {
     "lead-generation-content-strategy-google-meta": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
     "rebranding-checklist-pakistan": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
     "kuwait-digital-transformation": "/images/blog-covers/kuwait-cybersecurity-partner-evaluation.webp",
-    "rebranding-cost-pakistan": "/images/blog-covers/rebranding-cost-pakistan-6b1f5c4e.webp"
+    "rebranding-cost-pakistan": "/images/blog-covers/rebranding-cost-pakistan-6b1f5c4e.webp",
+    "free-tools-website-seo-ai-readiness": "/images/blog-covers/free-tools-website-seo-ai-readiness.webp"
   };
 
   const ensureLocalCoverFileExists = (localWebpRelPath) => {

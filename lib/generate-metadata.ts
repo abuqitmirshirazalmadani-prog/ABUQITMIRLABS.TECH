@@ -582,6 +582,13 @@ export function buildConsolidatedSchemaGraph(
       ) {
         copy.name = formatConciseTitle(copy.name, cleanUrlPath);
       }
+      if (
+        (nType.includes('Article') || nType.includes('BlogPosting')) &&
+        imageUrl &&
+        cleanUrlPath.startsWith('/blog/')
+      ) {
+        copy.image = imageUrl;
+      }
       return copy;
     };
     if (Array.isArray(item['@graph'])) {
@@ -757,8 +764,12 @@ export function generateMetadata(input: MetadataInput = {}): NextStyleMetadata {
       routeMeta?.twitterDescription ||
       resolvedOgDescription
   );
-  const resolvedTwitterImage =
-    input.twitterImage || routeMeta?.twitterImage || resolvedOgImage;
+  const rawTwitterImage =
+    isBlogPost ? resolvedOgImage : (input.twitterImage || routeMeta?.twitterImage || resolvedOgImage);
+  const optimizedTwitterPath = resolveOptimizedCoverImage(rawTwitterImage, blogSlug || undefined);
+  const resolvedTwitterImage = optimizedTwitterPath.startsWith('/')
+    ? `${SITE_URL}${optimizedTwitterPath}`
+    : optimizedTwitterPath || resolvedOgImage;
 
   const isNoIndexRoute =
     normalizedPath === '/login' ||

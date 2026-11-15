@@ -11096,12 +11096,12 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     canonical: 'https://www.abuqitmirlabs.tech/blog/brand-audit-checklist-pakistan',
     ogTitle: "Brand Audit Checklist Pakistan: 25 Tests | AbuQitmirLabs",
     ogDescription: "25-point brand audit checklist for Pakistani businesses. Score your positioning, website, WhatsApp funnel, and customer trust before rebranding. Read.",
-    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
+    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/brand-audit-checklist-pakistan-905f4323.webp",
     ogType: 'article',
     twitterCard: 'summary_large_image',
     twitterTitle: "Brand Audit Checklist Pakistan: 25 Tests | AbuQitmirLabs",
     twitterDescription: "25-point brand audit checklist for Pakistani businesses. Score your positioning, website, WhatsApp funnel, and customer trust before rebranding. Read.",
-    twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
+    twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/brand-audit-checklist-pakistan-905f4323.webp",
     schemaJsonLd: {
       '@context': 'https://schema.org',
       '@graph': [
@@ -11142,7 +11142,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/brand-audit-checklist-pakistan#webpage' },
           headline: "Brand Audit Checklist Pakistan: 25 Pre-Rebrand Questions",
           description: "Audit your Pakistani small business before rebranding. Score positioning, identity, website, WhatsApp, reviews and customer trust with 25 questions.",
-          image: "https://www.abuqitmirlabs.tech/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
+          image: "https://www.abuqitmirlabs.tech/images/blog-covers/brand-audit-checklist-pakistan-905f4323.webp",
           author: {
             '@type': 'Person',
             name: "Abu Qitmir Mohammad Shiraz Al-Madani",
@@ -12170,6 +12170,126 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
                     "acceptedAnswer": {
                               "@type": "Answer",
                               "text": "Yes. The Federal Cabinet approved the National AI Policy in July 2025, and the Digital Nation Pakistan Act, enacted on 29 January 2025, created the Pakistan Digital Authority. The National Digital Pakistan Policy dates from 2018. Pakistan has no stand-alone AI act in force, and the personal data bill remains pending."
+                    }
+          }
+]
+        }
+      ]
+    }
+  },
+  '/blog/free-tools-website-seo-ai-readiness': {
+    title: "Free Website and AI Tools for Founders | AbuQitmirLabs",
+    description: "Discover six interactive tools for founders: website audit, SEO checklist, project cost calculator, and AI readiness score. Plan your build. Book a review.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/free-tools-website-seo-ai-readiness',
+    ogTitle: "Free Website and AI Tools for Founders | AbuQitmirLabs",
+    ogDescription: "Discover six interactive tools for founders: website audit, SEO checklist, project cost calculator, and AI readiness score. Plan your build. Book a review.",
+    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/free-tools-website-seo-ai-readiness.webp",
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: "Free Website and AI Tools for Founders | AbuQitmirLabs",
+    twitterDescription: "Discover six interactive tools for founders: website audit, SEO checklist, project cost calculator, and AI readiness score. Plan your build. Book a review.",
+    twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/free-tools-website-seo-ai-readiness.webp",
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.abuqitmirlabs.tech/#organization',
+          name: 'AbuQitmirLabs',
+          url: 'https://www.abuqitmirlabs.tech/',
+          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://www.abuqitmirlabs.tech/#website',
+          url: 'https://www.abuqitmirlabs.tech/',
+          name: 'AbuQitmirLabs',
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
+        },
+        {
+          '@type': 'WebPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/free-tools-website-seo-ai-readiness#webpage',
+          url: 'https://www.abuqitmirlabs.tech/blog/free-tools-website-seo-ai-readiness',
+          name: "Free Website and AI Tools for Founders | AbuQitmirLabs",
+          description: "Discover six interactive tools for founders: website audit, SEO checklist, project cost calculator, and AI readiness score. Plan your build. Book a review.",
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/free-tools-website-seo-ai-readiness#breadcrumb',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
+            { '@type': 'ListItem', position: 3, name: "Free Website and AI Tools for Founders: A Practical Guide", item: 'https://www.abuqitmirlabs.tech/blog/free-tools-website-seo-ai-readiness' }
+          ]
+        },
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/free-tools-website-seo-ai-readiness#article',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/free-tools-website-seo-ai-readiness#webpage' },
+          headline: "Free Website and AI Tools for Founders: A Practical Guide",
+          description: "Discover six interactive tools for founders: website audit, SEO checklist, project cost calculator, and AI readiness score. Plan your build. Book a review.",
+          image: "https://www.abuqitmirlabs.tech/images/blog-covers/free-tools-website-seo-ai-readiness.webp",
+          author: {
+            '@type': 'Person',
+            name: "Abu Qitmir Mohammad Shiraz Al-Madani",
+            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+          },
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
+          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/free-tools-website-seo-ai-readiness#webpage' },
+          datePublished: "2026-11-15T00:00:00+00:00",
+          dateModified: "2026-11-15T00:00:00+00:00"
+        },
+        {
+          '@type': 'FAQPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/free-tools-website-seo-ai-readiness#faq',
+          mainEntity: [
+          {
+                    "@type": "Question",
+                    "name": "Are the AbuQitmirLabs tools available at no cost?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "The Website Audit page states that it needs no signup. The other tool pages do not state a price on the page itself, so check each tool before relying on it. The team should confirm pricing and signup terms for all six tools before this article is published."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Which tool should I use first?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Start with the Website Audit if your site already runs. Start with the Project Cost Calculator if you are planning a new build and need a budget range. Start with the AI Readiness Score if you are considering AI agents, and check your data and security readiness before any pilot."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Do the tools replace a professional audit?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "No. Each tool gives a structured first view based on the inputs you provide. A tool cannot see your server logs, contracts or customer data. For a decision with money or legal exposure at stake, use the tool result as a starting point and confirm it with a qualified specialist."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Can I use the SEO checklist for a Pakistani local business?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Yes. The checklist covers local citations as one of its areas, which suits businesses that depend on Google Business Profile and local search. Use it alongside the Website Audit, and review the local citation items against your actual listings. Repeat the review every quarter, because local listings change often."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "How accurate is the project cost estimate?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "The estimate gives a planning range, not a fixed quote. Accuracy depends on the scope you enter, so a vague scope produces a weak estimate. Compare the estimate with at least two written proposals, and ask each vendor to state the assumptions behind its price."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Can I export results from the tools?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "The Project Cost Calculator page states that it includes PDF export. Other tool pages do not state an export option on the page. Confirm export options for each tool before you plan a workflow around them, and save a copy of any result you need for a decision."
                     }
           }
 ]
