@@ -23,7 +23,8 @@
     "AbuQitmirLabs"
   ],
   "publishedAt": "2026-10-17",
-  "syncedAt": "2026-10-17T21:27:19.970Z"
+  "syncedAt": "2026-10-17T21:27:19.970Z",
+  "coverImage": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp"
 }
 ---
 

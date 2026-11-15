@@ -171,6 +171,21 @@ async function syncFirestorePostsToMarkdown() {
             fs.writeFileSync(mdPath, updatedMd, 'utf8');
             console.log(`🔄 Restored real Firestore coverImage in content/blog/${slug}.md`);
           }
+        } else if (fsCover && !fsCover.includes('logo.png')) {
+          const fmMatch = existingMd.match(/^---[\s\n]*\{([\s\S]*?)\}[\s\n]*---/);
+          if (fmMatch) {
+            try {
+              const fmObj = JSON.parse('{' + fmMatch[1] + '}');
+              if (!fmObj.coverImage || fmObj.coverImage.includes('logo.png')) {
+                fmObj.coverImage = fsCover;
+                const bodyPart = existingMd.replace(/^---[\s\S]*?---[\s\n]*/, '');
+                fs.writeFileSync(mdPath, `---\n${JSON.stringify(fmObj, null, 2)}\n---\n\n${bodyPart}`, 'utf8');
+                console.log(`🔄 Added missing coverImage to content/blog/${slug}.md from Firestore`);
+              }
+            } catch {
+              // ignore JSON parse issues
+            }
+          }
         }
       } else if (!staticSource.includes(`STATIC_BLOG_POSTS["${slug}"]`)) {
         const rawTitle = (fields.title?.stringValue || slug).trim();
@@ -208,6 +223,100 @@ async function syncFirestorePostsToMarkdown() {
     }
   } catch (err) {
     console.warn('⚠️ Firestore auto-sync skipped:', err.message);
+  }
+}
+
+// 0.5 Repair any markdown files missing coverImage and any staticBlogPosts.ts broken .jpg paths using existing local WebP files
+function repairMissingAndBrokenCovers() {
+  const knownLocalCoversBySlug = {
+    'arabic-ux-design-rtl': '/images/blog-covers/arabic-ux-design-rtl.webp',
+    'brand-identity-vs-logo-design': '/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp',
+    'content-calendar-strategy': '/images/blog-covers/content-calendar-strategy-c110168a.webp',
+    'design-systems-for-startups': '/images/blog-covers/design-systems-for-startups-848e7249.webp',
+    'design-trends-2026': '/images/blog-covers/design-trends-2026-c38bcffb.webp',
+    'digital-marketing-stack-2026': '/images/blog-covers/digital-marketing-stack-2026-f69ac6a2.webp',
+    'fix-url-fragmentation-in-headless-spas-abuqitmirlabs': '/images/blog-covers/fix-url-fragmentation-in-headless-spas-abuqitmirlabs-c11c02b3.webp',
+    'url-fragmentation-headless-spa': '/images/blog-covers/fix-url-fragmentation-in-headless-spas-abuqitmirlabs-c11c02b3.webp',
+    'guest-posting-in-2026-what-works-abuqitmirlabs': '/images/blog-covers/guest-posting-in-2026-what-works-abuqitmirlabs-458d126e.webp',
+    'measure-marketing-roi-without-tracking': '/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp',
+    'seo-content-vs-thought-leadership': '/images/blog-covers/seo-content-vs-thought-leadership-a066fe07.webp',
+    'the-2026-static-site-comeback-why-jamstack-won-after-all': '/images/blog-covers/the-2026-static-site-comeback-why-jamstack-won-after-all-00f21f97.webp',
+    'the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact': '/images/blog-covers/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-imp-63afd577.webp',
+    'the-non-technical-founders-guide-to-software-ownership-ip-2026': '/images/blog-covers/the-non-technical-founders-guide-to-software-ownership-ip-20-85a1300b.webp',
+    'the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026': '/images/blog-covers/the-pakistan-advantage-why-us-startups-are-moving-dev-teams--21cc0e08.webp',
+    'ui-ux-design-conversion': '/images/blog-covers/ui-ux-design-conversion-e56a7379.webp',
+    'edtech-software-development-lms-features-every-platform-needs': '/images/blog-covers/edtech-software-development-80675541.webp',
+    'tailor-made-software-solutions': '/images/blog-covers/tailor-made-software-solutions-when-off-the-shelf-fails-beb4a4ab.webp',
+    'when-off-the-shelf-software-fails': '/images/blog-covers/tailor-made-software-solutions-when-off-the-shelf-fails-beb4a4ab.webp',
+    'native-mobile-app-development-ios-vs-android-cost-2026': '/images/blog-covers/native-mobile-app-development-ios-vs-android-cost-9610730c.webp',
+    'native-mobile-app-development-ios-vs-android': '/images/blog-covers/native-mobile-app-development-ios-vs-android-cost-9610730c.webp',
+    'ios-vs-android-cost-2026': '/images/blog-covers/native-mobile-app-development-ios-vs-android-cost-9610730c.webp',
+    'app-development-agency-uk-2026': '/images/blog-covers/app-development-agency-uk-what-to-ask-before-you-sign-2026-0191a5e7.webp',
+    'app-development-agency-uk': '/images/blog-covers/app-development-agency-uk-what-to-ask-before-you-sign-2026-0191a5e7.webp'
+  };
+
+  if (fs.existsSync(blogContentDir)) {
+    for (const file of fs.readdirSync(blogContentDir).filter(f => f.endsWith('.md'))) {
+      const mdPath = path.join(blogContentDir, file);
+      const raw = fs.readFileSync(mdPath, 'utf8');
+      const fmMatch = raw.match(/^---[\s\n]*\{([\s\S]*?)\}[\s\n]*---/);
+      if (!fmMatch) continue;
+      try {
+        const meta = JSON.parse('{' + fmMatch[1] + '}');
+        const slug = (meta.slug || file.replace(/\.md$/, '')).trim();
+        const fallbackLocal = knownLocalCoversBySlug[slug];
+        if (fallbackLocal && (!meta.coverImage || meta.coverImage.includes('logo.png'))) {
+          meta.coverImage = fallbackLocal;
+          const body = raw.replace(/^---[\s\S]*?---[\s\n]*/, '');
+          fs.writeFileSync(mdPath, `---\n${JSON.stringify(meta, null, 2)}\n---\n\n${body}`, 'utf8');
+          console.log(`✅ Populated local WebP coverImage in content/blog/${file}: ${fallbackLocal}`);
+        }
+      } catch {
+        // ignore
+      }
+    }
+  }
+
+  if (fs.existsSync(staticPostsPath)) {
+    let staticContent = fs.readFileSync(staticPostsPath, 'utf8');
+    const brokenJpgReplacements = {
+      'https://www.abuqitmirlabs.tech/images/blog/edtech-lms-9-features-og.jpg': '/images/blog-covers/edtech-software-development-80675541.webp',
+      'https://www.abuqitmirlabs.tech/og-images/tailor-made-software-solutions-when-off-the-shelf-fails.jpg': '/images/blog-covers/tailor-made-software-solutions-when-off-the-shelf-fails-beb4a4ab.webp',
+      'https://www.abuqitmirlabs.tech/images/native-mobile-app-ios-vs-android-cost-cover.jpg': '/images/blog-covers/native-mobile-app-development-ios-vs-android-cost-9610730c.webp',
+      'https://www.abuqitmirlabs.tech/og-app-development-agency-uk.jpg': '/images/blog-covers/app-development-agency-uk-what-to-ask-before-you-sign-2026-0191a5e7.webp'
+    };
+    let changed = false;
+    for (const [badUrl, goodWebp] of Object.entries(brokenJpgReplacements)) {
+      if (staticContent.includes(badUrl)) {
+        staticContent = staticContent.split(badUrl).join(goodWebp);
+        changed = true;
+      }
+    }
+    if (changed) {
+      fs.writeFileSync(staticPostsPath, staticContent, 'utf8');
+      console.log(`✅ Replaced broken .jpg cover paths with local WebP files in src/data/staticBlogPosts.ts`);
+    }
+  }
+
+  if (fs.existsSync(seoMetaPath)) {
+    let seoContent = fs.readFileSync(seoMetaPath, 'utf8');
+    const brokenJpgSeoReplacements = {
+      'https://www.abuqitmirlabs.tech/images/blog/edtech-lms-9-features-og.jpg': 'https://www.abuqitmirlabs.tech/images/blog-covers/edtech-software-development-80675541.webp',
+      'https://www.abuqitmirlabs.tech/og-images/tailor-made-software-solutions-when-off-the-shelf-fails.jpg': 'https://www.abuqitmirlabs.tech/images/blog-covers/tailor-made-software-solutions-when-off-the-shelf-fails-beb4a4ab.webp',
+      'https://www.abuqitmirlabs.tech/images/native-mobile-app-ios-vs-android-cost-cover.jpg': 'https://www.abuqitmirlabs.tech/images/blog-covers/native-mobile-app-development-ios-vs-android-cost-9610730c.webp',
+      'https://www.abuqitmirlabs.tech/og-app-development-agency-uk.jpg': 'https://www.abuqitmirlabs.tech/images/blog-covers/app-development-agency-uk-what-to-ask-before-you-sign-2026-0191a5e7.webp'
+    };
+    let seoChanged = false;
+    for (const [badUrl, goodWebp] of Object.entries(brokenJpgSeoReplacements)) {
+      if (seoContent.includes(badUrl)) {
+        seoContent = seoContent.split(badUrl).join(goodWebp);
+        seoChanged = true;
+      }
+    }
+    if (seoChanged) {
+      fs.writeFileSync(seoMetaPath, seoContent, 'utf8');
+      console.log(`✅ Replaced broken .jpg ogImage/twitterImage paths in src/data/seoRoutesMetadata.ts`);
+    }
   }
 }
 
@@ -398,21 +507,30 @@ function syncMarkdownPosts() {
           seoChanged = true;
           console.log(`✅ Added SEO metadata entry for /blog/${slug}`);
         }
-      } else if (seoSource && !aliasSkip.has(slug) && meta.coverImage && meta.coverImage.startsWith('/images/blog-covers/')) {
-        const expectedFullCover = `https://www.abuqitmirlabs.tech${meta.coverImage}`;
+      } else if (seoSource && !aliasSkip.has(slug)) {
         const routeIdx = Math.max(seoSource.indexOf(routeKeySingle), seoSource.indexOf(routeKeyDouble));
         if (routeIdx !== -1) {
           const nextRouteMatch = seoSource.slice(routeIdx + 10).search(/\n  ['"]\/blog\//);
           const blockEnd = nextRouteMatch !== -1 ? routeIdx + 10 + nextRouteMatch : seoSource.length;
-          const block = seoSource.slice(routeIdx, blockEnd);
-          const updatedBlock = block
-            .replace(/(ogImage:\s*['"])https:\/\/www\.abuqitmirlabs\.tech\/images\/blog-covers\/[^'"]+(['"])/g, `$1${expectedFullCover}$2`)
-            .replace(/(twitterImage:\s*['"])https:\/\/www\.abuqitmirlabs\.tech\/images\/blog-covers\/[^'"]+(['"])/g, `$1${expectedFullCover}$2`)
-            .replace(/(image:\s*['"])https:\/\/www\.abuqitmirlabs\.tech\/images\/blog-covers\/[^'"]+(['"])/g, `$1${expectedFullCover}$2`);
-          if (updatedBlock !== block) {
-            seoSource = seoSource.slice(0, routeIdx) + updatedBlock + seoSource.slice(blockEnd);
+          let block = seoSource.slice(routeIdx, blockEnd);
+          const origBlock = block;
+          if (meta.coverImage && meta.coverImage.startsWith('/images/blog-covers/')) {
+            const expectedFullCover = `https://www.abuqitmirlabs.tech${meta.coverImage}`;
+            block = block
+              .replace(/(ogImage:\s*['"])https:\/\/www\.abuqitmirlabs\.tech\/(?:images\/blog-covers\/[^'"]+|logo\.png)(['"])/g, `$1${expectedFullCover}$2`)
+              .replace(/(twitterImage:\s*['"])https:\/\/www\.abuqitmirlabs\.tech\/(?:images\/blog-covers\/[^'"]+|logo\.png)(['"])/g, `$1${expectedFullCover}$2`)
+              .replace(/(image:\s*['"])https:\/\/www\.abuqitmirlabs\.tech\/(?:images\/blog-covers\/[^'"]+|logo\.png)(['"])/g, `$1${expectedFullCover}$2`);
+          }
+          if (meta.seoTitle) {
+            block = block
+              .replace(/(^\s*title:\s*).*,$/m, `$1${JSON.stringify(meta.seoTitle)},`)
+              .replace(/(^\s*ogTitle:\s*).*,$/m, `$1${JSON.stringify(meta.seoTitle)},`)
+              .replace(/(^\s*twitterTitle:\s*).*,$/m, `$1${JSON.stringify(meta.seoTitle)},`);
+          }
+          if (block !== origBlock) {
+            seoSource = seoSource.slice(0, routeIdx) + block + seoSource.slice(blockEnd);
             seoChanged = true;
-            console.log(`🔄 Synced ogImage/twitterImage/Article.image in seoRoutesMetadata.ts for /blog/${slug}`);
+            console.log(`🔄 Synced SEO metadata in seoRoutesMetadata.ts for /blog/${slug}`);
           }
         }
       }
@@ -505,6 +623,7 @@ function rewriteRemoteCoversToLocalWebp(urlMap) {
 
 async function main() {
   await syncFirestorePostsToMarkdown();
+  repairMissingAndBrokenCovers();
   syncMarkdownPosts();
   await optimizeOversizedLocalPngs();
 
@@ -527,6 +646,8 @@ async function main() {
     "https://i.postimg.cc/qqsFC1CD/Kuwait-Cybersecurity-Partner-Evaluation.png": "/images/blog-covers/kuwait-cybersecurity-partner-evaluation.webp",
     "https://i.postimg.cc/9QdHdDB2/Logo-Design-Pricing-in-Pakistan-Explained.png": "/images/blog-covers/rebranding-cost-pakistan-6b1f5c4e.webp",
     "https://i.postimg.cc/C56BHBKN/Free-Website-AI-Tools-for-Founders.jpg": "/images/blog-covers/free-tools-website-seo-ai-readiness.webp",
+    "https://i.postimg.cc/yxvzVCDX/RTL-UX-From-Broken-to-Brilliant.png": "/images/blog-covers/arabic-ux-design-rtl.webp",
+    "https://i.postimg.cc/cHQRwnLJ/Logo-vs-Brand-Identity-Guide.png": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp",
     "/images/blog-covers/lead-generation-content-strategy-google-meta-1576aa01.webp": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
     "/images/blog-covers/rebranding-checklist-pakistan-9252c088.webp": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
     "/images/blog-covers/kuwait-digital-transformation-866e51c6.webp": "/images/blog-covers/kuwait-cybersecurity-partner-evaluation.webp"
@@ -536,7 +657,9 @@ async function main() {
     "rebranding-checklist-pakistan": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
     "kuwait-digital-transformation": "/images/blog-covers/kuwait-cybersecurity-partner-evaluation.webp",
     "rebranding-cost-pakistan": "/images/blog-covers/rebranding-cost-pakistan-6b1f5c4e.webp",
-    "free-tools-website-seo-ai-readiness": "/images/blog-covers/free-tools-website-seo-ai-readiness.webp"
+    "free-tools-website-seo-ai-readiness": "/images/blog-covers/free-tools-website-seo-ai-readiness.webp",
+    "arabic-ux-design-rtl": "/images/blog-covers/arabic-ux-design-rtl.webp",
+    "brand-identity-vs-logo-design": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp"
   };
 
   const ensureLocalCoverFileExists = (localWebpRelPath) => {
@@ -545,8 +668,10 @@ async function main() {
     return cleanRel;
   };
 
+  // Refresh tsContent after repairMissingAndBrokenCovers & syncMarkdownPosts
+  const updatedTsContent = fs.readFileSync(staticPostsPath, 'utf8');
   // Match slug -> coverImage in staticBlogPosts.ts
-  const postBlocks = [...tsContent.matchAll(/STATIC_BLOG_POSTS\["([^"]+)"\]\s*=\s*\{([\s\S]*?)\n\};/g)];
+  const postBlocks = [...updatedTsContent.matchAll(/STATIC_BLOG_POSTS\["([^"]+)"\]\s*=\s*\{([\s\S]*?)\n\};/g)];
   for (const m of postBlocks) {
     const slug = m[1];
     const body = m[2];

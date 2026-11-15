@@ -197,6 +197,8 @@ const TITLE_OVERRIDES: Record<string, string> = {
     'B2B Lead Generation Content Strategy: Google + Meta',
   '/blog/brand-guidelines-small-business-pakistan':
     'Brand Guidelines for Small Business in Pakistan 2026 Guide',
+  '/blog/arabic-ux-design-rtl':
+    'Arabic UX Design RTL: Why Western Agencies Get It Wrong',
 };
 
 const DESCRIPTION_OVERRIDES: Record<string, string> = {

@@ -24,7 +24,8 @@
     "AbuQitmirLabs"
   ],
   "publishedAt": "2026-10-18",
-  "syncedAt": "2026-10-18T20:23:44.169Z"
+  "syncedAt": "2026-10-18T20:23:44.169Z",
+  "coverImage": "/images/blog-covers/design-systems-for-startups-848e7249.webp"
 }
 ---
 

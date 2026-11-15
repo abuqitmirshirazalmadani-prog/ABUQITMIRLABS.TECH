@@ -111,7 +111,10 @@ const formatCoverImage = (url?: string, width = 800, slug?: string) => {
 const KNOWN_CANONICAL_SLUG_MAP: Record<string, string> = BLOG_SLUG_REDIRECTS;
 
 const BlogPage = () => {
-    const staticInitialPosts = getStaticBlogList() as unknown as Post[];
+    const staticInitialPosts = (getStaticBlogList() as unknown as Post[]).map(p => ({
+        ...p,
+        coverImage: resolveOptimizedCoverImage(p.coverImage, p.slug) || p.coverImage
+    }));
     const [posts, setPosts] = useState<Post[]>(() => {
         const initial = [...staticInitialPosts];
         initial.sort((a, b) => parseDateToMillis(b.createdAt) - parseDateToMillis(a.createdAt));
@@ -220,7 +223,12 @@ const BlogPage = () => {
                             .replace(/[^a-z0-9]/g, '');
                     };
 
-                    const staticPosts = getStaticBlogList() as unknown as Post[];
+                    const staticPosts = staticInitialPosts;
+                    const fetchedBySlug = new Map<string, Post>();
+                    for (const fp of fetchedPosts) {
+                        const cs = (KNOWN_CANONICAL_SLUG_MAP[fp.slug] || getCanonicalSlug(fp.slug) || fp.slug).toLowerCase().trim();
+                        if (!fetchedBySlug.has(cs)) fetchedBySlug.set(cs, fp);
+                    }
 
                     // Prioritize curated static posts first so their synced dates/titles/covers are preserved,
                     // then merge any additional Firestore-only posts without substring collisions.
@@ -235,7 +243,13 @@ const BlogPage = () => {
                         if (!seenSlugs.has(normSlug) && (!normTitle || !seenTitles.has(normTitle))) {
                             seenSlugs.add(normSlug);
                             if (normTitle) seenTitles.add(normTitle);
-                            combined.push({ ...p, slug: canonSlug });
+                            const fetchedMatch = fetchedBySlug.get(normSlug);
+                            const candidateCover =
+                                p.coverImage && !p.coverImage.includes('logo.png')
+                                    ? p.coverImage
+                                    : fetchedMatch?.coverImage || p.coverImage;
+                            const finalCover = resolveOptimizedCoverImage(candidateCover, canonSlug) || candidateCover;
+                            combined.push({ ...p, slug: canonSlug, coverImage: finalCover });
                         }
                     }
 
@@ -243,7 +257,7 @@ const BlogPage = () => {
                     setPosts(combined);
                     setCachedPosts(combined as any);
                 } else if (isMounted) {
-                    const staticPosts = getStaticBlogList() as unknown as Post[];
+                    const staticPosts = [...staticInitialPosts];
                     staticPosts.sort((a, b) => parseDateToMillis(b.createdAt) - parseDateToMillis(a.createdAt));
                     setPosts(staticPosts);
                     setCachedPosts(staticPosts as any);
@@ -251,7 +265,7 @@ const BlogPage = () => {
             } catch (error) {
                 console.warn('[BlogPage] Using static fallback articles:', error);
                 if (isMounted) {
-                    const staticPosts = getStaticBlogList() as unknown as Post[];
+                    const staticPosts = [...staticInitialPosts];
                     staticPosts.sort((a, b) => parseDateToMillis(b.createdAt) - parseDateToMillis(a.createdAt));
                     setPosts(staticPosts);
                     setCachedPosts(staticPosts as any);

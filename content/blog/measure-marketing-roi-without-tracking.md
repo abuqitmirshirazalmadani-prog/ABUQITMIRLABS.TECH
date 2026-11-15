@@ -29,7 +29,8 @@
     "ROAS measurement"
   ],
   "publishedAt": "2026-10-13",
-  "syncedAt": "2026-10-13T20:29:49.595Z"
+  "syncedAt": "2026-10-13T20:29:49.595Z",
+  "coverImage": "/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp"
 }
 ---
 

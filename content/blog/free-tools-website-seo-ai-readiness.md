@@ -176,7 +176,7 @@ Three gaps appear again and again:
 
 ## Enterprise AI Readiness Score: What It Does and How to Use It
 
-**Direct Answer:** Evaluates an organisation's data infrastructure, workflow maturity and security readiness for autonomous AI agents and RAG deployment. It suits operations, it and product leaders considering ai agents or retrieval-augmented generation. [CONFIRM: signup and cost]
+**Direct Answer:** Evaluates an organisation's data infrastructure, workflow maturity and security readiness for autonomous AI agents and RAG deployment. It suits operations, IT and product leaders considering AI agents or retrieval-augmented generation. [CONFIRM: signup and cost]
 
 **Tool page:** [/tools/ai-readiness-score](/tools/ai-readiness-score)
 
@@ -214,7 +214,7 @@ Three gaps appear again and again:
 
 ## Website Authority and Semantic Entity Analyzer: What It Does and How to Use It
 
-**Direct Answer:** Analyses a domain's topical authority, structured data coverage and citation signals for Google and AI answer engines. It suits content and seo teams, and site owners who want to understand how search and ai engines see their domain. [CONFIRM: signup and cost]
+**Direct Answer:** Analyses a domain's topical authority, structured data coverage and citation signals for Google and AI answer engines. It suits content and SEO teams, and site owners who want to understand how search and AI engines see their domain. [CONFIRM: signup and cost]
 
 **Tool page:** [/tools/website-authority-analyzer](/tools/website-authority-analyzer)
 

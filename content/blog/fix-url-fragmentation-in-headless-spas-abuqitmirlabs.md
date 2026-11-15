@@ -26,7 +26,8 @@
     "AbuQitmirLabs"
   ],
   "publishedAt": "2026-10-03",
-  "syncedAt": "2026-10-03T19:47:50.916Z"
+  "syncedAt": "2026-10-03T19:47:50.916Z",
+  "coverImage": "/images/blog-covers/fix-url-fragmentation-in-headless-spas-abuqitmirlabs-c11c02b3.webp"
 }
 ---
 

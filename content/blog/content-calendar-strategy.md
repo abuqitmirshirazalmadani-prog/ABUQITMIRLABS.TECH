@@ -20,7 +20,8 @@
     "AbuQitmirLabs"
   ],
   "publishedAt": "2026-10-25",
-  "syncedAt": "2026-10-25T10:52:16.910Z"
+  "syncedAt": "2026-10-25T10:52:16.910Z",
+  "coverImage": "/images/blog-covers/content-calendar-strategy-c110168a.webp"
 }
 ---
 

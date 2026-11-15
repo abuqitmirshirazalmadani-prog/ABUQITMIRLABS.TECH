@@ -20,7 +20,8 @@
     "AbuQitmirLabs"
   ],
   "publishedAt": "2026-10-22",
-  "syncedAt": "2026-10-22T19:34:03.913Z"
+  "syncedAt": "2026-10-22T19:34:03.913Z",
+  "coverImage": "/images/blog-covers/seo-content-vs-thought-leadership-a066fe07.webp"
 }
 ---
 

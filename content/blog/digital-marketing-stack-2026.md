@@ -28,7 +28,8 @@
     "AbuQitmirLabs"
   ],
   "publishedAt": "2026-10-11",
-  "syncedAt": "2026-10-11T20:12:03.825Z"
+  "syncedAt": "2026-10-11T20:12:03.825Z",
+  "coverImage": "/images/blog-covers/digital-marketing-stack-2026-f69ac6a2.webp"
 }
 ---
 

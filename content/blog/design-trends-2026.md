@@ -21,7 +21,8 @@
     "AbuQitmirLabs"
   ],
   "publishedAt": "2026-10-20",
-  "syncedAt": "2026-10-20T19:27:34.034Z"
+  "syncedAt": "2026-10-20T19:27:34.034Z",
+  "coverImage": "/images/blog-covers/design-trends-2026-c38bcffb.webp"
 }
 ---
 

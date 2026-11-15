@@ -128,8 +128,11 @@ export function stripSurroundingQuotes(raw?: string): string {
 }
 
 export function formatConciseSeoTitle(rawTitle?: string, slug?: string, siteName = DEFAULT_SITE_NAME): string {
-  if (slug === 'lead-generation-content-strategy-google-meta') {
+  if (slug === 'lead-generation-content-strategy-google-meta' || (rawTitle && rawTitle.includes('B2B Lead Generation Content Strategy'))) {
     return 'B2B Lead Generation Content Strategy: Google + Meta';
+  }
+  if (slug === 'arabic-ux-design-rtl' || (rawTitle && /Arabic UX Design RTL/i.test(rawTitle))) {
+    return 'Arabic UX Design RTL: Why Western Agencies Get It Wrong';
   }
   const cleaned = stripSurroundingQuotes(rawTitle || '')
     .replace(/&amp;/gi, '&')
@@ -473,8 +476,9 @@ export function clampMetaDescription(raw?: string, maxLen = 158): string {
 
 export function ensureUniqueTitle(candidateTitle?: string, pathname = '/'): string {
   const clean = stripSurroundingQuotes(candidateTitle || '').trim();
+  const slugFromPath = pathname.startsWith('/blog/') ? pathname.replace(/^\/blog\//, '').replace(/\/+$/, '') : undefined;
   if (clean) {
-    return formatConciseSeoTitle(clean);
+    return formatConciseSeoTitle(clean, slugFromPath);
   }
   if (pathname === '/' || !pathname) {
     return 'Custom Software, AI & SEO Engineering | AbuQitmirLabs';

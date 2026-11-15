@@ -26,7 +26,8 @@
   ],
   "publishedAt": "2026-10-09",
   "syncedAt": "2026-10-09T19:59:11.250Z",
-  "seoTitle": "The Non-Technical Founder's Guide to | AbuQitmirLabs"
+  "seoTitle": "The Non-Technical Founder's Guide to | AbuQitmirLabs",
+  "coverImage": "/images/blog-covers/the-non-technical-founders-guide-to-software-ownership-ip-20-85a1300b.webp"
 }
 ---
 

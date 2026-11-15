@@ -277,12 +277,14 @@ export default async function handler(req: any, res: any) {
       .replace(/\s*\|\s*The\s*9-Step.*$/i, '')
       .trim();
     const pageTitle =
-      postData.seoTitle ||
-      (/Abu\s*Qitmir\s*Labs/i.test(cleanH1)
-        ? cleanH1
-        : cleanH1.length <= 44
-        ? `${cleanH1} | AbuQitmirLabs`
-        : `${cleanH1.split(/[:|]/)[0].trim()} | AbuQitmirLabs`);
+      canonicalSlug === 'arabic-ux-design-rtl'
+        ? 'Arabic UX Design RTL: Why Western Agencies Get It Wrong'
+        : postData.seoTitle ||
+          (/Abu\s*Qitmir\s*Labs/i.test(cleanH1)
+            ? cleanH1
+            : cleanH1.length <= 44
+            ? `${cleanH1} | AbuQitmirLabs`
+            : `${cleanH1.split(/[:|]/)[0].trim()} | AbuQitmirLabs`);
     const rawDesc = (
       canonicalSlug === 'brand-guidelines-small-business-pakistan'
         ? 'A practical guide for Pakistani SMEs on creating a 1-page brand style guide. Keep your logo, colors, and voice consistent across print and web.'
@@ -314,6 +316,7 @@ export default async function handler(req: any, res: any) {
         'https://i.postimg.cc/TYhzLzmz/Five-Blues-One-Brand-Guideline.png': '/images/blog-covers/brand-guidelines-small-business-pakistan-147e663e.webp',
         'https://i.postimg.cc/MGJ7kWH0/Pakistan-IT-Exports-Readiness-Report.png': '/images/blog-covers/pakistan-offshore-development-gcc-8b86e137.webp',
         'https://i.postimg.cc/C56BHBKN/Free-Website-AI-Tools-for-Founders.jpg': '/images/blog-covers/free-tools-website-seo-ai-readiness.webp',
+        'https://i.postimg.cc/yxvzVCDX/RTL-UX-From-Broken-to-Brilliant.png': '/images/blog-covers/arabic-ux-design-rtl.webp',
       };
       if (inputUrl && knownMap[inputUrl.trim()]) {
         return knownMap[inputUrl.trim()];

@@ -14,7 +14,8 @@
     "content marketing"
   ],
   "publishedAt": "2026-10-12",
-  "syncedAt": "2026-10-12T20:02:35.659Z"
+  "syncedAt": "2026-10-12T20:02:35.659Z",
+  "coverImage": "/images/blog-covers/guest-posting-in-2026-what-works-abuqitmirlabs-458d126e.webp"
 }
 ---
 

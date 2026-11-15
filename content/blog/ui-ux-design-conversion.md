@@ -21,7 +21,8 @@
     "AbuQitmirLabs"
   ],
   "publishedAt": "2026-10-20",
-  "syncedAt": "2026-10-20T23:37:21.783Z"
+  "syncedAt": "2026-10-20T23:37:21.783Z",
+  "coverImage": "/images/blog-covers/ui-ux-design-conversion-e56a7379.webp"
 }
 ---
 

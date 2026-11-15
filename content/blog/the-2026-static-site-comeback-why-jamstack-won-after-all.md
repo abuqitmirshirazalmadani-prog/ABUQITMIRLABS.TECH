@@ -29,7 +29,8 @@
     "client-side fetch"
   ],
   "publishedAt": "2026-10-05",
-  "syncedAt": "2026-10-05T19:55:04.534Z"
+  "syncedAt": "2026-10-05T19:55:04.534Z",
+  "coverImage": "/images/blog-covers/the-2026-static-site-comeback-why-jamstack-won-after-all-00f21f97.webp"
 }
 ---
 
