@@ -31,7 +31,82 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     twitterCard: "summary_large_image",
     twitterTitle: "Growth Engineering Firm | AbuQitmirLabs",
     twitterDescription: "Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Free technical audit.",
-    twitterImage: "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+    twitterImage: "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+    schemaJsonLd: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.abuqitmirlabs.tech/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What industries does AbuQitmirLabs specialize in?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We specialize in Fintech, E-commerce, Healthcare platforms, EdTech solutions, and SaaS applications. Our engineering team provides high-performance, secure, and scalable digital solutions tailor-made for high-stakes industries where data integrity and user trust are paramount."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How long does it take to develop a custom Minimum Viable Product (MVP)?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A standard startup MVP typically takes 8 to 12 weeks from scoping to production launch. Larger enterprise platforms with complex third-party integrations and compliance requirements generally span 3 to 6 months using iterative Agile sprints."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why should businesses choose Jamstack and headless architectures over monolithic systems?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Decoupling the frontend presentation layer from the backend database provides sub-second load times, superior Core Web Vitals, enterprise-grade security against common attack vectors, and effortless traffic scaling without infrastructure bloat."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What makes autonomous AI agents different from traditional chatbots?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Traditional chatbots rely on static decision trees and pre-scripted answers. Autonomous AI agents utilize Large Language Models, Retrieval-Augmented Generation (RAG), and multi-tool execution pipelines to understand context, reason over private data, and execute complex multi-step workflows autonomously."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does semantic entity SEO differ from standard keyword stuffing?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Semantic SEO focuses on entity relationships, schema graphs, topical authority, and search intent rather than repetitive keyword density. This ensures content ranks sustainably across Google AI Overviews, generative search engines, and traditional SERPs."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does AbuQitmirLabs provide full IP ownership and source code handover?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Every client retains 100% intellectual property ownership, complete source code repositories, architectural blueprints, and deployment credentials upon milestone completion with zero vendor lock-in."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How much does custom software development cost in Pakistan?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Custom software development in Pakistan typically ranges between $5,000 and $25,000 for production-ready platforms, delivering 60% to 75% cost savings compared to US ($50,000–$150,000+) and UK agency equivalents. At AbuQitmirLabs, we uphold international engineering standards, zero-debt architecture, and strict code review protocols. For a granular breakdown tailored to your scope, explore our interactive Project Cost Estimator tool to calculate instant estimates."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you work with clients in the US and UK remotely?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Over 80% of our clients operate across the United States, United Kingdom, Canada, and Australia. We operate with dedicated timezone overlap (4–6 hours daily with EST/PST and full afternoon overlap with GMT/BST). Our distributed delivery workflow leverages Slack, GitHub, Jira, Loom asynchronous video walkthroughs, and weekly video strategy calls to maintain 100% transparency, rapid iteration sprints, and seamless communication across borders."
+              }
+            }
+          ]
+        }
+      ]
+    }
   },
   "/tools": {
     title: "6 Interactive Founder & SEO Audit Tools | AbuQitmirLabs",

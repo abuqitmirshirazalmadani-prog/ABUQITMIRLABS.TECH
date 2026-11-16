@@ -4,44 +4,36 @@ import React, { useState } from 'react';
 
 export const faqItems = [
     {
-        question: "What is AbuQitmirLabs and what do they do?",
-        answer: "AbuQitmirLabs is a custom software and growth engineering studio in Karachi, Pakistan. Abu Qitmir Mohammad Shiraz Al-Madani founded the firm in 2021. We build custom web apps, mobile apps, smart AI agents, and search growth systems. You get 100% ownership of your code from day one."
+        question: "What industries does AbuQitmirLabs specialize in?",
+        answer: "We specialize in Fintech, E-commerce, Healthcare platforms, EdTech solutions, and SaaS applications. Our engineering team provides high-performance, secure, and scalable digital solutions tailor-made for high-stakes industries where data integrity and user trust are paramount."
+    },
+    {
+        question: "How long does it take to develop a custom Minimum Viable Product (MVP)?",
+        answer: "A standard startup MVP typically takes 8 to 12 weeks from scoping to production launch. Larger enterprise platforms with complex third-party integrations and compliance requirements generally span 3 to 6 months using iterative Agile sprints."
+    },
+    {
+        question: "Why should businesses choose Jamstack and headless architectures over monolithic systems?",
+        answer: "Decoupling the frontend presentation layer from the backend database provides sub-second load times, superior Core Web Vitals, enterprise-grade security against common attack vectors, and effortless traffic scaling without infrastructure bloat."
+    },
+    {
+        question: "What makes autonomous AI agents different from traditional chatbots?",
+        answer: "Traditional chatbots rely on static decision trees and pre-scripted answers. Autonomous AI agents utilize Large Language Models, Retrieval-Augmented Generation (RAG), and multi-tool execution pipelines to understand context, reason over private data, and execute complex multi-step workflows autonomously."
+    },
+    {
+        question: "How does semantic entity SEO differ from standard keyword stuffing?",
+        answer: "Semantic SEO focuses on entity relationships, schema graphs, topical authority, and search intent rather than repetitive keyword density. This ensures content ranks sustainably across Google AI Overviews, generative search engines, and traditional SERPs."
+    },
+    {
+        question: "Does AbuQitmirLabs provide full IP ownership and source code handover?",
+        answer: "Yes. Every client retains 100% intellectual property ownership, complete source code repositories, architectural blueprints, and deployment credentials upon milestone completion with zero vendor lock-in."
     },
     {
         question: "How much does custom software development cost in Pakistan?",
-        answer: "Custom software in Pakistan usually costs between $5,000 and $25,000 for a full product. That saves you 60% to 75% compared to US or UK agencies that charge $50,000 to $150,000. We deliver clean code, strict testing, and full GitHub source handover."
+        answer: "Custom software development in Pakistan typically ranges between $5,000 and $25,000 for production-ready platforms, delivering 60% to 75% cost savings compared to US ($50,000–$150,000+) and UK agency equivalents. At AbuQitmirLabs, we uphold international engineering standards, zero-debt architecture, and strict code review protocols. For a granular breakdown tailored to your scope, explore our interactive Project Cost Estimator tool to calculate instant estimates."
     },
     {
-        question: "How long does it take to build a custom MVP?",
-        answer: "A standard MVP takes 4 to 8 weeks to design, code, test, and launch. Larger enterprise platforms take 3 to 5 months. Focused AI tools like TajweedPage.com were built and launched worldwide in just 10 days."
-    },
-    {
-        question: "Do you work with international clients remotely?",
-        answer: "Yes. Over 80% of our clients are in the US, UK, Saudi Arabia, UAE, Canada, and Australia. Our Karachi team works with 4 to 6 hours of daily overlap for US time zones and full overlap for UK and Gulf teams. We use Slack, GitHub, Jira, and weekly video calls."
-    },
-    {
-        question: "What industries does AbuQitmirLabs specialize in?",
-        answer: "We build software for Fintech, Healthcare, E-commerce, EdTech, Logistics, and B2B SaaS teams. Our senior engineers follow strict security standards like HIPAA, SOC 2, GDPR, PCI-DSS, and Saudi PDPL to keep your user data safe."
-    },
-    {
-        question: "Why should my business upgrade to Jamstack and Headless CMS?",
-        answer: "Jamstack and headless CMS setups separate your fast front-end website from your back-end database. Pages load in under one second and pass Google Core Web Vitals. Fast pages keep visitors on your site longer and turn more clicks into sales leads."
-    },
-    {
-        question: "What is the exact difference between a standard chatbot and a Custom LLM AI Agent?",
-        answer: "A basic chatbot follows fixed rules and gets stuck when buyers ask new questions. A custom AI agent uses private RAG search and secure API tools to read your company data. It answers complex support tickets, scores CRM leads, and runs workflows 24/7."
-    },
-    {
-        question: "How does Semantic Entity SEO differ from traditional keyword SEO?",
-        answer: "Old SEO just repeats keywords on single pages. Semantic SEO connects your whole website with clear Schema.org data graphs, topic hubs, and local business proof. That helps Google Search, AI Overviews, ChatGPT, and Perplexity cite your brand first."
-    },
-    {
-        question: "Does a conversion-focused brand identity actually improve ROI?",
-        answer: "Yes. A clear brand identity builds instant trust with B2B buyers. When your website, pitch deck, and product screens look sharp and read clearly, more visitors book sales calls and your cost per lead drops."
-    },
-    {
-        question: "What is E-E-A-T compliant content, and why do I need it to rank?",
-        answer: "E-E-A-T stands for Experience, Expertise, Authoritativeness, and Trustworthiness. Google and AI search tools use these four signals to judge content quality. We write clear guides and case studies backed by real project data and senior engineer reviews so your pages rank higher."
+        question: "Do you work with clients in the US and UK remotely?",
+        answer: "Yes. Over 80% of our clients operate across the United States, United Kingdom, Canada, and Australia. We operate with dedicated timezone overlap (4–6 hours daily with EST/PST and full afternoon overlap with GMT/BST). Our distributed delivery workflow leverages Slack, GitHub, Jira, Loom asynchronous video walkthroughs, and weekly video strategy calls to maintain 100% transparency, rapid iteration sprints, and seamless communication across borders."
     }
 ];
 
@@ -53,10 +45,10 @@ const FAQSection = () => {
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-14 px-4">
                     <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif italic text-white mb-4">
-                        Frequently Asked Questions: Software, AI &amp; Web Development
+                        Frequently Asked Questions About Custom Software &amp; AI Development
                     </h2>
                     <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-neutral-400 leading-relaxed font-light">
-                        Get clear answers to common questions about our software builds, pricing, timelines, and code ownership.
+                        Clear answers to common questions regarding timelines, technologies, pricing, and project governance.
                     </p>
                 </div>
 
