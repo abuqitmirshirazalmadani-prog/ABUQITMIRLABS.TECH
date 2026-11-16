@@ -233,6 +233,7 @@ async function syncFirestorePostsToMarkdown() {
 // 0.5 Repair any markdown files missing coverImage and any staticBlogPosts.ts broken .jpg paths using existing local WebP files
 function repairMissingAndBrokenCovers() {
   const knownLocalCoversBySlug = {
+    'ai-readiness-uae-gcc': '/images/blog-covers/ai-readiness-uae-gcc.webp',
     'arabic-ux-design-rtl': '/images/blog-covers/arabic-ux-design-rtl.webp',
     'brand-identity-vs-logo-design': '/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp',
     'content-calendar-strategy': '/images/blog-covers/content-calendar-strategy-c110168a.webp',
@@ -529,7 +530,8 @@ function syncMarkdownPosts() {
             block = block
               .replace(/(^\s*title:\s*).*,$/m, `$1${JSON.stringify(meta.seoTitle)},`)
               .replace(/(^\s*ogTitle:\s*).*,$/m, `$1${JSON.stringify(meta.seoTitle)},`)
-              .replace(/(^\s*twitterTitle:\s*).*,$/m, `$1${JSON.stringify(meta.seoTitle)},`);
+              .replace(/(^\s*twitterTitle:\s*).*,$/m, `$1${JSON.stringify(meta.seoTitle)},`)
+              .replace(/('@type':\s*'WebPage'[\s\S]*?name:\s*).*,/m, `$1${JSON.stringify(meta.seoTitle)},`);
           }
           if (block !== origBlock) {
             seoSource = seoSource.slice(0, routeIdx) + block + seoSource.slice(blockEnd);
@@ -651,6 +653,7 @@ async function main() {
     "https://i.postimg.cc/9QdHdDB2/Logo-Design-Pricing-in-Pakistan-Explained.png": "/images/blog-covers/rebranding-cost-pakistan-6b1f5c4e.webp",
     "https://i.postimg.cc/C56BHBKN/Free-Website-AI-Tools-for-Founders.jpg": "/images/blog-covers/free-tools-website-seo-ai-readiness.webp",
     "https://i.postimg.cc/yxvzVCDX/RTL-UX-From-Broken-to-Brilliant.png": "/images/blog-covers/arabic-ux-design-rtl.webp",
+    "https://i.postimg.cc/bJWttf7h/AI-Readiness-Fix-Broken-Data.png": "/images/blog-covers/ai-readiness-uae-gcc.webp",
     "https://i.postimg.cc/cHQRwnLJ/Logo-vs-Brand-Identity-Guide.png": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp",
     "/images/blog-covers/lead-generation-content-strategy-google-meta-1576aa01.webp": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
     "/images/blog-covers/rebranding-checklist-pakistan-9252c088.webp": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
@@ -663,6 +666,7 @@ async function main() {
     "rebranding-cost-pakistan": "/images/blog-covers/rebranding-cost-pakistan-6b1f5c4e.webp",
     "free-tools-website-seo-ai-readiness": "/images/blog-covers/free-tools-website-seo-ai-readiness.webp",
     "arabic-ux-design-rtl": "/images/blog-covers/arabic-ux-design-rtl.webp",
+    "ai-readiness-uae-gcc": "/images/blog-covers/ai-readiness-uae-gcc.webp",
     "brand-identity-vs-logo-design": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp"
   };
 

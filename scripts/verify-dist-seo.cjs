@@ -88,6 +88,8 @@ const TITLE_OVERRIDES = {
     'Brand Guidelines for Small Business in Pakistan 2026 Guide',
   '/blog/arabic-ux-design-rtl':
     'Arabic UX Design RTL: Why Western Agencies Get It Wrong',
+  '/blog/ai-readiness-uae-gcc':
+    'GCC AI Readiness Gap: Why 64% of UAE IT Leaders Worry',
 };
 
 function formatConciseTitle(rawTitle, pathname) {

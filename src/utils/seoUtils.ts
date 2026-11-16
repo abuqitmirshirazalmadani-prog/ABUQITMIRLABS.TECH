@@ -134,6 +134,9 @@ export function formatConciseSeoTitle(rawTitle?: string, slug?: string, siteName
   if (slug === 'arabic-ux-design-rtl' || (rawTitle && /Arabic UX Design RTL/i.test(rawTitle))) {
     return 'Arabic UX Design RTL: Why Western Agencies Get It Wrong';
   }
+  if (slug === 'ai-readiness-uae-gcc' || (rawTitle && /GCC AI Readiness Gap/i.test(rawTitle))) {
+    return 'GCC AI Readiness Gap: Why 64% of UAE IT Leaders Worry';
+  }
   const cleaned = stripSurroundingQuotes(rawTitle || '')
     .replace(/&amp;/gi, '&')
     .replace(/\s+/g, ' ')

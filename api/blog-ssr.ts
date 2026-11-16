@@ -279,11 +279,15 @@ export default async function handler(req: any, res: any) {
     const pageTitle =
       canonicalSlug === 'arabic-ux-design-rtl'
         ? 'Arabic UX Design RTL: Why Western Agencies Get It Wrong'
+        : canonicalSlug === 'ai-readiness-uae-gcc'
+        ? 'GCC AI Readiness Gap: Why 64% of UAE IT Leaders Worry'
         : postData.seoTitle ||
           (/Abu\s*Qitmir\s*Labs/i.test(cleanH1)
             ? cleanH1
             : cleanH1.length <= 44
             ? `${cleanH1} | AbuQitmirLabs`
+            : cleanH1.length <= 60
+            ? cleanH1
             : `${cleanH1.split(/[:|]/)[0].trim()} | AbuQitmirLabs`);
     const rawDesc = (
       canonicalSlug === 'brand-guidelines-small-business-pakistan'
@@ -317,6 +321,7 @@ export default async function handler(req: any, res: any) {
         'https://i.postimg.cc/MGJ7kWH0/Pakistan-IT-Exports-Readiness-Report.png': '/images/blog-covers/pakistan-offshore-development-gcc-8b86e137.webp',
         'https://i.postimg.cc/C56BHBKN/Free-Website-AI-Tools-for-Founders.jpg': '/images/blog-covers/free-tools-website-seo-ai-readiness.webp',
         'https://i.postimg.cc/yxvzVCDX/RTL-UX-From-Broken-to-Brilliant.png': '/images/blog-covers/arabic-ux-design-rtl.webp',
+        'https://i.postimg.cc/bJWttf7h/AI-Readiness-Fix-Broken-Data.png': '/images/blog-covers/ai-readiness-uae-gcc.webp',
       };
       if (inputUrl && knownMap[inputUrl.trim()]) {
         return knownMap[inputUrl.trim()];
