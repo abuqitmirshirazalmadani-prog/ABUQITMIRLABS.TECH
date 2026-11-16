@@ -568,6 +568,7 @@ for (const routeUrl of allRoutes) {
     }
     
     let cleanBodyHtml = (bodyHtml || '')
+      .replace(/<a\b[^>]*href=["']https:\/\/wa\.me\/923233260859["'][^>]*>[\s\S]*?Chat with us[\s\S]*?<\/a>/gi, '')
       .replace(/style="opacity:0;transform:translateY\([^"]*\)"/gi, 'style="opacity:1;transform:translateY(0)"')
       .replace(/style="opacity:0"/gi, 'style="opacity:1"')
       .replace(/(<(?:header|main|article|section|aside|footer|nav|h1|h2|h3|h4|p|ul|ol|li|table|thead|tbody|tr|blockquote|hr)\b[^>]*>)/gi, '\n  $1')
