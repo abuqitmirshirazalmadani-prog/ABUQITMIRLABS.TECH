@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
+import { ArrowRight } from 'lucide-react';
 import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -15,71 +16,248 @@ import TestimonialsSection from '../components/TestimonialsSection';
 import FAQSection, { faqItems } from '../components/FAQSection';
 import ContactSection from '../components/ContactSection';
 import FeaturedToolsSection from '../components/FeaturedToolsSection';
+import { db, collection, getDocs, query, where } from '../lib/firebase';
+import { getStaticBlogList } from '../data/staticBlogPosts';
+import { BLOG_SLUG_REDIRECTS, getCanonicalSlug } from '../data/canonicalRedirects';
+import { resolveOptimizedCoverImage } from '../data/localCoverImageMap';
+import { DEFAULT_BRAND_COVER } from './BlogPage';
 
-const latestBlogHighlights = [
-  {
-    slug: 'brand-audit-checklist-pakistan',
-    title: 'Brand Audit Checklist for Pakistani Businesses (2026).',
-    excerpt: 'Score your brand, website, and social presence across 35 clear checkpoints in one hour. Find weak spots fast and boost buyer trust.',
-    category: 'Brand Building.',
-    pillarPath: '/brand-building',
-    pillarLabel: 'Brand Building Services.',
-    date: '2026-04-20',
-    readTime: '18 min read.',
-  },
-  {
-    slug: 'offshore-software-development-saudi-arabia',
-    title: 'Offshore Software Development for Saudi Arabia: Save 40–60%.',
-    excerpt: 'Compare Riyadh local hiring with Karachi engineering teams. Learn about Saudi PDPL rules, Arabic RTL support, and clear cost models.',
-    category: 'Custom Software.',
-    pillarPath: '/custom-software',
-    pillarLabel: 'Custom Software Development.',
-    date: '2026-04-18',
-    readTime: '16 min read.',
-  },
-  {
-    slug: 'soc-2-fintech-startups',
-    title: 'SOC 2 for Fintech Startups: The Engineering Checklist.',
-    excerpt: 'See how seed and Series A fintech founders add SOC 2 controls, role access, and safe audit logs from day one.',
-    category: 'FinTech.',
-    pillarPath: '/solutions/fintech',
-    pillarLabel: 'FinTech Software Solutions.',
-    date: '2026-04-16',
-    readTime: '15 min read.',
-  },
-  {
-    slug: 'build-brand-on-social-media',
-    title: 'How to Build a Brand on Social Media: 17 Proven Steps.',
-    excerpt: 'Turn daily social posts into steady brand trust and real sales leads. Follow this simple guide for B2B and consumer teams.',
-    category: 'Digital Growth.',
-    pillarPath: '/digital-marketing',
-    pillarLabel: 'Digital Marketing Services.',
-    date: '2026-04-17',
-    readTime: '19 min read.',
-  },
-  {
-    slug: 'ai-integration-with-legacy-systems-the-complete-2026-guide',
-    title: 'AI Integration with Legacy Systems: The Complete 2026 Guide.',
-    excerpt: 'Connect smart AI agents to your old SQL databases and ERP tools safely. Upgrade your workflows with zero downtime.',
-    category: 'AI Agents.',
-    pillarPath: '/ai-agent-development',
-    pillarLabel: 'AI Agent Development.',
-    date: '2026-03-14',
-    readTime: '14 min read.',
-  },
-  {
-    slug: 'flutter-vs-react-native-choosing-mobile-app-stack-2026',
-    title: 'Flutter vs React Native in 2026: Pick the Right App Stack.',
-    excerpt: 'Compare app speed, native code bridges, and build costs for iOS and Android. Choose the best mobile stack for your team.',
-    category: 'Mobile Apps.',
-    pillarPath: '/mobile-app-development',
-    pillarLabel: 'Mobile App Development.',
-    date: '2026-03-10',
-    readTime: '13 min read.',
-  },
-];
+interface HomeBlogHighlight {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  pillarPath: string;
+  pillarLabel: string;
+  date: string;
+  createdAt: any;
+  coverImage: string;
+  coverImageAlt: string;
+}
+
+const parseDateToMillis = (timestamp: any): number => {
+  if (!timestamp) return 0;
+  try {
+    if (typeof timestamp === 'number') return timestamp;
+    if (timestamp && typeof timestamp.toDate === 'function') {
+      return timestamp.toDate().getTime();
+    }
+    if (timestamp && typeof timestamp.seconds === 'number') {
+      return timestamp.seconds * 1000;
+    }
+    const parsed = new Date(timestamp).getTime();
+    return isNaN(parsed) ? 0 : parsed;
+  } catch {
+    return 0;
+  }
+};
+
+const formatDateShort = (timestamp: any): string => {
+  if (!timestamp) return 'RECENT';
+  try {
+    let date: Date;
+    if (timestamp && typeof timestamp.toDate === 'function') {
+      date = timestamp.toDate();
+    } else if (timestamp && typeof timestamp.seconds === 'number') {
+      date = new Date(timestamp.seconds * 1000);
+    } else if (timestamp instanceof Date) {
+      date = timestamp;
+    } else if (typeof timestamp === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(timestamp.trim())) {
+      date = new Date(`${timestamp.trim()}T00:00:00Z`);
+    } else {
+      date = new Date(timestamp);
+    }
+    if (isNaN(date.getTime())) return 'RECENT';
+    return date
+      .toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+        timeZone: 'UTC',
+      })
+      .toUpperCase();
+  } catch {
+    return 'RECENT';
+  }
+};
+
+const formatCoverImage = (url?: string, width = 800, slug?: string): string => {
+  const resolved = resolveOptimizedCoverImage(url, slug);
+  if (!resolved || typeof resolved !== 'string' || resolved.trim() === '' || resolved.includes('logo.png')) {
+    return DEFAULT_BRAND_COVER;
+  }
+  const cleanUrl = resolved.trim();
+  if (cleanUrl.startsWith('https://www.abuqitmirlabs.tech/')) {
+    return cleanUrl.replace('https://www.abuqitmirlabs.tech', '');
+  }
+  if (cleanUrl.includes('unsplash.com')) {
+    return `${cleanUrl}&w=${width}&fm=webp`;
+  }
+  return cleanUrl;
+};
+
+const getPillarForPost = (slug: string, category?: string): { pillarPath: string; pillarLabel: string } => {
+  const s = `${slug} ${category || ''}`.toLowerCase();
+  if (s.includes('brand') || s.includes('logo') || s.includes('graphic') || s.includes('design-system')) {
+    return { pillarPath: '/brand-building', pillarLabel: 'Brand Building Services' };
+  }
+  if (s.includes('ai') || s.includes('agent') || s.includes('rag') || s.includes('chatbot') || s.includes('llm')) {
+    return { pillarPath: '/ai-agent-development', pillarLabel: 'AI Agent Development' };
+  }
+  if (s.includes('seo') || s.includes('content') || s.includes('lead-generation') || s.includes('roi') || s.includes('marketing')) {
+    return { pillarPath: '/seo-mastery', pillarLabel: 'SEO & Growth Engineering' };
+  }
+  if (s.includes('mobile') || s.includes('flutter') || s.includes('react-native') || s.includes('ios') || s.includes('android')) {
+    return { pillarPath: '/mobile-app-development', pillarLabel: 'Mobile App Development' };
+  }
+  if (s.includes('fintech') || s.includes('soc-2')) {
+    return { pillarPath: '/solutions/fintech', pillarLabel: 'FinTech Software Solutions' };
+  }
+  if (s.includes('web') || s.includes('rtl') || s.includes('ux') || s.includes('react') || s.includes('nextjs') || s.includes('tools')) {
+    return { pillarPath: '/web-development', pillarLabel: 'Web Development Services' };
+  }
+  return { pillarPath: '/custom-software', pillarLabel: 'Custom Software Development' };
+};
+
+const buildInitialLatestPosts = (): HomeBlogHighlight[] => {
+  const staticList = getStaticBlogList() as any[];
+  const seenSlugs = new Set<string>();
+  const normalized: HomeBlogHighlight[] = [];
+
+  for (const p of staticList) {
+    const canonSlug = BLOG_SLUG_REDIRECTS[p.slug] || getCanonicalSlug(p.slug) || p.slug;
+    const key = String(canonSlug).toLowerCase().trim();
+    if (seenSlugs.has(key)) continue;
+    seenSlugs.add(key);
+
+    const cleanTitle = String(p.title || 'Untitled Article').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+    const cover = formatCoverImage(p.coverImage, 800, canonSlug);
+    const pillar = getPillarForPost(canonSlug, p.category);
+    const createdAt = p.createdAt || '2026-11-15';
+
+    normalized.push({
+      slug: canonSlug,
+      title: cleanTitle,
+      excerpt: p.excerpt || p.metaDescription || '',
+      category: p.category || 'Development',
+      pillarPath: pillar.pillarPath,
+      pillarLabel: pillar.pillarLabel,
+      date: typeof createdAt === 'string' ? createdAt : '2026-11-15',
+      createdAt,
+      coverImage: cover,
+      coverImageAlt: p.coverImageAlt || `${cleanTitle} | AbuQitmirLabs`,
+    });
+  }
+
+  normalized.sort((a, b) => parseDateToMillis(b.createdAt) - parseDateToMillis(a.createdAt));
+  return normalized.slice(0, 6);
+};
 
 export default function HomePage() {
+  const [latestPosts, setLatestPosts] = useState<HomeBlogHighlight[]>(() => buildInitialLatestPosts());
+
+  useEffect(() => {
+    let isMounted = true;
+    const syncLatestFromFirestore = async () => {
+      try {
+        let rawDocs: any[] = [];
+        try {
+          const q = query(collection(db, 'posts'), where('published', '==', true));
+          const snap = await getDocs(q);
+          if (!snap.empty) rawDocs = snap.docs;
+        } catch {
+          // ignore
+        }
+        if (rawDocs.length === 0) {
+          try {
+            const fallbackSnap = await getDocs(collection(db, 'posts'));
+            if (!fallbackSnap.empty) {
+              rawDocs = fallbackSnap.docs.filter(doc => {
+                const d = doc.data();
+                return d.published === true || d.published === 'true' || d.published === undefined;
+              });
+            }
+          } catch {
+            // ignore
+          }
+        }
+        if (!rawDocs.length || !isMounted) return;
+
+        const staticList = getStaticBlogList() as any[];
+        const staticBySlug = new Map<string, any>();
+        for (const sp of staticList) {
+          const cs = (BLOG_SLUG_REDIRECTS[sp.slug] || getCanonicalSlug(sp.slug) || sp.slug).toLowerCase().trim();
+          staticBySlug.set(cs, sp);
+        }
+
+        const seenSlugs = new Set<string>();
+        const merged: HomeBlogHighlight[] = [];
+
+        for (const sp of staticList) {
+          const canonSlug = BLOG_SLUG_REDIRECTS[sp.slug] || getCanonicalSlug(sp.slug) || sp.slug;
+          const key = canonSlug.toLowerCase().trim();
+          if (seenSlugs.has(key)) continue;
+          seenSlugs.add(key);
+          const cleanTitle = String(sp.title || 'Untitled Article').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+          const pillar = getPillarForPost(canonSlug, sp.category);
+          merged.push({
+            slug: canonSlug,
+            title: cleanTitle,
+            excerpt: sp.excerpt || sp.metaDescription || '',
+            category: sp.category || 'Development',
+            pillarPath: pillar.pillarPath,
+            pillarLabel: pillar.pillarLabel,
+            date: typeof sp.createdAt === 'string' ? sp.createdAt : '2026-11-15',
+            createdAt: sp.createdAt || '2026-11-15',
+            coverImage: formatCoverImage(sp.coverImage, 800, canonSlug),
+            coverImageAlt: sp.coverImageAlt || `${cleanTitle} | AbuQitmirLabs`,
+          });
+        }
+
+        for (const doc of rawDocs) {
+          const data = doc.data();
+          const rawSlug = data.slug || doc.id;
+          let cleanSlug = String(rawSlug).replace(/^\/+/, '').replace(/^blog\//, '');
+          cleanSlug = BLOG_SLUG_REDIRECTS[cleanSlug] || getCanonicalSlug(cleanSlug) || cleanSlug;
+          const key = cleanSlug.toLowerCase().trim();
+          if (seenSlugs.has(key)) continue;
+          seenSlugs.add(key);
+
+          const staticMatch = staticBySlug.get(key);
+          const bestTitle = String(staticMatch?.title || data.title || 'Untitled Article')
+            .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
+            .trim();
+          const rawCover = staticMatch?.coverImage || data.coverImage || data.featuredImage || data.imageUrl || data.image;
+          const pillar = getPillarForPost(cleanSlug, staticMatch?.category || data.category);
+          const createdAt = staticMatch?.createdAt || data.createdAt || data.date || new Date().toISOString();
+
+          merged.push({
+            slug: cleanSlug,
+            title: bestTitle,
+            excerpt: staticMatch?.excerpt || data.excerpt || '',
+            category: staticMatch?.category || data.category || 'Development',
+            pillarPath: pillar.pillarPath,
+            pillarLabel: pillar.pillarLabel,
+            date: typeof createdAt === 'string' ? createdAt : '2026-11-15',
+            createdAt,
+            coverImage: formatCoverImage(rawCover, 800, cleanSlug),
+            coverImageAlt: staticMatch?.coverImageAlt || data.coverImageAlt || `${bestTitle} | AbuQitmirLabs`,
+          });
+        }
+
+        merged.sort((a, b) => parseDateToMillis(b.createdAt) - parseDateToMillis(a.createdAt));
+        if (isMounted) {
+          setLatestPosts(merged.slice(0, 6));
+        }
+      } catch {
+        // fallback to static initial posts
+      }
+    };
+    syncLatestFromFirestore();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
   const growthEngineeringSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -532,45 +710,67 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {latestBlogHighlights.map((post, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+            {latestPosts.map((post, idx) => (
               <motion.article
                 key={post.slug}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: idx * 0.06 }}
-                className="flex flex-col justify-between bg-zinc-950/90 border border-white/10 hover:border-[#C8EB5F]/50 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(200,235,95,0.14)] rounded-2xl p-6 transition-all duration-500 group"
+                className="flex flex-col justify-between group"
               >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between gap-2 text-xs font-mono">
-                    <span className="text-[#C8EB5F] uppercase tracking-wider font-bold">
-                      {post.category}
-                    </span>
-                    <span className="text-zinc-500">
-                      <time dateTime={post.date}>{post.date}</time> &bull; {post.readTime}
-                    </span>
+                <div>
+                  <Link to={`/blog/${post.slug}`} className="block">
+                    <div className="aspect-[16/10] rounded-[2.5rem] overflow-hidden mb-6 border border-white/10 bg-zinc-900 group-hover:border-white/25 transition-colors shadow-lg">
+                      <img
+                        src={post.coverImage}
+                        alt={post.coverImageAlt || post.title}
+                        width="800"
+                        height="500"
+                        loading={idx < 3 ? 'eager' : 'lazy'}
+                        decoding="async"
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          if (target.src !== DEFAULT_BRAND_COVER) {
+                            target.src = DEFAULT_BRAND_COVER;
+                          }
+                        }}
+                      />
+                    </div>
+                  </Link>
+
+                  <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-3 px-2">
+                    <span className="text-blue-500">{post.category}</span>
+                    <span className="w-1 h-1 rounded-full bg-zinc-700" />
+                    <time dateTime={post.date}>{formatDateShort(post.createdAt)}</time>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-[#C8EB5F] transition-colors leading-snug">
+
+                  <h3 className="text-xl sm:text-2xl font-black text-white uppercase leading-[1.15] tracking-tight font-serif group-hover:text-blue-400 transition-colors px-2 mb-3">
                     <Link to={`/blog/${post.slug}`}>
                       {post.title}
                     </Link>
                   </h3>
-                  <p className="text-sm text-neutral-400 leading-relaxed font-light">
-                    {post.excerpt}
-                  </p>
+
+                  {post.excerpt && (
+                    <p className="text-zinc-400 text-sm font-medium leading-relaxed px-2 line-clamp-2 mb-5">
+                      {post.excerpt}
+                    </p>
+                  )}
                 </div>
 
-                <div className="pt-5 mt-5 border-t border-white/10 flex items-center justify-between gap-3 text-xs font-mono">
+                <div className="pt-3 px-2 flex items-center justify-between gap-3">
                   <Link
                     to={`/blog/${post.slug}`}
-                    className="text-white group-hover:text-[#C8EB5F] font-bold uppercase tracking-wider"
+                    className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-blue-400 group-hover:translate-x-1 transition-transform"
                   >
-                    Read Guide →
+                    Read Article <ArrowRight size={14} />
                   </Link>
                   <Link
                     to={post.pillarPath}
-                    className="text-zinc-400 hover:text-white underline decoration-white/20"
+                    className="text-[11px] font-mono text-zinc-400 hover:text-white underline decoration-white/20 transition-colors"
                   >
                     {post.pillarLabel}
                   </Link>
