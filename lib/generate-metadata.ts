@@ -201,6 +201,8 @@ const TITLE_OVERRIDES: Record<string, string> = {
     'Arabic UX Design RTL: Why Western Agencies Get It Wrong',
   '/blog/ai-readiness-uae-gcc':
     'GCC AI Readiness Gap: Why 64% of UAE IT Leaders Worry',
+  '/blog/brand-consistency-checklist':
+    'Brand Consistency Checklist: Find Gaps First',
 };
 
 const DESCRIPTION_OVERRIDES: Record<string, string> = {

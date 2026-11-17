@@ -137,6 +137,9 @@ export function formatConciseSeoTitle(rawTitle?: string, slug?: string, siteName
   if (slug === 'ai-readiness-uae-gcc' || (rawTitle && /GCC AI Readiness Gap/i.test(rawTitle))) {
     return 'GCC AI Readiness Gap: Why 64% of UAE IT Leaders Worry';
   }
+  if (slug === 'brand-consistency-checklist' || (rawTitle && /Brand Consistency Checklist/i.test(rawTitle))) {
+    return 'Brand Consistency Checklist: Find Gaps First';
+  }
   const cleaned = stripSurroundingQuotes(rawTitle || '')
     .replace(/&amp;/gi, '&')
     .replace(/\s+/g, ' ')

@@ -281,6 +281,8 @@ export default async function handler(req: any, res: any) {
         ? 'Arabic UX Design RTL: Why Western Agencies Get It Wrong'
         : canonicalSlug === 'ai-readiness-uae-gcc'
         ? 'GCC AI Readiness Gap: Why 64% of UAE IT Leaders Worry'
+        : canonicalSlug === 'brand-consistency-checklist'
+        ? 'Brand Consistency Checklist: Find Gaps First'
         : postData.seoTitle ||
           (/Abu\s*Qitmir\s*Labs/i.test(cleanH1)
             ? cleanH1
@@ -322,6 +324,7 @@ export default async function handler(req: any, res: any) {
         'https://i.postimg.cc/C56BHBKN/Free-Website-AI-Tools-for-Founders.jpg': '/images/blog-covers/free-tools-website-seo-ai-readiness.webp',
         'https://i.postimg.cc/yxvzVCDX/RTL-UX-From-Broken-to-Brilliant.png': '/images/blog-covers/arabic-ux-design-rtl.webp',
         'https://i.postimg.cc/bJWttf7h/AI-Readiness-Fix-Broken-Data.png': '/images/blog-covers/ai-readiness-uae-gcc.webp',
+        'https://i.postimg.cc/Xqhs0Zq5/Three-Versions-One-Brand-Confusion.png': '/images/blog-covers/brand-consistency-checklist.webp',
       };
       if (inputUrl && knownMap[inputUrl.trim()]) {
         return knownMap[inputUrl.trim()];
