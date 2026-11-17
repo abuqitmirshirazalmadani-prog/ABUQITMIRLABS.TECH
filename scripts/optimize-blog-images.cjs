@@ -234,6 +234,7 @@ async function syncFirestorePostsToMarkdown() {
 // 0.5 Repair any markdown files missing coverImage and any staticBlogPosts.ts broken .jpg paths using existing local WebP files
 function repairMissingAndBrokenCovers() {
   const knownLocalCoversBySlug = {
+    'mobile-app-development-arabic-rtl': '/images/blog-covers/mobile-app-development-arabic-rtl.webp',
     'brand-consistency-checklist': '/images/blog-covers/brand-consistency-checklist.webp',
     'ai-readiness-uae-gcc': '/images/blog-covers/ai-readiness-uae-gcc.webp',
     'arabic-ux-design-rtl': '/images/blog-covers/arabic-ux-design-rtl.webp',
@@ -421,9 +422,9 @@ function syncMarkdownPosts() {
             inFaqSec = /frequently asked questions|\bfaq\b/i.test(tLine);
           } else if (inFaqSec && /^###\s+/.test(tLine)) {
             flushCurFaq();
-            curQ = tLine.replace(/^###\s+/, '').replace(/\*\*/g, '').trim();
+            curQ = tLine.replace(/^###\s+/, '').replace(/<[^>]*>/g, '').replace(/\*\*/g, '').trim();
           } else if (inFaqSec && curQ && !tLine.startsWith('#') && !tLine.startsWith('|') && !tLine.startsWith('```')) {
-            curAParts.push(tLine.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1'));
+            curAParts.push(tLine.replace(/<[^>]*>/g, '').replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1'));
           }
         }
         flushCurFaq();
@@ -657,6 +658,7 @@ async function main() {
     "https://i.postimg.cc/yxvzVCDX/RTL-UX-From-Broken-to-Brilliant.png": "/images/blog-covers/arabic-ux-design-rtl.webp",
     "https://i.postimg.cc/bJWttf7h/AI-Readiness-Fix-Broken-Data.png": "/images/blog-covers/ai-readiness-uae-gcc.webp",
     "https://i.postimg.cc/Xqhs0Zq5/Three-Versions-One-Brand-Confusion.png": "/images/blog-covers/brand-consistency-checklist.webp",
+    "https://i.postimg.cc/tCL7q4px/Build-Arabic-Apps-for-the-GCC.png": "/images/blog-covers/mobile-app-development-arabic-rtl.webp",
     "https://i.postimg.cc/cHQRwnLJ/Logo-vs-Brand-Identity-Guide.png": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp",
     "/images/blog-covers/lead-generation-content-strategy-google-meta-1576aa01.webp": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
     "/images/blog-covers/rebranding-checklist-pakistan-9252c088.webp": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
@@ -671,6 +673,7 @@ async function main() {
     "arabic-ux-design-rtl": "/images/blog-covers/arabic-ux-design-rtl.webp",
     "ai-readiness-uae-gcc": "/images/blog-covers/ai-readiness-uae-gcc.webp",
     "brand-consistency-checklist": "/images/blog-covers/brand-consistency-checklist.webp",
+    "mobile-app-development-arabic-rtl": "/images/blog-covers/mobile-app-development-arabic-rtl.webp",
     "brand-identity-vs-logo-design": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp"
   };
 

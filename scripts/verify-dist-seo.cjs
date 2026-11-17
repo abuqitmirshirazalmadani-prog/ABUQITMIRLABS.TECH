@@ -92,6 +92,8 @@ const TITLE_OVERRIDES = {
     'GCC AI Readiness Gap: Why 64% of UAE IT Leaders Worry',
   '/blog/brand-consistency-checklist':
     'Brand Consistency Checklist: Find Gaps First',
+  '/blog/mobile-app-development-arabic-rtl':
+    'Mobile App Development for GCC Markets: Arabic RTL Guide',
 };
 
 function formatConciseTitle(rawTitle, pathname) {
@@ -298,6 +300,22 @@ for (const filePath of htmlFiles) {
         if ((nType.includes('WebPage') || nType.includes('Article') || nType.includes('BlogPosting')) && typeof n.name === 'string' && (n.name.length > 60 || n.name.length < 30)) {
           n.name = formatConciseTitle(n.name, routeFromRel);
           schemaChanged = true;
+        }
+        if (nType.includes('FAQPage') && Array.isArray(n.mainEntity)) {
+          for (const qItem of n.mainEntity) {
+            if (qItem && typeof qItem.name === 'string' && /<[^>]+>/.test(qItem.name)) {
+              qItem.name = qItem.name.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+              schemaChanged = true;
+            }
+            if (qItem && qItem.acceptedAnswer && typeof qItem.acceptedAnswer.text === 'string' && /<[^>]+>/.test(qItem.acceptedAnswer.text)) {
+              qItem.acceptedAnswer.text = qItem.acceptedAnswer.text
+                .replace(/<meta\s+name=["']viewport["'][^>]*>\s*(?=\d)/gi, '$$1')
+                .replace(/<[^>]+>/g, '')
+                .replace(/\s+/g, ' ')
+                .trim();
+              schemaChanged = true;
+            }
+          }
         }
       };
       if (Array.isArray(parsed['@graph'])) {

@@ -82,7 +82,7 @@ const replaceRootElement = (htmlSource, newInnerHtml, renderedRouteAttr) => {
     }
   }
   const attrStr = renderedRouteAttr ? ` data-rendered-route="${renderedRouteAttr}"` : '';
-  return htmlSource.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root"${attrStr}>${newInnerHtml}</div>`);
+  return htmlSource.replace(/<div id="root">[\s\S]*?<\/div>/i, () => `<div id="root"${attrStr}>${newInnerHtml}</div>`);
 };
 
 // Helper to strip any existing canonical tags to prevent hardcoded homepage leakage
@@ -224,6 +224,8 @@ const TITLE_OVERRIDES = {
     'GCC AI Readiness Gap: Why 64% of UAE IT Leaders Worry',
   '/blog/brand-consistency-checklist':
     'Brand Consistency Checklist: Find Gaps First',
+  '/blog/mobile-app-development-arabic-rtl':
+    'Mobile App Development for GCC Markets: Arabic RTL Guide',
 };
 
 function formatConciseTitle(rawTitle, pathname) {
@@ -598,9 +600,9 @@ for (const routeUrl of allRoutes) {
     if (headTags && headTags.trim().length > 0) {
       const formattedHeadTags = headTags.replace(/\s+data-rh=["'][^"']*["']/gi, '');
       if (html.includes('<!-- __SEO_HEAD_TOP__ -->')) {
-        html = html.replace('<!-- __SEO_HEAD_TOP__ -->', `${formattedHeadTags}\n  <!-- __SEO_HEAD_TOP__ -->`);
+        html = html.replace('<!-- __SEO_HEAD_TOP__ -->', () => `${formattedHeadTags}\n  <!-- __SEO_HEAD_TOP__ -->`);
       } else {
-        html = html.replace('</head>', `  ${formattedHeadTags}\n</head>`);
+        html = html.replace('</head>', () => `  ${formattedHeadTags}\n</head>`);
       }
     }
 
@@ -779,9 +781,9 @@ for (const routeUrl of allRoutes) {
     }
     if (uniqueSchemas.length > 0) {
       if (html.includes('<!-- __SEO_HEAD_TOP__ -->')) {
-        html = html.replace('<!-- __SEO_HEAD_TOP__ -->', `${uniqueSchemas.join('\n  ')}`);
+        html = html.replace('<!-- __SEO_HEAD_TOP__ -->', () => `${uniqueSchemas.join('\n  ')}`);
       } else {
-        html = html.replace('</head>', `  ${uniqueSchemas.join('\n  ')}\n</head>`);
+        html = html.replace('</head>', () => `  ${uniqueSchemas.join('\n  ')}\n</head>`);
       }
     }
     html = html.replace(/\s*<!-- __SEO_HEAD_TOP__ -->\s*/g, '\n  ');

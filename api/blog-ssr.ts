@@ -149,10 +149,10 @@ export default async function handler(req: any, res: any) {
             const currentCss = shellContent.match(/\/assets\/index-[^"'>]+\.css/i)?.[0];
             const currentJs = shellContent.match(/\/assets\/index-[^"'>]+\.js/i)?.[0];
             if (currentCss) {
-              html = html.replace(/\/assets\/index-[^"'>]+\.css/gi, currentCss);
+              html = html.replace(/\/assets\/index-[^"'>]+\.css/gi, () => currentCss);
             }
             if (currentJs) {
-              html = html.replace(/\/assets\/index-[^"'>]+\.js/gi, currentJs);
+              html = html.replace(/\/assets\/index-[^"'>]+\.js/gi, () => currentJs);
             }
             break;
           }
@@ -283,6 +283,8 @@ export default async function handler(req: any, res: any) {
         ? 'GCC AI Readiness Gap: Why 64% of UAE IT Leaders Worry'
         : canonicalSlug === 'brand-consistency-checklist'
         ? 'Brand Consistency Checklist: Find Gaps First'
+        : canonicalSlug === 'mobile-app-development-arabic-rtl'
+        ? 'Mobile App Development for GCC Markets: Arabic RTL Guide'
         : postData.seoTitle ||
           (/Abu\s*Qitmir\s*Labs/i.test(cleanH1)
             ? cleanH1
@@ -325,6 +327,7 @@ export default async function handler(req: any, res: any) {
         'https://i.postimg.cc/yxvzVCDX/RTL-UX-From-Broken-to-Brilliant.png': '/images/blog-covers/arabic-ux-design-rtl.webp',
         'https://i.postimg.cc/bJWttf7h/AI-Readiness-Fix-Broken-Data.png': '/images/blog-covers/ai-readiness-uae-gcc.webp',
         'https://i.postimg.cc/Xqhs0Zq5/Three-Versions-One-Brand-Confusion.png': '/images/blog-covers/brand-consistency-checklist.webp',
+        'https://i.postimg.cc/tCL7q4px/Build-Arabic-Apps-for-the-GCC.png': '/images/blog-covers/mobile-app-development-arabic-rtl.webp',
       };
       if (inputUrl && knownMap[inputUrl.trim()]) {
         return knownMap[inputUrl.trim()];
@@ -446,10 +449,14 @@ export default async function handler(req: any, res: any) {
 
     const flushFaq = () => {
       if (currentFaqQuestion && currentFaqAnswerParts.length > 0) {
-        extractedFaqs.push({
-          question: currentFaqQuestion,
-          answer: currentFaqAnswerParts.join(' ').trim(),
-        });
+        const cleanQ = currentFaqQuestion.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+        const cleanA = currentFaqAnswerParts.join(' ').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+        if (cleanQ && cleanA) {
+          extractedFaqs.push({
+            question: cleanQ,
+            answer: cleanA,
+          });
+        }
       }
       currentFaqQuestion = '';
       currentFaqAnswerParts = [];
@@ -548,8 +555,12 @@ export default async function handler(req: any, res: any) {
         olItems.push(trimmed.replace(/^\d+[\.\)]\s+/, ''));
       } else if (!trimmed.startsWith('![')) {
         flushLists();
-        const cleanTxt = trimmed.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
-        if (currentFaqQuestion) currentFaqAnswerParts.push(cleanTxt);
+        const cleanTxt = trimmed
+          .replace(/<[^>]*>/g, '')
+          .replace(/\*\*([^*]+)\*\*/g, '$1')
+          .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1')
+          .trim();
+        if (currentFaqQuestion && cleanTxt) currentFaqAnswerParts.push(cleanTxt);
         htmlBlocks.push(`<p class="text-neutral-300 mb-4">${formatInlineHtml(trimmed)}</p>`);
       }
     }
@@ -615,8 +626,8 @@ export default async function handler(req: any, res: any) {
         '@id': `${fullCanonical}#faq`,
         mainEntity: extractedFaqs.slice(0, 12).map((f) => ({
           '@type': 'Question',
-          name: f.question,
-          acceptedAnswer: { '@type': 'Answer', text: f.answer },
+          name: f.question.replace(/<[^>]*>/g, '').trim(),
+          acceptedAnswer: { '@type': 'Answer', text: f.answer.replace(/<[^>]*>/g, '').trim() },
         })),
       });
     }
@@ -690,15 +701,15 @@ export default async function handler(req: any, res: any) {
       if (/<meta\s+name=["']viewport["'][^>]*>/i.test(cleanedShell)) {
         cleanedShell = cleanedShell.replace(
           /(<meta\s+name=["']viewport["'][^>]*>)/i,
-          `$1\n${seoHeadTopBlock}`
+          (match) => `${match}\n${seoHeadTopBlock}`
         );
       } else {
-        cleanedShell = cleanedShell.replace('</head>', `${seoHeadTopBlock}\n</head>`);
+        cleanedShell = cleanedShell.replace('</head>', () => `${seoHeadTopBlock}\n</head>`);
       }
 
       finalHtml = cleanedShell
-        .replace(/<div id="root"[^>]*>[\s\S]*?<\/div>/i, `<div id="root" data-rendered-route="${routeUrl}">${innerRootHtml}</div>`)
-        .replace('</body>', `  ${ssrStateScript}\n</body>`);
+        .replace(/<div id="root"[^>]*>[\s\S]*?<\/div>/i, () => `<div id="root" data-rendered-route="${routeUrl}">${innerRootHtml}</div>`)
+        .replace('</body>', () => `  ${ssrStateScript}\n</body>`);
     } else {
       finalHtml = `<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="utf-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n${seoHeadTopBlock}\n</head>\n<body>\n  <div id="root" data-rendered-route="${routeUrl}">${innerRootHtml}</div>\n  ${ssrStateScript}\n</body>\n</html>`;
     }

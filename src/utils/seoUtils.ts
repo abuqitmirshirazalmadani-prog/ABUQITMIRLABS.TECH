@@ -140,6 +140,9 @@ export function formatConciseSeoTitle(rawTitle?: string, slug?: string, siteName
   if (slug === 'brand-consistency-checklist' || (rawTitle && /Brand Consistency Checklist/i.test(rawTitle))) {
     return 'Brand Consistency Checklist: Find Gaps First';
   }
+  if (slug === 'mobile-app-development-arabic-rtl' || (rawTitle && /Mobile App Development for GCC Markets/i.test(rawTitle))) {
+    return 'Mobile App Development for GCC Markets: Arabic RTL Guide';
+  }
   const cleaned = stripSurroundingQuotes(rawTitle || '')
     .replace(/&amp;/gi, '&')
     .replace(/\s+/g, ' ')
@@ -754,10 +757,10 @@ export function buildCanonicalGraphSchema(params: {
       '@id': `${params.canonical}#faq`,
       mainEntity: params.faqs.map((f) => ({
         '@type': 'Question',
-        name: f.question,
+        name: String(f.question || '').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim(),
         acceptedAnswer: {
           '@type': 'Answer',
-          text: f.answer,
+          text: String(f.answer || '').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim(),
         },
       })),
     });
