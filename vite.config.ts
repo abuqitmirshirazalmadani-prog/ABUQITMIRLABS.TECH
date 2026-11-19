@@ -866,7 +866,7 @@ export default defineConfig(({ mode }) => {
 
             const injectSingleSchema = (htmlSource: string, schemaObj: any) => {
               const cleaned = htmlSource.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis, '');
-              return cleaned.replace('</head>', `  <script id="canonical-schema-graph" type="application/ld+json">\n${JSON.stringify(schemaObj, null, 2)}\n  </script>\n</head>`);
+              return cleaned.replace('</head>', () => `  <script id="canonical-schema-graph" type="application/ld+json">\n${JSON.stringify(schemaObj, null, 2)}\n  </script>\n</head>`);
             };
 
             if (route.url === '/') {
@@ -992,6 +992,9 @@ export default defineConfig(({ mode }) => {
 
               const extractedFaqs: Array<{ question: string; answer: string }> = [];
               if (mdSource) {
+                mdSource = mdSource
+                  .replace(/requirements—not on whether/g, 'requirements, not on whether')
+                  .replace(/\s*\(Frequently Asked Questions\)/gi, '');
                 const htmlBlocks: string[] = [];
                 let lines = mdSource.trim().split(/\r?\n/);
                 const cleanPostHeading = (staticPost?.title || firestorePost?.title || route.title || '')
@@ -1176,7 +1179,11 @@ export default defineConfig(({ mode }) => {
                     flushFaq();
                     let level = rawHeadingMatch[1].length;
                     if (level === 1) level = 2;
-                    let hText = rawHeadingMatch[2].replace(/\*\*/g, '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+                    let hText = rawHeadingMatch[2]
+                      .replace(/\*\*/g, '')
+                      .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
+                      .replace(/\s*\(Frequently Asked Questions\)\s*$/i, '')
+                      .trim();
                     if (/^[a-z]/.test(hText)) {
                       hText = hText.charAt(0).toUpperCase() + hText.slice(1);
                     }
@@ -1186,13 +1193,16 @@ export default defineConfig(({ mode }) => {
                     if (/^a guide to ai automation in regulated industries\.?$/i.test(hText)) {
                       hText = 'Introduction: AI Automation in Regulated Industries';
                     }
-                    if (level === 3 && /frequently asked questions|\bfaq\b/i.test(hText)) {
+                    const isFaqSectionHeader = /^(?:frequently asked questions|faqs?)(?:\s*[:—–-].*)?$/i.test(hText);
+                    if (level === 3 && isFaqSectionHeader) {
                       level = 2;
                     } else if (level === 3 && promoteOrphanH3 && !inFaqSection) {
                       level = 2;
+                    } else if (level === 2 && inFaqSection && !isFaqSectionHeader && hText.endsWith('?')) {
+                      level = 3;
                     }
                     if (level === 2) {
-                      inFaqSection = /frequently asked questions|\bfaq\b/i.test(hText);
+                      inFaqSection = isFaqSectionHeader;
                       htmlBlocks.push(`<h2 id="${slugifyId(hText)}" class="text-2xl font-bold mt-10 mb-4">${escapeXml(hText)}</h2>`);
                     } else if (level === 3) {
                       if (inFaqSection || hText.endsWith('?')) {
