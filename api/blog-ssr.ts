@@ -367,7 +367,9 @@ export default async function handler(req: any, res: any) {
       .replace(/\bsearch and ai engines\b/gi, 'search and AI engines')
       .replace(/\bseo and web development\b/g, 'SEO and web development')
       .replace(/\bseo content writing\b/g, 'SEO content writing')
-      .replace(/requirements—not on whether/g, 'requirements, not on whether');
+      .replace(/requirements—not on whether/g, 'requirements, not on whether')
+      .replace(/\s+—\s+/g, ' - ')
+      .replace(/([A-Za-z0-9'"])—([A-Za-z0-9'"])/g, '$1, $2');
     let lines = normalizedRawContent.trim().split(/\r?\n/);
     const isMetaOrDivider = (l: string) => {
       const t = (l || '').trim();

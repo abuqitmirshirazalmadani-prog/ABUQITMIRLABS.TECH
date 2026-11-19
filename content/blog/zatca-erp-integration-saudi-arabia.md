@@ -375,13 +375,13 @@ If the integration is part of a wider automation programme, the [AI agent develo
 
 ### Related implementation guides
 
-- [Arabic-first mobile app and RTL considerations](/blog/mobile-app-development-arabic-rtl): useful when invoicing, receipts or payment status are displayed in a mobile customer journey.
+- [Arabic-first mobile app and RTL considerations](/blog/mobile-app-development-arabic-rtl) - useful when invoicing, receipts or payment status are displayed in a mobile customer journey.
 
-- [AI readiness for UAE and GCC teams](/blog/ai-readiness-uae-gcc): useful when an ERP project also includes automation, document processing or internal knowledge retrieval.
+- [AI readiness for UAE and GCC teams](/blog/ai-readiness-uae-gcc) - useful when an ERP project also includes automation, document processing or internal knowledge retrieval.
 
-- [Digital transformation in Kuwait](/blog/kuwait-digital-transformation): a regional comparison guide for teams operating across Gulf markets.
+- [Digital transformation in Kuwait](/blog/kuwait-digital-transformation) - a regional comparison guide for teams operating across Gulf markets.
 
-- [Custom software development in Qatar](/blog/custom-software-development-qatar): a related guide for businesses comparing Gulf delivery and software-partner options.
+- [Custom software development in Qatar](/blog/custom-software-development-qatar) - a related guide for businesses comparing Gulf delivery and software-partner options.
 
 ## Frequently Asked Questions
 

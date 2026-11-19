@@ -994,6 +994,8 @@ export default defineConfig(({ mode }) => {
               if (mdSource) {
                 mdSource = mdSource
                   .replace(/requirements—not on whether/g, 'requirements, not on whether')
+                  .replace(/\s+—\s+/g, ' - ')
+                  .replace(/([A-Za-z0-9'"])—([A-Za-z0-9'"])/g, '$1, $2')
                   .replace(/\s*\(Frequently Asked Questions\)/gi, '');
                 const htmlBlocks: string[] = [];
                 let lines = mdSource.trim().split(/\r?\n/);

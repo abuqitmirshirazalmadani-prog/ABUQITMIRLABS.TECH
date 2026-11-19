@@ -349,7 +349,9 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             .replace(/\bseo and web development\b/g, 'SEO and web development')
             .replace(/\bseo content writing\b/g, 'SEO content writing')
             .replace(/\bLogo, coolers and fonts\b/gi, 'Logo, colors and fonts')
-            .replace(/requirements—not on whether/g, 'requirements, not on whether');
+            .replace(/requirements—not on whether/g, 'requirements, not on whether')
+            .replace(/\s+—\s+/g, ' - ')
+            .replace(/([A-Za-z0-9'"])—([A-Za-z0-9'"])/g, '$1, $2');
         const cleanTitleForMatch = (post.title || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
         const isMetaOrDividerLine = (lineStr: string) => {
             const t = lineStr.trim();
