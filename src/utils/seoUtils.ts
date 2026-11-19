@@ -146,6 +146,9 @@ export function formatConciseSeoTitle(rawTitle?: string, slug?: string, siteName
   if (slug === 'zatca-erp-integration-saudi-arabia' || (rawTitle && /ZATCA ERP Integration in Saudi Arabia/i.test(rawTitle))) {
     return 'ZATCA ERP Integration Saudi Arabia: Practical Guide';
   }
+  if (slug === 'social-media-brand-kit' || (rawTitle && /Social Media Brand Kit/i.test(rawTitle))) {
+    return 'Social Media Brand Kit: The 5-Step Guide to Consistency';
+  }
   const cleaned = stripSurroundingQuotes(rawTitle || '')
     .replace(/&amp;/gi, '&')
     .replace(/\s+/g, ' ')

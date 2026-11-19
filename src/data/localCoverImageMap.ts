@@ -23,6 +23,8 @@ export const REMOTE_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "https://i.postimg.cc/bJWttf7h/AI-Readiness-Fix-Broken-Data.png": "/images/blog-covers/ai-readiness-uae-gcc.webp",
   "https://i.postimg.cc/Xqhs0Zq5/Three-Versions-One-Brand-Confusion.png": "/images/blog-covers/brand-consistency-checklist.webp",
   "https://i.postimg.cc/tCL7q4px/Build-Arabic-Apps-for-the-GCC.png": "/images/blog-covers/mobile-app-development-arabic-rtl.webp",
+  "https://i.postimg.cc/NGkCBDtZ/social-media-brand-kit.png": "/images/blog-covers/social-media-brand-kit-a2d5c63e.webp",
+  "https://i.postimg.cc/mgJqDkFt/ZATCA-ERP-Integration-Saudi-Arabia-Guide.png": "/images/blog-covers/zatca-erp-integration-saudi-arabia.webp",
   "https://i.postimg.cc/cHQRwnLJ/Logo-vs-Brand-Identity-Guide.png": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp",
   "/images/blog-covers/lead-generation-content-strategy-google-meta-1576aa01.webp": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
   "/images/blog-covers/rebranding-checklist-pakistan-9252c088.webp": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
@@ -217,6 +219,44 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "the-5-minute-technical-audit-what-every-founder-should-check-before-hiring-a-developer-in-2026": "/images/blog-covers/the-5-minute-technical-audit-what-every-founder-should-check-459758ec.webp",
   "author-abuqitmir-shiraz": "/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp"
 };
+
+export const SLUG_TO_REMOTE_COVER_MAP: Record<string, string> = {
+  "zatca-erp-integration-saudi-arabia": "https://i.postimg.cc/mgJqDkFt/ZATCA-ERP-Integration-Saudi-Arabia-Guide.png",
+  "social-media-brand-kit": "https://i.postimg.cc/NGkCBDtZ/social-media-brand-kit.png",
+  "mobile-app-development-arabic-rtl": "https://i.postimg.cc/tCL7q4px/Build-Arabic-Apps-for-the-GCC.png",
+  "brand-consistency-checklist": "https://i.postimg.cc/Xqhs0Zq5/Three-Versions-One-Brand-Confusion.png",
+  "ai-readiness-uae-gcc": "https://i.postimg.cc/bJWttf7h/AI-Readiness-Fix-Broken-Data.png",
+  "arabic-ux-design-rtl": "https://i.postimg.cc/yxvzVCDX/RTL-UX-From-Broken-to-Brilliant.png",
+  "free-tools-website-seo-ai-readiness": "https://i.postimg.cc/C56BHBKN/Free-Website-AI-Tools-for-Founders.jpg",
+  "brand-guidelines-small-business-pakistan": "https://i.postimg.cc/TYhzLzmz/Five-Blues-One-Brand-Guideline.png",
+  "pakistan-offshore-development-gcc": "https://i.postimg.cc/MGJ7kWH0/Pakistan-IT-Exports-Readiness-Report.png",
+  "rebranding-cost-pakistan": "https://i.postimg.cc/9QdHdDB2/Logo-Design-Pricing-in-Pakistan-Explained.png",
+  "kuwait-digital-transformation": "https://i.postimg.cc/qqsFC1CD/Kuwait-Cybersecurity-Partner-Evaluation.png",
+  "lead-generation-content-strategy-google-meta": "https://i.postimg.cc/vBhWpH0q/Lead-Generation-Content-Strategy-That-Works.jpg",
+  "build-brand-on-social-media": "https://i.postimg.cc/sXy5NLHN/Gemini-Generated-Image-wwjsrzwwjsrzwwjs.jpg",
+  "custom-software-development-qatar": "https://i.postimg.cc/L5RsMkbN/Qatar-Custom-Software-Development-Guide.png"
+};
+
+export function getRemoteCoverFallback(url?: string, slug?: string): string {
+  if (slug) {
+    const cleanSlug = slug.replace(/^\/+/, '').replace(/^blog\//, '').replace(/\/+$/, '').trim();
+    if (SLUG_TO_REMOTE_COVER_MAP[cleanSlug]) {
+      return SLUG_TO_REMOTE_COVER_MAP[cleanSlug];
+    }
+  }
+  if (url && typeof url === 'string') {
+    const clean = url.trim().replace(/^https?:\/\/(?:www\.)?abuqitmirlabs\.tech/i, '');
+    for (const [remote, local] of Object.entries(REMOTE_TO_LOCAL_COVER_MAP)) {
+      if (remote.startsWith('https://') && local === clean) {
+        return remote;
+      }
+    }
+    if (url.startsWith('https://') && !url.includes('abuqitmirlabs.tech')) {
+      return url;
+    }
+  }
+  return '';
+}
 
 export function resolveOptimizedCoverImage(url?: string, slug?: string): string {
   if (slug) {

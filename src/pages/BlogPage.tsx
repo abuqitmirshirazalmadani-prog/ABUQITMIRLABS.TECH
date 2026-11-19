@@ -9,7 +9,7 @@ import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { getStaticBlogList } from '../data/staticBlogPosts';
 import { BLOG_SLUG_REDIRECTS, getCanonicalSlug } from '../data/canonicalRedirects';
-import { resolveOptimizedCoverImage } from '../data/localCoverImageMap';
+import { resolveOptimizedCoverImage, getRemoteCoverFallback } from '../data/localCoverImageMap';
 import { setCachedPosts } from '../utils/blogCache';
 
 interface Post {
@@ -555,9 +555,10 @@ const BlogPage = () => {
                                                         referrerPolicy="no-referrer"
                                                         onError={(e) => {
                                                             const target = e.target as HTMLImageElement;
-                                                            if (post.coverImage && target.src !== post.coverImage && !target.dataset.retriedRemote) {
+                                                            const remoteFallback = getRemoteCoverFallback(post.coverImage, post.slug);
+                                                            if (remoteFallback && target.src !== remoteFallback && !target.dataset.retriedRemote) {
                                                                 target.dataset.retriedRemote = 'true';
-                                                                target.src = post.coverImage;
+                                                                target.src = remoteFallback;
                                                             } else if (target.src !== DEFAULT_BRAND_COVER) {
                                                                 target.src = DEFAULT_BRAND_COVER;
                                                             }

@@ -287,6 +287,8 @@ export default async function handler(req: any, res: any) {
         ? 'Mobile App Development for GCC Markets: Arabic RTL Guide'
         : canonicalSlug === 'zatca-erp-integration-saudi-arabia'
         ? 'ZATCA ERP Integration Saudi Arabia: Practical Guide'
+        : canonicalSlug === 'social-media-brand-kit'
+        ? 'Social Media Brand Kit: The 5-Step Guide to Consistency'
         : postData.seoTitle ||
           (/Abu\s*Qitmir\s*Labs/i.test(cleanH1)
             ? cleanH1
@@ -330,6 +332,8 @@ export default async function handler(req: any, res: any) {
         'https://i.postimg.cc/bJWttf7h/AI-Readiness-Fix-Broken-Data.png': '/images/blog-covers/ai-readiness-uae-gcc.webp',
         'https://i.postimg.cc/Xqhs0Zq5/Three-Versions-One-Brand-Confusion.png': '/images/blog-covers/brand-consistency-checklist.webp',
         'https://i.postimg.cc/tCL7q4px/Build-Arabic-Apps-for-the-GCC.png': '/images/blog-covers/mobile-app-development-arabic-rtl.webp',
+        'https://i.postimg.cc/NGkCBDtZ/social-media-brand-kit.png': '/images/blog-covers/social-media-brand-kit-a2d5c63e.webp',
+        'https://i.postimg.cc/mgJqDkFt/ZATCA-ERP-Integration-Saudi-Arabia-Guide.png': '/images/blog-covers/zatca-erp-integration-saudi-arabia.webp',
       };
       if (inputUrl && knownMap[inputUrl.trim()]) {
         return knownMap[inputUrl.trim()];

@@ -96,6 +96,8 @@ const TITLE_OVERRIDES = {
     'Mobile App Development for GCC Markets: Arabic RTL Guide',
   '/blog/zatca-erp-integration-saudi-arabia':
     'ZATCA ERP Integration Saudi Arabia: Practical Guide',
+  '/blog/social-media-brand-kit':
+    'Social Media Brand Kit: The 5-Step Guide to Consistency',
 };
 
 function formatConciseTitle(rawTitle, pathname) {

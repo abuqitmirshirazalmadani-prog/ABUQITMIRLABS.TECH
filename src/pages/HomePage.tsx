@@ -19,7 +19,7 @@ import FeaturedToolsSection from '../components/FeaturedToolsSection';
 import { db, collection, getDocs, query, where } from '../lib/firebase';
 import { getStaticBlogList } from '../data/staticBlogPosts';
 import { BLOG_SLUG_REDIRECTS, getCanonicalSlug } from '../data/canonicalRedirects';
-import { resolveOptimizedCoverImage } from '../data/localCoverImageMap';
+import { resolveOptimizedCoverImage, getRemoteCoverFallback } from '../data/localCoverImageMap';
 import { DEFAULT_BRAND_COVER } from './BlogPage';
 
 interface HomeBlogHighlight {
@@ -734,7 +734,11 @@ export default function HomePage() {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
-                          if (target.src !== DEFAULT_BRAND_COVER) {
+                          const remoteFallback = getRemoteCoverFallback(post.coverImage, post.slug);
+                          if (remoteFallback && target.src !== remoteFallback && !target.dataset.retriedRemote) {
+                            target.dataset.retriedRemote = 'true';
+                            target.src = remoteFallback;
+                          } else if (target.src !== DEFAULT_BRAND_COVER) {
                             target.src = DEFAULT_BRAND_COVER;
                           }
                         }}

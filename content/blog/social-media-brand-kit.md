@@ -1,7 +1,7 @@
 ---
 {
   "title": "Social Media Brand Kit: The 5-Step Guide to Consistency",
-  "seoTitle": "Social Media Brand Kit: The 5-Step Guide to Consistency | AbuQitmirLabs",
+  "seoTitle": "Social Media Brand Kit: The 5-Step Guide to Consistency",
   "slug": "social-media-brand-kit",
   "canonical": "https://www.abuqitmirlabs.tech/blog/social-media-brand-kit",
   "excerpt": "Stop letting your team guess with colors and fonts. Build a social media brand kit that locks your templates, fixes your feed, and saves hours of design time.",

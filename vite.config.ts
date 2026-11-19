@@ -109,7 +109,7 @@ export default defineConfig(({ mode }) => {
             { SEO_ROUTES_METADATA },
             { BLOG_SLUG_REDIRECTS, getCanonicalPath, getCanonicalSlug },
             { STATIC_BLOG_POSTS },
-            { resolveOptimizedCoverImage },
+            { resolveOptimizedCoverImage, REMOTE_TO_LOCAL_COVER_MAP, SLUG_TO_REMOTE_COVER_MAP },
             { programmaticSEOPages }
           ] = await Promise.all([
             import('./src/utils/aiAgentStaticHtml'),
@@ -325,12 +325,66 @@ export default defineConfig(({ mode }) => {
             }
           } catch (err: any) {}
 
+          // Ensure all mapped & Firestore cover images exist in dist/images/blog-covers/ during Vercel build
+          try {
+            const distCoversDir = path.join(outDir, 'images', 'blog-covers');
+            if (!fs.existsSync(distCoversDir)) fs.mkdirSync(distCoversDir, { recursive: true });
+            const coverDownloadPairs = new Map<string, string>();
+            for (const [remoteUrl, localRel] of Object.entries(REMOTE_TO_LOCAL_COVER_MAP)) {
+              if (remoteUrl.startsWith('https://') && localRel.startsWith('/images/blog-covers/')) {
+                coverDownloadPairs.set(localRel, remoteUrl);
+              }
+            }
+            for (const [slugKey, remoteUrl] of Object.entries(SLUG_TO_REMOTE_COVER_MAP)) {
+              const localRel = resolveOptimizedCoverImage(remoteUrl, slugKey);
+              if (remoteUrl.startsWith('https://') && localRel && localRel.startsWith('/images/blog-covers/')) {
+                coverDownloadPairs.set(localRel, remoteUrl);
+              }
+            }
+            for (const fp of fetchedPosts) {
+              if (fp.coverImage && fp.coverImage.startsWith('https://') && !fp.coverImage.includes('abuqitmirlabs.tech')) {
+                const localRel = resolveOptimizedCoverImage(fp.coverImage, fp.slug);
+                if (localRel && localRel.startsWith('/images/blog-covers/')) {
+                  coverDownloadPairs.set(localRel, fp.coverImage);
+                }
+              }
+            }
+            for (const [localRel, remoteUrl] of coverDownloadPairs.entries()) {
+              const distTarget = path.join(outDir, localRel.replace(/^\/+/, ''));
+              const publicTarget = path.resolve(process.cwd(), 'public', localRel.replace(/^\/+/, ''));
+              if (!fs.existsSync(distTarget) || fs.statSync(distTarget).size < 1000) {
+                if (fs.existsSync(publicTarget) && fs.statSync(publicTarget).size >= 1000) {
+                  fs.mkdirSync(path.dirname(distTarget), { recursive: true });
+                  fs.copyFileSync(publicTarget, distTarget);
+                } else {
+                  try {
+                    const imgRes = await fetch(remoteUrl, {
+                      headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' }
+                    });
+                    if (imgRes.ok) {
+                      const imgBuf = Buffer.from(await imgRes.arrayBuffer());
+                      if (imgBuf.length >= 1000) {
+                        fs.mkdirSync(path.dirname(distTarget), { recursive: true });
+                        fs.writeFileSync(distTarget, imgBuf);
+                        try {
+                          fs.mkdirSync(path.dirname(publicTarget), { recursive: true });
+                          fs.writeFileSync(publicTarget, imgBuf);
+                        } catch {}
+                      }
+                    }
+                  } catch {}
+                }
+              }
+            }
+          } catch {}
+
           const BLOG_TITLE_OVERRIDES: Record<string, string> = {
             '/blog/arabic-ux-design-rtl': 'Arabic UX Design RTL: Why Western Agencies Get It Wrong',
             '/blog/ai-readiness-uae-gcc': 'GCC AI Readiness Gap: Why 64% of UAE IT Leaders Worry',
             '/blog/brand-consistency-checklist': 'Brand Consistency Checklist: Find Gaps First',
             '/blog/mobile-app-development-arabic-rtl': 'Mobile App Development for GCC Markets: Arabic RTL Guide',
             '/blog/zatca-erp-integration-saudi-arabia': 'ZATCA ERP Integration Saudi Arabia: Practical Guide',
+            '/blog/social-media-brand-kit': 'Social Media Brand Kit: The 5-Step Guide to Consistency',
           };
           const formatSafeBlogTitle = (url: string, rawTitle: string, seoTitle?: string): string => {
             if (BLOG_TITLE_OVERRIDES[url]) return BLOG_TITLE_OVERRIDES[url];

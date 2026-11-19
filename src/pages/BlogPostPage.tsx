@@ -13,7 +13,7 @@ import { STATIC_BLOG_POSTS, getStaticBlogList } from '../data/staticBlogPosts';
 import { generateBlogPostMeta } from '../utils/seoUtils';
 import { calculateReadingTime } from '../utils/readingTime';
 import { getCanonicalSlug } from '../data/canonicalRedirects';
-import { resolveOptimizedCoverImage } from '../data/localCoverImageMap';
+import { resolveOptimizedCoverImage, getRemoteCoverFallback } from '../data/localCoverImageMap';
 import { DEFAULT_BRAND_COVER } from './BlogPage';
 import TableOfContents, { slugifyHeading } from '../components/TableOfContents';
 
@@ -3506,9 +3506,10 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                             decoding="async"
                             onError={(e) => {
                                 const target = e.target as HTMLImageElement;
-                                if (post.coverImage && target.src !== post.coverImage && !target.dataset.retriedRemote) {
+                                const remoteFallback = getRemoteCoverFallback(post.coverImage, slug);
+                                if (remoteFallback && target.src !== remoteFallback && !target.dataset.retriedRemote) {
                                     target.dataset.retriedRemote = 'true';
-                                    target.src = post.coverImage;
+                                    target.src = remoteFallback;
                                 } else if (target.src !== DEFAULT_BRAND_COVER) {
                                     target.src = DEFAULT_BRAND_COVER;
                                     setImageError(true);
