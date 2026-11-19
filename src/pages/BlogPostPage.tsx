@@ -348,7 +348,8 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             .replace(/\bsearch and ai engines\b/gi, 'search and AI engines')
             .replace(/\bseo and web development\b/g, 'SEO and web development')
             .replace(/\bseo content writing\b/g, 'SEO content writing')
-            .replace(/\bLogo, coolers and fonts\b/gi, 'Logo, colors and fonts');
+            .replace(/\bLogo, coolers and fonts\b/gi, 'Logo, colors and fonts')
+            .replace(/requirements—not on whether/g, 'requirements, not on whether');
         const cleanTitleForMatch = (post.title || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
         const isMetaOrDividerLine = (lineStr: string) => {
             const t = lineStr.trim();
@@ -424,9 +425,9 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         let inCodeNorm = false;
         let inFaqNorm = false;
         const seenHeadingNorms = new Set<string>();
-        const dedupeHeadingText = (rawHeadingText: string): string => {
-            const cleanText = rawHeadingText.trim();
-            const normKey = cleanText.toLowerCase().replace(/[:\s]+/g, ' ').trim();
+        const dedupeHeadingText = (rawHeadingText: string, levelPrefix = '##'): string => {
+            const cleanText = rawHeadingText.replace(/\s*\(Frequently Asked Questions\)\s*$/i, '').trim();
+            const normKey = `${levelPrefix}:${cleanText.toLowerCase().replace(/[:\s]+/g, ' ').trim()}`;
             if (!seenHeadingNorms.has(normKey)) {
                 seenHeadingNorms.add(normKey);
                 return cleanText;
@@ -434,8 +435,8 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             const whatIsMatch = cleanText.match(/^what\s+is\s+(.+)\?$/i);
             const candidate = whatIsMatch
                 ? `What does ${whatIsMatch[1].trim()} include?`
-                : `${cleanText} — Key Details`;
-            seenHeadingNorms.add(candidate.toLowerCase().replace(/[:\s]+/g, ' ').trim());
+                : `${cleanText} (Overview)`;
+            seenHeadingNorms.add(`${levelPrefix}:${candidate.toLowerCase().replace(/[:\s]+/g, ' ').trim()}`);
             return candidate;
         };
         baseContent = checkLines
@@ -446,25 +447,29 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                     return line;
                 }
                 if (inCodeNorm) return line;
-                if (/^#{2,3}\s+(?:frequently asked questions|faq\b)/i.test(t)) {
+                if (/^#{2,3}\s+(?:frequently asked questions|faqs?)(?:\s*[:—–-].*)?$/i.test(t)) {
                     inFaqNorm = true;
                     return line.replace(/^###\s+/, '## ');
                 }
-                if (inFaqNorm && /^##\s+/.test(t) && !/^##\s+(?:frequently asked questions|faq\b)/i.test(t)) {
+                if (inFaqNorm && /^##\s+/.test(t) && !/^##\s+(?:frequently asked questions|faqs?)(?:\s*[:—–-].*)?$/i.test(t)) {
+                    if (t.endsWith('?')) {
+                        const qText = dedupeHeadingText(t.replace(/^##\s+/, ''), '###');
+                        return `### ${qText}`;
+                    }
                     inFaqNorm = false;
                 }
                 if (shouldPromoteBodyH3 && !inFaqNorm && /^###\s+/.test(t)) {
-                    const hText = dedupeHeadingText(t.replace(/^###\s+/, ''));
+                    const hText = dedupeHeadingText(t.replace(/^###\s+/, ''), '##');
                     return `## ${hText}`;
                 }
                 if (inFaqNorm && /^\*\*[^*]+\?\*\*\s*$/.test(t)) {
-                    const qText = dedupeHeadingText(t.replace(/^\*\*|\*\*\s*$/g, ''));
+                    const qText = dedupeHeadingText(t.replace(/^\*\*|\*\*\s*$/g, ''), '###');
                     return `### ${qText}`;
                 }
                 const hm = t.match(/^(#{2,4})\s+(.+)$/);
                 if (hm) {
                     const hashes = hm[1];
-                    const hText = dedupeHeadingText(hm[2]);
+                    const hText = dedupeHeadingText(hm[2], hashes);
                     return `${hashes} ${hText}`;
                 }
                 return line;

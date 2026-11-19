@@ -143,6 +143,9 @@ export function formatConciseSeoTitle(rawTitle?: string, slug?: string, siteName
   if (slug === 'mobile-app-development-arabic-rtl' || (rawTitle && /Mobile App Development for GCC Markets/i.test(rawTitle))) {
     return 'Mobile App Development for GCC Markets: Arabic RTL Guide';
   }
+  if (slug === 'zatca-erp-integration-saudi-arabia' || (rawTitle && /ZATCA ERP Integration in Saudi Arabia/i.test(rawTitle))) {
+    return 'ZATCA ERP Integration in Saudi Arabia: A Practical Guide';
+  }
   const cleaned = stripSurroundingQuotes(rawTitle || '')
     .replace(/&amp;/gi, '&')
     .replace(/\s+/g, ' ')

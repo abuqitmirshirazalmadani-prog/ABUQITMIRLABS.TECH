@@ -30,6 +30,8 @@ function normalizeSyncedMarkdownBody(rawBody, cleanTitle) {
     .replace(/\bconsidering ai agents\b/gi, 'considering AI agents')
     .replace(/\bsearch and ai engines\b/gi, 'search and AI engines')
     .replace(/\bLogo, coolers and fonts\b/gi, 'Logo, colors and fonts')
+    .replace(/requirements—not on whether/g, 'requirements, not on whether')
+    .replace(/\s*\(Frequently Asked Questions\)/gi, '')
     .trim();
 
   const lines = body.split(/\r?\n/);

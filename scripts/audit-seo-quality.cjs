@@ -318,8 +318,13 @@ if (fs.existsSync(staticBlogPath)) {
 
           const hashes = hm[1];
           const level = hashes.length;
-          const originalText = hm[2].trim();
-          const normKey = originalText.toLowerCase().replace(/[:\s]+/g, ' ').trim();
+          let originalText = hm[2].trim();
+          if (/\s*\(Frequently Asked Questions\)\s*$/i.test(originalText)) {
+            originalText = originalText.replace(/\s*\(Frequently Asked Questions\)\s*$/i, '').trim();
+            lines[lineIdx] = `${hashes} ${originalText}`;
+            postWasModified = true;
+          }
+          const normKey = `${level}:${originalText.toLowerCase().replace(/[:\s]+/g, ' ').trim()}`;
 
           if (level <= 2) {
             lastParentHeading = originalText.replace(/^[\d\.\-\s]+/, '').trim();
@@ -329,16 +334,20 @@ if (fs.existsSync(staticBlogPath)) {
             const count = (headingCounts.get(normKey) || 1) + 1;
             headingCounts.set(normKey, count);
 
-            // Generate clean, contextual, unique heading
+            // Generate clean, contextual, unique heading without appending (Frequently Asked Questions)
             let resolvedText = '';
-            if (lastParentHeading && !originalText.toLowerCase().includes(lastParentHeading.toLowerCase())) {
+            if (
+              lastParentHeading &&
+              !/frequently asked questions|\bfaq\b/i.test(lastParentHeading) &&
+              !originalText.toLowerCase().includes(lastParentHeading.toLowerCase())
+            ) {
               resolvedText = `${originalText} (${lastParentHeading})`;
             } else {
               resolvedText = `${originalText} (Part ${count})`;
             }
 
             // Verify resolution uniqueness
-            const resolvedNorm = resolvedText.toLowerCase().replace(/[:\s]+/g, ' ').trim();
+            const resolvedNorm = `${level}:${resolvedText.toLowerCase().replace(/[:\s]+/g, ' ').trim()}`;
             if (seenHeadings.has(resolvedNorm)) {
               resolvedText = `${originalText} (${count})`;
             }
@@ -346,7 +355,7 @@ if (fs.existsSync(staticBlogPath)) {
             console.log(`  ✨ Auto-resolved duplicate heading in "${slug}": "${originalText}" -> "${resolvedText}"`);
             issuesFixed.push(`Auto-resolved duplicate heading in "${slug}": "${originalText}" -> "${resolvedText}"`);
             lines[lineIdx] = `${hashes} ${resolvedText}`;
-            seenHeadings.set(resolvedText.toLowerCase().replace(/[:\s]+/g, ' ').trim(), lineIdx + 1);
+            seenHeadings.set(`${level}:${resolvedText.toLowerCase().replace(/[:\s]+/g, ' ').trim()}`, lineIdx + 1);
             postWasModified = true;
           } else {
             seenHeadings.set(normKey, lineIdx + 1);

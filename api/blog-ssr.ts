@@ -285,6 +285,8 @@ export default async function handler(req: any, res: any) {
         ? 'Brand Consistency Checklist: Find Gaps First'
         : canonicalSlug === 'mobile-app-development-arabic-rtl'
         ? 'Mobile App Development for GCC Markets: Arabic RTL Guide'
+        : canonicalSlug === 'zatca-erp-integration-saudi-arabia'
+        ? 'ZATCA ERP Integration in Saudi Arabia: A Practical Guide'
         : postData.seoTitle ||
           (/Abu\s*Qitmir\s*Labs/i.test(cleanH1)
             ? cleanH1
@@ -364,7 +366,8 @@ export default async function handler(req: any, res: any) {
       .replace(/\bconsidering ai agents\b/gi, 'considering AI agents')
       .replace(/\bsearch and ai engines\b/gi, 'search and AI engines')
       .replace(/\bseo and web development\b/g, 'SEO and web development')
-      .replace(/\bseo content writing\b/g, 'SEO content writing');
+      .replace(/\bseo content writing\b/g, 'SEO content writing')
+      .replace(/requirements—not on whether/g, 'requirements, not on whether');
     let lines = normalizedRawContent.trim().split(/\r?\n/);
     const isMetaOrDivider = (l: string) => {
       const t = (l || '').trim();
@@ -524,20 +527,27 @@ export default async function handler(req: any, res: any) {
         flushFaq();
         let level = rawHeadingMatch[1].length;
         if (level === 1) level = 2;
-        let hText = rawHeadingMatch[2].replace(/\*\*/g, '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+        let hText = rawHeadingMatch[2]
+          .replace(/\*\*/g, '')
+          .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
+          .replace(/\s*\(Frequently Asked Questions\)\s*$/i, '')
+          .trim();
         if (/^[a-z]/.test(hText)) {
           hText = hText.charAt(0).toUpperCase() + hText.slice(1);
         }
         if (/^introduction$/i.test(hText) && canonicalSlug === 'how-to-build-personal-brand-online') {
           hText = 'Introduction: Why Positioning Beats Volume';
         }
-        if (level === 3 && /frequently asked questions|\bfaq\b/i.test(hText)) {
+        const isFaqSectionHeader = /^(?:frequently asked questions|faqs?)(?:\s*[:—–-].*)?$/i.test(hText);
+        if (level === 3 && isFaqSectionHeader) {
           level = 2;
         } else if (level === 3 && promoteOrphanH3 && !inFaqSection) {
           level = 2;
+        } else if (level === 2 && inFaqSection && !isFaqSectionHeader && hText.endsWith('?')) {
+          level = 3;
         }
         if (level === 2) {
-          inFaqSection = /frequently asked questions|\bfaq\b/i.test(hText);
+          inFaqSection = isFaqSectionHeader;
           htmlBlocks.push(`<h2 id="${slugifyId(hText)}" class="text-2xl font-bold mt-10 mb-4">${escapeHtml(hText)}</h2>`);
         } else if (level === 3) {
           if (inFaqSection || hText.endsWith('?')) {
