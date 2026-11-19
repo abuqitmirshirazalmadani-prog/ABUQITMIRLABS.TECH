@@ -2,8 +2,8 @@
 {
   "title": "Local Business Visibility 2026: SEO + GEO + AIO + AEO + SXO",
   "slug": "local-business-visibility-2026-seo-geo-aio-aeo-sxo",
-  "excerpt": "Local SEO alone won't get you found in 2026. Discover the 5-Layer Local Visibility System — SEO, GEO, AIO, AEO, and SXO — built for local businesses competing in AI search.",
-  "metaDescription": "Local SEO alone won't get you found in 2026. Discover the 5-Layer Local Visibility System — SEO, GEO, AIO, AEO, and SXO — built for local businesses competing in AI search.",
+  "excerpt": "Local SEO alone won't get you found in 2026. Discover the 5-Layer Local Visibility System - SEO, GEO, AIO, AEO, and SXO - built for local businesses competing in AI search.",
+  "metaDescription": "Local SEO alone won't get you found in 2026. Discover the 5-Layer Local Visibility System - SEO, GEO, AIO, AEO, and SXO - built for local businesses competing in AI search.",
   "coverImage": "/images/blog-covers/local-business-visibility-2026-seo-geo-aio-aeo-sxo-f3e78923.webp",
   "coverImageAlt": "Local Business Visibility 2026: SEO + GEO + AIO + AEO + SXO",
   "category": "Business",

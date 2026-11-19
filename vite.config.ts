@@ -325,6 +325,30 @@ export default defineConfig(({ mode }) => {
             }
           } catch (err: any) {}
 
+          const BLOG_TITLE_OVERRIDES: Record<string, string> = {
+            '/blog/arabic-ux-design-rtl': 'Arabic UX Design RTL: Why Western Agencies Get It Wrong',
+            '/blog/ai-readiness-uae-gcc': 'GCC AI Readiness Gap: Why 64% of UAE IT Leaders Worry',
+            '/blog/brand-consistency-checklist': 'Brand Consistency Checklist: Find Gaps First',
+            '/blog/mobile-app-development-arabic-rtl': 'Mobile App Development for GCC Markets: Arabic RTL Guide',
+            '/blog/zatca-erp-integration-saudi-arabia': 'ZATCA ERP Integration Saudi Arabia: Practical Guide',
+          };
+          const formatSafeBlogTitle = (url: string, rawTitle: string, seoTitle?: string): string => {
+            if (BLOG_TITLE_OVERRIDES[url]) return BLOG_TITLE_OVERRIDES[url];
+            if (SEO_ROUTES_METADATA[url]?.title && SEO_ROUTES_METADATA[url].title.length <= 60) {
+              return SEO_ROUTES_METADATA[url].title;
+            }
+            if (seoTitle && seoTitle.trim().length > 0 && seoTitle.trim().length <= 60) {
+              return seoTitle.trim();
+            }
+            const clean = (rawTitle || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim();
+            if (!clean) return 'Engineering Journal | AbuQitmirLabs';
+            if (clean.length <= 44) return `${clean} | AbuQitmirLabs`;
+            if (clean.length <= 60) return clean;
+            const head = clean.split(/[:|]/)[0].trim();
+            if (head.length >= 16 && head.length <= 44) return `${head} | AbuQitmirLabs`;
+            return clean.slice(0, 57).trim() + '...';
+          };
+
           const seenBlogRoutes = new Set(baseRoutes.map(b => getCanonicalPath(b.url)));
           const staticBlogRoutes = Object.entries(STATIC_BLOG_POSTS)
             .map(([rawSlug, post]: [string, any]) => {
@@ -333,8 +357,7 @@ export default defineConfig(({ mode }) => {
               const bestPost = (STATIC_BLOG_POSTS[canonSlug] && (STATIC_BLOG_POSTS[canonSlug].content?.length || 0) >= (post.content?.length || 0))
                 ? STATIC_BLOG_POSTS[canonSlug]
                 : post;
-              const defaultRouteTitle = (bestPost.title || canonSlug).includes('AbuQitmirLabs') ? bestPost.title : `${bestPost.title || canonSlug} | AbuQitmirLabs`;
-              const routeTitle = SEO_ROUTES_METADATA[url]?.title || defaultRouteTitle;
+              const routeTitle = formatSafeBlogTitle(url, bestPost.title || canonSlug, bestPost.seoTitle);
               const rawDesc = SEO_ROUTES_METADATA[url]?.description || bestPost.metaDescription || bestPost.excerpt || '';
               return {
                 url,
@@ -363,8 +386,7 @@ export default defineConfig(({ mode }) => {
             })
             .map(post => {
               const url = `/blog/${post.slug}`;
-              const defaultRouteTitle = post.title.includes('AbuQitmirLabs') ? post.title : `${post.title} | AbuQitmirLabs`;
-              const routeTitle = SEO_ROUTES_METADATA[url]?.title || defaultRouteTitle;
+              const routeTitle = formatSafeBlogTitle(url, post.title, post.seoTitle);
               const rawDesc = SEO_ROUTES_METADATA[url]?.description || post.excerpt || '';
               return {
                 url,
@@ -397,8 +419,7 @@ export default defineConfig(({ mode }) => {
                   if (metaObj.metaDescription || metaObj.excerpt) parsedDesc = metaObj.metaDescription || metaObj.excerpt;
                 }
                 seenBlogRoutes.add(url);
-                const defaultRouteTitle = parsedSeoTitle || (parsedTitle.includes('AbuQitmirLabs') ? parsedTitle : `${parsedTitle} | AbuQitmirLabs`);
-                const routeTitle = SEO_ROUTES_METADATA[url]?.title || defaultRouteTitle;
+                const routeTitle = formatSafeBlogTitle(url, parsedTitle, parsedSeoTitle);
                 const rawDesc = SEO_ROUTES_METADATA[url]?.description || parsedDesc || `${parsedTitle}: technical insights from AbuQitmirLabs.`;
                 markdownBlogRoutes.push({
                   url,
@@ -1462,8 +1483,8 @@ export default defineConfig(({ mode }) => {
               const pickedRelated = [...sameCat, ...otherCat].slice(0, 3);
               if (pickedRelated.length > 0) {
                 const cardsHtml = pickedRelated.map((rel: any) => {
-                  const relTitle = escapeXml(String(rel.title || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').trim());
-                  const relExcerpt = escapeXml(String(rel.excerpt || rel.metaDescription || '').slice(0, 180));
+                  const relTitle = escapeXml(String(rel.title || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').replace(/\s*—\s*/g, ' - ').trim());
+                  const relExcerpt = escapeXml(String(rel.excerpt || rel.metaDescription || '').replace(/\s*—\s*/g, ' - ').slice(0, 180));
                   const relCat = escapeXml(String(rel.category || 'Business'));
                   return `<li class="group bg-[#0b0b0e] border border-zinc-800/80 rounded-[2rem] p-7 flex flex-col justify-between">\n  <div>\n    <div class="flex items-center justify-between gap-2 mb-4"><span class="inline-block px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] text-[10px] font-mono font-bold uppercase tracking-wider">${relCat}</span></div>\n    <h3 class="text-lg font-black text-white leading-snug mb-3 font-serif uppercase tracking-tight"><a href="/blog/${escapeXml(rel.slug)}" data-testid="related-article-link" class="hover:text-[#ccff00] transition-colors">${relTitle}</a></h3>\n    <p class="text-zinc-400 text-xs leading-relaxed mb-6 font-sans">${relExcerpt}</p>\n  </div>\n  <div class="pt-4 border-t border-zinc-800/60"><a href="/blog/${escapeXml(rel.slug)}" class="inline-flex items-center justify-between w-full text-xs font-mono font-bold uppercase tracking-wider text-zinc-300 hover:text-[#ccff00]"><span>Read Article</span></a></div>\n</li>`;
                 }).join('\n');

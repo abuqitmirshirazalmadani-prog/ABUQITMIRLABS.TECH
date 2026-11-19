@@ -144,7 +144,7 @@ export function formatConciseSeoTitle(rawTitle?: string, slug?: string, siteName
     return 'Mobile App Development for GCC Markets: Arabic RTL Guide';
   }
   if (slug === 'zatca-erp-integration-saudi-arabia' || (rawTitle && /ZATCA ERP Integration in Saudi Arabia/i.test(rawTitle))) {
-    return 'ZATCA ERP Integration in Saudi Arabia: A Practical Guide';
+    return 'ZATCA ERP Integration Saudi Arabia: Practical Guide';
   }
   const cleaned = stripSurroundingQuotes(rawTitle || '')
     .replace(/&amp;/gi, '&')

@@ -286,7 +286,7 @@ export default async function handler(req: any, res: any) {
         : canonicalSlug === 'mobile-app-development-arabic-rtl'
         ? 'Mobile App Development for GCC Markets: Arabic RTL Guide'
         : canonicalSlug === 'zatca-erp-integration-saudi-arabia'
-        ? 'ZATCA ERP Integration in Saudi Arabia: A Practical Guide'
+        ? 'ZATCA ERP Integration Saudi Arabia: Practical Guide'
         : postData.seoTitle ||
           (/Abu\s*Qitmir\s*Labs/i.test(cleanH1)
             ? cleanH1

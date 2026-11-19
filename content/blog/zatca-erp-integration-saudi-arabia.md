@@ -1,7 +1,7 @@
 ---
 {
   "title": "ZATCA ERP Integration in Saudi Arabia: A Practical Guide",
-  "seoTitle": "ZATCA ERP Integration in Saudi Arabia: A Practical Guide",
+  "seoTitle": "ZATCA ERP Integration Saudi Arabia: Practical Guide",
   "slug": "zatca-erp-integration-saudi-arabia",
   "excerpt": "Stop treating ZATCA e-invoicing as just an API project. Discover the 9-step workflow to connect your ERP, handle rejected invoices, and ensure finance can reconcile every transaction.",
   "metaDescription": "Learn how to connect an ERP with ZATCA e-invoicing through XML, FATOORA integration, invoice validation, testing and controlled operations.",

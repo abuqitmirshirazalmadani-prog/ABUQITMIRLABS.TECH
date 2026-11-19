@@ -206,7 +206,7 @@ const TITLE_OVERRIDES: Record<string, string> = {
   '/blog/mobile-app-development-arabic-rtl':
     'Mobile App Development for GCC Markets: Arabic RTL Guide',
   '/blog/zatca-erp-integration-saudi-arabia':
-    'ZATCA ERP Integration in Saudi Arabia: A Practical Guide',
+    'ZATCA ERP Integration Saudi Arabia: Practical Guide',
 };
 
 const DESCRIPTION_OVERRIDES: Record<string, string> = {

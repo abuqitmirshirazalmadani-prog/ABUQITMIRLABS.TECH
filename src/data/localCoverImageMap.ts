@@ -200,6 +200,8 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "brand-refresh-vs-rebrand": "/images/blog-covers/brand-refresh-vs-rebrand-82641034.webp",
   "brand-guidelines-small-business-pakistan": "/images/blog-covers/brand-guidelines-small-business-pakistan-147e663e.webp",
   "pakistan-offshore-development-gcc": "/images/blog-covers/pakistan-offshore-development-gcc-8b86e137.webp",
+  "social-media-brand-kit": "/images/blog-covers/social-media-brand-kit-a2d5c63e.webp",
+  "zatca-erp-integration-saudi-arabia": "/images/blog-covers/zatca-erp-integration-saudi-arabia.webp",
   "design-trends-2026": "/images/blog-covers/design-trends-2026-c38bcffb.webp",
   "the-non-technical-founders-guide-to-software-ownership-ip-2026": "/images/blog-covers/the-non-technical-founders-guide-to-software-ownership-ip-20-85a1300b.webp",
   "how-to-brief-graphic-designer": "/images/blog-covers/how-to-brief-graphic-designer-88ed316b.webp",

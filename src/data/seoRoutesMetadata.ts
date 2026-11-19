@@ -12892,4 +12892,268 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
       ]
     }
   },
+  '/blog/social-media-brand-kit': {
+    title: "Social Media Brand Kit: The 5-Step Guide to Consistency | AbuQitmirLabs",
+    description: "Is your team posting off-brand content? Get our step-by-step guide to build a social media brand kit (logos, colors, templates). Book a design consult.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/social-media-brand-kit',
+    ogTitle: "Social Media Brand Kit: The 5-Step Guide to Consistency | AbuQitmirLabs",
+    ogDescription: "Is your team posting off-brand content? Get our step-by-step guide to build a social media brand kit (logos, colors, templates). Book a design consult.",
+    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/social-media-brand-kit-a2d5c63e.webp",
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: "Social Media Brand Kit: The 5-Step Guide to Consistency | AbuQitmirLabs",
+    twitterDescription: "Is your team posting off-brand content? Get our step-by-step guide to build a social media brand kit (logos, colors, templates). Book a design consult.",
+    twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/social-media-brand-kit-a2d5c63e.webp",
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.abuqitmirlabs.tech/#organization',
+          name: 'AbuQitmirLabs',
+          url: 'https://www.abuqitmirlabs.tech/',
+          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://www.abuqitmirlabs.tech/#website',
+          url: 'https://www.abuqitmirlabs.tech/',
+          name: 'AbuQitmirLabs',
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
+        },
+        {
+          '@type': 'WebPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/social-media-brand-kit#webpage',
+          url: 'https://www.abuqitmirlabs.tech/blog/social-media-brand-kit',
+          name: "Social Media Brand Kit: The 5-Step Guide to Consistency | AbuQitmirLabs",
+          description: "Is your team posting off-brand content? Get our step-by-step guide to build a social media brand kit (logos, colors, templates). Book a design consult.",
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/social-media-brand-kit#breadcrumb',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
+            { '@type': 'ListItem', position: 3, name: "Social Media Brand Kit: The 5-Step Guide to Consistency", item: 'https://www.abuqitmirlabs.tech/blog/social-media-brand-kit' }
+          ]
+        },
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/social-media-brand-kit#article',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/social-media-brand-kit#webpage' },
+          headline: "Social Media Brand Kit: The 5-Step Guide to Consistency",
+          description: "Is your team posting off-brand content? Get our step-by-step guide to build a social media brand kit (logos, colors, templates). Book a design consult.",
+          image: "https://www.abuqitmirlabs.tech/images/blog-covers/social-media-brand-kit-a2d5c63e.webp",
+          author: {
+            '@type': 'Person',
+            name: "Abu Qitmir Mohammad Shiraz Al-Madani",
+            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+          },
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
+          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/social-media-brand-kit#webpage' },
+          datePublished: "2026-11-18T00:00:00+00:00",
+          dateModified: "2026-11-18T00:00:00+00:00"
+        },
+        {
+          '@type': 'FAQPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/social-media-brand-kit#faq',
+          mainEntity: [
+          {
+                    "@type": "Question",
+                    "name": "What is a social media brand kit?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "A social media brand kit is a set of reusable files and rules that keep every post looking and sounding like one brand. It includes logo variants, HEX and RGB colour codes, fonts with fallbacks, template files, platform export sizes, safe zones, a folder structure, and a short voice guide. Teams use it to publish without designing each post from scratch."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "How much does a social media brand kit cost?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Costs depend on whether you build the kit yourself or hire a designer. A DIY kit mainly costs your time, plus any paid font or template licences. A professional kit depends on how many templates and rules you need. Ask for a fixed quote based on a clear asset list, so you can compare options fairly."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Is Canva or Figma better for a social media brand kit?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Canva suits small teams that need fast, template-based posting and easy sharing. Figma suits teams that need component libraries, version history, and clean handover to designers or developers. Many small businesses start in Canva and move to Figma when the design system grows."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "What size should Instagram posts be in 2026?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "The most widely recommended Instagram feed size is 1080 x 1350 pixels at 4:5. Stories and Reels use 1080 x 1920 pixels at 9:16. Some guides also list 1080 x 1440 pixels at 3:4 for feed portraits, so test your own crop before you lock a template."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "How long does it take to create a brand kit?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "A focused small-business kit takes a few working days if the logo files, colours, and fonts already exist. Building templates for several platforms and writing usage rules takes longer, because each template needs testing on a phone. The timeline depends mainly on how many platforms you post to."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Who needs a social media brand kit?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Any business that posts regularly and has more than one person creating content needs one. This includes small teams, agencies that hand content to clients, and founders whose posts are made by freelancers or part-time staff."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "What are the risks of posting without a brand kit?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Without a kit, each post drifts in colour, font, and tone. Followers find it harder to recognise the account, and visitors who click through to your website see a different identity. Inconsistency also slows approvals, because every post needs a new design decision."
+                    }
+          }
+]
+        }
+      ]
+    }
+  },
+  '/blog/zatca-erp-integration-saudi-arabia': {
+    title: "ZATCA ERP Integration Saudi Arabia: Practical Guide",
+    description: "Learn how to connect an ERP with ZATCA e-invoicing through XML, FATOORA integration, invoice validation, testing and controlled operations.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/zatca-erp-integration-saudi-arabia',
+    ogTitle: "ZATCA ERP Integration Saudi Arabia: Practical Guide",
+    ogDescription: "Learn how to connect an ERP with ZATCA e-invoicing through XML, FATOORA integration, invoice validation, testing and controlled operations.",
+    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/zatca-erp-integration-saudi-arabia.webp",
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: "ZATCA ERP Integration Saudi Arabia: Practical Guide",
+    twitterDescription: "Learn how to connect an ERP with ZATCA e-invoicing through XML, FATOORA integration, invoice validation, testing and controlled operations.",
+    twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/zatca-erp-integration-saudi-arabia.webp",
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.abuqitmirlabs.tech/#organization',
+          name: 'AbuQitmirLabs',
+          url: 'https://www.abuqitmirlabs.tech/',
+          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://www.abuqitmirlabs.tech/#website',
+          url: 'https://www.abuqitmirlabs.tech/',
+          name: 'AbuQitmirLabs',
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
+        },
+        {
+          '@type': 'WebPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/zatca-erp-integration-saudi-arabia#webpage',
+          url: 'https://www.abuqitmirlabs.tech/blog/zatca-erp-integration-saudi-arabia',
+          name: "ZATCA ERP Integration Saudi Arabia: Practical Guide",
+          description: "Learn how to connect an ERP with ZATCA e-invoicing through XML, FATOORA integration, invoice validation, testing and controlled operations.",
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/zatca-erp-integration-saudi-arabia#breadcrumb',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
+            { '@type': 'ListItem', position: 3, name: "ZATCA ERP Integration in Saudi Arabia: A Practical Guide", item: 'https://www.abuqitmirlabs.tech/blog/zatca-erp-integration-saudi-arabia' }
+          ]
+        },
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/zatca-erp-integration-saudi-arabia#article',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/zatca-erp-integration-saudi-arabia#webpage' },
+          headline: "ZATCA ERP Integration in Saudi Arabia: A Practical Guide",
+          description: "Learn how to connect an ERP with ZATCA e-invoicing through XML, FATOORA integration, invoice validation, testing and controlled operations.",
+          image: "https://www.abuqitmirlabs.tech/images/blog-covers/zatca-erp-integration-saudi-arabia.webp",
+          author: {
+            '@type': 'Person',
+            name: "Abu Qitmir Mohammad Shiraz Al-Madani",
+            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+          },
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
+          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/zatca-erp-integration-saudi-arabia#webpage' },
+          datePublished: "2026-11-19T00:00:00+00:00",
+          dateModified: "2026-11-19T00:00:00+00:00"
+        },
+        {
+          '@type': 'FAQPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/zatca-erp-integration-saudi-arabia#faq',
+          mainEntity: [
+          {
+                    "@type": "Question",
+                    "name": "What is ZATCA ERP integration?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "It is the connection between a business's ERP or accounting system, its electronic invoicing solution and the applicable ZATCA integration workflow. It includes data mapping, invoice generation, validation, authentication, transmission, response handling, storage and reconciliation."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "What is the difference between ZATCA Phase 1 and Phase 2?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Phase 1 is the Generation Phase, focused on generating and storing compliant electronic invoices and notes. Phase 2 is the Integration Phase, which adds technical and business requirements and connects electronic invoicing solutions with ZATCA systems. Phase 2 is introduced in waves for targeted taxpayer groups."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Does every Saudi business have the same Phase 2 deadline?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "No. ZATCA states that Phase 2 is rolled out in waves and that targeted taxpayers are notified at least six months before their integration date. A business should verify its own official notification and current ZATCA guidance."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "What does FATOORA integration involve?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "The exact workflow depends on the taxpayer and invoice type, but a technical project can involve onboarding, credentials or certificates, structured invoice generation, validation, API communication, reporting or clearance, response storage and operational monitoring. ZATCA's developer resources and sandbox should guide implementation and testing."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Is a PDF invoice enough for ZATCA integration?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Not necessarily. The integration must support the applicable structured electronic invoice requirements. A PDF may be used as a human-readable representation, but it should not replace the required electronic data and controlled transmission workflow."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Why are XML validation and data mapping important?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "They prevent the ERP and invoicing system from interpreting customers, tax rates, totals, dates and invoice references differently. Validation catches problems before submission and makes rejected transactions easier to correct."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "How should an ERP handle a failed submission?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Store the original transaction, response and error, classify the error, prevent blind duplicate retries and send the item to a controlled review queue. Temporary failures can use bounded retries; permanent validation failures need correction before resubmission."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Can AbuQitmirLabs guarantee ZATCA compliance?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "No responsible technical provider should guarantee a regulatory outcome without reviewing the taxpayer's facts, current ZATCA requirements, invoice flows and production configuration. AbuQitmirLabs can provide technical assessment, ERP integration, validation, testing, documentation and support. Legal and tax interpretation should be confirmed with the appropriate qualified adviser."
+                    }
+          }
+]
+        }
+      ]
+    }
+  },
 };

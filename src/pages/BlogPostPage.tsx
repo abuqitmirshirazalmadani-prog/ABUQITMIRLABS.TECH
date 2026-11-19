@@ -3709,13 +3709,13 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                                         data-testid="related-article-link"
                                                         className="hover:text-[#ccff00] transition-colors"
                                                     >
-                                                        {related.title}
+                                                        {related.title.replace(/\s*—\s*/g, ' - ')}
                                                     </Link>
                                                 </h3>
 
                                                 {related.excerpt && (
                                                     <p className="text-zinc-400 text-xs leading-relaxed line-clamp-3 mb-6 font-sans">
-                                                        {related.excerpt}
+                                                        {related.excerpt.replace(/\s*—\s*/g, ' - ')}
                                                     </p>
                                                 )}
                                             </div>
