@@ -25,6 +25,7 @@ export const REMOTE_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "https://i.postimg.cc/tCL7q4px/Build-Arabic-Apps-for-the-GCC.png": "/images/blog-covers/mobile-app-development-arabic-rtl.webp",
   "https://i.postimg.cc/NGkCBDtZ/social-media-brand-kit.png": "/images/blog-covers/social-media-brand-kit-a2d5c63e.webp",
   "https://i.postimg.cc/mgJqDkFt/ZATCA-ERP-Integration-Saudi-Arabia-Guide.png": "/images/blog-covers/zatca-erp-integration-saudi-arabia.webp",
+  "https://i.postimg.cc/MKZDD2QK/Abu-Qitmir-Labs.png": "/images/blog-covers/raast-payment-integration-pakistan.webp",
   "https://i.postimg.cc/cHQRwnLJ/Logo-vs-Brand-Identity-Guide.png": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp",
   "/images/blog-covers/lead-generation-content-strategy-google-meta-1576aa01.webp": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
   "/images/blog-covers/rebranding-checklist-pakistan-9252c088.webp": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
@@ -41,6 +42,9 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "ai-readiness-uae-gcc": "/images/blog-covers/ai-readiness-uae-gcc.webp",
   "brand-consistency-checklist": "/images/blog-covers/brand-consistency-checklist.webp",
   "mobile-app-development-arabic-rtl": "/images/blog-covers/mobile-app-development-arabic-rtl.webp",
+  "social-media-brand-kit": "/images/blog-covers/social-media-brand-kit-a2d5c63e.webp",
+  "zatca-erp-integration-saudi-arabia": "/images/blog-covers/zatca-erp-integration-saudi-arabia.webp",
+  "raast-payment-integration-pakistan": "/images/blog-covers/raast-payment-integration-pakistan.webp",
   "brand-identity-vs-logo-design": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp",
   "design-systems-for-startups": "/images/blog-covers/design-systems-for-startups-848e7249.webp",
   "measure-marketing-roi-without-tracking": "/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp",
@@ -202,8 +206,6 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "brand-refresh-vs-rebrand": "/images/blog-covers/brand-refresh-vs-rebrand-82641034.webp",
   "brand-guidelines-small-business-pakistan": "/images/blog-covers/brand-guidelines-small-business-pakistan-147e663e.webp",
   "pakistan-offshore-development-gcc": "/images/blog-covers/pakistan-offshore-development-gcc-8b86e137.webp",
-  "social-media-brand-kit": "/images/blog-covers/social-media-brand-kit-a2d5c63e.webp",
-  "zatca-erp-integration-saudi-arabia": "/images/blog-covers/zatca-erp-integration-saudi-arabia.webp",
   "design-trends-2026": "/images/blog-covers/design-trends-2026-c38bcffb.webp",
   "the-non-technical-founders-guide-to-software-ownership-ip-2026": "/images/blog-covers/the-non-technical-founders-guide-to-software-ownership-ip-20-85a1300b.webp",
   "how-to-brief-graphic-designer": "/images/blog-covers/how-to-brief-graphic-designer-88ed316b.webp",
@@ -221,6 +223,7 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
 };
 
 export const SLUG_TO_REMOTE_COVER_MAP: Record<string, string> = {
+  "raast-payment-integration-pakistan": "https://i.postimg.cc/MKZDD2QK/Abu-Qitmir-Labs.png",
   "zatca-erp-integration-saudi-arabia": "https://i.postimg.cc/mgJqDkFt/ZATCA-ERP-Integration-Saudi-Arabia-Guide.png",
   "social-media-brand-kit": "https://i.postimg.cc/NGkCBDtZ/social-media-brand-kit.png",
   "mobile-app-development-arabic-rtl": "https://i.postimg.cc/tCL7q4px/Build-Arabic-Apps-for-the-GCC.png",

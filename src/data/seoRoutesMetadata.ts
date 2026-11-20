@@ -12893,15 +12893,15 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     }
   },
   '/blog/social-media-brand-kit': {
-    title: "Social Media Brand Kit: The 5-Step Guide to Consistency | AbuQitmirLabs",
+    title: "Social Media Brand Kit: The 5-Step Guide to Consistency",
     description: "Is your team posting off-brand content? Get our step-by-step guide to build a social media brand kit (logos, colors, templates). Book a design consult.",
     canonical: 'https://www.abuqitmirlabs.tech/blog/social-media-brand-kit',
-    ogTitle: "Social Media Brand Kit: The 5-Step Guide to Consistency | AbuQitmirLabs",
+    ogTitle: "Social Media Brand Kit: The 5-Step Guide to Consistency",
     ogDescription: "Is your team posting off-brand content? Get our step-by-step guide to build a social media brand kit (logos, colors, templates). Book a design consult.",
     ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/social-media-brand-kit-a2d5c63e.webp",
     ogType: 'article',
     twitterCard: 'summary_large_image',
-    twitterTitle: "Social Media Brand Kit: The 5-Step Guide to Consistency | AbuQitmirLabs",
+    twitterTitle: "Social Media Brand Kit: The 5-Step Guide to Consistency",
     twitterDescription: "Is your team posting off-brand content? Get our step-by-step guide to build a social media brand kit (logos, colors, templates). Book a design consult.",
     twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/social-media-brand-kit-a2d5c63e.webp",
     schemaJsonLd: {
@@ -12925,7 +12925,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebPage',
           '@id': 'https://www.abuqitmirlabs.tech/blog/social-media-brand-kit#webpage',
           url: 'https://www.abuqitmirlabs.tech/blog/social-media-brand-kit',
-          name: "Social Media Brand Kit: The 5-Step Guide to Consistency | AbuQitmirLabs",
+          name: "Social Media Brand Kit: The 5-Step Guide to Consistency",
           description: "Is your team posting off-brand content? Get our step-by-step guide to build a social media brand kit (logos, colors, templates). Book a design consult.",
           isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
         },
@@ -13149,6 +13149,142 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
                     "acceptedAnswer": {
                               "@type": "Answer",
                               "text": "No responsible technical provider should guarantee a regulatory outcome without reviewing the taxpayer's facts, current ZATCA requirements, invoice flows and production configuration. AbuQitmirLabs can provide technical assessment, ERP integration, validation, testing, documentation and support. Legal and tax interpretation should be confirmed with the appropriate qualified adviser."
+                    }
+          }
+]
+        }
+      ]
+    }
+  },
+  '/blog/raast-payment-integration-pakistan': {
+    title: "Raast Payment Integration for Pakistani Businesses Guide",
+    description: "Learn how Pakistani businesses can accept Raast payments. Explore merchant onboarding, QR payments, verification and software integration.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/raast-payment-integration-pakistan',
+    ogTitle: "Raast Payment Integration for Pakistani Businesses Guide",
+    ogDescription: "Learn how Pakistani businesses can accept Raast payments. Explore merchant onboarding, QR payments, verification and software integration.",
+    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/raast-payment-integration-pakistan.webp",
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: "Raast Payment Integration for Pakistani Businesses Guide",
+    twitterDescription: "Learn how Pakistani businesses can accept Raast payments. Explore merchant onboarding, QR payments, verification and software integration.",
+    twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/raast-payment-integration-pakistan.webp",
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.abuqitmirlabs.tech/#organization',
+          name: 'AbuQitmirLabs',
+          url: 'https://www.abuqitmirlabs.tech/',
+          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://www.abuqitmirlabs.tech/#website',
+          url: 'https://www.abuqitmirlabs.tech/',
+          name: 'AbuQitmirLabs',
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
+        },
+        {
+          '@type': 'WebPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/raast-payment-integration-pakistan#webpage',
+          url: 'https://www.abuqitmirlabs.tech/blog/raast-payment-integration-pakistan',
+          name: "Raast Payment Integration for Pakistani Businesses Guide",
+          description: "Learn how Pakistani businesses can accept Raast payments. Explore merchant onboarding, QR payments, verification and software integration.",
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/raast-payment-integration-pakistan#breadcrumb',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
+            { '@type': 'ListItem', position: 3, name: "Raast Payment Integration for Pakistani Businesses Guide", item: 'https://www.abuqitmirlabs.tech/blog/raast-payment-integration-pakistan' }
+          ]
+        },
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/raast-payment-integration-pakistan#article',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/raast-payment-integration-pakistan#webpage' },
+          headline: "Raast Payment Integration for Pakistani Businesses Guide",
+          description: "Learn how Pakistani businesses can accept Raast payments. Explore merchant onboarding, QR payments, verification and software integration.",
+          image: "https://www.abuqitmirlabs.tech/images/blog-covers/raast-payment-integration-pakistan.webp",
+          author: {
+            '@type': 'Person',
+            name: "Abu Qitmir Mohammad Shiraz Al-Madani",
+            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+          },
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
+          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/raast-payment-integration-pakistan#webpage' },
+          datePublished: "2026-11-20T00:00:00+00:00",
+          dateModified: "2026-11-20T00:00:00+00:00"
+        },
+        {
+          '@type': 'FAQPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/raast-payment-integration-pakistan#faq',
+          mainEntity: [
+          {
+                    "@type": "Question",
+                    "name": "What is Raast P2M?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Raast P2M means Raast person-to-merchant. It is the State Bank of Pakistan's merchant payment service. Customers pay businesses from their bank or wallet app using static or dynamic QR codes, Request to Pay, a merchant alias or an IBAN. A participating bank or provider onboards the business and confirms payments."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "How does Raast P2M work for merchants?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "A bank or provider onboards your business after due diligence and gives you a QR code and other payment options. The customer pays from their own app. The provider confirms the payment to you and credits your account in real time or on the timeline you agreed with the provider."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Can Raast payments connect to an online store or ERP?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Often yes, but it depends on your provider. Your software connects to the merchant interface and technical options that your bank or provider supplies. Ask which features they support, such as dynamic QR, payment requests, confirmations and statements, before you plan a custom integration."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Does Raast cost merchants anything?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "SBP's circular lets providers charge merchants a reasonable fee and encourages them to waive it at first. A government subsidy for QR-based transactions ran from 1 September 2025 to 30 June 2026. Fees and terms differ by provider, so ask for your current fee schedule in writing."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "How do refunds work with Raast P2M?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Under SBP's framework, customers can request a refund or return through their app. Providers must let merchants accept or reject these requests through the provider's merchant interface. Your business needs a clear process, a record of each decision and a way to match refunds to the original orders."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "What is the difference between Raast P2P and P2M?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "P2P moves money between individuals. P2M moves money from a customer to a business that has been onboarded as a merchant. P2M adds merchant tools such as QR codes, payment requests, confirmations and refund handling. Businesses that collect customer payments should ask their provider about merchant onboarding for P2M."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "Who needs Raast payment integration?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "Any business that wants to accept digital payments and match them to orders needs a plan for Raast. This includes retailers, online stores, marketplaces, service companies and fintech products. A small counter can start with a static QR. Growing businesses should connect payments to their order and accounting systems."
+                    }
+          },
+          {
+                    "@type": "Question",
+                    "name": "How long does a Raast integration take?",
+                    "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": "The timeline depends on provider onboarding, the Raast modes you choose and how your order system works. A static QR can start once the provider activates your account. A custom integration needs design, development and testing. Ask your provider for onboarding timelines before you set a launch date."
                     }
           }
 ]

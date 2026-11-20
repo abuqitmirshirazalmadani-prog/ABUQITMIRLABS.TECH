@@ -272,10 +272,13 @@ export default async function handler(req: any, res: any) {
     const routeUrl = `/blog/${canonicalSlug}`;
     const fullCanonical = `${hostname}${routeUrl}`;
 
-    const cleanH1 = String(postData.title || canonicalSlug)
-      .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
-      .replace(/\s*\|\s*The\s*9-Step.*$/i, '')
-      .trim();
+    const cleanH1 =
+      canonicalSlug === 'raast-payment-integration-pakistan'
+        ? 'Raast Payment Integration for Pakistani Businesses Guide'
+        : String(postData.title || canonicalSlug)
+            .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
+            .replace(/\s*\|\s*The\s*9-Step.*$/i, '')
+            .trim();
     const pageTitle =
       canonicalSlug === 'arabic-ux-design-rtl'
         ? 'Arabic UX Design RTL: Why Western Agencies Get It Wrong'
@@ -289,6 +292,8 @@ export default async function handler(req: any, res: any) {
         ? 'ZATCA ERP Integration Saudi Arabia: Practical Guide'
         : canonicalSlug === 'social-media-brand-kit'
         ? 'Social Media Brand Kit: The 5-Step Guide to Consistency'
+        : canonicalSlug === 'raast-payment-integration-pakistan'
+        ? 'Raast Payment Integration for Pakistani Businesses Guide'
         : postData.seoTitle ||
           (/Abu\s*Qitmir\s*Labs/i.test(cleanH1)
             ? cleanH1
@@ -300,6 +305,8 @@ export default async function handler(req: any, res: any) {
     const rawDesc = (
       canonicalSlug === 'brand-guidelines-small-business-pakistan'
         ? 'A practical guide for Pakistani SMEs on creating a 1-page brand style guide. Keep your logo, colors, and voice consistent across print and web.'
+        : canonicalSlug === 'raast-payment-integration-pakistan'
+        ? 'Learn how Pakistani businesses can accept Raast payments. Explore merchant onboarding, QR payments, verification and software integration.'
         : postData.metaDescription ||
           postData.excerpt ||
           `${cleanH1}: in-depth guide by AbuQitmirLabs.`
@@ -334,6 +341,7 @@ export default async function handler(req: any, res: any) {
         'https://i.postimg.cc/tCL7q4px/Build-Arabic-Apps-for-the-GCC.png': '/images/blog-covers/mobile-app-development-arabic-rtl.webp',
         'https://i.postimg.cc/NGkCBDtZ/social-media-brand-kit.png': '/images/blog-covers/social-media-brand-kit-a2d5c63e.webp',
         'https://i.postimg.cc/mgJqDkFt/ZATCA-ERP-Integration-Saudi-Arabia-Guide.png': '/images/blog-covers/zatca-erp-integration-saudi-arabia.webp',
+        'https://i.postimg.cc/MKZDD2QK/Abu-Qitmir-Labs.png': '/images/blog-covers/raast-payment-integration-pakistan.webp',
       };
       if (inputUrl && knownMap[inputUrl.trim()]) {
         return knownMap[inputUrl.trim()];
@@ -665,7 +673,39 @@ export default async function handler(req: any, res: any) {
     const schemaBlock = `<script id="canonical-schema-graph" type="application/ld+json">\n${JSON.stringify({ '@context': 'https://schema.org', '@graph': graphNodes }, null, 2)}\n</script>`;
     const bylineDate = escapeHtml(String(postData.createdAt || '2026-11-08').slice(0, 10));
     const bylineAuthor = escapeHtml(postData.author || 'Abu Qitmir Mohammad Shiraz Al-Madani');
-    const innerRootHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader()}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><header class="mb-6"><h1 itemProp="headline" class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${escapeHtml(cleanH1)}</h1></header><div aria-label="Article metadata" data-nosnippet="true" aria-hidden="true" class="mb-8 flex flex-wrap gap-4 text-xs text-zinc-400 font-mono"><p>${bylineDate}</p><p>By ${bylineAuthor} (AbuQitmirLabs)</p></div><article itemProp="articleBody" data-article-content="true" class="prose prose-invert max-w-none text-neutral-300">${htmlBlocks.join('\n')}</article></main></div>`;
+    const ssrRelatedCandidates = [
+      {
+        slug: 'zatca-erp-integration-saudi-arabia',
+        title: 'ZATCA ERP Integration in Saudi Arabia: A Practical Guide',
+        category: 'Software',
+        excerpt: 'Stop treating ZATCA e-invoicing as just an API project. Discover the 9-step workflow to connect your ERP, handle rejected invoices, and ensure finance can reconcile every transaction.',
+      },
+      {
+        slug: 'custom-software-development-qatar',
+        title: 'Custom Software Development in Qatar: The Complete 2026 Guide',
+        category: 'Software',
+        excerpt: 'A practical 2026 guide for Qatari enterprises and SMEs on scoping, compliance, Arabic RTL localization, and selecting a custom software development partner.',
+      },
+      {
+        slug: 'kuwait-digital-transformation',
+        title: 'Kuwait Digital Transformation: How Enterprises Modernize Legacy Systems',
+        category: 'Business',
+        excerpt: 'How Kuwaiti enterprises modernize legacy ERP, banking, and government workflows with custom software, AI agents, and regional cybersecurity standards.',
+      },
+      {
+        slug: 'pakistan-offshore-development-gcc',
+        title: 'Pakistan Offshore Development for GCC Companies: Complete 2026 Guide',
+        category: 'Development',
+        excerpt: 'Why GCC companies choose Pakistan for offshore software engineering: time-zone alignment, bilingual talent, IP ownership, and delivery governance.',
+      },
+    ].filter((item) => item.slug !== canonicalSlug).slice(0, 3);
+    const ssrRelatedHtml = `<section aria-label="Related Articles" data-testid="related-articles-section" class="mt-16 pt-10 border-t border-zinc-800/80"><h2 class="mb-8 text-2xl md:text-3xl font-black text-white uppercase tracking-tight font-serif">Related Articles</h2><ul class="grid grid-cols-1 md:grid-cols-3 gap-6 list-none p-0 m-0">${ssrRelatedCandidates
+      .map(
+        (rel) =>
+          `<li class="group bg-[#0b0b0e] border border-zinc-800/80 rounded-[2rem] p-7 flex flex-col justify-between"><div><div class="flex items-center justify-between gap-2 mb-4"><span class="inline-block px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] text-[10px] font-mono font-bold uppercase tracking-wider">${escapeHtml(rel.category)}</span></div><h3 class="text-lg font-black text-white leading-snug mb-3 font-serif uppercase tracking-tight"><a href="/blog/${escapeHtml(rel.slug)}" data-testid="related-article-link" class="hover:text-[#ccff00] transition-colors">${escapeHtml(rel.title)}</a></h3><p class="text-zinc-400 text-xs leading-relaxed mb-6 font-sans">${escapeHtml(rel.excerpt)}</p></div><div class="pt-4 border-t border-zinc-800/60"><a href="/blog/${escapeHtml(rel.slug)}" class="inline-flex items-center justify-between w-full text-xs font-mono font-bold uppercase tracking-wider text-zinc-300 hover:text-[#ccff00]"><span>Read Article</span></a></div></li>`
+      )
+      .join('')}</ul></section>`;
+    const innerRootHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader()}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><header class="mb-6"><h1 itemProp="headline" class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${escapeHtml(cleanH1)}</h1></header><div aria-label="Article metadata" data-nosnippet="true" aria-hidden="true" class="mb-8 flex flex-wrap gap-4 text-xs text-zinc-400 font-mono"><p>${bylineDate}</p><p>By ${bylineAuthor} (AbuQitmirLabs)</p></div><article itemProp="articleBody" data-article-content="true" class="prose prose-invert max-w-none text-neutral-300">${htmlBlocks.join('\n')}</article>${ssrRelatedHtml}</main></div>`;
 
     const shellCandidates = [
       path.join(process.cwd(), 'dist', 'spa-shell.html'),

@@ -149,6 +149,9 @@ export function formatConciseSeoTitle(rawTitle?: string, slug?: string, siteName
   if (slug === 'social-media-brand-kit' || (rawTitle && /Social Media Brand Kit/i.test(rawTitle))) {
     return 'Social Media Brand Kit: The 5-Step Guide to Consistency';
   }
+  if (slug === 'raast-payment-integration-pakistan' || (rawTitle && /Raast Payment Integration for Pakistani Businesses/i.test(rawTitle))) {
+    return 'Raast Payment Integration for Pakistani Businesses Guide';
+  }
   const cleaned = stripSurroundingQuotes(rawTitle || '')
     .replace(/&amp;/gi, '&')
     .replace(/\s+/g, ' ')

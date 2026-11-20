@@ -664,6 +664,7 @@ async function main() {
     "https://i.postimg.cc/tCL7q4px/Build-Arabic-Apps-for-the-GCC.png": "/images/blog-covers/mobile-app-development-arabic-rtl.webp",
     "https://i.postimg.cc/NGkCBDtZ/social-media-brand-kit.png": "/images/blog-covers/social-media-brand-kit-a2d5c63e.webp",
     "https://i.postimg.cc/mgJqDkFt/ZATCA-ERP-Integration-Saudi-Arabia-Guide.png": "/images/blog-covers/zatca-erp-integration-saudi-arabia.webp",
+    "https://i.postimg.cc/MKZDD2QK/Abu-Qitmir-Labs.png": "/images/blog-covers/raast-payment-integration-pakistan.webp",
     "https://i.postimg.cc/cHQRwnLJ/Logo-vs-Brand-Identity-Guide.png": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp",
     "/images/blog-covers/lead-generation-content-strategy-google-meta-1576aa01.webp": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
     "/images/blog-covers/rebranding-checklist-pakistan-9252c088.webp": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
@@ -681,6 +682,7 @@ async function main() {
     "mobile-app-development-arabic-rtl": "/images/blog-covers/mobile-app-development-arabic-rtl.webp",
     "social-media-brand-kit": "/images/blog-covers/social-media-brand-kit-a2d5c63e.webp",
     "zatca-erp-integration-saudi-arabia": "/images/blog-covers/zatca-erp-integration-saudi-arabia.webp",
+    "raast-payment-integration-pakistan": "/images/blog-covers/raast-payment-integration-pakistan.webp",
     "brand-identity-vs-logo-design": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp"
   };
 
@@ -864,6 +866,7 @@ export const REMOTE_TO_LOCAL_COVER_MAP: Record<string, string> = ${JSON.stringif
 export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = ${JSON.stringify(slugMap, null, 2)};
 
 export const SLUG_TO_REMOTE_COVER_MAP: Record<string, string> = {
+  "raast-payment-integration-pakistan": "https://i.postimg.cc/MKZDD2QK/Abu-Qitmir-Labs.png",
   "zatca-erp-integration-saudi-arabia": "https://i.postimg.cc/mgJqDkFt/ZATCA-ERP-Integration-Saudi-Arabia-Guide.png",
   "social-media-brand-kit": "https://i.postimg.cc/NGkCBDtZ/social-media-brand-kit.png",
   "mobile-app-development-arabic-rtl": "https://i.postimg.cc/tCL7q4px/Build-Arabic-Apps-for-the-GCC.png",

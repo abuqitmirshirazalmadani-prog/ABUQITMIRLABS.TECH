@@ -230,6 +230,8 @@ const TITLE_OVERRIDES = {
     'ZATCA ERP Integration Saudi Arabia: Practical Guide',
   '/blog/social-media-brand-kit':
     'Social Media Brand Kit: The 5-Step Guide to Consistency',
+  '/blog/raast-payment-integration-pakistan':
+    'Raast Payment Integration for Pakistani Businesses Guide',
 };
 
 function formatConciseTitle(rawTitle, pathname) {
