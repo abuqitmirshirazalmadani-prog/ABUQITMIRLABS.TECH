@@ -13157,15 +13157,15 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     }
   },
   '/blog/raast-payment-integration-pakistan': {
-    title: "Raast Payment Integration for Pakistani Businesses Guide",
+    title: "Raast Payment Integration in Pakistan: Merchant Guide",
     description: "Learn how Pakistani businesses can accept Raast payments. Explore merchant onboarding, QR payments, verification and software integration.",
     canonical: 'https://www.abuqitmirlabs.tech/blog/raast-payment-integration-pakistan',
-    ogTitle: "Raast Payment Integration for Pakistani Businesses Guide",
+    ogTitle: "Raast Payment Integration in Pakistan: Merchant Guide",
     ogDescription: "Learn how Pakistani businesses can accept Raast payments. Explore merchant onboarding, QR payments, verification and software integration.",
     ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/raast-payment-integration-pakistan.webp",
     ogType: 'article',
     twitterCard: 'summary_large_image',
-    twitterTitle: "Raast Payment Integration for Pakistani Businesses Guide",
+    twitterTitle: "Raast Payment Integration in Pakistan: Merchant Guide",
     twitterDescription: "Learn how Pakistani businesses can accept Raast payments. Explore merchant onboarding, QR payments, verification and software integration.",
     twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/raast-payment-integration-pakistan.webp",
     schemaJsonLd: {
@@ -13189,7 +13189,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@type': 'WebPage',
           '@id': 'https://www.abuqitmirlabs.tech/blog/raast-payment-integration-pakistan#webpage',
           url: 'https://www.abuqitmirlabs.tech/blog/raast-payment-integration-pakistan',
-          name: "Raast Payment Integration for Pakistani Businesses Guide",
+          name: "Raast Payment Integration in Pakistan: Merchant Guide",
           description: "Learn how Pakistani businesses can accept Raast payments. Explore merchant onboarding, QR payments, verification and software integration.",
           isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
         },

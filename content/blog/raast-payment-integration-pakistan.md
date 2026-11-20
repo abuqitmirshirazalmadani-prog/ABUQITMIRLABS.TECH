@@ -1,263 +1,252 @@
 ---
 {
-  "title": "Raast Payment Integration for Pakistani Businesses Guide",
-  "seoTitle": "Raast Payment Integration for Pakistani Businesses Guide",
+  "title": "Raast Payment Integration in Pakistan: Merchant Guide",
+  "seoTitle": "Raast Payment Integration in Pakistan: Merchant Guide",
   "slug": "raast-payment-integration-pakistan",
   "canonical": "https://www.abuqitmirlabs.tech/blog/raast-payment-integration-pakistan",
-  "excerpt": "Raast P2M grew from 36M to 55M transactions in one quarter. But accepting payments is easy; matching them to orders is the hard part. Learn the 3 integration options and a 10-step plan to automate your payment flow.",
-  "metaDescription": "Learn how Pakistani businesses can accept Raast payments. Explore merchant onboarding, QR payments, verification and software integration.",
+  "excerpt": "In SBP's Q3 FY26 review, Raast P2M transactions rose from 36.3M to 55.9M in Jan-Mar 2026. Learn how to connect QR, RTP, alias and IBAN confirmations to orders and accounting.",
+  "metaDescription": "Learn how Pakistani businesses can accept Raast P2M payments through QR, RTP, merchant aliases or IBAN, and connect confirmations to orders and accounting.",
   "category": "Development",
   "author": "Abu Qitmir Mohammad Shiraz Al-Madani",
   "publishedAt": "2026-11-20",
   "coverImage": "/images/blog-covers/raast-payment-integration-pakistan.webp",
-  "coverImageAlt": "Raast payment integration for Pakistani businesses merchant guide",
+  "coverImageAlt": "Raast payment integration in Pakistan merchant guide for QR, RTP, alias and IBAN workflows",
   "tags": [
-    "Raast payment integration for business",
+    "Raast payment integration in Pakistan",
     "Raast P2M integration",
     "Raast QR payment integration Pakistan",
     "Pakistan merchant payment system",
-    "Raast API integration",
+    "Raast merchant integration guide",
     "Business digital payment integration Pakistan",
-    "SBP Raast",
+    "SBP Raast P2M",
     "AbuQitmirLabs"
   ]
 }
 ---
 
-## Raast Payment Integration for Pakistani Businesses: A Complete Merchant Guide
+## How Raast P2M Integration Connects Payments to Orders
 
-Raast P2M payments grew from 36.3 million to 55.9 million in a single quarter. Your customers are ready to pay this way. Is your order system ready to notice?
+In SBP's Q3 FY26 payment review, Raast P2M transactions increased from 36.3 million in the previous quarter to 55.9 million in January-March 2026 ([SBP Q3 FY26 Payment Systems Review](https://www.sbp.org.pk/assets/documents/press-release/Pr-25-Jun-2026.pdf)). That growth makes payment confirmation and reconciliation a practical software problem for Pakistani businesses.
 
-Raast payment integration for business means connecting Raast merchant payments to your orders, customer records and accounts. AbuQitmirLabs, a Karachi-based custom software agency founded in 2021, has delivered 410+ projects with 98% client retention. This guide explains how Raast P2M works, what your bank or provider handles, and what your software must do.
+Raast P2M integration means connecting a merchant payment flow to orders, customer records and accounting. Raast is Pakistan's national instant payment system ([SBP Raast overview](https://www.sbp.org.pk/raast)) and its Person-to-Merchant (P2M) service supports acceptance options such as static or dynamic QR codes, Request to Pay Now or Later, merchant aliases and IBAN push payments ([SBP Raast Person to Merchant](https://www.sbp.org.pk/our-subsidiaries/raast/raast-person-to-merchant)). A regulated bank or provider onboards the business and supplies the merchant-facing tools ([SBP Raast P2M launch circular](https://www.sbp.org.pk/circulars/pspod-circular-no-04-of-2023)).
 
-**Direct Answer:** Raast P2M (person-to-merchant) is the State Bank of Pakistan's service that lets customers pay businesses from their bank or wallet app. Payments use QR codes, Request to Pay, a merchant alias or an IBAN. A participating bank or provider onboards your business. Your software then matches each confirmed payment to an order.
+The software should match only confirmed provider payments to orders. It should also store transaction references, handle pending or rejected states, support refund decisions and reconcile provider records with the accounting system. AbuQitmirLabs is a Karachi-based custom software studio. This guide explains how Raast P2M works, what the provider handles and what the connected software must do.
+
+**Direct Answer:** Raast P2M (person-to-merchant) is the State Bank of Pakistan's merchant payment framework that lets customers pay businesses from their bank or wallet app. Raast P2M supports several acceptance options, including static and dynamic QR codes, Request to Pay Now and Later, merchant aliases or till codes, and IBAN push payments. The options available to your business depend on the regulated provider's implementation. A business normally integrates with the merchant-facing capabilities supplied by its regulated provider; it should not assume that every provider exposes the same API, webhook or refund interface.
 
 ## Quick Takeaways
 
-- Raast P2M is a merchant payment service run under SBP rules. Your business is onboarded by a bank or provider, not by SBP directly.
-- Five acceptance modes exist: static QR, dynamic QR, Request to Pay (now or later), merchant alias and IBAN.
-- A static QR is simple but hard to match to orders. A dynamic QR can carry the amount for each customer.
-- Use your provider's payment confirmation to mark orders as paid. Do not rely on a customer's screenshot.
-- Plan refunds, transaction records and reconciliation before you go live.
+- **National scheme vs. provider interface:** Raast is the national instant payment infrastructure, while a regulated bank, EMI, PSO or PSP provides merchant onboarding and the technical interface ([SBP Raast P2M 2024 clarification](https://www.sbp.org.pk/circulars/pspod-circular-letter-no-01-of-2024)).
+- **Multiple acceptance options:** Raast P2M supports static and dynamic QR codes, Request to Pay (RTP) Now and Later, merchant aliases or till codes, and IBAN push payments ([SBP Raast P2M launch circular](https://www.sbp.org.pk/circulars/pspod-circular-no-04-of-2023)).
+- **Order matching:** Static QR is simple for counter payments but carries no order reference. Dynamic QR or Request to Pay ties a specific amount and order reference to each transaction.
+- **Provider confirmation vs. initiation:** Mark an order as paid only after provider-side confirmation, never from customer-side initiation or a payment screenshot.
+- **Historical subsidy context:** SBP's 2025 circular described a time-limited subsidy for eligible Raast P2M QR transactions from 1 September 2025 through 30 June 2026 ([SBP Raast P2M QR subsidy circular](https://www.sbp.org.pk/circulars/pspod-circular-no-03-of-2025)). That period has ended; confirm current merchant fees directly with your provider.
 
-## Why Pakistani Businesses Are Moving to Raast QR
+## Why Pakistani Businesses Are Moving to Raast P2M
 
-**Direct Answer:** SBP launched Raast P2M with a circular dated 5 December 2023. It required banks, microfinance banks, electronic money institutions and payment providers to enable merchant payments. SBP's Q3 FY26 review shows Raast P2M transactions rose from 36.3 million to 55.9 million between the previous quarter and January to March 2026.
+SBP launched the Raast P2M service with its circular dated 5 December 2023 ([SBP P2M launch circular](https://www.sbp.org.pk/circulars/pspod-circular-no-04-of-2023)), requiring regulated banks, microfinance banks, electronic money institutions (EMIs) and payment system operators/providers (PSOs/PSPs) to enable merchant payment acceptance. In 2024, SBP issued a follow-up circular letter clarifying provider enablement timelines and allowing institutions either to integrate directly or partner with a regulated EMI, PSO or PSP ([SBP Raast P2M 2024 clarification](https://www.sbp.org.pk/circulars/pspod-circular-letter-no-01-of-2024)).
 
-The growth has a clear cause. Customers already hold banking or wallet apps, and a QR code on the counter or on a parcel gives them an easy way to pay. A government subsidy for QR-based P2M transactions also ran from 1 September 2025 to 30 June 2026.
+SBP's Q3 FY26 Payment Systems Review reported that Raast P2M transactions increased from 36.3 million in the previous quarter to 55.9 million in January-March 2026 ([SBP Q3 FY26 Payment Systems Review](https://www.sbp.org.pk/assets/documents/press-release/Pr-25-Jun-2026.pdf)). Customers already hold banking and mobile wallet apps, making QR and payment requests natural checkout options across retail counters, delivery fleets and online stores.
 
-For many small businesses, the new problem is operational. If staff confirm payments by checking a banking app or asking customers for proof, the process is slow and hard to match with orders. Accounts teams then spend hours at month end working out which payment belongs to which sale.
+For growing businesses, the operational bottleneck is no longer collecting a payment - it is verifying and reconciling it. When staff verify payments manually by checking a mobile app or reviewing customer screenshots on WhatsApp, orders stall and month-end reconciliation becomes error-prone. Connecting your order management or ERP software to your provider's confirmation data closes that gap.
 
-Raast integration solves this by connecting payment confirmations to your order and accounting records.
+## How Raast P2M Works: Scheme Infrastructure vs. Provider Interface
 
-## How Raast P2M Works for a Merchant
+To plan a reliable integration, separate the national scheme from your provider's technical interface:
 
-**Direct Answer:** A Raast P2M merchant is onboarded by a Raast Merchant Service Provider, which is a bank or other regulated provider. After due diligence, the provider gives the business a QR code and other ways to be paid. The customer pays from their own app, and the provider confirms the payment to the merchant.
+1. **Raast infrastructure:** Operated under the State Bank of Pakistan ([SBP Raast overview](https://www.sbp.org.pk/raast)), Raast routes instant interbank and wallet transactions across participating institutions.
+2. **Raast Merchant Service Provider (RMSP):** A regulated bank, MFB, EMI, PSO or PSP onboards the merchant after due diligence and provides the merchant-facing tools ([SBP P2M launch circular](https://www.sbp.org.pk/circulars/pspod-circular-no-04-of-2023)).
+3. **Merchant software boundary:** Your e-commerce store, POS or ERP integrates with the APIs, webhooks, checkout links, dashboards or statement exports that your chosen regulated provider supplies. Different providers expose different technical capabilities.
 
-SBP's circular lists the payment modes that providers must support. Here is how each one works in practice:
+SBP's 2023 P2M circular lists QR codes (static and dynamic), Request to Pay (RTP Now and RTP Later), Raast Alias (including till codes) and IBAN as acceptance routes, and describes the responsibilities of Raast Merchant Service Providers ([SBP P2M launch circular](https://www.sbp.org.pk/circulars/pspod-circular-no-04-of-2023)):
 
-| Mode | How it works | Best for |
+| Acceptance Option | How It Works | Best For |
 |---|---|---|
-| Static QR | One QR code is printed and displayed. The customer scans it, enters the amount and pays. | A shop counter or a small stall |
-| Dynamic QR | The QR code includes the amount and is generated for each customer. | Online orders, delivery and invoices |
-| Request to Pay (now or later) | The merchant sends a payment request to the customer. | Invoices and repeat customers |
-| Merchant alias | The business gets a readable alias, and can add separate till codes for each checkout. | Shops with several tills |
-| IBAN push payment | The customer sends money to the merchant's IBAN. | Larger or planned payments |
+| Static QR | One fixed merchant QR code is displayed. The customer scans it, enters the amount and pays. | Physical shop counters with low transaction volume |
+| Dynamic QR | A transaction-specific QR code is generated with the exact order amount and reference. | Online checkout, delivery parcels and itemized invoices |
+| Request to Pay (RTP Now) | The merchant system triggers an immediate payment prompt to the customer's app. | Real-time e-commerce checkout and counter billing |
+| Request to Pay (RTP Later) | The merchant sends a payment request with an expiry window for later payment. | B2B invoices, bookings and scheduled bill collection |
+| Merchant Alias / Till Code | The business uses a readable alias or branch/counter till code for payment routing. | Multi-counter retail stores and branch operations |
+| IBAN Push Payment | The customer initiates a transfer to the merchant's designated IBAN. | High-value B2B orders and planned invoice settlements |
 
-The SBP circular also sets duties for providers. They must give merchants payment confirmation or rejection quickly after Raast advises them. They must let merchants accept or reject refund requests through the provider's merchant interface. Funds must reach merchant accounts in real time or on the timelines agreed with the merchant.
+Under the SBP framework, providers must communicate payment confirmation or rejection promptly to the merchant, provide a merchant interface to accept or reject customer refund/return requests, and credit merchant accounts in real time or according to the settlement timeline agreed with the merchant ([SBP P2M launch circular](https://www.sbp.org.pk/circulars/pspod-circular-no-04-of-2023)).
 
-## Why Raast Integration Breaks Down
+## Why Raast Integrations Break Down in Operation
 
-**Direct Answer:** Raast integrations break down when a business uses a static QR for online orders, relies on screenshots instead of provider confirmation, or ignores refunds and reconciliation. In the SBP framework your provider onboards you, so your software can only connect to the features that provider offers. Check those features before you build.
+Integrations usually fail at the boundary between banking confirmation and internal order states:
 
-Five root causes appear often:
+1. **Missing order references:** Using a static QR code for online orders leaves no automated link between the incoming transfer and the shopping cart.
+2. **Confusing initiation with confirmation:** Treating a customer screenshot or payment-request creation as proof of payment leads to uncollected orders.
+3. **Assuming uniform provider APIs:** Assuming every bank or PSP offers the exact same webhook payload, dynamic QR generator or statement format causes rework during development.
+4. **Incomplete refund governance:** Relying solely on a provider portal without an internal approval rule, order-status update and audit record creates accounting discrepancies.
+5. **Unstructured transaction logs:** Failing to store provider transaction IDs, timestamps and status transitions makes daily reconciliation slow.
 
-1. **No order reference.** A static QR carries no order number, so staff must match payments by hand.
-2. **Manual confirmation.** Staff check an app or a screenshot, and orders wait for a person to act.
-3. **Provider differences.** Banks and providers offer different dashboards, statements and technical options.
-4. **Refund gaps.** The SBP framework lets customers request returns, but the business needs a process to review them.
-5. **Weak records.** Without transaction IDs, timestamps and order links, reconciliation takes far longer than it should.
+## Three Ways to Accept Raast Payments in Business Software
 
-A common misconception is that Raast works like a card gateway. In P2M, the merchant is onboarded by a provider and paid through Raast, with no card terminal involved. Another misconception is that one standard integration fits every business. It does not, so ask your provider what technical options it supports.
+The right architecture depends on your daily order volume, sales channels and the technical interface your regulated provider supports.
 
-## Three Ways to Accept Raast Payments in Your Business Software
+### Option 1: Static QR with manual verification
 
-**Direct Answer:** Businesses commonly accept Raast in three ways. They can show a static QR and match payments by hand, use a payment link or checkout from their provider, or build a custom integration with the provider's merchant interface. The right choice depends on order volume, how many sales channels you run and what your provider supports.
+The business displays a single printed QR code and staff check the provider's merchant app or statement before releasing the order.
 
-### Option 1: Static QR with manual matching
+- **Pros:** Zero software development required; immediate launch once onboarded.
+- **Cons:** No automated order reference; slow checkout; high risk of human matching errors.
+- **Best for:** Single-counter shops and low daily order volumes.
 
-**Direct Answer:** A static QR setup means the business displays one fixed QR code and checks incoming payments manually in its provider's app or statement. It needs no software work and starts quickly. It becomes hard to manage as order volume grows, because payments carry no order reference.
+### Option 2: Provider hosted checkout or payment link
 
-- **Pros:** Quick to start and simple to explain to customers.
-- **Cons:** Manual matching, slow confirmation and a higher chance of mistakes.
-- **Best for:** Small counters and low daily volume.
+The business uses hosted payment pages, payment links or standard plugins supplied directly by its bank, EMI or PSP.
 
-### Option 2: Provider checkout or payment link
+- **Pros:** Low engineering effort; the provider manages QR rendering and RTP prompts.
+- **Cons:** Checkout UX and reporting fields are limited to the provider's standard template.
+- **Best for:** Standard online stores and service businesses seeking a fast rollout.
 
-**Direct Answer:** A provider checkout or payment link uses tools supplied by your bank or payment provider. The provider creates the payment request, takes the payment and reports the result. This option reduces build effort. It also limits you to the features and reports the provider chooses to offer.
+### Option 3: Custom software integration with provider interfaces
 
-- **Pros:** Less engineering. The provider handles the payment screen.
-- **Cons:** Limited control over the customer journey and reporting.
-- **Best for:** Online stores and service businesses that want a quick start.
+Your order system, POS or ERP integrates directly with the APIs, callbacks and statement exports supported by your regulated provider.
 
-### Option 3: Custom integration
+- **Pros:** Automated order-to-payment matching, structured state tracking, unified refund logs and scheduled accounting reconciliation.
+- **Cons:** Requires software engineering, sandbox/pilot testing and ongoing maintenance if the provider updates its interface.
+- **Best for:** Multi-channel retailers, marketplaces, distribution networks and fintech platforms.
 
-**Direct Answer:** A custom Raast integration connects your order system, ERP or app to the merchant interface your provider offers. It can create a payment request or dynamic QR for each order, read confirmations, update order status and store transaction records. It gives the most control, but it depends on what your provider supports.
+### Architecture comparison
 
-- **Pros:** Automatic order matching, clean records and one workflow for all channels.
-- **Cons:** Needs engineering time, provider cooperation and ongoing maintenance.
-- **Best for:** Marketplaces, multi-branch retailers and fintech products.
+| Feature | Static QR | Provider Checkout or Link | Custom Integration |
+|---|---|---|---|
+| Engineering effort | None | Low | Moderate to high |
+| Order reference matching | Manual by staff | Managed via provider checkout | Automated in your order/ERP system |
+| Refund workflow | Manual portal action | Provider dashboard tools | Linked to internal order and audit logs |
+| Checkout UX control | Fixed printed QR | Provider template | Full control within provider rules |
+| Best suited for | Small physical counters | Standard web stores | High-volume or multi-channel operations |
 
-### Comparison table
+## Payment States, Confirmation Boundaries and Refund Controls
 
-| Feature | Static QR | Provider checkout or link | Custom integration | AbuQitmirLabs approach |
-|---|---|---|---|---|
-| Setup effort | Lowest | Low | Highest | Starts with a payment-flow review |
-| Order matching | Manual | Provider reports | Automatic | Matches the option to your order volume |
-| Refund handling | Manual | Provider tools | Built into your workflow | Refund and exception rules defined up front |
-| Control over experience | None | Limited | Full | Builds only what your provider supports |
-| Best for | Small counters | Quick online start | Growing or multi-channel businesses | Recommends one option after review |
+When designing a custom integration, your software should separate four distinct operational events:
 
-## How AbuQitmirLabs Approaches Raast Integration
+1. **Customer-side payment initiation:** The customer scans a QR code or receives an RTP prompt. The order is not paid yet.
+2. **Provider-side confirmation or rejection:** The regulated provider notifies your system (or dashboard) that the Raast transaction succeeded or failed.
+3. **Merchant account credit / settlement timing:** Funds are credited in real time or according to the settlement schedule agreed with your provider ([SBP P2M launch circular](https://www.sbp.org.pk/circulars/pspod-circular-no-04-of-2023)).
+4. **Internal order fulfilment:** Your warehouse or service team releases the order only after verified provider confirmation.
 
-**Direct Answer:** AbuQitmirLabs starts with a review of your payment flow, order system and accounting process. We help you choose between manual QR, a provider checkout and a custom integration. For custom builds, we design order matching, refund handling, transaction records and reconciliation around what your bank or provider supports.
+Use a clear internal state machine for every order payment record:
 
-Our offer covers custom payment integration and merchant software. This article describes our method. It does not describe a client result.
+```
+created -> pending -> confirmed / rejected -> reconciled / refunded
+```
 
-A payment-flow review looks at:
+### Handling refunds and returns safely
 
-- How customers pay today and where staff confirm payments by hand
-- Which provider you use or plan to use, and which technical options it offers
-- How orders, invoices and accounting records connect
-- How refunds and failed or pending payments are handled
-- Who reconciles payments, and how often
-
-Our [custom software development services](/custom-software) cover order systems, ERP and payment workflows. Our [fintech solutions](/solutions/fintech) and [e-commerce solutions](/solutions/e-commerce) cover merchant platforms and online stores. See our [Pakistan market page](/pakistan-market) for the work we do for Pakistani businesses.
+Under SBP's P2M circular, providers must enable merchants to accept or reject refund/return requests through the provider's merchant interface ([SBP P2M launch circular](https://www.sbp.org.pk/circulars/pspod-circular-no-04-of-2023)). However, the provider may expose a refund or return request workflow while leaving internal governance to you. The business still needs its own approval rule, customer policy, audit record and link to the original order. Do not present provider tooling as a complete refund policy.
 
 ## Raast Payment Integration: Ten Implementation Steps
 
-**Direct Answer:** Raast payment integration follows ten steps: learn how P2M works, list your payment needs, choose a participating bank or provider, complete onboarding, pick acceptance modes, configure payment flows, link confirmations to orders, store transaction records, handle refunds and reconcile with accounting. Work through them in order and test each flow with small payments.
+Work through these steps in sequence when connecting Raast P2M to your business software:
 
-1. **Understand Raast P2M.** Learn the five acceptance modes and the roles of the customer, the provider and Raast. Read the SBP circular of 5 December 2023.
-2. **Identify merchant payment requirements.** List your sales channels, average order values, refund volume and reporting needs.
-3. **Contact a participating bank or payment provider.** Ask which Raast modes they support, what technical options they offer and what documents they need.
-4. **Complete merchant onboarding.** Submit the required business documents. The provider carries out due diligence before it activates your account.
-5. **Select an acceptance method.** Choose static QR, dynamic QR, Request to Pay, merchant alias or a mix, based on your channels.
-6. **Configure supported QR or payment request flows.** Set up the flows your provider offers. Test each one with small payments before launch.
-7. **Connect payment confirmation to business orders.** Mark an order as paid only after the provider confirms the payment. Store the provider's transaction reference with the order.
-8. **Implement transaction records.** Save the amount, time, reference, status and order link for every payment, including failed and pending ones.
-9. **Handle refunds and exceptions.** Create a clear process for refund requests, duplicate payments and mismatched amounts.
-10. **Reconcile payments with accounting.** Compare provider statements with order and accounting records on a fixed schedule.
+1. **Review the SBP P2M regulatory framework.** Understand the acceptance options (static/dynamic QR, RTP Now/Later, merchant alias/till code, IBAN) and the role of your regulated provider ([SBP P2M launch circular](https://www.sbp.org.pk/circulars/pspod-circular-no-04-of-2023); [SBP 2024 clarification](https://www.sbp.org.pk/circulars/pspod-circular-letter-no-01-of-2024)).
+2. **Document your merchant payment requirements.** List every sales channel, daily transaction volume, average ticket size, refund rules and accounting software.
+3. **Evaluate regulated banks, EMIs, PSOs or PSPs.** Request written documentation of which Raast P2M acceptance options, APIs, webhooks, dashboards and settlement timelines each provider supports.
+4. **Complete merchant onboarding and due diligence.** Submit the required corporate or business documentation to your chosen provider.
+5. **Select acceptance options per channel.** Match dynamic QR or RTP Now to online checkouts, RTP Later to invoiced orders, and static QR or till aliases to physical counters.
+6. **Define unique order references and data mapping.** Ensure every payment request or dynamic QR maps deterministically to an internal order ID.
+7. **Enforce provider-confirmed state transitions.** Transition orders from `pending` to `confirmed` only upon verified provider confirmation, and store the provider's transaction reference and timestamp.
+8. **Design internal refund and exception workflows.** Link provider refund/return decisions to inventory returns, credit notes and customer notifications.
+9. **Execute a five-stage testing and pilot sequence:**
+   - Test field mapping and validation with fixtures.
+   - Use the provider's test or sandbox environment where available.
+   - Confirm credentials, callbacks and response handling.
+   - Run a controlled production pilot only after provider approval and internal reconciliation controls are ready.
+   - Reconcile the pilot transactions and document the result.
+10. **Automate daily accounting reconciliation.** Compare provider settlement statements against confirmed orders and flag exceptions for finance review.
 
-## How One Order Moves Through a Raast Workflow
+## How One Order Moves Through an Illustrative Raast Workflow
 
-**Direct Answer:** In a typical Raast order workflow, the system creates an order reference, requests a payment or dynamic QR from the provider, waits for the customer to pay, receives the provider's confirmation, marks the order as paid and stores the transaction reference. Finance then reconciles the provider statement against paid orders.
+This is an illustrative workflow showing a common software pattern for an online store. It is not a client case study, and exact API calls depend on your regulated provider:
 
-This is an illustrative workflow, not a client case. It shows a common design pattern for an online store. Available features depend on your provider.
+1. **Order creation (`created`):** The customer places an order and your system generates a unique internal order reference.
+2. **Payment request (`pending`):** Your backend requests a dynamic QR code or Request to Pay prompt from your provider's interface for that exact order amount and reference.
+3. **Customer authorization:** The customer authorizes the payment inside their banking or wallet app.
+4. **Provider notification (`confirmed` or `rejected`):** The provider validates the payment outcome and sends a confirmation or rejection to your system.
+5. **Fulfilment trigger:** Upon `confirmed` status, your system records the provider transaction ID, updates the order to paid and releases it for fulfilment.
+6. **Reconciliation (`reconciled`):** At day end, finance reconciles confirmed order records against the provider's settlement statement. If a return is approved later, the record transitions to `refunded` with a linked audit entry.
 
-1. The customer places an order and the system creates a unique order reference.
-2. The system asks the provider for a payment request or dynamic QR linked to that order.
-3. The customer pays from their own banking or wallet app.
-4. The provider confirms the payment, and the system receives the confirmation.
-5. The system marks the order as paid and stores the transaction reference.
-6. If the customer asks for a refund, staff review the request in the provider's merchant interface.
-7. At the end of the day, finance compares the provider statement with paid orders.
+## Cost Factors and Historical Subsidy Context
 
-## Cost Factors for Raast Integration
+Raast P2M integration costs fall into two categories: provider commercial terms and software engineering.
 
-**Direct Answer:** Raast integration cost has two parts: provider fees and software work. SBP's circular lets providers charge merchants a reasonable fee and encourages them to waive it at first. A subsidy for QR transactions ran until 30 June 2026. Ask your provider for its current fee schedule in writing.
+- **Provider fees and past subsidy:** SBP's 2023 circular permitted providers to charge merchants a reasonable fee while encouraging fee waivers initially ([SBP P2M launch circular](https://www.sbp.org.pk/circulars/pspod-circular-no-04-of-2023)). SBP's 2025 circular described a time-limited subsidy for eligible Raast P2M QR transactions processed from 1 September 2025 through 30 June 2026, under which regulated entities were allocated subsidy funds and could charge up to 0.25% for onboarding and servicing merchants under that circular ([SBP Raast P2M QR subsidy circular](https://www.sbp.org.pk/circulars/pspod-circular-no-03-of-2025)). That period has ended; current fees and merchant charges must be confirmed with the provider in writing.
+- **Software engineering and maintenance:** A static QR requires no software build. Connecting dynamic QR, RTP, callback verification and ERP reconciliation depends on the number of channels, your existing order system and the quality of your provider's documentation. Budget for testing, staff training and ongoing maintenance.
 
-Software cost depends on how many sales channels you run, which Raast modes you use, how your order system works and how much reporting you need. A static QR needs almost no software. A custom integration needs design, development, testing and maintenance.
+## How AbuQitmirLabs Approaches Merchant Payment Integration
 
-Plan for hidden costs such as staff training, refund handling time, reconciliation effort and updates when your provider changes its tools.
+AbuQitmirLabs is a software engineering studio, not a bank or regulated Raast Merchant Service Provider. When Pakistani businesses ask us to connect Raast P2M to their operations, we start by reviewing the technical capabilities their chosen bank, EMI or PSP provides.
+
+Our engineering scope covers:
+
+- Reviewing your current order lifecycle, provider documentation and reconciliation gaps
+- Integrating with provider-supported APIs, dynamic QR generators, payment links or webhook callbacks
+- Building order state machines (`created -> pending -> confirmed/rejected -> reconciled/refunded`) and exception queues
+- Connecting confirmed transaction logs to your ERP, inventory and accounting workflows
+
+Explore our [custom software development services](/custom-software), [fintech software solutions](/solutions/fintech), [e-commerce platforms](/solutions/e-commerce), [AI agent development](/ai-agent-development) and our [Pakistan market engineering page](/pakistan-market).
 
 ## Common Mistakes in Raast Integration
 
-**Direct Answer:** The most common Raast integration mistakes are using a static QR for online orders, trusting screenshots, ignoring refunds, skipping transaction records, assuming every provider offers the same features and never reconciling. Each one causes delays or lost payments, and each has a simple fix, listed below.
-
 ### Mistake 1: Using a static QR for online orders
 
-The payment carries no order reference. *How to avoid it:* Use a dynamic QR or payment request tied to each order.
+Static QR payments do not embed an order reference, forcing staff to match transfers manually. *Fix:* Use dynamic QR or Request to Pay tied to a unique order ID where your provider supports it.
 
 ### Mistake 2: Trusting a screenshot as proof of payment
 
-A screenshot is not a provider confirmation. *How to avoid it:* Mark orders paid only after your provider confirms the payment.
+Customer screenshots can be delayed, duplicated or altered. *Fix:* Fulfil orders only after receiving verified confirmation from your regulated provider.
 
-### Mistake 3: Ignoring refunds
+### Mistake 3: Treating provider refund tools as a complete refund policy
 
-Customers can request returns, and the business must respond. *How to avoid it:* Write a refund process and train staff to use the provider's merchant interface.
+A button in a merchant portal does not update your inventory or accounting ledger. *Fix:* Pair the provider's refund interface with an internal approval rule, credit note and order link.
 
-### Mistake 4: Skipping transaction records
+### Mistake 4: Skipping structured transaction records
 
-Without references and timestamps, reconciliation is slow. *How to avoid it:* Store every payment, including failed and pending ones, with its order link.
+Storing only an "order paid" boolean makes month-end reconciliation painful. *Fix:* Log the provider transaction ID, amount, timestamp, status history and order reference for every attempt, including failed and pending ones.
 
-### Mistake 5: Assuming every provider offers the same features
+### Mistake 5: Assuming every provider exposes the same features
 
-Providers differ in dashboards, statements and technical options. *How to avoid it:* Ask for a written list of supported features before you design the integration.
+Banks, EMIs and PSPs differ in API maturity, callback speed and statement formats. *Fix:* Obtain written technical specifications from your provider before committing to a software architecture.
 
-### Mistake 6: Never reconciling
+### Mistake 6: Testing directly in production without a staged test sequence
 
-Small gaps grow into large ones. *How to avoid it:* Compare provider statements with your records on a fixed schedule.
-
-## Raast Merchant Integration Readiness Checklist
-
-Copy this list into a PDF or spreadsheet for your team.
-
-- List every sales channel (shop, online store, delivery, marketplace)
-- Choose a bank or provider and request its list of supported Raast modes
-- Prepare the business documents your provider needs for onboarding
-- Decide which modes you will use (static QR, dynamic QR, Request to Pay, alias, IBAN)
-- Define how each order gets a unique reference
-- Define when an order counts as paid (provider confirmation only)
-- Write a refund and exception process
-- Define the transaction fields you will store
-- Test small live payments for every flow
-- Set a reconciliation schedule and owner
-- Train staff on confirmation, refunds and failed payments
-
-
-For teams scaling production architecture, explore our [AI agent development](/ai-agent-development) with AbuQitmirLabs.
+Running ad-hoc live transfers before validating field mappings and reconciliation controls creates messy ledger entries. *Fix:* Follow a structured sequence: fixture tests, provider sandbox testing, callback verification, a controlled pilot and pilot reconciliation.
 
 ## Frequently Asked Questions
 
 ### What is Raast P2M?
-Raast P2M means Raast person-to-merchant. It is the State Bank of Pakistan's merchant payment service. Customers pay businesses from their bank or wallet app using static or dynamic QR codes, Request to Pay, a merchant alias or an IBAN. A participating bank or provider onboards the business and confirms payments.
+Raast P2M (Person-to-Merchant) is the State Bank of Pakistan's merchant payment service under Pakistan's national instant payment system ([SBP Raast overview](https://www.sbp.org.pk/raast); [SBP P2M launch circular](https://www.sbp.org.pk/circulars/pspod-circular-no-04-of-2023)). It allows customers to pay businesses from banking or wallet apps using static or dynamic QR codes, Request to Pay Now or Later, merchant aliases or till codes, and IBAN push payments.
 
-### How does Raast P2M work for merchants?
-A bank or provider onboards your business after due diligence and gives you a QR code and other payment options. The customer pays from their own app. The provider confirms the payment to you and credits your account in real time or on the timeline you agreed with the provider.
+### Do businesses integrate directly with SBP Raast or with a provider?
+Merchants are onboarded by a regulated Raast Merchant Service Provider - such as a bank, microfinance bank, EMI, PSO or PSP ([SBP P2M launch circular](https://www.sbp.org.pk/circulars/pspod-circular-no-04-of-2023); [SBP 2024 clarification](https://www.sbp.org.pk/circulars/pspod-circular-letter-no-01-of-2024)). Your business software integrates with the merchant-facing tools, APIs or checkout links that your regulated provider supplies.
 
 ### Can Raast payments connect to an online store or ERP?
-Often yes, but it depends on your provider. Your software connects to the merchant interface and technical options that your bank or provider supplies. Ask which features they support, such as dynamic QR, payment requests, confirmations and statements, before you plan a custom integration.
+Yes, provided your bank, EMI or PSP exposes the required technical interfaces (such as dynamic QR generation, Request to Pay, webhooks or structured settlement statements). Always verify your provider's technical documentation before scoping a custom ERP or e-commerce integration.
 
-### Does Raast cost merchants anything?
-SBP's circular lets providers charge merchants a reasonable fee and encourages them to waive it at first. A government subsidy for QR-based transactions ran from 1 September 2025 to 30 June 2026. Fees and terms differ by provider, so ask for your current fee schedule in writing.
+### Is the SBP Raast QR subsidy still active?
+No. SBP's 2025 circular established a time-limited subsidy for eligible Raast P2M QR transactions from 1 September 2025 through 30 June 2026 ([SBP Raast P2M QR subsidy circular](https://www.sbp.org.pk/circulars/pspod-circular-no-03-of-2025)). That period has ended. Ask your regulated provider for its current merchant fee schedule in writing.
 
 ### How do refunds work with Raast P2M?
-Under SBP's framework, customers can request a refund or return through their app. Providers must let merchants accept or reject these requests through the provider's merchant interface. Your business needs a clear process, a record of each decision and a way to match refunds to the original orders.
+SBP's P2M circular requires providers to let merchants accept or reject customer refund/return requests through the provider's merchant interface ([SBP P2M launch circular](https://www.sbp.org.pk/circulars/pspod-circular-no-04-of-2023)). Your business should pair that interface with an internal approval policy, audit record and link to the original order.
 
 ### What is the difference between Raast P2P and P2M?
-P2P moves money between individuals. P2M moves money from a customer to a business that has been onboarded as a merchant. P2M adds merchant tools such as QR codes, payment requests, confirmations and refund handling. Businesses that collect customer payments should ask their provider about merchant onboarding for P2M.
-
-### Who needs Raast payment integration?
-Any business that wants to accept digital payments and match them to orders needs a plan for Raast. This includes retailers, online stores, marketplaces, service companies and fintech products. A small counter can start with a static QR. Growing businesses should connect payments to their order and accounting systems.
-
-### How long does a Raast integration take?
-The timeline depends on provider onboarding, the Raast modes you choose and how your order system works. A static QR can start once the provider activates your account. A custom integration needs design, development and testing. Ask your provider for onboarding timelines before you set a launch date.
+Raast P2P transfers funds between individuals. Raast P2M is built for onboarded merchants and supports merchant QR codes, Request to Pay Now and Later, merchant aliases or till codes, provider payment confirmations and structured refund/return handling.
 
 ## Conclusion
 
-Many Pakistani businesses can accept Raast payments, yet still confirm them by hand and reconcile them late. The best approach is to choose the right acceptance mode, rely on provider confirmation and connect payments to orders and accounting.
+Accepting a Raast transfer is straightforward; matching every confirmation, exception and refund to the right order and accounting entry is the real engineering work. Choose the acceptance option that fits each sales channel, rely strictly on provider confirmation rather than screenshots, and verify your regulated provider's technical capabilities before building.
 
-This guide is best for Pakistani SMEs, online stores, retailers, marketplaces and fintech teams. It is general information, not legal or financial advice. Confirm onboarding terms, fees and technical options with your bank or payment provider.
+This guide provides technical software planning information, not legal, regulatory or financial advice. Confirm merchant onboarding terms, fee schedules and supported interfaces directly with your bank or payment provider.
 
-If you want to connect Raast payments to your orders and accounts, our team at AbuQitmirLabs is ready to help. [Request a Raast Integration Consultation](/contact) and we will review your payment flow.
-
-If you also sell in Saudi Arabia or the UAE, see our [Saudi Arabia market page](/saudi-arabia-market) and [UAE market page](/uae-market). You can also read more guides on the [AbuQitmirLabs blog](/blog). Our [Pakistan market page](/pakistan-market) lists our services for Pakistani businesses.
+[Request a Raast integration assessment](/contact). Tell us your provider, sales channels, current order system and whether you need QR, RTP, payment confirmation or reconciliation.
 
 ### Related implementation guides
 
-- [ZATCA ERP integration in Saudi Arabia: A practical guide](/blog/zatca-erp-integration-saudi-arabia) - a step-by-step workflow for connecting ERP and invoicing systems in Saudi Arabia.
-- [Custom software development in Qatar](/blog/custom-software-development-qatar) - a practical guide to scoping and building custom business software in the GCC.
-- [Digital transformation in Kuwait](/blog/kuwait-digital-transformation) - a regional comparison guide for teams modernizing operations across Gulf markets.
-- [Pakistan offshore development for GCC companies](/blog/pakistan-offshore-development-gcc) - how engineering teams in Pakistan deliver production software and payment integrations.
-
+- [Fintech Software Development: Compliance-First Architecture](/blog/fintech-software-development-compliance-first-architecture) - how to design audit-ready transaction ledgers, access controls and compliance boundaries.
+- [Custom Software for Fintech in 2026: Financial Technology Development Guide](/blog/custom-software-for-fintech-2026-financial-technology-development-guide) - architectural patterns for payment workflows, reconciliation and financial data integrity.
+- [Custom Software Development Company in Karachi, Pakistan](/blog/custom-software-development-company-karachi-pakistan) - how our Karachi engineering studio scopes and delivers production business software.
+- [Custom Retail & Logistics Software Development Guide](/blog/custom-retail-logistics-software-development-2026-enterprise) - connecting multi-branch POS, inventory, delivery and payment confirmation workflows.
+- [ZATCA ERP Integration in Saudi Arabia: A Practical Guide](/blog/zatca-erp-integration-saudi-arabia) - a regional comparison of structured ERP transaction mapping, validation and reconciliation.

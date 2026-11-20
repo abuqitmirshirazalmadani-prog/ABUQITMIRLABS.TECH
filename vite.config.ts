@@ -385,7 +385,7 @@ export default defineConfig(({ mode }) => {
             '/blog/mobile-app-development-arabic-rtl': 'Mobile App Development for GCC Markets: Arabic RTL Guide',
             '/blog/zatca-erp-integration-saudi-arabia': 'ZATCA ERP Integration Saudi Arabia: Practical Guide',
             '/blog/social-media-brand-kit': 'Social Media Brand Kit: The 5-Step Guide to Consistency',
-            '/blog/raast-payment-integration-pakistan': 'Raast Payment Integration for Pakistani Businesses Guide',
+            '/blog/raast-payment-integration-pakistan': 'Raast Payment Integration in Pakistan: Merchant Guide',
           };
           const formatSafeBlogTitle = (url: string, rawTitle: string, seoTitle?: string): string => {
             if (BLOG_TITLE_OVERRIDES[url]) return BLOG_TITLE_OVERRIDES[url];
@@ -848,11 +848,31 @@ export default defineConfig(({ mode }) => {
             const strippedDesc = clampMetaDescription(route.description || '', 158);
             const safeDesc = strippedDesc.replace(/"/g, '&quot;').replace(/&/g, '&amp;');
             
+            const fullRouteCanonical = `${hostname}${route.url === '/' ? '/' : route.url}`;
+            routeHtml = routeHtml.replace(/<link\b[^>]*rel=["']llms["'][^>]*\/?>/gi, '');
+            const MARKET_HREFLANG_ROUTES = new Set([
+              '/',
+              '/us-market',
+              '/uk-market',
+              '/canada-market',
+              '/australia-market',
+              '/pakistan-market',
+              '/saudi-arabia-market',
+              '/uae-market',
+              '/qatar-market',
+              '/kuwait-market',
+              '/poland-market',
+            ]);
+            if (!MARKET_HREFLANG_ROUTES.has(route.url)) {
+              routeHtml = routeHtml
+                .replace(/<link\b[^>]*rel=["']alternate["'][^>]*hreflang=["'][^"']+["'][^>]*\/?>\s*/gi, '')
+                .replace('</head>', `  <link rel="alternate" hreflang="en" href="${fullRouteCanonical}" />\n  <link rel="alternate" hreflang="x-default" href="${fullRouteCanonical}" />\n</head>`);
+            }
             routeHtml = routeHtml.replace(/<title\b[^>]*>[^<]*<\/title>/gi, '').replace('</head>', `  <title>${safeTitle}</title>\n</head>`);
             routeHtml = routeHtml.replace(/<meta\b[^>]*property="og:title"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*name="twitter:title"[^>]*\/?>/gi, '').replace('</head>', `  <meta property="og:title" content="${safeTitle}" />\n  <meta name="twitter:title" content="${safeTitle}" />\n</head>`);
             routeHtml = routeHtml.replace(/<meta\b[^>]*name="description"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*property="og:description"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*name="twitter:description"[^>]*\/?>/gi, '').replace('</head>', `  <meta name="description" content="${safeDesc}" />\n  <meta property="og:description" content="${safeDesc}" />\n  <meta name="twitter:description" content="${safeDesc}" />\n</head>`);
-            routeHtml = routeHtml.replace(/<meta\b[^>]*property="og:url"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*name="twitter:url"[^>]*\/?>/gi, '').replace('</head>', `  <meta property="og:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n  <meta name="twitter:url" content="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
-            routeHtml = routeHtml.replace(/<link\s+rel="canonical"[^>]*\/?>/gi, '').replace('</head>', `  <link rel="canonical" href="${hostname}${route.url === '/' ? '/' : route.url}" />\n</head>`);
+            routeHtml = routeHtml.replace(/<meta\b[^>]*property="og:url"[^>]*\/?>/gi, '').replace(/<meta\b[^>]*name="twitter:url"[^>]*\/?>/gi, '').replace('</head>', `  <meta property="og:url" content="${fullRouteCanonical}" />\n  <meta name="twitter:url" content="${fullRouteCanonical}" />\n</head>`);
+            routeHtml = routeHtml.replace(/<link\s+rel="canonical"[^>]*\/?>/gi, '').replace('</head>', `  <link rel="canonical" href="${fullRouteCanonical}" />\n</head>`);
             
             // ==== SUPER-SAFE replaceRootElement ====
             const replaceRootElement = (htmlSource: string, newInnerHtml: string, renderedRouteAttr?: string) => {
@@ -1533,9 +1553,40 @@ export default defineConfig(({ mode }) => {
               const allCandidates = Object.entries(STATIC_BLOG_POSTS)
                 .filter(([k, v]: [string, any]) => v && v.slug === k && k !== blogPostSlug && !BLOG_SLUG_REDIRECTS[k] && v.title)
                 .map(([, v]: [string, any]) => v);
-              const sameCat = allCandidates.filter((p: any) => p.category === currentCategory);
-              const otherCat = allCandidates.filter((p: any) => p.category !== currentCategory);
-              const pickedRelated = [...sameCat, ...otherCat].slice(0, 3);
+              const CURATED_RELATED_BY_SLUG: Record<string, string[]> = {
+                'raast-payment-integration-pakistan': [
+                  'fintech-software-development-compliance-first-architecture',
+                  'custom-software-for-fintech-2026-financial-technology-development-guide',
+                  'custom-software-development-company-karachi-pakistan',
+                  'custom-retail-logistics-software-development-2026-enterprise',
+                ],
+                'zatca-erp-integration-saudi-arabia': [
+                  'raast-payment-integration-pakistan',
+                  'fintech-software-development-compliance-first-architecture',
+                  'custom-software-development-qatar',
+                ],
+              };
+              const preferredSlugs = CURATED_RELATED_BY_SLUG[blogPostSlug] || [];
+              const preferredPosts = preferredSlugs
+                .map(s => allCandidates.find((p: any) => p.slug === s))
+                .filter(Boolean);
+              const stopWords = new Set(['the', 'and', 'for', 'with', 'how', 'why', 'what', 'guide', '2026', 'complete', 'your', 'from', 'that', 'this']);
+              const currentWords = new Set(
+                `${blogPostSlug} ${cleanH1Title}`.toLowerCase().split(/[^a-z0-9]+/).filter(w => w.length > 2 && !stopWords.has(w))
+              );
+              const remainingCandidates = allCandidates
+                .filter((p: any) => !preferredSlugs.includes(p.slug))
+                .map((p: any) => {
+                  let score = p.category === currentCategory ? 30 : 0;
+                  const words = `${p.slug} ${p.title || ''}`.toLowerCase().split(/[^a-z0-9]+/).filter(w => w.length > 2 && !stopWords.has(w));
+                  for (const w of words) {
+                    if (currentWords.has(w)) score += 20;
+                  }
+                  return { p, score };
+                })
+                .sort((a, b) => b.score - a.score)
+                .map(x => x.p);
+              const pickedRelated = [...preferredPosts, ...remainingCandidates].slice(0, 3);
               if (pickedRelated.length > 0) {
                 const cardsHtml = pickedRelated.map((rel: any) => {
                   const relTitle = escapeXml(String(rel.title || '').replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '').replace(/\s*—\s*/g, ' - ').trim());

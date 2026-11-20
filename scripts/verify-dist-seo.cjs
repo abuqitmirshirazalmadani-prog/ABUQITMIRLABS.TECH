@@ -99,7 +99,7 @@ const TITLE_OVERRIDES = {
   '/blog/social-media-brand-kit':
     'Social Media Brand Kit: The 5-Step Guide to Consistency',
   '/blog/raast-payment-integration-pakistan':
-    'Raast Payment Integration for Pakistani Businesses Guide',
+    'Raast Payment Integration in Pakistan: Merchant Guide',
 };
 
 function formatConciseTitle(rawTitle, pathname) {

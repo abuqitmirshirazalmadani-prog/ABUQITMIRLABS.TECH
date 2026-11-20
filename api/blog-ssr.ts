@@ -274,7 +274,7 @@ export default async function handler(req: any, res: any) {
 
     const cleanH1 =
       canonicalSlug === 'raast-payment-integration-pakistan'
-        ? 'Raast Payment Integration for Pakistani Businesses Guide'
+        ? 'Raast Payment Integration in Pakistan: Merchant Guide'
         : String(postData.title || canonicalSlug)
             .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
             .replace(/\s*\|\s*The\s*9-Step.*$/i, '')
@@ -293,7 +293,7 @@ export default async function handler(req: any, res: any) {
         : canonicalSlug === 'social-media-brand-kit'
         ? 'Social Media Brand Kit: The 5-Step Guide to Consistency'
         : canonicalSlug === 'raast-payment-integration-pakistan'
-        ? 'Raast Payment Integration for Pakistani Businesses Guide'
+        ? 'Raast Payment Integration in Pakistan: Merchant Guide'
         : postData.seoTitle ||
           (/Abu\s*Qitmir\s*Labs/i.test(cleanH1)
             ? cleanH1
@@ -306,7 +306,7 @@ export default async function handler(req: any, res: any) {
       canonicalSlug === 'brand-guidelines-small-business-pakistan'
         ? 'A practical guide for Pakistani SMEs on creating a 1-page brand style guide. Keep your logo, colors, and voice consistent across print and web.'
         : canonicalSlug === 'raast-payment-integration-pakistan'
-        ? 'Learn how Pakistani businesses can accept Raast payments. Explore merchant onboarding, QR payments, verification and software integration.'
+        ? 'Learn how Pakistani businesses can accept Raast P2M payments through QR, RTP, merchant aliases or IBAN, and connect confirmations to orders and accounting.'
         : postData.metaDescription ||
           postData.excerpt ||
           `${cleanH1}: in-depth guide by AbuQitmirLabs.`
@@ -675,28 +675,28 @@ export default async function handler(req: any, res: any) {
     const bylineAuthor = escapeHtml(postData.author || 'Abu Qitmir Mohammad Shiraz Al-Madani');
     const ssrRelatedCandidates = [
       {
-        slug: 'zatca-erp-integration-saudi-arabia',
-        title: 'ZATCA ERP Integration in Saudi Arabia: A Practical Guide',
+        slug: 'fintech-software-development-compliance-first-architecture',
+        title: 'Fintech Software Development: Compliance-First Architecture',
         category: 'Software',
-        excerpt: 'Stop treating ZATCA e-invoicing as just an API project. Discover the 9-step workflow to connect your ERP, handle rejected invoices, and ensure finance can reconcile every transaction.',
+        excerpt: 'Why fintech systems require audit-ready ledgers, deterministic transaction states, role-based access control, and compliance-first software architecture.',
       },
       {
-        slug: 'custom-software-development-qatar',
-        title: 'Custom Software Development in Qatar: The Complete 2026 Guide',
+        slug: 'custom-software-for-fintech-2026-financial-technology-development-guide',
+        title: 'Custom Software for Fintech in 2026: Financial Technology Development Guide',
         category: 'Software',
-        excerpt: 'A practical 2026 guide for Qatari enterprises and SMEs on scoping, compliance, Arabic RTL localization, and selecting a custom software development partner.',
+        excerpt: 'A complete engineering guide to building custom financial technology, payment workflows, automated reconciliation, and secure banking integrations.',
       },
       {
-        slug: 'kuwait-digital-transformation',
-        title: 'Kuwait Digital Transformation: How Enterprises Modernize Legacy Systems',
-        category: 'Business',
-        excerpt: 'How Kuwaiti enterprises modernize legacy ERP, banking, and government workflows with custom software, AI agents, and regional cybersecurity standards.',
-      },
-      {
-        slug: 'pakistan-offshore-development-gcc',
-        title: 'Pakistan Offshore Development for GCC Companies: Complete 2026 Guide',
+        slug: 'custom-software-development-company-karachi-pakistan',
+        title: 'Custom Software Development Company in Karachi, Pakistan',
         category: 'Development',
-        excerpt: 'Why GCC companies choose Pakistan for offshore software engineering: time-zone alignment, bilingual talent, IP ownership, and delivery governance.',
+        excerpt: 'How AbuQitmirLabs scopes, architects, and delivers production-grade custom business software, ERP integrations, and payment systems from Karachi.',
+      },
+      {
+        slug: 'custom-retail-logistics-software-development-2026-enterprise',
+        title: 'Custom Retail & Logistics Software Development Guide (2026)',
+        category: 'Software',
+        excerpt: 'How growing retailers and logistics operators connect multi-branch POS, inventory, delivery fleets, and automated payment confirmations.',
       },
     ].filter((item) => item.slug !== canonicalSlug).slice(0, 3);
     const ssrRelatedHtml = `<section aria-label="Related Articles" data-testid="related-articles-section" class="mt-16 pt-10 border-t border-zinc-800/80"><h2 class="mb-8 text-2xl md:text-3xl font-black text-white uppercase tracking-tight font-serif">Related Articles</h2><ul class="grid grid-cols-1 md:grid-cols-3 gap-6 list-none p-0 m-0">${ssrRelatedCandidates
@@ -749,6 +749,7 @@ export default async function handler(req: any, res: any) {
         .replace(/<meta\b[^>]*property=["']og:[^"']+["'][^>]*\/?>/gi, '')
         .replace(/<meta\b[^>]*name=["']twitter:[^"']+["'][^>]*\/?>/gi, '')
         .replace(/<link\b[^>]*rel=["']canonical["'][^>]*\/?>/gi, '')
+        .replace(/<link\b[^>]*rel=["']llms["'][^>]*\/?>/gi, '')
         .replace(/<link\b[^>]*rel=["']alternate["'][^>]*hreflang=["'][^"']+["'][^>]*\/?>/gi, '')
         .replace(/<link\b[^>]*href=["']\/images\/hero-abuqitmirlabs\.webp["'][^>]*\/?>/gi, '')
         .replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis, '')

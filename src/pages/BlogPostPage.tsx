@@ -925,21 +925,65 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 return true;
             });
 
+        const CURATED_RELATED_SLUGS: Record<string, string[]> = {
+            'raast-payment-integration-pakistan': [
+                'fintech-software-development-compliance-first-architecture',
+                'custom-software-for-fintech-2026-financial-technology-development-guide',
+                'custom-software-development-company-karachi-pakistan',
+                'custom-retail-logistics-software-development-2026-enterprise',
+            ],
+            'zatca-erp-integration-saudi-arabia': [
+                'raast-payment-integration-pakistan',
+                'fintech-software-development-compliance-first-architecture',
+                'custom-software-development-qatar',
+            ],
+        };
+
+        const preferredSlugs = CURATED_RELATED_SLUGS[currentCanonical] || [];
+        if (preferredSlugs.length > 0) {
+            const matchedPreferred = preferredSlugs
+                .map(s => candidates.find(c => c.slug === s))
+                .filter((c): c is NonNullable<typeof c> => Boolean(c));
+            if (matchedPreferred.length >= 3) {
+                return matchedPreferred.slice(0, 3);
+            }
+        }
+
+        const stopWords = new Set(['the', 'and', 'for', 'with', 'how', 'why', 'what', 'guide', '2026', 'complete', 'your', 'from', 'that', 'this']);
+        const currentKeywords = new Set(
+            `${currentCanonical} ${post.title || ''}`
+                .toLowerCase()
+                .split(/[^a-z0-9]+/)
+                .filter(w => w.length > 2 && !stopWords.has(w))
+        );
+
         const scored = candidates.map(candidate => {
             const candidateCatRaw = (candidate.category || '').trim().toLowerCase();
             const candidateCatGroup = getCategoryDetails(candidate.category).name.toLowerCase();
 
             let score = 0;
+            if (preferredSlugs.includes(candidate.slug)) {
+                score += 500;
+            }
             if (currentCategoryRaw && candidateCatRaw === currentCategoryRaw) {
-                score += 100;
+                score += 40;
             }
             if (candidateCatGroup === currentCategoryGroup) {
-                score += 50;
+                score += 20;
             }
             const candidateTags = Array.isArray(candidate.tags) ? candidate.tags : [];
             for (const tag of candidateTags) {
                 if (currentTags.has(String(tag || '').toLowerCase().trim())) {
-                    score += 5;
+                    score += 15;
+                }
+            }
+            const candidateWords = `${candidate.slug} ${candidate.title || ''}`
+                .toLowerCase()
+                .split(/[^a-z0-9]+/)
+                .filter(w => w.length > 2 && !stopWords.has(w));
+            for (const w of candidateWords) {
+                if (currentKeywords.has(w)) {
+                    score += 25;
                 }
             }
 

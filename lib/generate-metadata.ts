@@ -210,12 +210,12 @@ const TITLE_OVERRIDES: Record<string, string> = {
   '/blog/social-media-brand-kit':
     'Social Media Brand Kit: The 5-Step Guide to Consistency',
   '/blog/raast-payment-integration-pakistan':
-    'Raast Payment Integration for Pakistani Businesses Guide',
+    'Raast Payment Integration in Pakistan: Merchant Guide',
 };
 
 const DESCRIPTION_OVERRIDES: Record<string, string> = {
   '/blog/raast-payment-integration-pakistan':
-    'Learn how Pakistani businesses can accept Raast payments. Explore merchant onboarding, QR payments, verification and software integration.',
+    'Learn how Pakistani businesses can accept Raast P2M payments through QR, RTP, merchant aliases or IBAN, and connect confirmations to orders and accounting.',
   '/blog/brand-guidelines-small-business-pakistan':
     'A practical guide for Pakistani SMEs on creating a 1-page brand style guide. Keep your logo, colors, and voice consistent across print and web.',
   '/blog/best-ai-tools-for-software-development-in-2026':
