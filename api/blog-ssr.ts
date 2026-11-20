@@ -196,6 +196,7 @@ export default async function handler(req: any, res: any) {
           metaDescription: meta.metaDescription || meta.excerpt || '',
           content: bodyMd,
           coverImage: meta.coverImage || '/logo.png',
+          coverImageAlt: meta.coverImageAlt || '',
           author: meta.author || 'Abu Qitmir Mohammad Shiraz Al-Madani',
           category: meta.category || 'Business',
           createdAt: meta.publishedAt || meta.createdAt || '2026-11-01',
@@ -436,7 +437,7 @@ export default async function handler(req: any, res: any) {
     let currentFaqAnswerParts: string[] = [];
     let tableRows: string[][] = [];
     let ulItems: string[] = [];
-    let olItems: string[] = [];
+    let olItems: Array<{ text: string; subItems: string[] }> = [];
     let inCodeBlock = false;
     let codeBlockLines: string[] = [];
 
@@ -446,7 +447,12 @@ export default async function handler(req: any, res: any) {
         ulItems = [];
       }
       if (olItems.length > 0) {
-        htmlBlocks.push(`<ol class="list-decimal pl-6 my-4 space-y-2 text-neutral-300">${olItems.map(item => `<li>${formatInlineHtml(item)}</li>`).join('')}</ol>`);
+        htmlBlocks.push(`<ol class="list-decimal pl-6 my-4 space-y-2 text-neutral-300">${olItems.map(item => {
+          const subHtml = item.subItems.length > 0
+            ? `<ul class="list-disc pl-6 mt-2 space-y-1 text-neutral-300">${item.subItems.map(sub => `<li>${formatInlineHtml(sub)}</li>`).join('')}</ul>`
+            : '';
+          return `<li>${formatInlineHtml(item.text)}${subHtml}</li>`;
+        }).join('')}</ol>`);
         olItems = [];
       }
     };
@@ -500,15 +506,18 @@ export default async function handler(req: any, res: any) {
       }
       if (!trimmed) {
         let nextNonEmpty = '';
+        let nextNonEmptyRaw = '';
         for (let k = lineIdx + 1; k < lines.length; k++) {
-          const cand = lines[k].replace(/[\u200B-\u200D\uFEFF]/g, '').trim();
+          const candRaw = lines[k].replace(/[\u200B-\u200D\uFEFF]/g, '');
+          const cand = candRaw.trim();
           if (cand) {
             nextNonEmpty = cand;
+            nextNonEmptyRaw = candRaw;
             break;
           }
         }
         const continuesUl = ulItems.length > 0 && /^[-*+]\s+/.test(nextNonEmpty);
-        const continuesOl = olItems.length > 0 && /^\d+[\.\)]\s+/.test(nextNonEmpty);
+        const continuesOl = olItems.length > 0 && (/^\d+[\.\)]\s+/.test(nextNonEmpty) || /^[ \t]{2,}[-*+]\s+/.test(nextNonEmptyRaw));
         if (!continuesUl && !continuesOl) {
           flushLists();
         }
@@ -572,11 +581,16 @@ export default async function handler(req: any, res: any) {
           htmlBlocks.push(`<h4 id="${slugifyId(hText)}" class="text-lg font-bold mt-5 mb-2">${escapeHtml(hText)}</h4>`);
         }
       } else if (/^[-*+]\s+/.test(trimmed)) {
-        if (olItems.length > 0) flushLists();
-        ulItems.push(trimmed.replace(/^[-*+]\s+/, '').replace(/^\[[ xX]\]\s+/, ''));
+        const liRaw = trimmed.replace(/^[-*+]\s+/, '').replace(/^\[[ xX]\]\s+/, '');
+        if (olItems.length > 0 && /^[ \t]{2,}[-*+]\s+/.test(line.replace(/[\u200B-\u200D\uFEFF]/g, ''))) {
+          olItems[olItems.length - 1].subItems.push(liRaw);
+        } else {
+          if (olItems.length > 0) flushLists();
+          ulItems.push(liRaw);
+        }
       } else if (/^\d+[\.\)]\s+/.test(trimmed)) {
         if (ulItems.length > 0) flushLists();
-        olItems.push(trimmed.replace(/^\d+[\.\)]\s+/, ''));
+        olItems.push({ text: trimmed.replace(/^\d+[\.\)]\s+/, ''), subItems: [] });
       } else if (!trimmed.startsWith('![')) {
         flushLists();
         const cleanTxt = trimmed
@@ -720,6 +734,11 @@ export default async function handler(req: any, res: any) {
       }
     }
 
+    const ogImageAlt =
+      postData.coverImageAlt ||
+      (canonicalSlug === 'raast-payment-integration-pakistan'
+        ? 'Raast Payment Integration in Pakistan for Merchants'
+        : cleanH1);
     const seoHeadTopBlock = [
       `  <title>${escapeHtml(pageTitle)}</title>`,
       `  <meta name="description" content="${escapeHtml(metaDesc)}" />`,
@@ -733,10 +752,12 @@ export default async function handler(req: any, res: any) {
       `  <meta property="og:description" content="${escapeHtml(metaDesc)}" />`,
       `  <meta property="og:url" content="${fullCanonical}" />`,
       `  <meta property="og:image" content="${escapeHtml(ogImageUrl)}" />`,
+      `  <meta property="og:image:alt" content="${escapeHtml(ogImageAlt)}" />`,
       `  <meta name="twitter:card" content="summary_large_image" />`,
       `  <meta name="twitter:title" content="${escapeHtml(pageTitle)}" />`,
       `  <meta name="twitter:description" content="${escapeHtml(metaDesc)}" />`,
       `  <meta name="twitter:image" content="${escapeHtml(ogImageUrl)}" />`,
+      `  <meta name="twitter:image:alt" content="${escapeHtml(ogImageAlt)}" />`,
       `  ${schemaBlock}`,
     ].join('\n');
 

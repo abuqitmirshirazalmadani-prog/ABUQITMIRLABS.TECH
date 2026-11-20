@@ -394,7 +394,7 @@ function syncMarkdownPosts() {
       ]);
       const routeKeySingle = `'/blog/${slug}'`;
       const routeKeyDouble = `"/blog/${slug}"`;
-      if (seoSource && !aliasSkip.has(slug) && !seoSource.includes(routeKeySingle) && !seoSource.includes(routeKeyDouble)) {
+      if (seoSource && !aliasSkip.has(slug)) {
         const cleanH1 = String(meta.title || slug).replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
         const cleanTitle = meta.seoTitle
           ? meta.seoTitle
@@ -510,39 +510,29 @@ function syncMarkdownPosts() {
       ]
     }
   },\n`;
-        const lastBraceIdx = seoSource.lastIndexOf('};');
-        if (lastBraceIdx !== -1) {
-          let prefix = seoSource.slice(0, lastBraceIdx).trimEnd();
-          if (!prefix.endsWith(',')) prefix += ',';
-          seoSource = prefix + '\n' + seoEntry + seoSource.slice(lastBraceIdx);
-          seoChanged = true;
-          console.log(`✅ Added SEO metadata entry for /blog/${slug}`);
-        }
-      } else if (seoSource && !aliasSkip.has(slug)) {
-        const routeIdx = Math.max(seoSource.indexOf(routeKeySingle), seoSource.indexOf(routeKeyDouble));
-        if (routeIdx !== -1) {
-          const nextRouteMatch = seoSource.slice(routeIdx + 10).search(/\n  ['"]\/blog\//);
-          const blockEnd = nextRouteMatch !== -1 ? routeIdx + 10 + nextRouteMatch : seoSource.length;
-          let block = seoSource.slice(routeIdx, blockEnd);
-          const origBlock = block;
-          if (meta.coverImage && meta.coverImage.startsWith('/images/blog-covers/')) {
-            const expectedFullCover = `https://www.abuqitmirlabs.tech${meta.coverImage}`;
-            block = block
-              .replace(/(ogImage:\s*['"])https:\/\/www\.abuqitmirlabs\.tech\/(?:images\/blog-covers\/[^'"]+|logo\.png)(['"])/g, `$1${expectedFullCover}$2`)
-              .replace(/(twitterImage:\s*['"])https:\/\/www\.abuqitmirlabs\.tech\/(?:images\/blog-covers\/[^'"]+|logo\.png)(['"])/g, `$1${expectedFullCover}$2`)
-              .replace(/(image:\s*['"])https:\/\/www\.abuqitmirlabs\.tech\/(?:images\/blog-covers\/[^'"]+|logo\.png)(['"])/g, `$1${expectedFullCover}$2`);
-          }
-          if (meta.seoTitle) {
-            block = block
-              .replace(/(^\s*title:\s*).*,$/m, `$1${JSON.stringify(meta.seoTitle)},`)
-              .replace(/(^\s*ogTitle:\s*).*,$/m, `$1${JSON.stringify(meta.seoTitle)},`)
-              .replace(/(^\s*twitterTitle:\s*).*,$/m, `$1${JSON.stringify(meta.seoTitle)},`)
-              .replace(/('@type':\s*'WebPage'[\s\S]*?name:\s*).*,/m, `$1${JSON.stringify(meta.seoTitle)},`);
-          }
-          if (block !== origBlock) {
-            seoSource = seoSource.slice(0, routeIdx) + block + seoSource.slice(blockEnd);
+
+        if (!seoSource.includes(routeKeySingle) && !seoSource.includes(routeKeyDouble)) {
+          const lastBraceIdx = seoSource.lastIndexOf('};');
+          if (lastBraceIdx !== -1) {
+            let prefix = seoSource.slice(0, lastBraceIdx).trimEnd();
+            if (!prefix.endsWith(',')) prefix += ',';
+            seoSource = prefix + '\n' + seoEntry + seoSource.slice(lastBraceIdx);
             seoChanged = true;
-            console.log(`🔄 Synced SEO metadata in seoRoutesMetadata.ts for /blog/${slug}`);
+            console.log(`✅ Added SEO metadata entry for /blog/${slug}`);
+          }
+        } else {
+          const routeIdx = Math.max(seoSource.indexOf(routeKeySingle), seoSource.indexOf(routeKeyDouble));
+          if (routeIdx !== -1) {
+            const lineStart = seoSource.lastIndexOf('\n', routeIdx) + 1;
+            const nextRouteMatch = seoSource.slice(routeIdx + 10).search(/\n  ['"]\/(?:blog\/|tools\/|[a-z])/);
+            const lastBraceIdx = seoSource.lastIndexOf('};');
+            const blockEnd = nextRouteMatch !== -1 ? routeIdx + 10 + nextRouteMatch + 1 : lastBraceIdx;
+            const existingSlice = seoSource.slice(lineStart, blockEnd);
+            if (existingSlice.trim() !== seoEntry.trim()) {
+              seoSource = seoSource.slice(0, lineStart) + seoEntry + seoSource.slice(blockEnd);
+              seoChanged = true;
+              console.log(`🔄 Synced full SEO & FAQPage metadata in seoRoutesMetadata.ts for /blog/${slug}`);
+            }
           }
         }
       }

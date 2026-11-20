@@ -10,7 +10,7 @@
   "author": "Abu Qitmir Mohammad Shiraz Al-Madani",
   "publishedAt": "2026-11-20",
   "coverImage": "/images/blog-covers/raast-payment-integration-pakistan.webp",
-  "coverImageAlt": "Raast payment integration in Pakistan merchant guide for QR, RTP, alias and IBAN workflows",
+  "coverImageAlt": "Raast Payment Integration in Pakistan for Merchants",
   "tags": [
     "Raast payment integration in Pakistan",
     "Raast P2M integration",

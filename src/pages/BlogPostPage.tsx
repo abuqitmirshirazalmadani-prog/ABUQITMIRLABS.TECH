@@ -98,6 +98,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             heroSubtitle: stat.heroSubtitle || cached.heroSubtitle,
             createdAt: stat.createdAt || cached.createdAt,
             coverImage: (stat.coverImage && !stat.coverImage.includes('logo.png')) ? stat.coverImage : cached.coverImage,
+            coverImageAlt: stat.coverImageAlt || cached.coverImageAlt,
             content: (stat.content && stat.content.trim().length > 500)
                 ? stat.content
                 : (stat.content?.length || 0) >= (cached.content?.length || 0)
@@ -231,6 +232,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         createdAt: staticEntry?.createdAt || foundPost.createdAt,
                         content: resolvedContent,
                         coverImage: resolvedCover || foundPost.coverImage,
+                        coverImageAlt: (staticEntry as any)?.coverImageAlt || (foundPost as any).coverImageAlt,
                         helperImages: cleanHelperList,
                         metaDescription: cleanQuoteStr(staticEntry?.metaDescription || foundPost.metaDescription),
                         excerpt: cleanQuoteStr(foundPost.excerpt || staticEntry?.excerpt),
@@ -2935,6 +2937,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 ogTitle={seoData.ogTitle}
                 ogDescription={seoData.ogDescription}
                 ogImage={seoData.ogImage}
+                ogImageAlt={post.coverImageAlt || post.title}
                 ogType="article"
                 twitterCard="summary_large_image"
                 keywords={seoData.keywordsString}

@@ -346,18 +346,28 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
       continue;
     }
 
-    // 9. Ordered list (1. , 2. )
+    // 9. Ordered list (1. , 2. ) with optional indented sub-bullets
     if (/^\d+[\.\)]\s+/.test(trimmed)) {
-      const items: string[] = [];
+      const items: Array<{ text: string; subItems: string[] }> = [];
       while (i < lines.length) {
-        const currTrimmed = lines[i].trim();
+        const rawLine = lines[i];
+        const currTrimmed = rawLine.trim();
         if (/^\d+[\.\)]\s+/.test(currTrimmed)) {
-          items.push(currTrimmed.replace(/^\d+[\.\)]\s+/, ''));
+          items.push({
+            text: currTrimmed.replace(/^\d+[\.\)]\s+/, ''),
+            subItems: [],
+          });
+          i++;
+        } else if (/^[ \t]{2,}[-*+]\s+/.test(rawLine) && items.length > 0) {
+          items[items.length - 1].subItems.push(
+            currTrimmed.replace(/^[-*+]\s+/, '').replace(/^\[[ xX]\]\s+/, '')
+          );
           i++;
         } else if (
           currTrimmed === '' &&
           i + 1 < lines.length &&
-          /^\d+[\.\)]\s+/.test(lines[i + 1].trim())
+          (/^\d+[\.\)]\s+/.test(lines[i + 1].trim()) ||
+            /^[ \t]{2,}[-*+]\s+/.test(lines[i + 1]))
         ) {
           i++;
         } else {
@@ -370,9 +380,22 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
           {items.map((item, idx) => (
             <LiComp key={`oli-${currentListKey}-${idx}`}>
               {renderInlineNodes(
-                item,
+                item.text,
                 components,
                 `oli-${currentListKey}-${idx}`
+              )}
+              {item.subItems.length > 0 && (
+                <UlComp key={`ol-sub-${currentListKey}-${idx}`}>
+                  {item.subItems.map((sub, sIdx) => (
+                    <LiComp key={`ol-subi-${currentListKey}-${idx}-${sIdx}`}>
+                      {renderInlineNodes(
+                        sub,
+                        components,
+                        `ol-subi-${currentListKey}-${idx}-${sIdx}`
+                      )}
+                    </LiComp>
+                  ))}
+                </UlComp>
               )}
             </LiComp>
           ))}

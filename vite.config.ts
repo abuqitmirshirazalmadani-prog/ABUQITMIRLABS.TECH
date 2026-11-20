@@ -1146,7 +1146,7 @@ export default defineConfig(({ mode }) => {
                 let currentFaqQuestion = '';
                 let currentFaqAnswerParts: string[] = [];
                 let ulItems: string[] = [];
-                let olItems: string[] = [];
+                let olItems: Array<{ text: string; subItems: string[] }> = [];
                 let inCodeBlock = false;
                 let codeBlockLines: string[] = [];
 
@@ -1185,17 +1185,26 @@ export default defineConfig(({ mode }) => {
                     ulItems = [];
                   }
                   if (olItems.length > 0) {
-                    htmlBlocks.push(`<ol class="list-decimal pl-6 my-4 space-y-2 text-neutral-300">${olItems.map(item => `<li>${formatInlineHtml(item)}</li>`).join('')}</ol>`);
+                    htmlBlocks.push(`<ol class="list-decimal pl-6 my-4 space-y-2 text-neutral-300">${olItems.map(item => {
+                      const subHtml = item.subItems.length > 0
+                        ? `<ul class="list-disc pl-6 mt-2 space-y-1 text-neutral-300">${item.subItems.map(sub => `<li>${formatInlineHtml(sub)}</li>`).join('')}</ul>`
+                        : '';
+                      return `<li>${formatInlineHtml(item.text)}${subHtml}</li>`;
+                    }).join('')}</ol>`);
                     olItems = [];
                   }
                 };
 
                 const flushFaq = () => {
                   if (currentFaqQuestion && currentFaqAnswerParts.length > 0) {
-                    extractedFaqs.push({
-                      question: currentFaqQuestion,
-                      answer: currentFaqAnswerParts.join(' ').trim()
-                    });
+                    const cleanQ = currentFaqQuestion.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+                    const cleanA = currentFaqAnswerParts.join(' ').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+                    if (cleanQ && cleanA) {
+                      extractedFaqs.push({
+                        question: cleanQ,
+                        answer: cleanA
+                      });
+                    }
                   }
                   currentFaqQuestion = '';
                   currentFaqAnswerParts = [];
@@ -1235,15 +1244,18 @@ export default defineConfig(({ mode }) => {
                   }
                   if (!trimmed) {
                     let nextNonEmpty = '';
+                    let nextNonEmptyRaw = '';
                     for (let k = lineIdx + 1; k < lines.length; k++) {
-                      const cand = lines[k].replace(/[\u200B-\u200D\uFEFF]/g, '').trim();
+                      const candRaw = lines[k].replace(/[\u200B-\u200D\uFEFF]/g, '');
+                      const cand = candRaw.trim();
                       if (cand) {
                         nextNonEmpty = cand;
+                        nextNonEmptyRaw = candRaw;
                         break;
                       }
                     }
                     const continuesUl = ulItems.length > 0 && /^[-*+]\s+/.test(nextNonEmpty);
-                    const continuesOl = olItems.length > 0 && /^\d+[\.\)]\s+/.test(nextNonEmpty);
+                    const continuesOl = olItems.length > 0 && (/^\d+[\.\)]\s+/.test(nextNonEmpty) || /^[ \t]{2,}[-*+]\s+/.test(nextNonEmptyRaw));
                     if (!continuesUl && !continuesOl) {
                       flushLists();
                     }
@@ -1311,13 +1323,17 @@ export default defineConfig(({ mode }) => {
                       htmlBlocks.push(`<h4 id="${slugifyId(hText)}" class="text-lg font-bold mt-5 mb-2">${escapeXml(hText)}</h4>`);
                     }
                   } else if (/^[-*+]\s+/.test(trimmed)) {
-                    if (olItems.length > 0) flushLists();
                     const liRaw = trimmed.replace(/^[-*+]\s+/, '').replace(/^\[[ xX]\]\s+/, '');
-                    ulItems.push(liRaw);
+                    if (olItems.length > 0 && /^[ \t]{2,}[-*+]\s+/.test(line.replace(/[\u200B-\u200D\uFEFF]/g, ''))) {
+                      olItems[olItems.length - 1].subItems.push(liRaw);
+                    } else {
+                      if (olItems.length > 0) flushLists();
+                      ulItems.push(liRaw);
+                    }
                   } else if (/^\d+[\.\)]\s+/.test(trimmed)) {
                     if (ulItems.length > 0) flushLists();
                     const liRaw = trimmed.replace(/^\d+[\.\)]\s+/, '');
-                    olItems.push(liRaw);
+                    olItems.push({ text: liRaw, subItems: [] });
                   } else if (!trimmed.startsWith('![')) {
                     flushLists();
                     const cleanText = trimmed.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
@@ -1343,12 +1359,20 @@ export default defineConfig(({ mode }) => {
                 ? `${hostname}${optimizedLocalCover}`
                 : optimizedLocalCover;
               const preloadHref = optimizedLocalCover || rawCoverImgUrl;
+              const coverImgAlt = (
+                staticPost?.coverImageAlt ||
+                (firestorePost as any)?.coverImageAlt ||
+                (seoMeta as any)?.ogImageAlt ||
+                (staticPost?.title || firestorePost?.title || route.title || '').replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim()
+              );
 
               routeHtml = routeHtml
+                .replace(/<meta\b[^>]*property="og:image:alt"[^>]*\/?>/gi, '')
+                .replace(/<meta\b[^>]*name="twitter:image:alt"[^>]*\/?>/gi, '')
                 .replace(/<meta\b[^>]*property="og:image"[^>]*\/?>/gi, '')
                 .replace(/<meta\b[^>]*name="twitter:image"[^>]*\/?>/gi, '')
                 .replace(/<meta\b[^>]*property="og:type"[^>]*\/?>/gi, '')
-                .replace('</head>', `  <link rel="preload" as="image" href="${preloadHref}" />\n  <meta property="og:type" content="article" />\n  <meta property="og:image" content="${coverImgUrl}" />\n  <meta name="twitter:image" content="${coverImgUrl}" />\n</head>`);
+                .replace('</head>', `  <link rel="preload" as="image" href="${preloadHref}" />\n  <meta property="og:type" content="article" />\n  <meta property="og:image" content="${coverImgUrl}" />\n  <meta property="og:image:alt" content="${escapeXml(coverImgAlt)}" />\n  <meta name="twitter:image" content="${coverImgUrl}" />\n  <meta name="twitter:image:alt" content="${escapeXml(coverImgAlt)}" />\n</head>`);
 
               if (seoMeta && seoMeta.schemaJsonLd) {
                 const clonedSchema = JSON.parse(JSON.stringify(seoMeta.schemaJsonLd));
@@ -1386,21 +1410,19 @@ export default defineConfig(({ mode }) => {
                     }
                   }
                   if (extractedFaqs.length > 0) {
-                    const hasFaq = clonedSchema['@graph'].some((n: any) => n && n['@type'] === 'FAQPage');
-                    if (!hasFaq) {
-                      clonedSchema['@graph'].push({
-                        "@type": "FAQPage",
-                        "@id": `${fullCanonical}#faq`,
-                        "mainEntity": extractedFaqs.slice(0, 12).map(faq => ({
-                          "@type": "Question",
-                          "name": faq.question,
-                          "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": faq.answer
-                          }
-                        }))
-                      });
-                    }
+                    clonedSchema['@graph'] = clonedSchema['@graph'].filter((n: any) => !n || n['@type'] !== 'FAQPage');
+                    clonedSchema['@graph'].push({
+                      "@type": "FAQPage",
+                      "@id": `${fullCanonical}#faq`,
+                      "mainEntity": extractedFaqs.slice(0, 12).map(faq => ({
+                        "@type": "Question",
+                        "name": faq.question,
+                        "acceptedAnswer": {
+                          "@type": "Answer",
+                          "text": faq.answer
+                        }
+                      }))
+                    });
                   }
                 }
                 routeHtml = injectSingleSchema(routeHtml, clonedSchema);

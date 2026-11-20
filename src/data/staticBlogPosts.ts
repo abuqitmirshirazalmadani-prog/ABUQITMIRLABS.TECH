@@ -4287,7 +4287,7 @@ STATIC_BLOG_POSTS["raast-payment-integration-pakistan"] = {
   "excerpt": "In SBP's Q3 FY26 review, Raast P2M transactions rose from 36.3M to 55.9M in Jan-Mar 2026. Learn how to connect QR, RTP, alias and IBAN confirmations to orders and accounting.",
   "metaDescription": "Learn how Pakistani businesses can accept Raast P2M payments through QR, RTP, merchant aliases or IBAN, and connect confirmations to orders and accounting.",
   "coverImage": "/images/blog-covers/raast-payment-integration-pakistan.webp",
-  "coverImageAlt": "Raast payment integration in Pakistan merchant guide for QR, RTP, alias and IBAN workflows",
+  "coverImageAlt": "Raast Payment Integration in Pakistan for Merchants",
   "category": "Development",
   "createdAt": "2026-11-20",
   "author": "Abu Qitmir Mohammad Shiraz Al-Madani",
