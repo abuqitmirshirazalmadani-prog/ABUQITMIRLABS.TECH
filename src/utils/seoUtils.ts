@@ -152,6 +152,9 @@ export function formatConciseSeoTitle(rawTitle?: string, slug?: string, siteName
   if (slug === 'raast-payment-integration-pakistan' || (rawTitle && /Raast Payment Integration/i.test(rawTitle))) {
     return 'Raast Payment Integration in Pakistan: Merchant Guide';
   }
+  if (slug === 'website-visibility-right-audience' || (rawTitle && /Website Visibility:\s*Reach the Right Audience/i.test(rawTitle))) {
+    return 'Website Visibility: Reach the Right Audience (2026) | AbuQitmirLabs';
+  }
   const cleaned = stripSurroundingQuotes(rawTitle || '')
     .replace(/&amp;/gi, '&')
     .replace(/\s+/g, ' ')

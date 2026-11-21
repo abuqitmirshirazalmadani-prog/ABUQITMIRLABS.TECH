@@ -386,6 +386,7 @@ export default defineConfig(({ mode }) => {
             '/blog/zatca-erp-integration-saudi-arabia': 'ZATCA ERP Integration Saudi Arabia: Practical Guide',
             '/blog/social-media-brand-kit': 'Social Media Brand Kit: The 5-Step Guide to Consistency',
             '/blog/raast-payment-integration-pakistan': 'Raast Payment Integration in Pakistan: Merchant Guide',
+            '/blog/website-visibility-right-audience': 'Website Visibility: Reach the Right Audience (2026) | AbuQitmirLabs',
           };
           const formatSafeBlogTitle = (url: string, rawTitle: string, seoTitle?: string): string => {
             if (BLOG_TITLE_OVERRIDES[url]) return BLOG_TITLE_OVERRIDES[url];

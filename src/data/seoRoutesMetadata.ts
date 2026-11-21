@@ -17864,4 +17864,141 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
       ]
     }
   },
+  '/blog/website-visibility-right-audience': {
+    title: "Website Visibility: Reach the Right Audience (2026) | AbuQitmirLabs",
+    description: "Seven practical steps to put your website in front of the right audience, grow social reach and turn visitors into clients, with no false promises.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/website-visibility-right-audience',
+    ogTitle: "Website Visibility: Reach the Right Audience (2026) | AbuQitmirLabs",
+    ogDescription: "Seven practical steps to put your website in front of the right audience, grow social reach and turn visitors into clients, with no false promises.",
+    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/website-visibility-right-audience.webp",
+    ogImageAlt: "Website visibility guide showing a 7-step plan for reaching the right B2B audience through search, social, and trust signals.",
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: "Website Visibility: Reach the Right Audience (2026) | AbuQitmirLabs",
+    twitterDescription: "Seven practical steps to put your website in front of the right audience, grow social reach and turn visitors into clients, with no false promises.",
+    twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/website-visibility-right-audience.webp",
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.abuqitmirlabs.tech/#organization',
+          name: 'AbuQitmirLabs',
+          url: 'https://www.abuqitmirlabs.tech/',
+          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://www.abuqitmirlabs.tech/#website',
+          url: 'https://www.abuqitmirlabs.tech/',
+          name: 'AbuQitmirLabs',
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
+        },
+        {
+          '@type': 'WebPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/website-visibility-right-audience#webpage',
+          url: 'https://www.abuqitmirlabs.tech/blog/website-visibility-right-audience',
+          name: "Website Visibility: Reach the Right Audience (2026) | AbuQitmirLabs",
+          description: "Seven practical steps to put your website in front of the right audience, grow social reach and turn visitors into clients, with no false promises.",
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/website-visibility-right-audience#breadcrumb',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
+            { '@type': 'ListItem', position: 3, name: "Website Visibility: Reach the Right Audience in 2026", item: 'https://www.abuqitmirlabs.tech/blog/website-visibility-right-audience' }
+          ]
+        },
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/website-visibility-right-audience#article',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/website-visibility-right-audience#webpage' },
+          headline: "Website Visibility: Reach the Right Audience in 2026",
+          description: "Seven practical steps to put your website in front of the right audience, grow social reach and turn visitors into clients, with no false promises.",
+          image: "https://www.abuqitmirlabs.tech/images/blog-covers/website-visibility-right-audience.webp",
+          author: {
+            '@type': 'Person',
+            name: "Abu Qitmir Mohammad Shiraz Al-Madani",
+            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+          },
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
+          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/website-visibility-right-audience#webpage' },
+          datePublished: "2026-11-21T00:00:00+00:00",
+          dateModified: "2026-11-21T00:00:00+00:00"
+        },
+        {
+          '@type': 'FAQPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/website-visibility-right-audience#faq',
+          mainEntity: [
+            {
+              "@type": "Question",
+              "name": "How do I submit my sitemap to Google Search Console?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Verify your website property in Google Search Console, open the Sitemaps report, paste your sitemap URL (for example, /sitemap.xml) and click Submit. Submitting a sitemap helps Google discover your URLs, though it does not guarantee indexing or rankings."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does schema markup guarantee rich results or AI citations?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Google's structured data guidelines state that valid markup makes a page eligible for rich results, not guaranteed to appear. Only mark up content that is visible on the page and accurate."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which Core Web Vitals should I check first?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Start with the three core metrics in Google's documentation: Largest Contentful Paint (LCP) for loading performance, Interaction to Next Paint (INP) for responsiveness, and Cumulative Layout Shift (CLS) for visual stability. Use the Core Web Vitals report in Search Console to see real-user data."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Should I use canonical tags on similar service pages?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Use a rel=\"canonical\" link when duplicate or near-duplicate URLs serve the same content and you want to indicate the preferred URL to search engines. If two pages serve genuinely different services or audiences, give each one unique content and its own self-referencing canonical URL."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does llms.txt make AI tools cite my website?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Adding an llms.txt file does not guarantee that AI tools will read or cite your site. Google's guidance on AI features in Search focuses on normal Search fundamentals: allow crawling, keep important content in text, use clear structure, and keep structured data accurate."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I track social media traffic in GA4?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Add consistent UTM parameters (such as utm_source, utm_medium and utm_campaign) to the links you share in social posts and profiles. Then review the Traffic acquisition report in Google Analytics 4 and compare sessions against your key enquiry events."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do meta keywords still help rankings?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Google has stated for years that it does not use the keywords meta tag in web ranking. Focus your effort on accurate <title> tags, helpful headings, clear body copy and relevant internal links instead."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How long does it take for a new page to appear in search?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Crawling and indexing can take anywhere from a few days to several weeks, depending on site structure, internal links and crawl demand. You can check a page's status with the URL Inspection tool in Search Console and request indexing after publishing or making major updates."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
 };
