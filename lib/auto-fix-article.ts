@@ -315,9 +315,26 @@ export function normalizeExistingInternalLinks(markdown: string): {
   return { content: updated, normalizedCount };
 }
 
+const CATEGORY_PILLAR_LINK_MAP: Record<string, { anchor: string; href: string }> = {
+  ai: { anchor: 'AI agent development', href: '/ai-agent-development' },
+  software: { anchor: 'custom software engineering', href: '/custom-software' },
+  business: { anchor: 'custom software engineering', href: '/custom-software' },
+  app: { anchor: 'mobile app development', href: '/mobile-app-development' },
+  'mobile app': { anchor: 'mobile app development', href: '/mobile-app-development' },
+  development: { anchor: 'custom web application development', href: '/web-development' },
+  'web development': { anchor: 'custom web application development', href: '/web-development' },
+  'content writing': { anchor: 'technical content writing services', href: '/content-writing' },
+  seo: { anchor: 'Generative Engine Optimization (GEO) and technical SEO mastery', href: '/seo-mastery' },
+  'marketing & seo': { anchor: 'Generative Engine Optimization (GEO) and technical SEO mastery', href: '/seo-mastery' },
+  'graphic design': { anchor: 'strategic brand building and UI/UX design systems', href: '/brand-building' },
+  'branding & design': { anchor: 'strategic brand building and UI/UX design systems', href: '/brand-building' },
+  'digital marketing': { anchor: 'data-driven digital marketing systems', href: '/digital-marketing' },
+};
+
 /**
  * Preserves all existing internal links placed by the author, normalizes non-canonical internal URLs,
- * and surgically appends only missing core SEO/GEO entity links if they are not already present.
+ * and surgically appends only missing core SEO/GEO entity links (including the category's parent service pillar
+ * and /contact conversion link) if they are not already present.
  */
 export function injectContextualInternalLinks(
   markdown: string,
@@ -334,11 +351,20 @@ export function injectContextualInternalLinks(
     return rx.test(md);
   };
 
+  const catKey = String(category || 'AI').trim().toLowerCase();
+  const categoryPillar = CATEGORY_PILLAR_LINK_MAP[catKey] || {
+    anchor: 'custom software engineering',
+    href: '/custom-software',
+  };
+
   const missingCoreSnippets: string[] = [];
-  if (!hasHref(normalizedMd, '/custom-software')) {
+  if (!hasHref(normalizedMd, categoryPillar.href)) {
+    missingCoreSnippets.push(`[${categoryPillar.anchor}](${categoryPillar.href})`);
+  }
+  if (categoryPillar.href !== '/custom-software' && !hasHref(normalizedMd, '/custom-software')) {
     missingCoreSnippets.push('[custom software engineering](/custom-software)');
   }
-  if (!hasHref(normalizedMd, '/ai-agent-development')) {
+  if (categoryPillar.href !== '/ai-agent-development' && !hasHref(normalizedMd, '/ai-agent-development')) {
     missingCoreSnippets.push('[AI agent development](/ai-agent-development)');
   }
   if (!hasHref(normalizedMd, '/contact')) {
@@ -358,7 +384,7 @@ export function injectContextualInternalLinks(
         ? missingCoreSnippets[0]
         : missingCoreSnippets.length === 2
         ? `${missingCoreSnippets[0]} and ${missingCoreSnippets[1]}`
-        : `${missingCoreSnippets[0]}, ${missingCoreSnippets[1]}, or ${missingCoreSnippets[2]}`;
+        : `${missingCoreSnippets.slice(0, -1).join(', ')}, or ${missingCoreSnippets[missingCoreSnippets.length - 1]}`;
     selectedBlocks.push(
       `For teams scaling production architecture, explore our ${formattedList} with AbuQitmirLabs.`
     );

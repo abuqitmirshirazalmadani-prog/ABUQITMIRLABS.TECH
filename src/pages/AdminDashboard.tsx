@@ -296,6 +296,26 @@ const AdminDashboard = () => {
         if (editContent && !/^#{1,6}\s+/.test(editContent.split(/\r?\n/)[0].trim()) && cleanEditTitle) {
             editContent = `## ${cleanEditTitle}\n\n${editContent}`;
         }
+        const rawCat = String(post.category || 'AI').trim();
+        const matchedCat =
+            CATEGORIES.find(c => c.toLowerCase() === rawCat.toLowerCase()) ||
+            (rawCat.toLowerCase().includes('brand') || rawCat.toLowerCase().includes('design')
+                ? 'Graphic Design'
+                : rawCat.toLowerCase().includes('market')
+                ? 'Digital Marketing'
+                : rawCat.toLowerCase().includes('seo')
+                ? 'SEO'
+                : rawCat.toLowerCase().includes('content')
+                ? 'Content Writing'
+                : rawCat.toLowerCase().includes('app') || rawCat.toLowerCase().includes('mobile')
+                ? 'App'
+                : rawCat.toLowerCase().includes('dev') || rawCat.toLowerCase().includes('web')
+                ? 'Development'
+                : rawCat.toLowerCase().includes('soft')
+                ? 'Software'
+                : rawCat.toLowerCase().includes('bus')
+                ? 'Business'
+                : 'AI');
         setFormData({
             title: fullEditTitle,
             slug: post.slug || '',
@@ -303,7 +323,7 @@ const AdminDashboard = () => {
             metaDescription: post.metaDescription || post.excerpt || '',
             content: editContent,
             author: post.author || 'Abu Qitmir Mohammad Shiraz Al-Madani',
-            category: post.category || 'AI',
+            category: matchedCat,
             published: post.published ?? true,
             coverImage: post.coverImage || '',
             coverImageAlt: post.coverImageAlt || '',
@@ -1040,6 +1060,21 @@ const AdminDashboard = () => {
                 layer1Result.article.slug || cleanSlug || generateSlug(layer1Result.article.title || 'blog-post')
             );
             const isPublished = saveAsDraft ? false : Boolean(formData.published ?? true);
+            const selectedCategory = String(
+                finalSlug === 'ai-content-vs-human-content'
+                    ? 'Content Writing'
+                    : (formData.category || layer1Result.article.category || 'AI')
+            ).trim() || 'AI';
+            const sanitizedHelperImages = cleanHelperImages
+                .filter(img => img && typeof img.url === 'string' && img.url.trim() !== '')
+                .map(img => ({
+                    url: String(img.url).trim(),
+                    caption: String(img.caption || '').trim()
+                }));
+            const tagsArray = (Array.isArray(layer1Result.article.tags) ? layer1Result.article.tags : [])
+                .map(t => String(t || '').trim())
+                .filter(t => t.length > 0 && t.length <= 120)
+                .slice(0, 30);
             const canonicalFormData = {
                 title: String(layer1Result.article.title || cleanPostTitle || finalSlug).slice(0, 490),
                 slug: String(finalSlug).slice(0, 240),
@@ -1049,11 +1084,10 @@ const AdminDashboard = () => {
                 coverImage: String(layer1Result.article.coverImage || 'https://www.abuqitmirlabs.tech/logo.png'),
                 coverImageAlt: String(layer1Result.article.coverImageAlt || layer1Result.article.title || finalSlug).slice(0, 490),
                 author: String(formData.author || 'Abu Qitmir Mohammad Shiraz Al-Madani').slice(0, 190),
-                category: String(finalSlug === 'ai-content-vs-human-content' ? 'Content Writing' : (formData.category || 'AI')).slice(0, 95),
+                category: selectedCategory.slice(0, 95),
                 published: isPublished,
                 publishedAt: String(layer1Result.article.publishedAt || new Date().toISOString().split('T')[0]),
             };
-            const tagsArray = Array.isArray(layer1Result.article.tags) ? layer1Result.article.tags : [];
             const postPayload = { ...canonicalFormData, tags: tagsArray };
             
             let targetId = editingId;
@@ -1073,10 +1107,10 @@ const AdminDashboard = () => {
             let savedInFirestore = false;
 
             try {
-                if (targetId) {
+                if (targetId && !String(targetId).startsWith('static-') && !String(targetId).startsWith('local-')) {
                     await updateDoc(doc(db, 'posts', targetId), {
                         ...canonicalFormData,
-                        helperImages: cleanHelperImages,
+                        helperImages: sanitizedHelperImages,
                         tags: tagsArray,
                         authorId: user?.uid || ADMIN_UID,
                         updatedAt: serverTimestamp()
@@ -1086,7 +1120,7 @@ const AdminDashboard = () => {
                 } else {
                     const docRef = await addDoc(collection(db, 'posts'), {
                         ...canonicalFormData,
-                        helperImages: cleanHelperImages,
+                        helperImages: sanitizedHelperImages,
                         tags: tagsArray,
                         authorId: user?.uid || ADMIN_UID,
                         createdAt: serverTimestamp(),
@@ -1100,7 +1134,7 @@ const AdminDashboard = () => {
                 try {
                     const fallbackRef = await addDoc(collection(db, 'posts'), {
                         ...canonicalFormData,
-                        helperImages: cleanHelperImages,
+                        helperImages: sanitizedHelperImages,
                         tags: tagsArray,
                         authorId: user?.uid || ADMIN_UID,
                         createdAt: serverTimestamp(),

@@ -726,7 +726,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         if (catLower.includes('web') || catLower.includes('dev')) {
             name = 'Web Development';
             to = '/web-development';
-        } else if (catLower.includes('software')) {
+        } else if (catLower.includes('software') || catLower.includes('business')) {
             name = 'Custom Software';
             to = '/custom-software';
         } else if (catLower.includes('app') || catLower.includes('mobile')) {
@@ -735,10 +735,13 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         } else if (catLower.includes('ai') || catLower.includes('agent')) {
             name = 'AI Agent Development';
             to = '/ai-agent-development';
+        } else if (catLower.includes('digital') || catLower.includes('marketing')) {
+            name = 'Digital Marketing';
+            to = '/digital-marketing';
         } else if (catLower.includes('seo') || catLower.includes('mastery') || catLower.includes('search')) {
             name = 'SEO Mastery';
             to = '/seo-mastery';
-        } else if (catLower.includes('graphics') || catLower.includes('design')) {
+        } else if (catLower.includes('graphics') || catLower.includes('design') || catLower.includes('brand')) {
             name = 'Graphics Design';
             to = '/graphics-design';
         } else if (catLower.includes('content') || catLower.includes('writing')) {
