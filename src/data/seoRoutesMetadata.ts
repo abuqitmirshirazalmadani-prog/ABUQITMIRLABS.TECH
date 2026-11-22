@@ -18001,4 +18001,141 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
       ]
     }
   },
+  '/blog/inventory-management-software-saudi-arabia': {
+    title: "Inventory Management Software Saudi Arabia | AbuQitmirLabs",
+    description: "Compare inventory software options for Saudi businesses, connect POS and e-commerce stock, and plan a ZATCA-aware rollout for branches and warehouses.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/inventory-management-software-saudi-arabia',
+    ogTitle: "Inventory Management Software Saudi Arabia | AbuQitmirLabs",
+    ogDescription: "Compare inventory software options for Saudi businesses, connect POS and e-commerce stock, and plan a ZATCA-aware rollout for branches and warehouses.",
+    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/inventory-management-software-saudi-arabia.webp",
+    ogImageAlt: "Inventory management dashboard showing stock across Saudi retail branches and warehouses",
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: "Inventory Management Software Saudi Arabia | AbuQitmirLabs",
+    twitterDescription: "Compare inventory software options for Saudi businesses, connect POS and e-commerce stock, and plan a ZATCA-aware rollout for branches and warehouses.",
+    twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/inventory-management-software-saudi-arabia.webp",
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.abuqitmirlabs.tech/#organization',
+          name: 'AbuQitmirLabs',
+          url: 'https://www.abuqitmirlabs.tech/',
+          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://www.abuqitmirlabs.tech/#website',
+          url: 'https://www.abuqitmirlabs.tech/',
+          name: 'AbuQitmirLabs',
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
+        },
+        {
+          '@type': 'WebPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/inventory-management-software-saudi-arabia#webpage',
+          url: 'https://www.abuqitmirlabs.tech/blog/inventory-management-software-saudi-arabia',
+          name: "Inventory Management Software Saudi Arabia | AbuQitmirLabs",
+          description: "Compare inventory software options for Saudi businesses, connect POS and e-commerce stock, and plan a ZATCA-aware rollout for branches and warehouses.",
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/inventory-management-software-saudi-arabia#breadcrumb',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
+            { '@type': 'ListItem', position: 3, name: "Inventory Management Software Saudi Arabia", item: 'https://www.abuqitmirlabs.tech/blog/inventory-management-software-saudi-arabia' }
+          ]
+        },
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/inventory-management-software-saudi-arabia#article',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/inventory-management-software-saudi-arabia#webpage' },
+          headline: "Inventory Management Software Saudi Arabia",
+          description: "Compare inventory software options for Saudi businesses, connect POS and e-commerce stock, and plan a ZATCA-aware rollout for branches and warehouses.",
+          image: "https://www.abuqitmirlabs.tech/images/blog-covers/inventory-management-software-saudi-arabia.webp",
+          author: {
+            '@type': 'Person',
+            name: "Abu Qitmir Mohammad Shiraz Al-Madani",
+            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+          },
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
+          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/inventory-management-software-saudi-arabia#webpage' },
+          datePublished: "2026-11-21T00:00:00+00:00",
+          dateModified: "2026-11-21T00:00:00+00:00"
+        },
+        {
+          '@type': 'FAQPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/inventory-management-software-saudi-arabia#faq',
+          mainEntity: [
+            {
+              "@type": "Question",
+              "name": "What is the best inventory management software for a Saudi business?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No single product fits every Saudi business. The right choice depends on the number of branches, the sales channels, the product data and the accounting setup. Start with a written requirements list, shortlist products that meet the must-have items, and test each one with real stock data before you decide."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I manage stock across multiple branches in Saudi Arabia?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Use one product master list, one stock record per location and a transfer process that updates both sides. Give each branch a named owner, run regular counts, and review differences weekly. A single system with clear rules works better than separate spreadsheets that each branch updates on its own schedule."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can inventory software connect to POS and an online store?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Many inventory systems can connect to POS terminals and online stores, but the depth varies. Check whether sales reduce stock in real time, how the system handles the last unit sold on two channels, and whether returns update stock correctly. Ask for a demo using your own products and your own order flow."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does inventory software need to support ZATCA e-invoicing?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It depends on your business. ZATCA's Wave 25 covers notified taxpayers whose VAT-subject revenue exceeded SAR 187,500 in 2022, 2023, 2024 or 2025, with integration due by 1 February 2027. Not every business is in that wave. Confirm your notification and requirements with ZATCA or a qualified tax adviser."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How much does inventory software cost in Saudi Arabia?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "This article does not publish a price, because cost depends on the number of users, locations, integrations, data migration and support needs. Ask each vendor for an itemised quote that separates licence, set-up, integration, training and support, and compare the same scope across all of them."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Should I buy packaged software or build custom inventory software?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Buy packaged software when your processes are standard and the product covers most of your must-have items. Consider custom work when your channels, pricing or approval rules are unusual, or when a packaged system needs heavy workarounds. A requirements review helps you decide which path fits your business."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I prevent overselling between a store and an online shop?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Keep one stock pool for all channels, update it in real time or near real time, and set a safety reserve for high-demand items. Decide in advance who gets the last unit and how backorders are handled. Test the flow with a few products before you open the full catalogue to online orders."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What should a Saudi warehouse inventory system include?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A warehouse system should include location tracking, barcode receiving and picking, batch or expiry control where needed, purchase order receipts, stock transfers, cycle counts and an audit trail. It should also share product and tax data with your invoicing and reporting, and support Arabic and English where staff need it."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
 };

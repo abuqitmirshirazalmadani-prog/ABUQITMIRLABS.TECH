@@ -27,6 +27,7 @@ export const REMOTE_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "https://i.postimg.cc/mgJqDkFt/ZATCA-ERP-Integration-Saudi-Arabia-Guide.png": "/images/blog-covers/zatca-erp-integration-saudi-arabia.webp",
   "https://i.postimg.cc/MKZDD2QK/Abu-Qitmir-Labs.png": "/images/blog-covers/raast-payment-integration-pakistan.webp",
   "https://i.postimg.cc/25VjzWft/Problem-Solution-Action.png": "/images/blog-covers/website-visibility-right-audience.webp",
+  "https://i.postimg.cc/tTrRrvX1/Saudi-businesses-Inventory-management.png": "/images/blog-covers/inventory-management-software-saudi-arabia.webp",
   "https://i.postimg.cc/cHQRwnLJ/Logo-vs-Brand-Identity-Guide.png": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp",
   "/images/blog-covers/lead-generation-content-strategy-google-meta-1576aa01.webp": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
   "/images/blog-covers/rebranding-checklist-pakistan-9252c088.webp": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
@@ -34,6 +35,7 @@ export const REMOTE_TO_LOCAL_COVER_MAP: Record<string, string> = {
 };
 
 export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
+  "inventory-management-software-saudi-arabia": "/images/blog-covers/inventory-management-software-saudi-arabia.webp",
   "website-visibility-right-audience": "/images/blog-covers/website-visibility-right-audience.webp",
   "lead-generation-content-strategy-google-meta": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
   "rebranding-checklist-pakistan": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
@@ -225,6 +227,7 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
 };
 
 export const SLUG_TO_REMOTE_COVER_MAP: Record<string, string> = {
+  "inventory-management-software-saudi-arabia": "https://i.postimg.cc/tTrRrvX1/Saudi-businesses-Inventory-management.png",
   "website-visibility-right-audience": "https://i.postimg.cc/25VjzWft/Problem-Solution-Action.png",
   "raast-payment-integration-pakistan": "https://i.postimg.cc/MKZDD2QK/Abu-Qitmir-Labs.png",
   "zatca-erp-integration-saudi-arabia": "https://i.postimg.cc/mgJqDkFt/ZATCA-ERP-Integration-Saudi-Arabia-Guide.png",
