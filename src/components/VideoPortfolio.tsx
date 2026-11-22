@@ -57,9 +57,9 @@ const VideoPortfolio = () => {
                     <p className="text-xs font-mono uppercase tracking-[0.25em] text-[#C8EB5F] mb-3 font-bold">
                         Video Briefings.
                     </p>
-                    <h2 className="text-3xl sm:text-5xl font-serif italic text-white tracking-tight mb-4">
+                    <h3 className="text-3xl sm:text-5xl font-serif italic text-white tracking-tight mb-4">
                         Technical Architecture &amp; AI Demonstrations
-                    </h2>
+                    </h3>
                     <p className="text-sm sm:text-base text-neutral-300 font-light">
                         Watch short videos showing how we build custom software, AI agents, and search systems.
                     </p>

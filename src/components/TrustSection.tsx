@@ -11,20 +11,20 @@ const TrustSection = () => {
                         <div className="border border-white/10 rounded-2xl bg-zinc-950 p-7 flex flex-col justify-between space-y-6">
                             <div className="grid grid-cols-2 gap-3">
                                 <div className="bg-black/60 rounded-xl p-3 border border-white/10">
-                                    <p className="text-xl font-black text-white">+5 Years.</p>
-                                    <p className="text-[10px] text-neutral-400 uppercase tracking-widest font-bold">Founded in 2021.</p>
+                                    <p className="text-xl font-black text-white">410+</p>
+                                    <p className="text-[10px] text-neutral-400 uppercase tracking-widest font-bold">Projects Delivered</p>
                                 </div>
                                 <div className="bg-black/60 rounded-xl p-3 border border-white/10">
-                                    <p className="text-xl font-black text-white">100% IP.</p>
-                                    <p className="text-[10px] text-neutral-400 uppercase tracking-widest font-bold">Code Ownership.</p>
+                                    <p className="text-xl font-black text-white">98%</p>
+                                    <p className="text-[10px] text-neutral-400 uppercase tracking-widest font-bold">Client Retention</p>
                                 </div>
                                 <div className="bg-black/60 rounded-xl p-3 border border-white/10">
-                                    <p className="text-xl font-black text-white">Clutch.co.</p>
-                                    <p className="text-[10px] text-neutral-400 uppercase tracking-widest font-bold">Verified Profile.</p>
+                                    <p className="text-xl font-black text-white">100%</p>
+                                    <p className="text-[10px] text-neutral-400 uppercase tracking-widest font-bold">Code Ownership</p>
                                 </div>
                                 <div className="bg-black/60 rounded-xl p-3 border border-white/10">
-                                    <p className="text-xl font-black text-white">GoodFirms.</p>
-                                    <p className="text-[10px] text-neutral-400 uppercase tracking-widest font-bold">Listed Studio.</p>
+                                    <p className="text-xl font-black text-white">10+</p>
+                                    <p className="text-[10px] text-neutral-400 uppercase tracking-widest font-bold">Countries Served</p>
                                 </div>
                             </div>
 
@@ -43,9 +43,9 @@ const TrustSection = () => {
                             <p className="text-xs text-neutral-400 font-bold tracking-widest uppercase mb-2">
                                 Our Core Commitments.
                             </p>
-                            <h2 className="text-2xl md:text-3xl font-serif italic text-white leading-tight">
+                            <h3 className="text-2xl md:text-3xl font-serif italic text-white leading-tight">
                                 Built for Long-Term Ownership &amp; Scale
-                            </h2>
+                            </h3>
 
                             <div className="mt-5 space-y-3 text-xs sm:text-sm text-neutral-300">
                                 <p><strong className="text-white">1. 100% IP &amp; Code Ownership:</strong> You get full GitHub repos, cloud setup scripts, and docs at every milestone.</p>

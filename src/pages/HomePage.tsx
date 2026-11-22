@@ -506,9 +506,9 @@ export default function HomePage() {
             <p className="text-xs font-mono uppercase tracking-[0.2em] text-[#ccff00] font-bold">
               Core Growth Pillars. Lead Architect: Abu Qitmir. Founded in <time dateTime="2021">2021</time>.
             </p>
-            <h2 className="text-3xl sm:text-5xl font-serif italic text-white font-light tracking-tight leading-tight">
+            <h3 className="text-3xl sm:text-5xl font-serif italic text-white font-light tracking-tight leading-tight">
               Three Integrated Funnels: Build Software. Automate with AI. Grow Demand.
-            </h2>
+            </h3>
             <p className="text-neutral-300 font-sans leading-relaxed text-base md:text-lg font-light">
               Most companies hire three separate vendors for code, AI tools, and search traffic. Those teams rarely talk to each other. Code breaks your search rankings. Ad clicks land on slow pages. At <strong>AbuQitmirLabs</strong>, one senior team builds your whole growth system. You can hire us for one clear milestone or a full revenue platform.
             </p>
@@ -608,9 +608,9 @@ export default function HomePage() {
               <p className="text-xs font-mono uppercase tracking-[0.2em] text-[#ccff00] font-bold">
                 04 / DELIVERY GOVERNANCE &amp; VERIFIED CASE STUDIES.
               </p>
-              <h2 className="text-2xl sm:text-3xl font-serif italic text-white">
+              <h3 className="text-2xl sm:text-3xl font-serif italic text-white">
                 Structured 5-Step Delivery Process &amp; Production Proof
-              </h2>
+              </h3>
               <p className="text-neutral-300 font-sans text-sm md:text-base leading-relaxed font-light">
                 Every project follows our clear five-step plan. We start with discovery and design wireframes. Then we run two-week coding sprints, test every feature, and hand over your full GitHub code repo. You always see real progress each week.
               </p>
@@ -643,9 +643,9 @@ export default function HomePage() {
               <p className="text-xs font-mono uppercase tracking-[0.2em] text-[#ccff00] font-bold">
                 05 / GLOBAL DELIVERY FOOTPRINT.
               </p>
-              <h2 className="text-2xl sm:text-3xl font-serif italic text-white">
+              <h3 className="text-2xl sm:text-3xl font-serif italic text-white">
                 Why US, UK &amp; Global Clients Partner With Our Karachi Studio
-              </h2>
+              </h3>
               <p className="text-neutral-300 font-sans leading-relaxed text-sm md:text-base font-light">
                 Founded in 2021 in Karachi, Pakistan, AbuQitmirLabs blends top global code quality with fair pricing. You work directly with senior software leads. We overlap hours with US, UK, and Gulf teams every day on Slack, GitHub, and Zoom.
               </p>
@@ -849,9 +849,9 @@ export default function HomePage() {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto relative z-10"
         >
-          <h2 className="text-3xl md:text-5xl font-serif text-white mb-4 italic tracking-tight">
+          <h3 className="text-3xl md:text-5xl font-serif text-white mb-4 italic tracking-tight">
             Book a Technical Discovery Call
-          </h2>
+          </h3>
           <p className="text-zinc-400 mb-10 text-sm md:text-base font-sans">
             Book a free 30-minute call with our senior engineering leads. We reply within 24 business hours.
           </p>

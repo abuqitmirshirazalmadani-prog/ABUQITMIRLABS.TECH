@@ -67,9 +67,9 @@ export const FeaturedToolsSection: React.FC = () => {
           <p className="text-[#ccff00] text-xs font-mono uppercase tracking-[0.2em] font-bold">
             Free Interactive Tools.
           </p>
-          <h2 className="text-3xl sm:text-5xl font-serif italic text-white tracking-tight leading-tight">
+          <h3 className="text-3xl sm:text-5xl font-serif italic text-white tracking-tight leading-tight">
             Six Free Tools for Modern Digital Businesses
-          </h2>
+          </h3>
           <p className="text-neutral-300 font-sans text-base sm:text-lg font-light leading-relaxed">
             Plan your budget, audit your website, and test your AI readiness for free. You do not need a credit card or login.
           </p>

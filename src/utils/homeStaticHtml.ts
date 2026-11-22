@@ -231,20 +231,20 @@ export const homeInitialHtml = `
       <!-- Benefit-Led Trust Bar -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-12 border-t border-white/10">
         <div>
-          <div class="text-2xl sm:text-3xl font-mono font-bold text-[#ccff00]">5+ Years</div>
-          <div class="text-xs text-neutral-400 font-mono uppercase tracking-wider mt-1">Founded in 2021</div>
+          <div class="text-2xl sm:text-3xl font-mono font-bold text-[#ccff00]">410+</div>
+          <div class="text-xs text-neutral-400 font-mono uppercase tracking-wider mt-1">Projects Delivered</div>
         </div>
         <div>
-          <div class="text-2xl sm:text-3xl font-mono font-bold text-[#ccff00]">100% IP</div>
-          <div class="text-xs text-neutral-400 font-mono uppercase tracking-wider mt-1">Source Code Ownership</div>
+          <div class="text-2xl sm:text-3xl font-mono font-bold text-[#ccff00]">98%</div>
+          <div class="text-xs text-neutral-400 font-mono uppercase tracking-wider mt-1">Client Retention</div>
         </div>
         <div>
-          <div class="text-2xl sm:text-3xl font-mono font-bold text-[#ccff00]">5-Step</div>
-          <div class="text-xs text-neutral-400 font-mono uppercase tracking-wider mt-1"><a href="/about/our-process" class="hover:text-white underline">Structured Delivery Process</a></div>
+          <div class="text-2xl sm:text-3xl font-mono font-bold text-[#ccff00]">100%</div>
+          <div class="text-xs text-neutral-400 font-mono uppercase tracking-wider mt-1">Code Ownership</div>
         </div>
         <div>
-          <div class="text-2xl sm:text-3xl font-mono font-bold text-[#ccff00]">Senior-Led</div>
-          <div class="text-xs text-neutral-400 font-mono uppercase tracking-wider mt-1">Direct Architect Access</div>
+          <div class="text-2xl sm:text-3xl font-mono font-bold text-[#ccff00]">10+</div>
+          <div class="text-xs text-neutral-400 font-mono uppercase tracking-wider mt-1">Countries Served</div>
         </div>
       </div>
     </div>

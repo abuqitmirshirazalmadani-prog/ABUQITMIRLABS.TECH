@@ -100,9 +100,9 @@ export default function TestimonialsSection() {
             <span>Verified Agency Profiles &amp; Client Reviews</span>
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-center text-white uppercase mb-6 leading-none">
+          <h3 className="text-4xl md:text-6xl font-black tracking-tighter text-center text-white uppercase mb-6 leading-none">
             Verified Client <span className="text-[#B9FF66]">Reviews from US, UK &amp; Global Partners</span>
-          </h2>
+          </h3>
           <p className="text-center text-zinc-400 font-mono text-sm uppercase tracking-widest leading-relaxed mb-8">
             Independently verifiable across Google Business Profile, DesignRush, Sortlist, LinkedIn, and live production deployments.
           </p>
