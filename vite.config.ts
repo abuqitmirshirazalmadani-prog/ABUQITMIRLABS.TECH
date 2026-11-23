@@ -235,6 +235,11 @@ export default defineConfig(({ mode }) => {
             routeTitle: string,
             usedSet: Set<string>
           ): string => {
+            if (routeUrl === '/blog/content-audit-pakistan-smes' && rawDesc) {
+              const exactClean = rawDesc.replace(/\s+/g, ' ').trim();
+              usedSet.add(exactClean.toLowerCase());
+              return exactClean;
+            }
             const cleanHeadline = (routeTitle || routeUrl)
               .replace(/\s*\|\s*AbuQitmirLabs.*$/i, '')
               .replace(/["“”]/g, "'")
@@ -846,7 +851,10 @@ export default defineConfig(({ mode }) => {
             
             let routeHtml = baseHtml;
             const safeTitle = route.title.replace(/&/g, '&amp;');
-            const strippedDesc = clampMetaDescription(route.description || '', 158);
+            const strippedDesc =
+              route.url === '/blog/content-audit-pakistan-smes' && route.description
+                ? route.description.replace(/\s+/g, ' ').trim()
+                : clampMetaDescription(route.description || '', 158);
             const safeDesc = strippedDesc.replace(/"/g, '&quot;').replace(/&/g, '&amp;');
             
             const fullRouteCanonical = `${hostname}${route.url === '/' ? '/' : route.url}`;
@@ -1588,6 +1596,11 @@ export default defineConfig(({ mode }) => {
                   'fintech-software-development-compliance-first-architecture',
                   'custom-software-development-qatar',
                 ],
+                'content-audit-pakistan-smes': [
+                  'brand-audit-checklist-pakistan',
+                  'brand-consistency-checklist',
+                  'brand-guidelines-small-business-pakistan',
+                ],
               };
               const preferredSlugs = CURATED_RELATED_BY_SLUG[blogPostSlug] || [];
               const preferredPosts = preferredSlugs
@@ -1620,7 +1633,31 @@ export default defineConfig(({ mode }) => {
                 relatedArticlesHtml = `\n<section aria-label="Related Articles" data-testid="related-articles-section" class="mt-16 pt-10 border-t border-zinc-800/80">\n  <h2 class="mb-8 text-2xl md:text-3xl font-black text-white uppercase tracking-tight font-serif">Related Articles</h2>\n  <ul class="grid grid-cols-1 md:grid-cols-3 gap-6 list-none p-0 m-0">\n${cardsHtml}\n  </ul>\n</section>`;
               }
             }
-            const fallbackPrerenderHtml = `<div class="min-h-screen bg-[#050505] text-white">\n${renderStaticHeader(route.url)}\n<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16">\n  <header class="mb-8">\n    <h1 itemProp="headline" class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${escapeXml(cleanH1Title)}</h1>\n  </header>\n  <article itemProp="articleBody" data-article-content="true" class="prose prose-invert max-w-none text-neutral-300">\n${articleContent}\n  </article>${relatedArticlesHtml}\n</main>\n</div>`;
+            let blogHeaderMetaAndCoverHtml = '';
+            if (blogPostSlug) {
+              const staticBlogEntry = STATIC_BLOG_POSTS[blogPostSlug];
+              const firestoreBlogEntry = fetchedPosts.find(p => p.slug === blogPostSlug);
+              const rawPubDate = String(staticBlogEntry?.publishedAt || staticBlogEntry?.createdAt || firestoreBlogEntry?.createdAt || '2026-11-23').slice(0, 10);
+              let humanPubDate = rawPubDate;
+              try {
+                const parsedD = new Date(`${rawPubDate}T00:00:00Z`);
+                if (!Number.isNaN(parsedD.getTime())) {
+                  humanPubDate = parsedD.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+                }
+              } catch {}
+              const authorLabel = staticBlogEntry?.author && !staticBlogEntry.author.toUpperCase().includes('SHIRAZ') && !staticBlogEntry.author.toUpperCase().includes('ABUQITMIR')
+                ? staticBlogEntry.author
+                : 'Abu Qitmir Mohammad Shiraz Al-Madani';
+              const rawCover = SEO_ROUTES_METADATA[route.url]?.ogImage || staticBlogEntry?.coverImage || firestoreBlogEntry?.coverImage || '/logo.png';
+              const localCover = resolveOptimizedCoverImage(rawCover, blogPostSlug) || rawCover;
+              const coverAltText = (
+                staticBlogEntry?.coverImageAlt ||
+                (SEO_ROUTES_METADATA[route.url] as any)?.ogImageAlt ||
+                cleanH1Title
+              );
+              blogHeaderMetaAndCoverHtml = `\n    <div aria-label="Article metadata" class="flex flex-wrap items-center gap-4 text-xs text-zinc-300 font-mono border-y border-zinc-800/80 py-4 mb-8">\n      <p class="m-0">Published: <time itemProp="datePublished" datetime="${escapeXml(rawPubDate)}">${escapeXml(humanPubDate)}</time></p>\n      <p itemProp="author" itemScope itemType="https://schema.org/Person" class="m-0">By <a href="/about/our-team" itemProp="url" class="text-white font-semibold underline"><span itemProp="name">${escapeXml(authorLabel)}</span></a> (AbuQitmirLabs)</p>\n    </div>\n    <div class="aspect-video w-full rounded-[2rem] overflow-hidden mb-10 border border-zinc-800/80 bg-[#090a0f]">\n      <img src="${escapeXml(localCover)}" alt="${escapeXml(coverAltText)}" width="1200" height="675" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover" />\n    </div>`;
+            }
+            const fallbackPrerenderHtml = `<div class="min-h-screen bg-[#050505] text-white">\n${renderStaticHeader(route.url)}\n<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16">\n  <header class="mb-8">\n    <h1 itemProp="headline" class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${escapeXml(cleanH1Title)}</h1>${blogHeaderMetaAndCoverHtml}\n  </header>\n  <article itemProp="articleBody" data-article-content="true" class="prose prose-invert max-w-none text-neutral-300">\n${articleContent}\n  </article>${relatedArticlesHtml}\n</main>\n</div>`;
             routeHtml = replaceRootElement(routeHtml, fallbackPrerenderHtml, route.url);
             
             writeRouteFiles(route.url, routeDir, routeHtml);

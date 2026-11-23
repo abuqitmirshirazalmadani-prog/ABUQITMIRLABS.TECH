@@ -18138,4 +18138,125 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
       ]
     }
   },
+  '/blog/content-audit-pakistan-smes': {
+    title: "Content Audit Checklist for Pakistani SMEs | AbuQitmirLabs",
+    description: "Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a practical worksheet.",
+    canonical: 'https://www.abuqitmirlabs.tech/blog/content-audit-pakistan-smes',
+    ogTitle: "Content Audit Checklist for Pakistani SMEs | AbuQitmirLabs",
+    ogDescription: "Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a practical worksheet.",
+    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/content-audit-pakistan-smes.webp",
+    ogImageAlt: "Content audit checklist showing keep, update, merge and review decisions for Pakistani SMEs",
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterTitle: "Content Audit Checklist for Pakistani SMEs | AbuQitmirLabs",
+    twitterDescription: "Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a practical worksheet.",
+    twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/content-audit-pakistan-smes.webp",
+    schemaJsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.abuqitmirlabs.tech/#organization',
+          name: 'AbuQitmirLabs',
+          url: 'https://www.abuqitmirlabs.tech/',
+          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://www.abuqitmirlabs.tech/#website',
+          url: 'https://www.abuqitmirlabs.tech/',
+          name: 'AbuQitmirLabs',
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' }
+        },
+        {
+          '@type': 'WebPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/content-audit-pakistan-smes#webpage',
+          url: 'https://www.abuqitmirlabs.tech/blog/content-audit-pakistan-smes',
+          name: "Content Audit Checklist for Pakistani SMEs | AbuQitmirLabs",
+          description: "Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a practical worksheet.",
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/content-audit-pakistan-smes#breadcrumb',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
+            { '@type': 'ListItem', position: 3, name: "Content Audit Checklist for Pakistani SMEs", item: 'https://www.abuqitmirlabs.tech/blog/content-audit-pakistan-smes' }
+          ]
+        },
+        {
+          '@type': 'Article',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/content-audit-pakistan-smes#article',
+          isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/content-audit-pakistan-smes#webpage' },
+          headline: "Content Audit Checklist for Pakistani SMEs",
+          description: "Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a practical worksheet.",
+          image: "https://www.abuqitmirlabs.tech/images/blog-covers/content-audit-pakistan-smes.webp",
+          author: {
+            '@type': 'Person',
+            name: "Abu Qitmir Mohammad Shiraz Al-Madani",
+            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+          },
+          publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
+          mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/content-audit-pakistan-smes#webpage' },
+          datePublished: "2026-11-23T00:00:00+00:00",
+          dateModified: "2026-11-23T00:00:00+00:00"
+        },
+        {
+          '@type': 'FAQPage',
+          '@id': 'https://www.abuqitmirlabs.tech/blog/content-audit-pakistan-smes#faq',
+          mainEntity: [
+            {
+              "@type": "Question",
+              "name": "How much does a website content audit cost in Pakistan?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The cost depends on the number of URLs, the quality of the available data and whether the quote includes rewriting or technical work. Ask for an itemised PKR quote. Keep audit recommendations, copywriting, development and post-launch checks as separate deliverables."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How long does a content audit take?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It depends on the number of pages and how quickly the people responsible can confirm the facts. Start with one service and use that batch to estimate the rest. Allow extra time for approvals, redirects and testing."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the difference between a content audit and a technical SEO audit?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A content audit checks whether a page is accurate, useful and clear. A technical SEO audit checks whether search engines and users can discover, access and understand the page. Use both when you plan to merge URLs, remove pages or redesign the site."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Who should run a content audit?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Give one person ownership of the worksheet. Marketing can manage the URL list, sales can confirm buyer questions, service owners can approve the offer, and a developer can handle redirects, forms and indexing changes."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Should I delete pages with low traffic?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Not automatically. First check sales use, customer use, internal links, accuracy and possible replacements. Remove a page only when it has no remaining purpose and the responsible people approve the decision."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I start without Google Search Console?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Begin with your CMS, sitemap, sales links and a manual review of the pages. Mark search visibility as unknown. Add Search Console data later instead of guessing."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
 };

@@ -251,7 +251,9 @@ export function generateBlogPostMeta(
     return cleanExcerpt(s, 152);
   };
   const explicitDesc = stripSurroundingQuotes(post.metaDescription || (post as any).description);
-  if (explicitDesc) {
+  if (slug === 'content-audit-pakistan-smes' && explicitDesc) {
+    description = explicitDesc.replace(/\s+/g, ' ').trim();
+  } else if (explicitDesc) {
     description = clampTo155(explicitDesc);
   } else if (post.excerpt?.trim()) {
     description = clampTo155(post.excerpt);

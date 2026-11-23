@@ -942,6 +942,11 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 'fintech-software-development-compliance-first-architecture',
                 'custom-software-development-qatar',
             ],
+            'content-audit-pakistan-smes': [
+                'brand-audit-checklist-pakistan',
+                'brand-consistency-checklist',
+                'brand-guidelines-small-business-pakistan',
+            ],
         };
 
         const preferredSlugs = CURATED_RELATED_SLUGS[currentCanonical] || [];
@@ -3444,7 +3449,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             <main className="pt-36 md:pt-44 pb-20 px-6 animate-enter">
                 <article className="max-w-7xl mx-auto" itemScope itemType="https://schema.org/BlogPosting">
                     <header className="mb-8">
-                        <div className="mb-10" data-nosnippet aria-hidden="true">
+                        <div className="mb-10">
                             <Link to="/blog" className="inline-flex items-center gap-2 text-zinc-400 hover:text-[#ccff00] transition-colors uppercase tracking-widest text-xs font-bold group">
                                 <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to The Journal
                             </Link>
@@ -3472,9 +3477,12 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         <div className="flex flex-wrap items-center gap-4">
                             <p className="flex items-center gap-2 text-zinc-300 m-0 sm:border-r sm:border-zinc-800 sm:pr-4">
                                 <Calendar size={14} className="text-[#ccff00]" />
-                                <time itemProp="datePublished" dateTime={formatISODate(post.createdAt).slice(0, 10)}>
-                                    {formatDate(post.createdAt)}
-                                </time>
+                                <span>
+                                    {'Published: '}
+                                    <time itemProp="datePublished" dateTime={formatISODate(post.createdAt).slice(0, 10)}>
+                                        {formatDate(post.createdAt)}
+                                    </time>
+                                </span>
                             </p>
                             <p itemProp="author" itemScope itemType="https://schema.org/Person" className="flex items-center gap-2 text-zinc-300 font-medium tracking-normal m-0 sm:border-r sm:border-zinc-800 sm:pr-4">
                                 <User size={14} className="text-[#ccff00]" />

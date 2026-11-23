@@ -213,9 +213,13 @@ const TITLE_OVERRIDES: Record<string, string> = {
     'Raast Payment Integration in Pakistan: Merchant Guide',
   '/blog/website-visibility-right-audience':
     'Website Visibility: Reach the Right Audience (2026) | AbuQitmirLabs',
+  '/blog/content-audit-pakistan-smes':
+    'Content Audit Checklist for Pakistani SMEs | AbuQitmirLabs',
 };
 
 const DESCRIPTION_OVERRIDES: Record<string, string> = {
+  '/blog/content-audit-pakistan-smes':
+    'Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a practical worksheet.',
   '/blog/raast-payment-integration-pakistan':
     'Learn how Pakistani businesses can accept Raast P2M payments through QR, RTP, merchant aliases or IBAN, and connect confirmations to orders and accounting.',
   '/blog/brand-guidelines-small-business-pakistan':
@@ -710,15 +714,18 @@ export function generateMetadata(input: MetadataInput = {}): NextStyleMetadata {
 
   const resolvedTitle = formatConciseTitle(rawTitle || DEFAULT_TITLE, normalizedPath);
 
-  const resolvedDescription = clampMetaDescription(
-    DESCRIPTION_OVERRIDES[normalizedPath] ||
-      input.description ||
-      routeMeta?.description ||
-      blogAutoMeta?.description ||
-      staticBlogPost?.metaDescription ||
-      staticBlogPost?.excerpt ||
-      DEFAULT_DESCRIPTION
-  );
+  const resolvedDescription =
+    normalizedPath === '/blog/content-audit-pakistan-smes' && DESCRIPTION_OVERRIDES[normalizedPath]
+      ? DESCRIPTION_OVERRIDES[normalizedPath]
+      : clampMetaDescription(
+          DESCRIPTION_OVERRIDES[normalizedPath] ||
+            input.description ||
+            routeMeta?.description ||
+            blogAutoMeta?.description ||
+            staticBlogPost?.metaDescription ||
+            staticBlogPost?.excerpt ||
+            DEFAULT_DESCRIPTION
+        );
 
   const resolvedCanonical =
     input.canonical ||
@@ -761,13 +768,16 @@ export function generateMetadata(input: MetadataInput = {}): NextStyleMetadata {
     stripOuterQuotes(input.ogTitle || routeMeta?.ogTitle || blogAutoMeta?.ogTitle || resolvedTitle),
     normalizedPath
   );
-  const resolvedOgDescription = clampMetaDescription(
-    DESCRIPTION_OVERRIDES[normalizedPath] ||
-      input.ogDescription ||
-      routeMeta?.ogDescription ||
-      blogAutoMeta?.ogDescription ||
-      resolvedDescription
-  );
+  const resolvedOgDescription =
+    normalizedPath === '/blog/content-audit-pakistan-smes' && DESCRIPTION_OVERRIDES[normalizedPath]
+      ? DESCRIPTION_OVERRIDES[normalizedPath]
+      : clampMetaDescription(
+          DESCRIPTION_OVERRIDES[normalizedPath] ||
+            input.ogDescription ||
+            routeMeta?.ogDescription ||
+            blogAutoMeta?.ogDescription ||
+            resolvedDescription
+        );
   const resolvedOgType = input.ogType || routeMeta?.ogType || (isBlogPost ? 'article' : 'website');
 
   const resolvedTwitterCard =
@@ -776,12 +786,15 @@ export function generateMetadata(input: MetadataInput = {}): NextStyleMetadata {
     stripOuterQuotes(input.twitterTitle || routeMeta?.twitterTitle || resolvedOgTitle),
     normalizedPath
   );
-  const resolvedTwitterDescription = clampMetaDescription(
-    DESCRIPTION_OVERRIDES[normalizedPath] ||
-      input.twitterDescription ||
-      routeMeta?.twitterDescription ||
-      resolvedOgDescription
-  );
+  const resolvedTwitterDescription =
+    normalizedPath === '/blog/content-audit-pakistan-smes' && DESCRIPTION_OVERRIDES[normalizedPath]
+      ? DESCRIPTION_OVERRIDES[normalizedPath]
+      : clampMetaDescription(
+          DESCRIPTION_OVERRIDES[normalizedPath] ||
+            input.twitterDescription ||
+            routeMeta?.twitterDescription ||
+            resolvedOgDescription
+        );
   const rawTwitterImage =
     isBlogPost ? resolvedOgImage : (input.twitterImage || routeMeta?.twitterImage || resolvedOgImage);
   const optimizedTwitterPath = resolveOptimizedCoverImage(rawTwitterImage, blogSlug || undefined);
