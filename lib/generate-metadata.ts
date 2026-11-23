@@ -219,7 +219,7 @@ const TITLE_OVERRIDES: Record<string, string> = {
 
 const DESCRIPTION_OVERRIDES: Record<string, string> = {
   '/blog/content-audit-pakistan-smes':
-    'Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a practical worksheet.',
+    'Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a worksheet.',
   '/blog/raast-payment-integration-pakistan':
     'Learn how Pakistani businesses can accept Raast P2M payments through QR, RTP, merchant aliases or IBAN, and connect confirmations to orders and accounting.',
   '/blog/brand-guidelines-small-business-pakistan':

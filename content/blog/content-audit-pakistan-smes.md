@@ -2,8 +2,8 @@
 {
   "title": "Content Audit Checklist for Pakistani SMEs",
   "slug": "content-audit-pakistan-smes",
-  "excerpt": "Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a practical worksheet.",
-  "metaDescription": "Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a practical worksheet.",
+  "excerpt": "Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a worksheet.",
+  "metaDescription": "Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a worksheet.",
   "coverImage": "/images/blog-covers/content-audit-pakistan-smes.webp",
   "coverImageAlt": "Content audit checklist showing keep, update, merge and review decisions for Pakistani SMEs",
   "category": "Business",

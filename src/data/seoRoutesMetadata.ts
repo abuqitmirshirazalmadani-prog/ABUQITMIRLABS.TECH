@@ -18140,16 +18140,16 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/content-audit-pakistan-smes': {
     title: "Content Audit Checklist for Pakistani SMEs | AbuQitmirLabs",
-    description: "Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a practical worksheet.",
+    description: "Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a worksheet.",
     canonical: 'https://www.abuqitmirlabs.tech/blog/content-audit-pakistan-smes',
     ogTitle: "Content Audit Checklist for Pakistani SMEs | AbuQitmirLabs",
-    ogDescription: "Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a practical worksheet.",
+    ogDescription: "Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a worksheet.",
     ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/content-audit-pakistan-smes.webp",
     ogImageAlt: "Content audit checklist showing keep, update, merge and review decisions for Pakistani SMEs",
     ogType: 'article',
     twitterCard: 'summary_large_image',
     twitterTitle: "Content Audit Checklist for Pakistani SMEs | AbuQitmirLabs",
-    twitterDescription: "Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a practical worksheet.",
+    twitterDescription: "Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a worksheet.",
     twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/content-audit-pakistan-smes.webp",
     schemaJsonLd: {
       '@context': 'https://schema.org',
@@ -18173,7 +18173,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@id': 'https://www.abuqitmirlabs.tech/blog/content-audit-pakistan-smes#webpage',
           url: 'https://www.abuqitmirlabs.tech/blog/content-audit-pakistan-smes',
           name: "Content Audit Checklist for Pakistani SMEs | AbuQitmirLabs",
-          description: "Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a practical worksheet.",
+          description: "Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a worksheet.",
           isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
         },
         {
@@ -18190,7 +18190,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@id': 'https://www.abuqitmirlabs.tech/blog/content-audit-pakistan-smes#article',
           isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/content-audit-pakistan-smes#webpage' },
           headline: "Content Audit Checklist for Pakistani SMEs",
-          description: "Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a practical worksheet.",
+          description: "Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a worksheet.",
           image: "https://www.abuqitmirlabs.tech/images/blog-covers/content-audit-pakistan-smes.webp",
           author: {
             '@type': 'Person',
