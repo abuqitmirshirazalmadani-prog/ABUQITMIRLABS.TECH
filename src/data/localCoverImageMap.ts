@@ -29,6 +29,7 @@ export const REMOTE_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "https://i.postimg.cc/25VjzWft/Problem-Solution-Action.png": "/images/blog-covers/website-visibility-right-audience.webp",
   "https://i.postimg.cc/tTrRrvX1/Saudi-businesses-Inventory-management.png": "/images/blog-covers/inventory-management-software-saudi-arabia.webp",
   "https://i.postimg.cc/s2SBxvM0/blogcontent-audit-pakistan.jpg": "/images/blog-covers/content-audit-pakistan-smes.webp",
+  "https://i.postimg.cc/FFYJByXS/Brand-Your-Whats-App-Business-in-Pakistan.jpg": "/images/blog-covers/whatsapp-business-branding-pakistan.webp",
   "https://i.postimg.cc/cHQRwnLJ/Logo-vs-Brand-Identity-Guide.png": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp",
   "/images/blog-covers/lead-generation-content-strategy-google-meta-1576aa01.webp": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
   "/images/blog-covers/rebranding-checklist-pakistan-9252c088.webp": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
@@ -36,6 +37,7 @@ export const REMOTE_TO_LOCAL_COVER_MAP: Record<string, string> = {
 };
 
 export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
+  "whatsapp-business-branding-pakistan": "/images/blog-covers/whatsapp-business-branding-pakistan.webp",
   "content-audit-pakistan-smes": "/images/blog-covers/content-audit-pakistan-smes.webp",
   "inventory-management-software-saudi-arabia": "/images/blog-covers/inventory-management-software-saudi-arabia.webp",
   "website-visibility-right-audience": "/images/blog-covers/website-visibility-right-audience.webp",
@@ -229,6 +231,7 @@ export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
 };
 
 export const SLUG_TO_REMOTE_COVER_MAP: Record<string, string> = {
+  "whatsapp-business-branding-pakistan": "https://i.postimg.cc/FFYJByXS/Brand-Your-Whats-App-Business-in-Pakistan.jpg",
   "content-audit-pakistan-smes": "https://i.postimg.cc/s2SBxvM0/blogcontent-audit-pakistan.jpg",
   "inventory-management-software-saudi-arabia": "https://i.postimg.cc/tTrRrvX1/Saudi-businesses-Inventory-management.png",
   "website-visibility-right-audience": "https://i.postimg.cc/25VjzWft/Problem-Solution-Action.png",

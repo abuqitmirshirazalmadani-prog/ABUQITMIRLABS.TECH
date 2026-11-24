@@ -252,6 +252,7 @@ export default async function handler(req: any, res: any) {
             metaDescription: f.metaDescription?.stringValue || f.excerpt?.stringValue || '',
             content: f.content?.stringValue || '',
             coverImage: f.coverImage?.stringValue || 'https://www.abuqitmirlabs.tech/logo.png',
+            coverImageAlt: f.coverImageAlt?.stringValue || '',
             author: f.author?.stringValue || 'Abu Qitmir Mohammad Shiraz Al-Madani',
             category: f.category?.stringValue || 'Business',
             createdAt: f.publishedAt?.stringValue || f.createdAt?.timestampValue || mapIso || new Date().toISOString().slice(0, 10),
@@ -343,6 +344,7 @@ export default async function handler(req: any, res: any) {
         'https://i.postimg.cc/NGkCBDtZ/social-media-brand-kit.png': '/images/blog-covers/social-media-brand-kit-a2d5c63e.webp',
         'https://i.postimg.cc/mgJqDkFt/ZATCA-ERP-Integration-Saudi-Arabia-Guide.png': '/images/blog-covers/zatca-erp-integration-saudi-arabia.webp',
         'https://i.postimg.cc/MKZDD2QK/Abu-Qitmir-Labs.png': '/images/blog-covers/raast-payment-integration-pakistan.webp',
+        'https://i.postimg.cc/FFYJByXS/Brand-Your-Whats-App-Business-in-Pakistan.jpg': '/images/blog-covers/whatsapp-business-branding-pakistan.webp',
       };
       if (inputUrl && knownMap[inputUrl.trim()]) {
         return knownMap[inputUrl.trim()];
@@ -738,6 +740,8 @@ export default async function handler(req: any, res: any) {
       postData.coverImageAlt ||
       (canonicalSlug === 'raast-payment-integration-pakistan'
         ? 'Raast Payment Integration in Pakistan for Merchants'
+        : canonicalSlug === 'whatsapp-business-branding-pakistan'
+        ? 'WhatsApp Business branding checklist for Pakistani small businesses'
         : cleanH1);
     const seoHeadTopBlock = [
       `  <title>${escapeHtml(pageTitle)}</title>`,

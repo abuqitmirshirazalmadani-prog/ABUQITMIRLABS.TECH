@@ -86,22 +86,39 @@ export default async function handler(req: any, res: any) {
           const timer = setTimeout(() => controller.abort(), 2500);
           const fsRes = await fetch(firestoreUrl, { signal: controller.signal });
           clearTimeout(timer);
+          let docs: any[] = [];
           if (fsRes.ok) {
             const data: any = await fsRes.json();
-            const docs = Array.isArray(data.documents) ? data.documents : [];
-            for (const doc of docs) {
-              const f = doc.fields || {};
-              if (f.published?.booleanValue === false) continue;
-              const rawSlug = String(f.slug?.stringValue || '').trim().replace(/^\/+/, '').replace(/^blog\//, '').replace(/\/+$/, '');
-              if (!rawSlug) continue;
-              const canonicalSlug = getCanonicalSlug(rawSlug);
-              if (canonicalSlug !== rawSlug) continue;
-              const postUrl = `https://www.abuqitmirlabs.tech/blog/${canonicalSlug}`;
-              if (content && !content.includes(`<loc>${postUrl}</loc>`)) {
-                const pubDate = String(f.publishedAt?.stringValue || today).slice(0, 10);
-                const entry = `  <url>\n    <loc>${postUrl}</loc>\n    <lastmod>${pubDate}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>\n</urlset>`;
-                content = content.replace('</urlset>', entry);
-              }
+            docs = Array.isArray(data.documents) ? data.documents : [];
+          } else {
+            const runQueryUrl = `https://firestore.googleapis.com/v1/projects/${cfg.projectId}/databases/${dbId}/documents:runQuery${cfg.apiKey ? `?key=${cfg.apiKey}` : ''}`;
+            const rqRes = await fetch(runQueryUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                structuredQuery: {
+                  from: [{ collectionId: 'posts' }],
+                  limit: 250,
+                },
+              }),
+            });
+            if (rqRes.ok) {
+              const rows: any = await rqRes.json();
+              docs = Array.isArray(rows) ? rows.map((r: any) => r?.document).filter(Boolean) : [];
+            }
+          }
+          for (const doc of docs) {
+            const f = doc.fields || {};
+            if (f.published?.booleanValue === false) continue;
+            const rawSlug = String(f.slug?.stringValue || '').trim().replace(/^\/+/, '').replace(/^blog\//, '').replace(/\/+$/, '');
+            if (!rawSlug) continue;
+            const canonicalSlug = getCanonicalSlug(rawSlug);
+            if (canonicalSlug !== rawSlug) continue;
+            const postUrl = `https://www.abuqitmirlabs.tech/blog/${canonicalSlug}`;
+            if (content && !content.includes(`<loc>${postUrl}</loc>`)) {
+              const pubDate = String(f.publishedAt?.stringValue || today).slice(0, 10);
+              const entry = `  <url>\n    <loc>${postUrl}</loc>\n    <lastmod>${pubDate}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>\n</urlset>`;
+              content = content.replace('</urlset>', entry);
             }
           }
         }
