@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { 
@@ -23,6 +22,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import CountryMarquee from '../../components/CountryMarquee';
+import SEO from '../../components/SEO';
 
 const OurTeamPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -33,12 +33,12 @@ const OurTeamPage = () => {
       title: "Founder & Lead Systems Architect",
       credentials: (
         <span>
-          M.B.A. Commerce (<a href="https://uok.edu.pk/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] underline transition-colors inline-flex items-center gap-0.5">University of Karachi <ExternalLink className="w-3 h-3" /></a>, 2010), <a href="https://digiskills.pk/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] underline transition-colors inline-flex items-center gap-0.5">DigiSkills Certified <ExternalLink className="w-3 h-3" /></a>
+          Founded AbuQitmirLabs (2021) • M.B.A. Commerce (<a href="https://uok.edu.pk/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] underline transition-colors inline-flex items-center gap-0.5">University of Karachi <ExternalLink className="w-3 h-3" /></a>, 2010), <a href="https://digiskills.pk/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ccff00] underline transition-colors inline-flex items-center gap-0.5">DigiSkills Certified <ExternalLink className="w-3 h-3" /></a>
         </span>
       ),
-      bio: "Over 15 years of digital commerce and systems engineering expertise. Abu Qitmir oversees all technical architecture, AI agent pipelines, low-latency web platforms, and international technical SEO strategies across our 410+ client deployments.",
+      bio: "Founder of AbuQitmirLabs (established 2021 in Karachi) with over 15 years in digital commerce, brand engineering, and systems architecture. Has led 410+ custom web, software, branding, and technical SEO engagements for 350+ clients across Pakistan, the GCC, UK, US, and Europe with a 98% client retention rate—including scaling TajweedPage.com to learners across 20+ countries.",
       icon: Terminal,
-      skills: ["Systems Architecture", "AI Agent Pipelines", "Technical SEO", "Low-Latency Web"]
+      skills: ["Systems Architecture", "Brand Engineering", "AI Agent Pipelines", "Technical & Local SEO"]
     },
     {
       name: "Abu Huraira",
@@ -77,58 +77,126 @@ const OurTeamPage = () => {
     }
   ];
 
-  const faqSchema = {
+  const unifiedGraphSchema = {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.q,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.a
-      }
-    }))
-  };
-
-  const teamSchema = {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "name": "Our Team — AbuQitmirLabs .TECH",
-    "mainEntity": teamMembers.map(m => ({
-      "@type": "Person",
-      "name": m.name,
-      "jobTitle": m.title,
-      "description": m.bio,
-      "worksFor": {
+    "@graph": [
+      {
         "@type": "Organization",
-        "name": "AbuQitmirLabs .TECH"
+        "@id": "https://www.abuqitmirlabs.tech/#organization",
+        "name": "AbuQitmirLabs",
+        "alternateName": "AbuQitmirLabs .TECH",
+        "url": "https://www.abuqitmirlabs.tech/",
+        "logo": "https://www.abuqitmirlabs.tech/logo.png",
+        "foundingDate": "2021",
+        "email": "hello@abuqitmirlabs.tech",
+        "telephone": "+923233260859",
+        "sameAs": [
+          "https://www.linkedin.com/in/abu-qitmir-697423390/",
+          "https://www.facebook.com/profile.php?id=61583768706452",
+          "https://www.instagram.com/abuqitmirshirazalmadani/",
+          "https://x.com/AbuQitmir",
+          "https://www.youtube.com/@AbuQitmir",
+          "https://clutch.co/profile/abuqitmirlabstech",
+          "https://www.goodfirms.co/company/abuqitmirlabs-tech"
+        ]
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+        "name": "AbuQitmirLabs",
+        "url": "https://www.abuqitmirlabs.tech/",
+        "image": "https://www.abuqitmirlabs.tech/logo.png",
+        "telephone": "+923233260859",
+        "email": "hello@abuqitmirlabs.tech",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Shahrah-e-Faisal, PECHS",
+          "addressLocality": "Karachi",
+          "addressRegion": "Sindh",
+          "postalCode": "75400",
+          "addressCountry": "PK"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Pakistan"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.abuqitmirlabs.tech/#website",
+        "url": "https://www.abuqitmirlabs.tech/",
+        "name": "AbuQitmirLabs",
+        "publisher": { "@id": "https://www.abuqitmirlabs.tech/#organization" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.abuqitmirlabs.tech/about/our-team#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abuqitmirlabs.tech/" },
+          { "@type": "ListItem", "position": 2, "name": "About Us", "item": "https://www.abuqitmirlabs.tech/about" },
+          { "@type": "ListItem", "position": 3, "name": "Our Team", "item": "https://www.abuqitmirlabs.tech/about/our-team" }
+        ]
+      },
+      {
+        "@type": "AboutPage",
+        "@id": "https://www.abuqitmirlabs.tech/about/our-team#webpage",
+        "url": "https://www.abuqitmirlabs.tech/about/our-team",
+        "name": "Our Team | Elite Software Architects | AbuQitmirLabs",
+        "description": "Meet the AbuQitmirLabs team: 12+ in-house architects, engineers & SEO experts in Karachi. 410+ projects delivered globally, led by Abu Qitmir.",
+        "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" },
+        "mainEntity": teamMembers.map((m, i) => ({
+          "@type": "Person",
+          ...(i === 0 ? {
+            "@id": "https://www.abuqitmirlabs.tech/#founder",
+            "alumniOf": {
+              "@type": "CollegeOrUniversity",
+              "name": "University of Karachi",
+              "url": "https://uok.edu.pk/"
+            },
+            "knowsAbout": [
+              "Custom Software Engineering",
+              "Brand Strategy & WhatsApp Business Systems",
+              "AI Agent Development",
+              "Technical & Local SEO"
+            ],
+            "sameAs": [
+              "https://www.linkedin.com/in/abu-qitmir-697423390/",
+              "https://x.com/AbuQitmir",
+              "https://www.instagram.com/abuqitmirshirazalmadani/"
+            ]
+          } : {}),
+          "name": m.name,
+          "jobTitle": m.title,
+          "description": m.bio,
+          "url": "https://www.abuqitmirlabs.tech/about/our-team",
+          "worksFor": { "@id": "https://www.abuqitmirlabs.tech/#organization" }
+        }))
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.abuqitmirlabs.tech/about/our-team#faq",
+        "mainEntity": faqs.map(faq => ({
+          "@type": "Question",
+          "name": faq.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.a
+          }
+        }))
       }
-    }))
+    ]
   };
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
-      <Helmet>
-        <title>Our Team | Elite Software Architects | AbuQitmirLabs</title>
-        <meta name="description" content="Meet the AbuQitmirLabs team — 12+ in-house software architects, engineers, and UI/UX experts in Karachi. 410+ projects delivered globally. Led by founder Abu Qitmir." />
-        <link rel="canonical" href="https://www.abuqitmirlabs.tech/about/our-team" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="Our Team | Elite Software Architects | AbuQitmirLabs" />
-        <meta property="og:description" content="Meet the AbuQitmirLabs team — 12+ in-house software architects, engineers, and UI/UX experts in Karachi. 410+ projects delivered globally. Led by founder Abu Qitmir." />
-        <meta property="og:url" content="https://www.abuqitmirlabs.tech/about/our-team" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Our Team | Elite Software Architects | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Meet the AbuQitmirLabs team — 12+ in-house software architects, engineers, and UI/UX experts in Karachi. 410+ projects delivered globally. Led by founder Abu Qitmir." />
-        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
-        <script type="application/ld+json">{JSON.stringify(teamSchema)}</script>
-      </Helmet>
+      <SEO
+        title="Our Team | Elite Software Architects | AbuQitmirLabs"
+        description="Meet the AbuQitmirLabs team: 12+ in-house architects, engineers & SEO experts in Karachi. 410+ projects delivered globally, led by Abu Qitmir."
+        canonical="https://www.abuqitmirlabs.tech/about/our-team"
+        ogType="website"
+        ogImage="https://www.abuqitmirlabs.tech/logo.png"
+        schema={unifiedGraphSchema['@graph']}
+      />
 
       <Header />
 
@@ -227,6 +295,24 @@ const OurTeamPage = () => {
                 </div>
               </motion.div>
             ))}
+          </div>
+          <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10">
+              <div className="text-3xl font-black text-[#ccff00] font-mono">2021</div>
+              <p className="text-xs text-gray-400 uppercase tracking-wider mt-1 font-mono">Studio Founded in Karachi</p>
+            </div>
+            <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10">
+              <div className="text-3xl font-black text-white font-mono">410+</div>
+              <p className="text-xs text-gray-400 uppercase tracking-wider mt-1 font-mono">Production Projects Delivered</p>
+            </div>
+            <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10">
+              <div className="text-3xl font-black text-white font-mono">350+</div>
+              <p className="text-xs text-gray-400 uppercase tracking-wider mt-1 font-mono">Global &amp; Pakistani Clients</p>
+            </div>
+            <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10">
+              <div className="text-3xl font-black text-[#ccff00] font-mono">20+</div>
+              <p className="text-xs text-gray-400 uppercase tracking-wider mt-1 font-mono">Countries Reached (TajweedPage.com)</p>
+            </div>
           </div>
         </section>
 

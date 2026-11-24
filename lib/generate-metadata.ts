@@ -215,9 +215,13 @@ const TITLE_OVERRIDES: Record<string, string> = {
     'Website Visibility: Reach the Right Audience (2026) | AbuQitmirLabs',
   '/blog/content-audit-pakistan-smes':
     'Content Audit Checklist for Pakistani SMEs | AbuQitmirLabs',
+  '/blog/whatsapp-business-branding-pakistan':
+    'WhatsApp Business Branding Pakistan | AbuQitmirLabs',
 };
 
 const DESCRIPTION_OVERRIDES: Record<string, string> = {
+  '/blog/whatsapp-business-branding-pakistan':
+    'Blank WhatsApp profile losing customers? Set up a branded profile, catalogue, and 15 bilingual reply templates for your Pakistani small business today.',
   '/blog/content-audit-pakistan-smes':
     'Learn how Pakistani SMEs can audit website pages, score content quality, improve internal links and decide what to keep, update, merge or remove. Includes examples and a worksheet.',
   '/blog/raast-payment-integration-pakistan':
@@ -501,11 +505,35 @@ export function buildConsolidatedSchemaGraph(
         availableLanguage: ['English', 'Arabic', 'Urdu'],
       },
       sameAs: [
-        'https://www.linkedin.com/company/abuqitmirlabs',
-        'https://x.com/AbuQitmir',
-        'https://www.facebook.com/abuqitmirlabs',
         'https://www.linkedin.com/in/abu-qitmir-697423390/',
+        'https://www.facebook.com/profile.php?id=61583768706452',
+        'https://www.instagram.com/abuqitmirshirazalmadani/',
+        'https://x.com/AbuQitmir',
+        'https://www.youtube.com/@AbuQitmir',
+        'https://clutch.co/profile/abuqitmirlabstech',
+        'https://www.goodfirms.co/company/abuqitmirlabs-tech',
       ],
+    },
+    {
+      '@type': 'LocalBusiness',
+      '@id': `${SITE_URL}/#localbusiness`,
+      name: SITE_NAME,
+      url: `${SITE_URL}/`,
+      image: DEFAULT_IMAGE,
+      telephone: '+923233260859',
+      email: 'hello@abuqitmirlabs.tech',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Shahrah-e-Faisal, PECHS',
+        addressLocality: 'Karachi',
+        addressRegion: 'Sindh',
+        postalCode: '75400',
+        addressCountry: 'PK',
+      },
+      areaServed: {
+        '@type': 'Country',
+        name: 'Pakistan',
+      },
     },
     {
       '@type': 'WebSite',
@@ -644,6 +672,8 @@ export function buildConsolidatedSchemaGraph(
         ? 'type:FAQPage'
         : nodeType.includes('Organization')
         ? 'type:Organization'
+        : nodeType === 'LocalBusiness'
+        ? 'type:LocalBusiness'
         : nodeType === 'WebSite'
         ? 'type:WebSite'
         : nodeType === 'BreadcrumbList'

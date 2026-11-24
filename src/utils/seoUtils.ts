@@ -155,6 +155,9 @@ export function formatConciseSeoTitle(rawTitle?: string, slug?: string, siteName
   if (slug === 'website-visibility-right-audience' || (rawTitle && /Website Visibility:\s*Reach the Right Audience/i.test(rawTitle))) {
     return 'Website Visibility: Reach the Right Audience (2026) | AbuQitmirLabs';
   }
+  if (slug === 'whatsapp-business-branding-pakistan' || (rawTitle && /WhatsApp Business Branding/i.test(rawTitle))) {
+    return 'WhatsApp Business Branding Pakistan | AbuQitmirLabs';
+  }
   const cleaned = stripSurroundingQuotes(rawTitle || '')
     .replace(/&amp;/gi, '&')
     .replace(/\s+/g, ' ')
@@ -238,7 +241,10 @@ export function generateBlogPostMeta(
   // 1. Unique Dynamic Title strictly between 30 and 60 characters
   const rawTitle = post.title?.trim() || 'Journal Article';
   const pageTitle = formatConciseSeoTitle((post as any).seoTitle || rawTitle, slug, siteName);
-  const schemaHeadline = formatConciseSeoTitle(rawTitle, slug, siteName);
+  const schemaHeadline =
+    rawTitle.length >= 30 && rawTitle.length <= 60
+      ? rawTitle
+      : formatConciseSeoTitle(rawTitle, slug, siteName);
 
   // 2. Unique Dynamic Description: Prioritize explicit metaDescription or description field, then post excerpt, then fallback to content
   let description = '';
@@ -299,15 +305,39 @@ export function generateBlogPostMeta(
         "description": "AbuQitmirLabs is a custom software, mobile app, AI agent, web development, SEO, graphics, and content writing studio serving startups, SMEs, and enterprises globally.",
         "sameAs": [
           "https://www.linkedin.com/in/abu-qitmir-697423390/",
-          "https://x.com/AbuQitmir",
           "https://www.facebook.com/profile.php?id=61583768706452",
           "https://www.instagram.com/abuqitmirshirazalmadani/",
-          "https://www.youtube.com/@AbuQitmir"
+          "https://x.com/AbuQitmir",
+          "https://www.youtube.com/@AbuQitmir",
+          "https://clutch.co/profile/abuqitmirlabstech",
+          "https://www.goodfirms.co/company/abuqitmirlabs-tech"
         ],
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "sales",
+          "telephone": "+923233260859",
           "url": `${siteUrl}/contact`
+        }
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": `${siteUrl}/#localbusiness`,
+        "name": "AbuQitmirLabs",
+        "url": `${siteUrl}/`,
+        "image": defaultImage,
+        "telephone": "+923233260859",
+        "email": "hello@abuqitmirlabs.tech",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Shahrah-e-Faisal, PECHS",
+          "addressLocality": "Karachi",
+          "addressRegion": "Sindh",
+          "postalCode": "75400",
+          "addressCountry": "PK"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Pakistan"
         }
       },
       {
@@ -365,7 +395,12 @@ export function generateBlogPostMeta(
           "@type": "Person",
           "name": "Abu Qitmir Mohammad Shiraz Al-Madani",
           "jobTitle": "Founder & Lead Systems Architect",
-          "description": "Founder & Lead Systems Architect at AbuQitmirLabs (B.S. Software Engineering, +5 Years Experience) specializing in custom software, AI agents, and technical SEO acquisition systems.",
+          "description": "Founder & Lead Systems Architect at AbuQitmirLabs (founded 2021; M.B.A. Commerce, University of Karachi; 410+ projects for 350+ clients) specializing in custom software, brand systems, AI agents, and technical SEO.",
+          "sameAs": [
+            "https://www.linkedin.com/in/abu-qitmir-697423390/",
+            "https://x.com/AbuQitmir",
+            "https://www.instagram.com/abuqitmirshirazalmadani/"
+          ],
           "worksFor": {
             "@type": "Organization",
             "name": "AbuQitmirLabs",
@@ -715,8 +750,34 @@ export function buildCanonicalGraphSchema(params: {
       logo: DEFAULT_OG_IMAGE,
       sameAs: [
         'https://www.linkedin.com/in/abu-qitmir-697423390/',
+        'https://www.facebook.com/profile.php?id=61583768706452',
+        'https://www.instagram.com/abuqitmirshirazalmadani/',
         'https://x.com/AbuQitmir',
+        'https://www.youtube.com/@AbuQitmir',
+        'https://clutch.co/profile/abuqitmirlabstech',
+        'https://www.goodfirms.co/company/abuqitmirlabs-tech',
       ],
+    },
+    {
+      '@type': 'LocalBusiness',
+      '@id': `${SITE_ORIGIN}/#localbusiness`,
+      name: 'AbuQitmirLabs',
+      url: `${SITE_ORIGIN}/`,
+      image: DEFAULT_OG_IMAGE,
+      telephone: '+923233260859',
+      email: 'hello@abuqitmirlabs.tech',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Shahrah-e-Faisal, PECHS',
+        addressLocality: 'Karachi',
+        addressRegion: 'Sindh',
+        postalCode: '75400',
+        addressCountry: 'PK',
+      },
+      areaServed: {
+        '@type': 'Country',
+        name: 'Pakistan',
+      },
     },
     {
       '@type': 'WebSite',

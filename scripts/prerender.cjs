@@ -232,6 +232,8 @@ const TITLE_OVERRIDES = {
     'Social Media Brand Kit: The 5-Step Guide to Consistency',
   '/blog/raast-payment-integration-pakistan':
     'Raast Payment Integration in Pakistan: Merchant Guide',
+  '/blog/whatsapp-business-branding-pakistan':
+    'WhatsApp Business Branding Pakistan | AbuQitmirLabs',
 };
 
 function formatConciseTitle(rawTitle, pathname) {

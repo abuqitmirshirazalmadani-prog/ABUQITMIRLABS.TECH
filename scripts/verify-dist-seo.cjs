@@ -102,6 +102,8 @@ const TITLE_OVERRIDES = {
     'Raast Payment Integration in Pakistan: Merchant Guide',
   '/blog/website-visibility-right-audience':
     'Website Visibility: Reach the Right Audience (2026) | AbuQitmirLabs',
+  '/blog/whatsapp-business-branding-pakistan':
+    'WhatsApp Business Branding Pakistan | AbuQitmirLabs',
 };
 
 function formatConciseTitle(rawTitle, pathname) {

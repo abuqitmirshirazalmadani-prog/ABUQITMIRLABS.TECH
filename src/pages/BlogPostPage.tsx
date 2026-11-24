@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { db, collection, getDocs, query, where, handleFirestoreError, OperationType } from '../lib/firebase';
-import { ArrowLeft, ArrowRight, Calendar, User, Clock, Share2, Twitter, Linkedin, Facebook, Link as LinkIcon, BookOpen } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, User, Clock, Share2, Twitter, Linkedin, Facebook, Link as LinkIcon, BookOpen, MessageCircle } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
@@ -946,6 +946,12 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 'brand-audit-checklist-pakistan',
                 'brand-consistency-checklist',
                 'brand-guidelines-small-business-pakistan',
+            ],
+            'whatsapp-business-branding-pakistan': [
+                'brand-guidelines-small-business-pakistan',
+                'brand-consistency-checklist',
+                'brand-audit-checklist-pakistan',
+                'social-media-brand-kit',
             ],
         };
 
@@ -3694,6 +3700,29 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         );
                     })()}
 
+                    {canonicalSlug === 'whatsapp-business-branding-pakistan' && (
+                        <div className="mt-12 rounded-[2.5rem] border border-[#ccff00]/30 bg-gradient-to-br from-[#0e1206] via-[#0b0b0e] to-zinc-950 p-8 md:p-10 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                            <div>
+                                <span className="text-[11px] font-mono text-[#ccff00] uppercase tracking-widest font-bold">Karachi &amp; Pakistan Direct Desk</span>
+                                <h2 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight font-serif mt-2">
+                                    Need Help Setting Up Your WhatsApp Business Brand?
+                                </h2>
+                                <p className="text-zinc-300 text-sm md:text-base mt-2 max-w-2xl leading-relaxed">
+                                    Message our Karachi branding and growth engineering team directly on WhatsApp for profile review, bilingual quick replies, and catalogue setup.
+                                </p>
+                            </div>
+                            <a
+                                href="https://wa.me/923233260859?text=Assalamu%20Alaikum%2C%20I%20read%20your%20WhatsApp%20Business%20branding%20guide%20and%20would%20like%20help%20with%20my%20business%20setup."
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-3 px-7 py-4 rounded-xl bg-[#ccff00] text-black font-black text-xs uppercase tracking-wider hover:bg-lime-300 transition-all shrink-0 shadow-[0_0_25px_rgba(204,255,0,0.25)]"
+                            >
+                                <MessageCircle size={18} />
+                                <span>WhatsApp par baat karein</span>
+                            </a>
+                        </div>
+                    )}
+
                     <aside aria-label="About the Author" className="mt-16 pt-10 border-t border-zinc-800/80">
                         <div className="bg-[#0b0b0e] border border-zinc-800/80 rounded-[2.5rem] p-10 flex flex-col md:flex-row items-center gap-10 shadow-xl">
                             <div className="h-24 w-24 bg-zinc-900 rounded-3xl overflow-hidden shrink-0 shadow-lg border-2 border-[#ccff00]/40">
@@ -3718,7 +3747,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                     </Link>
                                 </div>
                                 <p className="text-zinc-300 text-sm leading-relaxed max-w-2xl mb-4">
-                                    Founder &amp; Lead Systems Architect at AbuQitmirLabs (B.S. Software Engineering, +5 Years Experience). Based in Karachi, Pakistan, he architects custom web and mobile software, production AI agents, and technical SEO acquisition systems for B2B companies across Pakistan, the GCC, the UK, and the US.
+                                    Founder &amp; Lead Systems Architect at AbuQitmirLabs (founded 2021 in Karachi; M.B.A. Commerce, University of Karachi). Has delivered 410+ custom web, branding, AI agent, and technical SEO systems across 350+ clients in Pakistan, the GCC, the UK, and the US—with 98% client retention.
                                 </p>
                                 <div className="flex flex-wrap gap-4 text-xs font-mono">
                                     <Link to="/about/our-team" className="text-[#ccff00] hover:underline font-bold">Author &amp; Engineering Team Profile →</Link>

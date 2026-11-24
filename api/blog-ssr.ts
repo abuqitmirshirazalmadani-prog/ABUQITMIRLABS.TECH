@@ -277,6 +277,8 @@ export default async function handler(req: any, res: any) {
     const cleanH1 =
       canonicalSlug === 'raast-payment-integration-pakistan'
         ? 'Raast Payment Integration in Pakistan: Merchant Guide'
+        : canonicalSlug === 'whatsapp-business-branding-pakistan'
+        ? 'WhatsApp Business Branding for Small Businesses in Pakistan'
         : String(postData.title || canonicalSlug)
             .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
             .replace(/\s*\|\s*The\s*9-Step.*$/i, '')
@@ -296,6 +298,8 @@ export default async function handler(req: any, res: any) {
         ? 'Social Media Brand Kit: The 5-Step Guide to Consistency'
         : canonicalSlug === 'raast-payment-integration-pakistan'
         ? 'Raast Payment Integration in Pakistan: Merchant Guide'
+        : canonicalSlug === 'whatsapp-business-branding-pakistan'
+        ? 'WhatsApp Business Branding Pakistan | AbuQitmirLabs'
         : postData.seoTitle ||
           (/Abu\s*Qitmir\s*Labs/i.test(cleanH1)
             ? cleanH1
@@ -616,6 +620,37 @@ export default async function handler(req: any, res: any) {
         alternateName: 'AbuQitmirLabs',
         url: 'https://www.abuqitmirlabs.tech/',
         logo: 'https://www.abuqitmirlabs.tech/logo.png',
+        foundingDate: '2021',
+        sameAs: [
+          'https://www.linkedin.com/in/abu-qitmir-697423390/',
+          'https://www.facebook.com/profile.php?id=61583768706452',
+          'https://www.instagram.com/abuqitmirshirazalmadani/',
+          'https://x.com/AbuQitmir',
+          'https://www.youtube.com/@AbuQitmir',
+          'https://clutch.co/profile/abuqitmirlabstech',
+          'https://www.goodfirms.co/company/abuqitmirlabs-tech',
+        ],
+      },
+      {
+        '@type': 'LocalBusiness',
+        '@id': 'https://www.abuqitmirlabs.tech/#localbusiness',
+        name: 'AbuQitmirLabs',
+        url: 'https://www.abuqitmirlabs.tech/',
+        image: 'https://www.abuqitmirlabs.tech/logo.png',
+        telephone: '+923233260859',
+        email: 'hello@abuqitmirlabs.tech',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Shahrah-e-Faisal, PECHS',
+          addressLocality: 'Karachi',
+          addressRegion: 'Sindh',
+          postalCode: '75400',
+          addressCountry: 'PK',
+        },
+        areaServed: {
+          '@type': 'Country',
+          name: 'Pakistan',
+        },
       },
       {
         '@type': 'WebSite',
@@ -651,7 +686,13 @@ export default async function handler(req: any, res: any) {
         author: {
           '@type': 'Person',
           name: postData.author || 'Abu Qitmir Mohammad Shiraz Al-Madani',
+          jobTitle: 'Founder & Lead Systems Architect',
+          description: 'Founder of AbuQitmirLabs (established 2021 in Karachi); M.B.A. Commerce, University of Karachi; 410+ systems and brand builds delivered across 350+ clients.',
           url: 'https://www.abuqitmirlabs.tech/about/our-team',
+          sameAs: [
+            'https://www.linkedin.com/in/abu-qitmir-697423390/',
+            'https://x.com/AbuQitmir',
+          ],
         },
         publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
         mainEntityOfPage: { '@id': `${fullCanonical}#webpage` },
@@ -689,39 +730,65 @@ export default async function handler(req: any, res: any) {
     const schemaBlock = `<script id="canonical-schema-graph" type="application/ld+json">\n${JSON.stringify({ '@context': 'https://schema.org', '@graph': graphNodes }, null, 2)}\n</script>`;
     const bylineDate = escapeHtml(String(postData.createdAt || '2026-11-08').slice(0, 10));
     const bylineAuthor = escapeHtml(postData.author || 'Abu Qitmir Mohammad Shiraz Al-Madani');
-    const ssrRelatedCandidates = [
-      {
-        slug: 'fintech-software-development-compliance-first-architecture',
-        title: 'Fintech Software Development: Compliance-First Architecture',
-        category: 'Software',
-        excerpt: 'Why fintech systems require audit-ready ledgers, deterministic transaction states, role-based access control, and compliance-first software architecture.',
-      },
-      {
-        slug: 'custom-software-for-fintech-2026-financial-technology-development-guide',
-        title: 'Custom Software for Fintech in 2026: Financial Technology Development Guide',
-        category: 'Software',
-        excerpt: 'A complete engineering guide to building custom financial technology, payment workflows, automated reconciliation, and secure banking integrations.',
-      },
-      {
-        slug: 'custom-software-development-company-karachi-pakistan',
-        title: 'Custom Software Development Company in Karachi, Pakistan',
-        category: 'Development',
-        excerpt: 'How AbuQitmirLabs scopes, architects, and delivers production-grade custom business software, ERP integrations, and payment systems from Karachi.',
-      },
-      {
-        slug: 'custom-retail-logistics-software-development-2026-enterprise',
-        title: 'Custom Retail & Logistics Software Development Guide (2026)',
-        category: 'Software',
-        excerpt: 'How growing retailers and logistics operators connect multi-branch POS, inventory, delivery fleets, and automated payment confirmations.',
-      },
-    ].filter((item) => item.slug !== canonicalSlug).slice(0, 3);
+    const ssrRelatedCandidates = (
+      canonicalSlug === 'whatsapp-business-branding-pakistan'
+        ? [
+            {
+              slug: 'brand-guidelines-small-business-pakistan',
+              title: 'Brand Guidelines for Small Business in Pakistan (2026)',
+              category: 'Branding',
+              excerpt: 'A practical guide for Pakistani SMEs on building a 1-page brand style guide to align logo, colors, typography, and messaging.',
+            },
+            {
+              slug: 'brand-consistency-checklist',
+              title: 'Brand Consistency Checklist: Find Gaps First',
+              category: 'Branding',
+              excerpt: 'Audit social profiles, WhatsApp channels, websites, and sales collateral so customers see one consistent brand everywhere.',
+            },
+            {
+              slug: 'brand-audit-checklist-pakistan',
+              title: 'Brand Audit Checklist for Pakistani Businesses',
+              category: 'Branding',
+              excerpt: '25 practical checks to uncover identity, messaging, and digital channel gaps holding back Pakistani small businesses.',
+            },
+          ]
+        : [
+            {
+              slug: 'fintech-software-development-compliance-first-architecture',
+              title: 'Fintech Software Development: Compliance-First Architecture',
+              category: 'Software',
+              excerpt: 'Why fintech systems require audit-ready ledgers, deterministic transaction states, role-based access control, and compliance-first software architecture.',
+            },
+            {
+              slug: 'custom-software-for-fintech-2026-financial-technology-development-guide',
+              title: 'Custom Software for Fintech in 2026: Financial Technology Development Guide',
+              category: 'Software',
+              excerpt: 'A complete engineering guide to building custom financial technology, payment workflows, automated reconciliation, and secure banking integrations.',
+            },
+            {
+              slug: 'custom-software-development-company-karachi-pakistan',
+              title: 'Custom Software Development Company in Karachi, Pakistan',
+              category: 'Development',
+              excerpt: 'How AbuQitmirLabs scopes, architects, and delivers production-grade custom business software, ERP integrations, and payment systems from Karachi.',
+            },
+            {
+              slug: 'custom-retail-logistics-software-development-2026-enterprise',
+              title: 'Custom Retail & Logistics Software Development Guide (2026)',
+              category: 'Software',
+              excerpt: 'How growing retailers and logistics operators connect multi-branch POS, inventory, delivery fleets, and automated payment confirmations.',
+            },
+          ]
+    ).filter((item) => item.slug !== canonicalSlug).slice(0, 3);
     const ssrRelatedHtml = `<section aria-label="Related Articles" data-testid="related-articles-section" class="mt-16 pt-10 border-t border-zinc-800/80"><h2 class="mb-8 text-2xl md:text-3xl font-black text-white uppercase tracking-tight font-serif">Related Articles</h2><ul class="grid grid-cols-1 md:grid-cols-3 gap-6 list-none p-0 m-0">${ssrRelatedCandidates
       .map(
         (rel) =>
           `<li class="group bg-[#0b0b0e] border border-zinc-800/80 rounded-[2rem] p-7 flex flex-col justify-between"><div><div class="flex items-center justify-between gap-2 mb-4"><span class="inline-block px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] text-[10px] font-mono font-bold uppercase tracking-wider">${escapeHtml(rel.category)}</span></div><h3 class="text-lg font-black text-white leading-snug mb-3 font-serif uppercase tracking-tight"><a href="/blog/${escapeHtml(rel.slug)}" data-testid="related-article-link" class="hover:text-[#ccff00] transition-colors">${escapeHtml(rel.title)}</a></h3><p class="text-zinc-400 text-xs leading-relaxed mb-6 font-sans">${escapeHtml(rel.excerpt)}</p></div><div class="pt-4 border-t border-zinc-800/60"><a href="/blog/${escapeHtml(rel.slug)}" class="inline-flex items-center justify-between w-full text-xs font-mono font-bold uppercase tracking-wider text-zinc-300 hover:text-[#ccff00]"><span>Read Article</span></a></div></li>`
       )
       .join('')}</ul></section>`;
-    const innerRootHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader()}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><header class="mb-6"><h1 itemProp="headline" class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${escapeHtml(cleanH1)}</h1></header><div aria-label="Article metadata" data-nosnippet="true" aria-hidden="true" class="mb-8 flex flex-wrap gap-4 text-xs text-zinc-400 font-mono"><p>${bylineDate}</p><p>By ${bylineAuthor} (AbuQitmirLabs)</p></div><article itemProp="articleBody" data-article-content="true" class="prose prose-invert max-w-none text-neutral-300">${htmlBlocks.join('\n')}</article>${ssrRelatedHtml}</main></div>`;
+    const ssrWhatsappCta = canonicalSlug === 'whatsapp-business-branding-pakistan'
+      ? `<div class="mt-10 rounded-[2rem] border border-[#ccff00]/30 bg-zinc-950 p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"><div><h2 class="text-2xl font-black text-white uppercase font-serif">Need Help Setting Up Your WhatsApp Business Brand?</h2><p class="text-zinc-300 text-sm mt-2">Message our Karachi team directly on WhatsApp for profile audits, bilingual templates, and catalogue setup.</p></div><a href="https://wa.me/923233260859?text=Assalamu%20Alaikum%2C%20I%20read%20your%20WhatsApp%20Business%20branding%20guide%20and%20would%20like%20help%20with%20my%20business%20setup." target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-[#ccff00] text-black font-black text-xs uppercase rounded-xl">WhatsApp par baat karein</a></div>`
+      : '';
+    const innerRootHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader()}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><header class="mb-6"><h1 itemProp="headline" class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${escapeHtml(cleanH1)}</h1></header><div aria-label="Article metadata" data-nosnippet="true" aria-hidden="true" class="mb-8 flex flex-wrap gap-4 text-xs text-zinc-400 font-mono"><p>${bylineDate}</p><p>By ${bylineAuthor} (AbuQitmirLabs)</p></div><article itemProp="articleBody" data-article-content="true" class="prose prose-invert max-w-none text-neutral-300">${htmlBlocks.join('\n')}</article>${ssrWhatsappCta}${ssrRelatedHtml}</main></div>`;
 
     const shellCandidates = [
       path.join(process.cwd(), 'dist', 'spa-shell.html'),
@@ -741,7 +808,7 @@ export default async function handler(req: any, res: any) {
       (canonicalSlug === 'raast-payment-integration-pakistan'
         ? 'Raast Payment Integration in Pakistan for Merchants'
         : canonicalSlug === 'whatsapp-business-branding-pakistan'
-        ? 'WhatsApp Business branding checklist for Pakistani small businesses'
+        ? 'Branded WhatsApp Business profile showing logo, description and product catalogue for a Pakistani small business'
         : cleanH1);
     const seoHeadTopBlock = [
       `  <title>${escapeHtml(pageTitle)}</title>`,

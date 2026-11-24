@@ -18261,16 +18261,16 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/blog/whatsapp-business-branding-pakistan': {
     title: "WhatsApp Business Branding Pakistan | AbuQitmirLabs",
-    description: "Set up a WhatsApp Business profile that matches your brand in Pakistan: profile, catalogue, quick replies and Urdu templates, step by step.",
+    description: "Blank WhatsApp profile losing customers? Set up a branded profile, catalogue, and 15 bilingual reply templates for your Pakistani small business today.",
     canonical: 'https://www.abuqitmirlabs.tech/blog/whatsapp-business-branding-pakistan',
     ogTitle: "WhatsApp Business Branding Pakistan | AbuQitmirLabs",
-    ogDescription: "Set up a WhatsApp Business profile that matches your brand in Pakistan: profile, catalogue, quick replies and Urdu templates, step by step.",
+    ogDescription: "Blank WhatsApp profile losing customers? Set up a branded profile, catalogue, and 15 bilingual reply templates for your Pakistani small business today.",
     ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/whatsapp-business-branding-pakistan.webp",
-    ogImageAlt: "WhatsApp Business branding checklist for Pakistani small businesses",
+    ogImageAlt: "Branded WhatsApp Business profile showing logo, description and product catalogue for a Pakistani small business",
     ogType: 'article',
     twitterCard: 'summary_large_image',
     twitterTitle: "WhatsApp Business Branding Pakistan | AbuQitmirLabs",
-    twitterDescription: "Set up a WhatsApp Business profile that matches your brand in Pakistan: profile, catalogue, quick replies and Urdu templates, step by step.",
+    twitterDescription: "Blank WhatsApp profile losing customers? Set up a branded profile, catalogue, and 15 bilingual reply templates for your Pakistani small business today.",
     twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/whatsapp-business-branding-pakistan.webp",
     schemaJsonLd: {
       '@context': 'https://schema.org',
@@ -18280,7 +18280,38 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@id': 'https://www.abuqitmirlabs.tech/#organization',
           name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
-          logo: 'https://www.abuqitmirlabs.tech/logo.png'
+          logo: 'https://www.abuqitmirlabs.tech/logo.png',
+          foundingDate: '2021',
+          sameAs: [
+            'https://www.linkedin.com/in/abu-qitmir-697423390/',
+            'https://www.facebook.com/profile.php?id=61583768706452',
+            'https://www.instagram.com/abuqitmirshirazalmadani/',
+            'https://x.com/AbuQitmir',
+            'https://www.youtube.com/@AbuQitmir',
+            'https://clutch.co/profile/abuqitmirlabstech',
+            'https://www.goodfirms.co/company/abuqitmirlabs-tech'
+          ]
+        },
+        {
+          '@type': 'LocalBusiness',
+          '@id': 'https://www.abuqitmirlabs.tech/#localbusiness',
+          name: 'AbuQitmirLabs',
+          url: 'https://www.abuqitmirlabs.tech/',
+          image: 'https://www.abuqitmirlabs.tech/logo.png',
+          telephone: '+923233260859',
+          email: 'hello@abuqitmirlabs.tech',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Shahrah-e-Faisal, PECHS',
+            addressLocality: 'Karachi',
+            addressRegion: 'Sindh',
+            postalCode: '75400',
+            addressCountry: 'PK'
+          },
+          areaServed: {
+            '@type': 'Country',
+            name: 'Pakistan'
+          }
         },
         {
           '@type': 'WebSite',
@@ -18294,7 +18325,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@id': 'https://www.abuqitmirlabs.tech/blog/whatsapp-business-branding-pakistan#webpage',
           url: 'https://www.abuqitmirlabs.tech/blog/whatsapp-business-branding-pakistan',
           name: "WhatsApp Business Branding Pakistan | AbuQitmirLabs",
-          description: "Set up a WhatsApp Business profile that matches your brand in Pakistan: profile, catalogue, quick replies and Urdu templates, step by step.",
+          description: "Blank WhatsApp profile losing customers? Set up a branded profile, catalogue, and 15 bilingual reply templates for your Pakistani small business today.",
           isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/#website' }
         },
         {
@@ -18303,20 +18334,26 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.abuqitmirlabs.tech/' },
             { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.abuqitmirlabs.tech/blog' },
-            { '@type': 'ListItem', position: 3, name: "WhatsApp Business Branding Pakistan", item: 'https://www.abuqitmirlabs.tech/blog/whatsapp-business-branding-pakistan' }
+            { '@type': 'ListItem', position: 3, name: "WhatsApp Business Branding for Small Businesses in Pakistan", item: 'https://www.abuqitmirlabs.tech/blog/whatsapp-business-branding-pakistan' }
           ]
         },
         {
           '@type': 'Article',
           '@id': 'https://www.abuqitmirlabs.tech/blog/whatsapp-business-branding-pakistan#article',
           isPartOf: { '@id': 'https://www.abuqitmirlabs.tech/blog/whatsapp-business-branding-pakistan#webpage' },
-          headline: "WhatsApp Business Branding Pakistan",
-          description: "Set up a WhatsApp Business profile that matches your brand in Pakistan: profile, catalogue, quick replies and Urdu templates, step by step.",
+          headline: "WhatsApp Business Branding for Small Businesses in Pakistan",
+          description: "Blank WhatsApp profile losing customers? Set up a branded profile, catalogue, and 15 bilingual reply templates for your Pakistani small business today.",
           image: "https://www.abuqitmirlabs.tech/images/blog-covers/whatsapp-business-branding-pakistan.webp",
           author: {
             '@type': 'Person',
             name: "Abu Qitmir Mohammad Shiraz Al-Madani",
-            url: 'https://www.abuqitmirlabs.tech/about/our-team'
+            jobTitle: "Founder & Lead Systems Architect",
+            description: "Founder of AbuQitmirLabs (established 2021 in Karachi); M.B.A. Commerce, University of Karachi; 410+ systems and brand builds delivered across 350+ clients.",
+            url: 'https://www.abuqitmirlabs.tech/about/our-team',
+            sameAs: [
+              'https://www.linkedin.com/in/abu-qitmir-697423390/',
+              'https://x.com/AbuQitmir'
+            ]
           },
           publisher: { '@id': 'https://www.abuqitmirlabs.tech/#organization' },
           mainEntityOfPage: { '@id': 'https://www.abuqitmirlabs.tech/blog/whatsapp-business-branding-pakistan#webpage' },
