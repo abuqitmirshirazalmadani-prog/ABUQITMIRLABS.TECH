@@ -18300,18 +18300,32 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           image: 'https://www.abuqitmirlabs.tech/logo.png',
           telephone: '+923233260859',
           email: 'hello@abuqitmirlabs.tech',
+          priceRange: '$$',
           address: {
             '@type': 'PostalAddress',
             streetAddress: 'Shahrah-e-Faisal, PECHS',
             addressLocality: 'Karachi',
             addressRegion: 'Sindh',
             postalCode: '75400',
-            addressCountry: 'PK'
+            addressCountry: 'PK',
           },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: 24.8607,
+            longitude: 67.0642,
+          },
+          openingHoursSpecification: [
+            {
+              '@type': 'OpeningHoursSpecification',
+              dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+              opens: '10:00',
+              closes: '20:00',
+            },
+          ],
           areaServed: {
             '@type': 'Country',
-            name: 'Pakistan'
-          }
+            name: 'Pakistan',
+          },
         },
         {
           '@type': 'WebSite',
@@ -18385,7 +18399,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
               "name": "How much does WhatsApp Business cost in Pakistan?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "The WhatsApp Business app is free to download and use; you only need an internet connection. The WhatsApp Business Platform (API), which handles higher message volumes and advanced automation for growing businesses, may require Meta Business verification and additional business information. Requirements and conversation charges can change depending on region, conversation category, and provider, so confirm the current requirements and pricing before choosing a provider. For many small businesses in Pakistan, the standard app is enough to start."
+                "text": "The WhatsApp Business app is free to download and use; you only need an internet connection. The WhatsApp Business Platform (API), used for higher message volumes and CRM automation, may require Meta Business verification and carries both BSP platform fees and Meta per-message charges (in Pakistan in 2026: approximately $0.0473 for marketing, $0.0150 for utility, $0.0150 for authentication, with service replies mostly charged from 1 October 2026). Rates and billing rules can change, so confirm current pricing with your provider before upgrading. For many small businesses in Pakistan, the free standard app is enough to start."
               }
             },
             {

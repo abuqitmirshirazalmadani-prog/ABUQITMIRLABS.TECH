@@ -455,6 +455,16 @@ for (const filePath of htmlFiles) {
     modified = true;
   }
 
+  // 4c-author. Ensure strictly 1 <meta name="author"> tag (without data-rh="true")
+  const authorRegex = /<meta\b[^>]*name=["']author["'][^>]*\/?>/gis;
+  const authorMatches = html.match(authorRegex) || [];
+  if (authorMatches.length > 1) {
+    const keptAuthor = authorMatches[authorMatches.length - 1].replace(/\s+data-rh=["']true["']/gi, '');
+    html = html.replace(authorRegex, '');
+    html = html.replace('</head>', `  ${keptAuthor}\n</head>`);
+    modified = true;
+  }
+
   // 4d. Strip any leftover React Helmet data-rh="true" attributes
   if (/\sdata-rh=["']true["']/i.test(html)) {
     html = html.replace(/\s+data-rh=["']true["']/gi, '');

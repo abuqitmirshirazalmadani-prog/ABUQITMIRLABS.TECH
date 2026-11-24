@@ -726,6 +726,9 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         if (catLower.includes('web') || catLower.includes('dev')) {
             name = 'Web Development';
             to = '/web-development';
+        } else if (catLower.includes('brand')) {
+            name = 'Brand Building';
+            to = '/brand-building';
         } else if (catLower.includes('software') || catLower.includes('business')) {
             name = 'Custom Software';
             to = '/custom-software';
@@ -741,7 +744,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         } else if (catLower.includes('seo') || catLower.includes('mastery') || catLower.includes('search')) {
             name = 'SEO Mastery';
             to = '/seo-mastery';
-        } else if (catLower.includes('graphics') || catLower.includes('design') || catLower.includes('brand')) {
+        } else if (catLower.includes('graphics') || catLower.includes('design')) {
             name = 'Graphics Design';
             to = '/graphics-design';
         } else if (catLower.includes('content') || catLower.includes('writing')) {
@@ -891,11 +894,14 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
     }
 
     const categoryDetails = getCategoryDetails(post.category);
+    const breadcrumbArticleTitle = String(post.title || 'Journal')
+        .replace(/\s*\|\s*Abu\s*Qitmir\s*Labs.*$/i, '')
+        .replace(/\s*\|\s*The\s*9-Step.*$/i, '')
+        .trim();
     const breadcrumbItems = [
         { name: 'Home', to: '/' },
         { name: 'Blog', to: '/blog' },
-        { name: categoryDetails.name, to: categoryDetails.to },
-        { name: post.title || 'Journal' }
+        { name: breadcrumbArticleTitle }
     ];
 
     const relatedPosts = (() => {
@@ -3751,6 +3757,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                 </p>
                                 <div className="flex flex-wrap gap-4 text-xs font-mono">
                                     <Link to="/about/our-team" className="text-[#ccff00] hover:underline font-bold">Author &amp; Engineering Team Profile →</Link>
+                                    <a href="https://www.linkedin.com/in/abu-qitmir-697423390/" target="_blank" rel="noopener noreferrer" className="text-zinc-300 hover:text-[#ccff00] underline">LinkedIn Profile</a>
                                     <Link to="/about" className="text-zinc-400 hover:text-white underline">About AbuQitmirLabs</Link>
                                     <Link to="/editorial-policy" className="text-zinc-400 hover:text-white underline">Editorial Policy</Link>
                                 </div>

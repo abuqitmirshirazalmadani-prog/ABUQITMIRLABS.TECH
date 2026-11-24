@@ -639,6 +639,7 @@ export default async function handler(req: any, res: any) {
         image: 'https://www.abuqitmirlabs.tech/logo.png',
         telephone: '+923233260859',
         email: 'hello@abuqitmirlabs.tech',
+        priceRange: '$$',
         address: {
           '@type': 'PostalAddress',
           streetAddress: 'Shahrah-e-Faisal, PECHS',
@@ -647,6 +648,19 @@ export default async function handler(req: any, res: any) {
           postalCode: '75400',
           addressCountry: 'PK',
         },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: 24.8607,
+          longitude: 67.0642,
+        },
+        openingHoursSpecification: [
+          {
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+            opens: '10:00',
+            closes: '20:00',
+          },
+        ],
         areaServed: {
           '@type': 'Country',
           name: 'Pakistan',
@@ -788,7 +802,7 @@ export default async function handler(req: any, res: any) {
     const ssrWhatsappCta = canonicalSlug === 'whatsapp-business-branding-pakistan'
       ? `<div class="mt-10 rounded-[2rem] border border-[#ccff00]/30 bg-zinc-950 p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"><div><h2 class="text-2xl font-black text-white uppercase font-serif">Need Help Setting Up Your WhatsApp Business Brand?</h2><p class="text-zinc-300 text-sm mt-2">Message our Karachi team directly on WhatsApp for profile audits, bilingual templates, and catalogue setup.</p></div><a href="https://wa.me/923233260859?text=Assalamu%20Alaikum%2C%20I%20read%20your%20WhatsApp%20Business%20branding%20guide%20and%20would%20like%20help%20with%20my%20business%20setup." target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-[#ccff00] text-black font-black text-xs uppercase rounded-xl">WhatsApp par baat karein</a></div>`
       : '';
-    const innerRootHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader()}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><header class="mb-6"><h1 itemProp="headline" class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${escapeHtml(cleanH1)}</h1></header><div aria-label="Article metadata" data-nosnippet="true" aria-hidden="true" class="mb-8 flex flex-wrap gap-4 text-xs text-zinc-400 font-mono"><p>${bylineDate}</p><p>By ${bylineAuthor} (AbuQitmirLabs)</p></div><article itemProp="articleBody" data-article-content="true" class="prose prose-invert max-w-none text-neutral-300">${htmlBlocks.join('\n')}</article>${ssrWhatsappCta}${ssrRelatedHtml}</main></div>`;
+    const innerRootHtml = `<div class="min-h-screen bg-[#050505] text-white">${renderStaticHeader()}<main id="main-content" class="max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16"><header class="mb-6"><h1 itemProp="headline" class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">${escapeHtml(cleanH1)}</h1></header><div aria-label="Article metadata" data-nosnippet="true" aria-hidden="true" class="mb-8 flex flex-wrap gap-4 text-xs text-zinc-400 font-mono"><p>${bylineDate}</p><p>By <a href="/about/our-team" class="text-white underline">${bylineAuthor}</a> (<a href="https://www.linkedin.com/in/abu-qitmir-697423390/" target="_blank" rel="noopener noreferrer" class="text-[#ccff00] underline">LinkedIn</a>)</p></div><article itemProp="articleBody" data-article-content="true" class="prose prose-invert max-w-none text-neutral-300">${htmlBlocks.join('\n')}</article>${ssrWhatsappCta}${ssrRelatedHtml}</main></div>`;
 
     const shellCandidates = [
       path.join(process.cwd(), 'dist', 'spa-shell.html'),
@@ -813,6 +827,7 @@ export default async function handler(req: any, res: any) {
     const seoHeadTopBlock = [
       `  <title>${escapeHtml(pageTitle)}</title>`,
       `  <meta name="description" content="${escapeHtml(metaDesc)}" />`,
+      `  <meta name="author" content="${bylineAuthor}" />`,
       `  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />`,
       `  <link rel="canonical" href="${fullCanonical}" />`,
       `  <link rel="alternate" hreflang="en" href="${fullCanonical}" />`,
@@ -837,6 +852,7 @@ export default async function handler(req: any, res: any) {
       let cleanedShell = shellHtml
         .replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '')
         .replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gi, '')
+        .replace(/<meta\b[^>]*name=["']author["'][^>]*\/?>/gi, '')
         .replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gi, '')
         .replace(/<meta\b[^>]*property=["']og:[^"']+["'][^>]*\/?>/gi, '')
         .replace(/<meta\b[^>]*name=["']twitter:[^"']+["'][^>]*\/?>/gi, '')

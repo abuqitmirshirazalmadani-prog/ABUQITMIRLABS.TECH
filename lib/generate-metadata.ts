@@ -522,6 +522,7 @@ export function buildConsolidatedSchemaGraph(
       image: DEFAULT_IMAGE,
       telephone: '+923233260859',
       email: 'hello@abuqitmirlabs.tech',
+      priceRange: '$$',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Shahrah-e-Faisal, PECHS',
@@ -530,6 +531,19 @@ export function buildConsolidatedSchemaGraph(
         postalCode: '75400',
         addressCountry: 'PK',
       },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 24.8607,
+        longitude: 67.0642,
+      },
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+          opens: '10:00',
+          closes: '20:00',
+        },
+      ],
       areaServed: {
         '@type': 'Country',
         name: 'Pakistan',
