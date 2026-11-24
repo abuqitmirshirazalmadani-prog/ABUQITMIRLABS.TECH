@@ -20,6 +20,8 @@ import Header from '../../../src/components/Header';
 import Footer from '../../../src/components/Footer';
 import SEO from '../../../src/components/SEO';
 import { autoFixArticle, type SeoFixQueueItem } from '../../../lib/auto-fix-article';
+import { auth, googleProvider, signInWithPopup, signOut } from '../../../src/lib/firebase';
+import { isUserAdmin, getAdminAuthHeaders } from '../../../src/lib/adminAuth';
 
 interface FixQueueResponse {
   success: boolean;
@@ -45,9 +47,14 @@ export const AdminSeoFixPanel: React.FC<{ embedded?: boolean }> = ({ embedded = 
   } | null>(null);
 
   const fetchQueue = async (rescan = false) => {
+    if (!isUserAdmin(auth.currentUser)) {
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     try {
-      const res = await fetch(`/api/seo/fix-queue${rescan ? '?rescan=1' : ''}`);
+      const headers = await getAdminAuthHeaders();
+      const res = await fetch(`/api/seo/fix-queue${rescan ? '?rescan=1' : ''}`, { headers });
       const ct = res.headers.get('content-type') || '';
       if (res.ok && ct.includes('application/json')) {
         const data: FixQueueResponse & { report?: FixQueueResponse['reportSummary'] } = await res.json();
@@ -83,12 +90,14 @@ export const AdminSeoFixPanel: React.FC<{ embedded?: boolean }> = ({ embedded = 
   }, []);
 
   const handleFixThis = async (warningId: string) => {
+    if (!isUserAdmin(auth.currentUser)) return;
     setFixingId(warningId);
     setStatusBanner(null);
     try {
+      const headers = await getAdminAuthHeaders({ 'Content-Type': 'application/json' });
       const res = await fetch('/api/seo/fix-item', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({ id: warningId, fixAll: warningId === 'ALL' }),
       });
       const ct = res.headers.get('content-type') || '';
@@ -139,9 +148,10 @@ export const AdminSeoFixPanel: React.FC<{ embedded?: boolean }> = ({ embedded = 
         '# Non-Blocking SEO Auto-Correct Verification\n\nEnterprise engineering teams need non-blocking CMS guardrails that automatically heal missing metadata, future dates, leading H1 headings, and internal links on save.',
     };
     try {
+      const headers = await getAdminAuthHeaders({ 'Content-Type': 'application/json' });
       const res = await fetch('/api/seo/auto-fix', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({
           article: sampleArticle,
           persist: false,
@@ -494,9 +504,37 @@ export const AdminSeoFixPanel: React.FC<{ embedded?: boolean }> = ({ embedded = 
 };
 
 export function AdminSeoFixPage({ embedded = false }: { embedded?: boolean }) {
+  const [user, setUser] = useState<any>(() => auth.currentUser);
+  const [authLoading, setAuthLoading] = useState<boolean>(!embedded);
+  const [authError, setAuthError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (embedded) {
+      setAuthLoading(false);
+      return;
+    }
+    const unsub = auth.onAuthStateChanged((u) => {
+      setUser(u);
+      setAuthLoading(false);
+    });
+    return () => unsub();
+  }, [embedded]);
+
   if (embedded) {
     return <AdminSeoFixPanel />;
   }
+
+  const authorized = isUserAdmin(user);
+
+  const handleGoogleSignIn = async () => {
+    setAuthError(null);
+    try {
+      googleProvider.setCustomParameters({ prompt: 'select_account' });
+      await signInWithPopup(auth, googleProvider);
+    } catch (err: any) {
+      setAuthError(err?.message || 'Authentication failed');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#050505] text-white">
@@ -507,19 +545,68 @@ export function AdminSeoFixPage({ embedded = false }: { embedded?: boolean }) {
       />
       <Header />
       <main className="pt-32 pb-24 px-6 max-w-7xl mx-auto space-y-8">
-        <div className="flex items-center justify-between">
-          <Link
-            to="/admin"
-            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-400 hover:text-[#ccff00] transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" /> Back to Admin Dashboard
-          </Link>
-          <span className="text-xs font-mono text-zinc-500 flex items-center gap-1.5">
-            <AlertTriangle className="w-3.5 h-3.5 text-[#ccff00]" /> Non-Blocking SEO Pipeline
-          </span>
-        </div>
+        {authLoading ? (
+          <div className="min-h-[45vh] flex items-center justify-center">
+            <RefreshCw className="w-8 h-8 animate-spin text-[#ccff00]" />
+          </div>
+        ) : !user ? (
+          <div className="max-w-md mx-auto bg-[#111] border-2 border-white/15 rounded-3xl p-8 text-center space-y-5">
+            <ShieldCheck className="w-12 h-12 text-[#ccff00] mx-auto" />
+            <h1 className="text-2xl font-black uppercase tracking-tight">Admin Authentication Required</h1>
+            <p className="text-xs text-zinc-400">
+              Sign in with your authorized administrator account to access SEO controls.
+            </p>
+            {authError && (
+              <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-xs font-bold">
+                {authError}
+              </div>
+            )}
+            <div className="flex flex-col gap-3">
+              <button
+                onClick={handleGoogleSignIn}
+                className="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-black text-xs uppercase tracking-wider cursor-pointer"
+              >
+                Sign in with Google
+              </button>
+              <Link
+                to="/admin"
+                className="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-200 font-bold text-xs uppercase tracking-wider"
+              >
+                Go to Admin Sign-In Portal
+              </Link>
+            </div>
+          </div>
+        ) : !authorized ? (
+          <div className="max-w-md mx-auto bg-[#111] border-2 border-red-500/30 rounded-3xl p-8 text-center space-y-5">
+            <AlertTriangle className="w-12 h-12 text-red-400 mx-auto" />
+            <h1 className="text-2xl font-black uppercase tracking-tight">Access Denied</h1>
+            <p className="text-xs text-zinc-400">
+              Your account does not have administrator permissions for this workspace.
+            </p>
+            <button
+              onClick={() => signOut(auth)}
+              className="w-full py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-xs uppercase tracking-wider cursor-pointer"
+            >
+              Sign Out
+            </button>
+          </div>
+        ) : (
+          <>
+            <div className="flex items-center justify-between">
+              <Link
+                to="/admin"
+                className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-400 hover:text-[#ccff00] transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4" /> Back to Admin Dashboard
+              </Link>
+              <span className="text-xs font-mono text-zinc-500 flex items-center gap-1.5">
+                <AlertTriangle className="w-3.5 h-3.5 text-[#ccff00]" /> Non-Blocking SEO Pipeline
+              </span>
+            </div>
 
-        <AdminSeoFixPanel />
+            <AdminSeoFixPanel />
+          </>
+        )}
       </main>
       <Footer />
     </div>

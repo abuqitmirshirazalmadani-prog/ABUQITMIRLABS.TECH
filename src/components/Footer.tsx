@@ -119,8 +119,6 @@ const Footer = () => {
                             <a href="https://clutch.co/profile/abuqitmirlabstech" target="_blank" rel="noopener noreferrer" className="underline font-black">Clutch</a>
                             <span>•</span>
                             <a href="https://www.goodfirms.co/company/abuqitmirlabs-tech" target="_blank" rel="noopener noreferrer" className="underline font-black">GoodFirms</a>
-                            <span>•</span>
-                            <Link to="/admin" className="underline font-black">Admin</Link>
                         </div>
                     </div>
                 </div>

@@ -79,6 +79,10 @@
         {
           "key": "X-Robots-Tag",
           "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store, no-cache, must-revalidate, private"
         }
       ]
     },
@@ -88,6 +92,10 @@
         {
           "key": "X-Robots-Tag",
           "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store, no-cache, must-revalidate, private"
         }
       ]
     }
@@ -95,6 +103,9 @@
   "functions": {
     "api/sitemap.ts": {
       "includeFiles": "public/*sitemap*.xml"
+    },
+    "api/publish-sync.ts": {
+      "includeFiles": "firebase-applet-config.json"
     },
     "api/blog-ssr.ts": {
       "includeFiles": "{dist/spa-shell.html,dist/blog/**,public/blog/**,content/blog/**,firebase-applet-config.json}"

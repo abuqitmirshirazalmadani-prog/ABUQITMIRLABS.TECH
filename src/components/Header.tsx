@@ -406,15 +406,6 @@ const Header = () => {
                                             Contact Now
                                         </span>
                                     </Link>
-                                    <Link 
-                                        to="/admin"
-                                        className="w-full py-4 border border-white/15 bg-white/5 hover:bg-white/10 !text-white font-extrabold text-center rounded-xl text-xs uppercase tracking-[0.2em] transition-all flex items-center justify-center"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        <span className="!text-white font-extrabold text-xs uppercase tracking-[0.2em]">
-                                            Admin Access
-                                        </span>
-                                    </Link>
                                 </div>
                             </nav>
 

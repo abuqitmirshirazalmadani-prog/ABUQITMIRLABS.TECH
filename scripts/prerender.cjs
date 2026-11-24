@@ -111,12 +111,19 @@ baseTemplate = baseTemplate.replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gi
 baseTemplate = baseTemplate.replace(/<meta\b[^>]*name=["']author["'][^>]*\/?>/gis, '');
 baseTemplate = baseTemplate.replace(/(\r?\n[ \t]*){2,}/g, '\n');
 
-// Preserve a clean, unpopulated SPA shell with site-wide schemas for dynamic client-side routes (e.g. /admin)
+// Preserve a clean, unpopulated SPA shell with noindex metadata for private auth routes (/admin, /login)
 const spaShellPath = path.join(distDir, 'spa-shell.html');
 const spaShellDir = path.join(distDir, 'spa-shell');
-const spaShellContent = (siteWideSchemasHtml 
-  ? baseTemplate.replace('</head>', `  ${siteWideSchemasHtml}\n</head>`)
-  : baseTemplate).replace(/<link\b[^>]*href=["']\/images\/hero-abuqitmirlabs\.webp["'][^>]*\/?>\s*/gi, '');
+const spaShellBase = stripCanonicalTags(
+  (siteWideSchemasHtml
+    ? baseTemplate.replace('</head>', `  ${siteWideSchemasHtml}\n</head>`)
+    : baseTemplate
+  ).replace(/<link\b[^>]*href=["']\/images\/hero-abuqitmirlabs\.webp["'][^>]*\/?>\s*/gi, '')
+);
+const spaShellContent = spaShellBase.replace(
+  '</head>',
+  '  <title>Admin Sign In | AbuQitmirLabs</title>\n  <meta name="robots" content="noindex, nofollow" />\n</head>'
+);
 fs.writeFileSync(spaShellPath, spaShellContent, 'utf8');
 if (!fs.existsSync(spaShellDir)) {
   fs.mkdirSync(spaShellDir, { recursive: true });
@@ -145,24 +152,8 @@ try {
   fs.writeFileSync(path.join(distDir, '404.html'), spaShellContent, 'utf8');
 }
 
-// Also generate static noindex shell for /login and /admin so direct crawls immediately see <meta name="robots" content="noindex, nofollow" />
-try {
-  const noindexShell = stripCanonicalTags(spaShellContent).replace(
-    '</head>',
-    '  <title>Admin Login | AbuQitmirLabs</title>\n  <meta name="robots" content="noindex, nofollow" />\n</head>'
-  );
-  for (const blockedRoute of ['login', 'admin']) {
-    const blockedDir = path.join(distDir, blockedRoute);
-    if (!fs.existsSync(blockedDir)) {
-      fs.mkdirSync(blockedDir, { recursive: true });
-    }
-    fs.writeFileSync(path.join(blockedDir, 'index.html'), noindexShell, 'utf8');
-    fs.writeFileSync(path.join(distDir, `${blockedRoute}.html`), noindexShell, 'utf8');
-  }
-  console.log('✓ [SSG Rendered] /login & /admin -> noindex, nofollow static shells');
-} catch (errNoindex) {
-  console.warn('⚠️ [SSG Warning] Fallback login/admin noindex shell warning:', errNoindex);
-}
+// Private auth routes (/login, /admin) are served via noindex, nofollow SPA shell rewrites (never indexed static pages)
+console.log('✓ [SSG] Private routes (/login, /admin) configured for noindex, nofollow SPA shell');
 
 const TITLE_OVERRIDES = {
   '/': 'Custom Software, AI & SEO Engineering | AbuQitmirLabs',
@@ -524,6 +515,7 @@ const staticBlogRoutes = Object.keys(STATIC_BLOG_POSTS || {})
 
 const REDIRECT_ALIAS_PATHS = new Set([
   '/admin',
+  '/login',
   '/brand-kit',
   '/careers',
   '/our-company',
@@ -559,7 +551,7 @@ const allRoutes = Array.from(new Set([
   ...Object.keys(SEO_ROUTES_METADATA || {}).filter(k => typeof k === 'string' && k.startsWith('/'))
 ])).filter(r => {
   const norm = r.endsWith('/') && r !== '/' ? r.slice(0, -1) : r;
-  if (REDIRECT_ALIAS_PATHS.has(norm) || norm.startsWith('/admin/')) return false;
+  if (REDIRECT_ALIAS_PATHS.has(norm) || norm.startsWith('/admin/') || norm.startsWith('/login/')) return false;
   if (norm.startsWith('/blog/')) {
     const s = norm.slice(6);
     return getCanonicalSlug(s) === s;

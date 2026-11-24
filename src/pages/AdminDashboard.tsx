@@ -21,17 +21,11 @@ import { syncPostToGitHubAndDeploy, testGitHubConnection } from '../utils/github
 import { autoFixArticle } from '../../lib/auto-fix-article';
 import { AdminSeoFixPage } from '../../app/admin/seo/page';
 import AnalyticsShieldCard from '../components/AnalyticsShieldCard';
+import SEO from '../components/SEO';
 import { markBrowserAsInternalTraffic } from '../utils/analyticsShield';
+import { ADMIN_EMAIL, ADMIN_UID, isUserAdmin, getAdminAuthHeaders } from '../lib/adminAuth';
 
-const ADMIN_EMAIL = "abuqitmirshirazalmadani@gmail.com";
-const ADMIN_UID = "cRAf1wZFRRXMVadj7RDaC8WM4152";
-
-export const isUserAdmin = (u: any): boolean => {
-    if (!u) return false;
-    const email = String(u.email || '').toLowerCase().trim();
-    const uid = String(u.uid || '').trim();
-    return email === ADMIN_EMAIL.toLowerCase().trim() || uid === ADMIN_UID;
-};
+export { isUserAdmin };
 
 const DEFAULT_NEWS_SEED = [
     {
@@ -812,9 +806,10 @@ const AdminDashboard = () => {
         try {
             let data: any = null;
             try {
+                const headers = await getAdminAuthHeaders({ 'Content-Type': 'application/json' });
                 const res = await fetch('/api/github/test-connection', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers,
                     body: JSON.stringify({
                         token: githubToken.trim(),
                         repo: githubRepo.trim()
@@ -823,14 +818,6 @@ const AdminDashboard = () => {
                 const ct = res.headers.get('content-type') || '';
                 if (ct.includes('application/json')) {
                     data = await res.json();
-                } else {
-                    const getRes = await fetch(
-                        `/api/github/test-connection?repo=${encodeURIComponent(githubRepo.trim())}&token=${encodeURIComponent(githubToken.trim())}`
-                    );
-                    const getCt = getRes.headers.get('content-type') || '';
-                    if (getCt.includes('application/json')) {
-                        data = await getRes.json();
-                    }
                 }
             } catch {
                 // Fallback to direct client-side check below
@@ -896,9 +883,10 @@ const AdminDashboard = () => {
         try {
             let data: any = null;
             try {
+                const headers = await getAdminAuthHeaders({ 'Content-Type': 'application/json' });
                 const res = await fetch('/api/publish-sync', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers,
                     body: JSON.stringify({
                         post: postData || null,
                         githubToken: githubToken.trim(),
@@ -911,14 +899,6 @@ const AdminDashboard = () => {
                 const contentType = res.headers.get('content-type') || '';
                 if (res.ok && contentType.includes('application/json')) {
                     data = await res.json();
-                } else if (isSyncAll) {
-                    const getRes = await fetch(
-                        `/api/publish-sync?syncAll=1&githubRepo=${encodeURIComponent(githubRepo.trim())}&githubBranch=${encodeURIComponent(githubBranch.trim())}`
-                    );
-                    const getCt = getRes.headers.get('content-type') || '';
-                    if (getRes.ok && getCt.includes('application/json')) {
-                        data = await getRes.json();
-                    }
                 }
             } catch {
                 // Fallback to direct client-side GitHub REST API below
@@ -1046,14 +1026,18 @@ const AdminDashboard = () => {
             // Persist unfixed warnings (e.g. external images) to content/.fix-queue.json via backend API without blocking
             const warningsList = layer1Result.warnings || layer1Result.unfixedWarnings || [];
             if (warningsList.length > 0 || layer1Result.appliedFixes.length > 0) {
-                fetch('/api/seo/auto-fix', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        article: layer1Result.article,
-                        warnings: warningsList
-                    })
-                }).catch(() => {});
+                getAdminAuthHeaders({ 'Content-Type': 'application/json' })
+                    .then((headers) =>
+                        fetch('/api/seo/auto-fix', {
+                            method: 'POST',
+                            headers,
+                            body: JSON.stringify({
+                                article: layer1Result.article,
+                                warnings: warningsList
+                            })
+                        })
+                    )
+                    .catch(() => {});
             }
 
             const finalSlug = getCanonicalSlug(
@@ -1167,9 +1151,10 @@ const AdminDashboard = () => {
             } else {
                 // Always persist to local markdown & sitemaps via /api/publish-sync even for drafts or manual mode
                 try {
+                    const headers = await getAdminAuthHeaders({ 'Content-Type': 'application/json' });
                     await fetch('/api/publish-sync', {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                        headers,
                         body: JSON.stringify({
                             post: postPayload,
                             githubToken: '',
@@ -2894,6 +2879,11 @@ const AdminDashboard = () => {
 
     return (
         <div className="min-h-screen bg-black">
+            <SEO
+                title="Admin Portal | AbuQitmirLabs"
+                description="Protected administrative workspace."
+                robots="noindex, nofollow"
+            />
             <Header />
             <div className="pt-32 pb-20 px-6 animate-enter">
                 {renderContent()}

@@ -10,6 +10,7 @@ import {
   markBrowserAsInternalTraffic,
   detectClientIpAndVerifyTeamFilter,
 } from '../utils/analyticsShield';
+import { getAdminAuthHeaders } from '../lib/adminAuth';
 
 export default function AnalyticsShieldCard() {
   const [isInternalDevice, setIsInternalDevice] = useState<boolean>(true);
@@ -34,6 +35,24 @@ export default function AnalyticsShieldCard() {
         setUnwantedReferrals(getConfiguredUnwantedReferrals());
       }
     });
+
+    getAdminAuthHeaders({ Accept: 'application/json' }).then((headers) => {
+      if (!headers['Authorization']) return;
+      fetch('/api/client-ip', { method: 'GET', headers })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((data) => {
+          if (data?.ip) setDetectedIp(String(data.ip).trim());
+          if (Array.isArray(data?.teamIps)) {
+            saveConfiguredTeamIps(data.teamIps);
+            setTeamIps(getConfiguredTeamIps());
+          }
+          if (Array.isArray(data?.unwantedReferrals)) {
+            saveConfiguredUnwantedReferrals(data.unwantedReferrals);
+            setUnwantedReferrals(getConfiguredUnwantedReferrals());
+          }
+        })
+        .catch(() => {});
+    });
   }, []);
 
   const syncWithBackend = async (nextIps: string[], nextReferrals: string[], message: string) => {
@@ -42,9 +61,10 @@ export default function AnalyticsShieldCard() {
     setTeamIps(getConfiguredTeamIps());
     setUnwantedReferrals(getConfiguredUnwantedReferrals());
     try {
+      const headers = await getAdminAuthHeaders({ 'Content-Type': 'application/json' });
       await fetch('/api/client-ip', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({
           teamIps: nextIps,
           unwantedReferrals: nextReferrals,

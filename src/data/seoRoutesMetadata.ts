@@ -398,16 +398,6 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogType: "article",
     twitterCard: "summary_large_image"
   },
-  "/admin": {
-    title: "Admin Portal — Engineering & AI | AbuQitmirLabs",
-    description: "AbuQitmirLabs content and editorial management portal.",
-    canonical: "https://www.abuqitmirlabs.tech/admin",
-    robots: "noindex, nofollow",
-    ogTitle: "Admin Portal — Engineering & AI | AbuQitmirLabs",
-    ogDescription: "AbuQitmirLabs content and editorial management portal.",
-    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp",
-    ogType: "website"
-  },
   '/blog/small-business-branding-mistakes-pakistan': {
     title: "Small Business Branding Mistakes Pakistan | AbuQitmirLabs",
     description: "Discover the 9 most common small business branding mistakes in Pakistan. Get a practical checklist to fix them and build brand trust without wasting budget.",

@@ -148,7 +148,8 @@ export default async function handler(req: any, res: any) {
     content = content
       .replace(/^\uFEFF/, '')
       .trim()
-      .replace(/<loc>https:\/\/www\.abuqitmirlabs\.tech<\/loc>/g, '<loc>https://www.abuqitmirlabs.tech/</loc>');
+      .replace(/<loc>https:\/\/www\.abuqitmirlabs\.tech<\/loc>/g, '<loc>https://www.abuqitmirlabs.tech/</loc>')
+      .replace(/^\s*<url>[\s\S]*?<loc>https:\/\/www\.abuqitmirlabs\.tech\/(?:admin(?:\/[^<]*)?|login(?:\/[^<]*)?|spa-shell|404)<\/loc>[\s\S]*?<\/url>\n?/gm, '');
 
     res.setHeader('Content-Type', 'application/xml; charset=utf-8');
     res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');

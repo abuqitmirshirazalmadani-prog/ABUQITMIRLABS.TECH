@@ -103,17 +103,100 @@ function sanitizeTags(rawTags: unknown): string[] {
   return cleanTags;
 }
 
+const ALLOWED_ORIGINS = new Set([
+  'https://www.abuqitmirlabs.tech',
+  'https://abuqitmirlabs.tech',
+  'http://localhost:3000',
+]);
+const ADMIN_EMAIL = 'abuqitmirshirazalmadani@gmail.com';
+const ADMIN_UID = 'cRAf1wZFRRXMVadj7RDaC8WM4152';
+
+async function verifyAdminAuth(req: any): Promise<{ ok: boolean; status: number; error?: string }> {
+  try {
+    const authHeader = String(req?.headers?.authorization || req?.headers?.Authorization || '').trim();
+    if (!authHeader.toLowerCase().startsWith('bearer ')) {
+      return { ok: false, status: 401, error: 'Authentication required' };
+    }
+    const idToken = authHeader.slice(7).trim();
+    if (!idToken || idToken.length < 20 || idToken.length > 8192) {
+      return { ok: false, status: 401, error: 'Invalid authentication token' };
+    }
+    let apiKey = String(process.env.FIREBASE_API_KEY || '').trim();
+    if (!apiKey) {
+      const cfgPath = path.join(process.cwd(), 'firebase-applet-config.json');
+      if (fs.existsSync(cfgPath)) {
+        const cfg = JSON.parse(fs.readFileSync(cfgPath, 'utf-8'));
+        apiKey = String(cfg?.apiKey || '').trim();
+      }
+    }
+    if (!apiKey) {
+      return { ok: false, status: 500, error: 'Server authentication configuration unavailable' };
+    }
+    const lookupRes = await fetch(
+      `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${encodeURIComponent(apiKey)}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ idToken }),
+        signal: AbortSignal.timeout(5000),
+      }
+    );
+    if (!lookupRes.ok) {
+      return { ok: false, status: 401, error: 'Invalid or expired authentication session' };
+    }
+    const lookupData: any = await lookupRes.json();
+    const user = Array.isArray(lookupData?.users) ? lookupData.users[0] : null;
+    if (!user || user.disabled) {
+      return { ok: false, status: 401, error: 'Invalid or disabled user account' };
+    }
+    const uid = String(user.localId || '').trim();
+    const email = String(user.email || '').trim().toLowerCase();
+    const emailVerified = Boolean(user.emailVerified);
+    const isAdmin = uid === ADMIN_UID || (email === ADMIN_EMAIL && emailVerified);
+    if (!isAdmin) {
+      return { ok: false, status: 403, error: 'Forbidden: Administrator privileges required' };
+    }
+    return { ok: true, status: 200 };
+  } catch {
+    return { ok: false, status: 401, error: 'Authentication verification failed' };
+  }
+}
+
+function isSafeHttpsUrl(rawUrl: string): boolean {
+  try {
+    const parsed = new URL(rawUrl);
+    if (parsed.protocol !== 'https:') return false;
+    const host = parsed.hostname.toLowerCase();
+    if (
+      host === 'localhost' ||
+      host.endsWith('.local') ||
+      host.endsWith('.internal') ||
+      host === '127.0.0.1' ||
+      host === '0.0.0.0' ||
+      host === '::1' ||
+      host.startsWith('10.') ||
+      host.startsWith('192.168.') ||
+      host.startsWith('169.254.') ||
+      /^172\.(1[6-9]|2\d|3[01])\./.test(host)
+    ) {
+      return false;
+    }
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 /**
  * Automated Publishing, Sitemap, RSS, Markdown File & SEO Auto-Fix Sync API
- * Ensures every new blog article published from Admin Dashboard is:
- * 1. Canonicalized and sanitized (tags, headings, internal links)
- * 2. Saved to content/blog/<slug>.md (when filesystem is writable)
- * 3. Added to public/sitemap.xml, sitemap.xml, and public/rss.xml
- * 4. Committed to GitHub if GITHUB_TOKEN is configured on the server
- * 5. Submitted to IndexNow for immediate search engine indexing
+ * Requires verified Firebase admin authentication.
  */
 export default async function handler(req: any, res: any) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  const origin = String(req?.headers?.origin || '').trim();
+  if (origin && ALLOWED_ORIGINS.has(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Vary', 'Origin');
+  }
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
@@ -123,6 +206,11 @@ export default async function handler(req: any, res: any) {
 
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  const authCheck = await verifyAdminAuth(req);
+  if (!authCheck.ok) {
+    return res.status(authCheck.status).json({ success: false, error: authCheck.error });
   }
 
   const rawBody = req.body || {};
@@ -148,6 +236,9 @@ export default async function handler(req: any, res: any) {
     ? String(slug).trim().replace(/^\/+/, '').replace(/^blog\/+/, '').replace(/\/+$/, '')
     : '';
   const cleanSlug = rawSlug ? getCanonicalSlug(rawSlug) : '';
+  if (cleanSlug && !/^[a-z0-9]+(?:-[a-z0-9]+)*$/i.test(cleanSlug)) {
+    return res.status(400).json({ success: false, error: 'Invalid article slug format' });
+  }
   const postUrl = cleanSlug ? `https://www.abuqitmirlabs.tech/blog/${cleanSlug}` : '';
   const cleanedTags = sanitizeTags(tags);
 
@@ -162,7 +253,7 @@ export default async function handler(req: any, res: any) {
   let resolvedLocalCover = coverImage || (cleanSlug ? `/images/blog-covers/${cleanSlug}.webp` : '/logo.png');
   let downloadedImageBuffer: Buffer | null = null;
 
-  if (cleanSlug && typeof coverImage === 'string' && /^https?:\/\//i.test(coverImage.trim()) && !coverImage.includes('abuqitmirlabs.tech')) {
+  if (cleanSlug && typeof coverImage === 'string' && isSafeHttpsUrl(coverImage.trim()) && !coverImage.includes('abuqitmirlabs.tech')) {
     try {
       const imgRes = await fetch(coverImage.trim(), {
         headers: {
@@ -439,7 +530,7 @@ export default async function handler(req: any, res: any) {
     }
   }
 
-  if (vercelHook && vercelHook.startsWith('http')) {
+  if (vercelHook && vercelHook.startsWith('https://api.vercel.com/')) {
     try {
       const vRes = await fetch(vercelHook, { method: 'POST' });
       vercelTriggered = vRes.ok;
