@@ -928,11 +928,8 @@ for (const routeUrl of allRoutes) {
   }
 }
 
-// 4. Cleanup temporary ssr-bundle and ensure dist sitemaps & robots.txt are synced
+// 4. Preserve dist/ssr-bundle.cjs for dynamic runtime SSR and ensure dist sitemaps & robots.txt are synced
 try {
-  if (fs.existsSync(ssrBundlePath)) {
-    fs.unlinkSync(ssrBundlePath);
-  }
   for (const xmlFile of ['sitemap.xml', 'pages-sitemap.xml', 'sitemap-pages.xml', 'sitemap_index.xml', 'image-sitemap.xml', 'video-sitemap.xml', 'robots.txt']) {
     const pubFile = path.join(rootDir, 'public', xmlFile);
     const distFile = path.join(distDir, xmlFile);

@@ -37,11 +37,49 @@ const getArticleSlug = (item: any) => {
   return item.id || 'article';
 };
 
+const getSsrAllNewsList = (): any[] => {
+  if (typeof document === 'undefined') return [];
+  try {
+    const el = document.getElementById('__SSR_NEWS_LIST__');
+    if (!el || !el.textContent) return [];
+    const raw = el.textContent.trim();
+    let jsonStr = raw;
+    if (el.getAttribute('data-encoding') === 'base64' && typeof window !== 'undefined' && typeof window.atob === 'function') {
+      const binString = window.atob(raw);
+      const bytes = Uint8Array.from(binString, (m) => m.codePointAt(0) || 0);
+      jsonStr = new TextDecoder('utf-8').decode(bytes);
+    }
+    const parsed = JSON.parse(jsonStr);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+};
+
+const mergeAllNewsByKey = (primary: any[], fallback: any[]) => {
+  const map = new Map<string, any>();
+  for (const item of [...primary, ...fallback]) {
+    if (item?.published === false) continue;
+    const key = getArticleSlug(item).toLowerCase();
+    if (!map.has(key)) map.set(key, item);
+  }
+  return Array.from(map.values());
+};
+
 const AllNewsPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [dynamicArticles, setDynamicArticles] = useState<any[]>([]);
+  const ssrInitial = getSsrAllNewsList().map((item: any) => ({
+    id: item.id,
+    slug: item.slug,
+    title: item.title,
+    date: item.date,
+    category: item.category || "General News",
+    excerpt: item.excerpt || item.content,
+    link: `/news/article/${getArticleSlug(item)}`
+  }));
+  const [dynamicArticles, setDynamicArticles] = useState<any[]>(ssrInitial);
 
   const defaultArticles = [
     {
@@ -100,6 +138,7 @@ const AllNewsPage = () => {
         const snapshot = await getDocs(collection(db, 'news_items'));
         const items = snapshot.docs
           .map(doc => ({ id: doc.id, ...doc.data() }))
+          .filter((item: any) => item.published !== false)
           .map((item: any) => ({
             id: item.id,
             slug: item.slug,
@@ -119,7 +158,7 @@ const AllNewsPage = () => {
     fetchAllNews();
   }, []);
 
-  const allArticles = dynamicArticles.length > 0 ? dynamicArticles : defaultArticles;
+  const allArticles = mergeAllNewsByKey(dynamicArticles, defaultArticles);
 
   const filteredArticles = allArticles.filter(item => {
     const q = (searchQuery || '').toLowerCase();

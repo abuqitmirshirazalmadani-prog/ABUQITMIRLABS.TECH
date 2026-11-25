@@ -411,6 +411,15 @@ const AdminDashboard = () => {
         try {
             await deleteDoc(doc(db, 'news_items', id));
             setNewsItems(prev => prev.filter(item => item.id !== id));
+            getAdminAuthHeaders({ 'Content-Type': 'application/json' })
+                .then((headers) =>
+                    fetch('/api/publish-sync', {
+                        method: 'POST',
+                        headers,
+                        body: JSON.stringify({ type: 'news', slug: id })
+                    })
+                )
+                .catch(() => {});
             setStatus({ type: 'success', message: 'News item deleted successfully.' });
         } catch (err: any) {
             setStatus({ type: 'error', message: 'Delete failed: ' + err.message });
@@ -427,6 +436,7 @@ const AdminDashboard = () => {
         setIsSubmitting(true);
         setStatus(null);
         try {
+            let savedNewsId = editingNewsId || '';
             if (editingNewsId) {
                 await updateDoc(doc(db, 'news_items', editingNewsId), {
                     ...newsFormData,
@@ -439,8 +449,26 @@ const AdminDashboard = () => {
                     createdAt: serverTimestamp(),
                     updatedAt: serverTimestamp()
                 });
+                savedNewsId = docRef.id;
                 setStatus({ type: 'success', message: `News item published! ID: ${docRef.id}` });
             }
+            const newsSlugCandidate =
+                (newsFormData.slug && !['/news/latest', '/news/press-releases', '/news/industry-insights', '/news/all'].includes(newsFormData.slug.trim())
+                    ? newsFormData.slug.trim()
+                    : generateSlug(newsFormData.title || savedNewsId));
+            getAdminAuthHeaders({ 'Content-Type': 'application/json' })
+                .then((headers) =>
+                    fetch('/api/publish-sync', {
+                        method: 'POST',
+                        headers,
+                        body: JSON.stringify({
+                            type: 'news',
+                            slug: newsSlugCandidate,
+                            title: newsFormData.title
+                        })
+                    })
+                )
+                .catch(() => {});
             setEditingNewsId(null);
             setNewsFormData({
                 title: '',
@@ -1059,6 +1087,7 @@ const AdminDashboard = () => {
                 .map(t => String(t || '').trim())
                 .filter(t => t.length > 0 && t.length <= 120)
                 .slice(0, 30);
+            const nowIsoTimestamp = new Date().toISOString();
             const canonicalFormData = {
                 title: String(layer1Result.article.title || cleanPostTitle || finalSlug).slice(0, 490),
                 slug: String(finalSlug).slice(0, 240),
@@ -1070,7 +1099,8 @@ const AdminDashboard = () => {
                 author: String(formData.author || 'Abu Qitmir Mohammad Shiraz Al-Madani').slice(0, 190),
                 category: selectedCategory.slice(0, 95),
                 published: isPublished,
-                publishedAt: String(layer1Result.article.publishedAt || new Date().toISOString().split('T')[0]),
+                publishedAt: String(layer1Result.article.publishedAt || nowIsoTimestamp.split('T')[0]),
+                cmsUpdatedAt: nowIsoTimestamp,
             };
             const postPayload = { ...canonicalFormData, tags: tagsArray };
             

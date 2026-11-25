@@ -102,13 +102,16 @@
   ],
   "functions": {
     "api/sitemap.ts": {
-      "includeFiles": "public/*sitemap*.xml"
+      "includeFiles": "{public/*sitemap*.xml,content/blog/**,firebase-applet-config.json}"
     },
     "api/publish-sync.ts": {
       "includeFiles": "firebase-applet-config.json"
     },
     "api/blog-ssr.ts": {
-      "includeFiles": "{dist/spa-shell.html,dist/blog/**,public/blog/**,content/blog/**,firebase-applet-config.json}"
+      "includeFiles": "{dist/spa-shell.html,dist/blog/**,public/blog/**,content/blog/**,public/images/blog-covers/**,firebase-applet-config.json}"
+    },
+    "api/content-ssr.ts": {
+      "includeFiles": "{dist/spa-shell.html,dist/blog/index.html,content/blog/**,public/images/blog-covers/**,firebase-applet-config.json}"
     }
   },
   "rewrites": [
@@ -133,8 +136,20 @@
       "destination": "/api/$1"
     },
     {
+      "source": "/blog",
+      "destination": "/api/content-ssr?route=/blog"
+    },
+    {
       "source": "/blog/:slug+",
       "destination": "/api/blog-ssr?slug=:slug*"
+    },
+    {
+      "source": "/news",
+      "destination": "/api/content-ssr?route=/news"
+    },
+    {
+      "source": "/news/:path*",
+      "destination": "/api/content-ssr?route=/news/:path*"
     },
     {
       "source": "/login",

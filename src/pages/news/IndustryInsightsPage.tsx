@@ -41,9 +41,50 @@ const getArticleSlug = (item: any) => {
   return item.id || 'article';
 };
 
+const getSsrInsightsList = (): any[] => {
+  if (typeof document === 'undefined') return [];
+  try {
+    const el = document.getElementById('__SSR_NEWS_LIST__');
+    if (!el || !el.textContent) return [];
+    const raw = el.textContent.trim();
+    let jsonStr = raw;
+    if (el.getAttribute('data-encoding') === 'base64' && typeof window !== 'undefined' && typeof window.atob === 'function') {
+      const binString = window.atob(raw);
+      const bytes = Uint8Array.from(binString, (m) => m.codePointAt(0) || 0);
+      jsonStr = new TextDecoder('utf-8').decode(bytes);
+    }
+    const parsed = JSON.parse(jsonStr);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+};
+
+const mergeInsightsByKey = (primary: any[], fallback: any[]) => {
+  const map = new Map<string, any>();
+  for (const item of [...primary, ...fallback]) {
+    if (item?.published === false) continue;
+    const key = getArticleSlug(item).toLowerCase();
+    if (!map.has(key)) map.set(key, item);
+  }
+  return Array.from(map.values());
+};
+
 const IndustryInsightsPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
-  const [dynamicInsights, setDynamicInsights] = useState<any[]>([]);
+  const ssrInitial = getSsrInsightsList()
+    .filter((item: any) => item.type === 'industry-insights' || item.type === 'all')
+    .map((item: any) => ({
+      id: item.id,
+      slug: item.slug,
+      title: item.title,
+      author: item.author || "Abu Qitmir Mohammad Shiraz Al-Madani",
+      date: item.date,
+      topic: item.category || "Industry Insights",
+      excerpt: item.excerpt || item.content,
+      readTime: item.readTime || "5 min read"
+    }));
+  const [dynamicInsights, setDynamicInsights] = useState<any[]>(ssrInitial);
 
   const defaultInsights = [
     {
@@ -99,7 +140,7 @@ const IndustryInsightsPage = () => {
         const snapshot = await getDocs(collection(db, 'news_items'));
         const items = snapshot.docs
           .map(doc => ({ id: doc.id, ...doc.data() }))
-          .filter((item: any) => item.type === 'industry-insights' || item.type === 'all')
+          .filter((item: any) => item.published !== false && (item.type === 'industry-insights' || item.type === 'all'))
           .map((item: any) => ({
             id: item.id,
             slug: item.slug,
@@ -120,7 +161,7 @@ const IndustryInsightsPage = () => {
     fetchInsights();
   }, []);
 
-  const insights = dynamicInsights.length > 0 ? dynamicInsights : defaultInsights;
+  const insights = mergeInsightsByKey(dynamicInsights, defaultInsights);
 
   const faqs = [
     {

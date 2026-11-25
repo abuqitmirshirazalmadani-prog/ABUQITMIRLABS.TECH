@@ -41,9 +41,49 @@ const getArticleSlug = (item: any) => {
   return item.id || 'article';
 };
 
+const getSsrPressList = (): any[] => {
+  if (typeof document === 'undefined') return [];
+  try {
+    const el = document.getElementById('__SSR_NEWS_LIST__');
+    if (!el || !el.textContent) return [];
+    const raw = el.textContent.trim();
+    let jsonStr = raw;
+    if (el.getAttribute('data-encoding') === 'base64' && typeof window !== 'undefined' && typeof window.atob === 'function') {
+      const binString = window.atob(raw);
+      const bytes = Uint8Array.from(binString, (m) => m.codePointAt(0) || 0);
+      jsonStr = new TextDecoder('utf-8').decode(bytes);
+    }
+    const parsed = JSON.parse(jsonStr);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+};
+
+const mergePressByKey = (primary: any[], fallback: any[]) => {
+  const map = new Map<string, any>();
+  for (const item of [...primary, ...fallback]) {
+    if (item?.published === false) continue;
+    const key = getArticleSlug(item).toLowerCase();
+    if (!map.has(key)) map.set(key, item);
+  }
+  return Array.from(map.values());
+};
+
 const PressReleasesPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
-  const [dynamicReleases, setDynamicReleases] = useState<any[]>([]);
+  const ssrInitial = getSsrPressList()
+    .filter((item: any) => item.type === 'press-releases' || item.type === 'all')
+    .map((item: any) => ({
+      id: item.id,
+      slug: item.slug,
+      title: item.title,
+      date: item.date,
+      location: item.location || 'Karachi, Pakistan',
+      summary: item.excerpt || item.summary || item.content,
+      contact: item.contact || 'info@abuqitmirlabs.tech'
+    }));
+  const [dynamicReleases, setDynamicReleases] = useState<any[]>(ssrInitial);
 
   const defaultPressReleases = [
     {
@@ -78,7 +118,7 @@ const PressReleasesPage = () => {
         const snapshot = await getDocs(collection(db, 'news_items'));
         const items = snapshot.docs
           .map(doc => ({ id: doc.id, ...doc.data() }))
-          .filter((item: any) => item.type === 'press-releases' || item.type === 'all')
+          .filter((item: any) => item.published !== false && (item.type === 'press-releases' || item.type === 'all'))
           .map((item: any) => ({
             id: item.id,
             slug: item.slug,
@@ -98,7 +138,7 @@ const PressReleasesPage = () => {
     fetchPressReleases();
   }, []);
 
-  const pressReleases = dynamicReleases.length > 0 ? dynamicReleases : defaultPressReleases;
+  const pressReleases = mergePressByKey(dynamicReleases, defaultPressReleases);
 
   const faqs = [
     {

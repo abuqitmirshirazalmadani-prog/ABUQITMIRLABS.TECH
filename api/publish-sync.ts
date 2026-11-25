@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { invalidateSsrCache, writeBlogPostStaticHtml } from '../lib/live-ssr';
 
 const CANONICAL_REDIRECT_MAP: Record<string, string> = {
   'custom-web-development-company-2026': 'custom-web-development-company',
@@ -239,8 +240,23 @@ export default async function handler(req: any, res: any) {
   if (cleanSlug && !/^[a-z0-9]+(?:-[a-z0-9]+)*$/i.test(cleanSlug)) {
     return res.status(400).json({ success: false, error: 'Invalid article slug format' });
   }
-  const postUrl = cleanSlug ? `https://www.abuqitmirlabs.tech/blog/${cleanSlug}` : '';
+  const cleanNewsSlug =
+    type === 'news' && postPayload.slug
+      ? String(postPayload.slug)
+          .trim()
+          .replace(/^\/+/, '')
+          .replace(/^news\/(?:article|read|latest|press-releases|industry-insights)\//, '')
+          .replace(/\/+$/, '')
+      : '';
+  const postUrl =
+    type === 'news' && cleanNewsSlug
+      ? `https://www.abuqitmirlabs.tech/news/article/${cleanNewsSlug}`
+      : cleanSlug
+      ? `https://www.abuqitmirlabs.tech/blog/${cleanSlug}`
+      : '';
   const cleanedTags = sanitizeTags(tags);
+
+  invalidateSsrCache(cleanSlug || undefined);
 
   let localSitemapUpdated = false;
   let localRssUpdated = false;
@@ -253,7 +269,7 @@ export default async function handler(req: any, res: any) {
   let resolvedLocalCover = coverImage || (cleanSlug ? `/images/blog-covers/${cleanSlug}.webp` : '/logo.png');
   let downloadedImageBuffer: Buffer | null = null;
 
-  if (cleanSlug && typeof coverImage === 'string' && isSafeHttpsUrl(coverImage.trim()) && !coverImage.includes('abuqitmirlabs.tech')) {
+  if (cleanSlug && type !== 'news' && typeof coverImage === 'string' && isSafeHttpsUrl(coverImage.trim()) && !coverImage.includes('abuqitmirlabs.tech')) {
     try {
       const imgRes = await fetch(coverImage.trim(), {
         headers: {
@@ -276,14 +292,15 @@ export default async function handler(req: any, res: any) {
     } catch {}
   }
 
-  // 1. Write content/blog/<slug>.md when writable
-  if (cleanSlug && content) {
+  // 1. Write content/blog/<slug>.md and immediately re-render static HTML when writable
+  if (cleanSlug && type !== 'news' && content) {
     try {
       const blogDir = path.join(process.cwd(), 'content', 'blog');
       if (!fs.existsSync(blogDir)) {
         fs.mkdirSync(blogDir, { recursive: true });
       }
       const cleanTitle = String(title || cleanSlug).replace(/\s*\|\s*AbuQitmirLabs.*$/i, '').trim();
+      const nowIso = new Date().toISOString();
       const frontmatterObj = {
         title: cleanTitle,
         slug: cleanSlug,
@@ -293,7 +310,10 @@ export default async function handler(req: any, res: any) {
         coverImageAlt: coverImageAlt || `${cleanTitle} by AbuQitmirLabs`,
         category: category || 'Development',
         author: author || 'Abu Qitmir Mohammad Shiraz Al-Madani',
-        publishedAt: today,
+        publishedAt: postPayload.publishedAt || today,
+        syncedAt: nowIso,
+        cmsUpdatedAt: postPayload.cmsUpdatedAt || nowIso,
+        published: postPayload.published ?? true,
         tags: cleanedTags
       };
       const mdFileContent = `---\n${JSON.stringify(frontmatterObj, null, 2)}\n---\n\n${String(content).trim()}\n`;
@@ -301,6 +321,11 @@ export default async function handler(req: any, res: any) {
       localMarkdownSaved = true;
       seoFixesApplied.push('Canonical slug, local cover image & tag sanitization applied');
       steps.push(`✓ Saved canonical markdown content/blog/${cleanSlug}.md`);
+
+      const renderedStatic = await writeBlogPostStaticHtml(cleanSlug);
+      if (renderedStatic) {
+        steps.push(`✓ Rendered live SSR HTML to dist/blog/${cleanSlug}/index.html and public/blog/${cleanSlug}/index.html`);
+      }
     } catch {
       steps.push(`✓ Validated canonical metadata for /blog/${cleanSlug}`);
     }

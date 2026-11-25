@@ -110,13 +110,41 @@ const formatCoverImage = (url?: string, width = 800, slug?: string) => {
 
 const KNOWN_CANONICAL_SLUG_MAP: Record<string, string> = BLOG_SLUG_REDIRECTS;
 
+const getSsrBlogList = (): Post[] => {
+    if (typeof document === 'undefined') return [];
+    try {
+        const el = document.getElementById('__SSR_BLOG_LIST__');
+        if (!el || !el.textContent) return [];
+        const raw = el.textContent.trim();
+        let jsonStr = raw;
+        if (el.getAttribute('data-encoding') === 'base64' && typeof window !== 'undefined' && typeof window.atob === 'function') {
+            const binString = window.atob(raw);
+            const bytes = Uint8Array.from(binString, (m) => m.codePointAt(0) || 0);
+            jsonStr = new TextDecoder('utf-8').decode(bytes);
+        }
+        const parsed = JSON.parse(jsonStr);
+        return Array.isArray(parsed) ? (parsed as Post[]) : [];
+    } catch {
+        return [];
+    }
+};
+
 const BlogPage = () => {
     const staticInitialPosts = (getStaticBlogList() as unknown as Post[]).map(p => ({
         ...p,
         coverImage: resolveOptimizedCoverImage(p.coverImage, p.slug) || p.coverImage
     }));
+    const ssrList = getSsrBlogList().map(p => ({
+        ...p,
+        coverImage: resolveOptimizedCoverImage(p.coverImage, p.slug) || p.coverImage
+    }));
     const [posts, setPosts] = useState<Post[]>(() => {
-        const initial = [...staticInitialPosts];
+        const map = new Map<string, Post>();
+        for (const p of [...ssrList, ...staticInitialPosts]) {
+            const k = (KNOWN_CANONICAL_SLUG_MAP[p.slug] || getCanonicalSlug(p.slug) || p.slug).toLowerCase().trim();
+            if (!map.has(k)) map.set(k, p);
+        }
+        const initial = Array.from(map.values());
         initial.sort((a, b) => parseDateToMillis(b.createdAt) - parseDateToMillis(a.createdAt));
         return initial;
     });
@@ -182,20 +210,27 @@ const BlogPage = () => {
                         cleanSlug = KNOWN_CANONICAL_SLUG_MAP[cleanSlug] || getCanonicalSlug(cleanSlug) || cleanSlug;
 
                         const staticMatch = staticInitialPosts.find(sp => sp.slug === cleanSlug);
-                        const bestContent =
-                            staticMatch?.content && staticMatch.content.trim().length > 500
-                                ? staticMatch.content
-                                : staticMatch?.content && staticMatch.content.length >= (data.content?.length || 0)
-                                ? staticMatch.content
-                                : (data.content || '');
-                        const bestTitle = staticMatch?.title || data.title || 'Untitled Article';
+                        const fetchedCmsMs = parseDateToMillis(data.cmsUpdatedAt);
+                        const staticCmsMs = parseDateToMillis((staticMatch as any)?.cmsUpdatedAt || staticMatch?.createdAt);
+                        const isFreshCmsEdit = Boolean(data.cmsUpdatedAt && fetchedCmsMs > staticCmsMs + 2000);
+
+                        const bestContent = isFreshCmsEdit && data.content
+                            ? data.content
+                            : staticMatch?.content && staticMatch.content.trim().length > 500
+                            ? staticMatch.content
+                            : staticMatch?.content && staticMatch.content.length >= (data.content?.length || 0)
+                            ? staticMatch.content
+                            : (data.content || '');
+                        const bestTitle = (isFreshCmsEdit ? data.title : staticMatch?.title || data.title) || 'Untitled Article';
 
                         const staticCover =
                             staticMatch?.coverImage && !staticMatch.coverImage.includes('logo.png')
                                 ? staticMatch.coverImage
                                 : undefined;
                         const resolvedCover = resolveOptimizedCoverImage(
-                            staticCover || data.coverImage || data.featuredImage || data.imageUrl || data.image,
+                            isFreshCmsEdit
+                                ? (data.coverImage || staticCover)
+                                : (staticCover || data.coverImage || data.featuredImage || data.imageUrl || data.image),
                             cleanSlug
                         );
 
@@ -203,11 +238,11 @@ const BlogPage = () => {
                             id: doc.id,
                             slug: cleanSlug,
                             title: bestTitle,
-                            excerpt: staticMatch?.excerpt || excerpt,
+                            excerpt: (isFreshCmsEdit ? excerpt : staticMatch?.excerpt) || excerpt,
                             content: bestContent,
                             coverImage: resolvedCover || staticCover || data.coverImage || data.featuredImage || data.imageUrl || data.image || 'https://www.abuqitmirlabs.tech/logo.png',
-                            coverImageAlt: staticMatch?.coverImageAlt || data.coverImageAlt || `${bestTitle} | AbuQitmirLabs`,
-                            category: staticMatch?.category || data.category || 'AI',
+                            coverImageAlt: (isFreshCmsEdit ? data.coverImageAlt : staticMatch?.coverImageAlt) || data.coverImageAlt || `${bestTitle} | AbuQitmirLabs`,
+                            category: (isFreshCmsEdit ? data.category : staticMatch?.category) || data.category || 'AI',
                             createdAt: staticMatch?.createdAt || data.createdAt || data.date || new Date().toISOString(),
                             author: staticMatch?.author || data.author || 'AbuQitmirLabs',
                             tags: Array.isArray(data.tags) ? data.tags : (typeof data.tags === 'string' ? data.tags.split(',').map((t: string) => t.trim()).filter(Boolean) : []),
@@ -223,20 +258,19 @@ const BlogPage = () => {
                             .replace(/[^a-z0-9]/g, '');
                     };
 
-                    const staticPosts = staticInitialPosts;
+                    const baselinePosts = [...ssrList, ...staticInitialPosts];
                     const fetchedBySlug = new Map<string, Post>();
                     for (const fp of fetchedPosts) {
                         const cs = (KNOWN_CANONICAL_SLUG_MAP[fp.slug] || getCanonicalSlug(fp.slug) || fp.slug).toLowerCase().trim();
                         if (!fetchedBySlug.has(cs)) fetchedBySlug.set(cs, fp);
                     }
 
-                    // Prioritize curated static posts first so their synced dates/titles/covers are preserved,
-                    // then merge any additional Firestore-only posts without substring collisions.
+                    // Merge curated static/SSR posts with Firestore posts (preferring newer Firestore edits or brand-new posts)
                     const seenSlugs = new Set<string>();
                     const seenTitles = new Set<string>();
                     const combined: Post[] = [];
 
-                    for (const p of [...staticPosts, ...fetchedPosts]) {
+                    for (const p of [...fetchedPosts, ...baselinePosts]) {
                         const canonSlug = KNOWN_CANONICAL_SLUG_MAP[p.slug] || getCanonicalSlug(p.slug) || p.slug;
                         const normSlug = canonSlug.toLowerCase().trim();
                         const normTitle = normalizeExact(p.title);

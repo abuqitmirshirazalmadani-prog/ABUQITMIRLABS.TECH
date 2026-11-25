@@ -1,4 +1,4 @@
-var __defProp=Object.defineProperty;var __name=(target,value)=>__defProp(target,"name",{value,configurable:true});import express from"express";import compression from"compression";import path from"path";import{fileURLToPath}from"url";import{createServer as createViteServer}from"vite";import{initializeApp}from"firebase/app";import{getFirestore,collection,getDocs,query,where}from"firebase/firestore";import fs from"fs";import{GoogleGenAI}from"@google/genai";import{generateAlgorithmicEstimate,COUNTRY_DATA}from"./src/utils/estimatorLogic.js";import{performWebsiteAudit}from"./src/utils/serverAudit.js";import{checkAnonymousRateLimit,SsrfBlockedError}from"./src/utils/ssrfGuard.js";import{generateAlgorithmicChecklist}from"./src/utils/seoChecklistGenerator.js";import{calculateScores,getReadinessLevel,getFallbackResult}from"./src/utils/aiReadinessEngine.js";import{getFallbackRecommendation}from"./src/utils/techStackEngine.js";import{normalizeDomain,calculateOverallScore,getAuthorityLevel,getPercentile,getIndustryRank,generateSummary,generateFallbackAI,generateFallbackReport}from"./src/utils/authorityAnalyzerEngine.js";import{runAutoFixAndPersistOnSave,applyOneClickFix,readFixQueue,appendWarningsToFixQueue,readSeoReportSummary}from"./lib/seo-fix-engine.ts";import{getCanonicalSlug}from"./src/data/canonicalRedirects.ts";import{verifyAdminRequest,isSafeAdminSlug}from"./lib/server-admin-auth.ts";const __filename=fileURLToPath(import.meta.url);const __dirname=path.dirname(__filename);let firebaseConfig: any = {};try{let configPath=path.join(process.cwd(),"firebase-applet-config.json");if(!fs.existsSync(configPath)){configPath=path.join(__dirname,"firebase-applet-config.json")}if(!fs.existsSync(configPath)){configPath=path.join(__dirname,"..","firebase-applet-config.json")}if(fs.existsSync(configPath)){firebaseConfig=JSON.parse(fs.readFileSync(configPath,"utf-8"));console.log("Successfully loaded Firebase configuration in server.ts")}else{console.warn("Firebase config file not found in potential locations")}}catch(e){console.warn("Firebase config not found, sitemap will be limited:",e)}let firebaseApp=null;let db=null;if(firebaseConfig.apiKey){try{firebaseApp=initializeApp(firebaseConfig);db=getFirestore(firebaseApp,firebaseConfig.firestoreDatabaseId);console.log("Firebase initialized in server for sitemap")}catch(e){console.error("Firebase server-side init error:",e)}}async function startServer(){const app=express();const PORT=3e3;app.use((req,res,next)=>{const host=req.headers.host||"";const cleanHost=host.split(":")[0].toLowerCase();const isHttp=req.headers["x-forwarded-proto"]==="http";if(cleanHost==="abuqitmirlabs.tech"){return res.redirect(301,`https://www.abuqitmirlabs.tech${req.originalUrl}`)}if(cleanHost==="www.abuqitmirlabs.tech"&&isHttp){return res.redirect(301,`https://www.abuqitmirlabs.tech${req.originalUrl}`)}next()});app.use(compression({threshold:512,level:6}));app.use((req,res,next)=>{res.setHeader("Alt-Svc",'h3=":443"; ma=86400');res.setHeader("X-Content-Type-Options","nosniff");res.setHeader("X-Frame-Options","SAMEORIGIN");res.setHeader("Referrer-Policy","strict-origin-when-cross-origin");res.setHeader("Permissions-Policy","camera=(), microphone=(), geolocation=()");res.setHeader("Cross-Origin-Opener-Policy","same-origin-allow-popups");res.setHeader("Content-Security-Policy","default-src 'self'; script-src 'self' 'unsafe-inline' https://apis.google.com https://*.firebaseapp.com https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://www.youtube.com https://s.ytimg.com https://*.google.com https://*.google.com.pk; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://images.unsplash.com https://i.postimg.cc https://i.ytimg.com https://img.youtube.com https://pixeldrain.com https://tmpfiles.org https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.google.com https://*.google.com.pk https://*.googleadservices.com https://*.doubleclick.net https://googleads.g.doubleclick.net https://grainy-gradients.vercel.app https://www.facebook.com https://www.abuqitmirlabs.tech; frame-src 'self' https://*.firebaseapp.com https://accounts.google.com https://*.google.com https://content.googleapis.com https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' https://*.youtube.com; connect-src 'self' https://api.github.com https://*.github.com https://api.vercel.com https://*.vercel.com https://api.indexnow.org https://*.googleapis.com https://*.firebaseio.com https://*.firebase.com https://*.firebaseapp.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://*.google.com https://*.google.com.pk https://*.googleadservices.com https://connect.facebook.net https://www.facebook.com https://pixeldrain.com https://tmpfiles.org; object-src 'none'; base-uri 'self'; form-action 'self' https://mail.google.com;");next()});app.use(express.json({limit:"50mb"}));app.use(express.urlencoded({extended:true,limit:"50mb"}));app.get("/api/health",(req,res)=>{res.json({status:"ok",time:new Date().toISOString(),env:process.env.NODE_ENV,port:PORT,firebaseEnabled:!!db})});let geminiClient=null;let isGeminiConfigured=true;let lastGeminiFailure=0;const handleGeminiError=__name(err=>{const errStr=String(err?.message||err||"");if(errStr.includes("API_KEY_INVALID")||errStr.includes("API key not valid")||err?.status===400||err?.code===400){isGeminiConfigured=false;lastGeminiFailure=Date.now();console.log("[Gemini SDK] API key is currently unconfigured or invalid; seamlessly falling back to high-precision algorithmic engines.")}},"handleGeminiError");const getGeminiClient=__name(()=>{const key=process.env.GEMINI_API_KEY;if(!key||key==="MY_GEMINI_API_KEY"||key.trim()===""){return null}if(!isGeminiConfigured&&Date.now()-lastGeminiFailure<3e5){return null}if(!geminiClient){try{geminiClient=new GoogleGenAI({apiKey:key,httpOptions:{headers:{"User-Agent":"aistudio-build"}}})}catch{return null}}return geminiClient},"getGeminiClient");app.post("/api/estimate",async(req,res)=>{try{const{idea,country="PK",projectType="auto",budget="not specified"}=req.body;if(!idea||typeof idea!=="string"||!idea.trim()){return res.status(400).json({error:"Please provide a valid project idea to generate an estimate."})}const countryMeta=COUNTRY_DATA[country]||COUNTRY_DATA["PK"];const algorithmicBaseline=generateAlgorithmicEstimate(idea,country,projectType,budget);const ai=getGeminiClient();if(ai){try{const prompt=`
+var __defProp=Object.defineProperty;var __name=(target,value)=>__defProp(target,"name",{value,configurable:true});import express from"express";import compression from"compression";import path from"path";import{fileURLToPath,pathToFileURL}from"url";import{createServer as createViteServer}from"vite";import{initializeApp}from"firebase/app";import{getFirestore,collection,getDocs,query,where}from"firebase/firestore";import fs from"fs";import{GoogleGenAI}from"@google/genai";import{generateAlgorithmicEstimate,COUNTRY_DATA}from"./src/utils/estimatorLogic.js";import{performWebsiteAudit}from"./src/utils/serverAudit.js";import{checkAnonymousRateLimit,SsrfBlockedError}from"./src/utils/ssrfGuard.js";import{generateAlgorithmicChecklist}from"./src/utils/seoChecklistGenerator.js";import{calculateScores,getReadinessLevel,getFallbackResult}from"./src/utils/aiReadinessEngine.js";import{getFallbackRecommendation}from"./src/utils/techStackEngine.js";import{normalizeDomain,calculateOverallScore,getAuthorityLevel,getPercentile,getIndustryRank,generateSummary,generateFallbackAI,generateFallbackReport}from"./src/utils/authorityAnalyzerEngine.js";import{runAutoFixAndPersistOnSave,applyOneClickFix,readFixQueue,appendWarningsToFixQueue,readSeoReportSummary}from"./lib/seo-fix-engine.ts";import{getCanonicalSlug}from"./src/data/canonicalRedirects.ts";import{verifyAdminRequest,isSafeAdminSlug}from"./lib/server-admin-auth.ts";import{invalidateSsrCache,writeBlogPostStaticHtml,renderBlogPostSsrHtml,renderBlogIndexSsrHtml,renderNewsIndexSsrHtml,renderNewsArticleSsrHtml,buildDynamicSitemapXml,replaceRootElement}from"./lib/live-ssr.ts";const __filename=fileURLToPath(import.meta.url);const __dirname=path.dirname(__filename);let firebaseConfig: any = {};try{let configPath=path.join(process.cwd(),"firebase-applet-config.json");if(!fs.existsSync(configPath)){configPath=path.join(__dirname,"firebase-applet-config.json")}if(!fs.existsSync(configPath)){configPath=path.join(__dirname,"..","firebase-applet-config.json")}if(fs.existsSync(configPath)){firebaseConfig=JSON.parse(fs.readFileSync(configPath,"utf-8"));console.log("Successfully loaded Firebase configuration in server.ts")}else{console.warn("Firebase config file not found in potential locations")}}catch(e){console.warn("Firebase config not found, sitemap will be limited:",e)}let firebaseApp=null;let db=null;if(firebaseConfig.apiKey){try{firebaseApp=initializeApp(firebaseConfig);db=getFirestore(firebaseApp,firebaseConfig.firestoreDatabaseId);console.log("Firebase initialized in server for sitemap")}catch(e){console.error("Firebase server-side init error:",e)}}async function startServer(){const app=express();const PORT=3e3;app.use((req,res,next)=>{const host=req.headers.host||"";const cleanHost=host.split(":")[0].toLowerCase();const isHttp=req.headers["x-forwarded-proto"]==="http";if(cleanHost==="abuqitmirlabs.tech"){return res.redirect(301,`https://www.abuqitmirlabs.tech${req.originalUrl}`)}if(cleanHost==="www.abuqitmirlabs.tech"&&isHttp){return res.redirect(301,`https://www.abuqitmirlabs.tech${req.originalUrl}`)}next()});app.use(compression({threshold:512,level:6}));app.use((req,res,next)=>{res.setHeader("Alt-Svc",'h3=":443"; ma=86400');res.setHeader("X-Content-Type-Options","nosniff");res.setHeader("X-Frame-Options","SAMEORIGIN");res.setHeader("Referrer-Policy","strict-origin-when-cross-origin");res.setHeader("Permissions-Policy","camera=(), microphone=(), geolocation=()");res.setHeader("Cross-Origin-Opener-Policy","same-origin-allow-popups");res.setHeader("Content-Security-Policy","default-src 'self'; script-src 'self' 'unsafe-inline' https://apis.google.com https://*.firebaseapp.com https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://www.youtube.com https://s.ytimg.com https://*.google.com https://*.google.com.pk; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://images.unsplash.com https://i.postimg.cc https://i.ytimg.com https://img.youtube.com https://pixeldrain.com https://tmpfiles.org https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.google.com https://*.google.com.pk https://*.googleadservices.com https://*.doubleclick.net https://googleads.g.doubleclick.net https://grainy-gradients.vercel.app https://www.facebook.com https://www.abuqitmirlabs.tech; frame-src 'self' https://*.firebaseapp.com https://accounts.google.com https://*.google.com https://content.googleapis.com https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' https://*.youtube.com; connect-src 'self' https://api.github.com https://*.github.com https://api.vercel.com https://*.vercel.com https://api.indexnow.org https://*.googleapis.com https://*.firebaseio.com https://*.firebase.com https://*.firebaseapp.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://*.google.com https://*.google.com.pk https://*.googleadservices.com https://connect.facebook.net https://www.facebook.com https://pixeldrain.com https://tmpfiles.org; object-src 'none'; base-uri 'self'; form-action 'self' https://mail.google.com;");next()});app.use(express.json({limit:"50mb"}));app.use(express.urlencoded({extended:true,limit:"50mb"}));app.get("/api/health",(req,res)=>{res.json({status:"ok",time:new Date().toISOString(),env:process.env.NODE_ENV,port:PORT,firebaseEnabled:!!db})});let geminiClient=null;let isGeminiConfigured=true;let lastGeminiFailure=0;const handleGeminiError=__name(err=>{const errStr=String(err?.message||err||"");if(errStr.includes("API_KEY_INVALID")||errStr.includes("API key not valid")||err?.status===400||err?.code===400){isGeminiConfigured=false;lastGeminiFailure=Date.now();console.log("[Gemini SDK] API key is currently unconfigured or invalid; seamlessly falling back to high-precision algorithmic engines.")}},"handleGeminiError");const getGeminiClient=__name(()=>{const key=process.env.GEMINI_API_KEY;if(!key||key==="MY_GEMINI_API_KEY"||key.trim()===""){return null}if(!isGeminiConfigured&&Date.now()-lastGeminiFailure<3e5){return null}if(!geminiClient){try{geminiClient=new GoogleGenAI({apiKey:key,httpOptions:{headers:{"User-Agent":"aistudio-build"}}})}catch{return null}}return geminiClient},"getGeminiClient");app.post("/api/estimate",async(req,res)=>{try{const{idea,country="PK",projectType="auto",budget="not specified"}=req.body;if(!idea||typeof idea!=="string"||!idea.trim()){return res.status(400).json({error:"Please provide a valid project idea to generate an estimate."})}const countryMeta=COUNTRY_DATA[country]||COUNTRY_DATA["PK"];const algorithmicBaseline=generateAlgorithmicEstimate(idea,country,projectType,budget);const ai=getGeminiClient();if(ai){try{const prompt=`
 You are a senior software engineering architect and commercial cost estimator at AbuQitmirLabs (https://www.abuqitmirlabs.tech).
 
 USER REQUEST:
@@ -365,6 +365,7 @@ app.post("/api/seo/auto-fix", async (req, res) => {
       return res.json({ success: true, queue: updatedQueue });
     }
     const result = runAutoFixAndPersistOnSave(article || {}, { persist: persist !== false });
+    invalidateSsrCache(article?.slug);
     return res.json({
       success: true,
       result,
@@ -392,6 +393,7 @@ app.post("/api/seo/fix-item", async (req, res) => {
       issueType: issueType || type,
       fixAll: !!fixAll || id === "ALL"
     });
+    invalidateSsrCache(slug);
     const reportSummary = readSeoReportSummary();
     return res.json({
       success: true,
@@ -414,6 +416,68 @@ app.post("/api/publish-sync", async (req, res) => {
   }
   try {
     const payload = { ...(req.body || {}) };
+    if (payload.type === "news") {
+      invalidateSsrCache();
+      const rawNewsSlug = String(payload.slug || payload.title || "")
+        .trim()
+        .replace(/^\/+/, "")
+        .replace(/^news\/article\//, "")
+        .replace(/^news\//, "");
+      const cleanNewsSlug =
+        rawNewsSlug
+          .toLowerCase()
+          .replace(/[^a-z0-9-]+/g, "-")
+          .replace(/^-+|-+$/g, "") || "news-update";
+      const canonicalNewsPath =
+        cleanNewsSlug === "google-ai-dogfooding-enterprise-results"
+          ? `/news/industry-insights/${cleanNewsSlug}`
+          : `/news/article/${cleanNewsSlug}`;
+      const canonicalNewsUrl = `https://www.abuqitmirlabs.tech${canonicalNewsPath}`;
+      const todayNews = new Date().toISOString().split("T")[0];
+      const newsLogs: string[] = [`✓ Invalidated SSR cache for news item (${canonicalNewsUrl})`];
+      let localNewsSitemapUpdated = false;
+      const pubSm = path.join(process.cwd(), "public", "sitemap.xml");
+      const distSm = path.join(process.cwd(), "dist", "sitemap.xml");
+      if (fs.existsSync(pubSm)) {
+        try {
+          let smXml = fs.readFileSync(pubSm, "utf-8");
+          if (!smXml.includes(`<loc>${canonicalNewsUrl}</loc>`)) {
+            smXml = smXml.replace(
+              "</urlset>",
+              `  <url><loc>${canonicalNewsUrl}</loc><changefreq>weekly</changefreq><priority>0.8</priority><lastmod>${todayNews}</lastmod></url>\n</urlset>`
+            );
+            fs.writeFileSync(pubSm, smXml, "utf-8");
+            if (fs.existsSync(distSm)) {
+              try { fs.writeFileSync(distSm, smXml, "utf-8"); } catch {}
+            }
+            newsLogs.push(`✓ Added ${canonicalNewsUrl} to public/sitemap.xml`);
+          }
+          localNewsSitemapUpdated = true;
+        } catch {}
+      }
+      try {
+        fetch(`https://www.google.com/ping?sitemap=${encodeURIComponent("https://www.abuqitmirlabs.tech/sitemap.xml")}`).catch(() => {});
+        fetch("https://api.indexnow.org/indexnow", {
+          method: "POST",
+          headers: { "Content-Type": "application/json; charset=utf-8" },
+          body: JSON.stringify({
+            host: "www.abuqitmirlabs.tech",
+            key: "abuqitmirlabs2026",
+            keyLocation: "https://www.abuqitmirlabs.tech/indexnow.txt",
+            urlList: [canonicalNewsUrl, "https://www.abuqitmirlabs.tech/sitemap.xml"]
+          })
+        }).catch(() => {});
+        newsLogs.push("🔍 Google Sitemap & IndexNow pings dispatched for news URL.");
+      } catch {}
+      return res.json({
+        success: true,
+        canonicalUrl: canonicalNewsUrl,
+        localSitemap: localNewsSitemapUpdated,
+        googlePinged: true,
+        indexNowPinged: true,
+        logs: newsLogs
+      });
+    }
     if (payload.post?.slug) {
       const candidateSlug = getCanonicalSlug(String(payload.post.slug).replace(/^\/+/, "").replace(/^blog\//, ""));
       if (!isSafeAdminSlug(candidateSlug)) {
@@ -577,6 +641,51 @@ app.post("/api/publish-sync", async (req, res) => {
       }
     }
 
+    let localMarkdownContent = "";
+    let localPostSlug = "";
+    if (post && post.slug) {
+      localPostSlug = getCanonicalSlug(String(post.slug).replace(/^\/+/, "").replace(/^blog\//, ""));
+      const stripQuotes = (s?: string) =>
+        (s || "").trim().replace(/^(?:&quot;|["'“”])+|(?:&quot;|["'“”])+$/gi, "").trim();
+      const nowIso = new Date().toISOString();
+      const postMeta = {
+        title: post.title || "",
+        slug: localPostSlug,
+        metaDescription: stripQuotes(post.metaDescription || post.excerpt || ""),
+        excerpt: stripQuotes(post.excerpt || ""),
+        coverImage: post.coverImage || "",
+        coverImageAlt: post.coverImageAlt || "",
+        category: localPostSlug === "ai-content-vs-human-content" ? "Content Writing" : (post.category || "AI"),
+        author: post.author || "Abu Qitmir Mohammad Shiraz Al-Madani",
+        published: post.published ?? true,
+        tags: post.tags || [],
+        publishedAt: String(post.publishedAt || today),
+        syncedAt: nowIso,
+        cmsUpdatedAt: String(post.cmsUpdatedAt || nowIso)
+      };
+      localMarkdownContent = `---
+${JSON.stringify(postMeta, null, 2)}
+---
+
+${post.content || ""}
+`;
+      try {
+        const mdDir = path.join(process.cwd(), "content", "blog");
+        if (!fs.existsSync(mdDir)) fs.mkdirSync(mdDir, { recursive: true });
+        fs.writeFileSync(path.join(mdDir, `${localPostSlug}.md`), localMarkdownContent, "utf-8");
+        logs.push(`✓ Saved content/blog/${localPostSlug}.md locally`);
+      } catch (mdErr: any) {
+        logs.push(`⚠️ Local markdown write notice: ${mdErr?.message || mdErr}`);
+      }
+      invalidateSsrCache(localPostSlug);
+      const staticHtmlSynced = await writeBlogPostStaticHtml(localPostSlug);
+      if (staticHtmlSynced) {
+        logs.push(`✓ Regenerated SSR HTML for /blog/${localPostSlug}`);
+      }
+    } else {
+      invalidateSsrCache();
+    }
+
     // 3. GitHub Direct API Commit
     if (githubToken && repoFullName) {
       const [owner, repo] = repoFullName.split("/");
@@ -659,39 +768,16 @@ app.post("/api/publish-sync", async (req, res) => {
         }
 
         // Commit Post JSON/Markdown to GitHub to ensure repository content sync and trigger Vercel
-        if (post && post.slug) {
-          const cleanSlug = post.slug.replace(/^\/+/, "").replace(/^blog\//, "");
-          const stripQuotes = (s?: string) =>
-            (s || "").trim().replace(/^(?:&quot;|["'“”])+|(?:&quot;|["'“”])+$/gi, "").trim();
-          const postMeta = {
-            title: post.title || "",
-            slug: cleanSlug,
-            metaDescription: stripQuotes(post.metaDescription || post.excerpt || ""),
-            excerpt: stripQuotes(post.excerpt || ""),
-            coverImage: post.coverImage || "",
-            coverImageAlt: post.coverImageAlt || "",
-            category: cleanSlug === "ai-content-vs-human-content" ? "Content Writing" : (post.category || "AI"),
-            author: post.author || "Abu Qitmir Mohammad Shiraz Al-Madani",
-            published: post.published ?? true,
-            tags: post.tags || [],
-            publishedAt: today,
-            syncedAt: new Date().toISOString()
-          };
-          const fileContent = `---
-${JSON.stringify(postMeta, null, 2)}
----
-
-${post.content || ""}
-`;
+        if (post && localPostSlug && localMarkdownContent) {
           const postSync = await updateGitHubFile(
-            `content/blog/${cleanSlug}.md`,
-            fileContent,
-            `publish: auto-publish blog post "${post.title || cleanSlug}" [deploy vercel]`
+            `content/blog/${localPostSlug}.md`,
+            localMarkdownContent,
+            `publish: auto-publish blog post "${post.title || localPostSlug}" [deploy vercel]`
           );
           if (postSync.success) {
             results.githubPostFile = true;
             results.commitUrl = postSync.commitUrl || results.commitUrl;
-            logs.push(`✓ Committed content/blog/${cleanSlug}.md to GitHub! GitHub commit triggers Vercel automatic deployment.`);
+            logs.push(`✓ Committed content/blog/${localPostSlug}.md to GitHub! GitHub commit triggers Vercel automatic deployment.`);
           } else {
             logs.push(`⚠️ GitHub post commit notice: ${postSync.error}`);
           }
@@ -876,27 +962,17 @@ app.get("/rss.xml",(req,res)=>{
   return res.send(rss);
 });
 
-app.get("/sitemap.xml",(req,res)=>{
+app.get("/sitemap.xml",async(req,res)=>{
   try{
     const distP=path.join(process.cwd(),"dist","sitemap.xml");
     const pubP=path.join(process.cwd(),"public","sitemap.xml");
     const rootP=path.join(process.cwd(),"sitemap.xml");
     const target=fs.existsSync(distP)?distP:fs.existsSync(pubP)?pubP:fs.existsSync(rootP)?rootP:null;
-    if(target){
-      res.setHeader("Content-Type","application/xml; charset=utf-8");
-      res.setHeader("Cache-Control","public, max-age=0, must-revalidate");
-      return res.sendFile(target);
-    }
-    const today=new Date().toISOString().split("T")[0];
-    const fallbackSitemap=`<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.abuqitmirlabs.tech/</loc><changefreq>weekly</changefreq><priority>1.0</priority><lastmod>${today}</lastmod></url>
-  <url><loc>https://www.abuqitmirlabs.tech/blog</loc><changefreq>daily</changefreq><priority>0.9</priority><lastmod>${today}</lastmod></url>
-  <url><loc>https://www.abuqitmirlabs.tech/blog/design-trends-2026</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>${today}</lastmod></url>
-</urlset>`;
+    const baseXml=target?fs.readFileSync(target,"utf-8"):"";
+    const dynamicXml=await buildDynamicSitemapXml(baseXml);
     res.setHeader("Content-Type","application/xml; charset=utf-8");
-    res.setHeader("Cache-Control","public, max-age=0, must-revalidate");
-    return res.status(200).send(fallbackSitemap);
+    res.setHeader("Cache-Control","public, max-age=0, s-maxage=30, must-revalidate");
+    return res.status(200).send(dynamicXml);
   }catch(error){
     console.error("Error serving sitemap.xml:",error);
     const today=new Date().toISOString().split("T")[0];
@@ -927,7 +1003,7 @@ app.get("/sitemap.xml",(req,res)=>{
     <loc>https://www.abuqitmirlabs.tech/video-sitemap.xml</loc>
     <lastmod>${today}</lastmod>
   </sitemap>
-</sitemapindex>`;res.header("Content-Type","application/xml; charset=utf-8");res.header("Cache-Control","public, max-age=0, must-revalidate");res.send(sitemapIndex)}catch(error){console.error("Error generating sitemap index:",error);res.status(500).send("Error generating sitemap index")}});app.get(["/pages-sitemap.xml","/sitemap-pages.xml"],async(req,res)=>{try{const distPagesP=path.join(process.cwd(),"dist","pages-sitemap.xml");const pubPagesP=path.join(process.cwd(),"public","pages-sitemap.xml");const rootPagesP=path.join(process.cwd(),"pages-sitemap.xml");const targetPages=fs.existsSync(distPagesP)?distPagesP:fs.existsSync(pubPagesP)?pubPagesP:fs.existsSync(rootPagesP)?rootPagesP:null;if(targetPages){res.setHeader("Content-Type","application/xml; charset=utf-8");res.setHeader("Cache-Control","public, max-age=0, must-revalidate");return res.sendFile(targetPages)}const staticRoutes=["","/about","/about/our-company","/about/our-team","/about/our-process","/about/careers","/custom-software","/mobile-app-development","/web-development","/ai-agent-development","/seo-mastery","/graphics-design","/content-writing","/case-studies","/case-studies/tajweedpage","/solutions/fintech","/solutions/healthcare","/solutions/ai-automation","/solutions/e-commerce","/solutions/edtech","/news/latest","/news/all","/news/press-releases","/news/industry-insights","/news/industry-insights/google-ai-dogfooding-enterprise-results","/local-seo-for-small-business","/local-seo-citation-building","/white-label-local-seo","/local-seo-audit","/guest-post-service","/tools","/tools/project-cost-estimator","/tools/website-audit","/tools/seo-checklist","/tools/ai-readiness-score","/tools/tech-stack-recommender","/tools/website-authority-analyzer","/website-contract","/brand-assets","/editorial-policy","/contact","/us-market","/uk-market","/pakistan-market","/canada-market","/poland-market","/australia-market","/blog","/blog/agentic-ai-production-failures","/blog/what-does-a-custom-web-development-company-do-2026-guide","/blog/custom-ai-solutions-for-corporate-events-2026-guide","/blog/custom-web-development-vs-website-templates-2026-guide","/blog/ai-agent-development-agency-vs-in-house","/blog/flutter-vs-native-mobile-app-development-2026","/blog/enterprise-software-engineering-what-changes-at-scale","/blog/edtech-software-development","/blog/ecommerce-platform-development","/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026","/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026","/blog/high-performance-web-applications-12-engineering-decisions","/blog/what-a-local-seo-audit-actually-checks-2026-complete-guide","/blog/programmatic-seo-how-we-scaled-tajweedpage","/blog/ai-overviews-traffic-recovery-what-40-companies-did-next","/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026","/blog/saas-pricing-page-optimization-7-structural-decisions","/blog/ai-agents-cost-benefit-analysis","/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs","/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact","/blog/the-2026-static-site-comeback-why-jamstack-won-after-all","/blog/when-to-invest-in-ai-agent","/terms","/privacy"];let blogRoutes=[];if(db){const postsQuery=query(collection(db,"posts"),where("published","==",true));const snapshot=await getDocs(postsQuery);blogRoutes=snapshot.docs.map(doc=>`/blog/${BLOG_SLUG_REDIRECTS[doc.data().slug]||doc.data().slug}`)}const allRoutes=Array.from(new Set([...staticRoutes,...blogRoutes]));const baseUrl="https://www.abuqitmirlabs.tech";const today=new Date().toISOString().split("T")[0];const getRouteMetadata=__name(route=>{if(route===""){return{priority:"1.0",changefreq:"daily"}}if(route==="/blog"){return{priority:"0.9",changefreq:"daily"}}if(route==="/tools"){return{priority:"0.9",changefreq:"weekly"}}if(["/tools/project-cost-estimator","/tools/website-audit","/tools/seo-checklist","/tools/ai-readiness-score","/tools/tech-stack-recommender","/tools/website-authority-analyzer"].includes(route)){return{priority:"0.8",changefreq:"weekly"}}if(["/custom-software","/mobile-app-development","/web-development","/ai-agent-development","/seo-mastery","/graphics-design","/content-writing"].includes(route)){return{priority:"0.9",changefreq:"weekly"}}if(route.endsWith("-market")){return{priority:"0.8",changefreq:"weekly"}}if(route==="/case-studies"||route==="/case-studies/tajweedpage"){return{priority:"0.8",changefreq:"weekly"}}if(["/about","/contact","/website-contract"].includes(route)){return{priority:"0.8",changefreq:"monthly"}}if(route.startsWith("/blog/")){return{priority:"0.7",changefreq:"weekly"}}if(["/terms","/privacy"].includes(route)){return{priority:"0.3",changefreq:"monthly"}}return{priority:"0.5",changefreq:"weekly"}},"getRouteMetadata");const sitemap=`<?xml version="1.0" encoding="UTF-8"?>
+</sitemapindex>`;res.header("Content-Type","application/xml; charset=utf-8");res.header("Cache-Control","public, max-age=0, must-revalidate");res.send(sitemapIndex)}catch(error){console.error("Error generating sitemap index:",error);res.status(500).send("Error generating sitemap index")}});app.get(["/pages-sitemap.xml","/sitemap-pages.xml"],async(req,res)=>{try{const distPagesP=path.join(process.cwd(),"dist","pages-sitemap.xml");const pubPagesP=path.join(process.cwd(),"public","pages-sitemap.xml");const rootPagesP=path.join(process.cwd(),"pages-sitemap.xml");const targetPages=fs.existsSync(distPagesP)?distPagesP:fs.existsSync(pubPagesP)?pubPagesP:fs.existsSync(rootPagesP)?rootPagesP:null;if(targetPages){const mergedPagesXml=await buildDynamicSitemapXml(fs.readFileSync(targetPages,"utf-8"));res.setHeader("Content-Type","application/xml; charset=utf-8");res.setHeader("Cache-Control","public, max-age=0, s-maxage=30, must-revalidate");return res.status(200).send(mergedPagesXml)}const staticRoutes=["","/about","/about/our-company","/about/our-team","/about/our-process","/about/careers","/custom-software","/mobile-app-development","/web-development","/ai-agent-development","/seo-mastery","/graphics-design","/content-writing","/case-studies","/case-studies/tajweedpage","/solutions/fintech","/solutions/healthcare","/solutions/ai-automation","/solutions/e-commerce","/solutions/edtech","/news/latest","/news/all","/news/press-releases","/news/industry-insights","/news/industry-insights/google-ai-dogfooding-enterprise-results","/local-seo-for-small-business","/local-seo-citation-building","/white-label-local-seo","/local-seo-audit","/guest-post-service","/tools","/tools/project-cost-estimator","/tools/website-audit","/tools/seo-checklist","/tools/ai-readiness-score","/tools/tech-stack-recommender","/tools/website-authority-analyzer","/website-contract","/brand-assets","/editorial-policy","/contact","/us-market","/uk-market","/pakistan-market","/canada-market","/poland-market","/australia-market","/blog","/blog/agentic-ai-production-failures","/blog/what-does-a-custom-web-development-company-do-2026-guide","/blog/custom-ai-solutions-for-corporate-events-2026-guide","/blog/custom-web-development-vs-website-templates-2026-guide","/blog/ai-agent-development-agency-vs-in-house","/blog/flutter-vs-native-mobile-app-development-2026","/blog/enterprise-software-engineering-what-changes-at-scale","/blog/edtech-software-development","/blog/ecommerce-platform-development","/blog/flutter-vs-react-native-choosing-mobile-app-stack-2026","/blog/app-development-agency-uk-what-to-ask-before-you-sign-2026","/blog/high-performance-web-applications-12-engineering-decisions","/blog/what-a-local-seo-audit-actually-checks-2026-complete-guide","/blog/programmatic-seo-how-we-scaled-tajweedpage","/blog/ai-overviews-traffic-recovery-what-40-companies-did-next","/blog/the-pakistan-advantage-why-us-startups-are-moving-dev-teams-offshore-2026","/blog/saas-pricing-page-optimization-7-structural-decisions","/blog/ai-agents-cost-benefit-analysis","/blog/fix-url-fragmentation-in-headless-spas-abuqitmirlabs","/blog/the-hidden-cost-of-cheap-hosting-performance-seo-revenue-impact","/blog/the-2026-static-site-comeback-why-jamstack-won-after-all","/blog/when-to-invest-in-ai-agent","/terms","/privacy"];let blogRoutes=[];if(db){const postsQuery=query(collection(db,"posts"),where("published","==",true));const snapshot=await getDocs(postsQuery);blogRoutes=snapshot.docs.map(doc=>`/blog/${BLOG_SLUG_REDIRECTS[doc.data().slug]||doc.data().slug}`)}const allRoutes=Array.from(new Set([...staticRoutes,...blogRoutes]));const baseUrl="https://www.abuqitmirlabs.tech";const today=new Date().toISOString().split("T")[0];const getRouteMetadata=__name(route=>{if(route===""){return{priority:"1.0",changefreq:"daily"}}if(route==="/blog"){return{priority:"0.9",changefreq:"daily"}}if(route==="/tools"){return{priority:"0.9",changefreq:"weekly"}}if(["/tools/project-cost-estimator","/tools/website-audit","/tools/seo-checklist","/tools/ai-readiness-score","/tools/tech-stack-recommender","/tools/website-authority-analyzer"].includes(route)){return{priority:"0.8",changefreq:"weekly"}}if(["/custom-software","/mobile-app-development","/web-development","/ai-agent-development","/seo-mastery","/graphics-design","/content-writing"].includes(route)){return{priority:"0.9",changefreq:"weekly"}}if(route.endsWith("-market")){return{priority:"0.8",changefreq:"weekly"}}if(route==="/case-studies"||route==="/case-studies/tajweedpage"){return{priority:"0.8",changefreq:"weekly"}}if(["/about","/contact","/website-contract"].includes(route)){return{priority:"0.8",changefreq:"monthly"}}if(route.startsWith("/blog/")){return{priority:"0.7",changefreq:"weekly"}}if(["/terms","/privacy"].includes(route)){return{priority:"0.3",changefreq:"monthly"}}return{priority:"0.5",changefreq:"weekly"}},"getRouteMetadata");const sitemap=`<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${allRoutes.map(route=>{const meta=getRouteMetadata(route);return`
   <url>
@@ -936,6 +1012,486 @@ app.get("/sitemap.xml",(req,res)=>{
     <changefreq>${meta.changefreq}</changefreq>
     <priority>${meta.priority}</priority>
   </url>`}).join("")}
-</urlset>`;res.header("Content-Type","application/xml; charset=utf-8");res.header("Cache-Control","public, max-age=0, must-revalidate");res.send(sitemap)}catch(error){console.error("Error generating pages sitemap:",error);res.status(500).send("Error generating pages sitemap")}});const distPath=path.resolve(__dirname,"dist");const isPrivateNoIndexRoute=__name((cleanPath:string)=>cleanPath==="/admin"||cleanPath.startsWith("/admin/")||cleanPath==="/login"||cleanPath.startsWith("/login/"),"isPrivateNoIndexRoute");const isKnownAppRoute=__name((cleanPath:string)=>{if(cleanPath==="/"||cleanPath===""||isPrivateNoIndexRoute(cleanPath))return true;const distRouteIdx=path.join(distPath,cleanPath.replace(/^\//,""),"index.html");const distRouteHtml=path.join(distPath,`${cleanPath.replace(/^\//,"")}.html`);if(fs.existsSync(distRouteIdx)||fs.existsSync(distRouteHtml))return true;if(cleanPath.startsWith("/blog/")){const slug=cleanPath.slice(6);const mdPath=path.join(process.cwd(),"content","blog",`${slug}.md`);const pubIdx=path.join(process.cwd(),"public","blog",slug,"index.html");if(fs.existsSync(mdPath)||fs.existsSync(pubIdx)||Boolean(BLOG_SLUG_REDIRECTS[slug]))return true;}return false},"isKnownAppRoute");const render404Html=__name(()=>{return`<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>404 Page Not Found | AbuQitmirLabs</title><meta name="description" content="The page you requested could not be found. Explore AbuQitmirLabs custom software, AI automation, and technical SEO services." /><meta name="robots" content="noindex, follow" /></head><body style="background:#050505;color:#fff;font-family:sans-serif;padding:4rem 1.5rem;text-align:center;"><main style="max-width:640px;margin:0 auto;"><h1>404 — Page Not Found</h1><p>The URL you requested does not exist or has moved.</p><p><a href="/" style="color:#ccff00;">Return to Homepage</a> | <a href="/contact" style="color:#ccff00;">Book a Technical Discovery Call</a></p></main></body></html>`},"render404Html");app.use((req,res,next)=>{const rawPath=req.path.toLowerCase();if(rawPath==="/assets"||rawPath==="/assets/"||rawPath==="/src"||rawPath==="/src/"||rawPath==="/public"||rawPath==="/public/"){res.setHeader("Content-Type","text/html; charset=utf-8");return res.status(403).send('<!DOCTYPE html><html><head><title>403 Forbidden</title></head><body style="background:#080808;color:#e8e8e8;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;"><div style="text-align:center;border:1px solid #333;padding:2rem 3rem;border-radius:8px;background:#0f0f0f;"><h1 style="color:#ccff00;margin:0 0 1rem 0;">403 Forbidden</h1><p style="color:#9ca3af;margin:0;">Directory browsing is disabled on this server.</p></div></body></html>')}if(req.path!=="/"&&(req.path.endsWith("/")||!path.extname(req.path))){const possibleDirPath=path.join(distPath,req.path);try{if(fs.existsSync(possibleDirPath)&&fs.statSync(possibleDirPath).isDirectory()){const hasIndexHtml=fs.existsSync(path.join(possibleDirPath,"index.html"));if(!hasIndexHtml){res.setHeader("Content-Type","text/html; charset=utf-8");return res.status(403).send('<!DOCTYPE html><html><head><title>403 Forbidden</title></head><body style="background:#080808;color:#e8e8e8;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;"><div style="text-align:center;border:1px solid #333;padding:2rem 3rem;border-radius:8px;background:#0f0f0f;"><h1 style="color:#ccff00;margin:0 0 1rem 0;">403 Forbidden</h1><p style="color:#9ca3af;margin:0;">Directory browsing is disabled on this server.</p></div></body></html>')}}}catch(err){}}next()});if(process.env.NODE_ENV!=="production"){let viteInst:any=null;let viteMiddleware:any=null;let vitePromise:Promise<any>|null=null;const ensureVite=()=>{if(!vitePromise){vitePromise=createViteServer({server:{middlewareMode:true},appType:"spa"}).then(vite=>{viteInst=vite;viteMiddleware=vite.middlewares;return vite}).catch(err=>{console.error("Vite dev server init error:",err)})}return vitePromise};app.use("/assets",express.static(path.join(distPath,"assets"),{fallthrough:true}));app.use(async(req,res,next)=>{const rawP=req.path;if(!rawP.startsWith("/@")&&!rawP.startsWith("/src/")&&!rawP.startsWith("/node_modules/")&&!rawP.startsWith("/api/")&&!path.extname(rawP)){const cleanP=rawP.length>1&&rawP.endsWith("/")?rawP.slice(0,-1):rawP;if(isPrivateNoIndexRoute(cleanP)){try{if(!viteInst){await ensureVite()}let adminHtml=fs.readFileSync(path.resolve(__dirname,"index.html"),"utf-8");adminHtml=adminHtml.replace(/<div id="root">[\s\S]*?<\/div>\s*(?=<script type="module" src="\/src\/main\.tsx"><\/script>)/i,'<div id="root"></div>\n    ');adminHtml=adminHtml.replace(/<link\b[^>]*rel=["']canonical["'][^>]*\/?>/gi,"").replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gi,"").replace("</head>",'  <meta name="robots" content="noindex, nofollow" />\n  </head>');const distIdxPath=path.join(distPath,"index.html");if(fs.existsSync(distIdxPath)){const distIdxRaw=fs.readFileSync(distIdxPath,"utf-8");const cssMatch=distIdxRaw.match(/<link\b[^>]*rel=["']stylesheet["'][^>]*href=["'](\/assets\/[^"']+\.css)["'][^>]*>/i);if(cssMatch&&!adminHtml.includes(cssMatch[1])){adminHtml=adminHtml.replace("</head>",`  ${cssMatch[0]}\n  </head>`)}}const transformed=viteInst?await viteInst.transformIndexHtml(req.originalUrl,adminHtml):adminHtml;return res.status(200).set({"Content-Type":"text/html; charset=utf-8","X-Robots-Tag":"noindex, nofollow","Cache-Control":"no-store, no-cache, must-revalidate, private"}).send(transformed)}catch(adminErr){}}else{const prerenderedIdx=cleanP==="/"||cleanP===""?path.join(distPath,"index.html"):path.join(distPath,cleanP.replace(/^\//,""),"index.html");const pubBlogIdx=cleanP.startsWith("/blog/")?path.join(process.cwd(),"public",cleanP.replace(/^\//,""),"index.html"):"";const candidateIdx=fs.existsSync(prerenderedIdx)?prerenderedIdx:(pubBlogIdx&&fs.existsSync(pubBlogIdx)?pubBlogIdx:"");if((req.method==="GET"||req.method==="HEAD")&&candidateIdx){try{let rawHtml=fs.readFileSync(candidateIdx,"utf-8");if(!rawHtml.includes("HTTP 404 — Resource Not Found")&&!rawHtml.includes(">Page Not Found<")){if(!viteInst){await ensureVite()}rawHtml=rawHtml.replace(/<script\b[^>]*src=["']\/assets\/[^"']+\.js["'][^>]*><\/script>/gi,"");if(!rawHtml.includes('/src/main.tsx')){rawHtml=rawHtml.replace("</body>",'  <script type="module" src="/src/main.tsx"></script>\n  </body>')}const transformed=viteInst?await viteInst.transformIndexHtml(req.originalUrl,rawHtml):rawHtml;return res.status(200).set({"Content-Type":"text/html; charset=utf-8"}).send(transformed)}}catch(ssrDevErr){}}}}if(!viteMiddleware){await ensureVite()}if(viteMiddleware){return viteMiddleware(req,res,next)}next()});app.listen(PORT,"0.0.0.0",()=>{console.log(`Server running on http://localhost:${PORT}`);setTimeout(()=>{ensureVite()},50)})}else{app.use(express.static(distPath,{index:false,dotfiles:"ignore",redirect:false,maxAge:"1y",immutable:true,setHeaders:__name((res,filePath)=>{if(filePath.endsWith(".css")){res.setHeader("Content-Type","text/css; charset=utf-8");res.setHeader("X-Content-Type-Options","nosniff");res.setHeader("Cache-Control","public, max-age=31536000, immutable")}else if(filePath.endsWith(".js")){res.setHeader("Content-Type","application/javascript; charset=utf-8");res.setHeader("X-Content-Type-Options","nosniff");res.setHeader("Cache-Control","public, max-age=31536000, immutable")}else if(/\.(webp|png|jpg|jpeg|svg|ico|woff2|woff|ttf)$/i.test(filePath)){res.setHeader("Cache-Control","public, max-age=31536000, immutable")}},"setHeaders")}));app.get("*",async(req,res,next)=>{const url=req.originalUrl;if(url.startsWith("/api/")){return next()}try{let cleanPath=url.split("?")[0];if(cleanPath.length>1&&cleanPath.endsWith("/")){cleanPath=cleanPath.slice(0,-1)}if(!isKnownAppRoute(cleanPath)){return res.status(404).set({"Content-Type":"text/html; charset=utf-8","X-Robots-Tag":"noindex, follow"}).end(render404Html())}const isPrivateRoute=isPrivateNoIndexRoute(cleanPath);const routeIndexPath=path.join(distPath,cleanPath,"index.html");const rootIndexPath=path.join(distPath,"index.html");const spaShellPath=path.join(distPath,"spa-shell.html");let template="";if(!isPrivateRoute&&cleanPath!=="/"&&cleanPath!==""&&fs.existsSync(routeIndexPath)){template=fs.readFileSync(routeIndexPath,"utf-8")}else if(cleanPath==="/"||cleanPath===""){template=fs.readFileSync(rootIndexPath,"utf-8")}else if(fs.existsSync(spaShellPath)){template=fs.readFileSync(spaShellPath,"utf-8");template=template.replace(/<div id="ssr-home-fallback"[\s\S]*?<\/main>\s*<\/div>/i,"")}else if(fs.existsSync(rootIndexPath)){template=fs.readFileSync(rootIndexPath,"utf-8")}else{template=fs.readFileSync(path.resolve(__dirname,"index.html"),"utf-8")}if(isPrivateRoute){template=template.replace(/<link\b[^>]*rel=["']canonical["'][^>]*\/?>/gi,"").replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gi,"").replace("</head>",'  <meta name="robots" content="noindex, nofollow" />\n</head>')}else{const fullUrl=`https://www.abuqitmirlabs.tech${cleanPath===""?"/":cleanPath}`;if(template.includes('<link rel="canonical"')){template=template.replace(/<link rel="canonical"[^>]*\/?>/g,`<link rel="canonical" href="${fullUrl}" />`)}else{template=template.replace("</head>",`  <link rel="canonical" href="${fullUrl}" />
-</head>`)}}const titleMatches=template.match(/<title\b[^>]*>[\s\S]*?<\/title>/gis)||[];if(titleMatches.length>1){let c=0;template=template.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gis,m=>{c++;return c===titleMatches.length?m:""})}const descMatches=template.match(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis)||[];if(descMatches.length>1){let c=0;template=template.replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis,m=>{c++;return c===descMatches.length?m:""})}const responseHeaders:Record<string,string>={"Content-Type":"text/html; charset=utf-8"};if(isPrivateRoute){responseHeaders["X-Robots-Tag"]="noindex, nofollow";responseHeaders["Cache-Control"]="no-store, no-cache, must-revalidate, private"}return res.status(200).set(responseHeaders).end(template)}catch(e){next(e)}});app.listen(PORT,"0.0.0.0",()=>{console.log(`Server running on http://localhost:${PORT}`)})}}__name(startServer,"startServer");startServer();
+</urlset>`;const dynamicPagesXml=await buildDynamicSitemapXml(sitemap);res.header("Content-Type","application/xml; charset=utf-8");res.header("Cache-Control","public, max-age=0, s-maxage=30, must-revalidate");res.send(dynamicPagesXml)}catch(error){console.error("Error generating pages sitemap:",error);res.status(500).send("Error generating pages sitemap")}});
+
+const distPath = path.resolve(__dirname, "dist");
+const isPrivateNoIndexRoute = __name(
+  (cleanPath: string) =>
+    cleanPath === "/admin" ||
+    cleanPath.startsWith("/admin/") ||
+    cleanPath === "/login" ||
+    cleanPath.startsWith("/login/"),
+  "isPrivateNoIndexRoute"
+);
+
+const render404Html = __name(() => {
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>404 Page Not Found | AbuQitmirLabs</title><meta name="description" content="The page you requested could not be found. Explore AbuQitmirLabs custom software, AI automation, and technical SEO services." /><meta name="robots" content="noindex, follow" /></head><body style="background:#050505;color:#fff;font-family:sans-serif;padding:4rem 1.5rem;text-align:center;"><main style="max-width:640px;margin:0 auto;"><h1>404 — Page Not Found</h1><p>The URL you requested does not exist or has moved.</p><p><a href="/" style="color:#ccff00;">Return to Homepage</a> | <a href="/contact" style="color:#ccff00;">Book a Technical Discovery Call</a></p></main></body></html>`;
+}, "render404Html");
+
+const injectFullAppSsrIntoShell = __name((shellHtml: string, ssrResult: any) => {
+  let out = shellHtml
+    .replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, "")
+    .replace(/<meta\b[^>]*name=["'](?:description|author|robots|keywords|twitter:[^"']+)["'][^>]*\/?>/gi, "")
+    .replace(/<meta\b[^>]*property=["'](?:og:|article:)[^"']+["'][^>]*\/?>/gi, "")
+    .replace(/<link\b[^>]*rel=["']canonical["'][^>]*\/?>/gi, "")
+    .replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gis, "")
+    .replace(/<div id="ssr-home-fallback"[\s\S]*?<\/main>\s*<\/div>/gi, "");
+
+  const headInject = [ssrResult?.headTags || "", ssrResult?.jsonLdScripts?.[0] || ""]
+    .filter(Boolean)
+    .join("\n  ");
+  out = out.replace("</head>", `  ${headInject}\n</head>`);
+  out = replaceRootElement(out, ssrResult?.bodyHtml || ssrResult?.rawHtml || "");
+  return out;
+}, "injectFullAppSsrIntoShell");
+
+let prodSsrModulePromise: Promise<any> | null = null;
+const loadProdSsrModule = __name(async () => {
+  const ssrBundlePath = path.join(distPath, "ssr-bundle.cjs");
+  if (!fs.existsSync(ssrBundlePath)) return null;
+  if (!prodSsrModulePromise) {
+    prodSsrModulePromise = import(pathToFileURL(ssrBundlePath).href).catch((err) => {
+      console.error("[Prod SSR] Failed loading dist/ssr-bundle.cjs:", err);
+      prodSsrModulePromise = null;
+      return null;
+    });
+  }
+  return prodSsrModulePromise;
+}, "loadProdSsrModule");
+
+const renderReactAppRouteProd = __name(async (cleanPath: string, baseShellHtml: string) => {
+  const mod = await loadProdSsrModule();
+  if (!mod || typeof mod.renderFullApp !== "function") {
+    return null;
+  }
+  const ssrResult = mod.renderFullApp(cleanPath || "/");
+  const bodyHtml = String(ssrResult?.bodyHtml || ssrResult?.rawHtml || "");
+  const headTags = String(ssrResult?.headTags || "");
+  const is404 =
+    bodyHtml.includes("HTTP 404 — Resource Not Found") ||
+    headTags.includes("404 Page Not Found");
+  const html = injectFullAppSsrIntoShell(baseShellHtml, ssrResult);
+  return { status: is404 ? 404 : 200, html };
+}, "renderReactAppRouteProd");
+
+const tryServeDynamicContentSsr = __name(
+  async (opts: {
+    cleanPath: string;
+    req: express.Request;
+    res: express.Response;
+    shellHtml: string;
+    isDev: boolean;
+    viteInst?: any;
+  }): Promise<boolean> => {
+    const { cleanPath, req, res, shellHtml, isDev, viteInst } = opts;
+    if (cleanPath === "/blog") {
+      const ssr = await renderBlogIndexSsrHtml({ shellHtml, forViteDev: isDev });
+      if (ssr.html) {
+        const finalHtml = isDev && viteInst ? await viteInst.transformIndexHtml(req.originalUrl, ssr.html) : ssr.html;
+        res
+          .status(ssr.status)
+          .set({
+            "Content-Type": "text/html; charset=utf-8",
+            "Cache-Control": ssr.cacheControl || "public, max-age=0, s-maxage=30, stale-while-revalidate=300",
+          })
+          .send(finalHtml);
+        return true;
+      }
+    }
+
+    if (cleanPath.startsWith("/blog/")) {
+      const rawSlug = cleanPath.slice(6);
+      const ssr = await renderBlogPostSsrHtml({ rawSlug, shellHtml, forViteDev: isDev });
+      if (ssr.status === 301 && ssr.redirectLocation) {
+        res.redirect(301, ssr.redirectLocation);
+        return true;
+      }
+      if (ssr.html) {
+        const finalHtml =
+          isDev && viteInst && ssr.status === 200
+            ? await viteInst.transformIndexHtml(req.originalUrl, ssr.html)
+            : ssr.html;
+        const hdrs: Record<string, string> = {
+          "Content-Type": "text/html; charset=utf-8",
+          "Cache-Control":
+            ssr.status === 404
+              ? "no-store, max-age=0"
+              : ssr.cacheControl || "public, max-age=0, s-maxage=30, stale-while-revalidate=300",
+        };
+        if (ssr.status === 404) hdrs["X-Robots-Tag"] = "noindex, follow";
+        res.status(ssr.status).set(hdrs).send(finalHtml);
+        return true;
+      }
+    }
+
+    if (cleanPath === "/news") {
+      res.redirect(301, "/news/latest");
+      return true;
+    }
+
+    if (["/news/latest", "/news/press-releases", "/news/industry-insights", "/news/all"].includes(cleanPath)) {
+      const ssr = await renderNewsIndexSsrHtml({ routePath: cleanPath, shellHtml, forViteDev: isDev });
+      if (ssr.html) {
+        const finalHtml = isDev && viteInst ? await viteInst.transformIndexHtml(req.originalUrl, ssr.html) : ssr.html;
+        res
+          .status(ssr.status)
+          .set({
+            "Content-Type": "text/html; charset=utf-8",
+            "Cache-Control": ssr.cacheControl || "public, max-age=0, s-maxage=30, stale-while-revalidate=300",
+          })
+          .send(finalHtml);
+        return true;
+      }
+    }
+
+    const newsArticleMatch = cleanPath.match(
+      /^\/news\/(?:article|read|latest|press-releases|industry-insights)\/([^/]+)$/
+    );
+    if (newsArticleMatch) {
+      const ssr = await renderNewsArticleSsrHtml({
+        idOrSlug: newsArticleMatch[1],
+        reqPath: cleanPath,
+        shellHtml,
+        forViteDev: isDev,
+      });
+      if (ssr.status === 301 && ssr.redirectLocation) {
+        res.redirect(301, ssr.redirectLocation);
+        return true;
+      }
+      if (ssr.html) {
+        const finalHtml =
+          isDev && viteInst && ssr.status === 200
+            ? await viteInst.transformIndexHtml(req.originalUrl, ssr.html)
+            : ssr.html;
+        const hdrs: Record<string, string> = {
+          "Content-Type": "text/html; charset=utf-8",
+          "Cache-Control":
+            ssr.status === 404
+              ? "no-store, max-age=0"
+              : ssr.cacheControl || "public, max-age=0, s-maxage=30, stale-while-revalidate=300",
+        };
+        if (ssr.status === 404) hdrs["X-Robots-Tag"] = "noindex, follow";
+        res.status(ssr.status).set(hdrs).send(finalHtml);
+        return true;
+      }
+    }
+
+    return false;
+  },
+  "tryServeDynamicContentSsr"
+);
+
+app.use((req, res, next) => {
+  const rawPath = req.path.toLowerCase();
+  if (
+    rawPath === "/assets" ||
+    rawPath === "/assets/" ||
+    rawPath === "/src" ||
+    rawPath === "/src/" ||
+    rawPath === "/public" ||
+    rawPath === "/public/"
+  ) {
+    res.setHeader("Content-Type", "text/html; charset=utf-8");
+    return res
+      .status(403)
+      .send(
+        '<!DOCTYPE html><html><head><title>403 Forbidden</title></head><body style="background:#080808;color:#e8e8e8;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;"><div style="text-align:center;border:1px solid #333;padding:2rem 3rem;border-radius:8px;background:#0f0f0f;"><h1 style="color:#ccff00;margin:0 0 1rem 0;">403 Forbidden</h1><p style="color:#9ca3af;margin:0;">Directory browsing is disabled on this server.</p></div></body></html>'
+      );
+  }
+  if (req.path !== "/" && (req.path.endsWith("/") || !path.extname(req.path))) {
+    const possibleDirPath = path.join(distPath, req.path);
+    try {
+      if (fs.existsSync(possibleDirPath) && fs.statSync(possibleDirPath).isDirectory()) {
+        const hasIndexHtml = fs.existsSync(path.join(possibleDirPath, "index.html"));
+        if (!hasIndexHtml) {
+          res.setHeader("Content-Type", "text/html; charset=utf-8");
+          return res
+            .status(403)
+            .send(
+              '<!DOCTYPE html><html><head><title>403 Forbidden</title></head><body style="background:#080808;color:#e8e8e8;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;"><div style="text-align:center;border:1px solid #333;padding:2rem 3rem;border-radius:8px;background:#0f0f0f;"><h1 style="color:#ccff00;margin:0 0 1rem 0;">403 Forbidden</h1><p style="color:#9ca3af;margin:0;">Directory browsing is disabled on this server.</p></div></body></html>'
+            );
+        }
+      }
+    } catch {}
+  }
+  next();
+});
+
+if (process.env.NODE_ENV !== "production") {
+  let viteInst: any = null;
+  let viteMiddleware: any = null;
+  let vitePromise: Promise<any> | null = null;
+  const ensureVite = () => {
+    if (!vitePromise) {
+      vitePromise = createViteServer({ server: { middlewareMode: true }, appType: "spa" })
+        .then((vite) => {
+          viteInst = vite;
+          viteMiddleware = vite.middlewares;
+          return vite;
+        })
+        .catch((err) => {
+          console.error("Vite dev server init error:", err);
+        });
+    }
+    return vitePromise;
+  };
+  app.use("/assets", express.static(path.join(distPath, "assets"), { fallthrough: true }));
+  app.use(async (req, res, next) => {
+    const rawP = req.path;
+    if (
+      (req.method === "GET" || req.method === "HEAD") &&
+      !rawP.startsWith("/@") &&
+      !rawP.startsWith("/src/") &&
+      !rawP.startsWith("/node_modules/") &&
+      !rawP.startsWith("/api/") &&
+      !path.extname(rawP)
+    ) {
+      const cleanP = rawP.length > 1 && rawP.endsWith("/") ? rawP.slice(0, -1) : rawP || "/";
+      const devShell = fs.readFileSync(path.resolve(__dirname, "index.html"), "utf-8");
+      if (isPrivateNoIndexRoute(cleanP)) {
+        try {
+          if (!viteInst) await ensureVite();
+          let adminHtml = devShell
+            .replace(/<div id="root">[\s\S]*?<\/div>\s*(?=<script type="module" src="\/src\/main\.tsx"><\/script>)/i, '<div id="root"></div>\n    ')
+            .replace(/<link\b[^>]*rel=["']canonical["'][^>]*\/?>/gi, "")
+            .replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gi, "")
+            .replace("</head>", '  <meta name="robots" content="noindex, nofollow" />\n  </head>');
+          const distIdxPath = path.join(distPath, "index.html");
+          if (fs.existsSync(distIdxPath)) {
+            const distIdxRaw = fs.readFileSync(distIdxPath, "utf-8");
+            const cssMatch = distIdxRaw.match(/<link\b[^>]*rel=["']stylesheet["'][^>]*href=["'](\/assets\/[^"']+\.css)["'][^>]*>/i);
+            if (cssMatch && !adminHtml.includes(cssMatch[1])) {
+              adminHtml = adminHtml.replace("</head>", `  ${cssMatch[0]}\n  </head>`);
+            }
+          }
+          const transformed = viteInst ? await viteInst.transformIndexHtml(req.originalUrl, adminHtml) : adminHtml;
+          return res
+            .status(200)
+            .set({
+              "Content-Type": "text/html; charset=utf-8",
+              "X-Robots-Tag": "noindex, nofollow",
+              "Cache-Control": "no-store, no-cache, must-revalidate, private",
+            })
+            .send(transformed);
+        } catch {}
+      } else {
+        try {
+          if (!viteInst) await ensureVite();
+          const handledDynamic = await tryServeDynamicContentSsr({
+            cleanPath: cleanP,
+            req,
+            res,
+            shellHtml: devShell,
+            isDev: true,
+            viteInst,
+          });
+          if (handledDynamic) return;
+
+          if (viteInst && typeof viteInst.ssrLoadModule === "function") {
+            try {
+              const ssrMod = await viteInst.ssrLoadModule("/src/ssr-entry.tsx");
+              if (ssrMod && typeof ssrMod.renderFullApp === "function") {
+                const ssrResult = ssrMod.renderFullApp(cleanP);
+                const bodyHtml = String(ssrResult?.bodyHtml || ssrResult?.rawHtml || "");
+                const headTags = String(ssrResult?.headTags || "");
+                const is404 =
+                  bodyHtml.includes("HTTP 404 — Resource Not Found") ||
+                  headTags.includes("404 Page Not Found");
+                const fullHtml = injectFullAppSsrIntoShell(devShell, ssrResult);
+                const transformed = await viteInst.transformIndexHtml(req.originalUrl, fullHtml);
+                const hdrs: Record<string, string> = { "Content-Type": "text/html; charset=utf-8" };
+                if (is404) {
+                  hdrs["X-Robots-Tag"] = "noindex, follow";
+                  hdrs["Cache-Control"] = "no-store, max-age=0";
+                }
+                return res.status(is404 ? 404 : 200).set(hdrs).send(transformed);
+              }
+            } catch (liveViteSsrErr) {
+              console.warn("[Dev Live SSR] Falling back to pre-rendered snapshot if available:", (liveViteSsrErr as any)?.message || liveViteSsrErr);
+            }
+          }
+
+          const prerenderedIdx =
+            cleanP === "/" || cleanP === ""
+              ? path.join(distPath, "index.html")
+              : path.join(distPath, cleanP.replace(/^\//, ""), "index.html");
+          const pubBlogIdx = cleanP.startsWith("/blog/")
+            ? path.join(process.cwd(), "public", cleanP.replace(/^\//, ""), "index.html")
+            : "";
+          const candidateIdx = fs.existsSync(prerenderedIdx)
+            ? prerenderedIdx
+            : pubBlogIdx && fs.existsSync(pubBlogIdx)
+            ? pubBlogIdx
+            : "";
+          if (candidateIdx) {
+            let rawHtml = fs.readFileSync(candidateIdx, "utf-8");
+            if (!rawHtml.includes("HTTP 404 — Resource Not Found") && !rawHtml.includes(">Page Not Found<")) {
+              rawHtml = rawHtml.replace(/<script\b[^>]*src=["']\/assets\/[^"']+\.js["'][^>]*><\/script>/gi, "");
+              if (!rawHtml.includes('/src/main.tsx')) {
+                rawHtml = rawHtml.replace("</body>", '  <script type="module" src="/src/main.tsx"></script>\n  </body>');
+              }
+              const transformed = viteInst ? await viteInst.transformIndexHtml(req.originalUrl, rawHtml) : rawHtml;
+              return res.status(200).set({ "Content-Type": "text/html; charset=utf-8" }).send(transformed);
+            }
+          }
+        } catch (ssrDevErr) {}
+      }
+    }
+    if (!viteMiddleware) await ensureVite();
+    if (viteMiddleware) return viteMiddleware(req, res, next);
+    next();
+  });
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+    setTimeout(() => {
+      ensureVite();
+    }, 50);
+  });
+} else {
+  app.use(
+    express.static(distPath, {
+      index: false,
+      dotfiles: "ignore",
+      redirect: false,
+      maxAge: "1y",
+      immutable: true,
+      setHeaders: __name((res, filePath) => {
+        if (filePath.endsWith(".css")) {
+          res.setHeader("Content-Type", "text/css; charset=utf-8");
+          res.setHeader("X-Content-Type-Options", "nosniff");
+          res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+        } else if (filePath.endsWith(".js")) {
+          res.setHeader("Content-Type", "application/javascript; charset=utf-8");
+          res.setHeader("X-Content-Type-Options", "nosniff");
+          res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+        } else if (/\.(webp|png|jpg|jpeg|svg|ico|woff2|woff|ttf)$/i.test(filePath)) {
+          res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+        }
+      }, "setHeaders"),
+    })
+  );
+  app.get("*", async (req, res, next) => {
+    const url = req.originalUrl;
+    if (url.startsWith("/api/")) {
+      return next();
+    }
+    try {
+      let cleanPath = url.split("?")[0];
+      if (cleanPath.length > 1 && cleanPath.endsWith("/")) {
+        cleanPath = cleanPath.slice(0, -1);
+      }
+      if (!cleanPath) cleanPath = "/";
+
+      const rootIndexPath = path.join(distPath, "index.html");
+      const spaShellPath = path.join(distPath, "spa-shell.html");
+      const getProdShellHtml = () => {
+        if (fs.existsSync(spaShellPath)) {
+          return fs
+            .readFileSync(spaShellPath, "utf-8")
+            .replace(/<div id="ssr-home-fallback"[\s\S]*?<\/main>\s*<\/div>/i, "");
+        }
+        if (fs.existsSync(rootIndexPath)) {
+          return fs.readFileSync(rootIndexPath, "utf-8");
+        }
+        return fs.readFileSync(path.resolve(__dirname, "index.html"), "utf-8");
+      };
+
+      const isPrivateRoute = isPrivateNoIndexRoute(cleanPath);
+      if (isPrivateRoute) {
+        let adminTpl = replaceRootElement(getProdShellHtml(), "");
+        adminTpl = adminTpl
+          .replace(/<link\b[^>]*rel=["']canonical["'][^>]*\/?>/gi, "")
+          .replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gi, "")
+          .replace("</head>", '  <meta name="robots" content="noindex, nofollow" />\n</head>');
+        return res
+          .status(200)
+          .set({
+            "Content-Type": "text/html; charset=utf-8",
+            "X-Robots-Tag": "noindex, nofollow",
+            "Cache-Control": "no-store, no-cache, must-revalidate, private",
+          })
+          .end(adminTpl);
+      }
+
+      const prodShellHtml = getProdShellHtml();
+      const handledDynamic = await tryServeDynamicContentSsr({
+        cleanPath,
+        req,
+        res,
+        shellHtml: prodShellHtml,
+        isDev: false,
+      });
+      if (handledDynamic) return;
+
+      const routeIndexPath =
+        cleanPath === "/" ? rootIndexPath : path.join(distPath, cleanPath.replace(/^\//, ""), "index.html");
+      const routeHtmlFile =
+        cleanPath !== "/" ? path.join(distPath, `${cleanPath.replace(/^\//, "")}.html`) : "";
+
+      let template = "";
+      if (fs.existsSync(routeIndexPath)) {
+        template = fs.readFileSync(routeIndexPath, "utf-8");
+      } else if (routeHtmlFile && fs.existsSync(routeHtmlFile)) {
+        template = fs.readFileSync(routeHtmlFile, "utf-8");
+      } else {
+        const rendered = await renderReactAppRouteProd(cleanPath, prodShellHtml);
+        if (rendered) {
+          if (rendered.status === 404) {
+            return res
+              .status(404)
+              .set({
+                "Content-Type": "text/html; charset=utf-8",
+                "X-Robots-Tag": "noindex, follow",
+                "Cache-Control": "no-store, max-age=0",
+              })
+              .end(rendered.html);
+          }
+          return res
+            .status(200)
+            .set({
+              "Content-Type": "text/html; charset=utf-8",
+              "Cache-Control": "public, max-age=0, s-maxage=30, stale-while-revalidate=300",
+            })
+            .end(rendered.html);
+        }
+        return res
+          .status(404)
+          .set({ "Content-Type": "text/html; charset=utf-8", "X-Robots-Tag": "noindex, follow" })
+          .end(render404Html());
+      }
+
+      const fullUrl = `https://www.abuqitmirlabs.tech${cleanPath === "" ? "/" : cleanPath}`;
+      if (template.includes('<link rel="canonical"')) {
+        template = template.replace(/<link rel="canonical"[^>]*\/?>/g, `<link rel="canonical" href="${fullUrl}" />`);
+      } else {
+        template = template.replace("</head>", `  <link rel="canonical" href="${fullUrl}" />\n</head>`);
+      }
+      const titleMatches = template.match(/<title\b[^>]*>[\s\S]*?<\/title>/gis) || [];
+      if (titleMatches.length > 1) {
+        let c = 0;
+        template = template.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gis, (m) => {
+          c++;
+          return c === titleMatches.length ? m : "";
+        });
+      }
+      const descMatches = template.match(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis) || [];
+      if (descMatches.length > 1) {
+        let c = 0;
+        template = template.replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gis, (m) => {
+          c++;
+          return c === descMatches.length ? m : "";
+        });
+      }
+      return res.status(200).set({ "Content-Type": "text/html; charset=utf-8" }).end(template);
+    } catch (e) {
+      next(e);
+    }
+  });
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
+}
+__name(startServer, "startServer");
+startServer();
 

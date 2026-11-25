@@ -64,7 +64,16 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
         return <Navigate to={`/blog/${canonicalSlug}`} replace />;
     }
     
-    const getSsrInjectedPost = (targetSlug?: string): Post | null => {
+    const parseTsMs = (val: any): number => {
+        if (!val) return 0;
+        if (typeof val === 'number') return val;
+        if (typeof val?.toDate === 'function') return val.toDate().getTime();
+        if (typeof val?.seconds === 'number') return val.seconds * 1000;
+        const t = Date.parse(String(val));
+        return Number.isNaN(t) ? 0 : t;
+    };
+
+    const getSsrInjectedPost = (targetSlug?: string): (Post & { cmsUpdatedAtMs?: number; source?: string }) | null => {
         if (!targetSlug || typeof document === 'undefined') return null;
         try {
             const el = document.getElementById('__SSR_BLOG_POST__');
@@ -78,20 +87,35 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             }
             const parsed = JSON.parse(jsonStr);
             if (parsed && (parsed.slug === targetSlug || getCanonicalSlug(parsed.slug || '') === getCanonicalSlug(targetSlug))) {
-                return parsed as Post;
+                return parsed as Post & { cmsUpdatedAtMs?: number; source?: string };
             }
         } catch {}
         return null;
     };
 
     // Retrieve cached, static, or SSR-injected post for instant, zero-delay rendering
-    const cachedPost = (slug ? getCachedPost(slug) : null) as Post | null;
-    const staticFallback = (slug && STATIC_POSTS_MAP[slug]) 
-      ? (STATIC_POSTS_MAP[slug] as Post) 
-      : getSsrInjectedPost(slug);
-    const resolveBestInitial = (cached: Post | null, stat: Post | null): Post | null => {
+    const cachedPost = (slug ? getCachedPost(slug) : null) as (Post & { cmsUpdatedAtMs?: number; cmsUpdatedAt?: string }) | null;
+    const ssrInjectedInitial = getSsrInjectedPost(slug);
+    const staticEntryInitial = (slug && STATIC_POSTS_MAP[slug]) ? (STATIC_POSTS_MAP[slug] as Post) : null;
+    const resolveBestInitial = (
+        cached: (Post & { cmsUpdatedAtMs?: number; cmsUpdatedAt?: string }) | null,
+        stat: Post | null,
+        ssrPost: (Post & { cmsUpdatedAtMs?: number; source?: string }) | null
+    ): Post | null => {
+        if (ssrPost) {
+            const cachedCmsMs = Math.max(cached?.cmsUpdatedAtMs || 0, parseTsMs(cached?.cmsUpdatedAt));
+            const ssrCmsMs = ssrPost.cmsUpdatedAtMs || parseTsMs((ssrPost as any).cmsUpdatedAt);
+            if (!cached || ssrCmsMs >= cachedCmsMs || (ssrPost.content?.length || 0) >= (cached.content?.length || 0)) {
+                return ssrPost;
+            }
+        }
         if (!cached) return stat;
         if (!stat) return cached;
+        const cachedCmsMs = Math.max(cached.cmsUpdatedAtMs || 0, parseTsMs(cached.cmsUpdatedAt));
+        const statCmsMs = parseTsMs((stat as any).cmsUpdatedAt || stat.createdAt);
+        if (cached.cmsUpdatedAt && cachedCmsMs > statCmsMs + 2000 && cached.content && cached.content.trim().length > 200) {
+            return cached;
+        }
         return {
             ...cached,
             title: stat.title || cached.title,
@@ -107,7 +131,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             metaDescription: stat.metaDescription || cached.metaDescription,
         };
     };
-    const initialPost = resolveBestInitial(cachedPost, staticFallback);
+    const initialPost = resolveBestInitial(cachedPost, staticEntryInitial, ssrInjectedInitial);
     
     const [post, setPost] = useState<Post | null>(initialPost);
     const [loading, setLoading] = useState(!initialPost);
@@ -116,15 +140,19 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
 
     useEffect(() => {
         setImageError(false);
+        const ssrPost = getSsrInjectedPost(slug);
+        const staticEntry = (slug && STATIC_POSTS_MAP[slug]) ? (STATIC_POSTS_MAP[slug] as Post) : null;
         const currentInitial = resolveBestInitial(
-            (slug ? getCachedPost(slug) : null) as Post | null,
-            (slug && STATIC_POSTS_MAP[slug] ? (STATIC_POSTS_MAP[slug] as Post) : getSsrInjectedPost(slug))
+            (slug ? getCachedPost(slug) : null) as (Post & { cmsUpdatedAtMs?: number; cmsUpdatedAt?: string }) | null,
+            staticEntry,
+            ssrPost
         );
         
         if (currentInitial) {
             setPost(currentInitial);
             setLoading(false);
-            if (currentInitial.content && currentInitial.content.trim().length > 500) {
+            if (ssrPost && currentInitial === ssrPost) {
+                setCachedPost(slug!, ssrPost as any);
                 return;
             }
         }
@@ -200,17 +228,29 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                         (img: any) => img && img.url && !UNWANTED_PRESET_URLS.some(p => String(img.url).includes(p))
                     );
                     const staticEntry = (slug && STATIC_POSTS_MAP[slug]) ? STATIC_POSTS_MAP[slug] : null;
-                    // Always prefer curated, SEO-audited static content when available (>500 chars)
-                    // so internal links, H2/H3 structure, and prerendered SSR HTML never regress on hydration
-                    const resolvedContent =
-                        staticEntry?.content && staticEntry.content.trim().length > 500
-                            ? staticEntry.content
-                            : staticEntry?.content &&
-                              (countH2Headings(staticEntry.content) >= countH2Headings(foundPost.content) ||
-                                  staticEntry.content.length >= (foundPost.content?.length || 0))
-                            ? staticEntry.content
-                            : foundPost.content;
-                    const rawCandidateTitle = cleanTitleStr(staticEntry?.title || foundPost.title) || foundPost.title;
+                    const foundCmsMs = parseTsMs((foundPost as any).cmsUpdatedAt);
+                    const staticCmsMs = parseTsMs((staticEntry as any)?.cmsUpdatedAt || staticEntry?.createdAt);
+                    const isFreshCmsEdit = Boolean(
+                        (foundPost as any).cmsUpdatedAt &&
+                        foundCmsMs > staticCmsMs + 2000 &&
+                        foundPost.content &&
+                        foundPost.content.trim().length > 200
+                    );
+
+                    // Prefer curated, SEO-audited static content over legacy uncurated Firestore docs (Rule 9),
+                    // while allowing explicit post-curation CMS edits (cmsUpdatedAt newer than static build) to win live.
+                    const resolvedContent = isFreshCmsEdit
+                        ? foundPost.content
+                        : staticEntry?.content && staticEntry.content.trim().length > 500
+                        ? staticEntry.content
+                        : staticEntry?.content &&
+                          (countH2Headings(staticEntry.content) >= countH2Headings(foundPost.content) ||
+                              staticEntry.content.length >= (foundPost.content?.length || 0))
+                        ? staticEntry.content
+                        : foundPost.content;
+                    const rawCandidateTitle = cleanTitleStr(
+                        isFreshCmsEdit ? foundPost.title : (staticEntry?.title || foundPost.title)
+                    ) || foundPost.title;
                     const resolvedFullTitle =
                         rawCandidateTitle &&
                         rawCandidateTitle.length <= 44 &&
@@ -220,30 +260,34 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                                 : `${rawCandidateTitle} | AbuQitmirLabs`)
                             : rawCandidateTitle;
                     const resolvedCover = resolveOptimizedCoverImage(
-                        (staticEntry?.coverImage && !staticEntry.coverImage.includes('logo.png'))
-                            ? staticEntry.coverImage
-                            : foundPost.coverImage,
+                        isFreshCmsEdit
+                            ? (foundPost.coverImage || staticEntry?.coverImage)
+                            : ((staticEntry?.coverImage && !staticEntry.coverImage.includes('logo.png'))
+                                ? staticEntry.coverImage
+                                : foundPost.coverImage),
                         canonical || slug
                     );
                     const sanitizedPost: Post = {
                         ...foundPost,
                         title: resolvedFullTitle,
-                        heroSubtitle: (staticEntry as any)?.heroSubtitle || foundPost.heroSubtitle,
+                        heroSubtitle: (isFreshCmsEdit ? foundPost.heroSubtitle : (staticEntry as any)?.heroSubtitle) || foundPost.heroSubtitle,
                         createdAt: staticEntry?.createdAt || foundPost.createdAt,
                         content: resolvedContent,
                         coverImage: resolvedCover || foundPost.coverImage,
-                        coverImageAlt: (staticEntry as any)?.coverImageAlt || (foundPost as any).coverImageAlt,
+                        coverImageAlt: (isFreshCmsEdit ? (foundPost as any).coverImageAlt : (staticEntry as any)?.coverImageAlt) || (foundPost as any).coverImageAlt,
                         helperImages: cleanHelperList,
-                        metaDescription: cleanQuoteStr(staticEntry?.metaDescription || foundPost.metaDescription),
+                        metaDescription: cleanQuoteStr(
+                            isFreshCmsEdit ? (foundPost.metaDescription || staticEntry?.metaDescription) : (staticEntry?.metaDescription || foundPost.metaDescription)
+                        ),
                         excerpt: cleanQuoteStr(foundPost.excerpt || staticEntry?.excerpt),
                         category:
                             slug === 'ai-content-vs-human-content'
                                 ? 'Content Writing'
                                 : slug === 'startup-brand-identity-checklist'
                                 ? 'Graphic Design'
-                                : (staticEntry?.category && staticEntry.category !== 'Development')
+                                : (!isFreshCmsEdit && staticEntry?.category && staticEntry.category !== 'Development')
                                 ? staticEntry.category
-                                : foundPost.category,
+                                : (foundPost.category || staticEntry?.category),
                     };
                     setPost(sanitizedPost);
                     setCachedPost(slug, sanitizedPost as any);
