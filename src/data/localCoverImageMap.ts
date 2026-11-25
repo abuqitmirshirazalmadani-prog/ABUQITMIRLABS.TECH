@@ -31,12 +31,14 @@ export const REMOTE_TO_LOCAL_COVER_MAP: Record<string, string> = {
   "https://i.postimg.cc/s2SBxvM0/blogcontent-audit-pakistan.jpg": "/images/blog-covers/content-audit-pakistan-smes.webp",
   "https://i.postimg.cc/FFYJByXS/Brand-Your-Whats-App-Business-in-Pakistan.jpg": "/images/blog-covers/whatsapp-business-branding-pakistan.webp",
   "https://i.postimg.cc/cHQRwnLJ/Logo-vs-Brand-Identity-Guide.png": "/images/blog-covers/brand-identity-vs-logo-design-2f8e9a63.webp",
+  "https://i.postimg.cc/nc6WzMjj/AI-Coding-Agents-and-Secure-Agentic-Software-Development.jpg": "/images/blog-covers/ai-coding-agents-secure-agentic-software-development.webp",
   "/images/blog-covers/lead-generation-content-strategy-google-meta-1576aa01.webp": "/images/blog-covers/lead-generation-content-strategy-google-meta-v2.webp",
   "/images/blog-covers/rebranding-checklist-pakistan-9252c088.webp": "/images/blog-covers/rebranding-checklist-pakistan-v2.webp",
   "/images/blog-covers/kuwait-digital-transformation-866e51c6.webp": "/images/blog-covers/kuwait-cybersecurity-partner-evaluation.webp"
 };
 
 export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
+  "ai-coding-agents-secure-agentic-software-development": "/images/blog-covers/ai-coding-agents-secure-agentic-software-development.webp",
   "whatsapp-business-branding-pakistan": "/images/blog-covers/whatsapp-business-branding-pakistan.webp",
   "content-audit-pakistan-smes": "/images/blog-covers/content-audit-pakistan-smes.webp",
   "inventory-management-software-saudi-arabia": "/images/blog-covers/inventory-management-software-saudi-arabia.webp",

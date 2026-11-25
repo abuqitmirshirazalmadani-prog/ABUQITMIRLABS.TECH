@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { buildDynamicSitemapXml } from '../lib/live-ssr';
+import { buildDynamicSitemapXml } from '../lib/live-ssr.js';
 
 export default async function handler(req: any, res: any) {
   try {

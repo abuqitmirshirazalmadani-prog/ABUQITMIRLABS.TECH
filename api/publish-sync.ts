@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { invalidateSsrCache, writeBlogPostStaticHtml } from '../lib/live-ssr';
+import { invalidateSsrCache, writeBlogPostStaticHtml } from '../lib/live-ssr.js';
 
 const CANONICAL_REDIRECT_MAP: Record<string, string> = {
   'custom-web-development-company-2026': 'custom-web-development-company',
@@ -279,15 +279,19 @@ export default async function handler(req: any, res: any) {
       if (imgRes.ok) {
         const arrBuf = await imgRes.arrayBuffer();
         downloadedImageBuffer = Buffer.from(arrBuf);
-        resolvedLocalCover = `/images/blog-covers/${cleanSlug}.webp`;
         try {
           const coversDir = path.join(process.cwd(), 'public', 'images', 'blog-covers');
           if (!fs.existsSync(coversDir)) {
             fs.mkdirSync(coversDir, { recursive: true });
           }
           fs.writeFileSync(path.join(coversDir, `${cleanSlug}.webp`), downloadedImageBuffer);
+          resolvedLocalCover = `/images/blog-covers/${cleanSlug}.webp`;
           steps.push(`✓ Downloaded external cover image to public/images/blog-covers/${cleanSlug}.webp`);
-        } catch {}
+        } catch {
+          if (rawBody.githubToken || process.env.GITHUB_TOKEN || process.env.VITE_GITHUB_TOKEN) {
+            resolvedLocalCover = `/images/blog-covers/${cleanSlug}.webp`;
+          }
+        }
       }
     } catch {}
   }

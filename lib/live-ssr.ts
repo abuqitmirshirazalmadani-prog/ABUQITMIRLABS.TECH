@@ -1,12 +1,13 @@
 import fs from 'fs';
 import path from 'path';
-import { BLOG_SLUG_REDIRECTS, getCanonicalSlug as canonicalizeBlogSlug } from '../src/data/canonicalRedirects';
+import { BLOG_SLUG_REDIRECTS, getCanonicalSlug as canonicalizeBlogSlug } from '../src/data/canonicalRedirects.js';
+import { REMOTE_TO_LOCAL_COVER_MAP, SLUG_TO_LOCAL_COVER_MAP } from '../src/data/localCoverImageMap.js';
 import {
   STATIC_NEWS_ARTICLES,
   StaticNewsArticle,
   generateNewsSlug,
   getNewsArticleSlug,
-} from './static-news-data';
+} from './static-news-data.js';
 
 const SITE_URL = 'https://www.abuqitmirlabs.tech';
 const DEFAULT_AUTHOR = 'Abu Qitmir Mohammad Shiraz Al-Madani';
@@ -160,7 +161,7 @@ function getFirebaseConfig(): { projectId: string; databaseId: string; apiKey: s
   try {
     const candidates = [
       path.join(process.cwd(), 'firebase-applet-config.json'),
-      path.join(__dirname, '..', 'firebase-applet-config.json'),
+      ...(typeof __dirname !== 'undefined' ? [path.join(__dirname, '..', 'firebase-applet-config.json')] : []),
     ];
     for (const cfgPath of candidates) {
       if (fs.existsSync(cfgPath)) {
@@ -575,10 +576,14 @@ export function resolveLocalBlogCover(inputUrl: string, slug: string): string {
   if (trimmed && KNOWN_COVER_MAP[trimmed]) {
     return KNOWN_COVER_MAP[trimmed];
   }
+  if (trimmed && REMOTE_TO_LOCAL_COVER_MAP[trimmed]) {
+    return REMOTE_TO_LOCAL_COVER_MAP[trimmed];
+  }
   const coverDirs = [
     path.join(process.cwd(), 'dist', 'images', 'blog-covers'),
     path.join(process.cwd(), 'public', 'images', 'blog-covers'),
   ];
+  const hasAnyCoverDir = coverDirs.some((d) => fs.existsSync(d));
   const safePrefix = slug.replace(/[^a-z0-9-_]/gi, '-').slice(0, 60);
   for (const dir of coverDirs) {
     try {
@@ -590,6 +595,22 @@ export function resolveLocalBlogCover(inputUrl: string, slug: string): string {
         if (hashed) return `/images/blog-covers/${hashed}`;
       }
     } catch {}
+  }
+  if (SLUG_TO_LOCAL_COVER_MAP[slug]) {
+    return SLUG_TO_LOCAL_COVER_MAP[slug];
+  }
+  if (trimmed.startsWith('/images/blog-covers/')) {
+    if (!hasAnyCoverDir) {
+      return trimmed;
+    }
+    const relPath = trimmed.replace(/^\/+/, '');
+    if (
+      fs.existsSync(path.join(process.cwd(), 'dist', relPath)) ||
+      fs.existsSync(path.join(process.cwd(), 'public', relPath))
+    ) {
+      return trimmed;
+    }
+    return '/images/hero-abuqitmirlabs.webp';
   }
   if (trimmed && !trimmed.includes('postimg.cc') && !trimmed.includes('logo.png')) {
     return trimmed;

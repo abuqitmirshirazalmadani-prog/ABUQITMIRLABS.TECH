@@ -2,14 +2,22 @@ import {
   renderBlogIndexSsrHtml,
   renderNewsArticleSsrHtml,
   renderNewsIndexSsrHtml,
-} from '../lib/live-ssr';
+} from '../lib/live-ssr.js';
 
 export default async function handler(req: any, res: any) {
   try {
-    const rawRoute = Array.isArray(req.query?.route)
+    let rawRoute = Array.isArray(req?.query?.route)
       ? `/${req.query.route.join('/')}`
-      : String(req.query?.route || req.url || '/blog');
-    const cleanPath = rawRoute.split('?')[0].replace(/\/+$/, '') || '/blog';
+      : String(req?.query?.route || '');
+    if (!rawRoute && req?.url) {
+      try {
+        const parsed = new URL(req.url, 'https://www.abuqitmirlabs.tech');
+        rawRoute = parsed.searchParams.get('route') || parsed.pathname || '/blog';
+      } catch {
+        rawRoute = String(req.url || '/blog');
+      }
+    }
+    const cleanPath = (rawRoute || '/blog').split('?')[0].replace(/\/+$/, '') || '/blog';
 
     let result;
     if (cleanPath === '/blog') {

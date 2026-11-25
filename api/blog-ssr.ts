@@ -1,10 +1,19 @@
-import { renderBlogPostSsrHtml } from '../lib/live-ssr';
+import { renderBlogPostSsrHtml } from '../lib/live-ssr.js';
 
 export default async function handler(req: any, res: any) {
   try {
-    const rawSlugParam = Array.isArray(req.query?.slug)
+    let rawSlugParam = Array.isArray(req?.query?.slug)
       ? req.query.slug.join('/')
-      : String(req.query?.slug || '');
+      : String(req?.query?.slug || '');
+
+    if (!rawSlugParam && req?.url) {
+      try {
+        const parsed = new URL(req.url, 'https://www.abuqitmirlabs.tech');
+        rawSlugParam =
+          parsed.searchParams.get('slug') ||
+          (parsed.pathname.startsWith('/blog/') ? parsed.pathname.slice('/blog/'.length) : '');
+      } catch {}
+    }
 
     const result = await renderBlogPostSsrHtml({
       rawSlug: rawSlugParam,
