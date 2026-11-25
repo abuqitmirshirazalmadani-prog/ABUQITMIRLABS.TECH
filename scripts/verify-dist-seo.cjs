@@ -104,6 +104,8 @@ const TITLE_OVERRIDES = {
     'Website Visibility: Reach the Right Audience (2026) | AbuQitmirLabs',
   '/blog/whatsapp-business-branding-pakistan':
     'WhatsApp Business Branding Pakistan | AbuQitmirLabs',
+  '/blog/ai-coding-agents-secure-agentic-software-development':
+    'How to Secure AI Coding Agents | AbuQitmirLabs',
 };
 
 function formatConciseTitle(rawTitle, pathname) {

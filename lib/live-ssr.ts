@@ -52,6 +52,7 @@ export interface BlogRecord {
   helperImages?: Array<{ url: string; caption: string }>;
   published: boolean;
   createdAt: string;
+  updatedAt?: string;
   updatedAtMs: number;
   cmsUpdatedAtMs: number;
   source: 'markdown' | 'firestore';
@@ -536,6 +537,7 @@ export function readMarkdownPostBySlug(canonicalSlug: string): BlogRecord | null
       tags: Array.isArray(meta.tags) ? meta.tags.map(String) : [],
       published: meta.published !== false && String(meta.published).toLowerCase() !== 'false',
       createdAt: String(meta.publishedAt || meta.createdAt || '2026-11-01').slice(0, 10),
+      updatedAt: meta.updatedAt ? String(meta.updatedAt).slice(0, 10) : undefined,
       updatedAtMs: Math.max(stat.mtimeMs, syncedMs),
       cmsUpdatedAtMs: cmsMs,
       source: 'markdown',
@@ -1403,6 +1405,8 @@ export async function renderBlogPostSsrHtml(options: {
       ? 'Raast Payment Integration in Pakistan: Merchant Guide'
       : canonicalSlug === 'whatsapp-business-branding-pakistan'
       ? 'WhatsApp Business Branding Pakistan | AbuQitmirLabs'
+      : canonicalSlug === 'ai-coding-agents-secure-agentic-software-development'
+      ? 'How to Secure AI Coding Agents | AbuQitmirLabs'
       : resolvedPost.seoTitle ||
         (/Abu\s*Qitmir\s*Labs/i.test(cleanH1)
           ? cleanH1
@@ -1417,6 +1421,8 @@ export async function renderBlogPostSsrHtml(options: {
       ? 'A practical guide for Pakistani SMEs on creating a 1-page brand style guide. Keep your logo, colors, and voice consistent across print and web.'
       : canonicalSlug === 'raast-payment-integration-pakistan'
       ? 'Learn how Pakistani businesses can accept Raast P2M payments through QR, RTP, merchant aliases or IBAN, and connect confirmations to orders and accounting.'
+      : canonicalSlug === 'ai-coding-agents-secure-agentic-software-development'
+      ? 'Learn how to secure AI coding agents with sandboxing, least privilege, secret scanning, policy gates, and human approval before production deployment.'
       : resolvedPost.metaDescription || resolvedPost.excerpt || `${cleanH1}: in-depth guide by AbuQitmirLabs.`
   ).trim();
   const metaDesc = clampCleanDesc(rawDesc, 155);
@@ -1436,6 +1442,9 @@ export async function renderBlogPostSsrHtml(options: {
     slug: canonicalSlug,
   });
 
+  const pubDateIso = `${String(resolvedPost.createdAt || '2026-11-25').slice(0, 10)}T00:00:00+05:00`;
+  const modDateIso = `${String((resolvedPost as any).updatedAt || resolvedPost.createdAt || '2026-11-25').slice(0, 10)}T00:00:00+05:00`;
+
   const graphNodes: any[] = [
     ...buildOrgLocalWebsiteNodes(),
     {
@@ -1444,6 +1453,8 @@ export async function renderBlogPostSsrHtml(options: {
       url: fullCanonical,
       name: pageTitle,
       description: metaDesc,
+      datePublished: pubDateIso,
+      dateModified: modDateIso,
       isPartOf: { '@id': `${SITE_URL}/#website` },
     },
     {
@@ -1473,8 +1484,8 @@ export async function renderBlogPostSsrHtml(options: {
       },
       publisher: { '@id': `${SITE_URL}/#organization` },
       mainEntityOfPage: { '@id': `${fullCanonical}#webpage` },
-      datePublished: `${String(resolvedPost.createdAt || '2026-11-01').slice(0, 10)}T00:00:00+00:00`,
-      dateModified: `${String(resolvedPost.createdAt || '2026-11-01').slice(0, 10)}T00:00:00+00:00`,
+      datePublished: pubDateIso,
+      dateModified: modDateIso,
     },
   ];
 
@@ -1505,6 +1516,7 @@ export async function renderBlogPostSsrHtml(options: {
     author: resolvedPost.author || DEFAULT_AUTHOR,
     category: resolvedPost.category || 'Business',
     createdAt: String(resolvedPost.createdAt || '2026-11-01').slice(0, 10),
+    updatedAt: resolvedPost.updatedAt ? String(resolvedPost.updatedAt).slice(0, 10) : undefined,
     updatedAtMs: resolvedPost.cmsUpdatedAtMs || resolvedPost.updatedAtMs || Date.now(),
     cmsUpdatedAtMs: resolvedPost.cmsUpdatedAtMs || 0,
   });

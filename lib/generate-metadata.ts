@@ -217,9 +217,13 @@ const TITLE_OVERRIDES: Record<string, string> = {
     'Content Audit Checklist for Pakistani SMEs | AbuQitmirLabs',
   '/blog/whatsapp-business-branding-pakistan':
     'WhatsApp Business Branding Pakistan | AbuQitmirLabs',
+  '/blog/ai-coding-agents-secure-agentic-software-development':
+    'How to Secure AI Coding Agents | AbuQitmirLabs',
 };
 
 const DESCRIPTION_OVERRIDES: Record<string, string> = {
+  '/blog/ai-coding-agents-secure-agentic-software-development':
+    'Learn how to secure AI coding agents with sandboxing, least privilege, secret scanning, policy gates, and human approval before production deployment.',
   '/blog/whatsapp-business-branding-pakistan':
     'Blank WhatsApp profile losing customers? Set up a branded profile, catalogue, and 15 bilingual reply templates for your Pakistani small business today.',
   '/blog/content-audit-pakistan-smes':

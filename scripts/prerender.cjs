@@ -226,6 +226,8 @@ const TITLE_OVERRIDES = {
     'Raast Payment Integration in Pakistan: Merchant Guide',
   '/blog/whatsapp-business-branding-pakistan':
     'WhatsApp Business Branding Pakistan | AbuQitmirLabs',
+  '/blog/ai-coding-agents-secure-agentic-software-development':
+    'How to Secure AI Coding Agents | AbuQitmirLabs',
 };
 
 function formatConciseTitle(rawTitle, pathname) {
@@ -472,6 +474,7 @@ if (fs.existsSync(contentBlogDir)) {
           STATIC_BLOG_POSTS[canonicalSlug] = {
             id: `static-${canonicalSlug}`,
             title: parsedMeta.title || canonicalSlug,
+            seoTitle: parsedMeta.seoTitle || undefined,
             slug: canonicalSlug,
             metaDescription: stripOuterQuotes(parsedMeta.metaDescription || parsedMeta.excerpt || ''),
             excerpt: stripOuterQuotes(parsedMeta.excerpt || parsedMeta.metaDescription || ''),
@@ -482,7 +485,8 @@ if (fs.existsSync(contentBlogDir)) {
             coverImage: parsedMeta.coverImage || 'https://www.abuqitmirlabs.tech/logo.png',
             coverImageAlt: parsedMeta.coverImageAlt || parsedMeta.title || '',
             tags: Array.isArray(parsedMeta.tags) ? parsedMeta.tags : [],
-            createdAt: parsedMeta.publishedAt ? `${parsedMeta.publishedAt}T10:00:00.000Z` : new Date().toISOString()
+            createdAt: parsedMeta.publishedAt ? String(parsedMeta.publishedAt).slice(0, 10) : new Date().toISOString().slice(0, 10),
+            updatedAt: parsedMeta.updatedAt ? String(parsedMeta.updatedAt).slice(0, 10) : undefined
           };
         }
       }
@@ -643,10 +647,10 @@ for (const routeUrl of allRoutes) {
               }
             }
             seo = {
-              title: parsedMeta.title ? (parsedMeta.title.includes('AbuQitmirLabs') ? parsedMeta.title : `${parsedMeta.title} | AbuQitmirLabs`) : 'AbuQitmirLabs Journal',
+              title: parsedMeta.seoTitle || (parsedMeta.title ? (parsedMeta.title.includes('AbuQitmirLabs') ? parsedMeta.title : `${parsedMeta.title} | AbuQitmirLabs`) : 'AbuQitmirLabs Journal'),
               description: postDesc,
               canonical: `https://www.abuqitmirlabs.tech/blog/${blogSlug}`,
-              ogTitle: parsedMeta.title,
+              ogTitle: parsedMeta.seoTitle || parsedMeta.title,
               ogDescription: postDesc,
               ogImage: parsedMeta.coverImage || 'https://www.abuqitmirlabs.tech/logo.png',
               ogType: 'article'

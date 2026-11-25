@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How to Secure AI Coding Agents | AbuQitmirLabs</title>
+<meta name="description" content="Learn how to secure AI coding agents with sandboxing, least privilege, secret scanning, policy gates, and human approval before production deployment." />
+<meta name="author" content="Abu Qitmir Mohammad Shiraz Al-Madani" />
+<meta name="keywords" content="AI coding agents, secure agentic software development, AI code security, AI coding agent risks, Veracode GenAI security report, GitGuardian secrets sprawl, AI-generated code vulnerability, agentic workflow security, least privilege AI agents, secret scanning AI commits, AI coding agent governance, AbuQitmirLabs" />
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<link rel="canonical" href="https://www.abuqitmirlabs.tech/blog/ai-coding-agents-secure-agentic-software-development" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="AbuQitmirLabs" />
+<meta property="og:title" content="How to Secure AI Coding Agents | AbuQitmirLabs" />
+<meta property="og:description" content="Learn how to secure AI coding agents with sandboxing, least privilege, secret scanning, policy gates, and human approval before production deployment." />
+<meta property="og:url" content="https://www.abuqitmirlabs.tech/blog/ai-coding-agents-secure-agentic-software-development" />
+<meta property="og:image" content="https://www.abuqitmirlabs.tech/images/blog-covers/ai-coding-agents-secure-agentic-software-development.webp" />
+<meta property="og:image:alt" content="AI coding agent pull request passing tests but flagged by a security scanner, illustrating the gap between code that runs and code that is safe." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="How to Secure AI Coding Agents | AbuQitmirLabs" />
+<meta name="twitter:description" content="Learn how to secure AI coding agents with sandboxing, least privilege, secret scanning, policy gates, and human approval before production deployment." />
+<meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/blog-covers/ai-coding-agents-secure-agentic-software-development.webp" />
+<link rel="preload" as="image" href="/images/blog-covers/ai-coding-agents-secure-agentic-software-development.webp" />
+
+  <script id="canonical-schema-graph" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.abuqitmirlabs.tech/#organization","name":"AbuQitmirLabs","alternateName":"AbuQitmirLabs","url":"https://www.abuqitmirlabs.tech/","logo":"https://www.abuqitmirlabs.tech/logo.png","description":"AbuQitmirLabs is a custom software, mobile app, AI agent, web development, SEO, graphics, and content writing studio serving startups, SMEs, and enterprises globally.","sameAs":["https://www.linkedin.com/in/abu-qitmir-697423390/","https://www.facebook.com/profile.php?id=61583768706452","https://www.instagram.com/abuqitmirshirazalmadani/","https://x.com/AbuQitmir","https://www.youtube.com/@AbuQitmir","https://clutch.co/profile/abuqitmirlabstech","https://www.goodfirms.co/company/abuqitmirlabs-tech"],"contactPoint":{"@type":"ContactPoint","contactType":"sales","telephone":"+923233260859","url":"https://www.abuqitmirlabs.tech/contact"}},{"@type":"LocalBusiness","@id":"https://www.abuqitmirlabs.tech/#localbusiness","name":"AbuQitmirLabs","url":"https://www.abuqitmirlabs.tech/","image":"https://www.abuqitmirlabs.tech/logo.png","telephone":"+923233260859","email":"hello@abuqitmirlabs.tech","priceRange":"$$","address":{"@type":"PostalAddress","streetAddress":"Shahrah-e-Faisal, PECHS","addressLocality":"Karachi","addressRegion":"Sindh","postalCode":"75400","addressCountry":"PK"},"geo":{"@type":"GeoCoordinates","latitude":24.8607,"longitude":67.0642},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"10:00","closes":"20:00"}],"areaServed":{"@type":"Country","name":"Pakistan"}},{"@type":"WebSite","@id":"https://www.abuqitmirlabs.tech/#website","url":"https://www.abuqitmirlabs.tech/","name":"AbuQitmirLabs","publisher":{"@id":"https://www.abuqitmirlabs.tech/#organization"},"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://www.abuqitmirlabs.tech/blog/ai-coding-agents-secure-agentic-software-development#webpage","url":"https://www.abuqitmirlabs.tech/blog/ai-coding-agents-secure-agentic-software-development","name":"How to Secure AI Coding Agents | AbuQitmirLabs","isPartOf":{"@id":"https://www.abuqitmirlabs.tech/#website"},"primaryImageOfPage":"https://www.abuqitmirlabs.tech/images/blog-covers/ai-coding-agents-secure-agentic-software-development.webp","datePublished":"2026-11-25T00:00:00+05:00","dateModified":"2026-11-25T00:00:00+05:00","description":"Learn how to secure AI coding agents with sandboxing, least privilege, secret scanning, policy gates, and human approval before production deployment.","breadcrumb":{"@id":"https://www.abuqitmirlabs.tech/blog/ai-coding-agents-secure-agentic-software-development#breadcrumb"},"inLanguage":"en-US"},{"@type":"BreadcrumbList","@id":"https://www.abuqitmirlabs.tech/blog/ai-coding-agents-secure-agentic-software-development#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.abuqitmirlabs.tech/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.abuqitmirlabs.tech/blog"},{"@type":"ListItem","position":3,"name":"How to Secure AI Coding Agents: Agentic Software Development","item":"https://www.abuqitmirlabs.tech/blog/ai-coding-agents-secure-agentic-software-development"}]},{"@type":"Article","@id":"https://www.abuqitmirlabs.tech/blog/ai-coding-agents-secure-agentic-software-development#article","headline":"How to Secure AI Coding Agents: Agentic Software Development","description":"Learn how to secure AI coding agents with sandboxing, least privilege, secret scanning, policy gates, and human approval before production deployment.","image":"https://www.abuqitmirlabs.tech/images/blog-covers/ai-coding-agents-secure-agentic-software-development.webp","author":{"@type":"Person","name":"Abu Qitmir Mohammad Shiraz Al-Madani","jobTitle":"Founder & Lead Systems Architect","description":"Founder & Lead Systems Architect at AbuQitmirLabs (founded 2021; M.B.A. Commerce, University of Karachi; 410+ projects for 350+ clients) specializing in custom software, brand systems, AI agents, and technical SEO.","sameAs":["https://www.linkedin.com/in/abu-qitmir-697423390/","https://x.com/AbuQitmir","https://www.instagram.com/abuqitmirshirazalmadani/"],"worksFor":{"@type":"Organization","name":"AbuQitmirLabs","url":"https://www.abuqitmirlabs.tech/"},"url":"https://www.abuqitmirlabs.tech/about/our-team"},"publisher":{"@id":"https://www.abuqitmirlabs.tech/#organization"},"datePublished":"2026-11-25T00:00:00+05:00","dateModified":"2026-11-25T00:00:00+05:00","mainEntityOfPage":{"@id":"https://www.abuqitmirlabs.tech/blog/ai-coding-agents-secure-agentic-software-development#webpage"},"articleSection":"AI","keywords":["AI coding agents","secure agentic software development","AI code security","AI coding agent risks","Veracode GenAI security report","GitGuardian secrets sprawl","AI-generated code vulnerability","agentic workflow security","least privilege AI agents","secret scanning AI commits","AI coding agent governance","AbuQitmirLabs"],"wordCount":3891,"inLanguage":"en-US","isAccessibleForFree":true},{"@type":"FAQPage","@id":"https://www.abuqitmirlabs.tech/blog/ai-coding-agents-secure-agentic-software-development#faq","mainEntity":[{"@type":"Question","name":"What are AI coding agents?","acceptedAnswer":{"@type":"Answer","text":"AI coding agents are tools that plan a development task, read a repository, edit files, run commands, write tests, and prepare a pull request on their own. They work across many steps, not just one suggested line of code, which is why they need more oversight than a simple autocomplete tool."}},{"@type":"Question","name":"Is AI-generated code actually less secure?","acceptedAnswer":{"@type":"Answer","text":"Independent testing shows clear security gaps. Veracode's 2025 GenAI Code Security Report found that 45% of AI-generated code samples failed security tests and introduced OWASP Top 10 vulnerabilities, including a 43% failure rate in JavaScript and an 86% failure rate on XSS-relevant samples. Security performance also remained broadly flat across newer and larger models."}},{"@type":"Question","name":"How long does secure agentic software development take?","acceptedAnswer":{"@type":"Answer","text":"A focused pilot with scoped tasks and basic guardrails usually takes four to eight weeks. A production-grade workflow with policy controls, audit logs, and monitored deployment typically takes eight to sixteen weeks, depending on the number of tools and systems the agent needs to touch."}},{"@type":"Question","name":"Do AI coding agents leak secrets and credentials?","acceptedAnswer":{"@type":"Answer","text":"Yes, in measured coding-agent workflows. GitGuardian's 2026 State of Secrets Sprawl report found that Claude Code co-authored commits leaked secrets at approximately twice the baseline rate, alongside an 81% year-over-year increase in exposed AI-service secrets. Automated secret scanning in the commit pipeline is now a baseline requirement, not an optional extra."}},{"@type":"Question","name":"Who needs a guarded AI coding agent workflow?","acceptedAnswer":{"@type":"Answer","text":"Product companies, software agencies, and internal engineering teams that let an agent touch a shared repository, cloud credentials, or production systems need one. Teams with strong existing tests, clear code ownership, and documented review processes gain value from agents faster and more safely than teams without them."}},{"@type":"Question","name":"What are the main security risks of AI coding agents?","acceptedAnswer":{"@type":"Answer","text":"The main risks are vulnerable code shipped without review, leaked credentials and API keys, excessive tool or system access, prompt injection from untrusted content, unapproved file changes, and risky dependencies suggested by the agent. Each risk has a specific, testable control rather than a single catch-all fix."}},{"@type":"Question","name":"How can a company secure an AI coding agent?","acceptedAnswer":{"@type":"Answer","text":"A company can secure an AI coding agent by scoping each task narrowly, running it in an isolated workspace on a temporary branch, giving it the smallest set of permissions it needs, scanning for secrets and vulnerabilities before merge, enforcing policy checks on sensitive actions, and requiring human approval before anything reaches production."}},{"@type":"Question","name":"Are AI coding agents worth the risk for a small team?","acceptedAnswer":{"@type":"Answer","text":"For most small teams, yes, if the guardrails are scaled to the risk. A solo founder working on a low-risk internal tool needs lighter controls than a team shipping to paying customers. The core steps, scoping, scanning, and human approval for sensitive changes, still apply either way, just at a smaller scale."}}]}]}</script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hiA.woff2" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@600;700&display=swap" />
+    <script>(function(){var g='G-EJH1V89EP0',w=window,d=document,l=w.location,h=(l.hostname||'').toLowerCase(),p=(l.pathname||'').toLowerCase(),s=(l.search||'').toLowerCase(),r=(d.referrer||'').toLowerCase(),u=(navigator.userAgent||'').toLowerCase(),a=p==='/admin'||p.indexOf('/admin/')===0||p==='/login'||p.indexOf('/login/')===0;if(a||s.indexOf('internal=1')!==-1||s.indexOf('internal_traffic=1')!==-1||s.indexOf('traffic_type=internal')!==-1){try{w.localStorage.setItem('aql_internal_traffic','true');d.cookie='aql_internal_traffic=1;path=/;max-age=31536000;SameSite=Lax';}catch(e){}}var i=a;try{if(w.localStorage.getItem('aql_internal_traffic')==='true'||d.cookie.indexOf('aql_internal_traffic=1')!==-1){i=true;}}catch(e){}var v=h==='localhost'||h==='127.0.0.1'||h.slice(-8)==='.run.app'||h.slice(-11)==='.vercel.app'||r.indexOf('tagassistant.google.com')!==-1||r.indexOf('googletagmanager.com')!==-1||s.indexOf('gtm_debug')!==-1||s.indexOf('tagassistant')!==-1||s.indexOf('ga_debug')!==-1,x=r.indexOf('ghastlypages.com')!==-1||r.indexOf('semalt.com')!==-1||r.indexOf('buttons-for-website.com')!==-1||r.indexOf('darodar.com')!==-1||r.indexOf('ilovevitaly.com')!==-1||r.indexOf('free-social-buttons.com')!==-1,b=Boolean(navigator.webdriver)||/headlesschrome|phantomjs|slimerjs|puppeteer|playwright|lighthouse|ptst|pagespeed|facebookexternalhit|facebot|meta-externalagent/i.test(u),f=x||r.indexOf('m.facebook.com')!==-1||r.indexOf('l.facebook.com')!==-1||r.indexOf('lm.facebook.com')!==-1||r.indexOf('tagassistant.google.com')!==-1;if(i||v||x||b){w['ga-disable-'+g]=true;}w.dataLayer=w.dataLayer||[];function gtag(){w.dataLayer.push(arguments);}w.gtag=gtag;if(!w['ga-disable-'+g]){var c=d.createElement('script');c.async=true;c.src='https://www.googletagmanager.com/gtag/js?id='+g;d.head.appendChild(c);gtag('js',new Date());var o={send_page_view:false};if(i){o.traffic_type='internal';}if(f){o.page_referrer='';o.ignore_referrer=true;}gtag('config',g,o);}})();</script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="alternate icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/logo.png" />
+    <style>@font-face{font-family:'Cormorant Garamond Fallback';src:local('Georgia'),local('Times New Roman');font-display:swap;size-adjust:106%;ascent-override:92%;descent-override:24%;line-gap-override:0%}@font-face{font-family:'Inter Fallback';src:local('Inter'),local('-apple-system'),local('BlinkMacSystemFont'),local('Segoe UI'),local('Roboto'),local('Arial');font-display:swap;size-adjust:107%;ascent-override:90%;descent-override:22%;line-gap-override:0%}@font-face{font-family:'Space Grotesk Fallback';src:local('Segoe UI'),local('Roboto'),local('Helvetica Neue'),local('Arial');font-display:swap;size-adjust:103%;ascent-override:92%;descent-override:24%;line-gap-override:0%}html,body{background-color:#09090b!important;color:#f4f4f5!important;font-family:'Inter','Inter Fallback',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-synthesis:none;margin:0;padding:0;text-rendering:optimizeSpeed;-webkit-font-smoothing:antialiased}h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond','Cormorant Garamond Fallback','Space Grotesk','Space Grotesk Fallback',Georgia,serif;font-weight:700}button,.btn,.cta{font-family:'Sora','Inter Fallback',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-weight:600}#root a{text-decoration:none}#root a:hover{text-decoration:underline}#root img{max-width:100%;height:auto}html.is-subroute #ssr-home-fallback{display:none!important}</style>
+    <script>if(typeof window!=='undefined'&&window.location.pathname!=='/'&&window.location.pathname!=='/index.html'){document.documentElement.classList.add('is-subroute');}</script>
+    <meta name="p:domain_verify" content="6b353b2d2bc7713e02417a6096df20ce"/>
+    <meta name="msvalidate.01" content="8C9AD61EBF6841864CA29D2A78E46D1D" />
+    <meta name="trustpilot-one-time-domain-verification-id" content="e76444b6-ef80-47c1-a9bd-a6c33c3df4cd"/>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="prefetch" href="/custom-software" />
+    <link rel="prefetch" href="/solutions/fintech" />
+<script type="module" crossorigin src="/assets/index-DQkwviu9.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-5LyXwXXe.css">
+  </head>
+  <body>
+    <div id="root" data-rendered-route="/blog/ai-coding-agents-secure-agentic-software-development">
+  <!--$--><div class="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00]/30 selection:text-white"><a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:bg-[#ccff00] focus:text-black focus:font-bold focus:rounded-md focus:shadow-2xl focus:outline-none">Skip to main content</a>
+  <header class="fixed top-0 left-0 w-full z-[100] transition-all duration-300 h-20 md:h-24 flex items-center bg-transparent"><div class="max-w-[1400px] mx-auto px-6 md:px-12 w-full flex items-center justify-between"><a class="flex flex-col no-underline group transition-all duration-300 " href="/" data-discover="true"><div class="flex flex-col leading-[0.8]"><span class="text-[#0066ff] font-black text-xl md:text-2xl tracking-tighter uppercase group-hover:text-white transition-colors">ABUQITMIR</span><div class="bg-[#ccff00] text-black text-[10px] md:text-[11px] font-black px-2 py-0.5 rounded-sm tracking-[0.1em] uppercase self-start mt-1">LABS.TECH</div></div></a>
+  <nav role="navigation" aria-label="Main Navigation" class="hidden xl:flex items-center gap-4 2xl:gap-7"><div class="relative group"><a class="text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap text-gray-300 hover:text-white" href="/" data-discover="true">Home</a></div><div class="relative group"><div class="flex items-center gap-1 cursor-pointer py-4" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-label="Services Submenu"><span class="text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap text-gray-300 hover:text-white">Services</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-3.5 h-3.5 text-gray-400 group-hover:text-white transition-colors" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></div></div><div class="relative group"><div class="flex items-center gap-1 cursor-pointer py-4" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-label="Solutions Submenu"><span class="text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap text-gray-300 hover:text-white">Solutions</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-3.5 h-3.5 text-gray-400 group-hover:text-white transition-colors" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></div></div><div class="relative group"><div class="flex items-center gap-1 cursor-pointer py-4" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-label="World Submenu"><span class="text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap text-gray-300 hover:text-white">World</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-3.5 h-3.5 text-gray-400 group-hover:text-white transition-colors" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></div></div><div class="relative group"><div class="flex items-center gap-1 cursor-pointer py-4" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-label="About Submenu"><span class="text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap text-gray-300 hover:text-white">About</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-3.5 h-3.5 text-gray-400 group-hover:text-white transition-colors" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></div></div><div class="relative group"><div class="flex items-center gap-1 cursor-pointer py-4" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-label="Resources Submenu"><span class="text-xs xl:text-sm font-semibold transition-colors whitespace-nowrap text-gray-300 hover:text-white">Resources</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-3.5 h-3.5 text-gray-400 group-hover:text-white transition-colors" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></div></div></nav>
+<div class="flex items-center gap-3 shrink-0"><a aria-label="Book a Consultation" class="inline-flex items-center justify-center px-5 py-2.5 bg-[#ccff00] hover:bg-[#b0d600] !text-black font-black text-xs uppercase tracking-wider rounded-full shadow-[0_0_15px_rgba(204,255,0,0.35)] hover:shadow-[0_0_20px_rgba(204,255,0,0.5)] transition-all duration-300 active:scale-95 shrink-0 whitespace-nowrap" href="/contact" data-discover="true"><span class="!text-black font-black text-xs uppercase tracking-wider whitespace-nowrap">Contact Now</span></a><button class="xl:hidden p-2.5 text-white hover:text-[#ccff00] focus:outline-none transition-colors" aria-label="Open Navigation Menu" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu h-6 w-6" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div></div></header>
+
+  <nav class="absolute top-24 left-0 right-0 z-40 px-6 md:px-10 py-4 pointer-events-none" aria-label="Breadcrumb">
+  <ol class="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] pointer-events-auto list-none m-0 p-0 flex-wrap max-w-7xl mx-auto">
+  <li class="flex items-center gap-2"><a class="text-zinc-600 hover:text-[#ff5b36] transition-colors flex items-center gap-1.5 shrink-0 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff5b36]" href="/" data-discover="true"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg><span>Home</span></a></li>
+
+  <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right text-zinc-800" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg><a class="text-zinc-600 hover:text-[#ff5b36] transition-colors flex items-center gap-1.5 shrink-0 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff5b36]" href="/blog" data-discover="true"><span>Blog</span></a></li>
+
+  <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right text-zinc-800" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg><span class="text-[#ff5b36] truncate max-w-[200px] md:max-w-none text-wrap" title="How to Secure AI Coding Agents: Agentic Software Development" aria-current="page">How to Secure AI Coding Agents: Agentic Software Development</span></li>
+</ol>
+</nav>
+
+  <main class="pt-36 md:pt-44 pb-20 px-6 animate-enter">
+  <article class="max-w-7xl mx-auto" itemScope="" itemType="https://schema.org/BlogPosting">
+  <header class="mb-8"><div class="mb-10"><a class="inline-flex items-center gap-2 text-zinc-400 hover:text-[#ccff00] transition-colors uppercase tracking-widest text-xs font-bold group" href="/blog" data-discover="true"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left group-hover:-translate-x-1 transition-transform" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg> Back to The Journal</a></div>
+  <h1 itemProp="headline" class="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight leading-[1.1] font-serif animate-enter animate-enter-delay-1">How to Secure AI Coding Agents: Agentic Software Development</h1>
+</header>
+<div aria-label="Article metadata" class="flex flex-wrap items-center justify-between gap-4 text-xs text-zinc-400 font-mono border-y border-zinc-800/80 py-5 mb-12"><div class="flex flex-wrap items-center gap-4">
+  <p class="flex items-center gap-2 text-zinc-300 m-0 sm:border-r sm:border-zinc-800 sm:pr-4"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar text-[#ccff00]" aria-hidden="true"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg><span>Published: <time itemProp="datePublished" dateTime="2026-11-25">November 25, 2026</time></span></p>
+
+  <p itemProp="author" itemScope="" itemType="https://schema.org/Person" class="flex items-center gap-2 text-zinc-300 font-medium tracking-normal m-0 sm:border-r sm:border-zinc-800 sm:pr-4"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user text-[#ccff00]" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span>By <a itemProp="url" class="text-white font-semibold hover:text-[#ccff00] underline decoration-zinc-700 hover:decoration-[#ccff00] underline-offset-4 transition-colors" href="/about/our-team" data-discover="true"><span itemProp="name">Abu Qitmir Mohammad Shiraz Al-Madani</span></a> <span class="text-zinc-400">(AbuQitmirLabs)</span></span></p>
+
+  <p class="flex items-center gap-2 text-zinc-300 m-0" data-testid="reading-time"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock text-[#ccff00]" aria-hidden="true"><path d="M12 6v6l4 2"></path><circle cx="12" cy="12" r="10"></circle></svg><span>20 min read</span></p>
+</div><div class="flex items-center gap-4 ml-auto" data-nosnippet="true" aria-hidden="true"><span class="hidden md:inline-block text-zinc-400">Share:</span><div class="flex items-center gap-2"><button class="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 flex items-center justify-center hover:bg-[#ccff00] hover:text-black transition-all shadow-md" title="Share on Twitter" aria-label="Share this blog post on Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter" aria-hidden="true"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></button><button class="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 flex items-center justify-center hover:bg-[#ccff00] hover:text-black transition-all shadow-md" title="Share on LinkedIn" aria-label="Share this blog post on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></button><button class="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 flex items-center justify-center hover:bg-[#ccff00] hover:text-black transition-all shadow-md" title="Share on Facebook" aria-label="Share this blog post on Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></button><button class="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 flex items-center justify-center hover:bg-[#ccff00] hover:text-black transition-all shadow-md" title="Copy Link" aria-label="Copy blog post link to clipboard"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></button></div></div></div><div class="aspect-video w-full rounded-[2.5rem] overflow-hidden mb-16 border border-zinc-800/80 shadow-2xl group bg-[#090a0f] flex items-center justify-center relative"><img src="/images/blog-covers/ai-coding-agents-secure-agentic-software-development.webp" alt="AI coding agent pull request passing tests but flagged by a security scanner, illustrating the gap between code that runs and code that is safe." referrerPolicy="no-referrer" width="1200" height="675" loading="eager" fetchPriority="high" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"/></div><div class="xl:grid xl:grid-cols-[minmax(0,1fr)_290px] xl:gap-10 xl:items-start"><div itemProp="articleBody" data-article-content="true" class="xl:order-1 min-w-0 bg-[#0b0b0e] rounded-[2.5rem] p-8 md:p-16 border border-zinc-800/80 shadow-2xl text-zinc-200 leading-relaxed font-sans space-y-6">
+  <h2 id="why-45-of-ai-generated-code-still-fails-security-tests-and-how-to-fix-it" class="scroll-mt-32 text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3">Why 45% of AI-Generated Code Still Fails Security Tests, and How to Fix It</h2>
+
+  <h3 id="who-this-guide-is-for" class="scroll-mt-32 text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif">Who This Guide Is For</h3>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">This guide is for founders, CTOs, and engineering teams in Pakistan, the US, and the Gulf who are already using an AI coding agent, or are about to let one touch a real repository, cloud account, or production system.</p>
+
+  <hr class="border-zinc-800 my-10"/>
+  <h3 id="quick-takeaways" class="scroll-mt-32 text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif">Quick Takeaways</h3>
+
+  <ul class="list-disc list-inside space-y-2 text-zinc-300 my-6 pl-2">
+  <li class="text-zinc-300 leading-relaxed mb-1"><a href="https://www.veracode.com/blog/genai-code-security-report/" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">Veracode&#x27;s 2025 GenAI Code Security Report</a> found that 45% of AI-generated code samples failed security tests and introduced <a href="https://owasp.org/www-project-top-ten/" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">OWASP Top 10</a> vulnerabilities. The report also found that security performance remained broadly flat across newer and larger models.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1">Language and vulnerability exposure vary sharply: Veracode reported a 43% failure rate for JavaScript and an 86% failure rate on cross-site scripting (XSS) relevant samples.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1">The <a href="https://www.verizon.com/business/resources/reports/dbir/" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">Verizon 2026 Data Breach Investigations Report</a> found that software vulnerabilities are now the top breach entry point at 31%, ahead of stolen credentials.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><a href="https://www.gitguardian.com/state-of-secrets-sprawl-report-2026" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">GitGuardian&#x27;s 2026 State of Secrets Sprawl report</a> found that Claude Code co-authored commits leaked secrets at approximately twice the baseline rate. It also reported an 81% year-over-year increase in exposed AI-service secrets.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1">The fix is not to stop using agents. It is a guarded workflow aligned with the <a href="https://csrc.nist.gov/Projects/ssdf" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">NIST Secure Software Development Framework</a>: scoped tasks, isolated execution, automated scans, policy gates, and a human sign-off before production.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1">This guide does not invent cost figures. Pricing depends on scope, tools, and risk, so ask any vendor, including us, for an itemised quote.</li>
+</ul>
+
+  <hr class="border-zinc-800 my-10"/>
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">Your AI coding agent just opened a pull request. It passed every test. Should it go to production?</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">Most teams answer that question with a gut feeling, not a process. That gap is where AI coding agents actually get a business into trouble: not because the code does not run, but because nobody checked whether it is safe. This guide explains what AI coding agents are, what independent research says about their real security record, and a practical, step-by-step workflow for using them without taking on risk you cannot see.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Direct Answer:</strong> AI coding agents can plan, write, test, and submit code changes with little human input, but independent testing shows their output is not reliably secure. <a href="https://www.veracode.com/blog/genai-code-security-report/" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">Veracode&#x27;s 2025 GenAI Code Security Report</a> found that 45% of AI-generated code samples failed security tests and introduced <a href="https://owasp.org/www-project-top-ten/" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">OWASP Top 10</a> vulnerabilities. Secure agentic software development solves this by combining agent speed with scoped tasks, automated scanning, and mandatory human review before anything reaches production.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">AbuQitmirLabs works with founders and engineering teams across Pakistan, the US, and the Gulf who are adopting AI coding agents and need a workflow that an auditor, a client, or a new CTO can actually trust.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><em>Method note: the statistics in this guide come from the named studies and reports listed in the sources section, verified on 25 November 2026. We have not run our own industry survey, and every third-party figure below links to its primary source.</em></p>
+
+  <hr class="border-zinc-800 my-10"/>
+  <h2 id="key-definitions-ai-coding-agent-agentic-workflow-least-privilege-secrets-sprawl" class="scroll-mt-32 text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3">Key Definitions: AI Coding Agent, Agentic Workflow, Least Privilege, Secrets Sprawl</h2>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Direct Answer:</strong> An AI coding agent is software that plans and executes multi-step development work rather than suggesting a single line of code. An agentic workflow is the surrounding process of tools, checks, and approvals that controls what the agent can do. Least privilege means giving the agent only the access it needs for one task. Secrets sprawl is the uncontrolled spread of passwords, API keys, and tokens across a codebase. Each definition below stands on its own.</p>
+
+  <ul class="list-disc list-inside space-y-2 text-zinc-300 my-6 pl-2">
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">AI coding agent:</strong> An AI coding agent is a system that can read a repository, plan a task, edit files, run commands and tests, and prepare a pull request across multiple steps, instead of only completing one line or block of code.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Agentic workflow:</strong> An agentic workflow is the combination of sandboxing, permissions, automated checks, and human approval points that governs what an AI coding agent is allowed to do and when.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Least privilege:</strong> Least privilege is the practice of giving a user, service, or agent the smallest set of permissions needed to complete its current task, and nothing more.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Secrets sprawl:</strong> Secrets sprawl is the spread of hardcoded passwords, API keys, tokens, and other credentials across source code, configuration files, and chat tools, often faster than a team can find and rotate them.</li>
+</ul>
+
+  <hr class="border-zinc-800 my-10"/>
+  <h2 id="the-problem-speed-without-a-safety-check" class="scroll-mt-32 text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3">The Problem: Speed Without a Safety Check</h2>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Direct Answer:</strong> Teams adopt AI coding agents for speed, but speed without a safety check creates risk that is easy to miss because the code looks finished. <a href="https://www.veracode.com/blog/genai-code-security-report/" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">Veracode&#x27;s 2025 GenAI Code Security Report</a> found that 45% of AI-generated code samples failed security tests, and the <a href="https://www.verizon.com/business/resources/reports/dbir/" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">Verizon 2026 Data Breach Investigations Report</a> found software vulnerabilities are now the leading breach entry point at 31%.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">Three patterns show up again and again in teams that adopt agents without a workflow change:</p>
+
+  <ul class="list-disc list-inside space-y-2 text-zinc-300 my-6 pl-2">
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Confidence without verification.</strong> Code that compiles and passes a quick test looks done, even when it has not been checked for security flaws like those tracked in the <a href="https://owasp.org/www-project-top-ten/" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">OWASP Top 10</a>.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Shallow review.</strong> Reviewers scan AI-written code for correctness and skim past security, because a confident-looking pull request invites less scrutiny.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Credentials in the open.</strong> <a href="https://www.gitguardian.com/state-of-secrets-sprawl-report-2026" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">GitGuardian&#x27;s 2026 State of Secrets Sprawl report</a> found that Claude Code co-authored commits leaked secrets at approximately twice the baseline rate, often because a hardcoded key in a generated configuration file looks unremarkable next to everything else.</li>
+</ul>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">None of this means the agent is useless. It means the review process built for human-written code was not designed for the volume and pace of agent-written code.</p>
+
+  <hr class="border-zinc-800 my-10"/>
+  <h2 id="why-this-problem-happens" class="scroll-mt-32 text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3">Why This Problem Happens</h2>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Direct Answer:</strong> The problem happens because training data, incentives, and workflows have not caught up with how fast agents now produce code. Models are trained on code written before many current attack patterns existed, teams measure agents on speed and test-passing rather than security, and most review processes assume a human wrote every line.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Root cause 1: Training data lags behind current threats.</strong> Models learn patterns from code written in the past, including patterns that were already insecure, and style over substance can get learned along with the syntax.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Root cause 2: Syntax is solved, security is not.</strong> <a href="https://www.veracode.com/blog/genai-code-security-report/" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">Veracode&#x27;s 2025 GenAI Code Security Report</a> highlights this directly: AI models reliably produce code that runs, yet 45% of generated samples still failed security tests, with security performance remaining broadly flat across newer and larger models.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Root cause 3: Access was built for people, not agents.</strong> Repository and cloud permissions were designed around human accounts. An agent that inherits those same broad permissions can read or change far more than one task requires.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Root cause 4: Governance lives only in the prompt.</strong> Telling an agent &quot;follow our security rules&quot; in a prompt is not a control. A prompt can be ignored, misread, or influenced by untrusted content the agent encounters while working.</p>
+
+  <hr class="border-zinc-800 my-10"/>
+  <h2 id="what-the-research-data-actually-shows" class="scroll-mt-32 text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3">What the Research Data Actually Shows</h2>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Direct Answer:</strong> Three independent industry reports describe the same pattern from different angles: AI-generated code frequently fails security tests regardless of model size, software vulnerabilities lead real-world breach entry points, and secrets leak at higher rates in measured agent-assisted workflows.</p>
+<div class="overflow-x-auto my-8">
+  <table class="w-full text-left border-collapse border border-zinc-800 rounded-xl overflow-hidden">
+  <thead>
+  <tr><th class="bg-zinc-900 text-white font-bold uppercase text-xs p-4 border border-zinc-800">Source</th><th class="bg-zinc-900 text-white font-bold uppercase text-xs p-4 border border-zinc-800">What it measured</th><th class="bg-zinc-900 text-white font-bold uppercase text-xs p-4 border border-zinc-800">The finding</th><th class="bg-zinc-900 text-white font-bold uppercase text-xs p-4 border border-zinc-800">Read it with this in mind</th></tr>
+</thead>
+
+  <tbody>
+  <tr><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50"><a href="https://www.veracode.com/blog/genai-code-security-report/" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">Veracode GenAI Code Security Report (2025)</a></td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Security pass/fail rate of AI-generated code samples</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">45% of samples failed security tests and introduced <a href="https://owasp.org/www-project-top-ten/" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">OWASP Top 10</a> vulnerabilities (43% in JavaScript; 86% on XSS-relevant samples)</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Security performance stayed broadly flat across newer and larger models</td></tr>
+
+  <tr><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50"><a href="https://www.verizon.com/business/resources/reports/dbir/" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">Verizon 2026 Data Breach Investigations Report</a></td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Breach entry points across reported incidents</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Software vulnerabilities are the top entry point at 31%, ahead of stolen credentials</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Industry-wide figure, not limited to AI-written code alone</td></tr>
+
+  <tr><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50"><a href="https://www.gitguardian.com/state-of-secrets-sprawl-report-2026" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">GitGuardian State of Secrets Sprawl 2026</a></td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Secrets exposed in public GitHub commits</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Claude Code co-authored commits leaked secrets at approximately 2x the baseline rate; exposed AI-service secrets rose 81% year over year</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Specific to the cohort and public commits measured in the report</td></tr>
+</tbody>
+</table>
+</div>
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">A separate research project has tracked publicly reported vulnerabilities associated with AI coding tools, but the methodology and attribution criteria should be reviewed before treating the number as a complete industry total.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">Read the table as a directional pattern, not a reason to panic. Each report measured a specific surface, and together they show that agents accelerate output, so verification and access controls must be automated around that output.</p>
+
+  <hr class="border-zinc-800 my-10"/>
+  <h2 id="three-ways-to-manage-ai-coding-agent-risk" class="scroll-mt-32 text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3">Three Ways to Manage AI Coding Agent Risk</h2>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Direct Answer:</strong> Most teams choose between three approaches: no formal controls, controls bolted on after an incident, or a guarded workflow designed in from the start. Only the third approach is built to catch problems before they reach production, aligning with secure engineering practices such as the <a href="https://csrc.nist.gov/Projects/ssdf" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">NIST Secure Software Development Framework</a>.</p>
+
+  <h3 id="option-1-no-formal-controls" class="scroll-mt-32 text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif">Option 1: No Formal Controls</h3>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Direct Answer:</strong> Some teams let the agent work directly against the main branch with normal developer access and rely on existing code review to catch problems. It is the fastest way to start, and the easiest way to end up with an unreviewed vulnerability or a leaked key in production.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Pros:</strong> fastest to start, no new tooling needed. <strong class="text-white font-black">Cons:</strong> relies entirely on human reviewers to catch AI-specific risks they were not trained to look for. <strong class="text-white font-black">Best for:</strong> small, low-risk personal or internal projects with no sensitive data.</p>
+
+  <h3 id="option-2-controls-added-after-an-incident" class="scroll-mt-32 text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif">Option 2: Controls Added After an Incident</h3>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Direct Answer:</strong> Many teams add scanning, permission limits, or approval steps only after a near-miss or an actual leak. This fixes the specific gap that was exposed, but it is reactive, and it usually leaves other gaps in place until they also cause a problem.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Pros:</strong> targeted fix for a known gap, can be implemented quickly. <strong class="text-white font-black">Cons:</strong> reactive by nature, and other untested gaps remain open. <strong class="text-white font-black">Best for:</strong> teams in the middle of a migration who need an immediate, narrow fix.</p>
+
+  <h3 id="option-3-a-guarded-workflow-designed-in-from-the-start" class="scroll-mt-32 text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif">Option 3: A Guarded Workflow Designed In From the Start</h3>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Direct Answer:</strong> A guarded workflow scopes every agent task narrowly, runs it in an isolated environment with least-privilege access, scans for secrets and vulnerabilities automatically, enforces policy checks on sensitive actions, and requires human approval before anything reaches production. It takes more setup time, but it is the only option built to catch problems before release rather than after.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Pros:</strong> catches issues before production, auditable, scales safely as agent use grows. <strong class="text-white font-black">Cons:</strong> needs upfront design and ongoing maintenance. <strong class="text-white font-black">Best for:</strong> any team giving an agent access to a shared repository, cloud credentials, or customer-facing systems.</p>
+
+  <h3 id="comparison-table" class="scroll-mt-32 text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif">Comparison Table</h3>
+<div class="overflow-x-auto my-8">
+  <table class="w-full text-left border-collapse border border-zinc-800 rounded-xl overflow-hidden">
+  <thead>
+  <tr><th class="bg-zinc-900 text-white font-bold uppercase text-xs p-4 border border-zinc-800">Factor</th><th class="bg-zinc-900 text-white font-bold uppercase text-xs p-4 border border-zinc-800">No Formal Controls</th><th class="bg-zinc-900 text-white font-bold uppercase text-xs p-4 border border-zinc-800">Controls After an Incident</th><th class="bg-zinc-900 text-white font-bold uppercase text-xs p-4 border border-zinc-800">AbuQitmirLabs Guarded Workflow</th></tr>
+</thead>
+
+  <tbody>
+  <tr><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">When risk is caught</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">After release, if at all</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">After the first incident</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Before merge and before production</td></tr>
+
+  <tr><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Setup effort</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">None</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Low, but repeated</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Moderate, one time</td></tr>
+
+  <tr><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Secret leak protection</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">None</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Partial</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Automated scanning on every commit</td></tr>
+
+  <tr><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Audit trail</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Weak or none</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Inconsistent</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Logged tool calls and approvals</td></tr>
+
+  <tr><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Best for</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Low-risk personal projects</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Mid-migration quick fixes</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Shared repos, cloud access, production systems</td></tr>
+</tbody>
+</table>
+</div>
+  <hr class="border-zinc-800 my-10"/>
+  <h2 id="the-abuqitmirlabs-recommended-approach" class="scroll-mt-32 text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3">The AbuQitmirLabs Recommended Approach</h2>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Direct Answer:</strong> AbuQitmirLabs recommends a guarded agentic workflow built around five layers: scoped tasks, isolated execution, automated verification, policy enforcement, and human approval for anything sensitive. We design this into the repository and pipeline before the agent is given access, not after.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">At AbuQitmirLabs, we start every AI coding agent engagement by mapping which repositories, credentials, and systems the agent will touch, then designing access around the smallest footprint that still lets it do useful work.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">The approach has three phases:</p>
+
+  <ol class="list-decimal list-inside space-y-2 text-zinc-300 my-6 pl-2">
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Scope and isolate.</strong> Define narrow, written task boundaries, run the agent in a sandbox on a temporary branch, and issue short-lived, limited credentials instead of standing access.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Verify automatically.</strong> Run the existing test suite plus security-focused tests, dependency checks, <a href="https://owasp.org/www-project-top-ten/" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">OWASP Top 10</a> SAST rules, and secret scanning on every change before it is eligible for review.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Govern and approve.</strong> Align release gates with the <a href="https://csrc.nist.gov/Projects/ssdf" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">NIST Secure Software Development Framework</a>, check proposed actions against policy rules outside the agent&#x27;s own prompt, and require a named human to approve anything touching production, billing, authentication, or customer data.</li>
+</ol>
+
+  <h3 id="sample-agent-permission-matrix" class="scroll-mt-32 text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif">Sample Agent Permission Matrix</h3>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">Before enabling any coding agent on a repository, write down explicit boundaries that the repository host and CI runner enforce outside the prompt:</p>
+<div class="overflow-x-auto my-8">
+  <table class="w-full text-left border-collapse border border-zinc-800 rounded-xl overflow-hidden">
+  <thead>
+  <tr><th class="bg-zinc-900 text-white font-bold uppercase text-xs p-4 border border-zinc-800">Action</th><th class="bg-zinc-900 text-white font-bold uppercase text-xs p-4 border border-zinc-800">Default</th><th class="bg-zinc-900 text-white font-bold uppercase text-xs p-4 border border-zinc-800">Approval</th></tr>
+</thead>
+
+  <tbody>
+  <tr><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Read source files</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Allowed</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">None</td></tr>
+
+  <tr><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Edit feature branch</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Allowed</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Automated checks</td></tr>
+
+  <tr><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Read production secrets</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Denied</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Not permitted for agents</td></tr>
+
+  <tr><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Change authentication code</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Restricted</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Security/senior engineer approval</td></tr>
+
+  <tr><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Deploy to production</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Denied</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Human release approval</td></tr>
+
+  <tr><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Modify branch protection</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Denied</td><td class="p-4 border border-zinc-800/80 text-zinc-300 text-sm bg-zinc-950/50">Admin-only</td></tr>
+</tbody>
+</table>
+</div>
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">For teams building or hardening an agentic workflow, see our <a class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer" href="/ai-agent-development" data-discover="true">AI agent development services</a>. For broader platform work alongside it, see our <a class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer" href="/custom-software" data-discover="true">custom software development services</a>. If you want a starting benchmark for how ready your systems and data are for AI agents, try our <a class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer" href="/tools/ai-readiness-score" data-discover="true">free AI Readiness Score tool</a>.</p>
+
+  <hr class="border-zinc-800 my-10"/>
+  <h2 id="cost-what-actually-drives-it" class="scroll-mt-32 text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3">Cost: What Actually Drives It</h2>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Direct Answer:</strong> The cost of securing an AI coding agent workflow depends on the number of tools and systems it touches, the sensitivity of the data involved, and how much existing testing and access control the team already has. This guide does not publish fixed prices, because a rough number without your scope would not be honest. Ask for an itemised quote that separates each part below.</p>
+
+  <ul class="list-disc list-inside space-y-2 text-zinc-300 my-6 pl-2">
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Scoping and access design:</strong> mapping repositories, credentials, and the permissions the agent actually needs.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Tooling:</strong> secret scanning, dependency checks, and security-focused test additions.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Policy and approval layer:</strong> the independent check that runs before sensitive actions execute.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Observability:</strong> logging, monitoring, and audit trails for what the agent did and who approved it.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Ongoing review:</strong> periodic access reviews and policy updates as the agent takes on new kinds of tasks.</li>
+</ul>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">Teams with strong existing tests and clear code ownership typically need less setup work than teams starting from an undocumented codebase. <a class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer" href="/contact" data-discover="true">Request a scoped quote</a> and we will tell you plainly where your cost will actually go.</p>
+
+  <hr class="border-zinc-800 my-10"/>
+  <h2 id="illustrative-composite-example-a-repository-audit-before-production-access" class="scroll-mt-32 text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3">Illustrative Composite Example: A Repository Audit Before Production Access</h2>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">The following is an illustrative composite scenario based on recurring implementation patterns. It is not a named client case study and should not be read as an independently verified project result.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Scenario:</strong> A growing software team lets an AI coding agent push directly to a shared development branch with broad repository access to save review time during a product sprint.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Intervention:</strong> During a pre-production repository audit, the engineering lead restricts the agent to an isolated temporary branch with short-lived, task-scoped tokens, enables automated secret scanning and dependency vulnerability checks in CI, and configures <code class="inline-code">CODEOWNERS</code> so any change touching authentication or payment modules requires manual approval from a senior engineer.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Outcome:</strong> Before any code ships to production, the automated pipeline flags a hardcoded API test key in a generated config file and an outdated package with a known CVE. Feature delivery continues on scoped branches, while secret scanning, policy gates, and human approval run automatically on every pull request.</p>
+
+  <hr class="border-zinc-800 my-10"/>
+  <h2 id="step-by-step-building-a-secure-agentic-workflow" class="scroll-mt-32 text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3">Step-by-Step: Building a Secure Agentic Workflow</h2>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Direct Answer:</strong> A practical rollout has ten steps, starting with scope and ending with a regular access review. Each step produces something concrete, such as a written rule, a sandbox, or a CI policy gate, so you can verify the workflow is enforced rather than assumed.</p>
+
+  <ol class="list-decimal list-inside space-y-2 text-zinc-300 my-6 pl-2">
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Write the task boundary.</strong> Before the agent starts, define exactly what it is allowed to change, what it must not touch, and what tests must pass.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Create an isolated workspace.</strong> Run the agent in a sandbox or container on a temporary branch, separate from production code and data.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Issue scoped, short-lived credentials.</strong> Give the agent its own identity with the minimum permissions needed for the current task, and expire access when the task ends.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Run the existing test suite.</strong> A passing test suite checks correctness, not security, so treat it as the first gate, not the only one.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Add security-focused tests.</strong> Write tests for authorization checks, input validation, and known <a href="https://owasp.org/www-project-top-ten/" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">OWASP Top 10</a> failure cases the existing suite does not cover.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Scan for secrets on every change.</strong> Run automated secret detection before any commit can be merged, not as a periodic sweep.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Scan dependencies.</strong> Check every new or updated package against known vulnerability databases before it is accepted.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Check actions against policy rules.</strong> Validate proposed tool calls and file changes against business rules in a layer the agent cannot edit or bypass.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Require human approval for sensitive changes.</strong> Route anything touching production, authentication, payments, or customer data to a named reviewer before deployment.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><strong class="text-white font-black">Log and review regularly.</strong> Keep an audit trail of what the agent did, who approved it, and review access and policy rules on a fixed schedule.</li>
+</ol>
+
+  <h3 id="example-ci-gate-automated-secret-scanning-and-protected-path-review" class="scroll-mt-32 text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif">Example CI Gate: Automated Secret Scanning and Protected-Path Review</h3>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">Below is a practical GitHub Actions workflow that enforces secret scanning, dependency auditing, and a protected-path policy check before any agent-opened pull request can merge:</p>
+<pre class="bg-[#050507] border border-zinc-800 rounded-2xl p-6 overflow-x-auto text-zinc-200 font-mono text-sm my-8 shadow-inner"><code class="language-yaml">name: Agent PR Security Gate
+
+on:
+  pull_request:
+    branches: [main, staging]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  secret-and-dependency-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Scan commits for leaked secrets
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Audit dependencies for known vulnerabilities
+        run: npm audit --audit-level=high
+
+      - name: Fail if agent PR modifies protected files without label
+        run: |
+          CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
+          if echo &quot;$CHANGED&quot; | grep -qE &#x27;^(src/auth/|src/payments/|\.github/workflows/)&#x27;; then
+            echo &quot;Protected path modified - senior engineer CODEOWNERS approval required.&quot;
+          fi</code></pre>
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">Pair that workflow with branch protection and a <code class="inline-code">.github/CODEOWNERS</code> file so the agent cannot bypass human sign-off on sensitive directories:</p>
+<pre class="bg-[#050507] border border-zinc-800 rounded-2xl p-6 overflow-x-auto text-zinc-200 font-mono text-sm my-8 shadow-inner"><code class="language-text"># Enforce named human approval outside the agent prompt
+/src/auth/        @security-lead
+/src/payments/    @lead-systems-architect
+/.github/         @platform-admins</code></pre>
+  <hr class="border-zinc-800 my-10"/>
+  <h2 id="common-mistakes-when-using-ai-coding-agents" class="scroll-mt-32 text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3">Common Mistakes When Using AI Coding Agents</h2>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Direct Answer:</strong> The costliest mistakes happen before a single line of code is reviewed. Teams give agents standing production access too early, treat a passing test suite as proof of security, merge oversized pull requests, and assume a written prompt is the same thing as a control.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Mistake 1: Giving production access too early.</strong> Broad access magnifies the impact of one wrong decision. Start in a sandbox with scoped, temporary credentials.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Mistake 2: Writing vague task instructions.</strong> A vague task creates unpredictable scope. Define what must change, what must not, and which tests must pass before the agent starts.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Mistake 3: Trusting a passing test suite.</strong> Existing tests may not cover authorization, abuse cases, or failure recovery. Add security-focused tests separately.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Mistake 4: Merging large, generated pull requests.</strong> Large diffs slow review and hide the one line that matters. Ask the agent for small, focused changes.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Mistake 5: Scanning only for obviously formatted secrets.</strong> Real credentials do not always match a known pattern. Combine pattern-based scanning with context-aware checks and prompt rotation when something is found.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Mistake 6: Putting all governance inside the prompt.</strong> A prompt can be ignored or misread, or influenced by content the agent reads while working. Add a policy check outside the agent&#x27;s own instructions.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Mistake 7: Letting an agent change its own controls.</strong> Branch protection, approval rules, and audit settings should require separate human authorization to change.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Mistake 8: Skipping observability.</strong> A deployment that passes every test can still fail in production. Connect logs, metrics, and release history to the workflow.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Mistake 9: Treating a vendor benchmark as your own result.</strong> A reported productivity or security number reflects specific conditions. Test the agent against your own repository and risk profile before trusting the claim.</p>
+
+  <hr class="border-zinc-800 my-10"/>
+  <h2 id="faq-ai-coding-agents-and-secure-agentic-software-development" class="scroll-mt-32 text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3">FAQ: AI Coding Agents and Secure Agentic Software Development</h2>
+
+  <h3 id="what-are-ai-coding-agents" class="scroll-mt-32 text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif">What are AI coding agents?</h3>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">AI coding agents are tools that plan a development task, read a repository, edit files, run commands, write tests, and prepare a pull request on their own. They work across many steps, not just one suggested line of code, which is why they need more oversight than a simple autocomplete tool.</p>
+
+  <h3 id="is-ai-generated-code-actually-less-secure" class="scroll-mt-32 text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif">Is AI-generated code actually less secure?</h3>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">Independent testing shows clear security gaps. Veracode&#x27;s 2025 GenAI Code Security Report found that 45% of AI-generated code samples failed security tests and introduced OWASP Top 10 vulnerabilities, including a 43% failure rate in JavaScript and an 86% failure rate on XSS-relevant samples. Security performance also remained broadly flat across newer and larger models.</p>
+
+  <h3 id="how-long-does-secure-agentic-software-development-take" class="scroll-mt-32 text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif">How long does secure agentic software development take?</h3>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">A focused pilot with scoped tasks and basic guardrails usually takes four to eight weeks. A production-grade workflow with policy controls, audit logs, and monitored deployment typically takes eight to sixteen weeks, depending on the number of tools and systems the agent needs to touch.</p>
+
+  <h3 id="do-ai-coding-agents-leak-secrets-and-credentials" class="scroll-mt-32 text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif">Do AI coding agents leak secrets and credentials?</h3>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">Yes, in measured coding-agent workflows. GitGuardian&#x27;s 2026 State of Secrets Sprawl report found that Claude Code co-authored commits leaked secrets at approximately twice the baseline rate, alongside an 81% year-over-year increase in exposed AI-service secrets. Automated secret scanning in the commit pipeline is now a baseline requirement, not an optional extra.</p>
+
+  <h3 id="who-needs-a-guarded-ai-coding-agent-workflow" class="scroll-mt-32 text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif">Who needs a guarded AI coding agent workflow?</h3>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">Product companies, software agencies, and internal engineering teams that let an agent touch a shared repository, cloud credentials, or production systems need one. Teams with strong existing tests, clear code ownership, and documented review processes gain value from agents faster and more safely than teams without them.</p>
+
+  <h3 id="what-are-the-main-security-risks-of-ai-coding-agents" class="scroll-mt-32 text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif">What are the main security risks of AI coding agents?</h3>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">The main risks are vulnerable code shipped without review, leaked credentials and API keys, excessive tool or system access, prompt injection from untrusted content, unapproved file changes, and risky dependencies suggested by the agent. Each risk has a specific, testable control rather than a single catch-all fix.</p>
+
+  <h3 id="how-can-a-company-secure-an-ai-coding-agent" class="scroll-mt-32 text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif">How can a company secure an AI coding agent?</h3>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">A company can secure an AI coding agent by scoping each task narrowly, running it in an isolated workspace on a temporary branch, giving it the smallest set of permissions it needs, scanning for secrets and vulnerabilities before merge, enforcing policy checks on sensitive actions, and requiring human approval before anything reaches production.</p>
+
+  <h3 id="are-ai-coding-agents-worth-the-risk-for-a-small-team" class="scroll-mt-32 text-xl md:text-2xl font-bold text-white mt-8 mb-3 uppercase tracking-tight font-serif">Are AI coding agents worth the risk for a small team?</h3>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">For most small teams, yes, if the guardrails are scaled to the risk. A solo founder working on a low-risk internal tool needs lighter controls than a team shipping to paying customers. The core steps, scoping, scanning, and human approval for sensitive changes, still apply either way, just at a smaller scale.</p>
+
+  <hr class="border-zinc-800 my-10"/>
+  <h2 id="conclusion" class="scroll-mt-32 text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3">Conclusion</h2>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">AI coding agents can genuinely reduce repetitive engineering work, but independent data is clear that their output is not safe by default. Veracode&#x27;s 2025 GenAI Code Security Report found 45% of AI-generated code samples failed security tests, and GitGuardian&#x27;s 2026 report found Claude Code co-authored commits leaked secrets at roughly twice the baseline rate. Those are not reasons to avoid agents. They are reasons to build the workflow around them properly.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">The recommended approach is a guarded workflow: scoped tasks, isolated execution, automated scanning, policy enforcement, and human approval for anything sensitive, so the agent&#x27;s speed does not outrun your ability to verify its work.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">This approach suits founders, product teams, software agencies, and technology leaders who want faster delivery without removing engineering judgment from high-impact decisions.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">If you want help designing a secure AI-assisted development workflow, our team at AbuQitmirLabs is ready to help. <a class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer" href="/contact" data-discover="true">Book a consultation</a> and we will review your repository, tools, and delivery goals, and tell you plainly what a secure rollout would actually involve.</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans">Read more practical guides on the <a class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer" href="/blog" data-discover="true">AbuQitmirLabs software development blog</a>, or see verified delivery outcomes on our <a class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer" href="/case-studies/tajweedpage" data-discover="true">TajweedPage case study</a> and <a class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer" href="/case-studies" data-discover="true">case studies page</a>.</p>
+
+  <hr class="border-zinc-800 my-10"/>
+  <h2 id="sources" class="scroll-mt-32 text-2xl md:text-3xl font-black text-[#ccff00] uppercase tracking-tight mt-10 mb-4 font-serif border-b border-zinc-800/60 pb-3">Sources</h2>
+
+  <ul class="list-disc list-inside space-y-2 text-zinc-300 my-6 pl-2">
+  <li class="text-zinc-300 leading-relaxed mb-1"><a href="https://www.veracode.com/blog/genai-code-security-report/" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">Veracode GenAI Code Security Report</a></li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><a href="https://www.gitguardian.com/state-of-secrets-sprawl-report-2026" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">GitGuardian State of Secrets Sprawl 2026</a></li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><a href="https://www.verizon.com/business/resources/reports/dbir/" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">Verizon 2026 Data Breach Investigations Report</a></li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><a href="https://owasp.org/www-project-top-ten/" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">OWASP Top 10</a></li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><a href="https://csrc.nist.gov/Projects/ssdf" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer">NIST Secure Software Development Framework</a></li>
+</ul>
+
+  <hr class="border-zinc-800 my-10"/>
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Author:</strong> Abu Qitmir Mohammad Shiraz Al-Madani, Founder &amp; Lead Systems Architect, AbuQitmirLabs</p>
+
+  <p class="text-zinc-300 text-base md:text-lg leading-relaxed mb-6 font-sans"><strong class="text-white font-black">Related guides for Pakistan, US and Gulf technology teams:</strong></p>
+
+  <ul class="list-disc list-inside space-y-2 text-zinc-300 my-6 pl-2">
+  <li class="text-zinc-300 leading-relaxed mb-1"><a rel="noopener noreferrer" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer" href="/blog/ai-readiness-uae-gcc" target="_blank" data-discover="true">GCC AI Readiness Gap: Why 64% of UAE IT Leaders Worry</a> - the same governance discipline this guide applies to AI coding agents, applied to AI agents reading your business data.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><a rel="noopener noreferrer" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer" href="/blog/kuwait-digital-transformation" target="_blank" data-discover="true">Software Development Kuwait: Offshore Partner Guide 2026</a> - how to evaluate a development partner&#x27;s security and access controls before they touch your systems.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><a rel="noopener noreferrer" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer" href="/blog/custom-software-development-qatar" target="_blank" data-discover="true">Custom Software Development Qatar: Data Protection Laws</a> - why data access and hosting decisions have to be settled before any code, AI-written or not, ships to production.</li>
+
+  <li class="text-zinc-300 leading-relaxed mb-1"><a rel="noopener noreferrer" class="text-[#ccff00] font-bold underline underline-offset-4 hover:text-lime-300 transition-colors cursor-pointer" href="/blog/inventory-management-software-saudi-arabia" target="_blank" data-discover="true">Inventory Management Software Saudi Arabia</a> - a requirements-led buying method you can reuse when evaluating any software tool, including AI coding agent platforms.</li>
+</ul>
+</div>
+  <nav aria-label="Table of Contents" data-testid="table-of-contents" class="xl:sticky xl:top-32 xl:order-2"><div class="xl:hidden mb-8 bg-[#0b0b0e] border border-zinc-800/80 rounded-2xl overflow-hidden"><button type="button" aria-expanded="false" class="w-full flex items-center justify-between px-6 py-4 text-left text-sm font-semibold text-white hover:text-[#ccff00] transition-colors"><span class="flex items-center gap-2.5"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list text-[#ccff00]" aria-hidden="true"><path d="M3 5h.01"></path><path d="M3 12h.01"></path><path d="M3 19h.01"></path><path d="M8 5h13"></path><path d="M8 12h13"></path><path d="M8 19h13"></path></svg><span>On This Page (<!-- -->14<!-- --> sections)</span></span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down text-zinc-400" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="hidden xl:block bg-[#0b0b0e] border border-zinc-800/80 rounded-3xl p-6 shadow-xl"><div class="flex items-center gap-2.5 pb-4 mb-4 border-b border-zinc-800/80"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list text-[#ccff00] shrink-0" aria-hidden="true"><path d="M3 5h.01"></path><path d="M3 12h.01"></path><path d="M3 19h.01"></path><path d="M8 5h13"></path><path d="M8 12h13"></path><path d="M8 19h13"></path></svg><span class="text-xs font-mono font-bold tracking-wider text-zinc-200">On This Page</span></div>
+  <ol class="space-y-2 max-h-[calc(100vh-14rem)] overflow-y-auto pr-1">
+  <li><button type="button" aria-current="location" class="w-full text-left group flex items-baseline gap-2.5 py-1.5 px-2.5 rounded-lg text-xs leading-relaxed transition-all cursor-pointer bg-[#ccff00]/10 text-[#ccff00] font-semibold"><span class="font-mono text-[11px] tabular-nums shrink-0 transition-colors text-[#ccff00]">01</span><span class="line-clamp-2">Why 45% of AI-Generated Code Still Fails Security Tests, and How to Fix It</span></button></li>
+
+  <li><button type="button" class="w-full text-left group flex items-baseline gap-2.5 py-1.5 px-2.5 rounded-lg text-xs leading-relaxed transition-all cursor-pointer text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.03]"><span class="font-mono text-[11px] tabular-nums shrink-0 transition-colors text-zinc-600 group-hover:text-zinc-400">02</span><span class="line-clamp-2">Key Definitions: AI Coding Agent, Agentic Workflow, Least Privilege, Secrets Sprawl</span></button></li>
+
+  <li><button type="button" class="w-full text-left group flex items-baseline gap-2.5 py-1.5 px-2.5 rounded-lg text-xs leading-relaxed transition-all cursor-pointer text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.03]"><span class="font-mono text-[11px] tabular-nums shrink-0 transition-colors text-zinc-600 group-hover:text-zinc-400">03</span><span class="line-clamp-2">The Problem: Speed Without a Safety Check</span></button></li>
+
+  <li><button type="button" class="w-full text-left group flex items-baseline gap-2.5 py-1.5 px-2.5 rounded-lg text-xs leading-relaxed transition-all cursor-pointer text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.03]"><span class="font-mono text-[11px] tabular-nums shrink-0 transition-colors text-zinc-600 group-hover:text-zinc-400">04</span><span class="line-clamp-2">Why This Problem Happens</span></button></li>
+
+  <li><button type="button" class="w-full text-left group flex items-baseline gap-2.5 py-1.5 px-2.5 rounded-lg text-xs leading-relaxed transition-all cursor-pointer text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.03]"><span class="font-mono text-[11px] tabular-nums shrink-0 transition-colors text-zinc-600 group-hover:text-zinc-400">05</span><span class="line-clamp-2">What the Research Data Actually Shows</span></button></li>
+
+  <li><button type="button" class="w-full text-left group flex items-baseline gap-2.5 py-1.5 px-2.5 rounded-lg text-xs leading-relaxed transition-all cursor-pointer text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.03]"><span class="font-mono text-[11px] tabular-nums shrink-0 transition-colors text-zinc-600 group-hover:text-zinc-400">06</span><span class="line-clamp-2">Three Ways to Manage AI Coding Agent Risk</span></button></li>
+
+  <li><button type="button" class="w-full text-left group flex items-baseline gap-2.5 py-1.5 px-2.5 rounded-lg text-xs leading-relaxed transition-all cursor-pointer text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.03]"><span class="font-mono text-[11px] tabular-nums shrink-0 transition-colors text-zinc-600 group-hover:text-zinc-400">07</span><span class="line-clamp-2">The AbuQitmirLabs Recommended Approach</span></button></li>
+
+  <li><button type="button" class="w-full text-left group flex items-baseline gap-2.5 py-1.5 px-2.5 rounded-lg text-xs leading-relaxed transition-all cursor-pointer text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.03]"><span class="font-mono text-[11px] tabular-nums shrink-0 transition-colors text-zinc-600 group-hover:text-zinc-400">08</span><span class="line-clamp-2">Cost: What Actually Drives It</span></button></li>
+
+  <li><button type="button" class="w-full text-left group flex items-baseline gap-2.5 py-1.5 px-2.5 rounded-lg text-xs leading-relaxed transition-all cursor-pointer text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.03]"><span class="font-mono text-[11px] tabular-nums shrink-0 transition-colors text-zinc-600 group-hover:text-zinc-400">09</span><span class="line-clamp-2">Illustrative Composite Example: A Repository Audit Before Production Access</span></button></li>
+
+  <li><button type="button" class="w-full text-left group flex items-baseline gap-2.5 py-1.5 px-2.5 rounded-lg text-xs leading-relaxed transition-all cursor-pointer text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.03]"><span class="font-mono text-[11px] tabular-nums shrink-0 transition-colors text-zinc-600 group-hover:text-zinc-400">10</span><span class="line-clamp-2">Step-by-Step: Building a Secure Agentic Workflow</span></button></li>
+
+  <li><button type="button" class="w-full text-left group flex items-baseline gap-2.5 py-1.5 px-2.5 rounded-lg text-xs leading-relaxed transition-all cursor-pointer text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.03]"><span class="font-mono text-[11px] tabular-nums shrink-0 transition-colors text-zinc-600 group-hover:text-zinc-400">11</span><span class="line-clamp-2">Common Mistakes When Using AI Coding Agents</span></button></li>
+
+  <li><button type="button" class="w-full text-left group flex items-baseline gap-2.5 py-1.5 px-2.5 rounded-lg text-xs leading-relaxed transition-all cursor-pointer text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.03]"><span class="font-mono text-[11px] tabular-nums shrink-0 transition-colors text-zinc-600 group-hover:text-zinc-400">12</span><span class="line-clamp-2">FAQ: AI Coding Agents and Secure Agentic Software Development</span></button></li>
+
+  <li><button type="button" class="w-full text-left group flex items-baseline gap-2.5 py-1.5 px-2.5 rounded-lg text-xs leading-relaxed transition-all cursor-pointer text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.03]"><span class="font-mono text-[11px] tabular-nums shrink-0 transition-colors text-zinc-600 group-hover:text-zinc-400">13</span><span class="line-clamp-2">Conclusion</span></button></li>
+
+  <li><button type="button" class="w-full text-left group flex items-baseline gap-2.5 py-1.5 px-2.5 rounded-lg text-xs leading-relaxed transition-all cursor-pointer text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.03]"><span class="font-mono text-[11px] tabular-nums shrink-0 transition-colors text-zinc-600 group-hover:text-zinc-400">14</span><span class="line-clamp-2">Sources</span></button></li>
+</ol>
+</div></nav>
+</div>
+  <aside aria-label="About the Author" class="mt-16 pt-10 border-t border-zinc-800/80"><div class="bg-[#0b0b0e] border border-zinc-800/80 rounded-[2.5rem] p-10 flex flex-col md:flex-row items-center gap-10 shadow-xl"><div class="h-24 w-24 bg-zinc-900 rounded-3xl overflow-hidden shrink-0 shadow-lg border-2 border-[#ccff00]/40"><img src="/images/blog-covers/author-abuqitmir-shiraz-d52b64bc.webp" alt="Abu Qitmir Mohammad Shiraz Al-Madani - Founder &amp; Lead Systems Architect at AbuQitmirLabs" class="w-full h-full object-cover object-top" width="96" height="96" loading="lazy" decoding="async" referrerPolicy="no-referrer"/></div><div><div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono text-[#ccff00] uppercase tracking-widest font-bold">About the Author</span></div><div class="text-2xl font-black text-white mb-2 uppercase tracking-tight font-serif"><a class="hover:text-[#ccff00] transition-colors" href="/about/our-team" data-discover="true">Abu Qitmir Mohammad Shiraz Al-Madani</a></div>
+  <p class="text-zinc-300 text-sm leading-relaxed max-w-2xl mb-4">Founder &amp; Lead Systems Architect at AbuQitmirLabs (founded 2021 in Karachi; M.B.A. Commerce, University of Karachi). Has delivered 410+ custom web, branding, AI agent, and technical SEO systems across 350+ clients in Pakistan, the GCC, the UK, and the US—with 98% client retention.</p>
+<div class="flex flex-wrap gap-4 text-xs font-mono"><a class="text-[#ccff00] hover:underline font-bold" href="/about/our-team" data-discover="true">Author &amp; Engineering Team Profile →</a><a href="https://www.linkedin.com/in/abu-qitmir-697423390/" target="_blank" rel="noopener noreferrer" class="text-zinc-300 hover:text-[#ccff00] underline">LinkedIn Profile</a><a class="text-zinc-400 hover:text-white underline" href="/about" data-discover="true">About AbuQitmirLabs</a><a class="text-zinc-400 hover:text-white underline" href="/editorial-policy" data-discover="true">Editorial Policy</a></div></div></div></aside>
+
+  <section aria-label="Related Articles" data-testid="related-articles-section" class="mt-16 pt-10 border-t border-zinc-800/80">
+  <h2 class="mb-8 text-2xl md:text-3xl font-black text-white uppercase tracking-tight font-serif">Related Articles</h2>
+
+  <ul class="grid grid-cols-1 md:grid-cols-3 gap-6 list-none p-0 m-0">
+  <li class="group bg-[#0b0b0e] border border-zinc-800/80 hover:border-[#ccff00]/50 rounded-[2rem] p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-xl"><div><div class="flex items-center justify-between gap-2 mb-4"><span class="inline-block px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] text-[10px] font-mono font-bold uppercase tracking-wider">AI</span><span class="flex items-center gap-1 text-[11px] font-mono text-zinc-400"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock text-[#ccff00]" aria-hidden="true"><path d="M12 6v6l4 2"></path><circle cx="12" cy="12" r="10"></circle></svg>8 min read</span></div>
+  <h3 class="text-lg font-black text-white group-hover:text-[#ccff00] transition-colors leading-snug mb-3 font-serif uppercase tracking-tight line-clamp-3"><a data-testid="related-article-link" class="hover:text-[#ccff00] transition-colors" href="/blog/how-much-does-custom-software-development-cost-in-2026" data-discover="true">How Much Does Custom Software Development Cost in 2026?</a></h3>
+
+  <p class="text-zinc-400 text-xs leading-relaxed line-clamp-3 mb-6 font-sans">Complete guide to custom software development pricing in 2026 including software budgets, AI systems, automation software costs, SaaS vs custom software, and scalable business platforms.</p>
+</div><div class="pt-4 border-t border-zinc-800/60 flex items-center justify-between text-xs font-mono font-bold uppercase tracking-wider text-zinc-300 group-hover:text-[#ccff00] transition-colors"><a class="inline-flex items-center justify-between w-full text-zinc-300 group-hover:text-[#ccff00] transition-colors" href="/blog/how-much-does-custom-software-development-cost-in-2026" data-discover="true"><span>Read Article</span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right group-hover:translate-x-1 transition-transform text-[#ccff00]" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div></li>
+
+  <li class="group bg-[#0b0b0e] border border-zinc-800/80 hover:border-[#ccff00]/50 rounded-[2rem] p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-xl"><div><div class="flex items-center justify-between gap-2 mb-4"><span class="inline-block px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] text-[10px] font-mono font-bold uppercase tracking-wider">AI</span><span class="flex items-center gap-1 text-[11px] font-mono text-zinc-400"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock text-[#ccff00]" aria-hidden="true"><path d="M12 6v6l4 2"></path><circle cx="12" cy="12" r="10"></circle></svg>14 min read</span></div>
+  <h3 class="text-lg font-black text-white group-hover:text-[#ccff00] transition-colors leading-snug mb-3 font-serif uppercase tracking-tight line-clamp-3"><a data-testid="related-article-link" class="hover:text-[#ccff00] transition-colors" href="/blog/how-ai-is-transforming-enterprise-software-in-2026-custom-ai-solutions-autonomous-agents" data-discover="true">How AI is Transforming Enterprise Software in 2026</a></h3>
+
+  <p class="text-zinc-400 text-xs leading-relaxed line-clamp-3 mb-6 font-sans">There is a particular kind of business leader who has already tried the obvious AI options - a chatbot wrapper that couldn&#x27;t answer anything beyond the script, a generic model that hallucinated company data, an off-the-shelf solution that almost worked but couldn&#x27;t be trained on proprietary information. This is what happens when AI stops being a novelty and starts becoming genuine operational intelligence.</p>
+</div><div class="pt-4 border-t border-zinc-800/60 flex items-center justify-between text-xs font-mono font-bold uppercase tracking-wider text-zinc-300 group-hover:text-[#ccff00] transition-colors"><a class="inline-flex items-center justify-between w-full text-zinc-300 group-hover:text-[#ccff00] transition-colors" href="/blog/how-ai-is-transforming-enterprise-software-in-2026-custom-ai-solutions-autonomous-agents" data-discover="true"><span>Read Article</span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right group-hover:translate-x-1 transition-transform text-[#ccff00]" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div></li>
+
+  <li class="group bg-[#0b0b0e] border border-zinc-800/80 hover:border-[#ccff00]/50 rounded-[2rem] p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-xl"><div><div class="flex items-center justify-between gap-2 mb-4"><span class="inline-block px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] text-[10px] font-mono font-bold uppercase tracking-wider">AI</span><span class="flex items-center gap-1 text-[11px] font-mono text-zinc-400"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock text-[#ccff00]" aria-hidden="true"><path d="M12 6v6l4 2"></path><circle cx="12" cy="12" r="10"></circle></svg>15 min read</span></div>
+  <h3 class="text-lg font-black text-white group-hover:text-[#ccff00] transition-colors leading-snug mb-3 font-serif uppercase tracking-tight line-clamp-3"><a data-testid="related-article-link" class="hover:text-[#ccff00] transition-colors" href="/blog/ai-agents-cost-benefit-analysis" data-discover="true">AI Agents Cost Benefit Analysis: 2026 Guide</a></h3>
+
+  <p class="text-zinc-400 text-xs leading-relaxed line-clamp-3 mb-6 font-sans">Every AI agent demo looks impressive. The invoice tells a different story. A 7-question framework to know when AI agents actually save money and when they don&#x27;t.</p>
+</div><div class="pt-4 border-t border-zinc-800/60 flex items-center justify-between text-xs font-mono font-bold uppercase tracking-wider text-zinc-300 group-hover:text-[#ccff00] transition-colors"><a class="inline-flex items-center justify-between w-full text-zinc-300 group-hover:text-[#ccff00] transition-colors" href="/blog/ai-agents-cost-benefit-analysis" data-discover="true"><span>Read Article</span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right group-hover:translate-x-1 transition-transform text-[#ccff00]" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div></li>
+</ul>
+<div class="mt-8 flex justify-end"><a class="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-zinc-400 hover:text-[#ccff00] transition-colors group" href="/blog" data-discover="true">View All Articles<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right group-hover:translate-x-1 transition-transform" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div></section>
+</article>
+</main>
+
+  <footer id="contact" role="contentinfo" aria-label="Site Footer" class="bg-[#ccff00] border-t-[6px] border-black w-full py-16 relative overflow-hidden text-black font-display"><div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10"><div class="text-center max-w-3xl mx-auto">
+  <p class="inline-block text-xs uppercase tracking-widest border-2 border-black rounded-full px-4 py-1 text-black font-black bg-white/20">Start Your Project Today.</p>
+
+  <h2 class="text-3xl md:text-5xl font-black text-black mt-4 tracking-tight">Ready to Build Your Next Software or AI System?</h2>
+
+  <p class="mt-4 text-base md:text-lg text-black font-medium leading-relaxed">Work with AbuQitmirLabs to build fast web apps, smart AI agents, and steady search traffic. Your first 30-minute technical call and site audit are free.</p>
+<div class="mt-6"><a class="inline-flex items-center gap-3 px-8 py-4 bg-black text-[#ccff00] font-black text-lg rounded-xl border-2 border-black uppercase hover:bg-white hover:text-black transition-all" href="/contact" data-discover="true">Start Your Project →</a></div></div><div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-14 pt-10 border-t-2 border-black text-xs font-bold leading-relaxed"><div class="space-y-3">
+  <h3 class="text-sm font-black text-black border-b-2 border-black pb-1.5 uppercase">Core Services</h3>
+
+  <ul class="space-y-2">
+  <li><a class="text-black hover:underline" href="/growth-engineering" data-discover="true">Growth Engineering.</a></li>
+
+  <li><a class="text-black hover:underline" href="/custom-software" data-discover="true">Custom Software Dev.</a></li>
+
+  <li><a class="text-black hover:underline" href="/mobile-app-development" data-discover="true">Mobile App Development.</a></li>
+
+  <li><a class="text-black hover:underline" href="/web-development" data-discover="true">Web Application Dev.</a></li>
+
+  <li><a class="text-black hover:underline" href="/ai-agent-development" data-discover="true">AI Agent Automation.</a></li>
+
+  <li><a class="text-black hover:underline" href="/ai-video-creation" data-discover="true">AI Video Creation.</a></li>
+
+  <li><a class="text-black hover:underline" href="/seo-mastery" data-discover="true">Technical SEO Mastery.</a></li>
+
+  <li><a class="text-black hover:underline" href="/guest-post-service" data-discover="true">Guest Post Service.</a></li>
+
+  <li><a class="text-black hover:underline" href="/brand-building" data-discover="true">Brand Building.</a></li>
+
+  <li><a class="text-black hover:underline" href="/skills-academy" data-discover="true">Skills Academy Course.</a></li>
+
+  <li><a class="text-black hover:underline" href="/graphics-design" data-discover="true">Graphics &amp; UI Design.</a></li>
+
+  <li><a class="text-black hover:underline" href="/content-writing" data-discover="true">Technical Content Writing.</a></li>
+</ul>
+</div><div class="space-y-3">
+  <h3 class="text-sm font-black text-black border-b-2 border-black pb-1.5 uppercase">Target Markets</h3>
+
+  <ul class="space-y-2">
+  <li><a class="text-black hover:underline" href="/us-market" data-discover="true">United States (US).</a></li>
+
+  <li><a class="text-black hover:underline" href="/uk-market" data-discover="true">United Kingdom (UK).</a></li>
+
+  <li><a class="text-black hover:underline" href="/saudi-arabia-market" data-discover="true">Saudi Arabia (KSA).</a></li>
+
+  <li><a class="text-black hover:underline" href="/uae-market" data-discover="true">United Arab Emirates (UAE).</a></li>
+
+  <li><a class="text-black hover:underline" href="/canada-market" data-discover="true">Canada (CA).</a></li>
+
+  <li><a class="text-black hover:underline" href="/australia-market" data-discover="true">Australia (AU).</a></li>
+
+  <li><a class="text-black hover:underline" href="/poland-market" data-discover="true">Poland (PL).</a></li>
+
+  <li><a class="text-black hover:underline" href="/pakistan-market" data-discover="true">Pakistan (PK).</a></li>
+</ul>
+</div><div class="space-y-3">
+  <h3 class="text-sm font-black text-black border-b-2 border-black pb-1.5 uppercase">Free Tools</h3>
+
+  <ul class="space-y-2">
+  <li><a class="text-black hover:underline" href="/tools" data-discover="true">All 6 Free Tools Hub.</a></li>
+
+  <li><a class="text-black hover:underline" href="/tools/project-cost-estimator" data-discover="true">Project Cost Estimator.</a></li>
+
+  <li><a class="text-black hover:underline" href="/tools/website-audit" data-discover="true">Website Audit Tool.</a></li>
+
+  <li><a class="text-black hover:underline" href="/tools/seo-checklist" data-discover="true">SEO Launch Checklist.</a></li>
+
+  <li><a class="text-black hover:underline" href="/tools/ai-readiness-score" data-discover="true">AI Readiness Score.</a></li>
+
+  <li><a class="text-black hover:underline" href="/tools/tech-stack-recommender" data-discover="true">Tech Stack Recommender.</a></li>
+
+  <li><a class="text-black hover:underline" href="/tools/website-authority-analyzer" data-discover="true">Website Authority Analyzer.</a></li>
+</ul>
+</div><div class="space-y-3">
+  <h3 class="text-sm font-black text-black border-b-2 border-black pb-1.5 uppercase">Company &amp; Legal</h3>
+
+  <ul class="space-y-2">
+  <li><a class="text-black hover:underline" href="/about/our-company" data-discover="true">About Our Studio.</a></li>
+
+  <li><a class="text-black hover:underline" href="/about/our-team" data-discover="true">Our Engineering Team.</a></li>
+
+  <li><a class="text-black hover:underline" href="/about/our-process" data-discover="true">Our 5-Step Process.</a></li>
+
+  <li><a class="text-black hover:underline" href="/editorial-policy" data-discover="true">Editorial Policy.</a></li>
+
+  <li><a class="text-black hover:underline" href="/privacy" data-discover="true">Privacy Policy.</a></li>
+
+  <li><a class="text-black hover:underline" href="/terms" data-discover="true">Terms of Service.</a></li>
+
+  <li><a class="text-black hover:underline" href="/blog" data-discover="true">Engineering Blog.</a></li>
+
+  <li><a class="text-black hover:underline" href="/case-studies" data-discover="true">Client Case Studies.</a></li>
+
+  <li><a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" class="text-black hover:underline">XML Sitemap.</a></li>
+</ul>
+</div><div class="space-y-3" itemScope="" itemType="https://schema.org/LocalBusiness"><span itemProp="name" class="hidden">AbuQitmirLabs</span>
+  <h3 class="text-sm font-black text-black border-b-2 border-black pb-1.5 uppercase">Headquarters</h3>
+
+  <p class="text-xs text-black" itemProp="address" itemScope="" itemType="https://schema.org/PostalAddress"><span itemProp="streetAddress">Shahrah-e-Faisal, PECHS</span>,<!-- --> <span itemProp="addressLocality">Karachi</span>,<!-- --> <span itemProp="postalCode">75400</span>,<!-- --> <span itemProp="addressCountry">Pakistan</span>.</p>
+
+  <p class="text-xs text-black">Phone: <span itemProp="telephone" class="font-black">+92 323 3260859</span>.</p>
+<div class="text-xs text-black">Email: <span class="font-mono font-black hover:underline" aria-label="Contact Email">hello<!-- -->@<!-- -->abuqitmirlabs.tech</span></div><div class="pt-2 flex flex-wrap gap-2 text-xs"><a href="https://www.linkedin.com/in/abu-qitmir-697423390/" target="_blank" rel="noopener noreferrer" class="underline font-black">LinkedIn</a><span>•</span><a href="https://clutch.co/profile/abuqitmirlabstech" target="_blank" rel="noopener noreferrer" class="underline font-black">Clutch</a><span>•</span><a href="https://www.goodfirms.co/company/abuqitmirlabs-tech" target="_blank" rel="noopener noreferrer" class="underline font-black">GoodFirms</a></div></div></div><div class="mt-10"><div class="border-4 border-black rounded-2xl bg-black/5 p-6 md:p-8 " aria-label="Footer Newsletter Subscription"><div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6"><div class="space-y-1.5 max-w-xl"><div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-black text-[#ccff00] font-mono font-black text-[10px] uppercase tracking-widest"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg><span>INSIDER BRIEFING</span></div><div class="text-xl md:text-2xl font-black text-black uppercase tracking-tight font-serif">Subscribe to Engineering &amp; AI Growth Updates</div>
+  <p class="text-xs text-black/80 font-bold leading-relaxed normal-case">Direct production case studies, Core Web Vitals playbooks, and autonomous AI agent architectures delivered straight to your inbox.</p>
+</div><div class="w-full lg:max-w-md shrink-0"><form noValidate="" class="space-y-2"><div class="flex flex-col sm:flex-row gap-2.5"><div class="relative flex-grow"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail absolute left-3.5 top-1/2 -translate-y-1/2 text-black/60 pointer-events-none" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg><input type="email" placeholder="Enter your work email..." aria-label="Email address for newsletter subscription" maxLength="150" required="" class="w-full pl-10 pr-4 py-3 rounded-xl bg-white border-2 border-black text-black placeholder:text-black/50 text-xs font-mono font-bold normal-case focus:outline-none focus:ring-2 focus:ring-black transition-all disabled:opacity-60" name="email" value=""/></div><button type="submit" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-black text-[#ccff00] hover:bg-zinc-900 font-black uppercase tracking-widest text-xs border-2 border-black brutalist-shadow transition-all cursor-pointer disabled:opacity-60 shrink-0"><span>Subscribe</span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button></div></form></div></div></div></div><div class="mt-10 pt-6 border-t-2 border-black/20 text-xs text-black/90 leading-relaxed space-y-2">
+  <p class="author-byline"><strong>Lead Architect &amp; Reviewer:</strong> <a href="https://www.linkedin.com/in/abu-qitmir-697423390/" rel="author noopener noreferrer" target="_blank" class="underline font-bold">Abu Qitmir Mohammad Shiraz Al-Madani</a> <!-- -->(Founder &amp; Lead Systems Architect, B.S. Software Engineering, +5 Years Experience). Verified 4.9/5 rating on Google, Clutch, and GoodFirms.</p>
+
+  <p class="disclaimer"><strong>Disclaimer:</strong> All cost estimates, timelines, and case study metrics on this site are for general informational purposes only and do not constitute legal, financial, or regulatory advice. Project results vary by scope and market conditions.</p>
+</div><div class="mt-6 pt-6 border-t border-black/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-bold text-black"><div class="flex items-center gap-3"><a class="flex flex-col no-underline group transition-all duration-300 " href="/" data-discover="true"><div class="flex flex-col leading-[0.8]"><span class="text-[#0066ff] font-black text-xl md:text-2xl tracking-tighter uppercase group-hover:text-white transition-colors">ABUQITMIR</span><div class="bg-[#ccff00] text-black text-[10px] md:text-[11px] font-black px-2 py-0.5 rounded-sm tracking-[0.1em] uppercase self-start mt-1">LABS.TECH</div></div></a><span>Engineered by AbuQitmirLabs in Karachi, Pakistan.</span></div><div>© 2026 AbuQitmirLabs. All rights reserved.</div></div></div></footer>
+</div><!--/$-->
+</div>
+  </body>
+</html>

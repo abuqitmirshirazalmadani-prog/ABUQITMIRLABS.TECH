@@ -89,27 +89,38 @@ export function cleanExcerpt(rawText?: string, maxLength = 160): string {
 /**
  * Formats various date input types (Firestore Timestamp, Date, string, number) into an ISO 8601 string.
  */
-export function formatIsoDate(dateVal: any, fallbackDate = new Date('2026-10-23T10:00:00.000Z')): string {
+export function formatIsoDate(dateVal: any, fallbackDate = new Date('2026-11-01T00:00:00.000Z')): string {
   const maxAllowed = Date.now() + 86400000;
-  const clampDate = (d: Date): string => {
-    if (isNaN(d.getTime())) return new Date('2026-10-23T10:00:00.000Z').toISOString();
+  const clampDate = (d: Date, preserveStr?: string): string => {
+    if (isNaN(d.getTime())) return fallbackDate.toISOString();
     if (d.getTime() > maxAllowed) {
       return new Date().toISOString();
     }
-    return d.toISOString();
+    return preserveStr || d.toISOString();
   };
 
   if (!dateVal) return clampDate(fallbackDate);
   if (typeof dateVal.toDate === 'function') {
     return clampDate(dateVal.toDate());
   }
-  if (dateVal.seconds) {
+  if (typeof dateVal.seconds === 'number') {
     return clampDate(new Date(dateVal.seconds * 1000));
+  }
+  if (typeof dateVal._seconds === 'number') {
+    return clampDate(new Date(dateVal._seconds * 1000));
   }
   if (dateVal instanceof Date) {
     return clampDate(dateVal);
   }
-  if (typeof dateVal === 'string' || typeof dateVal === 'number') {
+  if (typeof dateVal === 'string') {
+    const trimmed = dateVal.trim();
+    if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
+      const parsed = new Date(`${trimmed}T00:00:00+05:00`);
+      return clampDate(parsed, `${trimmed}T00:00:00+05:00`);
+    }
+    const d = new Date(trimmed);
+    if (!isNaN(d.getTime())) return clampDate(d);
+  } else if (typeof dateVal === 'number') {
     const d = new Date(dateVal);
     if (!isNaN(d.getTime())) return clampDate(d);
   }
@@ -128,6 +139,9 @@ export function stripSurroundingQuotes(raw?: string): string {
 }
 
 export function formatConciseSeoTitle(rawTitle?: string, slug?: string, siteName = DEFAULT_SITE_NAME): string {
+  if (slug === 'ai-coding-agents-secure-agentic-software-development') {
+    return 'How to Secure AI Coding Agents | AbuQitmirLabs';
+  }
   if (slug === 'lead-generation-content-strategy-google-meta' || (rawTitle && rawTitle.includes('B2B Lead Generation Content Strategy'))) {
     return 'B2B Lead Generation Content Strategy: Google + Meta';
   }

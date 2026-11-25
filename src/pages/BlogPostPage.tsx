@@ -21,6 +21,7 @@ import { getCachedPost, setCachedPost } from '../utils/blogCache';
 
 interface Post {
   title: string;
+  seoTitle?: string;
   heroSubtitle?: string;
   content: string;
   excerpt?: string;
@@ -270,8 +271,10 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                     const sanitizedPost: Post = {
                         ...foundPost,
                         title: resolvedFullTitle,
+                        seoTitle: (isFreshCmsEdit ? (foundPost as any).seoTitle : (staticEntry as any)?.seoTitle) || (foundPost as any).seoTitle,
                         heroSubtitle: (isFreshCmsEdit ? foundPost.heroSubtitle : (staticEntry as any)?.heroSubtitle) || foundPost.heroSubtitle,
                         createdAt: staticEntry?.createdAt || foundPost.createdAt,
+                        updatedAt: (isFreshCmsEdit ? foundPost.updatedAt : (staticEntry as any)?.updatedAt) || foundPost.updatedAt,
                         content: resolvedContent,
                         coverImage: resolvedCover || foundPost.coverImage,
                         coverImageAlt: (isFreshCmsEdit ? (foundPost as any).coverImageAlt : (staticEntry as any)?.coverImageAlt) || (foundPost as any).coverImageAlt,
@@ -843,13 +846,18 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
     };
 
     const formatISODate = (timestamp: any) => {
-        const defaultSafe = new Date('2026-10-23T10:00:00.000Z').toISOString();
+        const defaultSafe = '2026-11-01T00:00:00+05:00';
         if (!timestamp) return defaultSafe;
         try {
-            let date = timestamp.toDate
+            if (typeof timestamp === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(timestamp.trim())) {
+                return `${timestamp.trim()}T00:00:00+05:00`;
+            }
+            const date = typeof timestamp.toDate === 'function'
                 ? timestamp.toDate()
-                : timestamp.seconds
+                : typeof timestamp.seconds === 'number'
                 ? new Date(timestamp.seconds * 1000)
+                : typeof timestamp._seconds === 'number'
+                ? new Date(timestamp._seconds * 1000)
                 : new Date(timestamp);
             if (isNaN(date.getTime())) return defaultSafe;
             return date.toISOString();
