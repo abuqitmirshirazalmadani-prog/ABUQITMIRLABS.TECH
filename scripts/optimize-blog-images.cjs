@@ -90,7 +90,7 @@ function normalizeSyncedMarkdownBody(rawBody, cleanTitle) {
 
   body = cleanedLines.join('\n').trim();
 
-  const hasServicePillarLink = /\]\(\/(?:custom-software|ai-agent-development|seo-mastery|web-development|mobile-app-development|brand-building|content-writing|digital-marketing|graphics-design)\b/i.test(body);
+  const hasServicePillarLink = /\]\(\/(?:custom-software|ai-agent-development|seo-mastery|web-development|mobile-app-development|brand-building|content-writing|digital-marketing|graphic-design|graphics-design)\b/i.test(body);
   const missingSnippets = [];
   if (!hasServicePillarLink) {
     missingSnippets.push('[custom software engineering](/custom-software)');

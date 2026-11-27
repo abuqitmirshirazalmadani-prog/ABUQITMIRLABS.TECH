@@ -77,7 +77,7 @@ const services: Service[] = [
         tagline: "Clear, modern design that builds instant buyer trust.",
         description: "We design clean logos, brand guides, and product screens in Figma. Good design makes your product easy to use and helps close more sales.",
         tags: ["UI/UX.", "Brand Guide.", "Figma."],
-        href: "/graphics-design"
+        href: "/graphic-design"
     },
     {
         number: "07",

@@ -8,11 +8,11 @@ export const localSEOSmallBusinessSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
+      "@type": "Organization",
       "@id": "https://www.abuqitmirlabs.tech/#organization",
       "name": "AbuQitmirLabs",
       "alternateName": "AbuQitmirLabs .TECH",
-      "description": "Empowering enterprises and regional storefronts through advanced digital engineering — custom software, AI agents, high-performance web development, and local search visibility services.",
+      "description": "Empowering enterprises and regional storefronts through advanced digital engineering — custom software, AI agents, high-performance web development, and local SEO services for small business Pakistan.",
       "url": "https://www.abuqitmirlabs.tech",
       "logo": {
         "@type": "ImageObject",
@@ -21,14 +21,14 @@ export const localSEOSmallBusinessSchema = {
         "contentUrl": "https://www.abuqitmirlabs.tech/logo.png",
         "caption": "AbuQitmirLabs Logo"
       },
-      "image": "https://www.abuqitmirlabs.tech/logo.png",
+      "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
       "foundingDate": "2020",
       "telephone": "+923233260859",
       "email": "hello@abuqitmirlabs.tech",
       "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
         "addressLocality": "Karachi",
         "addressRegion": "Sindh",
         "postalCode": "75160",
@@ -36,13 +36,15 @@ export const localSEOSmallBusinessSchema = {
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "24.842691448838718",
-        "longitude": "67.1862014846566"
+        "latitude": 24.842691448838718,
+        "longitude": 67.1862014846566
       },
       "sameAs": [
-        "https://twitter.com/AbuQitmir",
-        "https://www.linkedin.com/company/abuqitmirlabs",
-        "https://www.facebook.com/abuqitmirlabs",
+        "https://www.facebook.com/profile.php?id=61583768706452",
+        "https://www.instagram.com/abuqitmirshirazalmadani/",
+        "https://www.youtube.com/@AbuQitmir",
+        "https://www.linkedin.com/in/abu-qitmir-697423390/",
+        "https://x.com/AbuQitmir",
         "https://github.com/abuqitmir"
       ],
       "contactPoint": {
@@ -54,11 +56,34 @@ export const localSEOSmallBusinessSchema = {
       }
     },
     {
+      "@type": "LocalBusiness",
+      "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+      "name": "AbuQitmirLabs",
+      "url": "https://www.abuqitmirlabs.tech",
+      "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+      "telephone": "+923233260859",
+      "email": "hello@abuqitmirlabs.tech",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+        "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
+        "postalCode": "75160",
+        "addressCountry": "PK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.842691448838718,
+        "longitude": 67.1862014846566
+      }
+    },
+    {
       "@type": "WebSite",
       "@id": "https://www.abuqitmirlabs.tech/#website",
       "url": "https://www.abuqitmirlabs.tech",
-      "name": "AbuQitmirLabs .TECH",
-      "description": "Custom software, AI agents, web development, and local search visibility services. 410+ projects completed. 350+ clients across US, UK, CA, AU, PL, and PK.",
+      "name": "AbuQitmirLabs",
+      "description": "Custom software, AI agents, web development, and local SEO services across Pakistan, US, UK, UAE, and Saudi Arabia.",
       "inLanguage": "en-US",
       "publisher": {
         "@id": "https://www.abuqitmirlabs.tech/#organization"
@@ -73,11 +98,11 @@ export const localSEOSmallBusinessSchema = {
       "@type": "WebPage",
       "@id": "https://www.abuqitmirlabs.tech/local-seo-for-small-business#webpage",
       "url": "https://www.abuqitmirlabs.tech/local-seo-for-small-business",
-      "name": "Local SEO Services for Small Businesses | AbuQitmirLabs",
-      "description": "Grow local search visibility with expert Google Business Profile optimization, map rankings, citation building, and on-page localization.",
+      "name": "Local SEO for Small Business Pakistan | AbuQitmirLabs",
+      "description": "Local SEO services for small businesses in Pakistan. Google Business Profile optimization, NAP citations, and Google Maps 3-Pack ranking from Karachi.",
       "inLanguage": "en-US",
       "datePublished": "2024-01-15T08:00:00+00:00",
-      "dateModified": "2026-02-18T00:00:00+00:00",
+      "dateModified": "2026-11-26T00:00:00+00:00",
       "isPartOf": {
         "@id": "https://www.abuqitmirlabs.tech/#website"
       },
@@ -94,9 +119,9 @@ export const localSEOSmallBusinessSchema = {
       },
       "primaryImageOfPage": {
         "@type": "ImageObject",
-        "url": "https://www.abuqitmirlabs.tech/logo.png",
-        "width": "1200",
-        "height": "630"
+        "url": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+        "width": 1200,
+        "height": 630
       },
       "breadcrumb": {
         "@id": "https://www.abuqitmirlabs.tech/local-seo-for-small-business#breadcrumb"
@@ -105,17 +130,23 @@ export const localSEOSmallBusinessSchema = {
     {
       "@type": "Service",
       "@id": "https://www.abuqitmirlabs.tech/local-seo-for-small-business#service",
-      "name": "Local Search Optimization for Small Businesses",
-      "serviceType": "Location-Based Search Engine Visibility",
-      "description": "Targeted search visibility services engineered for single-location budgets — Google Business Profile setup, foundational citations, NAP audit, and localized keyword optimization without enterprise overhead.",
+      "name": "Local SEO Services for Small Businesses in Pakistan",
+      "serviceType": "Local SEO & Google Business Profile Optimization",
+      "description": "Local SEO services for small businesses in Pakistan. Google Business Profile optimization, NAP citations, and Google Maps 3-Pack ranking from Karachi.",
       "url": "https://www.abuqitmirlabs.tech/local-seo-for-small-business",
       "provider": {
         "@id": "https://www.abuqitmirlabs.tech/#organization"
       },
-      "areaServed": ["US", "GB", "PK", "CA", "PL", "AU"],
+      "areaServed": [
+        { "@type": "Country", "name": "Pakistan" },
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Saudi Arabia" }
+      ],
       "offers": {
         "@type": "Offer",
-        "name": "Starter Local Search Visibility Plan",
+        "name": "Starter Local SEO Plan for Small Businesses",
         "description": "Entry-level optimization package for single-location storefronts and contractors — GBP management, directory citations, NAP audit, and monthly rank tracking.",
         "url": "https://www.abuqitmirlabs.tech/local-seo-for-small-business",
         "priceSpecification": {
@@ -128,7 +159,7 @@ export const localSEOSmallBusinessSchema = {
       },
       "audience": {
         "@type": "BusinessAudience",
-        "name": "Storefront Owners and Regional Service Providers"
+        "name": "Small Business Owners, Shops, Clinics, and Regional Service Providers"
       }
     },
     {
@@ -240,19 +271,19 @@ export const localSEOSmallBusinessInitialHtml = `
       </div>
 
       <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-medium tracking-tight text-white leading-[1.1] mb-6">
-        Local Search Visibility for <em class="text-[#ccff00] not-italic underline decoration-[#ccff00]/40 underline-offset-8">Small Businesses</em>
+        Local SEO Services for Small Businesses <em class="text-[#ccff00] not-italic underline decoration-[#ccff00]/40 underline-offset-8">in Pakistan</em>
       </h1>
 
       <!-- AEO / GEO Direct Answer Callout -->
       <div class="my-8 p-6 md:p-8 rounded-2xl bg-zinc-900/90 border-2 border-[#ccff00]/40 text-left shadow-[0_0_30px_rgba(204,255,0,0.08)]">
-        <h2 class="text-sm font-mono uppercase tracking-widest text-[#ccff00] mb-2 font-bold">Direct Answer: What Is Local Search Visibility for Storefronts?</h2>
+        <h2 class="text-sm font-mono uppercase tracking-widest text-[#ccff00] mb-2 font-bold">Direct Answer: What Do Local SEO Services for Small Business Pakistan Include?</h2>
         <p class="text-base md:text-lg text-zinc-200 leading-relaxed font-normal">
-          <strong>Location-based search optimization</strong> is the deliberate process of enhancing a brand's regional digital presence to achieve prominent map rankings in Google Search and Google Maps. It enables neighborhood storefronts and trade contractors to connect with nearby customers at the exact moment of search intent.
+          <strong>Local SEO services for small business Pakistan</strong> optimize Google Business Profiles, NAP directory citations, and localized service pages so single-location shops, clinics, and service contractors rank in the Google Maps 3-Pack across Karachi, Lahore, Islamabad, and international service zones without enterprise retainer bloat.
         </p>
       </div>
 
       <p class="text-base md:text-lg text-zinc-300 max-w-4xl mx-auto leading-relaxed font-light mb-10">
-        Geographic search marketing helps single-location operators and service-area contractors capture high-intent inquiries in their service radius. When nearby customers seek an immediate trade, medical practice, or retail storefront, securing placement in the top 3 map results directly drives inbound phone calls, driving directions, and store visits. Our streamlined framework eliminates corporate retainer bloat, focusing strictly on Google Business Profile optimization, foundational directory submissions, strict NAP uniformity, and localized on-page signals. Explore our overarching <a href="/seo-mastery" class="text-[#ccff00] underline font-medium">search optimization strategy</a>, or connect your regional web presence with custom <a href="/web-development" class="text-[#ccff00] underline font-medium">web development</a> and tailored <a href="/content-writing" class="text-[#ccff00] underline font-medium">content writing</a>.
+        As a dedicated small business SEO agency in Pakistan, we help local shops, clinics, and service-area contractors capture high-intent inquiries through Google Business Profile optimization Pakistan, GMB optimization service Karachi execution, strict NAP uniformity, and local search ranking Pakistan signals. Explore our overarching <a href="/seo-mastery" class="text-[#ccff00] underline font-medium">technical SEO services</a>, or connect your regional web presence with custom <a href="/web-development" class="text-[#ccff00] underline font-medium">web development</a> and tailored <a href="/content-writing" class="text-[#ccff00] underline font-medium">content writing</a>.
       </p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
@@ -319,13 +350,13 @@ export const localSEOSmallBusinessInitialHtml = `
 
       <div class="bg-zinc-950 border border-white/10 p-6 rounded-2xl flex flex-col justify-between">
         <div>
-          <h3 class="text-xl font-bold text-white mb-2">Free Forensic Search Audit</h3>
+          <h3 class="text-xl font-bold text-white mb-2">Forensic Local Search Audit</h3>
           <p class="text-zinc-400 text-sm leading-relaxed mb-4">
             Technical evaluation of your Google Business Profile, citation consistency, on-page signals, competitor gap, and map positioning with our comprehensive <a href="/local-seo-audit" class="text-[#ccff00] underline font-medium">local SEO audit</a>.
           </p>
         </div>
         <a href="/local-seo-audit" class="text-[#ccff00] text-xs font-mono font-bold uppercase tracking-wider">
-          Request Free Audit &rarr;
+          Request Technical Audit &rarr;
         </a>
       </div>
     </div>
@@ -475,13 +506,13 @@ export const localSEOSmallBusinessInitialHtml = `
     <div class="max-w-4xl mx-auto space-y-4">
       <h3 class="text-white font-bold uppercase tracking-wider">Related Insights &amp; Service Hub</h3>
       <div class="flex flex-wrap gap-x-6 gap-y-2">
-        <a href="/blog/local-business-visibility-seo-geo-aio-aeo-sxo-2026" class="hover:text-[#ccff00] underline">Local Search Visibility in 2026 (SEO, GEO, AEO)</a>
-        <a href="/blog/what-seo-services-actually-means-2026" class="hover:text-[#ccff00] underline">What Search Optimization Services Deliver</a>
-        <a href="/blog/custom-web-development-company-2026" class="hover:text-[#ccff00] underline">Custom Web Development Architecture</a>
+        <a href="/blog/local-business-visibility-2026-seo-geo-aio-aeo-sxo" class="hover:text-[#ccff00] underline">Local Search Visibility in 2026 (SEO, GEO, AEO)</a>
+        <a href="/blog/what-seo-services-actually-mean-in-2026-abuqitmirlabs" class="hover:text-[#ccff00] underline">What Search Optimization Services Deliver</a>
+        <a href="/blog/custom-web-development-company" class="hover:text-[#ccff00] underline">Custom Web Development Architecture</a>
         <a href="/seo-mastery" class="hover:text-[#ccff00] underline">SEO Strategy &amp; Auditing</a>
         <a href="/local-seo-citation-building" class="hover:text-[#ccff00] underline">Citation Building</a>
         <a href="/white-label-local-seo" class="hover:text-[#ccff00] underline">White Label Local SEO</a>
-        <a href="/local-seo-audit" class="hover:text-[#ccff00] underline">Free Map Pack Audit</a>
+        <a href="/local-seo-audit" class="hover:text-[#ccff00] underline">Map Pack Audit Checklist</a>
         <a href="/web-development" class="hover:text-[#ccff00] underline">Custom Web Development</a>
         <a href="/case-studies" class="hover:text-[#ccff00] underline">Client Case Studies</a>
         <a href="/contact" class="hover:text-[#ccff00] underline">Contact Consultation</a>

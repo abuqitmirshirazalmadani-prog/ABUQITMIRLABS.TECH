@@ -47,7 +47,7 @@ const Footer = () => {
                             <li><Link to="/guest-post-service" onMouseEnter={() => preloadRoute('/guest-post-service')} className="text-black hover:underline">Guest Post Service.</Link></li>
                             <li><Link to="/brand-building" onMouseEnter={() => preloadRoute('/brand-building')} className="text-black hover:underline">Brand Building.</Link></li>
                             <li><Link to="/skills-academy" onMouseEnter={() => preloadRoute('/skills-academy')} className="text-black hover:underline">Skills Academy Course.</Link></li>
-                            <li><Link to="/graphics-design" onMouseEnter={() => preloadRoute('/graphics-design')} className="text-black hover:underline">Graphics &amp; UI Design.</Link></li>
+                            <li><Link to="/graphic-design" onMouseEnter={() => preloadRoute('/graphic-design')} className="text-black hover:underline">Graphic &amp; UI Design.</Link></li>
                             <li><Link to="/content-writing" onMouseEnter={() => preloadRoute('/content-writing')} className="text-black hover:underline">Technical Content Writing.</Link></li>
                         </ul>
                     </div>
@@ -102,9 +102,9 @@ const Footer = () => {
                         <span itemProp="name" className="hidden">AbuQitmirLabs</span>
                         <h3 className="text-sm font-black text-black border-b-2 border-black pb-1.5 uppercase">Headquarters</h3>
                         <p className="text-xs text-black" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
-                            <span itemProp="streetAddress">Shahrah-e-Faisal, PECHS</span>,{' '}
+                            <span itemProp="streetAddress">8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town</span>,{' '}
                             <span itemProp="addressLocality">Karachi</span>,{' '}
-                            <span itemProp="postalCode">75400</span>,{' '}
+                            <span itemProp="postalCode">75160</span>,{' '}
                             <span itemProp="addressCountry">Pakistan</span>.
                         </p>
                         <p className="text-xs text-black">

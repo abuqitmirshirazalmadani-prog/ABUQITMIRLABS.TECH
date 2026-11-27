@@ -22,8 +22,9 @@ export const customSoftwareSchema = {
       "email": "hello@abuqitmirlabs.tech",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
         "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
         "postalCode": "75160",
         "addressCountry": "PK"
       },
@@ -47,6 +48,29 @@ export const customSoftwareSchema = {
       }
     },
     {
+      "@type": "LocalBusiness",
+      "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+      "name": "AbuQitmirLabs",
+      "url": "https://www.abuqitmirlabs.tech/",
+      "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+      "telephone": "+923233260859",
+      "email": "hello@abuqitmirlabs.tech",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+        "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
+        "postalCode": "75160",
+        "addressCountry": "PK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.842691448838718,
+        "longitude": 67.1862014846566
+      }
+    },
+    {
       "@type": "WebSite",
       "@id": "https://www.abuqitmirlabs.tech/#website",
       "url": "https://www.abuqitmirlabs.tech",
@@ -60,22 +84,28 @@ export const customSoftwareSchema = {
       "@type": "WebPage",
       "@id": "https://www.abuqitmirlabs.tech/custom-software#webpage",
       "url": "https://www.abuqitmirlabs.tech/custom-software",
-      "name": "Custom Software Development Company | AbuQitmirLabs",
-      "description": "Bespoke software built around your workflows — ERPs, SaaS platforms, AI-powered tools, and enterprise systems. Full IP ownership.",
+      "name": "Custom Software Development Pakistan | AbuQitmirLabs",
+      "description": "Custom software built for your workflows by senior engineers in Karachi. Full IP ownership, 100% source code transfer, zero vendor lock-in. Book a call.",
       "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" },
       "about": { "@id": "https://www.abuqitmirlabs.tech/custom-software#service" },
       "breadcrumb": { "@id": "https://www.abuqitmirlabs.tech/custom-software#breadcrumb" },
       "inLanguage": "en",
-      "dateModified": "2026-08-17"
+      "dateModified": "2026-11-26"
     },
     {
       "@type": "Service",
       "@id": "https://www.abuqitmirlabs.tech/custom-software#service",
-      "name": "Custom Software Development",
+      "name": "Custom Software Development for Startups & SaaS Companies",
       "description": "Bespoke software engineered around your exact workflows, data requirements, and integrations. Full source code and IP ownership transferred at project completion.",
       "provider": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
       "serviceType": "Custom Software Development",
-      "areaServed": ["US", "GB", "PK", "CA", "PL", "AU"],
+      "areaServed": [
+        { "@type": "Country", "name": "Pakistan" },
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Saudi Arabia" }
+      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Custom Software Development Services",
@@ -176,14 +206,14 @@ export const customSoftwareInitialHtml = `
         <span>Bespoke Engineering Studio</span>
       </div>
 
-      <h1 id="custom-software-hero-title" class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.08] mb-8 max-w-5xl animate-enter-delay-1">
-        Custom Software Development Company
+      <h1 id="custom-software-hero-title" class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.08] mb-8 max-w-5xl">
+        Custom Software Development for Startups &amp; SaaS Companies
       </h1>
 
       <!-- Direct Answer Block for AEO/GEO -->
-      <div class="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl max-w-4xl mb-8 shadow-2xl animate-enter-delay-2">
+      <div class="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl max-w-4xl mb-8 shadow-2xl">
         <p class="text-sm md:text-base text-gray-200 leading-relaxed font-mono">
-          <strong class="text-[#ccff00]">Direct Answer:</strong> Custom software development is the process of building software engineered specifically for your business — designed around your exact workflows, data requirements, and integrations rather than forcing you to adapt to a generic tool. AbuQitmirLabs builds bespoke software systems that you own outright, from enterprise ERPs to AI-powered SaaS platforms.
+          <strong class="text-[#ccff00]">Direct Answer:</strong> Custom software development is the engineering of bespoke applications designed around your exact workflows, integrations, and security rules. From our Karachi studio, AbuQitmirLabs operates as a custom software development company in Pakistan delivering SaaS platforms, ERPs, and AI-powered systems with 100% source code ownership and zero vendor lock-in.
         </p>
       </div>
 
@@ -193,7 +223,7 @@ export const customSoftwareInitialHtml = `
         <span class="text-zinc-600">•</span>
         <span>🔒 100% IP &amp; Source Code Ownership</span>
         <span class="text-zinc-600">•</span>
-        <span>⚡ Zero Vendor Lock-In</span>
+        <span>⚡ Custom MVPs from $5,000</span>
       </div>
 
       <div class="flex flex-wrap items-center gap-6">
@@ -206,30 +236,18 @@ export const customSoftwareInitialHtml = `
       </div>
     </section>
 
-    <!-- AEO Direct Answer Block -->
-    <section class="py-10 bg-zinc-950/80 border-b border-white/10" aria-label="Direct Answer">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="bg-zinc-900/90 border border-[#ccff00]/30 rounded-2xl p-6 md:p-8 max-w-4xl">
-          <p class="text-lg md:text-xl font-bold text-white mb-2"><strong>What is custom software development?</strong></p>
-          <p class="text-gray-300 text-base leading-relaxed font-light">
-            Custom software development is the process of designing, building, and deploying software built specifically for one business — not adapted from an off-the-shelf product. It gives businesses full ownership, flexibility, and scalability that generic SaaS tools cannot provide.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 1: What Is Custom Software Development? -->
+    <!-- Section 1: Bespoke Software Development Pakistan -->
     <section class="py-20 md:py-28 max-w-7xl mx-auto px-6 border-b border-white/10" aria-labelledby="what-is-custom-software-h2">
       <div class="max-w-4xl">
         <span class="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Strategic Foundation</span>
         <h2 id="what-is-custom-software-h2" class="text-3xl md:text-5xl font-extrabold tracking-tight mb-8 text-white">
-          What Is Custom Software Development?
+          Bespoke Software Development Pakistan: Engineered for Ownership
         </h2>
         <p class="text-gray-300 text-lg leading-relaxed mb-6 font-light">
-          Custom software development means building a system from the ground up to solve a specific business problem — one that no off-the-shelf product addresses cleanly.
+          Custom software development for startups and established B2B firms means building a system from the ground up to solve a specific business problem — one that no off-the-shelf product addresses cleanly.
         </p>
         <p class="text-gray-300 text-lg leading-relaxed mb-6 font-light">
-          The global custom software development market is valued at $43.2 billion in 2024 and projected to reach $146.2 billion by 2030 — a compound annual growth rate above 22%. That growth reflects a straightforward reality: generic tools create compromises. Custom software eliminates them.
+          Off-the-shelf SaaS forces compromises through rigid data models, per-seat licensing fees, and brittle workarounds. Bespoke software development removes those ceilings so your core product and internal systems act as durable business assets.
         </p>
         <p class="text-gray-300 text-lg leading-relaxed mb-6 font-light">
           At AbuQitmirLabs, every build starts with your workflows, not a template. You get full source code ownership, full IP ownership, and a system built to scale with your business — not against it.
@@ -243,10 +261,10 @@ export const customSoftwareInitialHtml = `
         <div class="max-w-3xl mb-16">
           <span class="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Core Engineering Disciplines</span>
           <h2 id="what-we-build-h2" class="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 text-white">
-            What We Build
+            SaaS Software Development Company Pakistan: What We Build
           </h2>
           <p class="text-gray-400 text-lg font-light leading-relaxed">
-            From complex operational backbones to revenue-generating SaaS platforms, we architect resilient digital assets built to your precise functional specifications.
+            From complex operational backbones to revenue-generating SaaS platforms, our dedicated software development team in Pakistan architects resilient digital assets built to your precise functional specifications.
           </p>
         </div>
 
@@ -325,7 +343,7 @@ export const customSoftwareInitialHtml = `
       <div class="max-w-3xl mb-16">
         <span class="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Methodology</span>
         <h2 id="development-process-h2" class="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 text-white">
-          Our 5-Step Development Process
+          Dedicated Software Development Team Pakistan: Our 5-Step Process
         </h2>
         <p class="text-gray-400 text-lg font-light leading-relaxed">
           Predictable milestones, full technical transparency, and structured sprint cycles ensure your system launches on schedule without scope drift.
@@ -381,7 +399,7 @@ export const customSoftwareInitialHtml = `
         <div class="p-8 md:p-12 rounded-3xl bg-zinc-900/90 border border-[#ccff00]/30 shadow-2xl">
           <span class="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Intellectual Property Guarantee</span>
           <h2 id="what-you-own-h2" class="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-white">
-            What You Own
+            Enterprise Software Development Karachi &amp; 100% IP Ownership
           </h2>
           <p class="text-gray-200 text-lg leading-relaxed mb-6 font-light">
             Every line of code we write belongs to you. AbuQitmirLabs transfers full intellectual property and source code ownership at project completion — no licensing fees, no vendor lock-in, no ongoing dependency on us to access your own system.
@@ -398,7 +416,7 @@ export const customSoftwareInitialHtml = `
       <div class="max-w-4xl">
         <span class="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Decision Framework</span>
         <h2 id="custom-vs-off-the-shelf-h2" class="text-3xl md:text-5xl font-extrabold tracking-tight mb-8 text-white">
-          Custom Software vs Off-the-Shelf: When to Choose Custom
+          Custom Software Development for Startups vs Off-the-Shelf
         </h2>
         <p class="text-gray-300 text-lg leading-relaxed mb-8 font-light">
           Off-the-shelf software makes sense when your workflow is standard and a mature product already covers it well. Custom software is the right choice when:
@@ -425,32 +443,32 @@ export const customSoftwareInitialHtml = `
             How Much Does Custom Software Development Cost?
           </h2>
           <p class="text-gray-400 text-lg font-light leading-relaxed">
-            Cost depends on scope, complexity, and the number of integrations involved. As a general reference point:
+            Cost depends on scope, complexity, and the number of integrations involved. Transparent starting ranges from our Karachi studio:
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div class="p-8 rounded-2xl bg-zinc-900/50 border border-white/10">
-            <h3 class="text-xl font-bold text-white mb-2">Simple Internal Tools</h3>
-            <p class="text-[#ccff00] font-mono text-sm mb-4">Single workflow, no complex integrations</p>
+            <h3 class="text-xl font-bold text-white mb-2">Focused MVP &amp; Internal Tools</h3>
+            <p class="text-[#ccff00] font-mono text-sm mb-4">Starting from $5,000 USD</p>
             <p class="text-gray-300 text-sm leading-relaxed font-light">
-              Typically ranges from lower four figures to mid-five figures. Ideal for focused automation, single department portals, and operational scripts.
+              Single-workflow systems, internal operational dashboards, or validated startup MVPs with clean authentication and core CRUD logic.
             </p>
           </div>
 
-          <div class="p-8 rounded-2xl bg-zinc-900/50 border border-[#ccff00]/40 bg-zinc-900/80">
-            <h3 class="text-xl font-bold text-white mb-2">Mid-Complexity Platforms</h3>
-            <p class="text-[#ccff00] font-mono text-sm mb-4">Multi-role, several integrations, custom reporting</p>
+          <div class="p-8 rounded-2xl bg-zinc-900/80 border border-[#ccff00]/40">
+            <h3 class="text-xl font-bold text-white mb-2">Mid-Complexity SaaS &amp; Portals</h3>
+            <p class="text-[#ccff00] font-mono text-sm mb-4">Starting from $15,000 USD</p>
             <p class="text-gray-300 text-sm leading-relaxed font-light">
-              Ranges from mid-to-upper five figures. Includes comprehensive CRM/ERP modules, customer portals, and unified database management.
+              Multi-role platforms, customer portals, ERP modules, multi-channel payment gateways, and centralized database architecture.
             </p>
           </div>
 
           <div class="p-8 rounded-2xl bg-zinc-900/50 border border-white/10">
-            <h3 class="text-xl font-bold text-white mb-2">Enterprise Systems or SaaS</h3>
-            <p class="text-[#ccff00] font-mono text-sm mb-4">Multi-tenant, high concurrency, complex data architecture</p>
+            <h3 class="text-xl font-bold text-white mb-2">Enterprise Systems &amp; AI Platforms</h3>
+            <p class="text-[#ccff00] font-mono text-sm mb-4">Starting from $35,000+ USD</p>
             <p class="text-gray-300 text-sm leading-relaxed font-light">
-              Six figures and above. Built for global scalability, high-frequency transactions, mission-critical resilience, and automated multi-tier billing.
+              Multi-tenant SaaS architectures, RAG pipelines, high-frequency integrations, compliance-ready controls, and multi-tier billing.
             </p>
           </div>
         </div>

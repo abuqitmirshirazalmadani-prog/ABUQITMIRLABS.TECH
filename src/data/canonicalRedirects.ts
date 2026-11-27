@@ -127,5 +127,8 @@ export function getCanonicalPath(pathname: string): string {
   if (clean === '/local-seo/small-business' || clean === '/local-seo-small-business' || clean === '/local-seo-services') {
     return '/local-seo-for-small-business';
   }
+  if (clean === '/graphics-design') {
+    return '/graphic-design';
+  }
   return clean;
 }

@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import { YouTubeFacade } from '../components/ui/youtube-facade';
 import { 
   Globe, 
@@ -193,272 +193,291 @@ Do not sign a website contract without these protective legal terms.
     }
   ];
 
+  const canonicalUrl = "https://www.abuqitmirlabs.tech/web-development";
+  const pageTitle = "Web Development Services Pakistan | AbuQitmirLabs";
+  const pageDescription = "Next.js web development for US, UK, and GCC B2B teams. Sub-second load, 100% IP ownership, senior-led delivery from Karachi. Book a consultation.";
+  const ogImageUrl = "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp";
+
+  const webDevSchemaGraph = [
+    {
+      "@type": "Organization",
+      "@id": "https://www.abuqitmirlabs.tech/#organization",
+      "name": "AbuQitmirLabs",
+      "url": "https://www.abuqitmirlabs.tech",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.abuqitmirlabs.tech/logo.png"
+      },
+      "image": ogImageUrl,
+      "email": "hello@abuqitmirlabs.tech",
+      "telephone": "+923233260859",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+        "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
+        "postalCode": "75160",
+        "addressCountry": "PK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.842691448838718,
+        "longitude": 67.1862014846566
+      },
+      "sameAs": [
+        "https://wa.me/923233260859",
+        "https://github.com/abuqitmir",
+        "https://www.facebook.com/profile.php?id=61583768706452",
+        "https://www.instagram.com/abuqitmirshirazalmadani/",
+        "https://www.youtube.com/@AbuQitmir",
+        "https://www.linkedin.com/in/abu-qitmir-697423390/",
+        "https://x.com/AbuQitmir"
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+      "name": "AbuQitmirLabs",
+      "url": "https://www.abuqitmirlabs.tech",
+      "image": ogImageUrl,
+      "telephone": "+923233260859",
+      "email": "hello@abuqitmirlabs.tech",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+        "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
+        "postalCode": "75160",
+        "addressCountry": "PK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.842691448838718,
+        "longitude": 67.1862014846566
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.abuqitmirlabs.tech/#website",
+      "url": "https://www.abuqitmirlabs.tech",
+      "name": "AbuQitmirLabs",
+      "publisher": {
+        "@id": "https://www.abuqitmirlabs.tech/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.abuqitmirlabs.tech/web-development/#webpage",
+      "url": canonicalUrl,
+      "name": pageTitle,
+      "description": pageDescription,
+      "isPartOf": {
+        "@id": "https://www.abuqitmirlabs.tech/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://www.abuqitmirlabs.tech/web-development/#breadcrumb"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.abuqitmirlabs.tech/web-development/#service",
+      "serviceType": "Web Development",
+      "name": "Web Development Services in Pakistan",
+      "provider": {
+        "@id": "https://www.abuqitmirlabs.tech/#organization"
+      },
+      "description": pageDescription,
+      "url": canonicalUrl,
+      "areaServed": [
+        { "@type": "Country", "name": "Pakistan" },
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Saudi Arabia" }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "USD",
+          "minPrice": "500",
+          "description": "Custom web development projects start at $500 USD (PKR regional pricing available)"
+        },
+        "availability": "https://schema.org/InStock"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Development Capabilities",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Next.js & React Web Development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "B2B Web Application Development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Headless CMS Development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "API Development & Integration"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.abuqitmirlabs.tech/web-development/#faq",
+      "isPartOf": {
+        "@id": "https://www.abuqitmirlabs.tech/web-development/#webpage"
+      },
+      "mainEntity": faqData.map(item => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.a
+        }
+      }))
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.abuqitmirlabs.tech/web-development/#howto",
+      "name": "Our Web Development Process",
+      "description": "A 5-step engineering pipeline optimized for speed and SEO to build high-performance web platforms.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Audit & Specs",
+          "text": "Technical analysis of current assets and goal setting."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Page UX Architecture",
+          "text": "Mapping user flows for sub-second navigation."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Jamstack Build",
+          "text": "Engineering the frontend with Next.js and Tailwind."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "CMS Sync",
+          "text": "Connecting secure headless content management."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Edge Deploy",
+          "text": "Global distribution via Vercel Edge networks."
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.abuqitmirlabs.tech/web-development/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.abuqitmirlabs.tech/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Web Development",
+          "item": canonicalUrl
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="bg-[#050505] text-axiom-sub font-body antialiased overflow-x-hidden min-h-screen relative selection:bg-blue-500/30 selection:text-white">
-      <Helmet>
-        <title>Custom Web Development Services in Pakistan | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs builds custom web services, scalable web applications, and API integrations in Karachi, Pakistan. We connect Stripe, CRM, and ERP systems for growing businesses." />
-        <meta name="keywords" content="custom web development services in Pakistan, API development and integration services in Karachi, custom web services company Pakistan, scalable web applications Pakistan, website development services in Pakistan, web development company, React web development, Next.js development" />
-        <link rel="canonical" href="https://www.abuqitmirlabs.tech/web-development" />
-        <meta name="robots" content="index, follow" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="Custom Web Development Services in Pakistan | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs builds custom web services, scalable web applications, and API integrations in Karachi, Pakistan. We connect Stripe, CRM, and ERP systems for growing businesses." />
-        <meta property="og:url" content="https://www.abuqitmirlabs.tech/web-development" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Custom Web Development Services in Pakistan | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs builds custom web services, scalable web applications, and API integrations in Karachi, Pakistan. We connect Stripe, CRM, and ERP systems for growing businesses." />
-        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Unified JSON-LD Structured Data Schema (@graph) */}
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": "Organization",
-                  "@id": "https://www.abuqitmirlabs.tech/#organization",
-                  "name": "AbuQitmirLabs",
-                  "url": "https://www.abuqitmirlabs.tech",
-                  "logo": {
-                    "@type": "ImageObject",
-                    "url": "https://www.abuqitmirlabs.tech/logo.png"
-                  },
-                  "image": "https://www.abuqitmirlabs.tech/logo.png",
-                  "email": "hello@abuqitmirlabs.tech",
-                  "telephone": "+923233260859",
-                  "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Karachi",
-                    "addressRegion": "Sindh",
-                    "addressCountry": "PK"
-                  }
-                },
-                {
-                  "@type": "WebSite",
-                  "@id": "https://www.abuqitmirlabs.tech/#website",
-                  "url": "https://www.abuqitmirlabs.tech",
-                  "name": "AbuQitmirLabs",
-                  "publisher": {
-                    "@id": "https://www.abuqitmirlabs.tech/#organization"
-                  }
-                },
-                {
-                  "@type": "WebPage",
-                  "@id": "https://www.abuqitmirlabs.tech/web-development/#webpage",
-                  "url": "https://www.abuqitmirlabs.tech/web-development",
-                  "name": "Custom Web Development Services in Pakistan & API Integration | AbuQitmirLabs",
-                  "description": "AbuQitmirLabs builds custom web services, scalable web applications, and API integrations in Karachi, Pakistan. We connect Stripe, CRM, and ERP systems for growing businesses.",
-                  "isPartOf": {
-                    "@id": "https://www.abuqitmirlabs.tech/#website"
-                  },
-                  "breadcrumb": {
-                    "@id": "https://www.abuqitmirlabs.tech/web-development/#breadcrumb"
-                  },
-                  "inLanguage": "en-US"
-                },
-                {
-                  "@type": "Service",
-                  "@id": "https://www.abuqitmirlabs.tech/web-development/#service",
-                  "serviceType": "Web Development",
-                  "name": "Custom Web Development Services",
-                  "provider": {
-                    "@id": "https://www.abuqitmirlabs.tech/#organization"
-                  },
-                  "description": "React and Next.js websites engineered for speed and search visibility, not stitched together from templates. Based in Karachi, built for clients worldwide.",
-                  "url": "https://www.abuqitmirlabs.tech/web-development",
-                  "areaServed": [
-                  { "@type": "Country", "name": "United States" },
-                  { "@type": "Country", "name": "United Kingdom" },
-                  { "@type": "Country", "name": "Canada" },
-                  { "@type": "Country", "name": "Australia" },
-                  { "@type": "Country", "name": "Poland" },
-                  { "@type": "Country", "name": "Pakistan" },
-                  { "@type": "Country", "name": "United Arab Emirates" },
-                  { "@type": "Country", "name": "Saudi Arabia" },
-                  { "@type": "Country", "name": "Qatar" },
-                  { "@type": "Country", "name": "Kuwait" }
-                ],
-                "offers": {
-                  "@type": "Offer",
-                  "priceCurrency": "USD",
-                  "priceSpecification": {
-                    "@type": "PriceSpecification",
-                    "priceCurrency": "USD",
-                    "minPrice": "500",
-                    "description": "Custom web development projects start at $500 USD"
-                  },
-                  "availability": "https://schema.org/InStock"
-                },
-                  "hasOfferCatalog": {
-                    "@type": "OfferCatalog",
-                    "name": "Web Development Capabilities",
-                    "itemListElement": [
-                      {
-                        "@type": "Offer",
-                        "itemOffered": {
-                          "@type": "Service",
-                          "name": "Custom Website Development"
-                        }
-                      },
-                      {
-                        "@type": "Offer",
-                        "itemOffered": {
-                          "@type": "Service",
-                          "name": "Web Application Development"
-                        }
-                      },
-                      {
-                        "@type": "Offer",
-                        "itemOffered": {
-                          "@type": "Service",
-                          "name": "React & Next.js Development"
-                        }
-                      },
-                      {
-                        "@type": "Offer",
-                        "itemOffered": {
-                          "@type": "Service",
-                          "name": "Headless CMS & E-commerce"
-                        }
-                      }
-                    ]
-                  }
-                },
-                {
-                  "@type": "FAQPage",
-                  "@id": "https://www.abuqitmirlabs.tech/web-development/#faq",
-                  "isPartOf": {
-                    "@id": "https://www.abuqitmirlabs.tech/web-development/#webpage"
-                  },
-                  "mainEntity": faqData.map(item => ({
-                    "@type": "Question",
-                    "name": item.q,
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": item.a
-                    }
-                  }))
-                },
-                {
-                  "@type": "HowTo",
-                  "@id": "https://www.abuqitmirlabs.tech/web-development/#howto",
-                  "name": "Our Web Development Process",
-                  "description": "A 5-step engineering pipeline optimized for speed and SEO to build high-performance web platforms.",
-                  "step": [
-                    {
-                      "@type": "HowToStep",
-                      "name": "Audit & Specs",
-                      "text": "Technical analysis of current assets and goal setting."
-                    },
-                    {
-                      "@type": "HowToStep",
-                      "name": "Page UX Architecture",
-                      "text": "Mapping user flows for sub-second navigation."
-                    },
-                    {
-                      "@type": "HowToStep",
-                      "name": "Jamstack Build",
-                      "text": "Engineering the frontend with Next.js and Tailwind."
-                    },
-                    {
-                      "@type": "HowToStep",
-                      "name": "CMS Sync",
-                      "text": "Connecting secure headless content management."
-                    },
-                    {
-                      "@type": "HowToStep",
-                      "name": "Edge Deploy",
-                      "text": "Global distribution via Vercel Edge networks."
-                    }
-                  ]
-                },
-                {
-                  "@type": "BreadcrumbList",
-                  "@id": "https://www.abuqitmirlabs.tech/web-development/#breadcrumb",
-                  "itemListElement": [
-                    {
-                      "@type": "ListItem",
-                      "position": 1,
-                      "name": "Home",
-                      "item": "https://www.abuqitmirlabs.tech/"
-                    },
-                    {
-                      "@type": "ListItem",
-                      "position": 2,
-                      "name": "Web Development",
-                      "item": "https://www.abuqitmirlabs.tech/web-development"
-                    }
-                  ]
-                }
-              ]
-            })
-          }}
-        ></script>
-      </Helmet>
+      <SEO
+        title={pageTitle}
+        description={pageDescription}
+        canonical={canonicalUrl}
+        keywords="web development services Pakistan for startups, Next.js development company Pakistan, web development company Karachi, React web development agency Pakistan, headless CMS development Pakistan, fast website development company Pakistan"
+        ogTitle={pageTitle}
+        ogDescription={pageDescription}
+        ogImage={ogImageUrl}
+        ogImageAlt="AbuQitmirLabs Next.js Web Development Services Pakistan"
+        ogType="website"
+        twitterTitle={pageTitle}
+        twitterDescription={pageDescription}
+        twitterImage={ogImageUrl}
+        schema={webDevSchemaGraph}
+      />
 
       <Header />
-      <Breadcrumbs customItems={[{ name: 'Home', to: '/' }, { name: 'Web Development', to: '/web-development' }]} />
+      <Breadcrumbs disableSchema={true} customItems={[{ name: 'Home', to: '/' }, { name: 'Web Development', to: '/web-development' }]} />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center pt-24 md:pt-32 pb-20 px-6 z-10 overflow-hidden animate-enter">
+      <section className="relative min-h-screen flex flex-col justify-center items-center pt-24 md:pt-32 pb-20 px-6 z-10 overflow-hidden">
         {/* Background Effects */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-blue-600/10 rounded-[100%] blur-[120px] pointer-events-none" />
         <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-indigo-600/5 rounded-[100%] blur-[120px] pointer-events-none" />
         
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-10"
-        >
+        <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-10">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
           </span>
           <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-blue-400">
-            Performance Engineering Protocol
+            Next.js &amp; React Web Engineering • Karachi, Pakistan
           </span>
-        </motion.div>
+        </div>
 
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-5xl md:text-7xl lg:text-[6.5rem] font-medium tracking-tight text-white text-center mb-8 leading-[1.1] max-w-5xl animate-enter animate-enter-delay-1"
-        >
-          Custom Website Development Services for Growing Businesses <br />
-          <span className="text-neutral-500">| API Development &amp; Integration in Karachi</span>
-        </motion.h1>
+        <h1 className="text-4xl md:text-6xl lg:text-[5.25rem] font-medium tracking-tight text-white text-center mb-8 leading-[1.08] max-w-5xl">
+          Web Development Services in Pakistan for B2B Companies
+        </h1>
 
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-lg md:text-xl text-neutral-400 text-center max-w-4xl mb-12 leading-relaxed font-light font-sans animate-enter animate-enter-delay-2"
-        >
-          AbuQitmirLabs is a <strong>web development company</strong> providing <strong>custom web development</strong> and <strong>web development services</strong> for startups and growing businesses. From high-converting corporate sites to complex <strong>web application development</strong>, we build fast, responsive, and SEO-ready platforms using modern frontend and backend architectures (React, Next.js, TypeScript, APIs, and headless CMS). We also specialise in API development and third-party integrations in Karachi, connecting your website with Stripe, CRM, and ERP systems for seamless business operations. You can pair our web builds with modular <Link to="/custom-software" className="text-blue-400 hover:underline font-medium">Custom Software</Link> engines, expand into native <Link to="/mobile-app-development" className="text-blue-400 hover:underline font-medium">Mobile App Development</Link>, integrate autonomous <Link to="/ai-agent-development" className="text-blue-400 hover:underline font-medium">AI Agents</Link>, or maximize organic growth with our <Link to="/seo-mastery" className="text-blue-400 hover:underline font-medium">SEO Mastery</Link> and <Link to="/local-seo-for-small-business" className="text-blue-400 hover:underline font-medium">Local SEO</Link> strategies. Elevate messaging with targeted <Link to="/content-writing" className="text-blue-400 hover:underline font-medium">Content Writing</Link>, explore client <Link to="/case-studies" className="text-blue-400 hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-blue-400 hover:underline font-medium">Blog</Link>, learn more <Link to="/about" className="text-blue-400 hover:underline font-medium">about us</Link>, or <Link to="/contact" className="text-blue-400 hover:underline font-medium">contact us</Link> today.
-        </motion.p>
+        <p className="text-lg md:text-xl text-neutral-300 text-center max-w-4xl mb-10 leading-relaxed font-light font-sans">
+          AbuQitmirLabs delivers <strong>Next.js</strong> and React <strong>web development services in Pakistan for startups</strong>, B2B teams, and growing enterprises across the US, UK, and GCC. Operating as a senior-led <strong>web development company in Karachi</strong>, we engineer sub-second websites, custom API integrations (Stripe, JazzCash, CRM, ERP), and headless CMS platforms starting from $500 USD (with PKR local pricing). Pair your build with <Link to="/custom-software" className="text-blue-400 hover:underline font-medium">Custom Software</Link>, <Link to="/mobile-app-development" className="text-blue-400 hover:underline font-medium">Mobile App Development</Link>, autonomous <Link to="/ai-agent-development" className="text-blue-400 hover:underline font-medium">AI Agents</Link>, or <Link to="/seo-mastery" className="text-blue-400 hover:underline font-medium">Technical SEO</Link>.
+        </p>
+
+        {/* Direct Answer GEO / AEO Block */}
+        <div className="max-w-4xl w-full mx-auto mb-10 p-6 md:p-8 rounded-2xl bg-white/[0.03] border border-blue-500/20 text-left">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-[0.25em] text-blue-400 block mb-2">
+            Direct Answer // Web Engineering in Pakistan
+          </span>
+          <h2 className="text-lg md:text-xl font-bold text-white mb-2">
+            How Does a Fast Website Development Company in Pakistan Deliver B2B ROI?
+          </h2>
+          <p className="text-sm md:text-base text-neutral-300 font-light leading-relaxed">
+            A fast website development company in Pakistan combines Next.js static generation, clean TypeScript APIs, and Core Web Vitals optimization to load under 1.2 seconds globally. AbuQitmirLabs delivers 100% source code and cloud IP ownership starting from $500 USD (PKR regional tiers available), helping B2B startups ship production web apps in 3 to 5 weeks.
+          </p>
+        </div>
 
         {/* Core Capabilities Specifications */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15 }}
-          className="mx-auto mb-12 max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg"
-        >
+        <div className="mx-auto mb-12 max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
             {[
-              "Responsive Website Design & Development",
-              "React, Next.js & Vue-Based Web Apps",
-              "E-Commerce Builds (Shopify, Custom Storefronts)",
-              "Headless CMS Integration",
-              "Core Web Vitals & Performance Optimization"
+              "Next.js Development Company Pakistan",
+              "React Web Development Agency Pakistan",
+              "Headless CMS Development Pakistan",
+              "E-Commerce Storefronts & API Integration",
+              "Core Web Vitals & Sub-Second Performance"
             ].map((bullet, idx) => (
               <div key={idx} className="flex items-start gap-3 group">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0 group-hover:bg-[#ccff00] transition-colors duration-300" />
@@ -486,14 +505,9 @@ Do not sign a website contract without these protective legal terms.
               Vercel Edge Platform <ExternalLink className="w-3 h-3" />
             </a>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="flex flex-col sm:flex-row gap-6 mb-24"
-        >
+        <div className="flex flex-col sm:flex-row gap-6 mb-24">
           <a 
             href="https://wa.me/923233260859"
             target="_blank"
@@ -501,7 +515,7 @@ Do not sign a website contract without these protective legal terms.
             className="px-8 py-8 rounded-3xl text-sm font-bold transition-all transform hover:scale-105 flex flex-col items-center justify-center gap-2 group bg-white text-black hover:bg-neutral-200"
           >
             <ArrowUpRight className="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            Get a Free Website Audit
+            Request Technical Audit
           </a>
           <button 
             onClick={() => {
@@ -521,9 +535,9 @@ Do not sign a website contract without these protective legal terms.
             className="px-8 py-8 rounded-3xl border-2 border-[#ccff00]/20 text-sm font-bold transition-all transform hover:scale-105 flex flex-col items-center justify-center gap-2 bg-[#ccff00]/5 text-white hover:bg-[#ccff00]/10 group"
           >
             <FileText className="w-6 h-6 group-hover:scale-110 transition-transform text-[#ccff00]" />
-            Free Contract Blueprint
+            IP Contract Blueprint
           </button>
-        </motion.div>
+        </div>
 
         {/* Visual Terminal/Dashboard Based on Snippet */}
         <motion.div 
@@ -634,7 +648,7 @@ Do not sign a website contract without these protective legal terms.
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-3 mb-16">
             <Layers className="text-blue-500" width={24} />
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white uppercase">Custom Web Development Services</h2>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white uppercase">Next.js Development Company Pakistan &amp; Headless CMS Services</h2>
           </div>
 
           <div className="flex flex-col lg:flex-row h-auto lg:h-[650px] gap-2">
@@ -677,7 +691,7 @@ Do not sign a website contract without these protective legal terms.
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-20">
              <span className="text-xs font-mono text-neutral-500 mb-4 uppercase tracking-[0.3em] font-bold block">[ WEB_ENGINEERING_STACK ]</span>
-             <h2 className="text-3xl font-bold text-white uppercase tracking-tight">Web Development Technologies</h2>
+             <h2 className="text-3xl font-bold text-white uppercase tracking-tight">React Web Development Agency Pakistan &amp; Headless CMS Stack</h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -878,7 +892,7 @@ Do not sign a website contract without these protective legal terms.
               <div className="absolute top-0 right-0 w-80 h-80 bg-blue-600/[0.03] rounded-full blur-3xl pointer-events-none" />
               <span className="text-[10px] font-mono text-blue-400 tracking-wider uppercase font-bold mb-3 block">[ API_ECOSYSTEM_KARACHI ]</span>
               <h2 id="api-integration-heading" className="text-2xl md:text-3xl lg:text-4xl font-bold text-white uppercase tracking-tight mb-6">
-                API Development &amp; Integration Services in Karachi
+                Web Development Company Karachi: API &amp; Headless CMS Development Pakistan
               </h2>
 
               <div className="space-y-4 text-neutral-300 font-light leading-relaxed font-sans max-w-4xl text-base md:text-lg">

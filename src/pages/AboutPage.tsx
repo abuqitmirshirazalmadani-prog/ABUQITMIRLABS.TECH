@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { 
@@ -70,8 +70,8 @@ const AboutPage = () => {
       icon: <Search className="w-5 h-5 text-rose-400" /> 
     },
     { 
-      title: "Graphics Design", 
-      path: "/graphics-design",
+      title: "Graphic Design", 
+      path: "/graphic-design",
       desc: "Crafting beautiful branding elements, UI/UX interaction vectors, guidelines and corporate layouts.", 
       icon: <Palette className="w-5 h-5 text-indigo-400" /> 
     },
@@ -97,75 +97,64 @@ const AboutPage = () => {
 
   return (
     <div className="bg-[#050505] text-zinc-400 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]/10 selection:text-white">
-      <Helmet>
-        <title>We Were Engineers First. Now We Engineer Growth</title>
-        <meta name="description" content="We aren't marketers who learned tech. We're engineers who learned marketing. Discover AbuQitmirLabs, our origin story, and The Revenue Velocity Engine." />
-        <link rel="canonical" href="https://www.abuqitmirlabs.tech/about" />
-        
-        {/* OG Tags */}
-        <meta property="og:title" content="We Were Engineers First. Now We Engineer Growth" />
-        <meta property="og:description" content="Most agencies deliver reports. We deliver systems. Discover AbuQitmirLabs, our origin story, and The Revenue Velocity Engine." />
-        <meta property="og:url" content="https://www.abuqitmirlabs.tech/about" />
-        <meta property="og:type" content="profile" />
-        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Dynamic JSON-LD Schema for 100% Technical SEO compliance */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@graph": [
-              {
-                "@type": "AboutPage",
-                "@id": "https://www.abuqitmirlabs.tech/about#webpage",
-                "url": "https://www.abuqitmirlabs.tech/about",
-                "name": "About AbuQitmirLabs and Founder Mohammad Shiraz Almadani",
-                "description": "Meet Abu Qitmir Mohammad Shiraz Al- Madani, founder of AbuQitmirLabs based in Karachi. We are a premier high-performance web, mobile app, and AI development agency.",
-                "isPartOf": {
-                  "@type": "WebSite",
-                  "@id": "https://www.abuqitmirlabs.tech/#website",
-                  "url": "https://www.abuqitmirlabs.tech/",
-                  "name": "AbuQitmirLabs"
-                }
-              },
-              {
-                "@type": "ProfessionalService",
-                "@id": "https://www.abuqitmirlabs.tech/#organization",
-                "name": "AbuQitmirLabs",
-                "url": "https://www.abuqitmirlabs.tech",
-                "logo": "https://www.abuqitmirlabs.tech/logo.png",
-                "image": "https://www.abuqitmirlabs.tech/logo.png",
-                "priceRange": "$$$",
-                "telephone": "+923233260859",
-                "email": "hello@abuqitmirlabs.tech",
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
-                  "addressLocality": "Karachi",
-                  "addressRegion": "Sindh",
-                  "postalCode": "75160",
-                  "addressCountry": "PK"
-                },
-                "geo": {
-                  "@type": "GeoCoordinates",
-                  "latitude": "24.842691448838718",
-                  "longitude": "67.1862014846566"
-                },
-                "sameAs": [
-                  "https://www.facebook.com/profile.php?id=61583768706452",
-                  "https://x.com/AbuQitmir",
-                  "https://www.linkedin.com/in/abu-qitmir-697423390/",
-                  "https://www.instagram.com/abuqitmirshirazalmadani/",
-                  "https://www.youtube.com/@AbuQitmir",
-                  "https://www.pinterest.com/abuqitmir",
-                  "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani",
-                  "https://www.goodfirms.co/company/abuqitmirlabs-tech",
-                  "https://clutch.co/profile/abuqitmirlabstech"
-                ]
-              }
+      <SEO
+        title="About AbuQitmirLabs | B2B Growth Engineering Since 2021"
+        description="Founded in 2021 by AbuQitmir Mohammad Shiraz Al Madani in Karachi. 5+ years building custom software, AI agents, and SEO systems for global B2B teams."
+        canonical="https://www.abuqitmirlabs.tech/about"
+        ogTitle="About AbuQitmirLabs | B2B Growth Engineering Since 2021"
+        ogDescription="Most agencies deliver reports. We deliver systems. Discover AbuQitmirLabs, our origin story, and The Revenue Velocity Engine."
+        ogImage="https://www.abuqitmirlabs.tech/logo.png"
+        schema={[
+          {
+            "@type": "AboutPage",
+            "@id": "https://www.abuqitmirlabs.tech/about#webpage",
+            "url": "https://www.abuqitmirlabs.tech/about",
+            "name": "About AbuQitmirLabs and Founder Mohammad Shiraz Almadani",
+            "description": "Meet Abu Qitmir Mohammad Shiraz Al-Madani, founder of AbuQitmirLabs based in Karachi. We are a premier high-performance web, mobile app, and AI development agency.",
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://www.abuqitmirlabs.tech/#website",
+              "url": "https://www.abuqitmirlabs.tech/",
+              "name": "AbuQitmirLabs"
+            }
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://www.abuqitmirlabs.tech/#organization",
+            "name": "AbuQitmirLabs",
+            "url": "https://www.abuqitmirlabs.tech",
+            "logo": "https://www.abuqitmirlabs.tech/logo.png",
+            "image": "https://www.abuqitmirlabs.tech/logo.png",
+            "priceRange": "$$$",
+            "telephone": "+923233260859",
+            "email": "hello@abuqitmirlabs.tech",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+              "addressLocality": "Karachi",
+              "addressRegion": "Sindh",
+              "postalCode": "75160",
+              "addressCountry": "PK"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 24.842691448838718,
+              "longitude": 67.1862014846566
+            },
+            "sameAs": [
+              "https://www.facebook.com/profile.php?id=61583768706452",
+              "https://x.com/AbuQitmir",
+              "https://www.linkedin.com/in/abu-qitmir-697423390/",
+              "https://www.instagram.com/abuqitmirshirazalmadani/",
+              "https://www.youtube.com/@AbuQitmir",
+              "https://www.pinterest.com/abuqitmir",
+              "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani",
+              "https://www.goodfirms.co/company/abuqitmirlabs-tech",
+              "https://clutch.co/profile/abuqitmirlabstech"
             ]
-          })}
-        </script>
-      </Helmet>
+          }
+        ]}
+      />
       
       <Header />
       <Breadcrumbs />
@@ -187,15 +176,12 @@ const AboutPage = () => {
                 KARACHI STUDIO — ACTIVE GLOBALLY
              </motion.div>
              
-             <motion.h1 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-serif font-light text-white tracking-tighter leading-[0.98] mb-8 animate-enter-delay-1"
+             <h1 
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-serif font-light text-white tracking-tighter leading-[0.98] mb-8"
              >
                 We Were Engineers First. <br />
                 <span className="text-zinc-600 font-serif italic">Now We Engineer Growth.</span>
-             </motion.h1>
+             </h1>
              
              <motion.p 
                 initial={{ opacity: 0 }}
@@ -412,7 +398,7 @@ const AboutPage = () => {
                     <div>
                       <h4 className="text-xs font-mono uppercase text-zinc-500">OFFICE ADDRESS</h4>
                       <p className="text-sm text-zinc-300 font-sans mt-0.5 font-light leading-relaxed">
-                        8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town, 75160, Karachi, Pakistan
+                        8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town, Karachi, 75160, Pakistan
                       </p>
                     </div>
                   </div>

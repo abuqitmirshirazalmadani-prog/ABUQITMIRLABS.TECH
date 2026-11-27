@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -9,6 +8,7 @@ import Footer from '../components/Footer';
 import ServiceToolCtaBanner from '../components/ServiceToolCtaBanner';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CountryMarquee from '../components/CountryMarquee';
+import SEO from '../components/SEO';
 import { mobileAppSchema } from '../utils/mobileAppStaticHtml';
 
 const MobileAppDevelopmentPage: React.FC = () => {
@@ -132,27 +132,14 @@ const MobileAppDevelopmentPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans antialiased">
-      <Helmet>
-        <title>Flutter Mobile App Development Services | AbuQitmirLabs</title>
-        <meta name="description" content="One Flutter codebase, both app stores. We build iOS and Android apps for startups that need to launch fast without cutting corners on performance." />
-        <link rel="canonical" href="https://www.abuqitmirlabs.tech/mobile-app-development" />
-
-        {/* Open Graph */}
-        <meta property="og:title" content="Flutter Mobile App Development Services | AbuQitmirLabs" />
-        <meta property="og:description" content="One Flutter codebase, both app stores. We build iOS and Android apps for startups that need to launch fast without cutting corners on performance." />
-        <meta property="og:url" content="https://www.abuqitmirlabs.tech/mobile-app-development" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Flutter Mobile App Development Services | AbuQitmirLabs" />
-        <meta name="twitter:description" content="One Flutter codebase, both app stores. We build iOS and Android apps for startups that need to launch fast without cutting corners on performance." />
-        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Unified JSON-LD Schema */}
-        <script type="application/ld+json">{JSON.stringify(mobileAppSchema)}</script>
-      </Helmet>
+      <SEO
+        title="Mobile App Development Services Pakistan | AbuQitmirLabs"
+        description="Flutter and native iOS/Android app development from Karachi. One codebase, both app stores, full source code ownership. Senior-led delivery. Book a call."
+        canonical="https://www.abuqitmirlabs.tech/mobile-app-development"
+        ogImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        twitterImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        schema={mobileAppSchema}
+      />
 
       {/* Accessible Skip Link */}
       <a 
@@ -177,20 +164,20 @@ const MobileAppDevelopmentPage: React.FC = () => {
         <section className="relative py-16 md:py-24 overflow-hidden border-b border-white/10" aria-labelledby="mobile-hero-title">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(204,255,0,0.06),transparent_50%)] pointer-events-none" />
           
-          <div className="max-w-7xl mx-auto px-6 relative z-10 animate-enter">
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[#ccff00] text-xs font-mono uppercase tracking-widest mb-6">
               <svg className="w-4 h-4 text-[#ccff00]" aria-hidden="true"><use href="/sprite.svg#icon-smartphone" /></svg>
               iOS, Android &amp; Cross-Platform Engineering
             </div>
 
-            <h1 id="mobile-hero-title" className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 max-w-5xl text-white animate-enter-delay-1">
-              Flutter Mobile App Development Services, Built for Both App Stores
+            <h1 id="mobile-hero-title" className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 max-w-5xl text-white">
+              Flutter &amp; Native Mobile App Development Services
             </h1>
 
             {/* Direct Answer Block for AEO/GEO */}
-            <div className="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl max-w-4xl mb-8 shadow-2xl backdrop-blur-md animate-enter-delay-2">
+            <div className="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl max-w-4xl mb-8 shadow-2xl backdrop-blur-md">
               <p className="text-sm md:text-base text-gray-200 leading-relaxed font-mono">
-                <strong className="text-[#ccff00]">Direct Answer:</strong> Mobile app development is the process of designing and building software applications that run on smartphones and tablets — either natively on iOS/Android or cross-platform using frameworks like Flutter or React Native. AbuQitmirLabs builds high-performance mobile apps for startups and growing businesses, handling everything from UX design and development through to App Store and Google Play submission.
+                <strong className="text-[#ccff00]">Direct Answer:</strong> Mobile app development is the engineering of native (Swift, Kotlin) or cross-platform (Flutter, React Native) applications for iOS and Android smartphones. From Karachi, AbuQitmirLabs operates as a mobile app development company in Pakistan handling UX/UI design, backend APIs, AI integration, and App Store/Google Play approval with 100% source code ownership.
               </p>
             </div>
 
@@ -200,11 +187,11 @@ const MobileAppDevelopmentPage: React.FC = () => {
               <span className="text-zinc-600">•</span>
               <span>🔒 100% IP &amp; Source Code Ownership</span>
               <span className="text-zinc-600">•</span>
-              <span>⚡ Zero Vendor Lock-In</span>
+              <span>⚡ Mobile MVPs from $5,000</span>
             </div>
 
             <p className="text-xl md:text-2xl text-gray-400 max-w-3xl leading-relaxed mb-10 font-light">
-              Transform your digital vision into a fast, fluid mobile product. We engineer resilient native and cross-platform apps built for sustained user retention and effortless scalability.
+              Transform your digital vision into a fast, fluid mobile product. Our Karachi engineering team builds resilient iOS and Android apps for startups and B2B companies in the US, UK, GCC, and Pakistan.
             </p>
 
             <div className="flex flex-wrap items-center gap-6">
@@ -227,35 +214,21 @@ const MobileAppDevelopmentPage: React.FC = () => {
           </div>
         </section>
 
-        {/* AEO Direct Answer Block */}
-        <section className="py-10 bg-zinc-950/80 border-b border-white/10" aria-label="Direct Answer">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="bg-zinc-900/90 border border-[#ccff00]/30 rounded-2xl p-6 md:p-8 max-w-4xl">
-              <p className="text-lg md:text-xl font-bold text-white mb-2">
-                <strong>How much does mobile app development cost?</strong>
-              </p>
-              <p className="text-gray-300 text-base leading-relaxed font-light">
-                Mobile app development costs range from $5,000 for simple apps to $150,000+ for complex enterprise platforms. Cost depends on platform (iOS, Android, cross-platform), features, and team location. Pakistan-based teams like AbuQitmirLabs deliver the same quality at 60-70% lower cost than US or UK agencies.
-              </p>
-            </div>
-          </div>
-        </section>
-
         <CountryMarquee />
 
-        {/* Section 1: What Is Mobile App Development? */}
+        {/* Section 1: Mobile App Development for Startups Pakistan */}
         <section className="py-20 md:py-28 bg-zinc-950/60 border-b border-white/10" aria-labelledby="what-is-mobile-app-h2">
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-4xl">
               <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Foundation</span>
               <h2 id="what-is-mobile-app-h2" className="text-3xl md:text-5xl font-extrabold tracking-tight mb-8 text-white">
-                What Is Mobile App Development?
+                Mobile App Development for Startups Pakistan &amp; Global Teams
               </h2>
               <p className="text-gray-300 text-lg leading-relaxed mb-6 font-light">
                 A mobile app is not a website that works on a phone. It's a purpose-built piece of software that uses the device's native hardware — camera, GPS, push notifications, biometrics — to deliver an experience a browser can't match.
               </p>
               <p className="text-gray-300 text-lg leading-relaxed mb-6 font-light">
-                Over 60% of all web searches now happen on mobile devices, and user expectations for app performance have risen accordingly. A slow, poorly designed app loses users in the first session. A well-built app becomes the primary touchpoint between a business and its customers.
+                User expectations for mobile responsiveness and offline reliability leave zero room for sluggish prototypes. A slow, poorly designed app loses users in the first session. A well-built app becomes the primary touchpoint between a business and its customers.
               </p>
               <p className="text-gray-300 text-lg leading-relaxed mb-6 font-light">
                 At AbuQitmirLabs, we build apps that are engineered to perform — not just prototyped to demo. Every project comes with full source code ownership and no licensing dependency on us after handover.
@@ -269,10 +242,10 @@ const MobileAppDevelopmentPage: React.FC = () => {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest">Architectures &amp; Frameworks</span>
             <h2 id="mobile-apps-we-build-h2" className="text-3xl md:text-5xl font-extrabold mt-3 mb-6 text-white">
-              Mobile Apps We Build
+              Flutter &amp; React Native Development Company Pakistan
             </h2>
             <p className="text-gray-400 text-base md:text-lg font-light">
-              From unified multi-platform engines to hardware-accelerated native builds, we select and execute the optimal tech stack for your product.
+              From unified Flutter codebases and React Native builds to hardware-accelerated native Swift and Kotlin apps, we execute the optimal stack for your product.
             </p>
           </div>
 
@@ -323,7 +296,7 @@ const MobileAppDevelopmentPage: React.FC = () => {
             <div className="max-w-3xl mb-16">
               <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Delivery Lifecycle</span>
               <h2 id="mobile-process-h2" className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 text-white">
-                Our Mobile App Development Process
+                iOS &amp; Android App Development Karachi: Our 7-Step Process
               </h2>
               <p className="text-gray-400 text-lg font-light leading-relaxed">
                 A structured 7-step engineering methodology delivering robust, store-ready mobile applications without scope drift.
@@ -362,13 +335,13 @@ const MobileAppDevelopmentPage: React.FC = () => {
           </div>
         </section>
 
-        {/* Section 5: Flutter vs Native vs React Native — Which Is Right for You? */}
+        {/* Section 5: Cross Platform Mobile App Development Comparison */}
         <section className="py-20 md:py-28 bg-zinc-950/60 border-b border-white/10" aria-labelledby="framework-comparison-h2">
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-4xl">
               <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Architectural Comparison</span>
               <h2 id="framework-comparison-h2" className="text-3xl md:text-5xl font-extrabold tracking-tight mb-8 text-white">
-                Flutter vs Native vs React Native — Which Is Right for You?
+                Cross Platform Mobile App Development: Flutter vs Native vs React Native
               </h2>
               <p className="text-gray-300 text-lg leading-relaxed mb-8 font-light">
                 The right choice depends on your app's requirements, not our framework preference.
@@ -435,37 +408,37 @@ const MobileAppDevelopmentPage: React.FC = () => {
               How Much Does Mobile App Development Cost?
             </h2>
             <p className="text-gray-400 text-lg font-light leading-relaxed">
-              Cost depends on scope, complexity, platform choice, and backend requirements. As a general reference:
+              Mobile app development costs range from $5,000 for focused MVPs to $150,000+ for enterprise platforms, depending on platform choice, backend infrastructure, and integrations:
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div className="p-8 rounded-2xl bg-zinc-900/50 border border-white/10 flex flex-col justify-between">
               <div>
-                <h3 className="text-xl font-bold text-white mb-2">Simple Single-Workflow Apps</h3>
-                <p className="text-[#ccff00] font-mono text-xs uppercase tracking-wider mb-4">Low-to-mid five figures</p>
+                <h3 className="text-xl font-bold text-white mb-2">Focused MVP Apps</h3>
+                <p className="text-[#ccff00] font-mono text-xs uppercase tracking-wider mb-4">Starting from $5,000 USD</p>
                 <p className="text-gray-300 text-sm leading-relaxed font-light">
-                  One core feature, clean UI, standard device permissions, and no complex custom backend.
+                  One core workflow, clean Flutter or React Native UI, standard authentication, and app store submission readiness.
                 </p>
               </div>
             </div>
 
             <div className="p-8 rounded-2xl bg-zinc-900/80 border border-[#ccff00]/40 flex flex-col justify-between">
               <div>
-                <h3 className="text-xl font-bold text-white mb-2">Mid-Complexity Apps</h3>
-                <p className="text-[#ccff00] font-mono text-xs uppercase tracking-wider mb-4">Mid-to-upper five figures</p>
+                <h3 className="text-xl font-bold text-white mb-2">Mid-Complexity Dual-Platform</h3>
+                <p className="text-[#ccff00] font-mono text-xs uppercase tracking-wider mb-4">Starting from $18,000 USD</p>
                 <p className="text-gray-300 text-sm leading-relaxed font-light">
-                  Multiple screens, user accounts, API integrations, payment processing, push notifications, and both platforms.
+                  Multiple screens, role-based accounts, API integrations, payment gateways, push notifications, and both iOS &amp; Android stores.
                 </p>
               </div>
             </div>
 
             <div className="p-8 rounded-2xl bg-zinc-900/50 border border-white/10 flex flex-col justify-between">
               <div>
-                <h3 className="text-xl font-bold text-white mb-2">Complex &amp; Enterprise Apps</h3>
-                <p className="text-[#ccff00] font-mono text-xs uppercase tracking-wider mb-4">Six figures and above</p>
+                <h3 className="text-xl font-bold text-white mb-2">Complex &amp; AI-Powered Apps</h3>
+                <p className="text-[#ccff00] font-mono text-xs uppercase tracking-wider mb-4">Starting from $45,000+ USD</p>
                 <p className="text-gray-300 text-sm leading-relaxed font-light">
-                  Real-time features, AI integration, custom backend infrastructure, offline data sync, and enterprise security compliance.
+                  Real-time telemetry, LLM/RAG integration, custom backend infrastructure, offline sync, and enterprise security compliance.
                 </p>
               </div>
             </div>

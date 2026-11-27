@@ -1,14 +1,11 @@
 "use client";
 
-import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { motion } from 'motion/react';
+import React from 'react';
 import {
   Target,
   TrendingUp,
   Code2,
   Globe,
-  Smartphone,
   Cpu,
   Palette,
   PenTool,
@@ -17,7 +14,6 @@ import {
   Star,
   ArrowUpRight,
   SearchCode,
-  BarChart3,
   Layers,
   Rocket,
   LineChart,
@@ -29,7 +25,7 @@ import Footer from '../components/Footer';
 import ServiceToolCtaBanner from '../components/ServiceToolCtaBanner';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CountryMarquee from '../components/CountryMarquee';
-import HeroText from '../components/ui/hero-shutter-text';
+import SEO from '../components/SEO';
 
 const DigitalMarketingPage = () => {
   const faqData = [
@@ -68,162 +64,143 @@ const DigitalMarketingPage = () => {
     { category: "Analytics & Attribution", tools: "GA4, Search Console, event-level conversion tracking", purpose: "Tie organic work to signups, not just traffic" }
   ];
 
+  const digitalMarketingSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.abuqitmirlabs.tech/digital-marketing#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abuqitmirlabs.tech/" },
+          { "@type": "ListItem", "position": 2, "name": "Digital Marketing", "item": "https://www.abuqitmirlabs.tech/digital-marketing" }
+        ]
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+        "name": "AbuQitmirLabs",
+        "url": "https://www.abuqitmirlabs.tech/",
+        "logo": "https://www.abuqitmirlabs.tech/logo.png",
+        "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+        "telephone": "+923233260859",
+        "email": "hello@abuqitmirlabs.tech",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+          "addressLocality": "Karachi",
+          "addressRegion": "Sindh",
+          "postalCode": "75160",
+          "addressCountry": "PK"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 24.842691448838718, "longitude": 67.1862014846566 },
+        "sameAs": [
+          "https://www.linkedin.com/in/abu-qitmir-697423390/",
+          "https://www.facebook.com/profile.php?id=61583768706452",
+          "https://www.instagram.com/abuqitmirshirazalmadani/",
+          "https://x.com/AbuQitmir",
+          "https://www.youtube.com/@AbuQitmir",
+          "https://clutch.co/profile/abuqitmirlabstech",
+          "https://www.goodfirms.co/company/abuqitmirlabs-tech"
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://www.abuqitmirlabs.tech/digital-marketing#service",
+        "name": "B2B Digital Marketing Services for Software & SaaS Companies",
+        "serviceType": "Digital Marketing",
+        "provider": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
+        "description": "Organic digital marketing for software and SaaS companies: technical SEO, E-E-A-T content strategy, and conversion-focused web architecture, built by the same team that engineers the product.",
+        "areaServed": [
+          { "@type": "Country", "name": "Pakistan" },
+          { "@type": "Country", "name": "United States" },
+          { "@type": "Country", "name": "United Kingdom" },
+          { "@type": "Country", "name": "United Arab Emirates" },
+          { "@type": "Country", "name": "Saudi Arabia" }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Digital Marketing Solutions for Software Companies",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SaaS Digital Marketing Agency Retainer" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Organic Growth & Technical SEO for Tech Startups" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Inbound Marketing for Software Companies" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Conversion Architecture & Pricing Page Optimization" } }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.abuqitmirlabs.tech/digital-marketing#faq",
+        "mainEntity": faqData.map(item => ({
+          "@type": "Question",
+          "name": item.q,
+          "acceptedAnswer": { "@type": "Answer", "text": item.a }
+        }))
+      },
+      {
+        "@type": "HowTo",
+        "@id": "https://www.abuqitmirlabs.tech/digital-marketing#howto",
+        "name": "Our Digital Marketing Framework for Software Companies",
+        "description": "A 5-step approach combining technical SEO, content authority, and conversion architecture, built around how software is actually evaluated and bought.",
+        "step": [
+          { "@type": "HowToStep", "name": "Positioning & Market Audit", "text": "Mapping how your product is actually searched for, compared, and evaluated by the buyer who will use it, not generic keyword volume." },
+          { "@type": "HowToStep", "name": "Technical SEO & Site Architecture", "text": "Fixing the crawl, speed, and schema foundation so the content work that follows has somewhere to compound." },
+          { "@type": "HowToStep", "name": "Content Built for Technical Buyers", "text": "Documentation-grade articles, comparison pages, and case studies that hold up under scrutiny from an engineer or technical founder." },
+          { "@type": "HowToStep", "name": "Conversion Architecture", "text": "Reviewing pricing pages, signup flows, and site performance so earned traffic actually converts instead of leaking out." },
+          { "@type": "HowToStep", "name": "Measurement Tied to Signups", "text": "Attribution built around trials and signups, not just sessions and impressions." }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className="bg-[#000000] text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]/30 selection:text-white">
-      <Helmet>
-        <title>Digital Marketing Services for Software | AbuQitmirLabs</title>
-        <meta name="description" content="Digital marketing for software and SaaS companies: technical SEO, E-E-A-T content, and conversion-focused web architecture. No paid ads." />
-        <link rel="canonical" href="https://www.abuqitmirlabs.tech/digital-marketing" />
-
-        <meta property="og:title" content="Digital Marketing Services for Software | AbuQitmirLabs" />
-        <meta property="og:description" content="Digital marketing for software and SaaS companies: technical SEO, E-E-A-T content, and conversion-focused web architecture. No paid ads." />
-        <meta property="og:url" content="https://www.abuqitmirlabs.tech/digital-marketing" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Digital Marketing Services for Software | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Digital marketing for software and SaaS companies: technical SEO, E-E-A-T content, and conversion-focused web architecture. No paid ads." />
-        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify([
-              {
-                "@context": "https://schema.org",
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abuqitmirlabs.tech" },
-                  { "@type": "ListItem", "position": 2, "name": "Digital Marketing", "item": "https://www.abuqitmirlabs.tech/digital-marketing" }
-                ]
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "ProfessionalService",
-                "name": "AbuQitmirLabs",
-                "url": "https://www.abuqitmirlabs.tech",
-                "logo": "https://www.abuqitmirlabs.tech/logo.png",
-                "image": "https://www.abuqitmirlabs.tech/logo.png",
-                "telephone": "+923233260859",
-                "priceRange": "$$$",
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
-                  "addressLocality": "Karachi",
-                  "addressRegion": "Sindh",
-                  "postalCode": "75160",
-                  "addressCountry": "PK"
-                },
-                "geo": { "@type": "GeoCoordinates", "latitude": "24.842691448838718", "longitude": "67.1862014846566" },
-                "sameAs": ["https://wa.me/923233260859", "https://github.com/abuqitmir"]
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "Service",
-                "name": "Digital Marketing Services for Software & SaaS Companies",
-                "serviceType": "Digital Marketing",
-                "provider": {
-                  "@type": "LocalBusiness",
-                  "name": "AbuQitmirLabs",
-                  "url": "https://www.abuqitmirlabs.tech",
-                  "logo": "https://www.abuqitmirlabs.tech/logo.png",
-                  "image": "https://www.abuqitmirlabs.tech/logo.png",
-                  "address": { "@type": "PostalAddress", "addressLocality": "Karachi", "addressCountry": "PK" }
-                },
-                "description": "Organic digital marketing for software and SaaS companies: technical SEO, E-E-A-T content strategy, and conversion-focused web architecture, built by the same team that engineers the product.",
-                "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
-                "hasOfferCatalog": {
-                  "@type": "OfferCatalog",
-                  "name": "Digital Marketing Solutions for Software Companies",
-                  "itemListElement": [
-                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Digital Marketing for Early-Stage SaaS", "description": "Positioning, technical SEO, and content built for a product still validating its market, so organic growth compounds from day one instead of being retrofitted later." } },
-                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Digital Marketing for Growth-Stage Software Companies", "description": "Scaling organic acquisition through content clusters, technical SEO, and conversion architecture for teams past product-market fit and ready to compound search traffic." } },
-                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Digital Marketing for Fintech & Healthcare SaaS", "description": "Content and search strategy for regulated software categories, where technical accuracy and compliance-aware messaging matter as much as search rankings." } },
-                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Digital Marketing for Developer Tools & API Products", "description": "Marketing built for a buyer who reads documentation before a sales deck: technical content, comparison pages, and a site structure that respects that evaluation process." } }
-                  ]
-                }
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                "mainEntity": faqData.map(item => ({
-                  "@type": "Question",
-                  "name": item.q,
-                  "acceptedAnswer": { "@type": "Answer", "text": item.a }
-                }))
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "HowTo",
-                "name": "Our Digital Marketing Framework for Software Companies",
-                "description": "A 5-step approach combining technical SEO, content authority, and conversion architecture, built around how software is actually evaluated and bought.",
-                "step": [
-                  { "@type": "HowToStep", "name": "Positioning & Market Audit", "text": "Mapping how your product is actually searched for, compared, and evaluated by the buyer who will use it, not generic keyword volume." },
-                  { "@type": "HowToStep", "name": "Technical SEO & Site Architecture", "text": "Fixing the crawl, speed, and schema foundation so the content work that follows has somewhere to compound." },
-                  { "@type": "HowToStep", "name": "Content Built for Technical Buyers", "text": "Documentation-grade articles, comparison pages, and case studies that hold up under scrutiny from an engineer or technical founder." },
-                  { "@type": "HowToStep", "name": "Conversion Architecture", "text": "Reviewing pricing pages, signup flows, and site performance so earned traffic actually converts instead of leaking out." },
-                  { "@type": "HowToStep", "name": "Measurement Tied to Signups", "text": "Attribution built around trials and signups, not just sessions and impressions." }
-                ]
-              }
-            ])
-          }}
-        ></script>
-      </Helmet>
+      <SEO
+        title="B2B Digital Marketing Agency Pakistan | AbuQitmirLabs"
+        description="Organic digital marketing for B2B software and SaaS companies from Karachi. Technical SEO, E-E-A-T content, and conversion architecture. No paid ads."
+        canonical="https://www.abuqitmirlabs.tech/digital-marketing"
+        ogImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        twitterImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        schema={digitalMarketingSchema}
+      />
 
       <Header />
       <Breadcrumbs />
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex flex-col justify-center items-center pt-24 md:pt-32 pb-20 px-6 z-10 bg-black overflow-hidden animate-enter">
+      <section className="relative min-h-[90vh] flex flex-col justify-center items-center pt-24 md:pt-32 pb-20 px-6 z-10 bg-black overflow-hidden">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-[#ccff00]/5 rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-purple-950/20 rounded-full blur-[120px] pointer-events-none" />
 
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 bg-zinc-900/90 border border-white/10 px-6 py-2 rounded-full font-mono text-xs uppercase tracking-widest text-[#ccff00] mb-8 backdrop-blur-md"
-        >
+        <div className="inline-flex items-center gap-2 bg-zinc-900/90 border border-white/10 px-6 py-2 rounded-full font-mono text-xs uppercase tracking-widest text-[#ccff00] mb-8 backdrop-blur-md">
           <span className="w-2 h-2 rounded-full bg-[#ccff00] animate-pulse" />
-          Marketing Built by the Team That Engineers the Product
-        </motion.div>
-
-        <div className="mb-4">
-          <HeroText text="GROWTH" />
+          B2B Digital Marketing Agency Pakistan · Built by Engineers
         </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white text-center mb-10 leading-[0.95] max-w-6xl uppercase animate-enter-delay-1"
-        >
-          Digital Marketing <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-zinc-400">for Software &amp;</span> <br />
-          <span className="text-[#ccff00]">SaaS Companies</span>
-        </motion.h1>
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white text-center mb-8 leading-[0.95] max-w-6xl uppercase">
+          Digital Marketing Services for Software &amp; SaaS Companies
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-lg md:text-xl text-[#d3c8b8] text-center max-w-4xl mb-12 leading-relaxed font-sans font-light"
-        >
-          No paid ads, no vanity metrics. We build the organic layer that software companies actually need: <Link to="/seo-mastery" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">technical SEO</Link>, <Link to="/content-writing" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">E-E-A-T content</Link>, and <Link to="/web-development" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">conversion architecture</Link>, backed by <Link to="/custom-software" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">custom software</Link> and <Link to="/ai-agent-development" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">AI agent</Link> engineering. Review our <Link to="/case-studies" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Case Studies</Link>, read the <Link to="/blog" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">blog</Link>, or <Link to="/contact" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">get in touch</Link>.
-        </motion.p>
+        <div className="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl max-w-4xl mb-8 shadow-2xl text-left">
+          <p className="text-sm md:text-base text-zinc-200 leading-relaxed font-mono">
+            <strong className="text-[#ccff00]">Direct Answer:</strong> B2B digital marketing for software and SaaS companies combines technical SEO, E-E-A-T documentation-grade content, and conversion-focused web architecture so organic search compounds trials and demo bookings. Unlike generic ad agencies, AbuQitmirLabs connects owned search visibility directly to software engineering and conversion design from Karachi.
+          </p>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15 }}
-          className="mx-auto mb-12 max-w-4xl border border-white/10 py-8 px-6 bg-zinc-900/60 backdrop-blur-md rounded-2xl w-full"
-        >
+        <p className="text-lg md:text-xl text-[#d3c8b8] text-center max-w-4xl mb-12 leading-relaxed font-sans font-light">
+          No paid ads, no vanity metrics. While <Link to="/seo-mastery" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">SEO Mastery</Link> handles deep technical search optimization and <Link to="/content-writing" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Content Writing</Link> produces long-form engineering guides, Digital Marketing aligns organic acquisition, positioning, and <Link to="/web-development" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">conversion architecture</Link> into one pipeline. Explore our <Link to="/case-studies" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Case Studies</Link> or <Link to="/contact" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">book a discovery call</Link>.
+        </p>
+
+        <div className="mx-auto mb-12 max-w-4xl border border-white/10 py-8 px-6 bg-zinc-900/60 backdrop-blur-md rounded-2xl w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
             {[
               "Technical SEO for Search-Driven Software Growth",
               "E-E-A-T Content for Technical Buyers",
               "Conversion-Focused Pricing & Signup Architecture",
               "Brand Identity That Reads as Trustworthy",
-              "No Paid Ads, No Social Content Mills"
+              "No Paid Ads, No Social Content Mills",
+              "Retainers Starting from $800 / month"
             ].map((bullet, idx) => (
               <div key={idx} className="flex items-start gap-3 group">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00] mt-2 shrink-0 group-hover:bg-white transition-colors duration-300" />
@@ -231,34 +208,27 @@ const DigitalMarketingPage = () => {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="flex flex-col sm:flex-row gap-6 w-full max-w-xl justify-center"
-        >
-          <a
-            href="https://wa.me/923233260859"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-10 py-6 bg-[#ccff00] text-black text-lg font-black rounded-2xl hover:scale-105 transition-all flex flex-col items-center justify-center gap-2 uppercase tracking-wider shadow-[0_0_30px_rgba(204,255,0,0.15)]"
+        <div className="flex flex-col sm:flex-row gap-6 w-full max-w-xl justify-center">
+          <Link
+            to="/contact"
+            className="px-10 py-6 bg-[#ccff00] text-black text-lg font-black rounded-2xl hover:scale-105 transition-all flex items-center justify-center gap-2 uppercase tracking-wider shadow-[0_0_30px_rgba(204,255,0,0.15)]"
           >
             <Zap size={22} className="text-black" />
-            Get a Free Marketing Audit
-          </a>
+            Request Marketing Audit
+          </Link>
           <button
             onClick={() => {
               const el = document.getElementById('dm-pricing');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="px-10 py-6 bg-zinc-900/90 border border-white/15 text-white hover:border-[#ccff00] text-lg font-black rounded-2xl hover:scale-105 transition-all flex flex-col items-center justify-center gap-2 uppercase tracking-wider backdrop-blur-sm"
+            className="px-10 py-6 bg-zinc-900/90 border border-white/15 text-white hover:border-[#ccff00] text-lg font-black rounded-2xl hover:scale-105 transition-all flex items-center justify-center gap-2 uppercase tracking-wider backdrop-blur-sm"
           >
             <Star size={22} className="text-[#ccff00]" />
             <span>See Engagement Options</span>
           </button>
-        </motion.div>
+        </div>
       </section>
 
       {/* Section 2: The Problem / Opportunity */}
@@ -324,11 +294,11 @@ const DigitalMarketingPage = () => {
           <div className="mb-20 text-center max-w-4xl mx-auto">
             <span className="text-xs font-mono text-[#ccff00] mb-4 uppercase tracking-[0.4em] font-bold block">[ SERVICE_SCOPE ]</span>
             <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-6 uppercase">
-              What Our Digital Marketing <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] to-emerald-400">Services Cover</span>
+              SaaS Digital Marketing Agency &amp; <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] to-emerald-400">Inbound Scope</span>
             </h2>
             <p className="text-base md:text-lg text-zinc-300 font-sans leading-relaxed">
-              For a <strong className="text-white">software or SaaS company</strong>, we work across the four layers that actually move signups, not the parts that are easy to sell as a retainer:
+              As an <strong className="text-white">organic growth agency for tech startups</strong> and SaaS teams, we deliver <strong className="text-white">inbound marketing for software companies</strong> across the four layers that actually move signups:
             </p>
           </div>
 
@@ -453,16 +423,16 @@ const DigitalMarketingPage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <span className="text-xs font-mono text-[#ccff00] uppercase tracking-[0.3em] font-black block mb-4">// SELECT YOUR ENGAGEMENT</span>
-            <h2 className="text-3xl md:text-5xl font-sans font-black tracking-tight uppercase">Engagement Options</h2>
+            <h2 className="text-3xl md:text-5xl font-sans font-black tracking-tight uppercase">B2B Digital Marketing Services Pakistan: Engagement Options</h2>
             <p className="text-sm md:text-base text-zinc-400 font-sans mt-4 leading-relaxed">
-              Pricing depends on scope, content volume, and whether a site rebuild is involved. Request a free audit for a number tied to your actual situation.
+              Transparent retainers built for tech startup marketing agency engagements. Request a technical audit for a number tied to your exact scope.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
-                title: "Foundation",
+                title: "Foundation (From $800/mo)",
                 icon: <Rocket className="w-6 h-6 text-cyan-400" />,
                 items: [
                   "Technical SEO audit and fixes",
@@ -473,7 +443,7 @@ const DigitalMarketingPage = () => {
                 customStyle: "border-l-4 border-cyan-400 pl-6"
               },
               {
-                title: "Growth",
+                title: "Growth (From $1,800/mo)",
                 icon: <LineChart className="w-6 h-6 text-purple-400" />,
                 items: [
                   "Everything in Foundation",
@@ -484,7 +454,7 @@ const DigitalMarketingPage = () => {
                 customStyle: "border-l-4 border-purple-400 pl-6"
               },
               {
-                title: "Full Engineering Partner",
+                title: "Full Engineering Partner (Custom)",
                 icon: <ShieldCheck className="w-6 h-6 text-fuchsia-400" />,
                 items: [
                   "Everything in Growth",
@@ -557,7 +527,7 @@ const DigitalMarketingPage = () => {
           </p>
 
           <div className="bg-zinc-900/80 border border-white/10 p-8 md:p-10 rounded-3xl max-w-2xl mx-auto mb-16 text-left backdrop-blur-sm">
-            <h3 className="text-xl md:text-2xl font-black uppercase text-white mb-2">Get a Free Marketing Audit</h3>
+            <h3 className="text-xl md:text-2xl font-black uppercase text-white mb-2">Request a Marketing Audit</h3>
             <p className="text-sm text-zinc-400 font-sans mb-6">
               We review your technical SEO, content, and conversion architecture, and tell you what is actually worth fixing first.
             </p>
@@ -604,7 +574,7 @@ const DigitalMarketingPage = () => {
               { title: "Web Development", path: "/web-development", icon: <Globe className="w-5 h-5" /> },
               { title: "Custom Software", path: "/custom-software", icon: <Code2 className="w-5 h-5" /> },
               { title: "AI Agents", path: "/ai-agent-development", icon: <Cpu className="w-5 h-5" /> },
-              { title: "Creative & Branding", path: "/graphics-design", icon: <Palette className="w-5 h-5" /> }
+              { title: "Graphic Design", path: "/graphic-design", icon: <Palette className="w-5 h-5" /> }
             ].map((link, i) => (
               <Link
                 key={i}

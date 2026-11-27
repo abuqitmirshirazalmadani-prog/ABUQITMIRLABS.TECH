@@ -761,7 +761,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
                 return { name: 'SEO Mastery', to: '/seo-mastery' };
             }
             if (postTitle.includes('graphics') || postTitle.includes('design') || allTagsLower.includes('design') || allTagsLower.includes('graphics')) {
-                return { name: 'Graphics Design', to: '/graphics-design' };
+                return { name: 'Graphic Design', to: '/graphic-design' };
             }
             if (postTitle.includes('content') || postTitle.includes('copywriting') || allTagsLower.includes('content') || allTagsLower.includes('writing')) {
                 return { name: 'Content Writing', to: '/content-writing' };
@@ -792,8 +792,8 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
             name = 'SEO Mastery';
             to = '/seo-mastery';
         } else if (catLower.includes('graphics') || catLower.includes('design')) {
-            name = 'Graphics Design';
-            to = '/graphics-design';
+            name = 'Graphic Design';
+            to = '/graphic-design';
         } else if (catLower.includes('content') || catLower.includes('writing')) {
             name = 'Content Writing';
             to = '/content-writing';
@@ -1633,7 +1633,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ overrideSlug }) => {
           },
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "8/15, 37A Rd, Shah Khalid Colony, Sector 37 A, Landhi Town",
+            "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
             "addressLocality": "Karachi",
             "addressRegion": "Sindh",
             "postalCode": "75160",

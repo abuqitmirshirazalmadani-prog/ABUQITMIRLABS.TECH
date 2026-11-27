@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
+import SEO from '../components/SEO';
 import { 
   Compass, 
   Palette, 
@@ -253,7 +253,7 @@ const BrandBuildingPage: React.FC = () => {
       title: 'Visual Identity & System Design',
       desc: 'We engineer your visual language: primary vector mark, responsive sub-marks, Cormorant Garamond typography scales, contrast-verified color palettes, and comprehensive usage rules.',
       linkText: 'View Graphic Design Work',
-      linkUrl: '/graphics-design'
+      linkUrl: '/graphic-design'
     },
     {
       step: '03',
@@ -362,7 +362,7 @@ const BrandBuildingPage: React.FC = () => {
     },
     {
       q: 'Can I commission just a logo without the complete package?',
-      a: 'Yes, we offer standalone identity design via our Graphics Design service. However, a logo in isolation cannot produce inbound leads or ranking authority. We happily advise on what phase makes the most financial sense for your current business stage.'
+      a: 'Yes, we offer standalone identity design via our Graphic Design service. However, a logo in isolation cannot produce inbound leads or ranking authority. We happily advise on what phase makes the most financial sense for your current business stage.'
     },
     {
       q: 'How does remote collaboration work with international clients?',
@@ -398,38 +398,70 @@ const BrandBuildingPage: React.FC = () => {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "Organization",
+        "@id": "https://www.abuqitmirlabs.tech/#organization",
+        "name": "AbuQitmirLabs",
+        "url": "https://www.abuqitmirlabs.tech",
+        "logo": "https://www.abuqitmirlabs.tech/logo.png",
+        "telephone": "+923233260859",
+        "email": "hello@abuqitmirlabs.tech",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+          "addressLocality": "Karachi",
+          "addressRegion": "Sindh",
+          "postalCode": "75160",
+          "addressCountry": "PK"
+        }
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+        "name": "AbuQitmirLabs",
+        "url": "https://www.abuqitmirlabs.tech/brand-building",
+        "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+        "telephone": "+923233260859",
+        "email": "hello@abuqitmirlabs.tech",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+          "addressLocality": "Karachi",
+          "addressRegion": "Sindh",
+          "postalCode": "75160",
+          "addressCountry": "PK"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 24.842691448838718,
+          "longitude": 67.1862014846566
+        }
+      },
+      {
         "@type": "Service",
         "@id": "https://www.abuqitmirlabs.tech/brand-building#service",
-        "name": "Brand Building Services for Small Businesses",
-        "serviceType": "Brand Strategy, Visual Identity, Web Development & SEO",
-        "description": "Comprehensive brand building services for small businesses and startups. Brand strategy, custom visual identity, Next.js web development, and search engine optimization under one roof.",
+        "name": "Brand Identity and Brand Strategy Services for Tech Startups",
+        "serviceType": "Brand Strategy, Startup Brand Identity Design, Brand Voice & Next.js Launch",
+        "description": "Brand strategy agency in Pakistan delivering startup brand identity design, brand voice development, brand guidelines creation, and B2B brand positioning.",
         "provider": {
-          "@type": "Organization",
-          "name": "AbuQitmirLabs",
-          "url": "https://www.abuqitmirlabs.tech",
-          "logo": "https://www.abuqitmirlabs.tech/logo.png"
+          "@id": "https://www.abuqitmirlabs.tech/#organization"
         },
         "areaServed": [
-          "Pakistan",
-          "United States",
-          "United Kingdom",
-          "United Arab Emirates",
-          "Saudi Arabia",
-          "Canada",
-          "Australia",
-          "Qatar",
-          "Kuwait",
-          "Poland"
+          { "@type": "Country", "name": "Pakistan" },
+          { "@type": "Country", "name": "United States" },
+          { "@type": "Country", "name": "United Kingdom" },
+          { "@type": "Country", "name": "United Arab Emirates" },
+          { "@type": "Country", "name": "Saudi Arabia" }
         ],
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "6 Pillars of Brand Architecture",
           "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand Strategy & Positioning" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Visual Identity & Logo Design" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand Strategy & B2B Brand Positioning" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Startup Brand Identity & Guidelines Design" } },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Next.js Custom Website Development" } },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Search Engine Optimization Foundation" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand Voice & Conversion Copywriting" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand Voice Development & Copywriting" } },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Social Media Presence Setup" } }
           ]
         }
@@ -469,103 +501,66 @@ const BrandBuildingPage: React.FC = () => {
 
   return (
     <div className="bg-[#050505] text-neutral-300 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00] selection:text-black">
-      <Helmet>
-        <title>Brand Building Services for Small Businesses | AbuQitmirLabs</title>
-        <meta name="description" content="Strategy. Design. Website. SEO. All Under One Roof. AbuQitmirLabs builds complete brands from scratch for small businesses in Pakistan, the US, UK, UAE, and beyond." />
-        <link rel="canonical" href="https://www.abuqitmirlabs.tech/brand-building" />
-
-        {/* Open Graph */}
-        <meta property="og:title" content="Brand Building Services for Small Businesses | AbuQitmirLabs" />
-        <meta property="og:description" content="Strategy. Design. Website. SEO. All Under One Roof. AbuQitmirLabs builds complete brands from scratch for small businesses in Pakistan, the US, UK, UAE, and beyond." />
-        <meta property="og:url" content="https://www.abuqitmirlabs.tech/brand-building" />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="AbuQitmirLabs" />
-        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@AbuQitmir" />
-        <meta name="twitter:title" content="Brand Building Services for Small Businesses | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Strategy. Design. Website. SEO. All Under One Roof. AbuQitmirLabs builds complete brands from scratch for small businesses in Pakistan, the US, UK, UAE, and beyond." />
-        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Structured Data Graph */}
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(brandBuildingSchema)
-          }}
-        />
-      </Helmet>
+      <SEO
+        title="Brand Identity Design for Startups Pakistan | AbuQitmirLabs"
+        description="Brand strategy agency in Pakistan offering startup brand identity design, brand voice development, brand guidelines, Next.js web builds, and SEO from $1,200."
+        canonical="https://www.abuqitmirlabs.tech/brand-building"
+        keywords="brand strategy agency Pakistan, startup brand identity design, brand voice development service, brand guidelines creation for startups, B2B brand positioning agency"
+        ogTitle="Brand Identity Design for Startups Pakistan | AbuQitmirLabs"
+        ogDescription="Brand strategy agency in Pakistan offering startup brand identity design, brand voice development, brand guidelines, Next.js web builds, and SEO from $1,200."
+        ogImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        twitterTitle="Brand Identity Design for Startups Pakistan | AbuQitmirLabs"
+        twitterDescription="Brand strategy agency in Pakistan offering startup brand identity design, brand voice development, brand guidelines, Next.js web builds, and SEO from $1,200."
+        twitterImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        schema={brandBuildingSchema}
+      />
 
       <Header />
       <Breadcrumbs disableSchema={true} />
 
       {/* Hero Section */}
       <section className="relative min-h-[90vh] w-full flex items-center pt-28 md:pt-36 pb-20 overflow-hidden border-b border-white/5">
-        {/* Ambient Luxury Lighting & Glow */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#ccff00]/5 blur-[140px] pointer-events-none rounded-full" />
         <div className="absolute top-1/3 -right-20 w-[450px] h-[350px] bg-amber-500/5 blur-[120px] pointer-events-none rounded-full" />
 
-        <div className="w-full max-w-7xl mx-auto px-6 relative z-10 animate-enter">
+        <div className="w-full max-w-7xl mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            {/* Live Status Pill */}
-            <motion.div 
-              initial={{ opacity: 0, y: -15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 mb-8 backdrop-blur-md"
-            >
+            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 mb-8 backdrop-blur-md">
               <span className="w-2.5 h-2.5 rounded-full bg-[#ccff00] animate-pulse"></span>
               <span className="text-xs font-mono font-bold tracking-[0.25em] uppercase text-neutral-300">
-                Strategic Brand Architecture
+                Brand Strategy Agency — Pakistan &amp; Global
               </span>
-            </motion.div>
+            </div>
 
-            {/* H1 Main Heading */}
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-white leading-[1.08] mb-8 animate-enter-delay-1"
-            >
-              Brand Building Services for <br className="hidden sm:inline" />
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-white leading-[1.08] mb-8">
+              Brand Identity and Brand Strategy Services for{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-200 to-neutral-400">
-                Small Businesses
+                Tech Startups
               </span>
-            </motion.h1>
+            </h1>
 
-            {/* Subtitle */}
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-xl sm:text-2xl font-light text-[#ccff00] font-mono tracking-wide mb-6 uppercase"
-            >
-              Strategy. Design. Website. SEO. All Under One Roof.
-            </motion.p>
+            <p className="text-xl sm:text-2xl font-light text-[#ccff00] font-mono tracking-wide mb-6 uppercase">
+              Strategy. Identity. Voice. Next.js Website. SEO.
+            </p>
 
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-base sm:text-lg md:text-xl font-light text-neutral-400 max-w-3xl mx-auto leading-relaxed mb-10"
-            >
-              Your business deserves to be found, trusted, and chosen. AbuQitmirLabs builds complete, cohesive brands from scratch for ambitious small businesses in Pakistan, the US, the UK, the UAE, and worldwide.
-            </motion.p>
+            {/* 40-60 Word Direct Answer Block */}
+            <div className="p-6 rounded-2xl bg-white/[0.03] border border-[#ccff00]/30 text-left max-w-3xl mx-auto mb-6">
+              <p className="text-base sm:text-lg font-normal text-white leading-relaxed">
+                <strong>AbuQitmirLabs</strong> is a B2B brand positioning and brand strategy agency in Pakistan delivering startup brand identity design, brand voice development services, brand guidelines creation for startups, custom Next.js websites, and technical SEO under one roof—starting from <strong>$1,200 USD</strong> (or PKR equivalents) in 2 to 4 weeks.
+              </p>
+            </div>
+
+            <p className="text-sm sm:text-base font-light text-neutral-400 max-w-3xl mx-auto leading-relaxed mb-10">
+              Need only standalone design assets (logos, Figma UI screens, or pitch decks) without a full strategy and web launch? Visit our <Link to="/graphic-design" className="text-[#ccff00] hover:underline font-medium">Graphic Design &amp; UI/UX studio</Link>.
+            </p>
 
             {/* Action Buttons */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14"
-            >
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
               <Link 
                 to="/contact"
                 className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#ccff00] text-black font-semibold tracking-wide text-sm uppercase transition-all duration-300 hover:bg-[#b8e600] hover:shadow-[0_0_30px_rgba(204,255,0,0.3)] flex items-center justify-center gap-2"
               >
-                Get a Free Brand Consultation
+                Book a Brand Consultation
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link 
@@ -575,18 +570,13 @@ const BrandBuildingPage: React.FC = () => {
                 See Our Work
                 <ArrowUpRight className="w-4 h-4 text-neutral-400" />
               </Link>
-            </motion.div>
+            </div>
 
             {/* Trust Highlights */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-sm"
-            >
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-sm">
               <div className="flex flex-col items-center justify-center p-3">
-                <span className="text-xl sm:text-2xl font-bold text-white font-mono">6 Pillars</span>
-                <span className="text-xs text-neutral-500 uppercase tracking-wider mt-1">Holistic System</span>
+                <span className="text-xl sm:text-2xl font-bold text-white font-mono">From $1,200</span>
+                <span className="text-xs text-neutral-500 uppercase tracking-wider mt-1">Complete Brand Systems</span>
               </div>
               <div className="flex flex-col items-center justify-center p-3">
                 <span className="text-xl sm:text-2xl font-bold text-[#ccff00] font-mono">2-4 Weeks</span>
@@ -600,7 +590,7 @@ const BrandBuildingPage: React.FC = () => {
                 <span className="text-xl sm:text-2xl font-bold text-white font-mono">100% IP</span>
                 <span className="text-xs text-neutral-500 uppercase tracking-wider mt-1">Master Vector Ownership</span>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -709,10 +699,10 @@ const BrandBuildingPage: React.FC = () => {
               The Blueprint
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-white tracking-tight mb-6">
-              What a Complete Brand Actually Looks Like
+              Startup Brand Identity, Brand Voice &amp; Guidelines Creation
             </h2>
             <p className="text-neutral-400 text-base sm:text-lg">
-              When all six pillars align, your business operates as a cohesive authority engine rather than fragmented pieces.
+              As a <strong className="text-white">B2B brand positioning agency</strong>, we unify startup brand identity design, brand voice development services, and brand guidelines creation for startups across all six pillars.
             </p>
           </div>
 
@@ -992,7 +982,7 @@ const BrandBuildingPage: React.FC = () => {
               to="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#ccff00] text-black font-semibold tracking-wide text-sm uppercase hover:bg-[#b8e600] transition-colors"
             >
-              Start the Process — Book a Free Discovery Call
+              Start the Process — Book a Discovery Call
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -1023,7 +1013,7 @@ const BrandBuildingPage: React.FC = () => {
 
             {[
               { item: 'Brand Strategy & Positioning Blueprint', status: 'Included', link: '/about/our-process', label: 'Our Process' },
-              { item: 'Scalable Logo & Complete Visual Identity System', status: 'Included', link: '/graphics-design', label: 'Graphics Design' },
+              { item: 'Scalable Logo & Complete Visual Identity System', status: 'Included', link: '/graphic-design', label: 'Graphic Design' },
               { item: 'Custom Next.js Responsive Web Architecture', status: 'Included', link: '/web-development', label: 'Web Development' },
               { item: 'On-Page, Technical & Structured Schema SEO', status: 'Included', link: '/seo-mastery', label: 'SEO Services' },
               { item: 'All Core Page Brand Copywriting & Voice Guidelines', status: 'Included', link: '/content-writing', label: 'Content Writing' },
@@ -1162,7 +1152,7 @@ const BrandBuildingPage: React.FC = () => {
                   </div>
                   <div className="flex justify-between py-2 border-b border-white/5">
                     <span className="text-neutral-400">Investment:</span>
-                    <span className="text-[#ccff00] font-mono font-bold">Custom Quote</span>
+                    <span className="text-[#ccff00] font-mono font-bold">From $1,200 (PKR Available)</span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-white/5">
                     <span className="text-neutral-400">Best for:</span>
@@ -1336,7 +1326,7 @@ const BrandBuildingPage: React.FC = () => {
                 to="/contact"
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-black bg-[#ccff00] px-4 py-2.5 rounded-lg hover:bg-[#b8e600] transition-colors w-fit"
               >
-                Request Free Brand Review
+                Request Brand Review
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -1418,7 +1408,7 @@ const BrandBuildingPage: React.FC = () => {
             Ready to Build a Brand That Gets Found and Chosen?
           </h2>
           <p className="text-base sm:text-lg md:text-xl font-light text-neutral-300 max-w-2xl mx-auto leading-relaxed mb-10">
-            One free 15-minute consultation. Zero sales pressure, no awkward sales pitch. Just an honest conversation about where your business stands and what a complete brand architecture can unlock for your revenue.
+            Book a 15-minute discovery consultation. Zero sales pressure, no generic pitches—just an honest review of where your business stands and what a complete brand architecture unlocks.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
@@ -1426,7 +1416,7 @@ const BrandBuildingPage: React.FC = () => {
               to="/contact"
               className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#ccff00] text-black font-semibold tracking-wide text-sm uppercase hover:bg-[#b8e600] transition-all duration-300 hover:shadow-[0_0_30px_rgba(204,255,0,0.3)] flex items-center justify-center gap-2"
             >
-              Get Your Free Brand Consultation
+              Book Brand Strategy Call
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link 

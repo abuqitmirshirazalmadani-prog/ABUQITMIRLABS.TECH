@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
+import SEO from '../components/SEO';
 import { 
   Palette, 
   Layers, 
@@ -262,37 +262,22 @@ const GraphicsDesignPage: React.FC = () => {
 
   return (
     <div className="bg-[#050505] text-neutral-300 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00] selection:text-black">
-      <Helmet>
-        <title>Graphic Design Services for Brands | AbuQitmirLabs</title>
-        <meta name="description" content="Professional graphic design services for brands and businesses: custom logos, brand identity, pitch decks, UI/UX, and marketing collateral with AbuQitmirLabs." />
-        <link rel="canonical" href="https://www.abuqitmirlabs.tech/graphics-design" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="Graphic Design Services for Brands | AbuQitmirLabs" />
-        <meta property="og:description" content="Professional graphic design services for brands and businesses: custom logos, brand identity, pitch decks, UI/UX, and marketing collateral with AbuQitmirLabs." />
-        <meta property="og:url" content="https://www.abuqitmirlabs.tech/graphics-design" />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="AbuQitmirLabs" />
-        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@AbuQitmir" />
-        <meta name="twitter:title" content="Graphic Design Services for Brands | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Professional graphic design services for brands and businesses: custom logos, brand identity, pitch decks, UI/UX, and marketing collateral with AbuQitmirLabs." />
-        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Structured Data Graph */}
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(graphicsDesignSchema)
-          }}
-        />
-      </Helmet>
+      <SEO
+        title="Graphic Design Services for Tech Startups | AbuQitmirLabs"
+        description="UI/UX design, brand identity, Figma design systems, logo design, and pitch deck design services from Karachi for tech startups in Pakistan and globally."
+        canonical="https://www.abuqitmirlabs.tech/graphic-design"
+        keywords="UI UX design agency Pakistan, brand identity design for startups Pakistan, Figma design services Pakistan, logo and brand design Karachi, pitch deck design service"
+        ogTitle="Graphic Design Services for Tech Startups | AbuQitmirLabs"
+        ogDescription="UI/UX design, brand identity, Figma design systems, logo design, and pitch deck design services from Karachi for tech startups in Pakistan and globally."
+        ogImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        twitterTitle="Graphic Design Services for Tech Startups | AbuQitmirLabs"
+        twitterDescription="UI/UX design, brand identity, Figma design systems, logo design, and pitch deck design services from Karachi for tech startups in Pakistan and globally."
+        twitterImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        schema={graphicsDesignSchema}
+      />
       
       <Header />
-      <Breadcrumbs />
+      <Breadcrumbs disableSchema={true} />
 
       {/* Hero Section */}
       <section className="relative min-h-[85vh] w-full flex items-center pt-24 md:pt-32 pb-16 overflow-hidden border-b border-white/5">
@@ -311,35 +296,27 @@ const GraphicsDesignPage: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/95 to-transparent"></div>
         </div>
 
-        <div className="w-full max-w-7xl mx-auto px-6 relative z-10 animate-enter">
+        <div className="w-full max-w-7xl mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center gap-3 mb-6"
-            >
+            <div className="flex items-center gap-3 mb-6">
               <span className="w-2.5 h-2.5 rounded-full bg-[#ccff00] animate-pulse"></span>
-              <span className="text-xs font-mono font-bold tracking-[0.3em] uppercase text-neutral-400">AbuQitmirLabs Creative Engineering</span>
-            </motion.div>
+              <span className="text-xs font-mono font-bold tracking-[0.3em] uppercase text-neutral-400">UI/UX &amp; Graphic Design Studio — Karachi, Pakistan</span>
+            </div>
 
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white uppercase leading-[1.05] mb-8 animate-enter-delay-1"
-            >
-              Professional Graphic Design Services for <br />
-              <span className="text-[#ccff00]">Brands &amp; Businesses</span>
-            </motion.h1>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white uppercase leading-[1.05] mb-8">
+              Graphic Design and UI/UX Services for{' '}
+              <span className="text-[#ccff00]">Tech Companies in Pakistan</span>
+            </h1>
 
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-lg md:text-xl font-light text-neutral-300 leading-relaxed mb-10"
-            >
-              Good design communicates authority before a single word is read. AbuQitmirLabs delivers strategic, custom graphic design services — from distinctive logo design and comprehensive brand identity systems to high-converting marketing collateral, investor pitch decks, and Figma UI/UX design. We help startups and established enterprises turn visual communication into a measurable competitive advantage.
-            </motion.p>
+            <div className="p-6 rounded-2xl bg-white/[0.03] border border-[#ccff00]/30 mb-6">
+              <p className="text-base md:text-lg font-normal text-white leading-relaxed">
+                <strong>AbuQitmirLabs</strong> is a UI/UX design agency in Pakistan offering Figma design services, logo and brand design in Karachi, pitch deck design services, and brand identity design for startups. Starter logo and asset packages begin at <strong>$150 USD</strong> (full brand identity from <strong>$1,000 USD</strong>, with PKR pricing for local teams).
+              </p>
+            </div>
+
+            <p className="text-sm md:text-base font-light text-neutral-300 leading-relaxed mb-8">
+              Looking for visual execution assets—logos, Figma component libraries, investor decks, or SaaS UI/UX? You are in the right place. Need full brand strategy, copywriting, and a Next.js site under one roof? Explore our <Link to="/brand-building" className="text-[#ccff00] hover:underline font-medium">end-to-end Brand Building service</Link>.
+            </p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -460,10 +437,10 @@ const GraphicsDesignPage: React.FC = () => {
           <div className="max-w-3xl mb-20">
             <span className="text-xs font-mono font-bold text-[#ccff00] uppercase tracking-[0.3em] block mb-4">// CORE CAPABILITIES</span>
             <h2 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tight mb-6">
-              Our Graphic Design Services
+              Figma Design Services, Logo &amp; Pitch Deck Design
             </h2>
             <p className="text-base md:text-lg font-light text-neutral-300 leading-relaxed">
-              We provide full-lifecycle visual design capabilities tailored to businesses seeking distinctive, conversion-engineered creative assets.
+              As a specialized <strong className="text-white">UI/UX design agency in Pakistan</strong>, we provide Figma design services, <strong className="text-white">logo and brand design in Karachi</strong>, and <strong className="text-white">pitch deck design services</strong> built for SaaS and enterprise conversion.
             </p>
           </div>
 
@@ -502,10 +479,10 @@ const GraphicsDesignPage: React.FC = () => {
           <div className="max-w-3xl mb-16">
             <span className="text-xs font-mono font-bold text-[#ccff00] uppercase tracking-[0.3em] block mb-4">// STRATEGIC FOUNDATIONS</span>
             <h2 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tight mb-6">
-              Graphic Design for Brand Identity
+              Brand Identity Design for Startups in Pakistan
             </h2>
             <p className="text-base md:text-lg font-light text-neutral-300 leading-relaxed">
-              Graphic design for brand identity is the disciplined process of translating a company's mission, market position, and emotional promise into an interconnected visual language. Rather than treating individual graphics as isolated tasks, identity engineering creates an organized system where every visual element reinforces corporate credibility.
+              Brand identity design for startups in Pakistan translates a company&apos;s mission, market position, and emotional promise into an interconnected visual language. Rather than treating individual graphics as isolated tasks, identity engineering creates an organized system where every visual element reinforces corporate credibility.
             </p>
           </div>
 
@@ -965,6 +942,66 @@ const GraphicsDesignPage: React.FC = () => {
         </div>
       </section>
 
+      {/* SECTION: Verified Design & UI/UX Portfolio */}
+      <section className="py-24 md:py-28 bg-[#050505] border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-3xl mb-14">
+            <span className="text-xs font-mono font-bold text-[#ccff00] uppercase tracking-[0.3em] block mb-4">// VERIFIED SHIPPED WORK</span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tight mb-4">
+              Selected Brand Identity &amp; UI/UX Portfolio
+            </h2>
+            <p className="text-base text-neutral-300 font-light leading-relaxed">
+              Real digital products designed and engineered by AbuQitmirLabs—spanning EdTech, healthcare operations, B2B SaaS dashboards, and developer tooling.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                name: 'TajweedPage.com',
+                scope: 'Brand Identity & EdTech UI/UX',
+                desc: 'Complete brand positioning, custom RTL/LTR typography system, and Figma interface ranked in 20+ countries.',
+                link: '/case-studies/tajweedpage',
+                linkLabel: 'View Case Study'
+              },
+              {
+                name: 'ClinicOSH',
+                scope: 'Healthcare SaaS UI/UX System',
+                desc: 'Accessible clinical intake workflows, patient queue dashboards, and component tokens designed in Figma.',
+                link: '/solutions/healthcare',
+                linkLabel: 'Healthcare Practice'
+              },
+              {
+                name: 'ProFit Command Center',
+                scope: 'B2B Operations Dashboard',
+                desc: 'Multi-tenant operational analytics interface, dark-mode telemetry hierarchy, and custom icon system.',
+                link: '/case-studies',
+                linkLabel: 'Explore Portfolio'
+              },
+              {
+                name: 'GhastlyPages',
+                scope: 'Developer Product & Brand Kit',
+                desc: 'Minimalist mark, documentation layout templates, and high-contrast developer product UI.',
+                link: '/case-studies',
+                linkLabel: 'Explore Portfolio'
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="p-6 bg-zinc-950 border border-white/10 rounded-2xl flex flex-col justify-between hover:border-[#ccff00]/30 transition-colors">
+                <div>
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-[#ccff00] block mb-2">{item.scope}</span>
+                  <h3 className="text-xl font-bold text-white mb-3">{item.name}</h3>
+                  <p className="text-xs text-neutral-400 font-light leading-relaxed mb-6">{item.desc}</p>
+                </div>
+                <Link to={item.link} className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase text-white hover:text-[#ccff00] transition-colors">
+                  <span>{item.linkLabel}</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SECTION: Call to Action */}
       <section className="py-32 md:py-40 relative border-t border-white/5 overflow-hidden text-center bg-black">
         <div className="absolute inset-0 bg-[#ccff00]/5 blur-[200px] pointer-events-none" />
@@ -972,11 +1009,11 @@ const GraphicsDesignPage: React.FC = () => {
           <span className="text-xs font-mono font-bold text-[#ccff00] uppercase tracking-[0.3em] block mb-6">// START YOUR PROJECT</span>
           <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter mb-8 uppercase leading-[0.95]">
             Ready to Elevate Your <br />
-            <span className="text-[#ccff00]">Brand's Visual Identity?</span>
+            <span className="text-[#ccff00]">Brand&apos;s Visual Identity?</span>
           </h2>
 
           <p className="text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
-            Stop settling for generic designs that fail to communicate your brand's unique value. Partner with AbuQitmirLabs to create custom graphic design that captivates, communicates, and converts.
+            Stop settling for generic designs that fail to communicate your brand&apos;s unique value. Partner with AbuQitmirLabs to create custom graphic design and Figma UI/UX systems that convert.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
@@ -984,7 +1021,7 @@ const GraphicsDesignPage: React.FC = () => {
               to="/contact"
               className="bg-[#ccff00] text-black text-sm font-bold uppercase tracking-wider px-10 py-5 rounded-full hover:bg-white transition-all transform hover:scale-105"
             >
-              Request a Free Design Consultation
+              Request a Design Consultation
             </Link>
             <a 
               href="https://wa.me/923233260859" 
@@ -998,11 +1035,11 @@ const GraphicsDesignPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Free UX & Speed Audit Banner */}
+      {/* UX & Speed Audit Banner */}
       <ServiceToolCtaBanner
         toolKeys={['website-audit']}
         headline="Audit Your Website's UX, Visual Layout & Core Web Vitals"
-        subheadline="Poor design often stems from cluttered layouts and slow assets. Run an instant UX and performance check on your live website for free."
+        subheadline="Poor design often stems from cluttered layouts and slow assets. Run an instant UX and performance check on your live website."
       />
 
       {/* Related Services / Internal Siloing */}

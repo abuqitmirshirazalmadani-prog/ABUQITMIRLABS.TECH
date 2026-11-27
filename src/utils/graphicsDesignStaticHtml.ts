@@ -1,5 +1,5 @@
 /**
- * Static SEO content and JSON-LD schema for /graphics-design
+ * Static SEO content and JSON-LD schema for /graphic-design
  * Used by build-time SSG generation to provide full crawlable semantic HTML
  * before React client-side hydration.
  */
@@ -22,8 +22,9 @@ export const graphicsDesignSchema = {
       "email": "hello@abuqitmirlabs.tech",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
         "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
         "postalCode": "75160",
         "addressCountry": "PK"
       },
@@ -47,6 +48,29 @@ export const graphicsDesignSchema = {
       }
     },
     {
+      "@type": "LocalBusiness",
+      "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+      "name": "AbuQitmirLabs",
+      "url": "https://www.abuqitmirlabs.tech/graphic-design",
+      "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+      "telephone": "+923233260859",
+      "email": "hello@abuqitmirlabs.tech",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+        "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
+        "postalCode": "75160",
+        "addressCountry": "PK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.842691448838718,
+        "longitude": 67.1862014846566
+      }
+    },
+    {
       "@type": "WebSite",
       "@id": "https://www.abuqitmirlabs.tech/#website",
       "url": "https://www.abuqitmirlabs.tech",
@@ -57,23 +81,27 @@ export const graphicsDesignSchema = {
     },
     {
       "@type": "WebPage",
-      "@id": "https://www.abuqitmirlabs.tech/graphics-design#webpage",
-      "url": "https://www.abuqitmirlabs.tech/graphics-design",
-      "name": "Graphic Design Services for Brands & Businesses | AbuQitmirLabs",
-      "description": "Professional graphic design services for brands and businesses: custom logos, brand identity, pitch decks, UI/UX, and marketing collateral with AbuQitmirLabs.",
+      "@id": "https://www.abuqitmirlabs.tech/graphic-design#webpage",
+      "url": "https://www.abuqitmirlabs.tech/graphic-design",
+      "name": "Graphic Design Services for Tech Startups | AbuQitmirLabs",
+      "description": "UI/UX design, brand identity, Figma design systems, logo design, and pitch deck design services from Karachi for tech startups in Pakistan and globally.",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+      },
       "isPartOf": {
         "@id": "https://www.abuqitmirlabs.tech/#website"
       },
       "about": {
-        "@id": "https://www.abuqitmirlabs.tech/graphics-design#service"
+        "@id": "https://www.abuqitmirlabs.tech/graphic-design#service"
       },
       "breadcrumb": {
-        "@id": "https://www.abuqitmirlabs.tech/graphics-design#breadcrumb"
+        "@id": "https://www.abuqitmirlabs.tech/graphic-design#breadcrumb"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://www.abuqitmirlabs.tech/graphics-design#breadcrumb",
+      "@id": "https://www.abuqitmirlabs.tech/graphic-design#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -85,21 +113,27 @@ export const graphicsDesignSchema = {
           "@type": "ListItem",
           "position": 2,
           "name": "Graphic Design",
-          "item": "https://www.abuqitmirlabs.tech/graphics-design"
+          "item": "https://www.abuqitmirlabs.tech/graphic-design"
         }
       ]
     },
     {
       "@type": "Service",
-      "@id": "https://www.abuqitmirlabs.tech/graphics-design#service",
-      "name": "Graphic Design Services",
-      "serviceType": "Graphic Design and Brand Identity Engineering",
+      "@id": "https://www.abuqitmirlabs.tech/graphic-design#service",
+      "name": "Graphic Design and UI/UX Services for Tech Companies",
+      "serviceType": "Graphic Design, UI/UX Design, and Brand Identity Engineering",
       "provider": {
         "@id": "https://www.abuqitmirlabs.tech/#organization"
       },
-      "url": "https://www.abuqitmirlabs.tech/graphics-design",
-      "description": "Professional graphic design services encompassing custom logo design, comprehensive brand identity systems, social media assets, pitch decks, packaging, marketing collateral, and UI/UX design.",
-      "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
+      "url": "https://www.abuqitmirlabs.tech/graphic-design",
+      "description": "UI/UX design agency and Figma design services in Pakistan offering brand identity design for startups, logo and brand design in Karachi, and pitch deck design services.",
+      "areaServed": [
+        { "@type": "Country", "name": "Pakistan" },
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Saudi Arabia" }
+      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Graphic Design Capabilities",
@@ -181,7 +215,7 @@ export const graphicsDesignSchema = {
     },
     {
       "@type": "HowTo",
-      "@id": "https://www.abuqitmirlabs.tech/graphics-design#process",
+      "@id": "https://www.abuqitmirlabs.tech/graphic-design#process",
       "name": "Our Graphic Design Process",
       "description": "An 8-step creative methodology for discovering, designing, refining, and delivering cohesive brand assets and graphics.",
       "step": [
@@ -237,7 +271,7 @@ export const graphicsDesignSchema = {
     },
     {
       "@type": "FAQPage",
-      "@id": "https://www.abuqitmirlabs.tech/graphics-design#faq",
+      "@id": "https://www.abuqitmirlabs.tech/graphic-design#faq",
       "mainEntity": [
         {
           "@type": "Question",
@@ -313,7 +347,7 @@ import { renderStaticHeader } from './sharedStaticHeader';
 export const graphicsDesignInitialHtml = `
 <div id="graphics-design-root" class="bg-[#050505] text-neutral-300 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00] selection:text-black">
   <!-- Header Navigation synchronized with Header.tsx -->
-  ${renderStaticHeader('/graphics-design')}
+  ${renderStaticHeader('/graphic-design')}
 
   <!-- Breadcrumbs -->
   <div class="pt-28 pb-4 max-w-7xl mx-auto px-6">
@@ -327,36 +361,22 @@ export const graphicsDesignInitialHtml = `
   <main id="main-content">
     <!-- Hero Section -->
     <section class="relative min-h-[85vh] w-full flex items-center pt-12 pb-20 overflow-hidden border-b border-white/5">
-      <div class="absolute inset-0 md:left-[35%] z-0 pointer-events-none">
-        <img 
-          src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1600&auto=format&fit=crop&fm=webp" 
-          alt="Abstract geometric brand identity and graphic design visualization" 
-          class="w-full h-full object-cover opacity-25 mix-blend-luminosity grayscale contrast-150"
-          loading="eager"
-          fetchpriority="high"
-          referrerpolicy="no-referrer"
-          width="1600"
-          height="900"
-          decoding="async"
-        />
-        <div class="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/95 to-transparent"></div>
-      </div>
-
       <div class="w-full max-w-7xl mx-auto px-6 relative z-10">
         <div class="max-w-3xl">
           <div class="flex items-center gap-3 mb-6">
             <span class="w-2.5 h-2.5 rounded-full bg-[#ccff00] animate-pulse"></span>
-            <span class="text-xs font-mono font-bold tracking-[0.3em] uppercase text-neutral-400">AbuQitmirLabs Creative Engineering</span>
+            <span class="text-xs font-mono font-bold tracking-[0.3em] uppercase text-neutral-400">UI/UX &amp; Graphic Design Studio — Karachi, Pakistan</span>
           </div>
 
           <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white uppercase leading-[1.05] mb-8">
-            Professional Graphic Design Services for <br />
-            <span class="text-[#ccff00]">Brands &amp; Businesses</span>
+            Graphic Design and UI/UX Services for Tech Companies in Pakistan
           </h1>
 
-          <p class="text-lg md:text-xl font-light text-neutral-300 leading-relaxed mb-10">
-            Good design communicates authority before a single word is read. AbuQitmirLabs delivers strategic, custom graphic design services — from distinctive logo design and comprehensive brand identity systems to high-converting marketing collateral, investor pitch decks, and Figma UI/UX design. We help startups and established enterprises turn visual communication into a measurable competitive advantage.
-          </p>
+          <div class="p-6 rounded-2xl bg-white/[0.03] border border-[#ccff00]/30 mb-8">
+            <p class="text-base md:text-lg font-normal text-white leading-relaxed">
+              <strong>AbuQitmirLabs</strong> is a UI/UX design agency in Pakistan providing Figma design services, logo and brand design in Karachi, pitch deck design services, and brand identity design for startups starting from $150 USD (with PKR pricing for Pakistan teams). While <a href="/brand-building" class="text-[#ccff00] hover:underline">Brand Building</a> covers strategy and full web launches, this service focuses on visual execution assets.
+            </p>
+          </div>
 
           <!-- Core Capability Highlights -->
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-10 p-6 bg-white/[0.02] border border-white/10 rounded-2xl">
@@ -1178,6 +1198,31 @@ export const graphicsDesignInitialHtml = `
       </div>
     </section>
 
+    <!-- SECTION: Portfolio & Selected Design Work -->
+    <section class="py-16 bg-[#050505] border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-white uppercase tracking-tight mb-6">Verified Design &amp; UI/UX Portfolio</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="p-6 bg-zinc-950 border border-white/10 rounded-2xl">
+            <h3 class="text-lg font-bold text-white mb-2">TajweedPage.com</h3>
+            <p class="text-xs text-neutral-400">EdTech brand identity and Figma UI/UX system ranking in 20+ countries.</p>
+          </div>
+          <div class="p-6 bg-zinc-950 border border-white/10 rounded-2xl">
+            <h3 class="text-lg font-bold text-white mb-2">ClinicOSH</h3>
+            <p class="text-xs text-neutral-400">Clinical management UI/UX design system built for high-volume medical workflows.</p>
+          </div>
+          <div class="p-6 bg-zinc-950 border border-white/10 rounded-2xl">
+            <h3 class="text-lg font-bold text-white mb-2">ProFit Command Center</h3>
+            <p class="text-xs text-neutral-400">B2B multi-dashboard SaaS interface and analytics design tokens in Figma.</p>
+          </div>
+          <div class="p-6 bg-zinc-950 border border-white/10 rounded-2xl">
+            <h3 class="text-lg font-bold text-white mb-2">GhastlyPages</h3>
+            <p class="text-xs text-neutral-400">Developer product visual identity, UI components, and launch collateral.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SECTION: Internal Links / Related Services -->
     <section class="py-16 bg-black">
       <div class="max-w-7xl mx-auto px-6">
@@ -1198,28 +1243,12 @@ export const graphicsDesignInitialHtml = `
           <a href="/seo-mastery" class="p-4 bg-zinc-950 border border-white/5 rounded-xl text-center hover:border-[#ccff00]/40 transition-colors">
             <span class="text-xs font-bold text-white uppercase block">SEO Services</span>
           </a>
-          <a href="/about/our-company" class="p-4 bg-zinc-950 border border-white/5 rounded-xl text-center hover:border-[#ccff00]/40 transition-colors">
-            <span class="text-xs font-bold text-white uppercase block">Our Company</span>
+          <a href="/brand-building" class="p-4 bg-zinc-950 border border-white/5 rounded-xl text-center hover:border-[#ccff00]/40 transition-colors">
+            <span class="text-xs font-bold text-white uppercase block">Brand Building</span>
           </a>
         </div>
       </div>
     </section>
   </main>
-
-  <!-- Footer -->
-  <footer class="bg-black border-t border-white/10 py-16 text-xs text-neutral-400 font-light">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-      <div class="flex items-center gap-3">
-        <img src="/logo.png" alt="AbuQitmirLabs Logo" class="h-8 w-auto" width="32" height="32" loading="lazy" decoding="async" />
-        <span class="text-white font-bold tracking-wider">AbuQitmirLabs</span>
-      </div>
-      <p>&copy; 2026 AbuQitmirLabs. All rights reserved. Professional Graphic Design &amp; Brand Identity Studio.</p>
-      <div class="flex gap-6">
-        <a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
-        <a href="/terms" class="hover:text-white transition-colors">Terms of Service</a>
-        <a href="/contact" class="hover:text-white transition-colors">Contact</a>
-      </div>
-    </div>
-  </footer>
 </div>
 `;

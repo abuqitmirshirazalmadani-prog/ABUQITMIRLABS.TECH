@@ -70,14 +70,20 @@ const GrowthEngineeringPage: React.FC = () => {
       q: 'Can I hire AbuQitmirLabs for just software development or just SEO?',
       a: 'Yes. Each pillar — custom software, web and mobile apps, AI agents, technical SEO, and content — is available as a standalone engagement or as part of a full growth engineering system.',
     },
+    {
+      q: 'How much does growth engineering cost and how is pricing structured?',
+      a: 'Modular growth engineering retainers start from $1,800/month for unified technical SEO, GEO, and conversion optimization, while custom software and AI agent builds start from $5,000 fixed-scope milestones with 100% client IP ownership.',
+    },
   ];
 
   return (
     <div className="min-h-screen bg-[#000000] text-white font-sans antialiased overflow-x-hidden relative selection:bg-[#ccff00]/30 selection:text-white">
       <SEO
-        title="Growth Engineering: Software, AI & SEO | AbuQitmirLabs"
-        description="AbuQitmirLabs engineers revenue systems for B2B companies — combining custom software, AI automation, and performance marketing under one roof."
+        title="Growth Engineering & Revenue Agency | AbuQitmirLabs"
+        description="B2B growth strategy agency & revenue engineering firm combining custom software, AI agents, and technical SEO under one roof. Request an engineering audit."
         canonical="https://www.abuqitmirlabs.tech/growth-engineering"
+        ogImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        twitterImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
         schema={growthEngineeringPageSchema}
       />
 
@@ -116,7 +122,7 @@ const GrowthEngineeringPage: React.FC = () => {
             }}
           />
 
-          <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-8 animate-enter">
+          <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-8">
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
@@ -129,15 +135,12 @@ const GrowthEngineeringPage: React.FC = () => {
               </p>
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.08 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-light text-white leading-[1.08] tracking-tight max-w-5xl animate-enter-delay-1"
+            <h1
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-light text-white leading-[1.08] tracking-tight max-w-5xl"
             >
               Growth Engineering: Software, AI &amp; Marketing Engineered as{' '}
               <span className="text-[#ccff00] italic font-normal">One Revenue System</span>
-            </motion.h1>
+            </h1>
 
             {/* Direct Definition Callout Box */}
             <motion.div
@@ -147,7 +150,7 @@ const GrowthEngineeringPage: React.FC = () => {
               className="relative p-6 md:p-8 rounded-r-2xl bg-zinc-900/80 border-l-4 border-[#ccff00] border-y border-r border-y-white/10 border-r-white/10 max-w-4xl backdrop-blur-xl shadow-2xl animate-enter-delay-2"
             >
               <p className="lead text-lg md:text-xl text-neutral-200 leading-relaxed font-light m-0">
-                <strong className="text-white font-semibold">Growth engineering</strong> is the discipline of building custom software, AI automation, and performance marketing as a single connected system — so every line of code, every AI workflow, and every acquisition channel is engineered around measurable revenue outcomes.
+                <strong className="text-white font-semibold">Growth engineering</strong> combines custom software development, AI automation, and technical SEO into one connected revenue system. Rather than managing fragmented vendors, a dedicated <strong className="text-white font-semibold">revenue engineering firm</strong> and <strong className="text-white font-semibold">B2B growth strategy agency</strong> aligns product architecture, RAG workflows, and organic search around measurable pipeline.
               </p>
             </motion.div>
 
@@ -157,7 +160,7 @@ const GrowthEngineeringPage: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.22 }}
               className="text-base md:text-lg text-neutral-300 max-w-4xl leading-relaxed font-light"
             >
-              At <strong className="text-white font-semibold">AbuQitmirLabs</strong>, we don&apos;t separate &ldquo;the dev team&rdquo; from &ldquo;the growth team.&rdquo; Our software architects, AI engineers, and SEO/marketing strategists work inside one unified sprint cycle for B2B companies across the US, UK, UAE, Saudi Arabia, Canada, Australia, and Pakistan.
+              At <strong className="text-white font-semibold">AbuQitmirLabs</strong>, we don&apos;t separate &ldquo;the dev team&rdquo; from &ldquo;the growth team.&rdquo; Our software architects, AI engineers, and SEO/marketing strategists work inside one unified sprint cycle for B2B companies across Pakistan, the United States, the United Kingdom, the UAE, and Saudi Arabia.
             </motion.p>
 
             {/* E-E-A-T Inline Trust Signal Bar */}
@@ -217,7 +220,7 @@ const GrowthEngineeringPage: React.FC = () => {
                 01 / The Structural Bottleneck
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light text-white tracking-tight">
-                Why Hiring 3 Separate Agencies Breaks Your Growth
+                Why Separate Agencies Fail — And How a B2B Growth Strategy Agency Fixes It
               </h2>
               <p className="text-neutral-300 text-base md:text-lg font-light leading-relaxed">
                 Most growing B2B companies hire a software house to build the product, an AI freelancer to bolt on automation, and a marketing agency to drive traffic. Within six months, the cracks appear:
@@ -281,7 +284,7 @@ const GrowthEngineeringPage: React.FC = () => {
                 02 / Unified Architecture
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light text-white tracking-tight">
-                The 3 Pillars of Our Growth Engineering System
+                The 3 Pillars of Our Revenue Engineering Firm
               </h2>
             </motion.div>
 
@@ -716,14 +719,14 @@ const GrowthEngineeringPage: React.FC = () => {
                 Ready to Replace Disconnected Vendors With One Growth Engine?
               </h2>
               <p className="relative z-10 text-neutral-300 text-base md:text-lg font-light max-w-2xl mx-auto leading-relaxed">
-                Get a free technical and growth audit from our senior architects. We&apos;ll map your software, AI, and acquisition bottlenecks and hand you a clear execution roadmap.
+                Request a technical and growth engineering audit from our senior architects. We&apos;ll map your software, AI, and acquisition bottlenecks and hand you a clear execution roadmap.
               </p>
               <div className="relative z-10 pt-4">
                 <Link
                   to="/contact"
                   className="btn-primary inline-flex items-center gap-3 bg-[#ccff00] hover:bg-white text-black font-mono text-xs sm:text-sm font-bold uppercase tracking-wider px-8 py-4 rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-[0_0_30px_rgba(204,255,0,0.3)]"
                 >
-                  <span>Get Your Free Growth Engineering Audit</span>
+                  <span>Request a Growth Engineering Audit</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { 
@@ -37,10 +36,12 @@ import {
   CalendarCheck,
   Bell
 } from 'lucide-react';
+import SEO from '../../components/SEO';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import CountryMarquee from '../../components/CountryMarquee';
+import { healthcareSchema } from '../../utils/healthcareStaticHtml';
 
 const HealthcarePlatformsPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -88,289 +89,54 @@ const HealthcarePlatformsPage = () => {
     }
   ];
 
-  const unifiedSchema = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://www.abuqitmirlabs.tech/#organization",
-        "name": "AbuQitmirLabs",
-        "url": "https://www.abuqitmirlabs.tech",
-        "logo": {
-          "@type": "ImageObject",
-          "@id": "https://www.abuqitmirlabs.tech/#logo",
-          "url": "https://www.abuqitmirlabs.tech/logo.png",
-          "caption": "AbuQitmirLabs Logo"
-        },
-        "telephone": "+923233260859",
-        "email": "hello@abuqitmirlabs.tech",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
-          "addressLocality": "Karachi",
-          "postalCode": "75160",
-          "addressCountry": "PK"
-        },
-        "sameAs": [
-          "https://www.facebook.com/profile.php?id=61583768706452",
-          "https://www.instagram.com/abuqitmirshirazalmadani/",
-          "https://www.youtube.com/@AbuQitmir",
-          "https://www.linkedin.com/in/abu-qitmir-697423390/",
-          "https://x.com/AbuQitmir",
-          "https://www.pinterest.com/abuqitmir",
-          "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani",
-          "https://www.goodfirms.co/company/abuqitmirlabs-tech",
-          "https://clutch.co/profile/abuqitmirlabstech"
-        ],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+923233260859",
-          "contactType": "customer service",
-          "email": "hello@abuqitmirlabs.tech",
-          "availableLanguage": ["English", "Urdu"]
-        }
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://www.abuqitmirlabs.tech/#website",
-        "url": "https://www.abuqitmirlabs.tech",
-        "name": "AbuQitmirLabs",
-        "publisher": {
-          "@id": "https://www.abuqitmirlabs.tech/#organization"
-        }
-      },
-      {
-        "@type": "WebPage",
-        "@id": "https://www.abuqitmirlabs.tech/solutions/healthcare#webpage",
-        "url": "https://www.abuqitmirlabs.tech/solutions/healthcare",
-        "name": "Healthcare Software Solutions | AbuQitmirLabs",
-        "description": "Build secure healthcare software, patient portals, telemedicine platforms and clinical systems with AbuQitmirLabs for modern healthcare businesses.",
-        "isPartOf": {
-          "@id": "https://www.abuqitmirlabs.tech/#website"
-        },
-        "breadcrumb": {
-          "@id": "https://www.abuqitmirlabs.tech/solutions/healthcare#breadcrumb"
-        },
-        "inLanguage": "en-US",
-        "about": [
-          { "@type": "Thing", "name": "Healthcare Software Development" },
-          { "@type": "Thing", "name": "Healthcare Software Solutions" },
-          { "@type": "Thing", "name": "Electronic Health Records" },
-          { "@type": "Thing", "name": "Telemedicine Software Development" },
-          { "@type": "Thing", "name": "Patient Portals" },
-          { "@type": "Thing", "name": "Remote Patient Monitoring" },
-          { "@type": "Thing", "name": "FHIR and HL7 Integration" }
-        ]
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://www.abuqitmirlabs.tech/solutions/healthcare#breadcrumb",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.abuqitmirlabs.tech"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Solutions",
-            "item": "https://www.abuqitmirlabs.tech/#services"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Healthcare Software Solutions",
-            "item": "https://www.abuqitmirlabs.tech/solutions/healthcare"
-          }
-        ]
-      },
-      {
-        "@type": "Service",
-        "@id": "https://www.abuqitmirlabs.tech/solutions/healthcare#service",
-        "name": "Healthcare Software Development & Healthcare Technology Solutions",
-        "provider": {
-          "@id": "https://www.abuqitmirlabs.tech/#organization"
-        },
-        "url": "https://www.abuqitmirlabs.tech/solutions/healthcare",
-        "description": "Custom healthcare software development services including Electronic Health Records (EHR/EMR), clinic management software, telemedicine platforms, patient portals, remote patient monitoring (RPM), and healthcare API integrations.",
-        "serviceType": "Healthcare Software Engineering",
-        "areaServed": ["US", "GB", "CA", "AU", "PK", "PL"],
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Healthcare Software Development Offerings",
-          "itemListElement": [
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Custom Healthcare Software Development",
-                "description": "Custom healthcare platforms, clinic management systems, hospital workflows, and operational automation."
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Healthcare Web Development Services",
-                "description": "Secure, responsive healthcare websites, clinical web applications, and patient-facing portals."
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "EHR & EMR Software Development",
-                "description": "Custom Electronic Health Record and Electronic Medical Record systems with structured charting."
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Telemedicine Platform Development",
-                "description": "Encrypted WebRTC video consultation platforms, virtual waiting rooms, and in-session charting."
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Patient Portal Web Development",
-                "description": "Self-service patient portals for appointment scheduling, medical records access, and messaging."
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Healthcare Mobile App Development",
-                "description": "Cross-platform iOS and Android healthcare applications for patients and medical providers."
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Remote Patient Monitoring Software",
-                "description": "Vital signs telemetry ingestion, automated clinical alerts, and clinician cohort dashboards."
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Healthcare AI & Automation",
-                "description": "Responsible administrative AI automation, document extraction, and RAG knowledge assistants."
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Healthcare Analytics & Clinical Dashboards",
-                "description": "Department throughput telemetry, bed occupancy tracking, and executive healthcare analytics."
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Healthcare API Integration & Interoperability",
-                "description": "FHIR v4, HL7 v2/v3, LIS lab interfaces, PACS imaging connectors, and payment bridges."
-              }
-            }
-          ]
-        }
-      },
-      {
-        "@type": "HowTo",
-        "@id": "https://www.abuqitmirlabs.tech/solutions/healthcare#process",
-        "name": "8-Step Healthcare Software Development Process",
-        "description": "AbuQitmirLabs' structured engineering methodology for designing, developing, integrating, and deploying secure healthcare software platforms.",
-        "step": [
-          { "@type": "HowToStep", "position": 1, "name": "Discovery & Requirements", "text": "Identify clinical workflows, user personas (doctors, nurses, administrators, patients), data governance standards, and operational objectives." },
-          { "@type": "HowToStep", "position": 2, "name": "Healthcare Workflow Mapping", "text": "Map comprehensive patient journeys, consultation lifecycles, clinical documentation touchpoints, and billing triggers." },
-          { "@type": "HowToStep", "position": 3, "name": "Architecture & Data Modeling", "text": "Design secure cloud architecture, zero-trust RBAC permissions, AES-256 encryption at rest, TLS 1.3 in transit, and immutable audit logs." },
-          { "@type": "HowToStep", "position": 4, "name": "UX/UI Design", "text": "Create low-cognitive-load, accessible user interfaces in Figma tailored for fast clinician charting and intuitive patient engagement." },
-          { "@type": "HowToStep", "position": 5, "name": "Application Development", "text": "Engineer responsive web frontends, cross-platform mobile apps, and robust microservices backends using modern TypeScript stacks." },
-          { "@type": "HowToStep", "position": 6, "name": "Integrations & Security", "text": "Connect FHIR/HL7 APIs, diagnostic laboratory feeds, payment gateways, and third-party healthcare service endpoints." },
-          { "@type": "HowToStep", "position": 7, "name": "Testing & Validation", "text": "Perform vulnerability scanning, penetration assessments, data isolation checks, and end-to-end clinical workflow testing." },
-          { "@type": "HowToStep", "position": 8, "name": "Deployment & Continuous Improvement", "text": "Deploy to cloud infrastructure with automated monitoring, backup redundancy, staff training, and continuous support SLAs." }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://www.abuqitmirlabs.tech/solutions/healthcare#faq",
-        "mainEntity": faqs.map(faq => ({
-          "@type": "Question",
-          "name": faq.q,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": faq.a
-          }
-        }))
-      }
-    ]
-  };
-
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
-      <Helmet>
-        <title>Healthcare Software Solutions | AbuQitmirLabs</title>
-        <meta name="description" content="Build secure healthcare software, patient portals, telemedicine platforms and clinical systems with AbuQitmirLabs for modern healthcare businesses." />
-        <link rel="canonical" href="https://www.abuqitmirlabs.tech/solutions/healthcare" />
-
-        {/* Open Graph */}
-        <meta property="og:title" content="Healthcare Software Solutions | AbuQitmirLabs" />
-        <meta property="og:description" content="Build secure healthcare software, patient portals, telemedicine platforms and clinical systems with AbuQitmirLabs for modern healthcare businesses." />
-        <meta property="og:url" content="https://www.abuqitmirlabs.tech/solutions/healthcare" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Healthcare Software Solutions | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Build secure healthcare software, patient portals, telemedicine platforms and clinical systems with AbuQitmirLabs for modern healthcare businesses." />
-        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        <script type="application/ld+json">{JSON.stringify(unifiedSchema)}</script>
-      </Helmet>
+      <SEO
+        title="Healthcare Software Development Pakistan | AbuQitmirLabs"
+        description="Healthcare software development company Pakistan building HIPAA-ready EHR, clinic management software, patient portals, and telemedicine apps from Karachi."
+        canonical="https://www.abuqitmirlabs.tech/solutions/healthcare"
+        keywords="healthcare software development company Pakistan, clinic management software development, telemedicine app development Pakistan, EHR software development company, patient portal development service, health tech startup development Pakistan"
+        ogImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        twitterImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        schema={healthcareSchema}
+      />
 
       <Header />
 
       <main className="pt-24 md:pt-32">
         {/* Breadcrumbs */}
         <div className="max-w-7xl mx-auto px-6">
-          <Breadcrumbs items={[
-            { label: 'Solutions', path: '/#services' },
-            { label: 'Healthcare Software Solutions', path: '/solutions/healthcare' }
-          ]} />
+          <Breadcrumbs
+            disableSchema={true}
+            items={[
+              { label: 'Custom Software', path: '/custom-software' },
+              { label: 'Healthcare Software Development', path: '/solutions/healthcare' }
+            ]}
+          />
         </div>
 
         {/* Hero Section with Single Semantic H1 */}
         <section className="relative py-16 md:py-24 overflow-hidden border-b border-white/10" aria-labelledby="hero-heading">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(16,185,129,0.08),transparent_50%)] pointer-events-none" />
           
-          <div className="max-w-7xl mx-auto px-6 relative z-10 animate-enter">
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-400 text-xs font-mono uppercase tracking-widest mb-8">
-              <HeartPulse className="w-4 h-4 text-emerald-400" /> Healthcare Technology Solutions &amp; Software Engineering
+              <HeartPulse className="w-4 h-4 text-emerald-400" /> Healthcare Software Development Company Pakistan &bull; From $15,000 USD
             </div>
 
-            <h1 id="hero-heading" className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08] mb-8 max-w-5xl animate-enter-delay-1">
-              Healthcare Software Solutions for Modern Healthcare
+            <h1 id="hero-heading" className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08] mb-8 max-w-5xl">
+              Healthcare Software Development for Clinics and Health Platforms
             </h1>
 
             {/* Direct Answer Block for AEO/GEO */}
             <div className="bg-zinc-900/90 border-l-4 border-emerald-400 p-6 md:p-8 rounded-r-2xl max-w-4xl mb-10 shadow-2xl backdrop-blur-md">
               <p className="text-sm md:text-base text-gray-200 leading-relaxed font-mono">
-                <strong className="text-emerald-400">Direct Answer:</strong> Healthcare software development is the engineering of custom digital applications, including Electronic Health Records (EHR/EMR), telemedicine platforms, patient portals, and clinic management systems designed to streamline medical workflows, safeguard sensitive health information, and improve patient care coordination across clinics, hospitals, and healthtech enterprises.
+                <strong className="text-emerald-400">Direct Answer:</strong> As a specialized healthcare software development company in Pakistan, AbuQitmirLabs engineers HIPAA-ready Electronic Health Records (EHR/EMR), clinic management software, patient portal development services, and telemedicine apps from Karachi, helping clinics, hospitals, and health tech startups streamline clinical workflows and safeguard sensitive health data.
               </p>
             </div>
 
             <p className="text-lg md:text-2xl text-gray-300 max-w-3xl leading-relaxed mb-10 font-light">
-              Modern healthcare delivery demands intuitive software that simplifies clinical workflows while upholding strict data privacy standards. AbuQitmirLabs is a specialized healthcare software development company building bespoke medical platforms that eliminate administrative bottlenecks, connect fragmented health records, and empower doctors and patients with dependable digital experiences.
+              From clinic management software development to full EHR software development company engagements, we build bespoke clinical systems with FHIR/HL7 interoperability and encrypted WebRTC telehealth—starting from <strong className="text-white">$15,000 USD</strong> for focused clinical MVPs with 100% IP ownership. Looking specifically for standalone autonomous clinical AI agents rather than full clinical platform software? Explore our <Link to="/ai-agent-development#what-are-healthcare-ai-agents" className="text-emerald-400 underline hover:text-white">healthcare AI agent capabilities</Link>.
             </p>
 
             <div className="flex flex-wrap items-center gap-6">
@@ -441,10 +207,10 @@ const HealthcarePlatformsPage = () => {
           <div className="max-w-3xl mb-16">
             <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest">Core Capabilities</span>
             <h2 id="custom-software-heading" className="text-3xl md:text-5xl font-extrabold mt-3 mb-6">
-              Custom Healthcare Software Development
+              Clinic Management &amp; Custom Healthcare Software Development
             </h2>
             <p className="text-gray-400 text-base md:text-lg leading-relaxed">
-              As a dedicated healthcare software development company, AbuQitmirLabs builds bespoke digital platforms tailored to your specific clinical specialties, operational models, and user roles. We engineer end-to-end custom healthcare software that eliminates administrative friction and enhances care delivery:
+              As a dedicated healthcare software development company in Pakistan supporting US, UK, GCC, and health tech startup development Pakistan teams, AbuQitmirLabs engineers bespoke clinic management software development platforms, EHR software development company architectures, telemedicine app development Pakistan suites, and patient portal development services tailored to clinical specialties:
             </p>
           </div>
 
@@ -454,7 +220,7 @@ const HealthcarePlatformsPage = () => {
                 <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-400 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full mb-4 inline-block">
                   Outpatient &amp; Specialty Practices
                 </span>
-                <h3 className="text-2xl font-bold mb-4 text-white">Clinic Management Systems</h3>
+                <h3 className="text-2xl font-bold mb-4 text-white">Clinic Management Software Development</h3>
                 <p className="text-gray-300 text-sm leading-relaxed mb-6 font-light">
                   We engineer custom clinic management software designed to automate daily practice operations. Features include online patient registration, intelligent doctor scheduling calendars, room allocation management, multi-practitioner time tracking, electronic prescription generation, and automated billing workflows tailored to outpatient and specialty clinics.
                 </p>
@@ -738,7 +504,7 @@ const HealthcarePlatformsPage = () => {
               </div>
 
               <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
-                Mobile applications provide patients and healthcare providers with immediate access to critical health services wherever they are. As part of our <Link to="/solutions/healthcare/mobile-app-development" className="text-emerald-400 underline hover:text-white transition-colors">healthcare mobile app development</Link> services and regional <Link to="/saudi-arabia-market" className="text-emerald-400 underline hover:text-white transition-colors">healthcare app development Saudi Arabia</Link> programs, we build intuitive, cross-platform mobile apps for iOS and Android using Flutter and React Native.
+                Mobile applications provide patients and healthcare providers with immediate access to critical health services wherever they are. Combining our <Link to="/mobile-app-development" className="text-emerald-400 underline hover:text-white transition-colors">healthcare mobile app development</Link> and telemedicine app development Pakistan capabilities with regional <Link to="/saudi-arabia-market" className="text-emerald-400 underline hover:text-white transition-colors">healthcare app development Saudi Arabia</Link> and health tech startup development Pakistan programs, we build intuitive cross-platform apps for iOS and Android using Flutter and React Native.
               </p>
 
               <p className="text-gray-400 text-base leading-relaxed">
@@ -970,11 +736,24 @@ const HealthcarePlatformsPage = () => {
               Healthcare Security &amp; Data Protection
             </h2>
             <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
-              Data protection in healthcare is an essential engineering discipline. We build multi-layered security architectures designed to support healthcare-oriented privacy requirements, including HIPAA-aligned security rules in the United States, GDPR standards in Europe, and PIPEDA in Canada.
+              Data protection in healthcare is an essential engineering discipline. We build multi-layered security architectures designed to support regional and international healthcare privacy mandates: <strong>HIPAA</strong> technical safeguards in the United States, <strong>UAE Federal Decree-Law No. 45/2021 (PDPL)</strong> and GCC health-data residency controls, <strong>Pakistan Personal Data Protection (PDPL)</strong> principles, GDPR standards in Europe, and PIPEDA in Canada. See our technical deep-dive on <Link to="/blog/healthcare-software-development-hipaa-ready-from-day-one" className="text-emerald-400 underline hover:text-white">building HIPAA-ready healthcare software from day one</Link>.
             </p>
-            <p className="text-gray-400 text-base leading-relaxed">
+            <p className="text-gray-400 text-base leading-relaxed mb-8">
               We implement defense-in-depth engineering practices that safeguard sensitive protected health information (PHI) across every architectural tier:
             </p>
+
+            {/* Verified Clinical Platform Case Study: ClinicOSH */}
+            <div className="p-8 rounded-2xl bg-zinc-900/70 border border-emerald-500/30 mb-8">
+              <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold block mb-2">Verified Platform Case Study &bull; ClinicOSH</span>
+              <h3 className="text-2xl font-bold text-white mb-3">ClinicOSH Clinical Workflow &amp; Patient Onboarding Architecture</h3>
+              <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                We designed and engineered clinical intake workflows, patient queue dashboards, and role-based onboarding modules for <strong>ClinicOSH</strong>—eliminating paper intake friction and giving physicians structured pre-visit summaries while maintaining strict multi-tenant data isolation and role-scoped access boundaries.
+              </p>
+              <div className="flex flex-wrap gap-4 text-xs font-mono">
+                <Link to="/blog/healthcare-software-development-solutions-2026-custom-ehr-clinical-software" className="text-[#ccff00] underline hover:text-white">Read Custom EHR Architecture Guide &rarr;</Link>
+                <Link to="/ai-agent-development#what-are-healthcare-ai-agents" className="text-emerald-400 underline hover:text-white">Healthcare AI Agent Architecture &rarr;</Link>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -1252,7 +1031,7 @@ const HealthcarePlatformsPage = () => {
                 </p>
               </div>
               <Link 
-                to="/blog/healthcare-software-development-solutions-2026"
+                to="/blog/healthcare-software-development-solutions-2026-custom-ehr-clinical-software"
                 className="text-xs font-mono text-[#ccff00] hover:underline inline-flex items-center gap-2 uppercase tracking-wider font-bold"
               >
                 <span>Read Full Guide</span>
@@ -1262,19 +1041,19 @@ const HealthcarePlatformsPage = () => {
 
             <div className="p-8 rounded-2xl bg-zinc-900/60 border border-white/10 flex flex-col justify-between hover:border-[#ccff00]/40 transition-colors group">
               <div>
-                <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3 font-bold">AI Engineering</span>
+                <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3 font-bold">HIPAA &amp; Security</span>
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#ccff00] transition-colors">
-                  Healthcare AI Agent Development Services
+                  HIPAA-Ready Healthcare Software From Day One
                 </h3>
                 <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                  Autonomous agents for clinical triage, EHR FHIR integrations, patient support, and human-in-the-loop medical workflows.
+                  Encryption, immutable audit trails, RBAC isolation, and compliant architecture for clinics, telemedicine, and patient portals.
                 </p>
               </div>
               <Link 
-                to="/ai-agent-development"
+                to="/blog/healthcare-software-development-hipaa-ready-from-day-one"
                 className="text-xs font-mono text-[#ccff00] hover:underline inline-flex items-center gap-2 uppercase tracking-wider font-bold"
               >
-                <span>Explore AI Agent Services</span>
+                <span>Read HIPAA Guide</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -1295,7 +1074,7 @@ const HealthcarePlatformsPage = () => {
                 to="/contact" 
                 className="inline-flex items-center gap-3 px-10 py-5 bg-[#ccff00] text-black font-extrabold text-sm uppercase tracking-wider rounded-xl hover:scale-105 transition-all shadow-[0_0_40px_rgba(204,255,0,0.4)]"
               >
-                Book a free healthcare tech consultation <ArrowRight className="w-5 h-5" />
+                Schedule Healthcare Technical Consultation <ArrowRight className="w-5 h-5" />
               </Link>
               <Link 
                 to="/about/our-company" 

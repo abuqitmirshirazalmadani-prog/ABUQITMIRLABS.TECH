@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { 
@@ -29,6 +28,7 @@ import {
   Code2,
   FileCheck
 } from 'lucide-react';
+import SEO from '../../components/SEO';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
@@ -83,27 +83,15 @@ const AIAutomationPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
-      <Helmet>
-        <title>AI Automation Solutions | AbuQitmirLabs</title>
-        <meta name="description" content="Automate business workflows with AI agents, RAG, APIs and intelligent integrations. Build secure AI automation for startups and enterprises." />
-        <link rel="canonical" href="https://www.abuqitmirlabs.tech/solutions/ai-automation" />
-
-        {/* Open Graph */}
-        <meta property="og:title" content="AI Automation Solutions | AbuQitmirLabs" />
-        <meta property="og:description" content="Automate business workflows with AI agents, RAG, APIs and intelligent integrations. Build secure AI automation for startups and enterprises." />
-        <meta property="og:url" content="https://www.abuqitmirlabs.tech/solutions/ai-automation" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI Automation Solutions | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Automate business workflows with AI agents, RAG, APIs and intelligent integrations. Build secure AI automation for startups and enterprises." />
-        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* JSON-LD Schema */}
-        <script type="application/ld+json">{JSON.stringify(aiAutomationSchema)}</script>
-      </Helmet>
+      <SEO
+        title="AI Workflow Automation for Business Operations | AbuQitmirLabs"
+        description="AI workflow automation for business operations across retail, logistics, and finance. Integrate CRMs, ERPs, and RAG pipelines from $5,000 USD. Built in Karachi."
+        canonical="https://www.abuqitmirlabs.tech/solutions/ai-automation"
+        keywords="AI workflow automation for business operations, business process automation with AI, AI automation for operations teams, workflow automation AI integration, AI-powered process automation company, enterprise AI automation Pakistan"
+        ogImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        twitterImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        schema={aiAutomationSchema}
+      />
 
       {/* Accessibility Skip Link */}
       <a 
@@ -118,34 +106,37 @@ const AIAutomationPage = () => {
       <main id="main-content" className="pt-24 md:pt-32">
         {/* Breadcrumb Section */}
         <div className="max-w-7xl mx-auto px-6">
-          <Breadcrumbs items={[
-            { label: 'Solutions', path: '/#services' },
-            { label: 'AI Automation Solutions', path: '/solutions/ai-automation' }
-          ]} />
+          <Breadcrumbs
+            disableSchema={true}
+            items={[
+              { label: 'Custom Software', path: '/custom-software' },
+              { label: 'AI Workflow Automation', path: '/solutions/ai-automation' }
+            ]}
+          />
         </div>
 
         {/* Hero Section */}
         <section aria-labelledby="hero-title" className="relative py-16 md:py-24 overflow-hidden border-b border-white/10">
-          <div className="max-w-7xl mx-auto px-6 relative z-10 animate-enter">
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/20 text-[#ccff00] text-xs font-mono mb-6 uppercase tracking-wider">
               <Cpu className="w-3.5 h-3.5" />
-              <span>Autonomous Business Intelligence &amp; Intelligent Workflows</span>
+              <span>AI Workflow Automation for Business Operations &bull; From $5,000 USD</span>
             </div>
 
-            <h1 id="hero-title" className="text-4xl md:text-7xl font-extrabold tracking-tight mb-8 max-w-5xl leading-[1.08] animate-enter-delay-1">
-              AI Automation Solutions for Modern Businesses
+            <h1 id="hero-title" className="text-4xl md:text-7xl font-extrabold tracking-tight mb-8 max-w-5xl leading-[1.08]">
+              AI Automation Services for Business Workflow and Operations
             </h1>
 
             {/* Direct Answer Box (AEO Direct Answer 01) */}
-            <div className="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 md:p-8 rounded-r-xl max-w-4xl mb-8 shadow-[0_0_30px_rgba(204,255,0,0.05)] animate-enter-delay-2">
-              <h2 className="text-xs font-mono uppercase tracking-widest text-[#ccff00] mb-2 font-bold">Direct Answer: What Is AI Automation?</h2>
+            <div className="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 md:p-8 rounded-r-xl max-w-4xl mb-8 shadow-[0_0_30px_rgba(204,255,0,0.05)]">
+              <h2 className="text-xs font-mono uppercase tracking-widest text-[#ccff00] mb-2 font-bold">Direct Answer: What Is AI Workflow Automation?</h2>
               <p className="text-gray-200 text-base md:text-lg leading-relaxed font-normal">
-                <strong>AI automation</strong> uses intelligent software, AI agents, APIs, and workflow orchestration to automate repetitive business processes, connect business systems, retrieve information from company data, and assist teams with faster decision-making.
+                <strong>AI workflow automation for business operations</strong> connects your existing CRMs, ERPs, support desks, and finance software with LLM reasoning and RAG pipelines to eliminate manual data entry and multi-step operational bottlenecks—starting from <strong>$5,000 USD</strong> for pilot workflows.
               </p>
             </div>
 
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl leading-relaxed mb-10 font-light">
-              Eliminate manual operational bottlenecks. We engineer custom AI automation systems, autonomous AI agents, and RAG-powered workflows that integrate with your software stack to accelerate throughput, eliminate data entry friction, and reduce operational overhead. Explore our <Link to="/custom-software" className="text-[#ccff00] underline font-medium">custom software architecture</Link>, build dedicated <Link to="/ai-agent-development" className="text-[#ccff00] underline font-medium">AI agent systems</Link>, or connect scalable <Link to="/web-development" className="text-[#ccff00] underline font-medium">web platforms</Link> and <Link to="/mobile-app-development" className="text-[#ccff00] underline font-medium">mobile applications</Link>.
+              While our standalone <Link to="/ai-agent-development" className="text-[#ccff00] underline font-medium">AI agent development service</Link> focuses on building new autonomous AI agent products from scratch, this practice delivers <strong>business process automation with AI</strong> across your existing software stack—combining workflow automation AI integration, AI automation for operations teams, and enterprise AI automation Pakistan delivery from Karachi.
             </p>
 
             <div className="flex flex-wrap gap-4 items-center">
@@ -505,6 +496,32 @@ const AIAutomationPage = () => {
                 <div><strong className="text-white">Benefit:</strong> Instant individualized student support.</div>
               </div>
             </div>
+          </div>
+
+          {/* Dedicated Industry Workflows: Retail, Logistics & Finance */}
+          <div className="mt-14 pt-12 border-t border-white/10">
+            <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-2 font-bold">[ SECTOR PLAYBOOKS ]</span>
+            <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-6">Industry-Specific AI Automation: Retail, Logistics &amp; Finance</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
+                <h4 className="text-lg font-bold text-[#ccff00] mb-2">Retail &amp; E-Commerce Operations</h4>
+                <p className="text-xs text-gray-300 leading-relaxed mb-3 font-light">Automate multi-channel order routing, supplier SKU normalization, customer return approvals, and inventory restock alerts across Shopify, WooCommerce, and custom storefronts.</p>
+                <Link to="/solutions/e-commerce" className="text-[11px] font-mono text-[#ccff00] underline">E-Commerce Architecture &rarr;</Link>
+              </div>
+              <div className="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
+                <h4 className="text-lg font-bold text-[#ccff00] mb-2">Logistics &amp; Supply Chain</h4>
+                <p className="text-xs text-gray-300 leading-relaxed mb-3 font-light">As an AI-powered process automation company, we extract bill-of-lading data, automate dispatch exception notifications, and synchronize customs &amp; 3PL manifests into your ERP.</p>
+                <Link to="/blog/business-automation-software-save-time-reduce-costs-2026-guide" className="text-[11px] font-mono text-[#ccff00] underline">Business Automation Guide &rarr;</Link>
+              </div>
+              <div className="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
+                <h4 className="text-lg font-bold text-[#ccff00] mb-2">Finance &amp; Regulated Operations</h4>
+                <p className="text-xs text-gray-300 leading-relaxed mb-3 font-light">Automate 3-way PO matching, invoice extraction, and KYC document verification with Human-in-the-Loop gates for enterprise AI automation Pakistan and GCC compliance teams.</p>
+                <Link to="/blog/ai-automation-compliance" className="text-[11px] font-mono text-[#ccff00] underline">AI Compliance Architecture &rarr;</Link>
+              </div>
+            </div>
+            <p className="text-xs font-mono text-gray-400 mt-6">
+              Further Reading: <Link to="/blog/ai-automation-for-regulated-industries-abuqitmirlabs" className="text-[#ccff00] underline hover:text-white">AI Automation for Regulated Industries</Link> &bull; <Link to="/blog/ai-automation-compliance" className="text-[#ccff00] underline hover:text-white">Compliance Architecture</Link>
+            </p>
           </div>
         </section>
 

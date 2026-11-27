@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import { 
   Clapperboard, 
   Film, 
@@ -246,144 +246,168 @@ export default function AIVideoCreator() {
     };
   }, [videosPerMonth, videoTierType]);
 
-  const pageTitle = "AI Video Creation Services | AbuQitmirLabs";
-  const pageDescription = "Cinematic AI video production agency combining human direction with generative AI. Teasers, explainers, ads & founder stories for US, UK & global brands.";
+  const pageTitle = "AI Video Production Services for B2B | AbuQitmirLabs";
+  const pageDescription = "AI marketing video agency delivering AI-powered video content for businesses. Cinematic teasers, SaaS explainers, and paid social ads from $99 USD in 48-72 hours.";
   const canonicalUrl = "https://www.abuqitmirlabs.tech/ai-video-creation";
+  const ogImageUrl = "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp";
 
-  const schemaJsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://www.abuqitmirlabs.tech/#organization",
-        "name": "AbuQitmirLabs",
-        "url": "https://www.abuqitmirlabs.tech",
-        "logo": "https://www.abuqitmirlabs.tech/logo.png",
-        "foundingDate": "2021",
-        "founder": {
-          "@type": "Person",
-          "name": "Abu Qitmir Mohammad Shiraz Al-Madani"
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Karachi",
-          "addressCountry": "PK"
-        },
-        "sameAs": [
-          "https://www.linkedin.com/in/abu-qitmir-697423390/",
-          "https://x.com/AbuQitmir",
-          "https://www.youtube.com/@AbuQitmir"
-        ]
+  const schemaGraph = [
+    {
+      "@type": "Organization",
+      "@id": "https://www.abuqitmirlabs.tech/#organization",
+      "name": "AbuQitmirLabs",
+      "url": "https://www.abuqitmirlabs.tech",
+      "logo": "https://www.abuqitmirlabs.tech/logo.png",
+      "image": ogImageUrl,
+      "email": "hello@abuqitmirlabs.tech",
+      "telephone": "+923233260859",
+      "foundingDate": "2021",
+      "founder": {
+        "@type": "Person",
+        "name": "Abu Qitmir Mohammad Shiraz Al-Madani"
       },
-      {
-        "@type": "Service",
-        "@id": "https://www.abuqitmirlabs.tech/ai-video-creation#service",
-        "name": "Cinematic AI Video Creation & Production Services",
-        "serviceType": "Generative AI Video Production & Creative Direction",
-        "provider": {
-          "@id": "https://www.abuqitmirlabs.tech/#organization"
-        },
-        "areaServed": [
-          { "@type": "Country", "name": "United States" },
-          { "@type": "Country", "name": "United Kingdom" },
-          { "@type": "Country", "name": "United Arab Emirates" },
-          { "@type": "Country", "name": "Saudi Arabia" },
-          { "@type": "Country", "name": "Qatar" },
-          { "@type": "Country", "name": "Kuwait" },
-          { "@type": "Country", "name": "Canada" },
-          { "@type": "Country", "name": "Australia" },
-          { "@type": "Country", "name": "Poland" },
-          { "@type": "Country", "name": "Pakistan" }
-        ],
-        "description": "High-end cinematic AI video creation blending experienced film direction, multi-model generative orchestration, sound design, and 4K color grading.",
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "USD",
-          "price": "99",
-          "priceValidUntil": "2027-12-31",
-          "availability": "https://schema.org/InStock",
-          "url": canonicalUrl
-        }
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+        "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
+        "postalCode": "75160",
+        "addressCountry": "PK"
       },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://www.abuqitmirlabs.tech/ai-video-creation#breadcrumbs",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.abuqitmirlabs.tech"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Services",
-            "item": "https://www.abuqitmirlabs.tech/#services"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "AI Video Creation",
-            "item": canonicalUrl
-          }
-        ]
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.842691448838718,
+        "longitude": 67.1862014846566
       },
-      {
-        "@type": "FAQPage",
-        "@id": "https://www.abuqitmirlabs.tech/ai-video-creation#faq",
-        "mainEntity": faqData.map(item => ({
-          "@type": "Question",
-          "name": item.q,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": item.a
-          }
-        }))
+      "sameAs": [
+        "https://wa.me/923233260859",
+        "https://github.com/abuqitmir",
+        "https://www.facebook.com/profile.php?id=61583768706452",
+        "https://www.instagram.com/abuqitmirshirazalmadani/",
+        "https://www.youtube.com/@AbuQitmir",
+        "https://www.linkedin.com/in/abu-qitmir-697423390/",
+        "https://x.com/AbuQitmir"
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+      "name": "AbuQitmirLabs",
+      "url": "https://www.abuqitmirlabs.tech",
+      "image": ogImageUrl,
+      "telephone": "+923233260859",
+      "email": "hello@abuqitmirlabs.tech",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+        "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
+        "postalCode": "75160",
+        "addressCountry": "PK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.842691448838718,
+        "longitude": 67.1862014846566
       }
-    ]
-  };
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.abuqitmirlabs.tech/ai-video-creation#service",
+      "name": "AI Video Production Services for B2B Marketing",
+      "serviceType": "AI-Powered Video Content & Commercial Production",
+      "provider": {
+        "@id": "https://www.abuqitmirlabs.tech/#organization"
+      },
+      "areaServed": [
+        { "@type": "Country", "name": "Pakistan" },
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Saudi Arabia" }
+      ],
+      "description": pageDescription,
+      "url": canonicalUrl,
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "price": "99",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "url": canonicalUrl
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.abuqitmirlabs.tech/ai-video-creation#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.abuqitmirlabs.tech/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://www.abuqitmirlabs.tech/#services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AI Video Creation",
+          "item": canonicalUrl
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.abuqitmirlabs.tech/ai-video-creation#faq",
+      "mainEntity": faqData.map(item => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.a
+        }
+      }))
+    },
+    ...featuredVideoCaseStudies.map((v) => ({
+      "@type": "VideoObject",
+      "@id": `https://www.abuqitmirlabs.tech/ai-video-creation#${v.id}`,
+      "name": v.title,
+      "description": v.desc,
+      "thumbnailUrl": [ogImageUrl],
+      "uploadDate": "2026-01-15T00:00:00+05:00",
+      "contentUrl": `https://www.youtube.com/watch?v=${v.videoId}`,
+      "embedUrl": `https://www.youtube.com/embed/${v.videoId}`,
+      "publisher": {
+        "@id": "https://www.abuqitmirlabs.tech/#organization"
+      }
+    }))
+  ];
 
   const selectedDeliverable = videoDeliverableStyles[selectedStyleIndex];
 
   return (
     <div className="bg-[#050505] text-[#f4f4f5] min-h-screen selection:bg-[#ccff00] selection:text-black">
-      <Helmet>
-        {/* Primary Meta Tags */}
-        <title>{pageTitle}</title>
-        <meta name="title" content={pageTitle} />
-        <meta name="description" content={pageDescription} />
-        <meta name="keywords" content="AI video creation, cinematic AI video agency, generative AI video production, Runway Gen-3 production, Kling AI video, AI video studio, enterprise AI commercial production, AbuQitmirLabs" />
-        <meta name="author" content="AbuQitmirLabs" />
-        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-        <meta name="language" content="English" />
-        <link rel="canonical" href={canonicalUrl} />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:site_name" content="AbuQitmirLabs" />
-        <meta property="og:locale" content="en_US" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={canonicalUrl} />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp" />
-        <meta name="twitter:site" content="@AbuQitmir" />
-        <meta name="twitter:creator" content="@AbuQitmir" />
-
-        {/* JSON-LD Structured Data */}
-        <script type="application/ld+json">
-          {JSON.stringify(schemaJsonLd)}
-        </script>
-      </Helmet>
+      <SEO
+        title={pageTitle}
+        description={pageDescription}
+        canonical={canonicalUrl}
+        keywords="AI video production services for B2B marketing, AI marketing video agency, AI-powered video content for businesses, generative AI video production, Runway Gen-3 production, AbuQitmirLabs"
+        ogTitle={pageTitle}
+        ogDescription={pageDescription}
+        ogImage={ogImageUrl}
+        ogImageAlt="AbuQitmirLabs AI Video Production Services for B2B Marketing"
+        ogType="website"
+        twitterTitle={pageTitle}
+        twitterDescription={pageDescription}
+        twitterImage={ogImageUrl}
+        schema={schemaGraph}
+      />
 
       {/* Global Navigation Header */}
       <Header />
@@ -409,40 +433,35 @@ export default function AIVideoCreator() {
             />
           </div>
 
-          <div className="max-w-4xl animate-enter">
+          <div className="max-w-4xl">
             {/* Cinematic Studio Badge */}
-            <motion.div 
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#ccff00]/30 bg-[#ccff00]/10 text-[#ccff00] text-xs font-mono tracking-widest uppercase mb-8 backdrop-blur-md"
-            >
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#ccff00]/30 bg-[#ccff00]/10 text-[#ccff00] text-xs font-mono tracking-widest uppercase mb-8 backdrop-blur-md">
               <Clapperboard className="w-3.5 h-3.5" />
-              <span>Cinematic AI Video Studio • Broadcast Direction</span>
-            </motion.div>
+              <span>AI Marketing Video Agency • Starting From $99 USD (PKR Available)</span>
+            </div>
 
             {/* Main H1 Title */}
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl sm:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-white leading-[1.08] mb-8 animate-enter-delay-1"
-            >
-              Cinematic AI Video Production <br />
-              <span className="text-[#ccff00] italic font-normal">Without the Uncanny Slop.</span>
-            </motion.h1>
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-white leading-[1.08] mb-8">
+              AI Video Production Services for B2B Marketing
+            </h1>
 
             {/* Subtitle / Core Value Proposition */}
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg sm:text-xl text-zinc-300 font-light leading-relaxed mb-10 max-w-3xl"
-            >
-              We unite veteran film direction with cutting-edge generative diffusion. 
-              Escape $15,000 legacy agency quotes and 6-week delays. We script, storyboard, 
-              orchestrate multi-model AI renders, and deliver Hollywood-grade commercial video in 72 hours.
-            </motion.p>
+            <p className="text-lg sm:text-xl text-zinc-300 font-light leading-relaxed mb-8 max-w-3xl">
+              As a senior-directed <strong>AI marketing video agency</strong>, AbuQitmirLabs produces broadcast-ready <strong>AI-powered video content for businesses</strong>—combining veteran film direction with multi-model diffusion, ElevenLabs voice synthesis, and DaVinci 4K mastering in 48–72 hours starting at $99 USD.
+            </p>
+
+            {/* Direct Answer GEO / AEO Block */}
+            <div className="mb-10 p-6 rounded-2xl bg-white/[0.03] border border-[#ccff00]/20 max-w-3xl">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.25em] text-[#ccff00] block mb-2">
+                Direct Answer // B2B AI Video Production
+              </span>
+              <h2 className="text-base sm:text-lg font-bold text-white mb-2">
+                How Does AI-Powered Video Content for Businesses Differ From DIY AI Tools?
+              </h2>
+              <p className="text-sm text-zinc-300 font-light leading-relaxed">
+                AI-powered video content from AbuQitmirLabs pairs human creative direction with Flux Pro keyframing, Runway Gen-3/Kling motion control, LoRA character consistency, and 4K DaVinci Resolve finishing. Packages start at $99 USD (PKR local pricing available) with full commercial rights and 48–72 hour delivery.
+              </p>
+            </div>
 
             {/* CTA Action Buttons */}
             <motion.div 

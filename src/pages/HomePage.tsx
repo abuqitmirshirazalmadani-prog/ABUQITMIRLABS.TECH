@@ -294,16 +294,16 @@ export default function HomePage() {
         },
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Shahrah-e-Faisal, PECHS",
+          "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
           "addressLocality": "Karachi",
           "addressRegion": "Sindh",
-          "postalCode": "75400",
+          "postalCode": "75160",
           "addressCountry": "PK"
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 24.8607,
-          "longitude": 67.0011
+          "latitude": 24.842691448838718,
+          "longitude": 67.1862014846566
         },
         "contactPoint": {
           "@type": "ContactPoint",
@@ -345,7 +345,7 @@ export default function HomePage() {
         "@id": "https://www.abuqitmirlabs.tech/#webpage",
         "url": "https://www.abuqitmirlabs.tech/",
         "name": "Custom Software, AI & SEO Engineering | AbuQitmirLabs",
-        "description": "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Free technical audit.",
+        "description": "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Request technical audit.",
         "author": {
           "@type": "Person",
           "name": "Abu Qitmir Mohammad Shiraz Al-Madani",
@@ -472,16 +472,16 @@ export default function HomePage() {
     <main id="main-content" className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Custom Software, AI & SEO Engineering | AbuQitmirLabs"
-        description="Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Free technical audit."
+        description="Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Request technical audit."
         canonical="https://www.abuqitmirlabs.tech/"
         ogTitle="Custom Software, AI & SEO Engineering | AbuQitmirLabs"
-        ogDescription="Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Free technical audit."
+        ogDescription="Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Request technical audit."
         ogImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
         ogImageAlt="AbuQitmirLabs Growth Engineering Firm — Custom Software, AI & Technical SEO"
         ogType="website"
         twitterCard="summary_large_image"
         twitterTitle="Custom Software, AI & SEO Engineering | AbuQitmirLabs"
-        twitterDescription="Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Free technical audit."
+        twitterDescription="Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Request technical audit."
         twitterImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
         schema={growthEngineeringSchema}
       />
@@ -826,7 +826,7 @@ export default function HomePage() {
                 <li><strong>4.9 / 5.0 Client Rating:</strong> Verified across 48 client reviews on Google Business Profile, Clutch.co, and GoodFirms.</li>
                 <li><strong>Security &amp; Compliance Ready:</strong> Engineered with OWASP, SOC 2 Type II, HIPAA, GDPR, and Saudi PDPL best practices.</li>
                 <li><strong>100% Client IP Guarantee:</strong> Written legal contract and full GitHub source code handover on every milestone.</li>
-                <li><strong>Verified Entity:</strong> Registered studio at Shahrah-e-Faisal, PECHS, Karachi, Pakistan (+92 323 3260859).</li>
+                <li><strong>Verified Entity:</strong> Registered studio at 8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town, Karachi, 75160, Pakistan (+92 323 3260859).</li>
               </ul>
             </div>
           </div>

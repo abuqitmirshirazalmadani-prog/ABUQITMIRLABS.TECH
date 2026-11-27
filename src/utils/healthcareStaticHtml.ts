@@ -22,8 +22,9 @@ export const healthcareSchema = {
       "email": "hello@abuqitmirlabs.tech",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
         "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
         "postalCode": "75160",
         "addressCountry": "PK"
       },
@@ -47,6 +48,40 @@ export const healthcareSchema = {
       }
     },
     {
+      "@type": "LocalBusiness",
+      "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+      "name": "AbuQitmirLabs",
+      "url": "https://www.abuqitmirlabs.tech",
+      "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+      "telephone": "+923233260859",
+      "email": "hello@abuqitmirlabs.tech",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+        "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
+        "postalCode": "75160",
+        "addressCountry": "PK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.842691448838718,
+        "longitude": 67.1862014846566
+      },
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61583768706452",
+        "https://www.instagram.com/abuqitmirshirazalmadani/",
+        "https://www.youtube.com/@AbuQitmir",
+        "https://www.linkedin.com/in/abu-qitmir-697423390/",
+        "https://x.com/AbuQitmir",
+        "https://www.pinterest.com/abuqitmir",
+        "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani",
+        "https://www.goodfirms.co/company/abuqitmirlabs-tech",
+        "https://clutch.co/profile/abuqitmirlabstech"
+      ]
+    },
+    {
       "@type": "WebSite",
       "@id": "https://www.abuqitmirlabs.tech/#website",
       "url": "https://www.abuqitmirlabs.tech",
@@ -59,8 +94,12 @@ export const healthcareSchema = {
       "@type": "WebPage",
       "@id": "https://www.abuqitmirlabs.tech/solutions/healthcare#webpage",
       "url": "https://www.abuqitmirlabs.tech/solutions/healthcare",
-      "name": "Healthcare Software Solutions | AbuQitmirLabs",
-      "description": "Build secure healthcare software, patient portals, telemedicine platforms and clinical systems with AbuQitmirLabs for modern healthcare businesses.",
+      "name": "Healthcare Software Development Pakistan | AbuQitmirLabs",
+      "description": "Healthcare software development company Pakistan building HIPAA-ready EHR, clinic management software, patient portals, and telemedicine apps from Karachi.",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+      },
       "isPartOf": {
         "@id": "https://www.abuqitmirlabs.tech/#website"
       },
@@ -69,12 +108,12 @@ export const healthcareSchema = {
       },
       "inLanguage": "en-US",
       "about": [
-        { "@type": "Thing", "name": "Healthcare Software Development" },
-        { "@type": "Thing", "name": "Healthcare Software Solutions" },
-        { "@type": "Thing", "name": "Electronic Health Records" },
-        { "@type": "Thing", "name": "Telemedicine Software Development" },
-        { "@type": "Thing", "name": "Patient Portals" },
-        { "@type": "Thing", "name": "Remote Patient Monitoring" },
+        { "@type": "Thing", "name": "Healthcare Software Development Company Pakistan" },
+        { "@type": "Thing", "name": "Clinic Management Software Development" },
+        { "@type": "Thing", "name": "EHR Software Development Company" },
+        { "@type": "Thing", "name": "Telemedicine App Development Pakistan" },
+        { "@type": "Thing", "name": "Patient Portal Development Service" },
+        { "@type": "Thing", "name": "Health Tech Startup Development Pakistan" },
         { "@type": "Thing", "name": "FHIR and HL7 Integration" }
       ]
     },
@@ -91,13 +130,13 @@ export const healthcareSchema = {
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Solutions",
-          "item": "https://www.abuqitmirlabs.tech/#services"
+          "name": "Custom Software",
+          "item": "https://www.abuqitmirlabs.tech/custom-software"
         },
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Healthcare Software Solutions",
+          "name": "Healthcare Software Development",
           "item": "https://www.abuqitmirlabs.tech/solutions/healthcare"
         }
       ]
@@ -105,14 +144,27 @@ export const healthcareSchema = {
     {
       "@type": "Service",
       "@id": "https://www.abuqitmirlabs.tech/solutions/healthcare#service",
-      "name": "Healthcare Software Development & Healthcare Technology Solutions",
+      "name": "Healthcare Software Development for Clinics and Health Platforms",
       "provider": {
         "@id": "https://www.abuqitmirlabs.tech/#organization"
       },
       "url": "https://www.abuqitmirlabs.tech/solutions/healthcare",
-      "description": "Custom healthcare software development services including Electronic Health Records (EHR/EMR), clinic management software, telemedicine platforms, patient portals, remote patient monitoring (RPM), and healthcare API integrations.",
-      "serviceType": "Healthcare Software Engineering",
-      "areaServed": ["US", "GB", "CA", "AU", "PK", "PL"],
+      "description": "Healthcare software development company Pakistan building HIPAA-ready Electronic Health Records (EHR/EMR), clinic management software, telemedicine platforms, and patient portals for global health tech teams.",
+      "serviceType": "Healthcare Software Development",
+      "areaServed": [
+        { "@type": "Country", "name": "Pakistan" },
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Saudi Arabia" }
+      ],
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "lowPrice": "15000",
+        "highPrice": "95000",
+        "offerCount": "3"
+      },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Healthcare Software Development Offerings",
@@ -317,9 +369,9 @@ export const healthcareInitialHtml = `
       <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs font-mono text-gray-400">
         <a href="/" class="hover:text-[#ccff00] transition-colors">Home</a>
         <span>/</span>
-        <a href="/#services" class="hover:text-[#ccff00] transition-colors">Solutions</a>
+        <a href="/custom-software" class="hover:text-[#ccff00] transition-colors">Custom Software</a>
         <span>/</span>
-        <span class="text-white" aria-current="page">Healthcare Software Solutions</span>
+        <span class="text-white" aria-current="page">Healthcare Software Development</span>
       </nav>
     </div>
 
@@ -327,22 +379,22 @@ export const healthcareInitialHtml = `
     <section class="py-12 md:py-20 border-b border-white/10 relative overflow-hidden" aria-labelledby="hero-heading">
       <div class="max-w-7xl mx-auto px-6 relative z-10">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-400 text-xs font-mono uppercase tracking-widest mb-8">
-          Healthcare Technology Solutions &amp; Software Engineering
+          Healthcare Software Development Company Pakistan &bull; From $15,000 USD
         </div>
 
         <h1 id="hero-heading" class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08] mb-8 max-w-5xl">
-          Healthcare Software Solutions for Modern Healthcare
+          Healthcare Software Development for Clinics and Health Platforms
         </h1>
 
         <!-- Direct Answer Definition Block for AEO/GEO -->
         <div class="bg-zinc-900/90 border-l-4 border-emerald-400 p-6 md:p-8 rounded-r-2xl max-w-4xl mb-10 shadow-2xl">
           <p class="text-sm md:text-base text-gray-200 leading-relaxed font-mono">
-            <strong class="text-emerald-400">Direct Answer:</strong> Healthcare software development is the engineering of custom digital applications, including Electronic Health Records (EHR/EMR), telemedicine platforms, patient portals, and clinic management systems designed to streamline medical workflows, safeguard sensitive health information, and improve patient care coordination across clinics, hospitals, and healthtech enterprises.
+            <strong class="text-emerald-400">Direct Answer:</strong> As a specialized healthcare software development company in Pakistan, AbuQitmirLabs engineers HIPAA-ready Electronic Health Records (EHR/EMR), clinic management software, patient portal development services, and telemedicine apps from Karachi, helping clinics, hospitals, and health tech startups streamline clinical workflows and safeguard sensitive health data.
           </p>
         </div>
 
-        <p class="text-lg md:text-2xl text-gray-300 max-w-3xl leading-relaxed mb-10 font-light">
-          Modern healthcare delivery demands intuitive software that simplifies clinical workflows while upholding strict data privacy standards. AbuQitmirLabs is a specialized healthcare software development company building bespoke medical platforms that eliminate administrative bottlenecks, connect fragmented health records, and empower doctors and patients with dependable digital experiences.
+        <p class="text-lg md:text-2xl text-gray-300 max-w-3xl leading-relaxed mb-8 font-light">
+          From clinic management software development to full EHR software development company engagements, we build bespoke clinical systems with FHIR/HL7 interoperability and encrypted WebRTC telehealth—starting from <strong class="text-white">$15,000 USD</strong> for focused clinical MVPs with 100% IP ownership. Looking specifically for standalone autonomous clinical AI agents rather than full clinical platform software? Explore our <a href="/ai-agent-development#what-are-healthcare-ai-agents" class="text-emerald-400 underline hover:text-white">healthcare AI agent capabilities</a>.
         </p>
 
         <div class="flex flex-wrap items-center gap-6">
@@ -404,25 +456,25 @@ export const healthcareInitialHtml = `
     <!-- Section 2: Custom Healthcare Software Development -->
     <section class="py-20 md:py-28 max-w-7xl mx-auto px-6 border-b border-white/10" aria-labelledby="custom-software-heading">
       <div class="max-w-3xl mb-16">
-        <span class="text-[#ccff00] text-xs font-mono uppercase tracking-widest">Core Capabilities</span>
-        <h2 id="custom-software-heading" class="text-3xl md:text-5xl font-extrabold mt-3 mb-6">
-          Custom Healthcare Software Development
-        </h2>
-        <p class="text-gray-400 text-base md:text-lg leading-relaxed">
-          As a dedicated healthcare software development company, AbuQitmirLabs builds bespoke digital platforms tailored to your specific clinical specialties, operational models, and user roles. We engineer end-to-end custom healthcare software that eliminates administrative friction and enhances care delivery:
-        </p>
-      </div>
+          <span class="text-[#ccff00] text-xs font-mono uppercase tracking-widest">Core Capabilities</span>
+          <h2 id="custom-software-heading" class="text-3xl md:text-5xl font-extrabold mt-3 mb-6">
+            Clinic Management &amp; Custom Healthcare Software Development
+          </h2>
+          <p class="text-gray-400 text-base md:text-lg leading-relaxed">
+            As a dedicated healthcare software development company in Pakistan supporting US, UK, GCC, and health tech startup development Pakistan teams, AbuQitmirLabs engineers bespoke clinic management software development platforms, EHR software development company architectures, telemedicine app development Pakistan suites, and patient portal development services tailored to clinical specialties:
+          </p>
+        </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <article class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10 flex flex-col justify-between">
-          <div>
-            <span class="text-[10px] font-mono uppercase tracking-widest text-emerald-400 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full mb-4 inline-block">
-              Outpatient &amp; Specialty Practices
-            </span>
-            <h3 class="text-2xl font-bold mb-4 text-white">Clinic Management Systems</h3>
-            <p class="text-gray-300 text-sm leading-relaxed mb-6 font-light">
-              We engineer custom clinic management software designed to automate daily practice operations. Features include online patient registration, intelligent doctor scheduling calendars, room allocation management, multi-practitioner time tracking, electronic prescription generation, and automated billing workflows tailored to outpatient and specialty clinics.
-            </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <article class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-emerald-400 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full mb-4 inline-block">
+                Outpatient &amp; Specialty Practices
+              </span>
+              <h3 class="text-2xl font-bold mb-4 text-white">Clinic Management Software Development</h3>
+              <p class="text-gray-300 text-sm leading-relaxed mb-6 font-light">
+                We engineer custom clinic management software designed to automate daily practice operations. Features include online patient registration, intelligent doctor scheduling calendars, room allocation management, multi-practitioner time tracking, electronic prescription generation, and automated billing workflows tailored to outpatient and specialty clinics.
+              </p>
           </div>
           <a href="/custom-software" class="text-xs font-mono uppercase text-emerald-400 hover:text-white flex items-center gap-1 font-semibold">
             Explore Custom Software Architecture &rarr;
@@ -661,7 +713,7 @@ export const healthcareInitialHtml = `
           </div>
 
           <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
-            Mobile applications provide patients and healthcare providers with immediate access to critical health services wherever they are. As part of our <a href="/solutions/healthcare/mobile-app-development" class="text-emerald-400 underline hover:text-white transition-colors">healthcare mobile app development</a> services, we build intuitive, cross-platform mobile apps for iOS and Android using Flutter and React Native.
+            Mobile applications provide patients and healthcare providers with immediate access to critical health services wherever they are. Combining our <a href="/mobile-app-development" class="text-emerald-400 underline hover:text-white transition-colors">healthcare mobile app development</a> and telemedicine app development Pakistan capabilities with regional health tech startup development Pakistan programs, we build intuitive cross-platform iOS and Android apps using Flutter and React Native.
           </p>
 
           <p class="text-gray-400 text-base leading-relaxed">
@@ -841,11 +893,24 @@ export const healthcareInitialHtml = `
           Healthcare Security &amp; Data Protection
         </h2>
         <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
-          Data protection in healthcare is an essential engineering discipline. We build multi-layered security architectures designed to support healthcare-oriented privacy requirements, including HIPAA-aligned security rules in the United States, GDPR standards in Europe, and PIPEDA in Canada.
+          Data protection in healthcare is an essential engineering discipline. We build multi-layered security architectures designed to support regional and international healthcare privacy mandates: <strong>HIPAA</strong> technical safeguards in the United States, <strong>UAE Federal Decree-Law No. 45/2021 (PDPL)</strong> and GCC health-data residency controls, <strong>Pakistan Personal Data Protection (PDPL)</strong> principles, GDPR standards in Europe, and PIPEDA in Canada. See our technical deep-dive on <a href="/blog/healthcare-software-development-hipaa-ready-from-day-one" class="text-emerald-400 underline hover:text-white">building HIPAA-ready healthcare software from day one</a>.
         </p>
-        <p class="text-gray-400 text-base leading-relaxed">
+        <p class="text-gray-400 text-base leading-relaxed mb-8">
           We implement defense-in-depth engineering practices that safeguard sensitive protected health information (PHI) across every architectural tier:
         </p>
+
+        <!-- Verified Clinical Platform Case Study: ClinicOSH -->
+        <div class="p-8 rounded-2xl bg-zinc-900/70 border border-emerald-500/30 mb-8">
+          <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold block mb-2">Verified Platform Case Study &bull; ClinicOSH</span>
+          <h3 class="text-2xl font-bold text-white mb-3">ClinicOSH Clinical Workflow &amp; Patient Onboarding Architecture</h3>
+          <p class="text-gray-300 text-sm leading-relaxed mb-4">
+            We designed and engineered clinical intake workflows, patient queue dashboards, and role-based onboarding modules for <strong>ClinicOSH</strong>—eliminating paper intake friction and giving physicians structured pre-visit summaries while maintaining strict multi-tenant data isolation and role-scoped access boundaries.
+          </p>
+          <div class="flex flex-wrap gap-4 text-xs font-mono">
+            <a href="/blog/healthcare-software-development-solutions-2026-custom-ehr-clinical-software" class="text-[#ccff00] underline hover:text-white">Read Custom EHR Architecture Guide &rarr;</a>
+            <a href="/ai-agent-development#what-are-healthcare-ai-agents" class="text-emerald-400 underline hover:text-white">Healthcare AI Agent Architecture &rarr;</a>
+          </div>
+        </div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -1149,7 +1214,7 @@ export const healthcareInitialHtml = `
         <ul class="space-y-2">
           <li><a href="/mobile-app-development" class="hover:text-white">Mobile Apps</a></li>
           <li><a href="/ai-agent-development" class="hover:text-white">AI Agents &amp; Automation</a></li>
-          <li><a href="/graphics-design" class="hover:text-white">UI/UX Design</a></li>
+          <li><a href="/graphic-design" class="hover:text-white">Graphic &amp; UI/UX Design</a></li>
           <li><a href="/seo-mastery" class="hover:text-white">Technical SEO</a></li>
         </ul>
       </div>
@@ -1158,7 +1223,7 @@ export const healthcareInitialHtml = `
         <ul class="space-y-2">
           <li><a href="/about/our-company" class="hover:text-white">About Us</a></li>
           <li><a href="/contact" class="hover:text-white">Contact &amp; Discovery</a></li>
-          <li><a href="/privacy-policy" class="hover:text-white">Privacy Policy</a></li>
+          <li><a href="/privacy" class="hover:text-white">Privacy Policy</a></li>
           <li><a href="/terms" class="hover:text-white">Terms of Service</a></li>
         </ul>
       </div>

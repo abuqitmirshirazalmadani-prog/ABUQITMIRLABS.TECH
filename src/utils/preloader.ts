@@ -12,7 +12,7 @@ export const routeLoaders: Record<string, () => Promise<any>> = {
   '/ai-agent-development': () => import('../pages/AIAgentDevelopmentPage'),
   '/ai-video-creation': () => import('../pages/AIVideoCreator'),
   '/seo-mastery': () => import('../pages/SEOPage'),
-  '/graphics-design': () => import('../pages/GraphicsDesignPage'),
+  '/graphic-design': () => import('../pages/GraphicsDesignPage'),
   '/content-writing': () => import('../pages/ContentWritingPage'),
   '/digital-marketing': () => import('../pages/DigitalMarketingPage'),
   '/local-seo-for-small-business': () => import('../pages/LocalSEOSmallBusinessPage'),

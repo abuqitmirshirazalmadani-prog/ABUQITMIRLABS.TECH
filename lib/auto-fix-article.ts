@@ -108,7 +108,7 @@ const CONTEXTUAL_INTERNAL_LINK_POOL: Array<{
     anchor: 'strategic brand building and UI/UX design systems',
     href: '/brand-building',
     contextSentence:
-      'High-converting software pairs engineering rigor with distinctive positioning—explore our [strategic brand building and UI/UX design systems](/brand-building) and [graphics design studio](/graphics-design).',
+      'High-converting software pairs engineering rigor with distinctive positioning—explore our [strategic brand building and UI/UX design systems](/brand-building) and [graphic design studio](/graphic-design).',
   },
   {
     keywords: /.*/,
@@ -258,7 +258,8 @@ const LEGACY_INTERNAL_PATH_MAP: Record<string, string> = {
   '/services/digital-marketing': '/digital-marketing',
   '/services/brand-building': '/brand-building',
   '/services/content-writing': '/content-writing',
-  '/services/graphics-design': '/graphics-design',
+  '/services/graphics-design': '/graphic-design',
+  '/graphics-design': '/graphic-design',
   '/case-studies/tajweed-page': '/case-studies/tajweedpage',
   '/contact-us': '/contact',
   '/book-call': '/contact',

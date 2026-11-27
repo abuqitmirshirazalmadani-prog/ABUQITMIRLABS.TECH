@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import { 
   Search, 
   MapPin, 
@@ -13,9 +12,6 @@ import {
   ShieldCheck, 
   ArrowUpRight,
   Plus,
-  Monitor,
-  LayoutGrid,
-  FileSearch,
   Globe,
   Star,
   Zap,
@@ -23,12 +19,6 @@ import {
   Code2,
   Smartphone,
   Cpu,
-  Settings,
-  HelpCircle,
-  Clock,
-  CheckCircle2,
-  Sliders,
-  Database,
   Heart,
   Scale,
   Home,
@@ -46,8 +36,8 @@ import Footer from '../components/Footer';
 import ServiceToolCtaBanner from '../components/ServiceToolCtaBanner';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CountryMarquee from '../components/CountryMarquee';
-import HeroText from '../components/ui/hero-shutter-text';
 import SEOPricing from '../components/SEOPricing';
+import SEO from '../components/SEO';
 
 const SEOPage = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -90,271 +80,192 @@ const SEOPage = () => {
     { category: "Monitoring", tools: "Google Search Console, Bing Webmaster Tools", purpose: "Track crawling, indexing, and performance" }
   ];
 
+  const seoPageSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.abuqitmirlabs.tech/#organization",
+        "name": "AbuQitmirLabs",
+        "url": "https://www.abuqitmirlabs.tech",
+        "logo": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+        "telephone": "+923233260859",
+        "email": "hello@abuqitmirlabs.tech",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+          "addressLocality": "Karachi",
+          "addressRegion": "Sindh",
+          "postalCode": "75160",
+          "addressCountry": "PK"
+        },
+        "sameAs": [
+          "https://wa.me/923233260859",
+          "https://github.com/abuqitmir",
+          "https://www.linkedin.com/in/abu-qitmir-697423390/"
+        ]
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+        "name": "AbuQitmirLabs",
+        "url": "https://www.abuqitmirlabs.tech",
+        "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+        "telephone": "+923233260859",
+        "email": "hello@abuqitmirlabs.tech",
+        "priceRange": "$$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+          "addressLocality": "Karachi",
+          "addressRegion": "Sindh",
+          "postalCode": "75160",
+          "addressCountry": "PK"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 24.842691448838718,
+          "longitude": 67.1862014846566
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.abuqitmirlabs.tech/seo-mastery#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.abuqitmirlabs.tech/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Technical SEO Agency",
+            "item": "https://www.abuqitmirlabs.tech/seo-mastery"
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://www.abuqitmirlabs.tech/seo-mastery#service",
+        "name": "Technical SEO Agency for B2B Companies",
+        "serviceType": "Technical SEO, Schema Markup Implementation & GEO Optimization",
+        "url": "https://www.abuqitmirlabs.tech/seo-mastery",
+        "provider": {
+          "@id": "https://www.abuqitmirlabs.tech/#organization"
+        },
+        "description": "Technical SEO agency for B2B and SaaS companies offering Core Web Vitals optimization, JSON-LD schema markup implementation, Generative Engine Optimization (GEO), and local SEO.",
+        "areaServed": [
+          { "@type": "Country", "name": "Pakistan" },
+          { "@type": "Country", "name": "United States" },
+          { "@type": "Country", "name": "United Kingdom" },
+          { "@type": "Country", "name": "United Arab Emirates" },
+          { "@type": "Country", "name": "Saudi Arabia" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.abuqitmirlabs.tech/seo-mastery#faq",
+        "mainEntity": faqData.map(item => ({
+          "@type": "Question",
+          "name": item.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.a
+          }
+        }))
+      },
+      {
+        "@type": "HowTo",
+        "@id": "https://www.abuqitmirlabs.tech/seo-mastery#process",
+        "name": "Our Search Engine Optimization Framework",
+        "description": "A 5-step methodology combining technical SEO audits, schema markup implementation, Core Web Vitals tuning, and GEO authority.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Discovery & Audit",
+            "text": "Comprehensive analysis of website technical architecture, mobile usability, speed diagnostics, and competitor search footprint benchmarking."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Keyword Strategy & Schema Markup",
+            "text": "Developing semantic entity maps, keyword alignment sheets, and @graph JSON-LD schema markup implementations."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Core Web Vitals & Technical SEO Implementation",
+            "text": "Remediating indexing faults, SSR prerendering obstacles, and optimizing Core Web Vitals to green thresholds."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Off-Page SEO & Authority Building",
+            "text": "Securing high-relevance editorial backlinks and localized NAP citations across authoritative registries."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 5,
+            "name": "GEO & Performance Monitoring",
+            "text": "Tracking Google Search Console rankings, AI citation share, organic CTR trends, and pipeline conversions."
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className="bg-[#000000] text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]/30 selection:text-white">
-      <Helmet>
-        <title>SEO Services | Professional Search Engine | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs delivers data-driven SEO services — technical audits, on-page optimization, local SEO, and authority building. Rank higher, attract quality traffic, and grow your business." />
-        <link rel="canonical" href="https://www.abuqitmirlabs.tech/seo-mastery" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="SEO Services | Professional Search Engine | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs delivers data-driven SEO services — technical audits, on-page optimization, local SEO, and authority building. Rank higher, attract quality traffic, and grow your business." />
-        <meta property="og:url" content="https://www.abuqitmirlabs.tech/seo-mastery" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="SEO Services | Professional Search Engine | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs delivers data-driven SEO services — technical audits, on-page optimization, local SEO, and authority building. Rank higher, attract quality traffic, and grow your business." />
-        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Schema Markup with BreadcrumbList, Service, FAQPage, and HowTo */}
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify([
-              {
-                "@context": "https://schema.org",
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                  {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Home",
-                    "item": "https://www.abuqitmirlabs.tech"
-                  },
-                  {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "SEO Mastery",
-                    "item": "https://www.abuqitmirlabs.tech/seo-mastery"
-                  }
-                ]
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "ProfessionalService",
-                "name": "AbuQitmirLabs",
-                "url": "https://www.abuqitmirlabs.tech",
-                "logo": "https://www.abuqitmirlabs.tech/logo.png",
-                "image": "https://www.abuqitmirlabs.tech/logo.png",
-                "telephone": "+923233260859",
-                "priceRange": "$$$",
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
-                  "addressLocality": "Karachi",
-                  "addressRegion": "Sindh",
-                  "postalCode": "75160",
-                  "addressCountry": "PK"
-                },
-                "geo": {
-                  "@type": "GeoCoordinates",
-                  "latitude": "24.842691448838718",
-                  "longitude": "67.1862014846566"
-                },
-                "sameAs": [
-                  "https://wa.me/923233260859",
-                  "https://github.com/abuqitmir"
-                ]
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "Service",
-                "name": "Professional SEO Services",
-                "serviceType": "Search Engine Optimization",
-                "provider": {
-                  "@type": "LocalBusiness",
-                  "name": "AbuQitmirLabs",
-                  "url": "https://www.abuqitmirlabs.tech",
-                  "logo": "https://www.abuqitmirlabs.tech/logo.png",
-                  "image": "https://www.abuqitmirlabs.tech/logo.png",
-                  "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Karachi",
-                    "addressCountry": "PK"
-                  }
-                },
-                "description": "At AbuQitmirLabs, we build SEO strategies that deliver sustainable organic growth—not quick fixes that vanish with the next algorithm update. We run full technical audits, fix crawl/indexing issues, and build content structures that search engines understand.",
-                "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
-                "hasOfferCatalog": {
-                  "@type": "OfferCatalog",
-                  "name": "Professional SEO Solutions",
-                  "itemListElement": [
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "SEO Services for Non-Profit Organizations",
-                        "description": "Non-profits need search visibility that amplifies their mission without draining limited resources. Our SEO solutions optimize donation pages, volunteer recruitment, and impact stories to attract supporters."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "SEO Services for Small Law Firms",
-                        "description": "Small law firms need to appear when potential clients search for legal help in their area. Our SEO strategies target practice-area-specific keywords, build local citations, and optimize Google Business Profiles."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Local SEO for Real Estate",
-                        "description": "Real estate is inherently local. Our local SEO optimizes listings for neighborhood-specific terms, manages Google Business Profile map pack rankings, and builds local citations to capture high-intent buyers and sellers."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Local SEO for Non-Profit Organizations",
-                        "description": "Local visibility helps non-profits connect with local community members, volunteers, and donors who care about their cause. We build geographic local signals and optimize listings to foster community presence."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Local SEO for Small Law Firms",
-                        "description": "For small law firms, local search visibility is essential to attract clients in your service area. We optimize maps, coordinate geo-targeted citations, and build local trust indicators."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Healthcare & Clinic Local Search Optimization",
-                        "description": "Healthcare providers need to appear when patients search for medical services nearby. Our Google Business Profile optimization ensures your practice appears with accurate listings and robust patient trust signals."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Dental Practice Local Optimization",
-                        "description": "Dentists rely heavily on local search to attract new patients. Our Google Business Profile optimization ensures your practice appears prominently in local queries with review management."
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Contractor & Trade Local SEO",
-                        "description": "Home service contractors depend on local visibility to generate leads. We optimize profiles for contractors like roofers, plumbers, and electricians to rank high in their specific service areas."
-                      }
-                    }
-                  ]
-                }
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                "mainEntity": faqData.map(item => ({
-                  "@type": "Question",
-                  "name": item.q,
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": item.a
-                  }
-                }))
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "HowTo",
-                "name": "Our Search Engine Optimization Framework",
-                "description": "A proven, highly rigorous 5-step methodology combining technical SEO audits, semantic content maps, and sustainable off-page authority builds.",
-                "step": [
-                  {
-                    "@type": "HowToStep",
-                    "name": "Discovery & Audit",
-                    "text": "Comprehensive analysis of website technical architecture, mobile usability, speed diagnostics, and deep competitor search footprint benchmarking."
-                  },
-                  {
-                    "@type": "HowToStep",
-                    "name": "Keyword Strategy & Content Optimization",
-                    "text": "Developing geographic semantic entity maps, keyword alignment sheets, on-page schema tag integrations, and strategic internal link hierarchies."
-                  },
-                  {
-                    "@type": "HowToStep",
-                    "name": "Technical SEO Implementation",
-                    "text": "Remediating indexing faults, fixing rendering obstacles, improving crawl efficiency, and optimizing Core Web Vitals to solid green values."
-                  },
-                  {
-                    "@type": "HowToStep",
-                    "name": "Off-Page SEO & Authority Building",
-                    "text": "Securing sustainable, high-relevance editorial backlink connections and building localized digital citations across authoritative registries."
-                  },
-                  {
-                    "@type": "HowToStep",
-                    "name": "Performance Monitoring & Continuous Optimization",
-                    "text": "Configuring rigorous tracking for search entity rankings, organic click-through trends, and mapping traffic patterns directly to business conversions."
-                  }
-                ]
-              }
-            ])
-          }}
-        ></script>
-      </Helmet>
+      <SEO
+        title="Technical SEO Agency for B2B Companies | AbuQitmirLabs"
+        description="Technical SEO agency for B2B and SaaS companies. Core Web Vitals, schema markup, Generative Engine Optimization (GEO), and local SEO from Karachi. Request an audit."
+        canonical="https://www.abuqitmirlabs.tech/seo-mastery"
+        ogImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        twitterImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        schema={seoPageSchema}
+      />
 
       <Header />
       <Breadcrumbs />
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex flex-col justify-center items-center pt-24 md:pt-32 pb-20 px-6 z-10 bg-black overflow-hidden animate-enter">
+      <section className="relative min-h-[90vh] flex flex-col justify-center items-center pt-24 md:pt-32 pb-20 px-6 z-10 bg-black overflow-hidden">
         {/* Subtle Ambient Glow */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-[#ccff00]/5 rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-purple-950/20 rounded-full blur-[120px] pointer-events-none" />
 
-        <motion.div 
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 bg-zinc-900/90 border border-white/10 px-6 py-2 rounded-full font-mono text-xs uppercase tracking-widest text-[#ccff00] mb-8 backdrop-blur-md"
-        >
+        <div className="inline-flex items-center gap-2 bg-zinc-900/90 border border-white/10 px-6 py-2 rounded-full font-mono text-xs uppercase tracking-widest text-[#ccff00] mb-8 backdrop-blur-md">
           <span className="w-2 h-2 rounded-full bg-[#ccff00] animate-pulse" />
-          We Build Organic Search Dominance
-        </motion.div>
-
-        <div className="mb-4">
-          <HeroText text="MASTERY" />
+          Technical SEO Agency Pakistan &amp; Global B2B
         </div>
 
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white text-center mb-10 leading-[0.95] max-w-6xl uppercase animate-enter-delay-1"
-        >
-          SEO Mastery: <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-zinc-400">Data-Driven Search</span> <br />
-          <span className="text-[#ccff00]">Engine Optimization</span>
-        </motion.h1>
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white text-center mb-8 leading-[0.98] max-w-6xl uppercase">
+          Technical SEO Services for B2B and SaaS Companies in 2026
+        </h1>
 
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-lg md:text-xl text-[#d3c8b8] text-center max-w-4xl mb-12 leading-relaxed font-sans font-light"
-        >
+        {/* 40-60 Word Direct Answer Block (GEO / AEO) */}
+        <div className="max-w-4xl mx-auto mb-8 p-6 md:p-8 bg-zinc-900/80 border-l-4 border-[#ccff00] border-y border-r border-white/10 rounded-r-2xl text-left">
+          <p className="text-base md:text-lg text-white leading-relaxed font-sans font-normal m-0">
+            A <strong>technical SEO agency for B2B SaaS companies</strong> engineers crawlability, Core Web Vitals, and structured JSON-LD schema so Google and AI engines index and cite your pages accurately. Unlike <Link to="/digital-marketing" className="text-[#ccff00] underline">paid acquisition campaigns</Link> or standalone <Link to="/content-writing" className="text-[#ccff00] underline">editorial writing</Link>, SEO mastery focuses on organic search architecture, GEO optimization, and technical ranking authority.
+          </p>
+        </div>
+
+        <p className="text-lg md:text-xl text-[#d3c8b8] text-center max-w-4xl mb-12 leading-relaxed font-sans font-light">
           Ranking isn't about stuffing keywords — it's about technical health plus content that answers search intent. Starting from our <Link to="/" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">home page</Link>, we build scalable search architectures. Explore our specialized <Link to="/local-seo-for-small-business" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Local SEO for Small Businesses</Link>, <Link to="/local-seo-citation-building" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Citation Building</Link>, <Link to="/white-label-local-seo" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">White Label Local SEO</Link>, and <Link to="/local-seo-audit" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Local SEO Audits</Link>. Pair SEO with <Link to="/custom-software" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Custom Software</Link>, <Link to="/web-development" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Web Development</Link>, <Link to="/mobile-app-development" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Mobile Apps</Link>, <Link to="/ai-agent-development" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">AI Agents</Link>, or <Link to="/content-writing" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Content Writing</Link>. Review our <Link to="/case-studies" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Case Studies</Link> &amp; <Link to="/blog" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">Blog</Link>, learn more <Link to="/about" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">about us</Link>, or <Link to="/contact" className="text-white underline font-semibold hover:text-[#ccff00] transition-colors">get in touch</Link>.
-        </motion.p>
+        </p>
 
         {/* Core Capabilities Specifications */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15 }}
-          className="mx-auto mb-12 max-w-4xl border border-white/10 py-8 px-6 bg-zinc-900/60 backdrop-blur-md rounded-2xl w-full"
-        >
+        <div className="mx-auto mb-12 max-w-4xl border border-white/10 py-8 px-6 bg-zinc-900/60 backdrop-blur-md rounded-2xl w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
             {[
               "Technical SEO Audits & Crawl Error Fixes",
-              "On-Page & Semantic Entity Optimization",
-              "XML Sitemap & Schema Markup Implementation",
-              "Local SEO & Google Business Profile Optimization",
-              "Content Strategy Aligned with Search Intent"
+              "Schema Markup Implementation Service",
+              "GEO Optimization Service for AI Search",
+              "Core Web Vitals Optimization Service",
+              "B2B SEO Services Karachi & Global"
             ].map((bullet, idx) => (
               <div key={idx} className="flex items-start gap-3 group">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00] mt-2 shrink-0 group-hover:bg-white transition-colors duration-300" />
@@ -362,23 +273,16 @@ const SEOPage = () => {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="flex flex-col sm:flex-row gap-6 w-full max-w-xl justify-center"
-        >
-          <a 
-            href="https://wa.me/923233260859"
-            target="_blank"
-            rel="noopener noreferrer"
+        <div className="flex flex-col sm:flex-row gap-6 w-full max-w-xl justify-center">
+          <Link 
+            to="/contact"
             className="px-10 py-6 bg-[#ccff00] text-black text-lg font-black rounded-2xl hover:scale-105 transition-all flex flex-col items-center justify-center gap-2 uppercase tracking-wider shadow-[0_0_30px_rgba(204,255,0,0.15)]"
           >
             <Zap size={22} className="text-black" />
-            Request a Free SEO Audit
-          </a>
+            Request Technical SEO Audit
+          </Link>
           <button 
             onClick={() => {
               const el = document.getElementById('seo-pricing');
@@ -389,7 +293,7 @@ const SEOPage = () => {
             <Star size={22} className="text-[#ccff00]" />
             <span>See SEO Pricing &amp; Packages</span>
           </button>
-        </motion.div>
+        </div>
       </section>
 
       {/* Section 2: The Problem / Opportunity */}
@@ -455,11 +359,11 @@ const SEOPage = () => {
           <div className="mb-20 text-center max-w-4xl mx-auto">
             <span className="text-xs font-mono text-[#ccff00] mb-4 uppercase tracking-[0.4em] font-bold block">[ SERVICE_SCOPE ]</span>
             <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-6 uppercase">
-              What Our SEO <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] to-emerald-400">Services Cover</span>
+              Technical SEO Agency Pakistan: <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] to-emerald-400">Schema &amp; Core Web Vitals</span>
             </h2>
             <p className="text-base md:text-lg text-zinc-300 font-sans leading-relaxed">
-              As a full-service <strong className="text-white">SEO agency</strong>, we work across every layer that determines whether a website actually ranks — not just the parts that are easy to sell:
+              As a <strong className="text-white">technical SEO agency Pakistan</strong> trusted by US, UK, and GCC B2B teams, we engineer every ranking layer: <strong className="text-white">schema markup implementation service</strong>, <strong className="text-white">Core Web Vitals optimization service</strong>, and <strong className="text-white">B2B SEO services Karachi</strong>:
             </p>
           </div>
 
@@ -509,8 +413,8 @@ const SEOPage = () => {
                 The 2026 Playbook
               </div>
               <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-[0.95] uppercase mb-6">
-                Effective SEO <br />
-                Techniques <br />
+                GEO Optimization Service &amp; <br />
+                SEO Playbook <br />
                 <span className="text-[#ff0099]">for 2026</span>
               </h2>
               <p className="text-base md:text-lg text-zinc-300 font-sans leading-relaxed">
@@ -1052,9 +956,9 @@ const SEOPage = () => {
           </p>
 
           <div className="bg-zinc-900/80 border border-white/10 p-8 md:p-10 rounded-3xl max-w-2xl mx-auto mb-16 text-left backdrop-blur-sm">
-            <h3 className="text-xl md:text-2xl font-black uppercase text-white mb-2">Request a Free SEO Audit</h3>
+            <h3 className="text-xl md:text-2xl font-black uppercase text-white mb-2">Request Technical SEO Audit</h3>
             <p className="text-sm text-zinc-400 font-sans mb-6">
-              Our team will analyze your website's current performance and provide a comprehensive assessment of opportunities for improvement—at no cost.
+              Our engineers will audit your crawl budget, Core Web Vitals, schema markup, and organic ranking gaps and deliver an actionable technical roadmap.
             </p>
             <div className="flex border-t border-white/10 pt-4 justify-between items-center text-xs font-mono text-zinc-400 tracking-widest uppercase">
               <span>Avg. Discovery Phase: 2 Weeks</span>
@@ -1064,18 +968,16 @@ const SEOPage = () => {
           </div>
 
           <p className="text-base text-zinc-400 font-sans max-w-xl mx-auto mb-10 leading-relaxed">
-            Let's discuss your SEO strategy. Our initial technical consultation and SEO audit are completely free.
+            Schedule a technical SEO discovery call with our Karachi engineering team to review your B2B search architecture.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-xl mx-auto">
-            <a 
-              href="https://wa.me/923233260859"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link 
+              to="/contact"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#ccff00] text-black text-xl font-black px-12 py-6 rounded-2xl hover:scale-105 transition-all uppercase shrink-0 shadow-[0_0_30px_rgba(204,255,0,0.2)]"
             >
-              Request an SEO Strategy Plan
-            </a>
+              Request Technical SEO Audit
+            </Link>
             
             <div className="text-zinc-400 font-mono text-xs uppercase tracking-widest max-w-[200px] text-left border-l border-white/20 pl-6 py-2">
                ESTABLISHED COGNITIVE SYSTEMS CO.
@@ -1084,7 +986,7 @@ const SEOPage = () => {
         </div>
       </section>
       
-      {/* Free SEO Diagnostic & Planning Tools */}
+      {/* Technical SEO Diagnostic & Planning Tools */}
       <ServiceToolCtaBanner
         toolKeys={['website-authority-analyzer', 'seo-checklist', 'website-audit']}
         headline="Diagnose Domain Authority, Technical SEO & Speed"
@@ -1097,7 +999,7 @@ const SEOPage = () => {
           <div className="mb-12">
             <h3 className="text-xs font-mono text-[#ccff00] mb-2 uppercase tracking-[0.4em] font-bold">[ RELATED_SYSTEMS ]</h3>
             <p className="text-sm text-zinc-400 font-sans">
-              Explore our related services: <Link to="/custom-software" className="text-white underline hover:text-[#ccff00]">Custom Software Development</Link> · <Link to="/web-development" className="text-white underline hover:text-[#ccff00]">Web Development</Link> · <Link to="/content-writing" className="text-white underline hover:text-[#ccff00]">Content Writing</Link>
+              Explore our related services: <Link to="/custom-software" className="text-white underline hover:text-[#ccff00]">Custom Software Development</Link> · <Link to="/web-development" className="text-white underline hover:text-[#ccff00]">Web Development</Link> · <Link to="/content-writing" className="text-white underline hover:text-[#ccff00]">Content Writing</Link> · <Link to="/digital-marketing" className="text-white underline hover:text-[#ccff00]">Paid Digital Marketing</Link>
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -1106,7 +1008,7 @@ const SEOPage = () => {
               { title: "Web Development", path: "/web-development", icon: <Globe className="w-5 h-5" /> },
               { title: "Mobile Apps", path: "/mobile-app-development", icon: <Smartphone className="w-5 h-5" /> },
               { title: "AI Agents", path: "/ai-agent-development", icon: <Cpu className="w-5 h-5" /> },
-              { title: "Creative Graphics", path: "/graphics-design", icon: <Palette className="w-5 h-5" /> },
+              { title: "Graphic Design", path: "/graphic-design", icon: <Palette className="w-5 h-5" /> },
               { title: "Content Writing", path: "/content-writing", icon: <PenTool className="w-5 h-5" /> }
             ].map((link, i) => (
               <Link 

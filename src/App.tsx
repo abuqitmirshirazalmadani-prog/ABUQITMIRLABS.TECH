@@ -302,7 +302,8 @@ function AppRoutes() {
           <Route path="/guest-posting-service" element={<Navigate to="/guest-post-service" replace />} />
           <Route path="/guest-post-services" element={<Navigate to="/guest-post-service" replace />} />
           <Route path="/guest-posts" element={<Navigate to="/guest-post-service" replace />} />
-          <Route path="/graphics-design" element={<GraphicsDesignPage />} />
+          <Route path="/graphic-design" element={<GraphicsDesignPage />} />
+          <Route path="/graphics-design" element={<Navigate to="/graphic-design" replace />} />
           <Route path="/brand-building" element={<BrandBuildingPage />} />
           <Route path="/brand-building-services" element={<Navigate to="/brand-building" replace />} />
           <Route path="/brand-building-services-for-small-businesses" element={<Navigate to="/brand-building" replace />} />

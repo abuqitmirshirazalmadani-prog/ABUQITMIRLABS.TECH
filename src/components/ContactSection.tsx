@@ -76,7 +76,7 @@ const ContactSection = () => {
               </div>
               <div>
                 <p className="text-xs font-mono text-zinc-400">Studio Address:</p>
-                <p className="text-zinc-300">Shahrah-e-Faisal, PECHS, Karachi, 75400, Pakistan.</p>
+                <p className="text-zinc-300">8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town, Karachi, 75160, Pakistan.</p>
               </div>
             </div>
           </div>

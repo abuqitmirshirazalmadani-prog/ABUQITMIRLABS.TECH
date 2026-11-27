@@ -47,8 +47,8 @@ export default function HeroText({
               >
                 {/* Main Character - Responsive sizing using clamp */}
                 <motion.span
-                  initial={{ opacity: 0, filter: "blur(10px)" }}
-                  animate={{ opacity: 1, filter: "blur(0px)" }}
+                  initial={{ opacity: 1 }}
+                  animate={{ opacity: 1 }}
                   transition={{ delay: i * 0.04 + 0.3, duration: 0.8 }}
                   className="text-[clamp(1.5rem,8.5vw,10rem)] leading-none font-black text-white tracking-tighter inline-block"
                 >

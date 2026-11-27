@@ -1220,16 +1220,16 @@ function buildOrgLocalWebsiteNodes() {
       priceRange: '$$',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Shahrah-e-Faisal, PECHS',
+        streetAddress: '8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town',
         addressLocality: 'Karachi',
         addressRegion: 'Sindh',
-        postalCode: '75400',
+        postalCode: '75160',
         addressCountry: 'PK',
       },
       geo: {
         '@type': 'GeoCoordinates',
-        latitude: 24.8607,
-        longitude: 67.0642,
+        latitude: 24.842691448838718,
+        longitude: 67.1862014846566,
       },
       openingHoursSpecification: [
         {

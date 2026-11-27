@@ -1503,7 +1503,7 @@ const SkillsAcademyPage: React.FC = () => {
           <div className="flex flex-wrap items-center justify-center gap-6 text-xs font-mono uppercase tracking-wider text-neutral-400 mt-8">
             <Link to="/web-development" className="hover:text-white transition-colors">Website Service</Link>
             <span className="text-neutral-700">·</span>
-            <Link to="/graphics-design" className="hover:text-white transition-colors">Logo &amp; Visuals</Link>
+            <Link to="/graphic-design" className="hover:text-white transition-colors">Logo &amp; Visuals</Link>
             <span className="text-neutral-700">·</span>
             <Link to="/seo-mastery" className="hover:text-white transition-colors">SEO Mastery</Link>
             <span className="text-neutral-700">·</span>

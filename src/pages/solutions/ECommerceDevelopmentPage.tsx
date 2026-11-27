@@ -1,24 +1,18 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { 
   ShoppingBag, 
-  Smartphone, 
   Zap, 
-  Globe, 
   CreditCard, 
   Boxes, 
-  CheckCircle2, 
   ArrowRight, 
   Plus, 
   ChevronRight, 
   Store, 
   Layers, 
-  TrendingUp, 
   Repeat,
   ShieldCheck,
-  Cpu,
   Database,
   Lock,
   Search,
@@ -34,7 +28,6 @@ import {
   FileCheck,
   Code2,
   Terminal,
-  HelpCircle,
   Clock,
   DollarSign
 } from 'lucide-react';
@@ -42,6 +35,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import CountryMarquee from '../../components/CountryMarquee';
+import SEO from '../../components/SEO';
 import { eCommerceSchema } from '../../utils/eCommerceStaticHtml';
 
 const ECommerceDevelopmentPage = () => {
@@ -92,120 +86,101 @@ const ECommerceDevelopmentPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
-      <Helmet>
-        <title>E-commerce Software Solutions | AbuQitmirLabs</title>
-        <meta name="description" content="Engineer high-performance e-commerce software solutions, custom online stores, B2B wholesale portals, mobile shopping apps & multi-vendor marketplaces." />
-        <link rel="canonical" href="https://www.abuqitmirlabs.tech/solutions/e-commerce" />
-
-        {/* Open Graph */}
-        <meta property="og:title" content="E-commerce Software Solutions | AbuQitmirLabs" />
-        <meta property="og:description" content="Engineer high-performance e-commerce software solutions, custom online stores, B2B wholesale portals, mobile shopping apps & multi-vendor marketplaces." />
-        <meta property="og:url" content="https://www.abuqitmirlabs.tech/solutions/e-commerce" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="E-commerce Software Solutions | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Engineer high-performance e-commerce software solutions, custom online stores, B2B wholesale portals, mobile shopping apps & multi-vendor marketplaces." />
-        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* JSON-LD Schema */}
-        <script type="application/ld+json">{JSON.stringify(eCommerceSchema)}</script>
-      </Helmet>
+      <SEO
+        title="Custom E-Commerce Development Pakistan | AbuQitmirLabs"
+        description="Custom e-commerce development company Pakistan building Shopify, WooCommerce & Next.js stores with JazzCash, Easypaisa, and Stripe. From $5,000 USD."
+        canonical="https://www.abuqitmirlabs.tech/solutions/e-commerce"
+        keywords="custom e-commerce development company Pakistan, Shopify development agency Pakistan, WooCommerce development Pakistan, e-commerce marketplace development, JazzCash Easypaisa e-commerce integration, headless e-commerce development Pakistan"
+        ogTitle="Custom E-Commerce Development Pakistan | AbuQitmirLabs"
+        ogDescription="Custom e-commerce development company Pakistan building Shopify, WooCommerce & Next.js stores with JazzCash, Easypaisa, and Stripe. From $5,000 USD."
+        ogImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        ogImageAlt="Custom E-Commerce Development Services by AbuQitmirLabs"
+        ogType="website"
+        twitterTitle="Custom E-Commerce Development Pakistan | AbuQitmirLabs"
+        twitterDescription="Custom e-commerce development company Pakistan building Shopify, WooCommerce & Next.js stores with JazzCash, Easypaisa, and Stripe. From $5,000 USD."
+        twitterImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        schema={eCommerceSchema}
+      />
 
       <Header />
 
       <main className="pt-24 md:pt-32">
         {/* Breadcrumb Section */}
         <div className="max-w-7xl mx-auto px-6">
-          <Breadcrumbs items={[
-            { label: 'Solutions', path: '/#services' },
-            { label: 'E-commerce Software Solutions', path: '/solutions/e-commerce' }
-          ]} />
+          <Breadcrumbs
+            disableSchema={true}
+            items={[
+              { label: 'Custom Software', path: '/custom-software' },
+              { label: 'Custom E-Commerce Development', path: '/solutions/e-commerce' }
+            ]}
+          />
         </div>
 
         {/* Hero Section */}
         <section className="relative py-16 md:py-24 overflow-hidden border-b border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(204,255,0,0.06),transparent_50%)] pointer-events-none" />
           
-          <div className="max-w-7xl mx-auto px-6 relative z-10 animate-enter">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[#ccff00] text-xs font-mono uppercase tracking-widest mb-8"
-            >
-              <ShoppingBag className="w-4 h-4 text-[#ccff00]" /> HIGH-PERFORMANCE DIGITAL COMMERCE ARCHITECTURE
-            </motion.div>
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[#ccff00] text-xs font-mono uppercase tracking-widest mb-8">
+              <ShoppingBag className="w-4 h-4 text-[#ccff00]" /> CUSTOM E-COMMERCE DEVELOPMENT COMPANY PAKISTAN
+            </div>
 
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 max-w-5xl animate-enter-delay-1"
-            >
-              E-commerce Software Solutions for Modern Businesses
-            </motion.h1>
+            <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 max-w-5xl">
+              Custom E-Commerce Development for Online Stores and Marketplaces
+            </h1>
 
             {/* Direct Answer Box (AEO Direct Answer 01) */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl max-w-4xl mb-10 shadow-2xl backdrop-blur-md animate-enter-delay-2"
-            >
+            <div className="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl max-w-4xl mb-8 shadow-2xl backdrop-blur-md">
               <p className="text-sm md:text-base text-gray-200 leading-relaxed">
-                <strong className="text-[#ccff00]">E-commerce software solutions</strong> are purpose-built digital commerce platforms, transactional web applications, and mobile shopping systems engineered to process transactions, manage product catalogs, synchronize multi-warehouse inventory, and automate order fulfillment. They provide secure payment gateways, direct API connectivity to enterprise ERP and CRM systems, and headless scalability for online stores and multi-vendor marketplaces.
+                <strong className="text-[#ccff00]">Direct Answer:</strong> As a custom e-commerce development company Pakistan brands rely on, AbuQitmirLabs builds Next.js headless storefronts, Shopify and WooCommerce stores, and multi-vendor marketplaces starting at $5,000 USD. Every build ships with sub-second Core Web Vitals, JazzCash, Easypaisa, RAAST, and Stripe payment rails, plus 100% source code ownership.
               </p>
-            </motion.div>
+            </div>
 
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl md:text-2xl text-gray-400 max-w-3xl leading-relaxed mb-10 font-light"
-            >
-              Generic off-the-shelf templates limit commercial growth, introduce database latency during peak traffic, and lock growing brands into compounding plugin fees. We engineer bespoke, high-performance commerce platforms, B2B wholesale portals, and multi-vendor marketplaces that scale smoothly past millions in transaction volume.
-            </motion.p>
+            {/* Visible Pricing Anchor & Trust Bar */}
+            <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-zinc-200 py-3 px-4 bg-zinc-900/80 border border-[#ccff00]/30 rounded-xl mb-8 max-w-3xl">
+              <span className="text-[#ccff00] font-bold">Starting at $5,000 USD</span>
+              <span className="text-zinc-600">&bull;</span>
+              <span>Shopify, WooCommerce &amp; Headless Next.js</span>
+              <span className="text-zinc-600">&bull;</span>
+              <span>100% IP Ownership</span>
+            </div>
 
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-wrap items-center gap-4"
-            >
+            <p className="text-xl md:text-2xl text-gray-400 max-w-3xl leading-relaxed mb-10 font-light">
+              Generic templates slow down mobile checkouts and trap growing stores in compounding app fees. From our Karachi studio, we engineer custom storefronts, B2B wholesale portals, and e-commerce marketplace development projects for Pakistan, GCC, UK, and US brands.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4">
               <Link 
                 to="/contact" 
                 className="px-8 py-4 bg-[#ccff00] text-black font-extrabold rounded-xl hover:scale-105 transition-all text-sm uppercase tracking-wider flex items-center gap-3 shadow-[0_0_30px_rgba(204,255,0,0.3)]"
               >
-                Discuss Your E-commerce Platform <ArrowRight className="w-4 h-4" />
+                Schedule E-Commerce Consultation <ArrowRight className="w-4 h-4" />
               </Link>
               <Link 
-                to="/custom-software" 
+                to="/blog/ecommerce-platform-development" 
                 className="px-8 py-4 border border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-all text-sm uppercase tracking-wider"
               >
-                Custom Software Architecture
+                Read E-Commerce Architecture Guide
               </Link>
-            </motion.div>
+            </div>
 
             {/* Quick Metrics Bar */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-12 border-t border-white/5">
               <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                <div className="text-2xl md:text-3xl font-extrabold text-[#ccff00] font-mono">100%</div>
-                <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">Source Code &amp; IP Ownership</div>
+                <div className="text-2xl md:text-3xl font-extrabold text-[#ccff00] font-mono">$5,000+</div>
+                <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">Custom Storefront Starting Anchor</div>
               </div>
               <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
                 <div className="text-2xl md:text-3xl font-extrabold text-[#ccff00] font-mono">&lt; 2.5s</div>
                 <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">Core Web Vitals LCP Target</div>
               </div>
               <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                <div className="text-2xl md:text-3xl font-extrabold text-[#ccff00] font-mono">0%</div>
-                <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">Third-Party Transaction Penalties</div>
+                <div className="text-2xl md:text-3xl font-extrabold text-[#ccff00] font-mono">100%</div>
+                <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">Source Code &amp; IP Ownership</div>
               </div>
               <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                <div className="text-2xl md:text-3xl font-extrabold text-[#ccff00] font-mono">24/7</div>
-                <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">Enterprise Reliability &amp; Uptime</div>
+                <div className="text-2xl md:text-3xl font-extrabold text-[#ccff00] font-mono">PK + Global</div>
+                <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">JazzCash, Easypaisa &amp; Stripe</div>
               </div>
             </div>
           </div>
@@ -334,9 +309,9 @@ const ECommerceDevelopmentPage = () => {
             >
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-[#ccff00] px-3 py-1 bg-[#ccff00]/10 border border-[#ccff00]/20 rounded-full mb-4 inline-block">Decoupled Architecture</span>
-                <h3 className="text-2xl font-bold mb-4 text-white">Headless E-commerce Development</h3>
+                <h3 className="text-2xl font-bold mb-4 text-white">Headless E-Commerce Development Pakistan</h3>
                 <p className="text-gray-300 text-sm leading-relaxed mb-6 font-light">
-                  Decoupling the frontend presentation layer from the backend database via high-speed GraphQL and REST APIs. Connect headless CMS systems, mobile apps, and IoT devices to a unified commerce engine for unmatched page speed, flexibility, and omnichannel reach.
+                  Our headless e-commerce development Pakistan team decouples your Next.js storefront from backend databases via fast GraphQL and REST APIs for sub-second speed and omnichannel reach.
                 </p>
               </div>
               <Link to="/custom-software" className="text-xs font-mono uppercase text-[#ccff00] hover:underline flex items-center gap-1 font-semibold">
@@ -351,9 +326,9 @@ const ECommerceDevelopmentPage = () => {
             >
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-[#ccff00] px-3 py-1 bg-[#ccff00]/10 border border-[#ccff00]/20 rounded-full mb-4 inline-block">Marketplaces</span>
-                <h3 className="text-2xl font-bold mb-4 text-white">Multi-Vendor E-commerce Development</h3>
+                <h3 className="text-2xl font-bold mb-4 text-white">E-Commerce Marketplace Development</h3>
                 <p className="text-gray-300 text-sm leading-relaxed mb-6 font-light">
-                  Engineering scalable marketplace platforms with automated vendor onboarding, custom commission splits, merchant analytics portals, unified marketplace search, split escrow checkouts, and centralized administrative dispute mediation.
+                  Full-cycle e-commerce marketplace development with automated vendor onboarding, custom commission splits, merchant analytics portals, split escrow checkouts, and dispute mediation.
                 </p>
               </div>
               <Link to="/custom-software" className="text-xs font-mono uppercase text-[#ccff00] hover:underline flex items-center gap-1 font-semibold">
@@ -643,46 +618,102 @@ const ECommerceDevelopmentPage = () => {
           </div>
         </section>
 
-        {/* Section 5: E-commerce Integrations */}
+        {/* Section 4B: Shopify vs WooCommerce vs Custom Next.js Platform Comparison */}
+        <section id="platform-comparison" className="py-20 md:py-28 bg-zinc-950/60 border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-3xl mb-12">
+              <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-2 font-bold">[ PLATFORM ARCHITECTURE COMPARISON ]</span>
+              <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6">
+                Shopify vs WooCommerce vs Custom Next.js Commerce
+              </h2>
+              <p className="text-gray-400 text-base md:text-lg">
+                Whether you need a Shopify development agency Pakistan brands trust, WooCommerce development Pakistan support, or headless Next.js engineering, we help you pick the right architecture for your unit economics.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="p-8 rounded-2xl bg-zinc-900/60 border border-white/10">
+                <span className="text-xs font-mono text-[#ccff00] block mb-2">RAPID D2C LAUNCH</span>
+                <h3 className="text-xl font-bold text-white mb-3">Shopify Development Agency Pakistan</h3>
+                <p className="text-gray-300 text-sm leading-relaxed mb-4 font-light">
+                  Best for D2C brands prioritizing fast catalog launch, custom Liquid or Hydrogen storefronts, and local courier apps (TCS, Leopards, Trax). Typical build starts around $5,000 USD.
+                </p>
+                <ul className="text-xs text-gray-400 space-y-2 font-mono">
+                  <li>&bull; 2&ndash;4 week storefront rollout</li>
+                  <li>&bull; Shopify Plus custom checkout extensions</li>
+                  <li>&bull; Recurring monthly platform &amp; app fees apply</li>
+                </ul>
+              </div>
+
+              <div className="p-8 rounded-2xl bg-zinc-900/60 border border-white/10">
+                <span className="text-xs font-mono text-[#ccff00] block mb-2">CONTENT-HEAVY RETAIL</span>
+                <h3 className="text-xl font-bold text-white mb-3">WooCommerce Development Pakistan</h3>
+                <p className="text-gray-300 text-sm leading-relaxed mb-4 font-light">
+                  Ideal for WordPress-based retailers needing flexible catalog rules, low upfront software fees, and local JazzCash/Easypaisa plugins paired with hardened cloud caching.
+                </p>
+                <ul className="text-xs text-gray-400 space-y-2 font-mono">
+                  <li>&bull; Self-hosted with zero per-transaction fee</li>
+                  <li>&bull; Custom PHP/REST checkout &amp; ERP bridges</li>
+                  <li>&bull; Requires disciplined caching &amp; security patching</li>
+                </ul>
+              </div>
+
+              <div className="p-8 rounded-2xl bg-zinc-900/60 border border-[#ccff00]/40">
+                <span className="text-xs font-mono text-[#ccff00] block mb-2">SCALE &amp; MARKETPLACES</span>
+                <h3 className="text-xl font-bold text-white mb-3">Custom Headless Next.js Platforms</h3>
+                <p className="text-gray-300 text-sm leading-relaxed mb-4 font-light">
+                  Engineered for high-volume brands, B2B wholesale portals, and multi-vendor marketplaces demanding sub-second LCP, custom pricing rules, and 100% IP ownership.
+                </p>
+                <ul className="text-xs text-gray-400 space-y-2 font-mono">
+                  <li>&bull; Zero SaaS transaction penalties</li>
+                  <li>&bull; PostgreSQL + Redis high-concurrency engine</li>
+                  <li>&bull; Full source code &amp; intellectual property handover</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 5: Pakistan & Global Payment Gateway Integration + Ecosystem */}
         <section id="e-commerce-integrations" className="py-20 md:py-28 bg-zinc-950/80 border-t border-b border-white/10">
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-3xl mb-16">
-              <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-2 font-bold">[ ECOSYSTEM CONNECTIVITY ]</span>
+              <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-2 font-bold">[ ECOSYSTEM &amp; PAYMENT RAILS ]</span>
               <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6">
-                E-commerce Integrations
+                JazzCash, Easypaisa, RAAST &amp; Global Payment Integrations
               </h2>
               <p className="text-gray-400 text-base md:text-lg">
-                A custom commerce platform connects seamlessly with your entire operational ecosystem, preventing manual data silos and maintaining flawless synchronization across departments.
+                We engineer PCI-scoped JazzCash Easypaisa e-commerce integration, RAAST merchant QR checkouts, and international Stripe, PayPal, and Apple Pay gateways alongside real-time ERP and courier sync.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="p-6 bg-zinc-900/40 rounded-xl border border-[#ccff00]/30">
+                <span className="text-xs font-mono text-[#ccff00] block mb-2">PAKISTAN PAYMENT RAILS</span>
+                <h3 className="text-base font-bold text-white mb-2">JazzCash, Easypaisa &amp; RAAST</h3>
+                <p className="text-xs text-gray-400 font-light mb-4">Direct JazzCash Easypaisa e-commerce integration, RAAST instant bank transfers, PayFast, and Cash-on-Delivery (COD) verification workflows.</p>
+                <Link to="/blog/raast-payment-integration-pakistan" className="text-xs font-mono text-[#ccff00] hover:underline">Read RAAST integration guide &rarr;</Link>
+              </div>
+
               <div className="p-6 bg-zinc-900/40 rounded-xl border border-white/10">
-                <span className="text-xs font-mono text-[#ccff00] block mb-2">PAYMENT GATEWAYS</span>
-                <h3 className="text-base font-bold text-white mb-2">Payment Processors</h3>
-                <p className="text-xs text-gray-400 font-light mb-4">Stripe, PayPal, Adyen, Apple Pay, Google Pay, Klarna, Afterpay, and direct ACH payment rails.</p>
+                <span className="text-xs font-mono text-[#ccff00] block mb-2">GLOBAL GATEWAYS</span>
+                <h3 className="text-base font-bold text-white mb-2">Stripe, PayPal &amp; GCC Cards</h3>
+                <p className="text-xs text-gray-400 font-light mb-4">Tokenized Stripe, PayPal, Adyen, Apple Pay, Google Pay, Mada, and multi-currency USD/GBP/AED/SAR checkout pipelines.</p>
                 <Link to="/solutions/fintech" className="text-xs font-mono text-[#ccff00] hover:underline">Fintech infrastructure &rarr;</Link>
               </div>
 
               <div className="p-6 bg-zinc-900/40 rounded-xl border border-white/10">
                 <span className="text-xs font-mono text-[#ccff00] block mb-2">ERP &amp; ACCOUNTING</span>
                 <h3 className="text-base font-bold text-white mb-2">Enterprise Back-Office</h3>
-                <p className="text-xs text-gray-400 font-light mb-4">SAP, Oracle NetSuite, Microsoft Dynamics, Odoo, QuickBooks Online, Xero, and custom SQL databases.</p>
+                <p className="text-xs text-gray-400 font-light mb-4">SAP, Oracle NetSuite, Microsoft Dynamics, Odoo, QuickBooks Online, Xero, and custom SQL inventory sync.</p>
                 <Link to="/custom-software" className="text-xs font-mono text-[#ccff00] hover:underline">Custom backend systems &rarr;</Link>
               </div>
 
               <div className="p-6 bg-zinc-900/40 rounded-xl border border-white/10">
-                <span className="text-xs font-mono text-[#ccff00] block mb-2">CRM &amp; MARKETING</span>
-                <h3 className="text-base font-bold text-white mb-2">Customer Data Platforms</h3>
-                <p className="text-xs text-gray-400 font-light mb-4">Salesforce, HubSpot, Klaviyo, Mailchimp, Segment, and real-time customer event streaming pipelines.</p>
-                <Link to="/solutions/ai-automation" className="text-xs font-mono text-[#ccff00] hover:underline">Marketing automation &rarr;</Link>
-              </div>
-
-              <div className="p-6 bg-zinc-900/40 rounded-xl border border-white/10">
-                <span className="text-xs font-mono text-[#ccff00] block mb-2">SHIPPING &amp; 3PL</span>
+                <span className="text-xs font-mono text-[#ccff00] block mb-2">COURIER &amp; 3PL</span>
                 <h3 className="text-base font-bold text-white mb-2">Fulfillment Logistics</h3>
-                <p className="text-xs text-gray-400 font-light mb-4">Shippo, EasyPost, ShipStation, FedEx, UPS, DHL Express, USPS, and automated 3PL warehouse webhooks.</p>
-                <Link to="/contact" className="text-xs font-mono text-[#ccff00] hover:underline">Technical consultation &rarr;</Link>
+                <p className="text-xs text-gray-400 font-light mb-4">TCS, Leopards, Trax, PostEx, Shippo, FedEx, UPS, and DHL Express real-time shipping labels and tracking webhooks.</p>
+                <Link to="/blog/ecommerce-platform-development" className="text-xs font-mono text-[#ccff00] hover:underline">E-commerce architecture guide &rarr;</Link>
               </div>
             </div>
           </div>

@@ -8,11 +8,11 @@ export const aiAutomationSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
+      "@type": "Organization",
       "@id": "https://www.abuqitmirlabs.tech/#organization",
       "name": "AbuQitmirLabs",
       "alternateName": "AbuQitmirLabs .TECH",
-      "description": "Bespoke software engineering studio building custom SaaS, mobile apps, enterprise ERPs, and secure AI automation solutions.",
+      "description": "Bespoke software engineering studio building custom SaaS, mobile apps, enterprise ERPs, and AI workflow automation for business operations.",
       "url": "https://www.abuqitmirlabs.tech",
       "logo": {
         "@type": "ImageObject",
@@ -21,29 +21,28 @@ export const aiAutomationSchema = {
         "contentUrl": "https://www.abuqitmirlabs.tech/logo.png",
         "caption": "AbuQitmirLabs Logo"
       },
-      "image": "https://www.abuqitmirlabs.tech/logo.png",
-      "foundingDate": "2020",
+      "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+      "foundingDate": "2021",
       "telephone": "+923233260859",
       "email": "hello@abuqitmirlabs.tech",
-      "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
         "addressLocality": "Karachi",
         "addressRegion": "Sindh",
         "postalCode": "75160",
         "addressCountry": "PK"
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "24.842691448838718",
-        "longitude": "67.1862014846566"
-      },
       "sameAs": [
-        "https://twitter.com/AbuQitmir",
-        "https://www.linkedin.com/company/abuqitmirlabs",
-        "https://www.facebook.com/abuqitmirlabs",
-        "https://github.com/abuqitmir"
+        "https://www.facebook.com/profile.php?id=61583768706452",
+        "https://www.instagram.com/abuqitmirshirazalmadani/",
+        "https://www.youtube.com/@AbuQitmir",
+        "https://www.linkedin.com/in/abu-qitmir-697423390/",
+        "https://x.com/AbuQitmir",
+        "https://www.pinterest.com/abuqitmir",
+        "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani",
+        "https://www.goodfirms.co/company/abuqitmirlabs-tech",
+        "https://clutch.co/profile/abuqitmirlabstech"
       ],
       "contactPoint": {
         "@type": "ContactPoint",
@@ -54,11 +53,45 @@ export const aiAutomationSchema = {
       }
     },
     {
+      "@type": "LocalBusiness",
+      "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+      "name": "AbuQitmirLabs",
+      "url": "https://www.abuqitmirlabs.tech",
+      "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+      "telephone": "+923233260859",
+      "email": "hello@abuqitmirlabs.tech",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+        "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
+        "postalCode": "75160",
+        "addressCountry": "PK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.842691448838718,
+        "longitude": 67.1862014846566
+      },
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61583768706452",
+        "https://www.instagram.com/abuqitmirshirazalmadani/",
+        "https://www.youtube.com/@AbuQitmir",
+        "https://www.linkedin.com/in/abu-qitmir-697423390/",
+        "https://x.com/AbuQitmir",
+        "https://www.pinterest.com/abuqitmir",
+        "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani",
+        "https://www.goodfirms.co/company/abuqitmirlabs-tech",
+        "https://clutch.co/profile/abuqitmirlabstech"
+      ]
+    },
+    {
       "@type": "WebSite",
       "@id": "https://www.abuqitmirlabs.tech/#website",
       "url": "https://www.abuqitmirlabs.tech",
-      "name": "AbuQitmirLabs .TECH",
-      "description": "Custom software, AI agents, web development, and intelligent workflow automation solutions.",
+      "name": "AbuQitmirLabs",
+      "description": "Custom software, AI agents, web development, and AI workflow automation solutions.",
       "inLanguage": "en-US",
       "publisher": {
         "@id": "https://www.abuqitmirlabs.tech/#organization"
@@ -73,11 +106,11 @@ export const aiAutomationSchema = {
       "@type": "WebPage",
       "@id": "https://www.abuqitmirlabs.tech/solutions/ai-automation#webpage",
       "url": "https://www.abuqitmirlabs.tech/solutions/ai-automation",
-      "name": "AI Automation Solutions | AbuQitmirLabs",
-      "description": "Automate business workflows with AI agents, RAG, APIs and intelligent integrations. Build secure AI automation for startups and enterprises.",
+      "name": "AI Workflow Automation for Business Operations | AbuQitmirLabs",
+      "description": "AI workflow automation for business operations across retail, logistics, and finance. Integrate CRMs, ERPs, and RAG pipelines from $5,000 USD. Built in Karachi.",
       "inLanguage": "en-US",
       "datePublished": "2024-01-15T08:00:00+00:00",
-      "dateModified": "2026-02-18T00:00:00+00:00",
+      "dateModified": "2026-11-26T00:00:00+00:00",
       "isPartOf": {
         "@id": "https://www.abuqitmirlabs.tech/#website"
       },
@@ -94,7 +127,7 @@ export const aiAutomationSchema = {
       },
       "primaryImageOfPage": {
         "@type": "ImageObject",
-        "url": "https://www.abuqitmirlabs.tech/logo.png",
+        "url": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
         "width": "1200",
         "height": "630"
       },
@@ -115,13 +148,13 @@ export const aiAutomationSchema = {
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Solutions",
-          "item": "https://www.abuqitmirlabs.tech/#services"
+          "name": "Custom Software",
+          "item": "https://www.abuqitmirlabs.tech/custom-software"
         },
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "AI Automation Solutions",
+          "name": "AI Workflow Automation",
           "item": "https://www.abuqitmirlabs.tech/solutions/ai-automation"
         }
       ]
@@ -129,14 +162,27 @@ export const aiAutomationSchema = {
     {
       "@type": "Service",
       "@id": "https://www.abuqitmirlabs.tech/solutions/ai-automation#service",
-      "name": "AI Automation Solutions for Modern Businesses",
-      "serviceType": "AI Automation Engineering & Intelligent Workflow Orchestration",
+      "name": "AI Automation Services for Business Workflow and Operations",
+      "serviceType": "AI Workflow Automation for Business Operations",
       "provider": {
         "@id": "https://www.abuqitmirlabs.tech/#organization"
       },
-      "description": "Custom AI automation solutions, intelligent workflow orchestration, autonomous AI agents, RAG knowledge systems, and API integrations for businesses.",
+      "description": "AI workflow automation for business operations across retail, logistics, and finance. Integrate CRMs, ERPs, and RAG pipelines from $5,000 USD. Built in Karachi.",
       "url": "https://www.abuqitmirlabs.tech/solutions/ai-automation",
-      "areaServed": ["US", "GB", "PK", "CA", "PL", "AU", "EU"],
+      "areaServed": [
+        { "@type": "Country", "name": "Pakistan" },
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Saudi Arabia" }
+      ],
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "lowPrice": "5000",
+        "highPrice": "30000",
+        "offerCount": "3"
+      },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "AI Automation Services Portfolio",
@@ -365,9 +411,9 @@ export const aiAutomationInitialHtml = `
       <ol class="flex items-center gap-2">
         <li><a href="/" class="hover:text-white">Home</a></li>
         <li><span>/</span></li>
-        <li><a href="/#services" class="hover:text-white">Solutions</a></li>
+        <li><a href="/custom-software" class="hover:text-white">Custom Software</a></li>
         <li><span>/</span></li>
-        <li class="text-[#ccff00] font-semibold" aria-current="page">AI Automation Solutions</li>
+        <li class="text-[#ccff00] font-semibold" aria-current="page">AI Workflow Automation</li>
       </ol>
     </nav>
 
@@ -375,23 +421,23 @@ export const aiAutomationInitialHtml = `
     <section aria-labelledby="hero-title" class="mb-20">
       <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[#ccff00] text-xs font-mono uppercase tracking-widest mb-6">
         <span class="w-2 h-2 rounded-full bg-[#ccff00]"></span>
-        Autonomous Business Intelligence &amp; Intelligent Workflows
+        AI Workflow Automation for Business Operations &bull; From $5,000 USD
       </div>
 
       <h1 id="hero-title" class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-8 leading-[1.08]">
-        AI Automation Solutions for Modern Businesses
+        AI Automation Services for Business Workflow and Operations
       </h1>
 
       <!-- AEO Direct Answer Block 01 -->
       <div class="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 md:p-8 rounded-r-xl max-w-4xl mb-8 shadow-[0_0_30px_rgba(204,255,0,0.05)]">
-        <h2 class="text-xs font-mono uppercase tracking-widest text-[#ccff00] mb-2 font-bold">Direct Answer: What Is AI Automation?</h2>
+        <h2 class="text-xs font-mono uppercase tracking-widest text-[#ccff00] mb-2 font-bold">Direct Answer: What Is AI Workflow Automation?</h2>
         <p class="text-gray-200 text-base md:text-lg leading-relaxed font-normal">
-          <strong>AI automation</strong> uses intelligent software, AI agents, APIs, and workflow orchestration to automate repetitive business processes, connect business systems, retrieve information from company data, and assist teams with faster decision-making.
+          <strong>AI workflow automation for business operations</strong> connects your existing CRMs, ERPs, support desks, and finance software with LLM reasoning and RAG pipelines to eliminate manual data entry and multi-step operational bottlenecks—starting from <strong>$5,000 USD</strong> for pilot workflows.
         </p>
       </div>
 
       <p class="text-lg md:text-xl text-gray-300 max-w-3xl leading-relaxed mb-10 font-light">
-        Eliminate manual operational bottlenecks. We engineer custom AI automation systems, autonomous AI agents, and RAG-powered workflows that integrate with your software stack to accelerate throughput, eliminate data entry friction, and reduce operational overhead. Explore our <a href="/custom-software" class="text-[#ccff00] underline font-medium">custom software architecture</a>, build dedicated <a href="/ai-agent-development" class="text-[#ccff00] underline font-medium">AI agent systems</a>, or connect scalable <a href="/web-development" class="text-[#ccff00] underline font-medium">web platforms</a> and <a href="/mobile-app-development" class="text-[#ccff00] underline font-medium">mobile applications</a>.
+        While our standalone <a href="/ai-agent-development" class="text-[#ccff00] underline font-medium">AI agent development service</a> focuses on building new autonomous AI agent products from scratch, this practice delivers <strong>business process automation with AI</strong> across your existing software stack—combining workflow automation AI integration, AI automation for operations teams, and enterprise AI automation Pakistan delivery from Karachi.
       </p>
 
       <div class="flex flex-wrap gap-4 items-center">
@@ -678,6 +724,32 @@ export const aiAutomationInitialHtml = `
             <div><strong class="text-white">Benefit:</strong> Instant individualized student support.</div>
           </div>
         </div>
+      </div>
+
+      <!-- Dedicated Industry Workflows: Retail, Logistics & Finance -->
+      <div class="mt-14 pt-12 border-t border-white/10">
+        <span class="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-2 font-bold">[ SECTOR PLAYBOOKS ]</span>
+        <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-6">Industry-Specific AI Automation: Retail, Logistics &amp; Finance</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
+            <h4 class="text-lg font-bold text-[#ccff00] mb-2">Retail &amp; E-Commerce Operations</h4>
+            <p class="text-xs text-gray-300 leading-relaxed mb-3 font-light">Automate multi-channel order routing, supplier SKU normalization, customer return approvals, and inventory restock alerts across Shopify, WooCommerce, and custom storefronts.</p>
+            <a href="/solutions/e-commerce" class="text-[11px] font-mono text-[#ccff00] underline">E-Commerce Architecture &rarr;</a>
+          </div>
+          <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
+            <h4 class="text-lg font-bold text-[#ccff00] mb-2">Logistics &amp; Supply Chain</h4>
+            <p class="text-xs text-gray-300 leading-relaxed mb-3 font-light">As an AI-powered process automation company, we extract bill-of-lading data, automate dispatch exception notifications, and synchronize customs &amp; 3PL manifests into your ERP.</p>
+            <a href="/blog/business-automation-software-save-time-reduce-costs-2026-guide" class="text-[11px] font-mono text-[#ccff00] underline">Business Automation Guide &rarr;</a>
+          </div>
+          <div class="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
+            <h4 class="text-lg font-bold text-[#ccff00] mb-2">Finance &amp; Regulated Operations</h4>
+            <p class="text-xs text-gray-300 leading-relaxed mb-3 font-light">Automate 3-way PO matching, invoice extraction, and KYC document verification with Human-in-the-Loop gates for enterprise AI automation Pakistan and GCC compliance teams.</p>
+            <a href="/blog/ai-automation-compliance" class="text-[11px] font-mono text-[#ccff00] underline">AI Compliance Architecture &rarr;</a>
+          </div>
+        </div>
+        <p class="text-xs font-mono text-gray-400 mt-6">
+          Further Reading: <a href="/blog/ai-automation-for-regulated-industries-abuqitmirlabs" class="text-[#ccff00] underline hover:text-white">AI Automation for Regulated Industries</a> &bull; <a href="/blog/ai-automation-compliance" class="text-[#ccff00] underline hover:text-white">Compliance Architecture</a>
+        </p>
       </div>
     </section>
 

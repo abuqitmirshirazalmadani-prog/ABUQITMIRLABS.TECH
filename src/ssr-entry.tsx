@@ -119,7 +119,8 @@ export function renderFullApp(url: string = '/') {
               <Route path="/white-label-local-seo" element={<WhiteLabelLocalSEOPage />} />
               <Route path="/local-seo-audit" element={<LocalSEOAuditPage />} />
               <Route path="/guest-post-service" element={<GuestPostServicePage />} />
-              <Route path="/graphics-design" element={<GraphicsDesignPage />} />
+              <Route path="/graphic-design" element={<GraphicsDesignPage />} />
+              <Route path="/graphics-design" element={<Navigate to="/graphic-design" replace />} />
               <Route path="/brand-building" element={<BrandBuildingPage />} />
               <Route path="/skills-academy" element={<SkillsAcademyPage />} />
               <Route path="/content-writing" element={<ContentWritingPage />} />

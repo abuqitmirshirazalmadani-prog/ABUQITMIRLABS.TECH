@@ -128,7 +128,8 @@ export function render(url: string) {
           <Route path="/local-seo-citation-building" element={<LocalSEOCitationBuildingPage />} />
           <Route path="/white-label-local-seo" element={<WhiteLabelLocalSEOPage />} />
           <Route path="/local-seo-audit" element={<LocalSEOAuditPage />} />
-          <Route path="/graphics-design" element={<GraphicsDesignPage />} />
+          <Route path="/graphic-design" element={<GraphicsDesignPage />} />
+          <Route path="/graphics-design" element={<Navigate to="/graphic-design" replace />} />
           <Route path="/content-writing" element={<ContentWritingPage />} />
           <Route path="/contact" element={<ContactPage />} />
           

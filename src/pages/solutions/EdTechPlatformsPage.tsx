@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import CountryMarquee from '../../components/CountryMarquee';
+import SEO from '../../components/SEO';
 import { edTechSchema } from '../../utils/edTechStaticHtml';
 
 const EdTechPlatformsPage: React.FC = () => {
@@ -139,27 +139,21 @@ const EdTechPlatformsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
-      <Helmet>
-        <title>EdTech Software Development | LMS &amp; Learning Platforms</title>
-        <meta name="description" content="Build scalable EdTech software with custom LMS platforms, virtual classrooms, AI tutoring, student portals, assessments, and learning analytics." />
-        <link rel="canonical" href="https://www.abuqitmirlabs.tech/solutions/edtech" />
-
-        {/* Open Graph */}
-        <meta property="og:title" content="EdTech Software Development | LMS &amp; Learning Platforms" />
-        <meta property="og:description" content="Build scalable EdTech software with custom LMS platforms, virtual classrooms, AI tutoring, student portals, assessments, and learning analytics." />
-        <meta property="og:url" content="https://www.abuqitmirlabs.tech/solutions/edtech" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="EdTech Software Development | LMS &amp; Learning Platforms" />
-        <meta name="twitter:description" content="Build scalable EdTech software with custom LMS platforms, virtual classrooms, AI tutoring, student portals, assessments, and learning analytics." />
-        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Unified 7-Node JSON-LD Schema */}
-        <script type="application/ld+json">{JSON.stringify(edTechSchema)}</script>
-      </Helmet>
+      <SEO
+        title="LMS Development Company Pakistan | AbuQitmirLabs"
+        description="LMS development company Pakistan building online learning platforms, RAG AI tutors, and Arabic/Urdu RTL LMS. Built TajweedPage.com. From $10,000 USD."
+        canonical="https://www.abuqitmirlabs.tech/solutions/edtech"
+        keywords="LMS development company Pakistan, online learning platform development, EdTech app development Pakistan, AI tutoring platform development, course platform development company, multilingual LMS development"
+        ogTitle="LMS Development Company Pakistan | AbuQitmirLabs"
+        ogDescription="LMS development company Pakistan building online learning platforms, RAG AI tutors, and Arabic/Urdu RTL LMS. Built TajweedPage.com. From $10,000 USD."
+        ogImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        ogImageAlt="LMS and EdTech Software Development Services by AbuQitmirLabs"
+        ogType="website"
+        twitterTitle="LMS Development Company Pakistan | AbuQitmirLabs"
+        twitterDescription="LMS development company Pakistan building online learning platforms, RAG AI tutors, and Arabic/Urdu RTL LMS. Built TajweedPage.com. From $10,000 USD."
+        twitterImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        schema={edTechSchema}
+      />
 
       {/* Accessible Skip Link */}
       <a 
@@ -174,62 +168,96 @@ const EdTechPlatformsPage: React.FC = () => {
       <main id="main-content" className="pt-24 md:pt-32">
         {/* Breadcrumb Section */}
         <div className="max-w-7xl mx-auto px-6">
-          <Breadcrumbs items={[
-            { label: 'Solutions', path: '/#services' },
-            { label: 'EdTech Software Development', path: '/solutions/edtech' }
-          ]} />
+          <Breadcrumbs
+            disableSchema={true}
+            items={[
+              { label: 'Custom Software', path: '/custom-software' },
+              { label: 'LMS & EdTech Development', path: '/solutions/edtech' }
+            ]}
+          />
         </div>
 
         {/* Hero Section with EXACT Single H1 */}
         <section className="relative py-16 md:py-24 overflow-hidden border-b border-white/10" aria-labelledby="edtech-hero-title">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(204,255,0,0.06),transparent_50%)] pointer-events-none" />
           
-          <div className="max-w-7xl mx-auto px-6 relative z-10 animate-enter">
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[#ccff00] text-xs font-mono uppercase tracking-widest mb-6">
               <svg className="w-4 h-4 text-[#ccff00]" aria-hidden="true"><use href="/sprite.svg#icon-graduation-cap" /></svg>
-              Next-Gen Educational Engineering
+              LMS DEVELOPMENT COMPANY PAKISTAN &bull; KARACHI
             </div>
 
-            <h1 id="edtech-hero-title" className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 max-w-5xl text-white animate-enter-delay-1">
-              EdTech Software Development for Modern Learning
+            <h1 id="edtech-hero-title" className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 max-w-5xl text-white">
+              LMS and EdTech Software Development from Karachi
             </h1>
 
             {/* Direct Answer Block for AEO/GEO */}
             <div className="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl max-w-4xl mb-8 shadow-2xl backdrop-blur-md">
               <p className="text-sm md:text-base text-gray-200 leading-relaxed font-mono">
-                <strong className="text-[#ccff00]">Direct Answer:</strong> EdTech software development builds digital learning systems. This includes learning management systems, live video classrooms, student portals, online exams, AI tutors, and learning analytics. Custom software unifies teaching, testing, and administration in one reliable digital hub.
+                <strong className="text-[#ccff00]">Direct Answer:</strong> As an LMS development company Pakistan academies and global EdTech founders rely on, AbuQitmirLabs builds Next.js online learning platforms, RAG AI tutoring systems, WebRTC classrooms, and multilingual Arabic/Urdu RTL portals starting at $10,000 USD &mdash; backed by our live TajweedPage.com deployment across 20+ countries.
               </p>
             </div>
 
-            {/* E-E-A-T Inline Trust Signal Bar */}
-            <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-zinc-300 py-3 px-4 bg-zinc-900/80 border border-[#ccff00]/30 rounded-xl mb-8 max-w-3xl">
-              <span className="text-[#ccff00] font-bold">🎓 TajweedPage.com — Delivered</span>
-              <span className="text-zinc-600">•</span>
-              <span>✅ WCAG 2.1 AA Compliant Builds</span>
-              <span className="text-zinc-600">•</span>
-              <span>🔒 100% IP &amp; Source Code Ownership</span>
+            {/* E-E-A-T & Pricing Anchor Trust Signal Bar */}
+            <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-zinc-200 py-3 px-4 bg-zinc-900/80 border border-[#ccff00]/30 rounded-xl mb-8 max-w-3xl">
+              <span className="text-[#ccff00] font-bold">Custom LMS Starting at $10,000 USD</span>
+              <span className="text-zinc-600">&bull;</span>
+              <span>TajweedPage.com: 400+ Students, 20+ Countries</span>
+              <span className="text-zinc-600">&bull;</span>
+              <span>Arabic/Urdu RTL &amp; 100% IP Ownership</span>
             </div>
 
             <p className="text-xl md:text-2xl text-gray-400 max-w-3xl leading-relaxed mb-10 font-light">
-              Generic course plugins often crash during live exams and charge heavy monthly fees. We build custom, AI-enhanced learning software tailored for universities, academies, and fast-growing EdTech startups.
+              Generic course plugins crash during live exams, break Arabic and Urdu RTL typography, and tax every student seat. As a senior course platform development company in Karachi, we build custom EdTech platforms with 100% source code ownership.
             </p>
 
             <div className="flex flex-wrap items-center gap-6">
               <Link 
                 to="/contact" 
-                aria-label="Contact AbuQitmirLabs to start your EdTech platform project"
+                aria-label="Schedule an EdTech & LMS technical consultation"
                 className="px-8 py-4 bg-[#ccff00] text-black font-extrabold rounded-xl hover:scale-105 transition-all text-sm uppercase tracking-wider flex items-center gap-3 shadow-[0_0_30px_rgba(204,255,0,0.3)]"
               >
-                Start your EdTech platform project
+                Schedule LMS Technical Consultation
                 <svg className="w-5 h-5" aria-hidden="true"><use href="/sprite.svg#icon-arrow-right" /></svg>
               </Link>
               <Link 
-                to="/custom-software" 
-                aria-label="Learn more about our custom software engineering services"
+                to="/case-studies/tajweedpage" 
+                aria-label="Read the TajweedPage.com EdTech case study"
                 className="px-8 py-4 border border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-all text-sm uppercase tracking-wider"
               >
-                View Custom Software Services
+                Read TajweedPage Case Study
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Featured Verified Case Study: TajweedPage.com */}
+        <section id="tajweedpage-case-study" className="py-16 md:py-24 bg-zinc-950/70 border-b border-white/10" aria-labelledby="tajweedpage-case-study-h2">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="p-8 md:p-10 rounded-2xl bg-zinc-900/70 border border-[#ccff00]/30">
+              <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">VERIFIED EDTECH CASE STUDY &mdash; LIVE PRODUCTION BUILD</span>
+              <h2 id="tajweedpage-case-study-h2" className="text-2xl md:text-4xl font-extrabold text-white mb-6">
+                TajweedPage.com: AI Tutoring &amp; Multilingual LMS Case Study
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div className="p-5 rounded-xl bg-black/40 border border-white/10">
+                  <span className="text-xs font-mono text-[#ccff00] uppercase block mb-2">Problem</span>
+                  <p className="text-gray-200 text-sm leading-relaxed">Global Quran students needed AI-powered Tajweed feedback, structured Arabic RTL reading tools, and accurate rule citations across time zones.</p>
+                </div>
+                <div className="p-5 rounded-xl bg-black/40 border border-white/10">
+                  <span className="text-xs font-mono text-[#ccff00] uppercase block mb-2">Solution</span>
+                  <p className="text-gray-200 text-sm leading-relaxed">Next.js LMS + RAG AI tutor trained on verified Islamic sources, paired with programmatic SEO architecture and RTL Arabic/English UX.</p>
+                </div>
+                <div className="p-5 rounded-xl bg-black/40 border border-white/10">
+                  <span className="text-xs font-mono text-[#ccff00] uppercase block mb-2">Result</span>
+                  <p className="text-gray-200 text-sm leading-relaxed">Ranked in 20+ countries in 10 days, serving 400+ active students on <a href="https://tajweedpage.com" target="_blank" rel="noopener noreferrer" className="text-[#ccff00] underline">tajweedpage.com</a>.</p>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-6 text-xs font-mono">
+                <Link to="/case-studies/tajweedpage" className="text-[#ccff00] hover:underline uppercase font-bold">Full TajweedPage Technical Case Study &rarr;</Link>
+                <Link to="/blog/programmatic-seo-how-we-scaled-tajweedpage" className="text-gray-300 hover:text-white underline">How We Scaled TajweedPage SEO &rarr;</Link>
+                <a href="https://tajweedpage.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white underline">Visit Live Platform: tajweedpage.com &rarr;</a>
+              </div>
             </div>
           </div>
         </section>
@@ -242,13 +270,13 @@ const EdTechPlatformsPage: React.FC = () => {
             <div className="max-w-4xl">
               <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Architectural Foundation</span>
               <h2 id="what-is-edtech-h2" className="text-3xl md:text-5xl font-extrabold tracking-tight mb-8 text-white">
-                What Is EdTech Software Development?
+                What Is Online Learning Platform &amp; Custom LMS Development?
               </h2>
               <p className="text-gray-300 text-lg leading-relaxed mb-6 font-light">
-                <strong className="text-white font-medium">EdTech software development</strong> is the engineering of digital learning systems. Modern education technology turns traditional classrooms into interactive online platforms. Students learn at their own pace, teachers review progress in real time, and administrators manage multiple campuses with ease.
+                <strong className="text-white font-medium">Online learning platform development</strong> turns curricula, live classes, assessments, and student records into a unified, owned software system. Unlike SaaS tools that charge per-seat fees, a dedicated course platform development company gives universities, Islamic academies, and corporate teams full source code control.
               </p>
               <p className="text-gray-300 text-lg leading-relaxed mb-6 font-light">
-                Generic plugins charge monthly user fees and struggle under high traffic. Purpose-built platforms give you full code ownership and zero licensing limits. We combine <Link to="/web-development" className="text-[#ccff00] hover:underline font-medium" aria-label="Explore our high-performance web development services">high-performance web development</Link> with <Link to="/ai-agent-development" className="text-[#ccff00] hover:underline font-medium" aria-label="Explore our AI agent development services">custom AI agents</Link> to help educational institutions grow sustainably.
+                Whether you require <strong className="text-white font-medium">EdTech app development Pakistan</strong> mobile apps, high-concurrency exam portals, or <Link to="/blog/edtech-software-development" className="text-[#ccff00] hover:underline font-medium">custom EdTech platform architecture</Link>, we pair <Link to="/web-development" className="text-[#ccff00] hover:underline font-medium" aria-label="Explore our high-performance web development services">Next.js web engineering</Link> with <Link to="/ai-agent-development" className="text-[#ccff00] hover:underline font-medium" aria-label="Explore our AI agent development services">custom RAG AI agents</Link> for sustainable scale.
               </p>
             </div>
           </div>
@@ -390,44 +418,44 @@ const EdTechPlatformsPage: React.FC = () => {
           </div>
         </section>
 
-        {/* Section 5: AI in EdTech */}
+        {/* Section 5: AI Tutoring Platform Development & Multilingual RTL LMS */}
         <section className="py-20 md:py-28 bg-zinc-950/60 border-b border-white/10" aria-labelledby="ai-edtech-h2">
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-3xl mb-16">
-              <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Artificial Intelligence</span>
+              <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">RAG AI &amp; MULTILINGUAL RTL</span>
               <h2 id="ai-edtech-h2" className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 text-white">
-                AI in EdTech
+                AI Tutoring Platform Development &amp; Multilingual Arabic/Urdu RTL LMS
               </h2>
               <p className="text-gray-400 text-lg font-light leading-relaxed">
-                Artificial intelligence turns passive video watching into active, personalized learning. We build reliable, safe AI tools designed for education.
+                We specialize in RAG-grounded AI tutoring platform development and native multilingual LMS development supporting English (LTR) plus full Arabic and Urdu right-to-left (RTL) layouts for GCC and Pakistan academies.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 {
-                  title: "AI Tutors",
-                  desc: "Context-aware AI tutors that guide students through tough equations and code with step-by-step hints."
+                  title: "RAG AI Tutors Grounded in Curriculum",
+                  desc: "Retrieval-Augmented Generation (RAG) tutors answer strictly from your verified textbooks, Tajweed rules, or course transcripts with zero hallucinated citations."
                 },
                 {
-                  title: "AI Study Assistants",
-                  desc: "In-course assistants that summarize lecture videos, generate flashcards, and answer lesson questions."
+                  title: "Multilingual LMS Development (Arabic & Urdu RTL)",
+                  desc: "Bi-directional UI mirroring, Noto Nastaliq / Arabic font shaping, localized Hijri/Gregorian schedules, and multi-currency tuition checkout for GCC and Pakistan learners."
                 },
                 {
-                  title: "Adaptive Learning",
-                  desc: "Smart algorithms that track quiz scores in real time and adjust question difficulty automatically."
+                  title: "EdTech App Development Pakistan (iOS & Android)",
+                  desc: "Flutter and React Native mobile apps with offline lesson caching, low-bandwidth audio playback, and push reminders for daily study streaks."
                 },
                 {
-                  title: "AI Assessment Tools",
-                  desc: "Automated tools that help teachers grade essays, evaluate rubrics, and spot plagiarism."
+                  title: "Adaptive Assessment & Rubrics",
+                  desc: "Smart algorithms track quiz mastery in real time, generate flashcards from lecture notes, and assist teachers with structured rubric grading."
                 },
                 {
-                  title: "Student Support Agents",
-                  desc: "Automated agents that send study reminders when activity drops and alert teachers to struggling students."
+                  title: "Student Retention & Support Agents",
+                  desc: "Automated study reminders when completion drops, paired with parent progress digests and instant advisor escalation."
                 },
                 {
-                  title: "Admin Automation",
-                  desc: "Smart document tools that parse student applications, match transcripts, and generate school reports."
+                  title: "Admissions & SIS Automation",
+                  desc: "Automated student enrollment workflows, transcript parsing, fee invoicing via JazzCash/Stripe, and attendance reporting."
                 }
               ].map((aiItem, idx) => (
                 <div key={idx} className="p-8 rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-[#ccff00]/40 transition-all">

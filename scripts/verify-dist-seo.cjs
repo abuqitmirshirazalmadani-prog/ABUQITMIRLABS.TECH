@@ -33,7 +33,26 @@ function getAllHtmlFiles(dir, fileList = []) {
 
 const TITLE_OVERRIDES = {
   '/': 'Custom Software, AI & SEO Engineering | AbuQitmirLabs',
-  '/growth-engineering': 'Growth Engineering: Software, AI & SEO | AbuQitmirLabs',
+  '/growth-engineering': 'Growth Engineering & Revenue Agency | AbuQitmirLabs',
+  '/custom-software': 'Custom Software Development Pakistan | AbuQitmirLabs',
+  '/mobile-app-development': 'Mobile App Development Services Pakistan | AbuQitmirLabs',
+  '/web-development': 'Web Development Services Pakistan | AbuQitmirLabs',
+  '/ai-agent-development': 'AI Agent Development Services | RAG & LLM | AbuQitmirLabs',
+  '/seo-mastery': 'Technical SEO Agency for B2B Companies | AbuQitmirLabs',
+  '/digital-marketing': 'B2B Digital Marketing Agency Pakistan | AbuQitmirLabs',
+  '/graphic-design': 'Graphic Design Services for Tech Startups | AbuQitmirLabs',
+  '/brand-building': 'Brand Identity Design for Startups Pakistan | AbuQitmirLabs',
+  '/content-writing': 'Technical Content Writing for B2B SaaS | AbuQitmirLabs',
+  '/local-seo-for-small-business': 'Local SEO for Small Business Pakistan | AbuQitmirLabs',
+  '/local-seo-citation-building': 'NAP Citation Building Service Pakistan | AbuQitmirLabs',
+  '/white-label-local-seo': 'White Label Local SEO Services for Agencies | AbuQitmirLabs',
+  '/local-seo-audit': 'Local SEO Audit Checklist & Service | AbuQitmirLabs',
+  '/guest-post-service': 'Guest Post and Editorial Link Building | AbuQitmirLabs',
+  '/solutions/fintech': 'Fintech Software Development Pakistan | AbuQitmirLabs',
+  '/solutions/healthcare': 'Healthcare Software Development Pakistan | AbuQitmirLabs',
+  '/solutions/ai-automation': 'AI Workflow Automation for Business Operations | AbuQitmirLabs',
+  '/solutions/e-commerce': 'Custom E-Commerce Development Pakistan | AbuQitmirLabs',
+  '/solutions/edtech': 'LMS Development Company Pakistan | AbuQitmirLabs',
   '/blog/best-ai-tools-for-software-development-in-2026':
     '23 AI Tools Developers Actually Ship Code With (2026)',
   '/blog/ai-integration-with-legacy-systems-the-complete-2026-guide':
@@ -42,9 +61,6 @@ const TITLE_OVERRIDES = {
     'Website Audit Tool for Founders | Free | AbuQitmirLabs',
   '/blog/best-no-code-app-builders-in-2026-for-startups-businesses':
     '9 No-Code App Builders That Actually Launch in 2026',
-  '/web-development': 'Web Development Services in Pakistan | AbuQitmirLabs',
-  '/ai-agent-development':
-    'AI Agent Development Services | RAG & LLM | AbuQitmirLabs',
   '/blog/high-performance-web-applications-12-engineering-decisions':
     'High-Performance Web Apps: 12 Architecture Rules (2026)',
   '/blog/brand-audit-checklist-pakistan':
@@ -75,7 +91,6 @@ const TITLE_OVERRIDES = {
   '/privacy': 'Privacy Policy & Data Protection | AbuQitmirLabs',
   '/terms': 'Terms of Service & IP Ownership | AbuQitmirLabs',
   '/about/our-process': 'Our 5-Step Software Delivery Process | AbuQitmirLabs',
-  '/local-seo-for-small-business': 'Local SEO Services for Small Business | AbuQitmirLabs',
   '/blog/offshore-ai-agent-development-partner-uae':
     'Offshore AI Agent Development Partner UAE | AbuQitmirLabs',
   '/blog/brand-refresh-vs-rebrand':

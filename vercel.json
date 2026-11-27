@@ -824,6 +824,11 @@
       "source": "/ai-automation-for-regulated-industries-abuqitmirlabs",
       "destination": "/blog/ai-automation-compliance",
       "permanent": true
+    },
+    {
+      "source": "/graphics-design",
+      "destination": "/graphic-design",
+      "permanent": true
     }
   ]
 }

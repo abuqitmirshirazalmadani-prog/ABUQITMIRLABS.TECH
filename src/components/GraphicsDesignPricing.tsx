@@ -42,20 +42,20 @@ export default function GraphicsDesignPricing() {
               [ USA CREATIVE INVESTMENT METRICS ]
             </span>
             <h2 className="text-5xl md:text-7xl font-sans font-black tracking-tight leading-none uppercase">
-              graphics design <br />
-              <span className="text-transparent font-serif italic font-light" style={{ WebkitTextStroke: '1px #ffffff' }}>Pricing framework</span>
+              Graphic Design <br />
+              <span className="text-transparent font-serif italic font-light" style={{ WebkitTextStroke: '1px #ffffff' }}>Pricing Framework</span>
             </h2>
             <div className="mt-6 border-l-4 border-[#ccff00] pl-5 space-y-3">
-              <h3 className="text-[#ccff00] text-lg font-bold uppercase tracking-wider">Regional Pricing Offer</h3>
+              <h3 className="text-[#ccff00] text-lg font-bold uppercase tracking-wider">Regional Pricing Offer — Pakistan &amp; South Asia</h3>
               <p className="text-[#ccff00] text-base font-medium max-w-3xl leading-relaxed">
-                Clients and businesses based in South Asia (Pakistan, India, Bangladesh) are eligible for localized regional pricing and dedicated currency support. Please connect with our team directly on WhatsApp for tailored commercial quotes.
+                Logo and starter asset packages start from $150 USD (localized PKR rates available for Pakistan startups in Karachi, Lahore, and Islamabad). Full brand identity systems start from $1,000 USD. Connect directly on WhatsApp for tailored regional commercial quotes.
               </p>
               <p className="text-[#ccff00] text-base font-medium max-w-3xl leading-relaxed" style={{ fontFamily: 'Noto Nastaliq Urdu, sans-serif' }}>
                 پاکستان، بھارت اور بنگلہ دیش میں مقیم کلائنٹس اور کاروباری اداروں کے لیے خصوصی علاقائی قیمتیں اور کرنسی سپورٹ دستیاب ہے۔ براہِ کرم واٹس ایپ پر ہماری ٹیم سے براہِ راست رابطہ فرمائیں۔
               </p>
             </div>
             <p className="mt-8 text-neutral-400 text-lg md:text-xl font-light max-w-4xl leading-relaxed">
-              Price for logo and graphics design services in the USA typically starts between <strong className="text-white">$5 to $50</strong> if you utilize freelance marketplaces, while standard entry-level pricing for an independent local graphic designer generally starts around <strong className="text-white">$150 to $300</strong>. The total cost fluctuates drastically based on the designer's experience level, project complexity, and the platform or provider you choose.
+              Price for logo and graphic design services typically starts around <strong className="text-white">$150 to $300</strong> for standalone vector logos or pitch deck starter scopes, while comprehensive <strong className="text-white">brand identity design for startups in Pakistan</strong> and global SaaS teams starts from <strong className="text-white">$1,000 to $3,000</strong> depending on UI/UX screen count and deliverables.
             </p>
           </div>
 
@@ -201,7 +201,7 @@ export default function GraphicsDesignPricing() {
                   <div className="mt-8 pt-6 border-t border-white/5">
                     <a
                       id="design-cta-popular"
-                      href="https://wa.me/923233260859?text=Hello,%20I'm%20interested%20in%20the%20Mid-Range%20System%20graphics%20design%20plan%20to%20build%20a%20full%20brand%20identity.%20Let's%20initiate%20discovery."
+                      href="https://wa.me/923233260859?text=Hello,%20I'm%20interested%20in%20the%20Mid-Range%20System%20graphic%20design%20plan%20to%20build%20a%20full%20brand%20identity.%20Let's%20initiate%20discovery."
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full py-4 bg-[#ccff00] text-black hover:bg-white text-[10px] font-black uppercase tracking-widest rounded-xl flex items-center justify-center gap-2 transition duration-300 shadow-md text-center"

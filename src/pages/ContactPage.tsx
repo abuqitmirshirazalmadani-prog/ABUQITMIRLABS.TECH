@@ -142,14 +142,11 @@ const ContactPage = () => {
                 Response SLA: Within 24 Business Hours &bull; Senior Architect Review
              </motion.div>
              
-             <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-4xl md:text-6xl font-black tracking-tighter leading-tight text-white uppercase mb-6 animate-enter-delay-1"
+             <h1 
+                className="text-4xl md:text-6xl font-black tracking-tighter leading-tight text-white uppercase mb-6"
              >
                 Book a Technical Discovery Call &amp; Project Quote
-             </motion.h1>
+             </h1>
              <p className="max-w-2xl mx-auto text-zinc-400 text-sm md:text-base leading-relaxed mb-8">
                 Share your product scope, architecture goals, or growth bottlenecks below. Every inquiry is reviewed directly by a senior software architect within one business day.
              </p>
@@ -409,11 +406,6 @@ const ContactPage = () => {
                                     domain="abuqitmirlabs.tech" 
                                     className="text-white font-mono text-sm hover:text-[#ccff00] transition-colors hover:underline font-bold block"
                                  />
-                                 <ObfuscatedEmail 
-                                    user="abuqitmirshirazalmadani" 
-                                    domain="gmail.com" 
-                                    className="text-zinc-500 font-mono text-xs hover:text-[#ccff00] transition-colors hover:underline block"
-                                 />
                                  <p className="text-[#ccff00]/70 font-mono text-[10px] uppercase tracking-tight">Response SLA: Within 24 Business Hours</p>
                               </div>
                            </div>
@@ -445,7 +437,7 @@ const ContactPage = () => {
                            </div>
                            <div>
                               <p className="text-white font-bold uppercase tracking-widest text-sm mb-1">Headquarters Address</p>
-                              <p className="text-zinc-400 font-sans text-xs leading-relaxed max-w-sm">8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town, 75160, Karachi, Pakistan</p>
+                              <p className="text-zinc-400 font-sans text-xs leading-relaxed max-w-sm">8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town, Karachi, 75160, Pakistan</p>
                            </div>
                         </a>
                      </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import { YouTubeFacade } from '../components/ui/youtube-facade';
 import { 
   Brain, 
@@ -73,8 +73,20 @@ export default function AIAgentDevelopmentPage() {
   const [activeComponentId, setActiveComponentId] = useState<string>('brain');
   const [activeServiceTab, setActiveServiceTab] = useState<number>(0);
 
-  // 10 Authoritative FAQ Items exactly matching schema and ranking criteria
+  // Authoritative FAQ Items matching schema and ranking criteria
   const faqData = [
+    {
+      q: "What is custom AI agent development for B2B companies?",
+      a: "Custom AI agent development for B2B companies is the engineering of autonomous, goal-oriented software systems powered by large language models, RAG pipelines, and tool-calling APIs. Unlike off-the-shelf automation scripts, a custom AI agent reasons through multi-step sales, support, and internal operations workflows and executes actions inside your CRM, ERP, or product database."
+    },
+    {
+      q: "How is AI agent development different from AI workflow automation?",
+      a: "Custom AI agent development builds a brand-new autonomous software product from scratch—complete with custom LLM orchestration, RAG vector stores, and UI/API interfaces. By contrast, AI workflow automation focuses on connecting and automating existing operational tools and recurring processes across retail, finance, and logistics."
+    },
+    {
+      q: "How much does custom AI agent development cost in Pakistan and globally?",
+      a: "Focused B2B MVP agents and RAG pipelines start from $3,500 USD (or PKR 350,000+ for Pakistan-based startups), custom integrated multi-tool agents range from $6,000 to $18,000 USD, and regulated enterprise or healthcare multi-agent systems with EHR/FHIR connectors range from $18,000 to $45,000+ USD."
+    },
     {
       q: "What is healthcare AI agent development?",
       a: "Healthcare AI agent development is the engineering of autonomous, goal-oriented software systems powered by large language models that understand clinical context, execute multi-step workflows, query medical knowledge bases, and interact with healthcare APIs. Healthcare AI agents assist medical and administrative teams with routine tasks rather than independently replacing clinical judgment or making unsupervised medical diagnoses."
@@ -441,6 +453,201 @@ export default function AIAgentDevelopmentPage() {
     }
   ];
 
+  const aiAgentPageSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.abuqitmirlabs.tech/#organization",
+        "name": "AbuQitmirLabs",
+        "url": "https://www.abuqitmirlabs.tech",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://www.abuqitmirlabs.tech/#logo",
+          "url": "https://www.abuqitmirlabs.tech/logo.png",
+          "caption": "AbuQitmirLabs Logo"
+        },
+        "telephone": "+923233260859",
+        "email": "hello@abuqitmirlabs.tech",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+          "addressLocality": "Karachi",
+          "addressRegion": "Sindh",
+          "postalCode": "75160",
+          "addressCountry": "PK"
+        },
+        "sameAs": [
+          "https://www.facebook.com/profile.php?id=61583768706452",
+          "https://www.instagram.com/abuqitmirshirazalmadani/",
+          "https://www.youtube.com/@AbuQitmir",
+          "https://www.linkedin.com/in/abu-qitmir-697423390/",
+          "https://x.com/AbuQitmir",
+          "https://www.pinterest.com/abuqitmir",
+          "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani",
+          "https://www.goodfirms.co/company/abuqitmirlabs-tech",
+          "https://clutch.co/profile/abuqitmirlabstech"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+923233260859",
+          "contactType": "customer service",
+          "email": "hello@abuqitmirlabs.tech",
+          "availableLanguage": ["English", "Urdu"]
+        }
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+        "name": "AbuQitmirLabs",
+        "url": "https://www.abuqitmirlabs.tech/ai-agent-development",
+        "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+        "telephone": "+923233260859",
+        "email": "hello@abuqitmirlabs.tech",
+        "priceRange": "$$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+          "addressLocality": "Karachi",
+          "addressRegion": "Sindh",
+          "postalCode": "75160",
+          "addressCountry": "PK"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 24.842691448838718,
+          "longitude": 67.1862014846566
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.abuqitmirlabs.tech/#website",
+        "url": "https://www.abuqitmirlabs.tech",
+        "name": "AbuQitmirLabs",
+        "publisher": {
+          "@id": "https://www.abuqitmirlabs.tech/#organization"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#webpage",
+        "url": "https://www.abuqitmirlabs.tech/ai-agent-development",
+        "name": "AI Agent Development Services | RAG & LLM | AbuQitmirLabs",
+        "description": "Build custom AI agents for sales, support, and operations. RAG pipelines, LLM integration, 24/7 automation. Senior-led delivery from Karachi since 2021.",
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        },
+        "isPartOf": {
+          "@id": "https://www.abuqitmirlabs.tech/#website"
+        },
+        "about": {
+          "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#service"
+        },
+        "breadcrumb": {
+          "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.abuqitmirlabs.tech"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "AI Agent Development",
+            "item": "https://www.abuqitmirlabs.tech/ai-agent-development"
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#service",
+        "name": "AI Agent Development Services for Business Workflow Automation",
+        "serviceType": "Custom AI Agent Development, RAG Pipelines & LLM Integration",
+        "provider": {
+          "@id": "https://www.abuqitmirlabs.tech/#organization"
+        },
+        "description": "Custom AI agent development for B2B companies and startups, covering RAG pipeline development services, LLM integration services for business, multi-agent systems, and specialized healthcare AI workflows.",
+        "areaServed": [
+          { "@type": "Country", "name": "Pakistan" },
+          { "@type": "Country", "name": "United States" },
+          { "@type": "Country", "name": "United Kingdom" },
+          { "@type": "Country", "name": "United Arab Emirates" },
+          { "@type": "Country", "name": "Saudi Arabia" }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Custom AI Agent Engineering Offerings",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Custom AI Agent Development for B2B Companies",
+                "description": "Autonomous sales, support, and operations agents built from scratch with 100% client IP ownership."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "RAG Pipeline Development Services",
+                "description": "Production vector indexing with Pinecone, Qdrant, or pgvector and verifiable source citations."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "LLM Integration Services for Business",
+                "description": "Secure API integration for Gemini, Claude, GPT, and private VPC open-weight models."
+              }
+            },
+            ...agentServices.map((srv) => ({
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": srv.title,
+                "description": srv.whatItDoes
+              }
+            }))
+          ]
+        }
+      },
+      {
+        "@type": "HowTo",
+        "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#process",
+        "name": "How We Build Custom AI Agents",
+        "description": "An 8-step software engineering lifecycle for designing, developing, integrating, and deploying secure production AI agents.",
+        "step": processSteps.map((step, index) => ({
+          "@type": "HowToStep",
+          "position": index + 1,
+          "name": step.title,
+          "text": step.desc
+        }))
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#faq",
+        "mainEntity": faqData.map(item => ({
+          "@type": "Question",
+          "name": item.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.a
+          }
+        }))
+      }
+    ]
+  };
+
   return (
     <div id="ai-agent-development-root" className="bg-[#000000] text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00]/30 selection:text-white">
       {/* Skip to Content Accessible Link */}
@@ -451,165 +658,19 @@ export default function AIAgentDevelopmentPage() {
         Skip to content
       </a>
 
-      <Helmet>
-        <title>AI Agent Development Company | AbuQitmirLabs</title>
-        <meta name="description" content="AbuQitmirLabs develops enterprise-grade AI agents, LLM autonomous workflows, RAG knowledge bases, and multi-agent systems. Karachi & Global." />
-        <link rel="canonical" href="https://www.abuqitmirlabs.tech/ai-agent-development" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="AI Agent Development Company | AbuQitmirLabs" />
-        <meta property="og:description" content="AbuQitmirLabs develops enterprise-grade AI agents, LLM autonomous workflows, RAG knowledge bases, and multi-agent systems. Karachi & Global." />
-        <meta property="og:url" content="https://www.abuqitmirlabs.tech/ai-agent-development" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI Agent Development Company | AbuQitmirLabs" />
-        <meta name="twitter:description" content="AbuQitmirLabs develops enterprise-grade AI agents, LLM autonomous workflows, RAG knowledge bases, and multi-agent systems. Karachi & Global." />
-        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-        
-        {/* Authoritative 7-Entity JSON-LD Schema @graph */}
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": "Organization",
-                  "@id": "https://www.abuqitmirlabs.tech/#organization",
-                  "name": "AbuQitmirLabs",
-                  "url": "https://www.abuqitmirlabs.tech",
-                  "logo": {
-                    "@type": "ImageObject",
-                    "@id": "https://www.abuqitmirlabs.tech/#logo",
-                    "url": "https://www.abuqitmirlabs.tech/logo.png",
-                    "caption": "AbuQitmirLabs Logo"
-                  },
-                  "telephone": "+923233260859",
-                  "email": "hello@abuqitmirlabs.tech",
-                  "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
-                    "addressLocality": "Karachi",
-                    "postalCode": "75160",
-                    "addressCountry": "PK"
-                  },
-                  "sameAs": [
-                    "https://www.facebook.com/profile.php?id=61583768706452",
-                    "https://www.instagram.com/abuqitmirshirazalmadani/",
-                    "https://www.youtube.com/@AbuQitmir",
-                    "https://www.linkedin.com/in/abu-qitmir-697423390/",
-                    "https://x.com/AbuQitmir",
-                    "https://www.pinterest.com/abuqitmir",
-                    "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani",
-                    "https://www.goodfirms.co/company/abuqitmirlabs-tech",
-                    "https://clutch.co/profile/abuqitmirlabstech"
-                  ],
-                  "contactPoint": {
-                    "@type": "ContactPoint",
-                    "telephone": "+923233260859",
-                    "contactType": "customer service",
-                    "email": "hello@abuqitmirlabs.tech",
-                    "availableLanguage": ["English", "Urdu"]
-                  }
-                },
-                {
-                  "@type": "WebSite",
-                  "@id": "https://www.abuqitmirlabs.tech/#website",
-                  "url": "https://www.abuqitmirlabs.tech",
-                  "name": "AbuQitmirLabs",
-                  "publisher": {
-                    "@id": "https://www.abuqitmirlabs.tech/#organization"
-                  }
-                },
-                {
-                  "@type": "WebPage",
-                  "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#webpage",
-                  "url": "https://www.abuqitmirlabs.tech/ai-agent-development",
-                  "name": "Healthcare AI Agent Development Company | AbuQitmirLabs",
-                  "description": "Custom healthcare AI agents for patient intake, RAG, EHR integration and workflow automation. Build secure AI systems with AbuQitmirLabs.",
-                  "isPartOf": {
-                    "@id": "https://www.abuqitmirlabs.tech/#website"
-                  },
-                  "about": {
-                    "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#service"
-                  },
-                  "breadcrumb": {
-                    "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#breadcrumb"
-                  }
-                },
-                {
-                  "@type": "BreadcrumbList",
-                  "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#breadcrumb",
-                  "itemListElement": [
-                    {
-                      "@type": "ListItem",
-                      "position": 1,
-                      "name": "Home",
-                      "item": "https://www.abuqitmirlabs.tech"
-                    },
-                    {
-                      "@type": "ListItem",
-                      "position": 2,
-                      "name": "Healthcare AI Agent Development",
-                      "item": "https://www.abuqitmirlabs.tech/ai-agent-development"
-                    }
-                  ]
-                },
-                {
-                  "@type": "Service",
-                  "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#service",
-                  "name": "Healthcare AI Agent Development Services",
-                  "serviceType": "Healthcare AI Agent Development and Clinical Workflow Automation",
-                  "provider": {
-                    "@id": "https://www.abuqitmirlabs.tech/#organization"
-                  },
-                  "description": "Custom healthcare AI agent engineering services covering patient support automation, clinical RAG agents, EHR integrations, and operational workflow automation designed to support applicable healthcare security requirements.",
-                  "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
-                  "hasOfferCatalog": {
-                    "@type": "OfferCatalog",
-                    "name": "Healthcare AI Agent Engineering Offerings",
-                    "itemListElement": agentServices.map((srv) => ({
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": srv.title,
-                        "description": srv.whatItDoes
-                      }
-                    }))
-                  }
-                },
-                {
-                  "@type": "HowTo",
-                  "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#process",
-                  "name": "How We Build Healthcare AI Agents",
-                  "description": "An 8-step software engineering lifecycle for designing, developing, integrating, and deploying secure healthcare AI agents.",
-                  "step": processSteps.map((step, index) => ({
-                    "@type": "HowToStep",
-                    "position": index + 1,
-                    "name": step.title,
-                    "text": step.desc
-                  }))
-                },
-                {
-                  "@type": "FAQPage",
-                  "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#faq",
-                  "mainEntity": faqData.map(item => ({
-                    "@type": "Question",
-                    "name": item.q,
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": item.a
-                    }
-                  }))
-                }
-              ]
-            })
-          }}
-        />
-      </Helmet>
+      <SEO
+        title="AI Agent Development Services | RAG & LLM | AbuQitmirLabs"
+        description="Build custom AI agents for sales, support, and operations. RAG pipelines, LLM integration, 24/7 automation. Senior-led delivery from Karachi since 2021."
+        canonical="https://www.abuqitmirlabs.tech/ai-agent-development"
+        keywords="custom AI agent development for B2B companies, AI agent development for startups, RAG pipeline development services, LLM integration services for business, autonomous AI agent development company, AI workflow automation development"
+        ogTitle="AI Agent Development Services | RAG & LLM | AbuQitmirLabs"
+        ogDescription="Build custom AI agents for sales, support, and operations. RAG pipelines, LLM integration, 24/7 automation. Senior-led delivery from Karachi since 2021."
+        ogImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        twitterTitle="AI Agent Development Services | RAG & LLM | AbuQitmirLabs"
+        twitterDescription="Build custom AI agents for sales, support, and operations. RAG pipelines, LLM integration, 24/7 automation. Senior-led delivery from Karachi since 2021."
+        twitterImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        schema={aiAgentPageSchema}
+      />
 
       {/* Decorative Ambient Backgrounds */}
       <div className="fixed inset-0 pointer-events-none z-0 opacity-30">
@@ -618,7 +679,7 @@ export default function AIAgentDevelopmentPage() {
       </div>
 
       <Header />
-      <Breadcrumbs />
+      <Breadcrumbs disableSchema={true} />
 
       {/* Main Landmark */}
       <main id="main-content" className="relative z-10">
@@ -626,52 +687,38 @@ export default function AIAgentDevelopmentPage() {
         {/* Hero Section */}
         <section id="ai-agent-hero" className="relative pt-20 md:pt-28 pb-20 px-6">
           <div className="mx-auto max-w-6xl">
-            <div className="text-center relative z-10 max-w-4xl mx-auto animate-enter">
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-[#ccff00] font-mono tracking-widest uppercase mb-8"
-              >
+            <div className="text-center relative z-10 max-w-4xl mx-auto">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-[#ccff00] font-mono tracking-widest uppercase mb-8">
                 <Sparkles className="w-3.5 h-3.5 text-[#ccff00]" /> 
-                Healthcare AI Engineering & Autonomous Systems
-              </motion.div>
+                Autonomous AI Agent Engineering — Karachi &amp; Global
+              </div>
 
-              {/* Exact H1 required */}
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7 }}
-                className="text-4xl sm:text-6xl md:text-7xl font-serif font-light tracking-tight text-white mb-8 leading-[1.1] animate-enter-delay-1"
-              >
-                Healthcare AI Agent Development <br className="hidden sm:inline" />
-                <span className="italic font-serif text-[#ccff00] font-normal">for Smarter Healthcare Workflows</span>
-              </motion.h1>
+              <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-light tracking-tight text-white mb-8 leading-[1.1]">
+                AI Agent Development Services for{' '}
+                <span className="italic font-serif text-[#ccff00] font-normal">Business Workflow Automation</span>
+              </h1>
               
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.15, duration: 0.6 }}
-                className="mx-auto mt-6 max-w-3xl text-base md:text-xl leading-relaxed text-slate-300 font-light font-sans"
-              >
-                AbuQitmirLabs engineers custom healthcare AI agents, clinical RAG systems, and autonomous workflow solutions that automate administrative burdens, accelerate patient support, and integrate securely with existing EHR/EMR platforms.
-              </motion.p>
+              {/* 40-60 Word Direct Answer Block */}
+              <div className="mx-auto mt-6 max-w-3xl p-6 rounded-2xl bg-white/[0.03] border border-[#ccff00]/30 text-left">
+                <p className="text-base md:text-lg leading-relaxed text-white font-normal font-sans">
+                  <strong>AbuQitmirLabs</strong> delivers custom AI agent development for B2B companies, startups, and regulated teams—building production RAG pipelines, LLM tool-calling backends, and autonomous sales, support, and operations agents from scratch with 100% source code ownership. MVP agents start at <strong>$3,500 USD</strong> (or <strong>PKR 350,000+</strong> for Pakistan startups).
+                </p>
+              </div>
+
+              <p className="mx-auto mt-5 max-w-3xl text-sm md:text-base leading-relaxed text-slate-400 font-light font-sans">
+                Building a new custom AI agent from scratch? Start here. Looking to connect and automate existing business workflows using AI tools instead? Explore our <Link to="/solutions/ai-automation" className="text-[#ccff00] hover:underline font-medium">AI Workflow Automation Solutions</Link>.
+              </p>
 
               {/* Core Deliverables Quick-Bar */}
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.25 }}
-                className="mx-auto mt-10 max-w-3xl border-y border-white/10 py-6 px-4 bg-white/[0.01]"
-              >
+              <div className="mx-auto mt-10 max-w-3xl border-y border-white/10 py-6 px-4 bg-white/[0.01]">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-left">
                   {[
-                    "Clinical RAG & Vector Knowledge Stores",
-                    "EHR, FHIR & Healthcare API Integrations",
-                    "24/7 AI Patient Intake & Support Agents",
-                    "Deterministic Guardrails & Human Oversight",
-                    "Zero-Data Retention Model Security",
-                    "100% Client Codebase & Data Ownership"
+                    "Custom B2B Sales & Support Agents",
+                    "RAG Pipelines (Pinecone / pgvector)",
+                    "LLM Integration (Gemini / Claude / GPT)",
+                    "Deterministic Guardrails & RBAC",
+                    "EHR, CRM & ERP API Connectors",
+                    "100% Client Codebase & IP Ownership"
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-center gap-2.5">
                       <Check className="w-4 h-4 text-[#ccff00] shrink-0" />
@@ -679,7 +726,7 @@ export default function AIAgentDevelopmentPage() {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
 
               {/* Hero Call-to-Actions */}
               <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-5">
@@ -687,15 +734,15 @@ export default function AIAgentDevelopmentPage() {
                   to="/contact"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-white hover:bg-slate-200 text-black font-bold uppercase rounded-xl tracking-wider text-xs transition duration-200 shadow-[0_0_25px_rgba(255,255,255,0.15)]"
                 >
-                  <span>Discuss Your Healthcare AI Agent</span>
+                  <span>Scope Your Custom AI Agent</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 
                 <Link 
-                  to="/solutions/healthcare"
+                  to="/solutions/ai-automation"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-bold uppercase rounded-xl tracking-wider text-xs border border-white/10 transition duration-200"
                 >
-                  <span>Explore Healthcare Software</span>
+                  <span>Explore Workflow Automation</span>
                   <ArrowUpRight className="w-4 h-4 text-[#ccff00]" />
                 </Link>
               </div>
@@ -706,7 +753,56 @@ export default function AIAgentDevelopmentPage() {
         {/* Global Markets Marquee */}
         <CountryMarquee />
 
-        {/* Section 1: What Are Healthcare AI Agents? (AEO Answer Block 1) */}
+        {/* Section 0: B2B Custom AI Agent Development Overview (Primary + 5 Secondary Keywords) */}
+        <section id="custom-b2b-ai-agents" className="py-24 bg-[#040404] px-6 border-t border-white/10">
+          <div className="max-w-6xl mx-auto">
+            <div className="max-w-3xl mb-14">
+              <span className="text-xs font-mono text-[#ccff00] uppercase tracking-[0.3em] font-bold block mb-4">
+                [ B2B PRODUCT ENGINEERING &amp; MULTI-AGENT ARCHITECTURE ]
+              </span>
+              <h2 className="text-3xl md:text-5xl font-serif font-light text-white tracking-tight leading-tight mb-6">
+                Autonomous AI Agent Development Company for B2B Teams
+              </h2>
+              <p className="text-slate-300 font-light text-base md:text-lg leading-relaxed font-sans">
+                As an <strong className="text-white">autonomous AI agent development company</strong> operating from Karachi since 2021, we build custom AI software products tailored for SaaS founders, enterprise operations teams, and regulated verticals across Pakistan, the US, UK, UAE, and Saudi Arabia.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="p-7 rounded-2xl bg-white/[0.02] border border-white/10">
+                <h2 className="text-xl font-bold text-white uppercase tracking-tight mb-3">AI Agent Development for Startups</h2>
+                <p className="text-sm text-slate-300 font-light leading-relaxed">
+                  Launch AI-native SaaS copilots, onboarding assistants, and customer support agents in 3–5 weeks. Starting from $3,500 USD (PKR 350,000+ local startup tier) with full Git repository and IP transfer.
+                </p>
+              </div>
+              <div className="p-7 rounded-2xl bg-white/[0.02] border border-white/10">
+                <h2 className="text-xl font-bold text-white uppercase tracking-tight mb-3">RAG Pipeline Development Services</h2>
+                <p className="text-sm text-slate-300 font-light leading-relaxed">
+                  Zero-hallucination vector indexing with Pinecone, Qdrant, or PostgreSQL pgvector. Ground model outputs in your internal docs, SOPs, and product catalogs with page-level citations.
+                </p>
+              </div>
+              <div className="p-7 rounded-2xl bg-white/[0.02] border border-white/10">
+                <h2 className="text-xl font-bold text-white uppercase tracking-tight mb-3">LLM Integration Services for Business</h2>
+                <p className="text-sm text-slate-300 font-light leading-relaxed">
+                  Production orchestration across Gemini, Claude, OpenAI, and private VPC open-weight models with structured JSON outputs, tool-calling schemas, fallback routing, and token cost telemetry.
+                </p>
+              </div>
+              <div className="p-7 rounded-2xl bg-white/[0.02] border border-white/10 md:col-span-2 lg:col-span-3 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div>
+                  <h2 className="text-xl font-bold text-white uppercase tracking-tight mb-2">AI Workflow Automation Development vs. Custom Agent Product Build</h2>
+                  <p className="text-sm text-slate-300 font-light leading-relaxed max-w-3xl">
+                    Need to build a new AI agent capability inside your SaaS platform or customer experience? This page covers custom agent architecture. Need to automate existing CRM, retail, logistics, or finance workflows across current tools? Visit <Link to="/solutions/ai-automation" className="text-[#ccff00] hover:underline font-medium">AI Workflow Automation</Link>.
+                  </p>
+                </div>
+                <Link to="/contact" className="shrink-0 px-6 py-3 rounded-xl bg-[#ccff00] text-black text-xs font-bold uppercase tracking-wider hover:bg-white transition-colors">
+                  Book Architecture Review
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 1: Healthcare AI Agent Development (Dedicated Industry Vertical Showcase) */}
         <section 
           id="what-are-healthcare-ai-agents" 
           aria-labelledby="heading-what-are-healthcare-ai-agents"
@@ -715,13 +811,13 @@ export default function AIAgentDevelopmentPage() {
           <div className="max-w-6xl mx-auto">
             <div className="max-w-3xl mb-16">
               <span className="text-xs font-mono text-[#ccff00] uppercase tracking-[0.3em] font-bold block mb-4">
-                [ CORE DEFINITION & POSITIONING ]
+                [ REGULATED VERTICAL DEEP-DIVE // HEALTHCARE ]
               </span>
               <h2 
                 id="heading-what-are-healthcare-ai-agents"
                 className="text-3xl md:text-5xl font-serif font-light text-white tracking-tight leading-tight mb-8"
               >
-                What Are Healthcare AI Agents?
+                Healthcare AI Agent Development
               </h2>
 
               {/* Direct AEO / GEO Answer Block (40-70 words) */}
@@ -1853,7 +1949,7 @@ export default function AIAgentDevelopmentPage() {
                 { title: "Web Development Services", desc: "High-performance React/Next.js web applications", path: "/web-development", icon: <Globe className="w-5 h-5" /> },
                 { title: "Mobile App Development", desc: "Cross-platform iOS & Android mobile software", path: "/mobile-app-development", icon: <Smartphone className="w-5 h-5" /> },
                 { title: "FinTech Solutions", desc: "Secure financial workflows & payment engines", path: "/solutions/fintech", icon: <TrendingUp className="w-5 h-5" /> },
-                { title: "Graphic Design & Branding", desc: "Brand identity, UI/UX design systems & pitch decks", path: "/graphics-design", icon: <Palette className="w-5 h-5" /> }
+                { title: "Graphic Design & Branding", desc: "Brand identity, UI/UX design systems & pitch decks", path: "/graphic-design", icon: <Palette className="w-5 h-5" /> }
               ].map((link, i) => (
                 <Link 
                   key={i} 

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import { 
   PenTool, 
   Search, 
@@ -276,231 +276,237 @@ const ContentWritingPage = () => {
     }
   ];
 
+  const canonicalUrl = "https://www.abuqitmirlabs.tech/content-writing";
+  const pageTitle = "Technical Content Writing for B2B SaaS | AbuQitmirLabs";
+  const pageDescription = "Technical content writing services for software and SaaS companies. SEO blogs, engineering guides, and thought leadership starting from $40 per article.";
+  const ogImageUrl = "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp";
+
+  const contentSchemaGraph = [
+    {
+      "@type": "Organization",
+      "@id": "https://www.abuqitmirlabs.tech/#organization",
+      "name": "AbuQitmirLabs",
+      "url": "https://www.abuqitmirlabs.tech",
+      "logo": "https://www.abuqitmirlabs.tech/logo.png",
+      "image": ogImageUrl,
+      "telephone": "+923233260859",
+      "email": "hello@abuqitmirlabs.tech",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+        "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
+        "postalCode": "75160",
+        "addressCountry": "PK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.842691448838718,
+        "longitude": 67.1862014846566
+      },
+      "sameAs": [
+        "https://wa.me/923233260859",
+        "https://github.com/abuqitmir",
+        "https://www.facebook.com/profile.php?id=61583768706452",
+        "https://www.instagram.com/abuqitmirshirazalmadani/",
+        "https://www.youtube.com/@AbuQitmir",
+        "https://www.linkedin.com/in/abu-qitmir-697423390/",
+        "https://x.com/AbuQitmir"
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+      "name": "AbuQitmirLabs",
+      "url": "https://www.abuqitmirlabs.tech",
+      "image": ogImageUrl,
+      "telephone": "+923233260859",
+      "email": "hello@abuqitmirlabs.tech",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+        "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
+        "postalCode": "75160",
+        "addressCountry": "PK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.842691448838718,
+        "longitude": 67.1862014846566
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.abuqitmirlabs.tech/#website",
+      "url": "https://www.abuqitmirlabs.tech",
+      "name": "AbuQitmirLabs",
+      "publisher": {
+        "@id": "https://www.abuqitmirlabs.tech/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.abuqitmirlabs.tech/content-writing#webpage",
+      "url": canonicalUrl,
+      "name": pageTitle,
+      "description": pageDescription,
+      "isPartOf": {
+        "@id": "https://www.abuqitmirlabs.tech/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://www.abuqitmirlabs.tech/content-writing#breadcrumb"
+      },
+      "about": {
+        "@id": "https://www.abuqitmirlabs.tech/content-writing#service"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.abuqitmirlabs.tech/content-writing#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.abuqitmirlabs.tech/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Content Writing",
+          "item": canonicalUrl
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.abuqitmirlabs.tech/content-writing#service",
+      "name": "Technical Content Writing Services for Software and SaaS",
+      "serviceType": "Technical Content Writing & SaaS Copywriting",
+      "description": pageDescription,
+      "url": canonicalUrl,
+      "provider": {
+        "@id": "https://www.abuqitmirlabs.tech/#organization"
+      },
+      "areaServed": [
+        { "@type": "Country", "name": "Pakistan" },
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Saudi Arabia" }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "USD",
+          "minPrice": "40",
+          "description": "Technical articles and SEO blog writing start from $40 USD (PKR regional pricing available)"
+        },
+        "availability": "https://schema.org/InStock"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Technical & B2B SaaS Content Writing Solutions",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Website Content Writing Services"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Technical Blog Writing Service for Startups"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "SaaS Content Writing Agency Packages"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Engineering Content Writing & B2B Whitepapers"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.abuqitmirlabs.tech/content-writing#faq",
+      "mainEntity": faqData.map(item => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.a
+        }
+      }))
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.abuqitmirlabs.tech/content-writing#howto",
+      "name": "Our Strategic Content Writing Process",
+      "description": "A 5-phase editorial workflow combining search intent discovery, keyword mapping, strategic drafting, rigorous quality checks, and performance tracking.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Discovery & Search Intent Research",
+          "text": "Auditing brand tone, buyer personas, competitor rankings, and mapping exact search intent."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Keyword & Topic Cluster Mapping",
+          "text": "Selecting primary and secondary semantic keywords to build topical depth and internal linking pathways."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Strategic Content Creation",
+          "text": "Drafting authoritative, high-readability content structured for both human engagement and algorithmic indexing."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Review, Fact-Checking & SEO Optimization",
+          "text": "Rigorous editorial review, fact-checking, plagiarism screening via Copyscape, and on-page schema verification."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Delivery, CMS Publishing & Tracking",
+          "text": "Final formatting, CMS staging, metadata integration, and search performance monitoring."
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="bg-[#030303] text-neutral-200 font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-[#ccff00] selection:text-black">
-      <Helmet>
-        <title>Content Writing Services | AbuQitmirLabs</title>
-        <meta name="description" content="Professional content writing services for websites, blogs, landing pages and businesses. SEO-focused, research-driven content built to attract traffic and convert readers." />
-        <link rel="canonical" href="https://www.abuqitmirlabs.tech/content-writing" />
-        <meta name="robots" content="index, follow" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="Content Writing Services | AbuQitmirLabs" />
-        <meta property="og:description" content="Professional content writing services for websites, blogs, landing pages and businesses. SEO-focused, research-driven content built to attract traffic and convert readers." />
-        <meta property="og:url" content="https://www.abuqitmirlabs.tech/content-writing" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Content Writing Services | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Professional content writing services for websites, blogs, landing pages and businesses. SEO-focused, research-driven content built to attract traffic and convert readers." />
-        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Unified Schema Markup @graph */}
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": "Organization",
-                  "@id": "https://www.abuqitmirlabs.tech/#organization",
-                  "name": "AbuQitmirLabs",
-                  "url": "https://www.abuqitmirlabs.tech",
-                  "logo": "https://www.abuqitmirlabs.tech/logo.png",
-                  "image": "https://www.abuqitmirlabs.tech/logo.png",
-                  "telephone": "+923233260859",
-                  "email": "abuqitmirshirazalmadani@gmail.com",
-                  "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
-                    "addressLocality": "Karachi",
-                    "addressRegion": "Sindh",
-                    "postalCode": "75160",
-                    "addressCountry": "PK"
-                  },
-                  "geo": {
-                    "@type": "GeoCoordinates",
-                    "latitude": 24.842681712798612,
-                    "longitude": 67.1862014846566
-                  },
-                  "sameAs": [
-                    "https://wa.me/923233260859",
-                    "https://github.com/abuqitmir",
-                    "https://www.facebook.com/profile.php?id=61583768706452",
-                    "https://www.instagram.com/abuqitmirshirazalmadani/",
-                    "https://www.youtube.com/@AbuQitmir",
-                    "https://www.linkedin.com/in/abu-qitmir-697423390/",
-                    "https://x.com/AbuQitmir"
-                  ]
-                },
-                {
-                  "@type": "WebSite",
-                  "@id": "https://www.abuqitmirlabs.tech/#website",
-                  "url": "https://www.abuqitmirlabs.tech",
-                  "name": "AbuQitmirLabs",
-                  "publisher": {
-                    "@id": "https://www.abuqitmirlabs.tech/#organization"
-                  }
-                },
-                {
-                  "@type": "WebPage",
-                  "@id": "https://www.abuqitmirlabs.tech/content-writing#webpage",
-                  "url": "https://www.abuqitmirlabs.tech/content-writing",
-                  "name": "Content Writing Services | SEO & Website Content | AbuQitmirLabs",
-                  "description": "Professional content writing services for websites, blogs, landing pages and businesses. SEO-focused, research-driven content built to attract traffic and convert readers.",
-                  "isPartOf": {
-                    "@id": "https://www.abuqitmirlabs.tech/#website"
-                  },
-                  "breadcrumb": {
-                    "@id": "https://www.abuqitmirlabs.tech/content-writing#breadcrumb"
-                  },
-                  "about": {
-                    "@id": "https://www.abuqitmirlabs.tech/content-writing#service"
-                  }
-                },
-                {
-                  "@type": "BreadcrumbList",
-                  "@id": "https://www.abuqitmirlabs.tech/content-writing#breadcrumb",
-                  "itemListElement": [
-                    {
-                      "@type": "ListItem",
-                      "position": 1,
-                      "name": "Home",
-                      "item": "https://www.abuqitmirlabs.tech"
-                    },
-                    {
-                      "@type": "ListItem",
-                      "position": 2,
-                      "name": "Content Writing",
-                      "item": "https://www.abuqitmirlabs.tech/content-writing"
-                    }
-                  ]
-                },
-                {
-                  "@type": "Service",
-                  "@id": "https://www.abuqitmirlabs.tech/content-writing#service",
-                  "name": "Content Writing Services",
-                  "serviceType": "Content Writing & SEO Copywriting",
-                  "description": "Professional research-backed content writing services — SEO blogs, website copywriting, technical articles, SaaS documentation, and B2B whitepapers engineered for search authority and customer conversion.",
-                  "provider": {
-                    "@id": "https://www.abuqitmirlabs.tech/#organization"
-                  },
-                  "areaServed": [
-                    { "@type": "Country", "name": "United States" },
-                    { "@type": "Country", "name": "United Kingdom" },
-                    { "@type": "Country", "name": "Canada" },
-                    { "@type": "Country", "name": "Australia" },
-                    { "@type": "Country", "name": "Poland" },
-                    { "@type": "Country", "name": "Pakistan" }
-                  ],
-                  "hasOfferCatalog": {
-                    "@type": "OfferCatalog",
-                    "name": "Content Writing Solutions & Packages",
-                    "itemListElement": [
-                      {
-                        "@type": "Offer",
-                        "itemOffered": {
-                          "@type": "Service",
-                          "name": "Website Content Writing Services",
-                          "description": "Conversion-focused homepage, service page, landing page, and about page copywriting."
-                        }
-                      },
-                      {
-                        "@type": "Offer",
-                        "itemOffered": {
-                          "@type": "Service",
-                          "name": "SEO Content Writing Services",
-                          "description": "Topical cluster articles, pillar guides, and search intent mapped long-form content."
-                        }
-                      },
-                      {
-                        "@type": "Offer",
-                        "itemOffered": {
-                          "@type": "Service",
-                          "name": "Blog Content Writing Services",
-                          "description": "Consistent, topically connected monthly blog writing packages for domain authority."
-                        }
-                      },
-                      {
-                        "@type": "Offer",
-                        "itemOffered": {
-                          "@type": "Service",
-                          "name": "SaaS & Technical Content Writing",
-                          "description": "Product-led software articles, technical comparison guides, and developer documentation."
-                        }
-                      },
-                      {
-                        "@type": "Offer",
-                        "itemOffered": {
-                          "@type": "Service",
-                          "name": "B2B Content Writing & Whitepapers",
-                          "description": "Authoritative B2B whitepapers, industry reports, and enterprise case studies."
-                        }
-                      },
-                      {
-                        "@type": "Offer",
-                        "itemOffered": {
-                          "@type": "Service",
-                          "name": "Sector-Specific Content Writing",
-                          "description": "Specialized copywriting for non-profits, real estate, healthcare, law firms, and educational institutions."
-                        }
-                      }
-                    ]
-                  }
-                },
-                {
-                  "@type": "FAQPage",
-                  "@id": "https://www.abuqitmirlabs.tech/content-writing#faq",
-                  "mainEntity": faqData.map(item => ({
-                    "@type": "Question",
-                    "name": item.q,
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": item.a
-                    }
-                  }))
-                },
-                {
-                  "@type": "HowTo",
-                  "@id": "https://www.abuqitmirlabs.tech/content-writing#howto",
-                  "name": "Our Strategic Content Writing Process",
-                  "description": "A 5-phase editorial workflow combining search intent discovery, keyword mapping, strategic drafting, rigorous quality checks, and performance tracking.",
-                  "step": [
-                    {
-                      "@type": "HowToStep",
-                      "name": "Discovery & Search Intent Research",
-                      "text": "Auditing brand tone, buyer personas, competitor rankings, and mapping exact search intent."
-                    },
-                    {
-                      "@type": "HowToStep",
-                      "name": "Keyword & Topic Cluster Mapping",
-                      "text": "Selecting primary and secondary semantic keywords to build topical depth and internal linking pathways."
-                    },
-                    {
-                      "@type": "HowToStep",
-                      "name": "Strategic Content Creation",
-                      "text": "Drafting authoritative, high-readability content structured for both human engagement and algorithmic indexing."
-                    },
-                    {
-                      "@type": "HowToStep",
-                      "name": "Review, Fact-Checking & SEO Optimization",
-                      "text": "Rigorous editorial review, fact-checking, plagiarism screening via Copyscape, and on-page schema verification."
-                    },
-                    {
-                      "@type": "HowToStep",
-                      "name": "Delivery, CMS Publishing & Tracking",
-                      "text": "Final formatting, CMS staging, metadata integration, and search performance monitoring."
-                    }
-                  ]
-                }
-              ]
-            })
-          }}
-        ></script>
-      </Helmet>
+      <SEO
+        title={pageTitle}
+        description={pageDescription}
+        canonical={canonicalUrl}
+        keywords="technical content writing services for B2B SaaS, technical blog writing service for startups, SaaS content writing agency, B2B content marketing writing Pakistan, engineering content writing service, thought leadership content for tech firms"
+        ogTitle={pageTitle}
+        ogDescription={pageDescription}
+        ogImage={ogImageUrl}
+        ogImageAlt="AbuQitmirLabs Technical Content Writing Services for B2B SaaS"
+        ogType="website"
+        twitterTitle={pageTitle}
+        twitterDescription={pageDescription}
+        twitterImage={ogImageUrl}
+        schema={contentSchemaGraph}
+      />
 
       {/* Luxury Film Grain Texture Overlay */}
       <div className="noise-overlay" />
@@ -508,7 +514,7 @@ const ContentWritingPage = () => {
       <Header />
       
       <div className="pt-24 bg-[#030303]">
-        <Breadcrumbs />
+        <Breadcrumbs disableSchema={true} />
       </div>
 
       {/* Floating Aesthetic Background Element */}
@@ -521,52 +527,44 @@ const ContentWritingPage = () => {
         {/* Soft atmospheric radial backing */}
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[#ccff00]/5 rounded-full blur-[140px] pointer-events-none" />
         
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12 w-full relative z-10 text-center animate-enter">
-            <motion.div 
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="mb-8 inline-flex items-center gap-2 px-5 py-2 rounded-full bg-neutral-900/60 border border-white/5 backdrop-blur-md"
-            >
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12 w-full relative z-10 text-center">
+            <div className="mb-8 inline-flex items-center gap-2 px-5 py-2 rounded-full bg-neutral-900/60 border border-white/5 backdrop-blur-md">
                 <Sparkles size={12} className="text-[#ccff00]" />
-                <span className="text-[9px] font-mono font-bold tracking-[0.25em] uppercase text-neutral-400">ABUQITMIR LABS // EDITORIAL SUITE</span>
-            </motion.div>
+                <span className="text-[9px] font-mono font-bold tracking-[0.25em] uppercase text-neutral-400">TECHNICAL CONTENT &amp; SAAS EDITORIAL SUITE • ARTICLES FROM $40</span>
+            </div>
 
-            <motion.h1 
-                initial={{ opacity: 0, y: 25 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1, duration: 0.9 }}
-                className="text-4xl md:text-6xl lg:text-8xl font-serif leading-[1.05] tracking-tight text-white mb-10 animate-enter-delay-1"
-            >
-                Content Writing Services: <br />
-                <span className="text-neutral-400 italic font-light">Words That Drive Authority, Search Visibility &amp; Conversions</span>
-            </motion.h1>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.08] tracking-tight text-white mb-8">
+                Technical Content Writing Services for Software and SaaS Companies
+            </h1>
 
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.8 }}
-                className="max-w-4xl mx-auto text-neutral-300 font-light leading-relaxed mb-12"
-            >
-              <p className="text-base md:text-lg text-neutral-400 max-w-3xl mx-auto font-sans">
-                Content that ranks and content that converts aren't always the same thing — we write for both. Our writers research your industry deeply enough to write specifics, not filler, whether it's technical documentation or marketing copy.
+            <div className="max-w-4xl mx-auto text-neutral-300 font-light leading-relaxed mb-10">
+              <p className="text-base md:text-lg text-neutral-300 max-w-3xl mx-auto font-sans">
+                AbuQitmirLabs delivers <strong>technical content writing services for B2B SaaS</strong>, developer tools, and enterprise software firms. Operating as a senior-led <strong>SaaS content writing agency</strong> in Karachi, we craft human-researched engineering blogs, product documentation, and thought leadership starting from <strong>$40 USD per article</strong> (PKR local tiers available). Unlike <Link to="/seo-mastery" className="text-[#ccff00] hover:underline">Technical SEO</Link> (architecture &amp; schema) and <Link to="/digital-marketing" className="text-[#ccff00] hover:underline">B2B Digital Marketing</Link> (paid acquisition &amp; demand gen), this suite covers editorial execution from brief to CMS publish.
               </p>
-            </motion.div>
+            </div>
+
+            {/* Direct Answer GEO / AEO Block */}
+            <div className="max-w-4xl mx-auto mb-10 p-6 md:p-8 rounded-2xl bg-white/[0.03] border border-[#ccff00]/20 text-left">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.25em] text-[#ccff00] block mb-2">
+                Direct Answer // B2B &amp; Technical Content Pricing
+              </span>
+              <h2 className="text-lg md:text-xl font-bold text-white mb-2">
+                What Do Technical Content Writing Services for Software Companies Include?
+              </h2>
+              <p className="text-sm md:text-base text-neutral-300 font-light leading-relaxed">
+                Technical content writing services for software and SaaS companies cover search-intent keyword briefs, engineering-accurate blog drafting, API documentation, and E-E-A-T fact-checking. At AbuQitmirLabs, standalone articles start from $40 USD (PKR regional pricing available), and strategic 1,000+ word SaaS comparison guides start at $100–$150 with Copyscape verification.
+              </p>
+            </div>
 
             {/* Core Capabilities Specifications */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25 }}
-              className="mx-auto mb-16 max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg"
-            >
+            <div className="mx-auto mb-12 max-w-4xl border-y border-white/5 py-8 px-6 bg-white/[0.01] backdrop-blur-sm rounded-lg">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
                 {[
-                  "SEO-Optimized Blog & Article Writing",
-                  "Website & Landing Page Copywriting",
-                  "Technical Documentation & Case Studies",
-                  "Email & Marketing Sequence Writing",
-                  "Social Media Content Calendars"
+                  "Technical Blog Writing Service for Startups",
+                  "SaaS Content Writing Agency & Product Guides",
+                  "Engineering Content Writing Service & Docs",
+                  "B2B Content Marketing Writing Pakistan",
+                  "Thought Leadership Content for Tech Firms"
                 ].map((bullet, idx) => (
                   <div key={idx} className="flex items-start gap-3 group">
                     <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0 group-hover:bg-[#ccff00] transition-colors duration-300" />
@@ -574,14 +572,9 @@ const ContentWritingPage = () => {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div 
-               initial={{ opacity: 0, y: 15 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ delay: 0.3, duration: 0.8 }}
-               className="flex flex-col sm:flex-row items-center justify-center gap-6"
-            >
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                 <a 
                   href="https://wa.me/923233260859"
                   target="_blank"
@@ -589,7 +582,7 @@ const ContentWritingPage = () => {
                   className="px-10 py-5 bg-[#ccff00] text-black font-mono font-bold uppercase tracking-widest text-[11px] rounded-full hover:bg-white hover:scale-105 transition-all duration-300 flex items-center gap-3 shadow-[0_15px_30px_rgba(204,255,0,0.15)] cursor-pointer"
                   style={{ color: '#000000' }}
                 >
-                    <span className="text-black font-black" style={{ color: '#000000' }}>Order High-Quality Content</span>
+                    <span className="text-black font-black" style={{ color: '#000000' }}>Order Technical Content (From $40)</span>
                     <ArrowRight size={14} className="text-black" style={{ color: '#000000' }} />
                 </a>
                 <button 
@@ -599,9 +592,9 @@ const ContentWritingPage = () => {
                   }}
                   className="px-10 py-5 bg-transparent text-white border border-white/10 font-mono font-bold uppercase tracking-widest text-[11px] rounded-full hover:bg-white/5 hover:border-white/35 transition-all duration-300 cursor-pointer"
                 >
-                    Read Our Content Packages
+                    View Content Packages
                 </button>
-            </motion.div>
+            </div>
         </div>
       </section>
 
@@ -718,13 +711,31 @@ const ContentWritingPage = () => {
       {/* SECTION 3: OUR CONTENT SERVICES */}
       <section className="py-24 bg-[#030303] text-white relative z-10">
         <div className="max-w-7xl mx-auto px-6 mb-16">
-          <span className="text-xs font-bold text-[#ccff00] uppercase tracking-[0.4em] block mb-4">// SPECIALIZED CONTENT WRITING SOLUTIONS</span>
+          <span className="text-xs font-bold text-[#ccff00] uppercase tracking-[0.4em] block mb-4">// SAAS &amp; TECHNICAL WRITING SOLUTIONS</span>
           <h2 className="text-4xl md:text-6xl font-serif font-light text-white tracking-tight uppercase leading-[0.9] mb-6">
-            OUR CONTENT SERVICES
+            SaaS Content Writing Agency &amp; Technical Blog Writing Service for Startups
           </h2>
           <p className="text-neutral-400 max-w-3xl text-base md:text-lg font-light leading-relaxed">
-            We offer a comprehensive range of professional content writing services that cover every aspect of your organic search and conversion funnel. Each formula delivers publish-ready, search-optimized editorial assets.
+            Our engineering content writing service and B2B content marketing writing in Pakistan help software teams publish deep technical documentation, thought leadership content for tech firms, and search-intent blog clusters. Read our live published editorial samples below:
           </p>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
+            <Link to="/blog/content-writing-services-for-seo-ai-search-2026" className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-[#ccff00]/40 transition-colors">
+              <span className="text-[10px] font-mono text-[#ccff00] uppercase block mb-1">Published Sample 01</span>
+              <span className="text-sm font-semibold text-white">Content Writing for SEO &amp; AI Search →</span>
+            </Link>
+            <Link to="/blog/geo-content-writing" className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-[#ccff00]/40 transition-colors">
+              <span className="text-[10px] font-mono text-[#ccff00] uppercase block mb-1">Published Sample 02</span>
+              <span className="text-sm font-semibold text-white">GEO Content Writing &amp; Citation Guide →</span>
+            </Link>
+            <Link to="/blog/seo-content-vs-thought-leadership" className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-[#ccff00]/40 transition-colors">
+              <span className="text-[10px] font-mono text-[#ccff00] uppercase block mb-1">Published Sample 03</span>
+              <span className="text-sm font-semibold text-white">SEO Content vs Thought Leadership →</span>
+            </Link>
+            <Link to="/blog/ai-content-vs-human-content" className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-[#ccff00]/40 transition-colors">
+              <span className="text-[10px] font-mono text-[#ccff00] uppercase block mb-1">Published Sample 04</span>
+              <span className="text-sm font-semibold text-white">AI Content vs Human Craftsmanship →</span>
+            </Link>
+          </div>
           <div className="w-full h-[1px] bg-white/5 mt-10" />
         </div>
 
@@ -801,7 +812,7 @@ const ContentWritingPage = () => {
               <span className="text-transparent" style={{ WebkitTextStroke: '1px white' }}>Industry-Focused Solutions for Every Sector</span>
             </h2>
             <p className="text-zinc-400 text-base md:text-lg max-w-4xl leading-relaxed font-light mb-6">
-              At AbuQitmirLabs, we create content that ranks, engages, and converts. From our <Link to="/" className="text-[#ccff00] hover:underline font-medium">home page</Link> to deep technical documentation, we build customized strategies that seamlessly integrate with our holistic <Link to="/seo-mastery" className="text-[#ccff00] hover:underline font-medium">SEO Mastery</Link>, localized <Link to="/local-seo-for-small-business" className="text-[#ccff00] hover:underline font-medium">Local SEO for Small Businesses</Link>, forensic <Link to="/local-seo-audit" className="text-[#ccff00] hover:underline font-medium">Local SEO Audits</Link>, and bespoke <Link to="/graphics-design" className="text-[#ccff00] hover:underline font-medium">Graphics &amp; UI/UX Design</Link>. Explore client results in our <Link to="/case-studies" className="text-white hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-white hover:underline font-medium">Blog</Link>, read more <Link to="/about" className="text-white hover:underline font-medium">about us</Link>, or <Link to="/contact" className="text-white hover:underline font-medium">contact us</Link> today.
+              At AbuQitmirLabs, we create content that ranks, engages, and converts. From our <Link to="/" className="text-[#ccff00] hover:underline font-medium">home page</Link> to deep engineering content writing services, we build customized strategies that seamlessly integrate with our holistic <Link to="/seo-mastery" className="text-[#ccff00] hover:underline font-medium">SEO Mastery</Link>, localized <Link to="/local-seo-for-small-business" className="text-[#ccff00] hover:underline font-medium">Local SEO for Small Businesses</Link>, forensic <Link to="/local-seo-audit" className="text-[#ccff00] hover:underline font-medium">Local SEO Audits</Link>, and bespoke <Link to="/graphic-design" className="text-[#ccff00] hover:underline font-medium">Graphic &amp; UI/UX Design</Link>. Explore client results in our <Link to="/case-studies" className="text-white hover:underline font-medium">Case Studies</Link> and <Link to="/blog" className="text-white hover:underline font-medium">Blog</Link>, read more <Link to="/about" className="text-white hover:underline font-medium">about us</Link>, or <Link to="/contact" className="text-white hover:underline font-medium">contact us</Link> today.
             </p>
 
             {/* Authoritative Content External Resources */}
@@ -1356,9 +1367,9 @@ const ContentWritingPage = () => {
                 {/* Glassmorphic Consultation Card */}
                 <div className="bg-neutral-950 border border-white/5 p-8 md:p-12 rounded-[2.5rem] max-w-2xl mx-auto mb-16 text-left relative overflow-hidden shadow-2xl">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-[#ccff00]/5 blur-3xl rounded-full" />
-                  <h3 className="text-lg md:text-xl font-bold uppercase text-white tracking-wide mb-3">Request a Free Content Consultation &amp; Audit</h3>
+                  <h3 className="text-lg md:text-xl font-bold uppercase text-white tracking-wide mb-3">Request a Technical Content Audit &amp; Consultation</h3>
                   <p className="text-xs md:text-sm text-neutral-400 font-light mb-8 leading-relaxed">
-                    Stop settling for generic copy that fails to engage, rank, or convert. Our team will analyze your current pages, find duplicate index items, and provide a comprehensive roadmap completely free.
+                    Stop settling for generic copy that fails to engage, rank, or convert. Our B2B content marketing writing team in Pakistan will analyze your existing SaaS pages, find thin or duplicate index items, and map a clear editorial roadmap.
                   </p>
                   <div className="flex flex-col sm:flex-row border-t border-white/5 pt-6 justify-between items-start sm:items-center text-[9px] font-mono text-neutral-500 tracking-widest uppercase gap-4 font-bold">
                     <span>Avg. Discovery Phase: 1–2 Weeks</span>
@@ -1368,7 +1379,7 @@ const ContentWritingPage = () => {
                 </div>
 
                 <p className="text-sm text-neutral-500 max-w-xl mx-auto mb-10 font-light">
-                  Let's discuss your content project. Our initial consultation and content audit are completely free.
+                  Let's discuss your SaaS or B2B technical content roadmap starting from $40 per article.
                 </p>
                 
                 <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
@@ -1379,7 +1390,7 @@ const ContentWritingPage = () => {
                       className="inline-flex items-center justify-center px-10 py-5 bg-[#ccff00] text-black font-mono font-bold text-xs uppercase tracking-widest rounded-full hover:bg-white hover:scale-105 active:scale-95 transition-all shadow-[0_15px_30px_rgba(204,255,0,0.15)] cursor-pointer"
                       style={{ color: '#000000' }}
                     >
-                        <span className="text-black font-black" style={{ color: '#000000' }}>Request a Free Content Consultation</span>
+                        <span className="text-black font-black" style={{ color: '#000000' }}>Request Content Consultation</span>
                     </a>
                     <div className="text-neutral-500 font-mono text-[9px] uppercase tracking-[0.25em] max-w-[280px] text-left border-l border-white/10 pl-8 leading-relaxed flex items-center h-16 font-bold">
                         AVG turnaround: 5-7 days // current capacity: 92%
@@ -1388,7 +1399,7 @@ const ContentWritingPage = () => {
             </div>
        </section>
 
-       {/* Free Content & SEO Verification Tools Banner */}
+       {/* Content & SEO Verification Tools Banner */}
        <ServiceToolCtaBanner
          toolKeys={['seo-checklist', 'website-authority-analyzer']}
          headline="Verify Technical SEO & Content Authority Factors"
@@ -1409,7 +1420,7 @@ const ContentWritingPage = () => {
               { title: "Mobile Apps", path: "/mobile-app-development", icon: <Smartphone className="w-5 h-5" /> },
               { title: "AI Agents", path: "/ai-agent-development", icon: <Cpu className="w-5 h-5" /> },
               { title: "SEO Mastery", path: "/seo-mastery", icon: <TrendingUp className="w-5 h-5" /> },
-              { title: "Creative Graphics", path: "/graphics-design", icon: <Palette className="w-5 h-5" /> }
+              { title: "Graphic Design", path: "/graphic-design", icon: <Palette className="w-5 h-5" /> }
             ].map((link, i) => (
               <Link 
                 key={i} 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
+import SEO from '../components/SEO';
 import { 
     CheckCircle2, 
     XCircle, 
@@ -54,12 +54,12 @@ export default function WhiteLabelLocalSEOPage() {
             a: "White label local SEO is typically priced at a wholesale rate — 35 to 50 percent below what the reselling agency charges its own clients — leaving clear room for agency margin. AbuQitmirLabs' white label plans start at $350 per location per month at agency wholesale pricing."
         },
         {
-            q: "Will my client know AbuQitmirLabs is doing the work?",
-            a: "No. All deliverables — audit reports, citation summaries, ranking snapshots, and strategy documents — are produced without AbuQitmirLabs branding. You receive white-labeled files ready to send directly to your client under your own agency name and logo."
+            q: "Do you use our brand name on reports?",
+            a: "Yes. Every client-facing deliverable—including PDF local SEO audits, citation build spreadsheets, GBP optimization checklists, and monthly map-pack ranking reports—carries your agency's name, logo, and color palette with zero AbuQitmirLabs mentions, watermarks, or document metadata."
         },
         {
             q: "Can I resell local SEO for clients in multiple countries?",
-            a: "Yes. AbuQitmirLabs manages active local SEO campaigns in the US, UK, Pakistan, Canada, Poland, and Australia. Each market has its own citation ecosystem and ranking dynamics, which our team handles natively — you don't need to understand the differences between UK and AU directory landscapes to deliver the service."
+            a: "Yes. AbuQitmirLabs manages active local SEO campaigns in Pakistan, the US, UK, UAE, Saudi Arabia, Canada, and Australia. Each market has its own citation ecosystem and ranking dynamics, which our team handles natively under your agency's brand."
         }
     ];
 
@@ -96,138 +96,191 @@ export default function WhiteLabelLocalSEOPage() {
         }
     ];
 
+    const pageTitle = "White Label Local SEO Services for Agencies | AbuQitmirLabs";
+    const pageDescription = "White label local SEO services for agencies. Unbranded GBP optimization, NAP citation building, and branded PDF reports at wholesale rates from $350/month.";
+    const canonicalUrl = "https://www.abuqitmirlabs.tech/white-label-local-seo";
+    const ogImageUrl = "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp";
+
+    const jsonLdData = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://www.abuqitmirlabs.tech/#organization",
+                "name": "AbuQitmirLabs",
+                "alternateName": "AbuQitmirLabs .TECH",
+                "url": "https://www.abuqitmirlabs.tech",
+                "logo": "https://www.abuqitmirlabs.tech/logo.png",
+                "image": ogImageUrl,
+                "telephone": "+923233260859",
+                "email": "hello@abuqitmirlabs.tech",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+                    "addressLocality": "Karachi",
+                    "addressRegion": "Sindh",
+                    "postalCode": "75160",
+                    "addressCountry": "PK"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 24.842691448838718,
+                    "longitude": 67.1862014846566
+                },
+                "sameAs": [
+                    "https://www.facebook.com/profile.php?id=61583768706452",
+                    "https://www.instagram.com/abuqitmirshirazalmadani/",
+                    "https://www.youtube.com/@AbuQitmir",
+                    "https://www.linkedin.com/in/abu-qitmir-697423390/",
+                    "https://x.com/AbuQitmir",
+                    "https://github.com/abuqitmir"
+                ]
+            },
+            {
+                "@type": "LocalBusiness",
+                "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+                "name": "AbuQitmirLabs",
+                "url": "https://www.abuqitmirlabs.tech",
+                "image": ogImageUrl,
+                "telephone": "+923233260859",
+                "email": "hello@abuqitmirlabs.tech",
+                "priceRange": "$$",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+                    "addressLocality": "Karachi",
+                    "addressRegion": "Sindh",
+                    "postalCode": "75160",
+                    "addressCountry": "PK"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 24.842691448838718,
+                    "longitude": 67.1862014846566
+                }
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://www.abuqitmirlabs.tech/#website",
+                "url": "https://www.abuqitmirlabs.tech",
+                "name": "AbuQitmirLabs",
+                "inLanguage": "en-US",
+                "publisher": {
+                    "@id": "https://www.abuqitmirlabs.tech/#organization"
+                }
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://www.abuqitmirlabs.tech/white-label-local-seo#webpage",
+                "url": canonicalUrl,
+                "name": pageTitle,
+                "description": pageDescription,
+                "inLanguage": "en-US",
+                "isPartOf": {
+                    "@id": "https://www.abuqitmirlabs.tech/#website"
+                },
+                "about": {
+                    "@id": "https://www.abuqitmirlabs.tech/white-label-local-seo#service"
+                },
+                "primaryImageOfPage": {
+                    "@type": "ImageObject",
+                    "url": ogImageUrl,
+                    "width": 1200,
+                    "height": 630
+                },
+                "breadcrumb": {
+                    "@id": "https://www.abuqitmirlabs.tech/white-label-local-seo#breadcrumb"
+                }
+            },
+            {
+                "@type": "Service",
+                "@id": "https://www.abuqitmirlabs.tech/white-label-local-seo#service",
+                "name": "White Label Local SEO Services for Agencies",
+                "description": pageDescription,
+                "url": canonicalUrl,
+                "provider": {
+                    "@id": "https://www.abuqitmirlabs.tech/#organization"
+                },
+                "areaServed": [
+                    { "@type": "Country", "name": "Pakistan" },
+                    { "@type": "Country", "name": "United States" },
+                    { "@type": "Country", "name": "United Kingdom" },
+                    { "@type": "Country", "name": "United Arab Emirates" },
+                    { "@type": "Country", "name": "Saudi Arabia" }
+                ],
+                "serviceType": "White Label Local SEO",
+                "offers": {
+                    "@type": "Offer",
+                    "name": "White Label Local SEO Agency Plan",
+                    "description": "Brandable local SEO delivery for agencies — audits, citation management, GBP optimisation, and PDF reports under your brand starting at $350 USD/month.",
+                    "priceSpecification": {
+                        "@type": "PriceSpecification",
+                        "minPrice": "350",
+                        "maxPrice": "900",
+                        "priceCurrency": "USD",
+                        "unitText": "MONTH"
+                    }
+                }
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://www.abuqitmirlabs.tech/white-label-local-seo#faq",
+                "isPartOf": {
+                    "@id": "https://www.abuqitmirlabs.tech/white-label-local-seo#webpage"
+                },
+                "mainEntity": faqs.map(faq => ({
+                    "@type": "Question",
+                    "name": faq.q,
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": faq.a
+                    }
+                }))
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://www.abuqitmirlabs.tech/white-label-local-seo#breadcrumb",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://www.abuqitmirlabs.tech/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Local SEO for Small Business",
+                        "item": "https://www.abuqitmirlabs.tech/local-seo-for-small-business"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "White Label Local SEO",
+                        "item": canonicalUrl
+                    }
+                ]
+            }
+        ]
+    };
+
     return (
         <div className="min-h-screen bg-[#080808] text-white selection:bg-[#ccff00] selection:text-black font-sans antialiased">
-            <Helmet>
-                {/* ═══ Primary Meta Tags ═══ */}
-                <title>White Label Local SEO for Agencies | AbuQitmirLabs</title>
-                <meta name="description" content="White label local SEO fulfillment for agencies — citations, GBP optimization, and branded PDF reports. Reseller plans with 35–50% margins. Expand your services without expanding your team." />
-                <link rel="canonical" href="https://www.abuqitmirlabs.tech/white-label-local-seo" />
-                <meta name="keywords" content="white label local SEO, local SEO reseller, agency white label, white label SEO services, white label citation building, local SEO for agencies, SEO fulfilment partner" />
-                
-                {/* ═══ Open Graph (Facebook / LinkedIn) ═══ */}
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://www.abuqitmirlabs.tech/white-label-local-seo" />
-                <meta property="og:title" content="White Label Local SEO for Agencies | AbuQitmirLabs" />
-                <meta property="og:description" content="White label local SEO fulfillment for agencies — citations, GBP optimization, and branded PDF reports. Reseller plans with 35–50% margins. Expand your services without expanding your team." />
-                <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-                <meta property="og:image:width" content="1200" />
-                <meta property="og:image:height" content="630" />
-                <meta property="og:site_name" content="AbuQitmirLabs" />
-
-                {/* ═══ Twitter Card ═══ */}
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:site" content="@AbuQitmir" />
-                <meta name="twitter:title" content="White Label Local SEO for Agencies | AbuQitmirLabs" />
-                <meta name="twitter:description" content="White label local SEO fulfillment for agencies — citations, GBP optimization, and branded PDF reports. Reseller plans with 35–50% margins. Expand your services without expanding your team." />
-                <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-                {/* ═══ Structured Data / JSON-LD ═══ */}
-                <script type="application/ld+json">
-                    {JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@graph": [
-                            {
-                                "@type": "Organization",
-                                "@id": "https://www.abuqitmirlabs.tech/#organization",
-                                "name": "AbuQitmirLabs .TECH",
-                                "url": "https://www.abuqitmirlabs.tech",
-                                "logo": "https://www.abuqitmirlabs.tech/logo.png"
-                            },
-                            {
-                                "@type": "WebPage",
-                                "@id": "https://www.abuqitmirlabs.tech/white-label-local-seo#webpage",
-                                "url": "https://www.abuqitmirlabs.tech/white-label-local-seo",
-                                "name": "White Label Local SEO for Agencies | Reseller Plans | AbuQitmirLabs",
-                                "description": "White label local SEO fulfillment for agencies — citations, GBP optimization, and branded PDF reports. Reseller plans with 35–50% margins. Expand your services without expanding your team.",
-                                "inLanguage": "en-US",
-                                "isPartOf": {
-                                    "@id": "https://www.abuqitmirlabs.tech/#website"
-                                },
-                                "about": {
-                                    "@id": "https://www.abuqitmirlabs.tech/white-label-local-seo#service"
-                                },
-                                "breadcrumb": {
-                                    "@id": "https://www.abuqitmirlabs.tech/white-label-local-seo#breadcrumb"
-                                }
-                            },
-                            {
-                                "@type": "Service",
-                                "@id": "https://www.abuqitmirlabs.tech/white-label-local-seo#service",
-                                "name": "White Label Local SEO",
-                                "description": "Fully brandable white label local SEO services for digital agencies — citation building, GBP optimisation, reporting, and campaign execution delivered under your agency brand.",
-                                "provider": {
-                                    "@id": "https://www.abuqitmirlabs.tech/#organization"
-                                },
-                                "areaServed": ["US", "GB", "PK", "CA", "PL", "AU"],
-                                "serviceType": "White Label Local SEO",
-                                "offers": {
-                                    "@type": "Offer",
-                                    "name": "White Label Local SEO Agency Plan",
-                                    "description": "Brandable local SEO delivery for agencies — audits, citation management, GBP optimisation, and PDF reports under your brand.",
-                                    "priceSpecification": {
-                                        "@type": "PriceSpecification",
-                                        "minPrice": "350",
-                                        "maxPrice": "900",
-                                        "priceCurrency": "USD",
-                                        "unitText": "MONTH"
-                                    }
-                                }
-                            },
-                            {
-                                "@type": "FAQPage",
-                                "mainEntity": faqs.map(faq => ({
-                                    "@type": "Question",
-                                    "name": faq.q,
-                                    "acceptedAnswer": {
-                                        "@type": "Answer",
-                                        "text": faq.a
-                                    }
-                                }))
-                            },
-                            {
-                                "@type": "BreadcrumbList",
-                                "@id": "https://www.abuqitmirlabs.tech/white-label-local-seo#breadcrumb",
-                                "itemListElement": [
-                                    {
-                                        "@type": "ListItem",
-                                        "position": 1,
-                                        "name": "Home",
-                                        "item": "https://www.abuqitmirlabs.tech/"
-                                    },
-                                    {
-                                        "@type": "ListItem",
-                                        "position": 2,
-                                        "name": "Local SEO Services",
-                                        "item": "https://www.abuqitmirlabs.tech/local-seo-services"
-                                    },
-                                    {
-                                        "@type": "ListItem",
-                                        "position": 3,
-                                        "name": "White Label Local SEO",
-                                        "item": "https://www.abuqitmirlabs.tech/white-label-local-seo"
-                                    }
-                                ]
-                            },
-                            {
-                                "@type": "WebSite",
-                                "@id": "https://www.abuqitmirlabs.tech/#website",
-                                "url": "https://www.abuqitmirlabs.tech",
-                                "name": "AbuQitmirLabs .TECH",
-                                "inLanguage": "en-US",
-                                "publisher": {
-                                    "@id": "https://www.abuqitmirlabs.tech/#organization"
-                                }
-                            }
-                        ]
-                    })}
-                </script>
-            </Helmet>
+            <SEO
+                title={pageTitle}
+                description={pageDescription}
+                canonical={canonicalUrl}
+                keywords="white label local SEO services for agencies, white label local SEO, local SEO reseller, agency white label SEO, white label citation building, white label GBP optimization"
+                ogImage={ogImageUrl}
+                ogImageAlt="White Label Local SEO Services for Agencies - AbuQitmirLabs"
+                twitterImage={ogImageUrl}
+                schema={jsonLdData}
+            />
 
             <Header />
 
             <main className="pt-28 md:pt-36 relative">
-                <Breadcrumbs customItems={[
+                <Breadcrumbs disableSchema={true} customItems={[
                     { name: 'HQ', to: '/' },
                     { name: 'LOCAL SEO FOR SMALL BUSINESS', to: '/local-seo-for-small-business' },
                     { name: 'WHITE LABEL LOCAL SEO' }
@@ -235,17 +288,27 @@ export default function WhiteLabelLocalSEOPage() {
 
                 {/* Hero Section */}
                 <section className="px-6 md:px-12 max-w-7xl mx-auto py-16 md:py-24 border-b border-white/10">
-                    <div className="max-w-4xl animate-enter">
+                    <div className="max-w-4xl">
                         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] text-xs font-mono font-bold tracking-widest uppercase mb-6">
                             <Building2 className="w-3.5 h-3.5" />
-                            AbuQitmirLabs .TECH — Agency Partner Programme
+                            AGENCY PARTNER PROGRAMME • WHOLESALE FROM $350/MO
                         </div>
-                        <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-medium tracking-tight text-white leading-[1.1] mb-8 animate-enter animate-enter-delay-1">
-                            White Label Local SEO Your Clients <br />
-                            <em className="text-[#ccff00] italic font-normal">Never See Coming</em>
+                        <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-medium tracking-tight text-white leading-[1.1] mb-8">
+                            White Label Local SEO Services <em className="text-[#ccff00] italic font-normal">for Agencies</em>
                         </h1>
-                        <p className="text-lg md:text-xl text-zinc-300 font-sans leading-relaxed mb-10 max-w-4xl animate-enter animate-enter-delay-2">
-                            Fully brandable local SEO delivery — citations, GBP optimization, and polished PDF reports — all under your agency name. Starting from our <Link to="/" className="text-[#ccff00] hover:underline font-medium">home page</Link>, we empower digital agencies to scale fulfillment without overhead.
+
+                        {/* GEO Direct Answer Callout */}
+                        <div className="my-8 p-6 md:p-8 rounded-2xl bg-zinc-900/90 border-2 border-[#ccff00]/40 text-left shadow-[0_0_30px_rgba(204,255,0,0.08)]">
+                            <h2 className="text-xs font-mono uppercase tracking-widest text-[#ccff00] mb-2 font-bold">
+                                Direct Answer: What Are White Label Local SEO Services for Agencies?
+                            </h2>
+                            <p className="text-base md:text-lg text-zinc-200 leading-relaxed font-normal">
+                                <strong>White label local SEO services for agencies</strong> let digital marketing firms outsource Google Business Profile optimization, NAP citation cleanup, and monthly map-pack reporting under their own agency logo and brand name at 35–50% wholesale margins starting at $350/month per location.
+                            </p>
+                        </div>
+
+                        <p className="text-lg md:text-xl text-zinc-300 font-sans leading-relaxed mb-10 max-w-4xl">
+                            Fully brandable local SEO fulfillment — citations, GBP optimization, and client-ready PDF reports — under NDA and strictly behind the scenes. Read our guide on <Link to="/blog/white-label-local-seo-how-agencies-evaluate-partners" className="text-[#ccff00] hover:underline font-medium">how agencies evaluate white label local SEO partners</Link> or review our <Link to="/seo-mastery" className="text-[#ccff00] hover:underline font-medium">full technical SEO capabilities</Link>.
                         </p>
                         <div className="flex flex-wrap gap-4 items-center">
                             <Link 
@@ -253,14 +316,14 @@ export default function WhiteLabelLocalSEOPage() {
                                 className="px-8 py-4 bg-[#ccff00] text-black font-extrabold text-sm rounded-xl hover:bg-[#b0d600] hover:text-black transition-all brutalist-shadow flex items-center gap-2 uppercase tracking-wider"
                                 style={{ color: '#000000' }}
                             >
-                                <span className="text-black font-black" style={{ color: '#000000' }}>Enquire About Reseller Pricing</span>
+                                <span className="text-black font-black" style={{ color: '#000000' }}>Request Reseller Rate Card</span>
                                 <ArrowRight className="w-4 h-4 text-black" style={{ color: '#000000' }} />
                             </Link>
                             <Link 
                                 to="/local-seo-for-small-business" 
                                 className="px-8 py-4 bg-zinc-900 text-white font-bold text-sm border border-white/20 rounded-xl hover:bg-zinc-800 transition-all flex items-center gap-2 uppercase tracking-wider"
                             >
-                                View All Local SEO Services
+                                View Direct Local SEO Services
                             </Link>
                         </div>
                     </div>

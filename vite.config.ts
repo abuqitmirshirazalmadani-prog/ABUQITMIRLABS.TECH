@@ -39,7 +39,7 @@ export default defineConfig(({ mode }) => {
         staticDir: path.resolve(process.cwd(), 'dist'),
         routes: [
           '/', '/growth-engineering', '/ai-video-creation', '/custom-software', '/mobile-app-development',
-          '/web-development', '/ai-agent-development', '/seo-mastery', '/graphics-design',
+          '/web-development', '/ai-agent-development', '/seo-mastery', '/graphic-design',
           '/content-writing', '/solutions/fintech', '/solutions/healthcare', '/solutions/ai-automation',
           '/solutions/e-commerce', '/solutions/edtech', '/case-studies', '/case-studies/tajweedpage',
           '/about', '/about/our-company', '/about/our-team', '/about/our-process', '/about/careers',
@@ -154,7 +154,7 @@ export default defineConfig(({ mode }) => {
             { url: '/white-label-local-seo', changefreq: 'weekly', priority: 0.8, title: 'White Label Local SEO for Agencies | AbuQitmirLabs', description: 'White-label local SEO fulfillment for agencies: manual citations, GBP optimization, and unbranded PDF reports with 35–50% reseller profit margins.' },
             { url: '/local-seo-audit', changefreq: 'weekly', priority: 0.8, title: 'Free Local SEO & Map Pack Audit | AbuQitmirLabs', description: 'Free forensic local SEO audit covering Google Business Profile, NAP citations, schema markup, and map-pack competitors with a clear action plan.' },
             { url: '/guest-post-service', changefreq: 'weekly', priority: 0.8, title: 'White-Hat Guest Post Outreach Service | AbuQitmirLabs', description: 'Editorial guest post placements on real, high-DR websites with organic traffic. 100% manual outreach, contextual dofollow links, and indexation.' },
-            { url: '/graphics-design', changefreq: 'weekly', priority: 0.8, title: 'Brand Identity & Graphic Design Studio | AbuQitmirLabs', description: 'Professional graphic design services for brands: custom logos, brand identity systems, pitch decks, UI/UX design, and B2B marketing collateral.' },
+            { url: '/graphic-design', changefreq: 'weekly', priority: 0.8, title: 'Graphic Design Services for Tech Startups | AbuQitmirLabs', description: 'UI/UX design, brand identity, Figma design systems, logo design, and pitch deck design services from Karachi for tech startups in Pakistan and globally.' },
             { url: '/content-writing', changefreq: 'weekly', priority: 0.8, title: 'B2B SEO Content Writing Services | AbuQitmirLabs', description: 'Data-driven SEO content writing services by AbuQitmirLabs: technical blogs, B2B website copy, landing pages, and long-form authority articles.' },
             { url: '/brand-building', changefreq: 'weekly', priority: 0.85, title: 'Brand Building Services for Small Business | AbuQitmirLabs', description: 'Complete brand building for small businesses: positioning strategy, visual identity, custom Next.js website, and SEO engineered under one roof.' },
             { url: '/skills-academy', changefreq: 'weekly', priority: 0.85, title: 'AI Brand & Web Course in Urdu | AbuQitmirLabs', description: 'AI-powered Urdu course teaching complete brand building, Next.js web development, real agency projects, and global client acquisition.' },

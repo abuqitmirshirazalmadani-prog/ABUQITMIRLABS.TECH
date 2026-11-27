@@ -22,8 +22,9 @@ export const fintechSchema = {
       "email": "hello@abuqitmirlabs.tech",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
         "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
         "postalCode": "75160",
         "addressCountry": "PK"
       },
@@ -47,6 +48,32 @@ export const fintechSchema = {
       }
     },
     {
+      "@type": "LocalBusiness",
+      "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+      "name": "AbuQitmirLabs",
+      "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+      "url": "https://www.abuqitmirlabs.tech",
+      "telephone": "+923233260859",
+      "email": "hello@abuqitmirlabs.tech",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+        "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
+        "postalCode": "75160",
+        "addressCountry": "PK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.842691448838718,
+        "longitude": 67.1862014846566
+      },
+      "parentOrganization": {
+        "@id": "https://www.abuqitmirlabs.tech/#organization"
+      }
+    },
+    {
       "@type": "WebSite",
       "@id": "https://www.abuqitmirlabs.tech/#website",
       "url": "https://www.abuqitmirlabs.tech",
@@ -59,8 +86,12 @@ export const fintechSchema = {
       "@type": "WebPage",
       "@id": "https://www.abuqitmirlabs.tech/solutions/fintech#webpage",
       "url": "https://www.abuqitmirlabs.tech/solutions/fintech",
-      "name": "FinTech Solutions for Digital Finance | AbuQitmirLabs",
-      "description": "Build secure FinTech platforms, payment systems and digital finance experiences with AbuQitmirLabs for startups and growing businesses.",
+      "name": "Fintech Software Development Pakistan | AbuQitmirLabs",
+      "description": "Fintech software development company in Pakistan building RAAST, JazzCash & Easypaisa payment gateways, digital banking platforms, and MVPs from $12,000.",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+      },
       "isPartOf": {
         "@id": "https://www.abuqitmirlabs.tech/#website"
       },
@@ -84,13 +115,13 @@ export const fintechSchema = {
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Solutions",
-          "item": "https://www.abuqitmirlabs.tech/#services"
+          "name": "Custom Software",
+          "item": "https://www.abuqitmirlabs.tech/custom-software"
         },
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "FinTech Solutions",
+          "name": "Fintech Software Development",
           "item": "https://www.abuqitmirlabs.tech/solutions/fintech"
         }
       ]
@@ -98,13 +129,26 @@ export const fintechSchema = {
     {
       "@type": "Service",
       "@id": "https://www.abuqitmirlabs.tech/solutions/fintech#service",
-      "name": "FinTech Solutions & Financial Software Engineering",
-      "serviceType": "FinTech Product Development and Architecture",
+      "name": "Fintech Software Development Services Pakistan",
+      "serviceType": "Fintech Software Development & Payment Gateway Integration",
+      "url": "https://www.abuqitmirlabs.tech/solutions/fintech",
       "provider": {
         "@id": "https://www.abuqitmirlabs.tech/#organization"
       },
-      "description": "Comprehensive FinTech solutions covering digital banking platforms, custom payment gateways, financial dashboards, automated lending workflows, and secure mobile applications.",
-      "areaServed": ["US", "UK", "CA", "AU", "PK", "AE", "SA", "QA"],
+      "description": "Fintech software development company in Pakistan engineering digital banking platforms, RAAST/JazzCash/Easypaisa/1LINK payment integrations, FBR invoicing APIs, and PCI DSS compliant financial MVPs starting from $12,000.",
+      "areaServed": [
+        { "@type": "Country", "name": "Pakistan" },
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Saudi Arabia" }
+      ],
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "lowPrice": "12000",
+        "highPrice": "80000"
+      },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "FinTech Technology Capabilities",
@@ -325,9 +369,9 @@ export const fintechInitialHtml = `
       <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs font-mono text-neutral-500">
         <a href="/" class="hover:text-[#ccff00] transition-colors">Home</a>
         <span>/</span>
-        <a href="/#services" class="hover:text-[#ccff00] transition-colors">Solutions</a>
+        <a href="/custom-software" class="hover:text-[#ccff00] transition-colors">Custom Software</a>
         <span>/</span>
-        <span class="text-[#ccff00]" aria-current="page">FinTech Solutions</span>
+        <span class="text-[#ccff00]" aria-current="page">Fintech Software Development</span>
       </nav>
     </div>
 
@@ -336,22 +380,22 @@ export const fintechInitialHtml = `
       <div class="max-w-7xl mx-auto px-6 relative z-10">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[#ccff00] text-xs font-mono uppercase tracking-widest mb-8">
           <span class="w-2 h-2 rounded-full bg-[#ccff00] animate-pulse"></span>
-          Financial Technology Engineering & Architecture
+          Fintech Software Development Company Pakistan &bull; MVPs from $12,000
         </div>
 
         <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.08] mb-8 max-w-5xl text-white">
-          FinTech Solutions for <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] via-white to-[#a3e635]">Secure Digital Financial Products</span>
+          Fintech Software Development for <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] via-white to-[#a3e635]">Payment and Banking Platforms</span>
         </h1>
 
         <!-- AEO Direct Answer Callout Block -->
         <div class="bg-neutral-900/90 border-l-4 border-[#ccff00] p-6 md:p-8 rounded-r-2xl max-w-4xl mb-10 shadow-2xl backdrop-blur-md">
           <p class="text-sm md:text-base text-neutral-200 leading-relaxed font-mono">
-            <strong class="text-[#ccff00]">Direct Answer:</strong> FinTech solutions are specialized software applications, API integrations, and digital platforms that automate and secure financial workflows. AbuQitmirLabs engineers high-performance FinTech systems—including digital banking interfaces, multi-currency payment gateways, automated lending engines, and real-time financial dashboards—built with modern web architectures and zero vendor lock-in.
+            <strong class="text-[#ccff00]">Direct Answer:</strong> As a fintech software development company in Pakistan, AbuQitmirLabs builds custom digital banking software, payment gateway integrations (RAAST, JazzCash, Easypaisa, 1LINK, and Stripe), FBR digital invoicing workflows, and PCI DSS aligned financial MVPs starting from $12,000 with 100% IP ownership.
           </p>
         </div>
 
         <p class="text-lg md:text-2xl text-neutral-400 max-w-3xl leading-relaxed mb-10 font-light">
-          We help startups, financial service providers, and growing businesses engineer secure, scalable digital finance platforms that simplify transactions, automate fiscal operations, and elevate customer trust.
+          Senior-led engineering from Karachi serving startups, licensed financial providers, and B2B platforms across Pakistan, the US, UK, UAE, and Saudi Arabia—built with immutable double-entry ledgers and zero vendor lock-in.
         </p>
 
         <div class="flex flex-wrap items-center gap-5">
@@ -457,8 +501,8 @@ export const fintechInitialHtml = `
               High-clarity executive telemetry interfaces providing instant visibility into cash flow, revenue run-rates, customer churn, settlement reconciliations, and fiscal forecasting.
             </p>
           </div>
-          <a href="/graphics-design" class="text-xs font-mono uppercase text-purple-400 hover:underline flex items-center gap-1 font-semibold">
-            UI/UX & Graphic Design &rarr;
+          <a href="/graphic-design" class="text-xs font-mono uppercase text-purple-400 hover:underline flex items-center gap-1 font-semibold">
+            UI/UX &amp; Graphic Design &rarr;
           </a>
         </div>
 
@@ -772,7 +816,7 @@ export const fintechInitialHtml = `
           <div class="p-8 rounded-2xl bg-neutral-900/50 border border-white/10">
             <h3 class="text-xl font-bold text-white mb-3">Information Hierarchy & Frictionless Flows</h3>
             <p class="text-neutral-400 text-sm leading-relaxed">
-              We design structured step-by-step transaction forms with real-time field validation, explicit confirmation dialogues, and clear fee breakdowns that eliminate user anxiety and payment abandonment. Explore our <a href="/graphics-design" class="text-[#ccff00] hover:underline">brand identity and UI design services</a> for details on visual hierarchy.
+              We design structured step-by-step transaction forms with real-time field validation, explicit confirmation dialogues, and clear fee breakdowns that eliminate user anxiety and payment abandonment. Explore our <a href="/graphic-design" class="text-[#ccff00] hover:underline">brand identity and UI design services</a> for details on visual hierarchy.
             </p>
           </div>
 
@@ -926,7 +970,17 @@ export const fintechInitialHtml = `
         <!-- AEO Direct Answer Block -->
         <div class="bg-neutral-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl mb-8 shadow-xl">
           <p class="text-sm md:text-base text-neutral-200 leading-relaxed font-mono">
-            <strong class="text-[#ccff00]">Cost Summary:</strong> Custom FinTech software development typically ranges from $10,000 to $25,000 for focused integrations or MVP applications, and between $35,000 and $80,000+ for enterprise-grade digital banking suites, automated lending platforms, or custom payment processing ecosystems.
+            <strong class="text-[#ccff00]">Cost Summary:</strong> As a fintech MVP development company, our custom fintech software development starts from $12,000 USD for focused payment gateway integrations (RAAST, JazzCash, Easypaisa, Stripe) and investor-ready MVPs, scaling to $35,000–$80,000+ for digital banking software development and multi-currency ledger suites.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-neutral-900/60 border border-[#ccff00]/30 mb-10">
+          <h3 class="text-2xl font-bold text-white mb-3">Pakistan Fintech Stack, RAAST &amp; SBP Compliance Engineering</h3>
+          <p class="text-neutral-300 text-sm leading-relaxed mb-4">
+            Local and cross-border products require native support for Pakistan&rsquo;s banking rails alongside global security controls. Our engineering team implements payment gateway integration Pakistan businesses rely on—covering RAAST payment integration development, JazzCash API integration service, Easypaisa wallet checkouts, 1LINK IBFT switching, FBR digital invoicing APIs, SBP regulatory audit trails, and PCI DSS tokenization.
+          </p>
+          <p class="text-xs font-mono text-[#ccff00]">
+            Supported Rails &amp; Standards: SBP Compliance Architecture &bull; RAAST &bull; JazzCash &bull; Easypaisa &bull; 1LINK &bull; FBR POS/Invoicing &bull; PCI DSS &bull; Stripe &amp; PayTabs
           </p>
         </div>
 
@@ -1073,11 +1127,12 @@ export const fintechInitialHtml = `
         </div>
       </div>
       <div class="max-w-7xl mx-auto px-6 pt-6 mt-6 border-t border-white/10 flex flex-wrap gap-4 text-sm">
+        <a href="/blog/raast-payment-integration-pakistan" class="text-[#ccff00] hover:underline font-medium">RAAST payment integration guide</a>
+        <a href="/blog/fintech-software-development-compliance-first-architecture" class="text-[#ccff00] hover:underline font-medium">Fintech compliance-first architecture</a>
+        <a href="/blog/soc-2-fintech-startups" class="text-[#ccff00] hover:underline font-medium">SOC 2 readiness for fintech startups</a>
         <a href="/blog/custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting" class="text-[#ccff00] hover:underline font-medium">AI fraud detection for fintech</a>
         <a href="/saudi-arabia-market" class="text-[#ccff00] hover:underline font-medium">fintech software development Saudi Arabia</a>
         <a href="/uae-market" class="text-[#ccff00] hover:underline font-medium">fintech solutions UAE</a>
-        <a href="/ai-agent-development" class="text-[#ccff00] hover:underline font-medium">AI agents for financial services</a>
-        <a href="/custom-software" class="text-[#ccff00] hover:underline font-medium">custom fintech software development</a>
       </div>
     </section>
 
@@ -1175,7 +1230,7 @@ export const fintechInitialHtml = `
         </p>
         <div class="flex flex-wrap items-center justify-center gap-5">
           <a href="/contact" class="px-10 py-5 bg-[#ccff00] text-black font-extrabold text-sm uppercase tracking-wider rounded-xl hover:scale-105 transition-all shadow-[0_0_40px_rgba(204,255,0,0.4)]">
-            Book Free Technical Consultation &rarr;
+            Request Technical Consultation &rarr;
           </a>
           <a href="/custom-software" class="px-10 py-5 border border-white/20 text-white font-bold text-sm uppercase tracking-wider rounded-xl hover:bg-white/5 transition-all">
             Explore Software Capabilities

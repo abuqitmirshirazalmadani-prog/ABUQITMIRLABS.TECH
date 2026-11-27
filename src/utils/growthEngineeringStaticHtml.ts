@@ -8,43 +8,84 @@ export const growthEngineeringPageSchema = {
       "@id": "https://www.abuqitmirlabs.tech/#organization",
       "name": "AbuQitmirLabs",
       "url": "https://www.abuqitmirlabs.tech",
-      "description": "Growth engineering firm combining custom software, AI automation, and performance marketing for B2B companies.",
+      "logo": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+      "description": "B2B growth strategy agency and revenue engineering firm combining custom software, AI automation, and technical SEO for B2B companies.",
+      "telephone": "+923233260859",
+      "email": "hello@abuqitmirlabs.tech",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
         "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
+        "postalCode": "75160",
         "addressCountry": "PK"
       },
       "sameAs": [
-        "https://www.linkedin.com/company/abuqitmirlabs",
-        "https://twitter.com/abuqitmirlabs",
-        "https://www.facebook.com/abuqitmirlabs"
+        "https://www.linkedin.com/in/abu-qitmir-697423390/",
+        "https://x.com/AbuQitmir",
+        "https://www.facebook.com/profile.php?id=61583768706452",
+        "https://github.com/abuqitmir"
       ],
       "knowsAbout": [
         "Growth Engineering",
+        "Revenue Engineering Firm",
+        "B2B Growth Strategy Agency",
         "Custom Software Development",
         "AI Agent Development",
-        "Performance Marketing",
-        "SEO",
-        "Brand Building"
+        "Technical SEO"
       ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+      "name": "AbuQitmirLabs",
+      "url": "https://www.abuqitmirlabs.tech",
+      "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+      "telephone": "+923233260859",
+      "email": "hello@abuqitmirlabs.tech",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+        "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
+        "postalCode": "75160",
+        "addressCountry": "PK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.842691448838718,
+        "longitude": 67.1862014846566
+      }
     },
     {
       "@type": "WebPage",
       "@id": "https://www.abuqitmirlabs.tech/growth-engineering#webpage",
       "url": "https://www.abuqitmirlabs.tech/growth-engineering",
-      "name": "Growth Engineering Firm | Software + AI + Marketing",
+      "name": "Growth Engineering & Revenue Agency | AbuQitmirLabs",
+      "description": "B2B growth strategy agency & revenue engineering firm combining custom software, AI agents, and technical SEO under one roof. Request an engineering audit.",
       "isPartOf": { "@id": "https://www.abuqitmirlabs.tech/#website" },
       "about": { "@id": "https://www.abuqitmirlabs.tech/#organization" }
     },
     {
       "@type": "Service",
-      "name": "Growth Engineering",
+      "@id": "https://www.abuqitmirlabs.tech/growth-engineering#service",
+      "name": "Growth Engineering & B2B Revenue Engineering",
       "provider": { "@id": "https://www.abuqitmirlabs.tech/#organization" },
-      "serviceType": "Growth Engineering, Custom Software Development, AI Automation, Performance Marketing",
-      "areaServed": ["Pakistan", "United States", "United Kingdom", "UAE", "Saudi Arabia", "Canada", "Australia"]
+      "serviceType": "Growth Engineering, B2B Growth Strategy, Custom Software Development, AI Automation",
+      "url": "https://www.abuqitmirlabs.tech/growth-engineering",
+      "description": "Unified growth engineering combining custom Next.js software, AI workflow automation, and technical SEO for B2B companies.",
+      "areaServed": [
+        { "@type": "Country", "name": "Pakistan" },
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Saudi Arabia" }
+      ]
     },
     {
       "@type": "BreadcrumbList",
+      "@id": "https://www.abuqitmirlabs.tech/growth-engineering#breadcrumb",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abuqitmirlabs.tech/" },
         { "@type": "ListItem", "position": 2, "name": "Growth Engineering", "item": "https://www.abuqitmirlabs.tech/growth-engineering" }
@@ -52,6 +93,7 @@ export const growthEngineeringPageSchema = {
     },
     {
       "@type": "FAQPage",
+      "@id": "https://www.abuqitmirlabs.tech/growth-engineering#faq",
       "mainEntity": [
         {
           "@type": "Question",
@@ -92,6 +134,14 @@ export const growthEngineeringPageSchema = {
             "@type": "Answer",
             "text": "Yes. Each pillar — custom software, web and mobile apps, AI agents, technical SEO, and content — is available as a standalone engagement or as part of a full growth engineering system."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does growth engineering cost and how is pricing structured?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Modular growth engineering retainers start from $1,800/month for unified technical SEO, GEO, and conversion optimization, while custom software and AI agent builds start from $5,000 fixed-scope milestones with 100% client IP ownership."
+          }
         }
       ]
     }
@@ -116,14 +166,14 @@ export const growthEngineeringInitialHtml = `
           <span class="w-2 h-2 rounded-full bg-[#ccff00]"></span>
           <p class="eyebrow text-xs font-mono uppercase tracking-[0.25em] text-[#ccff00] font-bold m-0">Growth Engineering Firm</p>
         </div>
-        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-light text-white leading-[1.08] tracking-tight max-w-5xl animate-enter-delay-1">Growth Engineering: Software, AI &amp; Marketing Engineered as <span class="text-[#ccff00] italic font-normal">One Revenue System</span></h1>
-        <div class="p-6 md:p-8 rounded-r-2xl bg-zinc-900/80 border-l-4 border-[#ccff00] border-y border-r border-y-white/10 border-r-white/10 max-w-4xl animate-enter-delay-2">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-light text-white leading-[1.08] tracking-tight max-w-5xl">Growth Engineering: Software, AI &amp; Marketing Engineered as <span class="text-[#ccff00] italic font-normal">One Revenue System</span></h1>
+        <div class="p-6 md:p-8 rounded-r-2xl bg-zinc-900/80 border-l-4 border-[#ccff00] border-y border-r border-y-white/10 border-r-white/10 max-w-4xl">
           <p class="lead text-lg md:text-xl text-neutral-200 leading-relaxed font-light m-0">
-            <strong>Growth engineering</strong> is the discipline of building custom software, AI automation, and performance marketing as a single connected system — so every line of code, every AI workflow, and every acquisition channel is engineered around measurable revenue outcomes.
+            <strong>Growth engineering</strong> combines custom software development, AI automation, and technical SEO into one connected revenue system. Rather than managing fragmented vendors, a dedicated <strong>revenue engineering firm</strong> and <strong>B2B growth strategy agency</strong> aligns product architecture, RAG workflows, and organic search around measurable pipeline.
           </p>
         </div>
         <p class="text-base md:text-lg text-neutral-300 max-w-4xl leading-relaxed font-light">
-          At <strong>AbuQitmirLabs</strong>, we don't separate "the dev team" from "the growth team." Our software architects, AI engineers, and SEO/marketing strategists work inside one unified sprint cycle for B2B companies across the US, UK, UAE, Saudi Arabia, Canada, Australia, and Pakistan.
+          At <strong>AbuQitmirLabs</strong>, we don't separate "the dev team" from "the growth team." Our software architects, AI engineers, and SEO/marketing strategists work inside one unified sprint cycle for B2B companies across Pakistan, the United States, the United Kingdom, the UAE, and Saudi Arabia.
         </p>
         <div class="cta-row flex flex-wrap items-center gap-4 pt-2">
           <a href="/contact" class="btn-primary bg-[#ccff00] text-black font-mono text-xs sm:text-sm font-bold uppercase tracking-wider px-8 py-4 rounded-xl">Book a Growth Engineering Audit</a>
@@ -133,7 +183,7 @@ export const growthEngineeringInitialHtml = `
     </section>
 
     <section id="problem" class="space-y-6 border-t border-white/10 pt-16">
-      <h2 class="text-3xl sm:text-4xl font-serif text-white">Why Hiring 3 Separate Agencies Breaks Your Growth</h2>
+      <h2 class="text-3xl sm:text-4xl font-serif text-white">Why Separate Agencies Fail — And How a B2B Growth Strategy Agency Fixes It</h2>
       <p class="text-neutral-300 leading-relaxed">
         Most growing B2B companies hire a software house to build the product, an AI freelancer to bolt on automation, and a marketing agency to drive traffic. Within six months, the cracks appear:
       </p>
@@ -149,7 +199,7 @@ export const growthEngineeringInitialHtml = `
     </section>
 
     <section id="pillars" class="space-y-10 border-t border-white/10 pt-16">
-      <h2 class="text-3xl sm:text-4xl font-serif text-white">The 3 Pillars of Our Growth Engineering System</h2>
+      <h2 class="text-3xl sm:text-4xl font-serif text-white">The 3 Pillars of Our Revenue Engineering Firm</h2>
 
       <div class="pillar-grid grid grid-cols-1 md:grid-cols-3 gap-8">
         <article class="pillar-card p-8 bg-zinc-950 border border-white/10 rounded-2xl space-y-4">
@@ -305,16 +355,21 @@ export const growthEngineeringInitialHtml = `
           <h3 class="text-xl font-serif text-white">Can I hire AbuQitmirLabs for just software development or just SEO?</h3>
           <p class="text-neutral-300 text-sm leading-relaxed">Yes. Each pillar — custom software, web and mobile apps, AI agents, technical SEO, and content — is available as a standalone engagement or as part of a full growth engineering system.</p>
         </div>
+
+        <div class="faq-item p-6 bg-zinc-950 border border-white/10 rounded-2xl space-y-2">
+          <h3 class="text-xl font-serif text-white">How much does growth engineering cost and how is pricing structured?</h3>
+          <p class="text-neutral-300 text-sm leading-relaxed">Modular growth engineering retainers start from $1,800/month for unified technical SEO, GEO, and conversion optimization, while custom software and AI agent builds start from $5,000 fixed-scope milestones with 100% client IP ownership.</p>
+        </div>
       </div>
     </section>
 
     <section id="final-cta" class="space-y-6 border-t border-white/10 pt-16 text-center">
       <h2 class="text-3xl sm:text-4xl font-serif text-white">Ready to Replace Disconnected Vendors With One Growth Engine?</h2>
       <p class="text-neutral-300 max-w-2xl mx-auto leading-relaxed">
-        Get a free technical and growth audit from our senior architects. We'll map your software, AI, and acquisition bottlenecks and hand you a clear execution roadmap.
+        Request a technical and growth engineering audit from our senior architects. We'll map your software, AI, and acquisition bottlenecks and hand you a clear execution roadmap.
       </p>
       <div class="pt-4">
-        <a href="/contact" class="btn-primary inline-block bg-[#ccff00] text-black font-mono text-sm font-bold uppercase tracking-wider px-8 py-4">Get Your Free Growth Engineering Audit</a>
+        <a href="/contact" class="btn-primary inline-block bg-[#ccff00] text-black font-mono text-sm font-bold uppercase tracking-wider px-8 py-4">Request a Growth Engineering Audit</a>
       </div>
     </section>
   </main>

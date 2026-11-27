@@ -95,7 +95,8 @@ const SITE_NAME = 'AbuQitmirLabs';
 const DEFAULT_TITLE = 'Custom Software, AI & SEO Engineering | AbuQitmirLabs';
 const DEFAULT_DESCRIPTION =
   'Growth Engineering Firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO as one revenue system. Free technical audit.';
-const DEFAULT_IMAGE = 'https://www.abuqitmirlabs.tech/logo.png';
+const DEFAULT_IMAGE = 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp';
+const DEFAULT_LOGO = 'https://www.abuqitmirlabs.tech/logo.png';
 const DEFAULT_IMAGE_ALT = 'AbuQitmirLabs Growth Engineering Firm';
 const DEFAULT_AUTHOR = 'Abu Qitmir Mohammad Shiraz Al-Madani';
 
@@ -144,7 +145,26 @@ const HREFLANG_ELIGIBLE_PATHS = new Set([
 
 const TITLE_OVERRIDES: Record<string, string> = {
   '/': 'Custom Software, AI & SEO Engineering | AbuQitmirLabs',
-  '/growth-engineering': 'Growth Engineering: Software, AI & SEO | AbuQitmirLabs',
+  '/growth-engineering': 'Growth Engineering & Revenue Agency | AbuQitmirLabs',
+  '/custom-software': 'Custom Software Development Pakistan | AbuQitmirLabs',
+  '/mobile-app-development': 'Mobile App Development Services Pakistan | AbuQitmirLabs',
+  '/web-development': 'Web Development Services Pakistan | AbuQitmirLabs',
+  '/ai-agent-development': 'AI Agent Development Services | RAG & LLM | AbuQitmirLabs',
+  '/seo-mastery': 'Technical SEO Agency for B2B Companies | AbuQitmirLabs',
+  '/digital-marketing': 'B2B Digital Marketing Agency Pakistan | AbuQitmirLabs',
+  '/graphic-design': 'Graphic Design Services for Tech Startups | AbuQitmirLabs',
+  '/brand-building': 'Brand Identity Design for Startups Pakistan | AbuQitmirLabs',
+  '/content-writing': 'Technical Content Writing for B2B SaaS | AbuQitmirLabs',
+  '/local-seo-for-small-business': 'Local SEO for Small Business Pakistan | AbuQitmirLabs',
+  '/local-seo-citation-building': 'NAP Citation Building Service Pakistan | AbuQitmirLabs',
+  '/white-label-local-seo': 'White Label Local SEO Services for Agencies | AbuQitmirLabs',
+  '/local-seo-audit': 'Local SEO Audit Checklist & Service | AbuQitmirLabs',
+  '/guest-post-service': 'Guest Post and Editorial Link Building | AbuQitmirLabs',
+  '/solutions/fintech': 'Fintech Software Development Pakistan | AbuQitmirLabs',
+  '/solutions/healthcare': 'Healthcare Software Development Pakistan | AbuQitmirLabs',
+  '/solutions/ai-automation': 'AI Workflow Automation for Business Operations | AbuQitmirLabs',
+  '/solutions/e-commerce': 'Custom E-Commerce Development Pakistan | AbuQitmirLabs',
+  '/solutions/edtech': 'LMS Development Company Pakistan | AbuQitmirLabs',
   '/blog/best-ai-tools-for-software-development-in-2026':
     '23 AI Tools Developers Actually Ship Code With (2026)',
   '/blog/ai-integration-with-legacy-systems-the-complete-2026-guide':
@@ -153,9 +173,6 @@ const TITLE_OVERRIDES: Record<string, string> = {
     'Website Audit Tool for Founders | Free | AbuQitmirLabs',
   '/blog/best-no-code-app-builders-in-2026-for-startups-businesses':
     '9 No-Code App Builders That Actually Launch in 2026',
-  '/web-development': 'Web Development Services in Pakistan | AbuQitmirLabs',
-  '/ai-agent-development':
-    'AI Agent Development Services | RAG & LLM | AbuQitmirLabs',
   '/blog/high-performance-web-applications-12-engineering-decisions':
     'High-Performance Web Apps: 12 Architecture Rules (2026)',
   '/blog/brand-audit-checklist-pakistan':
@@ -186,7 +203,6 @@ const TITLE_OVERRIDES: Record<string, string> = {
   '/privacy': 'Privacy Policy & Data Protection | AbuQitmirLabs',
   '/terms': 'Terms of Service & IP Ownership | AbuQitmirLabs',
   '/about/our-process': 'Our 5-Step Software Delivery Process | AbuQitmirLabs',
-  '/local-seo-for-small-business': 'Local SEO Services for Small Business | AbuQitmirLabs',
   '/blog/offshore-ai-agent-development-partner-uae':
     'Offshore AI Agent Development Partner UAE | AbuQitmirLabs',
   '/blog/brand-refresh-vs-rebrand':
@@ -222,6 +238,44 @@ const TITLE_OVERRIDES: Record<string, string> = {
 };
 
 const DESCRIPTION_OVERRIDES: Record<string, string> = {
+  '/custom-software':
+    'Custom software built for your workflows by senior engineers in Karachi. Full IP ownership, 100% source code transfer, zero vendor lock-in. Book a call.',
+  '/mobile-app-development':
+    'Flutter and native iOS/Android app development from Karachi. One codebase, both app stores, full source code ownership. Senior-led delivery. Book a call.',
+  '/web-development':
+    'Next.js web development for US, UK, and GCC B2B teams. Sub-second load, 100% IP ownership, senior-led delivery from Karachi. Book a consultation.',
+  '/ai-agent-development':
+    'Build custom AI agents for sales, support, and operations. RAG pipelines, LLM integration, 24/7 automation. Senior-led delivery from Karachi since 2021.',
+  '/seo-mastery':
+    'Technical SEO agency for B2B and SaaS companies. Core Web Vitals, schema markup, Generative Engine Optimization (GEO), and local SEO from Karachi. Request an audit.',
+  '/digital-marketing':
+    'Organic digital marketing for B2B software and SaaS companies from Karachi. Technical SEO, E-E-A-T content, and conversion architecture. No paid ads.',
+  '/graphic-design':
+    'UI/UX design, brand identity, Figma design systems, logo design, and pitch deck design services from Karachi for tech startups in Pakistan and globally.',
+  '/brand-building':
+    'Brand strategy agency in Pakistan offering startup brand identity design, brand voice development, brand guidelines, Next.js web builds, and SEO from $1,200.',
+  '/content-writing':
+    'Technical content writing services for software and SaaS companies. SEO blogs, engineering guides, and thought leadership starting from $40 per article.',
+  '/local-seo-for-small-business':
+    'Local SEO services for small businesses in Pakistan. Google Business Profile optimization, NAP citations, and Google Maps 3-Pack ranking from Karachi.',
+  '/local-seo-citation-building':
+    'Local SEO citation building service in Pakistan and global markets. Manual NAP consistency cleanup, duplicate removal, and tier-1 listings from $150.',
+  '/white-label-local-seo':
+    'White label local SEO services for agencies. Unbranded GBP optimization, NAP citation building, and branded PDF reports at wholesale rates from $350/month.',
+  '/local-seo-audit':
+    'Interactive local SEO audit checklist and technical GBP review. Check NAP consistency, LocalBusiness schema, and Google Maps competitors or run our audit tool.',
+  '/guest-post-service':
+    'Editorial link placement service for tech companies and B2B SaaS. High-DA guest posts on vetted tech, business, and marketing sites with real organic traffic.',
+  '/solutions/fintech':
+    'Fintech software development company in Pakistan building RAAST, JazzCash & Easypaisa payment gateways, digital banking platforms, and MVPs from $12,000.',
+  '/solutions/healthcare':
+    'Healthcare software development company Pakistan building HIPAA-ready EHR, clinic management software, patient portals, and telemedicine apps from Karachi.',
+  '/solutions/ai-automation':
+    'AI workflow automation for business operations across retail, logistics, and finance. Integrate CRMs, ERPs, and RAG pipelines from $5,000 USD. Built in Karachi.',
+  '/solutions/e-commerce':
+    'Custom e-commerce development company Pakistan building Shopify, WooCommerce & Next.js stores with JazzCash, Easypaisa, and Stripe. From $5,000 USD.',
+  '/solutions/edtech':
+    'LMS development company Pakistan building online learning platforms, RAG AI tutors, and Arabic/Urdu RTL LMS. Built TajweedPage.com. From $10,000 USD.',
   '/blog/ai-coding-agents-secure-agentic-software-development':
     'Learn how to secure AI coding agents with sandboxing, least privilege, secret scanning, policy gates, and human approval before production deployment.',
   '/blog/whatsapp-business-branding-pakistan':
@@ -240,10 +294,6 @@ const DESCRIPTION_OVERRIDES: Record<string, string> = {
     '45-point website audit covering Core Web Vitals, SEO health, and mobile performance. Built for founders and small business owners. No signup needed.',
   '/blog/best-no-code-app-builders-in-2026-for-startups-businesses':
     'We tested 9 no-code builders across real startup projects. Bubble, Webflow, FlutterFlow: only 4 made it. Here is the ranked list with pricing.',
-  '/web-development':
-    'Next.js web development for US, UK, and GCC B2B companies. Sub-second load times, 100% IP ownership, senior-led delivery from Karachi. Book a call.',
-  '/ai-agent-development':
-    'Build autonomous AI agents for your business workflows. RAG pipelines, LLM integration, 24/7 operations. Senior-led delivery from Karachi since 2021.',
   '/blog/high-performance-web-applications-12-engineering-decisions':
     'Sub-second web apps require 12 specific architecture decisions. From edge caching to zero-bundle hydration, see how we cut LCP below 1.2s. Full guide.',
   '/blog/brand-audit-checklist-pakistan':
@@ -447,7 +497,7 @@ const SERVICE_ROUTES = new Set([
   '/white-label-local-seo',
   '/local-seo-audit',
   '/guest-post-service',
-  '/graphics-design',
+  '/graphic-design',
   '/content-writing',
   '/brand-building',
   '/growth-engineering',
@@ -485,19 +535,19 @@ export function buildConsolidatedSchemaGraph(
       },
       logo: {
         '@type': 'ImageObject',
-        url: DEFAULT_IMAGE,
+        url: DEFAULT_LOGO,
       },
-      image: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
+      image: DEFAULT_IMAGE,
       email: 'hello@abuqitmirlabs.tech',
       telephone: '+923233260859',
       priceRange: '$$',
       description: DEFAULT_DESCRIPTION,
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Shahrah-e-Faisal, PECHS',
+        streetAddress: '8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town',
         addressLocality: 'Karachi',
         addressRegion: 'Sindh',
-        postalCode: '75400',
+        postalCode: '75160',
         addressCountry: 'PK',
       },
       areaServed: ['PK', 'US', 'GB', 'AE', 'SA', 'QA', 'KW', 'CA', 'AU', 'PL'],
@@ -509,13 +559,15 @@ export function buildConsolidatedSchemaGraph(
         availableLanguage: ['English', 'Arabic', 'Urdu'],
       },
       sameAs: [
-        'https://www.linkedin.com/in/abu-qitmir-697423390/',
         'https://www.facebook.com/profile.php?id=61583768706452',
         'https://www.instagram.com/abuqitmirshirazalmadani/',
-        'https://x.com/AbuQitmir',
         'https://www.youtube.com/@AbuQitmir',
-        'https://clutch.co/profile/abuqitmirlabstech',
+        'https://www.linkedin.com/in/abu-qitmir-697423390/',
+        'https://x.com/AbuQitmir',
+        'https://www.pinterest.com/abuqitmir',
+        'https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani',
         'https://www.goodfirms.co/company/abuqitmirlabs-tech',
+        'https://clutch.co/profile/abuqitmirlabstech',
       ],
     },
     {
@@ -529,16 +581,16 @@ export function buildConsolidatedSchemaGraph(
       priceRange: '$$',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Shahrah-e-Faisal, PECHS',
+        streetAddress: '8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town',
         addressLocality: 'Karachi',
         addressRegion: 'Sindh',
-        postalCode: '75400',
+        postalCode: '75160',
         addressCountry: 'PK',
       },
       geo: {
         '@type': 'GeoCoordinates',
-        latitude: 24.8607,
-        longitude: 67.0642,
+        latitude: 24.842691448838718,
+        longitude: 67.1862014846566,
       },
       openingHoursSpecification: [
         {
@@ -548,10 +600,7 @@ export function buildConsolidatedSchemaGraph(
           closes: '20:00',
         },
       ],
-      areaServed: {
-        '@type': 'Country',
-        name: 'Pakistan',
-      },
+      areaServed: ['PK', 'US', 'GB', 'AE', 'SA'],
     },
     {
       '@type': 'WebSite',

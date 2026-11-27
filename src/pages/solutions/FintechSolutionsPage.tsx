@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
+import SEO from '../../components/SEO';
 import { 
   ShieldCheck, 
   Coins, 
@@ -89,60 +89,56 @@ const FintechSolutionsPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-sans">
-      <Helmet>
-        <title>FinTech Solutions for Digital Finance | AbuQitmirLabs</title>
-        <meta name="description" content="Build secure FinTech platforms, payment systems and digital finance experiences with AbuQitmirLabs for startups and growing businesses." />
-        <link rel="canonical" href="https://www.abuqitmirlabs.tech/solutions/fintech" />
-
-        {/* Open Graph */}
-        <meta property="og:title" content="FinTech Solutions for Digital Finance | AbuQitmirLabs" />
-        <meta property="og:description" content="Build secure FinTech platforms, payment systems and digital finance experiences with AbuQitmirLabs for startups and growing businesses." />
-        <meta property="og:url" content="https://www.abuqitmirlabs.tech/solutions/fintech" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="FinTech Solutions for Digital Finance | AbuQitmirLabs" />
-        <meta name="twitter:description" content="Build secure FinTech platforms, payment systems and digital finance experiences with AbuQitmirLabs for startups and growing businesses." />
-        <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-        <script type="application/ld+json">{JSON.stringify(fintechSchema)}</script>
-      </Helmet>
+      <SEO
+        title="Fintech Software Development Pakistan | AbuQitmirLabs"
+        description="Fintech software development company in Pakistan building RAAST, JazzCash & Easypaisa payment gateways, digital banking platforms, and MVPs from $12,000."
+        canonical="https://www.abuqitmirlabs.tech/solutions/fintech"
+        keywords="fintech software development company Pakistan, payment gateway integration Pakistan, RAAST payment integration development, JazzCash API integration service, digital banking software development, fintech MVP development company"
+        ogTitle="Fintech Software Development Pakistan | AbuQitmirLabs"
+        ogDescription="Fintech software development company in Pakistan building RAAST, JazzCash & Easypaisa payment gateways, digital banking platforms, and MVPs from $12,000."
+        ogImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        twitterTitle="Fintech Software Development Pakistan | AbuQitmirLabs"
+        twitterDescription="Fintech software development company in Pakistan building RAAST, JazzCash & Easypaisa payment gateways, digital banking platforms, and MVPs from $12,000."
+        twitterImage="https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+        schema={fintechSchema}
+      />
 
       <Header />
 
       <main className="pt-24 md:pt-32">
         {/* Breadcrumb Section */}
         <div className="max-w-7xl mx-auto px-6">
-          <Breadcrumbs items={[
-            { label: 'Solutions', path: '/#services' },
-            { label: 'FinTech Solutions', path: '/solutions/fintech' }
-          ]} />
+          <Breadcrumbs
+            disableSchema={true}
+            items={[
+              { label: 'Custom Software', path: '/custom-software' },
+              { label: 'Fintech Software Development', path: '/solutions/fintech' }
+            ]}
+          />
         </div>
 
         {/* Hero Section with Single Semantic H1 */}
         <section className="relative py-16 md:py-24 overflow-hidden border-b border-white/10" id="hero-section">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(204,255,0,0.06),transparent_50%)] pointer-events-none" />
           
-          <div className="max-w-7xl mx-auto px-6 relative z-10 animate-enter">
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[#ccff00] text-xs font-mono uppercase tracking-widest mb-8">
-              <Coins className="w-4 h-4" /> Financial Technology Engineering & Architecture
+              <Coins className="w-4 h-4" /> Fintech Software Development Company Pakistan &bull; MVPs from $12,000
             </div>
 
-            <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.08] mb-8 max-w-5xl animate-enter-delay-1">
-              FinTech Solutions for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] via-white to-[#88a800]">Digital Finance</span>
+            <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.08] mb-8 max-w-5xl">
+              Fintech Software Development for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] via-white to-[#88a800]">Payment and Banking Platforms</span>
             </h1>
 
             {/* Direct Answer Block for AEO/GEO */}
             <div className="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 md:p-8 rounded-r-2xl max-w-4xl mb-10 shadow-2xl backdrop-blur-md">
               <p className="text-sm md:text-base text-gray-200 leading-relaxed font-mono">
-                <strong className="text-[#ccff00]">Direct Answer:</strong> FinTech solutions are specialized software applications, API integrations, and digital platforms that automate and secure financial workflows. AbuQitmirLabs engineers high-performance FinTech systems—including digital banking interfaces, multi-currency payment gateways, automated lending engines, and real-time financial dashboards—built with modern web architectures and zero vendor lock-in.
+                <strong className="text-[#ccff00]">Direct Answer:</strong> As a fintech software development company in Pakistan, AbuQitmirLabs builds custom digital banking software, payment gateway integration Pakistan businesses rely on (RAAST, JazzCash, Easypaisa, 1LINK, and Stripe), FBR digital invoicing workflows, and PCI DSS aligned financial MVPs starting from $12,000 USD with 100% source code ownership.
               </p>
             </div>
 
             <p className="text-xl md:text-2xl text-gray-400 max-w-3xl leading-relaxed mb-10 font-light">
-              We help startups, financial service providers, and growing enterprises engineer secure, scalable digital finance platforms that simplify transactions, automate fiscal operations, and elevate customer trust.
+              We serve startups, licensed financial institutions, and enterprise operations across Pakistan, the US, UK, UAE, and Saudi Arabia—delivering immutable double-entry ledgers and compliant payment infrastructure.
             </p>
 
             <div className="flex flex-wrap items-center gap-6">
@@ -260,9 +256,9 @@ const FintechSolutionsPage = () => {
                   </span>
                   <Building2 className="w-8 h-8 text-gray-400 group-hover:text-[#ccff00] group-hover:scale-110 transition-all duration-300" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-[#ccff00] transition-colors">Digital Banking Platforms</h3>
+                <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-[#ccff00] transition-colors">Digital Banking Software Development</h3>
                 <p className="text-gray-300 text-sm leading-relaxed mb-6 font-light">
-                  Full-featured neobanking platforms featuring virtual card issuance, multi-currency account management, instant domestic and cross-border transfers, and real-time transaction histories.
+                  Full-featured digital banking software development featuring virtual card issuance, multi-currency account management, instant domestic and cross-border transfers, and real-time transaction histories.
                 </p>
               </div>
               <Link to="/custom-software" className="text-xs font-mono uppercase text-[#ccff00] hover:underline flex items-center gap-1 mt-4 font-semibold">
@@ -361,8 +357,8 @@ const FintechSolutionsPage = () => {
                   High-clarity executive telemetry interfaces providing instant visibility into cash flow, revenue run-rates, customer churn, settlement reconciliations, and fiscal forecasting.
                 </p>
               </div>
-              <Link to="/graphics-design" className="text-xs font-mono uppercase text-[#ccff00] hover:underline flex items-center gap-1 mt-4 font-semibold">
-                UI/UX & Graphic Design <ChevronRight className="w-3 h-3" />
+              <Link to="/graphic-design" className="text-xs font-mono uppercase text-[#ccff00] hover:underline flex items-center gap-1 mt-4 font-semibold">
+                UI/UX &amp; Graphic Design <ChevronRight className="w-3 h-3" />
               </Link>
             </motion.div>
 
@@ -575,9 +571,9 @@ const FintechSolutionsPage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <div className="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
-              <span className="text-[#ccff00] text-xs font-mono uppercase block mb-3 font-semibold">Payment Processors</span>
+              <span className="text-[#ccff00] text-xs font-mono uppercase block mb-3 font-semibold">Global Payment Processors</span>
               <h3 className="text-lg font-bold text-white mb-2">Stripe, Adyen & PayPal</h3>
               <p className="text-gray-400 text-xs leading-relaxed">
                 Seamless multi-rail acquiring, subscription billing engines, and international currency settlements via secure API bridges.
@@ -585,27 +581,45 @@ const FintechSolutionsPage = () => {
             </div>
 
             <div className="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
-              <span className="text-blue-400 text-xs font-mono uppercase block mb-3 font-semibold">Banking Connectors</span>
-              <h3 className="text-lg font-bold text-white mb-2">Plaid & Open Banking</h3>
+              <span className="text-blue-400 text-xs font-mono uppercase block mb-3 font-semibold">Pakistan Payment Rails</span>
+              <h3 className="text-lg font-bold text-white mb-2">RAAST, JazzCash, Easypaisa & 1LINK</h3>
               <p className="text-gray-400 text-xs leading-relaxed">
-                Direct bank account authentication, instant balance checks, transaction categorization, and ACH transfer verification.
+                Dedicated RAAST payment integration development, JazzCash API integration service, Easypaisa checkout flows, and 1LINK IBFT settlement bridges.
               </p>
             </div>
 
             <div className="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
-              <span className="text-purple-400 text-xs font-mono uppercase block mb-3 font-semibold">Identity & KYC</span>
-              <h3 className="text-lg font-bold text-white mb-2">Persona, Onfido & Jumio</h3>
+              <span className="text-purple-400 text-xs font-mono uppercase block mb-3 font-semibold">Banking, KYC & Compliance</span>
+              <h3 className="text-lg font-bold text-white mb-2">Plaid, Persona & SBP Controls</h3>
               <p className="text-gray-400 text-xs leading-relaxed">
-                Automated document scanning, biometric facial matching, PEP/sanction watchlist checks, and AML compliance screening.
+                Open Banking connectors, biometric KYC/AML screening, FBR digital invoicing APIs, and State Bank of Pakistan (SBP) audit logging.
               </p>
             </div>
 
             <div className="p-6 rounded-xl bg-zinc-900/50 border border-white/10">
-              <span className="text-emerald-400 text-xs font-mono uppercase block mb-3 font-semibold">Accounting Systems</span>
-              <h3 className="text-lg font-bold text-white mb-2">QuickBooks & Xero</h3>
+              <span className="text-emerald-400 text-xs font-mono uppercase block mb-3 font-semibold">Accounting & PCI Security</span>
+              <h3 className="text-lg font-bold text-white mb-2">QuickBooks, Xero & PCI DSS</h3>
               <p className="text-gray-400 text-xs leading-relaxed">
-                Bidirectional data synchronization for automated invoice reconciliation, tax record filing, and journal entry exports.
+                Bidirectional reconciliation with QuickBooks/Xero alongside PCI DSS card tokenization and encrypted fiscal storage.
               </p>
+            </div>
+          </div>
+
+          <div className="p-8 rounded-2xl bg-zinc-900/70 border border-[#ccff00]/30">
+            <span className="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-2">Regional Compliance &amp; Rail Readiness</span>
+            <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
+              Pakistan Fintech Stack: SBP Compliance, RAAST, JazzCash &amp; FBR Integration
+            </h3>
+            <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-4">
+              As a fintech software development company in Pakistan, we design payment gateway integration Pakistan platforms around real local infrastructure alongside international compliance frameworks. Whether your team needs RAAST instant settlement webhooks, JazzCash API integration service and Easypaisa merchant checkouts, 1LINK bill-pay switching, or automated FBR POS/digital tax invoicing, our engineers build clean middleware aligned with State Bank of Pakistan (SBP) EMI/PSO security expectations and PCI DSS card-data isolation.
+            </p>
+            <div className="flex flex-wrap gap-3 text-xs font-mono">
+              <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[#ccff00]">SBP Regulatory Audit Logs</span>
+              <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[#ccff00]">RAAST Payment Integration</span>
+              <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[#ccff00]">JazzCash &amp; Easypaisa APIs</span>
+              <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[#ccff00]">1LINK IBFT Switching</span>
+              <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[#ccff00]">FBR Invoicing Integration</span>
+              <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[#ccff00]">PCI DSS Tokenization</span>
             </div>
           </div>
         </section>
@@ -622,7 +636,7 @@ const FintechSolutionsPage = () => {
               {/* AEO Direct Answer Block */}
               <div className="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl mb-8 shadow-xl">
                 <p className="text-sm md:text-base text-gray-200 leading-relaxed font-mono">
-                  <strong className="text-[#ccff00]">Cost Summary:</strong> Custom FinTech software development typically ranges from $10,000 to $25,000 for focused integrations or MVP applications, and between $35,000 and $80,000+ for enterprise-grade digital banking suites, automated lending platforms, or custom payment processing ecosystems.
+                  <strong className="text-[#ccff00]">Cost Summary:</strong> As a fintech MVP development company, custom fintech software development starts from $12,000 USD for targeted payment integrations (RAAST, JazzCash, Easypaisa, Stripe) and investor-ready MVPs, scaling to $35,000–$80,000+ for digital banking software development and multi-currency ledger suites.
                 </p>
               </div>
 
@@ -777,6 +791,15 @@ const FintechSolutionsPage = () => {
               </div>
             </div>
             <div className="pt-6 border-t border-white/10 flex flex-wrap items-center gap-4 text-sm">
+              <Link to="/blog/raast-payment-integration-pakistan" className="px-4 py-2 rounded-lg bg-zinc-900/70 border border-white/10 text-[#ccff00] hover:border-[#ccff00]/50 transition-all font-medium">
+                RAAST payment integration guide
+              </Link>
+              <Link to="/blog/fintech-software-development-compliance-first-architecture" className="px-4 py-2 rounded-lg bg-zinc-900/70 border border-white/10 text-[#ccff00] hover:border-[#ccff00]/50 transition-all font-medium">
+                Fintech compliance-first architecture
+              </Link>
+              <Link to="/blog/soc-2-fintech-startups" className="px-4 py-2 rounded-lg bg-zinc-900/70 border border-white/10 text-[#ccff00] hover:border-[#ccff00]/50 transition-all font-medium">
+                SOC 2 for fintech startups
+              </Link>
               <Link to="/blog/custom-ai-solutions-for-fintech-2026-fraud-detection-underwriting" className="px-4 py-2 rounded-lg bg-zinc-900/70 border border-white/10 text-[#ccff00] hover:border-[#ccff00]/50 transition-all font-medium">
                 AI fraud detection for fintech
               </Link>
@@ -785,12 +808,6 @@ const FintechSolutionsPage = () => {
               </Link>
               <Link to="/uae-market" className="px-4 py-2 rounded-lg bg-zinc-900/70 border border-white/10 text-[#ccff00] hover:border-[#ccff00]/50 transition-all font-medium">
                 fintech solutions UAE
-              </Link>
-              <Link to="/ai-agent-development" className="px-4 py-2 rounded-lg bg-zinc-900/70 border border-white/10 text-[#ccff00] hover:border-[#ccff00]/50 transition-all font-medium">
-                AI agents for financial services
-              </Link>
-              <Link to="/custom-software" className="px-4 py-2 rounded-lg bg-zinc-900/70 border border-white/10 text-[#ccff00] hover:border-[#ccff00]/50 transition-all font-medium">
-                custom fintech software development
               </Link>
             </div>
           </div>

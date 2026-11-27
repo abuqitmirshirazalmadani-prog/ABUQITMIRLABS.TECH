@@ -22,8 +22,9 @@ export const edTechSchema = {
       "email": "hello@abuqitmirlabs.tech",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
         "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
         "postalCode": "75160",
         "addressCountry": "PK"
       },
@@ -47,6 +48,40 @@ export const edTechSchema = {
       }
     },
     {
+      "@type": "LocalBusiness",
+      "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+      "name": "AbuQitmirLabs",
+      "url": "https://www.abuqitmirlabs.tech",
+      "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+      "telephone": "+923233260859",
+      "email": "hello@abuqitmirlabs.tech",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+        "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
+        "postalCode": "75160",
+        "addressCountry": "PK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.842691448838718,
+        "longitude": 67.1862014846566
+      },
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61583768706452",
+        "https://www.instagram.com/abuqitmirshirazalmadani/",
+        "https://www.youtube.com/@AbuQitmir",
+        "https://www.linkedin.com/in/abu-qitmir-697423390/",
+        "https://x.com/AbuQitmir",
+        "https://www.pinterest.com/abuqitmir",
+        "https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani",
+        "https://www.goodfirms.co/company/abuqitmirlabs-tech",
+        "https://clutch.co/profile/abuqitmirlabstech"
+      ]
+    },
+    {
       "@type": "WebSite",
       "@id": "https://www.abuqitmirlabs.tech/#website",
       "url": "https://www.abuqitmirlabs.tech",
@@ -60,15 +95,19 @@ export const edTechSchema = {
       "@type": "WebPage",
       "@id": "https://www.abuqitmirlabs.tech/solutions/edtech#webpage",
       "url": "https://www.abuqitmirlabs.tech/solutions/edtech",
-      "name": "EdTech Software Development | LMS & Learning Platforms",
-      "description": "Build scalable EdTech software with custom LMS platforms, virtual classrooms, AI tutoring, student portals, assessments, and learning analytics.",
+      "name": "LMS Development Company Pakistan | AbuQitmirLabs",
+      "description": "LMS development company Pakistan building online learning platforms, RAG AI tutors, and Arabic/Urdu RTL LMS. Built TajweedPage.com. From $10,000 USD.",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+      },
       "isPartOf": {
         "@id": "https://www.abuqitmirlabs.tech/#website"
       },
       "breadcrumb": {
         "@id": "https://www.abuqitmirlabs.tech/solutions/edtech#breadcrumb"
       },
-      "inLanguage": "en"
+      "inLanguage": "en-US"
     },
     {
       "@type": "BreadcrumbList",
@@ -83,13 +122,13 @@ export const edTechSchema = {
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Solutions",
-          "item": "https://www.abuqitmirlabs.tech/#services"
+          "name": "Custom Software",
+          "item": "https://www.abuqitmirlabs.tech/custom-software"
         },
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "EdTech Software Development",
+          "name": "LMS & EdTech Development",
           "item": "https://www.abuqitmirlabs.tech/solutions/edtech"
         }
       ]
@@ -97,13 +136,27 @@ export const edTechSchema = {
     {
       "@type": "Service",
       "@id": "https://www.abuqitmirlabs.tech/solutions/edtech#service",
-      "name": "EdTech Software Development",
-      "serviceType": "Educational Technology Engineering",
+      "name": "LMS and EdTech Software Development from Karachi",
+      "serviceType": "LMS & Educational Technology Engineering",
+      "url": "https://www.abuqitmirlabs.tech/solutions/edtech",
       "provider": {
         "@id": "https://www.abuqitmirlabs.tech/#organization"
       },
-      "description": "Comprehensive engineering of custom EdTech platforms, learning management systems (LMS), WebRTC virtual classrooms, AI tutoring engines, student and teacher portals, online assessment platforms, and educational workflow automations.",
-      "areaServed": ["US", "GB", "PK", "CA", "AU", "EU"],
+      "description": "LMS development company Pakistan building online learning platforms, RAG AI tutors, and Arabic/Urdu RTL LMS. Built TajweedPage.com. From $10,000 USD.",
+      "areaServed": [
+        { "@type": "Country", "name": "Pakistan" },
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Saudi Arabia" }
+      ],
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "lowPrice": "10000",
+        "highPrice": "50000",
+        "offerCount": "3"
+      },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "EdTech Software Engineering Services",
@@ -322,40 +375,69 @@ export const edTechInitialHtml = `
   <!-- Hero Section with EXACT Single H1 -->
   <section class="py-20 md:py-28 border-b border-white/10 px-6 max-w-7xl mx-auto" aria-labelledby="edtech-hero-heading">
     <div class="inline-block px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[#ccff00] text-xs font-mono uppercase tracking-widest mb-6">
-      Next-Gen Educational Technology &amp; LMS Engineering
+      LMS DEVELOPMENT COMPANY PAKISTAN &bull; KARACHI
     </div>
     
     <h1 id="edtech-hero-heading" class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08] mb-8 max-w-5xl text-white">
-      EdTech Software Development for Modern Learning
+      LMS and EdTech Software Development from Karachi
     </h1>
 
     <!-- Direct Answer Block for AEO/GEO Search Engines -->
     <div class="bg-zinc-900/90 border-l-4 border-[#ccff00] p-6 rounded-r-2xl max-w-4xl mb-8 shadow-2xl">
       <p class="text-base md:text-lg text-gray-200 leading-relaxed font-light">
-        <strong class="text-[#ccff00] font-semibold">Direct Answer:</strong> EdTech software development builds digital learning systems. This includes learning management systems, live video classrooms, student portals, online exams, AI tutors, and learning analytics. Custom software unifies teaching, testing, and administration in one reliable digital hub.
+        <strong class="text-[#ccff00] font-semibold">Direct Answer:</strong> As an LMS development company Pakistan academies and global EdTech founders rely on, AbuQitmirLabs builds Next.js online learning platforms, RAG AI tutoring systems, WebRTC classrooms, and multilingual Arabic/Urdu RTL portals starting at $10,000 USD &mdash; backed by our live TajweedPage.com deployment across 20+ countries.
       </p>
     </div>
 
-    <!-- E-E-A-T Inline Trust Signal Bar -->
-    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-zinc-300 py-3 px-4 bg-zinc-900/80 border border-[#ccff00]/30 rounded-xl mb-8 max-w-3xl">
-      <span class="text-[#ccff00] font-bold">🎓 TajweedPage.com — Delivered</span>
-      <span class="text-zinc-600">•</span>
-      <span>✅ WCAG 2.1 AA Compliant Builds</span>
-      <span class="text-zinc-600">•</span>
-      <span>🔒 100% IP &amp; Source Code Ownership</span>
+    <!-- E-E-A-T & Pricing Anchor Trust Signal Bar -->
+    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-zinc-200 py-3 px-4 bg-zinc-900/80 border border-[#ccff00]/30 rounded-xl mb-8 max-w-3xl">
+      <span class="text-[#ccff00] font-bold">Custom LMS Starting at $10,000 USD</span>
+      <span class="text-zinc-600">&bull;</span>
+      <span>TajweedPage.com: 400+ Students, 20+ Countries</span>
+      <span class="text-zinc-600">&bull;</span>
+      <span>Arabic/Urdu RTL &amp; 100% IP Ownership</span>
     </div>
 
     <p class="text-xl md:text-2xl text-gray-400 max-w-3xl leading-relaxed mb-10 font-light">
-      Generic course plugins often crash during live exams and charge heavy monthly fees. We build custom, AI-enhanced learning software tailored for universities, academies, and fast-growing EdTech startups.
+      Generic course plugins crash during live exams, break Arabic and Urdu RTL typography, and tax every student seat. As a senior course platform development company in Karachi, we build custom EdTech platforms with 100% source code ownership.
     </p>
 
     <div class="flex flex-wrap items-center gap-5">
-      <a href="/contact" aria-label="Contact AbuQitmirLabs to start your EdTech platform project" class="px-8 py-4 bg-[#ccff00] text-black font-extrabold rounded-xl hover:scale-105 transition-all text-sm uppercase tracking-wider shadow-[0_0_30px_rgba(204,255,0,0.3)]">
-        Start your EdTech platform project
+      <a href="/contact" aria-label="Schedule an EdTech & LMS technical consultation" class="px-8 py-4 bg-[#ccff00] text-black font-extrabold rounded-xl hover:scale-105 transition-all text-sm uppercase tracking-wider shadow-[0_0_30px_rgba(204,255,0,0.3)]">
+        Schedule LMS Technical Consultation
       </a>
-      <a href="/custom-software" aria-label="Learn more about our custom software engineering services" class="px-8 py-4 border border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-all text-sm uppercase tracking-wider">
-        View Custom Software Services
+      <a href="/case-studies/tajweedpage" aria-label="Read the TajweedPage.com EdTech case study" class="px-8 py-4 border border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-all text-sm uppercase tracking-wider">
+        Read TajweedPage Case Study
       </a>
+    </div>
+  </section>
+
+  <!-- Featured Verified Case Study: TajweedPage.com -->
+  <section id="tajweedpage-case-study" class="py-16 md:py-24 bg-zinc-950/70 border-b border-white/10 px-6 max-w-7xl mx-auto" aria-labelledby="tajweedpage-case-study-heading">
+    <div class="p-8 md:p-10 rounded-2xl bg-zinc-900/70 border border-[#ccff00]/30">
+      <span class="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">VERIFIED EDTECH CASE STUDY &mdash; LIVE PRODUCTION BUILD</span>
+      <h2 id="tajweedpage-case-study-heading" class="text-2xl md:text-4xl font-extrabold text-white mb-6">
+        TajweedPage.com: AI Tutoring &amp; Multilingual LMS Case Study
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div class="p-5 rounded-xl bg-black/40 border border-white/10">
+          <span class="text-xs font-mono text-[#ccff00] uppercase block mb-2">Problem</span>
+          <p class="text-gray-200 text-sm leading-relaxed">Global Quran students needed AI-powered Tajweed feedback, structured Arabic RTL reading tools, and accurate rule citations across time zones.</p>
+        </div>
+        <div class="p-5 rounded-xl bg-black/40 border border-white/10">
+          <span class="text-xs font-mono text-[#ccff00] uppercase block mb-2">Solution</span>
+          <p class="text-gray-200 text-sm leading-relaxed">Next.js LMS + RAG AI tutor trained on verified Islamic sources, paired with programmatic SEO architecture and RTL Arabic/English UX.</p>
+        </div>
+        <div class="p-5 rounded-xl bg-black/40 border border-white/10">
+          <span class="text-xs font-mono text-[#ccff00] uppercase block mb-2">Result</span>
+          <p class="text-gray-200 text-sm leading-relaxed">Ranked in 20+ countries in 10 days, serving 400+ active students on <a href="https://tajweedpage.com" target="_blank" rel="noopener noreferrer" class="text-[#ccff00] underline">tajweedpage.com</a>.</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-6 text-xs font-mono">
+        <a href="/case-studies/tajweedpage" class="text-[#ccff00] hover:underline uppercase font-bold">Full TajweedPage Technical Case Study &rarr;</a>
+        <a href="/blog/programmatic-seo-how-we-scaled-tajweedpage" class="text-gray-300 hover:text-white underline">How We Scaled TajweedPage SEO &rarr;</a>
+        <a href="https://tajweedpage.com" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white underline">Visit Live Platform: tajweedpage.com &rarr;</a>
+      </div>
     </div>
   </section>
 
@@ -364,13 +446,13 @@ export const edTechInitialHtml = `
     <div class="max-w-4xl">
       <span class="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Architectural Foundation</span>
       <h2 id="what-is-edtech" class="text-3xl md:text-5xl font-extrabold tracking-tight mb-8 text-white">
-        What Is EdTech Software Development?
+        What Is Online Learning Platform &amp; Custom LMS Development?
       </h2>
       <p class="text-gray-300 text-lg leading-relaxed mb-6 font-light">
-        <strong class="text-white font-medium">EdTech software development</strong> is the engineering of digital learning systems. Modern education technology turns traditional classrooms into interactive online platforms. Students learn at their own pace, teachers review progress in real time, and administrators manage multiple campuses with ease.
+        <strong class="text-white font-medium">Online learning platform development</strong> turns curricula, live classes, assessments, and student records into a unified, owned software system. Unlike SaaS tools that charge per-seat fees, a dedicated course platform development company gives universities, Islamic academies, and corporate teams full source code control.
       </p>
       <p class="text-gray-300 text-lg leading-relaxed mb-6 font-light">
-        Generic plugins charge monthly user fees and struggle under high traffic. Purpose-built platforms give you full code ownership and zero licensing limits. We combine <a href="/web-development" class="text-[#ccff00] hover:underline font-medium" aria-label="Explore high-performance web development">high-performance web development</a> with <a href="/ai-agent-development" class="text-[#ccff00] hover:underline font-medium" aria-label="Explore AI agent development">custom AI agents</a> to help educational institutions grow sustainably.
+        Whether you require <strong class="text-white font-medium">EdTech app development Pakistan</strong> mobile apps, high-concurrency exam portals, or <a href="/blog/edtech-software-development" class="text-[#ccff00] hover:underline font-medium">custom EdTech platform architecture</a>, we pair <a href="/web-development" class="text-[#ccff00] hover:underline font-medium">Next.js web engineering</a> with <a href="/ai-agent-development" class="text-[#ccff00] hover:underline font-medium">custom RAG AI agents</a> for sustainable scale.
       </p>
     </div>
   </section>
@@ -627,58 +709,58 @@ export const edTechInitialHtml = `
     </div>
   </section>
 
-  <!-- Section 5: AI in EdTech -->
+  <!-- Section 5: AI Tutoring Platform Development & Multilingual RTL LMS -->
   <section class="py-20 md:py-28 border-b border-white/10 px-6 max-w-7xl mx-auto" aria-labelledby="ai-in-edtech-heading">
     <div class="max-w-3xl mb-16">
-      <span class="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">Artificial Intelligence</span>
+      <span class="text-[#ccff00] text-xs font-mono uppercase tracking-widest block mb-3">RAG AI &amp; MULTILINGUAL RTL</span>
       <h2 id="ai-in-edtech-heading" class="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 text-white">
-        AI in EdTech
+        AI Tutoring Platform Development &amp; Multilingual Arabic/Urdu RTL LMS
       </h2>
       <p class="text-gray-400 text-lg font-light leading-relaxed">
-        Artificial intelligence turns passive video watching into active, personalized learning. We build reliable, safe AI tools designed for education.
+        We specialize in RAG-grounded AI tutoring platform development and native multilingual LMS development supporting English (LTR) plus full Arabic and Urdu right-to-left (RTL) layouts for GCC and Pakistan academies.
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10">
-        <h3 class="text-xl font-bold mb-3 text-white">AI Tutors</h3>
+      <div class="p-8 rounded-2xl bg-zinc-900/60 border border-[#ccff00]/30">
+        <h3 class="text-xl font-bold mb-3 text-white">RAG AI Tutors Grounded in Curriculum</h3>
         <p class="text-gray-300 text-sm leading-relaxed font-light">
-          Context-aware AI tutors that guide students through tough equations and code with step-by-step hints.
+          Retrieval-Augmented Generation (RAG) tutors answer strictly from your verified textbooks, Tajweed rules, or course transcripts with zero hallucinated citations.
+        </p>
+      </div>
+
+      <div class="p-8 rounded-2xl bg-zinc-900/60 border border-[#ccff00]/30">
+        <h3 class="text-xl font-bold mb-3 text-white">Multilingual LMS Development (Arabic &amp; Urdu RTL)</h3>
+        <p class="text-gray-300 text-sm leading-relaxed font-light">
+          Bi-directional UI mirroring, Noto Nastaliq / Arabic font shaping, localized Hijri/Gregorian schedules, and multi-currency tuition checkout for GCC and Pakistan learners.
         </p>
       </div>
 
       <div class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10">
-        <h3 class="text-xl font-bold mb-3 text-white">AI Study Assistants</h3>
+        <h3 class="text-xl font-bold mb-3 text-white">EdTech App Development Pakistan (iOS &amp; Android)</h3>
         <p class="text-gray-300 text-sm leading-relaxed font-light">
-          In-course assistants that summarize lecture videos, generate flashcards, and answer lesson questions.
+          Flutter and React Native mobile apps with offline lesson caching, low-bandwidth audio playback, and push reminders for daily study streaks.
         </p>
       </div>
 
       <div class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10">
-        <h3 class="text-xl font-bold mb-3 text-white">Adaptive Learning</h3>
+        <h3 class="text-xl font-bold mb-3 text-white">Adaptive Assessment &amp; Rubrics</h3>
         <p class="text-gray-300 text-sm leading-relaxed font-light">
-          Smart algorithms that track quiz scores in real time and adjust question difficulty automatically.
+          Smart algorithms track quiz mastery in real time, generate flashcards from lecture notes, and assist teachers with structured rubric grading.
         </p>
       </div>
 
       <div class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10">
-        <h3 class="text-xl font-bold mb-3 text-white">AI Assessment Tools</h3>
+        <h3 class="text-xl font-bold mb-3 text-white">Student Retention &amp; Support Agents</h3>
         <p class="text-gray-300 text-sm leading-relaxed font-light">
-          Automated tools that help teachers grade essays, evaluate rubrics, and spot plagiarism.
+          Automated study reminders when completion drops, paired with parent progress digests and instant advisor escalation.
         </p>
       </div>
 
       <div class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10">
-        <h3 class="text-xl font-bold mb-3 text-white">Student Support Agents</h3>
+        <h3 class="text-xl font-bold mb-3 text-white">Admissions &amp; SIS Automation</h3>
         <p class="text-gray-300 text-sm leading-relaxed font-light">
-          Automated agents that send study reminders when activity drops and alert teachers to struggling students.
-        </p>
-      </div>
-
-      <div class="p-8 rounded-2xl bg-zinc-900/60 border border-white/10">
-        <h3 class="text-xl font-bold mb-3 text-white">Admin Automation</h3>
-        <p class="text-gray-300 text-sm leading-relaxed font-light">
-          Smart document tools that parse student applications, match transcripts, and generate school reports.
+          Automated student enrollment workflows, transcript parsing, fee invoicing via JazzCash/Stripe, and attendance reporting.
         </p>
       </div>
     </div>

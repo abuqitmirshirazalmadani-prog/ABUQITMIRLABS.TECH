@@ -505,7 +505,6 @@ export default function CaseStudyTajweedPage() {
               <div className="flex flex-col items-center gap-1 font-mono text-xs">
                 <span className="text-[#ccff00] uppercase tracking-widest font-bold">// EMAIL INQUIRY NODES:</span>
                 <a href="mailto:hello@abuqitmirlabs.tech" className="hover:underline text-white font-medium">hello@abuqitmirlabs.tech</a>
-                <a href="mailto:abuqitmirshirazalmadani@gmail.com" className="hover:underline text-slate-400">abuqitmirshirazalmadani@gmail.com</a>
               </div>
             </div>
 

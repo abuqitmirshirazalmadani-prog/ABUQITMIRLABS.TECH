@@ -48,7 +48,7 @@ const Header = () => {
                 { name: '  ↳ Guest Post Service', href: '/guest-post-service' },
                 { name: 'Brand Building Services', href: '/brand-building' },
                 { name: 'Skills Academy (AI Course)', href: '/skills-academy' },
-                { name: 'Premium Graphics Designing', href: '/graphics-design' },
+                { name: 'Graphic & UI/UX Design', href: '/graphic-design' },
                 { name: 'Professional Content Writing', href: '/content-writing' },
             ]
         },

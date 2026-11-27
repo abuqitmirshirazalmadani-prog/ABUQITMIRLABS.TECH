@@ -43,10 +43,10 @@ export const homeSchema = {
       ],
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Shahrah-e-Faisal, PECHS",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
         "addressLocality": "Karachi",
         "addressRegion": "Sindh",
-        "postalCode": "75400",
+        "postalCode": "75160",
         "addressCountry": "PK"
       },
       "areaServed": ["PK", "US", "GB", "AE", "SA", "QA", "KW", "CA", "AU", "PL"],
@@ -62,8 +62,8 @@ export const homeSchema = {
       ],
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 24.8607,
-        "longitude": 67.0011
+        "latitude": 24.842691448838718,
+        "longitude": 67.1862014846566
       },
       "contactPoint": {
         "@type": "ContactPoint",
@@ -85,7 +85,7 @@ export const homeSchema = {
       "@id": "https://www.abuqitmirlabs.tech/#website",
       "url": "https://www.abuqitmirlabs.tech/",
       "name": "AbuQitmirLabs",
-      "description": "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Free technical audit.",
+      "description": "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Request technical audit.",
       "publisher": {
         "@type": "Organization",
         "@id": "https://www.abuqitmirlabs.tech/#organization"
@@ -96,7 +96,7 @@ export const homeSchema = {
       "@id": "https://www.abuqitmirlabs.tech/#webpage",
       "url": "https://www.abuqitmirlabs.tech/",
       "name": "Custom Software, AI & SEO Engineering | AbuQitmirLabs",
-      "description": "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Free technical audit.",
+      "description": "Karachi-based growth engineering firm for US, UK & global B2B companies. Custom software, AI agents & technical SEO — one revenue system. Request technical audit.",
       "inLanguage": "en-US",
       "isPartOf": {
         "@type": "WebSite",
@@ -218,7 +218,7 @@ export const homeInitialHtml = `
 
       <div class="flex flex-wrap gap-4 pt-4">
         <a href="/contact" class="bg-[#ccff00] text-black font-mono text-sm font-bold tracking-wider px-8 py-4 uppercase rounded-none hover:bg-white transition-all shadow-[0_0_30px_rgba(204,255,0,0.2)]">
-          Book Free Technical Audit
+          Request Technical Audit
         </a>
         <a href="/case-studies" class="border border-white/20 hover:border-[#ccff00] text-white hover:text-[#ccff00] font-mono text-sm font-bold tracking-wider px-8 py-4 uppercase rounded-none transition-colors">
           View Case Studies

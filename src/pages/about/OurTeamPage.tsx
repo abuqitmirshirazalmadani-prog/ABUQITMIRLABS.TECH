@@ -111,16 +111,16 @@ const OurTeamPage = () => {
         "priceRange": "$$",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Shahrah-e-Faisal, PECHS",
+          "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
           "addressLocality": "Karachi",
           "addressRegion": "Sindh",
-          "postalCode": "75400",
+          "postalCode": "75160",
           "addressCountry": "PK"
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 24.8607,
-          "longitude": 67.0642
+          "latitude": 24.842691448838718,
+          "longitude": 67.1862014846566
         },
         "openingHoursSpecification": [
           {
@@ -232,7 +232,7 @@ const OurTeamPage = () => {
               <Users className="w-4 h-4" /> In-House Studio Collective
             </div>
 
-            <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 max-w-5xl animate-enter-delay-1">
+            <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 max-w-5xl">
               Our Team — <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] via-white to-[#88a800]">The Elite Collective Behind AbuQitmirLabs</span>
             </h1>
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
+import SEO from '../components/SEO';
 import { 
     CheckCircle2, 
     XCircle, 
@@ -64,138 +64,191 @@ export default function LocalSEOCitationBuildingPage() {
         }
     ];
 
+    const pageTitle = "NAP Citation Building Service Pakistan | AbuQitmirLabs";
+    const pageDescription = "Local SEO citation building service in Pakistan and global markets. Manual NAP consistency cleanup, duplicate removal, and tier-1 listings from $150.";
+    const canonicalUrl = "https://www.abuqitmirlabs.tech/local-seo-citation-building";
+    const ogImageUrl = "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp";
+
+    const jsonLdData = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://www.abuqitmirlabs.tech/#organization",
+                "name": "AbuQitmirLabs",
+                "alternateName": "AbuQitmirLabs .TECH",
+                "url": "https://www.abuqitmirlabs.tech",
+                "logo": "https://www.abuqitmirlabs.tech/logo.png",
+                "image": ogImageUrl,
+                "telephone": "+923233260859",
+                "email": "hello@abuqitmirlabs.tech",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+                    "addressLocality": "Karachi",
+                    "addressRegion": "Sindh",
+                    "postalCode": "75160",
+                    "addressCountry": "PK"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 24.842691448838718,
+                    "longitude": 67.1862014846566
+                },
+                "sameAs": [
+                    "https://www.facebook.com/profile.php?id=61583768706452",
+                    "https://www.instagram.com/abuqitmirshirazalmadani/",
+                    "https://www.youtube.com/@AbuQitmir",
+                    "https://www.linkedin.com/in/abu-qitmir-697423390/",
+                    "https://x.com/AbuQitmir",
+                    "https://github.com/abuqitmir"
+                ]
+            },
+            {
+                "@type": "LocalBusiness",
+                "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+                "name": "AbuQitmirLabs",
+                "url": "https://www.abuqitmirlabs.tech",
+                "image": ogImageUrl,
+                "telephone": "+923233260859",
+                "email": "hello@abuqitmirlabs.tech",
+                "priceRange": "$$",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+                    "addressLocality": "Karachi",
+                    "addressRegion": "Sindh",
+                    "postalCode": "75160",
+                    "addressCountry": "PK"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 24.842691448838718,
+                    "longitude": 67.1862014846566
+                }
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://www.abuqitmirlabs.tech/#website",
+                "url": "https://www.abuqitmirlabs.tech",
+                "name": "AbuQitmirLabs",
+                "inLanguage": "en-US",
+                "publisher": {
+                    "@id": "https://www.abuqitmirlabs.tech/#organization"
+                }
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://www.abuqitmirlabs.tech/local-seo-citation-building#webpage",
+                "url": canonicalUrl,
+                "name": pageTitle,
+                "description": pageDescription,
+                "inLanguage": "en-US",
+                "isPartOf": {
+                    "@id": "https://www.abuqitmirlabs.tech/#website"
+                },
+                "about": {
+                    "@id": "https://www.abuqitmirlabs.tech/local-seo-citation-building#service"
+                },
+                "primaryImageOfPage": {
+                    "@type": "ImageObject",
+                    "url": ogImageUrl,
+                    "width": 1200,
+                    "height": 630
+                },
+                "breadcrumb": {
+                    "@id": "https://www.abuqitmirlabs.tech/local-seo-citation-building#breadcrumb"
+                }
+            },
+            {
+                "@type": "Service",
+                "@id": "https://www.abuqitmirlabs.tech/local-seo-citation-building#service",
+                "name": "NAP Citation Building Service Pakistan & Local SEO",
+                "description": pageDescription,
+                "url": canonicalUrl,
+                "provider": {
+                    "@id": "https://www.abuqitmirlabs.tech/#organization"
+                },
+                "areaServed": [
+                    { "@type": "Country", "name": "Pakistan" },
+                    { "@type": "Country", "name": "United States" },
+                    { "@type": "Country", "name": "United Kingdom" },
+                    { "@type": "Country", "name": "United Arab Emirates" },
+                    { "@type": "Country", "name": "Saudi Arabia" }
+                ],
+                "serviceType": "Local SEO Citation Building",
+                "offers": {
+                    "@type": "Offer",
+                    "name": "Local Citation Building Package",
+                    "description": "One-time or ongoing citation building — NAP-consistent listings across high-authority local directories with a full citation audit and duplicate removal starting at $150 USD.",
+                    "priceSpecification": {
+                        "@type": "PriceSpecification",
+                        "minPrice": "150",
+                        "maxPrice": "600",
+                        "priceCurrency": "USD",
+                        "unitText": "UNIT"
+                    }
+                }
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://www.abuqitmirlabs.tech/local-seo-citation-building#faq",
+                "isPartOf": {
+                    "@id": "https://www.abuqitmirlabs.tech/local-seo-citation-building#webpage"
+                },
+                "mainEntity": faqs.map(faq => ({
+                    "@type": "Question",
+                    "name": faq.q,
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": faq.a
+                    }
+                }))
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://www.abuqitmirlabs.tech/local-seo-citation-building#breadcrumb",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://www.abuqitmirlabs.tech/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Local SEO for Small Business",
+                        "item": "https://www.abuqitmirlabs.tech/local-seo-for-small-business"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Local SEO Citation Building",
+                        "item": canonicalUrl
+                    }
+                ]
+            }
+        ]
+    };
+
     return (
         <div className="min-h-screen bg-[#080808] text-white selection:bg-[#ccff00] selection:text-black font-sans antialiased">
-            <Helmet>
-                {/* ═══ Primary Meta Tags ═══ */}
-                <title>Local SEO Citation Building | AbuQitmirLabs</title>
-                <meta name="description" content="Manual NAP citation building, audit & cleanup across top-tier directories. Boost local search rankings with consistent citations on Google, Yelp, Apple Maps & more. Start with a $150 audit." />
-                <link rel="canonical" href="https://www.abuqitmirlabs.tech/local-seo-citation-building" />
-                <meta name="keywords" content="local SEO citation building, NAP consistency, citation management, local citations, citation cleanup, local directory listings, small business citations" />
-                
-                {/* ═══ Open Graph (Facebook / LinkedIn) ═══ */}
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://www.abuqitmirlabs.tech/local-seo-citation-building" />
-                <meta property="og:title" content="Local SEO Citation Building | AbuQitmirLabs" />
-                <meta property="og:description" content="Manual NAP citation building, audit & cleanup across top-tier directories. Boost local search rankings with consistent citations on Google, Yelp, Apple Maps & more. Start with a $150 audit." />
-                <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-                <meta property="og:image:width" content="1200" />
-                <meta property="og:image:height" content="630" />
-                <meta property="og:site_name" content="AbuQitmirLabs" />
-
-                {/* ═══ Twitter Card ═══ */}
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:site" content="@AbuQitmir" />
-                <meta name="twitter:title" content="Local SEO Citation Building | AbuQitmirLabs" />
-                <meta name="twitter:description" content="Manual NAP citation building, audit & cleanup across top-tier directories. Boost local search rankings with consistent citations on Google, Yelp, Apple Maps & more. Start with a $150 audit." />
-                <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-                {/* ═══ Structured Data / JSON-LD ═══ */}
-                <script type="application/ld+json">
-                    {JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@graph": [
-                            {
-                                "@type": "Organization",
-                                "@id": "https://www.abuqitmirlabs.tech/#organization",
-                                "name": "AbuQitmirLabs .TECH",
-                                "url": "https://www.abuqitmirlabs.tech",
-                                "logo": "https://www.abuqitmirlabs.tech/logo.png"
-                            },
-                            {
-                                "@type": "WebPage",
-                                "@id": "https://www.abuqitmirlabs.tech/local-seo-citation-building#webpage",
-                                "url": "https://www.abuqitmirlabs.tech/local-seo-citation-building",
-                                "name": "Local SEO Citation Building | NAP Consistency Services | AbuQitmirLabs",
-                                "description": "Manual NAP citation building, audit & cleanup across top-tier directories. Boost local search rankings with consistent citations on Google, Yelp, Apple Maps & more. Start with a $150 audit.",
-                                "inLanguage": "en-US",
-                                "isPartOf": {
-                                    "@id": "https://www.abuqitmirlabs.tech/#website"
-                                },
-                                "about": {
-                                    "@id": "https://www.abuqitmirlabs.tech/local-seo-citation-building#service"
-                                },
-                                "breadcrumb": {
-                                    "@id": "https://www.abuqitmirlabs.tech/local-seo-citation-building#breadcrumb"
-                                }
-                            },
-                            {
-                                "@type": "Service",
-                                "@id": "https://www.abuqitmirlabs.tech/local-seo-citation-building#service",
-                                "name": "Local SEO Citation Building",
-                                "description": "Structured local citation building and NAP consistency management — tier-1 directory submissions, duplicate detection, citation audits, and ongoing citation health monitoring.",
-                                "provider": {
-                                    "@id": "https://www.abuqitmirlabs.tech/#organization"
-                                },
-                                "areaServed": ["US", "GB", "PK", "CA", "PL", "AU"],
-                                "serviceType": "Local SEO Citation Building",
-                                "offers": {
-                                    "@type": "Offer",
-                                    "name": "Local Citation Building Package",
-                                    "description": "One-time or ongoing citation building — NAP-consistent listings across high-authority local directories with a full citation audit and duplicate removal.",
-                                    "priceSpecification": {
-                                        "@type": "PriceSpecification",
-                                        "minPrice": "150",
-                                        "maxPrice": "600",
-                                        "priceCurrency": "USD",
-                                        "unitText": "UNIT"
-                                    }
-                                }
-                            },
-                            {
-                                "@type": "FAQPage",
-                                "mainEntity": faqs.map(faq => ({
-                                    "@type": "Question",
-                                    "name": faq.q,
-                                    "acceptedAnswer": {
-                                        "@type": "Answer",
-                                        "text": faq.a
-                                    }
-                                }))
-                            },
-                            {
-                                "@type": "BreadcrumbList",
-                                "@id": "https://www.abuqitmirlabs.tech/local-seo-citation-building#breadcrumb",
-                                "itemListElement": [
-                                    {
-                                        "@type": "ListItem",
-                                        "position": 1,
-                                        "name": "Home",
-                                        "item": "https://www.abuqitmirlabs.tech/"
-                                    },
-                                    {
-                                        "@type": "ListItem",
-                                        "position": 2,
-                                        "name": "Local SEO Services",
-                                        "item": "https://www.abuqitmirlabs.tech/local-seo-services"
-                                    },
-                                    {
-                                        "@type": "ListItem",
-                                        "position": 3,
-                                        "name": "Local SEO Citation Building",
-                                        "item": "https://www.abuqitmirlabs.tech/local-seo-citation-building"
-                                    }
-                                ]
-                            },
-                            {
-                                "@type": "WebSite",
-                                "@id": "https://www.abuqitmirlabs.tech/#website",
-                                "url": "https://www.abuqitmirlabs.tech",
-                                "name": "AbuQitmirLabs .TECH",
-                                "inLanguage": "en-US",
-                                "publisher": {
-                                    "@id": "https://www.abuqitmirlabs.tech/#organization"
-                                }
-                            }
-                        ]
-                    })}
-                </script>
-            </Helmet>
+            <SEO
+                title={pageTitle}
+                description={pageDescription}
+                canonical={canonicalUrl}
+                keywords="NAP citation building service Pakistan, local SEO citation building service, NAP consistency audit, local directory listings, citation cleanup"
+                ogImage={ogImageUrl}
+                ogImageAlt="NAP Citation Building Service Pakistan - AbuQitmirLabs"
+                twitterImage={ogImageUrl}
+                schema={jsonLdData}
+            />
 
             <Header />
 
             <main className="pt-28 md:pt-36 relative">
-                <Breadcrumbs customItems={[
+                <Breadcrumbs disableSchema={true} customItems={[
                     { name: 'HQ', to: '/' },
                     { name: 'LOCAL SEO FOR SMALL BUSINESS', to: '/local-seo-for-small-business' },
                     { name: 'CITATION BUILDING' }
@@ -203,31 +256,30 @@ export default function LocalSEOCitationBuildingPage() {
 
                 {/* Hero Section */}
                 <section className="px-6 md:px-12 max-w-7xl mx-auto py-16 md:py-24 border-b border-white/10">
-                    <div className="max-w-4xl animate-enter">
+                    <div className="max-w-4xl">
                         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] text-xs font-mono font-bold tracking-widest uppercase mb-6">
                             <Sparkles className="w-3.5 h-3.5" />
-                            AbuQitmirLabs .TECH — Local SEO Citation Building
+                            NAP CITATION BUILDING SERVICE PAKISTAN &amp; GLOBAL • FROM $150
                         </div>
-                        <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-medium tracking-tight text-white leading-[1.1] mb-8 animate-enter-delay-1">
-                            Citations Are the Foundation. <br />
-                            <em className="text-[#ccff00] italic font-normal">Bad Ones Are the Problem.</em>
+                        <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-medium tracking-tight text-white leading-[1.1] mb-8">
+                            Local SEO Citation Building &amp; <em className="text-[#ccff00] italic font-normal">NAP Consistency Service</em>
                         </h1>
-                        <p className="text-lg md:text-xl text-zinc-300 font-sans leading-relaxed mb-10 max-w-4xl animate-enter-delay-2">
-                            NAP-consistent local citations across tier-1 directories — no bulk spam, no duplicate chaos, no split signals. From our <Link to="/" className="text-[#ccff00] hover:underline font-medium">home page</Link> to dedicated off-page signals, we build citation profiles that power map-pack dominance.
+                        <p className="text-lg md:text-xl text-zinc-300 font-sans leading-relaxed mb-10 max-w-4xl">
+                            Our manual <strong>NAP citation building service in Pakistan</strong> and international markets cleans conflicting directory profiles and establishes uniform Name, Address, and Phone signals across Tier 1–3 business indexes. Review our <Link to="/blog/local-seo-citation-building-the-15-directory-checklist" className="text-[#ccff00] hover:underline font-medium">15-directory citation building checklist</Link> to see how clean citations drive map-pack visibility.
                         </p>
                         <div className="flex flex-wrap gap-4 items-center">
                             <Link 
                                 to="/contact" 
                                 className="px-8 py-4 bg-[#ccff00] text-black font-bold text-sm rounded-xl hover:bg-white transition-all brutalist-shadow flex items-center gap-2 uppercase tracking-wider"
                             >
-                                Start a Citation Campaign
+                                Start Citation Campaign
                                 <ArrowRight className="w-4 h-4" />
                             </Link>
                             <Link 
                                 to="/local-seo-audit" 
                                 className="px-8 py-4 bg-zinc-900 text-white font-bold text-sm border border-white/20 rounded-xl hover:bg-zinc-800 transition-all flex items-center gap-2 uppercase tracking-wider"
                             >
-                                Get a Free Citation Audit First
+                                Run Local SEO Audit Checklist
                             </Link>
                         </div>
                     </div>
@@ -447,6 +499,39 @@ export default function LocalSEOCitationBuildingPage() {
                                 </div>
                             </div>
                         ))}
+                    </div>
+
+                    {/* Before vs After NAP Citation Cleanup Benchmark */}
+                    <div className="mt-12 bg-zinc-950 border-2 border-[#ccff00]/30 rounded-2xl p-6 md:p-10">
+                        <span className="text-[#ccff00] text-xs font-mono font-bold tracking-widest uppercase block mb-2">
+                            Representative Cleanup Benchmark
+                        </span>
+                        <h3 className="text-2xl font-serif font-medium text-white mb-4">
+                            Before &amp; After NAP Citation Profile Comparison
+                        </h3>
+                        <p className="text-zinc-400 text-sm mb-6">
+                            How resolving split address formats and duplicate directory profiles transforms citation consistency across Tier 1–3 platforms:
+                        </p>
+                        <div className="grid md:grid-cols-2 gap-6">
+                            <div className="p-6 rounded-xl bg-red-950/25 border border-red-500/30">
+                                <div className="text-xs font-mono uppercase tracking-wider text-red-400 font-bold mb-3">Before Citation Cleanup</div>
+                                <ul className="space-y-2 text-sm text-zinc-300">
+                                    <li>• 14 conflicting listings (old phone numbers &amp; abbreviated street variants)</li>
+                                    <li>• 5 unverified duplicate profiles splitting map-pack authority</li>
+                                    <li>• Only 11 consistent Tier 1–2 directory mentions indexed</li>
+                                    <li>• Missing Apple Maps and Bing Places entity sync</li>
+                                </ul>
+                            </div>
+                            <div className="p-6 rounded-xl bg-emerald-950/25 border border-[#ccff00]/40">
+                                <div className="text-xs font-mono uppercase tracking-wider text-[#ccff00] font-bold mb-3">After Manual Build &amp; Cleanup</div>
+                                <ul className="space-y-2 text-sm text-zinc-200">
+                                    <li>• 0 conflicting NAP entries across core search aggregators</li>
+                                    <li>• 45+ verified, 100% consistent Tier 1, Tier 2 &amp; regional citations</li>
+                                    <li>• Synchronized master NAP matching website LocalBusiness schema</li>
+                                    <li>• Live verification spreadsheet with login ownership transferred</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Warning Box */}

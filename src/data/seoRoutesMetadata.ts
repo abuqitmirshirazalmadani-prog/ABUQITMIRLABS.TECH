@@ -671,18 +671,18 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     }
   },
   "/brand-building": {
-    title: "Brand Building Services for Small Businesses | AbuQitmirLabs",
-    description: "Strategy, design, custom Next.js websites, and SEO under one roof. AbuQitmirLabs builds complete brands from scratch for global small businesses.",
+    title: "Brand Identity Design for Startups Pakistan | AbuQitmirLabs",
+    description: "Brand strategy agency in Pakistan offering startup brand identity design, brand voice development, brand guidelines, Next.js web builds, and SEO from $1,200.",
     canonical: "https://www.abuqitmirlabs.tech/brand-building",
-    keywords: "brand building services for small businesses, brand strategy, visual identity design, custom nextjs website, small business branding, branding agency",
-    ogTitle: "Brand Building Services for Small Businesses | AbuQitmirLabs",
-    ogDescription: "Strategy. Design. Website. SEO. All Under One Roof. AbuQitmirLabs builds complete brands from scratch for small businesses in Pakistan, the US, UK, UAE, and beyond.",
-    ogImage: "https://www.abuqitmirlabs.tech/images/blog-covers/content-brief-template-fcc385c7.webp",
+    keywords: "startup brand identity design Pakistan, brand strategy agency in Pakistan, brand building services for small businesses, visual identity design, custom nextjs website",
+    ogTitle: "Brand Identity Design for Startups Pakistan | AbuQitmirLabs",
+    ogDescription: "Brand strategy agency in Pakistan offering startup brand identity design, brand voice development, brand guidelines, Next.js web builds, and SEO from $1,200.",
+    ogImage: "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
     ogType: "website",
     twitterCard: "summary_large_image",
-    twitterTitle: "Brand Building Services for Small Businesses | AbuQitmirLabs",
-    twitterDescription: "Strategy. Design. Website. SEO. All Under One Roof. AbuQitmirLabs builds complete brands from scratch for small businesses in Pakistan, the US, UK, UAE, and beyond.",
-    twitterImage: "https://www.abuqitmirlabs.tech/images/blog-covers/content-brief-template-fcc385c7.webp"
+    twitterTitle: "Brand Identity Design for Startups Pakistan | AbuQitmirLabs",
+    twitterDescription: "Brand strategy agency in Pakistan offering startup brand identity design, brand voice development, brand guidelines, Next.js web builds, and SEO from $1,200.",
+    twitterImage: "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
   },
   "/skills-academy": {
     title: "Learn to Build a Brand & Business Online | AbuQitmirLabs",
@@ -1243,16 +1243,16 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     }
   },
   '/growth-engineering': {
-    title: 'Growth Engineering: Software, AI & SEO | AbuQitmirLabs',
-    description: 'AbuQitmirLabs engineers revenue systems for B2B companies — combining custom software, AI automation, and performance marketing under one roof.',
+    title: 'Growth Engineering & Revenue Agency | AbuQitmirLabs',
+    description: 'B2B growth strategy agency & revenue engineering firm combining custom software, AI agents, and technical SEO under one roof. Request an engineering audit.',
     canonical: 'https://www.abuqitmirlabs.tech/growth-engineering',
-    ogTitle: 'Growth Engineering Firm | AbuQitmirLabs',
-    ogDescription: 'AbuQitmirLabs engineers revenue systems for B2B companies — combining custom software, AI automation, and performance marketing under one roof.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp',
+    ogTitle: 'Growth Engineering & Revenue Agency | AbuQitmirLabs',
+    ogDescription: 'B2B growth strategy agency & revenue engineering firm combining custom software, AI agents, and technical SEO under one roof. Request an engineering audit.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
     ogType: 'website',
-    twitterTitle: 'Growth Engineering Firm | AbuQitmirLabs',
-    twitterDescription: 'AbuQitmirLabs engineers revenue systems for B2B companies — combining custom software, AI automation, and performance marketing under one roof.',
-    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
+    twitterTitle: 'Growth Engineering & Revenue Agency | AbuQitmirLabs',
+    twitterDescription: 'B2B growth strategy agency & revenue engineering firm combining custom software, AI agents, and technical SEO under one roof. Request an engineering audit.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
   '/about': {
     title: 'About AbuQitmirLabs | B2B Growth Engineering Since 2021',
@@ -1296,36 +1296,40 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
   },
   '/custom-software': {
-    title: 'Custom Software Development for Startups | AbuQitmirLabs',
-    description: 'Software built around how your business works, not the other way around. Custom systems for startups and SaaS companies, full IP ownership included.',
+    title: 'Custom Software Development Pakistan | AbuQitmirLabs',
+    description: 'Custom software built for your workflows by senior engineers in Karachi. Full IP ownership, 100% source code transfer, zero vendor lock-in. Book a call.',
     canonical: 'https://www.abuqitmirlabs.tech/custom-software',
-    ogTitle: 'Custom Software Development for Startups | AbuQitmirLabs',
-    ogDescription: 'Enterprise-grade custom software development company in Karachi, Pakistan.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
+    ogTitle: 'Custom Software Development Pakistan | AbuQitmirLabs',
+    ogDescription: 'Custom software built for your workflows by senior engineers in Karachi. Full IP ownership, 100% source code transfer, zero vendor lock-in. Book a call.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
   '/mobile-app-development': {
-    title: 'Flutter Mobile App Development Services | AbuQitmirLabs',
-    description: 'One Flutter codebase, both app stores. We build iOS and Android apps for startups that need to launch fast without cutting corners on performance.',
+    title: 'Mobile App Development Services Pakistan | AbuQitmirLabs',
+    description: 'Flutter and native iOS/Android app development from Karachi. One codebase, both app stores, full source code ownership. Senior-led delivery. Book a call.',
     canonical: 'https://www.abuqitmirlabs.tech/mobile-app-development',
-    ogTitle: 'Flutter Mobile App Development Services | AbuQitmirLabs',
-    ogDescription: 'Expert mobile app development company specializing in iOS, Android, and Flutter applications.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
+    ogTitle: 'Mobile App Development Services Pakistan | AbuQitmirLabs',
+    ogDescription: 'Flutter and native iOS/Android app development from Karachi. One codebase, both app stores, full source code ownership. Senior-led delivery. Book a call.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
   '/web-development': {
-    title: 'Web Development Services in Pakistan | AbuQitmirLabs',
-    description: 'Next.js web development for US, UK, and GCC B2B companies. Sub-second load times, 100% IP ownership, senior-led delivery from Karachi. Book a call.',
+    title: 'Web Development Services Pakistan | AbuQitmirLabs',
+    description: 'Next.js web development for US, UK, and GCC B2B teams. Sub-second load, 100% IP ownership, senior-led delivery from Karachi. Book a consultation.',
     canonical: 'https://www.abuqitmirlabs.tech/web-development',
-    ogTitle: 'Web Development Services in Pakistan | AbuQitmirLabs',
-    ogDescription: 'Next.js web development for US, UK, and GCC B2B companies. Sub-second load times, 100% IP ownership, senior-led delivery from Karachi. Book a call.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
+    ogTitle: 'Web Development Services Pakistan | AbuQitmirLabs',
+    ogDescription: 'Next.js web development for US, UK, and GCC B2B teams. Sub-second load, 100% IP ownership, senior-led delivery from Karachi. Book a consultation.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
   '/ai-agent-development': {
     title: 'AI Agent Development Services | RAG & LLM | AbuQitmirLabs',
-    description: 'Build autonomous AI agents for your business workflows. RAG pipelines, LLM integration, 24/7 operations. Senior-led delivery from Karachi since 2021.',
+    description: 'Build custom AI agents for sales, support, and operations. RAG pipelines, LLM integration, 24/7 automation. Senior-led delivery from Karachi since 2021.',
     canonical: 'https://www.abuqitmirlabs.tech/ai-agent-development',
     ogTitle: 'AI Agent Development Services | RAG & LLM | AbuQitmirLabs',
-    ogDescription: 'Build autonomous AI agents for your business workflows. RAG pipelines, LLM integration, 24/7 operations. Senior-led delivery from Karachi since 2021.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
+    ogDescription: 'Build custom AI agents for sales, support, and operations. RAG pipelines, LLM integration, 24/7 automation. Senior-led delivery from Karachi since 2021.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
   '/ai-video-creation': {
     title: 'AI Video Creation Services | AbuQitmirLabs',
@@ -1352,108 +1356,121 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     robots: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
   },
   '/seo-mastery': {
-    title: 'Technical SEO & Search Dominance Services | AbuQitmirLabs',
-    description: 'Enterprise technical SEO, Core Web Vitals optimization, semantic schema graphs, and Generative Engine Optimization (GEO) for global brands.',
+    title: 'Technical SEO Agency for B2B Companies | AbuQitmirLabs',
+    description: 'Technical SEO agency for B2B and SaaS companies. Core Web Vitals, schema markup, Generative Engine Optimization (GEO), and local SEO from Karachi. Request an audit.',
     canonical: 'https://www.abuqitmirlabs.tech/seo-mastery',
-    ogTitle: 'Technical SEO & Search Dominance Services | AbuQitmirLabs',
-    ogDescription: 'Enterprise technical SEO, Core Web Vitals optimization, and Generative Engine Optimization.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
+    ogTitle: 'Technical SEO Agency for B2B Companies | AbuQitmirLabs',
+    ogDescription: 'Technical SEO agency for B2B and SaaS companies. Core Web Vitals, schema markup, Generative Engine Optimization (GEO), and local SEO from Karachi.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
   '/digital-marketing': {
-    title: 'Digital Marketing Services for Software | AbuQitmirLabs',
-    description: 'Digital marketing for software and SaaS companies: technical SEO, E-E-A-T content, and conversion-focused web architecture. No paid ads.',
+    title: 'B2B Digital Marketing Agency Pakistan | AbuQitmirLabs',
+    description: 'Organic digital marketing for B2B software and SaaS companies from Karachi. Technical SEO, E-E-A-T content, and conversion architecture. No paid ads.',
     canonical: 'https://www.abuqitmirlabs.tech/digital-marketing',
-    ogTitle: 'Digital Marketing Services for Software | AbuQitmirLabs',
-    ogDescription: 'Digital marketing for software and SaaS companies: technical SEO, E-E-A-T content, and conversion architecture. No paid ads.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
+    ogTitle: 'B2B Digital Marketing Agency Pakistan | AbuQitmirLabs',
+    ogDescription: 'Organic digital marketing for B2B software and SaaS companies from Karachi. Technical SEO, E-E-A-T content, and conversion architecture. No paid ads.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
   '/local-seo-for-small-business': {
-    title: 'Local SEO Services for Small Businesses | AbuQitmirLabs',
-    description: 'Dominate Google Local 3-Pack and Google Maps search. Specialized local SEO, citation building, and review automation for local business growth.',
+    title: 'Local SEO for Small Business Pakistan | AbuQitmirLabs',
+    description: 'Local SEO services for small businesses in Pakistan. Google Business Profile optimization, NAP citations, and Google Maps 3-Pack ranking from Karachi.',
     canonical: 'https://www.abuqitmirlabs.tech/local-seo-for-small-business',
-    ogTitle: 'Local SEO Services for Small Businesses | AbuQitmirLabs',
-    ogDescription: 'Dominate Google Local 3-Pack and Google Maps search with data-backed local SEO.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
+    ogTitle: 'Local SEO for Small Business Pakistan | AbuQitmirLabs',
+    ogDescription: 'Local SEO services for small businesses in Pakistan. Google Business Profile optimization, NAP citations, and Google Maps 3-Pack ranking from Karachi.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
   '/local-seo-citation-building': {
-    title: 'Local SEO Citation Building Services | AbuQitmirLabs',
-    description: 'Manual, high-authority local directory citations with 100% NAP consistency. Boost your local search authority across top regional directories.',
+    title: 'NAP Citation Building Service Pakistan | AbuQitmirLabs',
+    description: 'Local SEO citation building service in Pakistan and global markets. Manual NAP consistency cleanup, duplicate removal, and tier-1 listings from $150.',
     canonical: 'https://www.abuqitmirlabs.tech/local-seo-citation-building',
-    ogTitle: 'Local SEO Citation Building Services | AbuQitmirLabs',
-    ogDescription: 'Manual, high-authority local directory citations with 100% NAP consistency.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
+    ogTitle: 'NAP Citation Building Service Pakistan | AbuQitmirLabs',
+    ogDescription: 'Local SEO citation building service in Pakistan and global markets. Manual NAP consistency cleanup, duplicate removal, and tier-1 listings from $150.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
   '/white-label-local-seo': {
-    title: 'White Label Local SEO for Agencies | AbuQitmirLabs',
-    description: 'Scalable white-label local SEO fulfillment for agencies: unbranded reporting, Google Business Profile management, and citation building.',
+    title: 'White Label Local SEO Services for Agencies | AbuQitmirLabs',
+    description: 'White label local SEO services for agencies. Unbranded GBP optimization, NAP citation building, and branded PDF reports at wholesale rates from $350/month.',
     canonical: 'https://www.abuqitmirlabs.tech/white-label-local-seo',
-    ogTitle: 'White Label Local SEO for Agencies | AbuQitmirLabs',
-    ogDescription: 'Scalable white-label local SEO fulfilment for digital marketing agencies.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
+    ogTitle: 'White Label Local SEO Services for Agencies | AbuQitmirLabs',
+    ogDescription: 'White label local SEO services for agencies. Unbranded GBP optimization, NAP citation building, and branded PDF reports at wholesale rates from $350/month.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
   '/local-seo-audit': {
-    title: 'Comprehensive Local SEO Audit | AbuQitmirLabs',
-    description: 'Get a 40-point local SEO audit covering Google Business Profile health, NAP citation accuracy, on-page local signals, and competitor gaps.',
+    title: 'Local SEO Audit Checklist & Service | AbuQitmirLabs',
+    description: 'Interactive local SEO audit checklist and technical GBP review. Check NAP consistency, LocalBusiness schema, and Google Maps competitors or run our audit tool.',
     canonical: 'https://www.abuqitmirlabs.tech/local-seo-audit',
-    ogTitle: 'Comprehensive Local SEO Audit | AbuQitmirLabs',
-    ogDescription: 'Get an in-depth 40-point local SEO audit covering Google Business Profile, citations, and on-page technical health.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
+    ogTitle: 'Local SEO Audit Checklist & Service | AbuQitmirLabs',
+    ogDescription: 'Interactive local SEO audit checklist and technical GBP review. Check NAP consistency, LocalBusiness schema, and Google Maps competitors.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
-  '/graphics-design': {
-    title: 'Graphic Design Services for Brands | AbuQitmirLabs',
-    description: 'Brand identity design, UI/UX vectors, marketing collateral, and digital design systems engineered with visual precision by AbuQitmirLabs.',
-    canonical: 'https://www.abuqitmirlabs.tech/graphics-design',
-    ogTitle: 'Graphic Design Services for Brands | AbuQitmirLabs',
-    ogDescription: 'Brand identity design, UI/UX vectors, marketing collateral, and digital design systems.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
+  '/graphic-design': {
+    title: 'Graphic Design Services for Tech Startups | AbuQitmirLabs',
+    description: 'UI/UX design, brand identity, Figma design systems, logo design, and pitch deck design services from Karachi for tech startups in Pakistan and globally.',
+    canonical: 'https://www.abuqitmirlabs.tech/graphic-design',
+    ogTitle: 'Graphic Design Services for Tech Startups | AbuQitmirLabs',
+    ogDescription: 'UI/UX design, brand identity, Figma design systems, logo design, and pitch deck design services from Karachi for tech startups in Pakistan and globally.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
   '/content-writing': {
-    title: 'Technical Content Writing & SEO Copywriting | AbuQitmirLabs',
-    description: 'Authoritative technical documentation, B2B SaaS copywriting, and search-optimized blog publications written by software domain experts.',
+    title: 'Technical Content Writing for B2B SaaS | AbuQitmirLabs',
+    description: 'Technical content writing services for software and SaaS companies. SEO blogs, engineering guides, and thought leadership starting from $40 per article.',
     canonical: 'https://www.abuqitmirlabs.tech/content-writing',
-    ogTitle: 'Technical Content Writing & SEO Copywriting | AbuQitmirLabs',
-    ogDescription: 'Authoritative technical documentation, B2B SaaS copywriting, and search-optimized blog publications.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
+    ogTitle: 'Technical Content Writing for B2B SaaS | AbuQitmirLabs',
+    ogDescription: 'Technical content writing services for software and SaaS companies. SEO blogs, engineering guides, and thought leadership starting from $40 per article.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
   '/solutions/fintech': {
-    title: 'Fintech Software Solutions | AbuQitmirLabs',
-    description: 'Hardened fintech software development: automated loan underwriting, AML compliance, low-latency payment processing, and banking APIs.',
+    title: 'Fintech Software Development Pakistan | AbuQitmirLabs',
+    description: 'Fintech software development company in Pakistan building RAAST, JazzCash & Easypaisa payment gateways, digital banking platforms, and MVPs from $12,000.',
     canonical: 'https://www.abuqitmirlabs.tech/solutions/fintech',
-    ogTitle: 'Fintech Software Solutions | AbuQitmirLabs',
-    ogDescription: 'Hardened fintech software development: automated underwriting, AML compliance, and low-latency payment microservices.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
+    ogTitle: 'Fintech Software Development Pakistan | AbuQitmirLabs',
+    ogDescription: 'Fintech software development company in Pakistan building RAAST, JazzCash & Easypaisa payment gateways, digital banking platforms, and MVPs from $12,000.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
   '/solutions/healthcare': {
-    title: 'Healthcare Software Development | AbuQitmirLabs',
-    description: 'Custom healthcare software platforms: EHR integration, telemedicine portals, AI patient triage, and zero-trust cloud data architectures.',
+    title: 'Healthcare Software Development Pakistan | AbuQitmirLabs',
+    description: 'Healthcare software development company Pakistan building HIPAA-ready EHR, clinic management software, patient portals, and telemedicine apps from Karachi.',
     canonical: 'https://www.abuqitmirlabs.tech/solutions/healthcare',
-    ogTitle: 'Healthcare Software Development | AbuQitmirLabs',
-    ogDescription: 'Custom healthcare software platforms: EHR integration, telemedicine portals, and AI patient triage.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
+    ogTitle: 'Healthcare Software Development Pakistan | AbuQitmirLabs',
+    ogDescription: 'Healthcare software development company Pakistan building HIPAA-ready EHR, clinic management software, patient portals, and telemedicine apps from Karachi.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
   '/solutions/ai-automation': {
-    title: 'Enterprise AI & Automation Solutions | AbuQitmirLabs',
-    description: 'Autonomous multi-agent workflows, private enterprise RAG pipelines, and intelligent document processing systems engineered for zero hallucination.',
+    title: 'AI Workflow Automation for Business Operations | AbuQitmirLabs',
+    description: 'AI workflow automation for business operations across retail, logistics, and finance. Integrate CRMs, ERPs, and RAG pipelines from $5,000 USD. Built in Karachi.',
     canonical: 'https://www.abuqitmirlabs.tech/solutions/ai-automation',
-    ogTitle: 'Enterprise AI & Automation Solutions | AbuQitmirLabs',
-    ogDescription: 'Autonomous multi-agent workflows, private enterprise RAG pipelines, and intelligent document processing.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
+    ogTitle: 'AI Workflow Automation for Business Operations | AbuQitmirLabs',
+    ogDescription: 'AI workflow automation for business operations across retail, logistics, and finance. Integrate CRMs, ERPs, and RAG pipelines from $5,000 USD. Built in Karachi.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
   '/solutions/e-commerce': {
-    title: 'E-Commerce Software Solutions | AbuQitmirLabs',
-    description: 'High-conversion headless e-commerce architectures, custom checkout microservices, ERP/CRM synchronization, and sub-second catalog indexing.',
+    title: 'Custom E-Commerce Development Pakistan | AbuQitmirLabs',
+    description: 'Custom e-commerce development company Pakistan building Shopify, WooCommerce & Next.js stores with JazzCash, Easypaisa, and Stripe. From $5,000 USD.',
     canonical: 'https://www.abuqitmirlabs.tech/solutions/e-commerce',
-    ogTitle: 'E-Commerce Software Solutions | AbuQitmirLabs',
-    ogDescription: 'High-conversion headless e-commerce architectures and custom checkout microservices.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
+    ogTitle: 'Custom E-Commerce Development Pakistan | AbuQitmirLabs',
+    ogDescription: 'Custom e-commerce development company Pakistan building Shopify, WooCommerce & Next.js stores with JazzCash, Easypaisa, and Stripe. From $5,000 USD.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
   '/solutions/edtech': {
-    title: 'EdTech Software Solutions | AbuQitmirLabs',
-    description: 'Interactive learning platforms, AI tutor agents, real-time classroom telemetry, and SCORM/LTI compliant EdTech architectures.',
+    title: 'LMS Development Company Pakistan | AbuQitmirLabs',
+    description: 'LMS development company Pakistan building online learning platforms, RAG AI tutors, and Arabic/Urdu RTL LMS. Built TajweedPage.com. From $10,000 USD.',
     canonical: 'https://www.abuqitmirlabs.tech/solutions/edtech',
-    ogTitle: 'EdTech Software Solutions | AbuQitmirLabs',
-    ogDescription: 'Interactive learning platforms, AI tutor agents, and SCORM/LTI compliant EdTech architectures.',
-    ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
+    ogTitle: 'LMS Development Company Pakistan | AbuQitmirLabs',
+    ogDescription: 'LMS development company Pakistan building online learning platforms, RAG AI tutors, and Arabic/Urdu RTL LMS. Built TajweedPage.com. From $10,000 USD.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
   '/us-market': {
     title: 'Software Development for US Startups | AbuQitmirLabs',
@@ -3616,16 +3633,16 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     ogType: 'website'
   },
   '/guest-post-service': {
-    title: 'High-Authority Guest Post Service | AbuQitmirLabs',
-    description: 'Manual guest post service delivering DA/DR 40-80+ contextual backlinks via white-hat editorial outreach on indexed, high-traffic publications.',
+    title: 'Guest Post and Editorial Link Building | AbuQitmirLabs',
+    description: 'Editorial link placement service for tech companies and B2B SaaS. High-DA guest posts on vetted tech, business, and marketing sites with real organic traffic.',
     canonical: 'https://www.abuqitmirlabs.tech/guest-post-service',
-    ogTitle: 'High-Authority Guest Post Service | AbuQitmirLabs',
-    ogDescription: 'Manual, high-authority guest post service with DA/DR 40-80+ contextual backlinks. Real editorial outreach, zero PBNs, 100% indexed, verified organic traffic.',
-    ogImage: 'https://www.abuqitmirlabs.tech/logo.png',
+    ogTitle: 'Guest Post and Editorial Link Building | AbuQitmirLabs',
+    ogDescription: 'Editorial link placement service for tech companies and B2B SaaS. High-DA guest posts on vetted tech, business, and marketing sites with real organic traffic.',
+    ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
     ogType: 'website',
-    twitterTitle: 'High-Authority Guest Post Service | AbuQitmirLabs',
-    twitterDescription: 'Manual, high-authority guest post service with DA/DR 40-80+ contextual backlinks. Real editorial outreach, zero PBNs, 100% indexed, verified organic traffic.',
-    twitterImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/the-go-to-guide-to-ai-agent-development-agency-vs-building-i-82ff0c33.webp'
+    twitterTitle: 'Guest Post and Editorial Link Building | AbuQitmirLabs',
+    twitterDescription: 'Editorial link placement service for tech companies and B2B SaaS. High-DA guest posts on vetted tech, business, and marketing sites with real organic traffic.',
+    twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
   '/local-seo-services': {
     title: 'Local SEO Services for Small Business | AbuQitmirLabs',
@@ -18273,13 +18290,15 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           logo: 'https://www.abuqitmirlabs.tech/logo.png',
           foundingDate: '2021',
           sameAs: [
-            'https://www.linkedin.com/in/abu-qitmir-697423390/',
             'https://www.facebook.com/profile.php?id=61583768706452',
             'https://www.instagram.com/abuqitmirshirazalmadani/',
-            'https://x.com/AbuQitmir',
             'https://www.youtube.com/@AbuQitmir',
-            'https://clutch.co/profile/abuqitmirlabstech',
-            'https://www.goodfirms.co/company/abuqitmirlabs-tech'
+            'https://www.linkedin.com/in/abu-qitmir-697423390/',
+            'https://x.com/AbuQitmir',
+            'https://www.pinterest.com/abuqitmir',
+            'https://www.quora.com/profile/Abu-Qitmir-Mohammad-Shiraz-Al-Madani',
+            'https://www.goodfirms.co/company/abuqitmirlabs-tech',
+            'https://clutch.co/profile/abuqitmirlabstech'
           ]
         },
         {
@@ -18287,22 +18306,22 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
           '@id': 'https://www.abuqitmirlabs.tech/#localbusiness',
           name: 'AbuQitmirLabs',
           url: 'https://www.abuqitmirlabs.tech/',
-          image: 'https://www.abuqitmirlabs.tech/logo.png',
+          image: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
           telephone: '+923233260859',
           email: 'hello@abuqitmirlabs.tech',
           priceRange: '$$',
           address: {
             '@type': 'PostalAddress',
-            streetAddress: 'Shahrah-e-Faisal, PECHS',
+            streetAddress: '8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town',
             addressLocality: 'Karachi',
             addressRegion: 'Sindh',
-            postalCode: '75400',
+            postalCode: '75160',
             addressCountry: 'PK',
           },
           geo: {
             '@type': 'GeoCoordinates',
-            latitude: 24.8607,
-            longitude: 67.0642,
+            latitude: 24.842691448838718,
+            longitude: 67.1862014846566,
           },
           openingHoursSpecification: [
             {
@@ -18312,10 +18331,7 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
               closes: '20:00',
             },
           ],
-          areaServed: {
-            '@type': 'Country',
-            name: 'Pakistan',
-          },
+          areaServed: ['PK', 'US', 'GB', 'AE', 'SA'],
         },
         {
           '@type': 'WebSite',

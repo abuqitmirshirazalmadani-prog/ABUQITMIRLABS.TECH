@@ -22,8 +22,9 @@ export const aiAgentSchema = {
       "email": "hello@abuqitmirlabs.tech",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "8/15, 37/A 3, Area Shah Khalid Colony Sector 37 A Landhi Town",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
         "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
         "postalCode": "75160",
         "addressCountry": "PK"
       },
@@ -47,6 +48,29 @@ export const aiAgentSchema = {
       }
     },
     {
+      "@type": "LocalBusiness",
+      "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+      "name": "AbuQitmirLabs",
+      "url": "https://www.abuqitmirlabs.tech/ai-agent-development",
+      "image": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp",
+      "telephone": "+923233260859",
+      "email": "hello@abuqitmirlabs.tech",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+        "addressLocality": "Karachi",
+        "addressRegion": "Sindh",
+        "postalCode": "75160",
+        "addressCountry": "PK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.842691448838718,
+        "longitude": 67.1862014846566
+      }
+    },
+    {
       "@type": "WebSite",
       "@id": "https://www.abuqitmirlabs.tech/#website",
       "url": "https://www.abuqitmirlabs.tech",
@@ -59,8 +83,12 @@ export const aiAgentSchema = {
       "@type": "WebPage",
       "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#webpage",
       "url": "https://www.abuqitmirlabs.tech/ai-agent-development",
-      "name": "Healthcare AI Agent Development Company | AbuQitmirLabs",
-      "description": "Custom healthcare AI agents for patient intake, RAG, EHR integration and workflow automation. Build secure AI systems with AbuQitmirLabs.",
+      "name": "AI Agent Development Services | RAG & LLM | AbuQitmirLabs",
+      "description": "Build custom AI agents for sales, support, and operations. RAG pipelines, LLM integration, 24/7 automation. Senior-led delivery from Karachi since 2021.",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp"
+      },
       "isPartOf": {
         "@id": "https://www.abuqitmirlabs.tech/#website"
       },
@@ -84,7 +112,7 @@ export const aiAgentSchema = {
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Healthcare AI Agent Development",
+          "name": "AI Agent Development",
           "item": "https://www.abuqitmirlabs.tech/ai-agent-development"
         }
       ]
@@ -92,13 +120,19 @@ export const aiAgentSchema = {
     {
       "@type": "Service",
       "@id": "https://www.abuqitmirlabs.tech/ai-agent-development#service",
-      "name": "Healthcare AI Agent Development Services",
-      "serviceType": "Healthcare AI Agent Development and Clinical Workflow Automation",
+      "name": "AI Agent Development Services for Business Workflow Automation",
+      "serviceType": "Custom AI Agent Development, RAG Pipelines & LLM Integration",
       "provider": {
         "@id": "https://www.abuqitmirlabs.tech/#organization"
       },
-      "description": "Custom healthcare AI agent engineering services covering patient support automation, clinical RAG agents, EHR integrations, and operational workflow automation designed to support applicable healthcare security requirements.",
-      "areaServed": ["US", "UK", "CA", "AU", "PL", "PK"],
+      "description": "Custom AI agent development for B2B companies and startups, covering RAG pipeline development services, LLM integration services for business, multi-agent systems, and specialized healthcare AI workflows.",
+      "areaServed": [
+        { "@type": "Country", "name": "Pakistan" },
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Saudi Arabia" }
+      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Healthcare AI Agent Engineering Offerings",
@@ -338,12 +372,12 @@ export const aiAgentInitialHtml = `
   <!-- Skip to Content & Header Navigation synchronized with Header.tsx -->
   ${renderStaticHeader('/ai-agent-development')}
 
-  <!-- Breadcrumbs -->
+    <!-- Breadcrumbs -->
   <div class="pt-28 pb-4 max-w-7xl mx-auto px-6">
     <nav aria-label="Breadcrumbs" class="flex items-center gap-2 text-xs font-mono text-slate-400">
       <a href="/" class="hover:text-white transition-colors">Home</a>
       <span>/</span>
-      <span class="text-[#ccff00]">Healthcare AI Agent Development</span>
+      <span class="text-[#ccff00]">AI Agent Development</span>
     </nav>
   </div>
 
@@ -353,62 +387,61 @@ export const aiAgentInitialHtml = `
       <div class="max-w-5xl mx-auto text-center relative z-10">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#ccff00]/20 bg-[#ccff00]/5 text-[#ccff00] text-xs font-mono tracking-widest uppercase mb-8">
           <span>●</span>
-          <span>Healthcare AI Engineering &amp; Autonomous Systems</span>
+          <span>Autonomous AI Agent Engineering — Karachi &amp; Global</span>
         </div>
 
-        <h1 id="hero-title" class="text-4xl sm:text-6xl md:text-7xl font-serif font-light text-white tracking-tight uppercase leading-[1.08] mb-8">
-          Healthcare AI Agent Development <br />
-          <span class="font-serif italic text-[#ccff00]">for Smarter Healthcare Workflows</span>
+        <h1 id="hero-title" class="text-4xl sm:text-6xl md:text-7xl font-serif font-light text-white tracking-tight leading-[1.08] mb-8">
+          AI Agent Development Services for <br />
+          <span class="font-serif italic text-[#ccff00]">Business Workflow Automation</span>
         </h1>
 
-        <p class="text-lg md:text-xl text-slate-300 font-light max-w-3xl mx-auto mb-10 leading-relaxed font-sans">
-          AbuQitmirLabs engineers custom healthcare AI agents, clinical RAG systems, and autonomous workflow solutions that automate administrative burdens, accelerate patient support, and integrate securely with existing EHR/EMR platforms.
-        </p>
-
-        <!-- Hero Deliverables Quick-Bar -->
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-3xl mx-auto mb-12 text-left">
-          <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-center gap-2.5">
-            <span class="text-[#ccff00]">✓</span>
-            <span class="text-xs text-slate-300 font-mono">Clinical RAG Systems</span>
-          </div>
-          <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-center gap-2.5">
-            <span class="text-[#ccff00]">✓</span>
-            <span class="text-xs text-slate-300 font-mono">EHR &amp; FHIR APIs</span>
-          </div>
-          <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-center gap-2.5">
-            <span class="text-[#ccff00]">✓</span>
-            <span class="text-xs text-slate-300 font-mono">24/7 Patient Intake</span>
-          </div>
-          <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-center gap-2.5">
-            <span class="text-[#ccff00]">✓</span>
-            <span class="text-xs text-slate-300 font-mono">Human-in-the-Loop Gates</span>
-          </div>
-          <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-center gap-2.5">
-            <span class="text-[#ccff00]">✓</span>
-            <span class="text-xs text-slate-300 font-mono">Zero-Data Retention</span>
-          </div>
-          <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-center gap-2.5">
-            <span class="text-[#ccff00]">✓</span>
-            <span class="text-xs text-slate-300 font-mono">100% Code Ownership</span>
-          </div>
+        <div class="mx-auto max-w-3xl p-6 rounded-2xl bg-white/[0.03] border border-[#ccff00]/30 text-left mb-6">
+          <p class="text-base md:text-lg text-white font-normal leading-relaxed font-sans">
+            <strong>AbuQitmirLabs</strong> delivers custom AI agent development for B2B companies, startups, and regulated teams—building production RAG pipelines, LLM tool-calling backends, and autonomous sales, support, and operations agents from scratch with 100% source code ownership. MVP agents start at <strong>$3,500 USD</strong> (or <strong>PKR 350,000+</strong> for Pakistan startups).
+          </p>
         </div>
+
+        <p class="text-sm md:text-base text-slate-400 font-light max-w-3xl mx-auto mb-10 leading-relaxed font-sans">
+          Building a new custom AI agent from scratch? Start here. Looking to automate existing operational workflows using AI tools? Explore <a href="/solutions/ai-automation" class="text-[#ccff00] hover:underline">AI Workflow Automation</a>.
+        </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="/contact" class="px-8 py-4 bg-white text-black font-bold uppercase rounded-xl tracking-wider text-xs hover:bg-slate-200 transition-colors">
-            Discuss Your Healthcare AI Agent →
+            Scope Your Custom AI Agent →
           </a>
-          <a href="/solutions/healthcare" class="px-8 py-4 bg-white/5 text-white font-bold uppercase rounded-xl tracking-wider text-xs border border-white/10 hover:bg-white/10 transition-colors">
-            Explore Healthcare Software ↗
+          <a href="/solutions/ai-automation" class="px-8 py-4 bg-white/5 text-white font-bold uppercase rounded-xl tracking-wider text-xs border border-white/10 hover:bg-white/10 transition-colors">
+            Explore Workflow Automation ↗
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Section 1: What Are Healthcare AI Agents? (AEO Answer Block 1) -->
+    <!-- Section 0: B2B Custom AI Agents -->
+    <section id="custom-b2b-ai-agents" class="py-24 bg-[#040404] max-w-6xl mx-auto px-6 border-t border-white/10">
+      <h2 class="text-3xl md:text-5xl font-serif font-light text-white mb-8">
+        Autonomous AI Agent Development Company for B2B Teams
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10">
+          <h2 class="text-xl font-bold text-white uppercase mb-2">AI Agent Development for Startups</h2>
+          <p class="text-sm text-slate-300 font-light">Launch AI-native SaaS copilots and support agents in 3–5 weeks starting from $3,500 USD (PKR 350,000+ local tier).</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10">
+          <h2 class="text-xl font-bold text-white uppercase mb-2">RAG Pipeline Development Services</h2>
+          <p class="text-sm text-slate-300 font-light">Zero-hallucination vector indexing with Pinecone, Qdrant, or pgvector and verifiable source citations.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10">
+          <h2 class="text-xl font-bold text-white uppercase mb-2">LLM Integration Services for Business</h2>
+          <p class="text-sm text-slate-300 font-light">Structured tool calling across Gemini, Claude, GPT, and VPC-hosted open-weight models.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1: Healthcare AI Agent Development (Vertical Deep-Dive) -->
     <section id="what-are-healthcare-ai-agents" aria-labelledby="heading-what-are-agents" class="py-24 max-w-6xl mx-auto px-6 border-t border-white/10">
-      <span class="text-xs font-mono text-[#ccff00] uppercase tracking-[0.3em] font-bold block mb-4">[ CORE DEFINITION &amp; POSITIONING ]</span>
+      <span class="text-xs font-mono text-[#ccff00] uppercase tracking-[0.3em] font-bold block mb-4">[ REGULATED VERTICAL DEEP-DIVE // HEALTHCARE ]</span>
       <h2 id="heading-what-are-agents" class="text-3xl md:text-5xl font-serif font-light text-white mb-8">
-        What Are Healthcare AI Agents?
+        Healthcare AI Agent Development
       </h2>
 
       <!-- Direct AEO / GEO Answer Block (40-70 words) -->

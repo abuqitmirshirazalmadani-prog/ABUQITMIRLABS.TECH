@@ -161,7 +161,7 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
                   onClick={onTrialClick}
                   className="bg-[#C8EB5F] text-black hover:bg-white text-xs sm:text-sm font-bold tracking-wider px-8 py-4 font-mono uppercase rounded-none transition-all duration-300 shadow-[0_0_30px_rgba(200,235,95,0.2)] flex items-center gap-3 group cursor-pointer"
                 >
-                  Book Free Technical Audit
+                  Request Technical Audit
                   <ArrowRight
                     size={16}
                     className="group-hover:translate-x-1.5 transition-transform"
@@ -172,7 +172,7 @@ export function HeroSection({ onTrialClick, onDemoClick }: HeroSectionProps) {
                   to="/contact"
                   className="bg-[#C8EB5F] text-black hover:bg-white text-xs sm:text-sm font-bold tracking-wider px-8 py-4 font-mono uppercase rounded-none transition-all duration-300 shadow-[0_0_30px_rgba(200,235,95,0.2)] flex items-center gap-3 group"
                 >
-                  Book Free Technical Audit
+                  Request Technical Audit
                   <ArrowRight
                     size={16}
                     className="group-hover:translate-x-1.5 transition-transform"

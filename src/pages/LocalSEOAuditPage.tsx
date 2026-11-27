@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
+import SEO from '../components/SEO';
 import { 
     CheckCircle2, 
     XCircle, 
@@ -35,8 +35,27 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 
+const selfServeChecklistItems = [
+    "GBP primary category matches exact core service (not a generic umbrella category)",
+    "Business Name, Landhi/office street address, and phone (NAP) match website footer character-for-character",
+    "LocalBusiness + GeoCoordinates JSON-LD schema deployed cleanly in page HTML",
+    "Zero duplicate Google Business Profile listings for the same phone or storefront",
+    "Top 15 core directories (Apple Maps, Bing Places, Yelp, Facebook) verified with identical phone",
+    "Real storefront, team, and workspace photos uploaded within the past 60 days",
+    "Dedicated city/service landing page passes mobile Core Web Vitals (LCP < 2.5s)",
+    "Consistent customer review velocity with owner replies within 48 hours",
+    "Service-area radius or office hours accurately configured including holidays",
+    "Embedded tap-to-call and clear contact conversion path above the fold"
+];
+
 export default function LocalSEOAuditPage() {
     const [openFaq, setOpenFaq] = useState<number | null>(0);
+    const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>({});
+
+    const toggleChecklist = (idx: number) => {
+        setCheckedItems(prev => ({ ...prev, [idx]: !prev[idx] }));
+    };
+    const completedScore = Object.values(checkedItems).filter(Boolean).length;
 
     const toggleFaq = (index: number) => {
         setOpenFaq(openFaq === index ? null : index);
@@ -112,156 +131,201 @@ export default function LocalSEOAuditPage() {
         }
     ];
 
+    const pageTitle = "Local SEO Audit Checklist & Service | AbuQitmirLabs";
+    const pageDescription = "Interactive local SEO audit checklist and technical GBP review. Check NAP consistency, LocalBusiness schema, and Google Maps competitors or run our audit tool.";
+    const canonicalUrl = "https://www.abuqitmirlabs.tech/local-seo-audit";
+    const ogImageUrl = "https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp";
+
+    const jsonLdData = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://www.abuqitmirlabs.tech/#organization",
+                "name": "AbuQitmirLabs",
+                "alternateName": "AbuQitmirLabs .TECH",
+                "description": "Empowering businesses through advanced digital engineering — custom software, AI agents, web development, and local SEO services.",
+                "url": "https://www.abuqitmirlabs.tech",
+                "logo": "https://www.abuqitmirlabs.tech/logo.png",
+                "image": ogImageUrl,
+                "foundingDate": "2020",
+                "telephone": "+923233260859",
+                "email": "hello@abuqitmirlabs.tech",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+                    "addressLocality": "Karachi",
+                    "addressRegion": "Sindh",
+                    "postalCode": "75160",
+                    "addressCountry": "PK"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 24.842691448838718,
+                    "longitude": 67.1862014846566
+                },
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+923233260859",
+                    "contactType": "sales",
+                    "email": "hello@abuqitmirlabs.tech",
+                    "availableLanguage": ["English", "Urdu"]
+                },
+                "sameAs": [
+                    "https://www.facebook.com/profile.php?id=61583768706452",
+                    "https://www.instagram.com/abuqitmirshirazalmadani/",
+                    "https://www.youtube.com/@AbuQitmir",
+                    "https://www.linkedin.com/in/abu-qitmir-697423390/",
+                    "https://x.com/AbuQitmir",
+                    "https://github.com/abuqitmir"
+                ]
+            },
+            {
+                "@type": "LocalBusiness",
+                "@id": "https://www.abuqitmirlabs.tech/#localbusiness",
+                "name": "AbuQitmirLabs",
+                "url": "https://www.abuqitmirlabs.tech",
+                "image": ogImageUrl,
+                "telephone": "+923233260859",
+                "email": "hello@abuqitmirlabs.tech",
+                "priceRange": "$$",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "8/15, 37-A/3, Shah Khalid Colony, Sector 37-A, Landhi Town",
+                    "addressLocality": "Karachi",
+                    "addressRegion": "Sindh",
+                    "postalCode": "75160",
+                    "addressCountry": "PK"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 24.842691448838718,
+                    "longitude": 67.1862014846566
+                }
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://www.abuqitmirlabs.tech/#website",
+                "url": "https://www.abuqitmirlabs.tech",
+                "name": "AbuQitmirLabs",
+                "description": "Custom software, AI agents, web development, and local SEO services across Pakistan, US, UK, UAE, and Saudi Arabia.",
+                "inLanguage": "en-US",
+                "publisher": {
+                    "@id": "https://www.abuqitmirlabs.tech/#organization"
+                }
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://www.abuqitmirlabs.tech/local-seo-audit#webpage",
+                "url": canonicalUrl,
+                "name": pageTitle,
+                "description": pageDescription,
+                "inLanguage": "en-US",
+                "isPartOf": {
+                    "@id": "https://www.abuqitmirlabs.tech/#website"
+                },
+                "about": {
+                    "@id": "https://www.abuqitmirlabs.tech/local-seo-audit#service"
+                },
+                "primaryImageOfPage": {
+                    "@type": "ImageObject",
+                    "url": ogImageUrl,
+                    "width": 1200,
+                    "height": 630
+                },
+                "breadcrumb": {
+                    "@id": "https://www.abuqitmirlabs.tech/local-seo-audit#breadcrumb"
+                }
+            },
+            {
+                "@type": "Service",
+                "@id": "https://www.abuqitmirlabs.tech/local-seo-audit#service",
+                "name": "Local SEO Audit & Google Business Profile Review",
+                "description": pageDescription,
+                "url": canonicalUrl,
+                "provider": {
+                    "@id": "https://www.abuqitmirlabs.tech/#organization"
+                },
+                "areaServed": [
+                    { "@type": "Country", "name": "Pakistan" },
+                    { "@type": "Country", "name": "United States" },
+                    { "@type": "Country", "name": "United Kingdom" },
+                    { "@type": "Country", "name": "United Arab Emirates" },
+                    { "@type": "Country", "name": "Saudi Arabia" }
+                ],
+                "serviceType": "Local SEO Audit",
+                "offers": {
+                    "@type": "Offer",
+                    "name": "Full Technical Local SEO Audit Report",
+                    "description": "Comprehensive local SEO audit — GBP analysis, 50+ citation scan, schema validation, competitor gap review, and prioritised fix list starting at $150 USD.",
+                    "priceSpecification": {
+                        "@type": "PriceSpecification",
+                        "minPrice": "0",
+                        "maxPrice": "150",
+                        "priceCurrency": "USD",
+                        "description": "Self-serve checklist & initial review included; full technical audit from $150 USD"
+                    }
+                }
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://www.abuqitmirlabs.tech/local-seo-audit#faq",
+                "isPartOf": {
+                    "@id": "https://www.abuqitmirlabs.tech/local-seo-audit#webpage"
+                },
+                "mainEntity": faqs.map(faq => ({
+                    "@type": "Question",
+                    "name": faq.q,
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": faq.a
+                    }
+                }))
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://www.abuqitmirlabs.tech/local-seo-audit#breadcrumb",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://www.abuqitmirlabs.tech/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Local SEO for Small Business",
+                        "item": "https://www.abuqitmirlabs.tech/local-seo-for-small-business"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Local SEO Audit",
+                        "item": canonicalUrl
+                    }
+                ]
+            }
+        ]
+    };
+
     return (
         <div className="min-h-screen bg-[#080808] text-white selection:bg-[#ccff00] selection:text-black font-sans antialiased">
-            <Helmet>
-                {/* ═══ Primary Meta Tags ═══ */}
-                <title>Free Local SEO Audit | AbuQitmirLabs</title>
-                <meta name="description" content="Free local SEO audit covering Google Business Profile, NAP citations, schema markup, and map-pack competitors. Get a prioritized action plan — not a jargon-filled deck." />
-                <link rel="canonical" href="https://www.abuqitmirlabs.tech/local-seo-audit" />
-                <meta name="keywords" content="local SEO audit, free local SEO audit, local SEO analysis, Google Business Profile audit, citation audit, map pack analysis, local SEO consultant" />
-                
-                {/* ═══ Open Graph (Facebook / LinkedIn) ═══ */}
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://www.abuqitmirlabs.tech/local-seo-audit" />
-                <meta property="og:title" content="Free Local SEO Audit | AbuQitmirLabs" />
-                <meta property="og:description" content="Free local SEO audit covering Google Business Profile, NAP citations, schema markup, and map-pack competitors. Get a prioritized action plan — not a jargon-filled deck." />
-                <meta property="og:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-                <meta property="og:image:width" content="1200" />
-                <meta property="og:image:height" content="630" />
-                <meta property="og:site_name" content="AbuQitmirLabs" />
-
-                {/* ═══ Twitter Card ═══ */}
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:site" content="@AbuQitmir" />
-                <meta name="twitter:title" content="Free Local SEO Audit | AbuQitmirLabs" />
-                <meta name="twitter:description" content="Free local SEO audit covering Google Business Profile, NAP citations, schema markup, and map-pack competitors. Get a prioritized action plan — not a jargon-filled deck." />
-                <meta name="twitter:image" content="https://www.abuqitmirlabs.tech/logo.png" />
-
-                {/* ═══ Structured Data / JSON-LD ═══ */}
-                <script type="application/ld+json">
-                    {JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@graph": [
-                            {
-                                "@type": "Organization",
-                                "@id": "https://www.abuqitmirlabs.tech/#organization",
-                                "name": "AbuQitmirLabs .TECH",
-                                "description": "Empowering businesses through advanced digital engineering — custom software, AI agents, web development, and local SEO services.",
-                                "url": "https://www.abuqitmirlabs.tech",
-                                "logo": "https://www.abuqitmirlabs.tech/logo.png",
-                                "foundingDate": "2020",
-                                "address": {
-                                    "@type": "PostalAddress",
-                                    "addressLocality": "Karachi",
-                                    "addressCountry": "PK"
-                                },
-                                "contactPoint": {
-                                    "@type": "ContactPoint",
-                                    "telephone": "+92-323-3260859",
-                                    "contactType": "sales",
-                                    "availableLanguage": ["English", "Urdu"]
-                                },
-                                "sameAs": [
-                                    "https://twitter.com/AbuQitmir",
-                                    "https://www.linkedin.com/company/abuqitmirlabs",
-                                    "https://www.facebook.com/abuqitmirlabs"
-                                ]
-                            },
-                            {
-                                "@type": "WebPage",
-                                "@id": "https://www.abuqitmirlabs.tech/local-seo-audit#webpage",
-                                "url": "https://www.abuqitmirlabs.tech/local-seo-audit",
-                                "name": "Free Local SEO Audit | Forensic Map Pack Analysis | AbuQitmirLabs",
-                                "description": "Free local SEO audit covering Google Business Profile, NAP citations, schema markup, and map-pack competitors. Get a prioritized action plan — not a jargon-filled deck.",
-                                "inLanguage": "en-US",
-                                "isPartOf": {
-                                    "@id": "https://www.abuqitmirlabs.tech/#website"
-                                },
-                                "about": {
-                                    "@id": "https://www.abuqitmirlabs.tech/local-seo-audit#service"
-                                },
-                                "breadcrumb": {
-                                    "@id": "https://www.abuqitmirlabs.tech/local-seo-audit#breadcrumb"
-                                }
-                            },
-                            {
-                                "@type": "Service",
-                                "@id": "https://www.abuqitmirlabs.tech/local-seo-audit#service",
-                                "name": "Local SEO Audit",
-                                "description": "A comprehensive local SEO audit covering Google Business Profile health, citation consistency, on-page local signals, technical issues, and map-pack competitor analysis — delivered as a priority action report.",
-                                "provider": {
-                                    "@id": "https://www.abuqitmirlabs.tech/#organization"
-                                },
-                                "areaServed": ["US", "GB", "PK", "CA", "PL", "AU"],
-                                "serviceType": "Local SEO Audit",
-                                "offers": {
-                                    "@type": "Offer",
-                                    "name": "Local SEO Audit Report",
-                                    "description": "Comprehensive local SEO audit — GBP analysis, citation profile, on-page signals, competitor gap review, and prioritised fix list.",
-                                    "priceSpecification": {
-                                        "@type": "PriceSpecification",
-                                        "price": "0",
-                                        "priceCurrency": "USD",
-                                        "description": "Initial audit free; full technical audit from $150"
-                                    }
-                                }
-                            },
-                            {
-                                "@type": "FAQPage",
-                                "mainEntity": faqs.map(faq => ({
-                                    "@type": "Question",
-                                    "name": faq.q,
-                                    "acceptedAnswer": {
-                                        "@type": "Answer",
-                                        "text": faq.a
-                                    }
-                                }))
-                            },
-                            {
-                                "@type": "BreadcrumbList",
-                                "@id": "https://www.abuqitmirlabs.tech/local-seo-audit#breadcrumb",
-                                "itemListElement": [
-                                    {
-                                        "@type": "ListItem",
-                                        "position": 1,
-                                        "name": "Home",
-                                        "item": "https://www.abuqitmirlabs.tech/"
-                                    },
-                                    {
-                                        "@type": "ListItem",
-                                        "position": 2,
-                                        "name": "Local SEO Services",
-                                        "item": "https://www.abuqitmirlabs.tech/local-seo-services"
-                                    },
-                                    {
-                                        "@type": "ListItem",
-                                        "position": 3,
-                                        "name": "Local SEO Audit",
-                                        "item": "https://www.abuqitmirlabs.tech/local-seo-audit"
-                                    }
-                                ]
-                            },
-                            {
-                                "@type": "WebSite",
-                                "@id": "https://www.abuqitmirlabs.tech/#website",
-                                "url": "https://www.abuqitmirlabs.tech",
-                                "name": "AbuQitmirLabs .TECH",
-                                "description": "Custom software, AI agents, web development, and local SEO services. 410+ projects completed. 350+ clients. 3x faster ROI.",
-                                "inLanguage": "en-US",
-                                "publisher": {
-                                    "@id": "https://www.abuqitmirlabs.tech/#organization"
-                                }
-                            }
-                        ]
-                    })}
-                </script>
-            </Helmet>
+            <SEO
+                title={pageTitle}
+                description={pageDescription}
+                canonical={canonicalUrl}
+                keywords="local SEO audit service, local SEO audit checklist, Google Business Profile audit, NAP citation audit, map pack analysis"
+                ogImage={ogImageUrl}
+                ogImageAlt="Local SEO Audit Checklist & Technical Review - AbuQitmirLabs"
+                twitterImage={ogImageUrl}
+                schema={jsonLdData}
+            />
 
             <Header />
 
             <main className="pt-28 md:pt-36 relative">
-                <Breadcrumbs customItems={[
+                <Breadcrumbs disableSchema={true} customItems={[
                     { name: 'HQ', to: '/' },
                     { name: 'LOCAL SEO FOR SMALL BUSINESS', to: '/local-seo-for-small-business' },
                     { name: 'LOCAL SEO AUDIT' }
@@ -269,30 +333,41 @@ export default function LocalSEOAuditPage() {
 
                 {/* Hero Section */}
                 <section className="px-6 md:px-12 max-w-7xl mx-auto py-16 md:py-24 border-b border-white/10">
-                    <div className="max-w-4xl animate-enter">
+                    <div className="max-w-4xl">
                         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] text-xs font-mono font-bold tracking-widest uppercase mb-6">
                             <FileSearch className="w-3.5 h-3.5" />
-                            AbuQitmirLabs .TECH — Local SEO Audit
+                            SELF-SERVE CHECKLIST &amp; TECHNICAL DIAGNOSTIC • FULL AUDIT FROM $150
                         </div>
-                        <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-medium tracking-tight text-white leading-[1.1] mb-8 animate-enter-delay-1">
-                            Find Out <em className="text-[#ccff00] italic font-normal">Exactly</em> Why You're Not in the Map Pack
+                        <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-medium tracking-tight text-white leading-[1.1] mb-8">
+                            Local SEO Audit Checklist &amp; <em className="text-[#ccff00] italic font-normal">Map Pack Diagnostic</em>
                         </h1>
-                        <p className="text-lg md:text-xl text-zinc-300 font-sans leading-relaxed mb-10 max-w-4xl animate-enter-delay-2">
-                            A forensic local SEO analysis across your Google Business Profile, citation profile, on-page signals, and top competitors. Starting from our <Link to="/" className="text-[#ccff00] hover:underline font-medium">home page</Link>, we diagnose search bottlenecks and deliver a prioritized action report.
+
+                        {/* GEO Direct Answer Callout */}
+                        <div className="my-8 p-6 md:p-8 rounded-2xl bg-zinc-900/90 border-2 border-[#ccff00]/40 text-left shadow-[0_0_30px_rgba(204,255,0,0.08)]">
+                            <h2 className="text-xs font-mono uppercase tracking-widest text-[#ccff00] mb-2 font-bold">
+                                Direct Answer: What Does a Local SEO Audit Check?
+                            </h2>
+                            <p className="text-base md:text-lg text-zinc-200 leading-relaxed font-normal">
+                                A <strong>local SEO audit</strong> evaluates Google Business Profile category accuracy, NAP citation consistency across directories, LocalBusiness JSON-LD schema, Core Web Vitals mobile speed, and top-3 Google Maps competitor signals to pinpoint exact fixes preventing Map Pack visibility.
+                            </p>
+                        </div>
+
+                        <p className="text-lg md:text-xl text-zinc-300 font-sans leading-relaxed mb-10 max-w-4xl">
+                            Run our instant automated website scan on the <Link to="/tools/website-audit" className="text-[#ccff00] hover:underline font-medium">Website SEO &amp; AI Readiness Audit Tool</Link>, complete the 10-point checklist below, or read our full breakdown of <Link to="/blog/what-a-local-seo-audit-actually-checks-2026-complete-guide" className="text-[#ccff00] hover:underline font-medium">what a local SEO audit actually checks</Link>.
                         </p>
                         <div className="flex flex-wrap gap-4 items-center">
                             <Link 
-                                to="/contact" 
+                                to="/tools/website-audit" 
                                 className="px-8 py-4 bg-[#ccff00] text-black font-bold text-sm rounded-xl hover:bg-white transition-all brutalist-shadow flex items-center gap-2 uppercase tracking-wider"
                             >
-                                Request Your Free Audit
+                                Run Website Audit Tool Now
                                 <ArrowRight className="w-4 h-4" />
                             </Link>
                             <Link 
-                                to="/local-seo-for-small-business" 
+                                to="/contact" 
                                 className="px-8 py-4 bg-zinc-900 text-white font-bold text-sm border border-white/20 rounded-xl hover:bg-zinc-800 transition-all flex items-center gap-2 uppercase tracking-wider"
                             >
-                                Explore Full Local SEO Services
+                                Request Technical Local Audit
                             </Link>
                         </div>
                     </div>
@@ -428,6 +503,70 @@ export default function LocalSEOAuditPage() {
                         ))}
                     </div>
 
+                    {/* Interactive Self-Serve Checklist + Typical Before/After Diagnostic Snapshot */}
+                    <div className="mt-16 grid lg:grid-cols-12 gap-8 items-start">
+                        <div className="lg:col-span-7 bg-zinc-950 border-2 border-[#ccff00]/30 rounded-2xl p-6 md:p-8">
+                            <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
+                                <h3 className="text-xl md:text-2xl font-serif font-medium text-white">
+                                    Interactive Self-Serve Local SEO Audit Checklist
+                                </h3>
+                                <span className="px-3 py-1 rounded-full bg-[#ccff00] text-black text-xs font-mono font-black">
+                                    SCORE: {completedScore} / {selfServeChecklistItems.length}
+                                </span>
+                            </div>
+                            <p className="text-xs md:text-sm text-zinc-400 mb-6">
+                                Score your own Google Business Profile and website readiness before requesting an engineering audit, or run automated checks on our <Link to="/tools/website-audit" className="text-[#ccff00] underline font-medium">/tools/website-audit</Link> scanner.
+                            </p>
+                            <div className="space-y-3">
+                                {selfServeChecklistItems.map((item, idx) => (
+                                    <label
+                                        key={idx}
+                                        className="flex items-start gap-3 p-3.5 rounded-xl bg-zinc-900/70 border border-white/10 hover:border-[#ccff00]/40 cursor-pointer transition-colors"
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            checked={Boolean(checkedItems[idx])}
+                                            onChange={() => toggleChecklist(idx)}
+                                            className="mt-1 h-4 w-4 accent-[#ccff00] shrink-0"
+                                        />
+                                        <span className={`text-xs md:text-sm leading-relaxed ${checkedItems[idx] ? 'text-zinc-400 line-through' : 'text-zinc-200'}`}>
+                                            {item}
+                                        </span>
+                                    </label>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="lg:col-span-5 bg-zinc-950 border border-white/10 rounded-2xl p-6 md:p-8 space-y-6">
+                            <div>
+                                <span className="text-[#ccff00] text-xs font-mono font-bold tracking-widest uppercase block mb-2">
+                                    Typical Audit Findings Pattern
+                                </span>
+                                <h3 className="text-xl md:text-2xl font-serif font-medium text-white mb-2">
+                                    We Found 14 Issues in a Typical Local Audit
+                                </h3>
+                                <p className="text-xs md:text-sm text-zinc-400">
+                                    Before/after breakdown across a standard single-location audit engagement:
+                                </p>
+                            </div>
+                            <div className="p-4 rounded-xl bg-red-950/25 border border-red-500/30 space-y-2 text-xs text-zinc-300">
+                                <div className="font-mono font-bold text-red-400 uppercase">Before Audit (14 Blockers)</div>
+                                <div>• 1 generic GBP primary category mismatch</div>
+                                <div>• 6 NAP phone/address conflicts across directories</div>
+                                <div>• 3 unmerged duplicate map pins</div>
+                                <div>• Missing LocalBusiness + GeoCoordinates schema</div>
+                                <div>• 0 GBP updates in 6 months &amp; 4.1s mobile LCP</div>
+                            </div>
+                            <div className="p-4 rounded-xl bg-emerald-950/25 border border-[#ccff00]/40 space-y-2 text-xs text-zinc-200">
+                                <div className="font-mono font-bold text-[#ccff00] uppercase">After Remediation Plan</div>
+                                <div>• Exact primary + secondary GBP categories aligned</div>
+                                <div>• Master NAP unified across 45+ Tier 1–3 directories</div>
+                                <div>• Validated single @graph LocalBusiness JSON-LD</div>
+                                <div>• Sub-second localized service page performance</div>
+                            </div>
+                        </div>
+                    </div>
+
                     {/* Authoritative External Local SEO Audit Resources */}
                     <div className="mt-12 pt-6 border-t border-white/10 flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-zinc-400">
                         <span className="text-zinc-500 uppercase tracking-widest font-bold">Authoritative Local SEO Audit Standards:</span>
@@ -478,7 +617,7 @@ export default function LocalSEOAuditPage() {
                                 </ul>
                             </div>
                             <Link to="/contact" className="w-full py-3.5 bg-zinc-900 border border-white/20 text-white font-bold text-xs uppercase text-center rounded-xl hover:bg-zinc-800 transition-all">
-                                Request Free Audit
+                                Request Initial Review
                             </Link>
                         </div>
 
@@ -558,16 +697,16 @@ export default function LocalSEOAuditPage() {
                 <section className="px-6 md:px-12 max-w-5xl mx-auto py-24 text-center">
                     <div className="bg-gradient-to-b from-zinc-900 to-black border-2 border-[#ccff00]/40 rounded-3xl p-10 md:p-16 relative overflow-hidden brutalist-shadow">
                         <h2 className="text-3xl md:text-5xl font-serif font-medium text-white mb-6">
-                            Request Your Free Local SEO Audit
+                            Request Your Technical Local SEO Audit
                         </h2>
                         <p className="text-zinc-300 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-                            Tell us your business name, location, and the keyword you most want to rank for. We'll have your initial audit back within 3 business days.
+                            Tell us your business name, location, and target keywords, or run a live automated check on our <Link to="/tools/website-audit" className="text-[#ccff00] underline">Website Audit Tool</Link> first.
                         </p>
                         <Link 
                             to="/contact" 
                             className="inline-flex items-center gap-3 px-8 py-4 bg-[#ccff00] text-black font-bold text-sm uppercase tracking-wider rounded-xl hover:bg-white transition-all brutalist-shadow"
                         >
-                            Request the Free Audit
+                            Request Technical Audit
                             <ArrowRight className="w-5 h-5" />
                         </Link>
                     </div>
