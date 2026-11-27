@@ -88,6 +88,7 @@ const Footer = () => {
                             <li><Link to="/about/our-company" className="text-black hover:underline">About Our Studio.</Link></li>
                             <li><Link to="/about/our-team" className="text-black hover:underline">Our Engineering Team.</Link></li>
                             <li><Link to="/about/our-process" className="text-black hover:underline">Our 5-Step Process.</Link></li>
+                            <li><Link to="/admin" className="text-black hover:underline font-black bg-black text-[#ccff00] px-2 py-0.5 rounded inline-block my-1">Admin Dashboard →</Link></li>
                             <li><Link to="/editorial-policy" className="text-black hover:underline">Editorial Policy.</Link></li>
                             <li><Link to="/privacy" className="text-black hover:underline">Privacy Policy.</Link></li>
                             <li><Link to="/terms" className="text-black hover:underline">Terms of Service.</Link></li>
