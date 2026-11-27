@@ -4289,7 +4289,7 @@ STATIC_BLOG_POSTS["raast-payment-integration-pakistan"] = {
   "coverImage": "/images/blog-covers/raast-payment-integration-pakistan.webp",
   "coverImageAlt": "Raast Payment Integration in Pakistan for Merchants",
   "category": "Development",
-  "createdAt": "2026-11-20",
+  "createdAt": "2026-11-27",
   "author": "Abu Qitmir Mohammad Shiraz Al-Madani",
   "tags": [
     "Raast payment integration in Pakistan",

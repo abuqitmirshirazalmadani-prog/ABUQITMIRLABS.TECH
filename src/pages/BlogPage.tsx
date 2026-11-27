@@ -162,33 +162,15 @@ const BlogPage = () => {
                 setLoading(true);
                 let rawDocs: any[] = [];
 
-                // Strategy 1: Fetch published posts without compound index requirement
+                // Strategy: Fetch all posts from collection without published filter so newly added articles appear instantly
                 try {
-                    const postsQuery = query(
-                        collection(db, 'posts'),
-                        where('published', '==', true)
-                    );
+                    const postsQuery = query(collection(db, 'posts'));
                     const snapshot = await getDocs(postsQuery);
                     if (!snapshot.empty) {
                         rawDocs = snapshot.docs;
                     }
                 } catch (queryErr) {
-                    console.warn('[BlogPage] Primary published query notice:', queryErr);
-                }
-
-                // Strategy 2: Fallback to collection query with in-memory filtering
-                if (rawDocs.length === 0) {
-                    try {
-                        const fallbackSnapshot = await getDocs(collection(db, 'posts'));
-                        if (!fallbackSnapshot.empty) {
-                            rawDocs = fallbackSnapshot.docs.filter(doc => {
-                                const d = doc.data();
-                                return d.published === true || d.published === 'true' || d.published === undefined;
-                            });
-                        }
-                    } catch (fallbackErr) {
-                        console.warn('[BlogPage] Collection fallback query notice:', fallbackErr);
-                    }
+                    console.warn('[BlogPage] Posts query notice:', queryErr);
                 }
 
                 if (rawDocs.length > 0 && isMounted) {
