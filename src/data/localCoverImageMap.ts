@@ -38,6 +38,7 @@ export const REMOTE_TO_LOCAL_COVER_MAP: Record<string, string> = {
 };
 
 export const SLUG_TO_LOCAL_COVER_MAP: Record<string, string> = {
+  "ai-integration-pakistan-sme-existing-software": "/images/blog-covers/ai-integration-pakistan-sme-existing-software.webp",
   "ai-coding-agents-secure-agentic-software-development": "/images/blog-covers/ai-coding-agents-secure-agentic-software-development.webp",
   "whatsapp-business-branding-pakistan": "/images/blog-covers/whatsapp-business-branding-pakistan.webp",
   "content-audit-pakistan-smes": "/images/blog-covers/content-audit-pakistan-smes.webp",
