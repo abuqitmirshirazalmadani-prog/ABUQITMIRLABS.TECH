@@ -84,7 +84,9 @@ export const BLOG_SLUG_REDIRECTS: Record<string, string> = {
   'edtech-software-development-lms-features-every-platform-needs': 'edtech-software-development',
   'native-mobile-app-development-ios-vs-android-cost-2026-abuqitmirlabs': 'native-mobile-app-development-ios-vs-android-cost',
   'flutter-vs-native-choosing-your-mobile-app-stack-in-2026': 'flutter-vs-native-mobile-app-development-2026',
-  'high-performance-web-apps-12-engineering-decisions': 'high-performance-web-applications-12-engineering-decisions'
+  'high-performance-web-apps-12-engineering-decisions': 'high-performance-web-applications-12-engineering-decisions',
+  'ai-integration-with-legacy-systems': 'ai-integration-with-legacy-systems-the-complete-2026-guide',
+  'ai-integration-pakistan-sme-existing-software': 'ai-integration-with-legacy-systems-the-complete-2026-guide'
 };
 
 /**
