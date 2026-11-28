@@ -27,6 +27,7 @@ import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
+import CountryMarquee from '../components/CountryMarquee';
 import ObfuscatedEmail from '../components/ObfuscatedEmail';
 import { db, collection, addDoc, serverTimestamp, handleFirestoreError, OperationType } from '../lib/firebase';
 
@@ -152,6 +153,10 @@ const ContactPage = () => {
              </p>
              <div className="w-32 h-2 bg-[#ccff00] mx-auto mb-10 shadow-[0_0_20px_rgba(204,255,0,0.5)]"></div>
           </section>
+
+          <div className="mb-16">
+             <CountryMarquee />
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Accessible Server-Rendered Project Inquiry Form */}

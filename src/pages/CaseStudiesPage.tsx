@@ -8,6 +8,7 @@ import {
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import CountryMarquee from '../components/CountryMarquee';
 
 interface CaseStudy {
     id: string;
@@ -542,6 +543,8 @@ export default function CaseStudiesPage() {
                     </motion.div>
                 </div>
             </section>
+
+            <CountryMarquee />
 
             {/* Cinematic Scroll Sections (One per scroll block) */}
             <section className="bg-black relative z-10">

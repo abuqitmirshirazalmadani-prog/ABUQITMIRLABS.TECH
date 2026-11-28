@@ -6,6 +6,7 @@ import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import HeroSection from '../components/HeroSection';
+import CountryMarquee from '../components/CountryMarquee';
 import TrustSection from '../components/TrustSection';
 import ServicesSection from '../components/ServicesSection';
 import ProcessSection from '../components/ProcessSection';
@@ -489,6 +490,8 @@ export default function HomePage() {
       <Header />
 
       <HeroSection />
+
+      <CountryMarquee />
 
       <TrustSection />
 

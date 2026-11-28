@@ -7,6 +7,7 @@ import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
+import CountryMarquee from '../components/CountryMarquee';
 import { getStaticBlogList } from '../data/staticBlogPosts';
 import { BLOG_SLUG_REDIRECTS, getCanonicalSlug } from '../data/canonicalRedirects';
 import { resolveOptimizedCoverImage, getRemoteCoverFallback } from '../data/localCoverImageMap';
@@ -408,6 +409,10 @@ const BlogPage = () => {
                             Search Engine Journal <ExternalLink className="w-3 h-3" />
                         </a>
                     </div>
+                </div>
+
+                <div className="mb-16">
+                    <CountryMarquee />
                 </div>
 
                 {loading && posts.length === 0 ? (

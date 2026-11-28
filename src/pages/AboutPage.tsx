@@ -30,6 +30,7 @@ import {
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
+import CountryMarquee from '../components/CountryMarquee';
 
 const AboutPage = () => {
   const stats = [
@@ -210,6 +211,8 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
+
+      <CountryMarquee />
 
       {/* Founder & Mission Statement */}
       <section className="py-24 md:py-40 bg-black border-y border-white/5 relative overflow-hidden">
