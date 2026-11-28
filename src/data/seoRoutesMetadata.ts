@@ -1256,19 +1256,19 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/about': {
     title: 'About AbuQitmirLabs | B2B Growth Engineering Since 2021',
-    description: 'Founded in 2021 by AbuQitmir Mohammad Shiraz Al Madani in Karachi. 5+ years building custom software, AI agents, and SEO systems for global B2B teams.',
+    description: 'Growth engineering firm in Karachi, Pakistan. We build custom software, AI automation, and technical SEO systems for B2B companies across the US, UK, GCC, and Pakistan since 2021.',
     canonical: 'https://www.abuqitmirlabs.tech/about',
     ogTitle: 'About AbuQitmirLabs | B2B Growth Engineering Since 2021',
-    ogDescription: 'Founded in 2021 by AbuQitmir Mohammad Shiraz Al Madani in Karachi. 5+ years building custom software, AI agents, and SEO systems for global B2B teams.',
+    ogDescription: 'Growth engineering firm in Karachi, Pakistan. We build custom software, AI automation, and technical SEO systems for B2B companies across the US, UK, GCC, and Pakistan since 2021.',
     ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp',
     ogType: 'website'
   },
   '/about/our-company': {
     title: 'Our Company & 100% IP Ownership Model | AbuQitmirLabs',
-    description: '98% client retention and 100% IP ownership since 2021. See how AbuQitmirLabs delivers senior-led software, AI agents, and SEO from Karachi to the world.',
+    description: 'AbuQitmirLabs is a Karachi-based software and AI agency founded in 2021 by Abu Qitmir Mohammad Shiraz Al Madani. Custom software, AI agents, and technical SEO for US, UK, and GCC B2B companies.',
     canonical: 'https://www.abuqitmirlabs.tech/about/our-company',
     ogTitle: 'Our Company & 100% IP Ownership Model | AbuQitmirLabs',
-    ogDescription: '98% client retention and 100% IP ownership since 2021. See how AbuQitmirLabs delivers senior-led software, AI agents, and SEO from Karachi to the world.',
+    ogDescription: 'AbuQitmirLabs is a Karachi-based software and AI agency founded in 2021 by Abu Qitmir Mohammad Shiraz Al Madani. Custom software, AI agents, and technical SEO for US, UK, and GCC B2B companies.',
     ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
   },
   '/about/our-team': {
@@ -1315,10 +1315,10 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
   },
   '/web-development': {
     title: 'Web Development Services Pakistan | AbuQitmirLabs',
-    description: 'Next.js web development for US, UK, and GCC B2B teams. Sub-second load, 100% IP ownership, senior-led delivery from Karachi. Book a consultation.',
+    description: 'Next.js websites that load under 1.2 seconds. Full source code ownership, no lock-in. Senior team in Karachi for US, UK & GCC startups. From $500 USD.',
     canonical: 'https://www.abuqitmirlabs.tech/web-development',
     ogTitle: 'Web Development Services Pakistan | AbuQitmirLabs',
-    ogDescription: 'Next.js web development for US, UK, and GCC B2B teams. Sub-second load, 100% IP ownership, senior-led delivery from Karachi. Book a consultation.',
+    ogDescription: 'Next.js websites that load under 1.2 seconds. Full source code ownership, no lock-in. Senior team in Karachi for US, UK & GCC startups. From $500 USD.',
     ogImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp',
     twitterImage: 'https://www.abuqitmirlabs.tech/images/hero-abuqitmirlabs.webp'
   },
@@ -1757,11 +1757,11 @@ export const SEO_ROUTES_METADATA: Record<string, RouteSeoMetadata> = {
     }
   },
   '/contact': {
-    title: 'Contact & Book a Discovery Call | AbuQitmirLabs',
-    description: 'Schedule a technical consultation with our lead software architects. Free discovery session, architecture blueprint, and milestone-based pricing.',
+    title: 'Contact AbuQitmirLabs | Start Your Project',
+    description: 'Book a free 30-minute technical call with AbuQitmirLabs. Custom software, AI agents, and SEO for US, UK, and GCC B2B companies. Response within 24 hours.',
     canonical: 'https://www.abuqitmirlabs.tech/contact',
-    ogTitle: 'Contact Us | Free Project Quote | AbuQitmirLabs',
-    ogDescription: 'Schedule a technical consultation with our lead software architects.',
+    ogTitle: 'Contact AbuQitmirLabs | Start Your Project',
+    ogDescription: 'Book a free 30-minute technical call with AbuQitmirLabs. Custom software, AI agents, and SEO for US, UK, and GCC B2B companies. Response within 24 hours.',
     ogImage: 'https://www.abuqitmirlabs.tech/images/blog-covers/measure-marketing-roi-without-tracking-2f8e9a63.webp'
   },
   '/brand-assets': {
